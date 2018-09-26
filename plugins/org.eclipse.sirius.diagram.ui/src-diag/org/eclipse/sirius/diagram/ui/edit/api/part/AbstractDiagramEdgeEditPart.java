@@ -42,6 +42,7 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.util.LabelViewConstants;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeConnectionRequest;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.ITreeConnection;
+import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -282,7 +283,9 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         // Specific refresh for edge with path
         DEdge edge = getEdgeWithPath();
         if (edge == null) {
-            super.refreshBendpoints();
+            if (getEdge().getBendpoints() instanceof RelativeBendpoints) {
+                super.refreshBendpoints();
+            }
         } else {
             DiagramEdgeEditPartOperation.refreshBendpointsWithPath(this, edge);
         }
