@@ -500,6 +500,29 @@ public class SiriusDebugView extends AbstractDebugView {
         addDeferredUnrelatedChangeAction();
         addListProxiesAction();
         addLoadResourceAction();
+        addEMFResourcesStatisticsAction();
+    }
+
+    private void addEMFResourcesStatisticsAction() {
+        addAction("EMF Resource Statistics", () -> {
+            IFile input = Adapters.adapt(selection, IFile.class);
+            if (input != null) {
+                URI uri = URI.createPlatformResourceURI(input.getFullPath().toString(), true);
+                ResourceSet rs = new ResourceSetImpl();
+                Resource res = rs.getResource(uri, true);
+                AtomicLong nbElements = new AtomicLong();
+                AtomicLong nbReferences = new AtomicLong();
+                res.getAllContents().forEachRemaining(o -> {
+                    nbElements.incrementAndGet();
+                    nbReferences.addAndGet(o.eCrossReferences().size());
+                });
+                StringBuilder sb = new StringBuilder();
+                sb.append("Resource ").append(uri.toString()).append("\n");
+                sb.append("Number of elements: ").append(nbElements).append("\n");
+                sb.append("Number of cross-references: ").append(nbReferences).append("\n");
+                setText(sb.toString());
+            }
+        });
     }
 
     private void addListProxiesAction() {
