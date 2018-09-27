@@ -187,6 +187,14 @@ public class SiriusBlankSpacesDragTracker extends SimpleDragTracker {
     protected int getCurrentPositionZoomed() {
         Point pt = getLocation();
         source.getFigure().translateToRelative(pt);
+        if (!(source instanceof SiriusRulerEditPart)) {
+            // When the tool is applied on the diagram, the location must considered the zoom. It is not the case when
+            // the tool is applied on the ruler.
+            double zoom = getZoom();
+            if (zoom != 0) {
+                pt.performScale(zoom);
+            }
+        }
         int position = isHorizontal(source) ? pt.x : pt.y;
         return position;
     }
@@ -199,11 +207,30 @@ public class SiriusBlankSpacesDragTracker extends SimpleDragTracker {
      */
     protected int getCurrentPosition() {
         int position = getCurrentPositionZoomed();
-        ZoomManager zoomManager = (ZoomManager) this.getCurrentViewer().getProperty(ZoomManager.class.toString());
-        if (zoomManager != null) {
-            position = (int) Math.round(position / zoomManager.getZoom());
+        double zoom = getZoom();
+        if (zoom != 0) {
+            position = (int) Math.round(position / zoom);
         }
         return position;
+    }
+
+    /**
+     * Get the current zoom level. 0 can be returned if the zoom level is not retrieved.
+     * 
+     * @return the zoom level
+     */
+    protected double getZoom() {
+        double zoom = 0;
+        ZoomManager zoomManager;
+        if (source instanceof SiriusRulerEditPart) {
+            zoomManager = ((SiriusRulerEditPart) source).getZoomManager();
+        } else {
+            zoomManager = (ZoomManager) this.getCurrentViewer().getProperty(ZoomManager.class.toString());
+        }
+        if (zoomManager != null) {
+            zoom = zoomManager.getZoom();
+        }
+        return zoom;
     }
 
     @Override
