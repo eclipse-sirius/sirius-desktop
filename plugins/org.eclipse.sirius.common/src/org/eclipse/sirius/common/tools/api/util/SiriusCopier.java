@@ -31,6 +31,36 @@ public class SiriusCopier extends Copier {
     private static final long serialVersionUID = -5736164116383051335L;
 
     /**
+     * Creates an instance.
+     */
+    public SiriusCopier() {
+        super();
+    }
+
+    /**
+     * Creates an instance that resolves proxies or not as specified.
+     * 
+     * @param resolveProxies
+     *            whether proxies should be resolved while copying.
+     */
+    public SiriusCopier(boolean resolveProxies) {
+        this.resolveProxies = resolveProxies;
+    }
+
+    /**
+     * Creates an instance that resolves proxies or not and uses non-copied references or not as specified.
+     * 
+     * @param resolveProxies
+     *            whether proxies should be resolved while copying.
+     * @param useOriginalReferences
+     *            whether non-copied references should be used while copying.
+     */
+    public SiriusCopier(boolean resolveProxies, boolean useOriginalReferences) {
+        this.resolveProxies = resolveProxies;
+        this.useOriginalReferences = useOriginalReferences;
+    }
+
+    /**
      * This method does not copy {@link EAttribute} that is an id (see {@link EAttribute#isID()}).<br/>
      * If the id has not been set by the factory and if the attribute type is String, sets it using the
      * EcoreUtil.generateUUID().
@@ -45,6 +75,7 @@ public class SiriusCopier extends Copier {
                 // See org.eclipse.emf.ecore.util.EcoreUtil.setID(EObject, String)
                 valueToCopy = EcoreUtil.generateUUID();
             }
+            return;
         }
         super.copyAttributeValue(eAttribute, eObject, valueToCopy, setting);
     }

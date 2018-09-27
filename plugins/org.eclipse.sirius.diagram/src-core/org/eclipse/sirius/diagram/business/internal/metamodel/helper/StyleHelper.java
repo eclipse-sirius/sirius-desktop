@@ -18,12 +18,12 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
+import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.BeginLabelStyle;
@@ -731,7 +731,7 @@ public final class StyleHelper {
             }
         }
         if (brokenStyle && style.eContainer() instanceof AbstractDNode) {
-            EObject copy = EcoreUtil.copy(createNodeStyle(description));
+            EObject copy = SiriusCopier.Helper.copy(createNodeStyle(description));
             final NodeStyle newStyle = (NodeStyle) copy;
             affectStyle((AbstractDNode) style.eContainer(), newStyle);
         }

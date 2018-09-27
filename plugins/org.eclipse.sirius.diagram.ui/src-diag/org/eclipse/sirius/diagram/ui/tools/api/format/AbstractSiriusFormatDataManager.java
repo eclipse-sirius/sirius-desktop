@@ -28,7 +28,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.GraphicalEditPart;
@@ -52,6 +51,7 @@ import org.eclipse.gmf.runtime.notation.RoutingStyle;
 import org.eclipse.gmf.runtime.notation.Smoothness;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
+import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.ContainerStyle;
@@ -461,9 +461,8 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      *            The format data containing the sirius style
      */
     protected void applySiriusStyle(DSemanticDecorator semanticDecorator, AbstractFormatData formatData) {
-        // Make a copy of the style to allow several Paste with the same
-        // FormatData.
-        Style copyOfSiriusStyle = EcoreUtil.copy(formatData.getSiriusStyle());
+        // Make a copy of the style to allow several Paste with the same FormatData.
+        Style copyOfSiriusStyle = SiriusCopier.Helper.copy(formatData.getSiriusStyle());
         if ((semanticDecorator instanceof DNode || semanticDecorator instanceof DNodeListElement) && copyOfSiriusStyle instanceof NodeStyle) {
             if (semanticDecorator instanceof DNode) {
                 computeCustomFeatures(((DNode) semanticDecorator).getOwnedStyle(), copyOfSiriusStyle);

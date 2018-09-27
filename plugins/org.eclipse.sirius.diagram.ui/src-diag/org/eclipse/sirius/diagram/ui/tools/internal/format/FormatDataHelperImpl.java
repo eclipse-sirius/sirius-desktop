@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,6 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -31,6 +30,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.formatdata.AbstractFormatData;
@@ -143,11 +143,12 @@ public class FormatDataHelperImpl implements FormatDataHelper {
     private void copyViewStyleInFormatData(AbstractFormatData formatData, View view) {
         // 1-Copy Sirius Style
         if (view.getElement() instanceof DStylizable) {
-            formatData.setSiriusStyle(EcoreUtil.copy(((DStylizable) view.getElement()).getStyle()));
+            // If several paste can be done, the paste might also need to update the id.
+            formatData.setSiriusStyle(SiriusCopier.Helper.copy(((DStylizable) view.getElement()).getStyle()));
         }
 
         // 2-Copy GMF view to retrieve GMF style
-        EcoreUtil.Copier copierWithoutElementRef = new EcoreUtil.Copier(false, false);
+        SiriusCopier copierWithoutElementRef = new SiriusCopier(false, false);
         View viewCopy = (View) copierWithoutElementRef.copy(view);
         formatData.setGmfView(viewCopy);
     }
@@ -298,8 +299,7 @@ public class FormatDataHelperImpl implements FormatDataHelper {
     }
 
     /**
-     * Creates a new Point which is translated by the values of the provided
-     * Point.
+     * Creates a new Point which is translated by the values of the provided Point.
      * 
      * @param originalPoint
      *            The point to translate.
@@ -315,8 +315,7 @@ public class FormatDataHelperImpl implements FormatDataHelper {
     }
 
     /**
-     * Creates a new Point which is translated by the values of the provided
-     * Point.
+     * Creates a new Point which is translated by the values of the provided Point.
      * 
      * @param originalPoint
      *            The point to translate.

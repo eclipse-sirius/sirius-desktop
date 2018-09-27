@@ -28,7 +28,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.GraphicalEditPart;
@@ -52,6 +51,7 @@ import org.eclipse.gmf.runtime.notation.RoutingStyle;
 import org.eclipse.gmf.runtime.notation.Smoothness;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
+import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.ContainerStyle;
@@ -91,13 +91,11 @@ import com.google.common.collect.Iterables;
 
 /**
  * An abstract implementation for {@link SiriusLayoutDataManager}. <BR>
- * Provide a method to store a layout from a graphicalEditPart and iterates on
- * it's children.
+ * Provide a method to store a layout from a graphicalEditPart and iterates on it's children.
  *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * @deprecated since Sirius 4.1.0. Use
- *             {@link org.eclipse.sirius.diagram.ui.tools.api.format.AbstractSiriusFormatDataManager}
- *             instead.
+ *             {@link org.eclipse.sirius.diagram.ui.tools.api.format.AbstractSiriusFormatDataManager} instead.
  *
  */
 @Deprecated
@@ -164,8 +162,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      * Apply the format to the <code>rootEditPart</code>.
      * 
      * @param rootEditPart
-     *            The root edit from which we would try to apply the current
-     *            stored format
+     *            The root edit from which we would try to apply the current stored format
      * @param applyLayout
      *            true if the layout must be applied, false otherwise
      * @param applyStyle
@@ -343,8 +340,8 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
     }
 
     /**
-     * Search a layout corresponding to the semantic decorator and applies it to
-     * the node. Then it applies to it's children and outgoing edges.
+     * Search a layout corresponding to the semantic decorator and applies it to the node. Then it applies to it's
+     * children and outgoing edges.
      *
      * @param semanticDecorator
      *            The semantic decorator to search the corresponding layout
@@ -452,8 +449,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
     }
 
     /**
-     * Apply the Sirius style contained in <code>layoutData</code> on the
-     * <code>semanticDecorator</code>.
+     * Apply the Sirius style contained in <code>layoutData</code> on the <code>semanticDecorator</code>.
      * 
      * @param semanticDecorator
      *            The {@link DSemanticDecorator} on which to apply the style.
@@ -461,9 +457,8 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      *            The layout data containing the sirius style
      */
     protected void applySiriusStyle(DSemanticDecorator semanticDecorator, AbstractLayoutData layoutData) {
-        // Make a copy of the style to allow several Paste with the same
-        // LayoutData.
-        Style copyOfSiriusStyle = EcoreUtil.copy(layoutData.getSiriusStyle());
+        // Make a copy of the style to allow several Paste with the same LayoutData.
+        Style copyOfSiriusStyle = SiriusCopier.Helper.copy(layoutData.getSiriusStyle());
         if ((semanticDecorator instanceof DNode || semanticDecorator instanceof DNodeListElement) && copyOfSiriusStyle instanceof NodeStyle) {
             if (semanticDecorator instanceof DNode) {
                 computeCustomFeatures(((DNode) semanticDecorator).getOwnedStyle(), copyOfSiriusStyle);
@@ -482,15 +477,13 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
     }
 
     /**
-     * Copies the appearance of the old view to the new view. Typically this
-     * means copying the visibility and the styles of the root and it's
-     * children.
+     * Copies the appearance of the old view to the new view. Typically this means copying the visibility and the styles
+     * of the root and it's children.
      * 
      * @param newView
      *            The new view to copy style features to
      * @param layoutData
-     *            The layout data containing the old view to copy style features
-     *            from
+     *            The layout data containing the old view to copy style features from
      */
     @SuppressWarnings("unchecked")
     protected void applyGMFStyle(View newView, AbstractLayoutData layoutData) {
@@ -749,8 +742,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      * @param gmfView
      *            GMF view
      * @param discoveredKeys
-     *            The {@link LayoutDataKey} discovered during the current store
-     *            action.
+     *            The {@link LayoutDataKey} discovered during the current store action.
      */
     protected void addNodeChildren(final DNode parentNode, final NodeLayoutData parentLayoutData, final IGraphicalEditPart parentEditPart, final View gmfView,
             Collection<LayoutDataKey> discoveredKeys) {
@@ -771,8 +763,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      * @param parentSavedEditPart
      *            The previous saved editPart (corresponds to parentLayoutData)
      * @param discoveredKeys
-     *            The {@link LayoutDataKey} discovered during the current store
-     *            action.
+     *            The {@link LayoutDataKey} discovered during the current store action.
      */
     protected void checkDataAndAddChildLayout(final NodeLayoutData parentLayoutData, final AbstractDNode child, final IGraphicalEditPart parentSavedEditPart,
             Collection<LayoutDataKey> discoveredKeys) {
@@ -796,8 +787,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      * @param parentEditPart
      *            The editPart corresponding to the parent LayoutData
      * @param discoveredKeys
-     *            The {@link LayoutDataKey} discovered during the current store
-     *            action.
+     *            The {@link LayoutDataKey} discovered during the current store action.
      */
     protected void addNodeContainerChildren(final DNodeContainer container, final NodeLayoutData parentLayoutData, final IGraphicalEditPart parentEditPart, Collection<LayoutDataKey> discoveredKeys) {
         for (final DDiagramElement child : container.getOwnedDiagramElements()) {
@@ -820,8 +810,7 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
      * @param parentEditPart
      *            The editPart corresponding to the parent LayoutData
      * @param discoveredKeys
-     *            The {@link LayoutDataKey} discovered during the current store
-     *            action.
+     *            The {@link LayoutDataKey} discovered during the current store action.
      */
     protected void addNodeListChildren(final DNodeList nodeList, final NodeLayoutData parentLayoutData, final IGraphicalEditPart parentEditPart, Collection<LayoutDataKey> discoveredKeys) {
         for (final DNode child : nodeList.getOwnedBorderedNodes()) {
@@ -946,9 +935,8 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
     }
 
     /**
-     * Add the layout data of the label of the edge. This layout data sets the
-     * <code>edgeLabelLayoutData</code> of the {@link EdgeLayoutData}. It's not
-     * added to the layout data with a key in the manager.
+     * Add the layout data of the label of the edge. This layout data sets the <code>edgeLabelLayoutData</code> of the
+     * {@link EdgeLayoutData}. It's not added to the layout data with a key in the manager.
      *
      * @param parentLayoutData
      *            The edge layout data
@@ -969,9 +957,8 @@ public abstract class AbstractSiriusLayoutDataManager implements SiriusLayoutDat
     }
 
     /**
-     * Check for each attribute of newStyle if it is the same in oldStyle. On
-     * the other hand, this attribute is added to the custom features of the
-     * newStyle.
+     * Check for each attribute of newStyle if it is the same in oldStyle. On the other hand, this attribute is added to
+     * the custom features of the newStyle.
      * 
      * @param oldStyle
      *            The old style to compare with
