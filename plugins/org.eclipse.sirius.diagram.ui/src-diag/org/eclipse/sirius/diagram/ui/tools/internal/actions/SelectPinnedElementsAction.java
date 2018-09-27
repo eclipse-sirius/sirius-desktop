@@ -11,6 +11,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.actions;
 
 import java.util.Iterator;
+import java.util.Objects;
 
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
@@ -48,22 +49,24 @@ import com.google.common.base.Predicate;
  * @author pcdavid
  */
 public class SelectPinnedElementsAction extends AbstractDiagramAction {
-    private final class PinnedElementsSelectionCommand extends AbstractTransactionalCommand {
+    private static final class PinnedElementsSelectionCommand extends AbstractTransactionalCommand {
         private final DDiagram diagram;
+        private final Shell shell;
 
-        private PinnedElementsSelectionCommand(TransactionalEditingDomain domain, String label, DDiagram diagram) {
+        private PinnedElementsSelectionCommand(Shell shell, TransactionalEditingDomain domain, String label, DDiagram diagram) {
             super(domain, label, null);
-            this.diagram = diagram;
+            this.shell = Objects.requireNonNull(shell);
+            this.diagram = Objects.requireNonNull(diagram);
         }
 
         @Override
         protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
             DiagramElementsSelectionDialog dlg = new DiagramElementsSelectionDialog(Messages.SelectPinnedElementsAction_label, Messages.PinnedElementsSelectionCommand_dialogMessage);
-            dlg.setSelectionPredicate(isPinned);
-            dlg.setSelectedAction(pinElement);
-            dlg.setDeselectedAction(unpinElement);
+            dlg.setSelectionPredicate(IS_PINNED);
+            dlg.setSelectedAction(PIN_ELEMENT);
+            dlg.setDeselectedAction(UNPIN_ELEMENT);
             dlg.setGrayedPredicate(getNonSelectablePredicate());
-            boolean executed = dlg.open(getShell(), diagram, false);
+            boolean executed = dlg.open(shell, diagram, false);
             if (executed) {
                 return CommandResult.newOKCommandResult();
             } else {
@@ -91,7 +94,7 @@ public class SelectPinnedElementsAction extends AbstractDiagramAction {
     /** The pin icon descriptor. */
     private static final ImageDescriptor DESC_PIN = DiagramUIPlugin.Implementation.getBundledImageDescriptor(ICON_PATH);
 
-    private final Predicate<Object> isPinned = new Predicate<Object>() {
+    private static final Predicate<Object> IS_PINNED = new Predicate<Object>() {
         @Override
         public boolean apply(Object input) {
             if (input instanceof DDiagramElement) {
@@ -101,7 +104,7 @@ public class SelectPinnedElementsAction extends AbstractDiagramAction {
         }
     };
 
-    private final Function<Object, Void> pinElement = new Function<Object, Void>() {
+    private static final Function<Object, Void> PIN_ELEMENT = new Function<Object, Void>() {
         @Override
         public Void apply(Object from) {
             if (from instanceof DDiagramElement) {
@@ -111,7 +114,7 @@ public class SelectPinnedElementsAction extends AbstractDiagramAction {
         }
     };
 
-    private final Function<Object, Void> unpinElement = new Function<Object, Void>() {
+    private static final Function<Object, Void> UNPIN_ELEMENT = new Function<Object, Void>() {
         @Override
         public Void apply(Object from) {
             if (from instanceof DDiagramElement) {
@@ -228,7 +231,7 @@ public class SelectPinnedElementsAction extends AbstractDiagramAction {
             EObject semanticElement = diagramEditPart.resolveSemanticElement();
             if (semanticElement instanceof DDiagram) {
                 DDiagram diagram = (DDiagram) semanticElement;
-                elementsSelectionCommand = new ICommandProxy(new PinnedElementsSelectionCommand(diagramEditPart.getEditingDomain(), Messages.SelectPinnedElementsAction_label, diagram));
+                elementsSelectionCommand = new ICommandProxy(new PinnedElementsSelectionCommand(getShell(), diagramEditPart.getEditingDomain(), Messages.SelectPinnedElementsAction_label, diagram));
             }
         }
         return elementsSelectionCommand;

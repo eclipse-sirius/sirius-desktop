@@ -86,21 +86,11 @@ public class CopyFormatAction extends AbstractCopyPasteFormatAction {
         this(workbenchPage, null);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction#getCommandLabel()
-     */
     @Override
     protected String getCommandLabel() {
         return Messages.CopyFormatAction_commandLabel;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction#getCommand()
-     */
     @Override
     protected Command getCommand() {
         // Create a compound command to hold the store format commands
@@ -203,7 +193,7 @@ public class CopyFormatAction extends AbstractCopyPasteFormatAction {
     /**
      * A command allowing to copy format data.
      */
-    private final class CopyFormatDataCommand extends AbstractTransactionalCommand {
+    private static final class CopyFormatDataCommand extends AbstractTransactionalCommand {
 
         private IGraphicalEditPart toStore;
 

@@ -10,6 +10,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.actions;
 
+import java.util.Objects;
+
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -53,22 +55,24 @@ import com.google.common.base.Predicates;
  */
 public class SelectHiddenElementsAction extends AbstractDiagramAction {
 
-    private final class HiddenElementsSelectionCommand extends AbstractTransactionalCommand {
+    private static final class HiddenElementsSelectionCommand extends AbstractTransactionalCommand {
         private final DDiagram diagram;
+        private final Shell shell;
 
-        private HiddenElementsSelectionCommand(TransactionalEditingDomain domain, String label, DDiagram diagram) {
+        private HiddenElementsSelectionCommand(Shell shell, TransactionalEditingDomain domain, String label, DDiagram diagram) {
             super(domain, label, null);
-            this.diagram = diagram;
+            this.shell = Objects.requireNonNull(shell);
+            this.diagram = Objects.requireNonNull(diagram);
         }
 
         @Override
         protected CommandResult doExecuteWithResult(IProgressMonitor monitor, IAdaptable info) throws ExecutionException {
             DiagramElementsSelectionDialog dlg = new DiagramElementsSelectionDialog(Messages.HiddenElementsSelectionCommand_dialogTitle, Messages.HiddenElementsSelectionCommand_dialogMessage);
-            dlg.setSelectionPredicate(isVisible);
-            dlg.setSelectedAction(revealElement);
-            dlg.setDeselectedAction(hideElement);
+            dlg.setSelectionPredicate(IS_VISIBLE);
+            dlg.setSelectedAction(REVEAL_ELEMENT);
+            dlg.setDeselectedAction(HIDE_ELEMENT);
             dlg.setGrayedPredicate(getNonSelectablePredicate());
-            boolean executed = dlg.open(getShell(), diagram, true);
+            boolean executed = dlg.open(shell, diagram, true);
             if (executed) {
                 return CommandResult.newOKCommandResult();
             } else {
@@ -99,7 +103,7 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
     /** The hide icon descriptor. */
     private static final ImageDescriptor DESC_HIDE = DiagramUIPlugin.Implementation.getBundledImageDescriptor(ICON_PATH);
 
-    private final Predicate<Object> isVisible = new Predicate<Object>() {
+    private static final Predicate<Object> IS_VISIBLE = new Predicate<Object>() {
         @Override
         public boolean apply(Object input) {
             boolean result = false;
@@ -115,7 +119,7 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
         }
     };
 
-    private final Function<Object, Void> hideElement = new Function<Object, Void>() {
+    private static final Function<Object, Void> HIDE_ELEMENT = new Function<Object, Void>() {
         @Override
         public Void apply(Object from) {
             if (from instanceof DDiagramElement) {
@@ -130,7 +134,7 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
         }
     };
 
-    private final Function<Object, Void> revealElement = new Function<Object, Void>() {
+    private static final Function<Object, Void> REVEAL_ELEMENT = new Function<Object, Void>() {
         @Override
         public Void apply(Object from) {
             if (from instanceof DDiagramElement) {
@@ -191,17 +195,11 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
         return DESC_HIDE;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Request createTargetRequest() {
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected boolean isSelectionListener() {
         return false;
@@ -211,9 +209,6 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
         return getWorkbenchPart().getSite().getShell();
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected Command getCommand() {
         Command result = UnexecutableCommand.INSTANCE;
@@ -237,7 +232,7 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
             EObject semanticElement = diagramEditPart.resolveSemanticElement();
             if (semanticElement instanceof DDiagram) {
                 DDiagram diagram = (DDiagram) semanticElement;
-                elementsSelectionCommand = new ICommandProxy(new HiddenElementsSelectionCommand(diagramEditPart.getEditingDomain(), Messages.SelectHiddenElementsAction_tooltip, diagram));
+                elementsSelectionCommand = new ICommandProxy(new HiddenElementsSelectionCommand(getShell(), diagramEditPart.getEditingDomain(), Messages.SelectHiddenElementsAction_tooltip, diagram));
             }
         }
         return elementsSelectionCommand;

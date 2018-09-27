@@ -81,21 +81,11 @@ public class PasteFormatAction extends AbstractCopyPasteFormatAction {
         this(workbenchPage, null);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction#getCommandLabel()
-     */
     @Override
     protected String getCommandLabel() {
         return Messages.PasteFormatAction_commandLabel;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction#getCommand()
-     */
     @Override
     protected Command getCommand() {
         Command pasteFormatCommand = UnexecutableCommand.INSTANCE;
@@ -134,7 +124,7 @@ public class PasteFormatAction extends AbstractCopyPasteFormatAction {
      * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
      * 
      */
-    private final class PasteFormatDataCommand extends AbstractTransactionalCommand {
+    private static final class PasteFormatDataCommand extends AbstractTransactionalCommand {
 
         private IGraphicalEditPart editPartToRestore;
 

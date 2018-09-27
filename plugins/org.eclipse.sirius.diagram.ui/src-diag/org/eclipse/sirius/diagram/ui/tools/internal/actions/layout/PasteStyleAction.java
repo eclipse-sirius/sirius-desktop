@@ -79,21 +79,11 @@ public class PasteStyleAction extends AbstractCopyPasteFormatAction {
         this(workbenchPage, null);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction#getCommandLabel()
-     */
     @Override
     protected String getCommandLabel() {
         return Messages.PasteStyleAction_commandLabel;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction#getCommand()
-     */
     @Override
     protected Command getCommand() {
         Command pasteStyleCommand = UnexecutableCommand.INSTANCE;
@@ -131,7 +121,7 @@ public class PasteStyleAction extends AbstractCopyPasteFormatAction {
      * 
      * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
      */
-    private final class PasteStyleDataCommand extends AbstractTransactionalCommand {
+    private static final class PasteStyleDataCommand extends AbstractTransactionalCommand {
 
         private IGraphicalEditPart editPartToRestore;
 
@@ -153,13 +143,6 @@ public class PasteStyleAction extends AbstractCopyPasteFormatAction {
             this.editPartToRestore = editPartToRestore;
         }
 
-        /**
-         * 
-         * {@inheritDoc}
-         * 
-         * @see org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand#doExecuteWithResult(org.eclipse.core.runtime.IProgressMonitor,
-         *      org.eclipse.core.runtime.IAdaptable)
-         */
         @Override
         protected CommandResult doExecuteWithResult(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
             List<SiriusFormatDataManager> formatDataManagers = FormatDataManagerRegistry.getSiriusFormatDataManagers(dDiagram);
