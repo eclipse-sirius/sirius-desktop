@@ -23,6 +23,7 @@ import org.eclipse.emf.transaction.impl.TransactionImpl;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.management.ToolFilter;
@@ -36,6 +37,7 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuth
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IEditorDescriptor;
@@ -111,6 +113,9 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
     public void run() {
         PaletteManager paletteManager = dDiagramEditorImpl.getPaletteManager();
         Diagram gmfDiagram = dDiagramEditorImpl.getDiagram();
+        if (gmfDiagram == null || gmfDiagram.getElement() instanceof DSemanticDecorator && SessionManager.INSTANCE.getSession(((DSemanticDecorator) gmfDiagram.getElement()).getTarget()) == null) {
+            return;
+        }
         ToolManagement toolManagement = DiagramPlugin.getPlugin().getToolManagement(gmfDiagram);
         switch (changeKind) {
         case SessionListener.DIRTY:
