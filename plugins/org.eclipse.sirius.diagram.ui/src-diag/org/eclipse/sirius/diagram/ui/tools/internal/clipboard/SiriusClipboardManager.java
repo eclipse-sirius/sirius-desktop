@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -19,16 +19,15 @@ import org.eclipse.emf.ecore.EModelElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
 import org.eclipse.sirius.viewpoint.description.Group;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * This class allows Sirius to handle copy/paste operations between several
- * session/editing domains.
+ * This class allows Sirius to handle copy/paste operations between several session/editing domains.
  * 
  * @author mporhel
  * 
@@ -55,8 +54,7 @@ public final class SiriusClipboardManager {
     }
 
     /**
-     * Remove all references to resources which do not belongs to the given
-     * domain semantic resources.
+     * Remove all references to resources which do not belongs to the given domain semantic resources.
      * 
      * @param targetedDomain
      * 
@@ -134,7 +132,7 @@ public final class SiriusClipboardManager {
 
     private Collection<Object> getCopyOfClipboard() {
         if (clipboard != null && !clipboard.isEmpty()) {
-            return EcoreUtil.copyAll(clipboard);
+            return SiriusCopier.Helper.copyAll(clipboard);
         }
         return null;
     }
@@ -142,8 +140,8 @@ public final class SiriusClipboardManager {
     /**
      * Fill the targeted domain clipboard.
      * 
-     * If targeted domain and clipboard source domain are different, references
-     * to EObjects which do not belongs to the targeted domain will be removed.
+     * If targeted domain and clipboard source domain are different, references to EObjects which do not belongs to the
+     * targeted domain will be removed.
      * 
      * Except for references to VSM descriptions.
      * 
@@ -161,8 +159,7 @@ public final class SiriusClipboardManager {
     }
 
     /**
-     * Fill the viewpoint clipboard from the source domain clipboard, and clear
-     * it.
+     * Fill the viewpoint clipboard from the source domain clipboard, and clear it.
      * 
      * @param domain
      *            the source domain.
