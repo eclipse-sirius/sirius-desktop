@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,9 @@ package org.eclipse.sirius.tests.swtbot.clipboard;
 import java.lang.Thread.UncaughtExceptionHandler;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.core.runtime.IStatus;
@@ -23,6 +26,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
@@ -43,6 +47,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondit
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.ContextualMenuItemGetter;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.MenuItem;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
@@ -183,6 +188,7 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
 
         logListener = new ILogListener() {
 
+            @Override
             public void logging(IStatus status, String plugin) {
                 if (status.getSeverity() == IStatus.ERROR) {
                     errorOccurs(status, plugin);
@@ -195,6 +201,7 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
         exceptionHandler = new UncaughtExceptionHandler() {
             private String sourcePlugin = "Uncaught exception";
 
+            @Override
             public void uncaughtException(Thread t, Throwable e) {
 
                 IStatus status = new Status(IStatus.ERROR, sourcePlugin, sourcePlugin, e);
@@ -222,6 +229,7 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
      * @param errorCatchActive
      *            error catch active
      */
+    @Override
     protected synchronized void setErrorCatchActive(boolean errorCatchActive) {
         this.errorCatchActive = errorCatchActive;
         this.errorMessage = "";
@@ -238,6 +246,7 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
      * 
      * @return true if an error occurs.
      */
+    @Override
     protected synchronized boolean doesAnErrorOccurs() {
         if (errors != null) {
             return errors.values().size() != 0;
@@ -266,14 +275,12 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
      * ! Use with caution ! Will have side effect for cut and paste.
      * 
      * 
-     * Check copy/cut/paste menu status from toolbar edit menu and contextual
-     * menu.
+     * Check copy/cut/paste menu status from toolbar edit menu and contextual menu.
      * 
      * SWTbot cannot just check contextual menu items, it must try to click it.
      * 
-     * Contextual menu is not well updated, and the only action to test is to
-     * click. This test is here to test contextual menu sync with global "Edit"
-     * menu.
+     * Contextual menu is not well updated, and the only action to test is to click. This test is here to test
+     * contextual menu sync with global "Edit" menu.
      * 
      * Other tests can only check edit menu.
      * 
@@ -343,8 +350,7 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
     }
 
     /**
-     * Check copy/cut/paste menu status from toolbar edit menu and contextual
-     * menu.
+     * Check copy/cut/paste menu status from toolbar edit menu and contextual menu.
      * 
      * @param copyState
      *            expected copy menu enablement
@@ -382,6 +388,7 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
         if (currentCopyState) {
             currentCopyState = UIThreadRunnable.syncExec(new Result<Boolean>() {
 
+                @Override
                 public Boolean run() {
                     return copyMenuItem.isEnabled();
                 }
@@ -398,6 +405,7 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
         if (currentCutState) {
             currentCutState = UIThreadRunnable.syncExec(new Result<Boolean>() {
 
+                @Override
                 public Boolean run() {
                     return cutMenuItem.isEnabled();
                 }
@@ -414,6 +422,7 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
         if (currentPasteState) {
             currentPasteState = UIThreadRunnable.syncExec(new Result<Boolean>() {
 
+                @Override
                 public Boolean run() {
                     return pasteMenuItem.isEnabled();
                 }
@@ -437,16 +446,14 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
      * 
      * Check that element on menu are available or not.
      * 
-     * Test that paste after a copy had paste element in semantic model and on
-     * the graphical view.
+     * Test that paste after a copy had paste element in semantic model and on the graphical view.
      * 
      * @param copyEditor
      *            the editor where copy action is do.
      * @param pasteEditor
      *            the editor where paste action is do.
      * @param expectedCanPaste
-     *            boolean to know if paste is disabled (a "no paste" tool is
-     *            defined or generic paste can be executed).
+     *            boolean to know if paste is disabled (a "no paste" tool is defined or generic paste can be executed).
      * @param elemenToCopyName
      *            the element to copy. If null element to copy is the diagram.
      * @param pasteTarget
@@ -518,6 +525,8 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
 
         pasteInSelection();
 
+        // check IdentifiedElement.uid unicity
+        checkUidUnicity((DDiagramEditPart) copyEditor.mainEditPart().part(), (DDiagramEditPart) pasteDiagramBot.part());
         // Check DNode element is paste
         checkNumberOfDElementWithName(pasteDiagramBot, pastedName, numberElementCopy);
         // Check DNode element is paste
@@ -539,6 +548,8 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
 
         // Test Redo
         bot.menu("Edit").menu("Redo Paste").click();
+        // check IdentifiedElement.uid unicity
+        checkUidUnicity((DDiagramEditPart) copyEditor.mainEditPart().part(), (DDiagramEditPart) pasteDiagramBot.part());
         // Check DNode element is paste
         checkNumberOfDElementWithName(pasteDiagramBot, pastedName, numberElementCopy);
         // Check DNode element is paste
@@ -551,16 +562,14 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
      * 
      * Check that element on menu are available or not.
      * 
-     * Test that paste after a copy had paste element in semantic model and on
-     * the graphical view.
+     * Test that paste after a copy had paste element in semantic model and on the graphical view.
      * 
      * @param copyEditor
      *            the editor where copy action is do.
      * @param pasteEditor
      *            the editor where paste action is do.
      * @param expectedCanPaste
-     *            boolean to know if paste is disabled (a "no paste" tool is
-     *            defined or generic paste can be executed).
+     *            boolean to know if paste is disabled (a "no paste" tool is defined or generic paste can be executed).
      * @param listElementToCopy
      *            list of elements to copy.
      * @param pasteTarget
@@ -613,6 +622,9 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
 
         pasteInSelection();
 
+        // check IdentifiedElement.uid unicity
+        checkUidUnicity((DDiagramEditPart) copyEditor.mainEditPart().part(), (DDiagramEditPart) pasteDiagramBot.part());
+
         // Check DNode element is paste
         checkNumberOfDChildrenElementWithName(pasteDiagramBot, "attributee1", pastedName.get("attributee1"));
         // Check DNode element is paste
@@ -652,16 +664,14 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
      * 
      * Check that element on menu are available or not.
      * 
-     * Test that paste after a copy had paste element in semantic model and on
-     * the graphical view.
+     * Test that paste after a copy had paste element in semantic model and on the graphical view.
      * 
      * @param copyEditor
      *            the editor where copy action is do.
      * @param pasteEditor
      *            the editor where paste action is do.
      * @param expectedCanPaste
-     *            boolean to know if paste is disabled (a "no paste" tool is
-     *            defined or generic paste can be executed).
+     *            boolean to know if paste is disabled (a "no paste" tool is defined or generic paste can be executed).
      * @param elementToCopy
      *            element to copy.
      * @param listPasteTarget
@@ -717,6 +727,9 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
 
         pasteInSelection();
 
+        // check IdentifiedElement.uid unicity
+        checkUidUnicity(elementToCopy.part(), (DDiagramEditPart) pasteDiagramBot.part());
+
         // Check DNode element is paste
         checkNumberOfDChildrenElementWithName(pasteTargetBot, pastedName, numberElementCopy);
         // Check DNode element is paste
@@ -731,6 +744,8 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
 
         // Test Redo
         bot.menu("Edit").menu("Redo Paste").click();
+        // check IdentifiedElement.uid unicity
+        checkUidUnicity(elementToCopy.part(), (DDiagramEditPart) pasteDiagramBot.part());
         // Check DNode element is paste
         checkNumberOfDChildrenElementWithName(pasteTargetBot, pastedName, numberElementCopy);
         // Check DNode element is paste
@@ -738,8 +753,67 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
     }
 
     /**
-     * Check that cut from edit menu, delete semantic elements and graphical
-     * elements on view.
+     * Check that the elements have a different uid and check that EObjects contained in targetDiagramEditPart have a
+     * different uid than those in diagram containing sourceEditPart.
+     * 
+     * @param sourceEditPart
+     *            Source edit part to check (source of the copy/paste action)
+     * @param targetDiagramEditPart
+     *            Target diagram edit part to check
+     */
+    private void checkUidUnicity(final EditPart sourceEditPart, DDiagramEditPart targetDiagramEditPart) {
+        if (sourceEditPart instanceof DDiagramEditPart) {
+            checkUidUnicity((DDiagramEditPart) sourceEditPart, targetDiagramEditPart);
+        } else {
+            checkUidUnicityAmongEObject(sourceEditPart);
+            checkUidUnicity((DDiagramEditPart) sourceEditPart.getRoot().getChildren().iterator().next(), targetDiagramEditPart);
+        }
+    }
+
+    /**
+     * Check that the elements have a different uid and check that EObjects contained in targetDiagramEditPart have a
+     * different uid than those in sourceDiagramEditPart.
+     * 
+     * @param sourceDiagramEditPart
+     *            Source diagram edit part to check
+     * @param targetDiagramEditPart
+     *            Target diagram edit part to check
+     */
+    private void checkUidUnicity(final DDiagramEditPart sourceDiagramEditPart, DDiagramEditPart targetDiagramEditPart) {
+        checkUidUnicityAmongEObject(sourceDiagramEditPart);
+
+        if (sourceDiagramEditPart != targetDiagramEditPart) {
+            EObject diagramSource = ((View) sourceDiagramEditPart.getModel()).getElement();
+            Iterable<EObject> it = () -> diagramSource.eAllContents();
+            Stream<String> diagramSourceUids = StreamSupport.stream(it.spliterator(), false).filter(IdentifiedElement.class::isInstance).map(IdentifiedElement.class::cast)
+                    .map(IdentifiedElement::getUid);
+            EObject diagramTarget = ((View) targetDiagramEditPart.getModel()).getElement();
+            Iterable<EObject> it2 = () -> diagramTarget.eAllContents();
+            List<String> diagramTargetUids = StreamSupport.stream(it2.spliterator(), false).filter(IdentifiedElement.class::isInstance).map(IdentifiedElement.class::cast)
+                    .map(IdentifiedElement::getUid).collect(Collectors.toList());
+            assertFalse("The element in the copied diagram should have different uid than in source diagram", diagramSourceUids.anyMatch(uid -> diagramTargetUids.contains(uid)));
+
+            checkUidUnicityAmongEObject(targetDiagramEditPart);
+        }
+    }
+
+    /**
+     * Check that the elements have a different uid.
+     * 
+     * @param swtBotEditPart
+     *            Edit part to check.
+     */
+    private void checkUidUnicityAmongEObject(final EditPart editPart) {
+        EObject object = ((View) editPart.getModel()).getElement();
+        Iterable<EObject> it = () -> object.eAllContents();
+        long nbIdentifiedElement = StreamSupport.stream(it.spliterator(), false).filter(IdentifiedElement.class::isInstance).count();
+        long nbDifferentUid = StreamSupport.stream(it.spliterator(), false).filter(IdentifiedElement.class::isInstance).map(IdentifiedElement.class::cast).map(IdentifiedElement::getUid).distinct()
+                .count();
+        assertEquals("The elements should all have a different uid.", nbIdentifiedElement, nbDifferentUid);
+    }
+
+    /**
+     * Check that cut from edit menu, delete semantic elements and graphical elements on view.
      * 
      * @param cutEditor
      *            the editor where cut is do.
@@ -769,6 +843,8 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
         // accessible
         assertCopyCutPasteToolBarActivation(true, expectedCanDelete, false);
 
+        checkUidUnicityAmongEObject(diagramCutBot.part());
+
         if (expectedCanDelete) {
             cutSelection();
 
@@ -791,6 +867,8 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
             assertCopyCutPasteToolBarActivation(true, false, true);
 
             pasteInSelection();
+            // check IdentifiedElement.uid unicity
+            checkUidUnicityAmongEObject(diagramCutBot.part());
 
             checkNumberOfDElementWithName(diagramCutBot, elementToCutName, 1);
 
@@ -918,8 +996,7 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
     }
 
     /**
-     * Check viewpoint clipboard : semantic elements and DdiagramElements.
-     * Cannot be used to check notes.
+     * Check viewpoint clipboard : semantic elements and DdiagramElements. Cannot be used to check notes.
      * 
      * @param selection
      *            selected bots.
@@ -958,14 +1035,13 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
 
             for (EAttribute attr : source.eClass().getEAllAttributes()) {
                 copy = copy && source.eGet(attr) == clip.eGet(attr);
-
             }
 
             if (copy = true) {
                 return clip;
             }
         }
-        fail("Sirius clipboard do not conatin a copy of " + source);
+        fail("Sirius clipboard do not contain a copy of " + source);
         return null;
     }
 
