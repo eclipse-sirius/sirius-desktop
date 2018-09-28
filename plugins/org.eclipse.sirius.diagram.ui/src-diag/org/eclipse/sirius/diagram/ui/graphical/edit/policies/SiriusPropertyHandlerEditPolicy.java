@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,6 @@ package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
@@ -32,6 +31,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
@@ -104,7 +104,8 @@ public class SiriusPropertyHandlerEditPolicy extends PropertyHandlerEditPolicy {
 
         final View viewToCopy = request.getViewToCopyFrom();
         if (viewToCopy.getElement() instanceof DStylizable) {
-            styleToCopy = EcoreUtil.copy(((DStylizable) viewToCopy.getElement()).getStyle());
+            // Use a specific copier to avoid to copy the uid of the Style
+            styleToCopy = SiriusCopier.Helper.copy(((DStylizable) viewToCopy.getElement()).getStyle());
         }
 
         ICommand viewStyleCommand = null;
