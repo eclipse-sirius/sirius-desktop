@@ -28,7 +28,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
@@ -38,6 +37,7 @@ import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
@@ -111,12 +111,12 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
     public void notify(RepresentationNotification notification) {
         // Empty default implementation.
     }
-    
+
     @Override
     public void updateRepresentationsExtendedBy(Session session, Viewpoint viewpoint, boolean activated) {
         // No support for representation extension by default.
     }
-    
+
     @Override
     public void refresh(DRepresentation representation, IProgressMonitor monitor) {
         refresh(representation, false, monitor);
@@ -186,10 +186,8 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
 
     @Override
     public DRepresentation copyRepresentation(final DRepresentation representation, final String name, final Session session, final IProgressMonitor monitor) {
-        EcoreUtil.Copier copier = new EcoreUtil.Copier();
-        DRepresentation newRepresentation = (DRepresentation) copier.copy(representation);
-        copier.copyReferences();
-        newRepresentation.setUid(EcoreUtil.generateUUID());
+        // Copy the representation and get new uid values for copies.
+        DRepresentation newRepresentation = SiriusCopier.Helper.copy(representation);
 
         /* Set the correct name */
         newRepresentation.setName(name);

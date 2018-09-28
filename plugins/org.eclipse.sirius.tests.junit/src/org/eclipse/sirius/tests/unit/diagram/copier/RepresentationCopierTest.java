@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,16 +14,21 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.util.EcoreUtil.EqualityHelper;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -34,6 +39,8 @@ import org.eclipse.sirius.tests.unit.diagram.GenericTestCase;
 import org.eclipse.sirius.tests.unit.diagram.modelers.uml.UML2ModelerConstants;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IEditorPart;
 
@@ -149,16 +156,72 @@ public class RepresentationCopierTest extends GenericTestCase implements UML2Mod
         assertEquals(numberOfSemanticElementsBeforeCopy, numberOfSemanticElementsAfterCopy);
     }
 
+    public void testNoDuplicatedUids() throws Exception {
+        final String newRepresentationName = "New Representation Space Name ";
+        DDiagram copy = copyDiagram(newRepresentationName);
+        /* check that copy has the name asked */
+        assertTrue(originalDiagram != copy);
+        assertFalse(originalDiagram.getUid().equals(copy.getUid()));
+
+        checkContentUids(originalDiagram, copy);
+
+        copy = copyUseCaseDiagram(newRepresentationName);
+        /* check that copy has the name asked */
+        assertTrue(originalUseCaseDiagram != copy);
+        assertFalse(originalUseCaseDiagram.getUid().equals(copy.getUid()));
+
+    }
+
+    private void checkContentUids(DDiagram origin, DDiagram copy) {
+        List<IdentifiedElement> copied = collectAllIdentifiedElements(originalDiagram);
+        List<IdentifiedElement> copies = collectAllIdentifiedElements(copy);
+
+        assertEquals("Copied and copies lists must have the same size.", copied.size(), copies.size());
+
+        // Specific equality helper which does not check id attributes nor containment lists.
+        // The containments list size/contents validity is ensured by check on the order of the copied/copies lists
+        // and their computation from the eAllContents methods.
+        EqualityHelper helper = new EqualityHelper() {
+
+            @Override
+            protected boolean haveEqualAttribute(EObject eObject1, EObject eObject2, EAttribute attribute) {
+                boolean ignored = attribute.isID() || ViewpointPackage.Literals.DREPRESENTATION__NAME.equals(attribute);
+                return ignored || super.haveEqualAttribute(eObject1, eObject2, attribute);
+            }
+        };
+        assertTrue(helper.equals(originalDiagram, copy));
+
+        for (int i = 0; i < copied.size(); i++) {
+            IdentifiedElement copiedElt = copied.get(i);
+            IdentifiedElement copyElt = copies.get(i);
+
+            boolean equality = helper.equals(copiedElt, copyElt);
+            boolean nullUIds = StringUtil.isEmpty(copiedElt.getUid()) || StringUtil.isEmpty(copyElt.getUid());
+            boolean duplicatedUids = copiedElt.getUid().equals(copyElt.getUid());
+
+            assertTrue("The only difference found between those two elements must be their uid. See " + copiedElt + " and its copy " + copyElt + ".", equality && !nullUIds && !duplicatedUids);
+        }
+    }
+
+    private List<IdentifiedElement> collectAllIdentifiedElements(DDiagram diagram) {
+        Iterable<EObject> it = () -> diagram.eAllContents();
+        List<IdentifiedElement> identifiedElements = StreamSupport.stream(it.spliterator(), false).filter(IdentifiedElement.class::isInstance).map(IdentifiedElement.class::cast)
+                .collect(Collectors.toList());
+        return identifiedElements;
+    }
+
     public void testCopiedRepresentationName() throws Exception {
         final String newRepresentationName = "New Representation Space Name ";
         DDiagram copy = copyDiagram(newRepresentationName);
         /* check that copy has the name asked */
         assertTrue(originalDiagram != copy);
+        assertFalse(originalDiagram.getUid().equals(copy.getUid()));
         assertEquals(newRepresentationName, copy.getName());
 
         copy = copyUseCaseDiagram(newRepresentationName);
         /* check that copy has the name asked */
         assertTrue(originalUseCaseDiagram != copy);
+        assertFalse(originalUseCaseDiagram.getUid().equals(copy.getUid()));
         assertEquals(newRepresentationName, copy.getName());
     }
 
