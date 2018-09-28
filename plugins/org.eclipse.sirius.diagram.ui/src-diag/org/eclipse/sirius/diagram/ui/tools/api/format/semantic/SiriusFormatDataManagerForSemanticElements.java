@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -8,7 +8,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.tools.internal.format.semantic;
+package org.eclipse.sirius.diagram.ui.tools.api.format.semantic;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,6 +28,8 @@ import org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataKey;
 import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.AdvancedSiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.NodeFormatDataKey;
+import org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.SemanticEdgeFormatDataKey;
+import org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.SemanticNodeFormatDataKey;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 

@@ -44,6 +44,7 @@ h3. Developer-Visible Changes
 * <span class="label label-info">Modified</span> The Acceleo version has been changed from 3.7.2 to 3.7.4.
 * <span class="label label-success">Added</span> @org.eclipse.sirius.migrationHandler@ extension point has been added. It allows to contribute migration process, mainly handle migration options.
 * <span class="label label-success">Removed</span> _EOperations_ @checkRule@ and @getMessage@ of @ValidationRule@ _EClass_ have been removed from @viewpoint@ metamodel. These operations were deprecated and useless since we used method of @org.eclipse.sirius.business.internal.metamodel.description.validation.operations.ValidationRuleOperations@ class.
+* <span class="label label-info">Modified</span> The class @SiriusFormatDataManagerForSemanticElements@ has been moved from package @org.eclipse.sirius.diagram.ui.tools.internal.format.semantic@ to @org.eclipse.sirius.diagram.ui.tools.api.format.semantic@.
 
 h4. Changes in @org.eclipse.sirius.ui@
 
