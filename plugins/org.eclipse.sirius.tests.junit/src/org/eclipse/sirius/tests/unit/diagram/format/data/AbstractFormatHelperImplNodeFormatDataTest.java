@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -51,6 +51,7 @@ public abstract class AbstractFormatHelperImplNodeFormatDataTest extends Abstrac
      */
     @Override
     protected AbstractFormatHelperImplTest<NodeFormatData>.FormatDataWrapper createWrappedInstance(final NodeFormatData from) throws Exception {
+        // Do not use SiriusCopier here as we want to copy the id in the format data tree.
         final NodeFormatData nodeFormatData = EcoreUtil.copy(from);
         return new NodeFormatDataWrapper(nodeFormatData);
     }

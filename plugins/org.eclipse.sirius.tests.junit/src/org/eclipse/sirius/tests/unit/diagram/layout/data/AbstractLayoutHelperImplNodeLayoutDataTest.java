@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -50,6 +50,7 @@ public abstract class AbstractLayoutHelperImplNodeLayoutDataTest extends Abstrac
      */
     @Override
     protected AbstractLayoutHelperImplTest<NodeLayoutData>.LayoutDataWrapper createWrappedInstance(final NodeLayoutData from) throws Exception {
+        // Do not use SiriusCopier here as we want to copy the id in the layout data tree.
         final NodeLayoutData nodeLayoutData = (NodeLayoutData) EcoreUtil.copy(from);
         return new NodeLayoutDataWrapper(nodeLayoutData);
     }

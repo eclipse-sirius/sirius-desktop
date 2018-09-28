@@ -1,7 +1,7 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under theier instead of EcoreUtil.Copier in tests
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -14,6 +14,7 @@ package org.eclipse.sirius.tests.unit.table.unit.tools;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
 import org.eclipse.sirius.table.business.internal.metamodel.TableToolVariables;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
 import org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool;
@@ -36,8 +37,7 @@ import junit.framework.TestCase;
 public class NoVariableDuplicationTest extends TestCase {
 
     /**
-     * Test that the renaming and copy of createLineTool not duplicates
-     * variables.
+     * Test that the renaming and copy of createLineTool not duplicates variables.
      */
     public void testNoVariableDuplicationInCreateLineTool() {
         // Create createLineTool
@@ -65,8 +65,7 @@ public class NoVariableDuplicationTest extends TestCase {
     }
 
     /**
-     * Test that the renaming and copy of deleteLineTool not duplicates
-     * variables.
+     * Test that the renaming and copy of deleteLineTool not duplicates variables.
      */
     public void testNoVariableDuplicationInDeleteLineTool() {
         // Create deleteLineTool
@@ -94,8 +93,7 @@ public class NoVariableDuplicationTest extends TestCase {
     }
 
     /**
-     * Test that the renaming and copy of createCellTool not duplicates
-     * variables.
+     * Test that the renaming and copy of createCellTool not duplicates variables.
      */
     public void testNoVariableDuplicationInCreateCellTool() {
         // Create createCellTool
@@ -123,8 +121,7 @@ public class NoVariableDuplicationTest extends TestCase {
     }
 
     /**
-     * Test that the renaming and copy of createColumnTool not duplicates
-     * variables.
+     * Test that the renaming and copy of createColumnTool not duplicates variables.
      */
     public void testNoVariableDuplicationInCreateColumnTool() {
         // Create createColumnTool
@@ -152,8 +149,7 @@ public class NoVariableDuplicationTest extends TestCase {
     }
 
     /**
-     * Test that the renaming and copy of createCrossColumnTool not duplicates
-     * variables.
+     * Test that the renaming and copy of createCrossColumnTool not duplicates variables.
      */
     public void testNoVariableDuplicationInCreateCrossColumnTool() {
         // Create createColumnTool
@@ -181,8 +177,7 @@ public class NoVariableDuplicationTest extends TestCase {
     }
 
     /**
-     * Test that the renaming and copy of deleteColumnTool not duplicates
-     * variables.
+     * Test that the renaming and copy of deleteColumnTool not duplicates variables.
      */
     public void testNoVariableDuplicationInDeleteColumnTool() {
         // Create deleteColumnTool
@@ -210,8 +205,7 @@ public class NoVariableDuplicationTest extends TestCase {
     }
 
     /**
-     * Test that the renaming and copy of createLabelEditTool not duplicates
-     * variables.
+     * Test that the renaming and copy of createLabelEditTool not duplicates variables.
      */
     public void testNoVariableDuplicationInCreateLabelEditTool() {
         // Create createLabelEditTool
@@ -242,7 +236,7 @@ public class NoVariableDuplicationTest extends TestCase {
 
     private void checkNoModifOncopy(EObject tool) {
         // Copy createLineTool
-        EObject copy = EcoreUtil.copy(tool);
+        EObject copy = SiriusCopier.Helper.copy(tool);
 
         assertTrue("The copy must be same that origin", EcoreUtil.equals(tool, copy));
     }

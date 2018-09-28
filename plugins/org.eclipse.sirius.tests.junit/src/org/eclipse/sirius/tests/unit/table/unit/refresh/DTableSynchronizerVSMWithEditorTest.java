@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,7 @@ import java.util.List;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
@@ -145,8 +145,7 @@ public class DTableSynchronizerVSMWithEditorTest extends TableTestCase {
     }
 
     /**
-     * Test the table synchronization after deletion of all the columns in the
-     * VSM.
+     * Test the table synchronization after deletion of all the columns in the VSM.
      */
     public void testRefreshAfterDeleteAllColumns() {
         if ("gtk".equals(SWT.getPlatform())) {
@@ -245,7 +244,7 @@ public class DTableSynchronizerVSMWithEditorTest extends TableTestCase {
         assertEquals("The number of columns mapping is not correct", 4, columns.size());
 
         // Add 1 column.
-        final FeatureColumnMapping columnToAdd = (FeatureColumnMapping) EcoreUtil.copy(columns.get(3));
+        final FeatureColumnMapping columnToAdd = (FeatureColumnMapping) SiriusCopier.Helper.copy(columns.get(3));
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new SiriusCommand(session.getTransactionalEditingDomain()) {
 
@@ -290,8 +289,7 @@ public class DTableSynchronizerVSMWithEditorTest extends TableTestCase {
      * </UL>
      * 
      * @param surroundVSModificationByCloseAndOpen
-     *            true if the table must be close before VSM modification and
-     *            open after, false otherwise.
+     *            true if the table must be close before VSM modification and open after, false otherwise.
      */
     protected void testRefreshFeatureColumnFirstLevelSubLineMapping(boolean surroundVSModificationByCloseAndOpen) {
         final TableDescription tableDescription = find(TABLE_DESCRIPTION_ID);
@@ -323,7 +321,7 @@ public class DTableSynchronizerVSMWithEditorTest extends TableTestCase {
         }
 
         // Add 1 sub line mapping.
-        final LineMapping lineToAdd = (LineMapping) EcoreUtil.copy(lines.get(0).getAllSubLines().get(1));
+        final LineMapping lineToAdd = (LineMapping) SiriusCopier.Helper.copy(lines.get(0).getAllSubLines().get(1));
         assertEquals("Bad line to copy", "Attribut2", lineToAdd.getName());
 
         String commandName = "Add a new sub line mapping";
@@ -441,8 +439,7 @@ public class DTableSynchronizerVSMWithEditorTest extends TableTestCase {
      * Test the modification of sub line mapping in the VSM.
      * 
      * @param surroundVSModificationByCloseAndOpen
-     *            true if the table must be close before VSM modification and
-     *            open after, false otherwise.
+     *            true if the table must be close before VSM modification and open after, false otherwise.
      */
     protected void testRefreshFeatureColumnOtherLevelSubLineMapping(boolean surroundVSModificationByCloseAndOpen) {
         final TableDescription tableDescription = find(TABLE_DESCRIPTION_ID);
@@ -475,7 +472,7 @@ public class DTableSynchronizerVSMWithEditorTest extends TableTestCase {
         assertEquals("The number of sub sub line mapping is not correct", 3, lines.get(0).getAllSubLines().get(0).getAllSubLines().size());
 
         // Add 1 sub line to the first sub line of the first line.
-        final LineMapping lineToAdd = (LineMapping) EcoreUtil.copy(lines.get(0).getAllSubLines().get(0).getAllSubLines().get(0));
+        final LineMapping lineToAdd = (LineMapping) SiriusCopier.Helper.copy(lines.get(0).getAllSubLines().get(0).getAllSubLines().get(0));
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new SiriusCommand(session.getTransactionalEditingDomain()) {
 

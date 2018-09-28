@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.tests.unit.tree.tools;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
 import org.eclipse.sirius.tree.business.internal.metamodel.TreeToolVariables;
 import org.eclipse.sirius.tree.description.DescriptionFactory;
 import org.eclipse.sirius.tree.description.TreeItemContainerDropTool;
@@ -33,8 +34,7 @@ import junit.framework.TestCase;
 public class NoVariableDuplicationTest extends TestCase {
 
     /**
-     * Test that the renaming and copy of createTreeItemCreationTool not
-     * duplicates variables.
+     * Test that the renaming and copy of createTreeItemCreationTool not duplicates variables.
      */
     public void testNoVariableDuplicationInCreateTreeItemCreationTool() {
         // Create TreeItemmCreationTool
@@ -62,8 +62,7 @@ public class NoVariableDuplicationTest extends TestCase {
     }
 
     /**
-     * Test that the renaming and copy of treeItemDeletionTool not duplicates
-     * variables.
+     * Test that the renaming and copy of treeItemDeletionTool not duplicates variables.
      */
     public void testNoVariableDuplicationTreeItemDeletionTool() {
         // Create treeItemDeletionTool
@@ -91,8 +90,7 @@ public class NoVariableDuplicationTest extends TestCase {
     }
 
     /**
-     * Test that the renaming and copy of treeItemEditionTool not duplicates
-     * variables.
+     * Test that the renaming and copy of treeItemEditionTool not duplicates variables.
      */
     public void testNoVariableDuplicationInCreateTreeItemEditionTool() {
         // Create treeItemEditionTool
@@ -123,8 +121,7 @@ public class NoVariableDuplicationTest extends TestCase {
     }
 
     /**
-     * Test that the renaming and copy of treeItemDragTool not duplicates
-     * variables.
+     * Test that the renaming and copy of treeItemDragTool not duplicates variables.
      */
     public void testNoVariableDuplicationInCreateTreeItemDragTool() {
         // Create treeItemDragTool
@@ -173,7 +170,7 @@ public class NoVariableDuplicationTest extends TestCase {
 
     private void checkNoModifOncopy(EObject tool) {
         // Copy createLineTool
-        EObject copy = EcoreUtil.copy(tool);
+        EObject copy = SiriusCopier.Helper.copy(tool);
 
         assertTrue("The copy must be same that origin", EcoreUtil.equals(tool, copy));
     }
