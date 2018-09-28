@@ -91,6 +91,7 @@ h4. Changes in @org.eclipse.sirius.diagram.sequence.ui@
 h4. Changes in  @org.eclipse.sirius.common@
 
 * <span class="label label-success">Added</span> The new preference @PREF_ASK_TO_SAVE_RESOURCE_AFTER_MIGRATION@ has been added in @CommonPreferencesConstants@. If true users will be asked to save the VSM or aird if it has been automatically migrated after a user action.
+* <span class="label label-success">Added</span> The new @org.eclipse.sirius.common.tools.api.util.SiriusCopier@ has been added to provide the ability to copy an object without copying the attribute seen as id by EMF. If this id is not set by the factory or during object creation and if its concrete expected type is @String@, it is set during the copy using @org.eclipse.emf.ecore.util.EcoreUtil.generateUUID()@.
 
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@  
 

@@ -321,6 +321,11 @@
 				<code>PREF_ASK_TO_SAVE_RESOURCE_AFTER_MIGRATION</code> has been added in 
 				<code>CommonPreferencesConstants</code>. If true users will be asked to save the VSM or aird if it has been automatically migrated after a user action.
 			</li>
+			<li><span class="label label-success">Added</span> The new 
+				<code>org.eclipse.sirius.common.tools.api.util.SiriusCopier</code> has been added to provide the ability to copy an object without copying the attribute seen as id by EMF. If this id is not set by the factory or during object creation and if its concrete expected type is 
+				<code>String</code>, it is set during the copy using 
+				<code>org.eclipse.emf.ecore.util.EcoreUtil.generateUUID()</code>.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>  
