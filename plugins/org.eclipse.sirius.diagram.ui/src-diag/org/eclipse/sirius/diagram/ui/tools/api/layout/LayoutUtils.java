@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,6 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.common.core.util.Proxy;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
@@ -46,6 +45,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
@@ -75,8 +75,7 @@ import org.eclipse.swt.widgets.Shell;
 public final class LayoutUtils {
 
     /**
-     * Scale factor for width and height from diagram node size to draw2d
-     * bounds.
+     * Scale factor for width and height from diagram node size to draw2d bounds.
      */
     public static final int SCALE = 10;
 
@@ -91,9 +90,8 @@ public final class LayoutUtils {
     public static final Dimension NEW_DEFAULT_CONTAINER_DIMENSION = new Dimension(40, 40);
 
     /**
-     * The default minimum collapsed vertical Region height. The resulting
-     * collapsed size might be different as it depends on the label area size:
-     * the border size, the insets, the label font and size.
+     * The default minimum collapsed vertical Region height. The resulting collapsed size might be different as it
+     * depends on the label area size: the border size, the insets, the label font and size.
      */
     public static final int COLLAPSED_VERTICAL_REGION_HEIGHT = 28;
 
@@ -197,8 +195,8 @@ public final class LayoutUtils {
     }
 
     /**
-     * Remove all children that has been added since the last call of
-     * {@link #prepareFigureForDummyAdds(IFigure)} for the specified figure.
+     * Remove all children that has been added since the last call of {@link #prepareFigureForDummyAdds(IFigure)} for
+     * the specified figure.
      * 
      * @param figure
      *            the figure.
@@ -246,8 +244,8 @@ public final class LayoutUtils {
     }
 
     /**
-     * Initializes the layout of the diagram of <code>target</code> with the
-     * layout of the the diagram <code>source</code>.
+     * Initializes the layout of the diagram of <code>target</code> with the layout of the the diagram
+     * <code>source</code>.
      * 
      * @param source
      *            the source diagram.
@@ -373,23 +371,23 @@ public final class LayoutUtils {
             final Node nodeTarget = (Node) targetView;
             final LayoutConstraint sourceConstraint = nodeSource.getLayoutConstraint();
             if (sourceConstraint != null) {
-                nodeTarget.setLayoutConstraint(EcoreUtil.copy(sourceConstraint));
+                nodeTarget.setLayoutConstraint(SiriusCopier.Helper.copy(sourceConstraint));
             }
         } else if (sourceView instanceof Edge && targetView instanceof Edge) {
             final Edge edgeSource = (Edge) sourceView;
             final Edge edgeTarget = (Edge) targetView;
             if (edgeSource.getBendpoints() != null) {
-                edgeTarget.setBendpoints(EcoreUtil.copy(edgeSource.getBendpoints()));
+                edgeTarget.setBendpoints(SiriusCopier.Helper.copy(edgeSource.getBendpoints()));
             }
             if (edgeSource.getSourceAnchor() != null) {
-                edgeTarget.setSourceAnchor(EcoreUtil.copy(edgeSource.getSourceAnchor()));
+                edgeTarget.setSourceAnchor(SiriusCopier.Helper.copy(edgeSource.getSourceAnchor()));
             }
             if (edgeSource.getTargetAnchor() != null) {
-                edgeTarget.setTargetAnchor(EcoreUtil.copy(edgeSource.getTargetAnchor()));
+                edgeTarget.setTargetAnchor(SiriusCopier.Helper.copy(edgeSource.getTargetAnchor()));
             }
             final RoutingStyle rstyle = (RoutingStyle) edgeSource.getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
             if (rstyle != null) {
-                edgeTarget.getStyles().add(EcoreUtil.copy(rstyle));
+                edgeTarget.getStyles().add(SiriusCopier.Helper.copy(rstyle));
             }
         }
     }
