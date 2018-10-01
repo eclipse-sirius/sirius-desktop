@@ -8,6 +8,10 @@ h2(#sirius4.1.10). Changes in Sirius 4.1.10
 
 Sirius 4.1.10 is a service release with only bugfixes.
 
+h3. Developer-Visible Changes
+
+* <span class="label label-info">Modified</span> The class @SiriusFormatDataManagerForSemanticElements@ has been moved from package @org.eclipse.sirius.diagram.ui.tools.internal.format.semantic@ to @org.eclipse.sirius.diagram.ui.tools.api.format.semantic@.
+
 h2(#sirius4.1.9). Changes in Sirius 4.1.9
 
 Sirius 4.1.9 is a service release with only bugfixes.

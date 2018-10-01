@@ -14,6 +14,11 @@
 				<ol style="list-style: disc;">
 					<li>
 						<a href="#sirius4.1.10">Changes in Sirius 4.1.10</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
+							</li>
+						</ol>
 					</li>
 					<li>
 						<a href="#sirius4.1.9">Changes in Sirius 4.1.9</a>
@@ -25,7 +30,7 @@
 						<a href="#sirius4.1.7">Changes in Sirius 4.1.7</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#UserVisibleChanges">User-Visible Changes</a>
@@ -42,7 +47,7 @@
 								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -53,7 +58,7 @@
 								<a href="#UserVisibleChanges3">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -64,7 +69,7 @@
 								<a href="#UserVisibleChanges4">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges5">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -72,7 +77,7 @@
 						<a href="#sirius4.1.3">Changes in Sirius 4.1.3</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#DeveloperVisibleChanges5">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges6">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -83,7 +88,7 @@
 								<a href="#UserVisibleChanges5">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges6">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges7">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -94,7 +99,7 @@
 								<a href="#UserVisibleChanges6">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges7">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges8">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -108,7 +113,7 @@
 								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges8">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges9">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -122,7 +127,7 @@
 								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges9">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges10">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -136,7 +141,7 @@
 								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges10">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges11">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -150,7 +155,7 @@
 								<a href="#SpecifierVisibleChanges5">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges11">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges12">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -162,12 +167,20 @@
 		</p>
 		<h2 id="sirius4.1.10">Changes in Sirius 4.1.10</h2>
 		<p>Sirius 4.1.10 is a service release with only bugfixes.</p>
+		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-info">Modified</span> The class 
+				<code>SiriusFormatDataManagerForSemanticElements</code> has been moved from package 
+				<code>org.eclipse.sirius.diagram.ui.tools.internal.format.semantic</code> to 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.format.semantic</code>.
+			</li>
+		</ul>
 		<h2 id="sirius4.1.9">Changes in Sirius 4.1.9</h2>
 		<p>Sirius 4.1.9 is a service release with only bugfixes.</p>
 		<h2 id="sirius4.1.8">Changes in Sirius 4.1.8</h2>
 		<p>Sirius 4.1.8 is a service release with only bugfixes.</p>
 		<h2 id="sirius4.1.7">Changes in Sirius 4.1.7</h2>
-		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
 		<h4 id="Migrations">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A new class 
@@ -206,7 +219,7 @@
 				<em>Force Refresh</em> option of a tool is enabled in your VSM, only the current representation is refreshed when the tool is applied. Before this version, all open representations were refreshed.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
 		<h4 id="Migrations2">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration has been added to fix diagram with edge labels corrupted (see 
@@ -221,7 +234,7 @@
 				<a href="./user/general/Modeling%20Project.html#Migration">automatic migration</a> of the aird file.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
 		<h4 id="Migrations3">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration is added in this version to fix the alignment of the text in notes (as explained in user visible changes). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
@@ -245,7 +258,7 @@
 				<i>In case of multi-selection, the overlap check is done in the current context of existing border nodes and not in the context of location of border nodes after each straighten edges.</i>).
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges5">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
@@ -255,7 +268,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius4.1.3">Changes in Sirius 4.1.3</h2>
-		<h3 id="DeveloperVisibleChanges5">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges6">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in 
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>
@@ -312,7 +325,7 @@ SWTBotUtils.waitAllUiEvents();
 			<br/>
 			<img border="0" src="./images/PreferencePageMaxTabName.png"/> 
 		</p>
-		<h3 id="DeveloperVisibleChanges6">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges7">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManagerWithMapping</code> class has  been added to handle copy/paste format with mapping information when an element target of a format pasting has many source diagram format corresponding to its key. In this case, we use the mapping information to get the more precise data format. And if no result matched, then we return the first found by using the key.
@@ -347,7 +360,7 @@ SWTBotUtils.waitAllUiEvents();
 		<ul>
 			<li><span class="label label-info">Modified</span>The &#8220;straighten to&#8221; actions were previously disabled when an edge is connected to border nodes that have several edges. It is now allowed.</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges7">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges8">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.table.business.api.helper.TableHelper.getEStructuralFeature(DLine, DColumn)</code> method has been added to retrieve the EStructuralFeature associated to a table column.
@@ -470,7 +483,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.diagram.ui.formatDataManager</code>. The deprecated extension point will be removed in the next 5.0 Sirius major release. Several classes associated with this deprecated extension point are also deprecated (see Developer-Visible Changes for details).
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges8">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges9">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> As the first step to save the DRepresentation in its own resource, 
 				<code>org.eclipse.sirius.viewpoint.DView.getOwnedRepresentationDescriptors()</code> has been added as a wrapper of the 
@@ -958,7 +971,7 @@ SWTBotUtils.waitAllUiEvents();
 			</li>
 			<li><span class="label label-info">Modified</span> The variable under VariableFilter, previously named &#8220;Variable&#8221;, is renamed to &#8220;Select Model Element Variable&#8221;. It is functionally equivalent.</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges9">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges10">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> It is now possible to provide a full customized tab-bar by implementing the 
 				<code>ITabbarContributor</code> through the 
@@ -1440,7 +1453,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>IPermissionAuthority</code>) of the potential to delete objects. This is the reverse order of what was done before, and can have performance impacts if the precondition is slow. The specifier will to take care to ensure a good performance for the precondition expression of the delete tool.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges10">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges11">Developer-Visible Changes</h3>
 		<h4 id="Partialsupportforinternationalization">Partial support for internationalization</h4>
 		<p>Sirius 3.1 introduces partial support for internationalization: all literal strings from the runtime part of Sirius are now externalized and can be localized by third parties by providing the appropriate &#8220;language packs&#8221; as OSGi fragments. Note that this does not concern the VSM editor&#8217;s UI, the VSMs themselves, or the parts of the UI inherited from Eclipse/EMF/GEF/GMF and other libraries and frameworks used by Sirius.</p>
 		<p>Some API changes were required to enable this. While technically breaking changes if interpreting strictly the OSGi versioning rules, the major version number of the impacted bundles was not incremented as the changes only concern classes that should not impact the vast majority of users. Most breaking changes concern the plug-in/activator classes from each bundle. They are:</p>
@@ -1997,7 +2010,7 @@ SWTBotUtils.waitAllUiEvents();
 				<em>EStructuralFeature</em> (inherited or with same name).
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges11">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges12">Developer-Visible Changes</h3>
 		<p>The most important and impacting changes in this release are (details below in plug-in specific sections):</p>
 		<ul>
 			<li><span class="label label-success">Added</span>  The new extension point 
