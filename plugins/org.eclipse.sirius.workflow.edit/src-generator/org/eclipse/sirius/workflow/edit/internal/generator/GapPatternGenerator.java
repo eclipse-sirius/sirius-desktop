@@ -1,9 +1,11 @@
 /**
  * Copyright (c) 2016, 2018 Obeo.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
  *    Obeo - initial API and implementation
@@ -85,10 +87,12 @@ public final class GapPatternGenerator {
     private static StringBuilder appendCopyright(StringBuilder builder) {
         builder.append("/**").append(System.lineSeparator()); //$NON-NLS-1$
         builder.append(" * Copyright (c) 2018 Obeo.").append(System.lineSeparator()); //$NON-NLS-1$
-        builder.append(" * All rights reserved. This program and the accompanying materials").append(System.lineSeparator()); //$NON-NLS-1$
-        builder.append(" * are made available under the terms of the Eclipse Public License v1.0").append(System.lineSeparator()); //$NON-NLS-1$
+        builder.append(" * This program and the accompanying materials").append(System.lineSeparator()); //$NON-NLS-1$
+        builder.append(" * are made available under the terms of the Eclipse Public License 2.0").append(System.lineSeparator()); //$NON-NLS-1$
         builder.append(" * which accompanies this distribution, and is available at").append(System.lineSeparator()); //$NON-NLS-1$
-        builder.append(" * http://www.eclipse.org/legal/epl-v10.html").append(System.lineSeparator()); //$NON-NLS-1$
+        builder.append(" * https://www.eclipse.org/legal/epl-2.0/").append(System.lineSeparator()); //$NON-NLS-1$
+        builder.append(" *").append(System.lineSeparator()); //$NON-NLS-1$
+        builder.append(" * SPDX-License-Identifier: EPL-2.0").append(System.lineSeparator()); //$NON-NLS-1$
         builder.append(" *").append(System.lineSeparator()); //$NON-NLS-1$
         builder.append(" * Contributors:").append(System.lineSeparator()); //$NON-NLS-1$
         builder.append(" *    Obeo - initial API and implementation").append(System.lineSeparator()); //$NON-NLS-1$
