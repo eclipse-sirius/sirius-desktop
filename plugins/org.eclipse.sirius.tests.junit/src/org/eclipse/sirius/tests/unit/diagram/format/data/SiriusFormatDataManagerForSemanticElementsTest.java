@@ -20,10 +20,10 @@ import org.eclipse.sirius.diagram.formatdata.EdgeFormatData;
 import org.eclipse.sirius.diagram.formatdata.NodeFormatData;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.FormatHelper;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.ConfigurationFactory;
+import org.eclipse.sirius.diagram.ui.tools.api.format.semantic.SiriusFormatDataManagerForSemanticElements;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.AdvancedSiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.SemanticEdgeFormatDataKey;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.SemanticNodeFormatDataKey;
-import org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.SiriusFormatDataManagerForSemanticElements;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 
 /**
