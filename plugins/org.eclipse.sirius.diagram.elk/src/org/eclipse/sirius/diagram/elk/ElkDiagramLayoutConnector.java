@@ -403,7 +403,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         EditPartQuery editPartQuery = new EditPartQuery(layoutRootPart);
         DiagramDescription diagramDescription = editPartQuery.getDiagramDescription();
 
-        if (diagramDescription != null) {
+        if (diagramDescription != null && diagramDescription.getLayout() instanceof CustomLayoutConfiguration) {
             final CustomLayoutConfiguration layout = (CustomLayoutConfiguration) diagramDescription.getLayout();
             topNode.setProperty(CoreOptions.ALGORITHM, layout.getId().trim());
             EList<LayoutOption> layoutOptions = layout.getLayoutOptions();
