@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -45,12 +45,15 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.ContentHandler;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -60,6 +63,8 @@ import org.eclipse.emf.ecore.resource.URIHandler;
 import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
 import org.eclipse.emf.ecore.resource.impl.FileURIHandlerImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EContentsEList;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -139,6 +144,7 @@ import org.eclipse.team.internal.core.streams.ProgressMonitorInputStream;
 
 import com.google.common.base.Functions;
 import com.google.common.collect.Iterables;
+import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multiset;
@@ -176,9 +182,18 @@ public class SiriusDebugView extends AbstractDebugView {
             return getTextForConnection((ConnectionEditPart) obj);
         } else if (getRepresentationDescriptor(obj) != null) {
             return obj + "\n\n" + getTextForRepDescriptor(getRepresentationDescriptor(obj));
+        } else if (obj instanceof EObject) {
+            return getEObjectDetails((EObject) obj);
         } else {
             return "Selection type not supported: " + obj;
         }
+    }
+
+    private String getEObjectDetails(EObject obj) {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Proxy: ").append(((InternalEObject) obj).eIsProxy()).append("\n");
+        sb.append("Proxy URI: ").append(((InternalEObject) obj).eProxyURI()).append("\n");
+        return sb.toString();
     }
 
     private DRepresentationDescriptor getRepresentationDescriptor(Object obj) {
@@ -470,16 +485,59 @@ public class SiriusDebugView extends AbstractDebugView {
         // addSiriusSelectionAction();
         // addExtractExpressionsAction();
         // addLoadResourceWithProgressAction();
-        addShowPayloadAccessLogAction();
-        addClearPayloadAccessLogAction();
-        addShowResourceSetTopologyAction();
-        addShowAdaptersAction();
-        addShowSessionStructureAction();
-        addShowResourceInformationAction();
-        addShowSiriusInverseReferences();
+        // addShowPayloadAccessLogAction();
+        // addClearPayloadAccessLogAction();
+        // addShowResourceSetTopologyAction();
+        // addShowAdaptersAction();
+        // addShowSessionStructureAction();
+        // addShowResourceInformationAction();
+        // addShowSiriusInverseReferences();
         // addShowCrossReferencerMap();
-        addDeferredChangeAction();
-        addDeferredUnrelatedChangeAction();
+        // addDeferredChangeAction();
+        // addDeferredUnrelatedChangeAction();
+        addListProxiesAction();
+    }
+
+    private void addListProxiesAction() {
+        addAction("List Proxies", () -> {
+            StringBuilder out = new StringBuilder();
+            Session.of(getCurrentEObject()).ifPresent(session -> {
+                Multimap<URI, EStructuralFeature.Setting> proxies = LinkedHashMultimap.create();
+                for (Resource res : session.getTransactionalEditingDomain().getResourceSet().getResources()) {
+                    URI resURI = res.getURI();
+                    TreeIterator<EObject> iter = res.getAllContents();
+                    while (iter.hasNext()) {
+                        EObject source = iter.next();
+                        for (EContentsEList.FeatureIterator<EObject> featureIterator = (EContentsEList.FeatureIterator<EObject>) source.eCrossReferences().iterator(); featureIterator.hasNext();) {
+                            EObject target = featureIterator.next();
+                            EReference eReference = (EReference) featureIterator.feature();
+                            getProxyURI(target).ifPresent(uri -> {
+                                Setting setting = ((InternalEObject) source).eSetting(eReference);
+                                proxies.put(resURI, setting);
+                            });
+                        }
+                    }
+                }
+                for (URI resURI : proxies.keySet()) {
+                    out.append("Proxies in ").append(resURI.toString()).append(":\n");
+                    for (Setting setting : proxies.get(resURI)) {
+                        out.append("* ").append(EcoreUtil.getURI(setting.getEObject())).append(" --(").append(setting.getEStructuralFeature().getName()).append(")--> ")
+                                .append(getProxyURI((EObject) setting.get(false)).get()).append("\n");
+                    }
+                    out.append("\n");
+                }
+            });
+            setText(out.toString());
+        });
+    }
+
+    private Optional<URI> getProxyURI(EObject obj) {
+        InternalEObject ieo = (InternalEObject) obj;
+        if (ieo.eIsProxy()) {
+            return Optional.of(ieo.eProxyURI());
+        } else {
+            return Optional.empty();
+        }
     }
 
     private void addDeferredChangeAction() {
