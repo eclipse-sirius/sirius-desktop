@@ -48,6 +48,7 @@ public class TechnicalUidMigrationParticipant extends AbstractRepresentationsFil
         if (Version.parseVersion(loadedVersion).compareTo(MIGRATION_VERSION) < 0) {
             resource.getAllContents().forEachRemaining(eObject -> {
                 if (eObject instanceof IdentifiedElement) {
+                    migrationOccured = true;
                     IdentifiedElement idElem = (IdentifiedElement) eObject;
                     String xmiid = resource.getID(eObject);
                     idElem.setUid(xmiid);
