@@ -33,7 +33,7 @@
 			<em>Force Refresh</em> flag to force Sirius to perform a complete refresh of the whole diagram after the tool is executed. This ensures a perfect synchronization of the graphical representation with the state of the underlying model, possibly at the cost of performance and reactivity on big diagrams. The refresh will be effective only on the current diagram and not on all opened diagrams.
 		</p>
 		<p>
-			<strong>Selection after tool execution.</strong> The 
+			<strong id="selectionAfterToolExecution">Selection after tool execution.</strong> The 
 			<em>Elements to select</em> and 
 			<em>Inverse Selection Order</em> flags can be used to defined what is selected in the active editor after tool execution. 
 			<br/>By default, only the top level created elements are selected.
@@ -75,6 +75,27 @@
 						<code>inverseSelectionOrder</code> is ignored in this context.
 					</li>
 				</ul>
+			</li>
+		</ul>
+		<p>Some services exist natively in Sirius and can be used to contribute new select all actions for diagram. These services are all in the class 
+			<code>org.eclipse.sirius.diagram.ui.tools.api.interpreter.StandardDiagramServices</code>:
+		</p>
+		<ul>
+			<li>
+				<code>stdGetViewsRepresentingSameEType(DSemanticDiagram, List&lt;DSemanticDecorator&gt;)</code>: Return the list of 
+				<code>DSemanticDecorator</code> representing semantic element with same EType as the current selected diagram elements.
+			</li>
+			<li>
+				<code>stdGetViewsWithSameMapping(DSemanticDiagram, List&lt;DSemanticDecorator&gt;)</code>: Return the list of 
+				<code>DSemanticDecorator</code> having the same mappings as the current selected diagram elements.
+			</li>
+			<li>
+				<code>stdGetViewsRepresentingSelectedType(DSemanticDiagram)</code>: Return the list of 
+				<code>DSemanticDecorator</code> in the current diagram representing semantic element having the EType provided by the end-user through a dialog box. This dialog box can be improved. There is currently no completion, neither validation.
+			</li>
+			<li>
+				<code>stdGetViewsOfExpression(DSemanticDiagram)</code>: Return the list of 
+				<code>DSemanticDecorator</code> corresponding to the evaluation of an expression written by the end-user in a dialog box. This dialog box can be improved. There is currently no completion, neither validation.
 			</li>
 		</ul>
 		<p>

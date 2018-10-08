@@ -31,6 +31,7 @@ Now, it is possible to:
 * add new menus and actions in a new group of an existing menu (action MyActionF1 and menu MySpecificPopupMenu2 for example) 
 * add new menus and actions in an existing group of an existing menu (action MyActionH1 and menu MySpecificPopupMenu3 for example):
 !images/popupMenuAfter.png!
+* add new actions in the "Select All" menu of the "tab-bar":user/diagrams/Diagrams.html#ref_tabbar. Some services have been directly provided in Sirius in class @org.eclipse.sirius.diagram.ui.tools.api.interpreter.StandardDiagramServices@: see "org.eclipse.sirius.diagram.ui developer visible changes":#DeveloperVisibleChanges for the list of services or chapter "Selection after tool execution":specifier/general/ToolsSpecification.html#selectionAfterToolExecution of documentation to see how to use them.
 Refer to the "specifier documentation":specifier/diagrams/Diagrams.html#group for details.
 * <span class="label label-success">Modified</span> Specifier can now hide header column of Edition Table (the left-most column of the table). It is possible by specifying value -1 in the _Initial Header Column Width_ field of Edition table representation. See "the documentation":specifier/tables/Tables.html#edition_tables for details. 
 
@@ -53,6 +54,11 @@ h4. Changes in @org.eclipse.sirius.ui@
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
+* <span class="label label-success">Added</span> Some specific services exist natively in Sirius and can be used to contribute new select all actions. Theses services are all in the class @org.eclipse.sirius.diagram.ui.tools.api.interpreter.StandardDiagramServices@:
+** @stdGetViewsRepresentingSameEType(DSemanticDiagram, List<DSemanticDecorator>)@: Return the list of @DSemanticDecorator@ representing semantic element with same EType as the current selected diagram elements.
+** @stdGetViewsWithSameMapping(DSemanticDiagram, List<DSemanticDecorator>)@: Return the list of @DSemanticDecorator@ having the same mappings as the current selected diagram elements.
+** @stdGetViewsRepresentingSelectedType(DSemanticDiagram)@: Return the list of @DSemanticDecorator@ in the current diagram representing semantic element having the EType provided by the end-user through a dialog box. This dialog box can be improved. There is currently no completion, neither validation.
+** @stdGetViewsOfExpression(DSemanticDiagram)@: Return the list of @DSemanticDecorator@ corresponding to the evaluation of an expression written by the end-user in a dialog box. This dialog box can be improved. There is currently no completion, neither validation.
 * <span class="label label-info">Modified</span> The interface @org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
 * <span class="label label-info">Modified</span> The interface @org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure@ has been moved to @org.eclipse.sirius.ext.draw2d.figure@ package.
 * <span class="label label-info">Modified</span> The interface @org.eclipse.sirius.diagram.ui.tools.api.figure.ITransparentFigure@ has been moved to @org.eclipse.sirius.ext.draw2d.figure@ package.

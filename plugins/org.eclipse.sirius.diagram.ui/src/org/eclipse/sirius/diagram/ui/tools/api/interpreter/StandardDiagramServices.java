@@ -68,20 +68,20 @@ public class StandardDiagramServices {
     }
 
     /**
-     * Return the list of DSemanticDecorator having the same mappings as <code>selectedViews</code> in the
+     * Return the list of DSemanticDecorator having the same mappings as <code>selectedDiagramElements</code> in the
      * <code>currentDiagram</code>.
      * 
      * @param currentDiagram
      *            The current {@link DSemanticDiagram}
-     * @param selectedViews
-     *            The selected views. If there are several selected views all mappings associated to this views will be
+     * @param selectedDiagramElements
+     *            The selected views. If there are several selected diagram elements all mappings associated to them will be
      *            considered.
-     * @return A list of DSemanticDecorator having the same mappings as already selected views.
+     * @return A list of DSemanticDecorator having the same mappings as already selected diagram elements.
      */
-    public List<DSemanticDecorator> stdGetViewsWithSameMapping(DSemanticDiagram currentDiagram, List<DSemanticDecorator> selectedViews) {
+    public List<DSemanticDecorator> stdGetViewsWithSameMapping(DSemanticDiagram currentDiagram, List<DSemanticDecorator> selectedDiagramElements) {
         List<DSemanticDecorator> result = new ArrayList<>();
         Set<DiagramElementMapping> mappingsToSelect = new HashSet<>();
-        for (DSemanticDecorator dSemanticDecorator : selectedViews) {
+        for (DSemanticDecorator dSemanticDecorator : selectedDiagramElements) {
             if (dSemanticDecorator instanceof DDiagramElement) {
                 mappingsToSelect.add(((DDiagramElement) dSemanticDecorator).getDiagramElementMapping());
             }
@@ -95,20 +95,19 @@ public class StandardDiagramServices {
     }
 
     /**
-     * Return the list of DSemanticDecorator representing semantic element with same EType as <code>selectedViews</code>
+     * Return the list of DSemanticDecorator representing semantic element with same EType as <code>selectedDiagramElements</code>
      * in the <code>currentDiagram</code>.
      * 
      * @param currentDiagram
      *            The current {@link DSemanticDiagram}
-     * @param selectedViews
-     *            The selected views. If there are several selected views all EType of semantic element of this views
-     *            will be considered.
+     * @param selectedDiagramElements
+     *            The selected diagram elements. If there are several selected diagram elements all EType of semantic element of these diagram elements will be considered.
      * @return A list of DSemanticDecorator having the same EType as already selected views.
      */
-    public List<DSemanticDecorator> stdGetViewsRepresentingSameEType(DSemanticDiagram currentDiagram, List<DSemanticDecorator> selectedViews) {
+    public List<DSemanticDecorator> stdGetViewsRepresentingSameEType(DSemanticDiagram currentDiagram, List<DSemanticDecorator> selectedDiagramElements) {
         List<DSemanticDecorator> result = new ArrayList<>();
         Set<EClass> eClassToSelect = new HashSet<>();
-        for (DSemanticDecorator dSemanticDecorator : selectedViews) {
+        for (DSemanticDecorator dSemanticDecorator : selectedDiagramElements) {
             if (dSemanticDecorator instanceof DDiagramElement) {
                 eClassToSelect.add(((DDiagramElement) dSemanticDecorator).getTarget().eClass());
             }

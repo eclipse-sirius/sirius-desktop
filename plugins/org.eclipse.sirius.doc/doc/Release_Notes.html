@@ -126,7 +126,16 @@
 		</ul>
 		<p>
 			<img border="0" src="images/popupMenuAfter.png"/>
-			<br/>Refer to the 
+		</p>
+		<ul>
+			<li>add new actions in the &#8220;Select All&#8221; menu of the 
+				<a href="user/diagrams/Diagrams.html#ref_tabbar">tab-bar</a>. Some services have been directly provided in Sirius in class 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.interpreter.StandardDiagramServices</code>: see 
+				<a href="#DeveloperVisibleChanges">org.eclipse.sirius.diagram.ui developer visible changes</a> for the list of services or chapter 
+				<a href="specifier/general/ToolsSpecification.html#selectionAfterToolExecution">Selection after tool execution</a> of documentation to see how to use them.
+			</li>
+		</ul>
+		<p>Refer to the 
 			<a href="specifier/diagrams/Diagrams.html#group">specifier documentation</a> for details.
 		</p>
 		<ul>
@@ -185,6 +194,27 @@
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> Some specific services exist natively in Sirius and can be used to contribute new select all actions. Theses services are all in the class 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.interpreter.StandardDiagramServices</code>:
+				<ul>
+					<li>
+						<code>stdGetViewsRepresentingSameEType(DSemanticDiagram, List&lt;DSemanticDecorator&gt;)</code>: Return the list of 
+						<code>DSemanticDecorator</code> representing semantic element with same EType as the current selected diagram elements.
+					</li>
+					<li>
+						<code>stdGetViewsWithSameMapping(DSemanticDiagram, List&lt;DSemanticDecorator&gt;)</code>: Return the list of 
+						<code>DSemanticDecorator</code> having the same mappings as the current selected diagram elements.
+					</li>
+					<li>
+						<code>stdGetViewsRepresentingSelectedType(DSemanticDiagram)</code>: Return the list of 
+						<code>DSemanticDecorator</code> in the current diagram representing semantic element having the EType provided by the end-user through a dialog box. This dialog box can be improved. There is currently no completion, neither validation.
+					</li>
+					<li>
+						<code>stdGetViewsOfExpression(DSemanticDiagram)</code>: Return the list of 
+						<code>DSemanticDecorator</code> corresponding to the evaluation of an expression written by the end-user in a dialog box. This dialog box can be improved. There is currently no completion, neither validation.
+					</li>
+				</ul>
+			</li>
 			<li><span class="label label-info">Modified</span> The interface 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc</code> has been moved to 
 				<code>org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures</code> package.
