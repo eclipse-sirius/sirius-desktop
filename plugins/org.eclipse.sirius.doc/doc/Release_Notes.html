@@ -80,10 +80,8 @@
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> A new preference has been added in the Sirius preference panel. It allows Sirius to ask the user if he wants to save session resources after an automatic migration. If the new preference is ticked, the pop-up will only appear for session opening caused by a direct action of the user (i.e. opening a diagram or unfolding the resources in the model explorer). You can refer to the 
-				<a href="user/general/Modeling%20Project.html#Migration">user documentation </a> for more details. 
+				<a href="user/general/Modeling%20Project.html#Migration">user documentation </a> for more details.
 			</li>
-			<li><span class="label label-info">Modified</span> The tool &#8220;Link Note&#8221;, introduced in Sirius 6.0.0, has been renamed into &#8220;Representation Link&#8221;.</li>
-			<li><span class="label label-success">Added</span> A new preference has been added in the Sirius preference panel. It allows Sirius to ask the user if he wants to save session resources after an automatic migration. If the new preference is ticked, the pop-up will only appear for session opening caused by a direct action of the user (i.e. opening a diagram or unfolding the resources in the model explorer).</li>
 			<li><span class="label label-success">Added</span> On sequence diagrams, it is now possible to add vertical blank spaces on standard edition mode by dragging the mouse anywhere in the canvas with the Ctrl+Shift keys pressed.  This 
 				<a href="user/sequences/Sequence%20Diagrams.html#insert_vertical_blank_space">feature:</a> was here since version 6.0.0 but was only accessible through the ruler.
 			</li>
@@ -103,10 +101,13 @@
 		<p>
 			<img border="0" src="user/diagrams/images/show_hide_mode_tabbar_activate.png"/>
 		</p>
+		<ul>
+			<li><span class="label label-info">Modified</span> The tool &#8220;Link Note&#8221;, introduced in Sirius 6.0.0, has been renamed into &#8220;Representation Link&#8221;.</li>
+		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> 
-				<a href="specifier/workflows/Workflows.html">Initial documentation</a> has been added for the &#8220;Workflow&#8221; feature introduced in 6.0.0 (which is still experimental). 
+				<a href="specifier/workflows/Workflows.html">Initial documentation</a> has been added for the &#8220;Workflow&#8221; feature introduced in 6.0.0 (which is still experimental).
 			</li>
 			<li><span class="label label-success">Added</span> The contribution of 
 				<code>PopupMenu</code> in diagram has been improved. It is now possible to define 
@@ -121,7 +122,7 @@
 		</p>
 		<ul>
 			<li>group actions (actions in MySpecificPopupMenu2 for example),</li>
-			<li>add new menus and actions in a new group of an existing menu (action MyActionF1 and menu MySpecificPopupMenu2 for example) </li>
+			<li>add new menus and actions in a new group of an existing menu (action MyActionF1 and menu MySpecificPopupMenu2 for example)</li>
 			<li>add new menus and actions in an existing group of an existing menu (action MyActionH1 and menu MySpecificPopupMenu3 for example):</li>
 		</ul>
 		<p>
@@ -139,9 +140,9 @@
 			<a href="specifier/diagrams/Diagrams.html#group">specifier documentation</a> for details.
 		</p>
 		<ul>
-			<li><span class="label label-success">Modified</span> Specifier can now hide header column of Edition Table (the left-most column of the table). It is possible by specifying value -1 in the 
+			<li><span class="label label-info">Modified</span> Specifier can now hide header column of Edition Table (the left-most column of the table). It is possible by specifying value -1 in the 
 				<em>Initial Header Column Width</em> field of Edition table representation. See 
-				<a href="specifier/tables/Tables.html#edition_tables">the documentation</a> for details. 
+				<a href="specifier/tables/Tables.html#edition_tables">the documentation</a> for details.
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
@@ -160,14 +161,19 @@
 					</li>
 				</ul>
 			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.migrationHandler</code> extension point has been added. It allows to contribute migration process, mainly handle migration options.
+			</li>
 			<li><span class="label label-info">Modified</span> Upgraded ELK version from 0.3.0 to 0.4.0, see the 
 				<a href="https://projects.eclipse.org/projects/modeling.elk/releases/0.4.0">ELK documentation</a> for the list of changes in that version.
 			</li>
 			<li><span class="label label-info">Modified</span> The Acceleo version has been changed from 3.7.2 to 3.7.4.</li>
-			<li><span class="label label-success">Added</span> 
-				<code>org.eclipse.sirius.migrationHandler</code> extension point has been added. It allows to contribute migration process, mainly handle migration options.
+			<li><span class="label label-info">Modified</span> The class 
+				<code>SiriusFormatDataManagerForSemanticElements</code> has been moved from package 
+				<code>org.eclipse.sirius.diagram.ui.tools.internal.format.semantic</code> to 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.format.semantic</code>.
 			</li>
-			<li><span class="label label-success">Removed</span> 
+			<li><span class="label label-danger">Removed</span> 
 				<em>EOperations</em> 
 				<code>checkRule</code> and 
 				<code>getMessage</code> of 
@@ -175,11 +181,6 @@
 				<em>EClass</em> have been removed from 
 				<code>viewpoint</code> metamodel. These operations were deprecated and useless since we used method of 
 				<code>org.eclipse.sirius.business.internal.metamodel.description.validation.operations.ValidationRuleOperations</code> class.
-			</li>
-			<li><span class="label label-info">Modified</span> The class 
-				<code>SiriusFormatDataManagerForSemanticElements</code> has been moved from package 
-				<code>org.eclipse.sirius.diagram.ui.tools.internal.format.semantic</code> to 
-				<code>org.eclipse.sirius.diagram.ui.tools.api.format.semantic</code>.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
@@ -363,7 +364,7 @@
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
-			<code>org.eclipse.sirius.tests.swtbot.support</code>  
+			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> The new method 
