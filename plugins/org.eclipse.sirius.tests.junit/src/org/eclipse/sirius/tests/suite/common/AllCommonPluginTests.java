@@ -123,6 +123,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.DDiagramSetRemovalMigrati
 import org.eclipse.sirius.tests.unit.diagram.migration.DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.DRepresentationContainerRemovalMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.DecorationDescriptionImageExpressionMigrationTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.DeleteMultipleConnectorStyleMigrationParticipantTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.DiagramSplitMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.FontFormatMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.FontStyleForDNodeListElementMigrationTest;
@@ -240,6 +241,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(NoteAttachmentMigrationTest.class);
         suite.addTestSuite(DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationTest.class);
         suite.addTestSuite(DecorationDescriptionImageExpressionMigrationTest.class);
+        suite.addTestSuite(DeleteMultipleConnectorStyleMigrationParticipantTest.class);
         suite.addTestSuite(RepairGMFbendpointsMigrationParticipantTest.class);
         suite.addTestSuite(TransientLayerMigrationTest.class);
         suite.addTestSuite(TechnicalUidMigrationTest.class);

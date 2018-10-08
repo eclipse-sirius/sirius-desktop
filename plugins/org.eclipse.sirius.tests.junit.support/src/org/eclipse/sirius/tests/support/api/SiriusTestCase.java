@@ -131,26 +131,18 @@ import junit.framework.TestCase;
  */
 public abstract class SiriusTestCase extends TestCase {
 
-    /**
-     * Type of the URI.
-     */
+    /** Type of the URI. */
     public enum ResourceURIType {
-        /**
-         * URI of type platform.
-         */
+        /** URI of type platform. */
         RESOURCE_PLATFORM_URI,
-        /**
-         * URI of type plugin.
-         */
+        /** URI of type plugin. */
         RESOURCE_PLUGIN_URI
     }
 
     /** Initialization error message. */
     public static final String INIT_ERROR_MSG = "An error occurs during tests initialization";
 
-    /**
-     * name of the project created in the test workspace.
-     */
+    /** name of the project created in the test workspace.*/
     protected static final String TEMPORARY_PROJECT_NAME = "DesignerTestProject";
 
     /**
@@ -161,24 +153,16 @@ public abstract class SiriusTestCase extends TestCase {
 
     private static final String DOT = ".";
 
-    /**
-     * The local session.
-     */
+    /** The local session. */
     protected Session session;
 
-    /**
-     * The model request interpreter.
-     */
+    /** The model request interpreter. */
     protected IInterpreter interpreter;
 
-    /**
-     * The model accessor.
-     */
+    /** The model accessor. */
     protected ModelAccessor accessor;
 
-    /**
-     * Semantic model.
-     */
+    /** Semantic model. */
     protected EObject semanticModel;
 
     /**
@@ -186,54 +170,42 @@ public abstract class SiriusTestCase extends TestCase {
      */
     protected boolean createModelingProject;
 
-    /**
-     * Registered viewpoints.
-     */
+    /** Registered viewpoints. */
     protected final Set<Viewpoint> viewpoints = new LinkedHashSet<Viewpoint>();
 
-    /**
-     * The viewpoint selection callback to use.
-     */
+    /** The viewpoint selection callback to use. */
     protected Callback selectionCallback = new ViewpointSelectionCallback();
 
-    /**
-     * The reported errors.
-     */
+    /** The reported errors. */
     protected final Multimap<String, IStatus> errors = LinkedHashMultimap.create();
 
-    /**
-     * The reported warnings.
-     */
+    /** The reported warnings. */
     protected final Multimap<String, IStatus> warnings = LinkedHashMultimap.create();
+
+    /** The reported infos. */
+    protected final Multimap<String, IStatus> infos = LinkedHashMultimap.create();
 
     /**
      * A default progress monitor test code can use when one is needed.
      */
     protected IProgressMonitor defaultProgress = new NullProgressMonitor();
 
-    /**
-     * The unchaught exceptions handler.
-     */
+    /** The unchaught exceptions handler. */
     private UncaughtExceptionHandler exceptionHandler;
 
-    /**
-     * The platform log listener.
-     */
+    /** The platform log listener. */
     private ILogListener logListener;
 
-    /**
-     * Boolean to activate error catch.
-     */
+    /** Boolean to activate error catch. */
     private boolean errorCatchActive;
 
-    /**
-     * Boolean to activate warning catch.
-     */
+    /** Boolean to activate warning catch. */
     private boolean warningCatchActive;
 
-    /**
-     * HashMaps to store the initial values of preferences before changes.
-     */
+    /** Boolean to activate info catch. */
+    private boolean infoCatchActive;
+
+    /** HashMaps to store the initial values of preferences before changes. */
     private final HashMap<String, Object> oldValueDiagramPreferences = new HashMap<String, Object>();
 
     private final HashMap<String, Object> oldValueDiagramUiPreferences = new HashMap<String, Object>();
@@ -244,9 +216,7 @@ public abstract class SiriusTestCase extends TestCase {
 
     private final HashMap<String, Object> oldPlatformUIPreferences = new HashMap<String, Object>();
 
-    /**
-     * Overridden to create the project. {@inheritDoc}
-     */
+    /** Overridden to create the project. {@inheritDoc} */
     @Override
     protected void setUp() throws Exception {
         super.setUp();
@@ -255,6 +225,7 @@ public abstract class SiriusTestCase extends TestCase {
         // CHECKSTYLE:ON
         setErrorCatchActive(true);
         setWarningCatchActive(false);
+        setInfoCatchActive(false);
         Display.getCurrent().syncExec(new Runnable() {
             @Override
             public void run() {
@@ -592,9 +563,7 @@ public abstract class SiriusTestCase extends TestCase {
      */
     protected abstract ICommandFactory getCommandFactory();
 
-    /**
-     * Close the welcomePage.
-     */
+    /** Close the welcomePage. */
     protected void closeWelcomePage() {
         IWorkbenchPart activePart = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().getActivePart();
         if (activePart != null && "Welcome".equals(activePart.getTitle()) && activePart instanceof IViewPart) {
@@ -603,9 +572,7 @@ public abstract class SiriusTestCase extends TestCase {
         TestsUtil.synchronizationWithUIThread();
     }
 
-    /**
-     * Initialize the log listener.
-     */
+    /** Initialize the log listener. */
     protected void initLoggers() {
         logListener = new ILogListener() {
             @Override
@@ -616,6 +583,9 @@ public abstract class SiriusTestCase extends TestCase {
                     break;
                 case IStatus.WARNING:
                     warningOccurs(status, plugin);
+                    break;
+                case IStatus.INFO:
+                    infoOccurs(status, plugin);
                     break;
                 default:
                     // nothing to do
@@ -636,9 +606,7 @@ public abstract class SiriusTestCase extends TestCase {
         Thread.setDefaultUncaughtExceptionHandler(exceptionHandler);
     }
 
-    /**
-     * Dispose the log listener.
-     */
+    /** Dispose the log listener. */
     protected void disposeLoggers() {
         if (logListener != null) {
             Platform.removeLogListener(logListener);
@@ -670,6 +638,18 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
+     * check if an info occurs.
+     * 
+     * @return true if an info occurs.
+     */
+    protected synchronized boolean doesAnInfoOccurs() {
+        if (infos != null) {
+            return infos.values().size() != 0;
+        }
+        return false;
+    }
+
+    /**
      * Clear the list of errors. Can be useful when some messages are expected.
      */
     protected synchronized void clearErrors() {
@@ -681,6 +661,13 @@ public abstract class SiriusTestCase extends TestCase {
      */
     protected synchronized void clearWarnings() {
         warnings.clear();
+    }
+
+    /**
+     * Clear the list of infos. Can be useful when some messages are expected.
+     */
+    protected synchronized void clearInfos() {
+        infos.clear();
     }
 
     /**
@@ -712,6 +699,20 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
+     * Records the infos.
+     * 
+     * @param status
+     *            info status to record
+     * @param sourcePlugin
+     *            source plugin in which the info occurred
+     */
+    private synchronized void infoOccurs(IStatus status, String sourcePlugin) {
+        if (isInfoCatchActive()) {
+            infos.put(sourcePlugin, status);
+        }
+    }
+
+    /**
      * Activate or deactivate the external error detection: the test will fail in an error is logged or uncaught.
      * 
      * @param errorCatchActive
@@ -729,6 +730,18 @@ public abstract class SiriusTestCase extends TestCase {
      */
     protected synchronized void setWarningCatchActive(boolean warningCatchActive) {
         this.warningCatchActive = warningCatchActive;
+    }
+
+    /**
+     * Activate or deactivate the external info detection: the test will fail in
+     * a warning is logged or uncaught.
+     * 
+     * @param infoCatchActive
+     *            boolean to indicate if we activate or deactivate the external
+     *            info detection
+     */
+    protected synchronized void setInfoCatchActive(boolean infoCatchActive) {
+        this.infoCatchActive = infoCatchActive;
     }
 
     /**
@@ -750,6 +763,15 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
+     * check if a info catch is active.
+     * 
+     * @return true if a warning catch is active.
+     */
+    protected synchronized boolean isInfoCatchActive() {
+        return infoCatchActive;
+    }
+
+    /**
      * Check that there is no existing error or warning.
      */
     private void checkLogs() {
@@ -767,23 +789,29 @@ public abstract class SiriusTestCase extends TestCase {
             }
         }
     }
-
+    
     /**
-     * Compute an error message from the detected errors.
+     * Compute a message from the detected warnings/errors/infos.
      * 
-     * @return the error message.
+     * @param type
+     *            type of message : Error/Warning/Info
+     * @param messages
+     *            map with message reported and their status
+     * @return the message
      */
-    protected synchronized String getErrorLoggersMessage() {
+    protected synchronized String getLoggersMessage(String type, Multimap<String, IStatus> messages) {
         StringBuilder log1 = new StringBuilder();
         String br = "\n";
+
         String testName = getClass().getName();
-        log1.append("Error(s) raised during test : " + testName).append(br);
-        for (Entry<String, Collection<IStatus>> entry : errors.asMap().entrySet()) {
+
+        log1.append(type + "(s) raised during test : " + testName).append(br);
+        for (Entry<String, Collection<IStatus>> entry : messages.asMap().entrySet()) {
             String reporter = entry.getKey();
             log1.append(". Log Plugin : " + reporter).append(br);
 
             for (IStatus status : entry.getValue()) {
-                log1.append("  . " + getSeverity(status) + " from plugin:" + status.getPlugin() + ", message: " + status.getMessage() + ", exception: " + status.getException()).append(br);
+                log1.append("  . " + getSeverity(status) + " from plugin:" + status.getPlugin() + ", message: " + status.getMessage() + ", info: " + status.getException()).append(br);
                 appendStackTrace(log1, br, status);
             }
             log1.append(br);
@@ -792,28 +820,30 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
+     * Compute an error message from the detected errors.
+     * 
+     * @return the error message.
+     */
+    protected synchronized String getErrorLoggersMessage() {
+        return getLoggersMessage("Error", errors);
+    }
+
+    /**
      * Compute an error message from the detected warnings.
      * 
      * @return the error message.
      */
     protected synchronized String getWarningLoggersMessage() {
-        StringBuilder log1 = new StringBuilder();
-        String br = "\n";
+        return getLoggersMessage("Warning", warnings);
+    }
 
-        String testName = getClass().getName();
-
-        log1.append("Warning(s) raised during test : " + testName).append(br);
-        for (Entry<String, Collection<IStatus>> entry : warnings.asMap().entrySet()) {
-            String reporter = entry.getKey();
-            log1.append(". Log Plugin : " + reporter).append(br);
-
-            for (IStatus status : entry.getValue()) {
-                log1.append("  . " + getSeverity(status) + " from plugin:" + status.getPlugin() + ", message: " + status.getMessage() + ", exception: " + status.getException()).append(br);
-                appendStackTrace(log1, br, status);
-            }
-            log1.append(br);
-        }
-        return log1.toString();
+    /**
+     * Compute an error message from the detected warnings.
+     * 
+     * @return the error message.
+     */
+    protected synchronized String getInfoLoggersMessage() {
+        return getLoggersMessage("Info", infos);
     }
 
     /**

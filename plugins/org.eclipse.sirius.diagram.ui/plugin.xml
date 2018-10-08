@@ -1920,6 +1920,10 @@
             class="org.eclipse.sirius.diagram.ui.business.internal.migration.RepairGMFbendpointsMigrationParticipant"
             kind="RepresentationsFile">
       </participant>
+      <participant
+            class="org.eclipse.sirius.diagram.ui.business.internal.migration.DeleteMultipleConnectorStyleMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
    </extension>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
