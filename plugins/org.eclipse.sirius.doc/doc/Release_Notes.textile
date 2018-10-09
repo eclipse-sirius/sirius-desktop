@@ -6,7 +6,8 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius6.1.0). Changes in Sirius 6.1.0
 
-_Note:_ The new (and still experimental) _Workflow_ and _Server_ features depend on a specific version of Eclipse Jetty which is available in the main Eclipse Photon repository. They can not be used under Oxygen (which include older and incompatible versions of Jetty).
+* <span class="label label-info">IMPORTANT</span>  The new (and still experimental) _Workflow_ and _Server_ features depend on a specific version of Eclipse Jetty which is available in the main Eclipse Photon repository. They can not be used under Oxygen (which include older and incompatible versions of Jetty).
+* <span class="label label-info">IMPORTANT</span> Please note that starting from version 6.1, Sirius is now licensed under "version 2.0 of the Eclipse Public License":https://www.eclipse.org/legal/epl-2.0/, which updates some wording and clarifies some points but neither changes the open-source nature of Sirius nor the implications of using or embedding it. See "the official FAQ":https://www.eclipse.org/legal/epl-2.0/faq.php for details about the difference between EPL v1.0 (which was used before) and v2.0.
 
 h3. User-Visible Changes
 
