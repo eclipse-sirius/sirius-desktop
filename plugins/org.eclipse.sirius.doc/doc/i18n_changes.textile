@@ -2,6 +2,56 @@ h1. Translation Keys Changes
 
 This document lists the changes in @TranslatableMessage@ used for Sirius internationalization in each Sirius version.
 
+h2(#sirius61). Translation Keys Changes in Sirius 6.1 (from Sirius 6.0)
+
+h3. Message Keys Added
+
+* @org.eclipse.sirius.common.ui.Messages.MigrationUIUtil_askToSaveChanges@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ChangeEditModeAction_ChangeFailure@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ChangeEditModeAction_ChangePropertyValueRequest_label@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.DDiagramEditorImpl_updateToolFailure@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.DefaultModeAction_Label@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.DefaultModeAction_statusOn@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.DiagramAppearancePreferencePage_displayUserFixedColorsInPaletteLabel@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.DoubleClickEditPolicy_confirmDialogAsking@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.DoubleClickEditPolicy_confirmDialogTitle@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.DoubleClickEditPolicy_filterConfirmDialogBody@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.DoubleClickEditPolicy_layerConfirmDialogBody@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.EditModeAction_Label@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.Group_No_Menu_ID@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.Group_Not_Displayed@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.LayoutingModeSwitchingAction_label@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.LocationURI_ParsePb_Blank@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.LocationURI_ParsePb_MoreThanTwoLocations@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.LocationURI_ParsePb_NoId@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.LocationURI_ParsePb_OnlyOneLocationURIPerScheme@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.LocationURI_ParsePb_WrongFormat@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.LocationURI_ParsePb_WrongScheme@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ShowingModeSwitchingAction_label@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.UndoRedoCapableEMFCommandFactory_insertHorizontalBlankSpaceNotImplemented@
+* @org.eclipse.sirius.diagram.Messages.ToolManagment_ToolChange_Command_Label@
+* @org.eclipse.sirius.diagram.Messages.UpdateToolRecordingCommand_cancelExceptionMessage@
+* @org.eclipse.sirius.diagram.Messages.ViewWithNullElementMigrationParticipant_message@
+* @org.eclipse.sirius.diagram.Messages.ViewWithNullElementMigrationParticipant_singleMessage@
+* @org.eclipse.sirius.diagram.Messages.ViewWithNullElementMigrationParticipant_title@
+* @org.eclipse.sirius.editor.Messages.CustomLayoutConfigurationDescriptionPropertySection_noLayoutAlgorithmProviderDescription@
+* @org.eclipse.sirius.editor.Messages.CustomLayoutConfigurationDescriptionPropertySection_noLayoutAlgorithmProviderName@
+* @org.eclipse.sirius.server.internal.Messages.SiriusServerConfigurator_headerConfig@
+* @org.eclipse.sirius.server.internal.Messages.SiriusServerConfigurator_wrongPropertyTypeWarning@
+* @org.eclipse.sirius.viewpoint.provider.Messages.SiriusPreferencePage_askUserToSaveAfterMigration@
+* @org.eclipse.sirius.viewpoint.provider.Messages.SiriusPreferencePage_migrationGroup@
+* @org.eclipse.sirius.viewpoint.Messages.AirDResourceImpl_nullUid@
+* @org.eclipse.sirius.viewpoint.Messages.Constraint_validNullLocationURIForGroupInPopupMenuConstraint_message@
+* @org.eclipse.sirius.viewpoint.Messages.TechnicalUidMigrationParticipant_message@
+
+h3. Message Keys Removed
+
+* @org.eclipse.sirius.diagram.ui.provider.Messages.LayoutingModeSwitchingAction_activate@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.LayoutingModeSwitchingAction_deactivate@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ShowingModeSwitchingAction_activate@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.ShowingModeSwitchingAction_deactivate@
+* @org.eclipse.sirius.diagram.Messages.UndoRedoCapableEMFCommandFactory_insertHorizontalBlankSpaceNotImplemented@
+
 h2(#sirius60). Translation Keys Changes in Sirius 6.0 (from Sirius 5.1)
 
 h3. Message Keys Added
