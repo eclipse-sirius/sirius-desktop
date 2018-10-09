@@ -31,7 +31,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.session.SessionStatus;
-import org.eclipse.sirius.common.xtext.internal.XTextResourceSetFactory;
+import org.eclipse.sirius.common.xtext.internal.XtextResourceSetFactory;
 import org.eclipse.sirius.tests.sample.xtext.statemachine.NamedElement;
 import org.eclipse.sirius.tests.sample.xtext.statemachine.State;
 import org.eclipse.sirius.tests.sample.xtext.statemachine.Statemachine;
@@ -40,7 +40,7 @@ import org.eclipse.sirius.tests.sample.xtext.statemachine.design.Services;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.xtext.SiriusXtextTestsPlugin;
 
-public class XTextModelSynchronizationTests extends SiriusDiagramTestCase {
+public class XtextModelSynchronizationTests extends SiriusDiagramTestCase {
 
     private static final String ORIGINAL_STATE_NAME = "CreatingPizza";
 
@@ -73,7 +73,7 @@ public class XTextModelSynchronizationTests extends SiriusDiagramTestCase {
     public void testXTextResourceInSessionAfterXtextFileChange() throws IOException, CoreException, InterruptedException {
         // Modify the xtext resource outside the session
         URI semanticResourceURI = URI.createPlatformResourceURI(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME, true);
-        Resource semanticResource = new XTextResourceSetFactory().createResourceSet(semanticResourceURI).getResource(semanticResourceURI, true);
+        Resource semanticResource = new XtextResourceSetFactory().createResourceSet(semanticResourceURI).getResource(semanticResourceURI, true);
         NamedElement element = new Services().getElementByName(semanticResource, ORIGINAL_STATE_NAME);
         assertEquals(ORIGINAL_STATE_DISPLAY_NAME, element.getDisplayname());
         element.setDisplayname(CHANGED_STATE_DISPLAY_NAME);
@@ -125,7 +125,7 @@ public class XTextModelSynchronizationTests extends SiriusDiagramTestCase {
 
         // check that the resource is correctly updated in the XText file with
         // EMF API
-        Resource semanticResource = new XTextResourceSetFactory().createResourceSet(semanticResourceURI).getResource(semanticResourceURI, true);
+        Resource semanticResource = new XtextResourceSetFactory().createResourceSet(semanticResourceURI).getResource(semanticResourceURI, true);
         NamedElement element = new Services().getElementByName(semanticResource, ORIGINAL_STATE_NAME);
         assertEquals(CHANGED_STATE_DISPLAY_NAME, element.getDisplayname());
         assertNotNull("The state created in Sirius has not been serialized in XText file", new Services().getElementByName(semanticResource, "newState"));

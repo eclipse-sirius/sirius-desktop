@@ -25,7 +25,7 @@ import org.eclipse.xtext.resource.XtextResourceSet;
  * @author cedric
  * 
  */
-public class XTextResourceSetFactory extends org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory {
+public class XtextResourceSetFactory extends org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory {
 
     @Override
     public ResourceSet createResourceSet(URI resourceURI) {

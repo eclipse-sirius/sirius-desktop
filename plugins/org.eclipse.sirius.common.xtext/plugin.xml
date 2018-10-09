@@ -17,7 +17,7 @@
    <extension
          point="org.eclipse.sirius.common.resourceSetFactory">
       <factory
-            class="org.eclipse.sirius.common.xtext.internal.XTextResourceSetFactory">
+            class="org.eclipse.sirius.common.xtext.internal.XtextResourceSetFactory">
       </factory>
    </extension>
    <extension

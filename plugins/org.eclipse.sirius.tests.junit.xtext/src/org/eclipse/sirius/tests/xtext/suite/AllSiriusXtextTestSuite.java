@@ -14,7 +14,7 @@ package org.eclipse.sirius.tests.xtext.suite;
 
 import org.eclipse.sirius.tests.unit.common.EnvironmentReportTest;
 import org.eclipse.sirius.tests.xtext.SiriusXtextTestsPlugin;
-import org.eclipse.sirius.tests.xtext.unit.XTextModelSynchronizationTests;
+import org.eclipse.sirius.tests.xtext.unit.XtextModelSynchronizationTests;
 
 import junit.framework.JUnit4TestAdapter;
 import junit.framework.Test;
@@ -34,23 +34,22 @@ public class AllSiriusXtextTestSuite extends TestCase {
         TestRunner.run(suite());
     }
 
-    public static class XTextJUnitBundlesReport extends EnvironmentReportTest {
-        public XTextJUnitBundlesReport() {
-            super(SiriusXtextTestsPlugin.getDefault().getBundle(), "XText-JUnit");
+    public static class XtextJUnitBundlesReport extends EnvironmentReportTest {
+        public XtextJUnitBundlesReport() {
+            super(SiriusXtextTestsPlugin.getDefault().getBundle(), "Xtext-JUnit");
         }
     }
 
     /**
-     * Creates the {@link junit.framework.TestSuite TestSuite} for all the
-     * tests.
+     * Creates the {@link junit.framework.TestSuite TestSuite} for all the tests.
      * 
      * @return The testsuite containing all the tests
      */
     public static Test suite() {
         final TestSuite suite = new TestSuite("Sirius xtext tests");
 
-        suite.addTest(new JUnit4TestAdapter(XTextJUnitBundlesReport.class));
-        suite.addTestSuite(XTextModelSynchronizationTests.class);
+        suite.addTest(new JUnit4TestAdapter(XtextJUnitBundlesReport.class));
+        suite.addTestSuite(XtextModelSynchronizationTests.class);
         return suite;
     }
 
