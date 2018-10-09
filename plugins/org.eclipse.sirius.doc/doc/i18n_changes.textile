@@ -40,6 +40,8 @@ h3. Message Keys Added
 * @org.eclipse.sirius.server.internal.Messages.SiriusServerConfigurator_wrongPropertyTypeWarning@
 * @org.eclipse.sirius.viewpoint.provider.Messages.SiriusPreferencePage_askUserToSaveAfterMigration@
 * @org.eclipse.sirius.viewpoint.provider.Messages.SiriusPreferencePage_migrationGroup@
+* @org.eclipse.sirius.viewpoint.provider.Messages.CreateMissingRepresentationFileResolution_label@
+* @org.eclipse.sirius.viewpoint.provider.Messages.CreateMissingRepresentationFileResolution_description@
 * @org.eclipse.sirius.viewpoint.Messages.AirDResourceImpl_nullUid@
 * @org.eclipse.sirius.viewpoint.Messages.Constraint_validNullLocationURIForGroupInPopupMenuConstraint_message@
 * @org.eclipse.sirius.viewpoint.Messages.TechnicalUidMigrationParticipant_message@

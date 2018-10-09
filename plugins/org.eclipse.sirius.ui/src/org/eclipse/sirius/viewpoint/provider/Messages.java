@@ -1051,6 +1051,12 @@ public final class Messages {
     public static String TraceabilityMarkerNavigationProvider_noSessionFoundError;
 
     @TranslatableMessage
+    public static String CreateMissingRepresentationFileResolution_label;
+
+    @TranslatableMessage
+    public static String CreateMissingRepresentationFileResolution_description;
+
+    @TranslatableMessage
     public static String TreeEditorDialogFactory_error;
 
     @TranslatableMessage

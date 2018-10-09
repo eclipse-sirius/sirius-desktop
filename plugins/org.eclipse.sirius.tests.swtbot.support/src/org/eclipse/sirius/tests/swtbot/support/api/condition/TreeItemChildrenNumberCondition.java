@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES and others
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.swtbot.support.api.condition;
 
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
@@ -23,6 +24,8 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 public class TreeItemChildrenNumberCondition extends DefaultCondition {
 
     private final SWTBotTreeItem treeItem;
+
+    private final SWTBotTree tree;
 
     private final int expectedNumberOfChild;
 
@@ -37,6 +40,7 @@ public class TreeItemChildrenNumberCondition extends DefaultCondition {
      *            The number of children expected for treeItem
      */
     public TreeItemChildrenNumberCondition(SWTBotTreeItem treeItem, int expectedNumberOfChild) {
+        this.tree = null;
         this.treeItem = treeItem;
         this.expectedNumberOfChild = expectedNumberOfChild;
     }
@@ -52,9 +56,24 @@ public class TreeItemChildrenNumberCondition extends DefaultCondition {
      *            should expand treeItem before running test
      */
     public TreeItemChildrenNumberCondition(SWTBotTreeItem treeItem, int expectedNumberOfChild, boolean forceTreeItemExpand) {
+        this.tree = null;
         this.treeItem = treeItem;
         this.expectedNumberOfChild = expectedNumberOfChild;
         this.forceTreeItemExpand = forceTreeItemExpand;
+    }
+
+    /**
+     * Constructor.
+     * 
+     * @param tree
+     *            The {@link SWTBotTree} to test its children
+     * @param expectedNumberOfChild
+     *            The number of children expected for treeItem
+     */
+    public TreeItemChildrenNumberCondition(SWTBotTree tree, int expectedNumberOfChild) {
+        this.tree = tree;
+        this.treeItem = null;
+        this.expectedNumberOfChild = expectedNumberOfChild;
     }
 
     @Override
@@ -67,7 +86,11 @@ public class TreeItemChildrenNumberCondition extends DefaultCondition {
         if (forceTreeItemExpand) {
             treeItem.expand();
         }
-        return treeItem.getItems().length == expectedNumberOfChild;
+        if (treeItem != null) {
+            return treeItem.getItems().length == expectedNumberOfChild;
+        } else {
+            return tree.getAllItems().length == expectedNumberOfChild;
+        }
     }
 
 }

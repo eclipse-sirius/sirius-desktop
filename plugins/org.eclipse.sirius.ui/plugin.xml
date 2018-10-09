@@ -642,4 +642,11 @@
            name="%command.update.rep.location.name">
      </command>
   </extension>
+  
+   <extension
+		point="org.eclipse.ui.ide.markerResolution">
+		<markerResolutionGenerator class="org.eclipse.sirius.ui.business.internal.quickfix.CreateMissingRepresentationFileResolution" 
+			markerType="org.eclipse.sirius.modelingMarker">
+		</markerResolutionGenerator>
+	</extension>
 </plugin>

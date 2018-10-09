@@ -18,7 +18,9 @@ h3. User-Visible Changes
 !user/diagrams/images/show_hide_mode_example.png!
 * <span class="label label-success">Added</span> A new dropdown menu gathering the layouting, visibility and standard mode is now available in the tabbar of diagram editors to activate the chosen edit mode. The standard mode corresponds to a diagram editor without the layouting and visibility mode activated.
 !user/diagrams/images/show_hide_mode_tabbar_activate.png!
+* <span class="label label-success">Added</span> A quick fix is now available on the error marker signaling a modeling project without a representations file. Processing this quick fix will create a new empty representation file.
 * <span class="label label-info">Modified</span> The tool "Link Note", introduced in Sirius 6.0.0, has been renamed into "Representation Link".
+
 
 h3. Specifier-Visible Changes
 
