@@ -14,6 +14,7 @@ icons/categoryVisible.gif - org.eclipse.jdt.ui - org.eclipse.jdt.ui/icons/full/o
 icons/collapse.gif - org.eclipse.gmf.runtime.diagram.ui - org.eclipse.gmf.runtime.diagram.ui/icons/collapse.gif
 icons/collapseall.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/collapseall.gif
 icons/DDiagram.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
+icons/defaultMode.gif - org.topcased.modeler.uml - org.topcased.modeler.uml/icons/diagram/ClassDiagram.gif
 icons/delete.gif - org.eclipse.ui	org.eclipse.ui/icons/full/obj16/delete_obj.gif
 icons/deletedDiagElemDecorator.gif - org.eclipse.ui - org.eclipse.ui/icons/full/obj16/delete_obj.gif
 icons/deleteModel.gif - org.eclipse.search - org.eclipse.search/icons/full/elcl16/search_remall.gif
@@ -27,6 +28,7 @@ icons/expand.gif - org.eclipse.gmf.runtime.diagram.ui - org.eclipse.gmf.runtime.
 icons/expandall.gif - org.eclipse.debug.ui - org.eclipse.debug.ui/icons/full/elcl16/expandall.gif
 icons/filters.gif - org.eclipse.sirius.diagram - org.eclipse.sirius.diagram/icons/filters.gif
 icons/fontWizard.gif - org.eclipse.gmf.runtime.diagram.ui.actions - org.eclipse.ui.gmf.runtime.diagram.ui.actions/icons/elcl16/font_color.gif
+icons/visibilityMode.gif - org.eclipse.debug.ui	- org.eclipse.debug.ui/icons/full/elcl16/skip_brkp.gif
 icons/full/decorator/active.gif -  org.eclipse.ui - org.eclipse.ui/icons/full/elcl16/step_done.gif
 icons/full/decorator/DEdge.gif - org.eclipse.emf.ecore.edit- org.eclipse.emf.ecore.edit/icons/full/obj16/EReference.gif
 icons/full/decorator/fold.gif - org.eclipse.jdt.debug.ui - org.eclipse.jdt.debug.ui/icons/full/ovr16/final_co.gif
