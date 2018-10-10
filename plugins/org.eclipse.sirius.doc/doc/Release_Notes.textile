@@ -37,6 +37,8 @@ Refer to the "specifier documentation":specifier/diagrams/Diagrams.html#group fo
 
 h3. Developer-Visible Changes
 
+<span class="label label-info">IMPORTANT</span> Note that all plug-ins in the _Sirius Server_ feature (@org.eclipse.sirius.server.*@ and @org.eclipse.sirius.services.*@) are still considered experimental in this version. In particular, all APIs (Java, HTTP, WebSocket) they provide should be treated as provisional even if they are exposed publicly in @*.api.*@ packages. We reserve the right to modify them in incompatible ways even in future maintenance versions.
+
 * <span class="label label-success">Added</span> Mechanism to ask user input on opening of a session with migrated resources if the session opening comes from a direct user action
 ** New available UI callback (@org.eclipse.sirius.tools.api.command.ui.UICallBack.askUserAndSaveMigratedSession(session)@) used to ask user if he wants to save the resources after migration and save them if necessary.
 ** New method to open session when this is due to a direct user action (@org.eclipse.sirius.business.api.session.SessionManager.openSession(sessionResourceURI, monitor, uiCallback, isDirectUserActionLoading)@). Previous version calls this new version with the value false for @isDirectUserActionLoading@ parameter

@@ -151,6 +151,12 @@
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<p><span class="label label-info">IMPORTANT</span> Note that all plug-ins in the 
+			<em>Sirius Server</em> feature (
+			<code>org.eclipse.sirius.server.*</code> and 
+			<code>org.eclipse.sirius.services.*</code>) are still considered experimental in this version. In particular, all APIs (Java, HTTP, WebSocket) they provide should be treated as provisional even if they are exposed publicly in 
+			<code>*.api.*</code> packages. We reserve the right to modify them in incompatible ways even in future maintenance versions.
+		</p>
 		<ul>
 			<li><span class="label label-success">Added</span> Mechanism to ask user input on opening of a session with migrated resources if the session opening comes from a direct user action
 				<ul>
