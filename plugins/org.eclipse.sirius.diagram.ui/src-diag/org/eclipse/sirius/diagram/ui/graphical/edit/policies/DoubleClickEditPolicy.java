@@ -14,9 +14,9 @@ package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.text.MessageFormat;
 import java.util.AbstractMap.SimpleEntry;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Optional;
@@ -250,7 +250,7 @@ public class DoubleClickEditPolicy extends OpenEditPolicy {
     private Entry<String, org.eclipse.emf.common.command.Command> getCommandToActivateLayerShowingElementAndPArents(DDiagram parentDiagram, final Set<DDiagramElement> elementSet) {
         CompoundCommand layerCompoundCommand = new CompoundCommand();
         Optional<Session> optionalSession = Session.of(parentDiagram);
-        List<String> layersToActivateList = new ArrayList<>();
+        Set<String> layersToActivateSet = new LinkedHashSet<>();
         if (optionalSession.isPresent()) {
             DiagramMappingsManager mappingManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(optionalSession.get(), parentDiagram);
             for (DDiagramElement dDiagramElement : elementSet) {
@@ -258,14 +258,16 @@ public class DoubleClickEditPolicy extends OpenEditPolicy {
                     Layer layerToActivate = getLayerToActivate(parentDiagram, dDiagramElement, mappingManager);
                     if (layerToActivate != null) {
                         final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(parentDiagram);
-                        layerCompoundCommand.append(new ChangeLayerActivationCommand(domain, parentDiagram, layerToActivate, new NullProgressMonitor()));
-                        layersToActivateList.add(layerToActivate.getName());
+                        if (!layersToActivateSet.contains(layerToActivate.getName())) {
+                            layerCompoundCommand.append(new ChangeLayerActivationCommand(domain, parentDiagram, layerToActivate, new NullProgressMonitor()));
+                            layersToActivateSet.add(layerToActivate.getName());
+                        }
                     }
                 }
             }
         }
         return layerCompoundCommand.getCommandList().size() > 0
-                ? new SimpleEntry<String, org.eclipse.emf.common.command.Command>(layersToActivateList.stream().collect(Collectors.joining(", ")), layerCompoundCommand) //$NON-NLS-1$
+                ? new SimpleEntry<String, org.eclipse.emf.common.command.Command>(layersToActivateSet.stream().collect(Collectors.joining(", ")), layerCompoundCommand) //$NON-NLS-1$
                 : null;
     }
 
