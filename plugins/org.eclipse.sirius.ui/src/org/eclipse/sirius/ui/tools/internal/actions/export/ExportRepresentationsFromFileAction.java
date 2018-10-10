@@ -144,22 +144,22 @@ public class ExportRepresentationsFromFileAction implements IObjectActionDelegat
         @Override
         protected void execute(IProgressMonitor monitor) throws CoreException, InvocationTargetException, InterruptedException {
             boolean isOpen = false;
-            SubMonitor subMonitor = SubMonitor.convert(monitor, Messages.ExportRepresentationsFromFileAction_exportTask, 10);
             try {
                 isOpen = session.isOpen();
                 if (!isOpen) {
-                    session = SessionManager.INSTANCE.openSession(sessionResourceURI, subMonitor.newChild(2), SiriusEditPlugin.getPlugin().getUiCallback());
+                    session = SessionManager.INSTANCE.openSession(sessionResourceURI, monitor, SiriusEditPlugin.getPlugin().getUiCallback());
                 }
                 if (session != null) {
                     // Get explicitly all representations (with loading them)
                     final Collection<DRepresentation> dRepresentationsToExportAsImage = DialectManager.INSTANCE.getAllRepresentations(session);
+                    SubMonitor subMonitor = SubMonitor.convert(monitor, Messages.ExportRepresentationsFromFileAction_exportTask, dRepresentationsToExportAsImage.size());
                     ExportAction exportAction = new ExportAction(session, dRepresentationsToExportAsImage, outputPath, imageFormat, exportToHtml, exportDecorations);
                     exportAction.setDiagramScaleLevel(scaleLevel);
-                    exportAction.run(subMonitor.newChild(7));
+                    exportAction.run(subMonitor.newChild(dRepresentationsToExportAsImage.size()));
                 }
             } finally {
                 if (!isOpen && session != null) {
-                    session.close(subMonitor.newChild(1));
+                    session.close(monitor);
                 }
                 monitor.done();
             }

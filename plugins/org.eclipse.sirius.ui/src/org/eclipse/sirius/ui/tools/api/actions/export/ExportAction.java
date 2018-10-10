@@ -134,7 +134,7 @@ public class ExportAction extends WorkspaceModifyOperation {
     @Override
     protected void execute(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
         try {
-            monitor.beginTask(ExportAction.EXPORT_DIAGRAMS_AS_IMAGES_ACTION_TITLE, 7);
+            monitor.beginTask(ExportAction.EXPORT_DIAGRAMS_AS_IMAGES_ACTION_TITLE, dRepresentationsToExportAsImage.size());
             try {
                 createImageFiles(monitor);
             } catch (final OutOfMemoryError | SizeTooLargeException e) {
@@ -212,7 +212,9 @@ public class ExportAction extends WorkspaceModifyOperation {
                     }
                     if (DialectUIManager.INSTANCE.canHandle(representation)) {
                         try {
+                            monitor.subTask("Export as image: " + representation.getName()); //$NON-NLS-1$
                             DialectUIManager.INSTANCE.export(representation, session, filePath, exportFormat, monitor, exportDecorations);
+                            monitor.worked(1);
                         } catch (CoreException exception) {
                             if (exception instanceof SizeTooLargeException) {
                                 errorDuringExport = true;
