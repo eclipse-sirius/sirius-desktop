@@ -45,6 +45,8 @@ import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchException;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
+import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersionSAXParser;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
@@ -53,6 +55,7 @@ import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.common.ui.tools.api.selection.EMFMessageDialog;
 import org.eclipse.sirius.common.ui.tools.api.selection.EObjectSelectionWizard;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.common.ui.tools.internal.util.MigrationUIUtil;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -70,8 +73,10 @@ import org.eclipse.sirius.viewpoint.description.tool.SelectModelElementVariable;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.ISaveablePart2;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
+import org.osgi.framework.Version;
 
 import com.google.common.collect.Iterables;
 
@@ -386,7 +391,7 @@ public abstract class AbstractSWTCallback implements UICallBack {
 
     @Override
     public void askUserAndSaveMigratedSession(Session session) {
-        if (MigrationUIUtil.shouldMigratedElementBeSaved(session, getSessionNameToDisplayWhileSaving(session))) {
+        if (askUserToSaveAutomaticMigration(session, getSessionNameToDisplayWhileSaving(session))) {
             PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
                 try {
                     new ProgressMonitorDialog(PlatformUI.getWorkbench().getDisplay().getActiveShell()).run(false, false, new WorkspaceModifyOperation() {
@@ -405,4 +410,30 @@ public abstract class AbstractSWTCallback implements UICallBack {
         }
     }
 
+    /**
+     * Test if the session resource has been automatically migrated. If it is the case and this is due to a direct user
+     * action, ask user if he wants to save the session
+     * 
+     * @param session
+     *            The session to test
+     * @param sessionLabel
+     *            the session label to use when interacting with user if needed.
+     * @return <code>true</code> if the user want to save the session, <code>false</code> otherwise
+     */
+    public boolean askUserToSaveAutomaticMigration(Session session, String sessionLabel) {
+        for (Resource resource : session.getAllSessionResources()) {
+            boolean migrated = isSessionMigrated(resource, session.getSessionResource().getURI());
+            if (migrated && MigrationUIUtil.shouldUserBeWarnedAboutMigration(resource)) {
+                String message = MessageFormat.format(org.eclipse.sirius.common.ui.Messages.MigrationUIUtil_askToSaveChanges, sessionLabel);
+                return SWTUtil.showSaveDialogWithMessage(resource, message, false) == ISaveablePart2.YES;
+            }
+        }
+        return false;
+    }
+
+    private boolean isSessionMigrated(Resource resource, URI airdResourceUri) {
+        RepresentationsFileVersionSAXParser representationsFileVersionSAXParser = new RepresentationsFileVersionSAXParser(airdResourceUri);
+        Version lastMigrationVersion = RepresentationsFileMigrationService.getInstance().getLastMigrationVersion();
+        return lastMigrationVersion != null && !lastMigrationVersion.equals(Version.parseVersion(representationsFileVersionSAXParser.getVersion(new NullProgressMonitor())));
+    }
 }

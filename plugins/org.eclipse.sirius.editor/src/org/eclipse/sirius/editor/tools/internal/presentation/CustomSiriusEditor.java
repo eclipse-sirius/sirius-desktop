@@ -69,6 +69,7 @@ import org.eclipse.sirius.business.internal.migration.description.VSMMigrationSe
 import org.eclipse.sirius.business.internal.migration.description.VSMResourceHandler;
 import org.eclipse.sirius.business.internal.migration.description.VSMVersionSAXParser;
 import org.eclipse.sirius.common.ui.tools.api.editor.IEObjectNavigable;
+import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.common.ui.tools.internal.util.MigrationUIUtil;
 import org.eclipse.sirius.editor.Messages;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
@@ -86,6 +87,7 @@ import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IPathEditorInput;
+import org.eclipse.ui.ISaveablePart2;
 import org.eclipse.ui.IURIEditorInput;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
@@ -429,7 +431,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
             ((XMLResource) resource).getDefaultLoadOptions().put(AbstractSiriusMigrationService.OPTION_RESOURCE_NON_BATCH_MIGRATION, true);
         }
 
-        if (MigrationUIUtil.shouldMigratedElementBeSaved(resource)) {
+        if (isVSMMigrated(resource, getURIFromInput(getEditorInput())) && askUserToSaveMigration(resource)) {
             doSave(new NullProgressMonitor());
         }
 
@@ -484,21 +486,21 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
                 boolean first = true;
                 for (Resource resource : editingDomain.getResourceSet().getResources()) {
                     if ((first || !resource.getContents().isEmpty() || isPersisted(resource)) && !editingDomain.isReadOnly(resource)) {
-                        if (!MigrationUIUtil.hasBeenMigratedAndUserShouldBeWarned(resource) && resource.isTrackingModification() && !resource.isModified()) {
-                            continue;
-                        }
-                        try {
-                            savedResources.add(resource);
-                            if (resource instanceof XMLResource) {
-                                ((XMLResource) resource).getDefaultSaveOptions().put(XMLResource.OPTION_URI_HANDLER, vsmURIHandler);
+                        boolean vsmMigrated = isVSMMigrated(resource, getURIFromInput(getEditorInput()));
+                        if (vsmMigrated || !resource.isTrackingModification() || resource.isModified()) {
+                            try {
+                                savedResources.add(resource);
+                                if (resource instanceof XMLResource) {
+                                    ((XMLResource) resource).getDefaultSaveOptions().put(XMLResource.OPTION_URI_HANDLER, vsmURIHandler);
+                                }
+                                resource.save(Collections.emptyMap());
+                                // CHECKSTYLE:OFF
+                            } catch (Exception exception) {
+                                // CHECKSTYLE:ON
+                                resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
                             }
-                            resource.save(Collections.emptyMap());
-                            // CHECKSTYLE:OFF
-                        } catch (Exception exception) {
-                            // CHECKSTYLE:ON
-                            resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
+                            first = false;
                         }
-                        first = false;
                     }
                 }
             }
@@ -517,6 +519,38 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
         }
         updateProblemIndication = true;
         updateProblemIndication();
+    }
+
+    /**
+     * Asks the user if the automatic migration must be save.
+     * 
+     * @param resource
+     *            The resource to test
+     * @return <code>true</code> if the user want to save the session, <code>false</code> otherwise
+     */
+    public boolean askUserToSaveMigration(Resource resource) {
+        if (MigrationUIUtil.shouldUserBeWarnedAboutMigration(resource)) {
+            String message = MessageFormat.format(org.eclipse.sirius.common.ui.Messages.MigrationUIUtil_askToSaveChanges, resource.getURI().lastSegment());
+            return SWTUtil.showSaveDialogWithMessage(resource, message, false) == ISaveablePart2.YES;
+        }
+        return false;
+    }
+
+    /**
+     * Returns true if the VSM has been migrated. False otherwise.
+     * 
+     * @param resource
+     *            resource containing the VSM instance potentially migrated.
+     * @param uri
+     *            URI of the VSM to check against the instance.
+     * @return true if the VSM has been migrated. False otherwise.
+     */
+    private boolean isVSMMigrated(Resource resource, URI uri) {
+        VSMVersionSAXParser vsmVersionSAXParser = new VSMVersionSAXParser(uri);
+        if (!VSMMigrationService.getInstance().getLastMigrationVersion().equals(Version.parseVersion(vsmVersionSAXParser.getVersion(new NullProgressMonitor())))) {
+            return true;
+        }
+        return false;
     }
 
     /**
