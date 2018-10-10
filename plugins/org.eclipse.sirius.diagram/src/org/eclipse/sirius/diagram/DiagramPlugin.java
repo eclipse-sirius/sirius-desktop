@@ -20,6 +20,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EValidator;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -219,14 +220,29 @@ public class DiagramPlugin extends EMFPlugin {
          * @return the {@link ToolManagement} handling given {@link Diagram}.
          */
         public ToolManagement getToolManagement(Diagram diagram) {
-            if (diagram != null && diagram.getElement() instanceof DDiagram) {
-                DDiagram dDiagram = (DDiagram) diagram.getElement();
+            DDiagram dDiagram = getDDiagram(diagram);
+            if (dDiagram != null) {
                 ToolManagement toolManagement = toolManagementMap.get(dDiagram);
                 if (toolManagement == null) {
                     toolManagement = new ToolManagement(dDiagram);
                     toolManagementMap.put(dDiagram, toolManagement);
                 }
                 return toolManagement;
+            }
+            return null;
+        }
+
+        private DDiagram getDDiagram(Diagram diagram) {
+            if (diagram != null) {
+                try {
+                    EObject elt = diagram.getElement();
+                    if (elt instanceof DDiagram) {
+                        return (DDiagram) elt;
+                    }
+                } catch (IllegalStateException e) {
+                    // Silent catch: this can happen when trying to get the session
+                    // on a disposed Eobject
+                }
             }
             return null;
         }
