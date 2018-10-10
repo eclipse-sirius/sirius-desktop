@@ -40,6 +40,7 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
@@ -153,7 +154,8 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
             if (!ddes.isEmpty()) {
                 DDiagram parentDiagram = ddes.iterator().next().getParentDiagram();
                 Predicate<DDiagramElement> allowsHideReveal = allowsHideReveal(parentDiagram);
-                return Iterables.all(ddes, allowsHideReveal) && !parentDiagram.isIsInShowingMode();
+                Predicate<DDiagramElement> notDirectlyHidden = dde -> !new DDiagramElementQuery(dde).isHidden();
+                return Iterables.all(ddes, Predicates.and(allowsHideReveal, notDirectlyHidden));
             }
 
         }
