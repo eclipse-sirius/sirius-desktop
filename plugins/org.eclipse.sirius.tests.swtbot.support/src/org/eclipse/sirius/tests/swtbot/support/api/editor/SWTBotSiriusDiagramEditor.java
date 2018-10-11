@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -960,9 +960,41 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      *            have not their "moved" bound. Another
      *            {@link org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils#waitAllUiEvents()}
      *            is needed.
+     *            
+     * @deprecated replaced by  {@link SWTBotSiriusDiagramEditor#dragWithKeys(int, int, int, int, AtomicBoolean, int...)}
      */
+    @Deprecated
     public void dragWithKey(int fromXPosition, int fromYPosition, int toXPosition, int toYPosition, int keyCode, final AtomicBoolean dragFinished) {
         ((SWTBotSiriusGefViewer) getSWTBotGefViewer()).dragWithKey(fromXPosition, fromYPosition, toXPosition, toYPosition, keyCode, dragFinished);
+    }
+
+    /**
+     * Drag and drop from the specified to the specified location with keys
+     * pressed during the drag'n'drop. This method also correctly handles the
+     * move of a bendpoint of an edge.
+     * 
+     * @param fromXPosition
+     *            the relative x position to drag from
+     * @param fromYPosition
+     *            the relative y position to drag from
+     * @param toXPosition
+     *            the relative x position to drag to
+     * @param toYPosition
+     *            the relative y position to drag to
+     * @param dragFinished
+     *            An AtomicBoolean allows to add a waiting condition. It was set
+     *            to true when the drag is finished.<BR>
+     *            Warning: When the drag is finished, the associated figures
+     *            have not their "moved" bound. Another
+     *            {@link org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils#waitAllUiEvents()}
+     *            is needed.
+     * @param keyModifiers
+     *            the key codes as defined by the key code constants in class
+     *            <code>SWT</code> of the keys that should be pressed when doing
+     *            the mouse drag.
+     */
+    public void dragWithKeys(int fromXPosition, int fromYPosition, int toXPosition, int toYPosition, final AtomicBoolean dragFinished, int... keyModifiers) {
+        ((SWTBotSiriusGefViewer) getSWTBotGefViewer()).dragWithKeys(fromXPosition, fromYPosition, toXPosition, toYPosition, dragFinished, keyModifiers);
     }
 
     /**
