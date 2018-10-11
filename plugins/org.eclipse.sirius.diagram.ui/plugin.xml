@@ -11,7 +11,7 @@
 
   Contributors:
        Obeo - Initial API and implementation
-       Felix Dorner <felix.dorner@gmail.com> - Bug 533002
+       Felix Dorner <felix.dorner@gmail.com> - Bug 533002, 540056
 -->
 
 <plugin>
@@ -1922,6 +1922,10 @@
       </participant>
       <participant
             class="org.eclipse.sirius.diagram.ui.business.internal.migration.DeleteMultipleConnectorStyleMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
+      <participant
+            class="org.eclipse.sirius.diagram.ui.business.internal.migration.RepresentationLinkMigrationParticipant"
             kind="RepresentationsFile">
       </participant>
    </extension>

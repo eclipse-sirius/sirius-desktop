@@ -23,6 +23,9 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.text.FlowPage;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
@@ -37,6 +40,8 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusDescriptionCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusDiagramNameCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusNoteEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
@@ -48,7 +53,9 @@ import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.ui.PartInitException;
 
 /**
@@ -582,6 +589,12 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
         bot.activeEditor().close();
     }
 
+    private Image getIcon(DRepresentationDescriptor descriptor) {
+        AdapterFactoryEditingDomain domain = (AdapterFactoryEditingDomain) AdapterFactoryEditingDomain.getEditingDomainFor(descriptor);
+        IItemLabelProvider provider = (IItemLabelProvider) domain.getAdapterFactory().adapt(descriptor, IItemLabelProvider.class);
+        return ExtendedImageRegistry.INSTANCE.getImage(provider.getImage(descriptor));
+    }
+
     private void validateNote(Point expectedLocation, DRepresentationDescriptor link) throws PartInitException {
 
         assertNoteAtLocation(MY_NOTE, expectedLocation);
@@ -591,7 +604,8 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
         if (link != null) {
 
             SWTBotGefEditPart note = editor.selectedEditParts().get(0);
-            validateDiagramNameCompartment(note, link.getName());
+
+            validateDiagramNameCompartment(note, link.getName(), getIcon(link));
 
             /* Doubleclick must open the target representation */
             validateLinkDoubleclick(link);
@@ -606,7 +620,7 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
             note = editor.getEditPart(MY_NOTE).parent().select();
 
             /* The header must have been updated to the other target name */
-            validateDiagramNameCompartment(note, otherLink.getName());
+            validateDiagramNameCompartment(note, otherLink.getName(), getIcon(otherLink));
 
             /* Doubleclick must now open the other target */
             validateLinkDoubleclick(otherLink);
@@ -623,27 +637,68 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
             TransactionalEditingDomain ted = localSession.getOpenedSession().getTransactionalEditingDomain();
             ted.getCommandStack().execute(new RenameRepresentationCommand(ted, link, LINK_TARGET_NEW_NAME));
             assertTrue(note.part().isActive());
-            validateDiagramNameCompartment(note, LINK_TARGET_NEW_NAME);
+            validateDiagramNameCompartment(note, LINK_TARGET_NEW_NAME, getIcon(link));
 
             /*
-             * Delete the target representation, this should delete the note
+             * When the target representation is deleted, the note label and icon should reflect this. In particular,
+             * the note is no longer deleted automatically, to avoid locks in collab and to give the user a chance to
+             * decide what to do with the note text. See also https://bugs.eclipse.org/bugs/show_bug.cgi?id=535648
              */
             ted.getCommandStack().execute(new DeleteRepresentationCommand(localSession.getOpenedSession(), Collections.singleton(link)));
-            assertNull(note.part().getParent());
+
+            validateDiagramNameCompartment(note, DiagramUIPlugin.getPlugin().getString("palettetool.linkNote.deletedLabel"),
+                    DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETED_DIAG_ELEM_DECORATOR_ICON)));
+
+            /*
+             * When the deletion is undone, the note label and icon should flip back to the old state
+             */
+            ted.getCommandStack().undo();
+            validateDiagramNameCompartment(note, LINK_TARGET_NEW_NAME, getIcon(link));
 
         }
 
     }
 
-    private void validateDiagramNameCompartment(SWTBotGefEditPart note, String expectedLabel) {
-        SiriusDiagramNameCompartmentEditPart namePart = null;
+    private void validateDiagramNameCompartment(SWTBotGefEditPart note, String expectedLabel, Image expectedIcon) {
+
+        SWTBotGefEditPart namePartBot = null;
         for (SWTBotGefEditPart child : note.children()) {
             if (child.part() instanceof SiriusDiagramNameCompartmentEditPart) {
-                namePart = (SiriusDiagramNameCompartmentEditPart) child.part();
+                namePartBot = child;
             }
         }
-        assertNotNull("No name compartment edit part found", namePart);
-        assertEquals(expectedLabel, namePart.getLabelDelegate().getText());
+
+        assertNotNull("No name compartment edit part found", namePartBot);
+        SiriusDiagramNameCompartmentEditPart namePart = (SiriusDiagramNameCompartmentEditPart) namePartBot.part();
+
+        if (expectedLabel != null) {
+            bot.waitUntil(new DefaultCondition() {
+                @Override
+                public boolean test() throws Exception {
+                    return expectedLabel.equals(namePart.getLabelDelegate().getText());
+                }
+
+                @Override
+                public String getFailureMessage() {
+                    return "LinkNote name label expected: '" + expectedLabel + "' Was: '" + namePart.getLabelDelegate().getText() + "'";
+                }
+            });
+        }
+
+        if (expectedIcon != null) {
+            bot.waitUntil(new DefaultCondition() {
+
+                @Override
+                public boolean test() throws Exception {
+                    return expectedIcon.equals(namePart.getLabelDelegate().getIcon(0));
+                }
+
+                @Override
+                public String getFailureMessage() {
+                    return "LinkNote name icon expected: '" + expectedIcon + "' Was: '" + namePart.getLabelDelegate().getIcon(0) + "'";
+                }
+            });
+        }
     }
 
     private DRepresentationDescriptor getDiagramLinkTarget() {

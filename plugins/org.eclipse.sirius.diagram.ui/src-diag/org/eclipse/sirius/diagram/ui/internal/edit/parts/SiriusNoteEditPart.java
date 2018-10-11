@@ -18,22 +18,19 @@ import java.util.Optional;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Insets;
-import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.Request;
+import org.eclipse.gmf.runtime.diagram.core.util.ViewType;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DescriptionCompartmentEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.figures.NoteFigure;
-import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.DiagramNameCompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.properties.Properties;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
-import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
@@ -51,11 +48,6 @@ import com.google.common.collect.Iterables;
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public class SiriusNoteEditPart extends NoteEditPart {
-
-    /* this handles removal of representation link notes when the referenced diagram is deleted */
-    static final Adapter LINK_ADAPTER = new DiagramLinkAdapter();
-
-    private boolean diagramLinkMode = false;
 
     /**
      * Default constructor.
@@ -102,8 +94,11 @@ public class SiriusNoteEditPart extends NoteEditPart {
                 addListenerFilter("ShowingMode", this, diagram.get(), DiagramPackage.eINSTANCE.getDDiagram_IsInShowingMode()); //$NON-NLS-1$
             }
         }
-        if (isRepresentationLink()) {
-            getNotationView().eAdapters().add(LINK_ADAPTER);
+        if (isRepresentationLink() && !isRepresentationLinkBroken()) {
+            DRepresentationDescriptor linkedDescriptor = (DRepresentationDescriptor) getNotationView().getElement();
+            if (linkedDescriptor != null) {
+                addListenerFilter("DiagramLink_RepresentationNameChange", this, linkedDescriptor); //$NON-NLS-1$
+            }
         }
 
     }
@@ -112,9 +107,7 @@ public class SiriusNoteEditPart extends NoteEditPart {
     protected void removeNotationalListeners() {
         super.removeNotationalListeners();
         removeListenerFilter("ShowingMode"); //$NON-NLS-1$
-        if (isRepresentationLink()) {
-            getNotationView().eAdapters().remove(LINK_ADAPTER);
-        }
+        removeListenerFilter("DiagramLink_RepresentationNameChange"); //$NON-NLS-1$
     }
 
     @Override
@@ -178,16 +171,8 @@ public class SiriusNoteEditPart extends NoteEditPart {
     @Override
     protected void handleNotificationEvent(Notification notification) {
         super.handleNotificationEvent(notification);
-
-        // this handles representation link note label refresh when the linked representation name changes
-        if (isRepresentationLink()) {
-            if (getNotationView().getElement() == notification.getNotifier() && notification.getFeature() == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__NAME) {
-                Iterable<DiagramNameCompartmentEditPart> diagramNameCompartmentEditPartsfilter = Iterables.filter(this.getChildren(), DiagramNameCompartmentEditPart.class);
-                if (Iterables.size(diagramNameCompartmentEditPartsfilter) == 1) {
-                    DiagramNameCompartmentEditPart diagramNameCompartmentEditPart = Iterables.getOnlyElement(diagramNameCompartmentEditPartsfilter);
-                    refreshChild(diagramNameCompartmentEditPart);
-                }
-            }
+        if (notification.getNotifier() == getNotationView().getElement() && notification.getFeature() == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__NAME) {
+            refreshDiagramNameCompartmentEditPart();
         }
     }
 
@@ -205,24 +190,45 @@ public class SiriusNoteEditPart extends NoteEditPart {
     /**
      * Is this a diagram link or is it a 'simple' note?
      * 
+     * @see {@link ViewQuery#isRepresentationLink()}
      * @return true if this is a diagram link, false otherwise
      */
     public boolean isRepresentationLink() {
-        return getNotationView() != null && getNotationView().getElement() instanceof DRepresentationDescriptor;
+        boolean result = false;
+        View view = getNotationView();
+        if (view != null) {
+            ViewQuery query = new ViewQuery(view);
+            result = query.isRepresentationLink();
+        }
+        return result;
     }
 
-    /*
-     * This just deletes the view when the element reference is unset, i.e. when the view's DRepresentationDescriptor is
-     * deleted.
+    /**
+     * For a representation link, check if it refers to a deleted representation descriptor. Invocations should be
+     * guarded by {@link #isRepresentationLink()}.
+     * 
+     * @see {@link ViewQuery#isRepresentationLinkBroken()}
+     * @return true if the link note view has a dangling target, false otherwise.
      */
-    static class DiagramLinkAdapter extends AdapterImpl {
-        @Override
-        public void notifyChanged(Notification msg) {
-            if (msg.getEventType() == Notification.UNSET && msg.getFeature() == NotationPackage.Literals.VIEW__ELEMENT) {
-                ((View) msg.getNotifier()).eAdapters().remove(this);
-                SiriusUtil.delete((View) msg.getNotifier());
+    boolean isRepresentationLinkBroken() {
+        boolean result = false;
+        View view = getNotationView();
+        if (view != null) {
+            ViewQuery query = new ViewQuery(view);
+            result = query.isRepresentationLinkBroken();
+        }
+        return result;
+    }
+
+    /**
+     * Refresh the name compartment of this note.
+     */
+    public void refreshDiagramNameCompartmentEditPart() {
+        for (Object ep : getChildren()) {
+            IGraphicalEditPart gep = (IGraphicalEditPart) ep;
+            if (gep.getNotationView() != null && ViewType.DIAGRAM_NAME.equals(gep.getNotationView().getType())) {
+                gep.refresh();
             }
         }
     }
-
 }

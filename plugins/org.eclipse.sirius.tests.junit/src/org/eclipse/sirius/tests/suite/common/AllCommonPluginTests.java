@@ -149,6 +149,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.RepairOnLabelHiddenTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RepairOnStyleCustomizationsTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RepairTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RepairWithActivatedFiltersTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.RepresentationLinkMigrationParticipantTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RgbValuesEDataTypeMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RunRepairTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.SetVersionTest;
@@ -244,6 +245,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(DeleteMultipleConnectorStyleMigrationParticipantTest.class);
         suite.addTestSuite(RepairGMFbendpointsMigrationParticipantTest.class);
         suite.addTestSuite(TransientLayerMigrationTest.class);
+        suite.addTestSuite(RepresentationLinkMigrationParticipantTest.class);
         suite.addTestSuite(TechnicalUidMigrationTest.class);
         suite.addTestSuite(ViewWithNullElementMigrationParticipantTest.class);
 

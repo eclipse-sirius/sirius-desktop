@@ -13,7 +13,9 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.testers;
 
 import org.eclipse.core.expressions.PropertyTester;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusNoteEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 
 /**
  * Tester to know if an IGraphicalEditPart represents a representation link note.
@@ -34,7 +36,14 @@ public class LinkNoteTester extends PropertyTester {
     @Override
     public boolean test(Object receiver, String property, Object[] args, Object expectedValue) {
         if (PROPERTY_IS_LINK_NOTE.equals(property)) {
-            return receiver instanceof SiriusNoteEditPart && ((SiriusNoteEditPart) receiver).isRepresentationLink();
+            boolean result = false;
+            IGraphicalEditPart part = (IGraphicalEditPart) receiver;
+            View view = part.getNotationView();
+            if (view != null) {
+                ViewQuery query = new ViewQuery(view);
+                result = query.isRepresentationLink();
+            }
+            return result;
         }
         throw new IllegalArgumentException("Unknown property: " + property); //$NON-NLS-1$
     }

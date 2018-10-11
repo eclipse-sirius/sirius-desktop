@@ -20,7 +20,7 @@ h3. User-Visible Changes
 !user/diagrams/images/show_hide_mode_tabbar_activate.png!
 * <span class="label label-success">Added</span> A quick fix is now available on the error marker signaling a modeling project without a representations file. Processing this quick fix will create a new empty representation file.
 * <span class="label label-info">Modified</span> The tool "Link Note", introduced in Sirius 6.0.0, has been renamed into "Representation Link".
-
+* <span class="label label-info">Modified</span> A "Representation Link" is no longer deleted automatically when the targeted representation is deleted. Instead, the note header changes to "Broken Representation Link" and the note icon changes to a small red diagonal cross. You can refer to the "user documentation":user/diagrams/Diagrams.html#notes for more details.
 
 h3. Specifier-Visible Changes
 
@@ -63,6 +63,8 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 ** @stdGetViewsWithSameMapping(DSemanticDiagram, List<DSemanticDecorator>)@: Return the list of @DSemanticDecorator@ having the same mappings as the current selected diagram elements.
 ** @stdGetViewsRepresentingSelectedType(DSemanticDiagram)@: Return the list of @DSemanticDecorator@ in the current diagram representing semantic element having the EType provided by the end-user through a dialog box. This dialog box can be improved. There is currently no completion, neither validation.
 ** @stdGetViewsOfExpression(DSemanticDiagram)@: Return the list of @DSemanticDecorator@ corresponding to the evaluation of an expression written by the end-user in a dialog box. This dialog box can be improved. There is currently no completion, neither validation.
+* <span class="label label-success">Added</span> The query @isRepresentationLink()@ has been added in @org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery@ to know if the view is a representation link or a normal note.
+* <span class="label label-success">Added</span> The query @isRepresentationLinkBroken()@ has been added in @org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery@ to know, for a representation link, if it refers to a deleted representation descriptor. Invocations should be guarded by @isRepresentationLink()@.
 * <span class="label label-info">Modified</span> The interface @org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerFigureDesc@ has been moved to @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures@ package.
 * <span class="label label-info">Modified</span> The interface @org.eclipse.sirius.diagram.ui.tools.api.figure.StyledFigure@ has been moved to @org.eclipse.sirius.ext.draw2d.figure@ package.
 * <span class="label label-info">Modified</span> The interface @org.eclipse.sirius.diagram.ui.tools.api.figure.ITransparentFigure@ has been moved to @org.eclipse.sirius.ext.draw2d.figure@ package.
@@ -113,6 +115,8 @@ h4. Migrations
 * <span class="label label-success">Added</span> A migration participant has been added to convert the serialized xmi:id to the technical id (uid attribut) for Sirius model elements of the .aird files (see "bugzilla #525261":https://bugs.eclipse.org/bugs/show_bug.cgi?id=525261 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _14.1.0.201808300808_.
 * <span class="label label-success">Added</span> A migration participant has been added to fix diagrams with corrupted Note, Text or Note Attachment (see "bugzilla #539550":https://bugs.eclipse.org/bugs/show_bug.cgi?id=539550 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _14.1.0.201809271200_.
 * <span class="label label-success">Added</span> A migration participant has been added to fix edge with multiple connector style (see "bugzilla #539944":https://bugs.eclipse.org/bugs/show_bug.cgi?id=539944 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _14.1.0.201810051700_.
+* <span class="label label-success">Added</span> A migration participant has been added to update existing representation link. (see "bugzilla #533175":https://bugs.eclipse.org/bugs/show_bug.cgi?id=535648 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _14.1.0.201810111800_.
+
 
 h2(#sirius6.0.0). Changes in Sirius 6.0.0
 

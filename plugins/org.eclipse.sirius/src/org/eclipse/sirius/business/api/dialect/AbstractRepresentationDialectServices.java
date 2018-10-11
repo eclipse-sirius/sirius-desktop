@@ -30,6 +30,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
@@ -201,7 +202,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
         if (isSupported(representationDescriptor)) {
             DRepresentation representation = representationDescriptor.getRepresentation();
             Optional<Resource> resOpt = Optional.ofNullable(representation).map(EObject::eResource);
-            SiriusUtil.delete(representationDescriptor, session);
+            EcoreUtil.remove(representationDescriptor);
             if (representation != null) {
                 SiriusUtil.delete(representation, session);
             }

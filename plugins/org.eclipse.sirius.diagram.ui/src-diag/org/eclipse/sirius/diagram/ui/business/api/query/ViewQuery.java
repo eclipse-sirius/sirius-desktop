@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
+ *    Felix Dorner <felix.dorner@gmail.com> - Bug 540056
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.api.query;
 
@@ -16,9 +17,11 @@ import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewType;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
@@ -45,6 +48,7 @@ import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.FontData;
@@ -68,6 +72,11 @@ public class ViewQuery {
      * key.
      */
     public static final String VERTICAL_ALIGNMENT = "verticalAlignment"; //$NON-NLS-1$
+
+    /**
+     * custom data key for link notes, used in the {@link #SPECIFIC_STYLES} annotation.
+     */
+    public static final String REPRESENTATION_LINK_NOTE = "representationlink"; //$NON-NLS-1$
 
     /**
      * The set of GMF style attributes customizable for which not corresponding Sirius style property exists.
@@ -316,6 +325,27 @@ public class ViewQuery {
         Optional<DDiagram> dDiagram = getDDiagram(view);
         return dDiagram.isPresent() && dDiagram.get().isIsInShowingMode();
 
+    }
+
+    /**
+     * Is the view a representation link note?
+     * 
+     * @return true if this is a representation link note, false otherwise
+     */
+    public boolean isRepresentationLink() {
+        EAnnotation specificStyles = view.getEAnnotation(ViewQuery.SPECIFIC_STYLES);
+        return specificStyles != null && specificStyles.getDetails().containsKey(REPRESENTATION_LINK_NOTE) && ViewType.NOTE.equals(view.getType());
+    }
+
+    /**
+     * For a representation link, check if it refers to a deleted representation descriptor. Invocations should be
+     * guarded by {@link #isRepresentationLink()}.
+     * 
+     * @return true if the representation link note view has a dangling target, false otherwise.
+     */
+    public boolean isRepresentationLinkBroken() {
+        EObject element = view.getElement();
+        return !(element instanceof DRepresentationDescriptor) || element.eIsProxy() || element.eResource() == null;
     }
 
     /**

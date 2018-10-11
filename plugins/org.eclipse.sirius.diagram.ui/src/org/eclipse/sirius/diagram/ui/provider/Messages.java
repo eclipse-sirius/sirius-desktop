@@ -947,6 +947,12 @@ public final class Messages {
     public static String RepairGMFbendpointsMigrationParticipant_title;
 
     @TranslatableMessage
+    public static String RepresentationLinkMigrationParticipant_title;
+
+    @TranslatableMessage
+    public static String RepresentationLinkMigrationParticipant_entry;
+
+    @TranslatableMessage
     public static String DeleteMultipleConnectorMigrationParticipant_title;
 
     @TranslatableMessage
