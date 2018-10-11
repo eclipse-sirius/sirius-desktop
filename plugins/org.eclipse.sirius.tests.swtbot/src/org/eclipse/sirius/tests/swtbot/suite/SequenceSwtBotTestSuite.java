@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -73,6 +73,7 @@ import org.eclipse.sirius.tests.swtbot.sequence.SequenceMessageToSelfTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceOpeningFilteredEventEndsTests;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceReorderTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceReturnMessageTest;
+import org.eclipse.sirius.tests.swtbot.sequence.SequenceSpaceTest;
 import org.eclipse.sirius.tests.swtbot.sequence.StateBasicTests;
 import org.eclipse.sirius.tests.swtbot.sequence.StateHierarchyTests;
 import org.eclipse.sirius.tests.swtbot.sequence.StateNoMessageTests;
@@ -143,6 +144,7 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(ExecutionLinkedMessageReconnectionTests.class);
         suite.addTestSuite(ExternalModificationsTests.class);
         suite.addTestSuite(FoundLostMessageTests.class);
+        suite.addTestSuite(SequenceSpaceTest.class);
     }
 
     /**
@@ -197,8 +199,7 @@ public class SequenceSwtBotTestSuite extends TestCase {
     }
 
     /**
-     * Creates the {@link junit.framework.TestSuite TestSuite} for all the
-     * disabled test.
+     * Creates the {@link junit.framework.TestSuite TestSuite} for all the disabled test.
      * 
      * @return The test suite containing all the disabled tests.
      */

@@ -326,10 +326,45 @@ public class SWTBotSiriusGefViewer extends SWTBotGefViewer {
      *            have not their "moved" bound. Another
      *            {@link org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils#waitAllUiEvents()}
      *            is needed.
+     * @Deprecated replaced by  {@link SWTBotSiriusGefViewer#dragWithKeys(int, int, int, int, AtomicBoolean, int...)}           
      */
+    @Deprecated
     public void dragWithKey(final int fromXPosition, final int fromYPosition, final int toXPosition, final int toYPosition, final int keyCode, final AtomicBoolean dragFinished) {
         if (canvas instanceof SWTBotSiriusFigureCanvas) {
             ((SWTBotSiriusFigureCanvas) canvas).mouseDragWithKey(fromXPosition, fromYPosition, toXPosition, toYPosition, keyCode, dragFinished);
+        } else {
+            canvas.mouseDrag(fromXPosition, fromYPosition, toXPosition, toYPosition);
+        }
+    }
+
+    /**
+     * Drag and drop from the specified to the specified location with keys
+     * pressed during the drag'n'drop. This method also correctly handles the
+     * move of a bendpoint of an edge.
+     * 
+     * @param fromXPosition
+     *            the relative x position to drag from
+     * @param fromYPosition
+     *            the relative y position to drag from
+     * @param toXPosition
+     *            the relative x position to drag to
+     * @param toYPosition
+     *            the relative y position to drag to
+     * @param dragFinished
+     *            An AtomicBoolean allows to add a waiting condition. It was set
+     *            to true when the drag is finished.<BR>
+     *            Warning: When the drag is finished, the associated figures
+     *            have not their "moved" bound. Another
+     *            {@link org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils#waitAllUiEvents()}
+     *            is needed.
+     * @param keyModifiers
+     *            the key codes as defined by the key code constants in class
+     *            <code>SWT</code> of the keys that should be pressed when doing
+     *            the mouse drag.
+     */
+    public void dragWithKeys(final int fromXPosition, final int fromYPosition, final int toXPosition, final int toYPosition, final AtomicBoolean dragFinished, final int... keyModifiers) {
+        if (canvas instanceof SWTBotSiriusFigureCanvas) {
+            ((SWTBotSiriusFigureCanvas) canvas).mouseDragWithKeys(fromXPosition, fromYPosition, toXPosition, toYPosition, dragFinished, keyModifiers);
         } else {
             canvas.mouseDrag(fromXPosition, fromYPosition, toXPosition, toYPosition);
         }

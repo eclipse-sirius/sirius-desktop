@@ -215,7 +215,9 @@ public class SWTBotSiriusFigureCanvas extends SWTBotGefFigureCanvas {
      *            have not their "moved" bound. Another
      *            {@link org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils#waitAllUiEvents()}
      *            is needed.
+     * @deprecated replaced by  {@link SWTBotSiriusFigureCanvas#mouseDragWithKeys(int, int, int, int, AtomicBoolean, int...)}
      */
+    @Deprecated 
     public void mouseDragWithKey(final int fromXPosition, final int fromYPosition, final int toXPosition, final int toYPosition, final int keyCode, final AtomicBoolean dragFinished) {
         final Result<Boolean> toExecute = new Result<Boolean>() {
 
@@ -252,6 +254,78 @@ public class SWTBotSiriusFigureCanvas extends SWTBotGefFigureCanvas {
                 if (keyCode != SWT.None) {
                     eventDispatcher.dispatchKeyReleased(keyEvent);
                 }
+                return true;
+            }
+        };
+        SWTUtils.display().asyncExec(new Runnable() {
+            @Override
+            public void run() {
+                dragFinished.set(toExecute.run());
+            }
+        });
+    }
+
+    /**
+     * This method emits mouse events that handle drags within the canvas.
+     * Compared to {@link #mouseDrag(int, int, int, int)}, this method also
+     * calls an update of the viewport and makes a second calls to drag event.
+     * These new events allow to have a feedback drawn for edges and a correct
+     * behavior when moving bendpoints of edge.
+     * 
+     * @param fromXPosition
+     *            the relative x position within the canvas to drag from
+     * @param fromYPosition
+     *            the relative y position within the canvas to drag from
+     * @param toXPosition
+     *            the relative x position within the canvas to drag to
+     * @param toYPosition
+     *            the relative y position within the canvas to drag to
+     * @param dragFinished
+     *            An AtomicBoolean allows to add a waiting condition. It was set
+     *            to true when the drag is finished.<BR>
+     *            Warning: When the drag is finished, the associated figures
+     *            have not their "moved" bound. Another
+     *            {@link org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils#waitAllUiEvents()}
+     *            is needed.
+     * @param keyModifiers
+     *            the key codes as defined by the key code constants in class
+     *            <code>SWT</code> of the keys that should be pressed when doing
+     *            the mouse drag.
+     */
+    public void mouseDragWithKeys(final int fromXPosition, final int fromYPosition, final int toXPosition, final int toYPosition, final AtomicBoolean dragFinished, final int... keyModifiers) {
+        // CHECKSTYLE:OFF
+        final Result<Boolean> toExecute = new Result<Boolean>() {
+            // CHECKSTYLE:ON
+            @Override
+            public Boolean run() {
+                int stateMask = SWT.NONE;
+                if (keyModifiers.length > 0) {
+                    stateMask = keyModifiers[0];
+                    for (int i = 1; i < keyModifiers.length; i++) {
+                        stateMask = stateMask | keyModifiers[i];
+                    }
+                }
+                org.eclipse.swt.events.MouseEvent meMove = wrapMouseEvent(fromXPosition, fromYPosition, 0, stateMask, 0);
+                eventDispatcher.dispatchMouseMoved(meMove);
+                org.eclipse.swt.events.MouseEvent meDown = wrapMouseEvent(fromXPosition, fromYPosition, 1, SWT.BUTTON1 | stateMask, 1);
+                eventDispatcher.dispatchMousePressed(meDown);
+
+                org.eclipse.swt.events.MouseEvent meMoveTarget = wrapMouseEvent(toXPosition, toYPosition, 1, SWT.BUTTON1 | stateMask, 0);
+                eventDispatcher.dispatchMouseMoved(meMoveTarget);
+
+                // Force an update of viewport (necessary to have a correct
+                // feedback of edge in case of moving bendpoint of edge for
+                // example)
+                if (widget instanceof FigureCanvas) {
+                    ((FigureCanvas) widget).getViewport().getUpdateManager().performUpdate();
+                    // Sent the mouse drag event a second time to consider the
+                    // correct feedback in the policy/command
+                    eventDispatcher.dispatchMouseMoved(meMoveTarget);
+                }
+
+                org.eclipse.swt.events.MouseEvent meUp = wrapMouseEvent(toXPosition, toYPosition, 1, SWT.BUTTON1, 1);
+                eventDispatcher.dispatchMouseReleased(meUp);
+
                 return true;
             }
         };
