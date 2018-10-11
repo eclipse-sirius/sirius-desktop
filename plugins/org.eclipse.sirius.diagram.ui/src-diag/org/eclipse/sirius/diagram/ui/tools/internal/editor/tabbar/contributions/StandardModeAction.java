@@ -93,18 +93,23 @@ public class StandardModeAction extends CheckedPropertyAction {
     }
 
     @Override
-    protected boolean calculateChecked() {
+    protected synchronized boolean calculateChecked() {
         return ddiagram != null && !ddiagram.isIsInShowingMode() && !ddiagram.isIsInLayoutingMode();
     }
 
     @Override
-    protected void doRun(IProgressMonitor progressMonitor) {
+    protected synchronized void doRun(IProgressMonitor progressMonitor) {
+        if (editor == null || ddiagram == null) {
+            // Can happen if we've been disposed since calculateChecked/calculateEnabled has been called.
+            return;
+        }
         TransactionalEditingDomain editingDomain = (TransactionalEditingDomain) editor.getEditingDomain();
         if (editingDomain != null) {
 
             // We don't use a command stack because we don't want the mode update to be undone
             TransactionImpl t = new TransactionImpl(editingDomain, false, Collections.EMPTY_MAP);
             try {
+
                 t.start();
                 this.ddiagram.setIsInLayoutingMode(false);
                 this.ddiagram.setIsInShowingMode(false);
@@ -119,7 +124,7 @@ public class StandardModeAction extends CheckedPropertyAction {
     }
 
     @Override
-    protected boolean calculateEnabled() {
+    protected synchronized boolean calculateEnabled() {
         return ddiagram != null && editor != null;
     }
 
@@ -182,7 +187,7 @@ public class StandardModeAction extends CheckedPropertyAction {
      * @see org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction#dispose()
      */
     @Override
-    public void dispose() {
+    public synchronized void dispose() {
         ddiagram = null;
         modesMenuManager = null;
         editor = null;
