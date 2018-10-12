@@ -38,7 +38,9 @@ public class CreateMissingRepresentationFileResolution implements IMarkerResolut
             public void run(IMarker marker) {
                 if (marker.getResource() instanceof IProject) {
                     try {
-                        ModelingProjectManager.INSTANCE.createLocalRepresentationsFile((IProject) marker.getResource(), new NullProgressMonitor());
+                        IProject project = (IProject) marker.getResource();
+                        ModelingProjectManager.INSTANCE.removeModelingNature(project, new NullProgressMonitor());
+                        ModelingProjectManager.INSTANCE.convertToModelingProject(project, new NullProgressMonitor());
                     } catch (CoreException e) {
                         SiriusEditPlugin.getPlugin().getLog().log(e.getStatus());
                     }
