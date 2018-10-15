@@ -125,7 +125,7 @@ public class DTableTreeViewer extends AbstractDTreeViewer {
             }
             final int columnIndexInTable = columnIndexDisplayInSwtTable - 1;
             Option<DCell> optionalCell = Options.newNone();
-            if (columnIndexInTable != -1) {
+            if (columnIndexInTable > -1) {
                 DColumn column = TableHelper.getTable(line).getColumns().get(columnIndexInTable);
                 optionalCell = TableHelper.getCell(line, column);
             }
