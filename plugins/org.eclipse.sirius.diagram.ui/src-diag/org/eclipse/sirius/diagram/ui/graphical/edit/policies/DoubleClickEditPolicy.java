@@ -251,8 +251,8 @@ public class DoubleClickEditPolicy extends OpenEditPolicy {
         if (optionalSession.isPresent()) {
             DiagramMappingsManager mappingManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(optionalSession.get(), parentDiagram);
             for (DDiagramElement dDiagramElement : elementSet) {
-                if (mappingManager.getActiveParentLayers(dDiagramElement.getDiagramElementMapping()).size() <= 0) {
-                    Layer layerToActivate = getLayerToActivate(parentDiagram, dDiagramElement, mappingManager);
+                Collection<Layer> layersToActivate = getLayerToActivate(parentDiagram, dDiagramElement, mappingManager);
+                for (Layer layerToActivate : layersToActivate) {
                     if (layerToActivate != null) {
                         final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(parentDiagram);
                         if (!layersToActivateSet.contains(layerToActivate.getName())) {
@@ -300,7 +300,7 @@ public class DoubleClickEditPolicy extends OpenEditPolicy {
         return command != null ? new SimpleEntry<String, org.eclipse.emf.common.command.Command>(filterStrings, command) : null;
     }
 
-    private Layer getLayerToActivate(DDiagram parentDiagram, final DDiagramElement ddiagramElement, DiagramMappingsManager mappingManager) {
+    private Collection<Layer> getLayerToActivate(DDiagram parentDiagram, final DDiagramElement ddiagramElement, DiagramMappingsManager mappingManager) {
         Collection<Layer> layers = mappingManager.getActiveParentLayers(ddiagramElement.getDiagramElementMapping());
         List<Layer> allLayers = LayerHelper.getAllLayers(parentDiagram.getDescription());
         Set<Layer> deactivatedLayers = allLayers.stream().filter(elmt -> !layers.contains(elmt)).collect(Collectors.toSet());
@@ -314,10 +314,7 @@ public class DoubleClickEditPolicy extends OpenEditPolicy {
                 }
             }
         }
-        if (!keptElementLayers.isEmpty()) {
-            return keptElementLayers.iterator().next();
-        }
-        return null;
+        return keptElementLayers;
     }
 
     /**

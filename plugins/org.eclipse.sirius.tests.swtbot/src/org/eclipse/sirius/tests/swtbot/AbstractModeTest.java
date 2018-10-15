@@ -22,7 +22,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DEdgeSpec;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.tests.support.api.ICondition;
@@ -75,8 +75,8 @@ public abstract class AbstractModeTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Ensures that a tool has been applied or not (according to the given
-     * shouldHaveBeenApplied value), by checking the Session's status.
+     * Ensures that a tool has been applied or not (according to the given shouldHaveBeenApplied value), by checking the
+     * Session's status.
      * 
      * @param shouldHaveBeenApplied
      *            indicates whether a tool should have been applied or not
@@ -104,14 +104,12 @@ public abstract class AbstractModeTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Ensures that a direct edit tool has been applied or not (according to the
-     * given shouldHaveBeenApplied value).
+     * Ensures that a direct edit tool has been applied or not (according to the given shouldHaveBeenApplied value).
      * 
      * @param originalEditPartName
      *            the part name before direct edit.
      * @param shouldHaveBeenApplied
-     *            indicates whether the direct edit should have been applied or
-     *            not
+     *            indicates whether the direct edit should have been applied or not
      */
     protected void assertDirectEditToolHasBeenApplied(String originalEditPartName, boolean shouldHaveBeenApplied) {
         if (shouldHaveBeenApplied) {
@@ -130,8 +128,8 @@ public abstract class AbstractModeTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Ensures that a drag and drop tool has been applied or not (according to
-     * the given shouldHaveBeenApplied value), by checking the Session's status.
+     * Ensures that a drag and drop tool has been applied or not (according to the given shouldHaveBeenApplied value),
+     * by checking the Session's status.
      * 
      * @param draggedObject
      *            the dragged object.
@@ -179,7 +177,7 @@ public abstract class AbstractModeTest extends AbstractSiriusSwtBotGefTestCase {
         for (SWTBotGefConnectionEditPart swtBotGefConnectionEditPart : connectionsEditPart) {
             DEdgeEditPart edgePart = ((DEdgeEditPart) swtBotGefConnectionEditPart.part());
             Edge edge = (Edge) edgePart.getModel();
-            EObject target = ((DEdgeSpec) edge.getElement()).getTarget();
+            EObject target = ((DEdge) edge.getElement()).getTarget();
             String name = target instanceof ENamedElement ? ((ENamedElement) target).getName() : "";
             if (edgeName.equals(name)) {
                 return swtBotGefConnectionEditPart;
@@ -189,8 +187,7 @@ public abstract class AbstractModeTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Ensures that an edge reconnection has been applied or not (according to
-     * the given shouldHaveBeenApplied value).
+     * Ensures that an edge reconnection has been applied or not (according to the given shouldHaveBeenApplied value).
      * 
      * @param targetPartName
      *            the original target before reconnection

@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import static org.eclipse.swtbot.swt.finder.waits.Conditions.shellIsActive;
+
 import java.util.List;
 
 import org.eclipse.draw2d.geometry.Point;
@@ -24,36 +26,39 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.HideFilter;
 import org.eclipse.sirius.diagram.HideLabelFilter;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeContainerSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeListElementSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeListSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeSpec;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode3EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeNameEditPart;
 import org.eclipse.sirius.tests.support.api.ICondition;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 
 /**
- * Tests that the show/hide mode behave as expected and that the menu to change
- * the active mode is also working.
+ * Tests that the show/hide mode behave as expected and that the menu to change the active mode is also working.
  * 
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
  *
@@ -61,10 +66,13 @@ import org.hamcrest.Matcher;
 public class EditModeTest extends AbstractModeTest {
 
     private void reconnectEdge(String source, String target, String newTargetName) {
+
         SWTBotGefEditPart sourceEditPartBot = getEditPart(source, AbstractBorderItemEditPart.class);
         SWTBotGefEditPart targetEditPartBot = getEditPart(target, AbstractBorderItemEditPart.class);
         SWTBotGefEditPart newtargetEditPartBot = getEditPart(newTargetName, AbstractBorderItemEditPart.class);
         SWTBotGefConnectionEditPart connectionEditPartBot = editor.getConnectionEditPart(sourceEditPartBot, targetEditPartBot).get(0);
+
+        editor.reveal(connectionEditPartBot.part());
 
         // Reconnect target of first connection
         PointList connection1Points = ((AbstractConnectionEditPart) connectionEditPartBot.part()).getConnectionFigure().getPoints().getCopy();
@@ -243,169 +251,169 @@ public class EditModeTest extends AbstractModeTest {
     }
 
     /**
-     * Ensures that activating the Layouting mode when standard mode is
-     * activated forbids edge DnD tools applying.
+     * Ensures that activating the Layouting mode when standard mode is activated forbids edge DnD tools applying.
      */
     public void testLayoutingModeOnDragAndDropFromStandardMode() {
         testDragAndDrop(Mode.STANDARD, Mode.LAYOUTING);
     }
 
     /**
-     * Ensures that activating the Layouting mode when standard mode is
-     * activated forbids edge direct edit tools applying.
+     * Ensures that activating the Layouting mode when standard mode is activated forbids edge direct edit tools
+     * applying.
      */
     public void testLayoutingModeOnDirectEditFromStandardMode() {
         testDirectEdit(Mode.STANDARD, Mode.LAYOUTING);
     }
 
     /**
-     * Ensures that activating the Layouting mode when standard mode is
-     * activated forbids edge reconnection tools applying.
+     * Ensures that activating the Layouting mode when standard mode is activated forbids edge reconnection tools
+     * applying.
      */
     public void testLayoutingModeOnEdgeReconnectionFromStandardMode() {
         testReconnect(Mode.STANDARD, Mode.LAYOUTING);
     }
 
     /**
-     * Ensures that activating the Layouting mode when show/hide mode is
-     * activated forbids edge DnD tools applying.
+     * Ensures that activating the Layouting mode when show/hide mode is activated forbids edge DnD tools applying.
      */
     public void testLayoutingModeOnDragAndDropFromShowHideMode() {
         testDragAndDrop(Mode.SHOWHIDE, Mode.LAYOUTING);
     }
 
     /**
-     * Ensures that activating the Layouting mode when show/hide mode is
-     * activated forbids edge direct edit tools applying.
+     * Ensures that activating the Layouting mode when show/hide mode is activated forbids edge direct edit tools
+     * applying.
      */
     public void testLayoutingModeOnDirectEditFromShowHideMode() {
         testDirectEdit(Mode.SHOWHIDE, Mode.LAYOUTING);
     }
 
     /**
-     * Ensures that activating the Layouting mode when show/hide mode is
-     * activated forbids edge reconnection tools applying.
+     * Ensures that activating the Layouting mode when show/hide mode is activated forbids edge reconnection tools
+     * applying.
      */
     public void testLayoutingModeOnEdgeReconnectionFromShowHideMode() {
         testReconnect(Mode.SHOWHIDE, Mode.LAYOUTING);
     }
 
     /**
-     * Ensures that activating the showing mode when standard mode is activated
-     * forbids edge DnD tools applying.
+     * Ensures that activating the showing mode when standard mode is activated forbids edge DnD tools applying.
      */
     public void testShowHideOnDragAndDropFromStandardMode() {
         testDragAndDrop(Mode.STANDARD, Mode.SHOWHIDE);
     }
 
     /**
-     * Ensures that activating the showing mode when standard mode is activated
-     * forbids edge direct edit tools applying.
+     * Ensures that activating the showing mode when standard mode is activated forbids edge direct edit tools applying.
      */
     public void testShowHideOnDirectEditFromStandardMode() {
         testDirectEdit(Mode.STANDARD, Mode.SHOWHIDE);
     }
 
     /**
-     * Ensures that activating the showing mode when standard mode is activated
-     * forbids edge reconnection tools applying.
+     * Ensures that activating the showing mode when standard mode is activated forbids edge reconnection tools
+     * applying.
      */
     public void testShowHideOnEdgeReconnectionFromStandardMode() {
         testReconnect(Mode.STANDARD, Mode.SHOWHIDE);
     }
 
     /**
-     * Ensures that activating the show/hide mode when Layouting mode is
-     * activated forbids edge DnD tools applying.
+     * Ensures that activating the show/hide mode when Layouting mode is activated forbids edge DnD tools applying.
      */
     public void testShowHideOnDragAndDropFromLayoutingMode() {
         testDragAndDrop(Mode.LAYOUTING, Mode.SHOWHIDE);
     }
 
     /**
-     * Ensures that activating the show/hide mode when Layouting mode is
-     * activated forbids edge direct edit tools applying.
+     * Ensures that activating the show/hide mode when Layouting mode is activated forbids edge direct edit tools
+     * applying.
      */
     public void testShowHideOnDirectEditFromSLayoutingMode() {
         testDirectEdit(Mode.LAYOUTING, Mode.SHOWHIDE);
     }
 
     /**
-     * Ensures that activating the show/hide mode when Layouting mode is
-     * activated forbids edge reconnection tools applying.
+     * Ensures that activating the show/hide mode when Layouting mode is activated forbids edge reconnection tools
+     * applying.
      */
     public void testShowHideOnEdgeReconnectionFromLayoutingMode() {
         testReconnect(Mode.LAYOUTING, Mode.SHOWHIDE);
     }
 
     /**
-     * Verify that a double click on a visible node label hides it and vice
-     * versa.
+     * Verify that a double click on a visible node label hides it and vice versa.
      */
     public void testShowHideDoubleClickOnNodeLabel() {
         SWTBotGefEditPart swtBotDNodeEditPart = getEditPart("new EClass 4", DNode4EditPart.class);
         EditPart part = swtBotDNodeEditPart.part();
-        DNodeSpec element = (DNodeSpec) ((Node) part.getModel()).getElement();
+        DNode element = (DNode) ((Node) part.getModel()).getElement();
         assertFalse("The node should not have its label filtered.", element.getGraphicalFilters().stream().anyMatch(HideLabelFilter.class::isInstance));
 
         activateShowHideModeUsingTabbar();
         SWTBotGefEditPart swtBotEditPart = getEditPart("new EClass 4", DNodeNameEditPart.class);
-        swtBotEditPart.doubleClick();
-        SWTBotUtils.waitAllUiEvents();
-
-        assertTrue("The node should have its label filtered.", element.getGraphicalFilters().stream().anyMatch(HideLabelFilter.class::isInstance));
-
-        swtBotEditPart.doubleClick();
-        SWTBotUtils.waitAllUiEvents();
-
-        assertFalse("The node should not have its label filtered.", element.getGraphicalFilters().stream().anyMatch(HideLabelFilter.class::isInstance));
-
+        hideShow(element, swtBotEditPart, true);
     }
 
     /**
-     * Verify that a double click on a visible bordered node hides it and vice
-     * versa.
+     * Make a double click on the diagram element and verifies it is hidden. And do a double click again and verifies it
+     * is shown again.
+     * 
+     * @param element
+     *            element to double click
+     * @param swtBotEditPart
+     *            the corresponding part.
+     */
+    private void hideShow(DDiagramElement element, SWTBotGefEditPart swtBotEditPart, boolean isLabelHidden) {
+        editor.reveal(swtBotEditPart.part());
+        OperationDoneCondition done = new OperationDoneCondition();
+        swtBotEditPart.doubleClick();
+        bot.waitUntil(done);
+        SWTBotUtils.waitAllUiEvents();
+
+        if (isLabelHidden) {
+            assertTrue("The node should have its label filtered.", element.getGraphicalFilters().stream().anyMatch(HideLabelFilter.class::isInstance));
+        } else {
+            assertTrue("The node should be filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
+
+        }
+        done = new OperationDoneCondition();
+        swtBotEditPart.doubleClick();
+        bot.waitUntil(done);
+        SWTBotUtils.waitAllUiEvents();
+
+        if (isLabelHidden) {
+            assertFalse("The node should not have its label filtered.", element.getGraphicalFilters().stream().anyMatch(HideLabelFilter.class::isInstance));
+        } else {
+            assertFalse("The node should not be filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
+        }
+    }
+
+    /**
+     * Verify that a double click on a visible bordered node hides it and vice versa.
      */
     public void testShowHideDoubleClickOnBorderedNode() {
-        SWTBotGefEditPart swtBotDNodeEditPart = getEditPart("new EClass 4", DNode4EditPart.class);
-        EditPart part = swtBotDNodeEditPart.part();
-        DNodeSpec element = (DNodeSpec) ((Node) part.getModel()).getElement();
+        SWTBotGefEditPart swtBotEditPart = getEditPart("new EClass 4", DNode4EditPart.class);
+        EditPart part = swtBotEditPart.part();
+        DNode element = (DNode) ((Node) part.getModel()).getElement();
         assertFalse("The node should not have its label filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
 
         activateShowHideModeUsingTabbar();
-        swtBotDNodeEditPart.doubleClick();
-        SWTBotUtils.waitAllUiEvents();
-
-        assertTrue("The node should be filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
-
-        swtBotDNodeEditPart.doubleClick();
-        SWTBotUtils.waitAllUiEvents();
-
-        assertFalse("The node should not be filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
-
+        hideShow(element, swtBotEditPart, false);
     }
 
     /**
-     * Verify that a double click on a visible container hides it and vice
-     * versa.
+     * Verify that a double click on a visible container hides it and vice versa.
      */
     public void testShowHideDoubleClickOnContainer() {
-        SWTBotGefEditPart swtBotDNodeEditPart = getEditPart("new EPackage 2", DNodeContainerEditPart.class);
-        EditPart part = swtBotDNodeEditPart.part();
-        DNodeContainerSpec element = (DNodeContainerSpec) ((Node) part.getModel()).getElement();
+        SWTBotGefEditPart swtBotEditPart = getEditPart("new EPackage 2", DNodeContainerEditPart.class);
+        EditPart part = swtBotEditPart.part();
+        DNodeContainer element = (DNodeContainer) ((Node) part.getModel()).getElement();
         assertFalse("The container should not have its label filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
 
         activateShowHideModeUsingTabbar();
-        swtBotDNodeEditPart.doubleClick();
-        SWTBotUtils.waitAllUiEvents();
 
-        assertTrue("The container should be filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
-
-        swtBotDNodeEditPart.doubleClick();
-        SWTBotUtils.waitAllUiEvents();
-
-        assertFalse("The container should not be filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
-
+        hideShow(element, swtBotEditPart, false);
     }
 
     /**
@@ -419,15 +427,17 @@ public class EditModeTest extends AbstractModeTest {
     // element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
     //
     // activateShowHideModeUsingTabbar();
+    // editor.reveal(part);
     // SWTBotUtils.waitAllUiEvents();
-    // doubleClickOnEdge(swtBotDNodeEditPart);
+    // swtBotDNodeEditPart.select();
+    // edgedoubleclick((DEdgeEditPart) part);
     //
     // SWTBotUtils.waitAllUiEvents();
     //
     // assertTrue("The edge should be filtered.",
     // element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
     //
-    // doubleClickOnEdge(swtBotDNodeEditPart);
+    // swtBotDNodeEditPart.doubleClick();
     // SWTBotUtils.waitAllUiEvents();
     //
     // assertFalse("The edge should not be filtered.",
@@ -435,87 +445,64 @@ public class EditModeTest extends AbstractModeTest {
     //
     // }
 
+    // /**
+    // * @param part
+    // *
+    // */
+    // private void edgedoubleclick(DEdgeEditPart part) {
+    // PointList newPoints = ((ViewEdgeFigure) part.getFigure()).getPoints().getCopy();
+    // Point firstPoint = newPoints.getFirstPoint();
+    // editor.getSWTBotGefViewer().doubleClick(firstPoint.x + 5, firstPoint.y); // TODO Auto-generated method stub
+    //
+    // }
+
     /**
-     * Verify that a double click on a visible edge labels hide it and vice
-     * versa.
+     * Verify that a double click on a visible edge labels hide it and vice versa.
      */
-    // public void testShowHideDoubleClickOnEdgeLabel() {
-    // SWTBotGefEditPart swtBotDNodeEditPart = getEditPart("beginLabelTest",
-    // DEdgeBeginNameEditPart.class);
-    // EditPart part = swtBotDNodeEditPart.part();
-    // DEdgeSpec element = (DEdgeSpec) ((Node) part.getModel()).getElement();
-    // assertFalse("The edge should not have its label filtered.",
-    // element.getGraphicalFilters().stream().anyMatch(HideLabelFilter.class::isInstance));
-    //
-    // activateShowHideModeUsingTabbar();
-    // SWTBotUtils.waitAllUiEvents();
-    // swtBotDNodeEditPart.doubleClick();
-    //
-    // SWTBotUtils.waitAllUiEvents();
-    //
-    // assertTrue("The edge should be filtered.",
-    // element.getGraphicalFilters().stream().anyMatch(HideLabelFilter.class::isInstance));
-    //
-    // swtBotDNodeEditPart.doubleClick();
-    // SWTBotUtils.waitAllUiEvents();
-    //
-    // assertFalse("The edge should not be filtered.",
-    // element.getGraphicalFilters().stream().anyMatch(HideLabelFilter.class::isInstance));
-    //
-    // }
+    public void testShowHideDoubleClickOnEdgeLabel() {
+        SWTBotGefEditPart swtBotEditPart = getEditPart("beginLabelTest", DEdgeBeginNameEditPart.class);
+        EditPart part = swtBotEditPart.part();
+        DEdge element = (DEdge) ((Node) part.getModel()).getElement();
+        assertFalse("The edge should not have its label filtered.", element.getGraphicalFilters().stream().anyMatch(HideLabelFilter.class::isInstance));
+
+        activateShowHideModeUsingTabbar();
+        SWTBotUtils.waitAllUiEvents();
+        editor.reveal(part);
+        hideShow(element, swtBotEditPart, true);
+    }
 
     /**
-     * Verify that a double click on a visible list container hides it and vice
-     * versa.
+     * Verify that a double click on a visible list container hides it and vice versa.
      */
     public void testShowHideDoubleClickOnListContainer() {
         switchLayer("L2");
         switchLayer("L3");
         SWTBotUtils.waitAllUiEvents();
 
-        SWTBotGefEditPart swtBotDNodeEditPart = getEditPart("new Package 1", DNodeListEditPart.class);
-        EditPart part = swtBotDNodeEditPart.part();
-        DNodeListSpec element = (DNodeListSpec) ((Node) part.getModel()).getElement();
+        SWTBotGefEditPart swtBotEditPart = getEditPart("new Package 1", DNodeListEditPart.class);
+        EditPart part = swtBotEditPart.part();
+        DNodeList element = (DNodeList) ((Node) part.getModel()).getElement();
         assertFalse("The node should not have its label filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
 
         activateShowHideModeUsingTabbar();
-        swtBotDNodeEditPart.doubleClick();
-        SWTBotUtils.waitAllUiEvents();
-
-        assertTrue("The node should be filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
-
-        swtBotDNodeEditPart.doubleClick();
-        SWTBotUtils.waitAllUiEvents();
-
-        assertFalse("The node should not be filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
-
+        hideShow(element, swtBotEditPart, false);
     }
 
     /**
-     * Verify that a double click on a visible list node hides it and vice
-     * versa.
+     * Verify that a double click on a visible list node hides it and vice versa.
      */
     public void testShowHideDoubleClickOnListNode() {
         switchLayer("L2");
         switchLayer("L3");
         SWTBotUtils.waitAllUiEvents();
 
-        SWTBotGefEditPart swtBotDNodeEditPart = getEditPart("new EClass 3", DNodeListElementEditPart.class);
-        EditPart part = swtBotDNodeEditPart.part();
-        DNodeListElementSpec element = (DNodeListElementSpec) ((Node) part.getModel()).getElement();
+        SWTBotGefEditPart swtBotEditPart = getEditPart("new EClass 3", DNodeListElementEditPart.class);
+        EditPart part = swtBotEditPart.part();
+        DNodeListElement element = (DNodeListElement) ((Node) part.getModel()).getElement();
         assertFalse("The node should not have its label filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
 
         activateShowHideModeUsingTabbar();
-        swtBotDNodeEditPart.doubleClick();
-        SWTBotUtils.waitAllUiEvents();
-
-        assertTrue("The node should be filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
-
-        swtBotDNodeEditPart.doubleClick();
-        SWTBotUtils.waitAllUiEvents();
-
-        assertFalse("The node should not be filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
-
+        hideShow(element, swtBotEditPart, false);
     }
 
     /**
@@ -524,27 +511,17 @@ public class EditModeTest extends AbstractModeTest {
     public void testShowHideDoubleClickOnFilteredNode() {
         switchLayer("L2");
         switchLayer("L4");
-        SWTBotGefEditPart swtBotDNodeEditPart = getEditPart("new EClass 4", DNode3EditPart.class);
-        EditPart part = swtBotDNodeEditPart.part();
-        DNodeSpec element = (DNodeSpec) ((Node) part.getModel()).getElement();
+        SWTBotGefEditPart swtBotEditPart = getEditPart("new EClass 4", DNode3EditPart.class);
+        EditPart part = swtBotEditPart.part();
+        DNode element = (DNode) ((Node) part.getModel()).getElement();
         assertFalse("The node should not have its label filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
 
         activateShowHideModeUsingTabbar();
-        swtBotDNodeEditPart.doubleClick();
-        SWTBotUtils.waitAllUiEvents();
-
-        assertTrue("The node should be filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
-
-        swtBotDNodeEditPart.doubleClick();
-        SWTBotUtils.waitAllUiEvents();
-
-        assertFalse("The node should not be filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
-
+        hideShow(element, swtBotEditPart, false);
     }
 
     /**
-     * Verify that a double click on a visible compartment container hides it
-     * and vice versa.
+     * Verify that a double click on a visible compartment container hides it and vice versa.
      */
     public void testShowHideDoubleClickOnCompartmentContainer() {
         switchLayer("L2");
@@ -554,27 +531,57 @@ public class EditModeTest extends AbstractModeTest {
 
         List<SWTBotGefEditPart> editParts = getAvailableCompartmentEditParts();
 
-        SWTBotGefEditPart swtBotDNodeEditPart = editParts.get(0);
-        EditPart part = swtBotDNodeEditPart.part();
-        DNodeContainerSpec element = (DNodeContainerSpec) ((Node) part.getModel()).getElement();
-        assertFalse("The node should not have its label filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
-
-        activateShowHideModeUsingTabbar();
-        swtBotDNodeEditPart.doubleClick();
-        SWTBotUtils.waitAllUiEvents();
-
-        assertTrue("The compartment should be filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
-
-        swtBotDNodeEditPart.doubleClick();
-        SWTBotUtils.waitAllUiEvents();
-
+        SWTBotGefEditPart swtBotEditPart = editParts.get(0);
+        EditPart part = swtBotEditPart.part();
+        DNodeContainer element = (DNodeContainer) ((Node) part.getModel()).getElement();
         assertFalse("The compartment should not be filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
 
+        activateShowHideModeUsingTabbar();
+        hideShow(element, swtBotEditPart, false);
     }
 
     /**
-     * Verify that a double click on an invisible container filtered by a filter
-     * asks the user to remove this filter and make it visible if yes is chosen.
+     * When an element specified in a layer is reusing a mapping and if a user make a double click on it when it is
+     * invisible because the layer is not activated, then the user should be asked to activate all layers attached to
+     * it. The current implementation is not capable of knowing the layer to activate among all related ones.
+     * 
+     */
+    public void testShowHideDoubleClickOnReusedMapping() {
+        switchLayer("L2");
+        switchLayer("L7");
+        SWTBotUtils.waitAllUiEvents();
+        SWTBotGefEditPart editPart = getEditPart("new EClass 4", DNodeEditPart.class);
+
+        DNode element = (DNode) ((Node) editPart.part().getModel()).getElement();
+
+        activateShowHideModeUsingTabbar();
+        switchLayer("L7");
+        SWTBotUtils.waitAllUiEvents();
+        activateLayerFilterAndAssert(editPart, element);
+    }
+
+    /**
+     * Test that a double click on an element that need a layer to be activated or a filter to be deactivated to be
+     * visible open a dialog for the user to accept the update to make it visible.
+     * 
+     * @param editPart
+     *            edit part of the element to make visible.
+     * @param element
+     *            the element to make visible.
+     */
+    private void activateLayerFilterAndAssert(SWTBotGefEditPart editPart, DDiagramElement element) {
+        assertFalse("The element should not be visible.", element.isVisible());
+        editor.reveal(editPart.part());
+        editPart.doubleClick();
+        bot.waitUntil(shellIsActive("Filter/layer update confirmation"));
+        bot.activeShell().bot().button("OK").click();
+        SWTBotUtils.waitAllUiEvents();
+        assertTrue("The element should be visible.", element.isVisible());
+    }
+
+    /**
+     * Verify that a double click on an invisible container filtered by a filter asks the user to remove this filter and
+     * make it visible if yes is chosen.
      */
     public void testShowHideDoubleClickOnFilteredContainer() {
         SWTBotToolbarDropDownButton toolbarDropDownButton = editor.bot().toolbarDropDownButton(3);
@@ -588,24 +595,15 @@ public class EditModeTest extends AbstractModeTest {
         }
 
         activateShowHideModeUsingTabbar();
-        SWTBotGefEditPart swtBotDNodeEditPart = getEditPart("new EPackage 2", DNodeContainerEditPart.class);
-        EditPart part = swtBotDNodeEditPart.part();
-        DNodeContainerSpec element = (DNodeContainerSpec) ((Node) part.getModel()).getElement();
-        assertFalse("The container should not be visible", element.isVisible());
-
-        swtBotDNodeEditPart.doubleClick();
-
-        SWTBotShell activeShell = editor.bot().activeShell();
-        assertEquals("The dialog to deactivate the filter has not shown up.", "Filter/layer update confirmation", activeShell.getText());
-        activeShell.bot().button("OK").click();
-
-        assertTrue("The container should be visible", element.isVisible());
+        SWTBotGefEditPart swtBotEditPart = getEditPart("new EPackage 2", DNodeContainerEditPart.class);
+        EditPart part = swtBotEditPart.part();
+        DNodeContainer element = (DNodeContainer) ((Node) part.getModel()).getElement();
+        activateLayerFilterAndAssert(swtBotEditPart, element);
     }
 
     /**
-     * Verify that a double click on an invisible container that belongs to a
-     * layer that is not activated asks the user to activate it. And that
-     * activating the layer make the element visible.
+     * Verify that a double click on an invisible container that belongs to a layer that is not activated asks the user
+     * to activate it. And that activating the layer make the element visible.
      */
     public void testShowHideDoubleClickOnUnshownContainer() {
         switchLayer("L2");
@@ -613,18 +611,10 @@ public class EditModeTest extends AbstractModeTest {
 
         activateShowHideModeUsingTabbar();
 
-        SWTBotGefEditPart swtBotDNodeEditPart = getEditPart("new EPackage 2", DNodeContainerEditPart.class);
-        EditPart part = swtBotDNodeEditPart.part();
-        DNodeContainerSpec element = (DNodeContainerSpec) ((Node) part.getModel()).getElement();
-        assertFalse("The container should not be visible", element.isVisible());
-
-        swtBotDNodeEditPart.doubleClick();
-
-        SWTBotShell activeShell = editor.bot().activeShell();
-        assertEquals("The dialog to activate the layer has not shown up.", "Filter/layer update confirmation", activeShell.getText());
-        activeShell.bot().button("OK").click();
-
-        assertTrue("The container should be visible", element.isVisible());
+        SWTBotGefEditPart swtBotEditPart = getEditPart("new EPackage 2", DNodeContainerEditPart.class);
+        EditPart part = swtBotEditPart.part();
+        DNodeContainer element = (DNodeContainer) ((Node) part.getModel()).getElement();
+        activateLayerFilterAndAssert(swtBotEditPart, element);
     }
 
     private List<SWTBotGefEditPart> getAvailableCompartmentEditParts() {
