@@ -49,11 +49,8 @@ import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsM
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
-import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.Layer;
-import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
 import org.eclipse.sirius.diagram.tools.api.command.ChangeLayerActivationCommand;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
@@ -304,34 +301,23 @@ public class DoubleClickEditPolicy extends OpenEditPolicy {
     }
 
     private Layer getLayerToActivate(DDiagram parentDiagram, final DDiagramElement ddiagramElement, DiagramMappingsManager mappingManager) {
-        Layer layerToActivate = null;
         Collection<Layer> layers = mappingManager.getActiveParentLayers(ddiagramElement.getDiagramElementMapping());
         List<Layer> allLayers = LayerHelper.getAllLayers(parentDiagram.getDescription());
         Set<Layer> deactivatedLayers = allLayers.stream().filter(elmt -> !layers.contains(elmt)).collect(Collectors.toSet());
-        for (Layer layer : deactivatedLayers) {
-            List<NodeMapping> nodeMappings = layer.getNodeMappings();
-            for (NodeMapping nodeMapping : nodeMappings) {
-                DiagramElementMapping diagramElementMapping = ddiagramElement.getDiagramElementMapping();
-                if (EqualityHelper.areEquals(nodeMapping, diagramElementMapping)) {
-                    layerToActivate = layer;
-                }
-            }
-            List<EdgeMapping> allEdgeMappings = layer.getAllEdgeMappings();
-            for (EdgeMapping edgeMapping : allEdgeMappings) {
-                DiagramElementMapping diagramElementMapping = ddiagramElement.getDiagramElementMapping();
-                if (EqualityHelper.areEquals(edgeMapping, diagramElementMapping)) {
-                    layerToActivate = layer;
-                }
-            }
-            List<ContainerMapping> containerMappings = layer.getContainerMappings();
-            for (ContainerMapping containerMapping : containerMappings) {
-                DiagramElementMapping diagramElementMapping = ddiagramElement.getDiagramElementMapping();
-                if (EqualityHelper.areEquals(containerMapping, diagramElementMapping)) {
-                    layerToActivate = layer;
+
+        Collection<Layer> diagramElementLayers = LayerHelper.getParentLayers(ddiagramElement.getDiagramElementMapping());
+        Collection<Layer> keptElementLayers = new LinkedHashSet<>();
+        for (Layer deactivatedLayer : deactivatedLayers) {
+            for (Layer diagramElementLayer : diagramElementLayers) {
+                if (EqualityHelper.areEquals(deactivatedLayer, diagramElementLayer)) {
+                    keptElementLayers.add(deactivatedLayer);
                 }
             }
         }
-        return layerToActivate;
+        if (!keptElementLayers.isEmpty()) {
+            return keptElementLayers.iterator().next();
+        }
+        return null;
     }
 
     /**
