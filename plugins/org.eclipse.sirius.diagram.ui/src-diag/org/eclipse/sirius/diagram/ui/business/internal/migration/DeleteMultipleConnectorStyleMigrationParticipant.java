@@ -23,9 +23,9 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.osgi.framework.Version;
@@ -40,7 +40,7 @@ public class DeleteMultipleConnectorStyleMigrationParticipant extends AbstractRe
     /**
      * The Sirius version for which this migration is added.
      */
-    public static final Version MIGRATION_VERSION = new Version("14.1.0.201810051700"); //$NON-NLS-1$
+    public static final Version MIGRATION_VERSION = new Version("14.1.0.201810161215"); //$NON-NLS-1$
 
     private boolean migrationOccured;
 
@@ -54,11 +54,11 @@ public class DeleteMultipleConnectorStyleMigrationParticipant extends AbstractRe
         if (loadedVersion.compareTo(MIGRATION_VERSION) < 0) {
             StringBuilder sb = new StringBuilder(Messages.DeleteMultipleConnectorMigrationParticipant_title);
             dAnalysis.getOwnedViews().stream().flatMap(view -> new DViewQuery(view).getLoadedRepresentations().stream()).filter(rep -> rep instanceof DDiagram).map(DDiagram.class::cast)
-                    .filter(diag -> diag instanceof DSemanticDiagramSpec).forEach(dDiagram -> {
+                    .filter(diag -> diag instanceof DSemanticDiagram).forEach(dDiagram -> {
                         boolean isEdgeModified = false;
                         List<Edge> edgeList = getEdgeList(dDiagram);
                         for (Edge edge : edgeList) {
-                            isEdgeModified = checkAndDeleteMultipleConnectorStyle(edge);
+                            isEdgeModified = checkAndDeleteMultipleConnectorStyle(edge) || isEdgeModified;
                         }
                         if (isEdgeModified) {
                             migrationOccured = true;

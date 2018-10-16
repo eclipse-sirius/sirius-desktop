@@ -114,9 +114,8 @@ h4. Migrations
 
 * <span class="label label-success">Added</span> A migration participant has been added to convert the serialized xmi:id to the technical id (uid attribut) for Sirius model elements of the .aird files (see "bugzilla #525261":https://bugs.eclipse.org/bugs/show_bug.cgi?id=525261 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _14.1.0.201808300808_.
 * <span class="label label-success">Added</span> A migration participant has been added to fix diagrams with corrupted Note, Text or Note Attachment (see "bugzilla #539550":https://bugs.eclipse.org/bugs/show_bug.cgi?id=539550 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _14.1.0.201809271200_.
-* <span class="label label-success">Added</span> A migration participant has been added to fix edge with multiple connector style (see "bugzilla #539944":https://bugs.eclipse.org/bugs/show_bug.cgi?id=539944 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _14.1.0.201810051700_.
 * <span class="label label-success">Added</span> A migration participant has been added to update existing representation link. (see "bugzilla #533175":https://bugs.eclipse.org/bugs/show_bug.cgi?id=535648 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _14.1.0.201810111800_.
-
+* <span class="label label-success">Added</span> A migration participant has been added to fix edge with multiple connector style (see "bugzilla #539944":https://bugs.eclipse.org/bugs/show_bug.cgi?id=539944 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _14.1.0.201810161215_.
 
 h2(#sirius6.0.0). Changes in Sirius 6.0.0
 

@@ -78,8 +78,8 @@ public class DeleteMultipleConnectorStyleMigrationParticipantTest extends Sirius
         assertTrue("The migration must be required on test data.", migrationVersion.compareTo(loadedVersion) > 0);
 
         String infoLoggersMessage = getInfoLoggersMessage();
-        assertTrue(infoLoggersMessage.contains(Messages.DeleteMultipleConnectorMigrationParticipant_title));
-        assertTrue(infoLoggersMessage.contains("connectors style of some edges have been deleted because only one is required"));
+        assertTrue("The log does not contain information about this migration.", infoLoggersMessage.contains(Messages.DeleteMultipleConnectorMigrationParticipant_title));
+        assertTrue("The log does not contain details about this migration.", infoLoggersMessage.contains("connectors style of some edges have been deleted because only one is required"));
     }
 
     /**
