@@ -57,6 +57,10 @@ public class TableHasRowCondition extends DefaultCondition {
 
     @Override
     public String getFailureMessage() {
-        return "There is no row on the table";
+        if (expectedRowsCount == -1) {
+            return "There is no row on the table";
+        } else {
+            return "Wrong number of rows in table, expected " + expectedRowsCount + " but was " + swtBotTable.rowCount();
+        }
     }
 }
