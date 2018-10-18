@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.representation;
 
+import java.util.HashMap;
 import java.util.Optional;
 
 import org.eclipse.emf.common.util.URI;
@@ -87,9 +88,16 @@ public class DRepresentationDescriptorToDRepresentationLinkManager {
         // We retrieve the URI from descriptor.
         Optional<URI> uri = Optional.ofNullable(resourceDescriptor).map(desc -> desc.getResourceURI());
         if (uri.isPresent()) {
+            URI fragment = uri.get().trimFragment();
             // We retrieve the representation resource from the uri.
+            // If loadOnDemand equals true, call resourceSet.getResource(uri, true) only if the resource exists.
+            // If loadOnDemand equals false, do not check the existence, the iteration over the resourceSet resources is
+            // sufficient.
+            //@formatter:off
             Optional<Resource> representationResource = Optional.ofNullable(resource).map(rsr -> rsr.getResourceSet())
-                    .map(resourceSet -> resourceSet.getResource(uri.get().trimFragment(), loadOnDemand));
+                    .filter(resourceSet -> !loadOnDemand || resourceSet.getURIConverter().exists(fragment, new HashMap<>()))
+                    .map(resourceSet -> resourceSet.getResource(fragment, loadOnDemand));
+            //@formatter:on
             String repId = uri.get().fragment();
             if (representationResource.isPresent() && repId != null) {
                 // We look for the representation with the repId (retrieved from
