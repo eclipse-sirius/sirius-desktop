@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,10 +24,10 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.Interactio
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.StateEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 
 /**
- * Tests Pin/Unpin, Show/Hide and Copy/Paste Layout actions are disabled on
- * Sequence diagram.
+ * Tests Pin/Unpin, Show/Hide and Copy/Paste Layout actions are disabled on Sequence diagram.
  * 
  * Test VP-3087 and VP-3088.
  * 
@@ -64,9 +64,10 @@ public class ActionDisabledOnSequenceDiagramTest extends AbstractActionDisabledO
     /**
      * {@inheritDoc}
      * 
-     * @return an execution, a state, a message, an interaction use, a combined
-     *         fragment, a lost message, a found message.
+     * @return an execution, a state, a message, an interaction use, a combined fragment, a lost message, a found
+     *         message.
      */
+    @Override
     protected Collection<SWTBotGefEditPart> getEditPartsToCheckDisabledActionsOn() {
         Collection<SWTBotGefEditPart> partsToTest = new ArrayList<>();
         // Retrieve instance role (do not retrieve the lifeline : it is not
@@ -119,5 +120,16 @@ public class ActionDisabledOnSequenceDiagramTest extends AbstractActionDisabledO
         pathsToTest.add(Arrays.asList("Call Message m4"));
 
         return pathsToTest;
+    }
+
+    /**
+     * Tests that the edit mode dropdown menu is not visible for sequence diagrams
+     */
+    public void testEditModeDropDownMenuNotVisible() {
+        try {
+            editor.bot().toolbarDropDownButtonWithTooltip("Change Diagram edition mode");
+            fail("Menu should not be visible.");
+        } catch (WidgetNotFoundException e) {
+        }
     }
 }

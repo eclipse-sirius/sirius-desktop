@@ -149,37 +149,50 @@ public class ModesMenuManager extends ActionMenuManager {
      */
     public void refresh() {
         standardModeAction.refresh();
-        visibilityModeSwitchingAction.refresh();
-        layoutingModeSwitchingAction.refresh();
+        if (visibilityModeSwitchingAction != null) {
+            visibilityModeSwitchingAction.refresh();
+        }
+        if (layoutingModeSwitchingAction != null) {
+            layoutingModeSwitchingAction.refresh();
+        }
     }
 
     @Override
     public void setVisible(boolean visible) {
-        super.setVisible(visible);
         if (isEmpty() && visible) {
-
             IWorkbenchPage page = EclipseUIUtil.getActivePage();
 
             if (page != null && page.getActivePart() instanceof DDiagramEditor) {
                 final DDiagramEditor editor = (DDiagramEditor) page.getActivePart();
                 DDiagram editorDiagram = (DDiagram) editor.getRepresentation();
-                standardModeAction = new StandardModeAction(page, editor, editorDiagram, this);
-                visibilityModeSwitchingAction = new VisibilityModeSwitchingAction(page, editor, editorDiagram, this);
-                add(standardModeAction);
-                add(visibilityModeSwitchingAction);
-                if (LayoutingModeSwitchingAction.diagramAllowsLayoutingMode(editorDiagram)) {
-                    layoutingModeSwitchingAction = new LayoutingModeSwitchingAction(page, editor, editorDiagram, this);
-                    add(layoutingModeSwitchingAction);
-                }
-                if (editorDiagram != null && editorDiagram.isIsInLayoutingMode() && layoutingModeSwitchingAction != null) {
-                    setDefaultAction(ActionIds.SWITCH_LAYOUTING_MODE);
-                    layoutingModeSwitchingAction.setChecked(true);
-                } else if (editorDiagram != null && editorDiagram.isIsInShowingMode()) {
-                    setDefaultAction(ActionIds.SWITCH_SHOWING_MODE);
-                    visibilityModeSwitchingAction.setChecked(true);
+
+                boolean visibilityModeActive = VisibilityModeSwitchingAction.diagramAllowsVisibilityMode(editorDiagram);
+                boolean layoutingModeActive = LayoutingModeSwitchingAction.diagramAllowsLayoutingMode(editorDiagram);
+                if (!visibilityModeActive && !layoutingModeActive) {
+                    super.setVisible(false);
                 } else {
-                    setDefaultAction(ActionIds.DEFAULT_MODE);
-                    standardModeAction.setChecked(true);
+
+                    standardModeAction = new StandardModeAction(page, editor, editorDiagram, this);
+
+                    add(standardModeAction);
+                    if (visibilityModeActive) {
+                        visibilityModeSwitchingAction = new VisibilityModeSwitchingAction(page, editor, editorDiagram, this);
+                        add(visibilityModeSwitchingAction);
+                    }
+                    if (layoutingModeActive) {
+                        layoutingModeSwitchingAction = new LayoutingModeSwitchingAction(page, editor, editorDiagram, this);
+                        add(layoutingModeSwitchingAction);
+                    }
+                    if (editorDiagram != null && editorDiagram.isIsInLayoutingMode() && layoutingModeSwitchingAction != null) {
+                        setDefaultAction(ActionIds.SWITCH_LAYOUTING_MODE);
+                        layoutingModeSwitchingAction.setChecked(true);
+                    } else if (editorDiagram != null && editorDiagram.isIsInShowingMode()) {
+                        setDefaultAction(ActionIds.SWITCH_SHOWING_MODE);
+                        visibilityModeSwitchingAction.setChecked(true);
+                    } else {
+                        setDefaultAction(ActionIds.DEFAULT_MODE);
+                        standardModeAction.setChecked(true);
+                    }
                 }
             }
         } else if (!isEmpty() && !visible) {

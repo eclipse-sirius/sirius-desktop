@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -112,6 +112,18 @@ public interface IDiagramDescriptionProvider {
      */
     boolean allowsLayoutingModeActivation();
 
+
+    /**
+     * Indicates if the given Diagram description provider allows the activation of Layouting Mode on handled
+     * representations.
+     * 
+     * @return true if the given Diagram description provider allows the activation of Layouting Mode on handled
+     *         representations, false otherwise.
+     * 
+     * @since 6.1.0
+     */
+    boolean allowsVisibilityModeActivation();
+    
     /**
      * Indicates if this Diagram description provider allows the Pin/Unpin
      * actions on the specified element.

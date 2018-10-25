@@ -26,6 +26,8 @@ import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
+import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
@@ -175,6 +177,37 @@ public class VisibilityModeSwitchingAction extends CheckedPropertyAction {
         modesMenuManager = null;
         editor = null;
         super.dispose();
+    }
+
+    /**
+     * Indicates if the given ddiagram is allowing visibility mode.
+     *
+     * @param diagram
+     *            the diagram to inspect
+     * @return true if the given ddiagram is allowing visibility mode, false otherwise.
+     */
+    public static boolean diagramAllowsVisibilityMode(DDiagram diagram) {
+
+        // If an aird has been opened from the Package Explorer View, then we
+        // return false as no diagram is associated to this editor
+        if (diagram == null || diagram.getDescription() == null) {
+            return false;
+        }
+
+        // If diagram is not null, we search for a possible
+        // DiagramDescriptionProvider handling this type of diagram
+        boolean diagramAllowsVisibilityMode = true;
+        for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {
+            if (diagramTypeDescriptor.getDiagramDescriptionProvider().handles(diagram.getDescription().eClass().getEPackage())) {
+                // This DiagramDescriptionProvider may forbid layouting mode
+                diagramAllowsVisibilityMode = diagramAllowsVisibilityMode && diagramTypeDescriptor.getDiagramDescriptionProvider().allowsVisibilityModeActivation();
+                break;
+            }
+        }
+        // default return value is true (for basic DDiagram that are not handled
+        // by any DiagramDescriptionProvider
+        return diagramAllowsVisibilityMode;
+
     }
 
 }

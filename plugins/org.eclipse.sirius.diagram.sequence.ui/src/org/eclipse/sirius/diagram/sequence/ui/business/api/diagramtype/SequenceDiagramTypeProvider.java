@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -218,6 +218,11 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
     }
 
     @Override
+    public boolean allowsVisibilityModeActivation() {
+        return false;
+    }
+
+    @Override
     public boolean allowsPinUnpin(DDiagramElement element) {
         return !isSequenceDDiagramElement.apply(element);
     }
@@ -370,9 +375,8 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
     }
 
     /**
-     * An {@link IInterpretedExpressionTargetSwitch} that delegates to the
-     * defaultSwitch or the diagram specific switch, according to the package of
-     * the considered element.
+     * An {@link IInterpretedExpressionTargetSwitch} that delegates to the defaultSwitch or the diagram specific switch,
+     * according to the package of the considered element.
      * 
      * @author <a href="mailto:maxime.porhel@obeo.fr">Maxime Porhel</a>
      * 

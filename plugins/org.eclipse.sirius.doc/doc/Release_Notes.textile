@@ -4,6 +4,14 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius6.1.1). Changes in Sirius 6.1.1
+
+h3. Developer-Visible Changes
+
+h4. Changes in  @org.eclipse.sirius.diagram@
+
+* <span class="label label-success">Added</span> Add method @allowsVisibilityModeActivation()@ in @org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider@ This method is used to know if the visibility mode is supported by a specific diagram description.   
+
 h2(#sirius6.1.0). Changes in Sirius 6.1.0
 
 * <span class="label label-info">IMPORTANT</span>  The new (and still experimental) _Workflow_ and _Server_ features depend on a specific version of Eclipse Jetty which is available in the main Eclipse Photon repository. They can not be used under Oxygen (which include older and incompatible versions of Jetty).
