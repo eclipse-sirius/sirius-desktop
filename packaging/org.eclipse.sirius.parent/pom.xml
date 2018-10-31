@@ -65,6 +65,7 @@
     <sonar.jacoco.itReportPath>${project.basedir}/../../packaging/org.eclipse.sirius.parent/target/jacoco-it.exec</sonar.jacoco.itReportPath>
     <sonar.java.source>8</sonar.java.source>
     <sonar.exclusions>src-gen/**/*</sonar.exclusions>
+    <sonar.coverage.exclusions>${project.basedir}/../../plugins/org.eclipse.sirius.sample*/**/*.java,${project.basedir}/../../plugins/org.eclipse.sirius.tests*/**/*.java,</sonar.coverage.exclusions>
   </properties>
 
 <!--Add specific repositories, pluginRepositories and dependencies for Acceleo3 compilation. See http://wiki.eclipse.org/Acceleo/Maven for more details. -->
