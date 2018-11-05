@@ -61,9 +61,7 @@ public class TestCaseCleaner {
                 if (isReference && isSet) {
                     clearField(field);
                 }
-            } catch (IllegalArgumentException e) {
-                // Do nothing
-            } catch (IllegalAccessException e) {
+            } catch (IllegalArgumentException | IllegalAccessException e) {
                 // Do nothing
             }
         }

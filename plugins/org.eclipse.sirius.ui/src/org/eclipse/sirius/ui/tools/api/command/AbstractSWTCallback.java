@@ -183,9 +183,7 @@ public abstract class AbstractSWTCallback implements UICallBack {
                     DialectUIManager.INSTANCE.openEditor(openedSession, representation, monitor);
                 }
             });
-        } catch (InvocationTargetException e) {
-            SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
-        } catch (InterruptedException e) {
+        } catch (InvocationTargetException | InterruptedException e) {
             SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
         }
     }
@@ -195,9 +193,7 @@ public abstract class AbstractSWTCallback implements UICallBack {
         final LoadEMFResourceRunnableWithProgress operation = new LoadEMFResourceRunnableWithProgress(domain.getResourceSet(), file);
         try {
             operation.run(new NullProgressMonitor());
-        } catch (final InvocationTargetException e) {
-            SiriusTransPlugin.INSTANCE.error(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_loadResourceError, e);
-        } catch (final InterruptedException e) {
+        } catch (InvocationTargetException | InterruptedException e) {
             SiriusTransPlugin.INSTANCE.error(org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_loadResourceError, e);
         }
         return operation.getLoadedResource();
@@ -403,9 +399,7 @@ public abstract class AbstractSWTCallback implements UICallBack {
                             session.save(monitor);
                         }
                     });
-                } catch (InvocationTargetException e) {
-                    SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
-                } catch (InterruptedException e) {
+                } catch (InvocationTargetException | InterruptedException e) {
                     SiriusEditPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusEditPlugin.ID, e.getLocalizedMessage(), e));
                 }
             });
