@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo.
+ * Copyright (c) 2018, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -62,7 +62,7 @@ public class SiriusServerDiagramImagePathProvider implements ISiriusDiagramImage
             workspaceImagePath = workspaceImagePath.substring(SLASH.length());
         }
 
-        String path = ISiriusServerImagesConstants.IMAGES_PATH + SLASH + workspaceImage.getWorkspacePath();
+        String path = ISiriusServerImagesConstants.IMAGES_PATH + SLASH + workspaceImagePath;
         Optional<String> optionalPath = Optional.empty();
         try {
             URI imageURI = new URI(serverURI.getScheme(), serverURI.getUserInfo(), serverURI.getHost(), serverURI.getPort(), path, null, null);
