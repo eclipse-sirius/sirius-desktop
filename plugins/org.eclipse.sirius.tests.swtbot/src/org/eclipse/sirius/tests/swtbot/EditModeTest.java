@@ -44,16 +44,18 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeNameEditPart;
-import org.eclipse.sirius.tests.support.api.ICondition;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
+import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
+import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 
@@ -73,12 +75,15 @@ public class EditModeTest extends AbstractModeTest {
         SWTBotGefConnectionEditPart connectionEditPartBot = editor.getConnectionEditPart(sourceEditPartBot, targetEditPartBot).get(0);
 
         editor.reveal(connectionEditPartBot.part());
+        connectionEditPartBot.select();
+        bot.waitUntil(new CheckSelectedCondition(editor, connectionEditPartBot.part()));
 
         // Reconnect target of first connection
         PointList connection1Points = ((AbstractConnectionEditPart) connectionEditPartBot.part()).getConnectionFigure().getPoints().getCopy();
         Point from = connection1Points.getLastPoint();
+        ((AbstractConnectionEditPart) connectionEditPartBot.part()).getFigure().translateToAbsolute(from);
+
         Point to = editor.getBounds(newtargetEditPartBot).getLocation();
-        connectionEditPartBot.select();
         editor.drag(from, to);
     }
 
@@ -91,9 +96,9 @@ public class EditModeTest extends AbstractModeTest {
             activateShowHideModeUsingTabbar();
             break;
         case STANDARD:
-            reconnectEdge("new EClass 3", "new EClass 4", "new EClass 5");
+            reconnectEdge("new EClass 5", "new EClass 7", "new EClass 8");
             // -> tool should have been applied
-            assertEdgeReconnectionToolHasBeenApplied("new EClass 4", "eRef", true);
+            assertEdgeReconnectionToolHasBeenApplied("new EClass 7", "eRef2", true);
             editor.save();
             editor.setFocus();
             break;
@@ -113,16 +118,16 @@ public class EditModeTest extends AbstractModeTest {
         }
 
         // applying tool
-        reconnectEdge("new EClass 5", "new EClass 4", "new EClass 3");
+        reconnectEdge("new EClass 3", "new EClass 4", "new EClass 9");
         SWTBotUtils.waitAllUiEvents();
         // -> tool should not have been applied
-        assertEdgeReconnectionToolHasBeenApplied("new EClass 4", "eRef2", false);
+        assertEdgeReconnectionToolHasBeenApplied("new EClass 4", "eRef", false);
 
         if (startingMode == Mode.STANDARD) {
             editor.close();
             editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
             editor = SWTBotSiriusHelper.getSiriusDiagramEditor(editor.getTitle());
-            reconnectEdge("new EClass 3", "new EClass 5", "EClass7");
+            reconnectEdge("new EClass 3", "new EClass 4", "new EClass 9");
 
             // -> tool should have been applied
             assertEdgeReconnectionToolHasBeenApplied("new EClass 4", "eRef", true);
@@ -145,12 +150,17 @@ public class EditModeTest extends AbstractModeTest {
             assertDragAndDropToolHasBeenApplied("new EClass 5", "new EPackage 3", true);
             SWTBotGefEditPart rootEditPart = editor.rootEditPart();
             editor.click(rootEditPart);
-            TestsUtil.waitUntil(new ICondition() {
+            bot.waitUntil(new ICondition() {
 
                 @Override
                 public boolean test() throws Exception {
                     ISelection selection = editor.getSelection();
                     return ((StructuredSelection) selection).getFirstElement() instanceof DDiagramEditPart;
+                }
+
+                @Override
+                public void init(SWTBot bot) {
+
                 }
 
                 @Override
@@ -591,7 +601,7 @@ public class EditModeTest extends AbstractModeTest {
         try {
             getEditPart("new EPackage 2", DNodeContainerEditPart.class);
             fail("Part should be not visible at all.");
-        } catch (WidgetNotFoundException | AssertionError e) {
+        } catch (TimeoutException | WidgetNotFoundException | AssertionError e) {
         }
 
         activateShowHideModeUsingTabbar();
@@ -618,7 +628,7 @@ public class EditModeTest extends AbstractModeTest {
     }
 
     private List<SWTBotGefEditPart> getAvailableCompartmentEditParts() {
-        TestsUtil.waitUntil(new ICondition() {
+        bot.waitUntil(new ICondition() {
 
             @Override
             public boolean test() throws Exception {
@@ -627,10 +637,13 @@ public class EditModeTest extends AbstractModeTest {
             }
 
             @Override
+            public void init(SWTBot bot) {
+            }
+
+            @Override
             public String getFailureMessage() {
                 return "No compartment parts found.";
             }
-
         });
         return getCompartmentEditParts();
     }
@@ -660,7 +673,7 @@ public class EditModeTest extends AbstractModeTest {
     }
 
     private SWTBotGefEditPart getEditPart(String partName, Class classType) {
-        TestsUtil.waitUntil(new ICondition() {
+        bot.waitUntil(new ICondition() {
 
             @Override
             public boolean test() throws Exception {
@@ -675,6 +688,10 @@ public class EditModeTest extends AbstractModeTest {
             @Override
             public String getFailureMessage() {
                 return partName + " not found.";
+            }
+
+            @Override
+            public void init(SWTBot bot) {
             }
         });
         SWTBotGefEditPart swtBotDNodeEditPart = editor.getEditPart(partName, classType);
