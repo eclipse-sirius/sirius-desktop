@@ -4,8 +4,8 @@
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="lib/antlr4-runtime-4.7.1.jar"/>
-	<classpathentry kind="lib" path="lib/graphql-java-9.0.jar"/>
-	<classpathentry kind="lib" path="lib/java-dataloader-2.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/graphql-java-11.0.jar"/>
+	<classpathentry kind="lib" path="lib/java-dataloader-2.1.1.jar"/>
 	<classpathentry kind="lib" path="lib/reactive-streams-1.0.2.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-api-1.7.25.jar"/>
 	<classpathentry kind="output" path="bin"/>
