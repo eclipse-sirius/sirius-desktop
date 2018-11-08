@@ -82,6 +82,8 @@ public class DecorationDescriptor {
 
     private String name;
 
+    private boolean isPrintable = true;
+
     public Integer getDisplayPriority() {
         return displayPriority;
     }
@@ -144,5 +146,13 @@ public class DecorationDescriptor {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isPrintable() {
+        return isPrintable;
+    }
+
+    public void setPrintable(boolean printable) {
+        this.isPrintable = printable;
     }
 }

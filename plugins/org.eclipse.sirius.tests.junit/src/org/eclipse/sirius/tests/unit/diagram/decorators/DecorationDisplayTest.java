@@ -12,6 +12,7 @@ package org.eclipse.sirius.tests.unit.diagram.decorators;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -19,24 +20,47 @@ import java.util.Map;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.Figure;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gef.editparts.LayerManager;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DecorationEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecorator;
+import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor;
+import org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor.DisplayPriority;
+import org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationDescriptorProvider;
+import org.eclipse.sirius.diagram.ui.tools.api.decoration.SiriusDecorationProviderRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.decoration.SiriusGenericDecorator;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.ecore.extender.business.internal.permission.PermissionAuthorityRegistryImpl;
+import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyPermissionAuthority;
+import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.sample.component.Component;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.GenericTestCase;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.viewpoint.description.DecorationDistributionDirection;
 import org.eclipse.sirius.viewpoint.description.Position;
 
 import com.google.common.collect.Lists;
@@ -47,6 +71,8 @@ import com.google.common.collect.Lists;
  * @author lfasani
  */
 public class DecorationDisplayTest extends GenericTestCase {
+
+    private static final String HIDE_PRINTING_OF_PERMISSION_AUTHORITY_DECORATION = "org.eclipse.sirius.diagam.ui.hidePrintingOfPermissionAuthorityDecoration";
 
     private static final String PATH = "/data/unit/decorators/display/";
 
@@ -104,6 +130,152 @@ public class DecorationDisplayTest extends GenericTestCase {
     }
 
     /**
+     * Checks the behavior about printing decorations with permission authority decoration hidden.
+     */
+    public void testDecorationPrintDisplayWithPermissionAuthorityDecorationHidden() {
+        SiriusDecorationDescriptorProvider siriusDecorationDescriptorProvider = null;
+        try {
+            changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_PRINT_DECORATION.name(), true);
+            System.setProperty(HIDE_PRINTING_OF_PERMISSION_AUTHORITY_DECORATION, "true");
+
+            siriusDecorationDescriptorProvider = initTestDecorationPrintDisplay();
+
+            DDiagram diagram = (DDiagram) getRepresentations(CLASS_DIAGRAM, semanticModel).iterator().next();
+
+            DDiagramEditor diagramEditor = (DDiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+            TestsUtil.synchronizationWithUIThread();
+
+            List<DDiagramElement> ownedDiagramElements = diagram.getOwnedDiagramElements();
+
+            IGraphicalEditPart editPart = getEditPart(ownedDiagramElements.get(0), diagramEditor);
+            final DecorationEditPolicy policy = (DecorationEditPolicy) editPart.getEditPolicy(EditPolicyRoles.DECORATION_ROLE);
+
+            IFigure layer = LayerManager.Helper.find(policy.getHost()).getLayer(DiagramRootEditPart.DECORATION_UNPRINTABLE_LAYER);
+            // there should be 11 printable decorations:
+            // * in SOUTH_WEST_LITERAL: ownedDiagramElements number for each lock decoration (7) minus 1 because
+            // listDecoMerge2 has a printable decoration
+            // * in NORTH_EAST_LITERAL: 5 corresponding to 5 nodes
+            assertEquals("Bad number of unprintable decoration", ownedDiagramElements.size() - 1 + 5, layer.getChildren().size());
+
+            layer = LayerManager.Helper.find(policy.getHost()).getLayer(DiagramRootEditPart.DECORATION_PRINTABLE_LAYER);
+            assertEquals("Bad number of unprintable decoration", 1, layer.getChildren().size());
+
+            DialectUIManager.INSTANCE.closeEditor(diagramEditor, false);
+            TestsUtil.synchronizationWithUIThread();
+        } finally {
+            System.setProperty(HIDE_PRINTING_OF_PERMISSION_AUTHORITY_DECORATION, "false");
+            if (siriusDecorationDescriptorProvider != null) {
+                SiriusDecorationProviderRegistry.INSTANCE.removeSiriusDecorationDescriptorProvider(siriusDecorationDescriptorProvider);
+            }
+        }
+    }
+
+    private SiriusDecorationDescriptorProvider initTestDecorationPrintDisplay() {
+        // init PermissionAuthority to have a lock decorator
+        PermissionAuthorityRegistryImpl permissionAuthorityRegistry = (PermissionAuthorityRegistryImpl) PermissionAuthorityRegistry.getDefault();
+        Option<Object> fieldValueWithoutException = ReflectionHelper.getFieldValueWithoutException(permissionAuthorityRegistry, "resourceSetToAuthority");
+        @SuppressWarnings("unchecked")
+        Map<ResourceSet, IPermissionAuthority> resourceSetToAuthority = (Map<ResourceSet, IPermissionAuthority>) fieldValueWithoutException.get();
+        resourceSetToAuthority.remove(session.getTransactionalEditingDomain().getResourceSet());
+        resourceSetToAuthority.put(session.getTransactionalEditingDomain().getResourceSet(), new ReadOnlyPermissionAuthority() {
+            @Override
+            public LockStatus getLockStatus(EObject element) {
+                return LockStatus.LOCKED_BY_OTHER;
+            }
+        });
+
+        /**
+         * This provider provides
+         * <li>unprintable decoration at NORTH_EAST_LITERAL</li>
+         * <li>unprintable decoration at SOUTH_WEST_LITERAL for groupDecoMerge2</li>
+         * <li>printable decoration at SOUTH_WEST_LITERAL for listDecoMerge2</li>
+         */
+        SiriusDecorationDescriptorProvider siriusDecorationDescriptorProvider = new SiriusDecorationDescriptorProvider() {
+
+            @Override
+            public boolean provides(IDiagramElementEditPart editPart) {
+                return true;
+            }
+
+            @Override
+            public List<DecorationDescriptor> getDecorationDescriptors(IDiagramElementEditPart diagramEditPart, Session session) {
+                List<DecorationDescriptor> deocDescs = new ArrayList<>();
+                DecorationDescriptor nE_Deco = new DecorationDescriptor();
+                nE_Deco.setName("");
+                nE_Deco.setPrintable(false);
+                nE_Deco.setPosition(Position.NORTH_EAST_LITERAL);
+                nE_Deco.setDistributionDirection(DecorationDistributionDirection.HORIZONTAL);
+                nE_Deco.setDisplayPriority(DisplayPriority.HIGH_PRIORITY.getValue());
+                nE_Deco.setDecorationAsImage(DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETED_DIAG_ELEM_DECORATOR_ICON)));
+                deocDescs.add(nE_Deco);
+
+                String name = diagramEditPart.resolveDiagramElement().getName();
+                if (name.equals("groupDecoMerge2") || name.equals("listDecoMerge2")) {
+                    DecorationDescriptor sW_Deco = new DecorationDescriptor();
+                    sW_Deco.setName("");
+                    sW_Deco.setPrintable(name.equals("listDecoMerge2") ? true : false);
+                    sW_Deco.setPosition(Position.SOUTH_WEST_LITERAL);
+                    sW_Deco.setDistributionDirection(DecorationDistributionDirection.HORIZONTAL);
+                    sW_Deco.setDisplayPriority(DisplayPriority.HIGH_PRIORITY.getValue());
+                    sW_Deco.setDecorationAsImage(DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETED_DIAG_ELEM_DECORATOR_ICON)));
+                    deocDescs.add(sW_Deco);
+                }
+                return deocDescs;
+            }
+
+            @Override
+            public void deactivate(IDecorator decorator, GraphicalEditPart editPart) {
+            }
+
+            @Override
+            public void activate(IDecoratorTarget decoratorTarget, IDecorator decorator, GraphicalEditPart editPart) {
+            }
+        };
+
+        // add a DecorationDescriptorProvider to have additional non printable decorations
+        SiriusDecorationProviderRegistry.INSTANCE.addSiriusDecorationDescriptorProvider(siriusDecorationDescriptorProvider);
+
+        return siriusDecorationDescriptorProvider;
+    }
+
+    /**
+     * Checks the behavior about printing decorations including permission authority decorations.
+     */
+    public void testDecorationPrintDisplay() {
+        SiriusDecorationDescriptorProvider siriusDecorationDescriptorProvider = null;
+        try {
+            changeDiagramUIPreference(SiriusDiagramUiPreferencesKeys.PREF_PRINT_DECORATION.name(), true);
+            assertFalse(HIDE_PRINTING_OF_PERMISSION_AUTHORITY_DECORATION + " property system should be false by default", Boolean.getBoolean(HIDE_PRINTING_OF_PERMISSION_AUTHORITY_DECORATION));
+
+            siriusDecorationDescriptorProvider = initTestDecorationPrintDisplay();
+
+            DDiagram diagram = (DDiagram) getRepresentations(CLASS_DIAGRAM, semanticModel).iterator().next();
+
+            DDiagramEditor diagramEditor = (DDiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+            TestsUtil.synchronizationWithUIThread();
+
+            List<DDiagramElement> ownedDiagramElements = diagram.getOwnedDiagramElements();
+
+            IGraphicalEditPart editPart = getEditPart(ownedDiagramElements.get(0), diagramEditor);
+            final DecorationEditPolicy policy = (DecorationEditPolicy) editPart.getEditPolicy(EditPolicyRoles.DECORATION_ROLE);
+
+            IFigure layer = LayerManager.Helper.find(policy.getHost()).getLayer(DiagramRootEditPart.DECORATION_UNPRINTABLE_LAYER);
+            // there should be 5 printable decorations in in NORTH_EAST_LITERAL to the additional decoration provider
+            assertEquals("Bad number of unprintable decoration", 5, layer.getChildren().size());
+
+            layer = LayerManager.Helper.find(policy.getHost()).getLayer(DiagramRootEditPart.DECORATION_PRINTABLE_LAYER);
+            assertEquals("Bad number of unprintable decoration", 7, layer.getChildren().size());
+
+            DialectUIManager.INSTANCE.closeEditor(diagramEditor, false);
+            TestsUtil.synchronizationWithUIThread();
+        } finally {
+            if (siriusDecorationDescriptorProvider != null) {
+                SiriusDecorationProviderRegistry.INSTANCE.removeSiriusDecorationDescriptorProvider(siriusDecorationDescriptorProvider);
+            }
+        }
+    }
+
+    /**
      * Check that no decoration figure is created when there is no decoration.
      */
     public void testNoDecoration() {
@@ -124,8 +296,7 @@ public class DecorationDisplayTest extends GenericTestCase {
     }
 
     /**
-     * Checks the first tooltip in the decoration group. Checks that the label
-     * is correct
+     * Checks the first tooltip in the decoration group. Checks that the label is correct
      */
     /**
      * @param dDiagramElementDecorationFigures
@@ -146,16 +317,14 @@ public class DecorationDisplayTest extends GenericTestCase {
     }
 
     /**
-     * Checks the group decorations. Checks that the given group and its
-     * decorations are correctly positioned
+     * Checks the group decorations. Checks that the given group and its decorations are correctly positioned
      * 
      * @param dDiagramElementDecorationFigures
      *            decoration figures of the dDiagramElement
      * @param position
      *            position of the decoration group
      * @param expectedGroupBounds
-     *            must corresponds to one of dDiagramElementDecorationFigures's
-     *            bounding box
+     *            must corresponds to one of dDiagramElementDecorationFigures's bounding box
      * @param expectedDecosBounds
      *            expected bounding box inside the group
      * @param isListDecorator
@@ -193,8 +362,7 @@ public class DecorationDisplayTest extends GenericTestCase {
     }
 
     /**
-     * Gets the {@link DDiagramElement} with the given name among
-     * ownedDiagramElements.
+     * Gets the {@link DDiagramElement} with the given name among ownedDiagramElements.
      */
     private DDiagramElement getDiagElement(List<DDiagramElement> ownedDiagramElements, String diagElemeName) {
         for (DDiagramElement dDiagramElement : ownedDiagramElements) {
@@ -207,8 +375,7 @@ public class DecorationDisplayTest extends GenericTestCase {
     }
 
     /**
-     * Check that decorations are merged in a group if they overlap another
-     * group
+     * Check that decorations are merged in a group if they overlap another group
      */
     public void testDecorationMergeInsideAGroup() {
         List<DDiagramElement> ownedDiagramElements = diagram.getOwnedDiagramElements();
@@ -296,8 +463,7 @@ public class DecorationDisplayTest extends GenericTestCase {
     }
 
     /**
-     * Check that decorations are correctly displayed when the image or the
-     * figure is provided by a service
+     * Check that decorations are correctly displayed when the image or the figure is provided by a service
      */
     public void testDecorationImageAndTooltipProvidedByService() {
         List<DDiagramElement> ownedDiagramElements = diagram.getOwnedDiagramElements();

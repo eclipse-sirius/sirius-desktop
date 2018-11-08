@@ -14,9 +14,16 @@ h3. User-Visible Changes
 
 h3. Developer-Visible Changes
 
+* <span class="label label-success">Added</span> If the @org.eclipse.sirius.diagam.ui.hidePrintingOfPermissionAuthorityDecoration@ system property is set to true and if there is no other printable decoration provided at the same location (South-West), the permission authority decorations displayed on diagrams are not printed nor exported in images (export as image actions).
+
 h4. Migrations
 
 * <span class="label label-success">Added</span> A migration participant has been added to update existing representation links. (see "bugzilla #533175":https://bugs.eclipse.org/bugs/show_bug.cgi?id=535648 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _12.1.4.201810100944_.
+
+h4. Changes in  @org.eclipse.sirius.diagram@
+
+* <span class="label label-success">Added</span> The getter and setter methods have been added for the new attribute @org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor.isPrintable@. This attribute is used to know if the decoration should be hidden when printing or exporting the diagram. The behavior is applied only if there is no printable decoration in its diagram element location (South, West, South-West etc).
+
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 

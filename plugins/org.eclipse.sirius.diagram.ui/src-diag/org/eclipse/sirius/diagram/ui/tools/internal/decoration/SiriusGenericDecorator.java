@@ -187,7 +187,8 @@ public class SiriusGenericDecorator extends AbstractDecorator {
 
                     Map<Position, IFigure> figureAtPosition = computeGroupDecorationsFigure(positionToDecorators, margin);
                     if (figureAtPosition != null) {
-                        addDecoration(getDecoratorTarget().addConnectionDecoration(figureAtPosition.get(Position.CENTER_LITERAL), 50, !printDecoration));
+                        boolean isPrintableDeco = isPrintableDecoration(positionToDecorators.get(Position.CENTER_LITERAL));
+                        addDecoration(getDecoratorTarget().addConnectionDecoration(figureAtPosition.get(Position.CENTER_LITERAL), 50, !isPrintableDeco));
                     }
                 } else {
                     for (DecorationDescriptor decorationDescriptor : decorationDescriptors) {
@@ -204,7 +205,8 @@ public class SiriusGenericDecorator extends AbstractDecorator {
                     Map<Position, IFigure> figureAtPosition = computeGroupDecorationsFigure(positionToDecorators, margin);
                     if (figureAtPosition != null) {
                         for (Position position : figureAtPosition.keySet()) {
-                            addDecoration(getDecoratorTarget().addShapeDecoration(figureAtPosition.get(position), getGMFPosition(position), -margin, !printDecoration));
+                            boolean isPrintableDeco = isPrintableDecoration(positionToDecorators.get(position));
+                            addDecoration(getDecoratorTarget().addShapeDecoration(figureAtPosition.get(position), getGMFPosition(position), -margin, !isPrintableDeco));
                         }
                     }
                 }
@@ -212,6 +214,18 @@ public class SiriusGenericDecorator extends AbstractDecorator {
         }
         DslCommonPlugin.PROFILER.stopWork(DECORATOR_REFRESH);
 
+    }
+
+    /**
+     * The set of decorations is considered printable if there is at least one printable DecorationDescriptor and if the
+     * global printDecoration is true.
+     * 
+     * @param decorationDescs
+     * @return
+     */
+    private boolean isPrintableDecoration(List<DecorationDescriptor> decorationDescs) {
+        boolean atLeastOnePrintableDecorator = decorationDescs.stream().filter(deco -> deco.isPrintable()).findFirst().isPresent();
+        return printDecoration && atLeastOnePrintableDecorator;
     }
 
     private Map<Position, IFigure> computeGroupDecorationsFigure(Map<Position, List<DecorationDescriptor>> decosDescAtPosition, int margin) {

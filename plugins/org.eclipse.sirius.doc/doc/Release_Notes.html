@@ -152,11 +152,24 @@
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-success">Added</span> If the 
+				<code>org.eclipse.sirius.diagam.ui.hidePrintingOfPermissionAuthorityDecoration</code> system property is set to true and if there is no other printable decoration provided at the same location (South-West), the permission authority decorations displayed on diagrams are not printed nor exported in images (export as image actions).
+			</li>
+		</ul>
 		<h4 id="Migrations">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration participant has been added to update existing representation links. (see 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=535648">bugzilla #533175</a> for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
 				<em>12.1.4.201810100944</em>.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in  
+			<code>org.eclipse.sirius.diagram</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The getter and setter methods have been added for the new attribute 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor.isPrintable</code>. This attribute is used to know if the decoration should be hidden when printing or exporting the diagram. The behavior is applied only if there is no printable decoration in its diagram element location (South, West, South-West etc).
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
@@ -523,7 +536,7 @@
 				<code>getFilesFromWorkspace(Collection&lt;IContainer&gt;, String)</code> to be more generic.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -987,7 +1000,7 @@
 				<em>Model Request Interpreter</em> view is still present if needed during the transition, but not exposed or used anywhere. It will be removed in a future version. 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -1595,7 +1608,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>HierarchyLabelProvider</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram4">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -2019,7 +2032,7 @@ SWTBotUtils.waitAllUiEvents();
 				<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus</code> to reflect all kind of language validation severity (of AQL for example).
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram5">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
