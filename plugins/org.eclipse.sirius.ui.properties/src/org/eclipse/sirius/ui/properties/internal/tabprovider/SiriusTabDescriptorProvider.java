@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2017 Obeo.
+ * Copyright (c) 2015, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.ui.properties.internal.tabprovider;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
@@ -71,7 +72,7 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
                 }
             }
         }
-        return new ArrayList<IEEFTabDescriptor>();
+        return new ArrayList<>();
     }
 
     /**
@@ -82,9 +83,13 @@ public class SiriusTabDescriptorProvider implements IEEFTabDescriptorProvider {
      * @return A collection of {@link IEEFTabDescriptor}
      */
     private Collection<IEEFTabDescriptor> getTabDescriptors(SiriusInputDescriptor input) {
-        Session session = input.getFullContext().getSession().get();
-        List<PageDescription> effectivePageDescriptions = computeEffectiveDescription(input, session);
-        return getTabDescriptors(session, input, effectivePageDescriptions);
+        Option<Session> session = input.getFullContext().getSession();
+        if (session.some()) {
+            List<PageDescription> effectivePageDescriptions = computeEffectiveDescription(input, session.get());
+            return getTabDescriptors(session.get(), input, effectivePageDescriptions);
+        } else {
+            return Collections.emptyList();
+        }
     }
 
     private Collection<IEEFTabDescriptor> getTabDescriptors(Session session, SiriusInputDescriptor input, List<PageDescription> effectivePageDescriptions) {
