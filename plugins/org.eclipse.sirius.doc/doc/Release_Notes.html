@@ -81,13 +81,21 @@
 		</p>
 		<h2 id="sirius6.1.1">Changes in Sirius 6.1.1</h2>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-success">Added</span> If the 
+				<code>org.eclipse.sirius.diagam.ui.hidePrintingOfPermissionAuthorityDecoration</code> system property is set to true and if there is no other printable decoration provided at the same location (South-West), the permission authority decorations displayed on diagrams are not printed nor exported in images (export as image actions).
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in  
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> Add method 
 				<code>allowsVisibilityModeActivation()</code> in 
-				<code>org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider</code> This method is used to know if the visibility mode is supported by a specific diagram description.   
+				<code>org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider</code> This method is used to know if the visibility mode is supported by a specific diagram description.
+			</li>
+			<li><span class="label label-success">Added</span> The getter and setter methods have been added for the new attribute 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor.isPrintable</code>. This attribute is used to know if the decoration should be hidden when printing or exporting the diagram. The behavior is applied only if there is no printable decoration in its diagram element location (South, West, South-West etc).
 			</li>
 		</ul>
 		<h2 id="sirius6.1.0">Changes in Sirius 6.1.0</h2>

@@ -19,6 +19,7 @@ import java.util.List;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
+import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -44,6 +45,13 @@ import org.eclipse.swt.graphics.Image;
  */
 public class EditModeDecorationDescriptorProvider extends AbstractSiriusDecorationDescriptorProvider {
 
+    /**
+     * DISABLE_PRINT_FOR_PERMISSION_AUTHORITY_DECORATION.
+     */
+    protected static final String DISABLE_PRINT_FOR_PERMISSION_AUTHORITY_DECORATION = "org.eclipse.sirius.diagam.ui.hidePrintingOfPermissionAuthorityDecoration"; //$NON-NLS-1$
+
+    private static final ImageDescriptor LOCK_BY_OTHER_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif"); //$NON-NLS-1$
+
     private static final String NAME = "editModeDecorator"; //$NON-NLS-1$
 
     @Override
@@ -53,15 +61,13 @@ public class EditModeDecorationDescriptorProvider extends AbstractSiriusDecorati
 
     @Override
     public List<DecorationDescriptor> createDecorationDescriptors(IDiagramElementEditPart editPart, Session session) {
-        Image decorationImage = getDecorationImage(editPart);
-        if (decorationImage != null) {
-            DecorationDescriptor decoDesc = new DecorationDescriptor();
+        DecorationDescriptor decoDesc = new DecorationDescriptor();
+        addDecorationImage(editPart, decoDesc);
+        if (decoDesc.getDecorationAsImage() != null) {
             decoDesc.setName(NAME);
             decoDesc.setPosition(Position.SOUTH_WEST_LITERAL);
             decoDesc.setDistributionDirection(DecorationDistributionDirection.HORIZONTAL);
             decoDesc.setDisplayPriority(DisplayPriority.HIGH_PRIORITY.getValue());
-            decoDesc.setDecorationAsImage(decorationImage);
-
             // add tooltip
             decoDesc.setTooltipAsString(getToolTip(editPart));
 
@@ -126,36 +132,41 @@ public class EditModeDecorationDescriptorProvider extends AbstractSiriusDecorati
      * 
      * @param editPart
      *            the edit part to get the decoration image from
-     * @return <code>null</code> if no image found.
+     * @param decoDesc
+     *            the DecorationDescriptor on which to set the image
      */
-    protected Image getDecorationImage(EditPart editPart) {
+    protected void addDecorationImage(IDiagramElementEditPart editPart, DecorationDescriptor decoDesc) {
         Image decorationImage = null;
-        if (editPart instanceof IDiagramElementEditPart) {
-            IDiagramElementEditPart part = (IDiagramElementEditPart) editPart;
+        IDiagramElementEditPart part = editPart;
 
-            Boolean isBroken = null;
-            // Case 1 : permission authority forbids the edition of the semantic
-            // element associated to this edit part
-            if (isDecorableEditPart(part)) {
-                IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(part.getEditingDomain().getResourceSet());
-                if (auth != null) {
-                    EObject representedObject = part.resolveTargetSemanticElement();
-                    isBroken = isBroken(representedObject);
-                    if (!isBroken) {
-                        decorationImage = getLockStatusDecorationImage(auth.getLockStatus(representedObject));
+        Boolean isBroken = null;
+        // Case 1 : permission authority forbids the edition of the semantic
+        // element associated to this edit part
+        if (isDecorableEditPart(part)) {
+            IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(part.getEditingDomain().getResourceSet());
+            if (auth != null) {
+                EObject representedObject = part.resolveTargetSemanticElement();
+                isBroken = isBroken(representedObject);
+                if (!isBroken) {
+                    if (Boolean.getBoolean(DISABLE_PRINT_FOR_PERMISSION_AUTHORITY_DECORATION)) {
+                        decoDesc.setPrintable(false);
                     }
-                }
-            }
-
-            // Case 2 : edit part is broken
-            if (decorationImage == null) {
-                if ((isBroken != null && isBroken.booleanValue()) || (isBroken == null && isBroken(part))) {
-                    // If the edit part is broken, we return a "deleted" image (red cross)
-                    decorationImage = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETED_DIAG_ELEM_DECORATOR_ICON));
+                    decorationImage = getLockStatusDecorationImage(auth.getLockStatus(representedObject));
                 }
             }
         }
-        return decorationImage;
+
+        // Case 2 : edit part is broken
+        if (decorationImage == null) {
+            if ((isBroken != null && isBroken.booleanValue()) || (isBroken == null && isBroken(part))) {
+                // If the edit part is broken, we return a "deleted" image (red cross)
+                decorationImage = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETED_DIAG_ELEM_DECORATOR_ICON));
+            }
+        }
+
+        if (decorationImage != null) {
+            decoDesc.setDecorationAsImage(decorationImage);
+        }
     }
 
     /**
@@ -169,7 +180,7 @@ public class EditModeDecorationDescriptorProvider extends AbstractSiriusDecorati
         if (LockStatus.LOCKED_BY_OTHER.equals(lockStatus)) {
             // It means that the semantic element referenced by this edit part
             // is not editable, we return a "locked" image (red padlock)
-            return DiagramUIPlugin.getPlugin().getImage(SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif")); //$NON-NLS-1$
+            return DiagramUIPlugin.getPlugin().getImage(LOCK_BY_OTHER_IMAGE_DESCRIPTOR);
         }
         return null;
     }
