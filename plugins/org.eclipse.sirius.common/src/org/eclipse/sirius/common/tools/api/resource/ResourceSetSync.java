@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -90,21 +90,52 @@ public final class ResourceSetSync extends ResourceSetListenerImpl implements Re
     private Collection<Resource> savedResources = new LinkedHashSet<>();
 
     private final ArrayList<IFileModificationValidator> fileModificationValidators;
-    
+
     private final AtomicBoolean notificationInProgress = new AtomicBoolean(false);
 
     /**
-     * The {@link ResourceStatus} represents the in memory status of a resource
-     * in regard of the physical one.
+     * The {@link ResourceStatus} represents the in memory status of a resource in regard of the physical one (from
+     * which it was loaded).
      * 
      * @author cbrun
-     * 
      */
     public enum ResourceStatus {
         /**
-         * The resource in-memory status in regard of the physical data.
+         * The in-memory model has been modified, but the physical resource is still in the reference state.
          */
-        CHANGED, EXTERNAL_CHANGED, CONFLICTING_CHANGED, CONFLICTING_DELETED, DELETED, SYNC, CHANGES_CANCELED, UNKNOWN
+        CHANGED,
+        /**
+         * The in-memory model has not been modified since the last load/save, but the physical resource has changed.
+         */
+        EXTERNAL_CHANGED,
+        /**
+         * Both in-memory versions and physical versions have been modified since the last synchronization point.
+         */
+        CONFLICTING_CHANGED,
+        /**
+         * The in-memory version has been modified from the reference version, but the physical resource has been
+         * deleted.
+         */
+        CONFLICTING_DELETED,
+        /**
+         * The in-memory version of the resource has not been modified since the last sync, and the underlying file has
+         * been deleted.
+         */
+        DELETED,
+        /**
+         * Both versions in memory and on disk are in sync. This is the state just after a resource has been (re-)loaded
+         * or saved.
+         */
+        SYNC,
+        /**
+         * Special status only used by RestoreToLastSavePointListener to request an unconditional reload of the
+         * (current) version on disk.
+         */
+        CHANGES_CANCELED,
+        /**
+         * Should not happen in practice.
+         */
+        UNKNOWN
     }
 
     /**
