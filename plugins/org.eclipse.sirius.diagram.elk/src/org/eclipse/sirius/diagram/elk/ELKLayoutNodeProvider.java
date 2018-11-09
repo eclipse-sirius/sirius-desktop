@@ -18,13 +18,13 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.elk.core.service.LayoutConnectorsService;
 import org.eclipse.elk.core.service.LayoutMapping;
 import org.eclipse.gef.commands.Command;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.DefaultLayoutProvider;
 
 import com.google.inject.Injector;
 
 /**
- * Layout node provider allowing to apply an ELK layout algorithm while
- * arranging diagram elements.
+ * Layout node provider allowing to apply an ELK layout algorithm while arranging diagram elements.
  * 
  * @author <a href=mailto:pierre.guilet@obeo.fr>Pierre Guilet</a>
  *
@@ -35,7 +35,7 @@ public class ELKLayoutNodeProvider extends DefaultLayoutProvider {
     public Command layoutEditParts(final List selectedObjects, final IAdaptable layoutHint) {
         Injector injector = LayoutConnectorsService.getInstance().getInjector(null, selectedObjects);
         ElkDiagramLayoutConnector connector = injector.getInstance(ElkDiagramLayoutConnector.class);
-        LayoutMapping layoutMapping = connector.buildLayoutGraph(null, selectedObjects);
+        LayoutMapping layoutMapping = connector.buildLayoutGraph(layoutHint.getAdapter(DiagramEditPart.class), selectedObjects);
         connector.layout(layoutMapping);
         connector.transferLayout(layoutMapping);
         return connector.getApplyCommand(layoutMapping);
