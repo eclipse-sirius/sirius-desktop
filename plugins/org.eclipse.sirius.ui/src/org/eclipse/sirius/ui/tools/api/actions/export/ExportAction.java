@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
@@ -137,7 +138,7 @@ public class ExportAction extends WorkspaceModifyOperation {
             monitor.beginTask(ExportAction.EXPORT_DIAGRAMS_AS_IMAGES_ACTION_TITLE, dRepresentationsToExportAsImage.size());
             try {
                 createImageFiles(monitor);
-            } catch (final OutOfMemoryError | SizeTooLargeException e) {
+            } catch (final OutOfMemoryError | CoreException e) {
                 throw new InvocationTargetException(e, e.getLocalizedMessage());
             }
         } finally {
@@ -153,10 +154,11 @@ public class ExportAction extends WorkspaceModifyOperation {
      *
      * @param monitor
      *            the progress monitor
-     * @throws SizeTooLargeException
-     *             if the created image is too large to be handled properly
+     * @throws CoreException
+     *             if one or several images creation failed. The Exception contains a Status with the causes of this
+     *             Exception.
      */
-    protected void createImageFiles(final IProgressMonitor monitor) throws SizeTooLargeException {
+    protected void createImageFiles(final IProgressMonitor monitor) throws CoreException {
 
         final List<IBeforeExport> beforeContributors = EclipseUtil.getExtensionPlugins(IBeforeExport.class, IExportRepresentationsAsImagesExtension.ID,
                 IExportRepresentationsAsImagesExtension.CLASS_ATTRIBUTE);
@@ -186,7 +188,8 @@ public class ExportAction extends WorkspaceModifyOperation {
         } else {
             // To know if error from image size to large
             boolean errorDuringExport = false;
-            List<Throwable> messageException = new ArrayList<Throwable>();
+            List<Throwable> tooLargemessageException = new ArrayList<Throwable>();
+            List<Throwable> otherMessageException = new ArrayList<Throwable>();
             try {
                 for (final DRepresentation representation : dRepresentationsToExportAsImage) {
                     final IPath filePath;
@@ -218,8 +221,11 @@ public class ExportAction extends WorkspaceModifyOperation {
                         } catch (CoreException exception) {
                             if (exception instanceof SizeTooLargeException) {
                                 errorDuringExport = true;
-                                messageException.add(exception);
+                                tooLargemessageException.add(exception);
                             }
+                        } catch (WrappedException exception) {
+                            errorDuringExport = true;
+                            otherMessageException.add(exception);
                         }
                     }
                     /*
@@ -232,17 +238,7 @@ public class ExportAction extends WorkspaceModifyOperation {
 
             } finally {
                 if (errorDuringExport) {
-                    // Construct message for dialog and error in error log.
-                    StringBuffer messageExceptionForDialog = new StringBuffer();
-                    messageExceptionForDialog.append(Messages.ExportAction_imagesTooLargeMessage);
-                    for (Throwable thr : messageException) {
-                        messageExceptionForDialog.append("\n"); //$NON-NLS-1$
-                        messageExceptionForDialog.append(" - "); //$NON-NLS-1$
-                        messageExceptionForDialog.append(thr.getMessage());
-                    }
-
-                    Status status = new Status(IStatus.ERROR, SiriusPlugin.ID, messageExceptionForDialog.toString());
-                    throw new SizeTooLargeException(status);
+                    handleErrors(tooLargemessageException, otherMessageException);
                 }
             }
         }
@@ -252,6 +248,30 @@ public class ExportAction extends WorkspaceModifyOperation {
         for (IAfterExport iAfterExport : afterContributors) {
             iAfterExport.afterExportAction();
         }
+    }
+
+    private void handleErrors(List<Throwable> tooLargemessageException, List<Throwable> otherMessageException) throws CoreException {
+        // Construct message for dialog and error in error log.
+        StringBuffer messageExceptionForDialog = new StringBuffer();
+        if (!tooLargemessageException.isEmpty()) {
+            messageExceptionForDialog.append(Messages.ExportAction_imagesTooLargeMessage);
+        }
+        for (Throwable thr : tooLargemessageException) {
+            messageExceptionForDialog.append("\n"); //$NON-NLS-1$
+            messageExceptionForDialog.append(" - "); //$NON-NLS-1$
+            messageExceptionForDialog.append(thr.getMessage());
+        }
+        for (Throwable thr : otherMessageException) {
+            if (!tooLargemessageException.isEmpty()) {
+                messageExceptionForDialog.append("\n"); //$NON-NLS-1$
+            }
+            if (otherMessageException.size() > 1) {
+                messageExceptionForDialog.append(" - "); //$NON-NLS-1$
+            }
+            messageExceptionForDialog.append(thr.getMessage());
+        }
+        Status status = new Status(IStatus.ERROR, SiriusPlugin.ID, messageExceptionForDialog.toString());
+        throw new CoreException(status);
     }
 
     /**

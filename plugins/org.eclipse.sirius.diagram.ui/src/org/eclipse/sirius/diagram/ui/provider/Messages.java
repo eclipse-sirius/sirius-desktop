@@ -356,6 +356,9 @@ public final class Messages {
     public static String DiagramDialectUIServices_exportedDiagramImageCreationError;
 
     @TranslatableMessage
+    public static String DiagramDialectUIServices_exportedDiagramImageClassCastError;
+
+    @TranslatableMessage
     public static String DiagramDialectUIServices_refreshDiagram;
 
     @TranslatableMessage

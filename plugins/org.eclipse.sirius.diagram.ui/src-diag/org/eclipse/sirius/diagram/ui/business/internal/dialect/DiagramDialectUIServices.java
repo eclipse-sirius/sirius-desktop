@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -35,6 +35,7 @@ import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -79,8 +80,6 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
-import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
-import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
@@ -270,18 +269,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
         });
     }
 
-    /**
-     * Synchronizes the GMF diagram model according to the viewpoint DSemanticDiagram model.
-     *
-     * @param diagram
-     *            the GMF diagram model to synchronize.
-     */
-    private void synchronizeDiagram(final Diagram diagram) {
-        CanonicalSynchronizer canonicalSynchronizer = CanonicalSynchronizerFactory.INSTANCE.createCanonicalSynchronizer(diagram);
-        canonicalSynchronizer.storeViewsToArrange(false);
-        canonicalSynchronizer.synchronize();
-    }
-
     @Override
     public boolean canHandleEditor(final IEditorPart editorPart) {
         return editorPart instanceof DiagramDocumentEditor;
@@ -434,8 +421,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
             for (final EObject dataElement : data) {
                 if (dataElement instanceof Diagram) {
                     final Diagram diagram = (Diagram) dataElement;
-                    synchronizeDiagram(diagram);
-
+                    
                     final DiagramEditPartService tool = new DiagramEditPartService();
                     configureScalingPolicy(tool, format.getScalingPolicy(), format.getScalingLevel());
                     if (exportToHtml) {
@@ -509,6 +495,13 @@ public class DiagramDialectUIServices implements DialectUIServices {
                 }
             }
             return result;
+        }
+        // The GMF refresh was added because of a possible ClassCastException during the diagram edit parts creation.
+        // Since we decide to avoid any model modification during the export as image action, we catch this possible
+        // exception here.
+        catch (ClassCastException e) {
+            // To avoid API break, we throw an unchecked exception that need to be caught and handled by the caller.
+            throw new WrappedException(MessageFormat.format(Messages.DiagramDialectUIServices_exportedDiagramImageClassCastError, representation.getName()), e);
         } finally {
             disposeShell(shell);
         }
