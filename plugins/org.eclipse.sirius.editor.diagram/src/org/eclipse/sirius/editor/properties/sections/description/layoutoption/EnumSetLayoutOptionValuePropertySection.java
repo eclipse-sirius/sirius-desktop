@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.description.EnumSetLayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.editor.Messages;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractEditorDialogPropertySection;
 import org.eclipse.swt.custom.CLabel;
@@ -81,7 +82,8 @@ public class EnumSetLayoutOptionValuePropertySection extends AbstractEditorDialo
 
     @Override
     protected String getLabelText() {
-        return layoutOption.getLabel();
+        String label = LayoutOptionPropertiesUtils.getLabel((CustomLayoutConfiguration) layoutOption.eContainer(), layoutOption);
+        return label == null ? Messages.LayoutOptionValue_defaultLabel : label;
     }
 
     @Override

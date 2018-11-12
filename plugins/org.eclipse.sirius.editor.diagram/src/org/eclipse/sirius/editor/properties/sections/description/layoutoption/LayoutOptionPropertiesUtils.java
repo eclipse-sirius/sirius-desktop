@@ -20,6 +20,7 @@ import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.LayoutOption;
+import org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.swt.SWT;
@@ -84,7 +85,7 @@ public final class LayoutOptionPropertiesUtils {
         data.left = new FormAttachment(leftControl);
         help.setLayoutData(data);
         help.setImage(helpIcon);
-        String description = DiagramUIPlugin.getPlugin().getDescription((CustomLayoutConfiguration) layoutOption.eContainer(), layoutOption);
+        String description = LayoutOptionPropertiesUtils.getDescription((CustomLayoutConfiguration) layoutOption.eContainer(), layoutOption);
         if (description == null) {
             description = "";
         }
@@ -141,5 +142,47 @@ public final class LayoutOptionPropertiesUtils {
                 Display.getCurrent().asyncExec(() -> tabbedPropertySheetPage.refresh());
             }
         };
+    }
+
+    /**
+     * Return the description of the given layout option associated to the layout configuration.
+     *
+     * @param customLayoutConfiguration
+     *            the layout configuration containing the layout option
+     * @param layoutOption
+     *            the layout option from which we want to retrieve corresponding label.
+     * @return the description of the given layout option associated to the layout configuration. An empty string if no
+     *         layout configuration corresponding is known.
+     */
+    public static String getDescription(CustomLayoutConfiguration customLayoutConfiguration, LayoutOption layoutOption) {
+        CustomLayoutAlgorithm customLayoutAlgorithm = DiagramUIPlugin.getPlugin().getLayoutAlgorithms().get(customLayoutConfiguration.getId());
+        if (customLayoutAlgorithm != null) {
+            LayoutOption registerdedlayoutOption = customLayoutAlgorithm.getLayoutOptions().get(layoutOption.getId());
+            if (registerdedlayoutOption.getDescription() != null) {
+                return registerdedlayoutOption.getDescription();
+            }
+        }
+        return ""; //$NON-NLS-1$
+    }
+
+    /**
+     * Return the label of the given layout option associated to the layout configuration.
+     *
+     * @param customLayoutConfiguration
+     *            the layout configuration containing the layout option
+     * @param layoutOption
+     *            the layout option from which we want to retrieve corresponding label.
+     * @return the label of the given layout option associated to the layout configuration. An empty string if no layout
+     *         configuration corresponding is known.
+     */
+    public static String getLabel(CustomLayoutConfiguration customLayoutConfiguration, LayoutOption layoutOption) {
+        CustomLayoutAlgorithm customLayoutAlgorithm = DiagramUIPlugin.getPlugin().getLayoutAlgorithms().get(customLayoutConfiguration.getId());
+        if (customLayoutAlgorithm != null) {
+            LayoutOption registerdedlayoutOption = customLayoutAlgorithm.getLayoutOptions().get(layoutOption.getId());
+            if (registerdedlayoutOption.getDescription() != null) {
+                return registerdedlayoutOption.getLabel();
+            }
+        }
+        return ""; //$NON-NLS-1$
     }
 }

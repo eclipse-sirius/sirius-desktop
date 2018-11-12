@@ -43,7 +43,6 @@ import org.eclipse.sirius.diagram.description.EnumSetLayoutOption;
 import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.StringLayoutOption;
-import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.editor.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
@@ -354,7 +353,7 @@ public class OptionOverrideEditorDialog extends Dialog {
                 IStructuredSelection selection = (IStructuredSelection) event.getSelection();
                 LayoutOption firstElement = (LayoutOption) selection.getFirstElement();
                 if (firstElement != null) {
-                    String description = DiagramUIPlugin.getPlugin().getDescription(customLayoutConfiguration, firstElement);
+                    String description = LayoutOptionPropertiesUtils.getDescription(customLayoutConfiguration, firstElement);
                     if (description == null) {
                         description = "";
                     }

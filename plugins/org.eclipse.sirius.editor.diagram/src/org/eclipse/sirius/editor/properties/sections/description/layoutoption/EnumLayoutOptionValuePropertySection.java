@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.description.EnumLayoutValue;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.editor.Messages;
 import org.eclipse.sirius.editor.properties.ViewpointPropertySheetPage;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractComboPropertySection;
 import org.eclipse.swt.custom.CLabel;
@@ -73,7 +74,8 @@ public class EnumLayoutOptionValuePropertySection extends AbstractComboPropertyS
 
     @Override
     protected String getLabelText() {
-        return layoutOption.getLabel();
+        String label = LayoutOptionPropertiesUtils.getLabel((CustomLayoutConfiguration) layoutOption.eContainer(), layoutOption);
+        return label == null ? Messages.LayoutOptionValue_defaultLabel : label;
     }
 
     @Override
@@ -122,19 +124,20 @@ public class EnumLayoutOptionValuePropertySection extends AbstractComboPropertyS
         Map<String, CustomLayoutAlgorithm> layoutProviderRegistry = DiagramUIPlugin.getPlugin().getLayoutAlgorithms();
         CustomLayoutConfiguration layout = (CustomLayoutConfiguration) layoutOption.eContainer();
         CustomLayoutAlgorithm genericLayoutProviderSupplier = layoutProviderRegistry.get(layout.getId());
-        Map<String, LayoutOption> layoutOptions = genericLayoutProviderSupplier.getLayoutOptions();
-        EnumLayoutOption layoutOptionTemplate = (EnumLayoutOption) layoutOptions.get(layoutOption.getId());
-        EList<EnumLayoutValue> choices = layoutOptionTemplate.getChoices();
-        EnumLayoutOption layoutOptionEnum = (EnumLayoutOption) layoutOption;
-        for (EnumLayoutValue enumLayoutValue : choices) {
-            boolean alreadyExistingOption = layoutOptionEnum.getValue() != null && enumLayoutValue.getName().equals(layoutOptionEnum.getValue().getName());
-            if (!alreadyExistingOption) {
-                result.add(EcoreUtil.copy(enumLayoutValue));
-            } else {
-                result.add(layoutOptionEnum.getValue());
+        if (genericLayoutProviderSupplier != null) {
+            Map<String, LayoutOption> layoutOptions = genericLayoutProviderSupplier.getLayoutOptions();
+            EnumLayoutOption layoutOptionTemplate = (EnumLayoutOption) layoutOptions.get(layoutOption.getId());
+            EList<EnumLayoutValue> choices = layoutOptionTemplate.getChoices();
+            EnumLayoutOption layoutOptionEnum = (EnumLayoutOption) layoutOption;
+            for (EnumLayoutValue enumLayoutValue : choices) {
+                boolean alreadyExistingOption = layoutOptionEnum.getValue() != null && enumLayoutValue.getName().equals(layoutOptionEnum.getValue().getName());
+                if (!alreadyExistingOption) {
+                    result.add(EcoreUtil.copy(enumLayoutValue));
+                } else {
+                    result.add(layoutOptionEnum.getValue());
+                }
             }
         }
-
         return result;
     }
 

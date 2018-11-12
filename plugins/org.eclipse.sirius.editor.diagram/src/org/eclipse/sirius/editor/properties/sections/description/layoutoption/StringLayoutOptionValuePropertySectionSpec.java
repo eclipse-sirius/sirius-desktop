@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.editor.properties.sections.description.layoutoption;
 
+import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.StringLayoutOption;
 import org.eclipse.sirius.diagram.editor.properties.sections.description.stringlayoutoption.StringLayoutOptionValuePropertySection;
@@ -58,7 +59,8 @@ public class StringLayoutOptionValuePropertySectionSpec extends StringLayoutOpti
 
     @Override
     protected String getLabelText() {
-        return layoutOption.getLabel() == null ? Messages.LayoutOptionValue_defaultLabel : layoutOption.getLabel();
+        String label = LayoutOptionPropertiesUtils.getLabel((CustomLayoutConfiguration) layoutOption.eContainer(), layoutOption);
+        return label == null ? Messages.LayoutOptionValue_defaultLabel : label;
     }
 
     @Override

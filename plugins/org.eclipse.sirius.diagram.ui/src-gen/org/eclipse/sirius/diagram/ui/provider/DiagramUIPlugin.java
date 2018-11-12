@@ -49,8 +49,6 @@ import org.eclipse.jface.viewers.DecorationOverlayIcon;
 import org.eclipse.jface.viewers.IDecoration;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.sirius.common.ui.tools.internal.preference.DynamicConfigurationHelper;
-import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
-import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.concern.provider.ConcernItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.description.filter.provider.FilterItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
@@ -194,25 +192,6 @@ public final class DiagramUIPlugin extends EMFPlugin {
          */
         public void addLayoutAlgorithm(CustomLayoutAlgorithm customLayoutAlgorithm) {
             layoutAlgorithmsRegistry.put(customLayoutAlgorithm.getId(), customLayoutAlgorithm);
-        }
-
-        /**
-         * Return the description of the given layout option associated to the layout configuration.
-         *
-         * @param customLayoutConfiguration
-         * @param layoutOption
-         * @return the description of the given layout option associated to the layout configuration. An empty string if
-         *         no layout configuration corresponding is known.
-         */
-        public String getDescription(CustomLayoutConfiguration customLayoutConfiguration, LayoutOption layoutOption) {
-            CustomLayoutAlgorithm customLayoutAlgorithm = layoutAlgorithmsRegistry.get(customLayoutConfiguration.getId());
-            if (customLayoutAlgorithm != null) {
-                LayoutOption registerdedlayoutOption = customLayoutAlgorithm.getLayoutOptions().get(layoutOption.getId());
-                if (registerdedlayoutOption.getDescription() != null) {
-                    return registerdedlayoutOption.getDescription();
-                }
-            }
-            return ""; //$NON-NLS-1$
         }
 
         /**
