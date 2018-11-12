@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
@@ -190,8 +191,8 @@ public class ExportAction extends WorkspaceModifyOperation {
         } else {
             // To know if error from image size to large
             boolean errorDuringExport = false;
-            List<Throwable> messageException = new ArrayList<Throwable>();
-            final Shell shell = Display.getCurrent().getActiveShell();
+            List<Throwable> tooLargemessageException = new ArrayList<Throwable>();
+            List<Throwable> otherMessageException = new ArrayList<Throwable>();
             try {
                 for (final DRepresentation representation : dRepresentationsToExportAsImage) {
                     final IPath filePath;
@@ -221,8 +222,11 @@ public class ExportAction extends WorkspaceModifyOperation {
                         } catch (CoreException exception) {
                             if (exception instanceof SizeTooLargeException) {
                                 errorDuringExport = true;
-                                messageException.add(exception);
+                                tooLargemessageException.add(exception);
                             }
+                        } catch (WrappedException exception) {
+                            errorDuringExport = true;
+                            otherMessageException.add(exception);
                         }
                     }
                     /*
@@ -235,21 +239,7 @@ public class ExportAction extends WorkspaceModifyOperation {
 
             } finally {
                 if (errorDuringExport) {
-                    // Construct message for dialog and error in error log.
-                    StringBuffer messageExceptionForDialog = new StringBuffer();
-                    messageExceptionForDialog.append(Messages.ExportAction_imagesTooLargeMessage);
-                    for (Throwable thr : messageException) {
-                        messageExceptionForDialog.append("\n"); //$NON-NLS-1$
-                        messageExceptionForDialog.append(" - "); //$NON-NLS-1$
-                        messageExceptionForDialog.append(thr.getMessage());
-                    }
-                    // Create a popup menu to inform user that representations
-                    // export failed
-                    MessageDialog.openError(shell, Messages.ExportAction_exportImpossibleTitle, messageExceptionForDialog.toString());
-
-                    // Add in the 'error log' the representations export
-                    // failed
-                    SiriusPlugin.getDefault().error(Messages.ExportAction_exportError, new SizeTooLargeException(new Status(IStatus.ERROR, SiriusPlugin.ID, messageExceptionForDialog.toString())));
+                    handleErrors(tooLargemessageException, otherMessageException);
                 }
             }
         }
@@ -259,6 +249,37 @@ public class ExportAction extends WorkspaceModifyOperation {
         for (IAfterExport iAfterExport : afterContributors) {
             iAfterExport.afterExportAction();
         }
+    }
+
+    private void handleErrors(List<Throwable> tooLargemessageException, List<Throwable> otherMessageException) {
+        // Construct message for dialog and error in error log.
+        StringBuffer messageExceptionForDialog = new StringBuffer();
+        if (!tooLargemessageException.isEmpty()) {
+            messageExceptionForDialog.append(Messages.ExportAction_imagesTooLargeMessage);
+        }
+        for (Throwable thr : tooLargemessageException) {
+            messageExceptionForDialog.append("\n"); //$NON-NLS-1$
+            messageExceptionForDialog.append(" - "); //$NON-NLS-1$
+            messageExceptionForDialog.append(thr.getMessage());
+        }
+        for (Throwable thr : otherMessageException) {
+            if (!tooLargemessageException.isEmpty()) {
+                messageExceptionForDialog.append("\n"); //$NON-NLS-1$
+            }
+            if (tooLargemessageException.size() > 1) {
+                messageExceptionForDialog.append(" - "); //$NON-NLS-1$
+            }
+            messageExceptionForDialog.append(thr.getMessage());
+        }
+
+        final Shell shell = Display.getCurrent().getActiveShell();
+        // Create a popup menu to inform user that representations
+        // export failed
+        MessageDialog.openError(shell, Messages.ExportAction_exportImpossibleTitle, messageExceptionForDialog.toString());
+
+        // Add in the 'error log' the representations export
+        // failed
+        SiriusPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, SiriusPlugin.ID, messageExceptionForDialog.toString()));
     }
 
     /**
