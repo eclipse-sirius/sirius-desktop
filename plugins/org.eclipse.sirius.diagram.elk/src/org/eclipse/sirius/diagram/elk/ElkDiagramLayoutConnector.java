@@ -76,6 +76,8 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
+import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.BooleanLayoutOption;
 import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -360,8 +362,10 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             // layout only the selected elements
             double minx = Integer.MAX_VALUE;
             double miny = Integer.MAX_VALUE;
-            Maybe<ElkPadding> kinsets = new Maybe<>();
+
             for (ShapeNodeEditPart editPart : selection) {
+                // We use new insets the selection can have different parents.
+                Maybe<ElkPadding> kinsets = new Maybe<>();
                 ElkNode node = createNode(mapping, editPart, (IGraphicalEditPart) editPart.getParent(), topNode, kinsets);
                 minx = Math.min(minx, node.getX());
                 miny = Math.min(miny, node.getY());
@@ -375,7 +379,6 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
 
         // transform all connections in the selected area
         processConnections(mapping);
-
         return mapping;
     }
 
@@ -399,9 +402,9 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             final CustomLayoutConfiguration layout = (CustomLayoutConfiguration) diagramDescription.getLayout();
             topNode.setProperty(CoreOptions.ALGORITHM, layout.getId().trim());
             EList<LayoutOption> layoutOptions = layout.getLayoutOptions();
+
             for (LayoutOption layoutOption : layoutOptions) {
                 LayoutOptionData layoutProperty = LayoutMetaDataService.getInstance().getOptionData(layoutOption.getId());
-
                 switch (layoutOption.eClass().getClassifierID()) {
                 case DescriptionPackage.ENUM_LAYOUT_OPTION:
                     EnumLayoutOption enumOption = (EnumLayoutOption) layoutOption;
@@ -639,6 +642,10 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         childLayoutNode.setY(childBounds.y - containerBounds.y);
         childLayoutNode.setDimensions(childBounds.width, childBounds.height);
 
+        // useful to debug.
+        if (((View) nodeEditPart.getModel()).getElement() instanceof DDiagramElement) {
+            childLayoutNode.setIdentifier(((DDiagramElement) ((View) nodeEditPart.getModel()).getElement()).getName());
+        }
         // We would set the modified flag to false here, but that doesn't exist
         // anymore
 
@@ -654,12 +661,16 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
 
         if (parentElkNode != null) {
             // set insets if not yet defined
+            ElkPadding ei = null;
             if (elkinsets.get() == null) {
                 Insets insets = calcSpecificInsets(parentEditPart.getFigure(), nodeFigure);
-                ElkPadding ei = new ElkPadding(insets.top, insets.right, insets.bottom, insets.left);
-                childLayoutNode.setProperty(CoreOptions.PADDING, ei);
+                ei = new ElkPadding(insets.top, insets.right, insets.bottom, insets.left);
                 elkinsets.set(ei);
+            } else {
+                // padding is already computed for given parent so we reuse it.
+                ei = new ElkPadding(elkinsets.get().top, elkinsets.get().right, elkinsets.get().bottom, elkinsets.get().left);
             }
+            childLayoutNode.setProperty(CoreOptions.PADDING, ei);
 
             parentElkNode.getChildren().add(childLayoutNode);
         }
