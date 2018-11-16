@@ -91,6 +91,7 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IToolBarManager;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.PreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.text.AbstractInformationControlManager;
@@ -575,35 +576,48 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     @Override
     public void createPartControl(Composite parent) {
-        super.createPartControl(parent);
-        // Display the status message to inform user about reason why the
-        // session opening failed
-        if (session == null && getEditorInput() instanceof SessionEditorInput) {
-            SessionEditorInput sessionEditorInput = (SessionEditorInput) getEditorInput();
-            IStatus status = sessionEditorInput.getStatus();
-            if (status.getSeverity() >= IStatus.ERROR) {
-                RootEditPart rootEditPart = getGraphicalViewer().getRootEditPart();
-                if (rootEditPart instanceof LayerManager) {
-                    LayerManager layerManager = (LayerManager) rootEditPart;
-                    IFigure layer = layerManager.getLayer(LayerConstants.PRINTABLE_LAYERS);
-                    String message = MessageFormat.format(Messages.DDiagramEditorImpl_editorToBeClosedAndReopenedSinceContentIsNotAccessible, status.getMessage());
-                    layer.add(new Label(message));
+        try {
+            super.createPartControl(parent);
+            // Display the status message to inform user about reason why the
+            // session opening failed
+            if (session == null && getEditorInput() instanceof SessionEditorInput) {
+                SessionEditorInput sessionEditorInput = (SessionEditorInput) getEditorInput();
+                IStatus status = sessionEditorInput.getStatus();
+                if (status.getSeverity() >= IStatus.ERROR) {
+                    RootEditPart rootEditPart = getGraphicalViewer().getRootEditPart();
+                    if (rootEditPart instanceof LayerManager) {
+                        LayerManager layerManager = (LayerManager) rootEditPart;
+                        IFigure layer = layerManager.getLayer(LayerConstants.PRINTABLE_LAYERS);
+                        String message = MessageFormat.format(Messages.DDiagramEditorImpl_editorToBeClosedAndReopenedSinceContentIsNotAccessible, status.getMessage());
+                        layer.add(new Label(message));
+                    }
+                    return;
                 }
-                return;
             }
-        }
 
-        if (getEditingDomain() != null) {
-            tabbarPostCommitListener = new TabbarRefresher(getEditingDomain());
-            visibilityPostCommitListener = new VisibilityPostCommitListener(getDiagramEditPart());
-            statusBarPostCommitListener = new SynchronizedStatusPostCommitListener(this);
-            representationLinkPostCommitListener = new RepresentationLinkPostCommitListener(this);
-            if (isHeaderSectionEnabled()) {
-                diagramHeaderPostCommitListener = new DiagramHeaderPostCommitListener(getEditingDomain(), getDiagramHeader());
+            if (getEditingDomain() != null) {
+                tabbarPostCommitListener = new TabbarRefresher(getEditingDomain());
+                visibilityPostCommitListener = new VisibilityPostCommitListener(getDiagramEditPart());
+                statusBarPostCommitListener = new SynchronizedStatusPostCommitListener(this);
+                representationLinkPostCommitListener = new RepresentationLinkPostCommitListener(this);
+                if (isHeaderSectionEnabled()) {
+                    diagramHeaderPostCommitListener = new DiagramHeaderPostCommitListener(getEditingDomain(), getDiagramHeader());
+                }
+                // Update palette : should be hidden if diagram is not editable
+                if (!getPermissionAuthority().canEditInstance(getRepresentation())) {
+                    notify(REPRESENTATION_EDITION_PERMISSION_DENIED);
+                }
             }
-            // Update palette : should be hidden if diagram is not editable
-            if (!getPermissionAuthority().canEditInstance(getRepresentation())) {
-                notify(REPRESENTATION_EDITION_PERMISSION_DENIED);
+        } catch (ClassCastException | NullPointerException e) {
+
+            Boolean response = MessageDialog.openConfirm(parent.getShell(), Messages.DDiagramEditorImpl_diagramRefreshTitle, Messages.DDiagramEditorImpl_shouldWeRefreshQuestion);
+            close(false);
+            if (response) {
+                launchRefresh(true);
+                DRepresentation currentDRepresentation = getRepresentation();
+                Display.getCurrent().asyncExec(() -> {
+                    DialectUIManager.INSTANCE.openEditor(session, currentDRepresentation, new NullProgressMonitor());
+                });
             }
         }
     }
