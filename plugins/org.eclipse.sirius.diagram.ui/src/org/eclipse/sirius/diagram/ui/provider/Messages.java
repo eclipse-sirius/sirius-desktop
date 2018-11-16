@@ -246,6 +246,9 @@ public final class Messages {
     public static String CustomTreeSelectionDialog_uncheckAllButtonTooltip;
 
     @TranslatableMessage
+    public static String DDiagramEditorImpl_diagramRefreshTitle;
+
+    @TranslatableMessage
     public static String DDiagramEditorImpl_editorToBeClosedAndReopenedSinceContentIsNotAccessible;
 
     @TranslatableMessage
@@ -262,6 +265,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String DDiagramEditorImpl_refreshJobLabel;
+
+    @TranslatableMessage
+    public static String DDiagramEditorImpl_shouldWeRefreshQuestion;
 
     @TranslatableMessage
     public static String DeactivateBehaviorToolsCommand_label;
