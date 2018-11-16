@@ -48,7 +48,7 @@ public class ViewWithNullElementMigrationParticipant extends AbstractRepresentat
     /**
      * The VP version for which this migration is added.
      */
-    public static final Version MIGRATION_VERSION = new Version("12.1.3.201809191200"); //$NON-NLS-1$
+    public static final Version MIGRATION_VERSION = new Version("14.1.0.2018092712000"); //$NON-NLS-1$
 
     /**
      * The name of the feature DView.ownedRepresentations which has been deleted.
