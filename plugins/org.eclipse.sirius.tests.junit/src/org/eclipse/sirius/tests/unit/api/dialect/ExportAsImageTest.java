@@ -39,6 +39,7 @@ import org.apache.batik.util.SVGConstants;
 import org.easymock.EasyMock;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
@@ -270,9 +271,26 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
             exportAction.run(new NullProgressMonitor());
             fail("The export should fail because the diagram is too big.");
         } catch (InvocationTargetException | InterruptedException e) {
-            assertEquals(e.getClass(), InvocationTargetException.class);
-            assertEquals(e.getCause().getClass(), SizeTooLargeException.class);
-            assertEquals(e.getMessage(), errorMessage);
+            assertEquals(InvocationTargetException.class, e.getClass());
+            assertEquals(CoreException.class, e.getCause().getClass());
+            assertEquals(errorMessage, e.getMessage());
+        }
+    }
+
+    /**
+     * Test that the export of diagrams as image works properly even if the GMF model is unsynchronized with the Sirius
+     * one. This test checks that no model changes out of a transaction occurs (in that case a warning message is
+     * logged)
+     * 
+     * @throws Exception
+     */
+    public void testExportAsImageWithUnsynchronizedGMFModel() throws Exception {
+        setWarningCatchActive(true);
+        try {
+            DiagramExportResult exportResult = exportImage(getRepresentation("unsyncGMFDiagExportAsImage"), ImageFileFormat.JPG, ExportFormat.ScalingPolicy.AUTO_SCALING);
+            checkResultsWithAutoUpScale(exportResult);
+        } finally {
+            setWarningCatchActive(false);
         }
     }
 
