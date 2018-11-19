@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -229,6 +229,23 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
         exportImage(representation, ImageFileFormat.PNG, ExportFormat.ScalingPolicy.NO_SCALING);
         // Asserts that the image had been created
         SiriusAssert.assertFileExists("/" + TEMPORARY_PROJECT_NAME + "/" + IMAGE_FILE_NAME + ImageFileFormat.PNG.getName().toLowerCase());
+    }
+
+    /**
+     * Test that the export of diagrams as image works properly even if the GMF model is unsynchronized with the Sirius
+     * one. This test checks that no model changes out of a transaction occurs (in that case a warning message is
+     * logged)
+     * 
+     * @throws Exception
+     */
+    public void testExportAsImageWithUnsynchronizedGMFModel() throws Exception {
+        setWarningCatchActive(true);
+        try {
+            DiagramExportResult exportResult = exportImage(getRepresentation("unsyncGMFDiagExportAsImage"), ImageFileFormat.JPG, ExportFormat.ScalingPolicy.AUTO_SCALING);
+            checkResultsWithAutoUpScale(exportResult);
+        } finally {
+            setWarningCatchActive(false);
+        }
     }
 
     /**

@@ -266,7 +266,7 @@ public class ExportAction extends WorkspaceModifyOperation {
             if (!tooLargemessageException.isEmpty()) {
                 messageExceptionForDialog.append("\n"); //$NON-NLS-1$
             }
-            if (tooLargemessageException.size() > 1) {
+            if (otherMessageException.size() > 1) {
                 messageExceptionForDialog.append(" - "); //$NON-NLS-1$
             }
             messageExceptionForDialog.append(thr.getMessage());
