@@ -537,6 +537,10 @@
 			<code>getNodeEditPartClass</code>. Here is how this class looks like:
 		</p>
 		<pre><code>public class DiagSeqEditPartProvider extends AbstractEditPartProvider {
+    public DiagSeqEditPartProvider() {
+        super();
+    }
+    
     @Override
     protected Class getNodeEditPartClass(View view) {
         if (view.getElement() instanceof CustomStyle) {

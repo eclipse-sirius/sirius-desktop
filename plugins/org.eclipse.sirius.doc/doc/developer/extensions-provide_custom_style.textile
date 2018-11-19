@@ -434,6 +434,10 @@ provided by overriding @getNodeEditPartClass@. Here is how this class looks like
 
 bc.. 
 public class DiagSeqEditPartProvider extends AbstractEditPartProvider {
+    public DiagSeqEditPartProvider() {
+        super();
+    }
+    
     @Override
     protected Class getNodeEditPartClass(View view) {
         if (view.getElement() instanceof CustomStyle) {
