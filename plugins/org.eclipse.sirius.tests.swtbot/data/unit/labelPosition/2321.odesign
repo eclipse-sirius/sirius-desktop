@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" version="10.1.3.201511131800">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" version="12.0.0.2017041100">
   <ownedViewpoints name="tc-2321" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diag-2321" domainClass="EPackage">
-      <nodeMappings name="NodePackageBorder" semanticCandidatesExpression="aql:self.oclAsType(ecore::EPackage).eSubpackages" domainClass="EPackage">
-        <style xsi:type="style:GaugeCompositeStyleDescription" labelExpression="aql:self.name + 'Border'" resizeKind="NSEW">
+      <nodeMappings name="NodePackageBorder" semanticCandidatesExpression="aql:self.oclAsType(ecore::EPackage).eSubpackages->select( p | p.name.equalsIgnoreCase('SubPackage1'))" domainClass="EPackage">
+        <style xsi:type="style:GaugeCompositeStyleDescription" labelExpression="aql:self.name + 'Border'" labelAlignment="LEFT" resizeKind="NSEW">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <sections maxValueExpression="12" valueExpression="aql:self.eSubpackages->size()">
@@ -16,7 +16,35 @@
           </sections>
         </style>
       </nodeMappings>
-      <nodeMappings name="NodePackageNode" semanticCandidatesExpression="aql:self.oclAsType(ecore::EPackage).eSubpackages" domainClass="EPackage">
+      <nodeMappings name="NodePackageNode" semanticCandidatesExpression="aql:self.oclAsType(ecore::EPackage).eSubpackages->select( p | p.name.equalsIgnoreCase('SubPackage1'))" domainClass="EPackage">
+        <style xsi:type="style:GaugeCompositeStyleDescription" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <sections maxValueExpression="12" valueExpression="aql:self.eSubpackages->size()">
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </sections>
+          <sections maxValueExpression="3" valueExpression="aql:self.eSubpackages->size()">
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+          </sections>
+        </style>
+      </nodeMappings>
+      <nodeMappings name="NodePackageNode2" semanticCandidatesExpression="aql:self.oclAsType(ecore::EPackage).eSubpackages->select( p | p.name.equalsIgnoreCase('SubPackage2'))" domainClass="EPackage">
+        <style xsi:type="style:GaugeCompositeStyleDescription" labelAlignment="RIGHT" labelPosition="node" resizeKind="NSEW">
+          <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+          <sections maxValueExpression="12" valueExpression="aql:self.eSubpackages->size()">
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </sections>
+          <sections maxValueExpression="3" valueExpression="aql:self.eSubpackages->size()">
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+          </sections>
+        </style>
+      </nodeMappings>
+      <nodeMappings name="NodePackageNode3" semanticCandidatesExpression="aql:self.oclAsType(ecore::EPackage).eSubpackages->select( p | p.name.equalsIgnoreCase('SubPackage3'))" domainClass="EPackage">
         <style xsi:type="style:GaugeCompositeStyleDescription" labelPosition="node" resizeKind="NSEW">
           <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

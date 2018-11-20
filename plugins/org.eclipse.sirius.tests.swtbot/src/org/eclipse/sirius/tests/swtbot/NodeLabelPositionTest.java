@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,14 +13,17 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ViewNodeFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -30,8 +33,7 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import com.google.common.collect.Iterables;
 
 /**
- * Test class which checks if label is well positioned when it is node label
- * position.
+ * Test class which checks if label is well positioned when it is node label position.
  * 
  * @author nlepine
  */
@@ -72,23 +74,85 @@ public class NodeLabelPositionTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test the node label position in gauge figure
+     * Tests that the left alignment is taken in consideration with wrapped label.
      * 
      * @throws Exception
      *             In case of problem
      */
-    public void testNodeLabelPosition() throws Exception {
+    public void testNodeWrappedLabelPositionWithLeftAlignement() throws Exception {
         SWTBotGefEditPart editPart1 = editor.getEditPart("SubPackage1", AbstractDiagramNodeEditPart.class);
         assertNotNull(editPart1);
-        checkNodeLabelPosition(editPart1, new Point(20, 20), new Point(0, 0));
-        editor.drag(editPart1, 50, 50);
-        SWTBotUtils.waitAllUiEvents();
-        checkNodeLabelPosition(editPart1, new Point(50, 50), new Point(0, 0));
+        checkLabelAlignment(editPart1, PositionConstants.LEFT);
+    }
 
-        // resize the edit part
-        editor.drag(111, 131, 150, 150);
-        SWTBotUtils.waitAllUiEvents();
-        checkNodeLabelPosition(editPart1, new Point(50, 50), new Point(0, 0));
+    /**
+     * Tests that the right alignment is taken in consideration with wrapped label.
+     * 
+     * @throws Exception
+     *             In case of problem
+     */
+    public void testNodeWrappedLabelPositionWithRightAlignement() throws Exception {
+        SWTBotGefEditPart editPart1 = editor.getEditPart("SubPackage2", AbstractDiagramNodeEditPart.class);
+        assertNotNull(editPart1);
+        checkLabelAlignment(editPart1, PositionConstants.RIGHT);
+    }
+
+    /**
+     * Tests that the center alignment is taken in consideration with wrapped label.
+     * 
+     * @throws Exception
+     *             In case of problem
+     */
+    public void testNodeWrappedLabelPositionWithCenterAlignement() throws Exception {
+        SWTBotGefEditPart editPart = editor.getEditPart("SubPackage3", AbstractDiagramNodeEditPart.class);
+        assertNotNull(editPart);
+        checkLabelAlignment(editPart, PositionConstants.CENTER);
+    }
+
+    /**
+     * Verifies that the label is aligned correctly regarding the value set in VSM.
+     * 
+     * @param editPart
+     *            the edit part to check its alignment.
+     * @param alignment
+     *            alignment that should be active.
+     */
+    private void checkLabelAlignment(SWTBotGefEditPart editPart, int alignment) {
+        DNodeEditPart part = (DNodeEditPart) editPart.part();
+        SiriusWrapLabel nodeLabel = part.getPrimaryShape().getNodeLabel();
+        int textWrapAlignment = nodeLabel.getTextWrapAlignment();
+
+        checkAlignment("wrong text wrap alignment.", alignment, textWrapAlignment);
+        int textAlignment = nodeLabel.getTextAlignment();
+        checkAlignment("wrong text alignment.", alignment, textAlignment);
+        int labelAlignment = nodeLabel.getLabelAlignment2();
+        checkAlignment("wrong label alignment.", alignment, labelAlignment);
+    }
+
+    /**
+     * Verifies the alignment is the expected one.
+     * 
+     * @param errorMessage
+     *            error message if not equals
+     * @param expectedAlignment
+     *            expected alignment
+     * @param actualAlignment
+     *            tested alignment
+     */
+    private void checkAlignment(String errorMessage, int expectedAlignment, int actualAlignment) {
+        switch (expectedAlignment) {
+        case PositionConstants.LEFT:
+            assertEquals(errorMessage, PositionConstants.LEFT, actualAlignment);
+            break;
+        case PositionConstants.RIGHT:
+            assertEquals(errorMessage, PositionConstants.RIGHT, actualAlignment);
+            break;
+        case PositionConstants.CENTER:
+            assertEquals(errorMessage, PositionConstants.CENTER, actualAlignment);
+            break;
+        default:
+            break;
+        };
     }
 
     /**
@@ -113,6 +177,26 @@ public class NodeLabelPositionTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Test the node label position in gauge figure
+     * 
+     * @throws Exception
+     *             In case of problem
+     */
+    public void testNodeLabelPosition() throws Exception {
+        SWTBotGefEditPart editPart1 = editor.getEditPart("SubPackage1", AbstractDiagramNodeEditPart.class);
+        assertNotNull(editPart1);
+        checkNodeLabelPosition(editPart1, new Point(20, 20), new Point(0, 0));
+        editor.drag(editPart1, 50, 50);
+        SWTBotUtils.waitAllUiEvents();
+        checkNodeLabelPosition(editPart1, new Point(50, 50), new Point(0, 0));
+
+        // resize the edit part
+        editor.drag(111, 131, 150, 150);
+        SWTBotUtils.waitAllUiEvents();
+        checkNodeLabelPosition(editPart1, new Point(89, 69), new Point(0, 0));
+    }
+
+    /**
      * Check the node label position of the edit part
      * 
      * @param editPart1
@@ -128,8 +212,7 @@ public class NodeLabelPositionTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Check the border label position of the edit part is centered and under
-     * its parent.
+     * Check the border label position of the edit part is centered and under its parent.
      * 
      * @param editPart1
      *            The parent

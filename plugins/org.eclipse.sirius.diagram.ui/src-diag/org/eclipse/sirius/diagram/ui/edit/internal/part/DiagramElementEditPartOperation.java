@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -646,6 +646,8 @@ public final class DiagramElementEditPartOperation {
                 SiriusWrapLabel nodeLabel = ((ViewNodeFigure) figure).getNodeLabel();
                 if (nodeLabel != null) {
                     nodeLabel.setLabelAlignment(LabelAlignmentHelper.getAsPositionConstant(alignment));
+                    nodeLabel.setTextAlignment(LabelAlignmentHelper.getAsPositionConstant(alignment));
+                    nodeLabel.setTextWrapAlignment(LabelAlignmentHelper.getAsPositionConstant(alignment));
                 }
             } else if (figure != null) {
                 LayoutManager layoutManager = figure.getLayoutManager();
