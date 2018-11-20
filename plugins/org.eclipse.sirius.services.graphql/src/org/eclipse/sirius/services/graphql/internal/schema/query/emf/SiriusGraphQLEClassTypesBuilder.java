@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo.
+ * Copyright (c) 2018, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.services.graphql.internal.schema.query.emf;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
@@ -34,6 +35,7 @@ import graphql.schema.GraphQLList;
 import graphql.schema.GraphQLNonNull;
 import graphql.schema.GraphQLObjectType;
 import graphql.schema.GraphQLOutputType;
+import graphql.schema.GraphQLScalarType;
 import graphql.schema.GraphQLType;
 import graphql.schema.GraphQLTypeReference;
 import graphql.schema.TypeResolver;
@@ -56,13 +58,21 @@ public class SiriusGraphQLEClassTypesBuilder implements ISiriusGraphQLTypesBuild
     private EClass eClass;
 
     /**
+     * The cache of the EDataType to GraphQL Scalars.
+     */
+    private HashMap<EDataType, GraphQLScalarType> eDataTypeToScalarCache;
+
+    /**
      * The constructor.
      *
      * @param eClass
      *            The EClass
+     * @param eDataTypeToScalarCache
+     *            The cache of the EDataType to GraphQL Scalars
      */
-    public SiriusGraphQLEClassTypesBuilder(EClass eClass) {
+    public SiriusGraphQLEClassTypesBuilder(EClass eClass, HashMap<EDataType, GraphQLScalarType> eDataTypeToScalarCache) {
         this.eClass = eClass;
+        this.eDataTypeToScalarCache = eDataTypeToScalarCache;
     }
 
     @Override
@@ -250,6 +260,13 @@ public class SiriusGraphQLEClassTypesBuilder implements ISiriusGraphQLTypesBuild
             type = Scalars.GraphQLShort;
         } else if (EcorePackage.eINSTANCE.getEString().equals(eDataType)) {
             type = Scalars.GraphQLString;
+        } else {
+            GraphQLScalarType graphQLScalarType = this.eDataTypeToScalarCache.get(eDataType);
+            if (graphQLScalarType == null) {
+                graphQLScalarType = new SiriusGraphQLEDataTypeScalarBuilder(eDataType).build();
+                this.eDataTypeToScalarCache.put(eDataType, graphQLScalarType);
+            }
+            type = graphQLScalarType;
         }
 
         return type;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo.
+ * Copyright (c) 2018, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.services.graphql.internal.schema;
 
+import java.util.HashMap;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EcorePackage;
@@ -70,7 +71,7 @@ public class SiriusGraphQLSchemaBuilder {
 
         GraphQLType pageInfo = new SiriusGraphQLPageInfoTypeBuilder().build();
 
-        Set<GraphQLType> ecoreTypes = new SiriusGraphQLEPackageTypesBuilder(EcorePackage.eINSTANCE).getTypes();
+        Set<GraphQLType> ecoreTypes = new SiriusGraphQLEPackageTypesBuilder(EcorePackage.eINSTANCE, new HashMap<>()).getTypes();
 
         GraphQLObjectType mutation = new SiriusGraphQLMutationTypeBuilder().build();
         Set<GraphQLType> projectCreationDescriptionTypes = new SiriusGraphQLProjectCreationDescriptionTypesBuilder().getTypes();
