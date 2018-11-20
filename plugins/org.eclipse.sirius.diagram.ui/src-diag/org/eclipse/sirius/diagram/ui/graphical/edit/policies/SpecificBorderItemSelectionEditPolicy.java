@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2016 IBM Corporation and others.
+ * Copyright (c) 2002, 2018 IBM Corporation and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -275,9 +275,9 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
 
             // Only necessary in the case of bordered node dropping
             if (isFeedbackForBorderedNodeDropping(request, targetAbstractGraphicalEditPart) && hostEditPart instanceof IGraphicalEditPart
-                    && !new EditPartQuery((IGraphicalEditPart) hostEditPart).isInLayoutingMode()) {
+                    && !new EditPartQuery((IGraphicalEditPart) hostEditPart).isInLayoutingMode()
+                    && isMouseOnTargetFigure(targetAbstractGraphicalEditPart, shiftedLocation)) {
                 activateProhibitedFeedbacks(targetAbstractGraphicalEditPart, request);
-
                 DBorderItemLocator borderItemLocator = new FeedbackDBorderItemLocator(targetFigure);
                 if (getOrCreateBorderNodeCollapseManager().isCollapsed(borderItemEP)) {
                     borderItemLocator.setBorderItemOffset(IBorderItemOffsets.COLLAPSE_FILTER_OFFSET);
@@ -287,8 +287,7 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
                 // Verify if the dropping of bordered node is not an element
                 // of the same level
                 if (targetAbstractGraphicalEditPart.getParent() != getHost().getParent().getParent()) {
-                    // Verify if the parent is the diagram. If it,
-                    // calculates the position of the ghost relative to the
+                    // Verify if the parent is the diagram. If it, calculates the position of the ghost relative to the
                     // diagram, otherwise compared to the parent
                     if (targetAbstractGraphicalEditPart.getParent() instanceof DiagramEditPart) {
                         targetAbstractGraphicalEditPart.getFigure().translateToAbsolute(feedbackRectangle);
@@ -326,7 +325,6 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
                 final IBorderItemLocator borderItemLocator = borderItemEP.getBorderItemLocator();
 
                 if (borderItemLocator != null) {
-
                     getHostFigure().translateToRelative(feedbackRectangle);
                     Rectangle newRect = getOrCreateBorderNodeCollapseManager().expandCollapsedNodeBounds(borderItemEP, feedbackRectangle);
                     if (newRect != null) {
@@ -351,6 +349,17 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
                 }
             }
         }
+    }
+
+    /**
+     * Check if the given point is located on the figure of the given editPart.</br>
+     * This method is based on getClientArea which ignore the shadow area on bottom and right of a container.
+     */
+    private boolean isMouseOnTargetFigure(AbstractGraphicalEditPart editPart, Point point) {
+        IFigure figure = editPart.getFigure();
+        Point copy = point.getCopy();
+        figure.translateToRelative(copy);
+        return figure.getClientArea(new Rectangle()).contains(copy);
     }
 
     /**
