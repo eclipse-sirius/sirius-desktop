@@ -68,6 +68,7 @@ public class ToolWizardTest extends AbstractSiriusSwtBotGefTestCase {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean apply(final EAttribute arg0) {
             return arg0.getName().equals(name);
         }
@@ -231,6 +232,7 @@ public class ToolWizardTest extends AbstractSiriusSwtBotGefTestCase {
         editor.activateTool("Change name");
 
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 // Click on attribute named "new Attribute"
                 editor.click(SOMEWHERE_IN_BODY_CLASS_EC2.x, SOMEWHERE_IN_BODY_CLASS_EC2.y);
@@ -258,6 +260,92 @@ public class ToolWizardTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Tests that a double click on an element of a selection wizard triggered from the SelectModelElementVariable of a
+     * tool acts as the finish button is clicked.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testSelectModelElementVariableWizardWithDoubleClick() throws Exception {
+        final EClass eClass = getEClass("new EClass 2");
+        final EList<EAttribute> eAttributes = eClass.getEAttributes();
+
+        final Collection<EAttribute> filtered = Collections2.filter(eAttributes, new AttributeNamePredicate("new Attribute"));
+        assertEquals("One attribute should be found", 1, filtered.size());
+
+        editor.activateTool("CreateEClassWizard");
+
+        UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
+            public void run() {
+                editor.click(0, 0);
+            }
+        });
+
+        bot.waitUntilWidgetAppears(Conditions.shellIsActive("Selection Wizard"));
+
+        final SWTBotShell shell = bot.shell("Selection Wizard");
+        shell.setFocus();
+
+        final SWTBot shellBot = new SWTBot(shell.widget);
+
+        // No need to click in displayed list, default selection is ok for this
+        // test
+        shellBot.tree().getTreeItem("EC1").doubleClick();
+
+        bot.waitUntilWidgetAppears(Conditions.shellCloses(shell));
+
+        try {
+            // Name of the attribute should have been changed by the wizard
+            editor.getEditPart("EC1suffix");
+        } catch (WidgetNotFoundException e) {
+            fail("No new element with the name of the selected one from the wizard has been created.");
+        }
+    }
+
+    /**
+     * Tests that a double click on an element of a selection wizard opened from corresponding tool acts as the finish
+     * button is clicked.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testChangeAttributeNameThroughWizardWithDoubleClick() throws Exception {
+        final EClass eClass = getEClass("new EClass 2");
+        final EList<EAttribute> eAttributes = eClass.getEAttributes();
+
+        final Collection<EAttribute> filtered = Collections2.filter(eAttributes, new AttributeNamePredicate("new Attribute"));
+        assertEquals("One attribute should be found", 1, filtered.size());
+
+        editor.activateTool("Change name");
+
+        UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
+            public void run() {
+                // Click on attribute named "new Attribute"
+                editor.doubleClick(SOMEWHERE_IN_BODY_CLASS_EC2.x, SOMEWHERE_IN_BODY_CLASS_EC2.y);
+            }
+        });
+
+        bot.waitUntilWidgetAppears(Conditions.shellIsActive(WIZARD_TITLE));
+
+        final SWTBotShell shell = bot.shell(WIZARD_TITLE);
+        shell.setFocus();
+
+        final SWTBot shellBot = new SWTBot(shell.widget);
+
+        // No need to click in displayed list, default selection is ok for this
+        // test
+        shellBot.tree().getTreeItem("EC1").doubleClick();
+
+        bot.waitUntilWidgetAppears(Conditions.shellCloses(shell));
+
+        // Name of the attribute should have been changed by the wizard
+        final Collection<EAttribute> filtered2 = Collections2.filter(eAttributes, new AttributeNamePredicate("EC1"));
+        assertEquals("One attribute should be found", 1, filtered2.size());
+    }
+
+    /**
      * Test method.
      * 
      * @throws Exception
@@ -272,6 +360,7 @@ public class ToolWizardTest extends AbstractSiriusSwtBotGefTestCase {
         editor.activateTool("Change name");
 
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 // Click on edge label
                 editor.click(ON_EDGE_LABEL.x, ON_EDGE_LABEL.y);

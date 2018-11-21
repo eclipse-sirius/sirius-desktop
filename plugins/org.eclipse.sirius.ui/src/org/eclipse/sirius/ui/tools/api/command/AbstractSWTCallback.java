@@ -39,7 +39,6 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.window.Window;
-import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.sirius.business.api.helper.SelectionDescriptionHelper;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchException;
@@ -54,6 +53,7 @@ import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.SiriusTransPlugin;
 import org.eclipse.sirius.common.ui.tools.api.selection.EMFMessageDialog;
 import org.eclipse.sirius.common.ui.tools.api.selection.EObjectSelectionWizard;
+import org.eclipse.sirius.common.ui.tools.api.selection.WizardDialogClosableByWizard;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.common.ui.tools.internal.util.MigrationUIUtil;
@@ -95,7 +95,8 @@ public abstract class AbstractSWTCallback implements UICallBack {
         final EObjectSelectionWizard wizard = new EObjectSelectionWizard(EObjectSelectionWizard.WIZARD_GENERIC_DIALOG_TITLE, variable.getMessage(), null, input,
                 ViewHelper.INSTANCE.createAdapterFactory());
         wizard.setMany(variable.isMultiple());
-        final WizardDialog dialog = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
+        final WizardDialogClosableByWizard dialog = new WizardDialogClosableByWizard(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
+        wizard.setDialog(dialog);
         final int result = dialog.open();
         if (result == Window.OK) {
             if (!variable.isMultiple() && wizard.getSelectedEObject() != null) {
@@ -206,7 +207,8 @@ public abstract class AbstractSWTCallback implements UICallBack {
     public Collection<EObject> askForEObjects(String message, TreeItemWrapper input, AdapterFactory factory) throws InterruptedException {
         final EObjectSelectionWizard wizard = new EObjectSelectionWizard(EObjectSelectionWizard.WIZARD_GENERIC_DIALOG_TITLE, message, null, input, factory);
         wizard.setMany(true);
-        final WizardDialog dialog = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
+        final WizardDialogClosableByWizard dialog = new WizardDialogClosableByWizard(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
+        wizard.setDialog(dialog);
         final int result = dialog.open();
         if (result == Window.OK) {
             return wizard.getSelectedEObjects();
@@ -218,7 +220,8 @@ public abstract class AbstractSWTCallback implements UICallBack {
     public EObject askForEObject(String message, TreeItemWrapper input, AdapterFactory factory) throws InterruptedException {
         final EObjectSelectionWizard wizard = new EObjectSelectionWizard(EObjectSelectionWizard.WIZARD_GENERIC_DIALOG_TITLE, message, null, input, factory);
         wizard.setMany(false);
-        final WizardDialog dialog = new WizardDialog(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
+        final WizardDialogClosableByWizard dialog = new WizardDialogClosableByWizard(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), wizard);
+        wizard.setDialog(dialog);
         final int result = dialog.open();
         if (result == Window.OK) {
             return wizard.getSelectedEObject();

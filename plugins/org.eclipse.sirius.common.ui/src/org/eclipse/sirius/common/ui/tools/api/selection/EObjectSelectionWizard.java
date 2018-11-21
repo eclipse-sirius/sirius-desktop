@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,25 +40,26 @@ public class EObjectSelectionWizard extends Wizard {
     private EObjectSelectionWizardPage page;
 
     /**
+     * A dialog exposing the finish method.
+     */
+    private WizardDialogClosableByWizard dialog;
+
+    /**
      * Default constructor.
      * 
      * @param windowTitle
-     *            the window title,
-     *            {@link EObjectSelectionWizard#WIZARD_GENERIC_DIALOG_TITLE} can
-     *            be used
+     *            the window title, {@link EObjectSelectionWizard#WIZARD_GENERIC_DIALOG_TITLE} can be used
      * @param wizardPageTitle
-     *            the dialog message,
-     *            {@link EObjectSelectionWizard#WIZARD_GENERIC_DIALOG_MESSAGE}
-     *            can be used
+     *            the dialog message, {@link EObjectSelectionWizard#WIZARD_GENERIC_DIALOG_MESSAGE} can be used
      * @param wizardPageTitleImage
      *            the title image
      * @param objects
      *            the list of objects as input
      * @param factory
-     *            the adapter factory to provides labels and icons for the
-     *            objects
+     *            the adapter factory to provides labels and icons for the objects
      */
-    public EObjectSelectionWizard(final String windowTitle, final String wizardPageTitle, final ImageDescriptor wizardPageTitleImage, final Collection<? extends EObject> objects, final AdapterFactory factory) {
+    public EObjectSelectionWizard(final String windowTitle, final String wizardPageTitle, final ImageDescriptor wizardPageTitleImage, final Collection<? extends EObject> objects,
+            final AdapterFactory factory) {
         setWindowTitle(windowTitle);
         page = new EObjectSelectionWizardPage(EOBJECT_SELECTION_WIZARD_PAGE_NAME, wizardPageTitle, wizardPageTitleImage, objects, factory);
         addPage(page);
@@ -68,25 +69,39 @@ public class EObjectSelectionWizard extends Wizard {
      * Constructor with a tree as input.
      * 
      * @param windowTitle
-     *            the window title,
-     *            {@link EObjectSelectionWizard#WIZARD_GENERIC_DIALOG_TITLE} can
-     *            be used
+     *            the window title, {@link EObjectSelectionWizard#WIZARD_GENERIC_DIALOG_TITLE} can be used
      * @param wizardPageTitle
-     *            the dialog message,
-     *            {@link EObjectSelectionWizard#WIZARD_GENERIC_DIALOG_MESSAGE}
-     *            can be used
+     *            the dialog message, {@link EObjectSelectionWizard#WIZARD_GENERIC_DIALOG_MESSAGE} can be used
      * @param wizardPageTitleImage
      *            the title image
      * @param treeObjects
      *            the tree of objects as input
      * @param factory
-     *            the adapter factory to provides labels and icons for the
-     *            objects
+     *            the adapter factory to provides labels and icons for the objects
      */
     public EObjectSelectionWizard(final String windowTitle, final String wizardPageTitle, final ImageDescriptor wizardPageTitleImage, final TreeItemWrapper treeObjects, final AdapterFactory factory) {
         setWindowTitle(windowTitle);
         page = new EObjectSelectionWizardPage(EOBJECT_SELECTION_WIZARD_PAGE_NAME, wizardPageTitle, wizardPageTitleImage, treeObjects, factory);
         addPage(page);
+    }
+
+    /**
+     * Returns the {@link WizardDialogClosableByWizard} containing this wizard.
+     * 
+     * @return the {@link WizardDialogClosableByWizard} containing this wizard. Null if no such element has been set.
+     */
+    public WizardDialogClosableByWizard getDialog() {
+        return this.dialog;
+    }
+
+    /**
+     * Set the {@link WizardDialogClosableByWizard} containing this wizard.
+     * 
+     * @param dlg
+     *            the {@link WizardDialogClosableByWizard} containing this wizard.
+     */
+    public void setDialog(WizardDialogClosableByWizard dlg) {
+        this.dialog = dlg;
     }
 
     @Override

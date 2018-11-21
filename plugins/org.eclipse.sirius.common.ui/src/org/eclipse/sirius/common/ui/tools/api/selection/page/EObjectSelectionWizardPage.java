@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,9 +30,11 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerComparator;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.tools.api.navigator.GroupingContentProvider;
+import org.eclipse.sirius.common.ui.tools.api.selection.EObjectSelectionWizard;
 import org.eclipse.sirius.common.ui.tools.api.util.TreeItemWrapperContentProvider;
 import org.eclipse.sirius.common.ui.tools.api.view.common.item.ItemDecorator;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.MouseListener;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -75,8 +77,7 @@ public class EObjectSelectionWizardPage extends AbstractSelectionWizardPage {
      * @param title
      *            the title for this wizard page, or <code>null</code> if none
      * @param imageTitle
-     *            the image descriptor for the title of this wizard page, or
-     *            <code>null</code> if none
+     *            the image descriptor for the title of this wizard page, or <code>null</code> if none
      * @param objects
      *            the candidate objects
      * @param factory
@@ -98,8 +99,7 @@ public class EObjectSelectionWizardPage extends AbstractSelectionWizardPage {
      * @param title
      *            the title for this wizard page, or <code>null</code> if none
      * @param imageTitle
-     *            the image descriptor for the title of this wizard page, or
-     *            <code>null</code> if none
+     *            the image descriptor for the title of this wizard page, or <code>null</code> if none
      * @param treeObjects
      *            the candidate objects
      * @param factory
@@ -137,8 +137,7 @@ public class EObjectSelectionWizardPage extends AbstractSelectionWizardPage {
      * Select the first element in the list or not.
      * 
      * @param select
-     *            <code>true</code> if first element should be automatically
-     *            selected, <code>false</code> otherwise
+     *            <code>true</code> if first element should be automatically selected, <code>false</code> otherwise
      */
     public void setFirstElementSelected(final boolean select) {
         this.selectFirst = select;
@@ -149,6 +148,7 @@ public class EObjectSelectionWizardPage extends AbstractSelectionWizardPage {
      * 
      * @see org.eclipse.jface.dialogs.IDialogPage#createControl(org.eclipse.swt.widgets.Composite)
      */
+    @Override
     public void createControl(final Composite parent) {
         initializeDialogUnits(parent);
 
@@ -214,6 +214,13 @@ public class EObjectSelectionWizardPage extends AbstractSelectionWizardPage {
 
         viewer.addSelectionChangedListener(new EObjectSelectionListAdapter());
 
+        viewer.getTree().addMouseListener(MouseListener.mouseDoubleClickAdapter(evt -> {
+
+            EObjectSelectionWizard wizard = (EObjectSelectionWizard) this.getWizard();
+            if (wizard.getDialog() != null) {
+                wizard.getDialog().finishPressed();
+            }
+        }));
         return viewer;
     }
 
@@ -295,8 +302,7 @@ public class EObjectSelectionWizardPage extends AbstractSelectionWizardPage {
     }
 
     /**
-     * Get the selected EObject. If they are several objects selected, return
-     * the first.
+     * Get the selected EObject. If they are several objects selected, return the first.
      * 
      * @return the selected EObject
      */
@@ -324,6 +330,7 @@ public class EObjectSelectionWizardPage extends AbstractSelectionWizardPage {
      */
     private class EObjectSelectionListAdapter implements ISelectionChangedListener {
 
+        @Override
         public void selectionChanged(final SelectionChangedEvent event) {
             if (event.getSelection() instanceof IStructuredSelection) {
                 final IStructuredSelection selection = (IStructuredSelection) event.getSelection();

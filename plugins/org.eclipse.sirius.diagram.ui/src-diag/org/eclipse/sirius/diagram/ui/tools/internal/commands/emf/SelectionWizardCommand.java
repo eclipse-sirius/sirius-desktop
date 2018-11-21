@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.window.Window;
-import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.sirius.business.api.helper.SelectionDescriptionHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
@@ -27,6 +26,7 @@ import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.common.ui.tools.api.selection.EObjectSelectionWizard;
+import org.eclipse.sirius.common.ui.tools.api.selection.WizardDialogClosableByWizard;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
@@ -95,10 +95,10 @@ public class SelectionWizardCommand extends AbstractSelectionWizardCommand {
         }
         String windowTitleLocalized = MessageTranslator.INSTANCE.getMessage(this.tool, this.tool.getWindowTitle());
         String messageLocalized = MessageTranslator.INSTANCE.getMessage(this.tool, this.tool.getMessage());
-        final EObjectSelectionWizard wizard = new EObjectSelectionWizard(windowTitleLocalized, messageLocalized, getImage(), input,
-                DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
+        final EObjectSelectionWizard wizard = new EObjectSelectionWizard(windowTitleLocalized, messageLocalized, getImage(), input, DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory());
         wizard.setMany(tool.isMultiple());
-        final WizardDialog dlg = new WizardDialog(shell, wizard);
+        final WizardDialogClosableByWizard dlg = new WizardDialogClosableByWizard(shell, wizard);
+        wizard.setDialog(dlg);
         final int result = dlg.open();
         if (result == Window.OK) {
             final Collection<EObject> selectedElements = wizard.getSelectedEObjects();
