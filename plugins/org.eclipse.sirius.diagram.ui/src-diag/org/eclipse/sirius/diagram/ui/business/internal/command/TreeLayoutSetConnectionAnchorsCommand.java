@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -96,7 +96,8 @@ public class TreeLayoutSetConnectionAnchorsCommand extends SetConnectionAnchorsC
                     }
                 }
                 if (sourceBounds != null) {
-                    PrecisionPoint sourceAnchorReference = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) edge.getSourceAnchor()).getId());
+                    PrecisionPoint sourceAnchorReference = edge.getSourceAnchor() instanceof IdentityAnchor ? BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) edge.getSourceAnchor()).getId())
+                            : new PrecisionPoint(0.5, 0.5);
                     sourceRefPoint = new PrecisionPoint(sourceBounds.x + sourceBounds.width * sourceAnchorReference.preciseX(), sourceBounds.y + sourceBounds.height * sourceAnchorReference.preciseY());
                 }
             } else {
@@ -120,7 +121,8 @@ public class TreeLayoutSetConnectionAnchorsCommand extends SetConnectionAnchorsC
                     }
                 }
                 if (targetBounds != null) {
-                    PrecisionPoint targetAnchorReference = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) edge.getTargetAnchor()).getId());
+                    PrecisionPoint targetAnchorReference = edge.getTargetAnchor() instanceof IdentityAnchor ? BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) edge.getTargetAnchor()).getId())
+                            : new PrecisionPoint(0.5, 0.5);
                     targetRefPoint = new PrecisionPoint(targetBounds.x + targetBounds.width * targetAnchorReference.preciseX(), targetBounds.y + targetBounds.height * targetAnchorReference.preciseY());
                 }
             } else {

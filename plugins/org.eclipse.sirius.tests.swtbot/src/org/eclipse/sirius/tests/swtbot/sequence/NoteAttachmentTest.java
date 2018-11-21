@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.NoteAttachmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.EndOfLifeEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckLifelineResize;
@@ -21,6 +22,8 @@ import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNoteAttachement;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.ConnectionEditPartChangedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
 import com.google.common.collect.Iterables;
@@ -59,10 +62,12 @@ public class NoteAttachmentTest extends AbstractDefaultModelSequenceTests {
     private void createNoteAndAttachment(int y1, boolean attachmentFromLifeline) {
         createNote(200, 200, "Test");
         CheckNoteAttachement cna = new CheckNoteAttachement(lep, attachmentFromLifeline);
+        // The 250, 230 coordinates are about the note center. The idea is creating a note attachment without source or
+        // target anchor.
         if (attachmentFromLifeline) {
-            attachLifelineToNote(210, 210, LIFELINE_A, y1);
+            attachLifelineToNote(250, 230, LIFELINE_A, y1);
         } else {
-            attachNoteToLifeline(210, 210, LIFELINE_A, y1);
+            attachNoteToLifeline(250, 230, LIFELINE_A, y1);
         }
         bot.waitUntil(cna);
 
@@ -186,6 +191,50 @@ public class NoteAttachmentTest extends AbstractDefaultModelSequenceTests {
         lastPoint = naep.getConnectionFigure().getPoints().getLastPoint();
         assertEquals(x, lastPoint.x);
         assertEquals(y1, lastPoint.y, 1);
+    }
+
+    /**
+     * Test that the life line can be extended even with a note attachment linked to a message, without source or target
+     * anchor.
+     */
+    public void testLifeLineCanBeExtendedWithNotAttachementLinkedToMessage() {
+        int x = getLifelineScreenX(LIFELINE_A) + 20;
+        int y1 = 300;
+
+        maximizeEditor(editor);
+
+        // Creation of a message
+        ICondition done = new OperationDoneCondition();
+        createMessage(InteractionsConstants.READ_TOOL_ID, LIFELINE_A, y1, LIFELINE_B, y1);
+        bot.waitUntil(done);
+
+        //Create a note and a note attachment from the message toward the note center.
+        createNote(200, 200, "Test");
+        editor.activateTool("Note Attachment");
+        editor.click(x, y1);
+        editor.click(250, 230);
+
+        ISequenceEventEditPart eventEditPart = (ISequenceEventEditPart) editor.getEditPart(FIRST_MESSAGE, ISequenceEventEditPart.class).part();
+
+        bot.waitUntil(new DefaultCondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                return eventEditPart.getSourceConnections().size() == 1;
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "The note attachment has not been created.";
+            }
+        });
+
+        //We try to extend the life line.
+        EndOfLifeEditPart eol = Iterables.getOnlyElement(Iterables.filter(getLifelineEditPart(LIFELINE_A).getChildren(), EndOfLifeEditPart.class));
+        Point center = eol.getFigure().getBounds().getCenter();
+        ICondition condition = new OperationDoneCondition();
+        editor.drag(center, center.getTranslated(new Dimension(0, 20)));
+        bot.waitUntil(condition);
     }
 
     /**
