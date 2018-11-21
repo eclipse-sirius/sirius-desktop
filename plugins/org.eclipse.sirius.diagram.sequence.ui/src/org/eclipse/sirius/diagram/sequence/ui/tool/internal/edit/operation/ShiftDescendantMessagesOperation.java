@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import java.util.Set;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
+import org.eclipse.gmf.runtime.notation.Anchor;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.View;
@@ -196,19 +197,25 @@ public class ShiftDescendantMessagesOperation extends ShiftMessagesOperation {
         boolean isOutgoing = Iterables.contains(Iterables.transform(movedElements, ISequenceElement.NOTATION_VIEW), edge.getSource());
 
         if (isOutgoing) {
-            IdentityAnchor sourceAnchor = (IdentityAnchor) edge.getSourceAnchor();
-            int sourceAnchorLocation = SequenceGraphicalHelper.getAnchorAbsolutePosition(sourceAnchor, oldParentRange);
-            PrecisionPoint position = BaseSlidableAnchor.parseTerminalString(sourceAnchor.getId());
-            position.setPreciseY(newParentRange.getProportionalLocation(sourceAnchorLocation));
-            String terminal = new SlidableAnchor(null, position).getTerminal();
-            sourceAnchor.setId(terminal);
+            Anchor sourceAnchor = edge.getSourceAnchor();
+            if (sourceAnchor instanceof IdentityAnchor) {
+                IdentityAnchor srcIdentityAnchor = (IdentityAnchor) sourceAnchor;
+                int sourceAnchorLocation = SequenceGraphicalHelper.getAnchorAbsolutePosition(srcIdentityAnchor, oldParentRange);
+                PrecisionPoint position = BaseSlidableAnchor.parseTerminalString(srcIdentityAnchor.getId());
+                position.setPreciseY(newParentRange.getProportionalLocation(sourceAnchorLocation));
+                String terminal = new SlidableAnchor(null, position).getTerminal();
+                srcIdentityAnchor.setId(terminal);
+            }
         } else {
-            IdentityAnchor targetAnchor = (IdentityAnchor) edge.getTargetAnchor();
-            int targetAnchorLocation = SequenceGraphicalHelper.getAnchorAbsolutePosition(targetAnchor, oldParentRange);
-            PrecisionPoint position = BaseSlidableAnchor.parseTerminalString(targetAnchor.getId());
-            position.setPreciseY(newParentRange.getProportionalLocation(targetAnchorLocation));
-            String terminal = new SlidableAnchor(null, position).getTerminal();
-            targetAnchor.setId(terminal);
+            Anchor targetAnchor = edge.getTargetAnchor();
+            if (targetAnchor instanceof IdentityAnchor) {
+                IdentityAnchor tgtIdentityAnchor = (IdentityAnchor) targetAnchor;
+                int targetAnchorLocation = SequenceGraphicalHelper.getAnchorAbsolutePosition(tgtIdentityAnchor, oldParentRange);
+                PrecisionPoint position = BaseSlidableAnchor.parseTerminalString(tgtIdentityAnchor.getId());
+                position.setPreciseY(newParentRange.getProportionalLocation(targetAnchorLocation));
+                String terminal = new SlidableAnchor(null, position).getTerminal();
+                tgtIdentityAnchor.setId(terminal);
+            }
         }
     }
 

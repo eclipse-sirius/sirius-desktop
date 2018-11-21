@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.ui.business.api.query;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.gmf.runtime.notation.Anchor;
 import org.eclipse.gmf.runtime.notation.ConnectorStyle;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
@@ -55,8 +56,10 @@ public class EdgeQuery {
     public Option<IdentityAnchor> getTargetAnchorOfFirstBrotherWithSameTarget() {
         for (Object brother : edge.getTarget().getTargetEdges()) {
             if (brother instanceof Edge && ((Edge) brother).getSource() != null && !((Edge) brother).getSource().equals(edge.getSource())) {
-                IdentityAnchor anchor = (IdentityAnchor) ((Edge) brother).getTargetAnchor();
-                return Options.newSome(anchor);
+                Anchor anchor = ((Edge) brother).getTargetAnchor();
+                if (anchor instanceof IdentityAnchor) {
+                    return Options.newSome((IdentityAnchor) anchor);
+                }
             }
         }
         return Options.newNone();
@@ -73,8 +76,10 @@ public class EdgeQuery {
     public Option<IdentityAnchor> getSourceAnchorOfFirstBrotherWithSameSource() {
         for (Object brother : edge.getSource().getSourceEdges()) {
             if (brother instanceof Edge && ((Edge) brother).getTarget() != null && !((Edge) brother).getTarget().equals(edge.getTarget())) {
-                IdentityAnchor anchor = (IdentityAnchor) ((Edge) brother).getSourceAnchor();
-                return Options.newSome(anchor);
+                Anchor anchor = ((Edge) brother).getSourceAnchor();
+                if (anchor instanceof IdentityAnchor) {
+                    return Options.newSome((IdentityAnchor) anchor);
+                }
             }
         }
         return Options.newNone();
