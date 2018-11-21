@@ -70,14 +70,10 @@ public abstract class AbstractExternalJavaAction implements IExternalJavaAction 
     }
 
     private <T> T getParameter(Map<String, Object> parameters, String name, Class<T> type, boolean required) {
-        T result;
-        if (!parameters.containsKey(name)) {
-            if (required) {
-                throw new IllegalArgumentException(MessageFormat.format(Messages.AbstractExternalJavaAction_parameterErrorMsg, name, this.getClass().getName()));
-            } else {
-                result = null;
-            }
+        if (required && !parameters.containsKey(name)) {
+            throw new IllegalArgumentException(MessageFormat.format(Messages.AbstractExternalJavaAction_parameterErrorMsg, name, this.getClass().getName()));
         }
+        T result;
         Object value = parameters.get(name);
         if (type.isInstance(value)) {
             result = type.cast(value);
