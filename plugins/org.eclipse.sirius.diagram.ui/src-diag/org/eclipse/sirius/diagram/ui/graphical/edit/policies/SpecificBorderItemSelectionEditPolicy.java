@@ -43,7 +43,6 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderedShapeEditPart;
@@ -284,16 +283,10 @@ public class SpecificBorderItemSelectionEditPolicy extends ResizableEditPolicyEx
                 } else {
                     borderItemLocator.setBorderItemOffset(IBorderItemOffsets.DEFAULT_OFFSET);
                 }
-                // Verify if the dropping of bordered node is not an element
-                // of the same level
+                // Verify if the dropping of bordered node is not an element of the same level
                 if (targetAbstractGraphicalEditPart.getParent() != getHost().getParent().getParent()) {
-                    // Verify if the parent is the diagram. If it, calculates the position of the ghost relative to the
-                    // diagram, otherwise compared to the parent
-                    if (targetAbstractGraphicalEditPart.getParent() instanceof DiagramEditPart) {
-                        targetAbstractGraphicalEditPart.getFigure().translateToAbsolute(feedbackRectangle);
-                    } else {
-                        targetAbstractGraphicalEditPart.getFigure().translateToRelative(feedbackRectangle);
-                    }
+                    // calculates the position of the ghost relative to the parent
+                    targetAbstractGraphicalEditPart.getFigure().translateToRelative(feedbackRectangle);
                 } else {
                     getHostFigure().translateToRelative(feedbackRectangle);
                 }
