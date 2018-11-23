@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -43,6 +43,7 @@ import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.ext.draw2d.figure.StyledFigure;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.sirius.viewpoint.RGBValues;
 
@@ -128,7 +129,9 @@ public final class DiagramNodeEditPartOperation {
 
                     LabelPosition labelPosition = nodeStyle.getLabelPosition();
                     if (labelPosition != null && labelPosition == LabelPosition.NODE_LITERAL && !styledFigure.getChildren().contains(self.getNodeLabel())) {
-                        styledFigure.add(self.getNodeLabel());
+                        SiriusWrapLabel nodeLabel = self.getNodeLabel();
+                        styledFigure.add(nodeLabel);
+                        nodeLabel.setLayoutManager(styledFigure.getLayoutManager());
                     }
                     if (labelPosition != null && labelPosition == LabelPosition.BORDER_LITERAL && styledFigure.getChildren().contains(self.getNodeLabel())) {
                         styledFigure.remove(self.getNodeLabel());

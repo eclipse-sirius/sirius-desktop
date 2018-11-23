@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2023 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
+
+import java.util.Optional;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.StackLayout;
@@ -125,8 +127,8 @@ public class NoteEditPart extends AbstractNotSelectableShapeNodeEditPart impleme
     /**
      * Creates figure for this edit part.
      * 
-     * Body of this method does not depend on settings in generation model so
-     * you may safely remove <i>generated</i> tag and modify it.
+     * Body of this method does not depend on settings in generation model so you may safely remove <i>generated</i> tag
+     * and modify it.
      * 
      * @was-generated
      */
@@ -141,8 +143,8 @@ public class NoteEditPart extends AbstractNotSelectableShapeNodeEditPart impleme
     }
 
     /**
-     * Default implementation treats passed figure as content pane. Respects
-     * layout one may have set for generated figure.
+     * Default implementation treats passed figure as content pane. Respects layout one may have set for generated
+     * figure.
      * 
      * @param nodeShape
      *            instance of generated figure class
@@ -196,5 +198,9 @@ public class NoteEditPart extends AbstractNotSelectableShapeNodeEditPart impleme
         super.refreshVisuals();
         DiagramNodeEditPartOperation.refreshFigure(this);
         DiagramElementEditPartOperation.refreshLabelAlignment(((GraphicalEditPart) getParent()).getContentPane(), (LabelStyle) resolveSemanticElement());
+        Optional<?> labelHandlingFigure = this.getPrimaryShape().getChildren().stream().findFirst();
+        if (labelHandlingFigure.isPresent()) {
+            DiagramElementEditPartOperation.refreshLabelAlignment((IFigure) labelHandlingFigure.get(), (LabelStyle) resolveSemanticElement());
+        }
     }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2023 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -72,17 +72,17 @@ import com.google.common.collect.Iterables;
 // sense, then we doesn't checks them.
 public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
 
-    private static final String DATA_UNIT_DIR = "/data/unit/refresh/labelAlignment/";
+    private static final String DATA_UNIT_DIR = "/data/unit/refresh/labelAlignment/"; //$NON-NLS-1$
 
-    private static final String SEMANTIC_RESOURCE_FILENAME = "VP-2033.ecore";
+    private static final String SEMANTIC_RESOURCE_FILENAME = "VP-2033.ecore"; //$NON-NLS-1$
 
-    private static final String SESSION_RESOURCE_FILENAME = "VP-2033.aird";
+    private static final String SESSION_RESOURCE_FILENAME = "VP-2033.aird"; //$NON-NLS-1$
 
-    private static final String MODELER_RESOURCE_FILENAME = "VP-2033.odesign";
+    private static final String MODELER_RESOURCE_FILENAME = "VP-2033.odesign"; //$NON-NLS-1$
 
-    private static final String REPRESENTATION_INSTANCE_NAME = "new VP-2033_Diagram";
+    private static final String REPRESENTATION_INSTANCE_NAME = "new VP-2033_Diagram"; //$NON-NLS-1$
 
-    private static final String REPRESENTATION_NAME = "VP-2033_Diagram";
+    private static final String REPRESENTATION_NAME = "VP-2033_Diagram"; //$NON-NLS-1$
 
     private AbstractDiagramNameEditPart ePackage1NameEditPart1;
 
@@ -111,6 +111,8 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
     private IStyleEditPart nodes2EditPart;
 
     private IStyleEditPart nodes3EditPart;
+
+    private IStyleEditPart classWithNoteStyleEditPart;
 
     private IStyleEditPart nodeWithAttributeAsBorderedNodes1EditPart1;
 
@@ -150,6 +152,8 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
 
     private NodeStyleDescription squareStyleOfAbstractNodesMapping;
 
+    private NodeStyleDescription noteStyleOfClassWithNoteStyleNodeMapping;
+
     private NodeStyleDescription squareStyleOfAttributeNodeMappingOfAbstractNodes;
 
     private NodeStyleDescription dotStyleOfEDataTypeBorderedNodeMappingOfAbstractNodes;
@@ -182,8 +186,8 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
 
     private Iterator<AbstractDiagramNameEditPart> getAbstractDiagramNameEditPartsIterator(SWTBotGefEditPart swtBotGefEditPart, EObject semanticElt) {
         List<SWTBotGefEditPart> semanticEltEditPartBots = swtBotGefEditPart.descendants(WithSemantic.withSemantic(semanticElt));
-        Iterator<AbstractDiagramNameEditPart> semanticEltEditPartBotsNameEditPartsIterator = Iterables.filter(Iterables.transform(semanticEltEditPartBots, Bot2EditPartFunction.function()),
-                AbstractDiagramNameEditPart.class).iterator();
+        Iterator<AbstractDiagramNameEditPart> semanticEltEditPartBotsNameEditPartsIterator = Iterables
+                .filter(Iterables.transform(semanticEltEditPartBots, Bot2EditPartFunction.function()), AbstractDiagramNameEditPart.class).iterator();
         return semanticEltEditPartBotsNameEditPartsIterator;
     }
 
@@ -214,7 +218,7 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
      */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
-        final UIResource sessionAirdResource = new UIResource(designerProject, "/", SESSION_RESOURCE_FILENAME);
+        final UIResource sessionAirdResource = new UIResource(designerProject, "/", SESSION_RESOURCE_FILENAME); //$NON-NLS-1$
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
@@ -230,16 +234,17 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
         EPackage ePackage11 = ePackage1.getESubpackages().get(0);
         EPackage ePackage21 = ePackage2.getESubpackages().get(0);
         EPackage ePackage22 = ePackage2.getESubpackages().get(1);
-        EClass node1 = (EClass) rootEPackage.getEClassifier("Node1");
-        EClass nodes2 = (EClass) rootEPackage.getEClassifier("Nodes2");
-        EClass nodes3 = (EClass) rootEPackage.getEClassifier("Nodes3");
-        EClass nodeWithAttributeAsBorderedNodes1 = (EClass) rootEPackage.getEClassifier("NodeWithAttributeAsBorderedNodes1");
-        EClass eClass1 = (EClass) ePackage1.getEClassifier("EClass1");
-        EClass eClass211 = (EClass) ePackage21.getEClassifier("EClass211");
-        EClass eClass221 = (EClass) ePackage22.getEClassifier("EClass221");
-        EClass eClass31 = (EClass) ePackage3.getEClassifier("EClass31");
-        EClass eClass41 = (EClass) ePackage4.getEClassifier("EClass41");
-        EDataType myDataType = (EDataType) rootEPackage.getEClassifier("MyDataType");
+        EClass node1 = (EClass) rootEPackage.getEClassifier("Node1"); //$NON-NLS-1$
+        EClass nodes2 = (EClass) rootEPackage.getEClassifier("Nodes2"); //$NON-NLS-1$
+        EClass nodes3 = (EClass) rootEPackage.getEClassifier("Nodes3"); //$NON-NLS-1$
+        EClass classWithNoteStyle = (EClass) rootEPackage.getEClassifier("ClassWithNoteStyle"); //$NON-NLS-1$
+        EClass nodeWithAttributeAsBorderedNodes1 = (EClass) rootEPackage.getEClassifier("NodeWithAttributeAsBorderedNodes1"); //$NON-NLS-1$
+        EClass eClass1 = (EClass) ePackage1.getEClassifier("EClass1"); //$NON-NLS-1$
+        EClass eClass211 = (EClass) ePackage21.getEClassifier("EClass211"); //$NON-NLS-1$
+        EClass eClass221 = (EClass) ePackage22.getEClassifier("EClass221"); //$NON-NLS-1$
+        EClass eClass31 = (EClass) ePackage3.getEClassifier("EClass31"); //$NON-NLS-1$
+        EClass eClass41 = (EClass) ePackage4.getEClassifier("EClass41"); //$NON-NLS-1$
+        EDataType myDataType = (EDataType) rootEPackage.getEClassifier("MyDataType"); //$NON-NLS-1$
         EAttribute att1OfNodeWithAttributeAsBorderedNodes1 = nodeWithAttributeAsBorderedNodes1.getEAttributes().get(0);
         EAttribute att1OfNode1 = node1.getEAttributes().get(0);
         EAttribute att2OfNodeWithAttributeAsBorderedNodes1 = nodeWithAttributeAsBorderedNodes1.getEAttributes().get(1);
@@ -250,6 +255,7 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
 
         NodeMapping nodesNodeMapping = defaultLayer.getNodeMappings().get(0);
         NodeMapping abstractNodesNodeMapping = defaultLayer.getNodeMappings().get(1);
+        NodeMapping classWithNoteStyleNodeMapping = defaultLayer.getNodeMappings().get(2);
         NodeMapping attributeNodeMappingOfAbstractNodes = abstractNodesNodeMapping.getBorderedNodeMappings().get(0);
         NodeMapping eDataTypeBorderedNodeMappingOfAbstractNodes = attributeNodeMappingOfAbstractNodes.getBorderedNodeMappings().get(0);
 
@@ -269,6 +275,7 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
         squareStyleOfNodesMapping = nodesNodeMapping.getStyle();
 
         squareStyleOfAbstractNodesMapping = abstractNodesNodeMapping.getStyle();
+        noteStyleOfClassWithNoteStyleNodeMapping = classWithNoteStyleNodeMapping.getStyle();
         squareStyleOfAttributeNodeMappingOfAbstractNodes = attributeNodeMappingOfAbstractNodes.getStyle();
         dotStyleOfEDataTypeBorderedNodeMappingOfAbstractNodes = eDataTypeBorderedNodeMappingOfAbstractNodes.getStyle();
 
@@ -318,6 +325,9 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
 
         Iterator<EditPart> nodes3NameEditPartsIterator = getParentStyleEditPartsIterator(rootEditPartBot, nodes3);
         nodes3EditPart = (IStyleEditPart) nodes3NameEditPartsIterator.next().getChildren().get(0);
+
+        Iterator<EditPart> classWithNoteStyleNameEditPartsIterator = getParentStyleEditPartsIterator(rootEditPartBot, classWithNoteStyle);
+        classWithNoteStyleEditPart = (IStyleEditPart) classWithNoteStyleNameEditPartsIterator.next().getChildren().get(0);
 
         Iterator<EditPart> nodeWithAttributeAsBorderedNodes1StyleEditPartsIterator = getParentStyleEditPartsIterator(rootEditPartBot, nodeWithAttributeAsBorderedNodes1);
         nodeWithAttributeAsBorderedNodes1EditPart1 = (IStyleEditPart) nodeWithAttributeAsBorderedNodes1StyleEditPartsIterator.next().getChildren().get(0);
@@ -385,9 +395,8 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that label Alignment defined in *.aird is correct according to the
-     * modeler labelAlignement definition, after test that changing the
-     * labelAlignement definition defined in the modeler (*.odesign)
+     * Test that label Alignment defined in *.aird is correct according to the modeler labelAlignement definition, after
+     * test that changing the labelAlignement definition defined in the modeler (*.odesign)
      */
     public void testLabelAlignmentRefresh() {
 
@@ -410,8 +419,8 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Assert that label alignment all AbstractDiagramNameEditParts in field
-     * corresponds to the label alignment defined in the odesign.
+     * Assert that label alignment all AbstractDiagramNameEditParts in field corresponds to the label alignment defined
+     * in the odesign.
      */
     private void assertLabelAlignmentEquality() {
 
@@ -438,6 +447,8 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
         Assert.assertEquals(getExpectedLabelAlignment(nodes2EditPart), getActualLabelAlignment(nodes2EditPart));
 
         Assert.assertEquals(getExpectedLabelAlignment(nodes3EditPart), getActualLabelAlignment(nodes3EditPart));
+
+        Assert.assertEquals(getExpectedLabelAlignment(classWithNoteStyleEditPart), getActualLabelAlignment(classWithNoteStyleEditPart));
 
         Assert.assertEquals(getExpectedLabelAlignment(nodeWithAttributeAsBorderedNodes1EditPart1), getActualLabelAlignment(nodeWithAttributeAsBorderedNodes1EditPart1));
 
@@ -504,8 +515,7 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Return the actual label alignment of the given part. See
-     * LabelAlignmentHelper.
+     * Return the actual label alignment of the given part. See LabelAlignmentHelper.
      * 
      * @param graphicalEditPart
      *            the given part
@@ -533,7 +543,7 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
         } else if (graphicalEditPart instanceof AbstractDiagramNameEditPart) {
             AbstractDiagramNameEditPart abstractDiagramNameEditPart = (AbstractDiagramNameEditPart) graphicalEditPart;
             IFigure abstractGraphicalEditPartFigure = abstractDiagramNameEditPart.getFigure();
-            Assert.assertTrue("This figure should be a SiriusWrapLabel.", abstractGraphicalEditPartFigure instanceof SiriusWrapLabel);
+            Assert.assertTrue("This figure should be a SiriusWrapLabel.", abstractGraphicalEditPartFigure instanceof SiriusWrapLabel); //$NON-NLS-1$
             SiriusWrapLabel abstractGraphicalEditPartWrappingLabel = (SiriusWrapLabel) abstractGraphicalEditPartFigure;
             // if (abstractGraphicalEditPart.getParent() instanceof
             // AbstractDiagramContainerEditPart) {
@@ -556,10 +566,10 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
                     labelRefX = abstractGraphicalEditPartWrappingLabel.getBounds().getCenter().x;
                     parentRefX = abstractGraphicalEditPartWrappingLabel.getParent().getBounds().getCenter().x;
                 }
-                assertEquals("Figure alignement is not consitent with style", parentRefX, labelRefX, 5);
+                assertEquals("Figure alignement is not consitent with style", parentRefX, labelRefX, 5); //$NON-NLS-1$
 
             } else {
-                Assert.fail(" a AbstractGraphicalEditPart should have a ToolbarLayout on its main figure");
+                Assert.fail(" a AbstractGraphicalEditPart should have a ToolbarLayout on its main figure"); //$NON-NLS-1$
             }
         }
         return actualLabelAlignment;
@@ -575,6 +585,9 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
         bot.waitUntil(operationDoneCondition);
         operationDoneCondition = new OperationDoneCondition();
         changeLabelAlignment(squareStyleOfAbstractNodesMapping, labelAlignment);
+        bot.waitUntil(operationDoneCondition);
+        operationDoneCondition = new OperationDoneCondition();
+        changeLabelAlignment(noteStyleOfClassWithNoteStyleNodeMapping, labelAlignment);
         bot.waitUntil(operationDoneCondition);
         operationDoneCondition = new OperationDoneCondition();
         changeLabelAlignment(squareStyleOfAttributeNodeMappingOfAbstractNodes, labelAlignment);
@@ -617,9 +630,8 @@ public class LabelAlignmentRefreshTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Does explicitly changes in same EditingDomain as the representation
-     * editor because changes in another TED like with Odesign model editor has
-     * the consequence to refresh all representation through ResourceSetSync.
+     * Does explicitly changes in same EditingDomain as the representation editor because changes in another TED like
+     * with Odesign model editor has the consequence to refresh all representation through ResourceSetSync.
      * 
      * @param labelStyleDescription
      * @param center
