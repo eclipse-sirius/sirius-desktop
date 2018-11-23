@@ -88,6 +88,9 @@ public class EdgeRoutingStyleEndUserOverrideTest extends SiriusDiagramTestCase {
      * the VSM one
      */
     public void testCreateEdgeEnabledUserSpecificOblic() {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
         // Enabled user specific default values, routing style set to Oblique
         changeDiagramPreference(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, true);
         changeDiagramPreference(SiriusDiagramCorePreferences.PREF_LINE_STYLE, SiriusDiagramCorePreferences.PREF_LINE_STYLE_DEFAULT_VALUE);
@@ -124,6 +127,9 @@ public class EdgeRoutingStyleEndUserOverrideTest extends SiriusDiagramTestCase {
      * the VSM one
      */
     public void testCreateEdgeEnabledUserSpecificRectilinear() {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
         // Enabled user specific default values, routing style set to
         // Rectilinear
         changeDiagramPreference(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, true);
@@ -161,6 +167,9 @@ public class EdgeRoutingStyleEndUserOverrideTest extends SiriusDiagramTestCase {
      * the VSM one
      */
     public void testCreateEdgeEnabledUserSpecificTree() {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
         // Enabled user specific default values, routing style set to Tree
         changeDiagramPreference(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, true);
         changeDiagramPreference(SiriusDiagramCorePreferences.PREF_LINE_STYLE, EdgeRouting.TREE);
