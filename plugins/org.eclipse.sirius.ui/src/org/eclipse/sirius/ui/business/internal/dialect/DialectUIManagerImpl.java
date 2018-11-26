@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -265,13 +264,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
             throws SizeTooLargeException {
         for (final DialectUI dialect : dialects.values()) {
             if (dialect.getServices().canHandle(representation)) {
-                try {
-                    dialect.getServices().export(representation, session, path, format, monitor, exportDecorations);
-                } catch (CoreException exception) {
-                    if (exception instanceof SizeTooLargeException) {
-                        throw (SizeTooLargeException) exception;
-                    }
-                }
+                dialect.getServices().export(representation, session, path, format, monitor, exportDecorations);
             }
         }
     }
@@ -287,13 +280,7 @@ public class DialectUIManagerImpl implements DialectUIManager {
         ExportResult result = null;
         for (final DialectUI dialect : dialects.values()) {
             if (dialect.getServices().canHandle(representation)) {
-                try {
-                    result = dialect.getServices().exportWithResult(representation, session, path, format, monitor, exportDecorations);
-                } catch (CoreException exception) {
-                    if (exception instanceof SizeTooLargeException) {
-                        throw (SizeTooLargeException) exception;
-                    }
-                }
+                result = dialect.getServices().exportWithResult(representation, session, path, format, monitor, exportDecorations);
             }
         }
         return result;
