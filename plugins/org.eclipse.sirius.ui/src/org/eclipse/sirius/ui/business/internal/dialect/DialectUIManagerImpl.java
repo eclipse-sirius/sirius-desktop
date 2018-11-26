@@ -366,20 +366,14 @@ public class DialectUIManagerImpl implements DialectUIManager {
     @Override
     public String completeToolTipText(String toolTipText, EObject eObject, EStructuralFeature feature) {
         String toolTip = toolTipText;
-        Option<EObject> parentRepresentationDescription = new EObjectQuery(eObject).getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getRepresentationDescription());
-        if (parentRepresentationDescription.some()) {
+        Option<EObject> parentDescription = new EObjectQuery(eObject).getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getRepresentationDescription());
+        if (!parentDescription.some()) {
+            parentDescription = new EObjectQuery(eObject).getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getRepresentationExtensionDescription());
+        }
+        if (parentDescription.some()) {
             for (final DialectUI dialect : dialects.values()) {
-                if (dialect.getServices().canHandle((RepresentationDescription) parentRepresentationDescription.get())) {
+                if (dialect.getServices().canHandle((RepresentationDescription) parentDescription.get())) {
                     toolTip = dialect.getServices().completeToolTipText(toolTipText, eObject, feature);
-                }
-            }
-        } else {
-            Option<EObject> parentRepresentationExtensionDescription = new EObjectQuery(eObject).getFirstAncestorOfType(DescriptionPackage.eINSTANCE.getRepresentationExtensionDescription());
-            if (parentRepresentationDescription.some()) {
-                for (final DialectUI dialect : dialects.values()) {
-                    if (dialect.getServices().canHandle((RepresentationExtensionDescription) parentRepresentationExtensionDescription.get())) {
-                        toolTip = dialect.getServices().completeToolTipText(toolTipText, eObject, feature);
-                    }
                 }
             }
         }
