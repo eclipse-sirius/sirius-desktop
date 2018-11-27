@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,9 +16,11 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
@@ -28,24 +30,12 @@ import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-
 /**
  * Action to export representations as images.
  *
  * @author cbrun
  */
 public class ExportRepresentationsAction extends AbstractExportRepresentationsAction {
-
-    private static Predicate<DRepresentationDescriptor> exportableRepDescriptorPredicate = new Predicate<DRepresentationDescriptor>() {
-        @Override
-        public boolean apply(DRepresentationDescriptor input) {
-            return DialectUIManager.INSTANCE.canExport(input, new ExportFormat(ExportDocumentFormat.NONE, null));
-        }
-    };
 
     private final Session session;
 
@@ -72,11 +62,14 @@ public class ExportRepresentationsAction extends AbstractExportRepresentationsAc
 
     @Override
     protected Collection<DRepresentationDescriptor> getRepresentationToExport() {
-        Collection<DRepresentationDescriptor> dRepDescriptorsToExport = Sets.newLinkedHashSet(selectedRepDescriptors);
+        Collection<DRepresentationDescriptor> dRepDescriptorsToExport = new LinkedHashSet<>(selectedRepDescriptors);
         if (dRepDescriptorsToExport.isEmpty()) {
             dRepDescriptorsToExport.addAll(computeAllRepresentationsUnderSemantic());
         }
-        return Lists.newArrayList(Iterables.filter(dRepDescriptorsToExport, ExportRepresentationsAction.exportableRepDescriptorPredicate));
+
+        // filter with valid and exportable DRepresentationDescriptor
+        return dRepDescriptorsToExport.stream().filter(repDesc -> new DRepresentationDescriptorQuery(repDesc).isRepresentationValid())
+                .filter(repDesc -> DialectUIManager.INSTANCE.canExport(repDesc, new ExportFormat(ExportDocumentFormat.NONE, null))).collect(Collectors.toSet());
     }
 
     @Override

@@ -6,9 +6,17 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius6.1.2). Changes in Sirius 6.1.2
 
+h3. User-Visible Changes
+
+* <span class="label label-info">Modified</span> Invalid representations, that are either representations which semantic target does not exist anymore or representations that can not be retrieved anymore, are grayed in the Model Explorer and the only available action is _Delete_. It was previously the case only for representations which semantic target does not exist anymore.
+
 h3. Developer-Visible Changes
 
 * <span class="label label-success">Added</span> If the @org.eclipse.sirius.diagam.ui.hidePrintingOfPermissionAuthorityDecoration@ system property is set to true and if there is no other printable decoration provided at the same location (South-West), the permission authority decorations displayed on diagrams are not printed nor exported in images (export as image actions).
+
+h4. Changes in  @org.eclipse.sirius@
+
+* <span class="label label-success">Added</span> The methods @org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery.isRepresentationReachable()@ and @org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery.isRepresentationValid()@ have been added. The former allows to know if the @DRepresentation@ can be retrieved from the @DRepresentationDescriptor.repPath@: the repPath is correctly set and the representation effectively exists. The latter returns true if the @DRepresentationDescriptor@ is either dangling (@DRepresentationDescriptor.repPath@ can not be found) or can not by retrieved.
 
 h4. Changes in  @org.eclipse.sirius.diagram.ui@
 

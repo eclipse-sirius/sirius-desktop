@@ -31,6 +31,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.window.Window;
+import org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -78,6 +79,9 @@ public abstract class AbstractExportRepresentationsAction extends Action {
     @Override
     public void run() {
         Collection<DRepresentationDescriptor> repDescriptorsToExport = getRepresentationToExport().stream().filter(Objects::nonNull).collect(Collectors.toList());
+
+        // keep only the valid representations
+        repDescriptorsToExport = repDescriptorsToExport.stream().filter(repDesc -> new DRepresentationDescriptorQuery(repDesc).isRepresentationValid()).collect(Collectors.toList());
 
         if (!repDescriptorsToExport.isEmpty()) {
             DRepresentationDescriptor firstDRepDescriptorToExport = repDescriptorsToExport.iterator().next();

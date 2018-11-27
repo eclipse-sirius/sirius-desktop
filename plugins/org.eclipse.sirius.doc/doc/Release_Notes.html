@@ -16,6 +16,9 @@
 						<a href="#sirius6.1.2">Changes in Sirius 6.1.2</a>
 						<ol style="list-style: disc;">
 							<li>
+								<a href="#UserVisibleChanges">User-Visible Changes</a>
+							</li>
+							<li>
 								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
 							</li>
 						</ol>
@@ -32,7 +35,7 @@
 						<a href="#sirius6.1.0">Changes in Sirius 6.1.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges">User-Visible Changes</a>
+								<a href="#UserVisibleChanges2">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
@@ -46,7 +49,7 @@
 						<a href="#sirius6.0.0">Changes in Sirius 6.0.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges2">User-Visible Changes</a>
+								<a href="#UserVisibleChanges3">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
@@ -60,7 +63,7 @@
 						<a href="#sirius5.1.1">Changes in Sirius 5.1.1</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges3">User-Visible Changes</a>
+								<a href="#UserVisibleChanges4">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
@@ -71,7 +74,7 @@
 						<a href="#sirius5.1.0">Changes in Sirius 5.1.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges4">User-Visible Changes</a>
+								<a href="#UserVisibleChanges5">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
@@ -88,10 +91,29 @@
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
 		<h2 id="sirius6.1.2">Changes in Sirius 6.1.2</h2>
+		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-info">Modified</span> Invalid representations, that are either representations which semantic target does not exist anymore or representations that can not be retrieved anymore, are grayed in the Model Explorer and the only available action is 
+				<em>Delete</em>. It was previously the case only for representations which semantic target does not exist anymore.
+			</li>
+		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> If the 
 				<code>org.eclipse.sirius.diagam.ui.hidePrintingOfPermissionAuthorityDecoration</code> system property is set to true and if there is no other printable decoration provided at the same location (South-West), the permission authority decorations displayed on diagrams are not printed nor exported in images (export as image actions).
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius">Changes in  
+			<code>org.eclipse.sirius</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The methods 
+				<code>org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery.isRepresentationReachable()</code> and 
+				<code>org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery.isRepresentationValid()</code> have been added. The former allows to know if the 
+				<code>DRepresentation</code> can be retrieved from the 
+				<code>DRepresentationDescriptor.repPath</code>: the repPath is correctly set and the representation effectively exists. The latter returns true if the 
+				<code>DRepresentationDescriptor</code> is either dangling (
+				<code>DRepresentationDescriptor.repPath</code> can not be found) or can not by retrieved.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in  
@@ -141,7 +163,7 @@
 				<a href="https://www.eclipse.org/legal/epl-2.0/faq.php">the official FAQ</a> for details about the difference between EPL v1.0 (which was used before) and v2.0.
 			</li>
 		</ul>
-		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> A new preference has been added in the Sirius preference panel. It allows Sirius to ask the user if he wants to save session resources after an automatic migration. If the new preference is ticked, the pop-up will only appear for session opening caused by a direct action of the user (i.e. opening a diagram or unfolding the resources in the model explorer). You can refer to the 
 				<a href="user/general/Modeling%20Project.html#Migration">user documentation </a> for more details.
@@ -475,7 +497,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius6.0.0">Changes in Sirius 6.0.0</h2>
-		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> A new feature allows user to insert vertical blank space in sequence diagram. You can refer to the 
 				<a href="user/sequences/Sequence%20Diagrams.html#insert_vertical_blank_space">user documentation </a> for more details. 
@@ -571,7 +593,7 @@
 				<code>org.eclipse.sirius.common.tools.api.contentassist</code> which has its own types.  
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -728,7 +750,7 @@
 		</ul>
 		<h4 id="TranslationKeysChanges">Translation Keys Changes</h4>
 		<h2 id="sirius5.1.1">Changes in Sirius 5.1.1</h2>
-		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> When exporting a diagram as an image, it is now possible to choose an image size level. Before this, a preference called 
 				<em>AutoScale</em> was available and when it was enable, the diagram was scaled to the maximum size safely allowed by the system. Now, a new preference named 
@@ -752,7 +774,7 @@
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -813,7 +835,7 @@
 		</ul>
 		<p>testcase.</p>
 		<h2 id="sirius5.1.0">Changes in Sirius 5.1.0</h2>
-		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges5">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> When exporting a diagram as an image, it is now possible to choose whether or not the diagram should be scaled. If disabled, the diagram will be exported with its normal size (equivalent to a 100% zoom level). If auto-scaling is enabled, the diagram will be scaled to the maximum size safely allowed by the system (this can be different on different OSes). Note that when auto-scaling is enabled, the image files produced may be larger than without. When exporting very large diagrams it is also possible that the diagram will be scaled 
 				<em>down</em> (i.e. with a zoom level smaller than 100%). Enabling auto-scaling can be chosen on a case by case basis from the export dialog; the initial value in the dialog can be controlled by a new preference available in the 
@@ -926,7 +948,7 @@
 			<code>createLocalRepresentationInSeparateResource</code> at true. For more detail, see the developer documentation: 
 			<a href="./developer/representations_lazy_loading.html">Representations lazy loading (experimental)</a>.
 		</p>
-		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>

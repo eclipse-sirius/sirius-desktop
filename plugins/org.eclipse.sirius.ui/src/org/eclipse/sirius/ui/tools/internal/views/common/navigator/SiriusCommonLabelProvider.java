@@ -103,12 +103,14 @@ public class SiriusCommonLabelProvider extends ColumnLabelProvider implements IC
                 // Let eclipse look for file and project icons + nature
                 // decoration
                 img = sessionLabelProvider.getImage(element);
-
+                if (img == null)
+                    return img;
+                
                 // If the current element is a dangling representation, its icon
                 // is grayed. The grayed image is computed only once for each
                 // type of representation.
                 DRepresentationDescriptor descRep = getRepresentationDescriptor(element);
-                if (img != null && descRep != null && isDanglingRepresentationDescriptor(descRep)) {
+                if (descRep != null && isInvalidRepresentation(descRep)) {
                     StringBuilder sB = new StringBuilder();
                     sB.append(descRep.getClass().getName());
                     RepresentationDescription description = descRep.getDescription();
@@ -183,9 +185,9 @@ public class SiriusCommonLabelProvider extends ColumnLabelProvider implements IC
         return img;
     }
 
-    private boolean isDanglingRepresentationDescriptor(Object element) {
+    private boolean isInvalidRepresentation(Object element) {
         DRepresentationDescriptor representationDescriptor = getRepresentationDescriptor(element);
-        return representationDescriptor != null && new DRepresentationDescriptorQuery(representationDescriptor).isDangling();
+        return representationDescriptor != null && !new DRepresentationDescriptorQuery(representationDescriptor).isRepresentationValid();
     }
 
     private DRepresentationDescriptor getRepresentationDescriptor(Object element) {
@@ -332,7 +334,7 @@ public class SiriusCommonLabelProvider extends ColumnLabelProvider implements IC
                 foreground = VisualBindingManager.getDefault().getColorFromName("dark_blue"); //$NON-NLS-1$
             }
 
-            if (isDanglingRepresentationDescriptor(element)) {
+            if (isInvalidRepresentation(element)) {
                 foreground = VisualBindingManager.getDefault().getColorFromName("light_gray"); //$NON-NLS-1$
             }
         } catch (IllegalStateException | NullPointerException e) {
