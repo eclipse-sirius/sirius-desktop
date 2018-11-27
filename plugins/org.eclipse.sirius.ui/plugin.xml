@@ -526,10 +526,10 @@
      </commonFilter>
      <commonFilter
            activeByDefault="false"
-           class="org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.DanglingRepresentationCommonFilter"
-           description="%commonFilter.danglingRepresentations.description"
-           id="org.eclipse.sirius.ui.commonFilter.dangling.representation"
-           name="%commonFilter.danglingRepresentations.name">
+           class="org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.InvalidRepresentationCommonFilter"
+           description="%commonFilter.invalidRepresentations.description"
+           id="org.eclipse.sirius.ui.commonFilter.invalidRepresentation"
+           name="%commonFilter.invalidRepresentations.name">
      </commonFilter>
   </extension>
   <extension
