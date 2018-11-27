@@ -143,12 +143,15 @@
 		<h2 id="sirius5.1.4">Changes in Sirius 5.1.4</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
+			<li><span class="label label-success">Added</span> The preference 
+				<code>org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE</code> has been added and can be managed in Preferences/Sirius/Sirius Diagram/Appearance/Display viewpoint colors. It allows to display, in the color palette, the user fixed color(defined in the activated viewpoints) in addition to standard colors. The color palette is available in Appearance tab of the Properties view.
+			</li>
 			<li><span class="label label-info">Modified</span> The tool &#8220;Link Note&#8221;, introduced in Sirius 5.1.2, has been renamed into &#8220;Representation Link&#8221;.</li>
 			<li><span class="label label-info">Modified</span> A &#8220;Representation Link&#8221; is no longer deleted automatically when the targeted representation is deleted. Instead, the note header changes to &#8220;Broken Representation Link&#8221; and the note icon changes to a small red diagonal cross. You can refer to the 
 				<a href="user/diagrams/Diagrams.html#notes">user documentation</a> for more details.
 			</li>
-			<li><span class="label label-success">Added</span> The preference 
-				<code>org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE</code> has been added and can be managed in Preferences/Sirius/Sirius Diagram/Appearance/Display viewpoint colors. It allows to display, in the color palette, the user fixed color(defined in the activated viewpoints) in addition to standard colors. The color palette is available in Appearance tab of the Properties view.
+			<li><span class="label label-info">Modified</span> Invalid representations, that is either representations which semantic target does not exist anymore or representations that can not be retrieved anymore, are grayed in the Model Explorer and the only available action is 
+				<em>delete</em>. It was previously the case only for representations which semantic target does not exist anymore.
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
@@ -166,6 +169,19 @@
 			<li><span class="label label-success">Added</span> A migration participant has been added to fix diagrams with corrupted Note, Text or Note Attachment (see 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=539554">bugzilla #539554</a> for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
 				<em>12.1.4.201811151800</em>.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius">Changes in  
+			<code>org.eclipse.sirius</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The methods 
+				<code>org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery.isRepresentationReachable()</code> and 
+				<code>org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery.isRepresentationValid()</code> have been added. The former allows to know if the 
+				<code>DRepresentation</code> can be retrieved from the 
+				<code>DRepresentationDescriptor.repPath</code>: the repPath is correctly set and the representation effectively exists. The latter returns true if the 
+				<code>DRepresentationDescriptor</code> is either dangling (
+				<code>DRepresentationDescriptor.repPath</code> can not be found) or can not by retrieved.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in  
@@ -280,7 +296,7 @@
 				<code>SemanticBasedDecoration</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -454,7 +470,7 @@
 			<code>createLocalRepresentationInSeparateResource</code> at true. For more detail, see the developer documentation: 
 			<a href="./developer/representations_lazy_loading.html">Representations lazy loading (experimental)</a>.
 		</p>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -777,7 +793,7 @@
 				<code>org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog</code> equivalent provided by EMF directly instead.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
 			<code>org.eclipse.sirius</code> 
 		</h4>
 		<ul>
@@ -1480,7 +1496,7 @@ SWTBotUtils.waitAllUiEvents();
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1922,7 +1938,7 @@ SWTBotUtils.waitAllUiEvents();
 				<a href="developer/extensions-provide_custom_bundled_image_shape.html">developer documentation</a> for more details.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius6">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.WeakHashMap;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -50,6 +51,7 @@ import org.eclipse.jface.viewers.TreePath;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
+import org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -221,6 +223,9 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
         Iterable<ControlledRoot> roots = Iterables.filter(selectedObjects, ControlledRoot.class);
         if (Iterables.size(roots) == 1) {
             Object selected = roots.iterator().next().getWrappedObject();
+            if (selected instanceof DRepresentationDescriptor && !new DRepresentationDescriptorQuery((DRepresentationDescriptor) selected).isRepresentationValid()) {
+                return;
+            }
             if (selected instanceof EObject) {
                 EObject selectedEObject = (EObject) selected;
                 Session session = SessionManager.INSTANCE.getSession((EObject) selected);
@@ -286,30 +291,31 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
 
         session = firstEObject == null ? null : SessionManager.INSTANCE.getSession(firstEObject);
 
+        List<DRepresentationDescriptor> reachableRepresentations = selectedRepDescriptors.stream().filter(repDesc -> new DRepresentationDescriptorQuery(repDesc).isRepresentationValid())
+                .collect(Collectors.toList());
+
         /* session should not be null for the following actions */
-        if (session != null) {
+        if (session != null && !reachableRepresentations.isEmpty()) {
             /*
              * representation menu
              */
-            if (!selectedRepDescriptors.isEmpty()) {
-                addActionToMenu(menu, GROUP_OPEN, buildOpenRepresentationAction(selectedRepDescriptors));
-                addActionToMenu(menu, GROUP_REORGANIZE, buildRenameRepresentationAction(selectedRepDescriptors));
-                addActionToMenu(menu, GROUP_REORGANIZE, buildCopyRepresentationsAction(selectedRepDescriptors, session));
-            }
+            addActionToMenu(menu, GROUP_OPEN, buildOpenRepresentationAction(reachableRepresentations));
+            addActionToMenu(menu, GROUP_REORGANIZE, buildRenameRepresentationAction(reachableRepresentations));
+            addActionToMenu(menu, GROUP_REORGANIZE, buildCopyRepresentationsAction(reachableRepresentations, session));
 
-            if (!selectedRepDescriptors.isEmpty() && session.getAllSessionResources().size() >= 1) {
+            if (session.getAllSessionResources().size() >= 1) {
                 final Collection<Resource> targetResources = new LinkedHashSet<Resource>(session.getAllSessionResources());
-                final Collection<Resource> originResources = collectOriginResources(selectedRepDescriptors);
+                final Collection<Resource> originResources = collectOriginResources(reachableRepresentations);
                 if (originResources.size() == 1) {
                     targetResources.removeAll(originResources);
                 }
                 if (targetResources.size() > 0) {
-                    computeMoveMenu(menu, session, selectedRepDescriptors, targetResources);
+                    computeMoveMenu(menu, session, reachableRepresentations, targetResources);
                 }
-                addActionToMenu(menu, GROUP_REORGANIZE, buildExtractRepresentationsAction(session, selectedRepDescriptors));
+                addActionToMenu(menu, GROUP_REORGANIZE, buildExtractRepresentationsAction(session, reachableRepresentations));
             }
 
-            ExportRepresentationsAction actionExportImage = new ExportRepresentationsAction(session, selectedEObjects, selectedRepDescriptors);
+            ExportRepresentationsAction actionExportImage = new ExportRepresentationsAction(session, selectedEObjects, reachableRepresentations);
             addActionToMenu(menu, GROUP_PORT, actionExportImage);
         }
 
@@ -338,6 +344,9 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
     private void computeSemanticContextMenu(IMenuManager menu, final Collection<EObject> selection) {
         if (selection != null && !selection.isEmpty()) {
             final EObject firstSelected = (EObject) selection.toArray()[0];
+            if (firstSelected instanceof DRepresentationDescriptor && !new DRepresentationDescriptorQuery((DRepresentationDescriptor) firstSelected).isRepresentationValid()) {
+                return;
+            }
             Session session = SessionManager.INSTANCE.getSession(firstSelected);
             if (session != null) {
                 /* control menu */
