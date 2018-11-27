@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -88,16 +88,28 @@ public class DRepresentationDescriptorToDRepresentationLinkManager {
         // We retrieve the URI from descriptor.
         Optional<URI> uri = Optional.ofNullable(resourceDescriptor).map(desc -> desc.getResourceURI());
         if (uri.isPresent()) {
-            URI fragment = uri.get().trimFragment();
+            URI repResourceURI = uri.get().trimFragment();
             // We retrieve the representation resource from the uri.
             // If loadOnDemand equals true, call resourceSet.getResource(uri, true) only if the resource exists.
             // If loadOnDemand equals false, do not check the existence, the iteration over the resourceSet resources is
             // sufficient.
             //@formatter:off
-            Optional<Resource> representationResource = Optional.ofNullable(resource).map(rsr -> rsr.getResourceSet())
-                    .filter(resourceSet -> !loadOnDemand || resourceSet.getURIConverter().exists(fragment, new HashMap<>()))
-                    .map(resourceSet -> resourceSet.getResource(fragment, loadOnDemand));
+            Optional<Resource> representationResource = Optional.ofNullable(resource)
+                    .map(rsr -> rsr.getResourceSet())
+                    .filter(resourceSet -> !loadOnDemand || resourceSet.getURIConverter().exists(repResourceURI, new HashMap<>()))
             //@formatter:on
+                    .map(resourceSet -> {
+                        Resource res = null;
+                        try {
+                            res = resourceSet.getResource(repResourceURI, loadOnDemand);
+                            // CHECKSTYLE:OFF
+                        } catch (RuntimeException e) {
+                            // CHECKSTYLE:ON
+                            // an exception may occur if the segment part is malformed or if the resource does not
+                            // exists in case the representation is in its own resource.
+                        }
+                        return res;
+                    });
             String repId = uri.get().fragment();
             if (representationResource.isPresent() && repId != null) {
                 // We look for the representation with the repId (retrieved from
