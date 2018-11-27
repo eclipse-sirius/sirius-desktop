@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -88,7 +88,18 @@ public class DRepresentationDescriptorToDRepresentationLinkManager {
         if (uri.isPresent()) {
             // We retrieve the representation resource from the uri.
             Optional<Resource> representationResource = Optional.ofNullable(resource).map(rsr -> rsr.getResourceSet())
-                    .map(resourceSet -> resourceSet.getResource(uri.get().trimFragment(), loadOnDemand));
+                    .map(resourceSet -> {
+                        Resource res = null;
+                        try {
+                            res = resourceSet.getResource(uri.get().trimFragment(), loadOnDemand);
+                            // CHECKSTYLE:OFF
+                        } catch (Exception e) {
+                            // CHECKSTYLE:ON
+                            // an exception may occur if the segment part is malformed or if the resource does not
+                            // exists in case the representation is in its own resource.
+                        }
+                        return res;
+                    });
             String repId = uri.get().fragment();
             if (representationResource.isPresent() && repId != null) {
                 // We look for the representation with the repId (retrieved from
