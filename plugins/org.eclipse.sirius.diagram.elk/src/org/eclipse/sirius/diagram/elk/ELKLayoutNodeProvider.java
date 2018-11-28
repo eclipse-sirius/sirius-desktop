@@ -38,9 +38,13 @@ public class ELKLayoutNodeProvider extends DefaultLayoutProvider implements Exte
 
     @Override
     public Command layoutEditParts(final List selectedObjects, final IAdaptable layoutHint) {
+        DiagramEditPart diagramEditPart = layoutHint.getAdapter(DiagramEditPart.class);
         Injector injector = LayoutConnectorsService.getInstance().getInjector(null, selectedObjects);
         ElkDiagramLayoutConnector connector = injector.getInstance(ElkDiagramLayoutConnector.class);
-        LayoutMapping layoutMapping = connector.buildLayoutGraph(layoutHint.getAdapter(DiagramEditPart.class), selectedObjects);
+
+        connector.setLayoutConfiguration(layoutConfiguration);
+
+        LayoutMapping layoutMapping = connector.buildLayoutGraph(diagramEditPart, selectedObjects);
         connector.layout(layoutMapping);
         connector.transferLayout(layoutMapping);
         return connector.getApplyCommand(layoutMapping);

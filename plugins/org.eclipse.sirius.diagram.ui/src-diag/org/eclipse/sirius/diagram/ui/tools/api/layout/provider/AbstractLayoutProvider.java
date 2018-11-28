@@ -141,7 +141,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
      * @return the diagram layout provider if there is one, <code>null</code>
      *         otherwise
      */
-    private LayoutProvider getDiagramLayoutProvider(final DiagramEditPart diagramEditPart, final IAdaptable layoutHint) {
+    protected LayoutProvider getDiagramLayoutProvider(final DiagramEditPart diagramEditPart, final IAdaptable layoutHint) {
         final LayoutProvider candidate = LayoutService.getProvider(diagramEditPart);
         if (candidate != null && candidate.isDiagramLayoutProvider()) {
             return candidate;

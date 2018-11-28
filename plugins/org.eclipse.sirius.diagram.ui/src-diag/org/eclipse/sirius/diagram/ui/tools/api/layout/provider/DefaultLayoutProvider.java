@@ -35,17 +35,21 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
 
 import com.google.common.collect.Iterables;
 
 /**
- * Default layout provider. It delegates the operation using the
- * {@link LayoutService}.
+ * Default layout provider. It delegates the operation using the {@link LayoutService}.
  * 
  * @author ymortier
  */
 public class DefaultLayoutProvider extends AbstractLayoutProvider {
+    /**
+     * A layout configuration that the provider should use to configure its algorithm.
+     */
+    protected CustomLayoutConfiguration layoutConfiguration;
 
     @Override
     public boolean provides(IOperation operation) {
@@ -59,8 +63,17 @@ public class DefaultLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Check that at least one of the nodes we'are asked to layout is part of a
-     * Sirius diagram.
+     * Sets the layout configuration that the provider should use to configure its algorithm.
+     * 
+     * @param layoutConfiguration
+     *            the layout configuration that the provider should use to configure its algorithm.
+     */
+    public void setLayoutConfiguration(CustomLayoutConfiguration layoutConfiguration) {
+        this.layoutConfiguration = layoutConfiguration;
+    }
+
+    /**
+     * Check that at least one of the nodes we'are asked to layout is part of a Sirius diagram.
      */
     private boolean isLayoutForSiriusDiagram(ILayoutNodeOperation layoutOperation) {
         for (ILayoutNode node : Iterables.filter(layoutOperation.getLayoutNodes(), ILayoutNode.class)) {
@@ -105,8 +118,7 @@ public class DefaultLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Split all edit parts according to their container. Returns a map
-     * (container -> children to layout).
+     * Split all edit parts according to their container. Returns a map (container -> children to layout).
      * 
      * @param editParts
      *            the
@@ -133,8 +145,8 @@ public class DefaultLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Add the object <code>value</code> to the list of objects that is in the
-     * map <code>map</code> for the key <code>key</code>.
+     * Add the object <code>value</code> to the list of objects that is in the map <code>map</code> for the key
+     * <code>key</code>.
      * 
      * @param map
      *            the map.
@@ -154,8 +166,7 @@ public class DefaultLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Remove all elements that are not an instance of the specified type from
-     * the List <code>list</code>.
+     * Remove all elements that are not an instance of the specified type from the List <code>list</code>.
      * 
      * @param list
      *            the list to filter.
@@ -172,13 +183,13 @@ public class DefaultLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Return the diagram edit part of the specified edit part or
-     * <code>null</code> if the diagram edit part can not be retrieved.
+     * Return the diagram edit part of the specified edit part or <code>null</code> if the diagram edit part can not be
+     * retrieved.
      * 
      * @param editPart
      *            an edit part.
-     * @return the diagram edit part of the specified edit part or
-     *         <code>null</code> if the diagram edit part can not be retrieved.
+     * @return the diagram edit part of the specified edit part or <code>null</code> if the diagram edit part can not be
+     *         retrieved.
      */
     protected DiagramEditPart getDiagramEditPart(final EditPart editPart) {
         EditPart current = editPart;
@@ -196,8 +207,8 @@ public class DefaultLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Return all GMF views of the specified {@link EditPart}s. The key of the
-     * map is a view and the value is the associated {@link EditPart}.
+     * Return all GMF views of the specified {@link EditPart}s. The key of the map is a view and the value is the
+     * associated {@link EditPart}.
      * 
      * @param editParts
      *            the edit parts.

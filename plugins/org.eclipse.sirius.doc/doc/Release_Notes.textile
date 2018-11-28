@@ -10,6 +10,13 @@ h3. Developer-Visible Changes
 
 * <span class="label label-success">Added</span> If the @org.eclipse.sirius.diagam.ui.hidePrintingOfPermissionAuthorityDecoration@ system property is set to true and if there is no other printable decoration provided at the same location (South-West), the permission authority decorations displayed on diagrams are not printed nor exported in images (export as image actions).
 
+h4. Changes in  @org.eclipse.sirius.diagram.ui@
+
+* <span class="label label-success">Added</span>  A new field @CustomLayoutConfiguration layoutConfiguration@ has been added to @org.eclipse.sirius.diagram.ui.tools.api.layout.provider.DefaultLayoutProvider@ and its setter method 
+@setLayoutConfiguration(CustomLayoutConfiguration)@. It allows any layout provider to be aware of any VSM layout configuration that should be used.
+
+* <span class="label label-info">Modified</span> The method @getDiagramLayoutProvider(DiagramEditPart, IAdaptable)@ in package  @org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider@ has been made protected to allow to provide layout provider from other mechanism than LayoutService.
+
 h4. Changes in  @org.eclipse.sirius.diagram@
 
 * <span class="label label-success">Added</span> The getter and setter methods have been added for the new attribute @org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor.isPrintable@. This attribute is used to know if the decoration should be hidden when printing or exporting the diagram. The behavior is applied only if there is no printable decoration in its diagram element location (South, West, South-West etc).

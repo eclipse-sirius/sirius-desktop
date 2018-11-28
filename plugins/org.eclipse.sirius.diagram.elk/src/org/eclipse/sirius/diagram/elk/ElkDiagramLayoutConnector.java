@@ -81,7 +81,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.BooleanLayoutOption;
 import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
-import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DoubleLayoutOption;
 import org.eclipse.sirius.diagram.description.EnumLayoutOption;
 import org.eclipse.sirius.diagram.description.EnumLayoutValue;
@@ -89,7 +88,6 @@ import org.eclipse.sirius.diagram.description.EnumSetLayoutOption;
 import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.StringLayoutOption;
-import org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.swt.SWTException;
@@ -119,6 +117,11 @@ import com.google.common.collect.BiMap;
  */
 @Singleton
 public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
+
+    /**
+     * A layout configuration that the provider should use to configure its algorithm.
+     */
+    protected CustomLayoutConfiguration layoutConfiguration;
 
     /** list of connection edit parts that were found in the diagram. */
     public static final IProperty<List<ConnectionEditPart>> CONNECTIONS = new Property<List<ConnectionEditPart>>("gmf.connections");
@@ -159,6 +162,16 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         };
         figure.translateToAbsolute(bounds);
         return bounds;
+    }
+
+    /**
+     * Sets the layout configuration that the provider should use to configure its algorithm.
+     * 
+     * @param layoutConfiguration
+     *            the layout configuration that the provider should use to configure its algorithm.
+     */
+    public void setLayoutConfiguration(CustomLayoutConfiguration layoutConfiguration) {
+        this.layoutConfiguration = layoutConfiguration;
     }
 
     /**
@@ -395,13 +408,9 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         // we set the ELK algorithm to use from viewpoint id defined and the
         // global options.
 
-        EditPartQuery editPartQuery = new EditPartQuery(layoutRootPart);
-        DiagramDescription diagramDescription = editPartQuery.getDiagramDescription();
-
-        if (diagramDescription != null && diagramDescription.getLayout() instanceof CustomLayoutConfiguration) {
-            final CustomLayoutConfiguration layout = (CustomLayoutConfiguration) diagramDescription.getLayout();
-            topNode.setProperty(CoreOptions.ALGORITHM, layout.getId().trim());
-            EList<LayoutOption> layoutOptions = layout.getLayoutOptions();
+        if (layoutConfiguration != null) {
+            topNode.setProperty(CoreOptions.ALGORITHM, layoutConfiguration.getId().trim());
+            EList<LayoutOption> layoutOptions = layoutConfiguration.getLayoutOptions();
 
             for (LayoutOption layoutOption : layoutOptions) {
                 LayoutOptionData layoutProperty = LayoutMetaDataService.getInstance().getOptionData(layoutOption.getId());

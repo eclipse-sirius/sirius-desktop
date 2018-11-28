@@ -94,6 +94,24 @@
 				<code>org.eclipse.sirius.diagam.ui.hidePrintingOfPermissionAuthorityDecoration</code> system property is set to true and if there is no other printable decoration provided at the same location (South-West), the permission authority decorations displayed on diagrams are not printed nor exported in images (export as image actions).
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in  
+			<code>org.eclipse.sirius.diagram.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span>  A new field 
+				<code>CustomLayoutConfiguration layoutConfiguration</code> has been added to 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.layout.provider.DefaultLayoutProvider</code> and its setter method 
+			</li>
+		</ul>
+		<p>
+			<code>setLayoutConfiguration(CustomLayoutConfiguration)</code>. It allows any layout provider to be aware of any VSM layout configuration that should be used.
+		</p>
+		<ul>
+			<li><span class="label label-info">Modified</span> The method 
+				<code>getDiagramLayoutProvider(DiagramEditPart, IAdaptable)</code> in package  
+				<code>org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider</code> has been made protected to allow to provide layout provider from other mechanism than LayoutService.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in  
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
@@ -247,7 +265,7 @@
 				<code>org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE</code> has been added. Its default value is true. It allows to display, in the color palette, the user fixed color(defined in the activated viewpoints) in addition to standard colors. The color palette is available in Appearance tab of the Properties view.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -636,7 +654,7 @@
 				<code>org.eclipse.sirius.diagram.tools.api.managment</code>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -748,7 +766,7 @@
 				<code>org.eclipse.sirius.business.api.query.SiriusReferenceFinder.getReferencingSiriusElements(Collection&lt;EObject&gt;, SearchScope)</code>. The SearchScope.LOADED_REPRESENTATIONS_SCOPE scope covers the search and result scope. Then, no additional resource will be loaded using this scope.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui4">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -1004,7 +1022,7 @@
 				<code>DDiagram.getActivatedLayers</code> in several cases if you directly use it.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui5">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
