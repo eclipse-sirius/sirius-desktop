@@ -172,6 +172,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(SpecificClosedOrNotClosedEditorTest.class);
         suite.addTestSuite(MigrationTest.class);
         suite.addTest(new JUnit4TestAdapter(DragNDropTest.class));
+        suite.addTestSuite(OpenDiagramWithClassCastExceptionTest.class);
     }
 
     /**
