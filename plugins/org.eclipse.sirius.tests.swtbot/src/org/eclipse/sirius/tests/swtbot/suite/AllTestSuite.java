@@ -167,6 +167,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(NodeWithDecoratorSelectionTest.class);
         suite.addTestSuite(ManualAirdModificationTest.class);
         suite.addTestSuite(SpecificClosedOrNotClosedEditorTest.class);
+        suite.addTestSuite(OpenDiagramWithClassCastExceptionTest.class);
     }
 
     /**
