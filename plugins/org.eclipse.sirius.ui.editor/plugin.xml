@@ -98,7 +98,8 @@
              style="push">
           <visibleWhen
                 checkEnabled="false">
-             <iterate>
+           <iterate
+                       ifEmpty="false">
                   <adapt
                    type="org.eclipse.core.resources.IResource">
                 <test
