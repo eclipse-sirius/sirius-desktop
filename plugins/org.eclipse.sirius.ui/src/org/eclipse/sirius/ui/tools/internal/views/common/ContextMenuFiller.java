@@ -295,22 +295,26 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
                 .collect(Collectors.toList());
 
         /* session should not be null for the following actions */
-        if (session != null && !reachableRepresentations.isEmpty()) {
-            /*
-             * representation menu
-             */
-            addActionToMenu(menu, GROUP_OPEN, buildOpenRepresentationAction(reachableRepresentations));
-            addActionToMenu(menu, GROUP_REORGANIZE, buildRenameRepresentationAction(reachableRepresentations));
-            addActionToMenu(menu, GROUP_REORGANIZE, buildCopyRepresentationsAction(reachableRepresentations, session));
+        if (session != null) {
+            if (!reachableRepresentations.isEmpty()) {
+                /*
+                 * representation menu
+                 */
+                addActionToMenu(menu, GROUP_OPEN, buildOpenRepresentationAction(reachableRepresentations));
+                addActionToMenu(menu, GROUP_REORGANIZE, buildRenameRepresentationAction(reachableRepresentations));
+                addActionToMenu(menu, GROUP_REORGANIZE, buildCopyRepresentationsAction(reachableRepresentations, session));
+            }
 
             if (session.getAllSessionResources().size() >= 1) {
-                final Collection<Resource> targetResources = new LinkedHashSet<Resource>(session.getAllSessionResources());
-                final Collection<Resource> originResources = collectOriginResources(reachableRepresentations);
-                if (originResources.size() == 1) {
-                    targetResources.removeAll(originResources);
-                }
-                if (targetResources.size() > 0) {
-                    computeMoveMenu(menu, session, reachableRepresentations, targetResources);
+                if (!reachableRepresentations.isEmpty()) {
+                    final Collection<Resource> targetResources = new LinkedHashSet<Resource>(session.getAllSessionResources());
+                    final Collection<Resource> originResources = collectOriginResources(reachableRepresentations);
+                    if (originResources.size() == 1) {
+                        targetResources.removeAll(originResources);
+                    }
+                    if (targetResources.size() > 0) {
+                        computeMoveMenu(menu, session, reachableRepresentations, targetResources);
+                    }
                 }
                 addActionToMenu(menu, GROUP_REORGANIZE, buildExtractRepresentationsAction(session, reachableRepresentations));
             }
