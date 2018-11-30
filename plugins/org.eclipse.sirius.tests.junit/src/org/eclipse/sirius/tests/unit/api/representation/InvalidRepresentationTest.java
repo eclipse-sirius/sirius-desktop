@@ -34,7 +34,7 @@ public class InvalidRepresentationTest extends GenericTestCase {
 
     private static final String PATH_PROJECT_SPLIT = PLUGIN + "/data/unit/representation/invalid/split/";
 
-    private static final String PATH_PROJECT_NON_SPLIT = PLUGIN + "/data/unit/representation/invalid/nonsplit/";
+    private static final String PATH_PROJECT_NON_SPLIT = PLUGIN + "/data/unit/representation/invalid/nonSplit/";
 
     private static final String DIAGRAM_NAME_1 = "P0 package entities Correct";
 
