@@ -171,7 +171,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ManualAirdModificationTest.class);
         suite.addTestSuite(SpecificClosedOrNotClosedEditorTest.class);
         suite.addTestSuite(MigrationTest.class);
-
+        suite.addTest(new JUnit4TestAdapter(DragNDropTest.class));
     }
 
     /**
@@ -232,6 +232,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(SessionEditorTest.class);
         suite.addTestSuite(SessionEditorPageProvidingTest.class);
         suite.addTestSuite(SessionEditorProjectRemovalTest.class);
+        suite.addTest(new JUnit4TestAdapter(RefreshAfterViewCreationTest.class));
     }
 
     /**
@@ -268,7 +269,6 @@ public class AllTestSuite extends TestCase {
 
         suite.addTestSuite(ArrangeAllTest.class);
         suite.addTestSuite(ArrangeAllWithSnapToGridTest.class);
-        suite.addTest(new JUnit4TestAdapter(DragNDropTest.class));
         suite.addTest(new JUnit4TestAdapter(DragAndDropWithSnapToGridTest.class));
         suite.addTestSuite(EdgeStabilityOnBendpointsAlignmentTest.class);
         suite.addTestSuite(EdgeStabilityOnDragAndDropTest.class);
@@ -353,7 +353,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(EdgeWithBorderNodeCreationPositionWithSnapToGridTest.class);
         suite.addTestSuite(HideRevealDiagramElementsLabelsTest.class);
         suite.addTestSuite(LinkWithEditorFeatureWithModelExplorerViewTest.class);
-        suite.addTest(new JUnit4TestAdapter(RefreshAfterViewCreationTest.class));
         suite.addTestSuite(SpecificLayoutBendpointsOnReopeningTest.class);
         suite.addTestSuite(BorderSizeComputationExpressionTest.class);
         suite.addTestSuite(CenteredEdgesTest.class);
