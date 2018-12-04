@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2014, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -141,7 +141,7 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
 
     @Override
     public boolean canUndo() {
-        if (wrappedCommand.size() > 0 && wrappedCommand != null) {
+        if (wrappedCommand != null && wrappedCommand.size() > 0) {
             return wrappedCommand.canUndo();
         }
         return true;
@@ -149,7 +149,7 @@ public class ChildrenAdjustmentCommand extends AbstractTransactionalCommand {
 
     @Override
     public boolean canRedo() {
-        if (wrappedCommand.size() > 0 && wrappedCommand != null) {
+        if (wrappedCommand != null && wrappedCommand.size() > 0) {
             return wrappedCommand.canRedo();
         }
         return true;
