@@ -4,7 +4,7 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
-h2(#sirius6.1.1). Changes in Sirius 6.1.1
+h2(#sirius6.1.2). Changes in Sirius 6.1.2
 
 h3. Developer-Visible Changes
 
@@ -12,8 +12,13 @@ h3. Developer-Visible Changes
 
 h4. Changes in  @org.eclipse.sirius.diagram@
 
-* <span class="label label-success">Added</span> Add method @allowsVisibilityModeActivation()@ in @org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider@ This method is used to know if the visibility mode is supported by a specific diagram description.
 * <span class="label label-success">Added</span> The getter and setter methods have been added for the new attribute @org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor.isPrintable@. This attribute is used to know if the decoration should be hidden when printing or exporting the diagram. The behavior is applied only if there is no printable decoration in its diagram element location (South, West, South-West etc).
+
+h2(#sirius6.1.1). Changes in Sirius 6.1.1
+
+h4. Changes in  @org.eclipse.sirius.diagram@
+
+* <span class="label label-success">Added</span> Add method @allowsVisibilityModeActivation()@ in @org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider@ This method is used to know if the visibility mode is supported by a specific diagram description.
 
 h2(#sirius6.1.0). Changes in Sirius 6.1.0
 
