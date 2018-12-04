@@ -25,8 +25,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.services.common.api.ProjectServices;
 import org.eclipse.sirius.services.common.api.SiriusServicesCommonOptionalUtils;
-import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLOptionalUtils;
+import org.eclipse.sirius.services.common.api.ViewpointServices;
 import org.eclipse.sirius.services.graphql.internal.schema.mutation.resources.SiriusGraphQLProjectNameArgument;
 import org.eclipse.sirius.services.graphql.internal.schema.query.resources.SiriusGraphQLProjectTypesBuilder;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -122,7 +123,7 @@ public final class SiriusGraphQLCreateRepresentationField {
     private static DataFetcher<IProject> getCreateRepresentationDataFetcher() {
         // @formatter:off
         return environment -> {
-            Optional<IProject> optionalProject = SiriusGraphQLOptionalUtils.projectFromName(environment.getArgument(SiriusGraphQLProjectNameArgument.PROJECT_NAME_ARG));
+            Optional<IProject> optionalProject = ProjectServices.projectFromName(environment.getArgument(SiriusGraphQLProjectNameArgument.PROJECT_NAME_ARG));
             Optional<Session> optionalSession = optionalProject.flatMap(SiriusServicesCommonOptionalUtils::toSession);
             
             Function<IProject, Optional<IFile>> getFile = iProject -> Optional.of(environment.getArgument(RESOURCE_PATH_ARG))
@@ -143,7 +144,7 @@ public final class SiriusGraphQLCreateRepresentationField {
             String eObjectFragment = description.get(SiriusGraphQLRepresentationCreationDescriptionTypesBuilder.EOBJECT_FRAGMENT_FIELD);
             String name = description.get(SiriusGraphQLRepresentationCreationDescriptionTypesBuilder.NAME_FIELD);
             
-            Optional<Viewpoint> optionalViewpoint = SiriusGraphQLOptionalUtils.viewpointFromIdentifier(viewpointIdentifier);
+            Optional<Viewpoint> optionalViewpoint = ViewpointServices.viewpointFromIdentifier(viewpointIdentifier);
             Optional<RepresentationDescription> optionalRepresentationDescription = optionalViewpoint.flatMap(viewpoint -> {
                 return viewpoint.getOwnedRepresentations().stream()
                         .filter(representationDescription -> representationIdentifier.equals(representationDescription.getName()))

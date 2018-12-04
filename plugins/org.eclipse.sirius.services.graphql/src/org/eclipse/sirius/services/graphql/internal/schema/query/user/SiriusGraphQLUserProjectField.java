@@ -13,7 +13,7 @@
 package org.eclipse.sirius.services.graphql.internal.schema.query.user;
 
 import org.eclipse.core.resources.IProject;
-import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLOptionalUtils;
+import org.eclipse.sirius.services.common.api.ProjectServices;
 import org.eclipse.sirius.services.graphql.internal.schema.query.resources.SiriusGraphQLProjectTypesBuilder;
 
 import graphql.Scalars;
@@ -83,7 +83,7 @@ public final class SiriusGraphQLUserProjectField {
      */
     private static DataFetcher<IProject> getProjectDataFetcher() {
         // @formatter:off
-        return environment -> SiriusGraphQLOptionalUtils.projectFromName(environment.getArgument(PROJECT_NAME_ARG))
+        return environment -> ProjectServices.projectFromName(environment.getArgument(PROJECT_NAME_ARG))
                 .orElse(null);
         // @formatter:on
     }

@@ -19,8 +19,9 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.ViewpointSelector;
+import org.eclipse.sirius.services.common.api.ProjectServices;
 import org.eclipse.sirius.services.common.api.SiriusServicesCommonOptionalUtils;
-import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLOptionalUtils;
+import org.eclipse.sirius.services.common.api.ViewpointServices;
 import org.eclipse.sirius.services.graphql.internal.schema.query.resources.SiriusGraphQLProjectTypesBuilder;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
@@ -113,10 +114,10 @@ public final class SiriusGraphQLDeactivateViewpointField {
     private static DataFetcher<IProject> getActivateViewpointDataFetcher() {
         // @formatter:off
         return environment -> {
-            Optional<IProject> optionalProject = SiriusGraphQLOptionalUtils.projectFromName(environment.getArgument(PROJECT_NAME_ARG));
+            Optional<IProject> optionalProject = ProjectServices.projectFromName(environment.getArgument(PROJECT_NAME_ARG));
             Optional<Session> optionalSession = optionalProject.flatMap(SiriusServicesCommonOptionalUtils::toSession);
             
-            Optional<Viewpoint> optionalViewpoint = SiriusGraphQLOptionalUtils.viewpointFromIdentifier(environment.getArgument(VIEWPOINT_IDENTIFIER_ARG));
+            Optional<Viewpoint> optionalViewpoint = ViewpointServices.viewpointFromIdentifier(environment.getArgument(VIEWPOINT_IDENTIFIER_ARG));
             
             optionalSession.ifPresent(session -> {
                 optionalViewpoint.ifPresent(viewpoint -> {

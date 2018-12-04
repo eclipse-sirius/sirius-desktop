@@ -22,7 +22,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLOptionalUtils;
+import org.eclipse.sirius.services.common.api.ProjectServices;
 import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLPlugin;
 import org.eclipse.sirius.services.graphql.internal.schema.query.resources.SiriusGraphQLFolderTypesBuilder;
 
@@ -75,7 +75,7 @@ public final class SiriusGraphQLCreateFolderField {
     private static DataFetcher<IFolder> getCreateFolderDataFetcher() {
         // @formatter:off
         return environment -> {
-            Optional<IProject> optionalProject = SiriusGraphQLOptionalUtils.projectFromName(environment.getArgument(SiriusGraphQLProjectNameArgument.PROJECT_NAME_ARG));
+            Optional<IProject> optionalProject = ProjectServices.projectFromName(environment.getArgument(SiriusGraphQLProjectNameArgument.PROJECT_NAME_ARG));
             Optional<String> optionalContainerPath = Optional.of(environment.getArgument(SiriusGraphQLContainerPathArgument.CONTAINER_PATH_ARG));
             Optional<String> optionalName = Optional.of(environment.getArgument(SiriusGraphQLNameArgument.NAME_ARG));
 
