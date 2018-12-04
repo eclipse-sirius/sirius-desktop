@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -176,7 +176,7 @@ public class PinnedElementsHandler {
      * IDiagramElementEditPart which are not actually pinned but have to stay
      * fixed.
      */
-    private ArrayList<IDiagramElementEditPart> elementsToKeepFixed;
+    private List<IDiagramElementEditPart> elementsToKeepFixed;
 
     /**
      * Creates a new resolver.
