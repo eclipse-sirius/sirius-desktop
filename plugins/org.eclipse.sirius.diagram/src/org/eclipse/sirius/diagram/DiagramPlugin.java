@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -88,7 +88,7 @@ public class DiagramPlugin extends EMFPlugin {
         /**
          * A map associating a {@link DDiagram} to its {@link ToolManagement}.
          */
-        Map<DDiagram, ToolManagement> toolManagementMap;
+        private Map<DDiagram, ToolManagement> toolManagementMap;
 
         /**
          * Creates an instance.
