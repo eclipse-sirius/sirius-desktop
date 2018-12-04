@@ -126,7 +126,9 @@ public class SiriusServerHeaderConfigurator implements ISiriusServerConfigurator
         FilterHolder headerFilterHolder = new FilterHolder();
         headerFilterHolder.setInitParameter(HEADER_CONFIG, Messages.SiriusServerConfigurator_headerConfig);
         headerFilterHolder.setFilter(new HeaderFilter());
-        servletContextHandler.addFilter(headerFilterHolder, ALL_PATH, EnumSet.of(DispatcherType.REQUEST, DispatcherType.ASYNC, DispatcherType.INCLUDE, DispatcherType.FORWARD));
+        // servletContextHandler.addFilter(headerFilterHolder, ALL_PATH,
+        // EnumSet.of(DispatcherType.REQUEST, DispatcherType.ASYNC,
+        // DispatcherType.INCLUDE, DispatcherType.FORWARD));
     }
 
 }
