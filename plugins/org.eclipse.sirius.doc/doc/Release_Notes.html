@@ -13,10 +13,18 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
-						<a href="#sirius6.1.1">Changes in Sirius 6.1.1</a>
+						<a href="#sirius6.1.2">Changes in Sirius 6.1.2</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="#sirius6.1.1">Changes in Sirius 6.1.1</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#Changesinorg.eclipse.sirius.diagram2">Changes in  @org.eclipse.sirius.diagram@</a>
 							</li>
 						</ol>
 					</li>
@@ -79,7 +87,7 @@
 		<p>This document contains the release notes for recent major releases of Sirius. See also 
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
-		<h2 id="sirius6.1.1">Changes in Sirius 6.1.1</h2>
+		<h2 id="sirius6.1.2">Changes in Sirius 6.1.2</h2>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> If the 
@@ -90,12 +98,18 @@
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> The getter and setter methods have been added for the new attribute 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor.isPrintable</code>. This attribute is used to know if the decoration should be hidden when printing or exporting the diagram. The behavior is applied only if there is no printable decoration in its diagram element location (South, West, South-West etc).
+			</li>
+		</ul>
+		<h2 id="sirius6.1.1">Changes in Sirius 6.1.1</h2>
+		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in  
+			<code>org.eclipse.sirius.diagram</code>
+		</h4>
+		<ul>
 			<li><span class="label label-success">Added</span> Add method 
 				<code>allowsVisibilityModeActivation()</code> in 
 				<code>org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider</code> This method is used to know if the visibility mode is supported by a specific diagram description.
-			</li>
-			<li><span class="label label-success">Added</span> The getter and setter methods have been added for the new attribute 
-				<code>org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor.isPrintable</code>. This attribute is used to know if the decoration should be hidden when printing or exporting the diagram. The behavior is applied only if there is no printable decoration in its diagram element location (South, West, South-West etc).
 			</li>
 		</ul>
 		<h2 id="sirius6.1.0">Changes in Sirius 6.1.0</h2>
@@ -593,7 +607,7 @@
 				<code>ToolMangament</code> mechanism used to handle tools and layer changes.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -980,7 +994,7 @@
 				<code>getFilesFromWorkspace(Collection&lt;IContainer&gt;, String)</code> to be more generic.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram4">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
