@@ -145,6 +145,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_2, REPRESENTATION_INSTANCE_2BLANK, DDiagram.class);
         if (snapToGrid) {
             editor.setSnapToGrid(true, GRID_STEP, 2);
+        } else {
+            editor.setSnapToGrid(false);
         }
     }
 
@@ -155,6 +157,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_5, REPRESENTATION_INSTANCE_5BLANK, DDiagram.class);
         if (snapToGrid) {
             editor.setSnapToGrid(true, GRID_STEP, 2);
+        } else {
+            editor.setSnapToGrid(false);
         }
     }
 
@@ -162,7 +166,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
      * Open "Test no NPE raised during DND" diagram.
      */
     private void openRepresentation3() {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_3, TEST_NO_NPE_RAISED_DURING_DND, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_3, TEST_NO_NPE_RAISED_DURING_DND, DDiagram.class, !snapToGrid);
     }
 
     /**
@@ -172,6 +176,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_6, REPRESENTATION_INSTANCE_6BLANK, DDiagram.class);
         if (snapToGrid) {
             editor.setSnapToGrid(true, GRID_STEP, 2);
+        } else {
+            editor.setSnapToGrid(false);
         }
     }
 
@@ -320,8 +326,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             Point p2Location = editor.getBounds(p2Bot).getTopLeft();
 
             if (!snapToGrid) {
-                assertEquals(targetLocation.x, p2Location.x, 2);
-                assertEquals(targetLocation.y, p2Location.y, 2);
+                assertEquals(targetLocation.x, p2Location.x);
+                assertEquals(targetLocation.y, p2Location.y);
             }
 
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
@@ -522,8 +528,8 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             // grid.
             // The snap will be check in checkEditPartLocation method.
             if (!snapToGrid) {
-                assertEquals(targetCenter.x, p2Location.x, 4);
-                assertEquals(targetCenter.y, p2Location.y, 4);
+                assertEquals(targetCenter.x, p2Location.x);
+                assertEquals(targetCenter.y, p2Location.y);
             }
 
             assertEquals("An error message was generated !", rowCount, errorLogBot.tree().rowCount());
