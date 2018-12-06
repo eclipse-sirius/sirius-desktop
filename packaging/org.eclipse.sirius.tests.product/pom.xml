@@ -22,16 +22,13 @@
     <relativePath>../../packaging/org.eclipse.sirius.parent</relativePath>
   </parent>
 
-  <properties>
-    <sonar.skip>true</sonar.skip>
-  </properties>
-
   <artifactId>org.eclipse.sirius.tests.product</artifactId>
   <packaging>eclipse-repository</packaging>
   <version>6.1.2-SNAPSHOT</version>
 
   <properties>
     <product-id>org.eclipse.sirius.tests.product</product-id>
+    <sonar.skip>true</sonar.skip>
   </properties>
 
   <build>
