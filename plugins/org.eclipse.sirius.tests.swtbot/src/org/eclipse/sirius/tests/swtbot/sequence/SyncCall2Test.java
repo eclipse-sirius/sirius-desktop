@@ -21,6 +21,8 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMe
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberExecutionOnLifeline;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfChildren;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
@@ -471,7 +473,9 @@ public class SyncCall2Test extends AbstractDefaultModelSequenceTests {
         deleteSelectedElement();
 
         // Then we delete its return message
-        editor.click(getSequenceMessageScreenCenteredPosition(getReturnSyncCall(LIFELINE_B, 0)));
+        SequenceMessageEditPart returnSyncCall = getReturnSyncCall(LIFELINE_B, 0);
+        editor.click(getSequenceMessageScreenCenteredPosition(returnSyncCall));
+        bot.waitUntil(new CheckSelectedCondition(editor, returnSyncCall));
         deleteSelectedElement();
 
         selectEditParts(getExecutionEditPart(LIFELINE_B, 0));
