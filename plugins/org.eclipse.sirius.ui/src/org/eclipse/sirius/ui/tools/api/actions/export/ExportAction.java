@@ -119,7 +119,7 @@ public class ExportAction extends WorkspaceModifyOperation {
      *            diagram scale level in percent
      */
     public void setDiagramScaleLevel(Integer theDiagramScaleLevel) {
-        if (theDiagramScaleLevel < 0 && theDiagramScaleLevel > 100) {
+        if (theDiagramScaleLevel == null || theDiagramScaleLevel < 0 || theDiagramScaleLevel > 100) {
             throw new IllegalArgumentException(Messages.ExportAction_invalidLevel);
         } else {
             this.diagramScaleLevel = theDiagramScaleLevel;
