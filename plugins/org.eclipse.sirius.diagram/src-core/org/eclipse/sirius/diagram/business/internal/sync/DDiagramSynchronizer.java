@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
@@ -60,37 +59,4 @@ public class DDiagramSynchronizer extends org.eclipse.sirius.diagram.business.in
         boolean syncOnCreation = Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, SiriusDiagramInternalPreferencesKeys.PREF_SYNCHRONIZE_DIAGRAM_ON_CREATION.name(), false, null);
         getDiagram().setSynchronized(syncOnCreation);
     }
-
-    /**
-     * return the diagram.
-     * 
-     * @return the diagram
-     */
-    @Override
-    public DSemanticDiagram getDiagram() {
-        return super.getDiagram();
-    }
-
-    /**
-     * set a new diagram.
-     * 
-     * @param diagram
-     *            the diagram to set
-     */
-    @Override
-    public void setDiagram(final DSemanticDiagram diagram) {
-        super.setDiagram(diagram);
-    }
-
-    /**
-     * refresh the content.
-     * 
-     * @param monitor
-     *            progress monitor for the processing.
-     */
-    @Override
-    public void refresh(final IProgressMonitor monitor) {
-        super.refresh(monitor);
-    }
-
 }
