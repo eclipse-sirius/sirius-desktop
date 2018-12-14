@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -51,12 +51,12 @@ import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilte
 import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.DNodeCandidate;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.DEdgeCandidate;
 import org.eclipse.sirius.diagram.business.internal.helper.decoration.DecorationHelperInternal;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
+import org.eclipse.sirius.diagram.business.internal.sync.DDiagramElementSynchronizer;
+import org.eclipse.sirius.diagram.business.internal.sync.DDiagramSynchronizer;
+import org.eclipse.sirius.diagram.business.internal.sync.DEdgeCandidate;
+import org.eclipse.sirius.diagram.business.internal.sync.DNodeCandidate;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;

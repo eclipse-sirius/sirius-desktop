@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.experimental.sync;
+package org.eclipse.sirius.diagram.business.internal.sync;
 
 import java.util.ArrayList;
 import java.util.Collection;

@@ -16,7 +16,7 @@ import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DiagramFactory;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.DNodeCandidate;
+import org.eclipse.sirius.diagram.business.internal.sync.DNodeCandidate;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.tests.support.api.EqualsHashCodeTestCase;

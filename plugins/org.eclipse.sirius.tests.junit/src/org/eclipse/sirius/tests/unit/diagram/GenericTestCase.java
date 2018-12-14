@@ -30,7 +30,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramPlugin;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
+import org.eclipse.sirius.diagram.business.internal.sync.DDiagramSynchronizer;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.Layer;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -42,12 +42,12 @@ import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsM
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.query.DMappingBasedQuery;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramElementSynchronizer;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.DDiagramSynchronizer;
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.DEdgeCandidate;
 import org.eclipse.sirius.diagram.business.internal.helper.decoration.DecorationHelperInternal;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingWithInterpreterHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerWithInterpreterOperations;
+import org.eclipse.sirius.diagram.business.internal.sync.DDiagramElementSynchronizer;
+import org.eclipse.sirius.diagram.business.internal.sync.DDiagramSynchronizer;
+import org.eclipse.sirius.diagram.business.internal.sync.DEdgeCandidate;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;

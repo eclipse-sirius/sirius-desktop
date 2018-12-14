@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,7 @@ package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
 import java.util.Set;
 
-import org.eclipse.sirius.diagram.business.internal.experimental.sync.DNodeCandidate;
+import org.eclipse.sirius.diagram.business.internal.sync.DNodeCandidate;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 
 /**
