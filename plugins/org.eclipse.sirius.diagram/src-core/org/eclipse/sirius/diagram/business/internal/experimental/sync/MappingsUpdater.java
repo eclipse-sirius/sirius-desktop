@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,9 +27,9 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
+import org.eclipse.sirius.diagram.business.api.query.DragAndDropTargetQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingsListVisitor;
-import org.eclipse.sirius.diagram.business.internal.sync.visitor.DiagramElementsHierarchyVisitor;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -98,7 +98,7 @@ public class MappingsUpdater {
 
     private void safeUpdateMappings(DragAndDropTarget container) {
         mappingsManager.iterate(new MappingUpdateVisitor(container, ids), container);
-        for (final DDiagramElement child : DiagramElementsHierarchyVisitor.INSTANCE.getChildren(container)) {
+        for (final DDiagramElement child : DragAndDropTargetQuery.on(container).getLogicalChildren()) {
             if (child instanceof DragAndDropTarget) {
                 updateMappings((DragAndDropTarget) child);
             }
@@ -147,7 +147,7 @@ public class MappingsUpdater {
                             return from.getSemantic();
                         }
                     }));
-                    for (final DDiagramElement element : DiagramElementsHierarchyVisitor.INSTANCE.getChildren(container)) {
+                    for (final DDiagramElement element : DragAndDropTargetQuery.on(container).getLogicalChildren()) {
                         final DiagramElementMapping elementMapping = element.getDiagramElementMapping();
                         final EObject semanticElement = element.getTarget();
                         if (elementMapping instanceof AbstractNodeMapping && semanticElement != null && validSemantics.contains(semanticElement)) {

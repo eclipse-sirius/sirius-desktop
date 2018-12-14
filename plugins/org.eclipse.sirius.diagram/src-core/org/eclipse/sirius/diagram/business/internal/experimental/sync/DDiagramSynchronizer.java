@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -68,6 +68,7 @@ import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceMana
 import org.eclipse.sirius.diagram.business.api.helper.layers.LayerService;
 import org.eclipse.sirius.diagram.business.api.query.ContainerMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
+import org.eclipse.sirius.diagram.business.api.query.DragAndDropTargetQuery;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.api.refresh.RefreshExtensionService;
@@ -79,7 +80,6 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelp
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramSpecOperations;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.business.internal.sync.visitor.DiagramElementsHierarchyVisitor;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
@@ -1010,7 +1010,7 @@ public class DDiagramSynchronizer {
     protected Set<DDiagramElement> getPreviousDiagramElements(final DragAndDropTarget container, final DiagramElementMapping mapping) {
         if (forceRetrieve) {
             final Set<DDiagramElement> previousDiagramElements = new LinkedHashSet<>();
-            for (final DDiagramElement element : DiagramElementsHierarchyVisitor.INSTANCE.getChildren(container)) {
+            for (final DDiagramElement element : DragAndDropTargetQuery.on(container).getLogicalChildren()) {
                 final DiagramElementMapping elementMapping = element.getDiagramElementMapping();
                 if (elementMapping instanceof AbstractNodeMapping && new DiagramElementMappingQuery(elementMapping).areInSameHiearchy(mapping)) {
                     previousDiagramElements.add(element);
@@ -1078,7 +1078,7 @@ public class DDiagramSynchronizer {
      *            the map to update.
      */
     private void retrievePreviousCandidates(DragAndDropTarget container, Multimap<EObjectCouple, DDiagramElement> candidates) {
-        for (final DDiagramElement child : DiagramElementsHierarchyVisitor.INSTANCE.getChildren(container)) {
+        for (final DDiagramElement child : DragAndDropTargetQuery.on(container).getLogicalChildren()) {
             final EObjectCouple key;
             RepresentationElementMapping mapping = child.getMapping();
             if (mapping == null) {
