@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.gmf.runtime.common.ui.action.IDisposableAction;
 import org.eclipse.jface.action.ActionContributionItem;
@@ -34,7 +35,6 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
@@ -445,8 +445,8 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
                     continue;
                 }
 
-                Option<Object> fieldValue = ReflectionHelper.getFieldValueWithoutException(obj, field.getName());
-                assertFalse("The field " + field.getName() + " should be null for " + obj, fieldValue.some());
+                Optional<Object> fieldValue = ReflectionHelper.getFieldValueWithoutException(obj, field.getName());
+                assertFalse("The field " + field.getName() + " should be null for " + obj, fieldValue.isPresent());
             }
         }
     }

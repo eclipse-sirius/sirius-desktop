@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015-2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
@@ -32,7 +33,6 @@ import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
@@ -104,8 +104,8 @@ final class ShowCrossReferencerMap implements Runnable {
             if (session != null) {
                 ECrossReferenceAdapter crossReferencer = session.getSemanticCrossReferencer();
                 Collection<Resource> semanticResources = session.getSemanticResources();
-                Option<Object> inverseCrossReferencer = ReflectionHelper.getFieldValueWithoutException(crossReferencer, "inverseCrossReferencer");
-                if (inverseCrossReferencer.some()) {
+                Optional<Object> inverseCrossReferencer = ReflectionHelper.getFieldValueWithoutException(crossReferencer, "inverseCrossReferencer");
+                if (inverseCrossReferencer.isPresent()) {
                     dumpCrossReferencer(semanticResources, (Map<EObject, Collection<EStructuralFeature.Setting>>) inverseCrossReferencer.get());
                 }
             }

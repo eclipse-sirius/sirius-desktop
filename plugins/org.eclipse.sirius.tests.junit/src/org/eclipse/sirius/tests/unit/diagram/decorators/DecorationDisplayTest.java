@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.Figure;
@@ -57,7 +58,6 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.business.internal.permission.PermissionAuthorityRegistryImpl;
 import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyPermissionAuthority;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.sample.component.Component;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -174,7 +174,7 @@ public class DecorationDisplayTest extends GenericTestCase {
     private SiriusDecorationDescriptorProvider initTestDecorationPrintDisplay() {
         // init PermissionAuthority to have a lock decorator
         PermissionAuthorityRegistryImpl permissionAuthorityRegistry = (PermissionAuthorityRegistryImpl) PermissionAuthorityRegistry.getDefault();
-        Option<Object> fieldValueWithoutException = ReflectionHelper.getFieldValueWithoutException(permissionAuthorityRegistry, "resourceSetToAuthority");
+        Optional<Object> fieldValueWithoutException = ReflectionHelper.getFieldValueWithoutException(permissionAuthorityRegistry, "resourceSetToAuthority");
         @SuppressWarnings("unchecked")
         Map<ResourceSet, IPermissionAuthority> resourceSetToAuthority = (Map<ResourceSet, IPermissionAuthority>) fieldValueWithoutException.get();
         resourceSetToAuthority.remove(session.getTransactionalEditingDomain().getResourceSet());

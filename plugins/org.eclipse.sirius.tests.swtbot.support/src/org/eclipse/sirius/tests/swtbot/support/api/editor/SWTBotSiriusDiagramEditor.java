@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -61,7 +62,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
 import org.eclipse.sirius.tests.swtbot.support.api.bot.SWTDesignerBot;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
@@ -171,8 +171,8 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * @return the canvas.
      */
     public SWTBotGefFigureCanvas getCanvas() {
-        Option<Object> fieldValueWithoutException = ReflectionHelper.getFieldValueWithoutException(getSWTBotGefViewer(), "canvas", getSWTBotGefViewer().getClass().getSuperclass());
-        if (fieldValueWithoutException.some() && fieldValueWithoutException.get() instanceof SWTBotGefFigureCanvas) {
+        Optional<Object> fieldValueWithoutException = ReflectionHelper.getFieldValueWithoutException(getSWTBotGefViewer(), "canvas", getSWTBotGefViewer().getClass().getSuperclass());
+        if (fieldValueWithoutException.isPresent() && fieldValueWithoutException.get() instanceof SWTBotGefFigureCanvas) {
             return (SWTBotGefFigureCanvas) fieldValueWithoutException.get();
         }
 

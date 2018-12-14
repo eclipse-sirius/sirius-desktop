@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.text.MessageFormat;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.transaction.RunnableWithResult;
@@ -27,7 +28,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.Tabbar;
 import org.eclipse.sirius.diagram.ui.tools.internal.menu.LocationURI;
 import org.eclipse.sirius.diagram.ui.tools.internal.menu.PopupMenuContribution;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -503,7 +503,7 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
     private int getNbElementsInSelectMenuOfTabbar(SWTBotSiriusDiagramEditor editor) {
         final DDiagramEditorImpl edit = (DDiagramEditorImpl) editor.getReference().getEditor(false);
         Tabbar tabbar = edit.getTabbar();
-        Option<Object> toolbarOption = ReflectionHelper.getFieldValueWithoutException(tabbar, "toolBar");
+        Optional<Object> toolbarOption = ReflectionHelper.getFieldValueWithoutException(tabbar, "toolBar");
         final ToolBar toolBar = (ToolBar) toolbarOption.get();
 
         RunnableWithResult<Integer> result = new RunnableWithResult<Integer>() {

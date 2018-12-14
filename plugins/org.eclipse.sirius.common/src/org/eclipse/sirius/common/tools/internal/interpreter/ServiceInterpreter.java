@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013-2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.regex.Pattern;
 
 import org.eclipse.emf.ecore.EObject;
@@ -32,8 +33,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IJavaAwareInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.JavaExtensionsManager;
 import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
@@ -97,19 +96,19 @@ public class ServiceInterpreter extends VariableInterpreter implements IJavaAwar
     }
 
     /**
-     * Get the receiver variable name if any, none {@link Option} otherwise.
+     * Get the receiver variable name if any, none {@link Optional} otherwise.
      * 
      * @param expression
      *            The expression after the {@link ServiceInterpreter#PREFIX}.
      * @return the receiver variable name if any, none Option otherwise.
      */
-    public static Option<String> getReceiverVariableName(String expression) {
+    public static Optional<String> getReceiverVariableName(String expression) {
         int indexOfServiceName = expression.indexOf(RECEIVER_SEPARATOR);
         if (indexOfServiceName != -1) {
             String receiverVariableName = expression.substring(0, indexOfServiceName);
-            return Options.newSome(receiverVariableName);
+            return Optional.of(receiverVariableName);
         }
-        return Options.newNone();
+        return Optional.empty();
     }
 
     @Override
@@ -128,10 +127,10 @@ public class ServiceInterpreter extends VariableInterpreter implements IJavaAwar
         Object evaluation = null;
         if (target != null && expression != null && expression.startsWith(PREFIX)) {
             String serviceCall = expression.substring(PREFIX.length()).trim();
-            Option<String> receiverVariableName = getReceiverVariableName(serviceCall);
+            Optional<String> receiverVariableName = getReceiverVariableName(serviceCall);
             EObject receiver = target;
             String serviceName = serviceCall;
-            if (receiverVariableName.some()) {
+            if (receiverVariableName.isPresent()) {
                 serviceCall = serviceCall.substring(receiverVariableName.get().length() + 1);
                 Object objectReceiver = evaluateVariable(target, receiverVariableName.get().trim());
                 if (objectReceiver instanceof EObject) {

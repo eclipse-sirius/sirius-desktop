@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009-2015 THALES GLOBAL SERVICES
+ * Copyright (c) 2009-2019 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.tests.swtbot.support.api.editor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
@@ -78,8 +79,8 @@ public final class SWTBotSiriusHelper {
             @Override
             public String run() {
                 for (final TabbedPropertyTitle tabbedProperty : widgets) {
-                    Option<Object> title = ReflectionHelper.getFieldValueWithoutException(tabbedProperty, "text");
-                    if (title.some()) {
+                    Optional<Object> title = ReflectionHelper.getFieldValueWithoutException(tabbedProperty, "text");
+                    if (title.isPresent()) {
                         return (String) title.get();
                     }
                 }

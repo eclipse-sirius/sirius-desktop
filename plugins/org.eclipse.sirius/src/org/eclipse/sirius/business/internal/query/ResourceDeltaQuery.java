@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011-2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.query;
+
+import java.util.Optional;
 
 import org.eclipse.core.internal.resources.ProjectInfo;
 import org.eclipse.core.resources.IProjectDescription;
@@ -71,8 +73,8 @@ public class ResourceDeltaQuery {
     }
 
     @SuppressWarnings("restriction")
-    private Option<IProjectDescription> getProjectDescription(Option<Object> info) {
-        if (info.some() && info.get() instanceof ProjectInfo) {
+    private Option<IProjectDescription> getProjectDescription(Optional<Object> info) {
+        if (info.isPresent() && info.get() instanceof ProjectInfo) {
             IProjectDescription oldProjectDescription = ((ProjectInfo) info.get()).getDescription();
             return Options.fromNullable(oldProjectDescription);
         } else {

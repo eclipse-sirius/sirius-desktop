@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011-2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,9 +16,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
+import java.util.Optional;
 
 /**
  * An helper for all reflection managment.
@@ -122,15 +120,13 @@ public final class ReflectionHelper {
      * @return an option with the Constructor if there is no exception, an empty
      *         option otherwise.
      */
-    public static Option<Constructor> setConstructorVisibleWithoutException(Class<? extends Object> classToModify, Class<?>... parameterTypes) {
+    public static Optional<Constructor> setConstructorVisibleWithoutException(Class<? extends Object> classToModify, Class<?>... parameterTypes) {
         try {
-            return Options.newSome(setConstructorVisible(classToModify, parameterTypes));
-        } catch (SecurityException e) {
-            // DO nothing
-        } catch (NoSuchMethodException e) {
+            return Optional.ofNullable(setConstructorVisible(classToModify, parameterTypes));
+        } catch (SecurityException | NoSuchMethodException e) {
             // DO nothing
         }
-        return Options.newNone();
+        return Optional.empty();
     }
 
     /**
@@ -143,15 +139,13 @@ public final class ReflectionHelper {
      * @return an option with the Constructor if there is no exception, an empty
      *         option otherwise.
      */
-    public static Option<Field> setFieldVisibleWithoutException(Class<? extends Object> classToModify, String fieldName) {
+    public static Optional<Field> setFieldVisibleWithoutException(Class<? extends Object> classToModify, String fieldName) {
         try {
-            return Options.newSome(setFieldVisible(classToModify, fieldName));
-        } catch (SecurityException e) {
-            // DO nothing
-        } catch (NoSuchFieldException e) {
+            return Optional.ofNullable(setFieldVisible(classToModify, fieldName));
+        } catch (SecurityException | NoSuchFieldException e) {
             // DO nothing
         }
-        return Options.newNone();
+        return Optional.empty();
     }
 
     /**
@@ -171,15 +165,7 @@ public final class ReflectionHelper {
         try {
             invokeMethod(object, methodName, parameterTypes, parameters);
             return true;
-        } catch (SecurityException e) {
-            // Do nothing
-        } catch (IllegalArgumentException e) {
-            // Do nothing
-        } catch (NoSuchMethodException e) {
-            // Do nothing
-        } catch (IllegalAccessException e) {
-            // Do nothing
-        } catch (InvocationTargetException e) {
+        } catch (SecurityException | IllegalArgumentException | NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             // Do nothing
         }
         return false;
@@ -202,15 +188,7 @@ public final class ReflectionHelper {
     public static Object invokeMethodWithoutExceptionWithReturn(Object object, String methodName, Class<?>[] parameterTypes, Object[] parameters) {
         try {
             return invokeMethod(object, methodName, parameterTypes, parameters);
-        } catch (SecurityException e) {
-            // Do nothing
-        } catch (IllegalArgumentException e) {
-            // Do nothing
-        } catch (NoSuchMethodException e) {
-            // Do nothing
-        } catch (IllegalAccessException e) {
-            // Do nothing
-        } catch (InvocationTargetException e) {
+        } catch (SecurityException | IllegalArgumentException | NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             // Do nothing
         }
         return null;
@@ -236,15 +214,7 @@ public final class ReflectionHelper {
     public static Object invokeMethodWithoutExceptionWithReturn(Object object, Class aClass, String methodName, Class<?>[] parameterTypes, Object[] parameters, boolean setVisible) {
         try {
             return invokeMethod(object, aClass, methodName, parameterTypes, parameters, setVisible);
-        } catch (SecurityException e) {
-            // Do nothing
-        } catch (IllegalArgumentException e) {
-            // Do nothing
-        } catch (NoSuchMethodException e) {
-            // Do nothing
-        } catch (IllegalAccessException e) {
-            // Do nothing
-        } catch (InvocationTargetException e) {
+        } catch (SecurityException | IllegalArgumentException | NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             // Do nothing
         }
         return null;
@@ -257,14 +227,14 @@ public final class ReflectionHelper {
      *            The name of the searched class
      * @return an empty option if there is no corresponding class, an option with the corresponding class otherwise.
      */
-    public static Option<Class> getClassForNameWithoutException(String className) {
+    public static Optional<Class> getClassForNameWithoutException(String className) {
         try {
             Class foundClass = Class.forName(className);
-            return Options.newSome(foundClass);
+            return Optional.of(foundClass);
         } catch (ClassNotFoundException e) {
             // Do nothing
         }
-        return Options.newNone();
+        return Optional.empty();
     }
 
     /**
@@ -279,26 +249,20 @@ public final class ReflectionHelper {
      * @return an empty option if the instantiation failed, an option with the
      *         new instance otherwise.
      */
-    public static Option<Object> instantiateWithoutException(String className, Class<?>[] parameterTypes, Object[] parameters) {
-        Option<Class> foundClass = ReflectionHelper.getClassForNameWithoutException(className);
-        if (foundClass.some()) {
-            Option<Constructor> osConstructor = ReflectionHelper.setConstructorVisibleWithoutException(foundClass.get(), parameterTypes);
-            if (osConstructor.some()) {
+    public static Optional<Object> instantiateWithoutException(String className, Class<?>[] parameterTypes, Object[] parameters) {
+        Optional<Class> foundClass = ReflectionHelper.getClassForNameWithoutException(className);
+        if (foundClass.isPresent()) {
+            Optional<Constructor> osConstructor = ReflectionHelper.setConstructorVisibleWithoutException(foundClass.get(), parameterTypes);
+            if (osConstructor.isPresent()) {
                 try {
                     Object object = osConstructor.get().newInstance(parameters);
-                    return Options.newSome(object);
-                } catch (IllegalArgumentException e) {
-                    // Do nothing
-                } catch (InstantiationException e) {
-                    // Do nothing
-                } catch (IllegalAccessException e) {
-                    // Do nothing
-                } catch (InvocationTargetException e) {
+                    return Optional.of(object);
+                } catch (IllegalArgumentException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                     // Do nothing
                 }
             }
         }
-        return Options.newNone();
+        return Optional.empty();
     }
 
     /**
@@ -313,14 +277,12 @@ public final class ReflectionHelper {
      * @return true if the field is set, false otherwise
      */
     public static boolean setFieldValueWithoutException(Object instanceToModify, String fieldName, int newValue) {
-        Option<Field> field = ReflectionHelper.setFieldVisibleWithoutException(instanceToModify.getClass(), fieldName);
-        if (field.some()) {
+        Optional<Field> field = ReflectionHelper.setFieldVisibleWithoutException(instanceToModify.getClass(), fieldName);
+        if (field.isPresent()) {
             try {
                 field.get().setInt(instanceToModify, newValue);
                 return true;
-            } catch (IllegalArgumentException e) {
-                // Do nothing
-            } catch (IllegalAccessException e) {
+            } catch (IllegalArgumentException | IllegalAccessException e) {
                 // Do nothing
             }
         }
@@ -341,14 +303,12 @@ public final class ReflectionHelper {
      * @return true if the field is set, false otherwise
      */
     public static boolean setFieldValueWithoutException(Object instanceToModify, String fieldName, Object newValue, Class<? extends Object> classToModify) {
-        Option<Field> field = ReflectionHelper.setFieldVisibleWithoutException(classToModify, fieldName);
-        if (field.some()) {
+        Optional<Field> field = ReflectionHelper.setFieldVisibleWithoutException(classToModify, fieldName);
+        if (field.isPresent()) {
             try {
                 field.get().set(instanceToModify, newValue);
                 return true;
-            } catch (IllegalArgumentException e) {
-                // Do nothing
-            } catch (IllegalAccessException e) {
+            } catch (IllegalArgumentException | IllegalAccessException e) {
                 // Do nothing
             }
         }
@@ -367,14 +327,12 @@ public final class ReflectionHelper {
      * @return true if the field is set, false otherwise
      */
     public static boolean setFieldValueWithoutException(Object instanceToModify, String fieldName, Object newValue) {
-        Option<Field> field = ReflectionHelper.setFieldVisibleWithoutException(instanceToModify.getClass(), fieldName);
-        if (field.some()) {
+        Optional<Field> field = ReflectionHelper.setFieldVisibleWithoutException(instanceToModify.getClass(), fieldName);
+        if (field.isPresent()) {
             try {
                 field.get().set(instanceToModify, newValue);
                 return true;
-            } catch (IllegalArgumentException e) {
-                // Do nothing
-            } catch (IllegalAccessException e) {
+            } catch (IllegalArgumentException | IllegalAccessException e) {
                 // Do nothing
             }
         }
@@ -392,18 +350,16 @@ public final class ReflectionHelper {
      * @return instance value of the field or an empty option if the field does
      *         not exist.
      */
-    public static Option<Object> getFieldValueWithoutException(Object instance, String fieldName) {
-        Option<Field> field = ReflectionHelper.setFieldVisibleWithoutException(instance.getClass(), fieldName);
-        if (field.some()) {
+    public static Optional<Object> getFieldValueWithoutException(Object instance, String fieldName) {
+        Optional<Field> field = ReflectionHelper.setFieldVisibleWithoutException(instance.getClass(), fieldName);
+        if (field.isPresent()) {
             try {
-                return Options.newSome(field.get().get(instance));
-            } catch (IllegalArgumentException e) {
-                // Do nothing
-            } catch (IllegalAccessException e) {
+                return Optional.ofNullable(field.get().get(instance));
+            } catch (IllegalArgumentException | IllegalAccessException e) {
                 // Do nothing
             }
         }
-        return Options.newNone();
+        return Optional.empty();
     }
 
     /**
@@ -416,18 +372,16 @@ public final class ReflectionHelper {
      * @return class static value of the field or an empty option if the field
      *         does not exist.
      */
-    public static Option<Object> getFieldValueWithoutException(Class<? extends Object> klass, String fieldName) {
-        Option<Field> field = ReflectionHelper.setFieldVisibleWithoutException(klass, fieldName);
-        if (field.some()) {
+    public static Optional<Object> getFieldValueWithoutException(Class<? extends Object> klass, String fieldName) {
+        Optional<Field> field = ReflectionHelper.setFieldVisibleWithoutException(klass, fieldName);
+        if (field.isPresent()) {
             try {
-                return Options.newSome(field.get().get(null));
-            } catch (IllegalArgumentException e) {
-                // Do nothing
-            } catch (IllegalAccessException e) {
+                return Optional.ofNullable(field.get().get(null));
+            } catch (IllegalArgumentException | IllegalAccessException e) {
                 // Do nothing
             }
         }
-        return Options.newNone();
+        return Optional.empty();
     }
 
     /**
@@ -441,18 +395,16 @@ public final class ReflectionHelper {
      *            the class of the declared field
      * @return true if the field is set, false otherwise
      */
-    public static Option<Object> getFieldValueWithoutException(Object instance, String fieldName, Class<? extends Object> classToModify) {
-        Option<Field> field = ReflectionHelper.setFieldVisibleWithoutException(classToModify, fieldName);
-        if (field.some()) {
+    public static Optional<Object> getFieldValueWithoutException(Object instance, String fieldName, Class<? extends Object> classToModify) {
+        Optional<Field> field = ReflectionHelper.setFieldVisibleWithoutException(classToModify, fieldName);
+        if (field.isPresent()) {
             try {
-                return Options.newSome(field.get().get(instance));
-            } catch (IllegalArgumentException e) {
-                // Do nothing
-            } catch (IllegalAccessException e) {
+                return Optional.ofNullable(field.get().get(instance));
+            } catch (IllegalArgumentException | IllegalAccessException e) {
                 // Do nothing
             }
         }
-        return Options.newNone();
+        return Optional.empty();
     }
     
 
@@ -477,15 +429,7 @@ public final class ReflectionHelper {
         try {
             invokeMethod(object, aClass, methodName, parameterTypes, parameters, setVisible);
             return true;
-        } catch (SecurityException e) {
-            // Do nothing
-        } catch (IllegalArgumentException e) {
-            // Do nothing
-        } catch (NoSuchMethodException e) {
-            // Do nothing
-        } catch (IllegalAccessException e) {
-            // Do nothing
-        } catch (InvocationTargetException e) {
+        } catch (SecurityException | IllegalArgumentException | NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             // Do nothing
         }
         return false;

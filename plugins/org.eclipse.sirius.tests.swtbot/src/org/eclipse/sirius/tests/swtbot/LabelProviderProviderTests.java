@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.Platform;
@@ -31,7 +32,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.internal.sheet.SiriusSheetLabelProvider;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.tests.support.api.ImageEquality;
@@ -274,8 +274,8 @@ public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase 
         Object oldLabelProvider = null;
         if (Platform.getBundle("org.eclipse.emf.eef.runtime") != null) {
             IPage currentPage = ((org.eclipse.ui.views.properties.PropertySheet) propertiesView.getReference().getView(false)).getCurrentPage();
-            Option<Object> valueOption = ReflectionHelper.getFieldValueWithoutException(currentPage, "registry");
-            assertTrue(valueOption.get() instanceof TabbedPropertyRegistry);
+            Optional<Object> valueOption = ReflectionHelper.getFieldValueWithoutException(currentPage, "registry");
+            assertTrue(valueOption.isPresent() && valueOption.get() instanceof TabbedPropertyRegistry);
             TabbedPropertyRegistry tabbedPropertyRegistry = (TabbedPropertyRegistry) valueOption.get();
             String contributorId = (String) ReflectionHelper.getFieldValueWithoutException(tabbedPropertyRegistry, "contributorId").get();
             oldLabelProvider = ReflectionHelper.getFieldValueWithoutException(tabbedPropertyRegistry, "labelProvider").get();
@@ -294,8 +294,8 @@ public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase 
 
     private void checkPropertiesLabelProvider(SWTBotView propertiesView, Class<?> labelProviderType) {
         IPage currentPage = ((org.eclipse.ui.views.properties.PropertySheet) propertiesView.getReference().getView(false)).getCurrentPage();
-        Option<Object> valueOption = ReflectionHelper.getFieldValueWithoutException(currentPage, "registry");
-        assertTrue(valueOption.get() instanceof TabbedPropertyRegistry);
+        Optional<Object> valueOption = ReflectionHelper.getFieldValueWithoutException(currentPage, "registry");
+        assertTrue(valueOption.isPresent() && valueOption.get() instanceof TabbedPropertyRegistry);
         TabbedPropertyRegistry tabbedPropertyRegistry = (TabbedPropertyRegistry) valueOption.get();
         assertEquals("The properties view labelProvider is not of the expected type", labelProviderType, tabbedPropertyRegistry.getLabelProvider().getClass());
     }
@@ -303,8 +303,8 @@ public class LabelProviderProviderTests extends AbstractSiriusSwtBotGefTestCase 
     private void resetPropertyViewLabelProvider(SWTBotView propertiesView, Object oldLabelProvider) {
         if (oldLabelProvider != null) {
             IPage currentPage = ((org.eclipse.ui.views.properties.PropertySheet) propertiesView.getReference().getView(false)).getCurrentPage();
-            Option<Object> valueOption = ReflectionHelper.getFieldValueWithoutException(currentPage, "registry");
-            assertTrue(valueOption.get() instanceof TabbedPropertyRegistry);
+            Optional<Object> valueOption = ReflectionHelper.getFieldValueWithoutException(currentPage, "registry");
+            assertTrue(valueOption.isPresent() && valueOption.get() instanceof TabbedPropertyRegistry);
             TabbedPropertyRegistry tabbedPropertyRegistry = (TabbedPropertyRegistry) valueOption.get();
             ReflectionHelper.setFieldValueWithoutException(tabbedPropertyRegistry, "labelProvider", oldLabelProvider);
         }

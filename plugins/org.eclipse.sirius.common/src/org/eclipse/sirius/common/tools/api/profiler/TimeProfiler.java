@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007-2019 THALES GLOBAL SERVICES and others..
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.eclipse.sirius.ext.base.Option;
+import java.util.Optional;
 
 /**
  * The {@link TimeProfiler} is useful to gather time information while executing
@@ -117,8 +117,8 @@ public class TimeProfiler {
      */
     public void startWork(final String profilerTaskKey) {
         if (isActive) {
-            Option<ProfilerTask> option = TimeProfiler.PROFILER_TASK_REGISTRY.get(profilerTaskKey);
-            if (option.some()) {
+            Optional<ProfilerTask> option = TimeProfiler.PROFILER_TASK_REGISTRY.get(profilerTaskKey);
+            if (option.isPresent()) {
                 startWork(option.get());
             }
         }
@@ -150,8 +150,8 @@ public class TimeProfiler {
      */
     public void stopWork(final String profilerTaskKey) {
         if (isActive) {
-            Option<ProfilerTask> option = TimeProfiler.PROFILER_TASK_REGISTRY.get(profilerTaskKey);
-            if (option.some()) {
+            Optional<ProfilerTask> option = TimeProfiler.PROFILER_TASK_REGISTRY.get(profilerTaskKey);
+            if (option.isPresent()) {
                 stopWork(option.get());
             }
         }
@@ -211,8 +211,8 @@ public class TimeProfiler {
      * @return the number of consecutive calls
      */
     public int getCountTask(final String profilerTaskKey) {
-        Option<ProfilerTask> option = TimeProfiler.PROFILER_TASK_REGISTRY.get(profilerTaskKey);
-        if (option.some()) {
+        Optional<ProfilerTask> option = TimeProfiler.PROFILER_TASK_REGISTRY.get(profilerTaskKey);
+        if (option.isPresent()) {
             return getCountTask(option.get());
         }
         return 0;

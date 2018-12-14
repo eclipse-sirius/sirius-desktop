@@ -118,6 +118,56 @@
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+			<code>org.eclipse.sirius.common</code>
+		</h4>
+		<ul>
+			<li><span class="label label-info">Modified</span> In 
+				<code>org.eclipse.sirius.common.tools.api.interpreter.TypeName</code>, the methods 
+				<code>getJavaClass()</code> and 
+				<code>getPackagePrefix()</code> which used to return a 
+				<code>org.eclipse.sirius.ext.base.Option&lt;T&gt;</code> now return standard 
+				<code>java.util.Optional&lt;T&gt;</code> instead.
+			</li>
+			<li><span class="label label-info">Modified</span> In 
+				<code>org.eclipse.sirius.common.tools.api.profiler.ProfilerTaskRegistry</code>, the method 
+				<code>get(String)</code> which used to return a 
+				<code>org.eclipse.sirius.ext.base.Option&lt;T&gt;</code> now return standard 
+				<code>java.util.Optional&lt;T&gt;</code> instead.
+			</li>
+			<li><span class="label label-info">Modified</span> In 
+				<code>org.eclipse.sirius.common.tools.api.query.NotifierQuery</code>, the method 
+				<code>getAdapter(Class&lt;?&gt;)</code> which used to return a 
+				<code>org.eclipse.sirius.ext.base.Option&lt;T&gt;</code> now return standard 
+				<code>java.util.Optional&lt;T&gt;</code> instead.
+			</li>
+			<li><span class="label label-info">Modified</span> In 
+				<code>org.eclipse.sirius.common.tools.api.resource.ResourceSetSync</code>, the method 
+				<code>getResourceSetSync(TransactionalEditingDomain)</code> which used to return a 
+				<code>org.eclipse.sirius.ext.base.Option&lt;T&gt;</code> now return standard 
+				<code>java.util.Optional&lt;T&gt;</code> instead.
+			</li>
+			<li><span class="label label-info">Modified</span> In 
+				<code>org.eclipse.sirius.common.tools.api.util.MarkerUtil</code>, the method 
+				<code>addMarkerFor(IResource, String, int, String)</code> which used to return a 
+				<code>org.eclipse.sirius.ext.base.Option&lt;T&gt;</code> now return standard 
+				<code>java.util.Optional&lt;T&gt;</code> instead.
+			</li>
+			<li><span class="label label-info">Modified</span> In 
+				<code>org.eclipse.sirius.common.tools.api.util.ReflectionHelper</code>, all the following methods which used to return a 
+				<code>org.eclipse.sirius.ext.base.Option&lt;T&gt;</code> now return standard 
+				<code>java.util.Optional&lt;T&gt;</code> instead: 
+				<code>setConstructorVisibleWithoutException(Class&lt;? extends Object&gt;, Class&lt;?&gt;...)</code>
+			</li>
+		</ul>
+		<p>
+			<code>setFieldVisibleWithoutException(Class&lt;? extends Object&gt;, String)</code>, 
+			<code>getClassForNameWithoutException(String)</code>, 
+			<code>instantiateWithoutException(String, Class&lt;?&gt;[], Object[])</code>, 
+			<code>getFieldValueWithoutException(Object, String)</code>, 
+			<code>getFieldValueWithoutException(Class&lt;? extends Object&gt;, String)</code>, and 
+			<code>getFieldValueWithoutException(Object, String, Class&lt;? extends Object&gt;)</code>.
+		</p>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
@@ -366,7 +416,7 @@
 			<code>org.eclipse.sirius.ext.gmf.runtime</code>
 		</h4>
 		<ul>
-			<li>In 
+			<li><span class="label label-info">Modified</span> In 
 				<code>org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper</code>, all the methods which used to take or return an 
 				<code>org.eclipse.sirius.ext.base.Option&lt;T&gt;</code> not take or return a standard 
 				<code>java.util.Optional&lt;T&gt;</code> instead.
@@ -442,7 +492,7 @@
 				<code>org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor.isPrintable</code>. This attribute is used to know if the decoration should be hidden when printing or exporting the diagram. The behavior is applied only if there is no printable decoration in its diagram element location (South, West, South-West etc).
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in  
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -770,7 +820,7 @@
 				<code>org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures</code> package.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in  
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -899,7 +949,7 @@
 				<code>SemanticBasedDecoration</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common4">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -1338,7 +1388,7 @@
 				<code>DialectManagerImpl</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common5">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>

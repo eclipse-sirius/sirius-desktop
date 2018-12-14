@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015-2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,14 +15,13 @@ package org.eclipse.sirius.common.tools.api.interpreter;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.Optional;
 
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.internal.accessor.ecore.EMFUtil;
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 
 /**
  * A class representing a type name.
@@ -94,8 +93,8 @@ public final class TypeName {
      *         the given separator.
      */
     public String getCompleteName(String separator) {
-        Option<String> packagePrefix = getPackagePrefix();
-        if (packagePrefix.some()) {
+        Optional<String> packagePrefix = getPackagePrefix();
+        if (packagePrefix.isPresent()) {
             return packagePrefix.get() + separator + getClassifierName();
         } else {
             return getClassifierName();
@@ -203,8 +202,8 @@ public final class TypeName {
      * 
      * @return the Java class associated to this type if there is one.
      */
-    public Option<Class<?>> getJavaClass() {
-        return Options.<Class<?>> fromNullable(this.javaType);
+    public Optional<Class<?>> getJavaClass() {
+        return Optional.ofNullable(this.javaType);
     }
 
     /**
@@ -228,12 +227,12 @@ public final class TypeName {
      * 
      * @return the type name package prefix if it was specified.
      */
-    public Option<String> getPackagePrefix() {
+    public Optional<String> getPackagePrefix() {
         int indexOfSeparator = typeName.indexOf(SEPARATOR);
         if (indexOfSeparator != -1) {
-            return Options.newSome(typeName.substring(0, indexOfSeparator));
+            return Optional.of(typeName.substring(0, indexOfSeparator));
         } else {
-            return Options.newNone();
+            return Optional.empty();
         }
     }
 }

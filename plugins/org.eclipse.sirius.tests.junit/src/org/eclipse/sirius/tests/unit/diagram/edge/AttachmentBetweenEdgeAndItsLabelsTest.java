@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016-2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.edge;
+
+import java.util.Optional;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.IFigure;
@@ -25,7 +27,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabelWithAttachment;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -183,8 +184,8 @@ public class AttachmentBetweenEdgeAndItsLabelsTest extends SiriusDiagramTestCase
         IFigure figure = labelEditPart.getFigure();
         assertTrue("The " + qualifiedName + " label should be a SiriusWrapLabelWithAttachment.", figure instanceof SiriusWrapLabelWithAttachment);
         // Get the attachment polyline through reflection
-        Option<Object> attachmentObject = ReflectionHelper.getFieldValueWithoutException(figure, "attachment");
-        assertTrue("Not possible to retreive attachment polyline of SiriusWrapLabelWithAttachment.", attachmentObject.some());
+        Optional<Object> attachmentObject = ReflectionHelper.getFieldValueWithoutException(figure, "attachment");
+        assertTrue("Not possible to retreive attachment polyline of SiriusWrapLabelWithAttachment.", attachmentObject.isPresent());
         return ((Polyline) attachmentObject.get()).isVisible();
     }
 }

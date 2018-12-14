@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ package org.eclipse.sirius.ui.tools.internal.views.common.modelingproject;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.MessageFormat;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.core.resources.IMarker;
@@ -240,8 +241,8 @@ public class OpenRepresentationsFileJob extends AbstractRepresentationsFileJob {
                 message = MessageFormat.format(Messages.OpenRepresentationsFileJob_loadingProblem_representationFile, representationsFileURI.toPlatformString(true), errorDetail);
             }
 
-            Option<IMarker> optionalMarker = MarkerUtil.addMarkerFor(project, message, IMarker.SEVERITY_ERROR, ModelingMarker.MARKER_TYPE);
-            if (optionalMarker.some() && exception instanceof Diagnostic) {
+            Optional<IMarker> optionalMarker = MarkerUtil.addMarkerFor(project, message, IMarker.SEVERITY_ERROR, ModelingMarker.MARKER_TYPE);
+            if (optionalMarker.isPresent() && exception instanceof Diagnostic) {
                 MarkerUtil.setAttribute(optionalMarker.get(), IMarker.LOCATION, ((Diagnostic) exception).getLocation());
             }
             // Set this project in invalid state

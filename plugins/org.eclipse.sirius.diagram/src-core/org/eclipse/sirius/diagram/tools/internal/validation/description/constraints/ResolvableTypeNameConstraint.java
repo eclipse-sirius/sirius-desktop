@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 Obeo
+ * Copyright (c) 2017-2019 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -70,7 +70,7 @@ public class ResolvableTypeNameConstraint extends AbstractConstraint {
              * the domain class does exist, let's make sure we can resolve it.
              * As we use AQL to validate that we need a qualified type.
              */
-            if (className.getPackagePrefix().some()) { // $NON-NLS-1$
+            if (className.getPackagePrefix().isPresent()) { // $NON-NLS-1$
                 IInterpreterContext context = SiriusInterpreterContextFactory.createInterpreterContext(eObj, domainClassFeature);
                 context.getVariables().put("toCheck", VariableType.ANY_EOBJECT); //$NON-NLS-1$
                 Iterator<IInterpreterStatus> errors = MultiLanguagesValidator.getInstance().validateExpression(context, "aql:toCheck.oclIsKindOf(" + className.getCompleteName("::") + ")") //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$

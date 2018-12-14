@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2008, 2015 IBM Corporation and others.
+ * Copyright (c) 2008-2019 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import java.awt.print.PrinterException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 
 import javax.print.DocFlavor;
 import javax.print.PrintService;
@@ -55,7 +56,6 @@ import org.eclipse.gmf.runtime.draw2d.ui.text.TextUtilitiesEx;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.swt.graphics.Font;
 import org.eclipse.swt.graphics.GC;
 import org.eclipse.swt.graphics.Image;
@@ -210,8 +210,8 @@ public class SiriusJPSRenderedDiagramPrinter extends JPSDiagramPrinter {
      *                thrown when the print job is terminated.
      */
     public int printPreviousLuna(Graphics printGraphics, PageFormat pageFormat, int pageIndex) throws PrinterException {
-        Option<Object> optionPages = ReflectionHelper.getFieldValueWithoutException(this, "pages"); //$NON-NLS-1$
-        if (!optionPages.some() || pageIndex >= ((PageData[]) optionPages.get()).length) {
+        Optional<Object> optionPages = ReflectionHelper.getFieldValueWithoutException(this, "pages"); //$NON-NLS-1$
+        if (!optionPages.isPresent() || pageIndex >= ((PageData[]) optionPages.get()).length) {
             return java.awt.print.Printable.NO_SUCH_PAGE;
         }
 
@@ -310,10 +310,10 @@ public class SiriusJPSRenderedDiagramPrinter extends JPSDiagramPrinter {
          */
         @Override
         public void drawString(String s, int x, int y) {
-            Option<Object> optionalTransX = ReflectionHelper.getFieldValueWithoutException(this, "transX"); //$NON-NLS-1$
-            Option<Object> optionalTransY = ReflectionHelper.getFieldValueWithoutException(this, "transY"); //$NON-NLS-1$
+            Optional<Object> optionalTransX = ReflectionHelper.getFieldValueWithoutException(this, "transX"); //$NON-NLS-1$
+            Optional<Object> optionalTransY = ReflectionHelper.getFieldValueWithoutException(this, "transY"); //$NON-NLS-1$
 
-            if (s == null || s.length() == 0 || !optionalTransX.some() || !optionalTransY.some())
+            if (s == null || s.length() == 0 || !optionalTransX.isPresent() || !optionalTransY.isPresent())
                 return;
 
             java.awt.FontMetrics metrics = getGraphics2D().getFontMetrics();

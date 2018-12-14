@@ -16,6 +16,16 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
+h4. Changes in @org.eclipse.sirius.common@
+
+* <span class="label label-info">Modified</span> In @org.eclipse.sirius.common.tools.api.interpreter.TypeName@, the methods @getJavaClass()@ and @getPackagePrefix()@ which used to return a @org.eclipse.sirius.ext.base.Option<T>@ now return standard @java.util.Optional<T>@ instead.
+* <span class="label label-info">Modified</span> In @org.eclipse.sirius.common.tools.api.profiler.ProfilerTaskRegistry@, the method @get(String)@ which used to return a @org.eclipse.sirius.ext.base.Option<T>@ now return standard @java.util.Optional<T>@ instead.
+* <span class="label label-info">Modified</span> In @org.eclipse.sirius.common.tools.api.query.NotifierQuery@, the method @getAdapter(Class<?>)@ which used to return a @org.eclipse.sirius.ext.base.Option<T>@ now return standard @java.util.Optional<T>@ instead.
+* <span class="label label-info">Modified</span> In @org.eclipse.sirius.common.tools.api.resource.ResourceSetSync@, the method @getResourceSetSync(TransactionalEditingDomain)@ which used to return a @org.eclipse.sirius.ext.base.Option<T>@ now return standard @java.util.Optional<T>@ instead.
+* <span class="label label-info">Modified</span> In @org.eclipse.sirius.common.tools.api.util.MarkerUtil@, the method @addMarkerFor(IResource, String, int, String)@ which used to return a @org.eclipse.sirius.ext.base.Option<T>@ now return standard @java.util.Optional<T>@ instead.
+* <span class="label label-info">Modified</span> In @org.eclipse.sirius.common.tools.api.util.ReflectionHelper@, all the following methods which used to return a @org.eclipse.sirius.ext.base.Option<T>@ now return standard @java.util.Optional<T>@ instead: @setConstructorVisibleWithoutException(Class<? extends Object>, Class<?>...)@
+@setFieldVisibleWithoutException(Class<? extends Object>, String)@, @getClassForNameWithoutException(String)@, @instantiateWithoutException(String, Class<?>[], Object[])@, @getFieldValueWithoutException(Object, String)@, @getFieldValueWithoutException(Class<? extends Object>, String)@, and @getFieldValueWithoutException(Object, String, Class<? extends Object>)@.
+
 h4. Changes in @org.eclipse.sirius@
 
 * <span class="label label-danger">Removed</span> The @org.eclipse.sirius.business.api.helper.task.NotificationTask@ class has been removed. It was not used anywhere.
@@ -89,7 +99,7 @@ h4. Changes in @org.eclipse.sirius.ecore.extender@
 
 h4. Changes in @org.eclipse.sirius.ext.gmf.runtime@
 
-* In @org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper@, all the methods which used to take or return an @org.eclipse.sirius.ext.base.Option<T>@ not take or return a standard @java.util.Optional<T>@ instead.
+* <span class="label label-info">Modified</span> In @org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper@, all the methods which used to take or return an @org.eclipse.sirius.ext.base.Option<T>@ not take or return a standard @java.util.Optional<T>@ instead.
 
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 

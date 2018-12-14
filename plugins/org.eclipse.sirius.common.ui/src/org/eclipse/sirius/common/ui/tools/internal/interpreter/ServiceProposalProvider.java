@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013-2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.resource.Resource;
@@ -36,7 +37,6 @@ import org.eclipse.sirius.common.tools.internal.interpreter.IService;
 import org.eclipse.sirius.common.tools.internal.interpreter.ServiceInterpreter;
 import org.eclipse.sirius.common.tools.internal.interpreter.VariableInterpreter;
 import org.eclipse.sirius.common.ui.Messages;
-import org.eclipse.sirius.ext.base.Option;
 
 /**
  * A {@link IProposalProvider} to provide completion for the service
@@ -125,8 +125,8 @@ public class ServiceProposalProvider implements IProposalProvider {
             serviceNamePrefix = serviceNamePrefix.substring(ServiceInterpreter.PREFIX.length());
 
             // Remove the receiver name (and the receiver separator) if any
-            Option<String> receiverVariableName = ServiceInterpreter.getReceiverVariableName(serviceNamePrefix);
-            if (receiverVariableName.some()) {
+            Optional<String> receiverVariableName = ServiceInterpreter.getReceiverVariableName(serviceNamePrefix);
+            if (receiverVariableName.isPresent()) {
                 serviceNamePrefix = serviceNamePrefix.substring(receiverVariableName.get().length() + 1);
             }
 
@@ -160,8 +160,8 @@ public class ServiceProposalProvider implements IProposalProvider {
             throw new IllegalArgumentException(Messages.ServiceProposalProvider_invalidContext);
         }
         List<ContentProposal> proposals = new ArrayList<ContentProposal>();
-        Option<String> receiverVariableName = ServiceInterpreter.getReceiverVariableName(writtenExpression);
-        if (!receiverVariableName.some()) {
+        Optional<String> receiverVariableName = ServiceInterpreter.getReceiverVariableName(writtenExpression);
+        if (!receiverVariableName.isPresent()) {
             // If there is no "." in the expression, we also add all
             // available variables by using the VariableProposalProvider
             VariableInterpreter variableInterpreter = (VariableInterpreter) CompoundInterpreter.INSTANCE.getInterpreterForExpression(VariableInterpreter.PREFIX);

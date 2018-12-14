@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Collections;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -164,17 +165,11 @@ public class SetVersionTest extends SiriusTestCase {
 
     private SessionFactoryImpl createSessionFactoryImpl() {
         SessionFactoryImpl sessionFactoryImpl = null;
-        Option<Constructor> osConstructor = ReflectionHelper.setConstructorVisibleWithoutException(SessionFactoryImpl.class, new Class[0]);
-        if (osConstructor.some()) {
+        Optional<Constructor> osConstructor = ReflectionHelper.setConstructorVisibleWithoutException(SessionFactoryImpl.class, new Class[0]);
+        if (osConstructor.isPresent()) {
             try {
                 sessionFactoryImpl = (SessionFactoryImpl) osConstructor.get().newInstance(new Object[0]);
-            } catch (IllegalArgumentException e) {
-                // Do nothing
-            } catch (InstantiationException e) {
-                // Do nothing
-            } catch (IllegalAccessException e) {
-                // Do nothing
-            } catch (InvocationTargetException e) {
+            } catch (IllegalArgumentException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
                 // Do nothing
             }
         }

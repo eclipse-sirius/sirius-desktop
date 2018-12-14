@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 OBEO.
+ * Copyright (c) 2017-2019 OBEO.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -118,7 +118,7 @@ public class ValidFeatureNameConstraint extends AbstractConstraint {
                 Object value = target.eGet(feat);
                 if (value instanceof String) {
                     TypeName className = TypeName.fromString((String) value);
-                    if (className.getPackagePrefix().some()) {
+                    if (className.getPackagePrefix().isPresent()) {
                         String expression = (String) target.eGet(feature);
                         context.getVariables().put("toCheck", variableType); //$NON-NLS-1$
                         Iterator<IInterpreterStatus> errors = MultiLanguagesValidator.getInstance().validateExpression(context, "aql:toCheck.oclIsKindOf(" + className.getCompleteName("::") + ")") //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$

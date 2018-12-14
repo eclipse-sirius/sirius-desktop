@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.unit.api.tools;
 
 import java.util.Collections;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
@@ -28,7 +29,6 @@ import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.api.session.danalysis.SimpleAnalysisSelector;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
@@ -93,8 +93,8 @@ public class SiriusControlAndCrossReferenceTest extends SiriusDiagramTestCase {
 
         // Check cross referencer installation on the new aird.
         ECrossReferenceAdapter semanticCrossReferencer = session.getSemanticCrossReferencer();
-        Option<Object> internalXReferencer = ReflectionHelper.getFieldValueWithoutException(semanticCrossReferencer, "adapter");
-        if (internalXReferencer.some()) {
+        Optional<Object> internalXReferencer = ReflectionHelper.getFieldValueWithoutException(semanticCrossReferencer, "adapter");
+        if (internalXReferencer.isPresent()) {
             // The lazy cross referencer has an internal cross referencer
             assertTrue("The semantic internal cross referencer should stay installed on the controlled package", packageToControl.eAdapters().contains(internalXReferencer.get()));
         } else {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 Obeo
+ * Copyright (c) 2017-2019 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,32 +25,25 @@ import com.google.common.collect.Iterables;
 
 /**
  * Validate that a TypeName has a package prefix.
- * 
- * 
  */
 public class QualifiedTypeNameConstraint extends AbstractConstraint {
 
-    /**
-     * {@inheritDoc}
-     * 
-     */
     @Override
-    public IStatus validate(final IValidationContext ctx) {
-        final EObject eObj = ctx.getTarget();
-        final EMFEventType eventType = ctx.getEventType();
+    public IStatus validate(IValidationContext ctx) {
+        EObject eObj = ctx.getTarget();
+        EMFEventType eventType = ctx.getEventType();
         // In the case of batch mode.
         if (eventType == EMFEventType.NULL && eObj != null) {
             for (EAttribute feat : Iterables.filter(eObj.eClass().getEAllStructuralFeatures(), EAttribute.class)) {
                 if (DescriptionPackage.Literals.TYPE_NAME == feat.getEType()) {
-                    final Object value = eObj.eGet(feat);
+                    Object value = eObj.eGet(feat);
                     if (value instanceof String) {
-                        final TypeName className = TypeName.fromString((String) value);
-                        if (!className.getPackagePrefix().some()) { // $NON-NLS-1$
+                        TypeName className = TypeName.fromString((String) value);
+                        if (!className.getPackagePrefix().isPresent()) {
                             return ctx.createFailureStatus(new Object[] { value, feat.getName() });
                         }
                     }
                 }
-
             }
         }
         return ctx.createSuccessStatus();

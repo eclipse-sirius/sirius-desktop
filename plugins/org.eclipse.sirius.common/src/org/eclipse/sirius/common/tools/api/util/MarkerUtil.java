@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012-2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,12 +12,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.util;
 
+import java.util.Optional;
+
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 
 /**
  * This class provides utility methods that aid in the creation of
@@ -51,18 +51,18 @@ public final class MarkerUtil {
      *            the type of the marker to create
      * @return an optional Marker (none if problem during creation).
      */
-    public static Option<IMarker> addMarkerFor(final IResource resource, final String message, final int severity, String type) {
+    public static Optional<IMarker> addMarkerFor(final IResource resource, final String message, final int severity, String type) {
         try {
             if (resource != null) {
                 final IMarker marker = resource.createMarker(type);
                 marker.setAttribute(IMarker.SEVERITY, severity);
                 marker.setAttribute(IMarker.MESSAGE, message);
-                return Options.newSome(marker);
+                return Optional.of(marker);
             }
         } catch (final CoreException e) {
             DslCommonPlugin.getDefault().getLog().log(e.getStatus());
         }
-        return Options.newNone();
+        return Optional.empty();
     }
 
     /**
