@@ -142,6 +142,12 @@
 				<code>org.eclipse.sirius.diagram.Messages.SynchronizeGMFModelCommand_label</code> has been added. It replaces 
 				<code>org.eclipse.sirius.diagram.ui.provider.Messages.SynchronizeGMFModelCommand_label</code>.
 			</li>
+			<li><span class="label label-success">Added</span> In 
+				<code>org.eclipse.sirius.diagram.business.api.query.DragAndDropTargetQuery</code>, a new method 
+				<code>getLogicalChildren()</code> has been added. It makes it easy to iterate over the logical structure of diagram elements. A static factory method 
+				<code>on()</code> was also added to provide a more fluent API, e.g. 
+				<code>DragAndDropTargetQuery.on(container).getLogicalChildren()</code>.
+			</li>
 			<li><span class="label label-info">Added</span> The extension point org.eclipse.sirius.diagram.customBundledImageShape has been created in order to provide custom shape to the bundled image style. This extension point offers more flexibility on the specification of the svg tags and attributes holding the color, border color and border size information than the extension point org.eclipse.sirius.diagram.bundledImageShape.</li>
 			<li><span class="label label-info">Modified</span> The extension point org.eclipse.sirius.diagram.bundledImageShape has been marked as deprecated. Shapes provided by this extension point still work.</li>
 			<li><span class="label label-info">Modified</span> The method 
