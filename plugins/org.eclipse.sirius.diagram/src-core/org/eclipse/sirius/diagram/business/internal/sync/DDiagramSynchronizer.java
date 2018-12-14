@@ -74,6 +74,7 @@ import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.api.refresh.RefreshExtensionService;
 import org.eclipse.sirius.diagram.business.internal.helper.decoration.DecorationHelperInternal;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.EdgeMappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
@@ -428,7 +429,12 @@ public class DDiagramSynchronizer {
             Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration, Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration,
             final IProgressMonitor monitor) {
 
-        final IsMappingOfCurrentDiagramDescription isMappingOfCurrentDiagramDescription = new IsMappingOfCurrentDiagramDescription(description);
+        // @formatter:off
+        Predicate<DiagramElementMapping> isMappingOfCurrentDiagramDescription = diagramElementMapping ->
+                description.getAllEdgeMappings().contains(diagramElementMapping) ||
+                ContentHelper.getAllNodeMappings(description, false).contains(diagramElementMapping) ||
+                ContentHelper.getAllContainerMappings(description, false).contains(diagramElementMapping);
+        // @formatter:on
 
         Predicate<EdgeMapping> edgeMappingWithoutEdgeAsSourceOrTarget = new Predicate<EdgeMapping>() {
             @Override
