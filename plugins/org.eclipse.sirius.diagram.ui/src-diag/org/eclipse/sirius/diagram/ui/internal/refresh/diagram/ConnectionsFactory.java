@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011-2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -267,10 +268,10 @@ public class ConnectionsFactory {
                     SlidableAnchor targetAnchor = new SlidableAnchor(target, targetRelativeReference);
                     targetRefPoint = targetAnchor.getLocation(targetAnchor.getReferencePoint());
 
-                    Option<Point> srcConnectionBendpoint = GraphicalHelper.getIntersection(sourceRefPoint, targetRefPoint, optionalSourceBounds.get(), true);
-                    Option<Point> tgtConnectionBendpoint = GraphicalHelper.getIntersection(sourceRefPoint, targetRefPoint, optionaltargetBounds.get(), false);
+                    Optional<Point> srcConnectionBendpoint = GraphicalHelper.getIntersection(sourceRefPoint, targetRefPoint, optionalSourceBounds.get(), true);
+                    Optional<Point> tgtConnectionBendpoint = GraphicalHelper.getIntersection(sourceRefPoint, targetRefPoint, optionaltargetBounds.get(), false);
 
-                    if (srcConnectionBendpoint.some() && tgtConnectionBendpoint.some()) {
+                    if (srcConnectionBendpoint.isPresent() && tgtConnectionBendpoint.isPresent()) {
                         pointList.addPoint(srcConnectionBendpoint.get());
                         pointList.addPoint(tgtConnectionBendpoint.get());
                         EdgeQuery edgeQuery = new EdgeQuery(edge);
@@ -330,11 +331,11 @@ public class ConnectionsFactory {
 
                 // Compute connection bendpoints
                 Rectangle optionalSourceBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(srceEditPart);
-                Option<Point> srcConnectionBendpoint = GraphicalHelper.getIntersection(sourceRefPoint, targetRefPoint, optionalSourceBounds, true);
+                Optional<Point> srcConnectionBendpoint = GraphicalHelper.getIntersection(sourceRefPoint, targetRefPoint, optionalSourceBounds, true);
                 Rectangle optionaltargetBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(tgtEditPart);
-                Option<Point> tgtConnectionBendpoint = GraphicalHelper.getIntersection(sourceRefPoint, targetRefPoint, optionaltargetBounds, false);
+                Optional<Point> tgtConnectionBendpoint = GraphicalHelper.getIntersection(sourceRefPoint, targetRefPoint, optionaltargetBounds, false);
 
-                if (srcConnectionBendpoint.some() && tgtConnectionBendpoint.some()) {
+                if (srcConnectionBendpoint.isPresent() && tgtConnectionBendpoint.isPresent()) {
                     EdgeQuery edgeQuery = new EdgeQuery(edge);
                     Routing routingStyle = edgeQuery.getRoutingStyle();
                     // Compute anchor logical coordinates

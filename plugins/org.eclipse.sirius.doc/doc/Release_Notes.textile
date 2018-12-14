@@ -87,6 +87,10 @@ h4. Changes in @org.eclipse.sirius.ecore.extender@
 
 * <span class="label label-info">Modified</span> In @org.eclipse.sirius.ecore.extender.business.internal.accessor.ModelAccessorAdapter@, the methods @getAdapter(ResourceSet resourceSet)@ and @removeAdapter(ResourceSet resourceSet)@ now return @java.util.Optional<T>@ instead of instance of Sirius's custom @org.eclipse.sirius.ext.base.Option<T>@.
 
+h4. Changes in @org.eclipse.sirius.ext.gmf.runtime@
+
+* In @org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper@, all the methods which used to take or return an @org.eclipse.sirius.ext.base.Option<T>@ not take or return a standard @java.util.Optional<T>@ instead.
+
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * <span class="label label-success">Added</span> The methods @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragWithKeys(int, int, int, int, AtomicBoolean, int...)@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer.dragWithKeys(int, int, int, int, AtomicBoolean, int...)@ and @org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas.mouseDragWithKeys(int, int, int, int, AtomicBoolean, int...)@ have been added and allows to do a drag and drop with any key modifier you want.

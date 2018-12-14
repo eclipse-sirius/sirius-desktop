@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008-2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionAnchor;
@@ -986,8 +987,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         PrecisionPoint expectedLineTerminus = getProportionalPoint(figureBounds, expectedAnchor);
         connection.translateToRelative(expectedLineTerminus);
 
-        Option<Point> option = GraphicalHelper.getIntersection(lineOrigin, expectedLineTerminus, (IGraphicalEditPart) targetSwtBotGefEditPart.part(), false);
-        if (option.some()) {
+        Optional<Point> option = GraphicalHelper.getIntersection(lineOrigin, expectedLineTerminus, (IGraphicalEditPart) targetSwtBotGefEditPart.part(), false);
+        if (option.isPresent()) {
             assertConnectionEndPointEquals("Wrong edge target connection", option.get(), realTargetConnection);
         }
         if (checkGMFPoint) {
@@ -1027,8 +1028,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         
         PrecisionPoint expectedLineTerminus = getProportionalPoint(figureBounds, expectedAnchor);
 
-        Option<Point> option = GraphicalHelper.getIntersection(lineOrigin, expectedLineTerminus, (IGraphicalEditPart) sourceEditPart, false);
-        if (option.some()) {
+        Optional<Point> option = GraphicalHelper.getIntersection(lineOrigin, expectedLineTerminus, (IGraphicalEditPart) sourceEditPart, false);
+        if (option.isPresent()) {
             assertConnectionEndPointEquals("Wrong edge source connection", option.get(), realSourceConnection);
         }
         if (checkGMFPoint) {

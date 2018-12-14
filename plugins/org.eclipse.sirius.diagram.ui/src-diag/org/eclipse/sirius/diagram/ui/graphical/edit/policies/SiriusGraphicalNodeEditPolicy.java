@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007-2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.Connection;
@@ -851,12 +852,12 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
 
         // Compute intersection between the line (source location<-->target
         // location) and the source node
-        Option<Point> intersectionSourcePoint = GraphicalHelper.getIntersection(absoluteSourceLocationIn100Percent, absoluteTargetLocationIn100Percent, srcEditPart, false, true);
+        Optional<Point> intersectionSourcePoint = GraphicalHelper.getIntersection(absoluteSourceLocationIn100Percent, absoluteTargetLocationIn100Percent, srcEditPart, false, true);
         // Compute intersection between the line (source location<-->target
         // location) and the target node
-        Option<Point> intersectionTargetPoint = GraphicalHelper.getIntersection(absoluteSourceLocationIn100Percent, absoluteTargetLocationIn100Percent, tgtEditPart, true, true);
+        Optional<Point> intersectionTargetPoint = GraphicalHelper.getIntersection(absoluteSourceLocationIn100Percent, absoluteTargetLocationIn100Percent, tgtEditPart, true, true);
         // Compute the snap source location and the snap target location
-        if (intersectionSourcePoint.some() && intersectionTargetPoint.some()) {
+        if (intersectionSourcePoint.isPresent() && intersectionTargetPoint.isPresent()) {
             PointList sourceSnappedPoints = snapLocationToGridAndToParentBorder(absoluteSourceLocationIn100Percent, absoluteSourceBoundsIn100Percent, intersectionSourcePoint.get());
             PointList targetSnappedPoints = snapLocationToGridAndToParentBorder(absoluteTargetLocationIn100Percent, absoluteTargetBoundsIn100Percent, intersectionTargetPoint.get());
             EdgeLayoutData edgeLayoutData = createEdgeLayoutData(srcEditPart, tgtEditPart, absoluteSourceBoundsIn100Percent, absoluteTargetBoundsIn100Percent, sourceSnappedPoints.getFirstPoint(),

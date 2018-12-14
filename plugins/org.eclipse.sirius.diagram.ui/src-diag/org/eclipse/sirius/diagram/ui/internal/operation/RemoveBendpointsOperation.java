@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014-2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.ui.internal.operation;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.IFigure;
@@ -39,7 +40,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPa
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.locator.EdgeLabelQuery;
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.RectilinearEdgeUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
@@ -120,8 +120,8 @@ public class RemoveBendpointsOperation extends AbstractModelChangeOperation<Void
             // we compute the new bendpoints by computing the intersection
             // points between the source and the target anchors.
             if (srcAbsoluteBounds != null && tgtAbsoluteBounds != null) {
-                Option<Point> srcConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, srcAbsoluteBounds, true);
-                Option<Point> tgtConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, tgtAbsoluteBounds, false);
+                Optional<Point> srcConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, srcAbsoluteBounds, true);
+                Optional<Point> tgtConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, tgtAbsoluteBounds, false);
 
                 Point srcPoint = srcConnectionBendpoint.get();
                 Point tgtPoint = tgtConnectionBendpoint.get();
@@ -135,7 +135,7 @@ public class RemoveBendpointsOperation extends AbstractModelChangeOperation<Void
                     pointList.addPoint(srcPoint);
                     pointList.addPoint(tgtPoint);
                 }
-                if (srcConnectionBendpoint.some() && tgtConnectionBendpoint.some() && originalNbPoint > pointList.size()) {
+                if (srcConnectionBendpoint.isPresent() && tgtConnectionBendpoint.isPresent() && originalNbPoint > pointList.size()) {
                     if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
                         // Set GMF Anchor on figure center
                         IdentityAnchor srcAnchor = NotationFactory.eINSTANCE.createIdentityAnchor();

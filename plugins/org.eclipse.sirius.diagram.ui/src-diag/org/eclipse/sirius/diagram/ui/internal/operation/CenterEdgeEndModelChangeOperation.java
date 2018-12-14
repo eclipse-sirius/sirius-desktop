@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014-2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ package org.eclipse.sirius.diagram.ui.internal.operation;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionLayer;
@@ -312,8 +313,8 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
         else if (existingPointList.size() < 2) {
             existingPointList = new PointList(new int[] { 0, 0, 0, 0 });
         }
-        Option<Point> sourceConnectionPoint = Options.newNone();
-        Option<Point> targetConnectionPoint = Options.newNone();
+        Optional<Point> sourceConnectionPoint = Optional.empty();
+        Optional<Point> targetConnectionPoint = Optional.empty();
 
         if (center == CenteringStyle.BOTH || center == CenteringStyle.SOURCE) {
             sourceConnectionPoint = GraphicalHelper.getIntersection(sourceLineOrigin, sourceLineTerminus, sourceBounds, false);
@@ -322,14 +323,14 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
             targetConnectionPoint = GraphicalHelper.getIntersection(targetLineOrigin, targetLineTerminus, targetBounds, false);
         }
 
-        if (sourceConnectionPoint.some() || targetConnectionPoint.some()) {
+        if (sourceConnectionPoint.isPresent() || targetConnectionPoint.isPresent()) {
 
-            if (sourceConnectionPoint.some()) {
+            if (sourceConnectionPoint.isPresent()) {
                 existingPointList.setPoint(sourceConnectionPoint.get(), 0);
                 centerSourceAnchor();
             }
 
-            if (targetConnectionPoint.some()) {
+            if (targetConnectionPoint.isPresent()) {
                 existingPointList.setPoint(targetConnectionPoint.get(), existingPointList.size() - 1);
                 centerTargetAnchor();
             }
@@ -391,9 +392,9 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
     }
 
     private void computePointListByIntersections(PointList rectilinear, Rectangle sourceBounds, Rectangle targetBounds) {
-        Option<Point> sourceConnectionPoint = GraphicalHelper.getIntersection(existingSourceAnchorAbsoluteLocation, existingTargetAnchorAbsoluteLocation, sourceBounds, false);
-        Option<Point> targetConnectionPoint = GraphicalHelper.getIntersection(existingSourceAnchorAbsoluteLocation, existingTargetAnchorAbsoluteLocation, targetBounds, false);
-        if (sourceConnectionPoint.some() && targetConnectionPoint.some()) {
+        Optional<Point> sourceConnectionPoint = GraphicalHelper.getIntersection(existingSourceAnchorAbsoluteLocation, existingTargetAnchorAbsoluteLocation, sourceBounds, false);
+        Optional<Point> targetConnectionPoint = GraphicalHelper.getIntersection(existingSourceAnchorAbsoluteLocation, existingTargetAnchorAbsoluteLocation, targetBounds, false);
+        if (sourceConnectionPoint.isPresent() && targetConnectionPoint.isPresent()) {
             rectilinear.removeAllPoints();
             rectilinear.addPoint(sourceConnectionPoint.get());
             rectilinear.addPoint(targetConnectionPoint.get());

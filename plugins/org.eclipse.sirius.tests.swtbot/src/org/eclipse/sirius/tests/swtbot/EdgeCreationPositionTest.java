@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2019 THALES GLOBAL SERVICES and others..
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.draw2d.Bendpoint;
 import org.eclipse.draw2d.Connection;
@@ -394,13 +395,13 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
         anchorsLine.addPoint(sourcePoint);
         anchorsLine.addPoint(targetPoint);
 
-        Option<Point> sourceIntersection = GraphicalHelper.getIntersection(sourcePoint, targetPoint, source, false);
+        Optional<Point> sourceIntersection = GraphicalHelper.getIntersection(sourcePoint, targetPoint, source, false);
         assertTrue("Intersection should exist between source and edge : " + GraphicalHelper.getAbsoluteBoundsIn100Percent(source) + " and " + sourcePoint + "-->" + targetPoint,
-                sourceIntersection.some());
+                sourceIntersection.isPresent());
 
-        Option<Point> targetIntersection = GraphicalHelper.getIntersection(sourcePoint, targetPoint, target, true);
+        Optional<Point> targetIntersection = GraphicalHelper.getIntersection(sourcePoint, targetPoint, target, true);
         assertTrue("Intersection should exist between target and edge : " + GraphicalHelper.getAbsoluteBoundsIn100Percent(target) + " and " + sourcePoint + "-->" + targetPoint,
-                targetIntersection.some());
+                targetIntersection.isPresent());
 
         // GMF bendpoints
         @SuppressWarnings("unchecked")
