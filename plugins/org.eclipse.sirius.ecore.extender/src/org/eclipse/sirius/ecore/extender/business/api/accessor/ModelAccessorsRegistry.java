@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007-2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.ecore.extender.business.internal.Messages;
 import org.eclipse.sirius.ecore.extender.business.internal.accessor.ModelAccessorAdapter;
-import org.eclipse.sirius.ext.base.Option;
+import java.util.Optional;
 
 /**
  * Registry keeping track of the model accessors.
@@ -93,8 +93,8 @@ public class ModelAccessorsRegistry {
      * @return the model accessor corresponding the the given model.
      */
     public ModelAccessor getModelAccessor(final ResourceSet resourceSet) {
-        Option<ModelAccessorAdapter> modelAccessorAdapter = ModelAccessorAdapter.getAdapter(resourceSet);
-        if (modelAccessorAdapter.some()) {
+        Optional<ModelAccessorAdapter> modelAccessorAdapter = ModelAccessorAdapter.getAdapter(resourceSet);
+        if (modelAccessorAdapter.isPresent()) {
             return modelAccessorAdapter.get().getModelAccessor();
         } else {
             final ModelAccessor newPack = ExtenderService.createModelAccessor(resourceSet);
@@ -118,8 +118,8 @@ public class ModelAccessorsRegistry {
     public void disposeModelAccessor(final EObject modelElement, final String airDescriptionExtension) {
         Resource modelElementResource = modelElement.eResource();
         if (modelElementResource != null && modelElementResource.getResourceSet() != null) {
-            Option<ModelAccessor> optionalModelAccesor = ModelAccessorAdapter.removeAdapter(modelElementResource.getResourceSet());
-            if (optionalModelAccesor.some()) {
+            Optional<ModelAccessor> optionalModelAccesor = ModelAccessorAdapter.removeAdapter(modelElementResource.getResourceSet());
+            if (optionalModelAccesor.isPresent()) {
                 if (optionalModelAccesor.get().equals(firstCreatedModelAccessor)) {
                     firstCreatedModelAccessor = null;
                 }
