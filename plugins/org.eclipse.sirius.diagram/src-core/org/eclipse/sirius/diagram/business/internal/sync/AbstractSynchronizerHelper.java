@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.business.internal.sync;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -32,9 +33,6 @@ import org.eclipse.sirius.ext.base.collect.MultipleCollection;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 
-import com.google.common.base.Function;
-import com.google.common.base.Predicate;
-import com.google.common.base.Predicates;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterables;
@@ -69,9 +67,8 @@ public abstract class AbstractSynchronizerHelper {
     protected boolean tool;
 
     /**
-     * A cache for candidates common to all mapping with empty semantic
-     * candidates expression (i.e. eAllContents() from root) and with same
-     * domainClass.
+     * A cache for candidates common to all mapping with empty semantic candidates expression (i.e. eAllContents() from
+     * root) and with same domainClass.
      */
     private Multimap<String, EObject> candidatesMap = LinkedHashMultimap.create();
 
@@ -112,8 +109,7 @@ public abstract class AbstractSynchronizerHelper {
     }
 
     /**
-     * Get all candidates corresponding to the the given mapping in the current
-     * session.
+     * Get all candidates corresponding to the the given mapping in the current session.
      * 
      * @param mapping
      *            mapping to use
@@ -148,27 +144,19 @@ public abstract class AbstractSynchronizerHelper {
      * @return .
      */
     protected Collection<EObject> getPreviousSemanticsElements(DragAndDropTarget container, DiagramElementMapping mapping) {
-        Collection<EObject> transformed = Collections2.transform(sync.getPreviousDiagramElements(container, mapping), new Function<DDiagramElement, EObject>() {
-            @Override
-            public EObject apply(final DDiagramElement from) {
-                return from.getTarget();
-            }
-        });
-        return ImmutableSet.copyOf(Collections2.filter(transformed, Predicates.and(Predicates.notNull(), new Predicate<EObject>() {
-            // We don't keep semantic element that is invalid
-            @Override
-            public boolean apply(final EObject input) {
-                return (input.eContainer() != null && input.eContainer().eResource() != null) || input.eResource() != null;
-            }
-        })));
+        // @formatter:off
+        return ImmutableSet.copyOf(sync.getPreviousDiagramElements(container, mapping).stream()
+                .map(DDiagramElement::getTarget)
+                .filter(input -> input != null && ((input.eContainer() != null && input.eContainer().eResource() != null) || input.eResource() != null))
+                .collect(Collectors.toSet()));
+        // @formatter:on
     }
 
     /**
      * Get the semantic candidates for the given context.
      * 
      * @param container
-     *            the container of future views created from potential
-     *            candidates.
+     *            the container of future views created from potential candidates.
      * @param mapping
      *            the current mapping
      * @return candidates
@@ -182,28 +170,15 @@ public abstract class AbstractSynchronizerHelper {
             final Collection<EObject> allCandidates = evaluateCandidateExpression(container, mapping);
             if (synchronizedAndCreateElement) {
                 /* Check domain class */
-                final Option<String> domainClassOption = new DiagramElementMappingQuery(mapping).getDomainClass();
+                Option<String> domainClassOption = new DiagramElementMappingQuery(mapping).getDomainClass();
                 if (domainClassOption.some()) {
-                    Predicate<EObject> domainClass = new Predicate<EObject>() {
-                        @Override
-                        public boolean apply(EObject input) {
-                            return accessor.eInstanceOf(input, domainClassOption.get());
-                        }
-                    };
-                    semantics = Iterables.concat(semantics, Iterables.filter(allCandidates, domainClass));
+                    semantics = Iterables.concat(semantics, Iterables.filter(allCandidates, input -> accessor.eInstanceOf(input, domainClassOption.get())));
                 }
             } else {
                 sync.forceRetrieve();
-                final Collection<EObject> previousSemanticsElements = getPreviousSemanticsElements(container, mapping);
+                Collection<EObject> previousSemanticsElements = getPreviousSemanticsElements(container, mapping);
                 sync.resetforceRetrieve();
-                final Predicate<EObject> stillCandidate = new Predicate<EObject>() {
-                    @Override
-                    public boolean apply(final EObject input) {
-                        return allCandidates.contains(input);
-                    }
-                };
-
-                final Collection<EObject> keeped = ImmutableSet.copyOf(Collections2.filter(previousSemanticsElements, stillCandidate));
+                Collection<EObject> keeped = ImmutableSet.copyOf(Collections2.filter(previousSemanticsElements, allCandidates::contains));
                 semantics = Iterables.concat(semantics, keeped);
             }
         } else {
