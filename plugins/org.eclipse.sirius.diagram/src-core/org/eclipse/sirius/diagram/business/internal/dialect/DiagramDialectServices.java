@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.EList;
@@ -49,6 +50,7 @@ import org.eclipse.sirius.common.tools.api.query.NotificationQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsRegistry;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
@@ -72,6 +74,7 @@ import org.eclipse.sirius.diagram.description.tool.CreateView;
 import org.eclipse.sirius.diagram.description.tool.Navigation;
 import org.eclipse.sirius.diagram.tools.api.command.ChangeLayerActivationCommand;
 import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
+import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -155,8 +158,9 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
         final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semantic);
         final ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(semantic);
         final DDiagramSynchronizer sync = new DDiagramSynchronizer(interpreter, diagDesc, accessor);
-
         sync.initDiagram(name, semantic, monitor);
+        boolean syncOnCreation = Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, SiriusDiagramInternalPreferencesKeys.PREF_SYNCHRONIZE_DIAGRAM_ON_CREATION.name(), false, null);
+        sync.getDiagram().setSynchronized(syncOnCreation);
         return sync.getDiagram();
     }
 
