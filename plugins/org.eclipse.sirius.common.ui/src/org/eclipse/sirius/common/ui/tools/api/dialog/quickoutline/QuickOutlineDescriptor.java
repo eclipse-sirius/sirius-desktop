@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 Obeo.
+ * Copyright (c) 2011, 2019 Obeo.
  *
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -16,9 +16,7 @@ package org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
+import java.util.Optional;
 
 import com.google.common.base.Preconditions;
 
@@ -38,7 +36,7 @@ public class QuickOutlineDescriptor {
      * Creates a new {@link QuickOutlineDescriptor}.
      */
     public QuickOutlineDescriptor() {
-        this.pages = new ArrayList<QuickOutlinePageDescriptor>();
+        this.pages = new ArrayList<>();
     }
 
     /**
@@ -71,12 +69,12 @@ public class QuickOutlineDescriptor {
      * @return the first page of this quick outline or <code>null</code> if this
      *         outline has no page.
      */
-    public Option<QuickOutlinePageDescriptor> getFirstPage() {
+    public Optional<QuickOutlinePageDescriptor> getFirstPage() {
         QuickOutlinePageDescriptor firstPage = null;
         if (!this.pages.isEmpty()) {
             firstPage = this.pages.get(0);
         }
-        return Options.fromNullable(firstPage);
+        return Optional.ofNullable(firstPage);
     }
 
     /**
@@ -88,13 +86,13 @@ public class QuickOutlineDescriptor {
      * @return the next page of <code>page</code> or the first page if
      *         <code>page</code> is <code>null</code>.
      */
-    public Option<QuickOutlinePageDescriptor> getNextPage(QuickOutlinePageDescriptor page) {
-        Option<QuickOutlinePageDescriptor> result;
+    public Optional<QuickOutlinePageDescriptor> getNextPage(QuickOutlinePageDescriptor page) {
+        Optional<QuickOutlinePageDescriptor> result;
         if (page == null) {
             result = getFirstPage();
         } else {
             int indexNextPage = (this.pages.indexOf(page) + 1) % this.pages.size();
-            result = Options.newSome(this.pages.get(indexNextPage));
+            result = Optional.ofNullable(this.pages.get(indexNextPage));
         }
         return result;
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 Obeo.
+ * Copyright (c) 2011, 2019 Obeo.
  *
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -14,6 +14,7 @@
 package org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -32,7 +33,6 @@ import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.common.ui.Messages;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.e3.ui.dialogs.FilteredTree;
 import org.eclipse.sirius.ext.e3.ui.dialogs.PatternFilter;
 import org.eclipse.swt.SWT;
@@ -198,8 +198,8 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
     public QuickOutlineControl(Shell parentShell, int shellStyle, QuickOutlineDescriptor descriptor) {
         super(parentShell, shellStyle, true, true, true, true, false, null, null);
         this.descriptor = descriptor;
-        org.eclipse.sirius.ext.base.Option<QuickOutlinePageDescriptor> firstPage = this.descriptor.getFirstPage();
-        Preconditions.checkArgument(firstPage.some(), Messages.QuickOutlineControl_errorNoPage);
+        Optional<QuickOutlinePageDescriptor> firstPage = this.descriptor.getFirstPage();
+        Preconditions.checkArgument(firstPage.isPresent(), Messages.QuickOutlineControl_errorNoPage);
         this.currentPage = firstPage.get();
         create();
     }
@@ -416,8 +416,8 @@ public class QuickOutlineControl extends PopupDialog implements IInformationCont
     }
 
     private void gotoNextPage() {
-        Option<QuickOutlinePageDescriptor> newPage = this.descriptor.getNextPage(this.currentPage);
-        if (newPage.some() && newPage.get() != this.currentPage) {
+        Optional<QuickOutlinePageDescriptor> newPage = this.descriptor.getNextPage(this.currentPage);
+        if (newPage.isPresent() && newPage.get() != this.currentPage) {
             // change page.
             this.currentPage = newPage.get();
             this.treeViewer.setContentProvider(this.currentPage.getContentProvider());
