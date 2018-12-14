@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -72,8 +72,7 @@ public class DEdgeSynchronizerHelper extends AbstractSynchronizerHelper {
     }
 
     /**
-     * Compute edge candidates to be added to this diagram for the given
-     * mapping.
+     * Compute edge candidates to be added to this diagram for the given mapping.
      * 
      * @param mapping
      *            the mapping for which to compute candidates
@@ -88,10 +87,18 @@ public class DEdgeSynchronizerHelper extends AbstractSynchronizerHelper {
         Collection<DEdgeCandidate> edgeCandidates = null;
 
         if (!mapping.isUseDomainElement()) {
-            final Iterable<EdgeTarget> sourceViews = Iterables.filter(this.computeTargetElements(this.diagram, mapping.getSourceMapping(), mappingsToEdgeTargets), new ValidTargetPredicate());
+            Predicate<? super EdgeTarget> isValidTarget = input -> {
+                if (input instanceof DSemanticDecorator) {
+                    // The target can be null or without resource in case of
+                    // modification outside the editor and manual refresh.
+                    EObject target = ((DSemanticDecorator) input).getTarget();
+                    return target != null && target.eResource() != null;
+                }
+                return true;
+            };
+            final Iterable<EdgeTarget> sourceViews = Iterables.filter(this.computeTargetElements(this.diagram, mapping.getSourceMapping(), mappingsToEdgeTargets), isValidTarget);
             final Map<EObject, Collection<EdgeTarget>> targetViewsSemantics = new HashMap<EObject, Collection<EdgeTarget>>();
-            final Iterable<EdgeTarget> targetViews = Iterables.filter(this.computeTargetElements(this.diagram, mapping.getTargetMapping(), mappingsToEdgeTargets, targetViewsSemantics),
-                    new ValidTargetPredicate());
+            final Iterable<EdgeTarget> targetViews = Iterables.filter(this.computeTargetElements(this.diagram, mapping.getTargetMapping(), mappingsToEdgeTargets, targetViewsSemantics), isValidTarget);
             edgeCandidates = computeEdgeCandidatesWithoutDomain(sourceViews, targetViews, targetViewsSemantics, mapping);
         } else {
             final Map<EObject, Collection<EdgeTarget>> sourceViewsSemantics = new HashMap<EObject, Collection<EdgeTarget>>();
@@ -105,8 +112,8 @@ public class DEdgeSynchronizerHelper extends AbstractSynchronizerHelper {
         return edgeCandidates;
     }
 
-    private Collection<DEdgeCandidate> computeEdgeCandidatesWithDomain(final Map<EObject, Collection<EdgeTarget>> sourceViewsSemantics,
-            final Map<EObject, Collection<EdgeTarget>> targetViewsSemantics, final EdgeMapping mapping) {
+    private Collection<DEdgeCandidate> computeEdgeCandidatesWithDomain(final Map<EObject, Collection<EdgeTarget>> sourceViewsSemantics, final Map<EObject, Collection<EdgeTarget>> targetViewsSemantics,
+            final EdgeMapping mapping) {
 
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.GET_EDGE_CANDIDATES_KEY);
 
@@ -115,8 +122,8 @@ public class DEdgeSynchronizerHelper extends AbstractSynchronizerHelper {
         final Set<EObject> targetCandidates = Sets.newLinkedHashSet(getSemanticCandidates(diagram, mapping));
         if (tool || new DiagramElementMappingQuery(mapping).isSynchronizedAndCreateElement(diagram)) {
             /*
-             * Now we've got the semantic element from which we should try to
-             * create Edges we can start evaluating possible candidates.
+             * Now we've got the semantic element from which we should try to create Edges we can start evaluating
+             * possible candidates.
              */
             for (final EObject target : targetCandidates) {
                 handleCandidatesFromSemanticTargets(result, target, mapping, sourceViewsSemantics, targetViewsSemantics);
@@ -263,8 +270,7 @@ public class DEdgeSynchronizerHelper extends AbstractSynchronizerHelper {
         EdgeMappingQuery edgeMappingQuery = new EdgeMappingQuery(mapping);
 
         /*
-         * The minimize set is used to prevent double creation of Edges if the
-         * targetSemantics list contains doubles..
+         * The minimize set is used to prevent double creation of Edges if the targetSemantics list contains doubles..
          */
         final Set<EObject> minimize = new HashSet<EObject>();
         for (final EObject potentialTargetSemantic : potentialTargetSemantics) {
@@ -309,9 +315,8 @@ public class DEdgeSynchronizerHelper extends AbstractSynchronizerHelper {
             final Collection<EdgeTarget> elements = getElementsFromMapping(mappingsToEdgeTargets, mapping);
             if (elements != null) {
                 /*
-                 * If no list for the views semantics are passed, then we don't
-                 * have to gather them while iterating, otherwise it's better to
-                 * do it now than waiting for doing it later.
+                 * If no list for the views semantics are passed, then we don't have to gather them while iterating,
+                 * otherwise it's better to do it now than waiting for doing it later.
                  */
                 if (viewsSemantics == null) {
                     result.addAll(elements);
