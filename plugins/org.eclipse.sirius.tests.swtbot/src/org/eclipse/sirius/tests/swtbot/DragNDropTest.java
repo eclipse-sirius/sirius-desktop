@@ -298,9 +298,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
         test_DnDPackageFromMC2DiagramBlank2();
 
         try {
-
-            // TODO Reactivate once #521937 is fixed.
-            // editor.zoom(ZoomLevel.ZOOM_200);
+            editor.zoom(ZoomLevel.ZOOM_200);
 
             openErrorLogViewByAPI();
             SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
@@ -486,8 +484,7 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
         try {
             editor.click(10, 10);
-            // TODO Reactivate once #521937 is fixed.
-            // editor.zoom(ZoomLevel.ZOOM_200);
+            editor.zoom(ZoomLevel.ZOOM_200);
             openErrorLogViewByAPI();
             SWTBot errorLogBot = bot.viewByTitle("Error Log").bot();
             int rowCount = errorLogBot.tree().rowCount();
