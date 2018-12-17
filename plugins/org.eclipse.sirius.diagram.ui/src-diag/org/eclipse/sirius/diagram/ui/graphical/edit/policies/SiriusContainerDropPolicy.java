@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeEditPart;
@@ -441,18 +442,23 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
     private Point computeRelativeLocation(final Point absolutePointerLocation, boolean isBorderNode, boolean isConcernedBorderedNode) {
         if (absolutePointerLocation != null && getHost() instanceof IGraphicalEditPart) {
             final IFigure hostFigure = ((IGraphicalEditPart) getHost()).getFigure();
+            Dimension difference;
+            // If the host edit part is the diagram itself, there is no need to proceed a translation since the
+            // absolutePointerLocation value is already a logical absolute coordinate.
+            if (getHost() instanceof DiagramEditPart) {
+                difference = new Dimension(absolutePointerLocation.x, absolutePointerLocation.y);
+            } else {
+                Point topLeftHostLocation = hostFigure.getBounds().getTopLeft().getCopy();
+                // To avoid the -1 bounds of BorderItemsAwareFreeFormLayer
+                if (topLeftHostLocation.x == -1) {
+                    topLeftHostLocation.x = 0;
+                }
+                hostFigure.translateToAbsolute(topLeftHostLocation);
+                GraphicalHelper.screen2logical(topLeftHostLocation, (IGraphicalEditPart) getHost());
 
-            Point topLeftHostLocation = hostFigure.getBounds().getTopLeft().getCopy();
-            // To avoid the -1 bounds of BorderItemsAwareFreeFormLayer
-            if (topLeftHostLocation.x == -1) {
-                topLeftHostLocation.x = 0;
+                difference = absolutePointerLocation.getDifference(topLeftHostLocation);
             }
-            hostFigure.translateToAbsolute(topLeftHostLocation);
-            GraphicalHelper.screen2logical(topLeftHostLocation, (IGraphicalEditPart) getHost());
-
-            Dimension difference = absolutePointerLocation.getDifference(topLeftHostLocation);
             Point locationHint = new Point(difference.width, difference.height);
-
             // if the node is place in a CompartmentEditPart and is
             // not a border node, we must take the shifts of compartments in
             // account
