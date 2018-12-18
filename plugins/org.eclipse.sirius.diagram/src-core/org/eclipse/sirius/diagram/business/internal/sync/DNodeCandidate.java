@@ -30,6 +30,11 @@ import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
  * 
  */
 public class DNodeCandidate {
+    /**
+     * Special value to indicate an invalid id.
+     */
+    private static final int INVALID_ID = -1;
+    
     private DragAndDropTarget viewContainer;
 
     private EObject semantic;
@@ -59,7 +64,6 @@ public class DNodeCandidate {
      *            the refresh ids holder.
      */
     public DNodeCandidate(final AbstractNodeMapping mapping, final EObject semanticElement, final DragAndDropTarget viewContainer, RefreshIdsHolder ids) {
-        super();
         this.ids = ids;
         this.mapping = mapping;
         this.semantic = semanticElement;
@@ -105,16 +109,13 @@ public class DNodeCandidate {
         return element;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((rootMapping == null) ? 0 : rootMapping.hashCode());
-        result = prime * result + ((semantic == null) ? 0 : getSemanticID().hashCode());
-        result = prime * result + ((viewContainer == null) ? 0 : getViewContainerID().hashCode());
+        result = prime * result + ((semantic == null) ? 0 : getSemanticID());
+        result = prime * result + ((viewContainer == null) ? 0 : getViewContainerID());
         return result;
     }
 
@@ -123,11 +124,11 @@ public class DNodeCandidate {
      * 
      * @return the view container URI.
      */
-    private Id getViewContainerID() {
+    private int getViewContainerID() {
         if (semantic == null) {
-            return Id.invalid();
+            return INVALID_ID;
         }
-        return new Id(this.ids.getOrCreateID(viewContainer));
+        return this.ids.getOrCreateID(viewContainer);
     }
 
     /**
@@ -135,16 +136,13 @@ public class DNodeCandidate {
      * 
      * @return the semantic ID
      */
-    private Id getSemanticID() {
+    private int getSemanticID() {
         if (semantic == null) {
-            return Id.invalid();
+            return INVALID_ID;
         }
-        return new Id(this.ids.getOrCreateID(semantic));
+        return this.ids.getOrCreateID(semantic);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     // CHECKSTYLE:OFF
     @Override
     // Eclipse generated
@@ -171,14 +169,14 @@ public class DNodeCandidate {
             if (other.semantic != null) {
                 return false;
             }
-        } else if (!getSemanticID().equals(other.getSemanticID())) {
+        } else if (getSemanticID() != other.getSemanticID()) {
             return false;
         }
         if (viewContainer == null) {
             if (other.viewContainer != null) {
                 return false;
             }
-        } else if (!getViewContainerID().equals(other.getViewContainerID())) {
+        } else if (getViewContainerID() != other.getViewContainerID()) {
             return false;
         }
         return true;
@@ -212,50 +210,4 @@ public class DNodeCandidate {
         }
         return result;
     }
-
-    /**
-     * An identifier class based on an integer with a specific equals method
-     * which handles mobility.
-     * 
-     * @author mchauvin
-     */
-    private static final class Id {
-
-        private Integer value;
-
-        Id(final Integer value) {
-            this.value = value;
-        }
-
-        private static Id invalid() {
-            return new Id(-1);
-        }
-
-        @Override
-        public int hashCode() {
-            return value.hashCode();
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        // CHECKSTYLE:OFF
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj) {
-                return true;
-            }
-            if (obj == null) {
-                return false;
-            }
-            if (!(obj instanceof Id)) {
-                return false;
-            }
-            final Id other = (Id) obj;;
-            return value.equals(other.value);
-        }
-        // CHECKSTYLE:ON
-
-    }
-
 }
