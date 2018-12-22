@@ -19,13 +19,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2;
-import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.SessionListener;
-import org.eclipse.sirius.business.internal.migration.resource.ResourceFileExtensionPredicate;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -93,15 +90,13 @@ public class SessionVSMUpdater implements ViewpointRegistryListener2 {
         session.notifyListeners(SessionListener.VSM_UPDATED);
     }
 
-    /**
-     * Dumb implementation based on exhaustive search in the ResourceSet and file extension matching.
-     */
     private static List<Resource> findAllVSMResources(DAnalysisSessionImpl session) {
         // @formatter:off
-        EList<Resource> resources = session.getTransactionalEditingDomain().getResourceSet().getResources();
-        return resources.stream()
-                .filter(new ResourceFileExtensionPredicate(SiriusUtil.DESCRIPTION_MODEL_EXTENSION, true))
-                .collect(Collectors.toList());
+        return session.allAnalyses().stream()
+                      .flatMap(analysis -> analysis.getOwnedViews().stream())
+                      .map(view -> view.getViewpoint().eResource())
+                      .distinct()
+                      .collect(Collectors.toList());
         // @formatter:on
     }
 }
