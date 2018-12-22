@@ -473,32 +473,31 @@ public class SiriusDebugView extends AbstractDebugView {
      */
     @Override
     protected void createActionButtons() {
-        // addFoldingToggleAction();
-        // addShowOrderingsAction();
-        // addStorePositionsAction();
-        // addShowPositionChangesAction();
+        addFoldingToggleAction();
+        addShowOrderingsAction();
+        addStorePositionsAction();
+        addShowPositionChangesAction();
         addShowFiguresHierarchyAction();
         addShowEditPartsHierarchyAction();
-        // addRefreshBenpointsAction();
-        // addResetBendpointsAction();
-        // addExpandAction();
-        // addRefreshCoverageAction();
-        // addRefreshDiagramAction();
-        // addSelectReusedSiriussAction();
-        // addShowCommandStackAction();
-        // addSiriusSelectionAction();
-        // addExtractExpressionsAction();
-        // addLoadResourceWithProgressAction();
-        // addShowPayloadAccessLogAction();
-        // addClearPayloadAccessLogAction();
-        // addShowResourceSetTopologyAction();
-        // addShowAdaptersAction();
-        // addShowSessionStructureAction();
-        // addShowResourceInformationAction();
-        // addShowSiriusInverseReferences();
-        // addShowCrossReferencerMap();
-        // addDeferredChangeAction();
-        // addDeferredUnrelatedChangeAction();
+        addRefreshBenpointsAction();
+        addResetBendpointsAction();
+        addExpandAction();
+        addRefreshCoverageAction();
+        addRefreshDiagramAction();
+        addSelectReusedSiriussAction();
+        addShowCommandStackAction();
+        addExtractExpressionsAction();
+        addLoadResourceWithProgressAction();
+        addShowPayloadAccessLogAction();
+        addClearPayloadAccessLogAction();
+        addShowResourceSetTopologyAction();
+        addShowAdaptersAction();
+        addShowSessionStructureAction();
+        addShowResourceInformationAction();
+        addShowSiriusInverseReferences();
+        addShowCrossReferencerMap();
+        addDeferredChangeAction();
+        addDeferredUnrelatedChangeAction();
         addListProxiesAction();
         addLoadResourceAction();
     }
@@ -546,37 +545,34 @@ public class SiriusDebugView extends AbstractDebugView {
     }
 
     private void addLoadResourceAction() {
-        addAction("Load EMF resource", new Runnable() {
-            @Override
-            public void run() {
-                IFile input = Adapters.adapt(selection, IFile.class);
-                if (input != null) {
-                    URI uri = URI.createPlatformResourceURI(input.getFullPath().toString(), true);
-                    ResourceSet rs = new ResourceSetImpl();
-                    Resource res = rs.createResource(uri);
-                    long loadTime = time(() -> {
-                        try {
-                            res.load(Collections.emptyMap());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    });
-                    long copyTime = time(() -> {
-                        for (EObject root : res.getContents()) {
-                            EcoreUtil.copy(root);
-                        }
-                    });
-                    long sizeBytes = new File(input.getRawLocation().toString()).length();
-                    AtomicLong sizeElements = new AtomicLong();
-                    res.getAllContents().forEachRemaining(o -> sizeElements.incrementAndGet());
-                    StringBuilder sb = new StringBuilder();
-                    sb.append("File: ").append(input.getFullPath().toString()).append("\n");
-                    sb.append("File size: ").append((sizeBytes / 1024) + "kiB\n");
-                    sb.append("Number of EObjects: ").append(sizeElements).append("\n");
-                    sb.append("EMF Resource load time: ").append(TimeUnit.NANOSECONDS.toMillis(loadTime)).append("ms\n");
-                    sb.append("EMF copy time: ").append(TimeUnit.NANOSECONDS.toMillis(copyTime)).append("ms\n");
-                    setText(sb.toString());
-                }
+        addAction("Load EMF resource", () -> {
+            IFile input = Adapters.adapt(selection, IFile.class);
+            if (input != null) {
+                URI uri = URI.createPlatformResourceURI(input.getFullPath().toString(), true);
+                ResourceSet rs = new ResourceSetImpl();
+                Resource res = rs.createResource(uri);
+                long loadTime = time(() -> {
+                    try {
+                        res.load(Collections.emptyMap());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+                long copyTime = time(() -> {
+                    for (EObject root : res.getContents()) {
+                        EcoreUtil.copy(root);
+                    }
+                });
+                long sizeBytes = new File(input.getRawLocation().toString()).length();
+                AtomicLong sizeElements = new AtomicLong();
+                res.getAllContents().forEachRemaining(o -> sizeElements.incrementAndGet());
+                StringBuilder sb = new StringBuilder();
+                sb.append("File: ").append(input.getFullPath().toString()).append("\n");
+                sb.append("File size: ").append((sizeBytes / 1024) + "kiB\n");
+                sb.append("Number of EObjects: ").append(sizeElements).append("\n");
+                sb.append("EMF Resource load time: ").append(TimeUnit.NANOSECONDS.toMillis(loadTime)).append("ms\n");
+                sb.append("EMF copy time: ").append(TimeUnit.NANOSECONDS.toMillis(copyTime)).append("ms\n");
+                setText(sb.toString());
             }
         });
     }
@@ -588,66 +584,60 @@ public class SiriusDebugView extends AbstractDebugView {
     }
 
     private void addDeferredChangeAction() {
-        addAction("Deffered Change", new Runnable() {
-            @Override
-            public void run() {
-                EObject current = getCurrentEObject();
-                if (current instanceof DSemanticDecorator && ((DSemanticDecorator) current).getTarget() instanceof ENamedElement) {
-                    final EClass target = (EClass) ((DSemanticDecorator) current).getTarget();
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                Thread.sleep(6000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            Session s = new EObjectQuery(target).getSession();
-                            if (s != null) {
-                                TransactionalEditingDomain ted = s.getTransactionalEditingDomain();
-                                ted.getCommandStack().execute(new RecordingCommand(ted) {
-                                    @Override
-                                    protected void doExecute() {
-                                        // target.setName(target.getName() + "X");
-                                        target.setInstanceClassName(target.getInstanceClassName() + "X");
-                                    }
-                                });
-                            }
+        addAction("Deffered Change", () -> {
+            EObject current = getCurrentEObject();
+            if (current instanceof DSemanticDecorator && ((DSemanticDecorator) current).getTarget() instanceof ENamedElement) {
+                final EClass target = (EClass) ((DSemanticDecorator) current).getTarget();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(6000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
-                    }).start();
-                }
+                        Session s = new EObjectQuery(target).getSession();
+                        if (s != null) {
+                            TransactionalEditingDomain ted = s.getTransactionalEditingDomain();
+                            ted.getCommandStack().execute(new RecordingCommand(ted) {
+                                @Override
+                                protected void doExecute() {
+                                    // target.setName(target.getName() + "X");
+                                    target.setInstanceClassName(target.getInstanceClassName() + "X");
+                                }
+                            });
+                        }
+                    }
+                }).start();
             }
         });
     }
 
     private void addDeferredUnrelatedChangeAction() {
-        addAction("Deffered Change (Unrelated)", new Runnable() {
-            @Override
-            public void run() {
-                EObject current = getCurrentEObject();
-                if (current instanceof DSemanticDecorator && ((DSemanticDecorator) current).getTarget() instanceof ENamedElement) {
-                    final EClass target = (EClass) ((DSemanticDecorator) current).getTarget();
-                    new Thread(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                Thread.sleep(6000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            Session s = new EObjectQuery(target).getSession();
-                            if (s != null) {
-                                TransactionalEditingDomain ted = s.getTransactionalEditingDomain();
-                                ted.getCommandStack().execute(new RecordingCommand(ted) {
-                                    @Override
-                                    protected void doExecute() {
-                                        target.setAbstract(!target.isAbstract());
-                                    }
-                                });
-                            }
+        addAction("Deffered Change (Unrelated)", () -> {
+            EObject current = getCurrentEObject();
+            if (current instanceof DSemanticDecorator && ((DSemanticDecorator) current).getTarget() instanceof ENamedElement) {
+                final EClass target = (EClass) ((DSemanticDecorator) current).getTarget();
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            Thread.sleep(6000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
-                    }).start();
-                }
+                        Session s = new EObjectQuery(target).getSession();
+                        if (s != null) {
+                            TransactionalEditingDomain ted = s.getTransactionalEditingDomain();
+                            ted.getCommandStack().execute(new RecordingCommand(ted) {
+                                @Override
+                                protected void doExecute() {
+                                    target.setAbstract(!target.isAbstract());
+                                }
+                            });
+                        }
+                    }
+                }).start();
             }
         });
     }
@@ -773,51 +763,43 @@ public class SiriusDebugView extends AbstractDebugView {
     }
 
     private void addShowPayloadAccessLogAction() {
-        addAction("Show Payload Access Log", new Runnable() {
-            @Override
-            public void run() {
-                int max = 50;
-                List<FeatureAccess> log = PayloadMarkerAdapter.INSTANCE.getAccessLog();
-                int totalSize = log.size();
-                int shown = Math.min(totalSize, max);
-                TabularReport tr = new TabularReport(/* "Timestamp", */"EObject", "Feature");
+        addAction("Show Payload Access Log", () -> {
+            int max = 50;
+            List<FeatureAccess> log = PayloadMarkerAdapter.INSTANCE.getAccessLog();
+            int totalSize = log.size();
+            int shown = Math.min(totalSize, max);
+            TabularReport tr = new TabularReport(/* "Timestamp", */"EObject", "Feature");
 
-                try {
-                    PayloadMarkerAdapter.INSTANCE.setEnable(false);
-                    for (int i = log.size() > max ? log.size() - max : 0; i < log.size(); i++) {
-                        FeatureAccess featureAccess = log.get(i);
-                        tr.addLine(Arrays.asList(/*
-                                                  * String.format("%tT", featureAccess.timestamp),
-                                                  */((Component) featureAccess.setting.getEObject()).getName(), featureAccess.setting.getEStructuralFeature().getName()));
-                    }
-                } finally {
-                    PayloadMarkerAdapter.INSTANCE.setEnable(true);
+            try {
+                PayloadMarkerAdapter.INSTANCE.setEnable(false);
+                for (int i = log.size() > max ? log.size() - max : 0; i < log.size(); i++) {
+                    FeatureAccess featureAccess = log.get(i);
+                    tr.addLine(Arrays.asList(/*
+                                              * String.format("%tT", featureAccess.timestamp),
+                                              */((Component) featureAccess.setting.getEObject()).getName(), featureAccess.setting.getEStructuralFeature().getName()));
                 }
-                StringBuilder sb = new StringBuilder();
-                sb.append("Showing " + shown + " of " + totalSize + " accesses.\n");
-                Multiset<String> contexts = PayloadMarkerAdapter.INSTANCE.getUniqueContexts();
-                sb.append("Unique contexts: " + contexts.elementSet().size()).append("\n\n");
-
-                int i = 0;
-                for (String stack : contexts.elementSet()) {
-                    int count = contexts.count(stack);
-                    sb.append("Context #" + i++ + " (" + count + " occurrences)").append("\n");
-                    sb.append(stack).append("\n");
-                }
-
-                sb.append("\n").append(tr.print()).append("\n");
-                setText(sb.toString());
+            } finally {
+                PayloadMarkerAdapter.INSTANCE.setEnable(true);
             }
+            StringBuilder sb = new StringBuilder();
+            sb.append("Showing " + shown + " of " + totalSize + " accesses.\n");
+            Multiset<String> contexts = PayloadMarkerAdapter.INSTANCE.getUniqueContexts();
+            sb.append("Unique contexts: " + contexts.elementSet().size()).append("\n\n");
+
+            int i = 0;
+            for (String stack : contexts.elementSet()) {
+                int count = contexts.count(stack);
+                sb.append("Context #" + i++ + " (" + count + " occurrences)").append("\n");
+                sb.append(stack).append("\n");
+            }
+
+            sb.append("\n").append(tr.print()).append("\n");
+            setText(sb.toString());
         });
     }
 
     private void addClearPayloadAccessLogAction() {
-        addAction("Clear Payload Access Log", new Runnable() {
-            @Override
-            public void run() {
-                PayloadMarkerAdapter.INSTANCE.clearAccessLog();
-            }
-        });
+        addAction("Clear Payload Access Log", () -> PayloadMarkerAdapter.INSTANCE.clearAccessLog());
     }
 
     private void addShowAdaptersAction() {
@@ -922,112 +904,95 @@ public class SiriusDebugView extends AbstractDebugView {
     }
 
     private void addLoadResourceWithProgressAction() {
-        addAction("Load with progress", new Runnable() {
-            @Override
-            public void run() {
-                FileDialog dia = new FileDialog(getSite().getShell(), SWT.OPEN);
-                dia.setFilterExtensions(new String[] { "*.ecore" });
-                final String path = dia.open();
-                final Resource[] result = new Resource[1];
-                if (path != null) {
-                    try {
-                        IRunnableWithProgress op = new IRunnableWithProgress() {
-                            @Override
-                            public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-                                ResourceSet rs = new ResourceSetImpl();
-                                final SubMonitor loadingMonitor = SubMonitor.convert(monitor, (int) new File(path).length());
-                                List<URIHandler> handlers = new ArrayList<URIHandler>(URIHandler.DEFAULT_HANDLERS);
-                                handlers.set(1, new FileURIHandlerImpl() {
-                                    @Override
-                                    public InputStream createInputStream(URI uri, Map<?, ?> options) throws IOException {
-                                        String filePath = uri.toFileString();
-                                        File file = new File(filePath);
-                                        InputStream inputStream = new ProgressMonitorInputStream(new FileInputStream(file), file.length(), 1, loadingMonitor) {
-                                            private long previousRead = 0;
+        addAction("Load with progress", () -> {
+            FileDialog dia = new FileDialog(getSite().getShell(), SWT.OPEN);
+            dia.setFilterExtensions(new String[] { "*.ecore" });
+            final String path = dia.open();
+            final Resource[] result = new Resource[1];
+            if (path != null) {
+                try {
+                    IRunnableWithProgress op = new IRunnableWithProgress() {
+                        @Override
+                        public void run(IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+                            ResourceSet rs = new ResourceSetImpl();
+                            final SubMonitor loadingMonitor = SubMonitor.convert(monitor, (int) new File(path).length());
+                            List<URIHandler> handlers = new ArrayList<URIHandler>(URIHandler.DEFAULT_HANDLERS);
+                            handlers.set(1, new FileURIHandlerImpl() {
+                                @Override
+                                public InputStream createInputStream(URI uri, Map<?, ?> options) throws IOException {
+                                    String filePath = uri.toFileString();
+                                    File file = new File(filePath);
+                                    InputStream inputStream = new ProgressMonitorInputStream(new FileInputStream(file), file.length(), 1, loadingMonitor) {
+                                        private long previousRead = 0;
 
-                                            @Override
-                                            protected void updateMonitor(long bytesRead, long size, IProgressMonitor monitor) {
-                                                long progress = bytesRead - previousRead;
-                                                while (progress > Integer.MAX_VALUE) {
-                                                    loadingMonitor.worked(Integer.MAX_VALUE);
-                                                    progress -= Integer.MAX_VALUE;
-                                                }
-                                                loadingMonitor.worked((int) progress);
-                                                previousRead = bytesRead;
+                                        @Override
+                                        protected void updateMonitor(long bytesRead, long size, IProgressMonitor monitor) {
+                                            long progress = bytesRead - previousRead;
+                                            while (progress > Integer.MAX_VALUE) {
+                                                loadingMonitor.worked(Integer.MAX_VALUE);
+                                                progress -= Integer.MAX_VALUE;
                                             }
-                                        };
-                                        Map<Object, Object> response = getResponse(options);
-                                        if (response != null) {
-                                            response.put(URIConverter.RESPONSE_TIME_STAMP_PROPERTY, file.lastModified());
+                                            loadingMonitor.worked((int) progress);
+                                            previousRead = bytesRead;
                                         }
-                                        return inputStream;
+                                    };
+                                    Map<Object, Object> response = getResponse(options);
+                                    if (response != null) {
+                                        response.put(URIConverter.RESPONSE_TIME_STAMP_PROPERTY, file.lastModified());
                                     }
+                                    return inputStream;
+                                }
 
-                                });
-                                rs.setURIConverter(new ExtensibleURIConverterImpl(handlers, ContentHandler.Registry.INSTANCE.contentHandlers()));
-                                result[0] = rs.getResource(URI.createFileURI(path), true);
-                            }
-                        };
-                        new ProgressMonitorDialog(getSite().getShell()).run(true, false, op);
-                    } catch (InvocationTargetException e) {
-                        // handle exception
-                    } catch (InterruptedException e) {
-                        // handle cancelation
-                    }
-                    if (result[0] != null) {
-                        setText("Loaded resource " + result[0] + " with " + Iterables.size(AllContents.of(result[0].getContents().get(0))) + " elements.");
-                    } else {
-                        setText("Failed loading resource at " + path);
-                    }
+                            });
+                            rs.setURIConverter(new ExtensibleURIConverterImpl(handlers, ContentHandler.Registry.INSTANCE.contentHandlers()));
+                            result[0] = rs.getResource(URI.createFileURI(path), true);
+                        }
+                    };
+                    new ProgressMonitorDialog(getSite().getShell()).run(true, false, op);
+                } catch (InvocationTargetException e) {
+                    // handle exception
+                } catch (InterruptedException e) {
+                    // handle cancelation
+                }
+                if (result[0] != null) {
+                    setText("Loaded resource " + result[0] + " with " + Iterables.size(AllContents.of(result[0].getContents().get(0))) + " elements.");
+                } else {
+                    setText("Failed loading resource at " + path);
                 }
             }
         });
     }
 
     private void addExtractExpressionsAction() {
-        addAction("Extract Expressions", new Runnable() {
-            @Override
-            public void run() {
-                FileDialog dia = new FileDialog(getSite().getShell(), SWT.OPEN | SWT.MULTI);
-                dia.setFilterExtensions(new String[] { "*.odesign" });
-                String path = dia.open();
-                List<String[]> lines = new ArrayList<>();
-                if (path != null) {
-                    for (String file : dia.getFileNames()) {
-                        ResourceSet rs = new ResourceSetImpl();
-                        Resource vsm = rs.getResource(URI.createFileURI(dia.getFilterPath() + "/" + file), true);
-                        for (EObject obj : AllContents.of(vsm.getContents().get(0))) {
-                            EClass klass = obj.eClass();
-                            for (EAttribute attr : klass.getEAllAttributes()) {
-                                if (attr.getEType() == DescriptionPackage.Literals.INTERPRETED_EXPRESSION) {
-                                    String value = Optional.ofNullable((String) obj.eGet(attr)).orElse("").trim();
-                                    if (value.length() > 100) {
-                                        value = value.substring(0, 97) + "...";
-                                    }
-                                    lines.add(new String[] { value, attr.getEContainingClass().getName() + "." + attr.getName() });
+        addAction("VSM - Extract Expressions", () -> {
+            FileDialog dia = new FileDialog(getSite().getShell(), SWT.OPEN | SWT.MULTI);
+            dia.setFilterExtensions(new String[] { "*.odesign" });
+            String path = dia.open();
+            List<String[]> lines = new ArrayList<>();
+            if (path != null) {
+                for (String file : dia.getFileNames()) {
+                    ResourceSet rs = new ResourceSetImpl();
+                    Resource vsm = rs.getResource(URI.createFileURI(dia.getFilterPath() + "/" + file), true);
+                    for (EObject obj : AllContents.of(vsm.getContents().get(0))) {
+                        EClass klass = obj.eClass();
+                        for (EAttribute attr : klass.getEAllAttributes()) {
+                            if (attr.getEType() == DescriptionPackage.Literals.INTERPRETED_EXPRESSION) {
+                                String value = Optional.ofNullable((String) obj.eGet(attr)).orElse("").trim();
+                                if (value.length() > 100) {
+                                    value = value.substring(0, 97) + "...";
                                 }
+                                lines.add(new String[] { value, attr.getEContainingClass().getName() + "." + attr.getName() });
                             }
                         }
                     }
                 }
-                StringBuilder result = new StringBuilder();
-                for (String[] line : lines) {
-                    result.append(line[0] + "\n");
-                }
-                result.append("Total: " + lines.size() + " expressions");
-                setText(result.toString());
-                // Collections.sort(lines, new Comparator<String[]>() {
-                // public int compare(String[] o1, String[] o2) {
-                // return o1[0].compareTo(o2[0]);
-                // }
-                // });
-                // TabularReport report = new TabularReport("Expression",
-                // "Feature");
-                // for (String[] line : lines) {
-                // report.addLine(line[0], line[1]);
-                // }
-                // setText(report.print());
             }
+            StringBuilder result = new StringBuilder();
+            for (String[] line : lines) {
+                result.append(line[0] + "\n");
+            }
+            result.append("Total: " + lines.size() + " expressions");
+            setText(result.toString());
         });
     }
 
@@ -1083,98 +1048,79 @@ public class SiriusDebugView extends AbstractDebugView {
     }
 
     private void addSelectReusedSiriussAction() {
-        addAction("Select reused", new Runnable() {
-            @Override
-            public void run() {
-                if (selection instanceof Viewpoint) {
-                    final Option<Set<URI>> sel = new ViewpoitnDependenciesSelectionDialog((Viewpoint) selection).selectReusedViewpoints(getSite().getShell());
-                    if (sel.some()) {
-                        ((Viewpoint) selection).getReuses().clear();
-                        Iterables.addAll(((Viewpoint) selection).getReuses(), sel.get());
-                    }
+        addAction("Viewpoint - Select reused", () -> {
+            if (selection instanceof Viewpoint) {
+                final Option<Set<URI>> sel = new ViewpoitnDependenciesSelectionDialog((Viewpoint) selection).selectReusedViewpoints(getSite().getShell());
+                if (sel.some()) {
+                    ((Viewpoint) selection).getReuses().clear();
+                    Iterables.addAll(((Viewpoint) selection).getReuses(), sel.get());
                 }
             }
         });
     }
 
     private void addRefreshDiagramAction() {
-        addAction("Refresh diagram", new Runnable() {
-            @Override
-            public void run() {
-                if (selection instanceof DiagramEditPart) {
-                    final DiagramEditPart diag = (DiagramEditPart) selection;
-                    diag.refresh();
-                    for (IGraphicalEditPart child : Iterables.filter(diag.getChildren(), IGraphicalEditPart.class)) {
-                        child.refresh();
-                    }
+        addAction("Refresh diagram", () -> {
+            if (selection instanceof DiagramEditPart) {
+                DiagramEditPart diag = (DiagramEditPart) selection;
+                diag.refresh();
+                for (IGraphicalEditPart child : Iterables.filter(diag.getChildren(), IGraphicalEditPart.class)) {
+                    child.refresh();
                 }
             }
         });
     }
 
     private void addRefreshCoverageAction() {
-        addAction("Refresh coverage", new Runnable() {
-            @Override
-            public void run() {
-                if (selection instanceof SequenceDiagramEditPart) {
-                    final SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
-                    TransactionalEditingDomain ted = sdep.getEditingDomain();
-                    RefreshGraphicalCoverage refreshGraphicalCoverage = new RefreshGraphicalCoverage(ted, sdep);
-                    sdep.getEditingDomain().getCommandStack().execute(refreshGraphicalCoverage);
-                }
+        addAction("Sequence Diagram - Refresh Coverage", () -> {
+            if (selection instanceof SequenceDiagramEditPart) {
+                final SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
+                TransactionalEditingDomain ted = sdep.getEditingDomain();
+                RefreshGraphicalCoverage refreshGraphicalCoverage = new RefreshGraphicalCoverage(ted, sdep);
+                sdep.getEditingDomain().getCommandStack().execute(refreshGraphicalCoverage);
             }
         });
     }
 
     private void addExpandAction() {
-        addAction("Expand", new Runnable() {
-            @Override
-            public void run() {
-                if (selection instanceof SequenceDiagramEditPart) {
-                    final int start = Integer.parseInt(askStringFromUser("Expansion", "Start y", "0"));
-                    final int size = Integer.parseInt(askStringFromUser("Expansion", "Size", "0"));
-                    final SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
-                    TransactionalEditingDomain ted = sdep.getEditingDomain();
-                    RecordingCommand verticalSpaceExpansion = CommandFactory.createRecordingCommand(ted,
-                            new VerticalSpaceExpansion(sdep.getSequenceDiagram(), new Range(start, start + size), 0, Collections.<ISequenceEvent> emptyList()));
-                    sdep.getEditingDomain().getCommandStack().execute(verticalSpaceExpansion);
-                }
+        addAction("Sequence Diagram - Expand", () -> {
+            if (selection instanceof SequenceDiagramEditPart) {
+                final int start = Integer.parseInt(askStringFromUser("Expansion", "Start y", "0"));
+                final int size = Integer.parseInt(askStringFromUser("Expansion", "Size", "0"));
+                final SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
+                TransactionalEditingDomain ted = sdep.getEditingDomain();
+                RecordingCommand verticalSpaceExpansion = CommandFactory.createRecordingCommand(ted,
+                        new VerticalSpaceExpansion(sdep.getSequenceDiagram(), new Range(start, start + size), 0, Collections.<ISequenceEvent> emptyList()));
+                sdep.getEditingDomain().getCommandStack().execute(verticalSpaceExpansion);
             }
         });
     }
 
     private void addRefreshBenpointsAction() {
-        addAction("Refresh bendpoints", new Runnable() {
-            @Override
-            public void run() {
-                if (selection instanceof SequenceMessageEditPart) {
-                    final SequenceMessageEditPart smep = (SequenceMessageEditPart) selection;
+        addAction("Refresh bendpoints", () -> {
+            if (selection instanceof SequenceMessageEditPart) {
+                final SequenceMessageEditPart smep = (SequenceMessageEditPart) selection;
+                TransactionalEditingDomain ted = smep.getEditingDomain();
+                RefreshBendpoints refreshBendpoints = new RefreshBendpoints(ted, smep);
+                smep.getEditingDomain().getCommandStack().execute(refreshBendpoints);
+            } else if (selection instanceof SequenceDiagramEditPart) {
+                for (final SequenceMessageEditPart smep : Iterables.filter(((SequenceDiagramEditPart) selection).getChildren(), SequenceMessageEditPart.class)) {
                     TransactionalEditingDomain ted = smep.getEditingDomain();
                     RefreshBendpoints refreshBendpoints = new RefreshBendpoints(ted, smep);
                     smep.getEditingDomain().getCommandStack().execute(refreshBendpoints);
-                } else if (selection instanceof SequenceDiagramEditPart) {
-                    for (final SequenceMessageEditPart smep : Iterables.filter(((SequenceDiagramEditPart) selection).getChildren(), SequenceMessageEditPart.class)) {
-                        TransactionalEditingDomain ted = smep.getEditingDomain();
-                        RefreshBendpoints refreshBendpoints = new RefreshBendpoints(ted, smep);
-                        smep.getEditingDomain().getCommandStack().execute(refreshBendpoints);
-                    }
                 }
             }
         });
-
     }
 
     private void addResetBendpointsAction() {
-        addAction("Reset bendpoints", new Runnable() {
-            @Override
-            public void run() {
-                if (selection instanceof SequenceDiagramEditPart) {
-                    final SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
-                    TransactionalEditingDomain ted = sdep.getEditingDomain();
-                    RecordingCommand verticalSpaceExpansion = CommandFactory.createRecordingCommand(ted,
-                            new VerticalSpaceExpansion(sdep.getSequenceDiagram(), new Range(0, 0), 0, Lists.<ISequenceEvent> newArrayList()));
-                    sdep.getEditingDomain().getCommandStack().execute(verticalSpaceExpansion);
-                }
+        addAction("Sequence Diagram - Reset Bendpoints", () -> {
+            if (selection instanceof SequenceDiagramEditPart) {
+                final SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
+                TransactionalEditingDomain ted = sdep.getEditingDomain();
+                RecordingCommand verticalSpaceExpansion = CommandFactory.createRecordingCommand(ted,
+                        new VerticalSpaceExpansion(sdep.getSequenceDiagram(), new Range(0, 0), 0, Lists.<ISequenceEvent> newArrayList()));
+                sdep.getEditingDomain().getCommandStack().execute(verticalSpaceExpansion);
             }
         });
     }
@@ -1184,13 +1130,10 @@ public class SiriusDebugView extends AbstractDebugView {
      * Position Changes".
      */
     private void addStorePositionsAction() {
-        addAction("Store positions", new Runnable() {
-            @Override
-            public void run() {
-                if (selection instanceof SequenceDiagramEditPart) {
-                    SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
-                    storedPositions = readVerticalPositions(sdep);
-                }
+        addAction("Sequence Diagram - Store positions", () -> {
+            if (selection instanceof SequenceDiagramEditPart) {
+                SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
+                storedPositions = readVerticalPositions(sdep);
             }
         });
     }
@@ -1200,30 +1143,27 @@ public class SiriusDebugView extends AbstractDebugView {
      * positions". Only the elements whose position is different are shown (i.e. an empty report means nothing changed).
      */
     private void addShowPositionChangesAction() {
-        addAction("Show Position Changes", new Runnable() {
-            @Override
-            public void run() {
-                if (selection instanceof SequenceDiagramEditPart) {
-                    SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
-                    if (storedPositions != null) {
-                        Map<EObject, Integer> newPositions = readVerticalPositions(sdep);
-                        List<EObject> elements = new ArrayList<EObject>(newPositions.keySet());
-                        Collections.sort(elements, Ordering.natural().onResultOf(Functions.forMap(newPositions)));
-                        TabularReport report = new TabularReport("Semantic element", "Old Position", "New Position", "deltaY");
-                        AdapterFactoryLabelProvider lp = new AdapterFactoryLabelProvider(getAdapterFactory());
-                        for (EObject element : elements) {
-                            Integer oldY = storedPositions.get(element);
-                            Integer newY = newPositions.get(element);
-                            if (oldY != null && !oldY.equals(newY)) {
-                                report.addLine(lp.getText(element), String.valueOf(oldY), String.valueOf(newY), String.valueOf(newY - oldY));
-                            } else if (oldY == null) {
-                                report.addLine(lp.getText(element), "-", String.valueOf(newY), "n/a");
-                            } else if (newY == VerticalPositionFunction.INVALID_POSITION) {
-                                report.addLine(lp.getText(element), String.valueOf(oldY), "-", "n/a");
-                            }
+        addAction("Sequence Diagram - Show Position Changes", () -> {
+            if (selection instanceof SequenceDiagramEditPart) {
+                SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
+                if (storedPositions != null) {
+                    Map<EObject, Integer> newPositions = readVerticalPositions(sdep);
+                    List<EObject> elements = new ArrayList<EObject>(newPositions.keySet());
+                    Collections.sort(elements, Ordering.natural().onResultOf(Functions.forMap(newPositions)));
+                    TabularReport report = new TabularReport("Semantic element", "Old Position", "New Position", "deltaY");
+                    AdapterFactoryLabelProvider lp = new AdapterFactoryLabelProvider(getAdapterFactory());
+                    for (EObject element : elements) {
+                        Integer oldY = storedPositions.get(element);
+                        Integer newY = newPositions.get(element);
+                        if (oldY != null && !oldY.equals(newY)) {
+                            report.addLine(lp.getText(element), String.valueOf(oldY), String.valueOf(newY), String.valueOf(newY - oldY));
+                        } else if (oldY == null) {
+                            report.addLine(lp.getText(element), "-", String.valueOf(newY), "n/a");
+                        } else if (newY == VerticalPositionFunction.INVALID_POSITION) {
+                            report.addLine(lp.getText(element), String.valueOf(oldY), "-", "n/a");
                         }
-                        setText(report.print());
                     }
+                    setText(report.print());
                 }
             }
         });
@@ -1244,68 +1184,62 @@ public class SiriusDebugView extends AbstractDebugView {
      * graphical position, it is also reported.
      */
     private void addShowOrderingsAction() {
-        addAction("Orderings", new Runnable() {
-            @Override
-            public void run() {
-                if (selection instanceof SequenceDiagramEditPart) {
-                    AdapterFactoryLabelProvider lp = new AdapterFactoryLabelProvider(getAdapterFactory());
-                    SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
-                    SequenceDDiagram diag = (SequenceDDiagram) sdep.resolveSemanticElement();
-                    VerticalPositionFunction vpf = new VerticalPositionFunction(diag);
-                    Iterator<EventEnd> go = diag.getGraphicalOrdering().getEventEnds().iterator();
-                    Iterator<EventEnd> so = diag.getSemanticOrdering().getEventEnds().iterator();
-                    TabularReport report = new TabularReport("Semantic", "Graphical", "Sync?", "Y");
-                    while (so.hasNext() || go.hasNext()) {
-                        List<String> line = new ArrayList<>();
+        addAction("Sequence Diagram - Orderings", () -> {
+            if (selection instanceof SequenceDiagramEditPart) {
+                AdapterFactoryLabelProvider lp = new AdapterFactoryLabelProvider(getAdapterFactory());
+                SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
+                SequenceDDiagram diag = (SequenceDDiagram) sdep.resolveSemanticElement();
+                VerticalPositionFunction vpf = new VerticalPositionFunction(diag);
+                Iterator<EventEnd> go = diag.getGraphicalOrdering().getEventEnds().iterator();
+                Iterator<EventEnd> so = diag.getSemanticOrdering().getEventEnds().iterator();
+                TabularReport report = new TabularReport("Semantic", "Graphical", "Sync?", "Y");
+                while (so.hasNext() || go.hasNext()) {
+                    List<String> line = new ArrayList<>();
 
-                        final EObject sosEnd;
-                        if (so.hasNext()) {
-                            EventEnd soEnd = so.next();
-                            sosEnd = soEnd.getSemanticEnd();
-                            line.add(lp.getText(sosEnd));
-                        } else {
-                            sosEnd = null;
-                            line.add("<none>");
-                        }
-
-                        final EObject gosEnd;
-                        final int y;
-                        if (go.hasNext()) {
-                            EventEnd goEnd = go.next();
-                            gosEnd = goEnd.getSemanticEnd();
-                            line.add(lp.getText(gosEnd));
-                            y = vpf.apply(goEnd);
-                        } else {
-                            gosEnd = null;
-                            line.add("<none>");
-                            y = -1;
-                        }
-
-                        if (sosEnd == gosEnd) {
-                            line.add("yes");
-                        } else {
-                            line.add("NO");
-                        }
-                        line.add(y != -1 ? String.valueOf(y) : "n/a");
-                        report.addLine(line);
+                    final EObject sosEnd;
+                    if (so.hasNext()) {
+                        EventEnd soEnd = so.next();
+                        sosEnd = soEnd.getSemanticEnd();
+                        line.add(lp.getText(sosEnd));
+                    } else {
+                        sosEnd = null;
+                        line.add("<none>");
                     }
-                    setText(report.print());
+
+                    final EObject gosEnd;
+                    final int y;
+                    if (go.hasNext()) {
+                        EventEnd goEnd = go.next();
+                        gosEnd = goEnd.getSemanticEnd();
+                        line.add(lp.getText(gosEnd));
+                        y = vpf.apply(goEnd);
+                    } else {
+                        gosEnd = null;
+                        line.add("<none>");
+                        y = -1;
+                    }
+
+                    if (sosEnd == gosEnd) {
+                        line.add("yes");
+                    } else {
+                        line.add("NO");
+                    }
+                    line.add(y != -1 ? String.valueOf(y) : "n/a");
+                    report.addLine(line);
                 }
+                setText(report.print());
             }
         });
     }
 
     private void addFoldingToggleAction() {
-        addAction("Toggle folding", new Runnable() {
-            @Override
-            public void run() {
-                if (selection instanceof IAbstractDiagramNodeEditPart) {
-                    IAbstractDiagramNodeEditPart part = (IAbstractDiagramNodeEditPart) selection;
-                    EdgeTargetQuery query = new EdgeTargetQuery((EdgeTarget) part.resolveDiagramElement());
-                    boolean isFoldingPoint = query.isFoldingPoint();
-                    if (isFoldingPoint) {
-                        part.getEditingDomain().getCommandStack().execute(new ToggleFoldingStateCommand(part.getEditingDomain(), part));
-                    }
+        addAction("Toggle folding", () -> {
+            if (selection instanceof IAbstractDiagramNodeEditPart) {
+                IAbstractDiagramNodeEditPart part = (IAbstractDiagramNodeEditPart) selection;
+                EdgeTargetQuery query = new EdgeTargetQuery((EdgeTarget) part.resolveDiagramElement());
+                boolean isFoldingPoint = query.isFoldingPoint();
+                if (isFoldingPoint) {
+                    part.getEditingDomain().getCommandStack().execute(new ToggleFoldingStateCommand(part.getEditingDomain(), part));
                 }
             }
         });
@@ -1323,15 +1257,12 @@ public class SiriusDebugView extends AbstractDebugView {
      * {@link #figureDetails(IFigure)} for what information is actually shown for each figure.
      */
     private void addShowFiguresHierarchyAction() {
-        addAction("Show figures", new Runnable() {
-            @Override
-            public void run() {
-                if (selection instanceof IAbstractDiagramNodeEditPart) {
-                    IAbstractDiagramNodeEditPart part = (IAbstractDiagramNodeEditPart) selection;
-                    StringBuilder sb = new StringBuilder();
-                    showFigures(part.getFigure(), 0, sb);
-                    setText(sb.toString());
-                }
+        addAction("Show figures", () -> {
+            if (selection instanceof IAbstractDiagramNodeEditPart) {
+                IAbstractDiagramNodeEditPart part = (IAbstractDiagramNodeEditPart) selection;
+                StringBuilder sb = new StringBuilder();
+                showFigures(part.getFigure(), 0, sb);
+                setText(sb.toString());
             }
         });
     }

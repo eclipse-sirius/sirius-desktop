@@ -29,12 +29,12 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.events.SelectionAdapter;
-import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.events.SelectionListener;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Text;
@@ -51,15 +51,28 @@ import org.eclipse.ui.part.ViewPart;
  */
 public abstract class AbstractDebugView extends ViewPart implements ISelectionListener {
 
+    private static class Action {
+        final String label;
+
+        final String description;
+
+        final Runnable body;
+
+        public Action(String label, String description, Runnable body) {
+            this.label = label;
+            this.description = description;
+            this.body = body;
+        }
+    }
+
     /**
      * The text area in which information is placed.
      */
     private Text info;
 
-    /**
-     * The group of action buttons.
-     */
-    private Group buttons;
+    private List<Action> actions = new ArrayList<>();
+
+    private Combo actionSelector;
 
     /**
      * The currently selection object.
@@ -73,13 +86,20 @@ public abstract class AbstractDebugView extends ViewPart implements ISelectionLi
         parent.setLayout(layout);
 
         info = new Text(parent, SWT.MULTI | SWT.READ_ONLY | SWT.WRAP | SWT.BORDER | SWT.H_SCROLL | SWT.V_SCROLL);
-        info.setText("Sirius/GMF Debug View");
+        info.setText("Sirius Debug View");
         info.setLayoutData(new GridData(GridData.FILL_BOTH));
         info.setFont(JFaceResources.getFont("org.eclipse.debug.ui.consoleFont"));
 
-        buttons = new Group(parent, SWT.SHADOW_ETCHED_IN);
+        Group buttons = new Group(parent, SWT.SHADOW_ETCHED_IN);
         buttons.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
         buttons.setLayout(new RowLayout(SWT.HORIZONTAL));
+        actionSelector = new Combo(buttons, SWT.DROP_DOWN | SWT.READ_ONLY);
+        Button actionLauncher = new Button(buttons, SWT.PUSH);
+        actionLauncher.setText("Run");
+        actionLauncher.addSelectionListener(SelectionListener.widgetSelectedAdapter(evt -> {
+            int idx = actionSelector.getSelectionIndex();
+            actions.get(idx).body.run();
+        }));
         createActionButtons();
     }
 
@@ -93,18 +113,10 @@ public abstract class AbstractDebugView extends ViewPart implements ISelectionLi
     /**
      * Helper method to add an action button to the view.
      */
-    protected void addAction(String name, String tooltip, final Runnable body) {
-        Button button = new Button(buttons, SWT.PUSH);
-        button.setText(name);
-        if (tooltip != null) {
-            button.setToolTipText(tooltip);
-        }
-        button.addSelectionListener(new SelectionAdapter() {
-            @Override
-            public void widgetSelected(SelectionEvent e) {
-                body.run();
-            }
-        });
+    protected void addAction(String name, String description, final Runnable body) {
+        Action action = new Action(name, description, body);
+        actions.add(action);
+        actionSelector.add(action.label);
     }
 
     @Override
@@ -154,7 +166,7 @@ public abstract class AbstractDebugView extends ViewPart implements ISelectionLi
     }
 
     protected AdapterFactory getAdapterFactory() {
-        List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
+        List<AdapterFactory> factories = new ArrayList<>();
         factories.add(new ViewpointItemProviderAdapterFactory());
         factories.add(new ResourceItemProviderAdapterFactory());
         factories.add(new EcoreItemProviderAdapterFactory());
