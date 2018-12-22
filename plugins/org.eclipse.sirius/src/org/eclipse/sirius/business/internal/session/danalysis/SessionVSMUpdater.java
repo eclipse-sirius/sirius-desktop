@@ -59,35 +59,28 @@ public class SessionVSMUpdater implements ViewpointRegistryListener2 {
             // Reload unloaded odesign (ViewpointRegistry can unload them).
             IFile correspondingFile = WorkspaceSynchronizer.getFile(res);
             if (!res.isLoaded() && correspondingFile != null && correspondingFile.exists()) {
-                try {
-                    res.load(Collections.emptyMap());
-                    if (res.isLoaded() && !res.getContents().isEmpty()) {
-                        session.registerResourceInCrossReferencer(res);
-                        // Refresh the imports of interpreter in case of new
-                        // Java Extension
-                        InterpreterRegistry.prepareImportsFromSession(session.getInterpreter(), session);
-                    }
-                } catch (IOException e) {
-                    SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.SessionVSMUpdater_VSMLoadErrorMsg, res.getURI()), e);
-                }
+                loadVSMInSession(res);
             } else if (res.getURI().isPlatformPlugin()) {
                 if (res.isLoaded()) {
                     res.unload();
                 }
-                try {
-                    res.load(Collections.emptyMap());
-                    if (res.isLoaded() && !res.getContents().isEmpty()) {
-                        session.registerResourceInCrossReferencer(res);
-                        // Refresh the imports of interpreter in case of new
-                        // Java Extension
-                        InterpreterRegistry.prepareImportsFromSession(session.getInterpreter(), session);
-                    }
-                } catch (IOException e) {
-                    SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.SessionVSMUpdater_VSMLoadErrorMsg, res.getURI()), e);
-                }
+                loadVSMInSession(res);
             }
         }
         session.notifyListeners(SessionListener.VSM_UPDATED);
+    }
+
+    private void loadVSMInSession(Resource vsmResource) {
+        try {
+            vsmResource.load(Collections.emptyMap());
+            if (vsmResource.isLoaded() && !vsmResource.getContents().isEmpty()) {
+                session.registerResourceInCrossReferencer(vsmResource);
+                // Refresh the imports of interpreter in case of new Java Extension
+                InterpreterRegistry.prepareImportsFromSession(session.getInterpreter(), session);
+            }
+        } catch (IOException e) {
+            SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.SessionVSMUpdater_VSMLoadErrorMsg, vsmResource.getURI()), e);
+        }
     }
 
     private static List<Resource> findAllVSMResources(DAnalysisSessionImpl session) {
