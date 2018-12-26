@@ -31,7 +31,6 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.window.Window;
-import org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -80,8 +79,8 @@ public abstract class AbstractExportRepresentationsAction extends Action {
     public void run() {
         Collection<DRepresentationDescriptor> repDescriptorsToExport = getRepresentationToExport().stream().filter(Objects::nonNull).collect(Collectors.toList());
 
-        // keep only the valid representations
-        repDescriptorsToExport = repDescriptorsToExport.stream().filter(repDesc -> new DRepresentationDescriptorQuery(repDesc).isRepresentationValid()).collect(Collectors.toList());
+        // keep only the DRepresentationDescriptor which DRepresentation is not null
+        repDescriptorsToExport = repDescriptorsToExport.stream().filter(repDesc -> repDesc.getRepresentation() != null).collect(Collectors.toList());
 
         if (!repDescriptorsToExport.isEmpty()) {
             DRepresentationDescriptor firstDRepDescriptorToExport = repDescriptorsToExport.iterator().next();
@@ -179,14 +178,26 @@ public abstract class AbstractExportRepresentationsAction extends Action {
      * @return the export path.
      */
     protected IPath getExportPath(DRepresentationDescriptor repDescriptor, Session session) {
-        URI representationResourceURI = repDescriptor.getRepresentation().eResource().getURI();
-        URIQuery uriQuery = new URIQuery(representationResourceURI);
-        Option<IResource> iResourceOption = uriQuery.getCorrespondingResource();
-        if (iResourceOption.some()) {
-            return iResourceOption.get().getParent().getLocation();
+        IPath exportPath = null;
+        DRepresentation representation = repDescriptor.getRepresentation();
+        if (representation != null) {
+            URI representationResourceURI = repDescriptor.getRepresentation().eResource().getURI();
+            URIQuery uriQuery = new URIQuery(representationResourceURI);
+            Option<IResource> iResourceOption = uriQuery.getCorrespondingResource();
+            if (iResourceOption.some()) {
+                exportPath = iResourceOption.get().getParent().getLocation();
+            } else {
+                exportPath = getExportPath(session);
+            }
         }
+        return exportPath;
+    }
 
-        IPath exportPath = Platform.getLocation();
+    private IPath getExportPath(Session session) {
+        IPath exportPath;
+        URIQuery uriQuery;
+        Option<IResource> iResourceOption;
+        exportPath = Platform.getLocation();
         URI mainSessionResourceURI = session.getSessionResource().getURI();
         uriQuery = new URIQuery(mainSessionResourceURI);
         iResourceOption = uriQuery.getCorrespondingResource();
