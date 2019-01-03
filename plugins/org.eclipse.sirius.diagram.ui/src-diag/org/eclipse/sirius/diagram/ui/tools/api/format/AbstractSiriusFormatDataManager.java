@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -53,7 +53,6 @@ import org.eclipse.gmf.runtime.notation.RoutingStyle;
 import org.eclipse.gmf.runtime.notation.Smoothness;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
-import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.ContainerStyle;
@@ -85,6 +84,7 @@ import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBor
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
+import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Style;
@@ -464,7 +464,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      */
     protected void applySiriusStyle(DSemanticDecorator semanticDecorator, AbstractFormatData formatData) {
         // Make a copy of the style to allow several Paste with the same FormatData.
-        Style copyOfSiriusStyle = SiriusCopier.Helper.copy(formatData.getSiriusStyle());
+        Style copyOfSiriusStyle = SiriusCopierHelper.copyWithNoUidDuplication(formatData.getSiriusStyle());
         if ((semanticDecorator instanceof DNode || semanticDecorator instanceof DNodeListElement) && copyOfSiriusStyle instanceof NodeStyle) {
             if (semanticDecorator instanceof DNode) {
                 computeCustomFeatures(((DNode) semanticDecorator).getOwnedStyle(), copyOfSiriusStyle);

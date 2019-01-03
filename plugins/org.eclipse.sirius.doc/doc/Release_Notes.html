@@ -142,6 +142,22 @@
 				<code>org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor.isPrintable</code>. This attribute is used to know if the decoration should be hidden when printing or exporting the diagram. The behavior is applied only if there is no printable decoration in its diagram element location (South, West, South-West etc).
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.common">Changes in  
+			<code>org.eclipse.sirius.common</code>
+		</h4>
+		<ul>
+			<li><span class="label label-danger">Removed</span> The class 
+				<code>org.eclipse.sirius.common.tools.api.util.SiriusCopier</code> has been replaced by the internal class 
+				<code>org.eclipse.sirius.tools.internal.SiriusCopierHelper</code>. 
+				<code>SiriusCopier.Helper.copy(T)</code> and 
+				<code>SiriusCopier.Helper.copyAll(Collection&lt;? extends T&gt;)</code> have been replaced by 
+				<code>SiriusCopierHelper.copyWithNoUidDuplication(T)</code>, 
+				<code>SiriusCopierHelper.copyAllWithNoUidDuplication(Collection&lt;? extends T&gt;)</code> and 
+				<code>SiriusCopierHelper.copyAllWithNoUidDuplication(Collection&lt;? extends EObject&gt;, boolean, boolean, boolean)</code>. It provides the ability to copy an object without copying the EAttribute 
+				<code>IDENTIFIED_ELEMENT__UID</code>. For all these methods, this id is not set by the factory or during object creation, it is set during the copy using 
+				<code>org.eclipse.emf.ecore.util.EcoreUtil.generateUUID()</code>.
+			</li>
+		</ul>
 		<h2 id="sirius6.1.1">Changes in Sirius 6.1.1</h2>
 		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in  
 			<code>org.eclipse.sirius.diagram</code>
@@ -454,7 +470,7 @@
 				<code>org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures</code> package.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in  
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -583,7 +599,7 @@
 				<code>SemanticBasedDecoration</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -1022,7 +1038,7 @@
 				<code>DialectManagerImpl</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common4">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>

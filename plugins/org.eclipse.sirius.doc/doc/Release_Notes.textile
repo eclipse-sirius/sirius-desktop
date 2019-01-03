@@ -29,6 +29,11 @@ h4. Changes in  @org.eclipse.sirius.diagram@
 
 * <span class="label label-success">Added</span> The getter and setter methods have been added for the new attribute @org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor.isPrintable@. This attribute is used to know if the decoration should be hidden when printing or exporting the diagram. The behavior is applied only if there is no printable decoration in its diagram element location (South, West, South-West etc).
 
+h4. Changes in  @org.eclipse.sirius.common@
+
+* <span class="label label-danger">Removed</span> The class @org.eclipse.sirius.common.tools.api.util.SiriusCopier@ has been replaced by the internal class @org.eclipse.sirius.tools.internal.SiriusCopierHelper@. @SiriusCopier.Helper.copy(T)@ and @SiriusCopier.Helper.copyAll(Collection<? extends T>)@ have been replaced by @SiriusCopierHelper.copyWithNoUidDuplication(T)@, @SiriusCopierHelper.copyAllWithNoUidDuplication(Collection<? extends T>)@ and @SiriusCopierHelper.copyAllWithNoUidDuplication(Collection<? extends EObject>, boolean, boolean, boolean)@. It provides the ability to copy an object without copying the EAttribute @IDENTIFIED_ELEMENT__UID@. For all these methods, this id is not set by the factory or during object creation, it is set during the copy using @org.eclipse.emf.ecore.util.EcoreUtil.generateUUID()@.
+
+
 h2(#sirius6.1.1). Changes in Sirius 6.1.1
 
 h4. Changes in  @org.eclipse.sirius.diagram@

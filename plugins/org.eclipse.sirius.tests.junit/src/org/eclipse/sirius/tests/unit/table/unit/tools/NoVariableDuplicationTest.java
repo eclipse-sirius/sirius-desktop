@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under theier instead of EcoreUtil.Copier in tests
  * which accompanies this distribution, and is available at
@@ -14,7 +14,6 @@ package org.eclipse.sirius.tests.unit.table.unit.tools;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
 import org.eclipse.sirius.table.business.internal.metamodel.TableToolVariables;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
 import org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool;
@@ -25,6 +24,7 @@ import org.eclipse.sirius.table.metamodel.table.description.DeleteLineTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
 import org.eclipse.sirius.table.metamodel.table.description.LabelEditTool;
 import org.eclipse.sirius.table.metamodel.table.description.TableVariable;
+import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
 
 import junit.framework.TestCase;
 
@@ -236,7 +236,7 @@ public class NoVariableDuplicationTest extends TestCase {
 
     private void checkNoModifOncopy(EObject tool) {
         // Copy createLineTool
-        EObject copy = SiriusCopier.Helper.copy(tool);
+        EObject copy = SiriusCopierHelper.copyWithNoUidDuplication(tool);
 
         assertTrue("The copy must be same that origin", EcoreUtil.equals(tool, copy));
     }

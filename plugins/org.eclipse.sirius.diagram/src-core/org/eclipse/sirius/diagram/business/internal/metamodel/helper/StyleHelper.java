@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,6 @@ import org.eclipse.sirius.business.api.metamodel.helper.FontFormatHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
-import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.BeginLabelStyle;
@@ -92,6 +91,7 @@ import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePrefere
 import org.eclipse.sirius.diagram.util.DiagramSwitch;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -733,7 +733,7 @@ public final class StyleHelper {
             }
         }
         if (brokenStyle && style.eContainer() instanceof AbstractDNode) {
-            EObject copy = SiriusCopier.Helper.copy(createNodeStyle(description));
+            EObject copy = SiriusCopierHelper.copyWithNoUidDuplication(createNodeStyle(description));
             final NodeStyle newStyle = (NodeStyle) copy;
             affectStyle((AbstractDNode) style.eContainer(), newStyle);
         }

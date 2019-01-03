@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
+import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
 import org.eclipse.sirius.viewpoint.description.Group;
 
 import com.google.common.collect.Iterables;
@@ -134,7 +134,7 @@ public final class SiriusClipboardManager {
 
     private Collection<Object> getCopyOfClipboard() {
         if (clipboard != null && !clipboard.isEmpty()) {
-            return SiriusCopier.Helper.copyAll(clipboard);
+            return SiriusCopierHelper.copyAllWithNoUidDuplication(clipboard);
         }
         return null;
     }

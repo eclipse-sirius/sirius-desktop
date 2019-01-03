@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -47,7 +47,6 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
@@ -63,6 +62,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfi
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.LayoutUtil;
+import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DStylizable;
@@ -373,23 +373,23 @@ public final class LayoutUtils {
             final Node nodeTarget = (Node) targetView;
             final LayoutConstraint sourceConstraint = nodeSource.getLayoutConstraint();
             if (sourceConstraint != null) {
-                nodeTarget.setLayoutConstraint(SiriusCopier.Helper.copy(sourceConstraint));
+                nodeTarget.setLayoutConstraint(SiriusCopierHelper.copyWithNoUidDuplication(sourceConstraint));
             }
         } else if (sourceView instanceof Edge && targetView instanceof Edge) {
             final Edge edgeSource = (Edge) sourceView;
             final Edge edgeTarget = (Edge) targetView;
             if (edgeSource.getBendpoints() != null) {
-                edgeTarget.setBendpoints(SiriusCopier.Helper.copy(edgeSource.getBendpoints()));
+                edgeTarget.setBendpoints(SiriusCopierHelper.copyWithNoUidDuplication(edgeSource.getBendpoints()));
             }
             if (edgeSource.getSourceAnchor() != null) {
-                edgeTarget.setSourceAnchor(SiriusCopier.Helper.copy(edgeSource.getSourceAnchor()));
+                edgeTarget.setSourceAnchor(SiriusCopierHelper.copyWithNoUidDuplication(edgeSource.getSourceAnchor()));
             }
             if (edgeSource.getTargetAnchor() != null) {
-                edgeTarget.setTargetAnchor(SiriusCopier.Helper.copy(edgeSource.getTargetAnchor()));
+                edgeTarget.setTargetAnchor(SiriusCopierHelper.copyWithNoUidDuplication(edgeSource.getTargetAnchor()));
             }
             final RoutingStyle rstyle = (RoutingStyle) edgeSource.getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
             if (rstyle != null) {
-                edgeTarget.getStyles().add(SiriusCopier.Helper.copy(rstyle));
+                edgeTarget.getStyles().add(SiriusCopierHelper.copyWithNoUidDuplication(rstyle));
             }
         }
     }

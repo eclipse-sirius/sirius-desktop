@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,6 @@ import java.util.List;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
@@ -32,6 +31,7 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.table.unit.common.TableTestCase;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
+import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Tree;
@@ -244,7 +244,7 @@ public class DTableSynchronizerVSMWithEditorTest extends TableTestCase {
         assertEquals("The number of columns mapping is not correct", 4, columns.size());
 
         // Add 1 column.
-        final FeatureColumnMapping columnToAdd = (FeatureColumnMapping) SiriusCopier.Helper.copy(columns.get(3));
+        final FeatureColumnMapping columnToAdd = (FeatureColumnMapping) SiriusCopierHelper.copyWithNoUidDuplication(columns.get(3));
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new SiriusCommand(session.getTransactionalEditingDomain()) {
 
@@ -321,7 +321,7 @@ public class DTableSynchronizerVSMWithEditorTest extends TableTestCase {
         }
 
         // Add 1 sub line mapping.
-        final LineMapping lineToAdd = (LineMapping) SiriusCopier.Helper.copy(lines.get(0).getAllSubLines().get(1));
+        final LineMapping lineToAdd = (LineMapping) SiriusCopierHelper.copyWithNoUidDuplication(lines.get(0).getAllSubLines().get(1));
         assertEquals("Bad line to copy", "Attribut2", lineToAdd.getName());
 
         String commandName = "Add a new sub line mapping";
@@ -472,7 +472,7 @@ public class DTableSynchronizerVSMWithEditorTest extends TableTestCase {
         assertEquals("The number of sub sub line mapping is not correct", 3, lines.get(0).getAllSubLines().get(0).getAllSubLines().size());
 
         // Add 1 sub line to the first sub line of the first line.
-        final LineMapping lineToAdd = (LineMapping) SiriusCopier.Helper.copy(lines.get(0).getAllSubLines().get(0).getAllSubLines().get(0));
+        final LineMapping lineToAdd = (LineMapping) SiriusCopierHelper.copyWithNoUidDuplication(lines.get(0).getAllSubLines().get(0).getAllSubLines().get(0));
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new SiriusCommand(session.getTransactionalEditingDomain()) {
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,10 +14,10 @@ package org.eclipse.sirius.tests.unit.perf.diagram.refresh;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.tests.unit.diagram.refresh.AbstractSynchronizerTest;
+import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
 
 public class DiagramSynchronizerMappingScaleTest extends AbstractSynchronizerTest {
 
@@ -49,7 +49,7 @@ public class DiagramSynchronizerMappingScaleTest extends AbstractSynchronizerTes
         prepareSynchronizer(classDiag, "Test class diagram");
 
         for (int j = 1; j < nbNewElements + 1; j++) {
-           final NodeMapping newMapping = (NodeMapping) SiriusCopier.Helper.copy(originalMapping);
+           final NodeMapping newMapping = (NodeMapping) SiriusCopierHelper.copyWithNoUidDuplication(originalMapping);
             newMapping.setName("New Mapping" + j);
             domain.getCommandStack().execute(new RecordingCommand(domain) {
 

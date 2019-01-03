@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.layout;
 
 import java.text.MessageFormat;
+import java.util.Arrays;
 import java.util.Map;
 
 import org.eclipse.draw2d.geometry.Dimension;
@@ -32,7 +33,6 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.common.tools.api.util.SiriusCopier;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.layoutdata.AbstractLayoutData;
@@ -48,6 +48,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.layout.semantic.SemanticEdge
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.semantic.SemanticNodeLayoutDataKey;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
+import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
 import org.eclipse.sirius.viewpoint.DStylizable;
 
 import com.google.common.base.Predicate;
@@ -146,12 +147,11 @@ public class LayoutDataHelperImpl implements LayoutDataHelper {
         // 1-Copy Sirius Style
         if (view.getElement() instanceof DStylizable) {
             // If several paste can be done, the paste might also need to udpate the id.
-            layoutData.setSiriusStyle(SiriusCopier.Helper.copy(((DStylizable) view.getElement()).getStyle()));
+            layoutData.setSiriusStyle(SiriusCopierHelper.copyWithNoUidDuplication(((DStylizable) view.getElement()).getStyle()));
         }
 
         // 2-Copy GMF view to retrieve GMF style
-        SiriusCopier copierWithoutElementRef = new SiriusCopier(false, false);
-        View viewCopy = (View) copierWithoutElementRef.copy(view);
+        View viewCopy = (View) SiriusCopierHelper.copyAllWithNoUidDuplication(Arrays.asList(view), false, false, false).get(view);
         layoutData.setGmfView(viewCopy);
     }
 
@@ -301,8 +301,7 @@ public class LayoutDataHelperImpl implements LayoutDataHelper {
     }
 
     /**
-     * Creates a new Point which is translated by the values of the provided
-     * Point.
+     * Creates a new Point which is translated by the values of the provided Point.
      * 
      * @param originalPoint
      *            The point to translate.
@@ -318,8 +317,7 @@ public class LayoutDataHelperImpl implements LayoutDataHelper {
     }
 
     /**
-     * Creates a new Point which is translated by the values of the provided
-     * Point.
+     * Creates a new Point which is translated by the values of the provided Point.
      * 
      * @param originalPoint
      *            The point to translate.
