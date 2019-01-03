@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -851,5 +852,33 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
             fail("The test should be checked, the tested method could no more exist.");
         }
         assertEquals("The returned path should correspond to the platform location for the InMemory test aird without real semantic file.", Platform.getLocation(), path);
+    }
+
+    public void testExportWithNegativeScaleThrowsException() throws Exception {
+        Integer scaleLevel = Integer.valueOf(-1);
+        exportWithInvalidScaleLevel(scaleLevel);
+    }
+
+    public void testExportWithTooLargeScaleThrowsException() throws Exception {
+        Integer scaleLevel = Integer.valueOf(101);
+        exportWithInvalidScaleLevel(scaleLevel);
+    }
+
+    public void testExportWithNullScaleThrowsException() throws Exception {
+        exportWithInvalidScaleLevel(null);
+    }
+
+    private void exportWithInvalidScaleLevel(Integer scaleLevel) throws Exception {
+        String outputPath = "/" + TEMPORARY_PROJECT_NAME + "/" + IMAGE_FILE_NAME + ImageFileFormat.PNG.getName().toLowerCase();
+        String failureMessage = "The export should throw an IllegalArgumentException because the scale level is invalid.";
+        try {
+            ExportAction exportAction = new ExportAction(session, Collections.singletonList(getRepresentation()), new Path(outputPath), ImageFileFormat.PNG, false, true);
+            exportAction.setDiagramScaleLevel(scaleLevel);
+            fail(failureMessage);
+        } catch (IllegalArgumentException iae) {
+            assertEquals("The scale level must be a percentage (between 0 to 100).", iae.getMessage());
+        } catch (Exception e) {
+            fail(failureMessage);
+        }
     }
 }
