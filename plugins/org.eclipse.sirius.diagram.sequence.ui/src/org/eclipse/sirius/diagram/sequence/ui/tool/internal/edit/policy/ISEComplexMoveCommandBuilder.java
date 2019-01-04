@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -36,7 +36,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.State;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.ISequenceNodeMoveOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.ReparentExecutionOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SetMessageRangeOperation;
-import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansion;
+import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansionOrReduction;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.EventFinder;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.ShiftMessagesOperation;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.ISEComplexMoveValidator;
@@ -166,7 +166,8 @@ public class ISEComplexMoveCommandBuilder {
             Point locationOnFinalParent = new Point(realLocation.x, d.height);
 
             // Create the command to apply the change.
-            final ICommand moveCommand = new SetBoundsCommand(ctc.getEditingDomain(), DiagramUIMessages.Commands_MoveElement, new EObjectAdapter(entry.getKey().getNotationNode()), locationOnFinalParent);
+            final ICommand moveCommand = new SetBoundsCommand(ctc.getEditingDomain(), DiagramUIMessages.Commands_MoveElement, new EObjectAdapter(entry.getKey().getNotationNode()),
+                    locationOnFinalParent);
             ctc.compose(moveCommand);
 
         }
@@ -202,7 +203,7 @@ public class ISEComplexMoveCommandBuilder {
 
     private void expandDiagram(CompositeTransactionalCommand ctc, Integer vMove) {
         if (validator.getExpansionZone() != null && !validator.getExpansionZone().isEmpty()) {
-            ctc.compose(CommandFactory.createICommand(editingDomain, new VerticalSpaceExpansion(validator.getDiagram(), validator.getExpansionZone(), vMove, validator.getMovedElements())));
+            ctc.compose(CommandFactory.createICommand(editingDomain, new VerticalSpaceExpansionOrReduction(validator.getDiagram(), validator.getExpansionZone(), vMove, validator.getMovedElements())));
         }
     }
 
@@ -211,8 +212,8 @@ public class ISEComplexMoveCommandBuilder {
         Collection<AbstractNodeEvent> movedExecutions = Lists.newArrayList(Iterables.filter(sequenceNodesToMove, AbstractNodeEvent.class));
 
         // reparent unmoved executions
-        Collection<AbstractNodeEvent> unmovedExecutions = Lists.newArrayList(Iterables.filter(validator.getDiagram().getAllAbstractNodeEvents(),
-                Predicates.not(Predicates.in(validator.getMovedElements()))));
+        Collection<AbstractNodeEvent> unmovedExecutions = Lists
+                .newArrayList(Iterables.filter(validator.getDiagram().getAllAbstractNodeEvents(), Predicates.not(Predicates.in(validator.getMovedElements()))));
 
         for (AbstractNodeEvent execToReparent : Iterables.concat(movedExecutions, unmovedExecutions)) {
             ISequenceEvent potentialParent = getNewParent(execToReparent, reparents);

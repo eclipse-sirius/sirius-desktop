@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2017 Obeo.
+ * Copyright (c) 2015, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,13 +21,13 @@ import org.eclipse.sirius.ext.base.I18N.TranslatableMessage;
  * @author mporhel
  */
 public final class Messages {
-    
+
     static {
         I18N.initializeMessages(Messages.class, SequenceDiagramPlugin.INSTANCE);
     }
 
     // CHECKSTYLE:OFF
-    
+
     @TranslatableMessage
     public static String AbstractFrame_coverageProfilerTaskCategory;
 
@@ -111,10 +111,10 @@ public final class Messages {
 
     @TranslatableMessage
     public static String RefreshLayoutCommand_profilerTaskCategory;
-    
+
     @TranslatableMessage
     public static String RefreshLayoutCommand_profilerTaskName;
-    
+
     @TranslatableMessage
     public static String RefreshSemanticOrderingsOperation_operationName;
 
@@ -181,8 +181,11 @@ public final class Messages {
     @TranslatableMessage
     public static String VerticalSpaceExpansion_operationName;
 
+    @TranslatableMessage
+    public static String VerticalSpaceReduction_operationName;
+
     // CHECKSTYLE:ON
-    
+
     private Messages() {
         // Prevents instanciation.
     }

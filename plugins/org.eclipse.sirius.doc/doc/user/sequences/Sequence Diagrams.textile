@@ -49,13 +49,27 @@ It is also possible to manually insert vertical blank space to facilitate the or
 
 This feature is available in two different contexts: 
 
-* on the vertical ruler by dragging the mouse with the Ctrl key pressed.
+* on the vertical ruler by dragging the mouse from top to bottom with the Ctrl key pressed.
 Below, an example where user inserts blank space before message m3:
 !images/insert_vertical_blank_space.png(Example where user inserts blank space before message m3)!
 
 To show ruler, you need to check the option _Show Ruler_ as explained in "Rulers & Grid":../diagrams/Diagrams.html#RulersGrid chapter.
 
-* on standard edition mode by dragging the mouse anywhere in the canvas with the Ctrl+Shift keys pressed.
+* on standard edition mode by dragging the mouse from top to bottom anywhere in the canvas with the Ctrl+Shift keys pressed.
+
+h3(#remove_vertical_blank_space). Manually remove vertical blank space
+
+It is also possible to manually remove vertical blank space to facilitate the organization of messages. 
+
+This feature is available in two different contexts: 
+
+* on the vertical ruler by dragging the mouse from bottom to top with the Ctrl key pressed.
+Below, an example where user removes blank space before message m3:
+!images/remove_vertical_blank_space.png(Example where user removes blank space in message m7)!
+
+To show ruler, you need to check the option _Show Ruler_ as explained in "Rulers & Grid":../diagrams/Diagrams.html#RulersGrid chapter.
+
+* on standard edition mode by dragging the mouse from bottom to top anywhere in the canvas with the Ctrl+Shift keys pressed.
 
 h2(#elements). Sequence Diagram Elements
 

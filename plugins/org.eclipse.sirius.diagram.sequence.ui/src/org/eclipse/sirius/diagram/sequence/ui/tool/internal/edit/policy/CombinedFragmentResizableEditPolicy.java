@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -45,7 +45,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceE
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
-import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansion;
+import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansionOrReduction;
 import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentCompartmentEditPart;
@@ -63,8 +63,7 @@ import org.eclipse.sirius.ext.base.Options;
 import com.google.common.collect.Iterables;
 
 /**
- * A specific AirResizableEditPolicy to combined fragment roles move & resize
- * requests.
+ * A specific AirResizableEditPolicy to combined fragment roles move & resize requests.
  * 
  * @author smonnier
  */
@@ -119,7 +118,7 @@ public class CombinedFragmentResizableEditPolicy extends AbstractFrameResizableE
             if (expansionZone != null && !expansionZone.isEmpty()) {
                 SequenceDiagram diagram = fragment.getDiagram();
                 Collection<ISequenceEvent> eventToIgnore = Collections.singletonList(fragment);
-                autoExpand = CommandFactory.createICommand(cfep.getEditingDomain(), new VerticalSpaceExpansion(diagram, expansionZone, 0, eventToIgnore));
+                autoExpand = CommandFactory.createICommand(cfep.getEditingDomain(), new VerticalSpaceExpansionOrReduction(diagram, expansionZone, 0, eventToIgnore));
             }
 
             postProcessDefaultCommand(cfep, request, ctc, autoExpand);
@@ -167,8 +166,8 @@ public class CombinedFragmentResizableEditPolicy extends AbstractFrameResizableE
     }
 
     /**
-     * Returns the command to resize the combined fragment from the north face,
-     * and therefore resize up the first operand.
+     * Returns the command to resize the combined fragment from the north face, and therefore resize up the first
+     * operand.
      * 
      * @param ctc
      *            the current transactional command.
@@ -212,8 +211,8 @@ public class CombinedFragmentResizableEditPolicy extends AbstractFrameResizableE
     }
 
     /**
-     * Returns the command to resize the combined fragment from the south face,
-     * and therefore resize down the last operand.
+     * Returns the command to resize the combined fragment from the south face, and therefore resize down the last
+     * operand.
      * 
      * @param ctc
      *            the current transactional command.
@@ -268,8 +267,8 @@ public class CombinedFragmentResizableEditPolicy extends AbstractFrameResizableE
     }
 
     /**
-     * Finds the following {@link OperandEditPart} of the current
-     * {@link OperandEditPart} identified by the index currentOperandIndex.
+     * Finds the following {@link OperandEditPart} of the current {@link OperandEditPart} identified by the index
+     * currentOperandIndex.
      * 
      * @param currentOperandIndex
      *            the index of the current {@link OperandEditPart}
@@ -358,7 +357,8 @@ public class CombinedFragmentResizableEditPolicy extends AbstractFrameResizableE
             default:
                 break;
             }
-            return new SetBoundsCommand(part.getEditingDomain(), Messages.CombinedFragmentResizableEditPolicy_resizeSubCommand, new EObjectAdapter(part.getNotationView()), new Rectangle(position, dimension));
+            return new SetBoundsCommand(part.getEditingDomain(), Messages.CombinedFragmentResizableEditPolicy_resizeSubCommand, new EObjectAdapter(part.getNotationView()),
+                    new Rectangle(position, dimension));
         }
         return null;
     }
@@ -375,7 +375,8 @@ public class CombinedFragmentResizableEditPolicy extends AbstractFrameResizableE
      * @return a command to resize an operand
      */
     private AbstractTransactionalCommand createOperandSetBoundsCommand(IGraphicalEditPart part, Point location, Dimension dimension) {
-        return new SetBoundsCommand(part.getEditingDomain(), Messages.CombinedFragmentResizableEditPolicy_resizeSubCommand, new EObjectAdapter(part.getNotationView()), new Rectangle(location, dimension));
+        return new SetBoundsCommand(part.getEditingDomain(), Messages.CombinedFragmentResizableEditPolicy_resizeSubCommand, new EObjectAdapter(part.getNotationView()),
+                new Rectangle(location, dimension));
     }
 
     private static Point getPositionFromView(IGraphicalEditPart part) {

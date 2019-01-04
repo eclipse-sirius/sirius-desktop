@@ -4,6 +4,17 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h3. User-Visible Changes
+
+* <span class="label label-success">Added</span> On sequence diagrams, it is now possible to remove vertical blank spaces on standard edition mode by dragging the mouse from bottom to top anywhere in the canvas with the Ctrl+Shift keys pressed. This "feature":user/sequences/Sequence%20Diagrams.html#remove_vertical_blank_space was here since version 6.0.0 but was only accessible through the ruler.
+
+* <span class="label label-info">Modified</span> The method @org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory.buildInsertVerticalBlankSpaceCommand(DDiagram, int, int)@ has been renamed to @org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory.buildInsertOrRemoveVerticalBlankSpaceCommand(DDiagram, int, int)@ because it handles now both addition and removal.
+
+h4. Changes in @org.eclipse.sirius.diagram.sequence@
+
+* <span class="label label-success">Added</span> A new translatable message @org.eclipse.sirius.diagram.sequence.Messages.VerticalSpaceReduction_operationName@ has been added. It's key is @VerticalSpaceReduction_operationName@ and its default value is @Auto-reduction of {0}@. It is used when reducing spaces in sequence diagram.
+* <span class="label label-success">Added</span> A new translatable message @org.eclipse.sirius.diagram.ui.provider.Messages.RemoveBlankSpace_cmdName@ has been added. It's key is @RemoveBlankSpace_cmdName@ and its default value is @Remove blank space@. It is used when removing spaces in sequence diagram.
+
 h2(#sirius6.1.2). Changes in Sirius 6.1.2
 
 h3. User-Visible Changes

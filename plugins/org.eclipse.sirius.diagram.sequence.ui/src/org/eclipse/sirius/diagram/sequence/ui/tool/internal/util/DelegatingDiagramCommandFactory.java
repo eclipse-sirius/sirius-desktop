@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -358,7 +358,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     }
 
     @Override
-    public Command buildInsertVerticalBlankSpaceCommand(DDiagram diagram, int startY, int spaceToInsert) {
-        return baseFactory.buildInsertVerticalBlankSpaceCommand(diagram, startY, spaceToInsert);
+    public Command buildInsertOrRemoveVerticalBlankSpaceCommand(DDiagram diagram, int startY, int spaceToInsert) {
+        return baseFactory.buildInsertOrRemoveVerticalBlankSpaceCommand(diagram, startY, spaceToInsert);
     }
 }

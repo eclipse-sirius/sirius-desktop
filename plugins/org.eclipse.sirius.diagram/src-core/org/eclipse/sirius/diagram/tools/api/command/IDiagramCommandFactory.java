@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -58,15 +58,13 @@ public interface IDiagramCommandFactory extends ICommandFactory {
     /**
      * Create a command that executes the operation of a {@link BehaviorTool}.
      * <p>
-     * The operations of a {@link BehaviorTool} are executed on the
-     * <code>rootObject</code> parameter. If the
-     * <code>executeFromRootContainer</code> is <code>true</code> the operations
-     * are executed on the root container of <code>rootObject</code>.
+     * The operations of a {@link BehaviorTool} are executed on the <code>rootObject</code> parameter. If the
+     * <code>executeFromRootContainer</code> is <code>true</code> the operations are executed on the root container of
+     * <code>rootObject</code>.
      * </p>
      * <p>
-     * Finally, if the <code>deepProcess</code> parameter is <code>true</code>,
-     * the operations are executing on all children (with a deep path) according
-     * to the {@link BehaviorTool#getDomainClass()} and the
+     * Finally, if the <code>deepProcess</code> parameter is <code>true</code>, the operations are executing on all
+     * children (with a deep path) according to the {@link BehaviorTool#getDomainClass()} and the
      * {@link BehaviorTool#getPrecondition()}.
      * </p>
      * 
@@ -75,8 +73,7 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      * @param tool
      *            the behavior.
      * @param executeFromRootContainer
-     *            if <code>true</code> the tool is applied on the root container
-     *            of <code>rootObject</code>.
+     *            if <code>true</code> the tool is applied on the root container of <code>rootObject</code>.
      * @param deepProcess
      *            if <code>true</code>
      * @return return the command that executes a behavior.
@@ -87,12 +84,11 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      * Create a command that creates a node.
      * 
      * @param container
-     *            container element in which the command should put the created
-     *            node.
+     *            container element in which the command should put the created node.
      * @param tool
      *            {@link NodeCreationDescription} used to build the command.
-     * @return a command able to create the node and putting it in the
-     *         container, corresponding to the {@link NodeCreationDescription}.
+     * @return a command able to create the node and putting it in the container, corresponding to the
+     *         {@link NodeCreationDescription}.
      */
     Command buildCreateNodeCommandFromTool(DDiagramElementContainer container, NodeCreationDescription tool);
 
@@ -100,13 +96,12 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      * Create a command that creates a node.
      * 
      * @param node
-     *            the node container in which the command should put the created
-     *            node.
+     *            the node container in which the command should put the created node.
      * @param tool
      * 
      *            the {@link NodeCreationDescription} used to build the command.
-     * @return a command able to create the node and putting it around the node,
-     *         corresponding to the {@link NodeCreationDescription}.
+     * @return a command able to create the node and putting it around the node, corresponding to the
+     *         {@link NodeCreationDescription}.
      */
     Command buildCreateNodeCommandFromTool(DNode node, NodeCreationDescription tool);
 
@@ -114,50 +109,43 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      * Create a command that create a node and put it in the viewpoint.
      * 
      * @param diagram
-     *            the viewpoint in which the command should put the created
-     *            node.
+     *            the viewpoint in which the command should put the created node.
      * @param tool
      *            the {@link NodeCreationDescription} used to build the command.
-     * @return a command able to create the node and putting it into the
-     *         viewpoint, corresponding to the {@link NodeCreationDescription}.
+     * @return a command able to create the node and putting it into the viewpoint, corresponding to the
+     *         {@link NodeCreationDescription}.
      */
     Command buildCreateNodeCommandFromTool(DDiagram diagram, NodeCreationDescription tool);
 
     /**
      * Create a command that is able to execute the operations of a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription}
-     * .
+     * {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription} .
      * 
      * @param tool
      *            the tool, it must be a
-     *            {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription}
-     *            .
+     *            {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription} .
      * @param dContainer
      *            the clicked designer container.
      * @param selectedElement
      *            the selected element.
      * @return a command that is able to execute the operations of
-     *         {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription}
-     *         .
+     *         {@link org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription} .
      */
     Command buildSelectionWizardCommandFromTool(SelectionWizardDescription tool, DSemanticDecorator dContainer, Collection<EObject> selectedElement);
 
     /**
      * Create a command that is able to execute the operations of a
-     * {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription}
-     * .
+     * {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription} .
      * 
      * @param tool
      *            the tool, it must be a
-     *            {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription}
-     *            .
+     *            {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription} .
      * @param dContainer
      *            the clicked designer container.
      * @param selectedElement
      *            the selected element.
      * @return a command that is able to execute the operations of
-     *         {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription}
-     *         .
+     *         {@link org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription} .
      */
     Command buildPaneBasedSelectionWizardCommandFromTool(PaneBasedSelectionWizardDescription tool, DSemanticDecorator dContainer, Collection<EObject> selectedElement);
 
@@ -166,9 +154,8 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      * {@link org.eclipse.sirius.description.tool.JavaActionMenuItem}.
      * 
      * @param tool
-     *            the tool, it must be a
-     *            {@link org.eclipse.sirius.description.tool.JavaActionMenuItem}
-     *            , the action to launch.
+     *            the tool, it must be a {@link org.eclipse.sirius.description.tool.JavaActionMenuItem} , the action to
+     *            launch.
      * @param selectedViews
      *            the clicked designer container.
      * @param javaAction
@@ -183,9 +170,8 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      * {@link org.eclipse.sirius.description.tool.OperationMenuItem}.
      * 
      * @param tool
-     *            the tool, it must be a
-     *            {@link org.eclipse.sirius.description.tool.OperationMenuItem}
-     *            , the operation to launch.
+     *            the tool, it must be a {@link org.eclipse.sirius.description.tool.OperationMenuItem} , the operation
+     *            to launch.
      * @param selectedViews
      *            the clicked designer container.
      * 
@@ -277,16 +263,14 @@ public interface IDiagramCommandFactory extends ICommandFactory {
     Command buildPasteCommandFromTool(DSemanticDecorator dContainer, EObject copiedElement, PasteDescription tool);
 
     /**
-     * Create a command able to execute an action when double clicking on an
-     * element.
+     * Create a command able to execute an action when double clicking on an element.
      * 
      * @param dDiagramElement
      *            the element that can be double clicked.
      * 
      * @param tool
      *            the tool that describes the operation.
-     * @return a command able to execute a defined action when double clicking
-     *         on dDiagramElement.
+     * @return a command able to execute a defined action when double clicking on dDiagramElement.
      */
     Command buildDoubleClickOnElementCommandFromTool(DDiagramElement dDiagramElement, DoubleClickDescription tool);
 
@@ -302,15 +286,13 @@ public interface IDiagramCommandFactory extends ICommandFactory {
     Command buildCreateContainerCommandFromTool(DDiagram diagram, ContainerCreationDescription tool);
 
     /**
-     * Create a command that is able to create a container into the specified
-     * container.
+     * Create a command that is able to create a container into the specified container.
      * 
      * @param nodeContainer
      *            the parent container.
      * @param tool
      *            the tool that describes how to create the new container.
-     * @return a command that is able to create a container into the specified
-     *         container.
+     * @return a command that is able to create a container into the specified container.
      */
     Command buildCreateContainerCommandFromTool(DDiagramElementContainer nodeContainer, ContainerCreationDescription tool);
 
@@ -328,8 +310,7 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      * 
      * @param element
      *            element to delete.
-     * @return a command that delete the DDiagramElement without deleting the
-     *         semantic one.
+     * @return a command that delete the DDiagramElement without deleting the semantic one.
      */
     Command buildDeleteFromDiagramCommand(DDiagramElement element);
 
@@ -343,8 +324,7 @@ public interface IDiagramCommandFactory extends ICommandFactory {
     Command buildDeleteDiagramElement(DDiagramElement element);
 
     /**
-     * Build a direct edit label command using the corresponding tool
-     * description.
+     * Build a direct edit label command using the corresponding tool description.
      * 
      * @param repElement
      *            : the element on which the label should be changed.
@@ -352,8 +332,7 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      *            : the tool description.
      * @param newValue
      *            : the new label value
-     * @return : a command which prepare the model request interpreter and set
-     *         the new label.
+     * @return : a command which prepare the model request interpreter and set the new label.
      */
     Command buildDirectEditLabelFromTool(DRepresentationElement repElement, DirectEditLabel directEditTool, String newValue);
 
@@ -398,8 +377,7 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      * 
      * @param diagramElement
      *            the diagram element for which you want to reveal the label.
-     * @return a command that is able to reveal the label of one diagram
-     *         element.
+     * @return a command that is able to reveal the label of one diagram element.
      */
     Command buildRevealLabelCommand(DDiagramElement diagramElement);
 
@@ -429,8 +407,7 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      * @param semanticElement
      *            the element from which the diagram will be created.
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of
-     *            {@link DDiagram} creation
+     *            a {@link IProgressMonitor} to show progression of {@link DDiagram} creation
      * @return a command that is able to create a diagram.
      */
     DCommand buildCreateDiagramFromDescription(DiagramDescription description, EObject semanticElement, IProgressMonitor monitor);
@@ -455,13 +432,12 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      *            the view the tool has been invoked on.
      * @param toolDesc
      *            the description of the tool.
-     * @return a command which executes the behavior specified in the tool in
-     *         the context of the view.
+     * @return a command which executes the behavior specified in the tool in the context of the view.
      */
     Command buildGenericToolCommandFromTool(EObject containerView, ToolDescription toolDesc);
 
     /**
-     * Create a command that shifts nodes to insert vertical blank space in a diagram.
+     * Create a command that shifts nodes to insert or remove vertical blank space in a diagram.
      * 
      * @param diagram
      *            the diagram in which insert blank space
@@ -472,5 +448,5 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      * 
      * @return a command able to insert blank space (move all elements).
      */
-    Command buildInsertVerticalBlankSpaceCommand(DDiagram diagram, int startX, int spaceToInsert);
+    Command buildInsertOrRemoveVerticalBlankSpaceCommand(DDiagram diagram, int startX, int spaceToInsert);
 }

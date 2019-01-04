@@ -42,8 +42,8 @@ import org.eclipse.sirius.ext.draw2d.figure.InsertBlankSpaceGuide;
 import org.eclipse.swt.graphics.Cursor;
 
 /**
- * A specific {@link SimpleDragTracker} to insert vertical blank space in diagram representation. This tracker is used
- * when Ctrl+shift key is pressed when user makes a selection or when doing a selection from the ruler.
+ * A specific {@link SimpleDragTracker} to insert or remove vertical blank space in diagram representation. This tracker
+ * is used when Ctrl+shift key is pressed when user makes a selection or when doing a selection from the ruler.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
@@ -57,7 +57,7 @@ public class SiriusBlankSpacesDragTracker extends SimpleDragTracker {
     protected AbstractGraphicalEditPart source;
 
     /**
-     * The location where the end-user starts to define the zone to insert blank space.
+     * The location where the end-user starts to define the zone to insert or remove blank space.
      */
     private int startLocation;
 
@@ -67,12 +67,12 @@ public class SiriusBlankSpacesDragTracker extends SimpleDragTracker {
     private int startLocationForFeedback;
 
     /**
-     * The location where the end-user ends to define the zone to insert blank space.
+     * The location where the end-user ends to define the zone to insert or remove blank space.
      */
     private int endLocation;
 
     /**
-     * The feedback figure representing the blank space to insert.
+     * The feedback figure representing the blank space to insert or remove.
      */
     private InsertBlankSpaceGuide blankSpaceGuide;
 
@@ -99,11 +99,11 @@ public class SiriusBlankSpacesDragTracker extends SimpleDragTracker {
         Command result = UnexecutableCommand.INSTANCE;
         // The case (startLocation == 0 && endLocation == 0) corresponds to the case where the user do the first click
         // (without moving).
-        if ((startLocation == 0 && endLocation == 0) || (startLocation != 0 && endLocation >= startLocation)) {
+        if ((startLocation == 0 && endLocation == 0) || (startLocation != 0 && endLocation != startLocation)) {
             if (isHorizontal(source)) {
-                result = createInsertHorizontalBlankSpaceCommand(startLocation, endLocation - startLocation, diagramViewer);
+                result = createInsertOrRemoveHorizontalBlankSpaceCommand(startLocation, endLocation - startLocation, diagramViewer);
             } else {
-                result = createInsertVerticalBlankSpaceCommand(startLocation, endLocation - startLocation, diagramViewer);
+                result = createInsertOrRemoveVerticalBlankSpaceCommand(startLocation, endLocation - startLocation, diagramViewer);
             }
         }
         return result;
@@ -158,6 +158,11 @@ public class SiriusBlankSpacesDragTracker extends SimpleDragTracker {
         } else {
             bounds.y = startLocationForFeedback;
             bounds.height = getCurrentPositionZoomed() - startLocationForFeedback;
+            if (bounds.height < 0) {
+                // from bottom to top
+                bounds.y = bounds.y + bounds.height;
+                bounds.height = Math.abs(bounds.height);
+            }
         }
         blankSpaceGuide.setBounds(bounds);
     }
@@ -237,11 +242,15 @@ public class SiriusBlankSpacesDragTracker extends SimpleDragTracker {
 
     @Override
     protected String getCommandName() {
-        return Messages.InsertBlankSpace_cmdName;
+        if (startLocation > endLocation) {
+            return Messages.RemoveBlankSpace_cmdName;
+        } else {
+            return Messages.InsertBlankSpace_cmdName;
+        }
     }
 
     /**
-     * Returns a drag tracker allowing to add blank in diagram representation.
+     * Returns a drag tracker allowing to add or remove blank in diagram representation.
      * 
      * @param graphicalEditPart
      *            the edit part from which
@@ -253,7 +262,7 @@ public class SiriusBlankSpacesDragTracker extends SimpleDragTracker {
      *            true if the CTRL key must be down to return a drag tracker, false otherwise.
      * @param shiftKeyRequirement
      *            true if the SHIFT key must be down to return a drag tracker, false otherwise.
-     * @return a drag tracker allowing to add blank in diagram representation.
+     * @return a drag tracker allowing to add or remove blank in diagram representation.
      */
     public static DragTracker getDragTracker(AbstractGraphicalEditPart graphicalEditPart, GraphicalViewer diagramViewer, Request request, boolean controlKeyRequirement, boolean shiftKeyRequirement) {
         DragTracker result = null;
@@ -264,9 +273,9 @@ public class SiriusBlankSpacesDragTracker extends SimpleDragTracker {
             } else if ((!controlKeyRequirement || selectionRequest.isControlKeyPressed()) && (!shiftKeyRequirement || selectionRequest.isShiftKeyPressed())) {
                 try {
                     if (isHorizontal(graphicalEditPart)) {
-                        createInsertHorizontalBlankSpaceCommand(0, 0, diagramViewer);
+                        createInsertOrRemoveHorizontalBlankSpaceCommand(0, 0, diagramViewer);
                     } else {
-                        createInsertVerticalBlankSpaceCommand(0, 0, diagramViewer);
+                        createInsertOrRemoveVerticalBlankSpaceCommand(0, 0, diagramViewer);
                     }
                     result = new SiriusBlankSpacesDragTracker(graphicalEditPart, diagramViewer);
                 } catch (UnsupportedOperationException e) {
@@ -278,19 +287,19 @@ public class SiriusBlankSpacesDragTracker extends SimpleDragTracker {
     }
 
     /**
-     * Create a command that inserts horizontal blank space in a diagram by shifting nodes. It is currently not
-     * implemented in Sirius core, probably done later.
+     * Create a command that inserts or removes horizontal blank space in a diagram by shifting nodes. It is currently
+     * not implemented in Sirius core, probably done later.
      * 
      * @param startLocation
-     *            the initial location in pixel to insert blank space
-     * @param spaceToInsert
-     *            the number of pixels to insert
+     *            the initial location in pixel to insert or removes blank space
+     * @param spaceToInsertOrRemove
+     *            the number of pixels to insert or remove
      * @param diagramViewer
      *            the diagram viewer where the drag will occur.
-     * @return a command that inserts vertical blank space in a diagram by shifting nodes.
+     * @return a command that inserts or removes vertical blank space in a diagram by shifting nodes.
      */
-    private static Command createInsertHorizontalBlankSpaceCommand(int startLocation, int spaceToInsert, GraphicalViewer diagramViewer) {
-        return createInsertBlankSpaceCommand(startLocation, spaceToInsert, true, diagramViewer);
+    private static Command createInsertOrRemoveHorizontalBlankSpaceCommand(int startLocation, int spaceToInsertOrRemove, GraphicalViewer diagramViewer) {
+        return createInsertOrRemoveBlankSpaceCommand(startLocation, spaceToInsertOrRemove, true, diagramViewer);
     }
 
     /**
@@ -304,16 +313,16 @@ public class SiriusBlankSpacesDragTracker extends SimpleDragTracker {
      *            the diagram viewer where the drag will occur.
      * @return a command that inserts vertical blank space in a diagram by shifting nodes.
      */
-    private static Command createInsertVerticalBlankSpaceCommand(int startLocation, int spaceToInsert, GraphicalViewer diagramViewer) {
-        return createInsertBlankSpaceCommand(startLocation, spaceToInsert, false, diagramViewer);
+    private static Command createInsertOrRemoveVerticalBlankSpaceCommand(int startLocation, int spaceToInsert, GraphicalViewer diagramViewer) {
+        return createInsertOrRemoveBlankSpaceCommand(startLocation, spaceToInsert, false, diagramViewer);
     }
 
     /**
-     * Returns true if horizontal blank must be added. False otherwise.
+     * Returns true if horizontal blank must be added or removed. False if vertical space must be added or removed.
      * 
      * @param editPart
-     *            the edit part from which blank addition is done.
-     * @return true if horizontal blank must be added. False otherwise.
+     *            the edit part from which blank addition or removal is done.
+     * @return true if horizontal blank must be added or removed. False if vertical space must be added or removed.
      */
     private static boolean isHorizontal(AbstractGraphicalEditPart editPart) {
         boolean isHorizontal = false;
@@ -326,19 +335,19 @@ public class SiriusBlankSpacesDragTracker extends SimpleDragTracker {
     }
 
     /**
-     * Create a command that inserts vertical blank space in a diagram by shifting nodes.
+     * Create a command that inserts or removes vertical blank space in a diagram by shifting nodes.
      * 
      * @param startLocation
      *            the initial location in pixel to insert blank space
-     * @param spaceToInsert
+     * @param spaceToInsertOrRemove
      *            the number of pixels to insert
      * @param horizontal
-     *            true if the blank space must be inserted horizontally, false otherwise
+     *            true if the blank space must be inserted or removed horizontally, false otherwise
      * @param diagramViewer
      *            the diagram viewer where the drag will occur.
      * @return a command to add space.
      */
-    private static Command createInsertBlankSpaceCommand(int startLocation, int spaceToInsert, boolean horizontal, GraphicalViewer diagramViewer) {
+    private static Command createInsertOrRemoveBlankSpaceCommand(int startLocation, int spaceToInsertOrRemove, boolean horizontal, GraphicalViewer diagramViewer) {
         if (diagramViewer.getRootEditPart().getContents() instanceof IGraphicalEditPart) {
             IGraphicalEditPart diagramEditPart = (IGraphicalEditPart) diagramViewer.getRootEditPart().getContents();
             TransactionalEditingDomain ted = diagramEditPart.getEditingDomain();
@@ -352,7 +361,7 @@ public class SiriusBlankSpacesDragTracker extends SimpleDragTracker {
                     throw new UnsupportedOperationException(Messages.UndoRedoCapableEMFCommandFactory_insertHorizontalBlankSpaceNotImplemented);
                 } else {
                     org.eclipse.emf.common.command.Command command = diagramEditor.getEmfCommandFactoryProvider().getCommandFactory(ted)
-                            .buildInsertVerticalBlankSpaceCommand((DDiagram) diagramEditPart.getNotationView().getElement(), startLocation, spaceToInsert);
+                            .buildInsertOrRemoveVerticalBlankSpaceCommand((DDiagram) diagramEditPart.getNotationView().getElement(), startLocation, spaceToInsertOrRemove);
                     return new ICommandProxy(new GMFCommandWrapper(ted, command));
                 }
             }
