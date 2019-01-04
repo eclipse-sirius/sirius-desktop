@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tests.unit.diagram.layout.data;
+package org.eclipse.sirius.tests.unit.diagram.format.data;
 
 import java.util.List;
 
@@ -92,8 +92,8 @@ public class LabelPositionOnContainerAndListTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test the label position : the aird contains the old values of the label
-     * bounds Test at the diagram opening, the label has taken the new bounds
+     * Test the label position : the aird contains the old values of the label bounds Test at the diagram opening, the
+     * label has taken the new bounds
      * 
      * @throws Exception
      */
@@ -162,8 +162,7 @@ public class LabelPositionOnContainerAndListTest extends SiriusDiagramTestCase {
      */
     private void synchronizationWithUIThread() {
         while (PlatformUI.getWorkbench().getDisplay().readAndDispatch()) {
-        }
-        ;
+        } ;
     }
 
     /**

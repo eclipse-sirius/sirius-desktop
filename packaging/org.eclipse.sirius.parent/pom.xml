@@ -343,7 +343,6 @@
         <module>../../plugins/org.eclipse.sirius.common.ocl</module>
         <module>../../plugins/org.eclipse.sirius.diagram</module>
         <module>../../plugins/org.eclipse.sirius.diagram.formatdata</module>
-        <module>../../plugins/org.eclipse.sirius.diagram.layoutdata</module>
         <module>../../plugins/org.eclipse.sirius.ecore.extender</module>
         <module>../../plugins/org.eclipse.sirius.synchronizer</module>
         <module>../../plugins/org.eclipse.sirius.table</module>

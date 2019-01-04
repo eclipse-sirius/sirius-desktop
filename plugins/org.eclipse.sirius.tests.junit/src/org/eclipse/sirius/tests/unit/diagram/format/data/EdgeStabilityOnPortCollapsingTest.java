@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tests.unit.diagram.layout.data;
+package org.eclipse.sirius.tests.unit.diagram.format.data;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,9 +52,8 @@ public class EdgeStabilityOnPortCollapsingTest extends SiriusDiagramTestCase {
     private static final int DELTA_INIT = 1;
 
     /**
-     * Port collapsing leads to edge shifting. Very small, but something which
-     * can be measured If this shifting is 0, it means that port collapsing is
-     * broken !
+     * Port collapsing leads to edge shifting. Very small, but something which can be measured If this shifting is 0, it
+     * means that port collapsing is broken !
      */
     private static final int MINIMUM_DELTA_AFTER_COLLAPSE = 1;
 
@@ -103,8 +102,7 @@ public class EdgeStabilityOnPortCollapsingTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Checks that the points contained in all edges of the diagram are in the
-     * expected positions.
+     * Checks that the points contained in all edges of the diagram are in the expected positions.
      * 
      * @throws Exception
      */

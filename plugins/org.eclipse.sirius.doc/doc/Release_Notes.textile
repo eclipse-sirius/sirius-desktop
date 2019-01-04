@@ -12,6 +12,10 @@ h4. Changes in @org.eclipse.sirius@
 
 * <span class="label label-danger">Removed</span> The @org.eclipse.sirius.business.api.helper.task.NotificationTask@ class has been removed. It was not used anywhere.
 
+h4. Changes in  @org.eclipse.sirius.diagram.layoutdata@
+
+* <span class="label label-danger">Removed</span> This plugin has been removed and fully replaced by  @org.eclipse.sirius.diagram.formatdata@
+
 h4. Changes in  @org.eclipse.sirius.diagram@
 
 
@@ -54,10 +58,13 @@ h4. Changes in  @org.eclipse.sirius.diagram@
 ** @ContainerMapping.allContainerMappings@ has been replaced by @ContainerMappingHelper.getAllContainerMappings@
 ** @Layer.allEdgeMappings@ has been replaced by @ContentLayerHelper.getAllEdgeMappings@
 
+h4. Changes in @org.eclipse.sirius.diagram.ui@
+
+* <span class="label label-danger">Removed</span> The extension point @layoutDataManager@, deprecated since Sirius 4.1.0, has been removed. The corresponding plug-in @org.eclipse.sirius.diagram.layoutdata@ has also been removed.
+
 h4. Changes in @org.eclipse.sirius.ui.editor@
 
 * <span class="label label-info">Modified</span> The method @org.eclipse.sirius.ui.editor.api.pages.PageProvider.provides()@ now takes the @SessionEditor@ as an additional parameter to allow implementation to decide if it should provide an additional page or not.
-
 
 h2(#sirius6.1.2). Changes in Sirius 6.1.2
 

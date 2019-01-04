@@ -19,8 +19,6 @@ import org.eclipse.sirius.tests.unit.diagram.DDiagramDAnnotationTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.SemanticEdgeFormatDataKeyTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.SemanticNodeFormatDataKeyTest;
 import org.eclipse.sirius.tests.unit.diagram.layers.EdgeMappingImportTests;
-import org.eclipse.sirius.tests.unit.diagram.layout.data.SemanticEdgeLayoutDataKeyTest;
-import org.eclipse.sirius.tests.unit.diagram.layout.data.SemanticNodeLayoutDataKeyTest;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.services.EAttributeServicesTest;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.services.EOperationServicesTest;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.services.EReferenceServicesTest;
@@ -77,8 +75,6 @@ public class AllDiagramStandaloneTests {
         suite.addTestSuite(ResourceItemTest.class);
         suite.addTestSuite(ViewpointsFolderItemTest.class);
         suite.addTestSuite(ViewpointItemTest.class);
-        suite.addTestSuite(SemanticNodeLayoutDataKeyTest.class);
-        suite.addTestSuite(SemanticEdgeLayoutDataKeyTest.class);
         suite.addTestSuite(SemanticNodeFormatDataKeyTest.class);
         suite.addTestSuite(SemanticEdgeFormatDataKeyTest.class);
         suite.addTestSuite(DDiagramInternalQueryTest.class);

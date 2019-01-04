@@ -19,7 +19,6 @@
    <extension-point id="viewOrderingProvider" name="%extension-point.viewOrderingProvider.name" schema="schema/viewOrderingProvider.exsd"/>
    <extension-point id="diagramIdentifierProvider" name="%extension-point.diagramIdentifierProvider.name" schema="schema/diagramIdentifierProvider.exsd"/>
    <extension-point id="layoutProvider" name="%extension-point.layoutProvider.name" schema="schema/layoutProvider.exsd"/>
-   <extension-point id="layoutDataManager" name="%extension-point.layoutDataManager.name" schema="schema/layoutDataManager.exsd"/>
    <extension-point id="formatDataManager" name="%extension-point.formatDataManager.name" schema="schema/formatDataManager.exsd"/>
    <extension-point id="imageSelector" name="%extension-point.imageSelector.name" schema="schema/imageSelector.exsd"/>
    <extension-point id="tabbarContributor" name="%extension-point.tabbarContributor.name" schema="schema/tabbarContributor.exsd"/>

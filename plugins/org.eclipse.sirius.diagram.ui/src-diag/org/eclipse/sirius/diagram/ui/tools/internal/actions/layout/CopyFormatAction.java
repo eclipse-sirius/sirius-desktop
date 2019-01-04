@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2016 IBM Corporation and others.
+ * Copyright (c) 2002, 2019 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,11 +38,9 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.data.extension.FormatDataManagerRegistry;
-import org.eclipse.sirius.diagram.ui.tools.internal.layout.data.extension.LayoutDataManagerRegistry;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.swt.SWT;
 import org.eclipse.ui.IEditorPart;
@@ -119,9 +117,6 @@ public class CopyFormatAction extends AbstractCopyPasteFormatAction {
             public void execute() {
                 for (SiriusFormatDataManager formatDataManager : FormatDataManagerRegistry.getAllSiriusFormatDataManagers()) {
                     formatDataManager.clearFormatData();
-                }
-                for (SiriusLayoutDataManager layoutDataManager : LayoutDataManagerRegistry.getAllSiriusLayoutDataManagers()) {
-                    layoutDataManager.clearLayoutData();
                 }
             }
         });
@@ -222,9 +217,6 @@ public class CopyFormatAction extends AbstractCopyPasteFormatAction {
             for (SiriusFormatDataManager formatDataManager : FormatDataManagerRegistry.getSiriusFormatDataManagers(dDiagram)) {
                 formatDataManager.storeFormatData(toStore);
             }
-            for (SiriusLayoutDataManager layoutDataManager : LayoutDataManagerRegistry.getSiriusLayoutDataManagers(dDiagram)) {
-                layoutDataManager.storeLayoutData(toStore);
-            }
             return CommandResult.newOKCommandResult();
         }
 
@@ -238,9 +230,6 @@ public class CopyFormatAction extends AbstractCopyPasteFormatAction {
         protected IStatus doUndo(final IProgressMonitor monitor, final IAdaptable info) throws ExecutionException {
             for (SiriusFormatDataManager formatDataManager : FormatDataManagerRegistry.getSiriusFormatDataManagers(dDiagram)) {
                 formatDataManager.clearFormatData();
-            }
-            for (SiriusLayoutDataManager layoutDataManager : LayoutDataManagerRegistry.getSiriusLayoutDataManagers(dDiagram)) {
-                layoutDataManager.clearLayoutData();
             }
             return super.doUndo(monitor, info);
         }

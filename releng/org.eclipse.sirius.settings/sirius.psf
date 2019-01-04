@@ -10,7 +10,6 @@
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,plugins/org.eclipse.sirius.common.xtext"/>
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,plugins/org.eclipse.sirius.diagram"/>
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,plugins/org.eclipse.sirius.diagram.formatdata"/>
-<project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,plugins/org.eclipse.sirius.diagram.layoutdata"/>
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,plugins/org.eclipse.sirius.diagram.sequence"/>
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,plugins/org.eclipse.sirius.diagram.sequence.edit"/>
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,plugins/org.eclipse.sirius.diagram.sequence.ui"/>
@@ -119,7 +118,6 @@
 <item elementID="=org.eclipse.sirius.tests.support" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=org.eclipse.sirius.synchronizer" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=org.eclipse.sirius.diagram.formatdata" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=org.eclipse.sirius.diagram.layoutdata" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=org.eclipse.sirius.table" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=org.eclipse.sirius.common.ui" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSets>

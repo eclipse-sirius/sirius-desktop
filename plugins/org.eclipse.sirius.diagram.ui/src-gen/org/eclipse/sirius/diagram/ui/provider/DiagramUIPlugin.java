@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -64,7 +64,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.decoration.EditModeDecoratio
 import org.eclipse.sirius.diagram.ui.tools.internal.decoration.SubDiagramDecorationDescriptorProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.decoration.ValidationDecorationDescriptorProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.data.extension.FormatDataManagerRegistryListener;
-import org.eclipse.sirius.diagram.ui.tools.internal.layout.data.extension.LayoutDataManagerRegistryListener;
 import org.eclipse.sirius.diagram.ui.tools.internal.resource.CustomSiriusDocumentProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.resource.ResourceMissingDocumentProvider;
 import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
@@ -149,8 +148,6 @@ public final class DiagramUIPlugin extends EMFPlugin {
         private Map<ImageWithDimensionDescriptor, Image> descriptorsToImages;
 
         private ResourceMissingDocumentProvider ressourceMissingDocumentProvider;
-
-        private LayoutDataManagerRegistryListener layoutDataManagerRegistryListener;
 
         private FormatDataManagerRegistryListener formatDataManagerRegistryListener;
 
@@ -257,9 +254,6 @@ public final class DiagramUIPlugin extends EMFPlugin {
             formatDataManagerRegistryListener = new FormatDataManagerRegistryListener();
             formatDataManagerRegistryListener.init();
 
-            layoutDataManagerRegistryListener = new LayoutDataManagerRegistryListener();
-            layoutDataManagerRegistryListener.init();
-
             layoutAlgorithmsRegistry = new HashMap<String, CustomLayoutAlgorithm>();
 
             layoutAlgorithmProviderRegistry = new CustomLayoutAlgorithmProviderRegistry(layoutAlgorithmsRegistry);
@@ -299,9 +293,6 @@ public final class DiagramUIPlugin extends EMFPlugin {
             layoutAlgorithmsRegistry = null;
             formatDataManagerRegistryListener.dispose();
             formatDataManagerRegistryListener = null;
-
-            layoutDataManagerRegistryListener.dispose();
-            layoutDataManagerRegistryListener = null;
 
             workspaceImageFigureRefresher.dispose();
             workspaceImageFigureRefresher = null;
