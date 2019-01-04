@@ -108,7 +108,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceE
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
-import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansion;
+import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansionOrReduction;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ui.tool.api.SequenceDiagramLayout;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
@@ -1134,7 +1134,7 @@ public class SiriusDebugView extends AbstractDebugView {
                 final SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
                 TransactionalEditingDomain ted = sdep.getEditingDomain();
                 RecordingCommand verticalSpaceExpansion = CommandFactory.createRecordingCommand(ted,
-                        new VerticalSpaceExpansion(sdep.getSequenceDiagram(), new Range(start, start + size), 0, Collections.<ISequenceEvent> emptyList()));
+                        new VerticalSpaceExpansionOrReduction(sdep.getSequenceDiagram(), new Range(start, start + size), 0, Collections.<ISequenceEvent> emptyList()));
                 sdep.getEditingDomain().getCommandStack().execute(verticalSpaceExpansion);
             }
         });
@@ -1163,7 +1163,7 @@ public class SiriusDebugView extends AbstractDebugView {
                 final SequenceDiagramEditPart sdep = (SequenceDiagramEditPart) selection;
                 TransactionalEditingDomain ted = sdep.getEditingDomain();
                 RecordingCommand verticalSpaceExpansion = CommandFactory.createRecordingCommand(ted,
-                        new VerticalSpaceExpansion(sdep.getSequenceDiagram(), new Range(0, 0), 0, Lists.<ISequenceEvent> newArrayList()));
+                        new VerticalSpaceExpansionOrReduction(sdep.getSequenceDiagram(), new Range(0, 0), 0, Lists.<ISequenceEvent> newArrayList()));
                 sdep.getEditingDomain().getCommandStack().execute(verticalSpaceExpansion);
             }
         });

@@ -6,6 +6,10 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius6.2.0). Changes in Sirius 6.2.0
 
+h3. User-Visible Changes
+
+* <span class="label label-success">Added</span> On sequence diagrams, it is now possible to remove vertical blank spaces on standard edition mode by dragging the mouse from bottom to top anywhere in the canvas with the Ctrl+Shift keys pressed. This "feature":user/sequences/Sequence%20Diagrams.html#remove_vertical_blank_space was here since version 6.0.0 but was only accessible through the ruler.
+
 h3. Developer-Visible Changes
 
 h4. Changes in @org.eclipse.sirius@
@@ -21,6 +25,7 @@ h4. Changes in  @org.eclipse.sirius.diagram@
 
 * <span class="label label-info">Added</span> The extension point org.eclipse.sirius.diagram.customBundledImageShape has been created in order to provide custom shape to the bundled image style. This extension point offers more flexibility on the specification of the svg tags and attributes holding the color, border color and border size information than the extension point org.eclipse.sirius.diagram.bundledImageShape.
 * <span class="label label-info">Modified</span> The extension point org.eclipse.sirius.diagram.bundledImageShape has been marked as deprecated. Shapes provided by this extension point still work.
+* <span class="label label-info">Modified</span> The method @org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory.buildInsertVerticalBlankSpaceCommand(DDiagram, int, int)@ has been renamed to @org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory.buildInsertOrRemoveVerticalBlankSpaceCommand(DDiagram, int, int)@ because it handles now both addition and removal.
 * <span class="label label-info">Modified</span> Method _getAllEdgeMappings_ defined in @org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper@ has been moved in a new class called @org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentLayerHelper@ to ensure method to be independent from pure Sirius code. 
 * <span class="label label-danger">Removed</span> EOperations and features have been removed from the metamodel @diagram.ecore@. This is the ones that are computed outside of EMF environment with dependencies to IInterpreter or that are deprecated. The following EOperations have been removed/replaced: 
 ** @DEdge.isRootFolding@ has been removed
@@ -65,6 +70,12 @@ h4. Changes in @org.eclipse.sirius.diagram.ui@
 h4. Changes in @org.eclipse.sirius.ui.editor@
 
 * <span class="label label-info">Modified</span> The method @org.eclipse.sirius.ui.editor.api.pages.PageProvider.provides()@ now takes the @SessionEditor@ as an additional parameter to allow implementation to decide if it should provide an additional page or not.
+
+h4. Changes in @org.eclipse.sirius.diagram.sequence@
+
+* <span class="label label-success">Added</span> A new translatable message @org.eclipse.sirius.diagram.sequence.Messages.VerticalSpaceReduction_operationName@ has been added. It's key is @VerticalSpaceReduction_operationName@ and its default value is @Auto-reduction of {0}@. It is used when reducing spaces in sequence diagram.
+* <span class="label label-success">Added</span> A new translatable message @org.eclipse.sirius.diagram.ui.provider.Messages.RemoveBlankSpace_cmdName@ has been added. It's key is @RemoveBlankSpace_cmdName@ and its default value is @Remove blank space@. It is used when removing spaces in sequence diagram.
+
 
 h2(#sirius6.1.2). Changes in Sirius 6.1.2
 

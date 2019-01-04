@@ -669,7 +669,7 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     }
 
     @Override
-    public Command buildInsertVerticalBlankSpaceCommand(DDiagram diagram, int startY, int spaceToInsert) {
+    public Command buildInsertOrRemoveVerticalBlankSpaceCommand(DDiagram diagram, int startY, int spaceToInsert) {
         // Not implemented in "standard" diagram
         throw new UnsupportedOperationException(Messages.UndoRedoCapableEMFCommandFactory_insertVerticalBlankSpaceNotImplemented);
     }

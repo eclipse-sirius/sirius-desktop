@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,8 @@ import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshGr
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshSemanticOrderingsOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SetVerticalRangeOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SynchronizeISequenceEventsSemanticOrderingOperation;
-import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansion;
+import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansionOrReduction;
+import org.eclipse.sirius.diagram.sequence.business.internal.util.DecreasingRange;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.ExecutionOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.OperandEditPart;
@@ -41,8 +42,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.ext.base.Option;
 
 /**
- * A custom EMF Command Factory to specialize the delete behavior for sequence
- * diagram elements.
+ * A custom EMF Command Factory to specialize the delete behavior for sequence diagram elements.
  * 
  * @author pcdavid
  */
@@ -53,8 +53,7 @@ public final class SequenceEMFCommandFactory extends UndoRedoCapableEMFCommandFa
     /**
      * Constructor.
      * 
-     * The factory will be initialized with the TransactionalEditingDomain of
-     * the current SequenceDiagramEditPart.
+     * The factory will be initialized with the TransactionalEditingDomain of the current SequenceDiagramEditPart.
      * 
      * @param sdep
      *            the sequence diagram.
@@ -89,9 +88,17 @@ public final class SequenceEMFCommandFactory extends UndoRedoCapableEMFCommandFa
     }
 
     @Override
-    public Command buildInsertVerticalBlankSpaceCommand(DDiagram diagram, int startY, int spaceToInsert) {
-        return CommandFactory.createRecordingCommand(sdep.getEditingDomain(),
-                new VerticalSpaceExpansion(sdep.getSequenceDiagram(), new Range(startY, startY + spaceToInsert), 0, Collections.<ISequenceEvent> emptyList()));
+    public Command buildInsertOrRemoveVerticalBlankSpaceCommand(DDiagram diagram, int startY, int spaceToInsertOrRemove) {
+        if (spaceToInsertOrRemove < 0) {
+            return CommandFactory.createRecordingCommand(sdep.getEditingDomain(),
+                    new VerticalSpaceExpansionOrReduction(sdep.getSequenceDiagram(), new DecreasingRange(startY, startY + spaceToInsertOrRemove), 0, Collections.<ISequenceEvent> emptyList()));
+
+        } else {
+            return CommandFactory.createRecordingCommand(sdep.getEditingDomain(),
+                    new VerticalSpaceExpansionOrReduction(sdep.getSequenceDiagram(), new Range(startY, startY + spaceToInsertOrRemove), 0, Collections.<ISequenceEvent> emptyList()));
+
+        }
+
     }
 
     private Command getDeleteExecutionCommand(ExecutionEditPart executionPart, Command basicDelete) {
@@ -124,9 +131,8 @@ public final class SequenceEMFCommandFactory extends UndoRedoCapableEMFCommandFa
         Operand deletedOperand = (Operand) operandPart.getISequenceEvent();
         if (deletedOperand.getCombinedFragment().getOperands().size() == 1 || operandPart.getViewer().getSelectedEditParts().size() != 1) {
             /*
-             * The last remaining operand can not be deleted. It is also not
-             * possible to delete 2 operand to avoid NPE in
-             * SetVerticalRangeOperation.
+             * The last remaining operand can not be deleted. It is also not possible to delete 2 operand to avoid NPE
+             * in SetVerticalRangeOperation.
              */
             return UnexecutableCommand.INSTANCE;
         }
@@ -144,8 +150,7 @@ public final class SequenceEMFCommandFactory extends UndoRedoCapableEMFCommandFa
     }
 
     /**
-     * Returns the sibling operand which should absorb the space previously
-     * occupied by the operand about to be deleted.
+     * Returns the sibling operand which should absorb the space previously occupied by the operand about to be deleted.
      */
     private Option<Operand> getAbsorbingOperand(Operand deletedOperand) {
         assert deletedOperand != null;

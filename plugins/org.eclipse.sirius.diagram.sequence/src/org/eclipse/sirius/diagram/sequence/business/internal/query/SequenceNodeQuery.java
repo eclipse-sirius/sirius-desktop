@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
+import org.eclipse.sirius.diagram.sequence.business.internal.util.DecreasingRange;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
@@ -48,8 +49,7 @@ public class SequenceNodeQuery {
     }
 
     /**
-     * Returns the vertical range of a sequence diagram element from its GMF
-     * notation node.
+     * Returns the vertical range of a sequence diagram element from its GMF notation node.
      * 
      * @return the vertical range of the element.
      */
@@ -79,7 +79,7 @@ public class SequenceNodeQuery {
                 height = new DNodeQuery((DNode) element).getDefaultDimension().height;
             }
 
-            Range result = new Range(y, y + height);
+            Range result = y > y + height ? new DecreasingRange(y, y + height) : new Range(y, y + height);
 
             if (isShifted()) {
                 result = result.shifted(IBorderItemOffsets.DEFAULT_OFFSET.height);

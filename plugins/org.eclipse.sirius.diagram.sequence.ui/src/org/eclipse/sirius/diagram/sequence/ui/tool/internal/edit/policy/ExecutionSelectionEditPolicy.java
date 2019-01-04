@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -55,7 +55,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDi
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SetMessageRangeOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SetVerticalRangeOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.ShiftDirectSubExecutionsOperation;
-import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansion;
+import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansionOrReduction;
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.EventFinder;
@@ -89,16 +89,15 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * Specialization of the default policy for executions, in order to validate and
- * execute the specific resize and move behaviors needed for sequence diagrams.
+ * Specialization of the default policy for executions, in order to validate and execute the specific resize and move
+ * behaviors needed for sequence diagrams.
  * 
  * @author pcdavid
  */
 public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEditPolicy {
 
     /**
-     * The color to use for the horizontal feedback rules shown when
-     * moving/resizing an execution.
+     * The color to use for the horizontal feedback rules shown when moving/resizing an execution.
      */
     protected static final Color EXECUTION_FEEDBACK_COLOR = ColorConstants.lightGray;
 
@@ -204,7 +203,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         if (needVerticalSpaceExpansion(validator, request)) {
             SequenceDiagramEditPart diagram = EditPartsHelper.getSequenceDiagramPart(hostPart);
             Collection<ISequenceEvent> eventToIgnore = Collections.singletonList((ISequenceEvent) self);
-            ctc.compose(CommandFactory.createICommand(editingDomain, new VerticalSpaceExpansion(diagram.getSequenceDiagram(), validator.getExpansionZone(), 0, eventToIgnore)));
+            ctc.compose(CommandFactory.createICommand(editingDomain, new VerticalSpaceExpansionOrReduction(diagram.getSequenceDiagram(), validator.getExpansionZone(), 0, eventToIgnore)));
         }
         if (validator.getFinalHierarchicalParent().equals(self.getHierarchicalParentEvent())) {
             Command cmd = DiagramBorderNodeEditPartOperation.getResizeBorderItemCommand((ExecutionEditPart) getHost(), request, false);
@@ -373,8 +372,8 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         return Integer.MIN_VALUE;
     }
 
-    private void addMessageReconnectionCommand(Execution self, CompositeTransactionalCommand cc, TransactionalEditingDomain editingDomain, Message message, Range newRange,
-            ChangeBoundsRequest request, AbstractNodeEventResizeSelectionValidator validator) {
+    private void addMessageReconnectionCommand(Execution self, CompositeTransactionalCommand cc, TransactionalEditingDomain editingDomain, Message message, Range newRange, ChangeBoundsRequest request,
+            AbstractNodeEventResizeSelectionValidator validator) {
 
         Set<Execution> executionsInMove = new RequestQuery(request).getExecutions();
         boolean invalidCommand = false;
@@ -492,29 +491,29 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
     }
 
     /**
-     * Avoid moving the source of the return message of a reflexive synchronous
-     * message when resizing a parent execution.
+     * Avoid moving the source of the return message of a reflexive synchronous message when resizing a parent
+     * execution.
      * 
      * @param ise
-     *            the sequence event to validate if it is a reflexive message we
-     *            do not want to move
+     *            the sequence event to validate if it is a reflexive message we do not want to move
      * @return the validation result of the message move.
      */
     private boolean doNotMoveSourceOfReturnMessageOfReflexiveSyncCall(Execution self, ISequenceEvent ise, RequestQuery rq) {
-        return !(isMovedReflexiveMessage(ise, rq) && self.equals(((Message) ise).getSourceElement()) && getSelection(((Message) ise).getSourceElement()) == EditPart.SELECTED_NONE && getSelection(ise) == EditPart.SELECTED_NONE);
+        return !(isMovedReflexiveMessage(ise, rq) && self.equals(((Message) ise).getSourceElement()) && getSelection(((Message) ise).getSourceElement()) == EditPart.SELECTED_NONE
+                && getSelection(ise) == EditPart.SELECTED_NONE);
     }
 
     /**
-     * Avoid moving the target of the invocation message of a reflexive
-     * synchronous message when resizing a parent execution.
+     * Avoid moving the target of the invocation message of a reflexive synchronous message when resizing a parent
+     * execution.
      * 
      * @param ise
-     *            the sequence event to validate if it is a reflexive message we
-     *            do not want to move
+     *            the sequence event to validate if it is a reflexive message we do not want to move
      * @return the validation result of the message move.
      */
     private boolean doNotMoveTargetOfStartMessageOfReflexiveSyncCall(Execution self, ISequenceEvent ise, RequestQuery rq) {
-        return !(isMovedReflexiveMessage(ise, rq) && self.equals(((Message) ise).getTargetElement()) && getSelection(((Message) ise).getTargetElement()) == EditPart.SELECTED_NONE && getSelection(ise) == EditPart.SELECTED_NONE);
+        return !(isMovedReflexiveMessage(ise, rq) && self.equals(((Message) ise).getTargetElement()) && getSelection(((Message) ise).getTargetElement()) == EditPart.SELECTED_NONE
+                && getSelection(ise) == EditPart.SELECTED_NONE);
     }
 
     private boolean isMovedReflexiveMessage(ISequenceEvent ise, RequestQuery rq) {
@@ -525,8 +524,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
      * Feedback
      */
     /**
-     * Show/update the horizontal feedback lines aligned on the top and bottom
-     * of the execution.
+     * Show/update the horizontal feedback lines aligned on the top and bottom of the execution.
      * <p>
      * {@inheritDoc}
      */

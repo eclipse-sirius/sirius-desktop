@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -46,7 +46,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceE
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
-import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansion;
+import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansionOrReduction;
 import org.eclipse.sirius.diagram.sequence.description.tool.CombinedFragmentCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InstanceRoleCreationTool;
 import org.eclipse.sirius.diagram.sequence.description.tool.InteractionUseCreationTool;
@@ -73,9 +73,8 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**
- * An extension of the standard Sirius ContainerCreationEditPolicy which knows
- * how to handle the specific tools use to create frames (i.e. Interaction Uses
- * and Combined Fragments).
+ * An extension of the standard Sirius ContainerCreationEditPolicy which knows how to handle the specific tools use to
+ * create frames (i.e. Interaction Uses and Combined Fragments).
  * 
  * @author pcdavid
  */
@@ -149,7 +148,7 @@ public class SequenceContainerCreationPolicy extends ContainerCreationEditPolicy
                 if (expansionZone != null && !expansionZone.isEmpty() && result != null && result.canExecute()) {
                     // Shift the element to not include int the range of the
                     // AbstractFrame to create
-                    VerticalSpaceExpansion verticalSpaceExpansion = new VerticalSpaceExpansion(sequenceDiagram, expansionZone, 0, Collections.<ISequenceEvent> emptyList());
+                    VerticalSpaceExpansionOrReduction verticalSpaceExpansion = new VerticalSpaceExpansionOrReduction(sequenceDiagram, expansionZone, 0, Collections.<ISequenceEvent> emptyList());
                     ICommand expandSubEventsCmd = CommandFactory.createICommand(domain, verticalSpaceExpansion);
 
                     result = new ICommandProxy(expandSubEventsCmd).chain(result);
@@ -171,10 +170,9 @@ public class SequenceContainerCreationPolicy extends ContainerCreationEditPolicy
     }
 
     /**
-     * Overridden to show the feedback of the expansion zone for
-     * InteractionUse/CombinedFragment creation when there is inclusion of
-     * existing sequence events in its creation range and vertical space
-     * expansion is needed for some sequence events.
+     * Overridden to show the feedback of the expansion zone for InteractionUse/CombinedFragment creation when there is
+     * inclusion of existing sequence events in its creation range and vertical space expansion is needed for some
+     * sequence events.
      * 
      * 
      * {@inheritDoc}
@@ -188,8 +186,8 @@ public class SequenceContainerCreationPolicy extends ContainerCreationEditPolicy
             Option<ISequenceElement> seqDiag = ISequenceElementAccessor.getISequenceElement((View) this.getHost().getModel());
             AbstractToolDescription tool = getTool(createRequest);
             if (seqDiag.some() && seqDiag.get() instanceof SequenceDiagram && (tool instanceof InteractionUseCreationTool || tool instanceof CombinedFragmentCreationTool)) {
-                FrameCreationValidator validator = FrameCreationValidator.getOrCreateValidator((SequenceDiagram) seqDiag.get(), (ContainerCreationDescription) tool, new CreateRequestQuery(
-                        createRequest, sdep));
+                FrameCreationValidator validator = FrameCreationValidator.getOrCreateValidator((SequenceDiagram) seqDiag.get(), (ContainerCreationDescription) tool,
+                        new CreateRequestQuery(createRequest, sdep));
                 if (validator != null) {
                     SequenceInteractionFeedBackBuilder feedBackBuilder = new SequenceInteractionFeedBackBuilder(validator, getFeedbackLayer(), (IGraphicalEditPart) getHost());
                     for (Figure fig : feedBackBuilder.buildFeedBack()) {
@@ -260,8 +258,7 @@ public class SequenceContainerCreationPolicy extends ContainerCreationEditPolicy
     }
 
     /**
-     * Removes the specified <code>Figure</code> from the
-     * {@link LayerConstants#FEEDBACK_LAYER}.
+     * Removes the specified <code>Figure</code> from the {@link LayerConstants#FEEDBACK_LAYER}.
      * 
      * @param figure
      *            the feedback to remove

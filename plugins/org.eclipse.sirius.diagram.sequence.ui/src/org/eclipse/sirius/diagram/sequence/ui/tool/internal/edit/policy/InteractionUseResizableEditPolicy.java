@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,7 +26,7 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalC
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
-import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansion;
+import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansionOrReduction;
 import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
@@ -38,8 +38,7 @@ import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 
 /**
- * A specific AirResizableEditPolicy to manage interaction use roles move &
- * resize requests.
+ * A specific AirResizableEditPolicy to manage interaction use roles move & resize requests.
  * 
  * @author mporhel
  */
@@ -99,7 +98,7 @@ public class InteractionUseResizableEditPolicy extends AbstractFrameResizableEdi
                 ISequenceEvent iSequenceEvent = self.getISequenceEvent();
                 SequenceDiagram diagram = iSequenceEvent.getDiagram();
                 Collection<ISequenceEvent> eventToIgnore = Collections.singletonList(iSequenceEvent);
-                ICommand autoExpand = CommandFactory.createICommand(self.getEditingDomain(), new VerticalSpaceExpansion(diagram, expansionZone, 0, eventToIgnore));
+                ICommand autoExpand = CommandFactory.createICommand(self.getEditingDomain(), new VerticalSpaceExpansionOrReduction(diagram, expansionZone, 0, eventToIgnore));
                 ctc.compose(autoExpand);
             }
 
