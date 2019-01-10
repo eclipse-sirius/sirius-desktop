@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2018 Obeo.
+ * Copyright (c) 2016, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -46,10 +46,12 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.refresh.RefreshDiagr
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.ResetStylePropertiesToDefaultValuesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.style.SetStyleToWorkspaceImageAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementLabelAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.TabbarRevealElementsAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.TabbarRevealLabelsAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.FiltersContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.LayersContribution;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.DiagramActionContributionItem;
-import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.HideDDiagramElementLabelActionContributionItem;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarAlignMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarArrangeMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.TabbarColorPropertyContributionItem;
@@ -218,15 +220,52 @@ public class TabbarContributionFactory {
     }
 
     /**
+     * Creates the Show Element contribution item. This button reveals all the selected elements from view. (Relevant
+     * only in visibility mode)
+     * 
+     * @param part
+     *            the current IDiagramWorkbenchPart.
+     * @return the {@link IContributionItem}.
+     */
+    public IContributionItem createShowElementContribution(IDiagramWorkbenchPart part) {
+        TabbarRevealElementsAction tabbarRevealElementsAction = new TabbarRevealElementsAction(SiriusDiagramActionBarContributor.SHOW_ELEMENT);
+        tabbarRevealElementsAction.setActionPart(part);
+        TabbarActionContributionItem tabbarActionContributionItem = new TabbarActionContributionItem(tabbarRevealElementsAction, part);
+        return tabbarActionContributionItem;
+    }
+
+    /**
      * Creates the Hide Element Label contribution item. This button hides the label of the selected elements.
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
      * @return the {@link IContributionItem}.
      */
-    public IContributionItem createHideElementLabelContribution(IDiagramWorkbenchPart part) {
-        HideDDiagramElementLabelActionContributionItem contributionItem = new HideDDiagramElementLabelActionContributionItem(part);
-        return contributionItem;
+    public ActionContributionItem createHideElementLabelContribution(IDiagramWorkbenchPart part) {
+        HideDDiagramElementLabelAction hideDDiagramElementAction = new HideDDiagramElementLabelAction(SiriusDiagramActionBarContributor.HIDE_LABEL);
+        TabbarActionContributionItem tabbarActionContributionItem = new TabbarActionContributionItem(hideDDiagramElementAction, part);
+        return tabbarActionContributionItem;
+    }
+
+    /**
+     * Creates the Show Element Label contribution item. This button reveals the label of the selected elements.
+     * 
+     * @param part
+     *            the current IDiagramWorkbenchPart.
+     * @param oppositeHideLabel
+     *            The Hide Label Contribution Item. Useful to bind the hide and show label actions to mark them as
+     *            visible when clicking on one of them.
+     * @return the {@link IContributionItem}.
+     */
+    public IContributionItem createShowElementLabelContribution(IDiagramWorkbenchPart part, ActionContributionItem oppositeHideLabel) {
+        IAction action = oppositeHideLabel.getAction();
+        TabbarRevealLabelsAction revealOutlineLabelsAction = new TabbarRevealLabelsAction(SiriusDiagramActionBarContributor.SHOW_LABEL);
+        if (action instanceof HideDDiagramElementLabelAction) {
+            revealOutlineLabelsAction.setOppositeHideAction((HideDDiagramElementLabelAction) action);
+            ((HideDDiagramElementLabelAction) action).setOppositeRevealAction(revealOutlineLabelsAction);
+        }
+        TabbarActionContributionItem tabbarActionContributionItem = new TabbarActionContributionItem(revealOutlineLabelsAction, part);
+        return tabbarActionContributionItem;
     }
 
     /**

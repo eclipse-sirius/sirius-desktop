@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
+import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.viewers.ISelection;
@@ -96,8 +97,11 @@ public class TabbarContributorSample extends AbstractTabbarContributor {
             diagramElementContributionItems = new ArrayList<IContributionItem>();
             diagramElementContributionItems.add(createArrangeMenuManager(part));
             diagramElementContributionItems.add(createAlignMenuManager());
-            diagramElementContributionItems.add(createHideElementLabelContribution(part));
+            ActionContributionItem hideLabelcontributionItem = createHideElementLabelContribution(part);
+            diagramElementContributionItems.add(hideLabelcontributionItem);
             diagramElementContributionItems.add(createHideElementContribution(part));
+            diagramElementContributionItems.add(createShowElementContribution(part));
+            diagramElementContributionItems.add(createShowElementLabelContribution(part, hideLabelcontributionItem));
             diagramElementContributionItems.add(createDeleteFromDiagramContribution(part));
             diagramElementContributionItems.add(createDeleteFromModelContribution(part));
             IContributionItem pinElementContributionItem = createPinElementContribution(part);

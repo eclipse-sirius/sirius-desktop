@@ -54,6 +54,7 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 import org.hamcrest.Description;
@@ -66,6 +67,15 @@ import org.hamcrest.Matcher;
  *
  */
 public class EditModeTest extends AbstractModeTest {
+
+    /**
+     * The kind of action to use to test the show hide: The double-click, the contextual menu action or the tabbar
+     * action.
+     *
+     */
+    private enum ActionKind {
+        DOUBLE_CLICK, CONTEXTUAL, TABBAR
+    }
 
     private void reconnectEdge(String source, String target, String newTargetName) {
 
@@ -366,18 +376,45 @@ public class EditModeTest extends AbstractModeTest {
     }
 
     /**
-     * Make a double click on the diagram element and verifies it is hidden. And do a double click again and verifies it
-     * is shown again.
+     * Performs a hide and show action on the diagram element by using those three different ways:
+     * <ul>
+     * <li>The double-click</li>
+     * <li>The contextual menu action</li>
+     * <li>The tabbar action</li>
+     * </ul>
      * 
      * @param element
-     *            element to double click
+     *            element to hide and reveal
      * @param swtBotEditPart
      *            the corresponding part.
      */
     private void hideShow(DDiagramElement element, SWTBotGefEditPart swtBotEditPart, boolean isLabelHidden) {
+        int count = 0;
+        if (!isLabelHidden) {
+            count = 2;
+        }
+        for (int i = 0; i <= count; i++) {
+            ActionKind kind = ActionKind.values()[i];
+            doHideShow(element, swtBotEditPart, isLabelHidden, kind);
+        }
+    }
+
+    /**
+     * Performs the hide show by using this specific kind of action. see {@link ActionKind} enum.
+     * 
+     * @param element
+     *            element to hide and reveal
+     * @param swtBotEditPart
+     *            the corresponding part.
+     * @param isLabelHidden
+     *            if this action is about hide and show a label.
+     * @param kind
+     *            the kind of action to use. See {@link ActionKind}.
+     */
+    private void doHideShow(DDiagramElement element, SWTBotGefEditPart swtBotEditPart, boolean isLabelHidden, ActionKind kind) {
         editor.reveal(swtBotEditPart.part());
         OperationDoneCondition done = new OperationDoneCondition();
-        swtBotEditPart.doubleClick();
+        performHideReveal(swtBotEditPart, kind, "Hide element");
         bot.waitUntil(done);
         SWTBotUtils.waitAllUiEvents();
 
@@ -388,7 +425,7 @@ public class EditModeTest extends AbstractModeTest {
 
         }
         done = new OperationDoneCondition();
-        swtBotEditPart.doubleClick();
+        performHideReveal(swtBotEditPart, kind, "Show element");
         bot.waitUntil(done);
         SWTBotUtils.waitAllUiEvents();
 
@@ -397,6 +434,42 @@ public class EditModeTest extends AbstractModeTest {
         } else {
             assertFalse("The node should not be filtered.", element.getGraphicalFilters().stream().anyMatch(HideFilter.class::isInstance));
         }
+    }
+
+    /**
+     * We perform the Show / Hide for each action according to the i argument:
+     * <ul>
+     * <li>Double-click</li>
+     * <li>Contextual menu action</li>
+     * <li>Tabbar action</li>
+     * </ul>
+     * 
+     * @param swtBotEditPart
+     *            the selected edit part.
+     * @param actionKind
+     *            the action to perform: a double click, contextual menu or tabbar.
+     * @param toolTip
+     *            the tooltip of the action to perform: Show element or Hide element.
+     */
+    private void performHideReveal(SWTBotGefEditPart swtBotEditPart, ActionKind actionKind, String toolTip) {
+        switch (actionKind) {
+        case DOUBLE_CLICK:
+            swtBotEditPart.doubleClick();
+            break;
+        case CONTEXTUAL:
+            swtBotEditPart.click();
+            editor.clickContextMenu(toolTip);
+            break;
+
+        case TABBAR:
+            swtBotEditPart.click();
+            SWTBotToolbarButton toolbarButton = editor.bot().toolbarButtonWithTooltip(toolTip);
+            toolbarButton.click();
+            break;
+        default:
+            break;
+        }
+
     }
 
     /**

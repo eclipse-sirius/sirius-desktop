@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -60,9 +60,10 @@ public class CanHideElementTester extends PropertyTester {
         if (diagramElement == null) {
             result = false;
         } else {
+            boolean elementIsHidden = !diagramElement.isVisible();
             DDiagram parentDiagram = diagramElement.getParentDiagram();
             result = parentDiagram != null ? HideDDiagramElementAction.allowsHideReveal(parentDiagram).apply(diagramElement) : false;
-            result = result && !parentDiagram.isIsInShowingMode();
+            result = result && !elementIsHidden;
         }
         return result;
     }

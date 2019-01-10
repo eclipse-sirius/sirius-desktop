@@ -160,7 +160,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromMod
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteWithHookAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementLabelAction;
-import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.RevealOutlineElementsAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.RevealElementsAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.RevealOutlineLabelsAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.EMFCommandFactoryUI;
 import org.eclipse.sirius.diagram.ui.tools.internal.dnd.DragAndDropWrapper;
@@ -1007,7 +1007,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                         }
                         return result;
                     }
-                }, new IObjectActionDelegateWrapper(new RevealOutlineElementsAction(), Messages.RevealOutlineElementsAction_label) {
+                }, new IObjectActionDelegateWrapper(new RevealElementsAction(), Messages.RevealOutlineElementsAction_label) {
 
                     @Override
                     public ImageDescriptor getImageDescriptor() {
