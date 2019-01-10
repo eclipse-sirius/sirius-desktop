@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 <!--
-  Copyright (c) 2014, 2018 THALES GLOBAL SERVICES
+  Copyright (c) 2014, 2019 THALES GLOBAL SERVICES
   This program and the accompanying materials
   are made available under the terms of the Eclipse Public License 2.0
   which accompanies this distribution, and is available at
@@ -1039,6 +1039,10 @@
            id="org.eclipse.sirius.diagram.ui.command.hideElement"
            name="%command.hideElement.name">
      </command>
+     <command
+           id="org.eclipse.sirius.diagram.ui.command.showElement"
+           name="%RevealOutlineElementsAction_label">
+     </command>
    <command
            id="org.eclipse.sirius.diagram.ui.command.hideLabel"
            name="%command.hideLabel.name">
@@ -1228,6 +1232,13 @@
              properties="canHideElement"
              type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
        </propertyTester>
+       <propertyTester
+             class="org.eclipse.sirius.diagram.ui.tools.internal.testers.CanShowElementTester"
+             id="org.eclipse.sirius.diagram.ui.CanShowElementTester"
+             namespace="org.eclipse.sirius.diagram.ui"
+             properties="canShowElement"
+             type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
+       </propertyTester>
         <propertyTester
            id="org.eclipse.sirius.diagram.ui.CanDeleteFromDiagram"
            type="java.lang.Object"
@@ -1257,14 +1268,6 @@
               type="org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart">
         </propertyTester>
    </extension>
-   <extension
-         point="org.eclipse.ui.menus">
-      <menuContribution
-            allPopups="false"
-            class="org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.contributions.DiagramElementHideDeleteExtensionContributionFactory"
-            locationURI="toolbar:org.eclipse.sirius.diagram.ui.tabbar?after=org.eclipse.sirius.diagram.ui.tabbar.hideelement">
-      </menuContribution>
-   </extension>
 
    <extension
       point="org.eclipse.ui.menus">
@@ -1287,6 +1290,27 @@
                   </instanceof>
                   <test
                         property="org.eclipse.sirius.diagram.ui.canHideElement">
+                  </test>
+               </iterate>
+            </with>
+         </visibleWhen>
+      </command>
+      <command
+            commandId="org.eclipse.sirius.diagram.ui.command.showElement"
+            icon="icons/categoryVisible.gif"
+            label="%RevealOutlineElementsAction_label"
+            style="push">
+         <visibleWhen
+               checkEnabled="false">
+            <with
+                  variable="activeMenuSelection">
+               <iterate
+                     operator="and">
+                  <instanceof
+                        value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart">
+                  </instanceof>
+                  <test
+                        property="org.eclipse.sirius.diagram.ui.canShowElement">
                   </test>
                </iterate>
             </with>
@@ -1684,6 +1708,20 @@
      <handler
            class="org.eclipse.sirius.diagram.ui.tools.internal.commands.HideElementCommand"
            commandId="org.eclipse.sirius.diagram.ui.command.hideElement">
+           <activeWhen>
+             <or>
+              <with variable="activeMenuSelection">
+                <reference definitionId="allInstanceOfIDiagramElementEditPart" />
+              </with>
+              <with variable="selection">
+                <reference definitionId="allInstanceOfIDiagramElementEditPart" />
+              </with>
+             </or>
+           </activeWhen>
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.RevealElementCommand"
+           commandId="org.eclipse.sirius.diagram.ui.command.showElement">
            <activeWhen>
              <or>
               <with variable="activeMenuSelection">

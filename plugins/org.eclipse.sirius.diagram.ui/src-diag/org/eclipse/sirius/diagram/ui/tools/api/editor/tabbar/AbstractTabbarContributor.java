@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2018 Obeo.
+ * Copyright (c) 2015, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.ui.tools.api.editor.tabbar;
 
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
+import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -122,14 +123,38 @@ public abstract class AbstractTabbarContributor implements ITabbarContributor {
     }
 
     /**
+     * Creates the Show Element contribution item. This button shows all the selected elements from view.
+     * 
+     * @param part
+     *            the current IDiagramWorkbenchPart.
+     * @return the {@link IContributionItem}.
+     */
+    protected IContributionItem createShowElementContribution(IDiagramWorkbenchPart part) {
+        return contributorFactory.createShowElementContribution(part);
+    }
+
+    /**
      * Creates the Hide Element Label contribution item. This button hides the label of the selected elements.
      * 
      * @param part
      *            the current IDiagramWorkbenchPart.
      * @return the {@link IContributionItem}.
      */
-    protected IContributionItem createHideElementLabelContribution(IDiagramWorkbenchPart part) {
+    protected ActionContributionItem createHideElementLabelContribution(IDiagramWorkbenchPart part) {
         return contributorFactory.createHideElementLabelContribution(part);
+    }
+
+    /**
+     * Creates the Show Element Label contribution item. This button shows the label of the selected elements.
+     * 
+     * @param part
+     *            the current IDiagramWorkbenchPart.
+     * @param hideElementContributionItem
+     *            the opposite hide contribution item. Can be null.
+     * @return the {@link IContributionItem}.
+     */
+    protected IContributionItem createShowElementLabelContribution(IDiagramWorkbenchPart part, ActionContributionItem hideElementContributionItem) {
+        return contributorFactory.createShowElementLabelContribution(part, hideElementContributionItem);
     }
 
     /**

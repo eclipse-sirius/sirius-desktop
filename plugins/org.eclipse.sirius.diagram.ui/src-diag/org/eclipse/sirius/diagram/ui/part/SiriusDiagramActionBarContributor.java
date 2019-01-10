@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -81,9 +81,19 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
     public static final String HIDE_ELEMENT = Messages.SiriusDiagramActionBarContributor_hideElement;
 
     /**
+     * Action id for the "Show element"
+     */
+    public static final String SHOW_ELEMENT = Messages.SiriusDiagramActionBarContributor_showElement;
+
+    /**
      * Action id for the "Hide label"
      */
     public static final String HIDE_LABEL = Messages.SiriusDiagramActionBarContributor_hideLabel;
+
+    /**
+     * Action id for the "Show label"
+     */
+    public static final String SHOW_LABEL = Messages.RevealOutlineLabelsAction_label;
 
     /**
      * Action id for the "Reveal elements"

@@ -1130,6 +1130,9 @@ public final class Messages {
     public static String SiriusDiagramActionBarContributor_hideElement;
 
     @TranslatableMessage
+    public static String SiriusDiagramActionBarContributor_showElement;
+
+    @TranslatableMessage
     public static String SiriusDiagramActionBarContributor_hideLabel;
 
     @TranslatableMessage

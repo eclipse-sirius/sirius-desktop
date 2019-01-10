@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -75,6 +75,7 @@ public abstract class AbstractRevealElementsAction<T> extends Action implements 
      * 
      * @see org.eclipse.ui.IActionDelegate#run(org.eclipse.jface.action.IAction)
      */
+    @Override
     public final void run(final IAction action) {
         if (this.selection instanceof IStructuredSelection) {
             final IStructuredSelection structuredSelection = (IStructuredSelection) this.selection;
@@ -98,6 +99,7 @@ public abstract class AbstractRevealElementsAction<T> extends Action implements 
      * @see org.eclipse.ui.IObjectActionDelegate#setActivePart(org.eclipse.jface.action.IAction,
      *      org.eclipse.ui.IWorkbenchPart)
      */
+    @Override
     public final void setActivePart(final IAction action, final IWorkbenchPart targetPart) {
         // Nothing.
     }
@@ -136,7 +138,8 @@ public abstract class AbstractRevealElementsAction<T> extends Action implements 
      * @see org.eclipse.ui.IActionDelegate#selectionChanged(org.eclipse.jface.action.IAction,
      *      org.eclipse.jface.viewers.ISelection)
      */
-    public final void selectionChanged(final IAction action, final ISelection s) {
+    @Override
+    public void selectionChanged(final IAction action, final ISelection s) {
         this.selection = s;
     }
 

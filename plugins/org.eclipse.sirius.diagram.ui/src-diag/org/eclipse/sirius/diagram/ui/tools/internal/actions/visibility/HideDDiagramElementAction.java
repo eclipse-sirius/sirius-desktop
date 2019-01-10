@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,7 +40,6 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
-import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
@@ -154,7 +153,7 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
             if (!ddes.isEmpty()) {
                 DDiagram parentDiagram = ddes.iterator().next().getParentDiagram();
                 Predicate<DDiagramElement> allowsHideReveal = allowsHideReveal(parentDiagram);
-                Predicate<DDiagramElement> notDirectlyHidden = dde -> !new DDiagramElementQuery(dde).isHidden();
+                Predicate<DDiagramElement> notDirectlyHidden = dde -> dde.isVisible();
                 return Iterables.all(ddes, Predicates.and(allowsHideReveal, notDirectlyHidden));
             }
 
@@ -275,7 +274,7 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
     }
 
     /**
-     * Indicates if the given ddiagram is allowing pin/unpin.
+     * Indicates if the given ddiagram is allowing hide/reveal.
      * 
      * @param diagram
      *            the diagram to inspect

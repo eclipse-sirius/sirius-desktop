@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -79,6 +79,8 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
     /** The selection. */
     private ISelection selection;
 
+    private TabbarRevealLabelsAction oppositeAction;
+
     /**
      * Constructor.
      */
@@ -107,6 +109,14 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
     public HideDDiagramElementLabelAction(final String text, final ImageDescriptor image) {
         super(text, image);
         setId(text);
+    }
+
+    @Override
+    public boolean isEnabled() {
+        if (this.selection instanceof IStructuredSelection) {
+            return isEnabled(((IStructuredSelection) this.selection).toList());
+        }
+        return super.isEnabled();
     }
 
     /**
@@ -166,6 +176,11 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
                 } else if (nextSelected instanceof DDiagramElement || nextSelected instanceof AbstractDDiagramElementLabelItemProvider) {
                     runForNoEditPartSelection(minimizedSelection);
                 }
+                // We activate the Show Label Action if needed.
+                if (oppositeAction != null) {
+                    oppositeAction.setEnabled(oppositeAction.isEnabled());
+                }
+                setEnabled(isEnabled());
             }
         }
     }
@@ -264,5 +279,16 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
     @Override
     public void dispose() {
         selection = null;
+        this.oppositeAction = null;
+    }
+
+    /**
+     * Set the opposite Show Label action.
+     * 
+     * @param revealOutlineLabelsAction
+     *            the Show Label action.
+     */
+    public void setOppositeRevealAction(TabbarRevealLabelsAction revealOutlineLabelsAction) {
+        this.oppositeAction = revealOutlineLabelsAction;
     }
 }

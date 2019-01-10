@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.action.ToolBarManager;
@@ -211,11 +212,12 @@ public class TabbarFillerWithContributions extends AbstractTabbarFiller {
 
         addContributionItem(diagramElementContributionItems, HIDE_DELETE, contributionFactory.createDeleteFromModelContribution(part));
         addContributionItem(diagramElementContributionItems, HIDE_DELETE, contributionFactory.createDeleteFromDiagramContribution(part));
+
+        ActionContributionItem hideElementLabelContribution = contributionFactory.createHideElementLabelContribution(part);
+        addContributionItem(diagramElementContributionItems, HIDE_DELETE, hideElementLabelContribution);
+        addContributionItem(diagramElementContributionItems, HIDE_DELETE, contributionFactory.createShowElementLabelContribution(part, hideElementLabelContribution));
         addContributionItem(diagramElementContributionItems, HIDE_DELETE, contributionFactory.createHideElementContribution(part));
-        // The following contribution is dynamically provided because the
-        // default contribution does not handle visibility
-        // addContributionItem(diagramElementContributionItems, HIDE_DELETE,
-        // contributionFactory.createHideElementLabelContribution(part));
+        addContributionItem(diagramElementContributionItems, HIDE_DELETE, contributionFactory.createShowElementContribution(part));
 
         addContributionItem(diagramElementContributionItems, FONT, contributionFactory.createFontDialogContribution(part));
         addContributionItem(diagramElementContributionItems, FONT, contributionFactory.createFontColorContribution(part));

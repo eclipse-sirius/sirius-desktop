@@ -101,7 +101,9 @@ public class TabBarTest extends AbstractSiriusSwtBotGefTestCase {
             Messages.EditModeAction_Label, "Font Color", "Fill &Color", "Li&ne Color", "Line Style" };
 
     private static final String[] CONTAINER_TOOLBARBUTTONS_TOOLTIPS = { Messages.PinElementsEclipseAction_text, Messages.UnpinElementsEclipseAction_text, Messages.CopyFormatAction_toolTipText,
-            Messages.SiriusDiagramActionBarContributor_hideElement, Messages.SiriusDiagramActionBarContributor_hideLabel, Messages.SiriusDiagramActionBarContributor_deleteFromDiagram,
+            Messages.SiriusDiagramActionBarContributor_showElement,
+            Messages.SiriusDiagramActionBarContributor_hideElement, Messages.RevealOutlineLabelsAction_label, Messages.SiriusDiagramActionBarContributor_hideLabel,
+            Messages.SiriusDiagramActionBarContributor_deleteFromDiagram,
             Messages.SiriusDiagramActionBarContributor_deleteFromModel, "Font", Messages.SetStyleToWorkspaceImageAction_text, Messages.ResetStylePropertiesToDefaultValuesAction_text,
             "Apply the applicable appearance properties of the last selected shape to the other selected shapes.", "Make height and width same size", "Auto Size" };
 
