@@ -117,16 +117,17 @@ public class ExecuteToolOperationTask extends AbstractCommandTask {
         CommandContext.pushContext(context);
         try {
             task.execute();
-            if (!(task instanceof ForTask)) {
-                for (ICommandTask childTask : task.getChildrenTasks()) {
-                    executeTask(childTask, context);
-                }
-            }
         } catch (MetaClassNotFoundException | FeatureNotFoundException e) {
             SiriusPlugin.getDefault().error(Messages.TaskExecutor_errorModifyingModelMsg, e);
-        } finally {
+        }
+        if (!(task instanceof ForTask)) {
+            CommandContext.pushContext(context);
+            for (ICommandTask childTask : task.getChildrenTasks()) {
+                executeTask(childTask, context);
+            }
             CommandContext.popContext(context);
         }
+        CommandContext.popContext(context);
     }
 
     private void createChildrenTasks(final ICommandTask parent, final ContainerModelOperation op, final CommandContext context) {
