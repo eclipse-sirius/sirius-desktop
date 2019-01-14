@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 
-import com.google.common.base.Function;
 import com.google.common.collect.Ordering;
 
 /**
@@ -80,28 +79,23 @@ public class PrintInterpreterVariablesAction extends AbstractExternalJavaAction 
     }
 
     private void printVariables(String title, SortedMap<String, Object> allVariables) {
+        StringBuilder sb = new StringBuilder();
         if (allVariables.isEmpty()) {
-            // CHECKSTYLE:OFF
-            System.out.println("[" + title + "] no variables available."); //$NON-NLS-1$ //$NON-NLS-2$
-            // CHECKSTYLE:ON
+            sb.append("[").append(title).append("] no variables available.\n"); //$NON-NLS-1$ //$NON-NLS-2$
         } else {
-            int maxLength = Ordering.natural().onResultOf(new Function<String, Integer>() {
-                @Override
-                public Integer apply(String from) {
-                    return from.length();
-                }
-            }).max(allVariables.keySet()).length();
-            // CHECKSTYLE:OFF
-            System.out.println("[" + title + "] variables available:"); //$NON-NLS-1$ //$NON-NLS-2$
+            int maxLength = Ordering.natural().onResultOf(String::length).max(allVariables.keySet()).length();
+            sb.append("[").append(title).append("] variables available:\n"); //$NON-NLS-1$ //$NON-NLS-2$
             int i = 1;
             for (Map.Entry<String, Object> variable : allVariables.entrySet()) {
-                System.out.print("  " + i++ + ". " + variable.getKey()); //$NON-NLS-1$ //$NON-NLS-2$
+                sb.append("  ").append(i++).append(". ").append(variable.getKey()); //$NON-NLS-1$ //$NON-NLS-2$
                 for (int j = 0; j < (maxLength - variable.getKey().length()); j++) {
-                    System.out.print(" "); //$NON-NLS-1$
+                    sb.append(" "); //$NON-NLS-1$
                 }
-                System.out.println(": " + variable.getValue()); //$NON-NLS-1$
+                sb.append(": ").append(variable.getValue()).append("\n"); //$NON-NLS-1$ //$NON-NLS-2$
             }
-            System.out.println();
+            sb.append("\n"); //$NON-NLS-1$
+            // CHECKSTYLE:OFF
+            System.out.print(sb.toString());
             // CHECKSTYLE:ON
         }
     }
