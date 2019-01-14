@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -43,7 +43,7 @@ public abstract class AbstractExternalJavaAction implements IExternalJavaAction 
      *             if the parameter is missing or is not type-compatible with
      *             the expected type.
      */
-    protected <T> T getParameter(Map<String, Object> parameters, String name, Class<T> type) throws IllegalArgumentException {
+    protected <T> T getParameter(Map<String, Object> parameters, String name, Class<T> type) {
         return getParameter(parameters, name, type, true);
     }
 
@@ -65,7 +65,7 @@ public abstract class AbstractExternalJavaAction implements IExternalJavaAction 
      *             if the parameter is present but is not type-compatible with
      *             the expected type.
      */
-    protected <T> T getOptionalParameter(Map<String, Object> parameters, String name, Class<T> type) throws IllegalArgumentException {
+    protected <T> T getOptionalParameter(Map<String, Object> parameters, String name, Class<T> type) {
         return getParameter(parameters, name, type, false);
     }
 
