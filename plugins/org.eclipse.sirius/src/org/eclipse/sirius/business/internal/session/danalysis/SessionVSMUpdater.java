@@ -19,10 +19,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2;
+import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.SessionListener;
+import org.eclipse.sirius.business.internal.migration.resource.ResourceFileExtensionPredicate;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -30,8 +33,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import com.google.common.base.Preconditions;
 
 /**
- * Reload the VSMs used inside a session when the global registry detects their
- * content has changed.
+ * Reload the VSMs used inside a session when the global registry detects their content has changed.
  * 
  * @author pcdavid
  */
@@ -83,13 +85,14 @@ public class SessionVSMUpdater implements ViewpointRegistryListener2 {
         }
     }
 
+    /**
+     * Finds all the VSM resources in the session. Note that at the time we are called here, we are in the middle of
+     * reloading some of these VSMs, so the model elements they contain are "proxified", so we can not do a proper
+     * navigation in the models to find the resources and have to rely on checking the file extensions of the resources
+     * in the session.
+     */
     private static List<Resource> findAllVSMResources(DAnalysisSessionImpl session) {
-        // @formatter:off
-        return session.allAnalyses().stream()
-                      .flatMap(analysis -> analysis.getOwnedViews().stream())
-                      .map(view -> view.getViewpoint().eResource())
-                      .distinct()
-                      .collect(Collectors.toList());
-        // @formatter:on
+        EList<Resource> resources = session.getTransactionalEditingDomain().getResourceSet().getResources();
+        return resources.stream().filter(new ResourceFileExtensionPredicate(SiriusUtil.DESCRIPTION_MODEL_EXTENSION, true)).collect(Collectors.toList());
     }
 }
