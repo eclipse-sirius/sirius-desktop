@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -49,7 +49,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 public class ModelingModelProvider extends ModelProvider {
 
     /** The model provider id. */
-    public static final String MODELING_MODEL_PROVIDER_ID = "org.eclipse.sirius.ui.modelProvider"; //$NON-NLS-1$
+    public static final String MODELING_MODEL_PROVIDER_ID = "org.eclipse.sirius.modelProvider"; //$NON-NLS-1$
 
     /**
      * Creates a new java model provider.
