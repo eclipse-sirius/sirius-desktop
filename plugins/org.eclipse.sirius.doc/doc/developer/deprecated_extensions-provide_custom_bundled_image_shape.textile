@@ -1,0 +1,79 @@
+h1. Sirius - Provide custom bundled image shape
+
+h2. Disclaimer - Deprecated
+
+This extension point is deprecated (but still working) and should not be used. Instead you should use the "new extension point":extensions-provide_custom_bundled_image_shape.html.
+
+h2. Goals
+
+* Sirius provides a basic image style for node mappings. This style offers a selection of five different shapes. This extension point is used to allow specifiers to provide their own shapes defined in a SVG file.
+
+h2. Define a bundled image shape extension
+
+* This extension point is identified as @org.eclipse.sirius.diagram.bundledImageShape@. In this extension, there are three required fields:
+** The Id of the extension is for once required as it will be used to identify the provided shape in the models (VSM and graphical models).
+** The image path, that needs to start with the plug-in name as it is possible to define a bundled image shape extension using an image in a different plug-in.
+** The image label displayed in VSMs (suffixed with the plug-in name where the bundled image shape extension is declared).
+
+* There are 6 optional parameters in this extension point. These parameters are used to provide the identifier or attribute name concerning the color, border color and border size used in the given SVG file, if these parameters are not the default ones (used in the 5 default shapes). Here is a list of these parameters and the default value.
+** colorIdentifier, the identifier of the tag defining the inner color of the figure. The default identifier is "stop1".
+** colorAttribute, the attribute of the tag defining the inner color of the figure. The default identifier is "style".
+** borderColorIdentifier, the identifier of the tag defining the border color of the figure. The default identifier is "elementWithGradient".
+** borderColorAttribute, the attribute of the tag defining the border color of the figure. The default identifier is "style".
+** borderSizeIdentifier, the identifier of the tag defining the border size of the figure. The default identifier is "externalBorder".
+** borderSizeAttribute, the attribute of the tag defining the border size of the figure. The default identifier is "style".
+
+Note that it is possible to provide a non SVG file (like a JPEG) but the colors and border size will not be synchronized with the selected information in the VSM.
+
+h2. Example
+
+The following example defines a new bundled image shape using an image file donut.svg.
+
+pre.. 
+	<extension
+        id="org.eclipse.sirius.tests.swtbot.donut"
+        point="org.eclipse.sirius.diagram.bundledImageShape">
+     <image
+           imagePath="/org.eclipse.sirius.tests.swtbot/images/donut.svg"
+           label="Donut">
+        <colorIdentifier
+              colorIdentifier="stop8224-2">
+        </colorIdentifier>
+        <colorAttribute
+              colorAttribute="style">
+        </colorAttribute>
+        <borderColorIdentifier
+              borderColorIdentifier="path10796-2-6-2-7">
+        </borderColorIdentifier>
+        <borderColorAttribute
+              borderColorAttribute="style">
+        </borderColorAttribute>
+        <borderSizeIdentifier
+              borderSizeIdentifier="path10796-2-6-2-7">
+        </borderSizeIdentifier>
+        <borderSizeAttribute
+              borderSizeAttribute="style">
+        </borderSizeAttribute>
+     </image>
+  </extension>
+
+p. In this sample, the identifier concerning the tags for the inner color (colorIdentifier), the border color (borderColorIdentifier) and the border size (borderSizeIdentifier) are not the default one. However, the attributes are all the default values. Therefore, we can simplify the extension as follows.
+
+pre.. 
+	<extension
+        id="org.eclipse.sirius.tests.swtbot.donut"
+        point="org.eclipse.sirius.diagram.bundledImageShape">
+     <image
+           imagePath="/org.eclipse.sirius.tests.swtbot/images/donut.svg"
+           label="Donut">
+        <colorIdentifier
+              colorIdentifier="stop8224-2">
+        </colorIdentifier>
+        <borderColorIdentifier
+              borderColorIdentifier="path10796-2-6-2-7">
+        </borderColorIdentifier>
+        <borderSizeIdentifier
+              borderSizeIdentifier="path10796-2-6-2-7">
+        </borderSizeIdentifier>
+     </image>
+  </extension>

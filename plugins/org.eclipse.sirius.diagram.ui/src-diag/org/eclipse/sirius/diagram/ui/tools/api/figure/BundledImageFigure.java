@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -117,6 +117,11 @@ public class BundledImageFigure extends SVGFigure {
      * The id of the color identifier in a bundle image shape extension
      */
     private static final String COLOR_IDENTIFIER = "colorIdentifier"; //$NON-NLS-1$
+
+    /**
+     * The id of the color identifier in a bundle image shape extension
+     */
+    private static final String SUB_ATTRIBUTE_IDENTIFIER = "subAttributeIdentifier"; //$NON-NLS-1$
 
     /**
      * The actual shapeName use to draw the SVG figure
@@ -283,48 +288,104 @@ public class BundledImageFigure extends SVGFigure {
             setURI(getURI(), false);
             Document document = this.getDocument();
             if (document != null && needsUpdate) {
-                /* Update the primary color (if exists). */
-                Element gradientStep1 = findElementInDocument(bundledImage, document, BundledImageFigure.COLOR_IDENTIFIER, BundledImageFigure.SVG_STOP_LIGHTER_ID);
-                if (gradientStep1 != null) {
-                    String gradientStep1Style = getAttributeValue(gradientStep1, bundledImage, BundledImageFigure.COLOR_ATTRIBUTE, BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME);
-                    if (canAttributeBeUpdated(gradientStep1Style, BundledImageFigure.SVG_STOP_COLOR, BundledImageFigure.COLOR_ATTRIBUTE)) {
-                        gradientStep1.setAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME,
-                                BundledImageFigure.getNewStyle(gradientStep1Style, BundledImageFigure.SVG_STOP_COLOR, getLighterGradientColor()));
-                        updated = true;
-                    }
+                if (isCustomBundledImageExtensionPoint(bundledImage)) {
+                    updated = updateDocumentColorsNewExtensionPoint(needsUpdate, bundledImage, document);
+                } else {
+                    updated = updateDocumentColorsOldExtensionPoint(needsUpdate, bundledImage, document);
                 }
+            }
+        }
+        return updated;
+    }
 
-                /* Update the secondary gradient color (if exists). */
-                Element gradientStep2 = document.getElementById(BundledImageFigure.SVG_STOP_MAIN_ID);
-                if (gradientStep2 != null) {
-                    String gradientStep2Style = gradientStep2.getAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME);
-                    if (canAttributeBeUpdated(gradientStep2Style, BundledImageFigure.SVG_STOP_COLOR, BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME)) {
-                        gradientStep2.setAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME,
-                                BundledImageFigure.getNewStyle(gradientStep2Style, BundledImageFigure.SVG_STOP_COLOR, getMainGradientColor()));
-                        updated = true;
-                    }
-                }
+    /**
+     * Specific color processing concerning Bundle Image provided with the extension point
+     * org.eclipse.sirius.diagram.customBundledImageShape. Indeed, this extension point allows to specify the property
+     * holding a color but if this property is multi-valued, it also provides the specific sub-attribute referencing the
+     * color. This is why compared to the updateDocumentColorsOldExtensionPoint there is an additional step using the
+     * getSubAttributeId method.
+     */
+    private boolean updateDocumentColorsNewExtensionPoint(boolean needsUpdate, BundledImage bundledImage, Document document) {
+        boolean updated = false;
+        /* Update the primary color (if exists). */
+        Element gradientStep1 = findElementInDocument(bundledImage, document, BundledImageFigure.COLOR_IDENTIFIER, BundledImageFigure.SVG_STOP_LIGHTER_ID);
+        if (gradientStep1 != null) {
+            String customProperty = getCustomProperty(bundledImage, BundledImageFigure.COLOR_ATTRIBUTE, BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME);
+            String gradientStep1Style = getAttributeValue(gradientStep1, bundledImage, BundledImageFigure.COLOR_ATTRIBUTE, BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME);
+            String subAttributeId = getSubAttributeId(gradientStep1, bundledImage, BundledImageFigure.COLOR_ATTRIBUTE);
+            if (canAttributeBeUpdated(gradientStep1Style, subAttributeId, BundledImageFigure.COLOR_ATTRIBUTE)) {
+                gradientStep1.setAttribute(customProperty, BundledImageFigure.getNewStyle(gradientStep1Style, subAttributeId, getLighterGradientColor()));
+                updated = true;
+            }
+        }
 
-                /* Update the shadow border (if exists). */
-                Element shadow = document.getElementById(BundledImageFigure.SVG_SHADOW_ELEMENT_ID);
-                if (shadow != null) {
-                    String shadowStyle = shadow.getAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME);
-                    if (canAttributeBeUpdated(shadowStyle, BundledImageFigure.SVG_FILL, BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME)) {
-                        shadow.setAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME, BundledImageFigure.getNewStyle(shadowStyle, BundledImageFigure.SVG_FILL, getLighterBorderColor()));
-                        updated = true;
-                    }
-                }
+        updated = updated || updateDocumentSecondaryColorAndShadowBorder(document);
 
-                /* Update the border color (if exists). */
-                Element elementWithGradient = findElementInDocument(bundledImage, document, BundledImageFigure.BORDER_COLOR_IDENTIFIER,
-                        BundledImageFigure.SVG_GRADIENT_ELEMENT_ID);
-                if (elementWithGradient != null) {
-                    String elementWithGradientStyle = getAttributeValue(elementWithGradient, bundledImage, BundledImageFigure.BORDER_COLOR_ATTRIBUTE, BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME);
-                    if (canAttributeBeUpdated(elementWithGradientStyle, BundledImageFigure.SVG_STROKE, BundledImageFigure.BORDER_COLOR_ATTRIBUTE)) {
-                        elementWithGradient.setAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME, getNewStyle(elementWithGradientStyle, BundledImageFigure.SVG_STROKE, getMainBorderColor()));
-                        updated = true;
-                    }
-                }
+        /* Update the border color (if exists). */
+        Element elementWithGradient = findElementInDocument(bundledImage, document, BundledImageFigure.BORDER_COLOR_IDENTIFIER, BundledImageFigure.SVG_GRADIENT_ELEMENT_ID);
+        if (elementWithGradient != null) {
+            String customProperty = getCustomProperty(bundledImage, BundledImageFigure.BORDER_COLOR_ATTRIBUTE, BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME);
+            String elementWithGradientStyle = getAttributeValue(elementWithGradient, bundledImage, BundledImageFigure.BORDER_COLOR_ATTRIBUTE, BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME);
+            String subAttributeId = getSubAttributeId(elementWithGradient, bundledImage, BundledImageFigure.BORDER_COLOR_ATTRIBUTE);
+            if (canAttributeBeUpdated(elementWithGradientStyle, subAttributeId, BundledImageFigure.BORDER_COLOR_ATTRIBUTE)) {
+                elementWithGradient.setAttribute(customProperty, getNewStyle(elementWithGradientStyle, subAttributeId, getMainBorderColor()));
+                updated = true;
+            }
+        }
+        return updated;
+    }
+
+    /**
+     * This method processes the color of standard bundle image and bundle image provided by the deprecated extension
+     * point: org.eclipse.sirius.diagram.bundledImageShape. This method should be renamed the day we remove this
+     * deprecated extension point.
+     */
+    private boolean updateDocumentColorsOldExtensionPoint(boolean needsUpdate, BundledImage bundledImage, Document document) {
+        boolean updated = false;
+        /* Update the primary color (if exists). */
+        Element gradientStep1 = findElementInDocument(bundledImage, document, BundledImageFigure.COLOR_IDENTIFIER, BundledImageFigure.SVG_STOP_LIGHTER_ID);
+        if (gradientStep1 != null) {
+            String gradientStep1Style = getAttributeValue(gradientStep1, bundledImage, BundledImageFigure.COLOR_ATTRIBUTE, BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME);
+            if (canAttributeBeUpdated(gradientStep1Style, BundledImageFigure.SVG_STOP_COLOR, BundledImageFigure.COLOR_ATTRIBUTE)) {
+                gradientStep1.setAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME,
+                        BundledImageFigure.getNewStyle(gradientStep1Style, BundledImageFigure.SVG_STOP_COLOR, getLighterGradientColor()));
+                updated = true;
+            }
+        }
+
+        updated = updated || updateDocumentSecondaryColorAndShadowBorder(document);
+
+        /* Update the border color (if exists). */
+        Element elementWithGradient = findElementInDocument(bundledImage, document, BundledImageFigure.BORDER_COLOR_IDENTIFIER, BundledImageFigure.SVG_GRADIENT_ELEMENT_ID);
+        if (elementWithGradient != null) {
+            String elementWithGradientStyle = getAttributeValue(elementWithGradient, bundledImage, BundledImageFigure.BORDER_COLOR_ATTRIBUTE, BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME);
+            if (canAttributeBeUpdated(elementWithGradientStyle, BundledImageFigure.SVG_STROKE, BundledImageFigure.BORDER_COLOR_ATTRIBUTE)) {
+                elementWithGradient.setAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME, getNewStyle(elementWithGradientStyle, BundledImageFigure.SVG_STROKE, getMainBorderColor()));
+                updated = true;
+            }
+        }
+        return updated;
+    }
+
+    private boolean updateDocumentSecondaryColorAndShadowBorder(Document document) {
+        boolean updated = false;
+        /* Update the secondary gradient color (if exists). */
+        Element gradientStep2 = document.getElementById(BundledImageFigure.SVG_STOP_MAIN_ID);
+        if (gradientStep2 != null) {
+            String gradientStep2Style = gradientStep2.getAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME);
+            if (canAttributeBeUpdated(gradientStep2Style, BundledImageFigure.SVG_STOP_COLOR, BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME)) {
+                gradientStep2.setAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME, BundledImageFigure.getNewStyle(gradientStep2Style, BundledImageFigure.SVG_STOP_COLOR, getMainGradientColor()));
+                updated = true;
+            }
+        }
+
+        /* Update the shadow border (if exists). */
+        Element shadow = document.getElementById(BundledImageFigure.SVG_SHADOW_ELEMENT_ID);
+        if (shadow != null) {
+            String shadowStyle = shadow.getAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME);
+            if (canAttributeBeUpdated(shadowStyle, BundledImageFigure.SVG_FILL, BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME)) {
+                shadow.setAttribute(BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME, BundledImageFigure.getNewStyle(shadowStyle, BundledImageFigure.SVG_FILL, getLighterBorderColor()));
+                updated = true;
             }
         }
         return updated;
@@ -332,9 +393,21 @@ public class BundledImageFigure extends SVGFigure {
 
     private boolean updateDocumentBorderSize(boolean needsUpdate, BundledImage bundledImage) {
         boolean updated = false;
-        if (needsUpdate) {
+        if (needsUpdate && this.getDocument() != null) {
             Document document = this.getDocument();
-            if (document != null && needsUpdate) {
+            if (isCustomBundledImageExtensionPoint(bundledImage)) {
+                /* Update the border size (if exists). */
+                Element elementWithGradient = findElementInDocument(bundledImage, document, BundledImageFigure.BORDER_SIZE_IDENTIFIER, BundledImageFigure.SVG_BORDER_ID);
+                if (elementWithGradient != null) {
+                    String customProperty = getCustomProperty(bundledImage, BundledImageFigure.BORDER_SIZE_ATTRIBUTE, BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME);
+                    String elementWithGradientStyle = getAttributeValue(elementWithGradient, bundledImage, BundledImageFigure.BORDER_SIZE_ATTRIBUTE, BundledImageFigure.SVG_STYLE_ATTRIBUTE_NAME);
+                    String subAttributeId = getSubAttributeId(elementWithGradient, bundledImage, BundledImageFigure.BORDER_SIZE_ATTRIBUTE);
+                    if (canAttributeBeUpdated(elementWithGradientStyle, subAttributeId, BundledImageFigure.BORDER_SIZE_ATTRIBUTE)) {
+                        elementWithGradient.setAttribute(customProperty, getNewStyle(elementWithGradientStyle, subAttributeId, Integer.toString(getMainBorderSize())));
+                        updated = true;
+                    }
+                }
+            } else {
                 /* Update the border size (if exists). */
                 Element elementWithGradient = findElementInDocument(bundledImage, document, BundledImageFigure.BORDER_SIZE_IDENTIFIER, BundledImageFigure.SVG_BORDER_ID);
                 if (elementWithGradient != null) {
@@ -348,6 +421,23 @@ public class BundledImageFigure extends SVGFigure {
             }
         }
         return updated;
+    }
+
+    private String getCustomProperty(BundledImage bundledImage, String propertyId, String defaultId) {
+        String result = getBundledImageExtensionQuery().findParameterInExtension(getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeID(bundledImage.getProvidedShapeID()), propertyId);
+        if (result == null) {
+            result = defaultId;
+        }
+        return result;
+    }
+
+    private boolean isCustomBundledImageExtensionPoint(BundledImage bundledImage) {
+        if (bundledImage.getProvidedShapeID() == null) {
+            return false;
+        }
+        String extensionPointUniqueIdentifier = getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeID(bundledImage.getProvidedShapeID()).getDeclaringExtension()
+                .getExtensionPointUniqueIdentifier();
+        return BundledImageExtensionQuery.CUSTOM_BUNDLED_IMAGE_SHAPE_EXTENSION_POINT.equals(extensionPointUniqueIdentifier);
     }
 
     private Element findElementInDocument(BundledImage bundledImage, Document document, String elementId, String defaultId) {
@@ -368,6 +458,17 @@ public class BundledImageFigure extends SVGFigure {
                     getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeID(bundledImage.getProvidedShapeID()), attributeId));
         }
         return documentElement.getAttribute(defaultId);
+    }
+
+    private String getSubAttributeId(Element documentElement, BundledImage bundledImage, String parentAttributeId) {
+        if (BundledImageShape.PROVIDED_SHAPE_LITERAL.equals(bundledImage.getShape())) {
+            IConfigurationElement extensionDefiningProvidedShapeID = getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeID(bundledImage.getProvidedShapeID());
+            if (isCustomBundledImageExtensionPoint(bundledImage) && extensionDefiningProvidedShapeID != null && extensionDefiningProvidedShapeID.getChildren(parentAttributeId).length > 0) {
+                IConfigurationElement[] configurationElements = extensionDefiningProvidedShapeID.getChildren(parentAttributeId);
+                return getBundledImageExtensionQuery().findParameterInExtension(configurationElements[0], BundledImageFigure.SUB_ATTRIBUTE_IDENTIFIER);
+            }
+        }
+        return null;
     }
 
     private BundledImageExtensionQuery getBundledImageExtensionQuery() {
@@ -396,16 +497,28 @@ public class BundledImageFigure extends SVGFigure {
         return String.format("%02x%02x%02x", color.getRed(), color.getGreen(), color.getBlue()); //$NON-NLS-1$
     }
 
-    private static String getNewStyle(String actualStyle, String colorAttribute, String newColor) {
-        int indexOfColorAttribute = actualStyle.indexOf(colorAttribute);
+    private static String getNewStyle(String actualStyle, String subAttributeId, String newValue) {
+        if (subAttributeId == null) {
+            // if subAttributeId is null, then this is single-valued property and we do not need to insert newValue
+            // among a list of attributes
+            String result;
+            if (actualStyle.startsWith("#")) { //$NON-NLS-1$
+                // Colors are prefixed by a "#"
+                result = "#" + newValue; //$NON-NLS-1$
+            } else {
+                result = newValue;
+            }
+            return result;
+        }
+        int indexOfColorAttribute = actualStyle.indexOf(subAttributeId);
         String newStyle;
-        if (BundledImageFigure.SVG_STROKE_WIDTH.equals(colorAttribute)) {
-            newStyle = actualStyle.substring(0, indexOfColorAttribute + colorAttribute.length() + 1);
+        if (BundledImageFigure.SVG_STROKE_WIDTH.equals(subAttributeId)) {
+            newStyle = actualStyle.substring(0, indexOfColorAttribute + subAttributeId.length() + 1);
         } else {
             // Colors have an extra '#' as prefix
-            newStyle = actualStyle.substring(0, indexOfColorAttribute + colorAttribute.length() + 2);
+            newStyle = actualStyle.substring(0, indexOfColorAttribute + subAttributeId.length() + 2);
         }
-        newStyle = newStyle.concat(newColor);
+        newStyle = newStyle.concat(newValue);
         newStyle = newStyle.concat(actualStyle.substring(actualStyle.indexOf(";", indexOfColorAttribute), actualStyle.length())); //$NON-NLS-1$
         return newStyle;
     }
@@ -509,11 +622,14 @@ public class BundledImageFigure extends SVGFigure {
     }
 
     private boolean canAttributeBeUpdated(String attributeValue, String svgProperty, String attributeToModify) {
-        int indexOfProprAttribute = attributeValue.indexOf(svgProperty);
-        boolean canBeUpdate = indexOfProprAttribute >= 0;
-        if (!canBeUpdate) {
-            DiagramPlugin.getDefault().logWarning(MessageFormat.format(Messages.BundledImageShape_attributeAbsent, shapeID, attributeToModify));
+        if (svgProperty != null) {
+            int indexOfProprAttribute = attributeValue.indexOf(svgProperty);
+            boolean canBeUpdate = indexOfProprAttribute >= 0;
+            if (!canBeUpdate) {
+                DiagramPlugin.getDefault().logWarning(MessageFormat.format(Messages.BundledImageShape_attributeAbsent, shapeID, attributeToModify));
+            }
+            return canBeUpdate;
         }
-        return canBeUpdate;
+        return true;
     }
 }

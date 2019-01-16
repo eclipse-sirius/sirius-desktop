@@ -10,12 +10,15 @@
 		<h1 id="SiriusProvidecustombundledimageshape">Sirius &#8211; Provide custom bundled image shape</h1>
 		<h2 id="Goals">Goals</h2>
 		<ul>
-			<li>Sirius provides a basic image style for node mappings. This style offer a selection of five different shapes. This extension point is used to allow specifiers to provide their own shapes defined in a SVG file.</li>
+			<li>Sirius provides a basic image style for node mappings. This style offers a selection of five different shapes. This extension point is used to allow specifiers to provide their own shapes defined in a SVG file.</li>
+			<li>This extension point is an improvement on the 
+				<a href="deprecated_extensions-provide_custom_bundled_image_shape.html">org.eclipse.sirius.diagram.bundledImageShape</a> extension point that has limitation and is now deprecated. Both extension points work but only this one will remain in future versions of Sirius.
+			</li>
 		</ul>
 		<h2 id="Defineabundledimageshapeextension">Define a bundled image shape extension</h2>
 		<ul>
 			<li>This extension point is identified as 
-				<code>org.eclipse.sirius.diagram.bundledImageShape</code>. In this extension, there are three required fields:
+				<code>org.eclipse.sirius.diagram.customBundledImageShape</code>. In this extension, there are three required fields:
 				<ul>
 					<li>The Id of the extension is for once required as it will be used to identify the provided shape in the models (VSM and graphical models).</li>
 					<li>The image path, that needs to start with the plug-in name as it is possible to define a bundled image shape extension using an image in a different plug-in.</li>
@@ -24,66 +27,110 @@
 			</li>
 		</ul>
 		<ul>
-			<li>There are 6 optional parameters in this extension point. These parameters are used to provide the identifier or attribute name concerning the color, border color and border size used in the given SVG file, if these parameters are not the default ones (used in the 5 default shapes). Here is a list of these parameters and the default value.
+			<li>There are 6 optional parameters in this extension point. These parameters are used to provide the identifier or attribute name concerning the color, border color and border size used in the given SVG file. Here is a list of these parameters:
 				<ul>
-					<li>colorIdentifier, the identifier of the tag defining the inner color of the figure. The default identifier is &#8220;stop1&#8221;.</li>
-					<li>colorAttribute, the attribute of the tag defining the inner color of the figure. The default identifier is &#8220;style&#8221;.</li>
-					<li>borderColorIdentifier, the identifier of the tag defining the border color of the figure. The default identifier is &#8220;elementWithGradient&#8221;.</li>
-					<li>borderColorAttribute, the attribute of the tag defining the border color of the figure. The default identifier is &#8220;style&#8221;.</li>
-					<li>borderSizeIdentifier, the identifier of the tag defining the border size of the figure. The default identifier is &#8220;externalBorder&#8221;.</li>
-					<li>borderSizeAttribute, the attribute of the tag defining the border color of the figure. The default identifier is &#8220;style&#8221;.</li>
+					<li>colorIdentifier, the identifier of the tag defining the inner color of the figure.</li>
+					<li>colorAttribute, the attribute of the tag defining the inner color of the figure.</li>
+					<li>borderColorIdentifier, the identifier of the tag defining the border color of the figure.</li>
+					<li>borderColorAttribute, the attribute of the tag defining the border color of the figure.</li>
+					<li>borderSizeIdentifier, the identifier of the tag defining the border size of the figure.</li>
+					<li>borderSizeAttribute, the attribute of the tag defining the border size of the figure.</li>
 				</ul>
 			</li>
+			<li>As a color or the border size can be defined in a multi-valued property (see example below), on colorAttribute, borderColorAttribute and borderSizeAttribute it is possible to add a subAttributeIdentifier in order to identify this property among the list.</li>
 		</ul>
-		<p>Note that it is possible to provide a non SVG file but the colors and border size will not be synchronized with the selected information in the VSM.</p>
-		<h2 id="Example">Example</h2>
-		<p>The following example defines a new bundled image shape using an image file donut.svg.</p>
+		<p>Note that it is possible to provide a non SVG file (like a JPEG) but the colors and border size will not be synchronized with the selected information in the VSM.</p>
+		<h2 id="Examples">Examples</h2>
+		<p>As examples, we will use the sample provided in 
+			<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=542678">this feature corresponding bugzilla</a>
+		</p>
+		<p>circle.svg defines a ring figure thanks to the following ellipse tag:</p>
+		<pre>&lt;ellipse
+     cx="242.58475"
+     cy="254.23729"
+     id="circle4"
+     style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:44.9;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     rx="217.21455"
+     ry="214.03659" /&gt;
+     
+</pre>
+		<p>For this file, the extension point is specified as follows:</p>
 		<pre>	&lt;extension
-        id="org.eclipse.sirius.tests.swtbot.donut"
-        point="org.eclipse.sirius.diagram.bundledImageShape"&gt;
+        id="custom.circle.svg"
+        name="Circle"
+        point="org.eclipse.sirius.diagram.customBundledImageShape"&gt;
      &lt;image
-           imagePath="/org.eclipse.sirius.tests.swtbot/images/donut.svg"
-           label="Donut"&gt;
+           imagePath="/542678.design/images/circle.svg"
+           label="custom.circle"&gt;
         &lt;colorIdentifier
-              colorIdentifier="stop8224-2"&gt;
+              colorIdentifier="circle4"&gt;
         &lt;/colorIdentifier&gt;
         &lt;colorAttribute
               colorAttribute="style"&gt;
+           &lt;subAttributeIdentifier
+                 subAttributeIdentifier="fill"&gt;
+           &lt;/subAttributeIdentifier&gt;
         &lt;/colorAttribute&gt;
         &lt;borderColorIdentifier
-              borderColorIdentifier="path10796-2-6-2-7"&gt;
+              borderColorIdentifier="circle4"&gt;
         &lt;/borderColorIdentifier&gt;
         &lt;borderColorAttribute
               borderColorAttribute="style"&gt;
+           &lt;subAttributeIdentifier
+                 subAttributeIdentifier="stroke"&gt;
+           &lt;/subAttributeIdentifier&gt;
         &lt;/borderColorAttribute&gt;
         &lt;borderSizeIdentifier
-              borderSizeIdentifier="path10796-2-6-2-7"&gt;
+              borderSizeIdentifier="circle4"&gt;
         &lt;/borderSizeIdentifier&gt;
         &lt;borderSizeAttribute
               borderSizeAttribute="style"&gt;
+           &lt;subAttributeIdentifier
+                 subAttributeIdentifier="stroke-width"&gt;
+           &lt;/subAttributeIdentifier&gt;
         &lt;/borderSizeAttribute&gt;
      &lt;/image&gt;
   &lt;/extension&gt;
-
+  
 </pre>
-		<p>In this sample, the identifier concerning the tags for the inner color (colorIdentifier), the border color (borderColorIdentifier) and the border size (borderSizeIdentifier) are not the default one. However, the attributes are all the default values. Therefore, we can simplify the extension as follows.</p>
-		<pre>	&lt;extension
-        id="org.eclipse.sirius.tests.swtbot.donut"
-        point="org.eclipse.sirius.diagram.bundledImageShape"&gt;
+		<p>The three properties are defined in a single tag. In the extension point each, colorIdentifier, borderColorIdentifier and borderSizeIdentifier have the same identifier: &#8220;circle4&#8221;. 
+			<br/>Then, the color, border color and border size are all defined in the multi-valued property &#8220;style&#8221; of the ellipse tag. Likewise, in the extension point, colorAttribute, borderColorAttribute and borderSizeAttribute have the same value: &#8220;style&#8221;.
+			<br/>Finally, in this &#8220;style&#8221; property, the color is identified by the attribute &#8220;fill&#8221;, the border color is identified by the attribute &#8220;stroke&#8221; and the border color is identified by the attribute &#8220;stroke-width&#8221;. This is why there is a subAttributeIdentifier with these values under colorAttribute, borderColorAttribute and borderSizeAttribute.
+		</p>
+		<p>Now let&#8217;s take the sample circle2.svg. The result is also a ring but in the svg it uses the tag circle as follows:</p>
+		<pre> &lt;circle id="circle" cx="250" cy="250" r="210" fill="#fff" stroke="#000" stroke-width="8"/&gt;
+  
+</pre>
+		<p>Here there is no multi-valued properties, but the 3 properties we are looking for are separated. For this image, the extension point will be specified as follows:</p>
+		<pre>&lt;extension
+        id="custom.circle2.svg"
+        name="Circle2"
+        point="org.eclipse.sirius.diagram.customBundledImageShape"&gt;
      &lt;image
-           imagePath="/org.eclipse.sirius.tests.swtbot/images/donut.svg"
-           label="Donut"&gt;
+           imagePath="/542678.design/images/circle2.svg"
+           label="custom.circle2"&gt;
         &lt;colorIdentifier
-              colorIdentifier="stop8224-2"&gt;
+              colorIdentifier="circle"&gt;
         &lt;/colorIdentifier&gt;
+        &lt;colorAttribute
+              colorAttribute="fill"&gt;
+        &lt;/colorAttribute&gt;
         &lt;borderColorIdentifier
-              borderColorIdentifier="path10796-2-6-2-7"&gt;
+              borderColorIdentifier="circle"&gt;
         &lt;/borderColorIdentifier&gt;
+        &lt;borderColorAttribute
+              borderColorAttribute="stroke"&gt;
+        &lt;/borderColorAttribute&gt;
         &lt;borderSizeIdentifier
-              borderSizeIdentifier="path10796-2-6-2-7"&gt;
+              borderSizeIdentifier="circle"&gt;
         &lt;/borderSizeIdentifier&gt;
+        &lt;borderSizeAttribute
+              borderSizeAttribute="stroke-width"&gt;
+        &lt;/borderSizeAttribute&gt;
      &lt;/image&gt;
   &lt;/extension&gt;
+  
 </pre>
+		<p>This time, there is no subAttributeIdentifier, however colorAttribute, borderColorAttribute and borderSizeAttribute have different values.</p>
 	</body>
 </html>
