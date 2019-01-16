@@ -3,12 +3,10 @@
 <schema targetNamespace="org.eclipse.sirius.diagram" xmlns="http://www.w3.org/2001/XMLSchema">
 <annotation>
       <appInfo>
-         <meta.schema plugin="org.eclipse.sirius.diagram" id="bundledImageShape" name="org.eclipse.sirius.diagram.bundledImageShape"/>
+         <meta.schema plugin="org.eclipse.sirius.diagram" id="customBundledImageShape" name="org.eclipse.sirius.diagram.customBundledImageShape"/>
       </appInfo>
       <documentation>
-         WARNING: This extension point is deprecated. You should use org.eclipse.sirius.diagram.custombundledImageShape instead.
-
-This extension registers new shapes for Bundle Image styles that can be used in Viewpoint Specification Models.
+         This extension registers new shapes for Bundle Image styles that can be used in Viewpoint Specification Models.
       </documentation>
    </annotation>
 
@@ -90,6 +88,9 @@ This extension registers new shapes for Bundle Image styles that can be used in 
 
    <element name="colorAttribute">
       <complexType>
+         <sequence minOccurs="0" maxOccurs="1">
+            <element ref="subAttributeIdentifier"/>
+         </sequence>
          <attribute name="colorAttribute" type="string" use="required">
             <annotation>
                <documentation>
@@ -114,6 +115,9 @@ This extension registers new shapes for Bundle Image styles that can be used in 
 
    <element name="borderColorAttribute">
       <complexType>
+         <sequence minOccurs="0" maxOccurs="1">
+            <element ref="subAttributeIdentifier"/>
+         </sequence>
          <attribute name="borderColorAttribute" type="string" use="required">
             <annotation>
                <documentation>
@@ -138,10 +142,25 @@ This extension registers new shapes for Bundle Image styles that can be used in 
 
    <element name="borderSizeAttribute">
       <complexType>
+         <sequence minOccurs="0" maxOccurs="1">
+            <element ref="subAttributeIdentifier"/>
+         </sequence>
          <attribute name="borderSizeAttribute" type="string" use="required">
             <annotation>
                <documentation>
                   Key of the color attribute of the shape border size tag in the SVG file
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="subAttributeIdentifier">
+      <complexType>
+         <attribute name="subAttributeIdentifier" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
                </documentation>
             </annotation>
          </attribute>
@@ -153,7 +172,7 @@ This extension registers new shapes for Bundle Image styles that can be used in 
          <meta.section type="since"/>
       </appInfo>
       <documentation>
-         4.4
+         6.2
       </documentation>
    </annotation>
 
@@ -162,33 +181,43 @@ This extension registers new shapes for Bundle Image styles that can be used in 
          <meta.section type="examples"/>
       </appInfo>
       <documentation>
-         The following is an example of a diagram type :
+         The following is an example of a SVG provided to the list of bundled image shapes with this extension point:
 &lt;p&gt;
 &lt;pre&gt;
   
   &lt;extension
-        id=&quot;sample.design.donut&quot;
-        point=&quot;org.eclipse.sirius.diagram.bundledImageShape&quot;&gt;
+        id=&quot;custom.circle.svg&quot;
+        name=&quot;Circle&quot;
+        point=&quot;org.eclipse.sirius.diagram.customBundledImageShape&quot;&gt;
      &lt;image
-           imagePath=&quot;/sample.design/images/donut.svg&quot;
-           label=&quot;Donut&quot;&gt;
+           imagePath=&quot;/542678.design/images/circle.svg&quot;
+           label=&quot;custom.circle&quot;&gt;
         &lt;colorIdentifier
-              colorIdentifier=&quot;stop8224-2&quot;&gt;
+              colorIdentifier=&quot;circle4&quot;&gt;
         &lt;/colorIdentifier&gt;
         &lt;colorAttribute
               colorAttribute=&quot;style&quot;&gt;
+           &lt;subAttributeIdentifier
+                 subAttributeIdentifier=&quot;fill&quot;&gt;
+           &lt;/subAttributeIdentifier&gt;
         &lt;/colorAttribute&gt;
         &lt;borderColorIdentifier
-              borderColorIdentifier=&quot;path10796-2-6-2-7&quot;&gt;
+              borderColorIdentifier=&quot;circle4&quot;&gt;
         &lt;/borderColorIdentifier&gt;
         &lt;borderColorAttribute
               borderColorAttribute=&quot;style&quot;&gt;
+           &lt;subAttributeIdentifier
+                 subAttributeIdentifier=&quot;stroke&quot;&gt;
+           &lt;/subAttributeIdentifier&gt;
         &lt;/borderColorAttribute&gt;
         &lt;borderSizeIdentifier
-              borderSizeIdentifier=&quot;path10796-2-6-2-7&quot;&gt;
+              borderSizeIdentifier=&quot;circle4&quot;&gt;
         &lt;/borderSizeIdentifier&gt;
         &lt;borderSizeAttribute
               borderSizeAttribute=&quot;style&quot;&gt;
+           &lt;subAttributeIdentifier
+                 subAttributeIdentifier=&quot;stroke-width&quot;&gt;
+           &lt;/subAttributeIdentifier&gt;
         &lt;/borderSizeAttribute&gt;
      &lt;/image&gt;
   &lt;/extension&gt;
@@ -206,7 +235,7 @@ This extension registers new shapes for Bundle Image styles that can be used in 
          <meta.section type="copyright"/>
       </appInfo>
       <documentation>
-         Copyright (c) 2015 Obeo&lt;br&gt;
+         Copyright (c) 2019 Obeo&lt;br&gt;
 
  This program and the accompanying materials
 are made available under the terms of the Eclipse Public License 2.0

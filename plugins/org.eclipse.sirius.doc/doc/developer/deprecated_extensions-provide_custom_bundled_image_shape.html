@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>deprecated_extensions-provide_custom_bundled_image_shape</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusProvidecustombundledimageshape">Sirius &#8211; Provide custom bundled image shape</h1>
+		<h2 id="DisclaimerDeprecated">Disclaimer &#8211; Deprecated</h2>
+		<p>This extension point is deprecated (but still working) and should not be used. Instead you should use the 
+			<a href="extensions-provide_custom_bundled_image_shape.html">new extension point</a>.
+		</p>
+		<h2 id="Goals">Goals</h2>
+		<ul>
+			<li>Sirius provides a basic image style for node mappings. This style offers a selection of five different shapes. This extension point is used to allow specifiers to provide their own shapes defined in a SVG file.</li>
+		</ul>
+		<h2 id="Defineabundledimageshapeextension">Define a bundled image shape extension</h2>
+		<ul>
+			<li>This extension point is identified as 
+				<code>org.eclipse.sirius.diagram.bundledImageShape</code>. In this extension, there are three required fields:
+				<ul>
+					<li>The Id of the extension is for once required as it will be used to identify the provided shape in the models (VSM and graphical models).</li>
+					<li>The image path, that needs to start with the plug-in name as it is possible to define a bundled image shape extension using an image in a different plug-in.</li>
+					<li>The image label displayed in VSMs (suffixed with the plug-in name where the bundled image shape extension is declared).</li>
+				</ul>
+			</li>
+		</ul>
+		<ul>
+			<li>There are 6 optional parameters in this extension point. These parameters are used to provide the identifier or attribute name concerning the color, border color and border size used in the given SVG file, if these parameters are not the default ones (used in the 5 default shapes). Here is a list of these parameters and the default value.
+				<ul>
+					<li>colorIdentifier, the identifier of the tag defining the inner color of the figure. The default identifier is &#8220;stop1&#8221;.</li>
+					<li>colorAttribute, the attribute of the tag defining the inner color of the figure. The default identifier is &#8220;style&#8221;.</li>
+					<li>borderColorIdentifier, the identifier of the tag defining the border color of the figure. The default identifier is &#8220;elementWithGradient&#8221;.</li>
+					<li>borderColorAttribute, the attribute of the tag defining the border color of the figure. The default identifier is &#8220;style&#8221;.</li>
+					<li>borderSizeIdentifier, the identifier of the tag defining the border size of the figure. The default identifier is &#8220;externalBorder&#8221;.</li>
+					<li>borderSizeAttribute, the attribute of the tag defining the border size of the figure. The default identifier is &#8220;style&#8221;.</li>
+				</ul>
+			</li>
+		</ul>
+		<p>Note that it is possible to provide a non SVG file (like a JPEG) but the colors and border size will not be synchronized with the selected information in the VSM.</p>
+		<h2 id="Example">Example</h2>
+		<p>The following example defines a new bundled image shape using an image file donut.svg.</p>
+		<pre>	&lt;extension
+        id="org.eclipse.sirius.tests.swtbot.donut"
+        point="org.eclipse.sirius.diagram.bundledImageShape"&gt;
+     &lt;image
+           imagePath="/org.eclipse.sirius.tests.swtbot/images/donut.svg"
+           label="Donut"&gt;
+        &lt;colorIdentifier
+              colorIdentifier="stop8224-2"&gt;
+        &lt;/colorIdentifier&gt;
+        &lt;colorAttribute
+              colorAttribute="style"&gt;
+        &lt;/colorAttribute&gt;
+        &lt;borderColorIdentifier
+              borderColorIdentifier="path10796-2-6-2-7"&gt;
+        &lt;/borderColorIdentifier&gt;
+        &lt;borderColorAttribute
+              borderColorAttribute="style"&gt;
+        &lt;/borderColorAttribute&gt;
+        &lt;borderSizeIdentifier
+              borderSizeIdentifier="path10796-2-6-2-7"&gt;
+        &lt;/borderSizeIdentifier&gt;
+        &lt;borderSizeAttribute
+              borderSizeAttribute="style"&gt;
+        &lt;/borderSizeAttribute&gt;
+     &lt;/image&gt;
+  &lt;/extension&gt;
+
+</pre>
+		<p>In this sample, the identifier concerning the tags for the inner color (colorIdentifier), the border color (borderColorIdentifier) and the border size (borderSizeIdentifier) are not the default one. However, the attributes are all the default values. Therefore, we can simplify the extension as follows.</p>
+		<pre>	&lt;extension
+        id="org.eclipse.sirius.tests.swtbot.donut"
+        point="org.eclipse.sirius.diagram.bundledImageShape"&gt;
+     &lt;image
+           imagePath="/org.eclipse.sirius.tests.swtbot/images/donut.svg"
+           label="Donut"&gt;
+        &lt;colorIdentifier
+              colorIdentifier="stop8224-2"&gt;
+        &lt;/colorIdentifier&gt;
+        &lt;borderColorIdentifier
+              borderColorIdentifier="path10796-2-6-2-7"&gt;
+        &lt;/borderColorIdentifier&gt;
+        &lt;borderSizeIdentifier
+              borderSizeIdentifier="path10796-2-6-2-7"&gt;
+        &lt;/borderSizeIdentifier&gt;
+     &lt;/image&gt;
+  &lt;/extension&gt;
+</pre>
+	</body>
+</html>

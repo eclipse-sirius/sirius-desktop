@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2018 Obeo.
+ * Copyright (c) 2015, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,13 +29,21 @@ import org.eclipse.core.runtime.Platform;
 @SuppressWarnings({ "restriction" })
 public final class BundledImageExtensionQuery {
     /**
+     * Identifier of the newer extension point.
+     */
+    public static final String CUSTOM_BUNDLED_IMAGE_SHAPE_EXTENSION_POINT = "org.eclipse.sirius.diagram.customBundledImageShape"; //$NON-NLS-1$
+
+    /**
      * The global instance.
      */
     private static final BundledImageExtensionQuery INSTANCE = new BundledImageExtensionQuery();
 
     /**
      * Identifier of the extension point.
+     * 
+     * @deprecated
      */
+    @Deprecated
     private static final String BUNDLED_IMAGE_SHAPE_EXTENSION_POINT = "org.eclipse.sirius.diagram.bundledImageShape"; //$NON-NLS-1$
 
     private static final String LABEL_ATTRIBUTE = "label"; //$NON-NLS-1$
@@ -69,7 +77,19 @@ public final class BundledImageExtensionQuery {
      */
     public IConfigurationElement[] getExtensions() {
         if (extensions == null) {
-            this.extensions = Platform.getExtensionRegistry().getConfigurationElementsFor(BUNDLED_IMAGE_SHAPE_EXTENSION_POINT);
+            IConfigurationElement[] newExtensionPoints = Platform.getExtensionRegistry().getConfigurationElementsFor(CUSTOM_BUNDLED_IMAGE_SHAPE_EXTENSION_POINT);
+            IConfigurationElement[] oldExtensionPoints = Platform.getExtensionRegistry().getConfigurationElementsFor(BUNDLED_IMAGE_SHAPE_EXTENSION_POINT);
+            IConfigurationElement[] allExtensionPoints = new IConfigurationElement[newExtensionPoints.length + oldExtensionPoints.length];
+            int extensionsCount = 0;
+            for (int i = 0; i < newExtensionPoints.length; i++) {
+                allExtensionPoints[extensionsCount] = newExtensionPoints[i];
+                extensionsCount++;
+            }
+            for (int i = 0; i < oldExtensionPoints.length; i++) {
+                allExtensionPoints[extensionsCount] = oldExtensionPoints[i];
+                extensionsCount++;
+            }
+            this.extensions = allExtensionPoints;
         }
         return extensions;
     }
