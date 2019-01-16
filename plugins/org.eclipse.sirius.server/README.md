@@ -1,6 +1,6 @@
 # Sirius Server
 
-The Sirius Server initiative aims at leveraging all the features of Sirius in the web. This work is based on everything build in the Sirius project over the years without any big bang where we would rewrite everything from scratch. The Sirius Server is an Eclipse RCP product and a Docker container in which it is contained which allow you to use Sirius in the web. 
+The Sirius Server initiative aims at leveraging all the features of Sirius in the web. This work is based on everything built in the Sirius project over the years without any big bang where we would rewrite everything from scratch. The Sirius Server is an Eclipse RCP product and a Docker container in which it is contained which allow you to use Sirius in the web. 
 
 It is based on the same plugins and features used in the regular version of Sirius. Some work is being done to refactor some pieces of code for this new environment and its constraints. As an example, this code will not depend on the user interface since it will have to run on a server.
 
@@ -52,14 +52,14 @@ All the plugins necessary to have the full experience of the Sirius Server will 
 
 ### Autostart
 
-While using the Sirius Server inside a regular desktop application, it is useful to start the server when the Eclipse application is launched. As such, the plugin ```org.eclipse.sirius.server.ui.autostart``` is used to start the Sirius server using the early startup extension point. Since this extension point depends on the user interface (hence the name), it is not included in the Sirius Server product which uses its IApplication to start the server automatically.
+While using the Sirius Server inside a regular desktop application, it is useful to start the server when the Eclipse application is launched. As such, the plugin ```org.eclipse.sirius.server.ui.autostart``` is used to start the Sirius server using the early startup extension point. Since this extension point depends on the user interface (hence the name), it is not included in the Sirius Server product which uses its `IApplication` to start the server automatically.
 
 This plugin is also available by itself in the feature ```org.eclipse.sirius.server.ui.autostart.feature```.
 
 
 ## Build
 
-There are two parts in the build of the Sirius Server. First, a regular maven build, connected to the main Sirius build, which will create a product for our server. Second, a Docker build used to create the Docker image for the product created.
+There are two parts in the build of the Sirius Server. First, a regular Maven build, connected to the main Sirius build, which will create a product for our server. Second, a Docker build used to create the Docker image for the product created.
 
 
 ### Maven
@@ -76,22 +76,22 @@ You could also run a full build of Eclipse Sirius if you want with:
 mvn clean verify -Pheadless -Pheadless-server -Pfull -Dplatform-version-name=photon
 ```
 
-Once the build is completed, you can find the Eclipse RCP-based products in the folder ```package/org.eclipse.sirius.server.product/target/products```. You can unzip the one matching your platform and run it as a regular executable. If you want to start the Sirius Server without a Docker container, open a terminal and execute the RCP application (sirius-server).
+Once the build is completed, you can find the Eclipse RCP-based products in the folder ```package/org.eclipse.sirius.server.product/target/products```. You can unzip the one matching your platform and run it as a regular executable. If you want to start the Sirius Server without a Docker container, open a terminal and execute the RCP application (`sirius-server`).
 
 It is recommended to use a terminal to start the Sirius Server instead of executing it by simply double clicking it since you want have access to the log easily.
 
 
 ### Docker
 
-A Docker image for the Sirius Server can be created thanks to the Dockerfile available in the Sirius repository. The Docker image created is published on the [Docker repository of the Sirius Server](https://hub.docker.com/r/eclipsesirius/sirius-server).
+A Docker image for the Sirius Server can be created thanks to the `Dockerfile` available in the Sirius repository. The Docker image created is published on the [Docker repository of the Sirius Server](https://hub.docker.com/r/eclipsesirius/sirius-server).
 
-Navigate to the folder ```packaging/org.eclipse.sirius.server.product``` and run the following command to build the Docker image using the product built with maven.
+Navigate to the folder ```packaging/org.eclipse.sirius.server.product``` and run the following command to build the Docker image using the product built with Maven:
 
 ```
-docker build -t sirius-server -f ./Dockerfile .
+docker build -t eclipsesirius/sirius-server -f ./Dockerfile .
 ```
 
-This command will create a Docker image named sirius-server (and tagged latest by default) using the Dockerfile in the current folder and with the current folder as the context of the build (the dot at the end of the command). The context of the build is important since it is the location in which Docker will look for the product built with maven (in the target/products folder). The Docker image cannot be created if the maven-based build has not been executed before.
+This command will create a Docker image named `eclipsesirius/sirius-server` (and tagged `latest` by default) using the Dockerfile in the current folder and with the current folder as the context of the build (the dot at the end of the command). The context of the build is important since it is the location in which Docker will look for the product built with Maven (in the `target/products` folder). The Docker image cannot be created if the Maven-based build has not been executed before.
 
 You can check that the Docker image has been properly created thanks to the following command:
 
@@ -102,10 +102,10 @@ docker images
 If you want to remove an image built previously, you can use ```docker rmi IMAGE_ID```. Once the image has been created, you can create and start a container from this image with:
 
 ```
-docker run -p 8080:8080 -i -t sirius-server:latest
+docker run -p 8080:8080 -i -t eclipsesirius/sirius-server:latest
 ```
 
-This command will create a Docker container from the image ```sirius-server:latest```. It will also connect the port 8080 of the host machine to the port 8080 of the container. As such, a request on a web browser to ```http://localhost:8080``` will be redirected to the Docker container, allowing you to test the server inside of the container from your host machine. 
+This command will create a Docker container from the image ```eclipsesirius/sirius-server:latest```. It will also connect the port 8080 of the host machine to the port 8080 of the container. As such, a request on a web browser to ```http://localhost:8080``` will be redirected to the Docker container, allowing you to test the server inside of the container from your host machine. 
 
 The two options ```-t``` and ```-i``` will be respectively used to allocate a pseudo-tty allowing you to send commands to the container and keeping ```STDIN``` open. With this command, you terminal will now be connected to the Docker container started.
 
@@ -119,12 +119,30 @@ When the server will start it will display some logs in the console. The Docker 
 
 You can stop the server with the command ```exit```. Once stopped, you can close the connection between your terminal and the Docker container with ```exit```. This should stop the container.
 
-If you want to see all the container currently running, use ```docker ps```. In order to see the container available, including the container which are not running anymore, use ```docker ps -a```. To stop manually a container, you can use ```docker stop CONTAINER_ID``` and finally to destroy the container, use ```docker rm CONTAINER_ID```.
+If you want to see all the containers currently running, use ```docker ps```. In order to see the container available, including the container which are not running anymore, use ```docker ps -a```. To stop manually a container, you can use ```docker stop CONTAINER_ID``` and finally to destroy the container, use ```docker rm CONTAINER_ID```.
+
+#### Official image
+
+The Docker image of the Sirius project is available on the [EclipseSirius Docker Hub](https://hub.docker.com/r/eclipsesirius/sirius-server/) account. This image can be pulled using:
+
+```
+docker pull eclipsesirius/sirius-server
+```
+
+You can then launch it using the previous command:
+
+```
+docker run -p 8080:8080 -i -t eclipsesirius/sirius-server:latest
+```
+
+This image will be tagged for each release of Eclipse Sirius just like the main artifacts of the project.
+
+#### Custom Docker image
 
 If you want to build a custom version of the Sirius Server container with your own metamodels, you can use a Dockerfile inspired by the one below.
 
-```
-FROM sirius-server:latest
+```docker
+FROM eclipsesirius/sirius-server:latest
 
 RUN ./sirius-server -clean -application org.eclipse.equinox.p2.director -noSplash -repository "http://www.example.org/updatesite" -installIU "org.example.feature.feature.group" -vmargs -Djava.awt.headless=true
 
@@ -149,6 +167,7 @@ Once the Sirius Server is up and running, it will log some information in the co
 2018-08-08 10:58:23.134:INFO:oejs.session:main: node0 Scavenging every 660000ms
 2018-08-08 10:58:23.144:INFO:oejsh.ContextHandler:main: Started o.e.j.s.ServletContextHandler@522a8886{/api,null,AVAILABLE}
 2018-08-08 10:58:23.156:INFO:oejsh.ContextHandler:main: Started o.e.j.s.ServletContextHandler@373bfbf6{/ws,null,AVAILABLE}
+2018-08-08 10:58:23.157:INFO:oejsh.ContextHandler:main: Started o.e.j.s.ServletContextHandler@47c89a33{/workflow,null,AVAILABLE}
 2018-08-08 10:58:23.158:INFO:oejsh.ContextHandler:main: Started o.e.j.s.ServletContextHandler@296ecb77{/images,null,AVAILABLE}
 2018-08-08 10:58:23.187:INFO:oejsh.ContextHandler:main: Started o.e.j.s.ServletContextHandler@2a0fb087{/,null,AVAILABLE}
 2018-08-08 10:58:23.261:INFO:oejs.AbstractConnector:main: Started ServerConnector@4e161f41{HTTP/1.1,[http/1.1]}{0.0.0.0:8080}
@@ -157,14 +176,15 @@ Once the Sirius Server is up and running, it will log some information in the co
 
 The logs start with the version of Jetty used by the server along with some settings.
 
-Then you can see the details of the SessionIdManager used by Jetty. The SessionIdManager is used to collect and store some information across time about the end users. Those information can be manipulated thanks to the servlet API. There are multiple session manager implementations in Jetty (in memory, in a database, in MongodDB or even in Google Cloud Datastore). We do not configure anything regarding session management for the moment so the logs indicate that we are using the DefaultSessionIdManager without any SessionScavenger configured. 
+Then you can see the details of the `SessionIdManager` used by Jetty. The `SessionIdManager` is used to collect and store some information across time about the end users. Those information can be manipulated thanks to the servlet API. There are multiple session manager implementations in Jetty (in memory, in a database, in MongodDB or even in Google Cloud Datastore). We do not configure anything regarding session management for the moment so the logs indicate that we are using the `DefaultSessionIdManager` without any `SessionScavenger` configured. 
 
 After that, you will find the list of context handlers used by the server. Here we have the main context handlers registered:
 
 * The context handler of the HTTP API ```{/api,null,AVAILABLE}```
 * The context handler of the Web Socket API ```{/ws,null,AVAILABLE}```
+* The context handler of the front-end of the workflow ```{/workflow,null,AVAILABLE}```
 * The context handler of the Images API ```{/images,null,AVAILABLE}```
-* The context handler of the front end ```{/,null,AVAILABLE}```
+* The context handler of the front-end ```{/,null,AVAILABLE}```
 
 The context handler of the HTTP API will be used for all requests on ```http://localhost:8080/api```. The context handler of the Web Socket API will be used for all requests on ```http://localhost:8080/ws```. Finally, the context handler of the front-end will handle all other requests on ```http://localhost:8080/```.
 
@@ -197,7 +217,7 @@ id	State       Bundle
 
 You can see the components matching the given scope, their id and their state.
 
-### Extention points and extension
+### Extension points and extension
 
 The OSGi console can let you see the various extension points available and their extensions. To have a look at the extension points you will have to use ```ns``` directly or with a scope like ```ns org.eclipse.sirius.server```:
 
@@ -338,7 +358,7 @@ When some JavaScript code in the web browser sends a request to a server, the re
 
 If some JavaScript from ```http://www.domainA.com``` tries to contact the HTTP API of ```http://www.domainB.com``` then the request will fail unless the server from the domain B accept to be contacted from the domain A. You will encounter this issue when you are developing an application with the Sirius Server. Your instance of the Sirius Server may be started on ```http://localhost:8080``` while the development server of your front-end may be started on ```http://localhost:3000```.
 
-In this configuration, requests coming your front-end will be considered as coming from a different domain and as such they will fail. While some options are available in front-end development tools to fix this issue, you can also fix it by setting some Cross Origin Resource Sharing (CORS) headers in your responses. With those headers, your web browser will accept to process the responses from the server. To configure the CORS, use the dedicated environment variables to allow, for example, all the origins to request data from your server with ```-Dorg.eclipse.sirius.server.cors.allowed.origin=*```.
+In this configuration, requests coming from your front-end will be considered as coming from a different domain and as such they will fail. While some options are available in front-end development tools to fix this issue, you can also fix it by setting some Cross Origin Resource Sharing (CORS) headers in your responses. With those headers, your web browser will accept to process the responses from the server. To configure the CORS, use the dedicated environment variables to allow, for example, all the origins to request data from your server with ```-Dorg.eclipse.sirius.server.cors.allowed.origin=*```.
 
 ## Image HTTP API
 
@@ -360,9 +380,9 @@ For example, ```http://localhost:8080/images/org.eclipse.emf.examples.library/mo
 
 A new version of the HTTP API has been created using GraphQL Java in the components ```org.eclipse.sirius.server.graphql``` and ```org.eclipse.sirius.services.graphql```. The GraphQL interpreter can be manipulated programmatically without any network requests thanks to the component ```org.eclipse.sirius.services.graphql```.
 
-The GraphQL endpoint can be accessed at ```http://localhost:8080/api/graphql```. All GraphQL requests should use the ```POST``` HTTP verb. You can communicate with the GraphQL endpoint using a tool like [Insomnia](https://insomnia.rest). In order to send a GraphQL payload, you can send the following content in a POST request with the ```application/json``` content type.
+The GraphQL endpoint can be accessed at ```http://localhost:8080/api/graphql```. All GraphQL requests should use the ```POST``` HTTP verb. You can communicate with the GraphQL endpoint using a tool like [Insomnia](https://insomnia.rest). In order to send a GraphQL payload, you can send the following content in a `POST` request with the ```application/json``` content type.
 
-```
+```json
 {
   "query": "...",
   "operationName": "...",
@@ -376,7 +396,7 @@ The fields ```operationName``` and ```variables``` are both optional. For exampl
 
 ```
 POST http://localhost:8080/api/graphql
-contentType: application/json
+Content-Type: application/json
 
 {
   "query": "{ viewer { projects { totalCount } }}"
@@ -431,7 +451,7 @@ For each of those entities, we have two entry points, one to retrieve the collec
 * http://localhost:8080/projects
 * http://localhost:8080/projects/org.eclipse.sirius
 
-The first request would need to access the collection of project with some pagination using:
+The first request would need to access the collection of projects with some pagination using:
 
 ```
 {
@@ -474,7 +494,7 @@ We started by using a very straightforward approach to the pagination with simpl
 }
 ```
 
-This strategy allows us to iterate over a collection of data but it does not give us some information needed to properly paginate over some data on the front-end. With this approach, we do not have the total number of elements available and we can't have some information on the relationship between the elements. It also gives us the ability to indicate if there are next or previous pages. This is why we have moved to same strategy as Facebook, the previous example would be then expressed like this:
+This strategy allows us to iterate over a collection of data but it does not give us some information needed to properly paginate over some data on the front-end. With this approach, we do not have the total number of elements available and we can't have some information on the relationship between the elements. It also does not give us the ability to indicate if there are next or previous pages. This is why we have moved to same strategy as Facebook, the previous example would be then expressed like this:
 
 ```
 {
@@ -663,38 +683,43 @@ public class TestEndpointConfigurationProvider implements ISiriusServerEndpointC
 }
 ```
 
-This endpoint configuration provider will indicate the endpoint to create and its configurator. The configurator should be provided otherwise the code would not work in an OSGi context (it would delegate everything to a ServiceLoader which has to be configured specifically to work in such context). The configurator returned has to delegate everything to the container default configurator.
+This endpoint configuration provider will indicate the endpoint to create and its configurator. The configurator should be provided otherwise the code would not work in an OSGi context (it would delegate everything to a `ServiceLoader` which has to be configured specifically to work in such context). The configurator returned has to delegate everything to the container default configurator.
 
 ```java
 public class TestEndpointConfigurator extends Configurator {
 
+    private ContainerDefaultConfigurator delegate = new ContainerDefaultConfigurator();
+
     @Override
     public <T> T getEndpointInstance(Class<T> endpointClass) throws InstantiationException {
-        return new ContainerDefaultConfigurator().getEndpointInstance(endpointClass);
+        return this.delegate.getEndpointInstance(endpointClass);
     }
 
     @Override
     public boolean checkOrigin(String originHeaderValue) {
-        return new ContainerDefaultConfigurator().checkOrigin(originHeaderValue);
+        return this.delegate.checkOrigin(originHeaderValue);
     }
 
     @Override
     public void modifyHandshake(ServerEndpointConfig sec, HandshakeRequest request, HandshakeResponse response) {
-        new ContainerDefaultConfigurator().modifyHandshake(sec, request, response);
+        this.delegate.modifyHandshake(sec, request, response);
     }
 
     @Override
     public String getNegotiatedSubprotocol(List<String> supported, List<String> requested) {
-        return new ContainerDefaultConfigurator().getNegotiatedSubprotocol(supported, requested);
+        this.delegate.getNegotiatedSubprotocol(supported, requested);
     }
 
     @Override
     public List<Extension> getNegotiatedExtensions(List<Extension> installed, List<Extension> requested) {
-        return new ContainerDefaultConfigurator().getNegotiatedExtensions(installed, requested);
+        this.delegate.getNegotiatedExtensions(installed, requested);
     }
 
 }
 ```
+
+The ContainerDefaultConfigurator cannot be extended directly since this class is final.
+
 
 The implementation of the endpoint can then be created. It will be used to configure a message handler for the Web Socket session once the connection is opened.
 
@@ -760,22 +785,20 @@ An API based on Web Socket is available in order to manipulate Sirius diagrams. 
 The front-end is accessible on ```http://localhost:8080/```. It is built from the [Sirius Components repository](https://www.github.com/eclipse/sirius-components) on Github.
 
 
-## Environment Variables
+## System Properties
+
+The following system properties are available to configure various aspects of the server's behavior:
 
 * ```org.eclipse.sirius.server.cors.allowed.methods``` - The constant used to specify allowed methods. Expects a list of string with comma separated values.
 * ```org.eclipse.sirius.server.cors.allowed.headers``` - The constant used to specify allowed headers. Expects a list of string with comma separated values.
 * ```org.eclipse.sirius.server.cors.allowed.origins``` - The constant used to specify allowed origins. Expects a list of string with comma separated values.
 * ```org.eclipse.sirius.server.cors.enabled``` - The constant used to determine if Cross Origin Resource Sharing is enabled or not. Expects a boolean.
-* ```org.eclipse.sirius.server.https.enabled``` - The constant used to determine whether ssl is activated or not.
-* ```org.eclipse.sirius.server.https.host``` - The constant used to customize the https host.
-* ```org.eclipse.sirius.server.https.port``` - The constant used to customize the https port.
-* ```org.eclipse.sirius.server.ssl.keystore.path``` - The constant used to give the location of the key store for ssl authentication.
-* ```org.eclipse.sirius.server.ssl.keystore.passphrase``` - The constant used to give the pass phrase for ssl authentication.
-* ```org.eclipse.sirius.server.http.host``` - The constant used to customize the http host.
-* ```org.eclipse.sirius.server.http.port``` - The constant used to customize the http port.
+* ```org.eclipse.sirius.server.https.enabled``` - The constant used to determine whether SSL is activated or not.
+* ```org.eclipse.sirius.server.https.host``` - The constant used to customize the HTTPS host.
+* ```org.eclipse.sirius.server.https.port``` - The constant used to customize the HTTPS port.
+* ```org.eclipse.sirius.server.ssl.keystore.path``` - The constant used to give the location of the key store for SSL authentication.
+* ```org.eclipse.sirius.server.ssl.keystore.passphrase``` - The constant used to give the pass phrase for SSL authentication.
+* ```org.eclipse.sirius.server.http.host``` - The constant used to customize the HTTP host.
+* ```org.eclipse.sirius.server.http.port``` - The constant used to customize the HTTP port
 * ```org.eclipse.sirius.services.graphql.cost``` - The constant used to customize the maximum cost of a GraphQL query (default: 100).
-
-
-
-
 
