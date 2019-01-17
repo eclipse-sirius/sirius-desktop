@@ -151,23 +151,24 @@ public final class ViewpointHelper {
      *            all the viewpoint currently activated in the session.
      * @param viewpoint
      *            the viewpoint from which we want to retrieve its missing dependencies among selected viewpoints.
-     * @return a set of all viewpoints that are considered as missing dependencies of the given viewpoint and that are
-     *         needed to be activated in the session before activating the viewpoint.
+     * @return a set of all viewpoints that are considered as dependencies of the given viewpoint and that are needed to
+     *         be activated in the session before activating the viewpoint.
      */
     public static Map<String, Viewpoint> getViewpointDependencies(Collection<Viewpoint> allViewpoints, Collection<Viewpoint> selectedViewpoints, Viewpoint viewpoint) {
         // To compute dependencies we always choose workspace one if one dependency exists in workspace and plugin
         // version.
         Collector<Viewpoint, ?, Map<String, Viewpoint>> viewpointUriToViewpointMapCollector = Collectors.toMap(getURIFromViewpointFunction, vp -> vp, usePluginVersionOverWorkspaceFunction);
-        Map<String, Viewpoint> selectedViewpointUriToViewpoint = selectedViewpoints.stream().collect(viewpointUriToViewpointMapCollector);
         Map<String, Viewpoint> allViewpointUriToViewpoint = allViewpoints.stream().collect(viewpointUriToViewpointMapCollector);
-        Set<String> viewpointsURI = selectedViewpointUriToViewpoint.keySet();
         Map<String, Viewpoint> missingViewpointDependencies = new HashMap<String, Viewpoint>();
         for (RepresentationExtensionDescription extension : new ViewpointQuery(viewpoint).getAllRepresentationExtensionDescriptions()) {
             String extendedURI = extension.getViewpointURI();
             Pattern pattern = Pattern.compile(extendedURI);
-            if (!ViewpointHelper.atLeastOneUriMatchesPattern(viewpointsURI, pattern)) {
-                missingViewpointDependencies.put(extendedURI, allViewpointUriToViewpoint.get(extendedURI));
-            }
+            allViewpointUriToViewpoint.forEach((k, v) -> {
+                Matcher matcher = pattern.matcher(k);
+                if (matcher.matches()) {
+                    missingViewpointDependencies.put(k, allViewpointUriToViewpoint.get(k));
+                }
+            });
         }
         return missingViewpointDependencies;
     }
