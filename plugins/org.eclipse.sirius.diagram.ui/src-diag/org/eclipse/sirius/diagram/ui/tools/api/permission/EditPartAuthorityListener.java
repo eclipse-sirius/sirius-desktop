@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.ui.tools.api.permission;
 
 import java.util.Collection;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.RootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
@@ -33,11 +34,11 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuth
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ext.jface.viewers.IToolTipProvider;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
- * Listener disabling /enabling edit parts when their locking status is
- * changing.
+ * Listener disabling /enabling edit parts when their locking status is changing.
  * 
  * @author cbrun
  * 
@@ -107,12 +108,9 @@ public class EditPartAuthorityListener implements IAuthorityListener {
     }
 
     /**
-     * Enables or disables the edit mode according to the
-     * {@link IPermissionAuthority} informations and refreshes decorators
-     * (launches the refresh asynchronously or synchronously in the UI Thread
-     * according to the
-     * {@link SiriusDiagramUiPreferencesKeys#PREF_REFRESH_DECORATORS_SYNCHRONOUSLY}
-     * preference).
+     * Enables or disables the edit mode according to the {@link IPermissionAuthority} informations and refreshes
+     * decorators (launches the refresh asynchronously or synchronously in the UI Thread according to the
+     * {@link SiriusDiagramUiPreferencesKeys#PREF_REFRESH_DECORATORS_SYNCHRONOUSLY} preference).
      */
     public void refreshEditMode() {
         // Step 1: check if the current editor is null (means it has just been
@@ -175,9 +173,8 @@ public class EditPartAuthorityListener implements IAuthorityListener {
     }
 
     /**
-     * Refreshes the lock decoration for the semantic element associated to the
-     * diagram root (by displaying a red/green padlock on the editor
-     * background).
+     * Refreshes the lock decoration for the semantic element associated to the diagram root (by displaying a red/green
+     * padlock on the editor background).
      * 
      * @param diagramEditor
      *            the current diagramEditor to refresh
@@ -189,13 +186,19 @@ public class EditPartAuthorityListener implements IAuthorityListener {
             final DDiagramEditPart ddep = (DDiagramEditPart) part;
             RootEditPart rootEditPart = ddep.getRoot();
             if (rootEditPart instanceof DiagramRootEditPart) {
-                LockStatus lockStatus = diagramEditor.getPermissionAuthority().getLockStatus(((DSemanticDecorator) semanticElement).getTarget());
+                EObject target = ((DSemanticDecorator) semanticElement).getTarget();
+                LockStatus lockStatus = diagramEditor.getPermissionAuthority().getLockStatus(target);
                 switch (lockStatus) {
                 case LOCKED_BY_ME:
                     DiagramSemanticElementLockedNotificationFigure.createNotification((DiagramRootEditPart) rootEditPart, LockStatus.LOCKED_BY_ME);
                     break;
                 case LOCKED_BY_OTHER:
-                    DiagramSemanticElementLockedNotificationFigure.createNotification((DiagramRootEditPart) rootEditPart, LockStatus.LOCKED_BY_OTHER);
+                    String tooltip = ""; //$NON-NLS-1$
+                    IToolTipProvider tooltipProvider = Platform.getAdapterManager().getAdapter(semanticElement, IToolTipProvider.class);
+                    if (tooltipProvider != null) {
+                        tooltip = tooltipProvider.getToolTipText(target);
+                    }
+                    DiagramSemanticElementLockedNotificationFigure.createNotification((DiagramRootEditPart) rootEditPart, "", tooltip, LockStatus.LOCKED_BY_OTHER); //$NON-NLS-1$
                     break;
                 case NOT_LOCKED:
                 default:

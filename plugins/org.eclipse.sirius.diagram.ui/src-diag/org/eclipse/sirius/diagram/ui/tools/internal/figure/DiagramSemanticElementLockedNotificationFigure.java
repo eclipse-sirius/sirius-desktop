@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramColorRegistry;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.figures.TransparentBorder;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
 import org.eclipse.sirius.ext.draw2d.figure.IFixedFigure;
@@ -65,7 +66,7 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse impl
     private static final ImageDescriptor LOCK_BY_ME_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation
             .getBundledImageDescriptor("icons/full/decorator/permission_granted_to_current_user_exclusively.gif"); //$NON-NLS-1$
 
-    /** The PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY icon descriptor. */
+    /** The PERMISSION_DENIED icon descriptor. */
     private static final ImageDescriptor LOCK_BY_OTHER_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif"); //$NON-NLS-1$
 
     /**
@@ -86,6 +87,8 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse impl
      *            the editor root edit part
      * @param message
      *            the message to display in the notification
+     * @param tooltip
+     *            the tooltip to display in the notification
      * @param lockStatus
      *            the {@link LockStatus} to display in the notification
      * @param height
@@ -93,7 +96,7 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse impl
      * @param width
      *            notification figure width
      */
-    public DiagramSemanticElementLockedNotificationFigure(DiagramRootEditPart rootEditPart, String message, LockStatus lockStatus, int height, int width) {
+    public DiagramSemanticElementLockedNotificationFigure(DiagramRootEditPart rootEditPart, String message, String tooltip, LockStatus lockStatus, int height, int width) {
         Image lockStatusImage;
         Label label;
 
@@ -116,6 +119,9 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse impl
         }
         label.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
         this.add(label);
+        if (!StringUtil.isEmpty(tooltip)) {
+            setToolTip(new Label(tooltip));
+        }
 
         propListener = new PropertyChangeListener() {
             @Override
@@ -124,6 +130,40 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse impl
             }
         };
 
+    }
+
+    /**
+     * Create a new instance.
+     * 
+     * @param rootEditPart
+     *            the editor root edit part
+     * @param message
+     *            the message to display in the notification
+     * @param lockStatus
+     *            the {@link LockStatus} to display in the notification
+     * @param height
+     *            notification figure height
+     * @param width
+     *            notification figure width
+     */
+    public DiagramSemanticElementLockedNotificationFigure(DiagramRootEditPart rootEditPart, String message, LockStatus lockStatus, int height, int width) {
+        this(rootEditPart, message, "", lockStatus, height, width); //$NON-NLS-1$
+    }
+
+    /**
+     * Create a new instance.
+     * 
+     * @param rootEditPart
+     *            the editor root edit part
+     * @param message
+     *            the message to display in the notification
+     * @param tooltip
+     *            the tooltip to display in the notification
+     * @param lockStatus
+     *            the {@link LockStatus} to display in the notification
+     */
+    public DiagramSemanticElementLockedNotificationFigure(DiagramRootEditPart rootEditPart, String message, String tooltip, LockStatus lockStatus) {
+        this(rootEditPart, message, tooltip, lockStatus, DEFAULT_HEIGHT, DEFAULT_WIDTH);
     }
 
     /**
@@ -186,9 +226,25 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse impl
      *            the {@link LockStatus} to display in the notification
      */
     public static void createNotification(DiagramRootEditPart rootEditPart, String message, LockStatus lockStatus) {
+        createNotification(rootEditPart, message, "", lockStatus); //$NON-NLS-1$
+    }
+
+    /**
+     * Create a new notification figure and display it to the diagram.
+     * 
+     * @param rootEditPart
+     *            the diagram root edit part
+     * @param message
+     *            the message
+     * @param tooltip
+     *            the tooltip
+     * @param lockStatus
+     *            the {@link LockStatus} to display in the notification
+     */
+    public static void createNotification(DiagramRootEditPart rootEditPart, String message, String tooltip, LockStatus lockStatus) {
         final LayeredPane pane = (LayeredPane) rootEditPart.getLayer(LayerConstants.PRINTABLE_LAYERS);
 
-        final IFigure notificationFigure = new DiagramSemanticElementLockedNotificationFigure(rootEditPart, message, lockStatus);
+        final IFigure notificationFigure = new DiagramSemanticElementLockedNotificationFigure(rootEditPart, message, tooltip, lockStatus);
         removeNotification(rootEditPart);
         pane.add(notificationFigure);
     }
@@ -208,9 +264,29 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse impl
      *            notification figure width
      */
     public static void createNotification(DiagramRootEditPart rootEditPart, String message, LockStatus lockStatus, int height, int width) {
+        createNotification(rootEditPart, message, lockStatus, height, width);
+    }
+
+    /**
+     * Create a new notification figure and display it to the diagram.
+     * 
+     * @param rootEditPart
+     *            the diagram root edit part
+     * @param message
+     *            the message
+     * @param tooltip
+     *            the tooltip
+     * @param lockStatus
+     *            the {@link LockStatus} to display in the notification
+     * @param height
+     *            notification figure height
+     * @param width
+     *            notification figure width
+     */
+    public static void createNotification(DiagramRootEditPart rootEditPart, String message, String tooltip, LockStatus lockStatus, int height, int width) {
         final LayeredPane pane = (LayeredPane) rootEditPart.getLayer(LayerConstants.PRINTABLE_LAYERS);
 
-        final IFigure notificationFigure = new DiagramSemanticElementLockedNotificationFigure(rootEditPart, message, lockStatus, height, width);
+        final IFigure notificationFigure = new DiagramSemanticElementLockedNotificationFigure(rootEditPart, message, tooltip, lockStatus, height, width);
         removeNotification(rootEditPart);
         pane.add(notificationFigure);
     }
@@ -313,5 +389,4 @@ public class DiagramSemanticElementLockedNotificationFigure extends Ellipse impl
     protected void applyTransparency(Graphics g) {
         g.setAlpha(255 - transparency * 255 / 100);
     }
-
 }
