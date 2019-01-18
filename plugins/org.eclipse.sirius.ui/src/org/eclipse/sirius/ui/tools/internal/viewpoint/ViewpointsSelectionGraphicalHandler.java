@@ -388,8 +388,10 @@ public class ViewpointsSelectionGraphicalHandler {
     }
 
     /***
-     * Set the browser input from given representation description. * @param viewpoint the viewpoint to document
+     * Set the browser input from given representation description.
      * 
+     * @param viewpoint
+     *            the viewpoint to document
      * @param representationDescription
      *            the representation description to document
      */

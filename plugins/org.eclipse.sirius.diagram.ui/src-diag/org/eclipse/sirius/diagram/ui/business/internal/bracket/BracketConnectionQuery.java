@@ -92,8 +92,9 @@ public class BracketConnectionQuery {
      * Default constructor.
      *
      * @param bendpointRequest
-     *            the {@link BendpointRequest} to compute a new
-     *            {@link PointList} * @param connection the {@link Connection}
+     *            the {@link BendpointRequest} to compute a new {@link PointList}
+     * @param connection
+     *            the {@link Connection}
      */
     public BracketConnectionQuery(BendpointRequest bendpointRequest, Connection connection) {
         this.bendpointRequest = bendpointRequest;

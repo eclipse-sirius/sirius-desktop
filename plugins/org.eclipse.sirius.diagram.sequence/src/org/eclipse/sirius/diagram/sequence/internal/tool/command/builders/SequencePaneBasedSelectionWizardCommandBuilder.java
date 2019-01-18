@@ -61,7 +61,9 @@ public class SequencePaneBasedSelectionWizardCommandBuilder extends PaneBasedSel
      * @param selectedElements
      *            the selected elements.
      * @param endBefore
-     *            the eventEnd starting * @param location the location for flag.
+     *            the eventEnd starting
+     * @param location
+     *            the location for flag.
      */
     public SequencePaneBasedSelectionWizardCommandBuilder(final PaneBasedSelectionWizardDescription tool, final DSemanticDecorator containerView, Collection<EObject> selectedElements,
             EventEnd endBefore, Point location) {

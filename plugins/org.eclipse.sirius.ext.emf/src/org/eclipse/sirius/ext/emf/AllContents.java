@@ -107,7 +107,8 @@ public final class AllContents implements Iterable<EObject> {
      *            the type of elements to consider.
      * @param includeRoot
      *            whether or not the root element itself should be included in
-     *            the iterator. * @return an iterable on all the sub-elements of
+     *            the iterator.
+     * @return an iterable on all the sub-elements of
      *            the root (recursively) which are of the specified type.
      */
     public static Iterable<EObject> of(EObject obj, EClass klass, boolean includeRoot) {

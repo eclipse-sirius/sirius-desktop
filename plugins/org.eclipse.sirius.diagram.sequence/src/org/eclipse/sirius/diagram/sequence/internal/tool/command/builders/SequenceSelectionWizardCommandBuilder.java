@@ -61,7 +61,9 @@ public class SequenceSelectionWizardCommandBuilder extends SelectionWizardComman
      * @param selectedElements
      *            the selected elements.
      * @param endBefore
-     *            the eventEnd starting * @param location the location for flag.
+     *            the eventEnd starting
+     * @param location
+     *            the location for flag.
      */
     public SequenceSelectionWizardCommandBuilder(final SelectionWizardDescription tool, final DSemanticDecorator containerView, Collection<EObject> selectedElements, EventEnd endBefore, Point location) {
         super(tool, containerView, selectedElements);
