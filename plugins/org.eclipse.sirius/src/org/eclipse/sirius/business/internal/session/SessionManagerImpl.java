@@ -414,7 +414,9 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
                 ((XMLResource) resource).getDefaultLoadOptions().put(AbstractSiriusMigrationService.OPTION_RESOURCE_NON_BATCH_MIGRATION, isDirectUserActionLoading);
             }
         }
-        uiCallback.askUserAndSaveMigratedSession(session);
+        if (uiCallback != null) {
+            uiCallback.askUserAndSaveMigratedSession(session);
+        }
         subMonitor.done();
 
         return session;
