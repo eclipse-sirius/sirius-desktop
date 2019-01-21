@@ -1,6 +1,6 @@
 target "orbit" with source, requirements
 
-location Orbit "http://download.eclipse.org/tools/orbit/downloads/drops/R20180606145124/repository" {
+location Orbit "http://download.eclipse.org/tools/orbit/downloads/drops/R20181128170323/repository" {
     org.apache.log4j lazy
     org.easymock lazy
     org.hamcrest.core lazy
@@ -14,4 +14,8 @@ location Orbit "http://download.eclipse.org/tools/orbit/downloads/drops/R2018060
     ch.qos.logback.classic [1.0.7,1.0.8)
     ch.qos.logback.core [1.0.7,1.0.8)
     org.apache.xalan 2.7.1
+    org.antlr.runtime [4.7.1,4.7.2)
+    org.reactivestreams [1.0.2,1.0.3)
+    com.graphql.java.dataloader [2.1.1,2.1.2)
+    com.graphql.java [11.0.0,11.0.1)
 }
