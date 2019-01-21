@@ -126,7 +126,7 @@ public class FeatureInterpreter extends AbstractInterpreter implements org.eclip
                                 MessageFormat.format(Messages.FeatureInterpreter_invalidFeature, typeName.getCompleteName("::"), featureName))); //$NON-NLS-1$
                     }
                 }
-                if (possibleReturnTypes.size() > 0) {
+                if (!possibleReturnTypes.isEmpty()) {
                     interpreterStatus.setReturnType(VariableType.fromEClassifiers(possibleReturnTypes));
                 }
             }
@@ -136,10 +136,8 @@ public class FeatureInterpreter extends AbstractInterpreter implements org.eclip
 
     private boolean hasFeatureNameAndCollectReturnTypes(EClass currentElementType, String featureName, Set<EClassifier> possibleTargetTypes) {
         EStructuralFeature feature = currentElementType.getEStructuralFeature(featureName);
-        if (feature instanceof EReference) {
-            if (feature.getEType() != null) {
-                possibleTargetTypes.add(feature.getEType());
-            }
+        if (feature instanceof EReference && feature.getEType() != null) {
+            possibleTargetTypes.add(feature.getEType());
         }
         return feature != null;
     }
