@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,12 +10,12 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.internal.refresh;
+package org.eclipse.sirius.diagram.business.internal.refresh;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
-import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
  * EMF Command to execute the {@link CanonicalSynchronizer}.
@@ -30,9 +30,8 @@ public class SynchronizeGMFModelCommand extends RecordingCommand {
      * Default constructor.
      * 
      * @param domain
-     *            the {@link TransactionalEditingDomain} on which to execute
-     *            this command
-     * 
+     *            the {@link TransactionalEditingDomain} on which to execute this command
+     *            Messages.SynchronizeGMFModelCommand_label
      * @param canonicalSynchronizer
      *            the {@link CanonicalSynchronizer} to execute
      */

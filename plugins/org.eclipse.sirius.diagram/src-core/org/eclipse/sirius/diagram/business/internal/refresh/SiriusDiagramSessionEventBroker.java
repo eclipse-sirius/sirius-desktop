@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.internal.refresh;
+package org.eclipse.sirius.diagram.business.internal.refresh;
 
 import java.util.Collection;
 import java.util.Map;
@@ -29,8 +29,8 @@ import org.eclipse.sirius.ext.base.Options;
 import com.google.common.base.Predicate;
 
 /**
- * Specific {@link ModelChangeTrigger} per Session to synchronize the GMF
- * notation models from the Session Resource changes (DAnalysis).
+ * Specific {@link ModelChangeTrigger} per Session to synchronize the GMF notation models from the Session Resource
+ * changes (DAnalysis).
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -42,9 +42,8 @@ public final class SiriusDiagramSessionEventBroker implements ModelChangeTrigger
     public static final int PRIORITY = 4;
 
     /**
-     * Use of Weak reference to have {@link SiriusDiagramSessionEventBroker}
-     * automatically garbage collected once the {@link Session}'s
-     * SessionEventBroker has disposed all its ModelChangeTrigger
+     * Use of Weak reference to have {@link SiriusDiagramSessionEventBroker} automatically garbage collected once the
+     * {@link Session}'s SessionEventBroker has disposed all its ModelChangeTrigger
      **/
     private static final Map<Session, SiriusDiagramSessionEventBroker> INSTANCES_MAP = new WeakHashMap<Session, SiriusDiagramSessionEventBroker>();
 
@@ -57,12 +56,10 @@ public final class SiriusDiagramSessionEventBroker implements ModelChangeTrigger
     }
 
     /**
-     * Return a SiriusDiagramSessionEventBroker for this session, create a
-     * new one if not already existing.
+     * Return a SiriusDiagramSessionEventBroker for this session, create a new one if not already existing.
      * 
      * @param session
-     *            {@link Session} for which to get a
-     *            SiriusDiagramSessionEventBroker
+     *            {@link Session} for which to get a SiriusDiagramSessionEventBroker
      * 
      * @return a SiriusDiagramSessionEventBroker for this session
      */
@@ -84,6 +81,7 @@ public final class SiriusDiagramSessionEventBroker implements ModelChangeTrigger
     /**
      * {@inheritDoc}
      */
+    @Override
     public Option<Command> localChangesAboutToCommit(Collection<Notification> notifications) {
         TransactionalEditingDomain domain = getSession().getTransactionalEditingDomain();
         Option<Command> triggerCommand = Options.newSome(viewpointGMFSynchronizerDispatcher.getGMFNotationModelSynchronizationCmd(domain, notifications));
@@ -102,13 +100,13 @@ public final class SiriusDiagramSessionEventBroker implements ModelChangeTrigger
     }
 
     /**
-     * Return the low priority to get call after others synchronizers
-     * (DDiagramSynchronizer, DTreeSynchronizer, DTableSynchronizer, ...),
-     * excepts for RefreshLayoutTrigger from sequence dialect which must be
-     * called of this one to avoid StackOverflow.
+     * Return the low priority to get call after others synchronizers (DDiagramSynchronizer, DTreeSynchronizer,
+     * DTableSynchronizer, ...), excepts for RefreshLayoutTrigger from sequence dialect which must be called of this one
+     * to avoid StackOverflow.
      * 
      * {@inheritDoc}
      */
+    @Override
     public int priority() {
         return PRIORITY;
     }

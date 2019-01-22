@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -44,6 +44,7 @@ import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
+import org.eclipse.sirius.diagram.business.internal.refresh.SynchronizeGMFModelCommand;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.view.RootLayoutData;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
@@ -56,7 +57,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartment2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
-import org.eclipse.sirius.diagram.ui.internal.refresh.SynchronizeGMFModelCommand;
 import org.junit.Assert;
 
 import junit.framework.TestCase;
@@ -66,19 +66,16 @@ import junit.framework.TestCase;
  * 
  * Test cases :
  * <ol>
- * <li>Session model & notation model are already synchronized then the
- * DDiagramCanonicalSynchronizer has nothing to do</li>
- * <li>Session model has new {@link DDiagramElement} according to the notation
- * model then the DDiagramCanonicalSynchronizer must create new {@link View}
- * elements in the notation model</li>
- * <li>Notation model has View without corresponding View.element (because some
- * {@link DDiagramElement} have been deleted from the Session model) then the
- * DDiagramCanonicalSynchronizer must delete these {@link View} elements in the
+ * <li>Session model & notation model are already synchronized then the DDiagramCanonicalSynchronizer has nothing to
+ * do</li>
+ * <li>Session model has new {@link DDiagramElement} according to the notation model then the
+ * DDiagramCanonicalSynchronizer must create new {@link View} elements in the notation model</li>
+ * <li>Notation model has View without corresponding View.element (because some {@link DDiagramElement} have been
+ * deleted from the Session model) then the DDiagramCanonicalSynchronizer must delete these {@link View} elements in the
  * notation model</li>
  * </ol>
  * 
- * These 3 test cases must be tested on a combinaison of followings
- * {@link DDiagramElement} :
+ * These 3 test cases must be tested on a combinaison of followings {@link DDiagramElement} :
  * <ol>
  * <li>{@link DNode}</li>
  * <li>{@link DNodeContainer}</li>
@@ -105,18 +102,13 @@ import junit.framework.TestCase;
  * <li>Edge</li>
  * </ol>
  * 
- * //TODO : DDiagram.subDiagrams DDiagram.getHiddenElements {@link Compartment}?
- * DDiagramElement.getDecorations Refresh on
- * ViewpointPackage.eINSTANCE.getDDiagram_ActivatedFilters() ||
- * input.getFeature() ==
- * ViewpointPackage.eINSTANCE.getDDiagram_ActivatedLayers()
- * AFTER_CHILD_CANNONICALS
+ * //TODO : DDiagram.subDiagrams DDiagram.getHiddenElements {@link Compartment}? DDiagramElement.getDecorations Refresh
+ * on ViewpointPackage.eINSTANCE.getDDiagram_ActivatedFilters() || input.getFeature() ==
+ * ViewpointPackage.eINSTANCE.getDDiagram_ActivatedLayers() AFTER_CHILD_CANNONICALS
  * 
- * Mappings VISUAL_ID(EditPart) <-> notation semantic (see
- * SiriusVisualIDRegistry)
+ * Mappings VISUAL_ID(EditPart) <-> notation semantic (see SiriusVisualIDRegistry)
  * <ol>
- * <li>DDiagramEditPart(1000) : has DNodeEditPart, DNodeContainerEditPart and
- * DNodeListEditPart as childs</li>
+ * <li>DDiagramEditPart(1000) : has DNodeEditPart, DNodeContainerEditPart and DNodeListEditPart as childs</li>
  * 
  * <li>DNodeEditPart() : has DNode2EditPart as child</li>
  * <li>DNode2EditPart(3001) : has itself as child</li>
@@ -124,17 +116,16 @@ import junit.framework.TestCase;
  * <li>DNode4EditPart(3012) : has itself as child</li>
  * <li>DNodeNameEditPart(NOTHING) :</li>
  * 
- * <li>DNodeContainerEditPart(2002) : has DNode4EditPart and
- * DNodeContainerViewNodeContainerCompartmentEditPart as child</li>
- * <li>DNodeContainer2EditPart(3008) : has DNode4EditPart and
- * DNodeContainerViewNodeContainerCompartment2EditPart as child</li>
+ * <li>DNodeContainerEditPart(2002) : has DNode4EditPart and DNodeContainerViewNodeContainerCompartmentEditPart as
+ * child</li>
+ * <li>DNodeContainer2EditPart(3008) : has DNode4EditPart and DNodeContainerViewNodeContainerCompartment2EditPart as
+ * child</li>
  * <li>DNodeContainerNameEditPart(5006) :</li>
  * <li>DNodeContainerName2EditPart(5005) :</li>
  * 
- * <li>{@link DNodeContainerViewNodeContainerCompartmentEditPart} : has
- * DNode3EditPart, DNodeContainer2EditPart and DNodeList2EditPart as child</li>
- * <li>{@link DNodeContainerViewNodeContainerCompartment2EditPart} : same as
- * previous</li>
+ * <li>{@link DNodeContainerViewNodeContainerCompartmentEditPart} : has DNode3EditPart, DNodeContainer2EditPart and
+ * DNodeList2EditPart as child</li>
+ * <li>{@link DNodeContainerViewNodeContainerCompartment2EditPart} : same as previous</li>
  * 
  * <li>DNodeListEditPart() : has DNode4EditPart as child</li>
  * <li>DNodeList2EditPart() : has DNode4EditPart as child</li>
@@ -142,8 +133,7 @@ import junit.framework.TestCase;
  * <li>DNodeListName2EditPart() :</li>
  * <li>DNodeListElementEditPart() :</li>
  * 
- * <li>{@link DNodeListViewNodeListCompartmentEditPart}() : has
- * DNodeListElementEditPart as child</li>
+ * <li>{@link DNodeListViewNodeListCompartmentEditPart}() : has DNodeListElementEditPart as child</li>
  * <li>{@link DNodeListViewNodeListCompartment2EditPart}() : same as previous</li>
  * 
  * <li>DEdgeEditPart(4001) :</li>
@@ -223,8 +213,8 @@ public class DDiagramCanonicalSynchronizerTests extends TestCase {
     }
 
     /**
-     * Test that the DDiagramCanonicalSynchronizer do nothing on a empty
-     * {@link DSemanticDiagram} if the {@link Diagram} is already empty.
+     * Test that the DDiagramCanonicalSynchronizer do nothing on a empty {@link DSemanticDiagram} if the {@link Diagram}
+     * is already empty.
      */
     public void test_DDiagramCanonicalSynchronizer_Synchronize_DoNothing_OnEmptyNotationModel() {
         // dDiagramCanonicalSynchronizer.synchronize();
@@ -243,8 +233,8 @@ public class DDiagramCanonicalSynchronizerTests extends TestCase {
     }
 
     /**
-     * Test that the DDiagramCanonicalSynchronizer do nothing on a Session model
-     * with one DNode and the notation model with the corresponding Node.
+     * Test that the DDiagramCanonicalSynchronizer do nothing on a Session model with one DNode and the notation model
+     * with the corresponding Node.
      */
     public void test_DDiagramCanonicalSynchronizer_Synchronize_DoNothing_OnSessionModelWithDNode() {
         DNode dNode = DiagramFactory.eINSTANCE.createDNode();
@@ -278,9 +268,8 @@ public class DDiagramCanonicalSynchronizerTests extends TestCase {
     }
 
     /**
-     * Test that the DDiagramCanonicalSynchronizer do nothing on a Session model
-     * with one {@link DNodeContainer} and the notation model with the
-     * corresponding Node.
+     * Test that the DDiagramCanonicalSynchronizer do nothing on a Session model with one {@link DNodeContainer} and the
+     * notation model with the corresponding Node.
      */
     public void test_DDiagramCanonicalSynchronizer_Synchronize_DoNothing_OnSessionModelWithDNodeContainer() {
         DNodeContainer dNodeContainer = DiagramFactory.eINSTANCE.createDNodeContainer();
@@ -314,9 +303,8 @@ public class DDiagramCanonicalSynchronizerTests extends TestCase {
     }
 
     /**
-     * Test that the DDiagramCanonicalSynchronizer do nothing on a Session model
-     * with one {@link DNodeList} and the notation model with the corresponding
-     * Node.
+     * Test that the DDiagramCanonicalSynchronizer do nothing on a Session model with one {@link DNodeList} and the
+     * notation model with the corresponding Node.
      */
     public void test_DDiagramCanonicalSynchronizer_Synchronize_DoNothing_OnSessionModelWithDNodeList() {
         DNodeList dNodeContainer = DiagramFactory.eINSTANCE.createDNodeList();
@@ -350,9 +338,8 @@ public class DDiagramCanonicalSynchronizerTests extends TestCase {
     }
 
     /**
-     * Test that the DDiagramCanonicalSynchronizer do nothing on a Session model
-     * with one {@link DNode} with a borderedNode and the notation model with
-     * the corresponding Node and a Node as children.
+     * Test that the DDiagramCanonicalSynchronizer do nothing on a Session model with one {@link DNode} with a
+     * borderedNode and the notation model with the corresponding Node and a Node as children.
      */
     public void test_DDiagramCanonicalSynchronizer_Synchronize_DoNothing_OnSessionModelWithDNodeWithBorderedNode() {
         DNode dNode = DiagramFactory.eINSTANCE.createDNode();
@@ -407,9 +394,8 @@ public class DDiagramCanonicalSynchronizerTests extends TestCase {
     }
 
     /**
-     * Test that the DDiagramCanonicalSynchronizer do nothing on a Session model
-     * with one {@link DNode} with a borderedNode with a borderedNode and the
-     * notation model with the corresponding Node and a Node as children.
+     * Test that the DDiagramCanonicalSynchronizer do nothing on a Session model with one {@link DNode} with a
+     * borderedNode with a borderedNode and the notation model with the corresponding Node and a Node as children.
      */
     public void test_DDiagramCanonicalSynchronizer_Synchronize_DoNothing_OnSessionModelWithDNodeWithBorderedNodeOf2Level() {
         DNode dNode = DiagramFactory.eINSTANCE.createDNode();
@@ -505,8 +491,8 @@ public class DDiagramCanonicalSynchronizerTests extends TestCase {
     }
 
     /**
-     * Test that the DDiagramCanonicalSynchronizer remove some GMF Notation
-     * elements because there's not corresponding {@link DDiagramElement}.
+     * Test that the DDiagramCanonicalSynchronizer remove some GMF Notation elements because there's not corresponding
+     * {@link DDiagramElement}.
      */
     public void test_DDiagramCanonicalSynchronizer_Synchronize_RemoveOrphanNode() {
         Node node = NotationFactory.eINSTANCE.createNode();
@@ -523,8 +509,8 @@ public class DDiagramCanonicalSynchronizerTests extends TestCase {
     }
 
     /**
-     * Test that the DDiagramCanonicalSynchronizer remove some GMF Notation
-     * elements because there's not corresponding {@link DDiagramElement}.
+     * Test that the DDiagramCanonicalSynchronizer remove some GMF Notation elements because there's not corresponding
+     * {@link DDiagramElement}.
      */
     // TODO
     public void test_DDiagramCanonicalSynchronizer_Synchronize_RemoveOrphanEdge() {
@@ -542,8 +528,8 @@ public class DDiagramCanonicalSynchronizerTests extends TestCase {
     }
 
     /**
-     * Test that the DDiagramCanonicalSynchronizer add some GMF Notation
-     * elements because there's new {@link DDiagramElement}s.
+     * Test that the DDiagramCanonicalSynchronizer add some GMF Notation elements because there's new
+     * {@link DDiagramElement}s.
      */
     public void test_DDiagramCanonicalSynchronizer_Synchronize_AddGMFNotationElts_WithNewDNode() {
         DNode dNode = DiagramFactory.eINSTANCE.createDNode();
@@ -562,8 +548,8 @@ public class DDiagramCanonicalSynchronizerTests extends TestCase {
     }
 
     /**
-     * Test that the DDiagramCanonicalSynchronizer add some GMF Notation
-     * elements because there's new {@link DDiagramElement}s.
+     * Test that the DDiagramCanonicalSynchronizer add some GMF Notation elements because there's new
+     * {@link DDiagramElement}s.
      */
     public void test_DDiagramCanonicalSynchronizer_Synchronize_AddGMFNotationElts_WithNewDNodeContainer() {
         DNodeContainer dNodeContainer = DiagramFactory.eINSTANCE.createDNodeContainer();
@@ -582,8 +568,8 @@ public class DDiagramCanonicalSynchronizerTests extends TestCase {
     }
 
     /**
-     * Test that the DDiagramCanonicalSynchronizer add some GMF Notation
-     * elements because there's new {@link DDiagramElement}s.
+     * Test that the DDiagramCanonicalSynchronizer add some GMF Notation elements because there's new
+     * {@link DDiagramElement}s.
      */
     public void test_DDiagramCanonicalSynchronizer_Synchronize_AddGMFNotationElts_WithNewDEdge() {
         DNode dNodeSource = DiagramFactory.eINSTANCE.createDNode();
@@ -628,8 +614,8 @@ public class DDiagramCanonicalSynchronizerTests extends TestCase {
     }
 
     /**
-     * Test that the DDiagramCanonicalSynchronizer add some GMF node with
-     * correct bounds using the SiriusLayoutDataManager for node creation.
+     * Test that the DDiagramCanonicalSynchronizer add some GMF node with correct bounds using the
+     * SiriusLayoutDataManager for node creation.
      */
     public void test_DDiagramCanonicalSynchronizer_Synchronize_UpdateGMF_NodeBoundsCorrectlyForNodeCreation() {
         DNode dNode = DiagramFactory.eINSTANCE.createDNode();

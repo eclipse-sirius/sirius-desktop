@@ -4,30 +4,18 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius6.1.2). Changes in Sirius 6.1.2
+
 h3. User-Visible Changes
 
 * <span class="label label-success">Added</span> On sequence diagrams, it is now possible to remove vertical blank spaces on standard edition mode by dragging the mouse from bottom to top anywhere in the canvas with the Ctrl+Shift keys pressed. This "feature":user/sequences/Sequence%20Diagrams.html#remove_vertical_blank_space was here since version 6.0.0 but was only accessible through the ruler.
+* <span class="label label-info">Modified</span> Invalid representations, that are either representations which semantic target does not exist anymore or representations that can not be retrieved anymore, are grayed in the Model Explorer and the only available action is _Delete_. It was previously the case only for representations which semantic target does not exist anymore.
 
 h3. Specifier-Visible Changes
 
 * <span class="label label-success">Added</span> It is now possible to add action/group in the "New" contextual menu of diagram elements. This menu was missed in Sirius 6.1.0. It is now documented in the "corresponding documentation":specifier/diagrams/Diagrams.html#group .
 
 * <span class="label label-info">Modified</span> The method @org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory.buildInsertVerticalBlankSpaceCommand(DDiagram, int, int)@ has been renamed to @org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory.buildInsertOrRemoveVerticalBlankSpaceCommand(DDiagram, int, int)@ because it handles now both addition and removal.
-
-h4. Changes in @org.eclipse.sirius.diagram.sequence@
-
-* <span class="label label-success">Added</span> A new translatable message @org.eclipse.sirius.diagram.sequence.Messages.VerticalSpaceReduction_operationName@ has been added. It's key is @VerticalSpaceReduction_operationName@ and its default value is @Auto-reduction of {0}@. It is used when reducing spaces in sequence diagram.
-* <span class="label label-success">Added</span> A new translatable message @org.eclipse.sirius.diagram.ui.provider.Messages.RemoveBlankSpace_cmdName@ has been added. It's key is @RemoveBlankSpace_cmdName@ and its default value is @Remove blank space@. It is used when removing spaces in sequence diagram.
-* <span class="label label-success">Added</span>  The methods @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragWithKeys(int, int, int, int, AtomicBoolean, int...)@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer.dragWithKeys(int, int, int, int, AtomicBoolean, int...)@, @org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas.mouseDragWithKeys(int, int, int, int, AtomicBoolean, int...)@, have been added to make a drag an drop with more than one key modifier.
-h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
-* <span class="label label-success">Added</span> The methods @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragWithKeys(int, int, int, int, AtomicBoolean, int...)@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer.dragWithKeys(int, int, int, int, AtomicBoolean, int...)@ and @org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas.mouseDragWithKeys(int, int, int, int, AtomicBoolean, int...)@ have been added and allows to do a drag and drop with any key modifier you want.
-* <span class="label label-info">Modified</span> The methods @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragWithKey(int, int, int, int, int, AtomicBoolean)@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer.dragWithKey(int, int, int, int, int, AtomicBoolean)@ and @org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas.mouseDragWithKey(int, int, int, int, int, AtomicBoolean)@ have been marked as deprecated. The method @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragWithKeys(int, int, int, int, AtomicBoolean, int...)@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer.dragWithKeys(int, int, int, int, AtomicBoolean, int...)@ and @org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas.mouseDragWithKeys(int, int, int, int, AtomicBoolean, int...)@ should be used instead.C
-
-h2(#sirius6.1.2). Changes in Sirius 6.1.2
-
-h3. User-Visible Changes
-
-* <span class="label label-info">Modified</span> Invalid representations, that are either representations which semantic target does not exist anymore or representations that can not be retrieved anymore, are grayed in the Model Explorer and the only available action is _Delete_. It was previously the case only for representations which semantic target does not exist anymore.
 
 h3. Developer-Visible Changes
 
@@ -44,8 +32,12 @@ h4. Changes in  @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-info">Modified</span> The method @getDiagramLayoutProvider(DiagramEditPart, IAdaptable)@ in package  @org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider@ has been made protected to allow to provide layout provider from other mechanism than LayoutService.
 
+* <span class="label label-danger">Removed</span> The message @org.eclipse.sirius.diagram.ui.provider.Messages.SynchronizeGMFModelCommand_label@ has been removed. It has been replaced in @org.eclipse.sirius.diagram.Messages@.
+
+
 h4. Changes in  @org.eclipse.sirius.diagram@
 
+* <span class="label label-success">Added</span> The message @org.eclipse.sirius.diagram.Messages.SynchronizeGMFModelCommand_label@ has been added. It replaces @org.eclipse.sirius.diagram.ui.provider.Messages.SynchronizeGMFModelCommand_label@.
 * <span class="label label-info">Added</span> The extension point org.eclipse.sirius.diagram.customBundledImageShape has been created in order to provide custom shape to the bundled image style. This extension point offers more flexibility on the specification of the svg tags and attributes holding the color, border color and border size information than the extension point org.eclipse.sirius.diagram.bundledImageShape.
 * <span class="label label-info">Modified</span> The extension point org.eclipse.sirius.diagram.bundledImageShape has been marked as deprecated. Shapes provided by this extension point still work.
 * <span class="label label-success">Added</span> The getter and setter methods have been added for the new attribute @org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor.isPrintable@. This attribute is used to know if the decoration should be hidden when printing or exporting the diagram. The behavior is applied only if there is no printable decoration in its diagram element location (South, West, South-West etc).
@@ -54,6 +46,16 @@ h4. Changes in  @org.eclipse.sirius.common@
 
 * <span class="label label-danger">Removed</span> The class @org.eclipse.sirius.common.tools.api.util.SiriusCopier@ has been replaced by the internal class @org.eclipse.sirius.tools.internal.SiriusCopierHelper@. @SiriusCopier.Helper.copy(T)@ and @SiriusCopier.Helper.copyAll(Collection<? extends T>)@ have been replaced by @SiriusCopierHelper.copyWithNoUidDuplication(T)@, @SiriusCopierHelper.copyAllWithNoUidDuplication(Collection<? extends T>)@ and @SiriusCopierHelper.copyAllWithNoUidDuplication(Collection<? extends EObject>, boolean, boolean, boolean)@. It provides the ability to copy an object without copying the EAttribute @IDENTIFIED_ELEMENT__UID@. For all these methods, this id is not set by the factory or during object creation, it is set during the copy using @org.eclipse.emf.ecore.util.EcoreUtil.generateUUID()@.
 
+h4. Changes in @org.eclipse.sirius.diagram.sequence@
+
+* <span class="label label-success">Added</span> A new translatable message @org.eclipse.sirius.diagram.sequence.Messages.VerticalSpaceReduction_operationName@ has been added. It's key is @VerticalSpaceReduction_operationName@ and its default value is @Auto-reduction of {0}@. It is used when reducing spaces in sequence diagram.
+* <span class="label label-success">Added</span> A new translatable message @org.eclipse.sirius.diagram.ui.provider.Messages.RemoveBlankSpace_cmdName@ has been added. It's key is @RemoveBlankSpace_cmdName@ and its default value is @Remove blank space@. It is used when removing spaces in sequence diagram.
+* <span class="label label-success">Added</span>  The methods @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragWithKeys(int, int, int, int, AtomicBoolean, int...)@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer.dragWithKeys(int, int, int, int, AtomicBoolean, int...)@, @org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas.mouseDragWithKeys(int, int, int, int, AtomicBoolean, int...)@, have been added to make a drag an drop with more than one key modifier.
+
+h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
+
+* <span class="label label-success">Added</span> The methods @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragWithKeys(int, int, int, int, AtomicBoolean, int...)@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer.dragWithKeys(int, int, int, int, AtomicBoolean, int...)@ and @org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas.mouseDragWithKeys(int, int, int, int, AtomicBoolean, int...)@ have been added and allows to do a drag and drop with any key modifier you want.
+* <span class="label label-info">Modified</span> The methods @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragWithKey(int, int, int, int, int, AtomicBoolean)@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer.dragWithKey(int, int, int, int, int, AtomicBoolean)@ and @org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas.mouseDragWithKey(int, int, int, int, int, AtomicBoolean)@ have been marked as deprecated. The method @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.dragWithKeys(int, int, int, int, AtomicBoolean, int...)@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer.dragWithKeys(int, int, int, int, AtomicBoolean, int...)@ and @org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas.mouseDragWithKeys(int, int, int, int, AtomicBoolean, int...)@ should be used instead.
 
 h2(#sirius6.1.1). Changes in Sirius 6.1.1
 

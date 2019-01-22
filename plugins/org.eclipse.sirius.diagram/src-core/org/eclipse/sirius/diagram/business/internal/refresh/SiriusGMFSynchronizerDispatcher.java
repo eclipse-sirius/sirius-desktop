@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.ui.internal.refresh;
+package org.eclipse.sirius.diagram.business.internal.refresh;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;
@@ -37,16 +37,13 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagra
 public class SiriusGMFSynchronizerDispatcher {
 
     /**
-     * Get a EMF Command which update the GMF notation model from the
-     * {@link Notification} collection.
+     * Get a EMF Command which update the GMF notation model from the {@link Notification} collection.
      * 
      * @param domain
-     *            the {@link TransactionalEditingDomain} from which the Command
-     *            will be executed
+     *            the {@link TransactionalEditingDomain} from which the Command will be executed
      * 
      * @param notifications
-     *            the {@link Notification} collection about the session model
-     *            changes.
+     *            the {@link Notification} collection about the session model changes.
      * 
      * @return the EMF COmmand to update the GMF notation model
      */
