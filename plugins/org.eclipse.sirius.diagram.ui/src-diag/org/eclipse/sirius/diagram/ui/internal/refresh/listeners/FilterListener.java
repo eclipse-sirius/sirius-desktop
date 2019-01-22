@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,19 +20,17 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.business.internal.refresh.SiriusDiagramSessionEventBroker;
 import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
-import org.eclipse.sirius.diagram.ui.internal.refresh.SiriusDiagramSessionEventBroker;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
-import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyWrapperPermissionAuthority;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
 /**
  * A ModelChangeTrigger listener to refresh filter applications on each
- * {@link org.eclipse.sirius.diagram.DDiagramElement} of the current
- * {@link DDiagram} .
+ * {@link org.eclipse.sirius.diagram.DDiagramElement} of the current {@link DDiagram} .
  * 
  * @author mporhel
  */
@@ -63,6 +61,7 @@ public class FilterListener implements ModelChangeTrigger {
     /**
      * {@inheritDoc}
      */
+    @Override
     public int priority() {
         return COMPOSITE_FILTER_REFRESH_PRIORITY;
     }
@@ -70,6 +69,7 @@ public class FilterListener implements ModelChangeTrigger {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Option<Command> localChangesAboutToCommit(Collection<Notification> notifications) {
         Command cmd = new FilteredElementsUpdateCommand(domain, dDiagram);
         return Options.newSome(cmd);

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="ASCII"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="viewpointActivation" version="12.0.0.2017041100">
+  <ownedViewpoints name="viewpointActivation" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="viewpointActivation_TC1" domainClass="EPackage" enablePopupBars="true">
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide EAnnotToRef">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@edgeMappings[name='EAnnotToRef%20TC1']"/>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide RefToEAnnot">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@edgeMappings[name='RefToEAnnot%20TC1']"/>
+      </filters>
+      <defaultLayer name="Default">
+        <nodeMappings name="EC EClass TC1" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass">
+          <style xsi:type="style:SquareDescription" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <nodeMappings name="EAnnot TC1" semanticCandidatesExpression="aql:self.eAllContents()->filter(ecore::EAnnotation)" domainClass="EAnnotation">
+          <style xsi:type="style:DotDescription" labelExpression="aql:self.source">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="EAnnotToRef TC1" deletionDescription="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@toolSections.2/@ownedTools[name='Delete%20EAnnotToRef']" labelDirectEdit="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@toolSections.4/@ownedTools[name='EAnnotToRefEdit']" sourceMapping="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@nodeMappings[name='EAnnot%20TC1']" targetMapping="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@edgeMappings[name='EMa%20TC1']" targetFinderExpression="aql:self.references" reconnections="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@toolSections.3/@ownedTools[name='Reconnect%20EAnnotToRef']">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <centerLabelStyleDescription labelExpression="EAnnotToRef">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="RefToEAnnot TC1" deletionDescription="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@toolSections.2/@ownedTools[name='Delete%20RefToAnnot']" labelDirectEdit="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@toolSections.4/@ownedTools[name='RefToEAnnotEdit']" sourceMapping="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@edgeMappings[name='EMa%20TC1']" targetMapping="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@nodeMappings[name='EAnnot%20TC1']" targetFinderExpression="aql:self.eAnnotations" reconnections="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@toolSections.3/@ownedTools[name='Reconnect%20RefToEAnnot']">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+            <centerLabelStyleDescription labelExpression="RefToEAnnot">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="EMa TC1" preconditionExpression="aql:self.eOpposite = null" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@nodeMappings[name='EC%20EClass%20TC1']" targetMapping="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@nodeMappings[name='EC%20EClass%20TC1']" targetFinderExpression="aql:self.eType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true" reconnections="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@toolSections.3/@ownedTools[name='ReconnectEReference']">
+          <style sizeComputationExpression="3">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <centerLabelStyleDescription labelExpression="aql:'EMa ' + self.name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <toolSections name="Nodes">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Class" nodeMappings="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@nodeMappings[name='EC%20EClass%20TC1']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EClass" referenceName="eClassifiers">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'new AbstractClass ' + self.eContainer().eContents()->filter(ecore::EClass)->size()"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="EAnnotation" nodeMappings="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@nodeMappings[name='EC%20EClass%20TC1']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="EAnnotation" referenceName="eAnnotations">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="aql:'A' + self.eResource().getContent()->first().eAllContents()->filter(ecore::EAnnotation)->size()"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Creation">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Reference" edgeMappings="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@edgeMappings[name='EMa%20TC1']">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="EReference" referenceName="eStructuralFeatures">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:target"/>
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="aql:'newEReference' + self.eContainerOrSelf(ecore::EClassifier).eAllContents(ecore::EReference)->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="AnnotToRef" edgeMappings="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@edgeMappings[name='EAnnotToRef%20TC1']" iconPath="/org.eclipse.sirius.ui/icons/full/obj16/EdgeMapping.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="references" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="RefToEAnnot" edgeMappings="//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@edgeMappings[name='RefToEAnnot%20TC1']" iconPath="/org.eclipse.sirius.ui/icons/full/obj16/EdgeMapping.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:source" featureName="eAnnotations"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Deletion">
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete EAnnotToRef">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.sourceNode.target">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="references" elementExpression="aql:elementView.targetNode.target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DeleteElementDescription" name="Delete RefToAnnot">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:elementView.sourceNode.target">
+                <subModelOperations xsi:type="tool_1:Unset" featureName="eAnnotations" elementExpression="aql:elementView.targetNode.target"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.eResource().getContents()->first()">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="eAnnotations" valueExpression="aql:elementView.targetNode.target"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Reconnect">
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect EAnnotToRef">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="references" valueExpression="var:target"/>
+                <subModelOperations xsi:type="tool_1:Unset" featureName="references" elementExpression="var:source"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="Reconnect RefToEAnnot" reconnectionKind="RECONNECT_SOURCE">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="eAnnotations" valueExpression="aql:edgeView.targetNode.target"/>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ReconnectEdgeDescription" name="ReconnectEReference" reconnectionKind="RECONNECT_BOTH">
+            <source name="source"/>
+            <target name="target"/>
+            <sourceView name="sourceView"/>
+            <targetView name="targetView"/>
+            <element name="element"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:source">
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:source &lt;> element.eContainer()">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="eType" valueExpression="var:target"/>
+                  </subModelOperations>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:If" conditionExpression="aql:source = element.eContainer()">
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:target">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="eReferences" valueExpression="var:element"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+            <edgeView name="edgeView"/>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="edit">
+          <ownedTools xsi:type="tool:DirectEditLabel" name="RefToEAnnotEdit">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="EAnnotToRefEdit">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:eContainer">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="var:arg0"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+  <userColorsPalettes name="Ecore Palette">
+    <entries xsi:type="description:InterpolatedColor" name="Size Based Color" colorValueComputationExpression="[eContents()->size()/]"/>
+    <entries xsi:type="description:UserFixedColor" red="250" green="190" blue="190" name="MomentIntervalColor"/>
+    <entries xsi:type="description:UserFixedColor" red="250" green="240" blue="180" name="RoleColor"/>
+    <entries xsi:type="description:UserFixedColor" red="180" green="230" blue="180" name="PartyPlaceThingColor"/>
+    <entries xsi:type="description:UserFixedColor" red="180" green="200" blue="210" name="DescriptionColor"/>
+  </userColorsPalettes>
+</description:Group>

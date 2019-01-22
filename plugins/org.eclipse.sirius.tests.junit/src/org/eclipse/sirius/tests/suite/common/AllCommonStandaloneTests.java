@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.sirius.tests.unit.common.LabelProviderProviderServiceTests;
 import org.eclipse.sirius.tests.unit.common.SessionLabelTest;
 import org.eclipse.sirius.tests.unit.common.VisualBindingManagerTestCase;
 import org.eclipse.sirius.tests.unit.common.logger.MarkerRuntimeLoggerTest;
+import org.eclipse.sirius.tests.unit.refresh.RefreshFromViewpointActivationTests;
 
 import junit.framework.JUnit4TestAdapter;
 import junit.framework.Test;
@@ -77,6 +78,7 @@ public class AllCommonStandaloneTests extends TestCase {
         suite.addTestSuite(InitInterpreterFromParsedVariableTaskTest.class);
         suite.addTest(new JUnit4TestAdapter(EcoreIntrinsicExtenderTest.class));
         suite.addTest(new JUnit4TestAdapter(MarkerRuntimeLoggerTest.class));
+        suite.addTestSuite(RefreshFromViewpointActivationTests.class);
         return suite;
     }
 }

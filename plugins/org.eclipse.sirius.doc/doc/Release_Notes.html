@@ -138,6 +138,10 @@
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> The message 
+				<code>org.eclipse.sirius.diagram.Messages.SynchronizeGMFModelCommand_label</code> has been added. It replaces 
+				<code>org.eclipse.sirius.diagram.ui.provider.Messages.SynchronizeGMFModelCommand_label</code>.
+			</li>
 			<li><span class="label label-info">Added</span> The extension point org.eclipse.sirius.diagram.customBundledImageShape has been created in order to provide custom shape to the bundled image style. This extension point offers more flexibility on the specification of the svg tags and attributes holding the color, border color and border size information than the extension point org.eclipse.sirius.diagram.bundledImageShape.</li>
 			<li><span class="label label-info">Modified</span> The extension point org.eclipse.sirius.diagram.bundledImageShape has been marked as deprecated. Shapes provided by this extension point still work.</li>
 			<li><span class="label label-info">Modified</span> The method 
@@ -298,10 +302,14 @@
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in  
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
+			<li><span class="label label-danger">Removed</span> The message 
+				<code>org.eclipse.sirius.diagram.ui.provider.Messages.SynchronizeGMFModelCommand_label</code> has been removed. It has been replaced in 
+				<code>org.eclipse.sirius.diagram.Messages</code>.
+			</li>
 			<li><span class="label label-danger">Removed</span> The extension point 
 				<code>layoutDataManager</code>, deprecated since Sirius 4.1.0, has been removed. The corresponding plug-in 
 				<code>org.eclipse.sirius.diagram.layoutdata</code> has also been removed.
