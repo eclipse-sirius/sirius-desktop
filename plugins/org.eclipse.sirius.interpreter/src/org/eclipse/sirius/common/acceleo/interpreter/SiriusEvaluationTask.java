@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.acceleo.ui.interpreter.view.Variable;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.MultiStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -63,11 +64,6 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
         this.context = context;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.util.concurrent.Callable#call()
-     */
     @Override
     public EvaluationResult call() throws Exception {
         checkCancelled();
@@ -167,7 +163,7 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
         }
 
         for (String nsURI : EPackage.Registry.INSTANCE.keySet()) {
-            if (localyRegisteredNsURIs.size() == 0 || !localyRegisteredNsURIs.contains(nsURI)) {
+            if (localyRegisteredNsURIs.isEmpty() || !localyRegisteredNsURIs.contains(nsURI)) {
                 Object value = EPackage.Registry.INSTANCE.get(nsURI);
                 if (value instanceof EPackage) {
                     knownEPackages.add((EPackage) value);
@@ -213,15 +209,15 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
         String message = this.getDefaultMessage(result);
 
         Diagnostic diagnostic = evaluationResult.getDiagnostic();
-        int statusCode = this.getStatusCodeFromDiagnostic(diagnostic);
+        int statusCode = BasicDiagnostic.toIStatus(diagnostic).getSeverity();
 
         IStatus status = new Status(statusCode, InterpreterViewPlugin.PLUGIN_ID, message);
-        if (Diagnostic.OK != diagnostic.getSeverity() && diagnostic.getChildren().size() > 0) {
+        if (Diagnostic.OK != diagnostic.getSeverity() && !diagnostic.getChildren().isEmpty()) {
             MultiStatus multiStatus = new MultiStatus(InterpreterViewPlugin.PLUGIN_ID, statusCode, message, null);
 
             List<Diagnostic> children = diagnostic.getChildren();
             for (Diagnostic childDiagnostic : children) {
-                int childStatusCode = this.getStatusCodeFromDiagnostic(childDiagnostic);
+                int childStatusCode = BasicDiagnostic.toIStatus(childDiagnostic).getSeverity();
                 String childMessage = childDiagnostic.getMessage();
                 IStatus childStatus = new Status(childStatusCode, InterpreterViewPlugin.PLUGIN_ID, childMessage);
                 multiStatus.add(childStatus);
@@ -231,37 +227,6 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
         }
 
         return status;
-    }
-
-    /**
-     * Computes the status code matching the given {@link Diagnostic}.
-     * 
-     * @param diagnostic
-     *            The diagnostic of the evaluation result
-     * @return A {@link IStatus} code.
-     */
-    private int getStatusCodeFromDiagnostic(Diagnostic diagnostic) {
-        int statusCode = IStatus.OK;
-        switch (diagnostic.getSeverity()) {
-        case Diagnostic.ERROR:
-            statusCode = IStatus.ERROR;
-            break;
-        case Diagnostic.WARNING:
-            statusCode = IStatus.WARNING;
-            break;
-        case Diagnostic.INFO:
-            statusCode = IStatus.INFO;
-            break;
-        case Diagnostic.CANCEL:
-            statusCode = IStatus.CANCEL;
-            break;
-        case Diagnostic.OK:
-            statusCode = IStatus.OK;
-            break;
-        default:
-            statusCode = IStatus.ERROR;
-        }
-        return statusCode;
     }
 
     /**
