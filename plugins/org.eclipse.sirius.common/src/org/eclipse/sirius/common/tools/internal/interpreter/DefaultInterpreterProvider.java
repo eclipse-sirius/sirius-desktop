@@ -17,6 +17,7 @@ import java.util.Map;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IConverter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
@@ -45,6 +46,11 @@ public class DefaultInterpreterProvider implements IInterpreterProvider, IInterp
     @Override
     public IInterpreter createInterpreter() {
         return this;
+    }
+
+    @Override
+    public IConverter getConverter() {
+        return new DefaultConverter();
     }
 
     @Override

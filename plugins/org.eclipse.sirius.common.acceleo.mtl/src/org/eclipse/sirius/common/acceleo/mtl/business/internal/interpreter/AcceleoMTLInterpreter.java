@@ -75,6 +75,7 @@ import org.eclipse.sirius.common.acceleo.mtl.business.api.extension.AbstractImpo
 import org.eclipse.sirius.common.acceleo.mtl.business.internal.extension.ImportHandlerRegistry;
 import org.eclipse.sirius.common.acceleo.mtl.business.internal.interpreter.DynamicAcceleoModule.QueryIdentifier;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IConverter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
@@ -83,7 +84,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.TypeName;
 import org.eclipse.sirius.common.tools.api.interpreter.TypedValidation;
 import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
-import org.eclipse.sirius.common.tools.internal.interpreter.IConverter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -244,6 +244,11 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
      */
     public AcceleoMTLInterpreter() {
         // Nothing to do
+    }
+    
+    @Override
+    public IConverter getConverter() {
+        return converter;
     }
 
     /**
@@ -611,50 +616,6 @@ public class AcceleoMTLInterpreter implements IInterpreter, TypedValidation {
         EvaluationResult evaluationResult = internalEvaluate(target, expression);
         // Ignore potential problems for now
         return evaluationResult.getEvaluationResult();
-    }
-
-    @Override
-    public boolean evaluateBoolean(EObject context, String expression) throws EvaluationException {
-        EvaluationResult evaluationResult = internalEvaluate(context, expression);
-        // Ignore potential problems for now
-        Object result = evaluationResult.getEvaluationResult();
-        return converter.toBoolean(result).orElse(Boolean.FALSE);
-    }
-
-    @Override
-    public Collection<EObject> evaluateCollection(EObject context, String expression) throws EvaluationException {
-        EvaluationResult evaluationResult = internalEvaluate(context, expression);
-        Object result = evaluationResult.getEvaluationResult();
-        return converter.toEObjectCollection(result).orElse(Collections.emptyList());
-    }
-
-    @Override
-    public EObject evaluateEObject(EObject context, String expression) throws EvaluationException {
-        EvaluationResult evaluationResult = internalEvaluate(context, expression);
-        // Ignore potential problems for now
-        Object result = evaluationResult.getEvaluationResult();
-        return converter.toEObject(result).orElse(null);
-    }
-
-    @Override
-    public Integer evaluateInteger(EObject context, String expression) throws EvaluationException {
-        EvaluationResult evaluationResult = internalEvaluate(context, expression);
-        // Ignore potential problems for now
-        Object result = evaluationResult.getEvaluationResult();
-        OptionalInt coerced = converter.toInt(result);
-        if (coerced.isPresent()) {
-            return Integer.valueOf(coerced.getAsInt());
-        } else {
-            return null;
-        }
-    }
-
-    @Override
-    public String evaluateString(EObject context, String expression) throws EvaluationException {
-        EvaluationResult evaluationResult = internalEvaluate(context, expression);
-        // Ignore potential problems for now
-        Object result = evaluationResult.getEvaluationResult();
-        return converter.toString(result).orElse(null);
     }
 
     @Override

@@ -122,6 +122,14 @@
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> A new interface 
+				<code>org.eclipse.sirius.common.tools.api.interpreter.IConverter</code> has been added: it encapsulates the coercion rules used to convert raw results returned by interpreted expressions into the types expected by Sirius (depending on the context of use of the expression).
+			</li>
+			<li><span class="label label-success">Added</span> In interface 
+				<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreter</code>, a new method 
+				<code>getConverter()</code> has been added to obtain the 
+				<code>IConverter</code> for a given interpreter.
+			</li>
 			<li><span class="label label-info">Modified</span> In 
 				<code>org.eclipse.sirius.common.tools.api.interpreter.TypeName</code>, the methods 
 				<code>getJavaClass()</code> and 

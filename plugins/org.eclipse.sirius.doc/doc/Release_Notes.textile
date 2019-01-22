@@ -18,6 +18,8 @@ h3. Developer-Visible Changes
 
 h4. Changes in @org.eclipse.sirius.common@
 
+* <span class="label label-success">Added</span> A new interface @org.eclipse.sirius.common.tools.api.interpreter.IConverter@ has been added: it encapsulates the coercion rules used to convert raw results returned by interpreted expressions into the types expected by Sirius (depending on the context of use of the expression).
+* <span class="label label-success">Added</span> In interface @org.eclipse.sirius.common.tools.api.interpreter.IInterpreter@, a new method @getConverter()@ has been added to obtain the @IConverter@ for a given interpreter.
 * <span class="label label-info">Modified</span> In @org.eclipse.sirius.common.tools.api.interpreter.TypeName@, the methods @getJavaClass()@ and @getPackagePrefix()@ which used to return a @org.eclipse.sirius.ext.base.Option<T>@ now return standard @java.util.Optional<T>@ instead.
 * <span class="label label-info">Modified</span> In @org.eclipse.sirius.common.tools.api.profiler.ProfilerTaskRegistry@, the method @get(String)@ which used to return a @org.eclipse.sirius.ext.base.Option<T>@ now return standard @java.util.Optional<T>@ instead.
 * <span class="label label-info">Modified</span> In @org.eclipse.sirius.common.tools.api.query.NotifierQuery@, the method @getAdapter(Class<?>)@ which used to return a @org.eclipse.sirius.ext.base.Option<T>@ now return standard @java.util.Optional<T>@ instead.

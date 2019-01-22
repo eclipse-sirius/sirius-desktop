@@ -32,6 +32,7 @@ import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IConverter;
 import org.eclipse.sirius.common.tools.api.interpreter.IEvaluationResult;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
@@ -39,6 +40,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableManager;
 import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
+import org.eclipse.sirius.common.tools.internal.interpreter.DefaultConverter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
@@ -80,6 +82,11 @@ public class SessionInterpreter implements IInterpreter, IProposalProvider {
     private final Map<String, ProfilerTask> profilerTasks = new HashMap<String, ProfilerTask>();
 
     private AtomicReference<EvaluationErrorHandler> evaluationErrorHandler = new AtomicReference<>(EvaluationErrorHandler.IGNORE);
+    
+    @Override
+    public IConverter getConverter() {
+        return new DefaultConverter();
+    }
 
     /**
      * Executes some code in a context where interpreted expression errors are handled by the given
@@ -189,97 +196,6 @@ public class SessionInterpreter implements IInterpreter, IProposalProvider {
             final Object evaluate = getInterpreter(expression).evaluate(target, expression);
             postEvaluation(expression);
             return evaluate;
-        } catch (EvaluationException evx) {
-            this.evaluationErrorHandler.get().handleException(evx);
-            throw evx;
-            // CHECKSTYLE:OFF
-        } catch (RuntimeException rex) {
-            // CHECKSTYLE:ON
-            this.evaluationErrorHandler.get().handleException(rex);
-            throw rex;
-        }
-    }
-
-    @Override
-    public boolean evaluateBoolean(final EObject context, final String expression) throws EvaluationException {
-        try {
-            preEvaluation(expression);
-            final boolean evaluateBoolean = getInterpreter(expression).evaluateBoolean(context, expression);
-            postEvaluation(expression);
-            return evaluateBoolean;
-        } catch (EvaluationException evx) {
-            this.evaluationErrorHandler.get().handleException(evx);
-            throw evx;
-            // CHECKSTYLE:OFF
-        } catch (RuntimeException rex) {
-            // CHECKSTYLE:ON
-            this.evaluationErrorHandler.get().handleException(rex);
-            throw rex;
-        }
-
-    }
-
-    @Override
-    public Collection<EObject> evaluateCollection(final EObject context, final String expression) throws EvaluationException {
-        try {
-            preEvaluation(expression);
-            final Collection<EObject> evaluateCollection = getInterpreter(expression).evaluateCollection(context, expression);
-            postEvaluation(expression);
-            return evaluateCollection;
-        } catch (EvaluationException evx) {
-            this.evaluationErrorHandler.get().handleException(evx);
-            throw evx;
-            // CHECKSTYLE:OFF
-        } catch (RuntimeException rex) {
-            // CHECKSTYLE:ON
-            this.evaluationErrorHandler.get().handleException(rex);
-            throw rex;
-        }
-    }
-
-    @Override
-    public EObject evaluateEObject(final EObject context, final String expression) throws EvaluationException {
-        try {
-            preEvaluation(expression);
-            final EObject evaluateEObject = getInterpreter(expression).evaluateEObject(context, expression);
-            postEvaluation(expression);
-            return evaluateEObject;
-        } catch (EvaluationException evx) {
-            this.evaluationErrorHandler.get().handleException(evx);
-            throw evx;
-            // CHECKSTYLE:OFF
-        } catch (RuntimeException rex) {
-            // CHECKSTYLE:ON
-            this.evaluationErrorHandler.get().handleException(rex);
-            throw rex;
-        }
-    }
-
-    @Override
-    public Integer evaluateInteger(final EObject context, final String expression) throws EvaluationException {
-        try {
-            preEvaluation(expression);
-            final Integer evaluateInteger = getInterpreter(expression).evaluateInteger(context, expression);
-            postEvaluation(expression);
-            return evaluateInteger;
-        } catch (EvaluationException evx) {
-            this.evaluationErrorHandler.get().handleException(evx);
-            throw evx;
-            // CHECKSTYLE:OFF
-        } catch (RuntimeException rex) {
-            // CHECKSTYLE:ON
-            this.evaluationErrorHandler.get().handleException(rex);
-            throw rex;
-        }
-    }
-
-    @Override
-    public String evaluateString(final EObject context, final String expression) throws EvaluationException {
-        try {
-            preEvaluation(expression);
-            String evaluateString = getInterpreter(expression).evaluateString(context, expression);
-            postEvaluation(expression);
-            return evaluateString;
         } catch (EvaluationException evx) {
             this.evaluationErrorHandler.get().handleException(evx);
             throw evx;

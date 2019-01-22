@@ -41,6 +41,7 @@ import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.tools.internal.assist.ContentContextHelper;
 import org.eclipse.sirius.common.tools.internal.assist.ProposalProviderRegistry;
+import org.eclipse.sirius.common.tools.internal.interpreter.DefaultConverter;
 import org.eclipse.sirius.common.tools.internal.interpreter.DefaultInterpreterProvider;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -124,47 +125,16 @@ public final class CompoundInterpreter implements IInterpreter, IProposalProvide
     public static IInterpreter createGenericInterpreter() {
         return new CompoundInterpreter();
     }
+    
+    @Override
+    public IConverter getConverter() {
+        return new DefaultConverter();
+    }
 
     @Override
-    public Object evaluate(final EObject target, final String expression) throws EvaluationException {
-        final IInterpreter interpreter = getInterpreterForExpression(expression);
+    public Object evaluate(EObject target, String expression) throws EvaluationException {
+        IInterpreter interpreter = getInterpreterForExpression(expression);
         return interpreter.evaluate(target, expression);
-    }
-
-    @Override
-    public IEvaluationResult evaluateExpression(final EObject target, final String expression) throws EvaluationException {
-        final IInterpreter interpreter = getInterpreterForExpression(expression);
-        return interpreter.evaluateExpression(target, expression);
-    }
-
-    @Override
-    public boolean evaluateBoolean(final EObject context, final String expression) throws EvaluationException {
-        final IInterpreter interpreter = getInterpreterForExpression(expression);
-        return interpreter.evaluateBoolean(context, expression);
-    }
-
-    @Override
-    public EObject evaluateEObject(final EObject target, final String expression) throws EvaluationException {
-        final IInterpreter interpreter = getInterpreterForExpression(expression);
-        return interpreter.evaluateEObject(target, expression);
-    }
-
-    @Override
-    public Integer evaluateInteger(final EObject target, final String expression) throws EvaluationException {
-        final IInterpreter interpreter = getInterpreterForExpression(expression);
-        return interpreter.evaluateInteger(target, expression);
-    }
-
-    @Override
-    public Collection<EObject> evaluateCollection(final EObject target, final String expression) throws EvaluationException {
-        final IInterpreter interpreter = getInterpreterForExpression(expression);
-        return interpreter.evaluateCollection(target, expression);
-    }
-
-    @Override
-    public String evaluateString(final EObject target, final String expression) throws EvaluationException {
-        final IInterpreter interpreter = getInterpreterForExpression(expression);
-        return interpreter.evaluateString(target, expression);
     }
 
     @Override

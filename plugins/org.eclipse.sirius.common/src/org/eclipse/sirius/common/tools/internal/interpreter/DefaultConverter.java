@@ -19,12 +19,13 @@ import java.util.Optional;
 import java.util.OptionalInt;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.common.tools.api.interpreter.IConverter;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * The default implementation of type conversion for interperters. It should be the one used for all implementations
+ * The default implementation of type conversion for interpreters. It should be the one used for all implementations
  * unless there are good reasons to do otherwise to ensure consistency between the various languages.
  * 
  * @author pcdavid

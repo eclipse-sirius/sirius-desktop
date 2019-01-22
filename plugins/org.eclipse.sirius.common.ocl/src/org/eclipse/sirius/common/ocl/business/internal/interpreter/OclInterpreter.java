@@ -45,12 +45,12 @@ import org.eclipse.sirius.common.tools.api.contentassist.ContentInstanceContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IConverter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableManager;
-import org.eclipse.sirius.common.tools.internal.interpreter.IConverter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
@@ -154,6 +154,11 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     private final VariableManager variables = new VariableManager();
 
     private final IConverter converter = new OclConverter();
+    
+    @Override
+    public IConverter getConverter() {
+        return converter;
+    }
 
     @Override
     public void activateMetamodels(Collection<MetamodelDescriptor> metamodels) {
@@ -208,36 +213,6 @@ public class OclInterpreter implements IInterpreter, IInterpreterProvider, IProp
     @Override
     public Object evaluate(final EObject target, final String expression) throws EvaluationException {
         return internalEvaluate(target, expression);
-    }
-
-    @Override
-    public boolean evaluateBoolean(final EObject context, final String expression) throws EvaluationException {
-        Object value = evaluate(context, expression);
-        return converter.toBoolean(value).orElse(false);
-    }
-
-    @Override
-    public Collection<EObject> evaluateCollection(final EObject context, final String expression) throws EvaluationException {
-        Object value = evaluate(context, expression);
-        return converter.toEObjectCollection(value).orElse(Collections.emptySet());
-    }
-
-    @Override
-    public EObject evaluateEObject(final EObject context, final String expression) throws EvaluationException {
-        Object value = evaluate(context, expression);
-        return converter.toEObject(value).orElse(null);
-    }
-
-    @Override
-    public Integer evaluateInteger(final EObject context, final String expression) throws EvaluationException {
-        final Object value = evaluate(context, expression);
-        return converter.toInt(value).orElse(0);
-    }
-
-    @Override
-    public String evaluateString(final EObject context, final String expression) throws EvaluationException {
-        Object value = evaluate(context, expression);
-        return converter.toString(value).orElse(null);
     }
 
     /**

@@ -13,6 +13,7 @@
 package org.eclipse.sirius.common.tools.api.interpreter;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.Diagnostic;
@@ -32,62 +33,41 @@ public interface IInterpreter {
      * Key for all workspace/plug-in representation description files.
      * 
      * @since 0.9.0
-     * */
+     */
     String FILES = "files"; //$NON-NLS-1$
 
     /**
-     * Returns <code>true</code> if this interpreter is able to evaluate the
-     * given expression.
+     * Returns <code>true</code> if this interpreter is able to evaluate the given expression.
      * 
      * @param expression
      *            the expression to evaluate.
-     * @return <code>true</code> if this interpreter is able to evaluate the
-     *         given expression.
+     * @return <code>true</code> if this interpreter is able to evaluate the given expression.
      */
     boolean provides(String expression);
 
     /**
-     * Indicates if this {@link IInterpreter} supports static validation of
-     * expressions (which means that the
-     * {@link IInterpreter#validateExpression(IInterpreterContext, String)}
-     * method is able to return meaningful statuses).
+     * Indicates if this {@link IInterpreter} supports static validation of expressions (which means that the
+     * {@link IInterpreter#validateExpression(IInterpreterContext, String)} method is able to return meaningful
+     * statuses).
      * 
      * @since 0.9.0
-     * @return true if this {@link IInterpreter} supports static validation of
-     *         expressions, false otherwise
+     * @return true if this {@link IInterpreter} supports static validation of expressions, false otherwise
      */
     boolean supportsValidation();
 
     /**
-     * Indicates if the given expression is valid. Notice that if
-     * {@link IInterpreter#supportsValidation()} returns false this method will
-     * always return an empty list.
+     * Indicates if the given expression is valid. Notice that if {@link IInterpreter#supportsValidation()} returns
+     * false this method will always return an empty list.
      * 
      * @since 0.9.0
      * @param context
-     *            the {@link IInterpreterContext} to use for validating this
-     *            expression
+     *            the {@link IInterpreterContext} to use for validating this expression
      * @param expression
      *            the expression to analyze
-     * @return a collection containing all warnings and errors found during the
-     *         validation. An empty list means that the validation was
-     *         successful.
+     * @return a collection containing all warnings and errors found during the validation. An empty list means that the
+     *         validation was successful.
      */
     Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression);
-
-    /**
-     * Evaluates the given expression on the given context and returns the
-     * result as a collection of {@link EObject}s.
-     * 
-     * @param context
-     *            The context.
-     * @param expression
-     *            the expression to evaluate.
-     * @return the collection of {@link EObject}s.
-     * @throws EvaluationException
-     *             if the evaluation fails.
-     */
-    Collection<EObject> evaluateCollection(EObject context, String expression) throws EvaluationException;
 
     /**
      * Wrapper method to evaluate an expression.
@@ -103,8 +83,60 @@ public interface IInterpreter {
     Object evaluate(EObject target, String expression) throws EvaluationException;
 
     /**
-     * Evaluates the given expression on the given context and returns the
-     * result as a Boolean.
+     * Generic method to evaluate an expression and return the result and its diagnostic. This method should have the
+     * same behavior as the method {@link IInterpreter#evaluate(EObject, String)} but with a result containing a
+     * diagnostic too.
+     * 
+     * @param target
+     *            the EObject instance to evaluate on.
+     * @param expression
+     *            the expression to evaluate.
+     * @return an object with the evaluation result.
+     * @throws EvaluationException
+     *             if the evaluation was not successful.
+     */
+    default IEvaluationResult evaluateExpression(EObject target, String expression) throws EvaluationException {
+        final Object result = this.evaluate(target, expression);
+        return new IEvaluationResult() {
+
+            @Override
+            public Object getValue() {
+                return result;
+            }
+
+            @Override
+            public Diagnostic getDiagnostic() {
+                return Diagnostic.OK_INSTANCE;
+            }
+        };
+    }
+
+    /**
+     * Returns the {@link IConverter} to use to coerce the raw values returned by the implemented into the small set of
+     * types specifically supported by Sirius.
+     * 
+     * @return the converter to use for the raw results of this interpreter.
+     */
+    IConverter getConverter();
+
+    /**
+     * Evaluates the given expression on the given context and returns the result as a collection of {@link EObject}s.
+     * 
+     * @param context
+     *            The context.
+     * @param expression
+     *            the expression to evaluate.
+     * @return the collection of {@link EObject}s.
+     * @throws EvaluationException
+     *             if the evaluation fails.
+     */
+    default Collection<EObject> evaluateCollection(EObject context, String expression) throws EvaluationException {
+        Object rawValue = evaluate(context, expression);
+        return getConverter().toEObjectCollection(rawValue).orElse(Collections.emptySet());
+    }
+
+    /**
+     * Evaluates the given expression on the given context and returns the result as a Boolean.
      * 
      * @param context
      *            The context.
@@ -114,11 +146,13 @@ public interface IInterpreter {
      * @throws EvaluationException
      *             if the evaluation fails.
      */
-    boolean evaluateBoolean(EObject context, String expression) throws EvaluationException;
+    default boolean evaluateBoolean(EObject context, String expression) throws EvaluationException {
+        Object rawValue = evaluate(context, expression);
+        return getConverter().toBoolean(rawValue).orElse(false);
+    }
 
     /**
-     * Evaluates the given expression on the given context and returns the
-     * result as an {@link EObject}.
+     * Evaluates the given expression on the given context and returns the result as an {@link EObject}.
      * 
      * @param context
      *            The context.
@@ -128,11 +162,13 @@ public interface IInterpreter {
      * @throws EvaluationException
      *             if the evaluation fails.
      */
-    EObject evaluateEObject(EObject context, String expression) throws EvaluationException;
+    default EObject evaluateEObject(EObject context, String expression) throws EvaluationException {
+        Object rawValue = evaluate(context, expression);
+        return getConverter().toEObject(rawValue).orElse(null);
+    }
 
     /**
-     * Evaluates the given expression on the given context and returns the
-     * result as a {@link String}.
+     * Evaluates the given expression on the given context and returns the result as a {@link String}.
      * 
      * @param context
      *            The context.
@@ -142,11 +178,13 @@ public interface IInterpreter {
      * @throws EvaluationException
      *             if the evaluation fails.
      */
-    String evaluateString(EObject context, String expression) throws EvaluationException;
+    default String evaluateString(EObject context, String expression) throws EvaluationException {
+        Object rawValue = evaluate(context, expression);
+        return getConverter().toString(rawValue).orElse(null);
+    }
 
     /**
-     * Evaluates the given expression on the given context and returns the
-     * result as an {@link Integer}.
+     * Evaluates the given expression on the given context and returns the result as an {@link Integer}.
      * 
      * @param context
      *            The context.
@@ -156,7 +194,10 @@ public interface IInterpreter {
      * @throws EvaluationException
      *             if the evaluation fails.
      */
-    Integer evaluateInteger(EObject context, String expression) throws EvaluationException;
+    default Integer evaluateInteger(EObject context, String expression) throws EvaluationException {
+        Object rawValue = evaluate(context, expression);
+        return getConverter().toInt(rawValue).orElse(0);
+    }
 
     /**
      * Clear all dependencies of this interpreter.
@@ -214,8 +255,7 @@ public interface IInterpreter {
     void clearVariables();
 
     /**
-     * This will be called when the session is closed. Clients should dispose of
-     * all data that is no longer needed
+     * This will be called when the session is closed. Clients should dispose of all data that is no longer needed
      */
     void dispose();
 
@@ -280,34 +320,4 @@ public interface IInterpreter {
      *            The new metamodels.
      */
     void activateMetamodels(Collection<MetamodelDescriptor> metamodels);
-    
-    /**
-     * Generic method to evaluate an expression and return the result and its
-     * diagnostic. This method should have the same behavior as the method
-     * {@link IInterpreter#evaluate(EObject, String)} but with a result
-     * containing a diagnostic too.
-     * 
-     * @param target
-     *            the EObject instance to evaluate on.
-     * @param expression
-     *            the expression to evaluate.
-     * @return an object with the evaluation result.
-     * @throws EvaluationException
-     *             if the evaluation was not successful.
-     */
-    default IEvaluationResult evaluateExpression(EObject target, String expression) throws EvaluationException {
-        final Object result = this.evaluate(target, expression);
-        return new IEvaluationResult() {
-
-            @Override
-            public Object getValue() {
-                return result;
-            }
-
-            @Override
-            public Diagnostic getDiagnostic() {
-                return Diagnostic.OK_INSTANCE;
-            }
-        };
-    }
 }

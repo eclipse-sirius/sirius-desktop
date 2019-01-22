@@ -16,9 +16,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.IConverter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
@@ -41,40 +40,15 @@ public abstract class AbstractInterpreter implements IInterpreter, TypedValidati
      * for a given method.
      */
     private final IConverter converter = new DefaultConverter();
+    
+    @Override
+    public IConverter getConverter() {
+        return converter;
+    }
 
     @Override
     public boolean provides(String expression) {
         return expression != null && expression.startsWith(getPrefix());
-    }
-
-    @Override
-    public Collection<EObject> evaluateCollection(EObject context, String expression) throws EvaluationException {
-        Object raw = evaluate(context, expression);
-        return converter.toEObjectCollection(raw).orElse(Collections.emptySet());
-    }
-
-    @Override
-    public boolean evaluateBoolean(EObject context, String expression) throws EvaluationException {
-        Object raw = evaluate(context, expression);
-        return converter.toBoolean(raw).orElse(false);
-    }
-
-    @Override
-    public EObject evaluateEObject(EObject context, String expression) throws EvaluationException {
-        Object raw = evaluate(context, expression);
-        return converter.toEObject(raw).orElse(null);
-    }
-
-    @Override
-    public String evaluateString(EObject context, String expression) throws EvaluationException {
-        Object raw = evaluate(context, expression);
-        return converter.toString(raw).orElse(""); //$NON-NLS-1$
-    }
-
-    @Override
-    public Integer evaluateInteger(EObject context, String expression) throws EvaluationException {
-        Object raw = evaluate(context, expression);
-        return converter.toInt(raw).orElse(0);
     }
 
     @Override
