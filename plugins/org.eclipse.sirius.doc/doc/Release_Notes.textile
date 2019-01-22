@@ -27,6 +27,7 @@ h4. Changes in @org.eclipse.sirius.common@
 @setFieldVisibleWithoutException(Class<? extends Object>, String)@, @getClassForNameWithoutException(String)@, @instantiateWithoutException(String, Class<?>[], Object[])@, @getFieldValueWithoutException(Object, String)@, @getFieldValueWithoutException(Class<? extends Object>, String)@, and @getFieldValueWithoutException(Object, String, Class<? extends Object>)@.
 * <span class="label label-info">Modified</span> The interface @org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic.IEvaluationResult@ has been promoted as a top-level type as @org.eclipse.sirius.common.tools.api.interpreter.IEvaluationResult@.
 * <span class="label label-danger">Removed</span> In interface @org.eclipse.sirius.common.tools.api.interpreter.IInterpreter@ (and all its implementations shipped with Sirius), the methods @addVariableStatusListener()@ and @removeVariableStatusListener()@ have been removed, along with the corresponding type @org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener@. These correspond to obsolete and unused mechanisms.
+* <span class="label label-danger">Removed</span> The @interface org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic@ has been removed. The single method it defined, @evaluateExpression()@, is now implemented directly by the main @IInterpreter@ interface. In effect, all @IInterpreter@ are now "with diagnostic". 
 
 h4. Changes in @org.eclipse.sirius.common.ui@
 

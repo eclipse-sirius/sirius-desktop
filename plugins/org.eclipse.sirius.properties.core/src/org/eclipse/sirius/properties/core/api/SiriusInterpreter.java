@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2017 Obeo.
+ * Copyright (c) 2015, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,17 +24,16 @@ import org.eclipse.sirius.common.interpreter.api.EvaluationResult;
 import org.eclipse.sirius.common.interpreter.api.IEvaluationResult;
 import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic;
 import org.eclipse.sirius.properties.core.internal.SiriusToolServices;
 
 /**
- * Provides an implementation of {@link IInterpreter} backed by an old-style {@link IInterpreterWithDiagnostic}.
+ * Provides an implementation of {@link IInterpreter} backed by an old-style {@link org.eclipse.sirius.common.tools.api.interpreter.IInterpreter}.
  * 
  * @author pcdavid
  */
 public class SiriusInterpreter implements IInterpreter {
 
-    private IInterpreterWithDiagnostic interpreter;
+    private org.eclipse.sirius.common.tools.api.interpreter.IInterpreter interpreter;
 
     /**
      * The constructor.
@@ -43,7 +42,7 @@ public class SiriusInterpreter implements IInterpreter {
      *            The Sirius session
      */
     public SiriusInterpreter(Session session) {
-        this((IInterpreterWithDiagnostic) session.getInterpreter());
+        this(session.getInterpreter());
     }
 
     /**
@@ -52,7 +51,7 @@ public class SiriusInterpreter implements IInterpreter {
      * @param interpreterWithDiagnostic
      *            An interpreter
      */
-    public SiriusInterpreter(IInterpreterWithDiagnostic interpreterWithDiagnostic) {
+    public SiriusInterpreter(org.eclipse.sirius.common.tools.api.interpreter.IInterpreter interpreterWithDiagnostic) {
         this.interpreter = Objects.requireNonNull(interpreterWithDiagnostic);
     }
 
@@ -75,11 +74,8 @@ public class SiriusInterpreter implements IInterpreter {
     }
 
     private void setupInterpreter(Map<String, Object> variables) {
-        if (this.interpreter instanceof org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) {
-            org.eclipse.sirius.common.tools.api.interpreter.IInterpreter i = (org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) this.interpreter;
-            i.addImport(SiriusToolServices.class.getName());
-            declareLocals(variables, i);
-        }
+        interpreter.addImport(SiriusToolServices.class.getName());
+        declareLocals(variables, interpreter);
     }
 
     private void declareLocals(Map<String, Object> variables, org.eclipse.sirius.common.tools.api.interpreter.IInterpreter i) {
@@ -90,9 +86,7 @@ public class SiriusInterpreter implements IInterpreter {
     }
 
     private void tearDownInterpreter(Map<String, Object> variables) {
-        if (this.interpreter instanceof org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) {
-            unsetLocals(variables, (org.eclipse.sirius.common.tools.api.interpreter.IInterpreter) this.interpreter);
-        }
+        unsetLocals(variables, this.interpreter);
     }
 
     private void unsetLocals(Map<String, Object> variables, org.eclipse.sirius.common.tools.api.interpreter.IInterpreter i) {

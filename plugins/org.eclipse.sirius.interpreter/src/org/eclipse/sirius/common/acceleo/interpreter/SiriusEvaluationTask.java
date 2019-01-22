@@ -38,7 +38,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IEvaluationResult;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -113,15 +112,9 @@ public class SiriusEvaluationTask implements Callable<EvaluationResult> {
 
         EvaluationResult evaluationResult = null;
         try {
-            if (vpInterpreter instanceof IInterpreterWithDiagnostic) {
-                IEvaluationResult result = ((IInterpreterWithDiagnostic) vpInterpreter).evaluateExpression(target, expression);
-                final IStatus status = createResultStatus(result);
-                evaluationResult = new EvaluationResult(result.getValue(), status);
-            } else {
-                Object result = vpInterpreter.evaluate(target, expression);
-                final IStatus status = createResultStatus(result);
-                evaluationResult = new EvaluationResult(result, status);
-            }
+            IEvaluationResult result = vpInterpreter.evaluateExpression(target, expression);
+            final IStatus status = createResultStatus(result);
+            evaluationResult = new EvaluationResult(result.getValue(), status);
         } catch (EvaluationException e) {
             final IStatus status = new Status(IStatus.ERROR, InterpreterViewPlugin.PLUGIN_ID, e.getMessage(), e);
             evaluationResult = new EvaluationResult(status);

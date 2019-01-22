@@ -26,7 +26,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
  * 
  * @author ymortier
  */
-public interface IInterpreter extends IInterpreterWithDiagnostic {
+public interface IInterpreter {
 
     /**
      * Key for all workspace/plug-in representation description files.
@@ -281,7 +281,20 @@ public interface IInterpreter extends IInterpreterWithDiagnostic {
      */
     void activateMetamodels(Collection<MetamodelDescriptor> metamodels);
     
-    @Override
+    /**
+     * Generic method to evaluate an expression and return the result and its
+     * diagnostic. This method should have the same behavior as the method
+     * {@link IInterpreter#evaluate(EObject, String)} but with a result
+     * containing a diagnostic too.
+     * 
+     * @param target
+     *            the EObject instance to evaluate on.
+     * @param expression
+     *            the expression to evaluate.
+     * @return an object with the evaluation result.
+     * @throws EvaluationException
+     *             if the evaluation was not successful.
+     */
     default IEvaluationResult evaluateExpression(EObject target, String expression) throws EvaluationException {
         final Object result = this.evaluate(target, expression);
         return new IEvaluationResult() {
