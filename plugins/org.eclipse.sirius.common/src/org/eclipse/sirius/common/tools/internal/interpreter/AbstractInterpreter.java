@@ -16,14 +16,12 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic;
 import org.eclipse.sirius.common.tools.api.interpreter.TypedValidation;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -33,7 +31,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
  *
  * @author pcdavid
  */
-public abstract class AbstractInterpreter implements IInterpreter, TypedValidation, IInterpreterWithDiagnostic {
+public abstract class AbstractInterpreter implements IInterpreter, TypedValidation {
 
     /** The separator between EPackage name and EClass name for domain class. */
     protected static final String SEPARATOR = "."; //$NON-NLS-1$
@@ -162,22 +160,5 @@ public abstract class AbstractInterpreter implements IInterpreter, TypedValidati
     @Override
     public void activateMetamodels(Collection<MetamodelDescriptor> metamodels) {
         // Nothing to do.
-    }
-
-    @Override
-    public IEvaluationResult evaluateExpression(EObject target, String expression) throws EvaluationException {
-        final Object result = this.evaluate(target, expression);
-        return new IEvaluationResult() {
-
-            @Override
-            public Object getValue() {
-                return result;
-            }
-
-            @Override
-            public Diagnostic getDiagnostic() {
-                return Diagnostic.OK_INSTANCE;
-            }
-        };
     }
 }

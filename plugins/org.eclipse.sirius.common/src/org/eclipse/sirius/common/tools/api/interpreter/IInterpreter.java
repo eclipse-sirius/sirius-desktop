@@ -15,6 +15,7 @@ package org.eclipse.sirius.common.tools.api.interpreter;
 import java.util.Collection;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
@@ -25,7 +26,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
  * 
  * @author ymortier
  */
-public interface IInterpreter {
+public interface IInterpreter extends IInterpreterWithDiagnostic {
 
     /**
      * Key for all workspace/plug-in representation description files.
@@ -279,5 +280,21 @@ public interface IInterpreter {
      *            The new metamodels.
      */
     void activateMetamodels(Collection<MetamodelDescriptor> metamodels);
+    
+    @Override
+    default IEvaluationResult evaluateExpression(EObject target, String expression) throws EvaluationException {
+        final Object result = this.evaluate(target, expression);
+        return new IEvaluationResult() {
 
+            @Override
+            public Object getValue() {
+                return result;
+            }
+
+            @Override
+            public Diagnostic getDiagnostic() {
+                return Diagnostic.OK_INSTANCE;
+            }
+        };
+    }
 }
