@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,6 @@ import org.eclipse.core.resources.IResourceDelta;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.EObject;
@@ -112,17 +111,13 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
             @Override
             public boolean isValid(final EObject descRoot) {
                 boolean result = false;
-                EList<Diagnostic> errors = descRoot.eResource().getErrors();
+                List<Diagnostic> errors = getErrors(descRoot);
                 if (errors.isEmpty()) {
                     if (descRoot instanceof Group) {
                         result = true;
-                    } else {
-                        if (descRoot == null) {
-                            // Nothing, already been log
-                        } else {
-                            SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.ViewpointRegistryImpl_cantLoadVSMErrorMsg, descRoot.eResource().getURI()),
-                                    new RuntimeException(Messages.ViewpointRegistryImpl_cantDeployVSMErrorMsg));
-                        }
+                    } else if (descRoot != null) {
+                        SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.ViewpointRegistryImpl_cantLoadVSMErrorMsg, descRoot.eResource().getURI()),
+                                new RuntimeException(Messages.ViewpointRegistryImpl_cantDeployVSMErrorMsg));
                     }
                 } else {
                     for (Diagnostic diagnostic : errors) {
@@ -130,6 +125,14 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
                     }
                 }
                 return result;
+            }
+
+            private List<Diagnostic> getErrors(final EObject descRoot) {
+                if (descRoot == null || descRoot.eResource() == null) { 
+                    return Collections.emptyList();
+                } else {
+                    return descRoot.eResource().getErrors();
+                }
             }
 
             @Override
