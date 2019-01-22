@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -169,7 +169,7 @@ public class DiagramElementsSelectionDialog {
         }
 
         @Override
-        public void setInitialSelections(Object[] selectedElements) {
+        public void setInitialSelections(Object... selectedElements) {
             setInitialElementSelections(Lists.newArrayList(selectedElements));
         }
 
