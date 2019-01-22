@@ -24,9 +24,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
-import org.eclipse.sirius.common.tools.internal.interpreter.AbstractInterpreter;
-import org.eclipse.sirius.common.tools.internal.interpreter.FeatureInterpreter;
-import org.eclipse.sirius.common.tools.internal.interpreter.ServiceInterpreter;
 import org.eclipse.sirius.common.tools.internal.interpreter.VariableInterpreter;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramFactory;
@@ -225,14 +222,6 @@ public class VariableInterpreterTests extends TestCase {
 
         } catch (EvaluationException e) {
             fail("EvaluationException should not be thrown");
-        }
-
-        try {
-            assertEquals("The current test should be updated.", AbstractInterpreter.class, VariableInterpreter.class.getMethod("evaluateCollection", EObject.class, String.class).getDeclaringClass());
-            assertEquals("FeatureInterpreterTests requires a similirar test.", AbstractInterpreter.class, FeatureInterpreter.class.getMethod("evaluateCollection", EObject.class, String.class).getDeclaringClass());
-            assertEquals("ServiceInterpreterTests requires a similirar test.", AbstractInterpreter.class, ServiceInterpreter.class.getMethod("evaluateCollection", EObject.class, String.class).getDeclaringClass());
-        } catch (NoSuchMethodException e) {
-            fail("NoSuchMethodException should not be thrown");
         }
     }
 
