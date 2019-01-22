@@ -225,25 +225,23 @@ public class AQLSiriusInterpreter extends AcceleoAbstractInterpreter implements 
                 diagnostic.merge(evalResult.getDiagnostic());
             }
 
-            return new IEvaluationResult() {
-
-                @Override
-                public Object getValue() {
-                    return evalResult.getResult();
-                }
-
-                @Override
-                public Diagnostic getDiagnostic() {
-                    List<Diagnostic> children = diagnostic.getChildren();
-                    if (children.size() == 1) {
-                        return children.get(0);
-                    } else {
-                        return diagnostic;
-                    }
-                }
-            };
+            Diagnostic diag = minimize(diagnostic);
+            if (diag.getSeverity() >= Diagnostic.ERROR) {
+                return org.eclipse.sirius.common.tools.api.interpreter.EvaluationResult.ofError(diag);
+            } else {
+                return org.eclipse.sirius.common.tools.api.interpreter.EvaluationResult.ofValue(evalResult.getResult(), getConverter(), diag);
+            }
         } catch (ExecutionException e) {
             throw new EvaluationException(e.getCause());
+        }
+    }
+    
+    private Diagnostic minimize(Diagnostic diag) {
+        List<Diagnostic> children = diag.getChildren();
+        if (children.size() == 1) {
+            return children.get(0);
+        } else {
+            return diag;
         }
     }
 

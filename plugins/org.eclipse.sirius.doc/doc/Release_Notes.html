@@ -130,6 +130,10 @@
 				<code>getConverter()</code> has been added to obtain the 
 				<code>IConverter</code> for a given interpreter.
 			</li>
+			<li><span class="label label-success">Added</span> A new class 
+				<code>org.eclipse.sirius.common.tools.api.interpreter.EvaluationResult</code> has been added. It serves as a default implementation of 
+				<code>IEvaluationResult</code>. It provides static factory methods for common cases (successful evaluation or failure).
+			</li>
 			<li><span class="label label-info">Modified</span> In 
 				<code>org.eclipse.sirius.common.tools.api.interpreter.TypeName</code>, the methods 
 				<code>getJavaClass()</code> and 
@@ -179,7 +183,7 @@
 		<ul>
 			<li><span class="label label-info">Modified</span> The interface 
 				<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic.IEvaluationResult</code> has been promoted as a top-level type as 
-				<code>org.eclipse.sirius.common.tools.api.interpreter.IEvaluationResult</code>.
+				<code>org.eclipse.sirius.common.tools.api.interpreter.IEvaluationResult</code>. In the process it has gained several methods to check for success and coerce the raw evaluation result into any of the types that are used by Sirius (depending on the usage context).
 			</li>
 			<li><span class="label label-danger">Removed</span> In interface 
 				<code>org.eclipse.sirius.common.tools.api.interpreter.IInterpreter</code> (and all its implementations shipped with Sirius), the methods 

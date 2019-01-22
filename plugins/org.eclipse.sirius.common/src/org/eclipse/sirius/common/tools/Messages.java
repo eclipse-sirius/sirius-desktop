@@ -99,6 +99,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String FindMessages_abstractFindLabelDialogNoMatchingElementMessage;
+    
+    @TranslatableMessage
+    public static String Interpreter_evaluationError;
 
     @TranslatableMessage
     public static String MonomorphicService_serviceError;

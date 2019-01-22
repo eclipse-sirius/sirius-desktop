@@ -16,7 +16,6 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
@@ -96,19 +95,8 @@ public interface IInterpreter {
      *             if the evaluation was not successful.
      */
     default IEvaluationResult evaluateExpression(EObject target, String expression) throws EvaluationException {
-        final Object result = this.evaluate(target, expression);
-        return new IEvaluationResult() {
-
-            @Override
-            public Object getValue() {
-                return result;
-            }
-
-            @Override
-            public Diagnostic getDiagnostic() {
-                return Diagnostic.OK_INSTANCE;
-            }
-        };
+        Object result = this.evaluate(target, expression);
+        return EvaluationResult.ofValue(result, getConverter());
     }
 
     /**

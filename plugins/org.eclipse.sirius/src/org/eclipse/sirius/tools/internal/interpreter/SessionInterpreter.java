@@ -21,8 +21,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.atomic.AtomicReference;
 
-import org.eclipse.emf.common.util.BasicDiagnostic;
-import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
@@ -32,6 +30,7 @@ import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.contentassist.IProposalProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
+import org.eclipse.sirius.common.tools.api.interpreter.EvaluationResult;
 import org.eclipse.sirius.common.tools.api.interpreter.IConverter;
 import org.eclipse.sirius.common.tools.api.interpreter.IEvaluationResult;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -44,8 +43,6 @@ import org.eclipse.sirius.common.tools.internal.interpreter.DefaultConverter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A generic interpreter.
@@ -164,30 +161,16 @@ public class SessionInterpreter implements IInterpreter, IProposalProvider {
             result = interpreter.evaluateExpression(target, expression);
         } catch (EvaluationException evx) {
             this.evaluationErrorHandler.get().handleException(evx);
-            result = creatErrorResult(evx);
+            result = EvaluationResult.ofError(evx);
             // CHECKSTYLE:OFF
         } catch (RuntimeException rex) {
             // CHECKSTYLE:ON
             this.evaluationErrorHandler.get().handleException(rex);
-            result = creatErrorResult(rex);
+            result = EvaluationResult.ofError(rex);
         }
         return result;
     }
 
-    private IEvaluationResult creatErrorResult(Exception ex) {
-        final BasicDiagnostic diag = new BasicDiagnostic(Diagnostic.ERROR, SiriusPlugin.ID, 0, Messages.SessionInterpreter_evaluationError, new Object[] { ex });
-        return new IEvaluationResult() {
-            @Override
-            public Object getValue() {
-                return null;
-            }
-
-            @Override
-            public Diagnostic getDiagnostic() {
-                return diag;
-            }
-        };
-    }
 
     @Override
     public Object evaluate(final EObject target, final String expression) throws EvaluationException {
