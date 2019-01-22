@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis xmi:id="_A9otsC4SEem1Yt2V_4EE1g" selectedViews="_FR9poC4SEem1Yt2V_4EE1g" version="12.1.4.201811151800">
+    <semanticResources>viewpointActivation.ecore</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" xmi:id="_FR9poC4SEem1Yt2V_4EE1g">
+      <viewpoint xmi:type="description:Viewpoint" href="viewpointActivation.odesign#//@ownedViewpoints[name='viewpointActivation']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_IRR6cC4SEem1Yt2V_4EE1g" name="new viewpointActivation_TC1" repPath="#_IMYzYC4SEem1Yt2V_4EE1g">
+        <description xmi:type="description_1:DiagramDescription" href="viewpointActivation.odesign#//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']"/>
+        <target xmi:type="ecore:EPackage" href="viewpointActivation.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram xmi:id="_IRNB8C4SEem1Yt2V_4EE1g" name="new viewpointActivation_TC1" uid="_IMYzYC4SEem1Yt2V_4EE1g">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_IRNB8S4SEem1Yt2V_4EE1g" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_IRNB8i4SEem1Yt2V_4EE1g"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_IRv0gC4SEem1Yt2V_4EE1g" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_IRv0gS4SEem1Yt2V_4EE1g" type="Sirius" element="_IRNB8C4SEem1Yt2V_4EE1g" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_ISCIYC4SEem1Yt2V_4EE1g" type="2001" element="_IRNB9C4SEem1Yt2V_4EE1g">
+          <children xmi:type="notation:Node" xmi:id="_ISMgcC4SEem1Yt2V_4EE1g" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_ISMgcS4SEem1Yt2V_4EE1g" x="31" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_JEe5AC4SEem1Yt2V_4EE1g" type="3003" element="_IRNB9S4SEem1Yt2V_4EE1g">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_JEe5AS4SEem1Yt2V_4EE1g" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JEe5Ai4SEem1Yt2V_4EE1g"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_ISCIYS4SEem1Yt2V_4EE1g" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ISCIYi4SEem1Yt2V_4EE1g" x="266" y="154" width="30" height="30"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_IRv0gi4SEem1Yt2V_4EE1g"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_IRNB9C4SEem1Yt2V_4EE1g" name="C1" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="viewpointActivation.ecore#//C1"/>
+      <semanticElements xmi:type="ecore:EClass" href="viewpointActivation.ecore#//C1"/>
+      <ownedStyle xmi:type="diagram:Square" xmi:id="_IRNB9S4SEem1Yt2V_4EE1g">
+        <description xmi:type="style:SquareDescription" href="viewpointActivation.odesign#//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@nodeMappings[name='EC%20EClass%20TC1']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="viewpointActivation.odesign#//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer/@nodeMappings[name='EC%20EClass%20TC1']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="viewpointActivation.odesign#//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_IRNB9i4SEem1Yt2V_4EE1g"/>
+    <activatedLayers xmi:type="description_1:Layer" href="viewpointActivation.odesign#//@ownedViewpoints[name='viewpointActivation']/@ownedRepresentations[name='viewpointActivation_TC1']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="viewpointActivation.ecore#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

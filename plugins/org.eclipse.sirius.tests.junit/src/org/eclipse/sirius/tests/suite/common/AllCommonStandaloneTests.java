@@ -1,20 +1,16 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.common;
-
-import junit.framework.JUnit4TestAdapter;
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-import junit.textui.TestRunner;
 
 import org.eclipse.sirius.tests.unit.api.interpreter.ContentHelperTests;
 import org.eclipse.sirius.tests.unit.api.refresh.GSetIntersectionTest;
@@ -36,6 +32,13 @@ import org.eclipse.sirius.tests.unit.common.SessionLabelTest;
 import org.eclipse.sirius.tests.unit.common.VisualBindingManagerTestCase;
 import org.eclipse.sirius.tests.unit.common.logger.MarkerRuntimeLoggerTest;
 import org.eclipse.sirius.tests.unit.contribution.SiriusURIQueryTest;
+import org.eclipse.sirius.tests.unit.refresh.RefreshFromViewpointActivationTests;
+
+import junit.framework.JUnit4TestAdapter;
+import junit.framework.Test;
+import junit.framework.TestCase;
+import junit.framework.TestSuite;
+import junit.textui.TestRunner;
 
 public class AllCommonStandaloneTests extends TestCase {
 
@@ -77,6 +80,7 @@ public class AllCommonStandaloneTests extends TestCase {
         suite.addTestSuite(InitInterpreterFromParsedVariableTaskTest.class);
         suite.addTest(new JUnit4TestAdapter(EcoreIntrinsicExtenderTest.class));
         suite.addTest(new JUnit4TestAdapter(MarkerRuntimeLoggerTest.class));
+        suite.addTestSuite(RefreshFromViewpointActivationTests.class);
         return suite;
     }
 }

@@ -1,9 +1,11 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
  *
  * Contributors:
  *    Obeo - initial API and implementation
@@ -11,6 +13,7 @@
 package org.eclipse.sirius.viewpoint;
 
 import java.util.Collection;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -153,11 +156,36 @@ public final class SiriusPlugin extends EMFPlugin {
         private UICallBack uiCallback;
 
         /**
+         * True if the repair of an aird is currently happening. False otherwise.
+         */
+        private AtomicBoolean repairInProgress;
+
+        /**
          * Creates an instance.
          */
         public Implementation() {
             super();
             plugin = this;
+            repairInProgress = new AtomicBoolean(false);
+        }
+
+        /**
+         * Returns true if the repair of an aird is currently happening. False otherwise.
+         * 
+         * @return true if the repair of an aird is currently happening. False otherwise.
+         */
+        public AtomicBoolean isRepairInProgress() {
+            return repairInProgress;
+        }
+
+        /**
+         * Set the repair in progress status.
+         * 
+         * @param repairInProgress
+         *            true if the repair of an aird is currently happening. False otherwise.
+         */
+        public void setRepairInProgress(AtomicBoolean repairInProgress) {
+            this.repairInProgress = repairInProgress;
         }
 
         @Override

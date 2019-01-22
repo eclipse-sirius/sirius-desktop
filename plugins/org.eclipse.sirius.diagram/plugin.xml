@@ -800,5 +800,11 @@
      <descriptorprovider
            class="org.eclipse.sirius.diagram.business.internal.dialect.DiagramMetamodelsProvider">
      </descriptorprovider>
+  </extension>
+  <extension
+        point="org.eclipse.sirius.sessionManagerListener">
+     <listener
+           class="org.eclipse.sirius.diagram.business.internal.refresh.InitSessionEventBrokerListener">
+     </listener>
   </extension>  
 </plugin>

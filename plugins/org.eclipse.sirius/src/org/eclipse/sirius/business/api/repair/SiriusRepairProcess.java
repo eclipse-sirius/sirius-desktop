@@ -20,6 +20,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
@@ -138,11 +139,13 @@ public class SiriusRepairProcess {
         final URI resourceURI = URI.createPlatformResourceURI(this.file.getFullPath().toOSString(), true);
         try {
             monitor.beginTask(Messages.SiriusRepairProcess_inProgressMsg, 1);
+            SiriusPlugin.getDefault().setRepairInProgress(new AtomicBoolean(true));
             repair(resourceURI, new SubProgressMonitor(monitor, 1));
         } catch (CoreException e) {
             SiriusPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, SiriusPlugin.ID, ERROR_MSG, e));
         } finally {
             monitor.done();
+            SiriusPlugin.getDefault().setRepairInProgress(new AtomicBoolean(false));
         }
     }
 

@@ -1452,9 +1452,6 @@ public final class Messages {
     public static String SynchronizeStatusFigure_diagUnsynchronized;
 
     @TranslatableMessage
-    public static String SynchronizeGMFModelCommand_label;
-
-    @TranslatableMessage
     public static String ToggleFoldingStateCommand_label;
 
     @TranslatableMessage
