@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.interpreter;
 
-import org.eclipse.emf.common.util.Diagnostic;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -22,28 +21,6 @@ import org.eclipse.emf.ecore.EObject;
  * @author <a href="mailto:stephane.begaudeau@obeo.fr">Stephane Begaudeau</a>
  */
 public interface IInterpreterWithDiagnostic {
-
-    /**
-     * This interface represents the result of the evaluation of an expression
-     * with its value and a diagnostic.
-     * 
-     * @author <a href="mailto:stephane.begaudeau@obeo.fr">Stephane Begaudeau</a>
-     */
-    public interface IEvaluationResult {
-        /**
-         * Returns the value computed from the evaluation of the expression.
-         * 
-         * @return The value
-         */
-        Object getValue();
-
-        /**
-         * The diagnostic computed during the evaluation of the expression.
-         * 
-         * @return The diagnostic
-         */
-        Diagnostic getDiagnostic();
-    }
 
     /**
      * Wrapper method to evaluate an expression and return the result and its
