@@ -35,7 +35,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
-import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
+import org.eclipse.sirius.tools.internal.interpreter.SiriusInterpreterContextFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;

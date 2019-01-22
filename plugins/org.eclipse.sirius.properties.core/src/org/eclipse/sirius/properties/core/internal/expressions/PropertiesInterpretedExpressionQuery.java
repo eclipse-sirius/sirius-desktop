@@ -50,7 +50,7 @@ import org.eclipse.sirius.properties.PropertiesPackage;
 import org.eclipse.sirius.properties.ViewExtensionDescription;
 import org.eclipse.sirius.properties.core.api.SiriusInputDescriptor;
 import org.eclipse.sirius.properties.core.internal.SiriusToolServices;
-import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
+import org.eclipse.sirius.tools.internal.interpreter.SiriusInterpreterContextFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Extension;

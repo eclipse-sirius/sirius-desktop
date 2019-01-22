@@ -18,7 +18,7 @@ import java.util.Set;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.tests.support.api.AbstractInterpretedExpressionTestCase;
-import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
+import org.eclipse.sirius.tools.internal.interpreter.SiriusInterpreterContextFactory;
 import org.eclipse.sirius.tree.TreePackage;
 import org.eclipse.sirius.tree.business.internal.metamodel.TreeToolVariables;
 import org.eclipse.sirius.tree.description.DescriptionFactory;

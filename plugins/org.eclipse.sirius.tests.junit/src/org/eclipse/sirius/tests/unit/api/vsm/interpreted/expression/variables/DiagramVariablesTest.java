@@ -36,7 +36,7 @@ import org.eclipse.sirius.diagram.description.tool.ToolSection;
 import org.eclipse.sirius.table.business.internal.metamodel.TableToolVariables;
 import org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription;
 import org.eclipse.sirius.tests.support.api.AbstractInterpretedExpressionTestCase;
-import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
+import org.eclipse.sirius.tools.internal.interpreter.SiriusInterpreterContextFactory;
 import org.eclipse.sirius.tools.internal.resource.InMemoryResourceImpl;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.InitEdgeCreationOperation;

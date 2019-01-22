@@ -39,7 +39,7 @@ import org.eclipse.sirius.common.tools.internal.interpreter.InterpretedContextIm
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.emf.AllContents;
-import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
+import org.eclipse.sirius.tools.internal.interpreter.SiriusInterpreterContextFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;

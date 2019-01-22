@@ -25,7 +25,7 @@ import org.eclipse.sirius.common.ui.tools.internal.interpreter.FeatureAndPseudoF
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
-import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
+import org.eclipse.sirius.tools.internal.interpreter.SiriusInterpreterContextFactory;
 
 import junit.framework.TestCase;
 

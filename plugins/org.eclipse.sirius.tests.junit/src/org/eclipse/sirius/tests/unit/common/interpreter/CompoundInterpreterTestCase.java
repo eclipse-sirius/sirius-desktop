@@ -23,7 +23,7 @@ import org.eclipse.sirius.common.ui.tools.internal.contentassist.ContentProposal
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
-import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
+import org.eclipse.sirius.tools.internal.interpreter.SiriusInterpreterContextFactory;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;

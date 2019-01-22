@@ -20,7 +20,7 @@ import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditorPlugin;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractViewpointPropertySection;
-import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
+import org.eclipse.sirius.tools.internal.interpreter.SiriusInterpreterContextFactory;
 import org.eclipse.sirius.ui.tools.api.assist.ContentProposalClient;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyEvent;

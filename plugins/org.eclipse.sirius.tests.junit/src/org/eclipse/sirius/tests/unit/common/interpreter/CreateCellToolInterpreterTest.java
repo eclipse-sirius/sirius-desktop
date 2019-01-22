@@ -28,7 +28,7 @@ import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescriptio
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
 import org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping;
 import org.eclipse.sirius.tests.unit.table.unit.common.TableTestCase;
-import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
+import org.eclipse.sirius.tools.internal.interpreter.SiriusInterpreterContextFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.EditMaskVariables;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;

@@ -24,7 +24,7 @@ import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
 import org.eclipse.sirius.table.metamodel.table.description.LineMapping;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;
 import org.eclipse.sirius.tests.support.api.AbstractInterpretedExpressionTestCase;
-import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
+import org.eclipse.sirius.tools.internal.interpreter.SiriusInterpreterContextFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**

@@ -30,6 +30,7 @@ h4. Changes in @org.eclipse.sirius.common@
 * <span class="label label-info">Modified</span> The interface @org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic.IEvaluationResult@ has been promoted as a top-level type as @org.eclipse.sirius.common.tools.api.interpreter.IEvaluationResult@.
 * <span class="label label-danger">Removed</span> In interface @org.eclipse.sirius.common.tools.api.interpreter.IInterpreter@ (and all its implementations shipped with Sirius), the methods @addVariableStatusListener()@ and @removeVariableStatusListener()@ have been removed, along with the corresponding type @org.eclipse.sirius.common.tools.api.interpreter.IVariableStatusListener@. These correspond to obsolete and unused mechanisms.
 * <span class="label label-danger">Removed</span> The @interface org.eclipse.sirius.common.tools.api.interpreter.IInterpreterWithDiagnostic@ has been removed. The single method it defined, @evaluateExpression()@, is now implemented directly by the main @IInterpreter@ interface. In effect, all @IInterpreter@ are now "with diagnostic". 
+* <span class="label label-danger">Removed</span> The interface @org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory@ has been removed from the API (it has been moved into an internal package): it should only be needed by Sirius itself and has no reason to be exposed as public API.
 
 h4. Changes in @org.eclipse.sirius.common.ui@
 

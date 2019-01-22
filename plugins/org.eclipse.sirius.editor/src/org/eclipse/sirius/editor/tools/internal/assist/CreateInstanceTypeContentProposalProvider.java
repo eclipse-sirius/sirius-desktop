@@ -27,7 +27,7 @@ import org.eclipse.jface.fieldassist.IContentProposal;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.editor.tools.api.assist.TypeContentProposalProvider;
-import org.eclipse.sirius.tools.api.interpreter.context.SiriusInterpreterContextFactory;
+import org.eclipse.sirius.tools.internal.interpreter.SiriusInterpreterContextFactory;
 import org.eclipse.sirius.ui.tools.api.assist.TextContentProposalProvider;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
