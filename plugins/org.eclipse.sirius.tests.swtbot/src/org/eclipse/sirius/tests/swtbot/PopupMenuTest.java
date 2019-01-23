@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -413,6 +413,46 @@ public class PopupMenuTest extends AbstractSiriusSwtBotGefTestCase {
             editor.clickContextMenu("myActionInGroupInPopupMenu");
         } catch (WidgetNotFoundException e) {
             fail("The action \"myActionInGroupInPopupMenu\" of the new group \"groupInPopupMenu\" of the new menu \"myMenuContainingGroups\" should exist");
+        }
+    }
+
+    /**
+     * Test that action in a new group in the New menu is accessible.
+     * 
+     * @throws Exception
+     *             In case of unexpected problem
+     */
+    public void testActionInANewGroupInTheNewMenuOnPackage() throws Exception {
+        // TODO: There is no check that the action is really in the right menu. So clickContextMenu must be
+        // replaced/completed by a new method
+        // org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils.isMenuEnabled(Display, Control, String) with a
+        // "qualifiedName" instead of a simple label.
+        editor.click(editor.getEditPart("sub package"));
+        editor.select(editor.getSelectableEditPart("sub package"));
+        try {
+            editor.clickContextMenu("myActionInGroupInTheNewMenu");
+        } catch (WidgetNotFoundException e) {
+            fail("The action \"myActionInGroupInTheNewMenu\" of the new group \"groupInTheNewMenu\" of the \"New\" menu should exist");
+        }
+    }
+
+    /**
+     * Test that action in a new group in the Open menu is accessible.
+     * 
+     * @throws Exception
+     *             In case of unexpected problem
+     */
+    public void testActionInANewGroupInTheOpenMenuOnPackage() throws Exception {
+        // TODO: There is no check that the action is really in the right menu. So clickContextMenu must be
+        // replaced/completed by a new method
+        // org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils.isMenuEnabled(Display, Control, String) with a
+        // "qualifiedName" instead of a simple label.
+        editor.click(editor.getEditPart("sub package"));
+        editor.select(editor.getSelectableEditPart("sub package"));
+        try {
+            editor.clickContextMenu("myActionInGroupInTheOpenMenu");
+        } catch (WidgetNotFoundException e) {
+            fail("The action \"myActionInGroupInTheOpenMenu\" of the new group \"groupInTheOpenMenu\" of the \"Open\" menu should exist");
         }
     }
 

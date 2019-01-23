@@ -8,6 +8,10 @@ h3. User-Visible Changes
 
 * <span class="label label-success">Added</span> On sequence diagrams, it is now possible to remove vertical blank spaces on standard edition mode by dragging the mouse from bottom to top anywhere in the canvas with the Ctrl+Shift keys pressed. This "feature":user/sequences/Sequence%20Diagrams.html#remove_vertical_blank_space was here since version 6.0.0 but was only accessible through the ruler.
 
+h3. Specifier-Visible Changes
+
+* <span class="label label-success">Added</span> It is now possible to add action/group in the "New" contextual menu of diagram elements. This menu was missed in Sirius 6.1.0. It is now documented in the "corresponding documentation":specifier/diagrams/Diagrams.html#group .
+
 * <span class="label label-info">Modified</span> The method @org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory.buildInsertVerticalBlankSpaceCommand(DDiagram, int, int)@ has been renamed to @org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory.buildInsertOrRemoveVerticalBlankSpaceCommand(DDiagram, int, int)@ because it handles now both addition and removal.
 
 h4. Changes in @org.eclipse.sirius.diagram.sequence@
