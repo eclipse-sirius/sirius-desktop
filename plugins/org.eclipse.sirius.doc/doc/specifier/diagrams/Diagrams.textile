@@ -695,6 +695,10 @@ This chapter lists the ids of existing menus and groups in a Sirius diagram repr
 !images/siriusDefaultDiagramElementContextualMenu.png!
 
 Corresponding Ids:
+* Menu New (id=popup.new)
+** Group createRepresentationGroup
+* Menu Open (id=popup.open)
+** Group openRepresentationGroup
 * Group editGroup
 ** Menu Edit (id=editMenu)
 *** Group copyGroup

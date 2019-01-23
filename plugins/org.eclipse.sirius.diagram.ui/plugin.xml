@@ -429,13 +429,13 @@
   <?gmfgen generated="false"?>
   <contributionItemProvider
         checkPluginLoaded="false"
-        class="org.eclipse.sirius.diagram.ui.tools.internal.menu.SubDiagramMenu">
+        class="org.eclipse.sirius.diagram.ui.tools.internal.menu.PopupMenuContribution">
      <Priority name="Highest"/>
   </contributionItemProvider>
   <contributionItemProvider
         checkPluginLoaded="false"
-        class="org.eclipse.sirius.diagram.ui.tools.internal.menu.PopupMenuContribution">
-     <Priority name="High"/>
+        class="org.eclipse.sirius.diagram.ui.tools.internal.menu.SubDiagramMenu">
+     <Priority name="Highest"/>
   </contributionItemProvider>
   <contributionItemProvider
         checkPluginLoaded="false"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="group" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" name="group" version="12.0.0.2017041100">
   <ownedViewpoints name="vp939" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="vp939" domainClass="EPackage">
       <defaultLayer name="Default">
@@ -24,7 +24,7 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <containerMappings name="package" domainClass="EPackage">
+        <containerMappings name="package" detailDescriptions="//@ownedViewpoints[name='vp939']/@ownedRepresentations[name='vp939']/@defaultLayer/@toolSections.0/@ownedTools[name='New%20diag']" domainClass="EPackage">
           <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -207,6 +207,27 @@
                 </initialOperation>
               </itemDescriptions>
             </menuItemDescription>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DiagramCreationDescription" name="New diag" diagramDescription="//@ownedViewpoints[name='vp939']/@ownedRepresentations[name='vp939']">
+            <initialOperation/>
+            <containerViewVariable name="containerView"/>
+            <representationNameVariable name="diagramName"/>
+          </ownedTools>
+          <ownedTools xsi:type="tool:GroupMenu" name="siriusGroupInNewMenu" locationURI="menu:popup.new">
+            <itemDescriptions xsi:type="tool:OperationAction" name="myActionInGroupInTheNewMenu">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.name + 'C'"/>
+              </initialOperation>
+            </itemDescriptions>
+          </ownedTools>
+          <ownedTools xsi:type="tool:GroupMenu" name="siriusGroupInOpenMenu" locationURI="menu:popup.open">
+            <itemDescriptions xsi:type="tool:OperationAction" name="myActionInGroupInTheOpenMenu">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql:self.name + 'C'"/>
+              </initialOperation>
+            </itemDescriptions>
           </ownedTools>
         </toolSections>
       </defaultLayer>
