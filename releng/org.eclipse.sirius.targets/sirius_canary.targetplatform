@@ -11,16 +11,16 @@ location Sirius-Photon-Master "http://download.eclipse.org/sirius/updates/nightl
     org.eclipse.sirius.common.interpreter lazy
 }
 
-location Eclipse-Photon-Integration "http://download.eclipse.org/eclipse/updates/4.9-I-builds/" {
+location Eclipse-Integration "https://download.eclipse.org/eclipse/updates/I-builds/" {
 	org.eclipse.platform.ide lazy
 	org.eclipse.platform.sdk lazy
 	org.eclipse.sdk.ide lazy
     org.eclipse.equinox.core.feature.feature.group lazy
     org.eclipse.equinox.compendium.sdk.feature.group lazy
     org.eclipse.equinox.executable.feature.group lazy
-//	org.eclipse.equinox.p2.sdk.feature.group lazy
-//	org.eclipse.equinox.p2.core.feature.feature.group lazy
-//    org.eclipse.equinox.p2.extras.feature.feature.group lazy
+	org.eclipse.equinox.p2.sdk.feature.group lazy
+	org.eclipse.equinox.p2.core.feature.feature.group lazy
+    org.eclipse.equinox.p2.extras.feature.feature.group lazy
 }
 
 include "modules/orbit.tpd"
