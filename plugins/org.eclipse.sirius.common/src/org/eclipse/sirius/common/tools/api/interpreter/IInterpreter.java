@@ -35,6 +35,10 @@ public interface IInterpreter {
      */
     String FILES = "files"; //$NON-NLS-1$
 
+    // ===================================================================
+    // General information about the language supported by the interpreter
+    // ===================================================================
+    
     /**
      * Returns <code>true</code> if this interpreter is able to evaluate the given expression.
      * 
@@ -43,6 +47,24 @@ public interface IInterpreter {
      * @return <code>true</code> if this interpreter is able to evaluate the given expression.
      */
     boolean provides(String expression);
+
+    /**
+     * Get the prefix.
+     * 
+     * @return the prefix if there is one or <code>null</code> if none.
+     */
+    String getPrefix();
+
+    /**
+     * Get the variable prefix for this interpreter.
+     * 
+     * @return the prefix if there is one or <code>null</code> if none
+     */
+    String getVariablePrefix();
+
+    // ===================================================================
+    // Optional static validation support
+    // ===================================================================
 
     /**
      * Indicates if this {@link IInterpreter} supports static validation of expressions (which means that the
@@ -67,6 +89,10 @@ public interface IInterpreter {
      *         validation was successful.
      */
     Collection<IInterpreterStatus> validateExpression(IInterpreterContext context, String expression);
+
+    // ===================================================================
+    // The actual expression interpretation API
+    // ===================================================================
 
     /**
      * Wrapper method to evaluate an expression.
@@ -186,29 +212,10 @@ public interface IInterpreter {
         Object rawValue = evaluate(context, expression);
         return getConverter().toInt(rawValue).orElse(0);
     }
-
-    /**
-     * Clear all dependencies of this interpreter.
-     */
-    void clearImports();
-
-    /**
-     * Adds a dependency to this interpreter.
-     * 
-     * @param dependency
-     *            the dependency to add.
-     */
-    void addImport(String dependency);
-
-    /**
-     * Sets a property to this interpreter.
-     * 
-     * @param key
-     *            the key of the property.
-     * @param value
-     *            the value of the property.
-     */
-    void setProperty(Object key, Object value);
+    
+    // ===================================================================
+    // Stateful variable/environment management
+    // ===================================================================
 
     /**
      * Sets a variable.
@@ -238,16 +245,6 @@ public interface IInterpreter {
     Object getVariable(String name);
 
     /**
-     * Clears all variables.
-     */
-    void clearVariables();
-
-    /**
-     * This will be called when the session is closed. Clients should dispose of all data that is no longer needed
-     */
-    void dispose();
-
-    /**
      * Returns all declared variables.
      * 
      * @return all declared variables.
@@ -255,34 +252,26 @@ public interface IInterpreter {
     Map<String, ?> getVariables();
 
     /**
-     * Sets the optional model accessor to use.
-     * 
-     * @param modelAccessor
-     *            the optional model accessor to use.
+     * Clears all variables.
      */
-    void setModelAccessor(ModelAccessor modelAccessor);
+    void clearVariables();
+
+    // ===================================================================
+    // Stateful configuration of the interpreter
+    // - imports
+    // - properties, in practice only FILES exists
+    // - model accessor
+    // - cross-referencer
+    // - metamodels to consider
+    // ===================================================================
 
     /**
-     * Get the prefix.
+     * Adds a dependency to this interpreter.
      * 
-     * @return the prefix if there is one or <code>null</code> if none.
+     * @param dependency
+     *            the dependency to add.
      */
-    String getPrefix();
-
-    /**
-     * Get the variable prefix for this interpreter.
-     * 
-     * @return the prefix if there is one or <code>null</code> if none
-     */
-    String getVariablePrefix();
-
-    /**
-     * Set the interpreter cross referencer.
-     * 
-     * @param crossReferencer
-     *            any cross referencer concerning the models.
-     */
-    void setCrossReferencer(ECrossReferenceAdapter crossReferencer);
+    void addImport(String dependency);
 
     /**
      * Get the imports (qualified names) for this interpreter.
@@ -302,10 +291,50 @@ public interface IInterpreter {
     void removeImport(String dependency);
 
     /**
+     * Clear all dependencies of this interpreter.
+     */
+    void clearImports();
+    
+    /**
+     * Sets a property to this interpreter.
+     * 
+     * @param key
+     *            the key of the property.
+     * @param value
+     *            the value of the property.
+     */
+    void setProperty(Object key, Object value);
+
+    /**
+     * Sets the optional model accessor to use.
+     * 
+     * @param modelAccessor
+     *            the optional model accessor to use.
+     */
+    void setModelAccessor(ModelAccessor modelAccessor);
+    
+    /**
+     * Set the interpreter cross referencer.
+     * 
+     * @param crossReferencer
+     *            any cross referencer concerning the models.
+     */
+    void setCrossReferencer(ECrossReferenceAdapter crossReferencer);
+
+    /**
      * Tells the interpreter that the list of available metamodels has changed.
      * 
      * @param metamodels
      *            The new metamodels.
      */
     void activateMetamodels(Collection<MetamodelDescriptor> metamodels);
+
+    // ===================================================================
+    // Lifecycle management: only needed because the interpreter holds state
+    // ===================================================================
+
+    /**
+     * This will be called when the session is closed. Clients should dispose of all data that is no longer needed
+     */
+    void dispose();
 }
