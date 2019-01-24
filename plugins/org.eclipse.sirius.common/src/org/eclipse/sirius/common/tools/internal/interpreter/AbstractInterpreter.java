@@ -22,6 +22,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
 import org.eclipse.sirius.common.tools.api.interpreter.TypedValidation;
+import org.eclipse.sirius.common.tools.api.interpreter.VariableManager;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 
@@ -36,11 +37,25 @@ public abstract class AbstractInterpreter implements IInterpreter, TypedValidati
     protected static final String SEPARATOR = "."; //$NON-NLS-1$
 
     /**
+     * This map will hold the values associated to given variable names. Note that even if this is a multimap, the
+     * variables are considered as a stack in order to be coherent with other interpreters : evaluation will consider
+     * the value to be a Collection, but setting/unsetting will only work one object by one object.
+     */
+    protected VariableManager variables;
+
+    /**
      * The converter to use to coerce raw values returned by the actual implementation into the type requested expected
      * for a given method.
      */
     private final IConverter converter = new DefaultConverter();
-    
+
+    /**
+     * Constructor.
+     */
+    protected AbstractInterpreter() {
+        this.variables = new VariableManager();
+    }
+
     @Override
     public IConverter getConverter() {
         return converter;
@@ -68,32 +83,32 @@ public abstract class AbstractInterpreter implements IInterpreter, TypedValidati
 
     @Override
     public void setVariable(String name, Object value) {
-        // Nothing to do.
+        variables.setVariable(name, value);
     }
 
     @Override
     public void unSetVariable(String name) {
-        // Nothing to do.
+        variables.unSetVariable(name);
     }
 
     @Override
     public Object getVariable(String name) {
-        return null;
+        return variables.getVariable(name);
+    }
+
+    @Override
+    public Map<String, Object> getVariables() {
+        return variables.getVariables();
     }
 
     @Override
     public void clearVariables() {
-        // Nothing to do.
+        variables.clearVariables();
     }
 
     @Override
     public void dispose() {
-        // Nothing to do.
-    }
-
-    @Override
-    public Map<String, ?> getVariables() {
-        return Collections.emptyMap();
+        variables.clearVariables();
     }
 
     @Override

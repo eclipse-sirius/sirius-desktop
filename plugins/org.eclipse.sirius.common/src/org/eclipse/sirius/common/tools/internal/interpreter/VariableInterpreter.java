@@ -13,7 +13,6 @@
 package org.eclipse.sirius.common.tools.internal.interpreter;
 
 import java.text.MessageFormat;
-import java.util.Map;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.Messages;
@@ -24,7 +23,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterProvider;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterStatus;
 import org.eclipse.sirius.common.tools.api.interpreter.InterpreterStatusFactory;
 import org.eclipse.sirius.common.tools.api.interpreter.ValidationResult;
-import org.eclipse.sirius.common.tools.api.interpreter.VariableManager;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 
 /**
@@ -41,48 +39,14 @@ public class VariableInterpreter extends AbstractInterpreter implements org.ecli
     /** The self variable name. */
     public static final String SELF_VARIABLE_NAME = "self"; //$NON-NLS-1$
 
-    /** The variables manager. */
-    private final VariableManager variablesManager;
-
-    /**
-     * Default constructor.
-     */
-    public VariableInterpreter() {
-        variablesManager = new VariableManager();
-    }
-
     public String getPrefix() {
         return VariableInterpreter.PREFIX;
     }
 
     @Override
-    public void setVariable(String name, Object value) {
-        variablesManager.setVariable(name, value);
-    }
-
-    @Override
-    public void unSetVariable(String name) {
-        variablesManager.unSetVariable(name);
-    }
-
-    @Override
-    public Object getVariable(String name) {
-        return variablesManager.getVariable(name);
-    }
-
-    @Override
-    public void clearVariables() {
-        variablesManager.clearVariables();
-    }
-
-    public Map<String, Object> getVariables() {
-        return variablesManager.getVariables();
-    }
-
-    @Override
     public Object evaluate(EObject target, String expression) throws EvaluationException {
         Object result = null;
-        if (target != null && expression != null && expression.startsWith(PREFIX)) {
+        if (target != null && provides(expression)) {
             String variableName = expression.trim().substring(PREFIX.length());
             result = evaluateVariable(target, variableName);
         }
@@ -105,8 +69,8 @@ public class VariableInterpreter extends AbstractInterpreter implements org.ecli
         if (target != null && variableName != null) {
             if (SELF_VARIABLE_NAME.equals(variableName)) {
                 result = target;
-            } else if (variablesManager.getVariables().containsKey(variableName)) {
-                result = variablesManager.getVariable(variableName);
+            } else if (variables.getVariables().containsKey(variableName)) {
+                result = variables.getVariable(variableName);
             } else {
                 throw new EvaluationException(MessageFormat.format(Messages.VariableInterpreter_unknownVariable, variableName));
             }
