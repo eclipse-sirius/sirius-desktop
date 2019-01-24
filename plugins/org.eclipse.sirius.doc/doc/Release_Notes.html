@@ -171,7 +171,12 @@
 					</li>
 					<li>
 						<code>NodeMapping.createNode</code> has been replaced by 
-						<code>NodeMappingHelper.createNode</code>
+						<code>NodeMappingHelper.createNode</code>. You must verify that 
+						<code>NodeMapping</code> is an 
+						<code>INodeMappingExt</code> before calling this method. Previously, in other cases, when a 
+						<code>NodeMapping</code> is not 
+						<code>INodeMappingExt</code>, an 
+						<code>UnsupportedOperationException</code> was thrown.
 					</li>
 					<li>
 						<code>NodeMapping.updateNode</code> has been replaced by 
@@ -242,11 +247,15 @@
 				<ul>
 					<li>
 						<code>DiagramDescription.allNodeMappings</code> has been replaced by 
-						<code>ContentHelper.getAllNodeMappings</code>
+						<code>ContentHelper.getAllNodeMappings</code> (with 
+						<code>false</code> value for parameter 
+						<code>withoutOptionalLayers</code>)
 					</li>
 					<li>
 						<code>DiagramDescription.allContainerMappings</code> has been replaced by 
-						<code>ContentHelper.getAllContainerMappings</code>
+						<code>ContentHelper.getAllContainerMappings</code> (with 
+						<code>false</code> value for parameter 
+						<code>withoutOptionalLayers</code>)
 					</li>
 					<li>
 						<code>DiagramDescription.allLayers</code> has been replaced by 

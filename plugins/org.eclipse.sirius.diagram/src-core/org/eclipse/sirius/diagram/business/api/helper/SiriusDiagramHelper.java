@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,6 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.description.extens
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingWithInterpreterHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
-import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.Group;
@@ -67,7 +66,7 @@ public final class SiriusDiagramHelper {
      */
     public static DDiagramElement createElement(final RepresentationElementMapping mapping, final DSemanticDiagram diagram, final EObject modelElement) {
         DDiagramElement created = null;
-        if (mapping instanceof NodeMapping) {
+        if (mapping instanceof INodeMappingExt) {
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
             created = new NodeMappingHelper(interpreter).createNode((INodeMappingExt) mapping, modelElement, diagram.getTarget(), diagram);
         }

@@ -33,7 +33,7 @@ h4. Changes in  @org.eclipse.sirius.diagram@
 ** @AbstractNodeMapping.clearDNodesDone@ has been replaced by @NodeMappingHelper.clearDNodesDone@
 ** @AbstractNodeMapping.addDoneNode@ has been replaced by @NodeMappingHelper.addDoneNode@
 ** @AbstractNodeMapping.getAllBorderedNodeMappings@ has been replaced by @MappingHelper.getAllBorderedNodeMappings@
-** @NodeMapping.createNode@ has been replaced by @NodeMappingHelper.createNode@
+** @NodeMapping.createNode@ has been replaced by @NodeMappingHelper.createNode@. You must verify that @NodeMapping@ is an @INodeMappingExt@ before calling this method. Previously, in other cases, when a @NodeMapping@ is not @INodeMappingExt@, an @UnsupportedOperationException@ was thrown.
 ** @NodeMapping.updateNode@ has been replaced by @NodeMappingHelper.updateNode@
 ** @NodeMapping.updateListElement@ has been replaced by @NodeMappingHelper.updateListElement@
 ** @NodeMapping.getNodesCandidates(semanticOrigin,container)@ has been replaced by @NodeMappingHelper.getNodesCandidates(semanticOrigin,container)@
@@ -51,8 +51,8 @@ h4. Changes in  @org.eclipse.sirius.diagram@
 ** @Filter.isVisible@ has been replaced by @FilterService.isVisible(Filter, DDiagramElement)@
 ** @VariableFilter.resetVariables@ has been replaced by @VariableFilterWrapper.resetVariables@
 * <span class="label label-info">Modified</span> The following features have been removed/replaced:
-** @DiagramDescription.allNodeMappings@ has been replaced by @ContentHelper.getAllNodeMappings@
-** @DiagramDescription.allContainerMappings@ has been replaced by @ContentHelper.getAllContainerMappings@
+** @DiagramDescription.allNodeMappings@ has been replaced by @ContentHelper.getAllNodeMappings@ (with @false@ value for parameter @withoutOptionalLayers@)
+** @DiagramDescription.allContainerMappings@ has been replaced by @ContentHelper.getAllContainerMappings@ (with @false@ value for parameter @withoutOptionalLayers@)
 ** @DiagramDescription.allLayers@ has been replaced by @LayerHelper.getAllLayers@
 ** @ContainerMapping.allNodeMappings@ has been replaced by @ContainerMappingHelper.getAllNodeMappings@
 ** @ContainerMapping.allContainerMappings@ has been replaced by @ContainerMappingHelper.getAllContainerMappings@
