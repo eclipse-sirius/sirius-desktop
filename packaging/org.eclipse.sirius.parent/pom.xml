@@ -16,7 +16,7 @@
 
   <groupId>org.eclipse.sirius</groupId>
   <artifactId>sirius-parent</artifactId>
-  <version>5.1.4-SNAPSHOT</version>
+  <version>5.1.5-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <name>Sirius Parent</name>
@@ -113,7 +113,7 @@
             <artifact>
               <groupId>org.eclipse.sirius</groupId>
               <artifactId>sirius-parent</artifactId>
-              <version>5.1.4-SNAPSHOT</version>
+              <version>5.1.5-SNAPSHOT</version>
               <classifier>../../releng/org.eclipse.sirius.targets/${target-platform-path}/sirius_${platform-version-name}</classifier>
             </artifact>
           </target>

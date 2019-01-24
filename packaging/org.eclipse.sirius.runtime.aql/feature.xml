@@ -12,7 +12,7 @@
 <feature
       id="org.eclipse.sirius.runtime.aql"
       label="%featureName"
-      version="5.1.4.qualifier"
+      version="5.1.5.qualifier"
       provider-name="%providerName"
       plugin="org.eclipse.sirius.common.acceleo.aql"
       license-feature="org.eclipse.license"

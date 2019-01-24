@@ -16,7 +16,7 @@
   <parent>
     <groupId>org.eclipse.sirius</groupId>
     <artifactId>sirius-parent</artifactId>
-    <version>5.1.4-SNAPSHOT</version>
+    <version>5.1.5-SNAPSHOT</version>
     <relativePath>../../packaging/org.eclipse.sirius.parent</relativePath>
   </parent>
 
@@ -26,7 +26,7 @@
 
   <artifactId>org.eclipse.sirius.tests.product</artifactId>
   <packaging>eclipse-repository</packaging>
-  <version>5.1.4-SNAPSHOT</version>
+  <version>5.1.5-SNAPSHOT</version>
 
   <properties>
     <product-id>org.eclipse.sirius.tests.product</product-id>

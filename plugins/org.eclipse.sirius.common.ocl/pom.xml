@@ -15,12 +15,12 @@
   <parent>
     <groupId>org.eclipse.sirius</groupId>
     <artifactId>sirius-parent</artifactId>
-    <version>5.1.4-SNAPSHOT</version>
+    <version>5.1.5-SNAPSHOT</version>
     <relativePath>../../packaging/org.eclipse.sirius.parent</relativePath>
   </parent>
 
   <artifactId>org.eclipse.sirius.common.ocl</artifactId>
   <packaging>eclipse-plugin</packaging>
-  <version>5.1.4-SNAPSHOT</version>
+  <version>5.1.5-SNAPSHOT</version>
 
 </project>
