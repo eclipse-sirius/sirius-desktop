@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.services.graphql.api;
 
+import org.eclipse.sirius.tests.services.graphql.internal.SiriusGraphQLEMFEPackagesTests;
 import org.eclipse.sirius.tests.services.graphql.internal.SiriusGraphQLProjectTests;
 import org.eclipse.sirius.tests.services.graphql.internal.SiriusGraphQLSchemaTests;
 import org.junit.runner.RunWith;
@@ -24,7 +25,7 @@ import org.junit.runners.Suite.SuiteClasses;
  * @author sbegaudeau
  */
 @RunWith(Suite.class)
-@SuiteClasses({ SiriusGraphQLSchemaTests.class, SiriusGraphQLProjectTests.class })
+@SuiteClasses({ SiriusGraphQLSchemaTests.class, SiriusGraphQLProjectTests.class, SiriusGraphQLEMFEPackagesTests.class })
 public class AllSiriusGraphQLTests {
     // Do nothing
 }

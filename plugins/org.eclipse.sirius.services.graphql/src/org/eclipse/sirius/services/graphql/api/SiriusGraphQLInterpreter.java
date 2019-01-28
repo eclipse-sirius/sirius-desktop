@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo.
+ * Copyright (c) 2018, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,11 +16,11 @@ import java.util.Map;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.sirius.services.graphql.common.api.SiriusGraphQLContext;
 import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLMessages;
 import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLPlugin;
 import org.eclipse.sirius.services.graphql.internal.SiriusGraphQLQueryResult;
-import org.eclipse.sirius.services.graphql.internal.schema.SiriusGraphQLContext;
-import org.eclipse.sirius.services.graphql.internal.schema.SiriusGraphQLSchemaBuilder;
+import org.eclipse.sirius.services.graphql.internal.schema.SiriusGraphQLSchemaProvider;
 
 import graphql.ExecutionInput;
 import graphql.ExecutionResult;
@@ -53,7 +53,17 @@ public class SiriusGraphQLInterpreter {
      * The constructor.
      */
     public SiriusGraphQLInterpreter() {
-        this.schema = new SiriusGraphQLSchemaBuilder().build();
+        this(new SiriusGraphQLSchemaProvider().getSchema());
+    }
+
+    /**
+     * The constructor.
+     * 
+     * @param schema
+     *            The GraphQL schema to use
+     */
+    public SiriusGraphQLInterpreter(GraphQLSchema schema) {
+        this.schema = schema;
     }
 
     /**

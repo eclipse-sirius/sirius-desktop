@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo.
+ * Copyright (c) 2018, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,16 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.services.graphql.internal;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
 import org.eclipse.sirius.services.graphql.api.ISiriusGraphQLQueryResult;
-import org.eclipse.sirius.services.graphql.api.SiriusGraphQLInterpreter;
+import org.eclipse.sirius.services.graphql.internal.schema.SiriusGraphQLSchemaProvider;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,26 +23,6 @@ import org.junit.Test;
  * @author sbegaudeau
  */
 public class SiriusGraphQLSchemaTests {
-
-    /**
-     * The data field of the result.
-     */
-    private static final String DATA = "data"; //$NON-NLS-1$
-
-    /**
-     * The schema field of the result.
-     */
-    private static final String SCHEMA = "__schema"; //$NON-NLS-1$
-
-    /**
-     * The types field of the result.
-     */
-    private static final String TYPES = "types"; //$NON-NLS-1$
-
-    /**
-     * The name field of the result.
-     */
-    private static final String NAME = "name"; //$NON-NLS-1$
 
     /**
      * The name of the Query type.
@@ -98,14 +70,9 @@ public class SiriusGraphQLSchemaTests {
     private static final String FILE = "File"; //$NON-NLS-1$
 
     /**
-     * The name of the TextFileCreationDescription type.
+     * The name of the FileCreationDescription type.
      */
-    private static final String TEXT_FILE_CREATION_DESCRIPTION = "TextFileCreationDescription"; //$NON-NLS-1$
-
-    /**
-     * The name of the SemanticFileCreationDescription type.
-     */
-    private static final String SEMANTIC_FILE_CREATION_DESCRIPTION = "SemanticFileCreationDescription"; //$NON-NLS-1$
+    private static final String FILE_CREATION_DESCRIPTION = "FileCreationDescription"; //$NON-NLS-1$
 
     /**
      * The name of the RepresentationCreationDescription type.
@@ -192,28 +159,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Before
     public void setup() {
-        String query = SiriusGraphQLTestsMessages.introspectionQuery;
-        Map<String, Object> variables = new HashMap<>();
-        String operationName = ""; //$NON-NLS-1$
-        Object context = null;
-        this.result = new SiriusGraphQLInterpreter().execute(query, variables, operationName, context);
-    }
-
-    @SuppressWarnings("unchecked")
-    private void testType(String expected, String typeName) {
-        Map<String, Object> rawData = result.getData();
-        Map<String, Object> data = (Map<String, Object>) rawData.get(DATA);
-        Map<String, Object> schema = (Map<String, Object>) data.get(SCHEMA);
-        List<Map<String, Object>> types = (List<Map<String, Object>>) schema.get(TYPES);
-
-        Optional<Map<String, Object>> optionalType = types.stream().filter(type -> typeName.equals(type.get(NAME))).findFirst();
-        if (optionalType.isPresent()) {
-            Map<String, Object> type = optionalType.get();
-            String typeString = new SiriusGraphQLTypeSerializer().typeToString(type);
-            assertEquals(expected, typeString);
-        } else {
-            fail("The " + typeName + " type has not been found in the schema"); //$NON-NLS-1$ //$NON-NLS-2$
-        }
+        this.result = new SiriusGraphQLTestsHelper().getSchema(new SiriusGraphQLSchemaProvider().getSchema());
     }
 
     /**
@@ -221,7 +167,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testQuerySchema() {
-        this.testType(SiriusGraphQLTestsMessages.query, QUERY);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.query, QUERY);
     }
 
     /**
@@ -229,7 +175,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testPageInfoSchema() {
-        this.testType(SiriusGraphQLTestsMessages.pageInfo, PAGEINFO);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.pageInfo, PAGEINFO);
     }
 
     /**
@@ -237,7 +183,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testUserSchema() {
-        this.testType(SiriusGraphQLTestsMessages.user, USER);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.user, USER);
     }
 
     /**
@@ -245,23 +191,15 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testMutationSchema() {
-        this.testType(SiriusGraphQLTestsMessages.mutation, MUTATION);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.mutation, MUTATION);
     }
 
     /**
      * Test the TextFileCreationDescription type of the schema.
      */
     @Test
-    public void testTextFileCreationDescriptionSchema() {
-        this.testType(SiriusGraphQLTestsMessages.textFileCreationDescription, TEXT_FILE_CREATION_DESCRIPTION);
-    }
-
-    /**
-     * Test the SemanticFileCreationDescription type of the schema.
-     */
-    @Test
-    public void testSemanticFileCreationDescriptionSchema() {
-        this.testType(SiriusGraphQLTestsMessages.semanticFileCreationDescription, SEMANTIC_FILE_CREATION_DESCRIPTION);
+    public void testFileCreationDescriptionSchema() {
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.fileCreationDescription, FILE_CREATION_DESCRIPTION);
     }
 
     /**
@@ -269,7 +207,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testRepresentationCreationDescriptionSchema() {
-        this.testType(SiriusGraphQLTestsMessages.representationCreationDescription, REPRESENTATION_CREATION_DESCRIPTION);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.representationCreationDescription, REPRESENTATION_CREATION_DESCRIPTION);
     }
 
     /**
@@ -277,7 +215,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testResourceSchema() {
-        this.testType(SiriusGraphQLTestsMessages.resource, RESOURCE);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.resource, RESOURCE);
     }
 
     /**
@@ -285,7 +223,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testContainerSchema() {
-        this.testType(SiriusGraphQLTestsMessages.container, CONTAINER);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.container, CONTAINER);
     }
 
     /**
@@ -293,7 +231,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testProjectSchema() {
-        this.testType(SiriusGraphQLTestsMessages.project, PROJECT);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.project, PROJECT);
     }
 
     /**
@@ -301,7 +239,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testFolderSchema() {
-        this.testType(SiriusGraphQLTestsMessages.folder, FOLDER);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.folder, FOLDER);
     }
 
     /**
@@ -309,7 +247,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testFileSchema() {
-        this.testType(SiriusGraphQLTestsMessages.file, FILE);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.file, FILE);
     }
 
     /**
@@ -317,7 +255,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testViewpointSchema() {
-        this.testType(SiriusGraphQLTestsMessages.viewpoint, VIEWPOINT);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.viewpoint, VIEWPOINT);
     }
 
     /**
@@ -325,7 +263,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testRepresentationDescriptionSchema() {
-        this.testType(SiriusGraphQLTestsMessages.representationDescription, REPRESENTATION_DESCRIPTION);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.representationDescription, REPRESENTATION_DESCRIPTION);
     }
 
     /**
@@ -333,7 +271,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testDiagramDescriptionSchema() {
-        this.testType(SiriusGraphQLTestsMessages.diagramDescription, DIAGRAM_DESCRIPTION);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.diagramDescription, DIAGRAM_DESCRIPTION);
     }
 
     /**
@@ -341,7 +279,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testRepresentationSchema() {
-        this.testType(SiriusGraphQLTestsMessages.representation, REPRESENTATION);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.representation, REPRESENTATION);
     }
 
     /**
@@ -349,7 +287,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testDiagramSchema() {
-        this.testType(SiriusGraphQLTestsMessages.diagram, DIAGRAM);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.diagram, DIAGRAM);
     }
 
     /**
@@ -357,7 +295,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testEObjectSchema() {
-        this.testType(SiriusGraphQLTestsMessages.eObject, EOBJECT);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.eObject, EOBJECT);
     }
 
     /**
@@ -365,7 +303,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testEModelElementSchema() {
-        this.testType(SiriusGraphQLTestsMessages.eModelElement, EMODELELEMENT);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.eModelElement, EMODELELEMENT);
     }
 
     /**
@@ -373,7 +311,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testENamedElementSchema() {
-        this.testType(SiriusGraphQLTestsMessages.eNamedElement, ENAMEDELEMENT);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.eNamedElement, ENAMEDELEMENT);
     }
 
     /**
@@ -381,7 +319,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testEClassifierSchema() {
-        this.testType(SiriusGraphQLTestsMessages.eClassifier, ECLASSIFIER);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.eClassifier, ECLASSIFIER);
     }
 
     /**
@@ -389,7 +327,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testEClassSchema() {
-        this.testType(SiriusGraphQLTestsMessages.eClass, ECLASS);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.eClass, ECLASS);
     }
 
     /**
@@ -397,7 +335,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testETypedElementSchema() {
-        this.testType(SiriusGraphQLTestsMessages.eTypedElement, ETYPEDELEMENT);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.eTypedElement, ETYPEDELEMENT);
     }
 
     /**
@@ -405,7 +343,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testEStructuralFeatureSchema() {
-        this.testType(SiriusGraphQLTestsMessages.eStructuralFeature, ESTRUCTURALFEATURE);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.eStructuralFeature, ESTRUCTURALFEATURE);
     }
 
     /**
@@ -413,7 +351,7 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testEAttributeSchema() {
-        this.testType(SiriusGraphQLTestsMessages.eAttribute, EATTRIBUTE);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.eAttribute, EATTRIBUTE);
     }
 
     /**
@@ -421,6 +359,6 @@ public class SiriusGraphQLSchemaTests {
      */
     @Test
     public void testEReferenceSchema() {
-        this.testType(SiriusGraphQLTestsMessages.eReference, EREFERENCE);
+        new SiriusGraphQLTestsHelper().testType(this.result, SiriusGraphQLTestsMessages.eReference, EREFERENCE);
     }
 }

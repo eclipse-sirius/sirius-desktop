@@ -106,10 +106,7 @@ public final class SiriusGraphQLTestsMessages {
     public static String file;
 
     @TranslatableMessage
-    public static String textFileCreationDescription;
-
-    @TranslatableMessage
-    public static String semanticFileCreationDescription;
+    public static String fileCreationDescription;
 
     @TranslatableMessage
     public static String representationCreationDescription;
@@ -155,6 +152,12 @@ public final class SiriusGraphQLTestsMessages {
 
     @TranslatableMessage
     public static String eReference;
+
+    @TranslatableMessage
+    public static String library;
+
+    @TranslatableMessage
+    public static String book;
 
     // CHECKSTYLE:ON
 

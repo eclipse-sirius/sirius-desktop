@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo.
+ * Copyright (c) 2018, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.osgi.framework.BundleContext;
 
 /**
- * The plugin of the Sirius server GraphQL plugin.
+ * The plugin of the Sirius services GraphQL plugin.
  *
  * @author sbegaudeau
  */

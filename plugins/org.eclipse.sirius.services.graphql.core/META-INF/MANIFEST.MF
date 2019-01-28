@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.sirius.services.graphql.core;singleton:=true
+Bundle-Version: 6.2.0.qualifier
+Bundle-Vendor: %providerName
+Automatic-Module-Name: org.eclipse.sirius.services.graphql.core
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Localization: plugin
+Require-Bundle: org.eclipse.sirius;bundle-version="6.1.1",
+ org.eclipse.sirius.diagram;bundle-version="6.1.1",
+ org.eclipse.sirius.services.graphql.common;bundle-version="6.2.0"
+Export-Package: org.eclipse.sirius.services.graphql.core.api;version="6.2.0",
+ org.eclipse.sirius.services.graphql.core.internal.schema;version="6.2.0";x-internal:=true
+Import-Package: graphql;version="[11.0.0,11.0.1)",
+ graphql.schema;version="[11.0.0,11.0.1)"
