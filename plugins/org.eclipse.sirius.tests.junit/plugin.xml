@@ -94,11 +94,4 @@
             id="sampleNameDataProvider">
       </formatDataManagerProvider>
    </extension>
-   <extension
-         point="org.eclipse.sirius.diagram.ui.layoutDataManager">
-      <layoutDataManagerProvider
-            class="org.eclipse.sirius.tests.unit.diagram.layout.data.manager.extension.SampleDataProvider"
-            id="sampleDataProviderDeprecatedExtensionPoint">
-      </layoutDataManagerProvider>
-   </extension>
 </plugin>
