@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -51,6 +51,8 @@ public class EditModeDecorationDescriptorProvider extends AbstractSiriusDecorati
     protected static final String DISABLE_PRINT_FOR_PERMISSION_AUTHORITY_DECORATION = "org.eclipse.sirius.diagam.ui.hidePrintingOfPermissionAuthorityDecoration"; //$NON-NLS-1$
 
     private static final ImageDescriptor LOCK_BY_OTHER_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_denied.gif"); //$NON-NLS-1$
+
+    private static final ImageDescriptor DELETED_DIAG_ELEM_DECORATOR_IMAGE_DESCRIPTOR = DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETED_DIAG_ELEM_DECORATOR_ICON);
 
     private static final String NAME = "editModeDecorator"; //$NON-NLS-1$
 
@@ -160,7 +162,7 @@ public class EditModeDecorationDescriptorProvider extends AbstractSiriusDecorati
         if (decorationImage == null) {
             if ((isBroken != null && isBroken.booleanValue()) || (isBroken == null && isBroken(part))) {
                 // If the edit part is broken, we return a "deleted" image (red cross)
-                decorationImage = DiagramUIPlugin.getPlugin().getImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.DELETED_DIAG_ELEM_DECORATOR_ICON));
+                decorationImage = DiagramUIPlugin.getPlugin().getImage(DELETED_DIAG_ELEM_DECORATOR_IMAGE_DESCRIPTOR);
             }
         }
 
