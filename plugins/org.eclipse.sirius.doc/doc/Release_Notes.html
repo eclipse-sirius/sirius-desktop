@@ -109,12 +109,6 @@
 				<a href="specifier/diagrams/Diagrams.html#group">corresponding documentation</a> .
 			</li>
 		</ul>
-		<ul>
-			<li><span class="label label-info">Modified</span> The method 
-				<code>org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory.buildInsertVerticalBlankSpaceCommand(DDiagram, int, int)</code> has been renamed to 
-				<code>org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory.buildInsertOrRemoveVerticalBlankSpaceCommand(DDiagram, int, int)</code> because it handles now both addition and removal.
-			</li>
-		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> If the 
@@ -151,8 +145,6 @@
 				<code>getDiagramLayoutProvider(DiagramEditPart, IAdaptable)</code> in package  
 				<code>org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider</code> has been made protected to allow to provide layout provider from other mechanism than LayoutService.
 			</li>
-		</ul>
-		<ul>
 			<li><span class="label label-danger">Removed</span> The message 
 				<code>org.eclipse.sirius.diagram.ui.provider.Messages.SynchronizeGMFModelCommand_label</code> has been removed. It has been replaced in 
 				<code>org.eclipse.sirius.diagram.Messages</code>.
@@ -167,10 +159,10 @@
 				<code>org.eclipse.sirius.diagram.ui.provider.Messages.SynchronizeGMFModelCommand_label</code>.
 			</li>
 			<li><span class="label label-info">Added</span> The extension point org.eclipse.sirius.diagram.customBundledImageShape has been created in order to provide custom shape to the bundled image style. This extension point offers more flexibility on the specification of the svg tags and attributes holding the color, border color and border size information than the extension point org.eclipse.sirius.diagram.bundledImageShape.</li>
-			<li><span class="label label-info">Modified</span> The extension point org.eclipse.sirius.diagram.bundledImageShape has been marked as deprecated. Shapes provided by this extension point still work.</li>
 			<li><span class="label label-success">Added</span> The getter and setter methods have been added for the new attribute 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor.isPrintable</code>. This attribute is used to know if the decoration should be hidden when printing or exporting the diagram. The behavior is applied only if there is no printable decoration in its diagram element location (South, West, South-West etc).
 			</li>
+			<li><span class="label label-info">Modified</span> The extension point org.eclipse.sirius.diagram.bundledImageShape has been marked as deprecated. Shapes provided by this extension point still work.</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.common">Changes in  
 			<code>org.eclipse.sirius.common</code>

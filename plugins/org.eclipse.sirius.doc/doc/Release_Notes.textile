@@ -15,8 +15,6 @@ h3. Specifier-Visible Changes
 
 * <span class="label label-success">Added</span> It is now possible to add action/group in the "New" contextual menu of diagram elements. This menu was missed in Sirius 6.1.0. It is now documented in the "corresponding documentation":specifier/diagrams/Diagrams.html#group .
 
-* <span class="label label-info">Modified</span> The method @org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory.buildInsertVerticalBlankSpaceCommand(DDiagram, int, int)@ has been renamed to @org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory.buildInsertOrRemoveVerticalBlankSpaceCommand(DDiagram, int, int)@ because it handles now both addition and removal.
-
 h3. Developer-Visible Changes
 
 * <span class="label label-success">Added</span> If the @org.eclipse.sirius.diagam.ui.hidePrintingOfPermissionAuthorityDecoration@ system property is set to true and if there is no other printable decoration provided at the same location (South-West), the permission authority decorations displayed on diagrams are not printed nor exported in images (export as image actions).
@@ -29,9 +27,7 @@ h4. Changes in  @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-success">Added</span>  A new field @CustomLayoutConfiguration layoutConfiguration@ has been added to @org.eclipse.sirius.diagram.ui.tools.api.layout.provider.DefaultLayoutProvider@ and its setter method 
 @setLayoutConfiguration(CustomLayoutConfiguration)@. It allows any layout provider to be aware of any VSM layout configuration that should be used.
-
 * <span class="label label-info">Modified</span> The method @getDiagramLayoutProvider(DiagramEditPart, IAdaptable)@ in package  @org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider@ has been made protected to allow to provide layout provider from other mechanism than LayoutService.
-
 * <span class="label label-danger">Removed</span> The message @org.eclipse.sirius.diagram.ui.provider.Messages.SynchronizeGMFModelCommand_label@ has been removed. It has been replaced in @org.eclipse.sirius.diagram.Messages@.
 
 
@@ -39,8 +35,8 @@ h4. Changes in  @org.eclipse.sirius.diagram@
 
 * <span class="label label-success">Added</span> The message @org.eclipse.sirius.diagram.Messages.SynchronizeGMFModelCommand_label@ has been added. It replaces @org.eclipse.sirius.diagram.ui.provider.Messages.SynchronizeGMFModelCommand_label@.
 * <span class="label label-info">Added</span> The extension point org.eclipse.sirius.diagram.customBundledImageShape has been created in order to provide custom shape to the bundled image style. This extension point offers more flexibility on the specification of the svg tags and attributes holding the color, border color and border size information than the extension point org.eclipse.sirius.diagram.bundledImageShape.
-* <span class="label label-info">Modified</span> The extension point org.eclipse.sirius.diagram.bundledImageShape has been marked as deprecated. Shapes provided by this extension point still work.
 * <span class="label label-success">Added</span> The getter and setter methods have been added for the new attribute @org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor.isPrintable@. This attribute is used to know if the decoration should be hidden when printing or exporting the diagram. The behavior is applied only if there is no printable decoration in its diagram element location (South, West, South-West etc).
+* <span class="label label-info">Modified</span> The extension point org.eclipse.sirius.diagram.bundledImageShape has been marked as deprecated. Shapes provided by this extension point still work.
 
 h4. Changes in  @org.eclipse.sirius.common@
 

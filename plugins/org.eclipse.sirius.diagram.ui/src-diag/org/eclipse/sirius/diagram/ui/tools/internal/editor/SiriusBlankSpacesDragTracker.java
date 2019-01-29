@@ -361,7 +361,7 @@ public class SiriusBlankSpacesDragTracker extends SimpleDragTracker {
                     throw new UnsupportedOperationException(Messages.UndoRedoCapableEMFCommandFactory_insertHorizontalBlankSpaceNotImplemented);
                 } else {
                     org.eclipse.emf.common.command.Command command = diagramEditor.getEmfCommandFactoryProvider().getCommandFactory(ted)
-                            .buildInsertOrRemoveVerticalBlankSpaceCommand((DDiagram) diagramEditPart.getNotationView().getElement(), startLocation, spaceToInsertOrRemove);
+                            .buildInsertVerticalBlankSpaceCommand((DDiagram) diagramEditPart.getNotationView().getElement(), startLocation, spaceToInsertOrRemove);
                     return new ICommandProxy(new GMFCommandWrapper(ted, command));
                 }
             }

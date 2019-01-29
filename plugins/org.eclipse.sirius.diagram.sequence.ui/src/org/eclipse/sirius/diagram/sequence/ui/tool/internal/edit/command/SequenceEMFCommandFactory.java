@@ -88,7 +88,7 @@ public final class SequenceEMFCommandFactory extends UndoRedoCapableEMFCommandFa
     }
 
     @Override
-    public Command buildInsertOrRemoveVerticalBlankSpaceCommand(DDiagram diagram, int startY, int spaceToInsertOrRemove) {
+    public Command buildInsertVerticalBlankSpaceCommand(DDiagram diagram, int startY, int spaceToInsertOrRemove) {
         if (spaceToInsertOrRemove < 0) {
             return CommandFactory.createRecordingCommand(sdep.getEditingDomain(),
                     new VerticalSpaceExpansionOrReduction(sdep.getSequenceDiagram(), new DecreasingRange(startY, startY + spaceToInsertOrRemove), 0, Collections.<ISequenceEvent> emptyList()));

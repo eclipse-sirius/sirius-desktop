@@ -358,7 +358,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     }
 
     @Override
-    public Command buildInsertOrRemoveVerticalBlankSpaceCommand(DDiagram diagram, int startY, int spaceToInsert) {
-        return baseFactory.buildInsertOrRemoveVerticalBlankSpaceCommand(diagram, startY, spaceToInsert);
+    public Command buildInsertVerticalBlankSpaceCommand(DDiagram diagram, int startY, int spaceToInsert) {
+        return baseFactory.buildInsertVerticalBlankSpaceCommand(diagram, startY, spaceToInsert);
     }
 }

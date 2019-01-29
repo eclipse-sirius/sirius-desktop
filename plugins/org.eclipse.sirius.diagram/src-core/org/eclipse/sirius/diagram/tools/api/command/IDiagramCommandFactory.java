@@ -448,5 +448,5 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      * 
      * @return a command able to insert blank space (move all elements).
      */
-    Command buildInsertOrRemoveVerticalBlankSpaceCommand(DDiagram diagram, int startX, int spaceToInsert);
+    Command buildInsertVerticalBlankSpaceCommand(DDiagram diagram, int startX, int spaceToInsert);
 }
