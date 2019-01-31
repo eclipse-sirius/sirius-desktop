@@ -51,10 +51,10 @@ done
 # All the about.html should be identical
 # find . -name "about.html" -exec md5sum {} \; | sort | cut -d' ' -f1 | sort -u
 
-readonly BREE="JavaSE-1.7"
+readonly BREE="JavaSE-1.8"
 check "All plug-ins have a consistent BREE ($BREE)"
 BREES=$(git grep Bundle-RequiredExecutionEnvironment -- '**/MANIFEST.MF' | awk '{print $2}' | sort -u)
-[ "$BREES" = "JavaSE-1.7" ] || {
+[ "$BREES" = "JavaSE-1.8" ] || {
     error "Inconsistent BREE detected: " $(echo "$BREES")
 }
 
@@ -75,16 +75,6 @@ PROVIDERS=$(find plugins -name "plugin.properties" -exec grep providerName {} \;
 [ "$PROVIDERS" = "providerName = $PROVIDER_NAME" ] || {
     error "Inconsistent plug-in providerName detected: " $(echo "$PROVIDERS" | sed -e 's/\s/./g')
 }
-
-check "All features should have epl-v10.html file"
-# TODO: with correct content and properly registered in build.properties
-for feature in packaging/*; do
-    if [ -f "$feature/feature.xml" ]; then
-       [ -f "$feature/epl-v10.html" ] || {
-           error "Missing epl-v10.html in $feature"
-       }
-    fi
-done
 
 check "All Java files should have the EPL license header"
 # Note that this is a very rough approximation, to be improved later.
