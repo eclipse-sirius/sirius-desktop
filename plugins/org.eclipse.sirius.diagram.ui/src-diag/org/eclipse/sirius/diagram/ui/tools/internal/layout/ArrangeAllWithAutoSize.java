@@ -228,17 +228,18 @@ public class ArrangeAllWithAutoSize {
         vi = nodes.listIterator();
         // Now set the position of the icons. This causes the
         // arc connection points to be recalculated
+        Point ptLayoutMin = computePointLayoutMin(nodes, provider);
         while (vi.hasNext()) {
             final Node node = (Node) vi.next();
 
             if (node.data instanceof ShapeEditPart) {
-                createSubCommands(globalDiff, cc, provider, minX, minY, nodes, node);
+                createSubCommands(globalDiff, cc, provider, minX, minY, ptLayoutMin, node);
             }
         }
     }
 
-    private void createSubCommands(Point globalDiff, final CompoundCommand cc, final AbstractCompositeLayoutProvider provider, final int minX, final int minY, List<Node> nodes, final Node node) {
-        Point diffP = diff(minX, minY, nodes, provider, node);
+    private void createSubCommands(Point globalDiff, final CompoundCommand cc, final AbstractCompositeLayoutProvider provider, final int minX, final int minY, Point ptLayoutMin, final Node node) {
+        Point diffP = diff(minX, minY, ptLayoutMin, provider, node);
         diffP.x = Math.max(diffP.x, globalDiff.x);
         diffP.y = Math.max(diffP.y, globalDiff.y);
         if (diffP.x > -node.getPadding().left) {
@@ -351,7 +352,15 @@ public class ArrangeAllWithAutoSize {
         return false;
     }
 
-    private Point diff(final int minX, final int minY, List<Node> nodes, AbstractCompositeLayoutProvider provider, Node firstNode) {
+    private Point diff(final int minX, final int minY, Point ptLayoutMin, AbstractCompositeLayoutProvider provider, Node firstNode) {
+        if (ptLayoutMin.x == firstNode.x) {
+            return provider.translateFromGraph(new Rectangle(0, 0, 0, 0)).getLocation();
+        }
+        return provider.translateFromGraph(new Rectangle(minX - ptLayoutMin.x, minY - ptLayoutMin.y, 0, 0)).getLocation();
+        // return new Point(minX - ptLayoutMin.x, minY - ptLayoutMin.y);
+    }
+
+    private Point computePointLayoutMin(List<Node> nodes, AbstractCompositeLayoutProvider provider) {
         Point ptLayoutMin = new Point(-1, -1);
         for (Node node : nodes) {
             // ignore ghost node
@@ -368,11 +377,7 @@ public class ArrangeAllWithAutoSize {
             }
 
         }
-        if (ptLayoutMin.x == firstNode.x) {
-            return provider.translateFromGraph(new Rectangle(0, 0, 0, 0)).getLocation();
-        }
-        return provider.translateFromGraph(new Rectangle(minX - ptLayoutMin.x, minY - ptLayoutMin.y, 0, 0)).getLocation();
-        // return new Point(minX - ptLayoutMin.x, minY - ptLayoutMin.y);
+        return ptLayoutMin;
     }
 
     static Rectangle extendBoundingBoxWithBorderedNodes(Node node, Rectangle box) {
