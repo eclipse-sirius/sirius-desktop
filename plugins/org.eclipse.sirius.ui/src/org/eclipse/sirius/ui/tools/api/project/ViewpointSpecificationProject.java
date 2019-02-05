@@ -420,18 +420,15 @@ public final class ViewpointSpecificationProject {
      *             a text file.
      */
     private static String getTemplateFileContents(final String path) throws IOException {
-        final InputStream is = FileLocator.openStream(SiriusEditPlugin.getPlugin().getBundle(), new Path(path), false);
-        final BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-        final StringBuilder sb = new StringBuilder();
-        String line = null;
-        try {
+        try (InputStream is = FileLocator.openStream(SiriusEditPlugin.getPlugin().getBundle(), new Path(path), false);
+             BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
+            final StringBuilder sb = new StringBuilder();
+            String line = null;
             while ((line = reader.readLine()) != null) {
                 sb.append(line).append(NL);
             }
-        } finally {
-            is.close();
+            return sb.toString();
         }
-        return sb.toString();
     }
 
     /**
