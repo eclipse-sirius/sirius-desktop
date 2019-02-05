@@ -14,6 +14,7 @@ package org.eclipse.sirius.viewpoint;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
@@ -109,12 +110,12 @@ public final class SiriusPlugin extends EMFPlugin {
      * The actual implementation of the Eclipse <b>Plugin</b>.
      */
     public static class Implementation extends EclipsePlugin {
-        
+
         /**
          * Handler for migration.
          */
         private IMigrationHandler migrationHandler;
-        
+
         /**
          * Registry of all supported interpreters.
          */
@@ -164,11 +165,36 @@ public final class SiriusPlugin extends EMFPlugin {
         private UICallBack uiCallback;
 
         /**
+         * True if the repair of an aird is currently happening. False otherwise.
+         */
+        private AtomicBoolean repairInProgress;
+
+        /**
          * Creates an instance.
          */
         public Implementation() {
             super();
             plugin = this;
+            repairInProgress = new AtomicBoolean(false);
+        }
+
+        /**
+         * Returns true if the repair of an aird is currently happening. False otherwise.
+         * 
+         * @return true if the repair of an aird is currently happening. False otherwise.
+         */
+        public boolean isRepairInProgress() {
+            return this.repairInProgress.get();
+        }
+
+        /**
+         * Set the repair in progress status.
+         * 
+         * @param repairInProgress
+         *            true if the repair of an aird is currently happening. False otherwise.
+         */
+        public void setRepairInProgress(boolean repairInProgress) {
+            this.repairInProgress.set(repairInProgress);
         }
 
         @Override
@@ -195,7 +221,7 @@ public final class SiriusPlugin extends EMFPlugin {
             modelOperationManagerRegistryListener.init();
             expressionQueryProviderRegistry = new InterpretedExpressionQueryProviderRegistry(Platform.getExtensionRegistry(), this);
             expressionQueryProviderRegistry.init();
-            
+
             List<IMigrationHandler> migrationHandlers = EclipseUtil.getExtensionPlugins(IMigrationHandler.class, IMigrationHandler.ID, IMigrationHandler.CLASS_ATTRIBUTE);
             if (migrationHandlers.size() > 0) {
                 migrationHandler = migrationHandlers.get(0);
@@ -254,7 +280,7 @@ public final class SiriusPlugin extends EMFPlugin {
         public InterpreterRegistry getInterpreterRegistry() {
             return interRegistry;
         }
-        
+
         /**
          * Get the migration handler used for Description resource creation.
          *
