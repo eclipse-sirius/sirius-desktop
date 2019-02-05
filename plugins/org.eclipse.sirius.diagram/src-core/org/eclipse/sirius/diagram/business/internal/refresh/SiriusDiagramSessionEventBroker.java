@@ -25,6 +25,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.base.Predicate;
 
@@ -78,14 +79,15 @@ public final class SiriusDiagramSessionEventBroker implements ModelChangeTrigger
         return reference;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Option<Command> localChangesAboutToCommit(Collection<Notification> notifications) {
-        TransactionalEditingDomain domain = getSession().getTransactionalEditingDomain();
-        Option<Command> triggerCommand = Options.newSome(viewpointGMFSynchronizerDispatcher.getGMFNotationModelSynchronizationCmd(domain, notifications));
-        return triggerCommand;
+        if (!SiriusPlugin.getDefault().isRepairInProgress()) {
+            TransactionalEditingDomain domain = getSession().getTransactionalEditingDomain();
+            Option<Command> triggerCommand = Options.newSome(viewpointGMFSynchronizerDispatcher.getGMFNotationModelSynchronizationCmd(domain, notifications));
+            return triggerCommand;
+        } else {
+            return Options.newNone();
+        }
     }
 
     private Session getSession() {

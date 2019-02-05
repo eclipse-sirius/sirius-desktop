@@ -139,11 +139,13 @@ public class SiriusRepairProcess {
         final URI resourceURI = URI.createPlatformResourceURI(this.file.getFullPath().toOSString(), true);
         try {
             monitor.beginTask(Messages.SiriusRepairProcess_inProgressMsg, 1);
+            SiriusPlugin.getDefault().setRepairInProgress(true);
             repair(resourceURI, new SubProgressMonitor(monitor, 1));
         } catch (CoreException e) {
             SiriusPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, SiriusPlugin.ID, ERROR_MSG, e));
         } finally {
             monitor.done();
+            SiriusPlugin.getDefault().setRepairInProgress(false);
         }
     }
 
