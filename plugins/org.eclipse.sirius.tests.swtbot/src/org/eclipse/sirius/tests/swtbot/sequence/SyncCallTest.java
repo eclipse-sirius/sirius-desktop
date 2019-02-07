@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -1722,13 +1722,13 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
 
         // Creation of a Sync Call
         editor.activateTool("Sync Call");
-        editor.click(lifelineCPosition, 500);
-        editor.click(lifelineAPosition, 500);
+        editor.click(lifelineCPosition, 400);
+        editor.click(lifelineAPosition, 400);
 
         // Creation of a Sync Call
         editor.activateTool("Sync Call");
-        editor.click(lifelineBPosition, 600);
-        editor.click(lifelineCPosition, 600);
+        editor.click(lifelineBPosition, 500);
+        editor.click(lifelineCPosition, 500);
 
         Point firstExecutionScreenPosition = getExecutionScreenPosition(LIFELINE_B, 0).getCopy();
         Dimension firstExecutionDimension = getExecutionScreenDimension(LIFELINE_B, 0).getCopy();
