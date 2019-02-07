@@ -15,6 +15,7 @@ package org.eclipse.sirius.tests.swtbot;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.Path;
 import org.eclipse.draw2d.Border;
@@ -898,12 +899,12 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
         if (swtBotGefEditPart.part() instanceof ConnectionEditPart) {
             ConnectionEditPart connectionEditPart = (ConnectionEditPart) swtBotGefEditPart.part();
             Connection connectionFigure = connectionEditPart.getConnectionFigure();
-            RotatableDecoration rotatableDecoration = (RotatableDecoration) ReflectionHelper.getFieldValueWithoutException(connectionFigure, (source ? "startDecoration" : "endDecoration")).get();
-            if (rotatableDecoration == null) {
+            Optional<Object> rotatableDecoration = ReflectionHelper.getFieldValueWithoutException(connectionFigure, (source ? "startDecoration" : "endDecoration"));
+            if (!rotatableDecoration.isPresent()) {
                 figureArrowType = ArrowType.NONE_LITERAL;
-            } else if (rotatableDecoration instanceof PolygonDecoration) {
+            } else if (rotatableDecoration.get() instanceof PolygonDecoration) {
                 figureArrowType = ArrowType.SOLID_ARROW_LITERAL;
-            } else if (rotatableDecoration instanceof PolylineDecoration) {
+            } else if (rotatableDecoration.get() instanceof PolylineDecoration) {
                 figureArrowType = ArrowType.OPEN_ARROW_LITERAL;
 
             }
