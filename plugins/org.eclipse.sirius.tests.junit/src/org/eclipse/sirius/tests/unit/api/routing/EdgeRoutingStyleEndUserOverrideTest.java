@@ -205,6 +205,7 @@ public class EdgeRoutingStyleEndUserOverrideTest extends SiriusDiagramTestCase {
     private void checkRoutingStyleCustomStyle(DiagramDocumentEditor editor, Routing expectedGMFRoutingLiteral, EdgeRouting expectedDEdgeRoutingLiteral, String sourceNodeName,
             Integer expectedEdgeSize, boolean customFeature) {
         boolean edgeFound = false;
+        TestsUtil.synchronizationWithUIThread();
         Iterable<IDiagramEdgeEditPart> connections = Iterables.filter(editor.getDiagramEditPart().getConnections(), IDiagramEdgeEditPart.class);
 
         for (IDiagramEdgeEditPart connection : connections) {

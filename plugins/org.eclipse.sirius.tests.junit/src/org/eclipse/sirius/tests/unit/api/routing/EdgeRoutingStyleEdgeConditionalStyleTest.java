@@ -107,6 +107,7 @@ public class EdgeRoutingStyleEdgeConditionalStyleTest extends SiriusDiagramTestC
      *            the edge's source node name
      */
     private void checkRoutingStyle(DiagramDocumentEditor editor, Routing expectedRoutingStyle, String sourceNodeName) {
+        TestsUtil.synchronizationWithUIThread();
         Iterable<IDiagramEdgeEditPart> connections = Iterables.filter(editor.getDiagramEditPart().getConnections(), IDiagramEdgeEditPart.class);
 
         boolean edgeFound = false;
