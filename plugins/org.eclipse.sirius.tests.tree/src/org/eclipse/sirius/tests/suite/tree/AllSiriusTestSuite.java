@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite.tree;
+
+import org.eclipse.sirius.tests.SiriusTreeTestsPlugin;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
@@ -30,13 +32,28 @@ public class AllSiriusTestSuite extends TestCase {
     }
 
     /**
-     * Creates the {@link junit.framework.TestSuite TestSuite} for all the test.
+     * Creates the {@link junit.framework.TestSuite TestSuite} for all the test.<BR>
+     * This suite can also launch a specific test by setting the environment variable TEST_CLASS_NAME to the qualified
+     * name of the expected class to launch.
      * 
      * @return The testsuite containing all the tests
      */
+    @SuppressWarnings("unchecked")
     public static Test suite() {
         final TestSuite suite = new TestSuite("Sirius tests tree");
-        suite.addTest(AllTreePluginTests.suite());
+        String testClassQualifiedName = System.getenv("TEST_CLASS_NAME"); //$NON-NLS-1$
+        if (testClassQualifiedName != null && testClassQualifiedName.length() > 0) {
+            try {
+                Class<?> testToLaunch = SiriusTreeTestsPlugin.getDefault().getBundle().loadClass(testClassQualifiedName);
+                if (TestCase.class.isAssignableFrom(testToLaunch)) {
+                    suite.addTestSuite((Class<? extends TestCase>) testToLaunch);
+                }
+            } catch (ClassNotFoundException e) {
+                fail("The class " + testClassQualifiedName + ", to launch for test specific case, has not been found.");
+            }
+        } else {
+            suite.addTest(AllTreePluginTests.suite());
+        }
         return suite;
     }
 }
