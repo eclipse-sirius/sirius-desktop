@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import java.io.FilenameFilter;
 import java.util.List;
 
 import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
@@ -150,6 +151,8 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
         } catch (CoreException e) {
             fail("The folder \"" + folder.getLocation().toOSString() + "\" could not be deleted : " + e.getMessage());
         }
+        // Refresh the project to be sure that the folder is no longer available in the Project Explorer
+        folder.getParent().refreshLocal(IResource.DEPTH_INFINITE, new NullProgressMonitor());
         // Launch an export that must fails because the previous saved folder
         // (used by default in the export dialog) does not exist.
         exportAsImageFromProjectExplorerView("JPG", null, "Folder does not exist");
