@@ -188,13 +188,12 @@ public class FieldsBuilder {
         } else if (EcorePackage.eINSTANCE.getEString().equals(eDataType)) {
             type = Scalars.GraphQLString;
         } else {
-            type = this.eDataTypeToOutputTypeCache.get(eDataType);
-            this.eDataTypeToOutputTypeCache.computeIfAbsent(eDataType, (dataType) -> {
+            type = this.eDataTypeToOutputTypeCache.computeIfAbsent(eDataType, (dataType) -> {
                 GraphQLOutputType graphQLOutputType = null;
                 if (dataType instanceof EEnum) {
                     EEnum eEnum = (EEnum) dataType;
                     graphQLOutputType = new EEnumTypeBuilder(eEnum).getType();
-                } else {
+                } else if (dataType.isSerializable()) {
                     graphQLOutputType = new EStructuralFeatureScalarTypeBuilder(eDataType).getType();
                 }
                 return graphQLOutputType;
