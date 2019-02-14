@@ -148,53 +148,68 @@ public class SequenceSwtBotTestSuite extends TestCase {
     }
 
     /**
-     * Creates the {@link junit.framework.TestSuite TestSuite} for all the test.
+     * Creates the {@link junit.framework.TestSuite TestSuite} for all the test.<BR>
+     * This suite can also launch a specific test by setting the environment variable TEST_CLASS_NAME to the qualified
+     * name of the expected class to launch.
      * 
      * @return The test suite containing all the tests
      */
+    @SuppressWarnings("unchecked")
     public static Test suite() {
         final TestSuite suite = new TestSuite("SwtBot tests on sequence diagram");
-        addGerritPart(suite);
 
-        suite.addTestSuite(SequenceReturnMessageTest.class);
-        suite.addTestSuite(SyncCallTest.class);
-        suite.addTestSuite(SyncCallMoveTest.class);
-        suite.addTestSuite(SyncCall2Test.class);
-        suite.addTestSuite(SyncCall3Test.class);
-        suite.addTestSuite(SyncCallInOperandReorderTest.class);
-        suite.addTestSuite(CreateMessageOnCollapsedExecutionTest.class);
-        suite.addTestSuite(SequenceExecutionMessageToSelfTest.class);
-        suite.addTestSuite(SequenceDestroyMessageTest.class);
-        suite.addTestSuite(NoteAttachmentTest.class);
-        suite.addTestSuite(SequenceArrangeLinkedBorderedNodesTest.class);
-        suite.addTestSuite(InteractionUseSingleClickCreationTests.class);
-        suite.addTestSuite(InteractionUseTwoClickCreationTests.class);
-        suite.addTestSuite(InteractionUseCoverageTests.class);
-        suite.addTestSuite(InteractionUseTests.class);
-        suite.addTestSuite(InteractionUseMoveDownTests.class);
-        suite.addTestSuite(InteractionUseResizeTests.class);
-        suite.addTestSuite(CombinedFragmentsSingleClickCreationTests.class);
-        suite.addTestSuite(CombinedFragmentsTwoClickCreationTests.class);
-        suite.addTestSuite(CombinedFragmentsWithInclusionCreationTests.class);
-        suite.addTestSuite(CombinedFragmentsAndElementsCreationTests.class);
-        suite.addTestSuite(CombinedFragmentsAndMessagesCreationTests.class);
-        suite.addTestSuite(CombinedFragmentsTests.class);
-        suite.addTestSuite(CombinedFragmentsOperandCreationTests.class);
-        suite.addTestSuite(CombinedFragmentsOperandOverlapTests.class);
-        suite.addTestSuite(StateBasicTests.class);
-        suite.addTestSuite(PunctualStateTests.class);
-        suite.addTestSuite(RefreshLayoutNotExecutedOnNoSequenceChangesTests.class);
-        suite.addTestSuite(StateNoMessageTests.class);
-        suite.addTestSuite(ComplexInOutCombinedFragmentTest.class);
-        suite.addTestSuite(ObservationPointTests.class);
-        suite.addTestSuite(ActionDisabledOnSequenceDiagramTest.class);
-        suite.addTestSuite(ActionDisabledOnExtendedMessagesTest.class);
-        suite.addTestSuite(FrameReparentTest.class);
-        suite.addTestSuite(InstanceRoleOrderingTests.class);
-        suite.addTestSuite(HeaderSequenceDiagramTests.class);
-        suite.addTestSuite(SequenceExecutionBasicAndReturnMessageTest.class);
-        suite.addTestSuite(ExecutionMoveTests.class);
+        String testClassQualifiedName = System.getenv("TEST_CLASS_NAME"); //$NON-NLS-1$
+        if (testClassQualifiedName != null && testClassQualifiedName.length() > 0) {
+            try {
+                Class<?> testToLaunch = Activator.getDefault().getBundle().loadClass(testClassQualifiedName);
+                if (TestCase.class.isAssignableFrom(testToLaunch)) {
+                    suite.addTestSuite((Class<? extends TestCase>) testToLaunch);
+                }
+            } catch (ClassNotFoundException e) {
+                fail("The class " + testClassQualifiedName + ", to launch for test specific case, has not been found.");
+            }
+        } else {
+            addGerritPart(suite);
 
+            suite.addTestSuite(SequenceReturnMessageTest.class);
+            suite.addTestSuite(SyncCallTest.class);
+            suite.addTestSuite(SyncCallMoveTest.class);
+            suite.addTestSuite(SyncCall2Test.class);
+            suite.addTestSuite(SyncCall3Test.class);
+            suite.addTestSuite(SyncCallInOperandReorderTest.class);
+            suite.addTestSuite(CreateMessageOnCollapsedExecutionTest.class);
+            suite.addTestSuite(SequenceExecutionMessageToSelfTest.class);
+            suite.addTestSuite(SequenceDestroyMessageTest.class);
+            suite.addTestSuite(NoteAttachmentTest.class);
+            suite.addTestSuite(SequenceArrangeLinkedBorderedNodesTest.class);
+            suite.addTestSuite(InteractionUseSingleClickCreationTests.class);
+            suite.addTestSuite(InteractionUseTwoClickCreationTests.class);
+            suite.addTestSuite(InteractionUseCoverageTests.class);
+            suite.addTestSuite(InteractionUseTests.class);
+            suite.addTestSuite(InteractionUseMoveDownTests.class);
+            suite.addTestSuite(InteractionUseResizeTests.class);
+            suite.addTestSuite(CombinedFragmentsSingleClickCreationTests.class);
+            suite.addTestSuite(CombinedFragmentsTwoClickCreationTests.class);
+            suite.addTestSuite(CombinedFragmentsWithInclusionCreationTests.class);
+            suite.addTestSuite(CombinedFragmentsAndElementsCreationTests.class);
+            suite.addTestSuite(CombinedFragmentsAndMessagesCreationTests.class);
+            suite.addTestSuite(CombinedFragmentsTests.class);
+            suite.addTestSuite(CombinedFragmentsOperandCreationTests.class);
+            suite.addTestSuite(CombinedFragmentsOperandOverlapTests.class);
+            suite.addTestSuite(StateBasicTests.class);
+            suite.addTestSuite(PunctualStateTests.class);
+            suite.addTestSuite(RefreshLayoutNotExecutedOnNoSequenceChangesTests.class);
+            suite.addTestSuite(StateNoMessageTests.class);
+            suite.addTestSuite(ComplexInOutCombinedFragmentTest.class);
+            suite.addTestSuite(ObservationPointTests.class);
+            suite.addTestSuite(ActionDisabledOnSequenceDiagramTest.class);
+            suite.addTestSuite(ActionDisabledOnExtendedMessagesTest.class);
+            suite.addTestSuite(FrameReparentTest.class);
+            suite.addTestSuite(InstanceRoleOrderingTests.class);
+            suite.addTestSuite(HeaderSequenceDiagramTests.class);
+            suite.addTestSuite(SequenceExecutionBasicAndReturnMessageTest.class);
+            suite.addTestSuite(ExecutionMoveTests.class);
+        }
         return suite;
     }
 
