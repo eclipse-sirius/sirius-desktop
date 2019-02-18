@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -41,6 +41,7 @@ import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.SWTBot;
+import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotRadio;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
@@ -241,9 +242,24 @@ public class CustomizationPropertySectionsTests extends AbstractContentAssistTes
         SWTBotUtils.waitAllUiEvents();
         appliedOnButton.click();
         appliedOnSelectorShell = bot.activeShell();
-        appliedOnSelectorShellBot = appliedOnSelectorShell.bot();
-        assertEquals("The left list of available elements should be of 5, i.e. all available style description elements", 5, appliedOnSelectorShellBot.table(0).rowCount());
-        table2 = appliedOnSelectorShellBot.table(1);
+        final SWTBot appliedOnSelectorShellBot2 = appliedOnSelectorShell.bot();
+        appliedOnSelectorShellBot2.waitUntil(new ICondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                return appliedOnSelectorShellBot2.table(0).rowCount() == 5;
+            }
+
+            @Override
+            public void init(SWTBot bot) {
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "The left list of available elements should be of 5, i.e. all available style description elements, but was " + appliedOnSelectorShellBot2.table(0).rowCount();
+            }
+        });
+        table2 = appliedOnSelectorShellBot2.table(1);
         assertEquals("The right list of selected elements should be of 3", 3, table2.rowCount());
         assertEquals("StyleCustomizations > StyleCustomizations > DiagramDescription > Default > EClassMapping > Gradient white to light_gray", table2.getTableItem(0).getText());
         assertEquals("StyleCustomizations > StyleCustomizations > DiagramDescription > Default > EPackageMapping > Gradient white to light_gray", table2.getTableItem(1).getText());
