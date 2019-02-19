@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,8 @@
  */
 package org.eclipse.sirius.tests.swtbot.support.api.business;
 
+import static org.junit.Assert.fail;
+
 import java.util.Collection;
 import java.util.concurrent.TimeUnit;
 
@@ -20,7 +22,10 @@ import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.sirius.business.api.modelingproject.AbstractRepresentationsFileJob;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -259,6 +264,12 @@ public class UIPerspective {
         ICondition addedToSessionManager = new OpenedSessionCondition(SessionManager.INSTANCE.getSessions().size() + 1);
         uiLocalSessionResource.openSession();
         SWTBotUtils.waitProgressMonitorClose(OpenRepresentationsFileJob.JOB_LABEL, OpenRepresentationsFileJob.JOB_LABEL, SWTBotUtils.CLOSE_PROGRESS_MONITOR_TIMEOUT, TimeUnit.SECONDS, false);
+        // Ensure that the OpenRepresentationsFileJob is finished before continuing
+        try {
+            Job.getJobManager().join(AbstractRepresentationsFileJob.FAMILY, new NullProgressMonitor());
+        } catch (OperationCanceledException | InterruptedException e) {
+            fail("The session was not correctly opened: " + e.getMessage());
+        }
         bot.waitUntil(addedToSessionManager);
         bot.waitUntil(openedSessionListener);
         SessionManager.INSTANCE.removeSessionsListener(openedSessionListener);
