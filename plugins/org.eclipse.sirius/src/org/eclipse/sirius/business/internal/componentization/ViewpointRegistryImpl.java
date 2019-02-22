@@ -691,6 +691,11 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     private EObject load(final URI resourceURI, final ResourceSet set) throws IOException, WrappedException, RuntimeException {
         final Resource resource = set.getResource(resourceURI, true);
         resource.load(Collections.EMPTY_MAP);
+        // see #544563 we resolve the resource set in case viewpoints are not registered in their dependencies order
+        // leading to mappings not resolved.
+        if (Boolean.getBoolean("org.eclipse.sirius.viewpoint.registry.forceResolveOnLoad")) { //$NON-NLS-1$
+            EcoreUtil.resolveAll(set);
+        }
         return resource.getContents().get(0);
         /* CHECKSTYLE:ON */
     }
