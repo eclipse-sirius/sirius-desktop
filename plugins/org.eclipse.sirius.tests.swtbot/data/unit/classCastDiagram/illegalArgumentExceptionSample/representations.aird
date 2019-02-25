@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_H4uJMCrgEem6yvuHokhqDg" selectedViews="_fw8JQCrlEem6yvuHokhqDg" version="14.1.0.201810161215">
+    <semanticResources>My.ecore</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_JJyvgCrgEem6yvuHokhqDg">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
+    </ownedViews>
+    <ownedViews xmi:type="viewpoint:DView" uid="_fw8JQCrlEem6yvuHokhqDg">
+      <viewpoint xmi:type="description:Viewpoint" href="My.odesign#//@ownedViewpoints[name='Doremi-4005']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_lYmVUSrlEem6yvuHokhqDg" name="new Doremi-4005" repPath="#_lYiD4CrlEem6yvuHokhqDg">
+        <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='Doremi-4005']/@ownedRepresentations[name='Doremi-4005']"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_lYiD4CrlEem6yvuHokhqDg" name="new Doremi-4005">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_lYluQyrlEem6yvuHokhqDg" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_lYluRCrlEem6yvuHokhqDg"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_lYm8YCrlEem6yvuHokhqDg" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_lYm8YSrlEem6yvuHokhqDg" type="Sirius" element="_lYiD4CrlEem6yvuHokhqDg" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_-8afECrrEem6yvuHokhqDg" type="2001" element="_lYj5ECrlEem6yvuHokhqDg">
+          <children xmi:type="notation:Node" xmi:id="_-8afEyrrEem6yvuHokhqDg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_-8afFCrrEem6yvuHokhqDg" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_y9EiwCrsEem6yvuHokhqDg" type="3005" element="_y8i-USrsEem6yvuHokhqDg">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_y9EiwSrsEem6yvuHokhqDg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y9EiwirsEem6yvuHokhqDg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_-8afESrrEem7avuHokhqDg" fontColor="1345869" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-8afE8rrEem6yvuHokhqDg" x="84" y="348" width="300" height="76"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_-8afECrrE1m6yvugokhqDg" type="2001">
+          <children xmi:type="notation:Node" xmi:id="_-8afEyr2Eem6yvuHo45qDg" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_-8afFCrAAem6yvuHokhqDg" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_y9EiwCraEem6yvuHoahqDg" type="3005">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_y9EiwSasEem2yvuHoahqDg" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_y9EawirbEem6yvuHokcqDg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_-8afESrraZm6yvuHokhqDg" fontColor="1345869" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-8aRTirrEea6yvuHokhqDg" x="84" y="348" width="300" height="76"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_lYm8YirlEem6yvuHokhqDg"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_lYj5ECrlEem6yvuHokhqDg" name="NewEClass1" tooltipText="NewEClass1" width="-1" height="-1" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="My.ecore#//NewEClass1"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//NewEClass1"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_y8i-USrsEem6yvuHokhqDg" labelSize="12" showIcon="false" workspacePath="/doremi_4005/logo_obeo.png">
+        <description xmi:type="style:WorkspaceImageDescription" href="My.odesign#//@ownedViewpoints[name='Doremi-4005']/@ownedRepresentations[name='Doremi-4005']/@defaultLayer/@nodeMappings[name='EClass']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='Doremi-4005']/@ownedRepresentations[name='Doremi-4005']/@defaultLayer/@nodeMappings[name='EClass']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='Doremi-4005']/@ownedRepresentations[name='Doremi-4005']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_lYiD4SrlEem6yvuHokhqDg"/>
+    <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='Doremi-4005']/@ownedRepresentations[name='Doremi-4005']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

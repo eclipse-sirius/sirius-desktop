@@ -608,7 +608,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                     notify(REPRESENTATION_EDITION_PERMISSION_DENIED);
                 }
             }
-        } catch (ClassCastException | NullPointerException e) {
+        } catch (ClassCastException | NullPointerException | IllegalArgumentException | AssertionError e) {
 
             Boolean response = MessageDialog.openConfirm(parent.getShell(), Messages.DDiagramEditorImpl_diagramRefreshTitle, Messages.DDiagramEditorImpl_shouldWeRefreshQuestion);
             close(false);
