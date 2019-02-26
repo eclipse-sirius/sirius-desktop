@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2004, 2013 IBM Corporation and others.
+ * Copyright (c) 2004, 2019 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,10 +20,13 @@ import java.util.List;
 import org.eclipse.draw2d.AbsoluteBendpoint;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.RelativeBendpoint;
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.ITreeConnection;
+import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
@@ -238,5 +241,56 @@ public class ConnectionQuery {
             }
         }
         return Options.newNone();
+    }
+
+    /**
+     * Retrieve the absolute coordinates of bendpoints using the source and target anchor locations.
+     * 
+     * @param bendpoints
+     *            the bendpoints of an edge
+     * @param existingSourceAnchorAbsoluteLocation
+     *            source anchor location
+     * @param existingTargetAnchorAbsoluteLocation
+     *            target anchor location
+     * @return the absolute bendpoints coordinates list.
+     */
+    public PointList getAbsolutePointList(RelativeBendpoints bendpoints, PrecisionPoint existingSourceAnchorAbsoluteLocation, PrecisionPoint existingTargetAnchorAbsoluteLocation) {
+
+        PointList pointList = new PointList();
+
+        Option<PointList> option = getAbsolutePointListFromConnection();
+        if (option.some()) {
+            pointList = option.get();
+        } else {
+            List<org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint> relativeBendpoints = bendpoints.getPoints();
+            for (int i = 0; i < relativeBendpoints.size(); i++) {
+                float weight = i / ((float) relativeBendpoints.size() - 1);
+                Point absoluteLocation = getLocation(existingSourceAnchorAbsoluteLocation, existingTargetAnchorAbsoluteLocation, relativeBendpoints.get(i), weight);
+                pointList.addPoint(absoluteLocation);
+            }
+        }
+
+        return pointList;
+    }
+
+    /**
+     * Inspired by org.eclipse.draw2d.RelativeBendpoint.getLocation() to compute the absolute bendpoint location as
+     * draw2d do.
+     */
+    private Point getLocation(Point sourceAnchor, Point targetAnchor, org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint gmfRelativeBendpoint, float weight) {
+        PrecisionPoint a1 = new PrecisionPoint(sourceAnchor);
+        PrecisionPoint a2 = new PrecisionPoint(targetAnchor);
+
+        return new PrecisionPoint((a1.preciseX() + gmfRelativeBendpoint.getSourceX()) * (1.0 - weight) + weight * (a2.preciseX() + gmfRelativeBendpoint.getTargetX()),
+                (a1.preciseY() + gmfRelativeBendpoint.getSourceY()) * (1.0 - weight) + weight * (a2.preciseY() + gmfRelativeBendpoint.getTargetY()));
+    }
+
+    private Option<PointList> getAbsolutePointListFromConnection() {
+        Option<PointList> pointList = Options.newNone();
+        if (connection != null) {
+            pointList = Options.newSome(connection.getPoints().getCopy());
+        }
+
+        return pointList;
     }
 }

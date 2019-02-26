@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2014, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,12 +14,25 @@
 
 package org.eclipse.sirius.diagram.ui.tools.internal.routers;
 
+import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
+import org.eclipse.gmf.runtime.notation.Bendpoints;
+import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.sirius.diagram.description.CenteringStyle;
+import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery;
+import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery;
+import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 
 /**
  * Utility class for rectilinear edges. Handles edge centering.
@@ -316,6 +329,88 @@ public final class RectilinearEdgeUtil {
         pointList.addPoint(tgtPoint);
         return pointList;
     }
+
+    /**
+     * Compute the point list (in absolute coordinates) composing rectilinear edge with the same source and target. This
+     * method will compute a default route from the side where the connection source was connected and the target will
+     * be set on the next side in a clockwise order.
+     * 
+     * @param srcAndTgtAbsoluteBounds
+     *            figure bounds of the edge source and target (as they are the same)
+     * @param editPart
+     *            {@link ConnectionNodeEditPart} corresponding to the rectilinear edge to recompute
+     * @return the point list (in absolute coordinates) composing rectilinear edge.
+     */
+    public static PointList computeRectilinearBendpointsSameSourceAndTarget(Rectangle srcAndTgtAbsoluteBounds, ConnectionNodeEditPart editPart) {
+        // Look for the first bendpoint location
+        Bendpoints bendpoints = ((Edge) editPart.getModel()).getBendpoints();
+        RelativeBendpoints relativeBendpoints = (RelativeBendpoints) bendpoints;
+        ConnectionEditPartQuery connectionEditPartQuery = new ConnectionEditPartQuery(editPart);
+        PrecisionPoint sourceAnchorsAbsoluteLocation = connectionEditPartQuery.getCenteredAnchorsAbsoluteLocation(srcAndTgtAbsoluteBounds);
+        PrecisionPoint targetAnchorsAbsoluteLocation = connectionEditPartQuery.getCenteredAnchorsAbsoluteLocation(srcAndTgtAbsoluteBounds);
+        PointList initialPointList = new ConnectionQuery((Connection) editPart.getFigure()).getAbsolutePointList(relativeBendpoints, sourceAnchorsAbsoluteLocation, targetAnchorsAbsoluteLocation);
+        // Check on which side this first bendpoint is located
+        EditPartQuery editPartQuery = new EditPartQuery((IGraphicalEditPart) editPart.getSource());
+        int sourceSide = editPartQuery.getSideOfLocation(initialPointList.getFirstPoint());
+        // Compute the location of the center of this side to use it as the new location of the first bendpoint
+        Option<Point> srcConnectionBendpoint = Options.newSome(editPartQuery.getCenterOfSide(sourceSide));
+        Point srcPoint = srcConnectionBendpoint.get();
+        return computeRectilinearBendpointsSameSourceAndTarget(srcAndTgtAbsoluteBounds, srcPoint, sourceSide);
+    }
+
+    /**
+     * Compute the point list (in absolute coordinates) composing rectilinear edge with the same source and target. This
+     * method will compute a default route from the side where the connection source was connected and the target will
+     * be set on the next side in a clockwise order.
+     * 
+     * @param srcAndTgtAbsoluteBounds
+     *            figure bounds of the edge source and target (as they are the same)
+     * @param srcPoint
+     *            location of the first bendpoint (source)
+     * @param sourceSide
+     *            side on the parent where the first bendpoint is located
+     * @return the point list (in absolute coordinates) composing rectilinear edge.
+     */
+    public static PointList computeRectilinearBendpointsSameSourceAndTarget(Rectangle srcAndTgtAbsoluteBounds, Point srcPoint, int sourceSide) {
+        PointList pointList = new PointList();
+        pointList.addPoint(srcPoint);
+        int offset = LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION.height;
+        if (PositionConstants.NORTH == sourceSide) {
+            Point newSecondPoint = new Point(srcPoint.x, srcAndTgtAbsoluteBounds.getTop().y - offset);
+            pointList.addPoint(newSecondPoint);
+            Point newThirdPoint = new Point(srcAndTgtAbsoluteBounds.getRight().x + offset, srcAndTgtAbsoluteBounds.getTop().y - offset);
+            pointList.addPoint(newThirdPoint);
+            Point newFourthPoint = new Point(srcAndTgtAbsoluteBounds.getRight().x + offset, srcAndTgtAbsoluteBounds.getRight().y);
+            pointList.addPoint(newFourthPoint);
+            pointList.addPoint(srcAndTgtAbsoluteBounds.getRight());
+        } else if (PositionConstants.EAST == sourceSide) {
+            Point newSecondPoint = new Point(srcAndTgtAbsoluteBounds.getRight().x + offset, srcPoint.y);
+            pointList.addPoint(newSecondPoint);
+            Point newThirdPoint = new Point(srcAndTgtAbsoluteBounds.getRight().x + offset, srcAndTgtAbsoluteBounds.getBottom().y + offset);
+            pointList.addPoint(newThirdPoint);
+            Point newFourthPoint = new Point(srcAndTgtAbsoluteBounds.getBottom().x, srcAndTgtAbsoluteBounds.getBottom().y + offset);
+            pointList.addPoint(newFourthPoint);
+            pointList.addPoint(srcAndTgtAbsoluteBounds.getBottom());
+        } else if (PositionConstants.SOUTH == sourceSide) {
+            Point newSecondPoint = new Point(srcPoint.x, srcAndTgtAbsoluteBounds.getBottom().y + offset);
+            pointList.addPoint(newSecondPoint);
+            Point newThirdPoint = new Point(srcAndTgtAbsoluteBounds.getLeft().x - offset, srcAndTgtAbsoluteBounds.getBottom().y + offset);
+            pointList.addPoint(newThirdPoint);
+            Point newFourthPoint = new Point(srcAndTgtAbsoluteBounds.getLeft().x - offset, srcAndTgtAbsoluteBounds.getLeft().y);
+            pointList.addPoint(newFourthPoint);
+            pointList.addPoint(srcAndTgtAbsoluteBounds.getLeft());
+        } else if (PositionConstants.WEST == sourceSide) {
+            Point newSecondPoint = new Point(srcAndTgtAbsoluteBounds.getLeft().x - offset, srcPoint.y);
+            pointList.addPoint(newSecondPoint);
+            Point newThirdPoint = new Point(srcAndTgtAbsoluteBounds.getLeft().x - offset, srcAndTgtAbsoluteBounds.getTop().y - offset);
+            pointList.addPoint(newThirdPoint);
+            Point newFourthPoint = new Point(srcAndTgtAbsoluteBounds.getTop().x, srcAndTgtAbsoluteBounds.getTop().y - offset);
+            pointList.addPoint(newFourthPoint);
+            pointList.addPoint(srcAndTgtAbsoluteBounds.getTop());
+        }
+        return pointList;
+    }
+
 
     /**
      * Align point of figure's bound toward anchor.

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017-2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,13 +17,15 @@ import java.util.Optional;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
-import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
@@ -101,40 +103,72 @@ public class RemoveEdgeBendpointsTest extends AbstractSiriusSwtBotGefTestCase {
     /**
      * Test that removes bendpoints on an edge between two nodes (zoom 100%)
      */
-    public void testRemoveBendpointsBetweenNode() {
-        removeBendpointsBetweenNode(ZoomLevel.ZOOM_100);
+    public void testRemoveBendpointsBetweenNodes() {
+        removeBendpointsBetweenNodes(ZoomLevel.ZOOM_100);
     }
 
     /**
-     * Test that removes bendpoints on a rectilinear edge between a border node and an
-     * other one (zoom 100%). Result will be an edge with three segments.
+     * Test that removes bendpoints on a rectilinear edge between a border node and an other one (zoom 100%). Result
+     * will be an edge with three segments.
      */
     public void testRemoveRectilinearBendpointsBetweenBorderNodesThreeSeg() {
         removeRectilinearBendpointsBetweenBorderNodesThreeSeg(ZoomLevel.ZOOM_100);
     }
 
     /**
-     * Test that removes bendpoints on a rectilinear edge between a border node and an
-     * other one (zoom 100%). Result will be an edge with two segments.
+     * Test that removes bendpoints on a rectilinear edge between a border node and an other one (zoom 100%). Result
+     * will be an edge with two segments.
      */
     public void testRemoveRectilinearBendpointsBetweenBorderNodesTwoSeg() {
         removeRectilinearBendpointsBetweenBorderNodesTwoSeg(ZoomLevel.ZOOM_100);
     }
 
     /**
-     * Test that removes bendpoints on a rectilinear edge between two nodes (zoom 100%)
-     * Result will be an edge with three segments.
+     * Test that removes bendpoints on a rectilinear edge between two nodes (zoom 100%) Result will be an edge with
+     * three segments.
      */
     public void testRemoveRectilinearBendpointsBetweenNodeThreeSeg() {
         removeRectilinearBendpointsBetweenNodeThreeSeg(ZoomLevel.ZOOM_100);
     }
 
     /**
-     * Test that removes bendpoints on a rectilinear edge between two nodes (zoom 100%)
-     * Result will be an edge with two segments.
+     * Test that removes bendpoints on a rectilinear edge between two nodes (zoom 100%) Result will be an edge with two
+     * segments.
      */
     public void testRemoveRectilinearBendpointsBetweenNodeTwoSeg() {
         removeRectilinearBendpointsBetweenNodeTwoSeg(ZoomLevel.ZOOM_100);
+    }
+
+    /**
+     * Test that removes bendpoints on an edge with the same node as source and target. The target is connected on the
+     * next side from the source in the clockwise order (zoom 100%)
+     */
+    public void testRemoveBendpointsRectilinearRoutingBetweenSameNodeTargetNextSide() {
+        removeBendpointsRectilinearRoutingBetweenSameNodeTargetNextSide(ZoomLevel.ZOOM_100, PositionConstants.EAST);
+    }
+
+    /**
+     * Test that removes bendpoints on an edge with the same node as source and target. The source and target connection
+     * are located on opposite sides (zoom 100%)
+     */
+    public void testRemoveBendpointsRectilinearRoutingBetweenSameNodeTargetOppositeSide() {
+        removeBendpointsRectilinearRoutingBetweenSameNodeTargetOppositeSide(ZoomLevel.ZOOM_100, PositionConstants.NORTH);
+    }
+
+    /**
+     * Test that removes bendpoints on an edge with the same node as source and target. The source and target connection
+     * are located on the same side (zoom 100%)
+     */
+    public void testRemoveBendpointsRectilinearRoutingBetweenSameNodeTargetSameSide() {
+        removeBendpointsRectilinearRoutingBetweenSameNodeTargetSameSide(ZoomLevel.ZOOM_100, PositionConstants.WEST);
+    }
+
+    /**
+     * Test that removes bendpoints on an edge with the same node as source and target but with no extra bendpoints has
+     * no effect (zoom 100%)
+     */
+    public void testRemoveBendpointsRectilinearRoutingBetweenSameNodeTargetNoExtraBendpoint() {
+        removeBendpointsRectilinearRoutingBetweenSameNodeTargetNoExtraBendpoint(ZoomLevel.ZOOM_100, PositionConstants.EAST);
     }
 
     /**
@@ -156,7 +190,7 @@ public class RemoveEdgeBendpointsTest extends AbstractSiriusSwtBotGefTestCase {
      * Test that removes bendpoints on an edge between two nodes (zoom 50%)
      */
     public void testRemoveBendpointsBetweenNode50() {
-        removeBendpointsBetweenNode(ZoomLevel.ZOOM_50);
+        removeBendpointsBetweenNodes(ZoomLevel.ZOOM_50);
     }
 
     /**
@@ -192,8 +226,39 @@ public class RemoveEdgeBendpointsTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that removes bendpoints on an edge between two containers (zoom
-     * 125%)
+     * Test that removes bendpoints on an edge with the same node as source and target. The target is connected on the
+     * next side from the source in the clockwise order (zoom 50%)
+     */
+    public void testRemoveBendpointsRectilinearRoutingBetweenSameNodeTargetNextSide50() {
+        removeBendpointsRectilinearRoutingBetweenSameNodeTargetNextSide(ZoomLevel.ZOOM_50, PositionConstants.EAST);
+    }
+
+    /**
+     * Test that removes bendpoints on an edge with the same node as source and target. The source and target connection
+     * are located on opposite sides (zoom 50%)
+     */
+    public void testRemoveBendpointsRectilinearRoutingBetweenSameNodeTargetOppositeSide50() {
+        removeBendpointsRectilinearRoutingBetweenSameNodeTargetOppositeSide(ZoomLevel.ZOOM_50, PositionConstants.NORTH);
+    }
+
+    /**
+     * Test that removes bendpoints on an edge with the same node as source and target. The source and target connection
+     * are located on the same side (zoom 50%)
+     */
+    public void testRemoveBendpointsRectilinearRoutingBetweenSameNodeTargetSameSide50() {
+        removeBendpointsRectilinearRoutingBetweenSameNodeTargetSameSide(ZoomLevel.ZOOM_50, PositionConstants.WEST);
+    }
+
+    /**
+     * Test that removes bendpoints on an edge with the same node as source and target but with no extra bendpoints has
+     * no effect (zoom 50%)
+     */
+    public void testRemoveBendpointsRectilinearRoutingBetweenSameNodeTargetNoExtraBendpoint50() {
+        removeBendpointsRectilinearRoutingBetweenSameNodeTargetNoExtraBendpoint(ZoomLevel.ZOOM_50, PositionConstants.EAST);
+    }
+
+    /**
+     * Test that removes bendpoints on an edge between two containers (zoom 125%)
      */
     public void testRemoveBendpointsBetweenContainers125() {
         removeBendpointsBetweenContainers(ZoomLevel.ZOOM_125);
@@ -211,7 +276,39 @@ public class RemoveEdgeBendpointsTest extends AbstractSiriusSwtBotGefTestCase {
      * Test that removes bendpoints on an edge between two nodes (zoom 125%)
      */
     public void testRemoveBendpointsBetweenNode125() {
-        removeBendpointsBetweenNode(ZoomLevel.ZOOM_125);
+        removeBendpointsBetweenNodes(ZoomLevel.ZOOM_125);
+    }
+
+    /**
+     * Test that removes bendpoints on an edge with the same node as source and target. The target is connected on the
+     * next side from the source in the clockwise order (zoom 125%)
+     */
+    public void testRemoveBendpointsRectilinearRoutingBetweenSameNodeTargetNextSide125() {
+        removeBendpointsRectilinearRoutingBetweenSameNodeTargetNextSide(ZoomLevel.ZOOM_125, PositionConstants.EAST);
+    }
+
+    /**
+     * Test that removes bendpoints on an edge with the same node as source and target. The source and target connection
+     * are located on opposite sides (zoom 125%)
+     */
+    public void testRemoveBendpointsRectilinearRoutingBetweenSameNodeTargetOppositeSide125() {
+        removeBendpointsRectilinearRoutingBetweenSameNodeTargetOppositeSide(ZoomLevel.ZOOM_125, PositionConstants.NORTH);
+    }
+
+    /**
+     * Test that removes bendpoints on an edge with the same node as source and target. The source and target connection
+     * are located on the same side (zoom 125%)
+     */
+    public void testRemoveBendpointsRectilinearRoutingBetweenSameNodeTargetSameSide125() {
+        removeBendpointsRectilinearRoutingBetweenSameNodeTargetSameSide(ZoomLevel.ZOOM_125, PositionConstants.WEST);
+    }
+
+    /**
+     * Test that removes bendpoints on an edge with the same node as source and target but with no extra bendpoints has
+     * no effect (zoom 125%)
+     */
+    public void testRemoveBendpointsRectilinearRoutingBetweenSameNodeTargetNoExtraBendpoint125() {
+        removeBendpointsRectilinearRoutingBetweenSameNodeTargetNoExtraBendpoint(ZoomLevel.ZOOM_125, PositionConstants.EAST);
     }
 
     private void removeBendpointsBetweenContainers(ZoomLevel zoomLevel) {
@@ -224,8 +321,24 @@ public class RemoveEdgeBendpointsTest extends AbstractSiriusSwtBotGefTestCase {
         removeBendpointsOfEdge(zoomLevel, "edge3");
     }
 
-    private void removeBendpointsBetweenNode(ZoomLevel zoomLevel) {
+    private void removeBendpointsBetweenNodes(ZoomLevel zoomLevel) {
         removeBendpointsOfEdge(zoomLevel, "edge15");
+    }
+
+    private void removeBendpointsRectilinearRoutingBetweenSameNodeTargetNextSide(ZoomLevel zoomLevel, int expectedSourceSide) {
+        removeBendpointsOfRectilinearEdge(zoomLevel, "edge18", 4, expectedSourceSide);
+    }
+
+    private void removeBendpointsRectilinearRoutingBetweenSameNodeTargetOppositeSide(ZoomLevel zoomLevel, int expectedSourceSide) {
+        removeBendpointsOfRectilinearEdge(zoomLevel, "edge19", 4, expectedSourceSide);
+    }
+
+    private void removeBendpointsRectilinearRoutingBetweenSameNodeTargetSameSide(ZoomLevel zoomLevel, int expectedSourceSide) {
+        removeBendpointsOfRectilinearEdge(zoomLevel, "edge20", 4, expectedSourceSide);
+    }
+
+    private void removeBendpointsRectilinearRoutingBetweenSameNodeTargetNoExtraBendpoint(ZoomLevel zoomLevel, int expectedSourceSide) {
+        removeBendpointsOfRectilinearEdgeNoEffect(zoomLevel, "edge21", 4, expectedSourceSide);
     }
 
     private void removeRectilinearBendpointsBetweenBorderNodesThreeSeg(ZoomLevel zoomLevel) {
@@ -247,21 +360,10 @@ public class RemoveEdgeBendpointsTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     private void removeBendpointsOfEdge(ZoomLevel zoomLevel, String edgename) {
-        editor.zoom(zoomLevel);
-        SWTBotUtils.waitAllUiEvents();
-
-        SWTBotGefConnectionEditPart swtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart(edgename,
-                DEdgeEditPart.class);
-        swtBotGefEditPart.select();
-        removeBendpoints();
-
-        editor.zoom(ZoomLevel.ZOOM_100);
-        SWTBotUtils.waitAllUiEvents();
-
-        assertEdgeHasExpectedBendpoints(swtBotGefEditPart);
+        removeBendpointsOfEdge(zoomLevel, edgename, 2);
     }
 
-    private void removeBendpointsOfRectilinearEdge(ZoomLevel zoomLevel, String edgename, int nbSegemnt) {
+    private void removeBendpointsOfEdge(ZoomLevel zoomLevel, String edgename, int expectedBendpoints) {
         editor.zoom(zoomLevel);
         SWTBotUtils.waitAllUiEvents();
 
@@ -273,7 +375,39 @@ public class RemoveEdgeBendpointsTest extends AbstractSiriusSwtBotGefTestCase {
         editor.zoom(ZoomLevel.ZOOM_100);
         SWTBotUtils.waitAllUiEvents();
 
-        assertRectilinearEdgeHasExpectedBendpoints(swtBotGefEditPart, nbSegemnt);
+        assertEdgeHasExpectedBendpoints(swtBotGefEditPart, expectedBendpoints);
+    }
+
+    private void removeBendpointsOfRectilinearEdge(ZoomLevel zoomLevel, String edgename, int nbSegment) {
+        removeBendpointsOfRectilinearEdge(zoomLevel, edgename, nbSegment, PositionConstants.NONE);
+    }
+
+    private void removeBendpointsOfRectilinearEdge(ZoomLevel zoomLevel, String edgename, int nbSegment, int expectedSourceSide) {
+        editor.zoom(zoomLevel);
+        SWTBotUtils.waitAllUiEvents();
+
+        SWTBotGefConnectionEditPart swtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart(edgename,
+                DEdgeEditPart.class);
+        swtBotGefEditPart.select();
+        removeBendpoints();
+
+        editor.zoom(ZoomLevel.ZOOM_100);
+        SWTBotUtils.waitAllUiEvents();
+
+        assertRectilinearEdgeHasExpectedBendpoints(swtBotGefEditPart, nbSegment, expectedSourceSide);
+    }
+
+    private void removeBendpointsOfRectilinearEdgeNoEffect(ZoomLevel zoomLevel, String edgename, int nbSegment, int expectedSourceSide) {
+        editor.zoom(zoomLevel);
+        SWTBotUtils.waitAllUiEvents();
+
+        SWTBotGefConnectionEditPart swtBotGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart(edgename, DEdgeEditPart.class);
+        swtBotGefEditPart.select();
+        removeBendpoints();
+        assertEquals("The action Remove Bendpoints was expected to have no effect", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+
+        editor.zoom(ZoomLevel.ZOOM_100);
+        SWTBotUtils.waitAllUiEvents();
     }
 
     private void removeBendpoints() {
@@ -287,7 +421,10 @@ public class RemoveEdgeBendpointsTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     private void assertEdgeHasExpectedBendpoints(SWTBotGefConnectionEditPart swtBotGefConnectionEditPart) {
+        assertEdgeHasExpectedBendpoints(swtBotGefConnectionEditPart, 2);
+    }
 
+    private void assertEdgeHasExpectedBendpoints(SWTBotGefConnectionEditPart swtBotGefConnectionEditPart, int expectedBendpoints) {
         SWTBotGefEditPart sourceSwtBotGefEditPart = swtBotGefConnectionEditPart.source();
         SWTBotGefEditPart targetSwtBotGefEditPart = swtBotGefConnectionEditPart.target();
         ConnectionAnchor srcAnchor = ((Connection) swtBotGefConnectionEditPart.part().getFigure()).getSourceAnchor();
@@ -295,12 +432,16 @@ public class RemoveEdgeBendpointsTest extends AbstractSiriusSwtBotGefTestCase {
 
         Connection connection = (Connection) swtBotGefConnectionEditPart.part().getFigure();
         PointList pointList = connection.getPoints();
-        assertEquals("The egdge should have only two bendpoints corresponding to the edge ends.", 2, pointList.size());
-        Point realTargetConnection = pointList.getPoint(1);
+        assertEquals("The egdge should have only two bendpoints corresponding to the edge ends.", expectedBendpoints, pointList.size());
+        Point realTargetConnection = pointList.getPoint(pointList.size() - 1);
         Point realSourceConnection = pointList.getPoint(0);
 
         Point lineOrigin = srcAnchor.getReferencePoint();
         Point lineTerminus = tgtAnchor.getReferencePoint();
+        if (lineOrigin.equals(lineTerminus)) {
+            lineOrigin = ((org.eclipse.gef.GraphicalEditPart) sourceSwtBotGefEditPart.part()).getFigure().getBounds().getTop();
+            lineTerminus = ((org.eclipse.gef.GraphicalEditPart) sourceSwtBotGefEditPart.part()).getFigure().getBounds().getBottom();
+        }
 
         GraphicalHelper.screen2logical(lineOrigin, (IGraphicalEditPart) swtBotGefConnectionEditPart.part());
         GraphicalHelper.screen2logical(lineTerminus, (IGraphicalEditPart) swtBotGefConnectionEditPart.part());
@@ -314,11 +455,21 @@ public class RemoveEdgeBendpointsTest extends AbstractSiriusSwtBotGefTestCase {
                 realSourceConnection);
         assertConnectionEndPointEquals("Wrong edge target connection", expectedSecondBendpoint.get(),
                 realTargetConnection);
+    }
 
+    private void assertEdgeHasExpectedBendpointsWithLocation(SWTBotGefConnectionEditPart swtBotGefConnectionEditPart, int expectedBendpoints, Point firstBendpoint, Point lastBendpoint) {
+        Connection connection = (Connection) swtBotGefConnectionEditPart.part().getFigure();
+        PointList pointList = connection.getPoints();
+        assertEquals("The egdge should have only two bendpoints corresponding to the edge ends.", expectedBendpoints, pointList.size());
+        Point realTargetConnection = pointList.getPoint(pointList.size() - 1);
+        Point realSourceConnection = pointList.getPoint(0);
+
+        assertConnectionEndPointEquals("Wrong edge source connection", firstBendpoint, realSourceConnection);
+        assertConnectionEndPointEquals("Wrong edge target connection", lastBendpoint, realTargetConnection);
     }
 
     private void assertRectilinearEdgeHasExpectedBendpoints(SWTBotGefConnectionEditPart swtBotGefConnectionEditPart,
-            int nbSegment) {
+            int nbSegment, int expectedSourceSide) {
 
         SWTBotGefEditPart sourceSwtBotGefEditPart = swtBotGefConnectionEditPart.source();
         SWTBotGefEditPart targetSwtBotGefEditPart = swtBotGefConnectionEditPart.target();
@@ -331,12 +482,18 @@ public class RemoveEdgeBendpointsTest extends AbstractSiriusSwtBotGefTestCase {
         Point srcAnchorPoint = srcAnchor.getReferencePoint();
         Point tgtAnchorPoint = tgtAnchor.getReferencePoint();
 
-        GraphicalHelper.screen2logical(srcAnchorPoint, (IGraphicalEditPart) swtBotGefConnectionEditPart.part());
-        GraphicalHelper.screen2logical(tgtAnchorPoint, (IGraphicalEditPart) swtBotGefConnectionEditPart.part());
+        // if (!srcAnchorPoint.equals(tgtAnchorPoint)) {
 
-        // check anchor in Figure center
-        assertConnectionEndPointEquals("Wrong source anchor point.", srcAnchorPoint, getFigureCenter(srcFigure));
-        assertConnectionEndPointEquals("Wrong target anchor point.", tgtAnchorPoint, getFigureCenter(tgtFigure));
+            GraphicalHelper.screen2logical(srcAnchorPoint, (IGraphicalEditPart) swtBotGefConnectionEditPart.part());
+            GraphicalHelper.screen2logical(tgtAnchorPoint, (IGraphicalEditPart) swtBotGefConnectionEditPart.part());
+
+            // check anchor in Figure center
+            assertConnectionEndPointEquals("Wrong source anchor point.", srcAnchorPoint, getFigureCenter(srcFigure));
+            assertConnectionEndPointEquals("Wrong target anchor point.", tgtAnchorPoint, getFigureCenter(tgtFigure));
+        // } else {
+        // srcAnchorPoint = srcFigure.getBounds().getTop();
+        // tgtAnchorPoint = srcFigure.getBounds().getBottom();
+        // }
 
         Connection connection = (Connection) swtBotGefConnectionEditPart.part().getFigure();
         PointList pointList = connection.getPoints();
@@ -353,9 +510,25 @@ public class RemoveEdgeBendpointsTest extends AbstractSiriusSwtBotGefTestCase {
         Optional<Point> intersectionAnchorsTgtFigure = GraphicalHelper.getIntersection(srcAnchorPoint, tgtAnchorPoint,
                 (IGraphicalEditPart) targetSwtBotGefEditPart.part(), false);
 
-        // check if source and target are correct
-        isPointOnSideAndAlignWithAnchor(srcAnchorPoint, intersectionAnchorsSrcFigure.get(), realSourceConnection);
-        isPointOnSideAndAlignWithAnchor(tgtAnchorPoint, intersectionAnchorsTgtFigure.get(), realTargetConnection);
+        if (!sourceSwtBotGefEditPart.equals(targetSwtBotGefEditPart)) {
+            // check if source and target are correct
+            isPointOnSideAndAlignWithAnchor(srcAnchorPoint, intersectionAnchorsSrcFigure.get(), realSourceConnection);
+            isPointOnSideAndAlignWithAnchor(tgtAnchorPoint, intersectionAnchorsTgtFigure.get(), realTargetConnection);
+        } else {
+            if (expectedSourceSide == PositionConstants.EAST) {
+                assertEquals("Source Bendpoint is not at the expected location", srcFigure.getBounds().getRight(), realSourceConnection);
+                assertEquals("Target Bendpoint is not at the expected location", srcFigure.getBounds().getBottom(), realTargetConnection);
+            } else if (expectedSourceSide == PositionConstants.WEST) {
+                assertEquals("Source Bendpoint is not at the expected location", srcFigure.getBounds().getLeft(), realSourceConnection);
+                assertEquals("Target Bendpoint is not at the expected location", srcFigure.getBounds().getTop(), realTargetConnection);
+            } else if (expectedSourceSide == PositionConstants.NORTH) {
+                assertEquals("Source Bendpoint is not at the expected location", srcFigure.getBounds().getTop(), realSourceConnection);
+                assertEquals("Target Bendpoint is not at the expected location", srcFigure.getBounds().getRight(), realTargetConnection);
+            } else if (expectedSourceSide == PositionConstants.SOUTH) {
+                assertEquals("Source Bendpoint is not at the expected location", srcFigure.getBounds().getBottom(), realSourceConnection);
+                assertEquals("Target Bendpoint is not at the expected location", srcFigure.getBounds().getLeft(), realTargetConnection);
+            }
+        }
 
         if (nbSegment == 2) {
             // +/- 1 tolerance
@@ -387,6 +560,45 @@ public class RemoveEdgeBendpointsTest extends AbstractSiriusSwtBotGefTestCase {
                 assertConnectionEndPointEquals("Wrong middle Bendpoints.", pointList.getPoint(2),
                         new Point(middleX, tgtAnchorPoint.y));
             }
+        } else if (nbSegment == 4) {
+            int offset = LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION.height;
+            // if (expectedSourceSide == PositionConstants.EAST) {
+            switch (expectedSourceSide) {
+            case PositionConstants.EAST:
+                assertEquals("The second bendpoint is not at the expected location", srcFigure.getBounds().getRight().getTranslated(offset, 0), pointList.getPoint(1));
+                assertEquals("The second bendpoint is not at the expected location",
+                        new Point(srcFigure.getBounds().getRight().getTranslated(offset, 0).x, srcFigure.getBounds().getBottom().getTranslated(0, offset).y), pointList.getPoint(2));
+                assertEquals("The second bendpoint is not at the expected location", srcFigure.getBounds().getBottom().getTranslated(0, offset), pointList.getPoint(3));
+                assertEquals("The second bendpoint is not at the expected location", srcFigure.getBounds().getBottom(), pointList.getPoint(4));
+
+                break;
+            case PositionConstants.SOUTH:
+                assertEquals("The second bendpoint is not at the expected location", srcFigure.getBounds().getBottom().getTranslated(0, offset), pointList.getPoint(1));
+                assertEquals("The second bendpoint is not at the expected location",
+                        new Point(srcFigure.getBounds().getLeft().getTranslated(-offset, 0).x, srcFigure.getBounds().getBottom().getTranslated(0, offset).y), pointList.getPoint(2));
+                assertEquals("The second bendpoint is not at the expected location", srcFigure.getBounds().getLeft().getTranslated(-offset, 0), pointList.getPoint(3));
+                assertEquals("The second bendpoint is not at the expected location", srcFigure.getBounds().getLeft(), pointList.getPoint(4));
+
+                break;
+            case PositionConstants.WEST:
+                assertEquals("The second bendpoint is not at the expected location", srcFigure.getBounds().getLeft().getTranslated(-offset, 0), pointList.getPoint(1));
+                assertEquals("The second bendpoint is not at the expected location",
+                        new Point(srcFigure.getBounds().getLeft().getTranslated(-offset, 0).x, srcFigure.getBounds().getTop().getTranslated(0, -offset).y), pointList.getPoint(2));
+                assertEquals("The second bendpoint is not at the expected location", srcFigure.getBounds().getTop().getTranslated(0, -offset), pointList.getPoint(3));
+                assertEquals("The second bendpoint is not at the expected location", srcFigure.getBounds().getTop(), pointList.getPoint(4));
+
+                break;
+            case PositionConstants.NORTH:
+                assertEquals("The second bendpoint is not at the expected location", srcFigure.getBounds().getTop().getTranslated(0, -offset), pointList.getPoint(1));
+                assertEquals("The second bendpoint is not at the expected location",
+                        new Point(srcFigure.getBounds().getRight().getTranslated(offset, 0).x, srcFigure.getBounds().getTop().getTranslated(0, -offset).y), pointList.getPoint(2));
+                assertEquals("The second bendpoint is not at the expected location", srcFigure.getBounds().getRight().getTranslated(offset, 0), pointList.getPoint(3));
+                assertEquals("The second bendpoint is not at the expected location", srcFigure.getBounds().getRight(), pointList.getPoint(4));
+
+                break;
+
+            }
+
         }
 
     }

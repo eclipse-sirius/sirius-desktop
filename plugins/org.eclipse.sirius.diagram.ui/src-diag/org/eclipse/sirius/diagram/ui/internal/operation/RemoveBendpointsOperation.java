@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014-2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2014, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -120,20 +120,29 @@ public class RemoveBendpointsOperation extends AbstractModelChangeOperation<Void
             // we compute the new bendpoints by computing the intersection
             // points between the source and the target anchors.
             if (srcAbsoluteBounds != null && tgtAbsoluteBounds != null) {
-                Optional<Point> srcConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, srcAbsoluteBounds, true);
-                Optional<Point> tgtConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, tgtAbsoluteBounds, false);
+                Optional<Point> srcConnectionBendpoint;
+                Optional<Point> tgtConnectionBendpoint;
 
-                Point srcPoint = srcConnectionBendpoint.get();
-                Point tgtPoint = tgtConnectionBendpoint.get();
                 PointList pointList = null;
-                if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
-                    RectilinearEdgeUtil.alignBoundPointTowardAnchor(srcAbsoluteBounds, srcPoint, absoluteSrcAnchorCoordinates);
-                    RectilinearEdgeUtil.alignBoundPointTowardAnchor(tgtAbsoluteBounds, tgtPoint, absoluteTgtAnchorCoordinates);
-                    pointList = RectilinearEdgeUtil.computeRectilinearBendpoints(srcAbsoluteBounds, tgtAbsoluteBounds, srcPoint, tgtPoint);
+                if (Routing.RECTILINEAR_LITERAL.equals(routingStyle) && srcAbsoluteBounds != null && srcAbsoluteBounds.equals(tgtAbsoluteBounds)) {
+                    // If the edge as the same source and target, there will be no intersection to compute
+                    pointList = RectilinearEdgeUtil.computeRectilinearBendpointsSameSourceAndTarget(srcAbsoluteBounds, editPart);
+                    srcConnectionBendpoint = Optional.ofNullable(pointList.getFirstPoint());
+                    tgtConnectionBendpoint = Optional.ofNullable(pointList.getLastPoint());
                 } else {
-                    pointList = new PointList();
-                    pointList.addPoint(srcPoint);
-                    pointList.addPoint(tgtPoint);
+                    srcConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, srcAbsoluteBounds, true);
+                    tgtConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, tgtAbsoluteBounds, false);
+                    Point srcPoint = srcConnectionBendpoint.get();
+                    Point tgtPoint = tgtConnectionBendpoint.get();
+                    if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
+                        RectilinearEdgeUtil.alignBoundPointTowardAnchor(srcAbsoluteBounds, srcPoint, absoluteSrcAnchorCoordinates);
+                        RectilinearEdgeUtil.alignBoundPointTowardAnchor(tgtAbsoluteBounds, tgtPoint, absoluteTgtAnchorCoordinates);
+                        pointList = RectilinearEdgeUtil.computeRectilinearBendpoints(srcAbsoluteBounds, tgtAbsoluteBounds, srcPoint, tgtPoint);
+                    } else {
+                        pointList = new PointList();
+                        pointList.addPoint(srcPoint);
+                        pointList.addPoint(tgtPoint);
+                    }
                 }
                 if (srcConnectionBendpoint.isPresent() && tgtConnectionBendpoint.isPresent() && originalNbPoint > pointList.size()) {
                     if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {

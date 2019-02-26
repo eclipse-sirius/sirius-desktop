@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,15 +15,20 @@ package org.eclipse.sirius.diagram.ui.business.api.query;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.PointList;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.PrecisionRectangle;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IOvalAnchorableFigure;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IPolygonAnchorableFigure;
+import org.eclipse.gmf.runtime.notation.Anchor;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.CompositeLayout;
 import org.eclipse.sirius.diagram.description.Layout;
@@ -178,5 +183,39 @@ public class ConnectionEditPartQuery {
         }
         return result;
 
+    }
+
+    /**
+     * Computes an anchor at the center of a {@link Rectangle}.
+     * 
+     * @param bounds
+     *            the {@link Rectangle} used for computing an anchor.
+     * @return the resulting anchor as a {@link PrecisionPoint}
+     */
+    public PrecisionPoint getCenteredAnchorsAbsoluteLocation(Rectangle bounds) {
+        Edge edge = (Edge) connectionEditPart.getModel();
+        return getAbsoluteAnchorCoordinates(bounds, getCenteredAnchorId(edge.getSourceAnchor()));
+    }
+
+    /**
+     * Compute the anchor absolute coordinates following the figure bounds and the anchor location.
+     * 
+     * @param absoluteBounds
+     *            the figure absolute bounds.
+     * @param precisionPoint
+     *            the anchor location.
+     * @return the anchor absolute location.
+     */
+    private PrecisionPoint getAbsoluteAnchorCoordinates(Rectangle absoluteBounds, PrecisionPoint precisionPoint) {
+        return new PrecisionPoint(absoluteBounds.x() + (absoluteBounds.width() * precisionPoint.preciseX()), absoluteBounds.y() + (absoluteBounds.height() * precisionPoint.preciseY()));
+
+    }
+
+    private PrecisionPoint getCenteredAnchorId(Anchor anchor) {
+        PrecisionPoint anchorId = new PrecisionPoint(0.5, 0.5);
+        if (anchor instanceof IdentityAnchor) {
+            anchorId = BaseSlidableAnchor.parseTerminalString(((IdentityAnchor) anchor).getId());
+        }
+        return anchorId;
     }
 }
