@@ -36,5 +36,9 @@
     <edges id="edge6" source="//@representations.0/@containers.3/@elements.0" target="//@representations.0/@containers.1/@elements.0"/>
     <edges id="edge17" source="//@representations.0/@containers.2" target="//@representations.0/@containers.4"/>
     <edges id="edge16" source="//@representations.0/@containers.2/@elements.0" target="//@representations.0/@containers.4/@elements.0"/>
+    <edges id="edge18" source="//@representations.0/@nodes.0" target="//@representations.0/@nodes.0"/>
+    <edges id="edge19" source="//@representations.0/@nodes.0" target="//@representations.0/@nodes.0"/>
+    <edges id="edge20" source="//@representations.0/@nodes.0" target="//@representations.0/@nodes.0"/>
+    <edges id="edge21" source="//@representations.0/@nodes.0" target="//@representations.0/@nodes.0"/>
   </representations>
 </migrationmodeler:TestCase>

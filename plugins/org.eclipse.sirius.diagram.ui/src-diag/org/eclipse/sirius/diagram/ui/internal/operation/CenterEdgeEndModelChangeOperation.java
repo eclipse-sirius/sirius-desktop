@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -45,11 +45,11 @@ import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.description.CenteringStyle;
+import org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.ui.graphical.figures.CanonicalRectilinearRouter;
@@ -220,7 +220,7 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
 
                     PointList newPointList = new PointList();
                     // Compute the existing bendpoints absolute location
-                    newPointList = getAbsolutePointList((RelativeBendpoints) bendpoints);
+                    newPointList = new ConnectionQuery(connection).getAbsolutePointList((RelativeBendpoints) bendpoints, existingSourceAnchorAbsoluteLocation, existingTargetAnchorAbsoluteLocation);
                     if (!(Routing.RECTILINEAR_LITERAL.getLiteral().equals(routingValue.getLiteral()))) {
                         // The default case of straight edge:
                         handleStraightCase(center, sourceBounds.get(), targetBounds.get(), newPointList);
@@ -421,32 +421,6 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
 
     }
 
-    /**
-     * Retrieve the absolute coordinates of bendpoints.
-     * 
-     * @param bendpoints
-     *            the bendpoints.
-     * @return the absolute bendpoint coordinates list.
-     */
-    private PointList getAbsolutePointList(RelativeBendpoints bendpoints) {
-
-        PointList pointList = new PointList();
-
-        Option<PointList> option = getAbsolutePointListFromConnection();
-        if (option.some()) {
-            pointList = option.get();
-        } else {
-            List<RelativeBendpoint> relativeBendpoints = bendpoints.getPoints();
-            for (int i = 0; i < relativeBendpoints.size(); i++) {
-                float weight = i / ((float) relativeBendpoints.size() - 1);
-                Point absoluteLocation = getLocation(existingSourceAnchorAbsoluteLocation, existingTargetAnchorAbsoluteLocation, relativeBendpoints.get(i), weight);
-                pointList.addPoint(absoluteLocation);
-            }
-        }
-
-        return pointList;
-    }
-
     private void retrieveAndSetExistingAnchorsAbsoluteLocation(Rectangle sourceBounds, Rectangle targetBounds) {
         existingSourceAnchorAbsoluteLocation = getAbsoluteAnchorCoordinates(sourceBounds, getAnchorId(edge.getSourceAnchor()));
         existingTargetAnchorAbsoluteLocation = getAbsoluteAnchorCoordinates(targetBounds, getAnchorId(edge.getTargetAnchor()));
@@ -532,27 +506,6 @@ public class CenterEdgeEndModelChangeOperation extends AbstractModelChangeOperat
             }
         }
         return centered;
-    }
-
-    /**
-     * Inspired by org.eclipse.draw2d.RelativeBendpoint.getLocation() to compute
-     * the absolute bendpoint location as draw2d do.
-     */
-    private Point getLocation(Point sourceAnchor, Point targetAnchor, RelativeBendpoint gmfRelativeBendpoint, float weight) {
-        PrecisionPoint a1 = new PrecisionPoint(sourceAnchor);
-        PrecisionPoint a2 = new PrecisionPoint(targetAnchor);
-
-        return new PrecisionPoint((a1.preciseX() + gmfRelativeBendpoint.getSourceX()) * (1.0 - weight) + weight * (a2.preciseX() + gmfRelativeBendpoint.getTargetX()),
-                (a1.preciseY() + gmfRelativeBendpoint.getSourceY()) * (1.0 - weight) + weight * (a2.preciseY() + gmfRelativeBendpoint.getTargetY()));
-    }
-
-    private Option<PointList> getAbsolutePointListFromConnection() {
-        Option<PointList> pointList = Options.newNone();
-        if (connection != null) {
-            pointList = Options.newSome(connection.getPoints().getCopy());
-        }
-
-        return pointList;
     }
 
     /**

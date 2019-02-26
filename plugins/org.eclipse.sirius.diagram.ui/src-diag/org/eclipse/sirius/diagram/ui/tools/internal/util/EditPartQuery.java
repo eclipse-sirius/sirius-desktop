@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -694,5 +694,59 @@ public class EditPartQuery {
             }
         }
         return false;
+    }
+
+    /**
+     * Given a {@link Point}, this method computes on which border it is. If it is not on a border it returns
+     * PositionConstants.NONE.
+     * 
+     * @param point
+     *            the point to locate
+     * @return the side where this point is located
+     */
+    public int getSideOfLocation(Point point) {
+        Rectangle bounds = part.getFigure().getBounds();
+        int side;
+        if (bounds.getTop().y == point.y) {
+            side = PositionConstants.NORTH;
+        } else if (bounds.getRight().x == point.x) {
+            side = PositionConstants.EAST;
+        } else if (bounds.getBottom().y == point.y) {
+            side = PositionConstants.SOUTH;
+        } else if (bounds.getLeft().x == point.x) {
+            side = PositionConstants.WEST;
+        } else {
+            side = PositionConstants.NONE;
+        }
+        return side;
+    }
+
+    /**
+     * This methods returns the location of the center of a side.
+     * 
+     * @param positionConstant
+     *            asked side
+     * @return centered location
+     */
+    public Point getCenterOfSide(int positionConstant) {
+        Rectangle bounds = part.getFigure().getBounds();
+        Point center;
+        switch (positionConstant) {
+        case PositionConstants.NORTH:
+            center = bounds.getTop();
+            break;
+        case PositionConstants.EAST:
+            center = bounds.getRight();
+            break;
+        case PositionConstants.SOUTH:
+            center = bounds.getBottom();
+            break;
+        case PositionConstants.WEST:
+            center = bounds.getLeft();
+            break;
+        default:
+            center = bounds.getCenter();
+        }
+        return center;
     }
 }

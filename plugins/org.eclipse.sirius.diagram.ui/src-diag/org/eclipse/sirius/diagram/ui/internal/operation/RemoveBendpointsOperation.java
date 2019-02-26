@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,6 +40,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.locator.EdgeLabelQuery;
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.RectilinearEdgeUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.GMFNotationUtilities;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
@@ -120,21 +121,31 @@ public class RemoveBendpointsOperation extends AbstractModelChangeOperation<Void
             // we compute the new bendpoints by computing the intersection
             // points between the source and the target anchors.
             if (srcAbsoluteBounds != null && tgtAbsoluteBounds != null) {
-                Option<Point> srcConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, srcAbsoluteBounds, true);
-                Option<Point> tgtConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, tgtAbsoluteBounds, false);
+                Option<Point> srcConnectionBendpoint;
+                Option<Point> tgtConnectionBendpoint;
 
-                Point srcPoint = srcConnectionBendpoint.get();
-                Point tgtPoint = tgtConnectionBendpoint.get();
                 PointList pointList = null;
-                if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
-                    RectilinearEdgeUtil.alignBoundPointTowardAnchor(srcAbsoluteBounds, srcPoint, absoluteSrcAnchorCoordinates);
-                    RectilinearEdgeUtil.alignBoundPointTowardAnchor(tgtAbsoluteBounds, tgtPoint, absoluteTgtAnchorCoordinates);
-                    pointList = RectilinearEdgeUtil.computeRectilinearBendpoints(srcAbsoluteBounds, tgtAbsoluteBounds, srcPoint, tgtPoint);
+                if (Routing.RECTILINEAR_LITERAL.equals(routingStyle) && srcAbsoluteBounds != null && srcAbsoluteBounds.equals(tgtAbsoluteBounds)) {
+                    // If the edge as the same source and target, there will be no intersection to compute
+                    pointList = RectilinearEdgeUtil.computeRectilinearBendpointsSameSourceAndTarget(srcAbsoluteBounds, editPart);
+                    srcConnectionBendpoint = Options.newSome(pointList.getFirstPoint());
+                    tgtConnectionBendpoint = Options.newSome(pointList.getLastPoint());
                 } else {
-                    pointList = new PointList();
-                    pointList.addPoint(srcPoint);
-                    pointList.addPoint(tgtPoint);
+                    srcConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, srcAbsoluteBounds, true);
+                    tgtConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, tgtAbsoluteBounds, false);
+                    Point srcPoint = srcConnectionBendpoint.get();
+                    Point tgtPoint = tgtConnectionBendpoint.get();
+                    if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
+                        RectilinearEdgeUtil.alignBoundPointTowardAnchor(srcAbsoluteBounds, srcPoint, absoluteSrcAnchorCoordinates);
+                        RectilinearEdgeUtil.alignBoundPointTowardAnchor(tgtAbsoluteBounds, tgtPoint, absoluteTgtAnchorCoordinates);
+                        pointList = RectilinearEdgeUtil.computeRectilinearBendpoints(srcAbsoluteBounds, tgtAbsoluteBounds, srcPoint, tgtPoint);
+                    } else {
+                        pointList = new PointList();
+                        pointList.addPoint(srcPoint);
+                        pointList.addPoint(tgtPoint);
+                    }
                 }
+
                 if (srcConnectionBendpoint.some() && tgtConnectionBendpoint.some() && originalNbPoint > pointList.size()) {
                     if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
                         // Set GMF Anchor on figure center

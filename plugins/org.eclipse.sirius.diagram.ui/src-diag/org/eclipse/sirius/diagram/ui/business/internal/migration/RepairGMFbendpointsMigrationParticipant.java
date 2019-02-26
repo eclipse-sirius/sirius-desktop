@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
@@ -166,7 +167,10 @@ public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentat
             EdgeQuery edgeQuery = new EdgeQuery(edge);
             Routing routingStyle = edgeQuery.getRoutingStyle();
             // Compute anchor logical coordinates
-            if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
+            if (Routing.RECTILINEAR_LITERAL.equals(routingStyle) && srcBounds != null && srcBounds.equals(tgtBounds)) {
+                // Set a default first bendpoint position on the center of the east side of the source
+                newPointList = RectilinearEdgeUtil.computeRectilinearBendpointsSameSourceAndTarget(srcBounds, srcBounds.getRight(), PositionConstants.EAST);
+            } else if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
                 newPointList = RectilinearEdgeUtil.computeRectilinearBendpoints(srcBounds, tgtBounds, srcConnectionBendpoint.get(), tgtConnectionBendpoint.get());
             } else {
                 newPointList.addPoint(srcConnectionBendpoint.get());

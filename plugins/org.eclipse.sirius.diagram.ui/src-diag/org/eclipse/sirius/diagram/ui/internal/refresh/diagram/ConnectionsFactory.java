@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
@@ -338,7 +339,11 @@ public class ConnectionsFactory {
                     EdgeQuery edgeQuery = new EdgeQuery(edge);
                     Routing routingStyle = edgeQuery.getRoutingStyle();
                     // Compute anchor logical coordinates
-                    if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
+                    if (Routing.RECTILINEAR_LITERAL.equals(routingStyle) && srceEditPart != null && srceEditPart.equals(tgtEditPart)) {
+                        // Set a default first bendpoint position on the center of the east side of the source
+                        pointList = RectilinearEdgeUtil.computeRectilinearBendpointsSameSourceAndTarget(optionalSourceBounds, srceEditPart.getFigure().getBounds().getRight(),
+                                PositionConstants.EAST);
+                    } else if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
                         pointList = RectilinearEdgeUtil.computeRectilinearBendpoints(optionalSourceBounds, optionaltargetBounds, srcConnectionBendpoint.get(), tgtConnectionBendpoint.get());
                     } else {
                         pointList.addPoint(srcConnectionBendpoint.get());
