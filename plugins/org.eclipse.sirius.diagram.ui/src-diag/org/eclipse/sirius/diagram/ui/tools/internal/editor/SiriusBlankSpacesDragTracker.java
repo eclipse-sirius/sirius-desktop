@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.DragTracker;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.LayerConstants;
 import org.eclipse.gef.Request;
@@ -193,7 +194,8 @@ public class SiriusBlankSpacesDragTracker extends SimpleDragTracker {
      */
     protected int getCurrentPositionZoomed() {
         Point pt = getLocation();
-        source.getFigure().translateToRelative(pt);
+        DDiagramEditPart diagramEditPart = getDDiagramEditPart(source);
+        diagramEditPart.getFigure().translateToRelative(pt);
         if (!(source instanceof SiriusRulerEditPart)) {
             // When the tool is applied on the diagram, the location must considered the zoom. It is not the case when
             // the tool is applied on the ruler.
@@ -204,6 +206,16 @@ public class SiriusBlankSpacesDragTracker extends SimpleDragTracker {
         }
         int position = isHorizontal(source) ? pt.x : pt.y;
         return position;
+    }
+
+    private DDiagramEditPart getDDiagramEditPart(EditPart part) {
+        DDiagramEditPart result = null;
+        if (part instanceof DDiagramEditPart) {
+            result = (DDiagramEditPart) part;
+        } else if (part.getParent() != null) {
+            result = getDDiagramEditPart(part.getParent());
+        }
+        return result;
     }
 
     /**

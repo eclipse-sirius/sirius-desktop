@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,13 +16,20 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.LayoutAnimator;
 import org.eclipse.draw2d.MarginBorder;
 import org.eclipse.draw2d.ScrollPane;
+import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.GraphicalViewer;
+import org.eclipse.gef.Request;
+import org.eclipse.gef.requests.SelectionRequest;
+import org.eclipse.gef.tools.DeselectAllTracker;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ShapeCompartmentFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.tools.internal.editor.SiriusBlankSpacesDragTracker;
+import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.RubberbandDragTracker;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.CombinedFragmentInvisibleResizableCompartmentFigure;
 
 /**
@@ -98,5 +105,19 @@ public class CombinedFragmentCompartmentEditPart extends DNodeContainerViewNodeC
     protected void configureScrollPaneBorder(ScrollPane scrollPane, ContainerStyle ownedStyle) {
         int mb = getMapMode().DPtoLP(0);
         scrollPane.setBorder(new MarginBorder(mb, mb, mb, mb));
+    }
+    
+    @Override
+    public DragTracker getDragTracker(final Request req) {
+        SelectionRequest selectionRequest = (SelectionRequest) req;
+        DragTracker result = SiriusBlankSpacesDragTracker.getDragTracker(this, (GraphicalViewer) getViewer(), req, true, true);
+        if (result == null && req instanceof SelectionRequest && ((SelectionRequest) req).getLastButtonPressed() == 3) {
+            result = new DeselectAllTracker(this);
+        } else if (selectionRequest.isShiftKeyPressed() && selectionRequest.isControlKeyPressed() && result == null) {
+            result = new RubberbandDragTracker();
+        } else if (!(selectionRequest.isShiftKeyPressed() && selectionRequest.isControlKeyPressed())) {
+            result = super.getDragTracker(req);
+        }
+        return result;
     }
 }
