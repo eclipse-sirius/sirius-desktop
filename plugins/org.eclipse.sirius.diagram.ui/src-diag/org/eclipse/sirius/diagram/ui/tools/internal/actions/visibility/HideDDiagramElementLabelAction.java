@@ -21,6 +21,7 @@ import java.util.Set;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -33,6 +34,7 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
@@ -42,6 +44,8 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DiagramOutlinePage;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
@@ -139,8 +143,19 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
     }
 
     private static boolean isEnabled(DDiagramElement diagramElement) {
+        DDiagram dDiagram = diagramElement.getParentDiagram();
         DDiagramElementQuery query = new DDiagramElementQuery(diagramElement);
-        return query.canHideLabel() && !query.isLabelHidden();
+        return (dDiagram != null && isEditable(dDiagram)) && query.canHideLabel() && !query.isLabelHidden();
+    }
+
+    private static boolean isEditable(DDiagram diagram) {
+        boolean isEditable = false;
+        Resource resource = diagram.eResource();
+        if (resource != null) {
+            IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(resource.getResourceSet());
+            isEditable = permissionAuthority.canEditInstance(diagram);
+        }
+        return isEditable;
     }
 
     /**

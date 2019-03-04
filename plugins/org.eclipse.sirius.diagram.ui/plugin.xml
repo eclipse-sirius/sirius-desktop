@@ -1283,7 +1283,7 @@
             <with
                   variable="activeMenuSelection">
                <iterate
-                     operator="and">
+                     operator="or">
                   <instanceof
                         value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart">
                   </instanceof>
@@ -1304,7 +1304,7 @@
             <with
                   variable="activeMenuSelection">
                <iterate
-                     operator="and">
+                     operator="or">
                   <instanceof
                         value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart">
                   </instanceof>
