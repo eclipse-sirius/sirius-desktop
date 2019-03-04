@@ -154,7 +154,7 @@ public class HideDDiagramElementAction extends Action implements IObjectActionDe
                 DDiagram parentDiagram = ddes.iterator().next().getParentDiagram();
                 Predicate<DDiagramElement> allowsHideReveal = allowsHideReveal(parentDiagram);
                 Predicate<DDiagramElement> notDirectlyHidden = dde -> dde.isVisible();
-                return Iterables.all(ddes, Predicates.and(allowsHideReveal, notDirectlyHidden));
+                return Iterables.any(ddes, Predicates.and(allowsHideReveal, notDirectlyHidden));
             }
 
         }

@@ -45,7 +45,7 @@ public class RevealElementsAction extends AbstractRevealElementsAction<Object> {
     public RevealElementsAction() {
         super(Messages.RevealOutlineElementsAction_label);
     }
-    
+
     /**
      * Constructor.
      * 
@@ -75,29 +75,22 @@ public class RevealElementsAction extends AbstractRevealElementsAction<Object> {
     }
 
     /**
-     * Tests whether this action should be active. The action is active if the the given selection contains only hidden
-     * diagram graphical element.
+     * Tests whether this action should be active. The action is active if the given selection contains at least one
+     * hidden diagram graphical element.
      * 
      * @param selectedElements
      *            The current selection
      * @return true if all selected elements are hidden.
      */
     public static boolean isActive(IStructuredSelection selectedElements) {
-        boolean result = true;
         final Iterator<?> iterator = selectedElements.iterator();
-
-        if (!iterator.hasNext()) {
-            result = false;
-        }
         while (iterator.hasNext()) {
             final Object selectedElement = iterator.next();
-            if (selectedElement instanceof IDiagramElementEditPart) {
-                result = result && isActive((IDiagramElementEditPart) selectedElement);
-            } else {
-                result = false;
+            if (selectedElement instanceof IDiagramElementEditPart && isActive((IDiagramElementEditPart) selectedElement)) {
+                return true;
             }
         }
-        return result;
+        return false;
     }
 
     /**
@@ -124,13 +117,15 @@ public class RevealElementsAction extends AbstractRevealElementsAction<Object> {
             final DDiagramEditor diagramEditor = (DDiagramEditor) wrapper.getViewer().getProperty(DDiagramEditor.EDITOR_ID);
             runRevealCommand(root, diagramEditor, (DDiagramElement) vpe);
         } else if (vpe instanceof IDiagramElementEditPart) {
-            Optional<DDiagramElement> optionalDiagramElement = Optional.of((IGraphicalEditPart) vpe).map(IGraphicalEditPart::resolveSemanticElement).filter(DDiagramElement.class::isInstance)
-                    .map(DDiagramElement.class::cast);
-            if (optionalDiagramElement.isPresent()) {
-                IDiagramElementEditPart diagramElementEditPart = (IDiagramElementEditPart) vpe;
-                SelectionRequest request = new SelectionRequest();
-                request.setType(RequestConstants.REQ_OPEN);
-                diagramElementEditPart.performRequest(request);
+            if (isActive((IDiagramElementEditPart) vpe)) {
+                Optional<DDiagramElement> optionalDiagramElement = Optional.of((IGraphicalEditPart) vpe).map(IGraphicalEditPart::resolveSemanticElement).filter(DDiagramElement.class::isInstance)
+                        .map(DDiagramElement.class::cast);
+                if (optionalDiagramElement.isPresent()) {
+                    IDiagramElementEditPart diagramElementEditPart = (IDiagramElementEditPart) vpe;
+                    SelectionRequest request = new SelectionRequest();
+                    request.setType(RequestConstants.REQ_OPEN);
+                    diagramElementEditPart.performRequest(request);
+                }
             }
         }
     }

@@ -14,12 +14,14 @@ package org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility;
 
 import java.util.Collection;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.gef.Disposable;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
@@ -27,6 +29,8 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DiagramOutlinePage;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.base.Predicate;
@@ -143,8 +147,19 @@ public class TabbarRevealLabelsAction extends RevealOutlineLabelsAction implemen
     }
 
     private static boolean isEnabled(DDiagramElement diagramElement) {
+        DDiagram dDiagram = diagramElement.getParentDiagram();
         DDiagramElementQuery query = new DDiagramElementQuery(diagramElement);
-        return query.isLabelHidden();
+        return (dDiagram != null && isEditable(dDiagram)) && query.isLabelHidden();
+    }
+
+    private static boolean isEditable(DDiagram diagram) {
+        boolean isEditable = false;
+        Resource resource = diagram.eResource();
+        if (resource != null) {
+            IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(resource.getResourceSet());
+            isEditable = permissionAuthority.canEditInstance(diagram);
+        }
+        return isEditable;
     }
 
     /**
