@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -163,7 +163,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     private void handleDefaultSizeNotification(Notification notification) {
         if (!notification.isTouch()) {
             Object feature = notification.getFeature();
-            if (feature.equals(DiagramPackage.eINSTANCE.getDDiagramElementContainer_Width()) || feature.equals(DiagramPackage.eINSTANCE.getDDiagramElementContainer_Height())) {
+            if (DiagramPackage.eINSTANCE.getDDiagramElementContainer_Width().equals(feature) || DiagramPackage.eINSTANCE.getDDiagramElementContainer_Height().equals(feature)) {
                 IFigure figure = getMainFigure();
                 if (figure instanceof DefaultSizeNodeFigure && !isRegion()) {
                     setFigureDefaultSize((DefaultSizeNodeFigure) figure);

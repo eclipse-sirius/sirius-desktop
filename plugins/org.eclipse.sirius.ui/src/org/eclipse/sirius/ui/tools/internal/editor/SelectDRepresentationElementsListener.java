@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2014, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -274,7 +274,8 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
         boolean elementsToSelectUpdated = false;
         Collection<EObject> attachedEObjects = null;
         for (Notification n : event.getNotifications()) {
-            if (!n.getFeature().equals(ViewpointPackage.Literals.UI_STATE__ELEMENTS_TO_SELECT) && !n.getFeature().equals(ViewpointPackage.Literals.DREPRESENTATION__UI_STATE)) {
+            Object feature = n.getFeature();
+            if (!ViewpointPackage.Literals.UI_STATE__ELEMENTS_TO_SELECT.equals(feature) && !ViewpointPackage.Literals.DREPRESENTATION__UI_STATE.equals(feature)) {
                 Set<DRepresentationElement> notificationValues = getNotificationValues(n);
                 for (DRepresentationElement elt : notificationValues) {
                     if (currentRep == new DRepresentationElementQuery(elt).getParentRepresentation()) {
