@@ -61,7 +61,7 @@
       xsi:type="setup:VariableTask"
       id="sirius.target.platform"
       name="sirius.target.platform"
-      defaultValue="sirius_neon"
+      defaultValue="sirius_photon"
       label="Target Platform - Sirius">
     <choice
         value="sirius_mars"
@@ -75,6 +75,15 @@
     <choice
         value="sirius_photon"
         label="Eclipse Photon - 4.8"/>
+    <choice
+        value="sirius_2018-09"
+        label="Eclipse 2018-09"/>
+    <choice
+        value="sirius_2018-12"
+        label="Eclipse 2018-12"/>
+    <choice
+        value="sirius_2019-03"
+        label="Eclipse 2019-03"/>
     <choice
         value="No"
         label="No target plaform"/>
@@ -100,6 +109,8 @@
         url="https://dl.bintray.com/mbarbero/fr.obeo.releng.targetplatform/latest/"/>
     <repository
         url="https://dl.bintray.com/eclipse-cs/eclipse-cs/7.6.0/"/>
+    <repository
+        url="http://download.eclipse.org/tools/orbit/downloads/drops/R20180606145124/repository"/>
     <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
   </setupTask>
   <setupTask
@@ -276,7 +287,18 @@
       xsi:type="setup:PreferenceTask"
       key="/instance/org.eclipse.core.resources/encoding"
       value="UTF-8"/>
-  <stream name="master"/>
+  <stream name="master">
+    <setupTask
+        xsi:type="setup.p2:P2Task">
+      <requirement
+          name="net.sf.eclipsecs.feature.group"
+          versionRange="8.12.0"/>
+      <repository
+          url="https://dl.bintray.com/eclipse-cs/eclipse-cs/8.12.0/"/>
+    </setupTask>
+  </stream>
+  <stream name="v6.1.x"/>
+  <stream name="v6.0.x"/>
   <stream name="v5.1.x"/>
   <stream name="v5.0.x"/>
   <stream name="v4.1.x"/>
