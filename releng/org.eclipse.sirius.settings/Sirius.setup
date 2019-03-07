@@ -100,6 +100,8 @@
         url="https://dl.bintray.com/mbarbero/fr.obeo.releng.targetplatform/latest/"/>
     <repository
         url="https://dl.bintray.com/eclipse-cs/eclipse-cs/7.6.0/"/>
+    <repository
+        url="https://download.eclipse.org/tools/orbit/downloads/drops/R20180606145124"/>
     <description>Install the tools needed in the IDE to work with the source code for ${scope.project.label}</description>
   </setupTask>
   <setupTask
