@@ -1,15 +1,15 @@
 /*******************************************************************************
-* Copyright (c) 2019 THALES GLOBAL SERVICES.
-* This program and the accompanying materials
-* are made available under the terms of the Eclipse Public License 2.0
-* which accompanies this distribution, and is available at
-* https://www.eclipse.org/legal/epl-2.0/
-*
-* SPDX-License-Identifier: EPL-2.0
-*
-* Contributors:
-*    Obeo - initial API and implementation
-*******************************************************************************/
+ * Copyright (c) 2019 THALES GLOBAL SERVICES.
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.sequence;
 
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -19,12 +19,14 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.StateEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swt.SWT;
+import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
  * Tests the space insertion or removal to lifeline or message with the CTRL+SHIFT+Mouse drag.
@@ -431,7 +433,7 @@ public class SequenceSpaceTest extends AbstractDefaultModelSequenceTests {
     }
 
     /**
-     * Verifies that vertical space removal in an in a combined fragment header is OK.
+     * Verifies that vertical space removal in a combined fragment header is OK.
      * 
      * @throws Exception
      *             Test error.
@@ -452,4 +454,59 @@ public class SequenceSpaceTest extends AbstractDefaultModelSequenceTests {
         assertEquals("Wrong lifeling height: space is expected to be removed", lifelineAHeight - SPACE_TO_REMOVE, lifelineAHeightAfterDrag, 1);
         assertEquals("The message named m9 is not at the expected vertical position", startExecutionVerticalPosition - SPACE_TO_REMOVE, startExecutionVerticalPositionAfterMove);
     }
+
+    /**
+     * Verifies that vertical space insertion in a State is OK.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testVerticalSpaceInsertionInState() throws Exception {
+
+        maximizeEditor(editor);
+        // Reveal state S1 to scroll on it
+        editor.reveal("s1");
+        SWTBotGefEditPart editPart = editor.getEditPart("s1", StateEditPart.class);
+        StateEditPart s1 = (StateEditPart) editPart.part();
+        Rectangle s1Bounds = getStateScreenBounds(s1);
+
+        int xLocation = s1Bounds.getCenter().x;
+        int yFromLocation = s1Bounds.getCenter().y;
+        int yToLocation = yFromLocation + SPACE_TO_ADD;
+
+        editor.dragWithKeys(xLocation, yFromLocation, xLocation, yToLocation, new AtomicBoolean(true), SWT.CTRL, SWT.SHIFT);
+        SWTBotUtils.waitAllUiEvents();
+
+        Rectangle s1BoundsAfterMove = getStateScreenBounds(s1);
+
+        assertEquals("Wrong State height: space is expected to be added.", s1Bounds.height() + SPACE_TO_ADD, s1BoundsAfterMove.height());
+    }
+
+    /**
+     * Verifies that vertical space removal in a State is OK.
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    public void testVerticalSpaceRemovalInState() throws Exception {
+
+        maximizeEditor(editor);
+        // Reveal state S1 to scroll on it
+        editor.reveal("s1");
+        SWTBotGefEditPart editPart = editor.getEditPart("s1", StateEditPart.class);
+        StateEditPart s1 = (StateEditPart) editPart.part();
+        Rectangle s1Bounds = getStateScreenBounds(s1);
+
+        int xLocation = s1Bounds.getCenter().x;
+        int yFromLocation = s1Bounds.getCenter().y;
+        int yToLocation = yFromLocation - SPACE_TO_REMOVE;
+
+        editor.dragWithKeys(xLocation, yFromLocation, xLocation, yToLocation, new AtomicBoolean(true), SWT.CTRL, SWT.SHIFT);
+        SWTBotUtils.waitAllUiEvents();
+
+        Rectangle s1BoundsAfterMove = getStateScreenBounds(s1);
+
+        assertEquals("Wrong State height: space is expected to be removed.", s1Bounds.height() - SPACE_TO_REMOVE, s1BoundsAfterMove.height());
+    }
+
 }

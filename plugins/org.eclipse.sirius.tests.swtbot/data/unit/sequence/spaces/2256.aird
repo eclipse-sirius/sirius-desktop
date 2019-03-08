@@ -96,6 +96,17 @@
               <styles xmi:type="notation:ShapeStyle" xmi:id="_rPCKUTnlEemRKMx94edXFQ" fontName="Segoe UI" fontHeight="8"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rPCKUjnlEemRKMx94edXFQ" x="-53" y="455" width="20" height="50"/>
             </children>
+            <children xmi:type="notation:Node" xmi:id="_6CHBoEF7Eem5HomcO7josQ" type="3001" element="_6B3KAEF7Eem5HomcO7josQ">
+              <children xmi:type="notation:Node" xmi:id="_6CHosEF7Eem5HomcO7josQ" type="5001">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_6CHosUF7Eem5HomcO7josQ" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_6CIPwEF7Eem5HomcO7josQ" type="3016" element="_6B3xEEF7Eem5HomcO7josQ">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_6CIPwUF7Eem5HomcO7josQ" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6CIPwkF7Eem5HomcO7josQ"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_6CHBoUF7Eem5HomcO7josQ" fontColor="12313510" fontName="Segoe UI" fontHeight="15"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_6CHBokF7Eem5HomcO7josQ" x="-53" y="247" width="120" height="86"/>
+            </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_WdEk0ZpkEd-AJatYhmg2MA" fontName="Segoe UI" fontHeight="8" fillColor="8421440"/>
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_WdEk0ppkEd-AJatYhmg2MA" y="42" width="10" height="891"/>
           </children>
@@ -398,14 +409,26 @@
         <ownedBorderedNodes xmi:type="diagram:DNode" uid="_rO1WATnlEemRKMx94edXFQ" outgoingEdges="_rO944DnlEemRKMx94edXFQ" incomingEdges="_rO7crDnlEemRKMx94edXFQ" width="2" height="5" resizeKind="NORTH_SOUTH">
           <target xmi:type="interactions:Execution" href="2256.interactions#//@executions.4"/>
           <semanticElements xmi:type="interactions:Execution" href="2256.interactions#//@executions.4"/>
-          <semanticElements xmi:type="interactions:MixEnd" href="2256.interactions#//@ends.19"/>
-          <semanticElements xmi:type="interactions:MixEnd" href="2256.interactions#//@ends.20"/>
+          <semanticElements xmi:type="interactions:MixEnd" href="2256.interactions#//@ends.21"/>
+          <semanticElements xmi:type="interactions:MixEnd" href="2256.interactions#//@ends.22"/>
           <semanticElements xmi:type="interactions:Participant" href="2256.interactions#//@participants.1"/>
           <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_rPO-oDnlEemRKMx94edXFQ" x="270" y="555" height="50" width="20"/>
           <ownedStyle xmi:type="diagram:Square" uid="_rO1WAjnlEemRKMx94edXFQ" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" width="2" height="5" color="199,237,232">
             <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:ExecutionMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']"/>
+        </ownedBorderedNodes>
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_6B3KAEF7Eem5HomcO7josQ" name="s1" width="12" height="3" resizeKind="NSEW">
+          <target xmi:type="interactions:State" href="2256.interactions#//@states.0"/>
+          <semanticElements xmi:type="interactions:State" href="2256.interactions#//@states.0"/>
+          <semanticElements xmi:type="interactions:StateEnd" href="2256.interactions#//@ends.16"/>
+          <semanticElements xmi:type="interactions:StateEnd" href="2256.interactions#//@ends.17"/>
+          <semanticElements xmi:type="interactions:Participant" href="2256.interactions#//@participants.1"/>
+          <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_6B4YIUF7Eem5HomcO7josQ" x="220" y="347" height="86" width="120"/>
+          <ownedStyle xmi:type="diagram:Ellipse" uid="_6B3xEEF7Eem5HomcO7josQ" labelSize="15" showIcon="false" labelColor="166,227,187" borderColor="4,14,61" labelPosition="node" horizontalDiameter="12" verticalDiameter="3" color="16,127,201">
+            <description xmi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='State']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:StateMapping" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='State']"/>
         </ownedBorderedNodes>
         <ownedStyle xmi:type="diagram:Square" uid="_3tWr8U_NEeCF36t5vBAODQ" showIcon="false" borderSize="3" borderSizeComputationExpression="3" borderColor="114,159,207" width="1" height="40" color="255,255,255">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@style"/>
@@ -598,8 +621,8 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_rO7crDnlEemRKMx94edXFQ" name="m9" sourceNode="_3tUPtU_NEeCF36t5vBAODQ" targetNode="_rO1WATnlEemRKMx94edXFQ">
       <target xmi:type="interactions:CallMessage" href="2256.interactions#//@messages.8"/>
       <semanticElements xmi:type="interactions:CallMessage" href="2256.interactions#//@messages.8"/>
-      <semanticElements xmi:type="interactions:MessageEnd" href="2256.interactions#//@ends.18"/>
-      <semanticElements xmi:type="interactions:MixEnd" href="2256.interactions#//@ends.19"/>
+      <semanticElements xmi:type="interactions:MessageEnd" href="2256.interactions#//@ends.20"/>
+      <semanticElements xmi:type="interactions:MixEnd" href="2256.interactions#//@ends.21"/>
       <semanticElements xmi:type="interactions:Participant" href="2256.interactions#//@participants.0"/>
       <semanticElements xmi:type="interactions:Execution" href="2256.interactions#//@executions.4"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_rO_uEDnlEemRKMx94edXFQ" y="555" height="0"/>
@@ -612,8 +635,8 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_rO944DnlEemRKMx94edXFQ" sourceNode="_rO1WATnlEemRKMx94edXFQ" targetNode="_3tUPtU_NEeCF36t5vBAODQ">
       <target xmi:type="interactions:ReturnMessage" href="2256.interactions#//@messages.9"/>
       <semanticElements xmi:type="interactions:ReturnMessage" href="2256.interactions#//@messages.9"/>
-      <semanticElements xmi:type="interactions:MixEnd" href="2256.interactions#//@ends.20"/>
-      <semanticElements xmi:type="interactions:MessageEnd" href="2256.interactions#//@ends.21"/>
+      <semanticElements xmi:type="interactions:MixEnd" href="2256.interactions#//@ends.22"/>
+      <semanticElements xmi:type="interactions:MessageEnd" href="2256.interactions#//@ends.23"/>
       <semanticElements xmi:type="interactions:Execution" href="2256.interactions#//@executions.4"/>
       <semanticElements xmi:type="interactions:Participant" href="2256.interactions#//@participants.0"/>
       <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_rO_uETnlEemRKMx94edXFQ" y="605" height="0"/>
