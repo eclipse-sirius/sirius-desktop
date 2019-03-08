@@ -69,6 +69,18 @@ public class EdgeRoutingStyleEdgeConditionalStyleTest extends SiriusDiagramTestC
      * Test the tree routing style is applied when conditional style is applied.
      */
     public void testTreeRoutingStyleIsAppliedWithConditionalStyle() {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            /*
+             * There is no edge that has a source with name NewEClass1 junit.framework.AssertionFailedError: There is no
+             * edge that has a source with name NewEClass1 at
+             * org.eclipse.sirius.tests.unit.api.routing.EdgeRoutingStyleEndUserOverrideTest.
+             * checkRoutingStyleCustomStyle(EdgeRoutingStyleEndUserOverrideTest.java:228) at
+             * org.eclipse.sirius.tests.unit.api.routing.EdgeRoutingStyleEndUserOverrideTest.
+             * testCreateEdgeEnabledUserSpecificOblic(EdgeRoutingStyleEndUserOverrideTest.java:101)
+             */
+            return;
+        }
+
         activateViewpoint(VIEWPOINT_NAME);
 
         DDiagram diagram = (DDiagram) createRepresentation(REPRESENTATION_DESC_NAME, semanticModel);
