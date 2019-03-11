@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2004, 2017 IBM Corporation and others.
+ * Copyright (c) 2004, 2019 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -786,7 +786,8 @@ public class FilteredCommonTree extends Composite {
      * Update the receiver after the text has changed.
      */
     protected void textChanged() {
-        narrowingDown = previousFilterText == null || previousFilterText.equals(WorkbenchMessages.FilteredTree_FilterMessage) || getFilterString().startsWith(previousFilterText);
+        narrowingDown = previousFilterText == null || previousFilterText.equals(WorkbenchMessages.FilteredTree_FilterMessage)
+                || (getFilterString() != null && getFilterString().startsWith(previousFilterText));
         previousFilterText = getFilterString();
         // cancel currently running job first, to prevent unnecessary redraw
         refreshJob.cancel();
