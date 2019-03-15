@@ -19,8 +19,7 @@ import org.eclipse.sirius.common.ui.tools.api.find.AbstractFindLabelDialog;
 import org.eclipse.swt.widgets.Shell;
 
 /**
- * An implementation of the AbstractFindLabelDialog that use the "reveal" method
- * when the "next" button is used.
+ * An implementation of the AbstractFindLabelDialog that use the "reveal" method when the "next" button is used.
  * 
  * @author glefur
  */
@@ -50,8 +49,22 @@ public class RevealFindLabelDialog extends AbstractFindLabelDialog {
      */
     @Override
     protected void selectElement(final Object selection) {
-        editor.getDiagramGraphicalViewer().select((EditPart) selection);
-        editor.getDiagramGraphicalViewer().reveal((EditPart) selection);
+        EditPart editPart = (EditPart) selection;
+        if (!editPart.isSelectable()) {
+            // As container labels are not selectable, we must select its parent
+            editPart = getFirstSelectableParentEditPart(editPart);
+            assert editPart != null;
+        }
+        editor.getDiagramGraphicalViewer().select(editPart);
+        editor.getDiagramGraphicalViewer().reveal(editPart);
+    }
+
+    private EditPart getFirstSelectableParentEditPart(EditPart editPart) {
+        EditPart returnedEditPart = editPart.getParent();
+        if (returnedEditPart != null && !returnedEditPart.isSelectable()) {
+            return getFirstSelectableParentEditPart(returnedEditPart);
+        }
+        return returnedEditPart;
     }
 
 }
