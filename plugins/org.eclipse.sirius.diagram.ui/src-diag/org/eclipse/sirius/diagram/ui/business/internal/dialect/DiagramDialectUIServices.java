@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -421,7 +421,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
             for (final EObject dataElement : data) {
                 if (dataElement instanceof Diagram) {
                     final Diagram diagram = (Diagram) dataElement;
-                    
+
                     final DiagramEditPartService tool = new DiagramEditPartService();
                     configureScalingPolicy(tool, format.getScalingPolicy(), format.getScalingLevel());
                     if (exportToHtml) {
@@ -438,10 +438,8 @@ public class DiagramDialectUIServices implements DialectUIServices {
                     final DiagramEditPart diagramEditPart = tool.createDiagramEditPart(diagram, shell, PreferencesHint.USE_DEFAULTS);
 
                     try {
-
                         /* refresh to avoid blank images */
                         diagramEditPart.getRoot().refresh();
-
                         /* validate to have all nodes in the right position */
                         diagramEditPart.getFigure().validate();
                         /*
@@ -449,10 +447,11 @@ public class DiagramDialectUIServices implements DialectUIServices {
                          * until we refresh a second time Example of such cases are exchanges on DFI (mch)
                          */
                         diagramEditPart.getRoot().refresh();
-                        /*
-                         * flush the viewer to have all connections and ports
-                         */
+                        /* flush the viewer to have all connections and ports */
                         diagramEditPart.getRoot().getViewer().flush();
+                        // Process any event waiting in the user-interface queue, among others, to refresh connections
+                        // of collapse compartment and hide them (see ShapeCompartmentEditPart.refreshConnections())
+                        EclipseUIUtil.synchronizeWithUIThread();
 
                         /* do the effective export */
                         DiagramGenerator diagramGenerator = tool.copyToImage(diagramEditPart, correctPath, ImageFileFormat.resolveImageFormat(imageFileExtension), monitor);
