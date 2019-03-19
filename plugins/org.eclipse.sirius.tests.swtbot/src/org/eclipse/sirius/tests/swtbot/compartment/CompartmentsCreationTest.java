@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2017 Obeo.
+ * Copyright (c) 2015, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.impl.TransactionalEditingDomainImpl;
 import org.eclipse.gef.LayerConstants;
 import org.eclipse.gef.editparts.LayerManager;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.handles.CompartmentCollapseHandle;
 import org.eclipse.jface.operation.IRunnableWithProgress;
@@ -46,13 +47,17 @@ import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartResized;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.ui.PlatformUI;
 
@@ -1030,6 +1035,96 @@ public class CompartmentsCreationTest extends AbstractCompartmentTest {
     }
 
     /**
+     * Check that edge is not visible in case of collapse, even when source and target are moved.
+     */
+    public void testEdgeVisibilityInCaseOfCollapseCompartment() {
+        openRepresentation(REGION_WITH_EDGES_REPRESENTATION_NAME, REGION_WITH_EDGES_REPRESENTATION_INSTANCE_NAME);
+        editor.maximize();
+
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+
+        SWTBotGefEditPart edgeSourceEditPart = editor.getEditPart("Left_p3", AbstractDiagramElementContainerEditPart.class);
+        SWTBotGefEditPart edgeTargetContainerEditPart = editor.getEditPart("Center_p4", AbstractDiagramElementContainerEditPart.class);
+        DEdgeEditPart edgeEditPart = (DEdgeEditPart) ((AbstractDiagramElementContainerEditPart) edgeSourceEditPart.part()).getSourceConnections().get(0);
+        assertTrue("The edge should be visible after diagram opening.", edgeEditPart.getFigure().isVisible());
+
+        SWTBotGefEditPart editPartToResize = editor.getEditPart("[region-Center_p4]", AbstractDiagramElementContainerEditPart.class);
+        ICondition editPartResizedCondition = new CheckEditPartResized(editPartToResize);
+
+        // Select the region contained in "Center_p4"
+        AbstractDiagramElementContainerEditPart part = (AbstractDiagramElementContainerEditPart) editPartToResize.part();
+        GraphicalHelper.getAbsoluteBoundsIn100Percent(part);
+        Point top = GraphicalHelper.getAbsoluteBoundsIn100Percent(part).getTop();
+        editor.click(top.getTranslated(0, 10));
+        // Collapse the region
+        // Add a wait condition to have the collapse button displayed and click on it
+        bot.waitUntil(new ICondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                IFigure handleLayer = LayerManager.Helper.find(part).getLayer(LayerConstants.HANDLE_LAYER);
+                Point toggleFigureLocation;
+                if (handleLayer != null) {
+                    for (Object figure : handleLayer.getChildren()) {
+                        if (figure instanceof CompartmentCollapseHandle) {
+                            toggleFigureLocation = ((CompartmentCollapseHandle) figure).getLocation();
+                            if (toggleFigureLocation.x != 0 && toggleFigureLocation.y != 0) {
+                                // Use the center of the figure and click on it
+                                Dimension size = ((CompartmentCollapseHandle) figure).getSize();
+                                toggleFigureLocation.translate(size.width / 2, size.height / 2);
+                                editor.click(toggleFigureLocation);
+                                return true;
+                            }
+                        }
+                    }
+                }
+                return false;
+            }
+
+            @Override
+            public void init(SWTBot bot) {
+
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "The collapse button has not been found after region selection.";
+            }
+        });
+
+        bot.waitUntil(editPartResizedCondition);
+
+        // Wait all UI events to ensure that the connections are refresh in asyncExec (see
+        // org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart.refreshConnections())
+        SWTBotUtils.waitAllUiEvents();
+
+        // Check that edge is no longer visible
+        assertFalse("The edge should be hidden after collapsing the container of the target of the edge.", edgeEditPart.getFigure().isVisible());
+        // Move source of edge and check that edge is not displayed
+        Rectangle nodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) edgeSourceEditPart.part());
+        Point initialLocation = nodeBounds.getTop().getTranslated(0, 10);
+        Point targetLocation = new Point(initialLocation.x, initialLocation.y + 20);
+        ICondition editPartMovedCondition = new CheckEditPartMoved(edgeSourceEditPart);
+        editor.drag(initialLocation, targetLocation);
+        bot.waitUntil(editPartMovedCondition);
+        // Wait all UI events to ensure that the connections are refresh in asyncExec (see
+        // org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart.refreshConnections())
+        SWTBotUtils.waitAllUiEvents();
+        assertFalse("The edge should be hidden after moving the source of the edge.", edgeEditPart.getFigure().isVisible());
+        // Move target of edge and check that edge is not displayed
+        nodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) edgeTargetContainerEditPart.part());
+        initialLocation = nodeBounds.getTop().getTranslated(0, 10);
+        targetLocation = new Point(initialLocation.x, initialLocation.y + 20);
+        editPartMovedCondition = new CheckEditPartMoved(edgeTargetContainerEditPart);
+        editor.drag(initialLocation, targetLocation);
+        bot.waitUntil(editPartMovedCondition);
+        // Wait all UI events to ensure that the connections are refresh in asyncExec (see
+        // org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart.refreshConnections())
+        SWTBotUtils.waitAllUiEvents();
+        assertFalse("The edge should be hidden after moving the container of the target of the edge.", edgeEditPart.getFigure().isVisible());
+    }
+
+    /**
      * Test use of regions collapsed in container with horizontal stack which contains two regions. Check specific size
      * for regions, auto-size gmf size for container when collapsing. Container size (gmf or Draw2D) must not change.
      * Second region is collapsed so container width change.
@@ -1057,7 +1152,6 @@ public class CompartmentsCreationTest extends AbstractCompartmentTest {
                     // Use the center of the figure
                     Dimension size = ((CompartmentCollapseHandle) figure).getSize();
                     toggleFigureLocation.translate(size.width / 2, size.height / 2);
-
                 }
             }
         }

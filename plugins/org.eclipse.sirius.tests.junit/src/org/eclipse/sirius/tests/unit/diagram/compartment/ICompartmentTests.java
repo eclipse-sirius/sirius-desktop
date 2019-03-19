@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo.
+ * Copyright (c) 2015, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -44,6 +44,8 @@ public interface ICompartmentTests {
 
     public static final String HORIZONTAL_STACK_DND_REPRESENTATION_NAME = "Diag with HStack and DnD";
 
+    public static final String REGION_WITH_EDGES_REPRESENTATION_NAME = "RegionWithEdges";
+
     public static final String HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME = "HStackDiag";
 
     public static final String VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME = "VStackDiag";
@@ -51,6 +53,8 @@ public interface ICompartmentTests {
     public static final String VERTICAL_STACK_DND_REPRESENTATION_INSTANCE_NAME = "VStackDiag with DnD";
 
     public static final String HORIZONTAL_STACK_DND_REPRESENTATION_INSTANCE_NAME = "HStackDiag with DnD";
+
+    public static final String REGION_WITH_EDGES_REPRESENTATION_INSTANCE_NAME = "regionWithEdges";
 
     public static final String PACKAGE_CREATION_TOOL_NAME = "EPackage";
 
