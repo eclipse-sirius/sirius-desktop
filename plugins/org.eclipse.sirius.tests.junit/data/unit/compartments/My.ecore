@@ -18,7 +18,7 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="Centerattr1"/>
     </eClassifiers>
     <eSubpackages name="Left_p3">
-      <eClassifiers xsi:type="ecore:EClass" name="class1">
+      <eClassifiers xsi:type="ecore:EClass" name="class1" eSuperTypes="#//P1/Center_p4/newPackage1/class5">
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr1"/>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr2"/>
       </eClassifiers>
@@ -28,7 +28,9 @@
     </eSubpackages>
     <eSubpackages name="Center_p4">
       <eClassifiers xsi:type="ecore:EClass" name="class2"/>
-      <eSubpackages name="newPackage1"/>
+      <eSubpackages name="newPackage1">
+        <eClassifiers xsi:type="ecore:EClass" name="class5"/>
+      </eSubpackages>
     </eSubpackages>
     <eSubpackages name="Right_p5">
       <eClassifiers xsi:type="ecore:EClass" name="class4"/>

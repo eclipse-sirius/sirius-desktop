@@ -44,6 +44,8 @@ public interface ICompartmentTests {
 
     String HORIZONTAL_STACK_DND_REPRESENTATION_NAME = "Diag with HStack and DnD";
 
+    String REGION_WITH_EDGES_REPRESENTATION_NAME = "RegionWithEdges";
+
     String HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME = "HStackDiag";
 
     String VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME = "VStackDiag";
@@ -51,6 +53,8 @@ public interface ICompartmentTests {
     String VERTICAL_STACK_DND_REPRESENTATION_INSTANCE_NAME = "VStackDiag with DnD";
 
     String HORIZONTAL_STACK_DND_REPRESENTATION_INSTANCE_NAME = "HStackDiag with DnD";
+
+    String REGION_WITH_EDGES_REPRESENTATION_INSTANCE_NAME = "regionWithEdges";
 
     String PACKAGE_CREATION_TOOL_NAME = "EPackage";
 

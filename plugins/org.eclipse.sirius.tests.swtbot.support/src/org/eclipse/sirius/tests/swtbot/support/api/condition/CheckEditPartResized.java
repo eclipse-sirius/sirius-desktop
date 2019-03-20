@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -62,7 +62,7 @@ public class CheckEditPartResized extends DefaultCondition {
      */
     @Override
     public String getFailureMessage() {
-        return "Failed to find " + graphicalEditPart.resolveSemanticElement() + " resized";
+        return "The graphical element " + graphicalEditPart.resolveSemanticElement() + " has not been resized";
     }
 
 }
