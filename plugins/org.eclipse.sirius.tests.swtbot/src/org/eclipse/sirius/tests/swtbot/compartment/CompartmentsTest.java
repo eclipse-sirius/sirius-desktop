@@ -62,19 +62,20 @@ import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * Tests defined to ensure that elements are created in compartments and regions
- * at expected locations.
+ * Tests to verify compartments behavior: ensure that elements are created in
+ * compartments and regions at expected locations, check collapse behavior,
+ * check resize behavior ...
  * 
  * @author <a href="mailto:belqassim.djafer@obeo.fr">Belqassim Djafer</a>
  *
  */
-public class CompartmentsCreationTest extends AbstractCompartmentTest {
+public class CompartmentsTest extends AbstractCompartmentTest {
 
     /** Location where the end-user click to create a container. */
     private static final Point CONTAINER_CREATION_LOCATION = new Point(400, 300);
 
     /**
-     * Location used with the first one, {{@link #CONTAINER_CREATION_LOCATION},
+     * Location used with the first one, {@link #CONTAINER_CREATION_LOCATION},
      * to draw a rectangle for the creation of the container.
      */
     private static final Point CONTAINER_SECOND_CREATION_LOCATION = new Point(600, 500);
@@ -1103,8 +1104,8 @@ public class CompartmentsCreationTest extends AbstractCompartmentTest {
 
         assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
 
-        SWTBotGefEditPart edgeSourceEditPart = editor.getEditPart(LEFT_PKG_NAME, AbstractDiagramElementContainerEditPart.class);
-        SWTBotGefEditPart edgeTargetContainerEditPart = editor.getEditPart(CENTER_PKG_NAME, AbstractDiagramElementContainerEditPart.class);
+        SWTBotGefEditPart edgeSourceEditPart = editor.getEditPart("Left_p3", AbstractDiagramElementContainerEditPart.class);
+        SWTBotGefEditPart edgeTargetContainerEditPart = editor.getEditPart("Center_p4", AbstractDiagramElementContainerEditPart.class);
         DEdgeEditPart edgeEditPart = (DEdgeEditPart) ((AbstractDiagramElementContainerEditPart) edgeSourceEditPart.part()).getSourceConnections().get(0);
         assertTrue("The edge should be visible after diagram opening.", edgeEditPart.getFigure().isVisible());
 
