@@ -62,12 +62,13 @@ import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * Tests defined to ensure that elements are created in compartments and regions at expected locations.
+ * Tests to verify compartments behavior: ensure that elements are created in compartments and regions at expected
+ * locations, check collapse behavior, check resize behavior ...
  * 
  * @author <a href="mailto:belqassim.djafer@obeo.fr">Belqassim Djafer</a>
  *
  */
-public class CompartmentsCreationTest extends AbstractCompartmentTest {
+public class CompartmentsTest extends AbstractCompartmentTest {
 
     /** Location where the end-user click to create a container. */
     private static final Point CONTAINER_CREATION_LOCATION = new Point(400, 300);
