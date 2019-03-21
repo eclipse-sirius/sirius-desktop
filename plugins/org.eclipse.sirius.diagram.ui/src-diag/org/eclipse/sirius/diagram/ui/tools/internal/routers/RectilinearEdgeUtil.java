@@ -352,6 +352,10 @@ public final class RectilinearEdgeUtil {
         // Check on which side this first bendpoint is located
         EditPartQuery editPartQuery = new EditPartQuery((IGraphicalEditPart) editPart.getSource());
         int sourceSide = editPartQuery.getSideOfLocation(initialPointList.getFirstPoint());
+        // If the coordinates of the edge bendpoints are broken, we choose the source Side as east as a default value
+        if (sourceSide == PositionConstants.NONE) {
+            sourceSide = PositionConstants.EAST;
+        }
         // Compute the location of the center of this side to use it as the new location of the first bendpoint
         Option<Point> srcConnectionBendpoint = Options.newSome(editPartQuery.getCenterOfSide(sourceSide));
         Point srcPoint = srcConnectionBendpoint.get();
