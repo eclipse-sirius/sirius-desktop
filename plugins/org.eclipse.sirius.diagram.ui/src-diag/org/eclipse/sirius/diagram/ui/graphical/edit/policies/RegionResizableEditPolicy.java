@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Locator;
@@ -22,9 +23,11 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
+import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.requests.AlignmentRequest;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
@@ -33,9 +36,13 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IResizableCompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.handles.CompartmentCollapseHandle;
+import org.eclipse.gmf.runtime.diagram.ui.internal.tools.CompartmentCollapseTracker;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeList;
@@ -52,6 +59,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IContainerLabelOffsets;
+import org.eclipse.sirius.tools.api.ui.RefreshHelper;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.Style;
@@ -263,9 +271,8 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
     }
 
     /**
-     * Complete the given composite command with Region specific resize
-     * commands: the commands to report the resize on the RegionContainer or on
-     * the sibling regions.
+     * Complete the given composite command with Region specific resize commands: the commands to report the resize on
+     * the RegionContainer or on the sibling regions.
      */
     @Override
     protected void completeResizeCommand(CompositeTransactionalCommand ctc, ChangeBoundsRequest request) {
@@ -289,11 +296,9 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
     }
 
     /**
-     * Return true to add the default {@link AirResizableEditPolicy} behavior in
-     * completeResizeCommand: this will add the sub commands to adjust children
-     * position: see
-     * {@link org.eclipse.sirius.diagram.ui.internal.edit.commands.ChildrenAdjustmentCommand}
-     * .
+     * Return true to add the default {@link AirResizableEditPolicy} behavior in completeResizeCommand: this will add
+     * the sub commands to adjust children position: see
+     * {@link org.eclipse.sirius.diagram.ui.internal.edit.commands.ChildrenAdjustmentCommand} .
      * 
      * @param request
      *            the current change bounds request.
@@ -573,9 +578,8 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
     }
 
     /**
-     * Specific {@link CompartmentCollapseHandle} for Regions: it locates the
-     * handle on the Region label area and not in its content pane, it takes the
-     * label alignment of the Region into account.
+     * Specific {@link CompartmentCollapseHandle} for Regions: it locates the handle on the Region label area and not in
+     * its content pane, it takes the label alignment of the Region into account.
      */
     private static class RegionCollapseHandle extends CompartmentCollapseHandle {
 
@@ -585,14 +589,11 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
          * Constructor.
          * 
          * @param owner
-         *            the compartment part to collapse (the part whose GMF node
-         *            has the drawer style)
+         *            the compartment part to collapse (the part whose GMF node has the drawer style)
          * @param alignment
-         *            the label alignment to take into account to correctly
-         *            locate the handle.
+         *            the label alignment to take into account to correctly locate the handle.
          * @param regionPart
-         *            the region part to notify when drawer syle is expanded or
-         *            collapsed.
+         *            the region part to notify when drawer syle is expanded or collapsed.
          */
         RegionCollapseHandle(IGraphicalEditPart owner, LabelAlignment alignment, AbstractDiagramElementContainerEditPart regionPart) {
             super(owner);
@@ -608,6 +609,45 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
             if (NotationPackage.eINSTANCE.getDrawerStyle_Collapsed() == notification.getFeature()) {
                 regionPart.notifyChanged(notification);
             }
+        }
+
+        /*
+         * Overriden to force the refresh of the current diagram, even if we are in manual refresh.
+         */
+        @SuppressWarnings("restriction")
+        @Override
+        protected DragTracker createDragTracker() {
+            return new CompartmentCollapseTracker(
+                    (IResizableCompartmentEditPart) getOwner()) {
+                @Override
+                protected Command getCommand(Boolean expand) {
+                    Command command = super.getCommand(expand);
+                    CompoundCommand commandPlusForceRefresh = new CompoundCommand(command.getLabel());
+                    // If we are in manual refresh, add a new command to force the refresh of the current diagram.
+                    if (!RefreshHelper.isAutoRefresh()) {
+                        commandPlusForceRefresh.add(new Command() {
+                            @Override
+                            public void execute() {
+                                Optional<DDiagram> optionalDDiagram = new org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery(regionPart).getDDiagram();
+                                if (optionalDDiagram.isPresent()) {
+                                    Session session = SessionManager.INSTANCE.getSession(optionalDDiagram.get());
+                                    if (session != null) {
+                                        // Set the RefreshEditorsListener in forceRefresh mode
+                                        session.getRefreshEditorsListener().setForceRefresh(true);
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void undo() {
+                                execute();
+                            }
+                        });
+                    }
+                    commandPlusForceRefresh.add(command);
+                    return commandPlusForceRefresh;
+                }
+            };
         }
 
         private class RegionCollapseHandleLocator implements Locator {

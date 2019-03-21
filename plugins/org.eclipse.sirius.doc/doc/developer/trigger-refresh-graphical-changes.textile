@@ -1,0 +1,39 @@
+h1. Trigger a Sirius refresh on specific graphical changes
+
+h2. Description
+
+In automatic refresh mode, representations are refreshed as soon as at least one semantic change is done. Graphical changes are not considered as they are not impacting the mapping precondition. In some cases, the mapping can depend on the graphical state. A typical example is the "collapse" state of a "region":../specifier/diagrams/Diamgram.html#graphical_elements to change the mapping according to it. Since Sirius 6.1.3, it is possible to register a new graphical change to trigger a Sirius refresh.
+
+h2. Register a new graphical change to trigger a Sirius refresh
+
+The @org.eclipse.sirius.tools.api.ui.RefreshHelper.registerImpactingNotification(Predicate<Notification>)@ allows to consider some graphical modifications as requiring a refresh. This method is called through the pre-commit listener @org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener@. So it is called only if you are in automatic refresh mode or if the "forceRefresh" mode has been activated (@org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener.setForceRefresh(boolean)@) with the corresponding representation to refresh (@org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener.addRepresentationToForceRefresh(DRepresentation)@).
+For the specific case of collapse/uncollapse, current representation is automatically added as a force refresh representation. So the collapse/uncollapse of a region automatically launch a refresh, even in manual refresh mode.
+
+h3. Example
+
+pre. 
+// Register a predicate to consider Collapse/Uncollapse changes as impacting in diagram of kind "MyDiagramDescriptionName".
+RefreshHelper.registerImpactingNotification(new Predicate<Notification>() {
+    @Override
+    public boolean test(Notification notification) {
+        if (notification != null) {
+            if (NotationPackage.eINSTANCE.getDrawerStyle_Collapsed().equals(notification.getFeature())) {
+                if (notification.getNotifier() instanceof EObject) {
+                    Option<DDiagram> optionalDDiagram = new EObjectQuery((EObject) notification.getNotifier()).getParentDiagram();
+                    if (optionalDDiagram.some()) {
+                        return "MyDiagramDescriptionName".equals(optionalDDiagram.get().getDescription().getName);
+                    }
+                }
+            }
+        }
+        return false;
+    }
+});
+
+h2. Unregister a previously register graphical changes
+
+You can use @org.eclipse.sirius.tools.api.ui.RefreshHelper.unregisterImpactingNotification(Predicate<Notification>)@ to unregister a previously registered predicate.
+
+h2. Recommendation
+
+The @RefreshEditorsPrecommitListener@ is called after each changes. So each predicate added through @registerImpactingNotification()@ will be called on each notification (until one is considered as impacting). These predicates must be efficient.

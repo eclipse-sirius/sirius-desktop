@@ -248,8 +248,8 @@
         <topic href="doc/developer/extensions-properties_provide_custom_widget_basic.html" label="Basic approach" />
         <topic href="doc/developer/extensions-properties_provide_custom_widget_advanced.html" label="Advanced approach" />
       </topic>
-      <topic href="doc/developer/extensions-provide_resource_strategy.html" label="Provide a resource strategy">
-      </topic>
+      <topic href="doc/developer/extensions-provide_resource_strategy.html" label="Provide a resource strategy"/>
+      <topic href="doc/developer/trigger-refresh-graphical-changes.html" label="Trigger a Sirius refresh on specific graphical changes" />
       <anchor id="moreExtensionPointsRefs" />
     </topic>
     <anchor id="moreDeveloperRefs" />
