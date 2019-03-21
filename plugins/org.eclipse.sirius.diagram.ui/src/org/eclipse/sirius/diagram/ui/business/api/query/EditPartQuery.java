@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo
+ * Copyright (c) 2018, 2019 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,8 @@
  *     Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.api.query;
+
+import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
@@ -47,6 +49,21 @@ public final class EditPartQuery {
      *         element exists.
      */
     public DiagramDescription getDiagramDescription() {
+        Optional<DDiagram> optionalDDiagram = getDDiagram();
+        if (optionalDDiagram.isPresent()) {
+            return optionalDDiagram.get().getDescription();
+        }
+
+        return null;
+    }
+
+    /**
+     * Return the {@link DDiagram} associated to the edit part or to one of its ancestor.
+     * 
+     * @return the {@link DDiagram} associated to the edit part or to one of its ancestor. Empty optional if no such
+     *         element exists.
+     */
+    public Optional<DDiagram> getDDiagram() {
         IDDiagramEditPart effectiveDiagramEditPart = null;
         if (editPart instanceof IDiagramElementEditPart) {
             effectiveDiagramEditPart = getDiagramEditPart(editPart);
@@ -56,11 +73,10 @@ public final class EditPartQuery {
         if (effectiveDiagramEditPart != null) {
             EObject resolvedSemanticElement = effectiveDiagramEditPart.resolveSemanticElement();
             if (resolvedSemanticElement instanceof DDiagram) {
-                return ((DDiagram) resolvedSemanticElement).getDescription();
+                return Optional.of((DDiagram) resolvedSemanticElement);
             }
         }
-
-        return null;
+        return Optional.empty();
     }
 
     /**

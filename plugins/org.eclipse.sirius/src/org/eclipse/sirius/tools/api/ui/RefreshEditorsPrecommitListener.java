@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -124,7 +124,8 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
             if (needsRefresh()) {
                 boolean impactingNotification = RefreshHelper.isImpactingNotification(notifications);
                 // Do nothing if the notification concern only elements of aird
-                // resource and that the representationsToForceRefresh is empty.
+                // resource that are not in the specific graphical notification to consider (see
+                // RefreshHelper.registerImpactingNotification) and that the representationsToForceRefresh is empty.
                 if (impactingNotification || !representationsToForceRefresh.isEmpty()) {
                     Option<? extends Command> optionCommand = getRefreshOpenedRepresentationsCommand(impactingNotification);
                     if (optionCommand.some()) {

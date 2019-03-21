@@ -21,3 +21,5 @@ This document gives an overview of the internals of the _Sirius_ platform, and d
 ** "*Provide custom widget for the properties view and dialogs*":extensions-properties_provide_custom_widget.html
 ** "*Provide custom model operation*":extensions-provide_custom_model_operation.html
 ** "*Provide custom aird editor pages*":extensions-provide_custom_aird_editor_pages.html
+** "*Provide a resource strategy*":extensions-provide_resource_strategy.html
+** "*Trigger refresh on specific graphical changes*":trigger-refresh-graphical-changes.html
