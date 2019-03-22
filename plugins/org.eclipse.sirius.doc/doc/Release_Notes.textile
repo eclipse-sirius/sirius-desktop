@@ -8,7 +8,7 @@ h2(#sirius6.1.3). Changes in Sirius 6.1.3
 
 h3. Developer-Visible Changes
 
-* <span class="label label-success">Added</span> It is now possible to consider that some specific graphical changes need a refresh of the representation. Before Sirius 6.1.3, only semantic changes triggers a refresh. Now you can use @RefreshHelper.registerImpactingNotification(Predicate<Notification>)@ to consider a specific graphical changes. An example is the possibility to launch a refresh when the region container is collapsed or uncollapsed.
+* <span class="label label-success">Added</span> It is now possible to consider that some specific graphical changes need a refresh of the representation. Before Sirius 6.1.3, only semantic changes triggers a refresh. Now you can use @RefreshHelper.registerImpactingNotification(Predicate<Notification>)@ to consider a specific graphical changes. An example is the possibility to launch a refresh when the region container is collapsed or expanded.
 See "Trigger a Sirius refresh on specific graphical changes":developer/trigger-refresh-graphical-changes.html in the developer documentation for more details.
 
 h4. Changes in  @org.eclipse.sirius@
