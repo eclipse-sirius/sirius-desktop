@@ -22,8 +22,9 @@ import org.eclipse.sirius.tests.swtbot.clipboard.CustomClipboardSupportTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.DisabledSiriusClipboardSupportTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.GenericClipboardSupportTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.MultiSessionCopyPasteTest;
-import org.eclipse.sirius.tests.swtbot.compartment.CompartmentsTest;
 import org.eclipse.sirius.tests.swtbot.compartment.CompartmentsDragAndDropTest;
+import org.eclipse.sirius.tests.swtbot.compartment.CompartmentsTest;
+import org.eclipse.sirius.tests.swtbot.compartment.CompartmentsWithComponentTest;
 import org.eclipse.sirius.tests.swtbot.crossTable.CrossTableIntersectionExpressionTest;
 import org.eclipse.sirius.tests.swtbot.crossTable.CrossTableIntersectionTest;
 import org.eclipse.sirius.tests.swtbot.editor.vsm.BorderNodeSidePropertySectionTest;
@@ -283,6 +284,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ArrangeAllLinkedBorderedNodesWithSnapToGridTest.class);
         suite.addTestSuite(DistributeActionTests.class);
         suite.addTestSuite(CompartmentsTest.class);
+        suite.addTestSuite(CompartmentsWithComponentTest.class);
 
         suite.addTestSuite(ArrangeAllTest.class);
         suite.addTestSuite(ArrangeAllWithSnapToGridTest.class);
