@@ -7,12 +7,12 @@ In automatic refresh mode, representations are refreshed as soon as at least one
 h2. Register a new graphical change to trigger a Sirius refresh
 
 The @org.eclipse.sirius.tools.api.ui.RefreshHelper.registerImpactingNotification(Predicate<Notification>)@ allows to consider some graphical modifications as requiring a refresh. This method is called through the pre-commit listener @org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener@. So it is called only if you are in automatic refresh mode or if the "forceRefresh" mode has been activated (@org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener.setForceRefresh(boolean)@) with the corresponding representation to refresh (@org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener.addRepresentationToForceRefresh(DRepresentation)@).
-For the specific case of collapse/uncollapse, current representation is automatically added as a force refresh representation. So the collapse/uncollapse of a region automatically launch a refresh, even in manual refresh mode.
+For the specific case of collapse/expand, current representation is automatically added as a force refresh representation. So the collapse/expand of a region automatically launch a refresh, even in manual refresh mode.
 
 h3. Example
 
 pre. 
-// Register a predicate to consider Collapse/Uncollapse changes as impacting in diagram of kind "MyDiagramDescriptionName".
+// Register a predicate to consider Collapse/Expand changes as impacting in diagram of kind "MyDiagramDescriptionName".
 RefreshHelper.registerImpactingNotification(new Predicate<Notification>() {
     @Override
     public boolean test(Notification notification) {

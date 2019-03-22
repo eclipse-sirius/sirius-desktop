@@ -18,10 +18,10 @@
 			<code>org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener</code>. So it is called only if you are in automatic refresh mode or if the &#8220;forceRefresh&#8221; mode has been activated (
 			<code>org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener.setForceRefresh(boolean)</code>) with the corresponding representation to refresh (
 			<code>org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener.addRepresentationToForceRefresh(DRepresentation)</code>).
-			<br/>For the specific case of collapse/uncollapse, current representation is automatically added as a force refresh representation. So the collapse/uncollapse of a region automatically launch a refresh, even in manual refresh mode.
+			<br/>For the specific case of collapse/expand, current representation is automatically added as a force refresh representation. So the collapse/expand of a region automatically launch a refresh, even in manual refresh mode.
 		</p>
 		<h3 id="Example">Example</h3>
-		<pre>// Register a predicate to consider Collapse/Uncollapse changes as impacting in diagram of kind "MyDiagramDescriptionName".
+		<pre>// Register a predicate to consider Collapse/Expand changes as impacting in diagram of kind "MyDiagramDescriptionName".
 RefreshHelper.registerImpactingNotification(new Predicate&lt;Notification&gt;() {
     @Override
     public boolean test(Notification notification) {
