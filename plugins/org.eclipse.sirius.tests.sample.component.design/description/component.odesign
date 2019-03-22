@@ -746,6 +746,43 @@
         </decorationDescriptionsSet>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramWithRegionAndEdges" domainClass="component.Component" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <edgeMappings name="Reference" preconditionExpression="service:isReferenceToDisplay(sourceView, targetView)" deletionDescription="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20Reference']" sourceMapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithRegionAndEdges']/@defaultLayer/@containerMappings[name='Component']" targetMapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithRegionAndEdges']/@defaultLayer/@containerMappings[name='Component']" targetFinderExpression="aql:self.getReference2Hierarchy()" reconnections="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20%20Reference']">
+          <style lineStyle="dot" sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <endLabelStyleDescription showIcon="false" labelExpression="R2">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </endLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Component" semanticCandidatesExpression="aql:self.children" domainClass="component.Component" childrenPresentation="HorizontalStack">
+          <subContainerMappings name="ComponentRegion" semanticCandidatesExpression="aql:self" domainClass="component.Component" reusedContainerMappings="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithRegionAndEdges']/@defaultLayer/@containerMappings[name='Component']"/>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool_1:ToolDescription" name="considerCollapseStateForAutomaticRefresh" label="Register collapse for Refresh">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:considerCollapseStateForAutomaticRefresh"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ToolDescription" name="doNotConsiderCollapseStateForAutomaticRefresh" label="Unregister collapse for Refresh">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:doNotConsiderCollapseStateForAutomaticRefresh"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.tests.sample.component.service.ComponentServices"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.common.tools.api.interpreter.StandardServices"/>
     <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.tests.sample.component.service.DecorationServices"/>

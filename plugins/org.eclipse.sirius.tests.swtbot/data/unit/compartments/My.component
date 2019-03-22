@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ASCII"?>
+<component:Component xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:component="http://www.eclipse.org/sirius/sample/component" name="DC">
+  <children name="DC.2">
+    <children name="DC.2.1">
+      <children name="DC.2.1.1"/>
+    </children>
+  </children>
+  <children name="DC.3">
+    <children name="DC.3.1">
+      <children name="DC.3.1.1" references2="//@children.0/@children.0/@children.0"/>
+    </children>
+  </children>
+</component:Component>
