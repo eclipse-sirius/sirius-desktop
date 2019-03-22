@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 Obeo.
+ * Copyright (c) 2017, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -302,7 +302,7 @@ public class SiriusPropertiesCorePlugin extends EMFPlugin {
             linkResolvers.add(new PropertyValidationRuleLinkResolver());
 
             List<IItemDescriptor<IDescriptionLinkResolver>> itemDescriptors = this.descriptionConverterLinkResolverRegistry.getItemDescriptors();
-            itemDescriptors.stream().map(IItemDescriptor::getItem).map(linkResolvers::add);
+            itemDescriptors.stream().map(IItemDescriptor::getItem).forEach(linkResolvers::add);
 
             return linkResolvers;
         }
@@ -323,7 +323,7 @@ public class SiriusPropertiesCorePlugin extends EMFPlugin {
             linkResolvers.add(new PropertyValidationRulePreprocessorLinkResolver());
 
             List<IItemDescriptor<IDescriptionLinkResolver>> itemDescriptors = this.descriptionPreprocessorLinkResolverRegistry.getItemDescriptors();
-            itemDescriptors.stream().map(IItemDescriptor::getItem).map(linkResolvers::add);
+            itemDescriptors.stream().map(IItemDescriptor::getItem).forEach(linkResolvers::add);
 
             return linkResolvers;
         }
