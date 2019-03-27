@@ -66,5 +66,4 @@ public class RevealFindLabelDialog extends AbstractFindLabelDialog {
         }
         return returnedEditPart;
     }
-
 }

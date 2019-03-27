@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -228,6 +228,7 @@ import org.eclipse.sirius.tests.unit.diagram.tools.CreateViewWithMappingImportTe
 import org.eclipse.sirius.tests.unit.diagram.tools.CreationTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.DoubleClicCommandBuilderForceRefreshTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.EdgeCreationToolWithExtraMappingTest;
+import org.eclipse.sirius.tests.unit.diagram.tools.FindLabelToolTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.GMFbugTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.NoteBehaviorOnHideRevealDeleteElementTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.NoteBehaviorOnHideRevealDeleteManyElementsTest;
@@ -415,6 +416,7 @@ public class AllDiagramPluginsTests {
         // tools
         suite.addTestSuite(ToolsApplicabilityTest.class);
         suite.addTestSuite(EdgeCreationToolWithExtraMappingTest.class);
+        suite.addTestSuite(FindLabelToolTest.class);
         suite.addTestSuite(UndoAfterInconsistentEdgeCreationViewTest.class);
         suite.addTestSuite(CreationTest.class);
         suite.addTestSuite(CreateViewWithMappingImportTests.class);
@@ -557,7 +559,8 @@ public class AllDiagramPluginsTests {
     }
 
     /**
-     * Add the tests which for one reason or another are not part of the suite launched on each Gerrit verification.
+     * Add the tests which for one reason or another are not part of the suite
+     * launched on each Gerrit verification.
      * 
      * @param suite
      *            the suite to add the tests into.
