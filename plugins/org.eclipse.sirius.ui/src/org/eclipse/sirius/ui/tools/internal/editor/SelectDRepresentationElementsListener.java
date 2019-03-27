@@ -18,6 +18,8 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
@@ -40,6 +42,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.UIState;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.base.Preconditions;
@@ -108,15 +111,43 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
         // Do not react to undo/redo. The option might not be present: react if
         // value is Boolean.FALSE or null ie is not Boolean.TRUE
         if (!Boolean.TRUE.equals(event.getTransaction().getOptions().get(Transaction.OPTION_IS_UNDO_REDO_TRANSACTION))) {
-            IEditorPart activeEditor = EclipseUIUtil.getActiveEditor();
-            if (dialectEditor.equals(activeEditor)) {
-                DRepresentation currentRep = dialectEditor.getRepresentation();
+            DRepresentation currentRep = dialectEditor.getRepresentation();
+            Display display = Display.getCurrent();
+
+            // We are the UI Thread, so we perform the selection.
+            if (display != null && Thread.currentThread() == display.getThread()) {
+                IEditorPart activeEditor = EclipseUIUtil.getActiveEditor();
+                if (dialectEditor.equals(activeEditor)) {
+                    List<DRepresentationElement> elementsToSelect = extractElementsToSelect(event, currentRep);
+                    if (elementsToSelect != null) {
+                        // Set the selection in async exec: for some dialect, ui
+                        // could be refresh by another post commit triggered after
+                        // this one and doing some UI refresh in sync exec.
+                        EclipseUIUtil.displayAsyncExec(new SetSelectionRunnable(dialectEditor, elementsToSelect));
+                    }
+                }
+            }
+            // We are out of the UI Thread.
+            else {
+                // We retrieve the elementToSelect before since we cannot differ this call in a separate thread.
                 List<DRepresentationElement> elementsToSelect = extractElementsToSelect(event, currentRep);
                 if (elementsToSelect != null) {
-                    // Set the selection in async exec: for some dialect, ui
-                    // could be refresh by another post commit triggered after
-                    // this one and doing some UI refresh in sync exec.
-                    EclipseUIUtil.displayAsyncExec(new SetSelectionRunnable(dialectEditor, elementsToSelect));
+                    // The current EMF transaction (we are in a post commit listener here) is not released until all
+                    // post commits are executed. If we are out of the UI Thread, retrieving the current active editor
+                    // implies to wait for the UI Thread. To avoid a dead lock by blocking the current transaction while
+                    // waiting for the UI Thread (this one could also be waiting for the transaction to be released) we
+                    // execute this code in a separate thread.
+                    ExecutorService executorService = Executors.newSingleThreadExecutor();
+                    executorService.submit(() -> {
+                        // getActiveEditor will perform a synExec.
+                        IEditorPart activeEditor = EclipseUIUtil.getActiveEditor();
+                        if (dialectEditor.equals(activeEditor)) {
+                            // Set the selection in async exec: for some dialect, ui
+                            // could be refresh by another post commit triggered after
+                            // this one and doing some UI refresh in sync exec.
+                            EclipseUIUtil.displayAsyncExec(new SetSelectionRunnable(dialectEditor, elementsToSelect));
+                        }
+                    });
                 }
             }
         }
