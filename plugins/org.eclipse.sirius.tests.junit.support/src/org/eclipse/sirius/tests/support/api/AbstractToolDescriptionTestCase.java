@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2015 Obeo
+ * Copyright (c) 2015, 2019 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -57,9 +57,24 @@ public abstract class AbstractToolDescriptionTestCase extends SiriusTestCase {
      *            semantic object at the root of selected elements
      */
     protected void checkExpectedElementsInSelection(DialectEditor editor, List<String> objectsNameToCheck, int expectedSize, boolean semanticObjectName) {
-        List<DSemanticDecorator> selections = new ArrayList<DSemanticDecorator>(DialectUIManager.INSTANCE.getSelection(editor));
 
-        assertEquals("Bad selection size, after tool execution.", expectedSize, selections.size());
+        // The Job performing the selection might not have finished. To make the test more reliable, we try to
+        // synchronize with the UI Thread several times until the expected selection is reached, or we fell into
+        // timeout.
+        List<DSemanticDecorator> selections = new ArrayList<DSemanticDecorator>();
+        TestsUtil.waitUntil(new ICondition() {
+            @Override
+            public boolean test() throws Exception {
+                TestsUtil.synchronizationWithUIThread();
+                selections.clear();
+                selections.addAll(DialectUIManager.INSTANCE.getSelection(editor));
+                return expectedSize == selections.size();
+            }
+            @Override
+            public String getFailureMessage() {
+                return "Bad selection size, after tool execution.";
+            }
+        });
 
         if (objectsNameToCheck != null) {
             for (int i = 0; i < objectsNameToCheck.size(); i++) {
