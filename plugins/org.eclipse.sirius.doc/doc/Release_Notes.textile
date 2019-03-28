@@ -19,6 +19,8 @@ h4. Changes in  @org.eclipse.sirius@
 h4. Changes in  @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery.getDDiagram()@ has been added to retrieve the  @DDiagram@ associated to the edit part or to one of its ancestor.
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery.getCenteredAnchorsAbsoluteLocation(Rectangle)@ has been added in order to compute the location of the anchor of a connection centered on its target or source.
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery.getAbsolutePointList(RelativeBendpoints, PrecisionPoint, PrecisionPoint)@ has been added to compute the absolute coordinates of the bendpoints of a connection.
 
 h2(#sirius6.1.2). Changes in Sirius 6.1.2
 
