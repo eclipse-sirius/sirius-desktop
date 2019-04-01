@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,8 +16,10 @@ import java.util.Collections;
 import java.util.List;
 
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
@@ -74,6 +76,21 @@ public class SiriusCommonLabelProvider extends ColumnLabelProvider implements IC
      * Default image descriptor for the "Sirius Modeling" overlay.
      */
     public static final ImageDescriptor SIRIUS_MODELING_OVERLAY_DESC = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/ovr16/SessionDecorator.gif"); //$NON-NLS-1$ ;
+
+    /**
+     * Error image descriptor for the error decorator overlay.
+     */
+    public static final ImageDescriptor ERROR_OVERLAY_DESC = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/validation/error_co.png"); //$NON-NLS-1$ ;
+
+    /**
+     * Warning image descriptor for the warning decorator overlay.
+     */
+    public static final ImageDescriptor WARNING_OVERLAY_DESC = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/validation/warning_co.png"); //$NON-NLS-1$ ;
+
+    /**
+     * Info image descriptor for the info decorator overlay.
+     */
+    public static final ImageDescriptor INFO_OVERLAY_DESC = AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/validation/info_co.png"); //$NON-NLS-1$ ;
 
     /**
      * The overlay decorator used to distinguish representation types/categories from actual representations
@@ -159,9 +176,19 @@ public class SiriusCommonLabelProvider extends ColumnLabelProvider implements IC
             if (new IFileQuery(file).isResourceHandledByOpenedSession()) {
                 // Add "Sirius Modeling" overlay on this semantic file.
                 String fileExtension = file.getFileExtension();
+
+                // -1 means no problem (see org.eclipse.core.resources.IResource.findMaxProblemSeverity(String, boolean,
+                // int)).
+                int severity = -1;
+                try {
+                    // We retrieve the severity from the problem marker.
+                    severity = file.findMaxProblemSeverity(IMarker.PROBLEM, true, IResource.DEPTH_INFINITE);
+                } catch (CoreException e) {
+                    // We do nothing (no severity decorator will be displayed)
+                }
                 // Create a key to store/restore the image in image registry of
                 // SiriusEditPlugin
-                String imgKey = fileExtension + "Decorated"; //$NON-NLS-1$
+                String imgKey = fileExtension + "Decorated" + severity; //$NON-NLS-1$
                 // Get the existing image (if any)
                 img = SiriusEditPlugin.getPlugin().getImageRegistry().get(imgKey);
                 // If the image has already been computed, use it.
@@ -174,15 +201,32 @@ public class SiriusCommonLabelProvider extends ColumnLabelProvider implements IC
                     }
                     if (imageDescriptor != null) {
                         // Add an overlay with the "Sirius Modeling" overlay
-                        ImageDescriptor[] imageDescriptors = new ImageDescriptor[5];
-                        imageDescriptors[IDecoration.TOP_RIGHT] = SiriusCommonLabelProvider.SIRIUS_MODELING_OVERLAY_DESC;
-                        img = new DecorationOverlayIcon(imageDescriptor.createImage(), imageDescriptors).createImage();
+                        img = addIFileDecorators(severity, imageDescriptor);
                         SiriusEditPlugin.getPlugin().getImageRegistry().put(imgKey, img);
                     }
                 }
             }
         }
         return img;
+    }
+
+    private Image addIFileDecorators(int severity, ImageDescriptor imageDescriptor) {
+        ImageDescriptor[] imageDescriptors = new ImageDescriptor[5];
+        imageDescriptors[IDecoration.TOP_RIGHT] = SiriusCommonLabelProvider.SIRIUS_MODELING_OVERLAY_DESC;
+        switch (severity) {
+        case IMarker.SEVERITY_ERROR:
+            imageDescriptors[IDecoration.BOTTOM_LEFT] = SiriusCommonLabelProvider.ERROR_OVERLAY_DESC;
+            break;
+        case IMarker.SEVERITY_WARNING:
+            imageDescriptors[IDecoration.BOTTOM_LEFT] = SiriusCommonLabelProvider.WARNING_OVERLAY_DESC;
+            break;
+        case IMarker.SEVERITY_INFO:
+            imageDescriptors[IDecoration.BOTTOM_LEFT] = SiriusCommonLabelProvider.INFO_OVERLAY_DESC;
+            break;
+        default:
+            break;
+        }
+        return new DecorationOverlayIcon(imageDescriptor.createImage(), imageDescriptors).createImage();
     }
 
     private boolean isInvalidRepresentation(Object element) {
