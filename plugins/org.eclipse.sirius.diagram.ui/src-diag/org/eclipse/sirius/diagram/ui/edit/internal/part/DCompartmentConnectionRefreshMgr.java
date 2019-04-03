@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.edit.internal.part;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -22,11 +23,13 @@ import org.eclipse.draw2d.Connection;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionNodeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart.ConnectionRefreshMgr;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -40,6 +43,11 @@ import com.google.common.collect.Sets;
  */
 public class DCompartmentConnectionRefreshMgr extends ConnectionRefreshMgr {
 
+    /**
+     * List of edges linked to edges having the parent of the <code>scep</code> as source or target.
+     */
+    private Set<ConnectionNodeEditPart> edgeToEdges = new HashSet<>();
+    
     private Predicate safeConnection = new Predicate() {
         @Override
         public boolean apply(Object input) {
@@ -73,6 +81,7 @@ public class DCompartmentConnectionRefreshMgr extends ConnectionRefreshMgr {
 
     protected Set getSpecificConnectionNodes(ShapeCompartmentEditPart scep) {
         Set<Object> endPoints = new HashSet<>();
+        Map<Edge, DEdgeEditPart> edgeToEdge = new HashMap<>();
         Object modelObject = scep.getModel();
         if (scep.getViewer() != null && modelObject instanceof View && ((View) modelObject).getDiagram() != null) {
             Diagram diagram = ((View) modelObject).getDiagram();
@@ -83,6 +92,9 @@ public class DCompartmentConnectionRefreshMgr extends ConnectionRefreshMgr {
             while (edgesIterator.hasNext()) {
                 Edge edge = (Edge) edgesIterator.next();
                 EditPart endPoint = (EditPart) registry.get(edge.getSource());
+                if (endPoint instanceof DEdgeEditPart) {
+                    edgeToEdge.put(edge, (DEdgeEditPart) endPoint);
+                }
                 if (isChildOf(scep, endPoint) || (endPoint != null && endPoint.equals(scep.getParent()))) {
                     Object cep = registry.get(edge);
                     if (cep != null) {
@@ -91,10 +103,25 @@ public class DCompartmentConnectionRefreshMgr extends ConnectionRefreshMgr {
                     continue;
                 }
                 endPoint = (EditPart) registry.get(edge.getTarget());
+                if (endPoint instanceof DEdgeEditPart) {
+                    edgeToEdge.put(edge, (DEdgeEditPart) endPoint);
+                }
                 if (isChildOf(scep, endPoint) || (endPoint != null && endPoint.equals(scep.getParent()))) {
                     Object cep = registry.get(edge);
                     if (cep != null) {
                         endPoints.add(cep);
+                    }
+                }
+            }
+            Set cles = edgeToEdge.keySet();
+            Iterator it = cles.iterator();
+            while (it.hasNext()) {
+                Edge edge = (Edge) it.next();
+                DEdgeEditPart edgeEditPart = edgeToEdge.get(edge);
+                if (endPoints.contains(edgeEditPart)) {
+                    Object cep = registry.get(edge);
+                    if (cep != null) {
+                        edgeToEdges.add((ConnectionNodeEditPart) cep);
                     }
                 }
             }
@@ -114,5 +141,30 @@ public class DCompartmentConnectionRefreshMgr extends ConnectionRefreshMgr {
             return Sets.newHashSet(filteredConnectionNodes);
         }
         return connectionsNodes;
+    }
+    
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void refreshConnections(ShapeCompartmentEditPart scep) {
+        super.refreshConnections(scep);
+        // Refresh edges linked to edges having the parent of the scep as source or target
+        for (ConnectionNodeEditPart cep : edgeToEdges) {
+            Connection connection = (Connection) cep.getFigure();
+            IGraphicalEditPart source = (IGraphicalEditPart) getSourceEditPart(cep);
+            IGraphicalEditPart target = (IGraphicalEditPart) getTargetEditPart(cep);
+            if (source == null || target == null) {
+                connection.setVisible(false);
+                continue;
+            }
+            
+            if (!source.getFigure().isShowing() || !target.getFigure().isShowing()) {
+                connection.setVisible(false);
+                continue;
+            }
+            cep.refresh();
+        }
+        edgeToEdges.clear();
     }
 }
