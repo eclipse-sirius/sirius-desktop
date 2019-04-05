@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="a">
   <eSubpackages name="P1">
-    <eAnnotations source="This is an annotation to my references" references="#//P1/Right_p5/class4/cl5"/>
+    <eAnnotations source="myAnnotation" references="#//P1/Right_p5/class4/cl5"/>
     <eClassifiers xsi:type="ecore:EClass" name="Left_class1">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr1"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr2"/>
