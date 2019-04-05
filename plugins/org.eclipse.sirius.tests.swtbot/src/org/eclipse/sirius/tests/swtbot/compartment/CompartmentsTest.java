@@ -1190,6 +1190,89 @@ public class CompartmentsTest extends AbstractCompartmentTest {
     }
 
     /**
+     * Check that edgeToEdge is not visible in case of collapse, source and
+     * target of this edge are edge from/to a child of the collapsed
+     * compartment.
+     */
+    public void testEdgeToEdgeVisibilityInCaseOfCollapseCompartment() {
+        openRepresentation(REGION_WITH_EDGE2EDGE_REPRESENTATION_NAME, REGION_WITH_EDGE2EDGE_REPRESENTATION_INSTANCE_NAME);
+        editor.maximize();
+
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+
+        SWTBotGefEditPart edge2edgeSourceEditPart = editor.getEditPart("myAnnotation", AbstractDiagramElementContainerEditPart.class);
+        DEdgeEditPart edge2edgeEditPart = (DEdgeEditPart) ((AbstractDiagramElementContainerEditPart) edge2edgeSourceEditPart.part()).getSourceConnections().get(0);
+        assertTrue("The edgeToEdge should be visible after diagram opening.", edge2edgeEditPart.getFigure().isVisible());
+
+        SWTBotGefEditPart editPartToResize = editor.getEditPart("[region-Center_p4]", AbstractDiagramElementContainerEditPart.class);
+        ICondition editPartResizedCondition = new CheckEditPartResized(editPartToResize);
+
+        // Select the region contained in "Center_p4"
+        AbstractDiagramElementContainerEditPart part = (AbstractDiagramElementContainerEditPart) editPartToResize.part();
+        GraphicalHelper.getAbsoluteBoundsIn100Percent(part);
+        Point top = GraphicalHelper.getAbsoluteBoundsIn100Percent(part).getTop();
+        editor.click(top.getTranslated(0, 10));
+        // Collapse the region
+        // Add a wait condition to have the collapse button displayed and click
+        // on it
+        bot.waitUntil(new ICondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                IFigure handleLayer = LayerManager.Helper.find(part).getLayer(LayerConstants.HANDLE_LAYER);
+                Point toggleFigureLocation;
+                if (handleLayer != null) {
+                    for (Object figure : handleLayer.getChildren()) {
+                        if (figure instanceof CompartmentCollapseHandle) {
+                            toggleFigureLocation = ((CompartmentCollapseHandle) figure).getLocation();
+                            if (toggleFigureLocation.x != 0 && toggleFigureLocation.y != 0) {
+                                // Use the center of the figure and click on it
+                                Dimension size = ((CompartmentCollapseHandle) figure).getSize();
+                                toggleFigureLocation.translate(size.width / 2, size.height / 2);
+                                editor.click(toggleFigureLocation);
+                                return true;
+                            }
+                        }
+                    }
+                }
+                return false;
+            }
+
+            @Override
+            public void init(SWTBot bot) {
+
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "The collapse button has not been found after region selection.";
+            }
+        });
+
+        bot.waitUntil(editPartResizedCondition);
+
+        // Wait all UI events to ensure that the connections are refresh in
+        // asyncExec (see
+        // org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart.refreshConnections())
+        SWTBotUtils.waitAllUiEvents();
+
+        // Check that edge is no longer visible
+        assertFalse("The edgeToEdge should be hidden after collapsing the container of the target of the edge.", edge2edgeEditPart.getFigure().isVisible());
+        // Move source of edge and check that edge is not displayed
+        Rectangle nodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) edge2edgeSourceEditPart.part());
+        Point initialLocation = nodeBounds.getTop().getTranslated(0, 10);
+        Point targetLocation = new Point(initialLocation.x, initialLocation.y + 20);
+        ICondition editPartMovedCondition = new CheckEditPartMoved(edge2edgeSourceEditPart);
+        editor.drag(initialLocation, targetLocation);
+        bot.waitUntil(editPartMovedCondition);
+        // Wait all UI events to ensure that the connections are refresh in
+        // asyncExec (see
+        // org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart.refreshConnections())
+        SWTBotUtils.waitAllUiEvents();
+        assertFalse("The edgeToEdge should be still hidden after moving the source of the edge.", edge2edgeEditPart.getFigure().isVisible());
+    }
+
+    /**
      * Test use of regions collapsed in container with horizontal stack which
      * contains two regions. Check specific size for regions, auto-size gmf size
      * for container when collapsing. Container size (gmf or Draw2D) must not
