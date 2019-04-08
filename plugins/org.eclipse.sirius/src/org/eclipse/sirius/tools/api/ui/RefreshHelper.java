@@ -121,6 +121,11 @@ public final class RefreshHelper {
                 Option<DRepresentation> optionalDRepresentation = new EObjectQuery(notifier).getRepresentation();
                 if (optionalDRepresentation.some()) {
                     Session session = SessionManager.INSTANCE.getExistingSession(notifierResource.getURI());
+                    if (session == null) {
+                        // Maybe the notifier resource is not the session resource (for example a SRM resource in
+                        // Collab), in this case, use a more global session search.
+                        session = new EObjectQuery(optionalDRepresentation.get()).getSession();
+                    }
                     if (session != null) {
                         session.getRefreshEditorsListener().addRepresentationToForceRefresh(optionalDRepresentation.get());
                     }
