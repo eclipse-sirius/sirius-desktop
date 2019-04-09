@@ -1404,12 +1404,21 @@ public interface ViewpointPackage extends EPackage {
     int UI_STATE__TOOL_SECTIONS = 3;
 
     /**
+     * The feature id for the '<em><b>Sub Diagram Decoration Descriptors</b></em>' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int UI_STATE__SUB_DIAGRAM_DECORATION_DESCRIPTORS = 4;
+
+    /**
      * The number of structural features of the '<em>UI State</em>' class. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int UI_STATE_FEATURE_COUNT = 4;
+    int UI_STATE_FEATURE_COUNT = 5;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.ToolInstanceImpl <em>Tool Instance</em>}'
@@ -2543,6 +2552,18 @@ public interface ViewpointPackage extends EPackage {
     EReference getUIState_ToolSections();
 
     /**
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.viewpoint.UIState#getSubDiagramDecorationDescriptors <em>Sub Diagram Decoration
+     * Descriptors</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Sub Diagram Decoration Descriptors</em>'.
+     * @see org.eclipse.sirius.viewpoint.UIState#getSubDiagramDecorationDescriptors()
+     * @see #getUIState()
+     * @generated
+     */
+    EAttribute getUIState_SubDiagramDecorationDescriptors();
+
+    /**
      * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.ToolInstance <em>Tool Instance</em>}'.
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -3450,6 +3471,14 @@ public interface ViewpointPackage extends EPackage {
          * @generated
          */
         EReference UI_STATE__TOOL_SECTIONS = ViewpointPackage.eINSTANCE.getUIState_ToolSections();
+
+        /**
+         * The meta object literal for the '<em><b>Sub Diagram Decoration Descriptors</b></em>' attribute feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute UI_STATE__SUB_DIAGRAM_DECORATION_DESCRIPTORS = ViewpointPackage.eINSTANCE.getUIState_SubDiagramDecorationDescriptors();
 
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.viewpoint.impl.ToolInstanceImpl <em>Tool

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -80,8 +80,11 @@ public final class AbstractDiagramNodeEditPartOperation {
      *            the edit part.
      * @param notification
      *            the notification.
+     * @param refreshEditPart
+     *            true if edit part should be refreshed at the end of the handling. False otherwise.
+     * @return the edit parts that should be refreshed.
      */
-    public static void handleNotificationEvent(final IAbstractDiagramNodeEditPart self, final Notification notification) {
+    public static Set<EditPart> handleNotificationEvent(final IAbstractDiagramNodeEditPart self, final Notification notification, boolean refreshEditPart) {
         Set<EditPart> toRefresh = new LinkedHashSet<>();
         if (notification.getEventType() == Notification.SET || notification.getEventType() == Notification.UNSET || notification.getEventType() == Notification.ADD) {
             toRefresh.add(self);
@@ -101,15 +104,30 @@ public final class AbstractDiagramNodeEditPartOperation {
             }
         }
 
-        for (EditPart part : toRefresh) {
-            AbstractDiagramNodeEditPartOperation.safeRefresh(part);
+        if (refreshEditPart) {
+            for (EditPart part : toRefresh) {
+                AbstractDiagramNodeEditPartOperation.safeRefresh(part);
+            }
         }
+        return toRefresh;
     }
 
     private static void safeRefresh(final EditPart editPart) {
         if (editPart.getParent() != null) {
             editPart.refresh();
         }
+    }
+
+    /**
+     * This method is invoked when an event is thrown.
+     * 
+     * @param self
+     *            the edit part.
+     * @param notification
+     *            the notification.
+     */
+    public static void handleNotificationEvent(final IAbstractDiagramNodeEditPart self, final Notification notification) {
+        handleNotificationEvent(self, notification, false);
     }
 
     /**

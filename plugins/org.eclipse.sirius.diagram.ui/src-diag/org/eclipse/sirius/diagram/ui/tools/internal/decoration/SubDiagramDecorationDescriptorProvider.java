@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -78,10 +79,22 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
 
     @Override
     public List<DecorationDescriptor> getDecorationDescriptors(IDiagramElementEditPart editPart, Session session) {
+        List<DecorationDescriptor> results = new ArrayList<>();
         EObject model = ((View) editPart.getModel()).getElement();
         if (model instanceof DRepresentationElement) {
             DRepresentationElement node = (DRepresentationElement) model;
-            if (shouldHaveSubDiagDecoration(node, session)) {
+            DRepresentationElementQuery dRepresentationElementQuery = new DRepresentationElementQuery(node);
+            DRepresentation parentRepresentation = dRepresentationElementQuery.getParentRepresentation();
+            Object decorationDescriptor = null;
+            Map<Object, Object> subDiagramDecorationDescriptors = null;
+            if (parentRepresentation != null) {
+                subDiagramDecorationDescriptors = parentRepresentation.getUiState().getSubDiagramDecorationDescriptors();
+                decorationDescriptor = subDiagramDecorationDescriptors.get(node);
+            }
+
+            if (decorationDescriptor instanceof DecorationDescriptor) {
+                results = Arrays.asList((DecorationDescriptor) decorationDescriptor);
+            } else if (shouldHaveSubDiagDecoration(node, session)) {
 
                 DecorationDescriptor decoDesc = new DecorationDescriptor();
                 decoDesc.setName(NAME);
@@ -89,12 +102,12 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
                 decoDesc.setDistributionDirection(DecorationDistributionDirection.HORIZONTAL);
                 decoDesc.setDisplayPriority(DisplayPriority.HIGH_PRIORITY.getValue());
                 decoDesc.setDecorationAsImage(getSubDiagramImage());
-
-                return Arrays.asList(decoDesc);
+                subDiagramDecorationDescriptors.put(node, decoDesc);
+                results = Arrays.asList(decoDesc);
             }
         }
 
-        return new ArrayList<>();
+        return results;
     }
 
     private Image getSubDiagramImage() {
@@ -125,10 +138,9 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
         // the current representation itself to avoid redundant markers.
         EObject semanticObject = node.getTarget();
         DRepresentation representation = new DRepresentationElementQuery(node).getParentRepresentation();
-        DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representation).getRepresentationDescriptor();
+        DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representation, session).getRepresentationDescriptor();
 
-        return DialectManager.INSTANCE.getAllRepresentationDescriptors(session).stream().filter(repDesc -> !Objects.equals(repDesc, representationDescriptor))
-                .filter(repDesc -> Objects.equals(repDesc.getTarget(), semanticObject)).count() > 0;
+        return DialectManager.INSTANCE.getRepresentationDescriptors(semanticObject, session).stream().filter(repDesc -> !Objects.equals(repDesc, representationDescriptor)).count() > 0;
     }
 
     /**
@@ -181,6 +193,7 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
 
     private boolean checkRepresentationNavigationDescription(IInterpreter interpreter, RepresentationNavigationDescription navDesc, DRepresentationElement element, Session session) {
         Collection<EObject> candidates = new ArrayList<EObject>();
+
         if (!StringUtil.isEmpty(navDesc.getBrowseExpression())) {
             candidates.addAll(RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateCollection(element.getTarget(), navDesc,
                     ToolPackage.eINSTANCE.getRepresentationNavigationDescription_BrowseExpression()));
@@ -190,10 +203,13 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
                 candidates.add(it.next());
             }
         }
-
-        return DialectManager.INSTANCE.getAllRepresentationDescriptors(session).stream().filter(repDesc -> candidates.contains(repDesc.getTarget())).filter(repDesc -> {
-            return repDesc.getDescription().equals(navDesc.getRepresentationDescription());
-        }).count() > 0;
+        long count = 0;
+        for (EObject candidate : candidates) {
+            count += DialectManager.INSTANCE.getRepresentationDescriptors(candidate, session).stream().filter(repDesc -> {
+                return repDesc.getDescription().equals(navDesc.getRepresentationDescription());
+            }).count();
+        }
+        return count > 0;
     }
 
     @Override

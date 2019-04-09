@@ -309,6 +309,16 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="toolSections" upperBound="-1"
         eType="#//ToolSectionInstance" transient="true" unsettable="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="subDiagramDecorationDescriptors"
+        transient="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="This map associates a Decoration to its computed image (Object as value) which can be either an Image or an IFigure."/>
+      </eAnnotations>
+      <eGenericType eClassifier="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EMap">
+        <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+        <eTypeArguments eClassifier="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EJavaObject"/>
+      </eGenericType>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ToolInstance">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,8 @@ package org.eclipse.sirius.diagram.ui.edit.api.part;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.ConnectionAnchor;
@@ -135,9 +137,16 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
 
     @Override
     protected void handleNotificationEvent(final Notification notification) {
-        DiagramElementEditPartOperation.handleNotificationEvent(this, notification);
+        Set<EditPart> partToRefresh1 = DiagramElementEditPartOperation.handleNotificationEvent(this, notification, false);
+        for (EditPart editPart : partToRefresh1) {
+            editPart.refresh();
+        }
         super.handleNotificationEvent(notification);
-        AbstractDiagramNodeEditPartOperation.handleNotificationEvent(this, notification);
+        Set<EditPart> partToRefresh2 = AbstractDiagramNodeEditPartOperation.handleNotificationEvent(this, notification, false);
+        List<EditPart> partToRefreshFromNode = partToRefresh2.stream().filter(part->!partToRefresh1.contains(part)).collect(Collectors.toList());
+        for (EditPart editPart : partToRefreshFromNode) {
+            editPart.refresh();
+        }
         DiagramBorderNodeEditPartOperation.handleNotificationEvent(this, notification);
     }
 

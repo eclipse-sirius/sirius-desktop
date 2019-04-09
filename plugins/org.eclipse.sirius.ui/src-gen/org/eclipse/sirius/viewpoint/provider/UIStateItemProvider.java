@@ -62,6 +62,7 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
             addElementsToSelectPropertyDescriptor(object);
             addDecorationImagePropertyDescriptor(object);
             addToolSectionsPropertyDescriptor(object);
+            addSubDiagramDecorationDescriptorsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -116,6 +117,19 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
     }
 
     /**
+     * This adds a property descriptor for the Sub Diagram Decoration Descriptors feature. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addSubDiagramDecorationDescriptorsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+                getString("_UI_UIState_subDiagramDecorationDescriptors_feature"), //$NON-NLS-1$
+                getString("_UI_PropertyDescriptor_description", "_UI_UIState_subDiagramDecorationDescriptors_feature", "_UI_UIState_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                ViewpointPackage.Literals.UI_STATE__SUB_DIAGRAM_DECORATION_DESCRIPTORS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
      * This returns UIState.gif. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -150,6 +164,7 @@ public class UIStateItemProvider extends ItemProviderAdapter implements IEditing
         switch (notification.getFeatureID(UIState.class)) {
         case ViewpointPackage.UI_STATE__INVERSE_SELECTION_ORDER:
         case ViewpointPackage.UI_STATE__DECORATION_IMAGE:
+        case ViewpointPackage.UI_STATE__SUB_DIAGRAM_DECORATION_DESCRIPTORS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

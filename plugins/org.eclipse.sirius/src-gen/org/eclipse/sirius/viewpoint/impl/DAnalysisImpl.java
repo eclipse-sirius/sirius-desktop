@@ -195,7 +195,7 @@ public class DAnalysisImpl extends IdentifiedElementImpl implements DAnalysis {
         ResourceSet resourceSet = eResource != null ? eResource.getResourceSet() : null;
         if (resourceSet != null) {
             for (ResourceDescriptor resourceDescriptor : getSemanticResources()) {
-                Resource resource = getResource(resourceSet, resourceDescriptor.getResourceURI());
+                Resource resource = DAnalysisImpl.getResource(resourceSet, resourceDescriptor.getResourceURI());
                 if (resource != null) {
                     EObject eObject = new ResourceQueryInternal(resource).findSemanticRoot();
                     if (eObject != null) {
