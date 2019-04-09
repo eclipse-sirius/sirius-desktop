@@ -366,7 +366,8 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         // Obtain or create and register package
         ViewpointPackageImpl theViewpointPackage = (ViewpointPackageImpl) (EPackage.Registry.INSTANCE.get(ViewpointPackage.eNS_URI) instanceof ViewpointPackageImpl
-                ? EPackage.Registry.INSTANCE.get(ViewpointPackage.eNS_URI) : new ViewpointPackageImpl());
+                ? EPackage.Registry.INSTANCE.get(ViewpointPackage.eNS_URI)
+                : new ViewpointPackageImpl());
 
         ViewpointPackageImpl.isInited = true;
 
@@ -375,15 +376,20 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
 
         // Obtain or create and register interdependencies
         DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) : DescriptionPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI)
+                : DescriptionPackage.eINSTANCE);
         StylePackageImpl theStylePackage = (StylePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) instanceof StylePackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI) : StylePackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(StylePackage.eNS_URI)
+                : StylePackage.eINSTANCE);
         ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) : ToolPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI)
+                : ToolPackage.eINSTANCE);
         ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) : ValidationPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI)
+                : ValidationPackage.eINSTANCE);
         AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) : AuditPackage.eINSTANCE);
+                ? EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI)
+                : AuditPackage.eINSTANCE);
 
         // Create package meta-data objects
         theViewpointPackage.createPackageContents();
@@ -1215,6 +1221,16 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
+    public EAttribute getUIState_SubDiagramDecorationDescriptors() {
+        return (EAttribute) uiStateEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getToolInstance() {
         return toolInstanceEClass;
     }
@@ -1525,6 +1541,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         createEReference(uiStateEClass, ViewpointPackage.UI_STATE__ELEMENTS_TO_SELECT);
         createEAttribute(uiStateEClass, ViewpointPackage.UI_STATE__DECORATION_IMAGE);
         createEReference(uiStateEClass, ViewpointPackage.UI_STATE__TOOL_SECTIONS);
+        createEAttribute(uiStateEClass, ViewpointPackage.UI_STATE__SUB_DIAGRAM_DECORATION_DESCRIPTORS);
 
         toolInstanceEClass = createEClass(ViewpointPackage.TOOL_INSTANCE);
         createEAttribute(toolInstanceEClass, ViewpointPackage.TOOL_INSTANCE__ID);
@@ -1825,6 +1842,13 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         initEReference(getUIState_ToolSections(), this.getToolSectionInstance(), null, "toolSections", null, 0, -1, UIState.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
+        g1 = createEGenericType(theEcorePackage.getEMap());
+        g2 = createEGenericType(ecorePackage.getEJavaObject());
+        g1.getETypeArguments().add(g2);
+        g2 = createEGenericType(ecorePackage.getEJavaObject());
+        g1.getETypeArguments().add(g2);
+        initEAttribute(getUIState_SubDiagramDecorationDescriptors(), g1, "subDiagramDecorationDescriptors", null, 0, 1, UIState.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(toolInstanceEClass, ToolInstance.class, "ToolInstance", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getToolInstance_Id(), ecorePackage.getEString(), "id", null, 0, 1, ToolInstance.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, //$NON-NLS-1$

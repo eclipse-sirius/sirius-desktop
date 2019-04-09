@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.ui.edit.api.part;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.Graphics;
@@ -133,10 +134,16 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
 
     @Override
     protected void handleNotificationEvent(final Notification notification) {
-        DiagramElementEditPartOperation.handleNotificationEvent(this, notification);
-
+        Set<EditPart> partToRefresh1 = DiagramElementEditPartOperation.handleNotificationEvent(this, notification, false);
+        for (EditPart editPart : partToRefresh1) {
+            editPart.refresh();
+        }
         super.handleNotificationEvent(notification);
-        AbstractDiagramNodeEditPartOperation.handleNotificationEvent(this, notification);
+        Set<EditPart> partToRefresh2 = AbstractDiagramNodeEditPartOperation.handleNotificationEvent(this, notification, false);
+        partToRefresh2.removeAll(partToRefresh1);
+        for (EditPart editPart : partToRefresh2) {
+            editPart.refresh();
+        }
 
         handleDefaultSizeNotification(notification);
 
@@ -225,16 +232,6 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         return nodeShape; // use nodeShape itself as contentPane
     }
 
-    @Override
-    public void refresh() {
-        super.refresh();
-        List<?> children = getChildren();
-        for (int i = 0; i < children.size(); i++) {
-            EditPart editPart = (EditPart) children.get(i);
-            editPart.refresh();
-        }
-    }
-
     public IFigure getBackgroundFigure() {
         return this.backgroundFigure;
     }
@@ -244,6 +241,16 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      */
     public void createBackgroundFigure() {
         this.backgroundFigure = DiagramContainerEditPartOperation.createBackgroundFigure(this);
+    }
+
+    @Override
+    public void refresh() {
+        super.refresh();
+        List<?> children = getChildren();
+        for (int i = 0; i < children.size(); i++) {
+            EditPart editPart = (EditPart) children.get(i);
+            editPart.refresh();
+        }
     }
 
     /**
@@ -461,7 +468,8 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
                 shapeFigure = new RegionRoundedGradientRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this),
                         (View) getModel());
             } else {
-                shapeFigure = new GradientRoundedRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this).getValue(), (View) getModel());
+                shapeFigure = new GradientRoundedRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this).getValue(),
+                        (View) getModel());
             }
         }
 

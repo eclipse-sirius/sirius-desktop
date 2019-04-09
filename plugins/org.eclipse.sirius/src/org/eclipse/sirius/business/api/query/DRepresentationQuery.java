@@ -29,8 +29,8 @@ import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 
 /**
- * A class aggregating all the queries (read-only!) having a
- * {@link DRepresentation} as a starting point.
+ * A class aggregating all the queries (read-only!) having a {@link DRepresentation} as a starting point and a potential
+ * session.
  * 
  * @author mporhel
  * 
@@ -38,6 +38,8 @@ import org.eclipse.sirius.viewpoint.description.DAnnotation;
 public class DRepresentationQuery {
 
     private DRepresentation representation;
+
+    private Session session;
 
     /**
      * Create a new query.
@@ -47,6 +49,19 @@ public class DRepresentationQuery {
      */
     public DRepresentationQuery(DRepresentation representation) {
         this.representation = representation;
+    }
+
+    /**
+     * Create a new query.
+     * 
+     * @param representation
+     *            the element to query.
+     * @param session
+     *            the session containing the representation.
+     */
+    public DRepresentationQuery(DRepresentation representation, Session session) {
+        this.representation = representation;
+        this.session = session;
     }
 
     /**
@@ -102,28 +117,32 @@ public class DRepresentationQuery {
     }
 
     /**
-     * Check if the current representation is a dangling representation, ie if
-     * its target element is null or if it does not belong to any session.
+     * Check if the current representation is a dangling representation, ie if its target element is null or if it does
+     * not belong to any session.
      * 
      * @return true if the current representation is orphan.
      */
     public boolean isDanglingRepresentation() {
         if (representation instanceof DSemanticDecorator) {
             DSemanticDecorator semDecRep = (DSemanticDecorator) representation;
-            return semDecRep.getTarget() == null || SessionManager.INSTANCE.getSession(semDecRep.getTarget()) == null;
+            if (session == null) {
+                session = SessionManager.INSTANCE.getSession(semDecRep.getTarget());
+            }
+            return semDecRep.getTarget() == null || session == null;
         }
         return false;
     }
 
     /**
-     * Get the {@link DRepresentationDescriptor} that references the
-     * {@link DRepresentation}.
+     * Get the {@link DRepresentationDescriptor} that references the {@link DRepresentation}.
      * 
      * @return the {@link DRepresentationDescriptor}
      */
     public DRepresentationDescriptor getRepresentationDescriptor() {
         if (representation instanceof DSemanticDecorator) {
-            Session session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) representation).getTarget());
+            if (session == null) {
+                session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) representation).getTarget());
+            }
             if (session != null) {
                 Collection<EStructuralFeature.Setting> usages = session.getSemanticCrossReferencer().getInverseReferences(representation);
                 for (EStructuralFeature.Setting setting : usages) {
@@ -136,4 +155,5 @@ public class DRepresentationQuery {
         }
         return null;
     }
+
 }

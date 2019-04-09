@@ -31,6 +31,8 @@ import org.eclipse.emf.ecore.EObject;
  * <li>{@link org.eclipse.sirius.viewpoint.UIState#getElementsToSelect <em>Elements To Select</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.UIState#getDecorationImage <em>Decoration Image</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.UIState#getToolSections <em>Tool Sections</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.UIState#getSubDiagramDecorationDescriptors <em>Sub Diagram Decoration
+ * Descriptors</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getUIState()
@@ -171,5 +173,29 @@ public interface UIState extends EObject {
      * @generated
      */
     boolean isSetToolSections();
+
+    /**
+     * Returns the value of the '<em><b>Sub Diagram Decoration Descriptors</b></em>' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc --> <!-- begin-model-doc --> This map associates a Decoration to its computed image (Object as
+     * value) which can be either an Image or an IFigure. <!-- end-model-doc -->
+     *
+     * @return the value of the '<em>Sub Diagram Decoration Descriptors</em>' attribute.
+     * @see #setSubDiagramDecorationDescriptors(Map)
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getUIState_SubDiagramDecorationDescriptors()
+     * @model transient="true"
+     * @generated
+     */
+    Map<Object, Object> getSubDiagramDecorationDescriptors();
+
+    /**
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.UIState#getSubDiagramDecorationDescriptors <em>Sub
+     * Diagram Decoration Descriptors</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Sub Diagram Decoration Descriptors</em>' attribute.
+     * @see #getSubDiagramDecorationDescriptors()
+     * @generated
+     */
+    void setSubDiagramDecorationDescriptors(Map<Object, Object> value);
 
 } // UIState

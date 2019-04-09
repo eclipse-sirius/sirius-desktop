@@ -41,6 +41,8 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * <li>{@link org.eclipse.sirius.viewpoint.impl.UIStateImpl#getElementsToSelect <em>Elements To Select</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.UIStateImpl#getDecorationImage <em>Decoration Image</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.UIStateImpl#getToolSections <em>Tool Sections</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.UIStateImpl#getSubDiagramDecorationDescriptors <em>Sub Diagram
+ * Decoration Descriptors</em>}</li>
  * </ul>
  *
  * @generated
@@ -97,6 +99,16 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
     protected EList<ToolSectionInstance> toolSections;
 
     /**
+     * The cached value of the '{@link #getSubDiagramDecorationDescriptors() <em>Sub Diagram Decoration
+     * Descriptors</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getSubDiagramDecorationDescriptors()
+     * @generated
+     * @ordered
+     */
+    protected Map<Object, Object> subDiagramDecorationDescriptors;
+
+    /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated NOT
@@ -104,6 +116,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
     protected UIStateImpl() {
         super();
         setDecorationImage(new HashMap<>());
+        setSubDiagramDecorationDescriptors(new HashMap<>());
     }
 
     /**
@@ -240,6 +253,30 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
      * @generated
      */
     @Override
+    public Map<Object, Object> getSubDiagramDecorationDescriptors() {
+        return subDiagramDecorationDescriptors;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setSubDiagramDecorationDescriptors(Map<Object, Object> newSubDiagramDecorationDescriptors) {
+        Map<Object, Object> oldSubDiagramDecorationDescriptors = subDiagramDecorationDescriptors;
+        subDiagramDecorationDescriptors = newSubDiagramDecorationDescriptors;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.UI_STATE__SUB_DIAGRAM_DECORATION_DESCRIPTORS, oldSubDiagramDecorationDescriptors, subDiagramDecorationDescriptors));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case ViewpointPackage.UI_STATE__INVERSE_SELECTION_ORDER:
@@ -250,6 +287,8 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
             return getDecorationImage();
         case ViewpointPackage.UI_STATE__TOOL_SECTIONS:
             return getToolSections();
+        case ViewpointPackage.UI_STATE__SUB_DIAGRAM_DECORATION_DESCRIPTORS:
+            return getSubDiagramDecorationDescriptors();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -277,6 +316,9 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
             getToolSections().clear();
             getToolSections().addAll((Collection<? extends ToolSectionInstance>) newValue);
             return;
+        case ViewpointPackage.UI_STATE__SUB_DIAGRAM_DECORATION_DESCRIPTORS:
+            setSubDiagramDecorationDescriptors((Map<Object, Object>) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -301,6 +343,9 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
         case ViewpointPackage.UI_STATE__TOOL_SECTIONS:
             unsetToolSections();
             return;
+        case ViewpointPackage.UI_STATE__SUB_DIAGRAM_DECORATION_DESCRIPTORS:
+            setSubDiagramDecorationDescriptors((Map<Object, Object>) null);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -321,6 +366,8 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
             return decorationImage != null;
         case ViewpointPackage.UI_STATE__TOOL_SECTIONS:
             return isSetToolSections();
+        case ViewpointPackage.UI_STATE__SUB_DIAGRAM_DECORATION_DESCRIPTORS:
+            return subDiagramDecorationDescriptors != null;
         }
         return super.eIsSet(featureID);
     }
@@ -341,6 +388,8 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
         result.append(inverseSelectionOrder);
         result.append(", decorationImage: "); //$NON-NLS-1$
         result.append(decorationImage);
+        result.append(", subDiagramDecorationDescriptors: "); //$NON-NLS-1$
+        result.append(subDiagramDecorationDescriptors);
         result.append(')');
         return result.toString();
     }

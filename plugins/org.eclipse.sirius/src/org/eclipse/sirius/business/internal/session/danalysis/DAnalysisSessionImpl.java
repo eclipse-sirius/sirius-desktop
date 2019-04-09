@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2017 THALES GLOBAL SERVICES and others,
+ * Copyright (c) 2013, 2019 THALES GLOBAL SERVICES and others,
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,6 +40,8 @@ import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
+import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.Transaction;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -49,6 +51,7 @@ import org.eclipse.emf.transaction.util.ValidateEditSupport;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.emf.workspace.ResourceUndoContext;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchException;
 import org.eclipse.sirius.business.api.migration.DescriptionResourceVersionMismatchException;
 import org.eclipse.sirius.business.api.migration.ResourceVersionMismatchDiagnostic;
@@ -185,6 +188,43 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     private RepresentationNameListener representationNameListener;
 
     /**
+     * Listener that clears sub diagram decorator when changes in representations are done.
+     */
+    private DRepresentationChangeListener dRepresentationChangeListener;
+
+    /**
+     * Listener that clears the sub diagram decoration descriptors when a {@link DRepresentation} is either created or
+     * deleted.
+     * 
+     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+     */
+    private final class DRepresentationChangeListener extends ResourceSetListenerImpl {
+
+        private DAnalysisSession session;
+
+        private DRepresentationChangeListener(DAnalysisSession session) {
+            this.session = session;
+        }
+
+        @Override
+        public void resourceSetChanged(ResourceSetChangeEvent event) {
+            List<Notification> notifications = event.getNotifications();
+            for (Notification notification : notifications) {
+                if (notification.getNewValue() instanceof DRepresentation || notification.getOldValue() instanceof DRepresentation) {
+                    Collection<DRepresentation> allLoadedRepresentations = DialectManager.INSTANCE.getAllLoadedRepresentations(session);
+                    allLoadedRepresentations.stream().forEach(rep -> rep.getUiState().getSubDiagramDecorationDescriptors().clear());
+                    break;
+                }
+            }
+        }
+
+        @Override
+        public boolean isPostcommitOnly() {
+            return true;
+        }
+    }
+
+    /**
      * Create a new session.
      * 
      * @param mainDAnalysis
@@ -205,7 +245,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         setResourceCollector(new LocalResourceCollector(getTransactionalEditingDomain().getResourceSet()));
         setDeferSaveToPostCommit(true);
         setSaveInExclusiveTransaction(true);
-
+        dRepresentationChangeListener = new DRepresentationChangeListener(this);
+        getTransactionalEditingDomain().addResourceSetListener(dRepresentationChangeListener);
     }
 
     // *******************
@@ -1284,6 +1325,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (getRefreshEditorsListener() != null) {
             removeListener(getRefreshEditorsListener());
         }
+        getTransactionalEditingDomain().removeResourceSetListener(dRepresentationChangeListener);
+        dRepresentationChangeListener = null;
         refreshEditorsListeners = null;
         reloadingPolicy = null;
         savingPolicy = null;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -698,9 +698,12 @@ public final class DiagramElementEditPartOperation {
      *            the part which received the notification.
      * @param notification
      *            the <code>Notification</code> object that is the property changed event
+     * @param refreshEditPart
+     *            true if edit part should be refreshed at the end of the handling. False otherwise.
+     * @return the edit parts that should be refreshed.
      */
 
-    public static void handleNotificationEvent(IDiagramElementEditPart diagramElementEditPart, Notification notification) {
+    public static Set<EditPart> handleNotificationEvent(IDiagramElementEditPart diagramElementEditPart, Notification notification, boolean refreshEditPart) {
         Set<EditPart> toRefresh = new LinkedHashSet<>();
 
         final EditPart styleEditPart = getStyleEditPart(diagramElementEditPart);
@@ -722,8 +725,27 @@ public final class DiagramElementEditPartOperation {
             }
         }
 
-        for (EditPart part : toRefresh) {
-            part.refresh();
+        if (refreshEditPart) {
+            for (EditPart part : toRefresh) {
+                part.refresh();
+            }
         }
+        return toRefresh;
+    }
+
+    /**
+     * Handles the property changed event. Clients should override to respond to the specific notification events they
+     * are interested.
+     * 
+     * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart.handleNotificationEvent(Notification)
+     * 
+     * @param diagramElementEditPart
+     *            the part which received the notification.
+     * @param notification
+     *            the <code>Notification</code> object that is the property changed event
+     */
+
+    public static void handleNotificationEvent(IDiagramElementEditPart diagramElementEditPart, Notification notification) {
+        handleNotificationEvent(diagramElementEditPart, notification, true);
     }
 }

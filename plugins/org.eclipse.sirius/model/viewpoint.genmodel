@@ -134,6 +134,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//UIState/elementsToSelect"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//UIState/decorationImage"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference viewpoint.ecore#//UIState/toolSections"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//UIState/subDiagramDecorationDescriptors"/>
     </genClasses>
     <genClasses ecoreClass="viewpoint.ecore#//ToolInstance">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//ToolInstance/id"/>
