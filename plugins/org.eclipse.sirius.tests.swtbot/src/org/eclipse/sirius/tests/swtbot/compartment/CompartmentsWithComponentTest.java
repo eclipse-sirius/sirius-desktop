@@ -98,6 +98,7 @@ public class CompartmentsWithComponentTest extends AbstractSiriusSwtBotGefTestCa
         DEdgeEditPart edgeEditPart = (DEdgeEditPart) ((AbstractDiagramElementContainerEditPart) edgeSourceEditPart.part()).getSourceConnections().get(0);
         assertTrue("The edge should be visible after diagram opening.", edgeEditPart.getFigure().isVisible());
 
+        // Collapse the container
         collapseOrExpandContainer(parentEdgeSourceEditPart);
 
         // Check that the original edge is no longer visible but is always here
@@ -114,10 +115,13 @@ public class CompartmentsWithComponentTest extends AbstractSiriusSwtBotGefTestCa
         editor.click(10, 10);
 
         try {
+            // Collapse the container
             collapseOrExpandContainer(parentEdgeSourceEditPart);
-            // Check that the original edge no longer exists, as a refresh has been launch on the collapse
-            assertEquals("The edge should be hidden after collapsing the container of the target of the edge.", 0,
+            // Check that the original edge always exists (it is only hidden by the collapse)
+            assertEquals("The edge should be hidden after collapsing the container of the target of the edge.", 1,
                     ((AbstractDiagramElementContainerEditPart) edgeSourceEditPart.part()).getSourceConnections().size());
+            assertFalse("The edge should be invisible after collapsing the container of the target of the edge.",
+                    ((DEdgeEditPart) ((AbstractDiagramElementContainerEditPart) edgeSourceEditPart.part()).getSourceConnections().get(0)).getFigure().isVisible());
             // Check that another edge appears (because the collapse notification has been registered)
             assertEquals("One edge from the collapsed container should appear because the collapse notification has been registered.", 1,
                     ((AbstractDiagramElementContainerEditPart) parentEdgeSourceEditPart.part()).getSourceConnections().size());
@@ -127,14 +131,61 @@ public class CompartmentsWithComponentTest extends AbstractSiriusSwtBotGefTestCa
             // Expand the compartment
             collapseOrExpandContainer(parentEdgeSourceEditPart);
             // Check that the original edge is visible again, it is not the same edge as the original state but with the
-            // same
-            // source and target
+            // same source and target
             assertEquals("The edge should exist, as initially.", 1,
                     ((AbstractDiagramElementContainerEditPart) edgeSourceEditPart.part()).getSourceConnections().size());
             assertTrue("The edge should be visible after expanding the container of the target of the edge.",
                     ((DEdgeEditPart) ((AbstractDiagramElementContainerEditPart) edgeSourceEditPart.part()).getSourceConnections().get(0)).getFigure().isVisible());
             // Check that other edge disappears
             assertEquals("No edge from the expanded container must be there.", 0, ((AbstractDiagramElementContainerEditPart) parentEdgeSourceEditPart.part()).getSourceConnections().size());
+        } finally {
+            // Unregister the collapse notification as impacted one (by applying a dedicated tool).
+            editor.activateTool("Unregister collapse for Refresh");
+            editor.click(10, 10);
+        }
+    }
+
+    /**
+     * Check that invisible edge, because of invisible source or target because of collapse, is not made visible after
+     * renaming of another edge.
+     */
+    public void testEdgeRefreshInCaseOfAnotherEdgeRenaming() {
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REGION_WITH_EDGES_REPRESENTATION_NAME, REGION_WITH_EDGES_REPRESENTATION_INSTANCE_NAME, DDiagram.class,
+                true, true);
+        editor.maximize();
+
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+
+        SWTBotGefEditPart edgeSourceEditPart = editor.getEditPart("DC.3.1.1", AbstractDiagramElementContainerEditPart.class);
+        SWTBotGefEditPart parentEdgeSourceEditPart = editor.getEditPart("DC.3.1", AbstractDiagramElementContainerEditPart.class);
+
+        DEdgeEditPart edgeEditPart = (DEdgeEditPart) ((AbstractDiagramElementContainerEditPart) edgeSourceEditPart.part()).getSourceConnections().get(0);
+        assertTrue("The edge should be visible after diagram opening.", edgeEditPart.getFigure().isVisible());
+
+        // Register the collapse notification as impacted one (by applying a dedicated tool).
+        editor.activateTool("Register collapse for Refresh");
+        editor.click(10, 10);
+
+        try {
+            // Collapse the container
+            collapseOrExpandContainer(parentEdgeSourceEditPart);
+            // Check that the original edge always exists (it is only hidden by the collapse)
+            assertEquals("The edge should be hidden after collapsing the container of the target of the edge.", 1,
+                    ((AbstractDiagramElementContainerEditPart) edgeSourceEditPart.part()).getSourceConnections().size());
+            assertFalse("The edge should be invisible after collapsing the container of the target of the edge.",
+                    ((DEdgeEditPart) ((AbstractDiagramElementContainerEditPart) edgeSourceEditPart.part()).getSourceConnections().get(0)).getFigure().isVisible());
+            // Check that another edge appears (because the collapse notification has been registered)
+            assertEquals("One edge from the collapsed container should appear because the collapse notification has been registered.", 1,
+                    ((AbstractDiagramElementContainerEditPart) parentEdgeSourceEditPart.part()).getSourceConnections().size());
+            DEdgeEditPart newEdgeEditPart = (DEdgeEditPart) ((AbstractDiagramElementContainerEditPart) parentEdgeSourceEditPart.part()).getSourceConnections().get(0);
+            assertTrue("The edge from the parent should be visible after collapsing the container of the target of the previous edge.", newEdgeEditPart.getFigure().isVisible());
+
+            // Rename the new edge edit part
+            editor.directEditType("newEdgeName", parentEdgeSourceEditPart.sourceConnections().get(0));
+
+            // Check that the original edge is always invisible
+            assertFalse("The edge should be invisible after collapsing the container of the target of the edge.",
+                    ((DEdgeEditPart) ((AbstractDiagramElementContainerEditPart) edgeSourceEditPart.part()).getSourceConnections().get(0)).getFigure().isVisible());
         } finally {
             // Unregister the collapse notification as impacted one (by applying a dedicated tool).
             editor.activateTool("Unregister collapse for Refresh");

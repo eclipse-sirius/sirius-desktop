@@ -748,12 +748,12 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramWithRegionAndEdges" domainClass="component.Component" enablePopupBars="true">
       <defaultLayer name="Default">
-        <edgeMappings name="Reference" preconditionExpression="service:isReferenceToDisplay(sourceView, targetView)" deletionDescription="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20Reference']" sourceMapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithRegionAndEdges']/@defaultLayer/@containerMappings[name='Component']" targetMapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithRegionAndEdges']/@defaultLayer/@containerMappings[name='Component']" targetFinderExpression="aql:self.getReference2Hierarchy()" reconnections="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20%20Reference']">
+        <edgeMappings name="Reference" preconditionExpression="service:isReferenceToDisplay(sourceView, targetView)" deletionDescription="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Delete%20Reference']" labelDirectEdit="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithRegionAndEdges']/@defaultLayer/@toolSections.0/@ownedTools[name='RenameAlias']" sourceMapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithRegionAndEdges']/@defaultLayer/@containerMappings[name='Component']" targetMapping="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='DiagramWithRegionAndEdges']/@defaultLayer/@containerMappings[name='Component']" targetFinderExpression="aql:self.getReference2Hierarchy()" reconnections="//@ownedViewpoints[name='Component']/@ownedRepresentations[name='Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Reconnect%20%20Reference']">
           <style lineStyle="dot" sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
-            <endLabelStyleDescription showIcon="false" labelExpression="R2">
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.getReference2HierarchyOrigin().aliases->first()">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            </endLabelStyleDescription>
+            </centerLabelStyleDescription>
           </style>
         </edgeMappings>
         <containerMappings name="Component" semanticCandidatesExpression="aql:self.children" domainClass="component.Component" childrenPresentation="HorizontalStack">
@@ -778,6 +778,12 @@
             <elementView name="elementView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:doNotConsiderCollapseStateForAutomaticRefresh"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:DirectEditLabel" name="RenameAlias" forceRefresh="true">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:self.getReference2HierarchyOrigin()->first().renameFirstAlias(arg0)"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
