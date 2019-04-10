@@ -1,9 +1,9 @@
 pipeline {
     agent {
-	kubernetes {
-	    label 'sirius-buildtest'
-	    defaultContainer 'jnlp'
-	    yaml """
+        kubernetes {
+            label 'sirius-buildtest'
+            defaultContainer 'jnlp'
+            yaml """
 apiVersion: v1
 kind: Pod
 spec:
@@ -41,7 +41,12 @@ spec:
     persistentVolumeClaim:
       claimName: tools-claim-jiro-sirius
 """
-	}
+        }
+    }
+
+    environment {
+        SWT_GTK3="1"
+        GTK_IM_MODULE=""
     }
 
     stages {
@@ -63,6 +68,9 @@ spec:
             steps {
                 container('uitests') {
                     wrap([$class: 'Xvnc', useXauthority: true]) {
+                        sh "echo '*** Tests execution environment ***'"
+                        sh "env | sort"
+
                         sh "mvn -B -Dplatform-version-name=${env.PLATFORM} -f packaging/org.eclipse.sirius.parent/pom.xml -P full,headless,headless-server,gerrit-junit verify"
                     }
                 }

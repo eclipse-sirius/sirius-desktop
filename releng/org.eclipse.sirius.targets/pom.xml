@@ -40,8 +40,8 @@
   </licenses>
 
   <properties>
-    <tycho-version>1.2.0</tycho-version>
-    <tycho-extras-version>1.2.0</tycho-extras-version>
+    <tycho-version>1.4.0</tycho-version>
+    <tycho-extras-version>1.4.0</tycho-extras-version>
     <targetPlatform.repository.p2>http://mbarbero.github.com/fr.obeo.releng.targetplatform/p2/</targetPlatform.repository.p2>
     <target.definition>baseline.targetplatform</target.definition>
   </properties>
