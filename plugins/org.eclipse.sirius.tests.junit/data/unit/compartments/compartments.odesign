@@ -739,6 +739,57 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="RegionWithEdgesAndNodes" domainClass="ecore.EPackage">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <nodeMappings name="EPackageNode" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EPackage">
+          <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="aql:'node'+self.name" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <edgeMappings name="packageWithHierarchy" sourceMapping="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@containerMappings[name='EPackageVStack'] //@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@nodeMappings[name='EPackageNode']" targetMapping="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@containerMappings[name='EPackageVStack']" targetFinderExpression="aql:self.eClassifiers.eSuperTypes.eContainer()">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="EPackageVStack" semanticCandidatesExpression="feature:eContents" domainClass="ecore.EPackage" childrenPresentation="VerticalStack">
+          <subContainerMappings name="InternalRegion" semanticCandidatesExpression="var:self" domainClass="ecore.EPackage" reusedContainerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@containerMappings[name='EPackageVStack']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:'[region-'+self.name+']'" labelAlignment="LEFT" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>italic</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_orange']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:self.name">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="Default">
+          <ownedTools xsi:type="tool:ContainerDropDescription" name="drop" forceRefresh="true">
+            <oldContainer name="oldSemanticContainer"/>
+            <newContainer name="newSemanticContainer"/>
+            <element name="element"/>
+            <newViewContainer name="newContainerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool_1:MoveElement" newContainerExpression="var:newSemanticContainer" featureName="eClassifiers"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
   </ownedViewpoints>
   <userColorsPalettes name="Colors">
     <entries xsi:type="description:InterpolatedColor" name="regionInterpolatedColor" colorValueComputationExpression="aql:self.oclAsType(ecore::ENamedElement).name.substring(self.oclAsType(ecore::ENamedElement).name.size())">
