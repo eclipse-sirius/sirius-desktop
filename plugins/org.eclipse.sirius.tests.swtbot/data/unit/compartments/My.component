@@ -7,7 +7,9 @@
   </children>
   <children name="DC.3">
     <children name="DC.3.1">
-      <children name="DC.3.1.1" references2="//@children.0/@children.0/@children.0"/>
+      <children name="DC.3.1.1" references2="//@children.0/@children.0/@children.0">
+        <aliases>myRef</aliases>
+      </children>
     </children>
   </children>
 </component:Component>

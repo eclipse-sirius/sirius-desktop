@@ -59,7 +59,7 @@ public class ComponentServices {
      * Register a predicate to consider Collapse/Expand changes as requiring refresh in "DiagramWithRegionAndEdges"
      * diagram.
      */
-    public static void considerCollapseStateForAutomaticRefresh(EObject context) {
+    public static void considerCollapseStateForAutomaticRefresh() {
         RefreshHelper.registerImpactingNotification(considerCollapseStateForAutomaticRefreshPredicate);
     }
 
@@ -67,7 +67,7 @@ public class ComponentServices {
      * Unregister the predicate to consider Collapse/Expand changes as requiring refresh in "DiagramWithRegionAndEdges"
      * diagram.
      */
-    public static void doNotConsiderCollapseStateForAutomaticRefresh(EObject context) {
+    public static void doNotConsiderCollapseStateForAutomaticRefresh() {
         RefreshHelper.unregisterImpactingNotification(considerCollapseStateForAutomaticRefreshPredicate);
     }
 
@@ -183,12 +183,42 @@ public class ComponentServices {
     }
 
     /**
-     * A reference is to display if:
-     * <UL>
-     * <LI>the source is not collapsed</LI>
-     * <LI>and the target is not collapsed</LI>
-     * <LI>and there is no "shortest reference" to display</LI>
-     * </UL>
+     * Mirror of method getReference2Hierarchy(Component) but with the list of the real source of "reference2" list.
+     * 
+     * @param component
+     *            The concerned component
+     * @return list of component
+     */
+    public List<Component> getReference2HierarchyOrigin(Component component) {
+        List<Component> components = new ArrayList<>();
+        for (int i = 0; i < component.getReferences2().size(); i++) {
+            components.add(component);
+        }
+        for (Component child : component.getChildren()) {
+            components.addAll(getReference2HierarchyOrigin(child));
+        }
+        return components;
+    }
+
+    /**
+     * Rename the first alias of this component, if there is one.
+     * 
+     * @param component
+     *            The concerned component.
+     * @param newName
+     *            The new name of the first alias
+     * @return The component for convenience
+     */
+    public Component renameFirstAlias(Component component, String newName) {
+        if (component.getAliases().size() > 0) {
+            component.getAliases().set(0, newName);
+        }
+        return component;
+    }
+
+    /**
+     * A reference is to display when there is no "shortest reference" to display (if source or target is collapsed the
+     * DEdge will exist but the corresponding figure will be hidden).
      * 
      * @param source
      *            Semantic element corresponding to the source of the reference
@@ -199,19 +229,16 @@ public class ComponentServices {
      * @return true if the reference is to display, false otherwise.
      */
     public boolean isReferenceToDisplay(Component source, DNodeContainer sourceView, DNodeContainer targetView) {
-        if (!isIndirectlyCollapsed(sourceView) && !isIndirectlyCollapsed(targetView)) {
-            for (DDiagramElement child : sourceView.getOwnedDiagramElements()) {
-                if (child instanceof DNodeContainer && (((DNodeContainer) child).getActualMapping().getName().equals("ComponentRegion"))) {
-                    for (DDiagramElement grandchild : ((DNodeContainer) child).getOwnedDiagramElements()) {
-                        if (isReferenceDisplayedByChild((DNodeContainer) grandchild, targetView)) {
-                            return false;
-                        }
+        for (DDiagramElement child : sourceView.getOwnedDiagramElements()) {
+            if (child instanceof DNodeContainer && (((DNodeContainer) child).getActualMapping().getName().equals("ComponentRegion"))) {
+                for (DDiagramElement grandchild : ((DNodeContainer) child).getOwnedDiagramElements()) {
+                    if (isReferenceDisplayedByChild((DNodeContainer) grandchild, targetView)) {
+                        return false;
                     }
                 }
             }
-            return true;
         }
-        return false;
+        return true;
     }
 
     /**
