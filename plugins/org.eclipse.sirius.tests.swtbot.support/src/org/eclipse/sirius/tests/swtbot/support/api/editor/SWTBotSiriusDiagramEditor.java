@@ -190,6 +190,29 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
         /* add height -1 for designer */
         click(bounds.x, bounds.y + bounds.height - 1);
     }
+    
+    /**
+     * 
+     * Click on the edit part which owns the specified label at the top left hand corner of its bounds with the given
+     * key modifiers used at the same time.
+     * 
+     * @param label
+     *            the label to retrieve edit part to click on
+     * @param keyModifiers
+     *            the key modifiers to use when doing the click.
+     */
+    public void clickWithKeys(String label, final int... keyModifiers) {
+        final SWTBotGefEditPart selectedEP = getEditPart(label);
+        if (selectedEP == null) {
+            throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, label));
+        }
+        final Rectangle bounds = ((GraphicalEditPart) selectedEP.part()).getFigure().getBounds().getCopy();
+        ((GraphicalEditPart) selectedEP.part()).getFigure().translateToAbsolute(bounds);
+        /* add height -1 for designer */
+
+        ((SWTBotSiriusGefViewer) getSWTBotGefViewer()).click(bounds.x, bounds.y + bounds.height - 1, true, keyModifiers);
+
+    }
 
     /**
      * Click on the edit part (of correct type) which owns the specified label

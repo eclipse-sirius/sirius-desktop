@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -67,7 +67,9 @@ public class DEdgeNameSelectionFeedbackEditPolicy extends AbstractEdgeSelectionF
         if (getEdgeEditPart() != null && getEdgeEditPart().getFigure() != null) {
             // we register this policy as a property listener to clear rebuild its handles when target edge's bend
             // points change. This is needed when an edge is straighten whereas the edge part and its name part are both
-            // selected.
+            // selected. We remove it first in case of multi selection to avoid registering it two times causing
+            // exceptions later. See 546298.
+            ((Connection) getEdgeEditPart().getFigure()).removePropertyChangeListener(this);
             ((Connection) getEdgeEditPart().getFigure()).addPropertyChangeListener(this);
         }
         super.showSelection();

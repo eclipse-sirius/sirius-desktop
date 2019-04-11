@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -413,6 +413,27 @@ public class SWTBotSiriusGefViewer extends SWTBotGefViewer {
     public void click(final int xPosition, final int yPosition, boolean displayFeedback) {
         if (canvas instanceof SWTBotSiriusFigureCanvas) {
             ((SWTBotSiriusFigureCanvas) canvas).mouseMoveLeftClick(xPosition, yPosition, displayFeedback);
+        } else {
+            canvas.mouseMoveLeftClick(xPosition, yPosition);
+        }
+    }
+    
+    /**
+     * Click on the editor at the specified location with given key modifiers used
+     * at the same time.
+     * 
+     * @param xPosition
+     *            the x relative position
+     * @param yPosition
+     *            the y relative position
+     * @param displayFeedback
+     *            true to display feedback, false otherwise.
+     * @param keyModifiers
+     *            the key modifiers used when doing the click.
+     */
+    public void click(int xPosition, int yPosition, boolean displayFeedback, int[] keyModifiers) {
+        if (canvas instanceof SWTBotSiriusFigureCanvas) {
+            ((SWTBotSiriusFigureCanvas) canvas).mouseMoveLeftClick(xPosition, yPosition, displayFeedback, keyModifiers);
         } else {
             canvas.mouseMoveLeftClick(xPosition, yPosition);
         }

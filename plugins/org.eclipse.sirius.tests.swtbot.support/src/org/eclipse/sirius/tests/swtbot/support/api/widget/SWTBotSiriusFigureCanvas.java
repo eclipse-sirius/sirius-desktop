@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES
+ * Copyright (c) 2012, 2019 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -140,6 +140,59 @@ public class SWTBotSiriusFigureCanvas extends SWTBotGefFigureCanvas {
 
     }
 
+    /**
+     * Contrary to {@link #mouseMoveLeftClick(int, int)}, this method allows to
+     * display the feedback during the creation: Useful for edge creation. It also
+     * allows to specify some key modifiers to use when doing the click.
+     * 
+     * @param xPosition
+     *            the relative x position
+     * @param yPosition
+     *            the relative y position
+     * @param displayFeedback
+     *            true to display feedback, false otherwise.
+     * @param keyModifiers
+     *            the key modifiers to use when doing the click.
+     * 
+     * @see org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefFigureCanvas#mouseMoveLeftClick(int,
+     *      int)
+     */
+    public void mouseMoveLeftClick(int xPosition, int yPosition, boolean displayFeedback, int[] keyModifiers) {
+
+        if (!displayFeedback) {
+            mouseMoveLeftClick(xPosition, yPosition);
+        } else {
+            UIThreadRunnable.asyncExec(new VoidResult() {
+                @Override
+                public void run() {
+
+                    int stateMask = SWT.NONE;
+                    if (keyModifiers.length > 0) {
+                        stateMask = keyModifiers[0];
+                        for (int i = 1; i < keyModifiers.length; i++) {
+                            stateMask = stateMask | keyModifiers[i];
+                        }
+                    }
+
+                    org.eclipse.swt.events.MouseEvent meMove = wrapMouseEvent(xPosition, yPosition, 0, 0, 0);
+                    eventDispatcher.dispatchMouseMoved(meMove);
+                    // Force an update of viewport (necessary to have a correct
+                    // feedback of edge in case of edge creation for example)
+                    if (widget instanceof FigureCanvas) {
+                        ((FigureCanvas) widget).getViewport().getUpdateManager().performUpdate();
+                    }
+                    org.eclipse.swt.events.MouseEvent meDown = wrapMouseEvent(xPosition, yPosition, 1,
+                            SWT.None | stateMask, 1);
+                    eventDispatcher.dispatchMousePressed(meDown);
+                    org.eclipse.swt.events.MouseEvent meUp = wrapMouseEvent(xPosition, yPosition, 1,
+                            SWT.BUTTON1 | stateMask, 1);
+                    eventDispatcher.dispatchMouseReleased(meUp);
+                }
+            });
+        }
+
+    }
+    
     private org.eclipse.swt.events.MouseEvent wrapMouseEvent(int x, int y, int button, int stateMask, int count) {
         return new org.eclipse.swt.events.MouseEvent(createMouseEvent(x, y, button, stateMask, count));
     }

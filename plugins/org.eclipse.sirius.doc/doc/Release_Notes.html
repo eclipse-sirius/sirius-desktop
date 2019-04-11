@@ -104,6 +104,13 @@
 		<h2 id="sirius6.1.3">Changes in Sirius 6.1.3</h2>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>
+			<li><span class="label label-success">Added</span>  The methods 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas.mouseMoveLeftClick(int, int, boolean, int[])</code>, 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer.click(int, int, boolean, int[])</code>, 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.clickWithKeys(String, int...)</code>, have been added to make a mouse click with key modifiers for a multi selection for example.
+			</li>
+		</ul>
+		<ul>
 			<li><span class="label label-success">Added</span> It is now possible to consider that some specific graphical changes need a refresh of the representation. Before Sirius 6.1.3, only semantic changes triggers a refresh. Now you can use 
 				<code>RefreshHelper.registerImpactingNotification(Predicate&lt;Notification&gt;)</code> to consider a specific graphical changes. An example is the possibility to launch a refresh when the region container is collapsed or expanded.
 			</li>
