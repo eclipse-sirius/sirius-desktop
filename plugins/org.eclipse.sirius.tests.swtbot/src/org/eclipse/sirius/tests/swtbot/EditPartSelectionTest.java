@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,8 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gef.LayerConstants;
+import org.eclipse.gef.editparts.LayerManager;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -28,6 +30,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swt.SWT;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
@@ -66,6 +69,28 @@ public class EditPartSelectionTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotUtils.waitAllUiEvents();
         session = localSession.getOpenedSession();
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(session, REPRESENTATION_DECRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class, true);
+    }
+    
+    /**
+     * Tests that no selection handles are visible after deleting two edges selected by their label parts. See #546298.
+     */
+    public void testMultiEdgesSelection() {
+        // Select an element on the top left to always have the same initial
+        // scroll
+        editor.scrollTo(0, 0);
+        editor.getEditPart("C1", AbstractBorderedShapeEditPart.class).click();
+
+        // check the initial position of node C2
+        checkBottomRightCornerNodeAbsolutePosition("Bad diagram test data");
+
+        SWTBotGefEditPart editPart = editor.getEditPart("[0..1] ref");
+        IFigure layer = LayerManager.Helper.find(editPart.part()).getLayer(LayerConstants.HANDLE_LAYER);
+
+        editor.click("[0..1] ref");
+        editor.clickWithKeys("[0..1] ref1", SWT.CTRL);
+
+        editor.clickContextMenu("Edit").clickContextMenu("Delete from Model");
+        assertEquals("Some selection handles are still visible whereas there should be none.", 0, layer.getChildren().size());
     }
 
     /**

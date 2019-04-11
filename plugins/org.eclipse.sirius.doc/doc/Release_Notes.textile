@@ -14,15 +14,6 @@ h4. Changes in  @org.eclipse.sirius@
 
 * <span class="label label-success">Added</span> Added a constructor @org.eclipse.sirius.business.api.query.DRepresentationQuery.DRepresentationQuery(DRepresentation, Session)@ to compute queries directly from the given session instead of computing it.
 
-h2(#sirius6.2.0). Changes in Sirius 6.2.0
-
-h3. User-Visible Changes
-
-* <span class="label label-success">Added</span> On sequence diagrams, it is now possible to remove vertical blank spaces on standard edition mode by dragging the mouse from bottom to top anywhere in the canvas with the Ctrl+Shift keys pressed. This "feature":user/sequences/Sequence%20Diagrams.html#remove_vertical_blank_space was here since version 6.0.0 but was only accessible through the ruler.
-
-h3. Specifier-Visible Changes
-
-* <span class="label label-success">Added</span> It is now possible to add action/group in the "New" contextual menu of diagram elements. This menu was missed in Sirius 6.1.0. It is now documented in the "corresponding documentation":specifier/diagrams/Diagrams.html#group .
 
 h3. Developer-Visible Changes
 
@@ -34,6 +25,22 @@ h4. Changes in  @org.eclipse.sirius@
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.tools.api.ui.RefreshHelper.isAutoRefresh()@ has been added to know if Sirius is in automatic refresh mode or in manual mode.
 * <span class="label label-success">Added</span> The methods @org.eclipse.sirius.tools.api.ui.RefreshHelper.registerImpactingNotification(Predicate<Notification>)@ and @org.eclipse.sirius.tools.api.ui.RefreshHelper.unregisterImpactingNotification(Predicate<Notification>)@ have been added to allow to consider some graphical modifications as requiring a refresh. By default, only semantic changes are considered as requiring a refresh.  
 * <span class="label label-danger">Removed</span> The @org.eclipse.sirius.business.api.helper.task.NotificationTask@ class has been removed. It was not used anywhere.
+
+h4. Changes in  @org.eclipse.sirius.tests.swtbot.support@
+
+* <span class="label label-success">Added</span>  The methods @org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas.mouseMoveLeftClick(int, int, boolean, int[])@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer.click(int, int, boolean, int[])@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.clickWithKeys(String, int...)@, have been added to make a mouse click with key modifiers for a multi selection for example.
+
+h2(#sirius6.2.0). Changes in Sirius 6.2.0
+
+h3. User-Visible Changes
+
+* <span class="label label-success">Added</span> On sequence diagrams, it is now possible to remove vertical blank spaces on standard edition mode by dragging the mouse from bottom to top anywhere in the canvas with the Ctrl+Shift keys pressed. This "feature":user/sequences/Sequence%20Diagrams.html#remove_vertical_blank_space was here since version 6.0.0 but was only accessible through the ruler.
+
+h3. Specifier-Visible Changes
+
+* <span class="label label-success">Added</span> It is now possible to add action/group in the "New" contextual menu of diagram elements. This menu was missed in Sirius 6.1.0. It is now documented in the "corresponding documentation":specifier/diagrams/Diagrams.html#group .
+
+h3. Developer-Visible Changes
 
 h4. Changes in @org.eclipse.sirius.common@
 

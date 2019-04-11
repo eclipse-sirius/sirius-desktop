@@ -18,6 +18,9 @@
 							<li>
 								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
 							</li>
+							<li>
+								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
+							</li>
 						</ol>
 					</li>
 					<li>
@@ -30,7 +33,7 @@
 								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -41,7 +44,7 @@
 								<a href="#UserVisibleChanges2">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -63,7 +66,7 @@
 								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges5">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -77,7 +80,7 @@
 								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges5">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges6">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -88,7 +91,7 @@
 								<a href="#UserVisibleChanges5">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges6">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges7">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -102,7 +105,7 @@
 								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges7">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges8">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -129,19 +132,6 @@
 				<code>org.eclipse.sirius.business.api.query.DRepresentationQuery.DRepresentationQuery(DRepresentation, Session)</code> to compute queries directly from the given session instead of computing it.
 			</li>
 		</ul>
-		<h2 id="sirius6.2.0">Changes in Sirius 6.2.0</h2>
-		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
-		<ul>
-			<li><span class="label label-success">Added</span> On sequence diagrams, it is now possible to remove vertical blank spaces on standard edition mode by dragging the mouse from bottom to top anywhere in the canvas with the Ctrl+Shift keys pressed. This 
-				<a href="user/sequences/Sequence%20Diagrams.html#remove_vertical_blank_space">feature</a> was here since version 6.0.0 but was only accessible through the ruler.
-			</li>
-		</ul>
-		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
-		<ul>
-			<li><span class="label label-success">Added</span> It is now possible to add action/group in the &#8220;New&#8221; contextual menu of diagram elements. This menu was missed in Sirius 6.1.0. It is now documented in the 
-				<a href="specifier/diagrams/Diagrams.html#group">corresponding documentation</a> .
-			</li>
-		</ul>
 		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> It is now possible to consider that some specific graphical changes need a refresh of the representation. Before Sirius 6.1.3, only semantic changes triggers a refresh. Now you can use 
@@ -166,6 +156,30 @@
 				<code>org.eclipse.sirius.business.api.helper.task.NotificationTask</code> class has been removed. It was not used anywhere.
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in  
+			<code>org.eclipse.sirius.tests.swtbot.support</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span>  The methods 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas.mouseMoveLeftClick(int, int, boolean, int[])</code>, 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer.click(int, int, boolean, int[])</code>, 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.clickWithKeys(String, int...)</code>, have been added to make a mouse click with key modifiers for a multi selection for example.
+			</li>
+		</ul>
+		<h2 id="sirius6.2.0">Changes in Sirius 6.2.0</h2>
+		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-success">Added</span> On sequence diagrams, it is now possible to remove vertical blank spaces on standard edition mode by dragging the mouse from bottom to top anywhere in the canvas with the Ctrl+Shift keys pressed. This 
+				<a href="user/sequences/Sequence%20Diagrams.html#remove_vertical_blank_space">feature</a> was here since version 6.0.0 but was only accessible through the ruler.
+			</li>
+		</ul>
+		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-success">Added</span> It is now possible to add action/group in the &#8220;New&#8221; contextual menu of diagram elements. This menu was missed in Sirius 6.1.0. It is now documented in the 
+				<a href="specifier/diagrams/Diagrams.html#group">corresponding documentation</a> .
+			</li>
+		</ul>
+		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
@@ -511,7 +525,7 @@
 				<code>java.util.Optional&lt;T&gt;</code> instead.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support2">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
@@ -536,7 +550,7 @@
 				<em>Delete</em>. It was previously the case only for representations which semantic target does not exist anymore.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> If the 
 				<code>org.eclipse.sirius.diagam.ui.hidePrintingOfPermissionAuthorityDecoration</code> system property is set to true and if there is no other printable decoration provided at the same location (South-West), the permission authority decorations displayed on diagrams are not printed nor exported in images (export as image actions).
@@ -690,7 +704,7 @@
 				<a href="specifier/tables/Tables.html#edition_tables">the documentation</a> for details.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges5">Developer-Visible Changes</h3>
 		<p><span class="label label-info">IMPORTANT</span> Note that all plug-ins in the 
 			<em>Sirius Server</em> feature (
 			<code>org.eclipse.sirius.server.*</code> and 
@@ -923,7 +937,7 @@
 				<code>org.eclipse.emf.ecore.util.EcoreUtil.generateUUID()</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support3">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
@@ -999,7 +1013,7 @@
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=531487">bugzilla 531487</a> for more details.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges5">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges6">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> The SWTBot test framework version has been upgraded toward SWTBot 2.6. The main impacts are described below:
 				<ul>
@@ -1187,7 +1201,7 @@
 				<code>org.eclipse.sirius.tests.swtbot.Activator.PLUGIN_ID</code>). It avoids to build a wrong target platform containing each Sirius plug-ins twice. 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support4">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
@@ -1228,7 +1242,7 @@
 				<a href="user/diagrams/Diagrams.html#standardToolId">Standard Tools</a> chapter for more details on this tool.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges6">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges7">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
@@ -1368,7 +1382,7 @@
 				<em>Reference Name</em> field (if a valid feature has been specified).
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges7">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges8">Developer-Visible Changes</h3>
 		<h4 id="Migrations3">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration has been added to fix diagram with edge labels corrupted (see 

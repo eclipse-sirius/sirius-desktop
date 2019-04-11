@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis xmi:id="_RmyMUMHCEeCenq6NHvggaA" selectedViews="_8e1WcHETEee5ZpCMxpRpSA _pesd0LWlEeeb3fJFsFSJjw" version="12.1.0.201708031200">
+  <viewpoint:DAnalysis uid="_RmyMUMHCEeCenq6NHvggaA" selectedViews="_8e1WcHETEee5ZpCMxpRpSA _pesd0LWlEeeb3fJFsFSJjw" version="14.1.0.201810161215">
     <semanticResources>TestSelection.ecore</semanticResources>
-    <ownedViews xmi:type="viewpoint:DView" xmi:id="_8e1WcHETEee5ZpCMxpRpSA">
+    <ownedViews xmi:type="viewpoint:DView" uid="_8e1WcHETEee5ZpCMxpRpSA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_8u39kHETEee5ZpCMxpRpSA" name="diagram" repPath="#_FIlAYLWlEeeb3fJFsFSJjw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_8u39kHETEee5ZpCMxpRpSA" name="diagram" repPath="#_8uzFEHETEee5ZpCMxpRpSA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="TestSelection.ecore#/"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
-    <ownedViews xmi:type="viewpoint:DView" xmi:id="_pesd0LWlEeeb3fJFsFSJjw">
+    <ownedViews xmi:type="viewpoint:DView" uid="_pesd0LWlEeeb3fJFsFSJjw">
       <viewpoint xmi:type="description:Viewpoint" href="My.odesign#//@ownedViewpoints[name='VPwithBorderNode']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_r6z68LWlEeeb3fJFsFSJjw" name="diagram2" repPath="#_r6QhULWlEeeb3fJFsFSJjw">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_r6z68LWlEeeb3fJFsFSJjw" name="diagram2" repPath="#_r6ys0LWlEeeb3fJFsFSJjw">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='VPwithBorderNode']/@ownedRepresentations[name='MyDiagram']"/>
         <target xmi:type="ecore:EPackage" href="TestSelection.ecore#/"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_8uzFEHETEee5ZpCMxpRpSA" name="diagram" uid="_FIlAYLWlEeeb3fJFsFSJjw">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_8uzFEXETEee5ZpCMxpRpSA" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_8uzFEnETEee5ZpCMxpRpSA"/>
+  <diagram:DSemanticDiagram uid="_8uzFEHETEee5ZpCMxpRpSA" name="diagram">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_8uzFEXETEee5ZpCMxpRpSA" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_8uzFEnETEee5ZpCMxpRpSA"/>
     </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_8vCVoHETEee5ZpCMxpRpSA" source="GMF_DIAGRAMS">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_8vCVoHETEee5ZpCMxpRpSA" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_8vCVoXETEee5ZpCMxpRpSA" type="Sirius" element="_8uzFEHETEee5ZpCMxpRpSA" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_8vgPsHETEee5ZpCMxpRpSA" type="2003" element="_8uzFFnETEee5ZpCMxpRpSA">
           <children xmi:type="notation:Node" xmi:id="_8vg2wHETEee5ZpCMxpRpSA" type="5007"/>
@@ -61,7 +61,7 @@
         <styles xmi:type="notation:DiagramStyle" xmi:id="_8vCVonETEee5ZpCMxpRpSA"/>
         <edges xmi:type="notation:Edge" xmi:id="_8vrO0HETEee5ZpCMxpRpSA" type="4001" element="_8uzFIHETEee5ZpCMxpRpSA" source="_8vj6EHETEee5ZpCMxpRpSA" target="_8vir8HETEee5ZpCMxpRpSA">
           <children xmi:type="notation:Node" xmi:id="_8vtrEHETEee5ZpCMxpRpSA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8vtrEXETEee5ZpCMxpRpSA" x="27" y="3"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8vtrEXETEee5ZpCMxpRpSA" x="23" y="24"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_8vu5MHETEee5ZpCMxpRpSA" type="6002">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8vu5MXETEee5ZpCMxpRpSA" x="10" y="8"/>
@@ -90,86 +90,111 @@
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_E8zKALWsEeewG5AVDxE00g" id="(0.21487603305785125,0.13975155279503104)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_8v-JwXETEee5ZpCMxpRpSA" id="(3.4383561643835616,-2.6557377049180326)"/>
         </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_0Gwz0FxyEemIobUFnGIn3g" type="4001" element="_0GLlAFxyEemIobUFnGIn3g" source="_8vir8HETEee5ZpCMxpRpSA" target="_8vj6EHETEee5ZpCMxpRpSA">
+          <children xmi:type="notation:Node" xmi:id="_0G4IkFxyEemIobUFnGIn3g" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0G4IkVxyEemIobUFnGIn3g" x="-76" y="92"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_0G5WsFxyEemIobUFnGIn3g" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0G5WsVxyEemIobUFnGIn3g" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_0G59wFxyEemIobUFnGIn3g" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0G59wVxyEemIobUFnGIn3g" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_0Gwz0VxyEemIobUFnGIn3g"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_0Gwz0lxyEemIobUFnGIn3g" fontName="Segoe UI" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_0Gwz01xyEemIobUFnGIn3g" points="[50, 17, -405, -137]$[370, 125, -85, -29]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0G9BEFxyEemIobUFnGIn3g" id="(0.18181818181818182,0.8944099378881988)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0G9BEVxyEemIobUFnGIn3g" id="(0.10035419126328217,0.30606860158311344)"/>
+        </edges>
       </data>
     </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_8uzFFnETEee5ZpCMxpRpSA" name="SC1" tooltipText="new EPackage0.SC1" incomingEdges="_8uzFI3ETEee5ZpCMxpRpSA">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_8uzFFnETEee5ZpCMxpRpSA" name="SC1" tooltipText="new EPackage0.SC1" incomingEdges="_8uzFI3ETEee5ZpCMxpRpSA">
       <target xmi:type="ecore:EClass" href="TestSelection.ecore#//SC1"/>
       <semanticElements xmi:type="ecore:EClass" href="TestSelection.ecore#//SC1"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_8uzFF3ETEee5ZpCMxpRpSA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_8uzFF3ETEee5ZpCMxpRpSA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_8uzFGHETEee5ZpCMxpRpSA" name="C1" tooltipText="new EPackage0.C1" outgoingEdges="_8uzFI3ETEee5ZpCMxpRpSA" incomingEdges="_8uzFIHETEee5ZpCMxpRpSA">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_8uzFGHETEee5ZpCMxpRpSA" name="C1" tooltipText="new EPackage0.C1" outgoingEdges="_8uzFI3ETEee5ZpCMxpRpSA _0GLlAFxyEemIobUFnGIn3g" incomingEdges="_8uzFIHETEee5ZpCMxpRpSA">
       <target xmi:type="ecore:EClass" href="TestSelection.ecore#//C1"/>
       <semanticElements xmi:type="ecore:EClass" href="TestSelection.ecore#//C1"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_8uzFGXETEee5ZpCMxpRpSA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_8uzFGXETEee5ZpCMxpRpSA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_8uzFGnETEee5ZpCMxpRpSA" name="c1a1">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_8uzFGnETEee5ZpCMxpRpSA" name="c1a1">
         <target xmi:type="ecore:EAttribute" href="TestSelection.ecore#//C1/c1a1"/>
         <semanticElements xmi:type="ecore:EAttribute" href="TestSelection.ecore#//C1/c1a1"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_8uzFG3ETEee5ZpCMxpRpSA" labelAlignment="LEFT">
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_8uzFG3ETEee5ZpCMxpRpSA" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_8uzFHHETEee5ZpCMxpRpSA" name="C2" tooltipText="new EPackage0.C2" outgoingEdges="_8uzFIHETEee5ZpCMxpRpSA">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_8uzFHHETEee5ZpCMxpRpSA" name="C2" tooltipText="new EPackage0.C2" outgoingEdges="_8uzFIHETEee5ZpCMxpRpSA" incomingEdges="_0GLlAFxyEemIobUFnGIn3g">
       <target xmi:type="ecore:EClass" href="TestSelection.ecore#//C2"/>
       <semanticElements xmi:type="ecore:EClass" href="TestSelection.ecore#//C2"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_8uzFHXETEee5ZpCMxpRpSA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_8uzFHXETEee5ZpCMxpRpSA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_8uzFHnETEee5ZpCMxpRpSA" name="c2a2">
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_8uzFHnETEee5ZpCMxpRpSA" name="c2a2">
         <target xmi:type="ecore:EAttribute" href="TestSelection.ecore#//C2/c2a2"/>
         <semanticElements xmi:type="ecore:EAttribute" href="TestSelection.ecore#//C2/c2a2"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_8uzFH3ETEee5ZpCMxpRpSA" labelAlignment="LEFT">
+        <ownedStyle xmi:type="diagram:BundledImage" uid="_8uzFH3ETEee5ZpCMxpRpSA" labelAlignment="LEFT">
           <description xmi:type="style:BundledImageDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>
       </ownedElements>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8uzFIHETEee5ZpCMxpRpSA" name="[0..1] ref" sourceNode="_8uzFHHETEee5ZpCMxpRpSA" targetNode="_8uzFGHETEee5ZpCMxpRpSA">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_8uzFIHETEee5ZpCMxpRpSA" name="[0..1] ref" sourceNode="_8uzFHHETEee5ZpCMxpRpSA" targetNode="_8uzFGHETEee5ZpCMxpRpSA">
       <target xmi:type="ecore:EReference" href="TestSelection.ecore#//C2/ref"/>
       <semanticElements xmi:type="ecore:EReference" href="TestSelection.ecore#//C2/ref"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8uzFIXETEee5ZpCMxpRpSA">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_8uzFIXETEee5ZpCMxpRpSA">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_8uzFInETEee5ZpCMxpRpSA" showIcon="false"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_8uzFInETEee5ZpCMxpRpSA" showIcon="false"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_8uzFI3ETEee5ZpCMxpRpSA" sourceNode="_8uzFGHETEee5ZpCMxpRpSA" targetNode="_8uzFFnETEee5ZpCMxpRpSA">
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_8uzFI3ETEee5ZpCMxpRpSA" sourceNode="_8uzFGHETEee5ZpCMxpRpSA" targetNode="_8uzFFnETEee5ZpCMxpRpSA">
       <target xmi:type="ecore:EClass" href="TestSelection.ecore#//C1"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_8uzFJHETEee5ZpCMxpRpSA" targetArrow="InputClosedArrow">
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_8uzFJHETEee5ZpCMxpRpSA" targetArrow="InputClosedArrow">
         <customFeatures>routingStyle</customFeatures>
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_8uzFJXETEee5ZpCMxpRpSA" showIcon="false"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_8uzFJXETEee5ZpCMxpRpSA" showIcon="false"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
     </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_0GLlAFxyEemIobUFnGIn3g" name="[0..1] ref1" sourceNode="_8uzFGHETEee5ZpCMxpRpSA" targetNode="_8uzFHHETEee5ZpCMxpRpSA">
+      <target xmi:type="ecore:EReference" href="TestSelection.ecore#//C1/ref1"/>
+      <semanticElements xmi:type="ecore:EReference" href="TestSelection.ecore#//C1/ref1"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_0GOBQFxyEemIobUFnGIn3g">
+        <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_0GOBQVxyEemIobUFnGIn3g" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
+    </ownedDiagramElements>
     <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
-    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_8uzFJnETEee5ZpCMxpRpSA"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_8uzFJnETEee5ZpCMxpRpSA"/>
     <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer"/>
     <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']"/>
     <target xmi:type="ecore:EPackage" href="TestSelection.ecore#/"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram xmi:id="_r6ys0LWlEeeb3fJFsFSJjw" name="diagram2" uid="_r6QhULWlEeeb3fJFsFSJjw">
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_r6ys0bWlEeeb3fJFsFSJjw" source="DANNOTATION_CUSTOMIZATION_KEY">
-      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_r6ys0rWlEeeb3fJFsFSJjw"/>
+  <diagram:DSemanticDiagram uid="_r6ys0LWlEeeb3fJFsFSJjw" name="diagram2">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_r6ys0bWlEeeb3fJFsFSJjw" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_r6ys0rWlEeeb3fJFsFSJjw"/>
     </ownedAnnotationEntries>
-    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_r8puALWlEeeb3fJFsFSJjw" source="GMF_DIAGRAMS">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_r8puALWlEeeb3fJFsFSJjw" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_r8puAbWlEeeb3fJFsFSJjw" type="Sirius" element="_r6ys0LWlEeeb3fJFsFSJjw" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_r80tILWlEeeb3fJFsFSJjw" type="2001" element="_r6ys1LWlEeeb3fJFsFSJjw">
           <children xmi:type="notation:Node" xmi:id="_r84-kLWlEeeb3fJFsFSJjw" type="5002">
@@ -240,16 +265,16 @@
         <styles xmi:type="notation:DiagramStyle" xmi:id="_r8puArWlEeeb3fJFsFSJjw"/>
       </data>
     </ownedAnnotationEntries>
-    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_r6ys1LWlEeeb3fJFsFSJjw" name="SC1" width="10" height="10" resizeKind="NSEW">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_r6ys1LWlEeeb3fJFsFSJjw" name="SC1" width="10" height="10" resizeKind="NSEW">
       <target xmi:type="ecore:EClass" href="TestSelection.ecore#//SC1"/>
       <semanticElements xmi:type="ecore:EClass" href="TestSelection.ecore#//SC1"/>
-      <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_r6ys1bWlEeeb3fJFsFSJjw" name="SC1Border" width="5" height="5" resizeKind="NSEW">
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_r6ys1bWlEeeb3fJFsFSJjw" name="SC1Border" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="TestSelection.ecore#//SC1"/>
         <semanticElements xmi:type="ecore:EClass" href="TestSelection.ecore#//SC1"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Square" xmi:id="_r6ys1rWlEeeb3fJFsFSJjw" labelPosition="node">
+        <ownedStyle xmi:type="diagram:Square" uid="_r6ys1rWlEeeb3fJFsFSJjw" labelPosition="node">
           <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='VPwithBorderNode']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='classes']/@borderedNodeMappings[name='self']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='VPwithBorderNode']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='classes']/@borderedNodeMappings[name='self']"/>
@@ -257,21 +282,21 @@
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:Square" xmi:id="_r6ys17WlEeeb3fJFsFSJjw" labelPosition="node">
+      <ownedStyle xmi:type="diagram:Square" uid="_r6ys17WlEeeb3fJFsFSJjw" labelPosition="node">
         <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='VPwithBorderNode']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='classes']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='VPwithBorderNode']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='classes']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_r6ys2LWlEeeb3fJFsFSJjw" name="C1" width="10" height="10" resizeKind="NSEW">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_r6ys2LWlEeeb3fJFsFSJjw" name="C1" width="10" height="10" resizeKind="NSEW">
       <target xmi:type="ecore:EClass" href="TestSelection.ecore#//C1"/>
       <semanticElements xmi:type="ecore:EClass" href="TestSelection.ecore#//C1"/>
-      <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_r6ys2bWlEeeb3fJFsFSJjw" name="C1Border" width="5" height="5" resizeKind="NSEW">
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_r6ys2bWlEeeb3fJFsFSJjw" name="C1Border" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="TestSelection.ecore#//C1"/>
         <semanticElements xmi:type="ecore:EClass" href="TestSelection.ecore#//C1"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Square" xmi:id="_r6ys2rWlEeeb3fJFsFSJjw" labelPosition="node">
+        <ownedStyle xmi:type="diagram:Square" uid="_r6ys2rWlEeeb3fJFsFSJjw" labelPosition="node">
           <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='VPwithBorderNode']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='classes']/@borderedNodeMappings[name='self']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='VPwithBorderNode']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='classes']/@borderedNodeMappings[name='self']"/>
@@ -279,21 +304,21 @@
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:Square" xmi:id="_r6ys27WlEeeb3fJFsFSJjw" labelPosition="node">
+      <ownedStyle xmi:type="diagram:Square" uid="_r6ys27WlEeeb3fJFsFSJjw" labelPosition="node">
         <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='VPwithBorderNode']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='classes']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='VPwithBorderNode']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='classes']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_r6ys3LWlEeeb3fJFsFSJjw" name="C2" width="10" height="10" resizeKind="NSEW">
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_r6ys3LWlEeeb3fJFsFSJjw" name="C2" width="10" height="10" resizeKind="NSEW">
       <target xmi:type="ecore:EClass" href="TestSelection.ecore#//C2"/>
       <semanticElements xmi:type="ecore:EClass" href="TestSelection.ecore#//C2"/>
-      <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_r6ys3bWlEeeb3fJFsFSJjw" name="C2Border" width="5" height="5" resizeKind="NSEW">
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_r6ys3bWlEeeb3fJFsFSJjw" name="C2Border" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="TestSelection.ecore#//C2"/>
         <semanticElements xmi:type="ecore:EClass" href="TestSelection.ecore#//C2"/>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Square" xmi:id="_r6ys3rWlEeeb3fJFsFSJjw" labelPosition="node">
+        <ownedStyle xmi:type="diagram:Square" uid="_r6ys3rWlEeeb3fJFsFSJjw" labelPosition="node">
           <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='VPwithBorderNode']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='classes']/@borderedNodeMappings[name='self']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='VPwithBorderNode']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='classes']/@borderedNodeMappings[name='self']"/>
@@ -301,13 +326,13 @@
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:Square" xmi:id="_r6ys37WlEeeb3fJFsFSJjw" labelPosition="node">
+      <ownedStyle xmi:type="diagram:Square" uid="_r6ys37WlEeeb3fJFsFSJjw" labelPosition="node">
         <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='VPwithBorderNode']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='classes']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='VPwithBorderNode']/@ownedRepresentations[name='MyDiagram']/@defaultLayer/@nodeMappings[name='classes']"/>
     </ownedDiagramElements>
     <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='VPwithBorderNode']/@ownedRepresentations[name='MyDiagram']"/>
-    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_r6ys4LWlEeeb3fJFsFSJjw"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_r6ys4LWlEeeb3fJFsFSJjw"/>
     <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='VPwithBorderNode']/@ownedRepresentations[name='MyDiagram']/@defaultLayer"/>
     <target xmi:type="ecore:EPackage" href="TestSelection.ecore#/"/>
   </diagram:DSemanticDiagram>
