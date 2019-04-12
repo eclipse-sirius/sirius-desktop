@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.SelectionCountCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeChildrenNumberCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemAvailableCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemExpanded;
@@ -86,16 +87,21 @@ public class CreatedDTreeItemsSelectionTests extends AbstractTreeSiriusSWTBotGef
      */
     public void testCreatedDTreeItemSelection() {
         SWTBotTree swtBotTree = treeEditorBot.bot().tree();
-        int selectionCount = swtBotTree.selectionCount();
-        assertEquals("Selection should be empty at the beginning", 0, selectionCount);
-        assertEquals(2, swtBotTree.visibleRowCount());
+        {
+            // Selection should be empty at the beginning
+            SelectionCountCondition countCondition = new SelectionCountCondition(swtBotTree, 0);
+            bot.waitUntil(countCondition);
+        }
 
         SWTBotTreeItem expandedBotTreeItem = swtBotTree.expandNode("new EClass 1");
         bot.waitUntil(new TreeItemExpanded(expandedBotTreeItem, expandedBotTreeItem.getText()));
         SWTBotUtils.waitAllUiEvents();
 
-        selectionCount = swtBotTree.selectionCount();
-        assertEquals("Selection should be empty at the beginning", 0, selectionCount);
+        {
+            // Selection should be empty at the beginning
+            SelectionCountCondition countCondition = new SelectionCountCondition(swtBotTree, 0);
+            bot.waitUntil(countCondition);
+        }
         assertEquals(4, swtBotTree.visibleRowCount());
 
         TransactionalEditingDomain domain = localSession.getOpenedSession().getTransactionalEditingDomain();
@@ -106,9 +112,11 @@ public class CreatedDTreeItemsSelectionTests extends AbstractTreeSiriusSWTBotGef
         domain.getCommandStack().execute(addEPackageCmd);
         SWTBotUtils.waitAllUiEvents();
 
-        selectionCount = swtBotTree.selectionCount();
-        String assertMessage = "After a EPackage creation we should have one DTreeItem selected";
-        assertEquals(assertMessage, 1, selectionCount);
+        {
+            // After a EPackage creation we should have one DTreeItem selected
+            SelectionCountCondition countCondition = new SelectionCountCondition(swtBotTree, 1);
+            bot.waitUntil(countCondition);
+        }
         assertEquals(subEPackage1.getName(), swtBotTree.selection().get(0, 0));
         assertEquals(5, swtBotTree.visibleRowCount());
 
@@ -134,8 +142,11 @@ public class CreatedDTreeItemsSelectionTests extends AbstractTreeSiriusSWTBotGef
         bot.waitUntil(new TreeItemAvailableCondition(swtBotTree, subEPackage2.getName(), true));
         SWTBotUtils.waitAllUiEvents();
 
-        selectionCount = swtBotTree.selectionCount();
-        assertEquals("After a EPackage creation containing contents we should have 1 DTreeItem selected", 1, selectionCount);
+        {
+            // After a EPackage creation containing contents we should have 1 DTreeItem selected
+            SelectionCountCondition countCondition = new SelectionCountCondition(swtBotTree, 1);
+            bot.waitUntil(countCondition);
+        }
         assertEquals(subEPackage2.getName(), swtBotTree.selection().get(0, 0));
         assertEquals(Iterators.size(ePackage.eAllContents()), swtBotTree.visibleRowCount());
 
@@ -145,15 +156,21 @@ public class CreatedDTreeItemsSelectionTests extends AbstractTreeSiriusSWTBotGef
         bot.waitUntil(new TreeChildrenNumberCondition(swtBotTree, 0));
         SWTBotUtils.waitAllUiEvents();
 
-        selectionCount = swtBotTree.selectionCount();
-        assertEquals("As tree is empty the selection count should be 0", 0, selectionCount);
+        {
+            // As tree is empty the selection count should be 0
+            SelectionCountCondition countCondition = new SelectionCountCondition(swtBotTree, 0);
+            bot.waitUntil(countCondition);
+        }
         assertEquals(0, swtBotTree.visibleRowCount());
 
         undo(localSession.getOpenedSession());
         SWTBotUtils.waitAllUiEvents();
 
-        selectionCount = swtBotTree.selectionCount();
-        assertEquals("An deletion undo should trigger selection", 0, selectionCount);
+        {
+            // An deletion undo should trigger selection
+            SelectionCountCondition countCondition = new SelectionCountCondition(swtBotTree, 0);
+            bot.waitUntil(countCondition);
+        }
         assertEquals(Iterators.size(ePackage.eAllContents()), swtBotTree.visibleRowCount());
     }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.sirius.table.ui.tools.api.editor.DTableEditor;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.SelectionCountCondition;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tests.swtbot.tree.AbstractTreeSiriusSWTBotGefTestCase;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
@@ -82,8 +83,11 @@ public class CreatedDLinesSelectionTests extends AbstractTreeSiriusSWTBotGefTest
      */
     public void testCreatedDTreeItemSelection() {
         SWTBotTree swtBotTree = tableEditorBot.bot().tree();
-        int selectionCount = swtBotTree.selectionCount();
-        assertEquals("Selection should be empty at the beginning", 0, selectionCount);
+        {
+            // Selection should be empty at the beginning
+            SelectionCountCondition countCondition = new SelectionCountCondition(swtBotTree, 0);
+            bot.waitUntil(countCondition);
+        }
         assertEquals(3, swtBotTree.visibleRowCount());
 
         TransactionalEditingDomain domain = localSession.getOpenedSession().getTransactionalEditingDomain();
@@ -94,9 +98,11 @@ public class CreatedDLinesSelectionTests extends AbstractTreeSiriusSWTBotGefTest
         domain.getCommandStack().execute(addEPackageCmd);
         SWTBotUtils.waitAllUiEvents();
 
-        selectionCount = swtBotTree.selectionCount();
-        String assertMessage = "After a EPackage creation we should have one DLine selected";
-        assertEquals(assertMessage, 1, selectionCount);
+        {
+            // After a EPackage creation we should have one DLine selected
+            SelectionCountCondition countCondition = new SelectionCountCondition(swtBotTree, 1);
+            bot.waitUntil(countCondition);
+        }
         assertEquals(subEPackage1.getName(), swtBotTree.selection().get(0, 0));
         assertEquals(4, swtBotTree.visibleRowCount());
 
@@ -121,8 +127,11 @@ public class CreatedDLinesSelectionTests extends AbstractTreeSiriusSWTBotGefTest
         domain.getCommandStack().execute(addEPackageCmd);
         SWTBotUtils.waitAllUiEvents();
 
-        selectionCount = swtBotTree.selectionCount();
-        assertEquals("After a EPackage creation containing contents we should have 1 DLine selected", 1, selectionCount);
+        {
+            // After a EPackage creation containing contents we should have 1 DLine selected
+            SelectionCountCondition countCondition = new SelectionCountCondition(swtBotTree, 1);
+            bot.waitUntil(countCondition);
+        }
         assertEquals(subEPackage2.getName(), swtBotTree.selection().get(0, 0));
         assertEquals(Iterators.size(ePackage.eAllContents()) - 1, swtBotTree.visibleRowCount());
 
@@ -131,15 +140,21 @@ public class CreatedDLinesSelectionTests extends AbstractTreeSiriusSWTBotGefTest
         domain.getCommandStack().execute(removeRootCmd);
         SWTBotUtils.waitAllUiEvents();
 
-        selectionCount = swtBotTree.selectionCount();
-        assertEquals("As tree is empty the selection count should be 0", 0, selectionCount);
+        {
+            // As tree is empty the selection count should be 0
+            SelectionCountCondition countCondition = new SelectionCountCondition(swtBotTree, 0);
+            bot.waitUntil(countCondition);
+        }
         assertEquals(0, swtBotTree.visibleRowCount());
 
         undo(localSession.getOpenedSession());
         SWTBotUtils.waitAllUiEvents();
 
-        selectionCount = swtBotTree.selectionCount();
-        assertEquals("An deletion undo should trigger selection", 0, selectionCount);
+        {
+            // A deletion undo should trigger selection
+            SelectionCountCondition countCondition = new SelectionCountCondition(swtBotTree, 0);
+            bot.waitUntil(countCondition);
+        }
         assertEquals(Iterators.size(ePackage.eAllContents()) - 1, swtBotTree.visibleRowCount());
     }
 
