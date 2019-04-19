@@ -11,7 +11,7 @@ include "../modules/gmf-runtime-1.12.tpd"
 
 with source, requirements
 
-location Sirius-Oxygen-6.1.0 "http://download.eclipse.org/sirius/updates/releases/6.1.0/oxygen/" {
+location Sirius-Photon-6.2.0 "http://download.eclipse.org/sirius/updates/releases/6.2.0/photon/" {
     org.eclipse.sirius.common.interpreter lazy
 }
 
