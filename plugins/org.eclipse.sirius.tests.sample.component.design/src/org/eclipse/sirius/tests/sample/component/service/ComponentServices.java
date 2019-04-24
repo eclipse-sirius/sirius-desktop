@@ -59,7 +59,7 @@ public class ComponentServices {
      * Register a predicate to consider Collapse/Expand changes as requiring refresh in "DiagramWithRegionAndEdges"
      * diagram.
      */
-    public static void considerCollapseStateForAutomaticRefresh() {
+    public static void considerCollapseStateForAutomaticRefresh(EObject context) {
         RefreshHelper.registerImpactingNotification(considerCollapseStateForAutomaticRefreshPredicate);
     }
 
@@ -67,7 +67,7 @@ public class ComponentServices {
      * Unregister the predicate to consider Collapse/Expand changes as requiring refresh in "DiagramWithRegionAndEdges"
      * diagram.
      */
-    public static void doNotConsiderCollapseStateForAutomaticRefresh() {
+    public static void doNotConsiderCollapseStateForAutomaticRefresh(EObject context) {
         RefreshHelper.unregisterImpactingNotification(considerCollapseStateForAutomaticRefreshPredicate);
     }
 
