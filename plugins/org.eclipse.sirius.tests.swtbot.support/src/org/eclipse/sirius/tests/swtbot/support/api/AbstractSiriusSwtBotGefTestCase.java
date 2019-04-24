@@ -2065,10 +2065,19 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                 new File(SWTBotPreferences.SCREENSHOTS_DIR).mkdirs();
                 SWTUtils.captureScreenshot(fileName);
             } else {
-                log.info("No screenshot captured for '" + ClassUtils.simpleClassName(getClass()) + POINT + getName() + "' because maximum number of screenshots reached: " + maximumScreenshots);
+                if (log != null) {
+                    log.info("No screenshot captured for '" + ClassUtils.simpleClassName(getClass()) + POINT + getName() + "' because maximum number of screenshots reached: " + maximumScreenshots);
+                } else {
+                    System.err.println("ERR: No screenshot captured for '" + ClassUtils.simpleClassName(getClass()) + POINT + getName() + "' because maximum number of screenshots reached: " + maximumScreenshots);
+                }
             }
         } catch (Exception e) {
-            log.warn("Could not capture screenshot", e);
+            if (log != null) {
+                log.warn("Could not capture screenshot", e);
+            } else {
+                System.err.println("ERR: Could not capture screenshot:");
+                e.printStackTrace();
+            }
         }
     }
     // CHECKSTYLE:ON
