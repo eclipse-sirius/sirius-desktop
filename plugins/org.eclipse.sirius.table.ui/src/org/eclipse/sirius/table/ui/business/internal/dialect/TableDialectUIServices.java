@@ -79,7 +79,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
@@ -192,11 +191,10 @@ public class TableDialectUIServices implements DialectUIServices {
         if (editorPart instanceof AbstractDTableEditor) {
             // We launch the close in asyncExec to avoid the problem with the
             // WorkspaceSynchronizer
-            final Display display = editorPart.getSite().getShell().getDisplay();
-            display.asyncExec(new Runnable() {
-                @Override
-                public void run() {
-                    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().closeEditor(editorPart, save);
+            EclipseUIUtil.displayAsyncExec(() -> {
+                IWorkbenchPage page = EclipseUIUtil.getActivePage();
+                if (page != null) {
+                    page.closeEditor(editorPart, save);
                 }
             });
         }

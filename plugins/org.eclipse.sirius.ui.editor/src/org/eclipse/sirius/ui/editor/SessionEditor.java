@@ -453,8 +453,8 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
         if (pageRegistry != null) {
             pageRegistry.removeRegistryListener(this);
             pageRegistry = null;
+            super.close(save);
         }
-        super.close(save);
     }
 
     @Override

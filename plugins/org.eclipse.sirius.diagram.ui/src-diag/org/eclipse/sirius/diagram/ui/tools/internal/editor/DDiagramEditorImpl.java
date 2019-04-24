@@ -230,7 +230,9 @@ import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.ISaveablePart2;
 import org.eclipse.ui.ISaveablesSource;
 import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.Saveable;
@@ -469,7 +471,31 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             getRepresentation().getUiState().getDecorationImage().clear();
         }
 
-        super.close(save);
+        // Prior to version 1.12.1 from 2019-06, GMF Runtime's close() is subject to NPEs when
+        // running the closeEditor asynchronously, so do not call super.close() directly but
+        // perform a slightly more robust version of the same code. This is the same code that
+        // was added in GMF Runtime 1.12.1, but we reproduce it here to still avoid the error when
+        // running with previous versions.
+        
+        enableSanityChecking(false);
+
+        Display display = Display.getCurrent();
+        if (display == null) {
+            display = PlatformUI.getWorkbench().getDisplay();
+        }
+        if (!display.isDisposed()) {
+            display.asyncExec(() -> {
+                if (getGraphicalViewer() != null && !PlatformUI.getWorkbench().isClosing()) {
+                    IWorkbenchPartSite site = getSite();
+                    if (site != null) {
+                        IWorkbenchPage page = site.getPage();
+                        if (page != null) {
+                            page.closeEditor(DDiagramEditorImpl.this, save);
+                        }
+                    }
+                }
+            });
+        }
     }
 
     /**
