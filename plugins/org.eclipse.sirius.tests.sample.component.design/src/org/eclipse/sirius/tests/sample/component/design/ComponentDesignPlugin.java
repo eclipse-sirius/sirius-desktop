@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2019 Obeo.
+ * Copyright (c) 2015 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,6 @@ import java.util.Set;
 
 import org.eclipse.emf.common.ui.EclipseUIPlugin;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
-import org.eclipse.sirius.tests.sample.component.service.ComponentServices;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.osgi.framework.BundleContext;
 
@@ -45,8 +44,6 @@ public class ComponentDesignPlugin extends EclipseUIPlugin {
         INSTANCE = this;
         viewpoints = new HashSet<Viewpoint>();
         viewpoints.addAll(ViewpointRegistry.getInstance().registerFromPlugin(PLUGIN_ID + "/description/component.odesign"));
-
-        ComponentServices.considerCollapseStateForAutomaticRefresh();
     }
 
     @Override
