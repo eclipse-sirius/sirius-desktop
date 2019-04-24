@@ -213,7 +213,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
             t.setTranscodingHints(transcoderHints);
             t.transcode(input, null);
         } catch (TranscoderException ex) {
-            throw new IOException("Couldn't convert " + svgFile);
+            throw new IOException("Couldn't convert " + svgFile, ex);
         } finally {
             cssFile.delete();
         }
