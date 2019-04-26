@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,14 +13,13 @@
 package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
-
-import com.google.common.collect.Sets;
 
 /**
  * Utility class to factor customizations for ContainerMapping and related.
@@ -41,7 +40,9 @@ public final class ContainerMappingHelper {
      * @return the node mappings.
      */
     public static Collection<NodeMapping> getAllNodeMappings(ContainerMapping self) {
-        return Sets.union(Sets.newLinkedHashSet(self.getSubNodeMappings()), Sets.newLinkedHashSet(self.getReusedNodeMappings()));
+        LinkedHashSet<NodeMapping> allNodeMappings = new LinkedHashSet<NodeMapping>(self.getSubNodeMappings());
+        allNodeMappings.addAll(new LinkedHashSet<NodeMapping>(self.getReusedNodeMappings()));
+        return allNodeMappings;
     }
 
     /**
@@ -53,7 +54,9 @@ public final class ContainerMappingHelper {
      * @return the container mappings.
      */
     public static Collection<ContainerMapping> getAllContainerMappings(ContainerMapping self) {
-        return Sets.union(Sets.newLinkedHashSet(self.getSubContainerMappings()), Sets.newLinkedHashSet(self.getReusedContainerMappings()));
+        LinkedHashSet<ContainerMapping> allContainerMappings = new LinkedHashSet<ContainerMapping>(self.getSubContainerMappings());
+        allContainerMappings.addAll(new LinkedHashSet<ContainerMapping>(self.getReusedContainerMappings()));
+        return allContainerMappings;
     }
 
     /**
