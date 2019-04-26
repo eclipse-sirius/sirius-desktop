@@ -431,6 +431,7 @@
         <module>../../plugins/org.eclipse.sirius.common.ui.ext</module>
         <module>../../plugins/org.eclipse.sirius.common.xtext</module>
         <module>../../plugins/org.eclipse.sirius.diagram.elk</module>
+        <module>../../plugins/org.eclipse.sirius.diagram.elk.debug</module>
         <module>../../plugins/org.eclipse.sirius.diagram.sequence.edit</module>
         <module>../../plugins/org.eclipse.sirius.diagram.sequence.ui</module>
         <module>../../plugins/org.eclipse.sirius.diagram.sequence</module>
