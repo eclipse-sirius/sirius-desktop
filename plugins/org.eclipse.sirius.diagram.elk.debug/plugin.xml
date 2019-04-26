@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+  <extension point="org.eclipse.ui.commands">
+     <command
+           id="org.eclipse.sirius.diagram.elk.debug.exportToElkGraphHandler"
+           name="%command.exportToElkGraphHandler.label">
+     </command>
+  </extension>
+  <extension
+      point="org.eclipse.ui.menus">
+      <menuContribution
+         allPopups="false"
+         locationURI="popup:org.eclipse.ui.popup.any?after=filterFormatGroup">
+      <command
+            commandId="org.eclipse.sirius.diagram.elk.debug.exportToElkGraphHandler"
+            icon="icons/elkgraph.gif"
+            label="%command.exportToElkGraphHandler.label"
+            style="push">
+            <visibleWhen
+               checkEnabled="false">
+            <with
+                  variable="activeMenuSelection">
+               <iterate
+                     operator="and">
+                     <instanceof
+                           value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart"/>
+               </iterate>
+            </with>
+         </visibleWhen>
+      </command>
+   </menuContribution>
+  </extension>
+  <extension
+        point="org.eclipse.ui.handlers">
+     <handler
+           class="org.eclipse.sirius.diagram.elk.debug.ExportToElkGraphHandler"
+           commandId="org.eclipse.sirius.diagram.elk.debug.exportToElkGraphHandler">
+        <activeWhen>
+           <with
+                 variable="selection">
+              <iterate
+                    operator="and">
+                     <instanceof
+                           value="org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart"/>
+              </iterate>
+           </with>
+        </activeWhen>
+     </handler>
+  </extension>
+</plugin>
