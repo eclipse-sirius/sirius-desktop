@@ -623,7 +623,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             if (obj instanceof AbstractBorderItemEditPart) {
                 AbstractBorderItemEditPart borderItem = (AbstractBorderItemEditPart) obj;
                 if (editPartFilter.filter(borderItem)) {
-                    createPort(mapping, borderItem, parentEditPart, parentLayoutNode, elkTargetToOptionsOverrideMap);
+                    createPort(mapping, borderItem, currentEditPart, parentLayoutNode, elkTargetToOptionsOverrideMap);
                 }
 
                 // process a compartment, which may contain other elements
@@ -789,7 +789,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         }
         // In theory it would be better to get the bottom and right insets from
         // the size.
-        // However, due to the inpredictability of Draw2D layout managers, this
+        // However, due to the unpredictability of Draw2D layout managers, this
         // leads to
         // bad results in many cases, so a fixed insets value is more stable.
         result.right = result.left;
