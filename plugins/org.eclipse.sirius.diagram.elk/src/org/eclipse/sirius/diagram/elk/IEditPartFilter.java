@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.elk;
 
 import org.eclipse.gef.EditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
 
 import com.google.inject.ImplementedBy;
 
@@ -39,7 +40,7 @@ public interface IEditPartFilter {
 
         @Override
         public boolean filter(final EditPart editPart) {
-            return true;
+            return !(editPart instanceof IStyleEditPart);
         }
 
     }
