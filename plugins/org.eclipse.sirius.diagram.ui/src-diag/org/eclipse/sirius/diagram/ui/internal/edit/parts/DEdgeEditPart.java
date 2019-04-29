@@ -18,7 +18,6 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.RootEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.ConnectionBendpointEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editpolicies.ConnectionLineSegEditPolicy;
@@ -162,26 +161,5 @@ public class DEdgeEditPart extends AbstractDiagramEdgeEditPart {
     @Override
     public DragTracker getDragTracker(Request req) {
         return new SiriusSelectConnectionEditPartTracker(this);
-    }
-
-    @Override
-    protected void refreshVisibility() {
-        boolean gmfModelVisibility = ((View) getModel()).isVisible();
-        if (gmfModelVisibility) {
-            // By default, only the GMF model visibility status is considered. But if the source or the target is
-            // contained in a collapsed compartment the edge must not be visible (like in
-            // org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart.ConnectionRefreshMgr.refreshConnections(ShapeCompartmentEditPart)).
-            IGraphicalEditPart source = (IGraphicalEditPart) this.getSource();
-            IGraphicalEditPart target = (IGraphicalEditPart) this.getTarget();
-            if (source == null || target == null) {
-                setVisibility(false);
-            } else if (!source.getFigure().isShowing() || !target.getFigure().isShowing()) {
-                setVisibility(false);
-            } else {
-                setVisibility(true);
-            }
-        } else {
-            setVisibility(false);
-        }
     }
 }

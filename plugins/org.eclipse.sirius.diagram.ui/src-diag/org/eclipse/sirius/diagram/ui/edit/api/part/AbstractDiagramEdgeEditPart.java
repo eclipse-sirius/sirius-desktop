@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -267,6 +267,27 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
     public void refreshVisuals() {
         super.refreshVisuals();
         DiagramEdgeEditPartOperation.refreshVisuals(this);
+    }
+
+    @Override
+    protected void refreshVisibility() {
+        boolean gmfModelVisibility = ((View) getModel()).isVisible();
+        if (gmfModelVisibility) {
+            // By default, only the GMF model visibility status is considered. But if the source or the target is
+            // contained in a collapsed compartment the edge must not be visible (like in
+            // org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart.ConnectionRefreshMgr.refreshConnections(ShapeCompartmentEditPart)).
+            IGraphicalEditPart source = (IGraphicalEditPart) this.getSource();
+            IGraphicalEditPart target = (IGraphicalEditPart) this.getTarget();
+            if (source == null || target == null) {
+                setVisibility(false);
+            } else if (!source.getFigure().isShowing() || !target.getFigure().isShowing()) {
+                setVisibility(false);
+            } else {
+                setVisibility(true);
+            }
+        } else {
+            setVisibility(false);
+        }
     }
 
     @Override
