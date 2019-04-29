@@ -656,7 +656,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
 
                 // process a label of the current node
             } else if (obj instanceof IGraphicalEditPart) {
-                ElkLabel newNodeLabel = createNodeLabel(mapping, (IGraphicalEditPart) obj, parentEditPart, parentLayoutNode, elkTargetToOptionsOverrideMap);
+                ElkLabel newNodeLabel = createNodeLabel(mapping, (IGraphicalEditPart) obj, currentEditPart, parentLayoutNode, elkTargetToOptionsOverrideMap);
                 if (newNodeLabel != null) {
                     parentLayoutNode.getLabels().add(newNodeLabel);
                 }
