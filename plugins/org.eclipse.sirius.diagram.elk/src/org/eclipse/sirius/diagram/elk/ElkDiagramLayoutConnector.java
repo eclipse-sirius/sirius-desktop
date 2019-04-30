@@ -77,6 +77,9 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.LabelPosition;
+import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.description.BooleanLayoutOption;
 import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -88,6 +91,7 @@ import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOptionTarget;
 import org.eclipse.sirius.diagram.description.StringLayoutOption;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.swt.SWTException;
@@ -650,6 +654,14 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 ShapeNodeEditPart childNodeEditPart = (ShapeNodeEditPart) obj;
                 if (editPartFilter.filter(childNodeEditPart)) {
                     ElkNode node = createNode(mapping, childNodeEditPart, parentEditPart, parentLayoutNode, kinsets, elkTargetToOptionsOverrideMap);
+                    // Create label for Node, not Container, with name inside the node, not on border
+                    final EObject eObj = childNodeEditPart.resolveSemanticElement();
+                    if (eObj instanceof DNode && ((NodeStyle) ((DNode) eObj).getStyle()).getLabelPosition() == LabelPosition.NODE_LITERAL) {
+                        ElkLabel newNodeLabel = createNodeLabel(mapping, (IGraphicalEditPart) obj, currentEditPart, parentLayoutNode, elkTargetToOptionsOverrideMap);
+                        if (newNodeLabel != null) {
+                            node.getLabels().add(newNodeLabel);
+                        }
+                    }
                     // process the child as new current edit part
                     buildLayoutGraphRecursively(mapping, childNodeEditPart, node, childNodeEditPart, elkTargetToOptionsOverrideMap);
                 }
@@ -887,7 +899,12 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
     protected ElkLabel createNodeLabel(final LayoutMapping mapping, final IGraphicalEditPart labelEditPart, final IGraphicalEditPart nodeEditPart, final ElkNode elknode,
             Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
 
-        IFigure labelFigure = labelEditPart.getFigure();
+        IFigure labelFigure;
+        if (labelEditPart instanceof IAbstractDiagramNodeEditPart) {
+            labelFigure = ((IAbstractDiagramNodeEditPart) labelEditPart).getNodeLabel();
+        } else {
+            labelFigure = labelEditPart.getFigure();
+        }
         String text = null;
         Font font = null;
 
@@ -909,9 +926,14 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             ElkLabel label = ElkGraphUtil.createLabel(elknode);
             applyOptionsRelatedToElementTarget(label, elkTargetToOptionsOverrideMap);
             label.setText(text);
-            mapping.getGraphMap().put(label, labelEditPart);
             Rectangle labelBounds = getAbsoluteBounds(labelFigure);
-            Rectangle nodeBounds = getAbsoluteBounds(nodeEditPart.getFigure());
+            Rectangle nodeBounds;
+            if (!(labelEditPart instanceof IAbstractDiagramNodeEditPart)) {
+                mapping.getGraphMap().put(label, labelEditPart);
+                nodeBounds = getAbsoluteBounds(nodeEditPart.getFigure());
+            } else {
+                nodeBounds = getAbsoluteBounds(labelEditPart.getFigure());
+            }
             label.setLocation(labelBounds.x - nodeBounds.x, labelBounds.y - nodeBounds.y);
 
             try {
