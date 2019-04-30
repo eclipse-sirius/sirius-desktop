@@ -1204,11 +1204,8 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                         label.setProperty(CoreOptions.FONT_SIZE, font.getFontData()[0].getHeight());
                     }
                     label.setLocation(labelBounds.x - offset.x, labelBounds.y - offset.y);
-                    if (iconBounds != null) {
-                        label.setWidth(labelBounds.width + iconBounds.width);
-                    } else {
-                        label.setWidth(labelBounds.width);
-                    }
+                    // The label width includes the icon width
+                    label.setWidth(labelBounds.width);
                     label.setHeight(labelBounds.height);
 
                     // We would set the modified flag to false here, but that
