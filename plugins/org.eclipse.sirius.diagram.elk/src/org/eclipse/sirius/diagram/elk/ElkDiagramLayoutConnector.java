@@ -653,7 +653,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             } else if (obj instanceof ShapeNodeEditPart) {
                 ShapeNodeEditPart childNodeEditPart = (ShapeNodeEditPart) obj;
                 if (editPartFilter.filter(childNodeEditPart)) {
-                    ElkNode node = createNode(mapping, childNodeEditPart, parentEditPart, parentLayoutNode, kinsets, elkTargetToOptionsOverrideMap);
+                    ElkNode node = createNode(mapping, childNodeEditPart, currentEditPart, parentLayoutNode, kinsets, elkTargetToOptionsOverrideMap);
                     // Create label for Node, not Container, with name inside the node, not on border
                     final EObject eObj = childNodeEditPart.resolveSemanticElement();
                     if (eObj instanceof DNode && ((NodeStyle) ((DNode) eObj).getStyle()).getLabelPosition() == LabelPosition.NODE_LITERAL) {
@@ -701,11 +701,12 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         applyOptionsRelatedToElementTarget(childLayoutNode, elkTargetToOptionsOverrideMap);
 
         // set location and size
-        Rectangle childBounds = getAbsoluteBounds(nodeFigure);
-        Rectangle containerBounds = getAbsoluteBounds(nodeFigure.getParent());
-        childLayoutNode.setX(childBounds.x - containerBounds.x);
-        childLayoutNode.setY(childBounds.y - containerBounds.y);
-        childLayoutNode.setDimensions(childBounds.width, childBounds.height);
+        Rectangle childAbsoluteBounds = getAbsoluteBounds(nodeFigure);
+        KVector containerAbsoluteLocation = new KVector();
+        ElkUtil.toAbsolute(containerAbsoluteLocation, parentElkNode);
+        childLayoutNode.setX(childAbsoluteBounds.x - containerAbsoluteLocation.x);
+        childLayoutNode.setY(childAbsoluteBounds.y - containerAbsoluteLocation.y);
+        childLayoutNode.setDimensions(childAbsoluteBounds.width, childAbsoluteBounds.height);
 
         // useful to debug.
         if (((View) nodeEditPart.getModel()).getElement() instanceof DDiagramElement) {
@@ -735,7 +736,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 // padding is already computed for given parent so we reuse it.
                 ei = new ElkPadding(elkinsets.get().top, elkinsets.get().right, elkinsets.get().bottom, elkinsets.get().left);
             }
-            childLayoutNode.setProperty(CoreOptions.PADDING, ei);
+            parentElkNode.setProperty(CoreOptions.PADDING, ei);
 
             parentElkNode.getChildren().add(childLayoutNode);
             applyParentNodeOption(parentElkNode, elkTargetToOptionsOverrideMap);
