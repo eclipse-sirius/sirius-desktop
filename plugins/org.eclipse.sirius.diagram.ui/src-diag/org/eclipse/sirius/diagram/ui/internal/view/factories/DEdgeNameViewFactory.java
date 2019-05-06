@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -52,6 +52,7 @@ public class DEdgeNameViewFactory extends AbstractLabelViewFactory {
     /**
      * @not-generated
      */
+    @Override
     public View createView(final IAdaptable semanticAdapter, final View containerView, final String semanticHint, final int index, final boolean persisted, final PreferencesHint preferencesHint) {
         final Node view = (Node) super.createView(semanticAdapter, containerView, semanticHint, index, persisted, preferencesHint);
         final Location location = (Location) view.getLayoutConstraint();
@@ -60,15 +61,14 @@ public class DEdgeNameViewFactory extends AbstractLabelViewFactory {
         view.setVisible(!new DDiagramElementQuery(dEdge).isLabelHidden());
         final EdgeLabelLayoutData data = SiriusLayoutDataManager.INSTANCE.getLabelData(dEdge);
 
-        int x;
-        int y;
-        if (data == null) {
-            x = mapMode.DPtoLP(0);
-            y = mapMode.DPtoLP(-10);
-        } else {
+        int x = mapMode.DPtoLP(0);
+        int y = mapMode.DPtoLP(-10);
+        if (data != null) {
             final Point labelLocation = data.getLocation();
-            x = labelLocation.x;
-            y = labelLocation.y;
+            if (labelLocation != null) {
+                x = labelLocation.x;
+                y = labelLocation.y;
+            }
             final Rectangle labelBounds = data.getLabelBounds();
             if (labelBounds != null && location instanceof Bounds) {
                 ((Bounds) location).setWidth(labelBounds.width);
@@ -84,6 +84,7 @@ public class DEdgeNameViewFactory extends AbstractLabelViewFactory {
     /**
      * @was-generated
      */
+    @Override
     protected List<?> createStyles(final View view) {
         return new ArrayList<>();
     }
