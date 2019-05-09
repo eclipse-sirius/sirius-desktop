@@ -10,6 +10,8 @@
 #    Obeo - initial API and implementation
 # ====================================================================
 
+export BUILD_TIMESTAMP="$BUILD_ID"
+
 [ -z "$WORKSPACE"  -o -z "$PLATFORM" -o -z "$GIT_BRANCH" -o -z "$BUILD_TIMESTAMP" ] && {
      echo "Execution aborted.
 
