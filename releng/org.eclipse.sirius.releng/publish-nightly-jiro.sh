@@ -21,7 +21,10 @@ provided by the Hudson build.
 - GIT_BRANCH      : the name fo the Git branch being build/published.
 - BUILD_TIMESTAMP : timestamp to use to identify this particular build (e.g. 20180201-113000)
 "
-    exit 1
+     echo "****** CURRENT ENVIRONMENT ******"
+     env | sort
+     
+     exit 1
 }
 
 ######################################################################
