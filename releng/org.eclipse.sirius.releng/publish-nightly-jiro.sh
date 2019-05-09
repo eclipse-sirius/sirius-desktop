@@ -35,6 +35,7 @@ provided by the Hudson build.
 
 # Exit on error
 set -e
+set -x
 
 # The full version (should be taken as an argument)
 export VERSION="6.2.1"
