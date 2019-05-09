@@ -48,7 +48,7 @@ export BUILD_TYPE_PREFIX="N"
 export SSH_ACCOUNT="genie.sirius@projects-storage.eclipse.org"
 
 # The root folder for all Sirius udpate sites
-export SIRIUS_UPDATES_ROOT="$SSH_ACCOUNT:/home/data/httpd/download.eclipse.org/sirius/staging"
+export SIRIUS_UPDATES_ROOT="/home/data/httpd/download.eclipse.org/sirius/staging"
 
 # Streams are of the form 1.0.x: only keep major and minor version number parts
 export STREAM=$(echo "$VERSION" | sed -r -e 's/^([0-9]+\.[0-9]+\.).*$/\1x/')
@@ -77,28 +77,28 @@ export WKS="."
 # Ensure the target folder exists
 ssh "$SSH_ACCOUNT" mkdir -p  "$TARGET_DIR"
 # The actual publication of the p2 repo produced by the build
-scp -rp "$WKS"/packaging/org.eclipse.sirius.update/target/repository/* "$TARGET_DIR"
+scp -rp "$WKS"/packaging/org.eclipse.sirius.update/target/repository/* "$SSH_ACCOUNT:$TARGET_DIR"
 # Also publish the tests repo right under the main one
 ssh "$SSH_ACCOUNT" mkdir -p  "$TARGET_DIR/tests"
-scp -rp "$WKS"/packaging/org.eclipse.sirius.tests.update/target/repository/* "$TARGET_DIR/tests"
+scp -rp "$WKS"/packaging/org.eclipse.sirius.tests.update/target/repository/* "$SSH_ACCOUNT:$TARGET_DIR/tests"
 # Publish the target platform definitions used, so that dowstream projects can reference them
 ssh "$SSH_ACCOUNT" mkdir -p  "$TARGET_DIR/targets"
-scp -rp "$WKS"/releng/org.eclipse.sirius.targets/* "$TARGET_DIR/targets"
+scp -rp "$WKS"/releng/org.eclipse.sirius.targets/* "$SSH_ACCOUNT:$TARGET_DIR/targets"
 ssh "$SSH_ACCOUNT" mkdir -p  "$TARGET_ROOT/$VERSION/$PLATFORM/targets"
-scp -rp "$WKS"/releng/org.eclipse.sirius.targets/* "$TARGET_ROOT/$VERSION/$PLATFORM/targets"
+scp -rp "$WKS"/releng/org.eclipse.sirius.targets/* "$SSH_ACCOUNT:$TARGET_ROOT/$VERSION/$PLATFORM/targets"
 ssh "$SSH_ACCOUNT" mkdir -p  "$TARGET_ROOT/$STREAM/$PLATFORM/targets"
-scp -rp "$WKS"/releng/org.eclipse.sirius.targets/* "$TARGET_ROOT/$STREAM/$PLATFORM/targets"
+scp -rp "$WKS"/releng/org.eclipse.sirius.targets/* "$SSH_ACCOUNT:$TARGET_ROOT/$STREAM/$PLATFORM/targets"
 # Also update publish targets "$BUILD_TYPE/targets and "$BUILD_TYPE/latest/targets" links if we are building master
 ssh "$SSH_ACCOUNT" mkdir -p  "$TARGET_ROOT/targets"
 if [ "origin/master" = "$GIT_BRANCH" ]; then
     ssh "$SSH_ACCOUNT" mkdir -p  "$TARGET_ROOT/targets"
-    scp -rp "$WKS"/releng/org.eclipse.sirius.targets/* "$TARGET_ROOT/targets"
+    scp -rp "$WKS"/releng/org.eclipse.sirius.targets/* "$SSH_ACCOUNT:$TARGET_ROOT/targets"
     ssh "$SSH_ACCOUNT" mkdir -p  "$TARGET_ROOT/latest/targets"
-    scp -rp "$WKS"/releng/org.eclipse.sirius.targets/* "$TARGET_ROOT/latest/targets"
+    scp -rp "$WKS"/releng/org.eclipse.sirius.targets/* "$SSH_ACCOUNT:$TARGET_ROOT/latest/targets"
 fi
 # Publish a dump of the build environment, may be useful to debug
 env | sort > build_env.txt
-scp build_env.txt "$TARGET_DIR/build_env.txt"
+scp build_env.txt "$SSH_ACCOUNT:$TARGET_DIR/build_env.txt"
 rm build_env.txt
 
 ######################################################################
@@ -143,17 +143,17 @@ EOF
 # First, a link for the $VERSION (e.g. "1.2.0/luna" => "1.2.0-NYYYYMMDD-HHMM/luna")
 create_redirect "$TARGET_ROOT/$VERSION/$PLATFORM" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM"
 create_redirect "$TARGET_ROOT/$VERSION/$PLATFORM/tests" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM/tests"
-scp -rp "$TARGET_DIR/targets" "$TARGET_ROOT/$VERSION/$PLATFORM/targets"
+scp -rp "$TARGET_DIR/targets" "$SSH_ACCOUNT:$TARGET_ROOT/$VERSION/$PLATFORM/targets"
 # Also create a link for the $STREAM (e.g. "1.2.x/luna" => "1.2.0-NYYYYMMDD-HHMM/luna")
 # and publish the zipped versions there, at stable URLs
 create_redirect "$TARGET_ROOT/$STREAM/$PLATFORM" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM"
-scp -rp "$WKS"/packaging/org.eclipse.sirius.update/target/org.eclipse.sirius.update-*.zip "$TARGET_ROOT/$STREAM/org.eclipse.sirius-$VERSION-$PLATFORM.zip"
+scp -rp "$WKS"/packaging/org.eclipse.sirius.update/target/org.eclipse.sirius.update-*.zip "$SSH_ACCOUNT:$TARGET_ROOT/$STREAM/org.eclipse.sirius-$VERSION-$PLATFORM.zip"
 create_redirect "$TARGET_ROOT/$STREAM/$PLATFORM/tests" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM/tests"
-scp -rp "$WKS"/packaging/org.eclipse.sirius.tests.update/target/org.eclipse.sirius.tests.update-*.zip "$TARGET_ROOT/$STREAM/org.eclipse.sirius.tests-$VERSION-$PLATFORM.zip"
+scp -rp "$WKS"/packaging/org.eclipse.sirius.tests.update/target/org.eclipse.sirius.tests.update-*.zip "$SSH_ACCOUNT:$TARGET_ROOT/$STREAM/org.eclipse.sirius.tests-$VERSION-$PLATFORM.zip"
 # Also update the global "latest" links if we are building master
 if [ "origin/master" = "$GIT_BRANCH" ]; then
     create_redirect "$TARGET_ROOT/latest/$PLATFORM" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM"
-    scp -rp "$WKS"/packaging/org.eclipse.sirius.update/target/org.eclipse.sirius.update-*.zip "$TARGET_ROOT/$STREAM/org.eclipse.sirius-$VERSION-$PLATFORM.zip"
+    scp -rp "$WKS"/packaging/org.eclipse.sirius.update/target/org.eclipse.sirius.update-*.zip "$SSH_ACCOUNT:$TARGET_ROOT/$STREAM/org.eclipse.sirius-$VERSION-$PLATFORM.zip"
     create_redirect "$TARGET_ROOT/latest/$PLATFORM/tests" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM/tests"
-    scp -rp "$WKS"/packaging/org.eclipse.sirius.tests.update/target/org.eclipse.sirius.tests.update-*.zip "$TARGET_ROOT/$STREAM/org.eclipse.sirius.tests-$VERSION-$PLATFORM.zip"
+    scp -rp "$WKS"/packaging/org.eclipse.sirius.tests.update/target/org.eclipse.sirius.tests.update-*.zip "$SSH_ACCOUNT:$TARGET_ROOT/$STREAM/org.eclipse.sirius.tests-$VERSION-$PLATFORM.zip"
 fi
