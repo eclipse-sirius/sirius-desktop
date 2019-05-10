@@ -10,16 +10,14 @@
 #    Obeo - initial API and implementation
 # ====================================================================
 
-export BUILD_TIMESTAMP="$BUILD_ID"
-
-[ -z "$WORKSPACE"  -o -z "$PLATFORM" -o -z "$GIT_BRANCH" -o -z "$BUILD_TIMESTAMP" ] && {
+[ -z "$WORKSPACE" -o -z "$PLATFORM" -o -z "$GIT_BRANCH" -o -z "$BUILD_TIMESTAMP" ] && {
      echo "Execution aborted.
 
 One or more of the required variables is not set. They are normally
-provided by the Hudson build.
+provided by the Jenkins build.
 
 - WORKSPACE       : the build workspace root.
-- PLATFORM        : the name of the target Eclipse release (e.g. kepler).
+- PLATFORM        : the name of the target Eclipse release (e.g. photon, 2019-03...).
 - GIT_BRANCH      : the name fo the Git branch being build/published.
 - BUILD_TIMESTAMP : timestamp to use to identify this particular build (e.g. 20180201-113000)
 "
@@ -35,7 +33,6 @@ provided by the Hudson build.
 
 # Exit on error
 set -e
-set -x
 
 # The full version (should be taken as an argument)
 export VERSION="6.2.1"
