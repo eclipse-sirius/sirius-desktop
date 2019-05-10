@@ -2,14 +2,14 @@ pipeline {
     agent {
 	kubernetes {
 	    label 'sirius-buildtest'
-	    defaultContainer 'environment'
+	    defaultContainer 'jnlp'
 	    yaml """
 apiVersion: v1
 kind: Pod
 spec:
   containers:
-  - name: environment
-    image: eclipsecbi/ubuntu-gtk3-metacity
+  - name: uitests
+    image: mickaelistria/eclipse-acute-build-test-env:test
     tty: true
     command: [ "uid_entrypoint", "cat" ]
     resources:
@@ -45,8 +45,10 @@ spec:
         }
         stage('Test') {
             steps {
-                wrap([$class: 'Xvnc', useXauthority: true]) {
-                    sh "JAVA_HOME=/opt/tools/java/oracle/jdk-8/latest /opt/tools/apache-maven/latest/bin/mvn -B -Dplatform-version-name=${env.PLATFORM} -f packaging/org.eclipse.sirius.parent/pom.xml -P full,headless,headless-server,gerrit-junit verify"
+                container('uitests') {
+                    wrap([$class: 'Xvnc', useXauthority: true]) {
+                        sh "mvn -B -Dplatform-version-name=${env.PLATFORM} -f packaging/org.eclipse.sirius.parent/pom.xml -P full,headless,headless-server,gerrit-junit verify"
+                    }
                 }
             }
             // post {
