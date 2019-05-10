@@ -1,18 +1,20 @@
 pipeline {
     agent any
 
-    def mvnHome
-    
     stages {
+        def mvnHome
+        def javaHome
+        
         stage('Prepare') {
             steps {
-                git 'http://git.eclipse.org/gitroot/sirius/org.eclipse.sirius.git'
+                cleanWs()
                 mvnHome = tool 'apache-maven-latest'
+                javaHome = tool 'oracle-jdk8-latest'
             }
         }
         stage('Build') {
             steps {
-                sh "'${mvnHome}/bin/mvn'-Dplatform-version-name='${env.PLATFORM}' -f packaging/org.eclipse.sirius.parent/pom.xml -P full,headless,headless-server clean package"
+                sh "JAVA_HOME=${javaHome} ${mvnHome}/bin/mvn-Dplatform-version-name=${env.PLATFORM} -f packaging/org.eclipse.sirius.parent/pom.xml -P full,headless,headless-server clean package"
             }
         }
         /*
