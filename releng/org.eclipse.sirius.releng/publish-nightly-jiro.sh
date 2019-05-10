@@ -143,7 +143,7 @@ EOF
 # First, a link for the $VERSION (e.g. "1.2.0/luna" => "1.2.0-NYYYYMMDD-HHMM/luna")
 create_redirect "$TARGET_ROOT/$VERSION/$PLATFORM" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM"
 create_redirect "$TARGET_ROOT/$VERSION/$PLATFORM/tests" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM/tests"
-scp -rp "$TARGET_DIR/targets" "$SSH_ACCOUNT:$TARGET_ROOT/$VERSION/$PLATFORM/targets"
+scp -rp "$SSH_ACCOUNT:$TARGET_DIR/targets" "$SSH_ACCOUNT:$TARGET_ROOT/$VERSION/$PLATFORM/targets"
 # Also create a link for the $STREAM (e.g. "1.2.x/luna" => "1.2.0-NYYYYMMDD-HHMM/luna")
 # and publish the zipped versions there, at stable URLs
 create_redirect "$TARGET_ROOT/$STREAM/$PLATFORM" "$BUILD_TYPE/$FULL_VERSION/$PLATFORM"
