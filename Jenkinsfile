@@ -22,12 +22,17 @@ spec:
   - name: jnlp
     image: 'eclipsecbi/jenkins-jnlp-agent'
     volumeMounts:
-    - mountPath: /home/jenkins/.ssh
-      name: volume-known-hosts
+    - name: volume-known-hosts
+      mountPath: /home/jenkins/.ssh
+    - name: tools
+      mountPath: /opt/tools
   volumes:
-  - configMap:
+  - name: volume-known-hosts
+    configMap:
       name: known-hosts
-    name: volume-known-hosts
+  - name: tools
+    persistentVolumeClaim:
+      name: tools-claim
 """
 	}
     }
