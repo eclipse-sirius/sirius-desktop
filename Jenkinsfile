@@ -32,7 +32,7 @@ spec:
       name: known-hosts
   - name: tools
     persistentVolumeClaim:
-      name: tools-claim
+      name: tools-claim-jiro-sirius
 """
 	}
     }
