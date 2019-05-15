@@ -14,19 +14,19 @@ spec:
     command: [ "uid_entrypoint", "cat" ]
     resources:
       requests:
-        memory: "2Gi"
+        memory: "3.5Gi"
         cpu: "1"
       limits:
-        memory: "2Gi"
+        memory: "3.5Gi"
         cpu: "1"
   - name: jnlp
     image: 'eclipsecbi/jenkins-jnlp-agent'
     resources:
       requests:
-        memory: "2Gi"
+        memory: "0.5Gi"
         cpu: "1"
       limits:
-        memory: "2Gi"
+        memory: "0.5Gi"
         cpu: "1"
     volumeMounts:
     - name: volume-known-hosts
@@ -59,8 +59,9 @@ spec:
         }
         stage('Build') {
             steps {
-                container('jnlp') {
-                    sh "JAVA_HOME=/opt/tools/java/oracle/jdk-8/latest /opt/tools/apache-maven/latest/bin/mvn -B -Dplatform-version-name=${env.PLATFORM} -f packaging/org.eclipse.sirius.parent/pom.xml -P full,headless,headless-server clean package"
+                container('uitests') {
+                    // sh "JAVA_HOME=/opt/tools/java/oracle/jdk-8/latest /opt/tools/apache-maven/latest/bin/mvn -B -Dplatform-version-name=${env.PLATFORM} -f packaging/org.eclipse.sirius.parent/pom.xml -P full,headless,headless-server clean package"
+                    sh "mvn -B -Dplatform-version-name=${env.PLATFORM} -f packaging/org.eclipse.sirius.parent/pom.xml -P full,headless,headless-server clean package"
                 }
             }
         }
