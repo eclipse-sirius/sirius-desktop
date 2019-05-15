@@ -14,20 +14,20 @@ spec:
     command: [ "uid_entrypoint", "cat" ]
     resources:
       requests:
-        memory: "2.6Gi"
-        cpu: "1.3"
+        memory: "2Gi"
+        cpu: "1"
       limits:
-        memory: "2.6Gi"
-        cpu: "1.3"
+        memory: "2Gi"
+        cpu: "1"
   - name: jnlp
     image: 'eclipsecbi/jenkins-jnlp-agent'
     resources:
       requests:
-        memory: "2.6Gi"
-        cpu: "1.3"
+        memory: "2Gi"
+        cpu: "1"
       limits:
-        memory: "2.6Gi"
-        cpu: "1.3"
+        memory: "2Gi"
+        cpu: "1"
     volumeMounts:
     - name: volume-known-hosts
       mountPath: /home/jenkins/.ssh
