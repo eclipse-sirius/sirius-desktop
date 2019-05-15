@@ -95,7 +95,6 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.swt.SWTException;
-import org.eclipse.swt.graphics.Font;
 import org.eclipse.ui.IWorkbenchPart;
 
 import com.google.common.collect.BiMap;
@@ -880,20 +879,16 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             labelFigure = labelEditPart.getFigure();
         }
         String text = null;
-        Font font = null;
 
         if (labelFigure instanceof WrappingLabel) {
             WrappingLabel wrappingLabel = (WrappingLabel) labelFigure;
             text = wrappingLabel.getText();
-            font = wrappingLabel.getFont();
         } else if (labelFigure instanceof Label) {
             Label label = (Label) labelFigure;
             text = label.getText();
-            font = label.getFont();
         } else if (labelFigure instanceof SiriusWrapLabel) {
             SiriusWrapLabel label = (SiriusWrapLabel) labelFigure;
             text = label.getText();
-            font = label.getFont();
         }
 
         if (text != null) {
@@ -914,10 +909,6 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 // We use the preferred size and not the labelBounds to "reset" previous manual wrapping size
                 Dimension size = labelFigure.getPreferredSize();
                 label.setDimensions(size.width, size.height);
-                if (font != null && !font.isDisposed()) {
-                    label.setProperty(CoreOptions.FONT_NAME, font.getFontData()[0].getName());
-                    label.setProperty(CoreOptions.FONT_SIZE, font.getFontData()[0].getHeight());
-                }
             } catch (SWTException exception) {
                 // ignore exception and leave the label size to (0, 0)
             }
@@ -1194,11 +1185,6 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                         }
                     } else {
                         label.setProperty(CoreOptions.EDGE_LABELS_PLACEMENT, placement);
-                    }
-                    Font font = labelFigure.getFont();
-                    if (font != null && !font.isDisposed()) {
-                        label.setProperty(CoreOptions.FONT_NAME, font.getFontData()[0].getName());
-                        label.setProperty(CoreOptions.FONT_SIZE, font.getFontData()[0].getHeight());
                     }
                     label.setLocation(labelBounds.x - offset.x, labelBounds.y - offset.y);
                     // The label width includes the icon width
