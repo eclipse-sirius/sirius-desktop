@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Require-Bundle: com.google.guava;bundle-version="[15.0,22.0)",
+Require-Bundle: com.google.guava;bundle-version="[21.0,27.2)",
  org.apache.batik.bridge;bundle-version="[1.6.0,1.8.0)",
  org.apache.batik.dom;bundle-version="[1.6.0,1.8.0)",
  org.apache.batik.dom.svg;bundle-version="[1.6.0,1.8.0)",
