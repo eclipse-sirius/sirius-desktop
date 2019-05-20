@@ -21,6 +21,8 @@ h4. Changes in  @org.eclipse.sirius.tests.swtbot.support@
 
 * <span class="label label-success">Added</span>  The methods @org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas.mouseMoveLeftClick(int, int, boolean, int[])@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer.click(int, int, boolean, int[])@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.clickWithKeys(String, int...)@, have been added to make a mouse click with key modifiers for a multi selection for example.
 
+* <span class="label label-success">Added</span>  The method @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper.selectPropertyTabItem(String, SWTBot)@ has been added. It allows to look for property tab from a given bot. The bot corresponding to the property view should be given otherwise the search could fail starting from Eclipse 2019-06.
+
 h2(#sirius6.2.0). Changes in Sirius 6.2.0
 
 h3. User-Visible Changes

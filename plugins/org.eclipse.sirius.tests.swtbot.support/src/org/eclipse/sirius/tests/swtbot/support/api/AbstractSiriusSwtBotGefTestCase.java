@@ -141,12 +141,11 @@ import com.google.common.collect.Sets;
 import junit.framework.TestCase;
 
 /**
- * Wrapper for several UI* classes to handle ui management in tests. If needed,
- * new setup operations can be done in
+ * Wrapper for several UI* classes to handle ui management in tests. If needed, new setup operations can be done in
  * {@link #onSetUpBeforeClosingWelcomePage()} overridden method.
  *
- * {@link #onSetUpAfterOpeningDesignerPerspective()} allows developer to add
- * extra behavior after opening designer perspective.
+ * {@link #onSetUpAfterOpeningDesignerPerspective()} allows developer to add extra behavior after opening designer
+ * perspective.
  *
  * @author dlecan
  */
@@ -381,8 +380,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Do something after opening designer perspective, just before executing
-     * test.
+     * Do something after opening designer perspective, just before executing test.
      *
      * @throws Exception
      *             Error.
@@ -392,8 +390,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Close all opened editors without saving. A waitAllUiEvents is called to
-     * wait the closing of editors that is run by Eclipse in asyncExec.
+     * Close all opened editors without saving. A waitAllUiEvents is called to wait the closing of editors that is run
+     * by Eclipse in asyncExec.
      */
     protected void closeAllEditors() {
         bot.getDisplay().asyncExec(new Runnable() {
@@ -465,16 +463,15 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * Request an explicit refresh of the current diagram.
      */
     protected void manualRefresh() {
-        bot.toolbarButtonWithTooltip(DiagramDialectUIServices.REFRESH_DIAGRAM).click();
+        editor.bot().toolbarButtonWithTooltip(DiagramDialectUIServices.REFRESH_DIAGRAM).click();
         SWTBotUtils.waitProgressMonitorClose("Progress Information");
     }
 
     /**
      * {@inheritDoc}
      *
-     * runtTest() method is overridden to allow to take a screenshot just after
-     * test execution and before tearDown operation. As tearDown closes diagram
-     * and session, after it, screenshots don't show any interesting things.
+     * runtTest() method is overridden to allow to take a screenshot just after test execution and before tearDown
+     * operation. As tearDown closes diagram and session, after it, screenshots don't show any interesting things.
      */
     @Override
     // CHECKSTYLE:OFF
@@ -537,8 +534,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Assert the editor is not an error one, close it before failing if it is
-     * to avoid breaking further tests.
+     * Assert the editor is not an error one, close it before failing if it is to avoid breaking further tests.
      *
      * @param message
      *            : message on failure.
@@ -555,8 +551,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Undo with shortcut CTRL+z, at the end of this method execution, the
-     * operation undo is finished.
+     * Undo with shortcut CTRL+z, at the end of this method execution, the operation undo is finished.
      */
     protected void undo() {
         Assert.assertTrue(editor != null);
@@ -572,8 +567,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Undo using the command stack of the editing domain of the current
-     * session.
+     * Undo using the command stack of the editing domain of the current session.
      *
      * @param session
      *            current session to undo last action.
@@ -593,8 +587,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Redo with shortcut CTRL+y, at the end of this method execution, the
-     * operation redo is finished.
+     * Redo with shortcut CTRL+y, at the end of this method execution, the operation redo is finished.
      */
     protected void redo() {
         Assert.assertTrue(editor != null);
@@ -624,8 +617,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Redo using the command stack of the editing domain of the current
-     * session.
+     * Redo using the command stack of the editing domain of the current session.
      *
      * @param session
      *            current session to redo last action.
@@ -642,8 +634,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Change a preference and store the old value. It will be automatically
-     * reset during tear down.
+     * Change a preference and store the old value. It will be automatically reset during tear down.
      * 
      * TO CALL ONLY ONCE PER TEST (set up + test)
      * 
@@ -666,8 +657,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Change a boolean preference and store the old value. It will be
-     * automatically reset during tear down.
+     * Change a boolean preference and store the old value. It will be automatically reset during tear down.
      *
      * TO CALL ONLY ONCE PER TEST (set up + test)
      *
@@ -720,8 +710,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Change a boolean preference and store the old value. It will be
-     * automatically reset during tear down.
+     * Change a boolean preference and store the old value. It will be automatically reset during tear down.
      *
      * TO CALL ONLY ONCE PER TEST (set up + test)
      *
@@ -744,8 +733,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Change an int preference and store the old value. It will be
-     * automatically reset during tear down.
+     * Change an int preference and store the old value. It will be automatically reset during tear down.
      *
      * TO CALL ONLY ONCE PER TEST (set up + test)
      *
@@ -768,8 +756,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Change a double preference and store the old value. It will be
-     * automatically reset during tear down.
+     * Change a double preference and store the old value. It will be automatically reset during tear down.
      *
      * TO CALL ONLY ONCE PER TEST (set up + test)
      *
@@ -822,8 +809,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Change a boolean preference and store the old value. It will be
-     * automatically reset during tear down.
+     * Change a boolean preference and store the old value. It will be automatically reset during tear down.
      *
      * TO CALL ONLY ONCE PER TEST (set up + test)
      *
@@ -844,8 +830,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Change a boolean preference and store the old value. It will be
-     * automatically reset during tear down.
+     * Change a boolean preference and store the old value. It will be automatically reset during tear down.
      *
      * TO CALL ONLY ONCE PER TEST (set up + test)
      *
@@ -866,8 +851,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Change a boolean preference and store the old value. It will be
-     * automatically reset during tear down.
+     * Change a boolean preference and store the old value. It will be automatically reset during tear down.
      *
      * TO CALL ONLY ONCE PER TEST (set up + test)
      *
@@ -885,8 +869,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Change a boolean preference and store the old value to reset it after the
-     * test.
+     * Change a boolean preference and store the old value to reset it after the test.
      *
      * @param preferenceKey
      *            The key of the preference.
@@ -976,10 +959,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Toggle Active view/editor maximize. If possible call directly
-     * {@link #maximizeEditor(SWTBotSiriusDiagramEditor)} and
-     * {@link #restoreEditor(SWTBotSiriusDiagramEditor)}, they are faster
-     * because they use directly Eclipse API.
+     * Toggle Active view/editor maximize. If possible call directly {@link #maximizeEditor(SWTBotSiriusDiagramEditor)}
+     * and {@link #restoreEditor(SWTBotSiriusDiagramEditor)}, they are faster because they use directly Eclipse API.
      */
     protected void maximizeEditor() {
         bot.menu("Window").menu("Navigation").menu("Maximize Active View or Editor").click();
@@ -1078,14 +1059,12 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Get all the representation with the given representation description
-     * name.
+     * Get all the representation with the given representation description name.
      *
      * @param session
      *            The session containing the searched representations.
      * @param representationDescriptionName
-     *            the name of the representation description. <code>null</code>
-     *            is not excepted.
+     *            the name of the representation description. <code>null</code> is not excepted.
      * @return a {@link Collection} with all representations retrieved.
      */
     protected Collection<DRepresentation> getRepresentations(final Session session, final String representationDescriptionName) {
@@ -1103,8 +1082,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Returns the first representation descriptor with a given name, optionally
-     * filtering by a representation description name.
+     * Returns the first representation descriptor with a given name, optionally filtering by a representation
+     * description name.
      * 
      * @param session
      *            The session to search
@@ -1112,8 +1091,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      *            The name of the representation description. May be null.
      * @param representationName
      *            The name of the representation descriptor to search.
-     * @return a {@link DRepresentationDescriptor} or null if no matching
-     *         descriptor exists in the session
+     * @return a {@link DRepresentationDescriptor} or null if no matching descriptor exists in the session
      */
     protected DRepresentationDescriptor getRepresentationDescriptorWithName(Session session, String representationDescriptionName, String representationName) {
         for (DRepresentationDescriptor descriptor : DialectManager.INSTANCE.getAllRepresentationDescriptors(session)) {
@@ -1127,14 +1105,12 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Return the first representation with the given representation description
-     * name and representation name.
+     * Return the first representation with the given representation description name and representation name.
      *
      * @param session
      *            The session containing the searched representations.
      * @param representationDescriptionName
-     *            the name of the representation description. <code>null</code>
-     *            is not excepted.
+     *            the name of the representation description. <code>null</code> is not excepted.
      * @param representationName
      *            the name of the representation
      * @return the first corresponding representation
@@ -1156,21 +1132,18 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Open the first diagram with the given diagram description name and
-     * diagram name.
+     * Open the first diagram with the given diagram description name and diagram name.
      *
      * @param session
      *            The session containing the searched representations.
      * @param diagramDescriptionName
-     *            the name of the diagram description. <code>null</code> is not
-     *            excepted.
+     *            the name of the diagram description. <code>null</code> is not excepted.
      * @param diagramName
      *            the name of the diagram
      * @param expectedRepresentationClass
      *            the expected type of representation to found
      * @return the editor of the first corresponding diagram
-     * @deprecated To replace by
-     *             {@link #openRepresentation(Session, String, String, Class)}
+     * @deprecated To replace by {@link #openRepresentation(Session, String, String, Class)}
      */
     @Deprecated
     protected SWTBotSiriusDiagramEditor openDiagram(Session session, String diagramDescriptionName, final String diagramName, Class<? extends DRepresentation> expectedRepresentationClass) {
@@ -1178,24 +1151,20 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Open the first representation with the given representation description
-     * name and representation name.
+     * Open the first representation with the given representation description name and representation name.
      *
      * @param session
      *            The session containing the searched representations.
      * @param diagramDescriptionName
-     *            the name of the diagram description. <code>null</code> is not
-     *            excepted.
+     *            the name of the diagram description. <code>null</code> is not excepted.
      * @param diagramName
      *            the name of the diagram
      * @param expectedRepresentationClass
      *            the expected type of representation to found
      * @param disableSnapToGridOnThisEditor
-     *            true if the snapToGrid must be disable for this editor, false
-     *            otherwise
+     *            true if the snapToGrid must be disable for this editor, false otherwise
      * @return the editor of the first corresponding diagram
-     * @deprecated To replace by
-     *             {@link #openRepresentation(Session, String, String, Class, boolean)}
+     * @deprecated To replace by {@link #openRepresentation(Session, String, String, Class, boolean)}
      */
     @Deprecated
     protected SWTBotSiriusDiagramEditor openDiagram(Session session, String diagramDescriptionName, final String diagramName, Class<? extends DRepresentation> expectedRepresentationClass,
@@ -1207,14 +1176,12 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Open the first representation with the given representation description
-     * name and representation name.
+     * Open the first representation with the given representation description name and representation name.
      *
      * @param session
      *            The session containing the searched representations.
      * @param representationDescriptionName
-     *            the name of the representation description. <code>null</code>
-     *            is not excepted.
+     *            the name of the representation description. <code>null</code> is not excepted.
      * @param representationName
      *            the name of the representation
      * @param expectedRepresentationClass
@@ -1226,21 +1193,18 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Open the first representation with the given representation description
-     * name and representation name.
+     * Open the first representation with the given representation description name and representation name.
      *
      * @param session
      *            The session containing the searched representations.
      * @param representationDescriptionName
-     *            the name of the representation description. <code>null</code>
-     *            is not excepted.
+     *            the name of the representation description. <code>null</code> is not excepted.
      * @param representationName
      *            the name of the representation
      * @param expectedRepresentationClass
      *            the expected type of representation to found
      * @param disableSnapToGridOnThisEditor
-     *            true if the snapToGrid must be disable for this editor, false
-     *            otherwise
+     *            true if the snapToGrid must be disable for this editor, false otherwise
      * @return the editor of the first corresponding representation
      */
     protected SWTBotEditor openRepresentation(Session session, String representationDescriptionName, final String representationName, Class<? extends DRepresentation> expectedRepresentationClass,
@@ -1249,24 +1213,20 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Open the first representation with the given representation description
-     * name and representation name.
+     * Open the first representation with the given representation description name and representation name.
      *
      * @param session
      *            The session containing the searched representations.
      * @param representationDescriptionName
-     *            the name of the representation description. <code>null</code>
-     *            is not excepted.
+     *            the name of the representation description. <code>null</code> is not excepted.
      * @param representationName
      *            the name of the representation
      * @param expectedRepresentationClass
      *            the expected type of representation to found
      * @param disableSnapToGridOnThisEditor
-     *            true if the snapToGrid must be disable for this editor, false
-     *            otherwise
+     *            true if the snapToGrid must be disable for this editor, false otherwise
      * @param disableSnapToShapeOnThisEditor
-     *            true if the snapToShape must be disable for this editor, false
-     *            otherwise
+     *            true if the snapToShape must be disable for this editor, false otherwise
      * @return the editor of the first corresponding representation
      */
     protected SWTBotEditor openRepresentation(Session session, String representationDescriptionName, final String representationName, Class<? extends DRepresentation> expectedRepresentationClass,
@@ -1302,19 +1262,15 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Get the widget bot corresponding to the button to set a workspace image
-     * on a selected node. If tabbar parameter at true, get the button of the
-     * tabbar, else get the button of the Appearance tab on the properties view.
+     * Get the widget bot corresponding to the button to set a workspace image on a selected node. If tabbar parameter
+     * at true, get the button of the tabbar, else get the button of the Appearance tab on the properties view.
      *
      * @param tabbar
-     *            if tabbar parameter at true, get the button of the tabbar,
-     *            else get the button of the Appearance tab on the properties
-     *            view
+     *            if tabbar parameter at true, get the button of the tabbar, else get the button of the Appearance tab
+     *            on the properties view
      * @param enabled
-     *            true to check if the button must be enable, false to check if
-     *            it shouldn't be enabled
-     * @return the widget bot corresponding to the button to set a workspace
-     *         image on a selected node
+     *            true to check if the button must be enable, false to check if it shouldn't be enabled
+     * @return the widget bot corresponding to the button to set a workspace image on a selected node
      */
     protected AbstractSWTBot<? extends Widget> getSetStyleToWorkspaceImageButton(boolean tabbar, boolean enabled) {
         AbstractSWTBot<? extends Widget> wkpImageButton = null;
@@ -1329,20 +1285,16 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Get the widget bot corresponding to the button to "Reset style properties
-     * to default" on a selected node/edge. If tabbar parameter at true, get the
-     * button of the tabbar, else get the button of the Appearance tab on the
+     * Get the widget bot corresponding to the button to "Reset style properties to default" on a selected node/edge. If
+     * tabbar parameter at true, get the button of the tabbar, else get the button of the Appearance tab on the
      * properties view.
      *
      * @param tabbar
-     *            if tabbar parameter at true, get the button of the tabbar,
-     *            else get the button of the Appearance tab on the properties
-     *            view
+     *            if tabbar parameter at true, get the button of the tabbar, else get the button of the Appearance tab
+     *            on the properties view
      * @param enabled
-     *            true to check if the button must be enable, false to check if
-     *            it shouldn't be enabled
-     * @return the widget bot corresponding to the button to "Reset style
-     *         properties to default" on a selected node/edge
+     *            true to check if the button must be enable, false to check if it shouldn't be enabled
+     * @return the widget bot corresponding to the button to "Reset style properties to default" on a selected node/edge
      */
     protected AbstractSWTBot<? extends Widget> getResetStylePropertiesToDefaultValuesButton(boolean tabbar, boolean enabled) {
         AbstractSWTBot<? extends Widget> resetStylePropertiesToDefaultValuesButton = null;
@@ -1363,8 +1315,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Returns the button allowing to reset the style to default from the
-     * tabbar.
+     * Returns the button allowing to reset the style to default from the tabbar.
      *
      * @return the button allowing to reset the style to default from the tabbar
      */
@@ -1391,11 +1342,9 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Returns the button allowing to reset the style to default from the
-     * appearance section.
+     * Returns the button allowing to reset the style to default from the appearance section.
      *
-     * @return the button allowing to reset the style to default from the
-     *         appearance section
+     * @return the button allowing to reset the style to default from the appearance section
      */
     protected SWTBotButton getResetStylePropertiesToDefaultValuesButtonFromAppearanceTab() {
         SWTBotButton resetStylePropertiesToDefaultValuesButtonFromAppearanceTab = null;
@@ -1406,18 +1355,16 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Returns the button from the 'Appearance' section at the given index, that
-     * should have the given tooltip.
+     * Returns the button from the 'Appearance' section at the given index, that should have the given tooltip.
      *
      * @param tooltip
      *            the expected tooltip for this button
-     * @return the button from the 'Appearance' section at the given index, that
-     *         should have the given tooltip
+     * @return the button from the 'Appearance' section at the given index, that should have the given tooltip
      */
     protected SWTBotButton getSectionButton(String tooltip) {
         SWTBot propertiesBot = bot.viewByTitle("Properties").bot();
         bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesBot);
         SWTBotButton button = propertiesBot.buttonWithTooltipInGroup(tooltip, "Fonts and Colors:");
 
         TestCase.assertNotNull(button);
@@ -1575,24 +1522,20 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Activate or deactivate the external error detection: the test will fail
-     * in an error is logged or uncaught.
+     * Activate or deactivate the external error detection: the test will fail in an error is logged or uncaught.
      *
      * @param errorCatchActive
-     *            boolean to indicate if we activate or deactivate the external
-     *            error detection
+     *            boolean to indicate if we activate or deactivate the external error detection
      */
     protected synchronized void setErrorCatchActive(boolean errorCatchActive) {
         this.errorCatchActive = errorCatchActive;
     }
 
     /**
-     * Activate or deactivate the external warning detection: the test will fail
-     * in a warning is logged or uncaught.
+     * Activate or deactivate the external warning detection: the test will fail in a warning is logged or uncaught.
      *
      * @param warningCatchActive
-     *            boolean to indicate if we activate or deactivate the external
-     *            warning detection
+     *            boolean to indicate if we activate or deactivate the external warning detection
      */
     protected synchronized void setWarningCatchActive(boolean warningCatchActive) {
         this.warningCatchActive = warningCatchActive;
@@ -1605,9 +1548,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         /* an exception occurs in another thread */
 
         /*
-         * TODO : skip checkErrors when we are in a shouldSkipUnreliableTests
-         * mode. We have some unwanted resource notifications during the
-         * teardown on jenkins.
+         * TODO : skip checkErrors when we are in a shouldSkipUnreliableTests mode. We have some unwanted resource
+         * notifications during the teardown on jenkins.
          */
         if (!TestsUtil.shouldSkipUnreliableTests()) {
             if (doesAnErrorOccurs()) {
@@ -1894,44 +1836,40 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Explore the current {@link SWTBotSiriusDiagramEditor} edit part children
-     * recursively to find out a {@link TextEditPart} with the expected label.
+     * Explore the current {@link SWTBotSiriusDiagramEditor} edit part children recursively to find out a
+     * {@link TextEditPart} with the expected label.
      *
      * @param label
      *            the label of the expected {@link TextEditPart}
-     * @return a {@link TextEditPart} with the expected label if existing, null
-     *         otherwise
+     * @return a {@link TextEditPart} with the expected label if existing, null otherwise
      */
     public SWTBotGefEditPart findTextEditPart(String label) {
         return findTextEditPart(editor.rootEditPart(), label);
     }
 
     /**
-     * Explore the {@link SWTBotSiriusDiagramEditor} edit part children
-     * recursively to find out a {@link TextEditPart} with the expected label.
+     * Explore the {@link SWTBotSiriusDiagramEditor} edit part children recursively to find out a {@link TextEditPart}
+     * with the expected label.
      *
      * @param designerEditor
-     *            the current {@link SWTBotSiriusDiagramEditor} to look for a
-     *            {@link TextEditPart}
+     *            the current {@link SWTBotSiriusDiagramEditor} to look for a {@link TextEditPart}
      * @param label
      *            the label of the expected {@link TextEditPart}
-     * @return a {@link TextEditPart} with the expected label if existing, null
-     *         otherwise
+     * @return a {@link TextEditPart} with the expected label if existing, null otherwise
      */
     public SWTBotGefEditPart findTextEditPart(SWTBotSiriusDiagramEditor designerEditor, String label) {
         return findTextEditPart(designerEditor.rootEditPart(), label);
     }
 
     /**
-     * Explore the {@link SWTBotGefEditPart} children recursively to find out a
-     * {@link TextEditPart} with the expected label.
+     * Explore the {@link SWTBotGefEditPart} children recursively to find out a {@link TextEditPart} with the expected
+     * label.
      *
      * @param parent
      *            the {@link SWTBotGefEditPart} parent to start exploration
      * @param label
      *            the label of the expected {@link TextEditPart}
-     * @return a {@link TextEditPart} with the expected label if existing, null
-     *         otherwise
+     * @return a {@link TextEditPart} with the expected label if existing, null otherwise
      */
     public SWTBotGefEditPart findTextEditPart(SWTBotGefEditPart parent, String label) {
         SWTBotGefEditPart result = null;
@@ -1973,8 +1911,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Scan contained figures to find the background color of a figure typed as
-     * figureClass.
+     * Scan contained figures to find the background color of a figure typed as figureClass.
      *
      * @param editPart
      *            EditPart containing the figures that need investigation
@@ -1992,8 +1929,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Scan contained figures to find the background color of a figure typed as
-     * figureClass.
+     * Scan contained figures to find the background color of a figure typed as figureClass.
      *
      * @param parentFigure
      *            {@link Figure} containing the figures that need investigation
@@ -2033,9 +1969,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     // CHECKSTYLE:OFF
     /**
-     * Method override to use a specific captureScreenshot() that uses the
-     * constant SWTBotPreferences.SCREENSHOTS_DIR instead of a hard coded folder
-     * name.
+     * Method override to use a specific captureScreenshot() that uses the constant SWTBotPreferences.SCREENSHOTS_DIR
+     * instead of a hard coded folder name.
      */
     @Override
     public void runBare() throws Throwable {
@@ -2052,8 +1987,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     /**
-     * Helper used by {@link #runBare()}. Duplicate from
-     * {@link SWTBotTestCase#captureScreenshot()} to use the constant
+     * Helper used by {@link #runBare()}. Duplicate from {@link SWTBotTestCase#captureScreenshot()} to use the constant
      * SWTBotPreferences.SCREENSHOTS_DIR instead of a hard coded folder.
      *
      * @see #runBare()
@@ -2070,7 +2004,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                 if (log != null) {
                     log.info("No screenshot captured for '" + ClassUtils.simpleClassName(getClass()) + POINT + getName() + "' because maximum number of screenshots reached: " + maximumScreenshots);
                 } else {
-                    System.err.println("ERR: No screenshot captured for '" + ClassUtils.simpleClassName(getClass()) + POINT + getName() + "' because maximum number of screenshots reached: " + maximumScreenshots);
+                    System.err.println("ERR: No screenshot captured for '" + ClassUtils.simpleClassName(getClass()) + POINT + getName() + "' because maximum number of screenshots reached: "
+                            + maximumScreenshots);
                 }
             }
         } catch (Exception e) {

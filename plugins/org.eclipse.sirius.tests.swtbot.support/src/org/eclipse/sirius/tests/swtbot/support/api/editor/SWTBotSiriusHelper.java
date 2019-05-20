@@ -24,6 +24,7 @@ import org.eclipse.sirius.table.ui.tools.api.editor.DTableEditor;
 import org.eclipse.sirius.tree.ui.tools.api.editor.DTreeEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
@@ -31,6 +32,7 @@ import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
 import org.eclipse.swtbot.eclipse.finder.waits.WaitForEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory;
@@ -96,9 +98,46 @@ public final class SWTBotSiriusHelper {
      * 
      * @param label
      *            Label to find.
-     * @param propertiesBot .
+     * @param propertiesBot
+     *            the bot corresponding to the property view.
      * @return true if the property tab is found, false otherwise
      */
+    @SuppressWarnings({ "unchecked" })
+    public static boolean selectPropertyTabItem(final String label, SWTBot propertiesBot) {
+        final Matcher<TabbedPropertyList> matcher = Matchers.allOf(WidgetMatcherFactory.widgetOfType(TabbedPropertyList.class));
+        final TabbedPropertyList widgets = propertiesBot.widget(matcher);
+
+        Boolean result = UIThreadRunnable.syncExec(SWTUtils.display(), new BoolResult() {
+            @Override
+            public Boolean run() {
+                boolean result = false;
+
+                Control[] children = widgets.getTabList();
+                for (Control control : children) {
+                    if (control.toString().equals(label)) {
+                        final Event mouseEvent = SWTBotSiriusHelper.createEvent(control, control.getBounds().x, control.getBounds().y, 1, SWT.BUTTON1, 1);
+                        control.notifyListeners(SWT.MouseUp, mouseEvent);
+
+                        result = true;
+                        break; // quit the for
+                    }
+                }
+                return result;
+            }
+        });
+
+        return result != null ? result.booleanValue() : false;
+    }
+
+    /**
+     * Select the tab with the name label in the property views.
+     * 
+     * @param label
+     *            Label to find.
+     * @return true if the property tab is found, false otherwise
+     * @deprecated you should use {@link SWTBotSiriusHelper#selectPropertyTabItem(String, SWTBot)} instead.
+     */
+    @Deprecated
     @SuppressWarnings({ "unchecked" })
     public static boolean selectPropertyTabItem(final String label) {
         final Matcher<TabbedPropertyList> matcher = Matchers.allOf(WidgetMatcherFactory.widgetOfType(TabbedPropertyList.class));
@@ -185,9 +224,8 @@ public final class SWTBotSiriusHelper {
     }
 
     /**
-     * Attempts to locate the editor matching the given name. If no match is
-     * found an exception will be thrown. The name is the name as displayed on
-     * the editor's tab in eclipse.
+     * Attempts to locate the editor matching the given name. If no match is found an exception will be thrown. The name
+     * is the name as displayed on the editor's tab in eclipse.
      * 
      * @param fileName
      *            the name of the file.
@@ -201,9 +239,8 @@ public final class SWTBotSiriusHelper {
     }
 
     /**
-     * Attempts to locate the Gef editor matching the given name. If no match is
-     * found an exception will be thrown. The name is the name as displayed on
-     * the editor's tab in eclipse.
+     * Attempts to locate the Gef editor matching the given name. If no match is found an exception will be thrown. The
+     * name is the name as displayed on the editor's tab in eclipse.
      * 
      * @param fileName
      *            the name of the file.
@@ -217,9 +254,8 @@ public final class SWTBotSiriusHelper {
     }
 
     /**
-     * Attempts to locate the Gef editor matching the partial given name. If no
-     * match is found an exception will be thrown. The name is the name as
-     * displayed on the editor's tab in eclipse.
+     * Attempts to locate the Gef editor matching the partial given name. If no match is found an exception will be
+     * thrown. The name is the name as displayed on the editor's tab in eclipse.
      * 
      * @param partialFileName
      *            the partial name of the file.
@@ -233,14 +269,12 @@ public final class SWTBotSiriusHelper {
     }
 
     /**
-     * Get the first {@link SWTBotEditor} corresponding to a Diagram
-     * DialectEditor with <code>title</code> has title.
+     * Get the first {@link SWTBotEditor} corresponding to a Diagram DialectEditor with <code>title</code> has title.
      * 
      * @param title
      *            the title of the searched editor
      * 
-     * @return the first {@link SWTBotEditor} corresponding to a Diagram
-     *         DialectEditor with <code>title</code> has title
+     * @return the first {@link SWTBotEditor} corresponding to a Diagram DialectEditor with <code>title</code> has title
      */
     public static SWTBotEditor getDiagramDialectEditorBot(String title) {
         SWTBotEditor swtBotEditor = SWTBotSiriusHelper.getDiagramDialectEditorBots(title).get(0);
@@ -248,14 +282,12 @@ public final class SWTBotSiriusHelper {
     }
 
     /**
-     * Get all {@link SWTBotEditor} corresponding to a Diagram DialectEditor
-     * with <code>title</code> has title.
+     * Get all {@link SWTBotEditor} corresponding to a Diagram DialectEditor with <code>title</code> has title.
      * 
      * @param title
      *            the title of the searched editor
      * 
-     * @return all {@link SWTBotEditor} corresponding to a Diagram DialectEditor
-     *         with <code>title</code> has title
+     * @return all {@link SWTBotEditor} corresponding to a Diagram DialectEditor with <code>title</code> has title
      */
     public static List<SWTBotEditor> getDiagramDialectEditorBots(String title) {
         List<SWTBotEditor> diagramDialectEditorBots = new ArrayList<SWTBotEditor>();
@@ -275,14 +307,12 @@ public final class SWTBotSiriusHelper {
     }
 
     /**
-     * Get the first {@link SWTBotEditor} corresponding to a Tree DialectEditor
-     * with <code>title</code> has title.
+     * Get the first {@link SWTBotEditor} corresponding to a Tree DialectEditor with <code>title</code> has title.
      * 
      * @param title
      *            the title of the searched editor
      * 
-     * @return the first {@link SWTBotEditor} corresponding to a Tree
-     *         DialectEditor with <code>title</code> has title
+     * @return the first {@link SWTBotEditor} corresponding to a Tree DialectEditor with <code>title</code> has title
      */
     public static SWTBotEditor getTreeDialectEditorBot(String title) {
         SWTBotSiriusHelper.bot.editorByTitle(title).show();
@@ -291,14 +321,12 @@ public final class SWTBotSiriusHelper {
     }
 
     /**
-     * Get all {@link SWTBotEditor} corresponding to a Tree DialectEditor with
-     * <code>title</code> has title.
+     * Get all {@link SWTBotEditor} corresponding to a Tree DialectEditor with <code>title</code> has title.
      * 
      * @param title
      *            the title of the searched editor
      * 
-     * @return all {@link SWTBotEditor} corresponding to a Tree DialectEditor
-     *         with <code>title</code> has title
+     * @return all {@link SWTBotEditor} corresponding to a Tree DialectEditor with <code>title</code> has title
      */
     public static List<SWTBotEditor> getTreeDialectEditorBots(String title) {
         List<SWTBotEditor> treeDialectEditorBots = new ArrayList<SWTBotEditor>();
@@ -318,14 +346,12 @@ public final class SWTBotSiriusHelper {
     }
 
     /**
-     * Get the first {@link SWTBotEditor} corresponding to a Table DialectEditor
-     * with <code>title</code> has title.
+     * Get the first {@link SWTBotEditor} corresponding to a Table DialectEditor with <code>title</code> has title.
      * 
      * @param title
      *            the title of the searched editor
      * 
-     * @return the first {@link SWTBotEditor} corresponding to a Table
-     *         DialectEditor with <code>title</code> has title
+     * @return the first {@link SWTBotEditor} corresponding to a Table DialectEditor with <code>title</code> has title
      */
     public static SWTBotEditor getTableDialectEditorBot(String title) {
         SWTBotSiriusHelper.bot.editorByTitle(title).show();
@@ -334,14 +360,12 @@ public final class SWTBotSiriusHelper {
     }
 
     /**
-     * Get all {@link SWTBotEditor} corresponding to a Table DialectEditor with
-     * <code>title</code> has title.
+     * Get all {@link SWTBotEditor} corresponding to a Table DialectEditor with <code>title</code> has title.
      * 
      * @param title
      *            the title of the searched editor
      * 
-     * @return all {@link SWTBotEditor} corresponding to a Table DialectEditor
-     *         with <code>title</code> has title
+     * @return all {@link SWTBotEditor} corresponding to a Table DialectEditor with <code>title</code> has title
      */
     public static List<SWTBotEditor> getTableDialectEditorBots(String title) {
         List<SWTBotEditor> tableDialectEditorBots = new ArrayList<SWTBotEditor>();
@@ -361,9 +385,8 @@ public final class SWTBotSiriusHelper {
     }
 
     /**
-     * Attempts to locate the editor matching the given name. If no match is
-     * found an exception will be thrown. The name is the name as displayed on
-     * the editor's tab in eclipse.
+     * Attempts to locate the editor matching the given name. If no match is found an exception will be thrown. The name
+     * is the name as displayed on the editor's tab in eclipse.
      * 
      * @param fileName
      *            the name of the file.
@@ -391,9 +414,8 @@ public final class SWTBotSiriusHelper {
     }
 
     /**
-     * Attempts to locate the editor matching the given name. If no match is
-     * found an exception will be thrown. The name is the name as displayed on
-     * the editor's tab in eclipse.
+     * Attempts to locate the editor matching the given name. If no match is found an exception will be thrown. The name
+     * is the name as displayed on the editor's tab in eclipse.
      * 
      * @param fileName
      *            the name of the file.

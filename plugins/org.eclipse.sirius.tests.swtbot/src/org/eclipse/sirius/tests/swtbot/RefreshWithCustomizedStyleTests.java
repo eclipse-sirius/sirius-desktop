@@ -69,8 +69,7 @@ import com.google.common.collect.Iterables;
 public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomizedStyleOnCompleteExampleTest {
 
     /**
-     * A condition that wait for a text widget to be available in the property
-     * view.
+     * A condition that wait for a text widget to be available in the property view.
      * 
      * @author <a href="mailto:steve.monnier@obeo.fr">Steve Monnier</a>
      *
@@ -111,7 +110,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
     /**
      * Test all GMF Note features customization.
-     * 
+     *
      * @throws Exception
      *             thrown cause failure
      */
@@ -121,7 +120,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
     /**
      * Test all GMF NoteAttachment features customization.
-     * 
+     *
      * @throws Exception
      *             thrown cause failure
      */
@@ -131,7 +130,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
     /**
      * Test all GMF Text features customization.
-     * 
+     *
      * @throws Exception
      *             thrown cause failure
      */
@@ -155,7 +154,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
         // Set a workspace image
         click(setStyleToWorkspaceImageButtonFromAppearanceTab);
-        SWTBotShell activeShell = bot.activeShell();
+        SWTBotShell activeShell = bot.shell("Select background image from workspace");
         SWTBot workspaceImageSelectionDialogBot = activeShell.bot();
         workspaceImageSelectionDialogBot.text().setText(getProjectName() + "/" + NEW_IMAGE_NAME);
         workspaceImageSelectionDialogBot.button("OK").click();
@@ -246,7 +245,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
     /**
      * Test all lozenge style features customization.
-     * 
+     *
      * @throws Exception
      *             thrown cause failure
      */
@@ -256,7 +255,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
     /**
      * Test all ellipse style features customization.
-     * 
+     *
      * @throws Exception
      *             thrown cause failure
      */
@@ -266,7 +265,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
     /**
      * Test all bundled image style features customization.
-     * 
+     *
      * @throws Exception
      *             thrown cause failure
      */
@@ -275,8 +274,8 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
     }
 
     /**
-     * Test bundled image style features customization leads to error in errorLog
-     * because its extension is not valid and do not thrown exception.
+     * Test bundled image style features customization leads to error in errorLog because its extension is not valid and
+     * do not thrown exception.
      */
     public void testBundledImageStyleCustomizationWithError() {
         try {
@@ -297,7 +296,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
     /**
      * Test all note style features customization.
-     * 
+     *
      * @throws Exception
      *             thrown cause failure
      */
@@ -307,7 +306,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
     /**
      * Test all dot style features customization.
-     * 
+     *
      * @throws Exception
      *             thrown cause failure
      */
@@ -317,7 +316,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
     /**
      * Test all gauge composite style features customization.
-     * 
+     *
      * @throws Exception
      *             thrown cause failure
      */
@@ -327,7 +326,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
     /**
      * Test all workspace image style features customization.
-     * 
+     *
      * @throws Exception
      *             thrown cause failure
      */
@@ -337,7 +336,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
     /**
      * Test all flatContainerStyle features customization.
-     * 
+     *
      * @throws Exception
      *             thrown cause failure
      */
@@ -347,7 +346,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
     /**
      * Test all shapeContainerStyle features customization.
-     * 
+     *
      * @throws Exception
      *             thrown cause failure
      */
@@ -357,7 +356,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
     /**
      * Test all workspaceImageStyle features customization.
-     * 
+     *
      * @throws Exception
      *             thrown cause failure
      */
@@ -367,7 +366,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
     /**
      * Test all edgeStyle features customization.
-     * 
+     *
      * @throws Exception
      *             thrown cause failure
      */
@@ -377,7 +376,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
     /**
      * Test all bracketEdgeStyle features customization.
-     * 
+     *
      * @throws Exception
      *             thrown cause failure
      */
@@ -387,7 +386,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
     /**
      * Test that label size customization has a minimal value of 1.
-     * 
+     *
      * @throws Exception
      *             thrown cause failure
      */

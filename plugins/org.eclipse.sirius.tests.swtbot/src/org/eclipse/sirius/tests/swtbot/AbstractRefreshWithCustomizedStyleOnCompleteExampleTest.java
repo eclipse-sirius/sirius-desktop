@@ -154,8 +154,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
- * An abstract class providing set-up and facilities for testing the style
- * customization features.
+ * An abstract class providing set-up and facilities for testing the style customization features.
  * 
  * <p>
  * Relevant issues :
@@ -240,10 +239,8 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
         eClass1WithSquareStyleBot = editor.getEditPart("EClass1WithSquareStyle", AbstractDiagramNodeEditPart.class);
         eClass1WithLozengeStyleBot = editor.getEditPart("EClass1WithLozengeStyle", AbstractDiagramNodeEditPart.class);
         eClass1WithEllipseStyleBot = editor.getEditPart("EClass1WithEllipseStyle", AbstractDiagramNodeEditPart.class);
-        eClass1WithBundledImageStyleBot = editor.getEditPart("EClass1WithBundledImageStyle",
-                AbstractDiagramNodeEditPart.class);
-        eClass1WithBundledImageStyleErrorBot = editor.getEditPart("EClass1WithBundledImageStyleError",
-                AbstractDiagramNodeEditPart.class);
+        eClass1WithBundledImageStyleBot = editor.getEditPart("EClass1WithBundledImageStyle", AbstractDiagramNodeEditPart.class);
+        eClass1WithBundledImageStyleErrorBot = editor.getEditPart("EClass1WithBundledImageStyleError", AbstractDiagramNodeEditPart.class);
         eClass1WithNoteStyleBot = editor.getEditPart("EClass1WithNoteStyle", AbstractDiagramNodeEditPart.class);
         eClass1WithDotStyleBot = editor.getEditPart("EClass1WithDotStyle", AbstractDiagramNodeEditPart.class);
         eClass1WithGaugeStyleBot = editor.getEditPart("EClass1WithGaugeStyle", AbstractDiagramNodeEditPart.class);
@@ -288,8 +285,8 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
     }
 
     /**
-     * Customize a Sirius style property using the Style tab of the property
-     * view for the specified selected {@link SWTBotGefEditPart}.
+     * Customize a Sirius style property using the Style tab of the property view for the specified selected
+     * {@link SWTBotGefEditPart}.
      * 
      * @param swtBotGefEditPart
      *            the specified selected {@link SWTBotGefEditPart}.
@@ -297,14 +294,13 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
      *            the {@link Style}
      * @param feature
      *            the {@link EStructuralFeature} to customize
-     * @return true if the specifed {@link EStructuralFeature} has been
-     *         customized
+     * @return true if the specifed {@link EStructuralFeature} has been customized
      */
     protected boolean customizeSiriusStylePropertyFromStyleTab(SWTBotGefEditPart swtBotGefEditPart, Style style, EStructuralFeature feature) {
         boolean customized = false;
         editor.reveal(swtBotGefEditPart.part());
         swtBotGefEditPart.select();
-        SWTBotSiriusHelper.selectPropertyTabItem(STYLE_TAB_NAME);
+        SWTBotSiriusHelper.selectPropertyTabItem(STYLE_TAB_NAME, propertiesBot.bot());
         AdapterFactory adapterFactory = DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory();
         IItemPropertySource itemPropertySource = (IItemPropertySource) adapterFactory.adapt(style, IItemPropertySource.class);
         IItemPropertyDescriptor propertyDescriptor = itemPropertySource.getPropertyDescriptor(style, feature.getName());
@@ -343,7 +339,7 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
                         ccomboBox.pressShortcut(Keystrokes.CR);
                     }
                 } else if (feature.getEType() == EcorePackage.Literals.EBOOLEAN) {
-                    
+
                     // In photon, the feature widget is not a combo anymore.
                     if (TestsUtil.isPhotonPlatformOrLater()) {
                         SWTBotCheckBox botCheckBox = propertiesBot.bot().checkBox();
@@ -400,8 +396,8 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
     }
 
     /**
-     * Customize a GMF style property using the Appearance tab of the property
-     * view for the specified selected {@link SWTBotGefEditPart}.
+     * Customize a GMF style property using the Appearance tab of the property view for the specified selected
+     * {@link SWTBotGefEditPart}.
      * 
      * @param swtBotGefEditPart
      *            the specified selected {@link SWTBotGefEditPart}.
@@ -544,14 +540,13 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
     }
 
     /**
-     * Tells if the specified {@link SWTBotGefEditPart} represents a Sirius
-     * element or a GMF specific element (Text, Note or NoteAttachment).
+     * Tells if the specified {@link SWTBotGefEditPart} represents a Sirius element or a GMF specific element (Text,
+     * Note or NoteAttachment).
      * 
      * @param swtBotGefEditPart
      *            the specified {@link SWTBotGefEditPart}
-     * @return true if the specified {@link SWTBotGefEditPart} represents a
-     *         Sirius element or a GMF specific element (Text, Note or
-     *         NoteAttachment), false else
+     * @return true if the specified {@link SWTBotGefEditPart} represents a Sirius element or a GMF specific element
+     *         (Text, Note or NoteAttachment), false else
      */
     protected boolean isSiriusElt(SWTBotGefEditPart swtBotGefEditPart) {
         boolean isSiriusElt = false;
