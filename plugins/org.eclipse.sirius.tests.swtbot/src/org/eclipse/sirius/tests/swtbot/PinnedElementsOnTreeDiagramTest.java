@@ -55,8 +55,7 @@ public class PinnedElementsOnTreeDiagramTest extends AbstractPinnedElementsTest 
      */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
-        bot.viewById("org.eclipse.ui.views.ContentOutline").close();
-        SWTBotUtils.waitAllUiEvents();
+        closeOutline();
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, "tc1924.aird");
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
         SWTBotUtils.waitAllUiEvents();

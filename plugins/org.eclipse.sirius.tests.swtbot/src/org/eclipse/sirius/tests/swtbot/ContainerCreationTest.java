@@ -93,8 +93,7 @@ public class ContainerCreationTest extends AbstractSiriusSwtBotGefTestCase {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        bot.viewById("org.eclipse.ui.views.ContentOutline").close();
-        SWTBotUtils.waitAllUiEvents();
+        closeOutline();
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME, DDiagram.class);
 
         // Disable snap to grid

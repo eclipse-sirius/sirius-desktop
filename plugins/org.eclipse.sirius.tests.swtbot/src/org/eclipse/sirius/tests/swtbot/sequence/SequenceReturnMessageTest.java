@@ -33,8 +33,7 @@ public class SequenceReturnMessageTest extends AbstractDefaultModelSequenceTests
 
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
-        bot.viewById("org.eclipse.ui.views.ContentOutline").close();
-        SWTBotUtils.waitAllUiEvents();
+        closeOutline();
         super.onSetUpAfterOpeningDesignerPerspective();
     }
 

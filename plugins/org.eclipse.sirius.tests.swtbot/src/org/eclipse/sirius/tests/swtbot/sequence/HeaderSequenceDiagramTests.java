@@ -67,7 +67,7 @@ public class HeaderSequenceDiagramTests extends AbstractDefaultModelSequenceTest
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         if (getSessionModel() == null) {
         } else {
-            bot.viewById("org.eclipse.ui.views.ContentOutline").close();
+            closeOutline();
             SWTBotUtils.waitAllUiEvents();
 
             sessionAirdResource = new UIResource(designerProject, FILE_DIR, getSessionModel());

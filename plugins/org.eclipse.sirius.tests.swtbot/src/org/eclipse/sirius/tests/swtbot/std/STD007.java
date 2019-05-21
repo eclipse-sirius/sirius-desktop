@@ -65,8 +65,7 @@ public class STD007 extends AbstractSiriusSwtBotGefTestCase {
 
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
-        bot.viewById("org.eclipse.ui.views.ContentOutline").close();
-        SWTBotUtils.waitAllUiEvents();
+        closeOutline();
     }
 
     @Override

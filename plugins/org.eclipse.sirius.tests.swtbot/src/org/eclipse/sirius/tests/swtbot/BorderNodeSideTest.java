@@ -89,8 +89,7 @@ public class BorderNodeSideTest extends AbstractSiriusSwtBotGefTestCase {
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, "/", SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        bot.viewById("org.eclipse.ui.views.ContentOutline").close();
-        SWTBotUtils.waitAllUiEvents();
+        closeOutline();
         session = localSession.getOpenedSession();
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(session, REPRESENTATION_NAME, REPRESENTATION_NAME, DDiagram.class, true);
         dDiagram = (DDiagram) editor.getDRepresentation();

@@ -96,6 +96,7 @@ public final class SWTBotSiriusHelper {
      * 
      * @param label
      *            Label to find.
+     * @param propertiesBot .
      * @return true if the property tab is found, false otherwise
      */
     @SuppressWarnings({ "unchecked" })

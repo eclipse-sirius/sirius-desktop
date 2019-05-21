@@ -55,8 +55,7 @@ public class PinnedElementsTest extends AbstractPinnedElementsTest {
      */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
-        bot.viewById("org.eclipse.ui.views.ContentOutline").close();
-        SWTBotUtils.waitAllUiEvents();
+        closeOutline();
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, "tc1825.aird");
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
     }

@@ -80,7 +80,7 @@ public class DragAndDropFromTableAndTreeToDiagramTest extends AbstractSiriusSwtB
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
 
-        bot.viewById("org.eclipse.ui.views.ContentOutline").close();
+        closeOutline();
 
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_RELOAD_ON_LAST_EDITOR_CLOSE.name(), false);
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_SAVE_WHEN_NO_EDITOR.name(), false);

@@ -119,6 +119,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.ui.IEditorPart;
+import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPartReference;
 import org.eclipse.ui.IWorkbenchWindow;
@@ -129,6 +130,7 @@ import org.hamcrest.Matcher;
 import org.junit.Assert;
 
 import com.google.common.base.Function;
+import com.google.common.base.Objects;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
@@ -2081,4 +2083,22 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         }
     }
     // CHECKSTYLE:ON
+
+    /**
+     * Close the "Outline" view if it is visible (usually to avoid the performance overhead of having it update & redraw
+     * diagrams when it is not needed). This method is safe to use even if the Outline view is not actually visible at
+     * the time, and must be used instead of the more obvious
+     * <code>bot.viewById("org.eclipse.ui.views.ContentOutline").close()</code> which can timeout and fail in this case.
+     */
+    protected void closeOutline() {
+        PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+            IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
+            IViewReference[] views = page.getViewReferences();
+            for (IViewReference view : views) {
+                if (Objects.equal("org.eclipse.ui.views.ContentOutline", view.getId())) {
+                    view.getPage().hideView(view);
+                }
+            }
+        });
+    }
 }

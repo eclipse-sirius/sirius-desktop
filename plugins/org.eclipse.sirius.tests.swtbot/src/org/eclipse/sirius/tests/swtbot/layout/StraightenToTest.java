@@ -109,8 +109,7 @@ public class StraightenToTest extends AbstractSiriusSwtBotGefTestCase {
         super.onSetUpAfterOpeningDesignerPerspective();
         sessionAirdResource = new UIResource(designerProject, "/", SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        bot.viewById("org.eclipse.ui.views.ContentOutline").close();
-        SWTBotUtils.waitAllUiEvents();
+        closeOutline();
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "useCase", "new useCase", DDiagram.class);
     }
 

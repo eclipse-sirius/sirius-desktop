@@ -96,8 +96,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest extends A
         localSession.getOpenedSession().getInterpreter().setProperty(IInterpreter.FILES, Collections.singleton("/org.eclipse.sirius.tests.swtbot/" + DATA_UNIT_DIR + VSM_FILE));
 
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_NAME_ENTITIES2, REPRESENTATION_INSTANCE_NAME_ENTITIES2, DDiagram.class);
-        bot.viewById("org.eclipse.ui.views.ContentOutline").close();
-        SWTBotUtils.waitAllUiEvents();
+        closeOutline();
     }
 
     @Override

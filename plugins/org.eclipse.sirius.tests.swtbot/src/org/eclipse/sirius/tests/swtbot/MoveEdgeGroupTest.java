@@ -65,8 +65,7 @@ public class MoveEdgeGroupTest extends AbstractSiriusSwtBotGefTestCase {
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         // Close the outline view
-        bot.viewById("org.eclipse.ui.views.ContentOutline").close();
-        SWTBotUtils.waitAllUiEvents();
+        closeOutline();
 
         // Open the session
         UIResource sessionAirdResource = new UIResource(designerProject, SESSION_RESOURCE_NAME);

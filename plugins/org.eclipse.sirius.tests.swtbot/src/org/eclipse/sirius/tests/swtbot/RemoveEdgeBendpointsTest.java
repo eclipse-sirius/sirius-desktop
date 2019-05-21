@@ -78,8 +78,7 @@ public class RemoveEdgeBendpointsTest extends AbstractSiriusSwtBotGefTestCase {
         super.onSetUpAfterOpeningDesignerPerspective();
         sessionAirdResource = new UIResource(designerProject, "/", SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
-        bot.viewById("org.eclipse.ui.views.ContentOutline").close();
-        SWTBotUtils.waitAllUiEvents();
+        closeOutline();
         openDiagram("new useCase");
 
     }
