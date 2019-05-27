@@ -44,9 +44,33 @@ The _Ordered Tree Layout_ enables one to lay out nodes as an ordered tree. The m
 
 NOTE: these layout algorithms manage only nodes connected by edges, other nodes are layouted from left to right as usual.
 
-Additional layout algorithms can be available if you have installed the ELK integration with Sirius. Please refers to the "ELK documentation":https://www.eclipse.org/elk/reference/algorithms.html if you want details about these algorithms. All these algorithms exclude pinned element from the layouting and shorten edges between border nodes in addition to their core algorithm. 
+h4(#useElk). Use an ELK layout algorithm
 
-If you need to go beyond that, you can provide your own layout algorithm programmatically (see the "developer documentation":../../developer/Sirius%20Developer%20Manual.html for details).
+Additional layout algorithms can be available if you have installed the ELK integration feature with Sirius. Please refers to the "ELK documentation":https://www.eclipse.org/elk/reference/algorithms.html if you want details about these algorithms. All these algorithms exclude pinned elements from the layouting and shorten edges between border nodes in addition to their core algorithm. 
+
+To use these algorithm, first install the feature: 
+
+!images/elkFeatureInstall.png!
+
+Then in your odesign you can select the ELK layout algorithm you want to use:
+
+!images/elkAlgorithmSelection.png!
+
+If the default layout algorithm configuration does not fit the need, then clicking on the layout element will give you access to its configuration from the properties view.
+Using the button @Add option override@ will open a dialog allowing you to override supported options of the layout algorithm:
+
+!images/elkOptionsDialog.png!
+
+To get an overview of what is possible with ELK you can read this "article":https://blog.obeo.fr/a-picture-is-worth-a-thousand-words.
+
+Also you can filter the options by using the text field. The filtering applies to all columns except for the values.
+
+h4. Use a custom layout algorithm
+
+If you need to go beyond what already exists, you can provide your own layout algorithm programmatically (see the "developer documentation":../../developer/Sirius%20Developer%20Manual.html for details).
+
+
+
 
 h2(#layers_graphical_elements). Layers and Graphical Elements
 

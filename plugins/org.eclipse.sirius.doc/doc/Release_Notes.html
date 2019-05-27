@@ -16,6 +16,9 @@
 						<a href="#sirius6.3.0">Changes in Sirius 6.3.0</a>
 						<ol style="list-style: disc;">
 							<li>
+								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
+							</li>
+							<li>
 								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
 							</li>
 						</ol>
@@ -38,7 +41,7 @@
 								<a href="#UserVisibleChanges">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
@@ -71,7 +74,7 @@
 								<a href="#UserVisibleChanges3">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges5">Developer-Visible Changes</a>
@@ -85,7 +88,7 @@
 								<a href="#UserVisibleChanges4">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges6">Developer-Visible Changes</a>
@@ -110,7 +113,7 @@
 								<a href="#UserVisibleChanges6">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
+								<a href="#SpecifierVisibleChanges5">Specifier-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#DeveloperVisibleChanges8">Developer-Visible Changes</a>
@@ -124,6 +127,15 @@
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
 		<h2 id="sirius6.3.0">Changes in Sirius 6.3.0</h2>
+		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-success">Added</span> A new column 
+				<code>Target</code> has been added in the dialog allowing to choose layout options to override for ELK layout algorithms. It describes the element to which the option applies. The filter textfield in that dialog also applies on columns&amp; 
+				<code>Name</code>, 
+				<code>Targets</code> and 
+				<code>Type</code>.
+			</li>
+		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in  
 			<code>org.eclipse.sirius</code>
@@ -240,7 +252,7 @@
 				<a href="user/sequences/Sequence%20Diagrams.html#remove_vertical_blank_space">feature</a> was here since version 6.0.0 but was only accessible through the ruler.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> It is now possible to add action/group in the &#8220;New&#8221; contextual menu of diagram elements. This menu was missed in Sirius 6.1.0. It is now documented in the 
 				<a href="specifier/diagrams/Diagrams.html#group">corresponding documentation</a> .
@@ -736,7 +748,7 @@
 				<a href="user/diagrams/Diagrams.html#notes">user documentation</a> for more details.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges2">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> 
 				<a href="specifier/workflows/Workflows.html">Initial documentation</a> has been added for the &#8220;Workflow&#8221; feature introduced in 6.0.0 (which is still experimental).
@@ -1064,7 +1076,7 @@
 		<p>
 			<img border="0" src="images/color_palette.png"/>
 		</p>
-		<h3 id="SpecifierVisibleChanges3">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges4">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> An action is added in main toolbar to reload the VSM of installed plug-ins that may have changed. Refer to the 
 				<a href="specifier/general/Specifying_Viewpoints.html#reloadVSM">specifier documentation</a> for details.
@@ -1078,6 +1090,10 @@
 				<em>Diagram Description</em>. Pre-defined system colors and colors from the 
 				<em>User Color Palette</em> are supported. See 
 				<a href="specifier/diagrams/Diagrams.html#diagram_description">the documentation</a> for details.
+			</li>
+			<li><span class="label label-success">Added</span> A new experimental feature regarding layouting is available. It brings you the capabilities of ELK layouting framework. If installed you can specify in your VSM the layout algorithm triggered by arrange all button among the ELK algorithms. To get an overview of what is possible with ELK you can read this 
+				<a href="https://blog.obeo.fr/a-picture-is-worth-a-thousand-words">article</a>. To know how to use the ELK algorithms, read the 
+				<a href="specifier/diagrams/Diagrams.html#useElk">documentation</a>
 			</li>
 			<li><span class="label label-info">Modified</span> Warning: Java service throwing an 
 				<code>OperationCanceledException</code> with a message containing the specific key word "
@@ -1426,7 +1442,7 @@
 				<a href="developer/extensions-provide_custom_bundled_image_shape.html#bundleImageShape">bundleImageShape</a> ), opening or refreshing a diagram will not display exception anymore when the bundleImageShape extension is not valid. A warning is now displayed in the Error Log view to inform user of which attribute of the extension is not correct.
 			</li>
 		</ul>
-		<h3 id="SpecifierVisibleChanges4">Specifier-Visible Changes</h3>
+		<h3 id="SpecifierVisibleChanges5">Specifier-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> An 
 				<a href="./user/general/Modeling%20Project.html#Migration">automatic migration</a> has been added in this version to fix diagram with edge labels corrupted (see 

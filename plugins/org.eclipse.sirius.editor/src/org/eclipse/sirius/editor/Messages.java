@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2017 Obeo.
+ * Copyright (c) 2015, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.ext.base.I18N.TranslatableMessage;
  *
  */
 public final class Messages {
+
     static {
         I18N.initializeMessages(Messages.class, SiriusEditorPlugin.INSTANCE);
     }
@@ -79,6 +80,42 @@ public final class Messages {
 
     @TranslatableMessage
     public static String CustomLayoutConfigurationDescriptionPropertySection_noLayoutAlgorithmProviderName;
+
+    @TranslatableMessage
+    public static String OptionOverrideEditorDialog_optionTargetColumnLabel;
+
+    @TranslatableMessage
+    public static String OptionOverrideEditorDialog_typeEnumLabel;
+
+    @TranslatableMessage
+    public static String OptionOverrideEditorDialog_typeEnumSetLabel;
+
+    @TranslatableMessage
+    public static String OptionOverrideEditorDialog_typeStringLabel;
+
+    @TranslatableMessage
+    public static String OptionOverrideEditorDialog_typeBooleanLabel;
+
+    @TranslatableMessage
+    public static String OptionOverrideEditorDialog_typeDoubleLabel;
+
+    @TranslatableMessage
+    public static String OptionOverrideEditorDialog_typeIntegerLabel;
+
+    @TranslatableMessage
+    public static String OptionOverrideEditorDialog_targetParentLabel;
+
+    @TranslatableMessage
+    public static String OptionOverrideEditorDialog_targetNodeLabel;
+
+    @TranslatableMessage
+    public static String OptionOverrideEditorDialog_targetEdgeLabel;
+
+    @TranslatableMessage
+    public static String OptionOverrideEditorDialog_targePortLabel;
+
+    @TranslatableMessage
+    public static String OptionOverrideEditorDialog_targetLabelLabel;
 
     // CHECKSTYLE:ON
     private Messages() {

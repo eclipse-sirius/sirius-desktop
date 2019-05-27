@@ -54,6 +54,7 @@ import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.Layout;
 import org.eclipse.sirius.diagram.description.LayoutDirection;
 import org.eclipse.sirius.diagram.description.LayoutOption;
+import org.eclipse.sirius.diagram.description.LayoutOptionTarget;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
@@ -321,6 +322,13 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     private EEnum centeringStyleEEnum = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EEnum layoutOptionTargetEEnum = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
@@ -1397,6 +1405,16 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
+    public EAttribute getLayoutOption_Targets() {
+        return (EAttribute) layoutOptionEClass.getEStructuralFeatures().get(3);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getBooleanLayoutOption() {
         return booleanLayoutOptionEClass;
     }
@@ -1787,6 +1805,16 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
+    public EEnum getLayoutOptionTarget() {
+        return layoutOptionTargetEEnum;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public DescriptionFactory getDescriptionFactory() {
         return (DescriptionFactory) getEFactoryInstance();
     }
@@ -1928,6 +1956,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         createEAttribute(layoutOptionEClass, DescriptionPackage.LAYOUT_OPTION__ID);
         createEAttribute(layoutOptionEClass, DescriptionPackage.LAYOUT_OPTION__LABEL);
         createEAttribute(layoutOptionEClass, DescriptionPackage.LAYOUT_OPTION__DESCRIPTION);
+        createEAttribute(layoutOptionEClass, DescriptionPackage.LAYOUT_OPTION__TARGETS);
 
         booleanLayoutOptionEClass = createEClass(DescriptionPackage.BOOLEAN_LAYOUT_OPTION);
         createEAttribute(booleanLayoutOptionEClass, DescriptionPackage.BOOLEAN_LAYOUT_OPTION__VALUE);
@@ -1981,6 +2010,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         foldingStyleEEnum = createEEnum(DescriptionPackage.FOLDING_STYLE);
         layoutDirectionEEnum = createEEnum(DescriptionPackage.LAYOUT_DIRECTION);
         centeringStyleEEnum = createEEnum(DescriptionPackage.CENTERING_STYLE);
+        layoutOptionTargetEEnum = createEEnum(DescriptionPackage.LAYOUT_OPTION_TARGET);
     }
 
     /**
@@ -2350,6 +2380,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getLayoutOption_Description(), theEcorePackage.getEString(), "description", null, 0, 1, LayoutOption.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getLayoutOption_Targets(), this.getLayoutOptionTarget(), "targets", null, 0, -1, LayoutOption.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(booleanLayoutOptionEClass, BooleanLayoutOption.class, "BooleanLayoutOption", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
         initEAttribute(getBooleanLayoutOption_Value(), theEcorePackage.getEBoolean(), "value", null, 0, 1, BooleanLayoutOption.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
@@ -2460,6 +2492,13 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         addEEnumLiteral(centeringStyleEEnum, CenteringStyle.BOTH);
         addEEnumLiteral(centeringStyleEEnum, CenteringStyle.SOURCE);
         addEEnumLiteral(centeringStyleEEnum, CenteringStyle.TARGET);
+
+        initEEnum(layoutOptionTargetEEnum, LayoutOptionTarget.class, "LayoutOptionTarget"); //$NON-NLS-1$
+        addEEnumLiteral(layoutOptionTargetEEnum, LayoutOptionTarget.PARENT);
+        addEEnumLiteral(layoutOptionTargetEEnum, LayoutOptionTarget.NODE);
+        addEEnumLiteral(layoutOptionTargetEEnum, LayoutOptionTarget.EDGE);
+        addEEnumLiteral(layoutOptionTargetEEnum, LayoutOptionTarget.PORTS);
+        addEEnumLiteral(layoutOptionTargetEEnum, LayoutOptionTarget.LABEL);
 
         // Create annotations
         // http://www.eclipse.org/sirius/interpreted/expression/returnType

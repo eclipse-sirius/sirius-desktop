@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2018 Kiel University and others.
+ * Copyright (c) 2009, 2019 Kiel University and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -84,6 +84,7 @@ import org.eclipse.sirius.diagram.description.EnumLayoutValue;
 import org.eclipse.sirius.diagram.description.EnumSetLayoutOption;
 import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOption;
+import org.eclipse.sirius.diagram.description.LayoutOptionTarget;
 import org.eclipse.sirius.diagram.description.StringLayoutOption;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
@@ -412,63 +413,68 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             EList<LayoutOption> layoutOptions = layoutConfiguration.getLayoutOptions();
 
             for (LayoutOption layoutOption : layoutOptions) {
-                LayoutOptionData layoutProperty = LayoutMetaDataService.getInstance().getOptionData(layoutOption.getId());
-                switch (layoutOption.eClass().getClassifierID()) {
-                case DescriptionPackage.ENUM_LAYOUT_OPTION:
-                    EnumLayoutOption enumOption = (EnumLayoutOption) layoutOption;
-                    int enumValueCount = layoutProperty.getEnumValueCount();
-                    Enum<?> elkEnum = null;
-                    int i = 0;
-                    while (i < enumValueCount && elkEnum == null) {
-                        layoutProperty.getEnumValue(i);
-                        Enum<?> enumValue = layoutProperty.getEnumValue(i);
-                        if (enumOption.getValue().getName().equals(enumValue.name())) {
-                            elkEnum = enumValue;
-                        }
-                        i++;
-                    }
-                    topNode.setProperty(layoutProperty, elkEnum);
-                    break;
-
-                case DescriptionPackage.ENUM_SET_LAYOUT_OPTION:
-                    EnumSetLayoutOption enumSetOption = (EnumSetLayoutOption) layoutOption;
-                    enumValueCount = layoutProperty.getEnumValueCount();
-
-                    if (enumValueCount > 0) {
-                        EnumSet enumSet = EnumSet.noneOf(layoutProperty.getEnumValue(0).getDeclaringClass());
-                        List<EnumLayoutValue> values = enumSetOption.getValues();
-                        for (EnumLayoutValue enumLayoutValue : values) {
-                            i = 0;
-                            while (i < enumValueCount) {
-                                Enum enumValue = layoutProperty.getEnumValue(i);
-                                if (enumLayoutValue.getName().equals(enumValue.name())) {
-                                    enumSet = of(enumValue, enumSet);
-                                    break;
+                EList<LayoutOptionTarget> targets = layoutOption.getTargets();
+                for (LayoutOptionTarget target : targets) {
+                    if (LayoutOptionTarget.PARENT == target) {
+                        LayoutOptionData layoutProperty = LayoutMetaDataService.getInstance().getOptionData(layoutOption.getId());
+                        switch (layoutOption.eClass().getClassifierID()) {
+                        case DescriptionPackage.ENUM_LAYOUT_OPTION:
+                            EnumLayoutOption enumOption = (EnumLayoutOption) layoutOption;
+                            int enumValueCount = layoutProperty.getEnumValueCount();
+                            Enum<?> elkEnum = null;
+                            int i = 0;
+                            while (i < enumValueCount && elkEnum == null) {
+                                layoutProperty.getEnumValue(i);
+                                Enum<?> enumValue = layoutProperty.getEnumValue(i);
+                                if (enumOption.getValue().getName().equals(enumValue.name())) {
+                                    elkEnum = enumValue;
                                 }
                                 i++;
                             }
+                            topNode.setProperty(layoutProperty, elkEnum);
+                            break;
+
+                        case DescriptionPackage.ENUM_SET_LAYOUT_OPTION:
+                            EnumSetLayoutOption enumSetOption = (EnumSetLayoutOption) layoutOption;
+                            enumValueCount = layoutProperty.getEnumValueCount();
+
+                            if (enumValueCount > 0) {
+                                EnumSet enumSet = EnumSet.noneOf(layoutProperty.getEnumValue(0).getDeclaringClass());
+                                List<EnumLayoutValue> values = enumSetOption.getValues();
+                                for (EnumLayoutValue enumLayoutValue : values) {
+                                    i = 0;
+                                    while (i < enumValueCount) {
+                                        Enum enumValue = layoutProperty.getEnumValue(i);
+                                        if (enumLayoutValue.getName().equals(enumValue.name())) {
+                                            enumSet = of(enumValue, enumSet);
+                                            break;
+                                        }
+                                        i++;
+                                    }
+                                }
+                                topNode.setProperty(layoutProperty, enumSet);
+                            }
+                            break;
+                        case DescriptionPackage.BOOLEAN_LAYOUT_OPTION:
+                            BooleanLayoutOption booleanOption = (BooleanLayoutOption) layoutOption;
+                            topNode.setProperty(layoutProperty, booleanOption.isValue());
+                            break;
+                        case DescriptionPackage.INTEGER_LAYOUT_OPTION:
+                            IntegerLayoutOption integerOption = (IntegerLayoutOption) layoutOption;
+                            topNode.setProperty(layoutProperty, integerOption.getValue());
+                            break;
+                        case DescriptionPackage.DOUBLE_LAYOUT_OPTION:
+                            DoubleLayoutOption doubleOption = (DoubleLayoutOption) layoutOption;
+                            topNode.setProperty(layoutProperty, doubleOption.getValue());
+                            break;
+                        case DescriptionPackage.STRING_LAYOUT_OPTION:
+                            StringLayoutOption stringOption = (StringLayoutOption) layoutOption;
+                            topNode.setProperty(layoutProperty, stringOption.getValue().trim());
+                            break;
+                        default:
+                            break;
                         }
-                        topNode.setProperty(layoutProperty, enumSet);
                     }
-                    break;
-                case DescriptionPackage.BOOLEAN_LAYOUT_OPTION:
-                    BooleanLayoutOption booleanOption = (BooleanLayoutOption) layoutOption;
-                    topNode.setProperty(layoutProperty, booleanOption.isValue());
-                    break;
-                case DescriptionPackage.INTEGER_LAYOUT_OPTION:
-                    IntegerLayoutOption integerOption = (IntegerLayoutOption) layoutOption;
-                    topNode.setProperty(layoutProperty, integerOption.getValue());
-                    break;
-                case DescriptionPackage.DOUBLE_LAYOUT_OPTION:
-                    DoubleLayoutOption doubleOption = (DoubleLayoutOption) layoutOption;
-                    topNode.setProperty(layoutProperty, doubleOption.getValue());
-                    break;
-                case DescriptionPackage.STRING_LAYOUT_OPTION:
-                    StringLayoutOption stringOption = (StringLayoutOption) layoutOption;
-                    topNode.setProperty(layoutProperty, stringOption.getValue().trim());
-                    break;
-                default:
-                    break;
                 }
             }
         }

@@ -13,12 +13,17 @@
  */
 package org.eclipse.sirius.diagram.description.impl;
 
+import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.LayoutOption;
+import org.eclipse.sirius.diagram.description.LayoutOptionTarget;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model object '<em><b>Layout Option</b></em>'. <!-- end-user-doc -->
@@ -29,6 +34,7 @@ import org.eclipse.sirius.diagram.description.LayoutOption;
  * <li>{@link org.eclipse.sirius.diagram.description.impl.LayoutOptionImpl#getId <em>Id</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.LayoutOptionImpl#getLabel <em>Label</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.LayoutOptionImpl#getDescription <em>Description</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.impl.LayoutOptionImpl#getTargets <em>Targets</em>}</li>
  * </ul>
  *
  * @generated
@@ -91,6 +97,16 @@ public abstract class LayoutOptionImpl extends MinimalEObjectImpl.Container impl
      * @ordered
      */
     protected String description = LayoutOptionImpl.DESCRIPTION_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getTargets() <em>Targets</em>}' attribute list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getTargets()
+     * @generated
+     * @ordered
+     */
+    protected EList<LayoutOptionTarget> targets;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -189,6 +205,19 @@ public abstract class LayoutOptionImpl extends MinimalEObjectImpl.Container impl
      * @generated
      */
     @Override
+    public EList<LayoutOptionTarget> getTargets() {
+        if (targets == null) {
+            targets = new EDataTypeUniqueEList<LayoutOptionTarget>(LayoutOptionTarget.class, this, DescriptionPackage.LAYOUT_OPTION__TARGETS);
+        }
+        return targets;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
         case DescriptionPackage.LAYOUT_OPTION__ID:
@@ -197,6 +226,8 @@ public abstract class LayoutOptionImpl extends MinimalEObjectImpl.Container impl
             return getLabel();
         case DescriptionPackage.LAYOUT_OPTION__DESCRIPTION:
             return getDescription();
+        case DescriptionPackage.LAYOUT_OPTION__TARGETS:
+            return getTargets();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -206,6 +237,7 @@ public abstract class LayoutOptionImpl extends MinimalEObjectImpl.Container impl
      *
      * @generated
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
@@ -217,6 +249,10 @@ public abstract class LayoutOptionImpl extends MinimalEObjectImpl.Container impl
             return;
         case DescriptionPackage.LAYOUT_OPTION__DESCRIPTION:
             setDescription((String) newValue);
+            return;
+        case DescriptionPackage.LAYOUT_OPTION__TARGETS:
+            getTargets().clear();
+            getTargets().addAll((Collection<? extends LayoutOptionTarget>) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -239,6 +275,9 @@ public abstract class LayoutOptionImpl extends MinimalEObjectImpl.Container impl
         case DescriptionPackage.LAYOUT_OPTION__DESCRIPTION:
             setDescription(LayoutOptionImpl.DESCRIPTION_EDEFAULT);
             return;
+        case DescriptionPackage.LAYOUT_OPTION__TARGETS:
+            getTargets().clear();
+            return;
         }
         super.eUnset(featureID);
     }
@@ -257,6 +296,8 @@ public abstract class LayoutOptionImpl extends MinimalEObjectImpl.Container impl
             return LayoutOptionImpl.LABEL_EDEFAULT == null ? label != null : !LayoutOptionImpl.LABEL_EDEFAULT.equals(label);
         case DescriptionPackage.LAYOUT_OPTION__DESCRIPTION:
             return LayoutOptionImpl.DESCRIPTION_EDEFAULT == null ? description != null : !LayoutOptionImpl.DESCRIPTION_EDEFAULT.equals(description);
+        case DescriptionPackage.LAYOUT_OPTION__TARGETS:
+            return targets != null && !targets.isEmpty();
         }
         return super.eIsSet(featureID);
     }
@@ -279,6 +320,8 @@ public abstract class LayoutOptionImpl extends MinimalEObjectImpl.Container impl
         result.append(label);
         result.append(", description: "); //$NON-NLS-1$
         result.append(description);
+        result.append(", targets: "); //$NON-NLS-1$
+        result.append(targets);
         result.append(')');
         return result.toString();
     }
