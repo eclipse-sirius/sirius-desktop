@@ -61,6 +61,7 @@ public class LayoutOptionItemProvider extends ItemProviderAdapter
             super.getPropertyDescriptors(object);
 
             addDescriptionPropertyDescriptor(object);
+            addTargetsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -75,6 +76,18 @@ public class LayoutOptionItemProvider extends ItemProviderAdapter
                 .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_LayoutOption_description_feature"), //$NON-NLS-1$
                         getString("_UI_PropertyDescriptor_description", "_UI_LayoutOption_description_feature", "_UI_LayoutOption_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                         DescriptionPackage.Literals.LAYOUT_OPTION__DESCRIPTION, false, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Targets feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addTargetsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_LayoutOption_targets_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_LayoutOption_targets_feature", "_UI_LayoutOption_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DescriptionPackage.Literals.LAYOUT_OPTION__TARGETS, true, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -114,6 +127,7 @@ public class LayoutOptionItemProvider extends ItemProviderAdapter
         case DescriptionPackage.LAYOUT_OPTION__ID:
         case DescriptionPackage.LAYOUT_OPTION__LABEL:
         case DescriptionPackage.LAYOUT_OPTION__DESCRIPTION:
+        case DescriptionPackage.LAYOUT_OPTION__TARGETS:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         }

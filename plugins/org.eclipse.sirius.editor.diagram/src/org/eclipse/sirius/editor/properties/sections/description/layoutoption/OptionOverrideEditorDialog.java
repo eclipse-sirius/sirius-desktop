@@ -1,4 +1,4 @@
-/** Copyright (c) 2018 Obeo
+/** Copyright (c) 2018, 2019 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.edit.provider.ItemProvider;
 import org.eclipse.emf.edit.ui.EMFEditUIPlugin;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
@@ -42,6 +43,7 @@ import org.eclipse.sirius.diagram.description.EnumLayoutOption;
 import org.eclipse.sirius.diagram.description.EnumSetLayoutOption;
 import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOption;
+import org.eclipse.sirius.diagram.description.LayoutOptionTarget;
 import org.eclipse.sirius.diagram.description.StringLayoutOption;
 import org.eclipse.sirius.editor.Messages;
 import org.eclipse.swt.SWT;
@@ -96,9 +98,12 @@ public class OptionOverrideEditorDialog extends Dialog {
                 columnText = layoutOption.getLabel();
                 break;
             case 2:
-                columnText = getTypeLabel(layoutOption);
+                columnText = getTargetLabels(layoutOption);
                 break;
             case 3:
+                columnText = getTypeLabel(layoutOption);
+                break;
+            case 4:
                 columnText = layoutOption.getLabel();
                 switch (layoutOption.eClass().getClassifierID()) {
                 case DescriptionPackage.ENUM_LAYOUT_OPTION:
@@ -159,6 +164,8 @@ public class OptionOverrideEditorDialog extends Dialog {
      */
     private static final String CHECKBOX_COLUMN = "";
 
+    private static final String LAYOUT_OPTION_TARGET_COLUMN = Messages.OptionOverrideEditorDialog_optionTargetColumnLabel;
+
     /**
      * The name of the column containing the layout option name.
      */
@@ -190,12 +197,17 @@ public class OptionOverrideEditorDialog extends Dialog {
     private List<LayoutOption> layoutOptions;
 
     /**
-     * True if layout option items must be sorted in the ascent order. False otherwise.
+     * True if layout option items must be sorted regarding their type and in the ascent order. False otherwise.
      */
-    private boolean ascentOrder;
+    private boolean ascentTypeOrder;
+
+    /**
+     * True if layout option items must be sorted regarding their target and in the ascent order. False otherwise.
+     */
+    private boolean ascentTargetOrder;
 
     // The array containing the column names.
-    private String[] columnNames = new String[] { CHECKBOX_COLUMN, LAYOUT_OPTION_NAME_COLUMN, LAYOUT_OPTION_TYPE_COLUMN, LAYOUT_OPTION_DEFAULT_VALUE_COLUMN };
+    private String[] columnNames = new String[] { CHECKBOX_COLUMN, LAYOUT_OPTION_NAME_COLUMN, LAYOUT_OPTION_TARGET_COLUMN, LAYOUT_OPTION_TYPE_COLUMN, LAYOUT_OPTION_DEFAULT_VALUE_COLUMN };
 
     /**
      * The label for layout option description widget.
@@ -241,31 +253,67 @@ public class OptionOverrideEditorDialog extends Dialog {
      *            the layout option from which the type label must be retrieved.
      * @return the label of the type of the given layout option.
      */
-    private String getTypeLabel(LayoutOption layoutOption) {
-        String result = "";
+    public String getTypeLabel(LayoutOption layoutOption) {
+        String result = ""; //$NON-NLS-1$
         switch (layoutOption.eClass().getClassifierID()) {
         case DescriptionPackage.ENUM_LAYOUT_OPTION:
-            result = "Enum";
+            result = Messages.OptionOverrideEditorDialog_typeEnumLabel;
             break;
         case DescriptionPackage.ENUM_SET_LAYOUT_OPTION:
-            result = "Enum Set";
+            result = Messages.OptionOverrideEditorDialog_typeEnumSetLabel;
             break;
         case DescriptionPackage.STRING_LAYOUT_OPTION:
-            result = "String";
+            result = Messages.OptionOverrideEditorDialog_typeStringLabel;
             break;
         case DescriptionPackage.BOOLEAN_LAYOUT_OPTION:
-            result = "Boolean";
+            result = Messages.OptionOverrideEditorDialog_typeBooleanLabel;
             break;
         case DescriptionPackage.DOUBLE_LAYOUT_OPTION:
-            result = "Double";
+            result = Messages.OptionOverrideEditorDialog_typeDoubleLabel;
             break;
         case DescriptionPackage.INTEGER_LAYOUT_OPTION:
-            result = "Integer";
+            result = Messages.OptionOverrideEditorDialog_typeIntegerLabel;
             break;
         default:
             break;
         }
         return result;
+    }
+
+    /**
+     * Return the layout option target labels.
+     * 
+     * @param layoutOption
+     *            the layout option from which we want to retrieve the label of the target to which the option applies.
+     * @return the layout option target labels.
+     */
+    public String getTargetLabels(LayoutOption layoutOption) {
+        EList<LayoutOptionTarget> targets = layoutOption.getTargets();
+        return targets.stream().map(target -> {
+            String result = ""; //$NON-NLS-1$
+            switch (target) {
+            case PARENT:
+                result = Messages.OptionOverrideEditorDialog_targetParentLabel;
+                break;
+            case NODE:
+                result = Messages.OptionOverrideEditorDialog_targetNodeLabel;
+                break;
+            case EDGE:
+                result = Messages.OptionOverrideEditorDialog_targetEdgeLabel;
+                break;
+            case PORTS:
+                result = Messages.OptionOverrideEditorDialog_targePortLabel;
+                break;
+            case LABEL:
+                result = Messages.OptionOverrideEditorDialog_targetLabelLabel;
+                break;
+            default:
+                break;
+            }
+            return result;
+
+        }).collect(Collectors.joining(", ")); //$NON-NLS-1$
+
     }
 
     @Override
@@ -325,13 +373,32 @@ public class OptionOverrideEditorDialog extends Dialog {
     private void initTableViewer(Text patternText, final Table table, final TableViewer tableViewer) {
         tableViewer.setUseHashlookup(true);
         tableViewer.setColumnProperties(columnNames);
-        tableViewer.setLabelProvider(new LayoutOptionColumnLabelProvider());
+        LayoutOptionColumnLabelProvider labelProvider = new LayoutOptionColumnLabelProvider();
+        tableViewer.setLabelProvider(labelProvider);
         tableViewer.setContentProvider(new AdapterFactoryContentProvider(new AdapterFactoryImpl()));
 
         final PatternFilter filter = new PatternFilter() {
             @Override
             protected boolean isParentMatch(Viewer viewer, Object element) {
                 return viewer instanceof AbstractTreeViewer && super.isParentMatch(viewer, element);
+            }
+
+            @Override
+            protected boolean isLeafMatch(Viewer viewer, Object element) {
+                boolean leafMatch = super.isLeafMatch(viewer, element);
+                if (!leafMatch) {
+                    String labelText = labelProvider.getColumnText(element, 2);
+                    if (labelText != null) {
+                        leafMatch = leafMatch || wordMatches(labelText);
+                        if (!leafMatch) {
+                            labelText = labelProvider.getColumnText(element, 3);
+                            if (labelText != null) {
+                                leafMatch = leafMatch || wordMatches(labelText);
+                            }
+                        }
+                    }
+                }
+                return leafMatch;
             }
         };
         tableViewer.addFilter(filter);
@@ -397,14 +464,17 @@ public class OptionOverrideEditorDialog extends Dialog {
         checkColumn.setText(columnNames[0]);
         checkColumn.setWidth(30);
         TableColumn nameColumn = new TableColumn(table, SWT.LEFT, 1);
-        nameColumn.setWidth(displayWidth / 10);
+        nameColumn.setWidth(displayWidth / 14);
         nameColumn.setText(columnNames[1]);
-        TableColumn typeColumn = new TableColumn(table, SWT.LEFT, 2);
-        typeColumn.setWidth(displayWidth / 50);
-        typeColumn.setText(columnNames[2]);
-        TableColumn defaultValueColumn = new TableColumn(table, SWT.LEFT, 3);
+        TableColumn targetColumn = new TableColumn(table, SWT.LEFT, 2);
+        targetColumn.setWidth(displayWidth / 60);
+        targetColumn.setText(columnNames[2]);
+        TableColumn typeColumn = new TableColumn(table, SWT.LEFT, 3);
+        typeColumn.setWidth(displayWidth / 60);
+        typeColumn.setText(columnNames[3]);
+        TableColumn defaultValueColumn = new TableColumn(table, SWT.LEFT, 4);
         defaultValueColumn.setWidth(displayWidth / 14);
-        defaultValueColumn.setText(columnNames[3]);
+        defaultValueColumn.setText(columnNames[4]);
 
         tableViewer.setComparator(new ViewerComparator(Comparator.naturalOrder()));
         // set the listeners to update the sorting according to column click.
@@ -412,17 +482,37 @@ public class OptionOverrideEditorDialog extends Dialog {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                Comparator<String> comparator = ascentOrder ? Comparator.naturalOrder() : Comparator.reverseOrder();
-                ascentOrder = !ascentOrder;
+                Comparator<String> comparator = ascentTypeOrder ? Comparator.naturalOrder() : Comparator.reverseOrder();
+                ascentTypeOrder = !ascentTypeOrder;
                 tableViewer.setComparator(new ViewerComparator(comparator));
+            }
+        });
+        targetColumn.addSelectionListener(new SelectionAdapter() {
+
+            @Override
+            public void widgetSelected(SelectionEvent e) {
+                Comparator<String> comparator = ascentTargetOrder ? Comparator.naturalOrder() : Comparator.reverseOrder();
+                ascentTargetOrder = !ascentTargetOrder;
+                tableViewer.setComparator(new ViewerComparator() {
+
+                    @Override
+                    public int compare(Viewer viewer, Object e1, Object e2) {
+                        LayoutOption layoutOption1 = (LayoutOption) e1;
+                        LayoutOption layoutOption2 = (LayoutOption) e2;
+                        // use the comparator to compare the target strings
+                        return comparator.compare(getTargetLabels(layoutOption1), getTargetLabels(layoutOption2));
+
+                    }
+                });
+
             }
         });
         typeColumn.addSelectionListener(new SelectionAdapter() {
 
             @Override
             public void widgetSelected(SelectionEvent e) {
-                Comparator<String> comparator = ascentOrder ? Comparator.naturalOrder() : Comparator.reverseOrder();
-                ascentOrder = !ascentOrder;
+                Comparator<String> comparator = ascentTypeOrder ? Comparator.naturalOrder() : Comparator.reverseOrder();
+                ascentTypeOrder = !ascentTypeOrder;
                 tableViewer.setComparator(new ViewerComparator() {
 
                     @Override

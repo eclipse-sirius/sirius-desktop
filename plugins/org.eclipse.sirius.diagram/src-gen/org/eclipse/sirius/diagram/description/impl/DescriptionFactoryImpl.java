@@ -56,6 +56,7 @@ import org.eclipse.sirius.diagram.description.FoldingStyle;
 import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.LayoutDirection;
+import org.eclipse.sirius.diagram.description.LayoutOptionTarget;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
@@ -171,6 +172,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
             return createLayoutDirectionFromString(eDataType, initialValue);
         case DescriptionPackage.CENTERING_STYLE:
             return createCenteringStyleFromString(eDataType, initialValue);
+        case DescriptionPackage.LAYOUT_OPTION_TARGET:
+            return createLayoutOptionTargetFromString(eDataType, initialValue);
         default:
             throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -190,6 +193,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
             return convertLayoutDirectionToString(eDataType, instanceValue);
         case DescriptionPackage.CENTERING_STYLE:
             return convertCenteringStyleToString(eDataType, instanceValue);
+        case DescriptionPackage.LAYOUT_OPTION_TARGET:
+            return convertLayoutOptionTargetToString(eDataType, instanceValue);
         default:
             throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -546,6 +551,28 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
      * @generated
      */
     public String convertCenteringStyleToString(EDataType eDataType, Object instanceValue) {
+        return instanceValue == null ? null : instanceValue.toString();
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public LayoutOptionTarget createLayoutOptionTargetFromString(EDataType eDataType, String initialValue) {
+        LayoutOptionTarget result = LayoutOptionTarget.get(initialValue);
+        if (result == null) {
+            throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+        }
+        return result;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public String convertLayoutOptionTargetToString(EDataType eDataType, Object instanceValue) {
         return instanceValue == null ? null : instanceValue.toString();
     }
 

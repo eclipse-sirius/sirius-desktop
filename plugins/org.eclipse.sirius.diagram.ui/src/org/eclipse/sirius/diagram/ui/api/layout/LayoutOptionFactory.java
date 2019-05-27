@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo
+ * Copyright (c) 2018, 2019 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.ui.api.layout;
 
 import java.util.List;
+import java.util.Set;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.description.BooleanLayoutOption;
@@ -24,6 +25,7 @@ import org.eclipse.sirius.diagram.description.EnumLayoutValue;
 import org.eclipse.sirius.diagram.description.EnumSetLayoutOption;
 import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOption;
+import org.eclipse.sirius.diagram.description.LayoutOptionTarget;
 import org.eclipse.sirius.diagram.description.StringLayoutOption;
 
 /**
@@ -36,6 +38,7 @@ import org.eclipse.sirius.diagram.description.StringLayoutOption;
  *
  */
 public class LayoutOptionFactory {
+
     /**
      * Returns a new layout option with the type EnumSet.
      * 
@@ -50,14 +53,16 @@ public class LayoutOptionFactory {
      *            a label used in Sirius UI to represent the option.
      * @param defaultValues
      *            the default option values.
+     * @param targets
+     *            the kind of graphic element to which the option applies.
      * @return a new layout option with the type Enum.
      */
-    public LayoutOption createEnumSetOption(List<EnumChoice> choices, String id, String description, String label, List<String> defaultValues) {
+    public LayoutOption createEnumSetOption(List<EnumChoice> choices, String id, String description, String label, List<String> defaultValues, Set<LayoutOptionTarget> targets) {
         EnumSetLayoutOption layoutOption = DescriptionFactory.eINSTANCE.createEnumSetLayoutOption();
         layoutOption.setDescription(description);
         layoutOption.setLabel(label);
         layoutOption.setId(id);
-
+        layoutOption.getTargets().addAll(targets);
         for (EnumChoice enumChoice : choices) {
             EnumLayoutValue layoutValue = DescriptionFactory.eINSTANCE.createEnumLayoutValue();
             layoutValue.setDescription(enumChoice.getDescription());
@@ -85,14 +90,16 @@ public class LayoutOptionFactory {
      *            a label used in Sirius UI to represent the option.
      * @param defaultValue
      *            the default option value.
+     * @param targets
+     *            the kind of graphic element to which the option applies.
      * @return a new layout option with the type Enum.
      */
-    public LayoutOption createEnumOption(List<EnumChoice> choices, String id, String description, String label, String defaultValue) {
+    public LayoutOption createEnumOption(List<EnumChoice> choices, String id, String description, String label, String defaultValue, Set<LayoutOptionTarget> targets) {
         EnumLayoutOption layoutOption = DescriptionFactory.eINSTANCE.createEnumLayoutOption();
         layoutOption.setDescription(description);
         layoutOption.setLabel(label);
         layoutOption.setId(id);
-
+        layoutOption.getTargets().addAll(targets);
         for (EnumChoice enumChoice : choices) {
             EnumLayoutValue layoutValue = DescriptionFactory.eINSTANCE.createEnumLayoutValue();
             layoutValue.setDescription(enumChoice.getDescription());
@@ -117,11 +124,13 @@ public class LayoutOptionFactory {
      *            a description of the option.
      * @param label
      *            a label used in Sirius UI to represent the option.
+     * @param targets
+     *            the kind of graphic element to which the option applies.
      * @return a new layout option with the type String.
      */
-    public LayoutOption createStringOption(String defaultValue, String id, String description, String label) {
+    public LayoutOption createStringOption(String defaultValue, String id, String description, String label, Set<LayoutOptionTarget> targets) {
         StringLayoutOption layoutOption = DescriptionFactory.eINSTANCE.createStringLayoutOption();
-        setCommonAttributes(id, description, label, layoutOption);
+        setCommonAttributes(id, description, label, layoutOption, targets);
         if (defaultValue != null) {
             layoutOption.setValue(defaultValue);
         }
@@ -139,11 +148,13 @@ public class LayoutOptionFactory {
      *            a description of the option.
      * @param label
      *            a label used in Sirius UI to represent the option.
+     * @param targets
+     *            the kind of graphic element to which the option applies.
      * @return a new layout option with the type Integer.
      */
-    public LayoutOption createIntegerOption(Integer defaultValue, String id, String description, String label) {
+    public LayoutOption createIntegerOption(Integer defaultValue, String id, String description, String label, Set<LayoutOptionTarget> targets) {
         IntegerLayoutOption layoutOption = DescriptionFactory.eINSTANCE.createIntegerLayoutOption();
-        setCommonAttributes(id, description, label, layoutOption);
+        setCommonAttributes(id, description, label, layoutOption, targets);
         if (defaultValue != null) {
             layoutOption.setValue(defaultValue);
         }
@@ -161,12 +172,14 @@ public class LayoutOptionFactory {
      *            a description of the option.
      * @param label
      *            a label used in Sirius UI to represent the option.
+     * @param targets
+     *            the kind of graphic element to which the option applies.
      * @return a new layout option with the type Double.
      */
-    public LayoutOption createDoubleOption(Double defaultValue, String id, String description, String label) {
+    public LayoutOption createDoubleOption(Double defaultValue, String id, String description, String label, Set<LayoutOptionTarget> targets) {
 
         DoubleLayoutOption layoutOption = DescriptionFactory.eINSTANCE.createDoubleLayoutOption();
-        setCommonAttributes(id, description, label, layoutOption);
+        setCommonAttributes(id, description, label, layoutOption, targets);
         if (defaultValue != null) {
             layoutOption.setValue(defaultValue);
         }
@@ -184,11 +197,14 @@ public class LayoutOptionFactory {
      *            the label to set.
      * @param layoutOption
      *            the options that needs to have its attributes set.
+     * @param targets
+     *            the kind of graphic element to which the option applies.
      */
-    private void setCommonAttributes(String id, String description, String label, LayoutOption layoutOption) {
+    private void setCommonAttributes(String id, String description, String label, LayoutOption layoutOption, Set<LayoutOptionTarget> targets) {
         layoutOption.setId(id);
         layoutOption.setLabel(label);
         layoutOption.setDescription(description);
+        layoutOption.getTargets().addAll(targets);
     }
 
     /**
@@ -202,11 +218,13 @@ public class LayoutOptionFactory {
      *            a description of the option.
      * @param label
      *            a label used in Sirius UI to represent the option.
+     * @param targets
+     *            the kind of graphic element to which the option applies.
      * @return a new layout option with the type Boolean.
      */
-    public LayoutOption createBooleanOption(Boolean defaultValue, String id, String description, String label) {
+    public LayoutOption createBooleanOption(Boolean defaultValue, String id, String description, String label, Set<LayoutOptionTarget> targets) {
         BooleanLayoutOption layoutOption = (BooleanLayoutOption) EcoreUtil.create(DescriptionPackage.eINSTANCE.getBooleanLayoutOption());
-        setCommonAttributes(id, description, label, layoutOption);
+        setCommonAttributes(id, description, label, layoutOption, targets);
         if (defaultValue != null) {
             layoutOption.setValue(defaultValue);
         }

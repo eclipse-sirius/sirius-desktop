@@ -1705,6 +1705,8 @@
           transient="true"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"
           transient="true"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="targets" upperBound="-1"
+          eType="#//description/LayoutOptionTarget"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="BooleanLayoutOption" eSuperTypes="#//description/LayoutOption">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
@@ -1832,6 +1834,13 @@
       <eLiterals name="Both" value="1"/>
       <eLiterals name="Source" value="2"/>
       <eLiterals name="Target" value="3"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EEnum" name="LayoutOptionTarget">
+      <eLiterals name="PARENT"/>
+      <eLiterals name="NODE" value="1" literal="NODE"/>
+      <eLiterals name="EDGE" value="2" literal="EDGE"/>
+      <eLiterals name="PORTS" value="3" literal="PORTS"/>
+      <eLiterals name="LABEL" value="4" literal="LABEL"/>
     </eClassifiers>
     <eSubpackages name="style" nsURI="http://www.eclipse.org/sirius/diagram/description/style/1.1.0"
         nsPrefix="style">

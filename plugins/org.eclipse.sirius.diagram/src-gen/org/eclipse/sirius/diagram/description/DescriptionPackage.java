@@ -2773,13 +2773,21 @@ public interface DescriptionPackage extends EPackage {
     int LAYOUT_OPTION__DESCRIPTION = 2;
 
     /**
+     * The feature id for the '<em><b>Targets</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int LAYOUT_OPTION__TARGETS = 3;
+
+    /**
      * The number of structural features of the '<em>Layout Option</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int LAYOUT_OPTION_FEATURE_COUNT = 3;
+    int LAYOUT_OPTION_FEATURE_COUNT = 4;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.description.impl.BooleanLayoutOptionImpl
@@ -2814,6 +2822,14 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int BOOLEAN_LAYOUT_OPTION__DESCRIPTION = DescriptionPackage.LAYOUT_OPTION__DESCRIPTION;
+
+    /**
+     * The feature id for the '<em><b>Targets</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int BOOLEAN_LAYOUT_OPTION__TARGETS = DescriptionPackage.LAYOUT_OPTION__TARGETS;
 
     /**
      * The feature id for the '<em><b>Value</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2867,6 +2883,14 @@ public interface DescriptionPackage extends EPackage {
     int STRING_LAYOUT_OPTION__DESCRIPTION = DescriptionPackage.LAYOUT_OPTION__DESCRIPTION;
 
     /**
+     * The feature id for the '<em><b>Targets</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int STRING_LAYOUT_OPTION__TARGETS = DescriptionPackage.LAYOUT_OPTION__TARGETS;
+
+    /**
      * The feature id for the '<em><b>Value</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -2916,6 +2940,14 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int INTEGER_LAYOUT_OPTION__DESCRIPTION = DescriptionPackage.LAYOUT_OPTION__DESCRIPTION;
+
+    /**
+     * The feature id for the '<em><b>Targets</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTEGER_LAYOUT_OPTION__TARGETS = DescriptionPackage.LAYOUT_OPTION__TARGETS;
 
     /**
      * The feature id for the '<em><b>Value</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -2969,6 +3001,14 @@ public interface DescriptionPackage extends EPackage {
     int DOUBLE_LAYOUT_OPTION__DESCRIPTION = DescriptionPackage.LAYOUT_OPTION__DESCRIPTION;
 
     /**
+     * The feature id for the '<em><b>Targets</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DOUBLE_LAYOUT_OPTION__TARGETS = DescriptionPackage.LAYOUT_OPTION__TARGETS;
+
+    /**
      * The feature id for the '<em><b>Value</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -3018,6 +3058,14 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int ENUM_OPTION__DESCRIPTION = DescriptionPackage.LAYOUT_OPTION__DESCRIPTION;
+
+    /**
+     * The feature id for the '<em><b>Targets</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ENUM_OPTION__TARGETS = DescriptionPackage.LAYOUT_OPTION__TARGETS;
 
     /**
      * The feature id for the '<em><b>Choices</b></em>' containment reference list. <!-- begin-user-doc --> <!--
@@ -3070,6 +3118,14 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int ENUM_LAYOUT_OPTION__DESCRIPTION = DescriptionPackage.ENUM_OPTION__DESCRIPTION;
+
+    /**
+     * The feature id for the '<em><b>Targets</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ENUM_LAYOUT_OPTION__TARGETS = DescriptionPackage.ENUM_OPTION__TARGETS;
 
     /**
      * The feature id for the '<em><b>Choices</b></em>' containment reference list. <!-- begin-user-doc --> <!--
@@ -3131,6 +3187,14 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int ENUM_SET_LAYOUT_OPTION__DESCRIPTION = DescriptionPackage.ENUM_OPTION__DESCRIPTION;
+
+    /**
+     * The feature id for the '<em><b>Targets</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int ENUM_SET_LAYOUT_OPTION__TARGETS = DescriptionPackage.ENUM_OPTION__TARGETS;
 
     /**
      * The feature id for the '<em><b>Choices</b></em>' containment reference list. <!-- begin-user-doc --> <!--
@@ -3634,6 +3698,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      */
     int CENTERING_STYLE = 34;
+
+    /**
+     * The meta object id for the '{@link org.eclipse.sirius.diagram.description.LayoutOptionTarget <em>Layout Option
+     * Target</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.diagram.description.LayoutOptionTarget
+     * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getLayoutOptionTarget()
+     * @generated
+     */
+    int LAYOUT_OPTION_TARGET = 35;
 
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.DiagramDescription <em>Diagram
@@ -4843,6 +4917,18 @@ public interface DescriptionPackage extends EPackage {
     EAttribute getLayoutOption_Description();
 
     /**
+     * Returns the meta object for the attribute list
+     * '{@link org.eclipse.sirius.diagram.description.LayoutOption#getTargets <em>Targets</em>}'. <!-- begin-user-doc
+     * --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute list '<em>Targets</em>'.
+     * @see org.eclipse.sirius.diagram.description.LayoutOption#getTargets()
+     * @see #getLayoutOption()
+     * @generated
+     */
+    EAttribute getLayoutOption_Targets();
+
+    /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.description.BooleanLayoutOption <em>Boolean
      * Layout Option</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -5288,6 +5374,16 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      */
     EEnum getCenteringStyle();
+
+    /**
+     * Returns the meta object for enum '{@link org.eclipse.sirius.diagram.description.LayoutOptionTarget <em>Layout
+     * Option Target</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for enum '<em>Layout Option Target</em>'.
+     * @see org.eclipse.sirius.diagram.description.LayoutOptionTarget
+     * @generated
+     */
+    EEnum getLayoutOptionTarget();
 
     /**
      * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -6190,6 +6286,14 @@ public interface DescriptionPackage extends EPackage {
         EAttribute LAYOUT_OPTION__DESCRIPTION = DescriptionPackage.eINSTANCE.getLayoutOption_Description();
 
         /**
+         * The meta object literal for the '<em><b>Targets</b></em>' attribute list feature. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute LAYOUT_OPTION__TARGETS = DescriptionPackage.eINSTANCE.getLayoutOption_Targets();
+
+        /**
          * The meta object literal for the '{@link org.eclipse.sirius.diagram.description.impl.BooleanLayoutOptionImpl
          * <em>Boolean Layout Option</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
@@ -6540,6 +6644,16 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EEnum CENTERING_STYLE = DescriptionPackage.eINSTANCE.getCenteringStyle();
+
+        /**
+         * The meta object literal for the '{@link org.eclipse.sirius.diagram.description.LayoutOptionTarget <em>Layout
+         * Option Target</em>}' enum. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.diagram.description.LayoutOptionTarget
+         * @see org.eclipse.sirius.diagram.description.impl.DescriptionPackageImpl#getLayoutOptionTarget()
+         * @generated
+         */
+        EEnum LAYOUT_OPTION_TARGET = DescriptionPackage.eINSTANCE.getLayoutOptionTarget();
 
     }
 

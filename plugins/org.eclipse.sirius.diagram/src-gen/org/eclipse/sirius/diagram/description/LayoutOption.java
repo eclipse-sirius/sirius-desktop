@@ -13,6 +13,7 @@
  */
 package org.eclipse.sirius.diagram.description;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -25,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
  * <li>{@link org.eclipse.sirius.diagram.description.LayoutOption#getId <em>Id</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.LayoutOption#getLabel <em>Label</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.LayoutOption#getDescription <em>Description</em>}</li>
+ * <li>{@link org.eclipse.sirius.diagram.description.LayoutOption#getTargets <em>Targets</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayoutOption()
@@ -111,5 +113,23 @@ public interface LayoutOption extends EObject {
      * @generated
      */
     void setDescription(String value);
+
+    /**
+     * Returns the value of the '<em><b>Targets</b></em>' attribute list. The list contents are of type
+     * {@link org.eclipse.sirius.diagram.description.LayoutOptionTarget}. The literals are from the enumeration
+     * {@link org.eclipse.sirius.diagram.description.LayoutOptionTarget}. <!-- begin-user-doc -->
+     * <p>
+     * If the meaning of the '<em>Targets</em>' attribute list isn't clear, there really should be more of a description
+     * here...
+     * </p>
+     * <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Targets</em>' attribute list.
+     * @see org.eclipse.sirius.diagram.description.LayoutOptionTarget
+     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getLayoutOption_Targets()
+     * @model
+     * @generated
+     */
+    EList<LayoutOptionTarget> getTargets();
 
 } // LayoutOption

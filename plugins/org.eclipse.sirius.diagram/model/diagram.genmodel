@@ -344,6 +344,13 @@
         <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/CenteringStyle/Source"/>
         <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/CenteringStyle/Target"/>
       </genEnums>
+      <genEnums typeSafeEnumCompatible="false" ecoreEnum="diagram.ecore#//description/LayoutOptionTarget">
+        <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/LayoutOptionTarget/PARENT"/>
+        <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/LayoutOptionTarget/NODE"/>
+        <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/LayoutOptionTarget/EDGE"/>
+        <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/LayoutOptionTarget/PORTS"/>
+        <genEnumLiterals ecoreEnumLiteral="diagram.ecore#//description/LayoutOptionTarget/LABEL"/>
+      </genEnums>
       <genClasses ecoreClass="diagram.ecore#//description/DiagramDescription">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/filters"/>
         <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/allEdgeMappings"/>
@@ -604,6 +611,7 @@
         <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/LayoutOption/label"/>
         <genFeatures property="Readonly" createChild="false" propertyMultiLine="true"
             ecoreFeature="ecore:EAttribute diagram.ecore#//description/LayoutOption/description"/>
+        <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/LayoutOption/targets"/>
       </genClasses>
       <genClasses image="false" ecoreClass="diagram.ecore#//description/BooleanLayoutOption">
         <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//description/BooleanLayoutOption/value"/>
