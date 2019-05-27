@@ -11,3 +11,4 @@ plugins/org.eclipse.sirius.tests.swtbot/screenshots
 plugins/org.eclipse.sirius.tests.junit/test.aird
 plugins/org.eclipse.sirius.tests.junit/test.ecore
 .DS_Store
+workspace/
