@@ -1842,7 +1842,7 @@ public abstract class SiriusTestCase extends TestCase {
                     try {
                         session.close(new NullProgressMonitor());
                     } catch (final Exception e) {
-                        System.err.println(e.getMessage());
+                        e.printStackTrace();
                     }
                     // CHECKSTYLE:ON
                 }
