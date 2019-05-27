@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,10 +16,11 @@ import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemTextCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
-import org.eclipse.swtbot.swt.finder.waits.Conditions;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.Test;
@@ -116,8 +117,11 @@ public class RenameTreeRepresentationTest extends AbstractTreeSiriusSWTBotGefTes
 
         // Rename tree
         SWTBotUtils.clickContextMenu(treeItem, "Rename");
-        bot.activeShell().bot().text(0).setText(TREE_RENAME);
-        bot.button("OK").click();
+
+        SWTBot wizardBot = SWTBotSiriusHelper.getShellBot("Rename representation");
+
+        wizardBot.text(0).setText(TREE_RENAME);
+        wizardBot.button("OK").click();
 
         bot.waitUntil(new TreeItemTextCondition(treeItem, TREE_RENAME));
 
@@ -137,10 +141,9 @@ public class RenameTreeRepresentationTest extends AbstractTreeSiriusSWTBotGefTes
     private void createTree(SWTBotTreeItem treeItem) {
         SWTBotUtils.clickContextMenu(treeItem, "new Tree");
 
-        bot.waitUntil(Conditions.shellIsActive("New Tree"));
-
-        bot.activeShell().bot().text(0).setText(TREE_NAME);
-        bot.button("OK").click();
+        SWTBot wizardBot = SWTBotSiriusHelper.getShellBot("New Tree");
+        wizardBot.text(0).setText(TREE_NAME);
+        wizardBot.button("OK").click();
 
         SWTBotVSMEditor odesignEditor = SWTBotVSMHelper.getVSMEditorContainingName(TREE_NAME);
         odesignEditor.setFocus();

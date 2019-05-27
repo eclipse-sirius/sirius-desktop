@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.Result;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotCCombo;
@@ -88,8 +89,7 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Tests that the background style of Flat Container Style Description has 2
-     * elements in the list.
+     * Tests that the background style of Flat Container Style Description has 2 elements in the list.
      */
     public void testCheckFlatContainerBackgroundStyle() {
         // Open VSM
@@ -100,8 +100,7 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Tests that on a style in a diagram description, the label size minimal
-     * value is 1.
+     * Tests that on a style in a diagram description, the label size minimal value is 1.
      */
     public void testLabelSizeMinimalValueOnDiagramStyle() {
         // Open VSM
@@ -111,8 +110,7 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Tests that on a style in a table description, the label size minimal
-     * value is 1.
+     * Tests that on a style in a table description, the label size minimal value is 1.
      */
     public void testLabelSizeMinimalValueOnTableStyle() {
         // Open VSM
@@ -122,8 +120,7 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Tests that on a style in a table description, the label size minimal
-     * value is 1.
+     * Tests that on a style in a table description, the label size minimal value is 1.
      */
     public void testLabelSizeMinimalValueOnTreeStyle() {
         // Open VSM
@@ -133,19 +130,19 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that for Create Line Tool, 'Create View' operation is not available
-     * in menu.
+     * Test that for Create Line Tool, 'Create View' operation is not available in menu.
      */
     public void testThatCreateViewNotPresentForTable() {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
-            org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException: Could not find node with text: vsm.odesign
-            at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNodes(SWTBotTreeItem.java:334)
-            at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(SWTBotTreeItem.java:308)
-            at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(SWTBotTreeItem.java:346)
-            at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.expandNode(SWTBotTreeItem.java:283)
-            at org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper.openEditor(SWTBotCommonHelper.java:138)
-            at org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase.openViewpointSpecificationModel(AbstractSiriusSwtBotGefTestCase.java:1553)
+             * org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException: Could not find node with text:
+             * vsm.odesign at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNodes(SWTBotTreeItem.java:334) at
+             * org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(SWTBotTreeItem.java:308) at
+             * org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(SWTBotTreeItem.java:346) at
+             * org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.expandNode(SWTBotTreeItem.java:283) at
+             * org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper.openEditor(SWTBotCommonHelper.java:138)
+             * at org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase.
+             * openViewpointSpecificationModel(AbstractSiriusSwtBotGefTestCase.java:1553)
              */
             return;
         }
@@ -156,8 +153,7 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that for Create Line Tool and Create Column tool, 'Create View'
-     * operation is not available in menu.
+     * Test that for Create Line Tool and Create Column tool, 'Create View' operation is not available in menu.
      */
     public void testThatCreateViewNotPresentForCrossTable() {
         String operationName = DiagramUIPlugin.getPlugin().getString(CREATE_VIEW);
@@ -169,8 +165,7 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that for Create tool and Drop Tool, 'Create View' operation is not
-     * available in menu.
+     * Test that for Create tool and Drop Tool, 'Create View' operation is not available in menu.
      */
     public void testThatCreateViewNotPresentForTree() {
         String operationName = DiagramUIPlugin.getPlugin().getString(CREATE_VIEW);
@@ -182,8 +177,7 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that for Create Line Tool, 'Create Edge View' operation is not
-     * available in menu.
+     * Test that for Create Line Tool, 'Create Edge View' operation is not available in menu.
      */
     public void testThatCreateEdgeViewNotPresentForTable() {
         String operationName = DiagramUIPlugin.getPlugin().getString(CREATE_EDGE_VIEW);
@@ -193,8 +187,7 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that for Create Line Tool and Create Column tool, 'Create Edge View'
-     * operation is not available in menu.
+     * Test that for Create Line Tool and Create Column tool, 'Create Edge View' operation is not available in menu.
      */
     public void testThatCreateEdgeViewNotPresentForCrossTable() {
         String operationName = DiagramUIPlugin.getPlugin().getString(CREATE_EDGE_VIEW);
@@ -206,8 +199,7 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that for Create tool and Drop Tool, 'Create Edge View' operation is
-     * not available in menu.
+     * Test that for Create tool and Drop Tool, 'Create Edge View' operation is not available in menu.
      */
     public void testThatCreateEdgeViewNotPresentForTree() {
         String operationName = DiagramUIPlugin.getPlugin().getString(CREATE_EDGE_VIEW);
@@ -219,8 +211,7 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that for Create Line Tool, 'Delete View' operation is not available
-     * in menu.
+     * Test that for Create Line Tool, 'Delete View' operation is not available in menu.
      */
     public void testThateDeleteViewNotPresentForTable() {
         String operationName = SiriusEditPlugin.getPlugin().getString(DELETE_VIEW);
@@ -230,8 +221,7 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that for Create Line Tool and Create Column tool, 'Delete View'
-     * operation is not available in menu.
+     * Test that for Create Line Tool and Create Column tool, 'Delete View' operation is not available in menu.
      */
     public void testThateDeleteViewNotPresentForCrossTable() {
         String operationName = SiriusEditPlugin.getPlugin().getString(DELETE_VIEW);
@@ -243,8 +233,7 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that for Create tool and Drop Tool, 'Delete View' operation is not
-     * available in menu.
+     * Test that for Create tool and Drop Tool, 'Delete View' operation is not available in menu.
      */
     public void testThatDeleteViewNotPresentForTree() {
         String operationName = SiriusEditPlugin.getPlugin().getString(DELETE_VIEW);
@@ -267,21 +256,22 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotTree tree = odesignEditor.bot().tree();
         tree.expandNode(ODESIGN).expandNode(GROUP).expandNode("vsm").expandNode("Diagram").expandNode("Package").expandNode(gradient + " white to light_gray").select();
         // set the focus on the Properties view
-        bot.viewByTitle(PROPERTIES).setFocus();
+        SWTBotView propertiesView = bot.viewByTitle(PROPERTIES);
+        propertiesView.setFocus();
         // set the focus on the General tab
-        SWTBotSiriusHelper.selectPropertyTabItem(LABEL);
+        SWTBotSiriusHelper.selectPropertyTabItem(LABEL, propertiesView.bot());
         // get the label expression
-        labelText = bot.viewByTitle(PROPERTIES).bot().text(0);
+        labelText = propertiesView.bot().text(0);
         // focus on label field
         labelText.setFocus();
         String oldLabelExpression = labelText.getText();
         // Set label to empty
         labelText.setText("");
         // set the focus on the General tab
-        SWTBotSiriusHelper.selectPropertyTabItem(GENERAL);
+        SWTBotSiriusHelper.selectPropertyTabItem(GENERAL, propertiesView.bot());
         bot.saveAllEditors();
         // set the focus on the Label tab
-        SWTBotSiriusHelper.selectPropertyTabItem(LABEL);
+        SWTBotSiriusHelper.selectPropertyTabItem(LABEL, propertiesView.bot());
         assertEquals("The label expression should be empty", "", labelText.getText());
         odesignEditor.close();
         // Open VSM
@@ -289,11 +279,11 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
         // expands the tree : Container style description
         odesignEditor.bot().tree().expandNode(ODESIGN).expandNode(GROUP).expandNode("vsm").expandNode("Diagram").expandNode("Package").expandNode(gradient + " white to light_gray").select();
         // set the focus on the Properties view
-        bot.viewByTitle(PROPERTIES).setFocus();
+        propertiesView.setFocus();
         // set the focus on the Label tab
-        SWTBotSiriusHelper.selectPropertyTabItem(LABEL);
+        SWTBotSiriusHelper.selectPropertyTabItem(LABEL, propertiesView.bot());
         // get the label expression
-        labelText = bot.viewByTitle(PROPERTIES).bot().text(0);
+        labelText = propertiesView.bot().text(0);
         assertEquals("The label expression should be empty", "", labelText.getText());
         // set the old label expression
         labelText.setText(oldLabelExpression);
@@ -347,12 +337,13 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotTree tree = odesignEditor.bot().tree();
         tree.expandNode(ODESIGN).expandNode(GROUP).expandNode("vsm").expandNode("Diagram").expandNode("Package").expandNode(gradient + " white to light_gray").select();
         // set the focus on the Properties view
-        bot.viewByTitle(PROPERTIES).setFocus();
+        SWTBotView propertiesView = bot.viewByTitle(PROPERTIES);
+        propertiesView.setFocus();
         // set the focus on the General tab
-        SWTBotSiriusHelper.selectPropertyTabItem(GENERAL);
+        SWTBotSiriusHelper.selectPropertyTabItem(GENERAL, propertiesView.bot());
 
         // check that background style field choices are correct
-        SWTBotCCombo ccomboBox = bot.viewByTitle(PROPERTIES).bot().ccomboBox();
+        SWTBotCCombo ccomboBox = propertiesView.bot().ccomboBox();
         assertEquals("BackgroundStyle must contain 3 elements", 3, ccomboBox.itemCount());
         assertEquals("Fist element must be  : " + gradientLeftToRight, gradientLeftToRight, ccomboBox.items()[0]);
         assertEquals("Second element must be  : " + liquid_oblique, liquid_oblique, ccomboBox.items()[1]);
@@ -361,8 +352,7 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Check that the label size of a style in a diagram description cannot be
-     * set as 0.
+     * Check that the label size of a style in a diagram description cannot be set as 0.
      * 
      * @param odesignEditor
      */
@@ -383,8 +373,7 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Check that the label size of a style in a table description cannot be set
-     * as 0.
+     * Check that the label size of a style in a table description cannot be set as 0.
      * 
      * @param odesignEditor
      */
@@ -396,8 +385,7 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Check that the label size of a style in a table description cannot be set
-     * as 0.
+     * Check that the label size of a style in a table description cannot be set as 0.
      * 
      * @param odesignEditor
      */
@@ -413,12 +401,13 @@ public class VSMFieldTest extends AbstractSiriusSwtBotGefTestCase {
      */
     private void processLabelSizeTests(String initialValue) {
         // set the focus on the Properties view
-        bot.viewByTitle(PROPERTIES).setFocus();
+        SWTBotView propertiesView = bot.viewByTitle(PROPERTIES);
+        propertiesView.setFocus();
         // set the focus on the General tab
-        SWTBotSiriusHelper.selectPropertyTabItem(LABEL);
+        SWTBotSiriusHelper.selectPropertyTabItem(LABEL, propertiesView.bot());
 
         // check that background style field choices are correct
-        SWTBotSpinner ccomboBox = bot.viewByTitle(PROPERTIES).bot().spinner();
+        SWTBotSpinner ccomboBox = propertiesView.bot().spinner();
         assertEquals("Initial value of the Label Size is expected to be " + initialValue, initialValue, ccomboBox.getText());
         ccomboBox.setSelection(3);
         assertEquals("Value of the Label Size is expected to have been changed to 3", "3", ccomboBox.getText());

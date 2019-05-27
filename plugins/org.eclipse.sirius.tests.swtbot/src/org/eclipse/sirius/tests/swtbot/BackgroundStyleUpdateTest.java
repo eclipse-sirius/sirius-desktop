@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2018 Obeo.
+ * Copyright (c) 2015, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,8 +33,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotCheckBox;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
- * Test that the background style is correctly changed after the semantic
- * change.
+ * Test that the background style is correctly changed after the semantic change.
  * 
  * @author <a href="mailto:belqassim.djafer@obeo.fr">Belqassim Djafer</a>
  */
@@ -79,8 +78,7 @@ public class BackgroundStyleUpdateTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Ensure that the style of FlatContainerStyle directly after the semantic
-     * change.
+     * Ensure that the style of FlatContainerStyle directly after the semantic change.
      */
     public void testStyleCustomizationOfFlatContainerStyle() {
         // Ensure that the background style do not change on representation
@@ -106,7 +104,7 @@ public class BackgroundStyleUpdateTest extends AbstractSiriusSwtBotGefTestCase {
     private void changeBackgroundStyle(boolean liquid) {
         SWTBotView propertiesBot = bot.viewByTitle(PROPERTIES);
         propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Semantic");
+        SWTBotSiriusHelper.selectPropertyTabItem("Semantic", propertiesBot.bot());
         SWTBotTreeItem style = propertiesBot.bot().tree(0).getAllItems()[0].getNode("Liquid");
         style.click();
         // In photon, the feature widget is not a combo anymore.

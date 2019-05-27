@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
@@ -68,10 +69,11 @@ public class EdgeMappingTestCase extends AbstractSiriusSwtBotGefTestCase {
         // Create Relation Based Edge
         SWTBotUtils.clickContextMenu(defaultItem, RELATION_BASED_EDGE);
         defaultItem.select(RELATION_BASED_EDGE);
-        bot.viewByTitle(PROPERTIES).setFocus();
+        SWTBotView propertiesView = bot.viewByTitle(PROPERTIES);
+        propertiesView.setFocus();
         try {
-            SWTBotSiriusHelper.selectPropertyTabItem(GENERAL);
-            bot.viewByTitle(PROPERTIES).bot().textWithLabel(OPTIONAL_DOMAIN_CLASS);
+            SWTBotSiriusHelper.selectPropertyTabItem(GENERAL, propertiesView.bot());
+            propertiesView.bot().textWithLabel(OPTIONAL_DOMAIN_CLASS);
         } catch (WidgetNotFoundException e) {
             // the tab item is not in the property view -> ok
         }
@@ -80,9 +82,9 @@ public class EdgeMappingTestCase extends AbstractSiriusSwtBotGefTestCase {
         defaultItem.select();
         SWTBotUtils.clickContextMenu(defaultItem, ELEMENT_BASED_EDGE);
         defaultItem.expandNode(ELEMENT_BASED_EDGE).select();
-        bot.viewByTitle(PROPERTIES).setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem(GENERAL);
-        bot.viewByTitle(PROPERTIES).bot().textWithLabel(REQUIRED_DOMAIN_CLASS);
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem(GENERAL, propertiesView.bot());
+        propertiesView.bot().textWithLabel(REQUIRED_DOMAIN_CLASS);
 
         // Save and Close c.odesign
         bot.editorByTitle(MODEL).setFocus();

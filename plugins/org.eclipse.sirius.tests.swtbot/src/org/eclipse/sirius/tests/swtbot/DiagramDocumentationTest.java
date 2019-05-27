@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -87,10 +87,9 @@ public class DiagramDocumentationTest extends AbstractSiriusSwtBotGefTestCase {
         // Eclipse 4.x setFocus (an element is on (0,0))
         editor.click(100, 100);
         SWTBotUtils.waitAllUiEvents();
-        SWTBotSiriusHelper.selectPropertyTabItem("Documentation");
-
-        SWTBotUtils.waitAllUiEvents();
         SWTBotView propertiesView = bot.viewByTitle("Properties");
+        SWTBotSiriusHelper.selectPropertyTabItem("Documentation", propertiesView.bot());
+
         SWTBotUtils.waitAllUiEvents();
         propertiesView.setFocus();
         SWTBot propertiesBot = propertiesView.bot();

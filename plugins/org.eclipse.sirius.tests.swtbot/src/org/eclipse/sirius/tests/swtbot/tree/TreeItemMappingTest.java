@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,14 +28,14 @@ import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescr
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationNavigationDescription;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.junit.Test;
 
 /**
- * Test tree item mapping. Test automatic refresh and manual refresh. Test
- * undo/redo after each test type Test opening and closing model or editor to
- * verify that all changes are effective
+ * Test tree item mapping. Test automatic refresh and manual refresh. Test undo/redo after each test type Test opening
+ * and closing model or editor to verify that all changes are effective
  * 
  * @author jdupont
  */
@@ -183,7 +183,7 @@ public class TreeItemMappingTest extends AbstractTreeSiriusSWTBotGefTestCase {
         editor.setFocus();
 
         // Manual refreh with click context menu
-        bot.toolbarButtonWithTooltip("Force a refresh of the tree").click();
+        editor.bot().toolbarButtonWithTooltip("Force a refresh of the tree").click();
 
         refreshEditorTest();
 
@@ -310,8 +310,7 @@ public class TreeItemMappingTest extends AbstractTreeSiriusSWTBotGefTestCase {
     }
 
     /**
-     * Modify all fields in properties view of tree item style description in
-     * viewpoint specific model (.odesign).
+     * Modify all fields in properties view of tree item style description in viewpoint specific model (.odesign).
      * 
      * @param odesignEditor
      *            the odesign editor.
@@ -322,22 +321,23 @@ public class TreeItemMappingTest extends AbstractTreeSiriusSWTBotGefTestCase {
         tree.expandNode(ODESIGN).expandNode(GROUP).expandNode("Design").expandNode("Tree").expandNode("Enum").select();
 
         // accesses to property view
-        bot.viewByTitle(PROPERTIES).setFocus();
+        SWTBotView propertiesView = bot.viewByTitle(PROPERTIES);
+        propertiesView.setFocus();
 
         // accesses to tab General
-        SWTBotSiriusHelper.selectPropertyTabItem(GENERAL);
+        SWTBotSiriusHelper.selectPropertyTabItem(GENERAL, propertiesView.bot());
         changeAndTestPropertyTabGeneral("EDataType", "DataTypeId", "DataType", "[eContents()->select(not oclIsKindOf(EObject) or oclIsKindOf(EDataType))/]");
 
         // accesses to tab import
-        SWTBotSiriusHelper.selectPropertyTabItem(IMPORT);
+        SWTBotSiriusHelper.selectPropertyTabItem(IMPORT, propertiesView.bot());
         // changeAndTestPropertyTabImport("");
 
         // accesses to tab Behaviour
-        SWTBotSiriusHelper.selectPropertyTabItem(BEHAVIOR);
+        SWTBotSiriusHelper.selectPropertyTabItem(BEHAVIOR, propertiesView.bot());
         // changeAndTestPropertyTabBehavior("", "");
 
         // accesses to tab Advanced
-        SWTBotSiriusHelper.selectPropertyTabItem(ADVANCED);
+        SWTBotSiriusHelper.selectPropertyTabItem(ADVANCED, propertiesView.bot());
         changeAndTestPropertyTabAdvanced("[eContents()->select(not oclIsKindOf(EObject) or oclIsKindOf(EAttribute))/]", "[name.size() > 4/]");
 
         // Save odesign
@@ -357,7 +357,7 @@ public class TreeItemMappingTest extends AbstractTreeSiriusSWTBotGefTestCase {
         TreeItem widgetDataType = null;
 
         if (editor.bot().tree().getTreeItem("datatype").widget instanceof TreeItem) {
-            widgetDataType = (TreeItem) editor.bot().tree().getTreeItem("datatype").widget;
+            widgetDataType = editor.bot().tree().getTreeItem("datatype").widget;
         }
 
         String semanticElement = null;

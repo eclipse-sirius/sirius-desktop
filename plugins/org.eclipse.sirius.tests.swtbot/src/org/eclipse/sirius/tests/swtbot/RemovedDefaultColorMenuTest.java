@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,14 +31,15 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 
 /**
- * Test the default color menu was removed from Contextual menu, property view
- * appearance and toolbar. Test for ticket vp-1701.
+ * Test the default color menu was removed from Contextual menu, property view appearance and toolbar. Test for ticket
+ * vp-1701.
  * 
  * @author jdupont
  */
@@ -115,9 +116,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
         /*
-         * Force the addition of a dependency to the sample ecore editor
-         * otherwise the interpreter has no way to retrieve the service class
-         * hence any call to "render()" will fail.
+         * Force the addition of a dependency to the sample ecore editor otherwise the interpreter has no way to
+         * retrieve the service class hence any call to "render()" will fail.
          */
         localSession.getOpenedSession().getInterpreter().setProperty(IInterpreter.FILES, Collections.singleton("/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign"));
 
@@ -125,8 +125,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a container mapping.
-     * Test no default color menu from fill color, font color and line color.
+     * Test no default color menu in contextual menu from a container mapping. Test no default color menu from fill
+     * color, font color and line color.
      */
     public void testNoDefaulColortMenuInContextualMenuFromContainerMapping() {
         selectAndCheckEditPart(NODE_CONTAINER, DNodeContainerEditPart.class);
@@ -139,8 +139,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a container 2 mapping.
-     * Test no default color menu from fill color, font color and line color.
+     * Test no default color menu in contextual menu from a container 2 mapping. Test no default color menu from fill
+     * color, font color and line color.
      */
     public void testNoDefaulColortMenuInContextualMenuFromContainer2Mapping() {
         selectAndCheckEditPart(NODE_CONTAINER2, DNodeContainer2EditPart.class);
@@ -153,8 +153,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a node 3 mapping. Test
-     * no default color menu from fill color, font color and line color.
+     * Test no default color menu in contextual menu from a node 3 mapping. Test no default color menu from fill color,
+     * font color and line color.
      */
     public void testNoDefaulColortMenuInContextualMenuFromNode3Mapping() {
         selectAndCheckEditPart(NODE3, DNode3EditPart.class);
@@ -167,8 +167,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a node 2 mapping. Test
-     * no default color menu from fill color, font color and line color.
+     * Test no default color menu in contextual menu from a node 2 mapping. Test no default color menu from fill color,
+     * font color and line color.
      */
     public void testNoDefaulColortMenuInContextualMenuFromNode2Mapping() {
         selectAndCheckEditPart(NODE2, DNode2EditPart.class);
@@ -181,8 +181,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a node mapping. Test
-     * no default color menu from fill color, font color and line color.
+     * Test no default color menu in contextual menu from a node mapping. Test no default color menu from fill color,
+     * font color and line color.
      */
     public void testNoDefaulColortMenuInContextualMenuFromNodeMapping() {
         selectAndCheckEditPart(NODE, DNodeEditPart.class);
@@ -195,9 +195,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a relation base edge
-     * mapping. Test no default color menu from fill color, font color and line
-     * color.
+     * Test no default color menu in contextual menu from a relation base edge mapping. Test no default color menu from
+     * fill color, font color and line color.
      */
     public void testNoDefaulColortMenuInContextualMenuRelationBaseEdgeMapping() {
         selectAndCheckEditPart(SUPER, DEdgeEditPart.class);
@@ -210,9 +209,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a element base edge
-     * mapping. Test no default color menu from fill color, font color et line
-     * color.
+     * Test no default color menu in contextual menu from a element base edge mapping. Test no default color menu from
+     * fill color, font color et line color.
      */
     public void testNoDefaulColortMenuInContextualMenuFromElementBaseEdgeMapping() {
         selectAndCheckEditPart(REF, DEdgeEditPart.class);
@@ -225,9 +223,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a bordered node
-     * mapping. Test no default color menu from fill color, font color et line
-     * color.
+     * Test no default color menu in contextual menu from a bordered node mapping. Test no default color menu from fill
+     * color, font color et line color.
      */
     public void testNoDefaulColortMenuInContextualMenuFromBorderedNodeMapping() {
         selectAndCheckEditPart(NODE4, DNode4EditPart.class);
@@ -240,8 +237,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a container mapping. Test no
-     * default color menu from font color.
+     * Test no default color menu in tool bar from a container mapping. Test no default color menu from font color.
      */
     public void testNoDefaulColortMenuInToolBarFromContainerMappingFontColor() {
         selectAndCheckEditPart(NODE_CONTAINER, DNodeContainerEditPart.class);
@@ -256,8 +252,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a container mapping. Test no
-     * default color menu from line color.
+     * Test no default color menu in tool bar from a container mapping. Test no default color menu from line color.
      */
     public void testNoDefaulColortMenuInToolBarFromContainerMappingLineColor() {
         selectAndCheckEditPart(NODE_CONTAINER, DNodeContainerEditPart.class);
@@ -272,8 +267,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a container mapping. Test no
-     * default color menu from fill color.
+     * Test no default color menu in tool bar from a container mapping. Test no default color menu from fill color.
      */
     public void testNoDefaulColortMenuInToolBarFromContainerMappingFillColor() {
         selectAndCheckEditPart(NODE_CONTAINER, DNodeContainerEditPart.class);
@@ -288,8 +282,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a container 2 mapping. Test
-     * no default color menu from fill color.
+     * Test no default color menu in tool bar from a container 2 mapping. Test no default color menu from fill color.
      */
     public void testNoDefaulColortMenuInToolBarFromContainer2MappingFillColor() {
         selectAndCheckEditPart(NODE_CONTAINER2, DNodeContainer2EditPart.class);
@@ -304,8 +297,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a container 2 mapping. Test
-     * no default color menu from font color.
+     * Test no default color menu in tool bar from a container 2 mapping. Test no default color menu from font color.
      */
     public void testNoDefaulColortMenuInToolBarFromContainer2MappingFontColor() {
         selectAndCheckEditPart(NODE_CONTAINER2, DNodeContainer2EditPart.class);
@@ -320,8 +312,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a container 2 mapping. Test
-     * no default color menu from line color.
+     * Test no default color menu in tool bar from a container 2 mapping. Test no default color menu from line color.
      */
     public void testNoDefaulColortMenuInToolBarFromContainer2MappingLineColor() {
         selectAndCheckEditPart(NODE_CONTAINER2, DNodeContainer2EditPart.class);
@@ -336,8 +327,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a node 3 mapping. Test no
-     * default color menu from font color.
+     * Test no default color menu in tool bar from a node 3 mapping. Test no default color menu from font color.
      */
     public void testNoDefaulColortMenuInToolBarFromNode3MappingFontColor() {
         selectAndCheckEditPart(NODE3, DNode3EditPart.class);
@@ -352,8 +342,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a node 3 mapping. Test no
-     * default color menu from line color.
+     * Test no default color menu in tool bar from a node 3 mapping. Test no default color menu from line color.
      */
     public void testNoDefaulColortMenuInToolBarFromNode3MappingLineColor() {
         selectAndCheckEditPart(NODE3, DNode3EditPart.class);
@@ -368,8 +357,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a node 3 mapping. Test no
-     * default color menu from fill color.
+     * Test no default color menu in tool bar from a node 3 mapping. Test no default color menu from fill color.
      */
     public void testNoDefaulColortMenuInToolBarFromNode3MappingFillColor() {
         selectAndCheckEditPart(NODE3, DNode3EditPart.class);
@@ -384,8 +372,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a node mapping. Test no
-     * default color menu from fill color.
+     * Test no default color menu in tool bar from a node mapping. Test no default color menu from fill color.
      */
     public void testNoDefaulColortMenuInToolBarFromNodeMappingFillColor() {
         selectAndCheckEditPart(NODE, DNodeEditPart.class);
@@ -400,8 +387,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a node mapping. Test no
-     * default color menu from font color.
+     * Test no default color menu in tool bar from a node mapping. Test no default color menu from font color.
      */
     public void testNoDefaulColortMenuInToolBarFromNodeMappingFontColor() {
         selectAndCheckEditPart(NODE, DNodeEditPart.class);
@@ -416,8 +402,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a node mapping. Test no
-     * default color menu from line color.
+     * Test no default color menu in tool bar from a node mapping. Test no default color menu from line color.
      */
     public void testNoDefaulColortMenuInToolBarFromNodeMappingLineColor() {
         selectAndCheckEditPart(NODE, DNodeEditPart.class);
@@ -432,8 +417,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a node 2 mapping. Test no
-     * default color menu from font color.
+     * Test no default color menu in tool bar from a node 2 mapping. Test no default color menu from font color.
      */
     public void testNoDefaulColortMenuInToolBarFromNode2MappingFontColor() {
         selectAndCheckEditPart(NODE2, DNode2EditPart.class);
@@ -448,8 +432,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a node 2 mapping. Test no
-     * default color menu from fill color.
+     * Test no default color menu in tool bar from a node 2 mapping. Test no default color menu from fill color.
      */
     public void testNoDefaulColortMenuInToolBarFromNode2MappingFillColor() {
         selectAndCheckEditPart(NODE2, DNode2EditPart.class);
@@ -464,8 +447,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a node 2 mapping. Test no
-     * default color menu from font color.
+     * Test no default color menu in tool bar from a node 2 mapping. Test no default color menu from font color.
      */
     public void testNoDefaulColortMenuInToolBarFromNode2MappingLineColor() {
         selectAndCheckEditPart(NODE2, DNode2EditPart.class);
@@ -480,8 +462,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a relation base edge mapping.
-     * Test no default color menu from line color.
+     * Test no default color menu in tool bar from a relation base edge mapping. Test no default color menu from line
+     * color.
      */
     public void testNoDefaulColortMenuInToolBarFromRelationBaseEdgeMappingFontColor() {
         selectAndCheckEditPart(REF, DEdgeEditPart.class);
@@ -496,8 +478,8 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a relation base edge mapping.
-     * Test no default color menu from font color.
+     * Test no default color menu in tool bar from a relation base edge mapping. Test no default color menu from font
+     * color.
      */
     public void testNoDefaulColortMenuInToolBarFromRelationBaseEdgeMappingLineColor() {
         selectAndCheckEditPart(REF, DEdgeEditPart.class);
@@ -511,8 +493,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a node 4 mapping. Test no
-     * default color menu from font color.
+     * Test no default color menu in tool bar from a node 4 mapping. Test no default color menu from font color.
      */
     public void testNoDefaulColortMenuInToolBarFromBorderedNodeMappingFontColor() {
         selectAndCheckEditPart(NODE4, DNode4EditPart.class);
@@ -527,8 +508,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a node 4 mapping. Test no
-     * default color menu from fill color.
+     * Test no default color menu in tool bar from a node 4 mapping. Test no default color menu from fill color.
      */
     public void testNoDefaulColortMenuInToolBarFromBorderedNodeMappingFillColor() {
         selectAndCheckEditPart(NODE4, DNode4EditPart.class);
@@ -543,8 +523,7 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in tool bar from a node 4 mapping. Test no
-     * default color menu from line color.
+     * Test no default color menu in tool bar from a node 4 mapping. Test no default color menu from line color.
      */
     public void testNoDefaulColortMenuInToolBarFromBorderedNodeMappingLineColor() {
         selectAndCheckEditPart(NODE4, DNode4EditPart.class);
@@ -559,15 +538,16 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a container mapping.
-     * Test no default color menu from font color.
+     * Test no default color menu in contextual menu from a container mapping. Test no default color menu from font
+     * color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromContainerMappingFontColor() {
         selectAndCheckEditPart(NODE_CONTAINER, DNodeContainerEditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
-            bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 0).click().contextMenu(DEFAULT_COLOR);
+            propertiesView.bot().buttonInGroup("Fonts and Colors:", 0).click().contextMenu(DEFAULT_COLOR);
             fail();
         } catch (WidgetNotFoundException e) {
             // Expected exception, do nothing.
@@ -575,13 +555,14 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a container mapping.
-     * Test no default color menu from line color.
+     * Test no default color menu in contextual menu from a container mapping. Test no default color menu from line
+     * color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromContainerMappingLineColor() {
         selectAndCheckEditPart(NODE_CONTAINER, DNodeContainerEditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 1).click().contextMenu(DEFAULT_COLOR);
             fail();
@@ -591,13 +572,14 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a container mapping.
-     * Test no default color menu from fill color.
+     * Test no default color menu in contextual menu from a container mapping. Test no default color menu from fill
+     * color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromContainerMappingFillColor() {
         selectAndCheckEditPart(NODE_CONTAINER, DNodeContainerEditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 2).click().contextMenu(DEFAULT_COLOR);
             fail();
@@ -607,13 +589,14 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a container 2 mapping.
-     * Test no default color menu from font color.
+     * Test no default color menu in contextual menu from a container 2 mapping. Test no default color menu from font
+     * color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromContainer2MappingFontColor() {
         selectAndCheckEditPart(NODE_CONTAINER2, DNodeContainer2EditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 0).click().contextMenu(DEFAULT_COLOR);
             fail();
@@ -623,13 +606,14 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a container 2 mapping.
-     * Test no default color menu from line color.
+     * Test no default color menu in contextual menu from a container 2 mapping. Test no default color menu from line
+     * color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromContainer2MappingLineColor() {
         selectAndCheckEditPart(NODE_CONTAINER2, DNodeContainer2EditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 1).click().contextMenu(DEFAULT_COLOR);
             fail();
@@ -639,16 +623,17 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a container 2 mapping.
-     * Test no default color menu from fill color.
+     * Test no default color menu in contextual menu from a container 2 mapping. Test no default color menu from fill
+     * color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromContainer2MappingFillColor() {
         selectAndCheckEditPart(NODE_CONTAINER2, DNodeContainer2EditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             SWTBotPreferences.TIMEOUT = 1000;
-            bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 2).click().contextMenu(DEFAULT_COLOR);
+            propertiesView.bot().buttonInGroup("Fonts and Colors:", 2).click().contextMenu(DEFAULT_COLOR);
             fail();
         } catch (WidgetNotFoundException e) {
             // Expected exception, do nothing.
@@ -658,13 +643,13 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a node mapping. Test
-     * no default color menu from font color.
+     * Test no default color menu in contextual menu from a node mapping. Test no default color menu from font color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromNodeMappingFontColor() {
         selectAndCheckEditPart(NODE, DNodeEditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             SWTBotPreferences.TIMEOUT = 1000;
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 0).click().contextMenu(DEFAULT_COLOR);
@@ -677,14 +662,14 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a node mapping. Test
-     * no default color menu from line color.
+     * Test no default color menu in contextual menu from a node mapping. Test no default color menu from line color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromNodeMappingLineColor() {
         SWTBotPreferences.TIMEOUT = 1000;
         selectAndCheckEditPart(NODE, DNodeEditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 1).click().contextMenu(DEFAULT_COLOR);
             fail();
@@ -696,14 +681,14 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a node mapping. Test
-     * no default color menu from fill color.
+     * Test no default color menu in contextual menu from a node mapping. Test no default color menu from fill color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromNodeMappingFillColor() {
         SWTBotPreferences.TIMEOUT = 1000;
         selectAndCheckEditPart(NODE, DNodeEditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 0).click().contextMenu(DEFAULT_COLOR);
             fail();
@@ -715,14 +700,14 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a node 2 mapping. Test
-     * no default color menu from font color.
+     * Test no default color menu in contextual menu from a node 2 mapping. Test no default color menu from font color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromNode2MappingFontColor() {
         SWTBotPreferences.TIMEOUT = 1000;
         selectAndCheckEditPart(NODE2, DNode2EditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 0).click().contextMenu(DEFAULT_COLOR);
             fail();
@@ -734,14 +719,14 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a node 2 mapping. Test
-     * no default color menu from line color.
+     * Test no default color menu in contextual menu from a node 2 mapping. Test no default color menu from line color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromNode2MappingLineColor() {
         SWTBotPreferences.TIMEOUT = 1000;
         selectAndCheckEditPart(NODE2, DNode2EditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 1).click().contextMenu(DEFAULT_COLOR);
             fail();
@@ -753,14 +738,14 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a node 2 mapping. Test
-     * no default color menu from fill color.
+     * Test no default color menu in contextual menu from a node 2 mapping. Test no default color menu from fill color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromNode2MappingFillColor() {
         SWTBotPreferences.TIMEOUT = 1000;
         selectAndCheckEditPart(NODE2, DNode2EditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 2).click().contextMenu(DEFAULT_COLOR);
             fail();
@@ -772,14 +757,14 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a node 3 mapping. Test
-     * no default color menu from font color.
+     * Test no default color menu in contextual menu from a node 3 mapping. Test no default color menu from font color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromNode3MappingFontColor() {
         SWTBotPreferences.TIMEOUT = 1000;
         selectAndCheckEditPart(NODE3, DNode3EditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 0).click().contextMenu(DEFAULT_COLOR);
             fail();
@@ -791,14 +776,14 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a node 3 mapping. Test
-     * no default color menu from line color.
+     * Test no default color menu in contextual menu from a node 3 mapping. Test no default color menu from line color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromNode3MappingLineColor() {
         SWTBotPreferences.TIMEOUT = 1000;
         selectAndCheckEditPart(NODE3, DNode3EditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 1).click().contextMenu(DEFAULT_COLOR);
             fail();
@@ -810,14 +795,14 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a node 3 mapping. Test
-     * no default color menu from fill color.
+     * Test no default color menu in contextual menu from a node 3 mapping. Test no default color menu from fill color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromNode3MappingFillColor() {
         SWTBotPreferences.TIMEOUT = 1000;
         selectAndCheckEditPart(NODE3, DNode3EditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 2).click().contextMenu(DEFAULT_COLOR);
             fail();
@@ -829,14 +814,14 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a node 4 mapping. Test
-     * no default color menu from font color.
+     * Test no default color menu in contextual menu from a node 4 mapping. Test no default color menu from font color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromNode4MappingFontColor() {
         SWTBotPreferences.TIMEOUT = 1000;
         selectAndCheckEditPart(NODE4, DNode4EditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 0).click().contextMenu(DEFAULT_COLOR);
             fail();
@@ -848,14 +833,14 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a node 4 mapping. Test
-     * no default color menu from line color.
+     * Test no default color menu in contextual menu from a node 4 mapping. Test no default color menu from line color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromNode4MappingLineColor() {
         SWTBotPreferences.TIMEOUT = 1000;
         selectAndCheckEditPart(NODE4, DNode4EditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 1).click().contextMenu(DEFAULT_COLOR);
             fail();
@@ -867,14 +852,14 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a node 4 mapping. Test
-     * no default color menu from fill color.
+     * Test no default color menu in contextual menu from a node 4 mapping. Test no default color menu from fill color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromNode4MappingFillColor() {
         SWTBotPreferences.TIMEOUT = 1000;
         selectAndCheckEditPart(NODE4, DNode4EditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 2).click().contextMenu(DEFAULT_COLOR);
             fail();
@@ -886,14 +871,15 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a Relation based edge
-     * mapping. Test no default color menu from font color.
+     * Test no default color menu in contextual menu from a Relation based edge mapping. Test no default color menu from
+     * font color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewRelationBaseEdgeMappingFontColor() {
         SWTBotPreferences.TIMEOUT = 1000;
         selectAndCheckEditPart(REF, DEdgeEditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 0).click().contextMenu(DEFAULT_COLOR);
             fail();
@@ -905,14 +891,15 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a Relation based edge
-     * mapping. Test no default color menu from line color.
+     * Test no default color menu in contextual menu from a Relation based edge mapping. Test no default color menu from
+     * line color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewRelationBaseEdgeMappingLineColor() {
         SWTBotPreferences.TIMEOUT = 1000;
         selectAndCheckEditPart(REF, DEdgeEditPart.class);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 1).click().contextMenu(DEFAULT_COLOR);
             fail();
@@ -924,15 +911,15 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a Diagram mapping.
-     * Test no default color menu from font color.
+     * Test no default color menu in contextual menu from a Diagram mapping. Test no default color menu from font color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromDiagramFontColor() {
         SWTBotPreferences.TIMEOUT = 1000;
         editor.setFocus();
         editor.click(1, 1);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 0).click().contextMenu(DEFAULT_COLOR);
             fail();
@@ -944,15 +931,15 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a Diagram mapping.
-     * Test no default color menu from line color.
+     * Test no default color menu in contextual menu from a Diagram mapping. Test no default color menu from line color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromDiagramLineColor() {
         SWTBotPreferences.TIMEOUT = 1000;
         editor.setFocus();
         editor.click(1, 1);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 1).click().contextMenu(DEFAULT_COLOR);
             fail();
@@ -964,15 +951,15 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     }
 
     /**
-     * Test no default color menu in contextual menu from a Diagram mapping.
-     * Test no default color menu from fill color.
+     * Test no default color menu in contextual menu from a Diagram mapping. Test no default color menu from fill color.
      */
     public void testNoDefaulColortMenuInAppearancePropertyViewFromDiagramFillColor() {
         SWTBotPreferences.TIMEOUT = 1000;
         editor.setFocus();
         editor.click(1, 1);
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
         try {
             bot.viewByTitle("Properties").bot().buttonInGroup("Fonts and Colors:", 2).click().contextMenu(DEFAULT_COLOR);
             fail();

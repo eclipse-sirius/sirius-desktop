@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,9 +24,10 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckTreeItemEnabled;
 import org.eclipse.sirius.tests.swtbot.support.api.dialog.ExportAsImageHelper;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.provider.Messages;
-import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
@@ -100,8 +101,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * Validate the functionality "Export representations as images" on an aird
-     * file for JPG export.
+     * Validate the functionality "Export representations as images" on an aird file for JPG export.
      * 
      * @throws Exception
      *             Test error.
@@ -114,8 +114,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * Validate the functionality "Export representations as images" on a big
-     * aird file for JPG export.
+     * Validate the functionality "Export representations as images" on a big aird file for JPG export.
      * 
      * @throws Exception
      *             Test error.
@@ -135,8 +134,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * Validate the functionality "Export representations as images" on a big
-     * aird file for PNG export.
+     * Validate the functionality "Export representations as images" on a big aird file for PNG export.
      * 
      * @throws Exception
      *             Test error.
@@ -156,9 +154,8 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * Validate the functionality "Export representations as images" on a big
-     * aird file for SVG export. Since VP-3958, we export correctly big SVG
-     * image.
+     * Validate the functionality "Export representations as images" on a big aird file for SVG export. Since VP-3958,
+     * we export correctly big SVG image.
      * 
      * @throws Exception
      *             Test error.
@@ -178,8 +175,8 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * Validate the functionality "Export diagram as images" from tab bar for
-     * JPG export, with a big representation (size > 50 000 000 pixels).
+     * Validate the functionality "Export diagram as images" from tab bar for JPG export, with a big representation
+     * (size > 50 000 000 pixels).
      * 
      * @throws Exception
      *             Test error.
@@ -207,8 +204,8 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * Validate the functionality "Export diagram as images" from tab bar for
-     * PNG export, with a big representation (size > 50 000 000 pixels).
+     * Validate the functionality "Export diagram as images" from tab bar for PNG export, with a big representation
+     * (size > 50 000 000 pixels).
      * 
      * @throws Exception
      *             Test error.
@@ -229,9 +226,8 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * Validate the functionality "Export diagram as images" from tab bar for
-     * SVG export, with a big representation (size > 50 000 000 pixels). Since
-     * VP-3958, we export correctly big SVG image.
+     * Validate the functionality "Export diagram as images" from tab bar for SVG export, with a big representation
+     * (size > 50 000 000 pixels). Since VP-3958, we export correctly big SVG image.
      * 
      * @throws Exception
      *             Test error.
@@ -252,8 +248,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * Validate the functionality "Export representations as images" on an aird
-     * file for PNG export.
+     * Validate the functionality "Export representations as images" on an aird file for PNG export.
      * 
      * @throws Exception
      *             Test error.
@@ -266,8 +261,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * Validate the functionality "Export representations as images" on an aird
-     * file for SVG export.
+     * Validate the functionality "Export representations as images" on an aird file for SVG export.
      * 
      * @throws Exception
      *             Test error.
@@ -280,8 +274,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * Validate the functionality "Export representations as images" on the root
-     * of a semantic model for JPG export.
+     * Validate the functionality "Export representations as images" on the root of a semantic model for JPG export.
      * 
      * @throws Exception
      *             Test error.
@@ -294,8 +287,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * Validate the functionality "Export representations as images" on the root
-     * of a semantic model for PNG export.
+     * Validate the functionality "Export representations as images" on the root of a semantic model for PNG export.
      * 
      * @throws Exception
      *             Test error.
@@ -308,8 +300,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * Validate the functionality "Export representations as images" on the root
-     * of a semantic model for SVG export.
+     * Validate the functionality "Export representations as images" on the root of a semantic model for SVG export.
      * 
      * @throws Exception
      *             Test error.
@@ -322,8 +313,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * Validate the functionality "Export diagram as image" from tab bar for JPG
-     * export, with a transient session.
+     * Validate the functionality "Export diagram as image" from tab bar for JPG export, with a transient session.
      * 
      * @throws Exception
      *             Test error.
@@ -340,8 +330,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * Validate the functionality "Export diagram as image" from tab bar for PNG
-     * export, with a transient session.
+     * Validate the functionality "Export diagram as image" from tab bar for PNG export, with a transient session.
      * 
      * @throws Exception
      *             Test error.
@@ -349,21 +338,15 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     public void testExportDiagramsOfTransientSessionAsPNGFromTabBar() throws Exception {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
-             * org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException:
-             * Could not find node with text: vp867.ecore at
-             * org.eclipse.swtbot.swt
-             * .finder.widgets.SWTBotTreeItem.getNodes(SWTBotTreeItem.java:334)
-             * at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(
-             * SWTBotTreeItem.java:308) at
-             * org.eclipse.swtbot.swt.finder.widgets.
-             * SWTBotTreeItem.getNode(SWTBotTreeItem.java:346) at
-             * org.eclipse.sirius .tests.swtbot.support.api.business.UIProject.
-             * getUIItemFromResource (UIProject.java:152) at
-             * org.eclipse.sirius.tests.swtbot.support.api
-             * .business.UIProject.mouseRigthClickOnResource(UIProject.java:171)
-             * at org.eclipse.sirius.tests.swtbot.ExportDiagramsAsImagesTest.
-             * testExportDiagramsOfTransientSessionAsPNGFromTabBar
-             * (ExportDiagramsAsImagesTest.java:372)
+             * org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException: Could not find node with text:
+             * vp867.ecore at org.eclipse.swtbot.swt .finder.widgets.SWTBotTreeItem.getNodes(SWTBotTreeItem.java:334) at
+             * org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode( SWTBotTreeItem.java:308) at
+             * org.eclipse.swtbot.swt.finder.widgets. SWTBotTreeItem.getNode(SWTBotTreeItem.java:346) at
+             * org.eclipse.sirius .tests.swtbot.support.api.business.UIProject. getUIItemFromResource
+             * (UIProject.java:152) at org.eclipse.sirius.tests.swtbot.support.api
+             * .business.UIProject.mouseRigthClickOnResource(UIProject.java:171) at
+             * org.eclipse.sirius.tests.swtbot.ExportDiagramsAsImagesTest.
+             * testExportDiagramsOfTransientSessionAsPNGFromTabBar (ExportDiagramsAsImagesTest.java:372)
              */
             return;
         }
@@ -379,8 +362,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * Validate the functionality "Export diagram as image" from tab bar for SVG
-     * export, with a transient session.
+     * Validate the functionality "Export diagram as image" from tab bar for SVG export, with a transient session.
      * 
      * @throws Exception
      *             Test error.
@@ -388,22 +370,15 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     public void testExportDiagramsOfTransientSessionAsSVGFromTabBar() throws Exception {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
-             * org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException:
-             * Could not find node with text: vp867.ecore at
-             * org.eclipse.swtbot.swt
-             * .finder.widgets.SWTBotTreeItem.getNodes(SWTBotTreeItem.java:334)
-             * at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode(
-             * SWTBotTreeItem.java:308) at
-             * org.eclipse.swtbot.swt.finder.widgets.
-             * SWTBotTreeItem.getNode(SWTBotTreeItem.java:346) at
-             * org.eclipse.sirius .tests.swtbot.support.api.business.UIProject.
-             * getUIItemFromResource (UIProject.java:152) at
-             * org.eclipse.sirius.tests.swtbot.support.api
-             * .business.UIProject.mouseRigthClickOnResource(UIProject.java:171)
-             * at
+             * org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException: Could not find node with text:
+             * vp867.ecore at org.eclipse.swtbot.swt .finder.widgets.SWTBotTreeItem.getNodes(SWTBotTreeItem.java:334) at
+             * org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem.getNode( SWTBotTreeItem.java:308) at
+             * org.eclipse.swtbot.swt.finder.widgets. SWTBotTreeItem.getNode(SWTBotTreeItem.java:346) at
+             * org.eclipse.sirius .tests.swtbot.support.api.business.UIProject. getUIItemFromResource
+             * (UIProject.java:152) at org.eclipse.sirius.tests.swtbot.support.api
+             * .business.UIProject.mouseRigthClickOnResource(UIProject.java:171) at
              * org.eclipse.sirius.tests.swtbot.ExportDiagramsAsImagesAndHtmlTest
-             * .testExportDiagramsOfTransientSessionAsSVGFromTabBar(
-             * ExportDiagramsAsImagesAndHtmlTest.java:306)
+             * .testExportDiagramsOfTransientSessionAsSVGFromTabBar( ExportDiagramsAsImagesAndHtmlTest.java:306)
              */
             return;
         }
@@ -419,8 +394,8 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * Validate the functionality "Export representations as images" on the root
-     * of a semantic model for JPG export, with a transient session.
+     * Validate the functionality "Export representations as images" on the root of a semantic model for JPG export,
+     * with a transient session.
      * 
      * @throws Exception
      *             Test error.
@@ -442,8 +417,8 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * Validate the functionality "Export representations as images" on the root
-     * of a semantic model for PNG export, with a transient session.
+     * Validate the functionality "Export representations as images" on the root of a semantic model for PNG export,
+     * with a transient session.
      * 
      * @throws Exception
      *             Test error.
@@ -451,25 +426,16 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     public void testExportDiagramsOfTransientSessionAsPNGFromModelContentView() throws Exception {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
-             * org.eclipse.swtbot.swt.finder.widgets.TimeoutException: Timeout
-             * after: 10000 ms.: tree item with text DesignerTestProject is not
-             * expanded at
-             * org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(
-             * SWTBotFactory.java:407) at
-             * org.eclipse.swtbot.swt.finder.SWTBotFactory
-             * .waitUntil(SWTBotFactory.java:381) at
-             * org.eclipse.swtbot.swt.finder
-             * .SWTBotFactory.waitUntil(SWTBotFactory.java:369) at
-             * org.eclipse.sirius
-             * .tests.swtbot.support.api.business.UIProject.getProjectTreeItem
-             * (UIProject.java:108) at
-             * org.eclipse.sirius.tests.swtbot.support.api
-             * .business.UIProject.getUIItemFromResource(UIProject.java:137) at
-             * org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.
+             * org.eclipse.swtbot.swt.finder.widgets.TimeoutException: Timeout after: 10000 ms.: tree item with text
+             * DesignerTestProject is not expanded at org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(
+             * SWTBotFactory.java:407) at org.eclipse.swtbot.swt.finder.SWTBotFactory .waitUntil(SWTBotFactory.java:381)
+             * at org.eclipse.swtbot.swt.finder .SWTBotFactory.waitUntil(SWTBotFactory.java:369) at org.eclipse.sirius
+             * .tests.swtbot.support.api.business.UIProject.getProjectTreeItem (UIProject.java:108) at
+             * org.eclipse.sirius.tests.swtbot.support.api .business.UIProject.getUIItemFromResource(UIProject.java:137)
+             * at org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.
              * mouseRigthClickOnResource(UIProject.java:171) at
              * org.eclipse.sirius.tests.swtbot.ExportDiagramsAsImagesTest.
-             * testExportDiagramsOfTransientSessionAsPNGFromModelContentView
-             * (ExportDiagramsAsImagesTest.java:463)
+             * testExportDiagramsOfTransientSessionAsPNGFromModelContentView (ExportDiagramsAsImagesTest.java:463)
              */
             return;
         }
@@ -487,8 +453,8 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * Validate the functionality "Export representations as images" on the root
-     * of a semantic model for SVG export, with a transient session.
+     * Validate the functionality "Export representations as images" on the root of a semantic model for SVG export,
+     * with a transient session.
      * 
      * @throws Exception
      *             Test error.
@@ -508,8 +474,7 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * Validate that file separators in representation name are correctly
-     * replaced during the diagram export.
+     * Validate that file separators in representation name are correctly replaced during the diagram export.
      * 
      * @throws Exception
      *             Test error.
@@ -523,10 +488,10 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
         uiDiagramRepresentation.open();
         SWTBotUtils.clickContextMenu(uiDiagramRepresentation.getTreeItem(), Messages.ExportRepresentationsAction_label);
 
-        bot.waitUntil(Conditions.shellIsActive(Messages.ExportOneRepresentationAsImageDialog_dialogTitle));
-        bot.comboBox(1).setSelection("SVG");
+        SWTBot exportBot = SWTBotSiriusHelper.getShellBot(Messages.ExportOneRepresentationAsImageDialog_dialogTitle);
+        exportBot.comboBox(1).setSelection("SVG");
 
-        bot.button("OK").click();
+        exportBot.button("OK").click();
         // exportAsImageFromEditorTabBar("SVG");
         valideExportResult("svg", REPRESENTATION_INSTANCE_NAME3_RENAMED);
     }
@@ -536,9 +501,9 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
         SWTBotTreeItem airdFile = tree.expandNode(designerProject.getName()).select(SESSION_FILE);
         SWTBotUtils.clickContextMenu(airdFile, Messages.ExportRepresentationsAction_label);
 
-        bot.waitUntil(Conditions.shellIsActive(Messages.ExportSeveralRepresentationsAsImagesDialog_dialogTitle));
-        bot.comboBox(1).setSelection(imageExtension);
-        bot.button("OK").click();
+        SWTBot exportBot = SWTBotSiriusHelper.getShellBot(Messages.ExportSeveralRepresentationsAsImagesDialog_dialogTitle);
+        exportBot.comboBox(1).setSelection(imageExtension);
+        exportBot.button("OK").click();
         SWTBotUtils.waitAllUiEvents();
         SWTBotUtils.waitAllUiEvents();
     }
@@ -548,9 +513,9 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
         SWTBotTreeItem airdFile = tree.expandNode(designerProject.getName()).select(BIG_SESSION);
         SWTBotUtils.clickContextMenu(airdFile, Messages.ExportRepresentationsAction_label);
         SWTBotUtils.waitAllUiEvents();
-        bot.waitUntil(Conditions.shellIsActive(Messages.ExportSeveralRepresentationsAsImagesDialog_dialogTitle));
-        bot.comboBox(1).setSelection(imageExtension);
-        bot.button("OK").click();
+        SWTBot exportBot = SWTBotSiriusHelper.getShellBot(Messages.ExportSeveralRepresentationsAsImagesDialog_dialogTitle);
+        exportBot.comboBox(1).setSelection(imageExtension);
+        exportBot.button("OK").click();
         SWTBotUtils.waitAllUiEvents();
         // The session should still be opened after having performed an export as image.
         Session opennedSession = localSession.getOpenedSession();
@@ -564,9 +529,9 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
         SWTBotTreeItem semanticRoot = localSession.getSemanticResourceNode(new UIResource(designerProject, FILE_DIR, MODEL)).select(rootElementName);
         SWTBotUtils.clickContextMenu(semanticRoot, Messages.ExportRepresentationsAction_label);
 
-        bot.waitUntil(Conditions.shellIsActive(Messages.ExportSeveralRepresentationsAsImagesDialog_dialogTitle));
-        bot.comboBox(1).setSelection(imageExtension);
-        bot.button("OK").click();
+        SWTBot exportBot = SWTBotSiriusHelper.getShellBot(Messages.ExportSeveralRepresentationsAsImagesDialog_dialogTitle);
+        exportBot.comboBox(1).setSelection(imageExtension);
+        exportBot.button("OK").click();
     }
 
     private void exportAsImageTranscientSessionFromModelContentView(String imageExtension, String rootElementName) throws Exception {
@@ -575,9 +540,9 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
         SWTBotTreeItem semanticRoot = localSession.getSemanticResourceNode(new UIResource(designerProject, FILE_DIR, MODEL)).select(rootElementName);
         SWTBotUtils.clickContextMenu(semanticRoot, Messages.ExportRepresentationsAction_label);
 
-        bot.waitUntil(Conditions.shellIsActive(Messages.ExportSeveralRepresentationsAsImagesDialog_dialogTitle));
-        bot.comboBox(1).setSelection(imageExtension);
-        bot.button("OK").click();
+        SWTBot exportBot = SWTBotSiriusHelper.getShellBot(Messages.ExportSeveralRepresentationsAsImagesDialog_dialogTitle);
+        exportBot.comboBox(1).setSelection(imageExtension);
+        exportBot.button("OK").click();
     }
 
     private void exportAsImageFromEditorTabBar(String imageExtension) throws Exception {
@@ -587,9 +552,9 @@ public class ExportDiagramsAsImagesTest extends AbstractSiriusSwtBotGefTestCase 
 
         bot.activeEditor().bot().toolbarButtonWithTooltip("Export diagram as image").click();
 
-        bot.waitUntil(Conditions.shellIsActive(Messages.ExportOneRepresentationAsImageDialog_dialogTitle));
-        bot.comboBox(1).setSelection(imageExtension);
-        bot.button("OK").click();
+        SWTBot exportBot = SWTBotSiriusHelper.getShellBot(Messages.ExportOneRepresentationAsImageDialog_dialogTitle);
+        exportBot.comboBox(1).setSelection(imageExtension);
+        exportBot.button("OK").click();
     }
 
     private void valideExportResult(String imageExtension, final String... expectedFileNames) throws Exception {

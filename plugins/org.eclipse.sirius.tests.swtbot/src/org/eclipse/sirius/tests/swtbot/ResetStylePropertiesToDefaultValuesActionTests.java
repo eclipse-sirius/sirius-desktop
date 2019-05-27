@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,8 +30,8 @@ import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarToggleButton;
 
 /**
- * Test that the action "Reset style properties to default values" is refreshed
- * in tabbar when style is changed. Test VP-3449.
+ * Test that the action "Reset style properties to default values" is refreshed in tabbar when style is changed. Test
+ * VP-3449.
  * 
  * @author jdupont
  */
@@ -81,8 +81,8 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
     }
 
     /**
-     * Test refresh "Reset style properties to default values" button after
-     * click on Fill Color in tabbar for a list container.
+     * Test refresh "Reset style properties to default values" button after click on Fill Color in tabbar for a list
+     * container.
      */
     public void testRefreshActionCancelCustomStyleTabbarForListContainer() {
         selectAndCheckEditPart(C1, AbstractDiagramListEditPart.class);
@@ -102,8 +102,8 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
     }
 
     /**
-     * Test refresh "Reset style properties to default values" button after
-     * click on Fill Color in tabbar for a Container.
+     * Test refresh "Reset style properties to default values" button after click on Fill Color in tabbar for a
+     * Container.
      */
     public void testRefreshActionCancelCustomStyleTabbarForContainer() {
         selectAndCheckEditPart(P1, AbstractDiagramContainerEditPart.class);
@@ -123,8 +123,7 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
     }
 
     /**
-     * Test refresh "Reset style properties to default values" button after
-     * click on bold button in tabbar for an edge.
+     * Test refresh "Reset style properties to default values" button after click on bold button in tabbar for an edge.
      */
     public void _testRefreshActionCancelCustomStyleTabbarForEdgeWithBoldFontStyle() {
         selectAndCheckEditPart(REF1, AbstractDiagramEdgeEditPart.class);
@@ -147,8 +146,7 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
     }
 
     /**
-     * Test refresh "Reset style properties to default values" button after
-     * click on Line Color in tabbar for an edge.
+     * Test refresh "Reset style properties to default values" button after click on Line Color in tabbar for an edge.
      */
     public void testRefreshActionCancelCustomStyleTabbarForEdgeWithLineColor() {
         selectAndCheckEditPart(REF1, AbstractDiagramEdgeEditPart.class);
@@ -168,8 +166,8 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
     }
 
     /**
-     * Test refresh "Reset style properties to default values" button after
-     * click on Style in properties view Appearance for an edge.
+     * Test refresh "Reset style properties to default values" button after click on Style in properties view Appearance
+     * for an edge.
      */
     public void testRefreshActionCancelCustomStylePropertiesViewForEdge() {
         selectAndCheckEditPart(REF1, AbstractDiagramEdgeEditPart.class);
@@ -192,8 +190,8 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
     }
 
     /**
-     * Test refresh "Reset style properties to default values" button after
-     * click on Fill Color on contextual menu for a list Container.
+     * Test refresh "Reset style properties to default values" button after click on Fill Color on contextual menu for a
+     * list Container.
      */
     public void testRefreshActionCancelCustomStyleContextualMenuForListContainer() {
         selectAndCheckEditPart(C1, AbstractDiagramListEditPart.class);
@@ -234,7 +232,7 @@ public class ResetStylePropertiesToDefaultValuesActionTests extends AbstractSiri
         SWTBotView propertiesView = bot.viewByTitle("Properties");
         propertiesView.setFocus();
         SWTBot propertiesBot = propertiesView.bot();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesBot);
         return propertiesBot;
     }
 }

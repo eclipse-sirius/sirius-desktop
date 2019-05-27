@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,9 +30,8 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
- * Test setting property of a table editor by the properties view with an other
- * editor tree open and setting property of a tree editor by the properties view
- * with an other table editor open. Test VP-1896.
+ * Test setting property of a table editor by the properties view with an other editor tree open and setting property of
+ * a tree editor by the properties view with an other table editor open. Test VP-1896.
  * 
  * 
  * @author jdupont
@@ -88,8 +87,8 @@ public class SetPropertyOfTableTreeByPropertiesViewTest extends AbstractSiriusSw
      * <p>
      * Step 2 : select an element
      * <p>
-     * Step 3 : check the properties view title is equals to the label of the
-     * semantic element ("equals" -> the title comes from the item provider.
+     * Step 3 : check the properties view title is equals to the label of the semantic element ("equals" -> the title
+     * comes from the item provider.
      */
     public void testTablePropertiesViewTitle() {
         // Step 1: open table
@@ -114,8 +113,8 @@ public class SetPropertyOfTableTreeByPropertiesViewTest extends AbstractSiriusSw
      * <p>
      * Step 2 : select an element
      * <p>
-     * Step 3 : check the properties view title is equals to the label of the
-     * semantic element ("equals" -> the title comes from the item provider.
+     * Step 3 : check the properties view title is equals to the label of the semantic element ("equals" -> the title
+     * comes from the item provider.
      */
     public void testTreePropertiesViewTitle() {
         // Step 1: open tree
@@ -124,7 +123,7 @@ public class SetPropertyOfTableTreeByPropertiesViewTest extends AbstractSiriusSw
 
         // Step 2: select a table element.
         tree.getTree().select(0, 0);
-        String cell = tree.getTree().selection().get(0,0);
+        String cell = tree.getTree().selection().get(0, 0);
 
         // Step 3: check the properties view title.
         SWTBotView propertiesBot = bot.viewByTitle(PROPERTIES);
@@ -135,19 +134,16 @@ public class SetPropertyOfTableTreeByPropertiesViewTest extends AbstractSiriusSw
     }
 
     /**
-     * Test modify string field (name of semantic element) in property view of
-     * table.
+     * Test modify string field (name of semantic element) in property view of table.
      * <P>
      * Step 1 : open a tree and table representations
      * <p>
      * Step 2 : change name of semantic element
      * <p>
-     * Step 3 : Verify that the tree and table representation element have name
-     * modified
+     * Step 3 : Verify that the tree and table representation element have name modified
      * <p>
-     * Step 4 : Undo change; Verify that the tree and table representation have
-     * the name stating. Verify that the undo command next, has nothing to do
-     * with renaming.
+     * Step 4 : Undo change; Verify that the tree and table representation have the name stating. Verify that the undo
+     * command next, has nothing to do with renaming.
      */
     public void testModifyTablePropertyViewStringField() {
         // Step 1 : open tree and table
@@ -171,19 +167,16 @@ public class SetPropertyOfTableTreeByPropertiesViewTest extends AbstractSiriusSw
     }
 
     /**
-     * Test modify string field (name of semantic element) in property view of
-     * tree.
+     * Test modify string field (name of semantic element) in property view of tree.
      * <P>
      * Step 1 : open a tree and table representations
      * <p>
      * Step 2 : change name of semantic element
      * <p>
-     * Step 3 : Verify that the tree and table representation element have name
-     * modified
+     * Step 3 : Verify that the tree and table representation element have name modified
      * <p>
-     * Step 4 : Undo change; Verify that the tree and table representation have
-     * the name stating. Verify that the undo command next, has nothing to do
-     * with renaming.
+     * Step 4 : Undo change; Verify that the tree and table representation have the name stating. Verify that the undo
+     * command next, has nothing to do with renaming.
      */
     public void testModifyTreePropertyViewStringField() {
         // Step 1 : open tree and table
@@ -207,19 +200,16 @@ public class SetPropertyOfTableTreeByPropertiesViewTest extends AbstractSiriusSw
     }
 
     /**
-     * Test modify boolean field (field to pass semantic element to abstract) in
-     * property view of table.
+     * Test modify boolean field (field to pass semantic element to abstract) in property view of table.
      * <P>
      * Step 1 : open a tree and table representations
      * <p>
      * Step 2 : change type abstract of semantic element
      * <p>
-     * Step 3 : Verify that the tree and table representation have abstract type
-     * modified
+     * Step 3 : Verify that the tree and table representation have abstract type modified
      * <p>
-     * Step 4 : Undo change; Verify that the tree and table representation have
-     * the abstract stating. Verify that the undo command next, has nothing to
-     * do with change abstract.
+     * Step 4 : Undo change; Verify that the tree and table representation have the abstract stating. Verify that the
+     * undo command next, has nothing to do with change abstract.
      */
     public void testModifyTablePropertyViewBooleanField() {
         // Step 1 : open tree and table
@@ -245,19 +235,16 @@ public class SetPropertyOfTableTreeByPropertiesViewTest extends AbstractSiriusSw
     }
 
     /**
-     * Test modify boolean field (field to pass semantic element to abstract) in
-     * property view of tree.
+     * Test modify boolean field (field to pass semantic element to abstract) in property view of tree.
      * <P>
      * Step 1 : open a tree and table representations
      * <p>
      * Step 2 : change type abstract of semantic element
      * <p>
-     * Step 3 : Verify that the tree and table representation have abstract type
-     * modified
+     * Step 3 : Verify that the tree and table representation have abstract type modified
      * <p>
-     * Step 4 : Undo change; Verify that the tree and table representation have
-     * the abstract stating. Verify that the undo command next, has nothing to
-     * do with change abstract.
+     * Step 4 : Undo change; Verify that the tree and table representation have the abstract stating. Verify that the
+     * undo command next, has nothing to do with change abstract.
      */
     public void testModifyTreePropertyViewBooleanField() {
         // Step 1 : open tree and table
@@ -331,7 +318,7 @@ public class SetPropertyOfTableTreeByPropertiesViewTest extends AbstractSiriusSw
         table.getTable().getTreeItem(content).select();
         SWTBotView propertiesBot = bot.viewByTitle(PROPERTIES);
         propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem(SEMANTIC);
+        SWTBotSiriusHelper.selectPropertyTabItem(SEMANTIC, propertiesBot.bot());
         SWTBotTree tree = propertiesBot.bot().tree();
         tree.expandNode(content).select().getNode("Name").doubleClick();
         SWTBotText text = propertiesBot.bot().text();
@@ -353,7 +340,7 @@ public class SetPropertyOfTableTreeByPropertiesViewTest extends AbstractSiriusSw
         tree.getTree().getTreeItem(content).select();
         SWTBotView propertiesBot = bot.viewByTitle(PROPERTIES);
         propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem(SEMANTIC);
+        SWTBotSiriusHelper.selectPropertyTabItem(SEMANTIC, propertiesBot.bot());
         SWTBotTree tree = propertiesBot.bot().tree();
         tree.expandNode(content).select().getNode("Name").doubleClick();
         SWTBotText text = propertiesBot.bot().text();
@@ -372,7 +359,7 @@ public class SetPropertyOfTableTreeByPropertiesViewTest extends AbstractSiriusSw
         swtBotTree.getTreeItem(content).select();
         SWTBotView propertiesBot = bot.viewByTitle(PROPERTIES);
         propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem(SEMANTIC);
+        SWTBotSiriusHelper.selectPropertyTabItem(SEMANTIC, propertiesBot.bot());
         SWTBotTree tree = propertiesBot.bot().tree();
         tree.expandNode(content).select().getNode("Abstract").doubleClick();
         if (TestsUtil.isPhotonPlatformOrLater()) {
@@ -440,7 +427,7 @@ public class SetPropertyOfTableTreeByPropertiesViewTest extends AbstractSiriusSw
         swtBotTree.getTreeItem(element).select();
         SWTBotView propertiesBot = bot.viewByTitle(PROPERTIES);
         propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem(SEMANTIC);
+        SWTBotSiriusHelper.selectPropertyTabItem(SEMANTIC, propertiesBot.bot());
         SWTBotTree tree = propertiesBot.bot().tree();
         tree.expandNode(element).select().getNode("Abstract").doubleClick();
         boolean value;

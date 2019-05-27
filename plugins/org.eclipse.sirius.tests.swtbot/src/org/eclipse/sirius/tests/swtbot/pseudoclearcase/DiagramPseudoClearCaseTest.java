@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEdi
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.view.SiriusOutlineView;
 import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
@@ -84,6 +85,7 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
      */
     public void testNodeDirectEdit() throws Exception {
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 editor.directNodeEditType("EC2", "New name but will be discard");
             }
@@ -98,6 +100,7 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
      */
     public void testEdgeLabelDirectEdit() throws Exception {
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 editor.directEdgeEditType("EC3", "EC2", "New name but will be discard");
             }
@@ -112,6 +115,7 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
      */
     public void testMoveDiagramElement() throws Exception {
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 editor.drag(PACKAGE_SP1, SOMEWHERE_IN_DIAGRAM.x, SOMEWHERE_IN_DIAGRAM.y);
             }
@@ -126,6 +130,7 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
      */
     public void testCreatePackageFromPaletteInDiagram() throws Exception {
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 editor.activateTool("Package");
                 editor.click(SOMEWHERE_IN_DIAGRAM.x, SOMEWHERE_IN_DIAGRAM.y);
@@ -141,6 +146,7 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
      */
     public void testCreatePackageFromPaletteInPackage() throws Exception {
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 editor.activateTool("Package");
                 editor.click(IN_PACKAGE_SP1.x, IN_PACKAGE_SP1.y);
@@ -156,6 +162,7 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
      */
     public void testCreateClassFromPaletteInDiagram() throws Exception {
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 editor.activateTool("Class");
                 editor.click(SOMEWHERE_IN_DIAGRAM.x, SOMEWHERE_IN_DIAGRAM.y);
@@ -171,6 +178,7 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
      */
     public void testCreateClassFromPaletteInPackage() throws Exception {
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 editor.activateTool("Class");
                 editor.click(IN_PACKAGE_SP1.x, IN_PACKAGE_SP1.y);
@@ -186,6 +194,7 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
      */
     public void testCreateOperationInClass() throws Exception {
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 editor.activateTool("Operation");
                 editor.click(IN_ECLASS_EC2.x, IN_ECLASS_EC2.y);
@@ -201,6 +210,7 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
      */
     public void testCreateAttributeInClass() throws Exception {
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 editor.activateTool("Attribute");
                 editor.click(IN_ECLASS_EC2.x, IN_ECLASS_EC2.y);
@@ -216,6 +226,7 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
      */
     public void testCreateSuperTypeBetweenClasses() throws Exception {
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 editor.activateTool("SuperType");
                 editor.click(IN_ECLASS_EC2.x, IN_ECLASS_EC2.y);
@@ -232,6 +243,7 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
      */
     public void testCreateReferenceBetweenClasses() throws Exception {
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 editor.activateTool("Reference");
                 editor.click(IN_ECLASS_EC2.x, IN_ECLASS_EC2.y);
@@ -248,6 +260,7 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
      */
     public void testPinElementWithPalette() throws Exception {
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 editor.activateTool("Pin");
                 editor.click(IN_ECLASS_EC2.x, IN_ECLASS_EC2.y);
@@ -263,6 +276,7 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
      */
     public void testHideDiagramElement() throws Exception {
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 final SWTBotGefEditPart hiddenEditPart = editor.getEditPart(PACKAGE_SP1);
 
@@ -280,6 +294,7 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
      */
     public void testRevealDiagramElement() throws Exception {
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 final SWTBotGefEditPart diagramEditPart = editor.mainEditPart();
 
@@ -298,6 +313,7 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
     public void testEnableLayer() throws Exception {
         final SiriusOutlineView outlineView = designerViews.getOutlineView().layers();
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 outlineView.activateLayer("Dynamic");
             }
@@ -313,6 +329,7 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
     public void testDisableLayer() throws Exception {
         final SiriusOutlineView outlineView = designerViews.getOutlineView().layers();
         UIThreadRunnable.asyncExec(new VoidResult() {
+            @Override
             public void run() {
                 // Already activated, so becomes deactivated
                 outlineView.activateLayer("Package");
@@ -327,8 +344,9 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
      *             Test error.
      */
     public void testAddFilter() throws Exception {
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Filters");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Filters", propertiesView.bot());
 
         final SWTBotTable availableFilters = bot.table(0);
         availableFilters.getTableItem("Hide references").select();
@@ -343,8 +361,9 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
      *             Test error.
      */
     public void testRemoveFilter() throws Exception {
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Filters");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Filters", propertiesView.bot());
 
         final SWTBotTable availableFilters = bot.table(1);
         availableFilters.getTableItem("Hide generalizations").select();

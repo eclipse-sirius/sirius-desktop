@@ -15,9 +15,9 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 
 /**
@@ -48,7 +48,6 @@ public class OpenDiagramWithExceptionTest extends AbstractSiriusSwtBotGefTestCas
     private static final String REPRESENTATION_NAME = "new " + DESC_NAME;
 
     private static final String REPRESENTATION_NAME2 = "new " + DESC_NAME2;
-
 
     /**
      * Make sure that when a {@link ClassCastException} occurs while opening a diagram (because of an unsynchronized
@@ -102,8 +101,7 @@ public class OpenDiagramWithExceptionTest extends AbstractSiriusSwtBotGefTestCas
             editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), descName, representationName, DDiagram.class);
         });
         thread.start();
-        bot.waitUntil(Conditions.shellIsActive("Refresh the diagram"));
-        bot.activeShell().bot().button("OK").click();
+        SWTBotSiriusHelper.getShellBot("Refresh the diagram").button("OK").click();
         bot.waitUntil(new DefaultCondition() {
 
             @Override

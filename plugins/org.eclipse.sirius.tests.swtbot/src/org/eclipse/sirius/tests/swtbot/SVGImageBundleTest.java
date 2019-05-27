@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -184,8 +184,7 @@ public class SVGImageBundleTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Check that the node is a Bundled image description and the shape
-     * corresponding to shape pass in parameters.
+     * Check that the node is a Bundled image description and the shape corresponding to shape pass in parameters.
      * 
      * @param name
      *            the name of edit part
@@ -228,8 +227,8 @@ public class SVGImageBundleTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Change property node class corresponding to name parameters, to abstract.
-     * This change causes the modification shape to ellipse
+     * Change property node class corresponding to name parameters, to abstract. This change causes the modification
+     * shape to ellipse
      * 
      * @param name
      *            the name of edit part
@@ -238,7 +237,7 @@ public class SVGImageBundleTest extends AbstractSiriusSwtBotGefTestCase {
         selectAndcheckEditPart(name, AbstractDiagramNodeEditPart.class);
         SWTBotView propertiesBot = bot.viewByTitle(PROPERTIES);
         propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem(SEMANTIC);
+        SWTBotSiriusHelper.selectPropertyTabItem(SEMANTIC, propertiesBot.bot());
         SWTBotTree tree = propertiesBot.bot().tree();
         tree.expandNode("Class1 -> Class2").select().getNode("Abstract").doubleClick();
         if (TestsUtil.isPhotonPlatformOrLater()) {
@@ -266,7 +265,7 @@ public class SVGImageBundleTest extends AbstractSiriusSwtBotGefTestCase {
     private void modifyVSM(String oldShape, String shape) {
         SWTBotView propertiesBot = bot.viewByTitle(PROPERTIES);
         propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem(GENERAL);
+        SWTBotSiriusHelper.selectPropertyTabItem(GENERAL, propertiesBot.bot());
         try {
             SWTBotCombo comboBox = propertiesBot.bot().comboBox(oldShape);
             comboBox.setFocus();

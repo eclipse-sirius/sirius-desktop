@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,14 +26,14 @@ import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.Test;
 
 /**
- * Test condtional tree item description. Test automatic refresh and manual
- * refresh. Test undo/redo after each test type Test opening and closing model
- * or editor to verify that all changes are effective
+ * Test condtional tree item description. Test automatic refresh and manual refresh. Test undo/redo after each test type
+ * Test opening and closing model or editor to verify that all changes are effective
  * 
  * @author jdupont
  */
@@ -280,10 +280,10 @@ public class ConditionalTreeItemStyleDescriptionTest extends AbstractTreeSiriusS
         String treeItemName = null;
 
         if (editor.bot().tree().getAllItems().length > 0) {
-            treeItemName = ((SWTBotTreeItem) editor.bot().tree().getAllItems()[1]).getText();
+            treeItemName = editor.bot().tree().getAllItems()[1].getText();
         }
         if (treeItemName != null) {
-            widgetTestTailleNomSup13 = (TreeItem) editor.bot().tree().getTreeItem(treeItemName).widget;
+            widgetTestTailleNomSup13 = editor.bot().tree().getTreeItem(treeItemName).widget;
         }
 
         Color colorBackground = null;
@@ -328,7 +328,7 @@ public class ConditionalTreeItemStyleDescriptionTest extends AbstractTreeSiriusS
             }
         }
         if (treeItemName != null) {
-            widgetTestTailleNomSup13 = (TreeItem) editor.bot().tree().getTreeItem(treeItemName).widget;
+            widgetTestTailleNomSup13 = editor.bot().tree().getTreeItem(treeItemName).widget;
         }
 
         labelColor = getLabelColor(widgetTestTailleNomSup13);
@@ -341,7 +341,7 @@ public class ConditionalTreeItemStyleDescriptionTest extends AbstractTreeSiriusS
         SWTBotUtils.waitAllUiEvents();
 
         // Undo
-        bot.menu("Edit").menu(UNDO).click();
+        editor.bot().menu("Edit").menu(UNDO).click();
 
         if (editor.bot().tree().getAllItems().length > 0) {
             for (SWTBotTreeItem treeItem : editor.bot().tree().getAllItems()) {
@@ -352,7 +352,7 @@ public class ConditionalTreeItemStyleDescriptionTest extends AbstractTreeSiriusS
             }
         }
         if (treeItemName != null) {
-            widgetTestTailleNomSup13 = (TreeItem) editor.bot().tree().getTreeItem(treeItemName).widget;
+            widgetTestTailleNomSup13 = editor.bot().tree().getTreeItem(treeItemName).widget;
         }
 
         labelColor = getLabelColor(widgetTestTailleNomSup13);
@@ -365,7 +365,7 @@ public class ConditionalTreeItemStyleDescriptionTest extends AbstractTreeSiriusS
         // SWTBotUtils.waitAllUiEvents();
 
         // ReDo
-        bot.menu("Edit").menu(REDO).click();
+        editor.bot().menu("Edit").menu(REDO).click();
         SWTBotUtils.waitAllUiEvents();
 
         if (editor.bot().tree().getAllItems().length > 0) {
@@ -377,7 +377,7 @@ public class ConditionalTreeItemStyleDescriptionTest extends AbstractTreeSiriusS
             }
         }
         if (treeItemName != null) {
-            widgetTestTailleNomSup13 = (TreeItem) editor.bot().tree().getTreeItem(treeItemName).widget;
+            widgetTestTailleNomSup13 = editor.bot().tree().getTreeItem(treeItemName).widget;
         }
 
         labelColor = getLabelColor(widgetTestTailleNomSup13);
@@ -399,8 +399,7 @@ public class ConditionalTreeItemStyleDescriptionTest extends AbstractTreeSiriusS
     }
 
     /**
-     * Modify all fields in properties view of tree item style description in
-     * viewpoint specific model (.odesign).
+     * Modify all fields in properties view of tree item style description in viewpoint specific model (.odesign).
      * 
      * @param odesignEditor
      *            the odesign editor.
@@ -411,12 +410,13 @@ public class ConditionalTreeItemStyleDescriptionTest extends AbstractTreeSiriusS
         tree.expandNode(ODESIGN).expandNode(GROUP).expandNode("Design").expandNode("Tree").expandNode("Class").expandNode("Conditional Style").select();
 
         // accesses to property view
-        bot.viewByTitle(PROPERTIES).setFocus();
+        SWTBotView propertiesView = bot.viewByTitle(PROPERTIES);
+        propertiesView.setFocus();
 
         // accesses to tab General
-        SWTBotSiriusHelper.selectPropertyTabItem(GENERAL);
+        SWTBotSiriusHelper.selectPropertyTabItem(GENERAL, propertiesView.bot());
         changeAndTestPropertyTabGeneral("aql:self.name.size() > 13");
-        SWTBotSiriusHelper.selectPropertyTabItem("All");
+        SWTBotSiriusHelper.selectPropertyTabItem("All", propertiesView.bot());
 
         odesignEditor.bot().tree().setFocus();
         // Save odesign
@@ -446,7 +446,7 @@ public class ConditionalTreeItemStyleDescriptionTest extends AbstractTreeSiriusS
             }
         }
         if (treeItemName != null) {
-            widgetTestTailleNomSup13 = (TreeItem) editor.bot().tree().getTreeItem(treeItemName).widget;
+            widgetTestTailleNomSup13 = editor.bot().tree().getTreeItem(treeItemName).widget;
         }
 
         Color colorBackground = null;

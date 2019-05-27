@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and other.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and other.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -533,7 +533,7 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
                 customized = true;
             }
         } else {
-            SWTBotSiriusHelper.selectPropertyTabItem(APPEARANCE_TAB_NAME);
+            SWTBotSiriusHelper.selectPropertyTabItem(APPEARANCE_TAB_NAME, propertiesBot.bot());
             bot.viewByTitle("Properties");
         }
         return customized;

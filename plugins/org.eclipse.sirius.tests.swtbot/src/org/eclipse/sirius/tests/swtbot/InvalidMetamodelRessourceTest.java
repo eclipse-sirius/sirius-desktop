@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2018 Obeo.
+ * Copyright (c) 2014, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,9 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemExpanded;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
@@ -79,40 +77,22 @@ public class InvalidMetamodelRessourceTest extends AbstractSiriusSwtBotGefTestCa
         SWTBotView propertiesBot = bot.viewByTitle(PROPERTIES);
         propertiesBot.setFocus();
         // accesses to tab Meta-model
-        SWTBotSiriusHelper.selectPropertyTabItem(METAMODELS);
+        SWTBotSiriusHelper.selectPropertyTabItem(METAMODELS, propertiesBot.bot());
         checkMessageErrorLog();
     }
 
     /**
-     * Check that the error message for invalid meta-model URI appears in the
-     * "Error Log" view.
+     * Check that the error message for invalid meta-model URI appears in the "Error Log" view.
      */
     private void checkMessageErrorLog() {
         try {
-            openErrorLogView();
+            openErrorLogViewByAPI();
             SWTBotView logViewBot = bot.viewByPartName("Error Log");
             assertTrue("Invalid Metamodel URI does not appear in the error log.", isMessageInErrorLog(logViewBot));
             logViewBot.close();
         } finally {
             // Reset to previous environment
             errors.clear();
-        }
-    }
-
-    /**
-     * Open the error log view.
-     */
-    private void openErrorLogView() {
-        bot.menu("Window").menu("Show View").menu("Other...").click();
-        SWTBotTree viewsTreeBot = bot.tree();
-        bot.text().setText("Error");
-        SWTBotTreeItem expandNode = viewsTreeBot.expandNode("General");
-        bot.waitUntil(new TreeItemExpanded(expandNode, expandNode.getText()));
-        expandNode.getNode("Error Log").click();
-        if (TestsUtil.isBeforeOxygenPlatform()) {
-            bot.button("OK").click();
-        } else {
-            bot.button("Open").click();
         }
     }
 

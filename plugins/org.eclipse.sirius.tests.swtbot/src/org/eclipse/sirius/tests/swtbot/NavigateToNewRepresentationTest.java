@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentat
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 
 /**
@@ -89,7 +91,8 @@ public class NavigateToNewRepresentationTest extends AbstractSiriusSwtBotGefTest
             SWTBotPreferences.TIMEOUT = 1000;
             editor.click(65, 40);
             editor.clickContextMenu(EXPECTED_NEW_REPRESENTATION_NAME);
-            bot.button("OK").click();
+            SWTBot representationBot = SWTBotSiriusHelper.getShellBot("New VP-1737.2");
+            representationBot.button("OK").click();
             assertEditorIsNotError("Right click New representation editor did not opened correctly", bot.activeEditor());
             assertEquals("The active editor is not the one expected", EXPECTED_NEW_REPRESENTATION_INSTANCE_NAME, bot.activeEditor().getTitle());
         } finally {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Obeo.
+ * Copyright (c) 2014, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
@@ -58,8 +59,7 @@ public class BorderSizeComputationExpressionTest extends AbstractSiriusSwtBotGef
     }
 
     /**
-     * For each style mapping, Check that the Border Size Computation Expression
-     * can not be empty.
+     * For each style mapping, Check that the Border Size Computation Expression can not be empty.
      */
     public void testBorderSizeComputationExpression() {
         // Open VSM
@@ -82,19 +82,20 @@ public class BorderSizeComputationExpressionTest extends AbstractSiriusSwtBotGef
     private void testBorderSizeComputationExpression(SWTBotTreeItem tree, String node, String style, String expectedDefaultSize) {
         tree.expandNode(DEFAULT).expandNode(node).expandNode(style).select();
         // set the focus on the Properties view
-        bot.viewByTitle(PROPERTIES).setFocus();
+        SWTBotView propertiesView = bot.viewByTitle(PROPERTIES);
+        propertiesView.setFocus();
         // set the focus on the Border tab
-        SWTBotSiriusHelper.selectPropertyTabItem(BORDER);
+        SWTBotSiriusHelper.selectPropertyTabItem(BORDER, propertiesView.bot());
         // get the label expression
-        labelText = bot.viewByTitle(PROPERTIES).bot().text(0);
+        labelText = propertiesView.bot().text(0);
         // focus on label field
         labelText.setFocus();
         // Set Border Size Computation Expression to empty
         labelText.setText("");
         // set the focus on the General tab
-        SWTBotSiriusHelper.selectPropertyTabItem(GENERAL);
+        SWTBotSiriusHelper.selectPropertyTabItem(GENERAL, propertiesView.bot());
         // set the focus on the Border tab
-        SWTBotSiriusHelper.selectPropertyTabItem(BORDER);
+        SWTBotSiriusHelper.selectPropertyTabItem(BORDER, propertiesView.bot());
         assertEquals("Border Size Computation Expression should not be empty for " + style, expectedDefaultSize, labelText.getText());
     }
 

@@ -19,6 +19,7 @@ import java.util.Set;
 
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
@@ -50,11 +51,10 @@ public class ViewpointSelectionDialog {
     }
 
     /**
-     * "Select Viewpoints" operation (when creating a new local session, either
-     * via wizard or drag and drop of model in local session view).
+     * "Select Viewpoints" operation (when creating a new local session, either via wizard or drag and drop of model in
+     * local session view).
      * <p>
-     * If a viewpoint is provided in both sets, this viewpoint will be selected.
-     * Unselection action will be ignored.
+     * If a viewpoint is provided in both sets, this viewpoint will be selected. Unselection action will be ignored.
      * </p>
      * 
      * @param viewpointToSelect
@@ -66,7 +66,7 @@ public class ViewpointSelectionDialog {
         bot.waitUntil(Conditions.shellIsActive(ViewpointSelectionDialog.VIEWPOINT_DIALOG_NAME));
 
         final SWTBotShell shellViewpointsSelection = bot.shell(ViewpointSelectionDialog.VIEWPOINT_DIALOG_NAME);
-
+        SWTBot viewpointSelectionBot = shellViewpointsSelection.bot();
         if (viewpointToSelect != null && viewpointToDeselect != null) {
             // Put the two lists in new one in order to call
             // remove() on it and failIfMissingViewpoints() at the end
@@ -74,9 +74,10 @@ public class ViewpointSelectionDialog {
             viewpointSelection.addAll(viewpointToDeselect);
 
             if (!viewpointSelection.isEmpty()) {
-                for (int rowPosition = 0; rowPosition < bot.table().rowCount(); rowPosition++) {
 
-                    final SWTBotTableItem item = bot.table().getTableItem(rowPosition);
+                for (int rowPosition = 0; rowPosition < viewpointSelectionBot.table().rowCount(); rowPosition++) {
+
+                    final SWTBotTableItem item = viewpointSelectionBot.table().getTableItem(rowPosition);
                     final String text = item.getText();
 
                     if (viewpointToSelect.contains(text)) {
@@ -91,9 +92,9 @@ public class ViewpointSelectionDialog {
                 }
                 failIfMissingViewpoints(viewpointSelection);
 
-                final SWTBotButton okButton = bot.button("OK");
+                final SWTBotButton okButton = viewpointSelectionBot.button("OK");
 
-                bot.waitUntil(new DefaultCondition() {
+                viewpointSelectionBot.waitUntil(new DefaultCondition() {
 
                     @Override
                     public String getFailureMessage() {
@@ -108,7 +109,7 @@ public class ViewpointSelectionDialog {
                 });
             }
         }
-        bot.button("OK").click();
+        viewpointSelectionBot.button("OK").click();
         SWTBotUtils.waitProgressMonitorClose("Progress Information");
         bot.waitUntil(Conditions.shellCloses(shellViewpointsSelection));
 
@@ -116,8 +117,8 @@ public class ViewpointSelectionDialog {
     }
 
     /**
-     * "Select Viewpoints" operation (when creating a new local session, either
-     * via wizard or drag and drop of model in local session view).
+     * "Select Viewpoints" operation (when creating a new local session, either via wizard or drag and drop of model in
+     * local session view).
      * 
      * @param viewpoints
      *            Viewpoint to select.
@@ -127,8 +128,8 @@ public class ViewpointSelectionDialog {
     }
 
     /**
-     * "Select Viewpoints" operation (when creating a new local session, either
-     * via wizard or drag and drop of model in local session view).
+     * "Select Viewpoints" operation (when creating a new local session, either via wizard or drag and drop of model in
+     * local session view).
      *
      * @param viewpoints
      *            Viewpoint to deselect.

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -49,7 +49,6 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
@@ -132,8 +131,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the edge is correctly centered on the source border node when
-     * using an edge creation tool.
+     * Test that the edge is correctly centered on the source border node when using an edge creation tool.
      */
     public void testEdgeCreationToolOnCenteredSrcBorderNode() {
         openDiagram(REPRESENTATION_NAME);
@@ -146,8 +144,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the edge is correctly centered on the target border node when
-     * using an edge creation tool.
+     * Test that the edge is correctly centered on the target border node when using an edge creation tool.
      */
     public void testEdgeCreationToolOnCenteredTgtBorderNode() {
         openDiagram(REPRESENTATION_NAME);
@@ -160,8 +157,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the edge is correctly centered on the source node when using an
-     * edge creation tool.
+     * Test that the edge is correctly centered on the source node when using an edge creation tool.
      */
     public void testEdgeCreationToolOnCenteredSrcNode() {
         openDiagram(REPRESENTATION_NAME);
@@ -173,8 +169,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the edge is correctly centered on the target node when using an
-     * edge creation tool.
+     * Test that the edge is correctly centered on the target node when using an edge creation tool.
      */
     public void testEdgeCreationToolOnCenteredTgtNode() {
         openDiagram(REPRESENTATION_NAME);
@@ -186,8 +181,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the edge is correctly centered on the source container when
-     * using an edge creation tool.
+     * Test that the edge is correctly centered on the source container when using an edge creation tool.
      */
     public void testEdgeCreationToolOnCenteredSrcContainer() {
         openDiagram(REPRESENTATION_NAME);
@@ -200,8 +194,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the edge is correctly centered on the target container when
-     * using an edge creation tool.
+     * Test that the edge is correctly centered on the target container when using an edge creation tool.
      */
     public void testEdgeCreationToolOnCenteredTgtContainer() {
         openDiagram(REPRESENTATION_NAME);
@@ -213,8 +206,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the edge is correctly centered on the target node when using
-     * the reconnect tool.
+     * Test that the edge is correctly centered on the target node when using the reconnect tool.
      */
     public void testEdgeReconnectionOnCenteredNode() {
         openDiagram(REPRESENTATION_NAME_RECONNECT);
@@ -226,8 +218,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the edge is correctly centered on the target border node when
-     * using the reconnect tool.
+     * Test that the edge is correctly centered on the target border node when using the reconnect tool.
      */
     public void testEdgeReconnectionOnCenteredBorderNode() {
         openDiagram(REPRESENTATION_NAME_RECONNECT);
@@ -238,8 +229,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the edge is correctly centered on the target container when
-     * using the reconnect tool.
+     * Test that the edge is correctly centered on the target container when using the reconnect tool.
      */
     public void testEdgeReconnectionOnCenteredContainer() {
         openDiagram(REPRESENTATION_NAME_RECONNECT);
@@ -250,8 +240,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the Rectilinear edge is correctly centered on the target border
-     * node when using the reconnect tool.
+     * Test that the Rectilinear edge is correctly centered on the target border node when using the reconnect tool.
      */
     public void testRectilinearEdgeReconnectionOnCenteredBorderNode() {
         openDiagram(REPRESENTATION_NAME_RECONNECT);
@@ -264,8 +253,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the Rectilinear edge is correctly centered on the target
-     * container when using the reconnect tool.
+     * Test that the Rectilinear edge is correctly centered on the target container when using the reconnect tool.
      */
     public void testRectilinearEdgeReconnectionOnCenteredContainer() {
         openDiagram(REPRESENTATION_NAME_RECONNECT);
@@ -278,8 +266,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that when changing the edge routing style to rectilinear, the edge
-     * is still centered toward its source.
+     * Test that when changing the edge routing style to rectilinear, the edge is still centered toward its source.
      */
     public void testSrcChangingRoutingStyle() {
         openDiagram(REPRESENTATION_NAME_ROUTING);
@@ -289,8 +276,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that when changing the edge routing style to rectilinear, the edge
-     * is still centered toward its target.
+     * Test that when changing the edge routing style to rectilinear, the edge is still centered toward its target.
      */
     public void testTgtChangingRoutingStyle() {
         openDiagram(REPRESENTATION_NAME_ROUTING);
@@ -300,13 +286,10 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that when changing the edge routing style to rectilinear (from the
-     * menu == only one notification filter by
-     * RefreshEdgeLayoutNotificationFilter), the edge is still centered toward
-     * its target. Check that the GMF point is the same as the draw2d point. It
-     * should be the case because in current scenario we can use the figure as
-     * reference. This problem of GMF point != draw2d point should exist only
-     * when the GMF data is used.
+     * Test that when changing the edge routing style to rectilinear (from the menu == only one notification filter by
+     * RefreshEdgeLayoutNotificationFilter), the edge is still centered toward its target. Check that the GMF point is
+     * the same as the draw2d point. It should be the case because in current scenario we can use the figure as
+     * reference. This problem of GMF point != draw2d point should exist only when the GMF data is used.
      */
     public void testTgtChangingRoutingStyleWithGMFAutoSize() {
         openDiagram(REPRESENTATION_NAME_CHANGING_ROUTING);
@@ -316,13 +299,10 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that when changing the edge routing style to rectilinear (from style
-     * tab of properties view == 2 notifications used by
-     * RefreshEdgeLayoutNotificationFilter), the edge is still centered toward
-     * its target. Check that the GMF point is the same as the draw2d point. It
-     * should be the case because in current scenario we can use the figure as
-     * reference. This problem of GMF point != draw2d point should exist only
-     * when the GMF data is used.
+     * Test that when changing the edge routing style to rectilinear (from style tab of properties view == 2
+     * notifications used by RefreshEdgeLayoutNotificationFilter), the edge is still centered toward its target. Check
+     * that the GMF point is the same as the draw2d point. It should be the case because in current scenario we can use
+     * the figure as reference. This problem of GMF point != draw2d point should exist only when the GMF data is used.
      * 
      */
     public void testTgtChangingRoutingStyleFromStyleTabWithGMFAutoSize() {
@@ -333,8 +313,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the end user cannot move the edge source that should be
-     * centered. Border node case.
+     * Test that the end user cannot move the edge source that should be centered. Border node case.
      */
     public void testUserMoveCenteredSrcOnBorderNode() {
         openDiagram(REPRESENTATION_NAME_MOVING);
@@ -345,8 +324,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the end user cannot move the edge source that should be
-     * centered. Container node case.
+     * Test that the end user cannot move the edge source that should be centered. Container node case.
      */
     public void testUserMoveCenteredSrcOnContainer() {
         openDiagram(REPRESENTATION_NAME_MOVING);
@@ -357,8 +335,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the end user cannot move the edge source that should be
-     * centered. Node case.
+     * Test that the end user cannot move the edge source that should be centered. Node case.
      */
     public void testUserMoveCenteredSrcOnNode() {
         openDiagram(REPRESENTATION_NAME_MOVING);
@@ -369,8 +346,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the end user cannot move the edge target that should be
-     * centered. Border node case.
+     * Test that the end user cannot move the edge target that should be centered. Border node case.
      */
     public void testUserMoveCenteredTgtOnBorderNode() {
         openDiagram(REPRESENTATION_NAME_MOVING);
@@ -381,8 +357,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the end user cannot move the edge target that should be
-     * centered. Container case.
+     * Test that the end user cannot move the edge target that should be centered. Container case.
      */
     public void testUserMoveCenteredTgtOnContainer() {
         openDiagram(REPRESENTATION_NAME_MOVING);
@@ -393,8 +368,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the end user cannot move the edge target that should be
-     * centered. Node case.
+     * Test that the end user cannot move the edge target that should be centered. Node case.
      */
     public void testUserMoveCenteredTgtOnNode() {
         openDiagram(REPRESENTATION_NAME_MOVING);
@@ -405,9 +379,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the end user can move the edge source which is not centered.
-     * Border node case. Deactivated since draw2D try to keep the edge straight,
-     * so the move is not perceptible.
+     * Test that the end user can move the edge source which is not centered. Border node case. Deactivated since draw2D
+     * try to keep the edge straight, so the move is not perceptible.
      */
     public void _testUserMoveFreeSrcOnBorderNode() {
         openDiagram(REPRESENTATION_NAME_MOVING);
@@ -418,8 +391,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the end user can move the edge source which is not centered.
-     * Container case.
+     * Test that the end user can move the edge source which is not centered. Container case.
      */
     public void testUserMoveFreeSrcOnContainer() {
         openDiagram(REPRESENTATION_NAME_MOVING);
@@ -438,8 +410,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the end user can move the edge source which is not centered.
-     * Node case.
+     * Test that the end user can move the edge source which is not centered. Node case.
      */
     public void testUserMoveFreeSrcOnNode() {
         openDiagram(REPRESENTATION_NAME_MOVING);
@@ -455,8 +426,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the end user can move the edge target which is not centered.
-     * Border node case.
+     * Test that the end user can move the edge target which is not centered. Border node case.
      */
     public void testUserMoveFreeTgtOnBorderNode() {
         openDiagram(REPRESENTATION_NAME_MOVING);
@@ -469,8 +439,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the end user can move the edge target which is not centered.
-     * Container case.
+     * Test that the end user can move the edge target which is not centered. Container case.
      */
     public void testUserMoveFreeTgtOnContainer() {
         openDiagram(REPRESENTATION_NAME_MOVING);
@@ -489,8 +458,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the end user can move the edge target which is not centered.
-     * Node case.
+     * Test that the end user can move the edge target which is not centered. Node case.
      */
     public void testUserMoveFreeTgtOnNode() {
         openDiagram(REPRESENTATION_NAME_MOVING);
@@ -506,8 +474,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the end user cannot move a rectilinear edge end with two
-     * bendpoints and only one centered. See #448739 Comment1. Container case.
+     * Test that the end user cannot move a rectilinear edge end with two bendpoints and only one centered. See #448739
+     * Comment1. Container case.
      */
     public void testUserCannotMoveRectilinearFreeTgtOnContainer() {
         openDiagram(REPRESENTATION_NAME_MOVING);
@@ -523,8 +491,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the end user cannot move a rectilinear edge end with two
-     * bendpoints and only one centered. See #448739 Comment1. Node case.
+     * Test that the end user cannot move a rectilinear edge end with two bendpoints and only one centered. See #448739
+     * Comment1. Node case.
      */
     public void testUserCannotMoveRectilinearFreeTgtOnNode() {
         openDiagram(REPRESENTATION_NAME_MOVING);
@@ -540,10 +508,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that when resizing the edge source with a source and a target
-     * 'auto-size', the edge is still centered. See
-     * <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c5">Bug
-     * 448739#c5</a>.
+     * Test that when resizing the edge source with a source and a target 'auto-size', the edge is still centered. See
+     * <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c5">Bug 448739#c5</a>.
      */
     public void testResizingAutoSizeContainer() {
         openDiagram(REPRESENTATION_NAME_RESIZE);
@@ -562,9 +528,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that when resizing a border node, the bendpoints of the not centered
-     * edge, with a null anchor, are not moved. See
-     * <a https://bugs.eclipse.org/bugs/show_bug.cgi?id=466384">Bug 466384</a>.
+     * Test that when resizing a border node, the bendpoints of the not centered edge, with a null anchor, are not
+     * moved. See <a https://bugs.eclipse.org/bugs/show_bug.cgi?id=466384">Bug 466384</a>.
      */
     public void testResizingNullAnchorSourceBorderNode() {
         openDiagram(REPRESENTATION_NAME_RESIZE_BORDER_NODE);
@@ -586,30 +551,24 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that when resizing a border node, the bendpoints of the centered
-     * edge are fix and the edge is still centered. See
-     * <a https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c18">Bug
-     * 448739#c18</a>.
+     * Test that when resizing a border node, the bendpoints of the centered edge are fix and the edge is still
+     * centered. See <a https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c18">Bug 448739#c18</a>.
      */
     public void testResizingCenteredTargetBorderNodeWithZoom200() {
         resizeCenteredTargetBorderNodeWithZoom(ZoomLevel.ZOOM_200);
     }
 
     /**
-     * Test that when resizing a border node, the bendpoints of the centered
-     * edge are fix and the edge is still centered. See
-     * <a https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c25">Bug
-     * 448739#c25</a>.
+     * Test that when resizing a border node, the bendpoints of the centered edge are fix and the edge is still
+     * centered. See <a https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c25">Bug 448739#c25</a>.
      */
     public void testResizingCenteredTargetBorderNodeWithZoom125() {
         resizeCenteredTargetBorderNodeWithZoom(ZoomLevel.ZOOM_125);
     }
 
     /**
-     * Test that when resizing a border node, the bendpoints of the centered
-     * edge are fix and the edge is still centered. See
-     * <a https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c18">Bug
-     * 448739#c18</a>.
+     * Test that when resizing a border node, the bendpoints of the centered edge are fix and the edge is still
+     * centered. See <a https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c18">Bug 448739#c18</a>.
      * 
      * @param zoomLevel
      *            The zoom to apply on the editor
@@ -643,10 +602,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that when resizing a border node over another border node, the
-     * bendpoints of the centered edge are fix and the edge is still centered.
-     * See <a https://bugs.eclipse.org/bugs/show_bug.cgi?id=466422">Bug
-     * 466422</a>.
+     * Test that when resizing a border node over another border node, the bendpoints of the centered edge are fix and
+     * the edge is still centered. See <a https://bugs.eclipse.org/bugs/show_bug.cgi?id=466422">Bug 466422</a>.
      */
     public void testResizingCenteredTargetBorderNodeOverAnotherNode() {
         openDiagram(REPRESENTATION_NAME_RESIZE_BORDER_NODE);
@@ -672,9 +629,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that when resizing a border node over another border node, the
-     * overlapped border node is not moved. See
-     * <a https://bugs.eclipse.org/bugs/show_bug.cgi?id=466456">Bug 466456</a>.
+     * Test that when resizing a border node over another border node, the overlapped border node is not moved. See <a
+     * https://bugs.eclipse.org/bugs/show_bug.cgi?id=466456">Bug 466456</a>.
      */
     public void testResizingTargetBorderNodeOverAnotherNode() {
         openDiagram(REPRESENTATION_NAME_RESIZE_BORDER_NODE);
@@ -696,12 +652,9 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that when resizing a shape over edge bendpoints, the edge is still
-     * centered. See
-     * <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c8">Bug
-     * 448739#c8</a> and
-     * <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c10">Bug
-     * 448739#c10</a>.
+     * Test that when resizing a shape over edge bendpoints, the edge is still centered. See
+     * <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c8">Bug 448739#c8</a> and
+     * <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=448739#c10">Bug 448739#c10</a>.
      */
     public void testResizingContainerWithInViewBendpoints() {
         openDiagram(REPRESENTATION_NAME_RESIZE_2);
@@ -756,8 +709,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that rectilinear edges with two or tree bend-points are centered for
-     * both ends when changing the style from NONE to BOTH.
+     * Test that rectilinear edges with two or tree bend-points are centered for both ends when changing the style from
+     * NONE to BOTH.
      */
     public void testRectilinearSpecificCases() {
         openDiagram(REPRESENTATION_NAME_RECTILINEAR_CASES);
@@ -831,14 +784,11 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
      * <LI>Source node of edge A is moved</LI>
      * <LI>Target node of edge A is moved</LI>
      * <LI>Bendpoints of edge A are recomputed</LI>
-     * <LI>Routing style of edge A is changed (both in Sirius style and GMF
-     * style)</LI>
-     * <LI>Routing style of edge B is changed (both in Sirius style and GMF
-     * style)</LI>
+     * <LI>Routing style of edge A is changed (both in Sirius style and GMF style)</LI>
+     * <LI>Routing style of edge B is changed (both in Sirius style and GMF style)</LI>
      * </UL>
-     * . This kind of layout can be done when someone make specific layout
-     * action. The goal is to check that in this condition, the edge A is
-     * correctly layouted.
+     * . This kind of layout can be done when someone make specific layout action. The goal is to check that in this
+     * condition, the edge A is correctly layouted.
      */
     public void testSpecificLayout() {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "borderNodesDiagram", "new borderNodesDiagram", DDiagram.class);
@@ -864,12 +814,10 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
      * <UL>
      * <LI>Auto-sized target node of an edge is moved</LI>
      * <LI>Bendpoints of edge are recomputed</LI>
-     * <LI>Routing style of edge is changed (both in Sirius style and GMF style)
-     * </LI>
+     * <LI>Routing style of edge is changed (both in Sirius style and GMF style)</LI>
      * </UL>
-     * . This kind of layout can be done when someone make specific layout
-     * action. The goal is to check that in this condition, the edge is
-     * correctly layouted.
+     * . This kind of layout can be done when someone make specific layout action. The goal is to check that in this
+     * condition, the edge is correctly layouted.
      */
     public void testSpecificVerticalLayout() {
         openDiagram("specificVerticalLayout");
@@ -970,7 +918,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         PointList pointList = connection.getPoints();
         Point lineOrigin = pointList.getPoint(pointList.size() - 2);
         Point realTargetConnection = pointList.getPoint(pointList.size() - 1);
-        
+
         // Get figure bounds
         PrecisionRectangle figureBounds = null;
         if (targetSwtBotGefEditPart.part() instanceof DNodeContainerEditPart) {
@@ -1025,7 +973,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         } else {
             figureBounds = getAbsoluteBounds((IGraphicalEditPart) sourceEditPart);
         }
-        
+
         PrecisionPoint expectedLineTerminus = getProportionalPoint(figureBounds, expectedAnchor);
 
         Optional<Point> option = GraphicalHelper.getIntersection(lineOrigin, expectedLineTerminus, (IGraphicalEditPart) sourceEditPart, false);
@@ -1054,8 +1002,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Assert that the actual point is equal to the expected one with +/- 1
-     * tolerance.
+     * Assert that the actual point is equal to the expected one with +/- 1 tolerance.
      * 
      * @param msg
      * @param expected
@@ -1140,8 +1087,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
          * Constructor.
          * 
          * @param before
-         *            the bounds before the resize. We will wait until the new
-         *            given figure bounds are different.
+         *            the bounds before the resize. We will wait until the new given figure bounds are different.
          * @param figure
          *            the figure.
          */
@@ -1161,8 +1107,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
 
         /*
          * (non-Javadoc)
-         * @see
-         * org.eclipse.swtbot.swt.finder.waits.ICondition#getFailureMessage()
+         * @see org.eclipse.swtbot.swt.finder.waits.ICondition#getFailureMessage()
          */
         @Override
         public String getFailureMessage() {
@@ -1202,8 +1147,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
 
         /*
          * (non-Javadoc)
-         * @see
-         * org.eclipse.swtbot.swt.finder.waits.ICondition#getFailureMessage()
+         * @see org.eclipse.swtbot.swt.finder.waits.ICondition#getFailureMessage()
          */
         @Override
         public String getFailureMessage() {
@@ -1237,9 +1181,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
      * @param edge1PointListBefore
      *            the edge point list before resizing.
      * @param delta
-     *            In some conditions, zoom for example, the points list can be
-     *            slightly different. This parameter allows to use a delta when
-     *            comparing point.
+     *            In some conditions, zoom for example, the points list can be slightly different. This parameter allows
+     *            to use a delta when comparing point.
      */
     private void checkPointsListAfterResizing(SWTBotGefConnectionEditPart edgeEditPart, PointList edgePointListBefore, boolean ignoreLast) {
         PointList afterPointList = getEdgePointList(edgeEditPart);
@@ -1262,7 +1205,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotUtils.waitAllUiEvents();
         propertiesBot.setFocus();
         // accesses to tab Style
-        SWTBotSiriusHelper.selectPropertyTabItem(STYLE);
+        SWTBotSiriusHelper.selectPropertyTabItem(STYLE, propertiesBot.bot());
         SWTBotTree tree = propertiesBot.bot().tree();
         // select routing syle <routingStyle> in combo
         tree.expandNode("Misc").select().getNode("Routing Style").doubleClick();
@@ -1274,7 +1217,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
             comboBox.pressShortcut(Keystrokes.CR);
         }
         // applied change with change focus
-        SWTBotSiriusHelper.selectPropertyTabItem(APPEARANCE);
+        SWTBotSiriusHelper.selectPropertyTabItem(APPEARANCE, propertiesBot.bot());
 
         checkRoutingStyleInAppearance(routingStyle);
         checkRoutingStyle(botEdgeEditPart, routingStyle);
@@ -1305,7 +1248,7 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         }
         assertEquals("The GMF routing style is not the right", routingStyle.getLiteral(), gmfRoutingStyleName);
     }
-    
+
     private PrecisionPoint getExpectedAnchor(SWTBotGefEditPart botGefEditPart, PrecisionPoint relativeToBounds) {
         IFigure figure = ((DNodeContainerEditPart) botGefEditPart.part()).getFigure();
         Rectangle figureBounds = null;

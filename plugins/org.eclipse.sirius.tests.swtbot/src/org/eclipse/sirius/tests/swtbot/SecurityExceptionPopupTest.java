@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,13 +16,13 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.condition.ShellChangedCondition;
+import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
+import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 
 /**
- * This test checks that the securityException opens a popup only in the case of
- * a nonempty message.
+ * This test checks that the securityException opens a popup only in the case of a nonempty message.
  * 
  * @author Florian Barbin
  *
@@ -30,16 +30,14 @@ import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
 public class SecurityExceptionPopupTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
-     * Logs a SecurityException with a message and makes sure the pop-up is
-     * opened.
+     * Logs a SecurityException with a message and makes sure the pop-up is opened.
      */
     public void testSecurityExceptionWithMessage() {
         launchExceptionAndCheck(true);
     }
 
     /**
-     * Logs a SecurityException without message and checks that no pop-up is
-     * opened.
+     * Logs a SecurityException without message and checks that no pop-up is opened.
      */
     public void testSecurityExceptionWithoutMessage() {
         launchExceptionAndCheck(false);
@@ -54,7 +52,6 @@ public class SecurityExceptionPopupTest extends AbstractSiriusSwtBotGefTestCase 
         } else {
             exception = new SecurityException();
         }
-        ShellChangedCondition shellChangedCondition = new ShellChangedCondition(bot.activeShell());
         SiriusTestsPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, SiriusTestsPlugin.PLUGIN_ID, "exception occurs", exception));
 
         // Step 2 - Check whether the dialog is opened
@@ -63,8 +60,9 @@ public class SecurityExceptionPopupTest extends AbstractSiriusSwtBotGefTestCase 
 
         SWTBotShell shell = null;
         try {
-            bot.waitUntil(shellChangedCondition);
-            shell = bot.activeShell();
+            ICondition shellIsActive = Conditions.shellIsActive("Permission Issue");
+            bot.waitUntil(shellIsActive);
+            shell = bot.shell("Permission Issue");
             assertEquals("Permission Issue", shell.getText());
         } catch (TimeoutException e) {
             // We throw the exception only in the case where the

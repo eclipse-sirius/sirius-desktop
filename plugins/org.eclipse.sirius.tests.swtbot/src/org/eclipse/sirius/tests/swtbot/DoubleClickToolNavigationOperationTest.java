@@ -119,6 +119,7 @@ public class DoubleClickToolNavigationOperationTest extends AbstractSiriusSwtBot
             return "Double click tool has not been taken in consideration. No change has been applied after double click.";
         }
     }
+
     private static final String REPRESENTATION_INSTANCE_NAME_R1_Root = "TC1054 representation 1 root";
 
     private static final String REPRESENTATION_INSTANCE_NAME_R1_SP2 = "TC1054 representation 1 sp2";
@@ -186,8 +187,9 @@ public class DoubleClickToolNavigationOperationTest extends AbstractSiriusSwtBot
         editor.getEditPart("System1");
         editor.doubleClick("System1");
 
-        bot.text("TC1054 representation 2").setText(REPRESENTATION_INSTANCE_NAME_R2_SYS1);
-        bot.button("OK").click();
+        SWTBot wizardBot = SWTBotSiriusHelper.getShellBot("New TC1054 representation 2");
+        wizardBot.text("TC1054 representation 2").setText(REPRESENTATION_INSTANCE_NAME_R2_SYS1);
+        wizardBot.button("OK").click();
         SWTBotSiriusDiagramEditor currentDesignerEditor = SWTBotSiriusHelper.getSiriusDiagramEditor(bot.activeEditor().getTitle());
 
         assertThat("The active editor is not the expected one", currentDesignerEditor.getTitle(), Matchers.is(REPRESENTATION_INSTANCE_NAME_R2_SYS1));
@@ -232,8 +234,9 @@ public class DoubleClickToolNavigationOperationTest extends AbstractSiriusSwtBot
         editor.getEditPart("System1");
         editor.doubleClick("System1");
 
-        bot.text("TC1054 representation 2").setText(REPRESENTATION_INSTANCE_NAME_R2_SYS1);
-        bot.button("OK").click();
+        SWTBot wizardBot = SWTBotSiriusHelper.getShellBot("New TC1054 representation 2");
+        wizardBot.text("TC1054 representation 2").setText(REPRESENTATION_INSTANCE_NAME_R2_SYS1);
+        wizardBot.button("OK").click();
         SWTBotSiriusDiagramEditor currentDesignerEditor = SWTBotSiriusHelper.getSiriusDiagramEditor(bot.activeEditor().getTitle());
 
         assertThat("The active editor is not the expected one", currentDesignerEditor.getTitle(), Matchers.is(REPRESENTATION_INSTANCE_NAME_R2_SYS1));
@@ -330,7 +333,6 @@ public class DoubleClickToolNavigationOperationTest extends AbstractSiriusSwtBot
 
         editor.show();
         editor.doubleClick("Sous-package1");
-
 
         ICondition doubleClickChangeCondition = new DoubleClickChangeCondition(editor);
         TestsUtil.waitUntil(doubleClickChangeCondition);

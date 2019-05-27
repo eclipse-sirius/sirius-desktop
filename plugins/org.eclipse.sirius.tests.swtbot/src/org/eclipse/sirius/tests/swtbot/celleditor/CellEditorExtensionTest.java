@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2018 Obeo.
+ * Copyright (c) 2015, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -41,8 +41,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 
 /**
- * Test case to check properties CellEditor extensibility. See
- * https://bugs.eclipse.org/bugs/show_bug.cgi?id=451364
+ * Test case to check properties CellEditor extensibility. See https://bugs.eclipse.org/bugs/show_bug.cgi?id=451364
  * 
  * @author Florian Barbin
  */
@@ -134,7 +133,7 @@ public class CellEditorExtensionTest extends AbstractSiriusSwtBotGefTestCase {
     private void checkCellEditorValue() {
         SWTBotView propertiesBot = bot.viewByTitle(PROPERTIES);
         propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Semantic");
+        SWTBotSiriusHelper.selectPropertyTabItem("Semantic", propertiesBot.bot());
         SWTBotTree tree = propertiesBot.bot().tree();
         tree.expandNode("NewEClass1").select().getNode("Name").click();
         SWTBotText text = propertiesBot.bot().text();
@@ -143,8 +142,7 @@ public class CellEditorExtensionTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Installs dynamically an extension that adds "custom" at the end of the
-     * value of the "name" field CellEditor.
+     * Installs dynamically an extension that adds "custom" at the end of the value of the "name" field CellEditor.
      */
     private void registerExtension() {
         IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();

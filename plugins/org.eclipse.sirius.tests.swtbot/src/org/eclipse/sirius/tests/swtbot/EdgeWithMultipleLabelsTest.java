@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -32,10 +32,11 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEdgeLabelVisibility;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.swt.SWTException;
-import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.junit.Assert;
@@ -109,8 +110,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
     /**
      * 
-     * Test to create a relation based edge and validated that there are
-     * multiple labels.
+     * Test to create a relation based edge and validated that there are multiple labels.
      * 
      */
     public void testCreateRelationBasedEdgeStraight() {
@@ -121,8 +121,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
     /**
      * 
-     * Test to create a relation based edge and validated that there are
-     * multiple labels.
+     * Test to create a relation based edge and validated that there are multiple labels.
      * 
      */
     public void testCreateRelationBasedEdgeManhattan() {
@@ -133,8 +132,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
     /**
      * 
-     * Test to create a relation based edge and validated that there are
-     * multiple labels.
+     * Test to create a relation based edge and validated that there are multiple labels.
      * 
      */
     public void testCreateRelationBasedEdgeTree() {
@@ -181,8 +179,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
     /**
      * 
-     * Test to create an element based edge and validated that there are
-     * multiple labels.
+     * Test to create an element based edge and validated that there are multiple labels.
      * 
      */
     public void testCreateElementBasedEdgeStraight() {
@@ -193,8 +190,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
     /**
      * 
-     * Test to create an element based edge and validated that there are
-     * multiple labels.
+     * Test to create an element based edge and validated that there are multiple labels.
      * 
      */
     public void testCreateElementBasedEdgeManhattan() {
@@ -205,8 +201,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
     /**
      * 
-     * Test to create an element based edge and validated that there are
-     * multiple labels.
+     * Test to create an element based edge and validated that there are multiple labels.
      * 
      */
     public void testCreateElementBasedEdgeTree() {
@@ -253,8 +248,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
     /**
      * 
-     * Test to delete a relation based edge and validated that there are
-     * multiple labels.
+     * Test to delete a relation based edge and validated that there are multiple labels.
      * 
      */
     public void testDeleteRelationBasedEdgeStraight() {
@@ -265,8 +259,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
     /**
      * 
-     * Test to delete a relation based edge and validated that there are
-     * multiple labels.
+     * Test to delete a relation based edge and validated that there are multiple labels.
      * 
      */
     public void testDeleteRelationBasedEdgeManhattan() {
@@ -277,8 +270,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
     /**
      * 
-     * Test to delete a relation based edge and validated that there are
-     * multiple labels.
+     * Test to delete a relation based edge and validated that there are multiple labels.
      * 
      */
     public void testDeleteRelationBasedEdgeTree() {
@@ -326,8 +318,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
     /**
      * 
-     * Test to delete an element based edge and validated that there are
-     * multiple labels.
+     * Test to delete an element based edge and validated that there are multiple labels.
      * 
      */
     public void testDeleteElementBasedEdgeStraight() {
@@ -338,8 +329,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
     /**
      * 
-     * Test to delete an element based edge and validated that there are
-     * multiple labels.
+     * Test to delete an element based edge and validated that there are multiple labels.
      * 
      */
     public void testDeleteElementBasedEdgeManhattan() {
@@ -350,8 +340,7 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
     /**
      * 
-     * Test to delete an element based edge and validated that there are
-     * multiple labels.
+     * Test to delete an element based edge and validated that there are multiple labels.
      * 
      */
     public void testDeleteElementBasedEdgeTree() {
@@ -435,11 +424,11 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
         // Hide the label
         editor.bot().toolbarButtonWithTooltip("Show/Hide").click();
-        bot.waitUntilWidgetAppears(Conditions.shellIsActive("Diagram elements visibility"));
-        bot.text().setText("*label");
-        bot.tree().getTreeItem("EC1 -> EC3").getNode("label").select().toggleCheck();
+        SWTBot wizardBot = SWTBotSiriusHelper.getShellBot("Diagram elements visibility");
+        wizardBot.text().setText("*label");
+        wizardBot.tree().getTreeItem("EC1 -> EC3").getNode("label").select().toggleCheck();
 
-        bot.button("OK").click();
+        wizardBot.button("OK").click();
 
         // bot.waitUntil(new CheckEdgeLabelIsHidden(editor, "EC1 begin"));
         bot.waitUntil(new CheckEdgeLabelVisibility(editor, "EC1 center", false));
@@ -447,11 +436,12 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
         // Show the label
         editor.bot().toolbarButtonWithTooltip("Show/Hide").click();
-        bot.waitUntilWidgetAppears(Conditions.shellIsActive("Diagram elements visibility"));
-        bot.text().setText("*label");
-        bot.tree().getTreeItem("EC1 -> EC3").getNode("label").select().toggleCheck();
 
-        bot.button("OK").click();
+        wizardBot = SWTBotSiriusHelper.getShellBot("Diagram elements visibility");
+        wizardBot.text().setText("*label");
+        wizardBot.tree().getTreeItem("EC1 -> EC3").getNode("label").select().toggleCheck();
+
+        wizardBot.button("OK").click();
 
         // bot.waitUntil(new CheckEdgeLabelIsHidden(editor, "EC1 begin"));
         bot.waitUntil(new CheckEdgeLabelVisibility(editor, "EC1 center", true));
@@ -498,11 +488,11 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
         // Hide the label
         editor.bot().toolbarButtonWithTooltip("Show/Hide").click();
-        bot.waitUntilWidgetAppears(Conditions.shellIsActive("Diagram elements visibility"));
-        bot.text().setText("*label");
-        bot.tree().getTreeItem("ec2 : EC2").getNode("label").select().toggleCheck();
+        SWTBot wizardBot = SWTBotSiriusHelper.getShellBot("Diagram elements visibility");
+        wizardBot.text().setText("*label");
+        wizardBot.tree().getTreeItem("ec2 : EC2").getNode("label").select().toggleCheck();
 
-        bot.button("OK").click();
+        wizardBot.button("OK").click();
 
         // bot.waitUntil(new CheckEdgeLabelIsHidden(editor, "EC1 begin"));
         bot.waitUntil(new CheckEdgeLabelVisibility(editor, "ec2 center", false));
@@ -510,11 +500,11 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
         // Show the label
         editor.bot().toolbarButtonWithTooltip("Show/Hide").click();
-        bot.waitUntilWidgetAppears(Conditions.shellIsActive("Diagram elements visibility"));
-        bot.text().setText("*label");
-        bot.tree().getTreeItem("ec2 : EC2").getNode("label").select().toggleCheck();
+        wizardBot = SWTBotSiriusHelper.getShellBot("Diagram elements visibility");
+        wizardBot.text().setText("*label");
+        wizardBot.tree().getTreeItem("ec2 : EC2").getNode("label").select().toggleCheck();
 
-        bot.button("OK").click();
+        wizardBot.button("OK").click();
 
         // bot.waitUntil(new CheckEdgeLabelIsHidden(editor, "EC1 begin"));
         bot.waitUntil(new CheckEdgeLabelVisibility(editor, "ec2 center", true));
@@ -565,14 +555,14 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
         // Hide the label begin and center
         editor.bot().toolbarButtonWithTooltip("Show/Hide").click();
-        bot.waitUntilWidgetAppears(Conditions.shellIsActive("Diagram elements visibility"));
-        bot.text().setText("*label");
-        bot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 begin label").select().toggleCheck();
-        bot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 center label").select().toggleCheck();
+        SWTBot wizardBot = SWTBotSiriusHelper.getShellBot("Diagram elements visibility");
+        wizardBot.text().setText("*label");
+        wizardBot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 begin label").select().toggleCheck();
+        wizardBot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 center label").select().toggleCheck();
         // bot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 end
         // label").select().toggleCheck();
 
-        bot.button("OK").click();
+        wizardBot.button("OK").click();
 
         bot.waitUntil(new CheckEdgeLabelVisibility(editor, "EC1 begin", false));
         bot.waitUntil(new CheckEdgeLabelVisibility(editor, "EC1 center", false));
@@ -580,13 +570,13 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
         // Toggle visibility of all labels
         editor.bot().toolbarButtonWithTooltip("Show/Hide").click();
-        bot.waitUntilWidgetAppears(Conditions.shellIsActive("Diagram elements visibility"));
-        bot.text().setText("*label");
-        bot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 begin label").select().toggleCheck();
-        bot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 center label").select().toggleCheck();
-        bot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 end label").select().toggleCheck();
+        wizardBot = SWTBotSiriusHelper.getShellBot("Diagram elements visibility");
+        wizardBot.text().setText("*label");
+        wizardBot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 begin label").select().toggleCheck();
+        wizardBot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 center label").select().toggleCheck();
+        wizardBot.tree().getTreeItem("EC1 -> EC3").getNode("EC1 end label").select().toggleCheck();
 
-        bot.button("OK").click();
+        wizardBot.button("OK").click();
 
         bot.waitUntil(new CheckEdgeLabelVisibility(editor, "EC1 begin", true));
         bot.waitUntil(new CheckEdgeLabelVisibility(editor, "EC1 center", true));
@@ -633,14 +623,14 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
         // Hide the label begin and center
         editor.bot().toolbarButtonWithTooltip("Show/Hide").click();
-        bot.waitUntilWidgetAppears(Conditions.shellIsActive("Diagram elements visibility"));
-        bot.text().setText("*label");
-        bot.tree().getTreeItem("ec2 : EC2").getNode("ec2 begin label").select().toggleCheck();
-        bot.tree().getTreeItem("ec2 : EC2").getNode("ec2 center label").select().toggleCheck();
+        SWTBot wizardBot = SWTBotSiriusHelper.getShellBot("Diagram elements visibility");
+        wizardBot.text().setText("*label");
+        wizardBot.tree().getTreeItem("ec2 : EC2").getNode("ec2 begin label").select().toggleCheck();
+        wizardBot.tree().getTreeItem("ec2 : EC2").getNode("ec2 center label").select().toggleCheck();
         // bot.tree().getTreeItem("ec2 : EC2").getNode("ec2 end
         // label").select().toggleCheck();
 
-        bot.button("OK").click();
+        wizardBot.button("OK").click();
 
         bot.waitUntil(new CheckEdgeLabelVisibility(editor, "ec2 begin", false));
         bot.waitUntil(new CheckEdgeLabelVisibility(editor, "ec2 center", false));
@@ -648,13 +638,13 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
 
         // Toggle visibility of all labels
         editor.bot().toolbarButtonWithTooltip("Show/Hide").click();
-        bot.waitUntilWidgetAppears(Conditions.shellIsActive("Diagram elements visibility"));
-        bot.text().setText("*label");
-        bot.tree().getTreeItem("ec2 : EC2").getNode("ec2 begin label").select().toggleCheck();
-        bot.tree().getTreeItem("ec2 : EC2").getNode("ec2 center label").select().toggleCheck();
-        bot.tree().getTreeItem("ec2 : EC2").getNode("ec2 end label").select().toggleCheck();
+        wizardBot = SWTBotSiriusHelper.getShellBot("Diagram elements visibility");
+        wizardBot.text().setText("*label");
+        wizardBot.tree().getTreeItem("ec2 : EC2").getNode("ec2 begin label").select().toggleCheck();
+        wizardBot.tree().getTreeItem("ec2 : EC2").getNode("ec2 center label").select().toggleCheck();
+        wizardBot.tree().getTreeItem("ec2 : EC2").getNode("ec2 end label").select().toggleCheck();
 
-        bot.button("OK").click();
+        wizardBot.button("OK").click();
 
         bot.waitUntil(new CheckEdgeLabelVisibility(editor, "ec2 begin", true));
         bot.waitUntil(new CheckEdgeLabelVisibility(editor, "ec2 center", true));
@@ -975,8 +965,8 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * The direct edit on begin label is not allowed, so check that it fails.
-     * The default SWTBot timeOut is reduced to consume less time.
+     * The direct edit on begin label is not allowed, so check that it fails. The default SWTBot timeOut is reduced to
+     * consume less time.
      */
     private void validateDirectEditRelationBasedEdgeBeginLabel() {
 
@@ -1270,8 +1260,8 @@ public class EdgeWithMultipleLabelsTest extends AbstractSiriusSwtBotGefTestCase 
     }
 
     /**
-     * The direct edit on end label is not allowed, so check that it fails. The
-     * default SWTBot timeOut is reduced to consume less time.
+     * The direct edit on end label is not allowed, so check that it fails. The default SWTBot timeOut is reduced to
+     * consume less time.
      */
     private void validateDirectEditElementBasedEdgeEndLabel() {
         addWarningListener();

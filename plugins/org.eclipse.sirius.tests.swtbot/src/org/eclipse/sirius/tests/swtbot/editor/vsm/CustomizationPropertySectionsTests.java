@@ -315,8 +315,7 @@ public class CustomizationPropertySectionsTests extends AbstractContentAssistTes
     }
 
     /**
-     * Ensure that the order displayed in properties view of VSM file is (Left -
-     * Center - Right).
+     * Ensure that the order displayed in properties view of VSM file is (Left - Center - Right).
      */
     public void testLabelAlignmentInVSM() {
         SWTBotTreeItem diagramDescItem = viewpointItemBot.getNode(DIAGRAM_DESCRIPTION_NAME).select().expand();
@@ -325,7 +324,7 @@ public class CustomizationPropertySectionsTests extends AbstractContentAssistTes
         mappingItem.getNode("Gradient white to light_gray").select();
 
         propertiesBot = bot.viewByTitle("Properties");
-        SWTBotSiriusHelper.selectPropertyTabItem("Label");
+        SWTBotSiriusHelper.selectPropertyTabItem("Label", propertiesBot.bot());
         SWTBotUtils.waitAllUiEvents();
         SWTBotRadio left = propertiesBot.bot().radio(0);
         SWTBotRadio center = propertiesBot.bot().radio(1);

@@ -61,8 +61,7 @@ public class UINewRepresentationBuilder<R extends AbstractUIRepresentation<?>> i
      * @param clickedRepresentationName
      *            Representation name clicked in contextual menu
      * @param representationDescriptionLabel
-     *            The label of the representation description corresponding to
-     *            <code>clickedRepresentationName</code>.
+     *            The label of the representation description corresponding to <code>clickedRepresentationName</code>.
      * @param representationType
      *            Java type of representation.
      */
@@ -88,7 +87,7 @@ public class UINewRepresentationBuilder<R extends AbstractUIRepresentation<?>> i
         shell = mainBot.shell(MessageFormat.format(Messages.createRepresentationInputDialog_Title, representationDescriptionLabel));
         shell.activate();
 
-        shellBot = new SWTBot(shell.widget);
+        shellBot = shell.bot();
 
         return this;
     }
@@ -133,8 +132,7 @@ public class UINewRepresentationBuilder<R extends AbstractUIRepresentation<?>> i
      * Finish creation with click on "ok".
      * 
      * @param disableSnapToGridOnThisEditor
-     *            true if the snapToGrid must be disable for this editor, false
-     *            otherwise
+     *            true if the snapToGrid must be disable for this editor, false otherwise
      * @return Representation.
      */
     @Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo
+ * Copyright (c) 2018, 2019 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -45,8 +45,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.IEditorReference;
 
 /**
- * Test the service implementation navigation from VSM service call in
- * interpreted expressions.
+ * Test the service implementation navigation from VSM service call in interpreted expressions.
  * 
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
  *
@@ -59,8 +58,7 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
 
         /**
          * @param javaEditorOpened
-         *            true if the Java editor should be opened at some point.
-         *            False it should never be opened.
+         *            true if the Java editor should be opened at some point. False it should never be opened.
          */
         public JavaEditorOpenedCondition(boolean javaEditorOpened) {
             this.javaEditorOpened = javaEditorOpened;
@@ -119,16 +117,14 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Initialize the context by copying new resources and waiting all build
-     * process.
+     * Initialize the context by copying new resources and waiting all build process.
      * 
      * @exception InterruptedException
      *                if this thread is interrupted while waiting
      * @exception OperationCanceledException
      *                if the progress monitor is canceled while waiting
      * @exception CoreException
-     *                In case of problem during setting workspace description to
-     *                disable auto build.
+     *                In case of problem during setting workspace description to disable auto build.
      * @throws CommandException
      */
     private void initContext(List<String> nodes, boolean selectPropertyField) throws InterruptedException, OperationCanceledException, CoreException, CommandException {
@@ -147,7 +143,7 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
         String MANIFEST_MF = "MANIFEST.MF";
         EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, PATH + MANIFEST_MF, VSM_PROJECT_NAME + "/META-INF/" + MANIFEST_MF);
         EclipseTestsSupportHelper.INSTANCE.copyFile(Activator.PLUGIN_ID, PATH + VSM, VSM_PROJECT_NAME + "/description/" + TESTED_ODESIGN_NAME);
-        waitJobsBuildOrRefresh();
+
         // We open the new design used by the test. We avoid replacing the
         // already existing one because sometime the refresh is not correctly
         // done and tests can fail.
@@ -155,6 +151,10 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
         modelExplorerView.setFocus();
         SWTBotTreeItem projectNode = modelExplorerView.bot().tree().expandNode("org.eclipse.sirius.test.design");
         SWTBotTreeItem descriptionNode = projectNode.expandNode("description");
+
+        viewpointSpecificationProject.refreshLocal(IProject.DEPTH_INFINITE, new NullProgressMonitor());
+        waitJobsBuildOrRefresh();
+
         SWTBotTreeItem designNode = descriptionNode.getNode(TESTED_ODESIGN_NAME);
         designNode.doubleClick();
 
@@ -185,13 +185,12 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
         if (selectPropertyField) {
             propertiesBot = bot.viewByTitle("Properties");
             propertiesBot.setFocus();
-            SWTBotSiriusHelper.selectPropertyTabItem("General");
+            SWTBotSiriusHelper.selectPropertyTabItem("General", propertiesBot.bot());
         }
     }
 
     /**
-     * There is problem on linux with this test so we are waiting build or
-     * refresh jobs by joining them.
+     * There is problem on linux with this test so we are waiting build or refresh jobs by joining them.
      */
     private void waitJobsBuildOrRefresh() throws InterruptedException, OperationCanceledException {
         Job.getJobManager().join(ResourcesPlugin.FAMILY_MANUAL_BUILD, new NullProgressMonitor());
@@ -202,14 +201,12 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works
-     * in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
      * <ul>
      * <li>The expression calls the service interpreter.</li>
      * <li>The cursor is at the starting position</li>
      * <li>The service called is present in two different classes</li>
-     * <li>The service from which the navigation is done is the first one in the
-     * wizard.</li>
+     * <li>The service from which the navigation is done is the first one in the wizard.</li>
      * </ul>
      * 
      * @exception Exception
@@ -217,14 +214,13 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
      */
     public void testServiceNavigationWithSameServiceInDifferentClasses() throws Exception {
         List<String> expectedItemLabels = new ArrayList<>();
-        expectedItemLabels.add("BasicService - org.eclipse.sirius.test.design");
-        expectedItemLabels.add("BasicService2");
+        expectedItemLabels.add("BasicService - org.eclipse.sirius.test.design - org.eclipse.sirius.test.design/src");
+        expectedItemLabels.add("BasicService2 - org.eclipse.sirius.test.design - org.eclipse.sirius.test.design/src");
         testNavigation("service:sampleService()", 2, expectedItemLabels, 0, 0);
     }
 
     /**
-     * Tests that double clicking a Java service declaration will open
-     * corresponding Java editor.
+     * Tests that double clicking a Java service declaration will open corresponding Java editor.
      * 
      * @exception Exception
      *                if a problem occurs.
@@ -237,8 +233,8 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Tests that double clicking a Java service declaration pointing at an
-     * unknown class opens a dialog with an error message.
+     * Tests that double clicking a Java service declaration pointing at an unknown class opens a dialog with an error
+     * message.
      * 
      * @exception Exception
      *                if a problem occurs.
@@ -253,7 +249,7 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
 
         propertiesBot = bot.viewByTitle("Properties");
         propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("General");
+        SWTBotSiriusHelper.selectPropertyTabItem("General", propertiesBot.bot());
         SWTBotText text = propertiesBot.bot().text(0);
 
         text.setFocus();
@@ -266,14 +262,12 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works
-     * in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
      * <ul>
      * <li>The expression calls the service interpreter.</li>
      * <li>The cursor is at the starting position</li>
      * <li>The service called is present in two different classes</li>
-     * <li>The service from which the navigation is done is the second one in
-     * the wizard.</li>
+     * <li>The service from which the navigation is done is the second one in the wizard.</li>
      * </ul>
      * 
      * @exception Exception
@@ -281,14 +275,13 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
      */
     public void testServiceNavigationWithSameServiceInDifferentClasses2() throws Exception {
         List<String> expectedItemLabels = new ArrayList<>();
-        expectedItemLabels.add("BasicService - org.eclipse.sirius.test.design");
-        expectedItemLabels.add("BasicService2");
+        expectedItemLabels.add("BasicService - org.eclipse.sirius.test.design - org.eclipse.sirius.test.design/src");
+        expectedItemLabels.add("BasicService2 - org.eclipse.sirius.test.design - org.eclipse.sirius.test.design/src");
         testNavigation("service:sampleService()", 2, expectedItemLabels, 1, 0);
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works
-     * in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
      * <ul>
      * <li>The expression calls the service interpreter.</li>
      * <li>The cursor is at the 12 index position</li>
@@ -304,13 +297,11 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works
-     * in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
      * <ul>
      * <li>The expression calls the AQL interpreter.</li>
      * <li>The cursor is at the starting position</li>
-     * <li>No service should be detected at the cursor position. So nothing
-     * should be done.</li>
+     * <li>No service should be detected at the cursor position. So nothing should be done.</li>
      * </ul>
      * 
      * @exception Exception
@@ -321,13 +312,11 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works
-     * in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
      * <ul>
      * <li>The expression calls the AQL interpreter.</li>
      * <li>The cursor is at the last position</li>
-     * <li>No service should be detected at the cursor position. So nothing
-     * should be done.</li>
+     * <li>No service should be detected at the cursor position. So nothing should be done.</li>
      * </ul>
      * 
      * @exception Exception
@@ -338,13 +327,11 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works
-     * in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
      * <ul>
      * <li>The expression calls the AQL interpreter.</li>
      * <li>The cursor is at the 27 index position</li>
-     * <li>No service should be detected at the cursor position. So nothing
-     * should be done.</li>
+     * <li>No service should be detected at the cursor position. So nothing should be done.</li>
      * </ul>
      * 
      * @exception Exception
@@ -355,15 +342,12 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works
-     * in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
      * <ul>
      * <li>The expression calls the AQL interpreter.</li>
      * <li>The cursor is at the 13 index position</li>
-     * <li>The service call at cursor position is present in two different
-     * classes</li>
-     * <li>The service from which the navigation is done is the second one in
-     * the wizard.</li>
+     * <li>The service call at cursor position is present in two different classes</li>
+     * <li>The service from which the navigation is done is the second one in the wizard.</li>
      * </ul>
      * 
      * @exception Exception
@@ -371,21 +355,18 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
      */
     public void testDualServiceNavigationWithAqlInterpreter() throws Exception {
         List<String> expectedItemLabels = new ArrayList<>();
-        expectedItemLabels.add("BasicService - org.eclipse.sirius.test.design");
-        expectedItemLabels.add("BasicService2");
+        expectedItemLabels.add("BasicService - org.eclipse.sirius.test.design - org.eclipse.sirius.test.design/src");
+        expectedItemLabels.add("BasicService2 - org.eclipse.sirius.test.design - org.eclipse.sirius.test.design/src");
         testNavigation("aql:self.sampleService() and self.sampleService(self)->", 2, expectedItemLabels, 1, 13);
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works
-     * in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
      * <ul>
      * <li>The expression calls the AQL interpreter.</li>
      * <li>The cursor is at the 9 index position</li>
-     * <li>The service call at cursor position is present in two different
-     * classes</li>
-     * <li>The service from which the navigation is done is the second one in
-     * the wizard.</li>
+     * <li>The service call at cursor position is present in two different classes</li>
+     * <li>The service from which the navigation is done is the second one in the wizard.</li>
      * </ul>
      * 
      * @exception Exception
@@ -393,21 +374,18 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
      */
     public void testDualServiceNavigationWithAqlInterpreter2() throws Exception {
         List<String> expectedItemLabels = new ArrayList<>();
-        expectedItemLabels.add("BasicService - org.eclipse.sirius.test.design");
-        expectedItemLabels.add("BasicService2");
+        expectedItemLabels.add("BasicService - org.eclipse.sirius.test.design - org.eclipse.sirius.test.design/src");
+        expectedItemLabels.add("BasicService2 - org.eclipse.sirius.test.design - org.eclipse.sirius.test.design/src");
         testNavigation("aql:self.sampleService() and self.sampleService(self)->", 2, expectedItemLabels, 1, 9);
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works
-     * in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
      * <ul>
      * <li>The expression calls the AQL interpreter.</li>
      * <li>The cursor is at the 23 index position</li>
-     * <li>The service call at cursor position is present in two different
-     * classes</li>
-     * <li>The service from which the navigation is done is the second one in
-     * the wizard.</li>
+     * <li>The service call at cursor position is present in two different classes</li>
+     * <li>The service from which the navigation is done is the second one in the wizard.</li>
      * </ul>
      * 
      * @exception Exception
@@ -415,14 +393,13 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
      */
     public void testDualServiceNavigationWithAqlInterpreter3() throws Exception {
         List<String> expectedItemLabels = new ArrayList<>();
-        expectedItemLabels.add("BasicService - org.eclipse.sirius.test.design");
-        expectedItemLabels.add("BasicService2");
+        expectedItemLabels.add("BasicService - org.eclipse.sirius.test.design - org.eclipse.sirius.test.design/src");
+        expectedItemLabels.add("BasicService2 - org.eclipse.sirius.test.design - org.eclipse.sirius.test.design/src");
         testNavigation("aql:self.sampleService() and self.sampleService(self)->", 2, expectedItemLabels, 1, 23);
     }
 
     /**
-     * Check that Java service navigation from F3 key and a VSM expression works
-     * in the following context:
+     * Check that Java service navigation from F3 key and a VSM expression works in the following context:
      * <ul>
      * <li>The expression calls the AQL interpreter.</li>
      * <li>The cursor is at the 38 index position</li>
@@ -438,22 +415,18 @@ public class ServiceNavigationTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Tests that Java service navigation from VSM expression is the expected
-     * one.
+     * Tests that Java service navigation from VSM expression is the expected one.
      * 
      * @param vsmExpression
      *            the VSM expression used to test Java service navigation.
      * @param matchingJavaServiceNumber
-     *            the number of Java service that should be proposed for
-     *            navigation.
+     *            the number of Java service that should be proposed for navigation.
      * @param expectedItemLabels
      *            The Java service item's labels in their wizard's order.
      * @param javaServiceIndex
-     *            the index of the Java service item to open with Java editor
-     *            when in Java service navigation wizard.
+     *            the index of the Java service item to open with Java editor when in Java service navigation wizard.
      * @param cursorPosition
-     *            the cursor position in the VSM expression before triggering
-     *            navigation with F3 key.
+     *            the cursor position in the VSM expression before triggering navigation with F3 key.
      * 
      * @throws InterruptedException
      *             if a problem occurs.

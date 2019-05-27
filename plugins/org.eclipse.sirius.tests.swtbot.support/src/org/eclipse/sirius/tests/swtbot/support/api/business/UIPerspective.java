@@ -150,7 +150,7 @@ public class UIPerspective {
      * 
      * @param project
      *            name of the project to delete.
-     * @deprecated use {@link EclipseTestsSupportHelper#deleteProject(String)}           
+     * @deprecated use {@link EclipseTestsSupportHelper#deleteProject(String)}
      */
     @Deprecated
     public void deleteProject(final UIProject project) {
@@ -162,7 +162,7 @@ public class UIPerspective {
      * 
      * @param projectName
      *            name of the project to delete.
-     * @deprecated use {@link EclipseTestsSupportHelper#deleteProject(String)}           
+     * @deprecated use {@link EclipseTestsSupportHelper#deleteProject(String)}
      */
     @Deprecated
     public void deleteProject(final String projectName) {
@@ -204,9 +204,9 @@ public class UIPerspective {
     private void openRepresentationsFileWizard() {
         bot.menu("File").menu(UIPerspective.WIZARDS_LIST_TITLE).menu("Other...").click();
 
-        SWTBot wizardListBot = bot.activeShell().bot();
-        wizardListBot.waitUntil(Conditions.shellIsActive(UIPerspective.WIZARDS_LIST_TITLE));
+        bot.waitUntil(Conditions.shellIsActive(UIPerspective.WIZARDS_LIST_TITLE));
 
+        SWTBot wizardListBot = bot.shell(UIPerspective.WIZARDS_LIST_TITLE).bot();
         wizardListBot.text().setText(UIPerspective.REPRESENTATIONS_FILE_LABEL);
 
         SWTBotTree wizardsTree = wizardListBot.tree();

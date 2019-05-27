@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo.
+ * Copyright (c) 2015, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -54,7 +54,7 @@ public class SequenceDiagramNoSnapTest extends AbstractDefaultModelSequenceTests
         SWTBotView propertyView = bot.viewByTitle("Properties");
         propertyView.setFocus();
         SWTBot propertyViewBot = propertyView.bot();
-        SWTBotSiriusHelper.selectPropertyTabItem("Rulers & Grid");
+        SWTBotSiriusHelper.selectPropertyTabItem("Rulers & Grid", propertyViewBot);
 
         SWTBotCheckBox snapToGridCheckBox = propertyViewBot.checkBox("Snap To Grid");
         assertFalse(snapToGridCheckBox.isChecked());

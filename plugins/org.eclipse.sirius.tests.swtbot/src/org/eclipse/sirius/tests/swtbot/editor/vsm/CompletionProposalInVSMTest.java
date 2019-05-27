@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -54,8 +54,7 @@ import org.eclipse.ui.handlers.IHandlerService;
 import com.google.common.base.Joiner;
 
 /**
- * Tests completion in MTL interpreted expression and domain class property
- * section.
+ * Tests completion in MTL interpreted expression and domain class property section.
  * 
  * @author mporhel
  */
@@ -102,16 +101,14 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Initialize the context by copying new resources and waiting all build
-     * process. This method is unreliable...
+     * Initialize the context by copying new resources and waiting all build process. This method is unreliable...
      * 
      * @exception InterruptedException
      *                if this thread is interrupted while waiting
      * @exception OperationCanceledException
      *                if the progress monitor is canceled while waiting
      * @exception CoreException
-     *                In case of problem during setting workspace description to
-     *                disable auto build.
+     *                In case of problem during setting workspace description to disable auto build.
      * @throws CommandException
      */
     private void initContext(List<String> nodes) throws InterruptedException, OperationCanceledException, CoreException, CommandException {
@@ -170,7 +167,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
 
         propertiesBot = bot.viewByTitle("Properties");
         propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("General");
+        SWTBotSiriusHelper.selectPropertyTabItem("General", propertiesBot.bot());
     }
 
     private void addAcceleoNature(IProject projet) throws CommandException {
@@ -194,8 +191,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
     }
 
     /**
-     * There is problem on linux with this test so we are waiting build or
-     * refresh jobs by joining them.
+     * There is problem on linux with this test so we are waiting build or refresh jobs by joining them.
      */
     private void waitJobsBuildOrRefresh() throws InterruptedException, OperationCanceledException {
         Job.getJobManager().join(ResourcesPlugin.FAMILY_MANUAL_BUILD, new NullProgressMonitor());
@@ -237,11 +233,10 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that the right Java service appears in the completion proposals
-     * with Acceleo interpreter.
+     * Check that the right Java service appears in the completion proposals with Acceleo interpreter.
      * 
-     * Warning: To ensure the non regression of the associated bug 500253, the
-     * manifest must not have a direct reference to org.eclipse.emf.ecore.
+     * Warning: To ensure the non regression of the associated bug 500253, the manifest must not have a direct reference
+     * to org.eclipse.emf.ecore.
      * 
      * @exception Exception
      *                In case of problem during context initialization.
@@ -272,11 +267,10 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that the right Java service appears in the completion proposals
-     * with service keyword used.
+     * Check that the right Java service appears in the completion proposals with service keyword used.
      * 
-     * Warning: To ensure the non regression of the associated bug 500253, the
-     * manifest must not have a direct reference to org.eclipse.emf.ecore.
+     * Warning: To ensure the non regression of the associated bug 500253, the manifest must not have a direct reference
+     * to org.eclipse.emf.ecore.
      * 
      * @exception Exception
      *                In case of problem during context initialization.
@@ -307,11 +301,10 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that the right Java service appears in the completion proposals
-     * with AQL interpreter.
+     * Check that the right Java service appears in the completion proposals with AQL interpreter.
      * 
-     * Warning: To ensure the non regression of the associated bug 500253, the
-     * manifest must not have a direct reference to org.eclipse.emf.ecore.
+     * Warning: To ensure the non regression of the associated bug 500253, the manifest must not have a direct reference
+     * to org.eclipse.emf.ecore.
      * 
      * @exception Exception
      *                In case of problem during context initialization.
@@ -370,8 +363,8 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         Collection<String> contentAssistProposal = getContentAssistProposal(precondition, 13);
 
         // Expected mtl queries.
-        Collection<String> mtlServices = Arrays.asList("getName() : String", "getNameQuery() : String", "getImportedName() : String", "getImportedQueryName() : String",
-                "isAbstractQuery() : Boolean", "eContentsQuery() : Collection(EObject)", "selfQuery() : EObject", "selfImportedQuery() : EObject");
+        Collection<String> mtlServices = Arrays.asList("getName() : String", "getNameQuery() : String", "getImportedName() : String", "getImportedQueryName() : String", "isAbstractQuery() : Boolean",
+                "eContentsQuery() : Collection(EObject)", "selfQuery() : EObject", "selfImportedQuery() : EObject");
 
         Collection<String> unfoundServices = new ArrayList<>();
         for (String mtlService : mtlServices) {
@@ -428,7 +421,7 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
 
         propertiesBot = bot.viewByTitle("Properties");
         propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("General");
+        SWTBotSiriusHelper.selectPropertyTabItem("General", propertiesBot.bot());
         SWTBotText domainClass = propertiesBot.bot().text(2);
         domainClass.setFocus();
 
@@ -448,19 +441,18 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
         // Select a meta model : Sirius
         SWTBotView propertiesBot = bot.viewByTitle("Properties");
         propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Metamodels");
+        SWTBotSiriusHelper.selectPropertyTabItem("Metamodels", propertiesBot.bot());
 
         SWTBotTable metamodelsTableBot = propertiesBot.bot().table();
         SWTBotButton addFromRegistryButtonBot = propertiesBot.bot().button("Add from registry");
         addFromRegistryButtonBot.click();
 
-        final SWTBot metamodelsSelectionFromRegistryBot = bot.activeShell().bot();
-        bot.waitUntil(Conditions.shellIsActive("Metamodel selection"));
-        bot.waitUntil(new DefaultCondition() {
+        SWTBot wizardBot = SWTBotSiriusHelper.getShellBot("Metamodel selection");
+        wizardBot.waitUntil(new DefaultCondition() {
             @Override
             public boolean test() throws Exception {
                 for (String nsURI : expectedNsURIs) {
-                    if (metamodelsSelectionFromRegistryBot.table().indexOf(nsURI) == -1) {
+                    if (wizardBot.table().indexOf(nsURI) == -1) {
                         return false;
                     }
                 }
@@ -472,8 +464,8 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
                 return "Some of the expected metamodels were not found: " + Joiner.on(", ").join(expectedNsURIs);
             }
         });
-        metamodelsSelectionFromRegistryBot.text().setText("*sirius*");
-        SWTBotTable metamodelsFromRegistryTableBot = metamodelsSelectionFromRegistryBot.table();
+        wizardBot.text().setText("*sirius*");
+        SWTBotTable metamodelsFromRegistryTableBot = wizardBot.table();
 
         int nbOfMetamodelsFromRegistry = metamodelsFromRegistryTableBot.rowCount();
         int[] selection = new int[nbOfMetamodelsFromRegistry];
@@ -481,9 +473,9 @@ public class CompletionProposalInVSMTest extends AbstractContentAssistTest {
             selection[i] = i;
         }
         metamodelsFromRegistryTableBot.select(selection);
-        bot.waitUntil(new TableSelectionCondition(metamodelsFromRegistryTableBot, nbOfMetamodelsFromRegistry));
+        wizardBot.waitUntil(new TableSelectionCondition(metamodelsFromRegistryTableBot, nbOfMetamodelsFromRegistry));
 
-        metamodelsSelectionFromRegistryBot.button("OK").click();
+        wizardBot.button("OK").click();
         bot.waitUntil(Conditions.tableHasRows(metamodelsTableBot, nbOfMetamodelsFromRegistry));
     }
 

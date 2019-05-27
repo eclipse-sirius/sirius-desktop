@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEdi
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.WrappedSWTBotRadio;
 import org.eclipse.swt.widgets.MenuItem;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
@@ -102,8 +103,7 @@ public class RoutingStyleTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test the routing style UI with a selection that does not contain only
-     * edges.
+     * Test the routing style UI with a selection that does not contain only edges.
      * 
      * @throws Exception
      *             Test error.
@@ -134,10 +134,11 @@ public class RoutingStyleTest extends AbstractSiriusSwtBotGefTestCase {
 
         if (checkPropertiesView) {
             // select the routing style with properties view
-            bot.viewByTitle(PROPERTIES).setFocus();
-            SWTBotSiriusHelper.selectPropertyTabItem(APPEARANCE);
-            new WrappedSWTBotRadio(bot.viewByTitle(PROPERTIES).bot().radioInGroup("Tree", STYLES)).click();
-            new WrappedSWTBotRadio(bot.viewByTitle(PROPERTIES).bot().radioInGroup("Oblique", STYLES)).click();
+            SWTBotView propertiesView = bot.viewByTitle(PROPERTIES);
+            propertiesView.setFocus();
+            SWTBotSiriusHelper.selectPropertyTabItem(APPEARANCE, propertiesView.bot());
+            new WrappedSWTBotRadio(propertiesView.bot().radioInGroup("Tree", STYLES)).click();
+            new WrappedSWTBotRadio(propertiesView.bot().radioInGroup("Oblique", STYLES)).click();
         }
 
         // select the routing style with the diagram menu

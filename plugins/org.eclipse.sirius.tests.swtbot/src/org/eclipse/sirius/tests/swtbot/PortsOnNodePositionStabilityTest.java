@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -1271,8 +1271,7 @@ public class PortsOnNodePositionStabilityTest extends AbstractSiriusSwtBotGefTes
     }
 
     /**
-     * Test that when a label size become high the label is relocated in another
-     * side.
+     * Test that when a label size become high the label is relocated in another side.
      */
     public void test_DNode4EditPart_LabelSizeIncrease() {
         SWTBotGefEditPart borderEditPart = editor.getEditPart("DN2EP_on_DN2EP_a", AbstractDiagramBorderNodeEditPart.class);
@@ -1285,7 +1284,7 @@ public class PortsOnNodePositionStabilityTest extends AbstractSiriusSwtBotGefTes
         editor.restore();
         SWTBotView propertiesBot = bot.viewByTitle("Properties");
         propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesBot.bot());
         propertiesBot.bot().ccomboBox(1).setSelection("72");
         SWTBotUtils.waitAllUiEvents();
 
@@ -1306,8 +1305,7 @@ public class PortsOnNodePositionStabilityTest extends AbstractSiriusSwtBotGefTes
 
     /*
      * (non-Javadoc)
-     * @see org.eclipse.sirius.tests.swtbot.support.api.
-     * AbstractSiriusSwtBotGefTestCase#tearDown()
+     * @see org.eclipse.sirius.tests.swtbot.support.api. AbstractSiriusSwtBotGefTestCase#tearDown()
      */
     @Override
     protected void tearDown() throws Exception {

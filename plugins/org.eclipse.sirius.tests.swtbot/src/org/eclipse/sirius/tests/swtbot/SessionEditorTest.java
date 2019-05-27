@@ -140,7 +140,6 @@ public class SessionEditorTest extends AbstractSiriusSwtBotGefTestCase {
     protected void tearDown() throws Exception {
         sessionEditor.close(false);
         sessionEditor = null;
-        sessionEditor2.close(false);
         sessionEditor2 = null;
         sessionAirdResource2 = null;
         localSession2.close(false);
@@ -150,9 +149,8 @@ public class SessionEditorTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that changing a viewpoint activation status of a viewpoint in a
-     * session editor does not change the activation status of a viewpoint in
-     * another opened session editor.
+     * Test that changing a viewpoint activation status of a viewpoint in a session editor does not change the
+     * activation status of a viewpoint in another opened session editor.
      */
     public void testViewpointActivationStatusChange() {
         SWTBotEditor activeEditor = bot.activeEditor();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -393,12 +393,13 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
     public void testLabelSizeCustomization() throws Exception {
         editor.select(eClass1WithSquareStyleBot);
         // set the focus on the Properties view
+        final SWTBot propertiesBot = bot.viewByTitle(PROPERTIES).bot();
         bot.viewByTitle(PROPERTIES).setFocus();
         // set the focus on the Style tab
-        SWTBotSiriusHelper.selectPropertyTabItem(STYLE);
+        SWTBotSiriusHelper.selectPropertyTabItem(STYLE, propertiesBot);
 
         // Access the Label Size field
-        final SWTBot propertiesBot = bot.viewByTitle(PROPERTIES).bot();
+
         SWTBotTree tree = propertiesBot.tree();
         tree.expandNode("Misc").select().getNode("Label Size").select().click();
         SWTBotText text = propertiesBot.text();

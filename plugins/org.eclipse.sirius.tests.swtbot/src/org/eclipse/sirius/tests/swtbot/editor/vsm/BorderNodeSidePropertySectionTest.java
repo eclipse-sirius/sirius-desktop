@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2018 Obeo.
+ * Copyright (c) 2016, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -99,7 +99,7 @@ public class BorderNodeSidePropertySectionTest extends AbstractSiriusSwtBotGefTe
         });
         propertiesBot = bot.viewByTitle("Properties");
         propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Advanced");
+        SWTBotSiriusHelper.selectPropertyTabItem("Advanced", propertiesBot.bot());
         if (shouldBeVisible) {
             try {
                 propertiesBot.bot().checkBoxWithLabel("Authorized Sides:");

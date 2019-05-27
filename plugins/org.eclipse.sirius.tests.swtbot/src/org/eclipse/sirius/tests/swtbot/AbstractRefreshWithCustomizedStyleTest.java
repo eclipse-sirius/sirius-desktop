@@ -53,8 +53,7 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.Lists;
 
 /**
- * An abstract class providing facilities for testing the style customization
- * features.
+ * An abstract class providing facilities for testing the style customization features.
  * 
  * <p>
  * Relevant issues :
@@ -101,8 +100,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
     }
 
     /**
-     * Selects and returns the edit part with the given name and of the given
-     * type.
+     * Selects and returns the edit part with the given name and of the given type.
      * 
      * @param name
      *            the edit part name
@@ -128,7 +126,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
         SWTBotView propertiesView = bot.viewByTitle("Properties");
         propertiesView.setFocus();
         SWTBot propertiesBot = propertiesView.bot();
-        assertTrue("The appearance tab should be visible", SWTBotSiriusHelper.selectPropertyTabItem("Appearance"));
+        assertTrue("The appearance tab should be visible", SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesBot));
         return propertiesBot;
     }
 
@@ -136,17 +134,13 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * Ensures that when selecting the given edit part :
      * <ol>
      * <li>The initial state predicated is checked</li>
-     * <li>After having modified the given combobox with the given newValue from
-     * the appearance section, the given predicate is checked and the cancel
-     * custom style button is enabled</li>
-     * <li>Undoing the combo-box modification should bring us back to initial
-     * state</li>
-     * <li>Re-doing the combo-box modification again should bring us back to
-     * step 2</li>
+     * <li>After having modified the given combobox with the given newValue from the appearance section, the given
+     * predicate is checked and the cancel custom style button is enabled</li>
+     * <li>Undoing the combo-box modification should bring us back to initial state</li>
+     * <li>Re-doing the combo-box modification again should bring us back to step 2</li>
      * <li>Refreshing the representation does not change this state</li>
      * <li>Reopening the representation does not change this state</li>
-     * <li>Canceling the custom style reverts modifications (initial state
-     * should be checked again)</li>
+     * <li>Canceling the custom style reverts modifications (initial state should be checked again)</li>
      * </ol>
      * 
      * @param selectedEditPart
@@ -156,8 +150,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * @param initialStatePredicate
      *            the initial state predicate
      * @param stateWhenRadioIsModifiedPredicate
-     *            the predicate that should be checked when the combobox
-     *            selection is modified
+     *            the predicate that should be checked when the combobox selection is modified
      * @param radioGroupName
      *            the name of the group containing the radio to select
      * @param radioIndexInGroup
@@ -211,17 +204,13 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * Ensures that when selecting the given edit part :
      * <ol>
      * <li>The initial state predicated is checked</li>
-     * <li>After having modified the given combobox with the given newValue from
-     * the appearance section, the given predicate is checked and the cancel
-     * custom style button is enabled</li>
-     * <li>Undoing the combo-box modification should bring us back to initial
-     * state</li>
-     * <li>Re-doing the combo-box modification again should bring us back to
-     * step 2</li>
+     * <li>After having modified the given combobox with the given newValue from the appearance section, the given
+     * predicate is checked and the cancel custom style button is enabled</li>
+     * <li>Undoing the combo-box modification should bring us back to initial state</li>
+     * <li>Re-doing the combo-box modification again should bring us back to step 2</li>
      * <li>Refreshing the representation does not change this state</li>
      * <li>Reopening the representation does not change this state</li>
-     * <li>Canceling the custom style reverts modifications (initial state
-     * should be checked again)</li>
+     * <li>Canceling the custom style reverts modifications (initial state should be checked again)</li>
      * </ol>
      * 
      * @param selectedEditPart
@@ -231,8 +220,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * @param initialStatePredicate
      *            the initial state predicate
      * @param stateWhenRadioIsModifiedPredicate
-     *            the predicate that should be checked when the combobox
-     *            selection is modified
+     *            the predicate that should be checked when the combobox selection is modified
      * @param checkboxGroupName
      *            the name of the group containing the checkbox to check
      * @param checkBoxIndexInGroup
@@ -301,17 +289,13 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * Ensures that when selecting the given edit part :
      * <ol>
      * <li>The initial state predicated is checked</li>
-     * <li>After having modified the given combobox with the given newValue from
-     * the appearance section, the given predicate is checked and the cancel
-     * custom style button is enabled</li>
-     * <li>Undoing the combo-box modification should bring us back to initial
-     * state</li>
-     * <li>Re-doing the combo-box modification again should bring us back to
-     * step 2</li>
+     * <li>After having modified the given combobox with the given newValue from the appearance section, the given
+     * predicate is checked and the cancel custom style button is enabled</li>
+     * <li>Undoing the combo-box modification should bring us back to initial state</li>
+     * <li>Re-doing the combo-box modification again should bring us back to step 2</li>
      * <li>Refreshing the representation does not change this state</li>
      * <li>Reopening the representation does not change this state</li>
-     * <li>Canceling the custom style reverts modifications (initial state
-     * should be checked again)</li>
+     * <li>Canceling the custom style reverts modifications (initial state should be checked again)</li>
      * </ol>
      * 
      * @param selectedEditPart
@@ -321,14 +305,12 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * @param initialStatePredicate
      *            the initial state predicate
      * @param stateWhenComboIsModifiedPredicate
-     *            the predicate that should be checked when the combobox
-     *            selection is modified
+     *            the predicate that should be checked when the combobox selection is modified
      * @param modifiedComboValue
      *            the value that should be selected in the combobox
      * @param customizationRevertable
-     *            true for underline and strikeThrough and not for bold and
-     *            italic because for these two last the de-selection of buttons
-     *            doesn't remove the customization flag (See VP-3625)
+     *            true for underline and strikeThrough and not for bold and italic because for these two last the
+     *            de-selection of buttons doesn't remove the customization flag (See VP-3625)
      */
     protected void doTestStyleCustomizationThroughComboBoxInAppearanceSection(SWTBotGefEditPart selectedEditPart, Predicate<SWTBotGefEditPart> initialStatePredicate,
             Predicate<SWTBotGefEditPart> stateWhenComboIsModifiedPredicate, int comboBoxIdIngroup, String modifiedComboValue, boolean customizationRevertable) {
@@ -391,17 +373,13 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * Ensures that when selecting the given edit part :
      * <ol>
      * <li>The initial state predicated is checked</li>
-     * <li>After having modified the given color selection button with the given
-     * newColor from the appearance section, the given predicate is checked and
-     * the cancel custom style button is enabled</li>
-     * <li>Undoing the color selection modification should bring us back to
-     * initial state</li>
-     * <li>Re-doing the color selection modification again should bring us back
-     * to step 2</li>
+     * <li>After having modified the given color selection button with the given newColor from the appearance section,
+     * the given predicate is checked and the cancel custom style button is enabled</li>
+     * <li>Undoing the color selection modification should bring us back to initial state</li>
+     * <li>Re-doing the color selection modification again should bring us back to step 2</li>
      * <li>Refreshing the representation does not change this state</li>
      * <li>Reopening the representation does not change this state</li>
-     * <li>Canceling the custom style reverts modifications (initial state
-     * should be checked again)</li>
+     * <li>Canceling the custom style reverts modifications (initial state should be checked again)</li>
      * </ol>
      * 
      * @param selectedEditPart
@@ -409,17 +387,15 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * @param buttonToToggleGroupName
      *            the name of the group containing the button to toggle
      * @param buttonToToggleIndexInGroup
-     *            the index of the button to toggle inside the group(It must
-     *            corresponds to text, line or fill color for example)
+     *            the index of the button to toggle inside the group(It must corresponds to text, line or fill color for
+     *            example)
      * @param defaultButtonInColorPalette
-     *            the index of the button that should be toggled by default
-     *            inside the color palette(each color in the palette corresponds
-     *            to a button)
+     *            the index of the button that should be toggled by default inside the color palette(each color in the
+     *            palette corresponds to a button)
      * @param initialStatePredicate
      *            the initial state predicate
      * @param stateWhenButtonIsCheckedPredicate
-     *            the predicate that should be checked when the button is
-     *            toggled
+     *            the predicate that should be checked when the button is toggled
      */
     protected void doTestStyleCustomizationThroughColorSelectionFromAppearanceSection(SWTBotGefEditPart selectedEditPart, String buttonToToggleGroupName, int[] buttonToToggleIndexInGroup,
             int[] defaultButtonInColorPalette, Predicate<SWTBotGefEditPart> initialStatePredicate, Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate) {
@@ -438,14 +414,14 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
             // Step 2: Enable button and check result
             buttonFromAppearanceSectionToTest.click();
-            assertTrue(BAD_CURRENT_COLOR_BUTTON, bot.button(defaultButtonInColorPalette[i]).isActive());
+            assertTrue(BAD_CURRENT_COLOR_BUTTON, propertiesBot.button(defaultButtonInColorPalette[i]).isActive());
             // Click on the GRAY button
-            bot.button(3).click();
+            propertiesBot.button(3).click();
             assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
                     stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
             checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);
             buttonFromAppearanceSectionToTest.click();
-            assertTrue(BAD_CURRENT_COLOR_BUTTON, bot.button(3).isActive());
+            assertTrue(BAD_CURRENT_COLOR_BUTTON, propertiesBot.button(3).isActive());
 
             // Step 3: "Reset style properties to default values" and check
             // result
@@ -456,9 +432,9 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
             // Step 4: re-enable button and check result
             buttonFromAppearanceSectionToTest.click();
-            assertTrue(BAD_CURRENT_COLOR_BUTTON, bot.button(defaultButtonInColorPalette[i]).isActive());
+            assertTrue(BAD_CURRENT_COLOR_BUTTON, propertiesBot.button(defaultButtonInColorPalette[i]).isActive());
             // Click on the GRAY button
-            bot.button(3).click();
+            propertiesBot.button(3).click();
             assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
                     stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
             checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);
@@ -502,13 +478,11 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * Ensures that when selecting the given edit part :
      * <ol>
      * <li>The initial state predicated is checked</li>
-     * <li>After having modified the given color selection button with the given
-     * newColor from the appearance section, the given predicate is checked and
-     * the cancel custom style button is enabled</li>
+     * <li>After having modified the given color selection button with the given newColor from the appearance section,
+     * the given predicate is checked and the cancel custom style button is enabled</li>
      * <li>Refreshing the representation does not change this state</li>
      * <li>Reopening the representation does not change this state</li>
-     * <li>Canceling the custom style reverts modifications (initial state
-     * should be checked again)</li>
+     * <li>Canceling the custom style reverts modifications (initial state should be checked again)</li>
      * </ol>
      * 
      * @param selectedEditPart
@@ -516,11 +490,9 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * @param initialStatePredicate
      *            the initial state predicate
      * @param stateWhenButtonIsCheckedPredicate
-     *            the predicate that should be checked when the button is
-     *            toggled
+     *            the predicate that should be checked when the button is toggled
      * @param newImagePath
-     *            the path of the workspace image to set (from the current
-     *            project root)
+     *            the path of the workspace image to set (from the current project root)
      */
     protected void doTestStyleCustomizationThroughBackgroundImageFromAppearanceSection(SWTBotGefEditPart selectedEditPart, Predicate<SWTBotGefEditPart> initialStatePredicate,
             Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate, String newImagePath) {
@@ -571,15 +543,13 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * Ensures that when selecting the given edit part :
      * <ol>
      * <li>The initial state predicated is checked</li>
-     * <li>After having toggled the given button from the appearance section,
-     * the given predicate is checked and the cancel custom style button is
-     * enabled</li>
+     * <li>After having toggled the given button from the appearance section, the given predicate is checked and the
+     * cancel custom style button is enabled</li>
      * <li>Re-toggling the button should bring us back to initial state</li>
      * <li>Toggling the button again should bring us back to step 2</li>
      * <li>Refreshing the representation does not change this state</li>
      * <li>Reopening the representation does not change this state</li>
-     * <li>Canceling the custom style reverts modifications (initial state
-     * should be checked again)</li>
+     * <li>Canceling the custom style reverts modifications (initial state should be checked again)</li>
      * </ol>
      * 
      * @param selectedEditPart
@@ -591,12 +561,10 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * @param initialStatePredicate
      *            the initial state predicate
      * @param stateWhenButtonIsCheckedPredicate
-     *            the predicate that should be checked when the button is
-     *            toggled
+     *            the predicate that should be checked when the button is toggled
      * @param customizationRevertable
-     *            true for underline and strikeThrough and not for bold and
-     *            italic because for these two last the de-selection of buttons
-     *            doesn't remove the customization flag (See VP-3625)
+     *            true for underline and strikeThrough and not for bold and italic because for these two last the
+     *            de-selection of buttons doesn't remove the customization flag (See VP-3625)
      */
     protected void doTestStyleCustomizationThroughToggleButtonFromAppearanceSection(SWTBotGefEditPart selectedEditPart, String buttonToToggleGroupName, int buttonToToggleIndexInGroup,
             Predicate<SWTBotGefEditPart> initialStatePredicate, Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate, boolean customizationRevertable) {
@@ -673,19 +641,16 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
     }
 
     /**
-     * Ensures that each of the given {@link SWTBotToggleButton} has the
-     * expected checked state. If one of the
+     * Ensures that each of the given {@link SWTBotToggleButton} has the expected checked state. If one of the
      * 
      * @param buttons
      *            the {@link SWTBotToggleButton}s to test
      * @param resetStyleCustomizationButton
      *            the cancel custom style button
      * @param expectedButtonCheckState
-     *            the expected check state for each {@link SWTBotToggleButton}
-     *            given in parameter
+     *            the expected check state for each {@link SWTBotToggleButton} given in parameter
      * @param customStyleButtonShouldBeChecked
-     *            indicates if the 'cancelCustomStyle' button should be checked
-     *            or not
+     *            indicates if the 'cancelCustomStyle' button should be checked or not
      */
     protected void checkButtonAppearanceChecked(Collection<SWTBotToggleButton> buttons, SWTBotButton resetStyleCustomizationButton, Collection<Boolean> expectedButtonCheckState,
             boolean customStyleButtonShouldBeChecked) {
@@ -708,12 +673,10 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
     }
 
     /**
-     * Checks that the given {@link SWTBotToggleButton} is checked or not,
-     * according to the given boolean.
+     * Checks that the given {@link SWTBotToggleButton} is checked or not, according to the given boolean.
      * 
      * @param buttonShouldBeChecked
-     *            indicates if the {@link SWTBotToggleButton} should be checked
-     *            or not
+     *            indicates if the {@link SWTBotToggleButton} should be checked or not
      * @param button
      *            the {@link SWTBotToggleButton} to test
      */
@@ -729,14 +692,13 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * Ensures that when selecting the given edit part :
      * <ol>
      * <li>The initial state predicated is checked</li>
-     * <li>After having toggled the given button from the tabbar, the given
-     * predicate is checked and the cancel custom style button is enabled</li>
+     * <li>After having toggled the given button from the tabbar, the given predicate is checked and the cancel custom
+     * style button is enabled</li>
      * <li>Re-toggling the button should bring us back to initial state</li>
      * <li>Toggling the button again should bring us back to step 2</li>
      * <li>Refreshing the representation does not change this state</li>
      * <li>Reopening the representation does not change this state</li>
-     * <li>Canceling the custom style reverts modifications (initial state
-     * should be checked again)</li>
+     * <li>Canceling the custom style reverts modifications (initial state should be checked again)</li>
      * </ol>
      * 
      * @param selectedEditPart
@@ -746,8 +708,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * @param initialStatePredicate
      *            the initial state predicate
      * @param stateWhenButtonIsCheckedPredicate
-     *            the predicate that should be checked when the button is
-     *            toggled
+     *            the predicate that should be checked when the button is toggled
      */
     protected void doTestStyleCustomizationThroughTabbar(SWTBotGefEditPart selectedEditPart, String tabbarButtonTooltip, Predicate<SWTBotGefEditPart> initialStatePredicate,
             Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate) {
@@ -825,11 +786,10 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * Ensures that when selecting the given edit part :
      * <ol>
      * <li>The initial state predicated is checked</li>
-     * <li>After having toggled the given button from the tabbar, the given
-     * predicate is checked and the cancel custom style button is enabled</li>
+     * <li>After having toggled the given button from the tabbar, the given predicate is checked and the cancel custom
+     * style button is enabled</li>
      * <li>Reopening the representation does not change this state</li>
-     * <li>Canceling the custom style reverts modifications (initial state
-     * should be checked again)</li>
+     * <li>Canceling the custom style reverts modifications (initial state should be checked again)</li>
      * </ol>
      * 
      * @param selectedEditPart
@@ -841,8 +801,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * @param initialStatePredicate
      *            the initial state predicate
      * @param stateWhenButtonIsCheckedPredicate
-     *            the predicate that should be checked when the button is
-     *            toggled
+     *            the predicate that should be checked when the button is toggled
      */
     protected void doTestStyleCustomizationThroughColorSelectionFromTabbar(SWTBotGefEditPart selectedEditPart, String colorButtonName, Predicate<SWTBotGefEditPart> initialStatePredicate,
             final Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate, String newColorName) {
@@ -902,11 +861,10 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * Ensures that when selecting the given edit part :
      * <ol>
      * <li>The initial state predicated is checked</li>
-     * <li>After having toggled the given button from the tabbar, the given
-     * predicate is checked and the cancel custom style button is enabled</li>
+     * <li>After having toggled the given button from the tabbar, the given predicate is checked and the cancel custom
+     * style button is enabled</li>
      * <li>Reopening the representation does not change this state</li>
-     * <li>Canceling the custom style reverts modifications (initial state
-     * should be checked again)</li>
+     * <li>Canceling the custom style reverts modifications (initial state should be checked again)</li>
      * </ol>
      * 
      * @param selectedEditPart
@@ -918,8 +876,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * @param initialStatePredicate
      *            the initial state predicate
      * @param stateWhenButtonIsCheckedPredicate
-     *            the predicate that should be checked when the button is
-     *            toggled
+     *            the predicate that should be checked when the button is toggled
      */
     protected void doTestStyleCustomizationThroughRoutingStyleSelectionFromTabbar(SWTBotGefEditPart selectedEditPart, String edgeEditPartName, Predicate<SWTBotGefEditPart> initialStatePredicate,
             final Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate, String newRoutingStyleName) {
@@ -967,13 +924,11 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * Ensures that when selecting the given edit part :
      * <ol>
      * <li>The initial state predicated is checked</li>
-     * <li>After having modified the given color selection button with the given
-     * newColor from the tabbar, the given predicate is checked and the cancel
-     * custom style button is enabled</li>
+     * <li>After having modified the given color selection button with the given newColor from the tabbar, the given
+     * predicate is checked and the cancel custom style button is enabled</li>
      * <li>Refreshing the representation does not change this state</li>
      * <li>Reopening the representation does not change this state</li>
-     * <li>Canceling the custom style reverts modifications (initial state
-     * should be checked again)</li>
+     * <li>Canceling the custom style reverts modifications (initial state should be checked again)</li>
      * </ol>
      * 
      * @param selectedEditPart
@@ -981,11 +936,9 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
      * @param initialStatePredicate
      *            the initial state predicate
      * @param stateWhenButtonIsCheckedPredicate
-     *            the predicate that should be checked when the button is
-     *            toggled
+     *            the predicate that should be checked when the button is toggled
      * @param newImagePath
-     *            the path of the workspace image to set (from the current
-     *            project root)
+     *            the path of the workspace image to set (from the current project root)
      */
     protected void doTestStyleCustomizationThroughBackgroundImageFromTabbar(SWTBotGefEditPart selectedEditPart, Predicate<SWTBotGefEditPart> initialStatePredicate,
             Predicate<SWTBotGefEditPart> stateWhenButtonIsCheckedPredicate, String newImagePath) {
@@ -1031,19 +984,16 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
     }
 
     /**
-     * Ensures that each of the given {@link SWTBotToolbarToggleButton} has the
-     * expected checked state. If one of the
+     * Ensures that each of the given {@link SWTBotToolbarToggleButton} has the expected checked state. If one of the
      * 
      * @param buttons
      *            the {@link SWTBotToolbarToggleButton}s to test
      * @param resetStyleCustomizationButton
      *            the cancel custom style button
      * @param expectedButtonCheckState
-     *            the expected check state for each
-     *            {@link SWTBotToolbarToggleButton} given in parameter
+     *            the expected check state for each {@link SWTBotToolbarToggleButton} given in parameter
      * @param resetStylePropertiesToDefaultValuesButtonShouldBeChecked
-     *            indicates if the 'cancelCustomStyle' button should be checked
-     *            or not
+     *            indicates if the 'cancelCustomStyle' button should be checked or not
      */
     protected void checkButtonTabbarChecked(Collection<SWTBotToolbarToggleButton> buttons, SWTBotToolbarButton resetStyleCustomizationButton, Collection<Boolean> expectedButtonCheckState,
             boolean resetStylePropertiesToDefaultValuesButtonShouldBeChecked) {
@@ -1068,12 +1018,10 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
     }
 
     /**
-     * Checks that the given {@link SWTBotToolbarToggleButton} is checked or
-     * not, according to the given boolean.
+     * Checks that the given {@link SWTBotToolbarToggleButton} is checked or not, according to the given boolean.
      * 
      * @param shouldBeChecked
-     *            indicates if the {@link SWTBotToolbarToggleButton} should be
-     *            checked or not
+     *            indicates if the {@link SWTBotToolbarToggleButton} should be checked or not
      * @param button
      *            the {@link SWTBotToolbarToggleButton} to test
      */

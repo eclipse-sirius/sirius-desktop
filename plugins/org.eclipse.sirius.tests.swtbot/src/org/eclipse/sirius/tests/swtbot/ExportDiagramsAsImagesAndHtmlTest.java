@@ -33,10 +33,11 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.dialog.ExportAsImageHelper;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.provider.Messages;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
-import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
@@ -96,8 +97,7 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Validate the functionality "Export representations as images" on an aird
-     * file for JPG export.
+     * Validate the functionality "Export representations as images" on an aird file for JPG export.
      * 
      * @throws Exception
      *             Test error.
@@ -111,9 +111,8 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Validate the functionality "Export representations as images" on a
-     * representations file for JPG format in a path that containing dot (for
-     * example in a folder named "a.b"). VP-2928
+     * Validate the functionality "Export representations as images" on a representations file for JPG format in a path
+     * that containing dot (for example in a folder named "a.b"). VP-2928
      * 
      * @throws Exception
      *             Test error.
@@ -129,10 +128,9 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Validate the fails of functionality "Export representations as images" on
-     * a representations file for JPG format with an inexisting folder
-     * destination. VP-2929 Check that the "folder check rules" are called at
-     * the opening of the dialog.
+     * Validate the fails of functionality "Export representations as images" on a representations file for JPG format
+     * with an inexisting folder destination. VP-2929 Check that the "folder check rules" are called at the opening of
+     * the dialog.
      * 
      * @throws Exception
      *             Test error.
@@ -159,8 +157,7 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Validate the functionality "Export representations as images" on an aird
-     * file for PNG export.
+     * Validate the functionality "Export representations as images" on an aird file for PNG export.
      * 
      * @throws Exception
      *             Test error.
@@ -173,8 +170,7 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Validate the functionality "Export representations as images" on an aird
-     * file for SVG export.
+     * Validate the functionality "Export representations as images" on an aird file for SVG export.
      * 
      * @throws Exception
      *             Test error.
@@ -187,8 +183,7 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Validate the functionality "Export representations as images" on the root
-     * of a semantic model for JPG export.
+     * Validate the functionality "Export representations as images" on the root of a semantic model for JPG export.
      * 
      * @throws Exception
      *             Test error.
@@ -201,8 +196,7 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Validate the functionality "Export representations as images" on the root
-     * of a semantic model for PNG export.
+     * Validate the functionality "Export representations as images" on the root of a semantic model for PNG export.
      * 
      * @throws Exception
      *             Test error.
@@ -215,8 +209,7 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Validate the functionality "Export representations as images" on the root
-     * of a semantic model for SVG export.
+     * Validate the functionality "Export representations as images" on the root of a semantic model for SVG export.
      * 
      * @throws Exception
      *             Test error.
@@ -229,8 +222,7 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Validate the functionality "Export diagram as image" from tab bar for JPG
-     * export, with a transient session.
+     * Validate the functionality "Export diagram as image" from tab bar for JPG export, with a transient session.
      * 
      * @throws Exception
      *             Test error.
@@ -248,9 +240,8 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
 
     // There is a problem with the text update in the combo file path.
     /**
-     * Validate the functionality "Export diagram as image" from tab bar for
-     * file without extension, with extension not authorized, with extension
-     * change from image format with a transient session.
+     * Validate the functionality "Export diagram as image" from tab bar for file without extension, with extension not
+     * authorized, with extension change from image format with a transient session.
      * 
      * @throws Exception
      *             Test error.
@@ -267,8 +258,7 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Validate the functionality "Export diagram as image" from tab bar for PNG
-     * export, with a transient session.
+     * Validate the functionality "Export diagram as image" from tab bar for PNG export, with a transient session.
      * 
      * @throws Exception
      *             Test error.
@@ -285,8 +275,7 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Validate the functionality "Export diagram as image" from tab bar for SVG
-     * export, with a transient session.
+     * Validate the functionality "Export diagram as image" from tab bar for SVG export, with a transient session.
      * 
      * @throws Exception
      *             Test error.
@@ -303,8 +292,8 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Validate the functionality "Export representations as images" on the root
-     * of a semantic model for JPG export, with a transient session.
+     * Validate the functionality "Export representations as images" on the root of a semantic model for JPG export,
+     * with a transient session.
      * 
      * @throws Exception
      *             Test error.
@@ -326,8 +315,8 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Validate the functionality "Export representations as images" on the root
-     * of a semantic model for PNG export, with a transient session.
+     * Validate the functionality "Export representations as images" on the root of a semantic model for PNG export,
+     * with a transient session.
      * 
      * @throws Exception
      *             Test error.
@@ -349,8 +338,8 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
     }
 
     /**
-     * Validate the functionality "Export representations as images" on the root
-     * of a semantic model for SVG export, with a transient session.
+     * Validate the functionality "Export representations as images" on the root of a semantic model for SVG export,
+     * with a transient session.
      * 
      * @throws Exception
      *             Test error.
@@ -358,20 +347,13 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
     public void testExportDiagramsOfTransientSessionAsSVGFromModelContentView() throws Exception {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
-             * org.eclipse.swtbot.swt.finder.widgets.TimeoutException: Timeout
-             * after: 10000 ms.: tree item with text DesignerTestProject is not
-             * expanded at
-             * org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(
-             * SWTBotFactory.java:407) at
-             * org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(
-             * SWTBotFactory.java:381) at
-             * org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(
-             * SWTBotFactory.java:369) at
-             * org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.
-             * getProjectTreeItem(UIProject.java:108) at
-             * org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.
-             * getUIItemFromResource(UIProject.java:137) at
-             * org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.
+             * org.eclipse.swtbot.swt.finder.widgets.TimeoutException: Timeout after: 10000 ms.: tree item with text
+             * DesignerTestProject is not expanded at org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil(
+             * SWTBotFactory.java:407) at org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil( SWTBotFactory.java:381)
+             * at org.eclipse.swtbot.swt.finder.SWTBotFactory.waitUntil( SWTBotFactory.java:369) at
+             * org.eclipse.sirius.tests.swtbot.support.api.business.UIProject. getProjectTreeItem(UIProject.java:108) at
+             * org.eclipse.sirius.tests.swtbot.support.api.business.UIProject. getUIItemFromResource(UIProject.java:137)
+             * at org.eclipse.sirius.tests.swtbot.support.api.business.UIProject.
              * mouseRigthClickOnResource(UIProject.java:171) at
              * org.eclipse.sirius.tests.swtbot.ExportDiagramsAsImagesAndHtmlTest
              * .testExportDiagramsOfTransientSessionAsSVGFromModelContentView(
@@ -402,15 +384,13 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
         expandedProjectTreeItem.select(airdFilename);
         SWTBotUtils.clickContextMenu(airdFileTreeItem, Messages.ExportRepresentationsAction_label);
 
-        bot.waitUntil(Conditions.shellIsActive(EXPORT_DIAGRAMS_AS_IMAGE));
+        SWTBot exportBot = SWTBotSiriusHelper.getShellBot(EXPORT_DIAGRAMS_AS_IMAGE);
 
-        assertThat("The dialog is not correct for the export", bot.activeShell().getText(), equalTo(EXPORT_DIAGRAMS_AS_IMAGE));
+        assertNotNull(exportBot.comboBoxWithLabel("To directory"));
 
-        assertNotNull(bot.comboBoxWithLabel("To directory"));
-
-        bot.comboBox(1).setSelection(imageExtension);
-        bot.checkBox("Export to HTML").select();
-        bot.button("OK").click();
+        exportBot.comboBox(1).setSelection(imageExtension);
+        exportBot.checkBox("Export to HTML").select();
+        exportBot.button("OK").click();
     }
 
     /**
@@ -419,13 +399,11 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
      * @param imageExtension
      *            The extension to choose in the export dialog
      * @param newDestinationFolderName
-     *            The name of the folder to add to the default folder used for
-     *            destination (this folder will be created)
+     *            The name of the folder to add to the default folder used for destination (this folder will be created)
      * @param errorMessageToCheck
-     *            null if no error message to check, a message if the export
-     *            dialog must display an error message. If the message is not
-     *            null, a test is done to check if it is displayed and the
-     *            Cancel button is then check.
+     *            null if no error message to check, a message if the export dialog must display an error message. If
+     *            the message is not null, a test is done to check if it is displayed and the Cancel button is then
+     *            check.
      * @throws Exception
      */
     private void exportAsImageFromProjectExplorerView(String imageExtension, String newDestinationFolderName, String errorMessageToCheck) throws Exception {
@@ -438,28 +416,26 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
         expandedProjectTreeItem.select(airdFilename);
         SWTBotUtils.clickContextMenu(airdFileTreeItem, Messages.ExportRepresentationsAction_label);
 
-        bot.waitUntil(Conditions.shellIsActive(EXPORT_DIAGRAMS_AS_IMAGE));
+        SWTBot exportBot = SWTBotSiriusHelper.getShellBot(EXPORT_DIAGRAMS_AS_IMAGE);
 
-        assertThat("The dialog is not correct for the export", bot.activeShell().getText(), equalTo(EXPORT_DIAGRAMS_AS_IMAGE));
-
-        assertNotNull(bot.comboBoxWithLabel("To directory"));
+        assertNotNull(exportBot.comboBoxWithLabel("To directory"));
 
         if (newDestinationFolderName != null) {
-            File newFolder = new File(bot.comboBox(0).getText() + File.separator + newDestinationFolderName);
+            File newFolder = new File(exportBot.comboBox(0).getText() + File.separator + newDestinationFolderName);
             newFolder.mkdir();
-            bot.comboBox(0).setText(newFolder.getAbsolutePath());
+            exportBot.comboBox(0).setText(newFolder.getAbsolutePath());
         }
-        bot.comboBox(1).setSelection(imageExtension);
-        bot.checkBox("Export to HTML").select();
+        exportBot.comboBox(1).setSelection(imageExtension);
+        exportBot.checkBox("Export to HTML").select();
         if (errorMessageToCheck != null) {
             try {
-                bot.label(errorMessageToCheck);
+                exportBot.label(errorMessageToCheck);
             } catch (WidgetNotFoundException e) {
                 fail("The error message \"" + errorMessageToCheck + "\" is expected in the export dialog but is not displayed");
             }
-            bot.button("Cancel").click();
+            exportBot.button("Cancel").click();
         } else {
-            bot.button("OK").click();
+            exportBot.button("OK").click();
         }
     }
 
@@ -470,20 +446,18 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
         SWTBotUtils.clickContextMenu(semanticRoot, Messages.ExportRepresentationsAction_label);
 
         int nbRepsToExport = DialectManager.INSTANCE.getAllRepresentations(localSession.getOpenedSession()).size();
-
+        SWTBot exportBot = null;
         if (nbRepsToExport == 1) {
-            bot.waitUntil(Conditions.shellIsActive(EXPORT_DIAGRAM_AS_IMAGE));
-            assertThat("The dialog is not correct for the export", bot.activeShell().getText(), equalTo(EXPORT_DIAGRAM_AS_IMAGE));
-            assertNotNull(bot.comboBoxWithLabel("To file"));
+            exportBot = SWTBotSiriusHelper.getShellBot(EXPORT_DIAGRAM_AS_IMAGE);
+            assertNotNull(exportBot.comboBoxWithLabel("To file"));
         } else {
-            bot.waitUntil(Conditions.shellIsActive(EXPORT_DIAGRAMS_AS_IMAGE));
-            assertThat("The dialog is not correct for the export", bot.activeShell().getText(), equalTo(EXPORT_DIAGRAMS_AS_IMAGE));
-            assertNotNull(bot.comboBoxWithLabel("To directory"));
+            exportBot = SWTBotSiriusHelper.getShellBot(EXPORT_DIAGRAMS_AS_IMAGE);
+            assertNotNull(exportBot.comboBoxWithLabel("To directory"));
         }
 
-        bot.comboBox(1).setSelection(imageExtension);
-        bot.checkBox("Export to HTML").select();
-        bot.button("OK").click();
+        exportBot.comboBox(1).setSelection(imageExtension);
+        exportBot.checkBox("Export to HTML").select();
+        exportBot.button("OK").click();
     }
 
     private void exportAsImageFromEditorTabBar(String imageExtension) throws Exception {
@@ -493,15 +467,13 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
 
         bot.activeEditor().bot().toolbarButtonWithTooltip("Export diagram as image").click();
 
-        bot.waitUntil(Conditions.shellIsActive(EXPORT_DIAGRAM_AS_IMAGE));
+        SWTBot exportBot = SWTBotSiriusHelper.getShellBot(EXPORT_DIAGRAM_AS_IMAGE);
 
-        assertThat("The dialog is not correct for the export", bot.activeShell().getText(), equalTo(EXPORT_DIAGRAM_AS_IMAGE));
+        assertNotNull(exportBot.comboBoxWithLabel("To file"));
 
-        assertNotNull(bot.comboBoxWithLabel("To file"));
-
-        bot.comboBox(1).setSelection(imageExtension);
-        bot.checkBox("Export to HTML").select();
-        bot.button("OK").click();
+        exportBot.comboBox(1).setSelection(imageExtension);
+        exportBot.checkBox("Export to HTML").select();
+        exportBot.button("OK").click();
     }
 
     private void exportAsImageFromEditorTabBar() throws Exception {
@@ -511,23 +483,21 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
 
         bot.activeEditor().bot().toolbarButtonWithTooltip("Export diagram as image").click();
 
-        bot.waitUntil(Conditions.shellIsActive(EXPORT_DIAGRAM_AS_IMAGE));
+        SWTBot exportBot = SWTBotSiriusHelper.getShellBot(EXPORT_DIAGRAM_AS_IMAGE);
 
-        assertThat("The dialog is not correct for the export", bot.activeShell().getText(), equalTo(EXPORT_DIAGRAM_AS_IMAGE));
+        assertNotNull(exportBot.comboBoxWithLabel("To file"));
 
-        assertNotNull(bot.comboBoxWithLabel("To file"));
-
-        StringBuffer filePath = new StringBuffer(bot.comboBoxWithLabel("To file").getText());
+        StringBuffer filePath = new StringBuffer(exportBot.comboBoxWithLabel("To file").getText());
 
         filePath.append("/export.png");
 
-        bot.comboBoxWithLabel("To file").getText();
+        exportBot.comboBoxWithLabel("To file").getText();
 
-        bot.comboBoxWithLabel("To file").setText(filePath.toString());
+        exportBot.comboBoxWithLabel("To file").setText(filePath.toString());
 
-        bot.button(0).setFocus();
+        exportBot.button(0).setFocus();
 
-        assertThat("The image format is not correct", bot.comboBox(1).getText(), equalTo("PNG"));
+        assertThat("The image format is not correct", exportBot.comboBox(1).getText(), equalTo("PNG"));
 
         IPath path = new Path(filePath.toString());
 
@@ -535,20 +505,20 @@ public class ExportDiagramsAsImagesAndHtmlTest extends AbstractSiriusSwtBotGefTe
 
         path = path.addFileExtension("txt");
 
-        bot.comboBoxWithLabel("To file").setText(path.toString());
+        exportBot.comboBoxWithLabel("To file").setText(path.toString());
 
-        bot.button(0).setFocus();
+        exportBot.button(0).setFocus();
 
-        bot.comboBox(1).setSelection("JPG");
+        exportBot.comboBox(1).setSelection("JPG");
 
         // This part not working
         // if (!path.toString().contains(".txt.jpg")) {
         // fail("the update file path does not correct");
         // }
 
-        bot.checkBox("Export to HTML").select();
+        exportBot.checkBox("Export to HTML").select();
 
-        bot.button("OK").click();
+        exportBot.button("OK").click();
     }
 
     private void valideExportResult(final String imageExtension, final String... expectedFileNames) throws Exception {

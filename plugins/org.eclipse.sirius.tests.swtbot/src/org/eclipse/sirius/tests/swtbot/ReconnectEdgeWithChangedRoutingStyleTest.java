@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -45,8 +45,8 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotCCombo;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 
 /**
- * Test a reconnect edge with change edge routing style. By default the routing
- * style is Rectilinear Style Routing. Test VP-2954 and VP-3047.
+ * Test a reconnect edge with change edge routing style. By default the routing style is Rectilinear Style Routing. Test
+ * VP-2954 and VP-3047.
  * 
  * @author jdupont
  */
@@ -96,9 +96,8 @@ public class ReconnectEdgeWithChangedRoutingStyleTest extends AbstractSiriusSwtB
 
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
         /*
-         * Force the addition of a dependency to the sample ecore editor
-         * otherwise the interpreter has no way to retrieve the service class
-         * hence any call to "render()" will fail.
+         * Force the addition of a dependency to the sample ecore editor otherwise the interpreter has no way to
+         * retrieve the service class hence any call to "render()" will fail.
          */
         localSession.getOpenedSession().getInterpreter().setProperty(IInterpreter.FILES, Collections.singleton("/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign"));
     }
@@ -108,12 +107,9 @@ public class ReconnectEdgeWithChangedRoutingStyleTest extends AbstractSiriusSwtB
      * <ol>
      * <li>Step 1 : select edge [0..1] ref3-1 between EClass 3 and ECLass 2</li>
      * <li>Step 2 : Check that routing style is Tree</li>
-     * <li>Step 3 : Change routing style to Straight from tab Style of
-     * Properties view</li>
-     * <li>Step 4 : Reconnect edge to EClass 4 and check that routing style is
-     * always Straight</li>
-     * <li>Step 5 : Reconnect edge to EClass 3 and check that routing style is
-     * always Straight</li>
+     * <li>Step 3 : Change routing style to Straight from tab Style of Properties view</li>
+     * <li>Step 4 : Reconnect edge to EClass 4 and check that routing style is always Straight</li>
+     * <li>Step 5 : Reconnect edge to EClass 3 and check that routing style is always Straight</li>
      * </ol>
      */
     public void testReconnectEdgeWithChangingRoutingStyleFromStyleView() {
@@ -156,12 +152,9 @@ public class ReconnectEdgeWithChangedRoutingStyleTest extends AbstractSiriusSwtB
      * <ol>
      * <li>Step 1 : select edge [0..1] ref3-1 between EClass 3 and ECLass 2</li>
      * <li>Step 2 : Check that routing style is Tree</li>
-     * <li>Step 3 : Change routing style to Straight from tab Appearance of
-     * Properties view</li>
-     * <li>Step 4 : Reconnect edge to EClass 4 and check that routing style is
-     * always Straight</li>
-     * <li>Step 5 : Reconnect edge to EClass 3 and check that routing style is
-     * always Straight</li>
+     * <li>Step 3 : Change routing style to Straight from tab Appearance of Properties view</li>
+     * <li>Step 4 : Reconnect edge to EClass 4 and check that routing style is always Straight</li>
+     * <li>Step 5 : Reconnect edge to EClass 3 and check that routing style is always Straight</li>
      * </ol>
      */
     public void testReconnectEdgeWithChangingRoutingStyleFromAppearanceView() {
@@ -223,7 +216,7 @@ public class ReconnectEdgeWithChangedRoutingStyleTest extends AbstractSiriusSwtB
         SWTBotUtils.waitAllUiEvents();
         propertiesBot.setFocus();
         // accesses to tab Style
-        SWTBotSiriusHelper.selectPropertyTabItem(STYLE);
+        SWTBotSiriusHelper.selectPropertyTabItem(STYLE, propertiesBot.bot());
         SWTBotTree tree = propertiesBot.bot().tree();
         // select routing syle Straight in combo
         tree.expandNode("Misc").select().getNode("Routing Style").doubleClick();
@@ -232,7 +225,7 @@ public class ReconnectEdgeWithChangedRoutingStyleTest extends AbstractSiriusSwtB
         comboBox.setSelection(routingStyleLitteral);
         // applied change with change focus
         tree.expandNode("Misc").click();
-        SWTBotSiriusHelper.selectPropertyTabItem(APPEARANCE);
+        SWTBotSiriusHelper.selectPropertyTabItem(APPEARANCE, propertiesBot.bot());
 
         checkRoutingStyleInAppearance();
         checkRoutingStyle(routingStyle, dedge);
@@ -244,11 +237,11 @@ public class ReconnectEdgeWithChangedRoutingStyleTest extends AbstractSiriusSwtB
         SWTBotUtils.waitAllUiEvents();
         propertiesBot.setFocus();
         // accesses to tab Style
-        SWTBotSiriusHelper.selectPropertyTabItem(APPEARANCE);
+        SWTBotSiriusHelper.selectPropertyTabItem(APPEARANCE, propertiesBot.bot());
         assertEquals("The 'Tree' style should be selected", true, bot.viewByTitle(PROPERTIES).bot().radioInGroup("Tree", STYLES).isSelected());
         new WrappedSWTBotRadio(bot.viewByTitle(PROPERTIES).bot().radioInGroup("Oblique", STYLES)).click();
         // applied change with change focus
-        SWTBotSiriusHelper.selectPropertyTabItem(APPEARANCE);
+        SWTBotSiriusHelper.selectPropertyTabItem(APPEARANCE, propertiesBot.bot());
         checkRoutingStyleInAppearance();
         checkRoutingStyle(routingStyle, dedge);
     }

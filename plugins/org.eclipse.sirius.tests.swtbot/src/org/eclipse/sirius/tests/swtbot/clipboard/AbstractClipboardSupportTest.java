@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -340,11 +340,11 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
      *            expected cut menu enablement
      */
     protected void assertCopyCutToolBarActivation(boolean copyState, boolean cutState) {
-        SWTBotMenu copyMenu = bot.menu("Edit").menu("Copy");
+        SWTBotMenu copyMenu = editor.bot().menu("Edit").menu("Copy");
         assertEquals(true, copyMenu.isVisible());
         assertEquals("Copy action enabled ?", copyState, copyMenu.isEnabled());
 
-        SWTBotMenu cutMenu = bot.menu("Edit").menu("Cut");
+        SWTBotMenu cutMenu = editor.bot().menu("Edit").menu("Cut");
         assertEquals(true, cutMenu.isVisible());
         assertEquals("Cut action enabled ?", cutState, cutMenu.isEnabled());
     }

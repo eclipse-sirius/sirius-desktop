@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Obeo.
+ * Copyright (c) 2014, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,11 +17,11 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 
 /**
- * Test that the default value of the Label Expression for Intersection in cross
- * Table is setted to "X".
+ * Test that the default value of the Label Expression for Intersection in cross Table is setted to "X".
  * 
  * @author jmallet
  */
@@ -85,10 +85,11 @@ public class CrossTableIntersectionTest extends AbstractSiriusSwtBotGefTestCase 
      */
     private void checkLabelDefaultValue() {
         // accesses to property view
-        bot.viewByTitle(PROPERTIES).setFocus();
+        SWTBotView propertiesView = bot.viewByTitle(PROPERTIES);
+        propertiesView.setFocus();
         // accesses to tab Label
-        SWTBotSiriusHelper.selectPropertyTabItem(LABEL);
+        SWTBotSiriusHelper.selectPropertyTabItem(LABEL, propertiesView.bot());
         // Check if value of the Label Expression is given by "X"
-        assertEquals("Wrong value for LabelExpression.", "X", bot.viewByTitle(PROPERTIES).bot().text(0).getText());
+        assertEquals("Wrong value for LabelExpression.", "X", propertiesView.bot().text(0).getText());
     }
 }

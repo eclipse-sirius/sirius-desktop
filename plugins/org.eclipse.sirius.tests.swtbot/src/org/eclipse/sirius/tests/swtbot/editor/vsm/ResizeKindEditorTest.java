@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.results.VoidResult;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
@@ -24,9 +25,8 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.PlatformUI;
 
 /**
- * Test that the editor contains checkBox for editor and that the semantic model
- * was updated when VSM was modified. Test also that all resize were activated
- * by default. Test VP-2694 VP-2637
+ * Test that the editor contains checkBox for editor and that the semantic model was updated when VSM was modified. Test
+ * also that all resize were activated by default. Test VP-2694 VP-2637
  * 
  * @author jdupont
  */
@@ -71,8 +71,8 @@ public class ResizeKindEditorTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the resizeKind field have 2 checkBox named Vertically and
-     * Horizontally. And that the check modify the model value.
+     * Test that the resizeKind field have 2 checkBox named Vertically and Horizontally. And that the check modify the
+     * model value.
      */
     public void testCheckBoxResizeKind() {
         // Use the workaround as described here:
@@ -90,8 +90,7 @@ public class ResizeKindEditorTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Modify resize kind field (Allow resizing field in properties view).
-     * viewpoint specific model (.odesign).
+     * Modify resize kind field (Allow resizing field in properties view). viewpoint specific model (.odesign).
      * 
      * @param odesignEditor
      *            the odesign editor.
@@ -118,7 +117,7 @@ public class ResizeKindEditorTest extends AbstractSiriusSwtBotGefTestCase {
         // Create a conditional style
         nodeMappingClass.select();
         SWTBotUtils.clickContextMenu(tree, "Conditional Style");
-        
+
         // Create a bundled image description in conditional style
         nodeMappingClass.select("Conditional Style");
         SWTBotUtils.clickContextMenu(tree, "Basic Shape");
@@ -146,24 +145,25 @@ public class ResizeKindEditorTest extends AbstractSiriusSwtBotGefTestCase {
      */
     private void checkCheckBoxSelected(int checkboxNumber, boolean isSelected) {
         // accesses to property view
-        bot.viewByTitle(PROPERTIES).setFocus();
+        SWTBotView propertiesView = bot.viewByTitle(PROPERTIES);
+        propertiesView.setFocus();
         // accesses to tab Advanced
-        SWTBotSiriusHelper.selectPropertyTabItem(ADVANCED);
+        SWTBotSiriusHelper.selectPropertyTabItem(ADVANCED, propertiesView.bot());
         // Check if checkBox 'horizontally' and 'vertically' were checked
         if (checkboxNumber == 0) {
             if (isSelected) {
-                assertEquals("The checkbox horizontally must be checked", true, bot.viewByTitle(PROPERTIES).bot().checkBox(checkboxNumber).isChecked());
+                assertEquals("The checkbox horizontally must be checked", true, propertiesView.bot().checkBox(checkboxNumber).isChecked());
             } else {
-                assertEquals("The checkbox horizontally should not be checked", false, bot.viewByTitle(PROPERTIES).bot().checkBox(checkboxNumber).isChecked());
+                assertEquals("The checkbox horizontally should not be checked", false, propertiesView.bot().checkBox(checkboxNumber).isChecked());
             }
-            assertEquals("The name of checkBox must be : 'Horizontally'", "Horizontally", bot.viewByTitle(PROPERTIES).bot().checkBox(checkboxNumber).getText());
+            assertEquals("The name of checkBox must be : 'Horizontally'", "Horizontally", propertiesView.bot().checkBox(checkboxNumber).getText());
         } else {
             if (isSelected) {
-                assertEquals("The checkbox vertically must be checked", true, bot.viewByTitle(PROPERTIES).bot().checkBox(checkboxNumber).isChecked());
+                assertEquals("The checkbox vertically must be checked", true, propertiesView.bot().checkBox(checkboxNumber).isChecked());
             } else {
-                assertEquals("The checkbox vertically should not be checked", false, bot.viewByTitle(PROPERTIES).bot().checkBox(checkboxNumber).isChecked());
+                assertEquals("The checkbox vertically should not be checked", false, propertiesView.bot().checkBox(checkboxNumber).isChecked());
             }
-            assertEquals("The name of checkBox must be : 'Vertically'", "Vertically", bot.viewByTitle(PROPERTIES).bot().checkBox(checkboxNumber).getText());
+            assertEquals("The name of checkBox must be : 'Vertically'", "Vertically", propertiesView.bot().checkBox(checkboxNumber).getText());
         }
     }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,15 +30,16 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.dialog.ExportAsImageHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
-import org.eclipse.swtbot.swt.finder.waits.Conditions;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.hamcrest.Matchers;
 
 /**
- * Asserts that the exported image corresponds to the exported representation
- * contained by a session having many representations with the same name.
+ * Asserts that the exported image corresponds to the exported representation contained by a session having many
+ * representations with the same name.
  * 
  * Test VP-2711
  * 
@@ -100,9 +101,8 @@ public class ExportDiagramAsImageWhenManyRepresentationsHaveSameNameTest extends
     }
 
     /**
-     * Validate that that the exported image corresponds to the exported
-     * representation when many representations have the same name in fragment
-     * session. Check image size correspond to attempt.
+     * Validate that that the exported image corresponds to the exported representation when many representations have
+     * the same name in fragment session. Check image size correspond to attempt.
      * 
      * @throws Exception
      *             Test error.
@@ -157,11 +157,12 @@ public class ExportDiagramAsImageWhenManyRepresentationsHaveSameNameTest extends
         // Wait all UI events to ensure that the tabbar is correctly refreshed.
         SWTBotUtils.waitAllUiEvents();
 
-        bot.activeEditor().bot().toolbarButtonWithTooltip("Export diagram as image").click();
+        SWTBot editorBot = bot.activeEditor().bot();
+        editorBot.toolbarButtonWithTooltip("Export diagram as image").click();
 
-        bot.waitUntil(Conditions.shellIsActive("Export representation as image file"));
-        bot.comboBox(1).setSelection(imageExtension);
-        bot.button("OK").click();
+        SWTBot exportBot = SWTBotSiriusHelper.getShellBot("Export representation as image file");
+        exportBot.comboBox(1).setSelection(imageExtension);
+        exportBot.button("OK").click();
     }
 
     private void valideExportResult(final String imageExtension, String newFolderName, int imageSize, final String... expectedFileNames) throws Exception {

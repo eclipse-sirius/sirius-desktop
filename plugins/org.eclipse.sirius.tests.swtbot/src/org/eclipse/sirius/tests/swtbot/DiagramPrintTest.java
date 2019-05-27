@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2014, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,8 +21,8 @@ import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 
 /**
- * A test for https://bugs.eclipse.org/bugs/show_bug.cgi?id=447242, i.e. test
- * that the GMF diagram print dialog is displayed.
+ * A test for https://bugs.eclipse.org/bugs/show_bug.cgi?id=447242, i.e. test that the GMF diagram print dialog is
+ * displayed.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -65,7 +65,7 @@ public class DiagramPrintTest extends AbstractSiriusSwtBotGefTestCase {
         editor.setFocus();
         bot.menu("File").menu("Print...").click();
         bot.waitUntil(Conditions.shellIsActive(expectedPrintDialogTitle));
-        SWTBotShell printShell = bot.activeShell();
+        SWTBotShell printShell = bot.shell(expectedPrintDialogTitle);
         assertEquals(expectedPrintDialogTitle, printShell.getText());
     }
 

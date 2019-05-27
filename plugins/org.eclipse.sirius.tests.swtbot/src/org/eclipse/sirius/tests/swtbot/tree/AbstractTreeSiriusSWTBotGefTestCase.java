@@ -115,8 +115,8 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param widget
      *            the tree item widget.
      * 
-     * @return the background color on the widget, or <code>null</code> if the
-     *         widget is not an instance of {@link Control}.
+     * @return the background color on the widget, or <code>null</code> if the widget is not an instance of
+     *         {@link Control}.
      * @since 1.0
      */
     public Color getWidgetBackgroundColor(final TreeItem widget) {
@@ -134,8 +134,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param widget
      *            the tree item widget.
      * 
-     * @return the label color on the widget, or <code>null</code> if the widget
-     *         is not an instance of {@link Control}.
+     * @return the label color on the widget, or <code>null</code> if the widget is not an instance of {@link Control}.
      * @since 1.0
      */
     public Color getWidgetLabelColor(final TreeItem widget) {
@@ -154,8 +153,8 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param widget
      *            the tree item widget.
      * 
-     * @return the label expression on the widget, or <code>null</code> if the
-     *         widget is not an instance of {@link Control}.
+     * @return the label expression on the widget, or <code>null</code> if the widget is not an instance of
+     *         {@link Control}.
      * @since 1.0
      */
     public String getWidgetLabelExpression(final TreeItem widget) {
@@ -174,8 +173,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param widget
      *            the tree item widget.
      * 
-     * @return the image on the widget, or <code>null</code> if the widget is
-     *         not an instance of {@link Control}.
+     * @return the image on the widget, or <code>null</code> if the widget is not an instance of {@link Control}.
      * @since 1.0
      */
     public Image getWidgetImage(final TreeItem widget) {
@@ -194,8 +192,8 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param widget
      *            the tree item widget.
      * 
-     * @return the size of the label on the widget, or <code>null</code> if the
-     *         widget is not an instance of {@link Control}.
+     * @return the size of the label on the widget, or <code>null</code> if the widget is not an instance of
+     *         {@link Control}.
      * @since 1.0
      */
     public Integer getWidgetSize(final TreeItem widget) {
@@ -219,8 +217,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param widget
      *            the tree item widget.
      * 
-     * @return the label size on the widget, or <code>null</code> if the widget
-     *         is not an instance of {@link Control}.
+     * @return the label size on the widget, or <code>null</code> if the widget is not an instance of {@link Control}.
      * @since 1.0
      */
     public int getLabelSize(final TreeItem widget) {
@@ -238,8 +235,8 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param widget
      *            the tree item widget.
      * 
-     * @return the label background color on the widget, or <code>null</code> if
-     *         the widget is not an instance of {@link Control}.
+     * @return the label background color on the widget, or <code>null</code> if the widget is not an instance of
+     *         {@link Control}.
      * @since 1.0
      */
     public Color getLabelBackgroundColor(final TreeItem widget) {
@@ -257,8 +254,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param widget
      *            the tree item widget.
      * 
-     * @return the label color on the widget, or <code>null</code> if the widget
-     *         is not an instance of {@link Control}.
+     * @return the label color on the widget, or <code>null</code> if the widget is not an instance of {@link Control}.
      * @since 1.0
      */
     public Color getLabelColor(final TreeItem widget) {
@@ -312,8 +308,8 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param widget
      *            the tree item widget.
      * 
-     * @return the semantic element on the widget, or <code>null</code> if the
-     *         widget is not an instance of {@link Control}.
+     * @return the semantic element on the widget, or <code>null</code> if the widget is not an instance of
+     *         {@link Control}.
      * @since 1.0
      */
     public String getSemanticElement(final TreeItem widget) {
@@ -331,8 +327,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param widget
      *            the tree item widget.
      * 
-     * @return the domain class on the widget, or <code>null</code> if the
-     *         widget is not an instance of {@link Control}.
+     * @return the domain class on the widget, or <code>null</code> if the widget is not an instance of {@link Control}.
      * @since 1.0
      */
     public String getDomainClass(final TreeItem widget) {
@@ -350,8 +345,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param widget
      *            the tree item widget.
      * 
-     * @return the id on the widget, or <code>null</code> if the widget is not
-     *         an instance of {@link Control}.
+     * @return the id on the widget, or <code>null</code> if the widget is not an instance of {@link Control}.
      * @since 1.0
      */
     public String getId(final TreeItem widget) {
@@ -369,8 +363,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param widget
      *            the tree item widget.
      * 
-     * @return the label on the widget, or <code>null</code> if the widget is
-     *         not an instance of {@link Control}.
+     * @return the label on the widget, or <code>null</code> if the widget is not an instance of {@link Control}.
      * @since 1.0
      */
     public String getLabel(final TreeItem widget) {
@@ -388,8 +381,8 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param widget
      *            the tree item widget.
      * 
-     * @return the precondition expression on the widget, or <code>null</code>
-     *         if the widget is not an instance of {@link Control}.
+     * @return the precondition expression on the widget, or <code>null</code> if the widget is not an instance of
+     *         {@link Control}.
      * @since 1.0
      */
     public String getPreconditionExpression(final TreeItem widget) {
@@ -407,8 +400,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param widget
      *            the tree item widget.
      * 
-     * @return the semantic candidate expression on the widget, or
-     *         <code>null</code> if the widget is not an instance of
+     * @return the semantic candidate expression on the widget, or <code>null</code> if the widget is not an instance of
      *         {@link Control}.
      * @since 1.0
      */
@@ -427,8 +419,8 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param widget
      *            the tree item widget.
      * 
-     * @return the reused tree item mappings on the widget, or <code>null</code>
-     *         if the widget is not an instance of {@link Control}.
+     * @return the reused tree item mappings on the widget, or <code>null</code> if the widget is not an instance of
+     *         {@link Control}.
      * @since 1.0
      */
     public EList<TreeItemMapping> getReusedTreeItemMappings(final TreeItem widget) {
@@ -446,8 +438,8 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param widget
      *            the tree item widget.
      * 
-     * @return the detail description on the widget, or <code>null</code> if the
-     *         widget is not an instance of {@link Control}.
+     * @return the detail description on the widget, or <code>null</code> if the widget is not an instance of
+     *         {@link Control}.
      * @since 1.0
      */
     public EList<RepresentationCreationDescription> getDetailDescriptions(final TreeItem widget) {
@@ -465,8 +457,8 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param widget
      *            the tree item widget.
      * 
-     * @return the navigation description on the widget, or <code>null</code> if
-     *         the widget is not an instance of {@link Control}.
+     * @return the navigation description on the widget, or <code>null</code> if the widget is not an instance of
+     *         {@link Control}.
      * @since 1.0
      */
     public EList<RepresentationNavigationDescription> getNavigationDescriptions(final TreeItem widget) {
@@ -484,8 +476,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param widget
      *            the tree item widget.
      * 
-     * @return the label format on the widget, or <code>null</code> if the
-     *         widget is not an instance of {@link Control}.
+     * @return the label format on the widget, or <code>null</code> if the widget is not an instance of {@link Control}.
      * @since 1.0
      */
     public List<String> getLabelFormat(final TreeItem widget) {
@@ -511,8 +502,8 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param widget
      *            the tree item widget.
      * 
-     * @return the label alignment on the widget, or <code>null</code> if the
-     *         widget is not an instance of {@link Control}.
+     * @return the label alignment on the widget, or <code>null</code> if the widget is not an instance of
+     *         {@link Control}.
      * @since 1.0
      */
     public String getLabelAlignment(final TreeItem widget) {
@@ -546,10 +537,11 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      *            the name of viewpoint specification model (.odesing)
      */
     public void closeAndSaveViewpointSpecificationModel(String viewpointSpecificationModel) {
-        bot.editorByTitle(viewpointSpecificationModel).setFocus();
-        bot.menu(FILE).menu(SAVE).click();
-        bot.editorByTitle(viewpointSpecificationModel).setFocus();
-        bot.editorByTitle(viewpointSpecificationModel).close();
+        SWTBotEditor editorBot = bot.editorByTitle(viewpointSpecificationModel);
+        editorBot.setFocus();
+        editorBot.bot().menu(FILE).menu(SAVE).click();
+        editorBot.setFocus();
+        editorBot.close();
     }
 
     /**
@@ -560,11 +552,9 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      * @param viewpointName
      *            the viewpoint name
      * @param representationName
-     *            the representation name in representation per
-     *            resource/category
+     *            the representation name in representation per resource/category
      * @param representationInstanceName
-     *            the representation instance name in representation per
-     *            category/resource
+     *            the representation instance name in representation per category/resource
      * @return treeRepresentation corresponding.
      */
     public UITreeRepresentation openEditor(UILocalSession localSession, String viewpointName, String representationName, String representationInstanceName) {
@@ -579,13 +569,13 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      *            the name of viewpoint specification model (.odesing).
      */
     public void saveViewpointSpecificationModel(String viewpointSpecificationModel) {
-        bot.editorByTitle(viewpointSpecificationModel).setFocus();
-        bot.menu(FILE).menu(SAVE).click();
+        SWTBotEditor editorBot = bot.editorByTitle(viewpointSpecificationModel);
+        editorBot.setFocus();
+        editorBot.bot().menu(FILE).menu(SAVE).click();
     }
 
     /**
-     * Close and save viewpoint specification model, close and save viewpoint
-     * editor and close and save session.
+     * Close and save viewpoint specification model, close and save viewpoint editor and close and save session.
      * 
      * @param viewpointSpecificationModel
      *            the viewpoint specification model name
@@ -595,10 +585,11 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
      *            the local session
      */
     public void closeAndSaveAll(String viewpointSpecificationModel, SWTBotEditor editor, UILocalSession localSession) {
-        bot.editorByTitle(viewpointSpecificationModel).setFocus();
-        bot.menu(FILE).menu(SAVE).click();
-        bot.editorByTitle(viewpointSpecificationModel).setFocus();
-        bot.editorByTitle(viewpointSpecificationModel).close();
+        SWTBotEditor editorBot = bot.editorByTitle(viewpointSpecificationModel);
+        editorBot.setFocus();
+        editorBot.bot().menu(FILE).menu(SAVE).click();
+        editorBot.setFocus();
+        editorBot.close();
     }
 
     /**

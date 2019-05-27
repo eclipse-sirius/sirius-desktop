@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -48,6 +48,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentat
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
@@ -55,6 +56,7 @@ import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.ui.PartInitException;
 
@@ -567,8 +569,9 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
     private void selectTargetRepresentation(DRepresentationDescriptor link) {
         Viewpoint vp = (Viewpoint) link.getDescription().eContainer();
         int size = DialectManager.INSTANCE.getRepresentations(link.getDescription(), localSession.getOpenedSession()).size();
-        bot.tree().expandNode(vp.getName(), link.getDescription().getName() + " (" + size + ")").getNode(link.getName()).select();
-        bot.button("OK").click();
+        SWTBot wizardBot = SWTBotSiriusHelper.getShellBot("Select representation");
+        wizardBot.tree().expandNode(vp.getName(), link.getDescription().getName() + " (" + size + ")").getNode(link.getName()).select();
+        wizardBot.button("OK").click();
     }
 
     // doubleclick should open the editor for the targeted representation
@@ -601,8 +604,8 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
             validateLinkDoubleclick(link);
 
             /*
-             * Now change the target representation to something else. This
-             * loses the selection, so select the note again afterwards
+             * Now change the target representation to something else. This loses the selection, so select the note
+             * again afterwards
              */
             DRepresentationDescriptor otherLink = getOtherLinkTarget(link);
             editor.clickContextMenu(SET_TARGET_REPRESENTATION);
@@ -621,8 +624,7 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
             note = editor.getEditPart(MY_NOTE).parent().select();
 
             /*
-             * Rename the target representation, this should update the note
-             * header label
+             * Rename the target representation, this should update the note header label
              */
             TransactionalEditingDomain ted = localSession.getOpenedSession().getTransactionalEditingDomain();
             ted.getCommandStack().execute(new RenameRepresentationCommand(ted, link, LINK_TARGET_NEW_NAME));
@@ -828,9 +830,8 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Check that the note is near the expected location. We don't check
-     * precisely the location because the zoom can have round effect on the
-     * location.
+     * Check that the note is near the expected location. We don't check precisely the location because the zoom can
+     * have round effect on the location.
      * 
      * @param excpectedLocation
      *            the absolute position within the graphical viewer
@@ -844,8 +845,7 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Possibility to adapt the expected location according to some parameters
-     * (snap to grid, ...).
+     * Possibility to adapt the expected location according to some parameters (snap to grid, ...).
      * 
      * @param expectedLocation
      *            The initial expected location

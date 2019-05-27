@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -51,7 +51,7 @@ public class SiriusPropertiesView {
      */
     public void setName(String name) {
         propertiesView.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("General");
+        SWTBotSiriusHelper.selectPropertyTabItem("General", propertiesView.bot());
         bot.textWithLabel("Name").setText(name);
     }
 
@@ -62,10 +62,9 @@ public class SiriusPropertiesView {
      */
     public String getName() {
         propertiesView.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("General");
+        SWTBotSiriusHelper.selectPropertyTabItem("General", propertiesView.bot());
         /*
-         * maybe will have pb, in other case there has a .setfocus before the
-         * getText
+         * maybe will have pb, in other case there has a .setfocus before the getText
          */
         return bot.textWithLabel("Name").getText();
     }

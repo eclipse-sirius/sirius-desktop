@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
@@ -129,13 +130,12 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
     }
 
     /**
-     * Test the diagram creation on session wizard with no semantic element in
-     * the model.
+     * Test the diagram creation on session wizard with no semantic element in the model.
      * 
      */
     public void testDiagramCreationWithoutSemanticElement() {
-        secondWizard("WithoutSemanticElement");
-        SWTBotTreeItem[] allItems = bot.tree().getAllItems();
+        SWTBot wizardBot = secondWizard("WithoutSemanticElement");
+        SWTBotTreeItem[] allItems = wizardBot.tree().getAllItems();
         assertEquals("The session must have 0 semantic resources.", 0, allItems.length);
         for (int i = 0; i < allItems.length; i++) {
             SWTBotTreeItem swtBotTreeItem = allItems[i];
@@ -144,7 +144,7 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
                 assertFalse(swtBotTreeItem2.isActive());
             }
         }
-        bot.button(CANCEL).click();
+        wizardBot.button(CANCEL).click();
 
         Session session = localSession.getOpenedSession();
         assertNotNull(THERE_IS_NO_SESSION, session);
@@ -192,7 +192,7 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
 
         boolean found = true;
         try {
-            bot.tree().expandNode("Documentation");
+            shell.bot().tree().expandNode("Documentation");
         } catch (WidgetNotFoundException e) {
             found = false;
         }
@@ -232,17 +232,17 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
      * @return the opened representation
      */
     private SWTBotEditor createRepresentation(String representation, String representationDescLabel, String semanticElement) {
-        secondWizard(representation);
+        SWTBot wizardBot = secondWizard(representation);
 
-        bot.tree().expandNode("platform:/resource/DesignerTestProject/My.ecore").expandNode(semanticElement).select();
-        checkButtonAfterSelectionSecondWizard();
-        bot.button(FINISH).click();
+        wizardBot.tree().expandNode("platform:/resource/DesignerTestProject/My.ecore").expandNode(semanticElement).select();
+        checkButtonAfterSelectionSecondWizard(wizardBot);
+        wizardBot.button(FINISH).click();
 
         // choose the representation name
         bot.waitUntil(Conditions.shellIsActive("New " + representationDescLabel));
         SWTBotShell shell = bot.shell("New " + representationDescLabel);
         shell.activate();
-        bot.button(OK).click();
+        shell.bot().button(OK).click();
         SWTBotUtils.waitAllUiEvents();
         SWTBotUtils.waitProgressMonitorClose("Representation creation");
 
@@ -256,9 +256,9 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
      *            name
      */
     private void cancelSecondWizard(String representation) {
-        secondWizard(representation);
+        SWTBot wizardBot = secondWizard(representation);
 
-        bot.button(CANCEL).click();
+        wizardBot.button(CANCEL).click();
         SWTBotUtils.waitAllUiEvents();
     }
 
@@ -266,8 +266,9 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
      * Open the second wizard.
      * 
      * @param representation
+     * @return
      */
-    private void secondWizard(String representation) {
+    private SWTBot secondWizard(String representation) {
         // create representation
         createOnContextMenu();
 
@@ -275,17 +276,20 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
         bot.waitUntil(Conditions.shellIsActive("Create Representation Wizard"));
         SWTBotShell shell = bot.shell("Create Representation Wizard");
         shell.activate();
-        checkButtonBeforeSelectionFirstWizard();
+        SWTBot wizardBot = shell.bot();
+        checkButtonBeforeSelectionFirstWizard(wizardBot);
 
-        bot.tree().expandNode(VIEWPOINT_NAME).expandNode(representation).select();
-        checkButtonAfterSelectionFirstWizard();
-        bot.button(NEXT).click();
+        wizardBot.tree().expandNode(VIEWPOINT_NAME).expandNode(representation).select();
+        checkButtonAfterSelectionFirstWizard(wizardBot);
+        wizardBot.button(NEXT).click();
 
         // select semantic element of the new representation
         bot.waitUntil(Conditions.shellIsActive("Create Representation"));
         shell = bot.shell("Create Representation");
         shell.activate();
-        checkButtonBeforeSelectionSecondWizard();
+        checkButtonBeforeSelectionSecondWizard(shell.bot());
+
+        return shell.bot();
     }
 
     /**
@@ -298,33 +302,33 @@ public class CreateRepresentationFromSessionTest extends AbstractSiriusSwtBotGef
         bot.waitUntil(Conditions.shellIsActive("Create Representation Wizard"));
         SWTBotShell shell = bot.shell("Create Representation Wizard");
         shell.activate();
-        bot.button(CANCEL);
+        shell.bot().button(CANCEL);
     }
 
-    private void checkButtonAfterSelectionSecondWizard() {
-        assertFalse(bot.button(NEXT).isEnabled());
-        assertTrue(bot.button(BACK).isEnabled());
-        assertTrue(bot.button(CANCEL).isEnabled());
+    private void checkButtonAfterSelectionSecondWizard(SWTBot swtBot) {
+        assertFalse(swtBot.button(NEXT).isEnabled());
+        assertTrue(swtBot.button(BACK).isEnabled());
+        assertTrue(swtBot.button(CANCEL).isEnabled());
     }
 
-    private void checkButtonBeforeSelectionSecondWizard() {
-        assertFalse(bot.button(FINISH).isEnabled());
-        assertTrue(bot.button(BACK).isEnabled());
-        assertFalse(bot.button(NEXT).isEnabled());
-        assertTrue(bot.button(CANCEL).isEnabled());
+    private void checkButtonBeforeSelectionSecondWizard(SWTBot swtBot) {
+        assertFalse(swtBot.button(FINISH).isEnabled());
+        assertTrue(swtBot.button(BACK).isEnabled());
+        assertFalse(swtBot.button(NEXT).isEnabled());
+        assertTrue(swtBot.button(CANCEL).isEnabled());
     }
 
-    private void checkButtonAfterSelectionFirstWizard() {
-        assertFalse(bot.button(FINISH).isEnabled());
-        assertFalse(bot.button(BACK).isEnabled());
-        assertTrue(bot.button(CANCEL).isEnabled());
+    private void checkButtonAfterSelectionFirstWizard(SWTBot swtBot) {
+        assertFalse(swtBot.button(FINISH).isEnabled());
+        assertFalse(swtBot.button(BACK).isEnabled());
+        assertTrue(swtBot.button(CANCEL).isEnabled());
     }
 
-    private void checkButtonBeforeSelectionFirstWizard() {
-        assertFalse(bot.button(FINISH).isEnabled());
-        assertFalse(bot.button(BACK).isEnabled());
-        assertFalse(bot.button(NEXT).isEnabled());
-        assertTrue(bot.button(CANCEL).isEnabled());
+    private void checkButtonBeforeSelectionFirstWizard(SWTBot swtBot) {
+        assertFalse(swtBot.button(FINISH).isEnabled());
+        assertFalse(swtBot.button(BACK).isEnabled());
+        assertFalse(swtBot.button(NEXT).isEnabled());
+        assertTrue(swtBot.button(CANCEL).isEnabled());
     }
 
     /**

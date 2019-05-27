@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentat
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotLabel;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
@@ -32,6 +33,8 @@ public class CascadingSiriusURITest extends AbstractSiriusSwtBotGefTestCase {
     private static final String VSM_FILE_A = "a.odesign";
 
     private static final String VSM_FILE_B = "b.odesign";
+
+    private static final String PROPERTIES = "Properties";
 
     private static final String VSM_FILE_C = "c.odesign";
 
@@ -78,9 +81,10 @@ public class CascadingSiriusURITest extends AbstractSiriusSwtBotGefTestCase {
         bot.button("OK").click();
 
         // Update group name in c.odesign
-        bot.viewByTitle("Properties").setFocus();
-        bot.viewByTitle("Properties").bot().text("C").setText("CModified");
-        SWTBotSiriusHelper.selectPropertyTabItem("Documentation");
+        bot.viewByTitle(PROPERTIES).setFocus();
+        bot.viewByTitle(PROPERTIES).bot().text("C").setText("CModified");
+        SWTBotView propertiesBot = bot.viewByTitle(PROPERTIES);
+        SWTBotSiriusHelper.selectPropertyTabItem("Documentation", propertiesBot.bot());
 
         // Save and Close c.odesign
         bot.editorByTitle(VSM_FILE_C).setFocus();

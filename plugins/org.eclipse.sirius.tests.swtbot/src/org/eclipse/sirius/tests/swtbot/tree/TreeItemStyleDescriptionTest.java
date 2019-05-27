@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -39,14 +39,15 @@ import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.ui.PlatformUI;
 import org.junit.Test;
 
 /**
- * Test Style description item. Test automatic refresh and manual refresh. Test
- * undo/redo after each test type Test opening and closing model or editor to
- * verify that all changes are effective
+ * Test Style description item. Test automatic refresh and manual refresh. Test undo/redo after each test type Test
+ * opening and closing model or editor to verify that all changes are effective
  * 
  * @author jdupont
  */
@@ -324,10 +325,8 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
     }
 
     /**
-     * Tests that the Sirius tree item's font size is the runtime one and not
-     * the VSM one when the option
-     * {@link SiriusTreeUiPreferencesKeys#PREF_ALWAYS_USE_STANDARD_FONT_SIZE} is
-     * set to true.
+     * Tests that the Sirius tree item's font size is the runtime one and not the VSM one when the option
+     * {@link SiriusTreeUiPreferencesKeys#PREF_ALWAYS_USE_STANDARD_FONT_SIZE} is set to true.
      */
     @Test
     public void testTreeItemStyleWithStandardFontSizeOptionActivated() {
@@ -450,8 +449,7 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
     }
 
     /**
-     * Modify all fields in properties view of tree item style description in
-     * viewpoint specific model (.odesign).
+     * Modify all fields in properties view of tree item style description in viewpoint specific model (.odesign).
      * 
      * @param odesignEditor
      *            the odesign editor.
@@ -462,20 +460,22 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
         tree.expandNode(ODESIGN).expandNode(GROUP).expandNode("Design").expandNode("Tree").expandNode("Class").expandNode("feature:name").select();
 
         // accesses to property view
-        bot.viewByTitle(PROPERTIES).setFocus();
+        SWTBotView viewByTitle = bot.viewByTitle(PROPERTIES);
+        viewByTitle.setFocus();
+        SWTBot propertiesViewBot = viewByTitle.bot();
 
         // accesses to tab Label
-        SWTBotSiriusHelper.selectPropertyTabItem(LABEL);
-        changeShowIcon();
-        changeAndTestPropertyTabLabel(8, 12, "feature:name", "aql:'Test' + self.name", 0, 1);
+        SWTBotSiriusHelper.selectPropertyTabItem(LABEL, propertiesViewBot);
+        changeShowIcon(propertiesViewBot);
+        changeAndTestPropertyTabLabel(8, 12, "feature:name", "aql:'Test' + self.name", 0, 1, propertiesViewBot);
         SWTBotUtils.waitAllUiEvents();
         // Save odesign
         saveViewpointSpecificationModel(VSM);
         SWTBotUtils.waitAllUiEvents();
 
         // accesses to tab Color
-        SWTBotSiriusHelper.selectPropertyTabItem(COLOR);
-        changeAndTestPropertyTabColor(17, 1, 13, 2);
+        SWTBotSiriusHelper.selectPropertyTabItem(COLOR, propertiesViewBot);
+        changeAndTestPropertyTabColor(17, 1, 13, 2, propertiesViewBot);
 
         // Save odesign
         saveViewpointSpecificationModel(VSM);
@@ -506,13 +506,15 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
 
     /**
      * Retrieve, test, change and test all fields in General tab.
+     * 
+     * @param swtBot
      */
-    private void changeShowIcon() {
+    private void changeShowIcon(SWTBot swtBot) {
         // Retrieve show icon check
-        assertFalse(bot.viewByTitle(PROPERTIES).bot().checkBox(4).isChecked());
+        assertFalse(swtBot.checkBox(4).isChecked());
         // Check show icon
-        bot.viewByTitle(PROPERTIES).bot().checkBox(4).click();
-        assertTrue(bot.viewByTitle(PROPERTIES).bot().checkBox(4).isChecked());
+        swtBot.checkBox(4).click();
+        assertTrue(swtBot.checkBox(4).isChecked());
     }
 
     /**
@@ -534,28 +536,30 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
      *            the index of radio button for label format
      * @param newValueLabelFormat
      *            the index of radio button for new label format
+     * @param swtBot
      */
-    private void changeAndTestPropertyTabLabel(int valueLabelSize, int newValueLabelSize, String valueLabelExpression, String newValueLabelExpression, int valueLabelFormat, int newValueLabelFormat) {
+    private void changeAndTestPropertyTabLabel(int valueLabelSize, int newValueLabelSize, String valueLabelExpression, String newValueLabelExpression, int valueLabelFormat, int newValueLabelFormat,
+            SWTBot swtBot) {
         // Retrieve label format
-        assertTrue(bot.viewByTitle(PROPERTIES).bot().checkBox(valueLabelFormat).isChecked());
+        assertTrue(swtBot.checkBox(valueLabelFormat).isChecked());
         // Change label format
-        bot.viewByTitle(PROPERTIES).bot().checkBox(newValueLabelFormat).click();
-        assertTrue(bot.viewByTitle(PROPERTIES).bot().checkBox(newValueLabelFormat).isChecked());
+        swtBot.checkBox(newValueLabelFormat).click();
+        assertTrue(swtBot.checkBox(newValueLabelFormat).isChecked());
         // Retrieve label expression
-        assertThat(bot.viewByTitle(PROPERTIES).bot().text(0).getText(), equalTo(valueLabelExpression));
+        assertThat(swtBot.text(0).getText(), equalTo(valueLabelExpression));
         // Retrieve label size
-        assertThat(bot.viewByTitle(PROPERTIES).bot().spinner(0).getSelection(), equalTo(valueLabelSize));
+        assertThat(swtBot.spinner(0).getSelection(), equalTo(valueLabelSize));
         // Change label size
-        bot.viewByTitle(PROPERTIES).bot().spinner(0).setFocus();
-        bot.viewByTitle(PROPERTIES).bot().spinner(0).setSelection(newValueLabelSize);
-        assertThat(bot.viewByTitle(PROPERTIES).bot().spinner(0).getSelection(), equalTo(newValueLabelSize));
-        SWTBotUtils.pressEnterKey(bot.viewByTitle(PROPERTIES).bot().spinner(0).widget);
+        swtBot.spinner(0).setFocus();
+        swtBot.spinner(0).setSelection(newValueLabelSize);
+        assertThat(swtBot.spinner(0).getSelection(), equalTo(newValueLabelSize));
+        SWTBotUtils.pressEnterKey(swtBot.spinner(0).widget);
 
         // Change label expression
-        bot.viewByTitle(PROPERTIES).bot().text(0).setFocus();
-        bot.viewByTitle(PROPERTIES).bot().text(0).setText(newValueLabelExpression);
-        assertThat(bot.viewByTitle(PROPERTIES).bot().text(0).getText(), equalTo(newValueLabelExpression));
-        SWTBotUtils.pressEnterKey(bot.viewByTitle(PROPERTIES).bot().spinner(0).widget);
+        swtBot.text(0).setFocus();
+        swtBot.text(0).setText(newValueLabelExpression);
+        assertThat(swtBot.text(0).getText(), equalTo(newValueLabelExpression));
+        SWTBotUtils.pressEnterKey(swtBot.spinner(0).widget);
     }
 
     /**
@@ -570,20 +574,20 @@ public class TreeItemStyleDescriptionTest extends AbstractTreeSiriusSWTBotGefTes
      * @param newLabelColorValue
      *            index for the new label color value
      */
-    private void changeAndTestPropertyTabColor(int backgroundValue, int newBackgroundValue, int labelColorValue, int newLabelColorValue) {
+    private void changeAndTestPropertyTabColor(int backgroundValue, int newBackgroundValue, int labelColorValue, int newLabelColorValue, SWTBot swtBot) {
         // Retrieve color for Background Color and verify equal to light_yellow
-        String backgroundColor = bot.viewByTitle(PROPERTIES).bot().ccomboBox(1).selection();
+        String backgroundColor = swtBot.ccomboBox(1).selection();
         assertThat(backgroundColor, equalTo(MAPCOLORVALUE.get(backgroundValue)));
         // Choose black color for Background Color
-        bot.viewByTitle(PROPERTIES).bot().ccomboBox(1).setSelection(newBackgroundValue);
-        String newBackgroundColor = bot.viewByTitle(PROPERTIES).bot().ccomboBox(1).selection();
+        swtBot.ccomboBox(1).setSelection(newBackgroundValue);
+        String newBackgroundColor = swtBot.ccomboBox(1).selection();
         assertThat(newBackgroundColor, equalTo(MAPCOLORVALUE.get(newBackgroundValue)));
         // Retrieve color for Label Color
-        String labelColor = bot.viewByTitle(PROPERTIES).bot().ccomboBox(0).selection();
+        String labelColor = swtBot.ccomboBox(0).selection();
         assertThat(labelColor, equalTo(MAPCOLORVALUE.get(labelColorValue)));
         // Choose blue color for Label Color
-        bot.viewByTitle(PROPERTIES).bot().ccomboBox(0).setSelection(newLabelColorValue);
-        String newLabelColor = bot.viewByTitle(PROPERTIES).bot().ccomboBox(0).selection();
+        swtBot.ccomboBox(0).setSelection(newLabelColorValue);
+        String newLabelColor = swtBot.ccomboBox(0).selection();
         assertThat(newLabelColor, equalTo(MAPCOLORVALUE.get(newLabelColorValue)));
     }
 }

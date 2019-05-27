@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.SessionSavedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
@@ -30,6 +31,7 @@ import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.tools.api.command.AbstractSWTCallback;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
@@ -41,10 +43,9 @@ import org.eclipse.ui.PlatformUI;
 
 /**
  * 
- * Test pop ups appears when closing editors with session dirty. - Test personal
- * UiCallback for pop up message on close dirty representations correspond to
- * message defines in personal UICallback. - Test pop up appears when many
- * editors dirty closed. Test VP-2458 VP-2454. Test VP-2457.
+ * Test pop ups appears when closing editors with session dirty. - Test personal UiCallback for pop up message on close
+ * dirty representations correspond to message defines in personal UICallback. - Test pop up appears when many editors
+ * dirty closed. Test VP-2458 VP-2454. Test VP-2457.
  * 
  * @author jdupont
  */
@@ -110,8 +111,8 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that when closing dirty representation it's a good message display
-     * in pop up. The message is define in own UICallBack test.
+     * Test that when closing dirty representation it's a good message display in pop up. The message is define in own
+     * UICallBack test.
      */
     public void testSessionProvideOwnSaveable() {
         // Restore the default preference values of Sirius (not a customer
@@ -141,10 +142,8 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * When closing a dirty representation, a dialog appears to choice what to
-     * do. This test checks that when the user clicks on the escape key, the
-     * dialog is closed and nothing happens (session still dirty and editor
-     * still opened).
+     * When closing a dirty representation, a dialog appears to choice what to do. This test checks that when the user
+     * clicks on the escape key, the dialog is closed and nothing happens (session still dirty and editor still opened).
      */
     public void testEscapeKeyEffectOnSaveDialog() {
         // Restore the default preference values of Sirius (not a customer
@@ -176,9 +175,8 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * When closing a dirty representation, a dialog appears to choice what to
-     * do. This test checks that when the user closes this dialog, nothing
-     * happens (session still dirty and editor still opened).
+     * When closing a dirty representation, a dialog appears to choice what to do. This test checks that when the user
+     * closes this dialog, nothing happens (session still dirty and editor still opened).
      */
     public void testCloseEffectOnSaveDialog() {
         // Restore the default preference values of Sirius (not a customer
@@ -210,10 +208,8 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * When closing many editors, a dialog appears to choice what to do. This
-     * test checks that when the user closes this dialog by pressing "No"
-     * button, nothing happens (sessions must not be saved and editor are
-     * closed).
+     * When closing many editors, a dialog appears to choice what to do. This test checks that when the user closes this
+     * dialog by pressing "No" button, nothing happens (sessions must not be saved and editor are closed).
      */
     public void testCloseAllEditorsWithoutSaving() {
         // Open session
@@ -228,10 +224,12 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
         createNode(200, 150);
         // Close all representations
         bot.activeEditor().bot().menu("Close All").click();
+        SWTBot saveBot = SWTBotSiriusHelper.getShellBot("Save");
         // Close the first save dialog.
-        bot.button("No").click();
+        saveBot.button("No").click();
         // Close the second save dialog.
-        bot.button("No").click();
+        saveBot = SWTBotSiriusHelper.getShellBot("Save");
+        saveBot.button("No").click();
         // Check that the sessions are not saved and editors are closed
         assertEquals("The editors must be closed.", 0, editor.getReference().getPage().getEditorReferences().length);
         editor = openDiagram(REPRESENTATION_NAME, REPRESENTATION_INSTANCE_NAME);
@@ -241,9 +239,8 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test when many editors opened that a pop up with many check appears. Test
-     * with _Pref_ReloadOnLastEditorClose and _Pref_SaveWhenNoEditor to false
-     * value. The preference 'Prompt when saveable still open' is set to true.
+     * Test when many editors opened that a pop up with many check appears. Test with _Pref_ReloadOnLastEditorClose and
+     * _Pref_SaveWhenNoEditor to false value. The preference 'Prompt when saveable still open' is set to true.
      */
     public void testCloseAllEditorWithDesignPrefTrueAndElipsePrefFalse() {
         closeAllEditorOpened(true, false);
@@ -254,9 +251,8 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test when many editors opened that a pop up with many check appears.
-     * _Pref_ReloadOnLastEditorClose and _Pref_SaveWhenNoEditor are set to true
-     * value and preference 'Prompt when saveable still open' is set to true.
+     * Test when many editors opened that a pop up with many check appears. _Pref_ReloadOnLastEditorClose and
+     * _Pref_SaveWhenNoEditor are set to true value and preference 'Prompt when saveable still open' is set to true.
      */
     public void testCloseAllEditorWithDesignPrefTrueAndElipsePrefTrue() {
         closeAllEditorOpened(true, true);
@@ -267,10 +263,9 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test when many editors opened that a pop up with many check appears. It's
-     * necessary to this test to passed _Pref_ReloadOnLastEditorClose and
-     * _Pref_SaveWhenNoEditor to false value.Preference 'Prompt when saveable
-     * stil open' is set to false.
+     * Test when many editors opened that a pop up with many check appears. It's necessary to this test to passed
+     * _Pref_ReloadOnLastEditorClose and _Pref_SaveWhenNoEditor to false value.Preference 'Prompt when saveable stil
+     * open' is set to false.
      */
     public void testCloseAllEditorWithDesignPrefFalseAndElipsePrefFalse() {
         closeAllEditorOpened(false, false);
@@ -281,9 +276,8 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test when many editors opened that a pop up with many check appears.
-     * _Pref_ReloadOnLastEditorClose and _Pref_SaveWhenNoEditor are set to true
-     * value. Preference 'Prompt when saveable stil open' is set to false.
+     * Test when many editors opened that a pop up with many check appears. _Pref_ReloadOnLastEditorClose and
+     * _Pref_SaveWhenNoEditor are set to true value. Preference 'Prompt when saveable stil open' is set to false.
      */
     public void testCloseAllEditorWithDesignPrefFalseAndElipsePrefTrue() {
         closeAllEditorOpened(false, true);
@@ -332,11 +326,11 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     private void checkSaveDialog() {
-        bot.waitUntil(Conditions.shellIsActive("Save"));
+        SWTBot saveBot = SWTBotSiriusHelper.getShellBot("Save");
         // Check the message (must start with the session name, instead of
         // editor name).
-        final SWTBotButton buttonNo = bot.button("No");
-        final SWTBotLabel labelOfPopup = bot.label(1);
+        final SWTBotButton buttonNo = saveBot.button("No");
+        final SWTBotLabel labelOfPopup = saveBot.label(1);
         final String msgOfPopup = labelOfPopup.getText();
         assertTrue("The message (\"" + msgOfPopup + "\") should be contains:  (" + TEST_UI_CALLBACK + ").", msgOfPopup.contains(TEST_UI_CALLBACK));
         buttonNo.click();
@@ -346,6 +340,8 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
         bot.waitUntil(Conditions.shellIsActive("Save"));
         SWTBotShell saveShell = bot.shell("Save");
         try {
+            saveShell.activate();
+            saveShell.setFocus();
             saveShell.pressShortcut(KeyStroke.getInstance(IKeyLookup.ESC_NAME));
         } catch (ParseException e) {
             fail("Problem to press escape key");
@@ -361,28 +357,27 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     private void checkSaveResourcesDialog() {
-        bot.waitUntil(Conditions.shellIsActive("Save Resources"));
-        final SWTBotButton buttonOk = bot.button(TestsUtil.isPhotonPlatformOrLater() ? "Save Selected" : "OK");
-        assertTrue("The popup should be contains 2 elements", bot.table().rowCount() == 2);
+        SWTBot saveBot = SWTBotSiriusHelper.getShellBot("Save Resources");
+        final SWTBotButton buttonOk = saveBot.button(TestsUtil.isPhotonPlatformOrLater() ? "Save Selected" : "OK");
+        assertTrue("The popup should be contains 2 elements", saveBot.table().rowCount() == 2);
         buttonOk.click();
         SessionSavedCondition sessionCondition = new SessionSavedCondition(localSession.getOpenedSession());
         bot.waitUntil(sessionCondition);
     }
 
     private void checkSaveResourcesDialogWithPrefTrue() {
-        bot.waitUntil(Conditions.shellIsActive("Save"));
-        SWTBotButton buttonYes = bot.button("Yes");
+        SWTBot saveBot = SWTBotSiriusHelper.getShellBot("Save");
+        SWTBotButton buttonYes = saveBot.button("Yes");
         buttonYes.click();
-        bot.waitUntil(Conditions.shellIsActive("Save Resource"));
-        buttonYes = bot.button(TestsUtil.isOxygenPlatform() ? "Save" : "Yes");
+        saveBot = SWTBotSiriusHelper.getShellBot("Save Resources");
+        buttonYes = saveBot.button(TestsUtil.isOxygenPlatform() ? "Save" : "Yes");
         buttonYes.click();
         SessionSavedCondition sessionCondition = new SessionSavedCondition(localSession.getOpenedSession());
         bot.waitUntil(sessionCondition);
     }
 
     /**
-     * Create a new node using the defined Node Creation tool, at the given
-     * position.
+     * Create a new node using the defined Node Creation tool, at the given position.
      * 
      * @param xOfNodeToCreate
      *            position of the note to create
@@ -405,20 +400,20 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
      * @return the opened representation
      */
     private SWTBotEditor createRepresentation(String representation, String semanticElement) {
-        secondWizard(representation);
+        SWTBot secondWizardBot = secondWizard(representation);
 
         SWTBotUtils.waitAllUiEvents();
-        bot.tree().expandNode("platform:/resource/" + TEMP_PROJECT_NAME + "/" + MODEL).expandNode(semanticElement).select();
+        secondWizardBot.tree().expandNode("platform:/resource/" + TEMP_PROJECT_NAME + "/" + MODEL).expandNode(semanticElement).select();
         SWTBotUtils.waitAllUiEvents();
-        checkButtonAfterSelectionSecondWizard();
-        bot.button(FINISH).click();
+        checkButtonAfterSelectionSecondWizard(secondWizardBot);
+        secondWizardBot.button(FINISH).click();
 
         SWTBotUtils.waitAllUiEvents();
 
         // choose the representation name
         SWTBotShell shell = bot.shell("New Entities");
         shell.activate();
-        bot.button(OK).click();
+        shell.bot().button(OK).click();
         SWTBotUtils.waitAllUiEvents();
         SWTBotUtils.waitProgressMonitorClose("Representation creation");
 
@@ -429,23 +424,25 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
      * Open the second wizard.
      * 
      * @param representation
+     * @return
      */
-    private void secondWizard(String representation) {
+    private SWTBot secondWizard(String representation) {
         // create representation
         createOnContextMenu();
 
         // select representation to create
         SWTBotShell shell = bot.shell("Create Representation Wizard");
         shell.activate();
-
-        bot.tree().expandNode(VIEWPOINT_NAME).expandNode(representation).select();
-        checkButtonAfterSelectionFirstWizard();
-        bot.button(NEXT).click();
+        SWTBot wizardBot = shell.bot();
+        wizardBot.tree().expandNode(VIEWPOINT_NAME).expandNode(representation).select();
+        checkButtonAfterSelectionFirstWizard(wizardBot);
+        wizardBot.button(NEXT).click();
 
         // select semantic element of the new representation
         shell = bot.shell("Create Representation");
         shell.activate();
-        checkButtonBeforeSelectionSecondWizard();
+        checkButtonBeforeSelectionSecondWizard(shell.bot());
+        return shell.bot();
     }
 
     /**
@@ -461,24 +458,24 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
         }
     }
 
-    private void checkButtonAfterSelectionFirstWizard() {
-        assertFalse(bot.button(FINISH).isEnabled());
-        assertFalse(bot.button(BACK).isEnabled());
-        assertTrue(bot.button(CANCEL).isEnabled());
+    private void checkButtonAfterSelectionFirstWizard(SWTBot swtBot) {
+        assertFalse(swtBot.button(FINISH).isEnabled());
+        assertFalse(swtBot.button(BACK).isEnabled());
+        assertTrue(swtBot.button(CANCEL).isEnabled());
     }
 
-    private void checkButtonBeforeSelectionSecondWizard() {
-        assertFalse(bot.button(FINISH).isEnabled());
-        assertTrue(bot.button(BACK).isEnabled());
-        assertFalse(bot.button(NEXT).isEnabled());
-        assertTrue(bot.button(CANCEL).isEnabled());
+    private void checkButtonBeforeSelectionSecondWizard(SWTBot swtBot) {
+        assertFalse(swtBot.button(FINISH).isEnabled());
+        assertTrue(swtBot.button(BACK).isEnabled());
+        assertFalse(swtBot.button(NEXT).isEnabled());
+        assertTrue(swtBot.button(CANCEL).isEnabled());
     }
 
-    private void checkButtonAfterSelectionSecondWizard() {
-        assertFalse(bot.button(NEXT).isEnabled());
-        assertTrue(bot.button(BACK).isEnabled());
-        assertTrue(bot.button(CANCEL).isEnabled());
-        assertTrue(bot.button(FINISH).isEnabled());
+    private void checkButtonAfterSelectionSecondWizard(SWTBot swtBot) {
+        assertFalse(swtBot.button(NEXT).isEnabled());
+        assertTrue(swtBot.button(BACK).isEnabled());
+        assertTrue(swtBot.button(CANCEL).isEnabled());
+        assertTrue(swtBot.button(FINISH).isEnabled());
     }
 
     private class SessionCallBack extends AbstractSWTCallback {

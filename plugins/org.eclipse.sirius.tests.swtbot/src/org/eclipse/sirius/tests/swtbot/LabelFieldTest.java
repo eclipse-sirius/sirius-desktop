@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,13 +18,14 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.junit.Test;
 
 /**
- * Test that label field was selected when user focus on. Test if user remove
- * label field when focus out the label field is fills with id field value.
+ * Test that label field was selected when user focus on. Test if user remove label field when focus out the label field
+ * is fills with id field value.
  * 
  * @author jdupont
  */
@@ -88,20 +89,20 @@ public class LabelFieldTest extends AbstractSiriusSwtBotGefTestCase {
         tree.expandNode(ODESIGN).expandNode(GROUP).expandNode(VIEWPOIT_NAME).select();
 
         // accesses to property view
-        bot.viewByTitle(PROPERTIES).setFocus();
+        SWTBotView propertiesView = bot.viewByTitle(PROPERTIES);
+        propertiesView.setFocus();
 
         // accesses to tab General
-        SWTBotSiriusHelper.selectPropertyTabItem(GENERAL);
+        SWTBotSiriusHelper.selectPropertyTabItem(GENERAL, propertiesView.bot());
 
         // access to label field
-        labelText = bot.viewByTitle(PROPERTIES).bot().text(1);
+        labelText = propertiesView.bot().text(1);
         // focus on label field
         labelText.setFocus();
     }
 
     /**
-     * Test that label field was removed if is same that id or selected
-     * otherwise when user focus on.
+     * Test that label field was removed if is same that id or selected otherwise when user focus on.
      */
     @Test
     public void testSelectedLabelFieldOnFocus() {
@@ -117,8 +118,7 @@ public class LabelFieldTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test if user remove label field when focus out the label field is fills
-     * with id field value.
+     * Test if user remove label field when focus out the label field is fills with id field value.
      */
     public void testLabelFieldFillsIfEmpty() {
         // remove label field value
@@ -138,6 +138,7 @@ public class LabelFieldTest extends AbstractSiriusSwtBotGefTestCase {
      *            the name of viewpoint specification model (.odesing)
      * @return odesignEditor
      */
+    @Override
     public SWTBotVSMEditor openViewpointSpecificationModel(String viewpointSpecificationModel) {
         SWTBotCommonHelper.openEditor(getProjectName(), viewpointSpecificationModel);
         SWTBotVSMEditor odesignEditor = SWTBotVSMHelper.getVSMEditorContainingName(viewpointSpecificationModel);
@@ -154,8 +155,10 @@ public class LabelFieldTest extends AbstractSiriusSwtBotGefTestCase {
      */
     private boolean isFieldLabelAllCharacterSelected(SWTBotText label) {
         RunnableWithResult<Boolean> runnable = new RunnableWithResult.Impl<Boolean>() {
+            @Override
             public void run() {
                 labelText.widget.getDisplay().syncExec(new Runnable() {
+                    @Override
                     public void run() {
                         setResult(labelText.getText().length() != 0 && labelText.widget.getSelectionCount() == labelText.getText().length());
                     }
@@ -163,7 +166,7 @@ public class LabelFieldTest extends AbstractSiriusSwtBotGefTestCase {
             }
         };
         labelText.widget.getDisplay().syncExec(runnable);
-        return ((Boolean) runnable.getResult()).booleanValue();
+        return runnable.getResult().booleanValue();
     }
 
 }

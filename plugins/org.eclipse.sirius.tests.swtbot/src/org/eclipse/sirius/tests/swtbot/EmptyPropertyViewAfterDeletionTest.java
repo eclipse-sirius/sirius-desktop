@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -41,9 +41,8 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.junit.Assert;
 
 /**
- * Test class that after semantic element deletion in REFRESH_AUTO mode to
- * false, the Property view should not display properties on the remaining
- * orphan View.
+ * Test class that after semantic element deletion in REFRESH_AUTO mode to false, the Property view should not display
+ * properties on the remaining orphan View.
  * 
  * @author edugueperoux
  */
@@ -111,9 +110,8 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
     }
 
     /**
-     * Test class that after semantic node deletion in REFRESH_AUTO mode to
-     * false, the Property view should not display properties on the remaining
-     * orphan View.
+     * Test class that after semantic node deletion in REFRESH_AUTO mode to false, the Property view should not display
+     * properties on the remaining orphan View.
      */
     public void testEmptyPropertyViewAfterNodeDeletionTest() {
         // Eclipse 4.x setFocus
@@ -193,9 +191,8 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
     }
 
     /**
-     * Test class that after semantic edge deletion in REFRESH_AUTO mode to
-     * false, the Property view should not display properties on the remaining
-     * orphan View.
+     * Test class that after semantic edge deletion in REFRESH_AUTO mode to false, the Property view should not display
+     * properties on the remaining orphan View.
      */
     public void testEmptyPropertyViewAfterEdgeDeletionTest() {
         // Eclipse 4.x setFocus
@@ -276,8 +273,7 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
     }
 
     /**
-     * Specific delete, made outside of the editor to get the semantic
-     * decorators.
+     * Specific delete, made outside of the editor to get the semantic decorators.
      */
     private void deleteFromOutside(IDiagramElementEditPart part) {
         EObject semElt = part.resolveTargetSemanticElement();
@@ -288,8 +284,8 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
     }
 
     /**
-     * Get the numbers of Red cross decorators (used to indicate a delete
-     * semantic element of a figure in REFRESH_AUTO mode to false).
+     * Get the numbers of Red cross decorators (used to indicate a delete semantic element of a figure in REFRESH_AUTO
+     * mode to false).
      * 
      * @return the numbers of Red cross decorators
      */
@@ -304,23 +300,22 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
     }
 
     /**
-     * Checks that on current diagram selection the Property view tabs are noy
-     * empty.
+     * Checks that on current diagram selection the Property view tabs are noy empty.
      */
     private void checkNotEmptyPropertyTabs() {
         SWTBotView propertyView = bot.viewByTitle("Properties");
         propertyView.setFocus();
         SWTBot propertyViewBot = propertyView.bot();
 
-        SWTBotSiriusHelper.selectPropertyTabItem("Semantic");
+        SWTBotSiriusHelper.selectPropertyTabItem("Semantic", propertyViewBot);
         SWTBotTree swtBotTree = propertyViewBot.tree();
         Assert.assertNotSame(0, swtBotTree.getAllItems().length);
 
-        SWTBotSiriusHelper.selectPropertyTabItem("Style");
+        SWTBotSiriusHelper.selectPropertyTabItem("Style", propertyViewBot);
         swtBotTree = propertyViewBot.tree();
         Assert.assertNotSame(0, swtBotTree.getAllItems().length);
 
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertyViewBot);
         // Checks if the Appearance tab is empty, if not the focused widget is a
         // text widget otherwise it is a ScrolledComposite
         Assert.assertTrue(propertyViewBot.getFocusedWidget() instanceof Text);
@@ -328,23 +323,22 @@ public class EmptyPropertyViewAfterDeletionTest extends AbstractSiriusSwtBotGefT
     }
 
     /**
-     * Checks that on current diagram selection the Property view tabs are
-     * empty.
+     * Checks that on current diagram selection the Property view tabs are empty.
      */
     private void checkEmptyPropertyTabs() {
         SWTBotView propertyView = bot.viewByTitle("Properties");
         propertyView.setFocus();
         SWTBot propertyViewBot = propertyView.bot();
 
-        SWTBotSiriusHelper.selectPropertyTabItem("Semantic");
+        SWTBotSiriusHelper.selectPropertyTabItem("Semantic", propertyViewBot);
         SWTBotTree swtBotTree = propertyViewBot.tree();
         Assert.assertEquals(0, swtBotTree.getAllItems().length);
 
-        SWTBotSiriusHelper.selectPropertyTabItem("Style");
+        SWTBotSiriusHelper.selectPropertyTabItem("Style", propertyViewBot);
         swtBotTree = propertyViewBot.tree();
         Assert.assertEquals(0, swtBotTree.getAllItems().length);
 
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertyViewBot);
         // Checks if the Appearance tab is empty, i.e. if not the focused widget
         // is a
         // text widget otherwise it is a ScrolledComposite

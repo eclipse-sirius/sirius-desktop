@@ -130,6 +130,18 @@ public final class SWTBotSiriusHelper {
     }
 
     /**
+     * Return the swtbot corresponding to the shell with the given label.
+     * 
+     * @param label
+     *            the label of the shell from which we want the related swtbot.
+     * @return the swtbot corresponding to the shell with the given label.
+     */
+    public static SWTBot getShellBot(String label) {
+        bot.waitUntil(Conditions.shellIsActive(label));
+        return bot.shell(label).bot();
+    }
+
+    /**
      * Select the tab with the name label in the property views.
      * 
      * @param label

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Obeo.
+ * Copyright (c) 2014, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.swt.widgets.Widget;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
@@ -34,8 +35,8 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotCCombo;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToggleButton;
 
 /**
- * Ensure that when DDiagram is locked by using a permission authority all
- * actions are disabled in the appearance tab of the property view.
+ * Ensure that when DDiagram is locked by using a permission authority all actions are disabled in the appearance tab of
+ * the property view.
  * 
  * https://bugs.eclipse.org/bugs/show_bug.cgi?id=444267
  * 
@@ -79,8 +80,8 @@ public class LockedAppearanceTabTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Check that actions in the appearance tab of the property view are enabled
-     * or disabled depending on the permission authority.
+     * Check that actions in the appearance tab of the property view are enabled or disabled depending on the permission
+     * authority.
      */
     public void testActionsEnablement() {
         // check that tested actions are enabled for the diagram
@@ -164,8 +165,8 @@ public class LockedAppearanceTabTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Check that widgets should be enabled depending on the parameter. Theses
-     * widgets are available when the diagram is selected.
+     * Check that widgets should be enabled depending on the parameter. Theses widgets are available when the diagram is
+     * selected.
      * 
      * @param enabled
      *            true if widgets should be enabled
@@ -177,8 +178,8 @@ public class LockedAppearanceTabTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Check that widgets should be enabled depending on the parameter. Theses
-     * widgets are available when there is a selection.
+     * Check that widgets should be enabled depending on the parameter. Theses widgets are available when there is a
+     * selection.
      * 
      * @param enabled
      *            true if widgets should be enabled
@@ -203,9 +204,10 @@ public class LockedAppearanceTabTest extends AbstractSiriusSwtBotGefTestCase {
      *            true if widgets should be enabled
      */
     private void checkActionEnabled(int nbPushButtons, int nbToogleButtons, int nbCombos, boolean enabled) {
-        SWTBot propertiesBot = bot.viewByTitle("Properties").bot();
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        SWTBot propertiesBot = propertiesView.bot();
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
 
         // Push buttons
         for (int i = 0; i < nbPushButtons; i++) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2018 Obeo.
+ * Copyright (c) 2015, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -45,6 +45,7 @@ import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.Customizable;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.swt.SWT;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.keyboard.Keystrokes;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
@@ -92,8 +93,7 @@ public class LineStyleTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Ensure that the border line style of nodes and containers is correctly
-     * updated from the property section.
+     * Ensure that the border line style of nodes and containers is correctly updated from the property section.
      */
     public void testContainerBorderLineStyleCustomization() {
         for (DDiagramElementContainer container : ((DDiagram) editor.getDRepresentation()).getContainers()) {
@@ -102,8 +102,7 @@ public class LineStyleTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Ensure that the border line style of nodes and containers is correctly
-     * updated from the property section.
+     * Ensure that the border line style of nodes and containers is correctly updated from the property section.
      */
     public void testNodeBorderLineStyleCustomization() {
         for (DNode node : ((DDiagram) editor.getDRepresentation()).getNodes()) {
@@ -112,8 +111,7 @@ public class LineStyleTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Ensure that the line style of edge is correctly updated from the property
-     * section.
+     * Ensure that the line style of edge is correctly updated from the property section.
      */
     public void testEdgeLineStyleCustomization() {
         for (DEdge edge : ((DDiagram) editor.getDRepresentation()).getEdges()) {
@@ -139,9 +137,8 @@ public class LineStyleTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Ensure that the border line style of nodes and containers and the line
-     * style of edges are correctly updated from a description change
-     * (activation of layer triggering a style customization).
+     * Ensure that the border line style of nodes and containers and the line style of edges are correctly updated from
+     * a description change (activation of layer triggering a style customization).
      */
     public void testLineStyleUpdateFromDescriptionChange() {
         // Activate Dot layer
@@ -249,17 +246,18 @@ public class LineStyleTest extends AbstractSiriusSwtBotGefTestCase {
 
     private void changeLineStyle(LineStyle lineStyle, boolean edge) {
         ICondition done = new OperationDoneCondition();
-        bot.viewByTitle(PROPERTIES).setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem(STYLE);
+        SWTBotView propertiesView = bot.viewByTitle(PROPERTIES);
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem(STYLE, propertiesView.bot());
         SWTBotTreeItem style;
-        SWTBotTree propertiesTree = bot.viewByTitle(PROPERTIES).bot().tree(0);
+        SWTBotTree propertiesTree = propertiesView.bot().tree(0);
         if (edge) {
             style = propertiesTree.getTreeItem("General").expand().getNode("Line Style");
         } else {
             style = propertiesTree.getTreeItem("Border").expand().getNode("Border Line Style");
         }
         style.click();
-        SWTBotCCombo lineStyleCombo = bot.viewByTitle(PROPERTIES).bot().ccomboBox();
+        SWTBotCCombo lineStyleCombo = propertiesView.bot().ccomboBox();
         lineStyleCombo.setFocus();
         lineStyleCombo.setSelection(lineStyle.getName());
         // In photon we need to press ENTER to leave the combo
@@ -267,7 +265,7 @@ public class LineStyleTest extends AbstractSiriusSwtBotGefTestCase {
             lineStyleCombo.pressShortcut(Keystrokes.CR);
         }
         // apply change with change focus
-        SWTBotSiriusHelper.selectPropertyTabItem(APPEARANCE);
+        SWTBotSiriusHelper.selectPropertyTabItem(APPEARANCE, propertiesView.bot());
         bot.waitUntil(done);
         editor.setFocus();
     }

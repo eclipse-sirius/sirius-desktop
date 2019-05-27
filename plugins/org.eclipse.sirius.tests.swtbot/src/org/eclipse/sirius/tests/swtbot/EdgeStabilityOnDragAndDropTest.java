@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.WrappedSWTBotRadio;
+import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
@@ -103,8 +104,8 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Get bendpoints of the first connection found between
-     * <code>sourceEditPartName</code> and <code>targetEditPartName</code>.
+     * Get bendpoints of the first connection found between <code>sourceEditPartName</code> and
+     * <code>targetEditPartName</code>.
      * 
      * @param sourceEditPartName
      *            source of the connection
@@ -120,9 +121,8 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Check the stability of the first connection found between
-     * <code>sourceEditPartName</code> and <code>targetEditPartName</code>. The
-     * edge is only moved from one side.
+     * Check the stability of the first connection found between <code>sourceEditPartName</code> and
+     * <code>targetEditPartName</code>. The edge is only moved from one side.
      * 
      * @param sourceEditPartName
      *            source of the connection
@@ -198,9 +198,8 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Check the stability of the first connection found between
-     * <code>sourceEditPartName</code> and <code>targetEditPartName</code>. The
-     * edge is shifted by a constant vector.
+     * Check the stability of the first connection found between <code>sourceEditPartName</code> and
+     * <code>targetEditPartName</code>. The edge is shifted by a constant vector.
      * 
      * @param sourceEditPartName
      *            source of the connection
@@ -243,9 +242,8 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Check that the first connection found between
-     * <code>sourceEditPartName</code> and <code>targetEditPartName</code> has
-     * not moved.
+     * Check that the first connection found between <code>sourceEditPartName</code> and <code>targetEditPartName</code>
+     * has not moved.
      * 
      * @param sourceEditPartName
      *            source of the connection
@@ -282,8 +280,7 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Get the first connection found between <code>sourceEditPartName</code>
-     * and <code>targetEditPartName</code>.
+     * Get the first connection found between <code>sourceEditPartName</code> and <code>targetEditPartName</code>.
      * 
      * @param sourceEditPartName
      *            source of the connection
@@ -329,40 +326,35 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
     }
 
     /**
-     * Change style of edges and drag and and drop a border node to the north of
-     * another bordered node.
+     * Change style of edges and drag and and drop a border node to the north of another bordered node.
      */
     public void testEdgeStabilityOnDragAndDropOnNorthAfterStyleChange() {
         doTestEdgeStabilityOnDragAndDrop("P2", "C2", Direction.NORTH, true);
     }
 
     /**
-     * Change style of edges and drag and and drop a border node to the south of
-     * another bordered node.
+     * Change style of edges and drag and and drop a border node to the south of another bordered node.
      */
     public void testEdgeStabilityOnDragAndDropOnSouthAfterStyleChange() {
         doTestEdgeStabilityOnDragAndDrop("P2", "C2", Direction.SOUTH, true);
     }
 
     /**
-     * Change style of edges and drag and and drop a border node to the west of
-     * another bordered node.
+     * Change style of edges and drag and and drop a border node to the west of another bordered node.
      */
     public void testEdgeStabilityOnDragAndDropOnWestAfterStyleChange() {
         doTestEdgeStabilityOnDragAndDrop("P2", "C2", Direction.WEST, true);
     }
 
     /**
-     * Change style of edges and drag and and drop a border node to the east of
-     * another bordered node.
+     * Change style of edges and drag and and drop a border node to the east of another bordered node.
      */
     public void testEdgeStabilityOnDragAndDropOnEastAfterStyleChange() {
         doTestEdgeStabilityOnDragAndDrop("P2", "C2", Direction.EAST, true);
     }
 
     /**
-     * Drag and drop a border node to node contained into another with
-     * horizontal scrollbar.
+     * Drag and drop a border node to node contained into another with horizontal scrollbar.
      */
     public void testEdgeStabilityOnDragAndDropToContainedNode() {
         doTestEdgeStabilityOnDragAndDrop("P4", "C2", Direction.WEST, false);
@@ -460,9 +452,10 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
         SWTBotGefEditPart partTarget = editor.getEditPart(target, AbstractDiagramBorderNodeEditPart.class);
         List<SWTBotGefConnectionEditPart> edges = editor.getConnectionEditPart(partSource, partTarget);
         select(edges.get(0));
-        bot.viewByTitle("Properties").setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance");
-        SWTBotRadio radioToSelect = bot.viewByTitle("Properties").bot().radioInGroup(style, "Styles:");
+        SWTBotView propertiesView = bot.viewByTitle("Properties");
+        propertiesView.setFocus();
+        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
+        SWTBotRadio radioToSelect = propertiesView.bot().radioInGroup(style, "Styles:");
         radioToSelect = new WrappedSWTBotRadio(radioToSelect);
         radioToSelect.click();
     }

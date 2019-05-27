@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -39,8 +39,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
- * A SWTBot test for metamodels selection on a RepresentationDescription (See
- * VP-2651).
+ * A SWTBot test for metamodels selection on a RepresentationDescription (See VP-2651).
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -99,16 +98,14 @@ public class MetamodelPropertyTabTests extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test the metamodel tab of the property view on the edition table
-     * description.
+     * Test the metamodel tab of the property view on the edition table description.
      */
     public void testMetamodelsAddingFromRegistryOnEditionTableDescription() {
         testMetamodelsAddingFromRegistry(EDITION_TABLE_DESCRIPTION_NAME);
     }
 
     /**
-     * Test the metamodel tab of the property view on the cross table
-     * description.
+     * Test the metamodel tab of the property view on the cross table description.
      */
     public void testMetamodelsAddingFromRegistryOnCrossTableDescription() {
         testMetamodelsAddingFromRegistry(CROSS_TABLE_DESCRIPTION_NAME);
@@ -122,16 +119,14 @@ public class MetamodelPropertyTabTests extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test the metamodel tab of the property view on the sequence diagram
-     * description.
+     * Test the metamodel tab of the property view on the sequence diagram description.
      */
     public void testMetamodelsAddingFromRegistryOnSequenceDiagramDescription() {
         testMetamodelsAddingFromRegistry(SEQUENCE_DIAGRAM_DESCRIPTION_NAME);
     }
 
     /**
-     * Test the metamodel tab of the property view on the diagram extension
-     * description.
+     * Test the metamodel tab of the property view on the diagram extension description.
      */
     public void testMetamodelsAddingFromRegistryOnDiagramExtensionDescription() {
         testMetamodelsAddingFromRegistry("Diagram Extension " + DIAGRAM_EXTENSION_DESCRIPTION_NAME);
@@ -154,7 +149,7 @@ public class MetamodelPropertyTabTests extends AbstractSiriusSwtBotGefTestCase {
 
         propertiesBot = bot.viewByTitle("Properties");
         propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Metamodels");
+        SWTBotSiriusHelper.selectPropertyTabItem("Metamodels", propertiesBot.bot());
 
         SWTBotTable metamodelsTableBot = propertiesBot.bot().table();
         SWTBotButton addFromRegistryButtonBot = propertiesBot.bot().button("Add from registry");
@@ -165,8 +160,7 @@ public class MetamodelPropertyTabTests extends AbstractSiriusSwtBotGefTestCase {
 
         addFromRegistryButtonBot.click();
 
-        SWTBot metamodelsSelectionFromRegistryBot = bot.activeShell().bot();
-        bot.waitUntil(Conditions.shellIsActive("Metamodel selection"));
+        SWTBot metamodelsSelectionFromRegistryBot = SWTBotSiriusHelper.getShellBot("Metamodel selection");
         metamodelsSelectionFromRegistryBot.text().setText("*sirius*");
         SWTBotTable metamodelsFromRegistryTableBot = metamodelsSelectionFromRegistryBot.table();
 
@@ -176,7 +170,7 @@ public class MetamodelPropertyTabTests extends AbstractSiriusSwtBotGefTestCase {
             selection[i] = i;
         }
         metamodelsFromRegistryTableBot.select(selection);
-        bot.waitUntil(new TableSelectionCondition(metamodelsFromRegistryTableBot, nbOfMetamodelsFromRegistry));
+        metamodelsSelectionFromRegistryBot.waitUntil(new TableSelectionCondition(metamodelsFromRegistryTableBot, nbOfMetamodelsFromRegistry));
 
         metamodelsSelectionFromRegistryBot.button("OK").click();
         bot.waitUntil(Conditions.tableHasRows(metamodelsTableBot, nbOfMetamodelsFromRegistry));
@@ -206,8 +200,7 @@ public class MetamodelPropertyTabTests extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Assert that the added EPackages from registry are referenced using their
-     * nsURI in the odesign resource.
+     * Assert that the added EPackages from registry are referenced using their nsURI in the odesign resource.
      */
     private void assertEPackageReferenceFromRegistry(String representationDescriptionName) {
         URI modelerResourceURI = URI.createPlatformResourceURI(getProjectName() + "/" + MODELER_RESOURCE_NAME, true);
@@ -218,14 +211,14 @@ public class MetamodelPropertyTabTests extends AbstractSiriusSwtBotGefTestCase {
         Viewpoint viewpoint = group.getOwnedViewpoints().get(0);
         List<EPackage> ePackages = getEPackages(viewpoint, representationDescriptionName);
         for (EPackage ePackage : ePackages) {
-            assertFalse("The EPackage with the nsURI " + ePackage.getNsURI()
-                    + " has not been added using the EPackage from the registry (i.e. the nsURI is not used to reference it in the odesign xmi)", ePackage.eResource().getURI().isPlatform());
+            assertFalse(
+                    "The EPackage with the nsURI " + ePackage.getNsURI() + " has not been added using the EPackage from the registry (i.e. the nsURI is not used to reference it in the odesign xmi)",
+                    ePackage.eResource().getURI().isPlatform());
         }
     }
 
     /**
-     * Get the EPackages referenced by the {@link RepresentationDescription} or
-     * {@link DiagramExtensionDescription}.
+     * Get the EPackages referenced by the {@link RepresentationDescription} or {@link DiagramExtensionDescription}.
      */
     private List<EPackage> getEPackages(Viewpoint viewpoint, String representationDescriptionName) {
         List<EPackage> ePackages = null;
@@ -255,15 +248,14 @@ public class MetamodelPropertyTabTests extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that adding a EPackage with its properties (name, nsURI) to null
-     * doesn't throws exceptions.
+     * Test that adding a EPackage with its properties (name, nsURI) to null doesn't throws exceptions.
      */
     public void testMetamodelAddingFromEPackageWithNullProperties() {
         viewpointItemBot.getNode(TREE_DESCRIPTION_NAME).select();
 
         propertiesBot = bot.viewByTitle("Properties");
         propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Metamodels");
+        SWTBotSiriusHelper.selectPropertyTabItem("Metamodels", propertiesBot.bot());
 
         SWTBotTable metamodelsTableBot = propertiesBot.bot().table();
         int nbOfSelectedMetamodels = metamodelsTableBot.rowCount();
@@ -272,9 +264,7 @@ public class MetamodelPropertyTabTests extends AbstractSiriusSwtBotGefTestCase {
 
         addFromWorkspaceButtonBot.click();
 
-        SWTBot metamodelsSelectionFromWorkspaceBot = bot.activeShell().bot();
-
-        bot.waitUntil(Conditions.shellIsActive("Ecore resource selection"));
+        SWTBot metamodelsSelectionFromWorkspaceBot = SWTBotSiriusHelper.getShellBot("Ecore resource selection");
         SWTBotTree workspaceBrowserBot = metamodelsSelectionFromWorkspaceBot.tree();
         workspaceBrowserBot.setFocus();
         workspaceBrowserBot.expandNode(getProjectName());
@@ -316,6 +306,7 @@ public class MetamodelPropertyTabTests extends AbstractSiriusSwtBotGefTestCase {
         /**
          * {@inheritDoc}
          */
+        @Override
         public boolean test() throws Exception {
             return expectedSelectionCound == swtBotTable.selectionCount();
         }
@@ -323,6 +314,7 @@ public class MetamodelPropertyTabTests extends AbstractSiriusSwtBotGefTestCase {
         /**
          * {@inheritDoc}
          */
+        @Override
         public String getFailureMessage() {
             return "The selection count is not the expected one, expected (" + expectedSelectionCound + "), " + swtBotTable.selectionCount();
         }

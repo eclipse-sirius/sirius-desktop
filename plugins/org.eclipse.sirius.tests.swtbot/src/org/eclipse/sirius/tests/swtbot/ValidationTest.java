@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,12 +22,14 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UISessionCreationWizardFlow.SessionChoice;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OpenedSessionCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.ISharedImages;
@@ -95,13 +97,15 @@ public class ValidationTest extends AbstractScenarioTestCase {
         semanticResourceNode = localSession.getSemanticResourceNode(ecoreEcoreResource);
         ecoreTreeItem = semanticResourceNode.getNode("ecore").select();
         SWTBotUtils.clickContextMenu(ecoreTreeItem, "Classes in ecore package");
-        bot.button("OK").click();
+        SWTBot wizardBot = SWTBotSiriusHelper.getShellBot("New Classes");
+        wizardBot.button("OK").click();
         bot.sleep(1000);
         SWTBotUtils.waitProgressMonitorClose("Progress Information");
 
         // Close the table
         SWTBotCommonHelper.closeCurrentEditor();
-        bot.button(TestsUtil.isOxygenPlatform() ? "Don't Save" : "No").click();
+        wizardBot = SWTBotSiriusHelper.getShellBot("Save");
+        wizardBot.button(TestsUtil.isOxygenPlatform() ? "Don't Save" : "No").click();
         bot.sleep(500);
 
         // Check that all editors are closes
@@ -121,8 +125,8 @@ public class ValidationTest extends AbstractScenarioTestCase {
         assertEquals(activeEditor.getReference(), editor.getReference());
         assertEquals("The wrong editor was opened", "ecore package entities", editor.getTitle());
         assertEquals("There should not be more than one open session.", 1, SessionManager.INSTANCE.getSessions().size());
-        assertEquals("The selection should be the element concerned by the marker", NEW_ECLASS_1, ((IDiagramElementEditPart) ((IStructuredSelection) editor.getSelection()).iterator().next())
-                .resolveDiagramElement().getName());
+        assertEquals("The selection should be the element concerned by the marker", NEW_ECLASS_1,
+                ((IDiagramElementEditPart) ((IStructuredSelection) editor.getSelection()).iterator().next()).resolveDiagramElement().getName());
 
         // Close the session and save it
         editor.close();
@@ -179,13 +183,11 @@ public class ValidationTest extends AbstractScenarioTestCase {
     }
 
     /**
-     * Indicates if the given editPart has an image decoration indicating a
-     * validation info.
+     * Indicates if the given editPart has an image decoration indicating a validation info.
      * 
      * @param editPart
      *            the edit part to test
-     * @return true if the given editPart has an image decoration indicating a
-     *         validation info, false otherwise
+     * @return true if the given editPart has an image decoration indicating a validation info, false otherwise
      */
     private boolean hasValidationInfoDecoration(IDiagramElementEditPart editPart) {
         return new AbstractDecoratorMatcher() {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,10 @@ import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
+import org.eclipse.sirius.tests.swtbot.support.api.business.sessionbrowser.UILSCategoryBrowser;
+import org.eclipse.sirius.tests.swtbot.support.api.business.sessionbrowser.UILSRepresentationBrowser;
+import org.eclipse.sirius.tests.swtbot.support.api.business.sessionbrowser.UILSViewpointBrowser;
+import org.eclipse.sirius.tests.swtbot.support.api.business.sessionbrowser.UILocalSessionBrowser;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
@@ -65,17 +69,11 @@ public class NavigateInTreeRepresentationTest extends AbstractTreeSiriusSWTBotGe
      */
     private UILocalSession localSession;
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, ECORE_FILE);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         sessionAirdResource = new UIResource(designerProject, FILE_DIR, SESSION_FILE);
@@ -91,21 +89,35 @@ public class NavigateInTreeRepresentationTest extends AbstractTreeSiriusSWTBotGe
      */
     @Test
     public void testNavigationInTreeRepresentation() throws Exception {
-        final UITreeRepresentation tree = localSession.getLocalSessionBrowser().perCategory().selectViewpoint("Design").selectRepresentation("Tree").selectTreeInstance("new Tree").open();
-        assertEquals("The tree editor was not open.", bot.activeEditor().getTitle(), ("new Tree"));
-        // navigate from the context menu
-        SWTBotTree select = tree.getEditorBot().tree().select("EClass1");
-        SWTBotUtils.clickContextMenu(select, "new Tree Creation on Class");
-        bot.waitUntil(new DefaultCondition() {
+        UITreeRepresentation tree;
+        try {
+            UILocalSessionBrowser localSessionBrowser = localSession.getLocalSessionBrowser();
+            UILSCategoryBrowser perCategory = localSessionBrowser.perCategory();
+            UILSViewpointBrowser selectViewpoint = perCategory.selectViewpoint("Design");
+            UILSRepresentationBrowser selectRepresentation = selectViewpoint.selectRepresentation("Tree");
+            UITreeRepresentation selectTreeInstance = selectRepresentation.selectTreeInstance("new Tree");
+            tree = selectTreeInstance.open();
 
-            public boolean test() throws Exception {
-                return ((SWTWorkbenchBot) bot).activeEditor().getTitle().equals("new Tree Creation on Class");
-            }
+            assertEquals("The tree editor was not open.", bot.activeEditor().getTitle(), ("new Tree"));
+            // navigate from the context menu
+            SWTBotTree select = tree.getEditorBot().tree().select("EClass1");
+            SWTBotUtils.clickContextMenu(select, "new Tree Creation on Class");
+            bot.waitUntil(new DefaultCondition() {
 
-            public String getFailureMessage() {
-                return "The tree editor was not open from the navigate menu.";
-            }
-        });
+                @Override
+                public boolean test() throws Exception {
+                    return ((SWTWorkbenchBot) bot).activeEditor().getTitle().equals("new Tree Creation on Class");
+                }
+
+                @Override
+                public String getFailureMessage() {
+                    return "The tree editor was not open from the navigate menu.";
+                }
+            });
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            e.printStackTrace();
+        }
         assertEquals("The tree editor was not open from the navigate menu.", bot.activeEditor().getTitle(), ("new Tree Creation on Class"));
     }
 }
