@@ -8,20 +8,11 @@ h2(#sirius6.2.1). Changes in Sirius 6.2.1
 
 h3. Developer-Visible Changes
 
-* <span class="label label-success">Added</span> The @viewpoint.ecore@ model has been added the an EMap<EJavaObject, EJavaObject> @subDiagramDecorationDescriptors@ in @UIState@ model element. It is used as a cache to speed up sub diagram decorations computing.
-
 h4. Changes in  @org.eclipse.sirius@
 
 * <span class="label label-success">Added</span> Added a constructor @org.eclipse.sirius.business.api.query.DRepresentationQuery.DRepresentationQuery(DRepresentation, Session)@ to compute queries directly from the given session instead of computing it.
-
-
-h3. Developer-Visible Changes
-
-* <span class="label label-success">Added</span> It is now possible to consider that some specific graphical changes need a refresh of the representation. Before Sirius 6.1.3, only semantic changes triggers a refresh. Now you can use @RefreshHelper.registerImpactingNotification(Predicate<Notification>)@ to consider a specific graphical changes. An example is the possibility to launch a refresh when the region container is collapsed or expanded.
-See "Trigger a Sirius refresh on specific graphical changes":developer/trigger-refresh-graphical-changes.html in the developer documentation for more details.
-
-h4. Changes in  @org.eclipse.sirius@
-
+* <span class="label label-success">Added</span> In @viewpoint.ecore@, the @UIState@ class has a new @subDiagramDecorationDescriptors@ attribute. It is used as a cache to speed up sub diagram decorations computing.
+* <span class="label label-success">Added</span> It is now possible to consider that some specific graphical changes need a refresh of the representation. Before Sirius 6.1.3, only semantic changes triggers a refresh. Now you can use @RefreshHelper.registerImpactingNotification(Predicate<Notification>)@ to consider a specific graphical changes. An example is the possibility to launch a refresh when the region container is collapsed or expanded. See "Trigger a Sirius refresh on specific graphical changes":developer/trigger-refresh-graphical-changes.html in the developer documentation for more details.
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.tools.api.ui.RefreshHelper.isAutoRefresh()@ has been added to know if Sirius is in automatic refresh mode or in manual mode.
 * <span class="label label-success">Added</span> The methods @org.eclipse.sirius.tools.api.ui.RefreshHelper.registerImpactingNotification(Predicate<Notification>)@ and @org.eclipse.sirius.tools.api.ui.RefreshHelper.unregisterImpactingNotification(Predicate<Notification>)@ have been added to allow to consider some graphical modifications as requiring a refresh. By default, only semantic changes are considered as requiring a refresh.  
 * <span class="label label-danger">Removed</span> The @org.eclipse.sirius.business.api.helper.task.NotificationTask@ class has been removed. It was not used anywhere.
