@@ -116,6 +116,8 @@ h4. Changes in  @org.eclipse.sirius.diagram.ui@
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery.getDDiagram()@ has been added to retrieve the  @DDiagram@ associated to the edit part or to one of its ancestor.
 * <span class="label label-danger">Removed</span> The message @org.eclipse.sirius.diagram.ui.provider.Messages.SynchronizeGMFModelCommand_label@ has been removed. It has been replaced in @org.eclipse.sirius.diagram.Messages@.
 * <span class="label label-danger">Removed</span> The extension point @layoutDataManager@, deprecated since Sirius 4.1.0, has been removed. The corresponding plug-in @org.eclipse.sirius.diagram.layoutdata@ has also been removed.
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.diagram.ui.business.api.query.ConnectionEditPartQuery.getCenteredAnchorsAbsoluteLocation(Rectangle)@ has been added in order to compute the location of the anchor of a connection centered on its target or source.
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.diagram.ui.business.api.query.ConnectionQuery.getAbsolutePointList(RelativeBendpoints, PrecisionPoint, PrecisionPoint)@ has been added to compute the absolute coordinates of the bendpoints of a connection.
 
 h4. Changes in @org.eclipse.sirius.ui.editor@
 
