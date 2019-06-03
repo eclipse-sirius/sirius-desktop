@@ -131,7 +131,6 @@ import org.junit.Assert;
 
 import com.google.common.base.Function;
 import com.google.common.base.Objects;
-import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Lists;
@@ -266,22 +265,19 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     @Override
     protected void setUp() throws Exception {
-        PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-            @Override
-            public void run() {
-                // Just call getActiveWorkbenchWindow() to avoid potential
-                // empty list in getWorkbenchWindows() (see bug 441507).
-                PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-                Shell shell = PlatformUI.getWorkbench().getWorkbenchWindows()[0].getShell();
-                String osName = System.getProperty("os.name");
-                if (osName.contains("Mac") || osName.contains("Linux")) {
-                    shell.setMaximized(AbstractSiriusSwtBotGefTestCase.fFullScreen);
-                } else {
-                    shell.setFullScreen(AbstractSiriusSwtBotGefTestCase.fFullScreen);
-                }
-                if (PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell() != null) {
-                    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell().forceActive();
-                }
+        PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+            // Just call getActiveWorkbenchWindow() to avoid potential
+            // empty list in getWorkbenchWindows() (see bug 441507).
+            PlatformUI.getWorkbench().getActiveWorkbenchWindow();
+            Shell shell = PlatformUI.getWorkbench().getWorkbenchWindows()[0].getShell();
+            String osName = System.getProperty("os.name");
+            if (osName.contains("Mac") || osName.contains("Linux")) {
+                shell.setMaximized(AbstractSiriusSwtBotGefTestCase.fFullScreen);
+            } else {
+                shell.setFullScreen(AbstractSiriusSwtBotGefTestCase.fFullScreen);
+            }
+            if (PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell() != null) {
+                PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell().forceActive();
             }
         });
 
@@ -299,20 +295,17 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             super.setUp();
 
             // Disable the animated zoom and the animated arrange to save time
-            UIThreadRunnable.syncExec(new VoidResult() {
-                @Override
-                public void run() {
-                    IPreferenceStore preferenceStore = DiagramUIPlugin.getPlugin().getPreferenceStore();
-                    defaultEnableAnimatedZoom = preferenceStore.getBoolean(IPreferenceConstants.PREF_ENABLE_ANIMATED_ZOOM);
-                    preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_ZOOM, false);
-                    defaultEnableAnimatedLayout = preferenceStore.getBoolean(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT);
-                    preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT, false);
+            UIThreadRunnable.syncExec(() -> {
+                IPreferenceStore preferenceStore = DiagramUIPlugin.getPlugin().getPreferenceStore();
+                defaultEnableAnimatedZoom = preferenceStore.getBoolean(IPreferenceConstants.PREF_ENABLE_ANIMATED_ZOOM);
+                preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_ZOOM, false);
+                defaultEnableAnimatedLayout = preferenceStore.getBoolean(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT);
+                preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT, false);
 
-                    // Set the auto-refresh to false because it's historically
-                    // the default value
-                    DefaultScope.INSTANCE.getNode(SiriusPlugin.ID).putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
-                    InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), getAutoRefreshMode());
-                }
+                // Set the auto-refresh to false because it's historically
+                // the default value
+                DefaultScope.INSTANCE.getNode(SiriusPlugin.ID).putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
+                InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), getAutoRefreshMode());
             });
 
             // If you need another name, override getProjectName()
@@ -321,10 +314,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
             onSetUpBeforeClosingWelcomePage();
 
             closeWelcomePage();
-
-            // Set up a no ui callback for auto migration
-            // SiriusEditPlugin.getPlugin().setUiCallback(new
-            // UiCallBackWithoutMigrationNotification(SiriusEditPlugin.getPlugin().getUiCallback()));
 
             // Open Design perspective
             designerPerspectives.openModelingPerspective();
@@ -394,13 +383,10 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * by Eclipse in asyncExec.
      */
     protected void closeAllEditors() {
-        bot.getDisplay().asyncExec(new Runnable() {
-            @Override
-            public void run() {
-                for (IWorkbenchWindow window : PlatformUI.getWorkbench().getWorkbenchWindows()) {
-                    for (IWorkbenchPage page : window.getPages()) {
-                        page.closeAllEditors(false);
-                    }
+        bot.getDisplay().asyncExec(() -> {
+            for (IWorkbenchWindow window : PlatformUI.getWorkbench().getWorkbenchWindows()) {
+                for (IWorkbenchPage page : window.getPages()) {
+                    page.closeAllEditors(false);
                 }
             }
         });
@@ -410,36 +396,33 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
     private Set<String> closeAllSessions(final boolean warn) {
         final Set<String> sessionIDs = new HashSet<String>();
-        PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-            @Override
-            public void run() {
-                Collection<Session> sessionsToClose = new LinkedHashSet<>();
-                for (final Session sess : Sets.newLinkedHashSet(SessionManager.INSTANCE.getSessions())) {
-                    if (sess.isOpen()) {
-                        sessionsToClose.add(sess);
-                    }
+        PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+            Collection<Session> sessionsToClose = new LinkedHashSet<>();
+            for (final Session sess1 : Sets.newLinkedHashSet(SessionManager.INSTANCE.getSessions())) {
+                if (sess1.isOpen()) {
+                    sessionsToClose.add(sess1);
                 }
-                if (warn && !sessionsToClose.isEmpty()) {
-                    System.out.println("WARNING : the followings sessions were not closed on tearDown of previous tests: ");
-                    for (Session s : sessionsToClose) {
-                        System.out.println("\t" + s.getID());
-                    }
+            }
+            if (warn && !sessionsToClose.isEmpty()) {
+                System.out.println("WARNING : the followings sessions were not closed on tearDown of previous tests: ");
+                for (Session s1 : sessionsToClose) {
+                    System.out.println("\t" + s1.getID());
                 }
-                for (final Session sess : sessionsToClose) {
-                    if (sess.isOpen()) {
-                        sessionIDs.add(sess.getID());
-                        sess.close(new NullProgressMonitor());
-                    }
+            }
+            for (final Session sess2 : sessionsToClose) {
+                if (sess2.isOpen()) {
+                    sessionIDs.add(sess2.getID());
+                    sess2.close(new NullProgressMonitor());
                 }
-                if (warn && !sessionsToClose.isEmpty()) {
-                    if (sessionsToClose.size() == sessionIDs.size()) {
-                        System.out.println("They have been closed now.");
-                    } else {
-                        System.out.println("WARNING: some session are still open after close attempt: ");
-                        for (Session s : sessionsToClose) {
-                            if (!sessionIDs.contains(s.getID())) {
-                                System.out.println("\t" + s.getID());
-                            }
+            }
+            if (warn && !sessionsToClose.isEmpty()) {
+                if (sessionsToClose.size() == sessionIDs.size()) {
+                    System.out.println("They have been closed now.");
+                } else {
+                    System.out.println("WARNING: some session are still open after close attempt: ");
+                    for (Session s2 : sessionsToClose) {
+                        if (!sessionIDs.contains(s2.getID())) {
+                            System.out.println("\t" + s2.getID());
                         }
                     }
                 }
@@ -504,14 +487,11 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * Open error log.
      */
     protected void openErrorLogViewByAPI() {
-        PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.eclipse.pde.runtime.LogView");
-                } catch (PartInitException e) {
-                    TestCase.fail("Unable to open errorLog view : " + e.getMessage());
-                }
+        PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+            try {
+                PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView("org.eclipse.pde.runtime.LogView");
+            } catch (PartInitException e) {
+                TestCase.fail("Unable to open errorLog view : " + e.getMessage());
             }
         });
     }
@@ -724,12 +704,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
         final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
         oldValueDiagramUIPreferences.put(preferenceKey, prefs.getBoolean(preferenceKey));
-        UIThreadRunnable.syncExec(new VoidResult() {
-            @Override
-            public void run() {
-                prefs.setValue(preferenceKey, newValue);
-            }
-        });
+        UIThreadRunnable.syncExec(() -> prefs.setValue(preferenceKey, newValue));
     }
 
     /**
@@ -747,12 +722,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
         final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
         oldValueDiagramUIPreferences.put(preferenceKey, prefs.getInt(preferenceKey));
-        UIThreadRunnable.syncExec(new VoidResult() {
-            @Override
-            public void run() {
-                prefs.setValue(preferenceKey, newValue);
-            }
-        });
+        UIThreadRunnable.syncExec(() -> prefs.setValue(preferenceKey, newValue));
     }
 
     /**
@@ -770,12 +740,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
 
         final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
         oldValueDiagramUIPreferences.put(preferenceKey, prefs.getDouble(preferenceKey));
-        UIThreadRunnable.syncExec(new VoidResult() {
-            @Override
-            public void run() {
-                prefs.setValue(preferenceKey, newValue);
-            }
-        });
+        UIThreadRunnable.syncExec(() -> prefs.setValue(preferenceKey, newValue));
     }
 
     /**
@@ -883,13 +848,8 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     }
 
     private void assertNoSiriusCorePreferenceChangedinSiriusUIStore(String preferenceKey) {
-        Collection<SiriusPreferencesKeys> coreKeys = new ArrayList<SiriusPreferencesKeys>(Arrays.asList(SiriusPreferencesKeys.values()));
-        Function<SiriusPreferencesKeys, String> prefToName = new Function<SiriusPreferencesKeys, String>() {
-            @Override
-            public String apply(SiriusPreferencesKeys input) {
-                return input.name();
-            }
-        };
+        Collection<SiriusPreferencesKeys> coreKeys = new ArrayList<>(Arrays.asList(SiriusPreferencesKeys.values()));
+        Function<SiriusPreferencesKeys, String> prefToName = SiriusPreferencesKeys::name;
         TestCase.assertFalse("The DesignerPreferenceKey named " + preferenceKey + " should not be modified in the UI store.",
                 Lists.newArrayList(Iterables.transform(coreKeys, prefToName)).contains(preferenceKey));
     }
@@ -1117,12 +1077,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     protected final DRepresentation getRepresentationWithName(Session session, String representationDescriptionName, final String representationName) {
         try {
-            final DRepresentation existingRepresentation = Iterables.find(getRepresentations(session, representationDescriptionName), new Predicate<DRepresentation>() {
-                @Override
-                public boolean apply(DRepresentation input) {
-                    return input.getName().equals(representationName);
-                }
-            });
+            final DRepresentation existingRepresentation = Iterables.find(getRepresentations(session, representationDescriptionName), input -> input.getName().equals(representationName));
             return existingRepresentation;
         } catch (NoSuchElementException e) {
             throw new NoSuchElementException("No representation found in session with \"" + representationName + "\" as representation name and with \"" + representationDescriptionName
@@ -1389,23 +1344,19 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * Initialize the log listener
      */
     private void initLoggers() {
-        logListener = new ILogListener() {
-
-            @Override
-            public void logging(IStatus status, String plugin) {
-                switch (status.getSeverity()) {
-                case IStatus.ERROR:
-                    if (!"org.eclipse.ui.views.properties.tabbed".equals(status.getPlugin()) && status.getMessage() != null && !status.getMessage().startsWith(
-                            "Contributor org.eclipse.ui.navigator.ProjectExplorer cannot be created., exception: org.eclipse.core.runtime.CoreException: Plug-in \"org.eclipse.ui.navigator.resources\" was unable to instantiate class \"org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetTitleProvider\".")) {
-                        errorOccurs(status, plugin);
-                    }
-                    break;
-                case IStatus.WARNING:
-                    warningOccurs(status, plugin);
-                    break;
-                default:
-                    // nothing to do
+        logListener = (status, plugin) -> {
+            switch (status.getSeverity()) {
+            case IStatus.ERROR:
+                if (!"org.eclipse.ui.views.properties.tabbed".equals(status.getPlugin()) && status.getMessage() != null && !status.getMessage().startsWith(
+                        "Contributor org.eclipse.ui.navigator.ProjectExplorer cannot be created., exception: org.eclipse.core.runtime.CoreException: Plug-in \"org.eclipse.ui.navigator.resources\" was unable to instantiate class \"org.eclipse.ui.internal.navigator.resources.workbench.TabbedPropertySheetTitleProvider\".")) {
+                    errorOccurs(status, plugin);
                 }
+                break;
+            case IStatus.WARNING:
+                warningOccurs(status, plugin);
+                break;
+            default:
+                // nothing to do
             }
         };
         Platform.addLogListener(logListener);
@@ -1442,10 +1393,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @return true if an error occurs.
      */
     protected synchronized boolean doesAnErrorOccurs() {
-        if (errors != null) {
-            return errors.values().size() != 0;
-        }
-        return false;
+        return errors != null && !errors.isEmpty();
     }
 
     /**
@@ -1454,10 +1402,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @return true if a warning occurs.
      */
     protected synchronized boolean doesAWarningOccurs() {
-        if (warnings != null) {
-            return warnings.values().size() != 0;
-        }
-        return false;
+        return warnings != null && !warnings.isEmpty();
     }
 
     /**
@@ -1695,12 +1640,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                             if (!StringUtil.isEmpty(shellText) && SHELL_TO_CLOSE_AT_TEAR_DOWN_TEXTS.contains(shellText)) {
                                 System.err.println("The shell \"" + shellText
                                         + "\" is closed but not disposed. Something is potentially not correctly clean in this test. A dispose of this shell is called on tearDown.");
-                                UIThreadRunnable.syncExec(new VoidResult() {
-                                    @Override
-                                    public void run() {
-                                        swtBotShell.widget.dispose();
-                                    }
-                                });
+                                UIThreadRunnable.syncExec(() -> swtBotShell.widget.dispose());
                             }
                         }
                     }
