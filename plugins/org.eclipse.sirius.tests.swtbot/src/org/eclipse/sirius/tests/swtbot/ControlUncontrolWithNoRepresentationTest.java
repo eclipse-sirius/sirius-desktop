@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.ItemEnabledCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.tools.internal.preference.SiriusPreferencePage;
 import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
@@ -140,7 +141,7 @@ public class ControlUncontrolWithNoRepresentationTest extends AbstractSiriusSwtB
         // Activate programmatically the viewpoint preference : Creates an empty
         // aird fragment on control even if there is no selected representation
         changeSiriusPreference(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), true);
-       
+
         // Control sp1
         final SWTBotTreeItem semanticResourceNode = localSession.getSemanticResourceNode(modelUIResource);
         final SWTBotTreeItem packageNodeToControl = semanticResourceNode.expandNode("tc1993").expandNode("sp1").select();
@@ -211,7 +212,7 @@ public class ControlUncontrolWithNoRepresentationTest extends AbstractSiriusSwtB
 
         // Deactivate manually the viewpoint preference : Creates an empty aird
         // fragment on control even if there is no selected representation
-        bot.menu("Window").menu("Preferences").click();
+        SWTBotSiriusHelper.menu(bot, "Window").menu("Preferences").click();
         bot.tree().select("Sirius");
         bot.checkBox(SiriusPreferencePage.EMPTY_AIRD_ON_CONTROL_CHECKBOX_LABEL).click();
         bot.button("OK").click();
@@ -233,7 +234,7 @@ public class ControlUncontrolWithNoRepresentationTest extends AbstractSiriusSwtB
         // Activate programmatically the viewpoint preference : Creates an empty
         // aird fragment on control even if there is no selected representation
         changeSiriusPreference(SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), true);
-        
+
         // Control package 0
         final SWTBotTreeItem semanticResourceNode = localSession.getSemanticResourceNode(modelUIResource);
         final SWTBotTreeItem packageNodeToControl = semanticResourceNode.expandNode("aaaa").expandNode("0").select();
@@ -315,7 +316,7 @@ public class ControlUncontrolWithNoRepresentationTest extends AbstractSiriusSwtB
 
         // Deactivate manually the viewpoint preference : Creates an empty aird
         // fragment on control even if there is no selected representation
-        bot.menu("Window").menu("Preferences").click();
+        SWTBotSiriusHelper.menu(bot, "Window").menu("Preferences").click();
         bot.tree().select("Sirius");
         bot.checkBox(SiriusPreferencePage.EMPTY_AIRD_ON_CONTROL_CHECKBOX_LABEL).click();
         bot.button("OK").click();

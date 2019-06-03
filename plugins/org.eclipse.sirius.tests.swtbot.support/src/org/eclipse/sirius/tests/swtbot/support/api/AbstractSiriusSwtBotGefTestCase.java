@@ -563,7 +563,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      *            the command to undo
      */
     protected void undo(String cmdName) {
-        bot.menu(AbstractSiriusSwtBotGefTestCase.EDIT_MENU_NAME).menu("Undo " + cmdName).click();
+        SWTBotSiriusHelper.menu(bot, AbstractSiriusSwtBotGefTestCase.EDIT_MENU_NAME).menu("Undo " + cmdName).click();
     }
 
     /**
@@ -593,7 +593,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      *            the command to redo
      */
     protected void redo(String cmdName) {
-        bot.menu(AbstractSiriusSwtBotGefTestCase.EDIT_MENU_NAME).menu("Redo " + cmdName).click();
+        SWTBotSiriusHelper.menu(bot, AbstractSiriusSwtBotGefTestCase.EDIT_MENU_NAME).menu("Redo " + cmdName).click();
     }
 
     /**
@@ -910,7 +910,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @return the delete bot menu.
      */
     protected SWTBotMenu checkDeleteMenuEnablement(boolean expected) {
-        SWTBotMenu deleteMenu = bot.menu(AbstractSiriusSwtBotGefTestCase.EDIT_MENU_NAME).menu("Delete");
+        SWTBotMenu deleteMenu = SWTBotSiriusHelper.menu(bot, AbstractSiriusSwtBotGefTestCase.EDIT_MENU_NAME).menu("Delete");
 
         String errorMessage = expected ? "Delete menu should be enabled" : "Delete menu was not enabled";
         TestCase.assertEquals(errorMessage, expected, deleteMenu.isEnabled());
@@ -923,7 +923,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * and {@link #restoreEditor(SWTBotSiriusDiagramEditor)}, they are faster because they use directly Eclipse API.
      */
     protected void maximizeEditor() {
-        bot.menu("Window").menu("Navigation").menu("Maximize Active View or Editor").click();
+        SWTBotSiriusHelper.menu(bot, "Window").menu("Navigation").menu("Maximize Active View or Editor").click();
     }
 
     /**
@@ -1013,7 +1013,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         // Select the diagram itself
         editor.select(editor.mainEditPart());
         // Launch the arrange via the menu bar
-        SWTBotMenu arrangeAllMenutBot = bot.menu("Diagram").menu("Arrange").menu("All").click();
+        SWTBotMenu arrangeAllMenutBot = SWTBotSiriusHelper.menu(bot, "Diagram").menu("Arrange").menu("All").click();
         SWTBotUtils.waitAllUiEvents();
         return arrangeAllMenutBot;
     }

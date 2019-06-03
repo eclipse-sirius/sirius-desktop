@@ -25,6 +25,8 @@ h4. Changes in  @org.eclipse.sirius.tests.swtbot.support@
 
 * <span class="label label-success">Added</span>The method @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper.getShellBot(String)@ has been added and allows to retrieve a bot related to a shell with the given label.
 
+* <span class="label label-success">Added</span>The method @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper.menu(SWTBot, String)@ has been added and allows to retrieve a menu even when the active shell is null. Should be used over @SWTBot.menu(String)@ method.
+
 h2(#sirius6.2.0). Changes in Sirius 6.2.0
 
 h3. User-Visible Changes

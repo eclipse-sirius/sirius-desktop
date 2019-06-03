@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -35,6 +35,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentat
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.swt.SWT;
@@ -45,8 +46,8 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 
 /**
- * Test that {@link DeleteHook} plugged on Delete tool is called with all delete
- * means (from tabbar, from Edit->Delete, from Ctrl-X, ...), (See VP-2091).
+ * Test that {@link DeleteHook} plugged on Delete tool is called with all delete means (from tabbar, from Edit->Delete,
+ * from Ctrl-X, ...), (See VP-2091).
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -169,8 +170,7 @@ public class DeleteHookTests extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test {@link IDeleteHook} contribution use on Delete from model tabbar
-     * button.
+     * Test {@link IDeleteHook} contribution use on Delete from model tabbar button.
      */
     public void testDeleteHookOnDeleteFromModelTabbarButton() {
         eClassBot.select();
@@ -189,27 +189,18 @@ public class DeleteHookTests extends AbstractSiriusSwtBotGefTestCase {
     public void testDeleteHookOnEditDeleteCancel() {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
-             * org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException:
-             * Could not find node with text: VP-2091_Viewpoint at
-             * org.eclipse.swtbot
-             * .swt.finder.widgets.SWTBotTreeItem.getNodes(SWTBotTreeItem
-             * .java:334) at
-             * org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem
-             * .getNode(SWTBotTreeItem.java:308) at
-             * org.eclipse.swtbot.swt.finder
-             * .widgets.SWTBotTreeItem.getNode(SWTBotTreeItem.java:346) at
-             * org.eclipse .swtbot.swt.finder.widgets.SWTBotTreeItem.expandNode(
-             * SWTBotTreeItem .java:283) at
+             * org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException: Could not find node with text:
+             * VP-2091_Viewpoint at org.eclipse.swtbot .swt.finder.widgets.SWTBotTreeItem.getNodes(SWTBotTreeItem
+             * .java:334) at org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem .getNode(SWTBotTreeItem.java:308) at
+             * org.eclipse.swtbot.swt.finder .widgets.SWTBotTreeItem.getNode(SWTBotTreeItem.java:346) at org.eclipse
+             * .swtbot.swt.finder.widgets.SWTBotTreeItem.expandNode( SWTBotTreeItem .java:283) at
              * org.eclipse.sirius.tests.swtbot.support.api.business
-             * .sessionbrowser.AbstractUIElementWithNextTreeItem.getNextNode(
-             * AbstractUIElementWithNextTreeItem.java:42) at
-             * org.eclipse.sirius.tests
-             * .swtbot.support.api.business.sessionbrowser
-             * .UILSCategoryBrowser.selectViewpoint(UILSCategoryBrowser.java:40)
-             * at org.eclipse.sirius.tests.swtbot.DeleteHookTests.
-             * onSetUpAfterOpeningDesignerPerspective(DeleteHookTests.java:105)
-             * at org.eclipse.sirius.tests.swtbot.support.api.
-             * AbstractSiriusSwtBotGefTestCase
+             * .sessionbrowser.AbstractUIElementWithNextTreeItem.getNextNode( AbstractUIElementWithNextTreeItem.java:42)
+             * at org.eclipse.sirius.tests .swtbot.support.api.business.sessionbrowser
+             * .UILSCategoryBrowser.selectViewpoint(UILSCategoryBrowser.java:40) at
+             * org.eclipse.sirius.tests.swtbot.DeleteHookTests.
+             * onSetUpAfterOpeningDesignerPerspective(DeleteHookTests.java:105) at
+             * org.eclipse.sirius.tests.swtbot.support.api. AbstractSiriusSwtBotGefTestCase
              * .setUp(AbstractSiriusSwtBotGefTestCase.java:289)
              */
             return;
@@ -247,8 +238,7 @@ public class DeleteHookTests extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test {@link IDeleteHook} contribution cancel use on Delete from model
-     * tabbar button.
+     * Test {@link IDeleteHook} contribution cancel use on Delete from model tabbar button.
      */
     public void testDeleteHookOnDeleteFromModelTabbarButtonCancel() {
         ePackageBot.select();
@@ -263,7 +253,7 @@ public class DeleteHookTests extends AbstractSiriusSwtBotGefTestCase {
      * Delete by clicking on "Edit->Delete".
      */
     private void deleteWithEditDeleteMenu() {
-        SWTBotMenu deleteMenu = bot.menu("Edit").menu("Delete");
+        SWTBotMenu deleteMenu = SWTBotSiriusHelper.menu(bot, "Edit").menu("Delete");
         if (deleteMenu.isEnabled()) {
             deleteMenu.click();
         }
@@ -273,7 +263,7 @@ public class DeleteHookTests extends AbstractSiriusSwtBotGefTestCase {
      * Delete by clicking on "Edit->Cut".
      */
     private void deleteWithEditCutMenu() {
-        SWTBotMenu cutMenu = bot.menu("Edit").menu("Cut");
+        SWTBotMenu cutMenu = SWTBotSiriusHelper.menu(bot, "Edit").menu("Cut");
         if (cutMenu.isEnabled()) {
             cutMenu.click();
         }

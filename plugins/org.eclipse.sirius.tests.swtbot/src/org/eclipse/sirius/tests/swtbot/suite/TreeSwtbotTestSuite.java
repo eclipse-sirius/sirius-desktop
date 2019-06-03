@@ -86,8 +86,7 @@ public class TreeSwtbotTestSuite extends TestCase {
     }
 
     /**
-     * Creates the {@link junit.framework.TestSuite TestSuite} for all the
-     * disabled test.
+     * Creates the {@link junit.framework.TestSuite TestSuite} for all the disabled test.
      * 
      * @return The test suite containing all the disabled tests.
      */

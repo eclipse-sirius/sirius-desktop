@@ -22,6 +22,7 @@ import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotCommonHelper;
@@ -539,7 +540,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
     public void closeAndSaveViewpointSpecificationModel(String viewpointSpecificationModel) {
         SWTBotEditor editorBot = bot.editorByTitle(viewpointSpecificationModel);
         editorBot.setFocus();
-        editorBot.bot().menu(FILE).menu(SAVE).click();
+        SWTBotSiriusHelper.menu(editorBot.bot(), FILE).menu(SAVE).click();
         editorBot.setFocus();
         editorBot.close();
     }
@@ -571,7 +572,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
     public void saveViewpointSpecificationModel(String viewpointSpecificationModel) {
         SWTBotEditor editorBot = bot.editorByTitle(viewpointSpecificationModel);
         editorBot.setFocus();
-        editorBot.bot().menu(FILE).menu(SAVE).click();
+        SWTBotSiriusHelper.menu(editorBot.bot(), FILE).menu(SAVE).click();
     }
 
     /**
@@ -587,7 +588,7 @@ public class AbstractTreeSiriusSWTBotGefTestCase extends AbstractSiriusSwtBotGef
     public void closeAndSaveAll(String viewpointSpecificationModel, SWTBotEditor editor, UILocalSession localSession) {
         SWTBotEditor editorBot = bot.editorByTitle(viewpointSpecificationModel);
         editorBot.setFocus();
-        editorBot.bot().menu(FILE).menu(SAVE).click();
+        SWTBotSiriusHelper.menu(editorBot.bot(), FILE).menu(SAVE).click();
         editorBot.setFocus();
         editorBot.close();
     }

@@ -27,6 +27,7 @@ import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.widgets.TreeItem;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.junit.Test;
@@ -341,7 +342,12 @@ public class ConditionalTreeItemStyleDescriptionTest extends AbstractTreeSiriusS
         SWTBotUtils.waitAllUiEvents();
 
         // Undo
-        editor.bot().menu("Edit").menu(UNDO).click();
+        editor.setFocus();
+        SWTBotUtils.waitAllUiEvents();
+        // SWTBotMenu menu3 = bot.menu("Edit");
+        SWTBotMenu menu = SWTBotSiriusHelper.menu(editor.bot(), "Edit");
+        SWTBotMenu menu2 = menu.menu(UNDO);
+        menu2.click();
 
         if (editor.bot().tree().getAllItems().length > 0) {
             for (SWTBotTreeItem treeItem : editor.bot().tree().getAllItems()) {
@@ -365,7 +371,7 @@ public class ConditionalTreeItemStyleDescriptionTest extends AbstractTreeSiriusS
         // SWTBotUtils.waitAllUiEvents();
 
         // ReDo
-        editor.bot().menu("Edit").menu(REDO).click();
+        SWTBotSiriusHelper.menu(bot, "Edit").menu(REDO).click();
         SWTBotUtils.waitAllUiEvents();
 
         if (editor.bot().tree().getAllItems().length > 0) {
