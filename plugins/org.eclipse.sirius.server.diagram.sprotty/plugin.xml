@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.sirius.server.siriusServerConfigurator">
+      <descriptor
+            class="org.eclipse.sirius.server.diagram.internal.SiriusServerDiagramConfigurator"
+            id="org.eclipse.sirius.server.diagram.SiriusServerDiagramConfiguratorOld">
+      </descriptor>
+   </extension>
+   <extension
+         id="SiriusServer"
+         point="org.eclipse.core.runtime.applications">
+      <application
+            cardinality="singleton-global"
+            thread="any"
+            visible="true">
+         <run
+               class="org.eclipse.sirius.server.diagram.internal.SiriusDiagramServerLauncher">
+         </run>
+      </application>
+   </extension>
+
+</plugin>

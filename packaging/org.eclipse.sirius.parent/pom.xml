@@ -383,6 +383,10 @@
         <module>../../plugins/org.eclipse.sirius.server.application</module>
         <module>../../plugins/org.eclipse.sirius.server.backend</module>
         <module>../../plugins/org.eclipse.sirius.server.diagram</module>
+        <!-- Disabled by default, see the README inside the plug-in for more details -->
+        <!--
+        <module>../../plugins/org.eclipse.sirius.server.diagram.sprotty</module>
+        -->
         <module>../../plugins/org.eclipse.sirius.server.frontend</module>
         <module>../../plugins/org.eclipse.sirius.server.frontend.workflow</module>
         <module>../../plugins/org.eclipse.sirius.server.graphql</module>

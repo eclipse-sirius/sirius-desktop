@@ -67,6 +67,15 @@
          version="0.0.0"
          unpack="false"/>
 
+   <!--Disabled by default
+   <plugin
+         id="org.eclipse.sirius.server.diagram.sprotty"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   -->
+
    <plugin
          id="org.eclipse.sirius.services.diagram"
          download-size="0"
