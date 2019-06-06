@@ -84,7 +84,7 @@ public class STD017 extends AbstractSTDTestCase {
 
         assertEquals("There should be only 1edge between the two class!", 1, listResult.size());
 
-        final SiriusOutlineView outlineView = designerViews.getOutlineView();
+        final SiriusOutlineView outlineView = designerViews.openOutlineView();
         // outlineView.layers().activateFilter(SUPER_TYPE_FILTER);
         outlineView.layers();
         outlineView.filters().activateFilter(SUPER_TYPE_FILTER);

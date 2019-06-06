@@ -58,14 +58,11 @@ public class DesignerViews {
      * @return The SWTBotView
      */
     public SWTBotView openViewByAPI(final String viewId, String viewTitle) {
-        PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(viewId);
-                } catch (PartInitException e) {
-                    Assert.fail("Unable to open errorLog view : " + e.getMessage());
-                }
+        PlatformUI.getWorkbench().getDisplay().syncExec(() -> {
+            try {
+                PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage().showView(viewId);
+            } catch (PartInitException e) {
+                Assert.fail("Unable to open errorLog view : " + e.getMessage());
             }
         });
         return bot.viewByTitle(viewTitle);
@@ -118,8 +115,7 @@ public class DesignerViews {
      * @return the opened outline view
      */
     public SiriusOutlineView openOutlineView() {
-
-        bot.menu(DesignerViews.WINDOW).menu(DesignerViews.SHOW_VIEW).menu(DesignerViews.OUTLINE).click();
+        openViewByAPI("org.eclipse.ui.views.ContentOutline", "Outline");
         return getOutlineView();
     }
 

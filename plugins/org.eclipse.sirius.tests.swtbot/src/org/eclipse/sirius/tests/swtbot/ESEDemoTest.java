@@ -132,7 +132,7 @@ public class ESEDemoTest extends AbstractScenarioTestCase {
         editor.activateTool("Select");
 
         /* retrieve the outline */
-        SiriusOutlineView outlineView = designerViews.getOutlineView().layers();
+        SiriusOutlineView outlineView = designerViews.openOutlineView().layers();
 
         /* test tool element creation API to Add a node element */
         editor.activateTool("Package");

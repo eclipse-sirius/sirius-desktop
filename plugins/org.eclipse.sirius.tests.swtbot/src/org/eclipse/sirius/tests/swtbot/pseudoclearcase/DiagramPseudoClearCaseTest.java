@@ -311,7 +311,7 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
      *             Test error.
      */
     public void testEnableLayer() throws Exception {
-        final SiriusOutlineView outlineView = designerViews.getOutlineView().layers();
+        final SiriusOutlineView outlineView = designerViews.openOutlineView().layers();
         UIThreadRunnable.asyncExec(new VoidResult() {
             @Override
             public void run() {
@@ -327,7 +327,7 @@ public class DiagramPseudoClearCaseTest extends AbstractPseudoClearCaseTest<SWTB
      *             Test error.
      */
     public void testDisableLayer() throws Exception {
-        final SiriusOutlineView outlineView = designerViews.getOutlineView().layers();
+        final SiriusOutlineView outlineView = designerViews.openOutlineView().layers();
         UIThreadRunnable.asyncExec(new VoidResult() {
             @Override
             public void run() {
