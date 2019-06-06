@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_2018-09" sequenceNumber="1557755160">
+<target name="sirius_2018-09" sequenceNumber="1559829173">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
@@ -24,12 +24,12 @@
       <repository id="Orbit" location="http://download.eclipse.org/tools/orbit/downloads/drops/R20181128170323/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.8.0.201905081835"/>
-      <unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="2.8.0.201905081835"/>
-      <unit id="org.eclipse.swtbot.feature.group" version="2.8.0.201905081835"/>
-      <unit id="org.eclipse.swtbot.forms.feature.group" version="2.8.0.201905081835"/>
-      <unit id="org.eclipse.swtbot.ide.feature.group" version="2.8.0.201905081835"/>
-      <repository id="SWTBot-2_8" location="http://download.eclipse.org/technology/swtbot/milestones/2019-06-m2/"/>
+      <unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.8.0.201906040505"/>
+      <unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="2.8.0.201906040505"/>
+      <unit id="org.eclipse.swtbot.feature.group" version="2.8.0.201906040505"/>
+      <unit id="org.eclipse.swtbot.forms.feature.group" version="2.8.0.201906040505"/>
+      <unit id="org.eclipse.swtbot.ide.feature.group" version="2.8.0.201906040505"/>
+      <repository id="SWTBot-2_8" location="http://download.eclipse.org/technology/swtbot/milestones/2019-06-rc1/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
