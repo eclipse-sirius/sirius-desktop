@@ -19,10 +19,12 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.ui.PartInitException;
 
 /**
@@ -111,8 +113,9 @@ public class LinkNoteFragmentModelCreationTest extends AbstractSiriusSwtBotGefTe
     private void selectTargetRepresentation(DRepresentationDescriptor link) {
         Viewpoint vp = (Viewpoint) link.getDescription().eContainer();
         int size = DialectManager.INSTANCE.getRepresentations(link.getDescription(), localSession.getOpenedSession()).size();
-        bot.tree().expandNode(vp.getName(), link.getDescription().getName() + " (" + size + ")").getNode(link.getName()).select();
-        bot.button("OK").click();
+        SWTBot dialogBot = SWTBotSiriusHelper.getShellBot("Select representation");
+        dialogBot.tree().expandNode(vp.getName(), link.getDescription().getName() + " (" + size + ")").getNode(link.getName()).select();
+        dialogBot.button("OK").click();
     }
 
     // doubleclick should open the editor for the targeted representation
