@@ -40,6 +40,7 @@ import org.eclipse.swtbot.eclipse.gef.finder.SWTGefBot;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.osgi.framework.Version;
 
 /**
@@ -247,8 +248,9 @@ public class ViewpointSpecificationProjectCreationTest extends AbstractSiriusSwt
 
         wizardBot.textWithLabel(WIZARD_PROJECT_NAME).setText(vsmProjectName);
 
-        wizardBot.waitUntil(new ItemEnabledCondition(bot.button(WIZARD_NEXT)));
-        wizardBot.button(WIZARD_NEXT).click();
+        SWTBotButton nextButton = wizardBot.button(WIZARD_NEXT);
+        wizardBot.waitUntil(new ItemEnabledCondition(nextButton));
+        nextButton.click();
 
         // Check that the initialized name of the odesign corresponds to the
         // name of the project
@@ -258,8 +260,9 @@ public class ViewpointSpecificationProjectCreationTest extends AbstractSiriusSwt
         assertFalse("The wizard should not accept other file extension than odesign.", wizardBot.button("Finish").isEnabled());
 
         wizardBot.textWithLabel(WIZARD_VIEWPOINT_SPECIFICATION_MODEL_NAME).setText(vsmFileName);
-        wizardBot.waitUntil(new ItemEnabledCondition(bot.button(WIZARD_FINISH)));
-        wizardBot.button(WIZARD_FINISH).click();
+        SWTBotButton finishButton = wizardBot.button(WIZARD_FINISH);
+        wizardBot.waitUntil(new ItemEnabledCondition(finishButton));
+        finishButton.click();
 
         SWTBotUtils.waitAllUiEvents();
 
