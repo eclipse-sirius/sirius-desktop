@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009-2015 THALES GLOBAL SERVICES
+ * Copyright (c) 2009-2019 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
 import org.eclipse.swtbot.eclipse.finder.waits.WaitForEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory;
@@ -58,7 +59,7 @@ public final class SWTBotSiriusHelper {
     /**
      * SWTWorkbenchBot
      */
-    private static SWTWorkbenchBot bot = new SWTWorkbenchBot();
+    private static SWTWorkbenchBot workbenchBot = new SWTWorkbenchBot();
 
     private SWTBotSiriusHelper() {
         // Nothing
@@ -88,6 +89,18 @@ public final class SWTBotSiriusHelper {
         });
 
         return Options.newSome(result);
+    }
+
+    /**
+     * Return the swtbot corresponding to the shell with the given label.
+     * 
+     * @param label
+     *            the label of the shell from which we want the related swtbot.
+     * @return the swtbot corresponding to the shell with the given label.
+     */
+    public static SWTBot getShellBot(String label) {
+        workbenchBot.waitUntil(Conditions.shellIsActive(label));
+        return workbenchBot.shell(label).bot();
     }
 
     /**
@@ -136,7 +149,7 @@ public final class SWTBotSiriusHelper {
      */
     public static <T extends Widget> List<T> widget(final Matcher<T> matcher) {
         final WaitForObjectCondition<T> waitForWidget = org.eclipse.swtbot.swt.finder.waits.Conditions.waitForWidget(matcher);
-        SWTBotSiriusHelper.bot.waitUntilWidgetAppears(waitForWidget);
+        SWTBotSiriusHelper.workbenchBot.waitUntilWidgetAppears(waitForWidget);
         return waitForWidget.getAllMatches();
     }
 
@@ -159,7 +172,7 @@ public final class SWTBotSiriusHelper {
         final Event event = new Event();
         event.time = (int) System.currentTimeMillis();
         event.widget = widget;
-        event.display = SWTBotSiriusHelper.bot.getDisplay();
+        event.display = SWTBotSiriusHelper.workbenchBot.getDisplay();
         event.x = x;
         event.y = y;
         event.button = button;
@@ -194,7 +207,7 @@ public final class SWTBotSiriusHelper {
      *             if the editor is not found.
      */
     public static SWTBotEditor getSiriusEditor(final String fileName) throws WidgetNotFoundException {
-        SWTBotSiriusHelper.bot.editorByTitle(fileName).show();
+        SWTBotSiriusHelper.workbenchBot.editorByTitle(fileName).show();
         return SWTBotSiriusHelper.getSiriusEditor(fileName, 0);
     }
 
@@ -210,7 +223,7 @@ public final class SWTBotSiriusHelper {
      *             if the editor is not found.
      */
     public static SWTBotSiriusDiagramEditor getSiriusDiagramEditor(final String fileName) throws WidgetNotFoundException {
-        SWTBotSiriusHelper.bot.editorByTitle(fileName).show();
+        SWTBotSiriusHelper.workbenchBot.editorByTitle(fileName).show();
         return SWTBotSiriusHelper.getSiriusDiagramEditor(fileName, 0);
     }
 
@@ -260,12 +273,12 @@ public final class SWTBotSiriusHelper {
         Matcher<IEditorReference> withPartName = org.eclipse.swtbot.eclipse.finder.matchers.WidgetMatcherFactory.withPartName(title);
         final Matcher<IEditorReference> matcher = Matchers.allOf(IsInstanceOf.instanceOf(IEditorReference.class), withPartName);
         final WaitForEditor waitForEditor = Conditions.waitForEditor(matcher);
-        SWTBotSiriusHelper.bot.waitUntilWidgetAppears(waitForEditor);
+        SWTBotSiriusHelper.workbenchBot.waitUntilWidgetAppears(waitForEditor);
         List<IEditorReference> editorReferences = waitForEditor.getAllMatches();
         for (IEditorReference editorReference : editorReferences) {
             IEditorPart editorPart = editorReference.getEditor(false);
             if (editorPart instanceof DDiagramEditor) {
-                SWTBotEditor swtBotEditor = new SWTBotEditor(editorReference, SWTBotSiriusHelper.bot);
+                SWTBotEditor swtBotEditor = new SWTBotEditor(editorReference, SWTBotSiriusHelper.workbenchBot);
                 diagramDialectEditorBots.add(swtBotEditor);
             }
         }
@@ -283,7 +296,7 @@ public final class SWTBotSiriusHelper {
      *         DialectEditor with <code>title</code> has title
      */
     public static SWTBotEditor getTreeDialectEditorBot(String title) {
-        SWTBotSiriusHelper.bot.editorByTitle(title).show();
+        SWTBotSiriusHelper.workbenchBot.editorByTitle(title).show();
         SWTBotEditor swtBotEditor = SWTBotSiriusHelper.getTreeDialectEditorBots(title).get(0);
         return swtBotEditor;
     }
@@ -303,12 +316,12 @@ public final class SWTBotSiriusHelper {
         Matcher<IEditorReference> withPartName = org.eclipse.swtbot.eclipse.finder.matchers.WidgetMatcherFactory.withPartName(title);
         final Matcher<IEditorReference> matcher = Matchers.allOf(IsInstanceOf.instanceOf(IEditorReference.class), withPartName);
         final WaitForEditor waitForEditor = Conditions.waitForEditor(matcher);
-        SWTBotSiriusHelper.bot.waitUntilWidgetAppears(waitForEditor);
+        SWTBotSiriusHelper.workbenchBot.waitUntilWidgetAppears(waitForEditor);
         List<IEditorReference> editorReferences = waitForEditor.getAllMatches();
         for (IEditorReference editorReference : editorReferences) {
             IEditorPart editorPart = editorReference.getEditor(false);
             if (editorPart instanceof DTreeEditor) {
-                SWTBotEditor swtBotEditor = new SWTBotEditor(editorReference, SWTBotSiriusHelper.bot);
+                SWTBotEditor swtBotEditor = new SWTBotEditor(editorReference, SWTBotSiriusHelper.workbenchBot);
                 treeDialectEditorBots.add(swtBotEditor);
             }
         }
@@ -326,7 +339,7 @@ public final class SWTBotSiriusHelper {
      *         DialectEditor with <code>title</code> has title
      */
     public static SWTBotEditor getTableDialectEditorBot(String title) {
-        SWTBotSiriusHelper.bot.editorByTitle(title).show();
+        SWTBotSiriusHelper.workbenchBot.editorByTitle(title).show();
         SWTBotEditor swtBotEditor = SWTBotSiriusHelper.getTableDialectEditorBots(title).get(0);
         return swtBotEditor;
     }
@@ -346,12 +359,12 @@ public final class SWTBotSiriusHelper {
         Matcher<IEditorReference> withPartName = org.eclipse.swtbot.eclipse.finder.matchers.WidgetMatcherFactory.withPartName(title);
         final Matcher<IEditorReference> matcher = Matchers.allOf(IsInstanceOf.instanceOf(IEditorReference.class), withPartName);
         final WaitForEditor waitForEditor = Conditions.waitForEditor(matcher);
-        SWTBotSiriusHelper.bot.waitUntilWidgetAppears(waitForEditor);
+        SWTBotSiriusHelper.workbenchBot.waitUntilWidgetAppears(waitForEditor);
         List<IEditorReference> editorReferences = waitForEditor.getAllMatches();
         for (IEditorReference editorReference : editorReferences) {
             IEditorPart editorPart = editorReference.getEditor(false);
             if (editorPart instanceof DTableEditor) {
-                SWTBotEditor swtBotEditor = new SWTBotEditor(editorReference, SWTBotSiriusHelper.bot);
+                SWTBotEditor swtBotEditor = new SWTBotEditor(editorReference, SWTBotSiriusHelper.workbenchBot);
                 tableDialectEditorBots.add(swtBotEditor);
             }
         }
@@ -380,10 +393,10 @@ public final class SWTBotSiriusHelper {
         SWTBotSiriusDiagramEditor swtBotDesignerEditor = null;
         final Matcher<IEditorReference> matcher = Matchers.allOf(IsInstanceOf.instanceOf(IEditorReference.class), withPartName);
         final WaitForEditor waitForEditor = Conditions.waitForEditor(matcher);
-        SWTBotSiriusHelper.bot.waitUntilWidgetAppears(waitForEditor);
+        SWTBotSiriusHelper.workbenchBot.waitUntilWidgetAppears(waitForEditor);
         IEditorReference editorReference = waitForEditor.get(index);
         if (editorReference.getEditor(false) instanceof DialectEditor) {
-            swtBotDesignerEditor = new SWTBotSiriusDiagramEditor(waitForEditor.get(index), SWTBotSiriusHelper.bot);
+            swtBotDesignerEditor = new SWTBotSiriusDiagramEditor(waitForEditor.get(index), SWTBotSiriusHelper.workbenchBot);
         }
         return swtBotDesignerEditor;
     }
@@ -410,10 +423,10 @@ public final class SWTBotSiriusHelper {
         SWTBotEditor swtBotSiriusEditor = null;
         final Matcher<IEditorReference> matcher = Matchers.allOf(IsInstanceOf.instanceOf(IEditorReference.class), withPartName);
         final WaitForEditor waitForEditor = Conditions.waitForEditor(matcher);
-        SWTBotSiriusHelper.bot.waitUntilWidgetAppears(waitForEditor);
+        SWTBotSiriusHelper.workbenchBot.waitUntilWidgetAppears(waitForEditor);
         IEditorReference editorReference = waitForEditor.get(index);
         if (editorReference.getEditor(false) instanceof DialectEditor) {
-            swtBotSiriusEditor = new SWTBotEditor(waitForEditor.get(index), SWTBotSiriusHelper.bot);
+            swtBotSiriusEditor = new SWTBotEditor(waitForEditor.get(index), SWTBotSiriusHelper.workbenchBot);
         }
         return swtBotSiriusEditor;
     }
@@ -445,7 +458,7 @@ public final class SWTBotSiriusHelper {
         UIThreadRunnable.asyncExec(new VoidResult() {
             @Override
             public void run() {
-                List<? extends SWTBotEditor> editors = SWTBotSiriusHelper.bot.editors();
+                List<? extends SWTBotEditor> editors = SWTBotSiriusHelper.workbenchBot.editors();
                 for (SWTBotEditor swtBotEditor : editors) {
                     swtBotEditor.getReference().getPage().closeEditor(swtBotEditor.getReference().getEditor(false), save);
                 }

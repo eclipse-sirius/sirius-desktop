@@ -19,17 +19,15 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.tests.support.api.ICondition;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.ui.editor.SessionEditor;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotRootMenu;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.IEditorPart;
@@ -60,9 +58,6 @@ public class SessionEditorProjectRemovalTest extends AbstractSiriusSwtBotGefTest
 
     private static final String FILE_DIR = "/";
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, VSM_FILE, SESSION_FILE);
@@ -120,21 +115,7 @@ public class SessionEditorProjectRemovalTest extends AbstractSiriusSwtBotGefTest
         SWTBotMenu menuDelete = contextMenu.menu("Delete");
         menuDelete.click();
 
-        TestsUtil.waitUntil(new ICondition() {
-
-            @Override
-            public boolean test() throws Exception {
-                SWTBotShell activeShell = bot.activeShell();
-                return "Delete Resources".equals(activeShell.getText());
-            }
-
-            @Override
-            public String getFailureMessage() {
-                return "Delete resource dialog has not opened.";
-            }
-        });
-        SWTBotShell activeShell = bot.activeShell();
-        SWTBot shellBot = activeShell.bot();
+        SWTBot shellBot = SWTBotSiriusHelper.getShellBot("Delete Resources");
         SWTBotButton button = shellBot.button("OK");
         button.click();
 
