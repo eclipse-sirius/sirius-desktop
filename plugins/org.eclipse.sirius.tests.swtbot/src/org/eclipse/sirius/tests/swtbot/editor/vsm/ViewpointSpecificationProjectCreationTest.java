@@ -30,12 +30,14 @@ import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.ItemEnabledCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swtbot.eclipse.gef.finder.SWTGefBot;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.osgi.framework.Version;
@@ -241,23 +243,23 @@ public class ViewpointSpecificationProjectCreationTest extends AbstractSiriusSwt
      */
     public static IProject createViewpointSpecificationProject(SWTGefBot bot, final String vsmProjectName, String vsmFileName) {
         bot.menu(WIZARD_FILE).menu(WIZARD_NEW).menu(WIZARD_VIEWPOINT_SPECIFICATION_PROJECT).click();
-        bot.waitUntilWidgetAppears(Conditions.shellIsActive(WIZARD_NEW + " " + WIZARD_VIEWPOINT_SPECIFICATION_PROJECT));
+        SWTBot wizardBot = SWTBotSiriusHelper.getShellBot(WIZARD_NEW + " " + WIZARD_VIEWPOINT_SPECIFICATION_PROJECT);
 
-        bot.textWithLabel(WIZARD_PROJECT_NAME).setText(vsmProjectName);
+        wizardBot.textWithLabel(WIZARD_PROJECT_NAME).setText(vsmProjectName);
 
-        bot.waitUntil(new ItemEnabledCondition(bot.button(WIZARD_NEXT)));
-        bot.button(WIZARD_NEXT).click();
+        wizardBot.waitUntil(new ItemEnabledCondition(bot.button(WIZARD_NEXT)));
+        wizardBot.button(WIZARD_NEXT).click();
 
         // Check that the initialized name of the odesign corresponds to the
         // name of the project
-        assertEquals("Initial model name should be the name of the project.", "test.odesign", bot.textWithLabel(WIZARD_VIEWPOINT_SPECIFICATION_MODEL_NAME).getText());
+        assertEquals("Initial model name should be the name of the project.", "test.odesign", wizardBot.textWithLabel(WIZARD_VIEWPOINT_SPECIFICATION_MODEL_NAME).getText());
 
-        bot.textWithLabel(WIZARD_VIEWPOINT_SPECIFICATION_MODEL_NAME).setText("test.design");
-        assertFalse("The wizard should not accept other file extension than odesign.", bot.button("Finish").isEnabled());
+        wizardBot.textWithLabel(WIZARD_VIEWPOINT_SPECIFICATION_MODEL_NAME).setText("test.design");
+        assertFalse("The wizard should not accept other file extension than odesign.", wizardBot.button("Finish").isEnabled());
 
-        bot.textWithLabel(WIZARD_VIEWPOINT_SPECIFICATION_MODEL_NAME).setText(vsmFileName);
-        bot.waitUntil(new ItemEnabledCondition(bot.button(WIZARD_FINISH)));
-        bot.button(WIZARD_FINISH).click();
+        wizardBot.textWithLabel(WIZARD_VIEWPOINT_SPECIFICATION_MODEL_NAME).setText(vsmFileName);
+        wizardBot.waitUntil(new ItemEnabledCondition(bot.button(WIZARD_FINISH)));
+        wizardBot.button(WIZARD_FINISH).click();
 
         SWTBotUtils.waitAllUiEvents();
 

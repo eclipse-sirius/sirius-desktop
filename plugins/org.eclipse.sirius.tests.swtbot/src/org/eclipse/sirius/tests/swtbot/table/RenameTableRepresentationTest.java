@@ -21,9 +21,11 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemTextCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
@@ -102,10 +104,9 @@ public class RenameTableRepresentationTest extends AbstractSiriusSwtBotGefTestCa
 
         // Rename table
         SWTBotUtils.clickContextMenu(treeItem, "Rename");
-        // Check the title name of the rename representation dialog
-        assertEquals("Invalid title for the rename representation dialog", TITLE_RENAME_DIALOG, bot.activeShell().getText());
-        bot.activeShell().bot().text(0).setText(TABLE_RENAME);
-        bot.button("OK").click();
+        SWTBot dialogBot = SWTBotSiriusHelper.getShellBot(TITLE_RENAME_DIALOG);
+        dialogBot.text(0).setText(TABLE_RENAME);
+        dialogBot.button("OK").click();
 
         bot.waitUntil(new TreeItemTextCondition(treeItem, TABLE_RENAME));
 
@@ -123,10 +124,9 @@ public class RenameTableRepresentationTest extends AbstractSiriusSwtBotGefTestCa
     private void createTable(SWTBotTreeItem treeItem) {
         SWTBotUtils.clickContextMenu(treeItem, "new Classes");
 
-        bot.waitUntil(Conditions.shellIsActive("New Classes"));
-
-        bot.activeShell().bot().text(0).setText(TABLE_NAME);
-        bot.button("OK").click();
+        SWTBot dialogBot = SWTBotSiriusHelper.getShellBot("New Classes");
+        dialogBot.text(0).setText(TABLE_NAME);
+        dialogBot.button("OK").click();
 
         SWTBotVSMEditor odesignEditor = SWTBotVSMHelper.getVSMEditorContainingName(TABLE_NAME);
         odesignEditor.setFocus();
