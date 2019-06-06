@@ -866,7 +866,8 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         tree.expandNode(ODESIGN).expandNode(GROUP).expandNode(VIEWPOINT_NAME).expandNode(DIAGRAM_DESCRIPTION_NAME).expandNode("Default").expandNode("EReferenceMapping")
                 .expandNode("Bracket Edge Style solid").select();
         // accesses to property view
-        bot.viewByTitle(PROPERTIES).setFocus();
+        propertiesBot = bot.viewByTitle(PROPERTIES);
+        propertiesBot.setFocus();
         // accesses to tab Decorators
         SWTBotSiriusHelper.selectPropertyTabItem(DECORATORS, propertiesBot.bot());
         // Change Source arrow decorators for InputFilledClosedArrow
@@ -889,7 +890,8 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         tree.expandNode(ODESIGN).expandNode(GROUP).expandNode(VIEWPOINT_NAME).expandNode(DIAGRAM_DESCRIPTION_NAME).expandNode("Default").expandNode("EReferenceMapping")
                 .expandNode("Bracket Edge Style solid").select();
         // accesses to property view
-        bot.viewByTitle(PROPERTIES).setFocus();
+        propertiesBot = bot.viewByTitle(PROPERTIES);
+        propertiesBot.setFocus();
         // accesses to tab Decorators
         SWTBotSiriusHelper.selectPropertyTabItem(GENERAL, propertiesBot.bot());
         final long previousTimeout = SWTBotPreferences.TIMEOUT;
@@ -982,7 +984,8 @@ public class BracketEdgeTests extends AbstractSiriusSwtBotGefTestCase {
         tree.expandNode(ODESIGN).expandNode(GROUP).expandNode(VIEWPOINT_NAME).expandNode(DIAGRAM_DESCRIPTION_NAME).expandNode("Default").expandNode("EReferenceMapping")
                 .expandNode("Bracket Edge Style solid").select();
         // accesses to property view
-        bot.viewByTitle(PROPERTIES).setFocus();
+        propertiesBot = bot.viewByTitle(PROPERTIES);
+        propertiesBot.setFocus();
         // accesses to tab Decorators
         SWTBotSiriusHelper.selectPropertyTabItem(GENERAL, propertiesBot.bot());
         // Change Source arrow decorators
