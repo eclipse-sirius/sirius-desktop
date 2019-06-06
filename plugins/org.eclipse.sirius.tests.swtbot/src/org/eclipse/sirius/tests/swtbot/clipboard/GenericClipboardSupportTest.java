@@ -93,8 +93,8 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
         SWTBotGefEditPart class2PartBot = editor.getEditPart("Class2").parent();
         SWTBotGefEditPart diagramPartBot = class2PartBot.parent();
         diagramPartBot.select();
-        assertCopyCutPasteToolBarActivation(true, false, false);
-        copySelection();
+        assertCopyCutPasteToolBarActivation(true, false, false, editor);
+        copySelection(editor);
 
         // Re-select diagram to force menu status refresh
         diagramPartBot.select();
@@ -107,14 +107,14 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
 
         // Check menus : paste became enabled :
         // an EPackage can be pasted in an other EPackage.
-        assertCopyCutPasteToolBarActivation(true, false, true);
+        assertCopyCutPasteToolBarActivation(true, false, true, editor);
 
         // Select Class 2
         class2PartBot.select();
         // Check menus : copy and cut are still enabled, paste became disabled :
         // an
         // EPackage can be pasted in an EClass
-        assertCopyCutPasteToolBarActivation(true, true, false);
+        assertCopyCutPasteToolBarActivation(true, true, false, editor);
 
         assertEquals(SessionStatus.SYNC, session.getStatus());
 
@@ -123,9 +123,9 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
         // Check menus : copy is still enabled, cut became disabled, paste
         // became enabled :
         // an EPackage can be pasted in an other EPackage.
-        assertCopyCutPasteToolBarActivation(true, false, true);
+        assertCopyCutPasteToolBarActivation(true, false, true, editor);
 
-        pasteInSelection();
+        pasteInSelection(editor);
 
         assertEquals(SessionStatus.DIRTY, session.getStatus());
 
@@ -147,8 +147,8 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
         // Select Class 2
         SWTBotGefEditPart class2PartBot = editor.getEditPart("Class2").parent();
         class2PartBot.select();
-        assertCopyCutPasteToolBarActivation(true, true, false);
-        copySelection();
+        assertCopyCutPasteToolBarActivation(true, true, false, editor);
+        copySelection(editor);
 
         // Re-select Class 2 to force menu status refresh
         class2PartBot.select();
@@ -161,7 +161,7 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
 
         // Check menus : copy and cut are still enabled, paste is still disabled
         // : an EClass can not be pasted in an other EClass
-        assertCopyCutPasteToolBarActivation(true, true, false);
+        assertCopyCutPasteToolBarActivation(true, true, false, editor);
 
         // Select diagram
         SWTBotGefEditPart diagramPartBot = class2PartBot.parent();
@@ -169,11 +169,11 @@ public class GenericClipboardSupportTest extends AbstractClipboardSupportTest {
 
         // Check menus : copy and cut are still enabled, paste became enabled :
         // an EClass can be pasted in a package
-        assertCopyCutPasteToolBarActivation(true, false, true);
+        assertCopyCutPasteToolBarActivation(true, false, true, editor);
 
         assertEquals(SessionStatus.SYNC, session.getStatus());
 
-        pasteInSelection();
+        pasteInSelection(editor);
 
         assertEquals(SessionStatus.DIRTY, session.getStatus());
     }

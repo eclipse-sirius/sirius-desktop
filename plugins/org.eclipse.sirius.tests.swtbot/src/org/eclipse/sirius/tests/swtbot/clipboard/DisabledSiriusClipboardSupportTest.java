@@ -175,10 +175,10 @@ public class DisabledSiriusClipboardSupportTest extends AbstractClipboardSupport
 
         // 1. Do a copy/paste
         aloneNoteBot.select();
-        copySelection();
+        copySelection(editor);
 
         diagramEditPartBotOfEditor.select();
-        pasteInSelection();
+        pasteInSelection(editor);
 
         // 2. Assert that a new Note has been created
         noteEditPartBots = diagramEditPartBotOfEditor.descendants(new NoteEditPartMatcher());
@@ -190,7 +190,7 @@ public class DisabledSiriusClipboardSupportTest extends AbstractClipboardSupport
         assertEquals("The note copy should be located near to the original location", aloneNoteBounds.getTranslated(10, 10), aloneNoteCopyBounds);
 
         // 3. Test a second paste
-        pasteInSelection();
+        pasteInSelection(editor);
 
         noteEditPartBots = diagramEditPartBotOfEditor.descendants(new NoteEditPartMatcher());
         assertEquals("It should be have a new Note created", nbOfNote + 2, noteEditPartBots.size());
@@ -208,10 +208,10 @@ public class DisabledSiriusClipboardSupportTest extends AbstractClipboardSupport
     public void testNoteCutPasteInASameDiagram() {
         // 1. Do a cut/paste
         noteLinkedToSemanticElementBot.select();
-        cutSelection();
+        cutSelection(editor);
 
         diagramEditPartBotOfEditor.select();
-        pasteInSelection();
+        pasteInSelection(editor);
 
         // 2. Assert that the number of note is unchanged
         noteEditPartBots = diagramEditPartBotOfEditor.descendants(new NoteEditPartMatcher());
@@ -230,10 +230,10 @@ public class DisabledSiriusClipboardSupportTest extends AbstractClipboardSupport
     public void testNoteCopyPasteInASameDiagramWithAMultipleSelection() {
         // 1. Test copy/paste of a multiple selection
         editor.select(noteLinkedToSemanticElementBot, aloneNoteBot, noteLinkedToAnotherNoteBot);
-        copySelection();
+        copySelection(editor);
 
         diagramEditPartBotOfEditor.select();
-        pasteInSelection();
+        pasteInSelection(editor);
 
         // 2. Assert
         noteEditPartBots = diagramEditPartBotOfEditor.descendants(new NoteEditPartMatcher());
@@ -258,10 +258,10 @@ public class DisabledSiriusClipboardSupportTest extends AbstractClipboardSupport
     public void testNoteCutPasteInASameDiagramWithAMultipleSelection() {
         // 1. Test cut/paste of a multiple selection
         editor.select(aloneNoteBot, noteLinkedToAnotherNoteBot, noteLinkedToSemanticElementBot);
-        cutSelection();
+        cutSelection(editor);
 
         diagramEditPartBotOfEditor.select();
-        pasteInSelection();
+        pasteInSelection(editor);
 
         // 2. Check
         noteEditPartBots = diagramEditPartBotOfEditor.descendants(new NoteEditPartMatcher());
@@ -287,11 +287,11 @@ public class DisabledSiriusClipboardSupportTest extends AbstractClipboardSupport
 
         // 1. Do a copy/paste
         aloneNoteBot.select();
-        copySelection();
+        copySelection(editor);
 
         editor2.show();
         diagramEditPartBotOfEditor2.select();
-        pasteInSelection();
+        pasteInSelection(editor);
 
         // 2. Assert that a new Note has been created
         noteEditPartBots = diagramEditPartBotOfEditor2.descendants(new NoteEditPartMatcher());
@@ -303,7 +303,7 @@ public class DisabledSiriusClipboardSupportTest extends AbstractClipboardSupport
         assertEquals("The note copy should be located near to the original location", aloneNoteBounds.getTranslated(10, 10), aloneNoteCopyBounds);
 
         // 3. Test a second paste
-        pasteInSelection();
+        pasteInSelection(editor);
 
         noteEditPartBots = diagramEditPartBotOfEditor2.descendants(new NoteEditPartMatcher());
         assertEquals("It should be have a new Note created", 2, noteEditPartBots.size());
@@ -321,11 +321,11 @@ public class DisabledSiriusClipboardSupportTest extends AbstractClipboardSupport
     public void testNoteCutPasteInDifferentDiagramOfDifferentSession() {
         // 1. Do a cut/paste
         noteLinkedToSemanticElementBot.select();
-        cutSelection();
+        cutSelection(editor);
 
         editor2.show();
         diagramEditPartBotOfEditor2.select();
-        pasteInSelection();
+        pasteInSelection(editor2);
 
         // 2. Assert that the number of note is unchanged
         noteEditPartBots = diagramEditPartBotOfEditor2.descendants(new NoteEditPartMatcher());
@@ -350,11 +350,11 @@ public class DisabledSiriusClipboardSupportTest extends AbstractClipboardSupport
     public void testNoteCopyPasteInDifferentDiagramOfDifferentSessionWithAMultipleSelection() {
         // 1. Test copy/paste of a multiple selection
         editor.select(noteLinkedToSemanticElementBot, aloneNoteBot, noteLinkedToAnotherNoteBot);
-        copySelection();
+        copySelection(editor);
 
         editor2.show();
         diagramEditPartBotOfEditor2.select();
-        pasteInSelection();
+        pasteInSelection(editor2);
 
         // 2. Assert
         noteEditPartBots = diagramEditPartBotOfEditor.descendants(new NoteEditPartMatcher());
@@ -383,11 +383,11 @@ public class DisabledSiriusClipboardSupportTest extends AbstractClipboardSupport
     public void testNoteCutPasteInDifferentDiagramOfDifferentSessionWithAMultipleSelection() {
         // 1. Test cut/paste of a multiple selection
         editor.select(aloneNoteBot, noteLinkedToAnotherNoteBot, noteLinkedToSemanticElementBot);
-        cutSelection();
+        cutSelection(editor);
 
         editor2.show();
         diagramEditPartBotOfEditor2.select();
-        pasteInSelection();
+        pasteInSelection(editor2);
 
         noteEditPartBots = diagramEditPartBotOfEditor2.descendants(new NoteEditPartMatcher());
         assertEquals("3 new Note should be pasted on the diagram of the second session", 3, noteEditPartBots.size());

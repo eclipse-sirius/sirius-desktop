@@ -45,6 +45,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.ContextualMenuItemGetter;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.IdentifiedElement;
@@ -295,7 +296,7 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
      * 
      */
     protected void sideEffectAssertCopyCutPasteActivation(SWTBotSiriusDiagramEditor editor, boolean copyState, boolean cutState, boolean pasteState) {
-        assertCopyCutPasteToolBarActivation(copyState, cutState, pasteState);
+        assertCopyCutPasteToolBarActivation(copyState, cutState, pasteState, editor);
 
         // now tests context menu
 
@@ -339,12 +340,12 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
      * @param cutState
      *            expected cut menu enablement
      */
-    protected void assertCopyCutToolBarActivation(boolean copyState, boolean cutState) {
-        SWTBotMenu copyMenu = editor.bot().menu("Edit").menu("Copy");
+    protected void assertCopyCutToolBarActivation(boolean copyState, boolean cutState, SWTBotSiriusDiagramEditor currentEditor) {
+        SWTBotMenu copyMenu = SWTBotSiriusHelper.menu(currentEditor.bot(), "Edit").menu("Copy");
         assertEquals(true, copyMenu.isVisible());
         assertEquals("Copy action enabled ?", copyState, copyMenu.isEnabled());
 
-        SWTBotMenu cutMenu = editor.bot().menu("Edit").menu("Cut");
+        SWTBotMenu cutMenu = SWTBotSiriusHelper.menu(currentEditor.bot(), "Edit").menu("Cut");
         assertEquals(true, cutMenu.isVisible());
         assertEquals("Cut action enabled ?", cutState, cutMenu.isEnabled());
     }
@@ -359,10 +360,10 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
      * @param pasteState
      *            expected delete menu enablement
      */
-    protected void assertCopyCutPasteToolBarActivation(boolean copyState, boolean cutState, boolean pasteState) {
-        assertCopyCutToolBarActivation(copyState, cutState);
+    protected void assertCopyCutPasteToolBarActivation(boolean copyState, boolean cutState, boolean pasteState, SWTBotSiriusDiagramEditor currentEditor) {
+        assertCopyCutToolBarActivation(copyState, cutState, currentEditor);
 
-        SWTBotMenu pasteMenu = bot.menu("Edit").menu("Paste");
+        SWTBotMenu pasteMenu = SWTBotSiriusHelper.menu(currentEditor.bot(), "Edit").menu("Paste");
         assertEquals(true, pasteMenu.isVisible());
         assertEquals("Paste action enabled ?", pasteState, pasteMenu.isEnabled());
     }
@@ -502,9 +503,9 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
 
         // Checks that menu copy is accessible. Paste must be not
         // accessible
-        assertCopyCutPasteToolBarActivation(true, !(partToCopyBot.part() instanceof DDiagramEditPart), false);
+        assertCopyCutPasteToolBarActivation(true, !(partToCopyBot.part() instanceof DDiagramEditPart), false, copyEditor);
 
-        copySelection();
+        copySelection(copyEditor);
 
         // Select paste target
         if (pasteEditor != copyEditor) {
@@ -516,14 +517,14 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
         pasteTargetBot.select();
         bot.waitUntil(checkSelected);
 
-        assertCopyCutPasteToolBarActivation(true, !(pasteTargetBot.part() instanceof DDiagramEditPart), expectedCanPaste);
+        assertCopyCutPasteToolBarActivation(true, !(pasteTargetBot.part() instanceof DDiagramEditPart), expectedCanPaste, copyEditor);
 
         // "No paste" tool -> do not try to paste
         if (!expectedCanPaste) {
             return;
         }
 
-        pasteInSelection();
+        pasteInSelection(copyEditor);
 
         // check IdentifiedElement.uid unicity
         checkUidUnicity((DDiagramEditPart) copyEditor.mainEditPart().part(), (DDiagramEditPart) pasteDiagramBot.part());
@@ -540,14 +541,14 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
         // assertNotNull(pastedPartBot);
 
         // Test undo
-        bot.menu("Edit").menu("Undo Paste").click();
+        SWTBotSiriusHelper.menu(copyEditor.bot(), "Edit").menu("Undo Paste").click();
         // Check DNode element is paste
         checkNumberOfDElementWithName(pasteDiagramBot, pastedName, numberElementCopy - 1);
         // Check DNode element is paste
         checkGMFCopy(pasteEditor, pastedName, numberElementCopy - 1);
 
         // Test Redo
-        bot.menu("Edit").menu("Redo Paste").click();
+        SWTBotSiriusHelper.menu(copyEditor.bot(), "Edit").menu("Redo Paste").click();
         // check IdentifiedElement.uid unicity
         checkUidUnicity((DDiagramEditPart) copyEditor.mainEditPart().part(), (DDiagramEditPart) pasteDiagramBot.part());
         // Check DNode element is paste
@@ -599,9 +600,9 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
 
         // Checks that menu copy is accessible. Paste must be not
         // accessible
-        assertCopyCutPasteToolBarActivation(true, true, false);
+        assertCopyCutPasteToolBarActivation(true, true, false, copyEditor);
 
-        copySelection();
+        copySelection(copyEditor);
 
         // Select paste target
         if (pasteEditor != copyEditor) {
@@ -613,14 +614,14 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
         pasteTargetBot.select();
         bot.waitUntil(checkSelected);
 
-        assertCopyCutPasteToolBarActivation(true, !(pasteTargetBot.part() instanceof DDiagramEditPart), expectedCanPaste);
+        assertCopyCutPasteToolBarActivation(true, !(pasteTargetBot.part() instanceof DDiagramEditPart), expectedCanPaste, copyEditor);
 
         // "No paste" tool -> do not try to paste
         if (!expectedCanPaste) {
             return;
         }
 
-        pasteInSelection();
+        pasteInSelection(copyEditor);
 
         // check IdentifiedElement.uid unicity
         checkUidUnicity((DDiagramEditPart) copyEditor.mainEditPart().part(), (DDiagramEditPart) pasteDiagramBot.part());
@@ -635,7 +636,7 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
         checkGMFChildrenCopy(pasteEditor, "attributee2", pastedName.get("attributee2"));
 
         // Test undo
-        bot.menu("Edit").menu("Undo Paste").click();
+        SWTBotSiriusHelper.menu(copyEditor.bot(), "Edit").menu("Undo Paste").click();
 
         // Check DNode element is paste
         checkNumberOfDChildrenElementWithName(pasteDiagramBot, "attributee1", pastedName.get("attributee1") - 1);
@@ -647,7 +648,7 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
         checkGMFChildrenCopy(pasteEditor, "attributee2", pastedName.get("attributee2") - 1);
 
         // Test Redo
-        bot.menu("Edit").menu("Redo Paste").click();
+        SWTBotSiriusHelper.menu(copyEditor.bot(), "Edit").menu("Redo Paste").click();
 
         // Check DNode element is paste
         checkNumberOfDChildrenElementWithName(pasteDiagramBot, "attributee1", pastedName.get("attributee1"));
@@ -711,9 +712,9 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
 
         // Checks that menu copy is accessible. Paste must be not
         // accessible
-        assertCopyCutPasteToolBarActivation(true, !(partToCopyBot.part() instanceof DDiagramEditPart), false);
+        assertCopyCutPasteToolBarActivation(true, !(partToCopyBot.part() instanceof DDiagramEditPart), false, copyEditor);
 
-        copySelection();
+        copySelection(copyEditor);
 
         // "No paste" tool -> do not try to paste
         if (!expectedCanPaste) {
@@ -725,7 +726,7 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
         SWTBotGefEditPart pasteDiagramBot = pasteEditor.rootEditPart().children().iterator().next();
         SWTBotGefEditPart pasteTargetBot = pasteDiagramBot;
 
-        pasteInSelection();
+        pasteInSelection(copyEditor);
 
         // check IdentifiedElement.uid unicity
         checkUidUnicity(elementToCopy.part(), (DDiagramEditPart) pasteDiagramBot.part());
@@ -736,14 +737,14 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
         checkGMFChildrenCopy(pasteEditor, pastedName, numberElementCopy);
 
         // Test undo
-        bot.menu("Edit").menu("Undo Paste").click();
+        SWTBotSiriusHelper.menu(copyEditor.bot(), "Edit").menu("Undo Paste").click();
         // Check DNode element is paste
         checkNumberOfDChildrenElementWithName(pasteTargetBot, pastedName, numberElementCopy - 3);
         // Check DNode element is paste
         checkGMFChildrenCopy(pasteEditor, pastedName, numberElementCopy - 3);
 
         // Test Redo
-        bot.menu("Edit").menu("Redo Paste").click();
+        SWTBotSiriusHelper.menu(copyEditor.bot(), "Edit").menu("Redo Paste").click();
         // check IdentifiedElement.uid unicity
         checkUidUnicity(elementToCopy.part(), (DDiagramEditPart) pasteDiagramBot.part());
         // Check DNode element is paste
@@ -841,12 +842,12 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
 
         // Checks that menu copy is accessible. Paste must be not
         // accessible
-        assertCopyCutPasteToolBarActivation(true, expectedCanDelete, false);
+        assertCopyCutPasteToolBarActivation(true, expectedCanDelete, false, cutEditor);
 
         checkUidUnicityAmongEObject(diagramCutBot.part());
 
         if (expectedCanDelete) {
-            cutSelection();
+            cutSelection(cutEditor);
 
             // Check DNode element was delete
             boolean cutDeleteAll;
@@ -864,9 +865,9 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
             checkSelected = new CheckSelectedCondition(cutEditor, diagramCutBot.part());
             diagramCutBot.select();
             bot.waitUntil(checkSelected);
-            assertCopyCutPasteToolBarActivation(true, false, true);
+            assertCopyCutPasteToolBarActivation(true, false, true, cutEditor);
 
-            pasteInSelection();
+            pasteInSelection(cutEditor);
             // check IdentifiedElement.uid unicity
             checkUidUnicityAmongEObject(diagramCutBot.part());
 
@@ -971,8 +972,8 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
     /**
      * Paste actions.
      */
-    protected void pasteInSelection() {
-        SWTBotMenu menu = bot.menu("Edit").menu("Paste");
+    protected void pasteInSelection(SWTBotSiriusDiagramEditor currentEditor) {
+        SWTBotMenu menu = SWTBotSiriusHelper.menu(currentEditor.bot(), "Edit").menu("Paste");
         assertEquals("Paste menu should be enable", true, menu.isEnabled());
         menu.click();
     }
@@ -980,8 +981,8 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
     /**
      * Copy action
      */
-    protected void copySelection() {
-        SWTBotMenu menu = bot.menu("Edit").menu("Copy");
+    protected void copySelection(SWTBotSiriusDiagramEditor currentEditor) {
+        SWTBotMenu menu = SWTBotSiriusHelper.menu(currentEditor.bot(), "Edit").menu("Copy");
         assertEquals("Copy menu should be enable", true, menu.isEnabled());
         menu.click();
     }
@@ -989,8 +990,8 @@ public abstract class AbstractClipboardSupportTest extends AbstractSiriusSwtBotG
     /**
      * Cut action.
      */
-    protected void cutSelection() {
-        SWTBotMenu menu = bot.menu("Edit").menu("Cut");
+    protected void cutSelection(SWTBotSiriusDiagramEditor currentEditor) {
+        SWTBotMenu menu = SWTBotSiriusHelper.menu(currentEditor.bot(), "Edit").menu("Cut");
         assertEquals("Cut menu should be enable", true, menu.isEnabled());
         menu.click();
     }
