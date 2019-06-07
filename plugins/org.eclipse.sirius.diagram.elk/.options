@@ -1,0 +1,4 @@
+# Tracing options for the org.eclipse.sirius.diagram.elk plug-in
+
+# Activate the export of elk diagram in the directory set by JVM option -Djava.io.tmpdir=PATH
+org.eclipse.sirius.diagram.elk/debug=false

@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.elk;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -58,30 +59,30 @@ public class GmfLayoutCommand extends AbstractTransactionalCommand {
     public static final String JUNCTION_POINTS_STYLE_NAME = "junctionPoints";
 
     /** layout data for node shapes. */
-    private static final class ShapeLayoutData {
-        private View view;
+    public static final class ShapeLayoutData {
+        public View view;
 
-        private Point location;
+        public Point location;
 
-        private Dimension size;
+        public Dimension size;
 
-        private ShapeLayoutData() {
+        public ShapeLayoutData() {
         }
     }
 
     /** layout data for edges. */
-    private static final class EdgeLayoutData {
-        private Edge edge;
+    public static final class EdgeLayoutData {
+        public Edge edge;
 
-        private PointList bends;
+        public PointList bends;
 
-        private String junctionPoints;
+        public String junctionPoints;
 
-        private String sourceTerminal;
+        public String sourceTerminal;
 
-        private String targetTerminal;
+        public String targetTerminal;
 
-        private EdgeLayoutData() {
+        public EdgeLayoutData() {
         }
     }
 
@@ -256,6 +257,24 @@ public class GmfLayoutCommand extends AbstractTransactionalCommand {
 
         monitor.done();
         return CommandResult.newOKCommandResult();
+    }
+
+    /**
+     * Provides the {@link EdgeLayoutData}.
+     * 
+     * @return a unmodifiableList.
+     */
+    public List<EdgeLayoutData> getEdgeLayouts() {
+        return Collections.unmodifiableList(edgeLayouts);
+    }
+
+    /**
+     * Provides the {@link ShapeLayoutData}.
+     * 
+     * @return a unmodifiableList.
+     */
+    public List<ShapeLayoutData> getShapeLayouts() {
+        return Collections.unmodifiableList(shapeLayouts);
     }
 
     /**

@@ -13,8 +13,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.elk;
 
+import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -60,8 +63,12 @@ import org.eclipse.elk.graph.properties.IPropertyHolder;
 import org.eclipse.elk.graph.properties.Property;
 import org.eclipse.elk.graph.util.ElkGraphUtil;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.RootEditPart;
@@ -80,6 +87,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.LabelPosition;
@@ -109,6 +117,7 @@ import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.swt.SWTException;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
 
 import com.google.common.collect.BiMap;
 import com.google.inject.Inject;
@@ -160,6 +169,42 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
 
     @Inject
     private IGraphLayoutEngine graphLayoutEngine;
+
+    /**
+     * Export the given layout graph in a file. The file will be saved in the directory specified in java.io.tmpdir vm
+     * argument.
+     * 
+     * @param graphToStore
+     *            the layout graph to store.
+     * @param diagramName
+     *            the name if the diagram used as file name.
+     * @param prefix
+     *            a prefix that can be used in the file name.
+     * @param openDialog
+     *            whether we should indicate by a dialog that the diagram as been saved as file.
+     * 
+     */
+    public static void storeResult(final ElkNode graphToStore, final String diagramName, String suffix, boolean openDialog) {
+        URI exportUri = URI.createFileURI(System.getProperty("java.io.tmpdir") + diagramName + "_" + suffix + ".elkg");
+        ResourceSet resourceSet = new ResourceSetImpl();
+        Resource resource = resourceSet.createResource(exportUri);
+        // Disable the layout stored in this graph to avoid an automatic layout during the opening in "Layout Graph"
+        // view
+        graphToStore.setProperty(CoreOptions.NO_LAYOUT, true);
+        resource.getContents().add(graphToStore);
+
+        try {
+            resource.save(Collections.emptyMap());
+            if (openDialog) {
+            MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Export diagram as ELK Graph",
+                    MessageFormat.format("Current diagram has been successfully exported into {0}", URI.decode(exportUri.toString())));
+            }
+        } catch (IOException e) {
+            System.out.println(e);
+            // ignore the exception
+        }
+        graphToStore.setProperty(CoreOptions.NO_LAYOUT, false);
+    }
 
     /**
      * Calculates the absolute bounds of the given figure.

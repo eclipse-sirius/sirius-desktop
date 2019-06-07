@@ -12,10 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.elk.debug;
 
-import java.io.IOException;
-import java.text.MessageFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -24,15 +21,9 @@ import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.elk.core.options.CoreOptions;
 import org.eclipse.elk.core.options.HierarchyHandling;
 import org.eclipse.elk.core.service.LayoutConnectorsService;
 import org.eclipse.elk.core.service.LayoutMapping;
-import org.eclipse.elk.graph.ElkNode;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.commands.Command;
@@ -116,8 +107,8 @@ public class ExportToElkGraphHandler extends AbstractHandler {
                 connector.setLayoutConfiguration(customLayoutConfiguration);
 
                 LayoutMapping layoutMapping = connector.buildLayoutGraph(diagramEditPart, diagramEditPart.getChildren());
-                storeResult(layoutMapping.getLayoutGraph(),
-                        ((org.eclipse.sirius.viewpoint.DRepresentation) ((org.eclipse.gmf.runtime.notation.Diagram) diagramEditPart.getModel()).getElement()).getName());
+                ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(),
+                        ((org.eclipse.sirius.viewpoint.DRepresentation) ((org.eclipse.gmf.runtime.notation.Diagram) diagramEditPart.getModel()).getElement()).getName(), "", true);
 
                 if (commandStack != null) {
                     // Undo the reset home
@@ -160,31 +151,6 @@ public class ExportToElkGraphHandler extends AbstractHandler {
             }
         }
         return result;
-    }
-
-    /**
-     * Export the given layout graph in a file. This can be useful as debug output.
-     * 
-     * @param graphToStore
-     *            the layout graph to store
-     */
-    protected void storeResult(final ElkNode graphToStore, final String diagramName) {
-        URI exportUri = URI.createFileURI(System.getProperty("java.io.tmpdir") + diagramName + ".elkg");
-        ResourceSet resourceSet = new ResourceSetImpl();
-        Resource resource = resourceSet.createResource(exportUri);
-        // Disable the layout stored in this graph to avoid an automatic layout during the opening in "Layout Graph"
-        // view
-        graphToStore.setProperty(CoreOptions.NO_LAYOUT, true);
-        resource.getContents().add(graphToStore);
-
-        try {
-            resource.save(Collections.emptyMap());
-            MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(), Messages.ExportToElkGraphHandler_elkExportDialogTitle,
-                    MessageFormat.format(Messages.ExportToElkGraphHandler_elkExportDialogMessage, URI.decode(exportUri.toString())));
-        } catch (IOException e) {
-            // ignore the exception
-        }
-        graphToStore.setProperty(CoreOptions.NO_LAYOUT, false);
     }
 
     private DiagramCommandStack getDiagramCommandStack(IWorkbenchPart workbenchPart) {
