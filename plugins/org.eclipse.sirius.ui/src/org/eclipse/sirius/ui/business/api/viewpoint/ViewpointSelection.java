@@ -53,6 +53,7 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.SWTUtil;
 import org.eclipse.sirius.ext.base.Option;
@@ -587,7 +588,7 @@ public final class ViewpointSelection {
             switch (columnIndex) {
             case 2:
                 if (element instanceof Viewpoint) {
-                    return new IdentifiedElementQuery((Viewpoint) element).getLabel();
+                    return MessageTranslator.INSTANCE.getMessage((Viewpoint) element, new IdentifiedElementQuery((Viewpoint) element).getLabel());
                 }
                 break;
             default:
