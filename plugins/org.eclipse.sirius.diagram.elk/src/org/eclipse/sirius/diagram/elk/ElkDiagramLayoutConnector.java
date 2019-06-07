@@ -17,10 +17,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.EnumSet;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionLocator;
@@ -355,9 +357,12 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         // find the diagram edit part
         mapping.setProperty(DIAGRAM_EDIT_PART, diagramEditPart);
 
+        Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOevrrideMap = constructElkOptionTargetToOptionsMap();
+
         // start with the whole diagram as root for layout. We cannot start from a diagram element even with a selection
         // layouting because if it has ports it is not supported. The top node is there only to support some meta data.
         ElkNode topNode = ElkGraphUtil.createGraph();
+        applyOptionsRelatedToElementTarget(topNode, elkTargetToOptionsOevrrideMap);
         Rectangle rootBounds = diagramEditPart.getFigure().getBounds();
         String labelText = diagramEditPart.getDiagramView().getName();
         if (labelText.length() > 0) {
@@ -366,8 +371,8 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         }
         topNode.setDimensions(rootBounds.width, rootBounds.height);
         mapping.getGraphMap().put(topNode, diagramEditPart);
-
-        configureGlobalOptions(diagramEditPart, topNode);
+        // we set the ELK algorithm to use from viewpoint id defined.
+        topNode.setProperty(CoreOptions.ALGORITHM, layoutConfiguration.getId().trim());
 
         mapping.setLayoutGraph(topNode);
 
@@ -379,103 +384,131 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             for (ShapeNodeEditPart editPart : selection) {
                 // We use new insets the selection can have different parents.
                 Maybe<ElkPadding> kinsets = new Maybe<>();
-                ElkNode node = createNode(mapping, editPart, (IGraphicalEditPart) editPart.getParent(), topNode, kinsets);
+                ElkNode node = createNode(mapping, editPart, (IGraphicalEditPart) editPart.getParent(), topNode, kinsets, elkTargetToOptionsOevrrideMap);
                 minx = Math.min(minx, node.getX());
                 miny = Math.min(miny, node.getY());
-                buildLayoutGraphRecursively(mapping, (IGraphicalEditPart) editPart.getParent(), node, editPart);
+                buildLayoutGraphRecursively(mapping, (IGraphicalEditPart) editPart.getParent(), node, editPart, elkTargetToOptionsOevrrideMap);
             }
             mapping.setProperty(COORDINATE_OFFSET, new KVector(minx, miny));
         } else {
             // traverse all children of the layout root part
-            buildLayoutGraphRecursively(mapping, diagramEditPart, topNode, diagramEditPart);
+            buildLayoutGraphRecursively(mapping, diagramEditPart, topNode, diagramEditPart, elkTargetToOptionsOevrrideMap);
         }
 
         // transform all connections in the selected area
-        processConnections(mapping);
+        processConnections(mapping, elkTargetToOptionsOevrrideMap);
+
+
         return mapping;
     }
 
     /**
-     * Configure global options for top node of the graph coming from VSM specification.
-     * 
-     * @param layoutRootPart
-     *            root edit part.
-     * @param topNode
-     *            top node to be configured with global options.
+     * Construct a map associated option targets to all corresponding options that are overridden in the VSM. 
+     * @return a map of option targets to corresponding options.
      */
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-    private void configureGlobalOptions(final IGraphicalEditPart layoutRootPart, ElkNode topNode) {
-        // we set the ELK algorithm to use from viewpoint id defined and the
-        // global options.
-
+    private Map<LayoutOptionTarget, Set<LayoutOption>> constructElkOptionTargetToOptionsMap() {
+        Map<LayoutOptionTarget, Set<LayoutOption>> resultMap = new HashMap<>();
+        resultMap.put(LayoutOptionTarget.EDGE, new HashSet<>());
+        resultMap.put(LayoutOptionTarget.LABEL, new HashSet<>());
+        resultMap.put(LayoutOptionTarget.NODE, new HashSet<>());
+        resultMap.put(LayoutOptionTarget.PARENT, new HashSet<>());
+        resultMap.put(LayoutOptionTarget.PORTS, new HashSet<>());
         if (layoutConfiguration != null) {
-            topNode.setProperty(CoreOptions.ALGORITHM, layoutConfiguration.getId().trim());
             EList<LayoutOption> layoutOptions = layoutConfiguration.getLayoutOptions();
-
             for (LayoutOption layoutOption : layoutOptions) {
                 EList<LayoutOptionTarget> targets = layoutOption.getTargets();
-                for (LayoutOptionTarget target : targets) {
-                    if (LayoutOptionTarget.PARENT == target) {
-                        LayoutOptionData layoutProperty = LayoutMetaDataService.getInstance().getOptionData(layoutOption.getId());
-                        switch (layoutOption.eClass().getClassifierID()) {
-                        case DescriptionPackage.ENUM_LAYOUT_OPTION:
-                            EnumLayoutOption enumOption = (EnumLayoutOption) layoutOption;
-                            int enumValueCount = layoutProperty.getEnumValueCount();
-                            Enum<?> elkEnum = null;
-                            int i = 0;
-                            while (i < enumValueCount && elkEnum == null) {
-                                layoutProperty.getEnumValue(i);
-                                Enum<?> enumValue = layoutProperty.getEnumValue(i);
-                                if (enumOption.getValue().getName().equals(enumValue.name())) {
-                                    elkEnum = enumValue;
-                                }
-                                i++;
-                            }
-                            topNode.setProperty(layoutProperty, elkEnum);
-                            break;
+                for (LayoutOptionTarget layoutOptionTarget : targets) {
+                    Set<LayoutOption> optionsSet = resultMap.get(layoutOptionTarget);
+                    optionsSet.add(layoutOption);
+                }
+            }
+        }
+        return resultMap;
+    }
 
-                        case DescriptionPackage.ENUM_SET_LAYOUT_OPTION:
-                            EnumSetLayoutOption enumSetOption = (EnumSetLayoutOption) layoutOption;
-                            enumValueCount = layoutProperty.getEnumValueCount();
+    private void applyOptionsRelatedToElementTarget(ElkGraphElement elkElement, Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
+        if (layoutConfiguration != null) {
+            // we set the global options.
+            if (elkElement instanceof ElkNode) {
+                Set<LayoutOption> layoutOptionsSet = elkTargetToOptionsOverrideMap.get(LayoutOptionTarget.NODE);
+                applyOptions(elkElement, layoutOptionsSet);
+            } else if (elkElement instanceof ElkLabel) {
+                Set<LayoutOption> layoutOptionsSet = elkTargetToOptionsOverrideMap.get(LayoutOptionTarget.LABEL);
+                applyOptions(elkElement, layoutOptionsSet);
+            } else if (elkElement instanceof ElkPort) {
+                Set<LayoutOption> layoutOptionsSet = elkTargetToOptionsOverrideMap.get(LayoutOptionTarget.PORTS);
+                applyOptions(elkElement, layoutOptionsSet);
+            } else if (elkElement instanceof ElkEdge) {
+                Set<LayoutOption> layoutOptionsSet = elkTargetToOptionsOverrideMap.get(LayoutOptionTarget.EDGE);
+                applyOptions(elkElement, layoutOptionsSet);
+            }
+        }
+    }
 
-                            if (enumValueCount > 0) {
-                                EnumSet enumSet = EnumSet.noneOf(layoutProperty.getEnumValue(0).getDeclaringClass());
-                                List<EnumLayoutValue> values = enumSetOption.getValues();
-                                for (EnumLayoutValue enumLayoutValue : values) {
-                                    i = 0;
-                                    while (i < enumValueCount) {
-                                        Enum enumValue = layoutProperty.getEnumValue(i);
-                                        if (enumLayoutValue.getName().equals(enumValue.name())) {
-                                            enumSet = of(enumValue, enumSet);
-                                            break;
-                                        }
-                                        i++;
-                                    }
-                                }
-                                topNode.setProperty(layoutProperty, enumSet);
+    private void applyParentNodeOption(ElkGraphElement elkElement, Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
+        Set<LayoutOption> layoutOptionsSet = elkTargetToOptionsOverrideMap.get(LayoutOptionTarget.PARENT);
+        applyOptions(elkElement, layoutOptionsSet);
+    }
+
+    private void applyOptions(ElkGraphElement elkElement, Set<LayoutOption> layoutOptionsSet) {
+        for (LayoutOption layoutOption : layoutOptionsSet) {
+            LayoutOptionData layoutProperty = LayoutMetaDataService.getInstance().getOptionData(layoutOption.getId());
+            switch (layoutOption.eClass().getClassifierID()) {
+            case DescriptionPackage.ENUM_LAYOUT_OPTION:
+                EnumLayoutOption enumOption = (EnumLayoutOption) layoutOption;
+                int enumValueCount = layoutProperty.getEnumValueCount();
+                Enum<?> elkEnum = null;
+                int i = 0;
+                while (i < enumValueCount && elkEnum == null) {
+                    layoutProperty.getEnumValue(i);
+                    Enum<?> enumValue = layoutProperty.getEnumValue(i);
+                    if (enumOption.getValue().getName().equals(enumValue.name())) {
+                        elkEnum = enumValue;
+                    }
+                    i++;
+                }
+                elkElement.setProperty(layoutProperty, elkEnum);
+                break;
+
+            case DescriptionPackage.ENUM_SET_LAYOUT_OPTION:
+                EnumSetLayoutOption enumSetOption = (EnumSetLayoutOption) layoutOption;
+                enumValueCount = layoutProperty.getEnumValueCount();
+
+                if (enumValueCount > 0) {
+                    EnumSet enumSet = EnumSet.noneOf(layoutProperty.getEnumValue(0).getDeclaringClass());
+                    List<EnumLayoutValue> values = enumSetOption.getValues();
+                    for (EnumLayoutValue enumLayoutValue : values) {
+                        i = 0;
+                        while (i < enumValueCount) {
+                            Enum enumValue = layoutProperty.getEnumValue(i);
+                            if (enumLayoutValue.getName().equals(enumValue.name())) {
+                                enumSet = of(enumValue, enumSet);
+                                break;
                             }
-                            break;
-                        case DescriptionPackage.BOOLEAN_LAYOUT_OPTION:
-                            BooleanLayoutOption booleanOption = (BooleanLayoutOption) layoutOption;
-                            topNode.setProperty(layoutProperty, booleanOption.isValue());
-                            break;
-                        case DescriptionPackage.INTEGER_LAYOUT_OPTION:
-                            IntegerLayoutOption integerOption = (IntegerLayoutOption) layoutOption;
-                            topNode.setProperty(layoutProperty, integerOption.getValue());
-                            break;
-                        case DescriptionPackage.DOUBLE_LAYOUT_OPTION:
-                            DoubleLayoutOption doubleOption = (DoubleLayoutOption) layoutOption;
-                            topNode.setProperty(layoutProperty, doubleOption.getValue());
-                            break;
-                        case DescriptionPackage.STRING_LAYOUT_OPTION:
-                            StringLayoutOption stringOption = (StringLayoutOption) layoutOption;
-                            topNode.setProperty(layoutProperty, stringOption.getValue().trim());
-                            break;
-                        default:
-                            break;
+                            i++;
                         }
                     }
+                    elkElement.setProperty(layoutProperty, enumSet);
                 }
+                break;
+            case DescriptionPackage.BOOLEAN_LAYOUT_OPTION:
+                BooleanLayoutOption booleanOption = (BooleanLayoutOption) layoutOption;
+                elkElement.setProperty(layoutProperty, booleanOption.isValue());
+                break;
+            case DescriptionPackage.INTEGER_LAYOUT_OPTION:
+                IntegerLayoutOption integerOption = (IntegerLayoutOption) layoutOption;
+                elkElement.setProperty(layoutProperty, integerOption.getValue());
+                break;
+            case DescriptionPackage.DOUBLE_LAYOUT_OPTION:
+                DoubleLayoutOption doubleOption = (DoubleLayoutOption) layoutOption;
+                elkElement.setProperty(layoutProperty, doubleOption.getValue());
+                break;
+            case DescriptionPackage.STRING_LAYOUT_OPTION:
+                StringLayoutOption stringOption = (StringLayoutOption) layoutOption;
+                elkElement.setProperty(layoutProperty, stringOption.getValue().trim());
+                break;
+            default:
+                break;
             }
         }
     }
@@ -566,8 +599,11 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      *            the corresponding KNode
      * @param currentEditPart
      *            the currently analyzed edit part
+     * @param elkTargetToOptionsOverrideMap
+     *            a map of option targets to corresponding options.
      */
-    protected void buildLayoutGraphRecursively(final LayoutMapping mapping, final IGraphicalEditPart parentEditPart, final ElkNode parentLayoutNode, final IGraphicalEditPart currentEditPart) {
+    protected void buildLayoutGraphRecursively(final LayoutMapping mapping, final IGraphicalEditPart parentEditPart, final ElkNode parentLayoutNode, final IGraphicalEditPart currentEditPart,
+            Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
 
         Maybe<ElkPadding> kinsets = new Maybe<ElkPadding>();
         // autoSize.prepareForArrangeAll(Iterators.filter(currentEditPart.getChildren().iterator(),
@@ -587,7 +623,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             if (obj instanceof AbstractBorderItemEditPart) {
                 AbstractBorderItemEditPart borderItem = (AbstractBorderItemEditPart) obj;
                 if (editPartFilter.filter(borderItem)) {
-                    createPort(mapping, borderItem, parentEditPart, parentLayoutNode);
+                    createPort(mapping, borderItem, parentEditPart, parentLayoutNode, elkTargetToOptionsOverrideMap);
                 }
 
                 // process a compartment, which may contain other elements
@@ -604,7 +640,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                     }
 
                     if (compExp) {
-                        buildLayoutGraphRecursively(mapping, parentEditPart, parentLayoutNode, compartment);
+                        buildLayoutGraphRecursively(mapping, parentEditPart, parentLayoutNode, compartment, elkTargetToOptionsOverrideMap);
                     }
                 }
 
@@ -613,14 +649,14 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             } else if (obj instanceof ShapeNodeEditPart) {
                 ShapeNodeEditPart childNodeEditPart = (ShapeNodeEditPart) obj;
                 if (editPartFilter.filter(childNodeEditPart)) {
-                    ElkNode node = createNode(mapping, childNodeEditPart, parentEditPart, parentLayoutNode, kinsets);
+                    ElkNode node = createNode(mapping, childNodeEditPart, parentEditPart, parentLayoutNode, kinsets, elkTargetToOptionsOverrideMap);
                     // process the child as new current edit part
-                    buildLayoutGraphRecursively(mapping, childNodeEditPart, node, childNodeEditPart);
+                    buildLayoutGraphRecursively(mapping, childNodeEditPart, node, childNodeEditPart, elkTargetToOptionsOverrideMap);
                 }
 
                 // process a label of the current node
             } else if (obj instanceof IGraphicalEditPart) {
-                ElkLabel newNodeLabel = createNodeLabel(mapping, (IGraphicalEditPart) obj, parentEditPart, parentLayoutNode);
+                ElkLabel newNodeLabel = createNodeLabel(mapping, (IGraphicalEditPart) obj, parentEditPart, parentLayoutNode, elkTargetToOptionsOverrideMap);
                 if (newNodeLabel != null) {
                     parentLayoutNode.getLabels().add(newNodeLabel);
                 }
@@ -641,13 +677,16 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      *            the corresponding parent layout node
      * @param elkinsets
      *            reference parameter for insets; the insets are calculated if this has not been done before
+     * @param elkTargetToOptionsOverrideMap
+     *            a map of option targets to corresponding options.
      * @return the created node
      */
     protected ElkNode createNode(final LayoutMapping mapping, final IGraphicalEditPart nodeEditPart, final IGraphicalEditPart parentEditPart, final ElkNode parentElkNode,
-            final Maybe<ElkPadding> elkinsets) {
+            final Maybe<ElkPadding> elkinsets, Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
 
         IFigure nodeFigure = nodeEditPart.getFigure();
         ElkNode childLayoutNode = ElkGraphUtil.createNode(parentElkNode);
+        applyOptionsRelatedToElementTarget(childLayoutNode, elkTargetToOptionsOverrideMap);
 
         // set location and size
         Rectangle childBounds = getAbsoluteBounds(nodeFigure);
@@ -687,6 +726,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             childLayoutNode.setProperty(CoreOptions.PADDING, ei);
 
             parentElkNode.getChildren().add(childLayoutNode);
+            applyParentNodeOption(parentElkNode, elkTargetToOptionsOverrideMap);
         }
         mapping.getGraphMap().put(childLayoutNode, nodeEditPart);
 
@@ -768,12 +808,15 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      *            the parent node edit part
      * @param elknode
      *            the corresponding layout node
+     * @param elkTargetToOptionsOverrideMap
+     *            a map of option targets to corresponding options.
      * @return the created port
      */
-    protected ElkPort createPort(final LayoutMapping mapping, final AbstractBorderItemEditPart portEditPart, final IGraphicalEditPart nodeEditPart, final ElkNode elknode) {
+    protected ElkPort createPort(final LayoutMapping mapping, final AbstractBorderItemEditPart portEditPart, final IGraphicalEditPart nodeEditPart, final ElkNode elknode,
+            Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
 
         ElkPort port = ElkGraphUtil.createPort(elknode);
-
+        applyOptionsRelatedToElementTarget(port, elkTargetToOptionsOverrideMap);
         // set the port's layout, relative to the node position
         Rectangle portBounds = getAbsoluteBounds(portEditPart.getFigure());
         Rectangle nodeBounds = getAbsoluteBounds(nodeEditPart.getFigure());
@@ -803,6 +846,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
 
                 if (text != null) {
                     ElkLabel portLabel = ElkGraphUtil.createLabel(port);
+                    applyOptionsRelatedToElementTarget(portLabel, elkTargetToOptionsOverrideMap);
                     portLabel.setText(text);
                     mapping.getGraphMap().put(portLabel, portChildObj);
 
@@ -836,9 +880,12 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      *            the parent node edit part
      * @param elknode
      *            the layout node for which the label is set
+     * @param elkTargetToOptionsOverrideMap
+     *            a map of option targets to corresponding options.
      * @return the created label
      */
-    protected ElkLabel createNodeLabel(final LayoutMapping mapping, final IGraphicalEditPart labelEditPart, final IGraphicalEditPart nodeEditPart, final ElkNode elknode) {
+    protected ElkLabel createNodeLabel(final LayoutMapping mapping, final IGraphicalEditPart labelEditPart, final IGraphicalEditPart nodeEditPart, final ElkNode elknode,
+            Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
 
         IFigure labelFigure = labelEditPart.getFigure();
         String text = null;
@@ -860,6 +907,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
 
         if (text != null) {
             ElkLabel label = ElkGraphUtil.createLabel(elknode);
+            applyOptionsRelatedToElementTarget(label, elkTargetToOptionsOverrideMap);
             label.setText(text);
             mapping.getGraphMap().put(label, labelEditPart);
             Rectangle labelBounds = getAbsoluteBounds(labelFigure);
@@ -879,7 +927,6 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
 
             // We would set the modified flag to false here, but that doesn't
             // exist anymore
-
             return label;
         }
         return null;
@@ -911,8 +958,10 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      * 
      * @param mapping
      *            the layout mapping
+     * @param elkTargetToOptionsOverrideMap
+     *            a map of option targets to corresponding options.
      */
-    protected void processConnections(final LayoutMapping mapping) {
+    protected void processConnections(final LayoutMapping mapping, Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
         Map<EReference, ElkEdge> reference2EdgeMap = new HashMap<>();
 
         for (ConnectionEditPart connection : mapping.getProperty(CONNECTIONS)) {
@@ -939,7 +988,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             } else {
                 edge = ElkGraphUtil.createEdge(null);
             }
-
+            applyOptionsRelatedToElementTarget(edge, elkTargetToOptionsOverrideMap);
             BiMap<Object, ElkGraphElement> inverseGraphMap = mapping.getGraphMap().inverse();
 
             // find a proper source node and source port
@@ -1016,7 +1065,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             }
 
             // process edge labels
-            processEdgeLabels(mapping, connection, edge, edgeLabelPlacement, offset);
+            processEdgeLabels(mapping, connection, edge, edgeLabelPlacement, offset, elkTargetToOptionsOverrideMap);
         }
     }
 
@@ -1071,8 +1120,11 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      *            edit part
      * @param offset
      *            the offset for coordinates
+     * @param elkTargetToOptionsOverrideMap
+     *            map of option targets to corresponding options.
      */
-    protected void processEdgeLabels(final LayoutMapping mapping, final ConnectionEditPart connection, final ElkEdge edge, final EdgeLabelPlacement placement, final KVector offset) {
+    protected void processEdgeLabels(final LayoutMapping mapping, final ConnectionEditPart connection, final ElkEdge edge, final EdgeLabelPlacement placement, final KVector offset,
+            Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
         /*
          * ars: source and target is exchanged when defining it in the gmfgen file. So if Emma sets a label to be placed
          * as target on a connection, then the label will show up next to the source node in the diagram editor. So
@@ -1130,6 +1182,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
 
                 if (labelText != null && labelText.length() > 0) {
                     ElkLabel label = ElkGraphUtil.createLabel(edge);
+                    applyOptionsRelatedToElementTarget(label, elkTargetToOptionsOverrideMap);
                     if (placement == EdgeLabelPlacement.UNDEFINED) {
                         switch (labelEditPart.getKeyPoint()) {
                         case ConnectionLocator.SOURCE:
