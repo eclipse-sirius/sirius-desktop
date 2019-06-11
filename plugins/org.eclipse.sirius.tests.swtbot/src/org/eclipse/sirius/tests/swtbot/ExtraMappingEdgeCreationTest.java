@@ -57,11 +57,6 @@ public class ExtraMappingEdgeCreationTest extends AbstractSiriusSwtBotGefTestCas
     private static final String FILE_DIR = "/";
 
     /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
-    /**
      * Current diagram.
      */
     protected UIDiagramRepresentation diagram;

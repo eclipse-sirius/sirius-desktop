@@ -143,11 +143,6 @@ public class DoubleClickToolNavigationOperationTest extends AbstractSiriusSwtBot
     private UILocalSession localSession;
 
     /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
-    /**
      * Current diagram.
      */
     protected UIDiagramRepresentation diagram;

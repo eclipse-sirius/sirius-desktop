@@ -70,14 +70,6 @@ public class ContainerCreationTest extends AbstractSiriusSwtBotGefTestCase {
 
     private UILocalSession localSession;
 
-    /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE);

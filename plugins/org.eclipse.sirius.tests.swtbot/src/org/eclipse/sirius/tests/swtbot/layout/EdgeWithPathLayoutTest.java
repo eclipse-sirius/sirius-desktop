@@ -70,11 +70,6 @@ public class EdgeWithPathLayoutTest extends AbstractSiriusSwtBotGefTestCase {
     private UILocalSession localSession;
 
     /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
-    /**
      * {@inheritDoc}
      */
     @Override

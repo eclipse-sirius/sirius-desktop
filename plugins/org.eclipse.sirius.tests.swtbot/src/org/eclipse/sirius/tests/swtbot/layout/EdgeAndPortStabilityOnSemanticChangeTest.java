@@ -75,11 +75,6 @@ public class EdgeAndPortStabilityOnSemanticChangeTest extends AbstractSiriusSwtB
 
     private static final String FILE_DIR = "/";
 
-    /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
     private static final Point EXPECTED_INITIAL_POSITION_A = new Point(295, 183);
 
     private static final Point EXPECTED_INITIAL_POSITION_B = new Point(555, 115);

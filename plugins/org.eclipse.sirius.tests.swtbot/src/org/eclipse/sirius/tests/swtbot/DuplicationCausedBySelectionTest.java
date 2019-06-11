@@ -98,11 +98,6 @@ public class DuplicationCausedBySelectionTest extends AbstractSiriusSwtBotGefTes
     private static final String REPRESENTATION_NAME_FOR_SEQUENCE = "Sequence Diagram on Interaction";
 
     /**
-     * The opened {@link SWTBotSiriusDiagramEditor}.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
-    /**
      * The opened {@link UILocalSession}.
      */
     UILocalSession localSession;

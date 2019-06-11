@@ -87,11 +87,6 @@ public class FileModificationValidationTest extends AbstractSiriusSwtBotGefTestC
     private UILocalSession localSession;
 
     /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
-    /**
      * Current diagram.
      */
     protected UIDiagramRepresentation diagram;

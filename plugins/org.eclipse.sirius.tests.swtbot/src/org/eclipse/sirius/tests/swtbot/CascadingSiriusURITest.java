@@ -45,11 +45,6 @@ public class CascadingSiriusURITest extends AbstractSiriusSwtBotGefTestCase {
     private static final String DATA_UNIT_DIR = "data/unit/viewpoint_uri/ticket_2152/";
 
     /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
-    /**
      * Current diagram.
      */
     protected UIDiagramRepresentation diagram;

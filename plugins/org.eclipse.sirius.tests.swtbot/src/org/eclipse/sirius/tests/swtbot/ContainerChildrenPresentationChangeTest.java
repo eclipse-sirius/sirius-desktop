@@ -57,15 +57,6 @@ public class ContainerChildrenPresentationChangeTest extends AbstractSiriusSwtBo
 
     private DDiagram dDiagram;
 
-    /**
-     * Sirius Diagram Editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
-    /**
-     * {@inheritDoc}
-     * 
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);

@@ -81,11 +81,6 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
 
     private UILocalSession localSession;
 
-    /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
     private void initializeModelingProjectSample() {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);

@@ -14,7 +14,6 @@ package org.eclipse.sirius.tests.swtbot.editor.vsm;
 
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMHelper;
 import org.eclipse.sirius.ui.tools.api.views.modelexplorerview.IModelExplorerView;
@@ -30,9 +29,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
  */
 public class FeatureAssistTest extends AbstractContentAssistTest {
 
-    /**
-     * 
-     */
     private static final String CHANGE_CONTEXT_NODE = "Change Context aql:self";
 
     private static final String LABEL_EDIT_NODE = "Label Edit";
@@ -50,11 +46,6 @@ public class FeatureAssistTest extends AbstractContentAssistTest {
     private static final String VSM_FILE = "featureTest.odesign";
 
     private static final String DATA_UNIT_DIR = "data/unit/contentAssist/";
-
-    /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
 
     /**
      * Current diagram.

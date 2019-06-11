@@ -96,16 +96,10 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String LINK_TARGET_NEW_NAME = "Renamed Representation";
 
     private static final String SET_TARGET_REPRESENTATION = "Set target representation ...";
-
-    /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
+    
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE);
-
     }
 
     @Override

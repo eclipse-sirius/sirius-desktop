@@ -61,11 +61,6 @@ public class PortSelectionTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String FILE_DIR = "/";
 
-    /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);

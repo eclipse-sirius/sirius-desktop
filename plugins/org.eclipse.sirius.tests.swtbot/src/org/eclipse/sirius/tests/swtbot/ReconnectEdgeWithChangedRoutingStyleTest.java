@@ -75,11 +75,6 @@ public class ReconnectEdgeWithChangedRoutingStyleTest extends AbstractSiriusSwtB
     private static final String STYLES = "Styles:";
 
     /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
-    /**
      * {@inheritDoc}
      */
     @Override

@@ -162,11 +162,6 @@ public class SiriusInternationalizationTest extends AbstractSiriusSwtBotGefTestC
 
     private UILocalSession localSession;
 
-    /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
     private String selected_language = Locale.ENGLISH.getLanguage();
 
     private Locale default_language = Locale.getDefault();

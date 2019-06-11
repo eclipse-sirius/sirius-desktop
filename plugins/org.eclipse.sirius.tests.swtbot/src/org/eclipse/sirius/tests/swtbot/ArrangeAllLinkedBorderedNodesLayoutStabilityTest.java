@@ -124,11 +124,6 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     protected static final int GRID_STEP = 20;
 
-    /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         // Disable refresh on opening

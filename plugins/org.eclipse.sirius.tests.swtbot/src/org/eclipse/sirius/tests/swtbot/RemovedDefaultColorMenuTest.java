@@ -90,11 +90,6 @@ public class RemovedDefaultColorMenuTest extends AbstractSiriusSwtBotGefTestCase
     private final long oldTimeout = SWTBotPreferences.TIMEOUT;
 
     /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
-    /**
      * Current diagram.
      */
     protected UIDiagramRepresentation diagram;

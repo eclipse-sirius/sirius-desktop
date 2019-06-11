@@ -89,9 +89,6 @@ public class VSMAndDiagramEditorSynchronisationTest extends AbstractSiriusSwtBot
     /** Current diagram. */
     protected UIDiagramRepresentation diagram;
 
-    /** Current editor. */
-    protected SWTBotSiriusDiagramEditor editor;
-
     /** Session. */
     private UIResource sessionAirdResource;
 

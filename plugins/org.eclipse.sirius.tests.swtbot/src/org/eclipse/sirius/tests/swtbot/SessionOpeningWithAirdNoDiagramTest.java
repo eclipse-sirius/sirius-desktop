@@ -43,11 +43,6 @@ public class SessionOpeningWithAirdNoDiagramTest extends AbstractSiriusSwtBotGef
     private UIResource sessionAirdResource;
 
     /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
-    /**
      * Current diagram.
      */
     protected UIDiagramRepresentation diagram;

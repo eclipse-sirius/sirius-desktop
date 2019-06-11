@@ -79,14 +79,6 @@ public abstract class AbstractUmlDragAndDropTest extends AbstractSiriusSwtBotGef
 
     private String oldFont;
 
-    /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected String getProjectName() {
         return TEMP_PROJECT_NAME;

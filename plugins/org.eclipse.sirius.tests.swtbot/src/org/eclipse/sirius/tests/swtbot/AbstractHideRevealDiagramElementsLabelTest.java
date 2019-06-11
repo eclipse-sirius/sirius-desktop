@@ -86,11 +86,6 @@ public class AbstractHideRevealDiagramElementsLabelTest extends AbstractSiriusSw
      */
     protected static final String BORDERED_NODE_WITH_LABEL_NAME = "A";
 
-    /**
-     * The {@link SWTBotSiriusDiagramEditor} to use.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
     private static final String REPRESENTATION_INSTANCE_NAME = "new 2330 Diagram";
 
     private static final String REPRESENTATION_NAME = "2330 Diagram";

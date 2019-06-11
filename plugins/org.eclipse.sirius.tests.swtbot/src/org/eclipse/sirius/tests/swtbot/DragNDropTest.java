@@ -53,10 +53,6 @@ import com.google.common.collect.Sets;
  */
 @RunWith(SWTBotJunit4ClassRunner.class)
 public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
-    /**
-     * The {@link SWTBotSiriusDiagramEditor} to use.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
 
     private UIResource sessionAirdResource;
 

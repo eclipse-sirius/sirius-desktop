@@ -54,11 +54,6 @@ public class LinkNoteFragmentModelCreationTest extends AbstractSiriusSwtBotGefTe
     private UILocalSession localSession;
 
     /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
-    /**
      * {@inheritDoc}
      */
     @Override

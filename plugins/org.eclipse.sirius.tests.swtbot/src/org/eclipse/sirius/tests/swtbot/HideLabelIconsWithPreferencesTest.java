@@ -43,11 +43,6 @@ import org.junit.Assert;
  */
 public class HideLabelIconsWithPreferencesTest extends AbstractSiriusSwtBotGefTestCase {
 
-    /**
-     * The {@link SWTBotSiriusDiagramEditor} to use.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
     private static final String REPRESENTATION_INSTANCE_NAME = "VP1257";
 
     private static final String REPRESENTATION_NAME = "VP1257Diagram";

@@ -105,14 +105,6 @@ public class ToolWizardTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final Point ON_EDGE = new Point(94, 132);
 
-    /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE, VSM_FILE);

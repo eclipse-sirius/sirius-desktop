@@ -71,9 +71,6 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
 
     private UILocalSession localSession;
 
-    /** The editor of the diagram */
-    protected SWTBotSiriusDiagramEditor editor;
-
     /** Bot of the DiagramEditPart */
     protected SWTBotGefEditPart diagramEditPartBot;
 

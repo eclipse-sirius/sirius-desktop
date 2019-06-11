@@ -14,7 +14,6 @@ package org.eclipse.sirius.tests.swtbot.editor.vsm;
 
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
@@ -41,11 +40,6 @@ public class ContentAssistTest extends AbstractContentAssistTest {
     private static final String VSM_FILE = "tc_viewpoint_742.odesign";
 
     private static final String DATA_UNIT_DIR = "data/unit/contentAssist/";
-
-    /**
-     * Current editor.
-     */
-    protected SWTBotSiriusDiagramEditor editor;
 
     /**
      * Current diagram.
