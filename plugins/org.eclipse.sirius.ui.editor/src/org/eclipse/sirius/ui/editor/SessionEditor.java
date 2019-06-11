@@ -435,6 +435,7 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
             resourceSetListener = null;
         }
         if (session != null) {
+            session.removeListener(SessionEditor.this);
             final IEditingSession editingSession = SessionUIManager.INSTANCE.getUISession(session);
             if (editingSession != null) {
                 editingSession.detachEditor(this, choice == ISaveablePart2.NO);
@@ -443,18 +444,13 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
                 session.getTransactionalEditingDomain().getCommandStack().removeCommandStackListener(listener);
             }
         }
-        session = null;
-        propertySheetPage = null;
-        super.dispose();
-    }
-
-    @Override
-    public void close(boolean save) {
         if (pageRegistry != null) {
             pageRegistry.removeRegistryListener(this);
             pageRegistry = null;
-            super.close(save);
         }
+        session = null;
+        propertySheetPage = null;
+        super.dispose();
     }
 
     @Override
