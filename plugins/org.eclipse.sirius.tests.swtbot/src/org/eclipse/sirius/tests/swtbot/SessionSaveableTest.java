@@ -369,7 +369,7 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBot saveBot = SWTBotSiriusHelper.getShellBot("Save");
         SWTBotButton buttonYes = saveBot.button("Yes");
         buttonYes.click();
-        saveBot = SWTBotSiriusHelper.getShellBot("Save Resources");
+        saveBot = SWTBotSiriusHelper.getShellBot("Save Resource");
         buttonYes = saveBot.button(TestsUtil.isOxygenPlatform() ? "Save" : "Yes");
         buttonYes.click();
         SessionSavedCondition sessionCondition = new SessionSavedCondition(localSession.getOpenedSession());
