@@ -65,6 +65,7 @@ import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.ISaveablePart2;
 import org.eclipse.ui.ISaveablesSource;
+import org.eclipse.ui.IWorkbenchPartSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.Saveable;
@@ -328,7 +329,10 @@ public class SessionEditor extends SharedHeaderFormEditor implements ITabbedProp
 
     @Override
     public void pageProviderChanged() {
-        updatePages(null);
+        IWorkbenchPartSite site = getSite();
+        if (site != null && site.getShell() != null && !site.getShell().isDisposed()) {
+            site.getShell().getDisplay().syncExec(() -> updatePages(null));
+        }
     }
 
     @Override
