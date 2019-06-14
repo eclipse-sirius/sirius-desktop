@@ -202,6 +202,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     private ChangeIdUpdaterListener changeIdUpdaterListener;
 
+    private final String id;
+
     /**
      * Listener that clears the sub diagram decoration descriptors when a {@link DRepresentation} is either created or
      * deleted.
@@ -364,6 +366,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         Preconditions.checkNotNull(mainDAnalysis);
         this.sessionResource = mainDAnalysis.eResource();
         Preconditions.checkNotNull(this.sessionResource, Messages.DAnalysisSessionImpl_noRessourceErrorMsg);
+        this.id = sessionResource.getURI().toString();
         this.transactionalEditingDomain = Preconditions.checkNotNull(TransactionUtil.getEditingDomain(mainDAnalysis), Messages.DAnalysisSessionImpl_noEditingDomainErrorMsg);
         this.mainDAnalysis = mainDAnalysis;
         this.saver = new Saver(this);
@@ -1618,7 +1621,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     @Override
     public String getID() {
-        return sessionResource.getURI().toString();
+        return id;
     }
 
     @Override
