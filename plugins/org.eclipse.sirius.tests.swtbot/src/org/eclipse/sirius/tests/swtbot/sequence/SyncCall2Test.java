@@ -475,7 +475,7 @@ public class SyncCall2Test extends AbstractDefaultModelSequenceTests {
         // Then we delete its return message
         SequenceMessageEditPart returnSyncCall = getReturnSyncCall(LIFELINE_B, 0);
         editor.click(getSequenceMessageScreenCenteredPosition(returnSyncCall));
-        bot.waitUntil(new CheckSelectedCondition(editor, returnSyncCall));
+        editor.bot().waitUntil(new CheckSelectedCondition(editor, returnSyncCall));
         deleteSelectedElement();
 
         selectEditParts(getExecutionEditPart(LIFELINE_B, 0));

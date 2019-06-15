@@ -48,6 +48,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentat
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
@@ -479,7 +480,7 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
 
         // Deletion of FIRST_MESSAGE_SYNC_CALL
         editor.click(getExecutionScreenPosition(LIFELINE_B, 0).x - 50, getSequenceMessageScreenVerticalPosition(FIRST_MESSAGE_SYNC_CALL));
-        bot.menu("Edit").menu("Delete").click();
+        SWTBotSiriusHelper.menu(editor.bot(), "Edit").menu("Delete").click();
 
         try {
             getSequenceMessageEditPart(FIRST_MESSAGE_SYNC_CALL);
@@ -499,7 +500,7 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
 
         // Deletion of FIRST_MESSAGE_SYNC_CALL
         editor.click(getExecutionScreenPosition(LIFELINE_C, 0).x - 50, getSequenceMessageScreenVerticalPosition(THIRD_MESSAGE_SYNC_CALL_ON_LIFELINE_C));
-        bot.menu("Edit").menu("Delete").click();
+        SWTBotSiriusHelper.menu(editor.bot(), "Edit").menu("Delete").click();
 
         try {
             getSequenceMessageEditPart(FIRST_MESSAGE_SYNC_CALL);
@@ -518,7 +519,7 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
 
         // Deletion of the first return message
         editor.click(getExecutionScreenPosition(LIFELINE_B, 0).x - 50, getReturnSyncCallScreenPosition(LIFELINE_B, 0));
-        bot.menu("Edit").menu("Delete").click();
+        SWTBotSiriusHelper.menu(editor.bot(), "Edit").menu("Delete").click();
 
         try {
             getSequenceMessageEditPart(FIRST_MESSAGE_SYNC_CALL);
@@ -537,7 +538,7 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
 
         // Deletion of the second return message
         editor.click(getExecutionScreenPosition(LIFELINE_C, 0).x - 50, getReturnSyncCallScreenPosition(LIFELINE_C, 0));
-        bot.menu("Edit").menu("Delete").click();
+        SWTBotSiriusHelper.menu(editor.bot(), "Edit").menu("Delete").click();
 
         try {
             getSequenceMessageEditPart(FIRST_MESSAGE_SYNC_CALL);
@@ -555,10 +556,10 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
 
         // Deletion of the executions
         editor.click(getExecutionScreenPosition(LIFELINE_B, 0).x, getExecutionScreenPosition(LIFELINE_B, 0).y);
-        bot.menu("Edit").menu("Delete").click();
+        SWTBotSiriusHelper.menu(editor.bot(), "Edit").menu("Delete").click();
 
         // Click on the diagram to unfocus the created element
-        editor.click(0, 0);
+        editor.select(editor.mainEditPart());
         manualRefresh();
 
         assertExecutionDoesNotExist(LIFELINE_B, 0);
@@ -567,10 +568,10 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
 
         // Deletion of the executions
         editor.click(getExecutionScreenPosition(LIFELINE_C, 0).x, getExecutionScreenPosition(LIFELINE_C, 0).y);
-        bot.menu("Edit").menu("Delete").click();
+        SWTBotSiriusHelper.menu(editor.bot(), "Edit").menu("Delete").click();
 
         // Click on the diagram to unfocus the created element
-        editor.click(0, 0);
+        editor.select(editor.mainEditPart());
         manualRefresh();
 
         assertNull(getExecutionEditPart(LIFELINE_C, 0));

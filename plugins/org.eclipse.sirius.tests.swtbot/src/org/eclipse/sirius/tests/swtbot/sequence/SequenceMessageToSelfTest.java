@@ -698,7 +698,7 @@ public class SequenceMessageToSelfTest extends AbstractDefaultModelSequenceTests
         bot.waitUntil(csc);
         deleteSelectedElement();
 
-        editor.click(0, 0);
+        editor.click(5, 5);
         manualRefresh();
 
         // Expected bounds after the drag

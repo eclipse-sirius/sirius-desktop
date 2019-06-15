@@ -57,6 +57,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.StateEditP
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.EditPartsHelper;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectUIServices;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.ext.base.Option;
@@ -69,6 +70,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckToolIsActivated;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
@@ -404,7 +407,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
         // Select the diagram itself
         editor.select(editor.mainEditPart());
         // Launch the arrange via the menu bar
-        return bot.menu("Diagram").menu("Arrange").menu("All").click();
+        return SWTBotSiriusHelper.menu(editor.bot(), "Diagram").menu("Arrange").menu("All").click();
     }
 
     protected void resizeLifeline(String lifelineLabel, int resizeValue) {
@@ -1609,6 +1612,11 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
         }
         filterTable.click(0, 0);
         bot.waitUntil(done);
+    }
+    
+    @Override
+    protected void manualRefresh() {
+    	// Do nothing, sequence diagrams only work in auto-refresh mode anyway.
     }
 
     @Override
