@@ -25,7 +25,7 @@ import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.helper.SiriusHelper;
+import org.eclipse.sirius.business.api.helper.RepresentationHelper;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.DViewQuery;
@@ -278,7 +278,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
     public void putCustomData(final String key, final EObject associatedInstance, final EObject data) {
         if (CustomDataConstants.GMF_DIAGRAMS.equals(key)) {
             if (associatedInstance instanceof DRepresentation) {
-                SiriusHelper.getOrCreateAnnotation(CustomDataConstants.GMF_DIAGRAMS, (DRepresentation) associatedInstance, data);
+                RepresentationHelper.getOrCreateAnnotation(CustomDataConstants.GMF_DIAGRAMS, (DRepresentation) associatedInstance, data);
             }
 
         } else if (CustomDataConstants.DREPRESENTATION.equals(key)) {

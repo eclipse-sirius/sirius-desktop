@@ -118,6 +118,7 @@ import org.eclipse.sirius.tests.unit.common.migration.ModelsToSemanticResourcesM
 import org.eclipse.sirius.tests.unit.common.migration.VariableMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.EObjectSelectionFilterTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.BorderSizeMigrationTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.ChangeIdAPIForMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.ComputedStyleDescriptionCachePackingFileMigrationParticipantTests;
 import org.eclipse.sirius.tests.unit.diagram.migration.CorruptedViewsMigrationTests;
 import org.eclipse.sirius.tests.unit.diagram.migration.DDiagramSetRemovalMigrationTest;
@@ -231,6 +232,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(MigrationFromSirius0_9Test.class);
         suite.addTestSuite(MigrationFromSirius1_0_0_M5Test.class);
         suite.addTestSuite(ComputedStyleDescriptionCachePackingFileMigrationParticipantTests.class);
+        suite.addTestSuite(ChangeIdAPIForMigrationTest.class);
         suite.addTestSuite(RgbValuesEDataTypeMigrationTest.class);
         suite.addTestSuite(NoteShapeDefaultLabelAlignmentMigrationTest.class);
         suite.addTestSuite(SnapBackDistantLabelsMigrationTest.class);

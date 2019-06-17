@@ -58,5 +58,16 @@
 			<code>org.eclipse.sirius.dRepresentationLocationRule</code> extension point
 		</h3>
 		<p>Please refer to this extension point documentation for more details.</p>
+		<h2 id="DRepresentationcomparison">DRepresentation comparison</h2>
+		<p>In some context you want to be able to compare two 
+			<code>DRepresentation</code> with the same identifier to know if they have diverged and what have changed. Until now, you had to iterate through all 
+			<code>DRepresentationElement</code> to identify a change even if no changes have been done. 
+		</p>
+		<p>Now, with the new 
+			<code>changeId</code> attribute on 
+			<code>DRepresentationDescriptor</code>, we can detect that no change exists in a 
+			<code>DRepresentation</code> without loading it and browsing its content. You simply have to use the API in 
+			<code>org.eclipse.sirius.business.api.helper.RepresentationHelper.areRepresentationsIdentical(DRepresentationDescriptor, DRepresentationDescriptor)</code>. It returns true when no changes exists between the two representations associated with the given descriptors. If it returns false you will have to browse the representations to know the differences.
+		</p>
 	</body>
 </html>

@@ -4,6 +4,16 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius6.3.0). Changes in Sirius 6.3.0
+
+h3. Developer-Visible Changes
+
+h4. Changes in  @org.eclipse.sirius@
+
+* <span class="label label-success">Added</span> A new EAttribute @changeId@ has been added in @DRepresentationDescriptor@. It allows to know if two @DRepresentation@(each associated to one DRepresentationDescriptor) are the same and have the exact same content. It can be useful to not load the representation if not needed. The methods @updateChangeId(DRepresentationDescriptor)@ and @areRepresentationIdentical(DRepresentationDescriptor, DRepresentationDescriptor)@ have been added in @org.eclipse.sirius.business.api.helper.RepresentationHelper@ to get change id information and to update it if needed in DRepresentationDescriptor.
+In case of migration the method @org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant.updateChangeId(DAnalysis, DRepresentation)@ is available to update change id. New migration participants created after this Sirius version must update the change id of the DRepresentationDescriptor of the DRepresentation they change. The API to do that is described in MigrationParticpant "documentation:":developer/extensions-provide_migrate_contribution.html#MigrationParticipantsImplem .
+
+
 h2(#sirius6.2.2). Changes in Sirius 6.2.2
 
 There are no user-visible changes in Sirius 6.2.2 compared to 6.2.1. The only changes are internal and related either to the build process or to the automated tests.

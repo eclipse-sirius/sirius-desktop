@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,9 +12,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.helper;
 
+import java.util.UUID;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 
@@ -23,13 +26,44 @@ import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
  * 
  * @author cbrun
  */
-public final class SiriusHelper {
+public final class RepresentationHelper {
 
     /**
      * Avoid instantiation.
      */
-    private SiriusHelper() {
+    private RepresentationHelper() {
+    }
 
+    /**
+     * Update the change id of the {@link DRepresentationDescriptor} with a new UUID.
+     * 
+     * @param representationDescriptor
+     *            the {@link DRepresentationDescriptor} from which we want to update attached change id.
+     */
+    public static void updateChangeId(DRepresentationDescriptor representationDescriptor) {
+        representationDescriptor.setChangeId(UUID.randomUUID().toString());
+    }
+
+
+
+    /**
+     * Return true if content of given representation is not the same or if we cannot determined if the content have
+     * diverged because of missing change id.
+     * 
+     * @param representationDescriptor1
+     *            the first {@link DRepresentationDescriptor} to compare.
+     * @param representationDescriptor2
+     *            the second {@link DRepresentationDescriptor} to compare.
+     * @return true if content of given representation is not the same or if we cannot determined if the content have
+     *         diverged because of missing change id.
+     */
+    public static boolean areRepresentationsIdentical(DRepresentationDescriptor representationDescriptor1, DRepresentationDescriptor representationDescriptor2) {
+        String changeId1 = representationDescriptor1.getChangeId();
+        String changeId2 = representationDescriptor2.getChangeId();
+        if (changeId1 == null || changeId2 == null || (!changeId1.equals(changeId2))) {
+            return true;
+        }
+        return false;
     }
 
     /**

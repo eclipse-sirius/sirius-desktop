@@ -31,3 +31,8 @@ h3. Provide your @DRepresentationLocationRule@ using the @org.eclipse.sirius.dRe
 
 Please refer to this extension point documentation for more details.
 
+h2. DRepresentation comparison
+
+In some context you want to be able to compare two @DRepresentation@ with the same identifier to know if they have diverged and what have changed. Until now, you had to iterate through all @DRepresentationElement@ to identify a change even if no changes have been done. 
+
+Now, with the new @changeId@ attribute on @DRepresentationDescriptor@, we can detect that no change exists in a @DRepresentation@ without loading it and browsing its content. You simply have to use the API in @org.eclipse.sirius.business.api.helper.RepresentationHelper.areRepresentationsIdentical(DRepresentationDescriptor, DRepresentationDescriptor)@. It returns true when no changes exists between the two representations associated with the given descriptors. If it returns false you will have to browse the representations to know the differences.

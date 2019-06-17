@@ -13,13 +13,21 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
+						<a href="#sirius6.3.0">Changes in Sirius 6.3.0</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
+							</li>
+						</ol>
+					</li>
+					<li>
 						<a href="#sirius6.2.2">Changes in Sirius 6.2.2</a>
 					</li>
 					<li>
 						<a href="#sirius6.2.1">Changes in Sirius 6.2.1</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -33,7 +41,7 @@
 								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -44,7 +52,7 @@
 								<a href="#UserVisibleChanges2">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -66,7 +74,7 @@
 								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges5">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -80,7 +88,7 @@
 								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges5">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges6">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -91,7 +99,7 @@
 								<a href="#UserVisibleChanges5">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges6">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges7">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -105,7 +113,7 @@
 								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges7">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges8">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -115,11 +123,30 @@
 		<p>This document contains the release notes for recent major releases of Sirius. See also 
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
+		<h2 id="sirius6.3.0">Changes in Sirius 6.3.0</h2>
+		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius">Changes in  
+			<code>org.eclipse.sirius</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> A new EAttribute 
+				<code>changeId</code> has been added in 
+				<code>DRepresentationDescriptor</code>. It allows to know if two 
+				<code>DRepresentation</code>(each associated to one DRepresentationDescriptor) are the same and have the exact same content. It can be useful to not load the representation if not needed. The methods 
+				<code>updateChangeId(DRepresentationDescriptor)</code> and 
+				<code>areRepresentationIdentical(DRepresentationDescriptor, DRepresentationDescriptor)</code> have been added in 
+				<code>org.eclipse.sirius.business.api.helper.RepresentationHelper</code> to get change id information and to update it if needed in DRepresentationDescriptor.
+			</li>
+		</ul>
+		<p>In case of migration the method 
+			<code>org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant.updateChangeId(DAnalysis, DRepresentation)</code> is available to update change id. New migration participants created after this Sirius version must update the change id of the DRepresentationDescriptor of the DRepresentation they change. The API to do that is described in MigrationParticpant 
+			<a href="developer/extensions-provide_migrate_contribution.html#MigrationParticipantsImplem">documentation:</a> .
+		</p>
 		<h2 id="sirius6.2.2">Changes in Sirius 6.2.2</h2>
 		<p>There are no user-visible changes in Sirius 6.2.2 compared to 6.2.1. The only changes are internal and related either to the build process or to the automated tests.</p>
 		<h2 id="sirius6.2.1">Changes in Sirius 6.2.1</h2>
-		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius">Changes in  
+		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in  
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -185,7 +212,7 @@
 				<a href="specifier/diagrams/Diagrams.html#group">corresponding documentation</a> .
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
@@ -562,13 +589,13 @@
 				<em>Delete</em>. It was previously the case only for representations which semantic target does not exist anymore.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> If the 
 				<code>org.eclipse.sirius.diagam.ui.hidePrintingOfPermissionAuthorityDecoration</code> system property is set to true and if there is no other printable decoration provided at the same location (South-West), the permission authority decorations displayed on diagrams are not printed nor exported in images (export as image actions).
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in  
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -716,7 +743,7 @@
 				<a href="specifier/tables/Tables.html#edition_tables">the documentation</a> for details.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges5">Developer-Visible Changes</h3>
 		<p><span class="label label-info">IMPORTANT</span> Note that all plug-ins in the 
 			<em>Sirius Server</em> feature (
 			<code>org.eclipse.sirius.server.*</code> and 
@@ -1025,7 +1052,7 @@
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=531487">bugzilla 531487</a> for more details.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges5">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges6">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> The SWTBot test framework version has been upgraded toward SWTBot 2.6. The main impacts are described below:
 				<ul>
@@ -1074,7 +1101,7 @@
 				<code>org.eclipse.sirius.common.tools.api.contentassist</code> which has its own types.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1254,8 +1281,8 @@
 				<a href="user/diagrams/Diagrams.html#standardToolId">Standard Tools</a> chapter for more details on this tool.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges6">Developer-Visible Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius4">Changes in 
+		<h3 id="DeveloperVisibleChanges7">Developer-Visible Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1394,7 +1421,7 @@
 				<em>Reference Name</em> field (if a valid feature has been specified).
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges7">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges8">Developer-Visible Changes</h3>
 		<h4 id="Migrations3">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration has been added to fix diagram with edge labels corrupted (see 
@@ -1429,7 +1456,7 @@
 			<code>createLocalRepresentationInSeparateResource</code> at true. For more detail, see the developer documentation: 
 			<a href="./developer/representations_lazy_loading.html">Representations lazy loading (experimental)</a>.
 		</p>
-		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius6">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>

@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +30,7 @@ import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.command.BasicCommandStack;
+import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
@@ -35,6 +38,7 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -42,6 +46,7 @@ import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
+import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.Transaction;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -52,10 +57,13 @@ import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.emf.workspace.ResourceUndoContext;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.helper.RepresentationHelper;
 import org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchException;
 import org.eclipse.sirius.business.api.migration.DescriptionResourceVersionMismatchException;
 import org.eclipse.sirius.business.api.migration.ResourceVersionMismatchDiagnostic;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
+import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
@@ -107,6 +115,7 @@ import org.eclipse.sirius.tools.internal.resource.ResourceSetUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -130,6 +139,7 @@ import com.google.common.collect.Sets;
  * @author cbrun
  */
 public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements Session, DAnalysisSession, ResourceSyncClient {
+
     /**
      * The inverse cross referencer to retrieve DRep and DRepElement.
      */
@@ -188,11 +198,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     private RepresentationNameListener representationNameListener;
 
     /**
-     * Listener that clears sub diagram decorator when changes in representations are done.
-     */
-    private DRepresentationChangeListener dRepresentationChangeListener;
-
-    /**
      * Listener that clears the sub diagram decoration descriptors when a {@link DRepresentation} is either created or
      * deleted.
      * 
@@ -225,6 +230,63 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     }
 
     /**
+     * Listen to any change to a {@link DRepresentation} or one of its {@link DRepresentationElement} and update the
+     * associated {@link DRepresentationDescriptorn} change id.
+     * 
+     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
+     *
+     */
+    public class ChangeIdUpdaterListener extends ResourceSetListenerImpl {
+
+        Set<EObject> notifierWithoutRepresentationDescriptors;
+
+        @Override
+        public boolean isPrecommitOnly() {
+            return true;
+        }
+
+        @Override
+        public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
+            List<Notification> notifications = event.getNotifications();
+            notifierWithoutRepresentationDescriptors = new HashSet<>();
+            Iterator<Notification> notifIterator = notifications.iterator();
+            while (notifIterator.hasNext()) {
+                Notification notification = notifIterator.next();
+                Object notifier = notification.getNotifier();
+                if (notifier instanceof EObject && !(notification instanceof EStructuralFeature && ((EStructuralFeature) notification.getFeature()).isTransient())) {
+                    final DRepresentationDescriptor representationDescriptor = getDRepresentationDescriptor((EObject) notifier);
+                    if (representationDescriptor != null) {
+                        RecordingCommand changeIdRecordingCommand = new RecordingCommand(transactionalEditingDomain) {
+                            @Override
+                            protected void doExecute() {
+                                RepresentationHelper.updateChangeId(representationDescriptor);
+                            }
+                        };
+                        return changeIdRecordingCommand;
+                    }
+                }
+            }
+            return null;
+        }
+
+        private DRepresentationDescriptor getDRepresentationDescriptor(EObject eObject) {
+            DRepresentationDescriptor dRepresentationDescriptor = null;
+            if (!notifierWithoutRepresentationDescriptors.contains(eObject)) {
+                EObject eContainer = eObject.eContainer();
+                if (eObject instanceof DRepresentationElement) {
+                    dRepresentationDescriptor = new DRepresentationQuery(new DRepresentationElementQuery((DRepresentationElement) eObject).getParentRepresentation()).getRepresentationDescriptor();
+                } else if (eObject instanceof DRepresentation) {
+                    dRepresentationDescriptor = new DRepresentationQuery((DRepresentation) eObject).getRepresentationDescriptor();
+                }  else if (eContainer != null) {
+                    dRepresentationDescriptor = getDRepresentationDescriptor(eContainer);
+                }
+            }
+            notifierWithoutRepresentationDescriptors.add(eObject);
+            return dRepresentationDescriptor;
+        }
+    }
+
+    /**
      * Create a new session.
      * 
      * @param mainDAnalysis
@@ -245,8 +307,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         setResourceCollector(new LocalResourceCollector(getTransactionalEditingDomain().getResourceSet()));
         setDeferSaveToPostCommit(true);
         setSaveInExclusiveTransaction(true);
-        dRepresentationChangeListener = new DRepresentationChangeListener(this);
-        getTransactionalEditingDomain().addResourceSetListener(dRepresentationChangeListener);
+        getTransactionalEditingDomain().addResourceSetListener(new DRepresentationChangeListener(this));
+        getTransactionalEditingDomain().addResourceSetListener(new ChangeIdUpdaterListener());
     }
 
     // *******************
@@ -1325,8 +1387,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (getRefreshEditorsListener() != null) {
             removeListener(getRefreshEditorsListener());
         }
-        getTransactionalEditingDomain().removeResourceSetListener(dRepresentationChangeListener);
-        dRepresentationChangeListener = null;
         refreshEditorsListeners = null;
         reloadingPolicy = null;
         savingPolicy = null;

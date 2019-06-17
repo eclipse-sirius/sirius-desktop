@@ -11,7 +11,7 @@ h2. Extension point
 
 The @org.eclipse.sirius.migrationParticipant@ extension point allows to contribute migration participants. Each contribution must provide an implementation of @IMigrationParticipant@ and a "kind" attribute which gives informations about what kind of file is concerned (@REPRESENTATIONSFILE_KIND@ for Representation files and @VSM_KIND@ for VSMs).
 
-h2. MigrationParticipants implementation
+h2(#MigrationParticipantsImplem). MigrationParticipants implementation
 
 Each methods of an @IMigrationParticipant@ receives the current version of the model to migrate, corresponding to the @org.eclipse.sirius@ bundle version.
 * @EStructuralFeature getAttribute(EClass eClass, String name, String version)@ is called during the parsing of XMIResources (at loading time). It allows to retrieve a renamed @EAttribute@ from its old name. For example, if an attribute _foo_ has been renamed to _bar_, then your MigrationParticipant should return the _bar_ attribute when given the _'foo'_ name.
@@ -20,6 +20,10 @@ Each methods of an @IMigrationParticipant@ receives the current version of the m
 * @Object getValue(EObject object, EStructuralFeature feature, Object value, String version)@ is called during the parsing of XMIResources (at loading time). If a feature value has changed since a previous version, use this method to return the correct expected value. 
 * @void postLoad(XMLResource resource, String version)@ is called after the resource loading. All other structural changes in meta-models should be migrated here.
 * @Version getMigrationVersion()@ is used by the migration framework to determine if at least one migration is needed. This method has to provide the Sirius version for which your migration is written. The framework doesn't decide whether your participant need to be launched or not, you have to make sure that the Sirius version number of the loaded resource (available via the version parameter) requires a migration.
+
+%{color:orange}WARNING% If you modify a @DRepresentation@ or one of its @DRepresentationElement@ in your migration participant, you must update the change id of the @DRepresentationDescriptor@. If not, any comparison using the change id will be wrong. 
+
+To update it, you need to use the API method @org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant.updateChangeId(DAnalysis, DRepresentation)@.
 
 h2. Manage the version number
 

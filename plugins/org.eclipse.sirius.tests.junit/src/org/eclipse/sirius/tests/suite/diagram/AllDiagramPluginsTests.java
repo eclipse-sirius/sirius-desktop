@@ -83,6 +83,7 @@ import org.eclipse.sirius.tests.unit.api.vsm.editor.LocationURITest;
 import org.eclipse.sirius.tests.unit.api.vsm.editor.PopupMenuTest;
 import org.eclipse.sirius.tests.unit.api.vsm.editor.TypeContentProposalTests;
 import org.eclipse.sirius.tests.unit.common.DDiagramCanonicalSynchronizerTests;
+import org.eclipse.sirius.tests.unit.common.DRepresentationDescriptorChangeIdTests;
 import org.eclipse.sirius.tests.unit.common.SiriusUriTests;
 import org.eclipse.sirius.tests.unit.common.TypeNameTest;
 import org.eclipse.sirius.tests.unit.diagram.CanonicalDBorderItemLocatorTest;
@@ -279,6 +280,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(LabelColorOnListElementTest.class);
         suite.addTestSuite(ColorManagerTest.class);
         suite.addTestSuite(CreateDiagramElementCommandTests.class);
+        suite.addTestSuite(DRepresentationDescriptorChangeIdTests.class);
         suite.addTestSuite(CreationAndDeletionUndoRedoTests.class);
         suite.addTestSuite(DeleteSemanticElementTest.class);
         suite.addTestSuite(AddSemanticElementTest.class);

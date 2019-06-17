@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -32,7 +32,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.business.api.helper.SiriusHelper;
+import org.eclipse.sirius.business.api.helper.RepresentationHelper;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.diagram.DNode;
@@ -151,7 +151,7 @@ public class DiagramRepresentationsFileMigrationParticipantV650 {
         for (Diagram diagram : diagrams) {
             if (diagram != null) {
                 if (diagram.getElement() instanceof DRepresentation) {
-                    SiriusHelper.getOrCreateAnnotation(CustomDataConstants.GMF_DIAGRAMS, (DRepresentation) diagram.getElement(), diagram);
+                    RepresentationHelper.getOrCreateAnnotation(CustomDataConstants.GMF_DIAGRAMS, (DRepresentation) diagram.getElement(), diagram);
                 } else if (diagram.getElement() == null || diagram.getElement().eIsProxy()) {
                     EcoreUtil.remove(diagram);
                 }

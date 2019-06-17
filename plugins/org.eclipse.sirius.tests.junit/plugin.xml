@@ -94,4 +94,11 @@
             id="sampleNameDataProvider">
       </formatDataManagerProvider>
    </extension>
+   <extension
+         point="org.eclipse.sirius.migrationParticipant">
+      <participant
+            class="org.eclipse.sirius.tests.unit.diagram.migration.ChangIdUpdaterMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
+   </extension>
 </plugin>

@@ -23,7 +23,7 @@
 			<code>REPRESENTATIONSFILE_KIND</code> for Representation files and 
 			<code>VSM_KIND</code> for VSMs).
 		</p>
-		<h2 id="MigrationParticipantsimplementation">MigrationParticipants implementation</h2>
+		<h2 id="MigrationParticipantsImplem">MigrationParticipants implementation</h2>
 		<p>Each methods of an 
 			<code>IMigrationParticipant</code> receives the current version of the model to migrate, corresponding to the 
 			<code>org.eclipse.sirius</code> bundle version.
@@ -54,6 +54,15 @@
 				<code>Version getMigrationVersion()</code> is used by the migration framework to determine if at least one migration is needed. This method has to provide the Sirius version for which your migration is written. The framework doesn&#8217;t decide whether your participant need to be launched or not, you have to make sure that the Sirius version number of the loaded resource (available via the version parameter) requires a migration.
 			</li>
 		</ul>
+		<p>
+			<span style="color:orange">WARNING</span> If you modify a 
+			<code>DRepresentation</code> or one of its 
+			<code>DRepresentationElement</code> in your migration participant, you must update the change id of the 
+			<code>DRepresentationDescriptor</code>. If not, any comparison using the change id will be wrong. 
+		</p>
+		<p>To update it, you need to use the API method 
+			<code>org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant.updateChangeId(DAnalysis, DRepresentation)</code>.
+		</p>
 		<h2 id="Managetheversionnumber">Manage the version number</h2>
 		<p>Your migration participant has to return the Sirius version number where your migration is introduced. For example, you have to write a new migration for viewpoint 6.7.0, your migration participant 
 			<code>getMigrationVersion()</code> has to return 6.7.0.qualifier, where the qualifier may be the current date.
