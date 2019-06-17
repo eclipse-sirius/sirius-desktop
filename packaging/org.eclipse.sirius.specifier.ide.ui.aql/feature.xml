@@ -14,7 +14,7 @@
 <feature
       id="org.eclipse.sirius.specifier.ide.ui.aql"
       label="%featureName"
-      version="6.1.3.qualifier"
+      version="6.1.4.qualifier"
       provider-name="%providerName"
       plugin="org.eclipse.sirius.common.acceleo.aql.ide"
       license-feature="org.eclipse.license"

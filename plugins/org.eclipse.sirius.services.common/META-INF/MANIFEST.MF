@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.services.common
-Bundle-Version: 6.1.3.qualifier
+Bundle-Version: 6.1.4.qualifier
 Bundle-Vendor: %providerName
 Automatic-Module-Name: org.eclipse.sirius.server.common
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
