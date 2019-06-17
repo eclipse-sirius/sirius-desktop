@@ -85,7 +85,6 @@ public class VariableValueItemProvider extends IdentifiedElementItemProvider {
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
-        super.notifyChanged(notification);
     }
 
     /**

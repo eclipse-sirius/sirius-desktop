@@ -231,9 +231,9 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         }
 
         // Obtain or create and register package
-        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.get(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
-                ? EPackage.Registry.INSTANCE.get(DescriptionPackage.eNS_URI)
-                : new DescriptionPackageImpl());
+        Object registeredDescriptionPackage = EPackage.Registry.INSTANCE.get(DescriptionPackage.eNS_URI);
+        DescriptionPackageImpl theDescriptionPackage = registeredDescriptionPackage instanceof DescriptionPackageImpl ? (DescriptionPackageImpl) registeredDescriptionPackage
+                : new DescriptionPackageImpl();
 
         DescriptionPackageImpl.isInited = true;
 
@@ -243,18 +243,14 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         DiagramPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
-        SequencePackageImpl theSequencePackage = (SequencePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(SequencePackage.eNS_URI) instanceof SequencePackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(SequencePackage.eNS_URI)
-                : SequencePackage.eINSTANCE);
-        ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI)
-                : ToolPackage.eINSTANCE);
-        OrderingPackageImpl theOrderingPackage = (OrderingPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(OrderingPackage.eNS_URI) instanceof OrderingPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(OrderingPackage.eNS_URI)
-                : OrderingPackage.eINSTANCE);
-        TemplatePackageImpl theTemplatePackage = (TemplatePackageImpl) (EPackage.Registry.INSTANCE.getEPackage(TemplatePackage.eNS_URI) instanceof TemplatePackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(TemplatePackage.eNS_URI)
-                : TemplatePackage.eINSTANCE);
+        Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(SequencePackage.eNS_URI);
+        SequencePackageImpl theSequencePackage = (SequencePackageImpl) (registeredPackage instanceof SequencePackageImpl ? registeredPackage : SequencePackage.eINSTANCE);
+        registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI);
+        ToolPackageImpl theToolPackage = (ToolPackageImpl) (registeredPackage instanceof ToolPackageImpl ? registeredPackage : ToolPackage.eINSTANCE);
+        registeredPackage = EPackage.Registry.INSTANCE.getEPackage(OrderingPackage.eNS_URI);
+        OrderingPackageImpl theOrderingPackage = (OrderingPackageImpl) (registeredPackage instanceof OrderingPackageImpl ? registeredPackage : OrderingPackage.eINSTANCE);
+        registeredPackage = EPackage.Registry.INSTANCE.getEPackage(TemplatePackage.eNS_URI);
+        TemplatePackageImpl theTemplatePackage = (TemplatePackageImpl) (registeredPackage instanceof TemplatePackageImpl ? registeredPackage : TemplatePackage.eINSTANCE);
 
         // Create package meta-data objects
         theDescriptionPackage.createPackageContents();

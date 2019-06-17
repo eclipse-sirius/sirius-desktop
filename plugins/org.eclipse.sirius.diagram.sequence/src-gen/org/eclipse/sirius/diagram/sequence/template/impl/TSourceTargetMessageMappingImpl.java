@@ -320,7 +320,7 @@ public abstract class TSourceTargetMessageMappingImpl extends TMessageMappingImp
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (sourceFinderExpression: "); //$NON-NLS-1$
         result.append(sourceFinderExpression);
         result.append(", targetFinderExpression: "); //$NON-NLS-1$

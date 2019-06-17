@@ -485,7 +485,7 @@ public class DAnalysisImpl extends IdentifiedElementImpl implements DAnalysis {
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (semanticResources: "); //$NON-NLS-1$
         result.append(semanticResources);
         result.append(", version: "); //$NON-NLS-1$

@@ -221,7 +221,7 @@ public class CompositeLayoutImpl extends DocumentedElementImpl implements Compos
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (padding: "); //$NON-NLS-1$
         result.append(padding);
         result.append(", direction: "); //$NON-NLS-1$

@@ -1114,7 +1114,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (size: "); //$NON-NLS-1$
         result.append(size);
         result.append(", routingStyle: "); //$NON-NLS-1$

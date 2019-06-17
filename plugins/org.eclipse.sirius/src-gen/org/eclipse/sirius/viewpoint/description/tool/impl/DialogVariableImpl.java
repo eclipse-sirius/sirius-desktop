@@ -166,7 +166,7 @@ public abstract class DialogVariableImpl extends AbstractVariableImpl implements
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (dialogPrompt: "); //$NON-NLS-1$
         result.append(dialogPrompt);
         result.append(')');

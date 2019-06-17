@@ -740,7 +740,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (preconditionExpression: "); //$NON-NLS-1$
         result.append(preconditionExpression);
         result.append(", semanticCandidatesExpression: "); //$NON-NLS-1$

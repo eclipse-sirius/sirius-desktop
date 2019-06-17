@@ -70,6 +70,7 @@ public interface CellUpdater extends EObject {
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getCellUpdater_CanEdit()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables"
      * @generated
      */
     String getCanEdit();

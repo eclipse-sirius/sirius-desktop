@@ -589,7 +589,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(", viewpointURI: "); //$NON-NLS-1$

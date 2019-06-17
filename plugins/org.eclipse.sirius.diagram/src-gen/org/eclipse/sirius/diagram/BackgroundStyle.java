@@ -30,7 +30,8 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum BackgroundStyle implements Enumerator {
     /**
-     * The '<em><b>Gradient Left To Right</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The '<em><b>Gradient Left To Right</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> Gradient style. <!-- end-model-doc -->
      *
      * @see #GRADIENT_LEFT_TO_RIGHT
      * @generated
@@ -39,7 +40,8 @@ public enum BackgroundStyle implements Enumerator {
     GRADIENT_LEFT_TO_RIGHT_LITERAL(0, "GradientLeftToRight", "GradientLeftToRight"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>Liquid</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The '<em><b>Liquid</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc
+     * --> Liquid style. <!-- end-model-doc -->
      *
      * @see #LIQUID
      * @generated
@@ -48,7 +50,8 @@ public enum BackgroundStyle implements Enumerator {
     LIQUID_LITERAL(1, "Liquid", "Liquid"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>Gradient Top To Bottom</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The '<em><b>Gradient Top To Bottom</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
+     * begin-model-doc --> Gradient style. <!-- end-model-doc -->
      *
      * @see #GRADIENT_TOP_TO_BOTTOM
      * @generated

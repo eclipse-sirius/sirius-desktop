@@ -83,7 +83,6 @@ public class HideLabelFilterItemProvider extends GraphicalFilterItemProvider {
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
-        super.notifyChanged(notification);
     }
 
     /**

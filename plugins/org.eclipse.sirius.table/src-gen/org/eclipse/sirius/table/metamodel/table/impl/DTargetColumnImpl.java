@@ -890,7 +890,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(", label: "); //$NON-NLS-1$

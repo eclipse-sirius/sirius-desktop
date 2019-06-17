@@ -1001,7 +1001,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (domainClass: "); //$NON-NLS-1$
         result.append(domainClass);
         result.append(", preconditionExpression: "); //$NON-NLS-1$

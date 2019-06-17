@@ -622,7 +622,7 @@ public abstract class RepresentationCreationDescriptionImpl extends AbstractTool
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (titleExpression: "); //$NON-NLS-1$
         result.append(titleExpression);
         result.append(", browseExpression: "); //$NON-NLS-1$

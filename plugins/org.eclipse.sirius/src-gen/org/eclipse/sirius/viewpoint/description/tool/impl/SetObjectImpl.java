@@ -232,7 +232,7 @@ public class SetObjectImpl extends ContainerModelOperationImpl implements SetObj
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (featureName: "); //$NON-NLS-1$
         result.append(featureName);
         result.append(')');

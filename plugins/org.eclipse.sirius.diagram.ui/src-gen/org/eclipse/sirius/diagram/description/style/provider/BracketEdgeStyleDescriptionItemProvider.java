@@ -86,7 +86,6 @@ public class BracketEdgeStyleDescriptionItemProvider extends EdgeStyleDescriptio
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
-        super.notifyChanged(notification);
     }
 
     /**

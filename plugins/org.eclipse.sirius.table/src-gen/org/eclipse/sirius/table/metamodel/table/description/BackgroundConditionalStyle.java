@@ -46,6 +46,7 @@ public interface BackgroundConditionalStyle extends EObject {
      * @see org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage#getBackgroundConditionalStyle_PredicateExpression()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a boolean.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables"
      * @generated
      */
     String getPredicateExpression();

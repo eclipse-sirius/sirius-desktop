@@ -11,7 +11,6 @@ import org.eclipse.sirius.tests.sample.xtext.StatemachineStandaloneSetupGenerate
 @SuppressWarnings("all")
 public class StatemachineStandaloneSetup extends StatemachineStandaloneSetupGenerated {
   public static void doSetup() {
-    StatemachineStandaloneSetup _statemachineStandaloneSetup = new StatemachineStandaloneSetup();
-    _statemachineStandaloneSetup.createInjectorAndDoEMFRegistration();
+    new StatemachineStandaloneSetup().createInjectorAndDoEMFRegistration();
   }
 }

@@ -383,7 +383,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (inverseSelectionOrder: "); //$NON-NLS-1$
         result.append(inverseSelectionOrder);
         result.append(", decorationImage: "); //$NON-NLS-1$

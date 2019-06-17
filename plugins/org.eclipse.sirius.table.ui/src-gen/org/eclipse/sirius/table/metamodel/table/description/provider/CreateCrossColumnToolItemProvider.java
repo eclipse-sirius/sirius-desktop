@@ -100,7 +100,6 @@ public class CreateCrossColumnToolItemProvider extends CreateToolItemProvider {
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
-        super.notifyChanged(notification);
     }
 
     /**

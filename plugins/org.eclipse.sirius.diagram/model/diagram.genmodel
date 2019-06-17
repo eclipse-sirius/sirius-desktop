@@ -137,7 +137,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//DNode/resizeKind"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DNode/originalStyle"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DNode/actualMapping"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DNode/candidatesMapping"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DNode/candidatesMapping">
+        <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="deprecated" value="This element should not be used"/>
+        </genAnnotations>
+      </genFeatures>
     </genClasses>
     <genClasses image="false" ecoreClass="diagram.ecore#//DDiagramElementContainer">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference diagram.ecore#//DDiagramElementContainer/nodes"/>
@@ -146,7 +150,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagramElementContainer/ownedStyle"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagramElementContainer/originalStyle"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagramElementContainer/actualMapping"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagramElementContainer/candidatesMapping"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DDiagramElementContainer/candidatesMapping">
+        <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="deprecated" value="This field should not be used"/>
+        </genAnnotations>
+      </genFeatures>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//DDiagramElementContainer/width"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//DDiagramElementContainer/height"/>
       <genOperations ecoreOperation="diagram.ecore#//DDiagramElementContainer/getNodesFromMapping">
@@ -167,7 +175,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//DNodeListElement/ownedStyle"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DNodeListElement/originalStyle"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DNodeListElement/actualMapping"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DNodeListElement/candidatesMapping"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//DNodeListElement/candidatesMapping">
+        <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="deprecated" value="This element should not be used"/>
+        </genAnnotations>
+      </genFeatures>
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//DEdge">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//DEdge/ownedStyle"/>
@@ -275,6 +287,9 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//FilterVariableHistory/ownedValues"/>
     </genClasses>
     <genClasses ecoreClass="diagram.ecore#//CollapseFilter">
+      <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="Documentation" value="Graphical filter specifying that the owner element has to be collapsed."/>
+      </genAnnotations>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//CollapseFilter/width"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//CollapseFilter/height"/>
     </genClasses>
@@ -723,8 +738,16 @@
           <genFeatures notify="false" createChild="false" propertyCategory="General"
               propertyDescription="Node mappings you may need to create once the tool has been executed."
               propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/NodeCreationDescription/nodeMappings"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/NodeCreationDescription/variable"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/NodeCreationDescription/viewVariable"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/NodeCreationDescription/variable">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="container"/>
+            </genAnnotations>
+          </genFeatures>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/NodeCreationDescription/viewVariable">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="containerView"/>
+            </genAnnotations>
+          </genFeatures>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/NodeCreationDescription/initialOperation"/>
           <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Path to a specific icon, if unset the icon associated to the Node mapping will be used. Otherwise use path\nlike /myProject/myDirectory/myImage.gif, the tool will look for it first in the workspace, then in the plugins."
               ecoreFeature="ecore:EAttribute diagram.ecore#//description/tool/NodeCreationDescription/iconPath"/>
@@ -736,10 +759,26 @@
           <genFeatures notify="false" createChild="false" propertyCategory="General"
               propertyDescription="Edge mappings you may need to automatically create once the tool has been executed."
               propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/EdgeCreationDescription/edgeMappings"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/EdgeCreationDescription/sourceVariable"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/EdgeCreationDescription/targetVariable"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/EdgeCreationDescription/sourceViewVariable"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/EdgeCreationDescription/targetViewVariable"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/EdgeCreationDescription/sourceVariable">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="source"/>
+            </genAnnotations>
+          </genFeatures>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/EdgeCreationDescription/targetVariable">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="target"/>
+            </genAnnotations>
+          </genFeatures>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/EdgeCreationDescription/sourceViewVariable">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="sourceView"/>
+            </genAnnotations>
+          </genFeatures>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/EdgeCreationDescription/targetViewVariable">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="targetView"/>
+            </genAnnotations>
+          </genFeatures>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/EdgeCreationDescription/initialOperation"/>
           <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Path to a specific icon, if unset the icon associated to the Node mapping will be used. Otherwise use path\nlike /myProject/myDirectory/myImage.gif, the tool will look for it first in the workspace, then in the plugins."
               ecoreFeature="ecore:EAttribute diagram.ecore#//description/tool/EdgeCreationDescription/iconPath"/>
@@ -754,8 +793,16 @@
           <genFeatures notify="false" createChild="false" propertyCategory="General"
               propertyDescription="Container mappings you may need to create once the tool has been executed."
               propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/ContainerCreationDescription/containerMappings"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/ContainerCreationDescription/variable"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/ContainerCreationDescription/viewVariable"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/ContainerCreationDescription/variable">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="container"/>
+            </genAnnotations>
+          </genFeatures>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/ContainerCreationDescription/viewVariable">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="containerView"/>
+            </genAnnotations>
+          </genFeatures>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/ContainerCreationDescription/initialOperation"/>
           <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Path to a specific icon, if unset the icon associated to the Node mapping will be used. Otherwise use path\nlike /myProject/myDirectory/myImage.gif, the tool will look for it first in the workspace, then in the plugins."
               ecoreFeature="ecore:EAttribute diagram.ecore#//description/tool/ContainerCreationDescription/iconPath"/>
@@ -826,15 +873,27 @@
               propertyDescription="Mapping of the view to create." propertySortChoices="true"
               ecoreFeature="ecore:EReference diagram.ecore#//description/tool/CreateView/mapping"/>
           <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression returning the container view which will store the newly created view."
-              ecoreFeature="ecore:EAttribute diagram.ecore#//description/tool/CreateView/containerViewExpression"/>
+              ecoreFeature="ecore:EAttribute diagram.ecore#//description/tool/CreateView/containerViewExpression">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="contentassist" value=""/>
+            </genAnnotations>
+          </genFeatures>
           <genFeatures createChild="false" propertyCategory="General" propertyDescription="Once the view is created, a new variable with the given name will exist bound to the newly created view."
               ecoreFeature="ecore:EAttribute diagram.ecore#//description/tool/CreateView/variableName"/>
         </genClasses>
         <genClasses ecoreClass="diagram.ecore#//description/tool/CreateEdgeView">
           <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression returning the semantic source of the newly created Edge"
-              ecoreFeature="ecore:EAttribute diagram.ecore#//description/tool/CreateEdgeView/sourceExpression"/>
+              ecoreFeature="ecore:EAttribute diagram.ecore#//description/tool/CreateEdgeView/sourceExpression">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="contentassist" value=""/>
+            </genAnnotations>
+          </genFeatures>
           <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression returning the semantic target of the newly created Edge"
-              ecoreFeature="ecore:EAttribute diagram.ecore#//description/tool/CreateEdgeView/targetExpression"/>
+              ecoreFeature="ecore:EAttribute diagram.ecore#//description/tool/CreateEdgeView/targetExpression">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="contentassist" value=""/>
+            </genAnnotations>
+          </genFeatures>
         </genClasses>
         <genClasses ecoreClass="diagram.ecore#//description/tool/Navigation">
           <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute diagram.ecore#//description/tool/Navigation/createIfNotExistent"/>
@@ -854,11 +913,23 @@
               propertyDescription="Mapping of the element to drop on the container"
               propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/ContainerDropDescription/mappings"/>
           <genFeatures property="None" children="true" createChild="true" propertyCategory=""
-              propertyDescription="" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/ContainerDropDescription/oldContainer"/>
+              propertyDescription="" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/ContainerDropDescription/oldContainer">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="oldSemanticElement"/>
+            </genAnnotations>
+          </genFeatures>
           <genFeatures property="None" children="true" createChild="true" propertyCategory=""
-              propertyDescription="" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/ContainerDropDescription/newContainer"/>
+              propertyDescription="" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/ContainerDropDescription/newContainer">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="newSemanticContainer"/>
+            </genAnnotations>
+          </genFeatures>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/ContainerDropDescription/element"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/ContainerDropDescription/newViewContainer"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/tool/ContainerDropDescription/newViewContainer">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="newContainerView"/>
+            </genAnnotations>
+          </genFeatures>
           <genFeatures property="None" children="true" createChild="true" propertyCategory=""
               ecoreFeature="ecore:EReference diagram.ecore#//description/tool/ContainerDropDescription/initialOperation"/>
           <genFeatures createChild="false" propertyCategory="General" propertyDescription="Tell whether the source of this Drag and Drop is an item of a representation, of the Model Explorer View or both."

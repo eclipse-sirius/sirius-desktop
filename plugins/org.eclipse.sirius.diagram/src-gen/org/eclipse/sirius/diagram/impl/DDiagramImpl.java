@@ -1004,7 +1004,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (synchronized: "); //$NON-NLS-1$
         result.append(synchronized_);
         result.append(", isInLayoutingMode: "); //$NON-NLS-1$

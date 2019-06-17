@@ -435,7 +435,7 @@ public class DTableElementStyleImpl extends IdentifiedElementImpl implements DTa
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (labelSize: "); //$NON-NLS-1$
         result.append(labelSize);
         result.append(", labelFormat: "); //$NON-NLS-1$

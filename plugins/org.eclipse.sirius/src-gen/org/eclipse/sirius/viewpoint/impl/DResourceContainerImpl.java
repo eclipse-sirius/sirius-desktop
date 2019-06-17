@@ -317,7 +317,7 @@ public class DResourceContainerImpl extends IdentifiedElementImpl implements DRe
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(", path: "); //$NON-NLS-1$

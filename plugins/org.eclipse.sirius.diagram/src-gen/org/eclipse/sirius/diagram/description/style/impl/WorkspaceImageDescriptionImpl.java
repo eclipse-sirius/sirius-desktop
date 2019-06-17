@@ -391,7 +391,7 @@ public class WorkspaceImageDescriptionImpl extends NodeStyleDescriptionImpl impl
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (arcWidth: "); //$NON-NLS-1$
         result.append(arcWidth);
         result.append(", arcHeight: "); //$NON-NLS-1$

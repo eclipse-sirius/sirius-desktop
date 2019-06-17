@@ -105,7 +105,6 @@ public class MenuItemDescriptionReferenceItemProvider extends ItemProviderAdapte
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
-        super.notifyChanged(notification);
     }
 
     /**

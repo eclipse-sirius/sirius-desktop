@@ -102,7 +102,6 @@ public class TreeCreationDescriptionItemProvider extends RepresentationCreationD
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
-        super.notifyChanged(notification);
     }
 
     /**

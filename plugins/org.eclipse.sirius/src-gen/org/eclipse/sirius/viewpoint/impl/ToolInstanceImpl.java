@@ -394,7 +394,7 @@ public class ToolInstanceImpl extends MinimalEObjectImpl.Container implements To
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (id: "); //$NON-NLS-1$
         result.append(id);
         result.append(", enabled: "); //$NON-NLS-1$

@@ -131,8 +131,8 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
         }
 
         // Obtain or create and register package
-        TreePackageImpl theTreePackage = (TreePackageImpl) (EPackage.Registry.INSTANCE.get(TreePackage.eNS_URI) instanceof TreePackageImpl ? EPackage.Registry.INSTANCE.get(TreePackage.eNS_URI)
-                : new TreePackageImpl());
+        Object registeredTreePackage = EPackage.Registry.INSTANCE.get(TreePackage.eNS_URI);
+        TreePackageImpl theTreePackage = registeredTreePackage instanceof TreePackageImpl ? (TreePackageImpl) registeredTreePackage : new TreePackageImpl();
 
         TreePackageImpl.isInited = true;
 
@@ -141,9 +141,8 @@ public class TreePackageImpl extends EPackageImpl implements TreePackage {
         ViewpointPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
-        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI)
-                : DescriptionPackage.eINSTANCE);
+        Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
+        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (registeredPackage instanceof DescriptionPackageImpl ? registeredPackage : DescriptionPackage.eINSTANCE);
 
         // Create package meta-data objects
         theTreePackage.createPackageContents();

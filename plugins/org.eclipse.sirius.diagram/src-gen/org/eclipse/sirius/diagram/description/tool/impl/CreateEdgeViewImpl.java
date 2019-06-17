@@ -221,7 +221,7 @@ public class CreateEdgeViewImpl extends CreateViewImpl implements CreateEdgeView
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (sourceExpression: "); //$NON-NLS-1$
         result.append(sourceExpression);
         result.append(", targetExpression: "); //$NON-NLS-1$

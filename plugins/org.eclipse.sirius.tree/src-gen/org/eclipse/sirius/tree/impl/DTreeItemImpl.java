@@ -750,7 +750,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(", expanded: "); //$NON-NLS-1$

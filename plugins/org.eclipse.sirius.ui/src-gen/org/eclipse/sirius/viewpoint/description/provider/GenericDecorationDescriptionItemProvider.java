@@ -83,7 +83,6 @@ public class GenericDecorationDescriptionItemProvider extends DecorationDescript
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
-        super.notifyChanged(notification);
     }
 
     /**

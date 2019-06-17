@@ -472,7 +472,7 @@ public class GaugeSectionDescriptionImpl extends MinimalEObjectImpl.Container im
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (minValueExpression: "); //$NON-NLS-1$
         result.append(minValueExpression);
         result.append(", maxValueExpression: "); //$NON-NLS-1$

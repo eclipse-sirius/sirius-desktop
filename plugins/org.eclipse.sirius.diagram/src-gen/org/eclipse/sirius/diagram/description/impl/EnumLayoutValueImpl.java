@@ -219,7 +219,7 @@ public class EnumLayoutValueImpl extends MinimalEObjectImpl.Container implements
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (name: "); //$NON-NLS-1$
         result.append(name);
         result.append(", description: "); //$NON-NLS-1$

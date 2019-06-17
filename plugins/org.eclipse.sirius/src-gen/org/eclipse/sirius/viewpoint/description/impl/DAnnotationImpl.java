@@ -265,7 +265,7 @@ public class DAnnotationImpl extends IdentifiedElementImpl implements DAnnotatio
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (source: "); //$NON-NLS-1$
         result.append(source);
         result.append(')');

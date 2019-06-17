@@ -79,6 +79,7 @@ public interface SequenceDiagramDescription extends DiagramDescription {
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
      *        Collection&lt;EObject&gt; or an EObject.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables"
      * @generated
      */
     String getInstanceRolesOrdering();

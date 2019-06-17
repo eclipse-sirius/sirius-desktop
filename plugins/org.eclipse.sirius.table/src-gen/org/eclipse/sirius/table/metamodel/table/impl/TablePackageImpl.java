@@ -154,8 +154,8 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
         }
 
         // Obtain or create and register package
-        TablePackageImpl theTablePackage = (TablePackageImpl) (EPackage.Registry.INSTANCE.get(TablePackage.eNS_URI) instanceof TablePackageImpl ? EPackage.Registry.INSTANCE.get(TablePackage.eNS_URI)
-                : new TablePackageImpl());
+        Object registeredTablePackage = EPackage.Registry.INSTANCE.get(TablePackage.eNS_URI);
+        TablePackageImpl theTablePackage = registeredTablePackage instanceof TablePackageImpl ? (TablePackageImpl) registeredTablePackage : new TablePackageImpl();
 
         TablePackageImpl.isInited = true;
 
@@ -164,9 +164,8 @@ public class TablePackageImpl extends EPackageImpl implements TablePackage {
         ViewpointPackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
-        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI)
-                : DescriptionPackage.eINSTANCE);
+        Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
+        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (registeredPackage instanceof DescriptionPackageImpl ? registeredPackage : DescriptionPackage.eINSTANCE);
 
         // Create package meta-data objects
         theTablePackage.createPackageContents();

@@ -220,7 +220,7 @@ public class MoveElementImpl extends ContainerModelOperationImpl implements Move
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (newContainerExpression: "); //$NON-NLS-1$
         result.append(newContainerExpression);
         result.append(", featureName: "); //$NON-NLS-1$

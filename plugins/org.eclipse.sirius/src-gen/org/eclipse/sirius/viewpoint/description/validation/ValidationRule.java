@@ -81,6 +81,7 @@ public interface ValidationRule extends IdentifiedElement {
      * @see org.eclipse.sirius.viewpoint.description.validation.ValidationPackage#getValidationRule_Message()
      * @model default="The element has..." dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a string.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables"
      * @generated
      */
     String getMessage();

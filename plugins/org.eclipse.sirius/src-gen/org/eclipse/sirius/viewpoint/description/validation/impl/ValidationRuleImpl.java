@@ -319,7 +319,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (level: "); //$NON-NLS-1$
         result.append(level);
         result.append(", message: "); //$NON-NLS-1$

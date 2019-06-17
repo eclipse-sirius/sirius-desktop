@@ -259,7 +259,7 @@ public class TreeVariableImpl extends AbstractVariableImpl implements TreeVariab
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (documentation: "); //$NON-NLS-1$
         result.append(documentation);
         result.append(')');

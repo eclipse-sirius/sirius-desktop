@@ -30,7 +30,8 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum ERROR_LEVEL implements Enumerator {
     /**
-     * The '<em><b>INFO</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The '<em><b>INFO</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * Info level. <!-- end-model-doc -->
      *
      * @see #INFO
      * @generated
@@ -39,7 +40,8 @@ public enum ERROR_LEVEL implements Enumerator {
     INFO_LITERAL(0, "INFO", "INFO"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>WARNING</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The '<em><b>WARNING</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc
+     * --> Warning level. <!-- end-model-doc -->
      *
      * @see #WARNING
      * @generated
@@ -48,7 +50,8 @@ public enum ERROR_LEVEL implements Enumerator {
     WARNING_LITERAL(1, "WARNING", "WARNING"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>ERROR</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The '<em><b>ERROR</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc
+     * --> Error level. <!-- end-model-doc -->
      *
      * @see #ERROR
      * @generated

@@ -165,7 +165,7 @@ public abstract class FilterImpl extends MinimalEObjectImpl.Container implements
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (filterKind: "); //$NON-NLS-1$
         result.append(filterKind);
         result.append(')');

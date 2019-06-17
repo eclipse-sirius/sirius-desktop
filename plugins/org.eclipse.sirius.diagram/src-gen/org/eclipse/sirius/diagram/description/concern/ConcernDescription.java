@@ -36,7 +36,7 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.concern.ConcernPackage#getConcernDescription()
- * @model
+ * @model annotation="TagValues"
  * @generated
  */
 public interface ConcernDescription extends DocumentedElement, IdentifiedElement {

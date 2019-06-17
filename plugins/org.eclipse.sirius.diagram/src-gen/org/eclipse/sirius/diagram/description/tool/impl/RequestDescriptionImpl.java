@@ -165,7 +165,7 @@ public class RequestDescriptionImpl extends AbstractToolDescriptionImpl implemen
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (type: "); //$NON-NLS-1$
         result.append(type);
         result.append(')');

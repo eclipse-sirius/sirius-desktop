@@ -101,7 +101,6 @@ public class DTreeElementItemProvider extends DRepresentationElementItemProvider
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
-        super.notifyChanged(notification);
     }
 
     /**

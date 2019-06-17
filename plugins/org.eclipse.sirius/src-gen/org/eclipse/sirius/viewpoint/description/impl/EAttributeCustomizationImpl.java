@@ -220,7 +220,7 @@ public class EAttributeCustomizationImpl extends EStructuralFeatureCustomization
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (attributeName: "); //$NON-NLS-1$
         result.append(attributeName);
         result.append(", value: "); //$NON-NLS-1$

@@ -164,7 +164,7 @@ public class TreeMappingImpl extends RepresentationElementMappingImpl implements
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (semanticElements: "); //$NON-NLS-1$
         result.append(semanticElements);
         result.append(')');

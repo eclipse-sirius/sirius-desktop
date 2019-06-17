@@ -52,6 +52,7 @@ public interface TExecutionMapping extends TAbstractMapping, TMessageExtremity {
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTExecutionMapping_StartingEndFinderExpression()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables"
      * @generated
      */
     String getStartingEndFinderExpression();
@@ -81,6 +82,7 @@ public interface TExecutionMapping extends TAbstractMapping, TMessageExtremity {
      * @see org.eclipse.sirius.diagram.sequence.template.TemplatePackage#getTExecutionMapping_FinishingEndFinderExpression()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables"
      * @generated
      */
     String getFinishingEndFinderExpression();

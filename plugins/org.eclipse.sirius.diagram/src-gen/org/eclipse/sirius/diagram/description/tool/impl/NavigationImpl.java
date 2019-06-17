@@ -234,7 +234,7 @@ public class NavigationImpl extends ContainerModelOperationImpl implements Navig
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (createIfNotExistent: "); //$NON-NLS-1$
         result.append(createIfNotExistent);
         result.append(')');

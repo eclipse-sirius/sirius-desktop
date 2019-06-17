@@ -224,7 +224,7 @@ public abstract class DelimitedEventMappingImpl extends EventMappingImpl impleme
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (startingEndFinderExpression: "); //$NON-NLS-1$
         result.append(startingEndFinderExpression);
         result.append(", finishingEndFinderExpression: "); //$NON-NLS-1$

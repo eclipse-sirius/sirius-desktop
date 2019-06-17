@@ -887,7 +887,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (iconPath: "); //$NON-NLS-1$
         result.append(iconPath);
         result.append(", connectionStartPrecondition: "); //$NON-NLS-1$

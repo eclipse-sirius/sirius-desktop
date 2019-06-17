@@ -610,7 +610,7 @@ public abstract class NodeStyleImpl extends LabelStyleImpl implements NodeStyle 
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (borderSize: "); //$NON-NLS-1$
         result.append(borderSize);
         result.append(", borderSizeComputationExpression: "); //$NON-NLS-1$

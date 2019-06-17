@@ -394,7 +394,7 @@ public class TypedVariableImpl extends MinimalEObjectImpl.Container implements T
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (userDocumentation: "); //$NON-NLS-1$
         result.append(userDocumentation);
         result.append(", name: "); //$NON-NLS-1$

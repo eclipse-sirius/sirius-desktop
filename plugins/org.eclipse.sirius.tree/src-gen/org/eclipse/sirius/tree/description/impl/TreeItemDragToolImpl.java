@@ -781,7 +781,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (dragSourceType: "); //$NON-NLS-1$
         result.append(dragSourceType);
         result.append(')');

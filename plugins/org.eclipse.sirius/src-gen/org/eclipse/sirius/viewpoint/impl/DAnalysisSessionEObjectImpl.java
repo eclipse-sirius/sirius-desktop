@@ -373,7 +373,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (open: "); //$NON-NLS-1$
         result.append(open);
         result.append(", resources: "); //$NON-NLS-1$

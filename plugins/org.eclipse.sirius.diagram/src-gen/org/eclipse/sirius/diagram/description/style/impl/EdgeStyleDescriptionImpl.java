@@ -1003,7 +1003,7 @@ public class EdgeStyleDescriptionImpl extends MinimalEObjectImpl.Container imple
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (lineStyle: "); //$NON-NLS-1$
         result.append(lineStyle);
         result.append(", sourceArrow: "); //$NON-NLS-1$

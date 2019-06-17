@@ -762,7 +762,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (canEdit: "); //$NON-NLS-1$
         result.append(canEdit);
         result.append(", featureName: "); //$NON-NLS-1$

@@ -164,7 +164,7 @@ public abstract class MenuItemDescriptionWithIconImpl extends MenuItemDescriptio
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (icon: "); //$NON-NLS-1$
         result.append(icon);
         result.append(')');

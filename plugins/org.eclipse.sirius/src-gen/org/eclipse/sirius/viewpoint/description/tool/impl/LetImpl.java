@@ -219,7 +219,7 @@ public class LetImpl extends ContainerModelOperationImpl implements Let {
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (variableName: "); //$NON-NLS-1$
         result.append(variableName);
         result.append(", valueExpression: "); //$NON-NLS-1$

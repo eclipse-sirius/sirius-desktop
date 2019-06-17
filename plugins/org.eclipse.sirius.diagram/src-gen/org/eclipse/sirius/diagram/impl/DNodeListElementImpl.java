@@ -483,7 +483,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (arrangeConstraints: "); //$NON-NLS-1$
         result.append(arrangeConstraints);
         result.append(')');

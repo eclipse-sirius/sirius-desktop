@@ -83,7 +83,6 @@ public class BracketEdgeStyleItemProvider extends EdgeStyleItemProvider {
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
-        super.notifyChanged(notification);
     }
 
     /**

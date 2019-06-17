@@ -503,14 +503,34 @@
         <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/MappingBasedToolDescription"/>
         <genClasses ecoreClass="viewpoint.ecore#//description/tool/ToolDescription">
           <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/ToolDescription/iconPath"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ToolDescription/element"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ToolDescription/elementView"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ToolDescription/element">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="element"/>
+            </genAnnotations>
+          </genFeatures>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ToolDescription/elementView">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="elementView"/>
+            </genAnnotations>
+          </genFeatures>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/ToolDescription/initialOperation"/>
         </genClasses>
         <genClasses ecoreClass="viewpoint.ecore#//description/tool/PasteDescription">
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PasteDescription/container"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PasteDescription/containerView"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PasteDescription/copiedView"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PasteDescription/container">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="newSemanticContainer"/>
+            </genAnnotations>
+          </genFeatures>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PasteDescription/containerView">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="newContainerView"/>
+            </genAnnotations>
+          </genFeatures>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PasteDescription/copiedView">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="oldSemanticElement"/>
+            </genAnnotations>
+          </genFeatures>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PasteDescription/copiedElement"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/PasteDescription/initialOperation"/>
           <genOperations ecoreOperation="viewpoint.ecore#//description/tool/PasteDescription/getContainers"/>
@@ -554,8 +574,16 @@
               ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/RepresentationCreationDescription/browseExpression"/>
           <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationCreationDescription/representationDescription"/>
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationCreationDescription/initialOperation"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationCreationDescription/containerViewVariable"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationCreationDescription/representationNameVariable"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationCreationDescription/containerViewVariable">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="containerView"/>
+            </genAnnotations>
+          </genFeatures>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationCreationDescription/representationNameVariable">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="representationName"/>
+            </genAnnotations>
+          </genFeatures>
           <genOperations ecoreOperation="viewpoint.ecore#//description/tool/RepresentationCreationDescription/getMappings"/>
         </genClasses>
         <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/RepresentationNavigationDescription">
@@ -564,9 +592,21 @@
           <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Expression used to build the name of the action contributed to the contextual menu. It's used only if the \&quot;Browse expression\&quot; field is filled."
               ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/RepresentationNavigationDescription/navigationNameExpression"/>
           <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationNavigationDescription/representationDescription"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationNavigationDescription/containerViewVariable"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationNavigationDescription/containerVariable"/>
-          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationNavigationDescription/representationNameVariable"/>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationNavigationDescription/containerViewVariable">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="containerView"/>
+            </genAnnotations>
+          </genFeatures>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationNavigationDescription/containerVariable">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="container"/>
+            </genAnnotations>
+          </genFeatures>
+          <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/RepresentationNavigationDescription/representationNameVariable">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="documentedName" value="representationName"/>
+            </genAnnotations>
+          </genFeatures>
           <genOperations ecoreOperation="viewpoint.ecore#//description/tool/RepresentationNavigationDescription/getMappings"/>
         </genClasses>
         <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/MenuItemOrRef"/>
@@ -677,7 +717,11 @@
         </genClasses>
         <genClasses ecoreClass="viewpoint.ecore#//description/tool/If">
           <genFeatures createChild="false" propertyCategory="General" propertyDescription="Expression for the if condition."
-              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/If/conditionExpression"/>
+              ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/If/conditionExpression">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="contentassist" value=""/>
+            </genAnnotations>
+          </genFeatures>
         </genClasses>
         <genClasses ecoreClass="viewpoint.ecore#//description/tool/DeleteView"/>
         <genClasses ecoreClass="viewpoint.ecore#//description/tool/NameVariable"/>
@@ -701,7 +745,11 @@
               ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/FeatureChangeListener/featureName"/>
         </genClasses>
         <genClasses ecoreClass="viewpoint.ecore#//description/tool/Case">
-          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/Case/conditionExpression"/>
+          <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/Case/conditionExpression">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="contentassist" value=""/>
+            </genAnnotations>
+          </genFeatures>
         </genClasses>
         <genClasses image="false" ecoreClass="viewpoint.ecore#//description/tool/SwitchChild">
           <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//description/tool/SwitchChild/subModelOperations"/>
@@ -713,7 +761,11 @@
         </genClasses>
         <genClasses ecoreClass="viewpoint.ecore#//description/tool/Let">
           <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/Let/variableName"/>
-          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/Let/valueExpression"/>
+          <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//description/tool/Let/valueExpression">
+            <genAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+              <details key="contentassist" value=""/>
+            </genAnnotations>
+          </genFeatures>
         </genClasses>
         <genClasses ecoreClass="viewpoint.ecore#//description/tool/GroupMenu">
           <genFeatures createChild="false" propertyCategory="General" propertyDescription="A &lt;code>URI&lt;/code> specification that defines the insertion point at which the group will be added.&#xD;&#xA;&#xD;&#xA;The format for the URI is comprised of two basic parts:&#xD;&#xA;* Scheme: One of &quot;menu&quot;, &quot;tabbar&quot;. Indicates the type of the manager used to handle the contributions.&#xD;&#xA;* Id: This is either the id of an existing menu or tabbar menu"

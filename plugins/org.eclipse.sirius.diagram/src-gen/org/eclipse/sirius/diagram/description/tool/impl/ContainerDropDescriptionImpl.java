@@ -826,7 +826,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (dragSource: "); //$NON-NLS-1$
         result.append(dragSource);
         result.append(", moveEdges: "); //$NON-NLS-1$

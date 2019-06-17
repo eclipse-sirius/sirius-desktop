@@ -98,7 +98,6 @@ public class MetaModelExtensionItemProvider extends IdentifiedElementItemProvide
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
-        super.notifyChanged(notification);
     }
 
     /**

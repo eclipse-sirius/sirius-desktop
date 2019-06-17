@@ -83,7 +83,6 @@ public class DestructionMessageMappingItemProvider extends MessageMappingItemPro
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
-        super.notifyChanged(notification);
     }
 
     /**

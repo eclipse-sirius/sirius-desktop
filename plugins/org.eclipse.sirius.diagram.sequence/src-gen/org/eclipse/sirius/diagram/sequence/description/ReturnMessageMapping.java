@@ -43,6 +43,7 @@ public interface ReturnMessageMapping extends MessageMapping {
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getReturnMessageMapping_InvocationMessageFinderExpression()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables"
      * @generated
      */
     String getInvocationMessageFinderExpression();

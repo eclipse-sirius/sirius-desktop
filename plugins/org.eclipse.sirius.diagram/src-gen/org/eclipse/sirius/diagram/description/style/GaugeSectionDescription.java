@@ -58,6 +58,7 @@ public interface GaugeSectionDescription extends EObject {
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeSectionDescription_MinValueExpression()
      * @model default="0" dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables"
      * @generated
      */
     String getMinValueExpression();
@@ -88,6 +89,7 @@ public interface GaugeSectionDescription extends EObject {
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeSectionDescription_MaxValueExpression()
      * @model default="0" dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables"
      * @generated
      */
     String getMaxValueExpression();
@@ -118,6 +120,7 @@ public interface GaugeSectionDescription extends EObject {
      * @see org.eclipse.sirius.diagram.description.style.StylePackage#getGaugeSectionDescription_ValueExpression()
      * @model default="0" dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables"
      * @generated
      */
     String getValueExpression();

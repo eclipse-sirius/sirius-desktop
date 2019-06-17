@@ -84,6 +84,7 @@ public interface InterpolatedColor extends ColorDescription, UserColor {
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getInterpolatedColor_MinValueComputationExpression()
      * @model default="0" dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables"
      * @generated
      */
     String getMinValueComputationExpression();
@@ -114,6 +115,7 @@ public interface InterpolatedColor extends ColorDescription, UserColor {
      * @see org.eclipse.sirius.viewpoint.description.DescriptionPackage#getInterpolatedColor_MaxValueComputationExpression()
      * @model default="10" dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables"
      * @generated
      */
     String getMaxValueComputationExpression();

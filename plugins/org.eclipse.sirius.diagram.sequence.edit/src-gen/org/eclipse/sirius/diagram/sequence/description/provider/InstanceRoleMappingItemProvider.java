@@ -87,7 +87,6 @@ public class InstanceRoleMappingItemProvider extends NodeMappingItemProvider {
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
-        super.notifyChanged(notification);
     }
 
     /**

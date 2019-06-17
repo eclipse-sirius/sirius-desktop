@@ -276,7 +276,7 @@ public class CreateInstanceImpl extends ContainerModelOperationImpl implements C
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (typeName: "); //$NON-NLS-1$
         result.append(typeName);
         result.append(", referenceName: "); //$NON-NLS-1$

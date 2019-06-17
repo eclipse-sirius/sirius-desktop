@@ -861,7 +861,7 @@ public class DNodeImpl extends DDiagramElementImpl implements DNode {
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (arrangeConstraints: "); //$NON-NLS-1$
         result.append(arrangeConstraints);
         result.append(", width: "); //$NON-NLS-1$

@@ -271,7 +271,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * @return the value of the '<em>Init</em>' reference.
      * @see #setInit(RepresentationCreationDescription)
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_Init()
-     * @model
+     * @model annotation="TagValues"
      * @generated
      */
     RepresentationCreationDescription getInit();
@@ -391,7 +391,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      *
      * @return the value of the '<em>Node Mappings</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_NodeMappings()
-     * @model containment="true" resolveProxies="true" keys="name"
+     * @model containment="true" resolveProxies="true" keys="name" annotation="TagValues"
      * @generated
      */
     EList<NodeMapping> getNodeMappings();
@@ -403,7 +403,7 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      *
      * @return the value of the '<em>Edge Mappings</em>' containment reference list.
      * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_EdgeMappings()
-     * @model containment="true" resolveProxies="true" keys="name"
+     * @model containment="true" resolveProxies="true" keys="name" annotation="TagValues"
      * @generated
      */
     EList<EdgeMapping> getEdgeMappings();

@@ -166,7 +166,7 @@ public class ReturnMessageMappingImpl extends MessageMappingImpl implements Retu
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (invocationMessageFinderExpression: "); //$NON-NLS-1$
         result.append(invocationMessageFinderExpression);
         result.append(')');

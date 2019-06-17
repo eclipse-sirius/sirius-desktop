@@ -1138,7 +1138,7 @@ public abstract class NodeStyleDescriptionImpl extends MinimalEObjectImpl.Contai
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (borderSizeComputationExpression: "); //$NON-NLS-1$
         result.append(borderSizeComputationExpression);
         result.append(", borderLineStyle: "); //$NON-NLS-1$

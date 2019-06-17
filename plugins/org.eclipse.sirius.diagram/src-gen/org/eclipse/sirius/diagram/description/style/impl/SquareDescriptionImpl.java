@@ -287,7 +287,7 @@ public class SquareDescriptionImpl extends NodeStyleDescriptionImpl implements S
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (width: "); //$NON-NLS-1$
         result.append(width);
         result.append(", height: "); //$NON-NLS-1$

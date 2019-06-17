@@ -266,7 +266,7 @@ public abstract class StyleImpl extends IdentifiedElementImpl implements Style {
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (customFeatures: "); //$NON-NLS-1$
         result.append(customFeatures);
         result.append(')');

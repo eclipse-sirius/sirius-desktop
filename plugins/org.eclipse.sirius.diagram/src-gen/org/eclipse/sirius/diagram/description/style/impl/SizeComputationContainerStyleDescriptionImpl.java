@@ -226,7 +226,7 @@ public abstract class SizeComputationContainerStyleDescriptionImpl extends Minim
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (widthComputationExpression: "); //$NON-NLS-1$
         result.append(widthComputationExpression);
         result.append(", heightComputationExpression: "); //$NON-NLS-1$

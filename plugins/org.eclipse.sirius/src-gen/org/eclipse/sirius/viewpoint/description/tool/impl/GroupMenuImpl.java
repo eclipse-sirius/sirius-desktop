@@ -243,7 +243,7 @@ public class GroupMenuImpl extends MenuItemDescriptionImpl implements GroupMenu 
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (locationURI: "); //$NON-NLS-1$
         result.append(locationURI);
         result.append(')');

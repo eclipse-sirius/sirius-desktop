@@ -256,7 +256,7 @@ public class AnnotationEntryImpl extends IdentifiedElementImpl implements Annota
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (source: "); //$NON-NLS-1$
         result.append(source);
         result.append(')');

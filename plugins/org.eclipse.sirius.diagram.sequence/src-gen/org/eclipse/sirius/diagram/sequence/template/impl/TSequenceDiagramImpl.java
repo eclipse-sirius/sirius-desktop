@@ -393,7 +393,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (domainClass: "); //$NON-NLS-1$
         result.append(domainClass);
         result.append(", endsOrdering: "); //$NON-NLS-1$

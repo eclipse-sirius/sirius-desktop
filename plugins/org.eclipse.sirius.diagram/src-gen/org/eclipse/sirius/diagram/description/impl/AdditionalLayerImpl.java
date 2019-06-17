@@ -220,7 +220,7 @@ public class AdditionalLayerImpl extends LayerImpl implements AdditionalLayer {
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (activeByDefault: "); //$NON-NLS-1$
         result.append(activeByDefault);
         result.append(", optional: "); //$NON-NLS-1$

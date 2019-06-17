@@ -164,7 +164,7 @@ public class WorkspaceImageImpl extends NodeStyleImpl implements WorkspaceImage 
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (workspacePath: "); //$NON-NLS-1$
         result.append(workspacePath);
         result.append(')');

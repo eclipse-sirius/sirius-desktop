@@ -46,6 +46,7 @@ public interface FrameMapping extends ContainerMapping, DelimitedEventMapping {
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='the list of
      *        semantic EObjects representing the lifelines which are semantically covered by the frame.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables"
      * @generated
      */
     String getCoveredLifelinesExpression();
@@ -75,7 +76,7 @@ public interface FrameMapping extends ContainerMapping, DelimitedEventMapping {
      * @see org.eclipse.sirius.diagram.sequence.description.DescriptionPackage#getFrameMapping_CenterLabelExpression()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='the text to show
-     *        in the center of the IU'"
+     *        in the center of the IU'" annotation="http://www.eclipse.org/sirius/interpreted/expression/variables"
      * @generated
      */
     String getCenterLabelExpression();

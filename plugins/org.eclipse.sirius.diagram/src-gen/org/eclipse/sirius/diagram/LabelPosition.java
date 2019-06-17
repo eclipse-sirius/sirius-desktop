@@ -30,7 +30,8 @@ import org.eclipse.emf.common.util.Enumerator;
  */
 public enum LabelPosition implements Enumerator {
     /**
-     * The '<em><b>Border</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The '<em><b>Border</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc
+     * --> The label is on border. <!-- end-model-doc -->
      *
      * @see #BORDER
      * @generated
@@ -39,7 +40,8 @@ public enum LabelPosition implements Enumerator {
     BORDER_LITERAL(0, "border", "border"), //$NON-NLS-1$ //$NON-NLS-2$
 
     /**
-     * The '<em><b>Node</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc -->
+     * The '<em><b>Node</b></em>' literal object. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
+     * The label is on the node. <!-- end-model-doc -->
      *
      * @see #NODE
      * @generated

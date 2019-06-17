@@ -130,8 +130,8 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         }
 
         // Obtain or create and register package
-        StylePackageImpl theStylePackage = (StylePackageImpl) (EPackage.Registry.INSTANCE.get(StylePackage.eNS_URI) instanceof StylePackageImpl ? EPackage.Registry.INSTANCE.get(StylePackage.eNS_URI)
-                : new StylePackageImpl());
+        Object registeredStylePackage = EPackage.Registry.INSTANCE.get(StylePackage.eNS_URI);
+        StylePackageImpl theStylePackage = registeredStylePackage instanceof StylePackageImpl ? (StylePackageImpl) registeredStylePackage : new StylePackageImpl();
 
         StylePackageImpl.isInited = true;
 
@@ -139,21 +139,16 @@ public class StylePackageImpl extends EPackageImpl implements StylePackage {
         EcorePackage.eINSTANCE.eClass();
 
         // Obtain or create and register interdependencies
-        ViewpointPackageImpl theViewpointPackage = (ViewpointPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI) instanceof ViewpointPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI)
-                : ViewpointPackage.eINSTANCE);
-        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI) instanceof DescriptionPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI)
-                : DescriptionPackage.eINSTANCE);
-        ToolPackageImpl theToolPackage = (ToolPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI) instanceof ToolPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI)
-                : ToolPackage.eINSTANCE);
-        ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI) instanceof ValidationPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI)
-                : ValidationPackage.eINSTANCE);
-        AuditPackageImpl theAuditPackage = (AuditPackageImpl) (EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI) instanceof AuditPackageImpl
-                ? EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI)
-                : AuditPackage.eINSTANCE);
+        Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI);
+        ViewpointPackageImpl theViewpointPackage = (ViewpointPackageImpl) (registeredPackage instanceof ViewpointPackageImpl ? registeredPackage : ViewpointPackage.eINSTANCE);
+        registeredPackage = EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
+        DescriptionPackageImpl theDescriptionPackage = (DescriptionPackageImpl) (registeredPackage instanceof DescriptionPackageImpl ? registeredPackage : DescriptionPackage.eINSTANCE);
+        registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI);
+        ToolPackageImpl theToolPackage = (ToolPackageImpl) (registeredPackage instanceof ToolPackageImpl ? registeredPackage : ToolPackage.eINSTANCE);
+        registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI);
+        ValidationPackageImpl theValidationPackage = (ValidationPackageImpl) (registeredPackage instanceof ValidationPackageImpl ? registeredPackage : ValidationPackage.eINSTANCE);
+        registeredPackage = EPackage.Registry.INSTANCE.getEPackage(AuditPackage.eNS_URI);
+        AuditPackageImpl theAuditPackage = (AuditPackageImpl) (registeredPackage instanceof AuditPackageImpl ? registeredPackage : AuditPackage.eINSTANCE);
 
         // Create package meta-data objects
         theStylePackage.createPackageContents();

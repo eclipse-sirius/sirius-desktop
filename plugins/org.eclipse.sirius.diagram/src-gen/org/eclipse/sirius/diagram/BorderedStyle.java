@@ -77,6 +77,7 @@ public interface BorderedStyle extends Style {
      * @see org.eclipse.sirius.diagram.DiagramPackage#getBorderedStyle_BorderSizeComputationExpression()
      * @model default="0" dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an integer.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables"
      * @generated
      */
     String getBorderSizeComputationExpression();

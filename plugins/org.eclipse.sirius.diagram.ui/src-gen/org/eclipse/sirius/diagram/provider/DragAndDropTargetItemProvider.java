@@ -86,7 +86,6 @@ public class DragAndDropTargetItemProvider extends IdentifiedElementItemProvider
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
-        super.notifyChanged(notification);
     }
 
     /**

@@ -157,7 +157,7 @@ public interface DDiagramElementContainer extends AbstractDNode, EdgeTarget, Dra
      *
      * @return the value of the '<em>Candidates Mapping</em>' reference list.
      * @see org.eclipse.sirius.diagram.DiagramPackage#getDDiagramElementContainer_CandidatesMapping()
-     * @model annotation="http://www.eclipse.org/emf/2002/GenModel deprecated='This field should not be used'"
+     * @model
      * @generated
      */
     EList<ContainerMapping> getCandidatesMapping();

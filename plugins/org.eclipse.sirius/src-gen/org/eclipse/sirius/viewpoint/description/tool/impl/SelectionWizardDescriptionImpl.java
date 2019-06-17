@@ -1116,7 +1116,7 @@ public class SelectionWizardDescriptionImpl extends AbstractToolDescriptionImpl 
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (candidatesExpression: "); //$NON-NLS-1$
         result.append(candidatesExpression);
         result.append(", multiple: "); //$NON-NLS-1$

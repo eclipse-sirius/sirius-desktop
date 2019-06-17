@@ -219,7 +219,7 @@ public class SetValueImpl extends ContainerModelOperationImpl implements SetValu
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (featureName: "); //$NON-NLS-1$
         result.append(featureName);
         result.append(", valueExpression: "); //$NON-NLS-1$

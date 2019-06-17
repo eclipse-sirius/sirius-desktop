@@ -289,7 +289,7 @@ public class CreateViewImpl extends ContainerModelOperationImpl implements Creat
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (containerViewExpression: "); //$NON-NLS-1$
         result.append(containerViewExpression);
         result.append(", variableName: "); //$NON-NLS-1$

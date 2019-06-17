@@ -208,7 +208,7 @@ public class OrderedTreeLayoutImpl extends DocumentedElementImpl implements Orde
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (childrenExpression: "); //$NON-NLS-1$
         result.append(childrenExpression);
         result.append(')');

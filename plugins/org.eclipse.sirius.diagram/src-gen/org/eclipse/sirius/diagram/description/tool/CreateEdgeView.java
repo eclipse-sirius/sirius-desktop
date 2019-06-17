@@ -44,8 +44,8 @@ public interface CreateEdgeView extends CreateView {
      * @see #setSourceExpression(String)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getCreateEdgeView_SourceExpression()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
-     *        annotation="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables"
      * @generated
      */
     String getSourceExpression();
@@ -73,8 +73,8 @@ public interface CreateEdgeView extends CreateView {
      * @see #setTargetExpression(String)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getCreateEdgeView_TargetExpression()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
-     *        annotation="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='an EObject.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables"
      * @generated
      */
     String getTargetExpression();

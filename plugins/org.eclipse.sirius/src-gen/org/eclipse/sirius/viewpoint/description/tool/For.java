@@ -39,9 +39,9 @@ public interface For extends ContainerModelOperation {
      * @see #setExpression(String)
      * @see org.eclipse.sirius.viewpoint.description.tool.ToolPackage#getFor_Expression()
      * @model dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
-     *        annotation="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a
      *        Collection&lt;EObject&gt; or an EObject.'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables"
      * @generated
      */
     String getExpression();

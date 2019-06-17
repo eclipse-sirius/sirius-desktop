@@ -166,7 +166,7 @@ public class NoteImpl extends NodeStyleImpl implements Note {
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (color: "); //$NON-NLS-1$
         result.append(color);
         result.append(')');

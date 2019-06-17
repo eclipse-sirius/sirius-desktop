@@ -278,7 +278,7 @@ public class FlatContainerStyleImpl extends ContainerStyleImpl implements FlatCo
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (backgroundStyle: "); //$NON-NLS-1$
         result.append(backgroundStyle);
         result.append(", backgroundColor: "); //$NON-NLS-1$

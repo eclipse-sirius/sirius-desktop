@@ -72,9 +72,9 @@ public interface CreateView extends ContainerModelOperation {
      * @see #setContainerViewExpression(String)
      * @see org.eclipse.sirius.diagram.description.tool.ToolPackage#getCreateView_ContainerViewExpression()
      * @model default="" dataType="org.eclipse.sirius.viewpoint.description.InterpretedExpression" required="true"
-     *        annotation="http://www.eclipse.org/emf/2002/GenModel contentassist=''"
      *        annotation="http://www.eclipse.org/sirius/interpreted/expression/returnType returnType='a view (DNode,
      *        DEdge, DDiagram -&gt; any DSemanticDecorator).'"
+     *        annotation="http://www.eclipse.org/sirius/interpreted/expression/variables"
      * @generated
      */
     String getContainerViewExpression();

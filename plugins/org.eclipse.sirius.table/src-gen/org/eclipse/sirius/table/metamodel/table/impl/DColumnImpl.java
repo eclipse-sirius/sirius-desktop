@@ -593,7 +593,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (label: "); //$NON-NLS-1$
         result.append(label);
         result.append(", visible: "); //$NON-NLS-1$

@@ -220,7 +220,7 @@ public class ColumnMappingImpl extends TableMappingImpl implements ColumnMapping
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (headerLabelExpression: "); //$NON-NLS-1$
         result.append(headerLabelExpression);
         result.append(", initialWidth: "); //$NON-NLS-1$

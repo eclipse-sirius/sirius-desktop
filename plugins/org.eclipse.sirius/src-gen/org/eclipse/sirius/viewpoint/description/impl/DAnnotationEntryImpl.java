@@ -205,7 +205,7 @@ public class DAnnotationEntryImpl extends IdentifiedElementImpl implements DAnno
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (source: "); //$NON-NLS-1$
         result.append(source);
         result.append(", details: "); //$NON-NLS-1$

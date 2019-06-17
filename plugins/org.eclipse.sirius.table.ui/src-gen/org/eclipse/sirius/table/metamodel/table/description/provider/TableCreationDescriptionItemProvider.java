@@ -103,7 +103,6 @@ public class TableCreationDescriptionItemProvider extends RepresentationCreation
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
-        super.notifyChanged(notification);
     }
 
     /**

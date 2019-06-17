@@ -30,7 +30,7 @@ import org.eclipse.sirius.viewpoint.description.DocumentedElement;
  * </ul>
  *
  * @see org.eclipse.sirius.diagram.description.concern.ConcernPackage#getConcernSet()
- * @model
+ * @model annotation="TagValues"
  * @generated
  */
 public interface ConcernSet extends DocumentedElement {

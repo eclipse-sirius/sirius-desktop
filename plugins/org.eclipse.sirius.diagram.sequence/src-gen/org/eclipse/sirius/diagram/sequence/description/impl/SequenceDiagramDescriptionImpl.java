@@ -222,7 +222,7 @@ public class SequenceDiagramDescriptionImpl extends DiagramDescriptionImpl imple
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (endsOrdering: "); //$NON-NLS-1$
         result.append(endsOrdering);
         result.append(", instanceRolesOrdering: "); //$NON-NLS-1$

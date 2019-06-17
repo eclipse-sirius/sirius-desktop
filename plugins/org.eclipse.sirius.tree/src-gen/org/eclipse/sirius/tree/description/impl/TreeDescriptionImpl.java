@@ -886,7 +886,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (endUserDocumentation: "); //$NON-NLS-1$
         result.append(endUserDocumentation);
         result.append(", name: "); //$NON-NLS-1$

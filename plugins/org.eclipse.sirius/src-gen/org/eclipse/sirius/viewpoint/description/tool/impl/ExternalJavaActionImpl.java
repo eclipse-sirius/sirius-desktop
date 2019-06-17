@@ -322,7 +322,7 @@ public class ExternalJavaActionImpl extends MenuItemDescriptionWithIconImpl impl
             return super.toString();
         }
 
-        StringBuffer result = new StringBuffer(super.toString());
+        StringBuilder result = new StringBuilder(super.toString());
         result.append(" (id: "); //$NON-NLS-1$
         result.append(id);
         result.append(')');

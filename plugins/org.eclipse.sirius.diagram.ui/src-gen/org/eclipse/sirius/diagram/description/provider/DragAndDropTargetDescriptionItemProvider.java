@@ -95,7 +95,6 @@ public class DragAndDropTargetDescriptionItemProvider extends ItemProviderAdapte
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
-        super.notifyChanged(notification);
     }
 
     /**
