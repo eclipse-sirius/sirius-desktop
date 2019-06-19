@@ -219,6 +219,7 @@ public class DRepresentationDescriptorItemProvider extends IdentifiedElementItem
         switch (notification.getFeatureID(DRepresentationDescriptor.class)) {
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__NAME:
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REP_PATH:
+        case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__CHANGE_ID:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__EANNOTATIONS:

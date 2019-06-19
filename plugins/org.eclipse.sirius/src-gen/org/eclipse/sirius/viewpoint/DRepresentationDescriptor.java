@@ -35,6 +35,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
  * <li>{@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getTarget <em>Target</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getRepresentation <em>Representation</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getRepPath <em>Rep Path</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getChangeId <em>Change Id</em>}</li>
  * </ul>
  *
  * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentationDescriptor()
@@ -187,5 +188,27 @@ public interface DRepresentationDescriptor extends IdentifiedElement, DModelElem
      * @generated
      */
     void setRepPath(ResourceDescriptor value);
+
+    /**
+     * Returns the value of the '<em><b>Change Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Change Id</em>' attribute.
+     * @see #setChangeId(String)
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentationDescriptor_ChangeId()
+     * @model
+     * @generated
+     */
+    String getChangeId();
+
+    /**
+     * Sets the value of the '{@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getChangeId <em>Change
+     * Id</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @param value
+     *            the new value of the '<em>Change Id</em>' attribute.
+     * @see #getChangeId()
+     * @generated
+     */
+    void setChangeId(String value);
 
 } // DRepresentationDescriptor

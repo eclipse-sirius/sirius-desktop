@@ -393,13 +393,21 @@ public interface ViewpointPackage extends EPackage {
     int DREPRESENTATION_DESCRIPTOR__REP_PATH = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 5;
 
     /**
+     * The feature id for the '<em><b>Change Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DREPRESENTATION_DESCRIPTOR__CHANGE_ID = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 6;
+
+    /**
      * The number of structural features of the '<em>DRepresentation Descriptor</em>' class. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DREPRESENTATION_DESCRIPTOR_FEATURE_COUNT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 6;
+    int DREPRESENTATION_DESCRIPTOR_FEATURE_COUNT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 7;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl
@@ -1892,6 +1900,18 @@ public interface ViewpointPackage extends EPackage {
     EAttribute getDRepresentationDescriptor_RepPath();
 
     /**
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getChangeId <em>Change Id</em>}'. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Change Id</em>'.
+     * @see org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getChangeId()
+     * @see #getDRepresentationDescriptor()
+     * @generated
+     */
+    EAttribute getDRepresentationDescriptor_ChangeId();
+
+    /**
      * Returns the meta object for the reference '
      * {@link org.eclipse.sirius.viewpoint.DRepresentationDescriptor#getDescription <em>Description</em>}'. <!--
      * begin-user-doc --> <!-- end-user-doc -->
@@ -2949,6 +2969,14 @@ public interface ViewpointPackage extends EPackage {
          * @generated
          */
         EAttribute DREPRESENTATION_DESCRIPTOR__REP_PATH = ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_RepPath();
+
+        /**
+         * The meta object literal for the '<em><b>Change Id</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute DREPRESENTATION_DESCRIPTOR__CHANGE_ID = ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_ChangeId();
 
         /**
          * The meta object literal for the '<em><b>Description</b></em>' reference feature. <!-- begin-user-doc --> <!--

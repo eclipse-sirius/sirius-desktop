@@ -50,6 +50,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getRepresentation
  * <em>Representation</em>}</li>
  * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getRepPath <em>Rep Path</em>}</li>
+ * <li>{@link org.eclipse.sirius.viewpoint.impl.DRepresentationDescriptorImpl#getChangeId <em>Change Id</em>}</li>
  * </ul>
  *
  * @generated
@@ -124,6 +125,26 @@ public class DRepresentationDescriptorImpl extends IdentifiedElementImpl impleme
      * @ordered
      */
     protected ResourceDescriptor repPath = DRepresentationDescriptorImpl.REP_PATH_EDEFAULT;
+
+    /**
+     * The default value of the '{@link #getChangeId() <em>Change Id</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getChangeId()
+     * @generated
+     * @ordered
+     */
+    protected static final String CHANGE_ID_EDEFAULT = null;
+
+    /**
+     * The cached value of the '{@link #getChangeId() <em>Change Id</em>}' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @see #getChangeId()
+     * @generated
+     * @ordered
+     */
+    protected String changeId = DRepresentationDescriptorImpl.CHANGE_ID_EDEFAULT;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -332,6 +353,30 @@ public class DRepresentationDescriptorImpl extends IdentifiedElementImpl impleme
      * @generated
      */
     @Override
+    public String getChangeId() {
+        return changeId;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setChangeId(String newChangeId) {
+        String oldChangeId = changeId;
+        changeId = newChangeId;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, ViewpointPackage.DREPRESENTATION_DESCRIPTOR__CHANGE_ID, oldChangeId, changeId));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public DAnnotation getDAnnotation(String source) {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -381,6 +426,8 @@ public class DRepresentationDescriptorImpl extends IdentifiedElementImpl impleme
             return basicGetRepresentation();
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REP_PATH:
             return getRepPath();
+        case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__CHANGE_ID:
+            return getChangeId();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -413,6 +460,9 @@ public class DRepresentationDescriptorImpl extends IdentifiedElementImpl impleme
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REP_PATH:
             setRepPath((ResourceDescriptor) newValue);
             return;
+        case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__CHANGE_ID:
+            setChangeId((String) newValue);
+            return;
         }
         super.eSet(featureID, newValue);
     }
@@ -443,6 +493,9 @@ public class DRepresentationDescriptorImpl extends IdentifiedElementImpl impleme
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REP_PATH:
             setRepPath(DRepresentationDescriptorImpl.REP_PATH_EDEFAULT);
             return;
+        case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__CHANGE_ID:
+            setChangeId(DRepresentationDescriptorImpl.CHANGE_ID_EDEFAULT);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -467,6 +520,8 @@ public class DRepresentationDescriptorImpl extends IdentifiedElementImpl impleme
             return basicGetRepresentation() != null;
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REP_PATH:
             return DRepresentationDescriptorImpl.REP_PATH_EDEFAULT == null ? repPath != null : !DRepresentationDescriptorImpl.REP_PATH_EDEFAULT.equals(repPath);
+        case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__CHANGE_ID:
+            return DRepresentationDescriptorImpl.CHANGE_ID_EDEFAULT == null ? changeId != null : !DRepresentationDescriptorImpl.CHANGE_ID_EDEFAULT.equals(changeId);
         }
         return super.eIsSet(featureID);
     }
@@ -523,6 +578,8 @@ public class DRepresentationDescriptorImpl extends IdentifiedElementImpl impleme
         result.append(name);
         result.append(", repPath: "); //$NON-NLS-1$
         result.append(repPath);
+        result.append(", changeId: "); //$NON-NLS-1$
+        result.append(changeId);
         result.append(')');
         return result.toString();
     }

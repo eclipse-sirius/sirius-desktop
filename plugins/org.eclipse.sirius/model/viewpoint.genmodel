@@ -63,6 +63,7 @@
       <genFeatures property="Readonly" notify="false" createChild="false" propertySortChoices="true"
           ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentationDescriptor/representation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DRepresentationDescriptor/repPath"/>
+      <genFeatures property="None" createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DRepresentationDescriptor/changeId"/>
     </genClasses>
     <genClasses image="false" ecoreClass="viewpoint.ecore#//DRepresentation">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentation/ownedRepresentationElements"/>

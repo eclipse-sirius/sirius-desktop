@@ -655,6 +655,16 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
+    public EAttribute getDRepresentationDescriptor_ChangeId() {
+        return (EAttribute) dRepresentationDescriptorEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getDRepresentation() {
         return dRepresentationEClass;
     }
@@ -1460,6 +1470,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         createEReference(dRepresentationDescriptorEClass, ViewpointPackage.DREPRESENTATION_DESCRIPTOR__TARGET);
         createEReference(dRepresentationDescriptorEClass, ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REPRESENTATION);
         createEAttribute(dRepresentationDescriptorEClass, ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REP_PATH);
+        createEAttribute(dRepresentationDescriptorEClass, ViewpointPackage.DREPRESENTATION_DESCRIPTOR__CHANGE_ID);
 
         dRepresentationEClass = createEClass(ViewpointPackage.DREPRESENTATION);
         createEReference(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__OWNED_REPRESENTATION_ELEMENTS);
@@ -1698,6 +1709,8 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
                 EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getDRepresentationDescriptor_RepPath(), this.getResourceDescriptor(), "repPath", null, 1, 1, DRepresentationDescriptor.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
+                !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDRepresentationDescriptor_ChangeId(), ecorePackage.getEString(), "changeId", null, 0, 1, DRepresentationDescriptor.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(dRepresentationEClass, DRepresentation.class, "DRepresentation", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$

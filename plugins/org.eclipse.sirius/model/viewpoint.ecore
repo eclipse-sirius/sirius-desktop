@@ -95,6 +95,7 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="repPath" lowerBound="1"
         eType="#//ResourceDescriptor"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="changeId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DRepresentation" abstract="true" eSuperTypes="#//IdentifiedElement #//description/DModelElement #//description/DocumentedElement #//DRefreshable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRepresentationElements"
