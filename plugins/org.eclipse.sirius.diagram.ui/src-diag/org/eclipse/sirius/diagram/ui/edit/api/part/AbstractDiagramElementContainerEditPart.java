@@ -136,13 +136,13 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     protected void handleNotificationEvent(final Notification notification) {
         Set<EditPart> partToRefresh1 = DiagramElementEditPartOperation.handleNotificationEvent(this, notification, false);
         for (EditPart editPart : partToRefresh1) {
-            editPart.refresh();
+            refreshEditPart(notification, editPart);
         }
         super.handleNotificationEvent(notification);
         Set<EditPart> partToRefresh2 = AbstractDiagramNodeEditPartOperation.handleNotificationEvent(this, notification, false);
         partToRefresh2.removeAll(partToRefresh1);
         for (EditPart editPart : partToRefresh2) {
-            editPart.refresh();
+            refreshEditPart(notification, editPart);
         }
 
         handleDefaultSizeNotification(notification);
@@ -155,6 +155,18 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
             if (regionContainer instanceof AbstractDiagramContainerEditPart && shouldRefreshRegionContainerBounds(regionContainer)) {
                 ((AbstractDiagramContainerEditPart) regionContainer).refreshBounds();
             }
+        }
+    }
+
+    private void refreshEditPart(final Notification notification, EditPart editPart) {
+        if (editPart instanceof AbstractDiagramElementContainerEditPart && notification.getEventType() == Notification.ADD) {
+            AbstractDiagramElementContainerEditPart containerEditPart = (AbstractDiagramElementContainerEditPart) editPart;
+            // check if containerEditPart already contains the elementEditPart added to refresh
+            if (!containerEditPart.getModelChildren().contains(notification.getNewValue())) {
+                editPart.refresh();
+            }
+        } else {
+            editPart.refresh();
         }
     }
 
