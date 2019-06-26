@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -121,7 +121,7 @@ public class TreeDialectUIServices implements DialectUIServices {
                 URI repDescURI = Optional.ofNullable(query.getRepresentationDescriptor()).map(repDesc -> EcoreUtil.getURI(repDesc)).orElse(null);
                 final IEditorInput editorInput = new SessionEditorInput(uri, repDescURI, getEditorName(dRepresentation), session);
                 monitor.worked(2);
-                monitor.subTask(Messages.TreeDialectUIServices_treeOpening + " : " + dRepresentation.getName()); //$NON-NLS-1$
+                monitor.subTask(Messages.TreeDialectUIServices_treeOpening + " : " + new DRepresentationQuery(dRepresentation).getRepresentationDescriptor().getName()); //$NON-NLS-1$
                 RunnableWithResult<IEditorPart> runnable = new RunnableWithResult.Impl<IEditorPart>() {
                     @Override
                     public void run() {
@@ -149,7 +149,7 @@ public class TreeDialectUIServices implements DialectUIServices {
 
     @Override
     public String getEditorName(DRepresentation representation) {
-        String editorName = representation.getName();
+        String editorName = new DRepresentationQuery(representation).getRepresentationDescriptor().getName();
         if (StringUtil.isEmpty(editorName)) {
             editorName = Messages.TreeDialectUIServices_newTree;
         }

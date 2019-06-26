@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.util.WrappedException;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
@@ -196,7 +197,7 @@ public class ExportAction extends WorkspaceModifyOperation {
                     // Check that the file name is informed
                     // Put extension to lowerCase.
                     if (outputPath.toFile().isDirectory()) {
-                        filePath = getFilePath(outputPath, representation.getName(), imageFileExtension);
+                        filePath = getFilePath(outputPath, new DRepresentationQuery(representation).getRepresentationDescriptor().getName(), imageFileExtension);
                     } else {
                         if (outputPath.getFileExtension() != null) {
                             String imageFileExtensionLowerCase = outputPath.getFileExtension().toLowerCase();
@@ -215,7 +216,7 @@ public class ExportAction extends WorkspaceModifyOperation {
                     }
                     if (DialectUIManager.INSTANCE.canHandle(representation)) {
                         try {
-                            monitor.subTask("Export as image: " + representation.getName()); //$NON-NLS-1$
+                            monitor.subTask("Export as image: " + new DRepresentationQuery(representation).getRepresentationDescriptor().getName()); //$NON-NLS-1$
                             DialectUIManager.INSTANCE.export(representation, session, filePath, exportFormat, monitor, exportDecorations);
                             monitor.worked(1);
                         } catch (CoreException exception) {

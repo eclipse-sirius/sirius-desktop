@@ -695,18 +695,8 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
-    public EAttribute getDRepresentation_Name() {
-        return (EAttribute) dRepresentationEClass.getEStructuralFeatures().get(2);
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public EReference getDRepresentation_OwnedAnnotationEntries() {
-        return (EReference) dRepresentationEClass.getEStructuralFeatures().get(3);
+        return (EReference) dRepresentationEClass.getEStructuralFeatures().get(2);
     }
 
     /**
@@ -716,7 +706,7 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      */
     @Override
     public EReference getDRepresentation_UiState() {
-        return (EReference) dRepresentationEClass.getEStructuralFeatures().get(4);
+        return (EReference) dRepresentationEClass.getEStructuralFeatures().get(3);
     }
 
     /**
@@ -1475,7 +1465,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         dRepresentationEClass = createEClass(ViewpointPackage.DREPRESENTATION);
         createEReference(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__OWNED_REPRESENTATION_ELEMENTS);
         createEReference(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__REPRESENTATION_ELEMENTS);
-        createEAttribute(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__NAME);
         createEReference(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES);
         createEReference(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__UI_STATE);
 
@@ -1617,9 +1606,9 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         dSemanticDecoratorEClass.getESuperTypes().add(this.getIdentifiedElement());
         dRepresentationDescriptorEClass.getESuperTypes().add(this.getIdentifiedElement());
         dRepresentationDescriptorEClass.getESuperTypes().add(theDescriptionPackage.getDModelElement());
+        dRepresentationDescriptorEClass.getESuperTypes().add(theDescriptionPackage.getDocumentedElement());
         dRepresentationEClass.getESuperTypes().add(this.getIdentifiedElement());
         dRepresentationEClass.getESuperTypes().add(theDescriptionPackage.getDModelElement());
-        dRepresentationEClass.getESuperTypes().add(theDescriptionPackage.getDocumentedElement());
         dRepresentationEClass.getESuperTypes().add(this.getDRefreshable());
         dRepresentationElementEClass.getESuperTypes().add(this.getIdentifiedElement());
         dRepresentationElementEClass.getESuperTypes().add(this.getDMappingBased());
@@ -1720,8 +1709,6 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         initEReference(getDRepresentation_RepresentationElements(), this.getDRepresentationElement(), null, "representationElements", null, 0, -1, DRepresentation.class, EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 EPackageImpl.IS_VOLATILE, !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
-        initEAttribute(getDRepresentation_Name(), theEcorePackage.getEString(), "name", "", 0, 1, DRepresentation.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$//$NON-NLS-2$
-                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEReference(getDRepresentation_OwnedAnnotationEntries(), theDescriptionPackage.getAnnotationEntry(), null, "ownedAnnotationEntries", null, 0, -1, DRepresentation.class, //$NON-NLS-1$
                 !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE,
                 EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);

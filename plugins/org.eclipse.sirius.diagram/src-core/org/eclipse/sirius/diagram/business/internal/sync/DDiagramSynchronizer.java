@@ -221,18 +221,16 @@ public class DDiagramSynchronizer {
     /**
      * Initialize the diagram to synchronize.
      * 
-     * @param name
-     *            name of the diagram.
      * @param target
      *            the semantic element corresponding to the diagram root.
      * @param monitor
      *            to track the progress.
      */
-    public void initDiagram(final String name, final EObject target, final IProgressMonitor monitor) {
+    public void initDiagram(final EObject target, final IProgressMonitor monitor) {
         try {
             monitor.beginTask(Messages.DDiagramSynchronizer_initDiagramMsg, 4);
             this.session = SessionManager.INSTANCE.getSession(target);
-            this.diagram = createEmptyDiagram(name, target);
+            this.diagram = createEmptyDiagram(target);
             this.decorationHelper = new DecorationHelperInternal(diagram, interpreter, accessor);
             monitor.worked(1);
             applyInitializationOperation(target);
@@ -251,9 +249,8 @@ public class DDiagramSynchronizer {
         }
     }
 
-    private DSemanticDiagram createEmptyDiagram(String name, EObject target) {
+    private DSemanticDiagram createEmptyDiagram(EObject target) {
         DSemanticDiagram result = description.createDiagram();
-        result.setName(name);
         result.setDescription(description);
         result.setTarget(target);
         return result;

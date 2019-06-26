@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.migration;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 import org.eclipse.emf.common.util.URI;
@@ -39,11 +41,13 @@ import org.osgi.framework.Version;
  * DRepresentationDescriptor#representation feature is now derived, transient and volatile. It has been replaced by the
  * repPath feature that contains the URI as a String. </br>
  * * Migration to have an uid on DRpresentation which is used to reference DRpresentation from the
- * DRpresentationDescriptor using the part of DRpresentationDescriptor.repPath.
+ * DRpresentationDescriptor using the part of DRpresentationDescriptor.repPath. Also moves the name attribute from
+ * {@link DRepresentation} to {@link DRepresentationDescriptor}.
  * 
  * @author lfasani
  */
 public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant extends AbstractRepresentationsFileMigrationParticipant {
+
     /**
      * The version corresponds to the move of DRep owned by DRepDesc to root objects.
      */
@@ -64,6 +68,27 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant 
      */
     public static final String DVIEW_OWNED_REPRESENTATIONS_UNKNOWN_FEATURE = "ownedRepresentations"; //$NON-NLS-1$
 
+    /**
+     * The label of the feature name of a DRepresentation when serialized.
+     */
+    protected static final String FEATURE_NAME_LABEL = "name"; //$NON-NLS-1$
+
+    /**
+     * A map associating {@link DRepresentation} to their name.
+     */
+    protected Map<DRepresentation, String> representationToNameMap;
+
+    private Map<DRepresentation, DRepresentationDescriptor> representation2RepresentationDescriptorMap;
+
+    /**
+     * Init maps.
+     */
+    public DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant() {
+        super();
+        representation2RepresentationDescriptorMap = new HashMap<>();
+        representationToNameMap = new HashMap<>();
+    }
+
     @Override
     public Version getMigrationVersion() {
         return MIGRATION_VERSION_REP_PATH_UID;
@@ -81,9 +106,25 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant 
                 // Create DRepresentationDescriptor
                 // The method will call DRepresentationDescriptor.setRepresentation that will, in fact, get the
                 // DRepresentation URI and set it on DRepresentationDescriptor.repPath
-                DRepresentationDescriptor descriptor = DRepresentationDescriptorInternalHelper.createDescriptor(representation);
-                ((DView) owner).getOwnedRepresentationDescriptors().add(descriptor);
+                String representationName = representationToNameMap.get(representation);
+                DRepresentationDescriptor newDescriptor = DRepresentationDescriptorInternalHelper.createDescriptor(representation, representationName);
+                ((DView) owner).getOwnedRepresentationDescriptors().add(newDescriptor);
+                if (representationName == null) {
+                    // we save the representation and its descriptor to access it later when we will have the
+                    // representation name.
+                    representation2RepresentationDescriptorMap.put(representation, newDescriptor);
+                }
             }
+        } else if (owner instanceof DRepresentation && FEATURE_NAME_LABEL.equals(unkownFeature.getName())) {
+            DRepresentationDescriptor dRepresentationDescriptor = representation2RepresentationDescriptorMap.get(owner);
+            // A representation descriptor has been created before we had the name of the representation so we update
+            // it.
+            if (dRepresentationDescriptor != null) {
+                dRepresentationDescriptor.setName((String) valueOfUnknownFeature);
+            } else {
+                representationToNameMap.put((DRepresentation) owner, (String) valueOfUnknownFeature);
+            }
+
         }
     }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -234,7 +234,6 @@ public abstract class SiriusTestCase extends TestCase {
                 preferenceStore.setValue(IPreferenceConstants.PREF_ENABLE_ANIMATED_LAYOUT, false);
             }
         });
-
         if (createModelingProject) {
             EclipseTestsSupportHelper.INSTANCE.createModelingProject(SiriusTestCase.TEMPORARY_PROJECT_NAME, false);
         } else {
@@ -1254,6 +1253,7 @@ public abstract class SiriusTestCase extends TestCase {
         return representations;
     }
 
+
     /**
      * Get the representation with the given name.</br>
      * The search scope is the representations already loaded in the session.
@@ -1263,7 +1263,8 @@ public abstract class SiriusTestCase extends TestCase {
      * @return a {@link List} with all representations retrieved.
      */
     protected final List<DRepresentation> getRepresentationsByName(final String representationName) {
-        final List<DRepresentation> representations = DialectManager.INSTANCE.getAllLoadedRepresentations(session).stream().filter(rep -> representationName.equals(rep.getName()))
+        final List<DRepresentation> representations = DialectManager.INSTANCE.getAllRepresentationDescriptors(session).stream().filter(rep -> representationName.equals(rep.getName()))
+                .map(DRepresentationDescriptor::getRepresentation)
                 .collect(Collectors.toList());
         return representations;
     }

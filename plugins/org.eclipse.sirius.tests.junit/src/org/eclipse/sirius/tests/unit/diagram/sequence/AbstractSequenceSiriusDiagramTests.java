@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -55,7 +55,7 @@ import org.eclipse.sirius.sample.interactions.Participant;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.junit.Assert;
 
@@ -152,10 +152,10 @@ public abstract class AbstractSequenceSiriusDiagramTests extends SiriusDiagramTe
     }
 
     protected Option<SequenceDDiagram> getSequenceDDiagramOfType(String name, String type) {
-        Collection<DRepresentation> sequenceDiagrams = getRepresentations(type);
-        for (DRepresentation repr : sequenceDiagrams) {
-            if (repr instanceof SequenceDDiagram && name.equals(repr.getName())) {
-                return Options.newSome((SequenceDDiagram) repr);
+        Collection<DRepresentationDescriptor> sequenceDiagrams = getRepresentationDescriptors(type);
+        for (DRepresentationDescriptor representationDescriptor : sequenceDiagrams) {
+            if (representationDescriptor.getRepresentation() instanceof SequenceDDiagram && name.equals(representationDescriptor.getName())) {
+                return Options.newSome((SequenceDDiagram) representationDescriptor.getRepresentation());
             }
         }
         return Options.newNone();
@@ -374,10 +374,12 @@ public abstract class AbstractSequenceSiriusDiagramTests extends SiriusDiagramTe
         req.setLocation(location.getCopy());
         req.setFactory(new CreationFactory() {
 
+            @Override
             public Object getObjectType() {
                 return tool;
             }
 
+            @Override
             public Object getNewObject() {
                 return tool;
             }

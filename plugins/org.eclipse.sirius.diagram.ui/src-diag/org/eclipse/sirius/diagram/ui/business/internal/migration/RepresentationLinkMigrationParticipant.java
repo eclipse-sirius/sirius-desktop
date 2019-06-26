@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.gmf.runtime.diagram.core.util.ViewType;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
@@ -72,7 +73,9 @@ public class RepresentationLinkMigrationParticipant extends AbstractRepresentati
                         DDiagramGraphicalQuery query = new DDiagramGraphicalQuery((DDiagram) representation);
                         Option<Diagram> option = query.getAssociatedGMFDiagram();
                         if (option.some() && migrateDiagram(option.get())) {
-                            builder.append(MessageFormat.format(Messages.RepresentationLinkMigrationParticipant_entry, representation.getName())).append(System.lineSeparator());
+                            builder.append(
+                                    MessageFormat.format(Messages.RepresentationLinkMigrationParticipant_entry, new DRepresentationQuery(representation).getRepresentationDescriptor().getName()))
+                                    .append(System.lineSeparator());
                             isModified = true;
                         }
                     }

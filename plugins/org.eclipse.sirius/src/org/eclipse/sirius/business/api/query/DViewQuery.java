@@ -64,6 +64,21 @@ public final class DViewQuery {
     }
 
     /**
+     * Get the {@link DRepresentationDescriptor}s which have their associated representation already loaded in the dView
+     * resourceSet.
+     * 
+     * @return an unmodifiable list with the {@link DRepresentationDescriptor}s which have their representation loaded.
+     */
+    public List<DRepresentationDescriptor> getLoadedRepresentationsDescriptors() {
+        if (activateTrace) {
+            Thread.dumpStack();
+        }
+        List<DRepresentationDescriptor> representationDescriptors = dView.getOwnedRepresentationDescriptors().stream().filter(DRepresentationDescriptor::isLoadedRepresentation)
+                .collect(Collectors.toList());
+        return Collections.unmodifiableList(representationDescriptors);
+    }
+
+    /**
      * Get all the EObject following a predicate from all the {@link DRepresentation} inside the {@link DView}
      * ({@link DRepresentation} s are not owned by the {@link DView}).
      * 

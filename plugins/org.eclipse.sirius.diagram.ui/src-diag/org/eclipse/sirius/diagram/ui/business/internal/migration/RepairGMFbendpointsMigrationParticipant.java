@@ -14,7 +14,9 @@ package org.eclipse.sirius.diagram.ui.business.internal.migration;
 
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.eclipse.draw2d.PositionConstants;
@@ -25,6 +27,7 @@ import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
@@ -42,6 +45,7 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.RectilinearEdgeUtil;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
 
@@ -55,11 +59,20 @@ import com.google.common.collect.Iterables;
  * @author jmallet
  */
 public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentationsFileMigrationParticipant {
-
     /**
      * The Sirius version for which this migration is added.
      */
     public static final Version MIGRATION_VERSION = new Version("12.1.0.201708031200"); //$NON-NLS-1$
+
+    /**
+     * The label of the feature name of a DRepresentation when serialized.
+     */
+    protected static final String FEATURE_NAME_LABEL = "name"; //$NON-NLS-1$
+
+    /**
+     * A map associating {@link DRepresentation} to their name.
+     */
+    protected Map<DRepresentation, String> representationToNameMap = new HashMap<>();
 
     @Override
     public Version getMigrationVersion() {
@@ -81,7 +94,7 @@ public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentat
                         }
                         if (isEdgeModified) {
                             isModified = true;
-                            sb.append(MessageFormat.format(Messages.RepairGMFbendpointsMigrationParticipant_edgesModified, dDiagram.getName()));
+                            sb.append(MessageFormat.format(Messages.RepairGMFbendpointsMigrationParticipant_edgesModified, representationToNameMap.get(dDiagram)));
                         }
                     }
                 }
@@ -260,6 +273,13 @@ public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentat
             }
         }
         return edges;
+    }
+
+    @Override
+    protected void handleFeature(EObject owner, EStructuralFeature unkownFeature, Object valueOfUnknownFeature) {
+        if (owner instanceof DRepresentation && FEATURE_NAME_LABEL.equals(unkownFeature.getName())) {
+            representationToNameMap.put((DRepresentation) owner, (String) valueOfUnknownFeature);
+        }
     }
 
 }

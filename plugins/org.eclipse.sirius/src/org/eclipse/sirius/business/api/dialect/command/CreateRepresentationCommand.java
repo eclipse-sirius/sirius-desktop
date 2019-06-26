@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -117,7 +118,7 @@ public class CreateRepresentationCommand extends RecordingCommand {
         final EObject root = CreateRepresentationCommand.computeRepresentationRoot(session.getInterpreter(), creationDescription, semantic);
         representation = DialectManager.INSTANCE.createRepresentation(this.name, root, this.description, this.session, monitor);
         if (representation != null) {
-            representation.setName(name);
+            new DRepresentationQuery(representation).getRepresentationDescriptor().setName(name);
         }
     }
 

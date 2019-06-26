@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -88,14 +88,6 @@ public interface SequencePackage extends EPackage {
     int SEQUENCE_DDIAGRAM__EANNOTATIONS = DiagramPackage.DSEMANTIC_DIAGRAM__EANNOTATIONS;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int SEQUENCE_DDIAGRAM__DOCUMENTATION = DiagramPackage.DSEMANTIC_DIAGRAM__DOCUMENTATION;
-
-    /**
      * The feature id for the '<em><b>Owned Representation Elements</b></em>' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      *
@@ -114,14 +106,6 @@ public interface SequencePackage extends EPackage {
     int SEQUENCE_DDIAGRAM__REPRESENTATION_ELEMENTS = DiagramPackage.DSEMANTIC_DIAGRAM__REPRESENTATION_ELEMENTS;
 
     /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int SEQUENCE_DDIAGRAM__NAME = DiagramPackage.DSEMANTIC_DIAGRAM__NAME;
-
-    /**
      * The feature id for the '<em><b>Owned Annotation Entries</b></em>' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      *
@@ -138,6 +122,14 @@ public interface SequencePackage extends EPackage {
      * @ordered
      */
     int SEQUENCE_DDIAGRAM__UI_STATE = DiagramPackage.DSEMANTIC_DIAGRAM__UI_STATE;
+
+    /**
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int SEQUENCE_DDIAGRAM__DOCUMENTATION = DiagramPackage.DSEMANTIC_DIAGRAM__DOCUMENTATION;
 
     /**
      * The feature id for the '<em><b>Owned Diagram Elements</b></em>' containment reference list. <!-- begin-user-doc

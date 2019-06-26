@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2014, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.tests.swtbot.modelexplorer;
 
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.tests.swtbot.Activator;
@@ -374,7 +375,7 @@ public class LinkWithEditorFeatureWithModelExplorerViewTest extends AbstractSiri
             IStructuredSelection selection = (IStructuredSelection) explorerView.getCommonViewer().getSelection();
             Object selectedElement = selection.getFirstElement();
             return ((selectedElement instanceof ENamedElement) && ((ENamedElement) selectedElement).getName().equals(this.name))
-                    || (selectedElement instanceof DRepresentation) && ((DRepresentation) selectedElement).getName().equals(this.name);
+                    || (selectedElement instanceof DRepresentation) && new DRepresentationQuery(((DRepresentation) selectedElement)).getRepresentationDescriptor().getName().equals(this.name);
         }
 
         @Override

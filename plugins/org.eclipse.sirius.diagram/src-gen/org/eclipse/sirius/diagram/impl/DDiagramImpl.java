@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.FilterVariableHistory;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -39,6 +40,8 @@ import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.description.tool.BehaviorTool;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
+import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
 
@@ -48,6 +51,7 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getDocumentation <em>Documentation</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getOwnedDiagramElements <em>Owned Diagram Elements</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getDiagramElements <em>Diagram Elements</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.impl.DDiagramImpl#getDescription <em>Description</em>}</li>
@@ -75,6 +79,26 @@ import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
  * @generated
  */
 public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
+    /**
+     * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see #getDocumentation()
+     * @generated
+     * @ordered
+     */
+    protected static final String DOCUMENTATION_EDEFAULT = ""; //$NON-NLS-1$
+
+    /**
+     * The cached value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see #getDocumentation()
+     * @generated
+     * @ordered
+     */
+    protected String documentation = DDiagramImpl.DOCUMENTATION_EDEFAULT;
+
     /**
      * The cached value of the '{@link #getOwnedDiagramElements() <em>Owned Diagram Elements</em>}' containment
      * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -272,6 +296,30 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     @Override
     protected EClass eStaticClass() {
         return DiagramPackage.Literals.DDIAGRAM;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public String getDocumentation() {
+        return documentation;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setDocumentation(String newDocumentation) {
+        String oldDocumentation = documentation;
+        documentation = newDocumentation;
+        if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, DiagramPackage.DDIAGRAM__DOCUMENTATION, oldDocumentation, documentation));
+        }
     }
 
     /**
@@ -772,6 +820,8 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     @Override
     public Object eGet(int featureID, boolean resolve, boolean coreType) {
         switch (featureID) {
+        case DiagramPackage.DDIAGRAM__DOCUMENTATION:
+            return getDocumentation();
         case DiagramPackage.DDIAGRAM__OWNED_DIAGRAM_ELEMENTS:
             return getOwnedDiagramElements();
         case DiagramPackage.DDIAGRAM__DIAGRAM_ELEMENTS:
@@ -834,6 +884,9 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     @Override
     public void eSet(int featureID, Object newValue) {
         switch (featureID) {
+        case DiagramPackage.DDIAGRAM__DOCUMENTATION:
+            setDocumentation((String) newValue);
+            return;
         case DiagramPackage.DDIAGRAM__OWNED_DIAGRAM_ELEMENTS:
             getOwnedDiagramElements().clear();
             getOwnedDiagramElements().addAll((Collection<? extends DDiagramElement>) newValue);
@@ -895,6 +948,9 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     @Override
     public void eUnset(int featureID) {
         switch (featureID) {
+        case DiagramPackage.DDIAGRAM__DOCUMENTATION:
+            setDocumentation(DDiagramImpl.DOCUMENTATION_EDEFAULT);
+            return;
         case DiagramPackage.DDIAGRAM__OWNED_DIAGRAM_ELEMENTS:
             getOwnedDiagramElements().clear();
             return;
@@ -949,6 +1005,8 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     @Override
     public boolean eIsSet(int featureID) {
         switch (featureID) {
+        case DiagramPackage.DDIAGRAM__DOCUMENTATION:
+            return DDiagramImpl.DOCUMENTATION_EDEFAULT == null ? documentation != null : !DDiagramImpl.DOCUMENTATION_EDEFAULT.equals(documentation);
         case DiagramPackage.DDIAGRAM__OWNED_DIAGRAM_ELEMENTS:
             return ownedDiagramElements != null && !ownedDiagramElements.isEmpty();
         case DiagramPackage.DDIAGRAM__DIAGRAM_ELEMENTS:
@@ -999,13 +1057,63 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
      * @generated
      */
     @Override
+    public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+        if (baseClass == DocumentedElement.class) {
+            switch (derivedFeatureID) {
+            case DiagramPackage.DDIAGRAM__DOCUMENTATION:
+                return DescriptionPackage.DOCUMENTED_ELEMENT__DOCUMENTATION;
+            default:
+                return -1;
+            }
+        }
+        if (baseClass == DragAndDropTarget.class) {
+            switch (derivedFeatureID) {
+            default:
+                return -1;
+            }
+        }
+        return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+        if (baseClass == DocumentedElement.class) {
+            switch (baseFeatureID) {
+            case DescriptionPackage.DOCUMENTED_ELEMENT__DOCUMENTATION:
+                return DiagramPackage.DDIAGRAM__DOCUMENTATION;
+            default:
+                return -1;
+            }
+        }
+        if (baseClass == DragAndDropTarget.class) {
+            switch (baseFeatureID) {
+            default:
+                return -1;
+            }
+        }
+        return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public String toString() {
         if (eIsProxy()) {
             return super.toString();
         }
 
         StringBuilder result = new StringBuilder(super.toString());
-        result.append(" (synchronized: "); //$NON-NLS-1$
+        result.append(" (documentation: "); //$NON-NLS-1$
+        result.append(documentation);
+        result.append(", synchronized: "); //$NON-NLS-1$
         result.append(synchronized_);
         result.append(", isInLayoutingMode: "); //$NON-NLS-1$
         result.append(isInLayoutingMode);

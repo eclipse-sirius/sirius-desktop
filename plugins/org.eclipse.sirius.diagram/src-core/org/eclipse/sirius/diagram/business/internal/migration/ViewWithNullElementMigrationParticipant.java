@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,8 @@
 package org.eclipse.sirius.diagram.business.internal.migration;
 
 import java.text.MessageFormat;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
@@ -30,6 +32,7 @@ import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
 
@@ -45,6 +48,7 @@ import com.google.common.collect.Iterables;
  *
  */
 public class ViewWithNullElementMigrationParticipant extends AbstractRepresentationsFileMigrationParticipant {
+
     /**
      * The VP version for which this migration is added.
      */
@@ -54,6 +58,16 @@ public class ViewWithNullElementMigrationParticipant extends AbstractRepresentat
      * The name of the feature DView.ownedRepresentations which has been deleted.
      */
     public static final String DVIEW_OWNED_REPRESENTATIONS_UNKNOWN_FEATURE = "ownedRepresentations"; //$NON-NLS-1$
+
+    /**
+     * The label of the feature name of a DRepresentation when serialized.
+     */
+    protected static final String FEATURE_NAME_LABEL = "name"; //$NON-NLS-1$
+
+    /**
+     * A map associating {@link DRepresentation} to their name.
+     */
+    protected Map<DRepresentation, String> representationToNameMap = new HashMap<>();
 
     /**
      * True if a corrupted note attachment has been removed.
@@ -86,7 +100,7 @@ public class ViewWithNullElementMigrationParticipant extends AbstractRepresentat
         DiagramCreationUtil diagramCreationUtil = new DiagramCreationUtil(dDiagram);
         if (diagramCreationUtil.findAssociatedGMFDiagram()) {
             Diagram gmfDiagram = diagramCreationUtil.getAssociatedGMFDiagram();
-            repairViewWihtoutElement(gmfDiagram, dDiagram.getName());
+            repairViewWihtoutElement(gmfDiagram, representationToNameMap.get(dDiagram));
         }
     }
 
@@ -130,6 +144,8 @@ public class ViewWithNullElementMigrationParticipant extends AbstractRepresentat
             if (valueOfUnknownFeature instanceof DDiagram && owner instanceof DView) {
                 repairViewWihtoutElement((DDiagram) valueOfUnknownFeature);
             }
+        } else if (owner instanceof DRepresentation && FEATURE_NAME_LABEL.equals(unkownFeature.getName())) {
+            representationToNameMap.put((DRepresentation) owner, (String) valueOfUnknownFeature);
         }
     }
 

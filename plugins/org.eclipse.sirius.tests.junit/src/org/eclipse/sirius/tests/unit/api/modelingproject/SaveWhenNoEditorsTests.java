@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.jface.viewers.LabelProvider;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -141,7 +142,7 @@ public class SaveWhenNoEditorsTests extends SiriusDiagramTestCase implements Eco
 
     private void rename(final DRepresentation representation) throws Exception {
         TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
-        Command setNamCmd = SetCommand.create(domain, representation, ViewpointPackage.Literals.DREPRESENTATION__NAME, "new name");
+        Command setNamCmd = SetCommand.create(domain, new DRepresentationQuery(representation).getRepresentationDescriptor(), ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__NAME, "new name");
         domain.getCommandStack().execute(setNamCmd);
         Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
     }

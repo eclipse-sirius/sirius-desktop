@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,7 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.IEditorPart;
 
 /**
@@ -170,8 +170,13 @@ public abstract class AbstractFoldingTest extends SiriusDiagramTestCase {
     }
 
     protected DDiagram getDiagramByName(final String name) {
-        Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
-        return allRepresentations.stream().filter(DDiagram.class::isInstance).map(DDiagram.class::cast).filter(input->name.equals(input.getName())).findFirst().orElse(null);
+        Collection<DRepresentationDescriptor> representationDescriptors = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
+        DRepresentationDescriptor representationDescriptor = representationDescriptors.stream().filter(repDesc -> repDesc.getRepresentation() instanceof DDiagram)
+                .filter(input -> name.equals(input.getName())).findFirst().orElse(null);
+        if (representationDescriptor != null) {
+            return (DDiagram) representationDescriptor.getRepresentation();
+        }
+        return null;
     }
 
     @Override

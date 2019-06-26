@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.gmf.runtime.notation.ConnectorStyle;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -62,7 +63,8 @@ public class DeleteMultipleConnectorStyleMigrationParticipant extends AbstractRe
                         }
                         if (isEdgeModified) {
                             migrationOccured = true;
-                            sb.append(MessageFormat.format(Messages.DeleteMultipleConnectorMigrationParticipant_edgesModified, dDiagram.getName()));
+                            sb.append(MessageFormat.format(Messages.DeleteMultipleConnectorMigrationParticipant_edgesModified,
+                                    new DRepresentationQuery(dDiagram).getRepresentationDescriptor().getName()));
                         }
                     });
             if (migrationOccured) {

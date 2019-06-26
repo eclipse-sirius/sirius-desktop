@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -66,15 +66,15 @@ public interface DialectServices {
      *            session used to keep the data.
      * @param monitor
      *            to track progress.
-     * @return the new representation .
+     * @return the new {@link DRepresentation}.
      */
     DRepresentation createRepresentation(String name, EObject semantic, RepresentationDescription description, Session session, IProgressMonitor monitor);
 
     /**
      * Create a new representation from a given one (copy) and keep it in the given session.
      * 
-     * @param representation
-     *            the representation to copy.
+     * @param representationDescriptor
+     *            the representation descriptor containing the representation to copy.
      * @param name
      *            name of the newly representation.
      * @param session
@@ -84,7 +84,7 @@ public interface DialectServices {
      * @return the new representation .
      * @since 0.9.0
      */
-    DRepresentation copyRepresentation(DRepresentation representation, String name, Session session, IProgressMonitor monitor);
+    DRepresentation copyRepresentation(DRepresentationDescriptor representationDescriptor, String name, Session session, IProgressMonitor monitor);
 
     /**
      * Refresh a representation. By default a lazy refresh is done, i.e. only view model elements for which UI parts

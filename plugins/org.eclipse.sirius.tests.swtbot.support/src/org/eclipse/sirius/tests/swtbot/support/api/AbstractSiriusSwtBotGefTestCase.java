@@ -1076,14 +1076,13 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @return the first corresponding representation
      */
     protected final DRepresentation getRepresentationWithName(Session session, String representationDescriptionName, final String representationName) {
-        try {
-            final DRepresentation existingRepresentation = Iterables.find(getRepresentations(session, representationDescriptionName), input -> input.getName().equals(representationName));
-            return existingRepresentation;
-        } catch (NoSuchElementException e) {
+           DRepresentationDescriptor representationDescriptorWithName = getRepresentationDescriptorWithName(session, representationDescriptionName, representationName);
+        if (representationDescriptorWithName != null) {
+            return representationDescriptorWithName.getRepresentation();
+        } else {
             throw new NoSuchElementException("No representation found in session with \"" + representationName + "\" as representation name and with \"" + representationDescriptionName
                     + "\" as representation description name.");
         }
-
     }
 
     /**

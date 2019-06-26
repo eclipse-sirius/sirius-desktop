@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -44,6 +44,7 @@ import org.eclipse.sirius.tests.unit.diagram.control.AbstractControlTest;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.junit.Assert;
@@ -307,9 +308,9 @@ public class SiriusControlTest extends AbstractControlTest {
             final EObject root = findPackageNamed("p2", semanticElt);
             DRepresentation representationP2 = null;
             for (DView dView : session.getOwnedViews()) {
-                for (DRepresentation dRepresentation : new DViewQuery(dView).getLoadedRepresentations()) {
-                    if ("p2 package entities".equals(dRepresentation.getName())) {
-                        representationP2 = dRepresentation;
+                for (DRepresentationDescriptor representationDescriptor : new DViewQuery(dView).getLoadedRepresentationsDescriptors()) {
+                    if ("p2 package entities".equals(representationDescriptor.getName())) {
+                        representationP2 = representationDescriptor.getRepresentation();
                     }
                 }
             }
@@ -535,9 +536,9 @@ public class SiriusControlTest extends AbstractControlTest {
             final EObject p11 = findPackageNamed("p11", semanticElt);
             DRepresentation representationP11 = null;
             for (DView dView : session.getOwnedViews()) {
-                for (DRepresentation dRepresentation : new DViewQuery(dView).getLoadedRepresentations()) {
-                    if ("p11 package entities".equals(dRepresentation.getName())) {
-                        representationP11 = dRepresentation;
+                for (DRepresentationDescriptor representationDescriptor : new DViewQuery(dView).getLoadedRepresentationsDescriptors()) {
+                    if ("p11 package entities".equals(representationDescriptor.getName())) {
+                        representationP11 = representationDescriptor.getRepresentation();
                     }
                 }
             }
@@ -631,9 +632,9 @@ public class SiriusControlTest extends AbstractControlTest {
             final EObject p11 = findPackageNamed("p11", semanticElt);
             DRepresentation representationP11 = null;
             for (DView dView : session.getOwnedViews()) {
-                for (DRepresentation dRepresentation : new DViewQuery(dView).getLoadedRepresentations()) {
-                    if ("p11 package entities".equals(dRepresentation.getName())) {
-                        representationP11 = dRepresentation;
+                for (DRepresentationDescriptor representationDescriptor : new DViewQuery(dView).getLoadedRepresentationsDescriptors()) {
+                    if ("p11 package entities".equals(representationDescriptor.getName())) {
+                        representationP11 = representationDescriptor.getRepresentation();
                     }
                 }
             }
@@ -654,9 +655,9 @@ public class SiriusControlTest extends AbstractControlTest {
             final EObject p1 = findPackageNamed("p1", semanticElt);
             DRepresentation representationP1 = null;
             for (DView dView : session.getOwnedViews()) {
-                for (DRepresentation dRepresentation : new DViewQuery(dView).getLoadedRepresentations()) {
-                    if ("p1 package entities".equals(dRepresentation.getName())) {
-                        representationP1 = dRepresentation;
+                for (DRepresentationDescriptor representationDescriptor : new DViewQuery(dView).getLoadedRepresentationsDescriptors()) {
+                    if ("p1 package entities".equals(representationDescriptor.getName())) {
+                        representationP1 = representationDescriptor.getRepresentation();
                     }
                 }
             }

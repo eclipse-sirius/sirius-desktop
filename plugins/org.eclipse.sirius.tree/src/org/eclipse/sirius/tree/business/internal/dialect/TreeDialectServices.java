@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -32,9 +32,10 @@ import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressio
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.internal.query.DRepresentationDescriptorInternalHelper;
+import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -104,11 +105,11 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
             }
 
             tree = TreeFactory.eINSTANCE.createDTree();
-            tree.setName(name);
             tree.setDescription((TreeDescription) description);
             tree.setTarget(semantic);
             monitor.worked(1);
 
+            DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(tree, (DAnalysisSessionImpl) session, semantic.eResource(), name);
             refresh(tree, new SubProgressMonitor(monitor, 10));
         } finally {
             monitor.done();
@@ -163,10 +164,10 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
     }
 
     @Override
-    public DRepresentation copyRepresentation(final DRepresentation representation, final String name, final Session session, final IProgressMonitor monitor) {
-        DRepresentation newRepresentation = super.copyRepresentation(representation, name, session, monitor);
-        /* associate the one */
-        session.getServices().putCustomData(CustomDataConstants.DREPRESENTATION, ((DSemanticDecorator) representation).getTarget(), newRepresentation);
+    public DRepresentation copyRepresentation(final DRepresentationDescriptor representationDescriptor, final String name, final Session session, final IProgressMonitor monitor) {
+        DRepresentation newRepresentation = super.copyRepresentation(representationDescriptor, name, session, monitor);
+        DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(newRepresentation, (DAnalysisSessionImpl) session,
+                ((DSemanticDecorator) representationDescriptor).getTarget().eResource(), name);
         return newRepresentation;
     }
 

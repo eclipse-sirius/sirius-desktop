@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,7 @@ import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DView;
 
@@ -387,9 +387,10 @@ public class FragmentedFilesMigrationTest extends AbstractRepairMigrateTest {
 
     private DSemanticDiagram getDiagramFromName(final Session sessionToGo, final String name) {
         for (final DView dView : sessionToGo.getOwnedViews()) {
-            for (final Iterator<DRepresentation> iterator = new DViewQuery(dView).getLoadedRepresentations().iterator(); iterator.hasNext();) {
-                final DSemanticDiagram rep = (DSemanticDiagram) iterator.next();
-                if (name.equals(rep.getName())) {
+            for (final Iterator<DRepresentationDescriptor> iterator = new DViewQuery(dView).getLoadedRepresentationsDescriptors().iterator(); iterator.hasNext();) {
+                DRepresentationDescriptor representationDescriptor = iterator.next();
+                final DSemanticDiagram rep = (DSemanticDiagram) representationDescriptor.getRepresentation();
+                if (name.equals(representationDescriptor.getName())) {
                     return rep;
                 }
             }

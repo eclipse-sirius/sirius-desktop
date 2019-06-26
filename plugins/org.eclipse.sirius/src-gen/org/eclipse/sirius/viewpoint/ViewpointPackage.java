@@ -353,12 +353,20 @@ public interface ViewpointPackage extends EPackage {
     int DREPRESENTATION_DESCRIPTOR__EANNOTATIONS = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
 
     /**
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DREPRESENTATION_DESCRIPTOR__DOCUMENTATION = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 1;
+
+    /**
      * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DREPRESENTATION_DESCRIPTOR__NAME = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 1;
+    int DREPRESENTATION_DESCRIPTOR__NAME = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Description</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -366,7 +374,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DREPRESENTATION_DESCRIPTOR__DESCRIPTION = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 2;
+    int DREPRESENTATION_DESCRIPTOR__DESCRIPTION = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Target</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -374,7 +382,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DREPRESENTATION_DESCRIPTOR__TARGET = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 3;
+    int DREPRESENTATION_DESCRIPTOR__TARGET = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Representation</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -382,7 +390,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DREPRESENTATION_DESCRIPTOR__REPRESENTATION = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 4;
+    int DREPRESENTATION_DESCRIPTOR__REPRESENTATION = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Rep Path</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -390,7 +398,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DREPRESENTATION_DESCRIPTOR__REP_PATH = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 5;
+    int DREPRESENTATION_DESCRIPTOR__REP_PATH = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Change Id</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -398,7 +406,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DREPRESENTATION_DESCRIPTOR__CHANGE_ID = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 6;
+    int DREPRESENTATION_DESCRIPTOR__CHANGE_ID = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 7;
 
     /**
      * The number of structural features of the '<em>DRepresentation Descriptor</em>' class. <!-- begin-user-doc -->
@@ -407,7 +415,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DREPRESENTATION_DESCRIPTOR_FEATURE_COUNT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 7;
+    int DREPRESENTATION_DESCRIPTOR_FEATURE_COUNT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 8;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.DRepresentationImpl
@@ -437,21 +445,13 @@ public interface ViewpointPackage extends EPackage {
     int DREPRESENTATION__EANNOTATIONS = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 0;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int DREPRESENTATION__DOCUMENTATION = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 1;
-
-    /**
      * The feature id for the '<em><b>Owned Representation Elements</b></em>' reference list. <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DREPRESENTATION__OWNED_REPRESENTATION_ELEMENTS = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 2;
+    int DREPRESENTATION__OWNED_REPRESENTATION_ELEMENTS = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 1;
 
     /**
      * The feature id for the '<em><b>Representation Elements</b></em>' reference list. <!-- begin-user-doc --> <!--
@@ -460,15 +460,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DREPRESENTATION__REPRESENTATION_ELEMENTS = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 3;
-
-    /**
-     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int DREPRESENTATION__NAME = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 4;
+    int DREPRESENTATION__REPRESENTATION_ELEMENTS = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 2;
 
     /**
      * The feature id for the '<em><b>Owned Annotation Entries</b></em>' containment reference list. <!-- begin-user-doc
@@ -477,7 +469,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DREPRESENTATION__OWNED_ANNOTATION_ENTRIES = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 5;
+    int DREPRESENTATION__OWNED_ANNOTATION_ENTRIES = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Ui State</b></em>' containment reference. <!-- begin-user-doc --> <!--
@@ -486,7 +478,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DREPRESENTATION__UI_STATE = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 6;
+    int DREPRESENTATION__UI_STATE = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 4;
 
     /**
      * The number of structural features of the '<em>DRepresentation</em>' class. <!-- begin-user-doc --> <!--
@@ -495,7 +487,7 @@ public interface ViewpointPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int DREPRESENTATION_FEATURE_COUNT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 7;
+    int DREPRESENTATION_FEATURE_COUNT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 5;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.DRepresentationElementImpl
@@ -1970,17 +1962,6 @@ public interface ViewpointPackage extends EPackage {
     EReference getDRepresentation_RepresentationElements();
 
     /**
-     * Returns the meta object for the attribute '{@link org.eclipse.sirius.viewpoint.DRepresentation#getName
-     * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @return the meta object for the attribute '<em>Name</em>'.
-     * @see org.eclipse.sirius.viewpoint.DRepresentation#getName()
-     * @see #getDRepresentation()
-     * @generated
-     */
-    EAttribute getDRepresentation_Name();
-
-    /**
      * Returns the meta object for the containment reference list
      * '{@link org.eclipse.sirius.viewpoint.DRepresentation#getOwnedAnnotationEntries <em>Owned Annotation
      * Entries</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -3019,14 +3000,6 @@ public interface ViewpointPackage extends EPackage {
          * @generated
          */
         EReference DREPRESENTATION__REPRESENTATION_ELEMENTS = ViewpointPackage.eINSTANCE.getDRepresentation_RepresentationElements();
-
-        /**
-         * The meta object literal for the '<em><b>Name</b></em>' attribute feature. <!-- begin-user-doc --> <!--
-         * end-user-doc -->
-         *
-         * @generated
-         */
-        EAttribute DREPRESENTATION__NAME = ViewpointPackage.eINSTANCE.getDRepresentation_Name();
 
         /**
          * The meta object literal for the '<em><b>Owned Annotation Entries</b></em>' containment reference list

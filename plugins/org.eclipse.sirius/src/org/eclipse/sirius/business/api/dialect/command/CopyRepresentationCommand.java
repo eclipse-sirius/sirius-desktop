@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,7 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.Messages;
 
 /**
@@ -29,7 +29,7 @@ import org.eclipse.sirius.viewpoint.Messages;
  */
 public class CopyRepresentationCommand extends RecordingCommand {
 
-    private Collection<DRepresentation> representations;
+    private Collection<DRepresentationDescriptor> representationDescriptors;
 
     private Session session;
 
@@ -40,16 +40,16 @@ public class CopyRepresentationCommand extends RecordingCommand {
      * 
      * @param domain
      *            the current editing domain.
-     * @param representations
-     *            the representations to copy.
+     * @param representationDescriptors
+     *            the {@link DRepresentationDescriptor} referencing the representations to copy.
      * @param newName
      *            the name of new representations.
      * @param session
      *            the current session.
      */
-    public CopyRepresentationCommand(TransactionalEditingDomain domain, Collection<DRepresentation> representations, String newName, Session session) {
+    public CopyRepresentationCommand(TransactionalEditingDomain domain, Collection<DRepresentationDescriptor> representationDescriptors, String newName, Session session) {
         super(domain, Messages.CopyRepresentationCommand_label);
-        this.representations = representations;
+        this.representationDescriptors = representationDescriptors;
         this.newName = newName;
         this.session = session;
     }
@@ -59,20 +59,20 @@ public class CopyRepresentationCommand extends RecordingCommand {
      */
     @Override
     protected void doExecute() {
-        if (representations == null || session == null) {
+        if (representationDescriptors == null || session == null) {
             return;
         }
 
-        for (final DRepresentation representation : representations) {
-            DialectManager.INSTANCE.copyRepresentation(representation, getName(representation), session, null);
+        for (final DRepresentationDescriptor representationDescriptor : representationDescriptors) {
+            DialectManager.INSTANCE.copyRepresentation(representationDescriptor, getName(representationDescriptor), session, null);
         }
     }
 
-    private String getName(final DRepresentation representation) {
-        if (representations.size() == 1) {
+    private String getName(final DRepresentationDescriptor representationDescriptor) {
+        if (representationDescriptors.size() == 1) {
             return newName;
         } else {
-            return newName + " " + representation.getName(); //$NON-NLS-1$
+            return newName + " " + representationDescriptor.getName(); //$NON-NLS-1$
         }
     }
 }

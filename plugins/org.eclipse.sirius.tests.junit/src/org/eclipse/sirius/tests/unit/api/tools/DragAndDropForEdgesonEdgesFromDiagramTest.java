@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
@@ -65,6 +66,7 @@ public class DragAndDropForEdgesonEdgesFromDiagramTest extends AbstractEdgeOnEdg
     private static final String MODELER_PATH = "2182-dnd.odesign";
 
     private Predicate<EPackage> dndFromModelContentViewFromNodeToEdgeSemanticPredicate_fromdiagram = new Predicate<EPackage>() {
+        @Override
         public boolean apply(EPackage semanticRoot) {
             boolean dndCorrectlyOccured = false;
             EClass targetContainer = ((EClass) semanticRoot.getEClassifier("C1"));
@@ -78,6 +80,7 @@ public class DragAndDropForEdgesonEdgesFromDiagramTest extends AbstractEdgeOnEdg
     };
 
     private Predicate<EPackage> dndFromModelContentViewFromEdgeToNodeSemanticPredicate_fromdiagram = new Predicate<EPackage>() {
+        @Override
         public boolean apply(EPackage semanticRoot) {
             boolean dndCorrectlyOccured = false;
             EClass targetContainer = ((EClass) semanticRoot.getEClassifier("C1"));
@@ -90,6 +93,7 @@ public class DragAndDropForEdgesonEdgesFromDiagramTest extends AbstractEdgeOnEdg
         }
     };
 
+    @Override
     protected String getFolder() {
         return FOLDER;
     }
@@ -411,7 +415,7 @@ public class DragAndDropForEdgesonEdgesFromDiagramTest extends AbstractEdgeOnEdg
                 edgeElement = edge;
             }
         }
-        assertNotNull("Edge should have been created on diagram " + diagram.getName(), edgeElement);
+        assertNotNull("Edge should have been created on diagram " + new DRepresentationQuery(diagram).getRepresentationDescriptor().getName(), edgeElement);
 
         // Step 2.2 : an editpart should have been created
         IDiagramEdgeEditPart gmfEP = (IDiagramEdgeEditPart) getEditPart(edgeElement, editor);

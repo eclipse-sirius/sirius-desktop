@@ -57,6 +57,7 @@ public class DRepresentationDescriptorItemProvider extends IdentifiedElementItem
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
+            addDocumentationPropertyDescriptor(object);
             addNamePropertyDescriptor(object);
             addDescriptionPropertyDescriptor(object);
             addTargetPropertyDescriptor(object);
@@ -64,6 +65,19 @@ public class DRepresentationDescriptorItemProvider extends IdentifiedElementItem
             addRepPathPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
+    }
+
+    /**
+     * This adds a property descriptor for the Documentation feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addDocumentationPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DocumentedElement_documentation_feature"), //$NON-NLS-1$
+                        getString("_UI_DocumentedElement_documentation_description"), //$NON-NLS-1$
+                        DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
+                        null));
     }
 
     /**
@@ -217,6 +231,7 @@ public class DRepresentationDescriptorItemProvider extends IdentifiedElementItem
         updateChildren(notification);
 
         switch (notification.getFeatureID(DRepresentationDescriptor.class)) {
+        case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__DOCUMENTATION:
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__NAME:
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__REP_PATH:
         case ViewpointPackage.DREPRESENTATION_DESCRIPTOR__CHANGE_ID:

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -41,6 +42,7 @@ import org.eclipse.sirius.tests.unit.diagram.GenericTestCase;
 import org.eclipse.sirius.tests.unit.diagram.modelers.uml.UML2ModelerConstants;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -187,11 +189,11 @@ public class RepresentationCopierTest extends GenericTestCase implements UML2Mod
 
             @Override
             protected boolean haveEqualAttribute(EObject eObject1, EObject eObject2, EAttribute attribute) {
-                boolean ignored = attribute.isID() || ViewpointPackage.Literals.DREPRESENTATION__NAME.equals(attribute);
+                boolean ignored = attribute.isID() || ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__NAME.equals(attribute);
                 return ignored || super.haveEqualAttribute(eObject1, eObject2, attribute);
             }
         };
-        assertTrue(helper.equals(originalDiagram, copy));
+        assertTrue(helper.equals(new DRepresentationQuery(originalDiagram).getRepresentationDescriptor(), new DRepresentationQuery(copy).getRepresentationDescriptor()));
 
         for (int i = 0; i < copied.size(); i++) {
             IdentifiedElement copiedElt = copied.get(i);
@@ -218,13 +220,13 @@ public class RepresentationCopierTest extends GenericTestCase implements UML2Mod
         /* check that copy has the name asked */
         assertTrue(originalDiagram != copy);
         assertFalse(originalDiagram.getUid().equals(copy.getUid()));
-        assertEquals(newRepresentationName, copy.getName());
+        assertEquals(newRepresentationName, new DRepresentationQuery(copy).getRepresentationDescriptor().getName());
 
         copy = copyUseCaseDiagram(newRepresentationName);
         /* check that copy has the name asked */
         assertTrue(originalUseCaseDiagram != copy);
         assertFalse(originalUseCaseDiagram.getUid().equals(copy.getUid()));
-        assertEquals(newRepresentationName, copy.getName());
+        assertEquals(newRepresentationName, new DRepresentationQuery(copy).getRepresentationDescriptor().getName());
     }
 
     public void testReferencesFromGMFViewsToDiagramElements() throws Exception {
@@ -292,14 +294,14 @@ public class RepresentationCopierTest extends GenericTestCase implements UML2Mod
     }
 
     private DDiagram copyDiagram(final String name) {
-        return copyDiagram(name, originalDiagram);
+        return copyDiagram(name, new DRepresentationQuery(originalDiagram).getRepresentationDescriptor());
     }
 
     private DDiagram copyUseCaseDiagram(final String name) {
-        return copyDiagram(name, originalUseCaseDiagram);
+        return copyDiagram(name, new DRepresentationQuery(originalUseCaseDiagram).getRepresentationDescriptor());
     }
 
-    private DDiagram copyDiagram(final String name, final DDiagram diagramToCopy) {
+    private DDiagram copyDiagram(final String name, final DRepresentationDescriptor diagramToCopy) {
         TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(diagramToCopy);
         RecordingCommand copyCommand = new RecordingCommand(domain) {
 

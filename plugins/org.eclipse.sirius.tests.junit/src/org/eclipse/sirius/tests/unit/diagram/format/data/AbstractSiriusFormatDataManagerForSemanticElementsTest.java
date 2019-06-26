@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -53,8 +53,8 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.impl.DRepresentationImpl;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.base.Predicate;
@@ -69,9 +69,9 @@ public abstract class AbstractSiriusFormatDataManagerForSemanticElementsTest ext
 
     protected static final boolean REGENERATE_TEST_DATA = false;
 
-    protected static final Comparator<DRepresentation> USING_NAME = new Comparator<DRepresentation>() {
+    protected static final Comparator<DRepresentationDescriptor> USING_NAME = new Comparator<DRepresentationDescriptor>() {
         @Override
-        public int compare(final DRepresentation o1, final DRepresentation o2) {
+        public int compare(final DRepresentationDescriptor o1, final DRepresentationDescriptor o2) {
             return o1.getName().compareTo(o2.getName());
         }
     };
@@ -259,11 +259,11 @@ public abstract class AbstractSiriusFormatDataManagerForSemanticElementsTest ext
 
         final List<Diagram> result = new ArrayList<>();
 
-        final List<DRepresentation> allDDiagrams = new ArrayList<DRepresentation>(getRepresentations(representation.name));
+        final List<DRepresentationDescriptor> allDDiagramDescriptors = new ArrayList<DRepresentationDescriptor>(getRepresentationDescriptors(representation.name));
 
-        assertEquals("The number of expected diagrams is wrong", representation.diagrams.size(), allDDiagrams.size());
+        assertEquals("The number of expected diagrams is wrong", representation.diagrams.size(), allDDiagramDescriptors.size());
 
-        Collections.sort(allDDiagrams, USING_NAME);
+        Collections.sort(allDDiagramDescriptors, USING_NAME);
 
         Iterable<Diagram> diagrams;
         if (rawFiltered) {
@@ -275,22 +275,14 @@ public abstract class AbstractSiriusFormatDataManagerForSemanticElementsTest ext
 
         for (final Diagram diagram : diagrams) {
 
-            final DRepresentation key = new DRepresentationImpl() {
+            DRepresentationDescriptor dRepresentationDescriptorToFind = ViewpointFactory.eINSTANCE.createDRepresentationDescriptor();
+            dRepresentationDescriptorToFind.setName(diagram.name);
 
-                /**
-                 * {@inheritDoc}
-                 */
-                @Override
-                public String getName() {
-                    return diagram.name;
-                }
-            };
-
-            final int search = Collections.binarySearch(allDDiagrams, key, USING_NAME);
+            final int search = Collections.binarySearch(allDDiagramDescriptors, dRepresentationDescriptorToFind, USING_NAME);
 
             assertTrue("Diagram is not found in representation", search > -1);
 
-            final DDiagram dDiagram = (DDiagram) allDDiagrams.get(search);
+            final DDiagram dDiagram = (DDiagram) allDDiagramDescriptors.get(search).getRepresentation();
 
             final IEditorPart editorPart = DialectUIManager.INSTANCE.openEditor(session, dDiagram, new NullProgressMonitor());
             TestsUtil.synchronizationWithUIThread();
@@ -367,10 +359,10 @@ public abstract class AbstractSiriusFormatDataManagerForSemanticElementsTest ext
     }
 
     protected DiagramEditPart openRawDiagram(final Diagram diagram) {
-        for (final DRepresentation representation : getRepresentations(diagram.parent.name)) {
-            final DDiagram dDiagram = (DDiagram) representation;
+        for (final DRepresentationDescriptor representationDescriptor : getRepresentationDescriptors(diagram.parent.name)) {
+            final DDiagram dDiagram = (DDiagram) representationDescriptor.getRepresentation();
 
-            if (diagram.name.equals(dDiagram.getName())) {
+            if (diagram.name.equals(representationDescriptor.getName())) {
                 diagram.rawDiagramEditor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, dDiagram, new NullProgressMonitor());
                 TestsUtil.synchronizationWithUIThread();
                 break;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,35 +21,25 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.transaction.RunnableWithResult;
-import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.RepresentationHelper;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.DViewQuery;
-import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.SessionService;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector;
-import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionService;
-import org.eclipse.sirius.business.internal.query.DRepresentationDescriptorInternalHelper;
 import org.eclipse.sirius.business.internal.representation.DRepresentationLocationManager;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisCustomData;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
-import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.base.Preconditions;
 
@@ -86,30 +76,11 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
     public void clearCustomData(final String key, final EObject associatedInstance) {
         final Collection<DAnalysis> analysisAndReferenced = session.allAnalyses();
         final Collection<Resource> resources = getResources(analysisAndReferenced);
-        if (CustomDataConstants.DREPRESENTATION.equals(key)) {
-            clearRepresentationData(associatedInstance, analysisAndReferenced);
-        } else if (CustomDataConstants.GMF_DIAGRAMS.equals(key)) {
+        if (CustomDataConstants.GMF_DIAGRAMS.equals(key)) {
             clearGMFDiagramsData(associatedInstance, resources, analysisAndReferenced);
         }
     }
 
-    private void clearRepresentationData(final EObject associatedInstance, final Collection<DAnalysis> analysisAndReferenced) {
-        for (DRepresentation rep : getAllRepresentations(analysisAndReferenced)) {
-            if (rep instanceof DSemanticDecorator && ((DSemanticDecorator) rep).getTarget() == associatedInstance) {
-                SiriusUtil.delete(rep);
-            }
-        }
-    }
-
-    private Collection<DRepresentation> getAllRepresentations(final Collection<DAnalysis> analysisAndReferenced) {
-        final Collection<DRepresentation> representations = new ArrayList<>();
-        for (DAnalysis analysis : analysisAndReferenced) {
-            for (final DView view : analysis.getOwnedViews()) {
-                representations.addAll(new DViewQuery(view).getLoadedRepresentations());
-            }
-        }
-        return representations;
-    }
 
     private void clearGMFDiagramsData(final EObject associatedInstance, final Collection<Resource> resources, Collection<DAnalysis> analysisAndReferenced) {
         final Collection<EObject> toRemove = new ArrayList<>();
@@ -138,8 +109,6 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         if (CustomDataConstants.GMF_DIAGRAMS.equals(key)) {
             datas = getGMFDiagramsData(associatedInstance);
             datas.addAll(getGMFDiagramsData(associatedInstance, resources));
-        } else if (CustomDataConstants.DREPRESENTATION.equals(key)) {
-            datas = getRepresentationData(associatedInstance, analysisAndReferenced);
         } else if (CustomDataConstants.DREPRESENTATION_FROM_DESCRIPTION.equals(key)) {
             datas = getRepresentationFromDescData(associatedInstance, analysisAndReferenced);
         } else if (CustomDataConstants.DFEATUREEXTENSION.equals(key)) {
@@ -164,48 +133,6 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         return datas;
     }
 
-    private Collection<EObject> getRepresentationData(final EObject associatedInstance, final Collection<DAnalysis> analysisAndReferenced) {
-        RunnableWithResult<Collection<EObject>> runnable = new RunnableWithResult.Impl<Collection<EObject>>() {
-
-            @Override
-            public void run() {
-                Collection<EObject> datas = new ArrayList<EObject>();
-                for (DAnalysis analysis : analysisAndReferenced) {
-                    for (final DView view : analysis.getOwnedViews()) {
-                        final Iterator<DRepresentation> it = new DViewQuery(view).getLoadedRepresentations().iterator();
-                        while (it.hasNext()) {
-                            final DRepresentation rep = it.next();
-                            if (rep instanceof DSemanticDecorator) {
-                                final EObject element = ((DSemanticDecorator) rep).getTarget();
-                                if (element != null && element == associatedInstance) {
-                                    datas.add(rep);
-                                } else if (associatedInstance == null) {
-                                    datas.add(rep);
-                                }
-                            }
-                        }
-                    }
-                }
-                setResult(datas);
-            }
-
-        };
-        if (associatedInstance != null) {
-            TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(associatedInstance);
-            if (domain != null) {
-                try {
-                    TransactionUtil.runExclusive(domain, runnable);
-                } catch (InterruptedException e) {
-                    SiriusPlugin.getDefault().error(e.getLocalizedMessage(), e);
-                }
-            } else {
-                runnable.run();
-            }
-        } else {
-            runnable.run();
-        }
-        return runnable.getResult();
-    }
 
     private Collection<EObject> getRepresentationFromDescData(final EObject associatedInstance, Collection<DAnalysis> analysisAndReferenced) {
         final Collection<EObject> datas = new ArrayList<>();
@@ -281,17 +208,6 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
                 RepresentationHelper.getOrCreateAnnotation(CustomDataConstants.GMF_DIAGRAMS, (DRepresentation) associatedInstance, data);
             }
 
-        } else if (CustomDataConstants.DREPRESENTATION.equals(key)) {
-            if (data instanceof DRepresentation) {
-                final EObject semanticTarget = associatedInstance;
-                if (semanticTarget != null) {
-                    final Resource res = semanticTarget.eResource();
-                    if (res != null) {
-                        addRepresentationToContainer((DRepresentation) data, res);
-                    }
-                }
-
-            }
         } else if (CustomDataConstants.DFEATUREEXTENSION.equals(key)) {
             final Resource resource = associatedInstance.eResource();
             if (resource != null) {
@@ -333,47 +249,17 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         return false;
     }
 
-    /**
-     * Create the {@link DRepresentationDescriptor} in the {@link DView} and the associated {@link DRepresentation} as
-     * root object of the {@link DAnalysis} resource.
-     * 
-     * @param representation
-     *            the {@link DRepresentation} to add
-     * @param semanticResource
-     */
-    private void addRepresentationToContainer(final DRepresentation representation, final Resource semanticResource) {
-        final EObject semanticRoot = semanticResource.getContents().iterator().next();
-        RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
-
-        final Viewpoint viewpoint = new RepresentationDescriptionQuery(description).getParentViewpoint();
-        DView dView = DAnalysisSessionHelper.findContainerForAddedRepresentation(semanticRoot, viewpoint, session.allAnalyses(), analysisSelector, representation);
-
-        if (dView == null) {
-            dView = DAnalysisSessionHelper.findFreeContainerForAddedRepresentation(viewpoint, semanticRoot, session.getAnalyses(), analysisSelector, representation);
-            if (dView != null) {
-                dView.setViewpoint(viewpoint);
-            }
-        }
-        if (dView == null) {
-            dView = ViewpointFactory.eINSTANCE.createDView();
-            dView.setViewpoint(viewpoint);
-            final DAnalysis analysis = DAnalysisSessionHelper.selectAnalysis(viewpoint, session.allAnalyses(), analysisSelector, representation);
-            analysis.getOwnedViews().add(dView);
-        }
-
-        Resource resourceforRepresentation = representationLocationManager.getOrCreateRepresentationResource(representation, dView.eResource());
-        if (resourceforRepresentation != null) {
-            session.registerResourceInCrossReferencer(resourceforRepresentation);
-            resourceforRepresentation.getContents().add(representation);
-        }
-
-        final DRepresentationDescriptor descriptor = DRepresentationDescriptorInternalHelper.createDescriptor(representation);
-        dView.getOwnedRepresentationDescriptors().add(descriptor);
-
-    }
 
     @Override
     public void setAnalysisSelector(final DAnalysisSelector selector) {
         this.analysisSelector = selector;
+    }
+
+    public DAnalysisSelector getAnalysisSelector() {
+        return analysisSelector;
+    }
+
+    public DRepresentationLocationManager getRepresentationLocationManager() {
+        return representationLocationManager;
     }
 }

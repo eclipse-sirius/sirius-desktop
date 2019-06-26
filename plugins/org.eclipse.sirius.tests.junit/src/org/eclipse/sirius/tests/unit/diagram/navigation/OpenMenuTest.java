@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,7 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
@@ -198,9 +198,9 @@ public class OpenMenuTest extends SiriusDiagramTestCase {
     }
 
     private IEditorPart openRepresentation(final String name) {
-        for (final DRepresentation representation : DialectManager.INSTANCE.getAllRepresentations(session)) {
-            if (name.equals(representation.getName())) {
-                IEditorPart openEditor = DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
+        for (final DRepresentationDescriptor representationDescriptor : DialectManager.INSTANCE.getAllRepresentationDescriptors(session)) {
+            if (name.equals(representationDescriptor.getName())) {
+                IEditorPart openEditor = DialectUIManager.INSTANCE.openEditor(session, representationDescriptor.getRepresentation(), new NullProgressMonitor());
                 TestsUtil.synchronizationWithUIThread();
                 return openEditor;
             }

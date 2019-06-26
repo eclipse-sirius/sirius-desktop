@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -133,7 +133,7 @@ public class SiriusControlHandler extends AbstractHandler {
                         if (editor instanceof IReusableEditor) {
                             IReusableEditor iReusableEditor = (IReusableEditor) editor;
                             SessionEditorInput updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(dRepDescriptor.getRepresentation()), EcoreUtil.getURI(dRepDescriptor),
-                                    dRepDescriptor.getRepresentation().getName(), session);
+                                    dRepDescriptor.getName(), session);
                             iReusableEditor.setInput(updatedEditorInput);
                         }
                     }

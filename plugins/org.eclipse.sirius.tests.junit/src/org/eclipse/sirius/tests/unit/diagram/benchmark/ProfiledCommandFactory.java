@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -211,11 +211,12 @@ public class ProfiledCommandFactory {
                         while (it.hasNext()) {
                             final EObject nextElement = it.next();
                             if (DialectManager.INSTANCE.canCreate(nextElement, (DiagramDescription) description)) {
-                                final DRepresentation rep = DialectManager.INSTANCE.createRepresentation("Diagram for " + nextElement.toString(), nextElement, (DiagramDescription) description,
+                                final DRepresentation representation = DialectManager.INSTANCE.createRepresentation("Diagram for " + nextElement.toString(), nextElement,
+                                        (DiagramDescription) description,
                                         session, new NullProgressMonitor());
-                                TestCase.assertNotNull("The representation hasn't been created.", rep);
-                                TestCase.assertNotNull("Representation hasn't been added to its resource.", rep.eResource());
-                                representations.add(rep);
+                                TestCase.assertNotNull("The representation hasn't been created.", representation);
+                                TestCase.assertNotNull("Representation hasn't been added to its resource.", representation.eResource());
+                                representations.add(representation);
                             }
                         }
                     }

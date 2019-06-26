@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.style;
+
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -26,9 +28,8 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.swt.graphics.Color;
-
-import com.google.common.collect.Iterables;
 
 /**
  * Tests conditional styles look up in mapping import chains.
@@ -153,7 +154,7 @@ public class MappingImportChainsTest extends SiriusDiagramTestCase {
                 Square ownedStyle = (Square) ((DNode) dde).getOwnedStyle();
                 colorFromRGBValues = VisualBindingManager.getDefault().getColorFromRGBValues(ownedStyle.getColor());
             } else if (dde instanceof DEdge) {
-                EdgeStyle ownedStyle = (EdgeStyle) ((DEdge) dde).getOwnedStyle();
+                EdgeStyle ownedStyle = ((DEdge) dde).getOwnedStyle();
                 colorFromRGBValues = VisualBindingManager.getDefault().getColorFromRGBValues(ownedStyle.getStrokeColor());
             }
             assertEquals(colorFromName, colorFromRGBValues);
@@ -161,9 +162,10 @@ public class MappingImportChainsTest extends SiriusDiagramTestCase {
     }
 
     private DDiagram getDiagramnFromName(String representationName) {
-        for (DDiagram rep : Iterables.filter(getRepresentations(REPRESENTATION_DESC_NAME), DDiagram.class)) {
+        for (DRepresentationDescriptor rep : getRepresentationDescriptors(REPRESENTATION_DESC_NAME).stream().filter(repDesc -> repDesc.getRepresentation() instanceof DDiagram)
+                .collect(Collectors.toList())) {
             if (representationName.equals(rep.getName())) {
-                return rep;
+                return (DDiagram) rep.getRepresentation();
             }
         }
         return null;

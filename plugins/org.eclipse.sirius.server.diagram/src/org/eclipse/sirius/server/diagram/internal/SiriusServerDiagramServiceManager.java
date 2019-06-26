@@ -31,7 +31,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.services.diagram.api.SiriusDiagramMessage;
 import org.eclipse.sirius.services.diagram.api.SiriusDiagramService;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
@@ -139,14 +139,14 @@ public class SiriusServerDiagramServiceManager {
      * @return The {@link DDiagram} found or an empty optional
      */
     private Optional<DDiagram> getDDiagramFromSession(Session session, String representationName) {
-        Collection<DRepresentation> representations = DialectManager.INSTANCE.getAllRepresentations(session);
+        Collection<DRepresentationDescriptor> representations = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
         // @formatter:off
         Optional<DDiagram> optionalDDiagram = representations.stream()
-                .filter(DDiagram.class::isInstance)
-                .map(DDiagram.class::cast)
-                .filter(dDiagram -> {
-                    return Optional.ofNullable(representationName).orElse("").equals(dDiagram.getName()); //$NON-NLS-1$
+                .filter(repDesc->repDesc.getRepresentation() instanceof DDiagram)
+                .filter(repDesc -> {
+                    return Optional.ofNullable(representationName).orElse("").equals(repDesc.getName()); //$NON-NLS-1$
                 })
+                .map(repDesc->(DDiagram) repDesc.getRepresentation())
                 .findFirst();
         // @formatter:on
         return optionalDDiagram;

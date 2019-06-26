@@ -105,6 +105,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -1878,7 +1879,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                     DiagramPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, Messages.DDiagramEditorImpl_noAssociatedGMFDiagramMsg));
                 }
                 final Diagram gmfDiag = util.getAssociatedGMFDiagram();
-                updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(gmfDiag), repDescURI, dDiagram.getName(), session);
+                updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(gmfDiag), repDescURI, new DRepresentationQuery(dDiagram).getRepresentationDescriptor().getName(), session);
             }
 
         }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -35,7 +35,6 @@ import org.eclipse.sirius.viewpoint.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
-import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 
 /**
  * <!-- begin-user-doc --> The <b>Adapter Factory</b> for the model. It provides an adapter <code>createXXX</code>
@@ -126,11 +125,6 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
         @Override
         public Adapter caseDModelElement(DModelElement object) {
             return createDModelElementAdapter();
-        }
-
-        @Override
-        public Adapter caseDocumentedElement(DocumentedElement object) {
-            return createDocumentedElementAdapter();
         }
 
         @Override
@@ -292,20 +286,6 @@ public class TreeAdapterFactory extends AdapterFactoryImpl {
      * @generated
      */
     public Adapter createIdentifiedElementAdapter() {
-        return null;
-    }
-
-    /**
-     * Creates a new adapter for an object of class '{@link org.eclipse.sirius.viewpoint.description.DocumentedElement
-     * <em>Documented Element</em>}'. <!-- begin-user-doc --> This default implementation returns null so that we can
-     * easily ignore cases; it's useful to ignore a case when inheritance will catch all the cases anyway. <!--
-     * end-user-doc -->
-     *
-     * @return the new adapter.
-     * @see org.eclipse.sirius.viewpoint.description.DocumentedElement
-     * @generated
-     */
-    public Adapter createDocumentedElementAdapter() {
         return null;
     }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,7 +38,7 @@ public class RepresentationNameListener extends ResourceSetListenerImpl {
      */
     public RepresentationNameListener(Session session) {
         super(NotificationFilter.NOT_TOUCH
-                .and(NotificationFilter.createNotifierTypeFilter(DRepresentation.class).and(NotificationFilter.createFeatureFilter(ViewpointPackage.Literals.DREPRESENTATION__NAME))));
+                .and(NotificationFilter.createNotifierTypeFilter(DRepresentation.class).and(NotificationFilter.createFeatureFilter(ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__NAME))));
         this.session = session;
         session.getTransactionalEditingDomain().addResourceSetListener(this);
     }

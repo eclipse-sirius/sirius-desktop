@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -55,10 +55,10 @@ public class RepresentationCRUDTest extends GenericTestCase {
 
     private DRepresentation getRepresentation(String name) {
         for (final DView dView : session.getOwnedViews()) {
-            for (final Iterator<DRepresentation> iterator = new DViewQuery(dView).getLoadedRepresentations().iterator(); iterator.hasNext();) {
-                final DRepresentation rep = iterator.next();
+            for (final Iterator<DRepresentationDescriptor> iterator = new DViewQuery(dView).getLoadedRepresentationsDescriptors().iterator(); iterator.hasNext();) {
+                final DRepresentationDescriptor rep = iterator.next();
                 if (name.equals(rep.getName())) {
-                    return rep;
+                    return rep.getRepresentation();
                 }
             }
         }

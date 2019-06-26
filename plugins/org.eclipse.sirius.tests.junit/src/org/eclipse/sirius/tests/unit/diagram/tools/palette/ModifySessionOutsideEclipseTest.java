@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,7 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 
 import com.google.common.collect.Iterables;
 
@@ -138,10 +138,10 @@ public class ModifySessionOutsideEclipseTest extends AbstractPaletteManagerTest 
      * name, representation name.
      */
     private void setSiriusDiagramAndGMFDiagram() {
-        Collection<DRepresentation> representations = getRepresentations(getRepresentationDescriptionName());
-        for (DRepresentation repr : representations) {
-            if (repr.getName().equals(getRepresentationDescriptionInstanceName())) {
-                dDiagram = (DDiagram) repr;
+        Collection<DRepresentationDescriptor> representationDescriptors = getRepresentationDescriptors(getRepresentationDescriptionName());
+        for (DRepresentationDescriptor representationDescriptor : representationDescriptors) {
+            if (representationDescriptor.getName().equals(getRepresentationDescriptionInstanceName())) {
+                dDiagram = (DDiagram) representationDescriptor.getRepresentation();
                 break;
             }
         }

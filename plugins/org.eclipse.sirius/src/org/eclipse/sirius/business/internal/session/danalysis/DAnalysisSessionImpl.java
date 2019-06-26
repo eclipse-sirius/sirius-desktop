@@ -42,7 +42,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
@@ -89,7 +88,6 @@ import org.eclipse.sirius.business.internal.resource.ResourceModifiedFieldUpdate
 import org.eclipse.sirius.business.internal.session.IsModifiedSavingPolicy;
 import org.eclipse.sirius.business.internal.session.ReloadingPolicyImpl;
 import org.eclipse.sirius.business.internal.session.RepresentationNameListener;
-import org.eclipse.sirius.business.internal.session.RepresentationNameSynchroListener;
 import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -376,7 +374,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * @param newResource
      *            the resource on which the semantic cross reference should be added.
      */
-    protected void registerResourceInCrossReferencer(final Resource newResource) {
+    public void registerResourceInCrossReferencer(final Resource newResource) {
         if (crossReferencer != null) {
             if (!newResource.eAdapters().contains(crossReferencer)) {
                 newResource.eAdapters().add(crossReferencer);
@@ -1113,10 +1111,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         Predicate<Notification> danglingRemovalPredicate = Predicates.or(DanglingRefRemovalTrigger.IS_DETACHMENT, DanglingRefRemovalTrigger.IS_ATTACHMENT);
         DanglingRefRemovalTrigger danglingRemovalTrigger = new DanglingRefRemovalTrigger(this);
         getEventBroker().addLocalTrigger(SessionEventBrokerImpl.asFilter(danglingRemovalPredicate), danglingRemovalTrigger);
-
-        NotificationFilter renameRepresentationFilter = NotificationFilter.createFeatureFilter(ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__NAME)
-                .or(NotificationFilter.createFeatureFilter(ViewpointPackage.Literals.DREPRESENTATION__NAME));
-        getEventBroker().addLocalTrigger(renameRepresentationFilter, new RepresentationNameSynchroListener(transactionalEditingDomain));
 
         addRefreshEditorsListener();
         /*

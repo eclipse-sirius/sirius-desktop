@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -39,6 +39,7 @@ import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
@@ -135,9 +136,9 @@ public class EntitiesDiagramStyleCustomizationTests extends AbstractEcoreSynchro
         assertNotNull("we should be able to retrieve the new session from the model", session);
 
         DRepresentation newRep = null;
-        for (DRepresentation representation : DialectManager.INSTANCE.getRepresentations(semanticModel, session)) {
-            if (NEW_DIAGRAM_NAME.equals(representation.getName())) {
-                newRep = representation;
+        for (DRepresentationDescriptor representationDescriptor : DialectManager.INSTANCE.getRepresentationDescriptors(semanticModel, session)) {
+            if (NEW_DIAGRAM_NAME.equals(representationDescriptor.getName())) {
+                newRep = representationDescriptor.getRepresentation();
                 break;
             }
         }

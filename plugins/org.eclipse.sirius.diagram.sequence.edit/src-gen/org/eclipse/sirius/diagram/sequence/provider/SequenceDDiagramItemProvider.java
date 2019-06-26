@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.provider.DSemanticDiagramItemProvider;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.SequencePackage;
@@ -106,7 +107,7 @@ public class SequenceDDiagramItemProvider extends DSemanticDiagramItemProvider {
      */
     @Override
     public String getText(Object object) {
-        String label = ((SequenceDDiagram) object).getName();
+        String label = new DRepresentationQuery(((SequenceDDiagram) object)).getRepresentationDescriptor().getName();
         return label == null || label.length() == 0 ? getString("_UI_SequenceDDiagram_type") : label; //$NON-NLS-1$
     }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,7 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
 import com.google.common.collect.Iterables;
@@ -92,10 +92,10 @@ public class PaletteUpdateDoesNotDeleteAllToolsTest extends AbstractPaletteManag
      */
     protected void doOpenEditorOnRepresentation(String representationDescriptionName) {
         // Open an editor on the tested diagram
-        Collection<DRepresentation> representations = getRepresentations(representationDescriptionName);
-        for (DRepresentation repr : representations) {
-            if (repr.getName().equals("new " + representationDescriptionName)) {
-                dDiagram = (DDiagram) repr;
+        Collection<DRepresentationDescriptor> representationDescriptors = getRepresentationDescriptors(representationDescriptionName);
+        for (DRepresentationDescriptor representationDescriptor : representationDescriptors) {
+            if (representationDescriptor.getName().equals("new " + representationDescriptionName)) {
+                dDiagram = (DDiagram) representationDescriptor.getRepresentation();
                 break;
             }
         }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,7 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.base.Predicate;
@@ -84,10 +84,10 @@ public class PinnedElementsTest extends SiriusDiagramTestCase {
         genericSetUp(SEMANTIC_MODEL_PATH, VSM_PATH, REPRESENTATIONS_MODEL_PATH);
 
         SessionUIManager.INSTANCE.createUISession(session);
-        Collection<DRepresentation> flatDiagrams = getRepresentations(REPRESENTATION_DESC_NAME);
-        for (DRepresentation repr : flatDiagrams) {
-            if (repr.getName().equals("Flat_All_Unpinned")) {
-                diagram = (DDiagram) repr;
+        Collection<DRepresentationDescriptor> flatDiagrams = getRepresentationDescriptors(REPRESENTATION_DESC_NAME);
+        for (DRepresentationDescriptor representationDescriptor : flatDiagrams) {
+            if (representationDescriptor.getName().equals("Flat_All_Unpinned")) {
+                diagram = (DDiagram) representationDescriptor.getRepresentation();
                 break;
             }
         }

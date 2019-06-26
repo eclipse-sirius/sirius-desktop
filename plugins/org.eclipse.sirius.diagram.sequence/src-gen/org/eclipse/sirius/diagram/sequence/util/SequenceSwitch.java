@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -108,6 +108,9 @@ public class SequenceSwitch<T> {
                 result = caseDRepresentation(sequenceDDiagram);
             }
             if (result == null) {
+                result = caseDocumentedElement(sequenceDDiagram);
+            }
+            if (result == null) {
                 result = caseDragAndDropTarget(sequenceDDiagram);
             }
             if (result == null) {
@@ -115,9 +118,6 @@ public class SequenceSwitch<T> {
             }
             if (result == null) {
                 result = caseDModelElement(sequenceDDiagram);
-            }
-            if (result == null) {
-                result = caseDocumentedElement(sequenceDDiagram);
             }
             if (result == null) {
                 result = caseDRefreshable(sequenceDDiagram);

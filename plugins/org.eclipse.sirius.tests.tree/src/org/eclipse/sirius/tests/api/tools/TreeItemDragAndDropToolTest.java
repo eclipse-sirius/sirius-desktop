@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerDropAdapter;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyPermissionAuthority;
@@ -48,7 +49,7 @@ import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeEditor;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.provider.DTreeItemDropListener;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.junit.Assert;
 
 import com.google.common.collect.Iterables;
@@ -83,11 +84,11 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
         copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PATH, SEMANTIC_MODEL_FILENAME_1, SESSION_MODEL_FILENAME, SEMANTIC_META_MODEL_FILENAME, MODELER_MODEL_FILENAME);
         genericSetUp(TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILENAME_1, TEMPORARY_PROJECT_NAME + "/" + MODELER_MODEL_FILENAME, TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME);
 
-        Iterator<DRepresentation> iterator = getRepresentations(REPRESENTATION_NAME).iterator();
+        Iterator<DRepresentationDescriptor> iterator = getRepresentationDescriptors(REPRESENTATION_NAME).iterator();
         while (iterator.hasNext() && tree == null) {
-            DRepresentation next = iterator.next();
+            DRepresentationDescriptor next = iterator.next();
             if (next.getName().equals("dnd1")) {
-                tree = (DTree) next;
+                tree = (DTree) next.getRepresentation();
             }
         }
         // Step 2 : getting the dropListener associated to the opened Editor
@@ -299,11 +300,11 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
 
         // Step 2 : opening an editor on company2.xmi
         DTree tree2 = null;
-        Iterator<DRepresentation> iterator = getRepresentations(REPRESENTATION_NAME).iterator();
+        Iterator<DRepresentationDescriptor> iterator = getRepresentationDescriptors(REPRESENTATION_NAME).iterator();
         while (iterator.hasNext() && tree2 == null) {
-            DRepresentation next = iterator.next();
+            DRepresentationDescriptor next = iterator.next();
             if (next.getName().equals("dnd2")) {
-                tree2 = (DTree) next;
+                tree2 = (DTree) next.getRepresentation();
             }
         }
         DTreeEditor editor2 = (DTreeEditor) DialectUIManager.INSTANCE.openEditor(session, tree2, new NullProgressMonitor());
@@ -714,12 +715,13 @@ public class TreeItemDragAndDropToolTest extends TreeTestCase implements DnDMode
             if (targetContainer instanceof DTreeItem) {
                 targetContainerName = ((DTreeItem) targetContainer).getName();
             } else {
-                targetContainerName = ((DTree) targetContainer).getName();
+                targetContainerName = new DRepresentationQuery(((DTree) targetContainer)).getRepresentationDescriptor().getName();
             }
             DTreeItem oldItem = (DTreeItem) item;
             DTreeItem newItem = (DTreeItem) getRepresentationElementWithName(TreeHelper.getTree(targetContainer), (String) oldItem.getTarget().eGet(this.nameFeature));
             if (shouldBeContained) {
-                Assert.assertNotNull((String) oldItem.getTarget().eGet(this.nameFeature) + " should now be part of " + TreeHelper.getTree(targetContainer).getName() + " tree", newItem);
+                Assert.assertNotNull((String) oldItem.getTarget().eGet(this.nameFeature) + " should now be part of "
+                        + new DRepresentationQuery(TreeHelper.getTree(targetContainer)).getRepresentationDescriptor().getName() + " tree", newItem);
                 Assert.assertEquals(oldItem.getName() + " should be contained in " + targetContainerName, targetContainer, newItem.getContainer());
             } else {
                 if (newItem != null) {

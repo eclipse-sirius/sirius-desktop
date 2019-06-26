@@ -52,6 +52,7 @@ import org.eclipse.sirius.tree.ui.tools.api.editor.DTreeEditor;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.actions.DeleteTreeItemsAction;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 
 /**
  * Abstract class for {@link RefreshOnDeletionInManualRefreshTests} and
@@ -147,20 +148,20 @@ public abstract class AbstractRefreshOnDeletionTests extends SiriusDiagramTestCa
         eClass2 = (EClass) rootEPackage.getEClassifier("EClass2");
         ePackage1 = rootEPackage.getESubpackages().get(0);
 
-        final Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
-        for (DRepresentation dRepresentation : allRepresentations) {
-            if (OPENED_DTREE_REP.equals(dRepresentation.getName())) {
-                openedDTree = (DTree) dRepresentation;
-            } else if (OPENED_DTABLE_REP.equals(dRepresentation.getName())) {
-                openedDTable = (DTable) dRepresentation;
-            } else if (OPENED_DDIAGRAM_REP.equals(dRepresentation.getName())) {
-                openedDDiagram = (DDiagram) dRepresentation;
-            } else if (CLOSED_DTREE_REP.equals(dRepresentation.getName())) {
-                closedDTree = (DTree) dRepresentation;
-            } else if (CLOSED_DTABLE_REP.equals(dRepresentation.getName())) {
-                closedDTable = (DTable) dRepresentation;
-            } else if (CLOSED_DDIAGRAM_REP.equals(dRepresentation.getName())) {
-                closedDDiagram = (DDiagram) dRepresentation;
+        final Collection<DRepresentationDescriptor> representationDescriptors = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
+        for (DRepresentationDescriptor representationDescriptor : representationDescriptors) {
+            if (OPENED_DTREE_REP.equals(representationDescriptor.getName())) {
+                openedDTree = (DTree) representationDescriptor.getRepresentation();
+            } else if (OPENED_DTABLE_REP.equals(representationDescriptor.getName())) {
+                openedDTable = (DTable) representationDescriptor.getRepresentation();
+            } else if (OPENED_DDIAGRAM_REP.equals(representationDescriptor.getName())) {
+                openedDDiagram = (DDiagram) representationDescriptor.getRepresentation();
+            } else if (CLOSED_DTREE_REP.equals(representationDescriptor.getName())) {
+                closedDTree = (DTree) representationDescriptor.getRepresentation();
+            } else if (CLOSED_DTABLE_REP.equals(representationDescriptor.getName())) {
+                closedDTable = (DTable) representationDescriptor.getRepresentation();
+            } else if (CLOSED_DDIAGRAM_REP.equals(representationDescriptor.getName())) {
+                closedDDiagram = (DDiagram) representationDescriptor.getRepresentation();
             }
         }
         openedDTreeEditor = (DTreeEditor) DialectUIManager.INSTANCE.openEditor(session, openedDTree, new NullProgressMonitor());

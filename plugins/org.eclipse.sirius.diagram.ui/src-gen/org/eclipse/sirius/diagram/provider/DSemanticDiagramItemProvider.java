@@ -20,6 +20,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
@@ -83,7 +84,7 @@ public class DSemanticDiagramItemProvider extends DDiagramItemProvider {
      */
     @Override
     public String getText(Object object) {
-        String label = ((DSemanticDiagram) object).getName();
+        String label = new DRepresentationQuery(((DSemanticDiagram) object)).getRepresentationDescriptor().getName();
         return label == null || label.length() == 0 ? getString("_UI_DSemanticDiagram_type") : label; //$NON-NLS-1$
     }
 

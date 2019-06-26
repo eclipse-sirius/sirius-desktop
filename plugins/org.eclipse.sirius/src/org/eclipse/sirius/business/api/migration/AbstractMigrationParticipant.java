@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -43,8 +43,8 @@ import com.google.common.collect.Lists;
  */
 public abstract class AbstractMigrationParticipant implements IMigrationParticipant {
     /**
-     * Version number return when the representations file has never been loaded
-     * since the rewrite of migration framework.
+     * Version number return when the representations file has never been loaded since the rewrite of migration
+     * framework.
      */
     public static final Version INITIAL_VERSION = Version.parseVersion("0.0.0"); //$NON-NLS-1$
 
@@ -113,18 +113,17 @@ public abstract class AbstractMigrationParticipant implements IMigrationParticip
     }
 
     /**
-     * Handle unknown data in Resource according to the current metamodels. This
-     * unknown data could need migration.
+     * Handle unknown data in Resource according to the current metamodels. This unknown data could need migration.
      * 
      * @param resource
-     *            the {@link XMLResource} which can contains unknown data which
-     *            needs to be migrated
+     *            the {@link XMLResource} which can contains unknown data which needs to be migrated
      */
     private void handleUnknownData(final XMLResource resource) {
         final Map<EObject, AnyType> extMap = resource.getEObjectToExtensionMap();
         for (final Map.Entry<EObject, AnyType> entry : extMap.entrySet()) {
             EObject eObj = entry.getKey();
             AnyType unknownData = entry.getValue();
+
             handleUnknownFeatures(eObj, unknownData.getMixed());
             handleUnknownFeatures(eObj, unknownData.getAnyAttribute());
         }

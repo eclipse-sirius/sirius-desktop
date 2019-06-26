@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -55,7 +55,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.decoration.SiriusGenericDeco
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.DiagramComponentizationTestSupport;
 import org.eclipse.sirius.tests.unit.diagram.GenericTestCase;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Decoration;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -622,7 +622,7 @@ public class DecoratorsTest extends GenericTestCase {
             sb.append("DView: ");
             sb.append(dView);
             sb.append("\n");
-            for (DRepresentation rep : new DViewQuery(dView).getLoadedRepresentations()) {
+            for (DRepresentationDescriptor rep : new DViewQuery(dView).getLoadedRepresentationsDescriptors()) {
                 sb.append("\t");
                 sb.append("DRepresentation: ");
                 sb.append(rep.getName());

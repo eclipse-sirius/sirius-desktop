@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -32,7 +33,7 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 public class DeleteDRepresentationTask extends AbstractCommandTask {
 
     /** The representation to delete. */
-    protected DRepresentation representation;
+    protected DRepresentationDescriptor representationDescriptor;
 
     /** Also delete the dangling references. */
     protected boolean deleteReferences;
@@ -40,11 +41,11 @@ public class DeleteDRepresentationTask extends AbstractCommandTask {
     /**
      * Default constructor.
      * 
-     * @param representation
-     *            the representation to delete
+     * @param representationDescriptor
+     *            the {@link DRepresentationDescriptor} referencing the representation to delete.
      */
-    public DeleteDRepresentationTask(final DRepresentation representation) {
-        this.representation = representation;
+    public DeleteDRepresentationTask(final DRepresentationDescriptor representationDescriptor) {
+        this.representationDescriptor = representationDescriptor;
     }
 
     /**
@@ -56,9 +57,10 @@ public class DeleteDRepresentationTask extends AbstractCommandTask {
     public void execute() {
 
         /* only destroy attached elements */
-        if (representation != null) {
-            Resource resource = representation.eResource();
+        if (representationDescriptor != null) {
+            Resource resource = representationDescriptor.eResource();
             if (resource != null) {
+                DRepresentation representation = representationDescriptor.getRepresentation();
                 ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(representation);
 
                 if (deleteReferences) {
@@ -66,7 +68,7 @@ public class DeleteDRepresentationTask extends AbstractCommandTask {
                     if (representation instanceof DSemanticDecorator) {
                         session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) representation).getTarget());
                     } else {
-                        session = SessionManager.INSTANCE.getSession(representation);
+                        session = SessionManager.INSTANCE.getSession(representationDescriptor);
                     }
                     accessor.eDelete(representation, session != null ? session.getSemanticCrossReferencer() : null);
                 } else {
@@ -88,8 +90,8 @@ public class DeleteDRepresentationTask extends AbstractCommandTask {
      */
     @Override
     public String getLabel() {
-        if (representation != null) {
-            return MessageFormat.format(Messages.DeleteDRepresentationTask_label, representation.getName());
+        if (representationDescriptor != null) {
+            return MessageFormat.format(Messages.DeleteDRepresentationTask_label, representationDescriptor.getName());
         }
         return Messages.DeleteRepresentationCommand_label;
     }

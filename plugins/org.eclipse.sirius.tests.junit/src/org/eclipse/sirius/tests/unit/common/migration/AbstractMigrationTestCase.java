@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -65,7 +65,7 @@ import org.eclipse.sirius.tests.sample.migration.migrationmodeler.Representation
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.swt.graphics.Color;
 import org.eclipse.ui.IEditorPart;
@@ -103,9 +103,9 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
      *            owned
      */
     protected void openEditorOnDiagram(String diagramName, String viewpointName) {
-        for (DRepresentation dRepresentation : getRepresentations(viewpointName)) {
-            if (dRepresentation.getName().equals(diagramName) && dRepresentation instanceof DDiagram) {
-                currentdRepresentation = (DDiagram) dRepresentation;
+        for (DRepresentationDescriptor representationDescriptor : getRepresentationDescriptors(viewpointName)) {
+            if (representationDescriptor.getName().equals(diagramName) && representationDescriptor.getRepresentation() instanceof DDiagram) {
+                currentdRepresentation = (DDiagram) representationDescriptor.getRepresentation();
                 IEditorPart editorPart = DialectUIManager.INSTANCE.openEditor(session, currentdRepresentation, new NullProgressMonitor());
                 TestsUtil.synchronizationWithUIThread();
                 if (editorPart instanceof IDiagramWorkbenchPart) {

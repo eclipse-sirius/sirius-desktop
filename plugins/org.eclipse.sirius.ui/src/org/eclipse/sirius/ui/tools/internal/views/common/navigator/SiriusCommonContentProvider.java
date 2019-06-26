@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -65,7 +65,7 @@ import org.eclipse.sirius.ui.tools.internal.views.common.item.InternalCommonItem
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ProjectDependenciesItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.SiriusDialectLinkWithEditorSelectionListener;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.Messages;
@@ -1042,7 +1042,7 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
             Object notifier = notification.getNotifier();
             boolean result = false;
 
-            if (notifier instanceof DRepresentation && ViewpointPackage.eINSTANCE.getDRepresentation_Name().equals(notification.getFeature())) {
+            if (notifier instanceof DRepresentationDescriptor && ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_Name().equals(notification.getFeature())) {
                 result = true;
             }
             if (!result && notifier instanceof Resource && Resource.RESOURCE__CONTENTS == notification.getFeatureID(Resource.class)) {

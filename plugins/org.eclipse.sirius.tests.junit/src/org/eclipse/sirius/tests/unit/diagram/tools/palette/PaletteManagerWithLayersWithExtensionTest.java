@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.views.providers.layers.Layer
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.collect.Iterables;
@@ -318,10 +318,10 @@ public class PaletteManagerWithLayersWithExtensionTest extends AbstractPaletteMa
         initViewpoint(TOOL_SECTION_EXTENSION_VIEWPOINT_NAME);
         initViewpoint(ANOTHER_VIEWPOINT_NAME);
 
-        Collection<DRepresentation> representations = getRepresentations(getRepresentationDescriptionName());
-        for (DRepresentation repr : representations) {
-            if (repr.getName().equals(getRepresentationDescriptionInstanceName())) {
-                dDiagram = (DDiagram) repr;
+        Collection<DRepresentationDescriptor> representationDescriptors = getRepresentationDescriptors(getRepresentationDescriptionName());
+        for (DRepresentationDescriptor representationDescriptor : representationDescriptors) {
+            if (representationDescriptor.getName().equals(getRepresentationDescriptionInstanceName())) {
+                dDiagram = (DDiagram) representationDescriptor.getRepresentation();
                 break;
             }
         }

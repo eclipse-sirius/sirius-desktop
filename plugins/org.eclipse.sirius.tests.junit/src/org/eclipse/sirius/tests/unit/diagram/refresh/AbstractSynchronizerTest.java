@@ -68,6 +68,7 @@ public abstract class AbstractSynchronizerTest extends SiriusDiagramTestCase {
     /**
      * {@inheritDoc}
      */
+    @Override
     protected void setUp() throws Exception {
         super.setUp();
 
@@ -89,7 +90,7 @@ public abstract class AbstractSynchronizerTest extends SiriusDiagramTestCase {
      */
     protected void prepareSynchronizer(final DiagramDescription description, final String diagramName) {
         sync = new DDiagramSynchronizer(interpreter, description, accessor);
-        sync.initDiagram(diagramName, semanticModel, new NullProgressMonitor());
+        sync.initDiagram( semanticModel, new NullProgressMonitor());
         boolean syncOnCreation = Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, SiriusDiagramInternalPreferencesKeys.PREF_SYNCHRONIZE_DIAGRAM_ON_CREATION.name(), false, null);
         sync.getDiagram().setSynchronized(syncOnCreation);
     }
@@ -219,6 +220,7 @@ public abstract class AbstractSynchronizerTest extends SiriusDiagramTestCase {
      * 
      * {@inheritDoc}
      */
+    @Override
     protected void tearDown() throws Exception {
         // System.out.println(DslCommonPlugin.PROFILER.getStatus());
         doCleanupSession();

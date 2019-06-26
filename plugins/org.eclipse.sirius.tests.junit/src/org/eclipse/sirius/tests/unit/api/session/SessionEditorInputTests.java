@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2018 Obeo.
+ * Copyright (c) 2015, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -92,8 +92,8 @@ public class SessionEditorInputTests extends TestCase {
         viewpoint = (Viewpoint) session.getTransactionalEditingDomain().getResourceSet().getEObject(EcoreUtil.getURI(viewpoint), true);
         commandStack.execute(
                 new ChangeViewpointSelectionCommand(session, new ViewpointSelectionCallback(), Collections.singleton(viewpoint), Collections.<Viewpoint> emptySet(), new NullProgressMonitor()));
-        Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
-        commandStack.execute(new CopyRepresentationCommand(domain, allRepresentations, "copy", session));
+        Collection<DRepresentationDescriptor> representationDescriptors = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
+        commandStack.execute(new CopyRepresentationCommand(domain, representationDescriptors, "copy", session));
         DAnalysis dAnalysis = (DAnalysis) session.getSessionResource().getContents().get(0);
         dView = dAnalysis.getOwnedViews().get(0);
         dRepresentation1 = new DViewQuery(dView).getLoadedRepresentations().get(0);
@@ -160,8 +160,8 @@ public class SessionEditorInputTests extends TestCase {
         SessionEditorInput sessionEditor2Input = (SessionEditorInput) editor2.getEditorInput();
         assertEquals(representation1GMFDiagramURI, sessionNewEditorInput.getURI());
         assertEquals(representation2GMFDiagramURI, sessionEditor2Input.getURI());
-        assertEquals(new SessionEditorInput(representation1GMFDiagramURI, dRepresentation1.getName(), session), sessionNewEditorInput);
-        assertEquals(new SessionEditorInput(representation2GMFDiagramURI, dRepresentation2.getName(), session), sessionEditor2Input);
+        assertEquals(new SessionEditorInput(representation1GMFDiagramURI, new DRepresentationQuery(dRepresentation1).getRepresentationDescriptor().getName(), session), sessionNewEditorInput);
+        assertEquals(new SessionEditorInput(representation2GMFDiagramURI, new DRepresentationQuery(dRepresentation2).getRepresentationDescriptor().getName(), session), sessionEditor2Input);
 
         DialectUIManager.INSTANCE.closeEditor(editor1, false);
         DialectUIManager.INSTANCE.closeEditor(editor2, false);

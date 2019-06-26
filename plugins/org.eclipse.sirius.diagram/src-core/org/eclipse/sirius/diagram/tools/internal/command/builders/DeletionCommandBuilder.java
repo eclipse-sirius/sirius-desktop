@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
 import org.eclipse.sirius.business.api.helper.task.UnexecutableTask;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationElementsTask;
 import org.eclipse.sirius.business.internal.helper.task.DeleteDRepresentationTask;
@@ -129,7 +130,7 @@ public class DeletionCommandBuilder extends AbstractDiagramCommandBuilder {
         if (permissionAuthority.canDeleteInstance(diagram)) {
             final DCommand vpCmd = createEnclosingCommand();
             /* delete the diagram */
-            vpCmd.getTasks().add(new DeleteDRepresentationTask(diagram));
+            vpCmd.getTasks().add(new DeleteDRepresentationTask(new DRepresentationQuery(diagram).getRepresentationDescriptor()));
             cmd = vpCmd;
         }
         return cmd;

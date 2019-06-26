@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -53,7 +53,7 @@ import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 
 /**
  * Test border margin computation for Container and Lists edit parts. The margin
@@ -101,10 +101,10 @@ public class BorderMarginTest extends SiriusDiagramTestCase {
     private void openDiagram(String name) {
         assertFalse("Diagram name to find and open cannot be emtpy.", StringUtil.isEmpty(name));
 
-        Collection<DRepresentation> representations = getRepresentations(DIAGRAM_AND_DESCRIPTION_ID);
-        for (DRepresentation rep : representations) {
-            if (rep instanceof DDiagram && name.equals(rep.getName())) {
-                diagram = (DDiagram) rep;
+        Collection<DRepresentationDescriptor> representationDescriptors = getRepresentationDescriptors(DIAGRAM_AND_DESCRIPTION_ID);
+        for (DRepresentationDescriptor representationDescriptor : representationDescriptors) {
+            if (representationDescriptor.getRepresentation() instanceof DDiagram && name.equals(representationDescriptor.getName())) {
+                diagram = (DDiagram) representationDescriptor.getRepresentation();
             }
         }
 

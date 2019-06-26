@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -119,7 +119,7 @@ public class TableDialectUIServices implements DialectUIServices {
                     editorId = null;
                 }
                 if (editorId != null) {
-                    monitor.subTask(MessageFormat.format(Messages.TableDialectUIServices_tableOpeningVar, dRepresentation.getName()));
+                    monitor.subTask(MessageFormat.format(Messages.TableDialectUIServices_tableOpeningVar, new DRepresentationQuery(dRepresentation).getRepresentationDescriptor().getName()));
                     RunnableWithResult<IEditorPart> runnable = new RunnableWithResult.Impl<IEditorPart>() {
 
                         @Override
@@ -266,7 +266,7 @@ public class TableDialectUIServices implements DialectUIServices {
 
     @Override
     public String getEditorName(DRepresentation representation) {
-        String editorName = representation.getName();
+        String editorName = new DRepresentationQuery(representation).getRepresentationDescriptor().getName();
         if (StringUtil.isEmpty(editorName)) {
             editorName = Messages.TableDialectUIServices_newTableName;
         }

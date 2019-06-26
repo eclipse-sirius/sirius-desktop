@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,7 @@ import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 
 import com.google.common.collect.Iterables;
 
@@ -64,10 +64,10 @@ public abstract class AbstractPaletteManagerSectionTest extends AbstractPaletteM
      * @return The corresponding diagram
      */
     protected Diagram getDiagram(String diagramDescriptionName, String diagramName) {
-        Collection<DRepresentation> representations = getRepresentations(diagramDescriptionName);
-        for (DRepresentation repr : representations) {
-            if (repr.getName().equals(diagramName)) {
-                dDiagram = (DDiagram) repr;
+        Collection<DRepresentationDescriptor> representationDescriptors = getRepresentationDescriptors(diagramDescriptionName);
+        for (DRepresentationDescriptor representationDescriptor : representationDescriptors) {
+            if (representationDescriptor.getName().equals(diagramName)) {
+                dDiagram = (DDiagram) representationDescriptor.getRepresentation();
                 break;
             }
         }

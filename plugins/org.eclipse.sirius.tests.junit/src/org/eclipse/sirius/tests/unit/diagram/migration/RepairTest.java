@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -106,7 +106,8 @@ public class RepairTest extends SiriusDiagramTestCase {
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
-                final DRepresentation representation = DialectManager.INSTANCE.createRepresentation("test", semanticModel, descriptions.iterator().next(), session, new NullProgressMonitor());
+                final DRepresentation representation = DialectManager.INSTANCE.createRepresentation("test", semanticModel, descriptions.iterator().next(), session,
+                        new NullProgressMonitor());
                 DialectManager.INSTANCE.refresh(representation, new NullProgressMonitor());
             }
         });

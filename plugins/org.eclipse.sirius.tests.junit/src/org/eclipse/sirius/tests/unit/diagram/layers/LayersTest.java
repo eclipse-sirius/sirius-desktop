@@ -22,9 +22,11 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.RecordingCommand;
-import org.eclipse.sirius.business.api.session.CustomDataConstants;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
+import org.eclipse.sirius.business.internal.query.DRepresentationDescriptorInternalHelper;
+import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -529,8 +531,7 @@ public class LayersTest extends AbtsractLayerTests {
 
             @Override
             protected void doExecute() {
-                session.getServices().putCustomData(CustomDataConstants.DREPRESENTATION, semanticModel, sync.getDiagram());
-
+                DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(sync.getDiagram(), (DAnalysisSessionImpl) session, semanticModel.eResource(), diagramDescription.getName());
             }
         });
 
@@ -551,7 +552,7 @@ public class LayersTest extends AbtsractLayerTests {
 
         diagram = null;
         for (DRepresentation dRepresentation : representations) {
-            if (dRepresentation.getName().equalsIgnoreCase(TEST_CLASS_DIAGRAM)) {
+            if (new DRepresentationQuery(dRepresentation).getRepresentationDescriptor().getName().equalsIgnoreCase(TEST_CLASS_DIAGRAM)) {
                 diagram = (DDiagram) dRepresentation;
                 break;
             }
@@ -585,6 +586,7 @@ public class LayersTest extends AbtsractLayerTests {
 
     private DDiagramElement findByTargetName(final List<DDiagramElement> list, final String targetName) {
         DDiagramElement found = Iterables.find(list, new Predicate<DDiagramElement>() {
+            @Override
             public boolean apply(DDiagramElement input) {
                 return input.getTarget() instanceof NamedElement && targetName.equals(((NamedElement) input.getTarget()).getName());
             }

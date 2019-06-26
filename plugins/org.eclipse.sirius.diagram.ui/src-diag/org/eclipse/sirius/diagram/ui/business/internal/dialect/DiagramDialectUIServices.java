@@ -208,7 +208,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
         URI repDescURI = Optional.ofNullable(query.getRepresentationDescriptor()).map(repDesc -> EcoreUtil.getURI(repDesc)).orElse(null);
         monitor.worked(1);
         final IEditorInput editorInput = new SessionEditorInput(uri, repDescURI, editorName, session);
-        monitor.subTask(MessageFormat.format(Messages.DiagramDialectUIServices_diagramEditorOpeningMonitorTaskName, dRepresentation.getName()));
+        monitor.subTask(MessageFormat.format(Messages.DiagramDialectUIServices_diagramEditorOpeningMonitorTaskName, query.getRepresentationDescriptor().getName()));
         RunnableWithResult<DialectEditor> runnable = new RunnableWithResult.Impl<DialectEditor>() {
 
             @Override
@@ -413,7 +413,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
         final boolean exportToHtml = exportToHtml(format);
         final String imageFileExtension = getImageFileExtension(format);
         final IPath correctPath = getRealPath(path, exportToHtml);
-
+        DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representation).getRepresentationDescriptor();
         final Shell shell = new Shell();
         try {
             DiagramExportResult result = null;
@@ -466,7 +466,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
                             throw (SizeTooLargeException) exception;
                         } else if (exception.getStatus() != null && exception.getStatus().getException() instanceof SWTException) {
                             /* Case that can occurs on Windows. */
-                            throw new SizeTooLargeException(new Status(IStatus.ERROR, SiriusPlugin.ID, representation.getName()));
+                            throw new SizeTooLargeException(new Status(IStatus.ERROR, SiriusPlugin.ID, representationDescriptor.getName()));
                         }
                         SiriusPlugin.getDefault().error(MessageFormat.format(Messages.DiagramDialectUIServices_exportedDiagramImageCreationError, correctPath), exception);
                     } catch (final ArrayIndexOutOfBoundsException e) {
@@ -477,7 +477,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
                          * the cairo_image_surface_get_stride() call returns 0, leading to the creation of a 0 sized
                          * buffer to copy the image to.
                          */
-                        throw new SizeTooLargeException(new Status(IStatus.ERROR, SiriusPlugin.ID, representation.getName()));
+                        throw new SizeTooLargeException(new Status(IStatus.ERROR, SiriusPlugin.ID, representationDescriptor.getName()));
                     } finally {
                         SiriusDecoratorProvider.setActivateSiriusDecoration(isActivateSiriusDecorationPrevious);
                         prefs.setValue(SiriusDiagramUiPreferencesKeys.PREF_PRINT_DECORATION.name(), printDecoration);
@@ -500,7 +500,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
         // exception here.
         catch (ClassCastException e) {
             // To avoid API break, we throw an unchecked exception that need to be caught and handled by the caller.
-            throw new WrappedException(MessageFormat.format(Messages.DiagramDialectUIServices_exportedDiagramImageClassCastError, representation.getName()), e);
+            throw new WrappedException(MessageFormat.format(Messages.DiagramDialectUIServices_exportedDiagramImageClassCastError, representationDescriptor.getName()), e);
         } finally {
             disposeShell(shell);
         }
@@ -593,7 +593,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     @Override
     public String getEditorName(final DRepresentation representation) {
-        String editorName = representation.getName();
+        String editorName = new DRepresentationQuery(representation).getRepresentationDescriptor().getName();
         if (StringUtil.isEmpty(editorName)) {
             editorName = Messages.DiagramDialectUIServices_representationWithEmptyNameEditorName;
         }

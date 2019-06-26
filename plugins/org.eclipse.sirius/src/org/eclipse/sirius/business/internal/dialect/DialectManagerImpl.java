@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -126,8 +126,9 @@ public class DialectManagerImpl implements DialectManager {
     }
 
     @Override
-    public DRepresentation createRepresentation(final String name, final EObject semantic, final RepresentationDescription description, final Session session, final IProgressMonitor monitor) {
-        DRepresentation created = null;
+    public DRepresentation createRepresentation(final String name, final EObject semantic, final RepresentationDescription description, final Session session,
+            final IProgressMonitor monitor) {
+        DRepresentation newRepresentation = null;
         try {
             monitor.beginTask(MessageFormat.format(Messages.AbstractRepresentationDialectServices_createRepresentationMsg, name), 12);
             Dialect invokedDialect = null;
@@ -141,10 +142,10 @@ public class DialectManagerImpl implements DialectManager {
             monitor.worked(1);
             if (invokedDialect != null) {
                 if (session != null) {
-                    created = invokedDialect.getServices().createRepresentation(name, semantic, description, session, new SubProgressMonitor(monitor, 10));
+                    newRepresentation = invokedDialect.getServices().createRepresentation(name, semantic, description, session, new SubProgressMonitor(monitor, 10));
                 }
-                if (created != null) {
-                    final RepresentationNotification notif = new RepresentationNotification(created, RepresentationNotification.ADD);
+                if (newRepresentation != null) {
+                    final RepresentationNotification notif = new RepresentationNotification(newRepresentation, RepresentationNotification.ADD);
                     for (final Dialect dialect : dialects.values()) {
                         if (dialect != invokedDialect) {
                             dialect.getServices().notify(notif);
@@ -156,22 +157,22 @@ public class DialectManagerImpl implements DialectManager {
         } finally {
             monitor.done();
         }
-        return created;
+        return newRepresentation;
     }
 
     @Override
-    public DRepresentation copyRepresentation(final DRepresentation representation, final String name, final Session session, final IProgressMonitor monitor) {
+    public DRepresentation copyRepresentation(final DRepresentationDescriptor representationDescriptor, final String name, final Session session, final IProgressMonitor monitor) {
         Dialect invokedDialect = null;
         DRepresentation copy = null;
 
         for (final Dialect dialect : dialects.values()) {
-            if (dialect.getServices().canRefresh(representation)) {
+            if (dialect.getServices().canRefresh(representationDescriptor.getRepresentation())) {
                 invokedDialect = dialect;
             }
         }
         if (invokedDialect != null) {
 
-            copy = invokedDialect.getServices().copyRepresentation(representation, name, session, monitor);
+            copy = invokedDialect.getServices().copyRepresentation(representationDescriptor, name, session, monitor);
             if (copy != null) {
                 final RepresentationNotification notif = new RepresentationNotification(copy, RepresentationNotification.ADD);
                 for (final Dialect dialect : dialects.values()) {

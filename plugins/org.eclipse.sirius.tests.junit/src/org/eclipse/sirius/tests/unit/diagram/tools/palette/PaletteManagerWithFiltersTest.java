@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteMan
 import org.eclipse.sirius.diagram.ui.tools.internal.palette.PaletteManagerImpl;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 import com.google.common.collect.Iterables;
@@ -70,10 +70,10 @@ public class PaletteManagerWithFiltersTest extends AbstractPaletteManagerTest {
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH, SESSION_MODEL_PATH);
         SessionUIManager.INSTANCE.createUISession(session);
 
-        Collection<DRepresentation> representations = getRepresentations(getRepresentationDescriptionName());
-        for (DRepresentation repr : representations) {
-            if (repr.getName().equals(getRepresentationDescriptionInstanceName())) {
-                dDiagram = (DDiagram) repr;
+        Collection<DRepresentationDescriptor> representationDescriptors = getRepresentationDescriptors(getRepresentationDescriptionName());
+        for (DRepresentationDescriptor representationDescriptor : representationDescriptors) {
+            if (representationDescriptor.getName().equals(getRepresentationDescriptionInstanceName())) {
+                dDiagram = (DDiagram) representationDescriptor.getRepresentation();
                 break;
             }
         }

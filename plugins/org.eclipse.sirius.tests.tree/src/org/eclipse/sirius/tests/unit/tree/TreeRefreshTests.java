@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -296,7 +297,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
             this.current = current;
             this.index = currentIndex;
             if (current instanceof DTree) {
-                this.label = ((DTree) current).getName();
+                this.label = new DRepresentationQuery(((DTree) current)).getRepresentationDescriptor().getName();
             } else if (current instanceof DTreeItem) {
                 this.label = ((DTreeItem) current).getName();
             }

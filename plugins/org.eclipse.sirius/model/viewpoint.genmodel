@@ -68,7 +68,6 @@
     <genClasses image="false" ecoreClass="viewpoint.ecore#//DRepresentation">
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentation/ownedRepresentationElements"/>
       <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentation/representationElements"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute viewpoint.ecore#//DRepresentation/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentation/ownedAnnotationEntries"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference viewpoint.ecore#//DRepresentation/uiState"/>
     </genClasses>

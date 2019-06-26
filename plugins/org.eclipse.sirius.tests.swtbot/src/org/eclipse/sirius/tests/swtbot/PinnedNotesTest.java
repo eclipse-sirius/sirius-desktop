@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,8 +14,6 @@ package org.eclipse.sirius.tests.swtbot;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.not;
-
-import java.util.Collection;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
@@ -333,14 +331,7 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
      * @return {@link IDiagramWorkbenchPart}
      */
     private IDiagramWorkbenchPart getGmfEditor() {
-        Collection<DRepresentation> pinUnpinNoteDiagram = getRepresentations(localSession.getOpenedSession(), "PinUnpinNoteDiag");
-        for (DRepresentation repr : pinUnpinNoteDiagram) {
-
-            if (repr.getName().equals("PinUnpinNoteDiag")) {
-                dDiagram = (DDiagram) repr;
-                break;
-            }
-        }
+        DRepresentation dDiagram = getRepresentationDescriptorWithName(localSession.getOpenedSession(), null, "PinUnpinNoteDiag").getRepresentation();
 
         final IEditorPart editorPart = DialectUIManager.INSTANCE.openEditor(localSession.getOpenedSession(), dDiagram, new NullProgressMonitor());
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,6 +40,7 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
@@ -148,11 +149,12 @@ public class SnapBackDistantLabelsMigrationParticipant extends AbstractRepresent
 
                     if (currentDistantEdgeLabels.size() > 0) {
                         isModified = true;
+                        String name = new DRepresentationQuery(dDiagram).getRepresentationDescriptor().getName();
                         // Add information to be logged
                         if (currentDistantEdgeLabels.size() > 1) {
-                            sb.append(MessageFormat.format(Messages.SnapBackDistantLabelsMigrationParticipant_severalLabelsSnapBacked, currentDistantEdgeLabels.size(), dDiagram.getName()));
+                            sb.append(MessageFormat.format(Messages.SnapBackDistantLabelsMigrationParticipant_severalLabelsSnapBacked, currentDistantEdgeLabels.size(), name));
                         } else {
-                            sb.append(MessageFormat.format(Messages.SnapBackDistantLabelsMigrationParticipant_oneLabelSnapBacked, dDiagram.getName()));
+                            sb.append(MessageFormat.format(Messages.SnapBackDistantLabelsMigrationParticipant_oneLabelSnapBacked, name));
                         }
 
                         // Search and fix nodes with huge coordinates.

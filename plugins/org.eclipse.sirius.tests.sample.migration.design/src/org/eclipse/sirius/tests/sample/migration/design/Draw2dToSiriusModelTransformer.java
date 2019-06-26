@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,6 +38,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.FanRouter;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.RectilinearRouter;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
@@ -113,7 +114,7 @@ public class Draw2dToSiriusModelTransformer {
     public Diagram getMigrationModel() {
         Diagram migrationDiagram = MigrationmodelerFactory.eINSTANCE.createDiagram();
         DSemanticDiagram dSemanticDiagram = (DSemanticDiagram) dDiagramEditPart.resolveDDiagram().get();
-        migrationDiagram.setName(dSemanticDiagram.getName());
+        migrationDiagram.setName(new DRepresentationQuery(dSemanticDiagram).getRepresentationDescriptor().getName());
         org.eclipse.gmf.runtime.notation.Diagram diagramView = dDiagramEditPart.getDiagramView();
         Map<?, ?> editPartRegistry = dDiagramEditPart.getViewer().getEditPartRegistry();
         Map<Node, Node> semanticNodeToMigrationNodeMap = new HashMap<Node, Node>();
@@ -218,7 +219,7 @@ public class Draw2dToSiriusModelTransformer {
     public void updateMigrationModel(Diagram migrationDiagram) {
         clearRepresentations(migrationDiagram);
         DSemanticDiagram dSemanticDiagram = (DSemanticDiagram) dDiagramEditPart.resolveDDiagram().get();
-        migrationDiagram.setName(dSemanticDiagram.getName());
+        migrationDiagram.setName(new DRepresentationQuery(dSemanticDiagram).getRepresentationDescriptor().getName());
         org.eclipse.gmf.runtime.notation.Diagram diagramView = dDiagramEditPart.getDiagramView();
         Map<?, ?> editPartRegistry = dDiagramEditPart.getViewer().getEditPartRegistry();
         List<?> children = diagramView.getChildren();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,6 +38,7 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusTestCase;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.InteractiveVariableDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -124,9 +125,10 @@ public class VariableMigrationTest extends SiriusTestCase {
     }
 
     private void checkRepMigrationEffect(DAnalysis analysis) {
-        DRepresentation dView = new DViewQuery(analysis.getOwnedViews().get(0)).getLoadedRepresentations().get(0);
-        assertTrue("DRepresentation " + dView.getName() + " is not a DDiagram", dView instanceof DDiagram);
-        FilterVariableHistory filterVariableHistory = ((DDiagram) dView).getFilterVariableHistory();
+        DRepresentationDescriptor representationDescriptor = new DViewQuery(analysis.getOwnedViews().get(0)).getLoadedRepresentationsDescriptors().get(0);
+        DRepresentation representation = representationDescriptor.getRepresentation();
+        assertTrue("DRepresentation " + representationDescriptor.getName() + " is not a DDiagram", representation instanceof DDiagram);
+        FilterVariableHistory filterVariableHistory = ((DDiagram) representation).getFilterVariableHistory();
         EList<VariableValue> ownedValues = filterVariableHistory.getOwnedValues();
         VariableValue variableValue = ownedValues.get(0);
 

@@ -28,7 +28,7 @@ import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.ui.IPartService;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IWorkbenchPage;
@@ -154,13 +154,13 @@ public class TabbarActionSelectionListenerTest extends SiriusDiagramTestCase imp
     }
 
     private DDiagramEditor openEditor(int i) {
-        Iterator<DRepresentation> iterator = getRepresentations(ENTITIES_DESC_NAME).iterator();
+        Iterator<DRepresentationDescriptor> iterator = getRepresentationDescriptors(ENTITIES_DESC_NAME).iterator();
 
         while (iterator.hasNext()) {
-            DRepresentation next = iterator.next();
+            DRepresentationDescriptor next = iterator.next();
 
             if (next.getName().equals(String.format(REPRESENTATION_NAME_PATTERN, i))) {
-                DDiagram diag = (DDiagram) next;
+                DDiagram diag = (DDiagram) next.getRepresentation();
                 DDiagramEditor editor = (DDiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diag, new NullProgressMonitor());
                 TestsUtil.synchronizationWithUIThread();
                 return editor;
@@ -179,13 +179,13 @@ public class TabbarActionSelectionListenerTest extends SiriusDiagramTestCase imp
     }
 
     private void openAllEditors() {
-        Iterator<DRepresentation> iterator = getRepresentations(ENTITIES_DESC_NAME).iterator();
+        Iterator<DRepresentationDescriptor> iterator = getRepresentationDescriptors(ENTITIES_DESC_NAME).iterator();
         editors = new ArrayList<DDiagramEditor>();
         while (iterator.hasNext()) {
-            DRepresentation next = iterator.next();
+            DRepresentationDescriptor next = iterator.next();
             for (int i = 1; i <= 6; i++) {
                 if (next.getName().equals(String.format(REPRESENTATION_NAME_PATTERN, i))) {
-                    DDiagram diag = (DDiagram) next;
+                    DDiagram diag = (DDiagram) next.getRepresentation();
                     editors.add((DDiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diag, new NullProgressMonitor()));
                     TestsUtil.synchronizationWithUIThread();
                 }

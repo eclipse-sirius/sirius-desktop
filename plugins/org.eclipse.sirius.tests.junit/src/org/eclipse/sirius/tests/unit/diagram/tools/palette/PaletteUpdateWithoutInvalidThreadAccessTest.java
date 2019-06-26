@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,7 +38,7 @@ import org.eclipse.sirius.tests.support.api.DiagramComponentizationTestSupport;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.ui.PlatformUI;
 
@@ -84,6 +84,7 @@ public class PaletteUpdateWithoutInvalidThreadAccessTest extends AbstractPalette
         final Layer firstOptionalLayer = DiagramComponentizationTestSupport.getAllLayers(session, dDiagram.getDescription()).get(1);
         try {
             IRunnableWithProgress runnable = new IRunnableWithProgress() {
+                @Override
                 public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
                     TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(dDiagram);
                     Command changeActivatedLayersCmd = new ChangeLayerActivationCommand(domain, dDiagram, firstOptionalLayer, monitor);
@@ -145,10 +146,10 @@ public class PaletteUpdateWithoutInvalidThreadAccessTest extends AbstractPalette
      */
     protected void doOpenEditorOnRepresentation(String representationDescriptionName) {
         // Open an editor on the tested diagram
-        Collection<DRepresentation> representations = getRepresentations(representationDescriptionName);
-        for (DRepresentation repr : representations) {
-            if (repr.getName().equals(getRepresentationDescriptionInstanceName())) {
-                dDiagram = (DDiagram) repr;
+        Collection<DRepresentationDescriptor> representationDescriptors = getRepresentationDescriptors(getRepresentationDescriptionName());
+        for (DRepresentationDescriptor representationDescriptor : representationDescriptors) {
+            if (representationDescriptor.getName().equals(getRepresentationDescriptionInstanceName())) {
+                dDiagram = (DDiagram) representationDescriptor.getRepresentation();
                 break;
             }
         }

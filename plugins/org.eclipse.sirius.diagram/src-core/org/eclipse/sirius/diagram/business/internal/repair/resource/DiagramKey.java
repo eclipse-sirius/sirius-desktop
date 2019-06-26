@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.business.internal.repair.resource;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 
 /**
@@ -81,7 +82,7 @@ public class DiagramKey {
     public static DiagramKey createDiagramKey(final DDiagram diagram) {
         final DiagramKey diagramKey = new DiagramKey();
         diagramKey.setDiagramURI(EcoreUtil.getURI(diagram));
-        diagramKey.setDiagramToString(diagram.getName());
+        diagramKey.setDiagramToString(new DRepresentationQuery(diagram).getRepresentationDescriptor().getName());
         return diagramKey;
     }
 }

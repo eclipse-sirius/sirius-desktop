@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.provider.Messages;
@@ -75,7 +76,7 @@ public class RepresentationsSelectionDialog extends TitleAreaDialog implements I
         Collections.sort(candidateRepresentations, new Comparator<DRepresentation>() {
             @Override
             public int compare(final DRepresentation r1, final DRepresentation r2) {
-                return r1.getName().compareTo(r2.getName());
+                return new DRepresentationQuery(r1).getRepresentationDescriptor().getName().compareTo(new DRepresentationQuery(r2).getRepresentationDescriptor().getName());
             }
         });
         this.selectedRepresentations = new ArrayList<DRepresentation>(candidates);

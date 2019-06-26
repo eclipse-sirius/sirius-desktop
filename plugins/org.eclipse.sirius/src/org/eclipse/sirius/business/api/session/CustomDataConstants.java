@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,15 +18,6 @@ package org.eclipse.sirius.business.api.session;
  * @author cbrun
  */
 public interface CustomDataConstants {
-    /**
-     * custom data key for representations.
-     */
-    String DREPRESENTATION = "DREPRESENTATION"; //$NON-NLS-1$
-
-    /**
-     * custom data key for representation descriptors.
-     */
-    String DREPRESENTATION_DESCRIPTOR = "DREPRESENTATION_DESCRIPTOR"; //$NON-NLS-1$
 
     /**
      * custom data key for GMF diagrams instances.

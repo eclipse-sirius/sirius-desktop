@@ -134,10 +134,10 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
     }
 
     private DRepresentation getRepresentation(String representationName) {
-        Collection<DRepresentation> allRepresentations = DialectManager.INSTANCE.getAllRepresentations(session);
-        for (DRepresentation dRepresentation : allRepresentations) {
-            if (representationName.equals(dRepresentation.getName())) {
-                return dRepresentation;
+        Collection<DRepresentationDescriptor> allRepresentationDescriptors = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
+        for (DRepresentationDescriptor representationDescriptor : allRepresentationDescriptors) {
+            if (representationName.equals(representationDescriptor.getName())) {
+                return representationDescriptor.getRepresentation();
             }
         }
         return null;

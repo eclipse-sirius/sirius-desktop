@@ -44,6 +44,8 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
+import org.eclipse.sirius.business.internal.query.DRepresentationDescriptorInternalHelper;
+import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
 import org.eclipse.sirius.common.tools.api.query.NotificationQuery;
@@ -158,14 +160,15 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
         final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semantic);
         final ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(semantic);
         final DDiagramSynchronizer sync = new DDiagramSynchronizer(interpreter, diagDesc, accessor);
-        sync.initDiagram(name, semantic, monitor);
+        sync.initDiagram(semantic, monitor);
         boolean syncOnCreation = Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, SiriusDiagramInternalPreferencesKeys.PREF_SYNCHRONIZE_DIAGRAM_ON_CREATION.name(), false, null);
         sync.getDiagram().setSynchronized(syncOnCreation);
         return sync.getDiagram();
     }
 
     @Override
-    public DRepresentation createRepresentation(final String name, final EObject semantic, final RepresentationDescription description, final Session session, final IProgressMonitor monitor) {
+    public DRepresentation createRepresentation(final String name, final EObject semantic, final RepresentationDescription description, final Session session,
+            final IProgressMonitor monitor) {
         DRepresentation diagram = null;
         try {
             monitor.beginTask(MessageFormat.format(Messages.DiagramDialectServices_createDiagramMsg, name), 6);
@@ -178,7 +181,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
                     monitor.worked(1);
                 }
 
-                session.getServices().putCustomData(CustomDataConstants.DREPRESENTATION, semantic, diagram);
+                DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(diagram, (DAnalysisSessionImpl) session, semantic.eResource(), name);
                 monitor.worked(1);
                 Diagram gmfDiag = DiagramDialectServices.createAndStoreGMFDiagram(session, (DSemanticDiagram) diagram);
                 monitor.worked(1);
@@ -220,12 +223,12 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
     }
 
     @Override
-    public DRepresentation copyRepresentation(final DRepresentation representation, final String name, final Session session, final IProgressMonitor monitor) {
+    public DRepresentation copyRepresentation(final DRepresentationDescriptor representationDescriptor, final String name, final Session session, final IProgressMonitor monitor) {
 
-        final DRepresentation newRepresentation = super.copyRepresentation(representation, name, session, monitor);
+        final DRepresentation newRepresentation = super.copyRepresentation(representationDescriptor, name, session, monitor);
 
-        /* associate the one */
-        session.getServices().putCustomData(CustomDataConstants.DREPRESENTATION, ((DSemanticDecorator) representation).getTarget(), newRepresentation);
+        DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(newRepresentation, (DAnalysisSessionImpl) session,
+                ((DSemanticDecorator) representationDescriptor.getRepresentation()).getTarget().eResource(), name);
 
         return newRepresentation;
     }

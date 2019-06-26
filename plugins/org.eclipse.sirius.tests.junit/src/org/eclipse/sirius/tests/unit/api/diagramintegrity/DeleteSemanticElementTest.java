@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,12 +16,11 @@ import java.util.List;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
-import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.internal.session.danalysis.DViewHelper;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 
 public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
@@ -194,9 +193,9 @@ public class DeleteSemanticElementTest extends DiagramIntegrityTestCase {
         int eltCount = 0;
 
         for (DView view : ((DAnalysis) sessionModel).getOwnedViews()) {
-            List<DRepresentation> loadedRepresentations = new DViewQuery(view).getLoadedRepresentations();
-            for (DRepresentation dRepresentation : loadedRepresentations) {
-                if ("chapterDiagram" == dRepresentation.getName()) {
+            List<DRepresentationDescriptor> loadedRepresentationDescriptors = view.getOwnedRepresentationDescriptors();
+            for (DRepresentationDescriptor representationDescriptor : loadedRepresentationDescriptors) {
+                if ("chapterDiagram" == representationDescriptor.getName()) {
                     eltCount++;
                 }
             }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.internal.actions.copy;
 
-import java.util.ArrayList;
 import java.util.Collection;
 
 import org.eclipse.emf.ecore.EObject;
@@ -26,7 +25,6 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.dialog.RenameDialog;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.provider.Messages;
@@ -94,11 +92,7 @@ public class CopyRepresentationAction extends Action {
             final String newName = dialog.getNewName();
             DRepresentationDescriptor dRepDescriptor = repDescriptors.iterator().next();
             final TransactionalEditingDomain transDomain = TransactionUtil.getEditingDomain(dRepDescriptor);
-            Collection<DRepresentation> representations = new ArrayList<>();
-            for (DRepresentationDescriptor dRepresentationDescriptor : repDescriptors) {
-                representations.add(dRepresentationDescriptor.getRepresentation());
-            }
-            transDomain.getCommandStack().execute(new CopyRepresentationCommand(transDomain, representations, newName, session));
+            transDomain.getCommandStack().execute(new CopyRepresentationCommand(transDomain, repDescriptors, newName, session));
         }
 
     }

@@ -37,6 +37,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.handles.CompartmentCollapseHandle;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.ContainerLayout;
@@ -489,10 +490,10 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         assertTrue("The '" + createdCompartmentName + "' element should be correctly created in the diagram", isContained);
         assertTrue("The created compartment '" + createdCompartmentName + "'should be a DNodeContainer type", createdCompartmentElement instanceof DNodeContainer);
 
-        if (editor.getDRepresentation().getName().equals(HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME)) {
+        if (new DRepresentationQuery(editor.getDRepresentation()).getRepresentationDescriptor().getName().equals(HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME)) {
             assertEquals("The created compartment '" + createdCompartmentName + "'should be layouted with 'Horizontal Stack' style", ContainerLayout.HORIZONTAL_STACK,
                     ((DNodeContainer) createdCompartmentElement).getChildrenPresentation());
-        } else if (editor.getDRepresentation().getName().equals(VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME)) {
+        } else if (new DRepresentationQuery(editor.getDRepresentation()).getRepresentationDescriptor().getName().equals(VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME)) {
             assertEquals("The created compartment '" + createdCompartmentName + "'should be layouted with 'Vertical Stack' style", ContainerLayout.VERTICAL_STACK,
                     ((DNodeContainer) createdCompartmentElement).getChildrenPresentation());
         }

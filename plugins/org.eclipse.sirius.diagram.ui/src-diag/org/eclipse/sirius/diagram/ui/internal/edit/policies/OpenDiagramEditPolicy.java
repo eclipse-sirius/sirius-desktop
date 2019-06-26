@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,7 @@ import org.eclipse.gmf.runtime.notation.HintedDiagramLinkStyle;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.part.Messages;
@@ -111,7 +112,7 @@ public class OpenDiagramEditPolicy extends OpenEditPolicy {
                 URI uri = EcoreUtil.getURI(diagram);
                 EObject element = diagramFacet.getDiagramLink().getElement();
                 if (element instanceof DDiagram) {
-                    String editorName = ((DDiagram) element).getName();
+                    String editorName = new DRepresentationQuery(((DDiagram) element)).getRepresentationDescriptor().getName();
                     IEditorInput editorInput = new URIEditorInput(uri, editorName);
                     IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
                     page.openEditor(editorInput, getEditorID());

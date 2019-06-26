@@ -190,6 +190,9 @@ public class ViewpointSwitch<T> {
                 result = caseDModelElement(dRepresentationDescriptor);
             }
             if (result == null) {
+                result = caseDocumentedElement(dRepresentationDescriptor);
+            }
+            if (result == null) {
                 result = defaultCase(theEObject);
             }
             return result;
@@ -202,9 +205,6 @@ public class ViewpointSwitch<T> {
             }
             if (result == null) {
                 result = caseDModelElement(dRepresentation);
-            }
-            if (result == null) {
-                result = caseDocumentedElement(dRepresentation);
             }
             if (result == null) {
                 result = caseDRefreshable(dRepresentation);

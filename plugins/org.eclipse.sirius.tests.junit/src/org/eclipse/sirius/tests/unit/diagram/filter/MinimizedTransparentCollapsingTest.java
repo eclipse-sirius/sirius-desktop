@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,7 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -64,9 +64,10 @@ public class MinimizedTransparentCollapsingTest extends SiriusDiagramTestCase {
 
     private DiagramEditor editor;
 
-    private Collection<DRepresentation> representations;
+    private Collection<DRepresentationDescriptor> representationDescriptors;
 
     private Predicate<DDiagramElement> collapsable = new Predicate<DDiagramElement>() {
+        @Override
         public boolean apply(DDiagramElement input) {
             return "EAttribute as border node".equals(new DDiagramElementQuery(input).getMappingName().get());
         }
@@ -76,7 +77,7 @@ public class MinimizedTransparentCollapsingTest extends SiriusDiagramTestCase {
     protected void setUp() throws Exception {
         super.setUp();
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH, REPRESENTATION_MODEL_PATH);
-        representations = getRepresentations(REPRESENTATION_DESC_NAME);
+        representationDescriptors = getRepresentationDescriptors(REPRESENTATION_DESC_NAME);
     }
 
     /**
@@ -104,9 +105,9 @@ public class MinimizedTransparentCollapsingTest extends SiriusDiagramTestCase {
     }
 
     private void openDiagram(int index, String diagramName, boolean collapsed) {
-        for (DRepresentation rep : representations) {
-            if (rep instanceof DDiagram && diagramName.equals(rep.getName())) {
-                diagram = (DDiagram) rep;
+        for (DRepresentationDescriptor representationDescriptor : representationDescriptors) {
+            if (representationDescriptor.getRepresentation() instanceof DDiagram && diagramName.equals(representationDescriptor.getName())) {
+                diagram = (DDiagram) representationDescriptor.getRepresentation();
                 break;
             }
         }
@@ -189,6 +190,7 @@ public class MinimizedTransparentCollapsingTest extends SiriusDiagramTestCase {
         assertEquals(24, diagram.getDiagramElements().size());
 
         Predicate<DDiagramElement> isVisible = new Predicate<DDiagramElement>() {
+            @Override
             public boolean apply(DDiagramElement input) {
                 return input.isVisible();
             };

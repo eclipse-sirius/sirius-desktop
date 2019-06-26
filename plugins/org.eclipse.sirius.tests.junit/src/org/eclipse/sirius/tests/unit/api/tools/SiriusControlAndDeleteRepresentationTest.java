@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -232,7 +232,7 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
-                newPackage2Diagram.setName("New package2 diagram");
+                new DRepresentationQuery(newPackage2Diagram).getRepresentationDescriptor().setName("New package2 diagram");
             }
         });
 
@@ -331,8 +331,8 @@ public class SiriusControlAndDeleteRepresentationTest extends SiriusDiagramTestC
             }
         });
         List<DRepresentation> allRepresentations = new DViewQuery(dView).getLoadedRepresentations();
-        assertEquals("package1 package entities", allRepresentations.get(0).getName());
-        assertEquals("package2 package entities", allRepresentations.get(1).getName());
+        assertEquals("package1 package entities", new DRepresentationQuery(allRepresentations.get(0)).getRepresentationDescriptor().getName());
+        assertEquals("package2 package entities", new DRepresentationQuery(allRepresentations.get(1)).getRepresentationDescriptor().getName());
 
         // We control package2 and "package1 package entities" into a separate
         // ecore and (resp.) aird

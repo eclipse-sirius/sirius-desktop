@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocumentEditor;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.ui.tools.api.properties.PropertiesService;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
@@ -113,7 +114,8 @@ public class EntitiesSpecificEditorTests extends SiriusDiagramTestCase implement
             assertTrue(editor.isDirty());
             final DRepresentation representation = ((DialectEditor) editor).getRepresentation();
             TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(representation);
-            Command changeDRepNameCmd = SetCommand.create(domain, representation, ViewpointPackage.Literals.DREPRESENTATION__NAME, "plop");
+            Command changeDRepNameCmd = SetCommand.create(domain, new DRepresentationQuery(representation).getRepresentationDescriptor(), ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__NAME,
+                    "plop");
             domain.getCommandStack().execute(changeDRepNameCmd);
             assertTrue(editor.isDirty());
         } finally {
