@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_headless_photon" sequenceNumber="1556091790">
+<target name="sirius_headless_photon" sequenceNumber="1561532508">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
@@ -21,7 +21,7 @@
       <unit id="org.reactivestreams" version="1.0.2.v20181120-0809"/>
       <unit id="com.graphql.java.dataloader" version="2.1.1.v20181120-0809"/>
       <unit id="com.graphql.java" version="11.0.0.v20181120-0810"/>
-      <repository id="Orbit" location="http://download.eclipse.org/tools/orbit/downloads/drops/R20181128170323/repository"/>
+      <repository id="Orbit" location="https://download.eclipse.org/tools/orbit/downloads/drops/R20190602212107/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.elk.feature.feature.group" version="0.0.0"/>

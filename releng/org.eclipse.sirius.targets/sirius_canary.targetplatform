@@ -23,7 +23,25 @@ location Eclipse-Integration "https://download.eclipse.org/eclipse/updates/I-bui
     org.eclipse.equinox.p2.extras.feature.feature.group lazy
 }
 
-include "modules/orbit.tpd"
+location Orbit-latest-I "http://download.eclipse.org/tools/orbit/downloads/latest-I" {
+    org.apache.log4j lazy
+    org.easymock lazy
+    org.hamcrest.core lazy
+    org.hamcrest.library lazy
+    org.junit [4.11.0,5.0.0)
+    javax.servlet lazy
+    javax.websocket lazy
+    com.google.gson lazy
+    org.slf4j.api [1.7.2,1.7.3)
+    ch.qos.logback.slf4j [1.0.7,1.0.8)
+    ch.qos.logback.classic [1.0.7,1.0.8)
+    ch.qos.logback.core [1.0.7,1.0.8)
+    org.apache.xalan 2.7.1
+    org.antlr.runtime [4.7.1,4.7.2)
+    org.reactivestreams [1.0.2,1.0.3)
+    com.graphql.java.dataloader [2.1.1,2.1.2)
+    com.graphql.java [11.0.0,11.0.1)
+}
 
 location GEF-LastSuccessful "https://ci.eclipse.org/gef/job/gef-legacy-master/lastSuccessfulBuild/artifact/update-site/" {
 	org.eclipse.draw2d.sdk.feature.group lazy
