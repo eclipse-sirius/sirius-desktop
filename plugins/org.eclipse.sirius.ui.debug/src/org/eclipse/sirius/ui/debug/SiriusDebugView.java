@@ -90,6 +90,7 @@ import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.SiriusReferenceFinder;
 import org.eclipse.sirius.business.api.session.Session;
@@ -504,6 +505,7 @@ public class SiriusDebugView extends AbstractDebugView {
         addDeferredUnrelatedChangeAction();
         addListProxiesAction();
         addLoadResourceAction();
+        addLoadAllRepresentationsAction();
         addEMFResourcesStatisticsAction();
         addVSMStatisticsAction();
     }
@@ -619,6 +621,28 @@ public class SiriusDebugView extends AbstractDebugView {
                 setText(sb.toString());
             }
         });
+    }
+
+    private void addLoadAllRepresentationsAction() {
+        addAction("Load All Representations", () -> {
+            StringBuilder out = new StringBuilder();
+            Session.of(getCurrentEObject()).ifPresent(session -> {
+
+                int alreadyLoaded = DialectManager.INSTANCE.getAllLoadedRepresentations(session).size();
+                final int[] loaded = { 0 };
+                long loadTime = time(() -> {
+                    loaded[0] = DialectManager.INSTANCE.getAllRepresentations(session).size();
+                });
+
+                out.append("Load all representations in ").append(session.toString()).append(":\n");
+                out.append("* prevously loaded: ").append(alreadyLoaded);
+                out.append("\n* loaded: ").append(loaded[0]);
+                out.append("\n* load time: ").append(TimeUnit.NANOSECONDS.toMillis(loadTime)).append("ms\n");
+
+            });
+            setText(out.toString());
+        });
+
     }
 
     private long time(Runnable r) {
