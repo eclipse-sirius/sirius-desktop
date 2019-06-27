@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_capella_oxygen" sequenceNumber="1561532526">
+<target name="sirius_capella_2019-06" sequenceNumber="1561625423">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
@@ -102,7 +102,7 @@
       <unit id="org.eclipse.xpand.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.xtend.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.xtext.sdk.feature.group" version="0.0.0"/>
-      <repository id="Eclipse-Oxygen" location="http://download.eclipse.org/releases/oxygen"/>
+      <repository id="Eclipse-2019-06" location="http://download.eclipse.org/releases/2019-06"/>
     </location>
   </locations>
 </target>

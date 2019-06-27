@@ -1,4 +1,4 @@
-target "sirius_capella_oxygen"
+target "sirius_capella_2019-06"
 
 include "../modules/orbit.tpd"
 include "../modules/swtbot-2.8.tpd"
@@ -20,7 +20,7 @@ location Sirius-Query-Legacy-1.1.0 "http://download.eclipse.org/sirius/updates/l
     org.eclipse.sirius.query.legacy.feature.source.feature.group lazy
 }
 
-location Eclipse-Oxygen "http://download.eclipse.org/releases/oxygen" {
+location Eclipse-2019-06 "http://download.eclipse.org/releases/2019-06" {
     com.google.guava lazy
     com.ibm.icu lazy
     org.eclipse.draw2d.sdk.feature.group lazy
