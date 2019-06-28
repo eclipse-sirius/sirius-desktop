@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo
+ * Copyright (c) 2018, 2019 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -70,7 +70,7 @@ public class GenericLayoutProvider implements LayoutProvider {
      *            the part that will be layouted.
      * @return the layout configuration that should be used by the layout algorithm. Null if no such element exist.
      */
-    protected CustomLayoutConfiguration getLayoutConfiguration(final IGraphicalEditPart partToLayout) {
+    public CustomLayoutConfiguration getLayoutConfiguration(final IGraphicalEditPart partToLayout) {
         // we retrieve the layout configuration from the VSM.
         EditPartQuery editPartQuery = new EditPartQuery(partToLayout);
         DiagramDescription diagramDescription = editPartQuery.getDiagramDescription();
