@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -141,7 +141,7 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
      * @return the diagram layout provider if there is one, <code>null</code>
      *         otherwise
      */
-    protected LayoutProvider getDiagramLayoutProvider(final DiagramEditPart diagramEditPart, final IAdaptable layoutHint) {
+    public LayoutProvider getDiagramLayoutProvider(final DiagramEditPart diagramEditPart, final IAdaptable layoutHint) {
         final LayoutProvider candidate = LayoutService.getProvider(diagramEditPart);
         if (candidate != null && candidate.isDiagramLayoutProvider()) {
             return candidate;
