@@ -1168,7 +1168,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
     }
 
     public void layout(LayoutMapping layoutMapping) {
-        BasicProgressMonitor basicProgressMonitor = new BasicProgressMonitor(0, ElkServicePlugin.getInstance().getPreferenceStore().getBoolean(PREF_EXEC_TIME_MEASUREMENT));
+        BasicProgressMonitor basicProgressMonitor = new BasicProgressMonitor(0);
         graphLayoutEngine.layout(layoutMapping.getLayoutGraph(), basicProgressMonitor.subTask(1));
 
     }

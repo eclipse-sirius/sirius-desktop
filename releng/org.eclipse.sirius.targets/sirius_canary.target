@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_canary" sequenceNumber="1561532491">
+<target name="sirius_canary" sequenceNumber="1561970164">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
@@ -13,15 +13,6 @@
       <unit id="org.eclipse.eef.ext.widgets.reference.feature.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.eef.ext.widgets.reference.feature.source.feature.group" version="0.0.0"/>
       <repository id="EEF-Latest" location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/latest/neon"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.elk.feature.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.elk.feature.source.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.elk.algorithms.feature.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.elk.algorithms.feature.source.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.elk.graphviz.feature.feature.group" version="0.0.0"/>
-      <unit id="org.eclipse.elk.graphviz.feature.source.feature.group" version="0.0.0"/>
-      <repository id="ELK-0.4" location="http://download.eclipse.org/elk/updates/releases/0.4.1/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.jetty.io" version="9.4.10.v20180503"/>
@@ -78,6 +69,14 @@
       <unit id="com.graphql.java.dataloader" version="2.1.1.v20181120-0809"/>
       <unit id="com.graphql.java" version="11.0.0.v20181120-0810"/>
       <repository id="Orbit-latest-I" location="http://download.eclipse.org/tools/orbit/downloads/latest-I"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.elk.feature.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.elk.algorithms.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.elk.algorithms.feature.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.elk.graphviz.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.elk.graphviz.feature.source.feature.group" version="0.0.0"/>
+      <repository id="ELK-Nightly" location="https://build.eclipse.org/modeling/elk/updates/nightly/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.draw2d.sdk.feature.group" version="0.0.0"/>

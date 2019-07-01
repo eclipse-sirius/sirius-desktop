@@ -2,7 +2,6 @@ target "sirius_canary"
 
 include "modules/shared-license.tpd"
 include "modules/eef-nightly.tpd"
-include "modules/elk-0.4.tpd"
 include "modules/jetty-9.4.tpd"
 
 with source, requirements
@@ -41,6 +40,14 @@ location Orbit-latest-I "http://download.eclipse.org/tools/orbit/downloads/lates
     org.reactivestreams [1.0.2,1.0.3)
     com.graphql.java.dataloader [2.1.1,2.1.2)
     com.graphql.java [11.0.0,11.0.1)
+}
+
+location ELK-Nightly "https://build.eclipse.org/modeling/elk/updates/nightly/" {
+    org.eclipse.elk.feature.source.feature.group lazy
+    org.eclipse.elk.algorithms.feature.feature.group lazy
+    org.eclipse.elk.algorithms.feature.source.feature.group lazy
+    org.eclipse.elk.graphviz.feature.feature.group lazy
+    org.eclipse.elk.graphviz.feature.source.feature.group lazy
 }
 
 location GEF-LastSuccessful "https://ci.eclipse.org/gef/job/gef-legacy-master/lastSuccessfulBuild/artifact/update-site/" {
