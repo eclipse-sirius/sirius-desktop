@@ -24,6 +24,7 @@ import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.swt.SWT;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.ui.PartInitException;
 
@@ -101,6 +102,7 @@ public class LinkNoteFragmentModelCreationTest extends AbstractSiriusSwtBotGefTe
         editor.activateTool(LINK_NOTE_TOOL);
         editor.click(x, y);
         selectTargetRepresentation(link);
+        SWTBotUtils.pressKeyboardKey(editor.getWidget(), SWT.F2);
         editor.directEditType(MY_NOTE);
     }
 

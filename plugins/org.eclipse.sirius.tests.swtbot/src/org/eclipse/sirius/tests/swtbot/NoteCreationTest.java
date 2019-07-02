@@ -54,6 +54,7 @@ import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
@@ -555,7 +556,7 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
         if (link != null) {
             selectTargetRepresentation(link);
         }
-
+        SWTBotUtils.pressKeyboardKey(editor.getWidget(), SWT.F2);
         editor.directEditType(MY_NOTE);
     }
 
