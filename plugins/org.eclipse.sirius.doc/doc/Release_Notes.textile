@@ -37,6 +37,11 @@ h4. Changes in  @org.eclipse.sirius@
 * <span class="label label-success">Added</span> The methods @org.eclipse.sirius.tools.api.ui.RefreshHelper.registerImpactingNotification(Predicate<Notification>)@ and @org.eclipse.sirius.tools.api.ui.RefreshHelper.unregisterImpactingNotification(Predicate<Notification>)@ have been added to allow to consider some graphical modifications as requiring a refresh. By default, only semantic changes are considered as requiring a refresh.  
 * <span class="label label-danger">Removed</span> The @org.eclipse.sirius.business.api.helper.task.NotificationTask@ class has been removed. It was not used anywhere.
 
+
+h4. Changes in  @org.eclipse.sirius.diagram.ui@
+
+* <span class="label label-info">Modified</span> The @org.eclipse.sirius.diagram.ui.business.api.image.ImageSelector.IMAGES_RESOURCE_NAME@ constant has been deprecated. It was present in the initial commit of Sirius but has never been used in its open source components.
+
 h4. Changes in  @org.eclipse.sirius.tests.swtbot.support@
 
 * <span class="label label-success">Added</span>  The methods @org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas.mouseMoveLeftClick(int, int, boolean, int[])@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusGefViewer.click(int, int, boolean, int[])@, @org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor.clickWithKeys(String, int...)@, have been added to make a mouse click with key modifiers for a multi selection for example.
