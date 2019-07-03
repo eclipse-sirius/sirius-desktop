@@ -122,7 +122,7 @@ public class MessageExtensionTest extends AbstractDefaultModelSequenceTests {
         // Refresh the diagram.
         ICondition done = new OperationDoneCondition();
         editor.click(0, 0);
-        manualRefresh();
+        editor.refresh();
         bot.waitUntil(done);
 
         assertFalse("The editor should not be dirty after the manual refresh.", editor.isDirty());
