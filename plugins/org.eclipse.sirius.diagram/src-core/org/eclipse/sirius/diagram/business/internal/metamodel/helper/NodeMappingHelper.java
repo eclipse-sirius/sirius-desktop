@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -211,13 +211,14 @@ public final class NodeMappingHelper {
         NodeStyleDescription style = null;
 
         // getting the right style description : default or conditional
+        DDiagram parentDiagram = node.getParentDiagram();
         if (container != null) {
-            style = (NodeStyleDescription) new MappingWithInterpreterHelper(interpreter).getBestStyleDescription(self, modelElement, node, container.getTarget(), node.getParentDiagram());
+            style = (NodeStyleDescription) new MappingWithInterpreterHelper(interpreter).getBestStyleDescription(self, modelElement, node, container.getTarget(), parentDiagram);
         }
 
         if (style != null && style.getLabelExpression() != null) {
             try {
-                interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, node.getParentDiagram());
+                interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, parentDiagram);
                 interpreter.setVariable(IInterpreterSiriusVariables.VIEW, node);
                 final String name = interpreter.evaluateString(modelElement, style.getLabelExpression());
                 node.setName(name);
@@ -231,7 +232,7 @@ public final class NodeMappingHelper {
 
         if (style != null && style.getTooltipExpression() != null) {
             try {
-                interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, node.getParentDiagram());
+                interpreter.setVariable(IInterpreterSiriusVariables.DIAGRAM, parentDiagram);
                 interpreter.setVariable(IInterpreterSiriusVariables.VIEW, node);
                 final String tooltip = interpreter.evaluateString(modelElement, style.getTooltipExpression());
                 node.setTooltipText(tooltip);
@@ -258,7 +259,7 @@ public final class NodeMappingHelper {
             containerVariable = ((DSemanticDecorator) node.eContainer()).getTarget();
         }
 
-        final StyleDescription bestStyleDescription = new MappingWithInterpreterHelper(interpreter).getBestStyleDescription(self, modelElement, node, containerVariable, node.getParentDiagram());
+        final StyleDescription bestStyleDescription = new MappingWithInterpreterHelper(interpreter).getBestStyleDescription(self, modelElement, node, containerVariable, parentDiagram);
         Style bestStyle = node.getStyle();
         if ((bestStyle == null || bestStyle.getDescription() != bestStyleDescription) && bestStyleDescription != null) {
             bestStyle = styleHelper.createStyle(bestStyleDescription);
@@ -325,13 +326,14 @@ public final class NodeMappingHelper {
         NodeStyleDescription style = null;
 
         // getting the right style description : default or conditional
+        DDiagram parentDiagram = listElement.getParentDiagram();
         if (container != null) {
             style = (NodeStyleDescription) new MappingWithInterpreterHelper(interpreter).getBestStyleDescription(self, modelElement, listElement, container.getTarget(),
-                    listElement.getParentDiagram());
+                    parentDiagram);
         }
 
         if (style != null && !StringUtil.isEmpty(style.getLabelExpression())) {
-            listElement.setName(DiagramElementMappingHelper.computeLabel(listElement, style, listElement.getParentDiagram(), interpreter));
+            listElement.setName(DiagramElementMappingHelper.computeLabel(listElement, style, parentDiagram, interpreter));
         }
 
         EObject containerVariable = null;
@@ -342,7 +344,7 @@ public final class NodeMappingHelper {
         // semantic elements
         DiagramElementMappingHelper.refreshSemanticElements(self, listElement, interpreter);
 
-        final NodeStyle bestStyle = (NodeStyle) new MappingWithInterpreterHelper(interpreter).getBestStyle(self, modelElement, listElement, containerVariable, listElement.getParentDiagram());
+        final NodeStyle bestStyle = (NodeStyle) new MappingWithInterpreterHelper(interpreter).getBestStyle(self, modelElement, listElement, containerVariable, parentDiagram);
 
         if ((bestStyle == null || bestStyle.getDescription() != style) && style != null) {
             listElement.setOwnedStyle(bestStyle);

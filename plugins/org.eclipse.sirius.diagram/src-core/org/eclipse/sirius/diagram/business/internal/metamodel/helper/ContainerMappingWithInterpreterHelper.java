@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -400,8 +400,9 @@ public final class ContainerMappingWithInterpreterHelper {
         final DSemanticDecorator cContainer = (DSemanticDecorator) container.eContainer();
         ContainerStyleDescription style = null;
 
+        DDiagram parentDiagram = container.getParentDiagram();
         if (cContainer != null) {
-            style = (ContainerStyleDescription) new MappingWithInterpreterHelper(interpreter).getBestStyleDescription(self, container.getTarget(), container, container, container.getParentDiagram());
+            style = (ContainerStyleDescription) new MappingWithInterpreterHelper(interpreter).getBestStyleDescription(self, container.getTarget(), container, container, parentDiagram);
         }
 
         interpreter.setVariable(IInterpreterSiriusVariables.VIEW, container);
@@ -439,7 +440,7 @@ public final class ContainerMappingWithInterpreterHelper {
             containerVariable = ((DSemanticDecorator) container.eContainer()).getTarget();
         }
         final Style currentStyle = container.getStyle();
-        final Style bestStyle = new MappingWithInterpreterHelper(interpreter).getBestStyle(self, container.getTarget(), container, containerVariable, container.getParentDiagram());
+        final Style bestStyle = new MappingWithInterpreterHelper(interpreter).getBestStyle(self, container.getTarget(), container, containerVariable, parentDiagram);
 
         StyleHelper sHelper = new StyleHelper(interpreter);
         if (currentStyle == null) {

@@ -194,8 +194,9 @@ public final class LayerHelper {
 
         if (!LayerHelper.withoutLayersMode(mapping)) {
             final DDiagram diagram;
-            if (element.getParentDiagram() != null) {
-                diagram = element.getParentDiagram();
+            DDiagram computedDiagram = element.getParentDiagram();
+            if (computedDiagram != null) {
+                diagram = computedDiagram;
             } else {
                 diagram = parentDiagram;
             }

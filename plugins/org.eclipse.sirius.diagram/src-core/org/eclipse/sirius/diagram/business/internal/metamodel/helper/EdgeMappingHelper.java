@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -355,10 +355,9 @@ public final class EdgeMappingHelper {
             if (dEdge.eContainer() instanceof DSemanticDecorator) {
                 containerVariable = ((DSemanticDecorator) dEdge.eContainer()).getTarget();
             }
-            final EdgeStyleDescription styleDescription = (EdgeStyleDescription) new MappingWithInterpreterHelper(interpreter).getBestStyleDescription(edgeMapping, dEdge.getTarget(), dEdge, containerVariable,
-                    dEdge.getParentDiagram());
-
             DDiagram dDiagram = dEdge.getParentDiagram();
+            final EdgeStyleDescription styleDescription = (EdgeStyleDescription) new MappingWithInterpreterHelper(interpreter).getBestStyleDescription(edgeMapping, dEdge.getTarget(), dEdge,
+                    containerVariable, dDiagram);
 
             // the optional path.
             createPath(edgeMapping, dEdge, dDiagram);
@@ -402,8 +401,9 @@ public final class EdgeMappingHelper {
 
         EObject root = null;
         final DSemanticDiagram diagram;
-        if (dEdge.getParentDiagram() instanceof DSemanticDiagram) {
-            diagram = (DSemanticDiagram) dEdge.getParentDiagram();
+        DDiagram parentDiagram = dEdge.getParentDiagram();
+        if (parentDiagram instanceof DSemanticDiagram) {
+            diagram = (DSemanticDiagram) parentDiagram;
             root = DSemanticDiagramHelper.getRootContent(diagram);
         } else {
             diagram = null;

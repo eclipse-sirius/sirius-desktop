@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -78,14 +78,15 @@ public class VariableFilterWrapper implements Adapter {
         //
         // If the element has no container it will be deleted.
         // Let's return false.
-        if (element.getParentDiagram() == null) {
+        DDiagram parentDiagram = element.getParentDiagram();
+        if (parentDiagram == null) {
             return false;
         }
 
         /*
          * We'll init the variables using the history contained in the viewpoint.
          */
-        getVariablesFromDiagram(element.getParentDiagram());
+        getVariablesFromDiagram(parentDiagram);
         boolean valid = true;
         final IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(element);
         /*

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -222,16 +222,17 @@ public class RefreshSiriusElement extends RecordingCommand {
          * Update bordering nodes
          */
         final Collection<EObjectCouple> managedBorderingNodes = new HashSet<EObjectCouple>();
+        DDiagram parentDiagram = adn.getParentDiagram();
         for (DNode n : adn.getOwnedBorderedNodes()) {
             refresh(n);
-            managedBorderingNodes.add(new EObjectCouple(n.getTarget(), n.getActualMapping(), RefreshIdsHolder.getOrCreateHolder(adn.getParentDiagram())));
+            managedBorderingNodes.add(new EObjectCouple(n.getTarget(), n.getActualMapping(), RefreshIdsHolder.getOrCreateHolder(parentDiagram)));
         }
         /*
          * create the non managed bordering nodes
          */
         RepresentationElementMapping mapping = adn.getMapping();
         if (mapping instanceof AbstractNodeMapping) {
-            AbstractNodeMappingSpecOperations.createBorderingNodes((AbstractNodeMapping) mapping, adn.getTarget(), adn, managedBorderingNodes, adn.getParentDiagram());
+            AbstractNodeMappingSpecOperations.createBorderingNodes((AbstractNodeMapping) mapping, adn.getTarget(), adn, managedBorderingNodes, parentDiagram);
         }
     }
 
