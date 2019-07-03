@@ -25,7 +25,6 @@ import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
-import org.eclipse.sirius.diagram.description.concern.ConcernDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.sequence.impl.SequenceDDiagramImpl;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
@@ -96,11 +95,6 @@ public class SequenceDDiagramSpec extends SequenceDDiagramImpl {
     public EList<FilterDescription> getAllFilters() {
         final Collection<FilterDescription> result = new DDiagramInternalQuery(this).getAllFilters();
         return new EcoreEList.UnmodifiableEList<FilterDescription>(eInternalContainer(), DiagramPackage.eINSTANCE.getDDiagram_AllFilters(), result.size(), result.toArray());
-    }
-
-    @Override
-    public void setCurrentConcern(final ConcernDescription newCurrentConcern) {
-        super.setCurrentConcern(newCurrentConcern);
     }
 
     @Override
