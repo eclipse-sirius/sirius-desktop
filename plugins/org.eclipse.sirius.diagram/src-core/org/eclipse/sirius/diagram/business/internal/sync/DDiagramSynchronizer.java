@@ -321,6 +321,7 @@ public class DDiagramSynchronizer {
     private void refreshOperation(final IProgressMonitor monitor) {
         try {
             KeyCache.DEFAULT.clear();
+            EqualityHelper.setUriFragmentCacheEnabled(true);
             // Semantic changes should be possible when a representation
             // representation
             // is locked (CDO)
@@ -406,6 +407,7 @@ public class DDiagramSynchronizer {
             }
             KeyCache.DEFAULT.clear();
         } finally {
+            EqualityHelper.setUriFragmentCacheEnabled(false);
             monitor.done();
         }
     }
@@ -837,8 +839,8 @@ public class DDiagramSynchronizer {
      * @param monitor
      *            a {@link IProgressMonitor} to show progression of refresh of borderedNodes
      */
-    private void refreshBorderNodeMapping(final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToAbstractNodes, final AbstractDNode newNode,
-            final Set<DNodeCandidate> semanticFilter, IProgressMonitor monitor) {
+    private void refreshBorderNodeMapping(final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToAbstractNodes, final AbstractDNode newNode, final Set<DNodeCandidate> semanticFilter,
+            IProgressMonitor monitor) {
         if (newNode instanceof DragAndDropTarget && this.accessor.getPermissionAuthority().canEditInstance(newNode)) {
             final DragAndDropTarget newNodeDDT = (DragAndDropTarget) newNode;
             List<NodeMapping> borderedNodeMappings = diagramMappingsManager.getBorderedNodeMappings(newNode);
@@ -936,8 +938,7 @@ public class DDiagramSynchronizer {
         }
     }
 
-    private void handleKeptNodes(final DragAndDropTarget viewContainer, final SetIntersection<DNodeCandidate> status, Collection<AbstractDNode> keptNodes, boolean border,
-            IProgressMonitor monitor) {
+    private void handleKeptNodes(final DragAndDropTarget viewContainer, final SetIntersection<DNodeCandidate> status, Collection<AbstractDNode> keptNodes, boolean border, IProgressMonitor monitor) {
         final Iterable<DNodeCandidate> keptNodeCandidates = status.getKeptElements();
         try {
             monitor.beginTask(Messages.DDiagramSynchronizer_refreshNodesMsg, Iterables.size(keptNodeCandidates));
@@ -949,8 +950,7 @@ public class DDiagramSynchronizer {
         }
     }
 
-    private AbstractDNode handleKeptNode(final DragAndDropTarget viewContainer, DNodeCandidate keptCandidate, final Collection<AbstractDNode> keptNodes, boolean border,
-            IProgressMonitor monitor) {
+    private AbstractDNode handleKeptNode(final DragAndDropTarget viewContainer, DNodeCandidate keptCandidate, final Collection<AbstractDNode> keptNodes, boolean border, IProgressMonitor monitor) {
         /* The element is already here. */
         AbstractDNode keptNode = keptCandidate.getOriginalElement();
         try {
@@ -1034,8 +1034,7 @@ public class DDiagramSynchronizer {
         }
     }
 
-    private void addNowNodeCandidates(final SetIntersection<DNodeCandidate> biSet, final DragAndDropTarget container, final AbstractNodeMapping mapping,
-            final Set<DNodeCandidate> semanticFilter) {
+    private void addNowNodeCandidates(final SetIntersection<DNodeCandidate> biSet, final DragAndDropTarget container, final AbstractNodeMapping mapping, final Set<DNodeCandidate> semanticFilter) {
         final Collection<DNodeCandidate> nowCandidates = computeNodeCandidates(container, mapping, semanticFilter);
         for (final DNodeCandidate candidate : nowCandidates) {
             biSet.addInNew(candidate);
@@ -1149,8 +1148,8 @@ public class DDiagramSynchronizer {
      *            a {@link IProgressMonitor} to show progression of {@link AbstractDNode}s creation
      * @return the newly created nodes.
      */
-    private List<AbstractDNode> createNewContent(final Collection<DNodeCandidate> candidatesToCreate, final DragAndDropTarget container, final AbstractNodeMapping mapping,
-            final boolean border, IProgressMonitor monitor) {
+    private List<AbstractDNode> createNewContent(final Collection<DNodeCandidate> candidatesToCreate, final DragAndDropTarget container, final AbstractNodeMapping mapping, final boolean border,
+            IProgressMonitor monitor) {
         return createNewContent(candidatesToCreate, false, container, mapping, border, monitor);
     }
 
