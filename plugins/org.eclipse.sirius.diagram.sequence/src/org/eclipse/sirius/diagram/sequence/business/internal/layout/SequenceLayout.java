@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.CollapseFilter;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
@@ -24,14 +25,13 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.flag.Sequenc
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.horizontal.SequenceHorizontalLayout;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.observation.SequenceObservationLayout;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.vertical.SequenceVerticalLayout;
-import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
 import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.collect.Iterables;
 
 /**
- * Computes the appropriate graphical locations of sequence events and lifelines
- * on a sequence diagram to reflect the semantic order.
+ * Computes the appropriate graphical locations of sequence events and lifelines on a sequence diagram to reflect the
+ * semantic order.
  * 
  * @author pcdavid, mporhel
  */
@@ -49,8 +49,7 @@ public class SequenceLayout {
      * Constructor.
      * 
      * @param diagram
-     *            the sequence diagram for which to compute the messages
-     *            locations.
+     *            the sequence diagram for which to compute the messages locations.
      */
     public SequenceLayout(Diagram diagram) {
         this.sequenceDiagram = ISequenceElementAccessor.getSequenceDiagram(diagram);
@@ -64,8 +63,7 @@ public class SequenceLayout {
     }
 
     /**
-     * Compute and apply horizontal layout. Should be use in a
-     * {@link org.eclipse.emf.transaction.RecordingCommand}.
+     * Compute and apply horizontal layout. Should be use in a {@link org.eclipse.emf.transaction.RecordingCommand}.
      * 
      * @param pack
      *            pack the space between instance roles.
@@ -79,8 +77,7 @@ public class SequenceLayout {
     }
 
     /**
-     * Compute and apply vertical layout. Should be use in a
-     * {@link org.eclipse.emf.transaction.RecordingCommand}.
+     * Compute and apply vertical layout. Should be use in a {@link org.eclipse.emf.transaction.RecordingCommand}.
      * 
      * @param pack
      *            pack the space between sequence events
@@ -94,9 +91,8 @@ public class SequenceLayout {
     }
 
     /**
-     * Compute and apply observation layout. Should be use in a
-     * {@link org.eclipse.emf.transaction.RecordingCommand} and after vertical
-     * and horizontal layout.
+     * Compute and apply observation layout. Should be use in a {@link org.eclipse.emf.transaction.RecordingCommand} and
+     * after vertical and horizontal layout.
      * 
      * It will place the ObservationPoint.
      * 
@@ -127,11 +123,13 @@ public class SequenceLayout {
     private void updateCollapseFilters() {
         for (ISequenceNode isn : Iterables.concat(sequenceDiagram.get().getAllAbstractNodeEvents(), sequenceDiagram.get().getAllObservationPoints(), sequenceDiagram.get().getAllLifelines())) {
             Node node = isn.getNotationNode();
-            if (new NodeQuery(node).isCollapsed() && node.getElement() instanceof DDiagramElement && node.getLayoutConstraint() instanceof Size) {
-                Size size = (Size) node.getLayoutConstraint();
+            if (node.getElement() instanceof DDiagramElement && node.getLayoutConstraint() instanceof Size) {
                 DDiagramElement dde = (DDiagramElement) node.getElement();
-                for (CollapseFilter collapseFilter : Iterables.filter(dde.getGraphicalFilters(), CollapseFilter.class)) {
-                    collapseFilter.setHeight(size.getHeight());
+                if (new DDiagramElementQuery(dde).isIndirectlyCollapsed()) {
+                    Size size = (Size) node.getLayoutConstraint();
+                    for (CollapseFilter collapseFilter : Iterables.filter(dde.getGraphicalFilters(), CollapseFilter.class)) {
+                        collapseFilter.setHeight(size.getHeight());
+                    }
                 }
             }
         }
