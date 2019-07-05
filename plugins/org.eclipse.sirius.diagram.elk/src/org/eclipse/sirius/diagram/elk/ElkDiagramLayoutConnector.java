@@ -181,31 +181,6 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
     }
 
     /**
-     * Finds the diagram edit part of an edit part.
-     * 
-     * @param editPart
-     *            an edit part
-     * @return the diagram edit part, or {@code null} if there is no containing diagram edit part
-     */
-    public static DiagramEditPart getDiagramEditPart(final EditPart editPart) {
-        EditPart ep = editPart;
-        while (ep != null && !(ep instanceof DiagramEditPart) && !(ep instanceof RootEditPart)) {
-            ep = ep.getParent();
-        }
-        if (ep instanceof RootEditPart) {
-            // the diagram edit part is a direct child of the root edit part
-            RootEditPart root = (RootEditPart) ep;
-            ep = null;
-            for (Object child : root.getChildren()) {
-                if (child instanceof DiagramEditPart) {
-                    ep = (EditPart) child;
-                }
-            }
-        }
-        return (DiagramEditPart) ep;
-    }
-
-    /**
      * If the workbench part is a diagram editor, returns that. Otherwise, returns {@code null}. This is more or less
      * just a fancy cast.
      *
@@ -610,8 +585,6 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
 
         Maybe<ElkPadding> kinsets = new Maybe<ElkPadding>();
-        // autoSize.prepareForArrangeAll(Iterators.filter(currentEditPart.getChildren().iterator(),
-        // AbstractDiagramElementContainerEditPart.class), new ArrayList<>());
         // iterate through the children of the element
         for (Object obj : currentEditPart.getChildren()) {
 
@@ -697,20 +670,20 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             final Maybe<ElkPadding> elkinsets, Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
 
         IFigure nodeFigure = nodeEditPart.getFigure();
-        ElkNode childLayoutNode = ElkGraphUtil.createNode(parentElkNode);
-        applyOptionsRelatedToElementTarget(childLayoutNode, elkTargetToOptionsOverrideMap);
+        ElkNode newNode = ElkGraphUtil.createNode(parentElkNode);
+        applyOptionsRelatedToElementTarget(newNode, elkTargetToOptionsOverrideMap);
 
         // set location and size
         Rectangle childAbsoluteBounds = getAbsoluteBounds(nodeFigure);
         KVector containerAbsoluteLocation = new KVector();
         ElkUtil.toAbsolute(containerAbsoluteLocation, parentElkNode);
-        childLayoutNode.setX(childAbsoluteBounds.x - containerAbsoluteLocation.x);
-        childLayoutNode.setY(childAbsoluteBounds.y - containerAbsoluteLocation.y);
-        childLayoutNode.setDimensions(childAbsoluteBounds.width, childAbsoluteBounds.height);
+        newNode.setX(childAbsoluteBounds.x - containerAbsoluteLocation.x);
+        newNode.setY(childAbsoluteBounds.y - containerAbsoluteLocation.y);
+        newNode.setDimensions(childAbsoluteBounds.width, childAbsoluteBounds.height);
 
         // useful to debug.
         if (((View) nodeEditPart.getModel()).getElement() instanceof DDiagramElement) {
-            childLayoutNode.setIdentifier(((DDiagramElement) ((View) nodeEditPart.getModel()).getElement()).getName());
+            newNode.setIdentifier(((DDiagramElement) ((View) nodeEditPart.getModel()).getElement()).getName());
         }
         // We would set the modified flag to false here, but that doesn't exist
         // anymore
@@ -718,7 +691,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         // determine minimal size of the node
         try {
             Dimension minSize = nodeFigure.getMinimumSize();
-            childLayoutNode.setProperty(CoreOptions.NODE_SIZE_MINIMUM, new KVector(minSize.width, minSize.height));
+            newNode.setProperty(CoreOptions.NODE_SIZE_MINIMUM, new KVector(minSize.width, minSize.height));
         } catch (SWTException exception) {
             // getMinimumSize() can cause this exception when fonts are disposed
             // for some reason;
@@ -738,14 +711,14 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             }
             parentElkNode.setProperty(CoreOptions.PADDING, ei);
 
-            parentElkNode.getChildren().add(childLayoutNode);
+            parentElkNode.getChildren().add(newNode);
             applyParentNodeOption(parentElkNode, elkTargetToOptionsOverrideMap);
         }
-        mapping.getGraphMap().put(childLayoutNode, nodeEditPart);
+        mapping.getGraphMap().put(newNode, nodeEditPart);
 
         // store all the connections to process them later
         addConnections(mapping, nodeEditPart);
-        return childLayoutNode;
+        return newNode;
     }
 
     /**
@@ -938,6 +911,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             label.setLocation(labelBounds.x - nodeBounds.x, labelBounds.y - nodeBounds.y);
 
             try {
+                // We use the preferred size and not the labelBounds to "reset" previous manual wrapping size
                 Dimension size = labelFigure.getPreferredSize();
                 label.setDimensions(size.width, size.height);
                 if (font != null && !font.isDisposed()) {
