@@ -45,6 +45,7 @@ import org.eclipse.sirius.tests.unit.api.refresh.IconRefreshTests;
 import org.eclipse.sirius.tests.unit.api.refresh.RefreshInUIThreadTests;
 import org.eclipse.sirius.tests.unit.api.refresh.RefreshOnDeletionInAutoRefreshTests;
 import org.eclipse.sirius.tests.unit.api.refresh.RefreshOnDeletionInManualRefreshTests;
+import org.eclipse.sirius.tests.unit.api.refresh.RefreshStabilityTests;
 import org.eclipse.sirius.tests.unit.api.refresh.RefreshWithCustomizedStyleTests;
 import org.eclipse.sirius.tests.unit.api.refresh.StyleCustomizationAndConditionalStyleDescriptionTest;
 import org.eclipse.sirius.tests.unit.api.refresh.StyleRefreshTests;
@@ -406,6 +407,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(StyleSizeChangeRefreshTest.class);
         suite.addTestSuite(ConditionalStyleRefreshTest.class);
         suite.addTestSuite(RefreshWithCustomizationTests.class);
+        suite.addTestSuite(RefreshStabilityTests.class);
 
         suite.addTestSuite(SessionTest.class);
         suite.addTestSuite(SessionServiceGMFDiagramTest.class);
@@ -551,8 +553,7 @@ public class AllDiagramPluginsTests {
     }
 
     /**
-     * Add the tests which for one reason or another are not part of the suite
-     * launched on each Gerrit verification.
+     * Add the tests which for one reason or another are not part of the suite launched on each Gerrit verification.
      * 
      * @param suite
      *            the suite to add the tests into.

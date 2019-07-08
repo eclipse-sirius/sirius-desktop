@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.business.internal.sync;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.LinkedHashSet;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
@@ -145,10 +146,10 @@ public abstract class AbstractSynchronizerHelper {
      */
     protected Collection<EObject> getPreviousSemanticsElements(DragAndDropTarget container, DiagramElementMapping mapping) {
         // @formatter:off
-        return ImmutableSet.copyOf(sync.getPreviousDiagramElements(container, mapping).stream()
+        return sync.getPreviousDiagramElements(container, mapping).stream()
                 .map(DDiagramElement::getTarget)
                 .filter(input -> input != null && ((input.eContainer() != null && input.eContainer().eResource() != null) || input.eResource() != null))
-                .collect(Collectors.toSet()));
+                .collect(Collectors.toCollection(LinkedHashSet::new));
         // @formatter:on
     }
 
