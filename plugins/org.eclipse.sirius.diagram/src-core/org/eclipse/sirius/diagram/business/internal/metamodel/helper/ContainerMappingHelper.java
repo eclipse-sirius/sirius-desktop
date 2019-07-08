@@ -14,6 +14,8 @@ package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -40,9 +42,8 @@ public final class ContainerMappingHelper {
      * @return the node mappings.
      */
     public static Collection<NodeMapping> getAllNodeMappings(ContainerMapping self) {
-        LinkedHashSet<NodeMapping> allNodeMappings = new LinkedHashSet<NodeMapping>(self.getSubNodeMappings());
-        allNodeMappings.addAll(new LinkedHashSet<NodeMapping>(self.getReusedNodeMappings()));
-        return allNodeMappings;
+        LinkedHashSet<NodeMapping> result = Stream.concat(self.getSubNodeMappings().stream(), self.getReusedNodeMappings().stream()).collect(Collectors.toCollection(LinkedHashSet::new));
+        return result;
     }
 
     /**
@@ -54,9 +55,9 @@ public final class ContainerMappingHelper {
      * @return the container mappings.
      */
     public static Collection<ContainerMapping> getAllContainerMappings(ContainerMapping self) {
-        LinkedHashSet<ContainerMapping> allContainerMappings = new LinkedHashSet<ContainerMapping>(self.getSubContainerMappings());
-        allContainerMappings.addAll(new LinkedHashSet<ContainerMapping>(self.getReusedContainerMappings()));
-        return allContainerMappings;
+        LinkedHashSet<ContainerMapping> result = Stream.concat(self.getSubContainerMappings().stream(), self.getReusedContainerMappings().stream())
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+        return result;
     }
 
     /**
