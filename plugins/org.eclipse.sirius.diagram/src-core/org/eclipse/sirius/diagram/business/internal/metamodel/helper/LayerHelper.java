@@ -184,9 +184,10 @@ public final class LayerHelper {
      *            the diagram element.
      * @param parentDiagram
      *            the parent diagram of the diagram element. This information can be retrieved from the diagram element
-     *            but sometimes (during drag'n'drop of element with bordered nodes for example :
-     *            PortLocationAfterDragAndDropTest. testPortLocationFromParentDnDFromModelExplorerView()) this method is
-     *            called before setting all parents hierarchy of diagram element.
+     *            but sometimes it is already known by the caller or it can be null (during drag'n'drop of element with
+     *            bordered nodes for example : PortLocationAfterDragAndDropTest.
+     *            testPortLocationFromParentDnDFromModelExplorerView()) this method is called before setting all parents
+     *            hierarchy of diagram element.
      * @return <code>true</code> if it is, <code>false</code> otherwise
      */
     public static boolean isInActivatedLayer(DiagramMappingsManager session, final DDiagramElement element, final DDiagram parentDiagram) {
@@ -194,11 +195,10 @@ public final class LayerHelper {
 
         if (!LayerHelper.withoutLayersMode(mapping)) {
             final DDiagram diagram;
-            DDiagram computedDiagram = element.getParentDiagram();
-            if (computedDiagram != null) {
-                diagram = computedDiagram;
-            } else {
+            if (parentDiagram != null) {
                 diagram = parentDiagram;
+            } else {
+                diagram = element.getParentDiagram();
             }
 
             boolean visible = false;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -91,8 +91,7 @@ public final class DisplayServiceImpl implements DisplayService {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.diagram.business.api.helper.display.DisplayService#isDisplayed(DDiagram,
-     *      DDiagramElement)
+     * @see org.eclipse.sirius.diagram.business.api.helper.display.DisplayService#isDisplayed(DDiagram, DDiagramElement)
      */
     @Override
     public boolean isDisplayed(final DDiagram diagram, final DDiagramElement element) {
@@ -200,7 +199,7 @@ public final class DisplayServiceImpl implements DisplayService {
 
             /* if element seems to be visible, check its parent layer */
             if (isVisible) {
-                isVisible = LayerHelper.isInActivatedLayer(diagramMappingsManager, element);
+                isVisible = LayerHelper.isInActivatedLayer(diagramMappingsManager, element, diagram);
             }
             if (isVisible) {
                 isVisible = !isFold(element);

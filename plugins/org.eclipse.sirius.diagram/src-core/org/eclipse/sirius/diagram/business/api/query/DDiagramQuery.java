@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,8 +31,7 @@ import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
 import org.eclipse.sirius.diagram.description.Layer;
 
 /**
- * A class aggregating all the queries (read-only!) having a {@link DDiagram} as
- * a starting point.
+ * A class aggregating all the queries (read-only!) having a {@link DDiagram} as a starting point.
  * 
  * @author mporhel
  * 
@@ -56,8 +55,7 @@ public class DDiagramQuery extends DRepresentationQuery {
     }
 
     /**
-     * Returns all diagram elements (directly and indirectly contained) of the
-     * given diagram.
+     * Returns all diagram elements (directly and indirectly contained) of the given diagram.
      * 
      * @return all diagram elements of the given diagram.
      */
@@ -66,11 +64,9 @@ public class DDiagramQuery extends DRepresentationQuery {
     }
 
     /**
-     * Find the hidden elements in the current {@link DDiagram} that can be
-     * displayed if revealed.
+     * Find the hidden elements in the current {@link DDiagram} that can be displayed if revealed.
      * 
-     * @return The hidden elements or empty list if not found. Cannot be
-     *         <code>null</code>.
+     * @return The hidden elements or empty list if not found. Cannot be <code>null</code>.
      */
     public Set<DDiagramElement> findHiddenElements() {
         final Set<DDiagramElement> result = new HashSet<>();
@@ -86,8 +82,7 @@ public class DDiagramQuery extends DRepresentationQuery {
     }
 
     /**
-     * Check if this {@link DDiagramElement} is directly hidden, not filtered
-     * and in activated layers.
+     * Check if this {@link DDiagramElement} is directly hidden, not filtered and in activated layers.
      * 
      * @param session
      *            the current session.
@@ -98,12 +93,11 @@ public class DDiagramQuery extends DRepresentationQuery {
     public boolean isHidden(Session session, DDiagramElement dDiagramElement) {
         DDiagramElementQuery query = new DDiagramElementQuery(dDiagramElement);
         DiagramMappingsManager mappingManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, dDiagram);
-        return query.isHidden() && LayerHelper.isInActivatedLayer(mappingManager, dDiagramElement) && !query.isFiltered();
+        return query.isHidden() && LayerHelper.isInActivatedLayer(mappingManager, dDiagramElement, dDiagram) && !query.isFiltered();
     }
 
     /**
-     * Check if the label of this {@link DDiagramElement} is directly hidden,
-     * not filtered and in activated layers.
+     * Check if the label of this {@link DDiagramElement} is directly hidden, not filtered and in activated layers.
      * 
      * @param session
      *            the current session.
@@ -114,12 +108,11 @@ public class DDiagramQuery extends DRepresentationQuery {
     public boolean isLabelHidden(Session session, DDiagramElement dDiagramElement) {
         DDiagramElementQuery query = new DDiagramElementQuery(dDiagramElement);
         DiagramMappingsManager mappingManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, dDiagram);
-        return query.isLabelHidden() && LayerHelper.isInActivatedLayer(mappingManager, dDiagramElement) && !query.isFiltered();
+        return query.isLabelHidden() && LayerHelper.isInActivatedLayer(mappingManager, dDiagramElement, dDiagram) && !query.isFiltered();
     }
 
     /**
-     * Check if this {@link DDiagram} contains hidden elements that can be
-     * displayed if revealed.
+     * Check if this {@link DDiagram} contains hidden elements that can be displayed if revealed.
      * 
      * @return true if the diagram contains hidden elements
      */
