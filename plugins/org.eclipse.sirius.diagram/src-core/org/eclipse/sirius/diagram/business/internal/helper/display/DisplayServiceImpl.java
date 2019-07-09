@@ -21,6 +21,7 @@ import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.listener.Notification;
 import org.eclipse.sirius.common.tools.api.listener.NotificationUtil;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
@@ -75,17 +76,22 @@ public final class DisplayServiceImpl implements DisplayService {
         Session session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) diagram).getTarget());
         DiagramMappingsManager mappingManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, diagram);
 
-        NotificationUtil.sendNotification(diagram, Notification.Kind.START, Notification.REFRESH_VISIBILITY_ON_DIAGRAM);
-        DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.IS_VISIBLE_KEY);
-        for (final DDiagramElement diagramElement : diagram.getDiagramElements()) {
-            boolean visibility = computeVisibility(mappingManager, diagram, diagramElement);
-            if (visibility != diagramElement.isVisible()) {
-                diagramElement.setVisible(visibility);
+        try {
+            EqualityHelper.setUriFragmentCacheEnabled(true);
+            NotificationUtil.sendNotification(diagram, Notification.Kind.START, Notification.REFRESH_VISIBILITY_ON_DIAGRAM);
+            DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.IS_VISIBLE_KEY);
+            for (final DDiagramElement diagramElement : diagram.getDiagramElements()) {
+                boolean visibility = computeVisibility(mappingManager, diagram, diagramElement);
+                if (visibility != diagramElement.isVisible()) {
+                    diagramElement.setVisible(visibility);
+                }
             }
+            DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.IS_VISIBLE_KEY);
+            NotificationUtil.sendNotification(diagram, Notification.Kind.STOP, Notification.REFRESH_VISIBILITY_ON_DIAGRAM);
+        } finally {
+            deactivateCache();
+            EqualityHelper.setUriFragmentCacheEnabled(false);
         }
-        DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.IS_VISIBLE_KEY);
-        NotificationUtil.sendNotification(diagram, Notification.Kind.STOP, Notification.REFRESH_VISIBILITY_ON_DIAGRAM);
-        deactivateCache();
     }
 
     /**
