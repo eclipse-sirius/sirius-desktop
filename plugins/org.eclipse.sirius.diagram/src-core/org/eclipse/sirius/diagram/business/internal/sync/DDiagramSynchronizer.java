@@ -322,6 +322,8 @@ public class DDiagramSynchronizer {
         try {
             KeyCache.DEFAULT.clear();
             EqualityHelper.setUriFragmentCacheEnabled(true);
+            LayerHelper.setActiveParentLayersCacheEnabled(diagramMappingsManager, true);
+
             // Semantic changes should be possible when a representation
             // representation
             // is locked (CDO)
@@ -408,6 +410,7 @@ public class DDiagramSynchronizer {
             KeyCache.DEFAULT.clear();
         } finally {
             EqualityHelper.setUriFragmentCacheEnabled(false);
+            LayerHelper.setActiveParentLayersCacheEnabled(diagramMappingsManager, false);
             monitor.done();
         }
     }
