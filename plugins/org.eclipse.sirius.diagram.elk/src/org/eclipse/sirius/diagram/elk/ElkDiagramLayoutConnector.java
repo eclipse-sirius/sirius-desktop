@@ -75,11 +75,13 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
+import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.description.BooleanLayoutOption;
 import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -93,6 +95,7 @@ import org.eclipse.sirius.diagram.description.LayoutOptionTarget;
 import org.eclipse.sirius.diagram.description.StringLayoutOption;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.swt.SWTException;
 import org.eclipse.ui.IWorkbenchPart;
@@ -810,6 +813,15 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         port.setLocation(xpos, ypos);
         port.setDimensions(portBounds.width, portBounds.height);
 
+        // Compute the border node offset from Sirius
+        double borderNodeOffset = -IBorderItemOffsets.DEFAULT_OFFSET.preciseWidth();
+        final EObject eObj = portEditPart.resolveSemanticElement();
+        if (eObj instanceof DDiagramElement) {
+            if (new DDiagramElementQuery((DDiagramElement) eObj).isIndirectlyCollapsed()) {
+                borderNodeOffset = -IBorderItemOffsets.COLLAPSE_FILTER_OFFSET.preciseWidth();
+            }
+        }
+        port.setProperty(CoreOptions.PORT_BORDER_OFFSET, borderNodeOffset);
         // We would set the modified flag to false here, but that doesn't exist
         // anymore
 
