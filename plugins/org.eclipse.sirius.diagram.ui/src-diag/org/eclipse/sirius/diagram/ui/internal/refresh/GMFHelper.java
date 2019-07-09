@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -136,6 +136,57 @@ public final class GMFHelper {
     }
 
     /**
+     * Return the top-left insets of the container of this <code>node</code>. The insets also considers its border.
+     * 
+     * @param node
+     *            The current node
+     * @param searchFirstParentContainer
+     *            true to call recursively until finding a Node container, {@link NodeQuery#isContainer()}, false
+     *            otherwise
+     * @return the top-left insets of the container of this <code>node</code>
+     */
+    public static Dimension getContainerTopLeftInsets(Node node, boolean searchFirstParentContainer) {
+        Dimension result = new Dimension(0, 0);
+        EObject nodeContainer = node.eContainer();
+        if (nodeContainer instanceof Node) {
+            Node parentNode = (Node) nodeContainer;
+            NodeQuery nodeQuery = new NodeQuery(parentNode);
+            if (nodeQuery.isContainer()) {
+                EObject element = parentNode.getElement();
+                if (element instanceof DDiagramElementContainer) {
+                    DDiagramElementContainer ddec = (DDiagramElementContainer) element;
+                    // RegionContainer do not have containers insets
+                    if (ddec instanceof DNodeContainer) {
+                        if (new DNodeContainerExperimentalQuery((DNodeContainer) ddec).isRegionContainer() || hasFullLabelBorder(ddec)) {
+                            result.setHeight(CONTAINER_INSETS.y + getLabelSize(parentNode) + AbstractDiagramElementContainerEditPart.DEFAULT_SPACING);
+                        } else {
+                            result.setWidth(CONTAINER_INSETS.x);
+                            result.setHeight(CONTAINER_INSETS.y);
+                        }
+                    }
+
+                    ContainerStyle containerStyle = ddec.getOwnedStyle();
+                    int borderSize = containerStyle.getBorderSize().intValue();
+                    DDiagramElementContainerExperimentalQuery regionQuery = new DDiagramElementContainerExperimentalQuery(ddec);
+                    if (regionQuery.isRegionInHorizontalStack()) {
+                        result.setWidth(result.width() + (isFirstRegion(ddec) ? 0 : borderSize));
+                        result.setHeight(result.height() + 1);
+                    } else if (regionQuery.isRegionInVerticalStack()) {
+                        result.setWidth(result.width() + 1);
+                        result.setHeight(result.height() + (isFirstRegion(ddec) ? 1 : borderSize));
+                    } else {
+                        result.setWidth(result.width() + borderSize);
+                        result.setHeight(result.height() + borderSize);
+                    }
+                }
+            } else if (searchFirstParentContainer) {
+                result = getContainerTopLeftInsets(parentNode, searchFirstParentContainer);
+            }
+        }
+        return result;
+    }
+
+    /**
      * Shift the current node absolute location by the container insets.
      * 
      * @param locationToTranslate
@@ -147,39 +198,10 @@ public final class GMFHelper {
      */
     private static void translateWithInsets(Point locationToTranslate, Node currentNode) {
         NodeQuery nodeQuery = new NodeQuery(currentNode);
-        Node parentNode = (Node) currentNode.eContainer();
-        NodeQuery parentNodeQuery = new NodeQuery(parentNode);
-
-        // bordered node are not concerned by those insets. We also check if the
-        // parent node corresponds to a container.
-        if (!nodeQuery.isBorderedNode() && parentNodeQuery.isContainer()) {
-            EObject element = parentNode.getElement();
-            if (element instanceof DDiagramElementContainer) {
-                DDiagramElementContainer ddec = (DDiagramElementContainer) element;
-                ContainerStyle containerStyle = ddec.getOwnedStyle();
-                int borderSize = containerStyle.getBorderSize().intValue();
-
-                // RegionContainer do not have containers insets
-                if (ddec instanceof DNodeContainer) {
-                    if (new DNodeContainerExperimentalQuery((DNodeContainer) ddec).isRegionContainer() || hasFullLabelBorder(ddec)) {
-                        locationToTranslate.translate(0, CONTAINER_INSETS.y);
-                        locationToTranslate.translate(0, getLabelSize(parentNode)).translate(0, AbstractDiagramElementContainerEditPart.DEFAULT_SPACING);
-                    } else {
-                        locationToTranslate.translate(CONTAINER_INSETS);
-                    }
-                }
-
-                DDiagramElementContainerExperimentalQuery regionQuery = new DDiagramElementContainerExperimentalQuery(ddec);
-                if (regionQuery.isRegionInHorizontalStack()) {
-                    locationToTranslate.translate((isFirstRegion(ddec) ? 0 : borderSize), 1);
-                } else if (regionQuery.isRegionInVerticalStack()) {
-                    locationToTranslate.translate(1, (isFirstRegion(ddec) ? 1 : borderSize));
-                } else {
-                    locationToTranslate.translate(borderSize, borderSize);
-                }
-            }
+        // bordered node are not concerned by those insets.
+        if (!nodeQuery.isBorderedNode()) {
+            locationToTranslate.translate(getContainerTopLeftInsets(currentNode, false));
         }
-
     }
 
     private static boolean hasFullLabelBorder(DDiagramElementContainer ddec) {
