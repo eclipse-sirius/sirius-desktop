@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.List;
 
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gef.RootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecorator;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.IDecoratorTarget;
 import org.eclipse.gmf.runtime.notation.View;
@@ -94,7 +95,7 @@ public abstract class AbstractSiriusDecorationDescriptorProvider implements Siri
      */
     protected boolean shouldBeDecorated(final EditPart editPart) {
         boolean shouldBeDecorated = true;
-        if (editPart == null || editPart.getParent() == null || editPart.getRoot() == null || editPart.getViewer() == null) {
+        if (isUnsafeEditPart(editPart)) {
             shouldBeDecorated = false;
         } else if (editPart instanceof AbstractDiagramNameEditPart && !(editPart instanceof DNodeListElementEditPart)) {
             /*
@@ -104,6 +105,17 @@ public abstract class AbstractSiriusDecorationDescriptorProvider implements Siri
             shouldBeDecorated = false;
         }
         return shouldBeDecorated;
+    }
+
+    private boolean isUnsafeEditPart(final EditPart editPart) {
+        boolean unsafe = false;
+        if (editPart == null || editPart.getParent() == null) {
+            unsafe = true;
+        } else {
+            RootEditPart root = editPart.getRoot();
+            unsafe = root == null || root.getViewer() == null;
+        }
+        return unsafe;
     }
 
     /**

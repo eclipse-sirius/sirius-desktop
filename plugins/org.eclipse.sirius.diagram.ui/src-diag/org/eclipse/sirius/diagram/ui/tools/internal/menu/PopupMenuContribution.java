@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -35,6 +35,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.EditDomain;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.common.core.service.IOperation;
 import org.eclipse.gmf.runtime.common.core.service.IProviderChangeListener;
@@ -268,9 +269,10 @@ public class PopupMenuContribution implements IContributionItemProvider {
      */
     protected Point getCurrentLocation(EditPart primarySelection) {
         org.eclipse.swt.graphics.Point cursorLocation = PlatformUI.getWorkbench().getDisplay().getCursorLocation();
-        final FigureCanvas control = (FigureCanvas) primarySelection.getRoot().getViewer().getControl();
+        EditPartViewer viewer = primarySelection.getRoot().getViewer();
+        final FigureCanvas control = (FigureCanvas) viewer.getControl();
         final org.eclipse.swt.graphics.Point screenRelativeSWTPoint = control.toControl(cursorLocation);
-        EditPart editPartUnderMouse = primarySelection.getRoot().getViewer().findObjectAtExcluding(new Point(screenRelativeSWTPoint.x, screenRelativeSWTPoint.y), Collections.EMPTY_LIST);
+        EditPart editPartUnderMouse = viewer.findObjectAtExcluding(new Point(screenRelativeSWTPoint.x, screenRelativeSWTPoint.y), Collections.EMPTY_LIST);
 
         Point currentLocation = new Point(screenRelativeSWTPoint.x, screenRelativeSWTPoint.y);
         if (editPartUnderMouse instanceof GraphicalEditPart) {

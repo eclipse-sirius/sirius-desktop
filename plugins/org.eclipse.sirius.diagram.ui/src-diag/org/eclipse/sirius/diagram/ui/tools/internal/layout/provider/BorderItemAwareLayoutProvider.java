@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -44,6 +44,7 @@ import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.RequestConstants;
+import org.eclipse.gef.RootEditPart;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.commands.UnexecutableCommand;
@@ -898,8 +899,10 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
 
                 // Get the zoom level
                 double scale = 1.0;
-                if (castedEditPart.getRoot() instanceof DiagramRootEditPart) {
-                    final ZoomManager zoomManager = ((DiagramRootEditPart) castedEditPart.getRoot()).getZoomManager();
+                RootEditPart root = castedEditPart.getRoot();
+                if (root instanceof DiagramRootEditPart) {
+                    DiagramRootEditPart diagramRootEditPart = (DiagramRootEditPart) root;
+                    final ZoomManager zoomManager = ((DiagramRootEditPart) root).getZoomManager();
                     scale = zoomManager.getZoom();
                 }
 
@@ -986,11 +989,14 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            the border nodes to apply snap command on.
      */
     private void addSnapCommand(CompoundCommand resCommand, List<IBorderItemEditPart> allBorderNodes) {
-        if (!allBorderNodes.isEmpty() && allBorderNodes.get(0).getViewer() instanceof DiagramGraphicalViewer) {
-            IPreferenceStore preferenceStore = ((DiagramGraphicalViewer) allBorderNodes.get(0).getViewer()).getWorkspaceViewerPreferenceStore();
-            if (preferenceStore != null && preferenceStore.getBoolean(WorkspaceViewerProperties.SNAPTOGRID)) {
-                for (IBorderItemEditPart editPart : allBorderNodes) {
-                    resCommand.add(new ICommandProxy(new SnapCommand(editPart.getEditingDomain(), Collections.singletonList(editPart))));
+        if (!allBorderNodes.isEmpty()) {
+            EditPartViewer viewer = allBorderNodes.get(0).getViewer();
+            if (viewer instanceof DiagramGraphicalViewer) {
+                IPreferenceStore preferenceStore = ((DiagramGraphicalViewer) viewer).getWorkspaceViewerPreferenceStore();
+                if (preferenceStore != null && preferenceStore.getBoolean(WorkspaceViewerProperties.SNAPTOGRID)) {
+                    for (IBorderItemEditPart editPart : allBorderNodes) {
+                        resCommand.add(new ICommandProxy(new SnapCommand(editPart.getEditingDomain(), Collections.singletonList(editPart))));
+                    }
                 }
             }
         }

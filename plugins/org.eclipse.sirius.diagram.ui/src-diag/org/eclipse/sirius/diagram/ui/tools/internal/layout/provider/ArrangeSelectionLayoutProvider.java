@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import java.util.List;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.RootEditPart;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.commands.UnexecutableCommand;
@@ -37,10 +38,9 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * Layout provider that add a list of diagram elements to keep fixed in the
- * LayoutHint, during arrange selection action. This information will be used
- * later in the PinnedElementHandler and PinnedElementLayoutProvider. It is
- * executed before the generic arrange operation.
+ * Layout provider that add a list of diagram elements to keep fixed in the LayoutHint, during arrange selection action.
+ * This information will be used later in the PinnedElementHandler and PinnedElementLayoutProvider. It is executed
+ * before the generic arrange operation.
  * 
  * @author smonnier
  * 
@@ -48,15 +48,13 @@ import com.google.common.collect.Lists;
 public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
 
     /**
-     * The initial layout provider that arrange the nodes (launch before the
-     * arrange of bordered nodes and before updating the list of diagram element
-     * to keep fixed on arrange).
+     * The initial layout provider that arrange the nodes (launch before the arrange of bordered nodes and before
+     * updating the list of diagram element to keep fixed on arrange).
      */
     private AbstractLayoutProvider initialLayoutProvider;
 
     /**
-     * List of IDiagramElementEditPart not selected and unpinned on the current
-     * diagram.
+     * List of IDiagramElementEditPart not selected and unpinned on the current diagram.
      */
     private ArrayList<IDiagramElementEditPart> notSelectedShapeNodeEditPartAndUnpinned;
 
@@ -90,8 +88,7 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
      * The default constructor.
      * 
      * @param clp
-     *            The layout provider to call after finding diagram element to
-     *            keep fixed on arrange all.
+     *            The layout provider to call after finding diagram element to keep fixed on arrange all.
      */
     public ArrangeSelectionLayoutProvider(AbstractLayoutProvider clp) {
         initialLayoutProvider = clp;
@@ -100,8 +97,8 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
     /**
      * {@inheritDoc}
      * 
-     * This method is overridden to have the arrange selection acting as an
-     * arrange all where non selected elements are pinned.
+     * This method is overridden to have the arrange selection acting as an arrange all where non selected elements are
+     * pinned.
      * 
      * @see org.eclipse.gmf.runtime.diagram.ui.services.layout.AbstractLayoutEditPartProvider#layoutEditParts(java.util.List,
      *      org.eclipse.core.runtime.IAdaptable)
@@ -139,8 +136,9 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
                     addChildrenToNotSelectedUnpinnedList(notSelectedShapeNodeEditPart);
                     // Add all edges that connect two unpinned elements in the
                     // unpinned list
-                    if (igep.getRoot().getChildren().size() == 1 && igep.getRoot().getChildren().get(0) instanceof DiagramEditPart) {
-                        addEdgesToNotSelectedUnpinnedList((DiagramEditPart) igep.getRoot().getChildren().get(0));
+                    RootEditPart root = igep.getRoot();
+                    if (root.getChildren().size() == 1 && root.getChildren().get(0) instanceof DiagramEditPart) {
+                        addEdgesToNotSelectedUnpinnedList((DiagramEditPart) root.getChildren().get(0));
                     }
 
                     // Update Layout Hint to find later (in
@@ -182,8 +180,8 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
      * Add, if needed, children that are also unpinned.
      * 
      * @param notSelectedParent
-     *            list of parents which are not selected for which you want to
-     *            browse the children to possibly add to the unpinned list
+     *            list of parents which are not selected for which you want to browse the children to possibly add to
+     *            the unpinned list
      */
     private void addChildrenToNotSelectedUnpinnedList(Collection<? extends EditPart> notSelectedParent) {
         for (EditPart editPart : notSelectedParent) {
@@ -197,10 +195,9 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Adds all the edges that connect two pinned nodes (or considered as such)
-     * in the list of <code>notSelectedShapeNodeEditPartAndUnpinned</code>. This
-     * list of edges is used in {@link AbstractCompositeLayoutProvider} to avoid
-     * the call of method routeThrough.
+     * Adds all the edges that connect two pinned nodes (or considered as such) in the list of
+     * <code>notSelectedShapeNodeEditPartAndUnpinned</code>. This list of edges is used in
+     * {@link AbstractCompositeLayoutProvider} to avoid the call of method routeThrough.
      */
     private void addEdgesToNotSelectedUnpinnedList(DiagramEditPart diagramEditPart) {
         for (Object connection : diagramEditPart.getConnections()) {
@@ -215,15 +212,14 @@ public class ArrangeSelectionLayoutProvider extends AbstractLayoutProvider {
     }
 
     /**
-     * Tests whether an edit part is pinned or should be considered as pinned
-     * (fixed size and location) during the layout.
+     * Tests whether an edit part is pinned or should be considered as pinned (fixed size and location) during the
+     * layout.
      * 
      * @param editPart
      *            the edit part.
      * @param editPartsConsiderAsPinned
      *            list of editParts that have to be consider as pinned
-     * @return <code>true</code> if the edit part is pinned or should be
-     *         considered as pinned.
+     * @return <code>true</code> if the edit part is pinned or should be considered as pinned.
      */
     protected boolean isPinnedOrConsiderAs(EditPart editPart, List<IDiagramElementEditPart> editPartsConsiderAsPinned) {
         return editPart instanceof IGraphicalEditPart && (isPinned((IGraphicalEditPart) editPart) || editPartsConsiderAsPinned.contains(editPart));

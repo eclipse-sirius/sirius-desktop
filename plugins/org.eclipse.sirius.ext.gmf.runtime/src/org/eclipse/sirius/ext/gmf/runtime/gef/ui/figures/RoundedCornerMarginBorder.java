@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2018 Obeo.
+ * Copyright (c) 2015, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
+import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 
 /**
@@ -67,9 +68,10 @@ public class RoundedCornerMarginBorder extends OneLineMarginBorder {
         }
         super.paint(figure, graphics, cornerAwareInsets);
 
-        int one = MapModeUtil.getMapMode(figure).DPtoLP(1);
+        IMapMode mapMode = MapModeUtil.getMapMode(figure);
+        int one = mapMode.DPtoLP(1);
         int widthInDP = getWidth() / one;
-        int halfWidthInLP = MapModeUtil.getMapMode(figure).DPtoLP(widthInDP / 2);
+        int halfWidthInLP = mapMode.DPtoLP(widthInDP / 2);
 
         if (!corner.isEmpty()) {
             switch (getPosition()) {
@@ -104,8 +106,7 @@ public class RoundedCornerMarginBorder extends OneLineMarginBorder {
     }
 
     /**
-     * Sets the dimensions of each corner. This will form the radii of the arcs
-     * which form the corners.
+     * Sets the dimensions of each corner. This will form the radii of the arcs which form the corners.
      * 
      * @param d
      *            the dimensions of the corner

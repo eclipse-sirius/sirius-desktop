@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010-2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,8 +40,7 @@ import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 
 /**
- * An arrange menu manager which handle cleanly {@link IDisposableAction} and
- * set correctly handler for tabbar.
+ * An arrange menu manager which handle cleanly {@link IDisposableAction} and set correctly handler for tabbar.
  * 
  * @author mchauvin
  */
@@ -215,8 +214,7 @@ public class TabbarArrangeMenuManager extends ArrangeMenuManager implements ISel
     }
 
     /**
-     * Remove all "Arrange" actions: - Arrange Selection - Arrange All - Arrange
-     * Linked Border Nodes
+     * Remove all "Arrange" actions: - Arrange Selection - Arrange All - Arrange Linked Border Nodes
      */
     private void removeArrangeActions() {
         remove(ActionIds.ACTION_TOOLBAR_ARRANGE_SELECTION);
@@ -234,11 +232,9 @@ public class TabbarArrangeMenuManager extends ArrangeMenuManager implements ISel
     }
 
     /**
-     * Check that there are only two arrange actions when the diagram is
-     * selected.
+     * Check that there are only two arrange actions when the diagram is selected.
      * 
-     * @return true id there are only two arrange actions when the diagram is
-     *         selected
+     * @return true id there are only two arrange actions when the diagram is selected
      */
     private boolean isArrangeAllAndBorderNodes() {
         return find(ActionIds.ACTION_TOOLBAR_ARRANGE_ALL) != null && find(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.ARRANGE_BORDER_NODES_TOOLBAR) != null;
@@ -246,13 +242,12 @@ public class TabbarArrangeMenuManager extends ArrangeMenuManager implements ISel
 
     /**
      * <p>
-     * Disables the given action if the diagram containing the selected elements
-     * doesn't support arrange selection Action.
+     * Disables the given action if the diagram containing the selected elements doesn't support arrange selection
+     * Action.
      * </p>
      * <p>
-     * <b>Note</b> : any diagram associated to a LayoutNodeProvider which
-     * implements ArrangeAllOnlyLayoutProvider does not support ArrangeSelection
-     * Action.
+     * <b>Note</b> : any diagram associated to a LayoutNodeProvider which implements ArrangeAllOnlyLayoutProvider does
+     * not support ArrangeSelection Action.
      * 
      * @param toolbarArrangeSelectionAction
      *            the action
@@ -273,9 +268,9 @@ public class TabbarArrangeMenuManager extends ArrangeMenuManager implements ISel
             }
         }
 
-        if (graphicalElement != null && graphicalElement.isActive() && graphicalElement.getRoot() != null) {
+        if (graphicalElement != null && graphicalElement.isActive()) {
             RootEditPart root = graphicalElement.getRoot();
-            if (!root.getChildren().isEmpty() && root.getChildren().iterator().next() instanceof IGraphicalEditPart) {
+            if (root != null && !root.getChildren().isEmpty() && root.getChildren().iterator().next() instanceof IGraphicalEditPart) {
                 IGraphicalEditPart diagramEditPart = (IGraphicalEditPart) root.getChildren().iterator().next();
 
                 // Step 2 : we get the LayoutNodeProvider associated to this

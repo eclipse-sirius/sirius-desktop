@@ -28,6 +28,7 @@ import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gef.RootEditPart;
 import org.eclipse.gef.SnapToGrid;
 import org.eclipse.gef.handles.HandleBounds;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
@@ -60,8 +61,9 @@ public final class GraphicalHelper {
     public static double getZoom(EditPart part) {
         Objects.requireNonNull(part);
         double scale = 1.0;
-        if (part.getRoot() instanceof DiagramRootEditPart) {
-            DiagramRootEditPart rootEditPart = (DiagramRootEditPart) part.getRoot();
+        RootEditPart root = part.getRoot();
+        if (root instanceof DiagramRootEditPart) {
+            DiagramRootEditPart rootEditPart = (DiagramRootEditPart) root;
             scale = rootEditPart.getZoomManager().getZoom();
         }
         return scale;
@@ -158,8 +160,9 @@ public final class GraphicalHelper {
      */
     public static void setZoom(IGraphicalEditPart part, double scale) {
         Objects.requireNonNull(part);
-        if (part.getRoot() instanceof DiagramRootEditPart) {
-            DiagramRootEditPart rootEditPart = (DiagramRootEditPart) part.getRoot();
+        RootEditPart root = part.getRoot();
+        if (root instanceof DiagramRootEditPart) {
+            DiagramRootEditPart rootEditPart = (DiagramRootEditPart) root;
             rootEditPart.getZoomManager().setZoom(scale);
         }
     }

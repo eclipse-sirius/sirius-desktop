@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,6 +38,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gef.RootEditPart;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.decorator.AbstractDecorator;
@@ -855,8 +856,11 @@ public class SiriusGenericDecorator extends AbstractDecorator {
             }
 
             final GraphicalEditPart ownerEditPart = (GraphicalEditPart) getDecoratorTarget().getAdapter(GraphicalEditPart.class);
-            if (ownerEditPart != null && ownerEditPart.getRoot() != null && ownerEditPart.getViewer() != null) {
-                ownerEditPart.getViewer().getVisualPartMap().remove(decoration);
+            if (ownerEditPart != null) {
+                RootEditPart root = ownerEditPart.getRoot();
+                if (root != null && root.getViewer() != null) {
+                    root.getViewer().getVisualPartMap().remove(decoration);
+                }
             }
         }
         decorations = new ArrayList<IDecoration>();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.gef.RootEditPart;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.editparts.ZoomManager;
@@ -59,24 +60,20 @@ import com.google.common.collect.Maps;
 public class PinnedElementsLayoutProvider extends DefaultLayoutProvider {
 
     /**
-     * Key to store that the move request is sent from this specific layout
-     * provider to reset bounds of edit part to its origin location and size.
-     * <BR>
-     * The move request sets only the location but has, as side effect, to also
-     * use the same {@link org.eclipse.gmf.runtime.notation.Size} as the origin.
-     * <BR>
+     * Key to store that the move request is sent from this specific layout provider to reset bounds of edit part to its
+     * origin location and size. <BR>
+     * The move request sets only the location but has, as side effect, to also use the same
+     * {@link org.eclipse.gmf.runtime.notation.Size} as the origin. <BR>
      * For example, the move of a region is forbidden (see
      * {@link org.eclipse.sirius.diagram.ui.graphical.edit.policies.RegionResizableEditPolicy#getMoveCommand(ChangeBoundsRequest)}
-     * ). The user has not the authorization to move a region of a container.
-     * But if this flag exists in the extended data of the request, the move is
-     * "forced".
+     * ). The user has not the authorization to move a region of a container. But if this flag exists in the extended
+     * data of the request, the move is "forced".
      * 
      */
     public static final String PINNED_ELEMENTS_MOVE = "sirius.pinned.elements.move.request"; //$NON-NLS-1$
 
     /**
-     * The layout provider which was executed before us. Needed to obtain the
-     * new
+     * The layout provider which was executed before us. Needed to obtain the new
      */
     private final ExtendableLayoutProvider baseProvider;
 
@@ -172,8 +169,7 @@ public class PinnedElementsLayoutProvider extends DefaultLayoutProvider {
     }
 
     /**
-     * Finds the "real" children of the specified edit part that needs to be
-     * laid out.
+     * Finds the "real" children of the specified edit part that needs to be laid out.
      */
     private Collection<IGraphicalEditPart> getChildrenOfInterest(final IGraphicalEditPart gep) {
         final Iterable<IGraphicalEditPart> rawChildren = Iterables.filter(gep.getChildren(), IGraphicalEditPart.class);
@@ -211,8 +207,9 @@ public class PinnedElementsLayoutProvider extends DefaultLayoutProvider {
         final Object existingRequest = this.findRequest(editPart, org.eclipse.gef.RequestConstants.REQ_MOVE);
         ChangeBoundsRequest request = null;
         double scale = 1.0;
-        if (editPart.getRoot() instanceof DiagramRootEditPart) {
-            final ZoomManager zoomManager = ((DiagramRootEditPart) editPart.getRoot()).getZoomManager();
+        RootEditPart root = editPart.getRoot();
+        if (root instanceof DiagramRootEditPart) {
+            final ZoomManager zoomManager = ((DiagramRootEditPart) root).getZoomManager();
             scale = zoomManager.getZoom();
         }
         if (existingRequest instanceof ChangeBoundsRequest) {

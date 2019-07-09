@@ -1,5 +1,5 @@
 /***********************************************************************
- * Copyright (c) 2008, 2018 Anyware Technologies and others.
+ * Copyright (c) 2008, 2019 Anyware Technologies and others.
  * 
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -25,6 +25,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.figures.DiagramColorConstants;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.DropShadowBorder;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IPolygonAnchorableFigure;
+import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.MapModeUtil;
 import org.eclipse.sirius.ext.draw2d.figure.IRoundedCorner;
 import org.eclipse.swt.graphics.Color;
@@ -33,8 +34,7 @@ import org.eclipse.swt.graphics.Color;
  * A border using a shadow<br>
  * creation : 17 mai. 08
  * 
- * @author <a href="mailto:simon.bernard@anyware-tech.com">Simon Bernard</a>
- *         CHECKSTYLE:OFF
+ * @author <a href="mailto:simon.bernard@anyware-tech.com">Simon Bernard</a> CHECKSTYLE:OFF
  */
 public class AlphaDropShadowBorder extends AbstractBackground implements DropShadowBorder {
 
@@ -90,8 +90,9 @@ public class AlphaDropShadowBorder extends AbstractBackground implements DropSha
         Insets insetsNew = new Insets();
         insetsNew.top = 0;
         insetsNew.left = 0;
-        insetsNew.bottom = MapModeUtil.getMapMode(figure).DPtoLP(shift * 2);
-        insetsNew.right = MapModeUtil.getMapMode(figure).DPtoLP(shift * 2);
+        IMapMode mapMode = MapModeUtil.getMapMode(figure);
+        insetsNew.bottom = mapMode.DPtoLP(shift * 2);
+        insetsNew.right = mapMode.DPtoLP(shift * 2);
         return insetsNew;
     }
 
@@ -100,8 +101,9 @@ public class AlphaDropShadowBorder extends AbstractBackground implements DropSha
         Insets insetsNew = new Insets();
         insetsNew.top = 0;
         insetsNew.left = 0;
-        insetsNew.bottom = MapModeUtil.getMapMode(figure).DPtoLP(shift * 2);
-        insetsNew.right = MapModeUtil.getMapMode(figure).DPtoLP(shift * 2);
+        IMapMode mapMode = MapModeUtil.getMapMode(figure);
+        insetsNew.bottom = mapMode.DPtoLP(shift * 2);
+        insetsNew.right = mapMode.DPtoLP(shift * 2);
         return insetsNew;
     }
 
