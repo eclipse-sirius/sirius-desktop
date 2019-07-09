@@ -191,9 +191,10 @@
 		<ul>
 			<li><span class="label label-success">Added</span> A cache has been added to optimize the way the uri fragments are computed in 
 				<code>org.eclipse.sirius.common.tools.api.util.EqualityHelper</code>, it is managed with the 
-				<code>setUriFragmentCacheEnabled(boolean)</code> method. The cache is currently used in two locations: 
-				<code>org.eclipse.sirius.diagram.business.internal.sync.DDiagramSynchronizer.refreshOperation(IProgressMonitor)</code> and 
-				<code>org.eclipse.sirius.diagram.business.internal.helper.display.DisplayServiceImpl.refreshAllElementsVisibility(DDiagram)</code>. This optimization is enabled by default, it can be disabled by setting the system property 
+				<code>setUriFragmentCacheEnabled(boolean)</code> method. The cache is currently used in three locations: 
+				<code>org.eclipse.sirius.diagram.business.internal.sync.DDiagramSynchronizer.refreshOperation(IProgressMonitor)</code>, 
+				<code>org.eclipse.sirius.diagram.business.internal.helper.display.DisplayServiceImpl.refreshAllElementsVisibility(DDiagram)</code> and in the hidden elements lookup phase of 
+				<code>org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart.activate()</code>. This optimization is enabled by default, it can be disabled by setting the system property 
 				<code>org.eclipse.sirius.common.enableUriFragmentOptimization</code> to 
 				<code>false</code>.
 			</li>

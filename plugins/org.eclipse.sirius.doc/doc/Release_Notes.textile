@@ -27,7 +27,7 @@ In case of migration the method @org.eclipse.sirius.business.api.migration.Abstr
 
 h4. Changes in  @org.eclipse.sirius.common@
 
-* <span class="label label-success">Added</span> A cache has been added to optimize the way the uri fragments are computed in @org.eclipse.sirius.common.tools.api.util.EqualityHelper@, it is managed with the @setUriFragmentCacheEnabled(boolean)@ method. The cache is currently used in two locations: @org.eclipse.sirius.diagram.business.internal.sync.DDiagramSynchronizer.refreshOperation(IProgressMonitor)@ and @org.eclipse.sirius.diagram.business.internal.helper.display.DisplayServiceImpl.refreshAllElementsVisibility(DDiagram)@. This optimization is enabled by default, it can be disabled by setting the system property @org.eclipse.sirius.common.enableUriFragmentOptimization@ to @false@.
+* <span class="label label-success">Added</span> A cache has been added to optimize the way the uri fragments are computed in @org.eclipse.sirius.common.tools.api.util.EqualityHelper@, it is managed with the @setUriFragmentCacheEnabled(boolean)@ method. The cache is currently used in three locations: @org.eclipse.sirius.diagram.business.internal.sync.DDiagramSynchronizer.refreshOperation(IProgressMonitor)@, @org.eclipse.sirius.diagram.business.internal.helper.display.DisplayServiceImpl.refreshAllElementsVisibility(DDiagram)@ and in the hidden elements lookup phase of @org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart.activate()@. This optimization is enabled by default, it can be disabled by setting the system property @org.eclipse.sirius.common.enableUriFragmentOptimization@ to @false@.
 
 h4. Changes in  @org.eclipse.sirius.diagram@
 

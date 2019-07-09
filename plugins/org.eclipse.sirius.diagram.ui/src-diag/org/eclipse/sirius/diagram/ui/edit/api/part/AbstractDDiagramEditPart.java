@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -44,6 +44,7 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
@@ -342,13 +343,18 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
         // hidden).
         List<DDiagramElement> hiddenElements = new ArrayList<DDiagramElement>();
 
-        DDiagramQuery dDiagramQuery = new DDiagramQuery(dDiagram);
-        for (final DDiagramElement diagramElement : dDiagram.getDiagramElements()) {
-            if (dDiagramQuery.isHidden(session, diagramElement)) {
-                hiddenElements.add(diagramElement);
-            } else if (dDiagramQuery.isLabelHidden(session, diagramElement)) {
-                hiddenElements.add(diagramElement);
+        EqualityHelper.setUriFragmentCacheEnabled(true);
+        try {
+            DDiagramQuery dDiagramQuery = new DDiagramQuery(dDiagram);
+            for (final DDiagramElement diagramElement : dDiagram.getDiagramElements()) {
+                if (dDiagramQuery.isHidden(session, diagramElement)) {
+                    hiddenElements.add(diagramElement);
+                } else if (dDiagramQuery.isLabelHidden(session, diagramElement)) {
+                    hiddenElements.add(diagramElement);
+                }
             }
+        } finally {
+            EqualityHelper.setUriFragmentCacheEnabled(false);
         }
 
         if (!hiddenElements.isEmpty()) {
