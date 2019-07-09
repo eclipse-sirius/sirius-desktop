@@ -78,6 +78,7 @@ public final class DisplayServiceImpl implements DisplayService {
 
         try {
             EqualityHelper.setUriFragmentCacheEnabled(true);
+            LayerHelper.setActiveParentLayersCacheEnabled(mappingManager, true);
             NotificationUtil.sendNotification(diagram, Notification.Kind.START, Notification.REFRESH_VISIBILITY_ON_DIAGRAM);
             DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.IS_VISIBLE_KEY);
             for (final DDiagramElement diagramElement : diagram.getDiagramElements()) {
@@ -91,7 +92,9 @@ public final class DisplayServiceImpl implements DisplayService {
         } finally {
             deactivateCache();
             EqualityHelper.setUriFragmentCacheEnabled(false);
+            LayerHelper.setActiveParentLayersCacheEnabled(mappingManager, false);
         }
+
     }
 
     /**

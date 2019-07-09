@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,9 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -57,6 +59,8 @@ import com.google.common.collect.Collections2;
  * @author mchauvin
  */
 public final class LayerHelper {
+
+    private static final Map<DiagramMappingsManager, Map<DiagramElementMapping, Collection<Layer>>> ACTIVE_PARENT_LAYER_CACHE = new ConcurrentHashMap<>();
 
     /**
      * Avoid instantiation.
@@ -165,21 +169,21 @@ public final class LayerHelper {
     /**
      * Check if a diagram element is in an activated layer or not and visible.
      * 
-     * @param session
-     *            the current session.
+     * @param mappingsManager
+     *            the DiagramMappingsManager of the current diagram.
      * @param element
      *            the diagram element.
      * @return <code>true</code> if it is, <code>false</code> otherwise
      */
-    public static boolean isInActivatedLayer(DiagramMappingsManager session, final DDiagramElement element) {
-        return isInActivatedLayer(session, element, element.getParentDiagram());
+    public static boolean isInActivatedLayer(DiagramMappingsManager mappingsManager, final DDiagramElement element) {
+        return isInActivatedLayer(mappingsManager, element, element.getParentDiagram());
     }
 
     /**
      * Check if a diagram element is in an activated layer or not and visible.
      * 
-     * @param session
-     *            the current session.
+     * @param mappingsManager
+     *            the DiagramMappingsManager of the current diagram.
      * @param element
      *            the diagram element.
      * @param parentDiagram
@@ -190,7 +194,7 @@ public final class LayerHelper {
      *            hierarchy of diagram element.
      * @return <code>true</code> if it is, <code>false</code> otherwise
      */
-    public static boolean isInActivatedLayer(DiagramMappingsManager session, final DDiagramElement element, final DDiagram parentDiagram) {
+    public static boolean isInActivatedLayer(DiagramMappingsManager mappingsManager, final DDiagramElement element, final DDiagram parentDiagram) {
         final DiagramElementMapping mapping = element.getDiagramElementMapping();
 
         if (!LayerHelper.withoutLayersMode(mapping)) {
@@ -202,7 +206,7 @@ public final class LayerHelper {
             }
 
             boolean visible = false;
-            if (diagram != null && session.getActiveParentLayers(mapping).size() > 0) {
+            if (diagram != null && getActiveParentLayers(mappingsManager, mapping).size() > 0) {
                 /*
                  * We are visible in the following cases: 1. the mapping is in active layer and not hidden by owner
                  * mapping in an active layer and container is diagram 2- the mapping is in active layer and not hidden
@@ -217,13 +221,13 @@ public final class LayerHelper {
                 final EObject registryMappingInstance = ViewpointRegistry.getInstance().find(mapping);
                 final Collection<Setting> settings = ViewpointRegistry.getInstance().getCrossReferencer().getInverseReferences(registryMappingInstance, true);
 
-                if (!LayerHelper.hideSubMappingsInImporters(session, diagram, settings, mapping)) {
+                if (!LayerHelper.hideSubMappingsInImporters(mappingsManager, diagram, settings, mapping)) {
                     final EObject container = element.eContainer();
 
                     /*
                      * Case 2 The mapping should be imported by another mapping owned by a visible element.
                      */
-                    if (container instanceof DDiagramElement && LayerHelper.isInActivatedLayer(session, (DDiagramElement) container, parentDiagram)) {
+                    if (container instanceof DDiagramElement && LayerHelper.isInActivatedLayer(mappingsManager, (DDiagramElement) container, parentDiagram)) {
                         visible = LayerHelper.caseDiagramElementContainer((DDiagramElement) container, mapping);
                     }
                     /*
@@ -306,27 +310,27 @@ public final class LayerHelper {
     /**
      * Check if a diagram element mapping is in an activated layer or not.
      * 
-     * @param session
-     *            the current session.
+     * @param mappingsManager
+     *            the DiagramMappingsManager of the current diagram.
      * @param mapping
      *            the diagram element mapping.
      * @param diagram
      *            the diagram.
      * @return <code>true</code> if it is, <code>false</code> otherwise
      */
-    public static boolean isInActivatedLayer(DiagramMappingsManager session, final DDiagram diagram, final DiagramElementMapping mapping) {
+    public static boolean isInActivatedLayer(DiagramMappingsManager mappingsManager, final DDiagram diagram, final DiagramElementMapping mapping) {
         if (!LayerHelper.withoutLayersMode(mapping)) {
 
             boolean visible = false;
 
-            final Collection<Layer> layers = session.getActiveParentLayers(mapping);
+            final Collection<Layer> layers = getActiveParentLayers(mappingsManager, mapping);
             for (final Layer layer : layers) {
                 if (EqualityHelper.contains(diagram.getActivatedLayers(), layer)) {
 
                     final EObject registryMappingInstance = ViewpointRegistry.getInstance().find(mapping);
                     final Collection<Setting> settings = ViewpointRegistry.getInstance().getCrossReferencer().getInverseReferences(registryMappingInstance);
 
-                    if (!LayerHelper.hideSubMappingsInImporters(session, diagram, settings, mapping)) {
+                    if (!LayerHelper.hideSubMappingsInImporters(mappingsManager, diagram, settings, mapping)) {
                         visible = true;
                         break;
                     }
@@ -335,6 +339,40 @@ public final class LayerHelper {
             return visible;
         }
         return true;
+    }
+
+    /**
+     * Enable or disable the ability to cache the computed parent layers for the given DiagramMappingManager. The cache
+     * is cleared when this method is called to disable the cache.
+     * 
+     * @param mappingsManager
+     *            DiagramMappingsManager of the current diagram.
+     * @param enable
+     *            <code>true</code> to allow this helper to put the computed active parent layers in a cache,
+     *            <code>false</code> otherwise.
+     */
+    public static synchronized void setActiveParentLayersCacheEnabled(DiagramMappingsManager mappingsManager, boolean enable) {
+        if (enable && !ACTIVE_PARENT_LAYER_CACHE.containsKey(mappingsManager)) {
+            ACTIVE_PARENT_LAYER_CACHE.put(mappingsManager, new ConcurrentHashMap<>());
+        }
+
+        if (!enable) {
+            ACTIVE_PARENT_LAYER_CACHE.remove(mappingsManager);
+        }
+    }
+
+    private static Collection<Layer> getActiveParentLayers(DiagramMappingsManager mappingsManager, final DiagramElementMapping mapping) {
+        Map<DiagramElementMapping, Collection<Layer>> managerCache = ACTIVE_PARENT_LAYER_CACHE.get(mappingsManager);
+        if (managerCache != null) {
+            Collection<Layer> cachedValue = managerCache.get(mapping);
+            if (cachedValue == null) {
+                cachedValue = mappingsManager.getActiveParentLayers(mapping);
+                managerCache.put(mapping, cachedValue);
+            }
+            return cachedValue;
+        }
+
+        return mappingsManager.getActiveParentLayers(mapping);
     }
 
     /**
