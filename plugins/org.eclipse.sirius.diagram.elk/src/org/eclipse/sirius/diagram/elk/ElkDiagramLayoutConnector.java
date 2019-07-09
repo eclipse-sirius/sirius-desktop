@@ -76,6 +76,7 @@ import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
@@ -93,9 +94,13 @@ import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOptionTarget;
 import org.eclipse.sirius.diagram.description.StringLayoutOption;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AlphaDropShadowBorder;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.swt.SWTException;
 import org.eclipse.ui.IWorkbenchPart;
@@ -180,6 +185,23 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      */
     public void setLayoutConfiguration(CustomLayoutConfiguration layoutConfiguration) {
         this.layoutConfiguration = layoutConfiguration;
+    }
+
+    /**
+     * If the editPart is a container and is not a workspace image or a regions, the default shadow border size is
+     * returned. Otherwise, 0 is returned. See
+     * {@link AbstractDiagramElementContainerEditPart#addDropShadow(NodeFigure,IFigure)}.
+     * 
+     * @param editPart
+     *            an edit part
+     * @return The shadow border size of the edit part
+     */
+    public static double getShadowBorderSize(final EditPart editPart) {
+        double shadowBorderSize = 0;
+        if (editPart instanceof AbstractDiagramContainerEditPart && ((AbstractDiagramContainerEditPart) editPart).isShadowBorderNeeded()) {
+            shadowBorderSize = AlphaDropShadowBorder.getDefaultShadowSize();
+        }
+        return shadowBorderSize;
     }
 
     /**
@@ -365,7 +387,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             for (ShapeNodeEditPart editPart : selection) {
                 // We use new insets the selection can have different parents.
                 Maybe<ElkPadding> kinsets = new Maybe<>();
-                ElkNode node = createNode(mapping, editPart, (IGraphicalEditPart) editPart.getParent(), topNode, kinsets, elkTargetToOptionsOevrrideMap);
+                ElkNode node = createNode(mapping, editPart, topNode, kinsets, elkTargetToOptionsOevrrideMap);
                 minx = Math.min(minx, node.getX());
                 miny = Math.min(miny, node.getY());
                 buildLayoutGraphRecursively(mapping, (IGraphicalEditPart) editPart.getParent(), node, editPart, elkTargetToOptionsOevrrideMap);
@@ -588,6 +610,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
 
         Maybe<ElkPadding> kinsets = new Maybe<ElkPadding>();
         // iterate through the children of the element
+        double maxChildShadowBorderSize = -1;
         for (Object obj : currentEditPart.getChildren()) {
 
             // check visibility of the child
@@ -628,7 +651,8 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             } else if (obj instanceof ShapeNodeEditPart) {
                 ShapeNodeEditPart childNodeEditPart = (ShapeNodeEditPart) obj;
                 if (editPartFilter.filter(childNodeEditPart)) {
-                    ElkNode node = createNode(mapping, childNodeEditPart, currentEditPart, parentLayoutNode, kinsets, elkTargetToOptionsOverrideMap);
+                    ElkNode node = createNode(mapping, childNodeEditPart, parentLayoutNode, kinsets, elkTargetToOptionsOverrideMap);
+                    maxChildShadowBorderSize = Math.max(maxChildShadowBorderSize, ElkDiagramLayoutConnector.getShadowBorderSize(childNodeEditPart));
                     // Create label for Node, not Container, with name inside the node, not on border
                     final EObject eObj = childNodeEditPart.resolveSemanticElement();
                     if (eObj instanceof DNode && ((NodeStyle) ((DNode) eObj).getStyle()).getLabelPosition() == LabelPosition.NODE_LITERAL) {
@@ -648,6 +672,16 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                     parentLayoutNode.getLabels().add(newNodeLabel);
                 }
             }
+            if (maxChildShadowBorderSize >= 0 && currentEditPart.getNotationView() instanceof Node) {
+                // maxChildShadowBorderSize == 0 : There is at least one child, so we set insets of this container
+                // maxChildShadowBorderSize > 0 : There is at least one child with a shadow border, we add this border size to the insets to avoid potential scrollbar appearance during the layout application (org.eclipse.sirius.diagram.elk.GmfLayoutEditPolicy.addShapeLayout(GmfLayoutCommand, ElkShape, GraphicalEditPart, double)).
+                Dimension topLeftInsets = GMFHelper.getContainerTopLeftInsets((Node) currentEditPart.getNotationView(), true);
+                // We directly reuse the left inset to sets the bottom and right insets.
+                ElkPadding ei = new ElkPadding(topLeftInsets.preciseHeight(), topLeftInsets.preciseWidth() + maxChildShadowBorderSize, topLeftInsets.preciseWidth() + maxChildShadowBorderSize,
+                        topLeftInsets.preciseWidth());
+                parentLayoutNode.setProperty(CoreOptions.PADDING, ei);
+            }
+
         }
     }
 
@@ -658,8 +692,6 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      *            the layout mapping
      * @param nodeEditPart
      *            the node edit part
-     * @param parentEditPart
-     *            the parent node edit part that contains the current node
      * @param parentElkNode
      *            the corresponding parent layout node
      * @param elkinsets
@@ -668,7 +700,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      *            a map of option targets to corresponding options.
      * @return the created node
      */
-    protected ElkNode createNode(final LayoutMapping mapping, final IGraphicalEditPart nodeEditPart, final IGraphicalEditPart parentEditPart, final ElkNode parentElkNode,
+    protected ElkNode createNode(final LayoutMapping mapping, final IGraphicalEditPart nodeEditPart, final ElkNode parentElkNode,
             final Maybe<ElkPadding> elkinsets, Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
 
         IFigure nodeFigure = nodeEditPart.getFigure();
@@ -681,7 +713,12 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         ElkUtil.toAbsolute(containerAbsoluteLocation, parentElkNode);
         newNode.setX(childAbsoluteBounds.x - containerAbsoluteLocation.x);
         newNode.setY(childAbsoluteBounds.y - containerAbsoluteLocation.y);
-        newNode.setDimensions(childAbsoluteBounds.width, childAbsoluteBounds.height);
+        // Remove shadow border size for container: Indeed, the edges and border nodes use the "internal figure bounds"
+        // (ie without shadow). So for ELK the shadow size must be removed. It will be added before applying the layout
+        // in org.eclipse.sirius.diagram.elk.GmfLayoutEditPolicy.addShapeLayout(GmfLayoutCommand, ElkShape,
+        // GraphicalEditPart, double).
+        double shadowBorderSize = ElkDiagramLayoutConnector.getShadowBorderSize(nodeEditPart);
+        newNode.setDimensions(childAbsoluteBounds.width - shadowBorderSize, childAbsoluteBounds.height - shadowBorderSize);
 
         // useful to debug.
         if (((View) nodeEditPart.getModel()).getElement() instanceof DDiagramElement) {
@@ -701,18 +738,6 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         }
 
         if (parentElkNode != null) {
-            // set insets if not yet defined
-            ElkPadding ei = null;
-            if (elkinsets.get() == null) {
-                Insets insets = calcSpecificInsets(parentEditPart.getFigure(), nodeFigure);
-                ei = new ElkPadding(insets.top, insets.right, insets.bottom, insets.left);
-                elkinsets.set(ei);
-            } else {
-                // padding is already computed for given parent so we reuse it.
-                ei = new ElkPadding(elkinsets.get().top, elkinsets.get().right, elkinsets.get().bottom, elkinsets.get().left);
-            }
-            parentElkNode.setProperty(CoreOptions.PADDING, ei);
-
             parentElkNode.getChildren().add(newNode);
             applyParentNodeOption(parentElkNode, elkTargetToOptionsOverrideMap);
         }

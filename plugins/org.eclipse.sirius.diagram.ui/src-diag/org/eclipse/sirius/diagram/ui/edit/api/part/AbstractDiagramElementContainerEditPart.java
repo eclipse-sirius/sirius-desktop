@@ -518,7 +518,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     }
 
     /**
-     * Add a semi-transparent drop-shadow to the container, except for regions or workspac eimage styles. These can have
+     * Add a semi-transparent drop-shadow to the container, except for regions or workspace image styles. These can have
      * a non-rectangular contour and transparent zones which should be kept as is.
      * 
      * @param figure
@@ -527,18 +527,26 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      *            the shape to decorate
      */
     protected void addDropShadow(NodeFigure figure, IFigure shape) {
-        DDiagramElement ddiagramElement = resolveDiagramElement();
+        if (isShadowBorderNeeded()) {
+            AlphaDropShadowBorder shadowBorder = new AlphaDropShadowBorder(shape);
+            figure.setBorder(shadowBorder);
+        }
+    }
 
+    /**
+     * Shadow border is needed for all container except for regions or workspace image styles. These can have a
+     * non-rectangular contour and transparent zones which should be kept as is.
+     * 
+     * @return false for regions and workspace images, true otherwise.
+     */
+    public boolean isShadowBorderNeeded() {
         boolean needShadowBorder = true;
+        DDiagramElement ddiagramElement = resolveDiagramElement();
         if (ddiagramElement instanceof DDiagramElementContainer) {
             DDiagramElementContainer ddec = (DDiagramElementContainer) ddiagramElement;
             needShadowBorder = !(new DDiagramElementContainerExperimentalQuery(ddec).isRegion() || ddec.getOwnedStyle() instanceof WorkspaceImage);
         }
-
-        if (needShadowBorder) {
-            AlphaDropShadowBorder shadowBorder = new AlphaDropShadowBorder(shape);
-            figure.setBorder(shadowBorder);
-        }
+        return needShadowBorder;
     }
 
     /**

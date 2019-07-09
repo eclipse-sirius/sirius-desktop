@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 Kiel University and others.
+ * Copyright (c) 2009, 2019 Kiel University and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -59,8 +59,10 @@ import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 
 /**
  * Edit policy used to apply layout. This edit policy creates a
@@ -147,6 +149,10 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
 
         // check whether the location has changed
         Point newLocation = new Point((int) (elkShape.getX() * scale), (int) (elkShape.getY() * scale));
+        // Border nodes are not concerned by insets.
+        if (view instanceof Node && !(elkShape instanceof ElkPort)) {
+            newLocation.translate(GMFHelper.getContainerTopLeftInsets((Node) view, true).getNegated());
+        }
         Object oldx = ViewUtil.getStructuralFeatureValue(view, NotationPackage.eINSTANCE.getLocation_X());
         Object oldy = ViewUtil.getStructuralFeatureValue(view, NotationPackage.eINSTANCE.getLocation_Y());
 
@@ -155,7 +161,9 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
         }
 
         // check whether the size has changed
-        Dimension newSize = new Dimension((int) (elkShape.getWidth() * scale), (int) (elkShape.getHeight() * scale));
+        // We add the border size for containers that require it (see createNode method for details)
+        double shadowBorderSize = ElkDiagramLayoutConnector.getShadowBorderSize(editPart);
+        Dimension newSize = new Dimension((int) ((elkShape.getWidth() + shadowBorderSize) * scale), (int) ((elkShape.getHeight() + shadowBorderSize) * scale));
         Object oldWidth = ViewUtil.getStructuralFeatureValue(view, NotationPackage.eINSTANCE.getSize_Width());
         Object oldHeight = ViewUtil.getStructuralFeatureValue(view, NotationPackage.eINSTANCE.getSize_Height());
 
