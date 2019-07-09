@@ -31,7 +31,7 @@ h4. Changes in  @org.eclipse.sirius.common@
 
 h4. Changes in  @org.eclipse.sirius.diagram@
 
-* <span class="label label-success">Added</span> A cache has been added to optimize the way Sirius checks that a mapping is in the activated layers of a diagram. The cache is currently used in two locations: @org.eclipse.sirius.diagram.business.internal.sync.DDiagramSynchronizer.refreshOperation(IProgressMonitor)@ and @org.eclipse.sirius.diagram.business.internal.helper.display.DisplayServiceImpl.refreshAllElementsVisibility(DDiagram)@.  This optimization is enabled by default, it can be disabled by setting the system property @org.eclipse.sirius.diagram.enableActiveParentLayerOptimization@ to @false@.
+* <span class="label label-success">Added</span> A cache has been added to optimize the way Sirius checks that a mapping is in the activated layers of a diagram. The cache is currently used in three locations: @org.eclipse.sirius.diagram.business.internal.sync.DDiagramSynchronizer.refreshOperation(IProgressMonitor)@, @org.eclipse.sirius.diagram.business.internal.helper.display.DisplayServiceImpl.refreshAllElementsVisibility(DDiagram)@ and in the hidden elements lookup phase of @org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart.activate()@. This optimization is enabled by default, it can be disabled by setting the system property @org.eclipse.sirius.diagram.enableActiveParentLayerOptimization@ to @false@.
 
 h4. Changes in  @org.eclipse.sirius.diagram.elk@
 

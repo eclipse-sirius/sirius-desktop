@@ -52,6 +52,8 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
+import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.query.CompositeFilterDescriptionQuery;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.api.query.DMappingBasedQuery;
@@ -342,19 +344,32 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
         // List of hidden diagramElement (or diagramElement from which label is
         // hidden).
         List<DDiagramElement> hiddenElements = new ArrayList<DDiagramElement>();
-
-        EqualityHelper.setUriFragmentCacheEnabled(true);
-        try {
-            DDiagramQuery dDiagramQuery = new DDiagramQuery(dDiagram);
-            for (final DDiagramElement diagramElement : dDiagram.getDiagramElements()) {
-                if (dDiagramQuery.isHidden(session, diagramElement)) {
-                    hiddenElements.add(diagramElement);
-                } else if (dDiagramQuery.isLabelHidden(session, diagramElement)) {
-                    hiddenElements.add(diagramElement);
+        if (session != null && dDiagram != null) {
+            DiagramMappingsManager mappingManager = null;
+            if (dDiagram.eAdapters().contains(DiagramMappingsManagerRegistry.INSTANCE)) {
+                // Enable the cache only if the mapping manager has already been created.
+                mappingManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, dDiagram);
+            }
+            try {
+                EqualityHelper.setUriFragmentCacheEnabled(true);
+                if (mappingManager != null) {
+                    LayerHelper.setActiveParentLayersCacheEnabled(mappingManager, true);
+                }
+               
+                DDiagramQuery dDiagramQuery = new DDiagramQuery(dDiagram);
+                for (final DDiagramElement diagramElement : dDiagram.getDiagramElements()) {
+                    if (dDiagramQuery.isHidden(session, diagramElement)) {
+                        hiddenElements.add(diagramElement);
+                    } else if (dDiagramQuery.isLabelHidden(session, diagramElement)) {
+                        hiddenElements.add(diagramElement);
+                    }
+                }
+            } finally {
+                EqualityHelper.setUriFragmentCacheEnabled(false);
+                if (mappingManager != null) {
+                    LayerHelper.setActiveParentLayersCacheEnabled(mappingManager, false);
                 }
             }
-        } finally {
-            EqualityHelper.setUriFragmentCacheEnabled(false);
         }
 
         if (!hiddenElements.isEmpty()) {
