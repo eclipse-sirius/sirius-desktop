@@ -20,13 +20,11 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm;
 import org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.CompoundLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.DefaultLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.ExtendableLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.LayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.ArrangeSelectionLayoutProvider;
-import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.BorderItemAwareLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.PinnedElementsLayoutProvider;
 
 /**
@@ -49,16 +47,7 @@ public class GenericLayoutProvider implements LayoutProvider {
                 clp.addProvider(new PinnedElementsLayoutProvider(layoutProvider));
             }
 
-            ArrangeSelectionLayoutProvider layoutNodeProvider = null;
-            if (ENABLE_BORDERED_NODES_ARRANGE_ALL) {
-                // ArrangeSelectionLayoutProvider wrap all providers to manage
-                // the selected diagram element on diagram "Arrange all"
-                AbstractLayoutProvider abstractLayoutProvider = new BorderItemAwareLayoutProvider(clp);
-                layoutNodeProvider = new ArrangeSelectionLayoutProvider(abstractLayoutProvider);
-            } else {
-                layoutNodeProvider = new ArrangeSelectionLayoutProvider(clp);
-            }
-            return layoutNodeProvider;
+            return new ArrangeSelectionLayoutProvider(clp);
         }
         return null;
     }
