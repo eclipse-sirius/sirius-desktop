@@ -60,6 +60,8 @@ import com.google.common.collect.Collections2;
  */
 public final class LayerHelper {
 
+    private static final String ENABLE_ACTIVE_PARENT_LAYERS_OPTIMIZATION_SYSTEM_PROPERTY = "org.eclipse.sirius.diagram.enableActiveParentLayersOptimization"; //$NON-NLS-1$
+
     private static final Map<DiagramMappingsManager, Map<DiagramElementMapping, Collection<Layer>>> ACTIVE_PARENT_LAYER_CACHE = new ConcurrentHashMap<>();
 
     /**
@@ -345,6 +347,9 @@ public final class LayerHelper {
      * Enable or disable the ability to cache the computed parent layers for the given DiagramMappingManager. The cache
      * is cleared when this method is called to disable the cache.
      * 
+     * This method does nothing if the optimization has been disabled with the system property
+     * "org.eclipse.sirius.diagram.enableActiveParentLayersOptimization" set to false.
+     * 
      * @param mappingsManager
      *            DiagramMappingsManager of the current diagram.
      * @param enable
@@ -352,6 +357,10 @@ public final class LayerHelper {
      *            <code>false</code> otherwise.
      */
     public static synchronized void setActiveParentLayersCacheEnabled(DiagramMappingsManager mappingsManager, boolean enable) {
+        if (!Boolean.valueOf(System.getProperty(ENABLE_ACTIVE_PARENT_LAYERS_OPTIMIZATION_SYSTEM_PROPERTY, "true"))) { //$NON-NLS-1$
+            return;
+        }
+
         if (enable && !ACTIVE_PARENT_LAYER_CACHE.containsKey(mappingsManager)) {
             ACTIVE_PARENT_LAYER_CACHE.put(mappingsManager, new ConcurrentHashMap<>());
         }

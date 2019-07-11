@@ -66,7 +66,7 @@
 						<a href="#sirius6.1.1">Changes in Sirius 6.1.1</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#Changesinorg.eclipse.sirius.diagram3">Changes in  @org.eclipse.sirius.diagram@</a>
+								<a href="#Changesinorg.eclipse.sirius.diagram4">Changes in  @org.eclipse.sirius.diagram@</a>
 							</li>
 						</ol>
 					</li>
@@ -185,6 +185,30 @@
 				<code>DREPRESENTATION_DESCRIPTOR</code> has been removed because they are not available anymore in custom data.
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.common">Changes in  
+			<code>org.eclipse.sirius.common</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> A cache has been added to optimize the way the uri fragments are computed in 
+				<code>org.eclipse.sirius.common.tools.api.util.EqualityHelper</code>, it is managed with the 
+				<code>setUriFragmentCacheEnabled(boolean)</code> method. The cache is currently used in two locations: 
+				<code>org.eclipse.sirius.diagram.business.internal.sync.DDiagramSynchronizer.refreshOperation(IProgressMonitor)</code> and 
+				<code>org.eclipse.sirius.diagram.business.internal.helper.display.DisplayServiceImpl.refreshAllElementsVisibility(DDiagram)</code>. This optimization is enabled by default, it can be disabled by setting the system property 
+				<code>org.eclipse.sirius.common.enableUriFragmentOptimization</code> to 
+				<code>false</code>.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in  
+			<code>org.eclipse.sirius.diagram</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> A cache has been added to optimize the way Sirius checks that a mapping is in the activated layers of a diagram. The cache is currently used in two locations: 
+				<code>org.eclipse.sirius.diagram.business.internal.sync.DDiagramSynchronizer.refreshOperation(IProgressMonitor)</code> and 
+				<code>org.eclipse.sirius.diagram.business.internal.helper.display.DisplayServiceImpl.refreshAllElementsVisibility(DDiagram)</code>.  This optimization is enabled by default, it can be disabled by setting the system property 
+				<code>org.eclipse.sirius.diagram.enableActiveParentLayerOptimization</code> to 
+				<code>false</code>.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram.elk">Changes in  
 			<code>org.eclipse.sirius.diagram.elk</code>
 		</h4>
@@ -282,7 +306,7 @@
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius.common">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -385,7 +409,7 @@
 				<code>org.eclipse.sirius.diagram.formatdata</code>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in  
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -695,7 +719,7 @@
 				<code>org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider</code> has been made protected to allow to provide layout provider from other mechanism than LayoutService.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in  
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -703,7 +727,7 @@
 				<code>org.eclipse.sirius.diagram.ui.tools.api.decoration.DecorationDescriptor.isPrintable</code>. This attribute is used to know if the decoration should be hidden when printing or exporting the diagram. The behavior is applied only if there is no printable decoration in its diagram element location (South, West, South-West etc).
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in  
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -720,7 +744,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius6.1.1">Changes in Sirius 6.1.1</h2>
-		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram4">Changes in  
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -1031,7 +1055,7 @@
 				<code>org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures</code> package.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.common4">Changes in  
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -1164,7 +1188,7 @@
 				<code>SemanticBasedDecoration</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common5">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -1228,7 +1252,7 @@
 				<code>ToolMangament</code> mechanism used to handle tools and layer changes.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram5">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -1603,7 +1627,7 @@
 				<code>DialectManagerImpl</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.common5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.common6">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
 		<ul>
@@ -1615,7 +1639,7 @@
 				<code>getFilesFromWorkspace(Collection&lt;IContainer&gt;, String)</code> to be more generic.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram6">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>

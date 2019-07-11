@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,8 @@ import com.google.common.base.Objects;
  * @author mchauvin
  */
 public final class EqualityHelper extends org.eclipse.emf.ecore.util.EcoreUtil.EqualityHelper {
+
+    private static final String ENABLE_URI_FRAGMENT_OPTIMIZATION_SYSTEM_PROPERTY = "org.eclipse.sirius.common.enableUriFragmentOptimization"; //$NON-NLS-1$
 
     private static boolean enableUriFragmentCache;
 
@@ -156,11 +158,18 @@ public final class EqualityHelper extends org.eclipse.emf.ecore.util.EcoreUtil.E
      * Enable or disable the ability to cache the computed values. The cache is cleared when this method is called to
      * disable the cache.
      * 
+     * This method does nothing if the optimization has been disabled with the system property
+     * "org.eclipse.sirius.common.enableUriFragmentOptimization" set to false.
+     * 
      * @param enable
      *            <code>true</code> to allow this helper to put the computed values in a cache, <code>false</code>
      *            otherwise.
      */
     public static synchronized void setUriFragmentCacheEnabled(boolean enable) {
+        if (!Boolean.valueOf(System.getProperty(ENABLE_URI_FRAGMENT_OPTIMIZATION_SYSTEM_PROPERTY, "true"))) { //$NON-NLS-1$
+            return;
+        }
+
         enableUriFragmentCache = enable;
 
         if (!enable) {
