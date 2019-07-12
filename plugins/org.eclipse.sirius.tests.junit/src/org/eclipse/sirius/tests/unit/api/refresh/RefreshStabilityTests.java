@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.refresh;
 
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.session.SessionStatus;
@@ -46,16 +47,16 @@ public class RefreshStabilityTests extends SiriusDiagramTestCase {
      */
     public void testEmptySemanticCandidatesExpression() throws Exception {
         copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PATH, AIRD_MODEL_FILENAME, SEMANTIC_MODEL_FILENAME, MODELER_FILENAME);
-        URI sessionResourceURI = URI.createPlatformResourceURI("/" + TEMPORARY_PROJECT_NAME + "/" + AIRD_MODEL_FILENAME, true);
 
-        session = SessionFactory.INSTANCE.createSession(sessionResourceURI, new NullProgressMonitor());
         // If there was a bug it could be random because of the usage of Set instead of List. So we launch it 10 times.
         for (int i = 0; i < 10; i++) {
             doTestEmptySemanticCandidatesExpression();
         }
     }
 
-    private void doTestEmptySemanticCandidatesExpression() {
+    private void doTestEmptySemanticCandidatesExpression() throws CoreException {
+        URI sessionResourceURI = URI.createPlatformResourceURI("/" + TEMPORARY_PROJECT_NAME + "/" + AIRD_MODEL_FILENAME, true);
+        session = SessionFactory.INSTANCE.createSession(sessionResourceURI, new NullProgressMonitor());
         session.open(new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
 
@@ -67,7 +68,7 @@ public class RefreshStabilityTests extends SiriusDiagramTestCase {
         DialectUIManager.INSTANCE.closeEditor(editor, false);
         TestsUtil.synchronizationWithUIThread();
 
-        session.close(new NullProgressMonitor());
+        closeSession(session);
         TestsUtil.synchronizationWithUIThread();
     }
 
