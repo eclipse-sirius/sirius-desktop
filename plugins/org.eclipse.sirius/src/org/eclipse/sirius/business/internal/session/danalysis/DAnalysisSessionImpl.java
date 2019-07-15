@@ -253,7 +253,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             while (notifIterator.hasNext()) {
                 Notification notification = notifIterator.next();
                 Object notifier = notification.getNotifier();
-                if (notifier instanceof EObject && !(notification instanceof EStructuralFeature && ((EStructuralFeature) notification.getFeature()).isTransient())) {
+                if (notifier instanceof EObject && !(notification.getFeature() instanceof EStructuralFeature && ((EStructuralFeature) notification.getFeature()).isTransient())) {
                     final DRepresentationDescriptor representationDescriptor = getDRepresentationDescriptor((EObject) notifier);
                     if (representationDescriptor != null) {
                         RecordingCommand changeIdRecordingCommand = new RecordingCommand(transactionalEditingDomain) {
@@ -277,7 +277,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                     dRepresentationDescriptor = new DRepresentationQuery(new DRepresentationElementQuery((DRepresentationElement) eObject).getParentRepresentation()).getRepresentationDescriptor();
                 } else if (eObject instanceof DRepresentation) {
                     dRepresentationDescriptor = new DRepresentationQuery((DRepresentation) eObject).getRepresentationDescriptor();
-                }  else if (eContainer != null) {
+                } else if (eContainer != null) {
                     dRepresentationDescriptor = getDRepresentationDescriptor(eContainer);
                 }
             }
