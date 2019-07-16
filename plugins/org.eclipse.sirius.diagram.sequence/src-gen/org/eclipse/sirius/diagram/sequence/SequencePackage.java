@@ -124,14 +124,6 @@ public interface SequencePackage extends EPackage {
     int SEQUENCE_DDIAGRAM__UI_STATE = DiagramPackage.DSEMANTIC_DIAGRAM__UI_STATE;
 
     /**
-     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int SEQUENCE_DDIAGRAM__DOCUMENTATION = DiagramPackage.DSEMANTIC_DIAGRAM__DOCUMENTATION;
-
-    /**
      * The feature id for the '<em><b>Owned Diagram Elements</b></em>' containment reference list. <!-- begin-user-doc
      * --> <!-- end-user-doc -->
      *

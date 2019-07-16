@@ -28,7 +28,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.provider.DRepresentationItemProvider;
 
 /**
@@ -57,7 +56,6 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
-            addDocumentationPropertyDescriptor(object);
             addDiagramElementsPropertyDescriptor(object);
             addDescriptionPropertyDescriptor(object);
             addEdgesPropertyDescriptor(object);
@@ -78,19 +76,6 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
             addHeaderHeightPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
-    }
-
-    /**
-     * This adds a property descriptor for the Documentation feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected void addDocumentationPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DocumentedElement_documentation_feature"), //$NON-NLS-1$
-                        getString("_UI_DocumentedElement_documentation_description"), //$NON-NLS-1$
-                        DescriptionPackage.Literals.DOCUMENTED_ELEMENT__DOCUMENTATION, true, true, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, getString("_UI_DocumentationPropertyCategory"), //$NON-NLS-1$
-                        null));
     }
 
     /**
@@ -374,7 +359,6 @@ public class DDiagramItemProvider extends DRepresentationItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(DDiagram.class)) {
-        case DiagramPackage.DDIAGRAM__DOCUMENTATION:
         case DiagramPackage.DDIAGRAM__SYNCHRONIZED:
         case DiagramPackage.DDIAGRAM__IS_IN_LAYOUTING_MODE:
         case DiagramPackage.DDIAGRAM__IS_IN_SHOWING_MODE:

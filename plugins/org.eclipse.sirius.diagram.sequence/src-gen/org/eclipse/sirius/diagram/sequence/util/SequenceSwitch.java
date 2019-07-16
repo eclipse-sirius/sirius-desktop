@@ -26,7 +26,6 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
-import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 
 /**
  * <!-- begin-user-doc --> The <b>Switch</b> for the model's inheritance hierarchy. It supports the call
@@ -108,9 +107,6 @@ public class SequenceSwitch<T> {
                 result = caseDRepresentation(sequenceDDiagram);
             }
             if (result == null) {
-                result = caseDocumentedElement(sequenceDDiagram);
-            }
-            if (result == null) {
                 result = caseDragAndDropTarget(sequenceDDiagram);
             }
             if (result == null) {
@@ -158,21 +154,6 @@ public class SequenceSwitch<T> {
      * @generated
      */
     public T caseIdentifiedElement(IdentifiedElement object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '<em>Documented Element</em>'. <!--
-     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Documented Element</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDocumentedElement(DocumentedElement object) {
         return null;
     }
 

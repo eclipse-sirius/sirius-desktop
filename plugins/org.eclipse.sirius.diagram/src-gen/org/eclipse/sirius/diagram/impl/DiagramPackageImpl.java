@@ -2747,11 +2747,11 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         // Obtain other dependent packages
         DescriptionPackage theDescriptionPackage = (DescriptionPackage) EPackage.Registry.INSTANCE.getEPackage(DescriptionPackage.eNS_URI);
         ViewpointPackage theViewpointPackage = (ViewpointPackage) EPackage.Registry.INSTANCE.getEPackage(ViewpointPackage.eNS_URI);
-        org.eclipse.sirius.viewpoint.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.viewpoint.description.DescriptionPackage) EPackage.Registry.INSTANCE
-                .getEPackage(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eNS_URI);
         ConcernPackage theConcernPackage = (ConcernPackage) EPackage.Registry.INSTANCE.getEPackage(ConcernPackage.eNS_URI);
         FilterPackage theFilterPackage = (FilterPackage) EPackage.Registry.INSTANCE.getEPackage(FilterPackage.eNS_URI);
         ValidationPackage theValidationPackage = (ValidationPackage) EPackage.Registry.INSTANCE.getEPackage(ValidationPackage.eNS_URI);
+        org.eclipse.sirius.viewpoint.description.DescriptionPackage theDescriptionPackage_1 = (org.eclipse.sirius.viewpoint.description.DescriptionPackage) EPackage.Registry.INSTANCE
+                .getEPackage(org.eclipse.sirius.viewpoint.description.DescriptionPackage.eNS_URI);
         ToolPackage theToolPackage = (ToolPackage) EPackage.Registry.INSTANCE.getEPackage(ToolPackage.eNS_URI);
         EcorePackage theEcorePackage = (EcorePackage) EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
         org.eclipse.sirius.viewpoint.description.style.StylePackage theStylePackage_1 = (org.eclipse.sirius.viewpoint.description.style.StylePackage) EPackage.Registry.INSTANCE
@@ -2768,7 +2768,6 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
 
         // Add supertypes to classes
         dDiagramEClass.getESuperTypes().add(theViewpointPackage.getDRepresentation());
-        dDiagramEClass.getESuperTypes().add(theDescriptionPackage_1.getDocumentedElement());
         dDiagramEClass.getESuperTypes().add(this.getDragAndDropTarget());
         dSemanticDiagramEClass.getESuperTypes().add(this.getDDiagram());
         dSemanticDiagramEClass.getESuperTypes().add(theViewpointPackage.getDSemanticDecorator());

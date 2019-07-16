@@ -77,7 +77,6 @@ import org.eclipse.sirius.viewpoint.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.DModelElement;
-import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 
 /**
  * <!-- begin-user-doc --> The <b>Switch</b> for the model's inheritance hierarchy. It supports the call
@@ -150,9 +149,6 @@ public class DiagramSwitch<T> {
                 result = caseDRepresentation(dDiagram);
             }
             if (result == null) {
-                result = caseDocumentedElement(dDiagram);
-            }
-            if (result == null) {
                 result = caseDragAndDropTarget(dDiagram);
             }
             if (result == null) {
@@ -180,9 +176,6 @@ public class DiagramSwitch<T> {
             }
             if (result == null) {
                 result = caseDRepresentation(dSemanticDiagram);
-            }
-            if (result == null) {
-                result = caseDocumentedElement(dSemanticDiagram);
             }
             if (result == null) {
                 result = caseDragAndDropTarget(dSemanticDiagram);
@@ -1981,21 +1974,6 @@ public class DiagramSwitch<T> {
      * @generated
      */
     public T caseIdentifiedElement(IdentifiedElement object) {
-        return null;
-    }
-
-    /**
-     * Returns the result of interpreting the object as an instance of '<em>Documented Element</em>'. <!--
-     * begin-user-doc --> This implementation returns null; returning a non-null result will terminate the switch. <!--
-     * end-user-doc -->
-     *
-     * @param object
-     *            the target of the switch.
-     * @return the result of interpreting the object as an instance of '<em>Documented Element</em>'.
-     * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-     * @generated
-     */
-    public T caseDocumentedElement(DocumentedElement object) {
         return null;
     }
 

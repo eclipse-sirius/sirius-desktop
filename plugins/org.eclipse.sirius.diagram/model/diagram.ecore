@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="diagram" nsURI="http://www.eclipse.org/sirius/diagram/1.1.0"
     nsPrefix="diagram">
-  <eClassifiers xsi:type="ecore:EClass" name="DDiagram" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DRepresentation ../../org.eclipse.sirius/model/viewpoint.ecore#//description/DocumentedElement #//DragAndDropTarget">
+  <eClassifiers xsi:type="ecore:EClass" name="DDiagram" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DRepresentation #//DragAndDropTarget">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="ViewPoint is the type of all diagrams in AIR.&#xD;&#xA;A viewpoint is composed of nodes, containers and connections. It is owned by an anlysis or by a parent viewpoint. In this last case the viewpoint should be called detailed viewpoint."/>
     </eAnnotations>
