@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.session;
 
-import java.io.IOException;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -31,12 +30,9 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.AbstractSavingPolicy;
-import org.eclipse.sirius.business.internal.session.danalysis.ResourceSaveDiagnose;
 import org.eclipse.sirius.common.tools.api.resource.ResourceMigrationMarker;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
-import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
@@ -45,21 +41,20 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
 
 /**
- * A saving policy implementation which use the isModified state of the
- * resources and their inter-dependencies to determine if a resource should be
- * serialized again or not.
+ * A saving policy implementation which use the isModified state of the resources and their inter-dependencies to
+ * determine if a resource should be serialized again or not.
  * 
- * <b>This policy assume the isModified flag has been updated for each resource
- * if any change happened in the contained EObjects /!\</b>
+ * <b>This policy assume the isModified flag has been updated for each resource if any change happened in the contained
+ * EObjects /!\</b>
  * 
  * <br>
  * What it saves is:
  * <ul>
  * <li>all the modified resources (isModified=true)</li>
- * <li>go through all the other resources and identify those which have
- * references onto the modified ones : these should be saved too.</li>
- * <li>retrieve the underlying file status for each resource and add the
- * CONFLICTING or DELETED ones in the list of resources to save.</li>
+ * <li>go through all the other resources and identify those which have references onto the modified ones : these should
+ * be saved too.</li>
+ * <li>retrieve the underlying file status for each resource and add the CONFLICTING or DELETED ones in the list of
+ * resources to save.</li>
  * </ul>
  * 
  * 
@@ -69,23 +64,20 @@ import com.google.common.collect.Sets;
 public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
 
     /**
-     * Check if a resource has been logically modified, meaning some of its
-     * objects have changes in some way.
+     * Check if a resource has been logically modified, meaning some of its objects have changes in some way.
      * 
      * @param resource
      *            the resource to check
-     * @return <code>true</code> if the resource has changes to save,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the resource has changes to save, <code>false</code> otherwise
      */
     private Predicate<Resource> isModified = new Predicate<Resource>() {
 
         @Override
         public boolean apply(Resource resource) {
             /*
-             * We assume the resource always is "tracking modification" but not
-             * using the Resource-specific implementation. We rely on the fact
-             * that the Sirius runtime will set the isModified flag itself when
-             * a change is done on the resource.
+             * We assume the resource always is "tracking modification" but not using the Resource-specific
+             * implementation. We rely on the fact that the Sirius runtime will set the isModified flag itself when a
+             * change is done on the resource.
              */
 
             return resource.isModified() || ResourceMigrationMarker.hasMigrationMarker(resource);
@@ -93,13 +85,11 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
     };
 
     /**
-     * Check if the resource underlying file is in a DELETED or CONFLICTING
-     * state.
+     * Check if the resource underlying file is in a DELETED or CONFLICTING state.
      * 
      * @param resource
      *            the resource to check
-     * @return <code>true</code> if the resource has changes to save,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the resource has changes to save, <code>false</code> otherwise
      */
     private Predicate<Resource> underlyingFileIsDeletedOrConflicting = new Predicate<Resource>() {
 
@@ -121,17 +111,13 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
     }
 
     /**
-     * Computes the set of resources to save. This is a safe approximation of
-     * the exact sub-set of resource in the scope whose serialization has
-     * changed. Saving all the returned resources will produce the same result
-     * as saving all the resources in the scope, but in the general case will
-     * save much less resources (and thus be faster).
+     * Computes the set of resources to save. This is a safe approximation of the exact sub-set of resource in the scope
+     * whose serialization has changed. Saving all the returned resources will produce the same result as saving all the
+     * resources in the scope, but in the general case will save much less resources (and thus be faster).
      * <p>
-     * It may save more resources than strictly needed. For example if resource
-     * A (not modified) contains references to elements in resource B
-     * (modified), but the only references are to elements in B whose URI will
-     * not change. In such a case we will save A anyway. More precise analyses
-     * would be possible but cost-prohibitive.
+     * It may save more resources than strictly needed. For example if resource A (not modified) contains references to
+     * elements in resource B (modified), but the only references are to elements in B whose URI will not change. In
+     * such a case we will save A anyway. More precise analyses would be possible but cost-prohibitive.
      * <p>
      * {@inheritDoc}
      */
@@ -157,9 +143,8 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
         Set<Resource> logicallyModified = Sets.newLinkedHashSet(Iterables.filter(saveable, isModified));
 
         /*
-         * ... or it references a resource which has been modified (in which
-         * case the URIs to the referenced elements in these resource *may*
-         * havechanged)...
+         * ... or it references a resource which has been modified (in which case the URIs to the referenced elements in
+         * these resource *may* havechanged)...
          */
         Set<Resource> dependOnLogicallyModified = new LinkedHashSet<>();
         if (logicallyModified.size() > 0) {
@@ -186,8 +171,7 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
         Set<Resource> underlyingFileDoesNotExist = Sets.newLinkedHashSet(Iterables.filter(saveable, Predicates.not(exists)));
         Set<Resource> isConflictingOrDeleted = Sets.newLinkedHashSet(Iterables.filter(saveable, underlyingFileIsDeletedOrConflicting));
         /*
-         * or the underlying file is out of date and must be recreated/updated
-         * to match the version in memory.
+         * or the underlying file is out of date and must be recreated/updated to match the version in memory.
          */
         Set<Resource> toSave = new LinkedHashSet<>();
         for (Resource resource : Sets.union(logicallyModified, dependOnLogicallyModified)) {
@@ -195,26 +179,14 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
                 toSave.add(resource);
             } else {
                 ResourceMigrationMarker.clearMigrationMarker(resource);
-
             }
         }
 
         Iterables.addAll(toSave, Sets.union(underlyingFileDoesNotExist, isConflictingOrDeleted));
         /*
-         * if we have something to save which has no different serialization
-         * then something is fishy...
+         * if we have something to save which has no different serialization then something is fishy...
          */
         return toSave;
-    }
-
-    private boolean hasDifferentSerialization(Resource input, Map<?, ?> options) {
-        ResourceSaveDiagnose diagnose = new ResourceSaveDiagnose(input);
-        try {
-            return diagnose.isSaveable() && diagnose.hasDifferentSerialization(options);
-        } catch (final IOException e) {
-            SiriusPlugin.getDefault().error(Messages.SavingPolicyImpl_savingErrorMsg, e);
-        }
-        return false;
     }
 
     private static class ResourceHasReferenceTo implements Predicate<Resource> {
@@ -242,17 +214,14 @@ public class IsModifiedSavingPolicy extends AbstractSavingPolicy {
         public boolean apply(EObject source) {
             if (!source.eIsProxy()) {
                 /*
-                 * We could process the references in an order which gives us
-                 * the highest chance to hit a success sooner and avoid, for
-                 * instance, computing derived references unless strictly
-                 * necessary.
+                 * We could process the references in an order which gives us the highest chance to hit a success sooner
+                 * and avoid, for instance, computing derived references unless strictly necessary.
                  */
                 for (EReference ref : source.eClass().getEAllReferences()) {
                     /*
-                     * we should not go on containment references as we are
-                     * already in a getProperContent iteration. We are only
-                     * interested in references which will impact the
-                     * serialization (hence ignoring isTransient).
+                     * we should not go on containment references as we are already in a getProperContent iteration. We
+                     * are only interested in references which will impact the serialization (hence ignoring
+                     * isTransient).
                      */
                     if (!ref.isTransient() && !ref.isContainment()) {
                         for (EObject target : getReferencedEObjects(source, ref)) {

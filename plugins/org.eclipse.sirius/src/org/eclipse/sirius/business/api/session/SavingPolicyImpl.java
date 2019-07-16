@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.session;
 
-import java.io.IOException;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,11 +20,8 @@ import java.util.Set;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.business.internal.session.danalysis.ResourceSaveDiagnose;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
-import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -51,9 +47,8 @@ public class SavingPolicyImpl extends AbstractSavingPolicy {
     }
 
     /**
-     * Determines if a resource should be saved by actually saving it in a
-     * temporary location and comaring the result to the current serialization.
-     * The result is safe, but the method is costly.
+     * Determines if a resource should be saved by actually saving it in a temporary location and comparing the result
+     * to the current serialization. The result is safe, but the method is costly.
      * <p>
      * {@inheritDoc}
      */
@@ -74,22 +69,15 @@ public class SavingPolicyImpl extends AbstractSavingPolicy {
      * 
      * @param resource
      *            the resource to check
-     * @return <code>true</code> if the resource has changes to save,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the resource has changes to save, <code>false</code> otherwise
      */
     protected boolean hasChangesToSave(final Resource resource) {
-        boolean hasChangesToSave = false;
-        final ResourceSaveDiagnose diagnose = new ResourceSaveDiagnose(resource);
-        try {
-            Map<Object, Object> mergedOptions = new HashMap<Object, Object>(getDefaultSaveOptions());
-            if (saveOptions != null) {
-                mergedOptions.putAll(saveOptions);
-            }
-            hasChangesToSave = diagnose.isSaveable() && diagnose.hasDifferentSerialization(mergedOptions);
-        } catch (final IOException e) {
-            SiriusPlugin.getDefault().error(Messages.SavingPolicyImpl_savingErrorMsg, e);
+        Map<Object, Object> mergedOptions = new HashMap<Object, Object>(getDefaultSaveOptions());
+        if (saveOptions != null) {
+            mergedOptions.putAll(saveOptions);
         }
-        return hasChangesToSave;
+
+        return hasDifferentSerialization(resource, mergedOptions);
     }
 
     /**
