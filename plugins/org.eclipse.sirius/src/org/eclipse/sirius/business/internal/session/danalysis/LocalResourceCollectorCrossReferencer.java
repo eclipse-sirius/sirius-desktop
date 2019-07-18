@@ -28,15 +28,18 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
-import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
-import org.eclipse.sirius.common.tools.internal.util.FastInverseCrossReferencesList;
 
 /**
  * A {@link IResourceCollector} for local {@link Resource}.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
-public class LocalResourceCollector extends SiriusCrossReferenceAdapter implements IResourceCollector {
+public class LocalResourceCollectorCrossReferencer extends SessionLazyCrossReferencer implements IResourceCollector {
+
+    /**
+     * Flag to know if the the cross referencer has initializedLocator the resource locator.
+     */
+    private boolean initializedLocator;
 
     private ResourceSet resourceSet;
 
@@ -44,16 +47,17 @@ public class LocalResourceCollector extends SiriusCrossReferenceAdapter implemen
 
     private Map<Resource, Collection<Resource>> directlyReferencedResources;
 
-    private boolean initialized;
 
     /**
      * Default constructor.
      * 
      * @param resourceSet
      *            the {@link ResourceSet} on which to listens {@link ResourceSet#getResources()} changes
+     * @param session
+     *            the session.
      */
-    public LocalResourceCollector(ResourceSet resourceSet) {
-        super();
+    public LocalResourceCollectorCrossReferencer(ResourceSet resourceSet, DAnalysisSessionImpl session) {
+        super(session);
         this.resourceSet = resourceSet;
         directlyReferencingResources = new WeakHashMap<Resource, Collection<Resource>>();
         directlyReferencedResources = new WeakHashMap<Resource, Collection<Resource>>();
@@ -109,27 +113,21 @@ public class LocalResourceCollector extends SiriusCrossReferenceAdapter implemen
         directlyReferencingResources.remove(referencedResource);
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Collection<Resource> getAllReferencedResources(Resource resource) {
-        if (!initialized) {
+        if (!initializedLocator) {
             resourceSet.eAdapters().add(this);
-            initialized = true;
+            initializedLocator = true;
         }
         Collection<Resource> allReferencedResources = getTransitivelyAllResoures(directlyReferencedResources, resource, Collections.<Resource> emptyList());
         return allReferencedResources;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Collection<Resource> getAllReferencingResources(Resource resource) {
-        if (!initialized) {
+        if (!initializedLocator) {
             resourceSet.eAdapters().add(this);
-            initialized = true;
+            initializedLocator = true;
         }
         Collection<Resource> allReferencingResources = getTransitivelyAllResoures(directlyReferencingResources, resource, Collections.<Resource> emptyList());
         return allReferencingResources;
@@ -154,16 +152,16 @@ public class LocalResourceCollector extends SiriusCrossReferenceAdapter implemen
      */
     @Override
     public void dispose() {
-        if (initialized) {
+        if (initializedLocator) {
             resourceSet.eAdapters().remove(this);
-            initialized = false;
+            initializedLocator = false;
         }
         resourceSet = null;
         directlyReferencingResources = null;
         directlyReferencedResources = null;
     }
 
-    class LocalInverseCrossReferencer extends InverseCrossReferencer {
+    public class LocalInverseCrossReferencer extends SiriusInverseCrossReferencer {
 
         private static final long serialVersionUID = 1L;
 
@@ -229,11 +227,6 @@ public class LocalResourceCollector extends SiriusCrossReferenceAdapter implemen
                     }
                 }
             }
-        }
-
-        @Override
-        protected Collection<EStructuralFeature.Setting> newCollection() {
-            return new FastInverseCrossReferencesList(() -> !LocalResourceCollector.this.settingTargets || LocalResourceCollector.this.resolve());
         }
     }
 

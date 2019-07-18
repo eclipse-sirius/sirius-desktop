@@ -179,7 +179,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     private SessionService services;
 
-    private SessionLazyCrossReferencer crossReferencer;
+    private LocalResourceCollectorCrossReferencer crossReferencer;
 
     private IInterpreter interpreter;
 
@@ -373,7 +373,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         super.getAnalyses().add(mainDAnalysis);
         super.getResources().add(sessionResource);
         setAnalysisSelector(DAnalysisSelectorService.getSelector(this));
-        setResourceCollector(new LocalResourceCollector(getTransactionalEditingDomain().getResourceSet()));
+        LocalResourceCollectorCrossReferencer semanticCrossReferencer = getSemanticCrossReferencer();
+        setResourceCollector(semanticCrossReferencer);
         setDeferSaveToPostCommit(true);
         setSaveInExclusiveTransaction(true);
         dRepresentationChangeListener = new DRepresentationChangeListener(this);
@@ -388,9 +389,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     @Override
     public IInterpreter getInterpreter() {
-        if (this.crossReferencer == null) {
-            this.interpreter.setCrossReferencer(getSemanticCrossReferencer());
-        }
         return this.interpreter;
     }
 
@@ -412,22 +410,17 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         this.interpreter.setProperty(IInterpreter.FILES, null);
         this.interpreter.setProperty(IInterpreter.FILES, filePaths);
         InterpreterRegistry.prepareImportsFromSession(this.interpreter, this);
-        this.interpreter.setCrossReferencer(getSemanticCrossReferencer());
     }
 
     // *******************
     // Cross-referencer
     // *******************
-
     @Override
-    public SessionLazyCrossReferencer getSemanticCrossReferencer() {
+    public LocalResourceCollectorCrossReferencer getSemanticCrossReferencer() {
         if (crossReferencer == null) {
             crossReferencer = createSemanticCrossReferencer();
             crossReferencer.setFeatureToBeCrossReferencedWhiteList(Arrays.asList(ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_Representation()));
-
-            if (interpreter != null) {
-                interpreter.setCrossReferencer(crossReferencer);
-            }
+            interpreter.setCrossReferencer(crossReferencer);
         }
         return crossReferencer;
     }
@@ -437,8 +430,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * 
      * @return a new cross referencer adapter
      */
-    protected SessionLazyCrossReferencer createSemanticCrossReferencer() {
-        return new SessionLazyCrossReferencer(this);
+    protected LocalResourceCollectorCrossReferencer createSemanticCrossReferencer() {
+        return new LocalResourceCollectorCrossReferencer(getTransactionalEditingDomain().getResourceSet(), this);
     }
 
     /**

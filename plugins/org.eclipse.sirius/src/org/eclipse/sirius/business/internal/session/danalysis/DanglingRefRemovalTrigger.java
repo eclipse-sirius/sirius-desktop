@@ -227,8 +227,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
                     }
                 };
 
-                Command removeDangling = new RemoveDanglingReferencesCommand(session.getTransactionalEditingDomain(), session.getModelAccessor(), session.getSemanticCrossReferencer(),
-                        session.getSemanticResources(), session.getRefreshEditorsListener(), toRemoveXRefFrom, refToIgnore);
+                Command removeDangling = new RemoveDanglingReferencesCommand(session, toRemoveXRefFrom, refToIgnore);
                 DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.CLEANING_REMOVEDANGLING_KEY);
                 return Options.newSome(removeDangling);
             }
@@ -317,33 +316,31 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
 
         private RefreshEditorsPrecommitListener refreshEditorsPrecommitListener;
 
+        private TransactionalEditingDomain domain;
+
+        private Session session;
+
         /**
          * Constructor.
          * 
-         * @param domain
-         *            the editing domain.
-         * @param xRef
-         *            the cross referencer.
-         * @param accessor
-         *            the model accessor.
-         * @param refreshEditorsPrecommitListener
-         *            the {@link RefreshEditorsPrecommitListener}
+         * @param session
+         *            the {@link Session}
          * @param toRemoveXRefFrom
          *            the elements to remove cross references.
          * @param isReferenceToIgnore
-         *            a predicate indicating if a given reference should be
-         *            ignored during deletion or not (can be null if all
-         *            references should be considered)
+         *            a predicate indicating if a given reference should be ignored during deletion or not (can be null
+         *            if all references should be considered)
          */
-        RemoveDanglingReferencesCommand(TransactionalEditingDomain domain, ModelAccessor accessor, ECrossReferenceAdapter xRef, Collection<Resource> semanticResources,
-                RefreshEditorsPrecommitListener refreshEditorsPrecommitListener, Collection<EObject> toRemoveXRefFrom, EReferencePredicate isReferenceToIgnore) {
-            super(domain, Messages.DanglingRefRemovalTrigger_removeDanglingCmdLabel);
-            this.modelAccessor = accessor;
-            this.xReferencer = xRef;
-            this.semanticResources = semanticResources;
-            this.refreshEditorsPrecommitListener = refreshEditorsPrecommitListener;
+        RemoveDanglingReferencesCommand(Session session, Set<EObject> toRemoveXRefFrom2, EReferencePredicate isReferenceToIgnore) {
+            super(session.getTransactionalEditingDomain(), Messages.DanglingRefRemovalTrigger_removeDanglingCmdLabel);
+            this.domain = session.getTransactionalEditingDomain();
+            this.modelAccessor = session.getModelAccessor();
+            this.xReferencer = session.getSemanticCrossReferencer();
+            this.semanticResources = session.getSemanticResources();
+            this.refreshEditorsPrecommitListener = session.getRefreshEditorsListener();
             this.toRemoveXRefFrom.addAll(toRemoveXRefFrom);
             this.isReferenceToIgnorePredicate = isReferenceToIgnore;
+            this.session = session;
         }
 
         @Override
