@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,8 +31,8 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.internal.EMFTransactionStatusCodes;
+import org.eclipse.sirius.business.internal.session.danalysis.SessionLazyCrossReferencer;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
-import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
 import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.eclipse.sirius.tests.sample.component.Component;
 import org.eclipse.sirius.tests.sample.component.ComponentFactory;
@@ -77,7 +77,7 @@ public class SiriusCrossReferenceAdapterTests extends SiriusTestCase {
         assertNotNull(FRAGMENT_FILE_NAME + " should be part of session controlled resource", fragmentedResource);
         boolean found = false;
         for (Adapter adapter : fragmentedResource.eAdapters()) {
-            if (adapter instanceof LazyCrossReferencer) {
+            if (adapter instanceof SessionLazyCrossReferencer) {
                 found = true;
                 break;
             }

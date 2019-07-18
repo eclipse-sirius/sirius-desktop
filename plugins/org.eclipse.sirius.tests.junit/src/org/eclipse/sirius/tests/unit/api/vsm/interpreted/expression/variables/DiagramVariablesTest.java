@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
-import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -113,7 +113,7 @@ public class DiagramVariablesTest extends AbstractInterpretedExpressionTestCase 
         // adapter on it because some code to test needs it
         URI uri = URI.createURI(URIQuery.INMEMORY_URI_SCHEME + ":/" + "ProjectPipo/NotToBeSave.pipo");
         InMemoryResourceImpl resource = new InMemoryResourceImpl(uri);
-        resource.eAdapters().add(new SiriusCrossReferenceAdapterImpl());
+        resource.eAdapters().add(new SiriusCrossReferenceAdapter());
 
         DiagramDescription diagramDescription = DescriptionFactory.eINSTANCE.createDiagramDescription();
         resource.getContents().add(diagramDescription);

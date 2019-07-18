@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2017 Obeo.
+ * Copyright (c) 2014, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
-import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -358,7 +358,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
                 // trigger a second refresh by the
                 // RefreshEditorsPrecommitListener only when the command removed
                 // some dangling reference.
-                ECrossReferenceAdapter filteredCrossReferencer = new SiriusCrossReferenceAdapterImpl() {
+                ECrossReferenceAdapter filteredCrossReferencer = new SiriusCrossReferenceAdapter() {
                     @Override
                     public Collection<Setting> getInverseReferences(EObject eObject, boolean resolve) {
                         Collection<Setting> settings = xReferencer.getInverseReferences(eObject, resolve);

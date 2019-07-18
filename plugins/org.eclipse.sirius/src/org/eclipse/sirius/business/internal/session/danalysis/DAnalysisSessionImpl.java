@@ -97,9 +97,7 @@ import org.eclipse.sirius.common.tools.api.query.NotificationQuery;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
-import org.eclipse.sirius.common.tools.api.util.ECrossReferenceAdapterWithUnproxyCapability;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
-import org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer;
 import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -181,7 +179,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     private SessionService services;
 
-    private LazyCrossReferencer crossReferencer;
+    private SessionLazyCrossReferencer crossReferencer;
 
     private IInterpreter interpreter;
 
@@ -422,7 +420,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     // *******************
 
     @Override
-    public ECrossReferenceAdapterWithUnproxyCapability getSemanticCrossReferencer() {
+    public SessionLazyCrossReferencer getSemanticCrossReferencer() {
         if (crossReferencer == null) {
             crossReferencer = createSemanticCrossReferencer();
             crossReferencer.setFeatureToBeCrossReferencedWhiteList(Arrays.asList(ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_Representation()));
@@ -439,7 +437,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * 
      * @return a new cross referencer adapter
      */
-    protected LazyCrossReferencer createSemanticCrossReferencer() {
+    protected SessionLazyCrossReferencer createSemanticCrossReferencer() {
         return new SessionLazyCrossReferencer(this);
     }
 

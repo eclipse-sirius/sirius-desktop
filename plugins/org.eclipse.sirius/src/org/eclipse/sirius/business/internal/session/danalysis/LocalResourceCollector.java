@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
-import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl;
+import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.eclipse.sirius.common.tools.internal.util.FastInverseCrossReferencesList;
 
 /**
@@ -36,7 +36,7 @@ import org.eclipse.sirius.common.tools.internal.util.FastInverseCrossReferencesL
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
-public class LocalResourceCollector extends SiriusCrossReferenceAdapterImpl implements IResourceCollector {
+public class LocalResourceCollector extends SiriusCrossReferenceAdapter implements IResourceCollector {
 
     private ResourceSet resourceSet;
 
