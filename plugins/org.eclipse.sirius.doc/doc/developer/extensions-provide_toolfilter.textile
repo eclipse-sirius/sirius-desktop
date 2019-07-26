@@ -1,0 +1,44 @@
+h1. Sirius - Provide a tool filter
+
+h2. Goals
+
+The extension point @org.eclipse.sirius.diagram.toolManagement@ allows to contribute filters which can hide tools from the diagram palette depending on some custom condition. Contributed filters must implement @org.eclipse.sirius.diagram.tools.api.management.ToolFilter@. Many extensions can be provided. If many extensions are provided, the tool in the palette will be hidden as soon as at least one ToolFilter's @filter(DDiagram diagram, AbstractToolDescription tool)@ implementation returns true. It is important to leverage the given arguments diagram and tool to make sure that the tool is filtered for the specific use case only.
+
+h2. Example
+
+Here is an example that filters tools based on an imaginary concept of advanced and basic user profiles.
+
+You have to add your tool filter contribution in the plugin.xml file.
+
+pre.. 
+<extension point="org.eclipse.sirius.diagram.toolManagement">
+   <toolFilter
+     class="com.acme.UserProfileToolFilter">
+   </resourceStrategy>
+</extension>
+
+p. The class references a class implementing @ToolFilter@. The corresponding code is:
+
+pre.. 
+/**
+ * Filter diagram tools according to a given user profile
+ */
+public class UserProfileToolFilter implements ToolFilter {
+
+    @Override
+    public boolean filter(DDiagram diagram, AbstractToolDescription tool);
+        return isAdvancedProfileTool(tool) && !isAdvancedUser(diagram);
+    }
+
+    @Override
+    private boolean isAdvancedProfileTool(AbstractToolDescription tool){
+    	//...
+    }
+
+    private bookean isAdvancedUser(DDiagram diagram){
+    	//...
+    }    
+
+}
+
+p. 

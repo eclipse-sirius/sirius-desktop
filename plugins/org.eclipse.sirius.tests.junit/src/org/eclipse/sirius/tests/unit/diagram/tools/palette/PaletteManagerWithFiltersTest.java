@@ -25,6 +25,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.management.ToolFilter;
 import org.eclipse.sirius.diagram.tools.api.management.ToolManagement;
+import org.eclipse.sirius.diagram.tools.internal.management.ToolManagementRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.palette.PaletteManagerImpl;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
@@ -60,6 +61,13 @@ public class PaletteManagerWithFiltersTest extends AbstractPaletteManagerTest {
     private static final SortedSet<Entry> EXPECTED_ENTRIES_STD_PALETTE = new TreeSet<Entry>(Arrays.asList(createNewEntry("never deleted"), createNewEntry("section1", "tool2")));
 
     private static final SortedSet<Entry> NO_ENTRIES = new TreeSet<Entry>(Arrays.asList(createNewEntry("never deleted")));
+
+    private static final ToolFilter hideAll = new ToolFilter(){
+        @Override 
+        public boolean filter(DDiagram diagram,AbstractToolDescription tool){
+            return true;
+        }
+    };
 
     /**
      * {@inheritDoc}
@@ -114,17 +122,27 @@ public class PaletteManagerWithFiltersTest extends AbstractPaletteManagerTest {
         paletteManager.update(dDiagram);
         doContentPaletteTest(EXPECTED_ENTRIES_STD_PALETTE);
 
-        ToolFilter hideAll = new ToolFilter() {
-            @Override
-            public boolean filter(DDiagram diagram, AbstractToolDescription tool) {
-                return true;
-            }
-        };
         toolManagement.addToolFilter(hideAll);
         updateTools(diagram);
         paletteManager.update(dDiagram);
         doContentPaletteTest(NO_ENTRIES);
         toolManagement.removeToolFilter(hideAll);
+        updateTools(diagram);
+        paletteManager.update(dDiagram);
+        doContentPaletteTest(EXPECTED_ENTRIES_STD_PALETTE);
+    }
+
+    public void testBasicDynamicRegistryFilter() throws Exception {
+        PaletteManager paletteManager = new PaletteManagerImpl(editDomain);
+        addLikeGmfANeverDeletedEntry();
+        updateTools(diagram);
+        paletteManager.update(dDiagram);
+        doContentPaletteTest(EXPECTED_ENTRIES_STD_PALETTE);
+        ToolManagementRegistry.getInstance().addToolFilter(hideAll);
+        updateTools(diagram);
+        paletteManager.update(dDiagram);
+        doContentPaletteTest(NO_ENTRIES);
+        ToolManagementRegistry.getInstance().removeToolFilter(hideAll);
         updateTools(diagram);
         paletteManager.update(dDiagram);
         doContentPaletteTest(EXPECTED_ENTRIES_STD_PALETTE);

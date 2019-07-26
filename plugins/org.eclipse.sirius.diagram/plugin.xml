@@ -18,6 +18,7 @@
    <extension-point id="canonicalSynchronizerFactoryOverride" name="%extension-point.canonicalSynchronizerFactoryOverride.name" schema="schema/canonicalSynchronizerFactoryOverride.exsd"/>
    <extension-point id="bundledImageShape" name="%extension-point.bundledImageShape.name" schema="schema/bundledImageShape.exsd"/>
    <extension-point id="customBundledImageShape" name="%extension-point.customBundledImageShape.name" schema="schema/customBundledImageShape.exsd"/>
+   <extension-point id="toolManagement" name="%extension-point.toolManagement.name" schema="schema/toolManagement.exsd"/>
 
    <extension point="org.eclipse.gmf.runtime.emf.type.core.elementTypes">
       <?gmfgen generated="false"?>

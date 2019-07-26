@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>extensions-provide_toolfilter</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusProvideatoolfilter">Sirius &#8211; Provide a tool filter</h1>
+		<h2 id="Goals">Goals</h2>
+		<p>The extension point 
+			<code>org.eclipse.sirius.diagram.toolManagement</code> allows to contribute filters which can hide tools from the diagram palette depending on some custom condition. Contributed filters must implement 
+			<code>org.eclipse.sirius.diagram.tools.api.management.ToolFilter</code>. Many extensions can be provided. If many extensions are provided, the tool in the palette will be hidden as soon as at least one ToolFilter&#8217;s 
+			<code>filter(DDiagram diagram, AbstractToolDescription tool)</code> implementation returns true. It is important to leverage the given arguments diagram and tool to make sure that the tool is filtered for the specific use case only.
+		</p>
+		<h2 id="Example">Example</h2>
+		<p>Here is an example that filters tools based on an imaginary concept of advanced and basic user profiles.</p>
+		<p>You have to add your tool filter contribution in the plugin.xml file.</p>
+		<pre>&lt;extension point="org.eclipse.sirius.diagram.toolManagement"&gt;
+   &lt;toolFilter
+     class="com.acme.UserProfileToolFilter"&gt;
+   &lt;/resourceStrategy&gt;
+&lt;/extension&gt;
+
+</pre>
+		<p>The class references a class implementing 
+			<code>ToolFilter</code>. The corresponding code is:
+		</p>
+		<pre>/**
+ * Filter diagram tools according to a given user profile
+ */
+public class UserProfileToolFilter implements ToolFilter {
+
+    @Override
+    public boolean filter(DDiagram diagram, AbstractToolDescription tool);
+        return isAdvancedProfileTool(tool) &amp;&amp; !isAdvancedUser(diagram);
+    }
+
+    @Override
+    private boolean isAdvancedProfileTool(AbstractToolDescription tool){
+    	//...
+    }
+
+    private bookean isAdvancedUser(DDiagram diagram){
+    	//...
+    }    
+
+}
+
+</pre>
+		<p></p>
+	</body>
+</html>

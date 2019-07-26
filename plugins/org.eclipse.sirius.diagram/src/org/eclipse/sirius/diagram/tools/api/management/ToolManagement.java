@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo
+ * Copyright (c) 2019 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +46,7 @@ import org.eclipse.sirius.diagram.description.tool.ToolGroup;
 import org.eclipse.sirius.diagram.description.tool.ToolGroupExtension;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
 import org.eclipse.sirius.diagram.tools.internal.management.ToolFilterDescriptionListenersManager;
+import org.eclipse.sirius.diagram.tools.internal.management.ToolManagementRegistry;
 import org.eclipse.sirius.viewpoint.ToolGroupInstance;
 import org.eclipse.sirius.viewpoint.ToolInstance;
 import org.eclipse.sirius.viewpoint.ToolSectionInstance;
@@ -55,6 +57,7 @@ import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolEntry;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
 
+import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
@@ -68,7 +71,7 @@ import com.google.common.collect.Sets;
 public class ToolManagement {
 
     /**
-     * Filters hiding tools.
+     * Tool filters installed for the specific diagram managed by this instance.
      */
     private Set<ToolFilter> filters = new LinkedHashSet<ToolFilter>();
 
@@ -185,7 +188,10 @@ public class ToolManagement {
     }
 
     /**
-     * This method update the tools available for the current diagram state and returns those.
+     * This method update the tools available for the current diagram state and returns those. Tools are filtered by
+     * filters that are installed specifically for the diagram managed by this instance, i.e. those added via
+     * {@link #addToolFilter(ToolFilter)}, and by filters that are installed globally via the toolManagement extension
+     * point.
      * 
      * @param updateFilters
      *            true if filters should be updated.
@@ -482,9 +488,13 @@ public class ToolManagement {
         }
     }
 
+    private Iterator<ToolFilter> getAllToolFilters() {
+        return Iterators.concat(filters.iterator(), ToolManagementRegistry.getInstance().getProvidedToolFilters().iterator());
+    }
+
     private boolean isFiltered(AbstractToolDescription toolDescription) {
-        for (final ToolFilter filter : filters) {
-            if (filter.filter(dDiagram, toolDescription)) {
+        for (Iterator<ToolFilter> it = getAllToolFilters(); it.hasNext();) {
+            if (it.next().filter(dDiagram, toolDescription)) {
                 return true;
             }
         }

@@ -26,6 +26,7 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.diagram.tools.api.management.ToolManagement;
+import org.eclipse.sirius.diagram.tools.internal.management.ToolManagementRegistryListener;
 import org.eclipse.sirius.tools.internal.validation.EValidatorAdapter;
 import org.osgi.framework.BundleContext;
 
@@ -89,6 +90,11 @@ public class DiagramPlugin extends EMFPlugin {
          * A map associating a {@link DDiagram} to its {@link ToolManagement}.
          */
         private Map<DDiagram, ToolManagement> toolManagementMap;
+
+        /**
+         * Listens to ToolManagement extension registry changes
+         */
+        private ToolManagementRegistryListener toolManagementRegistryListener;
 
         /**
          * Creates an instance.
@@ -198,11 +204,16 @@ public class DiagramPlugin extends EMFPlugin {
             EValidator.Registry.INSTANCE.put(DiagramPackage.eINSTANCE, new EValidatorAdapter());
             EValidator.Registry.INSTANCE.put(DescriptionPackage.eINSTANCE, new EValidatorAdapter());
             EValidator.Registry.INSTANCE.put(ToolPackage.eINSTANCE, new EValidatorAdapter());
+
+            toolManagementRegistryListener = new ToolManagementRegistryListener();
+            toolManagementRegistryListener.init();
+
             toolManagementMap = new HashMap<>();
         }
 
         @Override
         public void stop(BundleContext context) throws Exception {
+            toolManagementRegistryListener.dispose();
             toolManagementMap = null;
             try {
                 InstanceScope.INSTANCE.getNode(ID).flush();
