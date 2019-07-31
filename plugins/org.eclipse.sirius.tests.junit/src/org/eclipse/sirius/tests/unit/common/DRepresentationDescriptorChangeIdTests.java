@@ -22,16 +22,15 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcoreFactory;
-import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
-import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.description.DescriptionFactory;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.tools.api.command.view.CreateDDiagramElementCommand;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
@@ -46,7 +45,6 @@ import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.ui.IEditorPart;
 
-
 /**
  * This class tests that changeId on {@link DRepresentationDescriptor} is updated correctly when needed.
  * 
@@ -55,14 +53,22 @@ import org.eclipse.ui.IEditorPart;
  */
 public class DRepresentationDescriptorChangeIdTests extends SiriusDiagramTestCase implements EcoreModeler {
 
+    private static final String AIRD_PATH = "/org.eclipse.sirius.tests.junit/data/unit/changeId/representations.aird";
+
+    private static final String MODEL_PATH = "/org.eclipse.sirius.tests.junit/data/unit/changeId/test.ecore";
+
     private DDiagram diagram;
+
+    private DDiagram diagram2;
 
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        genericSetUp(TEST_SEMANTIC_MODEL_PATH, MODELER_PATH);
+        genericSetUp(MODEL_PATH, MODELER_PATH, AIRD_PATH);
         initViewpoint(DESIGN_VIEWPOINT_NAME);
         diagram = (DDiagram) getRepresentations(ENTITIES_DESC_NAME).toArray()[0];
+        diagram2 = (DDiagram) getRepresentations(ENTITIES_DESC_NAME).toArray()[1];
+
     }
 
     /**
@@ -105,11 +111,12 @@ public class DRepresentationDescriptorChangeIdTests extends SiriusDiagramTestCas
         final Layer layer = diagram.getDescription().getDefaultLayer();
         ContainerMapping classMapping = getContainerMapping(layer, "EC EClass");
 
-
         RecordingCommand cmd = new CreateDDiagramElementCommand(session.getTransactionalEditingDomain(), eClass, classMapping, diagram);
         session.getTransactionalEditingDomain().getCommandStack().execute(cmd);
 
         String changeIdBeforeModification = new DRepresentationQuery(diagram).getRepresentationDescriptor().getChangeId();
+
+        session.save(new NullProgressMonitor());
         changeLayoutConstraint();
         String changeIdAfterModification = new DRepresentationQuery(diagram).getRepresentationDescriptor().getChangeId();
 
@@ -121,6 +128,8 @@ public class DRepresentationDescriptorChangeIdTests extends SiriusDiagramTestCas
 
     private void changeLayoutConstraint() {
         EList<AnnotationEntry> ownedAnnotationEntries = diagram.getOwnedAnnotationEntries();
+        Bounds bounds = null;
+        Node node = null;
         for (AnnotationEntry annotationEntry : ownedAnnotationEntries) {
             EObject data = annotationEntry.getData();
             if (data instanceof Diagram) {
@@ -128,15 +137,24 @@ public class DRepresentationDescriptorChangeIdTests extends SiriusDiagramTestCas
                 List<?> children = diagram.getChildren();
                 for (Object object : children) {
                     if (object instanceof Node) {
-                        Node node = (Node) object;
-                        Bounds bounds = NotationFactory.eINSTANCE.createBounds();
+                        node = (Node) object;
+                        bounds = NotationFactory.eINSTANCE.createBounds();
                         bounds.setX(2);
-                        session.getTransactionalEditingDomain().getCommandStack()
-                                .execute(new SetCommand(session.getTransactionalEditingDomain(), node, NotationPackage.eINSTANCE.getNode_LayoutConstraint(), bounds));
+                        break;
                     }
                 }
             }
         }
+        final Node finalNode = node;
+        final Bounds finalBounds = bounds;
+        session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+
+            @Override
+            protected void doExecute() {
+                finalNode.setLayoutConstraint(finalBounds);
+
+            }
+        });
     }
 
     /**
@@ -147,21 +165,49 @@ public class DRepresentationDescriptorChangeIdTests extends SiriusDiagramTestCas
         final IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
 
-
         String changeIdBeforeModification = new DRepresentationQuery(diagram).getRepresentationDescriptor().getChangeId();
 
-        session.getTransactionalEditingDomain().getCommandStack()
-                .execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+        session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
 
-                    @Override
-                    protected void doExecute() {
-                        diagram.getDiagramElements().remove(0);
-                    }
-                });
+            @Override
+            protected void doExecute() {
+                diagram.setDescription(DescriptionFactory.eINSTANCE.createDiagramDescription());
+            }
+        });
 
         String changeIdAfterModification = new DRepresentationQuery(diagram).getRepresentationDescriptor().getChangeId();
 
         assertNotEquals("Change id has not been updated.", changeIdBeforeModification, changeIdAfterModification);
+
+        DialectUIManager.INSTANCE.closeEditor(editor, false);
+        TestsUtil.synchronizationWithUIThread();
+    }
+
+    /**
+     * Tests that when more than one {@link DRepresentation} is modified, then the change id of the associated
+     * {@link DRepresentationDescriptor} are updated.
+     */
+    public void testmultiDRepresentationUpdate() {
+        final IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+
+        String changeIdBeforeModification = new DRepresentationQuery(diagram).getRepresentationDescriptor().getChangeId();
+        String changeIdBeforeModification2 = new DRepresentationQuery(diagram2).getRepresentationDescriptor().getChangeId();
+
+        session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+
+            @Override
+            protected void doExecute() {
+                diagram.setDescription(DescriptionFactory.eINSTANCE.createDiagramDescription());
+                diagram2.setDescription(DescriptionFactory.eINSTANCE.createDiagramDescription());
+            }
+        });
+
+        String changeIdAfterModification = new DRepresentationQuery(diagram).getRepresentationDescriptor().getChangeId();
+        String changeIdAfterModification2 = new DRepresentationQuery(diagram2).getRepresentationDescriptor().getChangeId();
+
+        assertNotEquals("Change id has not been updated.", changeIdBeforeModification, changeIdAfterModification);
+        assertNotEquals("Change id has not been updated.", changeIdBeforeModification2, changeIdAfterModification2);
 
         DialectUIManager.INSTANCE.closeEditor(editor, false);
         TestsUtil.synchronizationWithUIThread();

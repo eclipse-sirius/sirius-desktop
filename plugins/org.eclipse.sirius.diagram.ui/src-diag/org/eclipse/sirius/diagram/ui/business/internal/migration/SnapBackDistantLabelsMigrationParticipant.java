@@ -40,7 +40,6 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
@@ -54,6 +53,8 @@ import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
 
@@ -61,10 +62,9 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * A representation file migration to detect labels that are far from their edge
- * and reset them to their default location. In diagram containing such labels,
- * this migration also detects nodes with very huge coordinates and relocates
- * them to a more readable location.
+ * A representation file migration to detect labels that are far from their edge and reset them to their default
+ * location. In diagram containing such labels, this migration also detects nodes with very huge coordinates and
+ * relocates them to a more readable location.
  * 
  * @author lredor
  */
@@ -77,27 +77,23 @@ public class SnapBackDistantLabelsMigrationParticipant extends AbstractRepresent
     public static final Version MIGRATION_VERSION = new Version("12.1.0.201706291600"); //$NON-NLS-1$
 
     /**
-     * The absolute maximum x or y coordinate from which label is considered
-     * distant.
+     * The absolute maximum x or y coordinate from which label is considered distant.
      */
     private static final int LABEL_UPPER_LIMIT = 1000;
 
     /**
-     * The absolute minimal x or y coordinate from which label is not considered
-     * distant.
+     * The absolute minimal x or y coordinate from which label is not considered distant.
      */
     private static final int LABEL_LOWER_LIMIT = 250;
 
     /**
-     * The absolute maximum x or y coordinates from which node is considered
-     * with "very huge coordinates".
+     * The absolute maximum x or y coordinates from which node is considered with "very huge coordinates".
      */
     private static final int NODES_LIMIT = 1000000;
 
     /**
-     * Nodes with "very huge coordinates" are relocated to location near from
-     * it. This value is arbitrary. It allows to "easily" see elements with a
-     * zoom of 10%.
+     * Nodes with "very huge coordinates" are relocated to location near from it. This value is arbitrary. It allows to
+     * "easily" see elements with a zoom of 10%.
      */
     private static final int NODES_LIMIT_MOVE = 5000;
 
@@ -142,39 +138,47 @@ public class SnapBackDistantLabelsMigrationParticipant extends AbstractRepresent
             List<Node> distantEdgeLabels = new ArrayList<Node>();
 
             for (DView dView : dAnalysis.getOwnedViews()) {
-                for (DDiagram dDiagram : Iterables.filter(new DViewQuery(dView).getLoadedRepresentations(), DDiagram.class)) {
-                    // Search distant edge labels
-                    List<Node> currentDistantEdgeLabels = getDistantEdgeLabels(dDiagram);
-                    distantEdgeLabels.addAll(currentDistantEdgeLabels);
+                List<DRepresentationDescriptor> loadedRepresentationsDescriptors = new DViewQuery(dView).getLoadedRepresentationsDescriptors();
 
-                    if (currentDistantEdgeLabels.size() > 0) {
-                        isModified = true;
-                        String name = new DRepresentationQuery(dDiagram).getRepresentationDescriptor().getName();
-                        // Add information to be logged
-                        if (currentDistantEdgeLabels.size() > 1) {
-                            sb.append(MessageFormat.format(Messages.SnapBackDistantLabelsMigrationParticipant_severalLabelsSnapBacked, currentDistantEdgeLabels.size(), name));
-                        } else {
-                            sb.append(MessageFormat.format(Messages.SnapBackDistantLabelsMigrationParticipant_oneLabelSnapBacked, name));
-                        }
+                for (DRepresentationDescriptor descriptor : loadedRepresentationsDescriptors) {
+                    DRepresentation rep = descriptor.getRepresentation();
+                    if (rep instanceof DDiagram) {
+                        // Search distant edge labels
+                        DDiagram dDiagram = (DDiagram) rep;
+                        List<Node> currentDistantEdgeLabels = getDistantEdgeLabels(dDiagram);
+                        distantEdgeLabels.addAll(currentDistantEdgeLabels);
 
-                        // Search and fix nodes with huge coordinates.
-                        boolean nodesMoved = false;
-                        Map<String, Map<Node, Integer>> currentnodesWithExtremeLocation = getNodesWithExtremeLocation(dDiagram);
-                        for (String key : currentnodesWithExtremeLocation.keySet()) {
-                            if (NEGATIVE_X_KEY.equals(key)) {
-                                nodesMoved = moveNodesX(currentnodesWithExtremeLocation.get(key), false);
-                            } else if (POSITIVE_X_KEY.equals(key)) {
-                                nodesMoved = moveNodesX(currentnodesWithExtremeLocation.get(key), true);
-                            } else if (NEGATIVE_Y_KEY.equals(key)) {
-                                nodesMoved = moveNodesY(currentnodesWithExtremeLocation.get(key), false);
-                            } else {
-                                nodesMoved = moveNodesY(currentnodesWithExtremeLocation.get(key), true);
-                            }
-                        }
-
-                        if (nodesMoved) {
+                        if (currentDistantEdgeLabels.size() > 0) {
+                            isModified = true;
+                            // we use the descriptor to get the name because the cross referencer is not loaded during
+                            // migration so we cannot retrieve it from representation.
+                            String name = descriptor.getName();
                             // Add information to be logged
-                            sb.append(Messages.SnapBackDistantLabelsMigrationParticipant_nodesMoved);
+                            if (currentDistantEdgeLabels.size() > 1) {
+                                sb.append(MessageFormat.format(Messages.SnapBackDistantLabelsMigrationParticipant_severalLabelsSnapBacked, currentDistantEdgeLabels.size(), name));
+                            } else {
+                                sb.append(MessageFormat.format(Messages.SnapBackDistantLabelsMigrationParticipant_oneLabelSnapBacked, name));
+                            }
+
+                            // Search and fix nodes with huge coordinates.
+                            boolean nodesMoved = false;
+                            Map<String, Map<Node, Integer>> currentnodesWithExtremeLocation = getNodesWithExtremeLocation(dDiagram);
+                            for (String key : currentnodesWithExtremeLocation.keySet()) {
+                                if (NEGATIVE_X_KEY.equals(key)) {
+                                    nodesMoved = moveNodesX(currentnodesWithExtremeLocation.get(key), false);
+                                } else if (POSITIVE_X_KEY.equals(key)) {
+                                    nodesMoved = moveNodesX(currentnodesWithExtremeLocation.get(key), true);
+                                } else if (NEGATIVE_Y_KEY.equals(key)) {
+                                    nodesMoved = moveNodesY(currentnodesWithExtremeLocation.get(key), false);
+                                } else {
+                                    nodesMoved = moveNodesY(currentnodesWithExtremeLocation.get(key), true);
+                                }
+                            }
+
+                            if (nodesMoved) {
+                                // Add information to be logged
+                                sb.append(Messages.SnapBackDistantLabelsMigrationParticipant_nodesMoved);
+                            }
                         }
                     }
                 }
@@ -199,11 +203,9 @@ public class SnapBackDistantLabelsMigrationParticipant extends AbstractRepresent
      * Move all nodes to a more readable location.
      * 
      * @param nodesWithExtremeLocation
-     *            List of couple, node with extreme location and corresponding
-     *            huge coordinate.
+     *            List of couple, node with extreme location and corresponding huge coordinate.
      * @param isPositive
-     *            true if the above list of nodes concerns nodes with positive
-     *            X, false if it concerns negative X
+     *            true if the above list of nodes concerns nodes with positive X, false if it concerns negative X
      * @return true if at least one node has been moved, false otherwise
      */
     protected boolean moveNodesX(Map<Node, Integer> nodesWithExtremeLocation, boolean isPositive) {
@@ -214,11 +216,9 @@ public class SnapBackDistantLabelsMigrationParticipant extends AbstractRepresent
      * Move all nodes to a more readable location.
      * 
      * @param nodesWithExtremeLocation
-     *            List of couple, node with extreme location and corresponding
-     *            huge coordinate.
+     *            List of couple, node with extreme location and corresponding huge coordinate.
      * @param isPositive
-     *            true if the above list of nodes concerns nodes with positive
-     *            X, false if it concerns negative X
+     *            true if the above list of nodes concerns nodes with positive X, false if it concerns negative X
      * @return true if at least one node has been moved, false otherwise
      */
     protected boolean moveNodesY(Map<Node, Integer> nodesWithExtremeLocation, boolean isPositive) {
@@ -229,11 +229,10 @@ public class SnapBackDistantLabelsMigrationParticipant extends AbstractRepresent
      * Move all nodes to a more readable location.
      * 
      * @param nodesWithExtremeLocation
-     *            List of couple, node with extreme location and corresponding
-     *            location.
+     *            List of couple, node with extreme location and corresponding location.
      * @param isPositive
-     *            true if the above list of nodes concerns nodes with positive X
-     *            or Y, false if it concerns negative X or Y
+     *            true if the above list of nodes concerns nodes with positive X or Y, false if it concerns negative X
+     *            or Y
      * @param setter
      *            A setter to set new X or Y coordinate
      * @return true if at least one node has been moved, false otherwise
@@ -281,10 +280,8 @@ public class SnapBackDistantLabelsMigrationParticipant extends AbstractRepresent
     }
 
     /**
-     * Create dummy edge name edit part to initialize the
-     * registerSnapBackPosition() method of each kind of edit part. Without this
-     * initialization, when using
-     * {@link LabelEditPart#getSnapBackPosition(String)}, the returned value is
+     * Create dummy edge name edit part to initialize the registerSnapBackPosition() method of each kind of edit part.
+     * Without this initialization, when using {@link LabelEditPart#getSnapBackPosition(String)}, the returned value is
      * null.
      */
     private void initializeSnapBackPositionMap() {
@@ -315,9 +312,8 @@ public class SnapBackDistantLabelsMigrationParticipant extends AbstractRepresent
     }
 
     /**
-     * Get all nodes with huge coordinates for this <code>dDiagram</code>. The
-     * nodes are grouped by nodes with negative X, positive X, negative Y and
-     * positive Y (using key {@link #NEGATIVE_X_KEY}, {@link #POSITIVE_X_KEY},
+     * Get all nodes with huge coordinates for this <code>dDiagram</code>. The nodes are grouped by nodes with negative
+     * X, positive X, negative Y and positive Y (using key {@link #NEGATIVE_X_KEY}, {@link #POSITIVE_X_KEY},
      * {@link #NEGATIVE_Y_KEY}, {@link #POSITIVE_Y_KEY}).
      * 
      * @param dDiagram
@@ -361,19 +357,17 @@ public class SnapBackDistantLabelsMigrationParticipant extends AbstractRepresent
     /**
      * Check is the label is considered as distant from its edge:
      * <UL>
-     * <LI>If the label is less than 250 pixels away from the reference point on
-     * its corresponding edge, the label is not considered as distant.</LI>
-     * <LI>If the label is more than 1000 pixels away from the reference point
-     * on its corresponding edge, the label is considered as distant.</LI>
-     * <LI>Between these 2 limits, the label is considered as distant if the
-     * distance between the center of label and edge is highest that
-     * "4*the size of the nearest segment".</LI>
+     * <LI>If the label is less than 250 pixels away from the reference point on its corresponding edge, the label is
+     * not considered as distant.</LI>
+     * <LI>If the label is more than 1000 pixels away from the reference point on its corresponding edge, the label is
+     * considered as distant.</LI>
+     * <LI>Between these 2 limits, the label is considered as distant if the distance between the center of label and
+     * edge is highest that "4*the size of the nearest segment".</LI>
      * </UL>
      * 
      * @param edgeLabel
      *            The label to check
-     * @return true if the label is considered as distant from its edge, false
-     *         otherwise.
+     * @return true if the label is considered as distant from its edge, false otherwise.
      */
     private boolean isLabelDistant(Edge edge, Node edgeLabel) {
         boolean isLabelDistant = false;
@@ -439,13 +433,11 @@ public class SnapBackDistantLabelsMigrationParticipant extends AbstractRepresent
     }
 
     /**
-     * Get the {@link Edge}s with labels contained in the given {@link DDiagram}
-     * .
+     * Get the {@link Edge}s with labels contained in the given {@link DDiagram} .
      * 
      * @param dDiagram
      *            the given {@link DDiagram}.
-     * @return the {@link Edge}s with labels contained in the given
-     *         {@link DDiagram}.
+     * @return the {@link Edge}s with labels contained in the given {@link DDiagram}.
      */
     private Collection<Edge> getEdges(DDiagram dDiagram) {
         DDiagramGraphicalQuery query = new DDiagramGraphicalQuery(dDiagram);
@@ -457,13 +449,11 @@ public class SnapBackDistantLabelsMigrationParticipant extends AbstractRepresent
     }
 
     /**
-     * Get the {@link Edge}s with labels contained in the given {@link DDiagram}
-     * .
+     * Get the {@link Edge}s with labels contained in the given {@link DDiagram} .
      * 
      * @param dDiagram
      *            the given {@link DDiagram}.
-     * @return the {@link Edge}s with labels contained in the given
-     *         {@link DDiagram}.
+     * @return the {@link Edge}s with labels contained in the given {@link DDiagram}.
      */
     private Collection<Node> getNodes(DDiagram dDiagram) {
         DDiagramGraphicalQuery query = new DDiagramGraphicalQuery(dDiagram);

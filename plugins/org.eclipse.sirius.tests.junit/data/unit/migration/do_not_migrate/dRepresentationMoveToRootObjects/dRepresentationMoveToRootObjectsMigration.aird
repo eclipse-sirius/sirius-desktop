@@ -3,7 +3,7 @@
   <semanticResources>dRepresentationMoveToRootObjectsMigration.ecore</semanticResources>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_DDW1wCyTEeah1pvxo_tQqw">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Review']"/>
-    <ownedRepresentations xmi:type="table:DTable" xmi:id="_PcbEMCyTEeah1pvxo_tQqw" name="Documentation for name  package" headerColumnWidth="15">
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_PcbEMCyTEeah1pvxo_tQqw" documentation="todo" name="Documentation for name  package" headerColumnWidth="15">
       <target xmi:type="ecore:EPackage" href="dRepresentationMoveToRootObjectsMigration.ecore#/"/>
       <columns xmi:type="table:DTargetColumn" xmi:id="_PcbEMSyTEeah1pvxo_tQqw" label="Domain Documentation" width="203">
         <target xmi:type="ecore:EPackage" href="dRepresentationMoveToRootObjectsMigration.ecore#/"/>
@@ -15,7 +15,7 @@
   </ownedViews>
   <ownedViews xmi:type="viewpoint:DView" xmi:id="_DEEncCyTEeah1pvxo_tQqw">
     <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_DT8PcCyTEeah1pvxo_tQqw" name="P0 package entities">
+    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_DT8PcCyTEeah1pvxo_tQqw" name="P0 package entities" documentation="todo">
       <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_DT8PcSyTEeah1pvxo_tQqw" source="DANNOTATION_CUSTOMIZATION_KEY">
         <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_DT8PciyTEeah1pvxo_tQqw"/>
       </ownedAnnotationEntries>
@@ -47,7 +47,7 @@
       <activatedLayers xmi:type="description_2:AdditionalLayer" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']"/>
       <target xmi:type="ecore:EPackage" href="dRepresentationMoveToRootObjectsMigration.ecore#/"/>
     </ownedRepresentations>
-    <ownedRepresentations xmi:type="table:DTable" xmi:id="_Os8IACyTEeah1pvxo_tQqw" name="Classes in P0 package" headerColumnWidth="15">
+    <ownedRepresentations xmi:type="table:DTable" xmi:id="_Os8IACyTEeah1pvxo_tQqw" name="Classes in P0 package" headerColumnWidth="15" documentation="todo">
       <target xmi:type="ecore:EPackage" href="dRepresentationMoveToRootObjectsMigration.ecore#/"/>
       <columns xmi:type="table:DFeatureColumn" xmi:id="_Os8IASyTEeah1pvxo_tQqw" label="Name" width="55" featureName="name">
         <originMapping xmi:type="description_1:FeatureColumnMapping" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes']/@ownedColumnMappings[name='Name']"/>

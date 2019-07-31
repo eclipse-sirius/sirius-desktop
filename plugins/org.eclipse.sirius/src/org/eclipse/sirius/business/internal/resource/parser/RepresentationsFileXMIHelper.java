@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.xmi.impl.XMIHelperImpl;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersionSAXParser;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.osgi.framework.Version;
@@ -38,6 +39,10 @@ import org.osgi.framework.Version;
  * 
  */
 public class RepresentationsFileXMIHelper extends XMIHelperImpl {
+
+    private static final String REPRESENTATION_NAME_FEATURE_LABEL = "name"; //$NON-NLS-1$
+
+    private static final String REPRESENTATION_DOCUMENTATION_FEATURE_LABEL = "documentation"; //$NON-NLS-1$
 
     private static final String PLATFORM_SCHEME = "platform"; //$NON-NLS-1$
 
@@ -65,7 +70,9 @@ public class RepresentationsFileXMIHelper extends XMIHelperImpl {
             Object newValue = RepresentationsFileMigrationService.getInstance().getValue(object, feature, value, version);
             if (newValue != null) {
                 super.setValue(object, feature, newValue, position);
-            } else {
+                // we don't set value if the feature is the derived name one. Can happen when doing a migration with
+                // name and documentation in DRepresentation.
+            } else if (!(object instanceof DRepresentation && (REPRESENTATION_NAME_FEATURE_LABEL.equals(feature.getName()) || REPRESENTATION_DOCUMENTATION_FEATURE_LABEL.equals(feature.getName())))) {
                 super.setValue(object, feature, value, position);
             }
         } else {

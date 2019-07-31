@@ -28,10 +28,12 @@ import org.eclipse.jface.text.source.SourceViewer;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
@@ -70,8 +72,7 @@ public class DocumentationPropertySection extends AbstractPropertySection {
     protected Composite composite;
 
     /**
-     * Current selected object or first object in the selection when multiple
-     * objects are selected.
+     * Current selected object or first object in the selection when multiple objects are selected.
      */
     protected EObject eObject;
 
@@ -79,8 +80,7 @@ public class DocumentationPropertySection extends AbstractPropertySection {
     protected List<EObject> eObjectList;
 
     /**
-     * Internal text listener for updating all content dependent actions. The
-     * updating is done asynchronously.
+     * Internal text listener for updating all content dependent actions. The updating is done asynchronously.
      */
     class TextListener implements ITextListener {
 
@@ -136,7 +136,7 @@ public class DocumentationPropertySection extends AbstractPropertySection {
         nameLabel.setText(getLabelText());
         if (selection instanceof StructuredSelection && ((StructuredSelection) selection).getFirstElement() instanceof DDiagramEditPart) {
             DDiagramEditPart ddep = (DDiagramEditPart) ((StructuredSelection) selection).getFirstElement();
-            eObject = ((Diagram) ddep.getModel()).getElement();
+            eObject = new DRepresentationQuery((DRepresentation) ((Diagram) ddep.getModel()).getElement()).getRepresentationDescriptor();
             eObjectList = ((IStructuredSelection) selection).toList();
         }
     }
@@ -178,13 +178,12 @@ public class DocumentationPropertySection extends AbstractPropertySection {
     }
 
     /**
-     * Determine if the provided string value is an equal representation of the
-     * current setting of the text property.
+     * Determine if the provided string value is an equal representation of the current setting of the text property.
      * 
      * @param newText
      *            the new string value.
-     * @return <code>True</code> if the new string value is equal to the current
-     *         property setting, <code>False</code> otherwise.
+     * @return <code>True</code> if the new string value is equal to the current property setting, <code>False</code>
+     *         otherwise.
      * @see org.eclipse.sirius.editor.properties.sections.AbstractMultilinePropertySection#isEqual(String)
      */
     protected boolean isEqual(String newText) {
@@ -216,8 +215,7 @@ public class DocumentationPropertySection extends AbstractPropertySection {
     }
 
     /**
-     * Get the value of the default feature as text for the text field of the
-     * section.
+     * Get the value of the default feature as text for the text field of the section.
      * 
      * @return The value of the default feature as text.
      */

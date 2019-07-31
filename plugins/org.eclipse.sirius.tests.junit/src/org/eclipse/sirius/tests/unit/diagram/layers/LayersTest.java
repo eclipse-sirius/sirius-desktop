@@ -52,34 +52,25 @@ import com.google.common.collect.Iterables;
 
 public class LayersTest extends AbtsractLayerTests {
 
-    /*
-     * -> The union of all mappings on all activated layers are taken into
-     * account to compute the element the diagram should display -> In the case
-     * of a mapping import, the more specific mapping takes precedence over the
-     * others. The priority will be computed according to the following rules
-     * (in order of priority): The last mapping of the hierarchy (sample :
-     * NodeMappingImport "AAA" imports NodeMapping "AA" which in turn imports
-     * NodeMapping "A" : the NodeMappingImport "AAA" has the priority, then it
-     * will be the NodeMappingImport "AA" and finally the NodeMapping "A")
+    /**
+     * -> The union of all mappings on all activated layers are taken into account to compute the element the diagram
+     * should display -> In the case of a mapping import, the more specific mapping takes precedence over the others.
+     * The priority will be computed according to the following rules (in order of priority): The last mapping of the
+     * hierarchy (sample : NodeMappingImport "AAA" imports NodeMapping "AA" which in turn imports NodeMapping "A" : the
+     * NodeMappingImport "AAA" has the priority, then it will be the NodeMappingImport "AA" and finally the NodeMapping
+     * "A")
      * 
-     * If two XxxMappingImport have the same priority, a mapping is arbitrary
-     * chosen. A validation rule will be added to check conflicts between
-     * mappings. -> The elements to display on a diagram are computed in this
-     * order:
+     * If two XxxMappingImport have the same priority, a mapping is arbitrary chosen. A validation rule will be added to
+     * check conflicts between mappings. -> The elements to display on a diagram are computed in this order:
      * 
-     * For each mapping: - The more specific mapping (see previous rule) -
-     * compute elements to display and add diagram elements; update actual
-     * mapping - for each mapping from the importedMapping tree: -- compute
-     * elements minus the elements already displayed by the more specific
-     * mappings and add diagram elements; -- update candidateMappings
+     * For each mapping: - The more specific mapping (see previous rule) - compute elements to display and add diagram
+     * elements; update actual mapping - for each mapping from the importedMapping tree: -- compute elements minus the
+     * elements already displayed by the more specific mappings and add diagram elements; -- update candidateMappings
      * 
-     * The elements displayed by a mapping are computed according to the
-     * expressions: - semanticCandidatesExpression: expression that returns all
-     * semantic elements susceptible to be added to the diagram. This is
-     * optional; if not filled, the candidates are the tree of semantic elements
-     * owned by the semantic element of the graphical container. -
-     * preconditionExpression: expression that filters the semantic candidates
-     * out.
+     * The elements displayed by a mapping are computed according to the expressions: - semanticCandidatesExpression:
+     * expression that returns all semantic elements susceptible to be added to the diagram. This is optional; if not
+     * filled, the candidates are the tree of semantic elements owned by the semantic element of the graphical
+     * container. - preconditionExpression: expression that filters the semantic candidates out.
      */
 
     // test LayerHelper -> construction of the tree
@@ -531,7 +522,7 @@ public class LayersTest extends AbtsractLayerTests {
 
             @Override
             protected void doExecute() {
-                DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(sync.getDiagram(), (DAnalysisSessionImpl) session, semanticModel.eResource(), diagramDescription.getName());
+                DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(sync.getDiagram(), (DAnalysisSessionImpl) session, semanticModel.eResource(), TEST_CLASS_DIAGRAM, "");
             }
         });
 

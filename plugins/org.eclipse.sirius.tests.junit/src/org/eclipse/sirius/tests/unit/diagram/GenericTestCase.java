@@ -58,7 +58,7 @@ public class GenericTestCase extends SiriusDiagramTestCase {
         sync.initDiagram(semanticModel, new NullProgressMonitor());
         boolean syncOnCreation = Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, SiriusDiagramInternalPreferencesKeys.PREF_SYNCHRONIZE_DIAGRAM_ON_CREATION.name(), false, null);
         sync.getDiagram().setSynchronized(syncOnCreation);
-        DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(sync.getDiagram(), (DAnalysisSessionImpl) session, sync.getDiagram().eResource(), diagramName);
+        DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(sync.getDiagram(), (DAnalysisSessionImpl) session, sync.getDiagram().eResource(), diagramName, "");
     }
 
     /**

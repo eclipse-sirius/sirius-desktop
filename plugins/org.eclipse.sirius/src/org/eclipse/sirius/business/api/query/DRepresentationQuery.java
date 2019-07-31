@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,15 +15,18 @@ package org.eclipse.sirius.business.api.query;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
@@ -139,6 +142,7 @@ public class DRepresentationQuery {
      * @return the {@link DRepresentationDescriptor}
      */
     public DRepresentationDescriptor getRepresentationDescriptor() {
+        DRepresentationDescriptor result = null;
         if (representation instanceof DSemanticDecorator) {
             if (session == null) {
                 session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) representation).getTarget());
@@ -148,12 +152,28 @@ public class DRepresentationQuery {
                 for (EStructuralFeature.Setting setting : usages) {
                     if (ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR.isInstance(setting.getEObject())
                             && setting.getEStructuralFeature() == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__REPRESENTATION) {
-                        return (DRepresentationDescriptor) setting.getEObject();
+                        result = (DRepresentationDescriptor) setting.getEObject();
+                    }
+                }
+                if (result == null) {
+                    EObject eObject = session.getAllSessionResources().iterator().next().getContents().get(0);
+                    if (eObject instanceof DAnalysis) {
+                        EList<DView> ownedViews = ((DAnalysis) eObject).getOwnedViews();
+                        for (DView view : ownedViews) {
+                            EList<DRepresentationDescriptor> ownedRepresentationDescriptors = view.getOwnedRepresentationDescriptors();
+                            for (DRepresentationDescriptor descriptor : ownedRepresentationDescriptors) {
+                                DRepresentation representationTemp = descriptor.getRepresentation();
+                                if (representation.equals(representationTemp)) {
+                                    result = descriptor;
+                                    break;
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
-        return null;
+        return result;
     }
 
 }

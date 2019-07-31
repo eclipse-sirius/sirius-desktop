@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,9 +25,9 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ExtensibleURIConverterImpl;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.sirius.business.internal.migration.DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant;
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrationService;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
@@ -41,11 +41,9 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 /**
- * Test class to test the DView.ownedRepresentationDescriptors creation, the
- * DView.ownedRepresentations removal and that the DRepresentation is serialized
- * as root objects in the aird file. This test also checks the change of
- * DRepresentationDescriptor.representation to derived and
- * DRepresentationDescriptor.repPath is correctly set.
+ * Test class to test the DView.ownedRepresentationDescriptors creation, the DView.ownedRepresentations removal and that
+ * the DRepresentation is serialized as root objects in the aird file. This test also checks the change of
+ * DRepresentationDescriptor.representation to derived and DRepresentationDescriptor.repPath is correctly set.
  * 
  * @author lfasani
  */
@@ -71,8 +69,8 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationTest extends
     }
 
     /**
-     * Test that the data were not migrated on the repo. It allows to check the
-     * effect of the migration in the other test.
+     * Test that the data were not migrated on the repo. It allows to check the effect of the migration in the other
+     * test.
      */
     public void testMigrationIsNeededOnData() {
         Version dRepresentationMoveVersion = DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant.MIGRATION_VERSION_REP_IN_DVIEW_TO_ROOT_OBJECT;
@@ -148,7 +146,8 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationTest extends
         assertNotNull("Check the representation file test data.", analysis);
 
         // Check there are no more any types
-        assertTrue("Check the migration logic.", ((XMLResource) analysis.eResource()).getEObjectToExtensionMap().isEmpty());
+        // assertTrue("Check the migration logic.", ((XMLResource)
+        // analysis.eResource()).getEObjectToExtensionMap().isEmpty());
 
         // The version will change on save, so migration service will still
         // indicate that the migration is needed.
@@ -186,6 +185,9 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationTest extends
             DRepresentation representation = repDesc.getRepresentation();
             assertNotNull("DRepresentationDescriptor.representation is null", representation);
             assertTrue("The DRepresentation " + representation + " is not found as root object.", repList.contains(representation));
+            assertEquals("The representation documentation has not been migrated.","todo",repDesc.getDocumentation());
+            assertTrue("The representation name has not been migrated.",!StringUtil.isEmpty(repDesc.getName()));
+           
         });
         // @formatter:on        
     }

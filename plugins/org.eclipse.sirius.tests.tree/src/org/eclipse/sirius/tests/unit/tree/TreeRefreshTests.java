@@ -12,8 +12,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.tree;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.EMFPlugin;
@@ -26,7 +28,6 @@ import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -49,6 +50,7 @@ import org.eclipse.sirius.tree.business.internal.dialect.common.tree.DTreeRefres
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
 import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.junit.Assert;
 import org.junit.Before;
 
@@ -62,6 +64,8 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
     private SemanticPartitionInvalidator invalidator;
 
     private GroupRefreshTreeOdesignData odesign;
+
+    private Map<DRepresentation, String> repToName;
 
     @Override
     @Before
@@ -87,6 +91,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
 
         initLoggers();
         setWarningCatchActive(true);
+        repToName = new HashMap<>();
 
     }
 
@@ -144,6 +149,8 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
         semanticModel.getEClassifiers().add(namedElement);
 
         DTree newTree = TreeFactory.eINSTANCE.createDTree();
+        repToName.put(newTree, "(*)");
+
         newTree.setTarget(semanticModel);
         newTree.setDescription(odesign.group().design().epackagecontent().object());
         List<TreeItemMapping> mappings = Lists.newArrayList(Iterators.filter(odesign.group().design().epackagecontent().object().eAllContents(), TreeItemMapping.class));
@@ -174,6 +181,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
 
         EPackage semanticModel = EcoreUtil.copy(EcorePackage.eINSTANCE);
         DTree newTree = TreeFactory.eINSTANCE.createDTree();
+        repToName.put(newTree, "ENamedElement");
         newTree.setTarget(semanticModel);
         newTree.setDescription(odesign.group().design().epackagecontent().object());
 
@@ -192,6 +200,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
 
         EPackage semanticModel = EcoreUtil.copy(EcorePackage.eINSTANCE);
         DTree newTree = TreeFactory.eINSTANCE.createDTree();
+        repToName.put(newTree, "ENamedElement");
         newTree.setTarget(semanticModel);
         newTree.setDescription(odesign.group().design().epackagecontent().object());
         List<TreeItemMapping> mappings = Lists.newArrayList(Iterators.filter(odesign.group().design().epackagecontent().object().eAllContents(), TreeItemMapping.class));
@@ -212,6 +221,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
 
         EPackage semanticModel = EcoreUtil.copy(EcorePackage.eINSTANCE);
         DTree newTree = TreeFactory.eINSTANCE.createDTree();
+        repToName.put(newTree, "ENamedElement");
         newTree.setTarget(semanticModel);
         newTree.setDescription(odesign.group().design().epackagecontent().object());
         List<TreeItemMapping> mappings = Lists.newArrayList(Iterators.filter(odesign.group().design().epackagecontent().object().eAllContents(), TreeItemMapping.class));
@@ -248,6 +258,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
     public void testRenameElement() throws Exception {
         EPackage semanticModel = EcoreUtil.copy(EcorePackage.eINSTANCE);
         DTree newTree = TreeFactory.eINSTANCE.createDTree();
+        repToName.put(newTree, "ENamedElement");
         newTree.setTarget(semanticModel);
         newTree.setDescription(odesign.group().design().epackagecontent().object());
         List<TreeItemMapping> mappings = Lists.newArrayList(Iterators.filter(odesign.group().design().epackagecontent().object().eAllContents(), TreeItemMapping.class));
@@ -297,7 +308,7 @@ public class TreeRefreshTests extends TreeCommonTest implements EcoreModeler, Tr
             this.current = current;
             this.index = currentIndex;
             if (current instanceof DTree) {
-                this.label = new DRepresentationQuery(((DTree) current)).getRepresentationDescriptor().getName();
+                this.label = repToName.get(current);
             } else if (current instanceof DTreeItem) {
                 this.label = ((DTreeItem) current).getName();
             }

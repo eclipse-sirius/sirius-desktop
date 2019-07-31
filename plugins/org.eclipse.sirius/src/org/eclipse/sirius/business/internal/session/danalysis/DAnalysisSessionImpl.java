@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
@@ -36,11 +37,14 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
@@ -60,7 +64,6 @@ import org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchExce
 import org.eclipse.sirius.business.api.migration.DescriptionResourceVersionMismatchException;
 import org.eclipse.sirius.business.api.migration.ResourceVersionMismatchDiagnostic;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
-import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
@@ -118,6 +121,7 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl;
@@ -222,6 +226,23 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         }
 
         @Override
+        public NotificationFilter getFilter() {
+            NotificationFilter filter = super.getFilter();
+            filter.and(new NotificationFilter.Custom() {
+
+                @Override
+                public boolean matches(Notification notification) {
+                    Object notifier = notification.getNotifier();
+                    if (notifier instanceof EObject && !new NotificationQuery(notification).isTransientNotification()) {
+                        return true;
+                    }
+                    return false;
+                }
+            });
+            return filter;
+        }
+
+        @Override
         public boolean isPostcommitOnly() {
             return true;
         }
@@ -238,8 +259,15 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
         Set<EObject> notifierWithoutRepresentationDescriptors;
 
+        Map<EObject, DRepresentationDescriptor> notifierToDRepMap;
+
         @Override
         public boolean isPrecommitOnly() {
+            return true;
+        }
+
+        @Override
+        public boolean isAggregatePrecommitListener() {
             return true;
         }
 
@@ -247,39 +275,78 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
             List<Notification> notifications = event.getNotifications();
             notifierWithoutRepresentationDescriptors = new HashSet<>();
+            notifierToDRepMap = new HashMap<>();
+            Set<DRepresentationDescriptor> descriptorsToUpdate = new HashSet<>();
+
             Iterator<Notification> notifIterator = notifications.iterator();
+
             while (notifIterator.hasNext()) {
                 Notification notification = notifIterator.next();
                 Object notifier = notification.getNotifier();
-                if (notifier instanceof EObject && !new NotificationQuery(notification).isTransientNotification()) {
+                boolean isEObject = notifier instanceof EObject;
+                boolean isTransient = notification.getFeature() instanceof EStructuralFeature && ((EStructuralFeature) notification.getFeature()).isTransient();
+                if (isEObject && !isTransient && notifier instanceof IdentifiedElement) {
                     final DRepresentationDescriptor representationDescriptor = getDRepresentationDescriptor((EObject) notifier);
                     if (representationDescriptor != null) {
-                        RecordingCommand changeIdRecordingCommand = new RecordingCommand(transactionalEditingDomain) {
-                            @Override
-                            protected void doExecute() {
-                                RepresentationHelper.updateChangeId(representationDescriptor);
-                            }
-                        };
-                        return changeIdRecordingCommand;
+                        descriptorsToUpdate.add(representationDescriptor);
+
+                    }
+                } else if (isEObject && !isTransient) {
+                    EClass eClass = ((EObject) notifier).eClass();
+                    EPackage ePackage = eClass.getEPackage();
+                    if ("notation".equals(ePackage.getNsPrefix())) { //$NON-NLS-1$
+                        final DRepresentationDescriptor representationDescriptor = getDRepresentationDescriptor((EObject) notifier);
+                        if (representationDescriptor != null) {
+                            descriptorsToUpdate.add(representationDescriptor);
+
+                        }
                     }
                 }
+            }
+            if (!descriptorsToUpdate.isEmpty()) {
+                RecordingCommand changeIdRecordingCommand = new RecordingCommand(transactionalEditingDomain) {
+                    @Override
+                    protected void doExecute() {
+                        for (DRepresentationDescriptor dRepresentationDescriptor : descriptorsToUpdate) {
+                            RepresentationHelper.updateChangeId(dRepresentationDescriptor);
+                        }
+                    }
+                };
+                return changeIdRecordingCommand;
             }
             return null;
         }
 
         private DRepresentationDescriptor getDRepresentationDescriptor(EObject eObject) {
             DRepresentationDescriptor dRepresentationDescriptor = null;
-            if (!notifierWithoutRepresentationDescriptors.contains(eObject)) {
+            DRepresentationDescriptor repAssociatedToEObject = notifierToDRepMap.get(eObject);
+            if (repAssociatedToEObject == null && !notifierWithoutRepresentationDescriptors.contains(eObject)) {
                 EObject eContainer = eObject.eContainer();
-                if (eObject instanceof DRepresentationElement) {
-                    dRepresentationDescriptor = new DRepresentationQuery(new DRepresentationElementQuery((DRepresentationElement) eObject).getParentRepresentation()).getRepresentationDescriptor();
-                } else if (eObject instanceof DRepresentation) {
-                    dRepresentationDescriptor = new DRepresentationQuery((DRepresentation) eObject).getRepresentationDescriptor();
-                } else if (eContainer != null) {
-                    dRepresentationDescriptor = getDRepresentationDescriptor(eContainer);
+                if (!(eObject.eContainingFeature() != null && eObject.eContainingFeature().isTransient())) {
+                    // We check for a descriptor from the top element to the current element to be sure the current
+                    // element is not related to a transient feature.
+                    if (eContainer != null && !(eObject instanceof DRepresentation)) {
+                        dRepresentationDescriptor = getDRepresentationDescriptor(eContainer);
+                        if (dRepresentationDescriptor == null) {
+                            // the parent is not associated to any descriptor so are the children.
+                            notifierWithoutRepresentationDescriptors.add(eObject);
+                        } else {
+                            // we have a valid descriptor from the parent so we associate it to this eObject in case
+                            // we parse it again later.
+                            notifierToDRepMap.put(eObject, dRepresentationDescriptor);
+                        }
+                    } else if (eObject instanceof DRepresentation) {
+                        // we have reached the parent representation so we retrieve its descriptor.
+                        dRepresentationDescriptor = new DRepresentationQuery((DRepresentation) eObject).getRepresentationDescriptor();
+                        notifierToDRepMap.put(eObject, dRepresentationDescriptor);
+                    }
+                } else {
+                    // eObject is associated to a transient feature so we ignore it.
+                    notifierWithoutRepresentationDescriptors.add(eObject);
                 }
+            } else {
+                dRepresentationDescriptor = repAssociatedToEObject;
             }
-            notifierWithoutRepresentationDescriptors.add(eObject);
             return dRepresentationDescriptor;
         }
     }
@@ -620,7 +687,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             if (targetRepResource != null) {
                 targetRepResource.getContents().add(dRepresentation);
 
-                // We call updateRepresentation to update the new path. We need to update the path before updating the
+                // We call updateRepresentation to update the new path. We need to update the path before updating
+                // the
                 // repDescritor's parent which triggers the model explorer refresh with a wrong repPath attribute.
                 repDescriptor.updateRepresentation(dRepresentation);
                 receiverDView.getOwnedRepresentationDescriptors().add(repDescriptor);
@@ -1272,7 +1340,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             this.representationNameListener = new RepresentationNameListener(this);
             monitor.worked(1);
 
-            // Some modelers, as Xbase, modify the models during resolution. So we need to initialize the tracker in a
+            // Some modelers, as Xbase, modify the models during resolution. So we need to initialize the tracker in
+            // a
             // write transaction
             RecordingCommand initializeTrackerCommand = new RecordingCommand(transactionalEditingDomain) {
                 @Override
@@ -1309,8 +1378,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
             // We initialize the cross referencer and put it as adapter of this session before initializing local
             // triggers to be sure that RepresentationChangedAdapter will always be after the cross referencer in
-            // adapted objects. It avoids refreshing the Model Explorer listening to the RCA before updating the cross
-            // referencer with new created representations. And thus missing the new created representation under its
+            // adapted objects. It avoids refreshing the Model Explorer listening to the RCA before updating the
+            // cross
+            // referencer with new created representations. And thus missing the new created representation under
+            // its
             // associated model element when refreshing Model Explorer.
             registerResourceInCrossReferencer(sessionResource);
 

@@ -21,6 +21,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
@@ -56,6 +57,8 @@ public class DRepresentationItemProvider extends IdentifiedElementItemProvider {
 
             addOwnedRepresentationElementsPropertyDescriptor(object);
             addRepresentationElementsPropertyDescriptor(object);
+            addNamePropertyDescriptor(object);
+            addDocumentationPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
     }
@@ -84,6 +87,30 @@ public class DRepresentationItemProvider extends IdentifiedElementItemProvider {
                 getString("_UI_DRepresentation_representationElements_feature"), //$NON-NLS-1$
                 getString("_UI_PropertyDescriptor_description", "_UI_DRepresentation_representationElements_feature", "_UI_DRepresentation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
                 ViewpointPackage.Literals.DREPRESENTATION__REPRESENTATION_ELEMENTS, false, false, false, null, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Name feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addNamePropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DRepresentation_name_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DRepresentation_name_feature", "_UI_DRepresentation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.DREPRESENTATION__NAME, false, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+    }
+
+    /**
+     * This adds a property descriptor for the Documentation feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addDocumentationPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DRepresentation_documentation_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_DRepresentation_documentation_feature", "_UI_DRepresentation_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        ViewpointPackage.Literals.DREPRESENTATION__DOCUMENTATION, false, false, false, ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -125,7 +152,7 @@ public class DRepresentationItemProvider extends IdentifiedElementItemProvider {
      */
     @Override
     public String getText(Object object) {
-        String label = ((DRepresentation) object).getUid();
+        String label = ((DRepresentation) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_DRepresentation_type") : //$NON-NLS-1$
                 getString("_UI_DRepresentation_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
     }
@@ -142,6 +169,10 @@ public class DRepresentationItemProvider extends IdentifiedElementItemProvider {
         updateChildren(notification);
 
         switch (notification.getFeatureID(DRepresentation.class)) {
+        case ViewpointPackage.DREPRESENTATION__NAME:
+        case ViewpointPackage.DREPRESENTATION__DOCUMENTATION:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
         case ViewpointPackage.DREPRESENTATION__EANNOTATIONS:
         case ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES:
         case ViewpointPackage.DREPRESENTATION__UI_STATE:

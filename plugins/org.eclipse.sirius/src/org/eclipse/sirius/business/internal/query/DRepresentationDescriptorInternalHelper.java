@@ -32,8 +32,7 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * A class aggregating all the queries (read-only!) having a
- * {@link DRepresentation} as a starting point.
+ * A class aggregating all the queries (read-only!) having a {@link DRepresentation} as a starting point.
  * 
  * @author mporhel
  * 
@@ -55,9 +54,11 @@ public final class DRepresentationDescriptorInternalHelper {
      *            the given representation
      * @param representationName
      *            the name of the representation.
+     * @param representationDocumentation
+     *            the documentation of the representation.
      * @return a new DRepresentationDescriptor for the given representation DRepresentation
      */
-    public static DRepresentationDescriptor createDescriptor(DRepresentation representation, String representationName) {
+    public static DRepresentationDescriptor createDescriptor(DRepresentation representation, String representationName, String representationDocumentation) {
         DRepresentationDescriptor descriptor = ViewpointFactory.eINSTANCE.createDRepresentationDescriptor();
 
         RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
@@ -65,6 +66,7 @@ public final class DRepresentationDescriptorInternalHelper {
 
         // Update descriptor.
         descriptor.setDescription(description);
+        descriptor.setDocumentation(representationDocumentation);
         descriptor.setName(representationName);
         if (representation instanceof DSemanticDecorator) {
             // avoid the semantic load if not necessary
@@ -86,9 +88,12 @@ public final class DRepresentationDescriptorInternalHelper {
      *            the semantic resource.
      * @param representationName
      *            the name of the representation.
+     * @param representationDocumentation
+     *            the documentation of the representation.
      * @return the new {@link DRepresentationDescriptor}.
      */
-    public static DRepresentationDescriptor createDRepresentationDescriptor(DRepresentation representation, DAnalysisSessionImpl session, Resource semanticResource, String representationName) {
+    public static DRepresentationDescriptor createDRepresentationDescriptor(DRepresentation representation, DAnalysisSessionImpl session, Resource semanticResource, String representationName,
+            String representationDocumentation) {
         if (semanticResource != null) {
 
             final EObject semanticRoot = semanticResource.getContents().iterator().next();
@@ -118,7 +123,7 @@ public final class DRepresentationDescriptorInternalHelper {
                 resourceforRepresentation.getContents().add(representation);
             }
 
-            final DRepresentationDescriptor descriptor = DRepresentationDescriptorInternalHelper.createDescriptor(representation, representationName);
+            final DRepresentationDescriptor descriptor = DRepresentationDescriptorInternalHelper.createDescriptor(representation, representationName, representationDocumentation);
             dView.getOwnedRepresentationDescriptors().add(descriptor);
 
         }

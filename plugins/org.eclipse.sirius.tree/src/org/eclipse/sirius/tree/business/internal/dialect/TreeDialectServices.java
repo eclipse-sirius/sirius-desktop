@@ -109,7 +109,7 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
             tree.setTarget(semantic);
             monitor.worked(1);
 
-            DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(tree, (DAnalysisSessionImpl) session, semantic.eResource(), name);
+            DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(tree, (DAnalysisSessionImpl) session, semantic.eResource(), name, ""); //$NON-NLS-1$
             refresh(tree, new SubProgressMonitor(monitor, 10));
         } finally {
             monitor.done();
@@ -167,7 +167,7 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
     public DRepresentation copyRepresentation(final DRepresentationDescriptor representationDescriptor, final String name, final Session session, final IProgressMonitor monitor) {
         DRepresentation newRepresentation = super.copyRepresentation(representationDescriptor, name, session, monitor);
         DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(newRepresentation, (DAnalysisSessionImpl) session,
-                ((DSemanticDecorator) representationDescriptor).getTarget().eResource(), name);
+                ((DSemanticDecorator) representationDescriptor).getTarget().eResource(), name, ""); //$NON-NLS-1$
         return newRepresentation;
     }
 

@@ -17,11 +17,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.notation.ConnectorStyle;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -29,6 +29,9 @@ import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
 
 /**
@@ -54,8 +57,16 @@ public class DeleteMultipleConnectorStyleMigrationParticipant extends AbstractRe
     protected void postLoad(DAnalysis dAnalysis, Version loadedVersion) {
         if (loadedVersion.compareTo(MIGRATION_VERSION) < 0) {
             StringBuilder sb = new StringBuilder(Messages.DeleteMultipleConnectorMigrationParticipant_title);
-            dAnalysis.getOwnedViews().stream().flatMap(view -> new DViewQuery(view).getLoadedRepresentations().stream()).filter(rep -> rep instanceof DDiagram).map(DDiagram.class::cast)
-                    .filter(diag -> diag instanceof DSemanticDiagram).forEach(dDiagram -> {
+            EList<DView> ownedViews = dAnalysis.getOwnedViews();
+            for (DView view : ownedViews) {
+
+                List<DRepresentationDescriptor> loadedRepresentationsDescriptors = new DViewQuery(view).getLoadedRepresentationsDescriptors();
+
+                for (DRepresentationDescriptor descriptor : loadedRepresentationsDescriptors) {
+
+                    DRepresentation rep = descriptor.getRepresentation();
+                    if (rep instanceof DSemanticDiagram) {
+                        DSemanticDiagram dDiagram = (DSemanticDiagram) rep;
                         boolean isEdgeModified = false;
                         List<Edge> edgeList = getEdgeList(dDiagram);
                         for (Edge edge : edgeList) {
@@ -63,13 +74,15 @@ public class DeleteMultipleConnectorStyleMigrationParticipant extends AbstractRe
                         }
                         if (isEdgeModified) {
                             migrationOccured = true;
-                            sb.append(MessageFormat.format(Messages.DeleteMultipleConnectorMigrationParticipant_edgesModified,
-                                    new DRepresentationQuery(dDiagram).getRepresentationDescriptor().getName()));
+                            sb.append(MessageFormat.format(Messages.DeleteMultipleConnectorMigrationParticipant_edgesModified, descriptor.getName()));
                         }
-                    });
-            if (migrationOccured) {
-                DiagramPlugin.getDefault().logInfo(sb.toString());
-                migrationOccured = false;
+
+                    }
+                }
+                if (migrationOccured) {
+                    DiagramPlugin.getDefault().logInfo(sb.toString());
+                    migrationOccured = false;
+                }
             }
         }
     }

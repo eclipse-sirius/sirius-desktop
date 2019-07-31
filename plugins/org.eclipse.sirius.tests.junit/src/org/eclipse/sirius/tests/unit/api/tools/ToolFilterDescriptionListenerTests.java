@@ -16,6 +16,7 @@ import java.util.HashMap;
 
 import org.eclipse.core.commands.operations.DefaultOperationHistory;
 import org.eclipse.core.commands.operations.IOperationHistory;
+import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.UnexecutableCommand;
@@ -28,7 +29,6 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.WorkspaceEditingDomainFactory;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.DefaultLocalSessionCreationOperation;
 import org.eclipse.sirius.business.api.session.Session;
@@ -40,6 +40,8 @@ import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.tools.internal.management.ToolFilterDescriptionListenerForUpdate;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFactory;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
@@ -80,6 +82,28 @@ public class ToolFilterDescriptionListenerTests extends TestCase {
 
     private DRepresentationDescriptor representationDescriptor;
 
+    public class RecordCommand extends AddSemanticResourceCommand {
+
+        public RecordCommand(Session session, URI semanticResourceURI, IProgressMonitor monitor) {
+            super(session, semanticResourceURI, monitor);
+        }
+
+        @Override
+        protected void doExecute() {
+            super.doExecute();
+            final DSemanticDiagram diagram = DiagramFactory.eINSTANCE.createDSemanticDiagram();
+            representationDescriptor = ViewpointFactory.eINSTANCE.createDRepresentationDescriptor();
+            DView newDView = ViewpointFactory.eINSTANCE.createDView();
+            newDView.getOwnedRepresentationDescriptors().add(representationDescriptor);
+            diagram.setTarget(session.getSemanticResources().iterator().next().getContents().get(0));
+            session.getAllSessionResources().iterator().next().getContents().add(diagram);
+            session.getAllSessionResources().iterator().next().getContents().add(newDView);
+            session.getOwnedViews().add(newDView);
+            representationDescriptor.setRepresentation(diagram);
+        }
+
+    }
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
@@ -99,10 +123,10 @@ public class ToolFilterDescriptionListenerTests extends TestCase {
 
         SessionCreationOperation sessionCreationOperation = new DefaultLocalSessionCreationOperation(airdResource.getURI(), new NullProgressMonitor());
         sessionCreationOperation.execute();
+
         session = sessionCreationOperation.getCreatedSession();
-        session.getTransactionalEditingDomain().getCommandStack().execute(new AddSemanticResourceCommand(session, resource.getURI(), new NullProgressMonitor()));
-        diagram = createDiagram(airdResource);
-        representationDescriptor = new DRepresentationQuery(diagram).getRepresentationDescriptor();
+        session.getSemanticCrossReferencer();
+        session.getTransactionalEditingDomain().getCommandStack().execute(new RecordCommand(session, resource.getURI(), new NullProgressMonitor()));
 
     }
 
@@ -122,30 +146,17 @@ public class ToolFilterDescriptionListenerTests extends TestCase {
         return (EPackage) resource.getContents().get(0);
     }
 
-    private DSemanticDiagram createDiagram(final Resource airdResource) {
-        final DSemanticDiagram diagram = DiagramFactory.eINSTANCE.createDSemanticDiagram();
-        diagram.setTarget(session.getSemanticResources().iterator().next().getContents().get(0));
-
-        editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
-            @Override
-            protected void doExecute() {
-                airdResource.getContents().add(diagram);
-            }
-        });
-        return diagram;
-    }
-
     public void testSingleNotification() throws Exception {
         final ToolFilterDescriptionListenerForUpdateExtension listener = new ToolFilterDescriptionListenerForUpdateExtension(session.getInterpreter(), createToolFilterDescriptionOnDiagram("name"),
                 diagram);
-        editingDomain.addResourceSetListener(listener);
-        editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
+        session.getTransactionalEditingDomain().addResourceSetListener(listener);
+        session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
                 representationDescriptor.setName("new name");
             }
         });
-        editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
+        session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
                 representationDescriptor.setName("quick name");
@@ -158,8 +169,8 @@ public class ToolFilterDescriptionListenerTests extends TestCase {
         final ToolFilterDescriptionListenerForUpdateExtension listener = new ToolFilterDescriptionListenerForUpdateExtension(session.getInterpreter(), createToolFilterDescriptionOnDiagram("name"),
                 diagram);
 
-        editingDomain.addResourceSetListener(listener);
-        editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
+        session.getTransactionalEditingDomain().addResourceSetListener(listener);
+        session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
                 representationDescriptor.setName("new name");
@@ -173,15 +184,15 @@ public class ToolFilterDescriptionListenerTests extends TestCase {
         final ToolFilterDescriptionListenerForUpdateExtension listener = new ToolFilterDescriptionListenerForUpdateExtension(session.getInterpreter(), createToolFilterDescriptionOnDiagram("name"),
                 diagram);
 
-        editingDomain.addResourceSetListener(listener);
-        editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
+        session.getTransactionalEditingDomain().addResourceSetListener(listener);
+        session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
                 representationDescriptor.setName("dirty name");
             }
         });
-        editingDomain.removeResourceSetListener(listener);
-        editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
+        session.getTransactionalEditingDomain().removeResourceSetListener(listener);
+        session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
                 representationDescriptor.setName("another name");
@@ -197,7 +208,7 @@ public class ToolFilterDescriptionListenerTests extends TestCase {
 
         for (final String featureName : featureNames) {
             FeatureChangeListener featureChangeListener = ToolFactory.eINSTANCE.createFeatureChangeListener();
-            featureChangeListener.setDomainClass("DDiagram");
+            featureChangeListener.setDomainClass("DRepresentationDescriptor");
             featureChangeListener.setFeatureName(featureName);
             filterDescription.getListeners().add(featureChangeListener);
         }

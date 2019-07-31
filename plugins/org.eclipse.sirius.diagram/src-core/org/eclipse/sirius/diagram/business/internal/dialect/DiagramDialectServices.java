@@ -181,7 +181,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
                     monitor.worked(1);
                 }
 
-                DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(diagram, (DAnalysisSessionImpl) session, semantic.eResource(), name);
+                DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(diagram, (DAnalysisSessionImpl) session, semantic.eResource(), name, ""); //$NON-NLS-1$
                 monitor.worked(1);
                 Diagram gmfDiag = DiagramDialectServices.createAndStoreGMFDiagram(session, (DSemanticDiagram) diagram);
                 monitor.worked(1);
@@ -228,7 +228,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
         final DRepresentation newRepresentation = super.copyRepresentation(representationDescriptor, name, session, monitor);
 
         DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(newRepresentation, (DAnalysisSessionImpl) session,
-                ((DSemanticDecorator) representationDescriptor.getRepresentation()).getTarget().eResource(), name);
+                ((DSemanticDecorator) representationDescriptor.getRepresentation()).getTarget().eResource(), name, ""); //$NON-NLS-1$
 
         return newRepresentation;
     }

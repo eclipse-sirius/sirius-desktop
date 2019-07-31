@@ -14,12 +14,13 @@ package org.eclipse.sirius.tests.unit.diagram.migration;
 
 import java.util.Iterator;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
@@ -27,12 +28,15 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
+import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.DView;
 
 import com.google.common.collect.Iterators;
 
 /**
- * Test that the repair process restore only customizations and leave the
- * refresh update the non customized features.
+ * Test that the repair process restore only customizations and leave the refresh update the non customized features.
  * 
  * See VP-3894.
  * 
@@ -81,7 +85,9 @@ public class RepairOnLabelHiddenTest extends AbstractRepairMigrateTest {
         Iterator<DDiagram> filter = Iterators.filter(representationsResource.getAllContents(), DDiagram.class);
         assertTrue("It miss a DDiagram in the aird resource", filter.hasNext());
         DDiagram dDiagram = filter.next();
-        assertEquals(DIAGRAM_NAME, new DRepresentationQuery(dDiagram).getRepresentationDescriptor().getName());
+        String representationName = getName(representationsResource, dDiagram);
+
+        assertEquals(DIAGRAM_NAME, representationName);
         assertEquals("The DDiagram " + DIAGRAM_NAME + " after repair should always contains 12 DDiagramElements", 12, Iterators.size(Iterators.filter(dDiagram.eAllContents(), DDiagramElement.class)));
 
         DDiagramElement dDiagramElementOfP1 = dDiagram.getOwnedDiagramElements().get(3);
@@ -117,7 +123,8 @@ public class RepairOnLabelHiddenTest extends AbstractRepairMigrateTest {
         // Check second diagram
         assertTrue("It miss a DDiagram in the aird resource", filter.hasNext());
         DDiagram dDiagramBis = filter.next();
-        assertEquals(DIAGRAM_BIS_NAME, new DRepresentationQuery(dDiagramBis).getRepresentationDescriptor().getName());
+        representationName = getName(representationsResource, dDiagramBis);
+        assertEquals(DIAGRAM_BIS_NAME, representationName);
         assertEquals("The DDiagram " + DIAGRAM_BIS_NAME + " after repair should always contains 12 DDiagramElements", 12,
                 Iterators.size(Iterators.filter(dDiagramBis.eAllContents(), DDiagramElement.class)));
 
@@ -151,5 +158,24 @@ public class RepairOnLabelHiddenTest extends AbstractRepairMigrateTest {
         assertFalse("The edge a2 should be keeped hidden after a repair", new DDiagramElementQuery(dEdgeA2).isHidden());
         assertFalse("The edge c1 should be keeped hidden after a repair", new DDiagramElementQuery(dEdgeC1).isHidden());
 
+    }
+
+    private String getName(Resource representationsResource, DDiagram dDiagram) {
+        EList<EObject> contents = representationsResource.getContents();
+        for (EObject eObject : contents) {
+            if (eObject instanceof DAnalysis) {
+                EList<DView> ownedViews = ((DAnalysis) eObject).getOwnedViews();
+                for (DView view : ownedViews) {
+                    EList<DRepresentationDescriptor> ownedRepresentationDescriptors = view.getOwnedRepresentationDescriptors();
+                    for (DRepresentationDescriptor descriptor : ownedRepresentationDescriptors) {
+                        DRepresentation representation = descriptor.getRepresentation();
+                        if (dDiagram.equals(representation)) {
+                            return descriptor.getName();
+                        }
+                    }
+                }
+            }
+        }
+        return null;
     }
 }

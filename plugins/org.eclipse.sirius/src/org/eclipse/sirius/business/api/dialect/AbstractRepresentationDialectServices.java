@@ -228,7 +228,7 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
             monitor.beginTask(MessageFormat.format(Messages.AbstractRepresentationDialectServices_createRepresentationMsg, name), 2);
             representation = createRepresentation(name, semantic, description, new SubProgressMonitor(monitor, 1));
             if (representation != null) {
-                DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(representation, (DAnalysisSessionImpl) session, semantic.eResource(), name);
+                DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(representation, (DAnalysisSessionImpl) session, semantic.eResource(), name, ""); //$NON-NLS-1$
             }
             monitor.worked(1);
         } finally {

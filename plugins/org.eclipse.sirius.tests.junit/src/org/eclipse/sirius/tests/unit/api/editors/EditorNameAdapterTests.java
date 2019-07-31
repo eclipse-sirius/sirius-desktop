@@ -51,9 +51,9 @@ public class EditorNameAdapterTests extends SiriusDiagramTestCase implements Eco
         final IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         EditorNameAdapter adapter = new EditorNameAdapter(SessionUIManager.INSTANCE.getUISession(session));
         adapter.registerEditor((DialectEditor) editor);
-        assertTrue(diagram.eAdapters().contains(adapter));
+        assertTrue(new DRepresentationQuery(diagram).getRepresentationDescriptor().eAdapters().contains(adapter));
         adapter.unregisterEditor((DialectEditor) editor);
-        assertFalse(diagram.eAdapters().contains(adapter));
+        assertFalse(new DRepresentationQuery(diagram).getRepresentationDescriptor().eAdapters().contains(adapter));
         DialectUIManager.INSTANCE.closeEditor(editor, false);
         TestsUtil.synchronizationWithUIThread();
     }

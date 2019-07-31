@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ui.tools.api.format.IFormatDataManagerProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 
 /**
  * Sample extension provider.
@@ -38,7 +39,8 @@ public class SampleNameDataProvider implements IFormatDataManagerProvider {
         if (diagram instanceof DSemanticDiagram) {
             DSemanticDiagram dSem = (DSemanticDiagram) diagram;
             EObject semanticTarget = dSem.getTarget();
-            return semanticTarget instanceof EModelElement && new DRepresentationQuery(diagram).getRepresentationDescriptor().getName().endsWith(EXPECTED_SUFFIX);
+            DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(diagram).getRepresentationDescriptor();
+            return semanticTarget instanceof EModelElement && representationDescriptor != null && representationDescriptor.getName().endsWith(EXPECTED_SUFFIX);
         }
         return false;
     }

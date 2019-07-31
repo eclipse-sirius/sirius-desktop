@@ -107,4 +107,24 @@ public interface DRepresentation extends IdentifiedElement, DModelElement, DRefr
      */
     void setUiState(UIState value);
 
+    /**
+     * Returns the value of the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Name</em>' attribute.
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentation_Name()
+     * @model transient="true" changeable="false" volatile="true" derived="true"
+     * @generated
+     */
+    String getName();
+
+    /**
+     * Returns the value of the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the value of the '<em>Documentation</em>' attribute.
+     * @see org.eclipse.sirius.viewpoint.ViewpointPackage#getDRepresentation_Documentation()
+     * @model transient="true" changeable="false" volatile="true" derived="true"
+     * @generated
+     */
+    String getDocumentation();
+
 } // DRepresentation

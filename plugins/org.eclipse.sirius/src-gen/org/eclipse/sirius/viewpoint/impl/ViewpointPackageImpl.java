@@ -715,6 +715,26 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
      * @generated
      */
     @Override
+    public EAttribute getDRepresentation_Name() {
+        return (EAttribute) dRepresentationEClass.getEStructuralFeatures().get(4);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getDRepresentation_Documentation() {
+        return (EAttribute) dRepresentationEClass.getEStructuralFeatures().get(5);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getDRepresentationElement() {
         return dRepresentationElementEClass;
     }
@@ -1467,6 +1487,8 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         createEReference(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__REPRESENTATION_ELEMENTS);
         createEReference(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES);
         createEReference(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__UI_STATE);
+        createEAttribute(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__NAME);
+        createEAttribute(dRepresentationEClass, ViewpointPackage.DREPRESENTATION__DOCUMENTATION);
 
         dRepresentationElementEClass = createEClass(ViewpointPackage.DREPRESENTATION_ELEMENT);
         createEAttribute(dRepresentationElementEClass, ViewpointPackage.DREPRESENTATION_ELEMENT__NAME);
@@ -1715,6 +1737,10 @@ public class ViewpointPackageImpl extends EPackageImpl implements ViewpointPacka
         initEReference(getDRepresentation_UiState(), this.getUIState(), null, "uiState", null, 0, 1, DRepresentation.class, EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED,
                 EPackageImpl.IS_ORDERED);
+        initEAttribute(getDRepresentation_Name(), ecorePackage.getEString(), "name", null, 0, 1, DRepresentation.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEAttribute(getDRepresentation_Documentation(), ecorePackage.getEString(), "documentation", null, 0, 1, DRepresentation.class, EPackageImpl.IS_TRANSIENT, EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                !EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(dRepresentationElementEClass, DRepresentationElement.class, "DRepresentationElement", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, //$NON-NLS-1$
                 EPackageImpl.IS_GENERATED_INSTANCE_CLASS);

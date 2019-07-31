@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo
+ * Copyright (c) 2018, 2019 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,10 @@ import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.management.ToolChangeListener;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.tool.FeatureChangeListener;
 import org.eclipse.sirius.viewpoint.description.tool.ToolFilterDescription;
 
@@ -112,7 +115,8 @@ public class ToolFilterDescriptionListenerForUpdate extends ResourceSetListenerI
             final ModelAccessor accessor = getModelAccessor(domain);
 
             for (final FeatureChangeListener listener : filterListeners) {
-                if (accessor.eInstanceOf(notifier, listener.getDomainClass())) {
+                if (accessor.eInstanceOf(notifier, listener.getDomainClass())
+                        || (notifier instanceof DRepresentationDescriptor && accessor.eInstanceOf(((DRepresentationDescriptor) notifier).getRepresentation(), listener.getDomainClass()))) {
                     if (feature.getName().equals(listener.getFeatureName())) {
                         shoudUpdate = true;
                     }
@@ -127,11 +131,16 @@ public class ToolFilterDescriptionListenerForUpdate extends ResourceSetListenerI
 
     private static NotificationFilter getFilter(IInterpreter interpreter, final DRepresentation representation, ToolFilterDescription filter) {
         final Collection<EObject> elementsToListen = ToolFilterDescriptionListenerForUpdate.elementsToListen(interpreter, representation, filter.getElementsToListen());
-        NotificationFilter notificationFilter = NotificationFilter.NOT_TOUCH;
-        for (final EObject eObject : elementsToListen) {
-            notificationFilter = notificationFilter.and(NotificationFilter.createNotifierFilter(eObject));
-        }
-        return notificationFilter;
+        return new NotificationFilter.Custom() {
+
+            @Override
+            public boolean matches(Notification notification) {
+                boolean repDescNameOrDocChangeNotif = notification.getNotifier() instanceof DRepresentationDescriptor
+                        && (ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_Name().equals(notification.getFeature())
+                                || DescriptionPackage.eINSTANCE.getDocumentedElement_Documentation().equals(notification.getFeature()));
+                return !notification.isTouch() && (elementsToListen.contains(notification.getNotifier()) || repDescNameOrDocChangeNotif);
+            }
+        };
     }
 
     private static Collection<EObject> elementsToListen(IInterpreter interpreter, final DRepresentation representation, final String elementsToListen) {

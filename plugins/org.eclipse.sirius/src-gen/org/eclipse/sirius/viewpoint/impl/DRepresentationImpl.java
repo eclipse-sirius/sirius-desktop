@@ -23,8 +23,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.UIState;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
@@ -84,6 +86,26 @@ public abstract class DRepresentationImpl extends IdentifiedElementImpl implemen
      * @ordered
      */
     protected UIState uiState;
+
+    /**
+     * The default value of the '{@link #getName() <em>Name</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @see #getName()
+     * @generated
+     * @ordered
+     */
+    protected static final String NAME_EDEFAULT = null;
+
+    /**
+     * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @see #getDocumentation()
+     * @generated
+     * @ordered
+     */
+    protected static final String DOCUMENTATION_EDEFAULT = null;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -217,6 +239,34 @@ public abstract class DRepresentationImpl extends IdentifiedElementImpl implemen
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
      *
+     * @generated NOT
+     */
+    @Override
+    public String getName() {
+        DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(this).getRepresentationDescriptor();
+        if (representationDescriptor != null) {
+            return representationDescriptor.getName();
+        }
+        return null;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated NOT
+     */
+    @Override
+    public String getDocumentation() {
+        DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(this).getRepresentationDescriptor();
+        if (representationDescriptor != null) {
+            return representationDescriptor.getDocumentation();
+        }
+        return null;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
      * @generated
      */
     @Override
@@ -262,6 +312,10 @@ public abstract class DRepresentationImpl extends IdentifiedElementImpl implemen
             return getOwnedAnnotationEntries();
         case ViewpointPackage.DREPRESENTATION__UI_STATE:
             return getUiState();
+        case ViewpointPackage.DREPRESENTATION__NAME:
+            return getName();
+        case ViewpointPackage.DREPRESENTATION__DOCUMENTATION:
+            return getDocumentation();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -329,6 +383,10 @@ public abstract class DRepresentationImpl extends IdentifiedElementImpl implemen
             return ownedAnnotationEntries != null && !ownedAnnotationEntries.isEmpty();
         case ViewpointPackage.DREPRESENTATION__UI_STATE:
             return uiState != null;
+        case ViewpointPackage.DREPRESENTATION__NAME:
+            return DRepresentationImpl.NAME_EDEFAULT == null ? getName() != null : !DRepresentationImpl.NAME_EDEFAULT.equals(getName());
+        case ViewpointPackage.DREPRESENTATION__DOCUMENTATION:
+            return DRepresentationImpl.DOCUMENTATION_EDEFAULT == null ? getDocumentation() != null : !DRepresentationImpl.DOCUMENTATION_EDEFAULT.equals(getDocumentation());
         }
         return super.eIsSet(featureID);
     }

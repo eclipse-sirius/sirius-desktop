@@ -64,6 +64,12 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant 
     public static final Version MIGRATION_VERSION_REP_PATH_UID = new Version("12.1.0.201707281200"); //$NON-NLS-1$
 
     /**
+     * This version corresponds to the name and description location change. It has been moved from DRepresentation to
+     * DRepresentationDescriptor.
+     */
+    public static final Version MIGRATION_VERSION_DESC_NAME_CHANGE = new Version("13.3.0.201908071200"); //$NON-NLS-1$
+
+    /**
      * The name of the feature DView.ownedRepresentations which has been deleted.
      */
     public static final String DVIEW_OWNED_REPRESENTATIONS_UNKNOWN_FEATURE = "ownedRepresentations"; //$NON-NLS-1$
@@ -74,9 +80,19 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant 
     protected static final String FEATURE_NAME_LABEL = "name"; //$NON-NLS-1$
 
     /**
+     * The label of the feature description of a DRepresentation when serialized.
+     */
+    protected static final String FEATURE_DOCUMENTATION_LABEL = "documentation"; //$NON-NLS-1$
+
+    /**
      * A map associating {@link DRepresentation} to their name.
      */
     protected Map<DRepresentation, String> representationToNameMap;
+
+    /**
+     * A map associating {@link DRepresentation} to their documentation.
+     */
+    protected Map<DRepresentation, String> representationToDocumentationMap;
 
     private Map<DRepresentation, DRepresentationDescriptor> representation2RepresentationDescriptorMap;
 
@@ -87,11 +103,12 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant 
         super();
         representation2RepresentationDescriptorMap = new HashMap<>();
         representationToNameMap = new HashMap<>();
+        representationToDocumentationMap = new HashMap<>();
     }
 
     @Override
     public Version getMigrationVersion() {
-        return MIGRATION_VERSION_REP_PATH_UID;
+        return MIGRATION_VERSION_DESC_NAME_CHANGE;
     }
 
     @Override
@@ -107,24 +124,15 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant 
                 // The method will call DRepresentationDescriptor.setRepresentation that will, in fact, get the
                 // DRepresentation URI and set it on DRepresentationDescriptor.repPath
                 String representationName = representationToNameMap.get(representation);
-                DRepresentationDescriptor newDescriptor = DRepresentationDescriptorInternalHelper.createDescriptor(representation, representationName);
+                String representationDocumentation = representationToDocumentationMap.get(representation);
+                DRepresentationDescriptor newDescriptor = DRepresentationDescriptorInternalHelper.createDescriptor(representation, representationName, representationDocumentation);
                 ((DView) owner).getOwnedRepresentationDescriptors().add(newDescriptor);
-                if (representationName == null) {
+                if (representationName == null || representationDocumentation == null) {
                     // we save the representation and its descriptor to access it later when we will have the
-                    // representation name.
+                    // representation name or documentation.
                     representation2RepresentationDescriptorMap.put(representation, newDescriptor);
                 }
             }
-        } else if (owner instanceof DRepresentation && FEATURE_NAME_LABEL.equals(unkownFeature.getName())) {
-            DRepresentationDescriptor dRepresentationDescriptor = representation2RepresentationDescriptorMap.get(owner);
-            // A representation descriptor has been created before we had the name of the representation so we update
-            // it.
-            if (dRepresentationDescriptor != null) {
-                dRepresentationDescriptor.setName((String) valueOfUnknownFeature);
-            } else {
-                representationToNameMap.put((DRepresentation) owner, (String) valueOfUnknownFeature);
-            }
-
         }
     }
 
@@ -147,6 +155,28 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant 
                     return newRepURI.toString();
                 }
             }
+
+        } else if (ViewpointPackage.eINSTANCE.getDRepresentation_Name().equals(feature)) {
+            DRepresentationDescriptor dRepresentationDescriptor = representation2RepresentationDescriptorMap.get(object);
+            // A representation descriptor has been created before we had the name of the representation so we
+            // update
+            // it.
+            if (dRepresentationDescriptor != null) {
+                dRepresentationDescriptor.setName((String) value);
+            } else {
+                representationToNameMap.put((DRepresentation) object, (String) value);
+            }
+
+        } else if (ViewpointPackage.eINSTANCE.getDRepresentation_Documentation().equals(feature)) {
+            DRepresentationDescriptor dRepresentationDescriptor = representation2RepresentationDescriptorMap.get(object);
+            // A representation descriptor has been created before we had the description of the representation so we
+            // update it.
+            if (dRepresentationDescriptor != null) {
+                dRepresentationDescriptor.setDocumentation((String) value);
+            } else {
+                representationToDocumentationMap.put((DRepresentation) object, (String) value);
+            }
+
         }
         return super.getValue(object, feature, value, loadedVersion);
     }

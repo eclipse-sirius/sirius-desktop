@@ -264,7 +264,7 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
     public DRepresentation copyRepresentation(DRepresentationDescriptor representationDescriptor, String name, Session session, IProgressMonitor monitor) {
         DRepresentation newRepresentation = super.copyRepresentation(representationDescriptor, name, session, monitor);
         DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(representationDescriptor.getRepresentation(), (DAnalysisSessionImpl) session,
-                ((DSemanticDecorator) representationDescriptor.getRepresentation()).getTarget().eResource(), name);
+                ((DSemanticDecorator) representationDescriptor.getRepresentation()).getTarget().eResource(), name, ""); //$NON-NLS-1$
         return newRepresentation;
     }
 

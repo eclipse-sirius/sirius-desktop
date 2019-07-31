@@ -12,17 +12,17 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.migration;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.business.internal.migration.SnapBackDistantLabelsMigrationParticipant;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
@@ -64,14 +64,14 @@ public class SnapBackDistantLabelsMigrationTest extends SiriusTestCase {
         genericSetUp();
         copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PATH, SESSION_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME, VSM_RESOURCE_NAME);
         URI sessionResourceURI = URI.createPlatformResourceURI(SiriusTestCase.TEMPORARY_PROJECT_NAME + "/" + SESSION_RESOURCE_NAME, true);
-        ResourceSet resourceSet = new ResourceSetImpl();
-        sessionResource = resourceSet.getResource(sessionResourceURI, true);
+        session = SessionManager.INSTANCE.getSession(sessionResourceURI, new NullProgressMonitor());
+        sessionResource = session.getSessionResource();
 
     }
 
     /**
-     * Test that the data were not migrated on the repository. It allows to
-     * check the effect of the migration in the other test.
+     * Test that the data were not migrated on the repository. It allows to check the effect of the migration in the
+     * other test.
      */
     public void testMigrationIsNeededOnData() {
         Version migrationVersion = new SnapBackDistantLabelsMigrationParticipant().getMigrationVersion();
@@ -82,8 +82,7 @@ public class SnapBackDistantLabelsMigrationTest extends SiriusTestCase {
     }
 
     /**
-     * Check that the size of the diagrams are the same as non corrupted one
-     * after migration.
+     * Check that the size of the diagrams are the same as non corrupted one after migration.
      */
     public void testDiagramSizeAfterMigration() {
         String suffix = "_corrupted";
@@ -99,7 +98,8 @@ public class SnapBackDistantLabelsMigrationTest extends SiriusTestCase {
 
         while (diagrams.hasNext()) {
             Diagram diagram = diagrams.next();
-            String diagramName = new DRepresentationQuery(((DDiagram) diagram.getElement())).getRepresentationDescriptor().getName();
+
+            String diagramName = new DRepresentationQuery(((DDiagram) diagram.getElement()), session).getRepresentationDescriptor().getName();
             if (diagramName.startsWith("DiagWithNode")) {
                 if (diagramName.endsWith(suffix)) {
                     corruptedDiagram1 = diagram;
@@ -135,8 +135,7 @@ public class SnapBackDistantLabelsMigrationTest extends SiriusTestCase {
     }
 
     /**
-     * Compare a diagram that must be fixed during the migration, with another
-     * one.
+     * Compare a diagram that must be fixed during the migration, with another one.
      * 
      * @param corruptedDiagram
      *            Diagram that must be OK after migration
@@ -147,13 +146,11 @@ public class SnapBackDistantLabelsMigrationTest extends SiriusTestCase {
         assertNotNull(UNEXPECTED_DATA_MESSAGE, diagram);
         assertNotNull(UNEXPECTED_DATA_MESSAGE, corruptedDiagram);
         assertEquals("Corrupted diagram " + new DRepresentationQuery(((DDiagram) corruptedDiagram.getElement())).getRepresentationDescriptor().getName()
-                + " should have the same bounding box as other diagram after migration.",
-                calculateLocationBoundingBox(diagram), calculateLocationBoundingBox(corruptedDiagram));
+                + " should have the same bounding box as other diagram after migration.", calculateLocationBoundingBox(diagram), calculateLocationBoundingBox(corruptedDiagram));
     }
 
     /**
-     * Calculates the bounding box around node children location of given
-     * diagram.
+     * Calculates the bounding box around node children location of given diagram.
      * 
      * @param diagram
      *            given diagram

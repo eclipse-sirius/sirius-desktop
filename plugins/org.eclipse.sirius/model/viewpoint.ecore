@@ -116,6 +116,10 @@
         upperBound="-1" eType="#//description/AnnotationEntry" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="uiState" eType="#//UIState"
         transient="true" containment="true" resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="documentation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false" volatile="true" transient="true" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DRepresentationElement" abstract="true"
       eSuperTypes="#//IdentifiedElement #//DMappingBased #//DStylizable #//DRefreshable #//DSemanticDecorator">

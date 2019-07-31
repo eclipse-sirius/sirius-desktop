@@ -20,7 +20,6 @@ import org.eclipse.gmf.runtime.diagram.core.util.ViewType;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
@@ -29,7 +28,6 @@ import org.eclipse.sirius.diagram.ui.internal.view.factories.SiriusNoteViewFacto
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
@@ -68,14 +66,12 @@ public class RepresentationLinkMigrationParticipant extends AbstractRepresentati
             StringBuilder builder = new StringBuilder();
             boolean isModified = false;
             for (DView view : dAnalysis.getOwnedViews()) {
-                for (DRepresentation representation : new DViewQuery(view).getLoadedRepresentations()) {
-                    if (representation instanceof DDiagram) {
-                        DDiagramGraphicalQuery query = new DDiagramGraphicalQuery((DDiagram) representation);
+                for (DRepresentationDescriptor representationDesc : new DViewQuery(view).getLoadedRepresentationsDescriptors()) {
+                    if (representationDesc.getRepresentation() instanceof DDiagram) {
+                        DDiagramGraphicalQuery query = new DDiagramGraphicalQuery((DDiagram) representationDesc.getRepresentation());
                         Option<Diagram> option = query.getAssociatedGMFDiagram();
                         if (option.some() && migrateDiagram(option.get())) {
-                            builder.append(
-                                    MessageFormat.format(Messages.RepresentationLinkMigrationParticipant_entry, new DRepresentationQuery(representation).getRepresentationDescriptor().getName()))
-                                    .append(System.lineSeparator());
+                            builder.append(MessageFormat.format(Messages.RepresentationLinkMigrationParticipant_entry, representationDesc.getName())).append(System.lineSeparator());
                             isModified = true;
                         }
                     }

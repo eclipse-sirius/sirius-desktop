@@ -44,7 +44,6 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.IdentifiedElement;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IEditorPart;
 
@@ -189,11 +188,11 @@ public class RepresentationCopierTest extends GenericTestCase implements UML2Mod
 
             @Override
             protected boolean haveEqualAttribute(EObject eObject1, EObject eObject2, EAttribute attribute) {
-                boolean ignored = attribute.isID() || ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__NAME.equals(attribute);
+                boolean ignored = attribute.isID();
                 return ignored || super.haveEqualAttribute(eObject1, eObject2, attribute);
             }
         };
-        assertTrue(helper.equals(new DRepresentationQuery(originalDiagram).getRepresentationDescriptor(), new DRepresentationQuery(copy).getRepresentationDescriptor()));
+        assertTrue(helper.equals(originalDiagram, copy));
 
         for (int i = 0; i < copied.size(); i++) {
             IdentifiedElement copiedElt = copied.get(i);

@@ -481,13 +481,29 @@ public interface ViewpointPackage extends EPackage {
     int DREPRESENTATION__UI_STATE = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 4;
 
     /**
+     * The feature id for the '<em><b>Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DREPRESENTATION__NAME = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 5;
+
+    /**
+     * The feature id for the '<em><b>Documentation</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int DREPRESENTATION__DOCUMENTATION = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 6;
+
+    /**
      * The number of structural features of the '<em>DRepresentation</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int DREPRESENTATION_FEATURE_COUNT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 5;
+    int DREPRESENTATION_FEATURE_COUNT = ViewpointPackage.IDENTIFIED_ELEMENT_FEATURE_COUNT + 7;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.viewpoint.impl.DRepresentationElementImpl
@@ -1986,6 +2002,28 @@ public interface ViewpointPackage extends EPackage {
     EReference getDRepresentation_UiState();
 
     /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.viewpoint.DRepresentation#getName
+     * <em>Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Name</em>'.
+     * @see org.eclipse.sirius.viewpoint.DRepresentation#getName()
+     * @see #getDRepresentation()
+     * @generated
+     */
+    EAttribute getDRepresentation_Name();
+
+    /**
+     * Returns the meta object for the attribute '{@link org.eclipse.sirius.viewpoint.DRepresentation#getDocumentation
+     * <em>Documentation</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Documentation</em>'.
+     * @see org.eclipse.sirius.viewpoint.DRepresentation#getDocumentation()
+     * @see #getDRepresentation()
+     * @generated
+     */
+    EAttribute getDRepresentation_Documentation();
+
+    /**
      * Returns the meta object for class '{@link org.eclipse.sirius.viewpoint.DRepresentationElement <em>DRepresentation
      * Element</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -3016,6 +3054,22 @@ public interface ViewpointPackage extends EPackage {
          * @generated
          */
         EReference DREPRESENTATION__UI_STATE = ViewpointPackage.eINSTANCE.getDRepresentation_UiState();
+
+        /**
+         * The meta object literal for the '<em><b>Name</b></em>' attribute feature. <!-- begin-user-doc --> <!--
+         * end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute DREPRESENTATION__NAME = ViewpointPackage.eINSTANCE.getDRepresentation_Name();
+
+        /**
+         * The meta object literal for the '<em><b>Documentation</b></em>' attribute feature. <!-- begin-user-doc -->
+         * <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute DREPRESENTATION__DOCUMENTATION = ViewpointPackage.eINSTANCE.getDRepresentation_Documentation();
 
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.viewpoint.impl.DRepresentationElementImpl

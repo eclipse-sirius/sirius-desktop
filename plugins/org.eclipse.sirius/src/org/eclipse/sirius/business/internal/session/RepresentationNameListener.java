@@ -17,12 +17,12 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
- * Post-commit listener which notifies the session manager when a representation
- * is renamed so that session manager listeners (e.g. views) can react).
+ * Post-commit listener which notifies the session manager when a representation is renamed so that session manager
+ * listeners (e.g. views) can react).
  * 
  * @author pcdavid
  */
@@ -37,8 +37,8 @@ public class RepresentationNameListener extends ResourceSetListenerImpl {
      *            the {@link Session}
      */
     public RepresentationNameListener(Session session) {
-        super(NotificationFilter.NOT_TOUCH
-                .and(NotificationFilter.createNotifierTypeFilter(DRepresentation.class).and(NotificationFilter.createFeatureFilter(ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__NAME))));
+        super(NotificationFilter.NOT_TOUCH.and(
+                NotificationFilter.createNotifierTypeFilter(DRepresentationDescriptor.class).and(NotificationFilter.createFeatureFilter(ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__NAME))));
         this.session = session;
         session.getTransactionalEditingDomain().addResourceSetListener(this);
     }
