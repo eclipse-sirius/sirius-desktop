@@ -38,7 +38,6 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -91,6 +90,7 @@ import org.eclipse.sirius.business.internal.session.RepresentationNameListener;
 import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.query.NotificationQuery;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
@@ -251,7 +251,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             while (notifIterator.hasNext()) {
                 Notification notification = notifIterator.next();
                 Object notifier = notification.getNotifier();
-                if (notifier instanceof EObject && !(notification.getFeature() instanceof EStructuralFeature && ((EStructuralFeature) notification.getFeature()).isTransient())) {
+                if (notifier instanceof EObject && !new NotificationQuery(notification).isTransientNotification()) {
                     final DRepresentationDescriptor representationDescriptor = getDRepresentationDescriptor((EObject) notifier);
                     if (representationDescriptor != null) {
                         RecordingCommand changeIdRecordingCommand = new RecordingCommand(transactionalEditingDomain) {
