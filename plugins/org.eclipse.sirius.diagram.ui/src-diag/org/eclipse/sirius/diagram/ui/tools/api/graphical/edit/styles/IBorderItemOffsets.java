@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,10 @@ public interface IBorderItemOffsets {
     Dimension COLLAPSE_FILTER_OFFSET = ICollapseMode.DEFAULT ? ICollapseMode.COLLAPSE_DEFAULT_OFFSET : ICollapseMode.COLLAPSE_MINIMIZED_OFFSET;
 
     /**
-     * Offset to use to remove item.
+     * Offset to use to remove item.<BR>
+     * Generally used for label outside of a node.<BR>
+     * In this case, the behavior of border item locator is slightly different. All the locations around the node are
+     * authorized even if the border node is larger that the parent node.
      */
     Dimension NO_OFFSET = new Dimension(-1, -1);
 }
