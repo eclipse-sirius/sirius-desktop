@@ -864,6 +864,9 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                     text = ((WrappingLabel) labelFigure).getText();
                 } else if (labelFigure instanceof Label) {
                     text = ((Label) labelFigure).getText();
+                } else if (labelFigure instanceof SiriusWrapLabel) {
+                    SiriusWrapLabel label = (SiriusWrapLabel) labelFigure;
+                    text = label.getText();
                 }
 
                 if (text != null) {
