@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2005, 2016 IBM Corporation and others.
+ * Copyright (c) 2005, 2019 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.DBorderedNodeFigure;
@@ -47,8 +48,15 @@ import com.google.common.collect.Lists;
 public class DBorderItemLocator extends BorderItemLocator {
 
     /**
-     * The number of sides. Used to avoid infinite loop exception in there is
-     * too many borderNode relative to the size of the container.
+     * VM argument name to activate the feature of bugzilla 549887 (new authorized locations for label on border) and
+     * associated migration participant. This feature is optional on this maintenance version to avoid an unexpected
+     * migration participant.
+     */
+    public static final String LABEL_ON_BORDER_IMPROVMENT = "org.eclipse.sirius.experimental.labelOnBorderImprovement"; //$NON-NLS-1$
+
+    /**
+     * The number of sides. Used to avoid infinite loop exception in there is too many borderNode relative to the size
+     * of the container.
      */
     private static final int NB_SIDES = 4;
 
@@ -719,47 +727,83 @@ public class DBorderItemLocator extends BorderItemLocator {
             if (suggestedLocation.x != westX) {
                 newX = westX;
             }
-            if (suggestedLocation.y < parentFigureY) {
-                newY = parentFigureY;
-            } else if (suggestedLocation.y > bounds.getBottomLeft().y - borderItemSize.height) {
-                newY = bounds.getBottomLeft().y - borderItemSize.height;
+            if (Boolean.getBoolean(DBorderItemLocator.LABEL_ON_BORDER_IMPROVMENT) && getBorderItemOffset().equals(IBorderItemOffsets.NO_OFFSET)) {
+                // Only check that the border node is "snapped" to the north or south border, and not too far
+                if (suggestedLocation.y + borderItemSize.height < parentFigureY) {
+                    newY = parentFigureY - borderItemSize.height;
+                } else if (suggestedLocation.y > bounds.getBottomRight().y) {
+                    newY = bounds.getBottomRight().y;
+                }
+            } else {
+                if (suggestedLocation.y < parentFigureY) {
+                    newY = parentFigureY;
+                } else if (suggestedLocation.y > bounds.getBottomLeft().y - borderItemSize.height) {
+                    newY = bounds.getBottomLeft().y - borderItemSize.height;
+                }
             }
         } else if (suggestedSide == PositionConstants.EAST) {
             if (suggestedLocation.x != eastX) {
                 newX = eastX;
             }
-            if (suggestedLocation.y < parentFigureY) {
-                newY = parentFigureY;
-            } else if (suggestedLocation.y > bounds.getBottomLeft().y - borderItemSize.height) {
-                newY = bounds.getBottomLeft().y - borderItemSize.height;
+            if (Boolean.getBoolean(DBorderItemLocator.LABEL_ON_BORDER_IMPROVMENT) && getBorderItemOffset().equals(IBorderItemOffsets.NO_OFFSET)) {
+                // Only check that the border node is "snapped" to the north or south border, and not too far
+                if (suggestedLocation.y + borderItemSize.height < parentFigureY) {
+                    newY = parentFigureY - borderItemSize.height;
+                } else if (suggestedLocation.y > bounds.getBottomRight().y) {
+                    newY = bounds.getBottomRight().y;
+                }
+            } else {
+                if (suggestedLocation.y < parentFigureY) {
+                    newY = parentFigureY;
+                } else if (suggestedLocation.y > bounds.getBottomLeft().y - borderItemSize.height) {
+                    newY = bounds.getBottomLeft().y - borderItemSize.height;
+                }
             }
         } else if (suggestedSide == PositionConstants.SOUTH) {
             if (suggestedLocation.y != southY) {
                 newY = southY;
             }
-            if (borderItemSize.width > bounds.width) {
-                // The border item width is larger than the parent item. In that
-                // case, we will center the border item on the south side of the
-                // parent.
-                newX = parentFigureX - (borderItemSize.width - bounds.width) / 2;
-            } else if (suggestedLocation.x < parentFigureX) {
-                newX = parentFigureX;
-            } else if (suggestedLocation.x > bounds.getBottomRight().x - borderItemSize.width) {
-                newX = bounds.getBottomRight().x - borderItemSize.width;
+            if (Boolean.getBoolean(DBorderItemLocator.LABEL_ON_BORDER_IMPROVMENT) && getBorderItemOffset().equals(IBorderItemOffsets.NO_OFFSET)) {
+                // Only check that the border node is "snapped" to the east or west border, and not too far
+                if (suggestedLocation.x + borderItemSize.width < parentFigureX) {
+                    newX = parentFigureX - borderItemSize.width;
+                } else if (suggestedLocation.x > bounds.getBottomRight().x) {
+                    newX = bounds.getBottomRight().x;
+                }
+            } else {
+                if (borderItemSize.width > bounds.width) {
+                    // The border item width is larger than the parent item. In that
+                    // case, we will center the border item on the south side of the
+                    // parent.
+                    newX = parentFigureX - (borderItemSize.width - bounds.width) / 2;
+                } else if (suggestedLocation.x < parentFigureX) {
+                    newX = parentFigureX;
+                } else if (suggestedLocation.x > bounds.getBottomRight().x - borderItemSize.width) {
+                    newX = bounds.getBottomRight().x - borderItemSize.width;
+                }
             }
         } else { // NORTH
             if (suggestedLocation.y != northY) {
                 newY = northY;
             }
-            if (borderItemSize.width > bounds.width) {
-                // The border item width is larger than the parent item. In that
-                // case, we will center the border item on the north side of the
-                // parent.
-                newX = parentFigureX - (borderItemSize.width - bounds.width) / 2;
-            } else if (suggestedLocation.x < parentFigureX) {
-                newX = parentFigureX;
-            } else if (suggestedLocation.x > bounds.getBottomRight().x - borderItemSize.width) {
-                newX = bounds.getBottomRight().x - borderItemSize.width;
+            if (Boolean.getBoolean(DBorderItemLocator.LABEL_ON_BORDER_IMPROVMENT) && getBorderItemOffset().equals(IBorderItemOffsets.NO_OFFSET)) {
+                // Only check that the border node is "snapped" to the east or west border, and not too far
+                if (suggestedLocation.x + borderItemSize.width < parentFigureX) {
+                    newX = parentFigureX - borderItemSize.width;
+                } else if (suggestedLocation.x > bounds.getBottomRight().x) {
+                    newX = bounds.getBottomRight().x;
+                }
+            } else {
+                if (borderItemSize.width > bounds.width) {
+                    // The border item width is larger than the parent item. In that
+                    // case, we will center the border item on the north side of the
+                    // parent.
+                    newX = parentFigureX - (borderItemSize.width - bounds.width) / 2;
+                } else if (suggestedLocation.x < parentFigureX) {
+                    newX = parentFigureX;
+                } else if (suggestedLocation.x > bounds.getBottomRight().x - borderItemSize.width) {
+                    newX = bounds.getBottomRight().x - borderItemSize.width;
+                }
             }
         }
         return new Point(newX, newY);
