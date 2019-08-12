@@ -39,20 +39,11 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * A specific
- * {@link org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator} for
- * Sirius.
+ * A specific {@link org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator} for Sirius.
  * 
  * @author ymortier
  */
 public class DBorderItemLocator extends BorderItemLocator {
-
-    /**
-     * VM argument name to activate the feature of bugzilla 549887 (new authorized locations for label on border) and
-     * associated migration participant. This feature is optional on this maintenance version to avoid an unexpected
-     * migration participant.
-     */
-    public static final String LABEL_ON_BORDER_IMPROVMENT = "org.eclipse.sirius.experimental.labelOnBorderImprovement"; //$NON-NLS-1$
 
     /**
      * The number of sides. Used to avoid infinite loop exception in there is too many borderNode relative to the size
@@ -67,25 +58,22 @@ public class DBorderItemLocator extends BorderItemLocator {
     private Dimension rightBottomOffset;
 
     /**
-     * Indicates whether the position of the border item has already been
-     * calculated. Uses to determine the conflicts with other border items
-     * locations.
+     * Indicates whether the position of the border item has already been calculated. Uses to determine the conflicts
+     * with other border items locations.
      */
     private boolean located;
 
     /**
-     * Indicates if the border item has moved. This determines if the
-     * computation of the position (relocate method) stems from a shift of the
-     * port itself or something else (a resizing of its container, for example).
+     * Indicates if the border item has moved. This determines if the computation of the position (relocate method)
+     * stems from a shift of the port itself or something else (a resizing of its container, for example).
      * 
      */
     private boolean borderItemHasMoved;
 
     /**
      * This list of figures is set during the build of the command in
-     * {@link org.eclipse.sirius.diagram.ui.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy}
-     * to be able to know the figures to ignore when draw2d will launch the
-     * redraw.
+     * {@link org.eclipse.sirius.diagram.ui.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy} to be able to
+     * know the figures to ignore when draw2d will launch the redraw.
      */
     private List<IFigure> figuresToIgnoreDuringNextRelocate = new ArrayList<>();
 
@@ -100,8 +88,7 @@ public class DBorderItemLocator extends BorderItemLocator {
     }
 
     /**
-     * Create a {@link DBorderItemLocator} with the specified item, parentFigure
-     * and constraint.
+     * Create a {@link DBorderItemLocator} with the specified item, parentFigure and constraint.
      * 
      * @param borderItem
      *            the border item.
@@ -115,8 +102,7 @@ public class DBorderItemLocator extends BorderItemLocator {
     }
 
     /**
-     * Create a {@link DBorderItemLocator} with the specified item and
-     * preferredSide.
+     * Create a {@link DBorderItemLocator} with the specified item and preferredSide.
      * 
      * @param parentFigure
      *            the parent figure.
@@ -172,8 +158,7 @@ public class DBorderItemLocator extends BorderItemLocator {
     }
 
     /**
-     * Get the preferred location. If none has been previously set, use the
-     * preferred side to take an initial guess.
+     * Get the preferred location. If none has been previously set, use the preferred side to take an initial guess.
      * 
      * @param borderItem
      *            the border item
@@ -254,11 +239,9 @@ public class DBorderItemLocator extends BorderItemLocator {
     }
 
     /**
-     * The preferred side takes precedence. Search prior on the suggestedSide
-     * then on the following side in the anticlockwise. This is behavior similar
-     * to that of GMF. We could envisage a more intelligent behavior that avoids
-     * passing over other borderedNodes even if it meant a move to the following
-     * side.
+     * The preferred side takes precedence. Search prior on the suggestedSide then on the following side in the
+     * anticlockwise. This is behavior similar to that of GMF. We could envisage a more intelligent behavior that avoids
+     * passing over other borderedNodes even if it meant a move to the following side.
      * 
      * @param suggestedLocation
      *            the suggested location
@@ -271,8 +254,7 @@ public class DBorderItemLocator extends BorderItemLocator {
      * @param portsFiguresToIgnore
      *            the ports figures to ignore
      * @param additionalFiguresForConflictDetection
-     *            Figures that are not brothers of the current figure but that
-     *            must be used for conflict detection
+     *            Figures that are not brothers of the current figure but that must be used for conflict detection
      * @return point
      */
     protected Point locateOnBorder(final Rectangle suggestedLocation, final int suggestedSide, final int circuitCount, final IFigure borderItem, final Collection<IFigure> portsFiguresToIgnore,
@@ -297,10 +279,8 @@ public class DBorderItemLocator extends BorderItemLocator {
     /**
      * Locate the recommendedLocation on the south border :
      * <UL>
-     * <LI>Search alternately to the left and to the right until find an
-     * available space</LI>
-     * <LI>And finally if there is no space on this border search on the east
-     * border.</LI>
+     * <LI>Search alternately to the left and to the right until find an available space</LI>
+     * <LI>And finally if there is no space on this border search on the east border.</LI>
      * </UL>
      * 
      * @param recommendedLocation
@@ -312,8 +292,7 @@ public class DBorderItemLocator extends BorderItemLocator {
      * @param portsFiguresToIgnore
      *            the ports figures to ignore
      * @param additionalFiguresForConflictDetection
-     *            Figures that are not brothers of the current figure but that
-     *            must be used for conflict detection
+     *            Figures that are not brothers of the current figure but that must be used for conflict detection
      * @return the location where the border item can be put
      */
     protected Point locateOnSouthBorder(final Rectangle recommendedLocation, final int circuitCount, final IFigure borderItem, final Collection<IFigure> portsFiguresToIgnore,
@@ -390,7 +369,8 @@ public class DBorderItemLocator extends BorderItemLocator {
         }
         if (resultLocation == null) {
             // south is full, try the next (east).
-            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForNextSide, borderItemSize), next, circuitCount + 1, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForNextSide, borderItemSize), next, circuitCount + 1, borderItem, portsFiguresToIgnore,
+                    additionalFiguresForConflictDetection);
         }
         return resultLocation;
     }
@@ -398,10 +378,8 @@ public class DBorderItemLocator extends BorderItemLocator {
     /**
      * Locate the recommendedLocation on the north border :
      * <UL>
-     * <LI>Search alternately to the left and to the right until find an
-     * available space</LI>
-     * <LI>And finally if there is no space on this border search on the west
-     * border.</LI>
+     * <LI>Search alternately to the left and to the right until find an available space</LI>
+     * <LI>And finally if there is no space on this border search on the west border.</LI>
      * </UL>
      * 
      * @param recommendedLocation
@@ -413,8 +391,7 @@ public class DBorderItemLocator extends BorderItemLocator {
      * @param portsFiguresToIgnore
      *            the ports figures to ignore
      * @param additionalFiguresForConflictDetection
-     *            Figures that are not brothers of the current figure but that
-     *            must be used for conflict detection
+     *            Figures that are not brothers of the current figure but that must be used for conflict detection
      * @return the location where the border item can be put
      */
     protected Point locateOnNorthBorder(final Rectangle recommendedLocation, final int circuitCount, final IFigure borderItem, final Collection<IFigure> portsFiguresToIgnore,
@@ -491,7 +468,8 @@ public class DBorderItemLocator extends BorderItemLocator {
         }
         if (resultLocation == null) {
             // North is full, try the next (west).
-            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForNextSide, borderItemSize), next, circuitCount + 1, borderItem, portsFiguresToIgnore, additionalFiguresForConflictDetection);
+            resultLocation = locateOnBorder(new Rectangle(recommendedLocationForNextSide, borderItemSize), next, circuitCount + 1, borderItem, portsFiguresToIgnore,
+                    additionalFiguresForConflictDetection);
         }
         return resultLocation;
     }
@@ -499,10 +477,8 @@ public class DBorderItemLocator extends BorderItemLocator {
     /**
      * Locate the recommendedLocation on the west border :
      * <UL>
-     * <LI>Search alternately upward and downward until find an available space
-     * </LI>
-     * <LI>And finally if there is no space on this border search on the south
-     * border.</LI>
+     * <LI>Search alternately upward and downward until find an available space</LI>
+     * <LI>And finally if there is no space on this border search on the south border.</LI>
      * </UL>
      * 
      * @param recommendedLocation
@@ -514,8 +490,7 @@ public class DBorderItemLocator extends BorderItemLocator {
      * @param portsFiguresToIgnore
      *            the ports figures to ignore
      * @param additionalFiguresForConflictDetection
-     *            Figures that are not brothers of the current figure but that
-     *            must be used for conflict detection
+     *            Figures that are not brothers of the current figure but that must be used for conflict detection
      * @return the location where the border item can be put
      */
     protected Point locateOnWestBorder(final Rectangle recommendedLocation, final int circuitCount, final IFigure borderItem, final Collection<IFigure> portsFiguresToIgnore,
@@ -600,10 +575,8 @@ public class DBorderItemLocator extends BorderItemLocator {
     /**
      * Locate the recommendedLocation on the east border :
      * <UL>
-     * <LI>Search alternately upward and downward until find an available space
-     * </LI>
-     * <LI>And finally if there is no space on this border search on the north
-     * border.</LI>
+     * <LI>Search alternately upward and downward until find an available space</LI>
+     * <LI>And finally if there is no space on this border search on the north border.</LI>
      * </UL>
      * 
      * @param recommendedLocation
@@ -615,8 +588,7 @@ public class DBorderItemLocator extends BorderItemLocator {
      * @param portsFiguresToIgnore
      *            the ports figures to ignore
      * @param additionalFiguresForConflictDetection
-     *            Figures that are not brothers of the current figure but that
-     *            must be used for conflict detection
+     *            Figures that are not brothers of the current figure but that must be used for conflict detection
      * @return the location where the border item can be put
      */
     protected Point locateOnEastBorder(final Rectangle recommendedLocation, final int circuitCount, final IFigure borderItem, final Collection<IFigure> portsFiguresToIgnore,
@@ -699,8 +671,7 @@ public class DBorderItemLocator extends BorderItemLocator {
     }
 
     /**
-     * Ensure the suggested location actually lies on the parent boundary. The
-     * side takes precedence.
+     * Ensure the suggested location actually lies on the parent boundary. The side takes precedence.
      * 
      * @param suggestedLocation
      *            suggested location
@@ -727,7 +698,7 @@ public class DBorderItemLocator extends BorderItemLocator {
             if (suggestedLocation.x != westX) {
                 newX = westX;
             }
-            if (Boolean.getBoolean(DBorderItemLocator.LABEL_ON_BORDER_IMPROVMENT) && getBorderItemOffset().equals(IBorderItemOffsets.NO_OFFSET)) {
+            if (getBorderItemOffset().equals(IBorderItemOffsets.NO_OFFSET)) {
                 // Only check that the border node is "snapped" to the north or south border, and not too far
                 if (suggestedLocation.y + borderItemSize.height < parentFigureY) {
                     newY = parentFigureY - borderItemSize.height;
@@ -745,7 +716,7 @@ public class DBorderItemLocator extends BorderItemLocator {
             if (suggestedLocation.x != eastX) {
                 newX = eastX;
             }
-            if (Boolean.getBoolean(DBorderItemLocator.LABEL_ON_BORDER_IMPROVMENT) && getBorderItemOffset().equals(IBorderItemOffsets.NO_OFFSET)) {
+            if (getBorderItemOffset().equals(IBorderItemOffsets.NO_OFFSET)) {
                 // Only check that the border node is "snapped" to the north or south border, and not too far
                 if (suggestedLocation.y + borderItemSize.height < parentFigureY) {
                     newY = parentFigureY - borderItemSize.height;
@@ -763,7 +734,7 @@ public class DBorderItemLocator extends BorderItemLocator {
             if (suggestedLocation.y != southY) {
                 newY = southY;
             }
-            if (Boolean.getBoolean(DBorderItemLocator.LABEL_ON_BORDER_IMPROVMENT) && getBorderItemOffset().equals(IBorderItemOffsets.NO_OFFSET)) {
+            if (getBorderItemOffset().equals(IBorderItemOffsets.NO_OFFSET)) {
                 // Only check that the border node is "snapped" to the east or west border, and not too far
                 if (suggestedLocation.x + borderItemSize.width < parentFigureX) {
                     newX = parentFigureX - borderItemSize.width;
@@ -786,7 +757,7 @@ public class DBorderItemLocator extends BorderItemLocator {
             if (suggestedLocation.y != northY) {
                 newY = northY;
             }
-            if (Boolean.getBoolean(DBorderItemLocator.LABEL_ON_BORDER_IMPROVMENT) && getBorderItemOffset().equals(IBorderItemOffsets.NO_OFFSET)) {
+            if (getBorderItemOffset().equals(IBorderItemOffsets.NO_OFFSET)) {
                 // Only check that the border node is "snapped" to the east or west border, and not too far
                 if (suggestedLocation.x + borderItemSize.width < parentFigureX) {
                     newX = parentFigureX - borderItemSize.width;
@@ -810,8 +781,7 @@ public class DBorderItemLocator extends BorderItemLocator {
     }
 
     /**
-     * Determine if the the given point conflicts with the position of an
-     * existing borderItemFigure.
+     * Determine if the the given point conflicts with the position of an existing borderItemFigure.
      * 
      * @param recommendedRect
      *            The desired location
@@ -820,10 +790,9 @@ public class DBorderItemLocator extends BorderItemLocator {
      * @param portsFiguresToIgnore
      *            the ports figures to ignore
      * @param additionalFiguresForConflictDetection
-     *            Figures that are not brothers of the current figure but that
-     *            must be used for conflict detection
-     * @return the optional Rectangle of the border item that is in conflict
-     *         with the given bordered node (a none option)
+     *            Figures that are not brothers of the current figure but that must be used for conflict detection
+     * @return the optional Rectangle of the border item that is in conflict with the given bordered node (a none
+     *         option)
      */
     protected Option<Rectangle> conflicts(final Rectangle recommendedRect, final IFigure targetBorderItem, final Collection<IFigure> portsFiguresToIgnore,
             List<IFigure> additionalFiguresForConflictDetection) {
@@ -858,8 +827,7 @@ public class DBorderItemLocator extends BorderItemLocator {
     }
 
     /**
-     * Get the figures of the brother's border nodes of
-     * <code>targetBorderItem</code>.
+     * Get the figures of the brother's border nodes of <code>targetBorderItem</code>.
      * 
      * @param targetBorderItem
      *            Contextual border item.
@@ -873,19 +841,16 @@ public class DBorderItemLocator extends BorderItemLocator {
     }
 
     /**
-     * Determine if the the given rectangle conflicts with the position of
-     * <code>figuresToCheck</code>.
+     * Determine if the the given rectangle conflicts with the position of <code>figuresToCheck</code>.
      * 
      * @param recommendedRect
      *            The desired bounds
      * @param figuresToCheck
-     *            Other figures to check if they conflict the
-     *            <code>recommendedRect</code>
+     *            Other figures to check if they conflict the <code>recommendedRect</code>
      * @param portsFiguresToIgnore
-     *            the ports figures to ignore, even if they are in
-     *            <code>figuresToCheck</code>
-     * @return the optional Rectangle of the border item that is in conflict
-     *         with the given bordered node (none option if no conflict)
+     *            the ports figures to ignore, even if they are in <code>figuresToCheck</code>
+     * @return the optional Rectangle of the border item that is in conflict with the given bordered node (none option
+     *         if no conflict)
      */
     protected Option<Rectangle> conflicts(final Rectangle recommendedRect, List<IFigure> figuresToCheck, final Collection<IFigure> portsFiguresToIgnore) {
         final ListIterator<IFigure> iterator = figuresToCheck.listIterator();
@@ -961,10 +926,8 @@ public class DBorderItemLocator extends BorderItemLocator {
      * @param parentBorder
      *            the parent border
      * @param authorizedSides
-     *            the authorized sides. a BitSet using the
-     *            {@link PositionConstants} values as index. All sides are
-     *            considered as authorized if the bitSet is empty or the value
-     *            is null.
+     *            the authorized sides. a BitSet using the {@link PositionConstants} values as index. All sides are
+     *            considered as authorized if the bitSet is empty or the value is null.
      * @return draw constant
      */
     private static int findClosestSideOfParent(final Rectangle proposedLocation, final Rectangle parentBorder, BitSet authorizedSides) {
@@ -1150,11 +1113,10 @@ public class DBorderItemLocator extends BorderItemLocator {
      * @param borderItem
      *            the border item in question
      * @param figuresToIgnore
-     *            list of figures to ignore during conflict detection. This list
-     *            must contain at least the <code>borderItem</code>.
+     *            list of figures to ignore during conflict detection. This list must contain at least the
+     *            <code>borderItem</code>.
      * @param additionalFiguresForConflictDetection
-     *            Figures that are not brothers of the current figure but that
-     *            must be used for conflict detection
+     *            Figures that are not brothers of the current figure but that must be used for conflict detection
      * @return a rectangle containing the valid location
      */
     public Rectangle getValidLocation(Rectangle proposedLocation, IFigure borderItem, Collection<IFigure> figuresToIgnore, List<IFigure> additionalFiguresForConflictDetection) {
@@ -1167,11 +1129,9 @@ public class DBorderItemLocator extends BorderItemLocator {
     }
 
     /**
-     * This method must be used only when commands are build to move a bordered
-     * node (for example in
-     * {@link org.eclipse.sirius.diagram.ui.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy}
-     * ) after calling {@link #getValidLocation(Rectangle, IFigure, Collection,
-     * List))} .
+     * This method must be used only when commands are build to move a bordered node (for example in
+     * {@link org.eclipse.sirius.diagram.ui.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy} ) after
+     * calling {@link #getValidLocation(Rectangle, IFigure, Collection, List))} .
      * 
      * @param figuresToIgnore
      *            The list of figures to ignore.
@@ -1181,11 +1141,10 @@ public class DBorderItemLocator extends BorderItemLocator {
     }
 
     /**
-     * This method set to false the borderItemHasMoved field. It must be used
-     * carefully only in case where {@link #setConstraint(Rectangle)} is called
-     * to compute temporary a
-     * {@link #getValidLocation(Rectangle, IFigure, Collection, List)}, one time
-     * with a new value and just after with the old value.
+     * This method set to false the borderItemHasMoved field. It must be used carefully only in case where
+     * {@link #setConstraint(Rectangle)} is called to compute temporary a
+     * {@link #getValidLocation(Rectangle, IFigure, Collection, List)}, one time with a new value and just after with
+     * the old value.
      */
     public void resetBorderItemMovedState() {
         this.borderItemHasMoved = false;
