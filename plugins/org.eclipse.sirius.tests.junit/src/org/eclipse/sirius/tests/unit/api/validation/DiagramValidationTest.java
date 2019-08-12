@@ -298,6 +298,8 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
 
     @Override
     protected void tearDown() throws Exception {
+        DiagramPlugin.getDefault().getLog().removeLogListener(logListener);
+        DiagramUIPlugin.getPlugin().getLog().removeLogListener(logListener);
         DialectUIManager.INSTANCE.closeEditor(editorPart, false);
         TestsUtil.synchronizationWithUIThread();
 
