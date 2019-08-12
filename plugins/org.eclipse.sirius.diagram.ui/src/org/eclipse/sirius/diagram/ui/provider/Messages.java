@@ -671,6 +671,12 @@ public final class Messages {
     public static String ItemProvider_relationBasedEdge;
 
     @TranslatableMessage
+    public static String LabelOnBorderMigrationParticipant_labelsModified;
+
+    @TranslatableMessage
+    public static String LabelOnBorderMigrationParticipant_title;
+
+    @TranslatableMessage
     public static String LaunchBehaviorContributionItem_launchBehaviorButtonLabel;
 
     @TranslatableMessage

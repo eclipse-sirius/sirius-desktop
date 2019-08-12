@@ -1966,6 +1966,10 @@
             class="org.eclipse.sirius.diagram.ui.business.internal.migration.RepresentationLinkMigrationParticipant"
             kind="RepresentationsFile">
       </participant>
+      <participant
+            class="org.eclipse.sirius.diagram.ui.business.internal.migration.LabelOnBorderMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
    </extension>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">

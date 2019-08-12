@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_6hl6QLndEemuvu8vmUwZPQ" selectedViews="_7SaTMLndEemuvu8vmUwZPQ" version="14.1.0.201810161215">
+    <semanticResources>My.ecore</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_7SaTMLndEemuvu8vmUwZPQ">
+      <viewpoint xmi:type="description:Viewpoint" href="My.odesign#//@ownedViewpoints[name='LabelOnBorder']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_AQwIUL0GEemzlsSce7OHuA" name="diagramFreshlyCreated" repPath="#_APjOcL0GEemzlsSce7OHuA">
+        <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='LabelOnBorder']/@ownedRepresentations[name='diagramWithLabelsOnBorder']"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_rRaLN70GEemzlsSce7OHuA" name="diagramWithMovedLabels" repPath="#_rRZkEL0GEemzlsSce7OHuA">
+        <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='LabelOnBorder']/@ownedRepresentations[name='diagramWithLabelsOnBorder']"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_APjOcL0GEemzlsSce7OHuA" name="diagramFreshlyCreated">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_AQpaoL0GEemzlsSce7OHuA" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_AQpaob0GEemzlsSce7OHuA"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_AQ7HcL0GEemzlsSce7OHuA" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_AQ7Hcb0GEemzlsSce7OHuA" type="Sirius" element="_APjOcL0GEemzlsSce7OHuA" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_ARGGkL0GEemzlsSce7OHuA" type="2001" element="_AQebgL0GEemzlsSce7OHuA">
+          <children xmi:type="notation:Node" xmi:id="_ARKYAL0GEemzlsSce7OHuA" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_50dk470GEemzlsSce7OHuA" y="-21"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_EiId8L0GEemzlsSce7OHuA" type="3001" element="_AQm-YL0GEemzlsSce7OHuA">
+            <children xmi:type="notation:Node" xmi:id="_EiJFAL0GEemzlsSce7OHuA" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_50dk4r0GEemzlsSce7OHuA" x="-10" y="6"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_EiLhQ70GEemzlsSce7OHuA" type="3003" element="_AQm-Yb0GEemzlsSce7OHuA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_EiLhRL0GEemzlsSce7OHuA" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EiLhRb0GEemzlsSce7OHuA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_EiId8b0GEemzlsSce7OHuA" fontName="Segoe UI" fontHeight="12"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_50dk4b0GEemzlsSce7OHuA" x="-22" y="2" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_EiLhQL0GEemzlsSce7OHuA" type="3003" element="_AQjUAL0GEemzlsSce7OHuA">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_EiLhQb0GEemzlsSce7OHuA" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EiLhQr0GEemzlsSce7OHuA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_ARGGkb0GEemzlsSce7OHuA" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_50dk4L0GEemzlsSce7OHuA" x="50" y="50" width="80" height="80"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_AQ7Hcr0GEemzlsSce7OHuA"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_AQebgL0GEemzlsSce7OHuA" name="my.first.class" width="8" height="8" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="My.ecore#//my.first.class"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//my.first.class"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_AQm-YL0GEemzlsSce7OHuA" name="my.first.attribute" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EAttribute" href="My.ecore#//my.first.class/my.first.attribute"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//my.first.class/my.first.attribute"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_AQm-Yb0GEemzlsSce7OHuA" labelSize="12" color="39,76,114">
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='LabelOnBorder']/@ownedRepresentations[name='diagramWithLabelsOnBorder']/@defaultLayer/@nodeMappings[name='classes']/@borderedNodeMappings[name='attributes']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='LabelOnBorder']/@ownedRepresentations[name='diagramWithLabelsOnBorder']/@defaultLayer/@nodeMappings[name='classes']/@borderedNodeMappings[name='attributes']"/>
+      </ownedBorderedNodes>
+      <ownedStyle xmi:type="diagram:Square" uid="_AQjUAL0GEemzlsSce7OHuA" labelSize="12" borderColor="114,159,207" color="194,239,255">
+        <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='LabelOnBorder']/@ownedRepresentations[name='diagramWithLabelsOnBorder']/@defaultLayer/@nodeMappings[name='classes']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='LabelOnBorder']/@ownedRepresentations[name='diagramWithLabelsOnBorder']/@defaultLayer/@nodeMappings[name='classes']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='LabelOnBorder']/@ownedRepresentations[name='diagramWithLabelsOnBorder']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_APtmgL0GEemzlsSce7OHuA"/>
+    <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='LabelOnBorder']/@ownedRepresentations[name='diagramWithLabelsOnBorder']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_rRZkEL0GEemzlsSce7OHuA" name="diagramWithMovedLabels">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_rRZkEb0GEemzlsSce7OHuA" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_rRZkEr0GEemzlsSce7OHuA"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_rRZkE70GEemzlsSce7OHuA" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_rRaLJL0GEemzlsSce7OHuA" type="Sirius" element="_rRZkEL0GEemzlsSce7OHuA" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_rRaLJb0GEemzlsSce7OHuA" type="2001" element="_rRZkFL0GEemzlsSce7OHuA">
+          <children xmi:type="notation:Node" xmi:id="_rRaLJr0GEemzlsSce7OHuA" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_rRaLJ70GEemzlsSce7OHuA" x="-13" y="81"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_rRaLKL0GEemzlsSce7OHuA" type="3001" element="_rRaLIL0GEemzlsSce7OHuA">
+            <children xmi:type="notation:Node" xmi:id="_rRaLKb0GEemzlsSce7OHuA" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_rRaLKr0GEemzlsSce7OHuA" x="-51" y="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_rRaLK70GEemzlsSce7OHuA" type="3003" element="_rRaLIb0GEemzlsSce7OHuA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_rRaLLL0GEemzlsSce7OHuA" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rRaLLb0GEemzlsSce7OHuA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_rRaLLr0GEemzlsSce7OHuA" fontName="Segoe UI" fontHeight="12"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rRaLL70GEemzlsSce7OHuA" x="-22" y="2" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_rRaLML0GEemzlsSce7OHuA" type="3003" element="_rRaLIr0GEemzlsSce7OHuA">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_rRaLMb0GEemzlsSce7OHuA" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rRaLMr0GEemzlsSce7OHuA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_rRaLM70GEemzlsSce7OHuA" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rRaLNL0GEemzlsSce7OHuA" x="50" y="50" width="80" height="80"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_rRaLNb0GEemzlsSce7OHuA"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_rRZkFL0GEemzlsSce7OHuA" name="my.first.class" width="8" height="8" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="My.ecore#//my.first.class"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//my.first.class"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_rRaLIL0GEemzlsSce7OHuA" name="my.first.attribute" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EAttribute" href="My.ecore#//my.first.class/my.first.attribute"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//my.first.class/my.first.attribute"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_rRaLIb0GEemzlsSce7OHuA" labelSize="12" color="39,76,114">
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='LabelOnBorder']/@ownedRepresentations[name='diagramWithLabelsOnBorder']/@defaultLayer/@nodeMappings[name='classes']/@borderedNodeMappings[name='attributes']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='LabelOnBorder']/@ownedRepresentations[name='diagramWithLabelsOnBorder']/@defaultLayer/@nodeMappings[name='classes']/@borderedNodeMappings[name='attributes']"/>
+      </ownedBorderedNodes>
+      <ownedStyle xmi:type="diagram:Square" uid="_rRaLIr0GEemzlsSce7OHuA" labelSize="12" borderColor="114,159,207" color="194,239,255">
+        <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='LabelOnBorder']/@ownedRepresentations[name='diagramWithLabelsOnBorder']/@defaultLayer/@nodeMappings[name='classes']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='LabelOnBorder']/@ownedRepresentations[name='diagramWithLabelsOnBorder']/@defaultLayer/@nodeMappings[name='classes']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='LabelOnBorder']/@ownedRepresentations[name='diagramWithLabelsOnBorder']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_rRaLI70GEemzlsSce7OHuA"/>
+    <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='LabelOnBorder']/@ownedRepresentations[name='diagramWithLabelsOnBorder']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>
