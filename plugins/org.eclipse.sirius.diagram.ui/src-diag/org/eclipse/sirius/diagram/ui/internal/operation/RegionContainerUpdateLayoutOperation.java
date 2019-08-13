@@ -1,6 +1,6 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2018 THALES GLOBAL SERVICES and others.
- * This program and the accompanying materials
+ * Copyright (c) 2013, 2019 THALES GLOBAL SERVICES and others.
+ *  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
@@ -12,31 +12,21 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.operation;
 
-import java.io.File;
-import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.core.runtime.Path;
-import org.eclipse.draw2d.FigureUtilities;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
-import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationFactory;
-import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.sirius.common.tools.api.resource.FileProvider;
-import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.WorkspaceImage;
@@ -44,7 +34,6 @@ import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
@@ -52,18 +41,12 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeC
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
-import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AlphaDropShadowBorder;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IContainerLabelOffsets;
-import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
-import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
-import org.eclipse.swt.SWTException;
-import org.eclipse.swt.graphics.Font;
-import org.eclipse.swt.graphics.Image;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Iterables;
@@ -366,8 +349,8 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
         // headerHeight includes the title height (with the icon), the label
         // offset, the 1 pixel separator line,
         int headerHeight = 0;
+        Dimension labelDimension = GMFHelper.getLabelDimension(regionsContainer, new Dimension(20, 12));
         EObject element = regionsContainer.getElement();
-        ViewQuery viewQuery = new ViewQuery(regionsContainer);
         int borderSize = 0;
         boolean needShadowBorder = true;
         if (element instanceof DNodeContainer) {
@@ -381,49 +364,7 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
             }
             // Get header size (title and all associated margin)
             if (!new DDiagramElementQuery(dnc).isLabelHidden()) {
-                int titleHeight = 0;
-                if (siriusStyle instanceof BasicLabelStyle) {
-                    BasicLabelStyle bls = (BasicLabelStyle) siriusStyle;
-                    Font defaultFont = VisualBindingManager.getDefault().getFontFromLabelStyle(bls, (String) viewQuery.getDefaultValue(NotationPackage.Literals.FONT_STYLE__FONT_NAME));
-                    Dimension titleDimension;
-                    try {
-                        titleDimension = FigureUtilities.getStringExtents(dnc.getName(), defaultFont);
-                    } catch (SWTException e) {
-                        // Probably an "Invalid thread access" (FigureUtilities
-                        // creates a new Shell to compute the label size). So in
-                        // this case, we use a default size.
-                        titleDimension = new Dimension(20, 12);
-                    }
-                    titleHeight = titleDimension.height;
-                    if (bls.isShowIcon()) {
-                        // Also consider the icon size
-                        Image icon = null;
-                        ImageDescriptor descriptor = null;
-                        EObject target = dnc.getTarget();
-                        if (!StringUtil.isEmpty(bls.getIconPath())) {
-                            String iconPath = bls.getIconPath();
-                            final File imageFile = FileProvider.getDefault().getFile(new Path(iconPath));
-                            if (imageFile != null && imageFile.exists() && imageFile.canRead()) {
-                                try {
-                                    descriptor = DiagramUIPlugin.Implementation.findImageDescriptor(imageFile.toURI().toURL());
-                                } catch (MalformedURLException e) {
-                                    // Do nothing here
-                                }
-                            }
-                        } else if (target != null) {
-                            final IItemLabelProvider labelProvider = (IItemLabelProvider) DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory().adapt(target, IItemLabelProvider.class);
-                            if (labelProvider != null) {
-                                descriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(labelProvider.getImage(target));
-                            }
-                        }
-
-                        if (descriptor == null) {
-                            descriptor = ImageDescriptor.getMissingImageDescriptor();
-                        }
-                        icon = DiagramUIPlugin.getPlugin().getImage(descriptor);
-                        titleHeight = Math.max(titleHeight, icon.getBounds().height);
-                    }
-                }
+                int titleHeight = labelDimension.height();
                 int separatorLineHeight = 1;
                 int labelOffset = IContainerLabelOffsets.LABEL_OFFSET;
                 // As in
