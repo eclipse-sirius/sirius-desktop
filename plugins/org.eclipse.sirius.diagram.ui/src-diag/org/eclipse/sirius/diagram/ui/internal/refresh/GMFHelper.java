@@ -12,12 +12,16 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.refresh;
 
+import java.io.File;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.runtime.Path;
 import org.eclipse.draw2d.Connection;
+import org.eclipse.draw2d.FigureUtilities;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
@@ -25,6 +29,8 @@ import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.edit.provider.IItemLabelProvider;
+import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
@@ -35,18 +41,24 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
+import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.common.tools.api.resource.FileProvider;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.NodeQuery;
@@ -60,6 +72,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.borderednode.CanonicalDBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.ext.base.Option;
@@ -69,7 +82,13 @@ import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.LabelBorderStyleIds;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
+import org.eclipse.sirius.ui.tools.api.color.VisualBindingManager;
+import org.eclipse.sirius.viewpoint.BasicLabelStyle;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
+import org.eclipse.swt.SWTException;
+import org.eclipse.swt.graphics.Font;
+import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.IEditorPart;
 
 import com.google.common.collect.Iterables;
@@ -89,6 +108,12 @@ public final class GMFHelper {
      * (1px)
      */
     private static Point CONTAINER_INSETS = new Point(AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN, IContainerLabelOffsets.LABEL_OFFSET);
+
+    /**
+     * The gap in pixels between the Label's icon and its text
+     * (org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel.getIconTextGap()).
+     */
+    private static final int ICON_TEXT_GAP = 3;
 
     private GMFHelper() {
         // Helper to not instantiate
@@ -479,9 +504,8 @@ public final class GMFHelper {
                     }
                 } else {
 
-                    // Make a default size for label (this size is purely an
-                    // average estimate)
-                    replaceAutoSize(node, bounds, useFigureForAutoSizeConstraint, new Dimension(50, 20));
+                    // Make a default size for label (this size is purely an average estimate)
+                    replaceAutoSize(node, bounds, useFigureForAutoSizeConstraint, getLabelDimension(node, new Dimension(50, 20)));
                 }
             } else {
                 replaceAutoSize(node, bounds, useFigureForAutoSizeConstraint, null);
@@ -763,5 +787,72 @@ public final class GMFHelper {
             return result;
         }
         throw new IllegalArgumentException(Messages.GMFHelper_invalidEdgeModelAndFigure);
+    }
+
+    /**
+     * Compute the size of a label. This method uses "UI data" to retrieve the label size. It must be called in UI
+     * thread to have right result, otherwise <code>defaultDimension</code> will be used.
+     * 
+     * @param node
+     *            the node, corresponding to a DNodeNameEditPart, whose size to compute.
+     * @param defaultDimension
+     *            the default dimension to use if it is not possible to get a "real" size
+     * @return the size of the label.
+     */
+    public static Dimension getLabelDimension(Node node, Dimension defaultDimension) {
+        Dimension labelSize = defaultDimension;
+        ViewQuery viewQuery = new ViewQuery(node);
+        EObject element = node.getElement();
+        if (element instanceof DDiagramElement) {
+            DDiagramElement dDiagramElement = (DDiagramElement) element;
+            org.eclipse.sirius.viewpoint.Style siriusStyle = dDiagramElement.getStyle();
+            if (!new DDiagramElementQuery(dDiagramElement).isLabelHidden()) {
+                if (siriusStyle instanceof BasicLabelStyle) {
+                    BasicLabelStyle bls = (BasicLabelStyle) siriusStyle;
+                    Font defaultFont = VisualBindingManager.getDefault().getFontFromLabelStyle(bls, (String) viewQuery.getDefaultValue(NotationPackage.Literals.FONT_STYLE__FONT_NAME));
+                    try {
+                        labelSize = FigureUtilities.getStringExtents(dDiagramElement.getName(), defaultFont);
+                        if (bls.isShowIcon()) {
+                            // Also consider the icon size
+                            Dimension iconDimension = getIconDimension(dDiagramElement, bls);
+                            labelSize.setHeight(Math.max(labelSize.height(), iconDimension.height));
+                            labelSize.setWidth(labelSize.width() + ICON_TEXT_GAP + iconDimension.width);
+                        }
+                    } catch (SWTException e) {
+                        // Probably an "Invalid thread access" (FigureUtilities
+                        // creates a new Shell to compute the label size). So in
+                        // this case, we use the default size.
+                    }
+                }
+            }
+        }
+        return labelSize;
+    }
+
+    private static Dimension getIconDimension(DSemanticDecorator dSemanticDecorator, BasicLabelStyle bls) {
+        ImageDescriptor descriptor = null;
+        EObject target = dSemanticDecorator.getTarget();
+        if (!StringUtil.isEmpty(bls.getIconPath())) {
+            String iconPath = bls.getIconPath();
+            final File imageFile = FileProvider.getDefault().getFile(new Path(iconPath));
+            if (imageFile != null && imageFile.exists() && imageFile.canRead()) {
+                try {
+                    descriptor = DiagramUIPlugin.Implementation.findImageDescriptor(imageFile.toURI().toURL());
+                } catch (MalformedURLException e) {
+                    // Do nothing here
+                }
+            }
+        } else if (target != null) {
+            final IItemLabelProvider labelProvider = (IItemLabelProvider) DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory().adapt(target, IItemLabelProvider.class);
+            if (labelProvider != null) {
+                descriptor = ExtendedImageRegistry.getInstance().getImageDescriptor(labelProvider.getImage(target));
+            }
+        }
+
+        if (descriptor == null) {
+            descriptor = ImageDescriptor.getMissingImageDescriptor();
+        }
+        Image icon = DiagramUIPlugin.getPlugin().getImage(descriptor);
+        return new Dimension(icon.getBounds().width, icon.getBounds().height);
     }
 }
