@@ -717,7 +717,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                     parentLayoutNode.getLabels().add(newNodeLabel);
                 }
             }
-            if (maxChildShadowBorderSize >= 0) {
+            if (maxChildShadowBorderSize >= 0 && currentEditPart.getNotationView() instanceof Node) {
                 // maxChildShadowBorderSize == 0 : There is at least one child, so we set insets of this container
                 // maxChildShadowBorderSize > 0 : There is at least one child with a shadow border, we add this border size to the insets to avoid potential scrollbar appearance during the layout application (org.eclipse.sirius.diagram.elk.GmfLayoutEditPolicy.addShapeLayout(GmfLayoutCommand, ElkShape, GraphicalEditPart, double)).
                 Dimension topLeftInsets = GMFHelper.getContainerTopLeftInsets((Node) currentEditPart.getNotationView(), true);
