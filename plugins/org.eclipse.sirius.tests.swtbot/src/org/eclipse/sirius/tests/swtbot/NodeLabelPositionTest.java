@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -171,7 +171,7 @@ public class NodeLabelPositionTest extends AbstractSiriusSwtBotGefTestCase {
 
         // resize the edit part
         Rectangle bounds = editor.getBounds(editPart1);
-        editor.drag(bounds.getBottomRight(), 150, 150);
+        editor.drag(bounds.getBottomRight(), 160, 160);
         SWTBotUtils.waitAllUiEvents();
         checkBorderLabelPositionCenteredUnderParent(editPart1, new Point(150, 150));
     }
