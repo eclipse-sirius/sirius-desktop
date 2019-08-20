@@ -149,7 +149,8 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
 
         // check whether the location has changed
         Point newLocation = new Point((int) (elkShape.getX() * scale), (int) (elkShape.getY() * scale));
-        if (view instanceof Node) {
+        // Border nodes are not concerned by insets.
+        if (view instanceof Node && !(elkShape instanceof ElkPort)) {
             newLocation.translate(GMFHelper.getContainerTopLeftInsets((Node) view, true).getNegated());
         }
         Object oldx = ViewUtil.getStructuralFeatureValue(view, NotationPackage.eINSTANCE.getLocation_X());
