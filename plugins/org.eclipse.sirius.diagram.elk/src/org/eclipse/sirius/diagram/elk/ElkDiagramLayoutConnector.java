@@ -28,6 +28,7 @@ import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
+import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Point;
@@ -1130,8 +1131,13 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         edgeSection.setEndX(lastPoint.x - offset.x);
         edgeSection.setEndY(lastPoint.y - offset.y);
 
-        // We would set the modified flag to false here, but that doesn't exist
-        // anymore
+        //
+        if (figure instanceof Shape) {
+            double currentSize = ((Shape) figure).getLineWidth();
+            if (currentSize != CoreOptions.EDGE_THICKNESS.getDefault()) {
+                edge.setProperty(CoreOptions.EDGE_THICKNESS, currentSize);
+            }
+        }
     }
 
     /**
