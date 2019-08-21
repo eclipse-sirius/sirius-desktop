@@ -118,8 +118,23 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
                     }
                 }
 
-                // TODO Make this configurable?
-                command.setObliqueRouting(true);
+                // TODO In ELK example, oblique routing is handled globally for all command. We can imagine to have
+                // several kind of routing. Currently in ELK, the routing style is on the parent and not on each
+                // edges... For the time being, we set the routing style according to the property value of the root
+                // element.
+                // Currently, only oblique value is considered by GmfLayoutCommand. If obliqueValue is false, the
+                // existing value in Sirius is conserved.
+                if (layoutRequest.getElements().size() > 0) {
+                    ElkNode rootElement = ElkGraphUtil.containingGraph(layoutRequest.getElements().get(0).getFirst());
+                    if (rootElement != null) {
+                        EdgeRouting edgeRouting = rootElement.getProperty(CoreOptions.EDGE_ROUTING);
+                        if (edgeRouting.equals(EdgeRouting.ORTHOGONAL)) {
+                            command.setObliqueRouting(false);
+                        } else {
+                            command.setObliqueRouting(true);
+                        }
+                    }
+                }
 
                 pointListMap.clear();
                 return new ICommandProxy(command);
