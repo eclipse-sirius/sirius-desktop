@@ -44,6 +44,7 @@ import org.eclipse.elk.core.math.ElkPadding;
 import org.eclipse.elk.core.math.KVector;
 import org.eclipse.elk.core.options.CoreOptions;
 import org.eclipse.elk.core.options.EdgeLabelPlacement;
+import org.eclipse.elk.core.options.NodeLabelPlacement;
 import org.eclipse.elk.core.service.ElkServicePlugin;
 import org.eclipse.elk.core.service.IDiagramLayoutConnector;
 import org.eclipse.elk.core.service.LayoutMapping;
@@ -111,6 +112,9 @@ import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AlphaDropShadowBorder;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
+import org.eclipse.sirius.viewpoint.LabelAlignment;
+import org.eclipse.sirius.viewpoint.LabelStyle;
+import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.swt.SWTException;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
@@ -999,8 +1003,38 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 // ignore exception and leave the label size to (0, 0)
             }
 
-            // We would set the modified flag to false here, but that doesn't
-            // exist anymore
+            // Set globally the location of the label according to the style
+            NodeLabelPlacement insideLabelPlacement = NodeLabelPlacement.INSIDE;
+            NodeLabelPlacement verticalNodeLabelPlacement = NodeLabelPlacement.V_TOP;
+            NodeLabelPlacement horizontalLabelPlacement = NodeLabelPlacement.H_CENTER;
+
+            EObject siriusObject;
+            if (labelEditPart instanceof IAbstractDiagramNodeEditPart) {
+                siriusObject = labelEditPart.resolveSemanticElement();
+            } else {
+                siriusObject = nodeEditPart.resolveSemanticElement();
+            }
+            if (siriusObject instanceof DDiagramElement) {
+                DDiagramElement dde = (DDiagramElement) siriusObject;
+                Style style = dde.getStyle();
+                if (style instanceof LabelStyle) {
+                    LabelAlignment labelAlignment = ((LabelStyle) style).getLabelAlignment();
+                    if (labelAlignment.equals(LabelAlignment.LEFT)) {
+                        horizontalLabelPlacement = NodeLabelPlacement.H_LEFT;
+                    } else if (labelAlignment.equals(LabelAlignment.RIGHT)) {
+                        horizontalLabelPlacement = NodeLabelPlacement.H_RIGHT;
+                    }
+                }
+                if (style instanceof NodeStyle) {
+                    if (((NodeStyle) style).getLabelPosition().equals(LabelPosition.BORDER_LITERAL)) {
+                        insideLabelPlacement = NodeLabelPlacement.OUTSIDE;
+                    }
+                    verticalNodeLabelPlacement = NodeLabelPlacement.V_CENTER;
+                }
+            }
+            EnumSet<NodeLabelPlacement> enumSet = EnumSet.of(insideLabelPlacement, horizontalLabelPlacement, verticalNodeLabelPlacement);
+            label.setProperty(CoreOptions.NODE_LABELS_PLACEMENT, enumSet);
+
             return label;
         }
         return null;
