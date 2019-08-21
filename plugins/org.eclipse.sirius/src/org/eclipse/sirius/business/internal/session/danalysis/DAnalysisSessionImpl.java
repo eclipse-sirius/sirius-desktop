@@ -121,7 +121,6 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl;
@@ -198,6 +197,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     private RepresentationsChangeAdapter representationsChangeAdapter;
 
     private RepresentationNameListener representationNameListener;
+
+    private DRepresentationChangeListener dRepresentationChangeListener;
+
+    private ChangeIdUpdaterListener changeIdUpdaterListener;
 
     /**
      * Listener that clears the sub diagram decoration descriptors when a {@link DRepresentation} is either created or
@@ -285,7 +288,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 Object notifier = notification.getNotifier();
                 boolean isEObject = notifier instanceof EObject;
                 boolean isTransient = notification.getFeature() instanceof EStructuralFeature && ((EStructuralFeature) notification.getFeature()).isTransient();
-                if (isEObject && !isTransient && notifier instanceof IdentifiedElement) {
+                if (isEObject && !isTransient && ViewpointPackage.Literals.IDENTIFIED_ELEMENT.isInstance(notifier)) {
                     final DRepresentationDescriptor representationDescriptor = getDRepresentationDescriptor((EObject) notifier);
                     if (representationDescriptor != null) {
                         descriptorsToUpdate.add(representationDescriptor);
@@ -372,8 +375,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         setResourceCollector(new LocalResourceCollector(getTransactionalEditingDomain().getResourceSet()));
         setDeferSaveToPostCommit(true);
         setSaveInExclusiveTransaction(true);
-        getTransactionalEditingDomain().addResourceSetListener(new DRepresentationChangeListener(this));
-        getTransactionalEditingDomain().addResourceSetListener(new ChangeIdUpdaterListener());
+        dRepresentationChangeListener = new DRepresentationChangeListener(this);
+        getTransactionalEditingDomain().addResourceSetListener(dRepresentationChangeListener);
+        changeIdUpdaterListener = new ChangeIdUpdaterListener();
+        getTransactionalEditingDomain().addResourceSetListener(changeIdUpdaterListener);
     }
 
     // *******************
@@ -1452,6 +1457,10 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (getRefreshEditorsListener() != null) {
             removeListener(getRefreshEditorsListener());
         }
+        getTransactionalEditingDomain().removeResourceSetListener(dRepresentationChangeListener);
+        dRepresentationChangeListener = null;
+        getTransactionalEditingDomain().removeResourceSetListener(changeIdUpdaterListener);
+        changeIdUpdaterListener = null;
         refreshEditorsListeners = null;
         reloadingPolicy = null;
         savingPolicy = null;

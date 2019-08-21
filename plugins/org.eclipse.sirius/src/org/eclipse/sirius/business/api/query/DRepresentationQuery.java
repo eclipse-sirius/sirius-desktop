@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -148,29 +149,42 @@ public class DRepresentationQuery {
                 session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) representation).getTarget());
             }
             if (session != null) {
-                Collection<EStructuralFeature.Setting> usages = session.getSemanticCrossReferencer().getInverseReferences(representation);
-                for (EStructuralFeature.Setting setting : usages) {
-                    if (ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR.isInstance(setting.getEObject())
-                            && setting.getEStructuralFeature() == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__REPRESENTATION) {
-                        result = (DRepresentationDescriptor) setting.getEObject();
-                    }
-                }
+                result = findDescriptorFromCrossReferencer();
                 if (result == null) {
-                    EObject eObject = session.getAllSessionResources().iterator().next().getContents().get(0);
-                    if (eObject instanceof DAnalysis) {
-                        EList<DView> ownedViews = ((DAnalysis) eObject).getOwnedViews();
-                        for (DView view : ownedViews) {
-                            EList<DRepresentationDescriptor> ownedRepresentationDescriptors = view.getOwnedRepresentationDescriptors();
-                            for (DRepresentationDescriptor descriptor : ownedRepresentationDescriptors) {
-                                DRepresentation representationTemp = descriptor.getRepresentation();
-                                if (representation.equals(representationTemp)) {
-                                    result = descriptor;
-                                    break;
-                                }
-                            }
-                        }
+                    result = findDescriptorFromAnalysis();
+                }
+            }
+        }
+        return result;
+    }
+
+    private DRepresentationDescriptor findDescriptorFromAnalysis() {
+        DRepresentationDescriptor result = null;
+        Collection<DAnalysis> allAnalyses = ((DAnalysisSessionImpl) session).allAnalyses();
+        for (DAnalysis dAnalysis : allAnalyses) {
+            EList<DView> ownedViews = dAnalysis.getOwnedViews();
+            for (DView view : ownedViews) {
+                EList<DRepresentationDescriptor> ownedRepresentationDescriptors = view.getOwnedRepresentationDescriptors();
+                for (DRepresentationDescriptor descriptor : ownedRepresentationDescriptors) {
+                    DRepresentation representationTemp = descriptor.getRepresentation();
+                    if (representation.equals(representationTemp)) {
+                        result = descriptor;
+                        break;
                     }
                 }
+            }
+        }
+        return result;
+    }
+
+    private DRepresentationDescriptor findDescriptorFromCrossReferencer() {
+        DRepresentationDescriptor result = null;
+        Collection<EStructuralFeature.Setting> usages = session.getSemanticCrossReferencer().getInverseReferences(representation);
+        for (EStructuralFeature.Setting setting : usages) {
+            if (ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR.isInstance(setting.getEObject())
+                    && setting.getEStructuralFeature() == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__REPRESENTATION) {
+                result = (DRepresentationDescriptor) setting.getEObject();
+                break;
             }
         }
         return result;

@@ -61,6 +61,8 @@ public class DRepresentationDescriptorChangeIdTests extends SiriusDiagramTestCas
 
     private DDiagram diagram2;
 
+    private IEditorPart editor;
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
@@ -68,7 +70,8 @@ public class DRepresentationDescriptorChangeIdTests extends SiriusDiagramTestCas
         initViewpoint(DESIGN_VIEWPOINT_NAME);
         diagram = (DDiagram) getRepresentations(ENTITIES_DESC_NAME).toArray()[0];
         diagram2 = (DDiagram) getRepresentations(ENTITIES_DESC_NAME).toArray()[1];
-
+        editor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
     }
 
     /**
@@ -76,9 +79,6 @@ public class DRepresentationDescriptorChangeIdTests extends SiriusDiagramTestCas
      * {@link DRepresentationDescriptor} is updated.
      */
     public void testDRepresentationElementUpdate() {
-        final IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
-        TestsUtil.synchronizationWithUIThread();
-
         final EPackage ePackage = (EPackage) semanticModel;
         final EClass eClass = createEClass(ePackage);
 
@@ -102,9 +102,6 @@ public class DRepresentationDescriptorChangeIdTests extends SiriusDiagramTestCas
      * {@link DRepresentationDescriptor} is updated.
      */
     public void testGMFElementUpdate() {
-        final IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
-        TestsUtil.synchronizationWithUIThread();
-
         final EPackage ePackage = (EPackage) semanticModel;
         final EClass eClass = createEClass(ePackage);
 
@@ -162,9 +159,6 @@ public class DRepresentationDescriptorChangeIdTests extends SiriusDiagramTestCas
      * {@link DRepresentationDescriptor} is updated.
      */
     public void testDRepresentationUpdate() {
-        final IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
-        TestsUtil.synchronizationWithUIThread();
-
         String changeIdBeforeModification = new DRepresentationQuery(diagram).getRepresentationDescriptor().getChangeId();
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
@@ -179,8 +173,6 @@ public class DRepresentationDescriptorChangeIdTests extends SiriusDiagramTestCas
 
         assertNotEquals("Change id has not been updated.", changeIdBeforeModification, changeIdAfterModification);
 
-        DialectUIManager.INSTANCE.closeEditor(editor, false);
-        TestsUtil.synchronizationWithUIThread();
     }
 
     /**
@@ -188,9 +180,6 @@ public class DRepresentationDescriptorChangeIdTests extends SiriusDiagramTestCas
      * {@link DRepresentationDescriptor} are updated.
      */
     public void testmultiDRepresentationUpdate() {
-        final IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
-        TestsUtil.synchronizationWithUIThread();
-
         String changeIdBeforeModification = new DRepresentationQuery(diagram).getRepresentationDescriptor().getChangeId();
         String changeIdBeforeModification2 = new DRepresentationQuery(diagram2).getRepresentationDescriptor().getChangeId();
 
@@ -217,9 +206,6 @@ public class DRepresentationDescriptorChangeIdTests extends SiriusDiagramTestCas
      * Tests that when a new {@link DRepresentationDescriptor} is modified, then its change id is not modified.
      */
     public void testDRepresentationDescriptorNoChange() {
-        final IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
-        TestsUtil.synchronizationWithUIThread();
-
         String changeIdBeforeModification = new DRepresentationQuery(diagram).getRepresentationDescriptor().getChangeId();
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
@@ -242,9 +228,6 @@ public class DRepresentationDescriptorChangeIdTests extends SiriusDiagramTestCas
      * Tests that when a transient feature related to a representation is modified, then its change id is not modified.
      */
     public void testTransientFeatureNoChange() {
-        final IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
-        TestsUtil.synchronizationWithUIThread();
-
         String changeIdBeforeModification = new DRepresentationQuery(diagram).getRepresentationDescriptor().getChangeId();
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
@@ -258,9 +241,6 @@ public class DRepresentationDescriptorChangeIdTests extends SiriusDiagramTestCas
         String changeIdAfterModification = new DRepresentationQuery(diagram).getRepresentationDescriptor().getChangeId();
 
         assertEquals("Change id should not have been changed", changeIdBeforeModification, changeIdAfterModification);
-
-        DialectUIManager.INSTANCE.closeEditor(editor, false);
-        TestsUtil.synchronizationWithUIThread();
     }
 
     private EClass createEClass(final EPackage ePackage) {
@@ -271,7 +251,8 @@ public class DRepresentationDescriptorChangeIdTests extends SiriusDiagramTestCas
 
     @Override
     protected void tearDown() throws Exception {
-
+        DialectUIManager.INSTANCE.closeEditor(editor, false);
+        TestsUtil.synchronizationWithUIThread();
         diagram = null;
 
         super.tearDown();
