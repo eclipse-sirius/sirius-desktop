@@ -164,16 +164,24 @@ public class NodeLabelPositionTest extends AbstractSiriusSwtBotGefTestCase {
     public void testBorderLabelPosition() throws Exception {
         SWTBotGefEditPart editPart1 = editor.getEditPart("SubPackage1Border", AbstractDiagramNodeEditPart.class);
         assertNotNull(editPart1);
-        checkBorderLabelPosition(editPart1, new Point(96, 180), new Point(158, 185));
-        editor.drag(editPart1, 150, 150);
+        Point originalNodeLocation = new Point(96, 180);
+        Point originalLabelLocation = new Point(158, 185);
+        checkBorderLabelPosition(editPart1, originalNodeLocation, originalLabelLocation);
+        Point targetNodeLocation = new Point(150, 150);
+        editor.drag(editPart1, targetNodeLocation);
         SWTBotUtils.waitAllUiEvents();
-        checkBorderLabelPosition(editPart1, new Point(150, 150), new Point(212, 155));
+        Point expectedLabelLocation = new Point(originalLabelLocation.x() + targetNodeLocation.x() - originalNodeLocation.x(),
+                originalLabelLocation.y() + targetNodeLocation.y() - originalNodeLocation.y());
+        checkBorderLabelPosition(editPart1, targetNodeLocation, expectedLabelLocation);
 
-        // resize the edit part
-        Rectangle bounds = editor.getBounds(editPart1);
-        editor.drag(bounds.getBottomRight(), 160, 160);
+        // resize the edit part (to 10 by 10 pixels), the label has no longer
+        // space to be on east side, it is moved on south with a corresponding
+        // shifting for the x coordinate
+        Rectangle nodeBounds = editor.getBounds(editPart1);
+        Dimension newNodeSize = new Dimension(10, 10);
+        editor.drag(nodeBounds.getBottomRight(), targetNodeLocation.getTranslated(newNodeSize));
         SWTBotUtils.waitAllUiEvents();
-        checkBorderLabelPositionCenteredUnderParent(editPart1, new Point(150, 150));
+        checkBorderLabelPosition(editPart1, targetNodeLocation, new Point(nodeBounds.x - (nodeBounds.width() - newNodeSize.width()), targetNodeLocation.x() + newNodeSize.height() + 1));
     }
 
     /**
