@@ -126,11 +126,18 @@ public class LabelOnBorderMigrationParticipant extends AbstractRepresentationsFi
                             labelSize = getLabelDimension.getResult();
                         }
                         Size nodeSize = (Size) nodeLayoutConstraint;
+                        Dimension computedNodeSize;
+                        // If node size is auto size compute the estimated bounds
+                        if (nodeSize.getHeight() == -1 && nodeSize.getWidth() == -1) {
+                            computedNodeSize = GMFHelper.getAbsoluteBounds(node).getSize();
+                        } else {
+                            computedNodeSize = new Dimension(nodeSize.getWidth(), nodeSize.getHeight());
+                        }
                         Location currentLabelLocation = (Location) labelLayoutConstraint;
-                        if (labelSize.width() > nodeSize.getWidth() && (currentLabelLocation.getY() < 0 || currentLabelLocation.getY() > nodeSize.getHeight())) {
+                        if (labelSize.width() > computedNodeSize.width() && (currentLabelLocation.getY() < 0 || currentLabelLocation.getY() > computedNodeSize.height())) {
                             // We have to compute new "centered location" for label larger that its node and on the top
                             // or bottom border
-                            isLabelMoved = computeNewLocation(labelSize, nodeSize, currentLabelLocation) || isLabelMoved;
+                            isLabelMoved = computeNewLocation(labelSize, computedNodeSize, currentLabelLocation) || isLabelMoved;
                         }
                     }
                 }
@@ -139,18 +146,18 @@ public class LabelOnBorderMigrationParticipant extends AbstractRepresentationsFi
         return isLabelMoved;
     }
 
-    private boolean computeNewLocation(Dimension labelSize, Size nodeSize, Location currentLabelLocation) {
+    private boolean computeNewLocation(Dimension labelSize, Dimension nodeSize, Location currentLabelLocation) {
         boolean isSameLocation = true;
-        int newX = -(labelSize.width() - nodeSize.getWidth()) / 2;
+        int newX = -(labelSize.width() - nodeSize.width()) / 2;
         if (newX != currentLabelLocation.getX()) {
             isSameLocation = false;
-            currentLabelLocation.setX(-(labelSize.width() - nodeSize.getWidth()) / 2);
+            currentLabelLocation.setX(-(labelSize.width() - nodeSize.width()) / 2);
         }
         int newY;
         if (currentLabelLocation.getY() < 0) {
             newY = IBorderItemOffsets.NO_OFFSET.height() - labelSize.height();
         } else {
-            newY = nodeSize.getHeight() - IBorderItemOffsets.NO_OFFSET.height();
+            newY = nodeSize.height() - IBorderItemOffsets.NO_OFFSET.height();
         }
         if (newY != currentLabelLocation.getY()) {
             isSameLocation = false;
