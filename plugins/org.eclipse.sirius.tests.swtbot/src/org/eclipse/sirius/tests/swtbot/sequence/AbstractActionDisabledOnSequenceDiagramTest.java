@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,11 +30,9 @@ import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
- * Abstract class to test that Pin/Unpin, Show/Hide and Copy/Paste Layout
- * actions are disabled on a Sequence Diagram. Sequence diagram. The
- * getEditPartsToCheckDisabledActionsOn and
- * getElementPathsToCheckNoEffectInWizard abstract methods will allow sbclasses
- * to define the elements on which the tests needs to be done.
+ * Abstract class to test that Pin/Unpin, Show/Hide and Copy/Paste Layout actions are disabled on a Sequence Diagram.
+ * Sequence diagram. The getEditPartsToCheckDisabledActionsOn and getElementPathsToCheckNoEffectInWizard abstract
+ * methods will allow sbclasses to define the elements on which the tests needs to be done.
  * 
  * @author jdupont, mporhel
  */
@@ -74,43 +72,41 @@ public abstract class AbstractActionDisabledOnSequenceDiagramTest extends Abstra
     }
 
     /**
-     * Test Pin action is disabled on tabbar for execution, states, messages,
-     * interactionUses, combinedFragments, Lost messages and found messages.
+     * Test Pin action is disabled on tabbar for execution, states, messages, interactionUses, combinedFragments, Lost
+     * messages and found messages.
      */
     public void testPinFromTabbarOnSequenceDiagramsComponents() {
         testActionFromTabbarOnSequenceDiagramComponents("The pin action in tabbar should not be enabled", Messages.PinElementsEclipseAction_text);
     }
 
     /**
-     * Test Unpin action is disabled on tabbar for execution, states, messages,
-     * interactionUses, combinedFragments, Lost messages and found messages.
+     * Test Unpin action is disabled on tabbar for execution, states, messages, interactionUses, combinedFragments, Lost
+     * messages and found messages.
      */
     public void testUnpinFromTabbarOnSequenceDiagramsComponents() {
         testActionFromTabbarOnSequenceDiagramComponents("The unPin action in tabbar should not be enabled", Messages.UnpinElementsEclipseAction_text);
     }
 
     /**
-     * Test Hide action is disabled on tabbar for execution, states, messages,
-     * interactionUses, combinedFragments, Lost messages and found messages.
+     * Test Hide action is disabled on tabbar for execution, states, messages, interactionUses, combinedFragments, Lost
+     * messages and found messages.
      */
     public void testHideFromTabbarOnSequenceDiagramsComponents() {
         testActionFromTabbarOnSequenceDiagramComponents("The Hide action in tabbar should not be enabled", Messages.SiriusDiagramActionBarContributor_hideElement);
     }
 
     /**
-     * Test Copy layout action is disabled on tabbar for execution, states,
-     * messages, interactionUses, combinedFragments, Lost messages and found
-     * messages.
+     * Test Copy layout action is disabled on tabbar for execution, states, messages, interactionUses,
+     * combinedFragments, Lost messages and found messages.
      */
     public void testCopyLayoutFromTabbarOnSequenceDiagramsComponents() {
         testActionFromTabbarOnSequenceDiagramComponents("The Copy Format action in tabbar should not be enabled", Messages.CopyFormatAction_toolTipText);
     }
 
     /**
-     * Test Pin/Unpin action wizard from tabbar. Select for all components
-     * execution, states, messages, interactionUses, combinedFragments, Lost
-     * messages and Found messages. Check that the selection have no effect.
-     * Session should not be in dirty.
+     * Test Pin/Unpin action wizard from tabbar. Select for all components execution, states, messages, interactionUses,
+     * combinedFragments, Lost messages and Found messages. Check that the selection have no effect. Session should not
+     * be in dirty.
      */
     public void testPinUnPinWizardFromTabbarOnSequenceDiagramsComponents() {
         testActionWizardFromTabbarOnSequenceDiagramComponents(Messages.SelectPinnedElementsAction_tooltip, Messages.SelectPinnedElementsAction_label,
@@ -118,10 +114,9 @@ public abstract class AbstractActionDisabledOnSequenceDiagramTest extends Abstra
     }
 
     /**
-     * Test Show/Hide action wizard from tabbar. Select for all components
-     * execution, states, messages, interactionUses, combinedFragments, Lost
-     * messages and Found messages. Check that the selection have no effect.
-     * Session should not be in dirty.
+     * Test Show/Hide action wizard from tabbar. Select for all components execution, states, messages, interactionUses,
+     * combinedFragments, Lost messages and Found messages. Check that the selection have no effect. Session should not
+     * be in dirty.
      */
     public void testShowHideWizardFromTabbarOnSequenceDiagramsComponents() {
         testActionWizardFromTabbarOnSequenceDiagramComponents(Messages.SelectHiddenElementsAction_tooltip, Messages.HiddenElementsSelectionCommand_dialogTitle,
@@ -143,6 +138,9 @@ public abstract class AbstractActionDisabledOnSequenceDiagramTest extends Abstra
             editor.bot().toolbarButtonWithTooltip(toolTipAction).click();
             // The tabbar action should trigger the opening of a wizard.
             bot.waitUntilWidgetAppears(Conditions.shellIsActive(dialogName));
+            // Set the focus to the new shell (in Eclipse Photon and before, it was "automatic", but not after on some
+            // IC server).
+            bot.shell(dialogName).setFocus();
 
             assertFalse("The path should not de empty.", pathToTest.isEmpty());
 
