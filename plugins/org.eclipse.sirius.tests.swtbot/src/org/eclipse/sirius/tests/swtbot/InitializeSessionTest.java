@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -127,7 +127,8 @@ public class InitializeSessionTest extends AbstractScenarioTestCase {
         SWTBotCommonHelper.closeCurrentEditor();
         SWTBotUtils.waitAllUiEvents();
 
-        bot.button("No").click();
+        SWTBot shellBot = SWTBotSiriusHelper.getShellBot("Save");
+        shellBot.button("No").click();
 
         // Create an entity diagram on the top element of the model
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -91,9 +91,8 @@ public class ESEDemoTest extends AbstractScenarioTestCase {
         final Request request = new DirectEditRequest();
 
         /*
-         * Workaround for GMF based modelers -> need to be in a SWTBotGMFEditor
-         * -> org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants.
-         * REQ_DIRECTEDIT_EXTENDEDDATA_INITIAL_CHAR
+         * Workaround for GMF based modelers -> need to be in a SWTBotGMFEditor ->
+         * org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants. REQ_DIRECTEDIT_EXTENDEDDATA_INITIAL_CHAR
          */
         request.getExtendedData().put("directedit_extendeddata_initial_char", 'a');
 
@@ -159,7 +158,8 @@ public class ESEDemoTest extends AbstractScenarioTestCase {
         bot.waitUntil(done);
 
         SWTBotCommonHelper.closeCurrentEditor();
-        bot.button("No").click();
+        SWTBot shellBot = SWTBotSiriusHelper.getShellBot("Save");
+        shellBot.button("No").click();
     }
 
 }
