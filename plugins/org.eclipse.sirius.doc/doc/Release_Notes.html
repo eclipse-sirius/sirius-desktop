@@ -184,6 +184,18 @@
 				<code>Collection&lt;DRepresentationDescriptor&gt; representationDescriptors</code>. Theses changes were made  to be able to copy the name that is now only in 
 				<code>DRepresentationDescriptor</code>.
 			</li>
+			<li><span class="label label-info">Modified</span>The 
+				<code>DocumentedElement</code> interface providing a description for the representation implemented by 
+				<code>DRepresentation</code> is now implemented by 
+				<code>DRepresentationDescriptor</code>. Also the 
+				<code>name</code> EAttribute in 
+				<code>DRepresentation</code> has been added to 
+				<code>DRepresentationDescriptor</code>. These changes allows to use these information without loading associated representation. The 
+				<code>name</code> and 
+				<code>description</code> attributes on 
+				<code>DREpresentation</code> are now transient and volatile and computed from 
+				<code>DRepresentationDescriptor</code>
+			</li>
 			<li><span class="label label-danger">Removed</span> In 
 				<code>org.eclipse.sirius.business.api.session.CustomDataConstants</code>, the constants 
 				<code>DREPRESENTATION</code> and 
