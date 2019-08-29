@@ -26,7 +26,6 @@ import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 
 /**
@@ -36,29 +35,18 @@ import org.eclipse.sirius.business.api.query.ResourceQuery;
  */
 public class LocalResourceCollectorCrossReferencer extends SessionLazyCrossReferencer implements IResourceCollector {
 
-    /**
-     * Flag to know if the the cross referencer has initializedLocator the resource locator.
-     */
-    private boolean initializedLocator;
-
-    private ResourceSet resourceSet;
-
     private Map<Resource, Collection<Resource>> directlyReferencingResources;
 
     private Map<Resource, Collection<Resource>> directlyReferencedResources;
 
-
     /**
      * Default constructor.
      * 
-     * @param resourceSet
-     *            the {@link ResourceSet} on which to listens {@link ResourceSet#getResources()} changes
      * @param session
      *            the session.
      */
-    public LocalResourceCollectorCrossReferencer(ResourceSet resourceSet, DAnalysisSessionImpl session) {
+    public LocalResourceCollectorCrossReferencer(DAnalysisSessionImpl session) {
         super(session);
-        this.resourceSet = resourceSet;
         directlyReferencingResources = new WeakHashMap<Resource, Collection<Resource>>();
         directlyReferencedResources = new WeakHashMap<Resource, Collection<Resource>>();
     }
@@ -115,9 +103,11 @@ public class LocalResourceCollectorCrossReferencer extends SessionLazyCrossRefer
 
     @Override
     public Collection<Resource> getAllReferencedResources(Resource resource) {
-        if (!initializedLocator) {
-            resourceSet.eAdapters().add(this);
-            initializedLocator = true;
+        if (!initialized) {
+            initialize();
+            if (!resource.eAdapters().contains(resource)) {
+                resource.eAdapters().add(this);
+            }
         }
         Collection<Resource> allReferencedResources = getTransitivelyAllResoures(directlyReferencedResources, resource, Collections.<Resource> emptyList());
         return allReferencedResources;
@@ -125,9 +115,11 @@ public class LocalResourceCollectorCrossReferencer extends SessionLazyCrossRefer
 
     @Override
     public Collection<Resource> getAllReferencingResources(Resource resource) {
-        if (!initializedLocator) {
-            resourceSet.eAdapters().add(this);
-            initializedLocator = true;
+        if (!initialized) {
+            initialize();
+            if (!resource.eAdapters().contains(resource)) {
+                resource.eAdapters().add(this);
+            }
         }
         Collection<Resource> allReferencingResources = getTransitivelyAllResoures(directlyReferencingResources, resource, Collections.<Resource> emptyList());
         return allReferencingResources;
@@ -152,11 +144,6 @@ public class LocalResourceCollectorCrossReferencer extends SessionLazyCrossRefer
      */
     @Override
     public void dispose() {
-        if (initializedLocator) {
-            resourceSet.eAdapters().remove(this);
-            initializedLocator = false;
-        }
-        resourceSet = null;
         directlyReferencingResources = null;
         directlyReferencedResources = null;
     }

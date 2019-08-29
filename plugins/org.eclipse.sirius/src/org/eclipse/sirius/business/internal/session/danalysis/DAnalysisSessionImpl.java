@@ -431,7 +431,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      * @return a new cross referencer adapter
      */
     protected LocalResourceCollectorCrossReferencer createSemanticCrossReferencer() {
-        return new LocalResourceCollectorCrossReferencer(getTransactionalEditingDomain().getResourceSet(), this);
+        return new LocalResourceCollectorCrossReferencer(this);
     }
 
     /**
