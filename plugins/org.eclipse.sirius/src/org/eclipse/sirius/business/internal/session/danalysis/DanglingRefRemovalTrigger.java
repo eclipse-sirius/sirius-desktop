@@ -49,9 +49,8 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
 
 /**
- * A {@link ModelChangeTrigger} which remove all the potential dangling
- * references when an EObject is deleted using the Sirius logic (checking for
- * authorizations, "special" references and so on).
+ * A {@link ModelChangeTrigger} which remove all the potential dangling references when an EObject is deleted using the
+ * Sirius logic (checking for authorizations, "special" references and so on).
  * 
  * @author cbrun
  * 
@@ -64,8 +63,8 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
     public static final int DANGLING_REFERENCE_REMOVAL_PRIORITY = 0;
 
     /**
-     * Filter {@link Notification}s which are not a detachment. A detachment is
-     * : an EObject being removed from the reference it is contained in.
+     * Filter {@link Notification}s which are not a detachment. A detachment is : an EObject being removed from the
+     * reference it is contained in.
      */
     public static final Predicate<Notification> IS_DETACHMENT = new Predicate<Notification>() {
 
@@ -99,8 +98,8 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
     };
 
     /**
-     * Filter {@link Notification}s which are not an attachment. An attachment
-     * is : an EObject is attached from the reference it is contained in.
+     * Filter {@link Notification}s which are not an attachment. An attachment is : an EObject is attached from the
+     * reference it is contained in.
      */
     public static final Predicate<Notification> IS_ATTACHMENT = new Predicate<Notification>() {
 
@@ -122,9 +121,8 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
     };
 
     /**
-     * A predicate to ignore DSemanticDecorator references in the dangling
-     * references deletion. Allows to avoid changes in non opened diagrams and
-     * the corresponding abusive locks.
+     * A predicate to ignore DSemanticDecorator references in the dangling references deletion. Allows to avoid changes
+     * in non opened diagrams and the corresponding abusive locks.
      */
     public static final EReferencePredicate DSEMANTICDECORATOR_REFERENCE_TO_IGNORE_PREDICATE = new EReferencePredicate() {
 
@@ -140,8 +138,8 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
     };
 
     /**
-     * A predicate to ignore org.eclipse.gmf.runtime.notation.View#element
-     * references in the dangling references deletion.
+     * A predicate to ignore org.eclipse.gmf.runtime.notation.View#element references in the dangling references
+     * deletion.
      */
     public static final EReferencePredicate NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE_PREDICATE = new EReferencePredicate() {
 
@@ -165,8 +163,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
     };
 
     /**
-     * A predicate to ignore EPackage#eFactoryInstance references in the
-     * dangling references deletion.
+     * A predicate to ignore EPackage#eFactoryInstance references in the dangling references deletion.
      */
     public static final Predicate<EReference> EPACKAGE_EFACTORYINSTANCE_REFERENCE_TO_IGNORE_PREDICATE = new Predicate<EReference>() {
 
@@ -186,16 +183,15 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
     private static final String NOTATION_VIEW_ELEMENT_REFERENCE_TO_IGNORE = "element"; //$NON-NLS-1$
 
     /**
-     * Container name of the GMF View feature to ignore in the remove dangling
-     * references.
+     * Container name of the GMF View feature to ignore in the remove dangling references.
      */
     private static final String NOTATION_VIEW_ELEMENT_REFERENCE_CONTAINER_TO_IGNORE = "org.eclipse.gmf.runtime.notation.View"; //$NON-NLS-1$
 
     private Session session;
 
     /**
-     * Create a new instance which can be associated with a SessionEventBroker
-     * to automatically remove the dangling references.
+     * Create a new instance which can be associated with a SessionEventBroker to automatically remove the dangling
+     * references.
      * 
      * @param session
      *            the {@link Session}
@@ -237,17 +233,14 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
     }
 
     /**
-     * Return the EObjects which have been changed by the given notifications
-     * and their children.
+     * Return the EObjects which have been changed by the given notifications and their children.
      * 
      * @param notifications
      *            notifications to process.
      * @param notifierToIgnore
-     *            a predicate indicating if a given notification should be
-     *            ignored regarding its EObject notifier or not (can be null if
-     *            all notifications should be considered)
-     * @return the EObjects which have been changed by the given notifications
-     *         and their children.
+     *            a predicate indicating if a given notification should be ignored regarding its EObject notifier or not
+     *            (can be null if all notifications should be considered)
+     * @return the EObjects which have been changed by the given notifications and their children.
      */
     protected Set<EObject> getChangedEObjectsAndChildren(Iterable<Notification> notifications, Predicate<Notifier> notifierToIgnore) {
         final Set<EObject> changedEObjects = new LinkedHashSet<>();
@@ -270,13 +263,11 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
     }
 
     /**
-     * Return the added or removed EObjects from an attachment or a detachment
-     * notification.
+     * Return the added or removed EObjects from an attachment or a detachment notification.
      * 
      * @param notification
      *            the change.
-     * @return the added or removed EObjects from an attachment or a detachment
-     *         notification.
+     * @return the added or removed EObjects from an attachment or a detachment notification.
      */
     protected Set<EObject> getNotificationValues(Notification notification) {
         final Set<EObject> values = new LinkedHashSet<>();
@@ -331,7 +322,7 @@ public class DanglingRefRemovalTrigger implements ModelChangeTrigger {
          *            a predicate indicating if a given reference should be ignored during deletion or not (can be null
          *            if all references should be considered)
          */
-        RemoveDanglingReferencesCommand(Session session, Set<EObject> toRemoveXRefFrom2, EReferencePredicate isReferenceToIgnore) {
+        RemoveDanglingReferencesCommand(Session session, Set<EObject> toRemoveXRefFrom, EReferencePredicate isReferenceToIgnore) {
             super(session.getTransactionalEditingDomain(), Messages.DanglingRefRemovalTrigger_removeDanglingCmdLabel);
             this.domain = session.getTransactionalEditingDomain();
             this.modelAccessor = session.getModelAccessor();
