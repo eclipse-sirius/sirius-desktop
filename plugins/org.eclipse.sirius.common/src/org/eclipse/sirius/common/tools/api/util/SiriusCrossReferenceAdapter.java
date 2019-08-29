@@ -33,8 +33,9 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.common.tools.internal.util.FastInverseCrossReferencesList;
 
 /**
- * Specific {@link ECrossReferenceAdapter} which resolve proxy ability can be disabled. All
- * {@link ECrossReferenceAdapter} used for Sirius should extend this adapter in place of {@link ECrossReferenceAdapter}
+ * Specific {@link ECrossReferenceAdapter} whose resolve proxy ability can be disabled. It also provides the capability
+ * to resolve all proxy cross references for a given resource. All {@link ECrossReferenceAdapter} used for Sirius
+ * should extend this adapter in place of {@link ECrossReferenceAdapter}
  * 
  * @author <a href="mailto:laurent.fasani@obeo.fr">Laurent Fasani</a>
  */
@@ -62,7 +63,6 @@ public class SiriusCrossReferenceAdapter extends ECrossReferenceAdapter {
      */
     protected class SiriusInverseCrossReferencer extends InverseCrossReferencer {
         private static final long serialVersionUID = 1L;
-
 
         /**
          * Check if the proxyMap is null or not. Since change in ECrossReferenceAdapter (bugzilla 400891), the proxyMap
@@ -224,7 +224,6 @@ public class SiriusCrossReferenceAdapter extends ECrossReferenceAdapter {
         }
         return false;
     }
-
 
     @Override
     protected InverseCrossReferencer createInverseCrossReferencer() {

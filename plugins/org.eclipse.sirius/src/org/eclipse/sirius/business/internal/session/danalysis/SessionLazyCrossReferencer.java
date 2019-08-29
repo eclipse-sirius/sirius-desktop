@@ -34,8 +34,18 @@ import com.google.common.collect.Iterables;
 
 /**
  * A LazyCrossReferencer for the session. {@link LazyCrossReferencer#initialize()} is overridden in order to only add
- * the adapter at the first use.
+ * the adapter at the first use. <BR>
+ * This cross referencer also reacts to {@link EObject} removal from their containing reference : it removes itself
+ * automatically from their adapters and recursively from those of their contents. If the new container is already set
+ * and also has the cross referencer, in this case cross referencer is not removed. <BR>
+ * <BR>
+ * This cross referencer also provides a way to disable the resolution of proxy. This can be useful to avoid reloading of
+ * a resource during the unloading of it (caused by resolution of some proxy with crossReferencer).<BR>
+ * <BR>
  * 
+ * @see {@link org.eclipse.emf.transaction.impl.ResourceSetManager#observe(org.eclipse.emf.ecore.resource.Resource, Notification)}
+ *      and message {@link org.eclipse.emf.transaction.internal.EMFTransactionStatusCodes.RELOAD_DURING_UNLOAD} this
+ *      one.
  * @author <a href="mailto:mickael.lanoe@obeo.fr">Mickael LANOE</a>
  *
  */
