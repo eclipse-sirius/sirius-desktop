@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.EList;
@@ -48,9 +49,8 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.UnmodifiableIterator;
 
 /**
- * Test semantics resources and crossReferenceAdapter on semantic resources when
- * (un)controlling a semantic resource. Test impact in the session itself and in
- * an other session consuming the modified resources
+ * Test semantics resources and crossReferenceAdapter on semantic resources when (un)controlling a semantic resource.
+ * Test impact in the session itself and in an other session consuming the modified resources
  * 
  * @author <a href="mailto:laurent.fasani@obeo.fr">Laurent Fasani</a>
  */
@@ -177,10 +177,12 @@ public class SiriusControlAndCrossReferenceInMultiSessionTest extends SiriusTest
         Method method = DAnalysisSessionImpl.class.getDeclaredMethod("collectAllReferencedResources", Resource.class);
         method.setAccessible(true);
         Collection<Resource> allReferencedResources = (Collection<Resource>) method.invoke(sessionLibrary, resourcelib);
-        UnmodifiableIterator<IResourceCollector> lcrIt = Iterators.filter(resourcelib.getResourceSet().eAdapters().iterator(), IResourceCollector.class);
-        assertTrue("The LocalResourceCollector is not set on resourceSet", lcrIt.hasNext());
+        UnmodifiableIterator<IResourceCollector> lcrIt = Iterators.filter(resourcelib.eAdapters().iterator(), IResourceCollector.class);
+        assertTrue("The LocalResourceCollector is not set on the analyzed resource", lcrIt.hasNext());
         IResourceCollector lcr = lcrIt.next();
         assertEquals(0, allReferencedResources.size());
+        assertEquals("size of resources referenced by " + SEMANTIC_MODEL_LIB, 0, lcr.getAllReferencedResources(resourcelib).size());
+        assertEquals("size of resources referencing " + SEMANTIC_MODEL_LIB, 0, lcr.getAllReferencingResources(resourcelib).size());
 
         // --------- Consumer session checks --------
         // 1 - Check that control occurs on ConsumerProject
@@ -209,16 +211,21 @@ public class SiriusControlAndCrossReferenceInMultiSessionTest extends SiriusTest
         Resource resourceLib_P1InConsumer = controlledResourcesInConsumer.get(0);
 
         Collection<Resource> resReferencedByConsumer = (Collection<Resource>) method.invoke(session, resourceConsumer);
-        UnmodifiableIterator<IResourceCollector> lcrItInconsumer = Iterators.filter(resourceConsumer.getResourceSet().eAdapters().iterator(), IResourceCollector.class);
-        assertTrue("The LocalResourceCollector is not set on resourceSet", lcrItInconsumer.hasNext());
-        assertEquals(1, resReferencedByConsumer.size());
+        UnmodifiableIterator<IResourceCollector> lcrItInconsumer = Iterators.filter(resourceConsumer.eAdapters().iterator(), IResourceCollector.class);
+        assertTrue("The LocalResourceCollector is not set on the analyzed resource", lcrItInconsumer.hasNext());
+        assertEquals(2, resReferencedByConsumer.size());
 
         IResourceCollector lcrInConsumer = lcrItInconsumer.next();
-        assertTrue(resReferencedByConsumer.iterator().next().getURI().toString().contains(SEMANTIC_MODEL_LIB_P1));
+        // TODO : See Bug 461602, we should have:
+        // assertEquals(2, resReferencedByConsumer.size());
+        // assertTrue(resReferencedByConsumer.iterator().next().getURI().toString().contains(SEMANTIC_MODEL_LIB_P1));
+        // We should not have SEMANTIC_MODEL_LIB in the referenced resources it should have been replaced by
+        // SEMANTIC_MODEL_LIB_P1.
 
         Collection<Resource> resReferencingLib = lcrInConsumer.getAllReferencingResources(resourceLib_P1InConsumer);
         assertEquals("size of resources referencing " + SEMANTIC_MODEL_LIB_P1, 1, resReferencingLib.size());
         assertTrue(resReferencingLib.iterator().next().getURI().toString().contains(SEMANTIC_MODEL_CONSUMER));
+        assertEquals("size of resources referenced by " + SEMANTIC_MODEL_LIB, 0, lcrInConsumer.getAllReferencedResources(resourceLib_P1InConsumer).size());
 
         // ######################################
         // B - Uncontrol the package
@@ -242,7 +249,7 @@ public class SiriusControlAndCrossReferenceInMultiSessionTest extends SiriusTest
 
         // 2 - Check LocalResourceCollector
         resourcelib = semanticResources.iterator().next();
-        lcrIt = Iterators.filter(resourcelib.getResourceSet().eAdapters().iterator(), IResourceCollector.class);
+        lcrIt = Iterators.filter(resourcelib.eAdapters().iterator(), IResourceCollector.class);
         lcr = lcrIt.next();
         assertEquals("size of resources referenced by " + SEMANTIC_MODEL_LIB, 0, lcr.getAllReferencedResources(resourcelib).size());
         assertEquals("size of resources referencing " + SEMANTIC_MODEL_LIB, 0, lcr.getAllReferencingResources(resourcelib).size());
@@ -274,15 +281,24 @@ public class SiriusControlAndCrossReferenceInMultiSessionTest extends SiriusTest
         resourceConsumer = resItrInConsumer.next();
         Resource resourceLibInConsumer = resItrInConsumer.next();
 
-        lcrItInconsumer = Iterators.filter(resourceConsumer.getResourceSet().eAdapters().iterator(), IResourceCollector.class);
+        lcrItInconsumer = Iterators.filter(resourceConsumer.eAdapters().iterator(), IResourceCollector.class);
         lcrInConsumer = lcrItInconsumer.next();
         resReferencedByConsumer = lcrInConsumer.getAllReferencedResources(resourceConsumer);
         assertEquals("size of resources referenced by " + SEMANTIC_MODEL_CONSUMER, 1, resReferencedByConsumer.size());
-        // TODO : should be uncomment in 461602
-        // assertTrue(resReferencedByConsumer.iterator().next().getURI().toString().contains(SEMANTIC_MODEL_LIB));
+        assertTrue(resReferencedByConsumer.iterator().next().getURI().toString().contains(SEMANTIC_MODEL_LIB));
         resReferencingLib = lcrInConsumer.getAllReferencingResources(resourceLibInConsumer);
-        // assertEquals(1, resReferencingLib.size());
-        // assertTrue(resReferencingLib.iterator().next().getURI().toString().contains(SEMANTIC_MODEL_CONSUMER));
+        assertEquals(1, resReferencingLib.size());
+        assertTrue(resReferencingLib.iterator().next().getURI().toString().contains(SEMANTIC_MODEL_CONSUMER));
+
+        assertFalse("The LocalResourceCollector should not be set on resourceSet", Iterators.filter(resourceConsumer.getResourceSet().eAdapters().iterator(), IResourceCollector.class).hasNext());
+
+        LinkedHashSet<Resource> collectedResources = new LinkedHashSet<>();
+        collectedResources.addAll(((DAnalysisSessionImpl) session).getAllSessionResources());
+        collectedResources.addAll(((DAnalysisSessionImpl) session).getSemanticResources());
+        collectedResources.addAll(((DAnalysisSessionImpl) session).getControlledResources());
+        for (Resource res : collectedResources) {
+            assertTrue("The LocalResourceCollector should be installed on all managed resources", Iterators.filter(res.eAdapters().iterator(), IResourceCollector.class).hasNext());
+        }
     }
 
     @Override

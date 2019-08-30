@@ -110,6 +110,10 @@ public class LocalResourceCollectorCrossReferencer extends SessionLazyCrossRefer
             resource.eAdapters().add(this);
         }
         Collection<Resource> allReferencedResources = getTransitivelyAllResoures(directlyReferencedResources, resource, Collections.<Resource> emptyList());
+
+        // TODO Bug 461602 : correctly maintain the directlyReferencedResource/directlyReferencingResources
+        allReferencedResources.removeIf(res -> res.getResourceSet() == null);
+
         return allReferencedResources;
     }
 
@@ -122,6 +126,10 @@ public class LocalResourceCollectorCrossReferencer extends SessionLazyCrossRefer
             resource.eAdapters().add(this);
         }
         Collection<Resource> allReferencingResources = getTransitivelyAllResoures(directlyReferencingResources, resource, Collections.<Resource> emptyList());
+
+        // TODO Bug 461602 : correctly maintain the directlyReferencedResource/directlyReferencingResources
+        allReferencingResources.removeIf(res -> res.getResourceSet() == null);
+
         return allReferencingResources;
     }
 
