@@ -105,9 +105,9 @@ public class LocalResourceCollectorCrossReferencer extends SessionLazyCrossRefer
     public Collection<Resource> getAllReferencedResources(Resource resource) {
         if (!initialized) {
             initialize();
-            if (!resource.eAdapters().contains(resource)) {
-                resource.eAdapters().add(this);
-            }
+        }
+        if (!resource.eAdapters().contains(this)) {
+            resource.eAdapters().add(this);
         }
         Collection<Resource> allReferencedResources = getTransitivelyAllResoures(directlyReferencedResources, resource, Collections.<Resource> emptyList());
         return allReferencedResources;
@@ -117,9 +117,9 @@ public class LocalResourceCollectorCrossReferencer extends SessionLazyCrossRefer
     public Collection<Resource> getAllReferencingResources(Resource resource) {
         if (!initialized) {
             initialize();
-            if (!resource.eAdapters().contains(resource)) {
-                resource.eAdapters().add(this);
-            }
+        }
+        if (!resource.eAdapters().contains(this)) {
+            resource.eAdapters().add(this);
         }
         Collection<Resource> allReferencingResources = getTransitivelyAllResoures(directlyReferencingResources, resource, Collections.<Resource> emptyList());
         return allReferencingResources;

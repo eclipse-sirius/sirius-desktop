@@ -788,9 +788,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 // resources as semantic models.
                 if (!getSemanticResources().contains(newSemanticResource)) {
                     doAddSemanticResource(newSemanticResource, resourceSet);
-                    for (Resource res : collectAllReferencedResources(newSemanticResource)) {
-                        doAddSemanticResource(res, resourceSet);
-                    }
                 }
             } finally {
                 monitor.done();
@@ -822,6 +819,12 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         ControlledResourcesDetector.refreshControlledResources(this);
 
         registerResourceInCrossReferencer(newResource);
+
+        for (Resource res : collectAllReferencedResources(newResource)) {
+            if (!getSemanticResources().contains(res)) {
+                doAddSemanticResource(res, set);
+            }
+        }
     }
 
     private void notifyNewMetamodels(final Resource newResource) {
