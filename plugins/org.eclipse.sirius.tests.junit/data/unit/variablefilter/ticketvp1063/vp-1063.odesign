@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" version="10.1.3.201601041200">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" version="12.0.0.2017041100">
   <ownedViewpoints name="vp1063">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="vp1063" domainClass="EPackage">
       <filters xsi:type="filter:CompositeFilterDescription" name="Classifier">
@@ -47,6 +47,53 @@
           <ownedVariables xsi:type="description:TypedVariable" name="intVariable" defaultValueExpression="5">
             <valueType href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
           </ownedVariables>
+        </filters>
+      </filters>
+      <defaultLayer name="Default">
+        <containerMappings name="EClass" domainClass="EClass">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="EEnum" domainClass="EEnum">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="EPackage" domainClass="EPackage">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="vpTwoFilters" domainClass="EPackage">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <filters xsi:type="filter:CompositeFilterDescription" name="FilterWithTypedVariables">
+        <filters xsi:type="filter:VariableFilter" semanticConditionExpression="aql:not (rGBVariable.oclIsKindOf(viewpoint::RGBValues) and stringVariable.contains('textDefault') and intVariable+5=10)">
+          <ownedVariables xsi:type="description:TypedVariable" userDocumentation="My documentation" name="rGBVariable" defaultValueExpression="113,113,113">
+            <valueType href="http://www.eclipse.org/sirius/1.1.0#//RGBValues"/>
+          </ownedVariables>
+          <ownedVariables xsi:type="description:TypedVariable" name="stringVariable" defaultValueExpression="textDefault">
+            <valueType href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+          </ownedVariables>
+          <ownedVariables xsi:type="description:TypedVariable" name="intVariable" defaultValueExpression="5">
+            <valueType href="http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+          </ownedVariables>
+        </filters>
+      </filters>
+      <filters xsi:type="filter:CompositeFilterDescription" name="Classifier">
+        <filters xsi:type="filter:VariableFilter" semanticConditionExpression="aql:EClass->includes(self)">
+          <ownedVariables xsi:type="tool:SelectModelElementVariable" name="EClass" candidatesExpression="aql:self.eClassifiers" multiple="true"/>
         </filters>
       </filters>
       <defaultLayer name="Default">

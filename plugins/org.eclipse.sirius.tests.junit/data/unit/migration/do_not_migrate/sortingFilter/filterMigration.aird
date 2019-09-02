@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/filter/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/filter http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style http://www.eclipse.org/sirius/description/tool/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description/tool">
+  <viewpoint:DAnalysis uid="_LzkCAKMpEeWhmpHp1N50Xg" selectedViews="_v0iCMK7XEeWCKa5bQ33Yhg _tqcEwM4tEemmbPZoO2wXTQ" version="13.0.0.201412231738">
+    <semanticResources>filterMigration.ecore</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_v0iCMK7XEeWCKa5bQ33Yhg">
+      <viewpoint xmi:type="description:Viewpoint" href="filterMigration.odesign#//@ownedViewpoints[name='vpFilter']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_tp4EEc4tEemmbPZoO2wXTQ" name="new ClassDiagram" repPath="#_1kaWIK7XEeWCKa5bQ33Yhg" changeId="a6ae974c-8edd-4bdf-89c6-a689cbab001c">
+        <description xmi:type="description_1:DiagramDescription" href="filterMigration.odesign#//@ownedViewpoints[name='vpFilter']/@ownedRepresentations[name='ClassDiagram']"/>
+        <target xmi:type="ecore:EPackage" href="filterMigration.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+    <ownedViews xmi:type="viewpoint:DView" uid="_tqcEwM4tEemmbPZoO2wXTQ">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.polarsys.kitalpha.ad.integration.sirius/description/ad.odesign#//@ownedViewpoints[name='ad']"/>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_1kaWIK7XEeWCKa5bQ33Yhg">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_1kaWIa7XEeWCKa5bQ33Yhg" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_1kaWIq7XEeWCKa5bQ33Yhg"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_1k9IsK7XEeWCKa5bQ33Yhg" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_1k9Isa7XEeWCKa5bQ33Yhg" type="Sirius" element="_1kaWIK7XEeWCKa5bQ33Yhg" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_5lQVYK7XEeWCKa5bQ33Yhg" type="2002" element="_5kuw8K7XEeWCKa5bQ33Yhg">
+          <children xmi:type="notation:Node" xmi:id="_5lXqIK7XEeWCKa5bQ33Yhg" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_5laGYK7XEeWCKa5bQ33Yhg" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_5latcK7XEeWCKa5bQ33Yhg"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_5latca7XEeWCKa5bQ33Yhg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_5lQVYa7XEeWCKa5bQ33Yhg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5lQVYq7XEeWCKa5bQ33Yhg"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_5lbUgK7XEeWCKa5bQ33Yhg" visible="false" type="2002" element="_5lBE0K7XEeWCKa5bQ33Yhg">
+          <children xmi:type="notation:Node" xmi:id="_5lcioK7XEeWCKa5bQ33Yhg" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_5lcioa7XEeWCKa5bQ33Yhg" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_5lcioq7XEeWCKa5bQ33Yhg"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_5lcio67XEeWCKa5bQ33Yhg"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_5lbUga7XEeWCKa5bQ33Yhg" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_5lbUgq7XEeWCKa5bQ33Yhg" x="210"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_1k9Isq7XEeWCKa5bQ33Yhg"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_5kuw8K7XEeWCKa5bQ33Yhg" name="class1">
+      <target xmi:type="ecore:EClass" href="filterMigration.ecore#//class1"/>
+      <semanticElements xmi:type="ecore:EClass" href="filterMigration.ecore#//class1"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_5k9acK7XEeWCKa5bQ33Yhg" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="filterMigration.odesign#//@ownedViewpoints[name='vpFilter']/@ownedRepresentations[name='ClassDiagram']/@defaultLayer/@containerMappings[name='EClass']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="filterMigration.odesign#//@ownedViewpoints[name='vpFilter']/@ownedRepresentations[name='ClassDiagram']/@defaultLayer/@containerMappings[name='EClass']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_5lBE0K7XEeWCKa5bQ33Yhg" name="class2" visible="false">
+      <target xmi:type="ecore:EClass" href="filterMigration.ecore#//class2"/>
+      <semanticElements xmi:type="ecore:EClass" href="filterMigration.ecore#//class2"/>
+      <graphicalFilters xmi:type="diagram:AppliedCompositeFilters" uid="_nZujoK7YEeWCKa5bQ33Yhg">
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="filterMigration.odesign#//@ownedViewpoints[name='vpFilter']/@ownedRepresentations[name='ClassDiagram']/@filters[name='ClassFilter']"/>
+        <compositeFilterDescriptions xmi:type="filter:CompositeFilterDescription" href="filterMigration.odesign#//@ownedViewpoints[name='vpFilter']/@ownedRepresentations[name='ClassDiagram']/@filters[name='ClassFilter2']"/>
+      </graphicalFilters>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_5lBr4K7XEeWCKa5bQ33Yhg" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="filterMigration.odesign#//@ownedViewpoints[name='vpFilter']/@ownedRepresentations[name='ClassDiagram']/@defaultLayer/@containerMappings[name='EClass']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="filterMigration.odesign#//@ownedViewpoints[name='vpFilter']/@ownedRepresentations[name='ClassDiagram']/@defaultLayer/@containerMappings[name='EClass']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="filterMigration.odesign#//@ownedViewpoints[name='vpFilter']/@ownedRepresentations[name='ClassDiagram']"/>
+    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="filterMigration.odesign#//@ownedViewpoints[name='vpFilter']/@ownedRepresentations[name='ClassDiagram']/@filters[name='ClassFilter2']"/>
+    <activatedFilters xmi:type="filter:CompositeFilterDescription" href="filterMigration.odesign#//@ownedViewpoints[name='vpFilter']/@ownedRepresentations[name='ClassDiagram']/@filters[name='ClassFilter']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_1kaWI67XEeWCKa5bQ33Yhg">
+      <ownedValues xmi:type="diagram:EObjectVariableValue" uid="_nZsHYK7YEeWCKa5bQ33Yhg">
+        <variableDefinition xmi:type="tool:SelectModelElementVariable" href="filterMigration.odesign#//@ownedViewpoints[name='vpFilter']/@ownedRepresentations[name='ClassDiagram']/@filters[name='ClassFilter']/@filters.0/@ownedVariables.0"/>
+        <modelElement xmi:type="ecore:EClass" href="filterMigration.ecore#//class1"/>
+      </ownedValues>
+      <ownedValues xmi:type="diagram:EObjectVariableValue" uid="_ziy_QM4tEemmbPZoO2wXTQ">
+        <variableDefinition xmi:type="tool:SelectModelElementVariable" href="filterMigration.odesign#//@ownedViewpoints[name='vpFilter']/@ownedRepresentations[name='ClassDiagram']/@filters[name='ClassFilter2']/@filters.0/@ownedVariables.0"/>
+        <modelElement xmi:type="ecore:EClass" href="filterMigration.ecore#//class1"/>
+      </ownedValues>
+    </filterVariableHistory>
+    <activatedLayers xmi:type="description_1:Layer" href="filterMigration.odesign#//@ownedViewpoints[name='vpFilter']/@ownedRepresentations[name='ClassDiagram']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="filterMigration.ecore#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

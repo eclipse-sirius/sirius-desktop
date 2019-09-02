@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -69,7 +69,7 @@ public final class FilterService {
      * @return <code>true</code> if the element is visible for the activated filtered, <code>false</code> otherwise
      */
     public static List<FilterDescription> getAppliedFilters(final DDiagram diagram, final DDiagramElement element) {
-        final List<FilterDescription> filters = FilterService.sortFilters(diagram.getActivatedFilters());
+        final List<FilterDescription> filters = diagram.getActivatedFilters();
         if (filters.isEmpty()) {
             return Collections.emptyList();
         }
@@ -251,7 +251,7 @@ public final class FilterService {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.IS_COLLAPSED_KEY);
         boolean isCollapsed = false;
         if (DisplayServiceManager.INSTANCE.getMode() != DisplayMode.ALL_IS_DISPLAYED) {
-            isCollapsed = FilterService.isCollapsed(FilterService.sortFilters(diagram.getActivatedFilters()), element);
+            isCollapsed = FilterService.isCollapsed(diagram.getActivatedFilters(), element);
         }
         DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.IS_COLLAPSED_KEY);
         return isCollapsed;
@@ -285,9 +285,9 @@ public final class FilterService {
      * 
      * @param filters
      *            the filters to sort.
-     * @return the sorted filters.
+     * @return a new list with the sorted filters.
      */
-    private static List<FilterDescription> sortFilters(final Collection<FilterDescription> filters) {
+    public static List<FilterDescription> sortFilters(final Collection<FilterDescription> filters) {
         final List<FilterDescription> result = new ArrayList<FilterDescription>(filters);
         Collections.sort(result, new Comparator<FilterDescription>() {
 

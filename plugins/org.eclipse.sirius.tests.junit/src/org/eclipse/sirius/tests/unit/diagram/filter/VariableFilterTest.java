@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -53,6 +54,8 @@ public class VariableFilterTest extends SiriusDiagramTestCase {
     private static final String ENTITIES_DESC_NAME = "vp1063";
 
     private static final String DIAGRAM_DESC_NAME_2 = "vpForFilterWithTypedVariable";
+
+    private static final String DIAGRAM_DESC_NAME_3 = "vpTwoFilters";
 
     private DDiagram diagram;
 
@@ -105,6 +108,21 @@ public class VariableFilterTest extends SiriusDiagramTestCase {
         checkActiveFilter(elementNames);
         deactivateFilter(diagram, FILTER_NAME);
         checkDesactiveFilter();
+    }
+
+    /**
+     * Test that activated filters are sorted each time a filter is added in the list.
+     */
+    public void testFilterSorting() {
+        openDiagram(DIAGRAM_DESC_NAME_3);
+        activeMultipleSelectionFilter();
+
+        List<FilterDescription> activatedFiltersBeforeActivation = new ArrayList<>(diagram.getActivatedFilters());
+        activateTypedVariableFilter();
+        List<FilterDescription> activatedFiltersAfterActivation = new ArrayList<>(diagram.getActivatedFilters());
+
+        assertEquals(activatedFiltersBeforeActivation.get(0).getName(), activatedFiltersAfterActivation.get(0).getName());
+        assertEquals(activatedFiltersBeforeActivation.get(1).getName(), activatedFiltersAfterActivation.get(1).getName());
     }
 
     /**

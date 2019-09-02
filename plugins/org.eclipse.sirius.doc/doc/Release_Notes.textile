@@ -44,6 +44,7 @@ h4. Migrations
     * larger that its node or border node
     * on the North or South side.
 The goal of this migration participant is to keep centered labels visually fixed compared to previous version (see "bugzilla #550382":https://bugs.eclipse.org/bugs/show_bug.cgi?id=549887 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _14.3.0.201908231800_.
+* <span class="label label-success">Added</span> A migration participant has been added to sort the already activated filters. The activated filters list is now sorted on each filter activation, the sorted result is stored in the model whereas in older version the list was sorted on almost each use of those activated filters. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _14.3.0.201909031200_.
 
 h2(#sirius6.2.2). Changes in Sirius 6.2.2
 

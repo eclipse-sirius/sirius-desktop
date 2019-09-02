@@ -41,6 +41,9 @@ public final class Messages {
     public static String AbstractNodeMappingQuery_evaluationErrorMsg;
 
     @TranslatableMessage
+    public static String ActivatedFilterSortingMigrationParticipant_updatedDiagrams;
+
+    @TranslatableMessage
     public static String ChangeLayerActivationCommand_executeMsg;
 
     @TranslatableMessage
