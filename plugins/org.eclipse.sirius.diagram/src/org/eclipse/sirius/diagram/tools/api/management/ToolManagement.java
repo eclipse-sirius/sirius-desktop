@@ -493,7 +493,7 @@ public class ToolManagement {
     }
 
     private boolean isFiltered(AbstractToolDescription toolDescription) {
-        for (Iterator<ToolFilter> it = getAllToolFilters(); it.hasNext();) {
+        for (Iterator<ToolFilter> it = getAllToolFilters(); it.hasNext(); /**/) {
             if (it.next().filter(dDiagram, toolDescription)) {
                 return true;
             }
