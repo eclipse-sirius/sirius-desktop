@@ -1146,6 +1146,10 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     @Override
     public void selectionChanged(final IWorkbenchPart part, final ISelection selection) {
+        if (isClosing) {
+            return;
+        }
+        
         super.selectionChanged(part, selection);
         if (getTabbar() != null) {
             getTabbar().selectionChanged(part, selection);
