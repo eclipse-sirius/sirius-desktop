@@ -19,7 +19,6 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
@@ -84,12 +83,6 @@ public class ActivatedFilterSortingMigrationParticipant extends AbstractRepresen
     private Collection<DDiagram> getDiagramWithActivatedFilters(DAnalysis dAnalysis) {
         Stream<DRepresentation> representationStream = dAnalysis.getOwnedViews().stream().flatMap(view -> view.getOwnedRepresentationDescriptors().stream()).map(desc -> desc.getRepresentation());
         return representationStream.filter(DDiagram.class::isInstance).map(DDiagram.class::cast).filter(diagram -> !diagram.getActivatedFilters().isEmpty()).collect(Collectors.toList());
-    }
-
-    @Override
-    public void postLoad(XMLResource resource, String loadedVersion) {
-        super.postLoad(resource, loadedVersion);
-
     }
 
 }

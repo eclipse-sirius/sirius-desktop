@@ -12,9 +12,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.migration;
 
+import java.text.MessageFormat;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
@@ -30,6 +33,8 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
+import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.osgi.framework.Version;
 
@@ -67,22 +72,12 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant 
      * This version corresponds to the name and description location change. It has been moved from DRepresentation to
      * DRepresentationDescriptor.
      */
-    public static final Version MIGRATION_VERSION_DESC_NAME_CHANGE = new Version("13.3.0.201908071200"); //$NON-NLS-1$
+    public static final Version MIGRATION_VERSION_DESC_NAME_CHANGE = new Version("14.3.0.201908071200"); //$NON-NLS-1$
 
     /**
      * The name of the feature DView.ownedRepresentations which has been deleted.
      */
     public static final String DVIEW_OWNED_REPRESENTATIONS_UNKNOWN_FEATURE = "ownedRepresentations"; //$NON-NLS-1$
-
-    /**
-     * The label of the feature name of a DRepresentation when serialized.
-     */
-    protected static final String FEATURE_NAME_LABEL = "name"; //$NON-NLS-1$
-
-    /**
-     * The label of the feature description of a DRepresentation when serialized.
-     */
-    protected static final String FEATURE_DOCUMENTATION_LABEL = "documentation"; //$NON-NLS-1$
 
     /**
      * A map associating {@link DRepresentation} to their name.
@@ -96,6 +91,8 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant 
 
     private Map<DRepresentation, DRepresentationDescriptor> representation2RepresentationDescriptorMap;
 
+    private Set<DRepresentationDescriptor> migratedDescriptorsforNameOrDocumentation;
+
     /**
      * Init maps.
      */
@@ -104,6 +101,7 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant 
         representation2RepresentationDescriptorMap = new HashMap<>();
         representationToNameMap = new HashMap<>();
         representationToDocumentationMap = new HashMap<>();
+        migratedDescriptorsforNameOrDocumentation = new HashSet<>();
     }
 
     @Override
@@ -132,6 +130,9 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant 
                     // representation name or documentation.
                     representation2RepresentationDescriptorMap.put(representation, newDescriptor);
                 }
+                if (representationName != null || representationDocumentation != null) {
+                    migratedDescriptorsforNameOrDocumentation.add(newDescriptor);
+                }
             }
         }
     }
@@ -156,27 +157,29 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant 
                 }
             }
 
-        } else if (ViewpointPackage.eINSTANCE.getDRepresentation_Name().equals(feature)) {
-            DRepresentationDescriptor dRepresentationDescriptor = representation2RepresentationDescriptorMap.get(object);
-            // A representation descriptor has been created before we had the name of the representation so we
-            // update
-            // it.
-            if (dRepresentationDescriptor != null) {
-                dRepresentationDescriptor.setName((String) value);
-            } else {
-                representationToNameMap.put((DRepresentation) object, (String) value);
-            }
+        } else if (Version.parseVersion(loadedVersion).compareTo(MIGRATION_VERSION_DESC_NAME_CHANGE) < 0) {
+            if (ViewpointPackage.eINSTANCE.getDRepresentation_Name().equals(feature)) {
+                DRepresentationDescriptor dRepresentationDescriptor = representation2RepresentationDescriptorMap.get(object);
+                // A representation descriptor has been created before we had the name of the representation so we
+                // update it.
+                if (dRepresentationDescriptor != null && (dRepresentationDescriptor.getName() == null || dRepresentationDescriptor.getName().isEmpty())) {
+                    dRepresentationDescriptor.setName((String) value);
+                    migratedDescriptorsforNameOrDocumentation.add(dRepresentationDescriptor);
+                } else {
+                    representationToNameMap.put((DRepresentation) object, (String) value);
+                }
 
-        } else if (ViewpointPackage.eINSTANCE.getDRepresentation_Documentation().equals(feature)) {
-            DRepresentationDescriptor dRepresentationDescriptor = representation2RepresentationDescriptorMap.get(object);
-            // A representation descriptor has been created before we had the description of the representation so we
-            // update it.
-            if (dRepresentationDescriptor != null) {
-                dRepresentationDescriptor.setDocumentation((String) value);
-            } else {
-                representationToDocumentationMap.put((DRepresentation) object, (String) value);
+            } else if (ViewpointPackage.eINSTANCE.getDRepresentation_Documentation().equals(feature)) {
+                DRepresentationDescriptor dRepresentationDescriptor = representation2RepresentationDescriptorMap.get(object);
+                // A representation descriptor has been created before we had the documentation of the representation so
+                // we update it.
+                if (dRepresentationDescriptor != null) {
+                    dRepresentationDescriptor.setDocumentation((String) value);
+                    migratedDescriptorsforNameOrDocumentation.add(dRepresentationDescriptor);
+                } else {
+                    representationToDocumentationMap.put((DRepresentation) object, (String) value);
+                }
             }
-
         }
         return super.getValue(object, feature, value, loadedVersion);
     }
@@ -203,6 +206,18 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant 
             });
             super.postLoad(dAnalysis, loadedVersion);
         }
+
+        if (!migratedDescriptorsforNameOrDocumentation.isEmpty()) {
+            String migrationMessage = MessageFormat.format(Messages.DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant_nameMigrationMessage,
+                    migratedDescriptorsforNameOrDocumentation.size());
+            SiriusPlugin.getDefault().info(migrationMessage, null);
+            migratedDescriptorsforNameOrDocumentation.clear();
+        }
+
+        representation2RepresentationDescriptorMap.clear();
+        representationToNameMap.clear();
+        representationToDocumentationMap.clear();
+
     }
 
     /**

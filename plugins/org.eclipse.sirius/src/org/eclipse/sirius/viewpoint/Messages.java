@@ -204,6 +204,9 @@ public final class Messages {
     public static String DRepresentationDescriptorToDRepresentationLinkManager_repLoading;
 
     @TranslatableMessage
+    public static String DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant_nameMigrationMessage;
+
+    @TranslatableMessage
     public static String DViewOperations_addSelectedViewMsg;
 
     @TranslatableMessage
