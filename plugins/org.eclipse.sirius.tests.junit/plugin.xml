@@ -97,7 +97,7 @@
    <extension
          point="org.eclipse.sirius.migrationParticipant">
       <participant
-            class="org.eclipse.sirius.tests.unit.diagram.migration.ChangIdUpdaterMigrationParticipant"
+            class="org.eclipse.sirius.tests.unit.diagram.migration.ChangeIdUpdaterMigrationParticipant"
             kind="RepresentationsFile">
       </participant>
    </extension>

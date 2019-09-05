@@ -24,12 +24,18 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusTestCase;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
 import org.eclipse.sirius.viewpoint.DAnalysis;
+import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
+import org.osgi.framework.Version;
 
 /**
  * Tests that the API to update change id and available in {@link AbstractRepresentationsFileMigrationParticipant} do
  * work.
+ * 
+ * There is no migration provided with Sirius 6.3.0 to init the change id. The
+ * {@link ChangeIdUpdaterMigrationParticipant} has been added in tests plugin to simulate the future use of the
+ * {@link AbstractRepresentationsFileMigrationParticipant#updateChangeId(DAnalysis, DRepresentation)} method.
  * 
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
  *
@@ -61,6 +67,19 @@ public class ChangeIdAPIForMigrationTest extends SiriusTestCase {
     }
 
     /**
+     * Test that the data were not migrated on the repo. It allows to check the effect of the migration in the other
+     * test.
+     */
+    public void testMigrationIsNeededOnData() {
+        Version participantVersion = ChangeIdUpdaterMigrationParticipant.MIGRATION_VERSION;
+
+        // Check that the representation file migration is needed.
+        URI uri = URI.createPlatformPluginURI(SiriusTestsPlugin.PLUGIN_ID + PATH + SESSION_RESOURCE_NAME, true);
+        Version loadedVersion = checkRepresentationFileMigrationStatus(uri, true);
+        assertTrue("The AddRepresentationUidMigrationParticipant migration should be required on test data.", participantVersion.compareTo(loadedVersion) > 0);
+    }
+
+    /**
      * This test verifies that {@link AbstractRepresentationsFileMigrationParticipant#updateChangeId()} allows to update
      * the change id correctly during a migration.
      */
@@ -74,4 +93,5 @@ public class ChangeIdAPIForMigrationTest extends SiriusTestCase {
             }
         }
     }
+
 }
