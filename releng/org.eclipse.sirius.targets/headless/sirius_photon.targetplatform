@@ -1,7 +1,7 @@
 target "sirius_headless_photon"
 
 include "../modules/orbit.tpd"
-include "../modules/elk-0.4.tpd"
+include "../modules/elk-0.5.tpd"
 include "../modules/jetty-9.4.tpd"
 include "../modules/shared-license.tpd"
 
