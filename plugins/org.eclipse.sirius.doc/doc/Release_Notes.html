@@ -227,6 +227,19 @@
 				<code>org.eclipse.sirius.common.enableUriFragmentOptimization</code> to 
 				<code>false</code>.
 			</li>
+			<li><span class="label label-danger">Removed</span> The classes 
+				<code>org.eclipse.sirius.common.tools.api.util.LazyCrossReferencer</code>, 
+				<code>org.eclipse.sirius.common.tools.api.util.ECrossReferenceAdapterWithUnproxyCapability</code> have been merged in 
+				<code>org.eclipse.sirius.business.internal.session.danalysis.SessionLazyCrossReferencer</code> to reduce complexity.
+			</li>
+			<li><span class="label label-danger">Removed</span> The class 
+				<code>org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapterImpl</code> has been merged in 
+				<code>org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter</code>.
+			</li>
+			<li><span class="label label-danger">Removed</span> The 
+				<code>org.eclipse.sirius.business.internal.session.danalysis.LocalResourceCollector</code> has been merged in 
+				<code>SiriusCrossReferenceAdapter</code> to have only one instance of a cross referencer for a Sirius session. This implies that resource collector is no more installed on all resourceSet resources by default but only on those managed by the Sirius session semantic cross reference. But if the getRefencing/ed services are used, it will install itself on a non managed resource and then return the references for all resources on which it is installed.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in  
 			<code>org.eclipse.sirius.diagram</code>
