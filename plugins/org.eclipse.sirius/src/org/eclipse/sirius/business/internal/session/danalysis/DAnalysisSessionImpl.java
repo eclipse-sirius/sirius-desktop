@@ -786,8 +786,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 newSemanticResource = resourceSet.getResource(semanticModelURI, true);
                 // If it is a new resource, register it with all its referenced
                 // resources as semantic models.
-                if (!getSemanticResources().contains(newSemanticResource)) {
-                    doAddSemanticResource(newSemanticResource, resourceSet);
+                Set<Resource> alreadyKnownResources = new HashSet<>(getSemanticResources());
+                if (!alreadyKnownResources.contains(newSemanticResource)) {
+                    doAddSemanticResource(newSemanticResource, resourceSet, alreadyKnownResources);
                 }
             } finally {
                 monitor.done();
@@ -803,8 +804,12 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      *            the semantic resource.
      * @param set
      *            the ResourceSet in which it should be added if needed.
+     * @param collector
+     *            a set which allows to know which resource have already been processed.
      */
-    protected void doAddSemanticResource(final Resource newResource, final ResourceSet set) {
+    protected void doAddSemanticResource(final Resource newResource, final ResourceSet set, final Set<Resource> collector) {
+        collector.add(newResource);
+
         if (new ResourceQuery(newResource).isAirdOrSrmResource()) {
             throw new IllegalArgumentException(Messages.DAnalysisSessionImpl_addSemanticErrorMsg);
         }
@@ -821,8 +826,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         registerResourceInCrossReferencer(newResource);
 
         for (Resource res : collectAllReferencedResources(newResource)) {
-            if (!getSemanticResources().contains(res)) {
-                doAddSemanticResource(res, set);
+            // Avoid to process resources twice.
+            if (!collector.contains(res)) {
+                doAddSemanticResource(res, set, collector);
             }
         }
     }
