@@ -116,13 +116,10 @@ public class VariableFilterTest extends SiriusDiagramTestCase {
     public void testFilterSorting() {
         openDiagram(DIAGRAM_DESC_NAME_3);
         activeMultipleSelectionFilter();
-
-        List<FilterDescription> activatedFiltersBeforeActivation = new ArrayList<>(diagram.getActivatedFilters());
         activateTypedVariableFilter();
         List<FilterDescription> activatedFiltersAfterActivation = new ArrayList<>(diagram.getActivatedFilters());
-
-        assertEquals(activatedFiltersBeforeActivation.get(0).getName(), activatedFiltersAfterActivation.get(0).getName());
-        assertEquals(activatedFiltersBeforeActivation.get(1).getName(), activatedFiltersAfterActivation.get(1).getName());
+        assertEquals("Classifier", activatedFiltersAfterActivation.get(0).getName());
+        assertEquals("FilterWithTypedVariables", activatedFiltersAfterActivation.get(1).getName());
     }
 
     /**

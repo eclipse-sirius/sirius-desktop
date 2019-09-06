@@ -79,7 +79,7 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="vpTwoFilters" domainClass="EPackage">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="FilterWithTypedVariables">
-        <filters xsi:type="filter:VariableFilter" semanticConditionExpression="aql:not (rGBVariable.oclIsKindOf(viewpoint::RGBValues) and stringVariable.contains('textDefault') and intVariable+5=10)">
+        <filters xsi:type="filter:VariableFilter" filterKind="COLLAPSE" semanticConditionExpression="aql:not (rGBVariable.oclIsKindOf(viewpoint::RGBValues) and stringVariable.contains('textDefault') and intVariable+5=10)">
           <ownedVariables xsi:type="description:TypedVariable" userDocumentation="My documentation" name="rGBVariable" defaultValueExpression="113,113,113">
             <valueType href="http://www.eclipse.org/sirius/1.1.0#//RGBValues"/>
           </ownedVariables>
