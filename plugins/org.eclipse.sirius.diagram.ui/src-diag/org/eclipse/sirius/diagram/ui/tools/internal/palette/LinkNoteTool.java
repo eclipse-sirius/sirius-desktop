@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.Optional;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.Request;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest.ViewDescriptor;
@@ -58,6 +59,15 @@ class LinkNoteTool extends CreationTool {
         ViewDescriptor vd = ((CreateViewRequest) getTargetRequest()).getViewDescriptors().get(0);
         if (vd.getElementAdapter().getAdapter(DRepresentationDescriptor.class) != null) {
             super.performCreation(button);
+        }
+    }
+
+    @Override
+    public void setViewer(EditPartViewer viewer) {
+        if (viewer != null) {
+            // we don't set to null because the tool cannot be reused with control+click since it opens a dialog where
+            // the user must select elements and because we loose the viewer with the dialog that takes focus.
+            super.setViewer(viewer);
         }
     }
 

@@ -927,6 +927,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      *             if an exception occurs
      */
     public void refresh() throws WidgetNotFoundException {
+        bot.shell().activate();
         bot.toolbarButtonWithTooltip(DiagramDialectUIServices.REFRESH_DIAGRAM).click();
     }
 
@@ -1889,6 +1890,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      */
     public void changeLayerActivation(String layerName) {
         if (useTabbar()) {
+            bot.shell().activate();
             SWTBotToolbarDropDownButton button = designerBot.toolbarDropDownButtonWithTooltip("Layers");
             Matcher<MenuItem> withLayerName = WidgetMatcherFactory.withText(layerName);
             SWTBotMenu layerButton = button.menuItem(withLayerName);

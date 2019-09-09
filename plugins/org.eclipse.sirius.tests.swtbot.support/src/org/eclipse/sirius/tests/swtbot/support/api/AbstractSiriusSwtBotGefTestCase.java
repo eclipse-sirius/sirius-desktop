@@ -448,6 +448,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
     protected void manualRefresh() {
         editor.bot().toolbarButtonWithTooltip(DiagramDialectUIServices.REFRESH_DIAGRAM).click();
         SWTBotUtils.waitProgressMonitorClose("Progress Information");
+        SWTBotUtils.waitAllUiEvents();
     }
 
     /**
@@ -1076,7 +1077,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * @return the first corresponding representation
      */
     protected final DRepresentation getRepresentationWithName(Session session, String representationDescriptionName, final String representationName) {
-           DRepresentationDescriptor representationDescriptorWithName = getRepresentationDescriptorWithName(session, representationDescriptionName, representationName);
+        DRepresentationDescriptor representationDescriptorWithName = getRepresentationDescriptorWithName(session, representationDescriptionName, representationName);
         if (representationDescriptorWithName != null) {
             return representationDescriptorWithName.getRepresentation();
         } else {

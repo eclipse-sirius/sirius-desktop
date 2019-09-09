@@ -803,8 +803,8 @@ public class AbstractRefreshWithCustomizedStyleOnCompleteExampleTest extends Abs
     }
 
     protected void selectAndRefreshDiagram() {
-        editor.scrollTo(0, 0);
-        editor.click(5, 5);
+        package1WithWorkspaceImageStyleBot.click();
+        package1WithWorkspaceImageStyleBot.parent().click();
         SWTBotUtils.waitAllUiEvents();
         manualRefresh();
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -41,9 +41,8 @@ import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
- * Tests for the popup menu tool that creates element by grouping several
- * elements (grouping two EClass in a new EPackage). Validate that the created
- * EPackage is located in the middle of the canvas avoiding overlap.
+ * Tests for the popup menu tool that creates element by grouping several elements (grouping two EClass in a new
+ * EPackage). Validate that the created EPackage is located in the middle of the canvas avoiding overlap.
  * 
  * See VP-1859.
  * 
@@ -110,12 +109,10 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
     }
 
     /**
-     * Test that grouping two EClass into a new Package (without scroll),
-     * locates this new Package at the center of the visible part of the canvas
-     * without overlapping.<BR>
-     * Currently there is no overlapping for the top-left corner. A specific
-     * issue VP-2399 must be fix to check that there is no overlap of all the
-     * figure.
+     * Test that grouping two EClass into a new Package (without scroll), locates this new Package at the center of the
+     * visible part of the canvas without overlapping.<BR>
+     * Currently there is no overlapping for the top-left corner. A specific issue VP-2399 must be fix to check that
+     * there is no overlap of all the figure.
      */
     public void testGroupActionInDiagramEditPartWithoutScroll() {
         // WARNING : This test need to be ran in a specific resolution (@see
@@ -142,7 +139,7 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
         // Get the absolute location of p4 package (in logical coordinates, not
         // in screen coordinates)
         if (GraphicalHelper.getZoom(package5Bot.part()) != ZoomLevel.ZOOM_200.getAmount()) {
-            GraphicTestsSupportHelp.assertEquals("The newly created Package5 should be at the center of the visible part of the diagram", absoluteEditorCenter, package5AbsoluteLocation, 1, 1);
+            GraphicTestsSupportHelp.assertEquals("The newly created Package5 should be at the center of the visible part of the diagram", absoluteEditorCenter, package5AbsoluteLocation, 5, 5);
         } else {
             // We don't make the same test with zoom at 200% because the middle
             // of the visible
@@ -153,33 +150,30 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
     }
 
     /**
-     * Test that creating two elements outside the current selection, does not
-     * overlapped this new packages (VP-2609).<BR>
-     * Currently there is no overlapping for the top-left corner. A specific
-     * issue VP-2399 must be fix to check that there is no overlap of all the
-     * figure.
+     * Test that creating two elements outside the current selection, does not overlapped this new packages
+     * (VP-2609).<BR>
+     * Currently there is no overlapping for the top-left corner. A specific issue VP-2399 must be fix to check that
+     * there is no overlap of all the figure.
      */
     public void testMultiCreationOutsideCurrentSelection() {
         testMultiCreationOutsideCurrentSelection(false);
     }
 
     /**
-     * Test that creating two elements outside the current selection (with
-     * snapToGrid enabled), does not overlapped this new packages (VP-2609).<BR>
-     * Currently there is no overlapping for the top-left corner. A specific
-     * issue VP-2399 must be fix to check that there is no overlap of all the
-     * figure.
+     * Test that creating two elements outside the current selection (with snapToGrid enabled), does not overlapped this
+     * new packages (VP-2609).<BR>
+     * Currently there is no overlapping for the top-left corner. A specific issue VP-2399 must be fix to check that
+     * there is no overlap of all the figure.
      */
     public void testMultiCreationOutsideCurrentSelectionWithSnapToGridEnabled() {
         testMultiCreationOutsideCurrentSelection(true);
     }
 
     /**
-     * Test that creating two elements outside the current selection (with
-     * snapToGrid enabled), does not overlapped this new packages (VP-2609).<BR>
-     * Currently there is no overlapping for the top-left corner. A specific
-     * issue VP-2399 must be fix to check that there is no overlap of all the
-     * figure.
+     * Test that creating two elements outside the current selection (with snapToGrid enabled), does not overlapped this
+     * new packages (VP-2609).<BR>
+     * Currently there is no overlapping for the top-left corner. A specific issue VP-2399 must be fix to check that
+     * there is no overlap of all the figure.
      */
     private void testMultiCreationOutsideCurrentSelection(boolean isSnapToGridEnabled) {
         if (isSnapToGridEnabled) {
@@ -236,8 +230,7 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
     }
 
     /**
-     * Check if there is a figure (children of parent) at the supplied
-     * <code>location</code>.
+     * Check if there is a figure (children of parent) at the supplied <code>location</code>.
      * 
      * @param parent
      *            The parent figure

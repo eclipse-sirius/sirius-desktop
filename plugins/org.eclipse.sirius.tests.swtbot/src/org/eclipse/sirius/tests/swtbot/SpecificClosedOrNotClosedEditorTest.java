@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -64,7 +64,7 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
- * Test that if deleted target element present in other representation opened, the other representation is closed.
+ * Test that if deleted target element present in other representation opened,lthe other representation is closed.
  * Testing VP-1853 and VP-1854.
  * 
  * @author jdupont
@@ -168,8 +168,8 @@ public class SpecificClosedOrNotClosedEditorTest extends AbstractSiriusSwtBotGef
         assertTrue("The node is not deleted", ((DDiagramEditPart) editor.rootEditPart().part().getChildren().get(0)).getChildren().size() == 1);
         // Check and close the popup.
         bot.waitUntil(Conditions.shellIsActive(DefaultDialectEditorDialogFactory.ELEMENT_HAS_BEEN_DELETED_TITLE));
-        SWTBotShell editorWillClosePopup = bot.activeShell();
-        bot.button("OK").click();
+        SWTBotShell editorWillClosePopup = bot.shell(DefaultDialectEditorDialogFactory.ELEMENT_HAS_BEEN_DELETED_TITLE);
+        editorWillClosePopup.bot().button("OK").click();
         bot.waitUntil(Conditions.shellCloses(editorWillClosePopup));
         // Check that the second editor is closed.
         assertTrue("The second editor was not closed", bot.editors().size() == 1);

@@ -47,6 +47,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.TextEditorAppearedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
@@ -97,7 +98,7 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String LINK_TARGET_NEW_NAME = "Renamed Representation";
 
     private static final String SET_TARGET_REPRESENTATION = "Set target representation ...";
-    
+
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL, SESSION_FILE);
@@ -557,6 +558,7 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
             selectTargetRepresentation(link);
         }
         SWTBotUtils.pressKeyboardKey(editor.getWidget(), SWT.F2);
+        bot.waitUntil(new TextEditorAppearedCondition(editor, org.eclipse.sirius.diagram.ui.internal.edit.parts.NoteEditPart.class, null), 3000);
         editor.directEditType(MY_NOTE);
     }
 

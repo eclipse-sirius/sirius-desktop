@@ -176,7 +176,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(CustomClipboardSupportTest.class);
         suite.addTestSuite(KeyboardDeletionFromLabelTests.class);
         suite.addTestSuite(DragAndDropDifferentElementsTest.class);
-        suite.addTestSuite(RefreshWithCustomizedStyleTests.class);
         suite.addTestSuite(EdgeReconnectionTests.class);
         suite.addTestSuite(ShowTypeActionButtonTest.class);
         suite.addTestSuite(LineStyleTest.class);
@@ -282,6 +281,7 @@ public class AllTestSuite extends TestCase {
         // suite.addTestSuite(DndWorkspaceSupportTest.class);
         // suite.addTest(SequenceSwtBotTestSuite.suite());
 
+        suite.addTestSuite(RefreshWithCustomizedStyleTests.class);
         suite.addTestSuite(ArrangeAllLinkedBorderedNodesLayoutStabilityAppTemoinTest.class);
         suite.addTestSuite(ArrangeAllLinkedBorderedNodesLayoutStabilityTest.class);
         suite.addTestSuite(ArrangeAllLinkedBorderedNodesWithSnapToGridTest.class);

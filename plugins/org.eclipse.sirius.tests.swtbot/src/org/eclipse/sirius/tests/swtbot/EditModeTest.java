@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -365,6 +365,7 @@ public class EditModeTest extends AbstractModeTest {
      * Verify that a double click on a visible node label hides it and vice versa.
      */
     public void testShowHideDoubleClickOnNodeLabel() {
+        editor.reveal(getEditPart("new EPackage 2", DNodeContainerEditPart.class).part());
         SWTBotGefEditPart swtBotDNodeEditPart = getEditPart("new EClass 4", DNode4EditPart.class);
         EditPart part = swtBotDNodeEditPart.part();
         DNode element = (DNode) ((Node) part.getModel()).getElement();
