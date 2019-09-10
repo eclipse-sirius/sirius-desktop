@@ -353,7 +353,7 @@ public class BundledImageFigure extends SVGFigure {
             }
         }
 
-        updated = updated || updateDocumentSecondaryColorAndShadowBorder(document);
+        updated = updateDocumentSecondaryColorAndShadowBorder(document) || updated;
 
         /* Update the border color (if exists). */
         Element elementWithGradient = findElementInDocument(bundledImage, document, BundledImageFigure.BORDER_COLOR_IDENTIFIER, BundledImageFigure.SVG_GRADIENT_ELEMENT_ID);
