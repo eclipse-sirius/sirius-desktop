@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.SessionSavedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
 import org.eclipse.sirius.tests.swtbot.support.api.view.SiriusOutlineView;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
@@ -118,7 +119,7 @@ public final class SWTBotCommonHelper {
      * Close the current editor.
      */
     public static void closeCurrentEditor() {
-        SWTBotCommonHelper.bot.menu(SWTBotCommonHelper.FILE).menu("Close").click();
+        SWTBotSiriusHelper.menu(SWTBotCommonHelper.bot, SWTBotCommonHelper.FILE).menu("Close").click();
     }
 
     /**
@@ -147,9 +148,8 @@ public final class SWTBotCommonHelper {
     }
 
     /**
-     * Save the current editor. Warning: It is preferable to use
-     * {@link #saveCurrentEditor(Session)} because this method contains a wait
-     * condition to ensure that the save is finished.
+     * Save the current editor. Warning: It is preferable to use {@link #saveCurrentEditor(Session)} because this method
+     * contains a wait condition to ensure that the save is finished.
      */
     public static void saveCurrentEditor() {
         SWTBotCommonHelper.bot.menu(SWTBotCommonHelper.FILE).menu("Save").click();
@@ -201,8 +201,8 @@ public final class SWTBotCommonHelper {
 
     /**
      * <p>
-     * Gets the outline view of the current editor and selects the "Outline"
-     * button. Returns the outline Tree of the opened outline.
+     * Gets the outline view of the current editor and selects the "Outline" button. Returns the outline Tree of the
+     * opened outline.
      * </p>
      * 
      * <p>
@@ -216,14 +216,12 @@ public final class SWTBotCommonHelper {
      * 
      * @param designerViews
      *            if your test extends
-     *            {@link org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase}
-     *            , you should pass the <code>designerViews</code> attribute.
-     * @return a {@link SWTBotView} allowing to manipulate the current editor's
-     *         outline (focused on the outline Tree)
+     *            {@link org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase} , you should pass
+     *            the <code>designerViews</code> attribute.
+     * @return a {@link SWTBotView} allowing to manipulate the current editor's outline (focused on the outline Tree)
      * 
      * @throws NoSuchFieldException
-     *             if a reflective exception occurred while trying to get the
-     *             outline
+     *             if a reflective exception occurred while trying to get the outline
      */
     public static SWTBotView getOutlineView(DesignerViews designerViews) throws NoSuchFieldException {
         try {
