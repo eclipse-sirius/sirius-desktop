@@ -133,6 +133,9 @@
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> It is now possible to move labels on border of node, or border node, all around the node. Before, for label larger than the node, only centered location was authorized on North or South side.</li>
+			<li><span class="label label-info">Modified</span> The GIF and BMP formats which are currently supported when exporting diagrams as images should be considered 
+				<em>deprecated</em>. Their support may be removed in a future version, as they cause various issues depending on the platform and increase the maintenance costs for little value. If you really need diagram images in these formats, you can export in PNG (which is lossless), and convert the image into the required format using an external tool.
+			</li>
 		</ul>
 		<h3 id="SpecifierVisibleChanges">Specifier-Visible Changes</h3>
 		<ul>
@@ -175,7 +178,7 @@
 			<li><span class="label label-success">Added</span>The method 
 				<code>org.eclipse.sirius.business.api.session.AbstractSavingPolicy.hasDifferentSerialization(Resource, Map)</code> has been extracted from internal subclasses. It is able to tell whether a save operation on a resource can succeed or not, and if the resulting file will change. It should be used with care as it basically saves the resource in a temporary resource to know whether it will change the file or not.
 			</li>
-			<li><span class="label label-info">Modified</span>The method 
+			<li><span class="label label-info">Modified</span> The method 
 				<code>org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices.copyRepresentation(DRepresentation, String, Session, IProgressMonitor)</code> has its first parameter changed from 
 				<code>DRepresentation</code> to 
 				<code>DRepresentationDescriptor</code>. Also the constructor of 
