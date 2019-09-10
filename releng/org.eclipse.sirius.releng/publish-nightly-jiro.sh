@@ -35,7 +35,7 @@ provided by the Jenkins build.
 set -e
 
 # The full version (should be taken as an argument)
-export VERSION="6.1.3"
+export VERSION="6.1.4"
 
 # The type of build being published
 export BUILD_TYPE="nightly"
@@ -45,7 +45,7 @@ export BUILD_TYPE_PREFIX="N"
 export SSH_ACCOUNT="genie.sirius@projects-storage.eclipse.org"
 
 # The root folder for all Sirius udpate sites
-export SIRIUS_UPDATES_ROOT="/home/data/httpd/download.eclipse.org/sirius/staging"
+export SIRIUS_UPDATES_ROOT="/home/data/httpd/download.eclipse.org/sirius/updates"
 
 # Streams are of the form 1.0.x: only keep major and minor version number parts
 export STREAM=$(echo "$VERSION" | sed -r -e 's/^([0-9]+\.[0-9]+\.).*$/\1x/')
