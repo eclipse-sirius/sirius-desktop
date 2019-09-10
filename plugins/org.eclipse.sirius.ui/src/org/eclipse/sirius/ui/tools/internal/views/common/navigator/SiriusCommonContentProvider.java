@@ -968,6 +968,11 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
 
         @Override
         public void resourceSetChanged(ResourceSetChangeEvent event) {
+            if (!session.isOpen()) {
+                // The session is closed, it might not have been removed yet from the SessionManagerLister which would
+                // remove this trigger and launch a refresh of the viewer.
+                return;
+            }
             Collection<Notification> notifications = Lists.newArrayList(Iterables.filter(Iterables.filter(event.getNotifications(), Notification.class), new RefreshViewerTriggerScope(session)));
 
             Function<Notification, Object> notifToNotifier = new Function<Notification, Object>() {
@@ -1031,9 +1036,11 @@ public class SiriusCommonContentProvider implements ICommonContentProvider {
         RefreshViewerTriggerScope(Session session) {
             this.session = session;
             allSemanticResources = new HashSet<>();
-            allSemanticResources.addAll(session.getSemanticResources());
-            if (session instanceof DAnalysisSessionEObject) {
-                allSemanticResources.addAll(((DAnalysisSessionEObject) session).getControlledResources());
+            if (session.isOpen()) {
+                allSemanticResources.addAll(session.getSemanticResources());
+                if (session instanceof DAnalysisSessionEObject) {
+                    allSemanticResources.addAll(((DAnalysisSessionEObject) session).getControlledResources());
+                }
             }
         }
 
