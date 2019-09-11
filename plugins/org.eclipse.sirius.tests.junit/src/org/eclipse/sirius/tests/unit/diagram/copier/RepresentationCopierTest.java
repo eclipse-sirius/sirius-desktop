@@ -215,17 +215,21 @@ public class RepresentationCopierTest extends GenericTestCase implements UML2Mod
 
     public void testCopiedRepresentationName() throws Exception {
         final String newRepresentationName = "New Representation Space Name ";
+        String originaleDiagramName = originalDiagram.getName();
         DDiagram copy = copyDiagram(newRepresentationName);
         /* check that copy has the name asked */
         assertTrue(originalDiagram != copy);
         assertFalse(originalDiagram.getUid().equals(copy.getUid()));
         assertEquals(newRepresentationName, new DRepresentationQuery(copy).getRepresentationDescriptor().getName());
+        assertEquals(originaleDiagramName, originalDiagram.getName());
 
+        String originaleDiagramUseCaseName = originalUseCaseDiagram.getName();
         copy = copyUseCaseDiagram(newRepresentationName);
         /* check that copy has the name asked */
         assertTrue(originalUseCaseDiagram != copy);
         assertFalse(originalUseCaseDiagram.getUid().equals(copy.getUid()));
         assertEquals(newRepresentationName, new DRepresentationQuery(copy).getRepresentationDescriptor().getName());
+        assertEquals(originaleDiagramUseCaseName, originalUseCaseDiagram.getName());
     }
 
     public void testReferencesFromGMFViewsToDiagramElements() throws Exception {
