@@ -193,6 +193,10 @@ public abstract class AbstractRepresentationDialectServices implements DialectSe
         // Copy the representation and get new uid values for copies.
         DRepresentation newRepresentation = SiriusCopierHelper.copyWithNoUidDuplication(representationDescriptor.getRepresentation());
 
+        // Initialize the representation descriptor of the new representation.
+        DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(newRepresentation, (DAnalysisSessionImpl) session,
+                ((DSemanticDecorator) representationDescriptor.getRepresentation()).getTarget().eResource(), name, representationDescriptor.getDocumentation());
+
         return newRepresentation;
     }
 

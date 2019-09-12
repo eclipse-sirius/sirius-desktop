@@ -31,8 +31,6 @@ import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.internal.query.DRepresentationDescriptorInternalHelper;
-import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -54,7 +52,6 @@ import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
@@ -258,14 +255,6 @@ public class TableDialectServices extends AbstractRepresentationDialectServices 
                 }
             }
         }
-    }
-
-    @Override
-    public DRepresentation copyRepresentation(DRepresentationDescriptor representationDescriptor, String name, Session session, IProgressMonitor monitor) {
-        DRepresentation newRepresentation = super.copyRepresentation(representationDescriptor, name, session, monitor);
-        DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(representationDescriptor.getRepresentation(), (DAnalysisSessionImpl) session,
-                ((DSemanticDecorator) representationDescriptor.getRepresentation()).getTarget().eResource(), name, ""); //$NON-NLS-1$
-        return newRepresentation;
     }
 
     @Override

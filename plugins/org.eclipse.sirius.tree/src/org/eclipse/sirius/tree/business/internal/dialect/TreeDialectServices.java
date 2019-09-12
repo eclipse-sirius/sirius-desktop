@@ -57,7 +57,6 @@ import org.eclipse.sirius.tree.tools.internal.Messages;
 import org.eclipse.sirius.tree.tools.internal.command.TreeCommandFactory;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
@@ -161,14 +160,6 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
                 }
             }
         }
-    }
-
-    @Override
-    public DRepresentation copyRepresentation(final DRepresentationDescriptor representationDescriptor, final String name, final Session session, final IProgressMonitor monitor) {
-        DRepresentation newRepresentation = super.copyRepresentation(representationDescriptor, name, session, monitor);
-        DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(newRepresentation, (DAnalysisSessionImpl) session,
-                ((DSemanticDecorator) representationDescriptor).getTarget().eResource(), name, ""); //$NON-NLS-1$
-        return newRepresentation;
     }
 
     /**

@@ -85,7 +85,6 @@ import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -167,8 +166,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
     }
 
     @Override
-    public DRepresentation createRepresentation(final String name, final EObject semantic, final RepresentationDescription description, final Session session,
-            final IProgressMonitor monitor) {
+    public DRepresentation createRepresentation(final String name, final EObject semantic, final RepresentationDescription description, final Session session, final IProgressMonitor monitor) {
         DRepresentation diagram = null;
         try {
             monitor.beginTask(MessageFormat.format(Messages.DiagramDialectServices_createDiagramMsg, name), 6);
@@ -220,17 +218,6 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
         }
         NotYetOpenedDiagramAdapter.markAsToArrange(diagram);
         return gmfDiag;
-    }
-
-    @Override
-    public DRepresentation copyRepresentation(final DRepresentationDescriptor representationDescriptor, final String name, final Session session, final IProgressMonitor monitor) {
-
-        final DRepresentation newRepresentation = super.copyRepresentation(representationDescriptor, name, session, monitor);
-
-        DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(newRepresentation, (DAnalysisSessionImpl) session,
-                ((DSemanticDecorator) representationDescriptor.getRepresentation()).getTarget().eResource(), name, ""); //$NON-NLS-1$
-
-        return newRepresentation;
     }
 
     /**
@@ -320,7 +307,7 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
             }
         }
     }
-    
+
     @Override
     public void updateRepresentationsExtendedBy(final Session session, final Viewpoint viewpoint, final boolean activated) {
         final EList<RepresentationExtensionDescription> extensions = viewpoint.getOwnedRepresentationExtensions();

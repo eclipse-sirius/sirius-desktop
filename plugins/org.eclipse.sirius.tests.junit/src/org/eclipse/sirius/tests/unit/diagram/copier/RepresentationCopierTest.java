@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.util.EcoreUtil.EqualityHelper;
+import org.eclipse.emf.edit.command.SetCommand;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -44,6 +45,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.IdentifiedElement;
+import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.ui.IEditorPart;
 
@@ -79,6 +81,9 @@ public class RepresentationCopierTest extends GenericTestCase implements UML2Mod
         DiagramDescription useCaseDesc = findDiagramDescription("Use Case Diagram");
 
         originalDiagram = getFirstDiagram(desc, session);
+        DRepresentationDescriptor originalDiagramDescriptor = new DRepresentationQuery(originalDiagram).getRepresentationDescriptor();
+        session.getTransactionalEditingDomain().getCommandStack().execute(
+                SetCommand.create(session.getTransactionalEditingDomain(), originalDiagramDescriptor, DescriptionPackage.eINSTANCE.getDocumentedElement_Documentation(), "A sample description."));
         assertEquals(INITIAL_DIAGRAM_ELEMENT_NUMBER, getNumberOfDiagramElements(originalDiagram));
         assertEquals(INITIAL_DNODE_NUMBER, getNumberOfNodes(originalDiagram));
 
@@ -162,21 +167,34 @@ public class RepresentationCopierTest extends GenericTestCase implements UML2Mod
     public void testNoDuplicatedUids() throws Exception {
         final String newRepresentationName = "New Representation Space Name ";
         DDiagram copy = copyDiagram(newRepresentationName);
-        /* check that copy has the name asked */
+        /* check that copy has different uids */
         assertTrue(originalDiagram != copy);
         assertFalse(originalDiagram.getUid().equals(copy.getUid()));
+
+        DRepresentationDescriptor originalDescriptor = new DRepresentationQuery(originalDiagram).getRepresentationDescriptor();
+        DRepresentationDescriptor copyDescriptor = new DRepresentationQuery(copy).getRepresentationDescriptor();
+        assertTrue(originalDescriptor != copyDescriptor);
+        assertFalse(originalDescriptor.getUid().equals(copyDescriptor.getUid()));
 
         checkContentUids(originalDiagram, copy);
 
         copy = copyUseCaseDiagram(newRepresentationName);
-        /* check that copy has the name asked */
+
+        /* check that copy has different uids */
         assertTrue(originalUseCaseDiagram != copy);
         assertFalse(originalUseCaseDiagram.getUid().equals(copy.getUid()));
+
+        DRepresentationDescriptor originalUseCaseDescriptor = new DRepresentationQuery(originalUseCaseDiagram).getRepresentationDescriptor();
+        DRepresentationDescriptor useCaseCopyDescriptor = new DRepresentationQuery(copy).getRepresentationDescriptor();
+        assertTrue(originalUseCaseDescriptor != useCaseCopyDescriptor);
+        assertFalse(originalUseCaseDescriptor.getUid().equals(useCaseCopyDescriptor.getUid()));
+
+        checkContentUids(originalUseCaseDiagram, copy);
 
     }
 
     private void checkContentUids(DDiagram origin, DDiagram copy) {
-        List<IdentifiedElement> copied = collectAllIdentifiedElements(originalDiagram);
+        List<IdentifiedElement> copied = collectAllIdentifiedElements(origin);
         List<IdentifiedElement> copies = collectAllIdentifiedElements(copy);
 
         assertEquals("Copied and copies lists must have the same size.", copied.size(), copies.size());
@@ -192,7 +210,7 @@ public class RepresentationCopierTest extends GenericTestCase implements UML2Mod
                 return ignored || super.haveEqualAttribute(eObject1, eObject2, attribute);
             }
         };
-        assertTrue(helper.equals(originalDiagram, copy));
+        assertTrue(helper.equals(origin, copy));
 
         for (int i = 0; i < copied.size(); i++) {
             IdentifiedElement copiedElt = copied.get(i);
@@ -213,23 +231,51 @@ public class RepresentationCopierTest extends GenericTestCase implements UML2Mod
         return identifiedElements;
     }
 
-    public void testCopiedRepresentationName() throws Exception {
+    public void testCopiedRepresentationNameAndDocumentation() throws Exception {
         final String newRepresentationName = "New Representation Space Name ";
-        String originaleDiagramName = originalDiagram.getName();
+        String originalDiagramName = originalDiagram.getName();
         DDiagram copy = copyDiagram(newRepresentationName);
-        /* check that copy has the name asked */
-        assertTrue(originalDiagram != copy);
-        assertFalse(originalDiagram.getUid().equals(copy.getUid()));
-        assertEquals(newRepresentationName, new DRepresentationQuery(copy).getRepresentationDescriptor().getName());
-        assertEquals(originaleDiagramName, originalDiagram.getName());
 
-        String originaleDiagramUseCaseName = originalUseCaseDiagram.getName();
-        copy = copyUseCaseDiagram(newRepresentationName);
+        DRepresentationDescriptor originalDescriptor = new DRepresentationQuery(originalDiagram).getRepresentationDescriptor();
+        DRepresentationDescriptor copyDescriptor = new DRepresentationQuery(copy).getRepresentationDescriptor();
+
+        assertTrue(originalDiagram != copy);
+        assertTrue(originalDescriptor != copyDescriptor);
+        assertFalse(originalDiagram.getUid().equals(copy.getUid()));
+        assertFalse(originalDescriptor.getUid().equals(copyDescriptor.getUid()));
+
         /* check that copy has the name asked */
+        assertEquals(originalDiagramName, originalDiagram.getName());
+        assertFalse(originalDiagram.getName().equals(copy.getName()));
+        assertEquals(newRepresentationName, copy.getName());
+        assertEquals(newRepresentationName, copyDescriptor.getName());
+
+        /* check that copy has the same documentation: non empty documentation */
+        assertFalse(originalDiagram.getDocumentation().isEmpty());
+        assertEquals(originalDescriptor.getDocumentation(), copyDescriptor.getDocumentation());
+        assertEquals(originalDiagram.getDocumentation(), copy.getDocumentation());
+
+        String originalDiagramUseCaseName = originalUseCaseDiagram.getName();
+        copy = copyUseCaseDiagram(newRepresentationName);
+
+        originalDescriptor = new DRepresentationQuery(originalUseCaseDiagram).getRepresentationDescriptor();
+        copyDescriptor = new DRepresentationQuery(copy).getRepresentationDescriptor();
+
         assertTrue(originalUseCaseDiagram != copy);
         assertFalse(originalUseCaseDiagram.getUid().equals(copy.getUid()));
-        assertEquals(newRepresentationName, new DRepresentationQuery(copy).getRepresentationDescriptor().getName());
-        assertEquals(originaleDiagramUseCaseName, originalUseCaseDiagram.getName());
+        assertFalse(originalUseCaseDiagram.getUid().equals(copy.getUid()));
+        assertFalse(originalDescriptor.getUid().equals(copyDescriptor.getUid()));
+
+        /* check that copy has the name asked */
+        assertEquals(originalDiagramUseCaseName, originalUseCaseDiagram.getName());
+        assertFalse(originalDiagram.getName().equals(copy.getName()));
+        assertEquals(newRepresentationName, copy.getName());
+        assertEquals(newRepresentationName, copyDescriptor.getName());
+
+        /* check that documentation has the same documentation : empty documentation */
+        assertTrue(originalUseCaseDiagram.getDocumentation().isEmpty());
+        assertEquals(originalDescriptor.getDocumentation(), copyDescriptor.getDocumentation());
+        assertEquals(originalUseCaseDiagram.getDocumentation(), copy.getDocumentation());
     }
 
     public void testReferencesFromGMFViewsToDiagramElements() throws Exception {
