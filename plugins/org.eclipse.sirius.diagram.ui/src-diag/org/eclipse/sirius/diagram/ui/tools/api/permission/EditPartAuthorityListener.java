@@ -186,24 +186,28 @@ public class EditPartAuthorityListener implements IAuthorityListener {
             final DDiagramEditPart ddep = (DDiagramEditPart) part;
             RootEditPart rootEditPart = ddep.getRoot();
             if (rootEditPart instanceof DiagramRootEditPart) {
-                EObject target = ((DSemanticDecorator) semanticElement).getTarget();
-                LockStatus lockStatus = diagramEditor.getPermissionAuthority().getLockStatus(target);
-                switch (lockStatus) {
-                case LOCKED_BY_ME:
-                    DiagramSemanticElementLockedNotificationFigure.createNotification((DiagramRootEditPart) rootEditPart, LockStatus.LOCKED_BY_ME);
-                    break;
-                case LOCKED_BY_OTHER:
-                    String tooltip = ""; //$NON-NLS-1$
-                    IToolTipProvider tooltipProvider = Platform.getAdapterManager().getAdapter(semanticElement, IToolTipProvider.class);
-                    if (tooltipProvider != null) {
-                        tooltip = tooltipProvider.getToolTipText(target);
+                try {
+                    EObject target = ((DSemanticDecorator) semanticElement).getTarget();
+                    LockStatus lockStatus = diagramEditor.getPermissionAuthority().getLockStatus(target);
+                    switch (lockStatus) {
+                    case LOCKED_BY_ME:
+                        DiagramSemanticElementLockedNotificationFigure.createNotification((DiagramRootEditPart) rootEditPart, LockStatus.LOCKED_BY_ME);
+                        break;
+                    case LOCKED_BY_OTHER:
+                        String tooltip = ""; //$NON-NLS-1$
+                        IToolTipProvider tooltipProvider = Platform.getAdapterManager().getAdapter(semanticElement, IToolTipProvider.class);
+                        if (tooltipProvider != null) {
+                            tooltip = tooltipProvider.getToolTipText(target);
+                        }
+                        DiagramSemanticElementLockedNotificationFigure.createNotification((DiagramRootEditPart) rootEditPart, "", tooltip, LockStatus.LOCKED_BY_OTHER); //$NON-NLS-1$
+                        break;
+                    case NOT_LOCKED:
+                    default:
+                        DiagramSemanticElementLockedNotificationFigure.removeNotification((DiagramRootEditPart) rootEditPart);
+                        break;
                     }
-                    DiagramSemanticElementLockedNotificationFigure.createNotification((DiagramRootEditPart) rootEditPart, "", tooltip, LockStatus.LOCKED_BY_OTHER); //$NON-NLS-1$
-                    break;
-                case NOT_LOCKED:
-                default:
-                    DiagramSemanticElementLockedNotificationFigure.removeNotification((DiagramRootEditPart) rootEditPart);
-                    break;
+                } catch (IllegalStateException e) {
+                    // Nothing to log here, this can happen if the resource is not accessible anymore (distant resource).
                 }
             }
         }
@@ -217,10 +221,18 @@ public class EditPartAuthorityListener implements IAuthorityListener {
      * @return true if the target value is valid, false otherwise
      */
     private boolean isTargetValid(final EObject semanticElement) {
-        boolean result = true;
-        if (semanticElement instanceof DDiagramElement) {
-            final EObject target = ((DDiagramElement) semanticElement).getTarget();
-            result = target != null && target.eResource() != null;
+        boolean result = false;
+        try {
+
+            if (semanticElement instanceof DDiagramElement) {
+                final EObject target = ((DDiagramElement) semanticElement).getTarget();
+                result = target != null && target.eResource() != null;
+            } else {
+                result = true;
+            }
+        } catch (IllegalStateException e) {
+            // Nothing to log here, this can happen if the resource is not accessible anymore (distant resource).
+            result = false;
         }
         return result;
     }

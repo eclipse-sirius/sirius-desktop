@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -55,13 +55,17 @@ public class FiltersContributionItem extends AbstractMenuContributionItem {
     private Image getImage() {
         final Diagram gmfDiagram = this.part.getDiagram();
         if (gmfDiagram != null) {
-            EObject diagram = gmfDiagram.getElement();
-            if (diagram instanceof DDiagram) {
-                super.setDiagram((DDiagram) diagram);
-                if (!((DDiagram) diagram).getActivatedFilters().isEmpty()) {
-                    return DiagramUIPlugin.Implementation.getDecoratedCheckedImage(DESC_FILTER);
+            try {
+                EObject diagram = gmfDiagram.getElement();
+                if (diagram instanceof DDiagram) {
+                    super.setDiagram((DDiagram) diagram);
+                    if (!((DDiagram) diagram).getActivatedFilters().isEmpty()) {
+                        return DiagramUIPlugin.Implementation.getDecoratedCheckedImage(DESC_FILTER);
+                    }
                 }
-            }
+            } catch (IllegalStateException e) {
+                // Nothing to log here, this can happen if the resource is not accessible anymore (distant resource).
+            }   
         }
         return DiagramUIPlugin.getPlugin().getImage(DESC_FILTER);
     }

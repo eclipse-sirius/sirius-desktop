@@ -70,9 +70,13 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
 
     @Override
     public boolean provides(IDiagramElementEditPart editPart) {
-        if (editPart instanceof GraphicalEditPart || editPart instanceof AbstractConnectionEditPart) {
-            Optional<View> view = Optional.ofNullable((View) editPart.getModel());
-            return view.filter(View::isSetElement).map(View::getElement).filter(model -> model instanceof DNode || model instanceof DDiagramElementContainer).isPresent();
+        try {
+            if (editPart instanceof GraphicalEditPart || editPart instanceof AbstractConnectionEditPart) {
+                Optional<View> view = Optional.ofNullable((View) editPart.getModel());
+                return view.filter(View::isSetElement).map(View::getElement).filter(model -> model instanceof DNode || model instanceof DDiagramElementContainer).isPresent();
+            }
+        } catch (IllegalStateException e) {
+            // Nothing to log here, this can happen if the resource is not accessible anymore (distant resource).
         }
         return false;
     }

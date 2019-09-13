@@ -80,13 +80,17 @@ public class EditModeDecorationDescriptorProvider extends AbstractSiriusDecorati
     }
 
     private String getToolTip(IDiagramElementEditPart editPart) {
-        EObject representedObject = editPart.resolveTargetSemanticElement();
-
-        if (representedObject != null) {
-            IToolTipProvider tooltipProvider = Platform.getAdapterManager().getAdapter(representedObject, IToolTipProvider.class);
-            if (tooltipProvider != null) {
-                return tooltipProvider.getToolTipText(representedObject);
+        try {
+            EObject representedObject = editPart.resolveTargetSemanticElement();
+    
+            if (representedObject != null) {
+                IToolTipProvider tooltipProvider = Platform.getAdapterManager().getAdapter(representedObject, IToolTipProvider.class);
+                if (tooltipProvider != null) {
+                    return tooltipProvider.getToolTipText(representedObject);
+                }
             }
+        } catch (IllegalStateException e) {
+            // Nothing to log here, this can happen if the resource is not accessible anymore (distant resource).
         }
         return null;
     }

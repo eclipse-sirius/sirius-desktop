@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -62,12 +62,16 @@ public class LayersContribution extends AbstractMenuContributionItem {
     protected Image getMenuImage() {
         final Diagram gmfDiagram = this.part.getDiagram();
         if (gmfDiagram != null) {
-            EObject diagram = gmfDiagram.getElement();
-            if (diagram instanceof DDiagram) {
-                super.setDiagram((DDiagram) diagram);
-                if (!getActivatedOptionalLayers().isEmpty()) {
-                    return DiagramUIPlugin.Implementation.getDecoratedCheckedImage(DESC_LAYER);
+            try {
+                EObject diagram = gmfDiagram.getElement();
+                if (diagram instanceof DDiagram) {
+                    super.setDiagram((DDiagram) diagram);
+                    if (!getActivatedOptionalLayers().isEmpty()) {
+                        return DiagramUIPlugin.Implementation.getDecoratedCheckedImage(DESC_LAYER);
+                    }
                 }
+            } catch (IllegalStateException e) {
+                // Nothing to log here, this can happen if the resource is not accessible anymore (distant resource).
             }
         }
         return DiagramUIPlugin.getPlugin().getImage(DESC_LAYER);
