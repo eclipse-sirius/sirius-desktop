@@ -34,8 +34,6 @@ import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.internal.query.DRepresentationDescriptorInternalHelper;
-import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -108,7 +106,6 @@ public class TreeDialectServices extends AbstractRepresentationDialectServices {
             tree.setTarget(semantic);
             monitor.worked(1);
 
-            DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(tree, (DAnalysisSessionImpl) session, semantic.eResource(), name, ""); //$NON-NLS-1$
             refresh(tree, new SubProgressMonitor(monitor, 10));
         } finally {
             monitor.done();
