@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -95,20 +95,24 @@ public class ResetStylePropertiesToDefaultValuesAction extends Action implements
             if (selection instanceof StructuredSelection) {
                 for (final IGraphicalEditPart part : Iterables.filter(((StructuredSelection) selection).toList(), IGraphicalEditPart.class)) {
                     View view = part.getNotationView();
-                    EObject element = view.getElement();
-                    if (element instanceof DDiagramElement) {
-                        DDiagramElement dDiagramElement = (DDiagramElement) element;
-                        if (shouldBeEnable(dDiagramElement)) {
+                    try {
+                        EObject element = view.getElement();
+                        if (element instanceof DDiagramElement) {
+                            DDiagramElement dDiagramElement = (DDiagramElement) element;
+                            if (shouldBeEnable(dDiagramElement)) {
+                                result = true;
+                                break;
+                            }
+                        }                 
+
+                        ViewQuery viewQuery = new ViewQuery(view);
+                        if (viewQuery.isCustomized()) {
                             result = true;
                             break;
                         }
-                    }
-
-                    ViewQuery viewQuery = new ViewQuery(view);
-                    if (viewQuery.isCustomized()) {
-                        result = true;
-                        break;
-                    }
+                    } catch (IllegalStateException e) {
+                        // Nothing to log here, this can happen if the resource is not accessible anymore (distant resource).
+                    }   
                 } // for
             }
         }

@@ -36,8 +36,7 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
- * Listener disabling /enabling edit parts when their locking status is
- * changing.
+ * Listener disabling /enabling edit parts when their locking status is changing.
  * 
  * @author cbrun
  * 
@@ -107,12 +106,9 @@ public class EditPartAuthorityListener implements IAuthorityListener {
     }
 
     /**
-     * Enables or disables the edit mode according to the
-     * {@link IPermissionAuthority} informations and refreshes decorators
-     * (launches the refresh asynchronously or synchronously in the UI Thread
-     * according to the
-     * {@link SiriusDiagramUiPreferencesKeys#PREF_REFRESH_DECORATORS_SYNCHRONOUSLY}
-     * preference).
+     * Enables or disables the edit mode according to the {@link IPermissionAuthority} informations and refreshes
+     * decorators (launches the refresh asynchronously or synchronously in the UI Thread according to the
+     * {@link SiriusDiagramUiPreferencesKeys#PREF_REFRESH_DECORATORS_SYNCHRONOUSLY} preference).
      */
     public void refreshEditMode() {
         // Step 1: check if the current editor is null (means it has just been
@@ -189,18 +185,22 @@ public class EditPartAuthorityListener implements IAuthorityListener {
             final DDiagramEditPart ddep = (DDiagramEditPart) part;
             RootEditPart rootEditPart = ddep.getRoot();
             if (rootEditPart instanceof DiagramRootEditPart) {
-                LockStatus lockStatus = diagramEditor.getPermissionAuthority().getLockStatus(((DSemanticDecorator) semanticElement).getTarget());
-                switch (lockStatus) {
-                case LOCKED_BY_ME:
-                    DiagramSemanticElementLockedNotificationFigure.createNotification((DiagramRootEditPart) rootEditPart, LockStatus.LOCKED_BY_ME);
-                    break;
-                case LOCKED_BY_OTHER:
-                    DiagramSemanticElementLockedNotificationFigure.createNotification((DiagramRootEditPart) rootEditPart, LockStatus.LOCKED_BY_OTHER);
-                    break;
-                case NOT_LOCKED:
-                default:
-                    DiagramSemanticElementLockedNotificationFigure.removeNotification((DiagramRootEditPart) rootEditPart);
-                    break;
+                try {
+                    LockStatus lockStatus = diagramEditor.getPermissionAuthority().getLockStatus(((DSemanticDecorator) semanticElement).getTarget());
+                    switch (lockStatus) {
+                    case LOCKED_BY_ME:
+                        DiagramSemanticElementLockedNotificationFigure.createNotification((DiagramRootEditPart) rootEditPart, LockStatus.LOCKED_BY_ME);
+                        break;
+                    case LOCKED_BY_OTHER:
+                        DiagramSemanticElementLockedNotificationFigure.createNotification((DiagramRootEditPart) rootEditPart, LockStatus.LOCKED_BY_OTHER);
+                        break;
+                    case NOT_LOCKED:
+                    default:
+                        DiagramSemanticElementLockedNotificationFigure.removeNotification((DiagramRootEditPart) rootEditPart);
+                        break;
+                    }
+                } catch (IllegalStateException e) {
+                    // Nothing to log here, this can happen if the resource is not accessible anymore (distant resource).
                 }
             }
         }
@@ -214,10 +214,18 @@ public class EditPartAuthorityListener implements IAuthorityListener {
      * @return true if the target value is valid, false otherwise
      */
     private boolean isTargetValid(final EObject semanticElement) {
-        boolean result = true;
-        if (semanticElement instanceof DDiagramElement) {
-            final EObject target = ((DDiagramElement) semanticElement).getTarget();
-            result = target != null && target.eResource() != null;
+        boolean result = false;
+        try {
+
+            if (semanticElement instanceof DDiagramElement) {
+                final EObject target = ((DDiagramElement) semanticElement).getTarget();
+                result = target != null && target.eResource() != null;
+            } else {
+                result = true;
+            }
+        } catch (IllegalStateException e) {
+            // Nothing to log here, this can happen if the resource is not accessible anymore (distant resource).
+            result = false;
         }
         return result;
     }

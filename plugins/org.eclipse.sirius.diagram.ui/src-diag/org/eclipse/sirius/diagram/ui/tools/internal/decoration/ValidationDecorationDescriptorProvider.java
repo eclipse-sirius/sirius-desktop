@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -81,11 +81,15 @@ public class ValidationDecorationDescriptorProvider extends AbstractSiriusDecora
             Object model = editPart.getModel();
             if (model instanceof View) {
                 View view = (View) model;
-                if ((view instanceof Edge || view.isSetElement()) && view.eResource() != null) {
-                    EditDomain ed = editPart.getViewer().getEditDomain();
-                    if (ed instanceof DiagramEditDomain) {
-                        provides = DDiagramEditPart.MODEL_ID.equals(SiriusVisualIDRegistry.getModelID(view));
+                try {
+                    if ((view instanceof Edge || view.isSetElement()) && view.eResource() != null) {
+                        EditDomain ed = editPart.getViewer().getEditDomain();
+                        if (ed instanceof DiagramEditDomain) {
+                            provides = DDiagramEditPart.MODEL_ID.equals(SiriusVisualIDRegistry.getModelID(view));
+                        }
                     }
+                } catch (IllegalStateException e) {
+                    // Nothing to log here, this can happen if the resource is not accessible anymore (distant resource).
                 }
             }
         }
