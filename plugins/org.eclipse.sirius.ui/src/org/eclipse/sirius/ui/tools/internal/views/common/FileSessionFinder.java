@@ -118,7 +118,8 @@ public final class FileSessionFinder {
         Collection<Session> sessions = new LinkedHashSet<>();
         boolean lookForTransientSession = !SiriusUtil.SESSION_RESOURCE_EXTENSION.equals(file.getFileExtension());
         URI fileURI = getFileUri(file);
-        for (Session session : SessionManager.INSTANCE.getSessions()) {
+        Collection<Session> sessionsToChek = new ArrayList<Session>(SessionManager.INSTANCE.getSessions());
+        for (Session session : sessionsToChek) {
             if (checkedSession(session, file, fileURI, lookForTransientSession, lookFromSemanticAndControlled, getOnlyMainSessionForNoModelingProject)) {
                 sessions.add(session);
             }
