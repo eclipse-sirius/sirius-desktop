@@ -105,7 +105,6 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -477,7 +476,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         // perform a slightly more robust version of the same code. This is the same code that
         // was added in GMF Runtime 1.12.1, but we reproduce it here to still avoid the error when
         // running with previous versions.
-        
+
         enableSanityChecking(false);
 
         Display display = Display.getCurrent();
@@ -1149,7 +1148,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         if (isClosing) {
             return;
         }
-        
+
         super.selectionChanged(part, selection);
         if (getTabbar() != null) {
             getTabbar().selectionChanged(part, selection);
@@ -1883,7 +1882,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                     DiagramPlugin.getDefault().getLog().log(new Status(IStatus.WARNING, DiagramPlugin.ID, Messages.DDiagramEditorImpl_noAssociatedGMFDiagramMsg));
                 }
                 final Diagram gmfDiag = util.getAssociatedGMFDiagram();
-                updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(gmfDiag), repDescURI, new DRepresentationQuery(dDiagram).getRepresentationDescriptor().getName(), session);
+                updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(gmfDiag), repDescURI, dDiagram.getName(), session);
             }
 
         }

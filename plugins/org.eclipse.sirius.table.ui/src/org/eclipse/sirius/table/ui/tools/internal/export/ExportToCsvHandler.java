@@ -18,7 +18,6 @@ import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -52,7 +51,7 @@ public class ExportToCsvHandler extends AbstractHandler {
                 final Shell shell = HandlerUtil.getActiveWorkbenchWindow(event).getShell();
 
                 final FileDialog fileDialog = new FileDialog(shell, SWT.SAVE);
-                fileDialog.setFileName(new DRepresentationQuery(table).getRepresentationDescriptor().getName() + ".csv"); //$NON-NLS-1$
+                fileDialog.setFileName(table.getName() + ".csv"); //$NON-NLS-1$
                 fileDialog.setFilterExtensions(new String[] { "*.csv" }); //$NON-NLS-1$
                 fileDialog.setFilterNames(new String[] { "Comma Separated Values" }); //$NON-NLS-1$
                 final String fileName = fileDialog.open();

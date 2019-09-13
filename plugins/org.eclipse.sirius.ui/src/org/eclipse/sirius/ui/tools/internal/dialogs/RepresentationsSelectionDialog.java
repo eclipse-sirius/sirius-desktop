@@ -25,7 +25,6 @@ import org.eclipse.jface.viewers.CheckboxTableViewer;
 import org.eclipse.jface.viewers.ICheckStateListener;
 import org.eclipse.jface.viewers.IStructuredContentProvider;
 import org.eclipse.jface.viewers.Viewer;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.provider.Messages;
@@ -38,21 +37,19 @@ import org.eclipse.swt.widgets.Shell;
 /**
  * A dialog which lets user select representations among a list of candidates.
  * <p>
- * Use {@link #setTitle(String)} and {@link #setMessage(String)} to customize
- * the dialog to your use case.
+ * Use {@link #setTitle(String)} and {@link #setMessage(String)} to customize the dialog to your use case.
  *
  * @author pcdavid
  */
 public class RepresentationsSelectionDialog extends TitleAreaDialog implements ICheckStateListener {
     /**
-     * The complete list of candidates among which the user can choose, sorted
-     * by name for easy selection by the user.
+     * The complete list of candidates among which the user can choose, sorted by name for easy selection by the user.
      */
     private final List<DRepresentation> candidateRepresentations;
 
     /**
-     * The list of representations the user actually selected. A subset of
-     * {@link #candidateRepresentations}, also sorted by name.
+     * The list of representations the user actually selected. A subset of {@link #candidateRepresentations}, also
+     * sorted by name.
      */
     private final List<DRepresentation> selectedRepresentations;
 
@@ -62,8 +59,7 @@ public class RepresentationsSelectionDialog extends TitleAreaDialog implements I
     private CheckboxTableViewer checkList;
 
     /**
-     * Creates a new dialog to let the user choose a subset of existing
-     * representations from a collection of candidates.
+     * Creates a new dialog to let the user choose a subset of existing representations from a collection of candidates.
      *
      * @param parentShell
      *            the dialog's shell.
@@ -76,18 +72,16 @@ public class RepresentationsSelectionDialog extends TitleAreaDialog implements I
         Collections.sort(candidateRepresentations, new Comparator<DRepresentation>() {
             @Override
             public int compare(final DRepresentation r1, final DRepresentation r2) {
-                return new DRepresentationQuery(r1).getRepresentationDescriptor().getName().compareTo(new DRepresentationQuery(r2).getRepresentationDescriptor().getName());
+                return r1.getName().compareTo(r2.getName());
             }
         });
         this.selectedRepresentations = new ArrayList<DRepresentation>(candidates);
     }
 
     /**
-     * Returns the list of representations the user selected among the
-     * candidates presented.
+     * Returns the list of representations the user selected among the candidates presented.
      *
-     * @return the list of representations selected by the candidate. May be
-     *         empty, but not <code>null</code>.
+     * @return the list of representations selected by the candidate. May be empty, but not <code>null</code>.
      */
     public List<DRepresentation> getSelectedRepresentations() {
         return new ArrayList<DRepresentation>(selectedRepresentations);

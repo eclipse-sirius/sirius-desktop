@@ -42,7 +42,6 @@ import org.eclipse.gmf.runtime.notation.HintedDiagramLinkStyle;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.part.Messages;
@@ -112,7 +111,7 @@ public class OpenDiagramEditPolicy extends OpenEditPolicy {
                 URI uri = EcoreUtil.getURI(diagram);
                 EObject element = diagramFacet.getDiagramLink().getElement();
                 if (element instanceof DDiagram) {
-                    String editorName = new DRepresentationQuery(((DDiagram) element)).getRepresentationDescriptor().getName();
+                    String editorName = ((DDiagram) element).getName();
                     IEditorInput editorInput = new URIEditorInput(uri, editorName);
                     IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
                     page.openEditor(editorInput, getEditorID());

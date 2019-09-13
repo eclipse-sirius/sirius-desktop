@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+@ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -118,10 +118,11 @@ public class TreeDialectUIServices implements DialectUIServices {
                 DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.OPEN_TREE_KEY);
                 URI uri = EcoreUtil.getURI(dRepresentation);
                 DRepresentationQuery query = new DRepresentationQuery(dRepresentation);
-                URI repDescURI = Optional.ofNullable(query.getRepresentationDescriptor()).map(repDesc -> EcoreUtil.getURI(repDesc)).orElse(null);
+                DRepresentationDescriptor representationDescriptor = query.getRepresentationDescriptor();
+                URI repDescURI = Optional.ofNullable(representationDescriptor).map(repDesc -> EcoreUtil.getURI(repDesc)).orElse(null);
                 final IEditorInput editorInput = new SessionEditorInput(uri, repDescURI, getEditorName(dRepresentation), session);
                 monitor.worked(2);
-                monitor.subTask(Messages.TreeDialectUIServices_treeOpening + " : " + new DRepresentationQuery(dRepresentation).getRepresentationDescriptor().getName()); //$NON-NLS-1$
+                monitor.subTask(Messages.TreeDialectUIServices_treeOpening + " : " + representationDescriptor.getName()); //$NON-NLS-1$
                 RunnableWithResult<IEditorPart> runnable = new RunnableWithResult.Impl<IEditorPart>() {
                     @Override
                     public void run() {
@@ -149,7 +150,7 @@ public class TreeDialectUIServices implements DialectUIServices {
 
     @Override
     public String getEditorName(DRepresentation representation) {
-        String editorName = new DRepresentationQuery(representation).getRepresentationDescriptor().getName();
+        String editorName = representation.getName();
         if (StringUtil.isEmpty(editorName)) {
             editorName = Messages.TreeDialectUIServices_newTree;
         }

@@ -14,7 +14,6 @@ package org.eclipse.sirius.diagram.business.internal.repair.resource;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 
 /**
@@ -82,7 +81,7 @@ public class DiagramKey {
     public static DiagramKey createDiagramKey(final DDiagram diagram) {
         final DiagramKey diagramKey = new DiagramKey();
         diagramKey.setDiagramURI(EcoreUtil.getURI(diagram));
-        diagramKey.setDiagramToString(new DRepresentationQuery(diagram).getRepresentationDescriptor().getName());
+        diagramKey.setDiagramToString(diagram.getName());
         return diagramKey;
     }
 }

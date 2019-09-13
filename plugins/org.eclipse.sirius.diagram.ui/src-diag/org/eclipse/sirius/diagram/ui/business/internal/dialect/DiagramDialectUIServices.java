@@ -205,10 +205,12 @@ public class DiagramDialectUIServices implements DialectUIServices {
         URI uri = EcoreUtil.getURI(gmfDiag);
         String editorName = DialectUIManager.INSTANCE.getEditorName(dRepresentation);
         DRepresentationQuery query = new DRepresentationQuery(dRepresentation);
-        URI repDescURI = Optional.ofNullable(query.getRepresentationDescriptor()).map(repDesc -> EcoreUtil.getURI(repDesc)).orElse(null);
+        DRepresentationDescriptor representationDescriptor = query.getRepresentationDescriptor();
+        URI repDescURI = Optional.ofNullable(representationDescriptor).map(repDesc -> EcoreUtil.getURI(repDesc)).orElse(null);
         monitor.worked(1);
         final IEditorInput editorInput = new SessionEditorInput(uri, repDescURI, editorName, session);
-        monitor.subTask(MessageFormat.format(Messages.DiagramDialectUIServices_diagramEditorOpeningMonitorTaskName, query.getRepresentationDescriptor().getName()));
+        String representationName = representationDescriptor.getName();
+        monitor.subTask(MessageFormat.format(Messages.DiagramDialectUIServices_diagramEditorOpeningMonitorTaskName, representationName));
         RunnableWithResult<DialectEditor> runnable = new RunnableWithResult.Impl<DialectEditor>() {
 
             @Override
@@ -593,7 +595,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
     @Override
     public String getEditorName(final DRepresentation representation) {
-        String editorName = new DRepresentationQuery(representation).getRepresentationDescriptor().getName();
+        String editorName = representation.getName();
         if (StringUtil.isEmpty(editorName)) {
             editorName = Messages.DiagramDialectUIServices_representationWithEmptyNameEditorName;
         }

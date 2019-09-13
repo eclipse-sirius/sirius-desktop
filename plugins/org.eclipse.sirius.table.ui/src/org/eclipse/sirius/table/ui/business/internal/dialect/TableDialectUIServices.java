@@ -103,7 +103,8 @@ public class TableDialectUIServices implements DialectUIServices {
             if (dRepresentation instanceof DTable) {
                 DTable dTable = (DTable) dRepresentation;
                 DRepresentationQuery query = new DRepresentationQuery(dTable);
-                URI repDescURI = Optional.ofNullable(query.getRepresentationDescriptor()).map(repDesc -> EcoreUtil.getURI(repDesc)).orElse(null);
+                DRepresentationDescriptor representationDescriptor = query.getRepresentationDescriptor();
+                URI repDescURI = Optional.ofNullable(representationDescriptor).map(repDesc -> EcoreUtil.getURI(repDesc)).orElse(null);
                 DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.OPEN_TABLE_KEY);
                 final URI uri = EcoreUtil.getURI(dTable);
                 final String editorName = DialectUIManager.INSTANCE.getEditorName(dTable);
@@ -119,7 +120,7 @@ public class TableDialectUIServices implements DialectUIServices {
                     editorId = null;
                 }
                 if (editorId != null) {
-                    monitor.subTask(MessageFormat.format(Messages.TableDialectUIServices_tableOpeningVar, new DRepresentationQuery(dRepresentation).getRepresentationDescriptor().getName()));
+                    monitor.subTask(MessageFormat.format(Messages.TableDialectUIServices_tableOpeningVar, representationDescriptor.getName()));
                     RunnableWithResult<IEditorPart> runnable = new RunnableWithResult.Impl<IEditorPart>() {
 
                         @Override
@@ -246,14 +247,15 @@ public class TableDialectUIServices implements DialectUIServices {
     public boolean canExport(ExportFormat format) {
         return format.getDocumentFormat().equals(ExportDocumentFormat.CSV);
     }
-    
+
     @Override
     public ExportResult exportWithResult(DRepresentation representation, Session session, IPath path, ExportFormat format, IProgressMonitor monitor) throws SizeTooLargeException {
         return exportWithResult(representation, session, path, format, monitor, true);
     }
 
     @Override
-    public ExportResult exportWithResult(final DRepresentation representation, final Session session, final IPath path, final ExportFormat exportFormat, final IProgressMonitor monitor, boolean exportDecorations) {
+    public ExportResult exportWithResult(final DRepresentation representation, final Session session, final IPath path, final ExportFormat exportFormat, final IProgressMonitor monitor,
+            boolean exportDecorations) {
         String content = null;
         if (exportFormat.getDocumentFormat().equals(ExportDocumentFormat.CSV)) {
             content = TableExportHelper.INSTANCE.exportToCsv((DTable) representation);
@@ -266,7 +268,7 @@ public class TableDialectUIServices implements DialectUIServices {
 
     @Override
     public String getEditorName(DRepresentation representation) {
-        String editorName = new DRepresentationQuery(representation).getRepresentationDescriptor().getName();
+        String editorName = representation.getName();
         if (StringUtil.isEmpty(editorName)) {
             editorName = Messages.TableDialectUIServices_newTableName;
         }

@@ -45,7 +45,6 @@ import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.image.ImageExporter
 import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.SVGImage;
 import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.SVGImageConverter;
 import org.eclipse.gmf.runtime.notation.Diagram;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ui.internal.refresh.layout.SiriusCanonicalLayoutHandler;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -259,7 +258,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
         }
         // we check whether the target resolution is in reasonable limits.
         if (isTooBig(getDiagramGenerator(diagramEP, format), diagramEP, format, 1.0)) {
-            String representationName = new DRepresentationQuery((DSemanticDiagram) ((Diagram) diagramEP.getModel()).getElement()).getRepresentationDescriptor().getName();
+            String representationName = ((DSemanticDiagram) ((Diagram) diagramEP.getModel()).getElement()).getName();
             throw new SizeTooLargeException(new Status(IStatus.ERROR, SiriusPlugin.ID, representationName));
         }
         return super.copyToImage(diagramEP, destination, format, monitor);

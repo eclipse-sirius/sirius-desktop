@@ -744,7 +744,7 @@ public abstract class AbstractDTreeEditor extends EditorPart
      */
     protected void firePropertyChangeInUIThread(final int notificationKind) {
         if (notificationKind == PROP_TITLE) {
-            setPartName(new DRepresentationQuery(getRepresentation()).getRepresentationDescriptor().getName());
+            setPartName(getRepresentation().getName());
         }
         firePropertyChange(notificationKind);
     }

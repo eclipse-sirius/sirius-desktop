@@ -33,7 +33,6 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.business.api.control.SiriusUncontrolCommand;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
@@ -113,8 +112,7 @@ public class SiriusUncontrolHandler extends AbstractHandler {
                         DRepresentation representation = editor.getRepresentation();
                         URI repDescURI = Optional.ofNullable(editor.getEditorInput()).filter(SessionEditorInput.class::isInstance).map(SessionEditorInput.class::cast)
                                 .map(SessionEditorInput::getRepDescUri).orElse(null);
-                        SessionEditorInput updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(representation), repDescURI,
-                                new DRepresentationQuery(representation).getRepresentationDescriptor().getName(), session);
+                        SessionEditorInput updatedEditorInput = new SessionEditorInput(EcoreUtil.getURI(representation), repDescURI, representation.getName(), session);
                         iReusableEditor.setInput(updatedEditorInput);
                     }
                 }
