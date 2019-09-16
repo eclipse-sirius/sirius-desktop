@@ -21,7 +21,6 @@ import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.provider.DSemanticDiagramItemProvider;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.SequencePackage;
@@ -107,7 +106,7 @@ public class SequenceDDiagramItemProvider extends DSemanticDiagramItemProvider {
      */
     @Override
     public String getText(Object object) {
-        String label = new DRepresentationQuery(((SequenceDDiagram) object)).getRepresentationDescriptor().getName();
+        String label = ((SequenceDDiagram) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_SequenceDDiagram_type") : label; //$NON-NLS-1$
     }
 

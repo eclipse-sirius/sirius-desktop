@@ -23,7 +23,6 @@ import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.TableFactory;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
@@ -152,7 +151,7 @@ public class DTableItemProvider extends DRepresentationItemProvider {
      */
     @Override
     public String getText(final Object object) {
-        final String label = new DRepresentationQuery(((DTable) object)).getRepresentationDescriptor().getName();
+        final String label = ((DTable) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_DTable_type") : label; //$NON-NLS-1$
     }
 

@@ -22,7 +22,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.TreeFactory;
 import org.eclipse.sirius.tree.TreePackage;
@@ -145,7 +144,7 @@ public class DTreeItemProvider extends DRepresentationItemProvider {
      */
     @Override
     public String getText(Object object) {
-        final String label = new DRepresentationQuery(((DTree) object)).getRepresentationDescriptor().getName();
+        final String label = ((DTree) object).getName();
         return label == null || label.length() == 0 ? getString("_UI_DTree_type") : label; //$NON-NLS-1$
     }
 
