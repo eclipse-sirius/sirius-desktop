@@ -162,19 +162,34 @@ public class DRepresentationQuery {
         DRepresentationDescriptor result = null;
         Collection<DAnalysis> allAnalyses = ((DAnalysisSessionImpl) session).allAnalyses();
         for (DAnalysis dAnalysis : allAnalyses) {
-            EList<DView> ownedViews = dAnalysis.getOwnedViews();
-            for (DView view : ownedViews) {
-                EList<DRepresentationDescriptor> ownedRepresentationDescriptors = view.getOwnedRepresentationDescriptors();
-                for (DRepresentationDescriptor descriptor : ownedRepresentationDescriptors) {
-                    DRepresentation representationTemp = descriptor.getRepresentation();
-                    if (representation.equals(representationTemp)) {
-                        result = descriptor;
-                        break;
-                    }
-                }
+            result = findDescriptorFromAnalysis(dAnalysis);
+            if (result != null) {
+                break;
             }
         }
         return result;
+    }
+
+    /**
+     * Find a {@link DRepresentationDescriptor} that references the {@link DRepresentation} in the given
+     * {@link DAnalysis}.
+     * 
+     * @param dAnalysis
+     *            a {@link DAnalysis}
+     * @return the {@link DRepresentationDescriptor} if a descriptor has been found and null otherwise.
+     */
+    public DRepresentationDescriptor findDescriptorFromAnalysis(DAnalysis dAnalysis) {
+        EList<DView> ownedViews = dAnalysis.getOwnedViews();
+        for (DView view : ownedViews) {
+            EList<DRepresentationDescriptor> ownedRepresentationDescriptors = view.getOwnedRepresentationDescriptors();
+            for (DRepresentationDescriptor descriptor : ownedRepresentationDescriptors) {
+                DRepresentation representationTemp = descriptor.getRepresentation();
+                if (representation.equals(representationTemp)) {
+                    return descriptor;
+                }
+            }
+        }
+        return null;
     }
 
     private DRepresentationDescriptor findDescriptorFromCrossReferencer() {

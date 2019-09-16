@@ -170,13 +170,18 @@
 			<a href="developer/extensions-provide_migrate_contribution.html#MigrationParticipantsImplem">documentation:</a> .
 		</p>
 		<ul>
-			<li><span class="label label-success">Added</span>The method 
+			<li><span class="label label-success">Added</span> The method 
 				<code>org.eclipse.sirius.business.api.query.DViewQuery.getLoadedRepresentationsDescriptors()</code> has been added and allows to retrieve all loaded 
 				<code>DRepresentationDescriptor</code> in a 
 				<code>DView</code>.
 			</li>
-			<li><span class="label label-success">Added</span>The method 
+			<li><span class="label label-success">Added</span> The method 
 				<code>org.eclipse.sirius.business.api.session.AbstractSavingPolicy.hasDifferentSerialization(Resource, Map)</code> has been extracted from internal subclasses. It is able to tell whether a save operation on a resource can succeed or not, and if the resulting file will change. It should be used with care as it basically saves the resource in a temporary resource to know whether it will change the file or not.
+			</li>
+			<li><span class="label label-success">Added</span> The method 
+				<code>org.eclipse.sirius.business.api.query.DRepresentationQuery.findDescriptorFromAnalysis(DAnalysis)</code> has been added to provide a way to look up for a 
+				<code>DRepresentationDescriptor</code> in a given 
+				<code>DAnalysis</code>.
 			</li>
 			<li><span class="label label-info">Modified</span> The method 
 				<code>org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices.copyRepresentation(DRepresentation, String, Session, IProgressMonitor)</code> has its first parameter changed from 
@@ -187,7 +192,7 @@
 				<code>Collection&lt;DRepresentationDescriptor&gt; representationDescriptors</code>. Theses changes were made  to be able to copy the name that is now only in 
 				<code>DRepresentationDescriptor</code>.
 			</li>
-			<li><span class="label label-info">Modified</span>The 
+			<li><span class="label label-info">Modified</span> The 
 				<code>DocumentedElement</code> interface providing a description for the representation implemented by 
 				<code>DRepresentation</code> is now implemented by 
 				<code>DRepresentationDescriptor</code>. Also the 
