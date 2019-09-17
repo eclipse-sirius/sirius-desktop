@@ -280,6 +280,9 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             notifierWithoutRepresentationDescriptors = new HashSet<>();
             notifierToDRepMap = new HashMap<>();
             Set<DRepresentationDescriptor> descriptorsToUpdate = new HashSet<>();
+            // Descriptors to ignore because their change ids have already been updated (because of Rollback command or
+            // a diff-merge for example).
+            Set<DRepresentationDescriptor> descriptorsToIgnore = new HashSet<>();
 
             Iterator<Notification> notifIterator = notifications.iterator();
 
@@ -292,7 +295,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                     final DRepresentationDescriptor representationDescriptor = getDRepresentationDescriptor((EObject) notifier);
                     if (representationDescriptor != null) {
                         descriptorsToUpdate.add(representationDescriptor);
-
+                    }
+                    if (ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR.isInstance(notifier)
+                            && ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__CHANGE_ID.equals(notification.getFeature())) {
+                        // Ignore descriptor with a change of "ChangeId"
+                        descriptorsToIgnore.add((DRepresentationDescriptor) notifier);
                     }
                 } else if (isEObject && !isTransient) {
                     EClass eClass = ((EObject) notifier).eClass();
@@ -306,6 +313,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                     }
                 }
             }
+            descriptorsToUpdate.removeAll(descriptorsToIgnore);
             if (!descriptorsToUpdate.isEmpty()) {
                 RecordingCommand changeIdRecordingCommand = new RecordingCommand(transactionalEditingDomain) {
                     @Override
