@@ -176,6 +176,30 @@ public class DRepresentationDescriptorChangeIdTests extends SiriusDiagramTestCas
     }
 
     /**
+     * Tests that when a new {@link DRepresentation} is modified and its "change id" is also modified (this can be the
+     * case for a rollback for example), then the change id of the associated {@link DRepresentationDescriptor} is not
+     * updated.
+     */
+    public void testDRepresentationAndChangeIdUpdateNoChange() {
+        String expectedChangeId = "newValue";
+        String changeIdBeforeModification = new DRepresentationQuery(diagram).getRepresentationDescriptor().getChangeId();
+
+        session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
+
+            @Override
+            protected void doExecute() {
+                diagram.setDescription(DescriptionFactory.eINSTANCE.createDiagramDescription());
+                new DRepresentationQuery(diagram).getRepresentationDescriptor().setChangeId(expectedChangeId);
+            }
+        });
+
+        String changeIdAfterModification = new DRepresentationQuery(diagram).getRepresentationDescriptor().getChangeId();
+
+        assertNotEquals("Change id has not been updated.", changeIdBeforeModification, changeIdAfterModification);
+        assertEquals("Change id should not have been changed by the \"ChangeIdUpdaterListener\" pre commit listener.", expectedChangeId, changeIdAfterModification);
+    }
+
+    /**
      * Tests that when more than one {@link DRepresentation} is modified, then the change id of the associated
      * {@link DRepresentationDescriptor} are updated.
      */
