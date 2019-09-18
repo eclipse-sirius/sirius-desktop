@@ -31,6 +31,7 @@ import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
@@ -110,6 +111,7 @@ import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.IObjectActionDelegateWrapper;
@@ -230,6 +232,7 @@ import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.ISaveablePart2;
 import org.eclipse.ui.ISaveablesSource;
 import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartSite;
@@ -921,6 +924,19 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         // If possible, remove the diagram event broker for the listening of the
         // transactional editing domain
         stopDiagramEventBrokerListener(getEditingDomain());
+        removeSelfFromListeners();
+    }
+
+    /**
+     * This editor has been noticed to not being properly removed from the list of listener if the diagram is in a newly
+     * created distant resource that has been removed (discarded).
+     */
+    private void removeSelfFromListeners() {
+        ISelectionService selectionService = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService();
+        Optional<Object> fieldValueWithoutException = ReflectionHelper.getFieldValueWithoutException(selectionService, "listeners"); //$NON-NLS-1$
+        if (selectionService != null && fieldValueWithoutException.isPresent() && fieldValueWithoutException.filter(ListenerList.class::isInstance).isPresent()) {
+            selectionService.removeSelectionListener(this);
+        }
     }
 
     @Override
