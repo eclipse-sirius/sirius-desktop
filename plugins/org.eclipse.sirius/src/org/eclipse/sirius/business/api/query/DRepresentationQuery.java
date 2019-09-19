@@ -14,10 +14,12 @@ package org.eclipse.sirius.business.api.query;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
@@ -153,6 +155,10 @@ public class DRepresentationQuery {
                 if (result == null) {
                     result = findDescriptorFromAnalysis();
                 }
+            } else {
+                // There is no session (during a migration participant for example) so we search the analysis of the
+                // eResource
+                result = findDescriptorFromEResource();
             }
         }
         return result;
@@ -165,6 +171,24 @@ public class DRepresentationQuery {
             result = findDescriptorFromAnalysis(dAnalysis);
             if (result != null) {
                 break;
+            }
+        }
+        return result;
+    }
+
+    private DRepresentationDescriptor findDescriptorFromEResource() {
+        DRepresentationDescriptor result = null;
+        Resource eResource = representation.eResource();
+        if (eResource != null && eResource.getContents() != null) {
+            Iterator<EObject> contentsIterator = eResource.getContents().iterator();
+            while (contentsIterator.hasNext()) {
+                EObject content = contentsIterator.next();
+                if (content instanceof DAnalysis) {
+                    result = findDescriptorFromAnalysis((DAnalysis) content);
+                }
+                if (result != null) {
+                    break;
+                }
             }
         }
         return result;
