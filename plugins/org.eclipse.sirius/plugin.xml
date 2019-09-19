@@ -351,6 +351,7 @@
   </extension>
   <extension
         id="nature.modelingproject"
+        name="%extension.modelingNature.name"
         point="org.eclipse.core.resources.natures">
      <runtime>
         <run
