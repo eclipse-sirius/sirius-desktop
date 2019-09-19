@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo.
+ * Copyright (c) 2016, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,8 +18,7 @@ import org.eclipse.sirius.viewpoint.Messages;
 import org.osgi.framework.Version;
 
 /**
- * A {@link Diagnostic} to help Sirius to manage the case when the model being
- * loaded is newer than the Sirius release.
+ * A {@link Diagnostic} to help Sirius to manage the case when the model being loaded is newer than the Sirius release.
  * 
  * @author <a href="mailto:laurent.fasani@obeo.fr">Laurent Fasani</a>
  */
@@ -62,6 +61,9 @@ public class ResourceVersionMismatchDiagnostic implements Diagnostic {
 
     @Override
     public String getLocation() {
+        if (resourceToLoadURI != null) {
+            return resourceToLoadURI.toString();
+        }
         return null;
     }
 
