@@ -306,7 +306,7 @@ public class SiriusGenericDecorator extends AbstractDecorator {
         // When resizing the node the figure is not painted yet so we get the
         // resized width or height from the GMF node
         if (editPart.getModel() instanceof Node) {
-            try{
+            try {
                 LayoutConstraint layoutConstraint = ((Node) editPart.getModel()).getLayoutConstraint();
                 if (layoutConstraint instanceof Bounds) {
                     int width = ((Bounds) layoutConstraint).getWidth();
