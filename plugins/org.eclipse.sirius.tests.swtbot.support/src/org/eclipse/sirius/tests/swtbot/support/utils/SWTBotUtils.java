@@ -41,7 +41,10 @@ import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.finder.SWTWorkbenchBot;
 import org.eclipse.swtbot.eclipse.gef.finder.SWTGefBot;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
+import org.eclipse.swtbot.swt.finder.finders.ControlFinder;
+import org.eclipse.swtbot.swt.finder.finders.MenuFinder;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.matchers.WidgetMatcherFactory;
 import org.eclipse.swtbot.swt.finder.results.BoolResult;
@@ -52,6 +55,7 @@ import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
@@ -158,6 +162,21 @@ public final class SWTBotUtils {
                 widget.notifyListeners(SWT.KeyUp, event);
             }
         });
+    }
+
+    /**
+     * Returns a {@link SWTBotToolbarButton} with the specified <code>tooltip</code>.
+     * 
+     * @param tooltip
+     *            the tooltip on the widget.
+     * @return a {@link SWTBotToolbarButton} with the specified <code>tooltip</code>.
+     * @throws WidgetNotFoundException
+     *             if the widget is not found or is disposed.
+     */
+    public static SWTBotToolbarButton toolbarButtonWithTooltip(String tooltip) {
+        ControlFinder controlFinder = new ControlFinderWithDefaultShell();
+        SWTBot swtBot = new SWTBot(controlFinder, new MenuFinder());
+        return swtBot.toolbarButtonWithTooltip(tooltip);
     }
 
     /**
@@ -546,8 +565,8 @@ public final class SWTBotUtils {
     }
 
     /**
-     * Find a {@link SWTBotTreeItem} with its name in a {@link SWTBotTreeItem} list and its children recursively. It will
-     * return the first found matching the given label.
+     * Find a {@link SWTBotTreeItem} with its name in a {@link SWTBotTreeItem} list and its children recursively. It
+     * will return the first found matching the given label.
      * 
      * If checkEnabled=true, it will only consider enabled items. If espance
      * 
@@ -660,8 +679,8 @@ public final class SWTBotUtils {
     }
 
     /**
-     * Checks that the tools bar contribution items label are displayed as expected.
-     * The toolBar contribution is identified by its toolTip given in parameter.
+     * Checks that the tools bar contribution items label are displayed as expected. The toolBar contribution is
+     * identified by its toolTip given in parameter.
      * 
      * @param editor
      *            the current {@link SWTBotSiriusDiagramEditor}
@@ -681,9 +700,8 @@ public final class SWTBotUtils {
                 labelsToCheck.remove(menuItem.getText());
             }
         }
-        Assert.assertTrue("The following menu items have not been found in the " + toolTip + " toolBars contribution : "
-            + labelsToCheck, labelsToCheck.isEmpty());
-        try {  
+        Assert.assertTrue("The following menu items have not been found in the " + toolTip + " toolBars contribution : " + labelsToCheck, labelsToCheck.isEmpty());
+        try {
             toolMenuButton.pressShortcut(KeyStroke.getInstance("ESC"));
         } catch (ParseException e) {
             throw new RuntimeException(e);

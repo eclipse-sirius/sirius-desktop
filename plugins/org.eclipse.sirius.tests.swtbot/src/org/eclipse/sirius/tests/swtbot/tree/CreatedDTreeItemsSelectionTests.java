@@ -21,6 +21,8 @@ import org.eclipse.emf.edit.command.AddCommand;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.tests.support.api.ICondition;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
@@ -81,8 +83,7 @@ public class CreatedDTreeItemsSelectionTests extends AbstractTreeSiriusSWTBotGef
     }
 
     /**
-     * Test selection of created {@link DTreeItem} from a semantic element
-     * addition.
+     * Test selection of created {@link DTreeItem} from a semantic element addition.
      */
     public void testCreatedDTreeItemSelection() {
         SWTBotTree swtBotTree = treeEditorBot.bot().tree();
@@ -106,9 +107,17 @@ public class CreatedDTreeItemsSelectionTests extends AbstractTreeSiriusSWTBotGef
         domain.getCommandStack().execute(addEPackageCmd);
         SWTBotUtils.waitAllUiEvents();
 
-        selectionCount = swtBotTree.selectionCount();
-        String assertMessage = "After a EPackage creation we should have one DTreeItem selected";
-        assertEquals(assertMessage, 1, selectionCount);
+        TestsUtil.waitUntil(new ICondition() {
+            @Override
+            public boolean test() throws Exception {
+                return swtBotTree.selectionCount() == 1;
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "After a EPackage creation we should have one DTreeItem selected";
+            }
+        });
         assertEquals(subEPackage1.getName(), swtBotTree.selection().get(0, 0));
         assertEquals(5, swtBotTree.visibleRowCount());
 

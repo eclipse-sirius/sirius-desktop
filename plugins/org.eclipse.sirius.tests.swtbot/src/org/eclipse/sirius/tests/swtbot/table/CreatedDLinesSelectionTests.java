@@ -24,6 +24,8 @@ import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.ui.tools.api.editor.DTableEditor;
+import org.eclipse.sirius.tests.support.api.ICondition;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UITreeRepresentation;
@@ -94,9 +96,17 @@ public class CreatedDLinesSelectionTests extends AbstractTreeSiriusSWTBotGefTest
         domain.getCommandStack().execute(addEPackageCmd);
         SWTBotUtils.waitAllUiEvents();
 
-        selectionCount = swtBotTree.selectionCount();
-        String assertMessage = "After a EPackage creation we should have one DLine selected";
-        assertEquals(assertMessage, 1, selectionCount);
+        TestsUtil.waitUntil(new ICondition() {
+            @Override
+            public boolean test() throws Exception {
+                return swtBotTree.selectionCount() == 1;
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "After a EPackage creation we should have one DLine selected";
+            }
+        });
         assertEquals(subEPackage1.getName(), swtBotTree.selection().get(0, 0));
         assertEquals(4, swtBotTree.visibleRowCount());
 

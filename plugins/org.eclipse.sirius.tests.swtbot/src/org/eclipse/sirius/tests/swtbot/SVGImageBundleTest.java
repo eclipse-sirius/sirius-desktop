@@ -154,7 +154,7 @@ public class SVGImageBundleTest extends AbstractSiriusSwtBotGefTestCase {
         // necessary to do a manual refresh
         editor.click(0, 0);
         editor.save();
-        manualRefresh();
+        editor.refresh();
 
         // Check that the node are a bundledImage type triangle
         checkNodeIsCorrectTypeAndShape(CLASS1, TRIANGLE);

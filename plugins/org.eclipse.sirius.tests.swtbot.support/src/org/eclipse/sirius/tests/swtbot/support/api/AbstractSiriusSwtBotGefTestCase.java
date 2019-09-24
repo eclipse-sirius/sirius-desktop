@@ -446,7 +446,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * Request an explicit refresh of the current diagram.
      */
     protected void manualRefresh() {
-        editor.bot().toolbarButtonWithTooltip(DiagramDialectUIServices.REFRESH_DIAGRAM).click();
+        SWTBotUtils.toolbarButtonWithTooltip(DiagramDialectUIServices.REFRESH_DIAGRAM).click();
         SWTBotUtils.waitProgressMonitorClose("Progress Information");
         SWTBotUtils.waitAllUiEvents();
     }
@@ -455,7 +455,7 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      * {@inheritDoc}
      *
      * runtTest() method is overridden to allow to take a screenshot just after test execution and before tearDown
-     * operation. As tearDown closes diagram and session, after it, screenshots don't show any interesting things.
+     * operation. As tearDown closes diagram and seTssion, after it, screenshots don't show any interesting things.
      */
     @Override
     // CHECKSTYLE:OFF

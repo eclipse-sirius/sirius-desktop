@@ -34,6 +34,7 @@ import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UISessionCreationWizardFlow.SessionChoice;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OpenedSessionCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemAvailableCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.internal.business.UISessionCreationWizard;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.tools.internal.views.common.modelingproject.OpenRepresentationsFileJob;
@@ -202,7 +203,7 @@ public class UIPerspective {
      * Opens the "New Representation Files" wizard through the File > New > Other... menu.
      */
     private void openRepresentationsFileWizard() {
-        bot.menu("File").menu(UIPerspective.WIZARDS_LIST_TITLE).menu("Other...").click();
+        SWTBotSiriusHelper.menu(bot, "File").menu(UIPerspective.WIZARDS_LIST_TITLE).menu("Other...").click();
 
         bot.waitUntil(Conditions.shellIsActive(UIPerspective.WIZARDS_LIST_TITLE));
 
