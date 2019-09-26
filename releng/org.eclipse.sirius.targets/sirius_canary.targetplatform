@@ -76,7 +76,7 @@ location OCL-LastSuccessful "http://download.eclipse.org/modeling/mdt/ocl/update
 	org.eclipse.ocl.core.sdk.feature.group lazy
 }
 
-location EMF-Validation-LastSuccessful "https://ci.eclipse.org/emfservices/job/emf-validation-master/lastSuccessfulBuild/artifact/update-site/" {
+location EMF-Validation-LastSuccessful "https://ci.eclipse.org/emfservices/job/emf-validation-master/lastSuccessfulBuild/jdk=oracle-jdk8-latest,label=migration/artifact/update-site/" {
 	org.eclipse.emf.validation.sdk.feature.group lazy
 }
 
@@ -84,7 +84,7 @@ location EMF-Query-LastSuccessful "https://ci.eclipse.org/emfservices/job/emf-qu
 	org.eclipse.emf.query.sdk.feature.group lazy
 }
 
-location EMF-Transaction-LastSuccessful "https://ci.eclipse.org/emfservices/job/emf-transaction-master/lastSuccessfulBuild/artifact/update-site/" {
+location EMF-Transaction-LastSuccessful "https://ci.eclipse.org/emfservices/job/emf-transaction-master/lastSuccessfulBuild/jdk=oracle-jdk8-latest,label=migration/artifact/update-site/" {
 	org.eclipse.emf.workspace.feature.group lazy
 	org.eclipse.emf.transaction.sdk.feature.group lazy
 }
