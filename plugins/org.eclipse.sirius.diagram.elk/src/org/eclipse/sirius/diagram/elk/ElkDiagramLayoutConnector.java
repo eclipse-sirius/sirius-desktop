@@ -45,7 +45,6 @@ import org.eclipse.elk.core.math.KVector;
 import org.eclipse.elk.core.options.CoreOptions;
 import org.eclipse.elk.core.options.EdgeLabelPlacement;
 import org.eclipse.elk.core.options.NodeLabelPlacement;
-import org.eclipse.elk.core.service.ElkServicePlugin;
 import org.eclipse.elk.core.service.IDiagramLayoutConnector;
 import org.eclipse.elk.core.service.LayoutMapping;
 import org.eclipse.elk.core.util.BasicProgressMonitor;
@@ -88,6 +87,7 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.LabelPosition;
@@ -185,7 +185,13 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      * 
      */
     public static void storeResult(final ElkNode graphToStore, final String diagramName, String suffix, boolean openDialog) {
-        URI exportUri = URI.createFileURI(System.getProperty("java.io.tmpdir") + diagramName + "_" + suffix + ".elkg");
+        String fileName;
+        if (StringUtil.isEmpty(suffix)) {
+            fileName = diagramName + ".elkg";
+        } else {
+            fileName = diagramName + "_" + suffix + ".elkg";
+        }
+        URI exportUri = URI.createFileURI(System.getProperty("java.io.tmpdir") + fileName);
         ResourceSet resourceSet = new ResourceSetImpl();
         Resource resource = resourceSet.createResource(exportUri);
         // Disable the layout stored in this graph to avoid an automatic layout during the opening in "Layout Graph"
@@ -196,8 +202,8 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         try {
             resource.save(Collections.emptyMap());
             if (openDialog) {
-            MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Export diagram as ELK Graph",
-                    MessageFormat.format("Current diagram has been successfully exported into {0}", URI.decode(exportUri.toString())));
+                MessageDialog.openInformation(PlatformUI.getWorkbench().getDisplay().getActiveShell(), "Export diagram as ELK Graph",
+                        MessageFormat.format("Current diagram has been successfully exported into {0}", URI.decode(exportUri.toString())));
             }
         } catch (IOException e) {
             System.out.println(e);
@@ -451,12 +457,12 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         // transform all connections in the selected area
         processConnections(mapping, elkTargetToOptionsOevrrideMap);
 
-
         return mapping;
     }
 
     /**
-     * Construct a map associated option targets to all corresponding options that are overridden in the VSM. 
+     * Construct a map associated option targets to all corresponding options that are overridden in the VSM.
+     * 
      * @return a map of option targets to corresponding options.
      */
     private Map<LayoutOptionTarget, Set<LayoutOption>> constructElkOptionTargetToOptionsMap() {
@@ -724,7 +730,10 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             }
             if (maxChildShadowBorderSize >= 0 && currentEditPart.getNotationView() instanceof Node) {
                 // maxChildShadowBorderSize == 0 : There is at least one child, so we set insets of this container
-                // maxChildShadowBorderSize > 0 : There is at least one child with a shadow border, we add this border size to the insets to avoid potential scrollbar appearance during the layout application (org.eclipse.sirius.diagram.elk.GmfLayoutEditPolicy.addShapeLayout(GmfLayoutCommand, ElkShape, GraphicalEditPart, double)).
+                // maxChildShadowBorderSize > 0 : There is at least one child with a shadow border, we add this border
+                // size to the insets to avoid potential scrollbar appearance during the layout application
+                // (org.eclipse.sirius.diagram.elk.GmfLayoutEditPolicy.addShapeLayout(GmfLayoutCommand, ElkShape,
+                // GraphicalEditPart, double)).
                 Dimension topLeftInsets = GMFHelper.getContainerTopLeftInsets((Node) currentEditPart.getNotationView(), true);
                 // We directly reuse the left inset to sets the bottom and right insets.
                 ElkPadding ei = new ElkPadding(topLeftInsets.preciseHeight(), topLeftInsets.preciseWidth() + maxChildShadowBorderSize, topLeftInsets.preciseWidth() + maxChildShadowBorderSize,
@@ -750,8 +759,8 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      *            a map of option targets to corresponding options.
      * @return the created node
      */
-    protected ElkNode createNode(final LayoutMapping mapping, final IGraphicalEditPart nodeEditPart, final ElkNode parentElkNode,
-            final Maybe<ElkPadding> elkinsets, Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
+    protected ElkNode createNode(final LayoutMapping mapping, final IGraphicalEditPart nodeEditPart, final ElkNode parentElkNode, final Maybe<ElkPadding> elkinsets,
+            Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
 
         IFigure nodeFigure = nodeEditPart.getFigure();
         ElkNode newNode = ElkGraphUtil.createNode(parentElkNode);
