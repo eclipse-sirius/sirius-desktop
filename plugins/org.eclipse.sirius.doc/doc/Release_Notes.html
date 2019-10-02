@@ -187,9 +187,10 @@
 				<code>DAnalysis</code>.
 			</li>
 			<li><span class="label label-info">Modified</span> The method 
-				<code>org.eclipse.sirius.business.api.dialect.AbstractRepresentationDialectServices.copyRepresentation(DRepresentation, String, Session, IProgressMonitor)</code> has its first parameter changed from 
-				<code>DRepresentation</code> to 
-				<code>DRepresentationDescriptor</code>. Also the constructor of 
+				<code>org.eclipse.sirius.business.api.dialect.DialectServices.copyRepresentation(DRepresentation, String, Session, IProgressMonitor)</code> is now deprecated. It is recommended to use the  new alternative, 
+				<code>org.eclipse.sirius.business.api.dialect.DialectServices.copyRepresentation(DRepresentationDescriptor, String, Session, IProgressMonitor)</code> which is identical except that it take a 
+				<code>DRepresentationDescriptor</code> instead of a 
+				<code>DRepresentation</code>. Also the constructor of 
 				<code>org.eclipse.sirius.business.api.dialect.command.CopyRepresentationCommand</code> has been modified. Its parameter 
 				<code>Collection&lt;DRepresentation&gt; representations</code> has been replaced by 
 				<code>Collection&lt;DRepresentationDescriptor&gt; representationDescriptors</code>. Theses changes were made  to be able to copy the name that is now only in 

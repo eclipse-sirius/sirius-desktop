@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQuery;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
@@ -73,6 +74,31 @@ public interface DialectServices {
     /**
      * Create a new representation from a given one (copy) and keep it in the given session.
      * 
+     * @param representation
+     *            the representation to copy.
+     * @param name
+     *            name of the newly representation.
+     * @param session
+     *            session used to keep the data.
+     * @param monitor
+     *            to track progress.
+     * @return the new representation .
+     * @since 0.9.0
+     * @deprecated Use {@link #copyRepresentation(DRepresentationDescriptor, String, Session, IProgressMonitor)} instead.
+     */
+    @Deprecated
+    default DRepresentation copyRepresentation(DRepresentation representation, String name, Session session, IProgressMonitor monitor) {
+        DRepresentationDescriptor descriptor = new DRepresentationQuery(representation, session).getRepresentationDescriptor();
+        if (descriptor != null) {
+            return this.copyRepresentation(descriptor, name, session, monitor);
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * Create a new representation from a given one (copy) and keep it in the given session.
+     * 
      * @param representationDescriptor
      *            the representation descriptor containing the representation to copy.
      * @param name
@@ -82,7 +108,7 @@ public interface DialectServices {
      * @param monitor
      *            to track progress.
      * @return the new representation .
-     * @since 0.9.0
+     * @since 6.3.0
      */
     DRepresentation copyRepresentation(DRepresentationDescriptor representationDescriptor, String name, Session session, IProgressMonitor monitor);
 
