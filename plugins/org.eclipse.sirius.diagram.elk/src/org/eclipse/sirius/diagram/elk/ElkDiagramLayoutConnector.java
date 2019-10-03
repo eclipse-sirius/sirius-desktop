@@ -88,6 +88,7 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.LabelPosition;
@@ -185,7 +186,13 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      * 
      */
     public static void storeResult(final ElkNode graphToStore, final String diagramName, String suffix, boolean openDialog) {
-        URI exportUri = URI.createFileURI(System.getProperty("java.io.tmpdir") + diagramName + "_" + suffix + ".elkg");
+        String fileName;
+        if (StringUtil.isEmpty(suffix)) {
+            fileName = diagramName + ".elkg";
+        } else {
+            fileName = diagramName + "_" + suffix + ".elkg";
+        }
+        URI exportUri = URI.createFileURI(System.getProperty("java.io.tmpdir") + fileName);
         ResourceSet resourceSet = new ResourceSetImpl();
         Resource resource = resourceSet.createResource(exportUri);
         // Disable the layout stored in this graph to avoid an automatic layout during the opening in "Layout Graph"
