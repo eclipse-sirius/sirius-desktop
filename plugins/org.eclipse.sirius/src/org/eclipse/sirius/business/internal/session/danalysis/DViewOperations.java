@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES, Obeo
+ * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES, Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -49,8 +49,7 @@ import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
 
 /**
- * Operations to manage a DAnalysis's DViews and Viewpoint enablement in a
- * consitent way.
+ * Operations to manage a DAnalysis's DViews and Viewpoint enablement in a consistent way.
  * 
  * @author pcdavid
  */
@@ -80,7 +79,9 @@ final class DViewOperations {
     public Collection<DView> getSelectedViews(Iterable<DAnalysis> analyses) {
         Collection<DView> selectedViews = new HashSet<DView>();
         for (DAnalysis analysis : analyses) {
-            selectedViews.addAll(analysis.getSelectedViews());
+            if (analysis != null) {
+                selectedViews.addAll(analysis.getSelectedViews());
+            }
         }
         return selectedViews;
     }
