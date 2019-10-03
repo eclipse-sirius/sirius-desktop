@@ -3,6 +3,8 @@ target "elk-0.4"
 with source, requirements
 
 location ELK-0.4 "http://download.eclipse.org/elk/updates/releases/0.4.1/" {
+    org.eclipse.elk.sdk.feature.feature.group lazy
+    org.eclipse.elk.sdk.feature.source.feature.group lazy
     org.eclipse.elk.feature.feature.group lazy
     org.eclipse.elk.feature.source.feature.group lazy
     org.eclipse.elk.algorithms.feature.feature.group lazy
