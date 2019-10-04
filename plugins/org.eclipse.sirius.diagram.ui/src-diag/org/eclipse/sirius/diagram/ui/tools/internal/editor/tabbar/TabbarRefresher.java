@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,12 +12,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 
+import java.util.Optional;
+
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl;
-import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
@@ -48,15 +50,20 @@ public class TabbarRefresher extends ResourceSetListenerImpl {
         EclipseUIUtil.displayAsyncExec(new Runnable() {
             @Override
             public void run() {
-                IWorkbenchWindow activeWorkbenchWindow = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
-                if (activeWorkbenchWindow != null) {
-                    IWorkbenchPage activePage = activeWorkbenchWindow.getActivePage();
-                    if (activePage != null) {
-                        IEditorPart activeEditor = activePage.getActiveEditor();
-                        if (activeEditor instanceof DDiagramEditorImpl && ((DDiagramEditorImpl) activeEditor).getTabbar() != null) {
-                            ((DDiagramEditorImpl) activeEditor).getTabbar().reinitToolBar(((DDiagramEditorImpl) activeEditor).getDiagramGraphicalViewer().getSelection());
-                        }
-                    }
+                //@formatter:off
+                Optional<DDiagramEditorImpl> optionalDDiagramEditor = Optional.ofNullable(PlatformUI.getWorkbench().getActiveWorkbenchWindow())
+                        .map(IWorkbenchWindow::getActivePage)
+                        .map(IWorkbenchPage::getActiveEditor)
+                        .filter(DDiagramEditorImpl.class::isInstance)
+                        .map(DDiagramEditorImpl.class::cast)
+                        .filter(dDiagramEditor -> dDiagramEditor.getTabbar() != null)
+                        .filter(dDiagramEditor -> {
+                            Session session = dDiagramEditor.getSession();
+                            return session != null && session.isOpen();
+                        });
+                //@formatter:on
+                if (optionalDDiagramEditor.isPresent()) {
+                    optionalDDiagramEditor.get().getTabbar().reinitToolBar(optionalDDiagramEditor.get().getDiagramGraphicalViewer().getSelection());
                 }
             }
         });
