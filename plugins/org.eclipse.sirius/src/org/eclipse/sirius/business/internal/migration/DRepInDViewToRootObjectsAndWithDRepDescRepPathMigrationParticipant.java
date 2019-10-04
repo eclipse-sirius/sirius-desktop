@@ -15,6 +15,7 @@ package org.eclipse.sirius.business.internal.migration;
 import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -27,6 +28,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.internal.query.DRepresentationDescriptorInternalHelper;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -121,8 +123,8 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant 
                 // Create DRepresentationDescriptor
                 // The method will call DRepresentationDescriptor.setRepresentation that will, in fact, get the
                 // DRepresentation URI and set it on DRepresentationDescriptor.repPath
-                String representationName = representationToNameMap.get(representation);
-                String representationDocumentation = representationToDocumentationMap.get(representation);
+                String representationName = representationToNameMap.remove(representation);
+                String representationDocumentation = representationToDocumentationMap.remove(representation);
                 DRepresentationDescriptor newDescriptor = DRepresentationDescriptorInternalHelper.createDescriptor(representation, representationName, representationDocumentation);
                 ((DView) owner).getOwnedRepresentationDescriptors().add(newDescriptor);
                 if (representationName == null || representationDocumentation == null) {
@@ -207,6 +209,36 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant 
             super.postLoad(dAnalysis, loadedVersion);
         }
 
+        // Transfer all stored representation names during the loading, to the corresponding representation descriptor.
+        for (Iterator<DRepresentation> iterator = representationToNameMap.keySet().iterator(); iterator.hasNext(); /* */) {
+            DRepresentation dRepresentation = iterator.next();
+            String name = representationToNameMap.get(dRepresentation);
+            iterator.remove();
+            DRepresentationDescriptor dRepresentationDescriptor = new DRepresentationQuery(dRepresentation).getRepresentationDescriptor();
+            if (dRepresentationDescriptor != null && !name.equals(dRepresentationDescriptor.getName())) {
+                dRepresentationDescriptor.setName(name);
+                migratedDescriptorsforNameOrDocumentation.add(dRepresentationDescriptor);
+            }
+            // Check if there is also a documentation stored for this representation (as we already have the
+            // corresponding representationDescriptor).
+            String documentation = representationToDocumentationMap.remove(dRepresentation);
+            if (documentation != null && dRepresentationDescriptor != null && !documentation.equals(dRepresentationDescriptor.getDocumentation())) {
+                dRepresentationDescriptor.setDocumentation(documentation);
+                migratedDescriptorsforNameOrDocumentation.add(dRepresentationDescriptor);
+            }
+        }
+        // Transfer all stored representation documentations during the loading, to the corresponding representation
+        // descriptor.
+        for (Iterator<DRepresentation> iterator = representationToDocumentationMap.keySet().iterator(); iterator.hasNext(); /* */) {
+            DRepresentation dRepresentation = iterator.next();
+            String documentation = representationToDocumentationMap.get(dRepresentation);
+            iterator.remove();
+            DRepresentationDescriptor dRepresentationDescriptor = new DRepresentationQuery(dRepresentation).getRepresentationDescriptor();
+            if (dRepresentationDescriptor != null && !documentation.equals(dRepresentationDescriptor.getDocumentation())) {
+                dRepresentationDescriptor.setDocumentation(documentation);
+                migratedDescriptorsforNameOrDocumentation.add(dRepresentationDescriptor);
+            }
+        }
         if (!migratedDescriptorsforNameOrDocumentation.isEmpty()) {
             String migrationMessage = MessageFormat.format(Messages.DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationParticipant_nameMigrationMessage,
                     migratedDescriptorsforNameOrDocumentation.size());
