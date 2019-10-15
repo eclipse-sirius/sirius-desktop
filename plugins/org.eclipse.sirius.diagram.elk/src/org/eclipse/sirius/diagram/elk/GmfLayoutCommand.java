@@ -42,8 +42,7 @@ import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 /**
  * Command used to apply layout.
  * 
- * Copied from org.eclipse.elk.conn.gmf.GmfLayoutCommand of commit
- * e99248e44c71a5a02fe45bc4cd5150cd7f50c559.
+ * Copied from org.eclipse.elk.conn.gmf.GmfLayoutCommand of commit e99248e44c71a5a02fe45bc4cd5150cd7f50c559.
  * 
  * @author msp
  * @kieler.design proposed by msp
@@ -95,8 +94,8 @@ public class GmfLayoutCommand extends AbstractTransactionalCommand {
     /** list of edge layouts to be applied to edges. */
     private List<EdgeLayoutData> edgeLayouts = new LinkedList<EdgeLayoutData>();
 
-    /** indicates whether oblique routing style shall be enforced. */
-    private boolean obliqueRouting = false;
+    /** indicates which style shall be enforced. */
+    private Routing routingToForce = Routing.RECTILINEAR_LITERAL;
 
     /**
      * Creates a command to apply layout.
@@ -119,11 +118,9 @@ public class GmfLayoutCommand extends AbstractTransactionalCommand {
      * @param view
      *            view from the GMF notation model
      * @param location
-     *            new location for the view, or {@code null} if the location
-     *            shall not be changed
+     *            new location for the view, or {@code null} if the location shall not be changed
      * @param size
-     *            new size for the view, or {@code null} if the size shall not
-     *            be changed
+     *            new size for the view, or {@code null} if the size shall not be changed
      */
     public void addShapeLayout(final View view, final Point location, final Dimension size) {
         assert view != null;
@@ -140,17 +137,14 @@ public class GmfLayoutCommand extends AbstractTransactionalCommand {
      * @param edge
      *            edge from the GMF notation model
      * @param bends
-     *            list of bend points for the edge, or {@code null} if the bend
-     *            points shall not be changed
+     *            list of bend points for the edge, or {@code null} if the bend points shall not be changed
      * @param junctionPoints
-     *            list of junction points to draw on the edge, encoded as
-     *            string, or {@code null} if no junction points shall be drawn
+     *            list of junction points to draw on the edge, encoded as string, or {@code null} if no junction points
+     *            shall be drawn
      * @param sourceTerminal
-     *            new source terminal, encoded as string, or {@code null} if the
-     *            source terminal shall not be changed
+     *            new source terminal, encoded as string, or {@code null} if the source terminal shall not be changed
      * @param targetTerminal
-     *            new target terminal, encoded as string, or {@code null} if the
-     *            target terminal shall not be changed
+     *            new target terminal, encoded as string, or {@code null} if the target terminal shall not be changed
      */
     public void addEdgeLayout(final Edge edge, final PointList bends, final String sourceTerminal, final String targetTerminal, final String junctionPoints) {
         assert edge != null;
@@ -164,13 +158,13 @@ public class GmfLayoutCommand extends AbstractTransactionalCommand {
     }
 
     /**
-     * Enforces all edges to be drawn with oblique routing style.
+     * Enforces all edges to be drawn with the current routing style.
      * 
-     * @param theobliqueRouting
-     *            whether oblique routing stlye shall be used or not
+     * @param routingStyle
+     *            which routing stlye shall be used
      */
-    public void setObliqueRouting(final boolean theobliqueRouting) {
-        this.obliqueRouting = theobliqueRouting;
+    public void setRoutingToForce(final Routing routingStyle) {
+        this.routingToForce = routingStyle;
     }
 
     /**
@@ -245,12 +239,10 @@ public class GmfLayoutCommand extends AbstractTransactionalCommand {
             }
 
             // set routing style to oblique
-            if (obliqueRouting) {
-                RoutingStyle routingStyle = (RoutingStyle) edgeLayout.edge.getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
-                if (routingStyle != null) {
-                    routingStyle.setRouting(Routing.MANUAL_LITERAL);
-                    routingStyle.setSmoothness(Smoothness.NONE_LITERAL);
-                }
+            RoutingStyle routingStyle = (RoutingStyle) edgeLayout.edge.getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
+            if (routingStyle != null) {
+                routingStyle.setRouting(routingToForce);
+                routingStyle.setSmoothness(Smoothness.NONE_LITERAL);
             }
         }
         edgeLayouts.clear();

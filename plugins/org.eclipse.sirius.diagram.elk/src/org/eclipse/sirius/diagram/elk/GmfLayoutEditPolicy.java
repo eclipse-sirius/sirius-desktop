@@ -61,16 +61,15 @@ import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
+import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 
 /**
- * Edit policy used to apply layout. This edit policy creates a
- * {@link GmfLayoutCommand} to directly manipulate layout data in the GMF
- * notation model.
+ * Edit policy used to apply layout. This edit policy creates a {@link GmfLayoutCommand} to directly manipulate layout
+ * data in the GMF notation model.
  * 
- * Copied from org.eclipse.elk.conn.gmf.GmfLayoutEditPolicy of commit
- * 53a98c9c35bc38b6b7513e0e73fd9d688c34937f.
+ * Copied from org.eclipse.elk.conn.gmf.GmfLayoutEditPolicy of commit 53a98c9c35bc38b6b7513e0e73fd9d688c34937f.
  * 
  * @author msp
  * @kieler.design proposed by msp
@@ -122,16 +121,14 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
                 // several kind of routing. Currently in ELK, the routing style is on the parent and not on each
                 // edges... For the time being, we set the routing style according to the property value of the root
                 // element.
-                // Currently, only oblique value is considered by GmfLayoutCommand. If obliqueValue is false, the
-                // existing value in Sirius is conserved.
                 if (layoutRequest.getElements().size() > 0) {
                     ElkNode rootElement = ElkGraphUtil.containingGraph(layoutRequest.getElements().get(0).getFirst());
                     if (rootElement != null) {
                         EdgeRouting edgeRouting = rootElement.getProperty(CoreOptions.EDGE_ROUTING);
                         if (edgeRouting.equals(EdgeRouting.ORTHOGONAL)) {
-                            command.setObliqueRouting(false);
+                            command.setRoutingToForce(Routing.RECTILINEAR_LITERAL);
                         } else {
-                            command.setObliqueRouting(true);
+                            command.setRoutingToForce(Routing.MANUAL_LITERAL);
                         }
                     }
                 }
@@ -259,8 +256,7 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
     }
 
     /**
-     * Create a vector that contains the relative position of the source point
-     * to the corresponding source node or port.
+     * Create a vector that contains the relative position of the source point to the corresponding source node or port.
      * 
      * @param edge
      *            an edge
@@ -316,8 +312,7 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
     }
 
     /**
-     * Create a vector that contains the relative position of the target point
-     * to the corresponding target node or port.
+     * Create a vector that contains the relative position of the target point to the corresponding target node or port.
      * 
      * @param edge
      *            an edge
@@ -454,9 +449,8 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
     }
 
     /**
-     * Transform the bend points of the given edge layout into a point list,
-     * reusing existing ones if possible. The source and target points of the
-     * edge layout are included in the point list.
+     * Transform the bend points of the given edge layout into a point list, reusing existing ones if possible. The
+     * source and target points of the edge layout are included in the point list.
      * 
      * @param edge
      *            the edge for which to fetch bend points
@@ -502,15 +496,14 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
     private static final String SPLINE_CONNECTION = "org.eclipse.elk.core.model.gmf.figures.SplineConnection";
 
     /**
-     * Handle the ELK SplineConnection class without a direct reference to it.
-     * Reflection is used to avoid a dependency to its containing plugin.
+     * Handle the ELK SplineConnection class without a direct reference to it. Reflection is used to avoid a dependency
+     * to its containing plugin.
      * 
      * @param edgeFigure
      *            the edge figure instance
      * @param edgeRouting
      *            the edge routing returned by the layout algorithm
-     * @return {@code true} if an approximation should be used to represent the
-     *         spline
+     * @return {@code true} if an approximation should be used to represent the spline
      */
     private static boolean handleSplineConnection(final IFigure edgeFigure, final EdgeRouting edgeRouting) {
         boolean isSC;
@@ -542,9 +535,8 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
     }
 
     /**
-     * <!-- CHECKSTYLEOFF LineLength --> Calculates the label offset from the
-     * reference point given the label bounds and a points list. This code has
-     * been copied and adapted from
+     * <!-- CHECKSTYLEOFF LineLength --> Calculates the label offset from the reference point given the label bounds and
+     * a points list. This code has been copied and adapted from
      * {@link org.eclipse.gmf.runtime.diagram.ui.internal.figures.LabelHelper#offsetFromRelativeCoordinate(IFigure, Rectangle, PointList, Point)}
      * ,
      * {@link org.eclipse.gmf.runtime.diagram.ui.internal.figures.LabelHelper#normalizeRelativePointToPointOnLine(PointList, Point, Point)}
@@ -559,11 +551,9 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
      * @param points
      *            the {@code PointList} that the label offset is relative to
      * @param therefPoint
-     *            the {@code Point} that is the reference point that the offset
-     *            is based on, or {@code null}
-     * @return a {@code Point} which represents a value offset from the
-     *         {@code refPoint} point oriented based on the nearest line
-     *         segment, or {@code null} if no such point can be determined
+     *            the {@code Point} that is the reference point that the offset is based on, or {@code null}
+     * @return a {@code Point} which represents a value offset from the {@code refPoint} point oriented based on the
+     *         nearest line segment, or {@code null} if no such point can be determined
      */
     @SuppressWarnings("restriction")
     public static Point offsetFromRelativeCoordinate(final Rectangle bounds, final PointList points, final Point therefPoint) {
