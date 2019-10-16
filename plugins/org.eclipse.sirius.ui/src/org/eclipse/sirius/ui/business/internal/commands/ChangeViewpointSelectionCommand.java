@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.internal.metamodel.helper.ComponentizationHelper;
+import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection.Callback;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.Messages;
@@ -108,7 +109,8 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
                 monitor.worked(1);
 
                 for (final Viewpoint viewpoint : sorted) {
-                    monitor.subTask(MessageFormat.format(Messages.ChangeViewpointSelectionCommand_selectViewpointTask, new IdentifiedElementQuery(viewpoint).getLabel()));
+                    monitor.subTask(MessageFormat.format(Messages.ChangeViewpointSelectionCommand_selectViewpointTask,
+                            MessageTranslator.INSTANCE.getMessage(viewpoint, new IdentifiedElementQuery(viewpoint).getLabel())));
                     try {
                         callback.selectViewpoint(viewpoint, session, createNewRepresentations, newSelectedViewpoints, new SubProgressMonitor(monitor, 1));
                     } catch (SecurityException e) {
@@ -128,7 +130,8 @@ public class ChangeViewpointSelectionCommand extends RecordingCommand {
             }
             if (newDeselectedViewpoints != null) {
                 for (final Viewpoint viewpoint : newDeselectedViewpoints) {
-                    monitor.subTask(MessageFormat.format(Messages.ChangeViewpointSelectionCommand_deselectViewpointTask, new IdentifiedElementQuery(viewpoint).getLabel()));
+                    monitor.subTask(MessageFormat.format(Messages.ChangeViewpointSelectionCommand_deselectViewpointTask,
+                            MessageTranslator.INSTANCE.getMessage(viewpoint, new IdentifiedElementQuery(viewpoint).getLabel())));
                     callback.deselectViewpoint(viewpoint, session, newDeselectedViewpoints, new SubProgressMonitor(monitor, 1));
                 }
             }
