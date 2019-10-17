@@ -112,6 +112,7 @@ public class DCellStyleItemProvider extends DTableElementStyleItemProvider {
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

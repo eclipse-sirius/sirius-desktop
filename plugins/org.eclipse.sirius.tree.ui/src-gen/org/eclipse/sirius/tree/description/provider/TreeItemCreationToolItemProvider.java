@@ -99,6 +99,7 @@ public class TreeItemCreationToolItemProvider extends TreeItemToolItemProvider {
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

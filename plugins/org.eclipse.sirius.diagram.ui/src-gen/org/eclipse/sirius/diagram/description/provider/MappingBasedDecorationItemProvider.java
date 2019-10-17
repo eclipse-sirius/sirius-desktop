@@ -102,6 +102,7 @@ public class MappingBasedDecorationItemProvider extends DecorationDescriptionIte
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

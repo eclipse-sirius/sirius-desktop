@@ -94,6 +94,7 @@ public class CompoundEventEndItemProvider extends EventEndItemProvider {
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

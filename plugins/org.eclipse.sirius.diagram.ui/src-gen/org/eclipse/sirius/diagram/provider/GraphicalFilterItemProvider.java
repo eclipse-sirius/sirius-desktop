@@ -76,6 +76,7 @@ public class GraphicalFilterItemProvider extends IdentifiedElementItemProvider {
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

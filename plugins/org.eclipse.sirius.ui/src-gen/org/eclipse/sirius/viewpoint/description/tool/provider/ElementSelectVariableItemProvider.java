@@ -84,6 +84,7 @@ public class ElementSelectVariableItemProvider extends AbstractVariableItemProvi
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

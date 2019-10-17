@@ -82,6 +82,7 @@ public class BasicMessageMappingItemProvider extends MessageMappingItemProvider 
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

@@ -105,6 +105,7 @@ public class DiagramNavigationDescriptionItemProvider extends RepresentationNavi
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

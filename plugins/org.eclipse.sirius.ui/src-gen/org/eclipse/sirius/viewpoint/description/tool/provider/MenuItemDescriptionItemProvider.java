@@ -74,6 +74,7 @@ public class MenuItemDescriptionItemProvider extends AbstractToolDescriptionItem
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

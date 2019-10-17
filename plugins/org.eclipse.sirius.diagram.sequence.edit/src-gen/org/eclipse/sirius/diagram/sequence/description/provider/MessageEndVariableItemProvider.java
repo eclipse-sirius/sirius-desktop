@@ -84,6 +84,7 @@ public class MessageEndVariableItemProvider extends AbstractVariableItemProvider
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

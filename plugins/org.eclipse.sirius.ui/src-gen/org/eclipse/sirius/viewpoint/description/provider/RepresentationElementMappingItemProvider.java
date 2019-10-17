@@ -105,6 +105,7 @@ public class RepresentationElementMappingItemProvider extends IdentifiedElementI
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

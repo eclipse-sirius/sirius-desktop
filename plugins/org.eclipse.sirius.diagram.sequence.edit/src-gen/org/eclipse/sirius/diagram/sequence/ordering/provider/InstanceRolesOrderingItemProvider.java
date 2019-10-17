@@ -104,6 +104,7 @@ public class InstanceRolesOrderingItemProvider extends ItemProviderAdapter
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

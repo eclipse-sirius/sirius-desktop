@@ -99,6 +99,7 @@ public class AppliedCompositeFiltersItemProvider extends GraphicalFilterItemProv
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

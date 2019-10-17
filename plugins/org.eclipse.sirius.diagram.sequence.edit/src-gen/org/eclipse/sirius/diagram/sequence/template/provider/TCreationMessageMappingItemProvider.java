@@ -97,6 +97,7 @@ public class TCreationMessageMappingItemProvider extends TSourceTargetMessageMap
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

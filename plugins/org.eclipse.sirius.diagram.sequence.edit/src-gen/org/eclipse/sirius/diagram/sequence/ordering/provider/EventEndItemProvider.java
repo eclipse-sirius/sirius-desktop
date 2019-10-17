@@ -102,6 +102,7 @@ public class EventEndItemProvider extends ItemProviderAdapter implements IEditin
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

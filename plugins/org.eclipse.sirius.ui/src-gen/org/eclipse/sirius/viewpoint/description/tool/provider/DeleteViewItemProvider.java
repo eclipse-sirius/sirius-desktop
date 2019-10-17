@@ -80,6 +80,7 @@ public class DeleteViewItemProvider extends ContainerModelOperationItemProvider 
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

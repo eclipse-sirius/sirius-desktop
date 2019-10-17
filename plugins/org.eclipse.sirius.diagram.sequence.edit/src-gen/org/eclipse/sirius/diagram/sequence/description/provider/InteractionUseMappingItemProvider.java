@@ -83,6 +83,7 @@ public class InteractionUseMappingItemProvider extends FrameMappingItemProvider 
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

@@ -105,6 +105,7 @@ public class DiagramCreationDescriptionItemProvider extends RepresentationCreati
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

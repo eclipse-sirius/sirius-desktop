@@ -80,6 +80,7 @@ public class RemoveElementItemProvider extends ContainerModelOperationItemProvid
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

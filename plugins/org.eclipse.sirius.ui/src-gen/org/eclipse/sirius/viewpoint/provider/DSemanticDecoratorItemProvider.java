@@ -88,6 +88,7 @@ public class DSemanticDecoratorItemProvider extends IdentifiedElementItemProvide
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

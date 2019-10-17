@@ -87,6 +87,7 @@ public class EndOfLifeMappingItemProvider extends NodeMappingItemProvider {
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

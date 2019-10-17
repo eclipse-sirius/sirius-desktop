@@ -101,6 +101,7 @@ public class ViewValidationRuleItemProvider extends ValidationRuleItemProvider {
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

@@ -85,6 +85,7 @@ public class EndLabelStyleDescriptionItemProvider extends BasicLabelStyleDescrip
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

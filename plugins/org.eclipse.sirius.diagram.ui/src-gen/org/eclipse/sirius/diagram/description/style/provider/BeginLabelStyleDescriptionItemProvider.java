@@ -86,6 +86,7 @@ public class BeginLabelStyleDescriptionItemProvider extends BasicLabelStyleDescr
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

@@ -85,6 +85,7 @@ public class CoveredLifelinesVariableItemProvider extends AbstractVariableItemPr
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

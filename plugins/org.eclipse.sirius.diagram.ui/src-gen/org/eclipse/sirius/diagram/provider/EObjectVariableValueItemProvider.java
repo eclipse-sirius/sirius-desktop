@@ -111,6 +111,7 @@ public class EObjectVariableValueItemProvider extends VariableValueItemProvider 
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**

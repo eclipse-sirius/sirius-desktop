@@ -79,6 +79,7 @@ public class ModelOperationItemProvider extends ItemProviderAdapter
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+        super.notifyChanged(notification);
     }
 
     /**
