@@ -686,7 +686,7 @@ The contextual menu on the background of the diagram provides an action to toggl
 When the action is checked, the mode is __Unsynchronized__. Otherwise, the mode is __Synchronized__. 
 When the editor is activated, the status bar informs if the diagram is __Synchronized__ or __Unsynchronized__ (according to preference "_Sirius/Sirius Diagram/Show status line_":#show_status_line ).
 !images/synchronized_diagram_statusbar.png!
-It is also possible to see this status with a decorator at the bottom-right corner of the diagram (according to preference "_Sirius/Sirius Diagram/Show synchronize status decorator on diagram":#show_sync_decorator )
+It is also possible to see this status with a decorator at the bottom-right corner of the diagram (according to preference "_Sirius/Sirius Diagram/Show synchronize status decorator_ on diagram":#show_sync_decorator )
 !images/decoratorsSyncStatus.png!
 
 With __Synchronized__ mode, the displayed diagram represents what is provided by the modeler. However, with __Unsynchronized__ mode, the diagram may not display all elements provided by the modeler, but only the elements that the user selected.
