@@ -25,6 +25,7 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
@@ -129,6 +130,7 @@ import org.eclipse.ui.IEditorSite;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.IWorkbenchSite;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
@@ -151,7 +153,7 @@ import org.eclipse.ui.views.properties.tabbed.TabbedPropertySheetPage;
  * This is an example of a Viewpoint model editor.
  */
 public class SiriusEditor extends MultiPageEditorPart
-        implements IAdapterFactoryProvider, IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, ITabbedPropertySheetPageContributor, IGotoMarker {
+implements IAdapterFactoryProvider, IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, ITabbedPropertySheetPageContributor, IGotoMarker {
 
     /**
      * A Color registry for the current editor.
@@ -1322,8 +1324,7 @@ public class SiriusEditor extends MultiPageEditorPart
 
         ResourcesPlugin.getWorkspace().removeResourceChangeListener(resourceChangeListener);
 
-        getSite().getPage().removePartListener(partListener);
-
+        Optional.ofNullable(getSite()).map(IWorkbenchSite::getPage).ifPresent(page -> page.removePartListener(partListener));
         adapterFactory.dispose();
 
         if (getActionBarContributor().getActiveEditor() == this) {
