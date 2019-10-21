@@ -653,7 +653,7 @@ Integrating and advanced custom widget implementation requires extending several
 * @org.eclipse.emf.edit.childCreationExtenders@: When generating the metamodel for the custom configuration DSL of your widget, make sure EMF's @childCreationExtenders@ mechanism is properly configured so that the Sirus VSM editor will see your custom widget type and allow them to be created in the _New_ context menu.
 * @org.eclipse.sirius.ui.properties.descriptionConverter@: This extension point allows you to particpate in the conversion of the Sirius-side VSM model into the EEF DSL. With this mechanism, you can translate for the EEF runtime new elements that you have contributed in the Sirius Properties DSL.
 * @org.eclipse.sirius.ui.properties.descriptionLinkResolver@: This extension point may be needed in complement to the @descriptionConverter@ if some post-transformation step is needed on your transformed model to perform global link resolution.
-* @org.eclipse.sirius.ui.properties.descriptionPreprocessor@: This extension point allows you to participate in the preprocessing of the Sirius-side VSM model with "extensibility featires":#extensibility_features into a _flatten_ Sirius-side VSM model. 
+* @org.eclipse.sirius.ui.properties.descriptionPreprocessor@: This extension point allows you to participate in the preprocessing of the Sirius-side VSM model with "extensibility features":#extensibility_features into a _flatten_ Sirius-side VSM model. 
 Please refer to the documentation for each of these for more details. And "the reference documentation":../../developer/extensions-properties_provide_custom_widget_advanced.html for the full details on how to actually implement your own advanced custom widgets.
 
 h3(#tab_filtering). Tab Filtering

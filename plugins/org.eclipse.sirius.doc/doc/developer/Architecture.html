@@ -46,7 +46,7 @@
 		<p>Sirius relies heavily on the Eclipse platform, and reuses (and extends) many of the standard Eclipse frameworks, in particular the Eclipse Modeling Platform. This document assumes that you are already familiar with these frameworks and libraries, in particular EMF and EMF Transaction, GEF and GMF for diagrams. Refer to these frameworks' own documentation for more details about them.</p>
 		<h2 id="session">Sessions</h2>
 		<p>The central concept of Sirius&#8217;s API is the 
-			<code>Session</code>. In Sirius, all data is stored in EMF models: the semantic models themselves obviously, but also the representations (diagrams, tables) and the viewpoint configuration (the 
+			<code>Session</code>. In Sirius, all data are stored in EMF models: the semantic models themselves obviously, but also the representations (diagrams, tables) and the viewpoint configuration (the 
 			<em>Viewpoint Specification Models</em>). A session is a wrapper around a 
 			<em>Transactional Editing Domain</em> and its 
 			<em>Resource Set</em>. It ensures the consistency of the models inside the editing domain, from the platform&#8217;s point of view; for example it makes sure the representation files correctly reference all the semantic models they need to in order to handle the representations in the session. The session also provides high-level, Sirius-specific services through its own APIs and support classes and interfaces.
