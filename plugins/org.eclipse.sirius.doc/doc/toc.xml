@@ -105,6 +105,7 @@
       <topic href="doc/specifier/sequences/Sequence Diagrams.html#restrictions" label="Restrictions and Limitations" />
       <topic href="doc/specifier/sequences/Sequence Diagrams.html#prerequisites" label="Prerequisites" />
       <topic href="doc/specifier/sequences/Sequence Diagrams.html#sd_description" label="Sequence Diagram Description" />
+      <topic href="doc/specifier/sequences/Sequence Diagrams.html#DefaultLayer" label="Default Layer" />
       <topic href="doc/specifier/sequences/Sequence Diagrams.html#mappings" label="Mappings" />
       <topic href="doc/specifier/sequences/Sequence Diagrams.html#tools" label="Tools" />
     </topic>
@@ -123,7 +124,9 @@
     </topic>
     <topic href="doc/specifier/trees/Trees.html" label="Trees">
       <topic href="doc/specifier/trees/Trees.html#introduction" label="Introduction" />
-      <topic href="doc/specifier/trees/Trees.html#tree_description" label="Tree Descriptions" />
+      <topic href="doc/specifier/trees/Trees.html#tree_description" label="Tree Descriptions">
+        <topic href="doc/specifier/trees/Trees.html#tree_tools" label="Tree Tools" />
+      </topic>
       <topic href="doc/specifier/trees/Trees.html#mappings" label="Tree Item Mappings">
         <topic href="doc/specifier/trees/Trees.html#item_style" label="Tree Item Styles" />
         <topic href="doc/specifier/trees/Trees.html#item_tools" label="Tree Item Tools" />

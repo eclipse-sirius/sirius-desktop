@@ -23,8 +23,8 @@ h3. Specifier-Visible Changes
 
 h3. Developer-Visible Changes
 
-* <span class="label label-info">Modified</span> Upgraded ELK version from 0.4.1 to 0.5.0, see the "ELK documentation":https://projects.eclipse.org/projects/modeling.elk/releases/0.5.0 for the list of changes in that version.
-* <span class="label label-info">Modified</span> Upgraded EEF version from 2.1.2 to 2.1.3 (which contains a single bugfix, for "#550436":https://bugs.eclipse.org/bugs/show_bug.cgi?id=550436 ).
+* <span class="label label-info">Modified</span> Upgraded ELK version from 0.4.1 to 0.5.0, see the <a href="https://projects.eclipse.org/projects/modeling.elk/releases/0.5.0" target="_blank">ELK documentation</a> for the list of changes in that version.
+* <span class="label label-info">Modified</span> Upgraded EEF version from 2.1.2 to 2.1.3 (which contains a single bugfix, for <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=550436" target="_blank">#550436</a>).
 
 h4. Changes in  @org.eclipse.sirius@
 
@@ -246,7 +246,7 @@ h4. Changes in  @org.eclipse.sirius.diagram@
 h2(#sirius6.1.0). Changes in Sirius 6.1.0
 
 * <span class="label label-info">IMPORTANT</span>  The new (and still experimental) _Workflow_ and _Server_ features depend on a specific version of Eclipse Jetty which is available in the main Eclipse Photon repository. They can not be used under Oxygen (which include older and incompatible versions of Jetty).
-* <span class="label label-info">IMPORTANT</span> Please note that starting from version 6.1, Sirius is now licensed under "version 2.0 of the Eclipse Public License":https://www.eclipse.org/legal/epl-2.0/, which updates some wording and clarifies some points but neither changes the open-source nature of Sirius nor the implications of using or embedding it. See "the official FAQ":https://www.eclipse.org/legal/epl-2.0/faq.php for details about the difference between EPL v1.0 (which was used before) and v2.0.
+* <span class="label label-info">IMPORTANT</span> Please note that starting from version 6.1, Sirius is now licensed under <a href="https://www.eclipse.org/legal/epl-2.0/" target="_blank">version 2.0 of the Eclipse Public License</a>, which updates some wording and clarifies some points but neither changes the open-source nature of Sirius nor the implications of using or embedding it. See <a href="https://www.eclipse.org/legal/epl-2.0/faq.php" target="_blank">the official FAQ</a> for details about the difference between EPL v1.0 (which was used before) and v2.0.
 
 h3. User-Visible Changes
 
