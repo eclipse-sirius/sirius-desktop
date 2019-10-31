@@ -24,6 +24,7 @@ import org.eclipse.draw2d.graph.Node;
 import org.eclipse.elk.core.service.LayoutConnectorsService;
 import org.eclipse.elk.core.service.LayoutMapping;
 import org.eclipse.gef.commands.Command;
+import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
@@ -47,6 +48,9 @@ public class ELKLayoutNodeProvider extends DefaultLayoutProvider implements Exte
     public Command layoutEditParts(final List selectedObjects, final IAdaptable layoutHint) {
         List<IELKLayoutExtension> elkLayoutExtensions = getLayoutExtensions();
         DiagramEditPart diagramEditPart = layoutHint.getAdapter(DiagramEditPart.class);
+        if (diagramEditPart == null) {
+            return UnexecutableCommand.INSTANCE;
+        }
         Injector injector = LayoutConnectorsService.getInstance().getInjector(null, selectedObjects);
         ElkDiagramLayoutConnector connector = injector.getInstance(ElkDiagramLayoutConnector.class);
 

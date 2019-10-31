@@ -1222,8 +1222,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     @Override
     protected void setDocumentProvider(final IEditorInput input) {
         if (getSession() != null/*
-                                 * && (input instanceof IFileEditorInput || input instanceof URIEditorInput)
-                                 */) {
+         * && (input instanceof IFileEditorInput || input instanceof URIEditorInput)
+         */) {
             setDocumentProvider(DiagramUIPlugin.getPlugin().getDocumentProvider(getSession().getTransactionalEditingDomain()));
         } else {
             // super.setDocumentProvider(input);
@@ -1570,12 +1570,10 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
             super.initializeGraphicalViewer();
 
-            // After EditPart instantiation call arrange command on views marked
-            // as
-            // to be arranged
+            // After EditPart instantiation call arrange command on views marked as to be arranged
             final DiagramEditPart diagramEditPart = getDiagramEditPart();
             if (diagramEditPart != null) {
-                SiriusCanonicalLayoutHandler.launchArrangeCommand(diagramEditPart);
+                SiriusCanonicalLayoutHandler.launchArrangeCommandOnOpening(diagramEditPart);
             }
 
             transferDropTargetListener = new DDiagramEditorTransferDropTargetListener(getGraphicalViewer(), LocalSelectionTransfer.getTransfer());

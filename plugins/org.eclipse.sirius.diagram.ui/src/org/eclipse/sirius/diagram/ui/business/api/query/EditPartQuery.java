@@ -21,6 +21,8 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeListCompartmentEditPart;
 
 /**
  * A class aggregating all the queries (read-only!) having an {@link IGraphicalEditPart} as a starting point.
@@ -65,7 +67,7 @@ public final class EditPartQuery {
      */
     public Optional<DDiagram> getDDiagram() {
         IDDiagramEditPart effectiveDiagramEditPart = null;
-        if (editPart instanceof IDiagramElementEditPart) {
+        if (editPart instanceof IDiagramElementEditPart || editPart instanceof AbstractDNodeContainerCompartmentEditPart || editPart instanceof AbstractDNodeListCompartmentEditPart) {
             effectiveDiagramEditPart = getDiagramEditPart(editPart);
         } else if (editPart instanceof IDDiagramEditPart) {
             effectiveDiagramEditPart = (IDDiagramEditPart) editPart;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,9 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
@@ -38,8 +41,8 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
- * Helper to execute a ArrangeRequest's {@link Command} for created views (in
- * the DDiagramCanonicalSynchronizer ) to arrange.
+ * Helper to execute a ArrangeRequest's {@link Command} for created views (in the DDiagramCanonicalSynchronizer ) to
+ * arrange.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -50,17 +53,55 @@ public final class SiriusCanonicalLayoutHandler {
     }
 
     /**
-     * Execute ArrangeRequest's {@link Command} for created views (in the
-     * DDiagramCanonicalSynchronizer) to arrange.
+     * Execute ArrangeRequest's {@link Command} for created views (in the DDiagramCanonicalSynchronizer) to arrange,
+     * just after the diagram editor instantiation (ie after creation of all diagram elements or new diagram elements).
+     * This specific method allows to make specific things in this case; for example for ELK layout, the arrange is
+     * called only on diagram and not on all child.
      * 
      * @param diagramEditPart
-     *            The {@link DiagramEditPart} used to get parent
-     *            {@link IGraphicalEditPart} of created {@link View}s to layout.
+     *            The {@link DiagramEditPart} used to get parent {@link IGraphicalEditPart} of created {@link View}s to
+     *            layout.
+     */
+    public static void launchArrangeCommandOnOpening(DiagramEditPart diagramEditPart) {
+        launchArrangeCommand(diagramEditPart, true);
+    }
+
+    /**
+     * Execute ArrangeRequest's {@link Command} for created views (in the DDiagramCanonicalSynchronizer) to arrange.
+     * 
+     * @param diagramEditPart
+     *            The {@link DiagramEditPart} used to get parent {@link IGraphicalEditPart} of created {@link View}s to
+     *            layout.
      */
     public static void launchArrangeCommand(DiagramEditPart diagramEditPart) {
+        launchArrangeCommand(diagramEditPart, false);
+    }
+
+    /**
+     * Execute ArrangeRequest's {@link Command} for created views (in the DDiagramCanonicalSynchronizer) to arrange.
+     * 
+     * @param diagramEditPart
+     *            The {@link DiagramEditPart} used to get parent {@link IGraphicalEditPart} of created {@link View}s to
+     *            layout.
+     * @param isAfterDiagramEditorInstantiation
+     *            true if the arrange is called just after the diagram editor instantiation (ie after creation of all
+     *            diagram elements or new diagram elements), false otherwise. It allows to make specific things in this
+     *            case (for example for ELK layout).
+     */
+    private static void launchArrangeCommand(DiagramEditPart diagramEditPart, boolean isAfterDiagramEditorInstantiation) {
         TransactionalEditingDomain editingDomain = diagramEditPart.getEditingDomain();
         Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = getCreatedViewsToLayoutMap(diagramEditPart);
         Map<IGraphicalEditPart, List<IAdaptable>> createdViewsWithSpecialLayoutMap = getCreatedViewsWithSpecialLayoutMap(diagramEditPart);
+        DiagramDescription diagDesc = new EditPartQuery(diagramEditPart).getDiagramDescription();
+        if (isAfterDiagramEditorInstantiation && diagDesc != null && diagDesc.getLayout() instanceof CustomLayoutConfiguration) {
+            // Keep only the diagram group (the first). Otherwise, the layout is called on other "parents" and the
+            // result does not correspond to the expected result
+            List<IAdaptable> createdViews = createdViewsToLayoutMap.get(diagramEditPart);
+            createdViewsToLayoutMap.clear();
+            if (createdViews != null && !createdViews.isEmpty()) {
+                createdViewsToLayoutMap.put(diagramEditPart, createdViews);
+            }
+        }
         Command layoutCommand = getLayoutCommand(createdViewsToLayoutMap, createdViewsWithSpecialLayoutMap, editingDomain);
         if (layoutCommand.canExecute()) {
             editingDomain.getCommandStack().execute(layoutCommand);
@@ -154,10 +195,11 @@ public final class SiriusCanonicalLayoutHandler {
         // computed multiple times
         Predicate<Entry<IGraphicalEditPart, List<IAdaptable>>> typeOfElementToLayout = new Predicate<Map.Entry<IGraphicalEditPart, List<IAdaptable>>>() {
 
+            @Override
             public boolean apply(Entry<IGraphicalEditPart, List<IAdaptable>> input) {
-                return input.getKey() instanceof DDiagramEditPart
-                        || input.getKey() instanceof DNodeContainerViewNodeContainerCompartmentEditPart
-                        || (input.getKey() instanceof DNodeContainerViewNodeContainerCompartment2EditPart && !(input.getKey().getParent().getParent() instanceof DNodeContainerViewNodeContainerCompartment2EditPart));
+                return input.getKey() instanceof DDiagramEditPart || input.getKey() instanceof DNodeContainerViewNodeContainerCompartmentEditPart
+                        || (input.getKey() instanceof DNodeContainerViewNodeContainerCompartment2EditPart
+                                && !(input.getKey().getParent().getParent() instanceof DNodeContainerViewNodeContainerCompartment2EditPart));
             }
         };
 
