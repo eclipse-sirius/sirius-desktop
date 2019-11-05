@@ -31,8 +31,7 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 /**
- * A {@link BundledImageFigure} is a Figure corresponding to an Image defined in
- * a plugin.
+ * A {@link BundledImageFigure} is a Figure corresponding to an Image defined in a plugin.
  *
  * @author cbrun
  */
@@ -159,8 +158,7 @@ public class BundledImageFigure extends SVGFigure {
     private String mainGradientColor;
 
     /**
-     * Create the {@link BundledImageFigure} from a {@link BundledImage}
-     * instance.
+     * Create the {@link BundledImageFigure} from a {@link BundledImage} instance.
      *
      * @param bundle
      *            {@link BundledImage} specification.
@@ -209,8 +207,7 @@ public class BundledImageFigure extends SVGFigure {
     /**
      * @param bundledImage
      * @param force
-     *            If the color must be force to refresh (in case of shape update
-     *            for example)
+     *            If the color must be force to refresh (in case of shape update for example)
      */
     private boolean updateColors(BundledImage bundledImage, boolean force) {
         boolean updated = updateColorFields(bundledImage);
@@ -221,8 +218,7 @@ public class BundledImageFigure extends SVGFigure {
     /**
      * @param bundledImage
      * @param force
-     *            If the border size must be force to refresh (in case of shape
-     *            update for sample)
+     *            If the border size must be force to refresh (in case of shape update for sample)
      */
     private boolean updateBorderSize(BundledImage bundledImage, boolean force) {
         boolean updated = updateBorderSizeFields(bundledImage);
@@ -432,18 +428,21 @@ public class BundledImageFigure extends SVGFigure {
     }
 
     private boolean isCustomBundledImageExtensionPoint(BundledImage bundledImage) {
-        if (bundledImage.getProvidedShapeID() == null) {
-            return false;
+        String shapeId = bundledImage.getProvidedShapeID();
+        if (shapeId != null) {
+            IConfigurationElement cfg = getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeID(shapeId);
+            if (cfg != null) {
+                String extensionPointUniqueIdentifier = cfg.getDeclaringExtension().getExtensionPointUniqueIdentifier();
+                return BundledImageExtensionQuery.CUSTOM_BUNDLED_IMAGE_SHAPE_EXTENSION_POINT.equals(extensionPointUniqueIdentifier);
+            }
         }
-        String extensionPointUniqueIdentifier = getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeID(bundledImage.getProvidedShapeID()).getDeclaringExtension()
-                .getExtensionPointUniqueIdentifier();
-        return BundledImageExtensionQuery.CUSTOM_BUNDLED_IMAGE_SHAPE_EXTENSION_POINT.equals(extensionPointUniqueIdentifier);
+        return false;
     }
 
     private Element findElementInDocument(BundledImage bundledImage, Document document, String elementId, String defaultId) {
         Element element = null;
-        String findParameterInExtension = getBundledImageExtensionQuery().findParameterInExtension(
-                getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeID(bundledImage.getProvidedShapeID()), elementId);
+        String findParameterInExtension = getBundledImageExtensionQuery()
+                .findParameterInExtension(getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeID(bundledImage.getProvidedShapeID()), elementId);
         if (findParameterInExtension != null) {
             element = document.getElementById(findParameterInExtension);
         } else {
@@ -454,8 +453,8 @@ public class BundledImageFigure extends SVGFigure {
 
     private String getAttributeValue(Element documentElement, BundledImage bundledImage, String attributeId, String defaultId) {
         if (BundledImageShape.PROVIDED_SHAPE_LITERAL.equals(bundledImage.getShape())) {
-            return documentElement.getAttribute(getBundledImageExtensionQuery().findParameterInExtension(
-                    getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeID(bundledImage.getProvidedShapeID()), attributeId));
+            return documentElement.getAttribute(
+                    getBundledImageExtensionQuery().findParameterInExtension(getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeID(bundledImage.getProvidedShapeID()), attributeId));
         }
         return documentElement.getAttribute(defaultId);
     }
@@ -599,8 +598,8 @@ public class BundledImageFigure extends SVGFigure {
     }
 
     /**
-     * Compute a key for this BundleImageFigure. This key is used to store in
-     * cache the corresponding {@link org.eclipse.swt.graphics.Image}.
+     * Compute a key for this BundleImageFigure. This key is used to store in cache the corresponding
+     * {@link org.eclipse.swt.graphics.Image}.
      *
      * {@inheritDoc}
      *
