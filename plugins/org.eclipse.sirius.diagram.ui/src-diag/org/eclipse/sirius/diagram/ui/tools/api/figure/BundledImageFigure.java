@@ -432,12 +432,15 @@ public class BundledImageFigure extends SVGFigure {
     }
 
     private boolean isCustomBundledImageExtensionPoint(BundledImage bundledImage) {
-        if (bundledImage.getProvidedShapeID() == null) {
-            return false;
+        String shapeId = bundledImage.getProvidedShapeID();
+        if (shapeId != null) {
+            IConfigurationElement cfg = getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeID(shapeId);
+            if (cfg != null) {
+                String extensionPointUniqueIdentifier = cfg.getDeclaringExtension().getExtensionPointUniqueIdentifier();
+                return BundledImageExtensionQuery.CUSTOM_BUNDLED_IMAGE_SHAPE_EXTENSION_POINT.equals(extensionPointUniqueIdentifier);
+            }
         }
-        String extensionPointUniqueIdentifier = getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeID(bundledImage.getProvidedShapeID()).getDeclaringExtension()
-                .getExtensionPointUniqueIdentifier();
-        return BundledImageExtensionQuery.CUSTOM_BUNDLED_IMAGE_SHAPE_EXTENSION_POINT.equals(extensionPointUniqueIdentifier);
+        return false;
     }
 
     private Element findElementInDocument(BundledImage bundledImage, Document document, String elementId, String defaultId) {
