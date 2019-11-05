@@ -5,6 +5,7 @@ Bundle-Vendor: %providerName
 Bundle-Version: 6.3.1.qualifier
 Bundle-SymbolicName: org.eclipse.sirius.tests.sample.xtext.statemachine.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
+Bundle-Localization: plugin
 Require-Bundle: org.eclipse.sirius.tests.sample.xtext.statemachine,
  org.eclipse.xtext.ide,
  org.eclipse.xtext.xbase.ide
