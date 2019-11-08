@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,27 +12,35 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.action;
 
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.impl.EClassImpl;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListNameEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.tests.support.api.DummyDialectEditorDialogFactory;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -62,6 +70,65 @@ public class DeleteFromModelActionTests extends SiriusDiagramTestCase implements
         diagram = (DDiagram) getRepresentations(ENTITIES_DESC_NAME, ePackage).iterator().next();
         editor = (DDiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
+    }
+
+    public void testDeleteContainerOfSemanticTarget() {
+        assertEquals(ePackage, ((DSemanticDiagram) editor.getRepresentation()).getTarget());
+        assertEquals(2, DialectManager.INSTANCE.getAllRepresentations(session).size());
+        assertEquals(2, DialectManager.INSTANCE.getAllRepresentationDescriptors(session).size());
+
+        TransactionalEditingDomain editingDomain = session.getTransactionalEditingDomain();
+
+        final EPackage[] leafPack = new EPackage[1];
+        editingDomain.getCommandStack().execute(new RecordingCommand(editingDomain) {
+
+            @Override
+            protected void doExecute() {
+                EPackage pack1 = createEPackage("P1");
+                ePackage.getESubpackages().add(pack1);
+
+                EPackage pack1_1 = createEPackage("P1_1");
+                pack1.getESubpackages().add(pack1_1);
+
+                EPackage pack1_1_1 = createEPackage("P1_1_1");
+                pack1_1.getESubpackages().add(pack1_1_1);
+
+                leafPack[0] = pack1_1_1;
+
+            }
+
+            private EPackage createEPackage(String name) {
+                EPackage pack = EcoreFactory.eINSTANCE.createEPackage();
+                pack.setName(name);
+                return pack;
+            }
+        });
+
+        DDiagram rep1 = (DDiagram) createRepresentation("Entities", leafPack[0]);
+        DDiagramEditor rep1Editor = (DDiagramEditor) DialectUIManager.INSTANCE.openEditor(session, rep1, defaultProgress);
+        TestsUtil.synchronizationWithUIThread();
+
+        assertEquals(3, DialectManager.INSTANCE.getAllRepresentations(session).size());
+        assertEquals(3, DialectManager.INSTANCE.getAllRepresentationDescriptors(session).size());
+
+        dropSemantic(ePackage, rep1, null);
+        TestsUtil.synchronizationWithUIThread();
+
+        DummyDialectEditorDialogFactory editorCloserPopupDetector = new DummyDialectEditorDialogFactory();
+        rep1Editor.setDialogFactory(editorCloserPopupDetector);
+        editor.setDialogFactory(editorCloserPopupDetector);
+
+        delete(getEditPart(getFirstDiagramElement(rep1, ePackage)));
+        TestsUtil.synchronizationWithUIThread();
+
+        assertEquals("Diagram target deletion or diagram deletion has not been correctly detected, check the DialectEditorCloserFilter.", 2,
+                editorCloserPopupDetector.getNbEditorWillBeClosedInformationDialogCalls());
+        TestsUtil.synchronizationWithUIThread();
+
+        assertEquals(2, DialectManager.INSTANCE.getAllRepresentations(session).size());
+        Collection<DRepresentationDescriptor> allRepresentationDescriptors = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
+        assertEquals(3, allRepresentationDescriptors.size());
+
     }
 
     public void testDeleteContainerEditPart() throws Exception {

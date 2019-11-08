@@ -18,9 +18,12 @@ import java.util.Optional;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.NotificationFilter;
+import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger;
+import org.eclipse.sirius.business.internal.session.danalysis.SessionLazyCrossReferencer;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -50,7 +53,19 @@ public class DialectEditorCloserFilter extends NotificationFilter.Custom {
 
     @Override
     public boolean matches(Notification notification) {
-        return !notification.isTouch() && (isTargetUnset(notification) || isRepresentationDeletion(notification) || isTargetDetachment(notification));
+        if (notification.isTouch()) {
+            // DRepresentationDescriptor#representation is volatile, when setRepresentation(null) is called, the
+            // oldValue access is an attempt to compute the previous representation which might already be null or
+            // impossible to access.
+            // For example when a DRepresentation is deleted, we will get a touch notification for the
+            // DRepresentationDescriptor.setRepresentation(null).
+            // We need to inspect touch notification whose notifier is the current DRepresentationDescriptor.
+            boolean currentDRepDescriptorTarget = notification.getNotifier() == dRepDescriptor && notification.getFeature() == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__TARGET;
+            return currentDRepDescriptorTarget && notification.getEventType() == Notification.SET && notification.getNewValue() == null;
+        } else {
+            // !notification.isTouch() case
+            return isTargetUnset(notification) || isRepresentationDeletion(notification) || isTargetDetachment(notification);
+        }
     }
 
     /**
@@ -96,6 +111,14 @@ public class DialectEditorCloserFilter extends NotificationFilter.Custom {
             representationDeleted = dRepDescriptor.eContainer() == null || !(dRepDescriptor.eContainer() != null && dRepDescriptor.eContainer().eContainer() instanceof DView);
         } else if (notification.getFeature() == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__REPRESENTATION) {
             representationDeleted = notification.getNewValue() == null && notification.getOldValue() != null && notification.getNotifier() == dRepDescriptor;
+        } else if (SessionLazyCrossReferencer.isTopLevelRepresentationRemoval(notification) && notification.getOldValue() instanceof DRepresentation
+                && notification.getNotifier() instanceof Resource) {
+            // A representation has been deleted, retrieve is repPath and compare it to the one of the current
+            // DRepresentationDescriptor.
+            DRepresentation rep = (DRepresentation) notification.getOldValue();
+            Resource res = (Resource) notification.getNotifier();
+            ResourceDescriptor repPathBeforeDeletion = new ResourceDescriptor(res.getURI().appendFragment(rep.getUid()));
+            representationDeleted = repPathBeforeDeletion.equals(dRepDescriptor.getRepPath());
         }
         return representationDeleted;
     }
