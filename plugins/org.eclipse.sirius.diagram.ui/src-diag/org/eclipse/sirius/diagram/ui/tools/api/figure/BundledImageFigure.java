@@ -20,6 +20,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.BundledImage;
 import org.eclipse.sirius.diagram.BundledImageShape;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.internal.queries.BundledImageExtensionQuery;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -185,25 +186,36 @@ public class BundledImageFigure extends SVGFigure {
         boolean updated = false;
         if (bundledImage != null && bundledImage.getShape() != null) {
             String newShapeName = bundledImage.getShape().getName();
-            if (!StringUtil.isEmpty(newShapeName) && (!newShapeName.equals(getShapeName()) || bundledImage.getProvidedShapeID() != null && !bundledImage.getProvidedShapeID().equals(getShapeID()))) {
-                if (newShapeName.equals(BundledImageShape.PROVIDED_SHAPE_LITERAL.getName())) {
-                    String providedShapeID = bundledImage.getProvidedShapeID();
-                    IConfigurationElement extension = getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeID(providedShapeID);
-                    if (extension != null) {
-                        final String path = BundledImageExtensionQuery.getInstance().getImagePath(extension);
-                        String imageFileURI = "platform:/plugin" + path; //$NON-NLS-1$
-                        this.setURI(imageFileURI, false);
-                        this.setShapeName(BundledImageShape.PROVIDED_SHAPE_LITERAL.getName());
-                        this.setShapeID(providedShapeID);
-                    }
-                } else {
-                    this.setURI(getImageFileURI(newShapeName), false);
-                    this.setShapeName(newShapeName);
-                }
+            String providedShapeID = bundledImage.getProvidedShapeID();
+            if (!StringUtil.isEmpty(newShapeName) && (!newShapeName.equals(getShapeName()) || providedShapeID != null && !providedShapeID.equals(getShapeID()))) {
+                updateShape(newShapeName, providedShapeID, bundledImage.getCustomFeatures().contains(DiagramPackage.Literals.BUNDLED_IMAGE__PROVIDED_SHAPE_ID.getName()));
                 updated = true;
             }
         }
         return updated;
+    }
+
+    private void updateShape(String newShapeName, String newProvidedShapeID, boolean isCustomProvidedShapeId) {
+        String uri;
+        if (newShapeName.equals(BundledImageShape.PROVIDED_SHAPE_LITERAL.getName())) {
+            IConfigurationElement extension = getBundledImageExtensionQuery().getExtensionDefiningProvidedShapeID(newProvidedShapeID);
+            if (extension != null) {
+                final String path = BundledImageExtensionQuery.getInstance().getImagePath(extension);
+                uri = "platform:/plugin" + path; //$NON-NLS-1$
+                this.setShapeID(newProvidedShapeID);
+            } else {
+                uri = Messages.BundledImageShape_idMissing;
+                if (isCustomProvidedShapeId) {
+                    DiagramPlugin.getDefault().logWarning(MessageFormat.format(Messages.BundledImageShape_usedInVSM_idMissing_msg, newProvidedShapeID));
+                } else {
+                    DiagramPlugin.getDefault().logWarning(MessageFormat.format(Messages.BundledImageShape_usedByEndUser_idMissing_msg, newProvidedShapeID));
+                }
+            }
+        } else {
+            uri = getImageFileURI(newShapeName);
+        }
+        this.setURI(uri, false);
+        this.setShapeName(newShapeName);
     }
 
     /**
