@@ -291,21 +291,25 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
     }
 
     private Document createDocument(SAXSVGDocumentFactory factory, boolean forceClassLoader) {
-        if (forceClassLoader) {
-            Thread.currentThread().setContextClassLoader(this.getClass().getClassLoader());
-        }
-        try {
-            return factory.createDocument(uri);
-        } catch (IOException e) {
-            boolean saxParserNotFound = e.getMessage() != null && e.getMessage().contains("SAX2 driver class org.apache.xerces.parsers.SAXParser not found"); //$NON-NLS-1$
-            if (!forceClassLoader && saxParserNotFound && Thread.currentThread().getContextClassLoader() == null) {
-                return createDocument(factory, true);
-            } else {
-                DiagramPlugin.getDefault().logError(Messages.SVGFigure_loadError, e);
-            }
-        } finally {
+        if (Messages.BundledImageShape_idMissing.equals(uri)) {
+            DiagramPlugin.getDefault().logError(Messages.SVGFigure_usingInvalidBundledImageShape);
+        } else {
             if (forceClassLoader) {
-                Thread.currentThread().setContextClassLoader(null);
+                Thread.currentThread().setContextClassLoader(this.getClass().getClassLoader());
+            }
+            try {
+                return factory.createDocument(uri);
+            } catch (IOException e) {
+                boolean saxParserNotFound = e.getMessage() != null && e.getMessage().contains("SAX2 driver class org.apache.xerces.parsers.SAXParser not found"); //$NON-NLS-1$
+                if (!forceClassLoader && saxParserNotFound && Thread.currentThread().getContextClassLoader() == null) {
+                    return createDocument(factory, true);
+                } else {
+                    DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.SVGFigure_loadError, uri), e);
+                }
+            } finally {
+                if (forceClassLoader) {
+                    Thread.currentThread().setContextClassLoader(null);
+                }
             }
         }
         return null;
@@ -327,18 +331,20 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
      */
     public void contentChanged() {
         Document document = getDocument();
-        modeWithViewBox = false;
-        for (int i = 0; i < document.getChildNodes().getLength(); i++) {
-            org.w3c.dom.Node node = document.getChildNodes().item(i);
-            if (node instanceof Element) {
-                String viewBoxValue = ((Element) node).getAttribute("viewBox"); //$NON-NLS-1$
-                if (!StringUtil.isEmpty(viewBoxValue)) {
-                    // stretch the image is not supported as the current version of Batif used does not handled it
-                    // (org.apache.batik.dom.svg.SVGOMSVGElement.getViewBox()).
-                    modeWithViewBox = true;
+        if (document != null) {
+            modeWithViewBox = false;
+            for (int i = 0; i < document.getChildNodes().getLength(); i++) {
+                org.w3c.dom.Node node = document.getChildNodes().item(i);
+                if (node instanceof Element) {
+                    String viewBoxValue = ((Element) node).getAttribute("viewBox"); //$NON-NLS-1$
+                    if (!StringUtil.isEmpty(viewBoxValue)) {
+                        // stretch the image is not supported as the current version of Batif used does not handled it
+                        // (org.apache.batik.dom.svg.SVGOMSVGElement.getViewBox()).
+                        modeWithViewBox = true;
+                    }
                 }
-            }
 
+            }
         }
         if (transcoder != null) {
             transcoder.contentChanged();

@@ -131,6 +131,15 @@ public final class Messages {
     public static String BundledImageShape_attributeAbsent;
 
     @TranslatableMessage
+    public static String BundledImageShape_idMissing;
+
+    @TranslatableMessage
+    public static String BundledImageShape_usedByEndUser_idMissing_msg;
+
+    @TranslatableMessage
+    public static String BundledImageShape_usedInVSM_idMissing_msg;
+
+    @TranslatableMessage
     public static String CenterEditPartEdgesCommand_label;
 
     @TranslatableMessage
@@ -1485,6 +1494,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SubDiagramMenu_newLabel;
+
+    @TranslatableMessage
+    public static String SVGFigure_usingInvalidBundledImageShape;
 
     @TranslatableMessage
     public static String SVGFigure_loadError;
