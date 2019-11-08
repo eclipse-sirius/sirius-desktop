@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2004, 2016 IBM Corporation and others.
+ * Copyright (c) 2004, 2019 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -1060,8 +1060,8 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
 
             int height = fontInfo[0].getHeight();
 
-            float fsize = (float) height * (float) DisplayUtils.getDisplay().getDPI().x / 72.0f;
-            height = Math.round(fsize);
+            float fsize = height * 96.0f / 72.0f; // default display DPI / default DPI of AWT
+            height = (int) fsize;
 
             int style = fontInfo[0].getStyle();
             boolean bItalic = (style & SWT.ITALIC) == SWT.ITALIC;
