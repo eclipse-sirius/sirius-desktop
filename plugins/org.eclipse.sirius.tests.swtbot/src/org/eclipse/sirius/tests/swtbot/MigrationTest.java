@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2018 Obeo.
+ * Copyright (c) 2017, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -86,6 +86,16 @@ public class MigrationTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     private void testMigrationFromDoubleClick(Saving airdSaving, Saving VSMSaving) {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            /*
+             * This test fails on some IC server because of a problem of rendering HTML in the aird editor. A popup
+             * appears with title "Internal Error" and message
+             * "An SWT error has occurred. You are recommended to exit the workbench...". So the test fails. In
+             * org.eclipse.sirius.ui.tools.internal.viewpoint.ViewpointsSelectionGraphicalHandler.createBrowser(
+             * Composite) it seems that this case should be correctly handled but it is not the case.
+             */
+            return;
+        }
         SWTBotView modelExplorerView = bot.viewById("org.eclipse.sirius.ui.tools.views.model.explorer");
         SWTBotTreeItem project = modelExplorerView.bot().tree().getTreeItem("DesignerTestProject");
         project.expand();
