@@ -16,6 +16,7 @@
       label="%featureName"
       version="6.3.1.qualifier"
       provider-name="%providerName"
+      plugin="org.eclipse.sirius.common.interpreter"
       license-feature="org.eclipse.license"
       license-feature-version="0.0.0">
 
