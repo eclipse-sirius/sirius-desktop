@@ -49,26 +49,23 @@ import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 
 /**
- * A post commit listener which select the representation elements specified
- * through the "Elements To Select" expression and "Inverse Selection Order" tag
- * of the tool. </br> Elements will be selected only on the active editor.
+ * A post commit listener which select the representation elements specified through the "Elements To Select" expression
+ * and "Inverse Selection Order" tag of the tool. </br>
+ * Elements will be selected only on the active editor.
  * 
- * Each dialect is responsible to add this post commit listener or one
- * specializing this one.
+ * Each dialect is responsible to add this post commit listener or one specializing this one.
  * 
  * @author mporhel
  */
 public class SelectDRepresentationElementsListener extends ResourceSetListenerImpl {
 
     /**
-     * This {@link NotificationFilter} corresponds to
-     * {@link DRepresentationElement} creation or specified "Elements To Select"
-     * list.
+     * This {@link NotificationFilter} corresponds to {@link DRepresentationElement} creation or specified "Elements To
+     * Select" list.
      */
-    private static final NotificationFilter DEFAULT_NOTIFICATION_FILTER = NotificationFilter.createFeatureFilter(ViewpointPackage.Literals.UI_STATE__ELEMENTS_TO_SELECT).or(
-            NotificationFilter.NOT_TOUCH.and(SessionEventBrokerImpl.asFilter(DanglingRefRemovalTrigger.IS_ATTACHMENT)).and(
-                    NotificationFilter.createNotifierTypeFilter(ViewpointPackage.Literals.DREPRESENTATION).or(
-                            NotificationFilter.createNotifierTypeFilter(ViewpointPackage.Literals.DREPRESENTATION_ELEMENT))));
+    private static final NotificationFilter DEFAULT_NOTIFICATION_FILTER = NotificationFilter.createFeatureFilter(ViewpointPackage.Literals.UI_STATE__ELEMENTS_TO_SELECT)
+            .or(NotificationFilter.NOT_TOUCH.and(SessionEventBrokerImpl.asFilter(DanglingRefRemovalTrigger.IS_ATTACHMENT)).and(NotificationFilter
+                    .createNotifierTypeFilter(ViewpointPackage.Literals.DREPRESENTATION).or(NotificationFilter.createNotifierTypeFilter(ViewpointPackage.Literals.DREPRESENTATION_ELEMENT))));
 
     /**
      * The dialect editor.
@@ -81,12 +78,10 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
      * Constructor.
      *
      * @param editor
-     *            the editor on which the representation elements should be
-     *            selected, if the editor is active.
+     *            the editor on which the representation elements should be selected, if the editor is active.
      * @param selectOnlyViewWithNewSemanticTarget
-     *            true to select only created view whose semantic target has
-     *            also been created otherwise select also created view whose
-     *            semantic target was already existing
+     *            true to select only created view whose semantic target has also been created otherwise select also
+     *            created view whose semantic target was already existing
      */
     public SelectDRepresentationElementsListener(DialectEditor editor, boolean selectOnlyViewWithNewSemanticTarget) {
         super(DEFAULT_NOTIFICATION_FILTER);
@@ -112,6 +107,14 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
         // value is Boolean.FALSE or null ie is not Boolean.TRUE
         if (!Boolean.TRUE.equals(event.getTransaction().getOptions().get(Transaction.OPTION_IS_UNDO_REDO_TRANSACTION))) {
             DRepresentation currentRep = dialectEditor.getRepresentation();
+
+            if (currentRep == null) {
+                // There is no more representation managed by this editor.
+                // If the representation is null it means that its has been deleted from the Resource
+                // In such case this method can't compute the list of element to select
+                return;
+            }
+
             Display display = Display.getCurrent();
 
             // We are the UI Thread, so we perform the selection.
@@ -284,14 +287,12 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
     }
 
     /**
-     * Tells if the specified <code>view</code> has its target created in the
-     * same transaction as itself.
+     * Tells if the specified <code>view</code> has its target created in the same transaction as itself.
      * 
-     * Note: this method is useful only for tree and table dialect, as we want
-     * to select only {@link DRepresentationElement} created by semantic change
-     * and not on treeItem expansion. And as being based on
-     * {@link org.eclipse.emf.ecore.change.ChangeDescription#getObjectsToDetach()}
-     * work only from Eclipse Mars. See Bug 460206.
+     * Note: this method is useful only for tree and table dialect, as we want to select only
+     * {@link DRepresentationElement} created by semantic change and not on treeItem expansion. And as being based on
+     * {@link org.eclipse.emf.ecore.change.ChangeDescription#getObjectsToDetach()} work only from Eclipse Mars. See Bug
+     * 460206.
      */
     private boolean isViewWithNewSemanticTarget(Collection<EObject> attachedEObjects, DRepresentationElement view) {
         boolean isViewWithNewSemanticTarget = false;
@@ -354,10 +355,9 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
     }
 
     /**
-     * A runnable to set the selection of the given dialect editor. It is able
-     * to retrigger itself once, if the first setSelection call did not succeed
-     * in setting the selection. This could occurs if a DialectEditor launch an
-     * async UI refresh after the creation of this runnable.
+     * A runnable to set the selection of the given dialect editor. It is able to retrigger itself once, if the first
+     * setSelection call did not succeed in setting the selection. This could occurs if a DialectEditor launch an async
+     * UI refresh after the creation of this runnable.
      * 
      * @author mporhel
      * 
