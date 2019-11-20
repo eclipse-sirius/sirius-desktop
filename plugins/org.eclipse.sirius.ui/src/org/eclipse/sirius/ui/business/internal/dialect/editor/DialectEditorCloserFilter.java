@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -72,8 +72,14 @@ public class DialectEditorCloserFilter extends NotificationFilter.Custom {
     }
 
     private boolean isTargetUnset(Notification notification) {
-        boolean remove = notification.getEventType() == Notification.REMOVE || notification.getEventType() == Notification.UNSET;
-        return remove && notification.getNotifier() == dRepDescriptor && notification.getFeature() == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__TARGET;
+        boolean unsetNotification = isUnsetNotification(notification);
+        return unsetNotification && notification.getNotifier() == dRepDescriptor && notification.getFeature() == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__TARGET;
+    }
+
+    private boolean isUnsetNotification(Notification notification) {
+        int eventType = notification.getEventType();
+        boolean setToNull = eventType == Notification.SET && notification.getNewValue() == null;
+        return setToNull || eventType == Notification.REMOVE || eventType == Notification.UNSET || eventType == Notification.REMOVE_MANY;
     }
 
     private boolean isRepresentationDeletion(Notification notification) {
@@ -96,8 +102,7 @@ public class DialectEditorCloserFilter extends NotificationFilter.Custom {
 
     private boolean wasInOldValue(Notification notification, EObject eObject) {
         boolean isCurrentDRepresentationRemove = false;
-        int eventType = notification.getEventType();
-        if (eventType == Notification.REMOVE || eventType == Notification.UNSET || eventType == Notification.REMOVE_MANY) {
+        if (isUnsetNotification(notification)) {
             isCurrentDRepresentationRemove = isInOldValue(notification, eObject);
         }
         return isCurrentDRepresentationRemove;
@@ -117,7 +122,12 @@ public class DialectEditorCloserFilter extends NotificationFilter.Custom {
             resolveDRepDescriptorProxy(notification);
             DRepresentation representation = dRepDescriptor.getRepresentation();
             if (representation instanceof DSemanticDecorator) {
-                EObject target = ((DSemanticDecorator) dRepDescriptor.getRepresentation()).getTarget();
+                EObject target = ((DSemanticDecorator) representation).getTarget();
+                detachedTarget = isInOldValue(notification, target) && target.eContainer() == null;
+            } else {
+                // Get target might have been already unset by someone but since we receive all notification at once we
+                // want to close the editor as soon as we detect it has to be closed
+                EObject target = dRepDescriptor.getTarget();
                 detachedTarget = isInOldValue(notification, target) && target.eContainer() == null;
             }
         }
