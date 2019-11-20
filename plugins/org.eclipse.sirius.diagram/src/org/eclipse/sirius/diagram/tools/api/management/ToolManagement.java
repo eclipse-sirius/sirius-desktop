@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.tools.api.management;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -199,6 +200,11 @@ public class ToolManagement {
         }
         if (dDiagram instanceof DSemanticDiagram) {
             session = SessionManager.INSTANCE.getSession(((DSemanticDiagram) dDiagram).getTarget());
+        }
+        // Might happen when handling diagrams being deleted
+        // In that case do nothing the editor should be closed
+        if (session == null) {
+            return Collections.emptyList();
         }
 
         return computeAvailableTools(session, updateFilters);

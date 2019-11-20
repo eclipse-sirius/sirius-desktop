@@ -80,26 +80,33 @@ public class SiriusGMFSynchronizerDispatcher {
             DDiagramElement oldValue = (DDiagramElement) notification.getOldValue();
             dDiagram = DDiagramElementSpecOperations.getParentDiagram(oldValue);
         }
+        // Diagram might be removed from the ResourceSet already
         if (dDiagram != null) {
-            DiagramCreationUtil diagramCreationUtil = new DiagramCreationUtil(dDiagram);
-            if (diagramCreationUtil.findAssociatedGMFDiagram()) {
-                // the GMF diagram model is contained in the DDiagram model
-                gmfDiagram = diagramCreationUtil.getAssociatedGMFDiagram();
-            } else {
-                // else the GMF diagram should be aside of the DDiagram model in
-                // the same resource
-                Resource diagramResource = dDiagram.eResource();
-                for (final EObject object : diagramResource.getContents()) {
-                    if (object instanceof Diagram) {
-                        Diagram diagram = (Diagram) object;
-                        if (dDiagram.equals(diagram.getElement())) {
-                            gmfDiagram = diagram;
-                            break;
-                        }
-                    }
+            Resource diagramResource = dDiagram.eResource();
+            if (diagramResource != null) {
+                DiagramCreationUtil diagramCreationUtil = new DiagramCreationUtil(dDiagram);
+                if (diagramCreationUtil.findAssociatedGMFDiagram()) {
+                    // the GMF diagram model is contained in the DDiagram model
+                    gmfDiagram = diagramCreationUtil.getAssociatedGMFDiagram();
+                } else {
+                    // else the GMF diagram should be aside of the DDiagram model in
+                    // the same resource
+                    gmfDiagram = getDiagramFromResource(dDiagram, diagramResource);
                 }
             }
         }
         return gmfDiagram;
+    }
+
+    private Diagram getDiagramFromResource(DDiagram dDiagram, Resource diagramResource) {
+        for (final EObject object : diagramResource.getContents()) {
+            if (object instanceof Diagram) {
+                Diagram diagram = (Diagram) object;
+                if (dDiagram.equals(diagram.getElement())) {
+                    return diagram;
+                }
+            }
+        }
+        return null;
     }
 }
