@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.sirius.tests.unit.diagram.sequence.HeaderHeightTests;
 import org.eclipse.sirius.tests.unit.diagram.sequence.LifelineTests;
 import org.eclipse.sirius.tests.unit.diagram.sequence.LifelinesSouthCenteredBorderItemLocatorTest;
 import org.eclipse.sirius.tests.unit.diagram.sequence.NewChildMenusExtensionTests;
+import org.eclipse.sirius.tests.unit.diagram.sequence.OperandFigureAndEdgesTest;
 import org.eclipse.sirius.tests.unit.diagram.sequence.SequenceMessageFlagResetMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.sequence.SiriusSequenceDiagramTests;
 import org.eclipse.sirius.tests.unit.diagram.sequence.structure.SequenceDiagramElementsIdentificationTests;
@@ -72,6 +73,7 @@ public class AllSequenceDiagramsPluginTests extends TestCase {
         suite.addTestSuite(AbstractToolDescription_Precondition_AbstractVariable_Access_Tests.class);
         suite.addTestSuite(CollapseFilterSequenceMigrationTest.class);
         suite.addTestSuite(SequenceMessageFlagResetMigrationTest.class);
+        suite.addTestSuite(OperandFigureAndEdgesTest.class);
         return suite;
     }
 }

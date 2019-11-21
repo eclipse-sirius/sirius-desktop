@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<interactions:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:interactions="http://www.eclipse.org/sirius/sample/interactions">
+  <ownedInteractions>
+    <participants name="newParticipant1"/>
+    <combinedFragments operator="alt.1" coveredParticipants="//@ownedInteractions.0/@participants.0" start="//@ownedInteractions.0/@ends.0" finish="//@ownedInteractions.0/@ends.2">
+      <ownedOperands name="condition.2" start="//@ownedInteractions.0/@ends.1"/>
+    </combinedFragments>
+    <ends xsi:type="interactions:CombinedFragmentEnd" name="start_alt.1" owner="//@ownedInteractions.0/@combinedFragments.0"/>
+    <ends xsi:type="interactions:OperandEnd" name="start_condition.2" owner="//@ownedInteractions.0/@combinedFragments.0/@ownedOperands.0"/>
+    <ends xsi:type="interactions:CombinedFragmentEnd" name="finish_alt.1" owner="//@ownedInteractions.0/@combinedFragments.0"/>
+  </ownedInteractions>
+</interactions:Model>
