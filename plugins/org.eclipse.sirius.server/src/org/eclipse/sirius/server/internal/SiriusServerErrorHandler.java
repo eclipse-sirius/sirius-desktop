@@ -12,12 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.server.internal;
 
-import java.io.IOException;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.ErrorHandler;
 
 /**
@@ -26,16 +20,4 @@ import org.eclipse.jetty.server.handler.ErrorHandler;
  * @author sbegaudeau
  */
 public class SiriusServerErrorHandler extends ErrorHandler {
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.jetty.server.handler.ErrorHandler#handle(java.lang.String,
-     *      org.eclipse.jetty.server.Request,
-     *      javax.servlet.http.HttpServletRequest,
-     *      javax.servlet.http.HttpServletResponse)
-     */
-    @Override
-    public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        super.handle(target, baseRequest, request, response);
-    }
 }
