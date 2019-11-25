@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.migration;
 
+import static java.util.stream.Collectors.toList;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Collections;
@@ -35,6 +37,7 @@ import org.eclipse.sirius.tests.support.api.SiriusTestCase;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.osgi.framework.Version;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -176,8 +179,8 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationTest extends
     private void checkDRepresentationDescriptor(DAnalysis dAnalysis) {
         List<DRepresentation> repList = dAnalysis.eResource().getContents().stream().filter(DRepresentation.class::isInstance).map(DRepresentation.class::cast).collect(Collectors.toList());
         // @formatter:off
-        dAnalysis.getOwnedViews().stream().flatMap(v -> v.getOwnedRepresentationDescriptors().stream())
-        .forEachOrdered(repDesc -> {
+        List<DRepresentationDescriptor> representationDescriptors = dAnalysis.getOwnedViews().stream().flatMap(v -> v.getOwnedRepresentationDescriptors().stream()).collect(toList());
+        representationDescriptors.forEach(repDesc -> {
             // The order of the DRep may not be the same as the one of the
             // parsed DRepresentationDescriptor because the unknown feature "DView.ownedRepresentations" are
             // get from resource.getEObjectToExtensionMap()
@@ -187,9 +190,21 @@ public class DRepInDViewToRootObjectsAndWithDRepDescRepPathMigrationTest extends
             assertTrue("The DRepresentation " + representation + " is not found as root object.", repList.contains(representation));
             assertEquals("The representation documentation has not been migrated.","todo",repDesc.getDocumentation());
             assertTrue("The representation name has not been migrated.",!StringUtil.isEmpty(repDesc.getName()));
-           
+            assertEquals(representation.getName(), repDesc.getName());
+            assertEquals(representation.getDocumentation(), repDesc.getDocumentation());
         });
         // @formatter:on        
+        DRepresentationDescriptor repDesc0 = representationDescriptors.get(0);
+        assertEquals("Documentation for name  package", repDesc0.getName());
+        assertEquals("todo", repDesc0.getDocumentation());
+
+        DRepresentationDescriptor repDesc1 = representationDescriptors.get(1);
+        assertEquals("P0 package entities", repDesc1.getName());
+        assertEquals("todo", repDesc1.getDocumentation());
+
+        DRepresentationDescriptor repDesc2 = representationDescriptors.get(2);
+        assertEquals("Classes in P0 package", repDesc2.getName());
+        assertEquals("todo", repDesc2.getDocumentation());
     }
 
     @Override
