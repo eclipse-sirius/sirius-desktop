@@ -56,7 +56,7 @@
     <tests.swtbot-sequence.include />
     <tests.ignoreFailures>true</tests.ignoreFailures>
     <!-- Sonar properties -->
-    <jacoco-version>0.7.9</jacoco-version>
+    <jacoco-version>0.8.5</jacoco-version>
     <sonar-version>3.3.0.603</sonar-version>
     <sonar.language>java</sonar.language>
     <sonar.skipPackageDesign>true</sonar.skipPackageDesign>
