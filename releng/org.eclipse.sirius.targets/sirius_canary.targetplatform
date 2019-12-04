@@ -43,6 +43,9 @@ location Orbit-latest-I "http://download.eclipse.org/tools/orbit/downloads/lates
 }
 
 location ELK-Nightly "https://build.eclipse.org/modeling/elk/updates/nightly/" {
+    org.eclipse.elk.sdk.feature.feature.group lazy
+    org.eclipse.elk.sdk.feature.source.feature.group lazy
+    org.eclipse.elk.feature.feature.group lazy
     org.eclipse.elk.feature.source.feature.group lazy
     org.eclipse.elk.algorithms.feature.feature.group lazy
     org.eclipse.elk.algorithms.feature.source.feature.group lazy
