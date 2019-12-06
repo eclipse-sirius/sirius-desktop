@@ -137,6 +137,7 @@ import org.eclipse.sirius.tests.unit.diagram.format.data.SiriusFormatDataManager
 import org.eclipse.sirius.tests.unit.diagram.format.data.SiriusFormatDataManagerForSemanticElementsTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.manager.extension.FormatDataManagerSelectionTest;
 import org.eclipse.sirius.tests.unit.diagram.layers.ActivateDeactivateOptionalLayersTest;
+import org.eclipse.sirius.tests.unit.diagram.layers.ActivateLayerOnInvalidDiagramTest;
 import org.eclipse.sirius.tests.unit.diagram.layers.LayerEdgeOnEdgeTest;
 import org.eclipse.sirius.tests.unit.diagram.layers.Layers1203Tests;
 import org.eclipse.sirius.tests.unit.diagram.layers.Layers1302Tests;
@@ -449,6 +450,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(MappingImportAndFiltersTests.class);
         suite.addTestSuite(OptionalLayersActivationTests.class);
         suite.addTestSuite(ActivateDeactivateOptionalLayersTest.class);
+        suite.addTestSuite(ActivateLayerOnInvalidDiagramTest.class);
         suite.addTestSuite(MultipleMappingImportTests.class);
         suite.addTestSuite(MultipleMappingImportTests2.class);
         suite.addTestSuite(NodeMappingTest.class);
