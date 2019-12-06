@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2018 Obeo.
+ * Copyright (c) 2017, 2019 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -159,7 +159,7 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
                     if (notification.getNewValue() instanceof DRepresentation || notification.getOldValue() instanceof DRepresentation) {
                         // we refresh the viewer if a representation has been added or removed from the session.
                         PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
-                            if (!treeViewer.getTree().isDisposed()) {
+                            if (treeViewer != null && treeViewer.getTree() != null && !treeViewer.getTree().isDisposed()) {
                                 treeViewer.refresh();
                             }
                         });
@@ -167,7 +167,7 @@ public class GraphicalRepresentationHandler implements SessionManagerListener {
                         // a model may have been added/removed from the model so we have to update content that is
                         // relative to loaded models.
                         PlatformUI.getWorkbench().getDisplay().asyncExec(() -> {
-                            if (treeViewer != null && !treeViewer.getTree().isDisposed()) {
+                            if (treeViewer != null && treeViewer.getTree() != null && !treeViewer.getTree().isDisposed()) {
                                 initInput();
                             }
                         });
