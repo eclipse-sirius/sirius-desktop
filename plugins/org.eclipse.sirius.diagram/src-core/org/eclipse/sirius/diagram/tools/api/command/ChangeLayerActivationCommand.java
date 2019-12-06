@@ -13,6 +13,9 @@
 package org.eclipse.sirius.diagram.tools.api.command;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
@@ -48,6 +51,8 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
 
     private IProgressMonitor monitor;
 
+    private List<Layer> result;
+
     /**
      * Default Constructor.
      * 
@@ -71,6 +76,12 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
     @Override
     protected void doExecute() {
         try {
+            // 553866 : testing editiingDoman of diagram to check if the command can be called
+            TransactionalEditingDomain editingDomain = TransactionUtil.getEditingDomain(dDiagram);
+            result = new ArrayList<Layer>();
+            if (editingDomain == null) {
+                return; // do nothing; getResult will return an empty collection
+            }
             monitor.beginTask(Messages.ChangeLayerActivationCommand_executeMsg, 3);
             boolean transientLayer = LayerHelper.isTransientLayer(layer);
             if (transientLayer) {
@@ -83,13 +94,17 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
                 } else {
                     dDiagram.getActivatedLayers().add(layer);
                 }
+                result.add(layer);
             } else {
                 if (dDiagram.getActivatedTransientLayers().contains(layer)) {
                     if (((AdditionalLayer) layer).isOptional()) {
                         dDiagram.getActivatedTransientLayers().remove(layer);
+                        result.add(layer);
                     }
                 } else {
                     dDiagram.getActivatedTransientLayers().add((AdditionalLayer) layer);
+                    result.add(layer);
+
                 }
             }
             monitor.worked(1);
@@ -117,6 +132,14 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
         super.dispose();
         dDiagram = null;
         layer = null;
+    }
+
+    /**
+     * Return the list of layers activated or desactivated by the command Can be used to test if the command succeed
+     */
+    @Override
+    public Collection<?> getResult() {
+        return result;
     }
 
 }
