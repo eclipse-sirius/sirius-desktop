@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ package org.eclipse.sirius.business.api.helper.task;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger;
@@ -22,12 +23,14 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
 import org.eclipse.sirius.ext.emf.EReferencePredicate;
+import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Messages;
 
 /**
- * A task allowing to delete any DRepresentationElement or any EObject.
- * Typically uesd in Command factories to build delete commands.
+ * A task allowing to delete any DRepresentationElement or any EObject. Typically uesd in Command factories to build
+ * delete commands.
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  * 
@@ -62,8 +65,7 @@ public class DeleteEObjectTask extends AbstractCommandTask {
      * @param accessor
      *            the {@link ModelAccessor} to use to perform the deletion
      * @param eReferencesToIgnores
-     *            a predicate to tell which {@link EReference} to ignore in the
-     *            dangling references deletion
+     *            a predicate to tell which {@link EReference} to ignore in the dangling references deletion
      */
     public DeleteEObjectTask(EObject objectToDelete, ModelAccessor accessor, final EReferencePredicate eReferencesToIgnores) {
         this.objectToDelete = objectToDelete;
@@ -108,8 +110,24 @@ public class DeleteEObjectTask extends AbstractCommandTask {
         if (session != null) {
             semanticCrossReferencer = session.getSemanticCrossReferencer();
         }
+
+        DRepresentationDescriptor dRepresentationDescriptorToDelete = null;
+        if (objectToDelete instanceof DRepresentation) {
+            // The expected way to delete representation is to call DeleteRepresentationCommand which will take the
+            // DRepresentationDescriptor as entry point but in some cases like DeleteFromModel (see
+            // DeletionCOmmandBuilder), Sirius might retrieve a Representation to delete (see
+            // org.eclipse.sirius.business.api.helper.task.TaskHelper.getDElementToClearFromSemanticElements(EObject,
+            // Set<EObject>). For example, this can occur when a user deletes a DDiagramElement whose target is A on a
+            // DDiagram whose target is a descendant of A.
+            dRepresentationDescriptorToDelete = new DRepresentationQuery((DRepresentation) objectToDelete, session).getRepresentationDescriptor();
+        }
+
         accessor.eDelete(objectToDelete, semanticCrossReferencer, danglingEReferencesToIgnores);
 
+        // Delete the DRepresentationDescriptor after the deletion of the DRepresentation.
+        if (dRepresentationDescriptorToDelete != null) {
+            accessor.eDelete(dRepresentationDescriptorToDelete, semanticCrossReferencer, danglingEReferencesToIgnores);
+        }
     }
 
     /**

@@ -26,6 +26,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -105,6 +106,7 @@ public class DeleteFromModelActionTests extends SiriusDiagramTestCase implements
         });
 
         DDiagram rep1 = (DDiagram) createRepresentation("Entities", leafPack[0]);
+        DRepresentationDescriptor rep1Descriptor = new DRepresentationQuery(rep1, session).getRepresentationDescriptor();
         DDiagramEditor rep1Editor = (DDiagramEditor) DialectUIManager.INSTANCE.openEditor(session, rep1, defaultProgress);
         TestsUtil.synchronizationWithUIThread();
 
@@ -127,7 +129,18 @@ public class DeleteFromModelActionTests extends SiriusDiagramTestCase implements
 
         assertEquals(2, DialectManager.INSTANCE.getAllRepresentations(session).size());
         Collection<DRepresentationDescriptor> allRepresentationDescriptors = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
-        assertEquals(3, allRepresentationDescriptors.size());
+        assertEquals(2, allRepresentationDescriptors.size());
+        for (DRepresentationDescriptor desc : allRepresentationDescriptors) {
+            assertNotNull(desc.getRepresentation());
+        }
+
+        // See DeletionCommandBuilder, DeleteEObjectTask and TaskHelper.getDElementToClearFromSemanticElements();
+        // which are responsible for the deletion of rep1 as:
+        // - deleteFromModel is called on in Rep1 on ePackage
+        // - ePackage is an ancestor of rep1.getTarget().
+        assertNull(rep1.eResource());
+        assertNull(rep1Descriptor.eContainer());
+        assertNull(rep1Descriptor.eResource());
 
     }
 
