@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -178,6 +178,10 @@ public class CustomSiriusDocumentProvider extends AbstractDocumentProvider imple
         final URI uri = element.getURI();
         Resource resource = null;
         try {
+            if (uri.trimFragment().isEmpty()) {
+                // none reload is done if the URI is empty
+                return;
+            }
             resource = domain.getResourceSet().getResource(uri.trimFragment(), true);
             if (!resource.isLoaded()) {
                 try {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import org.eclipse.sirius.tests.unit.diagram.refresh.StyleHelperTest;
 import org.eclipse.sirius.tests.unit.diagram.synchronization.AbstractDNodeCandidateTest;
 import org.eclipse.sirius.tests.unit.diagram.synchronization.DEdgeCandidateTest;
 import org.eclipse.sirius.tests.unit.diagram.synchronization.RefreshIdsHolderTest;
+import org.eclipse.sirius.tests.unit.diagram.tools.CustomSiriusDocumentProviderTest;
 import org.eclipse.sirius.tests.unit.diagram.views.session.RepresentationDescriptionItemTest;
 import org.eclipse.sirius.tests.unit.diagram.views.session.ResourceFolderItemTest;
 import org.eclipse.sirius.tests.unit.diagram.views.session.ResourceItemTest;
@@ -84,6 +85,7 @@ public class AllDiagramStandaloneTests {
         suite.addTestSuite(DDiagramDAnnotationTest.class);
         suite.addTestSuite(DDiagramElementSynchronizerTest.class);
         suite.addTestSuite(DiagramColorTest.class);
+        suite.addTestSuite(CustomSiriusDocumentProviderTest.class);
         suite.addTest(AllSequenceDiagramsStandaloneTests.suite());
         // Ecore modeler services
         suite.addTest(new JUnit4TestAdapter(EcoreServiceTest.class));
