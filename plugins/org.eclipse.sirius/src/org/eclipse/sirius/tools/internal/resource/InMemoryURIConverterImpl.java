@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -84,19 +84,14 @@ public class InMemoryURIConverterImpl extends ExtensibleURIConverterImpl impleme
     public URIHandler getURIHandler(URI uri) {
         URIHandler uriHandler = null;
         if (URIQuery.INMEMORY_URI_SCHEME.equals(uri.scheme())) {
-            return getUriHandler();
+            return getInMemoryURIHandler();
         } else {
             uriHandler = super.getURIHandler(uri);
         }
         return uriHandler;
     }
 
-    /**
-     * Overridden to return a {@link InMemoryURIHandlerImpl}.
-     * 
-     * {@inheritDoc}
-     */
-    public URIHandler getUriHandler() {
+    private URIHandler getInMemoryURIHandler() {
         if (inMemoryURIHandler == null) {
             inMemoryURIHandler = new InMemoryURIHandlerImpl();
         }
