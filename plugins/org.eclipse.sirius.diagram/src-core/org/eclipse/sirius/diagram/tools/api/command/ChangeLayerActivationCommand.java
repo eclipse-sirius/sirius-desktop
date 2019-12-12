@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -135,7 +135,7 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
     }
 
     /**
-     * Return the list of layers activated or desactivated by the command Can be used to test if the command succeed
+     * Return the list of layers activated or deactivated by the command Can be used to test if the command succeed.
      */
     @Override
     public Collection<?> getResult() {
