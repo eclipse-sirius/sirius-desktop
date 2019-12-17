@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,6 +40,8 @@ import org.eclipse.sirius.viewpoint.impl.DFeatureExtensionImpl;
  */
 public class SessionServiceTest extends SiriusDiagramTestCase implements EcoreModeler {
 
+    boolean backedUpValue;
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
@@ -47,42 +49,66 @@ public class SessionServiceTest extends SiriusDiagramTestCase implements EcoreMo
         initViewpoint(DESIGN_VIEWPOINT_NAME);
 
         TestsUtil.emptyEventsFromUIThread();
+        backedUpValue = TestsUtil.isCreateRepresentationInSeparateResource();
 
     }
 
-    public void testPutCustomData() throws Exception {
+    public void testPutCustomDataInAird() throws Exception {
+        testPutCustomData(false);
+    }
+
+    public void testPutCustomDataInSrm() throws Exception {
+        testPutCustomData(true);
+    }
+
+    public void testGetCustomDataInSrm() throws Exception {
+        testGetCustomData(true);
+    }
+
+    public void testGetCustomDataInAird() throws Exception {
+        testGetCustomData(false);
+    }
+
+    public void testPutCustomData(boolean createRepresentationInSeparateResource) throws Exception {
+        TestsUtil.setCreateRepresentationInSeparateResource(createRepresentationInSeparateResource);
 
         final DDiagram diagram = (DDiagram) getRepresentations(ENTITIES_DESC_NAME).toArray()[0];
         final EClass eClass = EcoreFactory.eINSTANCE.createEClass();
+        DDiagram diagram2 = (DDiagram) createRepresentation(ENTITIES_DESC_NAME);
 
         assertFalse(diagram.eResource().getContents().contains(eClass));
         Command cmd = new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
-                session.getServices().putCustomData(CustomDataConstants.DFEATUREEXTENSION, diagram, eClass);
+                session.getServices().putCustomData(CustomDataConstants.DFEATUREEXTENSION, diagram2, eClass);
             }
         };
         executeCommand(cmd);
-        assertTrue(diagram.eResource().getContents().contains(eClass));
+        assertTrue(diagram2.eResource().getContents().contains(eClass));
+
     }
 
-    public void testGetCustomData() throws Exception {
+    public void testGetCustomData(boolean createRepresentationInSeparateResource) throws Exception {
+        TestsUtil.setCreateRepresentationInSeparateResource(createRepresentationInSeparateResource);
 
-        final DDiagram diagram = (DDiagram) getRepresentations(ENTITIES_DESC_NAME).toArray()[0];
+        DDiagram diagram2 = (DDiagram) createRepresentation(ENTITIES_DESC_NAME);
+
         final DFeatureExtension eClass = createExtension();
         Command cmd = new RecordingCommand(session.getTransactionalEditingDomain()) {
             @Override
             protected void doExecute() {
-                session.getServices().putCustomData(CustomDataConstants.DFEATUREEXTENSION, diagram, eClass);
+                session.getServices().putCustomData(CustomDataConstants.DFEATUREEXTENSION, diagram2, eClass);
+                session.save(defaultProgress);
             }
         };
         executeCommand(cmd);
         Collection<EObject> collected;
-        if (Boolean.getBoolean("createRepresentationInSeparateResource")) { //$NON-NLS-1$
-            collected = session.getServices().getCustomData(CustomDataConstants.DFEATUREEXTENSION, diagram);
-        } else {
-            collected = session.getServices().getCustomData(CustomDataConstants.DFEATUREEXTENSION, null);
-        }
+
+        collected = session.getServices().getCustomData(CustomDataConstants.DFEATUREEXTENSION, null);
+        assertEquals(1, collected.size());
+        assertTrue(collected.contains(eClass));
+
+        collected = session.getServices().getCustomData(CustomDataConstants.DFEATUREEXTENSION, diagram2);
         assertEquals(1, collected.size());
         assertTrue(collected.contains(eClass));
     }
@@ -114,5 +140,10 @@ public class SessionServiceTest extends SiriusDiagramTestCase implements EcoreMo
 
     private DFeatureExtension createExtension() throws Exception {
         return new DFeatureExtensionImpl() {};
+    }
+
+    @Override
+    protected void tearDown() throws Exception {
+        TestsUtil.setCreateRepresentationInSeparateResource(backedUpValue);
     }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -30,6 +33,7 @@ import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
+import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.SessionService;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector;
@@ -255,13 +259,20 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
 
     private Collection<EObject> getFeatureExtensionsData(final EObject associatedInstance, Collection<Resource> resources) {
         final Collection<EObject> datas = new ArrayList<>();
-        Collection<Resource> allResources = new ArrayList<>();
+        Collection<Resource> allResources = new LinkedHashSet<>(); // avoid resources duplications
         allResources.addAll(resources);
         // We also need to looking for the data in the given associatedInstance resource. (srm file for instance)
         if (associatedInstance != null) {
             Resource associatedInstanceResource = associatedInstance.eResource();
             if (associatedInstanceResource != null) {
                 allResources.add(associatedInstanceResource);
+            }
+        } else {
+            // getting all srm from aird to add them to allResources
+            for (Resource resource : resources) {
+                List<Resource> srms = resource.getResourceSet().getResources().stream().filter(res -> new ResourceQuery(res).isSrmResource()).collect(Collectors.toList());
+                allResources.addAll(srms);
+                break;
             }
         }
         for (final Resource res : allResources) {
