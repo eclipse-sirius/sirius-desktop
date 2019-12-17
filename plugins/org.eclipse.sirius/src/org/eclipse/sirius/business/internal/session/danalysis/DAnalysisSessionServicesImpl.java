@@ -15,7 +15,10 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -26,6 +29,7 @@ import org.eclipse.sirius.business.api.helper.RepresentationHelper;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.DViewQuery;
+import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.SessionService;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector;
@@ -81,7 +85,6 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         }
     }
 
-
     private void clearGMFDiagramsData(final EObject associatedInstance, final Collection<Resource> resources, Collection<DAnalysis> analysisAndReferenced) {
         final Collection<EObject> toRemove = new ArrayList<>();
         for (final Resource res : resources) {
@@ -133,7 +136,6 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         return datas;
     }
 
-
     private Collection<EObject> getRepresentationFromDescData(final EObject associatedInstance, Collection<DAnalysis> analysisAndReferenced) {
         final Collection<EObject> datas = new ArrayList<>();
         for (DAnalysis analysis : analysisAndReferenced) {
@@ -182,7 +184,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
 
     private Collection<EObject> getFeatureExtensionsData(final EObject associatedInstance, Collection<Resource> resources) {
         final Collection<EObject> datas = new ArrayList<>();
-        Collection<Resource> allResources = new ArrayList<>();
+        Collection<Resource> allResources = new HashSet<>(); // avoid resources duplications
         allResources.addAll(resources);
         // We also need to looking for the data in the given associatedInstance resource. (srm file for instance)
         if (associatedInstance != null) {
@@ -190,6 +192,14 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
             if (associatedInstanceResource != null) {
                 allResources.add(associatedInstanceResource);
             }
+        } else {
+            // getting all srm from aird to add them to allResources
+            for (Resource resource : resources) {
+                List<Resource> srms = resource.getResourceSet().getResources().stream().filter(res -> new ResourceQuery(res).isSrmResource()).collect(Collectors.toList());
+                allResources.addAll(srms);
+                break;
+            }
+            allResources.addAll(session.getAllSessionResources());
         }
         for (final Resource res : allResources) {
             for (final EObject object : res.getContents()) {
@@ -248,7 +258,6 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
         }
         return false;
     }
-
 
     @Override
     public void setAnalysisSelector(final DAnalysisSelector selector) {
