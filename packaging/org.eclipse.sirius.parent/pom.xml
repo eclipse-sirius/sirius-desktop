@@ -571,6 +571,7 @@
         <module>../../plugins/org.eclipse.sirius.ext.emf.ui</module>
         <module>../../plugins/org.eclipse.sirius.ext.gef</module>
         <module>../../plugins/org.eclipse.sirius.ext.gmf.runtime</module>
+        <module>../../plugins/org.eclipse.sirius.ext.ide</module>
         <module>../../plugins/org.eclipse.sirius.ext.jface</module>
         <module>../../plugins/org.eclipse.sirius.ext.swt</module>
         <module>../../plugins/org.eclipse.sirius.common.acceleo.aql.ide</module>
@@ -579,6 +580,7 @@
         <module>../../plugins/org.eclipse.sirius.common.ui.ext</module>
         <module>../../plugins/org.eclipse.sirius.common.xtext</module>
         <module>../../plugins/org.eclipse.sirius.diagram.elk</module>
+        <module>../../plugins/org.eclipse.sirius.diagram.elk.debug</module>
         <module>../../plugins/org.eclipse.sirius.diagram.sequence.edit</module>
         <module>../../plugins/org.eclipse.sirius.diagram.sequence.ui</module>
         <module>../../plugins/org.eclipse.sirius.diagram.sequence</module>
@@ -624,6 +626,7 @@
         <module>../../packaging/org.eclipse.sirius.specifier.ide.ui</module>
         <module>../../packaging/org.eclipse.sirius.tests.support</module>
         <module>../../packaging/org.eclipse.sirius.interpreter.feature</module>
+        <module>../../packaging/org.eclipse.sirius.diagram.elk.feature</module>
         <module>../../packaging/org.eclipse.sirius.sample.basicfamily.feature</module>
 
         <!-- Test metamodels and modelers -->
