@@ -104,7 +104,7 @@ public class ValidationTest extends AbstractScenarioTestCase {
 
         // Close the table
         SWTBotCommonHelper.closeCurrentEditor();
-        wizardBot = SWTBotSiriusHelper.getShellBot("Save");
+        wizardBot = SWTBotSiriusHelper.getShellBot("Save Resource");
         wizardBot.button(TestsUtil.isOxygenPlatform() ? "Don't Save" : "No").click();
         bot.sleep(500);
 

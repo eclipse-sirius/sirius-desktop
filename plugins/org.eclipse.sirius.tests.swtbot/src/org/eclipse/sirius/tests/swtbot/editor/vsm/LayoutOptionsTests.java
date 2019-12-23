@@ -133,7 +133,7 @@ public class LayoutOptionsTests extends AbstractSiriusSwtBotGefTestCase {
         SWTBot optionOverrideBot = bot.activeShell().bot();
         SWTBotTable table = optionOverrideBot.table(0);
 
-        assertEquals("Not all layout options are available", 92, table.rowCount());
+        assertEquals("Not all layout options are available", 95, table.rowCount());
 
         SWTBotTableItem tableItem = table.getTableItem(1);
         tableItem.check();

@@ -415,14 +415,14 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
             // Step 2: Enable button and check result
             buttonFromAppearanceSectionToTest.click();
-            assertTrue(BAD_CURRENT_COLOR_BUTTON, propertiesBot.button(defaultButtonInColorPalette[i]).isActive());
+            assertTrue(BAD_CURRENT_COLOR_BUTTON, bot.button(defaultButtonInColorPalette[i]).isActive());
             // Click on the GRAY button
-            propertiesBot.button(3).click();
+            bot.button(3).click();
             assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
                     stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
             checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);
             buttonFromAppearanceSectionToTest.click();
-            assertTrue(BAD_CURRENT_COLOR_BUTTON, propertiesBot.button(3).isActive());
+            assertTrue(BAD_CURRENT_COLOR_BUTTON, bot.button(3).isActive());
 
             // Step 3: "Reset style properties to default values" and check
             // result
@@ -433,9 +433,9 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
             // Step 4: re-enable button and check result
             buttonFromAppearanceSectionToTest.click();
-            assertTrue(BAD_CURRENT_COLOR_BUTTON, propertiesBot.button(defaultButtonInColorPalette[i]).isActive());
+            assertTrue(BAD_CURRENT_COLOR_BUTTON, bot.button(defaultButtonInColorPalette[i]).isActive());
             // Click on the GRAY button
-            propertiesBot.button(3).click();
+            bot.button(3).click();
             assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
                     stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
             checkButtonAppearanceChecked(Lists.<SWTBotToggleButton> newArrayList(), resetStyleCustomizationButton, Arrays.asList(true), true);

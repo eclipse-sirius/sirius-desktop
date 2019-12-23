@@ -17,6 +17,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
+import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
+import org.eclipse.swtbot.swt.finder.keyboard.Keystrokes;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
@@ -85,9 +87,10 @@ public class RenameProjectWithSessionTest extends AbstractSiriusSwtBotGefTestCas
         SWTBotTreeItem treeItem = getProjectTreeItem(projectName);
         treeItem.select();
         treeItem.contextMenu(RENAME).click();
-        bot.shell(RENAME_RESOURCE).activate();
-        bot.text().setText(name);
-        bot.button("OK").click();
+        UIThreadRunnable.syncExec(bot.getDisplay(), () -> {
+            treeItem.widget.setText(name);
+        });
+        treeItem.pressShortcut(Keystrokes.CR);
     }
 
     /**

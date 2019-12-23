@@ -133,7 +133,7 @@ public class CellEditorExtensionTest extends AbstractSiriusSwtBotGefTestCase {
     private void checkCellEditorValue() {
         SWTBotView propertiesBot = bot.viewByTitle(PROPERTIES);
         propertiesBot.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Semantic", propertiesBot.bot());
+        SWTBotSiriusHelper.selectPropertyTabItem("Semantic");
         SWTBotTree tree = propertiesBot.bot().tree();
         tree.expandNode("NewEClass1").select().getNode("Name").click();
         SWTBotText text = propertiesBot.bot().text();

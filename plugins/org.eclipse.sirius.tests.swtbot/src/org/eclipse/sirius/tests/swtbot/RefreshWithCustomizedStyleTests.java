@@ -56,6 +56,7 @@ import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 import com.google.common.collect.Iterables;
 
@@ -401,7 +402,9 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
         // Access the Label Size field
 
         SWTBotTree tree = propertiesBot.tree();
-        tree.expandNode("Misc").select().getNode("Label Size").select().click();
+        SWTBotTreeItem labelSizeItem = tree.expandNode("Misc").select().getNode("Label Size");
+        labelSizeItem.setFocus();
+        labelSizeItem.select();
         SWTBotText text = propertiesBot.text();
         assertEquals("Initial value of the Label Size is expected to be 8", "8", text.getText());
 
@@ -418,7 +421,9 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
         // Change focus to validate Label Size change
         editor.setFocus();
         bot.viewByTitle(PROPERTIES).setFocus();
-        tree.expandNode("Misc").select().getNode("Label Size").select().click();
+        labelSizeItem = tree.expandNode("Misc").select().getNode("Label Size");
+        labelSizeItem.setFocus();
+        labelSizeItem.select();
         bot.waitUntil(new TextWidgetAppearanceCondition(propertiesBot));
         text = propertiesBot.text();
         assertEquals("Value of the Label Size is expected to have been changed to 3", "3", text.getText());
@@ -431,7 +436,9 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
         // Change focus to validate Label Size change
         editor.setFocus();
         bot.viewByTitle(PROPERTIES).setFocus();
-        tree.expandNode("Misc").select().getNode("Label Size").select().click();
+        labelSizeItem = tree.expandNode("Misc").select().getNode("Label Size");
+        labelSizeItem.setFocus();
+        labelSizeItem.select();
         bot.waitUntil(new TextWidgetAppearanceCondition(propertiesBot));
         text = propertiesBot.text();
         assertEquals("Value of the Label Size is expected to have been changed to 1, the minimal value", "1", text.getText());

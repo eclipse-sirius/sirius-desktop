@@ -183,7 +183,7 @@ public class TreeItemMappingTest extends AbstractTreeSiriusSWTBotGefTestCase {
         editor.setFocus();
 
         // Manual refreh with click context menu
-        editor.bot().toolbarButtonWithTooltip("Force a refresh of the tree").click();
+        bot.toolbarButtonWithTooltip("Force a refresh of the tree").click();
 
         refreshEditorTest();
 
