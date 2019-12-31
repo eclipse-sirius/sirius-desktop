@@ -6,6 +6,5 @@ Bundle-Version: 6.4.0.qualifier
 Bundle-Vendor: %providerName
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Localization: plugin
-Require-Bundler: com.google.guava;bundle-version="[21.0,27.2)"
 Import-Package: org.eclipse.sirius.ext.base;version="2.0.0"
 Automatic-Module-Name: org.eclipse.sirius.ext.e3
