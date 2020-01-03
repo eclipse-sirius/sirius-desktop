@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,7 +26,9 @@ import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItem
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonContentProvider;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.provider.Messages;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
@@ -34,6 +36,8 @@ import org.eclipse.swt.widgets.Shell;
 /**
  * Dialog with OK and Cancel buttons, showing representations of a given session in a tree viewer. The OK button is
  * enabled if exactly one representation is selected.
+ * 
+ * @author Felix Dorner <felix.dorner@gmail.com>
  */
 public class SingleRepresentationTreeSelectionDialog extends Dialog {
 
@@ -56,6 +60,7 @@ public class SingleRepresentationTreeSelectionDialog extends Dialog {
     public SingleRepresentationTreeSelectionDialog(Shell parentShell, Session session) {
         super(parentShell);
         this.session = session;
+        setShellStyle(getShellStyle() | SWT.RESIZE);
     }
 
     @Override
@@ -78,6 +83,7 @@ public class SingleRepresentationTreeSelectionDialog extends Dialog {
         handler.createControl(compo);
         handler.initInput();
         viewer = handler.getTreeViewer();
+        viewer.getTree().setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
         return compo;
     }
 
