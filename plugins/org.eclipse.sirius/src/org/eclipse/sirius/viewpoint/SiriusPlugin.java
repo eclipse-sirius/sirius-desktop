@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.preferences.DefaultScope;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.EMFPlugin;
 import org.eclipse.emf.common.util.ResourceLocator;
 import org.eclipse.emf.ecore.EValidator;
@@ -200,6 +202,11 @@ public final class SiriusPlugin extends EMFPlugin {
         @Override
         public void start(BundleContext context) throws Exception {
             super.start(context);
+
+            // initialize preferences
+            // This will load the preferences from SiriusPreferencesInitializer
+            DefaultScope.INSTANCE.getNode(SiriusPlugin.INSTANCE.ID);
+
             interRegistry = new InterpreterRegistry();
 
             // Sets the validator for these model.
@@ -259,6 +266,9 @@ public final class SiriusPlugin extends EMFPlugin {
             ViewpointRegistry.getInstance().dispose();
 
             MultiLanguagesValidator.getInstance().dispose();
+
+            // Persit preferences into the prefs file.
+            InstanceScope.INSTANCE.getNode(ID).flush();
 
             super.stop(context);
         }

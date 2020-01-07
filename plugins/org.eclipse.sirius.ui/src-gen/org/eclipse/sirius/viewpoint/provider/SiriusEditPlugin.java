@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,6 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.EMFPlugin;
@@ -46,9 +45,6 @@ import org.eclipse.emf.edit.provider.resource.ResourceItemProviderAdapterFactory
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
-import org.eclipse.jface.util.IPropertyChangeListener;
-import org.eclipse.jface.util.PropertyChangeEvent;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.preferences.DCorePreferences;
@@ -71,6 +67,7 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.ToolItemProviderAd
 import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.osgi.framework.BundleContext;
 
@@ -176,6 +173,11 @@ public final class SiriusEditPlugin extends EMFPlugin {
         private Set<ISessionFileLoadingListener> sessionFileLoadingListenersRegistry;
 
         /**
+         * Storage for Sirius core preferences which are managed by Sirius UI Preference page.
+         */
+        private ScopedPreferenceStore siriusCorePreferenceStore;
+
+        /**
          * Creates an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
          *
          * @generated NOT
@@ -235,7 +237,6 @@ public final class SiriusEditPlugin extends EMFPlugin {
 
             adapterFactory = createAdapterFactory();
             descriptorsToImages = new HashMap<ImageDescriptor, Image>();
-            startDesignerCorePreferencesManagement();
 
             tabRegistryListener = new ModelExplorerTabRegistryListener();
             tabRegistryListener.init();
@@ -289,71 +290,12 @@ public final class SiriusEditPlugin extends EMFPlugin {
             }
         }
 
-        /**
-         * Starts the management of the Preferences of the core of Designer.
-         *
-         */
-        private void startDesignerCorePreferencesManagement() {
-            reflectAllPreferencesOnCore();
-            getPreferenceStore().addPropertyChangeListener(new IPropertyChangeListener() {
-                @Override
-                public void propertyChange(PropertyChangeEvent event) {
-                    SiriusPreferencesKeys key = null;
-                    for (SiriusPreferencesKeys currentKey : SiriusPreferencesKeys.values()) {
-                        if (currentKey.name().equals(event.getProperty())) {
-                            key = currentKey;
-                        }
-                    }
-                    if (key != null) {
-                        reflectPreferencesOnCore(key);
-                    }
-                }
-            });
-        }
-
-        private void reflectAllPreferencesOnCore() {
-            for (SiriusPreferencesKeys key : SiriusPreferencesKeys.values()) {
-                reflectPreferencesOnCore(key);
-            }
-        }
-
         private void initPreferences() {
             final IPreferencesService service = Platform.getPreferencesService();
             /* init the visual binding manager cache with the max sizes */
             final int maxColorSize = service.getInt(SiriusEditPlugin.ID, DCorePreferences.COLOR_REGISTRY_MAX_SIZE, DCorePreferences.COLOR_REGISTRY_MAX_SIZE_DEFAULT_VALUE, null);
             final int maxFontSize = service.getInt(SiriusEditPlugin.ID, DCorePreferences.FONT_REGISTRY_MAX_SIZE, DCorePreferences.FONT_REGISTRY_MAX_SIZE_DEFAULT_VALUE, null);
             VisualBindingManager.getDefault().init(maxColorSize, maxFontSize);
-        }
-
-        /**
-         * should not be necessary
-         *
-         * @param key
-         */
-        private void reflectPreferencesOnCore(final SiriusPreferencesKeys key) {
-            final IPreferenceStore uiPreferenceStore = this.getPreferenceStore();
-            final IEclipsePreferences corePreferenceStore = InstanceScope.INSTANCE.getNode(SiriusPlugin.ID);
-
-            final String keyName = key.name();
-            if (key.getType() == boolean.class) {
-                boolean uiValue = uiPreferenceStore.getBoolean(keyName);
-                corePreferenceStore.putBoolean(keyName, uiValue);
-            } else if (key.getType() == int.class) {
-                int uiValue = uiPreferenceStore.getInt(keyName);
-                corePreferenceStore.putInt(keyName, uiValue);
-            } else if (key.getType() == long.class) {
-                long uiValue = uiPreferenceStore.getLong(keyName);
-                corePreferenceStore.putLong(keyName, uiValue);
-            } else if (key.getType() == double.class) {
-                double uiValue = uiPreferenceStore.getDouble(keyName);
-                corePreferenceStore.putDouble(keyName, uiValue);
-            } else if (key.getType() == float.class) {
-                float uiValue = uiPreferenceStore.getFloat(keyName);
-                corePreferenceStore.putFloat(keyName, uiValue);
-            } else if (key.getType() == String.class) {
-                String uiValue = uiPreferenceStore.getString(keyName);
-                corePreferenceStore.put(keyName, uiValue);
-            }
         }
 
         /**
@@ -561,6 +503,20 @@ public final class SiriusEditPlugin extends EMFPlugin {
             SiriusPlugin.getDefault().setUiCallback(uiCallback);
         }
 
+        /**
+         * Return the preference store to control Sirius core preferences from the UI plugin. This method aims at having
+         * only one instance of ScopedPreferenceStore for org.eclipse.sirius preference store.
+         * 
+         * @See {@link SiriusEditPlugin.Implementation#getPreferenceStore()}
+         * @return the preference store to control Sirius core preferences from the UI plugin.
+         */
+        public IPreferenceStore getCorePreferenceStore() {
+            // Create the preference store lazily.
+            if (siriusCorePreferenceStore == null) {
+                siriusCorePreferenceStore = new ScopedPreferenceStore(InstanceScope.INSTANCE, SiriusPlugin.INSTANCE.getSymbolicName());
+            }
+            return siriusCorePreferenceStore;
+        }
     }
 
     /**

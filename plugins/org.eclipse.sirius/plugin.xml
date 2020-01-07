@@ -491,5 +491,11 @@
             class="org.eclipse.sirius.business.internal.migration.description.ViewpointMigrationHandler">
       </migrationHandler>
    </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="org.eclipse.sirius.business.internal.preferences.SiriusPreferencesInitializer">
+      </initializer>
+   </extension>
 
 </plugin>

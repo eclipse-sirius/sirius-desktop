@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.ui.tools.internal.preference;
 
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.FieldEditorPreferencePage;
+import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.IntegerFieldEditor;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.common.tools.api.constant.CommonPreferencesConstants;
@@ -194,6 +195,11 @@ public class SiriusPreferencePage extends FieldEditorPreferencePage implements I
 
         askUserToSaveAfterMigration.setPreferenceStore(SiriusTransPlugin.getPlugin().getPreferenceStore());
         askUserToSaveAfterMigration.load();
-    }
 
+        IPreferenceStore siriusPluginPreferences = SiriusEditPlugin.getPlugin().getCorePreferenceStore();
+        autoRefresh.setPreferenceStore(siriusPluginPreferences);
+        autoRefresh.load();
+        emptyAirdFragmentOnControl.setPreferenceStore(siriusPluginPreferences);
+        emptyAirdFragmentOnControl.load();
+    }
 }
