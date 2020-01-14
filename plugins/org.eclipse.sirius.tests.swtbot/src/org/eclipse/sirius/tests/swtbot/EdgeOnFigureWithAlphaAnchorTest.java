@@ -429,12 +429,12 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
                 (onBoundingBoxExpected && extremityIsOnBoundingBox) || (!onBoundingBoxExpected && !extremityIsOnBoundingBox));
 
         if (!onBoundingBoxExpected) {
-            assertTrue(getInsideMessage(messagePrefix, referenceName), bounds.contains(extremity));
+            assertTrue(getInsideMessage(messagePrefix, referenceName, bounds, extremity), bounds.contains(extremity));
         }
     }
 
-    private String getInsideMessage(String prefix, String referenceName) {
-        return prefix + " point of \"" + referenceName + "\" should be inside the figure";
+    private String getInsideMessage(String prefix, String referenceName, Rectangle bounds, Point extremity) {
+        return prefix + " point (" + extremity + ") of \"" + referenceName + "\" should be inside the figure (" + bounds + ")";
     }
 
     private String getBoundingBoxMessage(String prefix, String referenceName, boolean onBoundingBoxExpected) {
