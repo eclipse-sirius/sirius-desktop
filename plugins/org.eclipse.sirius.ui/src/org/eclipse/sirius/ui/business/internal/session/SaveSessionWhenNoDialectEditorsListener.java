@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.Optional;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
@@ -144,9 +145,13 @@ public class SaveSessionWhenNoDialectEditorsListener implements ResourceSyncClie
 
             if (SessionStatus.DIRTY.equals(session.getStatus())) {
                 if (saveSessionJob == null || saveSessionJob.getState() == Job.NONE) {
-                    preSave();
-                    saveSessionJob = createSaveSessionJob(session);
-                    saveSessionJob.schedule();
+                    try {
+                        preSave();
+                        saveSessionJob = createSaveSessionJob(session);
+                        saveSessionJob.schedule();
+                    } catch (OperationCanceledException e) {
+                        // the save has been canceled during the preSave step. We do nothing.
+                    }
                 }
             }
         }
@@ -168,8 +173,10 @@ public class SaveSessionWhenNoDialectEditorsListener implements ResourceSyncClie
      * 
      * WARNING : Be careful not to break default Sirius saving behavior when overriding this method.
      * 
+     * @exception OperationCanceledException
+     *                has to be thrown to cancel the save.
      */
-    protected void preSave() {
+    protected void preSave() throws OperationCanceledException {
         // Do nothing
     }
 
