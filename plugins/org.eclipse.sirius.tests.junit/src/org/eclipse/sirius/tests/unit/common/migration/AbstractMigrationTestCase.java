@@ -215,7 +215,6 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
     protected void checkBounds(String elementName, Rectangle actual, Rectangle expected) {
         assertEquals("Wrong figure bounds for " + elementName, expected, actual);
     }
-
     /**
      * Check if the layout (the bounds) of an edge is same before and after a
      * migration.
@@ -224,6 +223,18 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
      *            the representation containing the edges to check
      */
     protected void checkEdgeLayout(Representation representation) {
+        this.checkEdgeLayout(representation, 0);
+    }
+    
+    /**
+     * Check if the layout (the bounds) of an edge is same before and after a migration.
+     * 
+     * @param representation
+     *            the representation containing the edges to check
+     * @param delta
+     *            how many pixels of difference between expected and actual coordinates is tolerated.
+     */
+    protected void checkEdgeLayout(Representation representation, int delta) {
         if (representation instanceof Diagram) {
             List<Edge> edges = ((Diagram) representation).getEdges();
             for (Edge currentEdge : edges) {
@@ -231,7 +242,7 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
                 // the edge is autoSized.
                 if (!isAutoSized(currentEdge.getSource()) && !isAutoSized(currentEdge.getTarget())) {
                     for (EdgeRepresentation edgeRepresentation : currentEdge.getEdgeRepresentations()) {
-                        checkBendpoints(edgeRepresentation);
+                        checkBendpoints(edgeRepresentation, delta);
                     }
                 }
             }
@@ -251,13 +262,14 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
     }
 
     /**
-     * This method tests if the bendpoints of an edge are the same before and
-     * after a migration.
+     * This method tests if the bendpoints of an edge are the same before and after a migration.
      * 
      * @param edgeRepresentation
      *            the {@link EdgeRepresentation} to check
+     * @param delta
+     *            how many pixels of difference between expected and actual coordinates is tolerated.
      */
-    protected void checkBendpoints(EdgeRepresentation edgeRepresentation) {
+    protected void checkBendpoints(EdgeRepresentation edgeRepresentation, int delta) {
         GraphicalElement graphicalEdge = (GraphicalElement) edgeRepresentation.eContainer();
         DDiagramElement dDiagramElement = getFirstDiagramElement(currentdRepresentation, graphicalEdge);
         assertNotNull("Edge " + graphicalEdge.getId() + " is missing from representation", dDiagramElement);
@@ -267,8 +279,10 @@ public abstract class AbstractMigrationTestCase extends SiriusDiagramTestCase {
         assertNotNull("Cannot retrieve edge bendpoint for " + graphicalEdge.getId(), actualPointList);
         assertEquals("wrong bendpoint number for " + graphicalEdge.getId(), expectedBendpoints.size(), actualPointList.size());
         for (int i = 0; i < expectedBendpoints.size(); i++) {
-            assertEquals("Edge " + graphicalEdge.getId() + ": wrong x bendpoint position for point " + i, expectedBendpoints.get(i).getX(), actualPointList.getPoint(i).x);
-            assertEquals("Edge " + graphicalEdge.getId() + ": wrong y bendpoint position for point " + i, expectedBendpoints.get(i).getY(), actualPointList.getPoint(i).y);
+            Point expectedPoint = expectedBendpoints.get(i);
+            org.eclipse.draw2d.geometry.Point actualPoint = actualPointList.getPoint(i);
+            assertTrue("Edge " + graphicalEdge.getId() + ": wrong x bendpoint position for point " + i, Math.abs(expectedPoint.getX() - actualPoint.x) <= delta);
+            assertTrue("Edge " + graphicalEdge.getId() + ": wrong y bendpoint position for point " + i, Math.abs(expectedPoint.getY() - actualPoint.y) <= delta);
         }
     }
 

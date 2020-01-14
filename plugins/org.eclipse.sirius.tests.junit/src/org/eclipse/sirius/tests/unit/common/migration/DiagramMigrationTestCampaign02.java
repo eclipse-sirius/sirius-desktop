@@ -87,10 +87,10 @@ public class DiagramMigrationTestCampaign02 extends AbstractMigrationTestCase {
     public void setUp() throws Exception {
         super.setUp();
 
-        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, GENERAL_TEST_CASE_PATH + "/" + SESSION_RESOURCE_FILENAME, "/" + TEMPORARY_PROJECT_NAME + "/"
-                + SESSION_RESOURCE_FILENAME);
-        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, GENERAL_TEST_CASE_PATH + "/" + SEMANTIC_RESOURCE_FILENAME, "/" + TEMPORARY_PROJECT_NAME + "/"
-                + SEMANTIC_RESOURCE_FILENAME);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, GENERAL_TEST_CASE_PATH + "/" + SESSION_RESOURCE_FILENAME,
+                "/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_RESOURCE_FILENAME);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, GENERAL_TEST_CASE_PATH + "/" + SEMANTIC_RESOURCE_FILENAME,
+                "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_FILENAME);
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, GENERAL_TEST_CASE_PATH + "/dot.svg", "/" + TEMPORARY_PROJECT_NAME + "/dot.svg");
         EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID, GENERAL_TEST_CASE_PATH + "/transparentRectangle.svg", "/" + TEMPORARY_PROJECT_NAME + "/transparentRectangle.svg");
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH, SESSION_PATH);
@@ -114,7 +114,13 @@ public class DiagramMigrationTestCampaign02 extends AbstractMigrationTestCase {
         openEditorOnDiagram("" + diagramID);
         assertTrue("", semanticModel instanceof TestCase);
         Representation representation = ((TestCase) semanticModel).getRepresentations().get(diagramID - 1);
-        checkEdgeLayout(representation);
+        if (diagramID == 13) {
+            // This particular diagram can has a difference of 1 pixel in the bendpoints position depending on the
+            // graphical context (Linux native vs Linux Xvfb vs Linux Xvnc).
+            checkEdgeLayout(representation, 1);
+        } else {
+            checkEdgeLayout(representation);
+        }
     }
 
 }
