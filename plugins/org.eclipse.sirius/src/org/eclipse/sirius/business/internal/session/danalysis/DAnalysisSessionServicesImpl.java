@@ -194,11 +194,10 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
             }
         } else {
             // getting all srm from aird to add them to allResources
-            for (Resource resource : resources) {
+            resources.stream().findFirst().ifPresent(resource -> {
                 List<Resource> srms = resource.getResourceSet().getResources().stream().filter(res -> new ResourceQuery(res).isSrmResource()).collect(Collectors.toList());
                 allResources.addAll(srms);
-                break;
-            }
+            });
             allResources.addAll(session.getAllSessionResources());
         }
         for (final Resource res : allResources) {
