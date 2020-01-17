@@ -198,7 +198,6 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
                 List<Resource> srms = resource.getResourceSet().getResources().stream().filter(res -> new ResourceQuery(res).isSrmResource()).collect(Collectors.toList());
                 allResources.addAll(srms);
             });
-            allResources.addAll(session.getAllSessionResources());
         }
         for (final Resource res : allResources) {
             for (final EObject object : res.getContents()) {
