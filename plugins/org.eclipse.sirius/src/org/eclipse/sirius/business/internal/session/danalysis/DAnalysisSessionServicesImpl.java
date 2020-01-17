@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,8 +15,8 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -184,7 +184,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
 
     private Collection<EObject> getFeatureExtensionsData(final EObject associatedInstance, Collection<Resource> resources) {
         final Collection<EObject> datas = new ArrayList<>();
-        Collection<Resource> allResources = new HashSet<>(); // avoid resources duplications
+        Collection<Resource> allResources = new LinkedHashSet<>(); // avoid resources duplications
         allResources.addAll(resources);
         // We also need to looking for the data in the given associatedInstance resource. (srm file for instance)
         if (associatedInstance != null) {
