@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 Obeo.
+ * Copyright (c) 2016, 2020 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.ext.emf.edit;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
@@ -549,10 +550,12 @@ public class EditingDomainServices {
     public List<?> getPropertyDescriptorChoiceOfValues(EObject self, String featureName) {
         IItemPropertyDescriptor desc = getPropertyDescriptorForFeature(self, featureName);
         if (desc != null) {
-            return new ArrayList<>(desc.getChoiceOfValues(self));
-        } else {
-            return null;
+             Collection<?> choices = desc.getChoiceOfValues(self);
+            if (choices != null) {
+                return new ArrayList<>(choices);
+            }
         }
+        return null;
     }
 
     public boolean isPropertyDescriptorMultiLine(EObject self, String featureName) {
