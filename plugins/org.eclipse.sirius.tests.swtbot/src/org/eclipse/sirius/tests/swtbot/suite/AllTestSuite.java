@@ -263,6 +263,8 @@ public class AllTestSuite extends TestCase {
      *            the suite into which to add the tests.
      */
     public static void addPart1(TestSuite suite) {
+        // This one should be executed as early as possible
+        suite.addTestSuite(CellEditorExtensionTest.class);
 
         addGerritPart1(suite);
 
@@ -333,7 +335,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ContainerDropPropertySectionsTests.class);
         suite.addTestSuite(BorderNodeSidePropertySectionTest.class);
         suite.addTestSuite(EditPartSelectionTest.class);
-        suite.addTestSuite(CellEditorExtensionTest.class);
     }
 
     /**
