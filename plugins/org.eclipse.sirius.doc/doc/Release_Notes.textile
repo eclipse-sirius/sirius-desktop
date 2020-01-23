@@ -6,6 +6,10 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius6.3.1). Changes in Sirius 6.3.1
 
+h3. User-Visible Changes
+
+* <span class="label label-success">Added</span> A new type of jump link has been added in Sirius 6.3.1. As reminder, a jump link is a way to graphically improve the way how 2 edges intersect. This new type is graphically represented by a blank line instead of the classical "jump". This new type is documented in the "Appearance":user/diagrams/Diagrams.html#Appearance section of edge Properties view.
+
 h3. Developer-Visible Changes
 
 * <span class="label label-info">Modified</span> Upgraded ELK version from 0.5.0 to 0.6.0, see the "ELK documentation":https://projects.eclipse.org/projects/modeling.elk/releases/0.6.0 for the list of changes in that version.

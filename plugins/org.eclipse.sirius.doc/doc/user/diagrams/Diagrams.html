@@ -51,6 +51,9 @@
 								<a href="#Manageedges">Manage edges</a>
 								<ol style="list-style: disc;">
 									<li>
+										<a href="#Properties">Properties</a>
+									</li>
+									<li>
 										<a href="#Snapbackedgelabels">Snap back edge labels</a>
 									</li>
 									<li>
@@ -250,7 +253,7 @@
 								<a href="#GlobalPreferences">Global Preferences</a>
 							</li>
 							<li>
-								<a href="#Appearance">Appearance</a>
+								<a href="#Appearance2">Appearance</a>
 							</li>
 							<li>
 								<a href="#Printing">Printing</a>
@@ -403,6 +406,86 @@
 			</li>
 		</ul>
 		<h3 id="Manageedges">Manage edges</h3>
+		<h4 id="Properties">Properties</h4>
+		<p>The Properties view of an edge allows to change several aspects of the edge.</p>
+		<h5 id="Appearance">Appearance</h5>
+		<p>
+			<img border="0" src="images/edgeAppearancePropertiesView.png"/>
+		</p>
+		<p>In the Appearance tab, you can change some graphical properties defined in the Sirius modeler; font size, font color, edge color, routing styles, ...
+			<br/>You can also change graphical properties not defined in the modeler but global to Sirius. 
+		</p>
+		<p>This diagram will be used as example to illustrate the effects of each property.
+			<br/>
+			<img border="0" src="images/edgeAppearanceStandard.png"/>
+		</p>
+		<ul>
+			<li>
+				<strong>Fonts and Colors:</strong> Allow to change the label aspects the color of the figure
+			</li>
+			<li>
+				<strong>Routing:</strong>
+				<ul>
+					<li>Styles:
+						<ul>
+							<li>Oblique: A straight line between 2 points: the source and the target. Intermediate bendpoints can be added.</li>
+							<li>Rectilinear: Force all the segments of the line to be horizontal or vertical.</li>
+							<li>Tree: Same as Rectilinear and if several edges start from the same source (or end to the same target) the staring (or the ending) segments are grouped.</li>
+						</ul>
+					</li>
+					<li>Avoid obstructions: Change the routing of the edge to try to avoid other nodes. Warning: Intermediate bend-points can be ignored if this option is activated, so strange results can be observed.</li>
+					<li>Closest distance: Change the routing of the edge to draw the shortest line between the source and the target. Warning: Intermediate bend-points can be ignored if this option is activated, so strange results can be observed.</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Lines and Arrows:</strong> Not handled in Sirius
+			</li>
+			<li>
+				<strong>Jump links:</strong> Allow to improve the visualization of the crossings of edges. For this feature, a notion of z-order is used. As reminder, 
+				<em>a &#8220;Z-order&#8221; is an ordering of overlapping two-dimensional objects, such as windows in a stacking window manager, shapes in a vector graphics editor, or objects in a 3D application. One of the features of a typical GUI is that windows may overlap, so that one window hides part or all of another</em>. In Sirius, this z-order depends on several aspects not handled by the end-user: order of the semantic elements, specific expressions used in the modeler, ... So the end-user can not modify the z-order of elements.
+				<ul>
+					<li>Status:
+						<ul>
+							<li>None: Jump link is not activated on this edge.</li>
+							<li>Below: A jump link is created on this edge each time it intersects an edge that is below it.</li>
+							<li>Above: A jump link is created on this edge each time it intersects an edge that is above it.</li>
+							<li>All: A jump link is created on this edge each time it intersects an edge.</li>
+						</ul>
+					</li>
+					<li>Type: Allow to change the aspect of the jump link
+						<ul>
+							<li>Semi-Circle: 
+								<img border="0" src="images/edgeAppearanceJumpSemiCircle.png"/>
+							</li>
+							<li>Square: 
+								<img border="0" src="images/edgeAppearanceJumpSquare.png"/>
+							</li>
+							<li>Chamfered : 
+								<img border="0" src="images/edgeAppearanceJumpChamfered.png"/>
+							</li>
+							<li>Tunnel : 
+								<img border="0" src="images/edgeAppearanceJumpTunnel.png"/>
+							</li>
+						</ul>
+					</li>
+					<li>Reverse jump links: Allow to draw the jump on the top of other edge or on the bottom of other edge. It has no effect for &#8220;Tunnel&#8221; type.</li>
+				</ul>
+			</li>
+			<li>
+				<strong>Smoothness:</strong> Allow to smooth the bendpoints of the edge (more or less):
+				<ul>
+					<li>Less : 
+						<img border="0" src="images/edgeAppearanceSmoothLess.png"/>
+					</li>
+					<li>Normal: 
+						<img border="0" src="images/edgeAppearanceSmoothNormal.png"/>
+					</li>
+					<li>More : 
+						<img border="0" src="images/edgeAppearanceSmoothMore.png"/>
+					</li>
+				</ul>
+			</li>
+		</ul>
 		<h4 id="Snapbackedgelabels">Snap back edge labels</h4>
 		<p>All visible edge labels can be snapped back to their default position by using the action 
 			<em>Snap back label(s)</em>. This action is available within the edge contextual menu under the format section 
@@ -1767,7 +1850,7 @@
 				<em>nominal</em> means nominal quality export. 
 			</li>
 		</ul>
-		<h3 id="Appearance">Appearance</h3>
+		<h3 id="Appearance2">Appearance</h3>
 		<p>The 
 			<em>Appearance</em> preferences page (see below) gives you two preferences to control whether or not to show the labels on shapes (nodes, containers, bordered nodes) and connectors (edges). It also allows you to customize the default font and colors used for some basic diagram elements. Diagram configurations already specify default values for these style attributes, so in practice these preferences are mostly useful for notes.
 		</p> 

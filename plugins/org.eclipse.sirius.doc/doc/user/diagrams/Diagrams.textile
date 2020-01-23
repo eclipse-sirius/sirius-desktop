@@ -109,6 +109,46 @@ There are specific shortcuts to change the move behavior:
 
 h3. Manage edges
 
+h4. Properties
+
+The Properties view of an edge allows to change several aspects of the edge.
+
+h5. Appearance
+
+!images/edgeAppearancePropertiesView.png!
+
+In the Appearance tab, you can change some graphical properties defined in the Sirius modeler; font size, font color, edge color, routing styles, ...
+You can also change graphical properties not defined in the modeler but global to Sirius. 
+
+This diagram will be used as example to illustrate the effects of each property.
+!images/edgeAppearanceStandard.png!
+
+* *Fonts and Colors:* Allow to change the label aspects the color of the figure
+* *Routing:*
+** Styles:
+*** Oblique: A straight line between 2 points: the source and the target. Intermediate bendpoints can be added.
+*** Rectilinear: Force all the segments of the line to be horizontal or vertical.
+*** Tree: Same as Rectilinear and if several edges start from the same source (or end to the same target) the staring (or the ending) segments are grouped.
+** Avoid obstructions: Change the routing of the edge to try to avoid other nodes. Warning: Intermediate bend-points can be ignored if this option is activated, so strange results can be observed.
+** Closest distance: Change the routing of the edge to draw the shortest line between the source and the target. Warning: Intermediate bend-points can be ignored if this option is activated, so strange results can be observed.
+* *Lines and Arrows:* Not handled in Sirius
+* *Jump links:* Allow to improve the visualization of the crossings of edges. For this feature, a notion of z-order is used. As reminder, _a "Z-order" is an ordering of overlapping two-dimensional objects, such as windows in a stacking window manager, shapes in a vector graphics editor, or objects in a 3D application. One of the features of a typical GUI is that windows may overlap, so that one window hides part or all of another_. In Sirius, this z-order depends on several aspects not handled by the end-user: order of the semantic elements, specific expressions used in the modeler, ... So the end-user can not modify the z-order of elements.
+** Status:
+*** None: Jump link is not activated on this edge.
+*** Below: A jump link is created on this edge each time it intersects an edge that is below it.
+*** Above: A jump link is created on this edge each time it intersects an edge that is above it.
+*** All: A jump link is created on this edge each time it intersects an edge.
+** Type: Allow to change the aspect of the jump link
+*** Semi-Circle: !images/edgeAppearanceJumpSemiCircle.png!
+*** Square: !images/edgeAppearanceJumpSquare.png!
+*** Chamfered : !images/edgeAppearanceJumpChamfered.png!
+*** Tunnel : !images/edgeAppearanceJumpTunnel.png!
+** Reverse jump links: Allow to draw the jump on the top of other edge or on the bottom of other edge. It has no effect for "Tunnel" type.
+* *Smoothness:* Allow to smooth the bendpoints of the edge (more or less):
+** Less : !images/edgeAppearanceSmoothLess.png!
+** Normal: !images/edgeAppearanceSmoothNormal.png!
+** More : !images/edgeAppearanceSmoothMore.png!
+
 h4. Snap back edge labels
 
 All visible edge labels can be snapped back to their default position by using the action _Snap back label(s)_. This action is available within the edge contextual menu under the format section _Format/Snap back label(s)_:
