@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 Obeo.
+ * Copyright (c) 2016, 2020 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.perf.common;
 
+import java.text.MessageFormat;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
@@ -50,7 +51,7 @@ public class Session1MillionTests extends SiriusDiagramTestCase {
 
     private static final long MAX_TIME_TO_CLOSE_SECONDS = 15;
 
-    private static final int NUMBER_Of_ELEMENTS = 966220;
+    private static final int NUMBER_OF_ELEMENTS = 966220;
 
     private static final String[] SEMANTIC_ROOTS = IntStream.range(1, 21).mapToObj(i -> String.format("/reverse%d.ecorebin", i)).collect(Collectors.toList()).toArray(new String[0]);
     
@@ -84,6 +85,31 @@ public class Session1MillionTests extends SiriusDiagramTestCase {
             // expected time.
             return;
         }
+
+        /*
+         * Support system properties to override the maximum open & close time without changing the code. Useful to
+         * tweak the values depending on the system where the tests are run, for example on a slow/heavily loaded CI
+         * server.
+         */
+        long openTimeout = MAX_TIME_TO_OPEN_SECONDS;
+        String openOverride = System.getProperty(Session1MillionTests.class.getName() + ".maxOpenTimeInSeconds");
+        if (openOverride != null) {
+            try {
+                openTimeout = Integer.parseInt(openOverride);
+            } catch (NumberFormatException e) {
+                // Ignore the override
+            }
+        }
+        long closeTimout = MAX_TIME_TO_CLOSE_SECONDS;
+        String closeOverride = System.getProperty(Session1MillionTests.class.getName() + ".maxCloseTimeInSeconds");
+        if (closeOverride != null) {
+            try {
+                closeTimout = Integer.parseInt(closeOverride);
+            } catch (NumberFormatException e) {
+                // Ignore the override
+            }
+        }
+
         Stopwatch openingtimer = Stopwatch.createStarted();
         createAndOpenSession();
         openingtimer.stop();
@@ -99,20 +125,21 @@ public class Session1MillionTests extends SiriusDiagramTestCase {
                 }
             }
         }
-        System.out.println("[PERFO] Loading a project with " + semanticElementsCount + " semantic elements in " + elapsedTime + " seconds.");
+        System.out.println(MessageFormat.format("[PERFO] Loading a project with {0} semantic elements in {1} seconds.", semanticElementsCount, elapsedTime));
         eAllContentsTimer.stop();
-        System.out.println("[PERFO] Iterating a project with " + semanticElementsCount + " semantic elements in " + eAllContentsTimer.elapsed(TimeUnit.MILLISECONDS) + " milliseconds.");
+        System.out
+                .println(MessageFormat.format("[PERFO] Iterating a project with {0} semantic elements in {1} milliseconds.", semanticElementsCount, eAllContentsTimer.elapsed(TimeUnit.MILLISECONDS)));
 
-        assertEquals("The number of semantic elements in the project is not the expected one", NUMBER_Of_ELEMENTS, semanticElementsCount);
-        assertTrue("The time required to open the session (" + elapsedTime + " secs) is bigger than expected (" + MAX_TIME_TO_OPEN_SECONDS + ").", elapsedTime < MAX_TIME_TO_OPEN_SECONDS);
+        assertEquals("The number of semantic elements in the project is not the expected one", NUMBER_OF_ELEMENTS, semanticElementsCount);
+        assertTrue(MessageFormat.format("The time required to open the session ({0} secs) is bigger than expected ({1}).", elapsedTime, openTimeout), elapsedTime < openTimeout);
 
         Stopwatch closingtimer = Stopwatch.createStarted();
         session.close(new NullProgressMonitor());
         closingtimer.stop();
-        System.out.println("[PERFO] Closing a project with " + semanticElementsCount + " semantic elements in " + closingtimer.elapsed(TimeUnit.SECONDS) + " seconds.");
+        System.out.println(MessageFormat.format("[PERFO] Closing a project with {0} semantic elements in {1} seconds.", semanticElementsCount, closingtimer.elapsed(TimeUnit.SECONDS)));
         assertFalse("The session should have been closed and is not reporting it is", session.isOpen());
         elapsedTime = closingtimer.elapsed(TimeUnit.SECONDS);
-        assertTrue("The time required to close the session (" + elapsedTime + " secs) is bigger than expected (" + MAX_TIME_TO_CLOSE_SECONDS + ").", elapsedTime < MAX_TIME_TO_CLOSE_SECONDS);
+        assertTrue(MessageFormat.format("The time required to close the session ({0} secs) is bigger than expected ({1}).", elapsedTime, closeTimout), elapsedTime < closeTimout);
 
     }
 
@@ -122,17 +149,14 @@ public class Session1MillionTests extends SiriusDiagramTestCase {
         ResourceFactoryRegistryImpl.INSTANCE.getExtensionToFactoryMap().remove("ecorebin");
     }
 
-    class EcoreBinResourceFactory extends ResourceFactoryImpl {
-
+    static class EcoreBinResourceFactory extends ResourceFactoryImpl {
         @Override
         public Resource createResource(URI uri) {
-            EcoreBinResourceImpl result = new EcoreBinResourceImpl(uri);
-            return result;
+            return new EcoreBinResourceImpl(uri);
         }
     }
 
-    class EcoreBinResourceImpl extends BinaryResourceImpl {
-
+    static class EcoreBinResourceImpl extends BinaryResourceImpl {
         public EcoreBinResourceImpl(URI uri) {
             super(uri);
             this.defaultLoadOptions = new HashMap<Object, Object>();
