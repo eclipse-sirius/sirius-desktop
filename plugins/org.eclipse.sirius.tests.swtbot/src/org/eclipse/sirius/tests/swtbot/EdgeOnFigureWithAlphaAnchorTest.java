@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo
+ * Copyright (c) 2015, 2019 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -418,23 +418,23 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
         SWTBotGefEditPart targetEditPartBot = editor.getEditPart(targetNodeName, AbstractDiagramNodeEditPart.class);
         Rectangle targetBounds = editor.getBounds(targetEditPartBot);
 
-        checkEdgeExtremityLocation(sourceBounds, refPointList.getFirstPoint(), onBoundingBoxSourceExpected, "Starting", referenceName);
-        checkEdgeExtremityLocation(targetBounds, refPointList.getLastPoint(), onBoundingBoxTargetExpected, "Ending", referenceName);
+        checkEdgeExtremityLocation(sourceBounds, refPointList.getFirstPoint(), onBoundingBoxSourceExpected, "Starting", referenceName, sourceNodeName);
+        checkEdgeExtremityLocation(targetBounds, refPointList.getLastPoint(), onBoundingBoxTargetExpected, "Ending", referenceName, targetNodeName);
     }
 
-    private void checkEdgeExtremityLocation(Rectangle bounds, Point extremity, boolean onBoundingBoxExpected, String messagePrefix, String referenceName) {
+    private void checkEdgeExtremityLocation(Rectangle bounds, Point extremity, boolean onBoundingBoxExpected, String messagePrefix, String referenceName, String nodeName) {
         PointList boundingBoxLine = PointListUtilities.createPointsFromRect(bounds);
         boolean extremityIsOnBoundingBox = boundingBoxLine.polylineContainsPoint(extremity.x(), extremity.y(), 0);
         assertTrue(getBoundingBoxMessage(messagePrefix, referenceName, onBoundingBoxExpected),
                 (onBoundingBoxExpected && extremityIsOnBoundingBox) || (!onBoundingBoxExpected && !extremityIsOnBoundingBox));
 
         if (!onBoundingBoxExpected) {
-            assertTrue(getInsideMessage(messagePrefix, referenceName, bounds, extremity), bounds.contains(extremity));
+            assertTrue(getInsideMessage(messagePrefix, referenceName, nodeName, bounds, extremity), bounds.contains(extremity));
         }
     }
 
-    private String getInsideMessage(String prefix, String referenceName, Rectangle bounds, Point extremity) {
-        return prefix + " point (" + extremity + ") of \"" + referenceName + "\" should be inside the figure (" + bounds + ")";
+    private String getInsideMessage(String prefix, String referenceName, String nodeName, Rectangle bounds, Point extremity) {
+        return prefix + " point (" + extremity + ") of \"" + referenceName + "\" should be inside the figure of \"" + nodeName + "\" (" + bounds + ")";
     }
 
     private String getBoundingBoxMessage(String prefix, String referenceName, boolean onBoundingBoxExpected) {
