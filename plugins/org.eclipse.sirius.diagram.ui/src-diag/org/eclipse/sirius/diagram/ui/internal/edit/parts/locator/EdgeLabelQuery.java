@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2017 THALES GLOBAL SERVICES and others
+ * Copyright (c) 2015, 2020 THALES GLOBAL SERVICES and others
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -369,7 +369,7 @@ public class EdgeLabelQuery {
                     for (LineSeg lineSeg : newEdgeSegments) {
                         PointList linesIntersections = oldRefVectorIntoSegment.getLinesIntersections(lineSeg);
                         // intersection should be, at more, one point
-                        if (linesIntersections.size() == 1 && lineSeg.distanceToPoint(linesIntersections.getPoint(0).x, linesIntersections.getPoint(0).y) <= Math.sqrt(2)) {
+                        if (linesIntersections.size() == 1 && lineSeg.preciseDistanceToPoint(linesIntersections.getPoint(0).x, linesIntersections.getPoint(0).y) <= Math.sqrt(2)) {
                             Vector tempLabelMove = new Vector(linesIntersections.getPoint(0).x - oldNearestPoint.x, linesIntersections.getPoint(0).y - oldNearestPoint.y);
                             if (fromOldToNewCenterVector == null || tempLabelMove.getLength() < fromOldToNewCenterVector.getLength()) {
                                 fromOldToNewCenterVector = tempLabelMove;
@@ -397,9 +397,9 @@ public class EdgeLabelQuery {
                     // ensure that the distance between the label and the edge
                     // is not higher than before. In this case, we reset the
                     // location to its default.
-                    double oldDistance = oldNearestSeg.distanceToPoint(oldCenterLabel.x(), oldCenterLabel.y());
+                    double oldDistance = oldNearestSeg.preciseDistanceToPoint(oldCenterLabel.x(), oldCenterLabel.y());
                     Point potentialNewCenter = oldCenterLabel.getTranslated(fromOldToNewCenterVector.x, fromOldToNewCenterVector.y);
-                    double newDistance = newRefSeg.distanceToPoint(potentialNewCenter.x(), potentialNewCenter.y());
+                    double newDistance = newRefSeg.preciseDistanceToPoint(potentialNewCenter.x(), potentialNewCenter.y());
                     if (newDistance > oldDistance) {
                         fromOldToNewCenterVector = null;
                     }

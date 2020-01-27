@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -406,7 +406,7 @@ public class SnapBackDistantLabelsMigrationParticipant extends AbstractRepresent
                             @SuppressWarnings("rawtypes")
                             List segments = PointListUtilities.getLineSegments(ptList);
                             LineSeg nearestSegment = PointListUtilities.getNearestSegment(segments, labelCenter.x, labelCenter.y);
-                            double distance = nearestSegment.distanceToPoint(labelCenter.x(), labelCenter.y());
+                            double distance = nearestSegment.preciseDistanceToPoint(labelCenter.x(), labelCenter.y());
                             isLabelDistant = distance > nearestSegment.length() * 4;
                         }
                         // CHECKSTYLE:OFF
