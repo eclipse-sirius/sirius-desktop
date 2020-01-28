@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2002, 2017 IBM Corporation and others.
+ * Copyright (c) 2002, 2020 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -41,11 +42,16 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.LayoutType;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
+import org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.CenterEdgeLayoutCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.DistributeCommand;
+import org.eclipse.sirius.diagram.ui.internal.layout.GenericLayoutProvider;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.DistributeRequest;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.SnapCommand;
+import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -57,6 +63,7 @@ import com.google.common.collect.Iterables;
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * 
  */
+@SuppressWarnings("restriction")
 public class SiriusContainerEditPolicy extends ContainerEditPolicy {
 
     private final Predicate<Object> isRegionEditPart = new Predicate<Object>() {
@@ -77,6 +84,7 @@ public class SiriusContainerEditPolicy extends ContainerEditPolicy {
 
     // CHECKSTYLE:OFF
 
+    @SuppressWarnings("unchecked")
     @Override
     protected Command getArrangeCommand(ArrangeRequest request) {
         if ((ActionIds.ACTION_ARRANGE_SELECTION.equals(request.getType())) || (ActionIds.ACTION_TOOLBAR_ARRANGE_SELECTION.equals(request.getType()))) {
@@ -105,6 +113,7 @@ public class SiriusContainerEditPolicy extends ContainerEditPolicy {
      * @param request
      * @return
      */
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     private Command doDuplicatedGetArrangeCommand(ArrangeRequest request) {
         if (RequestConstants.REQ_ARRANGE_DEFERRED.equals(request.getType())) {
             String layoutType = request.getLayoutType();
@@ -168,6 +177,7 @@ public class SiriusContainerEditPolicy extends ContainerEditPolicy {
      *            The current request.
      * @return A command to snap the edit parts of the request.
      */
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     private Command getSnapCommand(Request request) {
 
         List editparts = null;
@@ -178,10 +188,38 @@ public class SiriusContainerEditPolicy extends ContainerEditPolicy {
         }
 
         TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
-        if (editparts != null) {
+        if (editparts != null && shouldLaunchSnapTo(editparts)) {
             return new ICommandProxy(new SnapCommand(editingDomain, editparts));
         }
         return null;
+    }
+
+    private boolean shouldLaunchSnapTo(List<? extends IGraphicalEditPart> editparts) {
+        Optional<? extends IGraphicalEditPart> optionalFirstEditPart = editparts.stream().findFirst();
+        if (optionalFirstEditPart.isPresent()) {
+            Optional<CustomLayoutAlgorithm> optionalLayoutAlgorithm = getCustomLayoutAlgorithm(optionalFirstEditPart.get());
+            // If a CustomLayoutAlgorithm has been provided, we check that it allows to perform the Snap to command
+            // after.
+            if (optionalLayoutAlgorithm.isPresent()) {
+                return optionalLayoutAlgorithm.get().isLaunchSnapAfter();
+            }
+        }
+        return true;
+    }
+
+    private Optional<CustomLayoutAlgorithm> getCustomLayoutAlgorithm(IGraphicalEditPart iGraphicalEditPart) {
+        //@formatter:off
+        return Optional.of(iGraphicalEditPart)
+                .map(LayoutService::getProvider)
+                .filter(GenericLayoutProvider.class::isInstance)
+                .map(GenericLayoutProvider.class::cast)
+                .map(layoutProvider -> layoutProvider.getLayoutConfiguration(iGraphicalEditPart))
+                .flatMap(this::getCustomLayoutAlgorithm);
+        //@formatter:on
+    }
+
+    private Optional<CustomLayoutAlgorithm> getCustomLayoutAlgorithm(CustomLayoutConfiguration configuration) {
+        return Optional.ofNullable(DiagramUIPlugin.getPlugin().getLayoutAlgorithms().get(configuration.getId()));
     }
 
     // CHECKSTYLE:ON

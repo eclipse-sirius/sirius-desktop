@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2019 Obeo
+ * Copyright (c) 2018, 2020 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,9 @@
  *     Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.internal.layout;
+
+import java.util.Optional;
+import java.util.WeakHashMap;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.AbstractLayoutEditPartProvider;
@@ -35,15 +38,16 @@ import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.PinnedElemen
  */
 public class GenericLayoutProvider implements LayoutProvider {
 
+    private WeakHashMap<IGraphicalEditPart, DefaultLayoutProvider> editPartToLayoutProviderCache = new WeakHashMap<>();
+
     @Override
     public AbstractLayoutEditPartProvider getLayoutNodeProvider(final IGraphicalEditPart partToLayout) {
-        DefaultLayoutProvider defaultLayoutProvider = getGenericLayoutProvider(partToLayout);
-
+        DefaultLayoutProvider defaultLayoutProvider = Optional.ofNullable(editPartToLayoutProviderCache.get(partToLayout)).orElseGet(() -> getGenericLayoutProvider(partToLayout));
         if (defaultLayoutProvider != null) {
             final CompoundLayoutProvider clp = new CompoundLayoutProvider();
             clp.addProvider(defaultLayoutProvider);
             if (defaultLayoutProvider instanceof ExtendableLayoutProvider) {
-                ExtendableLayoutProvider layoutProvider = (ExtendableLayoutProvider) getGenericLayoutProvider(partToLayout);
+                ExtendableLayoutProvider layoutProvider = (ExtendableLayoutProvider) defaultLayoutProvider;
                 clp.addProvider(new PinnedElementsLayoutProvider(layoutProvider));
             }
 
@@ -72,7 +76,17 @@ public class GenericLayoutProvider implements LayoutProvider {
 
     @Override
     public boolean provides(final IGraphicalEditPart container) {
-        return getGenericLayoutProvider(container) != null;
+        // To avoid to compute the getGenericLayoutProvider twice (at the time we are testing that this provider
+        // provides a layout for the given edit part and the second time when calling getLayoutNodeProvider), we keep in
+        // cache the result.
+        Optional<DefaultLayoutProvider> optionalLayoutProvider = Optional.ofNullable(getGenericLayoutProvider(container));
+        if (optionalLayoutProvider.isPresent()) {
+            editPartToLayoutProviderCache.put(container, optionalLayoutProvider.get());
+            return true;
+        }
+        // In case of a provider was available but it could be not the case anymore.
+        editPartToLayoutProviderCache.remove(container);
+        return false;
     }
 
     @Override

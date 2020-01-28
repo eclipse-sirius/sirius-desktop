@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2019 Obeo
+ * Copyright (c) 2018, 2020 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -57,8 +57,16 @@ public class ELKAlgorithmProvider implements CustomLayoutAlgorithmProvider {
             handleOptionsData(LayoutMetaDataService.getInstance().getOptionData(layoutAlgorithmData, Target.EDGES), layoutOptions, layoutOptionFactory);
             handleOptionsData(LayoutMetaDataService.getInstance().getOptionData(layoutAlgorithmData, Target.PORTS), layoutOptions, layoutOptionFactory);
             handleOptionsData(LayoutMetaDataService.getInstance().getOptionData(layoutAlgorithmData, Target.LABELS), layoutOptions, layoutOptionFactory);
-            layoutAlgorithms
-                    .add(new CustomLayoutAlgorithm(layoutAlgorithmData.getId(), layoutAlgorithmData.getName(), layoutAlgorithmData.getDescription(), () -> new ELKLayoutNodeProvider(), layoutOptions));
+            //@formatter:off
+            CustomLayoutAlgorithm customLayoutAlgorithm = CustomLayoutAlgorithm.newCustomLayoutAlgorithm(layoutAlgorithmData.getId())
+                    .setLabel(layoutAlgorithmData.getName())
+                    .setDescription(layoutAlgorithmData.getDescription())
+                    .setLayoutSupplier(() -> new ELKLayoutNodeProvider())
+                    .setLayoutOptions(layoutOptions)
+                    .setLaunchSnapAfter(false)
+                    .build();
+            //@formatter:on
+            layoutAlgorithms.add(customLayoutAlgorithm);
         }
         return layoutAlgorithms;
     }
