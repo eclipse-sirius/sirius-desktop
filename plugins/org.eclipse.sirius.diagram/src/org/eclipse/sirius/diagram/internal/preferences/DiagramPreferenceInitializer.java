@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2018 Obeo.
+ * Copyright (c) 2014, 2020 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -39,6 +39,10 @@ public class DiagramPreferenceInitializer extends AbstractPreferenceInitializer 
 
         diagramCoreDefaultPreferences.putBoolean(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE_DEFAULT_VALUE);
         diagramCoreDefaultPreferences.putInt(SiriusDiagramCorePreferences.PREF_LINE_STYLE, SiriusDiagramCorePreferences.PREF_LINE_STYLE_DEFAULT_VALUE);
+        diagramCoreDefaultPreferences.putBoolean(SiriusDiagramCorePreferences.PREF_JUMP_LINK_ENABLE_OVERRIDE, SiriusDiagramCorePreferences.PREF_JUMP_LINK_ENABLE_OVERRIDE_DEFAULT_VALUE);
+        diagramCoreDefaultPreferences.putInt(SiriusDiagramCorePreferences.PREF_JUMP_LINK_STATUS, SiriusDiagramCorePreferences.PREF_JUMP_LINK_STATUS_DEFAULT_VALUE);
+        diagramCoreDefaultPreferences.putInt(SiriusDiagramCorePreferences.PREF_JUMP_LINK_TYPE, SiriusDiagramCorePreferences.PREF_JUMP_LINK_TYPE_DEFAULT_VALUE);
+        diagramCoreDefaultPreferences.putBoolean(SiriusDiagramCorePreferences.PREF_REVERSE_JUMP_LINK, SiriusDiagramCorePreferences.PREF_REVERSE_JUMP_LINK_DEFAULT_VALUE);
         diagramCoreDefaultPreferences.putBoolean(SiriusDiagramPreferencesKeys.PREF_DISPLAY_GENERIC_EDGE_CREATION_TOOL.name(), true);
     }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -865,6 +865,10 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
         }
         coreKeys.add(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE);
         coreKeys.add(SiriusDiagramCorePreferences.PREF_LINE_STYLE);
+        coreKeys.add(SiriusDiagramCorePreferences.PREF_JUMP_LINK_ENABLE_OVERRIDE);
+        coreKeys.add(SiriusDiagramCorePreferences.PREF_JUMP_LINK_STATUS);
+        coreKeys.add(SiriusDiagramCorePreferences.PREF_JUMP_LINK_TYPE);
+        coreKeys.add(SiriusDiagramCorePreferences.PREF_REVERSE_JUMP_LINK);
         assertFalse("The Diagram core preference named " + preferenceKey + " should not be modified in the Diagram UI store.", coreKeys.contains(preferenceKey));
     }
 

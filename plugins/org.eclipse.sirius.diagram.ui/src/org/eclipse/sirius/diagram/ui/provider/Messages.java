@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2019 Obeo and THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2020 Obeo and THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -332,7 +332,10 @@ public final class Messages {
     public static String DiagramAppearancePreferencePage_displayUserFixedColorsInPaletteLabel;
 
     @TranslatableMessage
-    public static String DiagramConnectionsPreferencePage_enableOverrideLabel;
+    public static String DiagramConnectionsPreferencePage_defaultValuesGroup_title;
+
+    @TranslatableMessage
+    public static String DiagramConnectionsPreferencePage_enableLineStyleOverride_label;
 
     @TranslatableMessage
     public static String DiagramConnectionsPreferencePage_showEdgeLabelLinkOnSelect;

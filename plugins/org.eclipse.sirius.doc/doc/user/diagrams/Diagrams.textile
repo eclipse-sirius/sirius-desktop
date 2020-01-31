@@ -818,12 +818,12 @@ NOTE: in case a user customized a Node with a WorkspaceImage style (through the 
 
 h4(#routingStylePref). Customize edge routing style from preferences
 
-You have the possibility to customize the routing style of all new edges from the preferences. In the preference page _Sirius/Sirius Diagram/Connections_, you can enable _user specific default values_ and select a default routing style for all new edges.
+You have the possibility to customize the routing style of all new edges from the preferences. In the preference page _Sirius/Sirius Diagram/Connections_, you can enable _Line style_ default values and select a default routing style for all new edges.
 
 !images/preferences_sirius_diagram_connections.png!
 
 For example:
-* The _user specific default values_ is enabled and the line style is set to _Rectilinear_.
+* The override of _Line style_ default value is enabled and the line style is set to _Rectilinear_.
 * You create a new edge.
 * The routing style is set to _Rectilinear_ (regardless of the value specified in the VSM) and the _routingStyle_ is considered as custom.
 * If you call the action _Reset style to default value_ on this edge, then it keeps its routing style (because the preference is considered as the default value).
@@ -1102,6 +1102,30 @@ The viewpoint colors are displayed after the grayed colors and before the colors
   !images/PropertiesView_Appearance_ColorPalette_ViewpointColors.png!
 
 The _Authorize decoration overlapping_ preference lets, if checked, the decorations of different positions overlapping each other or displaying outside the diagram element bounding. If unchecked, decorations may be grouped in a _list decorator_ to avoid overlapping.
+
+h3. Connections
+
+The _Connections_ preferences page (see below) gives you various preferences related to connections.
+
+!images/preferences_sirius_diagram_connections.png!
+
+The first preference _Show link between edge and its labels on selection_ is documented in the "Manage edges":#edge_label_attachment section of this documentation.
+
+The second block of preferences allows to override default values of some edges characteristics. These preferences do not affect existing elements.
+
+h4. Line style
+
+This preference is documented in the "Style customizations":#routingStylePref chapter of this documentation.
+
+h4. Jump links
+
+The second group of preferences concerns the override of jump links properties. First, you need to enable _Jump links_ to override the default values. And then you can change the status, the type and/or the reverse properties default values.
+
+For example:
+* The override of _Jump links_ default values is enabled, the jump links status is set to _All_ and the jump links type is set to _Tunnel_.
+* You create a new edge that crosses another edge.
+* A jump link is visible on the cross with a tunnel aspect.
+* If you call the action _Reset style to default value_ on this edge, then it keeps its jump link properties (because the preference is considered as the default value).
 
 h3. Printing
 

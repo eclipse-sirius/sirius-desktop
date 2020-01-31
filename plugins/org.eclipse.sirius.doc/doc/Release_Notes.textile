@@ -9,6 +9,7 @@ h2(#sirius6.3.1). Changes in Sirius 6.3.1
 h3. User-Visible Changes
 
 * <span class="label label-success">Added</span> A new type of jump link has been added in Sirius 6.3.1. As reminder, a jump link is a way to graphically improve the way how 2 edges intersect. This new type is graphically represented by a blank line instead of the classical "jump". This new type is documented in the "Appearance":user/diagrams/Diagrams.html#Appearance section of edge Properties view.
+* <span class="label label-success">Added</span> New preferences have been added to allow to override the default values of jump links properties. They are documented in the "Connections":user/diagrams/Diagrams.html#Connections section of the Preferences.
 
 h3. Developer-Visible Changes
 
@@ -16,9 +17,25 @@ h3. Developer-Visible Changes
 * <span class="label label-info">Modified</span> Sirius now requires GMF Notation & Runtime 1.13.0.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SimpleStyleConfiguration.isShowIcon(DDiagramElement, IGraphicalEditPart)@ is now protected instead of private.
 
+h4. Changes in  @org.eclipse.sirius.diagram@
+
+* <span class="label label-success">Added</span> New preferences key have been added in @org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences@:
+** @PREF_JUMP_LINK_ENABLE_OVERRIDE@: Id of the preference that says if the override of jump links preferences is enabled or not.
+** @PREF_JUMP_LINK_ENABLE_OVERRIDE_DEFAULT_VALUE@: Default value for override of jump link preference, equals to @false@.
+** @PREF_JUMP_LINK_STATUS@: Id of the preference used to know the default jump link status if the override of connection jump links preferences is enabled.
+** @PREF_JUMP_LINK_STATUS_DEFAULT_VALUE@: Default value of above preference, equals to @JumpLinkStatus#NONE@.
+** @PREF_JUMP_LINK_TYPE@:  Id of the preference used to know the default jump link type if the override of connection jump links preferences is enabled.
+** @PREF_JUMP_LINK_TYPE_DEFAULT_VALUE@: Default value of above preference, equals to @JumpLinkType#SEMICIRCLE@.
+** @PREF_REVERSE_JUMP_LINK@: Id of the preference used to know if reverse of the jump link is enabled or not,  if the override of connection jump links preferences is enabled.
+** @PREF_REVERSE_JUMP_LINK_DEFAULT_VALUE@: Default value for reverse jump link preference, equals to @false@.
+
 h4. Migrations
 
 * <span class="label label-success">Added</span> A migration participant has been added only to change the version of the model. Indeed, if the new value "Tunnel" of GMF jump link type is used, see "User-Visible Changes" in "Sirius 6.1.3":Release_Notes.html#sirius6.3.1, the model will be invalid for an older version of Sirius. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _14.3.1.202003101500_.
+
+h4. Translation Keys Changes
+
+See "this document":i18n_changes.html#sirius631 for the complete list of message keys added or removed in Sirius 6.3.1.
 
 h2(#sirius6.3.0). Changes in Sirius 6.3.0
 
@@ -366,6 +383,10 @@ h4. Migrations
 * <span class="label label-success">Added</span> A migration participant has been added to update existing representation link. (see "bugzilla #533175":https://bugs.eclipse.org/bugs/show_bug.cgi?id=535648 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _14.1.0.201810111800_.
 * <span class="label label-success">Added</span> A migration participant has been added to fix edge with multiple connector style (see "bugzilla #539944":https://bugs.eclipse.org/bugs/show_bug.cgi?id=539944 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _14.1.0.201810161215_.
 
+h4. Translation Keys Changes
+
+See "this document":i18n_changes.html#sirius61 for the complete list of message keys added or removed in Sirius 6.1.0.
+
 h2(#sirius6.0.0). Changes in Sirius 6.0.0
 
 h3. User-Visible Changes
@@ -452,6 +473,8 @@ h4. Migrations
 * <span class="label label-success">Added</span> A migration participant has been added to fix diagram with note attachment corrupted (see "bugzilla #533177":https://bugs.eclipse.org/bugs/show_bug.cgi?id=533177 for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _13.0.0.201804031646_.
 
 h4. Translation Keys Changes
+
+See "this document":i18n_changes.html#sirius60 for the complete list of message keys added or removed in Sirius 6.0.
 
 h2(#sirius5.1.1). Changes in Sirius 5.1.1
 

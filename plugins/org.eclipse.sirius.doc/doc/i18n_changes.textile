@@ -2,6 +2,17 @@ h1. Translation Keys Changes
 
 This document lists the changes in @TranslatableMessage@ used for Sirius internationalization in each Sirius version.
 
+h2(#sirius631). Translation Keys Changes in Sirius 6.3.1 (from Sirius 6.3.0)
+
+h3. Message Keys Added
+
+* @org.eclipse.sirius.diagram.ui.provider.Messages.DiagramConnectionsPreferencePage_defaultValuesGroup_title@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.DiagramConnectionsPreferencePage_enableLineStyleOverride_label@
+
+h3. Message Keys Removed
+
+* @org.eclipse.sirius.diagram.ui.provider.Messages.DiagramConnectionsPreferencePage_enableOverrideLabel@
+
 h2(#sirius61). Translation Keys Changes in Sirius 6.1 (from Sirius 6.0)
 
 h3. Message Keys Added

@@ -77,7 +77,7 @@
 						<a href="#sirius6.1.1">Changes in Sirius 6.1.1</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#Changesinorg.eclipse.sirius.diagram4">Changes in  @org.eclipse.sirius.diagram@</a>
+								<a href="#Changesinorg.eclipse.sirius.diagram5">Changes in  @org.eclipse.sirius.diagram@</a>
 							</li>
 						</ol>
 					</li>
@@ -146,6 +146,9 @@
 			<li><span class="label label-success">Added</span> A new type of jump link has been added in Sirius 6.3.1. As reminder, a jump link is a way to graphically improve the way how 2 edges intersect. This new type is graphically represented by a blank line instead of the classical &#8220;jump&#8221;. This new type is documented in the 
 				<a href="user/diagrams/Diagrams.html#Appearance">Appearance</a> section of edge Properties view.
 			</li>
+			<li><span class="label label-success">Added</span> New preferences have been added to allow to override the default values of jump links properties. They are documented in the 
+				<a href="user/diagrams/Diagrams.html#Connections">Connections</a> section of the Preferences.
+			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>
@@ -157,6 +160,44 @@
 				<code>org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SimpleStyleConfiguration.isShowIcon(DDiagramElement, IGraphicalEditPart)</code> is now protected instead of private.
 			</li>
 		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in  
+			<code>org.eclipse.sirius.diagram</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> New preferences key have been added in 
+				<code>org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences</code>:
+				<ul>
+					<li>
+						<code>PREF_JUMP_LINK_ENABLE_OVERRIDE</code>: Id of the preference that says if the override of jump links preferences is enabled or not.
+					</li>
+					<li>
+						<code>PREF_JUMP_LINK_ENABLE_OVERRIDE_DEFAULT_VALUE</code>: Default value for override of jump link preference, equals to 
+						<code>false</code>.
+					</li>
+					<li>
+						<code>PREF_JUMP_LINK_STATUS</code>: Id of the preference used to know the default jump link status if the override of connection jump links preferences is enabled.
+					</li>
+					<li>
+						<code>PREF_JUMP_LINK_STATUS_DEFAULT_VALUE</code>: Default value of above preference, equals to 
+						<code>JumpLinkStatus#NONE</code>.
+					</li>
+					<li>
+						<code>PREF_JUMP_LINK_TYPE</code>:  Id of the preference used to know the default jump link type if the override of connection jump links preferences is enabled.
+					</li>
+					<li>
+						<code>PREF_JUMP_LINK_TYPE_DEFAULT_VALUE</code>: Default value of above preference, equals to 
+						<code>JumpLinkType#SEMICIRCLE</code>.
+					</li>
+					<li>
+						<code>PREF_REVERSE_JUMP_LINK</code>: Id of the preference used to know if reverse of the jump link is enabled or not,  if the override of connection jump links preferences is enabled.
+					</li>
+					<li>
+						<code>PREF_REVERSE_JUMP_LINK_DEFAULT_VALUE</code>: Default value for reverse jump link preference, equals to 
+						<code>false</code>.
+					</li>
+				</ul>
+			</li>
+		</ul>
 		<h4 id="Migrations">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration participant has been added only to change the version of the model. Indeed, if the new value &#8220;Tunnel&#8221; of GMF jump link type is used, see &#8220;User-Visible Changes&#8221; in 
@@ -164,6 +205,10 @@
 				<em>14.3.1.202003101500</em>.
 			</li>
 		</ul>
+		<h4 id="TranslationKeysChanges">Translation Keys Changes</h4>
+		<p>See 
+			<a href="i18n_changes.html#sirius631">this document</a> for the complete list of message keys added or removed in Sirius 6.3.1.
+		</p>
 		<h2 id="sirius6.3.0">Changes in Sirius 6.3.0</h2>
 		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
@@ -276,7 +321,7 @@
 				<code>SiriusCrossReferenceAdapter</code> to have only one instance of a cross referencer for a Sirius session. This implies that resource collector is no more installed on all resourceSet resources by default but only on those managed by the Sirius session semantic cross reference. But if the getRefencing/ed services are used, it will install itself on a non managed resource and then return the references for all resources on which it is installed.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in  
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -498,7 +543,7 @@
 				<code>org.eclipse.sirius.diagram.formatdata</code>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram2">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in  
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -808,7 +853,7 @@
 				<code>org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider</code> has been made protected to allow to provide layout provider from other mechanism than LayoutService.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram3">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram4">Changes in  
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -833,7 +878,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius6.1.1">Changes in Sirius 6.1.1</h2>
-		<h4 id="Changesinorg.eclipse.sirius.diagram4">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram5">Changes in  
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -1183,6 +1228,10 @@
 				<em>14.1.0.201810161215</em>.
 			</li>
 		</ul>
+		<h4 id="TranslationKeysChanges2">Translation Keys Changes</h4>
+		<p>See 
+			<a href="i18n_changes.html#sirius61">this document</a> for the complete list of message keys added or removed in Sirius 6.1.0.
+		</p>
 		<h2 id="sirius6.0.0">Changes in Sirius 6.0.0</h2>
 		<h3 id="UserVisibleChanges6">User-Visible Changes</h3>
 		<ul>
@@ -1338,7 +1387,7 @@
 				<code>ToolMangament</code> mechanism used to handle tools and layer changes.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram6">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>
@@ -1439,7 +1488,10 @@
 				<em>13.0.0.201804031646</em>.
 			</li>
 		</ul>
-		<h4 id="TranslationKeysChanges">Translation Keys Changes</h4>
+		<h4 id="TranslationKeysChanges3">Translation Keys Changes</h4>
+		<p>See 
+			<a href="i18n_changes.html#sirius60">this document</a> for the complete list of message keys added or removed in Sirius 6.0.
+		</p>
 		<h2 id="sirius5.1.1">Changes in Sirius 5.1.1</h2>
 		<h3 id="UserVisibleChanges7">User-Visible Changes</h3>
 		<ul>
@@ -1630,7 +1682,7 @@
 				<em>12.1.0.201708031200</em>.
 			</li>
 		</ul>
-		<h4 id="TranslationKeysChanges2">Translation Keys Changes</h4>
+		<h4 id="TranslationKeysChanges4">Translation Keys Changes</h4>
 		<p>See 
 			<a href="i18n_changes.html#sirius51">this document</a> for the complete list of message keys added or removed in Sirius 5.0.
 		</p>
@@ -1725,7 +1777,7 @@
 				<code>getFilesFromWorkspace(Collection&lt;IContainer&gt;, String)</code> to be more generic.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram6">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram7">Changes in 
 			<code>org.eclipse.sirius.diagram</code>
 		</h4>
 		<ul>

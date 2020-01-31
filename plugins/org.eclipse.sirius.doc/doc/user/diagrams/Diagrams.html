@@ -256,6 +256,17 @@
 								<a href="#Appearance2">Appearance</a>
 							</li>
 							<li>
+								<a href="#Connections">Connections</a>
+								<ol style="list-style: disc;">
+									<li>
+										<a href="#Linestyle">Line style</a>
+									</li>
+									<li>
+										<a href="#Jumplinks">Jump links</a>
+									</li>
+								</ol>
+							</li>
+							<li>
 								<a href="#Printing">Printing</a>
 							</li>
 							<li>
@@ -1359,15 +1370,15 @@
 		<h4 id="routingStylePref">Customize edge routing style from preferences</h4>
 		<p>You have the possibility to customize the routing style of all new edges from the preferences. In the preference page 
 			<em>Sirius/Sirius Diagram/Connections</em>, you can enable 
-			<em>user specific default values</em> and select a default routing style for all new edges.
+			<em>Line style</em> default values and select a default routing style for all new edges.
 		</p>
 		<p>
 			<img border="0" src="images/preferences_sirius_diagram_connections.png"/>
 		</p>
 		<p>For example:</p>
 		<ul>
-			<li>The 
-				<em>user specific default values</em> is enabled and the line style is set to 
+			<li>The override of 
+				<em>Line style</em> default value is enabled and the line style is set to 
 				<em>Rectilinear</em>.
 			</li>
 			<li>You create a new edge.</li>
@@ -1865,6 +1876,39 @@
 			<em>Authorize decoration overlapping</em> preference lets, if checked, the decorations of different positions overlapping each other or displaying outside the diagram element bounding. If unchecked, decorations may be grouped in a 
 			<em>list decorator</em> to avoid overlapping.
 		</p>
+		<h3 id="Connections">Connections</h3>
+		<p>The 
+			<em>Connections</em> preferences page (see below) gives you various preferences related to connections.
+		</p>
+		<p>
+			<img border="0" src="images/preferences_sirius_diagram_connections.png"/>
+		</p>
+		<p>The first preference 
+			<em>Show link between edge and its labels on selection</em> is documented in the 
+			<a href="#edge_label_attachment">Manage edges</a> section of this documentation.
+		</p>
+		<p>The second block of preferences allows to override default values of some edges characteristics. These preferences do not affect existing elements.</p>
+		<h4 id="Linestyle">Line style</h4>
+		<p>This preference is documented in the 
+			<a href="#routingStylePref">Style customizations</a> chapter of this documentation.
+		</p>
+		<h4 id="Jumplinks">Jump links</h4>
+		<p>The second group of preferences concerns the override of jump links properties. First, you need to enable 
+			<em>Jump links</em> to override the default values. And then you can change the status, the type and/or the reverse properties default values.
+		</p>
+		<p>For example:</p>
+		<ul>
+			<li>The override of 
+				<em>Jump links</em> default values is enabled, the jump links status is set to 
+				<em>All</em> and the jump links type is set to 
+				<em>Tunnel</em>.
+			</li>
+			<li>You create a new edge that crosses another edge.</li>
+			<li>A jump link is visible on the cross with a tunnel aspect.</li>
+			<li>If you call the action 
+				<em>Reset style to default value</em> on this edge, then it keeps its jump link properties (because the preference is considered as the default value).
+			</li>
+		</ul>
 		<h3 id="Printing">Printing</h3>
 		<p>The 
 			<em>Printing</em> page (see below) gives you various preferences related to page layout for layout printing.

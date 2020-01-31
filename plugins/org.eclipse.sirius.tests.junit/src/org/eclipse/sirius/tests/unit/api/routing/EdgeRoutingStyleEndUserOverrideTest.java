@@ -18,6 +18,8 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.JumpLinkStatus;
+import org.eclipse.gmf.runtime.notation.JumpLinkType;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Routing;
@@ -30,6 +32,7 @@ import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
@@ -77,17 +80,15 @@ public class EdgeRoutingStyleEndUserOverrideTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Create a new edge with enabled user specific default values, routing
-     * style set to Oblique and check that the routing style is Oblique (in GMF
-     * style and DEdge style) and is custom (the customFeatures list contains
+     * Create a new edge with enabled user specific default values, routing style set to Oblique and check that the
+     * routing style is Oblique (in GMF style and DEdge style) and is custom (the customFeatures list contains
      * routingStyle).
      * <P/>
      * Reset style properties to default values and check nothing changes
      * <P/>
      * Disable user specific default values in preference
      * <P/>
-     * Reset style properties to default values and check that the routing is
-     * the VSM one
+     * Reset style properties to default values and check that the routing is the VSM one
      */
     public void testCreateEdgeEnabledUserSpecificOblic() {
         if (TestsUtil.shouldSkipUnreliableTests()) {
@@ -125,17 +126,15 @@ public class EdgeRoutingStyleEndUserOverrideTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Create a new edge with enabled user specific default values, routing
-     * style set to Rectilinear and check that the routing style is Rectilinear
-     * (in GMF style and DEdge style) and is custom (the customFeatures list
-     * contains routingStyle).
+     * Create a new edge with enabled user specific default values, routing style set to Rectilinear and check that the
+     * routing style is Rectilinear (in GMF style and DEdge style) and is custom (the customFeatures list contains
+     * routingStyle).
      * <P/>
      * Reset style properties to default values and check nothing changes
      * <P/>
      * Disable user specific default values in preference
      * <P/>
-     * Reset style properties to default values and check that the routing is
-     * the VSM one
+     * Reset style properties to default values and check that the routing is the VSM one
      */
     public void testCreateEdgeEnabledUserSpecificRectilinear() {
         if (TestsUtil.shouldSkipUnreliableTests()) {
@@ -174,17 +173,14 @@ public class EdgeRoutingStyleEndUserOverrideTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Create a new edge with enabled user specific default values, routing
-     * style set to Tree and check that the routing style is Tree (in GMF style
-     * and DEdge style) and is custom (the customFeatures list contains
-     * routingStyle).
+     * Create a new edge with enabled user specific default values, routing style set to Tree and check that the routing
+     * style is Tree (in GMF style and DEdge style) and is custom (the customFeatures list contains routingStyle).
      * <P/>
      * Reset style properties to default values and check nothing changes
      * <P/>
      * Disable user specific default values in preference
      * <P/>
-     * Reset style properties to default values and check that the routing is
-     * the VSM one
+     * Reset style properties to default values and check that the routing is the VSM one
      */
     public void testCreateEdgeEnabledUserSpecificTree() {
         if (TestsUtil.shouldSkipUnreliableTests()) {
@@ -222,13 +218,77 @@ public class EdgeRoutingStyleEndUserOverrideTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Check the routing style in GMF style and DEdge style and is custom (The
-     * customFeatures list contains routingStyle). Check too the size of the
-     * edge.
+     * Create a new edge with enabled user specific default values, routing style set to Tree and check that the routing
+     * style is Tree (in GMF style and DEdge style) and is custom (the customFeatures list contains routingStyle).
+     * <P/>
+     * Reset style properties to default values and check nothing changes
+     * <P/>
+     * Disable user specific default values in preference
+     * <P/>
+     * Reset style properties to default values and check that the routing is the VSM one
+     */
+    public void testCreateEdgeEnabledJumpLinkAllSquare() {
+        testCreateEdgeEnabledJumpLink(JumpLinkStatus.ALL_LITERAL, JumpLinkType.SQUARE_LITERAL, false);
+    }
+
+    /**
+     * Create a new edge with enabled user specific default values, routing style set to Tree and check that the routing
+     * style is Tree (in GMF style and DEdge style) and is custom (the customFeatures list contains routingStyle).
+     * <P/>
+     * Reset style properties to default values and check nothing changes
+     * <P/>
+     * Disable user specific default values in preference
+     * <P/>
+     * Reset style properties to default values and check that the routing is the VSM one
+     */
+    public void testCreateEdgeEnabledJumpLinkBellowTunnelReverse() {
+        testCreateEdgeEnabledJumpLink(JumpLinkStatus.BELOW_LITERAL, JumpLinkType.TUNNEL_LITERAL, true);
+    }
+
+    private void testCreateEdgeEnabledJumpLink(JumpLinkStatus jumpLinkStatus, JumpLinkType jumpLinkType, boolean jumpLinkReverse) {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            /*
+             * There is no edge that has a source with name NewEClass1 junit.framework.AssertionFailedError: There is no
+             * edge that has a source with name NewEClass1 at
+             * org.eclipse.sirius.tests.unit.api.routing.EdgeRoutingStyleEndUserOverrideTest.
+             * checkRoutingStyleCustomStyle(EdgeRoutingStyleEndUserOverrideTest.java:228) at
+             * org.eclipse.sirius.tests.unit.api.routing.EdgeRoutingStyleEndUserOverrideTest.
+             * testCreateEdgeEnabledUserSpecificOblic(EdgeRoutingStyleEndUserOverrideTest.java:101)
+             */
+            return;
+        }
+
+        // Enabled user specific default values for jump links, status set to All and type set to Square
+        changeDiagramPreference(SiriusDiagramCorePreferences.PREF_JUMP_LINK_ENABLE_OVERRIDE, true);
+        changeDiagramPreference(SiriusDiagramCorePreferences.PREF_JUMP_LINK_STATUS, jumpLinkStatus.getValue());
+        changeDiagramPreference(SiriusDiagramCorePreferences.PREF_JUMP_LINK_TYPE, jumpLinkType.getValue());
+        changeDiagramPreference(SiriusDiagramCorePreferences.PREF_REVERSE_JUMP_LINK, jumpLinkReverse);
+
+        // Create a new edge with tool createOblique
+        applyEdgeCreationTool("CreateOblique", diagram, (EdgeTarget) getFirstDiagramElement(diagram, source), (EdgeTarget) getFirstDiagramElement(diagram, target));
+        // Check that the routing style is Tree (In GMF style and DEdge
+        // style) and is custom (the customFeatures list contains routingStyle)
+        checkJumpLinkProperties(editor, "NewEClass1", jumpLinkStatus, jumpLinkType, jumpLinkReverse, false);
+        // Reset style properties to default value
+        Iterable<DEdge> edges = Iterables.filter(diagram.getDiagramElements(), DEdge.class);
+        resetStylePropertiesToDefaultValues(edges.iterator().next(), diagram);
+        // Check nothing changes. Check too the edge size does not changed
+        checkJumpLinkProperties(editor, "NewEClass1", jumpLinkStatus, jumpLinkType, jumpLinkReverse, false);
+        // Disabled user specific default values in preference
+        resetDiagramPreference(SiriusDiagramCorePreferences.PREF_JUMP_LINK_ENABLE_OVERRIDE);
+        // Reset style properties to default values and check the status and type are the "default GMF" ones (ie "None"
+        // and "Semi-Circle")
+        checkJumpLinkProperties(editor, "NewEClass1", jumpLinkStatus, jumpLinkType, jumpLinkReverse, true);
+        resetStylePropertiesToDefaultValues(edges.iterator().next(), diagram);
+        checkJumpLinkProperties(editor, "NewEClass1", JumpLinkStatus.NONE_LITERAL, JumpLinkType.SEMICIRCLE_LITERAL, false, false);
+    }
+
+    /**
+     * Check the routing style in GMF style and DEdge style and is custom (The customFeatures list contains
+     * routingStyle). Check too the size of the edge.
      * 
      * @param editor
-     *            the editor opened
-     *            the opened editor
+     *            the editor opened the opened editor
      * @param expectedGMFRoutingLiteral
      *            the expected routing style literal to check
      * @param expectedDEdgeRoutingLiteral
@@ -238,8 +298,8 @@ public class EdgeRoutingStyleEndUserOverrideTest extends SiriusDiagramTestCase {
      * @param expectedEdgeSize
      *            the expected edge's size to check
      */
-    private void checkRoutingStyleCustomStyle(DiagramDocumentEditor editor, Routing expectedGMFRoutingLiteral, EdgeRouting expectedDEdgeRoutingLiteral, String sourceNodeName,
-            Integer expectedEdgeSize, boolean customFeature) {
+    private void checkRoutingStyleCustomStyle(DiagramDocumentEditor editor, Routing expectedGMFRoutingLiteral, EdgeRouting expectedDEdgeRoutingLiteral, String sourceNodeName, Integer expectedEdgeSize,
+            boolean customFeature) {
         boolean edgeFound = false;
         TestsUtil.synchronizationWithUIThread();
         Iterable<IDiagramEdgeEditPart> connections = Iterables.filter(editor.getDiagramEditPart().getConnections(), IDiagramEdgeEditPart.class);
@@ -258,6 +318,47 @@ public class EdgeRoutingStyleEndUserOverrideTest extends SiriusDiagramTestCase {
                 final RoutingStyle rstyle = (RoutingStyle) edge.getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
                 assertEquals("The GMF routing Style is incorrect.", expectedGMFRoutingLiteral, rstyle.getRouting());
                 assertEquals("The edge's size is wrong.", expectedEdgeSize, ((EdgeStyle) dEdge.getStyle()).getSize());
+                break;
+            }
+        }
+        if (!edgeFound) {
+            fail("There is no edge that has a source with name " + sourceNodeName);
+        }
+    }
+
+    /**
+     * Check the jump link status in GMF style and DEdge is custom (The customFeatures list contains routingStyle).
+     * 
+     * @param editor
+     *            the editor opened the opened editor
+     * @param expectedGMFRoutingLiteral
+     *            the expected routing style literal to check
+     * @param expectedDEdgeRoutingLiteral
+     *            the expected edge routing literal to check
+     * @param sourceNodeName
+     *            the edge's source node name
+     * @param expectedEdgeSize
+     *            the expected edge's size to check
+     */
+    private void checkJumpLinkProperties(DiagramDocumentEditor editor, String sourceNodeName, JumpLinkStatus expectedGMFJumpLinkStatus, JumpLinkType expectedGMFJumpLinkType,
+            boolean expectedGMFReverseJumpLink, boolean customFeature) {
+        boolean edgeFound = false;
+        TestsUtil.synchronizationWithUIThread();
+        Iterable<IDiagramEdgeEditPart> connections = Iterables.filter(editor.getDiagramEditPart().getConnections(), IDiagramEdgeEditPart.class);
+
+        for (IDiagramEdgeEditPart connection : connections) {
+            Edge edge = (Edge) connection.getModel();
+            if (sourceNodeName.equals(((DNode) ((Node) edge.getSource()).getElement()).getName())) {
+                edgeFound = true;
+                if (customFeature) {
+                    assertTrue("The view must be considered as customized.", new ViewQuery(edge).isCustomized());
+                } else {
+                    assertFalse("The view must not be considered as customized.", new ViewQuery(edge).isCustomized());
+                }
+                final RoutingStyle rstyle = (RoutingStyle) edge.getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
+                assertEquals("The GMF jump link status is incorrect.", expectedGMFJumpLinkStatus, rstyle.getJumpLinkStatus());
+                assertEquals("The GMF jump link type is incorrect.", expectedGMFJumpLinkType, rstyle.getJumpLinkType());
+                assertEquals("The GMF jump link reverse state is incorrect.", expectedGMFReverseJumpLink, rstyle.isJumpLinksReverse());
                 break;
             }
         }

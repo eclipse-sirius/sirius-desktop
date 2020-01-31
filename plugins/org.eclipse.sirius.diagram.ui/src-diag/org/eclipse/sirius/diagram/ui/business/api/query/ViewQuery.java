@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,8 @@ import java.util.LinkedHashSet;
 import java.util.Optional;
 import java.util.Set;
 
+import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -27,6 +29,8 @@ import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.gmf.runtime.notation.Connector;
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.gmf.runtime.notation.JumpLinkStatus;
+import org.eclipse.gmf.runtime.notation.JumpLinkType;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.gmf.runtime.notation.Style;
@@ -34,8 +38,10 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
+import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
@@ -225,6 +231,46 @@ public class ViewQuery {
             defaultValue = eAttribute.getDefaultValue();
             if (ViewType.NOTE.equals(view.getType())) {
                 defaultValue = 1;
+            }
+        } else if (eAttribute == NotationPackage.Literals.ROUTING_STYLE__JUMP_LINK_STATUS) {
+            final IPreferencesService service = Platform.getPreferencesService();
+            boolean isJumpLinkOverideEnabled = Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, SiriusDiagramCorePreferences.PREF_JUMP_LINK_ENABLE_OVERRIDE,
+                    SiriusDiagramCorePreferences.PREF_JUMP_LINK_ENABLE_OVERRIDE_DEFAULT_VALUE, null);
+            if (isJumpLinkOverideEnabled) {
+                Option<JumpLinkStatus> overrideJumpLinkStatus = Options.newNone();
+                int jumpLinkStats = service.getInt(DiagramPlugin.ID, SiriusDiagramCorePreferences.PREF_JUMP_LINK_STATUS, SiriusDiagramCorePreferences.PREF_JUMP_LINK_STATUS_DEFAULT_VALUE, null);
+                overrideJumpLinkStatus = Options.newSome(JumpLinkStatus.get(jumpLinkStats));
+                if (overrideJumpLinkStatus.some()) {
+                    defaultValue = overrideJumpLinkStatus.get();
+                }
+            }
+            if (defaultValue == null) {
+                defaultValue = eAttribute.getDefaultValue();
+            }
+        } else if (eAttribute == NotationPackage.Literals.ROUTING_STYLE__JUMP_LINK_TYPE) {
+            final IPreferencesService service = Platform.getPreferencesService();
+            boolean isJumpLinkOverideEnabled = Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, SiriusDiagramCorePreferences.PREF_JUMP_LINK_ENABLE_OVERRIDE,
+                    SiriusDiagramCorePreferences.PREF_JUMP_LINK_ENABLE_OVERRIDE_DEFAULT_VALUE, null);
+            if (isJumpLinkOverideEnabled) {
+                Option<JumpLinkType> overrideJumpLinkType = Options.newNone();
+                int jumpLinkType = service.getInt(DiagramPlugin.ID, SiriusDiagramCorePreferences.PREF_JUMP_LINK_TYPE, SiriusDiagramCorePreferences.PREF_JUMP_LINK_TYPE_DEFAULT_VALUE, null);
+                overrideJumpLinkType = Options.newSome(JumpLinkType.get(jumpLinkType));
+                if (overrideJumpLinkType.some()) {
+                    defaultValue = overrideJumpLinkType.get();
+                }
+            }
+            if (defaultValue == null) {
+                defaultValue = eAttribute.getDefaultValue();
+            }
+        } else if (eAttribute == NotationPackage.Literals.ROUTING_STYLE__JUMP_LINKS_REVERSE) {
+            final IPreferencesService service = Platform.getPreferencesService();
+            boolean isJumpLinkOverideEnabled = Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, SiriusDiagramCorePreferences.PREF_JUMP_LINK_ENABLE_OVERRIDE,
+                    SiriusDiagramCorePreferences.PREF_JUMP_LINK_ENABLE_OVERRIDE_DEFAULT_VALUE, null);
+            if (isJumpLinkOverideEnabled) {
+                defaultValue = service.getBoolean(DiagramPlugin.ID, SiriusDiagramCorePreferences.PREF_REVERSE_JUMP_LINK, SiriusDiagramCorePreferences.PREF_REVERSE_JUMP_LINK_DEFAULT_VALUE, null);
+            }
+            if (defaultValue == null) {
+                defaultValue = eAttribute.getDefaultValue();
             }
         } else {
             defaultValue = eAttribute.getDefaultValue();
