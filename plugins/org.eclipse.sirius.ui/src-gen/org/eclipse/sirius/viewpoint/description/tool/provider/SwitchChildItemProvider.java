@@ -157,6 +157,8 @@ public class SwitchChildItemProvider extends ItemProviderAdapter
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createFor()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createIf()));
+        
+        newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createLet()));
 
         newChildDescriptors.add(createChildParameter(ToolPackage.Literals.SWITCH_CHILD__SUB_MODEL_OPERATIONS, ToolFactory.eINSTANCE.createDeleteView()));
 
