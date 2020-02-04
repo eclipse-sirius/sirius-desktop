@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_canary" sequenceNumber="1575458536">
+<target name="sirius_canary" sequenceNumber="1580801738">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
@@ -55,7 +55,7 @@
       <unit id="org.easymock" version="0.0.0"/>
       <unit id="org.hamcrest.core" version="0.0.0"/>
       <unit id="org.hamcrest.library" version="0.0.0"/>
-      <unit id="org.junit" version="4.12.0.v201504281640"/>
+      <unit id="org.junit" version="4.13.0.v20200128-1312"/>
       <unit id="javax.servlet" version="0.0.0"/>
       <unit id="javax.websocket" version="0.0.0"/>
       <unit id="com.google.gson" version="0.0.0"/>
@@ -114,16 +114,12 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.validation.sdk.feature.group" version="0.0.0"/>
-      <repository id="EMF-Validation-LastSuccessful" location="https://ci.eclipse.org/emfservices/job/emf-validation-master/lastSuccessfulBuild/jdk=oracle-jdk8-latest,label=migration/artifact/update-site/"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.emf.query.sdk.feature.group" version="0.0.0"/>
-      <repository id="EMF-Query-LastSuccessful" location="https://ci.eclipse.org/emfservices/job/emf-query-master/lastSuccessfulBuild/artifact/update-site/"/>
+      <repository id="EMF-Validation-LastSuccessful" location="https://ci.eclipse.org/emfservices/job/emf-validation-master/PLATFORM=oxygen,jdk=oracle-jdk8-latest,label=migration/lastSuccessfulBuild/artifact/update-site/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.workspace.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.transaction.sdk.feature.group" version="0.0.0"/>
-      <repository id="EMF-Transaction-LastSuccessful" location="https://ci.eclipse.org/emfservices/job/emf-transaction-master/lastSuccessfulBuild/jdk=oracle-jdk8-latest,label=migration/artifact/update-site/"/>
+      <repository id="EMF-Transaction-LastSuccessful" location="https://ci.eclipse.org/emfservices/job/emf-transaction-master/PLATFORM=oxygen,jdk=oracle-jdk8-latest,label=migration/lastSuccessfulBuild/artifact/update-site/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.eef.runtime-feature.feature.group" version="1.5.1.201601141612"/>
