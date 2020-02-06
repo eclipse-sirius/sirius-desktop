@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -152,6 +152,7 @@ import org.eclipse.sirius.tests.unit.diagram.layoutingmode.LayoutingModeOnCustom
 import org.eclipse.sirius.tests.unit.diagram.layoutingmode.LayoutingModeOnECoreModelerTest;
 import org.eclipse.sirius.tests.unit.diagram.mapping.EdgeMappingCreationDescriptionTests;
 import org.eclipse.sirius.tests.unit.diagram.migration.ActivatedFilterSortingMigrationParticipantTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.JumpLinkNewTypeMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.modelaccessor.ModelAccessorTest;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.design.EntitiesDiagramBackgroundTests;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.design.EntitiesDiagramContainerList;
@@ -529,6 +530,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(SelectionInTableAfterToolExecutionTest.class);
         suite.addTestSuite(InitializeElementsToSelectExpressionForTableMigrationTest.class);
         suite.addTestSuite(ActivatedFilterSortingMigrationParticipantTest.class);
+        suite.addTestSuite(JumpLinkNewTypeMigrationTest.class);
 
         // Edge on edge tests
         suite.addTestSuite(EdgeOnEdgeHideRevealTest.class);

@@ -801,7 +801,11 @@
      <participant
             class="org.eclipse.sirius.diagram.business.internal.migration.ActivatedFilterSortingMigrationParticipant"
             kind="RepresentationsFile">
-      </participant>
+     </participant>
+     <participant
+            class="org.eclipse.sirius.diagram.business.internal.migration.JumpLinkNewTypeMigrationParticipant"
+            kind="RepresentationsFile">
+     </participant>
   </extension>
   <extension
         point="org.eclipse.sirius.mmdescriptor">

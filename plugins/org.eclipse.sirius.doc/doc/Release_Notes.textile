@@ -9,7 +9,12 @@ h2(#sirius6.3.1). Changes in Sirius 6.3.1
 h3. Developer-Visible Changes
 
 * <span class="label label-info">Modified</span> Upgraded ELK version from 0.5.0 to 0.6.0, see the "ELK documentation":https://projects.eclipse.org/projects/modeling.elk/releases/0.6.0 for the list of changes in that version.
+* <span class="label label-info">Modified</span> Sirius now requires GMF Notation & Runtime 1.13.0.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.SimpleStyleConfiguration.isShowIcon(DDiagramElement, IGraphicalEditPart)@ is now protected instead of private.
+
+h4. Migrations
+
+* <span class="label label-success">Added</span> A migration participant has been added only to change the version of the model. Indeed, if the new value "Tunnel" of GMF jump link type is used, see "User-Visible Changes" in "Sirius 6.1.3":Release_Notes.html#sirius6.3.1, the model will be invalid for an older version of Sirius. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _14.3.1.202003101500_.
 
 h2(#sirius6.3.0). Changes in Sirius 6.3.0
 
