@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -488,14 +488,18 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         }
         if (!display.isDisposed()) {
             display.asyncExec(() -> {
-                if (getGraphicalViewer() != null && !PlatformUI.getWorkbench().isClosing()) {
-                    IWorkbenchPartSite site = getSite();
-                    if (site != null) {
-                        IWorkbenchPage page = site.getPage();
-                        if (page != null) {
-                            page.closeEditor(DDiagramEditorImpl.this, save);
+                try {
+                    if (getGraphicalViewer() != null && !PlatformUI.getWorkbench().isClosing()) {
+                        IWorkbenchPartSite site = getSite();
+                        if (site != null) {
+                            IWorkbenchPage page = site.getPage();
+                            if (page != null) {
+                                page.closeEditor(DDiagramEditorImpl.this, save);
+                            }
                         }
                     }
+                } catch (IllegalStateException e) {
+                    // We do not log this exception that might be caused by an unreachable distant resource.
                 }
             });
         }
@@ -1268,8 +1272,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     @Override
     protected void setDocumentProvider(final IEditorInput input) {
         if (getSession() != null/*
-                                 * && (input instanceof IFileEditorInput || input instanceof URIEditorInput)
-                                 */) {
+         * && (input instanceof IFileEditorInput || input instanceof URIEditorInput)
+         */) {
             setDocumentProvider(DiagramUIPlugin.getPlugin().getDocumentProvider(getSession().getTransactionalEditingDomain()));
         } else {
             // super.setDocumentProvider(input);

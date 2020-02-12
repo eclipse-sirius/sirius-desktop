@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -130,7 +130,6 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWTException;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
@@ -208,21 +207,25 @@ public class DiagramDialectUIServices implements DialectUIServices {
         DRepresentationDescriptor representationDescriptor = query.getRepresentationDescriptor();
         URI repDescURI = Optional.ofNullable(representationDescriptor).map(repDesc -> EcoreUtil.getURI(repDesc)).orElse(null);
         monitor.worked(1);
-        final IEditorInput editorInput = new SessionEditorInput(uri, repDescURI, editorName, session);
+        final SessionEditorInput editorInput = new SessionEditorInput(uri, repDescURI, editorName, session);
         String representationName = representationDescriptor.getName();
         monitor.subTask(MessageFormat.format(Messages.DiagramDialectUIServices_diagramEditorOpeningMonitorTaskName, representationName));
         RunnableWithResult<DialectEditor> runnable = new RunnableWithResult.Impl<DialectEditor>() {
 
             @Override
             public void run() {
-                final IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-                try {
-                    IEditorPart editorPart = page.openEditor(editorInput, DDiagramEditor.EDITOR_ID);
-                    if (editorPart instanceof DialectEditor) {
-                        setResult((DialectEditor) editorPart);
+                IWorkbenchPage activePage = EclipseUIUtil.getActivePage();
+                if (activePage != null) {
+                    try {
+                        IEditorPart editorPart = activePage.openEditor(editorInput, DDiagramEditor.EDITOR_ID);
+                        if (editorPart instanceof DialectEditor) {
+                            setResult((DialectEditor) editorPart);
+                        }
+                    } catch (final PartInitException e) {
+                        DiagramPlugin.getDefault().logError(Messages.DiagramDialectUIServices_diagramEditorOpeningError, e);
+                    } catch (IllegalStateException e) {
+                        // Do no log this error that might be caused by an unreachable distant resource.
                     }
-                } catch (final PartInitException e) {
-                    DiagramPlugin.getDefault().logError(Messages.DiagramDialectUIServices_diagramEditorOpeningError, e);
                 }
             }
 

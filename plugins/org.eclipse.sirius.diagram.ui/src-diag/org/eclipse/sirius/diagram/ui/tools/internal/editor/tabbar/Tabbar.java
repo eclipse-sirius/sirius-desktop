@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -200,12 +200,17 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
         EclipseUIUtil.displayAsyncExec(new Runnable() {
             @Override
             public void run() {
-                List<IContributionItem> items = Arrays.asList(manager.getItems());
-                for (IContributionItem item : items) {
-                    // The enablement update of Diagram actions encapsulated in
-                    // DiagramActionContributionItem is directly performed in
-                    // their item update.
-                    item.update();
+                try {
+                    List<IContributionItem> items = Arrays.asList(manager.getItems());
+                    for (IContributionItem item : items) {
+                        // The enablement update of Diagram actions encapsulated in
+                        // DiagramActionContributionItem is directly performed in
+                        // their item update.
+                        item.update();
+                    }
+                } catch (IllegalStateException e) {
+                    // Nothing to log here, this can happen if the resource is not accessible anymore (distant
+                    // resource).
                 }
             }
         });
