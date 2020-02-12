@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -43,6 +43,7 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.DecorationOverlayIcon;
@@ -238,6 +239,10 @@ public final class DiagramUIPlugin extends EMFPlugin {
         @Override
         public void start(BundleContext context) throws Exception {
             super.start(context);
+            // By default in Sirius, we don't want to consider the partial jump links. This is a new behavior available
+            // in GMF since 1.13.0.
+            PolylineConnectionEx.DISABLE_PARTIAL_JUMP_LINKS = true;
+
             PreferencesHint.registerPreferenceStore(DiagramUIPlugin.DIAGRAM_PREFERENCES_HINT, getPreferenceStore());
             dynamicPreferences = new DynamicDiagramUIPreferences(getPreferenceStore());
 
