@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.ui.tools.api.permission;
 
 import java.util.Collection;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
@@ -21,6 +22,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramRootEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.DecorationEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.editpolicies.EditPolicyRoles;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -135,7 +137,9 @@ public class EditPartAuthorityListener implements IAuthorityListener {
 
                     @Override
                     public void run() {
-                        doRefreshEditMode(enableEditMode, diagramEditor, semanticElement);
+                        if (Optional.ofNullable(diagramEditor).map(DDiagramEditor::getSession).filter(Session::isOpen).isPresent()) {
+                            doRefreshEditMode(enableEditMode, diagramEditor, semanticElement);
+                        }
                     }
                 });
             }
