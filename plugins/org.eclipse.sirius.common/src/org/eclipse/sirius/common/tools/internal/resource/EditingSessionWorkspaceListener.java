@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient.ResourceStatusChange;
+import org.eclipse.sirius.common.tools.internal.resource.ResourceDeltaVisitor.MissingResourceSetException;
 
 /**
  * Workspace resource listener.
@@ -52,13 +53,18 @@ public class EditingSessionWorkspaceListener implements IResourceChangeListener 
         final IResourceDelta delta = event.getDelta();
         try {
             if (delta != null) {
-                final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor(workspaceBackend);
-                delta.accept(visitor);
-                Collection<ResourceSyncClient.ResourceStatusChange> changes = getChanges(visitor);
-                // notify the client
-                if (!changes.isEmpty()) {
-                    ResourceSyncClientNotifier resourceSyncClientNotifier = new ResourceSyncClientNotifier(workspaceBackend.getClient(), changes);
-                    resourceSyncClientNotifier.run(new NullProgressMonitor());
+                try {
+                    final ResourceDeltaVisitor visitor = new ResourceDeltaVisitor(workspaceBackend);
+                    delta.accept(visitor);
+                    Collection<ResourceSyncClient.ResourceStatusChange> changes = getChanges(visitor);
+                    // notify the client
+                    if (!changes.isEmpty()) {
+                        ResourceSyncClientNotifier resourceSyncClientNotifier = new ResourceSyncClientNotifier(workspaceBackend.getClient(), changes);
+                        resourceSyncClientNotifier.run(new NullProgressMonitor());
+                    }
+                } catch (MissingResourceSetException e) {
+                    // there is nothing to do here. This exception means that the resourceSet cannot be
+                    // retrieved. 
                 }
             }
         } catch (final CoreException exception) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ package org.eclipse.sirius.common.tools.internal.resource;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.resources.IResourceDelta;
@@ -22,6 +23,7 @@ import org.eclipse.core.resources.IResourceDeltaVisitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 
@@ -47,15 +49,23 @@ public class ResourceDeltaVisitor implements IResourceDeltaVisitor {
      * 
      * @param workspaceBackend
      *            {@link WorkspaceBackend}
+     * @throws MissingResourceSetException
+     *             if the resourcetSet of the given workspaceBackend cannot be retrieved.
      */
-    public ResourceDeltaVisitor(WorkspaceBackend workspaceBackend) {
+    public ResourceDeltaVisitor(WorkspaceBackend workspaceBackend) throws MissingResourceSetException {
         this.workspaceBackend = workspaceBackend;
-        initialresources = new ArrayList<Resource>(this.workspaceBackend.getObservedSet().getResources());
+        Optional<ResourceSet> optionalResourceSet = Optional.ofNullable(this.workspaceBackend).map(WorkspaceBackend::getObservedSet);
+        if (optionalResourceSet.isPresent()) {
+            initialresources = new ArrayList<Resource>(optionalResourceSet.get().getResources());
+        } else {
+            throw new MissingResourceSetException();
+        }
     }
 
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean visit(final IResourceDelta delta) {
         if (!isMarkerNotification(delta) && !isTeamSyncNotification(delta) && isAboutFileChange(delta)) {
             processDelta(delta);
@@ -172,5 +182,25 @@ public class ResourceDeltaVisitor implements IResourceDeltaVisitor {
 
     public Collection<Resource> getRemovedResources() {
         return removedResources;
+    }
+
+    /**
+     * A specific {@link IllegalStateException} if the resource set cannot be retrieved.
+     * 
+     * @author fbarbin
+     *
+     */
+    public class MissingResourceSetException extends IllegalStateException {
+
+        private static final long serialVersionUID = 1L;
+
+        /**
+         * Default constructor.
+         * 
+         */
+        public MissingResourceSetException() {
+            super("Missing resourceSet in the workspaceBackend: The resourceSet should be present."); //$NON-NLS-1$
+        }
+
     }
 }
