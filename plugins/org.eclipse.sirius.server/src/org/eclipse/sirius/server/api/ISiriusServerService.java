@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo.
+ * Copyright (c) 2018, 2020 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -79,7 +79,7 @@ public interface ISiriusServerService {
             optionalResponse = Optional.ofNullable(this.doError(request, variables, remainingPart));
             break;
         }
-        return optionalResponse.orElse(this.doError(request, variables, remainingPart));
+        return optionalResponse.orElseGet(() -> this.doError(request, variables, remainingPart));
     }
 
     /**

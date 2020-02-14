@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo.
+ * Copyright (c) 2018, 2020 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -92,7 +92,7 @@ public class SiriusServerProjectService implements ISiriusServerService {
         Optional<ModelingProject> optionalModelingProject = optionalProjectName.flatMap(this::findModelingProjectByName);
         Optional<SiriusServerProjectDto> optionalProject = optionalModelingProject.map(this::getProjectFromModelingProject);
 
-        return optionalProject.map(project -> new SiriusServerResponse(STATUS_OK, project)).orElse(new SiriusServerResponse(STATUS_NOT_FOUND));
+        return optionalProject.map(project -> new SiriusServerResponse(STATUS_OK, project)).orElseGet(() -> new SiriusServerResponse(STATUS_NOT_FOUND));
     }
 
     /**

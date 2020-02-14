@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017 Obeo.
+ * Copyright (c) 2017, 2020 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -82,7 +82,7 @@ public final class Utils {
     private static StyledString computeIdentifiedElementLabel(ItemProviderAdapter itemProviderAdapter, IdentifiedElement identifiedElement, String defaultLabelKey) {
         String label = Optional.ofNullable(identifiedElement.getLabel()).orElse(""); //$NON-NLS-1$
         if (label.isEmpty()) {
-            label = Optional.ofNullable(identifiedElement.getName()).filter(id -> !id.isEmpty()).orElse(itemProviderAdapter.getString(defaultLabelKey));
+            label = Optional.ofNullable(identifiedElement.getName()).filter(id -> !id.isEmpty()).orElseGet(() -> itemProviderAdapter.getString(defaultLabelKey));
         }
         StyledString styledString = new StyledString(label);
 
@@ -110,7 +110,8 @@ public final class Utils {
             IdentifiedElement identifiedElement = (IdentifiedElement) object;
             String label = Optional.ofNullable(identifiedElement.getLabel()).orElse(""); //$NON-NLS-1$
             if (label.isEmpty()) {
-                label = Optional.ofNullable(identifiedElement.getName()).filter(id -> !id.isEmpty()).orElse(itemProviderAdapter.getString("_UI_" + identifiedElement.eClass().getName() + "_type")); //$NON-NLS-1$ //$NON-NLS-2$
+                label = Optional.ofNullable(identifiedElement.getName()).filter(id -> !id.isEmpty())
+                        .orElseGet(() -> itemProviderAdapter.getString("_UI_" + identifiedElement.eClass().getName() + "_type")); //$NON-NLS-1$ //$NON-NLS-2$
             }
             return label;
         }
