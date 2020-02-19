@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2019 Obeo
+ * Copyright (c) 2018, 2020 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,15 +12,24 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.api.query;
 
+import java.util.List;
 import java.util.Optional;
 
+import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
+import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.NoteEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusNoteEditPart;
 
 /**
  * A class aggregating all the queries (read-only!) having an {@link IGraphicalEditPart} as a starting point.
@@ -77,6 +86,63 @@ public final class EditPartQuery {
             }
         }
         return Optional.empty();
+    }
+
+    /**
+     * Determine if the current edit part is considered as pinned (or at least to be kept fixed) in case of automatic
+     * layout.
+     * 
+     * @param elementsToNotMove
+     *            IDiagramElementEditPart which are not actually pinned but have to stay fixed (for other reasons).
+     * 
+     * @return <code>true</code> if the current edit part can be moved by automatic layout, false otherwise.
+     */
+    public boolean isMovableByAutomaticLayout(List<IDiagramElementEditPart> elementsToNotMove) {
+        boolean isMovableByAutomaticLayout = true;
+        if (!(editPart instanceof SiriusNoteEditPart)) {
+            if (editPart.resolveSemanticElement() instanceof DDiagramElement) {
+                DDiagramElement dDiagramElement = (DDiagramElement) editPart.resolveSemanticElement();
+                isMovableByAutomaticLayout = !(new PinHelper().isPinned(dDiagramElement) || (elementsToNotMove != null && elementsToNotMove.contains(editPart)));
+            }
+        } else {
+            if (!Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name(), false, null)) {
+                isMovableByAutomaticLayout = false;
+            } else {
+                boolean connectedToPinnedElement = false;
+                Iterable<ConnectionEditPart> filterSourceConnections = () -> editPart.getSourceConnections().stream().filter(ConnectionEditPart.class::isInstance).map(ConnectionEditPart.class::cast)
+                        .iterator();
+                for (ConnectionEditPart sourceConn : filterSourceConnections) {
+                    if (sourceConn.getTarget() instanceof IGraphicalEditPart) {
+                        connectedToPinnedElement = connectedToPinnedElement || !(new EditPartQuery((IGraphicalEditPart) sourceConn.getTarget()).isMovableByAutomaticLayout(elementsToNotMove));
+                    }
+                }
+                Iterable<ConnectionEditPart> filterTargetConnections = () -> editPart.getTargetConnections().stream().filter(ConnectionEditPart.class::isInstance).map(ConnectionEditPart.class::cast)
+                        .iterator();
+                for (ConnectionEditPart targetConn : filterTargetConnections) {
+                    if (targetConn.getSource() instanceof IGraphicalEditPart) {
+                        connectedToPinnedElement = connectedToPinnedElement || !(new EditPartQuery((IGraphicalEditPart) targetConn.getSource()).isMovableByAutomaticLayout(elementsToNotMove));
+                    }
+                }
+                if (connectedToPinnedElement) {
+                    isMovableByAutomaticLayout = false;
+                }
+            }
+        }
+        return isMovableByAutomaticLayout;
+    }
+
+    /**
+     * Return if the current edit part is a {@link NoteEditPart} and is linked to at least one other EditPart.
+     * 
+     * @return <code>true</code> if the current edit part is a {@link NoteEditPart} and is linked to at least one other
+     *         EditPart, false otherwise.
+     */
+    public boolean isANoteLinkedToOtherEditPart() {
+        boolean connectedToElement = false;
+        if (editPart instanceof NoteEditPart) {
+            connectedToElement = editPart.getSourceConnections().size() > 0 || editPart.getTargetConnections().size() > 0;
+        }
+        return connectedToElement;
     }
 
     /**

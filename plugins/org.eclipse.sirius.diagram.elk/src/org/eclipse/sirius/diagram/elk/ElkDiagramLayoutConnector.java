@@ -104,10 +104,12 @@ import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOptionTarget;
 import org.eclipse.sirius.diagram.description.StringLayoutOption;
+import org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusNoteEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AlphaDropShadowBorder;
@@ -332,7 +334,13 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                             editPart = editPart.getParent();
                         }
                         if (editPart instanceof ShapeNodeEditPart && editPartFilter.filter(editPart) && !selectedParts.contains(editPart)) {
-                            selectedParts.add((ShapeNodeEditPart) editPart);
+                            if (editPart instanceof SiriusNoteEditPart) {
+                                if (new EditPartQuery((SiriusNoteEditPart) editPart).isMovableByAutomaticLayout(Collections.EMPTY_LIST)) {
+                                    selectedParts.add((ShapeNodeEditPart) editPart);
+                                }
+                            } else {
+                                selectedParts.add((ShapeNodeEditPart) editPart);
+                            }
                         }
                     }
                 }
