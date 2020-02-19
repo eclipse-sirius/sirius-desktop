@@ -6,7 +6,7 @@ include "modules/jetty-9.4.tpd"
 
 with source, requirements
 
-location Sirius-Photon-Master "http://download.eclipse.org/sirius/updates/nightly/latest/photon/" {
+location Sirius-Photon-Master "https://download.eclipse.org/sirius/updates/nightly/latest/photon/" {
     org.eclipse.sirius.common.interpreter lazy
 }
 
@@ -22,7 +22,7 @@ location Eclipse-Integration "https://download.eclipse.org/eclipse/updates/I-bui
     org.eclipse.equinox.p2.extras.feature.feature.group lazy
 }
 
-location Orbit-latest-I "http://download.eclipse.org/tools/orbit/downloads/latest-I" {
+location Orbit-latest-I "https://download.eclipse.org/tools/orbit/downloads/latest-I" {
     org.apache.log4j lazy
     org.easymock lazy
     org.hamcrest.core lazy
@@ -36,7 +36,7 @@ location Orbit-latest-I "http://download.eclipse.org/tools/orbit/downloads/lates
     ch.qos.logback.classic [1.0.7,1.0.8)
     ch.qos.logback.core [1.0.7,1.0.8)
     org.apache.xalan 2.7.1
-    org.antlr.runtime [4.7.1,4.7.2)
+    org.antlr.runtime [4.7.1,4.8.0)
     org.reactivestreams [1.0.2,1.0.3)
     com.graphql.java.dataloader [2.1.1,2.1.2)
     com.graphql.java [11.0.0,11.0.1)
@@ -53,7 +53,7 @@ location ELK-Nightly "https://build.eclipse.org/modeling/elk/updates/nightly/" {
     org.eclipse.elk.graphviz.feature.source.feature.group lazy
 }
 
-location GEF-LastSuccessful "https://ci.eclipse.org/gef/job/gef-legacy-master/lastSuccessfulBuild/artifact/update-site/" {
+location GEF-Legacy-3.11 "https://download.eclipse.org/tools/gef/updates/legacy/releases/4.0.0_gef-master_1952/" {
 	org.eclipse.draw2d.sdk.feature.group lazy
 	org.eclipse.gef.feature.group lazy
 	org.eclipse.gef.sdk.feature.group lazy
@@ -62,7 +62,7 @@ location GEF-LastSuccessful "https://ci.eclipse.org/gef/job/gef-legacy-master/la
 // We can not depend on the actual latest SWTbot build, it has too many API breaks compared to our reference version
 include "modules/swtbot-2.8.tpd"
 
-location EMF-Nightly "http://download.eclipse.org/modeling/emf/emf/builds/nightly/latest" {
+location EMF-Nightly "https://download.eclipse.org/modeling/emf/emf/builds/nightly/latest" {
 	org.eclipse.emf.feature.group lazy
 	org.eclipse.emf.sdk.feature.group lazy
 	org.eclipse.emf.edit.feature.group lazy
@@ -74,7 +74,7 @@ location UML2-LastSuccessful "https://ci.eclipse.org/uml2/job/mdt-uml2-master/ws
 	org.eclipse.uml2.sdk.feature.group lazy
 }
 
-location OCL-LastSuccessful "http://download.eclipse.org/modeling/mdt/ocl/updates/nightly/" {
+location OCL-LastSuccessful "https://download.eclipse.org/modeling/mdt/ocl/updates/nightly/" {
 	org.eclipse.ocl.all.feature.group lazy
 	org.eclipse.ocl.core.sdk.feature.group lazy
 }
@@ -100,7 +100,7 @@ location Acceleo-LastSuccessful "https://ci.eclipse.org/acceleo/job/acceleo-mast
     org.antlr.runtime [4.3.0,4.4.0)
 }
 
-location EMF-Compare-Nightly "http://download.eclipse.org/modeling/emf/compare/updates/nightly/latest/" {
+location EMF-Compare-Nightly "https://download.eclipse.org/modeling/emf/compare/updates/nightly/latest/" {
 	org.eclipse.emf.compare.feature.group lazy
 }
 
@@ -112,7 +112,7 @@ location GMF-Runtime-LastSuccessful "https://ci.eclipse.org/gmf-runtime/job/gmf-
 	org.eclipse.gmf.runtime.sdk.feature.group lazy
 }
 
-location XText-Latest "http://download.eclipse.org/modeling/tmf/xtext/updates/composite/latest/" {
+location XText-Latest "https://download.eclipse.org/modeling/tmf/xtext/updates/composite/latest/" {
    org.eclipse.xtext.sdk.feature.group lazy
    org.eclipse.xtend.sdk.feature.group lazy
    org.eclipse.xpand.sdk.feature.group lazy

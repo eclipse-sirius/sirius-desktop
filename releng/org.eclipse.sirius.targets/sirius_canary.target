@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_canary" sequenceNumber="1581924861">
+<target name="sirius_canary" sequenceNumber="1582097875">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
@@ -15,28 +15,28 @@
       <repository id="EEF-Latest" location="http://download.eclipse.org/modeling/emft/eef/updates/nightly/latest/neon"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.jetty.io" version="9.4.10.v20180503"/>
-      <unit id="org.eclipse.jetty.continuation" version="9.4.10.v20180503"/>
-      <unit id="org.eclipse.jetty.http" version="9.4.10.v20180503"/>
-      <unit id="org.eclipse.jetty.server" version="9.4.10.v20180503"/>
-      <unit id="org.eclipse.jetty.servlet" version="9.4.10.v20180503"/>
-      <unit id="org.eclipse.jetty.servlets" version="9.4.10.v20180503"/>
-      <unit id="org.eclipse.jetty.util" version="9.4.10.v20180503"/>
-      <unit id="org.eclipse.jetty.security" version="9.4.10.v20180503"/>
-      <unit id="org.eclipse.jetty.websocket.servlet" version="9.4.10.v20180503"/>
-      <unit id="org.eclipse.jetty.websocket.common" version="9.4.10.v20180503"/>
-      <unit id="org.eclipse.jetty.websocket.server" version="9.4.10.v20180503"/>
-      <unit id="org.eclipse.jetty.websocket.api" version="9.4.10.v20180503"/>
-      <unit id="org.eclipse.jetty.client" version="9.4.10.v20180503"/>
-      <unit id="org.eclipse.jetty.websocket.client" version="9.4.10.v20180503"/>
-      <unit id="org.eclipse.jetty.xml" version="9.4.10.v20180503"/>
-      <unit id="org.eclipse.jetty.websocket.javax.websocket" version="9.4.10.v20180503"/>
-      <unit id="org.eclipse.jetty.websocket.javax.websocket.server" version="9.4.10.v20180503"/>
-      <repository id="Jetty-9.4.10" location="http://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.10.v20180503/"/>
+      <unit id="org.eclipse.jetty.io" version="9.4.24.v20191120"/>
+      <unit id="org.eclipse.jetty.continuation" version="9.4.24.v20191120"/>
+      <unit id="org.eclipse.jetty.http" version="9.4.24.v20191120"/>
+      <unit id="org.eclipse.jetty.server" version="9.4.24.v20191120"/>
+      <unit id="org.eclipse.jetty.servlet" version="9.4.24.v20191120"/>
+      <unit id="org.eclipse.jetty.servlets" version="9.4.24.v20191120"/>
+      <unit id="org.eclipse.jetty.util" version="9.4.24.v20191120"/>
+      <unit id="org.eclipse.jetty.security" version="9.4.24.v20191120"/>
+      <unit id="org.eclipse.jetty.websocket.servlet" version="9.4.24.v20191120"/>
+      <unit id="org.eclipse.jetty.websocket.common" version="9.4.24.v20191120"/>
+      <unit id="org.eclipse.jetty.websocket.server" version="9.4.24.v20191120"/>
+      <unit id="org.eclipse.jetty.websocket.api" version="9.4.24.v20191120"/>
+      <unit id="org.eclipse.jetty.client" version="9.4.24.v20191120"/>
+      <unit id="org.eclipse.jetty.websocket.client" version="9.4.24.v20191120"/>
+      <unit id="org.eclipse.jetty.xml" version="9.4.24.v20191120"/>
+      <unit id="org.eclipse.jetty.websocket.javax.websocket" version="9.4.24.v20191120"/>
+      <unit id="org.eclipse.jetty.websocket.javax.websocket.server" version="9.4.24.v20191120"/>
+      <repository id="Jetty-9.4.24" location="https://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.24.v20191120/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sirius.common.interpreter" version="0.0.0"/>
-      <repository id="Sirius-Photon-Master" location="http://download.eclipse.org/sirius/updates/nightly/latest/photon/"/>
+      <repository id="Sirius-Photon-Master" location="https://download.eclipse.org/sirius/updates/nightly/latest/photon/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform.ide" version="0.0.0"/>
@@ -64,11 +64,11 @@
       <unit id="ch.qos.logback.classic" version="1.0.7.v20121108-1250"/>
       <unit id="ch.qos.logback.core" version="1.0.7.v20121108-1250"/>
       <unit id="org.apache.xalan" version="2.7.1.v201005080400"/>
-      <unit id="org.antlr.runtime" version="4.7.1.v20181120-0808"/>
+      <unit id="org.antlr.runtime" version="4.7.2.v20200218-0804"/>
       <unit id="org.reactivestreams" version="1.0.2.v20181120-0809"/>
       <unit id="com.graphql.java.dataloader" version="2.1.1.v20181120-0809"/>
       <unit id="com.graphql.java" version="11.0.0.v20200204-2150"/>
-      <repository id="Orbit-latest-I" location="http://download.eclipse.org/tools/orbit/downloads/latest-I"/>
+      <repository id="Orbit-latest-I" location="https://download.eclipse.org/tools/orbit/downloads/latest-I"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.elk.sdk.feature.feature.group" version="0.0.0"/>
@@ -85,7 +85,7 @@
       <unit id="org.eclipse.draw2d.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.gef.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.gef.sdk.feature.group" version="0.0.0"/>
-      <repository id="GEF-LastSuccessful" location="https://ci.eclipse.org/gef/job/gef-legacy-master/lastSuccessfulBuild/artifact/update-site/"/>
+      <repository id="GEF-Legacy-3.11" location="https://download.eclipse.org/tools/gef/updates/legacy/releases/4.0.0_gef-master_1952/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.swtbot.eclipse.feature.group" version="2.8.0.201906121535"/>
@@ -101,7 +101,7 @@
       <unit id="org.eclipse.emf.edit.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.common.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.ecore.feature.group" version="0.0.0"/>
-      <repository id="EMF-Nightly" location="http://download.eclipse.org/modeling/emf/emf/builds/nightly/latest"/>
+      <repository id="EMF-Nightly" location="https://download.eclipse.org/modeling/emf/emf/builds/nightly/latest"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.uml2.sdk.feature.group" version="0.0.0"/>
@@ -110,7 +110,7 @@
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.ocl.all.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.ocl.core.sdk.feature.group" version="0.0.0"/>
-      <repository id="OCL-LastSuccessful" location="http://download.eclipse.org/modeling/mdt/ocl/updates/nightly/"/>
+      <repository id="OCL-LastSuccessful" location="https://download.eclipse.org/modeling/mdt/ocl/updates/nightly/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.validation.sdk.feature.group" version="0.0.0"/>
@@ -137,7 +137,7 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.emf.compare.feature.group" version="0.0.0"/>
-      <repository id="EMF-Compare-Nightly" location="http://download.eclipse.org/modeling/emf/compare/updates/nightly/latest/"/>
+      <repository id="EMF-Compare-Nightly" location="https://download.eclipse.org/modeling/emf/compare/updates/nightly/latest/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="0.0.0"/>
@@ -153,7 +153,7 @@
       <unit id="org.eclipse.xpand.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.mwe.sdk.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.emf.mwe2.language.sdk.feature.group" version="0.0.0"/>
-      <repository id="XText-Latest" location="http://download.eclipse.org/modeling/tmf/xtext/updates/composite/latest/"/>
+      <repository id="XText-Latest" location="https://download.eclipse.org/modeling/tmf/xtext/updates/composite/latest/"/>
     </location>
   </locations>
 </target>
