@@ -45,6 +45,7 @@ import org.eclipse.elk.core.math.KVector;
 import org.eclipse.elk.core.options.CoreOptions;
 import org.eclipse.elk.core.options.EdgeLabelPlacement;
 import org.eclipse.elk.core.options.NodeLabelPlacement;
+import org.eclipse.elk.core.options.SizeConstraint;
 import org.eclipse.elk.core.service.IDiagramLayoutConnector;
 import org.eclipse.elk.core.service.LayoutMapping;
 import org.eclipse.elk.core.util.BasicProgressMonitor;
@@ -109,7 +110,9 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditP
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusDescriptionCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusNoteEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusTextEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AlphaDropShadowBorder;
@@ -795,6 +798,10 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             // for some reason;
             // ignore exception and leave the default minimal size
         }
+        if (nodeEditPart instanceof SiriusNoteEditPart || nodeEditPart instanceof SiriusTextEditPart) {
+            // For the Note and Text, we want to have a fixed size (defined by the user)
+            newNode.setProperty(CoreOptions.NODE_SIZE_CONSTRAINTS, SizeConstraint.fixed());
+        }
 
         if (parentElkNode != null) {
             parentElkNode.getChildren().add(newNode);
@@ -981,79 +988,82 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
 
         IFigure labelFigure;
-        if (labelEditPart instanceof IAbstractDiagramNodeEditPart) {
-            labelFigure = ((IAbstractDiagramNodeEditPart) labelEditPart).getNodeLabel();
-        } else {
-            labelFigure = labelEditPart.getFigure();
-        }
-        String text = null;
-
-        if (labelFigure instanceof WrappingLabel) {
-            WrappingLabel wrappingLabel = (WrappingLabel) labelFigure;
-            text = wrappingLabel.getText();
-        } else if (labelFigure instanceof Label) {
-            Label label = (Label) labelFigure;
-            text = label.getText();
-        } else if (labelFigure instanceof SiriusWrapLabel) {
-            SiriusWrapLabel label = (SiriusWrapLabel) labelFigure;
-            text = label.getText();
-        }
-
-        if (text != null) {
-            ElkLabel label = ElkGraphUtil.createLabel(elknode);
-            applyOptionsRelatedToElementTarget(label, elkTargetToOptionsOverrideMap);
-            label.setText(text);
-            Rectangle labelBounds = getAbsoluteBounds(labelFigure);
-            Rectangle nodeBounds;
-            if (!(labelEditPart instanceof IAbstractDiagramNodeEditPart)) {
-                mapping.getGraphMap().put(label, labelEditPart);
-                nodeBounds = getAbsoluteBounds(nodeEditPart.getFigure());
-            } else {
-                nodeBounds = getAbsoluteBounds(labelEditPart.getFigure());
-            }
-            label.setLocation(labelBounds.x - nodeBounds.x, labelBounds.y - nodeBounds.y);
-
-            try {
-                // We use the preferred size and not the labelBounds to "reset" previous manual wrapping size
-                Dimension size = labelFigure.getPreferredSize();
-                label.setDimensions(size.width, size.height);
-            } catch (SWTException exception) {
-                // ignore exception and leave the label size to (0, 0)
-            }
-
-            // Set globally the location of the label according to the style
-            NodeLabelPlacement insideLabelPlacement = NodeLabelPlacement.INSIDE;
-            NodeLabelPlacement verticalNodeLabelPlacement = NodeLabelPlacement.V_TOP;
-            NodeLabelPlacement horizontalLabelPlacement = NodeLabelPlacement.H_CENTER;
-
-            EObject siriusObject;
+        // We do not handle label of Note or Text (we want a fixed size for them).
+        if (!(labelEditPart instanceof SiriusDescriptionCompartmentEditPart)) {
             if (labelEditPart instanceof IAbstractDiagramNodeEditPart) {
-                siriusObject = labelEditPart.resolveSemanticElement();
+                labelFigure = ((IAbstractDiagramNodeEditPart) labelEditPart).getNodeLabel();
             } else {
-                siriusObject = nodeEditPart.resolveSemanticElement();
+                labelFigure = labelEditPart.getFigure();
             }
-            if (siriusObject instanceof DDiagramElement) {
-                DDiagramElement dde = (DDiagramElement) siriusObject;
-                Style style = dde.getStyle();
-                if (style instanceof LabelStyle) {
-                    LabelAlignment labelAlignment = ((LabelStyle) style).getLabelAlignment();
-                    if (labelAlignment.equals(LabelAlignment.LEFT)) {
-                        horizontalLabelPlacement = NodeLabelPlacement.H_LEFT;
-                    } else if (labelAlignment.equals(LabelAlignment.RIGHT)) {
-                        horizontalLabelPlacement = NodeLabelPlacement.H_RIGHT;
-                    }
-                }
-                if (style instanceof NodeStyle) {
-                    if (((NodeStyle) style).getLabelPosition().equals(LabelPosition.BORDER_LITERAL)) {
-                        insideLabelPlacement = NodeLabelPlacement.OUTSIDE;
-                    }
-                    verticalNodeLabelPlacement = NodeLabelPlacement.V_CENTER;
-                }
-            }
-            EnumSet<NodeLabelPlacement> enumSet = EnumSet.of(insideLabelPlacement, horizontalLabelPlacement, verticalNodeLabelPlacement);
-            label.setProperty(CoreOptions.NODE_LABELS_PLACEMENT, enumSet);
+            String text = null;
 
-            return label;
+            if (labelFigure instanceof WrappingLabel) {
+                WrappingLabel wrappingLabel = (WrappingLabel) labelFigure;
+                text = wrappingLabel.getText();
+            } else if (labelFigure instanceof Label) {
+                Label label = (Label) labelFigure;
+                text = label.getText();
+            } else if (labelFigure instanceof SiriusWrapLabel) {
+                SiriusWrapLabel label = (SiriusWrapLabel) labelFigure;
+                text = label.getText();
+            }
+
+            if (text != null) {
+                ElkLabel label = ElkGraphUtil.createLabel(elknode);
+                applyOptionsRelatedToElementTarget(label, elkTargetToOptionsOverrideMap);
+                label.setText(text);
+                Rectangle labelBounds = getAbsoluteBounds(labelFigure);
+                Rectangle nodeBounds;
+                if (!(labelEditPart instanceof IAbstractDiagramNodeEditPart)) {
+                    mapping.getGraphMap().put(label, labelEditPart);
+                    nodeBounds = getAbsoluteBounds(nodeEditPart.getFigure());
+                } else {
+                    nodeBounds = getAbsoluteBounds(labelEditPart.getFigure());
+                }
+                label.setLocation(labelBounds.x - nodeBounds.x, labelBounds.y - nodeBounds.y);
+
+                try {
+                    // We use the preferred size and not the labelBounds to "reset" previous manual wrapping size
+                    Dimension size = labelFigure.getPreferredSize();
+                    label.setDimensions(size.width, size.height);
+                } catch (SWTException exception) {
+                    // ignore exception and leave the label size to (0, 0)
+                }
+
+                // Set globally the location of the label according to the style
+                NodeLabelPlacement insideLabelPlacement = NodeLabelPlacement.INSIDE;
+                NodeLabelPlacement verticalNodeLabelPlacement = NodeLabelPlacement.V_TOP;
+                NodeLabelPlacement horizontalLabelPlacement = NodeLabelPlacement.H_CENTER;
+
+                EObject siriusObject;
+                if (labelEditPart instanceof IAbstractDiagramNodeEditPart) {
+                    siriusObject = labelEditPart.resolveSemanticElement();
+                } else {
+                    siriusObject = nodeEditPart.resolveSemanticElement();
+                }
+                if (siriusObject instanceof DDiagramElement) {
+                    DDiagramElement dde = (DDiagramElement) siriusObject;
+                    Style style = dde.getStyle();
+                    if (style instanceof LabelStyle) {
+                        LabelAlignment labelAlignment = ((LabelStyle) style).getLabelAlignment();
+                        if (labelAlignment.equals(LabelAlignment.LEFT)) {
+                            horizontalLabelPlacement = NodeLabelPlacement.H_LEFT;
+                        } else if (labelAlignment.equals(LabelAlignment.RIGHT)) {
+                            horizontalLabelPlacement = NodeLabelPlacement.H_RIGHT;
+                        }
+                    }
+                    if (style instanceof NodeStyle) {
+                        if (((NodeStyle) style).getLabelPosition().equals(LabelPosition.BORDER_LITERAL)) {
+                            insideLabelPlacement = NodeLabelPlacement.OUTSIDE;
+                        }
+                        verticalNodeLabelPlacement = NodeLabelPlacement.V_CENTER;
+                    }
+                }
+                EnumSet<NodeLabelPlacement> enumSet = EnumSet.of(insideLabelPlacement, horizontalLabelPlacement, verticalNodeLabelPlacement);
+                label.setProperty(CoreOptions.NODE_LABELS_PLACEMENT, enumSet);
+
+                return label;
+            }
         }
         return null;
     }
