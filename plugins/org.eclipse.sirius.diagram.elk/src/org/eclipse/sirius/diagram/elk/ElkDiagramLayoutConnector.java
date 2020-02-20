@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2019 Kiel University and others.
+ * Copyright (c) 2009, 2020 Kiel University and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -709,14 +709,6 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 if (editPartFilter.filter(childNodeEditPart)) {
                     ElkNode node = createNode(mapping, childNodeEditPart, parentLayoutNode, kinsets, elkTargetToOptionsOverrideMap);
                     maxChildShadowBorderSize = Math.max(maxChildShadowBorderSize, ElkDiagramLayoutConnector.getShadowBorderSize(childNodeEditPart));
-                    // Create label for Node, not Container, with name inside the node, not on border
-                    final EObject eObj = childNodeEditPart.resolveSemanticElement();
-                    if (eObj instanceof DNode && ((NodeStyle) ((DNode) eObj).getStyle()).getLabelPosition() == LabelPosition.NODE_LITERAL) {
-                        ElkLabel newNodeLabel = createNodeLabel(mapping, (IGraphicalEditPart) obj, currentEditPart, parentLayoutNode, elkTargetToOptionsOverrideMap);
-                        if (newNodeLabel != null) {
-                            node.getLabels().add(newNodeLabel);
-                        }
-                    }
                     // process the child as new current edit part
                     buildLayoutGraphRecursively(mapping, childNodeEditPart, node, childNodeEditPart, elkTargetToOptionsOverrideMap);
                 }
@@ -801,6 +793,15 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             applyParentNodeOption(parentElkNode, elkTargetToOptionsOverrideMap);
         }
         mapping.getGraphMap().put(newNode, nodeEditPart);
+
+        // Create label for Node, not Container, with name inside the node, not on border
+        final EObject eObj = nodeEditPart.resolveSemanticElement();
+        if (eObj instanceof DNode && ((NodeStyle) ((DNode) eObj).getStyle()).getLabelPosition() == LabelPosition.NODE_LITERAL) {
+            ElkLabel newNodeLabel = createNodeLabel(mapping, nodeEditPart, (IGraphicalEditPart) nodeEditPart.getParent(), parentElkNode, elkTargetToOptionsOverrideMap);
+            if (newNodeLabel != null) {
+                newNode.getLabels().add(newNodeLabel);
+            }
+        }
 
         // store all the connections to process them later
         addConnections(mapping, nodeEditPart);
