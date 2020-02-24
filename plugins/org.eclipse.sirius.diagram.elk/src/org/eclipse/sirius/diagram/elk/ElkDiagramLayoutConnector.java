@@ -106,7 +106,6 @@ import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOptionTarget;
 import org.eclipse.sirius.diagram.description.StringLayoutOption;
 import org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
@@ -259,7 +258,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      */
     public static double getShadowBorderSize(final EditPart editPart) {
         double shadowBorderSize = 0;
-        if (editPart instanceof AbstractDiagramContainerEditPart && ((AbstractDiagramContainerEditPart) editPart).isShadowBorderNeeded()) {
+        if (editPart instanceof AbstractDiagramElementContainerEditPart && ((AbstractDiagramElementContainerEditPart) editPart).isShadowBorderNeeded()) {
             shadowBorderSize = AlphaDropShadowBorder.getDefaultShadowSize();
         }
         return shadowBorderSize;
