@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_canary" sequenceNumber="1582097875">
+<target name="sirius_canary" sequenceNumber="1582529001">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
@@ -132,7 +132,7 @@
       <unit id="org.eclipse.acceleo.ui.interpreter.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.acceleo.query.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.acceleo.query.source.feature.group" version="0.0.0"/>
-      <unit id="org.antlr.runtime" version="4.3.0.v201502022030"/>
+      <unit id="org.antlr.runtime" version="4.7.2.v20200218-0804"/>
       <repository id="Acceleo-LastSuccessful" location="https://ci.eclipse.org/acceleo/job/acceleo-master/lastSuccessfulBuild/artifact/releng/org.eclipse.acceleo-updatesite/target/repository/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">

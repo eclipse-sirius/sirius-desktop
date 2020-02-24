@@ -97,7 +97,7 @@ location Acceleo-LastSuccessful "https://ci.eclipse.org/acceleo/job/acceleo-mast
     org.eclipse.acceleo.ui.interpreter.source.feature.group lazy
     org.eclipse.acceleo.query.feature.group lazy
     org.eclipse.acceleo.query.source.feature.group lazy
-    org.antlr.runtime [4.3.0,4.4.0)
+    org.antlr.runtime [4.7.1,4.8.0)
 }
 
 location EMF-Compare-Nightly "https://download.eclipse.org/modeling/emf/compare/updates/nightly/latest/" {
