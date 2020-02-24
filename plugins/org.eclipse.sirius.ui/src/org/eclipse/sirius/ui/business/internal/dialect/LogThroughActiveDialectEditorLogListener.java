@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,21 +13,22 @@
 package org.eclipse.sirius.ui.business.internal.dialect;
 
 import java.lang.ref.SoftReference;
-import java.text.MessageFormat;
+import java.util.function.Function;
 
 import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.jface.dialogs.MessageDialog;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys;
-import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -36,35 +37,40 @@ import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.navigator.ICommonLabelProvider;
+import org.eclipse.ui.internal.WorkbenchMessages;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Throwables;
 import com.google.common.collect.Iterables;
 
 /**
- * A {@link ILogListener} that reacts to specific exceptions by logging them
- * through the active {@link DialectEditor} (if any).
+ * A {@link ILogListener} that reacts to specific exceptions by logging them through the active {@link DialectEditor}
+ * (if any).
  *
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  *
  */
 public final class LogThroughActiveDialectEditorLogListener implements ILogListener {
     /**
+     * The message sent when a save all failed.
+     */
+    public static final String SAVE_ALL_FAILED_MESSAGE = NLS.bind(WorkbenchMessages.EditorManager_operationFailed, WorkbenchMessages.SaveAll_text);
+
+    /**
+     * The default error message provider used by this {@link ILogListener}.
+     */
+    public static final Function<Throwable, String> DEFAULT_ERROR_MESSAGE_PROVIDER = new ErrorMessageProvider();
+
+    /**
      * This log listener instance.
      */
     public static final LogThroughActiveDialectEditorLogListener INSTANCE = new LogThroughActiveDialectEditorLogListener();
 
-    /**
-     * The label provider to use for displaying elements name.
-     */
-    private ICommonLabelProvider labelProvider;
+    private Function<Throwable, String> errorMessageProvider = DEFAULT_ERROR_MESSAGE_PROVIDER;
 
     /**
-     * Remembers the last error logged to avoid repeated notifications. Use a
-     * soft reference to avoid leaks as the log listener is a global singleton,
-     * and some exceptions may have references to large application-level
-     * objects.
+     * Remembers the last error logged to avoid repeated notifications. Use a soft reference to avoid leaks as the log
+     * listener is a global singleton, and some exceptions may have references to large application-level objects.
      */
     private SoftReference<Throwable> previousError;
 
@@ -93,7 +99,7 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
                 IEditorPart activeEditor = EclipseUIUtil.getActiveEditor();
                 if (activeEditor instanceof DialectEditor) {
                     if (shouldBeLoggedThroughDialect((DialectEditor) activeEditor, exception)) {
-                        ((DialectEditor) activeEditor).getDialogFactory().informUserOfEvent(IStatus.ERROR, getErrorMessage(exception));
+                        ((DialectEditor) activeEditor).getDialogFactory().informUserOfEvent(IStatus.ERROR, errorMessageProvider.apply(exception));
                         hasBeenLoggedThroughDialect = true;
                     }
                 }
@@ -102,12 +108,13 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
             // requires logging, opening a pop-up
             // Notice that we do not display such pop-ups while eclipse is
             // starting (can be confusing for end-user)
-            if (!hasBeenLoggedThroughDialect && shouldBeLoggedThroughPopup(exception) && PlatformUI.isWorkbenchRunning() && !PlatformUI.getWorkbench().isStarting()) {
+            final String statusMessage = status != null ? status.getMessage() : ""; //$NON-NLS-1$
+            if (!hasBeenLoggedThroughDialect && shouldBeLoggedThroughPopup(statusMessage, exception) && PlatformUI.isWorkbenchRunning() && !PlatformUI.getWorkbench().isStarting()) {
                 Display.getDefault().asyncExec(new Runnable() {
                     @Override
                     public void run() {
                         MessageDialog.openWarning(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), Messages.LogThroughActiveDialectEditorLogListener_permissionError,
-                                getErrorMessage(exception));
+                                errorMessageProvider.apply(exception));
                     }
                 });
             }
@@ -115,13 +122,11 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
     }
 
     /**
-     * Indicates whether the given exception should be logged through the active
-     * dialect or not.
+     * Indicates whether the given exception should be logged through the active dialect or not.
      *
      * @param exception
      *            the exception that is being logged in the error log
-     * @return true if the given exception should be logged through the active
-     *         dialect, false otherwise
+     * @return true if the given exception should be logged through the active dialect, false otherwise
      */
     private boolean shouldBeLoggedThroughDialect(DialectEditor editor, Throwable exception) {
         // We only log LockedInstance exceptions
@@ -166,50 +171,44 @@ public final class LogThroughActiveDialectEditorLogListener implements ILogListe
     /**
      * Indicates whether the given exception should be logged through a pop-up.
      *
+     * @param statusMessage
+     *            The initial message of the status containing exception
      * @param exception
      *            the exception that is being logged in the error log
-     * @return true if the given exception should be logged through a pop-up,
-     *         false otherwise
+     * @return true if the given exception should be logged through a pop-up, false otherwise
      */
-    private boolean shouldBeLoggedThroughPopup(Throwable exception) {
+    protected boolean shouldBeLoggedThroughPopup(String statusMessage, Throwable exception) {
         boolean shouldBeLogged = false;
-        // We only consider LockedInstanceException and SecurityException with
-        // message
-        shouldBeLogged = exception instanceof LockedInstanceException || exception instanceof SecurityException;
+        // We only consider SecurityException with message and
+        // LockedInstanceException with message having a status without message
+        // "Save All Failed" (as it corresponds to a save on Properties view
+        // already handled by another save)
+        shouldBeLogged = (exception instanceof LockedInstanceException && !SAVE_ALL_FAILED_MESSAGE.equals(statusMessage)) || exception instanceof SecurityException;
         if (shouldBeLogged) {
-            String message = getErrorMessage(exception);
-            shouldBeLogged = message != null && !message.isEmpty();
+            String message = errorMessageProvider.apply(exception);
+            shouldBeLogged = !StringUtil.isEmpty(message);
         }
         return shouldBeLogged;
     }
 
     /**
-     * Returns the error message corresponding to the given exception.
-     *
-     * @param exception
-     *            the exception to get the error message from
-     * @return the error message corresponding to the given exception
+     * Change the error message provider of this listener to display a different message.
+     * 
+     * @param errorMessageProvider
+     *            The new error message provider to set.
      */
-    private String getErrorMessage(Throwable exception) {
-        String errorMessage = exception.getMessage();
-        if (exception instanceof LockedInstanceException) {
-            EObject lockedElement = ((LockedInstanceException) exception).getLockedElement();
-            if (lockedElement != null) {
-                errorMessage = MessageFormat.format(LockedInstanceException.PERMISSION_ISSUE_MESSAGE, getLabelProvider().getText(lockedElement));
-            }
+    public void setErrorMessageProvider(Function<Throwable, String> errorMessageProvider) {
+        if (errorMessageProvider == null) {
+            throw new IllegalArgumentException(Messages.LogThroughActiveDialectEditorLogListener_wrongErrorMessageProvider);
+        } else {
+            this.errorMessageProvider = errorMessageProvider;
         }
-        return errorMessage;
     }
 
     /**
-     * Returns the label provider to use for displaying locked elements.
-     *
-     * @return the label provider to use for displaying locked elements.
+     * Set the default error message provider of this listener.
      */
-    private ICommonLabelProvider getLabelProvider() {
-        if (labelProvider == null) {
-            labelProvider = new SiriusCommonLabelProvider();
-        }
-        return labelProvider;
+    public void resetErrorMessageProvider() {
+        this.errorMessageProvider = DEFAULT_ERROR_MESSAGE_PROVIDER;
     }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
+import org.eclipse.core.commands.operations.OperationHistoryFactory;
 import org.eclipse.core.resources.IMarker;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.Assert;
@@ -86,6 +87,8 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
 
     private final Map<Session, SessionListener> sessionsToListeners = new HashMap<>();
 
+    private SiriusOperationHistoryListener siriusOperationHistoryListener = new SiriusOperationHistoryListener();
+
     /**
      * Default initialization of a {@link SessionManagerImpl}.
      *
@@ -135,6 +138,11 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
             newSession.addListener(sessListener);
             sessionsToListeners.put(newSession, sessListener);
 
+            if (sessionsToListeners.size() == 1) {
+                // Add the Sirius operation history listener (because this is the first session added)
+                OperationHistoryFactory.getOperationHistory().addOperationHistoryListener(siriusOperationHistoryListener);
+            }
+
             /*
              * Concurrent modification safe iterator => useful if a listener want to remove from listeners list
              */
@@ -144,7 +152,6 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
             }
             this.fireVPSelectionDeselectionEvents();
         }
-
     }
 
     private void notifyUpdatedSession(final Session newSession, final int changeKind) {
@@ -179,6 +186,8 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
              */
             if (sessionsToListeners.isEmpty()) {
                 SiriusPlugin.getDefault().getModelAccessorRegistry().dispose();
+                // Remove the Sirius operation history listener (because the last session has been removed)
+                OperationHistoryFactory.getOperationHistory().removeOperationHistoryListener(siriusOperationHistoryListener);
             }
         }
 
