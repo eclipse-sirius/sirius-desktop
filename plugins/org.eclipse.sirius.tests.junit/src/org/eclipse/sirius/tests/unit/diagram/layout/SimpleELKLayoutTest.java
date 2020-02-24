@@ -26,10 +26,13 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.ArrangeRequest;
+import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
@@ -167,6 +170,94 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
                 c1Dimension.contains(minimumTextSize));
     }
 
+    /**
+     * Check that the Note is moved with an arrange using ELK, when the preference "Move unlinked notes during layout"
+     * is enabled.
+     * 
+     * @throws Exception
+     *             in case of problem
+     */
+    public void testNoteLayoutWithPrefTrue() throws Exception {
+        testNoteLayoutAccordingToPref(true);
+    }
+
+    /**
+     * Check that the Note is not moved with an arrange using ELK, when the preference "Move unlinked notes during
+     * layout" is disabled.
+     * 
+     * @throws Exception
+     *             in case of problem
+     */
+    public void _testNoteLayoutWithPrefFalse() throws Exception {
+        testNoteLayoutAccordingToPref(false);
+    }
+
+    protected void openDiagram(String diagramName) {
+        diagram = (DDiagram) getRepresentationsByName(diagramName).toArray()[0];
+        editorPart = (IDiagramWorkbenchPart) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+    }
+
+    /**
+     * Check that the Note is moved or not moved with an arrange using ELK, according to the value of the preference
+     * "Move unlinked notes during layout".
+     * 
+     * @throws Exception
+     *             in case of problem
+     */
+    protected void testNoteLayoutAccordingToPref(boolean moveNoteDuringLayout) throws Exception {
+        openDiagram("simpleDiagramWithNote");
+
+        // Get the GMF node corresponding to the Note
+        Node noteNode = getNote(editorPart.getDiagram());
+        assertTrue("One note should exist on the diagram", noteNode != null);
+
+        // Get the corresponding edit part
+        Map editPartRegistry = editorPart.getDiagramEditPart().getRoot().getViewer().getEditPartRegistry();
+        final IGraphicalEditPart noteEditPart = (IGraphicalEditPart) editPartRegistry.get(noteNode);
+
+        // Get the initial note bounds (to be compare to the new bounds after the layout)
+        final Rectangle initialNoteBounds = noteEditPart.getFigure().getBounds().getCopy();
+
+        changeDiagramPreference(SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name(), moveNoteDuringLayout);
+
+        // Launch an arrange all
+        arrangeAll((DiagramEditor) editorPart);
+
+        // Compare the new location with the expected result
+        Rectangle currentNoteBounds = noteEditPart.getFigure().getBounds().getCopy();
+        if (moveNoteDuringLayout) {
+            assertFalse("The Note should be moved during the arrange.", initialNoteBounds.getLocation().equals(currentNoteBounds.getLocation()));
+        } else {
+            assertTrue("The Note should not be moved during the arrange.", initialNoteBounds.getLocation().equals(currentNoteBounds.getLocation()));
+            Optional<DDiagramElement> c4Dde = diagram.getDiagramElements().stream().filter(dde -> dde.getName().equals("MyClass4")).findFirst();
+            if (c4Dde.isPresent()) {
+                IGraphicalEditPart c4EditPart = getEditPart(c4Dde.get());
+                Rectangle c4Bounds = c4EditPart.getFigure().getBounds().getCopy();
+                assertTrue("As the Note is not moved, it is expected to overlap \"MyClass4\" node.", currentNoteBounds.intersects(c4Bounds));
+            } else {
+                fail("The diagram should have a node named \"MyClass4\".");
+            }
+        }
+    }
+
+    private Node getNote(Diagram gmfDiagram) {
+        return getSpecificGmfNode(gmfDiagram, "Note");
+    }
+
+    private Node getSpecificGmfNode(Diagram gmfDiagram, String id) {
+        Node specificNode = null;
+        for (Iterator<Object> iterator = gmfDiagram.getChildren().iterator(); iterator.hasNext() && specificNode == null;) {
+            Object node = iterator.next();
+            if (node instanceof Node) {
+                if (((Node) node).getType().equals(id)) {
+                    specificNode = (Node) node;
+                }
+            }
+        }
+        return specificNode;
+    }
+
     private void restoreInitilaPreferences(IPreferenceStore workspaceViewerPreferenceStore) {
         workspaceViewerPreferenceStore.setValue(WorkspaceViewerProperties.SNAPTOGRID, initialSnapToGridValue);
         workspaceViewerPreferenceStore.setValue(WorkspaceViewerProperties.GRIDSPACING, initialGridSpacingValue);
@@ -189,12 +280,6 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
             dNodes2Bounds.put(dNode, editPart.getFigure().getBounds().getCopy());
         });
         return dNodes2Bounds;
-    }
-
-    protected void openDiagram(String diagramName) {
-        diagram = (DDiagram) getRepresentationsByName(diagramName).toArray()[0];
-        editorPart = (IDiagramWorkbenchPart) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
-        TestsUtil.synchronizationWithUIThread();
     }
 
     private void arrangeAll(final DiagramEditor editorPart) {
