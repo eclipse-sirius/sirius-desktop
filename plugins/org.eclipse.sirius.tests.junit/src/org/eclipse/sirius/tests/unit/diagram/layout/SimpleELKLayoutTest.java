@@ -12,8 +12,10 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.rulers.RulerProvider;
@@ -26,7 +28,9 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.ArrangeRequest;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -140,6 +144,27 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         } finally {
             restoreInitilaPreferences(workspaceViewerPreferenceStore);
         }
+    }
+
+    /**
+     * Check that the size of a Node under the root (under the diagram), is sufficiently large to read the label.
+     */
+    public void testSizeOfRootNode() {
+        openDiagram("simpleDiagram");
+
+        Optional<DDiagramElement> c1Dde = diagram.getDiagramElements().stream().filter(dde -> dde.getName().equals("MyClass1")).findFirst();
+        assertTrue("The diagram should have a node named \"MyClass1\".", c1Dde.isPresent());
+        IGraphicalEditPart c1EditPart = getEditPart(c1Dde.get());
+        assertTrue("The node for \"MyClass1\" should be a DNodeEditPart.", c1EditPart instanceof DNodeEditPart);
+        Dimension minimumTextSize = ((DNodeEditPart) c1EditPart).getNodeLabel().getPreferredSize();
+
+        // Launch an arrange all
+        arrangeAll((DiagramEditor) editorPart);
+
+        // Check that the new Size is bigger than the minimum size to display the text
+        Dimension c1Dimension = c1EditPart.getFigure().getSize();
+        assertTrue("The size of \"MyClass1\" should be sufficiently large to read the label (minimul label size is " + minimumTextSize + " and node size is " + c1Dimension + ".",
+                c1Dimension.contains(minimumTextSize));
     }
 
     private void restoreInitilaPreferences(IPreferenceStore workspaceViewerPreferenceStore) {
