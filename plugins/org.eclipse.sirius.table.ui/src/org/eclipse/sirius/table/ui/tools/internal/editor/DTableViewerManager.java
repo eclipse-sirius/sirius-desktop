@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -189,6 +189,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
 
     private Composite composite;
 
+    private DTableTreeFocusListener focusListener;
+
     /**
      * The constructor.
      * 
@@ -241,8 +243,8 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
         treeViewer.addTreeListener(tableViewerListener);
         initializeDragSupport();
         treeViewer.setUseHashlookup(true);
-        // Add a focus listener to deactivate the EMF actions on the Tree
-        treeViewer.getTree().addFocusListener(new DTableTreeFocusListener(treeEditor, treeViewer.getTree()));
+        focusListener = new DTableTreeFocusListener(treeEditor, treeViewer.getTree());
+        treeViewer.getTree().addFocusListener(focusListener);
         descriptionFileChangedNotifier = new DescriptionFileChangedNotifier(this);
         dTableContentProvider = new DTableContentProvider();
         treeViewer.setContentProvider(dTableContentProvider);
@@ -761,6 +763,10 @@ public class DTableViewerManager extends AbstractDTableViewerManager {
      */
     @Override
     public void dispose() {
+        if (treeViewer.getTree() != null && !treeViewer.getTree().isDisposed() && this.focusListener != null) {
+            treeViewer.getTree().removeFocusListener(this.focusListener);
+            this.focusListener = null;
+        }
         treeViewer.removeTreeListener(tableViewerListener);
         tableViewerListener = null;
         descriptionFileChangedNotifier.dispose();
