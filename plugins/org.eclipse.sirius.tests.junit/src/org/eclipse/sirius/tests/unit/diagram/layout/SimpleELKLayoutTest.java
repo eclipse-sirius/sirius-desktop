@@ -192,6 +192,64 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         testNoteLayoutAccordingToPref(false);
     }
 
+    /**
+     * Check that the size of a Note is the same before and after an arrange.
+     */
+    public void testNoteHaveFixedSizeAfterLayout() {
+        openDiagram("simpleDiagramWithNote");
+
+        // Get the GMF node corresponding to the Note
+        Node noteNode = getNote(editorPart.getDiagram());
+        assertTrue("One note should exist on the diagram", noteNode != null);
+
+        // Get the corresponding edit part
+        Map editPartRegistry = editorPart.getDiagramEditPart().getRoot().getViewer().getEditPartRegistry();
+        final IGraphicalEditPart noteEditPart = (IGraphicalEditPart) editPartRegistry.get(noteNode);
+
+        // Get the initial note bounds (to be compare to the new bounds after the layout)
+        final Rectangle initialNoteBounds = noteEditPart.getFigure().getBounds().getCopy();
+
+        changeDiagramPreference(SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name(), true);
+
+        // Launch an arrange all
+        arrangeAll((DiagramEditor) editorPart);
+
+        // Check that the Note has been moved during the arrange
+        Rectangle currentNoteBounds = noteEditPart.getFigure().getBounds().getCopy();
+        assertFalse("The Note should be moved during the arrange.", initialNoteBounds.getLocation().equals(currentNoteBounds.getLocation()));
+
+        // Check that the size of the Note is the same after the arrange
+        assertEquals("The Note should have the same size before and after the arrange.", initialNoteBounds.getSize(), (currentNoteBounds.getSize()));
+    }
+
+    /**
+     * Check that the size of a Text is the same before and after an arrange.
+     */
+    public void testTextHaveFixedSizeAfterLayout() {
+        openDiagram("simpleDiagramWithText");
+
+        // Get the GMF node corresponding to the Note
+        Node textNode = getText(editorPart.getDiagram());
+        assertTrue("One test should exist on the diagram", textNode != null);
+
+        // Get the corresponding edit part
+        Map editPartRegistry = editorPart.getDiagramEditPart().getRoot().getViewer().getEditPartRegistry();
+        final IGraphicalEditPart textEditPart = (IGraphicalEditPart) editPartRegistry.get(textNode);
+
+        // Get the initial text bounds (to be compare to the new bounds after the layout)
+        final Rectangle initialTextBounds = textEditPart.getFigure().getBounds().getCopy();
+
+        // Launch an arrange all
+        arrangeAll((DiagramEditor) editorPart);
+
+        // Check that the Text has been moved during the arrange
+        Rectangle currentTextBounds = textEditPart.getFigure().getBounds().getCopy();
+        assertFalse("The Text should be moved during the arrange.", initialTextBounds.getLocation().equals(currentTextBounds.getLocation()));
+
+        // Check that the size of the Note is the same after the arrange
+        assertEquals("The Text should have the same size before and after the arrange.", initialTextBounds.getSize(), currentTextBounds.getSize());
+    }
+
     protected void openDiagram(String diagramName) {
         diagram = (DDiagram) getRepresentationsByName(diagramName).toArray()[0];
         editorPart = (IDiagramWorkbenchPart) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
@@ -243,6 +301,10 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
 
     private Node getNote(Diagram gmfDiagram) {
         return getSpecificGmfNode(gmfDiagram, "Note");
+    }
+
+    private Node getText(Diagram gmfDiagram) {
+        return getSpecificGmfNode(gmfDiagram, "Text");
     }
 
     private Node getSpecificGmfNode(Diagram gmfDiagram, String id) {
