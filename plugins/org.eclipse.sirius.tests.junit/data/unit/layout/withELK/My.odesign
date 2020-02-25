@@ -101,5 +101,112 @@
         </edgeMappings>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramWithSVGShapeAndContainer" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <layout xsi:type="description_1:CustomLayoutConfiguration" id="org.eclipse.elk.layered" label="ELK Layered" description="Layer-based algorithm provided by the Eclipse Layout Kernel. Arranges as many edges as possible into one direction by placing nodes into subsequent layers. This implementation supports different routing styles (straight, orthogonal, splines); if orthogonal routing is selected, arbitrary port constraints are respected, thus enabling the layout of block diagrams such as actor-oriented models or circuit schematics. Furthermore, full layout of compound graphs with cross-hierarchy edges is supported when the respective option is activated on the top level.">
+        <layoutOptions xsi:type="description_1:EnumLayoutOption" id="org.eclipse.elk.hierarchyHandling">
+          <targets>NODE</targets>
+          <targets>PARENT</targets>
+          <value name="INCLUDE_CHILDREN"/>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:EnumSetLayoutOption" id="org.eclipse.elk.nodeSize.constraints">
+          <targets>NODE</targets>
+          <values name="NODE_LABELS"/>
+          <values name="MINIMUM_SIZE"/>
+        </layoutOptions>
+      </layout>
+      <defaultLayer name="Default">
+        <edgeMappings name="references" sourceMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithSVGShapeAndContainer']/@defaultLayer/@containerMappings[name='Packages']/@subNodeMappings[name='Classes']" targetMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithSVGShapeAndContainer']/@defaultLayer/@containerMappings[name='Packages']/@subNodeMappings[name='Classes']" targetFinderExpression="aql:self.eReferenceType" sourceFinderExpression="aql:self.eContainer()" domainClass="ecore::EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Packages" semanticCandidatesExpression="aql:self" domainClass="ecore::EPackage">
+          <subNodeMappings name="Classes" domainClass="ecore::EClass">
+            <style xsi:type="style:BundledImageDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramWithList" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <layout xsi:type="description_1:CustomLayoutConfiguration" id="org.eclipse.elk.layered" label="ELK Layered" description="Layer-based algorithm provided by the Eclipse Layout Kernel. Arranges as many edges as possible into one direction by placing nodes into subsequent layers. This implementation supports different routing styles (straight, orthogonal, splines); if orthogonal routing is selected, arbitrary port constraints are respected, thus enabling the layout of block diagrams such as actor-oriented models or circuit schematics. Furthermore, full layout of compound graphs with cross-hierarchy edges is supported when the respective option is activated on the top level.">
+        <layoutOptions xsi:type="description_1:EnumLayoutOption" id="org.eclipse.elk.hierarchyHandling">
+          <targets>NODE</targets>
+          <targets>PARENT</targets>
+          <value name="INCLUDE_CHILDREN"/>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:EnumSetLayoutOption" id="org.eclipse.elk.nodeSize.constraints">
+          <targets>NODE</targets>
+          <values name="NODE_LABELS"/>
+          <values name="MINIMUM_SIZE"/>
+          <values name="PORTS"/>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.nodeNodeBetweenLayers" value="100.0">
+          <targets>PARENT</targets>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:EnumLayoutOption" id="org.eclipse.elk.edgeRouting">
+          <targets>PARENT</targets>
+          <value name="ORTHOGONAL"/>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.spacing.portPort" value="13.0">
+          <targets>NODE</targets>
+          <targets>PARENT</targets>
+        </layoutOptions>
+      </layout>
+      <defaultLayer name="Default">
+        <edgeMappings name="references" sourceMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithList']/@defaultLayer/@containerMappings[name='ClassesContainer']/@borderedNodeMappings[name='references']" targetMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithList']/@defaultLayer/@containerMappings[name='ClassesList'] //@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithList']/@defaultLayer/@containerMappings[name='ClassesContainer']" targetFinderExpression="aql:self.eReferenceType" sourceFinderExpression="aql:self" domainClass="ecore::EReference" useDomainElement="true">
+          <style sizeComputationExpression="2" routingStyle="manhattan" endsCentering="Source">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="ClassesList" semanticCandidatesExpression="aql:self.eClassifiers->select(myEClassifier | not(myEClassifier.name.equalsIgnoreCase('MyClass1')))" domainClass="ecore::EClass" childrenPresentation="List">
+          <subNodeMappings name="listItem" semanticCandidatesExpression="var:self" domainClass="ecore::EClass">
+            <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="listItemWithALongName" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="ClassesContainer" semanticCandidatesExpression="aql:self.eClassifiers->select(myEClassifier | myEClassifier.name.equalsIgnoreCase('MyClass1'))" domainClass="ecore::EClass">
+          <borderedNodeMappings name="references" semanticCandidatesExpression="feature:eReferences" domainClass="ecore::EReference">
+            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="1" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
   </ownedViewpoints>
 </description:Group>

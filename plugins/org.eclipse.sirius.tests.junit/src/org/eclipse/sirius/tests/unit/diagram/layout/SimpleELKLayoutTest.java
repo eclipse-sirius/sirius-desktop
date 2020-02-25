@@ -26,14 +26,20 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.ArrangeRequest;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -248,6 +254,41 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
 
         // Check that the size of the Note is the same after the arrange
         assertEquals("The Text should have the same size before and after the arrange.", initialTextBounds.getSize(), currentTextBounds.getSize());
+    }
+
+    /**
+     * Check that the size of a ListContainer is OK:
+     * <UL>
+     * <LI>Size is long enough to avoid wrap label of list items</LI>
+     * <LI>Incoming edges have no bendpoint</LI>
+     * </UL>
+     */
+    public void testListContainerSize() {
+        openDiagram("diagramWithList");
+
+        Optional<DDiagramElement> c2Dde = diagram.getDiagramElements().stream().filter(dde -> dde.getName().equals("MyClass2")).findFirst();
+        assertTrue("The diagram should have a node named \"MyClass2\".", c2Dde.isPresent());
+        IGraphicalEditPart c2EditPart = getEditPart(c2Dde.get());
+        assertTrue("The node for \"MyClass2\" should be a DNodeListEditPart.", c2EditPart instanceof DNodeListEditPart);
+
+        Optional<DNodeListElement> listItem = ((DNodeList) c2Dde.get()).getOwnedElements().stream().filter(dde -> dde.getName().equals("listItemWithALongName")).findFirst();
+        assertTrue("The container \"MyClass2\" should have a list item named \"listItemWithALongName\".", listItem.isPresent());
+        IGraphicalEditPart listItemEditPart = getEditPart(listItem.get());
+        assertTrue("The node for \"listItemWithALongName\" should be a DNodeListElementEditPart.", listItemEditPart instanceof DNodeListElementEditPart);
+        int expectedOneLineHeight = ((DNodeListElementEditPart) listItemEditPart).getFigure().getSize().height();
+
+        // Launch an arrange all
+        arrangeAll((DiagramEditor) editorPart);
+
+        // Check that the new size is sufficiently large to display the label without wrapping.
+        assertEquals("The list item should be on one line (with one line height)", expectedOneLineHeight, ((DNodeListElementEditPart) listItemEditPart).getFigure().getSize().height());
+
+        // Check that incoming edge has only 2 points (ie without intermediate bendpoints)
+        assertEquals("The container \"MyClass2\" should have one incoming edge", 1, c2EditPart.getTargetConnections().size());
+        assertTrue("The container \"MyClass2\" should have one incoming edge of kind DEdgeEditPart", c2EditPart.getTargetConnections().get(0) instanceof DEdgeEditPart);
+        DEdgeEditPart edgeEditPart = (DEdgeEditPart) c2EditPart.getTargetConnections().get(0);
+        assertTrue("The edge figure should be a PolylineConnectionEx", edgeEditPart.getFigure() instanceof PolylineConnectionEx);
+        assertEquals("The edge should have only 2 points (ie without intermediate bendpoints)", 2, ((PolylineConnectionEx) edgeEditPart.getFigure()).getPoints().size());
     }
 
     protected void openDiagram(String diagramName) {
