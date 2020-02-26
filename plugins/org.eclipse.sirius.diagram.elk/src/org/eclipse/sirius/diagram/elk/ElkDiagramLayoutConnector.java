@@ -50,7 +50,6 @@ import org.eclipse.elk.core.service.IDiagramLayoutConnector;
 import org.eclipse.elk.core.service.LayoutMapping;
 import org.eclipse.elk.core.util.BasicProgressMonitor;
 import org.eclipse.elk.core.util.ElkUtil;
-import org.eclipse.elk.core.util.Maybe;
 import org.eclipse.elk.graph.ElkConnectableShape;
 import org.eclipse.elk.graph.ElkEdge;
 import org.eclipse.elk.graph.ElkEdgeSection;
@@ -451,17 +450,15 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             double miny = Integer.MAX_VALUE;
 
             for (ShapeNodeEditPart editPart : selection) {
-                // We use new insets the selection can have different parents.
-                Maybe<ElkPadding> kinsets = new Maybe<>();
-                ElkNode node = createNode(mapping, editPart, topNode, kinsets, elkTargetToOptionsOevrrideMap);
+                ElkNode node = createNode(mapping, editPart, topNode, elkTargetToOptionsOevrrideMap);
                 minx = Math.min(minx, node.getX());
                 miny = Math.min(miny, node.getY());
-                buildLayoutGraphRecursively(mapping, (IGraphicalEditPart) editPart.getParent(), node, editPart, elkTargetToOptionsOevrrideMap);
+                buildLayoutGraphRecursively(mapping, node, editPart, elkTargetToOptionsOevrrideMap);
             }
             mapping.setProperty(COORDINATE_OFFSET, new KVector(minx, miny));
         } else {
             // traverse all children of the layout root part
-            buildLayoutGraphRecursively(mapping, diagramEditPart, topNode, diagramEditPart, elkTargetToOptionsOevrrideMap);
+            buildLayoutGraphRecursively(mapping, topNode, diagramEditPart, elkTargetToOptionsOevrrideMap);
         }
 
         // transform all connections in the selected area
@@ -662,19 +659,16 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      * 
      * @param mapping
      *            the layout mapping
-     * @param parentEditPart
-     *            the parent edit part of the current elements
      * @param parentLayoutNode
-     *            the corresponding KNode
+     *            the {@link ElkNode} corresponding to the parent edit part of the current edit part
      * @param currentEditPart
      *            the currently analyzed edit part
      * @param elkTargetToOptionsOverrideMap
      *            a map of option targets to corresponding options.
      */
-    protected void buildLayoutGraphRecursively(final LayoutMapping mapping, final IGraphicalEditPart parentEditPart, final ElkNode parentLayoutNode, final IGraphicalEditPart currentEditPart,
+    protected void buildLayoutGraphRecursively(final LayoutMapping mapping, final ElkNode parentLayoutNode, final IGraphicalEditPart currentEditPart,
             Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
 
-        Maybe<ElkPadding> kinsets = new Maybe<ElkPadding>();
         // iterate through the children of the element
         double maxChildShadowBorderSize = -1;
         for (Object obj : currentEditPart.getChildren()) {
@@ -708,7 +702,13 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                     }
 
                     if (compExp) {
-                        buildLayoutGraphRecursively(mapping, parentEditPart, parentLayoutNode, compartment, elkTargetToOptionsOverrideMap);
+                        buildLayoutGraphRecursively(mapping, parentLayoutNode, compartment, elkTargetToOptionsOverrideMap);// TODO:
+                                                                                                                           // Create
+                                                                                                                           // a
+                                                                                                                           // node
+                                                                                                                           // representing
+                                                                                                                           // the
+                                                                                                                           // compartment
                     }
                 }
 
@@ -717,10 +717,10 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             } else if (obj instanceof ShapeNodeEditPart) {
                 ShapeNodeEditPart childNodeEditPart = (ShapeNodeEditPart) obj;
                 if (editPartFilter.filter(childNodeEditPart)) {
-                    ElkNode node = createNode(mapping, childNodeEditPart, parentLayoutNode, kinsets, elkTargetToOptionsOverrideMap);
+                    ElkNode node = createNode(mapping, childNodeEditPart, parentLayoutNode, elkTargetToOptionsOverrideMap);
                     maxChildShadowBorderSize = Math.max(maxChildShadowBorderSize, ElkDiagramLayoutConnector.getShadowBorderSize(childNodeEditPart));
                     // process the child as new current edit part
-                    buildLayoutGraphRecursively(mapping, childNodeEditPart, node, childNodeEditPart, elkTargetToOptionsOverrideMap);
+                    buildLayoutGraphRecursively(mapping, node, childNodeEditPart, elkTargetToOptionsOverrideMap);
                 }
 
                 // process a label of the current node
@@ -755,13 +755,11 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      *            the node edit part
      * @param parentElkNode
      *            the corresponding parent layout node
-     * @param elkinsets
-     *            reference parameter for insets; the insets are calculated if this has not been done before
      * @param elkTargetToOptionsOverrideMap
      *            a map of option targets to corresponding options.
      * @return the created node
      */
-    protected ElkNode createNode(final LayoutMapping mapping, final IGraphicalEditPart nodeEditPart, final ElkNode parentElkNode, final Maybe<ElkPadding> elkinsets,
+    protected ElkNode createNode(final LayoutMapping mapping, final IGraphicalEditPart nodeEditPart, final ElkNode parentElkNode,
             Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
 
         IFigure nodeFigure = nodeEditPart.getFigure();
