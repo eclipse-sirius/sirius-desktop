@@ -90,6 +90,7 @@ import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
@@ -108,6 +109,9 @@ import org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeListCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusDescriptionCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusNoteEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusTextEditPart;
@@ -594,8 +598,10 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             if (!(entry.getValue() instanceof DiagramEditPart)) {
                 ElkGraphElement graphElement = entry.getKey();
                 IGraphicalEditPart part = (IGraphicalEditPart) entry.getValue();
-                applyLayoutRequest.addElement(graphElement, part);
-
+                if (!(part instanceof AbstractDNodeListCompartmentEditPart)) {
+                    // We ignore compartment edit part that are created into ELK side just to have good layout results
+                    applyLayoutRequest.addElement(graphElement, part);
+                }
             }
         }
 
@@ -702,13 +708,22 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                     }
 
                     if (compExp) {
-                        buildLayoutGraphRecursively(mapping, parentLayoutNode, compartment, elkTargetToOptionsOverrideMap);// TODO:
-                                                                                                                           // Create
-                                                                                                                           // a
-                                                                                                                           // node
-                                                                                                                           // representing
-                                                                                                                           // the
-                                                                                                                           // compartment
+                        ElkNode intermediateNode = parentLayoutNode;
+                        if (currentEditPart instanceof IDiagramElementEditPart) {
+                            IDiagramElementEditPart ideep = (IDiagramElementEditPart) currentEditPart;
+                            DDiagramElement dde = ideep.resolveDiagramElement();
+                            if (dde instanceof DNodeList) {
+                                // Create a node representing the compartment
+                                intermediateNode = createNode(mapping, compartment, parentLayoutNode, elkTargetToOptionsOverrideMap);
+                                // Add some additional layout option to its container to have "fit" layout result
+                                Dimension topLeftInsets = GMFHelper.getContainerTopLeftInsetsAfterLabel((Node) compartment.getNotationView(), true);
+                                ElkPadding padding = new ElkPadding(topLeftInsets.preciseWidth(), topLeftInsets.preciseHeight(), topLeftInsets.preciseWidth(), topLeftInsets.preciseHeight());
+                                parentLayoutNode.setProperty(CoreOptions.PADDING, padding);
+                                // no space around labels of list items
+                                parentLayoutNode.setProperty(CoreOptions.NODE_LABELS_PADDING, new ElkPadding());
+                            }
+                        }
+                        buildLayoutGraphRecursively(mapping, intermediateNode, compartment, elkTargetToOptionsOverrideMap);
                     }
                 }
 
@@ -730,9 +745,10 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                     parentLayoutNode.getLabels().add(newNodeLabel);
                 }
             }
-            if (maxChildShadowBorderSize >= 0 && currentEditPart.getNotationView() instanceof Node) {
+            if (maxChildShadowBorderSize >= 0 && currentEditPart.getNotationView() instanceof Node && !(currentEditPart instanceof ResizableCompartmentEditPart)) {
                 // maxChildShadowBorderSize == 0 : There is at least one child, so we set insets of this container
-                // maxChildShadowBorderSize > 0 : There is at least one child with a shadow border, we add this border
+                // maxChildShadowBorderSize > 0 : There is at least one child with a shadow border, we add this
+                // border
                 // size to the insets to avoid potential scrollbar appearance during the layout application
                 // (org.eclipse.sirius.diagram.elk.GmfLayoutEditPolicy.addShapeLayout(GmfLayoutCommand, ElkShape,
                 // GraphicalEditPart, double)).
@@ -782,9 +798,9 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         // useful to debug.
         if (((View) nodeEditPart.getModel()).getElement() instanceof DDiagramElement) {
             newNode.setIdentifier(((DDiagramElement) ((View) nodeEditPart.getModel()).getElement()).getName());
+        } else if (nodeEditPart instanceof AbstractDNodeListCompartmentEditPart) {
+            newNode.setIdentifier("Compartment");
         }
-        // We would set the modified flag to false here, but that doesn't exist
-        // anymore
 
         // determine minimal size of the node
         try {
@@ -1032,28 +1048,33 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 NodeLabelPlacement verticalNodeLabelPlacement = NodeLabelPlacement.V_TOP;
                 NodeLabelPlacement horizontalLabelPlacement = NodeLabelPlacement.H_CENTER;
 
-                EObject siriusObject;
-                if (labelEditPart instanceof IAbstractDiagramNodeEditPart) {
-                    siriusObject = labelEditPart.resolveSemanticElement();
+                // For ListElement, we force H_CENTER and V_CENTER to have good layout result (fit).
+                if (labelEditPart instanceof DNodeListElementEditPart) {
+                    verticalNodeLabelPlacement = NodeLabelPlacement.V_CENTER;
                 } else {
-                    siriusObject = nodeEditPart.resolveSemanticElement();
-                }
-                if (siriusObject instanceof DDiagramElement) {
-                    DDiagramElement dde = (DDiagramElement) siriusObject;
-                    Style style = dde.getStyle();
-                    if (style instanceof LabelStyle) {
-                        LabelAlignment labelAlignment = ((LabelStyle) style).getLabelAlignment();
-                        if (labelAlignment.equals(LabelAlignment.LEFT)) {
-                            horizontalLabelPlacement = NodeLabelPlacement.H_LEFT;
-                        } else if (labelAlignment.equals(LabelAlignment.RIGHT)) {
-                            horizontalLabelPlacement = NodeLabelPlacement.H_RIGHT;
-                        }
+                    EObject siriusObject;
+                    if (labelEditPart instanceof IAbstractDiagramNodeEditPart) {
+                        siriusObject = labelEditPart.resolveSemanticElement();
+                    } else {
+                        siriusObject = nodeEditPart.resolveSemanticElement();
                     }
-                    if (style instanceof NodeStyle) {
-                        if (((NodeStyle) style).getLabelPosition().equals(LabelPosition.BORDER_LITERAL)) {
-                            insideLabelPlacement = NodeLabelPlacement.OUTSIDE;
+                    if (siriusObject instanceof DDiagramElement) {
+                        DDiagramElement dde = (DDiagramElement) siriusObject;
+                        Style style = dde.getStyle();
+                        if (style instanceof LabelStyle) {
+                            LabelAlignment labelAlignment = ((LabelStyle) style).getLabelAlignment();
+                            if (labelAlignment.equals(LabelAlignment.LEFT)) {
+                                horizontalLabelPlacement = NodeLabelPlacement.H_LEFT;
+                            } else if (labelAlignment.equals(LabelAlignment.RIGHT)) {
+                                horizontalLabelPlacement = NodeLabelPlacement.H_RIGHT;
+                            }
                         }
-                        verticalNodeLabelPlacement = NodeLabelPlacement.V_CENTER;
+                        if (style instanceof NodeStyle) {
+                            if (((NodeStyle) style).getLabelPosition().equals(LabelPosition.BORDER_LITERAL)) {
+                                insideLabelPlacement = NodeLabelPlacement.OUTSIDE;
+                            }
+                            verticalNodeLabelPlacement = NodeLabelPlacement.V_CENTER;
+                        }
                     }
                 }
                 EnumSet<NodeLabelPlacement> enumSet = EnumSet.of(insideLabelPlacement, horizontalLabelPlacement, verticalNodeLabelPlacement);

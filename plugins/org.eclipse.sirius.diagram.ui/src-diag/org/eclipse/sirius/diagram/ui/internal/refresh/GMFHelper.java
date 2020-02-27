@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -102,10 +102,8 @@ import com.google.common.collect.Iterators;
 public final class GMFHelper {
 
     /**
-     * see org.eclipse.sirius.diagram.ui.internal.edit.parts.
-     * AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN the Y value is
-     * the DEFAULT_MARGIN + the InvisibleResizableCompartmentFigure top Inset
-     * (1px)
+     * see org.eclipse.sirius.diagram.ui.internal.edit.parts. AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN
+     * the Y value is the DEFAULT_MARGIN + the InvisibleResizableCompartmentFigure top Inset (1px)
      */
     private static Point CONTAINER_INSETS = new Point(AbstractDNodeContainerCompartmentEditPart.DEFAULT_MARGIN, IContainerLabelOffsets.LABEL_OFFSET);
 
@@ -125,8 +123,7 @@ public final class GMFHelper {
      * @param node
      *            the GMF Node
      * 
-     * @return the absolute location of the node relative to the origin
-     *         (Diagram)
+     * @return the absolute location of the node relative to the origin (Diagram)
      */
     public static Point getAbsoluteLocation(Node node) {
         return getAbsoluteLocation(node, false);
@@ -138,13 +135,10 @@ public final class GMFHelper {
      * @param node
      *            the GMF Node
      * @param insetsAware
-     *            true to consider the draw2D figures insets.
-     *            <strong>Warning:</strong> Those insets are based on the
-     *            current Sirius editParts and could become wrong if a developer
-     *            customizes them.
+     *            true to consider the draw2D figures insets. <strong>Warning:</strong> Those insets are based on the
+     *            current Sirius editParts and could become wrong if a developer customizes them.
      * 
-     * @return the absolute location of the node relative to the origin
-     *         (Diagram)
+     * @return the absolute location of the node relative to the origin (Diagram)
      */
     public static Point getAbsoluteLocation(Node node, boolean insetsAware) {
         Node currentNode = node;
@@ -189,20 +183,9 @@ public final class GMFHelper {
                             result.setHeight(CONTAINER_INSETS.y);
                         }
                     }
-
-                    ContainerStyle containerStyle = ddec.getOwnedStyle();
-                    int borderSize = containerStyle.getBorderSize().intValue();
-                    DDiagramElementContainerExperimentalQuery regionQuery = new DDiagramElementContainerExperimentalQuery(ddec);
-                    if (regionQuery.isRegionInHorizontalStack()) {
-                        result.setWidth(result.width() + (isFirstRegion(ddec) ? 0 : borderSize));
-                        result.setHeight(result.height() + 1);
-                    } else if (regionQuery.isRegionInVerticalStack()) {
-                        result.setWidth(result.width() + 1);
-                        result.setHeight(result.height() + (isFirstRegion(ddec) ? 1 : borderSize));
-                    } else {
-                        result.setWidth(result.width() + borderSize);
-                        result.setHeight(result.height() + borderSize);
-                    }
+                    Dimension borderSize = getBorderSize(ddec);
+                    result.setWidth(result.width() + borderSize.width());
+                    result.setHeight(result.height() + borderSize.height());
                 }
             } else if (searchFirstParentContainer) {
                 result = getContainerTopLeftInsets(parentNode, searchFirstParentContainer);
@@ -212,14 +195,71 @@ public final class GMFHelper {
     }
 
     /**
+     * Return the top-left insets of the container of this <code>node</code> that is after the label. The insets also
+     * considers its border.
+     * 
+     * @param node
+     *            The current node
+     * @param searchFirstParentContainer
+     *            true to call recursively until finding a Node container, {@link NodeQuery#isContainer()}, false
+     *            otherwise
+     * @return the top-left insets of the container of this <code>node</code>
+     */
+    public static Dimension getContainerTopLeftInsetsAfterLabel(Node node, boolean searchFirstParentContainer) {
+        Dimension result = new Dimension(0, 0);
+        EObject nodeContainer = node.eContainer();
+        if (nodeContainer instanceof Node) {
+            Node parentNode = (Node) nodeContainer;
+            NodeQuery nodeQuery = new NodeQuery(parentNode);
+            if (nodeQuery.isContainer()) {
+                EObject element = parentNode.getElement();
+                if (element instanceof DDiagramElementContainer) {
+                    result.setWidth(CONTAINER_INSETS.x);
+                    result.setHeight(CONTAINER_INSETS.y);
+
+                    Dimension borderSize = getBorderSize((DDiagramElementContainer) element);
+                    result.setWidth(result.width() + borderSize.width());
+                    result.setHeight(result.height() + borderSize.height());
+                }
+            } else if (searchFirstParentContainer) {
+                result = getContainerTopLeftInsets(parentNode, searchFirstParentContainer);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Get the border size of the <code>ddec</code> ({@link DDiagramElementContainer}).
+     * 
+     * @param ddec
+     *            The {@link DDiagramElementContainer}
+     * @return the border size of the diagram element container.
+     */
+    public static Dimension getBorderSize(DDiagramElementContainer ddec) {
+        Dimension result = new Dimension(0, 0);
+        ContainerStyle containerStyle = ddec.getOwnedStyle();
+        int borderSize = containerStyle.getBorderSize().intValue();
+        DDiagramElementContainerExperimentalQuery regionQuery = new DDiagramElementContainerExperimentalQuery(ddec);
+        if (regionQuery.isRegionInHorizontalStack()) {
+            result.setWidth(isFirstRegion(ddec) ? 0 : borderSize);
+            result.setHeight(1);
+        } else if (regionQuery.isRegionInVerticalStack()) {
+            result.setWidth(1);
+            result.setHeight(isFirstRegion(ddec) ? 1 : borderSize);
+        } else {
+            result.setWidth(borderSize);
+            result.setHeight(borderSize);
+        }
+        return result;
+    }
+
+    /**
      * Shift the current node absolute location by the container insets.
      * 
      * @param locationToTranslate
-     *            the current computed location that will be translated by the
-     *            container insets.
+     *            the current computed location that will be translated by the container insets.
      * @param currentNode
-     *            the current node for which we translate location. We do not
-     *            change the currentNode bounds.
+     *            the current node for which we translate location. We do not change the currentNode bounds.
      */
     private static void translateWithInsets(Point locationToTranslate, Node currentNode) {
         NodeQuery nodeQuery = new NodeQuery(currentNode);
@@ -264,11 +304,9 @@ public final class GMFHelper {
      * Shift the current node absolute bounds location by the container insets.
      * 
      * @param boundsToTranslate
-     *            the current computed bounds that will be translated by the
-     *            container insets.
+     *            the current computed bounds that will be translated by the container insets.
      * @param currentNode
-     *            the current node for which we translate bounds. We do not
-     *            change the currentNode bounds.
+     *            the current node for which we translate bounds. We do not change the currentNode bounds.
      */
     private static void translateWithInsets(Rectangle boundsToTranslate, Node currentNode) {
         Point location = boundsToTranslate.getLocation();
@@ -346,10 +384,8 @@ public final class GMFHelper {
      * @param node
      *            the GMF Node
      * @param insetsAware
-     *            true to consider the draw2D figures insets.
-     *            <strong>Warning:</strong> Those insets are based on the
-     *            current Sirius editParts and could become wrong if a developer
-     *            customizes them.
+     *            true to consider the draw2D figures insets. <strong>Warning:</strong> Those insets are based on the
+     *            current Sirius editParts and could become wrong if a developer customizes them.
      * 
      * @return the absolute bounds of the node relative to the origin (Diagram)
      */
@@ -385,10 +421,8 @@ public final class GMFHelper {
      * @param edge
      *            the GMF Node
      * @param insetsAware
-     *            true to consider the draw2D figures insets.
-     *            <strong>Warning:</strong> Those insets are based on the
-     *            current Sirius editParts and could become wrong if a developer
-     *            customizes them.
+     *            true to consider the draw2D figures insets. <strong>Warning:</strong> Those insets are based on the
+     *            current Sirius editParts and could become wrong if a developer customizes them.
      * 
      * @return the absolute bounds of the edge relative to the origin (Diagram)
      */
@@ -408,8 +442,7 @@ public final class GMFHelper {
      * @param view
      *            the GMF Node or Edge
      * 
-     * @return an optional absolute bounds of the node or edge relative to the
-     *         origin (Diagram)
+     * @return an optional absolute bounds of the node or edge relative to the origin (Diagram)
      */
     public static Option<Rectangle> getAbsoluteBounds(View view) {
         return getAbsoluteBounds(view, false);
@@ -421,13 +454,10 @@ public final class GMFHelper {
      * @param view
      *            the GMF Node or Edge
      * @param insetsAware
-     *            true to consider the draw2D figures insets.
-     *            <strong>Warning:</strong> Those insets are based on the
-     *            current Sirius editParts and could become wrong if a developer
-     *            customizes them.
+     *            true to consider the draw2D figures insets. <strong>Warning:</strong> Those insets are based on the
+     *            current Sirius editParts and could become wrong if a developer customizes them.
      * 
-     * @return an optional absolute bounds of the node or edge relative to the
-     *         origin (Diagram)
+     * @return an optional absolute bounds of the node or edge relative to the origin (Diagram)
      */
     public static Option<Rectangle> getAbsoluteBounds(View view, boolean insetsAware) {
         Option<Rectangle> result = Options.newNone();
@@ -471,9 +501,8 @@ public final class GMFHelper {
      * @param useFigureForAutoSizeConstraint
      *            true to use figure for auto size constraint
      * @param forceFigureAutoSize
-     *            if useFigureForAutoSizeConstraint and if the found edit part
-     *            supports it, force auto size and validate the parent to get
-     *            the auto-sized dimension (during auto-size for example)
+     *            if useFigureForAutoSizeConstraint and if the found edit part supports it, force auto size and validate
+     *            the parent to get the auto-sized dimension (during auto-size for example)
      * @return the bounds of the node.
      */
     public static Rectangle getBounds(Node node, boolean useFigureForAutoSizeConstraint, boolean forceFigureAutoSize) {
@@ -515,8 +544,8 @@ public final class GMFHelper {
     }
 
     /**
-     * This method replace the -1x-1 size with a more realistic size. This size
-     * is probably not exactly the same as in draw2d but much closer that -1x-1.
+     * This method replace the -1x-1 size with a more realistic size. This size is probably not exactly the same as in
+     * draw2d but much closer that -1x-1.
      * 
      * @param node
      *            The GMF node with the auto-size
@@ -525,8 +554,7 @@ public final class GMFHelper {
      * @param useFigureForAutoSizeConstraint
      *            true to use draw2d figure to get size
      * @param providedDefaultSize
-     *            The size used for creation for this kind of <code>node</code>.
-     *            It is the minimum size.
+     *            The size used for creation for this kind of <code>node</code>. It is the minimum size.
      */
     private static void replaceAutoSize(Node node, Rectangle bounds, boolean useFigureForAutoSizeConstraint, Dimension providedDefaultSize) {
         if (bounds.width == -1 || bounds.height == -1) {
@@ -636,9 +664,8 @@ public final class GMFHelper {
     }
 
     /**
-     * Returns a new Point representing the bottom right point of all bounds of
-     * children of this Node. Useful for Node with size of -1x-1 to be more
-     * accurate (but it is still not necessarily the same size that draw2d).
+     * Returns a new Point representing the bottom right point of all bounds of children of this Node. Useful for Node
+     * with size of -1x-1 to be more accurate (but it is still not necessarily the same size that draw2d).
      * 
      * @param node
      *            the node whose bottom right corner is to compute.
@@ -678,9 +705,8 @@ public final class GMFHelper {
     }
 
     /**
-     * Return an option with the editPart corresponding to the <code>view</code>
-     * in the current diagram or an empty Option if there is no corresponding
-     * editPart.
+     * Return an option with the editPart corresponding to the <code>view</code> in the current diagram or an empty
+     * Option if there is no corresponding editPart.
      * 
      * @param view
      *            The view element that is searched
@@ -711,9 +737,8 @@ public final class GMFHelper {
     }
 
     /**
-     * Return an option with the editPart corresponding to the <code>view</code>
-     * in the current diagram or an empty Option if there is no corresponding
-     * editPart.
+     * Return an option with the editPart corresponding to the <code>view</code> in the current diagram or an empty
+     * Option if there is no corresponding editPart.
      * 
      * @param view
      *            The view element that is searched
@@ -732,8 +757,7 @@ public final class GMFHelper {
     }
 
     /**
-     * Get the points list computed from GMF bendpoints according to source side
-     * for the <code>edgeEditPart</code>.
+     * Get the points list computed from GMF bendpoints according to source side for the <code>edgeEditPart</code>.
      * 
      * @param edgeEditPart
      *            The concerned edge edit part.
@@ -761,8 +785,7 @@ public final class GMFHelper {
     }
 
     /**
-     * Get the points list computed from GMF bendpoints according to target side
-     * for the <code>edgeEditPart</code>.
+     * Get the points list computed from GMF bendpoints according to target side for the <code>edgeEditPart</code>.
      * 
      * @param edgeEditPart
      *            The concerned edge edit part.
