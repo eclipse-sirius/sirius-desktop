@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 Kiel University and others.
+ * Copyright (c) 2009, 2020 Kiel University and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.elk.core.util.Pair;
 import org.eclipse.elk.graph.ElkGraphElement;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.Request;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 
 /**
  * Request for automatic layout on a set of edit parts of a diagram.
@@ -37,7 +38,7 @@ public class ApplyLayoutRequest extends Request {
     public static final String REQ_APPLY_LAYOUT = "apply layout";
 
     /** list of layout graph elements and the corresponding edit parts. */
-    private List<Pair<ElkGraphElement, GraphicalEditPart>> mappingList = new LinkedList<>();
+    private List<Pair<ElkGraphElement, IGraphicalEditPart>> mappingList = new LinkedList<>();
 
     /** the upper bound for horizontal coordinates. */
     private double boundx = Float.MAX_VALUE;
@@ -64,13 +65,13 @@ public class ApplyLayoutRequest extends Request {
      * @param editPart
      *            the corresponding edit part
      */
-    public void addElement(final ElkGraphElement element, final GraphicalEditPart editPart) {
+    public void addElement(final ElkGraphElement element, final IGraphicalEditPart editPart) {
         // Back in the old days (Pepperidge Farm remembers...), an element was
         // added to the mappingList only if
         // its layout information had been modified. For the moment, we have
         // removed the modified flag from graph
         // elements. If they return, this would be a place to check for them.
-        mappingList.add(new Pair<ElkGraphElement, GraphicalEditPart>(element, editPart));
+        mappingList.add(new Pair<ElkGraphElement, IGraphicalEditPart>(element, editPart));
     }
 
     /**
@@ -78,7 +79,7 @@ public class ApplyLayoutRequest extends Request {
      * 
      * @return a list with graph elements and corresponding edit parts
      */
-    public List<Pair<ElkGraphElement, GraphicalEditPart>> getElements() {
+    public List<Pair<ElkGraphElement, IGraphicalEditPart>> getElements() {
         return mappingList;
     }
 

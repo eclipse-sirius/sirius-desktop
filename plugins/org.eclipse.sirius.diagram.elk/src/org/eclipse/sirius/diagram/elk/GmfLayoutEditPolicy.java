@@ -19,9 +19,9 @@ import java.util.Map;
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
+import org.eclipse.draw2d.geometry.PrecisionDimension;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.elk.core.math.ElkMath;
@@ -63,7 +63,15 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
+import org.eclipse.sirius.viewpoint.LabelAlignment;
+import org.eclipse.sirius.viewpoint.LabelStyle;
+import org.eclipse.sirius.viewpoint.Style;
 
 /**
  * Edit policy used to apply layout. This edit policy creates a {@link GmfLayoutCommand} to directly manipulate layout
@@ -105,7 +113,7 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
 
                 // retrieve layout data from the request and compute layout data
                 // for the command
-                for (Pair<ElkGraphElement, GraphicalEditPart> layoutPair : layoutRequest.getElements()) {
+                for (Pair<ElkGraphElement, IGraphicalEditPart> layoutPair : layoutRequest.getElements()) {
                     if (layoutPair.getFirst() instanceof ElkNode) {
                         addShapeLayout(command, (ElkShape) layoutPair.getFirst(), layoutPair.getSecond(), scale);
                     } else if (layoutPair.getFirst() instanceof ElkPort) {
@@ -155,16 +163,50 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
      * @param scale
      *            scale factor for coordinates
      */
-    private void addShapeLayout(final GmfLayoutCommand command, final ElkShape elkShape, final GraphicalEditPart editPart, final double scale) {
+    private void addShapeLayout(final GmfLayoutCommand command, final ElkShape elkShape, final IGraphicalEditPart editPart, final double scale) {
 
         View view = (View) editPart.getModel();
 
-        // check whether the location has changed
-        Point newLocation = new PrecisionPoint(Math.round(elkShape.getX() * scale), Math.round(elkShape.getY() * scale));
+        // Compute the new location
+        Point newLocation = new PrecisionPoint(elkShape.getX() * scale, elkShape.getY() * scale);
         // Border nodes are not concerned by insets.
-        if (view instanceof Node && !(elkShape instanceof ElkPort)) {
+        if (view instanceof Node && !(elkShape instanceof ElkPort) && !(isRegion(editPart))) {
             newLocation.translate(GMFHelper.getContainerTopLeftInsets((Node) view, true).getNegated());
         }
+
+        // Compute the new size
+        // We add the border size for containers that require it (see createNode method for details)
+        PrecisionDimension newSize;
+        if (isRegionContainer(editPart)) {
+            // The size of region container is "computed" according to its children.
+            newSize = new PrecisionDimension(-1, -1);
+        } else {
+            double shadowBorderSize = ElkDiagramLayoutConnector.getShadowBorderSize(editPart);
+            newSize = new PrecisionDimension((elkShape.getWidth() + shadowBorderSize) * scale, (elkShape.getHeight() + shadowBorderSize) * scale);
+        }
+
+        // Adapt location and size to real alignment. For some kind of Nodes the alignment is changed in
+        // ElkDiagramLayoutConnector.createNodeLabel to have better
+        // result for its parent size. So the location must be adapted according to this change.
+        EObject siriusObject = editPart.resolveSemanticElement();
+        if (siriusObject instanceof DDiagramElement) {
+            if (siriusObject instanceof DNodeContainer) {
+                if (new DDiagramElementContainerExperimentalQuery((DNodeContainer) siriusObject).isRegionInVerticalStack()) {
+                    // The alignment has been forced to center
+                    DDiagramElement dde = (DDiagramElement) siriusObject;
+                    Style style = dde.getStyle();
+                    if (style instanceof LabelStyle) {
+                        LabelAlignment labelAlignment = ((LabelStyle) style).getLabelAlignment();
+                        if (labelAlignment.equals(LabelAlignment.LEFT) || labelAlignment.equals(LabelAlignment.RIGHT)) {
+                            newSize.setPreciseWidth(newSize.preciseWidth() + (newLocation.preciseX() * 2));
+                            newLocation.x = 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        // Check whether the location has changed
         Object oldx = ViewUtil.getStructuralFeatureValue(view, NotationPackage.eINSTANCE.getLocation_X());
         Object oldy = ViewUtil.getStructuralFeatureValue(view, NotationPackage.eINSTANCE.getLocation_Y());
 
@@ -172,21 +214,33 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
             newLocation = null;
         }
 
-        // check whether the size has changed
-        // We add the border size for containers that require it (see createNode method for details)
-        double shadowBorderSize = ElkDiagramLayoutConnector.getShadowBorderSize(editPart);
-        Dimension newSize = new Dimension((int) ((elkShape.getWidth() + shadowBorderSize) * scale), (int) ((elkShape.getHeight() + shadowBorderSize) * scale));
+        // Check whether the size has changed
         Object oldWidth = ViewUtil.getStructuralFeatureValue(view, NotationPackage.eINSTANCE.getSize_Width());
         Object oldHeight = ViewUtil.getStructuralFeatureValue(view, NotationPackage.eINSTANCE.getSize_Height());
 
         if (oldWidth != null && oldHeight != null && newSize.width == (Integer) oldWidth && newSize.height == (Integer) oldHeight) {
-
             newSize = null;
         }
 
         if (newLocation != null || newSize != null) {
             command.addShapeLayout(view, newLocation, newSize);
         }
+    }
+
+    private boolean isRegion(IGraphicalEditPart editPart) {
+        EObject siriusObject = editPart.resolveSemanticElement();
+        if (siriusObject instanceof DDiagramElementContainer) {
+            return new DDiagramElementContainerExperimentalQuery((DDiagramElementContainer) siriusObject).isRegion();
+        }
+        return false;
+    }
+
+    private boolean isRegionContainer(IGraphicalEditPart editPart) {
+        EObject siriusObject = editPart.resolveSemanticElement();
+        if (siriusObject instanceof DNodeContainer) {
+            return new DNodeContainerExperimentalQuery((DNodeContainer) siriusObject).isRegionContainer();
+        }
+        return false;
     }
 
     /**

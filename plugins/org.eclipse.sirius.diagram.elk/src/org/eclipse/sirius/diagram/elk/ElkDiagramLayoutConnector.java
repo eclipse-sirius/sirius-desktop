@@ -37,6 +37,8 @@ import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.elk.alg.layered.options.CrossingMinimizationStrategy;
+import org.eclipse.elk.alg.layered.options.LayeredOptions;
 import org.eclipse.elk.core.IGraphLayoutEngine;
 import org.eclipse.elk.core.data.LayoutMetaDataService;
 import org.eclipse.elk.core.data.LayoutOptionData;
@@ -89,11 +91,15 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.description.BooleanLayoutOption;
 import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -110,6 +116,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContain
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeListCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusDescriptionCompartmentEditPart;
@@ -598,10 +605,11 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             if (!(entry.getValue() instanceof DiagramEditPart)) {
                 ElkGraphElement graphElement = entry.getKey();
                 IGraphicalEditPart part = (IGraphicalEditPart) entry.getValue();
-                if (!(part instanceof AbstractDNodeListCompartmentEditPart)) {
+                if (!(part instanceof AbstractDNodeListCompartmentEditPart || part instanceof AbstractDNodeContainerCompartmentEditPart)) {
                     // We ignore compartment edit part that are created into ELK side just to have good layout results
                     applyLayoutRequest.addElement(graphElement, part);
                 }
+
             }
         }
 
@@ -712,15 +720,49 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                         if (currentEditPart instanceof IDiagramElementEditPart) {
                             IDiagramElementEditPart ideep = (IDiagramElementEditPart) currentEditPart;
                             DDiagramElement dde = ideep.resolveDiagramElement();
-                            if (dde instanceof DNodeList) {
+                            if (dde instanceof DNodeList || (dde instanceof DNodeContainer && (new DNodeContainerExperimentalQuery((DNodeContainer) dde)).isHorizontaltackContainer()
+                                    || new DNodeContainerExperimentalQuery((DNodeContainer) dde).isVerticalStackContainer())) {
                                 // Create a node representing the compartment
                                 intermediateNode = createNode(mapping, compartment, parentLayoutNode, elkTargetToOptionsOverrideMap);
                                 // Add some additional layout option to its container to have "fit" layout result
                                 Dimension topLeftInsets = GMFHelper.getContainerTopLeftInsetsAfterLabel((Node) compartment.getNotationView(), true);
-                                ElkPadding padding = new ElkPadding(topLeftInsets.preciseWidth(), topLeftInsets.preciseHeight(), topLeftInsets.preciseWidth(), topLeftInsets.preciseHeight());
+                                Dimension borderSize = GMFHelper.getBorderSize((DDiagramElementContainer) dde);
+                                int separatorLineHeight = 1;
+                                ElkPadding padding;
+                                if (dde instanceof DNodeList) {
+                                    padding = new ElkPadding(topLeftInsets.preciseHeight() + separatorLineHeight, topLeftInsets.preciseWidth(), borderSize.height(), topLeftInsets.preciseWidth());
+                                } else {
+                                    // For container with VStack, the label of region occupied all the width so we have
+                                    // not to use insets
+                                    padding = new ElkPadding(topLeftInsets.preciseHeight(), borderSize.preciseWidth(), borderSize.preciseHeight(), borderSize.preciseWidth());
+                                }
                                 parentLayoutNode.setProperty(CoreOptions.PADDING, padding);
-                                // no space around labels of list items
+                                // no space around regions
+                                parentLayoutNode.setProperty(CoreOptions.SPACING_NODE_NODE, 0d);
+                                // no space around labels
                                 parentLayoutNode.setProperty(CoreOptions.NODE_LABELS_PADDING, new ElkPadding());
+                                // Strategy set to INTERACTIVE to keep order of children
+                                parentLayoutNode.setProperty(LayeredOptions.CROSSING_MINIMIZATION_STRATEGY, CrossingMinimizationStrategy.INTERACTIVE);
+
+                                if (dde instanceof DNodeContainer) {
+                                    intermediateNode.setProperty(CoreOptions.PADDING, new ElkPadding(0, 0, 0, 0));
+                                    intermediateNode.setProperty(CoreOptions.SPACING_NODE_NODE, 0d);
+                                    intermediateNode.setProperty(LayeredOptions.CROSSING_MINIMIZATION_STRATEGY, CrossingMinimizationStrategy.INTERACTIVE);
+                                }
+                                intermediateNode.setProperty(CoreOptions.NODE_LABELS_PADDING, new ElkPadding());
+                            } else if (dde instanceof DNodeContainer) {
+                                DNodeContainerExperimentalQuery query = new DNodeContainerExperimentalQuery((DNodeContainer) dde);
+                                if (query.isHorizontaltackContainer()) {
+                                } else if (query.isVerticalStackContainer()) {
+                                    // Add some additional layout option to its container to have "fit" layout result
+                                    Dimension topLeftInsets = GMFHelper.getContainerTopLeftInsets((Node) compartment.getNotationView(), true);
+                                    ElkPadding padding = new ElkPadding(topLeftInsets.preciseHeight(), topLeftInsets.preciseWidth(), topLeftInsets.preciseHeight(), topLeftInsets.preciseWidth());
+                                    parentLayoutNode.setProperty(CoreOptions.PADDING, padding);
+                                    // no space around regions
+                                    parentLayoutNode.setProperty(CoreOptions.SPACING_NODE_NODE, 0d);
+                                    // Strategy set to INTERACTIVE to keep order of children
+                                    parentLayoutNode.setProperty(LayeredOptions.CROSSING_MINIMIZATION_STRATEGY, CrossingMinimizationStrategy.INTERACTIVE);
+                                }
                             }
                         }
                         buildLayoutGraphRecursively(mapping, intermediateNode, compartment, elkTargetToOptionsOverrideMap);
@@ -796,10 +838,10 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         newNode.setDimensions(childAbsoluteBounds.width - shadowBorderSize, childAbsoluteBounds.height - shadowBorderSize);
 
         // useful to debug.
-        if (((View) nodeEditPart.getModel()).getElement() instanceof DDiagramElement) {
-            newNode.setIdentifier(((DDiagramElement) ((View) nodeEditPart.getModel()).getElement()).getName());
-        } else if (nodeEditPart instanceof AbstractDNodeListCompartmentEditPart) {
+        if (nodeEditPart instanceof AbstractDNodeListCompartmentEditPart || nodeEditPart instanceof AbstractDNodeContainerCompartmentEditPart) {
             newNode.setIdentifier("Compartment");
+        } else if (((View) nodeEditPart.getModel()).getElement() instanceof DDiagramElement) {
+            newNode.setIdentifier(((DDiagramElement) ((View) nodeEditPart.getModel()).getElement()).getName());
         }
 
         // determine minimal size of the node
@@ -1058,22 +1100,36 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                     } else {
                         siriusObject = nodeEditPart.resolveSemanticElement();
                     }
+                    boolean forcedValue = false;
                     if (siriusObject instanceof DDiagramElement) {
-                        DDiagramElement dde = (DDiagramElement) siriusObject;
-                        Style style = dde.getStyle();
-                        if (style instanceof LabelStyle) {
-                            LabelAlignment labelAlignment = ((LabelStyle) style).getLabelAlignment();
-                            if (labelAlignment.equals(LabelAlignment.LEFT)) {
-                                horizontalLabelPlacement = NodeLabelPlacement.H_LEFT;
-                            } else if (labelAlignment.equals(LabelAlignment.RIGHT)) {
-                                horizontalLabelPlacement = NodeLabelPlacement.H_RIGHT;
+                        if (siriusObject instanceof DNodeContainer) {
+                            if (new DDiagramElementContainerExperimentalQuery((DNodeContainer) siriusObject).isRegionInVerticalStack()) {
+                                // Keep default value (OK for this kind of container)
+                                forcedValue = true;
+                                verticalNodeLabelPlacement = NodeLabelPlacement.V_CENTER;
+                            } else if (new DDiagramElementContainerExperimentalQuery((DNodeContainer) siriusObject).isRegionInHorizontalStack()) {
+                                forcedValue = true;
+                                // verticalNodeLabelPlacement = NodeLabelPlacement.V_TOP;
+                                // horizontalLabelPlacement = NodeLabelPlacement.H_CENTER;
                             }
                         }
-                        if (style instanceof NodeStyle) {
-                            if (((NodeStyle) style).getLabelPosition().equals(LabelPosition.BORDER_LITERAL)) {
-                                insideLabelPlacement = NodeLabelPlacement.OUTSIDE;
+                        if (!forcedValue) {
+                            DDiagramElement dde = (DDiagramElement) siriusObject;
+                            Style style = dde.getStyle();
+                            if (style instanceof LabelStyle) {
+                                LabelAlignment labelAlignment = ((LabelStyle) style).getLabelAlignment();
+                                if (labelAlignment.equals(LabelAlignment.LEFT)) {
+                                    horizontalLabelPlacement = NodeLabelPlacement.H_LEFT;
+                                } else if (labelAlignment.equals(LabelAlignment.RIGHT)) {
+                                    horizontalLabelPlacement = NodeLabelPlacement.H_RIGHT;
+                                }
                             }
-                            verticalNodeLabelPlacement = NodeLabelPlacement.V_CENTER;
+                            if (style instanceof NodeStyle) {
+                                if (((NodeStyle) style).getLabelPosition().equals(LabelPosition.BORDER_LITERAL)) {
+                                    insideLabelPlacement = NodeLabelPlacement.OUTSIDE;
+                                }
+                                verticalNodeLabelPlacement = NodeLabelPlacement.V_CENTER;
+                            }
                         }
                     }
                 }

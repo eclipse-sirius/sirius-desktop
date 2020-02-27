@@ -16,7 +16,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.elk.graph,
  org.eclipse.gmf.runtime.diagram.ui.render;bundle-version="1.7.1",
  org.eclipse.emf.common,
- org.eclipse.emf.common.ui
+ org.eclipse.emf.common.ui,
+ org.eclipse.elk.alg.layered;bundle-version="0.6.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Import-Package: com.google.common.collect;version="15.0.0",
