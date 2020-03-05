@@ -27,20 +27,26 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.ArrangeRequest;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
+import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IContainerLabelOffsets;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -294,6 +300,91 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         DEdgeEditPart edgeEditPart = (DEdgeEditPart) c2EditPart.getTargetConnections().get(0);
         assertTrue("The edge figure should be a PolylineConnectionEx", edgeEditPart.getFigure() instanceof PolylineConnectionEx);
         assertEquals("The edge should have only 2 points (ie without intermediate bendpoints)", 2, ((PolylineConnectionEx) edgeEditPart.getFigure()).getPoints().size());
+    }
+
+    /**
+     * Check the layout of a container with VStack layout.
+     */
+    public void testVStackContainerLayout() {
+        openDiagram("diagramWithRegions");
+
+        Optional<DDiagramElement> vStackContainer = diagram.getDiagramElements().stream().filter(dde -> dde.getName().equals("root_V")).findFirst();
+        assertTrue("The diagram should have a node named \"root_V\".", vStackContainer.isPresent());
+        IGraphicalEditPart vStackContainerEditPart = getEditPart(vStackContainer.get());
+        assertTrue("The node for \"root_V\" should be an AbstractDiagramContainerEditPart.", vStackContainerEditPart instanceof AbstractDiagramContainerEditPart);
+
+        Optional<DDiagramElement> c2Dde = ((DNodeContainer) vStackContainer.get()).getOwnedDiagramElements().stream().filter(dde -> dde.getName().equals("MyClass2")).findFirst();
+        assertTrue("The container \"root_V\" should have a region named \"MyClass2\".", c2Dde.isPresent());
+        IGraphicalEditPart c2EditPart = getEditPart(c2Dde.get());
+        assertTrue("The node for \"MyClass2\" should be a AbstractDiagramContainerEditPart.", c2EditPart instanceof AbstractDiagramContainerEditPart);
+        int expectedOneLineHeight = ((AbstractDiagramContainerEditPart) c2EditPart).getNodeLabel().getSize().height();
+        int expectedOneLineWidth = ((AbstractDiagramContainerEditPart) c2EditPart).getNodeLabel().getSize().width();
+
+        // Launch an arrange all
+        arrangeAll((DiagramEditor) editorPart);
+
+        // Check that the new size of list item is sufficiently large to display the label without wrapping : one line
+        // label height + label offset + 1 pixel for the separator between 2 regions.
+        int expectedRegionHeight = expectedOneLineHeight + IContainerLabelOffsets.LABEL_OFFSET + 1;
+        assertEquals("The empty region should be on one line (with one line height)", expectedRegionHeight, ((AbstractDiagramContainerEditPart) c2EditPart).getFigure().getSize().height());
+
+        // The GMF size of VStack container should be "auto-size" ie {-1,-1}
+        assertTrue(vStackContainerEditPart.getNotationView() instanceof Node);
+        Node vStackNode = (Node) vStackContainerEditPart.getNotationView();
+        LayoutConstraint layoutConstraint = vStackNode.getLayoutConstraint();
+        assertTrue(layoutConstraint instanceof Bounds);
+        Bounds bounds = (Bounds) layoutConstraint;
+        assertEquals("The width of the VStack container should be \"auto-sized\" after an arrange all.", -1, bounds.getWidth());
+        assertEquals("The height of the VStack container should be \"auto-sized\" after an arrange all.", -1, bounds.getHeight());
+
+        // Check that the new size of the VStack compartment if not too big (around 5x the size of one region height : a
+        // delta of 20 pixels for all margins).
+        assertEquals("The VStack container should not be too high (arround 5x the size of one line height)", 5 * expectedRegionHeight, vStackContainerEditPart.getFigure().getSize().height(), 20);
+
+        // Check width
+        assertEquals("The region size should fit the label size", expectedOneLineWidth, c2EditPart.getFigure().getSize().width(), 10);
+
+        // Check width, height, x and y location of each region (GMF bounds): Same width for each region, same height
+        // for each region, x==0 for each region, y==0 for first region and other regions below
+        assertEquals(2, ((AbstractDiagramContainerEditPart) vStackContainerEditPart).getChildren().size());
+        Object compartmentEditPart = ((AbstractDiagramContainerEditPart) vStackContainerEditPart).getChildren().get(1);
+        assertTrue(compartmentEditPart instanceof AbstractDNodeContainerCompartmentEditPart);
+        int previousRegionWidth = 0;
+        int previousRegionHeight = 0;
+        boolean isFirstRegion = true;
+        int previousY = 0;
+        for (Object child : ((AbstractDNodeContainerCompartmentEditPart) compartmentEditPart).getChildren()) {
+            if (child instanceof AbstractDiagramContainerEditPart) {
+                AbstractDiagramContainerEditPart regionEditPart = (AbstractDiagramContainerEditPart) child;
+                assertTrue(regionEditPart.getNotationView() instanceof Node);
+                Node regionNode = (Node) regionEditPart.getNotationView();
+                LayoutConstraint regionLayoutConstraint = regionNode.getLayoutConstraint();
+                assertTrue(regionLayoutConstraint instanceof Bounds);
+                Bounds regionBounds = (Bounds) regionLayoutConstraint;
+                assertEquals("x coordinate of each region should be 0", 0, regionBounds.getX());
+                assertEquals("Each region should be below the previous, wrong location for " + ((DNodeContainer) regionEditPart.resolveSemanticElement()).getName(), previousY + previousRegionHeight,
+                        regionBounds.getY());
+                previousY = regionBounds.getY();
+                if (previousRegionWidth == 0) {
+                    previousRegionWidth = regionBounds.getWidth();
+                } else {
+                    assertEquals("Each region should have the same width, width of \"" + ((DNodeContainer) regionEditPart.resolveSemanticElement()).getName()
+                            + "\" is not the same than the previous region", previousRegionWidth, regionBounds.getWidth());
+                }
+                if (previousRegionHeight == 0) {
+                    previousRegionHeight = regionBounds.getHeight();
+                } else {
+                    if (isFirstRegion) {
+                        // The first region is one pixel less than others (no upper border)
+                        previousRegionHeight += 1;
+                        isFirstRegion = false;
+                    }
+                    assertEquals("Each region should have the same height, height of \"" + ((DNodeContainer) regionEditPart.resolveSemanticElement()).getName()
+                            + "\" is not the same than the previous region", previousRegionHeight, regionBounds.getHeight());
+                    previousRegionHeight = regionBounds.getHeight();
+                }
+            }
+        }
     }
 
     protected void openDiagram(String diagramName) {
