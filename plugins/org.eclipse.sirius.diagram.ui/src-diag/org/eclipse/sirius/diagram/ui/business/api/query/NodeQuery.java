@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,6 @@
 package org.eclipse.sirius.diagram.ui.business.api.query;
 
 import org.eclipse.draw2d.geometry.Dimension;
-import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -26,7 +25,6 @@ import org.eclipse.sirius.diagram.CollapseFilter;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
-import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
@@ -45,8 +43,7 @@ import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 
 /**
- * A class aggregating all the queries (read-only!) having a {@link Node} as a
- * starting point.
+ * A class aggregating all the queries (read-only!) having a {@link Node} as a starting point.
  * 
  * @author lredor
  */
@@ -65,8 +62,7 @@ public class NodeQuery {
     }
 
     /**
-     * Return the expected collapsed node dimension according to the
-     * preferences.
+     * Return the expected collapsed node dimension according to the preferences.
      * 
      * @return The expected collapsed node dimension.
      */
@@ -79,9 +75,8 @@ public class NodeQuery {
     }
 
     /**
-     * Retrieves the node dimension before collapse from {@link CollapseFilter}.
-     * In case of the collapse filter width and height attributes are equal to
-     * zero, the default dimension is returned.
+     * Retrieves the node dimension before collapse from {@link CollapseFilter}. In case of the collapse filter width
+     * and height attributes are equal to zero, the default dimension is returned.
      * 
      * @return the original dimension.
      */
@@ -100,8 +95,8 @@ public class NodeQuery {
     }
 
     /**
-     * Returns if the node is collapsed or is indirectly collapsed (contains at
-     * least one {@link CollapseFilter}) via the {@link DDiagramElementQuery}.
+     * Returns if the node is collapsed or is indirectly collapsed (contains at least one {@link CollapseFilter}) via
+     * the {@link DDiagramElementQuery}.
      * 
      * @return true if the node is collapsed, false otherwise.
      */
@@ -115,10 +110,8 @@ public class NodeQuery {
     }
 
     /**
-     * Returns if the node is directly collapsed (contains at least one
-     * {@link CollapseFilter} that is not a
-     * {@link org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter}) via the
-     * {@link DDiagramElementQuery}.
+     * Returns if the node is directly collapsed (contains at least one {@link CollapseFilter} that is not a
+     * {@link org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter}) via the {@link DDiagramElementQuery}.
      * 
      * @return true if the node is indirectly collapsed, false otherwise.
      */
@@ -132,8 +125,7 @@ public class NodeQuery {
 
     /**
      * Returns if the node is indirectly collapsed (contains at least one
-     * {@link org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter}) via the
-     * {@link DDiagramElementQuery}.
+     * {@link org.eclipse.sirius.viewpoint.IndirectlyCollapseFilter}) via the {@link DDiagramElementQuery}.
      * 
      * @return true if the node is indirectly collapsed, false otherwise.
      */
@@ -169,8 +161,7 @@ public class NodeQuery {
     /**
      * Tests whether the queried Node corresponds to a bordered node.
      * 
-     * @return <code>true</code> if the queried View corresponds to a bordered
-     *         node.
+     * @return <code>true</code> if the queried View corresponds to a bordered node.
      */
     public boolean isBorderedNode() {
         int type = SiriusVisualIDRegistry.getVisualID(this.node.getType());
@@ -181,8 +172,7 @@ public class NodeQuery {
     /**
      * Tests whether the queried Node corresponds to a container (list or not).
      * 
-     * @return <code>true</code> if the queried View corresponds to a container
-     *         node.
+     * @return <code>true</code> if the queried View corresponds to a container node.
      */
     public boolean isContainer() {
         int type = SiriusVisualIDRegistry.getVisualID(this.node.getType());
@@ -192,14 +182,13 @@ public class NodeQuery {
 
     /**
      * <p>
-     * Provides the new extended bounds for the collapsed GMF Node. The collapse
-     * filter attached to graphical filters of the corresponding DDIagramElement
-     * should not be delete before to call this method. Indeed, the old bounds
-     * before to collapse are kept into this collapsed filters.
+     * Provides the new extended bounds for the collapsed GMF Node. The collapse filter attached to graphical filters of
+     * the corresponding DDIagramElement should not be delete before to call this method. Indeed, the old bounds before
+     * to collapse are kept into this collapsed filters.
      * </p>
      * <p>
-     * If the old bounds before to collapse are not saved into the collapse
-     * filter, the size specified into {@link DDiagramElement} is used.
+     * If the old bounds before to collapse are not saved into the collapse filter, the size specified into
+     * {@link DDiagramElement} is used.
      * </p>
      * 
      * @return the new extended bounds.
@@ -277,30 +266,17 @@ public class NodeQuery {
     }
 
     /**
-     * Returns the Rectangle around which handles are to be placed. The
-     * Rectangle should be in the same coordinate system as the bounds itself.
+     * Returns the Rectangle around which handles are to be placed. The Rectangle should be in the same coordinate
+     * system as the bounds itself.
      * 
-     * This method returns the same rectangle as the
-     * {@link org.eclipse.gef.handles.HandleBounds#getHandleBounds()} and that
-     * is used in
-     * {@link org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator.BorderItemLocator#getParentBorder()}
-     * .
+     * This method returns the same rectangle as the {@link org.eclipse.gef.handles.HandleBounds#getHandleBounds()} and
+     * that is used in
+     * {@link org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator.BorderItemLocator#getParentBorder()} .
      * 
      * @return The rectangle used for handles
      */
     public Rectangle getHandleBounds() {
-        Rectangle bounds = GMFHelper.getAbsoluteBounds(node, true);
-        if (node.getElement() instanceof DDiagramElement) {
-            DDiagramElement dDiagramElement = (DDiagramElement) node.getElement();
-            // All container styles have a specific insets.
-            if (dDiagramElement.getDiagramElementMapping() instanceof ContainerMapping) {
-                // This insets corresponds to insets of {@link
-                // org.eclipse.sirius.diagram.ui.tools.api.figure.AlphaDropShadowBorder#getTransparentInsets()}.
-                Insets insets = new Insets(0, 0, 2, 2);
-                return new Rectangle(bounds.x + insets.left, bounds.y + insets.top, bounds.width - (insets.right + insets.left), bounds.height - (insets.bottom + insets.top));
-            }
-        }
-        return bounds;
+        return GMFHelper.getAbsoluteBounds(node, true, true);
     }
 
     /**
@@ -308,8 +284,7 @@ public class NodeQuery {
      * 
      * @param container
      *            The container
-     * @return true if the queried Node is a descendant of
-     *         <code>container</code>, false otherwise.
+     * @return true if the queried Node is a descendant of <code>container</code>, false otherwise.
      */
     public boolean isDescendantOf(View container) {
         boolean result = false;

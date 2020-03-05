@@ -22,6 +22,7 @@ import java.util.Map;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.FigureUtilities;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
@@ -35,6 +36,7 @@ import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
+import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
@@ -58,6 +60,7 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
@@ -77,6 +80,7 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AlphaDropShadowBorder;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IContainerLabelOffsets;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.LabelBorderStyleIds;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
@@ -375,7 +379,7 @@ public final class GMFHelper {
      * @return the absolute bounds of the node relative to the origin (Diagram)
      */
     public static Rectangle getAbsoluteBounds(Node node) {
-        return getAbsoluteBounds(node, false);
+        return getAbsoluteBounds(node, false, false);
     }
 
     /**
@@ -390,8 +394,25 @@ public final class GMFHelper {
      * @return the absolute bounds of the node relative to the origin (Diagram)
      */
     public static Rectangle getAbsoluteBounds(Node node, boolean insetsAware) {
+        return getAbsoluteBounds(node, false, false);
+    }
+
+    /**
+     * Get the absolute bounds relative to the origin (Diagram).
+     * 
+     * @param node
+     *            the GMF Node
+     * @param insetsAware
+     *            true to consider the draw2D figures insets. <strong>Warning:</strong> Those insets are based on the
+     *            current Sirius editParts and could become wrong if a developer customizes them.
+     * @param boxForConnection
+     *            true if we want to have the bounds used to compute connection anchor from source or target, false
+     *            otherwise
+     * @return the absolute bounds of the node relative to the origin (Diagram)
+     */
+    public static Rectangle getAbsoluteBounds(Node node, boolean insetsAware, boolean boxForConnection) {
         Node currentNode = node;
-        Rectangle absoluteNodeBounds = getBounds(currentNode);
+        Rectangle absoluteNodeBounds = getBounds(currentNode, false, false, boxForConnection);
         if (currentNode.eContainer() instanceof Node) {
             currentNode = (Node) currentNode.eContainer();
             Point parentNodeLocation = getAbsoluteLocation(currentNode, insetsAware);
@@ -412,7 +433,7 @@ public final class GMFHelper {
      * @return the absolute bounds of the edge relative to the origin (Diagram)
      */
     public static Option<Rectangle> getAbsoluteBounds(Edge edge) {
-        return getAbsoluteBounds(edge, false);
+        return getAbsoluteBounds(edge, false, false);
     }
 
     /**
@@ -423,10 +444,13 @@ public final class GMFHelper {
      * @param insetsAware
      *            true to consider the draw2D figures insets. <strong>Warning:</strong> Those insets are based on the
      *            current Sirius editParts and could become wrong if a developer customizes them.
+     * @param boxForConnection
+     *            true if we want to have the bounds used to compute connection anchor from source or target, false
+     *            otherwise
      * 
      * @return the absolute bounds of the edge relative to the origin (Diagram)
      */
-    public static Option<Rectangle> getAbsoluteBounds(Edge edge, boolean insetsAware) {
+    public static Option<Rectangle> getAbsoluteBounds(Edge edge, boolean insetsAware, boolean boxForConnection) {
         // Workaround for canonical refresh about edge on edge
         Option<Rectangle> optionalSourceBounds = getAbsoluteBounds(edge.getSource(), insetsAware);
         Option<Rectangle> optionalTargetBounds = getAbsoluteBounds(edge.getTarget(), insetsAware);
@@ -460,11 +484,29 @@ public final class GMFHelper {
      * @return an optional absolute bounds of the node or edge relative to the origin (Diagram)
      */
     public static Option<Rectangle> getAbsoluteBounds(View view, boolean insetsAware) {
+        return getAbsoluteBounds(view, insetsAware, false);
+    }
+
+    /**
+     * Get the absolute bounds relative to the origin (Diagram).
+     * 
+     * @param view
+     *            the GMF Node or Edge
+     * @param insetsAware
+     *            true to consider the draw2D figures insets. <strong>Warning:</strong> Those insets are based on the
+     *            current Sirius editParts and could become wrong if a developer customizes them.
+     * @param boxForConnection
+     *            true if we want to have the bounds used to compute connection anchor from source or target, false
+     *            otherwise
+     * 
+     * @return an optional absolute bounds of the node or edge relative to the origin (Diagram)
+     */
+    public static Option<Rectangle> getAbsoluteBounds(View view, boolean insetsAware, boolean boxForConnection) {
         Option<Rectangle> result = Options.newNone();
         if (view instanceof Node) {
-            result = Options.newSome(getAbsoluteBounds((Node) view, insetsAware));
+            result = Options.newSome(getAbsoluteBounds((Node) view, insetsAware, boxForConnection));
         } else if (view instanceof Edge) {
-            result = getAbsoluteBounds((Edge) view, insetsAware);
+            result = getAbsoluteBounds((Edge) view, insetsAware, boxForConnection);
         }
         return result;
     }
@@ -506,6 +548,25 @@ public final class GMFHelper {
      * @return the bounds of the node.
      */
     public static Rectangle getBounds(Node node, boolean useFigureForAutoSizeConstraint, boolean forceFigureAutoSize) {
+        return getBounds(node, useFigureForAutoSizeConstraint, false, false);
+    }
+
+    /**
+     * Compute the bounds of a GMF node.
+     * 
+     * @param node
+     *            the node whose bounds to compute.
+     * @param useFigureForAutoSizeConstraint
+     *            true to use figure for auto size constraint
+     * @param forceFigureAutoSize
+     *            if useFigureForAutoSizeConstraint and if the found edit part supports it, force auto size and validate
+     *            the parent to get the auto-sized dimension (during auto-size for example)
+     * @param boxForConnection
+     *            true if we want to have the bounds used to compute connection anchor from source or target, false
+     *            otherwise
+     * @return the bounds of the node.
+     */
+    public static Rectangle getBounds(Node node, boolean useFigureForAutoSizeConstraint, boolean forceFigureAutoSize, boolean boxForConnection) {
         PrecisionRectangle bounds = new PrecisionRectangle(0, 0, 0, 0);
         LayoutConstraint layoutConstraint = node.getLayoutConstraint();
         EObject element = node.getElement();
@@ -539,8 +600,52 @@ public final class GMFHelper {
             } else {
                 replaceAutoSize(node, bounds, useFigureForAutoSizeConstraint, null);
             }
+
+            if (boxForConnection) {
+                // Remove the shadow border size (as it is done in SlidableAnchor.getBox() that calls
+                // HandleBounds.getHandleBounds() (for example
+                // org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure.getHandleBounds())
+                // This insets corresponds to insets of {@link
+                // org.eclipse.sirius.diagram.ui.tools.api.figure.AlphaDropShadowBorder#getTransparentInsets()}.
+                double shadowBorderSize = getShadowBorderSize(node);
+                bounds.width -= shadowBorderSize;
+                bounds.height -= shadowBorderSize;
+            }
         }
         return bounds;
+    }
+
+    /**
+     * If the editPart is a container and is not a workspace image or a regions, the default shadow border size is
+     * returned. Otherwise, 0 is returned. See
+     * {@link AbstractDiagramElementContainerEditPart#addDropShadow(NodeFigure,IFigure)}.
+     * 
+     * @param editPart
+     *            an edit part
+     * @return The shadow border size of the edit part
+     */
+    public static double getShadowBorderSize(Node node) {
+        double shadowBorderSize = 0;
+        if (isShadowBorderNeeded(node)) {
+            shadowBorderSize = AlphaDropShadowBorder.getDefaultShadowSize();
+        }
+        return shadowBorderSize;
+    }
+
+    /**
+     * Shadow border is needed for all container except for regions or workspace image styles. These can have a
+     * non-rectangular contour and transparent zones which should be kept as is.
+     * 
+     * @return false for regions and workspace images, true otherwise.
+     */
+    public static boolean isShadowBorderNeeded(Node node) {
+        boolean needShadowBorder = false;
+        EObject element = node.getElement();
+        if (element instanceof DDiagramElementContainer) {
+            DDiagramElementContainer ddec = (DDiagramElementContainer) element;
+            needShadowBorder = !(new DDiagramElementContainerExperimentalQuery(ddec).isRegion() || ddec.getOwnedStyle() instanceof WorkspaceImage);
+        }
+        return needShadowBorder;
     }
 
     /**
