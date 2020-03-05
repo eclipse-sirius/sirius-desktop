@@ -261,9 +261,10 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * <UL>
      * <LI>Size is long enough to avoid wrap label of list items</LI>
      * <LI>Incoming edges have no bendpoint</LI>
+     * <LI>Size if not too big</LI>
      * </UL>
      */
-    public void testListContainerSize() {
+    public void testListContainerLayout() {
         openDiagram("diagramWithList");
 
         Optional<DDiagramElement> c2Dde = diagram.getDiagramElements().stream().filter(dde -> dde.getName().equals("MyClass2")).findFirst();
@@ -280,8 +281,12 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         // Launch an arrange all
         arrangeAll((DiagramEditor) editorPart);
 
-        // Check that the new size is sufficiently large to display the label without wrapping.
+        // Check that the new size of list item is sufficiently large to display the label without wrapping.
         assertEquals("The list item should be on one line (with one line height)", expectedOneLineHeight, ((DNodeListElementEditPart) listItemEditPart).getFigure().getSize().height());
+
+        // Check that the new size of the list if not too big (around 2x the size of one line height : a delta of 20
+        // pixels for all margins).
+        assertEquals("The list should not be too high (arround 2x the size of one line height)", 2 * expectedOneLineHeight, c2EditPart.getFigure().getSize().height(), 20);
 
         // Check that incoming edge has only 2 points (ie without intermediate bendpoints)
         assertEquals("The container \"MyClass2\" should have one incoming edge", 1, c2EditPart.getTargetConnections().size());
