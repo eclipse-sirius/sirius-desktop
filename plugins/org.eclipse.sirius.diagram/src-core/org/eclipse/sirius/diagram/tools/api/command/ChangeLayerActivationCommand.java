@@ -135,7 +135,7 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
     }
 
     /**
-     * Return the list of layers activated or desactivated by the command Can be used to test if the command succeed
+     * Return the list of layers activated or desactivated by the command Can be used to test if the command succeed.
      */
     @Override
     public Collection<?> getResult() {
