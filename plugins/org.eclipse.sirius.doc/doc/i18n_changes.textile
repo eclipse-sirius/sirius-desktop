@@ -2,7 +2,73 @@ h1. Translation Keys Changes
 
 This document lists the changes in @TranslatableMessage@ used for Sirius internationalization in each Sirius version.
 
-h2(#sirius61). Translation Keys Changes in Sirius 6.1 (from Sirius 6.0)
+h2(#sirius614). Translation Keys Changes in Sirius 6.1.4 (from Sirius 6.1.3)
+
+h3. Message Keys Added
+
+* @org.eclipse.sirius.diagram.elk.debug.Messages.ExportToElkGraphHandler_elkExportDialogMessage@
+* @org.eclipse.sirius.diagram.elk.debug.Messages.ExportToElkGraphHandler_elkExportDialogNoAssociatedLayoutMessage@
+* @org.eclipse.sirius.diagram.elk.debug.Messages.ExportToElkGraphHandler_elkExportDialogTitle@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.BundledImageShape_idMissing@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.BundledImageShape_usedByEndUser_idMissing_msg@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.BundledImageShape_usedInVSM_idMissing_msg@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.LabelOnBorderMigrationParticipant_labelsModified@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.LabelOnBorderMigrationParticipant_title@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.SVGFigure_usingInvalidBundledImageShape@
+* @org.eclipse.sirius.editor.Messages.OptionOverrideEditorDialog_optionTargetColumnLabel@
+* @org.eclipse.sirius.editor.Messages.OptionOverrideEditorDialog_targePortLabel@
+* @org.eclipse.sirius.editor.Messages.OptionOverrideEditorDialog_targetEdgeLabel@
+* @org.eclipse.sirius.editor.Messages.OptionOverrideEditorDialog_targetLabelLabel@
+* @org.eclipse.sirius.editor.Messages.OptionOverrideEditorDialog_targetNodeLabel@
+* @org.eclipse.sirius.editor.Messages.OptionOverrideEditorDialog_targetParentLabel@
+* @org.eclipse.sirius.editor.Messages.OptionOverrideEditorDialog_typeBooleanLabel@
+* @org.eclipse.sirius.editor.Messages.OptionOverrideEditorDialog_typeDoubleLabel@
+* @org.eclipse.sirius.editor.Messages.OptionOverrideEditorDialog_typeEnumLabel@
+* @org.eclipse.sirius.editor.Messages.OptionOverrideEditorDialog_typeEnumSetLabel@
+* @org.eclipse.sirius.editor.Messages.OptionOverrideEditorDialog_typeIntegerLabel@
+* @org.eclipse.sirius.editor.Messages.OptionOverrideEditorDialog_typeStringLabel@
+
+h3. Message Keys Removed
+
+None.
+
+h2(#sirius613). Translation Keys Changes in Sirius 6.1.3 (from Sirius 6.1.2)
+
+h3. Message Keys Added
+
+* @org.eclipse.sirius.diagram.ui.provider.Messages.SiriusDiagramActionBarContributor_showElement@
+* @org.eclipse.sirius.viewpoint.Messages.RefreshHelper_notNullPredicate@
+
+h3. Message Keys Removed
+
+None.
+
+h2(#sirius612). Translation Keys Changes in Sirius 6.1.2 (from Sirius 6.1.1)
+
+h3. Message Keys Added
+
+* @org.eclipse.sirius.diagram.sequence.Messages.VerticalSpaceReduction_operationName@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.DDiagramEditorImpl_diagramRefreshTitle@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.DDiagramEditorImpl_shouldWeRefreshQuestion@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.DiagramDialectUIServices_exportedDiagramImageClassCastError@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.RemoveBlankSpace_cmdName@
+* @org.eclipse.sirius.diagram.Messages.SynchronizeGMFModelCommand_label@
+
+h3. Message Keys Removed
+
+* @org.eclipse.sirius.diagram.ui.provider.Messages.SynchronizeGMFModelCommand_label@
+
+h2(#sirius611). Translation Keys Changes in Sirius 6.1.1 (from Sirius 6.1.0)
+
+h3. Message Keys Added
+
+None.
+
+h3. Message Keys Removed
+
+None.
+
+h2(#sirius61). Translation Keys Changes in Sirius 6.1.0 (from Sirius 6.0)
 
 h3. Message Keys Added
 
