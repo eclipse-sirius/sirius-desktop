@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
@@ -43,6 +44,7 @@ import org.eclipse.gmf.runtime.common.ui.services.action.internal.contributionit
 import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
@@ -166,9 +168,9 @@ public class PopupMenuContribution implements IContributionItemProvider {
             final IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) adapter;
             final IDiagramCommandFactory emfCommandFactory = cmdFactoryProvider.getCommandFactory(transactionalEditingDomain);
 
-            final EObject element = diagrampart.getDiagramEditPart().resolveSemanticElement();
-            if (element instanceof DSemanticDiagram) {
-                final DSemanticDiagram designerDiag = (DSemanticDiagram) element;
+            final Optional<DSemanticDiagram> diagram = resolveDiagram(diagrampart);
+            if (diagram.isPresent()) {
+                final DSemanticDiagram designerDiag = diagram.get();
                 final List<Layer> layers = new DDiagramQuery(designerDiag).getAllActivatedLayers();
 
                 final Session session = SessionManager.INSTANCE.getSession(designerDiag.getTarget());
@@ -234,6 +236,20 @@ public class PopupMenuContribution implements IContributionItemProvider {
                 // no focused edit part
             }
         }
+    }
+
+    private Optional<DSemanticDiagram> resolveDiagram(final SiriusDiagramEditor editor) {
+        if (editor.getDiagramGraphicalViewer() != null) {
+            DiagramEditPart diagramEditPart = editor.getDiagramEditPart();
+            if (diagramEditPart != null) {
+                EObject element = diagramEditPart.resolveSemanticElement();
+                if (element instanceof DSemanticDiagram) {
+                    return Optional.of((DSemanticDiagram) element);
+                }
+
+            }
+        }
+        return Optional.empty();
     }
 
     // CHECKSTYLE:OFF
