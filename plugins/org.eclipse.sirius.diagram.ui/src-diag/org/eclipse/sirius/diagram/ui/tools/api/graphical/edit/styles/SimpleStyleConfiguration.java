@@ -214,7 +214,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
      *            the edit part
      * @return <code>true</code> if a custom icon is defined.
      */
-    private boolean useCustomIcon(DDiagramElement vpElement, IGraphicalEditPart editPart) {
+    protected boolean useCustomIcon(DDiagramElement vpElement, IGraphicalEditPart editPart) {
         BasicLabelStyle bls = getBasicLabelStyle(vpElement, editPart);
         return bls != null && !StringUtil.isEmpty(bls.getIconPath());
     }
