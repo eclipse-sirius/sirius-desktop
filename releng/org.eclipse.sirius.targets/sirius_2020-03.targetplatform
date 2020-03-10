@@ -8,7 +8,7 @@ include "modules/acceleo-nightly.tpd"
 include "modules/eef-2.1.tpd"
 include "modules/elk-0.6.tpd"
 include "modules/jetty-9.4.tpd"
-include "modules/gmf-runtime-1.12.tpd"
+include "modules/gmf-runtime-1.13.tpd"
 
 with source, requirements
 
