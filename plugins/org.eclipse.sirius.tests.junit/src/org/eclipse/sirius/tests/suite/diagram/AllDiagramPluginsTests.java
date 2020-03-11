@@ -146,6 +146,7 @@ import org.eclipse.sirius.tests.unit.diagram.layers.Layers1887Tests;
 import org.eclipse.sirius.tests.unit.diagram.layers.LayersTest;
 import org.eclipse.sirius.tests.unit.diagram.layers.MappingsIterationTests;
 import org.eclipse.sirius.tests.unit.diagram.layers.MappingsTableTests;
+import org.eclipse.sirius.tests.unit.diagram.layout.SimpleELKLayoutTest;
 import org.eclipse.sirius.tests.unit.diagram.layout.margin.BorderMarginTest;
 import org.eclipse.sirius.tests.unit.diagram.layout.pinning.PinnedElementsTest;
 import org.eclipse.sirius.tests.unit.diagram.layoutingmode.LayoutingModeOnCustomModelerTest;
@@ -369,6 +370,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(DiagramElementSelectionDialogTest.class);
         suite.addTestSuite(DiagramElementSelectionDialogPatternMatcherTest.class);
         suite.addTestSuite(PinnedElementsTest.class);
+        suite.addTestSuite(SimpleELKLayoutTest.class);
 
         suite.addTestSuite(DDiagramCanonicalSynchronizerTests.class);
         suite.addTestSuite(DiagramSynchronizationTest.class);
