@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -1466,7 +1466,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
         }
         graphicalEditPart.getFigure().translateToAbsolute(bounds);
         // The interesting size is the parent border one here.
-        bounds.setSize(parentBorderSize);
+        bounds.setSize(parentBorderSize.getScaled(scale));
 
         if (!isPinned && launchNormalArrange) {
             // Compute size after arrange (with auto-size)

@@ -161,7 +161,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase1() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC1, REPRESENTATION_INSTANCE_NAME_UC1, DDiagram.class);
+                REPRESENTATION_NAME_UC1, REPRESENTATION_INSTANCE_NAME_UC1, DDiagram.class, true, true);
         // activate the "Arrange Linked Border Nodes" action
         arrangeAllMenu();
         // Validate the positions of the bordered nodes.
@@ -179,7 +179,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase2() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC2, DDiagram.class);
+                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC2, DDiagram.class, true, true);
         // activate the "Arrange Linked Border Nodes" action
         arrangeAllMenu();
         // Validate the positions of the border nodes.
@@ -194,7 +194,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase3() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC3, REPRESENTATION_INSTANCE_NAME_UC3, DDiagram.class);
+                REPRESENTATION_NAME_UC3, REPRESENTATION_INSTANCE_NAME_UC3, DDiagram.class, true, true);
         // activate the "Arrange Linked Border Nodes" action
         arrangeAllMenu();
         // Validate the positions of the border nodes.
@@ -217,7 +217,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void failedTestArrangeLinkedBorderNodesCase4() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC4, REPRESENTATION_INSTANCE_NAME_UC4, DDiagram.class);
+                REPRESENTATION_NAME_UC4, REPRESENTATION_INSTANCE_NAME_UC4, DDiagram.class, true, true);
         // activate the "Arrange Linked Border Nodes" action
         arrangeAllMenu();
         // Validate the positions of the border nodes.
@@ -232,7 +232,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase5_1() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_1, DDiagram.class);
+                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_1, DDiagram.class, true, true);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -247,7 +247,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase5_2() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_2, DDiagram.class);
+                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_2, DDiagram.class, true, true);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -262,7 +262,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase5_3() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_3, DDiagram.class);
+                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_3, DDiagram.class, true, true);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -277,7 +277,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase5_4() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_4, DDiagram.class);
+                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_4, DDiagram.class, true, true);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -292,7 +292,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase5_5() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_5, DDiagram.class);
+                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_5, DDiagram.class, true, true);
         arrangeLinkedBorderedNodes();
         // Validate the positions of the bordered nodes.
         validatePositionsOfUseCase5();
@@ -306,7 +306,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase5_6() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_6, DDiagram.class);
+                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_6, DDiagram.class, true, true);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -321,7 +321,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase5_7() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_7, DDiagram.class);
+                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_7, DDiagram.class, true, true);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -336,7 +336,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase5_8() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_8, DDiagram.class);
+                REPRESENTATION_NAME_UC2, REPRESENTATION_INSTANCE_NAME_UC5_8, DDiagram.class, true, true);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -351,7 +351,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase6() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC3, REPRESENTATION_INSTANCE_NAME_UC6, DDiagram.class);
+                REPRESENTATION_NAME_UC3, REPRESENTATION_INSTANCE_NAME_UC6, DDiagram.class, true, true);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -366,7 +366,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase7() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC7, DDiagram.class);
+                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC7, DDiagram.class, true, true);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -386,17 +386,21 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase7WithZoom() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC7, DDiagram.class);
+                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC7, DDiagram.class, true, true);
         editor.zoom(ZoomLevel.ZOOM_200);
-        // activate the "Arrange Linked Border Nodes" action
-        arrangeLinkedBorderedNodes();
-        // Validate the positions of the border nodes.
-        validatePositionOfPortOnContainer("package2", "eClass4");
-        validatePositionOfPortOnContainer("package1", "eClass2");
-        validatePositionOfPortOnContainer("Package1", "eClass2");
-        validatePositionOfPortOnContainer("Package1", "eClass4");
-        validatePositionOfPortOnContainer("Package2", "eClass4");
-        validatePositionOfPortOnContainer("Package2", "eClass1");
+        try {
+            // activate the "Arrange Linked Border Nodes" action
+            arrangeLinkedBorderedNodes();
+            // Validate the positions of the border nodes.
+            validatePositionOfPortOnContainer("package2", "eClass4");
+            validatePositionOfPortOnContainer("package1", "eClass2");
+            validatePositionOfPortOnContainer("Package1", "eClass2");
+            validatePositionOfPortOnContainer("Package1", "eClass4");
+            validatePositionOfPortOnContainer("Package2", "eClass4");
+            validatePositionOfPortOnContainer("Package2", "eClass1");
+        } finally {
+            editor.zoom(ZoomLevel.ZOOM_100);
+        }
     }
 
     /**
@@ -407,7 +411,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase8() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC8, DDiagram.class);
+                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC8, DDiagram.class, true, true);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -423,13 +427,17 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase8WithZoom() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC8, DDiagram.class);
+                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC8, DDiagram.class, true, true);
         editor.zoom(ZoomLevel.ZOOM_200);
-        // activate the "Arrange Linked Border Nodes" action
-        arrangeLinkedBorderedNodes();
-        // Validate the positions of the border nodes.
-        validatePositionOfPortOnContainer("package1", "eClass2");
-        validatePositionOfPortOnContainer("package2", "eClass4");
+        try {
+            // activate the "Arrange Linked Border Nodes" action
+            arrangeLinkedBorderedNodes();
+            // Validate the positions of the border nodes.
+            validatePositionOfPortOnContainer("package1", "eClass2");
+            validatePositionOfPortOnContainer("package2", "eClass4");
+        } finally {
+            editor.zoom(ZoomLevel.ZOOM_100);
+        }
     }
 
     /**
@@ -440,7 +448,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase9() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC9, DDiagram.class);
+                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC9, DDiagram.class, true, true);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -456,13 +464,17 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase9WithZoom() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC9, DDiagram.class);
+                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC9, DDiagram.class, true, true);
         editor.zoom(ZoomLevel.ZOOM_200);
-        // activate the "Arrange Linked Border Nodes" action
-        arrangeLinkedBorderedNodes();
-        // Validate the positions of the border nodes.
-        validatePositionOfPortOnContainer("package1", "eClass2");
-        validatePositionOfPortOnContainer("package2", "eClass4");
+        try {
+            // activate the "Arrange Linked Border Nodes" action
+            arrangeLinkedBorderedNodes();
+            // Validate the positions of the border nodes.
+            validatePositionOfPortOnContainer("package1", "eClass2");
+            validatePositionOfPortOnContainer("package2", "eClass4");
+        } finally {
+            editor.zoom(ZoomLevel.ZOOM_100);
+        }
     }
 
     /**
@@ -473,7 +485,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase10() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC10, DDiagram.class);
+                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC10, DDiagram.class, true, true);
         // activate the "Arrange Linked Border Nodes" action
         arrangeLinkedBorderedNodes();
         // Validate the positions of the border nodes.
@@ -491,15 +503,19 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
      */
     public void testArrangeLinkedBorderNodesCase10WithZoom() throws Exception {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC10, DDiagram.class);
+                REPRESENTATION_NAME_UC5, REPRESENTATION_INSTANCE_NAME_UC10, DDiagram.class, true, true);
         editor.zoom(ZoomLevel.ZOOM_200);
-        // activate the "Arrange Linked Border Nodes" action
-        arrangeLinkedBorderedNodes();
-        // Validate the positions of the border nodes.
-        validatePositionOfPortOnContainer("Package1", "eClass2");
-        validatePositionOfPortOnContainer("Package1", "eClass4");
-        validatePositionOfPortOnContainer("Package2", "eClass1");
-        validatePositionOfPortOnContainer("Package2", "eClass4");
+        try {
+            // activate the "Arrange Linked Border Nodes" action
+            arrangeLinkedBorderedNodes();
+            // Validate the positions of the border nodes.
+            validatePositionOfPortOnContainer("Package1", "eClass2");
+            validatePositionOfPortOnContainer("Package1", "eClass4");
+            validatePositionOfPortOnContainer("Package2", "eClass1");
+            validatePositionOfPortOnContainer("Package2", "eClass4");
+        } finally {
+            editor.zoom(ZoomLevel.ZOOM_100);
+        }
     }
 
     /**
