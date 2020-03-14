@@ -211,7 +211,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(SVGZImageTest.class);
         suite.addTestSuite(RoutingStyleTest.class);
         suite.addTestSuite(RepresentationGroupWithoutRepresentationInstanceTest.class);
-        suite.addTestSuite(RenameProjectWithSessionTest.class);
         suite.addTestSuite(ReconnectEdgeWithChangedRoutingStyleTest.class);
         suite.addTestSuite(ReconnectEdgeBendpointStabilityTest.class);
         suite.addTestSuite(QuickStartScenario.class);
@@ -465,6 +464,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(SiriusInternationalizationTest.class);
         suite.addTestSuite(DecoratorTest.class);
         suite.addTestSuite(LayoutOptionsTests.class);
+        suite.addTestSuite(RenameProjectWithSessionTest.class);
 
     }
 
