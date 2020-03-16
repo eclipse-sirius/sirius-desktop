@@ -394,7 +394,7 @@ public final class GMFHelper {
      * @return the absolute bounds of the node relative to the origin (Diagram)
      */
     public static Rectangle getAbsoluteBounds(Node node, boolean insetsAware) {
-        return getAbsoluteBounds(node, false, false);
+        return getAbsoluteBounds(node, insetsAware, false);
     }
 
     /**
@@ -452,8 +452,8 @@ public final class GMFHelper {
      */
     public static Option<Rectangle> getAbsoluteBounds(Edge edge, boolean insetsAware, boolean boxForConnection) {
         // Workaround for canonical refresh about edge on edge
-        Option<Rectangle> optionalSourceBounds = getAbsoluteBounds(edge.getSource(), insetsAware);
-        Option<Rectangle> optionalTargetBounds = getAbsoluteBounds(edge.getTarget(), insetsAware);
+        Option<Rectangle> optionalSourceBounds = getAbsoluteBounds(edge.getSource(), insetsAware, boxForConnection);
+        Option<Rectangle> optionalTargetBounds = getAbsoluteBounds(edge.getTarget(), insetsAware, boxForConnection);
         if (optionalSourceBounds.some() && optionalTargetBounds.some()) {
             return Options.newSome(optionalSourceBounds.get().union(optionalTargetBounds.get()));
         }
@@ -548,7 +548,7 @@ public final class GMFHelper {
      * @return the bounds of the node.
      */
     public static Rectangle getBounds(Node node, boolean useFigureForAutoSizeConstraint, boolean forceFigureAutoSize) {
-        return getBounds(node, useFigureForAutoSizeConstraint, false, false);
+        return getBounds(node, useFigureForAutoSizeConstraint, forceFigureAutoSize, false);
     }
 
     /**
