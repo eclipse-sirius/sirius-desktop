@@ -4,6 +4,7 @@ include "../modules/orbit.tpd"
 include "../modules/elk-0.6.tpd"
 include "../modules/jetty-9.4.tpd"
 include "../modules/shared-license.tpd"
+include "../modules/gmf-runtime-1.13.tpd"
 
 with source, requirements
 
@@ -27,6 +28,4 @@ location Eclipse-Oxygen "http://download.eclipse.org/releases/photon" {
     org.eclipse.emf.ecore.xmi lazy
     org.eclipse.emf.edit lazy
     org.eclipse.emf.workspace lazy
-    org.eclipse.gmf.runtime.emf.core lazy
-    org.eclipse.gmf.runtime.diagram.core lazy
 }
