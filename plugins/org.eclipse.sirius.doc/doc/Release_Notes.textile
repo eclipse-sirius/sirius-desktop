@@ -10,6 +10,7 @@ h3. User-Visible Changes
 
 * <span class="label label-success">Added</span> A new type of jump link has been added in Sirius 6.3.1. As reminder, a jump link is a way to graphically improve the way how 2 edges intersect. This new type is graphically represented by a blank line instead of the classical "jump". This new type is documented in the "Appearance":user/diagrams/Diagrams.html#Appearance section of edge Properties view.
 * <span class="label label-success">Added</span> New preferences have been added to allow to override the default values of jump links properties. They are documented in the "Connections":user/diagrams/Diagrams.html#Connections section of the Preferences.
+* <span class="label label-info">Modified</span> When the end-user changes the routing style of an edge into Oblique style (from a different style), the edge is now transformed into an oblique line without intermediate bendpoints.
 
 h3. Developer-Visible Changes
 

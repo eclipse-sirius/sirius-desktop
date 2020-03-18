@@ -94,6 +94,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String REPRESENTATION_NAME_ROUTING = "routingStyle";
 
+    private static final String REPRESENTATION_NAME_ROUTING_BOTH_CENTERED = "routingStyleBothCentered";
+
     private static final String REPRESENTATION_NAME_CHANGING_ROUTING = "changeRoutingStyle";
 
     private static final String REPRESENTATION_NAME_MOVING = "moving";
@@ -109,6 +111,8 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String REPRESENTATION_NAME_RECTILINEAR_CASES = "rectilinearCases";
 
     private static final String RECTILINEAR_STYLE_ROUTING = "Rectilinear Style Routing";
+
+    private static final String OBLIQUE_STYLE_ROUTING = "Oblique Style Routing";
 
     private static final String PROPERTIES = "Properties";
 
@@ -276,6 +280,21 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
+     * Test that the oblique edge transformed from rectilinear edge is correctly centered toward its source and is
+     * oblique.
+     */
+    public void testSrcChangingRoutingStyleFromRectToOblique() {
+        openDiagram(REPRESENTATION_NAME_ROUTING);
+        SWTBotGefConnectionEditPart botGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge2", DEdgeEditPart.class);
+        changeRoutingStyle(botGefEditPart, RECTILINEAR_STYLE_ROUTING);
+        Connection connection = (Connection) botGefEditPart.part().getFigure();
+        assertEquals("The rectilinear edge should contain only 4 points.", 4, connection.getPoints().size());
+        changeRoutingStyle(botGefEditPart, OBLIQUE_STYLE_ROUTING);
+        assertEdgeHasExpectedSrcAnchor(botGefEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEquals("The oblique edge should contain only 2 points.", 2, connection.getPoints().size());
+    }
+
+    /**
      * Test that when changing the edge routing style to rectilinear, the edge is still centered toward its target.
      */
     public void testTgtChangingRoutingStyle() {
@@ -283,6 +302,49 @@ public class CenteredEdgesTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotGefEditPart botGefEditPart = editor.getEditPart("edge1", DEdgeEditPart.class);
         changeRoutingStyle((SWTBotGefConnectionEditPart) botGefEditPart, RECTILINEAR_STYLE_ROUTING);
         assertEdgeHasExpectedTgtAnchor((SWTBotGefConnectionEditPart) botGefEditPart, new PrecisionPoint(0.5, 0.5));
+    }
+
+    /**
+     * Test that the oblique edge transformed from rectilinear edge is correctly centered toward its target and is
+     * oblique.
+     */
+    public void testTgtChangingRoutingStyleFromRectToOblique() {
+        openDiagram(REPRESENTATION_NAME_ROUTING);
+        SWTBotGefConnectionEditPart botGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge1", DEdgeEditPart.class);
+        changeRoutingStyle(botGefEditPart, RECTILINEAR_STYLE_ROUTING);
+        Connection connection = (Connection) botGefEditPart.part().getFigure();
+        assertEquals("The rectilinear edge should contain only 4 points.", 4, connection.getPoints().size());
+        changeRoutingStyle(botGefEditPart, OBLIQUE_STYLE_ROUTING);
+        assertEdgeHasExpectedTgtAnchor(botGefEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEquals("The oblique edge should contain only 2 points.", 2, connection.getPoints().size());
+    }
+
+    /**
+     * Test that when changing the edge routing style to rectilinear, the edge is still centered toward its target and
+     * its source.
+     */
+    public void testTgtAndSrcChangingRoutingStyle() {
+        openDiagram(REPRESENTATION_NAME_ROUTING_BOTH_CENTERED);
+        SWTBotGefEditPart botGefEditPart = editor.getEditPart("edge1", DEdgeEditPart.class);
+        changeRoutingStyle((SWTBotGefConnectionEditPart) botGefEditPart, RECTILINEAR_STYLE_ROUTING);
+        assertEdgeHasExpectedTgtAnchor((SWTBotGefConnectionEditPart) botGefEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEdgeHasExpectedSrcAnchor((SWTBotGefConnectionEditPart) botGefEditPart, new PrecisionPoint(0.5, 0.5));
+    }
+
+    /**
+     * Test that the oblique edge transformed from rectilinear edge is correctly centered toward its target and is
+     * oblique.
+     */
+    public void testTgtAndSrcChangingRoutingStyleFromRectToOblique() {
+        openDiagram(REPRESENTATION_NAME_ROUTING_BOTH_CENTERED);
+        SWTBotGefConnectionEditPart botGefEditPart = (SWTBotGefConnectionEditPart) editor.getEditPart("edge1", DEdgeEditPart.class);
+        changeRoutingStyle(botGefEditPart, RECTILINEAR_STYLE_ROUTING);
+        Connection connection = (Connection) botGefEditPart.part().getFigure();
+        assertEquals("The rectilinear edge should contain only 4 points.", 4, connection.getPoints().size());
+        changeRoutingStyle(botGefEditPart, OBLIQUE_STYLE_ROUTING);
+        assertEdgeHasExpectedTgtAnchor(botGefEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEdgeHasExpectedSrcAnchor(botGefEditPart, new PrecisionPoint(0.5, 0.5));
+        assertEquals("The oblique edge should contain only 2 points.", 2, connection.getPoints().size());
     }
 
     /**

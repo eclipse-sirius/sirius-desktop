@@ -212,6 +212,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(RoutingStyleTest.class);
         suite.addTestSuite(RepresentationGroupWithoutRepresentationInstanceTest.class);
         suite.addTestSuite(ReconnectEdgeWithChangedRoutingStyleTest.class);
+        suite.addTestSuite(ChangedRoutingStyleTest.class);
         suite.addTestSuite(ReconnectEdgeBendpointStabilityTest.class);
         suite.addTestSuite(QuickStartScenario.class);
         suite.addTestSuite(NonVisibleLabelSelectionTest.class);
