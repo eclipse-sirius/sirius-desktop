@@ -168,7 +168,6 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(RequestInterpreterTest.class);
         suite.addTestSuite(ResetStylePropertiesToDefaultValuesActionTests.class);
         suite.addTestSuite(MoveBorderNodeTest.class);
-        suite.addTestSuite(MoveLabelOnBorderTest.class);
         suite.addTestSuite(LayoutingModeTest.class);
         suite.addTestSuite(EditModeTest.class);
         suite.addTestSuite(LabelSelectionTest.class);

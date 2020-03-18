@@ -154,6 +154,8 @@ import org.eclipse.sirius.tests.unit.diagram.layoutingmode.LayoutingModeOnECoreM
 import org.eclipse.sirius.tests.unit.diagram.mapping.EdgeMappingCreationDescriptionTests;
 import org.eclipse.sirius.tests.unit.diagram.migration.ActivatedFilterSortingMigrationParticipantTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.JumpLinkNewTypeMigrationTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.LabelOnBorderMigrationTests6_3_0;
+import org.eclipse.sirius.tests.unit.diagram.migration.LabelOnBorderMigrationTestsBefore6_3_0;
 import org.eclipse.sirius.tests.unit.diagram.modelaccessor.ModelAccessorTest;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.design.EntitiesDiagramBackgroundTests;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.design.EntitiesDiagramContainerList;
@@ -533,6 +535,8 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(InitializeElementsToSelectExpressionForTableMigrationTest.class);
         suite.addTestSuite(ActivatedFilterSortingMigrationParticipantTest.class);
         suite.addTestSuite(JumpLinkNewTypeMigrationTest.class);
+        suite.addTestSuite(LabelOnBorderMigrationTestsBefore6_3_0.class);
+        suite.addTestSuite(LabelOnBorderMigrationTests6_3_0.class);
 
         // Edge on edge tests
         suite.addTestSuite(EdgeOnEdgeHideRevealTest.class);

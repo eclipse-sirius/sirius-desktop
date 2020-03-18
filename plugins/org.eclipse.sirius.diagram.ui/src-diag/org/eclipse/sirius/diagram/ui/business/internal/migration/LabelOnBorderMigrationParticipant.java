@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 THALES GLOBAL SERVICES
+ * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.LabelPosition;
+import org.eclipse.sirius.diagram.business.internal.migration.ActivatedFilterSortingMigrationParticipant;
 import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode3EditPart;
@@ -47,20 +48,28 @@ import org.eclipse.swt.widgets.Display;
 import org.osgi.framework.Version;
 
 /**
- * A {@link AbstractRepresentationsFileMigrationParticipant} that makes sure that the centered label on border remain
- * visually fixed by the end-user (by moving its GMF coordinates). This migration participant is enabled through the VM
- * arg "org.eclipse.sirius.experimental.labelOnBorderImprovement" (as its associated feature). Otherwise, it has no
- * effect and the version of the aird file is not changed.
+ * A {@link AbstractRepresentationsFileMigrationParticipant} that makes sure that the labels on border remain visually
+ * fixed by the end-user (by moving its GMF coordinates).
  * 
  * @author Laurent Redor
- * 
  */
 public class LabelOnBorderMigrationParticipant extends AbstractRepresentationsFileMigrationParticipant {
 
     /**
+     * The VP version for which this migration is added initially (in 6.1.4).
+     */
+    public static final Version MIGRATION_VERSION_6_1_4 = new Version("14.1.4.201908131800"); //$NON-NLS-1$
+
+    /**
+     * The VP version for which this migration is added initially (in 6.3.0) or at least the last version of migration
+     * participant added in 6.3.0.
+     */
+    public static final Version MIGRATION_VERSION_6_3_0 = ActivatedFilterSortingMigrationParticipant.MIGRATION_VERSION_FILTER_SORTING;
+
+    /**
      * The VP version for which this migration is added.
      */
-    public static final Version MIGRATION_VERSION = new Version("14.3.0.201908231800"); //$NON-NLS-1$
+    public static final Version MIGRATION_VERSION = new Version("14.3.1.202003261200"); //$NON-NLS-1$
 
     private boolean migrationOccured;
 
@@ -71,7 +80,9 @@ public class LabelOnBorderMigrationParticipant extends AbstractRepresentationsFi
 
     @Override
     protected void postLoad(DAnalysis dAnalysis, Version loadedVersion) {
-        if (loadedVersion.compareTo(MIGRATION_VERSION) < 0) {
+        // If the previous migration participant has been done (only in branch 6.1.4 or 6.3.0) and the current migration
+        // participant has not been done, we do a migration.
+        if ((loadedVersion.compareTo(MIGRATION_VERSION_6_1_4) == 0 || loadedVersion.compareTo(MIGRATION_VERSION_6_3_0) >= 0) && loadedVersion.compareTo(MIGRATION_VERSION) < 0) {
             super.postLoad(dAnalysis, loadedVersion);
             StringBuilder sb = new StringBuilder(Messages.LabelOnBorderMigrationParticipant_title);
             dAnalysis.getOwnedViews().stream().flatMap(view -> new DViewQuery(view).getLoadedRepresentations().stream()).filter(rep -> rep instanceof DDiagram).map(DDiagram.class::cast)
@@ -94,7 +105,16 @@ public class LabelOnBorderMigrationParticipant extends AbstractRepresentationsFi
     }
 
     /**
-     * Check that the GMF coordinates is "synchronized" with what is supposed to be displayed.
+     * Check that the GMF coordinates is "synchronized" with what is supposed to be before the previous migration, ie:
+     * <UL>
+     * <LI>For North or South
+     * <UL>
+     * <LI>If the label is larger than the Node, centered (but for this the x coordinate for GMF is equal to 0)</LI>
+     * <LI>Otherwise, x between 0 and "width" of node, label is not authorized beyond these limits</LI>
+     * </UL>
+     * </LI>
+     * <LI>For East or West, y between 0 and "height" of node, label is not authorized beyond these limits</LI>
+     * </UL>
      * 
      * @param node
      *            a node with a label on border
@@ -126,18 +146,15 @@ public class LabelOnBorderMigrationParticipant extends AbstractRepresentationsFi
                             labelSize = getLabelDimension.getResult();
                         }
                         Size nodeSize = (Size) nodeLayoutConstraint;
-                        Dimension computedNodeSize;
-                        // If node size is auto size compute the estimated bounds
-                        if (nodeSize.getHeight() == -1 && nodeSize.getWidth() == -1) {
-                            computedNodeSize = GMFHelper.getAbsoluteBounds(node).getSize();
-                        } else {
-                            computedNodeSize = new Dimension(nodeSize.getWidth(), nodeSize.getHeight());
-                        }
                         Location currentLabelLocation = (Location) labelLayoutConstraint;
-                        if (labelSize.width() > computedNodeSize.width() && (currentLabelLocation.getY() < 0 || currentLabelLocation.getY() > computedNodeSize.height())) {
-                            // We have to compute new "centered location" for label larger that its node and on the top
-                            // or bottom border
-                            isLabelMoved = computeNewLocation(labelSize, computedNodeSize, currentLabelLocation) || isLabelMoved;
+                        Location currentNodeLocation = (Location) nodeLayoutConstraint;
+                        if (currentLabelLocation.getY() == -labelSize.height() + IBorderItemOffsets.NO_OFFSET.height()
+                                || currentLabelLocation.getY() == nodeSize.getHeight() - IBorderItemOffsets.NO_OFFSET.height()) {
+                            // North or South side
+                            isLabelMoved = computeNewLocationForNorthOrSouthSide(labelSize, nodeSize, currentLabelLocation, currentNodeLocation) || isLabelMoved;
+                        } else {
+                            // East or West side
+                            isLabelMoved = computeNewLocationForEastOrWestSide(labelSize, nodeSize, currentLabelLocation, currentNodeLocation) || isLabelMoved;
                         }
                     }
                 }
@@ -146,24 +163,39 @@ public class LabelOnBorderMigrationParticipant extends AbstractRepresentationsFi
         return isLabelMoved;
     }
 
-    private boolean computeNewLocation(Dimension labelSize, Dimension nodeSize, Location currentLabelLocation) {
-        boolean isSameLocation = true;
-        int newX = -(labelSize.width() - nodeSize.width()) / 2;
-        if (newX != currentLabelLocation.getX()) {
-            isSameLocation = false;
-            currentLabelLocation.setX(-(labelSize.width() - nodeSize.width()) / 2);
+    private boolean computeNewLocationForNorthOrSouthSide(Dimension labelSize, Size nodeSize, Location currentLabelLocation, Location currentNodeLocation) {
+        boolean isLabelMoved = false;
+        if (labelSize.width() > nodeSize.getWidth()) {
+            // If label is larger than the node, the label will be displayed centered but the GMF coordinate is 0 in
+            // this case.
+            if (currentLabelLocation.getX() != 0) {
+                isLabelMoved = true;
+                currentLabelLocation.setX(0);
+            }
+        } else if (currentLabelLocation.getX() < 0) {
+            // Set x to 0 (to be in the node bounds)
+            isLabelMoved = true;
+            currentLabelLocation.setX(0);
+        } else if (currentLabelLocation.getX() + labelSize.width() > nodeSize.getWidth()) {
+            // Set x according to the max right location (to be in the node bounds)
+            isLabelMoved = true;
+            currentLabelLocation.setX(nodeSize.getWidth() - labelSize.width());
         }
-        int newY;
+        return isLabelMoved;
+    }
+
+    private boolean computeNewLocationForEastOrWestSide(Dimension labelSize, Size nodeSize, Location currentLabelLocation, Location currentNodeLocation) {
+        boolean isLabelMoved = false;
         if (currentLabelLocation.getY() < 0) {
-            newY = IBorderItemOffsets.NO_OFFSET.height() - labelSize.height();
-        } else {
-            newY = nodeSize.height() - IBorderItemOffsets.NO_OFFSET.height();
+            // Set y to 0 (to be in the node bounds)
+            isLabelMoved = true;
+            currentLabelLocation.setY(0);
+        } else if (currentLabelLocation.getY() + labelSize.height() > nodeSize.getHeight()) {
+            // Set y according to the max right location (to be in the node bounds)
+            isLabelMoved = true;
+            currentLabelLocation.setY(nodeSize.getHeight() - labelSize.height());
         }
-        if (newY != currentLabelLocation.getY()) {
-            isSameLocation = false;
-            currentLabelLocation.setY(newY);
-        }
-        return !isSameLocation;
+        return isLabelMoved;
     }
 
     /**

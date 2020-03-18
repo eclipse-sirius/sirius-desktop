@@ -150,6 +150,7 @@
 				<a href="user/diagrams/Diagrams.html#Connections">Connections</a> section of the Preferences.
 			</li>
 			<li><span class="label label-info">Modified</span> When the end-user changes the routing style of an edge into Oblique style (from a different style), the edge is now transformed into an oblique line without intermediate bendpoints.</li>
+			<li><span class="label label-danger">Removed</span> The feature concerning the capability to move labels on border of node, or border node, all around the node, added in 6.3.0, has been reverted. There are unexpected side effects (wrong location after a rename of a label for example).</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>
@@ -204,6 +205,11 @@
 			<li><span class="label label-success">Added</span> A migration participant has been added only to change the version of the model. Indeed, if the new value &#8220;Tunnel&#8221; of GMF jump link type is used, see &#8220;User-Visible Changes&#8221; in 
 				<a href="Release_Notes.html#sirius6.3.1">Sirius 6.1.3</a>, the model will be invalid for an older version of Sirius. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
 				<em>14.3.1.202003101500</em>.
+			</li>
+			<li><span class="label label-info">Modified</span> The migration participant 
+				<code>LabelOnBorderMigrationParticipant</code> has been updated to revert the effect of itself. This migration participant has been added in Sirius 6.3.0 according to buzgilla 
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=550382">550382</a>. The new feature added in this bugzilla was imperfect so it is decided to revert it. The new corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
+				<em>14.3.1.202003261200</em>.
 			</li>
 		</ul>
 		<h4 id="TranslationKeysChanges">Translation Keys Changes</h4>

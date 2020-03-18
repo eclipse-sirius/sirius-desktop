@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -67,6 +67,11 @@ import org.hamcrest.Matcher;
  *
  */
 public class EditModeTest extends AbstractModeTest {
+
+    /**
+     * Representation instance name.
+     */
+    protected static final String REPRESENTATION_INSTANCE2_NAME = "new " + REPRESENTATION_DESCRIPTION_NAME + "2";
 
     /**
      * The kind of action to use to test the show hide: The double-click, the contextual menu action or the tabbar
@@ -365,6 +370,10 @@ public class EditModeTest extends AbstractModeTest {
      * Verify that a double click on a visible node label hides it and vice versa.
      */
     public void testShowHideDoubleClickOnNodeLabel() {
+        // Close default editor and open a specific one for this test.
+        closeAllEditors();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_INSTANCE2_NAME, DDiagram.class);
+
         editor.reveal(getEditPart("new EPackage 2", DNodeContainerEditPart.class).part());
         SWTBotGefEditPart swtBotDNodeEditPart = getEditPart("new EClass 4", DNode4EditPart.class);
         EditPart part = swtBotDNodeEditPart.part();
