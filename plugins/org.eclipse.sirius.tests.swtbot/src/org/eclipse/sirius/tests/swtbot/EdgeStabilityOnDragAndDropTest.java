@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -35,13 +35,9 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
-import org.eclipse.sirius.tests.swtbot.support.api.widget.WrappedSWTBotRadio;
-import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotRadio;
 import org.junit.Assert;
 
 /**
@@ -142,18 +138,14 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
         EdgeRouting edgeRouting = ((EdgeStyle) dedge.getStyle()).getRoutingStyle();
         assertEquals("The routing style is not " + expectedRoutingStyle.getLiteral(), expectedRoutingStyle, edgeRouting);
 
-        // if edgeRouting == EdgeRouting.STRAIGHT then the first or the last
-        // point has moved
-
         // if edgeRouting == EdgeRouting.MANHATTAN then the two first or
         // the two last points have moved
 
         Point originalFirstPoint = originalPoints.getFirstPoint();
         Point newFirstPoint = newPoints.getFirstPoint();
         if (originalFirstPoint.equals(newFirstPoint)) {
-            // EdgeRouting.STRAIGHT: the last point has moved
             // EdgeRouting.MANHATTAN: the two last points have moved
-            int end = edgeRouting == EdgeRouting.STRAIGHT_LITERAL ? originalPoints.size() - 1 : originalPoints.size() - 2;
+            int end = originalPoints.size() - 2;
 
             // unmoved points
             for (int i = 1; i < end; i++) {
@@ -169,9 +161,8 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
                 Assert.assertNotEquals("The two points at index " + i + " should be different", originalPoint, newPoint);
             }
         } else {
-            // EdgeRouting.STRAIGHT: the first point has moved
             // EdgeRouting.MANHATTAN: the two first points have moved
-            int begin = edgeRouting == EdgeRouting.STRAIGHT_LITERAL ? 1 : 2;
+            int begin = 2;
 
             // moved points
             for (int i = 1; i < begin; i++) {
@@ -296,63 +287,35 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
      * Drag and drop a border node to the north of another bordered node.
      */
     public void testEdgeStabilityOnDragAndDropOnNorth() {
-        doTestEdgeStabilityOnDragAndDrop("P3", "C1", Direction.NORTH, false);
+        doTestEdgeStabilityOnDragAndDrop("P3", "C1", Direction.NORTH);
     }
 
     /**
      * Drag and drop a border node to the south of another bordered node.
      */
     public void testEdgeStabilityOnDragAndDropOnSouth() {
-        doTestEdgeStabilityOnDragAndDrop("P3", "C1", Direction.SOUTH, false);
+        doTestEdgeStabilityOnDragAndDrop("P3", "C1", Direction.SOUTH);
     }
 
     /**
      * Drag and drop a border node to the west of another bordered node.
      */
     public void testEdgeStabilityOnDragAndDropOnWest() {
-        doTestEdgeStabilityOnDragAndDrop("P3", "C1", Direction.WEST, false);
+        doTestEdgeStabilityOnDragAndDrop("P3", "C1", Direction.WEST);
     }
 
     /**
      * Drag and drop a border node to the east of another bordered node.
      */
     public void testEdgeStabilityOnDragAndDropOnEast() {
-        doTestEdgeStabilityOnDragAndDrop("P3", "C1", Direction.EAST, false);
-    }
-
-    /**
-     * Change style of edges and drag and and drop a border node to the north of another bordered node.
-     */
-    public void testEdgeStabilityOnDragAndDropOnNorthAfterStyleChange() {
-        doTestEdgeStabilityOnDragAndDrop("P2", "C2", Direction.NORTH, true);
-    }
-
-    /**
-     * Change style of edges and drag and and drop a border node to the south of another bordered node.
-     */
-    public void testEdgeStabilityOnDragAndDropOnSouthAfterStyleChange() {
-        doTestEdgeStabilityOnDragAndDrop("P2", "C2", Direction.SOUTH, true);
-    }
-
-    /**
-     * Change style of edges and drag and and drop a border node to the west of another bordered node.
-     */
-    public void testEdgeStabilityOnDragAndDropOnWestAfterStyleChange() {
-        doTestEdgeStabilityOnDragAndDrop("P2", "C2", Direction.WEST, true);
-    }
-
-    /**
-     * Change style of edges and drag and and drop a border node to the east of another bordered node.
-     */
-    public void testEdgeStabilityOnDragAndDropOnEastAfterStyleChange() {
-        doTestEdgeStabilityOnDragAndDrop("P2", "C2", Direction.EAST, true);
+        doTestEdgeStabilityOnDragAndDrop("P3", "C1", Direction.EAST);
     }
 
     /**
      * Drag and drop a border node to node contained into another with horizontal scrollbar.
      */
     public void testEdgeStabilityOnDragAndDropToContainedNode() {
-        doTestEdgeStabilityOnDragAndDrop("P4", "C2", Direction.WEST, false);
+        doTestEdgeStabilityOnDragAndDrop("P4", "C2", Direction.WEST);
     }
 
     /**
@@ -390,7 +353,7 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
      * @param changeStyle
      *            true to change edge routing style to 'Oblique'
      */
-    private void doTestEdgeStabilityOnDragAndDrop(String targetElement, String elementToDrag, Direction direction, boolean changeStyle) {
+    private void doTestEdgeStabilityOnDragAndDrop(String targetElement, String elementToDrag, Direction direction) {
 
         final long oldTimeout = SWTBotPreferences.TIMEOUT;
         try {
@@ -400,13 +363,6 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
             List<PointList> originalPointsList = new ArrayList<PointList>();
             for (String[] edge : EDGES) {
                 originalPointsList.add(getBendpoints(edge[0], edge[1]));
-            }
-
-            // Change style before drag and drop
-            if (changeStyle) {
-                for (String[] edge : EDGES) {
-                    changeEdgeStyle(edge[0], edge[1], "Oblique");
-                }
             }
 
             // Drag and drop
@@ -421,38 +377,15 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
 
                 if (source.equals(elementToDrag) || target.equals(elementToDrag)) {
                     // move from one side
-                    checkEdgeMovedFromOneSide(source, target, originalPoints, changeStyle ? EdgeRouting.STRAIGHT_LITERAL : EdgeRouting.MANHATTAN_LITERAL);
+                    checkEdgeMovedFromOneSide(source, target, originalPoints, EdgeRouting.MANHATTAN_LITERAL);
                 } else {
                     // not moved
-                    checkUnmovedEdge(source, target, originalPoints, changeStyle ? EdgeRouting.STRAIGHT_LITERAL : EdgeRouting.MANHATTAN_LITERAL);
+                    checkUnmovedEdge(source, target, originalPoints, EdgeRouting.MANHATTAN_LITERAL);
                 }
             }
         } finally {
             SWTBotPreferences.TIMEOUT = oldTimeout;
         }
-    }
-
-    /**
-     * Change the edge routing style.
-     * 
-     * @param source
-     *            source of the edge
-     * @param target
-     *            target of the edge
-     * @param style
-     *            routing style to set
-     */
-    private void changeEdgeStyle(String source, String target, String style) {
-        SWTBotGefEditPart partSource = editor.getEditPart(source, AbstractDiagramBorderNodeEditPart.class);
-        SWTBotGefEditPart partTarget = editor.getEditPart(target, AbstractDiagramBorderNodeEditPart.class);
-        List<SWTBotGefConnectionEditPart> edges = editor.getConnectionEditPart(partSource, partTarget);
-        select(edges.get(0));
-        SWTBotView propertiesView = bot.viewByTitle("Properties");
-        propertiesView.setFocus();
-        SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesView.bot());
-        SWTBotRadio radioToSelect = propertiesView.bot().radioInGroup(style, "Styles:");
-        radioToSelect = new WrappedSWTBotRadio(radioToSelect);
-        radioToSelect.click();
     }
 
     /**
@@ -470,17 +403,6 @@ public class EdgeStabilityOnDragAndDropTest extends AbstractSiriusSwtBotGefTestC
 
         editor.click(selection.get(0)); // click on the first element
         editor.select(selection);
-    }
-
-    /**
-     * Select an edit part
-     * 
-     * @param element
-     *            edit part to select
-     */
-    private void select(SWTBotGefEditPart element) {
-        editor.click(element);
-        editor.select(element);
     }
 
     /**
