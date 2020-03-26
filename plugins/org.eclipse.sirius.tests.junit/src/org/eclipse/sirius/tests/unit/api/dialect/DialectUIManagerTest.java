@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.dialect;
 
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramFactory;
@@ -61,6 +63,23 @@ public class DialectUIManagerTest extends SiriusDiagramTestCase implements Ecore
         assertNotNull(editor);
         DialectUIManager.INSTANCE.closeEditor(editor, false);
         TestsUtil.synchronizationWithUIThread();
+    }
+
+    public void testCloseProjectWithOpenedEditor() {
+        final IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+        assertNotNull(editor);
+
+        try {
+            // Close the session by closing the project
+            ResourcesPlugin.getWorkspace().getRoot().getProject(TEMPORARY_PROJECT_NAME).close(new NullProgressMonitor());
+            TestsUtil.synchronizationWithUIThread();
+        } catch (CoreException e) {
+            fail("Unable to close the modeling project");
+        }
+        if (doesAnErrorOccurs()) {
+            fail("An error occured while closing the sesssion");
+        }
     }
 
     public void testManagement() {

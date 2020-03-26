@@ -236,6 +236,7 @@ import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.IWorkbenchPartSite;
+import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.Saveable;
@@ -487,6 +488,17 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             display = PlatformUI.getWorkbench().getDisplay();
         }
         if (!display.isDisposed()) {
+
+            //@formatter:off
+            Optional.ofNullable(getSite())
+            .map(IWorkbenchPartSite::getPage)
+            .ifPresent(page -> page.removeSelectionListener(this));
+
+            Optional.ofNullable(getSite())
+            .map(IWorkbenchPartSite::getWorkbenchWindow)
+            .map(IWorkbenchWindow::getSelectionService)
+            .ifPresent(selectionService -> selectionService.removeSelectionListener(this));
+            //@formatter:on
             display.asyncExec(() -> {
                 try {
                     if (getGraphicalViewer() != null && !PlatformUI.getWorkbench().isClosing()) {
