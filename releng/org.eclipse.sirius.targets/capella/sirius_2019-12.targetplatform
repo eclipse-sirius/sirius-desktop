@@ -20,6 +20,10 @@ location Sirius-Query-Legacy-1.1.0 "http://download.eclipse.org/sirius/updates/l
     org.eclipse.sirius.query.legacy.feature.source.feature.group lazy
 }
 
+location orbit-R20140525021250 "http://download.eclipse.org/tools/orbit/downloads/drops/R20140525021250/repository" {
+	com.google.guava [15.0.0.v201403281430,15.0.0.v201403281430]
+}
+
 location Eclipse-2019-12 "http://download.eclipse.org/releases/2019-12" {
     com.google.guava lazy
     com.ibm.icu lazy
