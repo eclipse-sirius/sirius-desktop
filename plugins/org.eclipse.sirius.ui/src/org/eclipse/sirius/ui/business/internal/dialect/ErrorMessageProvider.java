@@ -21,7 +21,8 @@ import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonL
 import org.eclipse.ui.navigator.ICommonLabelProvider;
 
 /**
- * A function that transforms a {@link Throwable} into the corresponding message to display.
+ * A function that transforms a {@link Throwable} into the corresponding message to display. It is currently used mainly
+ * to deal with {@link LockedInstanceException} in context of {@link LogThroughActiveDialectEditorLogListener}.
  * 
  * @author Laurent Redor
  */
