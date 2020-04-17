@@ -235,7 +235,14 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
         if (key == SnapToHelper.class) {
             return SiriusSnapToHelperUtil.getSnapHelper(this);
         }
-        return super.getAdapter(key);
+
+        Object adapter = null;
+        try {
+            adapter = super.getAdapter(key);
+        } catch (IllegalStateException e) {
+            // We do not log this exception that might be caused by an unreachable distant resource.
+        }
+        return adapter;
     }
 
     /**

@@ -45,14 +45,14 @@ import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 
 /**
- * Action to open a dialog box where the user can select/deselect the diagram
- * elements which should be pinned.
+ * Action to open a dialog box where the user can select/deselect the diagram elements which should be pinned.
  *
  * @author pcdavid
  */
 public class SelectPinnedElementsAction extends AbstractDiagramAction {
     private static final class PinnedElementsSelectionCommand extends AbstractTransactionalCommand {
         private final DDiagram diagram;
+
         private final Shell shell;
 
         private PinnedElementsSelectionCommand(Shell shell, TransactionalEditingDomain domain, String label, DDiagram diagram) {
@@ -229,7 +229,7 @@ public class SelectPinnedElementsAction extends AbstractDiagramAction {
         // If the edit part's editing domain has been disposed (session is
         // closing) then we return an unexecutable command (editor is about to
         // close)
-        if (diagramEditPart.getEditingDomain() != null && diagramEditPart.getEditingDomain().getCommandStack() != null) {
+        if (diagramEditPart.isActive() && diagramEditPart.getEditingDomain() != null && diagramEditPart.getEditingDomain().getCommandStack() != null) {
             EObject semanticElement = diagramEditPart.resolveSemanticElement();
             if (semanticElement instanceof DDiagram) {
                 DDiagram diagram = (DDiagram) semanticElement;

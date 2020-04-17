@@ -1130,7 +1130,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             final Iterator<EditPart> iterParts = getDiagramGraphicalViewer().getRootEditPart().getChildren().iterator();
             while (iterParts.hasNext()) {
                 final EditPart editPart = iterParts.next();
-                if (editPart instanceof AbstractDDiagramEditPart && ((GraphicalEditPart) editPart).resolveSemanticElement() instanceof DSemanticDiagram) {
+                if (editPart.isActive() && editPart instanceof AbstractDDiagramEditPart && ((GraphicalEditPart) editPart).resolveSemanticElement() instanceof DSemanticDiagram) {
                     final DSemanticDiagram semanticElement = (DSemanticDiagram) ((GraphicalEditPart) editPart).resolveSemanticElement();
                     if (semanticElement != null && (semanticElement.eResource() == null || semanticElement.getTarget() == null || semanticElement.getTarget().eResource() == null)) {
                         if (SessionManager.INSTANCE.getSession(semanticElement.getTarget()) != null) {
@@ -1284,8 +1284,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     @Override
     protected void setDocumentProvider(final IEditorInput input) {
         if (getSession() != null/*
-         * && (input instanceof IFileEditorInput || input instanceof URIEditorInput)
-         */) {
+                                 * && (input instanceof IFileEditorInput || input instanceof URIEditorInput)
+                                 */) {
             setDocumentProvider(DiagramUIPlugin.getPlugin().getDocumentProvider(getSession().getTransactionalEditingDomain()));
         } else {
             // super.setDocumentProvider(input);

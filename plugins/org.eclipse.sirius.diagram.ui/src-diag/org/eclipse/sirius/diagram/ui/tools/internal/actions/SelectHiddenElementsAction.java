@@ -50,8 +50,7 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
 /**
- * Action to open a dialog box where the user can select/deselect the diagram
- * elements which should be hidden.
+ * Action to open a dialog box where the user can select/deselect the diagram elements which should be hidden.
  *
  * @author pcdavid
  */
@@ -59,6 +58,7 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
 
     private static final class HiddenElementsSelectionCommand extends AbstractTransactionalCommand {
         private final DDiagram diagram;
+
         private final Shell shell;
 
         private HiddenElementsSelectionCommand(Shell shell, TransactionalEditingDomain domain, String label, DDiagram diagram) {
@@ -230,7 +230,7 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
         // If the edit part's editing domain has been disposed (session is
         // closing) then we return an unexecutable command (editor is about to
         // close)
-        if (diagramEditPart.getEditingDomain() != null && diagramEditPart.getEditingDomain().getCommandStack() != null) {
+        if (diagramEditPart.isActive() && diagramEditPart.getEditingDomain() != null && diagramEditPart.getEditingDomain().getCommandStack() != null) {
             EObject semanticElement = diagramEditPart.resolveSemanticElement();
             if (semanticElement instanceof DDiagram) {
                 DDiagram diagram = (DDiagram) semanticElement;
