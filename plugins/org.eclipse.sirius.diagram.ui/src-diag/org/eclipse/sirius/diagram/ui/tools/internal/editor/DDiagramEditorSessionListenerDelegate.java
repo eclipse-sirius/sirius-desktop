@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -66,6 +67,10 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
     /** The NO_WRITE_PERMISSION icon description icon descriptor. */
     private static final ImageDescriptor NO_WRITE_PERMISSION_IMAGE_DESCRIPTOR = SiriusEditPlugin.Implementation.getBundledImageDescriptor("icons/full/decorator/permission_no_write.gif"); //$NON-NLS-1$
 
+    /** This listener does not react to those change kinds. **/
+    private static final List<Integer> UNMANAGED_EVENTS = Arrays.asList(SessionListener.CLOSING, SessionListener.CLOSED, SessionListener.OPENED, SessionListener.OPENING,
+            SessionListener.REPRESENTATION_CHANGE, SessionListener.SEMANTIC_CHANGE);
+
     private DDiagramEditorImpl dDiagramEditorImpl;
 
     /** Singleton instance of the initial Image for the NO_LOCK status */
@@ -113,18 +118,27 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
     // CHECKSTYLE:OFF
     @Override
     public void run() {
-        PaletteManager paletteManager = dDiagramEditorImpl.getPaletteManager();
+        if (UNMANAGED_EVENTS.contains(changeKind)) {
+            // Avoid any unneeded computation.
+            // This also avoid potential IllegalArgumentException(LifecycleExeption) or Resource.load calls when the
+            // received event is SessionListener.CLOSED or
+            // SessionListener.CLOSING in CDO context.
+            return;
+        }
+
         Diagram gmfDiagram = dDiagramEditorImpl.getDiagram();
         if (gmfDiagram == null || gmfDiagram.getElement() instanceof DSemanticDecorator && SessionManager.INSTANCE.getSession(((DSemanticDecorator) gmfDiagram.getElement()).getTarget()) == null) {
             return;
         }
+
+        PaletteManager paletteManager = dDiagramEditorImpl.getPaletteManager();
         ToolManagement toolManagement = DiagramPlugin.getPlugin().getToolManagement(gmfDiagram);
         switch (changeKind) {
         case SessionListener.DIRTY:
         case SessionListener.SYNC:
             dDiagramEditorImpl.firePropertyChangeInUIThread(IEditorPart.PROP_DIRTY);
             break;
-        case IWorkbenchPart.PROP_TITLE:
+        case IWorkbenchPart.PROP_TITLE: // case SessionListener.OTHER:
             dDiagramEditorImpl.firePropertyChangeInUIThread(IEditorPart.PROP_TITLE);
             break;
         case SessionListener.SELECTED_VIEWS_CHANGE_KIND:
@@ -179,7 +193,7 @@ public class DDiagramEditorSessionListenerDelegate implements Runnable {
             reloadPalette(paletteManager, gmfDiagram, false);
             break;
         case SessionListener.REPRESENTATION_EDITION_PERMISSION_GRANTED_TO_CURRENT_USER_EXCLUSIVELY:
-            if (paletteManager != null&& toolManagement != null) {
+            if (paletteManager != null && toolManagement != null) {
                 toolManagement.removeToolFilter(toolFilterWhenRepresentationIsLocked);
                 if (dDiagramEditorImpl.getTabbar() != null) {
                     dDiagramEditorImpl.getTabbar().reinitToolBar(dDiagramEditorImpl.getDiagramGraphicalViewer().getSelection());
