@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -128,11 +128,13 @@ public abstract class AbstractCopyPasteFormatAction extends AbstractDiagramActio
         if (selection != null && !selection.isEmpty()) {
             final Collection<DSemanticDecorator> elements = new ArrayList<>();
             for (IGraphicalEditPart part : Iterables.filter(selection, IGraphicalEditPart.class)) {
-                EObject semanticElement = part.resolveSemanticElement();
-                if (semanticElement instanceof DDiagramElement) {
-                    elements.add((DDiagramElement) semanticElement);
-                } else if (semanticElement instanceof DSemanticDiagram) {
-                    elements.add((DSemanticDiagram) semanticElement);
+                if (part.isActive()) {
+                    EObject semanticElement = part.resolveSemanticElement();
+                    if (semanticElement instanceof DDiagramElement) {
+                        elements.add((DDiagramElement) semanticElement);
+                    } else if (semanticElement instanceof DSemanticDiagram) {
+                        elements.add((DSemanticDiagram) semanticElement);
+                    }
                 }
             }
             return elements;
@@ -145,8 +147,7 @@ public abstract class AbstractCopyPasteFormatAction extends AbstractDiagramActio
      * 
      * @param diagram
      *            the diagram to inspect
-     * @return true if the given ddiagram is allowing copy/paste format actions,
-     *         false otherwise
+     * @return true if the given ddiagram is allowing copy/paste format actions, false otherwise
      */
     public static Predicate<DSemanticDecorator> allowsCopyPasteFormat(DDiagram diagram) {
         // default return value is true (for basic DDiagram that are not handled
