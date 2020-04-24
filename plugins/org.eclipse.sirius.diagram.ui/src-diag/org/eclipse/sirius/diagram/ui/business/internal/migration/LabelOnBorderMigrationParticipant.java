@@ -94,6 +94,7 @@ public class LabelOnBorderMigrationParticipant extends AbstractRepresentationsFi
                         }
                         if (isLabelMoved) {
                             migrationOccured = true;
+                            updateChangeId(dAnalysis, dDiagram);
                             sb.append(MessageFormat.format(Messages.LabelOnBorderMigrationParticipant_labelsModified, dDiagram.getName()));
                         }
                     });
