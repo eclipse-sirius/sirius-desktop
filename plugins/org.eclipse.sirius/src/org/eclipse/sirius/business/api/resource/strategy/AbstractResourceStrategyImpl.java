@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 Obeo.
+ * Copyright (c) 2017, 2020 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,9 +18,12 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.resource.LoadEMFResource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
@@ -55,10 +58,9 @@ public abstract class AbstractResourceStrategyImpl implements ResourceStrategy {
 
     /**
      * Corresponding to default Sirius implementation (
-     * {@link org.eclipse.sirius.business.internal.resource.strategy.DefaultResourceStrategyImpl}
-     * ). It is not used in this abstract ResourceStrategy as canHandle methods
-     * return false. It is in this abstract class to be easily used by sub
-     * classes.
+     * {@link org.eclipse.sirius.business.internal.resource.strategy.DefaultResourceStrategyImpl} ). It is not used in
+     * this abstract ResourceStrategy as canHandle methods return false. It is in this abstract class to be easily used
+     * by sub classes.
      */
     @Override
     public boolean isPotentialSemanticResource(URI uri) {
@@ -71,10 +73,9 @@ public abstract class AbstractResourceStrategyImpl implements ResourceStrategy {
 
     /**
      * Corresponding to default Sirius implementation (
-     * {@link org.eclipse.sirius.business.internal.resource.strategy.DefaultResourceStrategyImpl}
-     * ). It is not used in this abstract ResourceStrategy as canHandle methods
-     * return false. It is in this abstract class to be easily used by sub
-     * classes.
+     * {@link org.eclipse.sirius.business.internal.resource.strategy.DefaultResourceStrategyImpl} ). It is not used in
+     * this abstract ResourceStrategy as canHandle methods return false. It is in this abstract class to be easily used
+     * by sub classes.
      */
     @Override
     public boolean isLoadableModel(URI uri, Session session) {
@@ -88,5 +89,27 @@ public abstract class AbstractResourceStrategyImpl implements ResourceStrategy {
             }
         }
         return false;
+    }
+
+    /**
+     * Clear the eAdapters list of all {@link EObject} of this {@link Resource}, if this {@link Resource} is from the
+     * package registry.
+     * 
+     * @param resource
+     *            The concerned resource.
+     */
+    protected void clearEAdapters(Resource resource) {
+        if (!isFromPackageRegistry(resource)) {
+            TreeIterator<EObject> allContents = EcoreUtil.getAllProperContents(resource, false);
+            while (allContents.hasNext()) {
+                EObject eObject = allContents.next();
+                eObject.eAdapters().clear();
+            }
+        }
+    }
+
+    private boolean isFromPackageRegistry(Resource resource) {
+        URI uri = resource.getURI();
+        return uri != null && resource.getResourceSet().getPackageRegistry().getEPackage(uri.toString()) != null;
     }
 }
