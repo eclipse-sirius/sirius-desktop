@@ -92,12 +92,12 @@ public class OperandCompartmentEditPart extends DNodeContainerViewNodeContainerC
          * https://bugs.eclipse.org/bugs/show_bug.cgi?id=553321 for specific description.
          */
         return new DCompartmentConnectionRefreshMgr() {
+            // CHECKSTYLE:OFF Copy of CMF Code
             /*
              * The following implementation is an exact copy of the super implementation except that the we use a custom
              * method to check if the given point is contains in the bounds
              */
             @Override
-            // CHECKSTYLE:OFF Copy of CMF Code
             protected boolean isFigureVisible(IFigure figure, Point loc, IFigure stopFigure) {
                 if (!(figure.isShowing())) {
                     return false;
