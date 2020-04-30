@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,6 +38,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.policies.DDiagramItemSemantic
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.part.DDiagramRootEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.part.SiriusDiagramGraphicalViewer;
 import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToHelperUtil;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
@@ -46,26 +47,17 @@ import org.eclipse.sirius.viewpoint.description.ColorDescription;
 import org.eclipse.swt.graphics.Color;
 
 /**
- * @was-generated
+ * The top-level edit part for Sirius Diagrams.
  */
 public class DDiagramEditPart extends AbstractDDiagramEditPart {
 
-    /**
-     * @was-generated
-     */
-    public final static String MODEL_ID = "Sirius"; //$NON-NLS-1$
+    public static final String MODEL_ID = "Sirius"; //$NON-NLS-1$
 
-    /**
-     * @was-generated
-     */
     public static final int VISUAL_ID = 1000;
 
     private static final RGBValues WHITE = RGBValues.create(255, 255, 255);
-
-    /**
-     * @was-generated
-     */
-    public DDiagramEditPart(final View view) {
+    
+    public DDiagramEditPart(View view) {
         super(view);
     }
 
@@ -97,6 +89,10 @@ public class DDiagramEditPart extends AbstractDDiagramEditPart {
         // Enables Font and Style action
         removeEditPolicy(EditPolicyRoles.PROPERTY_HANDLER_ROLE);
         installEditPolicy(EditPolicyRoles.PROPERTY_HANDLER_ROLE, new SiriusPropertyHandlerEditPolicy());
+    }
+    
+    public IFigure getOverlayFigure() {
+        return getLayer(DDiagramRootEditPart.OVERLAY_LAYER);
     }
 
     @Override

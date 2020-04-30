@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2017 IBM Corporation and others.
+ * Copyright (c) 2002, 2020 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import java.awt.image.BufferedImage;
 import java.util.List;
 
 import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.SWTGraphics;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionRectangle;
@@ -29,6 +30,7 @@ import org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramImageGenerator
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
 import org.eclipse.gmf.runtime.draw2d.ui.render.internal.graphics.RenderedMapModeGraphics;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.swt.SWT;
 
 /**
@@ -40,15 +42,20 @@ import org.eclipse.swt.SWT;
 public class SiriusDiagramImageGenerator extends DiagramImageGenerator {
 
     private double factor = 1;
+    
+    private IFigure overlayFigure;
 
     /**
      * Default constructor.
      * 
-     * @param dgrmEP
+     * @param diagramEditPart
      *            the diagram editpart
      */
-    public SiriusDiagramImageGenerator(DiagramEditPart dgrmEP) {
-        super(dgrmEP);
+    public SiriusDiagramImageGenerator(DiagramEditPart diagramEditPart) {
+        super(diagramEditPart);
+        if (diagramEditPart instanceof DDiagramEditPart) {
+            this.overlayFigure = ((DDiagramEditPart) diagramEditPart).getOverlayFigure();
+        }
     }
 
     /**
@@ -102,6 +109,14 @@ public class SiriusDiagramImageGenerator extends DiagramImageGenerator {
         graphics.dispose();
         g2d.dispose();
         return awtImage;
+    }
+    
+    @Override
+    protected void renderToGraphics(Graphics graphics, Point translateOffset, List editparts) {
+        super.renderToGraphics(graphics, translateOffset, editparts);
+        if (this.overlayFigure != null) {
+            paintFigure(graphics, overlayFigure);
+        }
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -35,13 +35,19 @@ public class GradientRoundedRectangle extends RoundedRectangle implements ViewNo
 
     private static final int GRADIENT_LEFT_TO_RIGHT_LITERAL = 0;
 
-    private SiriusWrapLabel fLabelFigure;
+    /**
+     * The label.
+     */
+    protected SiriusWrapLabel fLabelFigure;
+    
+    /**
+     * The GMF view.
+     */
+    protected View view;
 
     private Color gradientColor;
 
     private int backgroundStyle;
-
-    private View view;
 
     /**
      * Create a new {@link GradientRoundedRectangle}.

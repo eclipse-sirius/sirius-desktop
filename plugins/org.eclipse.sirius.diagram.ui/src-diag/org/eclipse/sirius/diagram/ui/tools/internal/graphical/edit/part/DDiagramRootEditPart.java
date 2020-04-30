@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -39,6 +39,11 @@ import org.eclipse.sirius.diagram.ui.tools.internal.handler.SiriusAnimatableZoom
  * @author ymortier
  */
 public class DDiagramRootEditPart extends RenderedDiagramRootEditPart {
+    
+    /**
+     * Layer id for figures that should be drawn on top of everything else.
+     */
+    public static final String OVERLAY_LAYER = "Overlay Layer"; //$NON-NLS-1$
 
     private SiriusAnimatableZoomManager siriusZoomManager;
 
@@ -68,6 +73,7 @@ public class DDiagramRootEditPart extends RenderedDiagramRootEditPart {
         layeredPane.add(new BorderItemsAwareFreeFormLayer(), LayerConstants.PRIMARY_LAYER);
         layeredPane.add(new DConnectionLayerEx(), LayerConstants.CONNECTION_LAYER);
         layeredPane.add(new FreeformLayer(), DiagramRootEditPart.DECORATION_PRINTABLE_LAYER);
+        layeredPane.add(new FreeformLayer(), OVERLAY_LAYER);
         return layeredPane;
     }
 

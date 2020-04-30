@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.transaction.ResourceSetListener;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
@@ -42,6 +43,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.Execu
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceContainerCreationPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.LabelsOverlayFigure;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceZOrderingRefresher;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
@@ -49,6 +51,7 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ContainerCreationEd
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.properties.PropertiesService;
+import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.part.DDiagramRootEditPart;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.ui.property.IPropertiesProvider;
@@ -89,6 +92,8 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
     };
 
     private IPropertyChangeListener snapDisabler;
+    
+    private IFigure labelsOverlayFigure;
 
     /**
      * Constructor.
@@ -204,8 +209,14 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
             sequenceCanonicalSynchronizer = new SequenceCanonicalSynchronizerAdapter();
             sessionEventBroker.addLocalTrigger(SessionEventBrokerImpl.asFilter(sequenceCanonicalSynchronizerLayoutScope), sequenceCanonicalSynchronizer);
         }
+        
+        IFigure overlayLayer = getLayer(DDiagramRootEditPart.OVERLAY_LAYER);
+        if (overlayLayer != null) {
+            this.labelsOverlayFigure = new LabelsOverlayFigure(this.getFigure(), this);
+            overlayLayer.add(this.labelsOverlayFigure);
+        }
     }
-
+    
     private Option<SessionEventBroker> getSessionBroker() {
         DDiagramEditor diagramEditor = (DDiagramEditor) this.getViewer().getProperty(DDiagramEditor.EDITOR_ID);
         if (diagramEditor != null) {
@@ -245,6 +256,11 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
         if (snapDisabler != null && viewer instanceof DiagramGraphicalViewer && ((DiagramGraphicalViewer) viewer).getWorkspaceViewerPreferenceStore() != null) {
             ((DiagramGraphicalViewer) viewer).getWorkspaceViewerPreferenceStore().removePropertyChangeListener(snapDisabler);
             snapDisabler = null;
+        }
+        IFigure overlayLayer = getLayer(DDiagramRootEditPart.OVERLAY_LAYER);
+        if (labelsOverlayFigure != null && overlayLayer != null) {
+            overlayLayer.remove(labelsOverlayFigure);
+            labelsOverlayFigure = null;
         }
 
         getEditingDomain().removeResourceSetListener(refreshZorder);

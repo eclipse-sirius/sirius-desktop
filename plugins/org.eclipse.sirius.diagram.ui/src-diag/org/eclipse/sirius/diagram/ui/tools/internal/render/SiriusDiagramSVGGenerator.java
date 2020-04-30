@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2004, 2016 IBM Corporation and others.
+ * Copyright (c) 2004, 2020 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,8 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.draw2d.Graphics;
+import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.common.core.util.Log;
 import org.eclipse.gmf.runtime.common.core.util.Trace;
@@ -40,17 +42,14 @@ import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.image.ImageConverte
 import org.eclipse.gmf.runtime.draw2d.ui.render.factory.RenderedImageFactory;
 import org.eclipse.gmf.runtime.draw2d.ui.render.internal.RenderedImageDescriptor;
 import org.eclipse.jface.resource.ImageDescriptor;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.w3c.dom.Element;
 
 /**
- * Supports generation of an SVG DOM for a diagram or a subset of editparts on a
- * diagram.<BR>
- * Class copied from
- * {@link org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramSVGGenerator}
- * to use a specific GraphicsToGraphics2DAdaptor ({@link SiriusGraphicsSVG}
- * instead of
- * {@link org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.export.GraphicsSVG}
- * ) that handles the gradient.
+ * Supports generation of an SVG DOM for a diagram or a subset of editparts on a diagram.<BR>
+ * Class copied from {@link org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramSVGGenerator} to use a specific
+ * GraphicsToGraphics2DAdaptor ({@link SiriusGraphicsSVG} instead of
+ * {@link org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.export.GraphicsSVG} ) that handles the gradient.
  *
  * @author jschofie / sshaw
  */
@@ -63,6 +62,8 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
 
     private Rectangle viewBox = null;
 
+    private IFigure overlayFigure;
+
     /**
      * Creates a new instance.
      *
@@ -71,13 +72,14 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
      */
     public SiriusDiagramSVGGenerator(DiagramEditPart diagramEditPart) {
         super(diagramEditPart);
+        if (diagramEditPart instanceof DDiagramEditPart) {
+            this.overlayFigure = ((DDiagramEditPart) diagramEditPart).getOverlayFigure();
+        }
     }
 
     /*
      * (non-Javadoc)
-     * @see
-     * org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramGenerator#
-     * setUpGraphics(int, int)
+     * @see org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramGenerator# setUpGraphics(int, int)
      */
     @Override
     protected Graphics setUpGraphics(int width, int height) {
@@ -88,8 +90,7 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
 
     /*
      * (non-Javadoc)
-     * @see
-     * org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramGenerator#
+     * @see org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramGenerator#
      * getImageDescriptor(org.eclipse.draw2d.Graphics)
      */
     @Override
@@ -113,6 +114,14 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
         }
 
         return null;
+    }
+
+    @Override
+    protected void renderToGraphics(Graphics graphics, Point translateOffset, List editparts) {
+        super.renderToGraphics(graphics, translateOffset, editparts);
+        if (this.overlayFigure != null) {
+            paintFigure(graphics, overlayFigure);
+        }
     }
 
     /**
@@ -147,8 +156,7 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
 
     /*
      * (non-Javadoc)
-     * @see
-     * org.eclipse.gmf.runtime.diagram.ui.internal.clipboard.DiagramGenerator#
+     * @see org.eclipse.gmf.runtime.diagram.ui.internal.clipboard.DiagramGenerator#
      * createAWTImageForParts(java.util.List)
      */
     @Override
@@ -179,8 +187,7 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
     }
 
     /**
-     * @return Returns the rendered image created by previous call to
-     *         createSWTImageDescriptorForParts
+     * @return Returns the rendered image created by previous call to createSWTImageDescriptorForParts
      */
     public RenderedImage getRenderedImage() {
         return renderedImage;
