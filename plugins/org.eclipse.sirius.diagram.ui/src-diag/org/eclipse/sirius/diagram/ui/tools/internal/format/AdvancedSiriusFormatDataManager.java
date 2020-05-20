@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,6 @@ import java.util.Map;
 import org.eclipse.sirius.diagram.formatdata.EdgeFormatData;
 import org.eclipse.sirius.diagram.formatdata.NodeFormatData;
 import org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager;
-import org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.SemanticEdgeFormatDataKey;
 
 /**
  * Interface to manage {@link org.eclipse.sirius.diagram.ui.tools.api.format.SiriusFormatDataManager} .
@@ -45,6 +44,6 @@ public interface AdvancedSiriusFormatDataManager extends SiriusFormatDataManager
      * 
      * @return Map.
      */
-    Map<SemanticEdgeFormatDataKey, Map<String, EdgeFormatData>> getEdgeFormatData();
+    Map<? extends EdgeFormatDataKey, Map<String, EdgeFormatData>> getEdgeFormatData();
 
 }

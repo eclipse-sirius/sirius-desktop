@@ -1615,6 +1615,9 @@ public final class Messages {
     @TranslatableMessage
     public static String RemoveBlankSpace_cmdName;
 
+    @TranslatableMessage
+    public static String MappingBasedSiriusFormatDataManager_invalidSemanticMapping;
+
     // CHECKSTYLE:ON
     private Messages() {
         // Prevents instanciation.
