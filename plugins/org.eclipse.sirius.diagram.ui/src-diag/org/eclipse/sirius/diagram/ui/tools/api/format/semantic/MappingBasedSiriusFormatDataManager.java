@@ -12,10 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.format.semantic;
 
-import java.text.MessageFormat;
-import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -26,7 +23,6 @@ import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.format.AbstractSiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataKey;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.AdvancedSiriusFormatDataManager;
@@ -98,66 +94,49 @@ public class MappingBasedSiriusFormatDataManager extends SiriusFormatDataManager
      * Resolve the key for the element of the target diagram.
      * 
      * @param semanticDecorator
-     *            The decorator for the target diagram
+     *            The {@link DSemanticDecorator} for which to create a key.
      * @return The key of the mapping-function-corresponding source diagram element.
      */
     @Override
     public FormatDataKey createKey(final DSemanticDecorator semanticDecorator) {
+        FormatDataKey result = null;
+
+        boolean isApplyFormat = false;
+        // Check if we are storing or applying
         if (semanticDecorator instanceof DDiagramElement) {
             DDiagram parentDiagram = ((DDiagramElement) semanticDecorator).getParentDiagram();
-            if (!parentDiagram.equals(sourceDiagram)) {
-                return resolveSourceKey(semanticDecorator);
-            }
+            isApplyFormat = !parentDiagram.equals(sourceDiagram);
         }
-        return super.createKey(semanticDecorator);
-    }
 
-    /**
-     * Resolve the {@link FormatDataKey} element that have been stored for the EObject mapped (through the
-     * {@code semanticMap}) to the target value of {@code semanticDecorator}.
-     * 
-     * @param semanticDecorator
-     *            The semantic decorator for the destination diagram element for which we want to compute the format
-     *            data.
-     * @return The {@link FormatDataKey} from the source mappings if it exists
-     */
-    private FormatDataKey resolveSourceKey(final DSemanticDecorator semanticDecorator) {
-        FormatDataKey result = null;
-        final EObject realSemanticElement = semanticDecorator.getTarget();
-        if (getSemanticMap().containsValue(realSemanticElement)) {
-            List<Entry<EObject, EObject>> mappedElements = getSemanticMap().entrySet().stream().filter(entry -> entry.getValue().equals(realSemanticElement)).collect(Collectors.toList());
-            if (mappedElements.size() != 1) {
-                throw new IllegalStateException(MessageFormat.format(Messages.MappingBasedSiriusFormatDataManager_invalidSemanticMapping, semanticDecorator.getClass().getSimpleName()));
-            }
-            final EObject realSourceSemanticElement = mappedElements.get(0).getKey();
-            if (semanticDecorator instanceof DEdge) {
-                result = new SemanticEdgeFormatDataKey(realSourceSemanticElement);
-            } else if (semanticDecorator instanceof AbstractDNode || semanticDecorator instanceof DDiagram) {
-                result = new SemanticNodeFormatDataKey(realSourceSemanticElement);
-            }
+        EObject targetEObject = semanticDecorator.getTarget();
+        EObject usedAsKeySemanticElement = null;
+        // If we are applying and we have a match in the map
+        if (!isApplyFormat && getSemanticMap().containsKey(targetEObject)) {
+            usedAsKeySemanticElement = getSemanticMap().get(targetEObject);
+        } else {
+            // If we are storing or if there is no match in the map (we default to the target value; the key will not be
+            // used anyways)
+            usedAsKeySemanticElement = targetEObject;
+        }
+
+        if (semanticDecorator instanceof DEdge) {
+            result = new SemanticEdgeFormatDataKey(usedAsKeySemanticElement);
+        } else if (semanticDecorator instanceof AbstractDNode || semanticDecorator instanceof DDiagram) {
+            result = new SemanticNodeFormatDataKey(usedAsKeySemanticElement);
         }
         return result;
     }
 
-    /**
-     * In this FormatDataManager, must be called after a proper call to {@code init}.
-     */
     @Override
     public void applyFormat(IGraphicalEditPart rootEditPart) {
         super.applyFormat(rootEditPart);
     }
 
-    /**
-     * In this FormatDataManager, must be called after a proper call to {@code init}.
-     */
     @Override
     public void applyLayout(IGraphicalEditPart rootEditPart) {
         super.applyLayout(rootEditPart);
     }
 
-    /**
-     * In this FormatDataManager, must be called after a proper call to {@code init}.
-     */
     @Override
     public void applyStyle(IGraphicalEditPart rootEditPart) {
         super.applyStyle(rootEditPart);

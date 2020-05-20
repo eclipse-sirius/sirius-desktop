@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
@@ -57,9 +59,6 @@ import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.ui.IEditorPart;
 
-import com.google.common.base.Predicate;
-import com.google.common.collect.Iterables;
-
 /**
  * Test class for {@link SiriusFormatDataManagerForSemanticElements}.
  * 
@@ -78,7 +77,7 @@ public abstract class AbstractSiriusFormatDataManagerForSemanticElementsTest ext
 
     protected static final Predicate<Diagram> NO_RAW_DIAGRAM = new Predicate<Diagram>() {
         @Override
-        public boolean apply(final Diagram input) {
+        public boolean test(final Diagram input) {
             return !input.raw;
         }
     };
@@ -234,14 +233,37 @@ public abstract class AbstractSiriusFormatDataManagerForSemanticElementsTest ext
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        String representationsPath = PLUGIN_PATH + getPlatformRelatedDataPath() + SESSION_MODEL_NAME;
-        String semanticPath = PLUGIN_PATH + getPlatformRelatedDataPath() + SEMANTIC_MODEL_NAME;
-        String modelerPath = PLUGIN_PATH + getPlatformRelatedDataPath() + MODELER_NAME;
-        genericSetUp(semanticPath, modelerPath, representationsPath);
+
+        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, getDataPath(), getSessionModelName(), getSemanticModelName(), getModelerName());
+        genericSetUp(getSemanticModelPaths(), getModelerPathAsList(), TEMPORARY_PROJECT_NAME + "/" + getSessionModelName());
 
         // Disable refresh on opening
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), false);
         TestsUtil.emptyEventsFromUIThread();
+    }
+
+    protected String getDataPath() {
+        return DATA_PATH;
+    }
+
+    protected List<String> getModelerPathAsList() {
+        return Collections.singletonList(TEMPORARY_PROJECT_NAME + "/" + getModelerName());
+    }
+
+    protected List<String> getSemanticModelPaths() {
+        return Collections.singletonList(TEMPORARY_PROJECT_NAME + "/" + getSemanticModelName());
+    }
+
+    protected String getSessionModelName() {
+        return SESSION_MODEL_NAME;
+    }
+
+    protected String getSemanticModelName() {
+        return SEMANTIC_MODEL_NAME;
+    }
+
+    protected String getModelerName() {
+        return MODELER_NAME;
     }
 
     protected void changeZoomLevel(Diagram diagram, double zoomLevel) {
@@ -268,7 +290,7 @@ public abstract class AbstractSiriusFormatDataManagerForSemanticElementsTest ext
         Iterable<Diagram> diagrams;
         if (rawFiltered) {
             // Raw diagram must be excluded, it is "special"
-            diagrams = Iterables.filter(representation.diagrams, NO_RAW_DIAGRAM);
+            diagrams = representation.diagrams.stream().filter(NO_RAW_DIAGRAM).collect(Collectors.toList());
         } else {
             diagrams = representation.diagrams;
         }
@@ -306,10 +328,8 @@ public abstract class AbstractSiriusFormatDataManagerForSemanticElementsTest ext
      * Returns a list of all {@link NodeFormatData} contained by the given map
      * 
      * @param nodeFormatMap
-     *            the map from which we want to extract all
-     *            {@link NodeFormatData}.
-     * @return a list of all {@link NodeFormatData} contained by the given map.
-     *         An empty list if no such element exists.
+     *            the map from which we want to extract all {@link NodeFormatData}.
+     * @return a list of all {@link NodeFormatData} contained by the given map. An empty list if no such element exists.
      */
     protected List<NodeFormatData> getNodeFormatDataList(Map<? extends FormatDataKey, Map<String, NodeFormatData>> nodeFormatMap) {
         List<NodeFormatData> formatDataList = new ArrayList<NodeFormatData>();
@@ -325,10 +345,8 @@ public abstract class AbstractSiriusFormatDataManagerForSemanticElementsTest ext
      * Returns a list of all {@link EdgeFormatData} contained by the given map
      * 
      * @param edgeFormatMap
-     *            the map from which we want to extract all
-     *            {@link EdgeFormatData}.
-     * @return a list of all {@link EdgeFormatData} contained by the given map.
-     *         An empty list if no such element exists.
+     *            the map from which we want to extract all {@link EdgeFormatData}.
+     * @return a list of all {@link EdgeFormatData} contained by the given map. An empty list if no such element exists.
      */
     protected List<EdgeFormatData> getEdgeFormatDataList(Map<? extends FormatDataKey, Map<String, EdgeFormatData>> edgeFormatMap) {
         List<EdgeFormatData> formatDataList = new ArrayList<EdgeFormatData>();

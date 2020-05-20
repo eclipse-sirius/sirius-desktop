@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:formatdata="http://www.eclipse.org/sirius/dsl/formatdata/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0">
+  <formatdata:NodeFormatData id="//targetp4" width="150" height="70">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ZcA689MsEeqYQ9ZMUYRT2Q" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync_edge']/@containerMappings[name='DT2_Package']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2002">
+      <children type="5006"/>
+      <children type="7001">
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="575" y="312" width="150" height="70"/>
+    </gmfView>
+    <location x="575" y="312"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//targetp1" width="825" height="199">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ZcA64NMsEeqYQ9ZMUYRT2Q" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync_edge']/@containerMappings[name='DT2_Package']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2002">
+      <children type="5006"/>
+      <children type="7001">
+        <children type="3009">
+          <children type="5004"/>
+          <children type="7003">
+            <styles xsi:type="notation:SortingStyle"/>
+            <styles xsi:type="notation:FilteringStyle"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="710" y="144" width="45" height="41"/>
+        </children>
+        <children type="3009">
+          <children type="5004"/>
+          <children type="7003">
+            <styles xsi:type="notation:SortingStyle"/>
+            <styles xsi:type="notation:FilteringStyle"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="525" y="29" width="45" height="41"/>
+        </children>
+        <children type="3009">
+          <children type="5004"/>
+          <children type="7003">
+            <styles xsi:type="notation:SortingStyle"/>
+            <styles xsi:type="notation:FilteringStyle"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="30" y="29" width="45" height="41"/>
+        </children>
+        <children type="3008">
+          <children type="5005"/>
+          <children type="7002">
+            <children type="3009">
+              <children type="5004"/>
+              <children type="7003">
+                <styles xsi:type="notation:SortingStyle"/>
+                <styles xsi:type="notation:FilteringStyle"/>
+              </children>
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+              <layoutConstraint xsi:type="notation:Bounds" x="30" y="29" width="54" height="41"/>
+            </children>
+            <children type="3009">
+              <children type="5004"/>
+              <children type="7003">
+                <styles xsi:type="notation:SortingStyle"/>
+                <styles xsi:type="notation:FilteringStyle"/>
+              </children>
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+              <layoutConstraint xsi:type="notation:Bounds" x="115" y="29" width="54" height="41"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle"/>
+            <styles xsi:type="notation:FilteringStyle"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="10"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="630" y="29" width="182" height="84"/>
+        </children>
+        <children type="3008">
+          <children type="5005"/>
+          <children type="7002">
+            <children type="3009">
+              <children type="5004"/>
+              <children type="7003">
+                <styles xsi:type="notation:SortingStyle"/>
+                <styles xsi:type="notation:FilteringStyle"/>
+              </children>
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+              <layoutConstraint xsi:type="notation:Bounds" x="30" y="29" width="54" height="41"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle"/>
+            <styles xsi:type="notation:FilteringStyle"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="10"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="105" y="29" width="150" height="84"/>
+        </children>
+        <children type="3008">
+          <children type="5005"/>
+          <children type="7002">
+            <styles xsi:type="notation:SortingStyle"/>
+            <styles xsi:type="notation:FilteringStyle"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="10"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="315" y="29" width="150" height="70"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" width="825" height="199"/>
+    </gmfView>
+    <children id="//targetp1/targetC1-1" width="45" height="41">
+      <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ZcA64dMsEeqYQ9ZMUYRT2Q" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+        <customFeatures>uid</customFeatures>
+        <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync_edge']/@containerMappings[name='DT2_Package']/@subContainerMappings[name='DT2_Class']/@style"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Node" type="3009">
+        <children type="5004"/>
+        <children type="7003">
+          <styles xsi:type="notation:SortingStyle"/>
+          <styles xsi:type="notation:FilteringStyle"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="710" y="144" width="45" height="41"/>
+      </gmfView>
+      <outgoingEdges id="//targetp1/targetC1-1/targetaC1-2" sourceTerminal="(0.5227272727272727,0.0)" targetTerminal="(0.5227272727272727,1.0)">
+        <label id="//targetp1/targetC1-1/targetaC1-2" width="-1" height="-1">
+          <location y="10"/>
+        </label>
+        <siriusStyle xsi:type="diagram:EdgeStyle" uid="_ZcA64tMsEeqYQ9ZMUYRT2Q">
+          <customFeatures>uid</customFeatures>
+          <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync_edge']/@edgeMappings[name='DT2_EReference']/@style"/>
+          <centerLabelStyle uid="_ZcA649MsEeqYQ9ZMUYRT2Q" showIcon="false"/>
+        </siriusStyle>
+        <gmfView xsi:type="notation:Edge" type="4001">
+          <children type="6001">
+            <layoutConstraint xsi:type="notation:Bounds" y="10"/>
+          </children>
+          <children type="6002">
+            <layoutConstraint xsi:type="notation:Bounds" y="10"/>
+          </children>
+          <children type="6003">
+            <layoutConstraint xsi:type="notation:Bounds" y="10"/>
+          </children>
+          <styles xsi:type="notation:ConnectorStyle"/>
+          <styles xsi:type="notation:FontStyle" fontName="Sans" fontHeight="8"/>
+          <bendpoints xsi:type="notation:RelativeBendpoints" points="[-22, 0, 163, 76]$[-185, 0, 0, 76]$[-185, -76, 0, 0]"/>
+          <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5227272727272727,0.0)"/>
+          <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5227272727272727,1.0)"/>
+        </gmfView>
+        <pointList x="715" y="150"/>
+        <pointList x="552" y="150"/>
+        <pointList x="552" y="74"/>
+        <sourceRefPoint x="737" y="150"/>
+        <targetRefPoint x="552" y="74"/>
+      </outgoingEdges>
+      <outgoingEdges id="//targetp1/targetC1-1/targetaC1-1-1" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
+        <label id="//targetp1/targetC1-1/targetaC1-1-1" width="-1" height="-1">
+          <location x="5" y="9"/>
+        </label>
+        <siriusStyle xsi:type="diagram:EdgeStyle" uid="_ZcA65NMsEeqYQ9ZMUYRT2Q">
+          <customFeatures>uid</customFeatures>
+          <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync_edge']/@edgeMappings[name='DT2_EReference']/@style"/>
+          <centerLabelStyle uid="_ZcA65dMsEeqYQ9ZMUYRT2Q" showIcon="false"/>
+        </siriusStyle>
+        <gmfView xsi:type="notation:Edge" type="4001">
+          <children type="6001">
+            <layoutConstraint xsi:type="notation:Bounds" x="5" y="9"/>
+          </children>
+          <children type="6002">
+            <layoutConstraint xsi:type="notation:Bounds" y="10"/>
+          </children>
+          <children type="6003">
+            <layoutConstraint xsi:type="notation:Bounds" y="10"/>
+          </children>
+          <styles xsi:type="notation:ConnectorStyle"/>
+          <styles xsi:type="notation:FontStyle" fontName="Sans" fontHeight="8"/>
+          <bendpoints xsi:type="notation:RelativeBendpoints" points="[22, -17, 62, 63]$[43, -34, 83, 46]$[-14, -66, 26, 14]"/>
+          <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
+          <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
+        </gmfView>
+        <pointList x="758" y="152"/>
+        <pointList x="779" y="135"/>
+        <pointList x="722" y="103"/>
+        <sourceRefPoint x="736" y="169"/>
+        <targetRefPoint x="696" y="89"/>
+      </outgoingEdges>
+      <location x="715" y="150"/>
+    </children>
+    <children id="//targetp1/targetC1-2" width="45" height="41">
+      <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ZcA65tMsEeqYQ9ZMUYRT2Q" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+        <customFeatures>uid</customFeatures>
+        <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync_edge']/@containerMappings[name='DT2_Package']/@subContainerMappings[name='DT2_Class']/@style"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Node" type="3009">
+        <children type="5004"/>
+        <children type="7003">
+          <styles xsi:type="notation:SortingStyle"/>
+          <styles xsi:type="notation:FilteringStyle"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="525" y="29" width="45" height="41"/>
+      </gmfView>
+      <location x="530" y="35"/>
+    </children>
+    <children id="//targetp1/targetC1-3" width="45" height="41">
+      <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ZcA659MsEeqYQ9ZMUYRT2Q" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+        <customFeatures>uid</customFeatures>
+        <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync_edge']/@containerMappings[name='DT2_Package']/@subContainerMappings[name='DT2_Class']/@style"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Node" type="3009">
+        <children type="5004"/>
+        <children type="7003">
+          <styles xsi:type="notation:SortingStyle"/>
+          <styles xsi:type="notation:FilteringStyle"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="30" y="29" width="45" height="41"/>
+      </gmfView>
+      <location x="35" y="35"/>
+    </children>
+    <children id="//targetp1/targetp1-1" width="182" height="84">
+      <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ZcA66NMsEeqYQ9ZMUYRT2Q" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+        <customFeatures>uid</customFeatures>
+        <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync_edge']/@containerMappings[name='DT2_Package']/@style"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Node" type="3008">
+        <children type="5005"/>
+        <children type="7002">
+          <children type="3009">
+            <children type="5004"/>
+            <children type="7003">
+              <styles xsi:type="notation:SortingStyle"/>
+              <styles xsi:type="notation:FilteringStyle"/>
+            </children>
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="30" y="29" width="54" height="41"/>
+          </children>
+          <children type="3009">
+            <children type="5004"/>
+            <children type="7003">
+              <styles xsi:type="notation:SortingStyle"/>
+              <styles xsi:type="notation:FilteringStyle"/>
+            </children>
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="115" y="29" width="54" height="41"/>
+          </children>
+          <styles xsi:type="notation:SortingStyle"/>
+          <styles xsi:type="notation:FilteringStyle"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="10"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="630" y="29" width="182" height="84"/>
+      </gmfView>
+      <children id="//targetp1/targetp1-1/targetC1-1-1" width="54" height="41">
+        <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ZcA66dMsEeqYQ9ZMUYRT2Q" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+          <customFeatures>uid</customFeatures>
+          <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync_edge']/@containerMappings[name='DT2_Package']/@subContainerMappings[name='DT2_Class']/@style"/>
+        </siriusStyle>
+        <gmfView xsi:type="notation:Node" type="3009">
+          <children type="5004"/>
+          <children type="7003">
+            <styles xsi:type="notation:SortingStyle"/>
+            <styles xsi:type="notation:FilteringStyle"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="30" y="29" width="54" height="41"/>
+        </gmfView>
+        <location x="35" y="35"/>
+      </children>
+      <children id="//targetp1/targetp1-1/targetC1-1-2" width="54" height="41">
+        <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ZcA66tMsEeqYQ9ZMUYRT2Q" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+          <customFeatures>uid</customFeatures>
+          <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync_edge']/@containerMappings[name='DT2_Package']/@subContainerMappings[name='DT2_Class']/@style"/>
+        </siriusStyle>
+        <gmfView xsi:type="notation:Node" type="3009">
+          <children type="5004"/>
+          <children type="7003">
+            <styles xsi:type="notation:SortingStyle"/>
+            <styles xsi:type="notation:FilteringStyle"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="115" y="29" width="54" height="41"/>
+        </gmfView>
+        <location x="120" y="35"/>
+      </children>
+      <location x="635" y="35"/>
+    </children>
+    <children id="//targetp1/targetp1-2" width="150" height="84">
+      <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ZcA669MsEeqYQ9ZMUYRT2Q" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+        <customFeatures>uid</customFeatures>
+        <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync_edge']/@containerMappings[name='DT2_Package']/@style"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Node" type="3008">
+        <children type="5005"/>
+        <children type="7002">
+          <children type="3009">
+            <children type="5004"/>
+            <children type="7003">
+              <styles xsi:type="notation:SortingStyle"/>
+              <styles xsi:type="notation:FilteringStyle"/>
+            </children>
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="30" y="29" width="54" height="41"/>
+          </children>
+          <styles xsi:type="notation:SortingStyle"/>
+          <styles xsi:type="notation:FilteringStyle"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="10"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="105" y="29" width="150" height="84"/>
+      </gmfView>
+      <children id="//targetp1/targetp1-2/targetC1-2-1" width="54" height="41">
+        <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ZcA67NMsEeqYQ9ZMUYRT2Q" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+          <customFeatures>uid</customFeatures>
+          <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync_edge']/@containerMappings[name='DT2_Package']/@subContainerMappings[name='DT2_Class']/@style"/>
+        </siriusStyle>
+        <gmfView xsi:type="notation:Node" type="3009">
+          <children type="5004"/>
+          <children type="7003">
+            <styles xsi:type="notation:SortingStyle"/>
+            <styles xsi:type="notation:FilteringStyle"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="30" y="29" width="54" height="41"/>
+        </gmfView>
+        <location x="35" y="35"/>
+      </children>
+      <location x="110" y="35"/>
+    </children>
+    <children id="//targetp1/targetp1-3" width="150" height="70">
+      <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ZcA67dMsEeqYQ9ZMUYRT2Q" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+        <customFeatures>uid</customFeatures>
+        <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync_edge']/@containerMappings[name='DT2_Package']/@style"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Node" type="3008">
+        <children type="5005"/>
+        <children type="7002">
+          <styles xsi:type="notation:SortingStyle"/>
+          <styles xsi:type="notation:FilteringStyle"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="10"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="315" y="29" width="150" height="70"/>
+      </gmfView>
+      <location x="320" y="35"/>
+    </children>
+    <location/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//targetp2" width="373" height="127">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ZcA67tMsEeqYQ9ZMUYRT2Q" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync_edge']/@containerMappings[name='DT2_Package']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2002">
+      <children type="5006"/>
+      <children type="7001">
+        <children type="3008">
+          <children type="5005"/>
+          <children type="7002">
+            <children type="3009">
+              <children type="5004"/>
+              <children type="7003">
+                <styles xsi:type="notation:SortingStyle"/>
+                <styles xsi:type="notation:FilteringStyle"/>
+              </children>
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+              <layoutConstraint xsi:type="notation:Bounds" x="30" y="29" width="87" height="41"/>
+            </children>
+            <styles xsi:type="notation:SortingStyle"/>
+            <styles xsi:type="notation:FilteringStyle"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="10"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="30" y="29" width="150" height="84"/>
+        </children>
+        <children type="3008">
+          <children type="5005"/>
+          <children type="7002">
+            <styles xsi:type="notation:SortingStyle"/>
+            <styles xsi:type="notation:FilteringStyle"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="10"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="210" y="29" width="150" height="70"/>
+        </children>
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="105" y="255" width="373" height="127"/>
+    </gmfView>
+    <children id="//targetp2/targetp2-1" width="150" height="84">
+      <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ZcA679MsEeqYQ9ZMUYRT2Q" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+        <customFeatures>uid</customFeatures>
+        <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync_edge']/@containerMappings[name='DT2_Package']/@style"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Node" type="3008">
+        <children type="5005"/>
+        <children type="7002">
+          <children type="3009">
+            <children type="5004"/>
+            <children type="7003">
+              <styles xsi:type="notation:SortingStyle"/>
+              <styles xsi:type="notation:FilteringStyle"/>
+            </children>
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="30" y="29" width="87" height="41"/>
+          </children>
+          <styles xsi:type="notation:SortingStyle"/>
+          <styles xsi:type="notation:FilteringStyle"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="10"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="30" y="29" width="150" height="84"/>
+      </gmfView>
+      <children id="//targetp2/targetp2-1/targetnew%20EClass%201" width="87" height="41">
+        <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ZcA68NMsEeqYQ9ZMUYRT2Q" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+          <customFeatures>uid</customFeatures>
+          <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync_edge']/@containerMappings[name='DT2_Package']/@subContainerMappings[name='DT2_Class']/@style"/>
+        </siriusStyle>
+        <gmfView xsi:type="notation:Node" type="3009">
+          <children type="5004"/>
+          <children type="7003">
+            <styles xsi:type="notation:SortingStyle"/>
+            <styles xsi:type="notation:FilteringStyle"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="30" y="29" width="87" height="41"/>
+        </gmfView>
+        <location x="35" y="35"/>
+      </children>
+      <location x="35" y="35"/>
+    </children>
+    <children id="//targetp2/targetp2-2" width="150" height="70">
+      <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ZcA68dMsEeqYQ9ZMUYRT2Q" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+        <customFeatures>uid</customFeatures>
+        <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync_edge']/@containerMappings[name='DT2_Package']/@style"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Node" type="3008">
+        <children type="5005"/>
+        <children type="7002">
+          <styles xsi:type="notation:SortingStyle"/>
+          <styles xsi:type="notation:FilteringStyle"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="10"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="210" y="29" width="150" height="70"/>
+      </gmfView>
+      <location x="215" y="35"/>
+    </children>
+    <location x="105" y="255"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//targetp3" width="150" height="70">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ZcA68tMsEeqYQ9ZMUYRT2Q" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync_edge']/@containerMappings[name='DT2_Package']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2002">
+      <children type="5006"/>
+      <children type="7001">
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="505" y="230" width="150" height="70"/>
+    </gmfView>
+    <location x="505" y="230"/>
+  </formatdata:NodeFormatData>
+</xmi:XMI>

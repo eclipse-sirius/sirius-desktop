@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -529,6 +529,12 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      *            The parent containing children to apply format on.
      * @param editPartViewer
      *            The viewer responsible for the current editparts lifecycle.
+     * @param formatData
+     *            The format data to apply.
+     * @param applyFormat
+     *            Whether or not to apply format.
+     * @param applyStyle
+     *            Whether or not to apply style.
      */
     private void applyFormatToNodeChildren(final DNode parentNode, final EditPartViewer editPartViewer, final NodeFormatData formatData, boolean applyFormat, boolean applyStyle) {
         // Restore Bordered nodes
@@ -568,11 +574,15 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      * Try to apply the format to the bordered nodes.
      *
      * @param borderedNodes
-     *            The list of bordered nodes to deals with
+     *            The list of bordered nodes to deal with.
      * @param editPartViewer
      *            The viewer responsible for the current editparts lifecycle.
      * @param parentFormatData
-     *            The formatData of the parent of the borderedNodes
+     *            The formatData of the parent of the borderedNodes.
+     * @param applyFormat
+     *            Whether or not to apply format.
+     * @param applyStyle
+     *            Whether or not to apply style.
      */
     private void applyFormatForBorderedNodes(EList<DNode> borderedNodes, EditPartViewer editPartViewer, NodeFormatData parentFormatData, boolean applyFormat, boolean applyStyle) {
         HashMap<Node, NodeFormatData> nodesWithFormatDataToApply = new HashMap<>();

@@ -134,6 +134,9 @@ import org.eclipse.sirius.tests.unit.diagram.format.data.FormatHelperImplEdgeFor
 import org.eclipse.sirius.tests.unit.diagram.format.data.FormatHelperImplNodeFormatData1Test;
 import org.eclipse.sirius.tests.unit.diagram.format.data.FormatHelperImplNodeFormatData2Test;
 import org.eclipse.sirius.tests.unit.diagram.format.data.LabelPositionOnContainerAndListTest;
+import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest;
+import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest;
+import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.SiriusFormatDataManagerForDDiagramElementWithSameSemanticElementsTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.SiriusFormatDataManagerForSemanticElementsApplyWithPredefinedDataTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.SiriusFormatDataManagerForSemanticElementsStoreWithPredefinedDataTest;
@@ -441,6 +444,8 @@ public class AllDiagramPluginsTests {
 
         suite.addTestSuite(SiriusFormatDataManagerForDDiagramElementWithSameSemanticElementsTest.class);
         suite.addTestSuite(FormatDataManagerSelectionTest.class);
+        suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest.class));
+        suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest.class));
         suite.addTestSuite(LabelPositionOnContainerAndListTest.class);
         suite.addTestSuite(LabelVisibilityOnDragAndDropTests.class);
         suite.addTestSuite(LabelVisibilityOnCreationTest.class);
@@ -568,6 +573,7 @@ public class AllDiagramPluginsTests {
         String platformVersion = Platform.getBundle("org.eclipse.core.runtime").getHeaders().get("Bundle-Version");
         if (!platformVersion.startsWith("3.5")) {
             suite.addTestSuite(SiriusFormatDataManagerForSemanticElementsTest.class);
+            suite.addTestSuite(MappingBasedSiriusFormatDataManagerTest.class);
             suite.addTest(new JUnit4TestAdapter(SiriusFormatDataManagerForSemanticElementsStoreWithPredefinedDataTest.class));
         }
     }
