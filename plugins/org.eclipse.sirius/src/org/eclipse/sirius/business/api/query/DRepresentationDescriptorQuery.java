@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.query;
 
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -62,10 +63,13 @@ public class DRepresentationDescriptorQuery {
             if (SiriusUtil.SESSION_RESOURCE_EXTENSION.equals(extention)) {
                 return isRepresentationReachable;
             }
-            ResourceSet resourceSet = repDescriptor.eResource().getResourceSet();
-            isRepresentationReachable = resourceSet.getURIConverter().exists(repDescriptor.getRepPath().getResourceURI(), null);
-            // At this step, exists method may return true even if the repPath URI fragment corresponds to no
-            // representation in the case the representation is not be loaded yet
+            Resource eResource = repDescriptor.eResource();
+            if (eResource != null) {
+                ResourceSet resourceSet = eResource.getResourceSet();
+                isRepresentationReachable = resourceSet.getURIConverter().exists(repDescriptor.getRepPath().getResourceURI(), null);
+                // At this step, exists method may return true even if the repPath URI fragment corresponds to no
+                // representation in the case the representation is not be loaded yet
+            }
         }
         return isRepresentationReachable;
     }

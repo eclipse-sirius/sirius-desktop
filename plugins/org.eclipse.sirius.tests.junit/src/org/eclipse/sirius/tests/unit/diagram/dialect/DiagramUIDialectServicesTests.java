@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2018 Obeo
+ * Copyright (c) 2016, 2020 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.dialect.command.DeleteRepresentationCommand;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectUIServices;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
@@ -40,6 +41,8 @@ import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
  */
 public class DiagramUIDialectServicesTests extends SiriusDiagramTestCase {
 
+    private boolean oldPropertyValue;
+
     private static final String MODELER_PATH = "/org.eclipse.sirius.tests.junit/data/unit/dialect/aqlDomainClassDef.odesign";
 
     private static final String SEMANTIC_MODEL_PATH = "/org.eclipse.sirius.tests.junit/data/unit/dialect/aqlDomainClassDef.ecore";
@@ -56,6 +59,7 @@ public class DiagramUIDialectServicesTests extends SiriusDiagramTestCase {
 
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH);
         initViewpoint("aqlDomainClassDef");
+        oldPropertyValue = TestsUtil.isCreateRepresentationInSeparateResource();
     }
 
     /**
@@ -115,11 +119,35 @@ public class DiagramUIDialectServicesTests extends SiriusDiagramTestCase {
 
     }
 
+    /**
+     * Checks that after removing a representation, queries on its descriptor does not raise exceptions.
+     */
+    public void testRepresentationDescriptorQueryAfterDeletion() {
+        TestsUtil.setCreateRepresentationInSeparateResource(true);
+        DRepresentation newRepresentation = createRepresentation("EcoreDiag");
+
+        assertEquals("Test setup is wrong.", 2, newRepresentation.getRepresentationElements().size());
+        DRepresentationQuery dRepresentationQuery = new DRepresentationQuery(newRepresentation);
+        DRepresentationDescriptorQuery dRepresentationDescriptorQuery = new DRepresentationDescriptorQuery(dRepresentationQuery.getRepresentationDescriptor());
+
+        Set<DRepresentationDescriptor> hashSet = new HashSet<DRepresentationDescriptor>();
+        hashSet.add(dRepresentationQuery.getRepresentationDescriptor());
+        session.getTransactionalEditingDomain().getCommandStack().execute(new DeleteRepresentationCommand(session, hashSet));
+        TestsUtil.synchronizationWithUIThread();
+        // Check that the representation descriptor is not reachable anymore and that calling this query does not throw
+        // exceptions
+        assertFalse("The representation should not be reachable anymore", dRepresentationDescriptorQuery.isRepresentationReachable());
+    }
+
     @Override
     protected void tearDown() throws Exception {
-        if (editor != null) {
-            DialectUIManager.INSTANCE.closeEditor(editor, false);
+        try {
+            if (editor != null) {
+                DialectUIManager.INSTANCE.closeEditor(editor, false);
+            }
+            super.tearDown();
+        } finally {
+            TestsUtil.setCreateRepresentationInSeparateResource(oldPropertyValue);
         }
-        super.tearDown();
     }
 }
