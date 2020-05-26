@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,8 +33,7 @@ import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.RubberbandDragTracker
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.CombinedFragmentInvisibleResizableCompartmentFigure;
 
 /**
- * A specific DNodeContainerViewNodeContainerCompartmentEditPart to remove the
- * scroll bars.
+ * A specific DNodeContainerViewNodeContainerCompartmentEditPart to remove the scroll bars.
  * 
  * @author smonnier
  */
@@ -57,8 +56,7 @@ public class CombinedFragmentCompartmentEditPart extends DNodeContainerViewNodeC
     }
 
     /**
-     * Overridden to install a specific edit policy managing the moving and
-     * resizing requests on combined fragment.
+     * Overridden to install a specific edit policy managing the moving and resizing requests on combined fragment.
      * <p>
      * {@inheritDoc}
      */
@@ -106,7 +104,7 @@ public class CombinedFragmentCompartmentEditPart extends DNodeContainerViewNodeC
         int mb = getMapMode().DPtoLP(0);
         scrollPane.setBorder(new MarginBorder(mb, mb, mb, mb));
     }
-    
+
     @Override
     public DragTracker getDragTracker(final Request req) {
         SelectionRequest selectionRequest = (SelectionRequest) req;
@@ -119,5 +117,10 @@ public class CombinedFragmentCompartmentEditPart extends DNodeContainerViewNodeC
             result = super.getDragTracker(req);
         }
         return result;
+    }
+
+    @Override
+    protected ConnectionRefreshMgr createConnectionRefreshMgr() {
+        return new SequenceCompartmentConnectionRefreshMgr();
     }
 }
