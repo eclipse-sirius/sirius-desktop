@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.sequence.condition;
 
-import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
+import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 
 /**
@@ -22,40 +22,42 @@ import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
  */
 public class CheckNoteAttachement extends DefaultCondition {
 
-    private LifelineEditPart lifelineEditPart;
+    private AbstractGraphicalEditPart lifelineEditPart;
 
     private int attachementNumber;
 
-    private boolean attachmentIsFromLifeline;
+    private boolean attachmentIsFromNote;
 
     /**
      * Constructor.
      * 
      */
-    public CheckNoteAttachement(LifelineEditPart lifelineEditPart, boolean attachmentIsFromLifeline) {
-        this.lifelineEditPart = lifelineEditPart;
-        this.attachmentIsFromLifeline = attachmentIsFromLifeline;
-        if (attachmentIsFromLifeline) {
-            this.attachementNumber = lifelineEditPart.getSourceConnections().size();
+    public CheckNoteAttachement(AbstractGraphicalEditPart editPart, boolean attachmentIsFromNote) {
+        this.lifelineEditPart = editPart;
+        this.attachmentIsFromNote = attachmentIsFromNote;
+        if (attachmentIsFromNote) {
+            this.attachementNumber = editPart.getTargetConnections().size();
         } else {
-            this.attachementNumber = lifelineEditPart.getTargetConnections().size();
+            this.attachementNumber = editPart.getSourceConnections().size();
         }
     }
 
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean test() throws Exception {
-        if (attachmentIsFromLifeline) {
-            return attachementNumber + 1 == lifelineEditPart.getSourceConnections().size();
-        } else {
+        if (attachmentIsFromNote) {
             return attachementNumber + 1 == lifelineEditPart.getTargetConnections().size();
+        } else {
+            return attachementNumber + 1 == lifelineEditPart.getSourceConnections().size();
         }
     }
 
     /**
      * {@inheritDoc}
      */
+    @Override
     public String getFailureMessage() {
         return "No new note attachment has been detected before timeout";
     }

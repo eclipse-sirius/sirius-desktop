@@ -63,7 +63,7 @@ public class NoteAttachmentTest extends AbstractDefaultModelSequenceTests {
 
     private void createNoteAndAttachment(int y1, boolean attachmentFromLifeline) {
         createNote(200, 200, "Test");
-        CheckNoteAttachement cna = new CheckNoteAttachement(lep, attachmentFromLifeline);
+        CheckNoteAttachement cna = new CheckNoteAttachement(lep, !attachmentFromLifeline);
         // The 250, 230 coordinates are about the note center. The idea is creating a note attachment without source or
         // target anchor.
         if (attachmentFromLifeline) {
@@ -210,7 +210,7 @@ public class NoteAttachmentTest extends AbstractDefaultModelSequenceTests {
         createMessage(InteractionsConstants.READ_TOOL_ID, LIFELINE_A, y1, LIFELINE_B, y1);
         bot.waitUntil(done);
 
-        //Create a note and a note attachment from the message toward the note center.
+        // Create a note and a note attachment from the message toward the note center.
         createNote(200, 200, "Test");
         editor.activateTool("Note Attachment");
         editor.click(x, y1);
@@ -231,7 +231,7 @@ public class NoteAttachmentTest extends AbstractDefaultModelSequenceTests {
             }
         });
 
-        //We try to extend the life line.
+        // We try to extend the life line.
         EndOfLifeEditPart eol = Iterables.getOnlyElement(Iterables.filter(getLifelineEditPart(LIFELINE_A).getChildren(), EndOfLifeEditPart.class));
         Point center = eol.getFigure().getBounds().getCenter();
         ICondition condition = new OperationDoneCondition();
@@ -297,7 +297,7 @@ public class NoteAttachmentTest extends AbstractDefaultModelSequenceTests {
 
         createNote(200, 200, "Test");
         int y = eol.getFigure().getBounds().getTop().y - 10;
-        CheckNoteAttachement cna = new CheckNoteAttachement(lep, false);
+        CheckNoteAttachement cna = new CheckNoteAttachement(lep, true);
         attachNoteToLifeline(210, 210, LIFELINE_A, eol.getFigure().getBounds().getTop().y - 10);
         bot.waitUntil(cna);
 

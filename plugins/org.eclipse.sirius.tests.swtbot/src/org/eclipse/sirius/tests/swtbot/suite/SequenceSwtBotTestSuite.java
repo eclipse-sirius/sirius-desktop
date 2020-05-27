@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -56,6 +56,7 @@ import org.eclipse.sirius.tests.swtbot.sequence.InteractionUseTwoClickCreationTe
 import org.eclipse.sirius.tests.swtbot.sequence.MessageExtensionTest;
 import org.eclipse.sirius.tests.swtbot.sequence.NonAutoRefreshSequenceExecutionBasicAndReturnMessageTest;
 import org.eclipse.sirius.tests.swtbot.sequence.NoteAttachmentTest;
+import org.eclipse.sirius.tests.swtbot.sequence.NoteAttachmentsWithCombinedFragmentTests;
 import org.eclipse.sirius.tests.swtbot.sequence.ObservationPointTests;
 import org.eclipse.sirius.tests.swtbot.sequence.PunctualStateTests;
 import org.eclipse.sirius.tests.swtbot.sequence.RefreshLayoutNotExecutedOnNoSequenceChangesTests;
@@ -181,6 +182,7 @@ public class SequenceSwtBotTestSuite extends TestCase {
             suite.addTestSuite(SequenceExecutionMessageToSelfTest.class);
             suite.addTestSuite(SequenceDestroyMessageTest.class);
             suite.addTestSuite(NoteAttachmentTest.class);
+            suite.addTestSuite(NoteAttachmentsWithCombinedFragmentTests.class);
             suite.addTestSuite(SequenceArrangeLinkedBorderedNodesTest.class);
             suite.addTestSuite(InteractionUseSingleClickCreationTests.class);
             suite.addTestSuite(InteractionUseTwoClickCreationTests.class);
