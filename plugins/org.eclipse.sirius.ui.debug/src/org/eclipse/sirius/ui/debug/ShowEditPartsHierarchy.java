@@ -14,15 +14,19 @@ package org.eclipse.sirius.ui.debug;
 
 import java.util.List;
 
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gef.EditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ListCompartmentEditPart;
+import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
+import org.eclipse.gmf.runtime.notation.Bounds;
+import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.GraphicalFilter;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.viewpoint.Decoration;
 import org.eclipse.sirius.viewpoint.Style;
 
@@ -34,6 +38,7 @@ import com.google.common.collect.Iterables;
  * @author <a href="mailto:mickael.lanoe@obeo.fr">Mickael LANOE</a>
  *
  */
+@SuppressWarnings("restriction")
 final class ShowEditPartsHierarchy implements Runnable {
     /** Sirius debug view */
     private final SiriusDebugView view;
@@ -72,18 +77,17 @@ final class ShowEditPartsHierarchy implements Runnable {
 
     private void addEditPart(EditPart part, int level, StringBuilder out) {
         out.append(part.getClass().getSimpleName());
+
         Object model = part.getModel();
         if (model instanceof Node) {
-            if (!(part instanceof LabelEditPart || part instanceof ListCompartmentEditPart)) {
-                out.append(": ");
-                Node node = (Node) model;
-                EObject element = node.getElement();
-                if (element instanceof DDiagramElement) {
-                    DDiagramElement diagramElement = (DDiagramElement) element;
-                    addDDiagramElement(diagramElement, level, out);
-                } else {
-                    out.append(element.getClass().getSimpleName());
-                }
+            out.append(": ");
+            Node node = (Node) model;
+            EObject element = node.getElement();
+            if (element instanceof DDiagramElement) {
+                DDiagramElement diagramElement = (DDiagramElement) element;
+                addDDiagramElement(part, node, diagramElement, level, out);
+            } else {
+                out.append(element.getClass().getSimpleName());
             }
         } else {
             out.append(": ");
@@ -91,13 +95,36 @@ final class ShowEditPartsHierarchy implements Runnable {
         }
     }
 
-    private void addDDiagramElement(DDiagramElement element, int level, StringBuilder out) {
+    private void addDDiagramElement(EditPart part, Node node, DDiagramElement element, int level, StringBuilder out) {
         int subLevel = level + 1;
         out.append(element.getClass().getSimpleName());
+
+        out.append(": ");
+        if (part instanceof AbstractGraphicalEditPart) {
+            IFigure figure = ((AbstractGraphicalEditPart) part).getFigure();
+            out.append(" Figure: " + getClassName(figure) + " Bounds: " + figure.getBounds());
+        }
+
+        Object layoutManger = ReflectionHelper.invokeMethodWithoutExceptionWithReturn(part, AbstractDNodeContainerCompartmentEditPart.class, "getLayoutManager", new Class[] {}, new Object[] {}, true);
+        if (layoutManger != null) {
+            out.append("\n");
+            addLevel(subLevel, out);
+            out.append("layoutManager: " + layoutManger.getClass().getSimpleName());
+        }
+
         if (!element.isVisible()) {
             out.append("\n");
             addLevel(subLevel, out);
             out.append("invisible");
+        }
+
+        LayoutConstraint layoutConstraint = node.getLayoutConstraint();
+        if (layoutConstraint instanceof Bounds) {
+            Bounds bounds = (Bounds) layoutConstraint;
+            out.append("\n");
+            addLevel(subLevel, out);
+            out.append("layoutConstraint: ");
+            out.append("width: " + bounds.getWidth() + "  height: " + bounds.getHeight());
         }
 
         Style style = element.getStyle();
@@ -159,4 +186,14 @@ final class ShowEditPartsHierarchy implements Runnable {
         }
     }
 
+    String getClassName(Object object) {
+        String name = object.getClass().getSimpleName();
+        if (name.isEmpty()) {
+            String[] split = object.getClass().getName().split("\\.");
+            if (split.length > 0) {
+                name = split[split.length - 1] + ":" + object.getClass().getSuperclass().getSimpleName();
+            }
+        }
+        return name;
+    }
 }

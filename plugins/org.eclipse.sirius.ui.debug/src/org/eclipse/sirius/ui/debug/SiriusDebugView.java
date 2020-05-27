@@ -1346,7 +1346,20 @@ public class SiriusDebugView extends AbstractDebugView {
     }
 
     private String figureDetails(IFigure figure) {
-        return "Opaque: " + figure.isOpaque() + " Color: " + figure.getBackgroundColor() + " Class: " + figure.getClass().getSimpleName() + " Bounds: " + figure.getBounds();
+        String figureName = getClassName(figure);
+        String layoutManager = figure.getLayoutManager() != null ? getClassName(figure.getLayoutManager()) : null;
+        return "Class: " + figureName + " LAYOUTMANAGER: " + layoutManager + "  BOUNDS: " + figure.getBounds() + " Opaque: " + figure.isOpaque() + " Color: " + figure.getBackgroundColor();
+    }
+
+    String getClassName(Object object) {
+        String name = object.getClass().getSimpleName();
+        if (name.isEmpty()) {
+            String[] split = object.getClass().getName().split("\\.");
+            if (split.length > 0) {
+                name = split[split.length - 1] + ":" + object.getClass().getSuperclass().getSimpleName();
+            }
+        }
+        return name;
     }
 
     private static class RefreshGraphicalCoverage extends RecordingCommand {
