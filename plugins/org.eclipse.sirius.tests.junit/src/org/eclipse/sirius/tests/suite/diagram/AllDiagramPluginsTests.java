@@ -465,6 +465,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(ContainerMappingImportTests.class);
         suite.addTestSuite(CompartmentMappingsTests.class);
         suite.addTestSuite(CompartmentsTest.class);
+        // suite.addTestSuite(CompartmentsMultiLabelLayoutTest.class);
         suite.addTestSuite(CompartmentsLayoutTest.class);
         suite.addTestSuite(ContainerMappingImportWithChildrenPresentationChangesTests.class);
         suite.addTestSuite(NodeMappingImportTests.class);
