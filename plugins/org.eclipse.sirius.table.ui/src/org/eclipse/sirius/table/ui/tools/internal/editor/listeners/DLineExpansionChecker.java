@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,11 +29,9 @@ import org.eclipse.swt.widgets.TreeColumn;
 import org.eclipse.swt.widgets.TreeItem;
 
 /**
- * {@link Listener} to prevents expansion/collapse {@link Event} while
- * {@link IPermissionAuthority} disallow {@link TablePackage#DLINE__COLLAPSED}
- * change. Manage also column resize to update
- * {@link TablePackage#DTABLE__HEADER_COLUMN_WIDTH} or
- * {@link TablePackage#DCOLUMN__WIDTH}.
+ * {@link Listener} to prevents expansion/collapse {@link Event} while {@link IPermissionAuthority} disallow
+ * {@link TablePackage#DLINE__COLLAPSED} change. Manage also column resize to update
+ * {@link TablePackage#DTABLE__HEADER_COLUMN_WIDTH} or {@link TablePackage#DCOLUMN__WIDTH}.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -55,12 +53,12 @@ public class DLineExpansionChecker implements Listener {
      * @param dTableViewerManager
      *            the {@link DTableViewerManager}
      * @param permissionAuthority
-     *            {@link IPermissionAuthority} to know if user can
-     *            collapse/expand {@link TreeItem} or resize of column.
+     *            {@link IPermissionAuthority} to know if user can collapse/expand {@link TreeItem} or resize of column.
      */
     public DLineExpansionChecker(Control control, DTableViewerManager dTableViewerManager, IPermissionAuthority permissionAuthority) {
         this.control = control;
         this.dTableViewerManager = dTableViewerManager;
+        this.dTable = (dTableViewerManager != null && dTableViewerManager.getEditor() != null) ? dTableViewerManager.getEditor().getTableModel() : null;
         this.permissionAuthority = permissionAuthority;
         control.getDisplay().addFilter(SWT.Expand, this);
         control.getDisplay().addFilter(SWT.Collapse, this);
@@ -72,6 +70,7 @@ public class DLineExpansionChecker implements Listener {
      * 
      * {@inheritDoc}
      */
+    @Override
     public void handleEvent(Event event) {
         switch (event.type) {
         case SWT.Collapse:
@@ -90,8 +89,7 @@ public class DLineExpansionChecker implements Listener {
     }
 
     /**
-     * Handle the undo of the swt TreeItem collapse if the current
-     * {@link IPermissionAuthority} disallow it.
+     * Handle the undo of the swt TreeItem collapse if the current {@link IPermissionAuthority} disallow it.
      */
     private void handleTreeCollapse(Event event) {
         if (!isEventForDLineExpandable(event)) {
@@ -102,8 +100,7 @@ public class DLineExpansionChecker implements Listener {
     }
 
     /**
-     * Handle the undo the swt TreeItem expansion if the current
-     * {@link IPermissionAuthority} disallow it.
+     * Handle the undo the swt TreeItem expansion if the current {@link IPermissionAuthority} disallow it.
      */
     private void handleTreeExpand(Event event) {
         if (!isEventForDLineExpandable(event)) {
@@ -135,14 +132,12 @@ public class DLineExpansionChecker implements Listener {
     }
 
     /**
-     * Tells if the specified {@link Event} is a event of a {@link TreeItem}
-     * collapse/expansion which should be allowed by the current
-     * {@link IPermissionAuthority}.
+     * Tells if the specified {@link Event} is a event of a {@link TreeItem} collapse/expansion which should be allowed
+     * by the current {@link IPermissionAuthority}.
      * 
      * @param event
      *            the specified {@link Event}
-     * @return true if the specified {@link Event} is allowed by the current
-     *         {@link IPermissionAuthority}, false else
+     * @return true if the specified {@link Event} is allowed by the current {@link IPermissionAuthority}, false else
      */
     private boolean isEventForDLineExpandable(Event event) {
         boolean isEventForDLineExpandable = true;
@@ -159,14 +154,12 @@ public class DLineExpansionChecker implements Listener {
     }
 
     /**
-     * Tells if the specified {@link Event} is a event of a
-     * {@link TreeColumn#getWidth()} resize which should be allowed by the
-     * current {@link IPermissionAuthority}.
+     * Tells if the specified {@link Event} is a event of a {@link TreeColumn#getWidth()} resize which should be allowed
+     * by the current {@link IPermissionAuthority}.
      * 
      * @param event
      *            the specified {@link Event}
-     * @return true if the specified {@link Event} is allowed by the current
-     *         {@link IPermissionAuthority}, false else
+     * @return true if the specified {@link Event} is allowed by the current {@link IPermissionAuthority}, false else
      */
     private boolean isEventForHeaderColumnResizable(Event event) {
         boolean isEventForHeaderColumnResizable = true;
@@ -186,8 +179,7 @@ public class DLineExpansionChecker implements Listener {
     }
 
     /**
-     * remove This {@link DLineExpansionChecker} as {@link Listener} of the
-     * Tree.
+     * remove This {@link DLineExpansionChecker} as {@link Listener} of the Tree.
      */
     public void dispose() {
         control.getDisplay().removeFilter(SWT.Expand, this);
