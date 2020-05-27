@@ -1,0 +1,11 @@
+target "swtbot-3.0"
+
+with source, requirements
+
+location SWTBot-3_0 "https://download.eclipse.org/technology/swtbot/milestones/2020-06-m2/" {
+        org.eclipse.swtbot.eclipse.feature.group [3.0.0,3.1.0)
+        org.eclipse.swtbot.eclipse.gef.feature.group [3.0.0,3.1.0)
+        org.eclipse.swtbot.feature.group [3.0.0,3.1.0)
+        org.eclipse.swtbot.forms.feature.group [3.0.0,3.1.0)
+        org.eclipse.swtbot.ide.feature.group [3.0.0,3.1.0)
+}
