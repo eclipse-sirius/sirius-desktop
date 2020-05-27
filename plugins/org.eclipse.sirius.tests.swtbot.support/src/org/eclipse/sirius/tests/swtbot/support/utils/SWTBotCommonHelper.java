@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.SessionSavedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
@@ -119,7 +120,12 @@ public final class SWTBotCommonHelper {
      * Close the current editor.
      */
     public static void closeCurrentEditor() {
-        SWTBotSiriusHelper.menu(SWTBotCommonHelper.bot, SWTBotCommonHelper.FILE).menu("Close").click();
+        if (TestsUtil.is202006Platform()) {
+            SWTBotSiriusHelper.menu(SWTBotCommonHelper.bot, SWTBotCommonHelper.FILE).menu("Close Editor").click();
+        } else {
+            SWTBotSiriusHelper.menu(SWTBotCommonHelper.bot, SWTBotCommonHelper.FILE).menu("Close").click();
+        }
+
     }
 
     /**

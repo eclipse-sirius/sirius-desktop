@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -52,6 +52,8 @@ public final class TestsUtil {
     private static final String UI_WORKBENCH_OXYGEN_START = "3.110";
 
     private static final String UI_WORKBENCH_PHOTON_START = "3.111";
+
+    private static final String UI_WORKBENCH_202006_START = "3.119";
 
     private static final String CREATE_REPRESENTATATION_IN_SEPARATE_RESOURCE = "createLocalRepresentationInSeparateResource";
 
@@ -279,6 +281,15 @@ public final class TestsUtil {
      */
     public static boolean isPhotonPlatformOrLater() {
         return checkUiWorkbenchVersion(Version.parseVersion(UI_WORKBENCH_PHOTON_START), null);
+    }
+
+    /**
+     * Tells if the current platform corresponds to 202006 or later.
+     * 
+     * @return true if the current platform corresponds to 202006 or later, false otherwise.
+     */
+    public static boolean is202006Platform() {
+        return checkUiWorkbenchVersion(Version.parseVersion(UI_WORKBENCH_202006_START), null);
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
@@ -93,9 +94,8 @@ public class EditorSavingTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that when a session is dirty, a confirmation is asked for the
-     * closing of the last diagram editor. The message must start with the
-     * session name and not with the editor name.
+     * Test that when a session is dirty, a confirmation is asked for the closing of the last diagram editor. The
+     * message must start with the session name and not with the editor name.
      * 
      * @throws Exception
      *             Test error.
@@ -113,9 +113,8 @@ public class EditorSavingTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that when a session is dirty, a confirmation is asked for the
-     * closing of the last table editor. The message must start with the session
-     * name and not with the editor name.
+     * Test that when a session is dirty, a confirmation is asked for the closing of the last table editor. The message
+     * must start with the session name and not with the editor name.
      * 
      * @throws Exception
      *             Test error.
@@ -133,9 +132,8 @@ public class EditorSavingTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that when a session is dirty, a confirmation is asked for the
-     * closing of all editors. The message must start with the session name and
-     * not with the editor name.
+     * Test that when a session is dirty, a confirmation is asked for the closing of all editors. The message must start
+     * with the session name and not with the editor name.
      * 
      * @throws Exception
      *             Test error.
@@ -161,9 +159,8 @@ public class EditorSavingTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Check that when a session is dirty, a confirmation is asked for the
-     * closing of the last editor. The message must start with the session name
-     * and not with the editor name.
+     * Check that when a session is dirty, a confirmation is asked for the closing of the last editor. The message must
+     * start with the session name and not with the editor name.
      * 
      * @throws Exception
      *             Test error.
@@ -180,9 +177,8 @@ public class EditorSavingTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Check that when a session is dirty, a confirmation is asked when cloase
-     * all occurs. The message must start with the session name and not with the
-     * editor name.
+     * Check that when a session is dirty, a confirmation is asked when cloase all occurs. The message must start with
+     * the session name and not with the editor name.
      * 
      * @throws Exception
      *             Test error.
@@ -190,7 +186,11 @@ public class EditorSavingTest extends AbstractSiriusSwtBotGefTestCase {
     private void commonFinalChecksCloseAll() throws Exception {
         // Close all, so it should have popup of
         // confirmation for saving.
-        bot.activeEditor().bot().menu("Close All").click();
+        if (TestsUtil.is202006Platform()) {
+            bot.activeEditor().bot().menu("Close All Editors").click();
+        } else {
+            bot.activeEditor().bot().menu("Close All").click();
+        }
         checkSaveDialog();
     }
 

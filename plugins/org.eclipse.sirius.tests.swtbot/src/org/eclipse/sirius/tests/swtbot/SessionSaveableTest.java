@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -131,7 +131,11 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
             // Modify representation
             createNode(200, 150);
             // Close representation
-            bot.activeEditor().bot().menu("Close").click();
+            if (TestsUtil.is202006Platform()) {
+                bot.activeEditor().bot().menu("Close Editor").click();
+            } else {
+                bot.activeEditor().bot().menu("Close").click();
+            }
             // Check pop up close.
             checkSaveDialog();
         } finally {
@@ -160,7 +164,11 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
             // Modify representation
             createNode(200, 150);
             // Close representation
-            bot.activeEditor().bot().menu("Close").click();
+            if (TestsUtil.is202006Platform()) {
+                bot.activeEditor().bot().menu("Close Editor").click();
+            } else {
+                bot.activeEditor().bot().menu("Close").click();
+            }
             // Press escape on save dialog.
             escapeOnSaveDialog();
             // Check that the session is not saved and the editor is still
@@ -193,7 +201,11 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
             // Modify representation
             createNode(200, 150);
             // Close representation
-            bot.activeEditor().bot().menu("Close").click();
+            if (TestsUtil.is202006Platform()) {
+                bot.activeEditor().bot().menu("Close Editor").click();
+            } else {
+                bot.activeEditor().bot().menu("Close").click();
+            }
             // Close the save dialog.
             closeSaveDialog();
             // Check that the session is not saved and the editor is still
@@ -223,7 +235,11 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
         // Modify representation
         createNode(200, 150);
         // Close all representations
-        bot.activeEditor().bot().menu("Close All").click();
+        if (TestsUtil.is202006Platform()) {
+            bot.activeEditor().bot().menu("Close All Editors").click();
+        } else {
+            bot.activeEditor().bot().menu("Close All").click();
+        }
         SWTBot saveBot = SWTBotSiriusHelper.getShellBot("Save");
         // Close the first save dialog.
         saveBot.button("No").click();
@@ -313,7 +329,11 @@ public class SessionSaveableTest extends AbstractSiriusSwtBotGefTestCase {
         // Modify the representation
         createNode(200, 150);
         // Close all representations
-        bot.activeEditor().bot().menu("Close All").click();
+        if (TestsUtil.is202006Platform()) {
+            bot.activeEditor().bot().menu("Close All Editors").click();
+        } else {
+            bot.activeEditor().bot().menu("Close All").click();
+        }
     }
 
     private UILocalSession openSessionFromExistingAird(final String airdName) {
