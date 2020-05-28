@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.Collections;
 import java.util.ListIterator;
 import java.util.Set;
@@ -145,7 +147,14 @@ public class GroupElementsInOneOtherTests extends AbstractSiriusSwtBotGefTestCas
             // of the visible
             // part of the diagram is on another container so the new container
             // is shifted.
-            assertEquals("The newly created Package5 should be at the center of the visible part of the diagram", new Point(300, 125), package5AbsoluteLocation);
+            Point expectedPoint = new Point(300, 125);
+            if (!package5AbsoluteLocation.equals(expectedPoint)) {
+                // Check the screen resolution to fail only when it is as expected
+                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+                if (screenSize.width == 1440 || screenSize.height == 900) {
+                    fail("The newly created Package5 should be at the center of the visible part of the diagram. expected:<" + expectedPoint + "> but was:<" + package5AbsoluteLocation + ">");
+                }
+            }
         }
     }
 
