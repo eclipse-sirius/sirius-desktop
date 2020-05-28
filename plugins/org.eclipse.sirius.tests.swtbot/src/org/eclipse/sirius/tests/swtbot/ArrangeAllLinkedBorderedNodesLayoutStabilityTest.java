@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -812,6 +812,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
         PointList points = edgeEP.getPolylineConnectionFigure().getPoints().getCopy();
         for (int i = 0; i < points.size(); i++) {
             Point point = points.getPoint(i);
+            edgeEP.getPolylineConnectionFigure().translateToAbsolute(point);
             if (point.y < north)
                 north = point.y;
         }
@@ -823,6 +824,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
         PointList points = edgeEP.getPolylineConnectionFigure().getPoints().getCopy();
         for (int i = 0; i < points.size(); i++) {
             Point point = points.getPoint(i);
+            edgeEP.getPolylineConnectionFigure().translateToAbsolute(point);
             if (point.y > south)
                 south = point.y;
         }
@@ -834,6 +836,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
         PointList points = edgeEP.getPolylineConnectionFigure().getPoints().getCopy();
         for (int i = 0; i < points.size(); i++) {
             Point point = points.getPoint(i);
+            edgeEP.getPolylineConnectionFigure().translateToAbsolute(point);
             if (point.x < west)
                 west = point.x;
         }
@@ -845,6 +848,7 @@ public class ArrangeAllLinkedBorderedNodesLayoutStabilityTest extends AbstractAr
         PointList points = edgeEP.getPolylineConnectionFigure().getPoints().getCopy();
         for (int i = 0; i < points.size(); i++) {
             Point point = points.getPoint(i);
+            edgeEP.getPolylineConnectionFigure().translateToAbsolute(point);
             if (point.x > west)
                 west = point.x;
         }
