@@ -105,6 +105,7 @@ import org.eclipse.sirius.tests.unit.diagram.control.ExternalControlTests;
 import org.eclipse.sirius.tests.unit.diagram.control.HierarchicalControlTest;
 import org.eclipse.sirius.tests.unit.diagram.control.HierarchicalControlWithRootElementReadOnlyTest;
 import org.eclipse.sirius.tests.unit.diagram.copier.RepresentationCopierTest;
+import org.eclipse.sirius.tests.unit.diagram.decorators.DecorationRefreshTest;
 import org.eclipse.sirius.tests.unit.diagram.decorators.DecoratorsTest;
 import org.eclipse.sirius.tests.unit.diagram.decorators.TransientLayerAndDecoratorTest;
 import org.eclipse.sirius.tests.unit.diagram.dialect.DiagramDialectServicesTests;
@@ -360,6 +361,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(RepresentationCopierTest.class);
         // suite.addTestSuite(ExtensionAccessTest.class);
         suite.addTestSuite(DecoratorsTest.class);
+        suite.addTestSuite(DecorationRefreshTest.class);
         suite.addTestSuite(TransientLayerAndDecoratorTest.class);
         suite.addTestSuite(DeleteFromModelActionTests.class);
         suite.addTestSuite(DeleteWithoutToolFromModelActionTests.class);
