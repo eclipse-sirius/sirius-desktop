@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,8 +33,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.osgi.framework.Version;
 
 /**
- * Tests VSM migration activation on VSM editor reload after an external change
- * on the edited VSM.
+ * Tests VSM migration activation on VSM editor reload after an external change on the edited VSM.
  * 
  * @author mporhel
  */
@@ -66,8 +65,7 @@ public class MigrationOnVsmEditorReloadTest extends AbstractContentAssistTest {
     }
 
     /**
-     * There is problem on linux with this test so we are waiting build or
-     * refresh jobs by joining them.
+     * There is problem on linux with this test so we are waiting build or refresh jobs by joining them.
      */
     private void waitJobsBuildOrRefresh() throws InterruptedException, OperationCanceledException {
         Job.getJobManager().join(ResourcesPlugin.FAMILY_MANUAL_BUILD, new NullProgressMonitor());
@@ -78,11 +76,10 @@ public class MigrationOnVsmEditorReloadTest extends AbstractContentAssistTest {
     }
 
     /**
-     * Check that the migration is activated when the reloaded VSM requires it
-     * even if it was not required before the resource change.
+     * Check that the migration is activated when the reloaded VSM requires it even if it was not required before the
+     * resource change.
      * 
-     * It simulates the replacement of the file by the user while the editor is
-     * opened.
+     * It simulates the replacement of the file by the user while the editor is opened.
      * 
      * @exception InterruptedException
      *                In case of problem during context initialization.
@@ -143,9 +140,8 @@ public class MigrationOnVsmEditorReloadTest extends AbstractContentAssistTest {
     /**
      * Check that the data has the expected migration need.
      * 
-     * It can be used to verify that a file has not be migrated before the test.
-     * And then it allows to check the effect of the migration in the other
-     * test.
+     * It can be used to verify that a file has not be migrated before the test. And then it allows to check the effect
+     * of the migration in the other test.
      * 
      * @param vsmFileURI
      *            the uri of the VSM file to check.
@@ -170,7 +166,8 @@ public class MigrationOnVsmEditorReloadTest extends AbstractContentAssistTest {
         if (needsMigration) {
             assertTrue("The current test case checks a migration behavior, please revert the manual migration on : " + vsmFileURI.toPlatformString(true), migrationIsNeeded);
         } else {
-            assertFalse("The current test case expect a file which does not need migration : " + vsmFileURI.toPlatformString(true), migrationIsNeeded);
+            assertFalse("The current test case expect a file which does not need migration : " + vsmFileURI.toPlatformString(true) + ". Current last version is "
+                    + VSMMigrationService.getInstance().getLastMigrationVersion() + " and current VSM version is " + loadedVersion, migrationIsNeeded);
         }
     }
 
