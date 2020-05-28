@@ -39,6 +39,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.query.CustomizableQuery;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
@@ -405,6 +406,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
         SWTBotTreeItem labelSizeItem = tree.expandNode("Misc").select().getNode("Label Size");
         labelSizeItem.setFocus();
         labelSizeItem.select();
+        SWTBotUtils.waitAllUiEvents();
         SWTBotText text = propertiesBot.text();
         assertEquals("Initial value of the Label Size is expected to be 8", "8", text.getText());
 
