@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo.
+ * Copyright (c) 2015, 2020 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -95,16 +95,14 @@ public abstract class AbstractCompartmentTest extends AbstractSiriusSwtBotGefTes
     }
 
     /**
-     * Check the GMF and Draw2d bounds (or size) of the edit part with given
-     * <code>label</code>.
+     * Check the GMF and Draw2d bounds (or size) of the edit part with given <code>label</code>.
      * 
      * @param label
      *            The label of the edit part to check
      * @param expectedGmfBounds
      *            The expected GMF bounds
      * @param expectedFigureBounds
-     *            The expected draw2d bounds, if the width or height is equals
-     *            to -1, we ignore it.
+     *            The expected draw2d bounds, if the width or height is equals to -1, we ignore it.
      * 
      * @return A copy of the current Draw2d bounds
      */
@@ -113,19 +111,16 @@ public abstract class AbstractCompartmentTest extends AbstractSiriusSwtBotGefTes
     }
 
     /**
-     * Check the GMF and Draw2d bounds (or size) of the edit part with given
-     * <code>label</code>.
+     * Check the GMF and Draw2d bounds (or size) of the edit part with given <code>label</code>.
      * 
      * @param label
      *            The label of the edit part to check
      * @param expectedGmfBounds
      *            The expected GMF bounds
      * @param expectedFigureBounds
-     *            The expected draw2d bounds, if the width or height is equals
-     *            to -1, we ignore it.
+     *            The expected draw2d bounds, if the width or height is equals to -1, we ignore it.
      * @param onlyCheckSize
-     *            true if only the size must be check (and not the location),
-     *            false otherwise.
+     *            true if only the size must be check (and not the location), false otherwise.
      * 
      * @return A copy of the current Draw2d bounds
      */
@@ -134,22 +129,20 @@ public abstract class AbstractCompartmentTest extends AbstractSiriusSwtBotGefTes
     }
 
     /**
-     * Check the GMF and Draw2d bounds (or size) of the edit part with given
-     * <code>label</code>.
+     * Check the GMF and Draw2d bounds (or size) of the edit part with given <code>label</code>.
      * 
      * @param label
      *            The label of the edit part to check
      * @param expectedGmfBounds
      *            The expected GMF bounds
      * @param expectedFigureBounds
-     *            The expected draw2d bounds, if the width or height is equals
-     *            to -1, we ignore it.
+     *            The expected draw2d bounds, if the width or height is equals to -1, we ignore it.
      * @param widthDelta
-     *            The width delta to consider the width as equal (because of
-     *            font size that can be slightly different on each OS).
+     *            The width delta to consider the width as equal (because of font size that can be slightly different on
+     *            each OS).
      * @param heightDelta
-     *            The height delta to consider the height as equal (because of
-     *            font size that can be slightly different on each OS).
+     *            The height delta to consider the height as equal (because of font size that can be slightly different
+     *            on each OS).
      * 
      * @return A copy of the current Draw2d bounds
      */
@@ -165,21 +158,18 @@ public abstract class AbstractCompartmentTest extends AbstractSiriusSwtBotGefTes
      * @param expectedGmfBounds
      *            The GMF expected bounds
      * @param expectedFigureBounds
-     *            The draw2d expected bounds. If the x, y , width or height in
-     *            this bounds is equal to -1, we don't check it. This is useful
-     *            in case of size that depends on Font (with different result
-     *            according to OS).
+     *            The draw2d expected bounds. If the x, y , width or height in this bounds is equal to -1, we don't
+     *            check it. This is useful in case of size that depends on Font (with different result according to OS).
      * @param onlyCheckSize
-     *            true if only the size must be check (and not the location),
-     *            false otherwise. * @param widthDelta The width delta to
-     *            consider the width as equal (because of font size that can be
-     *            slightly different on each OS).
+     *            true if only the size must be check (and not the location), false otherwise. * @param widthDelta The
+     *            width delta to consider the width as equal (because of font size that can be slightly different on
+     *            each OS).
      * @param widthDelta
-     *            The width delta to consider the width as equal (because of
-     *            font size that can be slightly different on each OS).
+     *            The width delta to consider the width as equal (because of font size that can be slightly different on
+     *            each OS).
      * @param heightDelta
-     *            The height delta to consider the height as equal (because of
-     *            font size that can be slightly different on each OS).
+     *            The height delta to consider the height as equal (because of font size that can be slightly different
+     *            on each OS).
      * @return A copy of the current DrawD2 bounds
      */
     protected Rectangle checkBounds(String label, Rectangle expectedGmfBounds, Rectangle expectedFigureBounds, boolean onlyCheckSize, int widthDelta, int heightDelta) {
@@ -224,7 +214,8 @@ public abstract class AbstractCompartmentTest extends AbstractSiriusSwtBotGefTes
                 if (widthDelta == 0 && heightDelta == 0) {
                     assertEquals("Wrong Draw2D bounds for " + label, expectedFigureBounds, mainFigure.getBounds());
                 } else {
-                    assertEquals("Wrong Draw2D location for " + label, expectedFigureBounds.getLocation(), mainFigure.getBounds().getLocation());
+                    assertEquals("Wrong Draw2D x location for " + label, expectedFigureBounds.getLocation().x, mainFigure.getBounds().getLocation().x, widthDelta);
+                    assertEquals("Wrong Draw2D y location for " + label, expectedFigureBounds.getLocation().y, mainFigure.getBounds().getLocation().y, heightDelta);
                     assertEquals("Wrong Draw2D width for " + label, expectedFigureBounds.width(), mainFigure.getBounds().width(), widthDelta);
                     assertEquals("Wrong Draw2D height for " + label, expectedFigureBounds.height(), mainFigure.getBounds().height(), heightDelta);
                 }
@@ -239,23 +230,20 @@ public abstract class AbstractCompartmentTest extends AbstractSiriusSwtBotGefTes
                 }
             }
         }
-        return (Rectangle) mainFigure.getBounds().getCopy();
+        return mainFigure.getBounds().getCopy();
     }
 
     /**
-     * Check the GMF and Draw2d bounds (or size) of the edit part under the
-     * given <code>point</code>.
+     * Check the GMF and Draw2d bounds (or size) of the edit part under the given <code>point</code>.
      * 
      * @param point
      *            A point on the edit part to check
      * @param expectedGmfBounds
      *            The expected GMF bounds
      * @param expectedFigureBounds
-     *            The expected draw2d bounds, if the width or height is equals
-     *            to -1, we ignore it.
+     *            The expected draw2d bounds, if the width or height is equals to -1, we ignore it.
      * @param onlyCheckSize
-     *            true if only the size must be check (and not the location),
-     *            false otherwise.
+     *            true if only the size must be check (and not the location), false otherwise.
      * 
      * @return A copy of the current Draw2d bounds
      */
@@ -292,20 +280,18 @@ public abstract class AbstractCompartmentTest extends AbstractSiriusSwtBotGefTes
                 }
             }
         }
-        return (Rectangle) mainFigure.getBounds().getCopy();
+        return mainFigure.getBounds().getCopy();
     }
 
     /**
-     * Check the GMF and Draw2d bounds of the edit part under the given
-     * <code>point</code>.
+     * Check the GMF and Draw2d bounds of the edit part under the given <code>point</code>.
      * 
      * @param point
      *            A point on the edit part to check
      * @param expectedGmfBounds
      *            The expected GMF bounds
      * @param expectedFigureBounds
-     *            The expected draw2d bounds, if the width or height is equals
-     *            to -1, we ignore it.
+     *            The expected draw2d bounds, if the width or height is equals to -1, we ignore it.
      * 
      * @return A copy of the current Draw2d bounds
      */
