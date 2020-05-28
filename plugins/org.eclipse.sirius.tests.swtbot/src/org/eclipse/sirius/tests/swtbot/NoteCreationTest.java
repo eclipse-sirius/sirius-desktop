@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -57,6 +57,7 @@ import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
+import org.eclipse.swtbot.eclipse.gef.finder.SWTGefBot;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
@@ -124,10 +125,14 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
         editor.zoom(ZoomLevel.ZOOM_100);
         // Go to the origin to avoid scroll bar
         editor.scrollTo(0, 0);
-        // Reopen outline
-        new DesignerViews(bot).openOutlineView();
+        editor.close();
         SWTBotUtils.waitAllUiEvents();
+        // Keep a reference to the bot (the bot class field will be cleaned by "super.tearDown();")
+        SWTGefBot localBotRef = bot;
         super.tearDown();
+        // Reopen outline after the closing of the editor to avoid potential refresh problems with this view
+        new DesignerViews(localBotRef).openOutlineView();
+        SWTBotUtils.waitAllUiEvents();
     }
 
     /**
