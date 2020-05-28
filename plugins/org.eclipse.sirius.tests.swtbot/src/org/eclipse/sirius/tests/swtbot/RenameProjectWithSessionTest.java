@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.finders.UIThreadRunnable;
 import org.eclipse.swtbot.swt.finder.keyboard.Keystrokes;
+import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
@@ -29,7 +30,43 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
  */
 public class RenameProjectWithSessionTest extends AbstractSiriusSwtBotGefTestCase {
 
-    private static final String RENAME_RESOURCE = "Rename Resource";
+    /**
+     * Check if a project with the given name exists in the workspace.
+     * 
+     * @author Laurent Redor
+     */
+    public class ProjectExistCondition extends DefaultCondition {
+
+        private String projectName;
+
+        /**
+         * Default constructor.
+         * 
+         * @param projectName
+         *            the name of project to check
+         */
+        public ProjectExistCondition(String projectName) {
+            this.projectName = projectName;
+        }
+
+        /*
+         * Return true if the name correspond to an existing project, false otherwise.
+         */
+        @Override
+        public boolean test() throws Exception {
+            try {
+                getProjectTreeItem(projectName);
+                return true;
+            } catch (WidgetNotFoundException wnfe) {
+                return false;
+            }
+        }
+
+        @Override
+        public String getFailureMessage() {
+            return "No project is named " + projectName;
+        }
+    }
 
     private static final String RENAME = "Rename...";
 
@@ -54,27 +91,24 @@ public class RenameProjectWithSessionTest extends AbstractSiriusSwtBotGefTestCas
 
         // rename the project
         renameProject(designerProject.getName(), RENAMED_PROJECT);
-        assertTrue(getProjectNamed(RENAMED_PROJECT));
+        bot.waitUntil(new ProjectExistCondition(RENAMED_PROJECT));
 
         // Rename the new rename project with default project name
         renameProject(RENAMED_PROJECT, getProjectName());
-        assertTrue(getProjectNamed(designerProject.getName()));
+        bot.waitUntil(new ProjectExistCondition(getProjectName()));
     }
 
     /**
      * Rename the project with close session
      */
     public void testRenameProjectWithCloseSession() {
-        if (TestsUtil.shouldSkipUnreliableTests()) {
-            return;
-        }
         // rename the project
         renameProject(designerProject.getName(), RENAMED_PROJECT);
-        assertTrue(getProjectNamed(RENAMED_PROJECT));
+        bot.waitUntil(new ProjectExistCondition(RENAMED_PROJECT));
 
         // Rename the new rename project with default project name
         renameProject(RENAMED_PROJECT, getProjectName());
-        assertTrue(getProjectNamed(designerProject.getName()));
+        bot.waitUntil(new ProjectExistCondition(getProjectName()));
     }
 
     /**
@@ -91,24 +125,6 @@ public class RenameProjectWithSessionTest extends AbstractSiriusSwtBotGefTestCas
             treeItem.widget.setText(name);
         });
         treeItem.pressShortcut(Keystrokes.CR);
-    }
-
-    /**
-     * Return true if the name passed to parameter correspond to project.
-     * 
-     * @param projectName
-     *            the name of project
-     * @return true if the name correspond to project
-     */
-    private boolean getProjectNamed(String projectName) {
-        boolean nameIsOk = false;
-        try {
-            getProjectTreeItem(projectName);
-            nameIsOk = true;
-        } catch (WidgetNotFoundException wnfe) {
-            fail("The project is not named " + projectName);
-        }
-        return nameIsOk;
     }
 
     private void openSessionFromExistingAird(final String airdName) {
