@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 Obeo.
+ * Copyright (c) 2017, 2020 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -37,6 +37,15 @@ public class EPackageMetaData {
      */
     private String documentation;
 
+    /**
+     * Names of the EClass which are possible DocumentRoot classes for this EPackage.
+     * This is useful when working with EPackages generated from XSD.
+     * Checking if an EClass is the DocumentRoot can not always be done using
+     * ExtendedMetaData.INSTANCE.isDocumentRoot(eClass) depending on how
+     * the EPackage was generated from XSD
+     */
+    private List<String> documentRootClassNames = new ArrayList<>();
+    
     /**
      * Names of EClasses from the EPackage that are good candidates as root model elements.
      */
@@ -97,6 +106,16 @@ public class EPackageMetaData {
      */
     public void setDocumentation(String documentation) {
         this.documentation = documentation;
+    }
+    
+    /**
+     * Returns the name of the EClasses to be considered as the DocumentRoot.
+     * 
+     * @return the documentRootClassNames
+     * @since 6.3.2
+     */
+    public List<String> getDocumentRootClassNames() {
+        return documentRootClassNames;
     }
 
     /**

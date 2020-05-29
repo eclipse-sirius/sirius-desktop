@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017 Obeo
+ * Copyright (c) 2017, 2020 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,11 @@ public class EPackageMetaDataRegistryReader {
     /** Documentation attribute. */
     private static final String DOCUMENTATION_ATTRIBUTE = "documentation"; //$NON-NLS-1$
 
+    /** DocumentRoot class names. */
+    private static final String DOCUMENT_ROOT_ELEMENT = "documentRoot"; //$NON-NLS-1$
+    
+    private static final String DOCUMENT_ROOT_CLASS_NAME_ATTRIBUTE = "className"; //$NON-NLS-1$
+    
     /** Preferred root element attribute. */
     private static final String SUGGESTED_ROOT_ELEMENT = "suggestedRoot"; //$NON-NLS-1$
 
@@ -67,7 +72,7 @@ public class EPackageMetaDataRegistryReader {
     }
 
     /**
-     * Initialize the regsitry and start listening for dynamic changes.
+     * Initialize the registry and start listening for dynamic changes.
      */
     public synchronized void start() {
         for (IConfigurationElement cfg : extensionRegistry.getConfigurationElementsFor(EPACKAGE_META_DATA_EXTENSION_POINT)) {
@@ -96,6 +101,12 @@ public class EPackageMetaDataRegistryReader {
                 String className = child.getAttribute(SUGGESTED_ROOT_CLASS_NAME_ATTRIBUTE);
                 if (!StringUtil.isEmpty(className)) {
                     result.getSuggestedRoots().add(className.trim());
+                }
+            }
+            for (IConfigurationElement child : cfg.getChildren(DOCUMENT_ROOT_ELEMENT)) {
+                String className = child.getAttribute(DOCUMENT_ROOT_CLASS_NAME_ATTRIBUTE);
+                if (!StringUtil.isEmpty(className)) {
+                    result.getDocumentRootClassNames().add(className.trim());
                 }
             }
             return result;

@@ -20,6 +20,10 @@ A consequence is that the display of existing compartments in diagrams may be ch
 
 h3. Developer-Visible Changes
 
+h4. Changes in  @org.eclipse.sirius.common@
+
+* <span class="label label-success">Added</span> In the @org.eclipse.sirius.common.package_meta_data@ extension point, it is now possible for a given metamodel (nsURI) to declare some EClasses as potential DocumentRoots. This is needed with some XSD-derived metamodels which normally declare some of their containment references as transient to make sure Sirius will properly consider these classes (and their contents) as needing to be serialized. 
+
 h4. Changes in  @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-success">Added</span>The class @org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabelsDrawerFigure@ is a "virtual" figure that should be added to the @DDiagramRootEditPart#OVERLAY_LAYER@ and which paints all the overlay labels (instance of @OverlayLabel@) on top of the rest of the diagram to make sure they are always readable. This figure is currently only used by sequence diagrams for operand labels(@org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.OperandEditPart@) and combined fragment labels (@org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart@). 

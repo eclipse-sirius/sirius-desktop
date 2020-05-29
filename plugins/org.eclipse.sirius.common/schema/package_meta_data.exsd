@@ -47,7 +47,8 @@
    <element name="ePackageMetaData">
       <complexType>
          <sequence minOccurs="0" maxOccurs="unbounded">
-            <element ref="suggestedRoot"/>
+            <element ref="suggestedRoot" minOccurs="0" maxOccurs="unbounded"/>
+            <element ref="documentRoot" minOccurs="0" maxOccurs="unbounded"/>
          </sequence>
          <attribute name="nsURI" type="string" use="required">
             <annotation>
@@ -79,6 +80,18 @@
             <annotation>
                <documentation>
                   The name of an EClass which is a good candidate for being the root element of a model. The named class must be contained directly in the EPackage.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="documentRoot">
+      <complexType>
+         <attribute name="className" type="string">
+            <annotation>
+               <documentation>
+                  The name of the EClass which is to be considered as a potential DocumentRoot class. This is particularly useful when working with an EPackage generated from XSD. The named class must be contained directly in the EPackage.
                </documentation>
             </annotation>
          </attribute>
