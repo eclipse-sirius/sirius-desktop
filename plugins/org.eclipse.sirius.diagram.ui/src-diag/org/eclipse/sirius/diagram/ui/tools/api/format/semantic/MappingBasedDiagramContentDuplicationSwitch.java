@@ -275,7 +275,7 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
     private DDiagramElement handleDDiagramElement(DDiagramElement sourceDElement) {
         EObject targetElement = correspondenceMap.get(sourceDElement.getTarget());
         if (targetElement != null) {
-            BestMappingGetter bestMappingGetter = new BestMappingGetter((DSemanticDecorator) targetContext, targetElement);
+            BestMappingGetter bestMappingGetter = new BestMappingGetter((DSemanticDecorator) sourceDElement.eContainer(), sourceDElement.getTarget());
             DiagramElementMapping bestMapping = (DiagramElementMapping) sourceDElement.getMapping();
             if (bestMapping instanceof NodeMapping) {
                 bestMapping = bestMappingGetter.getBestNodeMapping(Collections.singletonList((NodeMapping) sourceDElement.getMapping()));

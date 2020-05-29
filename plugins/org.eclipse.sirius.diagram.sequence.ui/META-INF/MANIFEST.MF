@@ -13,7 +13,8 @@ Require-Bundle: com.google.guava;bundle-version="[21.0,27.2)",
  org.eclipse.sirius.diagram.ui;bundle-version="2.0.0",
  org.eclipse.sirius.common.ui;bundle-version="3.0.0",
  org.eclipse.sirius.diagram.ui.ext;bundle-version="3.0.0",
- org.eclipse.emf.common.ui;bundle-version="2.7.0"
+ org.eclipse.emf.common.ui;bundle-version="2.7.0",
+ org.eclipse.sirius.diagram.formatdata;bundle-version="6.3.1"
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
@@ -23,7 +24,8 @@ Export-Package: org.eclipse.sirius.diagram.sequence.ui;version="3.0.0",
  org.eclipse.sirius.diagram.sequence.ui.business.internal.diagramtype;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.diagram.sequence.ui.business.internal.migration;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.diagram.sequence.ui.business.internal.refresh;version="2.0.4";x-internal:=true,
- org.eclipse.sirius.diagram.sequence.ui.tool.api;version="2.0.4",
+ org.eclipse.sirius.diagram.sequence.ui.tool.api;version="2.0.4",	
+ org.eclipse.sirius.diagram.sequence.ui.tool.api.format;version="2.0.4",
  org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.command;version="3.0.0";x-internal:=true,
  org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation;version="2.0.4";x-internal:=true,
  org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;version="3.0.0";x-internal:=true,

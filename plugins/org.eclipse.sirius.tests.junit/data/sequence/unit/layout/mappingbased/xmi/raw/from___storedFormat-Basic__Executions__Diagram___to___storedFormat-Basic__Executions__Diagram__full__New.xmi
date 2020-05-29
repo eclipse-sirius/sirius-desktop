@@ -1,0 +1,869 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:formatdata="http://www.eclipse.org/sirius/dsl/formatdata/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0">
+  <formatdata:NodeFormatData id="//@ownedInteractions.1/@participants.0" width="120" height="50">
+    <label id="//@ownedInteractions.1/@participants.0">
+      <location y="5"/>
+    </label>
+    <siriusStyle xsi:type="diagram:Square" uid="_aShsINMsEeqYQ9ZMUYRT2Q" labelSize="12" showIcon="false" labelPosition="node" width="12" height="5" color="114,159,207">
+      <labelFormat>bold</labelFormat>
+      <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2001">
+      <children type="5002">
+        <layoutConstraint xsi:type="notation:Location" y="5"/>
+      </children>
+      <children type="3001">
+        <children type="5001">
+          <layoutConstraint xsi:type="notation:Location" x="-44"/>
+        </children>
+        <children type="3003">
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <children type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3003">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="30" width="20" height="40"/>
+        </children>
+        <children type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3003">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="280" width="20" height="90"/>
+        </children>
+        <children type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3003">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <children type="3001">
+            <children type="5001">
+              <layoutConstraint xsi:type="notation:Location" x="-1"/>
+            </children>
+            <children type="3003">
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+              <layoutConstraint xsi:type="notation:Bounds"/>
+            </children>
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="40"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="410" width="20" height="100"/>
+        </children>
+        <children type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3002">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="696" width="10" height="10"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" y="42" width="10" height="696"/>
+      </children>
+      <children type="3003">
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+        <layoutConstraint xsi:type="notation:Bounds"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="12" bold="true"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="50" y="50" width="120" height="50"/>
+    </gmfView>
+    <children id="//@ownedInteractions.1/@participants.0" width="10" height="696">
+      <label id="//@ownedInteractions.1/@participants.0">
+        <location x="-44"/>
+      </label>
+      <siriusStyle xsi:type="diagram:Square" uid="_aShsIdMsEeqYQ9ZMUYRT2Q" showIcon="false" borderSize="3" borderSizeComputationExpression="3" borderColor="114,159,207" width="1" height="40" color="255,255,255">
+        <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@style"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Node" type="3001">
+        <children type="5001">
+          <layoutConstraint xsi:type="notation:Location" x="-44"/>
+        </children>
+        <children type="3003">
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <children type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3003">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="30" width="20" height="40"/>
+        </children>
+        <children type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3003">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="280" width="20" height="90"/>
+        </children>
+        <children type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3003">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <children type="3001">
+            <children type="5001">
+              <layoutConstraint xsi:type="notation:Location" x="-1"/>
+            </children>
+            <children type="3003">
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+              <layoutConstraint xsi:type="notation:Bounds"/>
+            </children>
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="40"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="410" width="20" height="100"/>
+        </children>
+        <children type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3002">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="696" width="10" height="10"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" y="42" width="10" height="696"/>
+      </gmfView>
+      <children id="//@ownedInteractions.1/@executions.0" width="20" height="40">
+        <label id="//@ownedInteractions.1/@executions.0">
+          <location x="-1"/>
+        </label>
+        <siriusStyle xsi:type="diagram:Square" uid="_aShsItMsEeqYQ9ZMUYRT2Q" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" width="2" height="5" color="199,237,232">
+          <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+        </siriusStyle>
+        <gmfView xsi:type="notation:Node" type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3003">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="30" width="20" height="40"/>
+        </gmfView>
+        <location x="-5" y="30"/>
+      </children>
+      <children id="//@ownedInteractions.1/@executions.6" width="20" height="90">
+        <label id="//@ownedInteractions.1/@executions.6">
+          <location x="-1"/>
+        </label>
+        <siriusStyle xsi:type="diagram:Square" uid="_aShsI9MsEeqYQ9ZMUYRT2Q" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" width="2" height="5" color="199,237,232">
+          <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+        </siriusStyle>
+        <gmfView xsi:type="notation:Node" type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3003">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="280" width="20" height="90"/>
+        </gmfView>
+        <location x="-5" y="280"/>
+      </children>
+      <children id="//@ownedInteractions.1/@executions.8" width="20" height="100">
+        <label id="//@ownedInteractions.1/@executions.8">
+          <location x="-1"/>
+        </label>
+        <siriusStyle xsi:type="diagram:Square" uid="_aShsJNMsEeqYQ9ZMUYRT2Q" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" width="2" height="5" color="199,237,232">
+          <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+        </siriusStyle>
+        <gmfView xsi:type="notation:Node" type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3003">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <children type="3001">
+            <children type="5001">
+              <layoutConstraint xsi:type="notation:Location" x="-1"/>
+            </children>
+            <children type="3003">
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+              <layoutConstraint xsi:type="notation:Bounds"/>
+            </children>
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="40"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="410" width="20" height="100"/>
+        </gmfView>
+        <children id="//@ownedInteractions.1/@executions.9" width="20" height="40">
+          <label id="//@ownedInteractions.1/@executions.9">
+            <location x="-1"/>
+          </label>
+          <siriusStyle xsi:type="diagram:Square" uid="_aShsJdMsEeqYQ9ZMUYRT2Q" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" width="2" height="5" color="181,228,225">
+            <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+          </siriusStyle>
+          <gmfView xsi:type="notation:Node" type="3001">
+            <children type="5001">
+              <layoutConstraint xsi:type="notation:Location" x="-1"/>
+            </children>
+            <children type="3003">
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+              <layoutConstraint xsi:type="notation:Bounds"/>
+            </children>
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="40"/>
+          </gmfView>
+          <location x="15" y="20"/>
+        </children>
+        <location x="-5" y="410"/>
+      </children>
+      <children id="//@ownedInteractions.1/@participants.0" width="10" height="10">
+        <label id="//@ownedInteractions.1/@participants.0">
+          <location x="-1"/>
+        </label>
+        <siriusStyle xsi:type="diagram:Dot" uid="_aShsJtMsEeqYQ9ZMUYRT2Q" strokeSizeComputationExpression="1">
+          <description xsi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']/@style"/>
+        </siriusStyle>
+        <gmfView xsi:type="notation:Node" type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3002">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="696" width="10" height="10"/>
+        </gmfView>
+        <location y="696"/>
+      </children>
+      <location x="55" y="50"/>
+    </children>
+    <location x="50" y="50"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//@ownedInteractions.1/@participants.1" width="120" height="50">
+    <label id="//@ownedInteractions.1/@participants.1">
+      <location y="5"/>
+    </label>
+    <siriusStyle xsi:type="diagram:Square" uid="_aShsJ9MsEeqYQ9ZMUYRT2Q" labelSize="12" showIcon="false" labelPosition="node" width="12" height="5" color="114,159,207">
+      <labelFormat>bold</labelFormat>
+      <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2001">
+      <children type="5002">
+        <layoutConstraint xsi:type="notation:Location" y="5"/>
+      </children>
+      <children type="3001">
+        <children type="5001">
+          <layoutConstraint xsi:type="notation:Location" x="-44"/>
+        </children>
+        <children type="3003">
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <children type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3003">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <children type="3001">
+            <children type="5001">
+              <layoutConstraint xsi:type="notation:Location" x="-1"/>
+            </children>
+            <children type="3003">
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+              <layoutConstraint xsi:type="notation:Bounds"/>
+            </children>
+            <children type="3001">
+              <children type="5001">
+                <layoutConstraint xsi:type="notation:Location" x="-1"/>
+              </children>
+              <children type="3003">
+                <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+                <layoutConstraint xsi:type="notation:Bounds"/>
+              </children>
+              <children type="3001">
+                <children type="5001">
+                  <layoutConstraint xsi:type="notation:Location" x="-1"/>
+                </children>
+                <children type="3003">
+                  <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+                  <layoutConstraint xsi:type="notation:Bounds"/>
+                </children>
+                <children type="3001">
+                  <children type="5001">
+                    <layoutConstraint xsi:type="notation:Location" x="-1"/>
+                  </children>
+                  <children type="3003">
+                    <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+                    <layoutConstraint xsi:type="notation:Bounds"/>
+                  </children>
+                  <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+                  <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="50"/>
+                </children>
+                <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="90"/>
+              </children>
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+              <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="130"/>
+            </children>
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="12" y="40" width="20" height="170"/>
+          </children>
+          <children type="3001">
+            <children type="5001">
+              <layoutConstraint xsi:type="notation:Location" x="-1"/>
+            </children>
+            <children type="3003">
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+              <layoutConstraint xsi:type="notation:Bounds"/>
+            </children>
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="-12" y="250" width="20" height="50"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="50" width="20" height="340"/>
+        </children>
+        <children type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3003">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="450" width="20" height="40"/>
+        </children>
+        <children type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" y="5"/>
+          </children>
+          <children type="3016">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="15"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="-53" y="533" width="120" height="30"/>
+        </children>
+        <children type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" y="5"/>
+          </children>
+          <children type="3016">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="15"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="-53" y="587" width="120" height="30"/>
+        </children>
+        <children type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3002">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="696" width="10" height="10"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" y="42" width="10" height="696"/>
+      </children>
+      <children type="3003">
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+        <layoutConstraint xsi:type="notation:Bounds"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="12" bold="true"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="220" y="50" width="120" height="50"/>
+    </gmfView>
+    <children id="//@ownedInteractions.1/@participants.1" width="10" height="696">
+      <label id="//@ownedInteractions.1/@participants.1">
+        <location x="-44"/>
+      </label>
+      <siriusStyle xsi:type="diagram:Square" uid="_aShsKNMsEeqYQ9ZMUYRT2Q" showIcon="false" borderSize="3" borderSizeComputationExpression="3" borderColor="114,159,207" width="1" height="40" color="255,255,255">
+        <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@style"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Node" type="3001">
+        <children type="5001">
+          <layoutConstraint xsi:type="notation:Location" x="-44"/>
+        </children>
+        <children type="3003">
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <children type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3003">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <children type="3001">
+            <children type="5001">
+              <layoutConstraint xsi:type="notation:Location" x="-1"/>
+            </children>
+            <children type="3003">
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+              <layoutConstraint xsi:type="notation:Bounds"/>
+            </children>
+            <children type="3001">
+              <children type="5001">
+                <layoutConstraint xsi:type="notation:Location" x="-1"/>
+              </children>
+              <children type="3003">
+                <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+                <layoutConstraint xsi:type="notation:Bounds"/>
+              </children>
+              <children type="3001">
+                <children type="5001">
+                  <layoutConstraint xsi:type="notation:Location" x="-1"/>
+                </children>
+                <children type="3003">
+                  <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+                  <layoutConstraint xsi:type="notation:Bounds"/>
+                </children>
+                <children type="3001">
+                  <children type="5001">
+                    <layoutConstraint xsi:type="notation:Location" x="-1"/>
+                  </children>
+                  <children type="3003">
+                    <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+                    <layoutConstraint xsi:type="notation:Bounds"/>
+                  </children>
+                  <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+                  <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="50"/>
+                </children>
+                <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="90"/>
+              </children>
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+              <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="130"/>
+            </children>
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="12" y="40" width="20" height="170"/>
+          </children>
+          <children type="3001">
+            <children type="5001">
+              <layoutConstraint xsi:type="notation:Location" x="-1"/>
+            </children>
+            <children type="3003">
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+              <layoutConstraint xsi:type="notation:Bounds"/>
+            </children>
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="-12" y="250" width="20" height="50"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="50" width="20" height="340"/>
+        </children>
+        <children type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3003">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="450" width="20" height="40"/>
+        </children>
+        <children type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" y="5"/>
+          </children>
+          <children type="3016">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="15"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="-53" y="533" width="120" height="30"/>
+        </children>
+        <children type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" y="5"/>
+          </children>
+          <children type="3016">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="15"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="-53" y="587" width="120" height="30"/>
+        </children>
+        <children type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3002">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="696" width="10" height="10"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" y="42" width="10" height="696"/>
+      </gmfView>
+      <children id="//@ownedInteractions.1/@executions.1" width="20" height="340">
+        <label id="//@ownedInteractions.1/@executions.1">
+          <location x="-1"/>
+        </label>
+        <siriusStyle xsi:type="diagram:Square" uid="_aShsKdMsEeqYQ9ZMUYRT2Q" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" width="2" height="5" color="199,237,232">
+          <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+        </siriusStyle>
+        <gmfView xsi:type="notation:Node" type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3003">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <children type="3001">
+            <children type="5001">
+              <layoutConstraint xsi:type="notation:Location" x="-1"/>
+            </children>
+            <children type="3003">
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+              <layoutConstraint xsi:type="notation:Bounds"/>
+            </children>
+            <children type="3001">
+              <children type="5001">
+                <layoutConstraint xsi:type="notation:Location" x="-1"/>
+              </children>
+              <children type="3003">
+                <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+                <layoutConstraint xsi:type="notation:Bounds"/>
+              </children>
+              <children type="3001">
+                <children type="5001">
+                  <layoutConstraint xsi:type="notation:Location" x="-1"/>
+                </children>
+                <children type="3003">
+                  <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+                  <layoutConstraint xsi:type="notation:Bounds"/>
+                </children>
+                <children type="3001">
+                  <children type="5001">
+                    <layoutConstraint xsi:type="notation:Location" x="-1"/>
+                  </children>
+                  <children type="3003">
+                    <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+                    <layoutConstraint xsi:type="notation:Bounds"/>
+                  </children>
+                  <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+                  <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="50"/>
+                </children>
+                <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="90"/>
+              </children>
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+              <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="130"/>
+            </children>
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="12" y="40" width="20" height="170"/>
+          </children>
+          <children type="3001">
+            <children type="5001">
+              <layoutConstraint xsi:type="notation:Location" x="-1"/>
+            </children>
+            <children type="3003">
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+              <layoutConstraint xsi:type="notation:Bounds"/>
+            </children>
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="-12" y="250" width="20" height="50"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="50" width="20" height="340"/>
+        </gmfView>
+        <children id="//@ownedInteractions.1/@executions.2" width="20" height="170">
+          <label id="//@ownedInteractions.1/@executions.2">
+            <location x="-1"/>
+          </label>
+          <siriusStyle xsi:type="diagram:Square" uid="_aShsKtMsEeqYQ9ZMUYRT2Q" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" width="2" height="5" color="181,228,225">
+            <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+          </siriusStyle>
+          <gmfView xsi:type="notation:Node" type="3001">
+            <children type="5001">
+              <layoutConstraint xsi:type="notation:Location" x="-1"/>
+            </children>
+            <children type="3003">
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+              <layoutConstraint xsi:type="notation:Bounds"/>
+            </children>
+            <children type="3001">
+              <children type="5001">
+                <layoutConstraint xsi:type="notation:Location" x="-1"/>
+              </children>
+              <children type="3003">
+                <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+                <layoutConstraint xsi:type="notation:Bounds"/>
+              </children>
+              <children type="3001">
+                <children type="5001">
+                  <layoutConstraint xsi:type="notation:Location" x="-1"/>
+                </children>
+                <children type="3003">
+                  <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+                  <layoutConstraint xsi:type="notation:Bounds"/>
+                </children>
+                <children type="3001">
+                  <children type="5001">
+                    <layoutConstraint xsi:type="notation:Location" x="-1"/>
+                  </children>
+                  <children type="3003">
+                    <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+                    <layoutConstraint xsi:type="notation:Bounds"/>
+                  </children>
+                  <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+                  <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="50"/>
+                </children>
+                <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="90"/>
+              </children>
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+              <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="130"/>
+            </children>
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="12" y="40" width="20" height="170"/>
+          </gmfView>
+          <children id="//@ownedInteractions.1/@executions.3" width="20" height="130">
+            <label id="//@ownedInteractions.1/@executions.3">
+              <location x="-1"/>
+            </label>
+            <siriusStyle xsi:type="diagram:Square" uid="_aShsK9MsEeqYQ9ZMUYRT2Q" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" width="2" height="5" color="163,219,218">
+              <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+            </siriusStyle>
+            <gmfView xsi:type="notation:Node" type="3001">
+              <children type="5001">
+                <layoutConstraint xsi:type="notation:Location" x="-1"/>
+              </children>
+              <children type="3003">
+                <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+                <layoutConstraint xsi:type="notation:Bounds"/>
+              </children>
+              <children type="3001">
+                <children type="5001">
+                  <layoutConstraint xsi:type="notation:Location" x="-1"/>
+                </children>
+                <children type="3003">
+                  <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+                  <layoutConstraint xsi:type="notation:Bounds"/>
+                </children>
+                <children type="3001">
+                  <children type="5001">
+                    <layoutConstraint xsi:type="notation:Location" x="-1"/>
+                  </children>
+                  <children type="3003">
+                    <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+                    <layoutConstraint xsi:type="notation:Bounds"/>
+                  </children>
+                  <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+                  <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="50"/>
+                </children>
+                <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="90"/>
+              </children>
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+              <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="130"/>
+            </gmfView>
+            <children id="//@ownedInteractions.1/@executions.4" width="20" height="90">
+              <label id="//@ownedInteractions.1/@executions.4">
+                <location x="-1"/>
+              </label>
+              <siriusStyle xsi:type="diagram:Square" uid="_aShsLNMsEeqYQ9ZMUYRT2Q" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" width="2" height="5" color="145,210,211">
+                <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+              </siriusStyle>
+              <gmfView xsi:type="notation:Node" type="3001">
+                <children type="5001">
+                  <layoutConstraint xsi:type="notation:Location" x="-1"/>
+                </children>
+                <children type="3003">
+                  <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+                  <layoutConstraint xsi:type="notation:Bounds"/>
+                </children>
+                <children type="3001">
+                  <children type="5001">
+                    <layoutConstraint xsi:type="notation:Location" x="-1"/>
+                  </children>
+                  <children type="3003">
+                    <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+                    <layoutConstraint xsi:type="notation:Bounds"/>
+                  </children>
+                  <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+                  <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="50"/>
+                </children>
+                <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+                <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="90"/>
+              </gmfView>
+              <children id="//@ownedInteractions.1/@executions.5" width="20" height="50">
+                <label id="//@ownedInteractions.1/@executions.5">
+                  <location x="-1"/>
+                </label>
+                <siriusStyle xsi:type="diagram:Square" uid="_aShsLdMsEeqYQ9ZMUYRT2Q" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" width="2" height="5" color="128,201,205">
+                  <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+                </siriusStyle>
+                <gmfView xsi:type="notation:Node" type="3001">
+                  <children type="5001">
+                    <layoutConstraint xsi:type="notation:Location" x="-1"/>
+                  </children>
+                  <children type="3003">
+                    <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+                    <layoutConstraint xsi:type="notation:Bounds"/>
+                  </children>
+                  <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+                  <layoutConstraint xsi:type="notation:Bounds" x="12" y="20" width="20" height="50"/>
+                </gmfView>
+                <location x="15" y="20"/>
+              </children>
+              <location x="15" y="20"/>
+            </children>
+            <location x="15" y="20"/>
+          </children>
+          <location x="15" y="40"/>
+        </children>
+        <children id="//@ownedInteractions.1/@executions.7" width="20" height="50">
+          <label id="//@ownedInteractions.1/@executions.7">
+            <location x="-1"/>
+          </label>
+          <siriusStyle xsi:type="diagram:Square" uid="_aShsLtMsEeqYQ9ZMUYRT2Q" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" width="2" height="5" color="181,228,225">
+            <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+          </siriusStyle>
+          <gmfView xsi:type="notation:Node" type="3001">
+            <children type="5001">
+              <layoutConstraint xsi:type="notation:Location" x="-1"/>
+            </children>
+            <children type="3003">
+              <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+              <layoutConstraint xsi:type="notation:Bounds"/>
+            </children>
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+            <layoutConstraint xsi:type="notation:Bounds" x="-12" y="250" width="20" height="50"/>
+          </gmfView>
+          <location x="15" y="250"/>
+        </children>
+        <location x="-5" y="50"/>
+      </children>
+      <children id="//@ownedInteractions.1/@executions.10" width="20" height="40">
+        <label id="//@ownedInteractions.1/@executions.10">
+          <location x="-1"/>
+        </label>
+        <siriusStyle xsi:type="diagram:Square" uid="_aShsL9MsEeqYQ9ZMUYRT2Q" showIcon="false" borderSize="1" borderSizeComputationExpression="1" borderColor="39,76,114" width="2" height="5" color="199,237,232">
+          <description xsi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='Execution']/@style"/>
+        </siriusStyle>
+        <gmfView xsi:type="notation:Node" type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3003">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="450" width="20" height="40"/>
+        </gmfView>
+        <location x="-5" y="450"/>
+      </children>
+      <children id="//@ownedInteractions.1/@states.0" width="120" height="30">
+        <label id="//@ownedInteractions.1/@states.0">
+          <location y="5"/>
+        </label>
+        <siriusStyle xsi:type="diagram:Ellipse" uid="_aShsMNMsEeqYQ9ZMUYRT2Q" labelSize="15" showIcon="false" labelColor="166,227,187" borderColor="4,14,61" labelPosition="node" horizontalDiameter="12" verticalDiameter="3" color="16,127,201">
+          <description xsi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='State']/@style"/>
+        </siriusStyle>
+        <gmfView xsi:type="notation:Node" type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" y="5"/>
+          </children>
+          <children type="3016">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="15"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="-53" y="533" width="120" height="30"/>
+        </gmfView>
+        <location x="-55" y="533"/>
+      </children>
+      <children id="//@ownedInteractions.1/@states.1" width="120" height="30">
+        <label id="//@ownedInteractions.1/@states.1">
+          <location y="5"/>
+        </label>
+        <siriusStyle xsi:type="diagram:Ellipse" uid="_aShsMdMsEeqYQ9ZMUYRT2Q" labelSize="15" showIcon="false" labelColor="16,120,103" borderColor="4,14,61" labelPosition="node" horizontalDiameter="12" verticalDiameter="3" color="69,181,196">
+          <description xsi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='State']/@conditionnalStyles.0/@style"/>
+        </siriusStyle>
+        <gmfView xsi:type="notation:Node" type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" y="5"/>
+          </children>
+          <children type="3016">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Arial" fontHeight="15"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="-53" y="587" width="120" height="30"/>
+        </gmfView>
+        <location x="-55" y="587"/>
+      </children>
+      <children id="//@ownedInteractions.1/@participants.1" width="10" height="10">
+        <label id="//@ownedInteractions.1/@participants.1">
+          <location x="-1"/>
+        </label>
+        <siriusStyle xsi:type="diagram:Dot" uid="_aShsMtMsEeqYQ9ZMUYRT2Q" strokeSizeComputationExpression="1">
+          <description xsi:type="style:DotDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']/@defaultLayer/@nodeMappings[name='Participant']/@borderedNodeMappings[name='Lifeline']/@borderedNodeMappings[name='redimEOL']/@style"/>
+        </siriusStyle>
+        <gmfView xsi:type="notation:Node" type="3001">
+          <children type="5001">
+            <layoutConstraint xsi:type="notation:Location" x="-1"/>
+          </children>
+          <children type="3002">
+            <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+            <layoutConstraint xsi:type="notation:Bounds"/>
+          </children>
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+          <layoutConstraint xsi:type="notation:Bounds" x="2" y="696" width="10" height="10"/>
+        </gmfView>
+        <location y="696"/>
+      </children>
+      <location x="55" y="50"/>
+    </children>
+    <location x="220" y="50"/>
+  </formatdata:NodeFormatData>
+</xmi:XMI>

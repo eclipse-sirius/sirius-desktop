@@ -105,8 +105,11 @@ public class MappingBasedSiriusFormatManagerFactory {
         Collection<DiagramEditPart> targetDiagramEditParts = getDiagramEditPart(targetSession, targetDiagram);
 
         if (!sourceDiagramEditParts.isEmpty() && !targetDiagramEditParts.isEmpty()) {
+            synchronizeTargetDiagram(targetSession, (DSemanticDiagram) targetDiagram, targetDiagramEditParts.stream().findFirst().get());
             // Apply format according to map
             applyFormatOnDiagram(sourceDiagramEditParts.stream().findFirst().get(), correspondenceMap, targetDiagramEditParts.stream().findFirst().get());
+
+            synchronizeTargetDiagram(targetSession, (DSemanticDiagram) targetDiagram, targetDiagramEditParts.stream().findFirst().get());
         }
 
         // Copy notes if asked to

@@ -135,7 +135,9 @@ import org.eclipse.sirius.tests.unit.diagram.format.data.FormatHelperImplNodeFor
 import org.eclipse.sirius.tests.unit.diagram.format.data.FormatHelperImplNodeFormatData2Test;
 import org.eclipse.sirius.tests.unit.diagram.format.data.LabelPositionOnContainerAndListTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest;
+import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest;
+import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.SiriusFormatDataManagerForDDiagramElementWithSameSemanticElementsTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.SiriusFormatDataManagerForSemanticElementsApplyWithPredefinedDataTest;
@@ -446,6 +448,8 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(FormatDataManagerSelectionTest.class);
         suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest.class));
         suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest.class));
+        suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest.class));
+        suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTest.class));
         suite.addTestSuite(LabelPositionOnContainerAndListTest.class);
         suite.addTestSuite(LabelVisibilityOnDragAndDropTests.class);
         suite.addTestSuite(LabelVisibilityOnCreationTest.class);

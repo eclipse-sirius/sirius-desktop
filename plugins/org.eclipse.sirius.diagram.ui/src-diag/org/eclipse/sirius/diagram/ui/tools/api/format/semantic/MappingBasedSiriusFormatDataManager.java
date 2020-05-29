@@ -12,23 +12,37 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.format.semantic;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.diagram.core.util.ViewRefactorHelper;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.notation.Edge;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.AbstractDNode;
+import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeListElement;
+import org.eclipse.sirius.diagram.EdgeStyle;
+import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.ui.tools.api.format.AbstractSiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.format.FormatDataKey;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.AdvancedSiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.SemanticEdgeFormatDataKey;
 import org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.SemanticNodeFormatDataKey;
+import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.Style;
 
 /**
  * An extension of {@link AbstractSiriusFormatDataManager} using an explicit <EObject,EObject> mapping function.
@@ -140,6 +154,57 @@ public class MappingBasedSiriusFormatDataManager extends SiriusFormatDataManager
     @Override
     public void applyStyle(IGraphicalEditPart rootEditPart) {
         super.applyStyle(rootEditPart);
+    }
+
+    /**
+     * Raw copies the {@code sourceView} GMF style to {@code targetView} GMF style. Code adapted from
+     * {@link AbstractSiriusFormatDataManager#applyGMFStyle}.
+     * 
+     * @param sourceView
+     *            The view from which the style is copied
+     * @param targetView
+     *            The to which the style is applied
+     */
+    @SuppressWarnings("unchecked")
+    public void copyGMFStyle(View sourceView, View targetView) {
+        if (sourceView != null && targetView != null) {
+            @SuppressWarnings("rawtypes")
+            List excludedStyles = new ArrayList<>();
+            if (sourceView instanceof Edge) {
+                // The style of RoutingStyle class is considered as format
+                // properties. So they have already been pasted during paste
+                // format.
+                excludedStyles.add(NotationPackage.eINSTANCE.getRoutingStyle());
+            }
+            new ViewRefactorHelper().copyViewAppearance(sourceView, targetView, excludedStyles);
+        }
+    }
+
+    /**
+     * Raw copied the {@code sourceSemanticDecorator} Sirius style to {@code targetSemanticDecorator} Sirius style. Code
+     * adapted from {@link AbstractSiriusFormatDataManager#applySiriusStyle}.
+     * 
+     * @param sourceSemanticDecorator
+     *            The decorator from which the style is copied
+     * @param targetSemanticDecorator
+     *            The decorator to which the style is applied
+     */
+    public void copySiriusStyle(DSemanticDecorator sourceSemanticDecorator, DSemanticDecorator targetSemanticDecorator) {
+        if (sourceSemanticDecorator instanceof DNode || sourceSemanticDecorator instanceof DNodeListElement) {
+            if (sourceSemanticDecorator instanceof DNode) {
+                Style copyOfSiriusStyle = SiriusCopierHelper.copyWithNoUidDuplication(((DNode) sourceSemanticDecorator).getOwnedStyle());
+                ((DNode) targetSemanticDecorator).setOwnedStyle((NodeStyle) copyOfSiriusStyle);
+            } else {
+                Style copyOfSiriusStyle = SiriusCopierHelper.copyWithNoUidDuplication(((DNodeListElement) sourceSemanticDecorator).getOwnedStyle());
+                ((DNodeListElement) targetSemanticDecorator).setOwnedStyle((NodeStyle) copyOfSiriusStyle);
+            }
+        } else if (sourceSemanticDecorator instanceof DDiagramElementContainer) {
+            Style copyOfSiriusStyle = SiriusCopierHelper.copyWithNoUidDuplication(((DDiagramElementContainer) sourceSemanticDecorator).getOwnedStyle());
+            ((DDiagramElementContainer) targetSemanticDecorator).setOwnedStyle((ContainerStyle) copyOfSiriusStyle);
+        } else if (sourceSemanticDecorator instanceof DEdge) {
+            Style copyOfSiriusStyle = SiriusCopierHelper.copyWithNoUidDuplication(((DEdge) sourceSemanticDecorator).getOwnedStyle());
+            ((DEdge) targetSemanticDecorator).setOwnedStyle((EdgeStyle) copyOfSiriusStyle);
+        }
     }
 
     private void setSemanticMap(Map<EObject, EObject> asMap) {
