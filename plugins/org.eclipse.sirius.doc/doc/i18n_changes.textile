@@ -6,8 +6,13 @@ h2(#sirius631). Translation Keys Changes in Sirius 6.3.1 (from Sirius 6.3.0)
 
 h3. Message Keys Added
 
+* @org.eclipse.sirius.diagram.ui.provider.Messages.BundledImageShape_idMissing@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.BundledImageShape_usedByEndUser_idMissing_msg@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.BundledImageShape_usedInVSM_idMissing_msg@
 * @org.eclipse.sirius.diagram.ui.provider.Messages.DiagramConnectionsPreferencePage_defaultValuesGroup_title@
 * @org.eclipse.sirius.diagram.ui.provider.Messages.DiagramConnectionsPreferencePage_enableLineStyleOverride_label@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.SVGFigure_usingInvalidBundledImageShape@
+* @org.eclipse.sirius.viewpoint.provider.Messages.LogThroughActiveDialectEditorLogListener_wrongErrorMessageProvider@
 
 h3. Message Keys Removed
 
