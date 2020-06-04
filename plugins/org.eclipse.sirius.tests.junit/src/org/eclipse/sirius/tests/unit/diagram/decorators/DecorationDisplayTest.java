@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.Figure;
@@ -358,7 +359,15 @@ public class DecorationDisplayTest extends GenericTestCase {
                 break;
             }
         }
-        assertNotNull("Bad group decoration position at " + position.getName(), groupFigure);
+
+        if (groupFigure == null) {
+            StringBuilder msgBuilder = new StringBuilder();
+            msgBuilder.append("Bad group decoration position at " + position.getName()).append("\n");
+            msgBuilder.append("expectedGroupBounds: ").append(expectedGroupBounds);
+            msgBuilder.append(" is not found among the following figure bounds: ");
+            msgBuilder.append(dDiagramElementDecorationFigures.stream().map(figure -> figure.getBounds().toString()).collect(Collectors.joining(" , ")));
+            fail(msgBuilder.toString());
+        }
         return groupFigure;
     }
 
