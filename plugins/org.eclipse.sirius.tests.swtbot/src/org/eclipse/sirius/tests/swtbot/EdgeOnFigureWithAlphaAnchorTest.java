@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2019 Obeo
+ * Copyright (c) 2015, 2020 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -27,15 +28,15 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
  * Test first point or last point location of edges on figure with
- * {@link org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AlphaBasedSlidableImageAnchor}
- * . There locations should not be on the bounding box but on the figure itself
- * (non transparent area).
+ * {@link org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AlphaBasedSlidableImageAnchor} . There locations should not
+ * be on the bounding box but on the figure itself (non transparent area).
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
@@ -121,8 +122,7 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
     }
 
     /**
-     * Test that the extremity is not on the bounding box of the figure but on
-     * the figure itself.
+     * Test that the extremity is not on the bounding box of the figure but on the figure itself.
      */
     public void testExtremityLocationOfExistingEdges() {
         checkEdgeExtremitiesLocation(EREFERENCE_TO_TRANSPARENT, ECLASS_TRIANGLE, ECLASS_TRANSPARENT_SQUARE, false, true);
@@ -168,8 +168,7 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
     }
 
     /**
-     * Test drag edge source to a figure provided shape with alpha. This test is
-     * performed with a zoom and an scrollbar.
+     * Test drag edge source to a figure provided shape with alpha. This test is performed with a zoom and an scrollbar.
      */
     public void testDragSourceProvidedShapeWithZoomAndScroll() {
         testDragProvidedShape(true, true);
@@ -207,8 +206,7 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
     }
 
     /**
-     * Test drag edge target to a figure provided shape with alpha. This test is
-     * performed with a zoom and an scrollbar.
+     * Test drag edge target to a figure provided shape with alpha. This test is performed with a zoom and an scrollbar.
      */
     public void testDragTargetProvidedShapeWithZoomAndScroll() {
         testDragProvidedShape(true, false);
@@ -238,24 +236,32 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
             // reconnection bounds
             Rectangle newBounds = editor.getBounds(editor.getEditPart(ECLASS_PROVIDED, AbstractDiagramNodeEditPart.class));
 
-            if (zoomAndScroll) {
-                // The mouse position click is relative to the screen
-                Point scrollSize = GraphicalHelper.getScrollSize((IGraphicalEditPart) referenceEditPartBot.part());
-                double zoom = GraphicalHelper.getZoom(referenceEditPartBot.part());
-                originalPoint = originalPoint.getScaled(zoom).getTranslated(-scrollSize.x, -scrollSize.y);
-            }
+            Point originalPointAdapted = adaptToZoomAndScroll(originalPoint, referenceEditPartBot, zoomAndScroll);
             Point targetPoint = newBounds.getCenter();
 
             // Select the edge and move it
             editor.select(referenceEditPartBot);
-            editor.drag(originalPoint, targetPoint);
+            bot.waitUntil(new CheckSelectedCondition(editor, EREFERENCE_TO_C2, ConnectionEditPart.class));
+            editor.drag(originalPointAdapted, targetPoint);
+            SWTBotUtils.waitAllUiEvents();
 
             // Check that the edge has been moved
             referenceEditPartBot = editor.getEditPart(EREFERENCE_TO_C2, AbstractConnectionEditPart.class);
             if (isSource) {
-                assertNotEquals("The first point of edge should be different", originalPoint, getPointList((AbstractConnectionEditPart) referenceEditPartBot.part()).getFirstPoint());
+                assertNotEquals("Drag fail: The first point of edge should be different", originalPoint, getPointList((AbstractConnectionEditPart) referenceEditPartBot.part()).getFirstPoint());
             } else {
-                assertNotEquals("The last point of edge should be different", originalPoint, getPointList((AbstractConnectionEditPart) referenceEditPartBot.part()).getLastPoint());
+                if (originalPoint.equals(getPointList((AbstractConnectionEditPart) referenceEditPartBot.part()).getLastPoint())) {
+                    // The drag has no effect. It is the case, according to the configuration (screen resolution, ...)
+                    // on some IC server.
+                    // Just shift the y axis, this is OK on some IC server, try it...
+                    editor.select(referenceEditPartBot);
+                    bot.waitUntil(new CheckSelectedCondition(editor, EREFERENCE_TO_C2, ConnectionEditPart.class));
+                    originalPointAdapted.setY(originalPointAdapted.y() + 1);
+                    editor.drag(originalPointAdapted, targetPoint);
+                    SWTBotUtils.waitAllUiEvents();
+                    referenceEditPartBot = editor.getEditPart(EREFERENCE_TO_C2, AbstractConnectionEditPart.class);
+                }
+                assertNotEquals("Drag fail: The last point of edge should be different", originalPoint, getPointList((AbstractConnectionEditPart) referenceEditPartBot.part()).getLastPoint());
             }
 
             if (zoomAndScroll) {
@@ -273,6 +279,16 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
             editor.restore();
             editor.zoom(ZoomLevel.ZOOM_100);
         }
+    }
+
+    private Point adaptToZoomAndScroll(Point originalPoint, SWTBotGefEditPart referenceEditPartBot, boolean zoomAndScroll) {
+        if (zoomAndScroll) {
+            // The mouse position click is relative to the screen
+            Point scrollSize = GraphicalHelper.getScrollSize((IGraphicalEditPart) referenceEditPartBot.part());
+            double zoom = GraphicalHelper.getZoom(referenceEditPartBot.part());
+            originalPoint = originalPoint.getScaled(zoom).getTranslated(-scrollSize.x, -scrollSize.y);
+        }
+        return originalPoint;
     }
 
     /**
@@ -326,8 +342,8 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
     }
 
     /**
-     * Test oblique edge creation on node with border image (to check that the
-     * border image is not considered to compute the anchor of the node).
+     * Test oblique edge creation on node with border image (to check that the border image is not considered to compute
+     * the anchor of the node).
      */
     public void testCreateEdgeOnNodeWithBorderImage() {
         String newReferenceName = "newReference";
@@ -337,9 +353,8 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
     }
 
     /**
-     * Test drag edge source from a figure with alpha to another one. This test
-     * is not enabled because of known bug that does not directly concerns this
-     * issue (bugzilla 461200).
+     * Test drag edge source from a figure with alpha to another one. This test is not enabled because of known bug that
+     * does not directly concerns this issue (bugzilla 461200).
      */
     public void _testDragSourceFail() {
         SWTBotGefEditPart referenceEditPartBot = editor.getEditPart(EREFERENCE_TO_NOTE, AbstractConnectionEditPart.class);
@@ -365,9 +380,8 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
     }
 
     /**
-     * Test move source of an edge on the same source figure. This test is not
-     * enabled because it does not currently work with SWTBot. The move with
-     * SWTBOT does not provide feedback and so does not make change.
+     * Test move source of an edge on the same source figure. This test is not enabled because it does not currently
+     * work with SWTBot. The move with SWTBOT does not provide feedback and so does not make change.
      */
     public void _testMoveSourceOnFigureWithAlpha() {
         SWTBotGefEditPart referenceEditPartBot = editor.getEditPart(EREFERENCE_TO_NOTE, AbstractConnectionEditPart.class);
@@ -387,9 +401,8 @@ public class EdgeOnFigureWithAlphaAnchorTest extends AbstractSiriusSwtBotGefTest
     }
 
     /**
-     * Test move target of an edge on the same target figure. This test is not
-     * enabled because it does not currently work with SWTBot. The move with
-     * SWTBOT does not provide feedback and so does not make change.
+     * Test move target of an edge on the same target figure. This test is not enabled because it does not currently
+     * work with SWTBot. The move with SWTBOT does not provide feedback and so does not make change.
      */
     public void _testMoveTargetOnFigureWithAlpha() {
         SWTBotGefEditPart referenceEditPartBot = editor.getEditPart(EREFERENCE_USES, AbstractConnectionEditPart.class);
