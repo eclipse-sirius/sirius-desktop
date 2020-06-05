@@ -97,6 +97,7 @@ import org.eclipse.sirius.tests.unit.diagram.action.LabelHideRevealTests;
 import org.eclipse.sirius.tests.unit.diagram.command.BuildDeleteCommandTest;
 import org.eclipse.sirius.tests.unit.diagram.command.DeleteViewCommandTest;
 import org.eclipse.sirius.tests.unit.diagram.compartment.CompartmentsLayoutTest;
+import org.eclipse.sirius.tests.unit.diagram.compartment.CompartmentsMultiLabelLayoutTest;
 import org.eclipse.sirius.tests.unit.diagram.compartment.CompartmentsTest;
 import org.eclipse.sirius.tests.unit.diagram.compute.variable.ComputeAvailableVariableLabelTest;
 import org.eclipse.sirius.tests.unit.diagram.control.ControlDetectorTest;
@@ -465,7 +466,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(ContainerMappingImportTests.class);
         suite.addTestSuite(CompartmentMappingsTests.class);
         suite.addTestSuite(CompartmentsTest.class);
-        // suite.addTestSuite(CompartmentsMultiLabelLayoutTest.class);
+        suite.addTestSuite(CompartmentsMultiLabelLayoutTest.class);
         suite.addTestSuite(CompartmentsLayoutTest.class);
         suite.addTestSuite(ContainerMappingImportWithChildrenPresentationChangesTests.class);
         suite.addTestSuite(NodeMappingImportTests.class);

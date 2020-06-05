@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo.
+ * Copyright (c) 2020 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -36,8 +36,8 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.swt.graphics.FontData;
 
 /**
- * Tests defined to ensure that labels in compartment or regions are correctly wrapped in multilines and that
- * compartment and regions are correctly layouted.
+ * Tests defined to ensure that labels in region container or regions are correctly wrapped in multilines and that
+ * region container and regions are correctly layouted.
  * 
  * @author lfasani
  */
@@ -60,6 +60,8 @@ public class CompartmentsMultiLabelLayoutTest extends SiriusDiagramTestCase {
     private final String V_STACK_CONTAINER = "VStackContainer";
 
     private final String H_STACK_CONTAINER = "HStackContainer";
+
+    private final String V_STACK_CONT_NO_REGION = "VStackContainerWithoutRegion";
 
     private final String FREE_FORM_CONTAINER = "StandardContainer";
 
@@ -115,17 +117,17 @@ public class CompartmentsMultiLabelLayoutTest extends SiriusDiagramTestCase {
      * Check behavior with compartment and regions label changes
      */
     public void testHorizontalStackWithAutoSize() {
-        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(451, 111));
+        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(451, 111), new Dimension(462, 107));
 
         changeLabelSize(rootPackage, LONG_LABEL);
-        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(451, 134));
+        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(451, 134), new Dimension(462, 126));
         changeLabelSize(rootPackage, SMALL_LABEL);
-        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(451, 111));
+        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(451, 111), new Dimension(462, 107));
 
         changeLabelSize(region1Package, LONG_LABEL);
-        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(704, 111));
+        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(704, 111), new Dimension(783, 107));
         changeLabelSize(region1Package, SMALL_LABEL);
-        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(451, 111));
+        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(451, 111), new Dimension(462, 107));
     }
 
     /**
@@ -133,17 +135,17 @@ public class CompartmentsMultiLabelLayoutTest extends SiriusDiagramTestCase {
      * Check behavior with compartment and regions label changes
      */
     public void testVerticalStackWithAutoSize() {
-        checkVStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(314, 180));
+        checkVStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(314, 180), new Dimension(314, 176));
 
         changeLabelSize(rootPackage, LONG_LABEL);
-        checkVStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(314, 226));
+        checkVStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(314, 226), new Dimension(314, 214));
         changeLabelSize(rootPackage, SMALL_LABEL);
-        checkVStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(314, 180));
+        checkVStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(314, 180), new Dimension(314, 176));
 
         changeLabelSize(region1Package, LONG_LABEL);
-        checkVStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(566, 180));
+        checkVStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(566, 180), new Dimension(635, 176));
         changeLabelSize(region1Package, SMALL_LABEL);
-        checkVStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(314, 180));
+        checkVStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(314, 180), new Dimension(314, 176));
     }
 
     /**
@@ -151,17 +153,17 @@ public class CompartmentsMultiLabelLayoutTest extends SiriusDiagramTestCase {
      * Check behavior with main and sub-elements label changes
      */
     public void testFreeFormContainerWithAutoSize() {
-        checkFreeFormContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(185, 75));
+        checkFreeFormContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(185, 75), new Dimension(207, 75));
 
         changeLabelSize(rootPackage, LONG_LABEL);
-        checkFreeFormContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(639, 75));
+        checkFreeFormContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(639, 75), new Dimension(721, 75));
         changeLabelSize(rootPackage, SMALL_LABEL);
-        checkFreeFormContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(194, 75));
+        checkFreeFormContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(194, 75), new Dimension(218, 75));
 
         changeLabelSize(region1Package, LONG_LABEL);
-        checkFreeFormContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(194, 75));
+        checkFreeFormContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(194, 75), new Dimension(218, 75));
         changeLabelSize(region1Package, SMALL_LABEL);
-        checkFreeFormContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(194, 75));
+        checkFreeFormContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(194, 75), new Dimension(218, 75));
     }
 
     /**
@@ -169,17 +171,17 @@ public class CompartmentsMultiLabelLayoutTest extends SiriusDiagramTestCase {
      * Check behavior with main and sub-elements label changes
      */
     public void testListContainerWithAutoSize() {
-        checkListContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(111, 84));
+        checkListContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(111, 84), new Dimension(120, 72));
 
         changeLabelSize(rootPackage, LONG_LABEL);
-        checkListContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(565, 84));
+        checkListContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(565, 84), new Dimension(634, 72));
         changeLabelSize(rootPackage, SMALL_LABEL);
-        checkListContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(120, 84));
+        checkListContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(120, 84), new Dimension(131, 72));
 
         changeLabelSize(region1Package, LONG_LABEL);
-        checkListContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(515, 84));
+        checkListContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(515, 84), new Dimension(578, 72));
         changeLabelSize(region1Package, SMALL_LABEL);
-        checkListContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(120, 84));
+        checkListContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(120, 84), new Dimension(131, 72));
     }
 
     /**
@@ -187,26 +189,26 @@ public class CompartmentsMultiLabelLayoutTest extends SiriusDiagramTestCase {
      * Check behavior with compartment and regions label changes
      */
     public void _testVerticalStackWithWidthFixedSize() {
-        checkVStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(314, 180));
+        checkVStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(314, 180), new Dimension(462, 111));
 
         changeGmfDimension(V_REGION + region1Package.getName(), new Dimension(264, -1));
         changeGmfDimension(V_REGION + region2Package.getName(), new Dimension(264, -1));
         // TODO The check fail because the figure is not updated. I can not figure out why. The test is prefix by _ to
         // disable it.
-        checkVStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(268, 180));
-        checkVRegionDimension(region1Package, null, new Dimension(264, 74));
-        checkVRegionDimension(region2Package, null, new Dimension(264, 69));
+        checkVStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(268, 180), new Dimension(462, 111));
+        checkVRegionDimension(region1Package, null, new Dimension(264, 74), new Dimension(462, 111));
+        checkVRegionDimension(region2Package, null, new Dimension(264, 69), new Dimension(462, 111));
 
         changeLabelSize(region2Package, LONG_LABEL);
         // The region2 gets higher
-        checkVRegionDimension(region1Package, null, new Dimension(264, 74));
-        checkVRegionDimension(region2Package, null, new Dimension(264, 75));
+        checkVRegionDimension(region1Package, null, new Dimension(264, 74), new Dimension(462, 111));
+        checkVRegionDimension(region2Package, null, new Dimension(264, 75), new Dimension(462, 111));
 
         changeLabelSize(rootPackage, LONG_LABEL);
         // The region size do not change
-        checkVRegionDimension(region1Package, null, new Dimension(264, 74));
-        checkVRegionDimension(region2Package, null, new Dimension(264, 75));
-        checkVStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(268, 232));
+        checkVRegionDimension(region1Package, null, new Dimension(264, 74), new Dimension(462, 111));
+        checkVRegionDimension(region2Package, null, new Dimension(264, 75), new Dimension(462, 111));
+        checkVStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(268, 232), new Dimension(462, 111));
     }
 
     /**
@@ -214,22 +216,22 @@ public class CompartmentsMultiLabelLayoutTest extends SiriusDiagramTestCase {
      * Check behavior with compartment and regions label changes
      */
     public void testHorizontalStackWithWidthFixedSize() {
-        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(451, 111));
+        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(462, 111), new Dimension(462, 107));
 
         changeGmfDimension(H_REGION + region2Package.getName(), new Dimension(103, -1));
-        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(418, 111));
-        checkHRegionDimension(region1Package, AUTO_SIZE_DIMENSION, new Dimension(311, 74));
-        checkHRegionDimension(region2Package, new Dimension(103, -1), new Dimension(103, 74));
+        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(418, 111), new Dimension(418, 107));
+        checkHRegionDimension(region1Package, AUTO_SIZE_DIMENSION, new Dimension(311, 74), new Dimension(311, 74));
+        checkHRegionDimension(region2Package, new Dimension(103, -1), new Dimension(103, 74), new Dimension(103, 74));
 
         changeLabelSize(region2Package, LONG_LABEL);
-        checkHRegionDimension(region1Package, AUTO_SIZE_DIMENSION, new Dimension(311, 189));
-        checkHRegionDimension(region2Package, new Dimension(103, -1), new Dimension(103, 189));
+        checkHRegionDimension(region1Package, AUTO_SIZE_DIMENSION, new Dimension(311, 189), new Dimension(311, 157));
+        checkHRegionDimension(region2Package, new Dimension(103, -1), new Dimension(103, 189), new Dimension(103, 157));
 
         changeLabelSize(rootPackage, LONG_LABEL);
         // The region size do not change
-        checkHRegionDimension(region1Package, AUTO_SIZE_DIMENSION, new Dimension(311, 189));
-        checkHRegionDimension(region2Package, new Dimension(103, -1), new Dimension(103, 189));
-        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(418, 249));
+        checkHRegionDimension(region1Package, AUTO_SIZE_DIMENSION, new Dimension(311, 189), new Dimension(311, 157));
+        checkHRegionDimension(region2Package, new Dimension(103, -1), new Dimension(103, 189), new Dimension(103, 157));
+        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(418, 249), new Dimension(418, 209));
     }
 
     /**
@@ -239,54 +241,70 @@ public class CompartmentsMultiLabelLayoutTest extends SiriusDiagramTestCase {
     public void testHorizontalStackWithHeightFixedSize() {
         changeGmfDimension(H_REGION + region1Package.getName(), new Dimension(-1, 91));
         changeGmfDimension(H_REGION + region2Package.getName(), new Dimension(-1, 91));
-        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(451, 128));
-        checkHRegionDimension(region1Package, null, new Dimension(311, 91));
-        checkHRegionDimension(region2Package, null, new Dimension(136, 91));
+        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(451, 128), new Dimension(462, 124));
+        checkHRegionDimension(region1Package, null, new Dimension(311, 91), new Dimension(311, 91));
+        checkHRegionDimension(region2Package, null, new Dimension(136, 91), new Dimension(147, 91));
 
         changeLabelSize(region2Package, LONG_LABEL);
         Dimension compartmentDimension = new Dimension(880, 128);
+        Dimension compartmentDimensionLinux = new Dimension(948, 124);
         Dimension region1Dimension = new Dimension(311, 91);
         Dimension region2Dimension = new Dimension(565, 91);
-        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, compartmentDimension);
-        checkHRegionDimension(region1Package, null, region1Dimension);
-        checkHRegionDimension(region2Package, null, region2Dimension);
+        Dimension region1DimensionLinux = new Dimension(311, 91);
+        Dimension region2DimensionLinux = new Dimension(633, 91);
+        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, compartmentDimension, compartmentDimensionLinux);
+        checkHRegionDimension(region1Package, null, region1Dimension, region1DimensionLinux);
+        checkHRegionDimension(region2Package, null, region2Dimension, region2DimensionLinux);
 
         changeLabelSize(rootPackage, LONG_LABEL);
         // nothing change
-        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, compartmentDimension);
-        checkHRegionDimension(region1Package, null, region1Dimension);
-        checkHRegionDimension(region2Package, null, region2Dimension);
+        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, compartmentDimension, compartmentDimensionLinux);
+        checkHRegionDimension(region1Package, null, region1Dimension, region1DimensionLinux);
+        checkHRegionDimension(region2Package, null, region2Dimension, region2DimensionLinux);
 
         changeLabelSize(rootPackage, LONG_LABEL + LONG_LABEL);
         // The region size do not change
-        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(880, 151));
-        checkHRegionDimension(region1Package, null, region1Dimension);
-        checkHRegionDimension(region2Package, null, region2Dimension);
-
+        checkHStackContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(880, 151), new Dimension(948, 143));
+        checkHRegionDimension(region1Package, null, region1Dimension, region1DimensionLinux);
+        checkHRegionDimension(region2Package, null, region2Dimension, region2DimensionLinux);
     }
 
-    private void checkVStackContainerDimensions(Dimension expectedGmfDimension, Dimension expectedFigureDimension) {
-        checkDimensions(V_STACK_CONTAINER + rootPackage.getName(), expectedGmfDimension, expectedFigureDimension);
+    /**
+     * Use case : stack container with no region</br>
+     */
+    public void testStackContainerWithNoRegion() {
+        checkStackContainerWithNoRegionDimension(AUTO_SIZE_DIMENSION, new Dimension(276, 48), new Dimension(305, 44));
+
+        changeLabelSize(rootPackage, LONG_LABEL);
+        checkStackContainerWithNoRegionDimension(AUTO_SIZE_DIMENSION, new Dimension(730, 48), new Dimension(819, 44));
     }
 
-    private void checkHStackContainerDimensions(Dimension expectedGmfDimension, Dimension expectedFigureDimension) {
-        checkDimensions(H_STACK_CONTAINER + rootPackage.getName(), expectedGmfDimension, expectedFigureDimension);
+    private void checkVStackContainerDimensions(Dimension expectedGmfDimension, Dimension expectedFigureDimensionWindows, Dimension expectedFigureDimensionLinux) {
+        checkDimensions(V_STACK_CONTAINER + rootPackage.getName(), expectedGmfDimension, expectedFigureDimensionWindows, expectedFigureDimensionLinux);
     }
 
-    private void checkFreeFormContainerDimensions(Dimension expectedGmfDimension, Dimension expectedFigureDimension) {
-        checkDimensions(FREE_FORM_CONTAINER + rootPackage.getName(), expectedGmfDimension, expectedFigureDimension);
+    private void checkHStackContainerDimensions(Dimension expectedGmfDimension, Dimension expectedFigureDimensionWindows, Dimension expectedFigureDimensionLinux) {
+        checkDimensions(H_STACK_CONTAINER + rootPackage.getName(), expectedGmfDimension, expectedFigureDimensionWindows, expectedFigureDimensionLinux);
     }
 
-    private void checkListContainerDimensions(Dimension expectedGmfDimension, Dimension expectedFigureDimension) {
-        checkDimensions(LIST_CONTAINER + rootPackage.getName(), expectedGmfDimension, expectedFigureDimension);
+    private void checkStackContainerWithNoRegionDimension(Dimension expectedGmfDimension, Dimension expectedFigureDimensionWindows, Dimension expectedFigureDimensionLinux) {
+        checkDimensions(V_STACK_CONT_NO_REGION + rootPackage.getName(), expectedGmfDimension, expectedFigureDimensionWindows, expectedFigureDimensionLinux);
     }
 
-    private void checkVRegionDimension(EPackage regionPackage, Dimension expectedGmfDimension, Dimension expectedFigureDimension) {
-        checkDimensions(V_REGION + regionPackage.getName(), expectedGmfDimension, expectedFigureDimension);
+    private void checkFreeFormContainerDimensions(Dimension expectedGmfDimension, Dimension expectedFigureDimensionWindows, Dimension expectedFigureDimensionLinux) {
+        checkDimensions(FREE_FORM_CONTAINER + rootPackage.getName(), expectedGmfDimension, expectedFigureDimensionWindows, expectedFigureDimensionLinux);
     }
 
-    private void checkHRegionDimension(EPackage regionPackage, Dimension expectedGmfDimension, Dimension expectedFigureDimension) {
-        checkDimensions(H_REGION + regionPackage.getName(), expectedGmfDimension, expectedFigureDimension);
+    private void checkListContainerDimensions(Dimension expectedGmfDimension, Dimension expectedFigureDimensionWindows, Dimension expectedFigureDimensionLinux) {
+        checkDimensions(LIST_CONTAINER + rootPackage.getName(), expectedGmfDimension, expectedFigureDimensionWindows, expectedFigureDimensionLinux);
+    }
+
+    private void checkVRegionDimension(EPackage regionPackage, Dimension expectedGmfDimension, Dimension expectedFigureDimensionWindows, Dimension expectedFigureDimensionLinux) {
+        checkDimensions(V_REGION + regionPackage.getName(), expectedGmfDimension, expectedFigureDimensionWindows, expectedFigureDimensionLinux);
+    }
+
+    private void checkHRegionDimension(EPackage regionPackage, Dimension expectedGmfDimension, Dimension expectedFigureDimensionWindows, Dimension expectedFigureDimensionLinux) {
+        checkDimensions(H_REGION + regionPackage.getName(), expectedGmfDimension, expectedFigureDimensionWindows, expectedFigureDimensionLinux);
     }
 
     private void changeLabelSize(EPackage ePackage, String newLabel) {
@@ -308,13 +326,15 @@ public class CompartmentsMultiLabelLayoutTest extends SiriusDiagramTestCase {
      *            Label of the container to check.
      * @param expectedGmfDimension
      *            The GMF expected bounds
-     * @param expectedFigureDimension
+     * @param expectedFigureDimensionWindows
      *            The draw2d expected bounds. If the x, y , width or height in this bounds is equal to -1, we don't
      *            check it. This is useful in case of size that depends on Font (with different result according to OS).
+     * @param expectedFigureDimensionLinux
+     *            Idem than expectedFigureDimensionWindows but for Linux case.
      * @return the current DrawD2 bounds
      */
-    private Dimension checkDimensions(String label, Dimension expectedGmfDimension, Dimension expectedFigureDimension) {
-        return checkDimensions(label, expectedGmfDimension, expectedFigureDimension, 0, 0);
+    private Dimension checkDimensions(String label, Dimension expectedGmfDimension, Dimension expectedFigureDimensionWindows, Dimension expectedFigureDimensionLinux) {
+        return checkDimensions(label, expectedGmfDimension, expectedFigureDimensionWindows, expectedFigureDimensionLinux, 0, 0);
     }
 
     /**
@@ -324,9 +344,11 @@ public class CompartmentsMultiLabelLayoutTest extends SiriusDiagramTestCase {
      *            Label of the container to check.
      * @param expectedGmfDimension
      *            The GMF expected bounds
-     * @param expectedFigureDimension
+     * @param expectedFigureDimensionWindows
      *            The draw2d expected bounds. If the x, y , width or height in this bounds is equal to -1, we don't
      *            check it. This is useful in case of size that depends on Font (with different result according to OS).
+     * @param expectedFigureDimensionLinux
+     *            Idem than expectedFigureDimensionWindows but for Linux case.
      * @param widthDelta
      *            The width delta to consider the width as equal (because of font size that can be slightly different on
      *            each OS).
@@ -335,19 +357,21 @@ public class CompartmentsMultiLabelLayoutTest extends SiriusDiagramTestCase {
      *            on each OS).
      * @return the current DrawD2 bounds
      */
-    private Dimension checkDimensions(String label, Dimension expectedGmfDimension, Dimension expectedFigureDimension, int widthDelta, int heightDelta) {
+    private Dimension checkDimensions(String label, Dimension expectedGmfDimension, Dimension expectedFigureDimensionWindows, Dimension expectedFigureDimensionLinux, int widthDelta, int heightDelta) {
         DDiagramElementContainer region = getDiagramElementsFromLabel(diagram, label, DDiagramElementContainer.class).get(0);
         AbstractDiagramElementContainerEditPart editPart = (AbstractDiagramElementContainerEditPart) getEditPart(region);
+
+        Dimension expectedFigureDimension = System.getProperty("os.name").equals("Linux") ? expectedFigureDimensionLinux : expectedFigureDimensionWindows;
 
         IFigure mainFigure = editPart.getMainFigure();
         if (expectedGmfDimension != null) {
             assertEquals("Wrong GMF bounds for " + label, expectedGmfDimension, getDimensions((Node) editPart.getNotationView()));
         }
 
-        if (expectedFigureDimension.width() != -1) {
+        if (expectedFigureDimensionLinux.width() != -1) {
             assertEquals("Wrong Draw2D width for " + label, expectedFigureDimension.width(), mainFigure.getBounds().width(), widthDelta);
         }
-        if (expectedFigureDimension.height() != -1) {
+        if (expectedFigureDimensionLinux.height() != -1) {
             assertEquals("Wrong Draw2D height for " + label, expectedFigureDimension.height(), mainFigure.getBounds().height(), heightDelta);
         }
 

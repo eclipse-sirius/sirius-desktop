@@ -51,7 +51,7 @@ import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperime
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
-import org.eclipse.sirius.diagram.ui.edit.internal.part.layoutmanager.CompartmentConstrainedToolbarLayout;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.layoutmanager.RegionContainerConstrainedToolbarLayout;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ResetOriginEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDiagramElementContainerNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeContainerItemSemanticEditPolicy;
@@ -92,8 +92,9 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
     protected IFigure setupContentPane(IFigure nodeShape) {
         if (nodeShape.getLayoutManager() == null) {
             ConstrainedToolbarLayout layout = null;
-            if (isRegionContainer()) {
-                layout = new CompartmentConstrainedToolbarLayout();
+            DDiagramElement resolveDiagramElement = resolveDiagramElement();
+            if (isRegionContainer() && resolveDiagramElement instanceof DNodeContainer) {
+                layout = new RegionContainerConstrainedToolbarLayout((DNodeContainer) resolveDiagramElement());
             } else {
                 layout = new ConstrainedToolbarLayout();
             }

@@ -22,6 +22,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
+import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 
 /**
@@ -29,7 +30,26 @@ import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
  * 
  * @author lfasani
  */
-public class CompartmentConstrainedToolbarLayout extends ConstrainedToolbarLayout {
+public class RegionContainerConstrainedToolbarLayout extends ConstrainedToolbarLayout {
+    private DNodeContainer dNodeContainer;
+
+    /**
+     * Default constructor.
+     * 
+     * @param dNodeContainer
+     *            The DDiagramElement associated to the editPart using this layoutManager.
+     */
+    public RegionContainerConstrainedToolbarLayout(DNodeContainer dNodeContainer) {
+        this.dNodeContainer = dNodeContainer;
+    }
+
+    /**
+     * Indicates if the current DNodeContainer contains children.
+     */
+    private boolean containsRegions() {
+        return !dNodeContainer.getOwnedDiagramElements().isEmpty();
+    }
+
     /*
      * (non-Javadoc) Partly copied from super class. The change is about the way the prefSize is computed.
      * @see
@@ -55,22 +75,29 @@ public class CompartmentConstrainedToolbarLayout extends ConstrainedToolbarLayou
         }
 
         // The preferred size of the compartment is computed :
-        // * width: it is the preferred width of the region(s)
-        // * height : with whint=width previously computed, it is the preferred height of (the compartment label +
+        // * width: it is the preferred width of the region(s) except if there is no region (in this case the
+        // container's label width is used)
+        // * height: with whint=width previously computed, it is the preferred height of (the compartment label +
         // the region)
         List<IFigure> children = getChildren(container);
-        //@formatter:off
-        List<IFigure> childrenWithoutLabel = getChildren(container).stream()
-                .filter(figure -> !(figure instanceof SiriusWrapLabel))
-                .collect(Collectors.toList());
-        //@formatter:on
-        Dimension prefSize = calculateChildrenSize(childrenWithoutLabel, wHint, hHint, true);
+        List<IFigure> childrenToConsider = children;
+
+        //
+        if (containsRegions()) {
+            //@formatter:off
+            // We remove the label of the region container
+            childrenToConsider = getChildren(container).stream()
+                    .filter(figure -> !(figure instanceof SiriusWrapLabel))
+                    .collect(Collectors.toList());
+            //@formatter:on
+        }
+        Dimension prefSize = calculateChildrenSize(childrenToConsider, wHint, hHint, true);
         prefSize = calculateChildrenSize(children, prefSize.width, hHint, true);
         // Do a second pass, if necessary
         if (wHint >= 0 && prefSize.width > wHint) {
-            prefSize = calculateChildrenSize(childrenWithoutLabel, prefSize.width, hHint, true);
+            prefSize = calculateChildrenSize(childrenToConsider, prefSize.width, hHint, true);
         } else if (hHint >= 0 && prefSize.height > hHint) {
-            prefSize = calculateChildrenSize(childrenWithoutLabel, wHint, prefSize.height, true);
+            prefSize = calculateChildrenSize(childrenToConsider, wHint, prefSize.height, true);
         }
 
         prefSize.height += Math.max(0, children.size() - 1) * spacing;
