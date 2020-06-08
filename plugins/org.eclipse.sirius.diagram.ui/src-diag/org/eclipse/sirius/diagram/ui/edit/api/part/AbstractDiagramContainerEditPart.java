@@ -94,7 +94,7 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
             ConstrainedToolbarLayout layout = null;
             DDiagramElement resolveDiagramElement = resolveDiagramElement();
             if (isRegionContainer() && resolveDiagramElement instanceof DNodeContainer) {
-                layout = new RegionContainerConstrainedToolbarLayout((DNodeContainer) resolveDiagramElement());
+                layout = new RegionContainerConstrainedToolbarLayout(this);
             } else {
                 layout = new ConstrainedToolbarLayout();
             }

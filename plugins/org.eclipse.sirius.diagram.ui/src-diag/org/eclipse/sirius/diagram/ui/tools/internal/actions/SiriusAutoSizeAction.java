@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,10 +22,7 @@ import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.AutoSizeAction;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.ResizableCompartmentEditPart;
-import org.eclipse.gmf.runtime.notation.NotationPackage;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.ui.IWorkbenchPage;
 
 /**
@@ -61,15 +58,9 @@ public class SiriusAutoSizeAction extends AutoSizeAction {
         while (editParts.hasNext()) {
             EditPart editPart = (EditPart) editParts.next();
             // check if the editpart is autosized
-            if (concernRegion(editPart)) {
-                foundNonAutosizedPart = true;
-            } else if (editPart instanceof GraphicalEditPart) {
+            if (editPart instanceof GraphicalEditPart) {
                 GraphicalEditPart graphicalEditPart = (GraphicalEditPart) editPart;
-                Integer containerWidth = (Integer) graphicalEditPart.getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Width());
-                Integer containerHeight = (Integer) graphicalEditPart.getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Height());
-                if (containerWidth.intValue() != -1 || containerHeight.intValue() != -1) {
-                    foundNonAutosizedPart = true;
-                }
+                foundNonAutosizedPart = !new EditPartQuery(graphicalEditPart).isAutoSized();
             }
 
             Command curCommand = editPart.getCommand(request);
@@ -78,19 +69,5 @@ public class SiriusAutoSizeAction extends AutoSizeAction {
             }
         }
         return command.isEmpty() || command.size() != operationSet.size() || !foundNonAutosizedPart ? UnexecutableCommand.INSTANCE : (Command) command;
-    }
-
-    private boolean concernRegion(EditPart hostPart) {
-        if (hostPart instanceof AbstractDiagramContainerEditPart && ((AbstractDiagramContainerEditPart) hostPart).isRegionContainer()) {
-            // We collect compartment children
-            // The region auto size is available if at least one child is not auto-sized.
-            return ((AbstractDiagramContainerEditPart) hostPart).getResizableCompartments().stream().flatMap(el -> ((ResizableCompartmentEditPart) el).getChildren().stream())
-                    .filter(AbstractDiagramElementContainerEditPart.class::isInstance).filter(el -> {
-                Integer containerWidth = (Integer) ((AbstractDiagramElementContainerEditPart) el).getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Width());
-                Integer containerHeight = (Integer) ((AbstractDiagramElementContainerEditPart) el).getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Height());
-                return containerWidth.intValue() != -1 || containerHeight.intValue() != -1;
-            }).findFirst().isPresent();
-        }
-        return false;
     }
 }

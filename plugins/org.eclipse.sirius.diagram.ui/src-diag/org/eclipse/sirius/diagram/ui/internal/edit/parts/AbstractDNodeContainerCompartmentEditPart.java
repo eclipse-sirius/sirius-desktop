@@ -85,6 +85,7 @@ import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLay
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ContainerCompartmentNodeEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToHelperUtil;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.editpolicies.SiriusSnapFeedbackPolicy;
@@ -492,9 +493,9 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         Option<DNodeContainerExperimentalQuery> query = getDNodeContainerQuery();
         if (query.some() && query.get().isRegionContainer()) {
             if (query.get().isVerticalStackContainer()) {
-                layoutManager = new RegionContainerLayoutManager(true);
+                layoutManager = new RegionContainerLayoutManager(true, this);
             } else if (query.get().isHorizontaltackContainer()) {
-                layoutManager = new RegionContainerLayoutManager(false);
+                layoutManager = new RegionContainerLayoutManager(false, this);
             }
         }
 
@@ -527,14 +528,19 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
 
         private final boolean isVertical;
 
+        private final AbstractDNodeContainerCompartmentEditPart containerCompartmentEditPart;
+
         /**
          * Constructor.
          * 
          * @param isVertical
-         *            , true to layout as vertical stack.
+         *            true to layout as vertical stack, false otherwise
+         * @param containerCompartmentEditPart
+         *            the edit part using this layout manager
          */
-        public RegionContainerLayoutManager(boolean isVertical) {
+        public RegionContainerLayoutManager(boolean isVertical, AbstractDNodeContainerCompartmentEditPart containerCompartmentEditPart) {
             this.isVertical = isVertical;
+            this.containerCompartmentEditPart = containerCompartmentEditPart;
         }
 
         public boolean isVertical() {
@@ -573,6 +579,21 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                 minY = Math.min(minY, bounds.y);
             }
 
+            boolean dependsOnRegionContainerWidth = new EditPartQuery(containerCompartmentEditPart).isAutoSized(true, false);
+            int labelWidth = 0;
+            if (dependsOnRegionContainerWidth) {
+                IFigure parentLabelFigure = getParentLabelFigure(parent);
+                if (parentLabelFigure != null) {
+                    labelWidth = parentLabelFigure.getSize().width;
+
+                    // For vertical stacks, take label into account to compute the
+                    // region common size.
+                    if (isVertical) {
+                        maxWidth = Math.max(maxWidth, labelWidth);
+                    }
+                }
+            }
+
             int y = minY;
             int x = 0;
 
@@ -596,6 +617,34 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                 setConstraint(f, bounds);
                 f.setBounds(bounds.translate(offset));
             }
+
+            if (dependsOnRegionContainerWidth) {
+                // For horizontal stacks, if label is longer than the regions
+                // cumulative width, increase the last region size.
+                int delta = labelWidth - x;
+                if (!isVertical && delta > 0 && !children.isEmpty()) {
+                    IFigure last = Iterables.getLast(children);
+                    bounds = regionsBounds.get(last);
+                    bounds.setWidth(bounds.width + delta);
+                    setConstraint(last, bounds);
+                    last.setBounds(bounds.translate(offset));
+                }
+            }
+        }
+
+        private IFigure getParentLabelFigure(IFigure parent) {
+            IFigure tmp = parent;
+            ViewNodeContainerFigureDesc parentShape = null;
+            while (parentShape == null && tmp != null) {
+                if (tmp instanceof ViewNodeContainerFigureDesc) {
+                    parentShape = (ViewNodeContainerFigureDesc) tmp;
+                    tmp = null;
+                } else {
+                    tmp = tmp.getParent();
+                }
+            }
+
+            return parentShape != null ? parentShape.getLabelFigure() : null;
         }
 
         /*

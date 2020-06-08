@@ -118,6 +118,37 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
+        <containerMappings name="ContainerHStackWithEmptyRegion" labelDirectEdit="//@ownedViewpoints[name='MultilineLabels']/@ownedRepresentations[name='MulilineLabels']/@defaultLayer/@toolSections.0/@ownedTools[name='SetNameTool']" semanticCandidatesExpression="aql:self" domainClass="ecore::EPackage" childrenPresentation="HorizontalStack">
+          <subContainerMappings name="VRegionWithoutLabel" labelDirectEdit="//@ownedViewpoints[name='MultilineLabels']/@ownedRepresentations[name='MulilineLabels']/@defaultLayer/@toolSections.0/@ownedTools[name='SetNameTool']" semanticCandidatesExpression="aql:self" domainClass="ecore::EPackage">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="VRegionWithoutLabelCollapsed" labelDirectEdit="//@ownedViewpoints[name='MultilineLabels']/@ownedRepresentations[name='MulilineLabels']/@defaultLayer/@toolSections.0/@ownedTools[name='SetNameTool']" semanticCandidatesExpression="aql:self.eContents()" domainClass="ecore::EPackage">
+            <subNodeMappings name="RegionsClasses" semanticCandidatesExpression="aql:self" domainClass="ecore::EPackage">
+              <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="aql:'VStackContainerWithEmptyRegion'+self.name">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
         <toolSections>
           <ownedTools xsi:type="tool:DirectEditLabel" name="SetNameTool">
             <mask mask="{0}"/>

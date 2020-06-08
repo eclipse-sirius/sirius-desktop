@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -36,6 +36,7 @@ import org.eclipse.gef.SnapToHelper;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderedShapeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.ResizableCompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.diagram.ui.internal.properties.WorkspaceViewerProperties;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
@@ -51,6 +52,7 @@ import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
@@ -748,5 +750,50 @@ public class EditPartQuery {
             center = bounds.getCenter();
         }
         return center;
+    }
+
+    /**
+     * Verify if this edit part is auto-sized.
+     * 
+     * @param checkWidth
+     *            true if this method must verify that width is auto-sized, false otherwise.
+     * @param checkHeight
+     *            true if this method must verify that height is auto-sized, false otherwise.
+     * @return true if the width and/or the height are auto-sized (according to the parameter value)
+     */
+    public boolean isAutoSized(final boolean checkWidth, final boolean checkHeight) {
+        boolean isAutoSized = false;
+        if (part instanceof AbstractDiagramContainerEditPart && ((AbstractDiagramContainerEditPart) part).isRegionContainer()) {
+            // Edit part is a region container: We collect compartment children.
+            // The region container is considered as auto-sized if all children is auto-sized.
+            isAutoSized = ((AbstractDiagramContainerEditPart) part).getResizableCompartments().stream()
+                    .allMatch(resizableCompartment -> new EditPartQuery((IGraphicalEditPart) resizableCompartment).isAutoSized(checkWidth, checkHeight));
+        } else if (part instanceof ResizableCompartmentEditPart && part.getParent() instanceof AbstractDiagramContainerEditPart
+                && ((AbstractDiagramContainerEditPart) part.getParent()).isRegionContainer()) {
+            // Edit part is the ResizableCompartmentEditPart of a region container
+            isAutoSized = isAutoSized((ResizableCompartmentEditPart) part, checkWidth, checkHeight);
+        } else {
+            Integer width = (Integer) part.getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Width());
+            Integer height = (Integer) part.getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Height());
+            isAutoSized = (!checkWidth || width == -1) && (!checkHeight || height == -1);
+        }
+        return isAutoSized;
+    }
+
+    private boolean isAutoSized(ResizableCompartmentEditPart resizableCompartmentEditPart, boolean checkWidth, boolean checkHeight) {
+        return resizableCompartmentEditPart.getChildren().stream().filter(AbstractDiagramElementContainerEditPart.class::isInstance).allMatch(el -> {
+            Integer containerWidth = (Integer) ((AbstractDiagramElementContainerEditPart) el).getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Width());
+            Integer containerHeight = (Integer) ((AbstractDiagramElementContainerEditPart) el).getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Height());
+            return (!checkWidth || containerWidth.intValue() == -1) && (!checkHeight || containerHeight.intValue() == -1);
+        });
+    }
+
+    /**
+     * Verify if this edit part is auto-sized.
+     * 
+     * @return true if the width and the height are auto-sized
+     */
+    public boolean isAutoSized() {
+        return isAutoSized(true, true);
     }
 }

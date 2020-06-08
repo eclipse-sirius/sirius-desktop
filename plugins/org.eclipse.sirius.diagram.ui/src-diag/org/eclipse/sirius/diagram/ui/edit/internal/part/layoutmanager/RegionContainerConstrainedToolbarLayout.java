@@ -22,7 +22,8 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
-import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 
 /**
@@ -31,23 +32,16 @@ import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
  * @author lfasani
  */
 public class RegionContainerConstrainedToolbarLayout extends ConstrainedToolbarLayout {
-    private DNodeContainer dNodeContainer;
+    private AbstractDiagramContainerEditPart diagramContainerEditPart;
 
     /**
      * Default constructor.
      * 
-     * @param dNodeContainer
-     *            The DDiagramElement associated to the editPart using this layoutManager.
+     * @param diagramContainerEditPart
+     *            The EditPart using this layoutManager.
      */
-    public RegionContainerConstrainedToolbarLayout(DNodeContainer dNodeContainer) {
-        this.dNodeContainer = dNodeContainer;
-    }
-
-    /**
-     * Indicates if the current DNodeContainer contains children.
-     */
-    private boolean containsRegions() {
-        return !dNodeContainer.getOwnedDiagramElements().isEmpty();
+    public RegionContainerConstrainedToolbarLayout(AbstractDiagramContainerEditPart diagramContainerEditPart) {
+        this.diagramContainerEditPart = diagramContainerEditPart;
     }
 
     /*
@@ -82,17 +76,23 @@ public class RegionContainerConstrainedToolbarLayout extends ConstrainedToolbarL
         List<IFigure> children = getChildren(container);
         List<IFigure> childrenToConsider = children;
 
-        //
-        if (containsRegions()) {
+        Dimension prefSize = null;
+        if (new EditPartQuery(diagramContainerEditPart).isAutoSized(true, false)) {
+            prefSize = calculateChildrenSize(children, wHint, hHint, true);
+        } else {
             //@formatter:off
             // We remove the label of the region container
             childrenToConsider = getChildren(container).stream()
                     .filter(figure -> !(figure instanceof SiriusWrapLabel))
                     .collect(Collectors.toList());
             //@formatter:on
+            prefSize = calculateChildrenSize(childrenToConsider, wHint, hHint, true);
+
+            // we recompute prefSize
+            // * with all children including the Region container SiriusWrapLabel to get the right height
+            // * with the prefSize.width constraint that was previously computed from children with only regions
+            prefSize = calculateChildrenSize(children, prefSize.width, hHint, true);
         }
-        Dimension prefSize = calculateChildrenSize(childrenToConsider, wHint, hHint, true);
-        prefSize = calculateChildrenSize(children, prefSize.width, hHint, true);
         // Do a second pass, if necessary
         if (wHint >= 0 && prefSize.width > wHint) {
             prefSize = calculateChildrenSize(childrenToConsider, prefSize.width, hHint, true);
