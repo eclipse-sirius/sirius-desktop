@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
@@ -47,10 +48,11 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNodeContainer;
+import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.view.LayoutData;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
-import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.graphical.figures.SiriusLayoutHelper;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.operation.ShiftEdgeIdentityAnchorOperation;
@@ -60,7 +62,8 @@ import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
- * The {@link AirXYLayoutEditPolicy}. import org.eclipse.sirius.transversal.command.GEFRecordedCommandWrapper;
+ * The {@link AirXYLayoutEditPolicy}. import
+ * org.eclipse.sirius.transversal.command.GEFRecordedCommandWrapper;
  * 
  * @author ymortier
  */
@@ -205,11 +208,13 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
     }
 
     /**
-     * Retrieves the value of the <code>realObject</code> instance variable of this viewDescriptor.
+     * Retrieves the value of the <code>realObject</code> instance variable of
+     * this viewDescriptor.
      * 
      * @param viewDescriptor
      *            The view descriptor.
-     * @return The value of the <code>realObject</code> instance variable or null if the adapter isn't a proxy.
+     * @return The value of the <code>realObject</code> instance variable or
+     *         null if the adapter isn't a proxy.
      */
     private Object getRealObject(final ViewDescriptor viewDescriptor) {
         Object result = null;
@@ -237,8 +242,9 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
                 childEditPolicy = new RegionRegionContainerResizableEditPolicy();
             } else {
                 /*
-                 * If the current element is a region container, each added child will be considered as a region and
-                 * will receive the expected resizable edit policy.
+                 * If the current element is a region container, each added
+                 * child will be considered as a region and will receive the
+                 * expected resizable edit policy.
                  */
                 childEditPolicy = new RegionResizableEditPolicy();
             }
@@ -251,24 +257,23 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
     }
 
     private boolean isRegionContainer(EditPart part) {
-        if (part instanceof AbstractDiagramContainerEditPart) {
-            return ((AbstractDiagramContainerEditPart) part).isRegionContainer();
+        if (part instanceof IDiagramContainerEditPart) {
+            DDiagramElement element = ((IDiagramContainerEditPart) part).resolveDiagramElement();
+            return isRegionContainer(element);
         }
         return false;
     }
 
     private boolean isRegionContainerCompartment(EditPart part) {
         if (part instanceof AbstractDNodeContainerCompartmentEditPart) {
-            return isRegionContainer(((AbstractDNodeContainerCompartmentEditPart) part).getParent());
+            EObject element = ((AbstractDNodeContainerCompartmentEditPart) part).resolveSemanticElement();
+            return isRegionContainer(element);
         }
         return false;
     }
 
-    private boolean isRegion(EditPart part) {
-        if (part instanceof AbstractDiagramElementContainerEditPart) {
-            return ((AbstractDiagramElementContainerEditPart) part).isRegion();
-        }
-        return false;
+    private boolean isRegionContainer(EObject element) {
+        return element instanceof DNodeContainer && new DNodeContainerExperimentalQuery((DNodeContainer) element).isRegionContainer();
     }
 
     @Override
@@ -285,8 +290,9 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
     /**
      * {@inheritDoc}
      * 
-     * Override to use a specific layoutHelper that get the center of the visible part of the container and not just the
-     * center of the part of the container.
+     * Override to use a specific layoutHelper that get the center of the
+     * visible part of the container and not just the center of the part of the
+     * container.
      * 
      * @see org.eclipse.gmf.runtime.diagram.ui.editpolicies.XYLayoutEditPolicy#getConstraintFor(org.eclipse.gef.requests.CreateRequest)
      */
@@ -345,22 +351,8 @@ public class AirXYLayoutEditPolicy extends XYLayoutEditPolicy {
                 Dimension dimension = new Dimension(optionalSize.get().getWidth(), optionalSize.get().getHeight());
                 constraint.setSize(dimension);
             }
-        } else if (isRegion(child)) {
-            // We change the constraint width and height only for width and height sizeDelta with non 0 value
-            Optional<Size> optionalSize = Optional.ofNullable(child.getModel()).filter(Node.class::isInstance).map(model -> ((Node) model).getLayoutConstraint()).filter(Size.class::isInstance)
-                    .map(Size.class::cast);
-            if (optionalSize.isPresent()) {
-                Dimension dimension = null;
-                if (optionalSize.get().getHeight() < 0 && request.getSizeDelta().height == 0) {
-                    dimension = new Dimension(constraint.width, -1);
-                    constraint.setSize(dimension);
-                } else if (optionalSize.get().getWidth() < 0 && request.getSizeDelta().width == 0) {
-                    dimension = new Dimension(-1, constraint.height);
-                    constraint.setSize(dimension);
-                }
-            }
-        }
 
+        }
         return constraint;
     }
 

@@ -24,7 +24,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
-import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
@@ -51,6 +50,8 @@ public class CompartmentsWithComponentTest extends AbstractSiriusSwtBotGefTestCa
     private static final String REGION_WITH_EDGES_REPRESENTATION_NAME = "DiagramWithRegionAndEdges";
 
     private static final String REGION_WITH_EDGES_REPRESENTATION_INSTANCE_NAME = "new DiagramWithRegionAndEdges";
+
+
 
     /**
      * {@inheritDoc}
@@ -131,7 +132,8 @@ public class CompartmentsWithComponentTest extends AbstractSiriusSwtBotGefTestCa
             collapseOrExpandContainer(parentEdgeSourceEditPart);
             // Check that the original edge is visible again, it is not the same edge as the original state but with the
             // same source and target
-            assertEquals("The edge should exist, as initially.", 1, ((AbstractDiagramElementContainerEditPart) edgeSourceEditPart.part()).getSourceConnections().size());
+            assertEquals("The edge should exist, as initially.", 1,
+                    ((AbstractDiagramElementContainerEditPart) edgeSourceEditPart.part()).getSourceConnections().size());
             assertTrue("The edge should be visible after expanding the container of the target of the edge.",
                     ((DEdgeEditPart) ((AbstractDiagramElementContainerEditPart) edgeSourceEditPart.part()).getSourceConnections().get(0)).getFigure().isVisible());
             // Check that other edge disappears
@@ -204,9 +206,7 @@ public class CompartmentsWithComponentTest extends AbstractSiriusSwtBotGefTestCa
         AbstractDiagramElementContainerEditPart part = (AbstractDiagramElementContainerEditPart) container.part();
         GraphicalHelper.getAbsoluteBoundsIn100Percent(part);
         Point top = GraphicalHelper.getAbsoluteBoundsIn100Percent(part).getTop();
-        // click in the region
-        editor.click(top.getTranslated(0, getLabelHeight(part.getMainFigure()) + 11));// 10px for the inset + 1px to be
-                                                                                      // greater than the label area
+        editor.click(top.getTranslated(0, 40));
         // Collapse the region
         // Add a wait condition to have the collapse button displayed and click on it
         bot.waitUntil(new DefaultCondition() {
@@ -243,21 +243,5 @@ public class CompartmentsWithComponentTest extends AbstractSiriusSwtBotGefTestCa
         // Wait all UI events to ensure that the connections are refresh in asyncExec (see
         // org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart.refreshConnections())
         SWTBotUtils.waitAllUiEvents();
-    }
-
-    private int getLabelHeight(IFigure figure) {
-        if (figure instanceof SiriusWrapLabel) {
-            return figure.getBounds().height;
-        }
-        int height = 0;
-        for (Object child : figure.getChildren()) {
-            if (child instanceof IFigure) {
-                height = getLabelHeight((IFigure) child);
-                if (height > 0) {
-                    break;
-                }
-            }
-        }
-        return height;
     }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,7 +38,6 @@ import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest.ViewDescriptor;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
-import org.eclipse.gmf.runtime.draw2d.ui.figures.ConstrainedToolbarLayout;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
@@ -51,7 +50,6 @@ import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperime
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.PortLayoutHelper;
-import org.eclipse.sirius.diagram.ui.edit.internal.part.layoutmanager.RegionContainerConstrainedToolbarLayout;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ResetOriginEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDiagramElementContainerNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeContainerItemSemanticEditPolicy;
@@ -86,22 +84,6 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
     @Override
     public Class<?> getMetamodelType() {
         return DNodeContainer.class;
-    }
-
-    @Override
-    protected IFigure setupContentPane(IFigure nodeShape) {
-        if (nodeShape.getLayoutManager() == null) {
-            ConstrainedToolbarLayout layout = null;
-            DDiagramElement resolveDiagramElement = resolveDiagramElement();
-            if (isRegionContainer() && resolveDiagramElement instanceof DNodeContainer) {
-                layout = new RegionContainerConstrainedToolbarLayout((DNodeContainer) resolveDiagramElement());
-            } else {
-                layout = new ConstrainedToolbarLayout();
-            }
-            layout.setSpacing(getMapMode().DPtoLP(DEFAULT_SPACING));
-            nodeShape.setLayoutManager(layout);
-        }
-        return nodeShape; // use nodeShape itself as contentPane
     }
 
     /**
@@ -163,7 +145,8 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
                 final Object createdElement = ((Proxy) adapt).getRealObject();
                 if (createdElement instanceof DNode) {
                     final EObject containerSemanticElement = this.resolveSemanticElement();
-                    if (MappingHelper.getAllBorderedNodeMappings(((DDiagramElementContainer) containerSemanticElement).getActualMapping()).contains(((DNode) createdElement).getActualMapping())) {
+                    if (MappingHelper.getAllBorderedNodeMappings(((DDiagramElementContainer) containerSemanticElement).getActualMapping())
+                            .contains(((DNode) createdElement).getActualMapping())) {
                         //
                         // Create a port...
                         final Rectangle bounds = PortLayoutHelper.getBounds(this, (DNode) createdElement, viewDescriptor, (DDiagramElement) containerSemanticElement);

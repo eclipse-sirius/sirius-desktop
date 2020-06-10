@@ -20,9 +20,7 @@ h3. User-Visible Changes
 
 
   !images/operand_label_after.png!
-  
-* <span class="label label-info">Modified</span> In diagrams, the display of the label of the compartments has been improved. When there is not enough space to display the label of the compartment container or the contained compartments, it is displayed on multiple lines. Refer to "Compartment section":user/diagrams/Diagrams.html#Compartments for more information.
-A consequence is that the display of existing compartments in diagrams may be changed. When refreshing the existing diagram, the project may become dirty.
+
 * <span class="label label-danger">Removed</span> The feature concerning the capability to move labels on border of node, or border node, all around the node, added in 6.3.0, has been reverted. There are unexpected side effects (wrong location after a rename of a label for example).
 
 h3. Developer-Visible Changes
