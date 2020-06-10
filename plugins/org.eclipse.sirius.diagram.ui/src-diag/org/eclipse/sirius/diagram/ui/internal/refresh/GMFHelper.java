@@ -241,8 +241,11 @@ public final class GMFHelper {
      */
     public static Dimension getBorderSize(DDiagramElementContainer ddec) {
         Dimension result = new Dimension(0, 0);
+        int borderSize = 0;
         ContainerStyle containerStyle = ddec.getOwnedStyle();
-        int borderSize = containerStyle.getBorderSize().intValue();
+        if (containerStyle != null && containerStyle.getBorderSize() != null) {
+            borderSize = containerStyle.getBorderSize().intValue();
+        }
         DDiagramElementContainerExperimentalQuery regionQuery = new DDiagramElementContainerExperimentalQuery(ddec);
         if (regionQuery.isRegionInHorizontalStack()) {
             result.setWidth(isFirstRegion(ddec) ? 0 : borderSize);
