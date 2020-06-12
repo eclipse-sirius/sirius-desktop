@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,7 @@ public class CombinedFragmentEditPart extends DNodeContainerEditPart implements 
      */
     public CombinedFragmentEditPart(View view) {
         super(view);
+        setUseOverlayLabel(true);
     }
 
     @Override
@@ -57,8 +58,7 @@ public class CombinedFragmentEditPart extends DNodeContainerEditPart implements 
     }
 
     /**
-     * Overridden to install a specific edit policy managing the moving and
-     * resizing requests on combined fragment.
+     * Overridden to install a specific edit policy managing the moving and resizing requests on combined fragment.
      * <p>
      * {@inheritDoc}
      */

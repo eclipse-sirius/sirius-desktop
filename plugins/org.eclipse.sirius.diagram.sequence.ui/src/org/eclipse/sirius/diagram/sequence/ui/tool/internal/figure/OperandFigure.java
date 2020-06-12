@@ -18,6 +18,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.sirius.diagram.BackgroundStyle;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
+import org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.LifelineNodeFigure;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.OneLineMarginBorder;
@@ -78,13 +79,13 @@ public class OperandFigure extends GradientRoundedRectangle {
             super.paintBorder(graphics);
         }
     }
-    
+
     /**
      * Create the content of the figure.
      */
     @Override
     protected void createContents() {
-        fLabelFigure = new OperandLabel(this.view);
+        fLabelFigure = new OverlayLabel(this.view);
         fLabelFigure.setText("  "); //$NON-NLS-1$
         fLabelFigure.setTextWrap(true);
         this.add(fLabelFigure);

@@ -10,6 +10,22 @@ h3. User-Visible Changes
 
 * <span class="label label-info">Modified</span> In diagrams, the display of the label of the compartments has been improved. When there is not enough space to display the label of the compartment container or the contained compartments, it is displayed on multiple lines. Refer to "Compartment section":user/diagrams/Diagrams.html#Compartments for more information.
 A consequence is that the display of existing compartments in diagrams may be changed. When refreshing the existing diagram, the project may become dirty.
+* <span class="label label-info">Modified</span> In Sirius 6.3.1, the behavior for the labels of operands, in sequence diagrams, has been changed. Since Sirius 6.3.1, they are drawn on top of the rest of the diagram elements so that they are always completely visible. Since Sirius 6.3.2, this is now the same for labels of combined fragment. Indeed, the problem was the same:
+
+  !images/combined_fragment_label_before.png!
+
+  With Sirius 6.3.2, the label is now on the top of execution:
+
+  !images/combined_fragment_label_after.png!
+
+h3. Developer-Visible Changes
+
+h4. Changes in  @org.eclipse.sirius.diagram.ui@
+
+* <span class="label label-success">Added</span>The class @org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabelsDrawerFigure@ is a "virtual" figure that should be added to the @DDiagramRootEditPart#OVERLAY_LAYER@ and which paints all the overlay labels (instance of @OverlayLabel@) on top of the rest of the diagram to make sure they are always readable. This figure is currently only used by sequence diagrams for operand labels(@org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.OperandEditPart@) and combined fragment labels (@org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart@). 
+* <span class="label label-success">Added</span> The class @org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabel@ is a special label that can be painted or not, on the OVERLAY layer, depending on the current context/layer.
+* <span class="label label-success">Added</span> A new field, @useOverlayLabel@, has been added in @org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart@. Its value can be changed with @setUseOverlayLabel(boolean)@ and accessed through @useOverlayLabel()@. This new field allows to use an @OverlayLabel@ for the figure of this edit part.
+* <span class="label label-success">Added</span> A new constructor has been added for class @org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle@ to allow the use of @OverlayLabel@ for this kind of figure (@GradientRoundedRectangle(Dimension, int, View, boolean)@).
 
 h2(#sirius6.3.1). Changes in Sirius 6.3.1
 

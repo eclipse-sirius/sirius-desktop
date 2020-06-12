@@ -43,11 +43,12 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.Execu
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceContainerCreationPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
-import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.LabelsOverlayFigure;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceZOrderingRefresher;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ContainerCreationEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabelsDrawerFigure;
+import org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabel;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.properties.PropertiesService;
@@ -67,8 +68,8 @@ import com.google.common.collect.Iterables;
  */
 public class SequenceDiagramEditPart extends DDiagramEditPart {
     /**
-     * The listener in charge with refreshing the graphical ordering and layout
-     * when the model and/or graphics positions change.
+     * The listener in charge with refreshing the graphical ordering and layout when the model and/or graphics positions
+     * change.
      */
     private final VisibilityEventHandler semanticOrderingSynchronizer;
 
@@ -92,8 +93,13 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
     };
 
     private IPropertyChangeListener snapDisabler;
-    
-    private IFigure labelsOverlayFigure;
+
+    /**
+     * A "virtual" figure added to the {@link DDiagramRootEditPart#OVERLAY_LAYER} to paint all the overlay labels
+     * (instance of {@link OverlayLabel}) on top of the rest of the diagram to make sure they are always readable. In
+     * sequence diagram overlay labels are labels of {@link OperandEditPart} and of {@link CombinedFragmentEditPart}.
+     */
+    private IFigure overlayLabelsDrawerFigure;
 
     /**
      * Constructor.
@@ -186,10 +192,8 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
             }
         }
         /*
-         * Once the diagram (and all its children) is active, refresh the
-         * various ordering. This is especially needed when creating/opening a
-         * diagram as some commands need a properly initialized graphically
-         * ordering to work.
+         * Once the diagram (and all its children) is active, refresh the various ordering. This is especially needed
+         * when creating/opening a diagram as some commands need a properly initialized graphically ordering to work.
          */
         boolean autoRefresh = PropertiesService.getInstance().getPropertiesProvider().getProperty(IPropertiesProvider.KEY_AUTO_REFRESH);
         boolean refreshOnOpen = DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening();
@@ -209,14 +213,14 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
             sequenceCanonicalSynchronizer = new SequenceCanonicalSynchronizerAdapter();
             sessionEventBroker.addLocalTrigger(SessionEventBrokerImpl.asFilter(sequenceCanonicalSynchronizerLayoutScope), sequenceCanonicalSynchronizer);
         }
-        
+
         IFigure overlayLayer = getLayer(DDiagramRootEditPart.OVERLAY_LAYER);
         if (overlayLayer != null) {
-            this.labelsOverlayFigure = new LabelsOverlayFigure(this.getFigure(), this);
-            overlayLayer.add(this.labelsOverlayFigure);
+            this.overlayLabelsDrawerFigure = new OverlayLabelsDrawerFigure(this.getFigure(), this);
+            overlayLayer.add(this.overlayLabelsDrawerFigure);
         }
     }
-    
+
     private Option<SessionEventBroker> getSessionBroker() {
         DDiagramEditor diagramEditor = (DDiagramEditor) this.getViewer().getProperty(DDiagramEditor.EDITOR_ID);
         if (diagramEditor != null) {
@@ -258,9 +262,9 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
             snapDisabler = null;
         }
         IFigure overlayLayer = getLayer(DDiagramRootEditPart.OVERLAY_LAYER);
-        if (labelsOverlayFigure != null && overlayLayer != null) {
-            overlayLayer.remove(labelsOverlayFigure);
-            labelsOverlayFigure = null;
+        if (overlayLabelsDrawerFigure != null && overlayLayer != null) {
+            overlayLayer.remove(overlayLabelsDrawerFigure);
+            overlayLabelsDrawerFigure = null;
         }
 
         getEditingDomain().removeResourceSetListener(refreshZorder);

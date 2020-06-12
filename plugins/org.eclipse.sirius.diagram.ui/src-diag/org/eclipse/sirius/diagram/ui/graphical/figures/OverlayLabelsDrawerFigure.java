@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure;
+package org.eclipse.sirius.diagram.ui.graphical.figures;
 
 import java.util.Objects;
 
@@ -26,11 +26,13 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
  * A "virtual" figure that should be added to the {@link DDiagramRootEditPart#OVERLAY_LAYER} and which paints all the
- * operand labels on top of the rest of the diagram to make sure they are always readable.
+ * overlay labels (instance of {@link OverlayLabel}) on top of the rest of the diagram to make sure they are always
+ * readable.<BR>
+ * This figure is currently only used by sequence diagrams.
  * 
  * @author pcdavid
  */
-public final class LabelsOverlayFigure extends Figure {
+public final class OverlayLabelsDrawerFigure extends Figure {
 
     private final IFigure root;
 
@@ -40,12 +42,12 @@ public final class LabelsOverlayFigure extends Figure {
      * Constructor.
      * 
      * @param root
-     *            the root figure of the diagram. 
+     *            the root figure of the diagram.
      * @param part
      *            the diagram edit part. This is needed to obtain zoom/scroll information to adjust paint coordinates
      *            correctly.
      */
-    public LabelsOverlayFigure(IFigure root, IGraphicalEditPart part) {
+    public OverlayLabelsDrawerFigure(IFigure root, IGraphicalEditPart part) {
         this.root = Objects.requireNonNull(root);
         this.part = Objects.requireNonNull(part);
     }
@@ -63,16 +65,16 @@ public final class LabelsOverlayFigure extends Figure {
     @Override
     public void paint(Graphics graphics) {
         try {
-            OperandLabel.PAINT_ENABLED.set(true);
+            OverlayLabel.PAINT_ENABLED.set(true);
             paintLabels(graphics, root);
         } finally {
-            OperandLabel.PAINT_ENABLED.set(false);
+            OverlayLabel.PAINT_ENABLED.set(false);
         }
     }
 
     private void paintLabels(Graphics graphics, IFigure figure) {
-        if (figure instanceof OperandLabel) {
-            paintOperandLabel(graphics, (OperandLabel) figure);
+        if (figure instanceof OverlayLabel) {
+            paintOverlayLabel(graphics, (OverlayLabel) figure);
         } else {
             for (Object child : figure.getChildren()) {
                 paintLabels(graphics, (IFigure) child);
@@ -80,7 +82,7 @@ public final class LabelsOverlayFigure extends Figure {
         }
     }
 
-    private void paintOperandLabel(Graphics graphics, OperandLabel label) {
+    private void paintOverlayLabel(Graphics graphics, OverlayLabel label) {
         Rectangle bounds = label.getBounds();
 
         Point delta = bounds.getTopLeft().getCopy();

@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure;
+package org.eclipse.sirius.diagram.ui.graphical.figures;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
@@ -20,11 +20,11 @@ import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 
 /**
- * A special label that can be painted or not depending on the current context/layer.
+ * A special label that can be painted or not, on the OVERLAY layer, depending on the current context/layer.
  * 
  * @author pcdavid
  */
-public final class OperandLabel extends SiriusWrapLabel {
+public final class OverlayLabel extends SiriusWrapLabel {
 
     /**
      * Flag to control whether the labels should really be painted or not.
@@ -39,7 +39,7 @@ public final class OperandLabel extends SiriusWrapLabel {
      * @param view
      *            the view.
      */
-    public OperandLabel(View view) {
+    public OverlayLabel(View view) {
         this.view = view;
     }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2018 Obeo.
+ * Copyright (c) 2015, 2020 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,8 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.BackgroundStyle;
+import org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabelsDrawerFigure;
+import org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabel;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 
 /**
@@ -52,10 +54,27 @@ public class RegionRoundedGradientRectangle extends GradientRoundedRectangle {
      *            style of the wanted gradient
      * @param view
      *            the model view of the part showing the figure.
+     * @param useOverlayLabel
+     *            true to use an {@link OverlayLabel} as label, false otherwise (see javadoc of
+     *            {@link OverlayLabelsDrawerFigure} to see how this kind of figure is managed).
+     */
+    public RegionRoundedGradientRectangle(final Dimension dimension, final BackgroundStyle backgroundStyle, View view, boolean useOverlayLabel) {
+        super(dimension, backgroundStyle.getValue(), view, true);
+        setOutline(false);
+    }
+
+    /**
+     * Create a new {@link RegionRoundedGradientRectangle}.
+     * 
+     * @param dimension
+     *            dimension of the corner (with radius, height radius)
+     * @param backgroundStyle
+     *            style of the wanted gradient
+     * @param view
+     *            the model view of the part showing the figure.
      */
     public RegionRoundedGradientRectangle(final Dimension dimension, final BackgroundStyle backgroundStyle, View view) {
-        super(dimension, backgroundStyle.getValue(), view);
-        setOutline(false);
+        this(dimension, backgroundStyle, view, false);
     }
 
     /**

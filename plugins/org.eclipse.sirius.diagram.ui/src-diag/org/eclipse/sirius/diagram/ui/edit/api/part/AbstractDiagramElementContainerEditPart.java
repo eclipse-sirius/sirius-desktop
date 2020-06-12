@@ -73,6 +73,8 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.AbstractDiagramNodeEditP
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.validators.ResizeValidator;
+import org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabelsDrawerFigure;
+import org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabel;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDiagramElementContainerNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.NonResizableAndNonDuplicableEditPolicy;
@@ -123,6 +125,12 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     private IFigure backgroundFigure;
 
     private Dimension intialDefaultSize;
+
+    /**
+     * Indicates if an {@link OverlayLabel} must be used for the figure of this edit part (see javadoc of
+     * {@link OverlayLabelsDrawerFigure} to see how this kind of figure is managed).
+     */
+    private boolean useOverlayLabel;
 
     /**
      * Creates a new Container edit part.
@@ -499,10 +507,10 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         if (shapeFigure == null) {
             if (isRegion()) {
                 shapeFigure = new RegionRoundedGradientRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this),
-                        (View) getModel());
+                        (View) getModel(), useOverlayLabel());
             } else {
                 shapeFigure = new GradientRoundedRectangle(DiagramContainerEditPartOperation.getCornerDimension(this), DiagramContainerEditPartOperation.getBackgroundStyle(this).getValue(),
-                        (View) getModel());
+                        (View) getModel(), useOverlayLabel());
             }
         }
 
@@ -920,4 +928,24 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         // Update drop shadow.
         mainFigure.setBorder(tmpFigure.getBorder());
     }
+
+    /**
+     * Return true is an overlay label must be used for the figure of this edit part, false otherwise.
+     * 
+     * @return the useOverlayLabel status
+     */
+    protected boolean useOverlayLabel() {
+        return useOverlayLabel;
+    }
+
+    /**
+     * Indicate if an overlay label must be used for the figure of this edit part.
+     * 
+     * @param useOverlayLabel
+     *            the useOverlayLabel to set
+     */
+    protected void setUseOverlayLabel(boolean useOverlayLabel) {
+        this.useOverlayLabel = useOverlayLabel;
+    }
+
 }
