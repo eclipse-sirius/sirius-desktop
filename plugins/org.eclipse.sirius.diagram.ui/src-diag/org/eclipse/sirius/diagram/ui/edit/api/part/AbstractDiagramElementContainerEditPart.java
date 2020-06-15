@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.Graphics;
@@ -95,6 +96,7 @@ import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusDefaultSizeNodeFi
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.ViewNodeContainerFigureDesc;
 import org.eclipse.sirius.viewpoint.DStylizable;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.style.LabelBorderStyleDescription;
 
 /**
@@ -140,6 +142,9 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         }
         super.handleNotificationEvent(notification);
         Set<EditPart> partToRefresh2 = AbstractDiagramNodeEditPartOperation.handleNotificationEvent(this, notification, false);
+        if (isRegion() && isChangeDiagramElementLabelNotification(notification)) {
+            partToRefresh2.addAll(getBrotherRegionParts());
+        }
         partToRefresh2.removeAll(partToRefresh1);
         for (EditPart editPart : partToRefresh2) {
             refreshEditPart(notification, editPart);
@@ -156,6 +161,22 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
                 ((AbstractDiagramContainerEditPart) regionContainer).refreshBounds();
             }
         }
+    }
+
+    private boolean isChangeDiagramElementLabelNotification(Notification notification) {
+        return notification.getNotifier() instanceof DDiagramElement && notification.getFeature().equals(ViewpointPackage.eINSTANCE.getDRepresentationElement_Name());
+    }
+
+    private List<AbstractDiagramElementContainerEditPart> getBrotherRegionParts() {
+        EditPart editPart = this;
+        //@formatter:off
+            @SuppressWarnings("unchecked")
+            List<AbstractDiagramElementContainerEditPart> regionParts = (List<AbstractDiagramElementContainerEditPart>) getParent().getChildren().stream()
+                    .filter(ed -> ed instanceof AbstractDiagramElementContainerEditPart && !ed.equals(editPart))
+                    .map(AbstractDiagramElementContainerEditPart.class::cast)
+                    .collect(Collectors.toList());
+            //@formatter:on
+        return regionParts;
     }
 
     private void refreshEditPart(final Notification notification, EditPart editPart) {

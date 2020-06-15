@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -386,6 +386,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         super.removeNotationalListeners();
         removeListenerFilter("ShowingMode"); //$NON-NLS-1$
     }
+
     /*
      * (non-Javadoc)
      * @see org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart#setVisibility(boolean)
@@ -572,18 +573,6 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                 minY = Math.min(minY, bounds.y);
             }
 
-            int labelWidth = 0;
-            IFigure parentLabelFigure = getParentLabelFigure(parent);
-            if (parentLabelFigure != null) {
-                labelWidth = parentLabelFigure.getSize().width;
-
-                // For vertical stacks, take label into account to compute the
-                // region common size.
-                if (isVertical) {
-                    maxWidth = Math.max(maxWidth, labelWidth);
-                }
-            }
-
             int y = minY;
             int x = 0;
 
@@ -607,32 +596,6 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
                 setConstraint(f, bounds);
                 f.setBounds(bounds.translate(offset));
             }
-
-            // For horizontal stacks, if label is longer than the regions
-            // cumulative width, increase the last region size.
-            int delta = labelWidth - x;
-            if (!isVertical && delta > 0 && !children.isEmpty()) {
-                IFigure last = Iterables.getLast(children);
-                bounds = regionsBounds.get(last);
-                bounds.setWidth(bounds.width + delta);
-                setConstraint(last, bounds);
-                last.setBounds(bounds.translate(offset));
-            }
-        }
-
-        private IFigure getParentLabelFigure(IFigure parent) {
-            IFigure tmp = parent;
-            ViewNodeContainerFigureDesc parentShape = null;
-            while (parentShape == null && tmp != null) {
-                if (tmp instanceof ViewNodeContainerFigureDesc) {
-                    parentShape = (ViewNodeContainerFigureDesc) tmp;
-                    tmp = null;
-                } else {
-                    tmp = tmp.getParent();
-                }
-            }
-
-            return parentShape != null ? parentShape.getLabelFigure() : null;
         }
 
         /*

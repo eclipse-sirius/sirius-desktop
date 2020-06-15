@@ -4,6 +4,13 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius6.3.2). Changes in Sirius 6.3.2
+
+h3. User-Visible Changes
+
+* <span class="label label-info">Modified</span> In diagrams, the display of the label of the compartments has been improved. When there is not enough space to display the label of the compartment container or the contained compartments, it is displayed on multiple lines. Refer to "Compartment section":user/diagrams/Diagrams.html#Compartments for more information.
+A consequence is that the display of existing compartments in diagrams may be changed. When refreshing the existing diagram, the project may become dirty.
+
 h2(#sirius6.3.1). Changes in Sirius 6.3.1
 
 h3. User-Visible Changes
@@ -20,7 +27,7 @@ h3. User-Visible Changes
 
 
   !images/operand_label_after.png!
-
+  
 * <span class="label label-danger">Removed</span> The feature concerning the capability to move labels on border of node, or border node, all around the node, added in 6.3.0, has been reverted. There are unexpected side effects (wrong location after a rename of a label for example).
 
 h3. Developer-Visible Changes

@@ -401,7 +401,10 @@
 		</ul>
 		<h4 id="Compartments">Compartments</h4>
 		<p>The resize of compartments might evolve in future versions. The current behavior is to redistribute space between adjacent compartments and to resize the first/last compartment when the compartmented container is resized from top/bottom for a vertical stack and left/right for an horizontal one.</p>
-		<p>When resizing a compartmented container or a compartment from the top or from the left, the F3 shortcut configures the same behaviors than on standard containers (see previous section). </p>
+		<p>Contrary to containers with other layout (List or Free Form), the size of the compartment container is always computed from the size of the contained compartments. If the label becomes too large to be displayed in the current compartment&#8217;s width, it is wrapped in multiple lines to keep the compartment&#8217;s width the same.
+			<br/>There is an exception when the compartment container contains no compartment. In this case, the compartment label is fully displayed and the container resized accordingly.
+		</p>
+		<p>When resizing a compartmented container or a compartment from the top or from the left, the F3 shortcut configures the same behaviors than on standard containers (see previous section).</p>
 		<p>On 
 			<em>experimental</em> structures of containers with compartmented compartments, the F3 shortcut also allows to disable the resize propagation to manually correct the computed layout and remove empty space (
 			<em>experimental</em>). This might occur when there are several levels of compartments without the same number of compartments on each level. The corrective resize can be done on the last compartments of each compartmented container (from bottom for vertical stacks and from right for horizontal stacks).
