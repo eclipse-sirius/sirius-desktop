@@ -40,7 +40,7 @@
   </item>
   <item title="Deploy your viewpoints" dialog="true" skip="false">
     <description>
-      When development is finished, you can build and deploy your Viewpoint Specification Project like any other Eclipse plug-in. Juste make sure the project's dependencies include everything you need, in particular the domain model plug-ins and the Sirius plug-ins which provide support for the query language(s) you used in your VSM.
+      When development is finished, you can build and deploy your Viewpoint Specification Project like any other Eclipse plug-in. Just make sure the project's dependencies include everything you need, in particular the domain model plug-ins and the Sirius plug-ins which provide support for the query language(s) you used in your VSM.
     </description>
   </item>
 </cheatsheet>
