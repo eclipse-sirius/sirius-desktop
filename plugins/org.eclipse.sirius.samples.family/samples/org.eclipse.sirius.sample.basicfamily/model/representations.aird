@@ -3,7 +3,7 @@
   <viewpoint:DAnalysis xmi:id="_rPOocCtaEee-i9KwE41x8Q" selectedViews="_ttqZwCtaEee-i9KwE41x8Q" version="12.1.0.201708031200">
     <semanticResources>basicfamily.ecore</semanticResources>
     <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
-    <semanticResources>model/basicfamily.genmodel</semanticResources>
+    <semanticResources>basicfamily.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_ttqZwCtaEee-i9KwE41x8Q">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_v8PKICtaEee-i9KwE41x8Q" name="basicfamily class diagram" repPath="#_UKJ-EI4lEeeQGrTIslcCsg">
