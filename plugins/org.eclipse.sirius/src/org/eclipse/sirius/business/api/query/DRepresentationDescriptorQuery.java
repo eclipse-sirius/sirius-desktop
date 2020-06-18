@@ -12,11 +12,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.query;
 
+import java.text.MessageFormat;
+
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link DRepresentationDescriptor} as a starting point.
@@ -66,9 +70,18 @@ public class DRepresentationDescriptorQuery {
             Resource eResource = repDescriptor.eResource();
             if (eResource != null) {
                 ResourceSet resourceSet = eResource.getResourceSet();
-                isRepresentationReachable = resourceSet.getURIConverter().exists(repDescriptor.getRepPath().getResourceURI(), null);
-                // At this step, exists method may return true even if the repPath URI fragment corresponds to no
-                // representation in the case the representation is not be loaded yet
+                try {
+                    isRepresentationReachable = resourceSet.getURIConverter().exists(repDescriptor.getRepPath().getResourceURI(), null);
+                    // At this step, exists method may return true even if the repPath URI fragment corresponds to no
+                    // representation in the case the representation is not be loaded yet
+                    // CHECKSTYLE:OFF
+                } catch (RuntimeException e) {
+                    // CHECKSTYLE:ON
+                    // we may encounter a CDOException if it fails retrieving a CDORevision for example
+                    // in this case the representation must be considered as non reachable
+                    SiriusPlugin.getDefault()
+                            .warning(MessageFormat.format(Messages.DRepresentationDescriptorQuery_representationError, repDescriptor.getName(), repDescriptor.getRepPath(), repDescriptor.getUid()), e);
+                }
             }
         }
         return isRepresentationReachable;
