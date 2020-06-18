@@ -58,5 +58,6 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="org.eclipse.sirius.sample.basicfamily.starter.design.Services"/>
   </ownedViewpoints>
 </description:Group>
