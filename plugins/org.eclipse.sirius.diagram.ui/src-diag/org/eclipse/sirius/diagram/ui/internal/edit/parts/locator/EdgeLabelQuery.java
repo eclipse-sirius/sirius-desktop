@@ -38,8 +38,7 @@ import org.eclipse.sirius.ext.base.Options;
 import com.google.common.base.Preconditions;
 
 /**
- * Utility class used to compute the position of a label according to its edge
- * move (old points and new points list).
+ * Utility class used to compute the position of a label according to its edge move (old points and new points list).
  *
  * @author <a href="mailto:laurent.fasani@obeo.fr">Laurent Fasani</a>
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
@@ -70,9 +69,7 @@ public class EdgeLabelQuery {
     private Point oldLabelOffset;
 
     /**
-     * The keyPoint of the label (
-     * {@link org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getKeyPoint()}
-     * ).
+     * The keyPoint of the label ( {@link org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getKeyPoint()} ).
      */
     private Integer keyPoint;
 
@@ -81,8 +78,8 @@ public class EdgeLabelQuery {
     private List<LineSeg> newEdgeSegments;
 
     /**
-     * True if the parent's label is a bracketEdge (specific locator for center
-     * label and possibility to rotate the middle segment), false otherwise.
+     * True if the parent's label is a bracketEdge (specific locator for center label and possibility to rotate the
+     * middle segment), false otherwise.
      */
     private boolean isOnBracketEdge;
 
@@ -90,13 +87,11 @@ public class EdgeLabelQuery {
     private Dimension labelSize;
 
     /**
-     * Return the default snap back position according to the keyPoint of the
-     * label.
+     * Return the default snap back position according to the keyPoint of the label.
      *
      * @param keyPoint
      *            The keyPoint of the label (
-     *            {@link org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getKeyPoint()}
-     *            ).
+     *            {@link org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getKeyPoint()} ).
      * @return the default snap back position according to the keyPoint.
      */
     public static Point getSnapBackPosition(Integer keyPoint) {
@@ -113,24 +108,19 @@ public class EdgeLabelQuery {
     }
 
     /**
-     * Calculates the label offset from the reference point given the label
-     * center and a points list.<BR>
+     * Calculates the label offset from the reference point given the label center and a points list.<BR>
      * This is another implementation of
      * {@link org.eclipse.gmf.runtime.diagram.ui.internal.figures.LabelHelper#offsetFromRelativeCoordinate(org.eclipse.draw2d.IFigure, org.eclipse.draw2d.geometry.Rectangle, Point)}
      *
      * @param labelCenter
-     *            the label center for the <code>IFigure</code> to calculate the
-     *            offset for
+     *            the label center for the <code>IFigure</code> to calculate the offset for
      * @param points
-     *            the <code>PointList</code> of the edge that contains the
-     *            label. The label offset is relative to this
+     *            the <code>PointList</code> of the edge that contains the label. The label offset is relative to this
      *            <code>PointList</code>.
      * @param ref
-     *            the <code>Point</code> that is the reference point that the
-     *            offset is based on.
-     * @return a <code>Point</code> which represents a value offset from the
-     *         <code>ref</code> point oriented based on the nearest line
-     *         segment.
+     *            the <code>Point</code> that is the reference point that the offset is based on.
+     * @return a <code>Point</code> which represents a value offset from the <code>ref</code> point oriented based on
+     *         the nearest line segment.
      */
     public static Point offsetFromRelativeCoordinate(Point labelCenter, PointList points, Point ref) {
         Vector fromAnchorToLabelCenterPointVector = new Vector(labelCenter.x - ref.x, labelCenter.y - ref.y);
@@ -143,27 +133,23 @@ public class EdgeLabelQuery {
     }
 
     /**
-     * Calculates the relative coordinate that is equivalent to the offset from
-     * the reference point, that can be used to set the label center location.
-     * <BR>
+     * Calculates the relative coordinate that is equivalent to the offset from the reference point, that can be used to
+     * set the label center location. <BR>
      *
      * This is another implementation of
      * {@link org.eclipse.gmf.runtime.diagram.ui.internal.figures.LabelHelper#relativeCoordinateFromOffset(org.eclipse.draw2d.IFigure, Point, Point)}
      * . See bugzilla 476305 for more detail.
      *
      * @param points
-     *            the <code>PointList</code> of the edge that contains the
-     *            label. The label offset is relative to this
+     *            the <code>PointList</code> of the edge that contains the label. The label offset is relative to this
      *            <code>PointList</code>.
      * @param ref
-     *            a <code>Point</code> located on the parent which the offset
-     *            value is relative to.
+     *            a <code>Point</code> located on the parent which the offset value is relative to.
      * @param offset
-     *            a <code>Point</code> which represents a value offset from the
-     *            <code>ref</code> point oriented based on the nearest line
-     *            segment.
-     * @return a <code>Point</code> that is the relative coordinate of the label
-     *         that can be used to set it's center location.
+     *            a <code>Point</code> which represents a value offset from the <code>ref</code> point oriented based on
+     *            the nearest line segment.
+     * @return a <code>Point</code> that is the relative coordinate of the label that can be used to set it's center
+     *         location.
      */
     public static Point relativeCenterCoordinateFromOffset(PointList points, Point ref, Point offset) {
         Vector fromAnchorToLabelCenterPointVector = new Vector(offset.x, offset.y);
@@ -183,20 +169,18 @@ public class EdgeLabelQuery {
      * @param newBendPointList
      *            Bendpoint list after the edge modification
      * @param isEdgeWithObliqueRoutingStyle
-     *            status of the edge from which to get the previous position of
-     *            the bendpoints and from which to get the three labels
+     *            status of the edge from which to get the previous position of the bendpoints and from which to get the
+     *            three labels
      * @param oldLabelOffset
      *            The old offset.
      * @param labelSize
      *            The size of the label
      * @param keyPoint
      *            The keyPoint of the label (
-     *            {@link org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getKeyPoint()}
-     *            )
+     *            {@link org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getKeyPoint()} )
      * @param isOnBracketEdge
-     *            True if the parent's label is a bracketEdge (specific locator
-     *            for center label and possibility to rotate the middle
-     *            segment), false otherwise.
+     *            True if the parent's label is a bracketEdge (specific locator for center label and possibility to
+     *            rotate the middle segment), false otherwise.
      */
     // @SuppressWarnings("unchecked")
     public EdgeLabelQuery(PointList oldBendPointList, PointList newBendPointList, boolean isEdgeWithObliqueRoutingStyle, Point oldLabelOffset, Dimension labelSize, Integer keyPoint,
@@ -204,7 +188,7 @@ public class EdgeLabelQuery {
         this.isEdgeWithObliqueRoutingStyle = isEdgeWithObliqueRoutingStyle;
 
         this.oldBendPointList = oldBendPointList;
-        Preconditions.checkState(newBendPointList.size() > 0);
+        Preconditions.checkState(newBendPointList.size() > 1);
         this.newBendPointList = newBendPointList;
         this.oldLabelOffset = oldLabelOffset;
         this.labelSize = labelSize;
@@ -217,16 +201,14 @@ public class EdgeLabelQuery {
     }
 
     /**
-     * Calculate the new GMF label offset: the label offset defines the position
-     * of the label compared to labelAnchor point. <br>
+     * Calculate the new GMF label offset: the label offset defines the position of the label compared to labelAnchor
+     * point. <br>
      * The new Label offset is computed taking into account:<br>
      * <ul>
      * <li>the label anchor point move (start, center or end)</li>
-     * <li>the orientation of the segment owning the label anchor. Indeed, the
-     * label offset is displayed by draw2D relatively to the direction of the
-     * edge segment including the anchor of the label</li>
-     * <li>the expected move of the label according to the functional
-     * specification</li>
+     * <li>the orientation of the segment owning the label anchor. Indeed, the label offset is displayed by draw2D
+     * relatively to the direction of the edge segment including the anchor of the label</li>
+     * <li>the expected move of the label according to the functional specification</li>
      * </ul>
      * .
      *
@@ -256,8 +238,7 @@ public class EdgeLabelQuery {
     }
 
     /**
-     * Check if all segments of new and old points are valid (no segment with
-     * same origin and terminus).
+     * Check if all segments of new and old points are valid (no segment with same origin and terminus).
      *
      * @return true if segments are valid, false otherwise.
      */
@@ -305,16 +286,14 @@ public class EdgeLabelQuery {
     }
 
     /**
-     * Calculate the new center location of the label according to functional
-     * specification.
+     * Calculate the new center location of the label according to functional specification.
      *
      * @param oldCenterLabel
      *            The old center location of the label.
      * @param newDefaultLocation
      *            The standard label location according to the label keyPoint (
-     *            {@link org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getKeyPoint()}
-     *            and the default snap back position (
-     *            {@link LabelEditPart#getSnapBackPosition(String)}.
+     *            {@link org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getKeyPoint()} and the default snap
+     *            back position ( {@link LabelEditPart#getSnapBackPosition(String)}.
      * @return
      */
     private Point calculateNewCenterLocation(Point oldCenterLabel, Point newDefaultLocation) {
@@ -414,16 +393,13 @@ public class EdgeLabelQuery {
     }
 
     /**
-     * Check if we are in case of a rectilinear segment move: there is a new
-     * segment at the same index as old nearest segment and with the same axis.
-     * Return the corresponding vector from old to new center in this case, null
+     * Check if we are in case of a rectilinear segment move: there is a new segment at the same index as old nearest
+     * segment and with the same axis. Return the corresponding vector from old to new center in this case, null
      * otherwise.
      *
      * @param oldNearestSeg
-     *            The segment that is the nearest from the center of the label
-     *            in the old points list.
-     * @return the corresponding vector from old to new center in case of
-     *         rectilinear segment move, null otherwise.
+     *            The segment that is the nearest from the center of the label in the old points list.
+     * @return the corresponding vector from old to new center in case of rectilinear segment move, null otherwise.
      */
     private Vector getVectorForSegmentMoveCase(LineSeg oldNearestSeg, Point oldNearestPoint, Point oldCenterLabel) {
         Vector fromOldToNewCenterVector = null;
@@ -444,16 +420,13 @@ public class EdgeLabelQuery {
     }
 
     /**
-     * Check if we are in case of a orientation segment change: there is a new
-     * segment at the same index as old nearest segment and with apposite axis.
-     * Return the corresponding vector from old to new center in this case, null
+     * Check if we are in case of a orientation segment change: there is a new segment at the same index as old nearest
+     * segment and with apposite axis. Return the corresponding vector from old to new center in this case, null
      * otherwise.
      *
      * @param oldNearestSeg
-     *            The segment that is the nearest from the center of the label
-     *            in the old points list.
-     * @return the corresponding vector from old to new center in case of
-     *         orientation segment change, null otherwise.
+     *            The segment that is the nearest from the center of the label in the old points list.
+     * @return the corresponding vector from old to new center in case of orientation segment change, null otherwise.
      */
     private Vector getVectorForBracketEdgeOrientationChangeCase(LineSeg oldNearestSeg, Point oldNearestPoint, Point oldCenterLabel) {
         Vector fromOldToNewCenterVector = null;
@@ -514,15 +487,14 @@ public class EdgeLabelQuery {
     }
 
     /**
-     * Check if the <code>segment</code> is on the same line as the
-     * <code>referenceSegment</code> and if it is in the same direction or not.
+     * Check if the <code>segment</code> is on the same line as the <code>referenceSegment</code> and if it is in the
+     * same direction or not.
      *
      * @param referenceSegment
      *            The reference segment.
      * @param segment
      *            The segment to test
-     * @return one of these statuses {@link #NOT_ON_SAME_LINE},
-     *         {@link #ON_SAME_LINE_SAME_DIRECTION} or
+     * @return one of these statuses {@link #NOT_ON_SAME_LINE}, {@link #ON_SAME_LINE_SAME_DIRECTION} or
      *         {@link #ON_SAME_LINE_OPPOSITE_DIRECTION}.
      */
     private int getSameLineStatus(LineSeg referenceSegment, LineSeg segment) {
@@ -759,18 +731,15 @@ public class EdgeLabelQuery {
 
     /**
      * Get the standard center location according to the label keyPoint (
-     * {@link org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getKeyPoint()}
-     * ) and the default snap back position (
-     * {@link LabelEditPart#getSnapBackPosition(String)}
+     * {@link org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getKeyPoint()} ) and the default snap back
+     * position ( {@link LabelEditPart#getSnapBackPosition(String)}
      *
      * @param pointsList
      *            The points of the edge of the label.
      * @param keyPoint
      *            The keyPoint of the label (
-     *            {@link org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getKeyPoint()}
-     *            ).
-     * @return The center of the label {@link Bounds} if this label is located
-     *         by default.
+     *            {@link org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart#getKeyPoint()} ).
+     * @return The center of the label {@link Bounds} if this label is located by default.
      */
     private Point getStandardLabelCenterLocation(PointList pointsList, Integer keyPoint) {
         int percentage = getLocation(keyPoint);
@@ -781,8 +750,7 @@ public class EdgeLabelQuery {
     }
 
     /**
-     * Get the location among {@link LabelViewConstants} constants where to
-     * relocate the label figure.
+     * Get the location among {@link LabelViewConstants} constants where to relocate the label figure.
      *
      * @return the location among {@link LabelViewConstants} constants
      */

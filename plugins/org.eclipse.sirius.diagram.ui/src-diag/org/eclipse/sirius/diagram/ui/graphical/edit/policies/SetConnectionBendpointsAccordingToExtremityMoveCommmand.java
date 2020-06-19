@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014-2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2014-2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -312,48 +312,11 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
      *            old end anchor point
      */
     private static void removePointsInViews(PointList newLine, PrecisionRectangle source, Point start, PrecisionRectangle target, Point end) {
-        Point lastRemovedFromSource = null;
-        Point lastRemovedFromTarget = null;
+        PointList initialLine = newLine.getCopy();
 
-        /*
-         * Starting from the first point of polyline remove points that are contained within the source shape until the
-         * first point outside is found. Remember the point that was removed from the source shape last for a possible
-         * case of all points removed from polyline.
-         */
-        PointList sourcePointList = PointListUtilities.createPointsFromRect(source);
-        if (newLine.size() != 0) {
-            int nbIncludedPoints = 0;
-            for (int i = 0; i < newLine.size() && sourcePointList.polygonContainsPoint(newLine.getPoint(i).x, newLine.getPoint(i).y); i++) {
-                nbIncludedPoints++;
-            }
-            // Do nothing if there is only one point inside and no other
-            // intersection. This is the first point that is on the border.
-            if (nbIncludedPoints > 1 || (nbIncludedPoints == 1 && newLine.size() > 1 && isAnotherIntersection(newLine.getFirstPoint(), newLine.getPoint(1), sourcePointList))) {
-                for (int i = 0; i < nbIncludedPoints; i++) {
-                    lastRemovedFromSource = newLine.removePoint(0);
-                }
-            }
-        }
+        Point lastRemovedFromSource = removePointsWithinSourceShape(newLine, source);
 
-        /*
-         * Starting from the end point of polyline remove points that are contained within the target shape until the
-         * first point outside is found. Remember the point that was removed from the target shape last for a possible
-         * case of all points removed from polyline.
-         */
-        PointList targetPointList = PointListUtilities.createPointsFromRect(target);
-        if (newLine.size() != 0) {
-            int nbIncludedPoints = 0;
-            for (int i = newLine.size() - 1; i >= 0 && targetPointList.polygonContainsPoint(newLine.getPoint(i).x, newLine.getPoint(i).y); i--) {
-                nbIncludedPoints++;
-            }
-            // Do nothing if there is only one point inside and no other
-            // intersection. This is the last point that is on the border.
-            if (nbIncludedPoints > 1 || (nbIncludedPoints == 1 && newLine.size() > 1 && isAnotherIntersection(newLine.getLastPoint(), newLine.getPoint(newLine.size() - 2), targetPointList))) {
-                for (int i = 0; i < nbIncludedPoints; i++) {
-                    lastRemovedFromTarget = newLine.removePoint(newLine.size() - 1);
-                }
-            }
-        }
+        Point lastRemovedFromTarget = removePointsWithinTargetShape(newLine, target);
 
         /*
          * Handle the special case of all points removed from polyline.
@@ -361,31 +324,40 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
         Dimension tolerance = new Dimension(1, 0);
         int toleranceValue = tolerance.width;
         if (newLine.size() == 0) {
+            boolean allPointsWithinAShape = false;
             if (lastRemovedFromSource == null) {
                 lastRemovedFromSource = start;
+                allPointsWithinAShape = true;
             }
             if (lastRemovedFromTarget == null) {
                 lastRemovedFromTarget = end;
+                allPointsWithinAShape = true;
             }
-            /*
-             * If last point removed from source and the points removed from target form a vertical or horizontal line
-             * we'll find a point located on this line and is outside of source and target shape and insert it in the
-             * polyline. The check for vertical and horizontal segment is using tolerance value, because bend point
-             * location extracted from RelativeBendpoint can have precision errors due to non-integer weight factors.
-             */
-            if (Math.abs(lastRemovedFromSource.x - lastRemovedFromTarget.x) < toleranceValue) {
-                // Vertical
-                if (source.preciseY() < target.preciseY()) {
-                    newLine.addPoint(lastRemovedFromSource.x, (source.getBottom().y + target.getTop().y) / 2);
-                } else {
-                    newLine.addPoint(lastRemovedFromSource.x, (source.getTop().y + target.getBottom().y) / 2);
-                }
-            } else if (Math.abs(lastRemovedFromSource.y - lastRemovedFromTarget.y) < toleranceValue) {
-                // Horizontal
-                if (source.preciseX() < target.preciseX()) {
-                    newLine.addPoint((source.getRight().x + target.getLeft().x) / 2, lastRemovedFromSource.y);
-                } else {
-                    newLine.addPoint((source.getLeft().x + target.getRight().x) / 2, lastRemovedFromSource.y);
+
+            if (allPointsWithinAShape) {
+                handleAllPointsWithinAShape(newLine, start, target, initialLine, toleranceValue);
+            } else {
+                /*
+                 * If last point removed from source and the points removed from target form a vertical or horizontal
+                 * line we'll find a point located on this line and is outside of source and target shape and insert it
+                 * in the polyline. The check for vertical and horizontal segment is using tolerance value, because bend
+                 * point location extracted from RelativeBendpoint can have precision errors due to non-integer weight
+                 * factors.
+                 */
+                if (Math.abs(lastRemovedFromSource.x - lastRemovedFromTarget.x) < toleranceValue) {
+                    // Vertical
+                    if (source.preciseY() < target.preciseY()) {
+                        newLine.addPoint(lastRemovedFromSource.x, (source.getBottom().y + target.getTop().y) / 2);
+                    } else {
+                        newLine.addPoint(lastRemovedFromSource.x, (source.getTop().y + target.getBottom().y) / 2);
+                    }
+                } else if (Math.abs(lastRemovedFromSource.y - lastRemovedFromTarget.y) < toleranceValue) {
+                    // Horizontal
+                    if (source.preciseX() < target.preciseX()) {
+                        newLine.addPoint((source.getRight().x + target.getLeft().x) / 2, lastRemovedFromSource.y);
+                    } else {
+                        newLine.addPoint((source.getLeft().x + target.getRight().x) / 2, lastRemovedFromSource.y);
+                    }
                 }
             }
         } else {
@@ -402,6 +374,77 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
                 if (optionalIntersection.isPresent()) {
                     newLine.addPoint(optionalIntersection.get());
                 }
+            }
+        }
+    }
+
+    /*
+     * Starting from the end point of polyline remove points that are contained within the target shape until the first
+     * point outside is found. Remember the point that was removed from the target shape last for a possible case of all
+     * points removed from polyline.
+     */
+    private static Point removePointsWithinTargetShape(PointList newLine, PrecisionRectangle target) {
+        Point lastRemovedFromTarget = null;
+        PointList targetPointList = PointListUtilities.createPointsFromRect(target);
+        if (newLine.size() != 0) {
+            int nbIncludedPoints = 0;
+            for (int i = newLine.size() - 1; i >= 0 && targetPointList.polygonContainsPoint(newLine.getPoint(i).x, newLine.getPoint(i).y); i--) {
+                nbIncludedPoints++;
+            }
+            // Do nothing if there is only one point inside and no other
+            // intersection. This is the last point that is on the border.
+            if (nbIncludedPoints > 1 || (nbIncludedPoints == 1 && newLine.size() > 1 && isAnotherIntersection(newLine.getLastPoint(), newLine.getPoint(newLine.size() - 2), targetPointList))) {
+                for (int i = 0; i < nbIncludedPoints; i++) {
+                    lastRemovedFromTarget = newLine.removePoint(newLine.size() - 1);
+                }
+            }
+        }
+        return lastRemovedFromTarget;
+    }
+
+    /*
+     * Starting from the first point of polyline remove points that are contained within the source shape until the
+     * first point outside is found. Remember the point that was removed from the source shape last for a possible case
+     * of all points removed from polyline.
+     */
+    private static Point removePointsWithinSourceShape(PointList newLine, PrecisionRectangle source) {
+        Point lastRemovedFromSource = null;
+        PointList sourcePointList = PointListUtilities.createPointsFromRect(source);
+        if (newLine.size() != 0) {
+            int nbIncludedPoints = 0;
+            for (int i = 0; i < newLine.size() && sourcePointList.polygonContainsPoint(newLine.getPoint(i).x, newLine.getPoint(i).y); i++) {
+                nbIncludedPoints++;
+            }
+            // Do nothing if there is only one point inside and no other
+            // intersection. This is the first point that is on the border.
+            if (nbIncludedPoints > 1 || (nbIncludedPoints == 1 && newLine.size() > 1 && isAnotherIntersection(newLine.getFirstPoint(), newLine.getPoint(1), sourcePointList))) {
+                for (int i = 0; i < nbIncludedPoints; i++) {
+                    lastRemovedFromSource = newLine.removePoint(0);
+                }
+            }
+        }
+        return lastRemovedFromSource;
+    }
+
+    /**
+     * Create a line starting from the start point to the nearest point belonging to the target shape border along with
+     * the first segment direction.
+     */
+    private static void handleAllPointsWithinAShape(PointList newLine, Point start, PrecisionRectangle target, PointList initialLine, int toleranceValue) {
+        newLine.addPoint(start);
+        if (Math.abs(initialLine.getFirstPoint().x - initialLine.getPoint(1).x) < toleranceValue) {
+            // Vertical
+            if (Math.abs(start.y - target.getTop().y) < Math.abs(start.y - target.getBottom().y)) {
+                newLine.addPoint(start.x, target.getTop().y);
+            } else {
+                newLine.addPoint(start.x, target.getBottom().y);
+            }
+        } else {
+            // Horizontal
+            if (Math.abs(start.x - target.getLeft().x) < Math.abs(start.x - target.getRight().x)) {
+                newLine.addPoint(target.getLeft().x, start.y);
+            } else {
+                newLine.addPoint(target.getRight().x, start.y);
             }
         }
     }
