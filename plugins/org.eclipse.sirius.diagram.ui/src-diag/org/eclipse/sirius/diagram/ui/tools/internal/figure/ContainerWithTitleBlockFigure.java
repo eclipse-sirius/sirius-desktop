@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,8 +33,7 @@ import org.eclipse.swt.graphics.Color;
 import com.google.common.collect.Iterables;
 
 /**
- * A figure that draw a line around the container label to represent a title
- * block.
+ * A figure that draw a line around the container label to represent a title block.
  * 
  * @author smonnier
  */
@@ -176,45 +175,54 @@ public class ContainerWithTitleBlockFigure extends SiriusDefaultSizeNodeFigure {
     }
 
     /**
-     * Investigate the border color of the DDiagramElement to use it as the
-     * color of the title block.
+     * Investigate the border color of the DDiagramElement to use it as the color of the title block.
      * 
      * @return the defined color of the title block
      */
     private Color geBorderColor() {
-        if (viewNode.getStyle() instanceof BorderedStyle) {
-            RGBValues borderColor = ((BorderedStyle) viewNode.getStyle()).getBorderColor();
-            if (borderColor != null) {
-                return new Color(null, borderColor.getRed(), borderColor.getGreen(), borderColor.getBlue());
+        try {
+            if (viewNode.getStyle() instanceof BorderedStyle) {
+                RGBValues borderColor = ((BorderedStyle) viewNode.getStyle()).getBorderColor();
+                if (borderColor != null) {
+                    return new Color(null, borderColor.getRed(), borderColor.getGreen(), borderColor.getBlue());
+                }
             }
+        } catch (IllegalStateException e) {
+            // We do not log this exception that might be caused by an unreachable distant resource.
         }
         return ColorConstants.black;
     }
 
     /**
-     * Investigate the border size of the DDiagramElement to use it as the width
-     * of the title block.
+     * Investigate the border size of the DDiagramElement to use it as the width of the title block.
      * 
      * @return the defined width of the title block
      */
     public int getBorderWidth() {
-        if (viewNode.getStyle() instanceof BorderedStyle) {
-            // The title block width must value at least 1
-            return Math.max(((BorderedStyle) viewNode.getStyle()).getBorderSize(), 1);
+        try {
+            if (viewNode.getStyle() instanceof BorderedStyle) {
+                // The title block width must value at least 1
+                return Math.max(((BorderedStyle) viewNode.getStyle()).getBorderSize(), 1);
+            }
+        } catch (IllegalStateException e) {
+            // We do not log this exception that might be caused by an unreachable distant resource.
         }
         return 1;
     }
 
     /**
-     * Investigate the label alignment of the DDiagramElement to use it as the
-     * alignment of the title block.
+     * Investigate the label alignment of the DDiagramElement to use it as the alignment of the title block.
      * 
      * @return the defined label alignment of the title block
      */
     private LabelAlignment getLabelAlignment() {
         LabelAlignment alignment = (LabelAlignment) ViewpointPackage.eINSTANCE.getLabelStyle_LabelAlignment().getDefaultValue();
-        if (viewNode.getStyle() instanceof LabelStyle) {
-            alignment = ((LabelStyle) viewNode.getStyle()).getLabelAlignment();
+        try {
+            if (viewNode.getStyle() instanceof LabelStyle) {
+                alignment = ((LabelStyle) viewNode.getStyle()).getLabelAlignment();
+            }
+        } catch (IllegalStateException e) {
+            // We do not log this exception that might be caused by an unreachable distant resource.
         }
         return alignment;
     }

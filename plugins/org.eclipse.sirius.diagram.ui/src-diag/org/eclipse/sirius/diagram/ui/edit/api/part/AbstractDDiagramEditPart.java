@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -116,8 +116,12 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
 
     @Override
     public final Option<DDiagram> resolveDDiagram() {
-        final EObject resolveSemanticElement = resolveSemanticElement();
-
+        EObject resolveSemanticElement = null;
+        try {
+            resolveSemanticElement = resolveSemanticElement();
+        } catch (IllegalStateException e) {
+            // Nothing to log here, this can happen if the resource is not accessible anymore (distant resource).
+        }
         if (resolveSemanticElement instanceof DDiagram) {
             return Options.newSome((DDiagram) resolveSemanticElement);
         }
@@ -355,7 +359,7 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
                 if (mappingManager != null) {
                     LayerHelper.setActiveParentLayersCacheEnabled(mappingManager, true);
                 }
-               
+
                 DDiagramQuery dDiagramQuery = new DDiagramQuery(dDiagram);
                 for (final DDiagramElement diagramElement : dDiagram.getDiagramElements()) {
                     if (dDiagramQuery.isHidden(session, diagramElement)) {

@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -30,6 +29,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.NoteEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusNoteEditPart;
+import org.eclipse.sirius.ext.base.Option;
 
 /**
  * A class aggregating all the queries (read-only!) having an {@link IGraphicalEditPart} as a starting point.
@@ -80,9 +80,9 @@ public final class EditPartQuery {
             effectiveDiagramEditPart = (IDDiagramEditPart) editPart;
         }
         if (effectiveDiagramEditPart != null) {
-            EObject resolvedSemanticElement = effectiveDiagramEditPart.resolveSemanticElement();
-            if (resolvedSemanticElement instanceof DDiagram) {
-                return Optional.of((DDiagram) resolvedSemanticElement);
+            Option<DDiagram> ddiagram = effectiveDiagramEditPart.resolveDDiagram();
+            if (ddiagram.some()) {
+                return Optional.of(ddiagram.get());
             }
         }
         return Optional.empty();
