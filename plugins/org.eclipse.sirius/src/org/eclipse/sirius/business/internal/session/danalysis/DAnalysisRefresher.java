@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
+import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -136,7 +137,7 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl {
     }
 
     private void registerNewReferencedResource(Multimap<DAnalysis, ResourceDescriptor> referencedSemanticModels, DAnalysis analysis, Resource semanticResource) {
-        if (semanticResource != null) {
+        if (semanticResource != null && !new ResourceQuery(semanticResource).isAirdOrSrmResource()) {
             referencedSemanticModels.put(analysis, new ResourceDescriptor(semanticResource.getURI()));
         }
     }
