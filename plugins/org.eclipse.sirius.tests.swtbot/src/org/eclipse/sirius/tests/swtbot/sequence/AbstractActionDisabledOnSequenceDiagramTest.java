@@ -129,6 +129,7 @@ public abstract class AbstractActionDisabledOnSequenceDiagramTest extends Abstra
         editor.setFocus();
         editor.mainEditPart().select();
         editor.mainEditPart().click();
+        SWTBotUtils.waitAllUiEvents();
 
         Collection<List<String>> pathsToTest = getElementPathsToCheckNoEffectInWizard();
         assertFalse("There should be some path to test.", pathsToTest.isEmpty());
