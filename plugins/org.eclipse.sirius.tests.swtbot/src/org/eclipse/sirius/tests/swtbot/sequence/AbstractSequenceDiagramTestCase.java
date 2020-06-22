@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -57,7 +57,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.StateEditP
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.EditPartsHelper;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
-import org.eclipse.sirius.diagram.ui.business.internal.dialect.DiagramDialectUIServices;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.ext.base.Option;
@@ -71,7 +70,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckToolIsActivate
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
-import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
@@ -370,7 +368,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
             localSession = designerPerspective.openSessionFromFile(sessionAirdResource, true);
             Option<String> dRepresentationName = getDRepresentationName();
             if (dRepresentationName.some()) {
-                editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), getRepresentationId(), dRepresentationName.get(), DDiagram.class);
+                editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), getRepresentationId(), dRepresentationName.get(), DDiagram.class, true, true);
             }
         }
 
