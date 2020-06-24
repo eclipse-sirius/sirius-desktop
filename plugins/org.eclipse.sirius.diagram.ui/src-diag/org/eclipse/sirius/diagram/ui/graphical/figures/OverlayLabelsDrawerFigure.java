@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.graphical.figures;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import org.eclipse.draw2d.Figure;
@@ -76,7 +78,8 @@ public final class OverlayLabelsDrawerFigure extends Figure {
         if (figure instanceof OverlayLabel) {
             paintOverlayLabel(graphics, (OverlayLabel) figure);
         } else {
-            for (Object child : figure.getChildren()) {
+            List<Object> children = new ArrayList<Object>(figure.getChildren());
+            for (Object child : children) {
                 paintLabels(graphics, (IFigure) child);
             }
         }
