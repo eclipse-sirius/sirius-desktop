@@ -2,6 +2,12 @@ h1. Translation Keys Changes
 
 This document lists the changes in @TranslatableMessage@ used for Sirius internationalization in each Sirius version.
 
+h2(#sirius632). Translation Keys Changes in Sirius 6.3.2 (from Sirius 6.3.1)
+
+h3. Message Keys Added
+
+* @org.eclipse.sirius.viewpoint.Messages.DRepresentationDescriptorQuery_representationError@
+
 h2(#sirius631). Translation Keys Changes in Sirius 6.3.1 (from Sirius 6.3.0)
 
 h3. Message Keys Added
