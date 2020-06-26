@@ -20,8 +20,8 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.BackgroundStyle;
-import org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabelsDrawerFigure;
 import org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabel;
+import org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabelsDrawerFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 
 /**
@@ -59,7 +59,7 @@ public class RegionRoundedGradientRectangle extends GradientRoundedRectangle {
      *            {@link OverlayLabelsDrawerFigure} to see how this kind of figure is managed).
      */
     public RegionRoundedGradientRectangle(final Dimension dimension, final BackgroundStyle backgroundStyle, View view, boolean useOverlayLabel) {
-        super(dimension, backgroundStyle.getValue(), view, true);
+        super(dimension, backgroundStyle.getValue(), view, useOverlayLabel);
         setOutline(false);
     }
 
