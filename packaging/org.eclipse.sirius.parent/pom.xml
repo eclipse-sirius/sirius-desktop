@@ -38,9 +38,9 @@
   </licenses>
 
   <properties>
-    <tycho-version>1.7.0</tycho-version>
-    <tycho-extras-version>1.7.0</tycho-extras-version>
-    <platform-version-name>photon</platform-version-name>
+    <tycho-version>2.0.0</tycho-version>
+    <tycho-extras-version>2.0.0</tycho-extras-version>
+    <platform-version-name>2020-06</platform-version-name>
     <!-- This property is used to customize the maven build folder. Used for parallel builds -->
     <build-folder-name>target</build-folder-name>
     <target-platform-path>.</target-platform-path>
