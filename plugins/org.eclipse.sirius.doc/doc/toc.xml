@@ -253,6 +253,7 @@
       </topic>
       <topic href="doc/developer/extensions-provide_resource_strategy.html" label="Provide a resource strategy"/>
       <topic href="doc/developer/trigger-refresh-graphical-changes.html" label="Trigger a Sirius refresh on specific graphical changes" />
+      <topic href="doc/developer/extensions-provide_toolfilter.html" label="Provide a tool filter to hide tools from the diagram palette" />
       <anchor id="moreExtensionPointsRefs" />
     </topic>
     <anchor id="moreDeveloperRefs" />
