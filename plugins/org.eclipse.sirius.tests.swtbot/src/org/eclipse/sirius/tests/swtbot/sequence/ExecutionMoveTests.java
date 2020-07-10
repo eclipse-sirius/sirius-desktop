@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -190,6 +190,9 @@ public class ExecutionMoveTests extends AbstractDefaultModelSequenceTests {
      * Move e6 with a message in lifeline start zone.
      */
     public void test_move_execution_with_message_in_init_zone() {
+    	if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
         ICondition done = new OperationDoneCondition();
         arrangeAll();
         bot.waitUntil(done);
@@ -279,7 +282,10 @@ public class ExecutionMoveTests extends AbstractDefaultModelSequenceTests {
      * Move e3 just above e1 but close enough to trigger a shift.
      */
     public void test_move_plain_execution_above_sibling_shifts_sibling_and_children() {
-        int newY = 170;
+    	if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
+    	int newY = 170;
         int dy = newY - e3Bounds.y;
         
         e3Bot.select();

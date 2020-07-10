@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -109,8 +110,11 @@ public abstract class AbstractActionDisabledOnSequenceDiagramTest extends Abstra
      * be in dirty.
      */
     public void testPinUnPinWizardFromTabbarOnSequenceDiagramsComponents() {
-        testActionWizardFromTabbarOnSequenceDiagramComponents(Messages.SelectPinnedElementsAction_tooltip, Messages.SelectPinnedElementsAction_label,
-                "The elements in wizard Pin/UnPin should be show grayed and should have no effect");
+    	if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
+		testActionWizardFromTabbarOnSequenceDiagramComponents(Messages.SelectPinnedElementsAction_tooltip, Messages.SelectPinnedElementsAction_label,
+				"The elements in wizard Pin/UnPin should be show grayed and should have no effect");
     }
 
     /**
@@ -119,7 +123,10 @@ public abstract class AbstractActionDisabledOnSequenceDiagramTest extends Abstra
      * be in dirty.
      */
     public void testShowHideWizardFromTabbarOnSequenceDiagramsComponents() {
-        testActionWizardFromTabbarOnSequenceDiagramComponents(Messages.SelectHiddenElementsAction_tooltip, Messages.HiddenElementsSelectionCommand_dialogTitle,
+    	if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
+		testActionWizardFromTabbarOnSequenceDiagramComponents(Messages.SelectHiddenElementsAction_tooltip, Messages.HiddenElementsSelectionCommand_dialogTitle,
                 "The elements in wizard Show/Hide should be show grayed and should have no effect");
     }
 
