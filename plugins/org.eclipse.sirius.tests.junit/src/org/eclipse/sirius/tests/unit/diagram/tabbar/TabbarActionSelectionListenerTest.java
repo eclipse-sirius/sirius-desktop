@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,11 +12,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.tabbar;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -33,8 +34,6 @@ import org.eclipse.ui.IPartService;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.internal.PartListenerList;
-import org.eclipse.ui.internal.PartService;
 
 /**
  * This test ensures that selection changed listeners are correctly disposed
@@ -83,24 +82,24 @@ public class TabbarActionSelectionListenerTest extends SiriusDiagramTestCase imp
      * </ul>
      */
     public void testNumberOfListenerIsCorrectAfterOpenCloseDiagrams() {
-        Object[] pageSelectionListeners = getPageSelectionListeners();
-        Object[] partServiceListeners = getPartServiceListeners();
-        Object[] workbenchWindowSelectionListeners = getWorkbenchWindowSelectionListeners();
+        List<Object> pageSelectionListeners = getPageSelectionListeners();
+        List<Object> partServiceListeners = getPartServiceListeners();
+        List<Object> workbenchWindowSelectionListeners = getWorkbenchWindowSelectionListeners();
 
         assertNotNull("Review the test, no found page selection listener.", pageSelectionListeners);
         assertNotNull("Review the test, no found part service listener.", partServiceListeners);
         assertNotNull("Review the test no found workbench window selection listener.", workbenchWindowSelectionListeners);
 
         // we get the listeners list before opening editors.
-        int expectedPageSelectionListener = pageSelectionListeners.length;
-        int expectedPartServiceListeners = partServiceListeners.length;
-        int expectedWindowSelectionListener = workbenchWindowSelectionListeners.length;
+        int expectedPageSelectionListener = pageSelectionListeners.size();
+        int expectedPartServiceListeners = partServiceListeners.size();
+        int expectedWindowSelectionListener = workbenchWindowSelectionListeners.size();
 
         openAllEditors();
 
-        assertTrue("Review this test: opening editor should add page selection listeners.", expectedPageSelectionListener < getPageSelectionListeners().length);
-        assertTrue("Review this test: opening editor should add part service listeners.", expectedPartServiceListeners < getPartServiceListeners().length);
-        assertTrue("Review this test: opening editor should add workbench window selection listeners.", expectedWindowSelectionListener < getWorkbenchWindowSelectionListeners().length);
+        assertTrue("Review this test: opening editor should add page selection listeners.", expectedPageSelectionListener < getPageSelectionListeners().size());
+        assertTrue("Review this test: opening editor should add part service listeners.", expectedPartServiceListeners < getPartServiceListeners().size());
+        assertTrue("Review this test: opening editor should add workbench window selection listeners.", expectedWindowSelectionListener < getWorkbenchWindowSelectionListeners().size());
 
         closeAllEditors();
 
@@ -112,39 +111,39 @@ public class TabbarActionSelectionListenerTest extends SiriusDiagramTestCase imp
 
         // We check that after having opened and closed editors, the
         // selection listener list length is as before.
-        assertTrue("Too many page selection listeners.", expectedPageSelectionListener >= getPageSelectionListeners().length);
-        assertTrue("Too many part service listeners.", expectedPartServiceListeners >= getPartServiceListeners().length);
-        assertTrue("Too many workbench window listeners.", expectedWindowSelectionListener >= getWorkbenchWindowSelectionListeners().length);
+        assertTrue("Too many page selection listeners.", expectedPageSelectionListener >= getPageSelectionListeners().size());
+        assertTrue("Too many part service listeners.", expectedPartServiceListeners >= getPartServiceListeners().size());
+        assertTrue("Too many workbench window listeners.", expectedWindowSelectionListener >= getWorkbenchWindowSelectionListeners().size());
 
         openAllEditors();
 
-        assertTrue("Review this test: opening editor should add selection listeners.", expectedPageSelectionListener < getPageSelectionListeners().length);
-        assertTrue("Review this test: opening editor should add part service listeners.", expectedPartServiceListeners < getPartServiceListeners().length);
-        assertTrue("Review this test: opening editor should add selection listeners.", expectedWindowSelectionListener < getWorkbenchWindowSelectionListeners().length);
+        assertTrue("Review this test: opening editor should add selection listeners.", expectedPageSelectionListener < getPageSelectionListeners().size());
+        assertTrue("Review this test: opening editor should add part service listeners.", expectedPartServiceListeners < getPartServiceListeners().size());
+        assertTrue("Review this test: opening editor should add selection listeners.", expectedWindowSelectionListener < getWorkbenchWindowSelectionListeners().size());
 
         closeAllEditors();
 
         // ... so we check that after having reopened and closed editors
         // again, the listener list size doesn't grow up again.
-        assertTrue("Too many page selection listeners.", expectedPageSelectionListener >= getPageSelectionListeners().length);
-        assertTrue("Too many part service listeners.", expectedPartServiceListeners >= getPartServiceListeners().length);
-        assertTrue("Too many workbench window listeners.", expectedWindowSelectionListener >= getWorkbenchWindowSelectionListeners().length);
+        assertTrue("Too many page selection listeners.", expectedPageSelectionListener >= getPageSelectionListeners().size());
+        assertTrue("Too many part service listeners.", expectedPartServiceListeners >= getPartServiceListeners().size());
+        assertTrue("Too many workbench window listeners.", expectedWindowSelectionListener >= getWorkbenchWindowSelectionListeners().size());
 
         // Check for one editor:
         openEditor(1);
-        expectedPageSelectionListener = getPageSelectionListeners().length;
-        expectedPartServiceListeners = getPartServiceListeners().length;
-        expectedWindowSelectionListener = getWorkbenchWindowSelectionListeners().length;
+        expectedPageSelectionListener = getPageSelectionListeners().size();
+        expectedPartServiceListeners = getPartServiceListeners().size();
+        expectedWindowSelectionListener = getWorkbenchWindowSelectionListeners().size();
         DDiagramEditor editor2 = openEditor(2);
-        assertTrue("Review this test: opening editor should add selection listeners.", expectedPageSelectionListener < getPageSelectionListeners().length);
-        assertTrue("Review this test: opening editor should add part service listeners.", expectedPartServiceListeners < getPartServiceListeners().length);
-        assertTrue("Review this test: opening editor should add selection listeners.", expectedWindowSelectionListener < getWorkbenchWindowSelectionListeners().length);
+        assertTrue("Review this test: opening editor should add selection listeners.", expectedPageSelectionListener < getPageSelectionListeners().size());
+        assertTrue("Review this test: opening editor should add part service listeners.", expectedPartServiceListeners < getPartServiceListeners().size());
+        assertTrue("Review this test: opening editor should add selection listeners.", expectedWindowSelectionListener < getWorkbenchWindowSelectionListeners().size());
 
         // close the second editor
         closeEditor(editor2);
-        assertTrue("Too many page selection listeners.", expectedPageSelectionListener >= getPageSelectionListeners().length);
-        assertTrue("Too many part service listeners.", expectedPartServiceListeners >= getPartServiceListeners().length);
-        assertTrue("Too many workbench window listeners.", expectedWindowSelectionListener >= getWorkbenchWindowSelectionListeners().length);
+        assertTrue("Too many page selection listeners.", expectedPageSelectionListener >= getPageSelectionListeners().size());
+        assertTrue("Too many part service listeners.", expectedPartServiceListeners >= getPartServiceListeners().size());
+        assertTrue("Too many workbench window listeners.", expectedWindowSelectionListener >= getWorkbenchWindowSelectionListeners().size());
     }
 
     private void closeEditor(DDiagramEditor editor) {
@@ -198,12 +197,12 @@ public class TabbarActionSelectionListenerTest extends SiriusDiagramTestCase imp
      * 
      * @return all selection listeners
      */
-    private Object[] getWorkbenchWindowSelectionListeners() {
+    private List<Object> getWorkbenchWindowSelectionListeners() {
         ISelectionService selectionService = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService();
 
         Optional<Object> option = ReflectionHelper.getFieldValueWithoutException(selectionService, "listeners");
         if (option.isPresent()) {
-            return ((ListenerList) option.get()).getListeners();
+            return (List<Object>) ((ListenerList) option.get()).stream().collect(Collectors.toList());
         }
 
         return null;
@@ -214,28 +213,17 @@ public class TabbarActionSelectionListenerTest extends SiriusDiagramTestCase imp
      * 
      * @return all selection listeners
      */
-    private Object[] getPageSelectionListeners() {
+    private List<Object> getPageSelectionListeners() {
         IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-
-        Object[] listeners = null;
-        if (page instanceof IPartService) {
-            Optional<Object> option = ReflectionHelper.getFieldValueWithoutException(page, "selectionListeners");
-            if (option.isPresent()) {
-                listeners = ((List) option.get()).toArray();
+        Optional<Object> option = ReflectionHelper.getFieldValueWithoutException(page, "selectionService");
+        if (option.isPresent()) {
+            ISelectionService pageSelectionService = (ISelectionService) option.get();
+            Optional<Object> listenerListOption = ReflectionHelper.getFieldValueWithoutException(pageSelectionService, "listeners");
+            if (listenerListOption.isPresent()) {
+                return (List<Object>) ((ListenerList) listenerListOption.get()).stream().collect(Collectors.toList());
             }
         }
-
-        if (listeners == null) {
-            Optional<Object> option = ReflectionHelper.getFieldValueWithoutException(page, "selectionService");
-            if (option.isPresent()) {
-                ISelectionService pageSelectionService = (ISelectionService) option.get();
-                Optional<Object> listenerListOption = ReflectionHelper.getFieldValueWithoutException(pageSelectionService, "listeners");
-                if (listenerListOption.isPresent()) {
-                    listeners = ((ListenerList) listenerListOption.get()).getListeners();
-                }
-            }
-        }
-        return listeners;
+        return null;
     }
 
     /**
@@ -243,40 +231,22 @@ public class TabbarActionSelectionListenerTest extends SiriusDiagramTestCase imp
      * 
      * @return all selection listeners
      */
-    private Object[] getPartServiceListeners() {
+    private List<Object> getPartServiceListeners() {
         IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
 
-        Object[] listeners = null;
+        List<Object> listeners = null;
         if (page instanceof IPartService) {
             Optional<Object> option = ReflectionHelper.getFieldValueWithoutException(page, "partListenerList");
             if (option.isPresent()) {
                 ListenerList list = (ListenerList) option.get();
-                listeners = list.getListeners();
+                listeners = Arrays.asList(list.getListeners());
             }
-        }
-
-        if (listeners == null) {
-            PartService partService = (PartService) ReflectionHelper.invokeMethodWithoutExceptionWithReturn(page, "getPartService", new Class[] {}, new Object[] {});
-            if (partService != null) {
-                Optional<Object> option = ReflectionHelper.getFieldValueWithoutException(partService, "listeners");
-                PartListenerList listenerList = (PartListenerList) option.get();
-                Optional<Object> listenerListOption = getFieldValueWithoutException(listenerList.getClass().getSuperclass(), listenerList, "listenerList");
-                ListenerList list = (ListenerList) listenerListOption.get();
-                listeners = list.getListeners();
+            option = ReflectionHelper.getFieldValueWithoutException(page, "partListenerList2");
+            if (option.isPresent()) {
+                ListenerList list = (ListenerList) option.get();
+                listeners.addAll(Arrays.asList(list.getListeners()));
             }
         }
         return listeners;
-    }
-
-    private Optional<Object> getFieldValueWithoutException(Class<?> clazz, Object instance, String fieldName) {
-        Optional<Field> field = ReflectionHelper.setFieldVisibleWithoutException(clazz, fieldName);
-        if (field.isPresent()) {
-            try {
-                return Optional.ofNullable(field.get().get(instance));
-            } catch (IllegalArgumentException | IllegalAccessException e) {
-                // Do nothing
-            }
-        }
-        return Optional.empty();
     }
 }
