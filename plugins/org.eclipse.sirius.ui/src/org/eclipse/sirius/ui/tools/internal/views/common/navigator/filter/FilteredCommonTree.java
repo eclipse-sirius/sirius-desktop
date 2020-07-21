@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2004, 2019 IBM Corporation and others.
+ * Copyright (c) 2004, 2020 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -939,7 +939,7 @@ public class FilteredCommonTree extends Composite {
             clearButton.getAccessible().addAccessibleListener(new AccessibleAdapter() {
                 @Override
                 public void getName(AccessibleEvent e) {
-                    e.result = WorkbenchMessages.FilteredTree_AccessibleListenerClearButton;
+                    e.result = org.eclipse.sirius.ext.e3.ui.Messages.FilteredTree_AccessibleListenerClearButton;
                 }
             });
             clearButton.getAccessible().addAccessibleControlListener(new AccessibleControlAdapter() {
