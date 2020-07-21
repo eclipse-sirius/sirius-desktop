@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2004, 2015 IBM Corporation and others.
+ * Copyright (c) 2004, 2020 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.jface.viewers.IContentProvider;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.sirius.ext.e3.ui.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.accessibility.ACC;
 import org.eclipse.swt.accessibility.AccessibleAdapter;
@@ -999,7 +1000,7 @@ public class FilteredTree extends Composite {
                 new AccessibleAdapter() {
                     @Override
                     public void getName(AccessibleEvent e) {
-                        e.result= WorkbenchMessages.FilteredTree_AccessibleListenerClearButton;
+                        e.result= Messages.FilteredTree_AccessibleListenerClearButton;
                     }
             });
             clearButton.getAccessible().addAccessibleControlListener(
