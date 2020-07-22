@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, Obeo.
+ * Copyright (c) 2014, 2020 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,13 +26,13 @@ import org.eclipse.emf.transaction.util.ValidateEditSupport;
  */
 public class DelegatingValidateEditSupport implements ValidateEditSupport {
 
-    private final ValidateEditSupport delegate;
+    private ValidateEditSupport delegate;
 
     /**
      * Default constructor.
      * 
      * @param delegate
-     *            the {@link ValidateEditSupport} to which delegage
+     *            the {@link ValidateEditSupport} to which delegate
      */
     public DelegatingValidateEditSupport(ValidateEditSupport delegate) {
         this.delegate = delegate;
@@ -40,6 +40,13 @@ public class DelegatingValidateEditSupport implements ValidateEditSupport {
 
     public ValidateEditSupport getDelegate() {
         return delegate;
+    }
+
+    /**
+     * Set the {@link ValidateEditSupport} to which delegate to null.
+     */
+    public void dispose() {
+        this.delegate = null;
     }
 
     @Override
@@ -71,5 +78,4 @@ public class DelegatingValidateEditSupport implements ValidateEditSupport {
             delegate.finalizeForCommit();
         }
     }
-
 }
