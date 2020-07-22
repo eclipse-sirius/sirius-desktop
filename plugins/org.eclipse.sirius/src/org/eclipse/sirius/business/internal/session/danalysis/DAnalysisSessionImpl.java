@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2019 THALES GLOBAL SERVICES and others,
+ * Copyright (c) 2013, 2020 THALES GLOBAL SERVICES and others,
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -1457,16 +1457,21 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     @Override
     public void close(IProgressMonitor monitor) {
-        if (!isOpen()) {
-            return;
+        boolean isOpened = isOpen();
+        // Some operations are done even if the session is not opened, as they are initialized in the constructor of the
+        // DASI for example.
+        if (isOpened) {
+            ViewpointRegistry.getInstance().removeListener(this.vsmUpdater);
         }
-        ViewpointRegistry.getInstance().removeListener(this.vsmUpdater);
         this.vsmUpdater = null;
-        notifyListeners(SessionListener.CLOSING);
+        if (isOpened) {
+            notifyListeners(SessionListener.CLOSING);
+        }
         disableAndRemoveECrossReferenceAdapters();
-
-        if (getRefreshEditorsListener() != null) {
-            removeListener(getRefreshEditorsListener());
+        if (isOpened) {
+            if (getRefreshEditorsListener() != null) {
+                removeListener(getRefreshEditorsListener());
+            }
         }
         getTransactionalEditingDomain().removeResourceSetListener(dRepresentationChangeListener);
         dRepresentationChangeListener = null;
@@ -1478,13 +1483,15 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         if (interpreter != null) {
             interpreter.dispose();
         }
-        ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain).unregisterClient(resourcesSynchronizer);
-        // We do not reset resourcesSynchronizer to null as some of the session
-        // methods which are delegated to it must still be available when the
-        // session is closed. It does not hold to any state or resource so
-        // that's OK.
-        ResourceSetSync.uninstallResourceSetSync(transactionalEditingDomain);
-        super.setOpen(false);
+        if (isOpened) {
+            ResourceSetSync.getOrInstallResourceSetSync(transactionalEditingDomain).unregisterClient(resourcesSynchronizer);
+            // We do not reset resourcesSynchronizer to null as some of the session
+            // methods which are delegated to it must still be available when the
+            // session is closed. It does not hold to any state or resource so
+            // that's OK.
+            ResourceSetSync.uninstallResourceSetSync(transactionalEditingDomain);
+            super.setOpen(false);
+        }
         /*
          * Let's clear the cross referencer of the VSM resource if it's still there (added by the
          * updateSelectedViewpointsData).
@@ -1496,9 +1503,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             currentResourceCollector = null;
         }
         interpreter = null;
-        if (representationNameListener != null) {
-            representationNameListener.dispose();
-            representationNameListener = null;
+        if (isOpened) {
+            if (representationNameListener != null) {
+                representationNameListener.dispose();
+                representationNameListener = null;
+            }
         }
         representationsChangeAdapter = null;
         // dispose the SessionEventBroker
@@ -1511,9 +1520,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         // Unload all referenced resources
         unloadAllResources(monitor);
 
-        // Notify that the session is closed.
-        notifyListeners(SessionListener.CLOSED);
-        SessionManager.INSTANCE.remove(this);
+        if (isOpened) {
+            // Notify that the session is closed.
+            notifyListeners(SessionListener.CLOSED);
+            SessionManager.INSTANCE.remove(this);
+        }
         if (tracker != null) {
             tracker.dispose();
             tracker = null;
