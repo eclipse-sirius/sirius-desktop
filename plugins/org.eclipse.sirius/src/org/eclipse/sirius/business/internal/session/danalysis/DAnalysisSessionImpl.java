@@ -55,8 +55,6 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.emf.transaction.util.ValidateEditSupport;
-import org.eclipse.emf.workspace.IWorkspaceCommandStack;
-import org.eclipse.emf.workspace.ResourceUndoContext;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.helper.RepresentationHelper;
@@ -97,6 +95,7 @@ import org.eclipse.sirius.common.tools.api.query.NotificationQuery;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
+import org.eclipse.sirius.common.tools.api.util.CommandStackUtil;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.common.tools.api.util.SiriusCrossReferenceAdapter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.EcoreMetamodelDescriptor;
@@ -1516,7 +1515,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             broker = null;
         }
 
-        flushOperations(transactionalEditingDomain);
+        CommandStackUtil.flushOperations(transactionalEditingDomain.getCommandStack());
         // Unload all referenced resources
         unloadAllResources(monitor);
 
@@ -1573,24 +1572,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             if (adapter instanceof SiriusCrossReferenceAdapter) {
                 ((SiriusCrossReferenceAdapter) adapter).enableResolveProxy();
             }
-        }
-    }
-
-    private static void flushOperations(TransactionalEditingDomain ted) {
-        CommandStack commandStack = ted.getCommandStack();
-        ResourceSet resourceSet = ted.getResourceSet();
-        if (commandStack != null) {
-            // Remove also ResourceUndoContext to have operations really
-            // removed from IOperationHistory
-            // This must be done before commandStack.flush(); to have
-            // the Undo/RedoActionHandler update the actions
-            if (commandStack instanceof IWorkspaceCommandStack) {
-                IWorkspaceCommandStack workspaceCommandStack = (IWorkspaceCommandStack) commandStack;
-                for (Resource resource : new ArrayList<Resource>(resourceSet.getResources())) {
-                    workspaceCommandStack.getOperationHistory().dispose(new ResourceUndoContext(ted, resource), true, true, true);
-                }
-            }
-            commandStack.flush();
         }
     }
 

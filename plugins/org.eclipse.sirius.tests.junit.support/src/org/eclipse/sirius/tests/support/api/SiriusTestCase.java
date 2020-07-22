@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -74,6 +74,7 @@ import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersion
 import org.eclipse.sirius.business.internal.migration.description.VSMMigrationService;
 import org.eclipse.sirius.business.internal.migration.description.VSMVersionSAXParser;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.util.CommandStackUtil;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
@@ -142,7 +143,7 @@ public abstract class SiriusTestCase extends TestCase {
     /** Initialization error message. */
     public static final String INIT_ERROR_MSG = "An error occurs during tests initialization";
 
-    /** name of the project created in the test workspace.*/
+    /** name of the project created in the test workspace. */
     protected static final String TEMPORARY_PROJECT_NAME = "DesignerTestProject";
 
     /**
@@ -732,12 +733,10 @@ public abstract class SiriusTestCase extends TestCase {
     }
 
     /**
-     * Activate or deactivate the external info detection: the test will fail in
-     * a warning is logged or uncaught.
+     * Activate or deactivate the external info detection: the test will fail in a warning is logged or uncaught.
      * 
      * @param infoCatchActive
-     *            boolean to indicate if we activate or deactivate the external
-     *            info detection
+     *            boolean to indicate if we activate or deactivate the external info detection
      */
     protected synchronized void setInfoCatchActive(boolean infoCatchActive) {
         this.infoCatchActive = infoCatchActive;
@@ -788,7 +787,7 @@ public abstract class SiriusTestCase extends TestCase {
             }
         }
     }
-    
+
     /**
      * Compute a message from the detected warnings/errors/infos.
      * 
@@ -1253,7 +1252,6 @@ public abstract class SiriusTestCase extends TestCase {
         return representations;
     }
 
-
     /**
      * Get the representation with the given name.</br>
      * The search scope is the representations already loaded in the session.
@@ -1264,8 +1262,7 @@ public abstract class SiriusTestCase extends TestCase {
      */
     protected final List<DRepresentation> getRepresentationsByName(final String representationName) {
         final List<DRepresentation> representations = DialectManager.INSTANCE.getAllRepresentationDescriptors(session).stream().filter(rep -> representationName.equals(rep.getName()))
-                .map(DRepresentationDescriptor::getRepresentation)
-                .collect(Collectors.toList());
+                .map(DRepresentationDescriptor::getRepresentation).collect(Collectors.toList());
         return representations;
     }
 
@@ -1934,10 +1931,10 @@ public abstract class SiriusTestCase extends TestCase {
                 domain.getResourceSet().getResources().remove(modelerModele.eResource());
             }
 
-            domain.getResourceSet().getResources().clear();
             if (domain.getCommandStack() != null) {
-                domain.getCommandStack().flush();
+                CommandStackUtil.flushOperations(domain.getCommandStack());
             }
+            domain.getResourceSet().getResources().clear();
             /* dispose the editing domain */
             // CHECKSTYLE:OFF
             try {

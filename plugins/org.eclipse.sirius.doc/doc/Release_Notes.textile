@@ -4,6 +4,14 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius6.4.0). Changes in Sirius 6.4.0
+
+h3. Developer-Visible Changes
+
+h4. Changes in  @org.eclipse.sirius.common@
+
+* <span class="label label-success">Added</span> A new method, @org.eclipse.sirius.common.tools.api.util.CommandStackUtil.flushOperations(CommandStack)@ has been added to flush the command stack. By default the @CommandStack.flush()@ "disposes all the commands in the stack". Concretely, it removes the default context from the list of contexts of all operations. And operations without context, after this, are removed from history. In several cases, it is not enough. The @ResourceUndoContext@ must also be removed. This is what this method done to really removed operations from IOperationHistory. This method was already used in @org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl@, it has been extracted from here.
+
 h2(#sirius6.3.2). Changes in Sirius 6.3.2
 
 h3. User-Visible Changes

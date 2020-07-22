@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,14 +21,15 @@ import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.ArrangeRequest;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
+import org.eclipse.sirius.common.tools.api.util.CommandStackUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterators;
 
 /**
- * This class might be helpful if you want to easily "browse" a diagram editor
- * instance to retrieve, for instance, edit parts.
+ * This class might be helpful if you want to easily "browse" a diagram editor instance to retrieve, for instance, edit
+ * parts.
  * 
  * @author cbrun
  * 
@@ -63,8 +64,7 @@ public class DiagramEditorBrowser {
     }
 
     /**
-     * return an iterator browsing through all (recursively adding children) the
-     * edit parts of the diagram.
+     * return an iterator browsing through all (recursively adding children) the edit parts of the diagram.
      * 
      * @return an iterator browsing through all the edit parts of the diagram.
      */
@@ -98,7 +98,7 @@ public class DiagramEditorBrowser {
         request.setPartsToArrange(Arrays.asList(editor.getDiagramEditPart()));
         editor.getDiagramEditPart().refresh();
         editor.getDiagramEditPart().performRequest(request);
-        editor.getEditingDomain().getCommandStack().flush();
+        CommandStackUtil.flushOperations(editor.getEditingDomain().getCommandStack());
         editor.getDiagramEditPart().getRoot().getViewer().flush();
 
         EclipseUIUtil.synchronizeWithUIThread();

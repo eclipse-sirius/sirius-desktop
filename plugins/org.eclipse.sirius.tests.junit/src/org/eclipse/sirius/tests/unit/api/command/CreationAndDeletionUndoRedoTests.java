@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
+import org.eclipse.sirius.common.tools.api.util.CommandStackUtil;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.common.command.EPackageEClassifiersAppenderRecordingCommand;
@@ -67,7 +68,7 @@ public class CreationAndDeletionUndoRedoTests extends SiriusDiagramTestCase impl
 
     public void testCreationWithEmptyDiagram() throws Exception {
 
-        session.getTransactionalEditingDomain().getCommandStack().flush();
+        CommandStackUtil.flushOperations(session.getTransactionalEditingDomain().getCommandStack());
         final IEditorPart editor = createNewRepresentation();
         cmdStack = session.getTransactionalEditingDomain().getCommandStack();
 
@@ -86,7 +87,7 @@ public class CreationAndDeletionUndoRedoTests extends SiriusDiagramTestCase impl
     }
 
     public void testCreationWithEmptyDiagramWithUndoFromDiagram() throws Exception {
-        session.getTransactionalEditingDomain().getCommandStack().flush();
+        CommandStackUtil.flushOperations(session.getTransactionalEditingDomain().getCommandStack());
         final IEditorPart editor = createNewRepresentation();
         cmdStack = session.getTransactionalEditingDomain().getCommandStack();
 
@@ -99,7 +100,7 @@ public class CreationAndDeletionUndoRedoTests extends SiriusDiagramTestCase impl
 
         createData();
 
-        session.getTransactionalEditingDomain().getCommandStack().flush();
+        CommandStackUtil.flushOperations(session.getTransactionalEditingDomain().getCommandStack());
         final IEditorPart editor = createNewRepresentation();
         cmdStack = session.getTransactionalEditingDomain().getCommandStack();
 
@@ -112,7 +113,7 @@ public class CreationAndDeletionUndoRedoTests extends SiriusDiagramTestCase impl
 
         createData();
 
-        session.getTransactionalEditingDomain().getCommandStack().flush();
+        CommandStackUtil.flushOperations(session.getTransactionalEditingDomain().getCommandStack());
         final IEditorPart editor = createNewRepresentation();
         cmdStack = session.getTransactionalEditingDomain().getCommandStack();
 
@@ -249,11 +250,11 @@ public class CreationAndDeletionUndoRedoTests extends SiriusDiagramTestCase impl
 
     public void testDeletionWithEmptyDiagram() throws Exception {
 
-        session.getTransactionalEditingDomain().getCommandStack().flush();
+        CommandStackUtil.flushOperations(session.getTransactionalEditingDomain().getCommandStack());
 
         cmdStack = session.getTransactionalEditingDomain().getCommandStack();
 
-        session.getTransactionalEditingDomain().getCommandStack().flush();
+        CommandStackUtil.flushOperations(session.getTransactionalEditingDomain().getCommandStack());
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RepresentationDeleterRecordingCommand(session.getTransactionalEditingDomain(), repDescriptor, session));
 
