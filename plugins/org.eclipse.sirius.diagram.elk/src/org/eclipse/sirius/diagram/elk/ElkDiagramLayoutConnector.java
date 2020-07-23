@@ -25,6 +25,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.draw2d.Connection;
@@ -1176,7 +1177,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
 
         for (ConnectionEditPart connection : mapping.getProperty(CONNECTIONS)) {
             boolean isOppositeEdge = false;
-            EdgeLabelPlacement edgeLabelPlacement = EdgeLabelPlacement.UNDEFINED;
+            Optional<EdgeLabelPlacement> edgeLabelPlacement = Optional.empty();
             ElkEdge edge;
 
             // Check whether the edge belongs to an Ecore reference, which may
@@ -1189,7 +1190,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 EReference reference = (EReference) modelObject;
                 edge = reference2EdgeMap.get(reference.getEOpposite());
                 if (edge != null) {
-                    edgeLabelPlacement = EdgeLabelPlacement.TAIL;
+                    edgeLabelPlacement = Optional.of(EdgeLabelPlacement.TAIL);
                     isOppositeEdge = true;
                 } else {
                     edge = ElkGraphUtil.createEdge(null);
@@ -1331,14 +1332,14 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      * @param edge
      *            the layout edge
      * @param placement
-     *            predefined placement for all labels, or {@code UNDEFINED} if the placement shall be derived from the
+     *            predefined placement for all labels, or {@code Optional#empty()} if the placement shall be derived from the
      *            edit part
      * @param offset
      *            the offset for coordinates
      * @param elkTargetToOptionsOverrideMap
      *            map of option targets to corresponding options.
      */
-    protected void processEdgeLabels(final LayoutMapping mapping, final ConnectionEditPart connection, final ElkEdge edge, final EdgeLabelPlacement placement, final KVector offset,
+    protected void processEdgeLabels(final LayoutMapping mapping, final ConnectionEditPart connection, final ElkEdge edge, final Optional<EdgeLabelPlacement> placement, final KVector offset,
             Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
         /*
          * ars: source and target is exchanged when defining it in the gmfgen file. So if Emma sets a label to be placed
@@ -1398,7 +1399,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 if (labelText != null && labelText.length() > 0) {
                     ElkLabel label = ElkGraphUtil.createLabel(edge);
                     applyOptionsRelatedToElementTarget(label, elkTargetToOptionsOverrideMap);
-                    if (placement == EdgeLabelPlacement.UNDEFINED) {
+                    if (!placement.isPresent()) {
                         switch (labelEditPart.getKeyPoint()) {
                         case ConnectionLocator.SOURCE:
                             label.setProperty(CoreOptions.EDGE_LABELS_PLACEMENT, EdgeLabelPlacement.HEAD);
@@ -1411,7 +1412,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                             break;
                         }
                     } else {
-                        label.setProperty(CoreOptions.EDGE_LABELS_PLACEMENT, placement);
+                        label.setProperty(CoreOptions.EDGE_LABELS_PLACEMENT, placement.get());
                     }
                     label.setLocation(labelBounds.x - offset.x, labelBounds.y - offset.y);
                     // The label width includes the icon width
