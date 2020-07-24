@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.sequence;
 
+import org.eclipse.sirius.tests.swtbot.support.api.condition.EditorHasFocusCondition;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.utils.SWTBotPreferences;
@@ -39,8 +40,9 @@ public class SequenceArrangeLinkedBorderedNodesTest extends AbstractDefaultModel
             SWTBot errorLogBot = bot.viewByPartName("Error Log").bot();
 
             int rowCount = errorLogBot.tree().rowCount();
-
+            editor.show();
             editor.setFocus();
+            bot.waitUntil(new EditorHasFocusCondition(editor));
             arrangeAll();
             // Reveal A to scroll to the left
             editor.reveal(LIFELINE_A);
