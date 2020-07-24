@@ -37,7 +37,6 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditP
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
-import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
@@ -51,9 +50,8 @@ import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 
 /**
- * Tests for tickets #1423, #1523 and #2185: when creating an edge between two
- * elements, the edge's position should match the start/end points the user
- * specified with the mouse instead of always pointing to the centers of the
+ * Tests for tickets #1423, #1523 and #2185: when creating an edge between two elements, the edge's position should
+ * match the start/end points the user specified with the mouse instead of always pointing to the centers of the
  * sourc/target elements.
  * 
  * @author pcdavid
@@ -65,7 +63,7 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     private static final PrecisionPoint TOP_LEFT_CORNER = new PrecisionPoint(0.1, 0.1);
 
     private static final PrecisionPoint BOTTOM_RIGHT_CORNER = new PrecisionPoint(0.9, 0.9);
-    
+
     private static final PrecisionPoint BOTTOM_LEFT_CORNER = new PrecisionPoint(0.1, 0.9);
 
     private static final String MODEL = "tc-2185.ecore";
@@ -95,8 +93,7 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      *            The name of the diagram to open.
      */
     protected void openDiagram(String name) {
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(),
-                VIEWPOINT_NAME + " " + name, name, DDiagram.class);
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), VIEWPOINT_NAME + " " + name, name, DDiagram.class);
         editor.setSnapToGrid(false);
         editor.zoom(ZoomLevel.ZOOM_100);
     }
@@ -131,8 +128,7 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     public void test_Node_WithRectilinearEdge() {
         changeDiagramPreference(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, true);
         changeDiagramPreference(SiriusDiagramCorePreferences.PREF_LINE_STYLE, EdgeRouting.MANHATTAN);
-        createEdgeAndValidateAnchors("Node", "A", AbstractDiagramNodeEditPart.class, new PrecisionPoint(0.5, 0.5), "B",
-                AbstractDiagramNodeEditPart.class, TOP_LEFT_CORNER);
+        createEdgeAndValidateAnchors("Node", "A", AbstractDiagramNodeEditPart.class, new PrecisionPoint(0.5, 0.5), "B", AbstractDiagramNodeEditPart.class, TOP_LEFT_CORNER);
     }
 
     /** */
@@ -144,20 +140,18 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     public void test_Container() {
         createEdgeAndValidateAnchors("Container", "A", AbstractDiagramContainerEditPart.class, "B", AbstractDiagramContainerEditPart.class);
     }
-    
+
     /**
      * Test Bendpoints of an edge created with border Node as source and target.
      */
     public void test_BorderedEdgeAndContainer() {
         changeDiagramPreference(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE, true);
         changeDiagramPreference(SiriusDiagramCorePreferences.PREF_LINE_STYLE, EdgeRouting.MANHATTAN);
-        createBorderedEdgeAndValidateAnchors("Container", "A", AbstractDiagramContainerEditPart.class, "B",
-                AbstractDiagramContainerEditPart.class);
+        createBorderedEdgeAndValidateAnchors("Container", "A", AbstractDiagramContainerEditPart.class, "B", AbstractDiagramContainerEditPart.class);
     }
 
     /**
-     * Same as test_Container() but with specific location that reveals a bug
-     * for snapToGrid (see bugzilla 519305).
+     * Same as test_Container() but with specific location that reveals a bug for snapToGrid (see bugzilla 519305).
      */
     public void test_Container_Aligned() {
         createEdgeAndValidateAnchors("Container", "A", AbstractDiagramContainerEditPart.class, new PrecisionPoint(0.98, 0.2737), "B", AbstractDiagramContainerEditPart.class,
@@ -216,9 +210,8 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Open the diagram <code>diagramName</code>, create an edge between
-     * <code>sourceName</code> and <code>targetName</code> and validate the
-     * source and target anchors.
+     * Open the diagram <code>diagramName</code>, create an edge between <code>sourceName</code> and
+     * <code>targetName</code> and validate the source and target anchors.
      * 
      * @param diagramName
      *            The name of the diagram to open
@@ -236,9 +229,8 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Open the diagram <code>diagramName</code>, create an edge between
-     * <code>sourceName</code> and <code>targetName</code> and validate the
-     * source and target anchors.
+     * Open the diagram <code>diagramName</code>, create an edge between <code>sourceName</code> and
+     * <code>targetName</code> and validate the source and target anchors.
      * 
      * @param diagramName
      *            The name of the diagram to open
@@ -261,9 +253,8 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Open the diagram <code>diagramName</code>, create an edge between
-     * <code>sourceName</code> and <code>targetName</code> and validate the
-     * source and target anchors.
+     * Open the diagram <code>diagramName</code>, create an edge between <code>sourceName</code> and
+     * <code>targetName</code> and validate the source and target anchors.
      * 
      * @param diagramName
      *            The name of the diagram to open
@@ -297,9 +288,8 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Open the diagram <code>diagramName</code>, create an edge between
-     * <code>sourceName</code> and <code>targetName</code> including border
-     * Node creation and validate the source and target anchors.
+     * Open the diagram <code>diagramName</code>, create an edge between <code>sourceName</code> and
+     * <code>targetName</code> including border Node creation and validate the source and target anchors.
      * 
      * @param diagramName
      *            The name of the diagram to open
@@ -312,8 +302,7 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
      * @param expectedTargetType
      *            The type of the expected target edit part
      */
-    private void createBorderedEdgeAndValidateAnchors(String diagramName, String sourceName,
-            Class<? extends EditPart> expectedSourceType, String targetName,
+    private void createBorderedEdgeAndValidateAnchors(String diagramName, String sourceName, Class<? extends EditPart> expectedSourceType, String targetName,
             Class<? extends EditPart> expectedTargetType) {
         openDiagram(diagramName);
         IGraphicalEditPart sourcePart = (IGraphicalEditPart) editor.getEditPart(sourceName, expectedSourceType).part();
@@ -329,8 +318,7 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotGefEditPart borderSource = conection.source();
         SWTBotGefEditPart borderTarget = conection.target();
 
-        assertAreValidAnchorsAndBendpoints((IGraphicalEditPart) borderSource.part(),
-                (IGraphicalEditPart) borderTarget.part(), edge);
+        assertAreValidAnchorsAndBendpoints((IGraphicalEditPart) borderSource.part(), (IGraphicalEditPart) borderTarget.part(), edge);
     }
 
     /** */
@@ -406,6 +394,8 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
         // GMF bendpoints
         @SuppressWarnings("unchecked")
         List<Bendpoint> routingConstraint = (List<Bendpoint>) connectionFigure.getRoutingConstraint();
+        assertNotNull(routingConstraint);
+
         // Draw 2D bendpoints
         PointList figurePoints = connectionFigure.getPoints();
 
@@ -420,10 +410,8 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
 
         for (int i = 0; i < routingConstraint.size(); i++) {
             Point gmfPoint = routingConstraint.get(i).getLocation();
-            assertEquals("Wrong x gmf coordinate for point number " + i + ".", gmfPoint.x, figurePoints.getPoint(i).x,
-                    1);
-            assertEquals("Wrong y gmf coordinate for point number " + i + ".", gmfPoint.y, figurePoints.getPoint(i).y,
-                    1);
+            assertEquals("Wrong x gmf coordinate for point number " + i + ".", gmfPoint.x, figurePoints.getPoint(i).x, 1);
+            assertEquals("Wrong y gmf coordinate for point number " + i + ".", gmfPoint.y, figurePoints.getPoint(i).y, 1);
         }
     }
 
@@ -482,7 +470,7 @@ public class EdgeCreationPositionTest extends AbstractSiriusSwtBotGefTestCase {
     protected String getCreateEdgeToolName() {
         return "Super";
     }
-    
+
     /**
      * Return the name of the create border edge tool to use.
      * 

@@ -541,7 +541,7 @@ public class BracketConnectionQuery {
         Point targetPoint = null;
         Point lastPoint = null;
 
-        if (bracketRelativeBendpoints.size() == 1) {
+        if (bracketRelativeBendpoints != null && bracketRelativeBendpoints.size() == 1) {
             final BracketRelativeBendpoint firstDimensionRelativeBendpoint = bracketRelativeBendpoints.get(0);
             final Direction sourceDirection = Direction.values()[firstDimensionRelativeBendpoint.getSourceDirection()];
             final Direction firstDirection = Direction.values()[firstDimensionRelativeBendpoint.getDirection()];
