@@ -134,6 +134,10 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest 
 
     protected static final Representation MB_SEQ_REPRES_BASIC_OBSERVATION = new Representation("Sequence Diagram on Interaction", MB_SEQ_BASIC_OBSERVATION);
 
+    protected static final Diagram MB_SEQ_BASIC_OBSERVATION_NOTES = new Diagram("Basic Observation Diagram with notes", 0, 0);
+
+    protected static final RepresentationWithNotes MB_SEQ_REPRES_BASIC_OBSERVATION_NOTES = new RepresentationWithNotes("Sequence Diagram on Interaction", MB_SEQ_BASIC_OBSERVATION_NOTES);
+
     protected static final Diagram MB_SEQ_COMPLEX = new Diagram("Complex", 0, 0);
 
     protected static final Representation MB_SEQ_REPRES_COMPLEX = new Representation("Sequence Diagram on Interaction", MB_SEQ_COMPLEX);
@@ -143,7 +147,8 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest 
     protected static final Representation MB_SEQ_REPRES_COMPLEX_WITH_CF = new Representation("Sequence Diagram on Interaction", MB_SEQ_COMPLEX_WITH_CF);
 
     protected static final Representation[] MB_SEQ_ALL_REPRESENTATIONS = { MB_SEQ_REPRES_BASIC_COMBINED, MB_SEQ_REPRES_BASIC_EXECUTION, MB_SEQ_REPRES_BASIC_INTERACTION_USE,
-            MB_SEQ_REPRES_BASIC_LOST_MESSAGE_END, MB_SEQ_REPRES_BASIC_MESSAGES, MB_SEQ_REPRES_BASIC_OBSERVATION, MB_SEQ_REPRES_COMPLEX, MB_SEQ_REPRES_COMPLEX_WITH_CF };
+            MB_SEQ_REPRES_BASIC_LOST_MESSAGE_END, MB_SEQ_REPRES_BASIC_MESSAGES, MB_SEQ_REPRES_BASIC_OBSERVATION, MB_SEQ_REPRES_COMPLEX, MB_SEQ_REPRES_COMPLEX_WITH_CF,
+            MB_SEQ_REPRES_BASIC_OBSERVATION_NOTES };
 
     @Parameters
     public static Collection<Object[]> data() {
@@ -215,20 +220,28 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest 
 
             Configuration configuration = ConfigurationFactory.buildConfiguration();
 
-            doTestOnNewDiagram(differences, semanticTargetFullTestConfiguration, configuration, sourceDiagramEditPart, dDiagram);
+            if (representationToCopyFormat instanceof RepresentationWithNotes) {
+                doTestOnNewDiagram(differences, semanticTargetFullTestConfiguration, configuration, sourceDiagramEditPart, dDiagram, true);
+            } else {
+                doTestOnNewDiagram(differences, semanticTargetFullTestConfiguration, configuration, sourceDiagramEditPart, dDiagram, false);
+            }
         }
 
         assertTrue("Found differences : \n" + differences, differences.length() == 0);
     }
 
     private void doTestOnNewDiagram(StringBuilder differences, MappingBasedTestConfiguration explicitMappingTestConfiguration, Configuration configuration, DiagramEditPart sourceDiagramEditPart,
-            DDiagram dDiagram) {
+            DDiagram dDiagram, boolean includeNotes) {
 
         final MappingBasedSiriusFormatDataManager originalManager = new MappingBasedSiriusFormatDataManager(explicitMappingTestConfiguration.getObjectsMap());
         originalManager.storeFormatData(sourceDiagramEditPart);
 
         final MappingBasedSiriusFormatDataManager newManager = new MappingBasedSiriusFormatDataManager(explicitMappingTestConfiguration.getObjectsMap());
-        final String newDiagramName = dDiagram.getName() + " " + explicitMappingTestConfiguration.getName() + " New";
+        final String newDiagramName = dDiagram.getName() + " " + explicitMappingTestConfiguration.getName() + " New" + (includeNotes ? " notes" : "");
+
+        if (MB_SEQ_GENERATE_IMAGES_TEST_DATA) {
+            exportDiagramToTempFolder(newDiagramName + "_from", dDiagram);
+        }
 
         final RecordingCommand command = new RecordingCommand(sourceDiagramEditPart.getEditingDomain()) {
             @Override
@@ -236,7 +249,7 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest 
                 // Update diagram, but transaction will be
                 // rollbacked
                 DDiagram newDiagram = MappingBasedSequenceDiagramFormatManagerFactory.getInstance().applyFormatOnNewDiagram(session, dDiagram, explicitMappingTestConfiguration.getObjectsMap(),
-                        session, newDiagramName, explicitMappingTestConfiguration.getTargetRoot(), false);
+                        session, newDiagramName, explicitMappingTestConfiguration.getTargetRoot(), includeNotes);
 
                 Collection<DiagramEditPart> targetDiagramEditParts = getDiagramEditPart(session, newDiagram);
                 assertTrue(!targetDiagramEditParts.isEmpty());
@@ -245,7 +258,6 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest 
                 newManager.storeFormatData(targetDiagramEditPart);
 
                 if (MB_SEQ_GENERATE_IMAGES_TEST_DATA) {
-                    exportDiagramToTempFolder(newDiagramName + "_from", dDiagram);
                     exportDiagramToTempFolder(newDiagramName + "_to", newDiagram);
                 }
             }

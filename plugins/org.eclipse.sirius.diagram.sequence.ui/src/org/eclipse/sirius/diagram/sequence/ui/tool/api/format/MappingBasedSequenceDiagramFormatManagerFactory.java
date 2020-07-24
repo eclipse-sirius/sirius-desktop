@@ -48,11 +48,6 @@ public class MappingBasedSequenceDiagramFormatManagerFactory extends MappingBase
     protected static final MappingBasedSequenceDiagramFormatManagerFactory INSTANCE = new MappingBasedSequenceDiagramFormatManagerFactory();
 
     /**
-     * The Content duplication switch storing the transformation map.
-     */
-    protected MappingBasedDiagramContentDuplicationSwitch diagramContentDuplicationSwitch;
-
-    /**
      * gives access to the singleton instance of <code>MappingBasedSiriusFormatManagerFactory</code>.
      * 
      * @return the singleton instance
@@ -76,7 +71,7 @@ public class MappingBasedSequenceDiagramFormatManagerFactory extends MappingBase
 
     @Override
     protected void applyFormatOnDiagram(DiagramEditPart sourceDiagramEditPart, Map<EObject, EObject> correspondenceMap, DiagramEditPart targetDiagramEditPart) {
-        MappingBasedSiriusFormatDataManager formatDataManager = new MappingBasedSiriusFormatDataManager(correspondenceMap);
+        formatDataManager = new MappingBasedSiriusFormatDataManager(correspondenceMap);
         formatDataManager.storeFormatData(sourceDiagramEditPart);
 
         for (Entry<DDiagramElement, DDiagramElement> entry : diagramContentDuplicationSwitch.getSourceDDiagramElementToTargetDDiagramElementMap().entrySet()) {

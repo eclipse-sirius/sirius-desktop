@@ -54,6 +54,10 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest extends 
 
     protected static final Representation MB_REPRES_TYPE2 = new Representation("DiagType2", MB_DIAG_TYPE2_MYPACKAGE);
 
+    protected static final Diagram MB_DIAG_TYPE2_NOTES_MYPACKAGE = new Diagram("DiagType2 with notes of MyPackage", 16, 2);
+
+    protected static final RepresentationWithNotes MB_REPRES_NOTES_TYPE2 = new RepresentationWithNotes("DiagType2", MB_DIAG_TYPE2_NOTES_MYPACKAGE);
+
     protected static final Diagram MB_DIAG_TYPE2UNSYNC_MYPACKAGE = new Diagram("DiagType2_unsync of MyPackage", 16, 2);
 
     protected static final Representation MB_REPRES_TYPE2UNSYNC = new Representation("DiagType2_unsync", MB_DIAG_TYPE2UNSYNC_MYPACKAGE);
@@ -72,7 +76,8 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest extends 
 
     protected static final Representation MB_REPRES_TYPE8UNSYNC = new Representation("DiagType8_unsync", MB_DIAG_TYPE8UNSYNC_MYPACKAGE);
 
-    protected static final Representation[] MB_ALL_REPRESENTATIONS = { MB_REPRES_TYPE2, MB_REPRES_TYPE2UNSYNC, MB_REPRES_TYPE2UNSYNC_EDGE, MB_REPRES_TYPE8, MB_REPRES_TYPE8UNSYNC };
+    protected static final Representation[] MB_ALL_REPRESENTATIONS = { MB_REPRES_TYPE2, MB_REPRES_TYPE2UNSYNC, MB_REPRES_TYPE2UNSYNC_EDGE, MB_REPRES_TYPE8, MB_REPRES_TYPE8UNSYNC,
+            MB_REPRES_NOTES_TYPE2 };
 
     public MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest(Representation representationToCopyFormat) throws Exception {
         super(representationToCopyFormat);
@@ -111,8 +116,12 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest extends 
         StringBuilder differences = new StringBuilder();
         MappingBasedTestConfiguration semanticTargetFullTestConfiguration = getFullTestConfiguration();
         Configuration configuration = ConfigurationFactory.buildConfiguration();
-        doTestOnNewDiagram(differences, semanticTargetFullTestConfiguration, configuration);
 
+        if (representationToCopyFormat instanceof RepresentationWithNotes) {
+            doTestOnNewDiagram(differences, semanticTargetFullTestConfiguration, configuration, true);
+        } else {
+            doTestOnNewDiagram(differences, semanticTargetFullTestConfiguration, configuration, false);
+        }
         assertTrue("Found differences : \n" + differences, differences.length() == 0);
     }
 
@@ -131,12 +140,16 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest extends 
         StringBuilder differences = new StringBuilder();
         MappingBasedTestConfiguration semanticTargetSubsetMapConfiguration = getSubsetTestConfiguration();
         Configuration configuration = ConfigurationFactory.buildConfiguration();
-        doTestOnNewDiagram(differences, semanticTargetSubsetMapConfiguration, configuration);
 
+        if (representationToCopyFormat instanceof RepresentationWithNotes) {
+            doTestOnNewDiagram(differences, semanticTargetSubsetMapConfiguration, configuration, true);
+        } else {
+            doTestOnNewDiagram(differences, semanticTargetSubsetMapConfiguration, configuration, false);
+        }
         assertTrue("Found differences : \n" + differences, differences.length() == 0);
     }
 
-    private void doTestOnNewDiagram(StringBuilder differences, MappingBasedTestConfiguration explicitMappingTestConfiguration, Configuration configuration) {
+    private void doTestOnNewDiagram(StringBuilder differences, MappingBasedTestConfiguration explicitMappingTestConfiguration, Configuration configuration, boolean includeNotes) {
 
         List<DRepresentationDescriptor> allDDiagramDescriptors = getRepresentationDescriptors(representationToCopyFormat.name, session).stream().collect(Collectors.toList());
         DRepresentationDescriptor dRepresentationDescriptorToFind = ViewpointFactory.eINSTANCE.createDRepresentationDescriptor();
@@ -156,7 +169,11 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest extends 
             originalManager.storeFormatData(sourceDiagramEditPart);
 
             final MappingBasedSiriusFormatDataManager newManager = new MappingBasedSiriusFormatDataManager(explicitMappingTestConfiguration.getObjectsMap());
-            final String newDiagramName = dDiagram.getName() + " " + explicitMappingTestConfiguration.getName() + " New";
+            final String newDiagramName = dDiagram.getName() + " " + explicitMappingTestConfiguration.getName() + " New" + (includeNotes ? " notes" : "");
+
+            if (MB_GENERATE_IMAGES_TEST_DATA) {
+                exportDiagramToTempFolder(newDiagramName + "_from", dDiagram);
+            }
 
             final RecordingCommand command = new RecordingCommand(sourceDiagramEditPart.getEditingDomain()) {
                 @Override
@@ -164,7 +181,7 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest extends 
                     // Update diagram, but transaction will be
                     // rollbacked
                     DDiagram newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnNewDiagram(session, dDiagram, explicitMappingTestConfiguration.getObjectsMap(), session,
-                            newDiagramName, explicitMappingTestConfiguration.getTargetRoot(), false);
+                            newDiagramName, explicitMappingTestConfiguration.getTargetRoot(), includeNotes);
 
                     Collection<DiagramEditPart> targetDiagramEditParts = getDiagramEditPart(session, newDiagram);
                     assertTrue(!targetDiagramEditParts.isEmpty());
@@ -173,7 +190,6 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest extends 
                     newManager.storeFormatData(targetDiagramEditPart);
 
                     if (MB_GENERATE_IMAGES_TEST_DATA) {
-                        exportDiagramToTempFolder(newDiagramName + "_from", dDiagram);
                         exportDiagramToTempFolder(newDiagramName + "_to", newDiagram);
                     }
                 }

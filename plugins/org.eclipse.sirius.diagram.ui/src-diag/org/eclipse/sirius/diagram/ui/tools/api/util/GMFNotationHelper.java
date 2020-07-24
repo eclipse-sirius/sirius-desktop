@@ -35,6 +35,7 @@ import org.eclipse.gmf.runtime.notation.NotationFactory;
 import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.gmf.runtime.notation.ShapeStyle;
 import org.eclipse.gmf.runtime.notation.Size;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
 import org.eclipse.swt.graphics.RGB;
@@ -151,6 +152,25 @@ public final class GMFNotationHelper {
     }
 
     /**
+     * return a list of nodes corresponding to text notes.
+     * 
+     * @param gmfDiagram
+     *            any GMF Diagram
+     * @return a list of nodes corresponding to text notes.
+     */
+    public static Collection<Node> getTextNotes(final Diagram gmfDiagram) {
+        final Collection<Node> result = new ArrayList<Node>();
+        final Iterator<EObject> it = gmfDiagram.eAllContents();
+        while (it.hasNext()) {
+            final EObject obj = it.next();
+            if (obj instanceof Node && GMFNotationHelper.isTextNote((Node) obj)) {
+                result.add((Node) obj);
+            }
+        }
+        return result;
+    }
+
+    /**
      * Usefull to get all the note attachments of a GMF diagram.
      * 
      * @param gmfDiagram
@@ -192,20 +212,31 @@ public final class GMFNotationHelper {
     }
 
     /**
-     * Browse the resource content of the given element and retrieve GMF
-     * {@link Diagram} corresponding to this element if available.
+     * tell whether a node is a text note or not.
+     * 
+     * @param node
+     *            any node.
+     * @return true if the node is a Text Note
+     */
+    public static boolean isTextNote(final Node node) {
+        return ViewType.TEXT.equals(node.getType());
+    }
+
+    /**
+     * Browse the resource content of the given element and retrieve GMF {@link Diagram} corresponding to this element
+     * if available.
      * 
      * @param eObject
      *            any eObject of the Resource containing the diagrams.
      * @return the first GMF Diagram targeting the eObject, null if not found.
      * 
      * @deprecated as it is inefficient use
-     *             {@link org.eclipse.sirius.diagram.business.api.query.EObjectQuery#getParentDiagram()}
-     *             to get the viewpoint
-     *             {@link org.eclipse.sirius.diagram.DDiagram} and from it use
+     *             {@link org.eclipse.sirius.diagram.business.api.query.EObjectQuery#getParentDiagram()} to get the
+     *             viewpoint {@link org.eclipse.sirius.diagram.DDiagram} and from it use
      *             {@link org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil#findAssociatedGMFDiagram()}
      *             instead.
      */
+    @Deprecated
     public static Diagram findGMFDiagram(final EObject eObject) {
         final Iterator<EObject> it = eObject.eResource().getAllContents();
         while (it.hasNext()) {
@@ -257,6 +288,28 @@ public final class GMFNotationHelper {
             }
         }
         return note;
+
+    }
+
+    /**
+     * Create a new Text Note and attach it on the diagram.
+     * 
+     * @param container
+     *            the container view.
+     * @param noteText
+     *            the content of the text note.
+     * @return the newly created text note.
+     */
+    public static Node createTextNote(final View container, final String noteText) {
+        final Node textnote = ViewService.createNode(container, ViewType.TEXT, PreferencesHint.USE_DEFAULTS);
+        final Iterator<?> it = textnote.getStyles().iterator();
+        while (it.hasNext()) {
+            final Object cur = it.next();
+            if (cur instanceof ShapeStyle) {
+                ((ShapeStyle) cur).setDescription(noteText);
+            }
+        }
+        return textnote;
 
     }
 
@@ -344,8 +397,8 @@ public final class GMFNotationHelper {
     }
 
     /**
-     * Computes and returns the absolute location of the specified {@link Node}.
-     * Returns (0,0) if the node is <code>null</code>.
+     * Computes and returns the absolute location of the specified {@link Node}. Returns (0,0) if the node is
+     * <code>null</code>.
      * 
      * @param node
      *            the node.

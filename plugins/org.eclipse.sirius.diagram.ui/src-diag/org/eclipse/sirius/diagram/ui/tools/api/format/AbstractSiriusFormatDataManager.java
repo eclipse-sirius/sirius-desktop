@@ -242,37 +242,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
 
         if (formatData != null) {
             if (applyFormat) {
-                final Bendpoints bendpoints = convertPointsToGMFBendpoint(formatData);
-                gmfEdge.setBendpoints(bendpoints);
-
-                if (formatData.getSourceTerminal() != null) {
-                    if (gmfEdge.getSourceAnchor() == null) {
-                        gmfEdge.setSourceAnchor(NotationFactory.eINSTANCE.createIdentityAnchor());
-                    }
-                    if (gmfEdge.getSourceAnchor() instanceof IdentityAnchor) {
-                        ((IdentityAnchor) gmfEdge.getSourceAnchor()).setId(formatData.getSourceTerminal());
-                    }
-                } else if (gmfEdge.getSourceAnchor() instanceof IdentityAnchor) {
-                    gmfEdge.setSourceAnchor(null);
-                }
-                if (formatData.getTargetTerminal() != null) {
-                    if (gmfEdge.getTargetAnchor() == null) {
-                        gmfEdge.setTargetAnchor(NotationFactory.eINSTANCE.createIdentityAnchor());
-                    }
-                    if (gmfEdge.getTargetAnchor() instanceof IdentityAnchor) {
-                        ((IdentityAnchor) gmfEdge.getTargetAnchor()).setId(formatData.getTargetTerminal());
-                    }
-                } else if (gmfEdge.getTargetAnchor() instanceof IdentityAnchor) {
-                    gmfEdge.setTargetAnchor(null);
-                }
-                final RoutingStyle routingStyle = (RoutingStyle) gmfEdge.getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
-                if (routingStyle != null) {
-                    routingStyle.setRouting(Routing.get(formatData.getRouting()));
-                    routingStyle.setJumpLinkStatus(JumpLinkStatus.get(formatData.getJumpLinkStatus()));
-                    routingStyle.setJumpLinkType(JumpLinkType.get(formatData.getJumpLinkType()));
-                    routingStyle.setJumpLinksReverse(formatData.isReverseJumpLink());
-                    routingStyle.setSmoothness(Smoothness.get(formatData.getSmoothness()));
-                }
+                applyEdgeFormat(gmfEdge, formatData);
             }
             if (applyStyle) {
                 // Apply Sirius style properties
@@ -283,6 +253,46 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
 
             applyLabelFormat(gmfEdge, formatData, applyFormat, applyStyle);
 
+        }
+    }
+
+    /**
+     * Apply format stored in {@code formatData} to {@code gmfEdge}.
+     * 
+     * @param gmfEdge
+     * @param formatData
+     */
+    private void applyEdgeFormat(final Edge gmfEdge, final EdgeFormatData formatData) {
+        final Bendpoints bendpoints = convertPointsToGMFBendpoint(formatData);
+        gmfEdge.setBendpoints(bendpoints);
+
+        if (formatData.getSourceTerminal() != null) {
+            if (gmfEdge.getSourceAnchor() == null) {
+                gmfEdge.setSourceAnchor(NotationFactory.eINSTANCE.createIdentityAnchor());
+            }
+            if (gmfEdge.getSourceAnchor() instanceof IdentityAnchor) {
+                ((IdentityAnchor) gmfEdge.getSourceAnchor()).setId(formatData.getSourceTerminal());
+            }
+        } else if (gmfEdge.getSourceAnchor() instanceof IdentityAnchor) {
+            gmfEdge.setSourceAnchor(null);
+        }
+        if (formatData.getTargetTerminal() != null) {
+            if (gmfEdge.getTargetAnchor() == null) {
+                gmfEdge.setTargetAnchor(NotationFactory.eINSTANCE.createIdentityAnchor());
+            }
+            if (gmfEdge.getTargetAnchor() instanceof IdentityAnchor) {
+                ((IdentityAnchor) gmfEdge.getTargetAnchor()).setId(formatData.getTargetTerminal());
+            }
+        } else if (gmfEdge.getTargetAnchor() instanceof IdentityAnchor) {
+            gmfEdge.setTargetAnchor(null);
+        }
+        final RoutingStyle routingStyle = (RoutingStyle) gmfEdge.getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
+        if (routingStyle != null) {
+            routingStyle.setRouting(Routing.get(formatData.getRouting()));
+            routingStyle.setJumpLinkStatus(JumpLinkStatus.get(formatData.getJumpLinkStatus()));
+            routingStyle.setJumpLinkType(JumpLinkType.get(formatData.getJumpLinkType()));
+            routingStyle.setJumpLinksReverse(formatData.isReverseJumpLink());
+            routingStyle.setSmoothness(Smoothness.get(formatData.getSmoothness()));
         }
     }
 

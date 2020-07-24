@@ -1618,6 +1618,15 @@ public final class Messages {
     @TranslatableMessage
     public static String MappingBasedDiagramContentDumplicationSwitch_ImpossibleToFindBestMapping;
 
+    @TranslatableMessage
+    public static String MappingBasedSiriusFormatManagerFactory_ImpossibleToCopyNoteInNonExistingOrUnreachableTarget;
+
+    @TranslatableMessage
+    public static String MappingBasedSiriusFormatManagerFactory_ImpossibleToResolveOtherBoundTargetNote;
+
+    @TranslatableMessage
+    public static String MappingBasedSiriusFormatManagerFactory_ImpossibleToFindTargetTextNoteContainer;
+
     // CHECKSTYLE:ON
     private Messages() {
         // Prevents instanciation.

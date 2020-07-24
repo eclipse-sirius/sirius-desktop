@@ -101,6 +101,14 @@ public class AbstractMappingBasedSiriusFormatDataManagerTest extends AbstractSir
     /** Mapping xmi files path */
     protected static final String FULL_MAPPINGS_FOLDER = FULL_DATA_PATH + XMI_FOLDER;
 
+    protected static class RepresentationWithNotes extends Representation {
+
+        protected RepresentationWithNotes(String name, final Diagram... diagrams) {
+            super(name, diagrams);
+        }
+
+    }
+
     protected static final ResourceSetListenerImpl ROLLBACK_LISTENER = new ResourceSetListenerImpl() {
         @Override
         public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {

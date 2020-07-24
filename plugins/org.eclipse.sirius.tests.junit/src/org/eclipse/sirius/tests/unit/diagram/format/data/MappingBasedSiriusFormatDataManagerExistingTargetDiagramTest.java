@@ -67,6 +67,10 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest extend
 
     protected static final Representation MB_REPRES_TYPE8 = new Representation("DiagType8", MB_DIAG_TYPE8_MYPACKAGE, MB_DIAG_TYPE8_P2, MB_DIAG_TYPE8_RAW);
 
+    protected static final Diagram MB_DIAG_TYPE8_NOTES_MYPACKAGE = new Diagram("DiagType8 with notes of MyPackage", 16, 0);
+
+    protected static final RepresentationWithNotes MB_REPRES_TYPE8_NOTES = new RepresentationWithNotes("DiagType8", MB_DIAG_TYPE8_NOTES_MYPACKAGE, MB_DIAG_TYPE8_RAW);
+
     protected static final Diagram MB_DIAG_TYPE8UNSYNC_MYPACKAGE = new Diagram("DiagType8_unsync of MyPackage", 16, 0);
 
     protected static final Diagram MB_DIAG_TYPE8UNSYNC_RAW = new Diagram("DiagType8_unsync Raw of targetMyPackage", 16, 0, true);
