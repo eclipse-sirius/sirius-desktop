@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -94,6 +94,7 @@ public final class DRepresentationDescriptorInternalHelper {
      */
     public static DRepresentationDescriptor createDRepresentationDescriptor(DRepresentation representation, DAnalysisSessionImpl session, Resource semanticResource, String representationName,
             String representationDocumentation) {
+        DRepresentationDescriptor dRepresentationDescriptor = null;
         if (semanticResource != null) {
 
             final EObject semanticRoot = semanticResource.getContents().iterator().next();
@@ -123,10 +124,10 @@ public final class DRepresentationDescriptorInternalHelper {
                 resourceforRepresentation.getContents().add(representation);
             }
 
-            final DRepresentationDescriptor descriptor = DRepresentationDescriptorInternalHelper.createDescriptor(representation, representationName, representationDocumentation);
-            dView.getOwnedRepresentationDescriptors().add(descriptor);
+            dRepresentationDescriptor = DRepresentationDescriptorInternalHelper.createDescriptor(representation, representationName, representationDocumentation);
+            dView.getOwnedRepresentationDescriptors().add(dRepresentationDescriptor);
 
         }
-        return null;
+        return dRepresentationDescriptor;
     }
 }
