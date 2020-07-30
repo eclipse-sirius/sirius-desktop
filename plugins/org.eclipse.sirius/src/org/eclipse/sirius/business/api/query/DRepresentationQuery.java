@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -203,13 +203,20 @@ public class DRepresentationQuery {
      * @return the {@link DRepresentationDescriptor} if a descriptor has been found and null otherwise.
      */
     public DRepresentationDescriptor findDescriptorFromAnalysis(DAnalysis dAnalysis) {
-        EList<DView> ownedViews = dAnalysis.getOwnedViews();
-        for (DView view : ownedViews) {
-            EList<DRepresentationDescriptor> ownedRepresentationDescriptors = view.getOwnedRepresentationDescriptors();
-            for (DRepresentationDescriptor descriptor : ownedRepresentationDescriptors) {
-                DRepresentation representationTemp = descriptor.getRepresentation();
-                if (representation.equals(representationTemp)) {
-                    return descriptor;
+
+        if (representation.eResource() != null) {
+            EList<DView> ownedViews = dAnalysis.getOwnedViews();
+            for (DView view : ownedViews) {
+                EList<DRepresentationDescriptor> ownedRepresentationDescriptors = view.getOwnedRepresentationDescriptors();
+                for (DRepresentationDescriptor descriptor : ownedRepresentationDescriptors) {
+                    // the representation has to be seen as loaded from the descriptor otherwise it would mean that the
+                    // DRepresentationDescriptor does not exists
+                    if (descriptor.isLoadedRepresentation()) {
+                        DRepresentation representationTemp = descriptor.getRepresentation();
+                        if (representation.equals(representationTemp)) {
+                            return descriptor;
+                        }
+                    }
                 }
             }
         }

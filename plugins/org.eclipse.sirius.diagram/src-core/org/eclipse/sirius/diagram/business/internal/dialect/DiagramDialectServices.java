@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -173,16 +173,17 @@ public class DiagramDialectServices extends AbstractRepresentationDialectService
             monitor.subTask(MessageFormat.format(Messages.DiagramDialectServices_createDiagramMsg, name));
             diagram = createRepresentation(name, semantic, description, new SubProgressMonitor(monitor, 2));
             if (diagram != null) {
+                DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(diagram, (DAnalysisSessionImpl) session, semantic.eResource(), name, ""); //$NON-NLS-1$
+                monitor.worked(1);
+                Diagram gmfDiag = DiagramDialectServices.createAndStoreGMFDiagram(session, (DSemanticDiagram) diagram);
+                monitor.worked(1);
+
                 DialectManager.INSTANCE.refresh(diagram, new SubProgressMonitor(monitor, 26));
                 if (DisplayMode.NORMAL.equals(DisplayServiceManager.INSTANCE.getMode())) {
                     DisplayServiceManager.INSTANCE.getDisplayService().refreshAllElementsVisibility((DDiagram) diagram);
                     monitor.worked(1);
                 }
 
-                DRepresentationDescriptorInternalHelper.createDRepresentationDescriptor(diagram, (DAnalysisSessionImpl) session, semantic.eResource(), name, ""); //$NON-NLS-1$
-                monitor.worked(1);
-                Diagram gmfDiag = DiagramDialectServices.createAndStoreGMFDiagram(session, (DSemanticDiagram) diagram);
-                monitor.worked(1);
                 // Synchronizes the GMF diagram model according to the viewpoint
                 // DSemanticDiagram model.
                 CanonicalSynchronizer canonicalSynchronizer = CanonicalSynchronizerFactory.INSTANCE.createCanonicalSynchronizer(gmfDiag);
