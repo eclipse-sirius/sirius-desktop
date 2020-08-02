@@ -107,8 +107,8 @@ public class SessionSpecificEditorInput extends SessionEditorInput {
 
     @Override
     protected void loadState(IMemento memento) {
-        super.loadState(memento);
         restoreValuesFromMemento(memento);
+        super.loadState(memento);
     }
 
     @Override
