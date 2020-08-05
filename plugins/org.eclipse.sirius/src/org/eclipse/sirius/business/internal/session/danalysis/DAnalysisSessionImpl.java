@@ -1595,6 +1595,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         ResourceSet rs = transactionalEditingDomain.getResourceSet();
         for (Resource resource : new ArrayList<Resource>(rs.getResources())) {
             ResourceStrategyRegistry.getInstance().unloadAtResourceSetDispose(resource, monitor);
+        }
+        for (Resource resource : new ArrayList<Resource>(rs.getResources())) {
             rs.getResources().remove(resource);
         }
         super.getAnalyses().clear();
