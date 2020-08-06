@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_2019-09" sequenceNumber="1596617024">
+<target name="sirius_2019-09" sequenceNumber="1596701727">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
@@ -44,8 +44,8 @@
       <unit id="org.eclipse.acceleo.query.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.acceleo.query.ui.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.acceleo.query.ui.source.feature.group" version="0.0.0"/>
-      <unit id="org.antlr.runtime" version="4.7.2.v20200218-0804"/>
-      <repository id="Acceleo-3.7" location="https://download.eclipse.org/acceleo/updates/releases/3.7/R202002210922/"/>
+      <unit id="org.antlr.runtime" version="4.3.0.v201502022030"/>
+      <repository id="Acceleo-3.7" location="https://download.eclipse.org/acceleo/updates/releases/3.7/R201902261618/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.eef.sdk.feature.feature.group" version="0.0.0"/>
