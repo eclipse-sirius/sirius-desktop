@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interactions:Interaction xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:interactions="http://www.eclipse.org/sirius/sample/interactions">
+  <participants name="newParticipant1"/>
+  <participants name="newParticipant2"/>
+  <messages xsi:type="interactions:CallMessage" name="m1" sendingEnd="//@ends.0" receivingEnd="//@ends.1"/>
+  <messages xsi:type="interactions:ReturnMessage" name="m_return2" sendingEnd="//@ends.4" receivingEnd="//@ends.5" invocationMessage="//@messages.0"/>
+  <executions name="e1" owner="//@participants.1" start="//@ends.1" end="//@ends.4"/>
+  <states name="s1" owner="//@participants.1" start="//@ends.2" end="//@ends.3"/>
+  <combinedFragments operator="alt.1" coveredParticipants="//@participants.0 //@participants.1" start="//@ends.6" finish="//@ends.8">
+    <ownedOperands name="condition1" start="//@ends.7"/>
+  </combinedFragments>
+  <ends xsi:type="interactions:MessageEnd" name="send_m1" context="//@participants.0" message="//@messages.0"/>
+  <ends xsi:type="interactions:MixEnd" name="start_e1" context="//@participants.1" execution="//@executions.0" message="//@messages.0"/>
+  <ends xsi:type="interactions:StateEnd" name="start_s1" context="//@participants.1" state="//@states.0"/>
+  <ends xsi:type="interactions:StateEnd" name="finish_s1" context="//@participants.1" state="//@states.0"/>
+  <ends xsi:type="interactions:MixEnd" name="finish_e1" context="//@participants.1" execution="//@executions.0" message="//@messages.1"/>
+  <ends xsi:type="interactions:MessageEnd" name="receive_m_return2" context="//@participants.0" message="//@messages.1"/>
+  <ends xsi:type="interactions:CombinedFragmentEnd" name="start_alt.1" owner="//@combinedFragments.0"/>
+  <ends xsi:type="interactions:OperandEnd" name="start_condition1" owner="//@combinedFragments.0/@ownedOperands.0"/>
+  <ends xsi:type="interactions:CombinedFragmentEnd" name="finish_alt.1" owner="//@combinedFragments.0"/>
+</interactions:Interaction>

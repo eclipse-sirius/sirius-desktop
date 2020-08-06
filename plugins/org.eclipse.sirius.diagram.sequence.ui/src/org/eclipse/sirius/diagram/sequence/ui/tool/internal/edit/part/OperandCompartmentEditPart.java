@@ -17,7 +17,6 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.GraphicalViewer;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.requests.SelectionRequest;
-import org.eclipse.gef.tools.DeselectAllTracker;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.ExecutionOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
@@ -67,7 +66,7 @@ public class OperandCompartmentEditPart extends DNodeContainerViewNodeContainerC
         SelectionRequest selectionRequest = (SelectionRequest) req;
         DragTracker result = SiriusBlankSpacesDragTracker.getDragTracker(this, (GraphicalViewer) getViewer(), req, true, true);
         if (result == null && req instanceof SelectionRequest && ((SelectionRequest) req).getLastButtonPressed() == 3) {
-            result = new DeselectAllTracker(this);
+            result = getParent().getDragTracker(req);
         } else if (selectionRequest.isShiftKeyPressed() && selectionRequest.isControlKeyPressed() && result == null) {
             result = new RubberbandDragTracker();
         } else if (!(selectionRequest.isShiftKeyPressed() && selectionRequest.isControlKeyPressed())) {

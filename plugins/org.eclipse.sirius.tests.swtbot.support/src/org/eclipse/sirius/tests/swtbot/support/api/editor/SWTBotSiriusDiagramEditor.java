@@ -190,7 +190,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
         /* add height -1 for designer */
         click(bounds.x, bounds.y + bounds.height - 1);
     }
-    
+
     /**
      * 
      * Click on the edit part which owns the specified label at the top left hand corner of its bounds with the given
@@ -215,8 +215,8 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Click on the edit part (of correct type) which owns the specified label
-     * at the top left hand corner of its bounds.
+     * Click on the edit part (of correct type) which owns the specified label at the top left hand corner of its
+     * bounds.
      * 
      * @param label
      *            the label to retrieve edit part to click on
@@ -238,11 +238,9 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * Helper to click with a Point as parameter.
      * 
      * @param point
-     *            the coordinate to click on described as a Point. This
-     *            coordinates is relative to screen.
+     *            the coordinate to click on described as a Point. This coordinates is relative to screen.
      * 
-     * @see org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditor#click(int,
-     *      int)
+     * @see org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditor#click(int, int)
      */
     public void click(final Point point) {
         click(point.x, point.y);
@@ -252,20 +250,17 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * Helper to click with a Point as parameter.
      * 
      * @param point
-     *            the coordinate to click on described as a Point. This
-     *            coordinates is relative to screen.
+     *            the coordinate to click on described as a Point. This coordinates is relative to screen.
      * @param displayFeedback
      *            true to display feedback, false otherwise.
-     * @see org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditor#click(int,
-     *      int)
+     * @see org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditor#click(int, int)
      */
     public void click(final Point point, boolean displayFeedback) {
         ((SWTBotSiriusGefViewer) getSWTBotGefViewer()).click(point.x, point.y, displayFeedback);
     }
 
     /**
-     * Clicks on the center of the targeted GraphicalEditPart known by its
-     * label.
+     * Clicks on the center of the targeted GraphicalEditPart known by its label.
      * 
      * @param label
      *            the label of the GraphicalEditPart to click on its center.
@@ -292,8 +287,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Clicks on the center of the targeted GraphicalEditPart known by its
-     * label.
+     * Clicks on the center of the targeted GraphicalEditPart known by its label.
      * 
      * @param label
      *            the label of the GraphicalEditPart to click on its center.
@@ -313,8 +307,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Clicks on the center of the targeted GraphicalEditPart known by its label
-     * and then return its bounds.
+     * Clicks on the center of the targeted GraphicalEditPart known by its label and then return its bounds.
      * 
      * @param partToClick
      *            GraphicalEditPart to click on its center.
@@ -334,8 +327,8 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Clicks just below (+1 pixel) of the middle of the north side of the
-     * targeted GraphicalEditPart and then return its bounds.
+     * Clicks just below (+1 pixel) of the middle of the north side of the targeted GraphicalEditPart and then return
+     * its bounds.
      * 
      * @param partToClick
      *            GraphicalEditPart to click on its center.
@@ -366,8 +359,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
 
     /**
      * 
-     * Uses the generic mouseDrag functionality to drag the item from its
-     * center.
+     * Uses the generic mouseDrag functionality to drag the item from its center.
      * 
      * @param label
      *            the label
@@ -376,8 +368,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * @param toYPosition
      *            the relative y position within the graphical viewer to drag to
      * 
-     * @see org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditor#drag(java.lang.String,
-     *      int, int)
+     * @see org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditor#drag(java.lang.String, int, int)
      */
     public void dragCentered(final String label, final int toXPosition, final int toYPosition) {
         final SWTBotGefEditPart selectedEP = getEditPart(label);
@@ -390,8 +381,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
 
     /**
      * 
-     * Uses the generic mouseDrag functionality to drag the item from its
-     * center.
+     * Uses the generic mouseDrag functionality to drag the item from its center.
      * 
      * @param label
      *            the label
@@ -402,8 +392,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * @param toYPosition
      *            the relative y position within the graphical viewer to drag to
      * 
-     * @see org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditor#drag(java.lang.String,
-     *      int, int)
+     * @see org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditor#drag(java.lang.String, int, int)
      */
     public void dragCentered(final String label, final Class<? extends EditPart> editPartClass, final int toXPosition, final int toYPosition) {
         final SWTBotGefEditPart selectedEP = getEditPart(label, editPartClass);
@@ -418,8 +407,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * Get the EditPartBot representing the EditPart at this location.
      * 
      * @param location
-     *            the Point where to search a EditPart. This coordinates is
-     *            logical (not relative to screen).
+     *            the Point where to search a EditPart. This coordinates is logical (not relative to screen).
      * @param expectedEditPartType
      *            the type of the editPart to return if found one
      * @return the EditPartBot representing the EditPart at this location
@@ -482,9 +470,8 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Get the edit part with the label as a singleton selection. If the edit
-     * part corresponding to the label is not of the expected type, we searched
-     * in the parent hierarchy of this edit part.
+     * Get the edit part with the label as a singleton selection. If the edit part corresponding to the label is not of
+     * the expected type, we searched in the parent hierarchy of this edit part.
      * 
      * @param label
      *            The searched label
@@ -504,8 +491,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Search in the parent hierarchy of <code>editPart</code>, the first one of
-     * type <code>expectedEditPartType</code>.
+     * Search in the parent hierarchy of <code>editPart</code>, the first one of type <code>expectedEditPartType</code>.
      * 
      * @param editPart
      *            The start editPart
@@ -534,8 +520,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Get the GroupEditPart bot for the palette corresponding to tool provided
-     * by *.odesign modeler.
+     * Get the GroupEditPart bot for the palette corresponding to tool provided by *.odesign modeler.
      * 
      * @return the corresponding SWTBotGefEditPart
      */
@@ -582,9 +567,8 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Returns the current selection in the active part. If the selection in the
-     * active part is <em>undefined</em> (the active part has no selection
-     * provider) the result will be <code>null</code>.
+     * Returns the current selection in the active part. If the selection in the active part is <em>undefined</em> (the
+     * active part has no selection provider) the result will be <code>null</code>.
      * 
      * @return the current selection, or <code>null</code> if undefined
      */
@@ -605,13 +589,11 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Tells if direct edit is possible on the specified
-     * {@link SWTBotGefEditPart}.
+     * Tells if direct edit is possible on the specified {@link SWTBotGefEditPart}.
      * 
      * @param swtBotGefEditPart
      *            the specified {@link SWTBotGefEditPart}
-     * @return true if direct edit is possible on the specified
-     *         {@link SWTBotGefEditPart}, false else
+     * @return true if direct edit is possible on the specified {@link SWTBotGefEditPart}, false else
      */
     public boolean isDirectEditPossible(SWTBotGefEditPart swtBotGefEditPart) {
         boolean isDirectEditPossible = false;
@@ -746,8 +728,8 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Do direct edit part for edges connected on nodes or its border nodes with
-     * label sourceEditPartLabel and targetEditPartLabel.
+     * Do direct edit part for edges connected on nodes or its border nodes with label sourceEditPartLabel and
+     * targetEditPartLabel.
      * 
      * @param sourceEditPartLabel
      *            Source edit part label
@@ -762,8 +744,8 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Do direct edit part for edges connected on border nodes of the nodes with
-     * label sourceEditPartLabel and targetEditPartLabel.
+     * Do direct edit part for edges connected on border nodes of the nodes with label sourceEditPartLabel and
+     * targetEditPartLabel.
      * 
      * @param sourceEditPartLabel
      *            Source edit part label
@@ -800,8 +782,8 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Do direct edit part for edges connected on border nodes of the nodes with
-     * label sourceEditPartLabel and targetEditPartLabel.
+     * Do direct edit part for edges connected on border nodes of the nodes with label sourceEditPartLabel and
+     * targetEditPartLabel.
      * 
      * @param sourceEditPartLabel
      *            Source edit part label
@@ -833,8 +815,8 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Do direct edit part for edges connected on nodes or its border nodes with
-     * label sourceEditPartLabel and targetEditPartLabel.
+     * Do direct edit part for edges connected on nodes or its border nodes with label sourceEditPartLabel and
+     * targetEditPartLabel.
      * 
      * @param sourceEditPartLabel
      *            Source edit part label
@@ -926,6 +908,38 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
+     * Right click at the specified location without doing anything else.
+     * 
+     * @param rightClickLocation
+     *            the location of the click
+     */
+    public void clickContextMenu(final Point rightClickLocation) {
+        UIThreadRunnable.syncExec(new VoidResult() {
+            @Override
+            public void run() {
+                FigureCanvas control = (FigureCanvas) rootEditPart().part().getRoot().getViewer().getControl();
+                org.eclipse.swt.graphics.Point relativeSWTPoint = control.toDisplay(rightClickLocation.x, rightClickLocation.y);
+                Event event = new Event();
+                event.type = SWT.MouseMove;
+                event.x = relativeSWTPoint.x;
+                event.y = relativeSWTPoint.y;
+                bot.getDisplay().post(event);
+
+                event = new Event();
+                event.type = SWT.MouseDown;
+                event.button = 3;
+                control.getDisplay().post(event);
+
+                event = new Event();
+                event.type = SWT.MouseUp;
+                event.button = 3;
+                control.getDisplay().post(event);
+            }
+        });
+        SWTBotUtils.waitAllUiEvents();
+    }
+
+    /**
      * Refresh the diagram (F5).
      * 
      * @throws WidgetNotFoundException
@@ -965,9 +979,8 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Drag and drop from the specified to the specified location with a key
-     * pressed during the drag'n'drop. This method also correctly handles the
-     * move of a bendpoint of an edge.
+     * Drag and drop from the specified to the specified location with a key pressed during the drag'n'drop. This method
+     * also correctly handles the move of a bendpoint of an edge.
      * 
      * @param fromXPosition
      *            the relative x position to drag from
@@ -978,19 +991,14 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * @param toYPosition
      *            the relative y position to drag to
      * @param keyCode
-     *            the key code of the key that was typed, as defined by the key
-     *            code constants in class <code>SWT</code>, or
-     *            {@link org.eclipse.swt.SWT#None} if no key. @see
-     *            org.eclipse.swt.SWT
+     *            the key code of the key that was typed, as defined by the key code constants in class
+     *            <code>SWT</code>, or {@link org.eclipse.swt.SWT#None} if no key. @see org.eclipse.swt.SWT
      * @param dragFinished
-     *            An AtomicBoolean allows to add a waiting condition. It was set
-     *            to true when the drag is finished.<BR>
-     *            Warning: When the drag is finished, the associated figures
-     *            have not their "moved" bound. Another
-     *            {@link org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils#waitAllUiEvents()}
-     *            is needed.
-     *            
-     * @deprecated replaced by  {@link SWTBotSiriusDiagramEditor#dragWithKeys(int, int, int, int, AtomicBoolean, int...)}
+     *            An AtomicBoolean allows to add a waiting condition. It was set to true when the drag is finished.<BR>
+     *            Warning: When the drag is finished, the associated figures have not their "moved" bound. Another
+     *            {@link org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils#waitAllUiEvents()} is needed.
+     * 
+     * @deprecated replaced by {@link SWTBotSiriusDiagramEditor#dragWithKeys(int, int, int, int, AtomicBoolean, int...)}
      */
     @Deprecated
     public void dragWithKey(int fromXPosition, int fromYPosition, int toXPosition, int toYPosition, int keyCode, final AtomicBoolean dragFinished) {
@@ -998,9 +1006,8 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Drag and drop from the specified to the specified location with keys
-     * pressed during the drag'n'drop. This method also correctly handles the
-     * move of a bendpoint of an edge.
+     * Drag and drop from the specified to the specified location with keys pressed during the drag'n'drop. This method
+     * also correctly handles the move of a bendpoint of an edge.
      * 
      * @param fromXPosition
      *            the relative x position to drag from
@@ -1011,42 +1018,33 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * @param toYPosition
      *            the relative y position to drag to
      * @param dragFinished
-     *            An AtomicBoolean allows to add a waiting condition. It was set
-     *            to true when the drag is finished.<BR>
-     *            Warning: When the drag is finished, the associated figures
-     *            have not their "moved" bound. Another
-     *            {@link org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils#waitAllUiEvents()}
-     *            is needed.
+     *            An AtomicBoolean allows to add a waiting condition. It was set to true when the drag is finished.<BR>
+     *            Warning: When the drag is finished, the associated figures have not their "moved" bound. Another
+     *            {@link org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils#waitAllUiEvents()} is needed.
      * @param keyModifiers
-     *            the key codes as defined by the key code constants in class
-     *            <code>SWT</code> of the keys that should be pressed when doing
-     *            the mouse drag.
+     *            the key codes as defined by the key code constants in class <code>SWT</code> of the keys that should
+     *            be pressed when doing the mouse drag.
      */
     public void dragWithKeys(int fromXPosition, int fromYPosition, int toXPosition, int toYPosition, final AtomicBoolean dragFinished, int... keyModifiers) {
         ((SWTBotSiriusGefViewer) getSWTBotGefViewer()).dragWithKeys(fromXPosition, fromYPosition, toXPosition, toYPosition, dragFinished, keyModifiers);
     }
 
     /**
-     * This method applies a zoom by mouse wheel scroll with the given key
-     * pressed at the given coordinates.
+     * This method applies a zoom by mouse wheel scroll with the given key pressed at the given coordinates.
      * 
-     * This method is asynchronous so make sure you wait the finishing of all UI
-     * events before testing the effect of this method.
+     * This method is asynchronous so make sure you wait the finishing of all UI events before testing the effect of
+     * this method.
      * 
      * @param xPosition
-     *            x absolute position of the mouse from which we do the zoom by
-     *            mouse wheel scroll.
+     *            x absolute position of the mouse from which we do the zoom by mouse wheel scroll.
      * @param yPosition
-     *            y absolute position of the mouse from which we do the zoom by
-     *            mouse wheel scroll.
+     *            y absolute position of the mouse from which we do the zoom by mouse wheel scroll.
      * @param keyCode
      *            the keyboard key that should be pressed when doing the zoom.
      * @param zoomIncrement
-     *            the zoom power from original zoom. A positive value for
-     *            zoom-in. A negative value for zoom out.
+     *            the zoom power from original zoom. A positive value for zoom-in. A negative value for zoom out.
      * @throws UnsupportedOperationException
-     *             if the canvas associated to this viewer is not an
-     *             SWTBotSiriusFigureCanvas.
+     *             if the canvas associated to this viewer is not an SWTBotSiriusFigureCanvas.
      */
     public void mouseScrollWithKey(final int xPosition, final int yPosition, final int keyCode, final int zoomIncrement) {
         ((SWTBotSiriusGefViewer) getSWTBotGefViewer()).mouseScrollWithKey(xPosition, yPosition, keyCode, zoomIncrement);
@@ -1107,8 +1105,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Double-click with {@link #doubleClick(String)}, but on edit part with
-     * specified name.
+     * Double-click with {@link #doubleClick(String)}, but on edit part with specified name.
      * 
      * @param label
      *            Label of edit part
@@ -1127,8 +1124,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Double-click with {@link #doubleClick(String)}, but on edit part with
-     * specified name.
+     * Double-click with {@link #doubleClick(String)}, but on edit part with specified name.
      * 
      * @param label
      *            Label of edit part
@@ -1147,20 +1143,18 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Get the figure location corresponding to that name and to the editPart
-     * type. The location is relative to the screen.<BR>
+     * Get the figure location corresponding to that name and to the editPart type. The location is relative to the
+     * screen.<BR>
      * Examples :
      * <UL>
      * <LI>If the zoom is set to 50% a position at (80, 80) return (40, 40)</LI>
-     * <LI>If the vertical scroll bar is set to 40 a position at (80, 80) return
-     * (80, 40)</LI>
+     * <LI>If the vertical scroll bar is set to 40 a position at (80, 80) return (80, 40)</LI>
      * </UL>
      * 
      * @param editPartName
      *            The searched name
      * @param expectedEditPartType
-     *            The expected type of edit part (go up in the parent hierarchy
-     *            to find this type).
+     *            The expected type of edit part (go up in the parent hierarchy to find this type).
      * @return A location
      */
     public Point getLocation(final String editPartName, final Class<? extends EditPart> expectedEditPartType) {
@@ -1172,13 +1166,11 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Get the figure location corresponding to that <code>editPart</code>. The
-     * location is relative to the screen.<BR>
+     * Get the figure location corresponding to that <code>editPart</code>. The location is relative to the screen.<BR>
      * Examples :
      * <UL>
      * <LI>If the zoom is set to 50% a position at (80, 80) return (40, 40)</LI>
-     * <LI>If the vertical scroll bar is set to 40 a position at (80, 80) return
-     * (80, 40)</LI>
+     * <LI>If the vertical scroll bar is set to 40 a position at (80, 80) return (80, 40)</LI>
      * </UL>
      * 
      * @param editPart
@@ -1190,13 +1182,11 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Get the figure bounds corresponding to that editPart bot. The location is
-     * relative to the screen.<BR>
+     * Get the figure bounds corresponding to that editPart bot. The location is relative to the screen.<BR>
      * Examples :
      * <UL>
      * <LI>If the zoom is set to 50% a position at (80, 80) return (40, 40)</LI>
-     * <LI>If the vertical scroll bar is set to 40 a position at (80, 80) return
-     * (80, 40)</LI>
+     * <LI>If the vertical scroll bar is set to 40 a position at (80, 80) return (80, 40)</LI>
      * </UL>
      * 
      * @param swtBotGefEditPart
@@ -1218,13 +1208,11 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Get the figure bounds corresponding to that connectionEditPart bot. The
-     * location is relative to the screen.<BR>
+     * Get the figure bounds corresponding to that connectionEditPart bot. The location is relative to the screen.<BR>
      * Examples :
      * <UL>
      * <LI>If the zoom is set to 50% a position at (80, 80) return (40, 40)</LI>
-     * <LI>If the vertical scroll bar is set to 40 a position at (80, 80) return
-     * (80, 40)</LI>
+     * <LI>If the vertical scroll bar is set to 40 a position at (80, 80) return (80, 40)</LI>
      * </UL>
      * 
      * @param swtBotGefConnectionEditPart
@@ -1246,19 +1234,16 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Get the figure dimension corresponding to that name and to the editPart
-     * type.<BR>
+     * Get the figure dimension corresponding to that name and to the editPart type.<BR>
      * Examples :
      * <UL>
-     * <LI>If the zoom is set to 50% a dimension of (80, 80) return (40, 40)
-     * </LI>
+     * <LI>If the zoom is set to 50% a dimension of (80, 80) return (40, 40)</LI>
      * </UL>
      * 
      * @param editPartName
      *            The searched name
      * @param expectedEditPartType
-     *            The expected type of edit part (go up in the parent hierarchy
-     *            to find this type).
+     *            The expected type of edit part (go up in the parent hierarchy to find this type).
      * @return A dimension
      */
     public Dimension getDimension(final String editPartName, final Class<? extends EditPart> expectedEditPartType) {
@@ -1277,8 +1262,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Get the absolute bounds of the Figure of corresponding to a
-     * {@link SWTBotGefEditPart}.
+     * Get the absolute bounds of the Figure of corresponding to a {@link SWTBotGefEditPart}.
      * 
      * @param swtBotGefEditPart
      *            the {@link SWTBotGefEditPart}
@@ -1298,20 +1282,17 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Get the figure location corresponding to that name and to the editPart
-     * type. The location is in absolute coordinate (from the origin 0,0).
-     * Examples :
+     * Get the figure location corresponding to that name and to the editPart type. The location is in absolute
+     * coordinate (from the origin 0,0). Examples :
      * <UL>
      * <LI>If the zoom is set to 50% a position at (80, 80) return (80, 80)</LI>
-     * <LI>If the vertical scroll bar is set to 40 a position at (80, 80) return
-     * (80, 80)</LI>
+     * <LI>If the vertical scroll bar is set to 40 a position at (80, 80) return (80, 80)</LI>
      * </UL>
      * 
      * @param editPartName
      *            The searched name
      * @param expectedEditPartType
-     *            The expected type of edit part (go up in the parent hierarchy
-     *            to find this type).
+     *            The expected type of edit part (go up in the parent hierarchy to find this type).
      * @return A location
      */
     public Point getAbsoluteLocation(final String editPartName, final Class<? extends EditPart> expectedEditPartType) {
@@ -1328,12 +1309,11 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Get the figure location corresponding to that editPart type. The location
-     * is in absolute coordinate (from the origin 0,0). Examples :
+     * Get the figure location corresponding to that editPart type. The location is in absolute coordinate (from the
+     * origin 0,0). Examples :
      * <UL>
      * <LI>If the zoom is set to 50% a position at (80, 80) return (80, 80)</LI>
-     * <LI>If the vertical scroll bar is set to 40 a position at (80, 80) return
-     * (80, 80)</LI>
+     * <LI>If the vertical scroll bar is set to 40 a position at (80, 80) return (80, 80)</LI>
      * </UL>
      * 
      * @param editPart
@@ -1347,12 +1327,11 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Get the figure center corresponding to that editPart type. The center is
-     * in absolute coordinate (from the origin 0,0). Examples :
+     * Get the figure center corresponding to that editPart type. The center is in absolute coordinate (from the origin
+     * 0,0). Examples :
      * <UL>
      * <LI>If the zoom is set to 50% a position at (80, 80) return (80, 80)</LI>
-     * <LI>If the vertical scroll bar is set to 40 a position at (80, 80) return
-     * (80, 80)</LI>
+     * <LI>If the vertical scroll bar is set to 40 a position at (80, 80) return (80, 80)</LI>
      * </UL>
      * 
      * @param editPart
@@ -1381,8 +1360,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Searched in <code>allEditParts</code>, the nearest from the
-     * <code>searchedPosition</code>.
+     * Searched in <code>allEditParts</code>, the nearest from the <code>searchedPosition</code>.
      * 
      * @param searchedPosition
      *            The searched position
@@ -1407,9 +1385,8 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * This method emits mouse events that handle a mouse move and left click to
-     * the left bottom corner of the nearest edit part of the coordinates
-     * <code>{xPosition, yPosition}</code> .
+     * This method emits mouse events that handle a mouse move and left click to the left bottom corner of the nearest
+     * edit part of the coordinates <code>{xPosition, yPosition}</code> .
      * 
      * @param xPosition
      *            the relative x position within the graphical viewer
@@ -1428,9 +1405,8 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * This method emits mouse events that handle a mouse move and left click to
-     * the center of the folding figure that is nearest of the coordinates
-     * <code>{xPosition, yPosition}</code> .
+     * This method emits mouse events that handle a mouse move and left click to the center of the folding figure that
+     * is nearest of the coordinates <code>{xPosition, yPosition}</code> .
      * 
      * @param xPosition
      *            the relative x position within the graphical viewer
@@ -1450,8 +1426,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Searched in all editParts, the nearest folding figure from the
-     * <code>searchedPosition</code>.
+     * Searched in all editParts, the nearest folding figure from the <code>searchedPosition</code>.
      * 
      * @param searchedPosition
      *            The searched position
@@ -1464,8 +1439,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Searched in <code>allEditParts</code>, the nearest folding figure from
-     * the <code>searchedPosition</code>.
+     * Searched in <code>allEditParts</code>, the nearest folding figure from the <code>searchedPosition</code>.
      * 
      * @param searchedPosition
      *            The searched position
@@ -1496,8 +1470,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Searched in <code>connections</code>, the nearest folding figure from the
-     * <code>searchedPosition</code>.
+     * Searched in <code>connections</code>, the nearest folding figure from the <code>searchedPosition</code>.
      * 
      * @param searchedPosition
      *            The searched position
@@ -1625,8 +1598,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * @param gridSpacing
      *            The grid spacing parameter
      * @param rulerUnits
-     *            The ruler units value (0 for Inches, 1 for Centimeters, 2 for
-     *            Pixels)
+     *            The ruler units value (0 for Inches, 1 for Centimeters, 2 for Pixels)
      */
     public void setSnapToGrid(final boolean snap, final double gridSpacing, final int rulerUnits) {
         PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
@@ -1657,11 +1629,11 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * A utility method to return the active part if it implements or adapts to
-     * the <code>IDiagramWorkbenchPart</code> interface.
+     * A utility method to return the active part if it implements or adapts to the <code>IDiagramWorkbenchPart</code>
+     * interface.
      * 
-     * @return The current part if it implements or adapts to
-     *         <code>IDiagramWorkbenchPart</code>; <code>null</code> otherwise
+     * @return The current part if it implements or adapts to <code>IDiagramWorkbenchPart</code>; <code>null</code>
+     *         otherwise
      */
     protected IDiagramWorkbenchPart getDiagramWorkbenchPart() {
         IDiagramWorkbenchPart diagramPart = null;
@@ -1678,11 +1650,11 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * A utility method to return the active <code>DiagramEditPart</code> if the
-     * current part implements <code>IDiagramWorkbenchPart</code>.
+     * A utility method to return the active <code>DiagramEditPart</code> if the current part implements
+     * <code>IDiagramWorkbenchPart</code>.
      * 
-     * @return The current diagram if the parts implements
-     *         <code>IDiagramWorkbenchPart</code>; <code>null</code> otherwise
+     * @return The current diagram if the parts implements <code>IDiagramWorkbenchPart</code>; <code>null</code>
+     *         otherwise
      */
     protected IDiagramGraphicalViewer getDiagramGraphicalViewer() {
         IDiagramWorkbenchPart part = getDiagramWorkbenchPart();
@@ -1709,8 +1681,8 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Zoom to next zoom value. Change the zoom using the combo from the tabbar
-     * (or action bar if the tabbar is not active).
+     * Zoom to next zoom value. Change the zoom using the combo from the tabbar (or action bar if the tabbar is not
+     * active).
      * 
      * @param zoomLevel
      *            Zoom level
@@ -1765,9 +1737,8 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Get the selectable edit part with the label as a singleton selection. If
-     * the edit part corresponding to the label is not selectable, we searched
-     * in the parent hierarchy of this edit part.
+     * Get the selectable edit part with the label as a singleton selection. If the edit part corresponding to the label
+     * is not selectable, we searched in the parent hierarchy of this edit part.
      * 
      * @param label
      *            The searched label The type of the expected edit part
@@ -1790,8 +1761,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Search in the parent hierarchy of <code>editPart</code>, the first one of
-     * selectable.
+     * Search in the parent hierarchy of <code>editPart</code>, the first one of selectable.
      * 
      * @param editPart
      *            The start editPart
@@ -1811,13 +1781,11 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
     }
 
     /**
-     * Type the given text into the graphical editor, presuming that it is
-     * already in 'direct edit' mode. The given text is added at the end of the
-     * existing one.<BR>
-     * This method is duplicated from SWTBotGefEditor to avoid to call a
-     * textControl.setText(""); before typing the new one.<BR>
-     * Use the new method
-     * {@link SWTBotSiriusFigureCanvas#typeSuffixText(Text, String)}.
+     * Type the given text into the graphical editor, presuming that it is already in 'direct edit' mode. The given text
+     * is added at the end of the existing one.<BR>
+     * This method is duplicated from SWTBotGefEditor to avoid to call a textControl.setText(""); before typing the new
+     * one.<BR>
+     * Use the new method {@link SWTBotSiriusFigureCanvas#typeSuffixText(Text, String)}.
      * 
      * @param text
      *            the text to type.
@@ -1826,9 +1794,8 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      */
     public void directEditTypeSuffix(String text) throws WidgetNotFoundException {
         /*
-         * we use 'bot()' and not 'bot' to scope the widget search to the
-         * editor. Otherwise if another widget of the same type is present in
-         * the workspace and is found first, the code after will fail.
+         * we use 'bot()' and not 'bot' to scope the widget search to the editor. Otherwise if another widget of the
+         * same type is present in the workspace and is found first, the code after will fail.
          */
 
         /* wait until text widget appears */

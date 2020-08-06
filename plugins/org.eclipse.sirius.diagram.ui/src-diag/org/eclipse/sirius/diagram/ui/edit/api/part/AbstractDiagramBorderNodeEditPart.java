@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,6 @@ import org.eclipse.gef.editparts.ZoomManager;
 import org.eclipse.gef.editpolicies.ResizableEditPolicy;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gef.requests.DropRequest;
-import org.eclipse.gef.requests.SelectionRequest;
 import org.eclipse.gmf.runtime.common.core.command.CompositeCommand;
 import org.eclipse.gmf.runtime.common.core.util.Proxy;
 import org.eclipse.gmf.runtime.diagram.core.listener.NotificationListener;
@@ -487,13 +486,7 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
 
     @Override
     public DragTracker getDragTracker(final Request request) {
-        DragTracker result;
-        if (request instanceof SelectionRequest && ((SelectionRequest) request).getLastButtonPressed() == 3) {
-            result = null;
-        } else {
-            result = new SiriusDragEditPartsTrackerEx(this);
-        }
-        return result;
+        return new SiriusDragEditPartsTrackerEx(this);
     }
 
     @Override

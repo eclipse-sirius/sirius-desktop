@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="rightClickEditPart" version="12.0.0.2017041100">
+  <ownedViewpoints name="ContextMenuVP" modelFileExtension="*.ecore">
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="TestClassDiagram" domainClass="ecore::EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <nodeMappings name="TCD_NodeClasses" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore::EClass">
+          <borderedNodeMappings name="TCD_BorderedAttributes" semanticCandidatesExpression="feature:eContents" domainClass="ecore::EAttribute">
+            <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="aql:'DNode2EditPart'+self.name" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+          </style>
+        </nodeMappings>
+        <containerMappings name="TCD_Classes" semanticCandidatesExpression="aql:self.eClassifiers" domainClass="ecore::EClass" childrenPresentation="List">
+          <borderedNodeMappings name="TCD_BorderedAttributes" semanticCandidatesExpression="feature:eContents" domainClass="ecore::EAttribute">
+            <style xsi:type="style:SquareDescription" labelSize="12" labelExpression="aql:'DNode4EditPart'+self.name" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <subNodeMappings name="TCD_Attributes" semanticCandidatesExpression="feature:eContents" domainClass="ecore::EAttribute">
+            <style xsi:type="style:EllipseNodeDescription" labelSize="12" labelExpression="aql:'DNodeListElementEditPart'+self.name" labelPosition="node" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

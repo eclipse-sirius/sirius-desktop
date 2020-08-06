@@ -128,9 +128,9 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(SequenceReorderTest.class);
         suite.addTestSuite(SequenceDiagramDirtyTests.class);
         suite.addTestSuite(SequenceOpeningFilteredEventEndsTests.class);
-		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
-			suite.addTestSuite(SequenceDiagramNoSnapTest.class);
-		}
+        if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+            suite.addTestSuite(SequenceDiagramNoSnapTest.class);
+        }
         suite.addTestSuite(FrameMoveWithExpansionTest.class);
         suite.addTestSuite(SequenceLifelineTest.class);
         suite.addTestSuite(SequenceBasicMessageTest.class);
@@ -149,6 +149,7 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(ExternalModificationsTests.class);
         suite.addTestSuite(FoundLostMessageTests.class);
         suite.addTestSuite(SequenceSpaceTest.class);
+        // suite.addTestSuite(ContextMenuInDiagramTest.class);
     }
 
     /**

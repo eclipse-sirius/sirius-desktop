@@ -14,7 +14,10 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.Request;
+import org.eclipse.gef.requests.SelectionRequest;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
@@ -27,6 +30,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.Seque
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.CombinedFragmentResizableEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
+import org.eclipse.sirius.diagram.ui.tools.internal.ui.SiriusDragEditPartsTrackerEx;
 
 /**
  * Special edit part for combined fragments.
@@ -107,5 +111,16 @@ public class CombinedFragmentEditPart extends DNodeContainerEditPart implements 
     @Override
     public ISequenceEvent getISequenceEvent() {
         return ISequenceElementAccessor.getCombinedFragment(getNotationView()).get();
+    }
+
+    @Override
+    public DragTracker getDragTracker(final Request request) {
+        DragTracker result = null;
+        if (request instanceof SelectionRequest && ((SelectionRequest) request).getLastButtonPressed() == 3) {
+            result = new SiriusDragEditPartsTrackerEx(this);
+        } else {
+            result = super.getDragTracker(request);
+        }
+        return result;
     }
 }
