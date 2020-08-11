@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -469,7 +469,12 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
 
     @Override
     public SWTBotGefEditPart getEditPart(final String label) {
-        final SWTBotGefEditPart selectedEP = super.getEditPart(label);
+        SWTBotGefEditPart selectedEP = super.getEditPart(label);
+        if (selectedEP == null) {
+            SWTBotSiriusGefViewer swtBotGefViewer = (SWTBotSiriusGefViewer) getSWTBotGefViewer();
+            List<SWTBotGefEditPart> children = swtBotGefViewer.mainEditPart().children();
+            selectedEP = swtBotGefViewer.getEditpart(label, children);
+        }
         if (selectedEP == null) {
             throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, label));
         }
@@ -488,7 +493,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * @return the corresponding SWTBotGefEditPart
      */
     public SWTBotGefEditPart getEditPart(final String label, final Class<? extends EditPart> expectedEditPartType) {
-        SWTBotGefEditPart selectedEP = super.getEditPart(label);
+        SWTBotGefEditPart selectedEP = getEditPart(label);
         if (selectedEP == null) {
             throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, label));
         }
@@ -1769,7 +1774,7 @@ public class SWTBotSiriusDiagramEditor extends SWTBotGefEditor {
      * @return the corresponding SWTBotGefEditPart
      */
     public SWTBotGefEditPart getSelectableEditPart(final String label) {
-        SWTBotGefEditPart selectedEP = super.getEditPart(label);
+        SWTBotGefEditPart selectedEP = getEditPart(label);
         if (selectedEP == null) {
             throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, label));
         }
