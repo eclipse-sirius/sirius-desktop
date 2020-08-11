@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -149,7 +149,7 @@ public class SWTBotSiriusGefViewer extends SWTBotGefViewer {
      *            The label of the searched edit part
      */
     public void reveal(String label) {
-        final SWTBotGefEditPart revealedEP = getEditPart(label);
+        final SWTBotGefEditPart revealedEP = getEditpart(label, mainEditPart().children());
         if (revealedEP == null) {
             throw new WidgetNotFoundException(String.format(SWTBotSiriusDiagramEditor.EXPECTED_TO_FIND_WIDGET_S, label));
         }
@@ -235,11 +235,14 @@ public class SWTBotSiriusGefViewer extends SWTBotGefViewer {
     }
 
     /**
-     * {@inheritDoc}
+     * Override a method that used to be public to deal with Sirius WrapLabel.
      * 
-     * Override to deal with Sirius WrapLabel.
+     * @param label
+     *            The searched label
+     * @param allEditParts
+     *            the list of {@link SWTBotGefEditPart} to search in
+     * @return the {@link SWTBotGefEditPart} where the label was found
      */
-    @Override
     public SWTBotGefEditPart getEditpart(String label, List<SWTBotGefEditPart> allEditParts) {
         SWTBotGefEditPart result = null;
         for (Iterator<SWTBotGefEditPart> iterator = allEditParts.iterator(); iterator.hasNext() && result == null; /* */) {
