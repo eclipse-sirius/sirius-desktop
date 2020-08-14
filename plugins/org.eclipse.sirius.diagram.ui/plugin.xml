@@ -162,7 +162,7 @@
                  toolbarPath="/toolbarFormatGroup">
            </partAction>
            <partAction
-                 id="autoSizeAction"
+                 id="siriusAutoSizeAction"
                  menubarPath="/diagramMenu/sizeGroup"
                  toolbarPath="/toolbarFormatGroup">
            </partAction>
@@ -230,7 +230,7 @@
                   path="/formatMenu/sizeGroup">
             </popupAction>
             <popupAction
-                  id="autoSizeAction"
+                  id="siriusAutoSizeAction"
                   path="/formatMenu/sizeGroup">
             </popupAction>
             <popupAction
@@ -454,16 +454,6 @@
            name="High">
      </Priority>
      <partContribution
-           class="org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart">
-        <partPredefinedItem
-              id="copyAppearancePropertiesAction"
-              menubarPath="/diagramMenu/copyAppearanceGroup"
-              removeFromMenubar="true"
-              removeFromToolbar="true"
-              toolbarPath="/toolbarCopyAppearanceGroup">
-        </partPredefinedItem>
-     </partContribution>
-     <partContribution
            class="org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor">
         <partPredefinedItem
               id="treeRouterAction"
@@ -482,13 +472,6 @@
               menubarPath="/diagramMenu/routerMenu/routerGroup"
               removeFromMenubar="true"
               removeFromToolbar="false">
-        </partPredefinedItem>
-        <partPredefinedItem
-              id="autoSizeAction"
-              menubarPath="/diagramMenu/sizeGroup"
-              removeFromMenubar="true"
-              removeFromToolbar="true"
-              toolbarPath="/toolbarFormatGroup">
         </partPredefinedItem>
      </partContribution>
      <popupContribution

@@ -22,6 +22,7 @@ import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.AutoSizeAction;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.ui.IWorkbenchPage;
 
@@ -42,6 +43,7 @@ public class SiriusAutoSizeAction extends AutoSizeAction {
      */
     public SiriusAutoSizeAction(IWorkbenchPage workbenchPage) {
         super(workbenchPage);
+        setId(ActionIds.ACTION_SIRIUS_AUTOSIZE);
     }
 
     /**

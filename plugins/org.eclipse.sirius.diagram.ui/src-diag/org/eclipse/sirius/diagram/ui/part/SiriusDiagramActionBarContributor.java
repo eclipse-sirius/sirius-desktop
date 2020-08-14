@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,15 +12,23 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.part;
 
+import java.util.Optional;
+
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.gef.Disposable;
+import org.eclipse.gmf.runtime.common.core.util.Log;
+import org.eclipse.gmf.runtime.common.ui.services.action.internal.CommonUIServicesActionPlugin;
+import org.eclipse.gmf.runtime.common.ui.services.action.internal.CommonUIServicesActionStatusCodes;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
 import org.eclipse.gmf.runtime.diagram.ui.l10n.DiagramUIMessages;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramActionBarContributor;
+import org.eclipse.jface.action.AbstractGroupMarker;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
+import org.eclipse.jface.action.IContributionManager;
+import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -232,8 +240,10 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
                 cleanOldToolBarGMFAction(toolBarManager, ActionIds.CUSTOM_FILL_COLOR);
                 cleanOldToolBarGMFAction(toolBarManager, ActionIds.CUSTOM_LINE_COLOR);
                 cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_MAKE_SAME_SIZE_BOTH);
-                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_AUTOSIZE);
-                cleanOldToolBarGMFAction(toolBarManager, ActionIds.ACTION_COPY_APPEARANCE_PROPERTIES);
+                removeExistingItem(ActionIds.ACTION_AUTOSIZE, "/", bars.getToolBarManager(), false).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
+                removeExistingItem(ActionIds.ACTION_AUTOSIZE, "/diagramMenu", bars.getMenuManager(), true).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
+                removeExistingItem(ActionIds.ACTION_COPY_APPEARANCE_PROPERTIES, "/", bars.getToolBarManager(), false).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
+                removeExistingItem(ActionIds.ACTION_COPY_APPEARANCE_PROPERTIES, "/diagramMenu", bars.getMenuManager(), true).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
                 cleanOldToolBarGMFAction(toolBarManager, ActionIds.CUSTOM_ZOOM);
 
                 cleanOldToolBarGMFAction(toolBarManager, ActionIds.MENU_ARRANGE);
@@ -342,12 +352,113 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
      */
     private void cleanOldToolBarGMFAction(IToolBarManager toolBarManager, String actionId) {
         IContributionItem contribution = toolBarManager.find(actionId);
+        disposeIfPossible(contribution);
+        toolBarManager.remove(contribution);
+    }
+
+    /**
+     * Dispose the corresponding action if this contribution is an {@link ActionContributionItem}.
+     * 
+     * @param contribution
+     *            The {@link IContributionItem} to clean.
+     */
+    private void disposeIfPossible(IContributionItem contribution) {
         if (contribution instanceof ActionContributionItem) {
             if (((ActionContributionItem) contribution).getAction() instanceof Disposable) {
                 ((Disposable) ((ActionContributionItem) contribution).getAction()).dispose();
             }
         }
-        toolBarManager.remove(contribution);
+    }
+
+    /**
+     * Copied from
+     * {@link org.eclipse.gmf.runtime.common.ui.services.action.contributionitem.AbstractContributionItemProvider#removeExistingItem(String, String, IContributionManager, boolean)}.
+     * This copy returned the removed item (if removed). It was not the case in original method.
+     * 
+     * @param id
+     * @param path
+     * @param contributionManager
+     */
+    private Optional<IContributionItem> removeExistingItem(String id, String path, IContributionManager contributionManager, boolean useIdForRemoval) {
+
+        // Find the menu or action or group.
+        if (id == null)
+            return Optional.empty();
+
+        IContributionManager parent = contributionManager;
+        if (path.length() > 1) { // if path is more than '/'
+            parent = findMenuUsingPath(contributionManager, path.substring(1));
+            if (parent == null) {
+                Log.info(CommonUIServicesActionPlugin.getDefault(), CommonUIServicesActionStatusCodes.SERVICE_FAILURE, "The contribution item path is invalid"); //$NON-NLS-1$
+                return Optional.empty();
+            }
+        }
+
+        IContributionItem predefinedItem = parent.find(id);
+        if (predefinedItem == null) {
+            Log.info(CommonUIServicesActionPlugin.getDefault(), CommonUIServicesActionStatusCodes.SERVICE_FAILURE, "The contribution item path is invalid"); //$NON-NLS-1$
+            return Optional.empty();
+        }
+
+        if (predefinedItem instanceof AbstractGroupMarker) {
+            IContributionItem allItems[] = parent.getItems();
+            int groupIndex;
+            for (groupIndex = 0; groupIndex < allItems.length; groupIndex++) {
+                IContributionItem item = allItems[groupIndex];
+                if (item.equals(predefinedItem)) {
+                    break;
+                }
+            }
+            for (int j = groupIndex + 1; j < allItems.length; j++) {
+                IContributionItem item = allItems[j];
+                if (item instanceof AbstractGroupMarker) {
+                    break;
+                }
+                parent.remove(item);
+            }
+
+        }
+        // parent.remove(item) and parent.remove(item.getId()) yield different results in some cases
+        // parent.remove(item) seems to be working for all cases except for removing a menu from menu bar (item defined
+        // as partMenu)
+        if (useIdForRemoval) {
+            return Optional.of(parent.remove(predefinedItem.getId()));
+        } else {
+            return Optional.of(parent.remove(predefinedItem));
+        }
+    }
+
+    /**
+     * Finds a menu manager using a '/' separated path. Copied from
+     * {@link org.eclipse.gmf.runtime.common.ui.services.action.contributionitem.AbstractContributionItemProvider#findMenuUsingPath(IContributionManager, String)}
+     * 
+     * @param parent
+     *            The starting contribution manager
+     * @param path
+     *            The '/' separated path
+     * @return A menu manager described by the given path
+     */
+    private IMenuManager findMenuUsingPath(IContributionManager parent, String path) {
+
+        IContributionItem item = null;
+        String id = path;
+        String rest = null;
+        int separator = path.indexOf('/');
+        if (separator != -1) {
+            id = path.substring(0, separator);
+            rest = path.substring(separator + 1);
+        } else {
+            item = parent.find(path);
+            if (item instanceof IMenuManager)
+                return (IMenuManager) item;
+        }
+
+        item = parent.find(id);
+        if (item instanceof IMenuManager) {
+            IMenuManager manager = (IMenuManager) item;
+            return manager.findMenuUsingPath(rest);
+        }
+        return null;
     }
 
     private boolean isOldUIEnabled() {
