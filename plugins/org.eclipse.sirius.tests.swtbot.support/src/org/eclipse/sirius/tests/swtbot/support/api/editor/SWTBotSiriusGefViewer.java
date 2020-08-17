@@ -234,6 +234,13 @@ public class SWTBotSiriusGefViewer extends SWTBotGefViewer {
         return result;
     }
 
+	@Override
+	public SWTBotGefEditPart getEditPart(String label) {
+		List<SWTBotGefEditPart> allEditParts = mainEditPart().children();
+		allEditParts.addAll(mainEditPart().sourceConnections());
+		return getEditpart(label, allEditParts);
+	}
+
     /**
      * Override a method that used to be public to deal with Sirius WrapLabel.
      * 
