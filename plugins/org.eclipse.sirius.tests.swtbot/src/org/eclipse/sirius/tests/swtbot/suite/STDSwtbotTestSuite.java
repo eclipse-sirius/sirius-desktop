@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.suite;
 
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.std.STD001;
 import org.eclipse.sirius.tests.swtbot.std.STD002;
 import org.eclipse.sirius.tests.swtbot.std.STD004;
@@ -83,7 +84,9 @@ public class STDSwtbotTestSuite extends TestCase {
         suite.addTestSuite(STD011.class);
         // suite.addTestSuite(STD013.class);
         // suite.addTestSuite(STD017.class);
-        suite.addTestSuite(STD018.class);
+		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+			suite.addTestSuite(STD018.class);
+		}
         // // suite.addTestSuite(STD019.class); NOT YET COMMMITED
         // // suite.addTestSuite(STD022.class); NOT YET COMMMITED
         // suite.addTestSuite(STD025.class);

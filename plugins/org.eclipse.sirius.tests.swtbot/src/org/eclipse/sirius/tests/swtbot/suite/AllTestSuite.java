@@ -16,6 +16,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.common.util.WrappedException;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.*;
 import org.eclipse.sirius.tests.swtbot.celleditor.CellEditorExtensionTest;
 import org.eclipse.sirius.tests.swtbot.clipboard.CustomClipboardSupportTest;
@@ -238,7 +239,9 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(CreateMandatoryElementsTest.class);
         suite.addTestSuite(LockedModelExplorerTest.class);
         suite.addTestSuite(SnapAllShapesTest.class);
-        suite.addTestSuite(MoveEdgeGroupTest.class);
+		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+			suite.addTestSuite(MoveEdgeGroupTest.class);
+		}
         suite.addTestSuite(TabbarContributorExtensionTest.class);
         suite.addTestSuite(BorderNodeSideTest.class);
         suite.addTestSuite(SecurityExceptionPopupTest.class);
@@ -429,7 +432,9 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ContextualMenuTest.class);
         suite.addTestSuite(BracketEdgeTests.class);
         suite.addTestSuite(EdgeCopyPasteFormatTest.class);
-        suite.addTestSuite(BendpointsStabilityOnMovesTest.class);
+		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+			suite.addTestSuite(BendpointsStabilityOnMovesTest.class);
+		}
         suite.addTestSuite(BendpointsStabilityOnMovesSpecificCasesTest.class);
         suite.addTestSuite(BorderedNodeCopyPasteFormatTest.class);
         suite.addTestSuite(ContainerAndNodeCopyPasteFormatTest.class);
@@ -454,7 +459,9 @@ public class AllTestSuite extends TestCase {
 
         // Scenario test cases
         suite.addTestSuite(ESEDemoTest.class);
-        suite.addTestSuite(ValidationTest.class);
+		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+			suite.addTestSuite(ValidationTest.class);
+		}
         suite.addTestSuite(ViewpointSelectionDialogTest.class);
         suite.addTestSuite(InitializeEmptySessionTest.class);
         suite.addTestSuite(InitializeSessionTest.class);

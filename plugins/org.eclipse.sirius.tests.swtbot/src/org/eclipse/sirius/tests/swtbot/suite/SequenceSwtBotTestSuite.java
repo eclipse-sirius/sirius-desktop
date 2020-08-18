@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.suite;
 
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.sequence.ActionDisabledOnExtendedMessagesTest;
 import org.eclipse.sirius.tests.swtbot.sequence.ActionDisabledOnSequenceDiagramTest;
@@ -127,7 +128,9 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(SequenceReorderTest.class);
         suite.addTestSuite(SequenceDiagramDirtyTests.class);
         suite.addTestSuite(SequenceOpeningFilteredEventEndsTests.class);
-        suite.addTestSuite(SequenceDiagramNoSnapTest.class);
+		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+			suite.addTestSuite(SequenceDiagramNoSnapTest.class);
+		}
         suite.addTestSuite(FrameMoveWithExpansionTest.class);
         suite.addTestSuite(SequenceLifelineTest.class);
         suite.addTestSuite(SequenceBasicMessageTest.class);
