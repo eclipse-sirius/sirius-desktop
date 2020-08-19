@@ -79,7 +79,9 @@ public class STDSwtbotTestSuite extends TestCase {
         suite.addTestSuite(STD002.class);
         suite.addTestSuite(STD004.class);
         suite.addTestSuite(STD005.class);
-        suite.addTestSuite(STD007.class);
+		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+			suite.addTestSuite(STD007.class);
+		}
         suite.addTestSuite(STD009.class);
 		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
 			suite.addTestSuite(STD011.class);
@@ -109,8 +111,10 @@ public class STDSwtbotTestSuite extends TestCase {
      */    
     public static void addPart2(TestSuite suite) {
         suite.addTestSuite(STD006.class);
-        suite.addTestSuite(STD008.class);
-        suite.addTestSuite(STD010.class);
+		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+			suite.addTestSuite(STD008.class);
+			suite.addTestSuite(STD010.class);
+		}
     }
 
     /**
