@@ -81,7 +81,9 @@ public class STDSwtbotTestSuite extends TestCase {
         suite.addTestSuite(STD005.class);
         suite.addTestSuite(STD007.class);
         suite.addTestSuite(STD009.class);
-        suite.addTestSuite(STD011.class);
+		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+			suite.addTestSuite(STD011.class);
+		}
         // suite.addTestSuite(STD013.class);
         // suite.addTestSuite(STD017.class);
 		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {

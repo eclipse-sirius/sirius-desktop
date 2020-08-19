@@ -243,7 +243,9 @@ public class AllTestSuite extends TestCase {
 			suite.addTestSuite(MoveEdgeGroupTest.class);
 		}
         suite.addTestSuite(TabbarContributorExtensionTest.class);
-        suite.addTestSuite(BorderNodeSideTest.class);
+		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+			suite.addTestSuite(BorderNodeSideTest.class);
+		}
         suite.addTestSuite(SecurityExceptionPopupTest.class);
         suite.addTestSuite(CenteredEdgesRepairTest.class);
         suite.addTestSuite(MetamodelPropertyTabTests.class);

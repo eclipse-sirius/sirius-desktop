@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.suite;
 
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.BorderNodeSideTest;
 import org.eclipse.sirius.tests.swtbot.BorderedNodeCreationNearCollapsedTest;
 import org.eclipse.sirius.tests.swtbot.BorderedNodeCreationNearCollapsedWithSnapToGridTest;
@@ -89,7 +90,9 @@ public class AllCreationTestSuite extends TestCase {
         suite.addTestSuite(EdgeCreationPositionWithSnapToGridTest.class);
         suite.addTestSuite(EdgeWithBorderNodeCreationPositionTest.class);
         suite.addTestSuite(EdgeWithBorderNodeCreationPositionWithSnapToGridTest.class);
-        suite.addTestSuite(BorderNodeSideTest.class);
+		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+			suite.addTestSuite(BorderNodeSideTest.class);
+		}
 
         return suite;
     }
