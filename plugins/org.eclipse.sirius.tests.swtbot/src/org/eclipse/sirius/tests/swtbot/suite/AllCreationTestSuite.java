@@ -69,7 +69,9 @@ public class AllCreationTestSuite extends TestCase {
 
         suite.addTestSuite(NoteCreationTest.class);
         suite.addTestSuite(LinkNoteFragmentModelCreationTest.class);
-        suite.addTestSuite(NodeCreationPositionTest.class);
+		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+			suite.addTestSuite(NodeCreationPositionTest.class);
+		}
         suite.addTestSuite(NodeCreationTest.class);
         suite.addTestSuite(ContainerCreationTest.class);
         suite.addTestSuite(DNodeListCreationTest.class);

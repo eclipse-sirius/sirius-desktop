@@ -311,7 +311,9 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(HideLabelIconsWithPreferencesTest.class);
         // suite.addTestSuite(LabelFontModificationsTest.class);
         suite.addTestSuite(MultiLineLabelDiagramTest.class);
-        suite.addTestSuite(NodeCreationPositionTest.class);
+		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+			suite.addTestSuite(NodeCreationPositionTest.class);
+		}
         suite.addTestSuite(OpenMultipleRepresentationsTest.class);
         suite.addTestSuite(ShapeResizingEdgePositionStabilityTests.class);
         suite.addTestSuite(PortsOnNodePositionStabilityTest.class);
