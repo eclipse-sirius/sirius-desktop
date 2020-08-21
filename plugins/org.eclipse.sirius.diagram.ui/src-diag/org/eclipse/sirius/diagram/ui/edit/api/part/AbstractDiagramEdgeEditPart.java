@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -45,6 +45,7 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.CreateUnspecifiedTypeConnecti
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.routers.ITreeConnection;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
+import org.eclipse.gmf.runtime.notation.RoutingStyle;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -123,6 +124,18 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
 
     /** listen to semantic elements container */
     private NotificationListener editModeListener = new EditStatusUpdater(this);
+
+    /**
+     * The routingStyle for which a listener is potentially added in the DiagramEventBroker during the activation of
+     * this edit part. It is used to remove the listener during deactivation.
+     */
+    private RoutingStyle routingStyle;
+
+    /**
+     * The listener added in the DiagramEventBroker for the above routingStyle during the activation of this edit part.
+     * It is used to remove the listener during deactivation.
+     */
+    private NotificationPreCommitListener routingStyleNotificationPreCommitListener;
 
     /**
      * Creates a new <code>AbstractDiagramEdgeEditPart</code>.
@@ -1017,5 +1030,52 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
             return SiriusSnapToHelperUtil.getSnapHelper((org.eclipse.gef.GraphicalEditPart) this.getSource());
         }
         return super.getAdapter(key);
+    }
+
+    /**
+     * Get the routingStyle for which a listener is added in the DiagramEventBroker during the activation of this edit
+     * part.
+     * 
+     * @return the routingStyle for which a listener is added in the DiagramEventBroker during the activation
+     */
+    public RoutingStyle getRoutingStyle() {
+        return routingStyle;
+    }
+
+
+    /**
+     * Set the routing style for which a listener is added in the DiagramEventBroker during the activation of this edit
+     * part.<BR>
+     * Warning: This method is not supposed to be used elsewhere of the scope of
+     * {@link AbstractDiagramEdgeEditPart#activate()} method.
+     * 
+     * @param activatedRoutingStyle
+     *            the routingStyle to set
+     */
+    public void setRoutingStyle(RoutingStyle activatedRoutingStyle) {
+        this.routingStyle = activatedRoutingStyle;
+    }
+
+    /**
+     * Get the listener added in the DiagramEventBroker for the above routingStyle during the activation of this edit
+     * part.
+     * 
+     * @return the listener added in the DiagramEventBroker for the above routingStyle
+     */
+    public NotificationPreCommitListener getRoutingStyleNotificationPreCommitListener() {
+        return routingStyleNotificationPreCommitListener;
+    }
+
+    /**
+     * Set the listener added in the DiagramEventBroker for the above routingStyle during the activation of this edit
+     * part.<BR>
+     * Warning: This method is not supposed to be used elsewhere of the scope of
+     * {@link AbstractDiagramEdgeEditPart#activate()} method.
+     * 
+     * @param activatedRoutingStyleNotificationPreCommitListener
+     *            the activatedRoutingStyleNotificationPreCommitListener to set
+     */
+    public void setRoutingStyleNotificationPreCommitListener(NotificationPreCommitListener activatedRoutingStyleNotificationPreCommitListener) {
+        this.routingStyleNotificationPreCommitListener = activatedRoutingStyleNotificationPreCommitListener;
     }
 }

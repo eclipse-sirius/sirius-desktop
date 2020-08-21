@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -431,10 +431,14 @@ public final class DiagramEdgeEditPartOperation {
      * @param self
      *            the edge edit part.
      */
-    public static void activate(final IDiagramEdgeEditPart self) {
+    public static void activate(final AbstractDiagramEdgeEditPart self) {
         final DiagramEventBroker broker = DiagramEdgeEditPartOperation.getDiagramEventBroker(self);
         final RoutingStyle rstyle = (RoutingStyle) self.getNotationView().getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
         broker.addNotificationListener(rstyle, self.getEAdapterRoutingStyle());
+        // Store the broker data to ensure to be able to remove the added listener (not possible during deactivation in
+        // example of connection lost to a server)
+        self.setRoutingStyle(rstyle);
+        self.setRoutingStyleNotificationPreCommitListener(self.getEAdapterRoutingStyle());
         final IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(self.getEditingDomain().getResourceSet());
         auth.addAuthorityListener(self.getEditPartAuthorityListener());
         self.getEditPartAuthorityListener().refreshEditMode();
@@ -446,11 +450,11 @@ public final class DiagramEdgeEditPartOperation {
      * @param self
      *            the edge edit part.
      */
-    public static void deactivate(final IDiagramEdgeEditPart self) {
-        final DiagramEventBroker broker = DiagramEdgeEditPartOperation.getDiagramEventBroker(self);
-        if (self.getModel() != null && self.getNotationView().getStyle(NotationPackage.eINSTANCE.getRoutingStyle()) != null) {
-            final RoutingStyle rstyle = (RoutingStyle) self.getNotationView().getStyle(NotationPackage.eINSTANCE.getRoutingStyle());
-            broker.removeNotificationListener(rstyle, self.getEAdapterRoutingStyle());
+    public static void deactivate(final AbstractDiagramEdgeEditPart self) {
+        // Remove the broker listener (if added in activation)
+        if (self.getRoutingStyle() != null && self.getRoutingStyleNotificationPreCommitListener() != null) {
+            final DiagramEventBroker broker = DiagramEdgeEditPartOperation.getDiagramEventBroker(self);
+            broker.removeNotificationListener(self.getRoutingStyle(), self.getRoutingStyleNotificationPreCommitListener());
         }
         final IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(self.getEditingDomain().getResourceSet());
         auth.removeAuthorityListener(self.getEditPartAuthorityListener());
