@@ -111,6 +111,7 @@ import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
@@ -1130,18 +1131,18 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             final Iterator<EditPart> iterParts = getDiagramGraphicalViewer().getRootEditPart().getChildren().iterator();
             while (iterParts.hasNext()) {
                 final EditPart editPart = iterParts.next();
-                if (editPart.isActive() && editPart instanceof AbstractDDiagramEditPart && ((GraphicalEditPart) editPart).resolveSemanticElement() instanceof DSemanticDiagram) {
-                    final DSemanticDiagram semanticElement = (DSemanticDiagram) ((GraphicalEditPart) editPart).resolveSemanticElement();
-                    if (semanticElement != null && (semanticElement.eResource() == null || semanticElement.getTarget() == null || semanticElement.getTarget().eResource() == null)) {
-                        if (SessionManager.INSTANCE.getSession(semanticElement.getTarget()) != null) {
-                            /*
-                             * The element has been deleted, we should close the editor
-                             */
-                            myDialogFactory.editorWillBeClosedInformationDialog(getSite().getShell());
-                            close(false);
+                if (editPart.isActive() && editPart instanceof AbstractDDiagramEditPart) {
+                    Optional<DSemanticDiagram> optionalSemanticElement = getDSemanticDiagram((GraphicalEditPart) editPart);
+                    if (optionalSemanticElement.isPresent() && isSemanticDiagramOK(optionalSemanticElement.get())) {
+                        if (SessionManager.INSTANCE.getSession(optionalSemanticElement.get().getTarget()) != null) {
+                                /*
+                                 * The element has been deleted, we should close the editor
+                                 */
+                                myDialogFactory.editorWillBeClosedInformationDialog(getSite().getShell());
+                                close(false);
+                            }
+                            return;
                         }
-                        return;
-                    }
                 }
             }
 
@@ -1155,6 +1156,28 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
             setEclipseWindowTitle();
         }
+    }
+
+    private boolean isSemanticDiagramOK(DSemanticDiagram semanticDiagram) {
+        return semanticDiagram != null && (semanticDiagram.eResource() == null || semanticDiagram.getTarget() == null || semanticDiagram.getTarget().eResource() == null);
+    }
+
+    private Optional<DSemanticDiagram> getDSemanticDiagram(GraphicalEditPart editPart) {
+        EObject resolveSemanticElement = null;
+        try {
+            resolveSemanticElement = editPart.resolveSemanticElement();
+        } catch (IllegalStateException e) {
+            if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+                // Nothing to log here, this can happen if the resource is not accessible anymore (distant
+                // resource). An empty optional will be returned.
+            } else {
+                throw e;
+            }
+        }
+        if (resolveSemanticElement instanceof DSemanticDiagram) {
+            return Optional.of((DSemanticDiagram) resolveSemanticElement);
+        }
+        return Optional.empty();
     }
 
     private void setEclipseWindowTitle() {

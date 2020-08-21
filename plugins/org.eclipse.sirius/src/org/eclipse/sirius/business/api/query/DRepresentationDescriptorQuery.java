@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -93,7 +94,15 @@ public class DRepresentationDescriptorQuery {
      * @return true if the representation is valid
      */
     public boolean isRepresentationValid() {
-        return !isDangling() && isRepresentationReachable();
+        try {
+            return !isDangling() && isRepresentationReachable();
+        } catch (IllegalStateException e) {
+            if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+                return false;
+            } else {
+                throw e;
+            }
+        }
     }
 
 }

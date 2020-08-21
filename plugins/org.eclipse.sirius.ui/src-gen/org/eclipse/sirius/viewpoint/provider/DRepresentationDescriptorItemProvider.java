@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,8 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
+import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
@@ -178,15 +180,21 @@ public class DRepresentationDescriptorItemProvider extends IdentifiedElementItem
     @Override
     public Object getImage(Object object) {
         Object image = null;
-        if (object instanceof DRepresentationDescriptor) {
-            DRepresentationDescriptor descriptor = (DRepresentationDescriptor) object;
-            RepresentationDescription description = descriptor.getDescription();
-            if (description != null) {
-                // Retrieve the dialect image.
-                final IItemLabelProvider labelProvider = (IItemLabelProvider) getRootAdapterFactory().adapt(description, IItemLabelProvider.class);
-                if (labelProvider != null) {
-                    image = labelProvider.getImage(description);
+        try {
+            if (object instanceof DRepresentationDescriptor) {
+                DRepresentationDescriptor descriptor = (DRepresentationDescriptor) object;
+                RepresentationDescription description = descriptor.getDescription();
+                if (description != null) {
+                    // Retrieve the dialect image.
+                    final IItemLabelProvider labelProvider = (IItemLabelProvider) getRootAdapterFactory().adapt(description, IItemLabelProvider.class);
+                    if (labelProvider != null) {
+                        image = labelProvider.getImage(description);
+                    }
                 }
+            }
+        } catch (IllegalStateException e) {
+            if (!new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+                throw e;
             }
         }
         if (image == null) {
@@ -202,21 +210,29 @@ public class DRepresentationDescriptorItemProvider extends IdentifiedElementItem
      */
     @Override
     public String getText(Object object) {
-        String label = ((DRepresentationDescriptor) object).getName();
-        if (label == null || label.isEmpty()) {
-            EObject objectToAdapt = ((DRepresentationDescriptor) object).getRepresentation();
-            if (objectToAdapt == null) {
-                // Retrieve the description name.
-                objectToAdapt = ((DRepresentationDescriptor) object).getDescription();
-            }
-            if (objectToAdapt != null) {
-                final IItemLabelProvider labelProvider = (IItemLabelProvider) getRootAdapterFactory().adapt(objectToAdapt, IItemLabelProvider.class);
-                if (labelProvider != null) {
-                    label = labelProvider.getText(objectToAdapt);
+        try {
+            String label = ((DRepresentationDescriptor) object).getName();
+            if (label == null || label.isEmpty()) {
+                EObject objectToAdapt = ((DRepresentationDescriptor) object).getRepresentation();
+                if (objectToAdapt == null) {
+                    // Retrieve the description name.
+                    objectToAdapt = ((DRepresentationDescriptor) object).getDescription();
+                }
+                if (objectToAdapt != null) {
+                    final IItemLabelProvider labelProvider = (IItemLabelProvider) getRootAdapterFactory().adapt(objectToAdapt, IItemLabelProvider.class);
+                    if (labelProvider != null) {
+                        label = labelProvider.getText(objectToAdapt);
+                    }
                 }
             }
+            return label;
+        } catch (IllegalStateException e) {
+            if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+                return StringUtil.EMPTY_STRING;
+            } else {
+                throw e;
+            }
         }
-        return label;
     }
 
     /**

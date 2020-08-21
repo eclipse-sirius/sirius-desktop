@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.jface.viewers.ColumnLabelProvider;
+import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.swt.graphics.Image;
 
@@ -72,12 +73,22 @@ public class DSemanticTargetBasedLabelProvider extends ColumnLabelProvider {
      */
     @Override
     public Image getImage(final Object element) {
-        final EObject target = getTarget(element);
-        if (target == null) {
-            return super.getImage(element);
-        } else {
-            return adapterFactoryLabelProvider.getImage(target);
+        Image image = null;
+        try {
+            final EObject target = getTarget(element);
+            if (target == null) {
+                image = super.getImage(element);
+            } else {
+                image = adapterFactoryLabelProvider.getImage(target);
+            }
+        } catch (IllegalStateException e) {
+            if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+                // Do nothing, just return null
+            } else {
+                throw e;
+            }
         }
+        return image;
     }
 
     /**
