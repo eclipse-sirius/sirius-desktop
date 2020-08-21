@@ -11,6 +11,18 @@ h3. Developer-Visible Changes
 h4. Changes in  @org.eclipse.sirius.common@
 
 * <span class="label label-success">Added</span> A new method, @org.eclipse.sirius.common.tools.api.util.CommandStackUtil.flushOperations(CommandStack)@ has been added to flush the command stack. By default the @CommandStack.flush()@ "disposes all the commands in the stack". Concretely, it removes the default context from the list of contexts of all operations. And operations without context, after this, are removed from history. In several cases, it is not enough. The @ResourceUndoContext@ must also be removed. This is what this method done to really removed operations from IOperationHistory. This method was already used in @org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl@, it has been extracted from here.
+* <span class="label label-success">Added</span> A new query, @org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery.isAConnectionLostException()@, has been added to detect a specific kind of @IllegalStateException@. In a collaborative environment, Obeo Designer Team Edition or Team For Capella for example, when the data is hosted on a server, the connection with the server can be lost. Sirius is not ready to handle this context. If Sirius tries to access to data, for example with an async refresh of the UI that needs information from data to be refreshed, a @org.eclipse.net4j.util.lifecycle.LifecycleException@ is thrown with the message @"Not active: CDOTransactionImpl"@. This kind of errors is showed to the end-user instead of silently be caught. Indeed, in this situation, the UI should be refreshed with "blank data" instead of displaying an "incomprehensible" popup to the end-user. This new query allows to detect this specific case. The template to use it is:
+
+bc.. 
+try {
+    //code to protect
+} catch (IllegalStateException e) {
+	if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+	    // Generally catch silently the exception
+	} else {
+	    throw e;
+	}
+}
 
 h4. Changes in  @org.eclipse.sirius.tests.junit.support@
 

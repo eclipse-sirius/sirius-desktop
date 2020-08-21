@@ -146,7 +146,24 @@
 				<code>ResourceUndoContext</code> must also be removed. This is what this method done to really removed operations from IOperationHistory. This method was already used in 
 				<code>org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl</code>, it has been extracted from here.
 			</li>
+			<li><span class="label label-success">Added</span> A new query, 
+				<code>org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery.isAConnectionLostException()</code>, has been added to detect a specific kind of 
+				<code>IllegalStateException</code>. In a collaborative environment, Obeo Designer Team Edition or Team For Capella for example, when the data is hosted on a server, the connection with the server can be lost. Sirius is not ready to handle this context. If Sirius tries to access to data, for example with an async refresh of the UI that needs information from data to be refreshed, a 
+				<code>org.eclipse.net4j.util.lifecycle.LifecycleException</code> is thrown with the message 
+				<code>"Not active: CDOTransactionImpl"</code>. This kind of errors is showed to the end-user instead of silently be caught. Indeed, in this situation, the UI should be refreshed with &#8220;blank data&#8221; instead of displaying an &#8220;incomprehensible&#8221; popup to the end-user. This new query allows to detect this specific case. The template to use it is:
+			</li>
 		</ul>
+		<pre><code>try {
+    //code to protect
+} catch (IllegalStateException e) {
+	if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+	    // Generally catch silently the exception
+	} else {
+	    throw e;
+	}
+}
+
+</code></pre>
 		<h4 id="Changesinorg.eclipse.sirius.tests.junit.support">Changes in  
 			<code>org.eclipse.sirius.tests.junit.support</code>
 		</h4>
