@@ -16,6 +16,7 @@ import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
 import org.eclipse.sirius.diagram.BorderedStyle;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IContainerLabelOffsets;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.LabelBorderStyleIds;
@@ -188,7 +189,11 @@ public class ContainerWithTitleBlockFigure extends SiriusDefaultSizeNodeFigure {
                 }
             }
         } catch (IllegalStateException e) {
-            // We do not log this exception that might be caused by an unreachable distant resource.
+            if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+                // We do not log this exception that might be caused by an unreachable distant resource.
+            } else {
+                throw e;
+            }
         }
         return ColorConstants.black;
     }
@@ -205,7 +210,11 @@ public class ContainerWithTitleBlockFigure extends SiriusDefaultSizeNodeFigure {
                 return Math.max(((BorderedStyle) viewNode.getStyle()).getBorderSize(), 1);
             }
         } catch (IllegalStateException e) {
-            // We do not log this exception that might be caused by an unreachable distant resource.
+            if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+                // We do not log this exception that might be caused by an unreachable distant resource.
+            } else {
+                throw e;
+            }
         }
         return 1;
     }
@@ -222,7 +231,11 @@ public class ContainerWithTitleBlockFigure extends SiriusDefaultSizeNodeFigure {
                 alignment = ((LabelStyle) viewNode.getStyle()).getLabelAlignment();
             }
         } catch (IllegalStateException e) {
-            // We do not log this exception that might be caused by an unreachable distant resource.
+            if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+                // We do not log this exception that might be caused by an unreachable distant resource.
+            } else {
+                throw e;
+            }
         }
         return alignment;
     }

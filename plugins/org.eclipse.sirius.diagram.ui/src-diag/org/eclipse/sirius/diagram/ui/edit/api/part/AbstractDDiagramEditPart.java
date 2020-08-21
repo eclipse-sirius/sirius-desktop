@@ -44,6 +44,7 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -120,7 +121,11 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
         try {
             resolveSemanticElement = resolveSemanticElement();
         } catch (IllegalStateException e) {
-            // Nothing to log here, this can happen if the resource is not accessible anymore (distant resource).
+            if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+                // Nothing to log here, this can happen if the resource is not accessible anymore (distant resource).
+            } else {
+                throw e;
+            }
         }
         if (resolveSemanticElement instanceof DDiagram) {
             return Options.newSome((DDiagram) resolveSemanticElement);
