@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2004, 2012 IBM Corporation and others.
+ * Copyright (c) 2004, 2012, 2020 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,7 @@ import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
-import org.eclipse.ui.internal.misc.StringMatcher;
+import org.eclipse.ui.dialogs.SearchPattern;
 
 import com.ibm.icu.text.BreakIterator;
 
@@ -61,7 +61,7 @@ public class PatternFilter extends ViewerFilter {
     /**
      * The string pattern matcher used for this pattern filter.  
      */
-    private StringMatcher matcher;
+    private SearchPattern matcher;
     
     private boolean useEarlyReturnIfMatcherIsNull = true;
     
@@ -186,7 +186,8 @@ public class PatternFilter extends ViewerFilter {
             if (includeLeadingWildcard) {
                 pattern = "*" + pattern; //$NON-NLS-1$
             }
-            matcher = new StringMatcher(pattern, true, false);
+            matcher = new SearchPattern();
+            matcher.setPattern(pattern);
         }
     }
 
@@ -210,7 +211,7 @@ public class PatternFilter extends ViewerFilter {
         if (matcher == null) {
             return true;
         }
-        return matcher.match(string);
+        return matcher.matches(string);
     }
     
     /**
