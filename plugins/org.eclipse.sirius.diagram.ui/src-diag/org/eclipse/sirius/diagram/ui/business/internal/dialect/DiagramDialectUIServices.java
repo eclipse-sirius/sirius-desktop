@@ -295,6 +295,22 @@ public class DiagramDialectUIServices implements DialectUIServices {
             }
 
             try {
+                // Call a preClose in sync mode before calling the real close that is done in async
+                if (editorPart instanceof DialectEditor) {
+                    Display display = Display.getCurrent();
+                    if (display == null) {
+                        display = PlatformUI.getWorkbench().getDisplay();
+                    }
+                    if (!display.isDisposed()) {
+                        display.syncExec(new Runnable() {
+                            public void run() {
+                                if (!PlatformUI.getWorkbench().isClosing()) {
+                                    ((DialectEditor) editorPart).preClose();
+                                }
+                            }
+                        });
+                    }
+                }
                 ((DiagramDocumentEditor) editorPart).close(save);
             } catch (final NullPointerException e) {
                 // we might have an exception closing an editor which is

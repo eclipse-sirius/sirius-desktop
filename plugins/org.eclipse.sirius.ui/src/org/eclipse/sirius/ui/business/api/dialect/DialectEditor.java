@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -65,5 +65,12 @@ public interface DialectEditor extends ISiriusEditor {
      * @since 0.9.0
      */
     DialectEditorDialogFactory getDialogFactory();
-
+    
+    /**
+     * Method that is called in sync when the editor is asking to be closed (the real close is done in async). This
+     * allows to dispose actions, for example, as soos as the close is requested.
+     */
+    default void preClose() {
+        // Do nothing by default;
+    }
 }

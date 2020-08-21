@@ -53,6 +53,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.impl.TransactionImpl;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.gef.DefaultEditDomain;
+import org.eclipse.gef.Disposable;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.GraphicalViewer;
@@ -225,6 +226,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IEditorReference;
@@ -241,7 +243,9 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.Saveable;
+import org.eclipse.ui.SubActionBars;
 import org.eclipse.ui.actions.ActionFactory;
+import org.eclipse.ui.internal.PartSite;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.IPage;
 import org.eclipse.ui.views.contentoutline.ContentOutline;
@@ -2028,5 +2032,38 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     @Override
     public void rebuildStatusLine() {
         super.rebuildStatusLine();
+    }
+    
+    /**
+     * This method dispose all the actions that can be potentially be notified between the asking of closing of an
+     * editor and the real closing of it. Indeed the close of an editor is done in async and in case of a server lost,
+     * with Sirius used in a collaborative context, these actions can be notified/refreshed with a wrong context causing
+     * a lot of exceptions.
+     */
+    @Override
+    public void preClose() {
+        // Dispose the tabbar (and all associated actions)
+        if (getTabbar() != null) {
+            getTabbar().dispose();
+            setTabbar(null);
+        }
+        // Dispose the actions of "standard Eclipse"
+        if (getSite() instanceof PartSite) {
+            IActionBars actionBars = ((PartSite) getSite()).getActionBars();
+            if (actionBars instanceof SubActionBars) {
+                ((SubActionBars) actionBars).dispose();
+            } else {
+                ((PartSite) getSite()).deactivateActionBars(false);
+            }
+        }
+        // Dispose all the action registered as dependent on changes in the workbench's {@link ISelectionService}
+        for (Object actionID : getSelectionActions()) {
+            if (actionID instanceof String) {
+                IAction action = getActionRegistry().getAction(actionID);
+                if (action instanceof Disposable) {
+                    ((Disposable) action).dispose();
+                }
+            }
+        }
     }
 }

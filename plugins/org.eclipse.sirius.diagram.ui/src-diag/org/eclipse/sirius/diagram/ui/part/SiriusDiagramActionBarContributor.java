@@ -65,6 +65,8 @@ import org.osgi.framework.Version;
  */
 public class SiriusDiagramActionBarContributor extends DiagramActionBarContributor {
 
+    boolean disposed;
+
     /**
      * @was-generated
      */
@@ -463,5 +465,17 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
 
     private boolean isOldUIEnabled() {
         return Platform.getPreferencesService().getBoolean(DiagramUIPlugin.ID, SiriusDiagramUiPreferencesKeys.PREF_OLD_UI.name(), false, null);
+    }
+
+    @Override
+    public void dispose() {
+        // In Sirius, we called the dispose in method
+        // org.eclipse.sirius.diagram.ui.tools.internal.editor.DDiagramEditorImpl.preClose() to be sure that the
+        // actions are not "refreshed" after the async close of an editor. But when the editor is really closed, the
+        // dispose would be called a second time (not necessary).
+        if (!disposed) {
+            disposed = true;
+            super.dispose();
+        }
     }
 }

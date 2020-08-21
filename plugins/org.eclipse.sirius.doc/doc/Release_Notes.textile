@@ -24,6 +24,10 @@ try {
 	}
 }
 
+h4. Changes in  @org.eclipse.sirius.ui@
+
+* <span class="label label-success">Added</span> A new method, @preClose()@ has been added in @org.eclipse.sirius.ui.business.api.dialect.DialectEditor@. This method is called in sync when the editor is asking to be closed (the real close is done in async). This allows to dispose actions, for example, as soos as the close is requested. There is a default implementation, that does nothing, for all dialect editors.
+
 h4. Changes in  @org.eclipse.sirius.tests.junit.support@
 
 * <span class="label label-success">Added</span> New methods have been added to @org.eclipse.sirius.tests.support.api.TestsUtil@ to check the current Java runtime version. The parameter is the expected version of Java, i.e: ...7, 8, 9, ..., 13, 14, ...
