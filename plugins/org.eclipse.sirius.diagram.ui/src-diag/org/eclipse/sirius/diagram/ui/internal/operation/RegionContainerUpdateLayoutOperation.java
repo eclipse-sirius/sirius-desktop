@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2020 THALES GLOBAL SERVICES and others.
  *  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -265,7 +265,7 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
      * <ul>
      * <li>If it is fixed by the end-user both width and height will be different than -1.</li>
      * <li>If it is fixed in the VSM, it is possible that only one value is different that -1, but in this case, only
-     * one size is interesting according to stack orietation.</li>
+     * one size is interesting according to stack orientation.</li>
      * </ul>
      * 
      * @param regionsContainerSize
@@ -281,9 +281,9 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
             if (element instanceof DNodeContainer) {
                 DNodeContainer dnc = (DNodeContainer) element;
                 if (isVertical && regionsContainerSize.getHeight() != -1) {
-                    result = regionsContainerSize.getHeight() == dnc.getHeight();
+                    result = dnc.getHeight() != null && regionsContainerSize.getHeight() == dnc.getHeight();
                 } else if (!isVertical && regionsContainerSize.getWidth() != -1) {
-                    result = regionsContainerSize.getWidth() == dnc.getWidth();
+                    result = dnc.getWidth() != null && regionsContainerSize.getWidth() == dnc.getWidth();
                 }
             }
         }
