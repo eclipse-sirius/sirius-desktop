@@ -68,7 +68,7 @@
     <sonar.coverage.exclusions>${project.basedir}/../../plugins/org.eclipse.sirius.sample*/**/*.java,${project.basedir}/../../plugins/org.eclipse.sirius.tests*/**/*.java,</sonar.coverage.exclusions>
   </properties>
 
-<!--Add specific repositories, pluginRepositories and dependencies for Acceleo3 compilation. See http://wiki.eclipse.org/Acceleo/Maven for more details. -->
+  <!--Add specific repositories, pluginRepositories and dependencies for Acceleo3 compilation. See http://wiki.eclipse.org/Acceleo/Maven for more details. -->
   <repositories>
     <repository>
       <id>Eclipse - Acceleo Release</id>
@@ -90,6 +90,19 @@
       <version>3.5.2</version>
     </dependency>
   </dependencies>
+
+  <distributionManagement>
+    <repository>
+      <id>repo.eclipse.org</id>
+      <name>Sirius Repository - Releases</name>
+      <url>https://repo.eclipse.org/content/repositories/sirius-releases/</url>
+    </repository>
+    <snapshotRepository>
+      <id>repo.eclipse.org</id>
+      <name>Sirius Repository - Snapshots</name>
+      <url>https://repo.eclipse.org/content/repositories/sirius-snapshots/</url>
+    </snapshotRepository>
+  </distributionManagement>
 
   <modules>
     <!-- All modules are contributed by specific profiles, see below. -->
