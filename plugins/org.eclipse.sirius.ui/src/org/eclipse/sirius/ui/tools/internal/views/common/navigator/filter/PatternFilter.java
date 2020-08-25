@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2004, 2009 IBM Corporation and others.
+ * Copyright (c) 2004, 2009, 2020 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,7 +38,7 @@ import org.eclipse.sirius.ui.tools.api.views.common.item.RepresentationDescripti
 import org.eclipse.sirius.ui.tools.api.views.common.item.ResourcesFolderItem;
 import org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointsFolderItem;
 import org.eclipse.ui.IWorkingSet;
-import org.eclipse.ui.internal.misc.StringMatcher;
+import org.eclipse.ui.dialogs.SearchPattern;
 import org.eclipse.ui.navigator.CommonViewer;
 
 /**
@@ -86,7 +86,7 @@ public class PatternFilter extends ViewerFilter {
     /**
      * The string pattern matcher used for this pattern filter.
      */
-    private StringMatcher matcher;
+    private SearchPattern matcher;
 
     private boolean useEarlyReturnIfMatcherIsNull = true;
 
@@ -220,7 +220,8 @@ public class PatternFilter extends ViewerFilter {
             if (includeLeadingWildcard) {
                 pattern = "*" + pattern; //$NON-NLS-1$
             }
-            matcher = new StringMatcher(pattern, true, false);
+            matcher = new SearchPattern();
+            matcher.setPattern(pattern);
         }
     }
 
@@ -245,7 +246,7 @@ public class PatternFilter extends ViewerFilter {
         if (matcher == null) {
             return true;
         }
-        return matcher.match(string);
+        return matcher.matches(string);
     }
 
     /**
