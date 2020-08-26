@@ -12,6 +12,13 @@ h4. Changes in  @org.eclipse.sirius.common@
 
 * <span class="label label-success">Added</span> A new method, @org.eclipse.sirius.common.tools.api.util.CommandStackUtil.flushOperations(CommandStack)@ has been added to flush the command stack. By default the @CommandStack.flush()@ "disposes all the commands in the stack". Concretely, it removes the default context from the list of contexts of all operations. And operations without context, after this, are removed from history. In several cases, it is not enough. The @ResourceUndoContext@ must also be removed. This is what this method done to really removed operations from IOperationHistory. This method was already used in @org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl@, it has been extracted from here.
 
+h4. Changes in  @org.eclipse.sirius.tests.junit.support@
+
+* <span class="label label-success">Added</span> New methods have been added to @org.eclipse.sirius.tests.support.api.TestsUtil@ to check the current Java runtime version. The parameter is the expected version of Java, i.e: ...7, 8, 9, ..., 13, 14, ...
+** @isJavaVersion(int)@
+** @isJavaVersionOrOlder(int)@
+** @isJavaVersionOrNewer(int)@
+
 h2(#sirius6.3.2). Changes in Sirius 6.3.2
 
 h3. User-Visible Changes

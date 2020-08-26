@@ -424,4 +424,58 @@ public final class TestsUtil {
             job.join();
         }
     }
+
+    /**
+     * Tells if the current java runtime version is the expected one.
+     * 
+     * @param expectedVersion
+     *            The expected version (i.e. 7, 8, 9, 10..., 14, ...)
+     * 
+     * @return true if the current java runtime version is the expected one, false otherwise.
+     */
+    public static boolean isJavaVersion(int expectedVersion) {
+        return getJavaRuntimeVersion() == expectedVersion;
+    }
+
+    /**
+     * Tells if the current java runtime version is the expected one or older.
+     * 
+     * @param expectedVersion
+     *            The expected version (i.e. 7, 8, 9, 10..., 14, ...)
+     * 
+     * @return true if the current java runtime version is 8 or lower, false otherwise.
+     */
+    public static boolean isJavaVersionOrOlder(int expectedVersion) {
+        return getJavaRuntimeVersion() <= expectedVersion;
+    }
+
+    /**
+     * Tells if the current java runtime version is the expected one or older.
+     * 
+     * @param expectedVersion
+     *            The expected version (i.e. 7, 8, 9, 10..., 14, ...)
+     * 
+     * @return true if the current java runtime version is 8 or lower, false otherwise.
+     */
+    public static boolean isJavaVersionOrNewer(int expectedVersion) {
+        return getJavaRuntimeVersion() >= expectedVersion;
+    }
+
+    /**
+     * Return the java version according to convention changes (starting with "1." or not).
+     * 
+     * @return The java version.
+     */
+    private static int getJavaRuntimeVersion() {
+        String version = System.getProperty("java.version");
+        if (version.startsWith("1.")) {
+            version = version.substring(2, 3);
+        } else {
+            int dot = version.indexOf(".");
+            if (dot != -1) {
+                version = version.substring(0, dot);
+            }
+        }
+        return Integer.parseInt(version);
+    }
 }
