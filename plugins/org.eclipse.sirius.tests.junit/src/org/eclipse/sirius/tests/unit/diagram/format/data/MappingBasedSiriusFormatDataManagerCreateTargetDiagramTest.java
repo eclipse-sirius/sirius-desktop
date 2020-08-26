@@ -127,7 +127,7 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest extends 
 
     /**
      * Test method, generate new diagram with mapping = subset of elements
-     * 
+     *
      * @throws Exception
      *             Test error.
      */

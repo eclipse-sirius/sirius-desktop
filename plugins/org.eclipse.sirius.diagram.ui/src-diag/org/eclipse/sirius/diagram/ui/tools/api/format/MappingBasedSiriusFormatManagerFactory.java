@@ -24,11 +24,13 @@ import java.util.Set;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.core.services.ViewService;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewType;
+import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditDomain;
 import org.eclipse.gmf.runtime.notation.Diagram;
@@ -48,6 +50,7 @@ import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
 import org.eclipse.sirius.diagram.business.internal.dialect.NotYetOpenedDiagramAdapter;
+import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
@@ -55,6 +58,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.format.semantic.MappingBasedDiagr
 import org.eclipse.sirius.diagram.ui.tools.api.format.semantic.MappingBasedSiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
+import org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.diagram.util.MappingBasedSiriusFormatManagerFactoryUtil;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -86,7 +90,12 @@ public class MappingBasedSiriusFormatManagerFactory {
     protected MappingBasedSiriusFormatDataManager formatDataManager;
 
     /**
-     * gives access to the singleton instance of <code>MappingBasedSiriusFormatManagerFactory</code>.
+     * A map containing source diagram to target diagram copied notes and text notes.
+     */
+    protected Map<Node, Node> sourceToTargetNoteMap;
+
+    /**
+     * Gives access to the singleton instance of <code>MappingBasedSiriusFormatManagerFactory</code>.
      * 
      * @return the singleton instance
      */
@@ -118,22 +127,8 @@ public class MappingBasedSiriusFormatManagerFactory {
         // Check application correction
         checkApplyFormatOnDiagramCallCorrection(sourceDiagram, correspondenceMap, targetDiagram);
 
-        Collection<DiagramEditPart> sourceDiagramEditParts = getDiagramEditPart(sourceSession, sourceDiagram);
-        Collection<DiagramEditPart> targetDiagramEditParts = getDiagramEditPart(targetSession, targetDiagram);
-
-        if (!sourceDiagramEditParts.isEmpty() && !targetDiagramEditParts.isEmpty()) {
-            DiagramEditPart targetDiagramEditPart = targetDiagramEditParts.stream().findFirst().get();
-            synchronizeTargetDiagram(targetSession, (DSemanticDiagram) targetDiagram, targetDiagramEditPart);
-            // Apply format according to map
-            applyFormatOnDiagram(sourceDiagramEditParts.stream().findFirst().get(), correspondenceMap, targetDiagramEditPart);
-
-            synchronizeTargetDiagram(targetSession, (DSemanticDiagram) targetDiagram, targetDiagramEditPart);
-
-            // Copy notes if asked to
-            if (copyNotes) {
-                copyNotes(sourceDiagram, targetDiagram, targetSession);
-            }
-        }
+        // Apply format according to map
+        applyFormatAccordingToMap(sourceSession, sourceDiagram, correspondenceMap, targetSession, targetDiagram, copyNotes);
 
         return targetDiagram;
     }
@@ -171,33 +166,44 @@ public class MappingBasedSiriusFormatManagerFactory {
             populateDiagramFromSourceDiagram(sourceDiagram, correspondenceMap, targetSession, targetDiagram);
 
             // Apply format according to map
-            DiagramEditPart sourceDiagramEditPart = null;
-            DiagramEditPart targetDiagramEditPart = null;
-            try {
-                Collection<DiagramEditPart> targetDiagramEditParts = getDiagramEditPart(targetSession, diagramContentDuplicationSwitch.getTargetDiagram());
-                Collection<DiagramEditPart> sourceDiagramEditParts = getDiagramEditPart(sourceSession, sourceDiagram);
-                if (!sourceDiagramEditParts.isEmpty() && !targetDiagramEditParts.isEmpty()) {
-                    targetDiagramEditPart = targetDiagramEditParts.stream().findFirst().get();
-                    sourceDiagramEditPart = sourceDiagramEditParts.stream().findFirst().get();
-
-                    synchronizeTargetDiagram(targetSession, targetDiagram, targetDiagramEditPart);
-
-                    applyFormatOnDiagram(sourceDiagramEditPart, correspondenceMap, targetDiagramEditPart);
-
-                    // Copy notes if asked to
-                    if (copyNotes) {
-                        copyNotes(sourceDiagram, targetDiagram, targetSession);
-                    }
-                }
-            } finally {
-                cleanAndDispose(sourceDiagramEditPart);
-                cleanAndDispose(targetDiagramEditPart);
-            }
+            applyFormatAccordingToMap(sourceSession, sourceDiagram, correspondenceMap, targetSession, targetDiagram, copyNotes);
 
             return targetDiagram;
         }
         // TODO: log / feedback representation creation failed
         return null;
+    }
+
+    private void applyFormatAccordingToMap(Session sourceSession, DDiagram sourceDiagram, final Map<EObject, EObject> correspondenceMap, Session targetSession, DDiagram targetDiagram,
+            boolean copyNotes) {
+        DiagramEditPart sourceDiagramEditPart = null;
+        DiagramEditPart targetDiagramEditPart = null;
+        try {
+            Collection<DiagramEditPart> sourceDiagramEditParts = getDiagramEditPart(sourceSession, sourceDiagram);
+            Collection<DiagramEditPart> targetDiagramEditParts = getDiagramEditPart(targetSession, targetDiagram);
+
+            if (!sourceDiagramEditParts.isEmpty() && !targetDiagramEditParts.isEmpty()) {
+                sourceDiagramEditPart = sourceDiagramEditParts.stream().findFirst().get();
+                targetDiagramEditPart = targetDiagramEditParts.stream().findFirst().get();
+
+                synchronizeTargetDiagram(targetSession, (DSemanticDiagram) targetDiagram, targetDiagramEditPart);
+
+                // Apply format according to map
+                applyFormatOnDiagram(sourceDiagramEditPart, correspondenceMap, targetDiagramEditPart);
+
+                synchronizeTargetDiagram(targetSession, (DSemanticDiagram) targetDiagram, targetDiagramEditPart);
+
+                // Copy notes if asked to
+                if (copyNotes) {
+                    copyNotes(sourceDiagram, targetDiagram, targetSession);
+                }
+
+                copyNodeDepthPositions(sourceDiagram, targetDiagram, copyNotes);
+            }
+        } finally {
+            cleanAndDispose(sourceDiagramEditPart);
+            cleanAndDispose(targetDiagramEditPart);
+        }
     }
 
     /**
@@ -365,21 +371,18 @@ public class MappingBasedSiriusFormatManagerFactory {
      */
     protected void copyNotes(DDiagram sourceDiagram, DDiagram targetDiagram, Session targetSession) {
         // Get GMF diagrams
-        final DiagramCreationUtil sourceDiagramUtil = new DiagramCreationUtil(sourceDiagram);
-        if (!sourceDiagramUtil.findAssociatedGMFDiagram()) {
-            sourceDiagramUtil.createNewGMFDiagram();
-        }
-        final Diagram sourceGMFDiagram = sourceDiagramUtil.getAssociatedGMFDiagram();
-        final DiagramCreationUtil targetDiagramUtil = new DiagramCreationUtil(targetDiagram);
-        if (!targetDiagramUtil.findAssociatedGMFDiagram()) {
-            targetDiagramUtil.createNewGMFDiagram();
-        }
-        final Diagram targetGMFDiagram = targetDiagramUtil.getAssociatedGMFDiagram();
+        final Diagram sourceGMFDiagram = MappingBasedSiriusFormatManagerFactoryUtil.getGMFDiagram(sourceDiagram);
+        final Diagram targetGMFDiagram = MappingBasedSiriusFormatManagerFactoryUtil.getGMFDiagram(targetDiagram);
 
         // Get all notes
         Collection<Node> sourceNotes = GMFNotationHelper.getNotes(sourceGMFDiagram);
         sourceNotes.addAll(GMFNotationHelper.getTextNotes(sourceGMFDiagram));
-        Map<Node, Node> sourceToTargetNoteMap = new HashMap<Node, Node>();
+
+        // Initialize and clear sourceToTargetNoteMap
+        if (sourceToTargetNoteMap == null) {
+            sourceToTargetNoteMap = new HashMap<Node, Node>();
+        }
+        sourceToTargetNoteMap.clear();
 
         // Duplicate notes into target diagram and apply source note style
         sourceNotes.forEach(sourceNote -> {
@@ -419,7 +422,7 @@ public class MappingBasedSiriusFormatManagerFactory {
                 nodeAttachment = (Node) attach.getTarget();
                 noteIsSource = false;
             }
-            duplicateNoteAttachment(attach, sourceToTargetNoteMap.get(nodeAttachment), targetSession, sourceToTargetNoteMap, noteIsSource);
+            duplicateNoteAttachment(attach, sourceToTargetNoteMap.get(nodeAttachment), targetSession, noteIsSource);
         });
 
     }
@@ -457,10 +460,9 @@ public class MappingBasedSiriusFormatManagerFactory {
      * @param sourceEdges
      * @param targetNote
      * @param targetSession
-     * @param sourceToTargetNoteMap
      * @param targetNoteIsSource
      */
-    private void duplicateNoteAttachment(Edge edge, Node targetNote, Session targetSession, Map<Node, Node> sourceToTargetNoteMap, boolean targetNoteIsSource) {
+    private void duplicateNoteAttachment(Edge edge, Node targetNote, Session targetSession, boolean targetNoteIsSource) {
         View sourceEdgeOtherBoundView = targetNoteIsSource ? edge.getTarget() : edge.getSource();
         EObject sourceEdgeOtherBoundElement = sourceEdgeOtherBoundView.getElement();
         View matchingTargetElement = null;
@@ -542,6 +544,71 @@ public class MappingBasedSiriusFormatManagerFactory {
         formatDataManager = new MappingBasedSiriusFormatDataManager(correspondenceMap);
         formatDataManager.storeFormatData(sourceDiagramEditPart);
         formatDataManager.applyFormat(targetDiagramEditPart);
+    }
+
+    private void copyNodeDepthPositions(DDiagram sourceDiagram, DDiagram targetDiagram, Boolean copyNotes) {
+        // Get GMF diagrams
+        final Diagram sourceGMFDiagram = MappingBasedSiriusFormatManagerFactoryUtil.getGMFDiagram(sourceDiagram);
+
+        List<DDiagramElement> allDiagramElements = sourceDiagram.getDiagramElements();
+        List<View> allSourceViews = new ArrayList<View>();
+        List<View> allTargetViews = new ArrayList<View>();
+        Map<View, View> allSourceToTargetView = new HashMap<View, View>();
+        List<View> sourceViewForSynchronizedMappingElements = new ArrayList<View>();
+        allDiagramElements.forEach(dE -> {
+            DDiagramElement targetDE = diagramContentDuplicationSwitch.getSourceDDiagramElementToTargetDDiagramElementMap().get(dE);
+            if (targetDE != null) {
+                View sourceView = SiriusGMFHelper.getGmfView(dE);
+                allSourceViews.add(sourceView);
+                View targetView = SiriusGMFHelper.getGmfView(targetDE);
+                allTargetViews.add(targetView);
+                allSourceToTargetView.put(sourceView, targetView);
+                MappingBasedSiriusFormatManagerFactoryUtil.addParentViewContainersToMap(sourceView, targetView, allSourceToTargetView);
+            } else if ((dE.getMapping()) instanceof DiagramElementMapping && ((DiagramElementMapping) dE.getMapping()).isCreateElements()) {
+                // We store the view for the diagram elements of the source diagram that are not specified in the layout
+                // application mapping function but will be created from a synchronized mapping.
+                sourceViewForSynchronizedMappingElements.add(SiriusGMFHelper.getGmfView(dE));
+            }
+        });
+
+        if (copyNotes) {
+            // Get notes views
+            GMFNotationHelper.getNotes(sourceGMFDiagram).forEach(sourceNote -> {
+                Node targetNote = sourceToTargetNoteMap.get(sourceNote);
+                allSourceViews.add(sourceNote);
+                allTargetViews.add(targetNote);
+                allSourceToTargetView.put(sourceNote, targetNote);
+                MappingBasedSiriusFormatManagerFactoryUtil.addParentViewContainersToMap(sourceNote, targetNote, allSourceToTargetView);
+            });
+            // Get text note views
+            Collection<Node> diagramTextNotes = GMFNotationHelper.getTextNotes(sourceGMFDiagram);
+            diagramTextNotes.stream().filter(sourceTextNote -> sourceGMFDiagram.getChildren().contains(sourceTextNote)).forEach(sourceTextNote -> {
+                Node targetTextNote = sourceToTargetNoteMap.get(sourceTextNote);
+                allSourceViews.add(sourceTextNote);
+                allTargetViews.add(targetTextNote);
+                allSourceToTargetView.put(sourceTextNote, targetTextNote);
+                MappingBasedSiriusFormatManagerFactoryUtil.addParentViewContainersToMap(sourceTextNote, targetTextNote, allSourceToTargetView);
+            });
+        }
+
+        if (!allSourceViews.isEmpty()) {
+            // Order target diagram Views based on source diagram views
+            allSourceViews.forEach(source -> {
+                int insertIndex = 0;
+                // For each children linked to an element, reorder according to source order
+                EList<View> sourceContainerChildrens = ((View) source.eContainer()).getChildren();
+                View target = allSourceToTargetView.get(source);
+                for (View sourceContainerChild : sourceContainerChildrens) {
+                    if (sourceContainerChild.equals(source)) {
+                        ViewUtil.repositionChildAt((View) target.eContainer(), target, insertIndex);
+                        break;
+                    }
+                    if (allSourceToTargetView.containsKey(sourceContainerChild) || sourceViewForSynchronizedMappingElements.contains(sourceContainerChild)) {
+                        insertIndex++;
+                    }
+                }
+            });
+        }
     }
 
     /**
