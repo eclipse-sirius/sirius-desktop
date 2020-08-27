@@ -44,10 +44,13 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
+import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
+import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
 import org.eclipse.sirius.diagram.business.internal.dialect.NotYetOpenedDiagramAdapter;
+import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
@@ -210,10 +213,35 @@ public class MappingBasedSiriusFormatManagerFactory {
                 }
 
                 MappingBasedSiriusFormatManagerFactoryHelper.applyNodeDepthPositions(sourceDiagram, targetDiagram, copyNotes, diagramContentDuplicationSwitch, sourceToTargetNoteMap);
+
+                // Apply filters and layers state on target diagram
+                applyFiltersAndLayersState(sourceDiagram, targetDiagram);
+
+                synchronizeTargetDiagram(targetSession, (DSemanticDiagram) targetDiagram, targetDiagramEditPart);
             }
         } finally {
             cleanAndDispose(sourceDiagramEditPart);
             cleanAndDispose(targetDiagramEditPart);
+        }
+    }
+
+    private void applyFiltersAndLayersState(DDiagram sourceDiagram, DDiagram targetDiagram) {
+        DisplayServiceManager.INSTANCE.getDisplayService().refreshAllElementsVisibility(targetDiagram);
+        sourceDiagram.getActivatedLayers().forEach(layer -> {
+            targetDiagram.getActivatedLayers().add(layer);
+        });
+
+        targetDiagram.getActivatedFilters().clear();
+        targetDiagram.getActivatedFilters().addAll(sourceDiagram.getActivatedFilters());
+        // Execute same code as in
+        // org.eclipse.sirius.diagram.ui.business.internal.command.RefreshDiagramOnOpeningCommand.doExecute()
+        if (targetDiagram.getActivatedFilters().size() != 0) {
+            CompositeFilterApplicationBuilder builder = new CompositeFilterApplicationBuilder(targetDiagram);
+            builder.computeCompositeFilterApplications();
+        }
+
+        if (DisplayMode.NORMAL.equals(DisplayServiceManager.INSTANCE.getMode())) {
+            DisplayServiceManager.INSTANCE.getDisplayService().refreshAllElementsVisibility(targetDiagram);
         }
     }
 

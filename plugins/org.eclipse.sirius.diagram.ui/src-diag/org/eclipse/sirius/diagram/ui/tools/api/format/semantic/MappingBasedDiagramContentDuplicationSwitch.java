@@ -38,10 +38,6 @@ import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
-import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
-import org.eclipse.sirius.diagram.business.api.helper.display.DisplayService;
-import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
-import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
 import org.eclipse.sirius.diagram.business.internal.helper.decoration.DecorationHelperInternal;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
 import org.eclipse.sirius.diagram.business.internal.sync.DDiagramElementSynchronizer;
@@ -58,6 +54,7 @@ import org.eclipse.sirius.diagram.tools.api.refresh.BestMappingGetter;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.util.DiagramSwitch;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
@@ -75,6 +72,11 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
      * The diagram onto which we will copy elements.
      */
     DSemanticDiagram targetDiagram;
+
+    /**
+     * The diagram from which we will copy elements.
+     */
+    DDiagram sourceDiagram;
 
     /**
      * The current semantic element of the targetDiagram in which we will add sub diagram elements.
@@ -154,6 +156,7 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
         // Navigate
         EObject originalTargetContext = targetContext;
         this.targetContext = getTargetDiagram();
+        this.sourceDiagram = object;
         object.getOwnedDiagramElements().stream().forEach(elem -> {
             this.doSwitch(elem);
         });
@@ -313,7 +316,7 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
         DDiagramElement result = isAlreadyCreated(targetElement, bestMapping);
         if (result != null) {
             getSourceDDiagramElementToTargetDDiagramElementMap().put(sourceDElement, result);
-            result.setVisible(sourceDElement.isVisible());
+            replicateShowHideAndFiltersOnElement(sourceDElement, result);
         } else if (sourceDElement instanceof DEdge) {
             toBeDuplicatedEdges.add((DEdge) sourceDElement);
         } else {
@@ -330,17 +333,7 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
             if (createdTargetElement != null) {
                 AbstractNodeMappingSpecOperations.createBorderingNodes((AbstractNodeMapping) bestMapping, targetElement, createdTargetElement, Collections.emptyList(), getTargetDiagram());
 
-                final DisplayService service = DisplayServiceManager.INSTANCE.getDisplayService(DisplayMode.CREATION);
-                if (service != null) {
-                    createdTargetElement.setVisible(sourceDElement.isVisible());
-                    if (!service.computeLabelVisibility(getTargetDiagram(), createdTargetElement)) {
-                        HideFilterHelper.INSTANCE.hideLabel(createdTargetElement);
-                    }
-                }
-
-                // TODO: Deal with filters
-                // object.getGraphicalFilters()
-                // createdTargetElement.getGraphicalFilters() // find hide filter and copy from
+                replicateShowHideAndFiltersOnElement(sourceDElement, createdTargetElement);
 
                 getSourceDDiagramElementToTargetDDiagramElementMap().put(sourceDElement, createdTargetElement);
             } else {
@@ -350,6 +343,13 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
         }
 
         return result;
+    }
+
+    private void replicateShowHideAndFiltersOnElement(DDiagramElement sourceDElement, DDiagramElement targetDElement) {
+         targetDElement.getGraphicalFilters().clear();
+         targetDElement.getGraphicalFilters().addAll(SiriusCopierHelper.copyAllWithNoUidDuplication(sourceDElement.getGraphicalFilters()));
+
+         targetDElement.setVisible(sourceDElement.isVisible());
     }
 
     /**
@@ -446,7 +446,7 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
 
                 DEdge createdNewEdge = sync.createNewEdge(mappingManager, abstractDEdgeCandidate, mappingsToEdgeTargets, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration);
                 if (createdNewEdge != null) {
-                    createdNewEdge.setVisible(toHandleEdge.isVisible());
+                    replicateShowHideAndFiltersOnElement(toHandleEdge, createdNewEdge);
                     handledEdges.add(toHandleEdge);
                     getSourceDDiagramElementToTargetDDiagramElementMap().put(toHandleEdge, createdNewEdge);
                 } else {

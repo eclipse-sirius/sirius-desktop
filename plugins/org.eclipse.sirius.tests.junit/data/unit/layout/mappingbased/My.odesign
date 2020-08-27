@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="MyGroup" version="12.0.0.2017041100">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:filter="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0" xmlns:tool_1="http://www.eclipse.org/sirius/description/tool/1.1.0" name="MyGroup" version="12.0.0.2017041100">
   <ownedViewpoints name="TestLayoutCopy" modelFileExtension="ecore">
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagType1" titleExpression="aql:'DiagType1 of ' + self.name" domainClass="EPackage">
       <edgeMappings name="DT1_EReference" semanticCandidatesExpression="aql:self.eAllContents(ecore::EReference)->select(e| e.eOpposite = null)" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType1']/@containerMappings[name='DT1_Package']/@subNodeMappings[name='DT1_Class']" targetMapping="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType1']/@containerMappings[name='DT1_Package']/@subNodeMappings[name='DT1_Class']" targetFinderExpression="aql:self.eType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
@@ -172,6 +172,87 @@
           <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
         </style>
       </containerMappings>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagType2_filters_layers" titleExpression="aql:'DiagType2 filters and layers of ' + self.name" domainClass="EPackage">
+      <filters xsi:type="filter:CompositeFilterDescription" name="Hide legacy EReferences">
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@defaultLayer/@edgeMappings[name='DT2_EReference']"/>
+      </filters>
+      <defaultLayer name="Default">
+        <edgeMappings name="DT2_EReference" semanticCandidatesExpression="aql:self.eAllContents(ecore::EReference)->select(e| e.eOpposite = null)" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@defaultLayer/@containerMappings[name='DT2_Package_filters']/@subContainerMappings[name='DT2_Class_filters']" targetMapping="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@defaultLayer/@containerMappings[name='DT2_Package_filters']/@subContainerMappings[name='DT2_Class_filters']" targetFinderExpression="aql:self.eType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="DT2_Package_filters" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@defaultLayer/@containerMappings[name='DT2_Package_filters']">
+          <subContainerMappings name="DT2_Class_filters" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass" childrenPresentation="List">
+            <subNodeMappings name="DT2_Attribute" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+              <style xsi:type="style:BundledImageDescription" labelExpression="aql:if self.derived then '/'  else  ''  endif  + self.name + ' : ' + self.eType.name " labelAlignment="LEFT" sizeComputationExpression="1">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" tooltipExpression="aql:self.eContainer().name + '.' + self.name" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+            <conditionnalStyles predicateExpression="aql:self.abstract">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" tooltipExpression="aql:self.eContainer().name + '.' + self.name" backgroundStyle="GradientTopToBottom">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>italic</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              </style>
+            </conditionnalStyles>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" labelExpression="aql:'Container ' + self.name" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+      <additionalLayers name="Operations">
+        <containerMappings xsi:type="description_1:ContainerMappingImport" name="EPackage_import" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EPackage)" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']" importedMapping="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@defaultLayer/@containerMappings[name='DT2_Package_filters']">
+          <subContainerMappings xsi:type="description_1:ContainerMappingImport" name="EClass_import" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" childrenPresentation="List" importedMapping="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@defaultLayer/@containerMappings[name='DT2_Package_filters']/@subContainerMappings[name='DT2_Class_filters']">
+            <subNodeMappings name="DT2_Operation_filter" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EOperation)" domainClass="EOperation">
+              <style xsi:type="style:BundledImageDescription" labelSize="10" labelAlignment="LEFT" tooltipExpression="aql:self.name + '(' + self.eParameters.name->sep(',') + '): '+ self.eType.name" sizeComputationExpression="2">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" tooltipExpression="aql:self.eContainer().name + '.' + self.name" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+            <conditionnalStyles predicateExpression="aql:self.abstract">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" tooltipExpression="aql:self.eContainer().name + '.' + self.name" backgroundStyle="GradientTopToBottom">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>italic</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              </style>
+            </conditionnalStyles>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" labelExpression="aql:'Container ' + self.name" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </additionalLayers>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagType3" titleExpression="aql:'DiagType3 of ' + self.name" domainClass="EPackage">
       <nodeMappings name="DT3_Package" semanticCandidatesExpression="feature:eContents" domainClass="EPackage">

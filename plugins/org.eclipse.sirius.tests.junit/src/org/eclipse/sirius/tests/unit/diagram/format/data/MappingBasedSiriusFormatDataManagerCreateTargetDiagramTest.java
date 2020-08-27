@@ -54,6 +54,10 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest extends 
 
     protected static final Representation MB_REPRES_TYPE2 = new Representation("DiagType2", MB_DIAG_TYPE2_MYPACKAGE);
 
+    protected static final Diagram MB_DIAG_TYPE2_FILTERS_MYPACKAGE = new Diagram("DiagType2 filters and layers of MyPackage", 16, 2);
+
+    protected static final Representation MB_REPRES_TYPE2_FILTERS = new Representation("DiagType2_filters_layers", MB_DIAG_TYPE2_FILTERS_MYPACKAGE);
+
     protected static final Diagram MB_DIAG_TYPE2_NOTES_MYPACKAGE = new Diagram("DiagType2 with notes of MyPackage", 16, 2);
 
     protected static final RepresentationWithNotes MB_REPRES_NOTES_TYPE2 = new RepresentationWithNotes("DiagType2", MB_DIAG_TYPE2_NOTES_MYPACKAGE);
@@ -76,8 +80,8 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest extends 
 
     protected static final Representation MB_REPRES_TYPE8UNSYNC = new Representation("DiagType8_unsync", MB_DIAG_TYPE8UNSYNC_MYPACKAGE);
 
-    protected static final Representation[] MB_ALL_REPRESENTATIONS = { MB_REPRES_TYPE2, MB_REPRES_TYPE2UNSYNC, MB_REPRES_TYPE2UNSYNC_EDGE, MB_REPRES_TYPE8, MB_REPRES_TYPE8UNSYNC,
-            MB_REPRES_NOTES_TYPE2 };
+    protected static final Representation[] MB_ALL_REPRESENTATIONS = { MB_REPRES_TYPE2, MB_REPRES_TYPE2_FILTERS, MB_REPRES_TYPE2UNSYNC, MB_REPRES_TYPE2UNSYNC_EDGE, MB_REPRES_TYPE8,
+            MB_REPRES_TYPE8UNSYNC, MB_REPRES_NOTES_TYPE2 };
 
     public MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest(Representation representationToCopyFormat) throws Exception {
         super(representationToCopyFormat);
