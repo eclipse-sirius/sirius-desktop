@@ -42,8 +42,8 @@ public interface IDiagramDescriptionProvider {
     DiagramDescription createDiagramDescription();
 
     /**
-     * Return command parameters representing mapping types specific to this
-     * diagram type which should be integrated in the Layers menus.
+     * Return command parameters representing mapping types specific to this diagram type which should be integrated in
+     * the Layers menus.
      * 
      * @return command parameters to integrate in the Layers menus.
      */
@@ -67,9 +67,8 @@ public interface IDiagramDescriptionProvider {
     AdapterFactory getAdapterFactory();
 
     /**
-     * Creates an {@link IInterpretedExpressionTargetSwitch} that will query
-     * representation descriptions to determine useful informations (like the
-     * type to consider for Interpreted expressions).
+     * Creates an {@link IInterpretedExpressionTargetSwitch} that will query representation descriptions to determine
+     * useful informations (like the type to consider for Interpreted expressions).
      * 
      * @param feature
      *            the feature to consider (for example
@@ -79,39 +78,35 @@ public interface IDiagramDescriptionProvider {
      *            the {@link IInterpretedExpressionTargetSwitch} to call
      * @return an {@link IInterpretedExpressionTargetSwitch} that will query
      * 
-     *         representation descriptions to determine useful informations
-     *         (like the type to consider for Interpreted expressions)
+     *         representation descriptions to determine useful informations (like the type to consider for Interpreted
+     *         expressions)
      * @since 0.9.0
      */
     IInterpretedExpressionTargetSwitch createInterpretedExpressionSwitch(EStructuralFeature feature, IInterpretedExpressionTargetSwitch parentSwitch);
 
     /**
-     * Indicates if the given ePackage is handled by this
-     * {@link IDiagramDescriptionProvider}. If true, it means that an
+     * Indicates if the given ePackage is handled by this {@link IDiagramDescriptionProvider}. If true, it means that an
      * {@link IInterpretedExpressionTargetSwitch} can be contributed with the
      * {@link IDiagramDescriptionProvider#createInterpretedExpressionSwitch(EStructuralFeature, IInterpretedExpressionTargetSwitch)}
      * method.
      * 
      * @param ePackage
      *            the {@link EPackage} to test
-     * @return true if the given ePackage is handled by this
-     *         {@link IDiagramDescriptionProvider}, false otherwise
+     * @return true if the given ePackage is handled by this {@link IDiagramDescriptionProvider}, false otherwise
      * @since 0.9.0
      */
     boolean handles(EPackage ePackage);
 
     /**
-     * Indicates if the given Diagram description provider allows the activation
-     * of Layouting Mode on handled representations.
+     * Indicates if the given Diagram description provider allows the activation of Layouting Mode on handled
+     * representations.
      * 
-     * @return true if the given Diagram description provider allows the
-     *         activation of Layouting Mode on handled representations, false
-     *         otherwise.
+     * @return true if the given Diagram description provider allows the activation of Layouting Mode on handled
+     *         representations, false otherwise.
      * 
      * @since 0.9.0
      */
     boolean allowsLayoutingModeActivation();
-
 
     /**
      * Indicates if the given Diagram description provider allows the activation of Layouting Mode on handled
@@ -123,83 +118,81 @@ public interface IDiagramDescriptionProvider {
      * @since 6.1.0
      */
     boolean allowsVisibilityModeActivation();
-    
+
     /**
-     * Indicates if this Diagram description provider allows the Pin/Unpin
-     * actions on the specified element.
+     * Indicates if this Diagram description provider allows the Pin/Unpin actions on the specified element.
      * 
      * @param element
      *            the element to check.
      * 
-     * @return true if this provider allows the specified element to be Pinned
-     *         or Unpinned, false otherwise.
+     * @return true if this provider allows the specified element to be Pinned or Unpinned, false otherwise.
      * 
      * @since 1.0.0M7
      */
     boolean allowsPinUnpin(DDiagramElement element);
 
     /**
-     * Indicates if this Diagram description provider allows the Show/hide
-     * actions on the specified element.
+     * Indicates if this Diagram description provider allows the Show/hide actions on the specified element.
      * 
      * @param element
      *            the element to check.
      * 
-     * @return true if this provider allows the specified element to be Hiddend
-     *         or Revealed, false otherwise.
+     * @return true if this provider allows the specified element to be Hiddend or Revealed, false otherwise.
      * 
      * @since 1.0.0M7
      */
     boolean allowsHideReveal(DDiagramElement element);
 
     /**
-     * Indicates if this Diagram description provider allows the Copy/Paster
-     * Layout actions on the specified element.
+     * Indicates if this Diagram description provider allows the Copy/Paster Layout actions on the specified element.
      * 
      * @param element
      *            the element to check.
      * 
-     * @return true if this provider allows the Copy/Paste Layout actions on the
-     *         specified element, false otherwise.
+     * @return true if this provider allows the Copy/Paste Layout actions on the specified element, false otherwise.
      * 
      * @since 1.0.0M7
-     * @deprecated since 4.1.0 Use
-     *             {@link #allowsCopyPasteFormat(DSemanticDecorator)} instead
+     * @deprecated since 4.1.0 Use {@link #allowsCopyPasteFormat(DSemanticDecorator)} instead
      */
     @Deprecated
     boolean allowsCopyPasteLayout(DSemanticDecorator element);
 
     /**
-     * Indicates if this Diagram description provider allows the Copy/Paste
-     * Format actions on the specified element (including paste style and paste
-     * layout).
+     * Indicates if this Diagram description provider allows the Copy/Paste Format actions on the specified element
+     * (including paste style and paste layout).
      * 
      * @param element
      *            the element to check.
      * 
-     * @return true if this provider allows the Copy/Paster Layout actions on
-     *         the specified element, false otherwise.
+     * @return true if this provider allows the Copy/Paster Layout actions on the specified element, false otherwise.
      * 
      * @since 4.1.0
      */
     boolean allowsCopyPasteFormat(DSemanticDecorator element);
 
     /**
-     * Indicates if the given Diagram description provider support the header
-     * section in diagram to display header datas. This header section is
-     * displayed between the tabbar and the diagram (just above the ruler if
-     * this one is displayed).<BR>
-     * If this diagram type support header, it should return the data to display
-     * through {@link #getHeaderData(DDiagram)} method.
+     * Indicates if the given Diagram description provider support the header section in diagram to display header
+     * datas. This header section is displayed between the tabbar and the diagram (just above the ruler if this one is
+     * displayed).<BR>
+     * If this diagram type support header, it should return the data to display through
+     * {@link #getHeaderData(DDiagram)} method.
      * 
-     * @return true if the given Diagram description provider manage the header
-     *         section, false otherwise.
+     * @return true if the given Diagram description provider manage the header section, false otherwise.
      */
     boolean supportHeader();
 
     /**
-     * Return the list of {@link HeaderData}. This {@link HeaderData} should be
-     * sorted according to xLocation and they should not have overlap.
+     * Indicates if the given Diagram description provider is for a diagram for which FormatDataManager implementations
+     * can be used directly. See use in {@link MappingBasedSiriusFormatManagerFactory}.
+     * 
+     * @return true if the given Diagram description is for a diagram for which FormatDataManagers can be used directly,
+     *         false otherwise.
+     */
+    boolean requiresNonStandardFormatDataManagers();
+
+    /**
+     * Return the list of {@link HeaderData}. This {@link HeaderData} should be sorted according to xLocation and they
+     * should not have overlap.
      * 
      * @param diagram
      *            the current diagram
@@ -209,21 +202,18 @@ public interface IDiagramDescriptionProvider {
     LinkedList<HeaderData> getHeaderData(DDiagram diagram);
 
     /**
-     * Get the {@link ICollapseUpdater} if this <code>diagram</code> is handle
-     * by this {@link IDiagramDescriptionProvider} or an empty {@link Option}
-     * otherwise.
+     * Get the {@link ICollapseUpdater} if this <code>diagram</code> is handle by this
+     * {@link IDiagramDescriptionProvider} or an empty {@link Option} otherwise.
      * 
      * @param diagram
      *            the current diagram
      * 
-     * @return an optional {@link ICollapseUpdater} for this kind of
-     *         <code>diagram</code>.
+     * @return an optional {@link ICollapseUpdater} for this kind of <code>diagram</code>.
      */
     Option<? extends ICollapseUpdater> getCollapseUpdater(DDiagram diagram);
 
     /**
-     * Allows the {@link IDiagramDescriptionProvider} to customize the tooltip
-     * displayed in VSM editor.
+     * Allows the {@link IDiagramDescriptionProvider} to customize the tooltip displayed in VSM editor.
      * 
      * @param toolTipText
      *            the initial tool tip
@@ -238,8 +228,7 @@ public interface IDiagramDescriptionProvider {
     String completeToolTipText(String toolTipText, EObject eObject, EStructuralFeature feature);
 
     /**
-     * Allows the {@link IDiagramDescriptionProvider} to customize the tooltip
-     * displayed in VSM editor.
+     * Allows the {@link IDiagramDescriptionProvider} to customize the tooltip displayed in VSM editor.
      * 
      * @param toolTipText
      *            the initial tool tip
@@ -248,11 +237,9 @@ public interface IDiagramDescriptionProvider {
      * 
      * @return a customized tooltip if needed, the initial tooltip otherwise.
      * @since 1.0.0 M6
-     * @deprecated this method has not access to the feature of eObject. This is
-     *             supported in
+     * @deprecated this method has not access to the feature of eObject. This is supported in
      *             org.eclipse.sirius.diagram.business.api.diagramtype
-     *             .IDiagramDescriptionProvider.completeToolTipText(String,
-     *             EObject, EStructuralFeature)
+     *             .IDiagramDescriptionProvider.completeToolTipText(String, EObject, EStructuralFeature)
      */
     @Deprecated
     String completeToolTipText(String toolTipText, EObject eObject);

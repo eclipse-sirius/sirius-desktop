@@ -31,7 +31,7 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.FormatHelper.FormatDifference;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.Configuration;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.ConfigurationFactory;
-import org.eclipse.sirius.diagram.sequence.ui.tool.api.format.MappingBasedSequenceDiagramFormatManagerFactory;
+import org.eclipse.sirius.diagram.ui.tools.api.format.MappingBasedSiriusFormatManagerFactory;
 import org.eclipse.sirius.diagram.ui.tools.api.format.semantic.MappingBasedSiriusFormatDataManager;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -152,11 +152,6 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTes
 
     protected static final Representation MB_SEQ_REPRES_BASIC_OBSERVATION = new Representation("Sequence Diagram on Interaction", MB_SEQ_BASIC_OBSERVATION, MB_SEQ_BASIC_OBSERVATION_RAW);
 
-    protected static final Diagram MB_SEQ_BASIC_OBSERVATION_NOTES = new Diagram("Basic Observation Diagram with notes", 0, 0);
-
-    protected static final RepresentationWithNotes MB_SEQ_REPRES_BASIC_OBSERVATION_NOTES = new RepresentationWithNotes("Sequence Diagram on Interaction", MB_SEQ_BASIC_OBSERVATION_NOTES,
-            MB_SEQ_BASIC_OBSERVATION_RAW);
-
     protected static final Diagram MB_SEQ_COMPLEX = new Diagram("Complex", 0, 0);
 
     protected static final Diagram MB_SEQ_COMPLEX_RAW = new Diagram("Complex Raw", 0, 0, true);
@@ -170,8 +165,7 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTes
     protected static final Representation MB_SEQ_REPRES_COMPLEX_WITH_CF = new Representation("Sequence Diagram on Interaction", MB_SEQ_COMPLEX_WITH_CF, MB_SEQ_COMPLEX_WITH_CF_RAW);
 
     protected static final Representation[] MB_SEQ_ALL_REPRESENTATIONS = { MB_SEQ_REPRES_BASIC_COMBINED, MB_SEQ_REPRES_BASIC_EXECUTION, MB_SEQ_REPRES_BASIC_INTERACTION_USE,
-            MB_SEQ_REPRES_BASIC_LOST_MESSAGE_END, MB_SEQ_REPRES_BASIC_MESSAGES, MB_SEQ_REPRES_BASIC_OBSERVATION, MB_SEQ_REPRES_COMPLEX, MB_SEQ_REPRES_COMPLEX_WITH_CF,
-            MB_SEQ_REPRES_BASIC_OBSERVATION_NOTES };
+            MB_SEQ_REPRES_BASIC_LOST_MESSAGE_END, MB_SEQ_REPRES_BASIC_MESSAGES, MB_SEQ_REPRES_BASIC_OBSERVATION, MB_SEQ_REPRES_COMPLEX, MB_SEQ_REPRES_COMPLEX_WITH_CF };
 
     @Parameters
     public static Collection<Object[]> data() {
@@ -306,8 +300,8 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTes
                         }
 
                         // Update diagram, but transaction will be rollbacked
-                        DDiagram newDiagram = MappingBasedSequenceDiagramFormatManagerFactory.getInstance().applyFormatOnDiagram(session, (DDiagram) getDRepresentation(sourceDiagramEditPart), map,
-                                session, (DDiagram) getDRepresentation(targetDiagramEditPart), false);
+                        DDiagram newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnDiagram(session, (DDiagram) getDRepresentation(sourceDiagramEditPart), map, session,
+                                (DDiagram) getDRepresentation(targetDiagramEditPart), false);
 
                         if (MB_SEQ_GENERATE_IMAGES_TEST_DATA) {
                             exportDiagramToTempFolder(diagramMappingName + "_from", dDiagram);

@@ -31,7 +31,7 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.FormatHelper.FormatDifference;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.Configuration;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.ConfigurationFactory;
-import org.eclipse.sirius.diagram.sequence.ui.tool.api.format.MappingBasedSequenceDiagramFormatManagerFactory;
+import org.eclipse.sirius.diagram.ui.tools.api.format.MappingBasedSiriusFormatManagerFactory;
 import org.eclipse.sirius.diagram.ui.tools.api.format.semantic.MappingBasedSiriusFormatDataManager;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -248,8 +248,8 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest 
             protected void doExecute() {
                 // Update diagram, but transaction will be
                 // rollbacked
-                DDiagram newDiagram = MappingBasedSequenceDiagramFormatManagerFactory.getInstance().applyFormatOnNewDiagram(session, dDiagram, explicitMappingTestConfiguration.getObjectsMap(),
-                        session, newDiagramName, explicitMappingTestConfiguration.getTargetRoot(), includeNotes);
+                DDiagram newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnNewDiagram(session, dDiagram, explicitMappingTestConfiguration.getObjectsMap(), session,
+                        newDiagramName, explicitMappingTestConfiguration.getTargetRoot(), includeNotes);
 
                 Collection<DiagramEditPart> targetDiagramEditParts = getDiagramEditPart(session, newDiagram);
                 assertTrue(!targetDiagramEditParts.isEmpty());
