@@ -166,9 +166,7 @@ public abstract class SiriusTestCase extends TestCase {
     /** Semantic model. */
     protected EObject semanticModel;
 
-    /**
-     * Indicates if the workspace project created during the setup should be a modeling one.
-     */
+    /** Indicates if the workspace project created during the setup should be a modeling one. */
     protected boolean createModelingProject;
 
     /** Registered viewpoints. */
@@ -186,9 +184,7 @@ public abstract class SiriusTestCase extends TestCase {
     /** The reported infos. */
     protected final Multimap<String, IStatus> infos = LinkedHashMultimap.create();
 
-    /**
-     * A default progress monitor test code can use when one is needed.
-     */
+    /** A default progress monitor test code can use when one is needed. */
     protected IProgressMonitor defaultProgress = new NullProgressMonitor();
 
     /** The unchaught exceptions handler. */
@@ -357,9 +353,7 @@ public abstract class SiriusTestCase extends TestCase {
     protected URI toURI(final String path) {
         if (path != null) {
             URI uri;
-            /*
-             * if path starts with the temporary project name, then we have a local resource uri
-             */
+            // if path starts with the temporary project name, then we have a local resource uri
             if (path.startsWith(SiriusTestCase.TEMPORARY_PROJECT_NAME) || (path.startsWith('/' + SiriusTestCase.TEMPORARY_PROJECT_NAME))) {
                 uri = toURI(path, ResourceURIType.RESOURCE_PLATFORM_URI);
             } else {
@@ -526,10 +520,8 @@ public abstract class SiriusTestCase extends TestCase {
         try {
             group = (Group) ModelUtils.load(modelerResourceURI, domain.getResourceSet());
         } catch (final IOException exception) {
-            /*
-             * if an IOException occurs here, its probably because we try to create a plaftorm plugin URI and it was a
-             * local one
-             */
+            // if an IOException occurs here, its probably because we try to create a plaftorm plugin URI and it was a
+            // local one
             String uri = modelerResourceURI.toString();
             if (uri.startsWith("platform:/plugin/")) {
                 URI alternativeURI = URI.createPlatformResourceURI(uri.substring(17), true);
@@ -680,7 +672,17 @@ public abstract class SiriusTestCase extends TestCase {
      */
     private synchronized void errorOccurs(IStatus status, String sourcePlugin) {
         if (isErrorCatchActive()) {
-            errors.put(sourcePlugin, status);
+            boolean ignoreMessage = false;
+            if ("org.eclipse.core.runtime".equals(sourcePlugin) && status != null) {
+                if ("Could not acquire INavigatorContentService: Project Explorer not found.".equals(status.getMessage())) {
+                    // Ignore error caused by bugzilla 489335 when tests are launched with product
+                    // "org.eclipse.platform.ide".
+                    ignoreMessage = true;
+                }
+            }
+            if (!ignoreMessage) {
+                errors.put(sourcePlugin, status);
+            }
         }
     }
 
@@ -775,7 +777,7 @@ public abstract class SiriusTestCase extends TestCase {
     private void checkLogs() {
         /* an exception occurs in another thread */
         /*
-         * TODO: skip checkLoggers when we are in a shouldSkipUnreliableTests mode. We have some unwanted resource
+         * Skip checkLoggers when we are in a shouldSkipUnreliableTests mode. We have some unwanted resource
          * notifications during the teardown on jenkins.
          */
         if (!TestsUtil.shouldSkipUnreliableTests()) {
