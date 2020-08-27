@@ -343,6 +343,9 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
                 // createdTargetElement.getGraphicalFilters() // find hide filter and copy from
 
                 getSourceDDiagramElementToTargetDDiagramElementMap().put(sourceDElement, createdTargetElement);
+            } else {
+                throw new IllegalArgumentException(
+                        MessageFormat.format(Messages.MappingBasedDiagramContentDumplicationSwitch_ErrorImpossibleToCreateNodeFromNodeCandidate, abstractDNodeCandidate, sourceDElement));
             }
         }
 
@@ -446,6 +449,9 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
                     createdNewEdge.setVisible(toHandleEdge.isVisible());
                     handledEdges.add(toHandleEdge);
                     getSourceDDiagramElementToTargetDDiagramElementMap().put(toHandleEdge, createdNewEdge);
+                } else {
+                    throw new IllegalArgumentException(
+                            MessageFormat.format(Messages.MappingBasedDiagramContentDumplicationSwitch_ErrorImpossibleToCreateEdgeFromEdgeCandidate, abstractDEdgeCandidate, toHandleEdge));
                 }
             } else {
                 edgesToEdge.add(toHandleEdge);

@@ -1627,6 +1627,36 @@ public final class Messages {
     @TranslatableMessage
     public static String MappingBasedSiriusFormatManagerFactory_ImpossibleToFindTargetTextNoteContainer;
 
+    @TranslatableMessage
+    public static String MappingBasedDiagramContentDumplicationSwitch_ErrorImpossibleToCreateNodeFromNodeCandidate;
+
+    @TranslatableMessage
+    public static String MappingBasedDiagramContentDumplicationSwitch_ErrorImpossibleToCreateEdgeFromEdgeCandidate;
+
+    @TranslatableMessage
+    public static String MappingBasedSiriusFormatManagerFactory_ErrorMappingfunctionIncompleteOnSequenceDiagram;
+
+    @TranslatableMessage
+    public static String MappingBasedSiriusFormatManagerFactory_ErrorMappingfunctionIsEmpty;
+
+    @TranslatableMessage
+    public static String MappingBasedSiriusFormatManagerFactory_ErrorDiagramIsNull;
+
+    @TranslatableMessage
+    public static String MappingBasedSiriusFormatManagerFactory_ErrorTargetDiagramNameIsEmpty;
+
+    @TranslatableMessage
+    public static String MappingBasedSiriusFormatManagerFactory_ErrorSourceAndTargetDiagramDecriptionsDoesNotMatch;
+
+    @TranslatableMessage
+    public static String MappingBasedSiriusFormatManagerFactory_ErrorSourceAndTargetDiagramsAreTheSame;
+
+    @TranslatableMessage
+    public static String MappingBasedSiriusFormatManagerFactory_ErrorSourceAndOrTargetSessionsNull;
+
+    @TranslatableMessage
+    public static String MappingBasedSiriusFormatManagerFactory_ErrorTargetDiagramRootIsNull;
+
     // CHECKSTYLE:ON
     private Messages() {
         // Prevents instanciation.

@@ -21,6 +21,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
@@ -108,25 +109,29 @@ public class MappingBasedSiriusFormatManagerFactory {
      * Apply format on {@code targetDiagram} based on the {@code sourceDiagram}. Format data are applied only for
      * diagram elements whose semantic object is provided in the {@code correspondenceMap}.
      * 
+     * Calls to this API shall be embedded in a command.
+     * 
      * @param sourceSession
-     *            The {@link Session} for the source diagram
+     *            The {@link Session} for the source diagram. Must not be null.
      * @param sourceDiagram
-     *            The source diagram
+     *            The source diagram. Must not be null.
      * @param correspondenceMap
-     *            The mapping function between source diagram elements and target diagram elements
+     *            The mapping function between source diagram elements and target diagram elements Must not be null. In
+     *            the case where {@code sourceDiagram} is a Sequence diagram, must provide a mapping for each semantic
+     *            element of {@code sourceDiagram}.
      * @param targetSession
-     *            The {@link Session} for the target diagram
+     *            The {@link Session} for the target diagram. Must not be null.
      * @param targetDiagram
-     *            The target diagram
+     *            The target diagram. Must not be null.
      * @param copyNotes
-     *            Whether or not to copy source diagram notes to target diagram
+     *            Whether or not to copy source diagram notes to target diagram.
      * @return The target diagram.
      */
     public DDiagram applyFormatOnDiagram(Session sourceSession, DDiagram sourceDiagram, final Map<EObject, EObject> correspondenceMap, Session targetSession, DDiagram targetDiagram,
             boolean copyNotes) {
 
         // Check application correction
-        checkApplyFormatOnDiagramCallCorrection(sourceDiagram, correspondenceMap, targetDiagram);
+        checkApplyFormatOnDiagramCallCorrection(sourceDiagram, correspondenceMap, targetDiagram, sourceSession, targetSession);
 
         // Apply format according to map
         applyFormatAccordingToMap(sourceSession, sourceDiagram, correspondenceMap, targetSession, targetDiagram, copyNotes);
@@ -135,30 +140,35 @@ public class MappingBasedSiriusFormatManagerFactory {
     }
 
     /**
-     * Apply format on a new {@link DDiagram} for name @code {@code targetDiagramName} based on the
-     * {@code sourceDiagram}. Format data are applied only for diagram elements whose semantic object is provided in the
+     * Apply format on a new {@link DDiagram} for name {@code targetDiagramName} based on the {@code sourceDiagram}.
+     * Format data are applied only for diagram elements whose semantic object is provided in the
      * {@code correspondenceMap}.
      * 
+     * Calls to this API shall be embedded in a command.
+     * 
      * @param sourceSession
-     *            The {@link Session} for the source diagram
+     *            The {@link Session} for the source diagram. Must not be null.
      * @param sourceDiagram
-     *            The source diagram
+     *            The source diagram. Must not be null.
      * @param correspondenceMap
-     *            The mapping function between source diagram elements and target diagram elements
+     *            The mapping function between source diagram elements and target diagram elements. Must not be null. In
+     *            the case where {@code sourceDiagram} is a Sequence diagram, must provide a mapping for each semantic
+     *            element of {@code sourceDiagram}.
      * @param targetSession
-     *            The {@link Session} for the target diagram
+     *            The {@link Session} for the target diagram. Must not be null.
      * @param targetDiagramName
-     *            The target diagram name
+     *            The target diagram name. Must not be null or equal to "".
      * @param targetDiagramRoot
-     *            The root EObject for the new diagram
+     *            The root EObject for the new diagram. Must not be null.
      * @param copyNotes
-     *            Whether or not to copy source diagram notes to target diagram
+     *            Whether or not to copy source diagram notes to target diagram.
      * @return The created target diagram.
      */
     public DDiagram applyFormatOnNewDiagram(Session sourceSession, DDiagram sourceDiagram, final Map<EObject, EObject> correspondenceMap, Session targetSession, String targetDiagramName,
             EObject targetDiagramRoot, boolean copyNotes) {
+
         // Check application correction
-        checkApplyFormatOnNewDiagramCallCorrection(sourceDiagram, correspondenceMap, targetDiagramName);
+        checkApplyFormatOnNewDiagramCallCorrection(sourceDiagram, correspondenceMap, targetDiagramName, sourceSession, targetSession, targetDiagramRoot);
 
         DSemanticDiagram targetDiagram = createRepresentation(sourceDiagram, targetSession, targetDiagramName, targetDiagramRoot);
 
@@ -176,8 +186,6 @@ public class MappingBasedSiriusFormatManagerFactory {
 
         diagramContentDuplicationSwitch = new MappingBasedDiagramContentDuplicationSwitch((DSemanticDiagram) targetDiagram, correspondenceMap, targetSession);
         diagramContentDuplicationSwitch.doSwitch(sourceDiagram);
-
-        isAppliedOnSequenceDiagram = computeIsSequenceDiagram(sourceDiagram);
 
         DiagramEditPart sourceDiagramEditPart = null;
         DiagramEditPart targetDiagramEditPart = null;
@@ -220,12 +228,40 @@ public class MappingBasedSiriusFormatManagerFactory {
      *            The correspondence map.
      * @param targetDiagram
      *            The target diagram.
+     * @param targetSession
+     *            The source diagram session.
+     * @param sourceSession
+     *            The target diagram session.
      */
-    private void checkApplyFormatOnDiagramCallCorrection(DDiagram sourceDiagram, final Map<EObject, EObject> correspondenceMap, DDiagram targetDiagram) {
-        if (!sourceDiagram.getDescription().equals(targetDiagram.getDescription())) {
-            throw new IllegalArgumentException();
+    private void checkApplyFormatOnDiagramCallCorrection(DDiagram sourceDiagram, final Map<EObject, EObject> correspondenceMap, DDiagram targetDiagram, Session sourceSession, Session targetSession) {
+        checkDiagram(sourceDiagram);
+        checkDiagram(targetDiagram);
+        checkSourceDiagramVSTargetDiagram(sourceDiagram, targetDiagram);
+        checkSourceAndTargetSessions(sourceSession, targetSession);
+        isAppliedOnSequenceDiagram = computeIsSequenceDiagram(sourceDiagram);
+        checkMapSourceCorrection(sourceDiagram, correspondenceMap);
+    }
+
+    private void checkDiagram(DDiagram diagram) {
+        if (diagram == null) {
+            throw new IllegalArgumentException(Messages.MappingBasedSiriusFormatManagerFactory_ErrorDiagramIsNull);
         }
-        checkMapCorrection(sourceDiagram, correspondenceMap, targetDiagram);
+    }
+
+    private void checkSourceDiagramVSTargetDiagram(DDiagram sourceDiagram, DDiagram targetDiagram) {
+        if (sourceDiagram.equals(targetDiagram)) {
+            throw new IllegalArgumentException(Messages.MappingBasedSiriusFormatManagerFactory_ErrorSourceAndTargetDiagramsAreTheSame);
+        }
+        if (!sourceDiagram.getDescription().equals(targetDiagram.getDescription())) {
+            throw new IllegalArgumentException(MessageFormat.format(Messages.MappingBasedSiriusFormatManagerFactory_ErrorSourceAndTargetDiagramDecriptionsDoesNotMatch, sourceDiagram.getDescription(),
+                    targetDiagram.getDescription()));
+        }
+    }
+
+    private void checkSourceAndTargetSessions(Session sourceSession, Session targetSession) {
+        if (sourceSession == null || targetSession == null) {
+            throw new IllegalArgumentException(Messages.MappingBasedSiriusFormatManagerFactory_ErrorSourceAndOrTargetSessionsNull);
+        }
     }
 
     /**
@@ -239,12 +275,24 @@ public class MappingBasedSiriusFormatManagerFactory {
      *            The correspondence map.
      * @param targetDiagramName
      *            The new target diagram name.
+     * @param targetSession
+     *            The source diagram session.
+     * @param sourceSession
+     *            The target diagram session.
+     * @param targetDiagramRoot
      */
-    private void checkApplyFormatOnNewDiagramCallCorrection(DDiagram sourceDiagram, final Map<EObject, EObject> correspondenceMap, String targetDiagramName) {
-        if (sourceDiagram == null || targetDiagramName.isEmpty()) {
-            throw new IllegalArgumentException();
+    private void checkApplyFormatOnNewDiagramCallCorrection(DDiagram sourceDiagram, final Map<EObject, EObject> correspondenceMap, String targetDiagramName, Session sourceSession,
+            Session targetSession, EObject targetDiagramRoot) {
+        checkDiagram(sourceDiagram);
+        if (targetDiagramName == null || targetDiagramName.isEmpty()) {
+            throw new IllegalArgumentException(Messages.MappingBasedSiriusFormatManagerFactory_ErrorTargetDiagramNameIsEmpty);
         }
-        checkMapCorrection(sourceDiagram, correspondenceMap, sourceDiagram);
+        if (targetDiagramRoot == null) {
+            throw new IllegalArgumentException(Messages.MappingBasedSiriusFormatManagerFactory_ErrorTargetDiagramRootIsNull);
+        }
+        checkSourceAndTargetSessions(sourceSession, targetSession);
+        isAppliedOnSequenceDiagram = computeIsSequenceDiagram(sourceDiagram);
+        checkMapSourceCorrection(sourceDiagram, correspondenceMap);
     }
 
     /**
@@ -256,16 +304,18 @@ public class MappingBasedSiriusFormatManagerFactory {
      *            The source diagram.
      * @param correspondenceMap
      *            The correspondence map to check.
-     * @param targetDiagram
-     *            The target diagram.
      */
-    private void checkMapCorrection(DDiagram sourceDiagram, final Map<EObject, EObject> correspondenceMap, DDiagram targetDiagram) {
+    private void checkMapSourceCorrection(DDiagram sourceDiagram, final Map<EObject, EObject> correspondenceMap) {
         if (correspondenceMap.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(Messages.MappingBasedSiriusFormatManagerFactory_ErrorMappingfunctionIsEmpty);
         }
-        // TODO check map
-        // sourceObject to targetObject correction = sourceDiagram[sourceObject].mapping compatible with
-        // targetDiagram[targetObject] ?
+        if (isAppliedOnSequenceDiagram) {
+            List<EObject> allSourceDiagramSemanticElements = sourceDiagram.getDiagramElements().stream().map(DDiagramElement::getTarget).collect(Collectors.toList());
+            boolean contains = correspondenceMap.keySet().containsAll(allSourceDiagramSemanticElements);
+            if (!contains) {
+                throw new IllegalArgumentException(MessageFormat.format(Messages.MappingBasedSiriusFormatManagerFactory_ErrorMappingfunctionIncompleteOnSequenceDiagram, sourceDiagram));
+            }
+        }
     }
 
     /**

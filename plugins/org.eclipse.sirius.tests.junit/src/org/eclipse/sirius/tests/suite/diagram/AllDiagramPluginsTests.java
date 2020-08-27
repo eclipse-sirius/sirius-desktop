@@ -134,6 +134,8 @@ import org.eclipse.sirius.tests.unit.diagram.format.data.FormatHelperImplEdgeFor
 import org.eclipse.sirius.tests.unit.diagram.format.data.FormatHelperImplNodeFormatData1Test;
 import org.eclipse.sirius.tests.unit.diagram.format.data.FormatHelperImplNodeFormatData2Test;
 import org.eclipse.sirius.tests.unit.diagram.format.data.LabelPositionOnContainerAndListTest;
+import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerCallCheckSequenceTest;
+import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerCallCheckTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest;
@@ -450,6 +452,8 @@ public class AllDiagramPluginsTests {
         suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest.class));
         suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest.class));
         suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTest.class));
+        suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerCallCheckTest.class));
+        suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerCallCheckSequenceTest.class));
         suite.addTestSuite(LabelPositionOnContainerAndListTest.class);
         suite.addTestSuite(LabelVisibilityOnDragAndDropTests.class);
         suite.addTestSuite(LabelVisibilityOnCreationTest.class);
