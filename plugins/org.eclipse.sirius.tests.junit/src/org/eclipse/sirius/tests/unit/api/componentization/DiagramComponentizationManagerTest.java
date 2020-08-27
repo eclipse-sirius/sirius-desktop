@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -41,7 +41,7 @@ public class DiagramComponentizationManagerTest extends AbstractComponentization
      */
     public void testLayers() throws Exception {
         final Viewpoint vpTemp = findViewpoint("Componentization test 1").get();
-        selectSirius(vpTemp, session);
+        selectViewpoint(vpTemp, session);
         TestsUtil.waitUntil(new SelectedViewpointsCondition(session, 1));
 
         final DiagramDescription ddTemp = (DiagramDescription) vpTemp.getOwnedRepresentations().get(0);
@@ -50,7 +50,7 @@ public class DiagramComponentizationManagerTest extends AbstractComponentization
         assertEquals(1, session.getSelectedViewpoints(false).size());
         assertEquals(3, layers.size());
 
-        deselectSirius(vpTemp, session);
+        deselectViewpoint(vpTemp, session);
         TestsUtil.waitUntil(new SelectedViewpointsCondition(session, 0));
 
         assertEquals(0, session.getSelectedViewpoints(false).size());
@@ -66,20 +66,20 @@ public class DiagramComponentizationManagerTest extends AbstractComponentization
      */
     public void testContributedLayers() throws Exception {
         final Viewpoint vpTemp = findViewpoint("Componentization test 1").get();
-        selectSirius(vpTemp, session);
+        selectViewpoint(vpTemp, session);
         TestsUtil.waitUntil(new SelectedViewpointsCondition(session, 1));
 
         final DiagramDescription ddTemp = (DiagramDescription) vpTemp.getOwnedRepresentations().get(0);
         List<Layer> layers = DiagramComponentizationTestSupport.getAllLayers(session, ddTemp);
         assertEquals(3, layers.size());
 
-        selectSirius(findViewpoint("Componentization test 2").get(), session);
+        selectViewpoint(findViewpoint("Componentization test 2").get(), session);
         TestsUtil.waitUntil(new SelectedViewpointsCondition(session, 2));
 
-        selectSirius(findViewpoint("Componentization test 3").get(), session);
+        selectViewpoint(findViewpoint("Componentization test 3").get(), session);
         TestsUtil.waitUntil(new SelectedViewpointsCondition(session, 3));
 
-        selectSirius(findViewpoint("Componentization test 4").get(), session);
+        selectViewpoint(findViewpoint("Componentization test 4").get(), session);
         TestsUtil.waitUntil(new SelectedViewpointsCondition(session, 4));
 
         layers = DiagramComponentizationTestSupport.getAllLayers(session, ddTemp);
@@ -88,7 +88,7 @@ public class DiagramComponentizationManagerTest extends AbstractComponentization
 
     public void testSections() throws Exception {
         final Viewpoint toolSirius = findViewpoint("Tools").get();
-        selectSirius(toolSirius, session);
+        selectViewpoint(toolSirius, session);
         TestsUtil.waitUntil(new SelectedViewpointsCondition(session, 1));
 
         final DiagramDescription diagram = findDiagramDescription(toolSirius, "Diagram");
@@ -122,7 +122,7 @@ public class DiagramComponentizationManagerTest extends AbstractComponentization
 
     public void testToolGroups() throws Exception {
         final Viewpoint toolSirius = findViewpoint("Tools").get();
-        selectSirius(toolSirius, session);
+        selectViewpoint(toolSirius, session);
         TestsUtil.waitUntil(new SelectedViewpointsCondition(session, 1));
 
         final DiagramDescription diagram = findDiagramDescription(toolSirius, "Diagram");
@@ -134,18 +134,20 @@ public class DiagramComponentizationManagerTest extends AbstractComponentization
         assertEquals(2, tools.size());
     }
 
-    private void selectSirius(final Viewpoint viewpoint, final Session session) {
+    private void selectViewpoint(final Viewpoint viewpoint, final Session session) {
         final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
-        Command changeSiriussSelectionCmd = new ChangeViewpointSelectionCommand(session, selectionCallback, Collections.singleton(viewpoint), Collections.<Viewpoint> emptySet(),
+        Command changeViewpointsSelectionCmd = new ChangeViewpointSelectionCommand(session, selectionCallback, Collections.singleton(viewpoint), Collections.<Viewpoint> emptySet(),
                 new NullProgressMonitor());
-        domain.getCommandStack().execute(changeSiriussSelectionCmd);
+        domain.getCommandStack().execute(changeViewpointsSelectionCmd);
+        waitSaveSessionJob();
     }
 
-    private void deselectSirius(final Viewpoint viewpoint, final Session session) {
+    private void deselectViewpoint(final Viewpoint viewpoint, final Session session) {
         final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
-        Command changeSiriussSelectionCmd = new ChangeViewpointSelectionCommand(session, selectionCallback, Collections.<Viewpoint> emptySet(), Collections.singleton(viewpoint),
+        Command changeViewpointsSelectionCmd = new ChangeViewpointSelectionCommand(session, selectionCallback, Collections.<Viewpoint> emptySet(), Collections.singleton(viewpoint),
                 new NullProgressMonitor());
-        domain.getCommandStack().execute(changeSiriussSelectionCmd);
+        domain.getCommandStack().execute(changeViewpointsSelectionCmd);
+        waitSaveSessionJob();
     }
 
     private static class SelectedViewpointsCondition implements ICondition {

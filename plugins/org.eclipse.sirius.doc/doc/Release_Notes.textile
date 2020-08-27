@@ -30,6 +30,7 @@ h4. Changes in  @org.eclipse.sirius.tests.junit.support@
 ** @isJavaVersion(int)@
 ** @isJavaVersionOrOlder(int)@
 ** @isJavaVersionOrNewer(int)@
+* <span class="label label-success">Added</span> The method @org.eclipse.sirius.tests.support.api.SiriusTestCase.waitSaveSessionJob()@ has been added to ensure that the SaveSessionJob, potentially triggered by @org.eclipse.sirius.ui.business.internal.session.SaveSessionWhenNoDialectEditorsListener.statusChangedInternal(Collection<ResourceStatusChange>)@ is finished before continue. It can be call, for example, after changing the list of selected viewpoints, without any editor opened.
 
 h2(#sirius6.3.2). Changes in Sirius 6.3.2
 

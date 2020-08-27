@@ -182,6 +182,10 @@
 					</li>
 				</ul>
 			</li>
+			<li><span class="label label-success">Added</span> The method 
+				<code>org.eclipse.sirius.tests.support.api.SiriusTestCase.waitSaveSessionJob()</code> has been added to ensure that the SaveSessionJob, potentially triggered by 
+				<code>org.eclipse.sirius.ui.business.internal.session.SaveSessionWhenNoDialectEditorsListener.statusChangedInternal(Collection&lt;ResourceStatusChange&gt;)</code> is finished before continue. It can be call, for example, after changing the list of selected viewpoints, without any editor opened.
+			</li>
 		</ul>
 		<h2 id="sirius6.3.2">Changes in Sirius 6.3.2</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>

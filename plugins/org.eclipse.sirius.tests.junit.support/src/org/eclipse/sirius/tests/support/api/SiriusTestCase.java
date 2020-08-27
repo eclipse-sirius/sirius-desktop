@@ -38,8 +38,10 @@ import org.eclipse.core.runtime.ILogListener;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.InstanceScope;
@@ -73,17 +75,13 @@ import org.eclipse.sirius.business.internal.migration.RepresentationsFileMigrati
 import org.eclipse.sirius.business.internal.migration.RepresentationsFileVersionSAXParser;
 import org.eclipse.sirius.business.internal.migration.description.VSMMigrationService;
 import org.eclipse.sirius.business.internal.migration.description.VSMVersionSAXParser;
+import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.CommandStackUtil;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
-import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
-import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
-import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
-import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
-import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.ext.base.Option;
@@ -116,10 +114,7 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import org.junit.Assert;
 import org.osgi.framework.Version;
 
-import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 
@@ -146,9 +141,7 @@ public abstract class SiriusTestCase extends TestCase {
     /** name of the project created in the test workspace. */
     protected static final String TEMPORARY_PROJECT_NAME = "DesignerTestProject";
 
-    /**
-     * The default session URI used when there is no session path passed to the generic setup.
-     */
+    /** The default session URI used when there is no session path passed to the generic setup. */
     protected static final URI DEFAULT_MODELING_PROJECT_REPRESENTATIONS_FILE_URI = URI
             .createPlatformResourceURI(File.separator + SiriusTestCase.TEMPORARY_PROJECT_NAME + File.separator + ModelingProject.DEFAULT_REPRESENTATIONS_FILE_NAME, true);
 
@@ -415,8 +408,7 @@ public abstract class SiriusTestCase extends TestCase {
             InterpreterRegistry.prepareImportsFromSession(interpreter, session);
         }
 
-        // Set the auto-refresh to false because it's historically the default
-        // value
+        // Set the auto-refresh to false because it's historically the default value
         DefaultScope.INSTANCE.getNode(SiriusPlugin.ID).putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
         InstanceScope.INSTANCE.getNode(SiriusPlugin.ID).putBoolean(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false);
 
@@ -775,7 +767,6 @@ public abstract class SiriusTestCase extends TestCase {
      * Check that there is no existing error or warning.
      */
     private void checkLogs() {
-        /* an exception occurs in another thread */
         /*
          * Skip checkLoggers when we are in a shouldSkipUnreliableTests mode. We have some unwanted resource
          * notifications during the teardown on jenkins.
@@ -918,6 +909,20 @@ public abstract class SiriusTestCase extends TestCase {
         final TransactionalEditingDomain domain = session.getTransactionalEditingDomain();
         final Command command = new ChangeViewpointSelectionCommand(session, selectionCallback, viewpoints, Collections.<Viewpoint> emptySet(), new NullProgressMonitor());
         domain.getCommandStack().execute(command);
+        waitSaveSessionJob();
+    }
+
+    /**
+     * Ensure that the SaveSessionJob potentially triggered by
+     * org.eclipse.sirius.ui.business.internal.session.SaveSessionWhenNoDialectEditorsListener.statusChangedInternal(Collection<ResourceStatusChange>)
+     * is finished before continue.
+     */
+    protected void waitSaveSessionJob() {
+        try {
+            Job.getJobManager().join(SaveSessionJob.FAMILY, new NullProgressMonitor());
+        } catch (OperationCanceledException | InterruptedException e) {
+            fail(e.getMessage());
+        }
     }
 
     /**
@@ -971,6 +976,7 @@ public abstract class SiriusTestCase extends TestCase {
                     Collections.<Viewpoint> emptySet(), initRepresentations, new NullProgressMonitor());
             alternateSession.getTransactionalEditingDomain().getCommandStack().execute(changeViewpointsSelectionCmd);
         }
+        waitSaveSessionJob();
     }
 
     /**
@@ -984,10 +990,11 @@ public abstract class SiriusTestCase extends TestCase {
         for (final Viewpoint viewpoint : viewpoints) {
             if (name.equals(viewpoint.getName())) {
                 Viewpoint viewpointFromName = getViewpointFromName(name, session);
-                Command changeSiriussSelection = new ChangeViewpointSelectionCommand(session, selectionCallback, Collections.singleton(viewpointFromName), Collections.<Viewpoint> emptySet(),
+                Command changeViewpointsSelection = new ChangeViewpointSelectionCommand(session, selectionCallback, Collections.singleton(viewpointFromName), Collections.<Viewpoint> emptySet(),
                         new NullProgressMonitor());
-                session.getTransactionalEditingDomain().getCommandStack().execute(changeSiriussSelection);
+                session.getTransactionalEditingDomain().getCommandStack().execute(changeViewpointsSelection);
                 activatedViewpoint = true;
+                waitSaveSessionJob();
                 break;
             }
         }
@@ -999,10 +1006,11 @@ public abstract class SiriusTestCase extends TestCase {
                         viewpoints.add(viewpoint);
                         viewpointFromName = getViewpointFromName(name, session);
                     }
-                    Command changeSiriussSelection = new ChangeViewpointSelectionCommand(session, selectionCallback, Collections.singleton(viewpointFromName), Collections.<Viewpoint> emptySet(),
+                    Command changeViewpointsSelection = new ChangeViewpointSelectionCommand(session, selectionCallback, Collections.singleton(viewpointFromName), Collections.<Viewpoint> emptySet(),
                             new NullProgressMonitor());
-                    session.getTransactionalEditingDomain().getCommandStack().execute(changeSiriussSelection);
+                    session.getTransactionalEditingDomain().getCommandStack().execute(changeViewpointsSelection);
                     activatedViewpoint = true;
+                    waitSaveSessionJob();
                     break;
                 }
             }
@@ -1024,6 +1032,7 @@ public abstract class SiriusTestCase extends TestCase {
                         new NullProgressMonitor());
                 session.getTransactionalEditingDomain().getCommandStack().execute(changeSiriussSelection);
                 deactivatedViewpoint = true;
+                waitSaveSessionJob();
                 break;
             }
         }
@@ -1035,6 +1044,7 @@ public abstract class SiriusTestCase extends TestCase {
                             new NullProgressMonitor());
                     session.getTransactionalEditingDomain().getCommandStack().execute(changeSiriussSelection);
                     deactivatedViewpoint = true;
+                    waitSaveSessionJob();
                     break;
                 }
             }
@@ -1592,7 +1602,7 @@ public abstract class SiriusTestCase extends TestCase {
      *            The new value.
      */
     protected void changeDiagramPreference(String preferenceKey, Integer newValue) {
-        assertNoDiagramUIPreferenceChangedinDiagramCoreStore(preferenceKey);
+        SiriusAssert.assertNoDiagramUIPreferenceChangedinDiagramCoreStore(preferenceKey);
 
         int oldValue = Platform.getPreferencesService().getInt(DiagramPlugin.ID, preferenceKey, 0, null);
         oldValueDiagramPreferences.put(preferenceKey, oldValue);
@@ -1615,7 +1625,7 @@ public abstract class SiriusTestCase extends TestCase {
      *            The new value.
      */
     protected void changeDiagramPreference(String preferenceKey, Boolean newValue) {
-        assertNoDiagramUIPreferenceChangedinDiagramCoreStore(preferenceKey);
+        SiriusAssert.assertNoDiagramUIPreferenceChangedinDiagramCoreStore(preferenceKey);
 
         boolean oldValue = Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, preferenceKey, false, null);
         oldValueDiagramPreferences.put(preferenceKey, oldValue);
@@ -1670,7 +1680,7 @@ public abstract class SiriusTestCase extends TestCase {
      *            The new value.
      */
     protected void changeDiagramUIPreference(String preferenceKey, Integer newValue) {
-        assertNoDiagramCorePreferenceChangedinDiagramUIStore(preferenceKey);
+        SiriusAssert.assertNoDiagramCorePreferenceChangedinDiagramUIStore(preferenceKey);
 
         final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
         oldValueDiagramUiPreferences.put(preferenceKey, prefs.getInt(preferenceKey));
@@ -1688,7 +1698,7 @@ public abstract class SiriusTestCase extends TestCase {
      *            The new value.
      */
     protected void changeDiagramUIPreference(String preferenceKey, Boolean newValue) {
-        assertNoDiagramCorePreferenceChangedinDiagramUIStore(preferenceKey);
+        SiriusAssert.assertNoDiagramCorePreferenceChangedinDiagramUIStore(preferenceKey);
 
         final IPreferenceStore prefs = DiagramUIPlugin.getPlugin().getPreferenceStore();
         oldValueDiagramUiPreferences.put(preferenceKey, prefs.getBoolean(preferenceKey));
@@ -1773,47 +1783,11 @@ public abstract class SiriusTestCase extends TestCase {
      *            The new value.
      */
     protected void changeSiriusUIPreference(String preferenceKey, Boolean newValue) {
-        assertNoSiriusCorePreferenceChangedinSiriusUIStore(preferenceKey);
+        SiriusAssert.assertNoSiriusCorePreferenceChangedinSiriusUIStore(preferenceKey);
 
         IPreferenceStore viewpointUIPrefs = SiriusEditPlugin.getPlugin().getPreferenceStore();
         oldValueSiriusUIPreferences.put(preferenceKey, viewpointUIPrefs.getBoolean(preferenceKey));
         viewpointUIPrefs.setValue(preferenceKey, newValue);
-    }
-
-    private void assertNoSiriusCorePreferenceChangedinSiriusUIStore(String preferenceKey) {
-        Collection<SiriusPreferencesKeys> coreKeys = new ArrayList<SiriusPreferencesKeys>(Arrays.asList(SiriusPreferencesKeys.values()));
-        Function<SiriusPreferencesKeys, String> prefToName = new Function<SiriusPreferencesKeys, String>() {
-            @Override
-            public String apply(SiriusPreferencesKeys input) {
-                return input.name();
-            }
-        };
-        TestCase.assertFalse("The DesignerPreferenceKey named " + preferenceKey + " should not be modified in the UI store.",
-                Lists.newArrayList(Iterables.transform(coreKeys, prefToName)).contains(preferenceKey));
-    }
-
-    private void assertNoDiagramCorePreferenceChangedinDiagramUIStore(String preferenceKey) {
-        Collection<String> coreKeys = new ArrayList<>();
-        for (SiriusDiagramInternalPreferencesKeys key : SiriusDiagramInternalPreferencesKeys.values()) {
-            coreKeys.add(key.name());
-        }
-        for (SiriusDiagramPreferencesKeys key : SiriusDiagramPreferencesKeys.values()) {
-            coreKeys.add(key.name());
-        }
-        coreKeys.add(SiriusDiagramCorePreferences.PREF_ENABLE_OVERRIDE);
-        coreKeys.add(SiriusDiagramCorePreferences.PREF_LINE_STYLE);
-        assertFalse("The Diagram core preference named " + preferenceKey + " should not be modified in the Diagram UI store.", coreKeys.contains(preferenceKey));
-    }
-
-    private void assertNoDiagramUIPreferenceChangedinDiagramCoreStore(String preferenceKey) {
-        Collection<String> uiKeys = new ArrayList<>();
-        for (SiriusDiagramUiInternalPreferencesKeys key : SiriusDiagramUiInternalPreferencesKeys.values()) {
-            uiKeys.add(key.name());
-        }
-        for (SiriusDiagramUiPreferencesKeys key : SiriusDiagramUiPreferencesKeys.values()) {
-            uiKeys.add(key.name());
-        }
-        assertFalse("The Diagram UI preference named " + preferenceKey + " should not be modified in the Diagram core store.", uiKeys.contains(preferenceKey));
     }
 
     private String getErrorMessage(String preferenceKey, String pluginId) {
