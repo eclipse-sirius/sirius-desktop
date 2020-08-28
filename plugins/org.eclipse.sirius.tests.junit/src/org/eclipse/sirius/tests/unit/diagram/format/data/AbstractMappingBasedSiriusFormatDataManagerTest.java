@@ -201,15 +201,9 @@ public class AbstractMappingBasedSiriusFormatDataManagerTest extends AbstractSir
     @Override
     @Before
     public void setUp() throws Exception {
-
-        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, getDataPath(), getSemanticTargetModelName());
-
         super.setUp();
-
         // Load target mapping model
-        // String semanticTargetPath = PLUGIN_PATH + getPlatformRelatedDataPath() + getSemanticTargetModelName();
-        // semanticTargetModel = addModelToSession(session, semanticTargetPath);
-        semanticTargetModel = getModelFromPath(TEMPORARY_PROJECT_NAME + "/" + getSemanticTargetModelName(), session);
+        semanticTargetModel = getModelFromPath(PLUGIN_PATH + getPlatformRelatedDataPath() + getSemanticTargetModelName(), session);
 
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
         oldFont = changeDefaultFontName("Sans");
@@ -222,7 +216,9 @@ public class AbstractMappingBasedSiriusFormatDataManagerTest extends AbstractSir
 
     @Override
     protected List<String> getSemanticModelPaths() {
-        return Arrays.asList(TEMPORARY_PROJECT_NAME + "/" + getSemanticModelName(), TEMPORARY_PROJECT_NAME + "/" + getSemanticTargetModelName());
+        return Arrays.asList(PLUGIN_PATH + getPlatformRelatedDataPath() + getSemanticModelName(), PLUGIN_PATH + getPlatformRelatedDataPath() + getSemanticTargetModelName());
+        // return Arrays.asList(TEMPORARY_PROJECT_NAME + "/" + getSemanticModelName(), TEMPORARY_PROJECT_NAME + "/" +
+        // getSemanticTargetModelName());
     }
 
     protected EObject getModelFromPath(String semanticTargetPath, Session session) {

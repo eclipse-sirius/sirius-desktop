@@ -33,7 +33,6 @@ import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.Config
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.ConfigurationFactory;
 import org.eclipse.sirius.diagram.ui.tools.api.format.MappingBasedSiriusFormatManagerFactory;
 import org.eclipse.sirius.diagram.ui.tools.api.format.semantic.MappingBasedSiriusFormatDataManager;
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.format.data.manager.mappingbased.MappingBasedTestConfiguration;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -81,7 +80,6 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest 
     @Override
     @Before
     public void setUp() throws Exception {
-        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, getDataPath(), TYPES_MODEL_NAME);
         super.setUp();
     }
 

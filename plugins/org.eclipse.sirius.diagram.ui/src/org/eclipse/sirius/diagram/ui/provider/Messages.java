@@ -1657,6 +1657,9 @@ public final class Messages {
     @TranslatableMessage
     public static String MappingBasedSiriusFormatManagerFactory_ErrorTargetDiagramRootIsNull;
 
+    @TranslatableMessage
+    public static String MappingBasedSiriusFormatManagerFactory_ImpossibleToSuitableDescription;
+
     // CHECKSTYLE:ON
     private Messages() {
         // Prevents instanciation.

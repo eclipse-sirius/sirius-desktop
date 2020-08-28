@@ -1,0 +1,321 @@
+/*******************************************************************************
+ * Copyright (c) 2020 Obeo.
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
+ * which accompanies this distribution, and is available at
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
+ * Contributors:
+ *    Obeo - initial API and implementation
+ *******************************************************************************/
+package org.eclipse.sirius.tests.unit.diagram.format.data;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.RecordingCommand;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.formatdata.tools.api.util.FormatHelper.FormatDifference;
+import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.Configuration;
+import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.ConfigurationFactory;
+import org.eclipse.sirius.diagram.ui.tools.api.format.MappingBasedSiriusFormatManagerFactory;
+import org.eclipse.sirius.diagram.ui.tools.api.format.semantic.MappingBasedSiriusFormatDataManager;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tests.unit.diagram.format.data.manager.mappingbased.MappingBasedTestConfiguration;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
+
+/**
+ * Test class for {@link MappingBasedSiriusFormatDataManager}. Inspired from
+ * {@link SiriusFormatDataManagerForSemanticElementsApplyWithPredefinedDataTest}.
+ * 
+ * @author adieumegard
+ */
+@RunWith(value = Parameterized.class)
+public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramDiffSessionTest extends AbstractMappingBasedSiriusFormatDataManagerTest {
+
+    public MappingBasedSiriusFormatDataManagerCreateTargetDiagramDiffSessionTest(Representation representationToCopyFormat) throws Exception {
+        super(representationToCopyFormat);
+    }
+
+    protected static final boolean MB_REGENERATE_TEST_DATA = false;
+
+    protected static final boolean MB_GENERATE_IMAGES_TEST_DATA = false;
+
+    protected Session targetSession;
+
+    protected EObject targetSemanticModel;
+
+    protected EObject targetSemanticTargetModel;
+
+    /** Name of the file containing the session target mapped elements */
+    protected static final String SESSION_TARGET_MODEL_NAME = "My2.aird";
+
+    @Override
+    @Before
+    public void setUp() throws Exception {
+
+        genericSetUp(getSemanticTargetModelPaths(), getModelerPathAsList(), getSessionTargetModelPath());
+
+        targetSession = session;
+        targetSemanticModel = semanticModel;
+        targetSemanticTargetModel = getModelFromPath(getSemanticTargetModelPaths().get(0), targetSession);
+
+        super.setUp();
+    }
+
+    protected List<String> getSemanticTargetModelPaths() {
+        return Collections.singletonList(PLUGIN_PATH + getPlatformRelatedDataPath() + getSemanticTargetModelName());
+    }
+
+    protected String getSessionTargetModelPath() {
+        return PLUGIN_PATH + getPlatformRelatedDataPath() + SESSION_TARGET_MODEL_NAME;
+    }
+
+    protected static final Diagram MB_DIAG_TYPE2_MYPACKAGE = new Diagram("DiagType2 of MyPackage", 16, 2);
+
+    protected static final Representation MB_REPRES_TYPE2 = new Representation("DiagType2", MB_DIAG_TYPE2_MYPACKAGE);
+
+    protected static final Diagram MB_DIAG_TYPE2_NOTES_MYPACKAGE = new Diagram("DiagType2 with notes of MyPackage", 16, 2);
+
+    protected static final RepresentationWithNotes MB_REPRES_NOTES_TYPE2 = new RepresentationWithNotes("DiagType2", MB_DIAG_TYPE2_NOTES_MYPACKAGE);
+
+    protected static final Diagram MB_DIAG_TYPE2UNSYNC_MYPACKAGE = new Diagram("DiagType2_unsync of MyPackage", 16, 2);
+
+    protected static final Representation MB_REPRES_TYPE2UNSYNC = new Representation("DiagType2_unsync", MB_DIAG_TYPE2UNSYNC_MYPACKAGE);
+
+    protected static final Diagram MB_DIAG_TYPE2UNSYNC_EDGE_MYPACKAGE = new Diagram("DiagType2_unsync_edge of MyPackage", 16, 2);
+
+    protected static final Representation MB_REPRES_TYPE2UNSYNC_EDGE = new Representation("DiagType2_unsync_edge", MB_DIAG_TYPE2UNSYNC_EDGE_MYPACKAGE);
+
+    protected static final Diagram MB_DIAG_TYPE8_MYPACKAGE = new Diagram("DiagType8 of MyPackage", 16, 0);
+
+    protected static final Diagram MB_DIAG_TYPE8_P2 = new Diagram("DiagType8 of p2", 3, 0);
+
+    protected static final Representation MB_REPRES_TYPE8 = new Representation("DiagType8", MB_DIAG_TYPE8_MYPACKAGE, MB_DIAG_TYPE8_P2);
+
+    protected static final Diagram MB_DIAG_TYPE8UNSYNC_MYPACKAGE = new Diagram("DiagType8_unsync of MyPackage", 16, 0);
+
+    protected static final Representation MB_REPRES_TYPE8UNSYNC = new Representation("DiagType8_unsync", MB_DIAG_TYPE8UNSYNC_MYPACKAGE);
+
+    protected static final Representation[] MB_ALL_REPRESENTATIONS = { MB_REPRES_TYPE2, MB_REPRES_TYPE2UNSYNC, MB_REPRES_TYPE2UNSYNC_EDGE, MB_REPRES_TYPE8, MB_REPRES_TYPE8UNSYNC,
+            MB_REPRES_NOTES_TYPE2 };
+
+    @Parameters
+    public static Collection<Object[]> data() {
+        // We could use @Theories and @Datapoints but the theory stops as soon
+        // as there is a failure. With parameters, we have feedback for all
+        // scenarii.
+        Collection<Object[]> data = new ArrayList<>();
+        for (Representation copyRep : MB_ALL_REPRESENTATIONS) {
+            data.add(new Object[] { copyRep });
+        }
+        return data;
+    }
+
+    /**
+     * Test method, generate new diagram with mapping = all elements
+     * 
+     * @throws Exception
+     *             Test error.
+     */
+    @Test
+    public void testApplyPredefinedFormatDataOnNewDiagramFull() throws Exception {
+        if (TestsUtil.shouldSkipLongTests()) {
+            return;
+        }
+
+        StringBuilder differences = new StringBuilder();
+        MappingBasedTestConfiguration semanticTargetFullTestConfiguration = getFullTestConfiguration();
+        Configuration configuration = ConfigurationFactory.buildConfiguration();
+
+        if (representationToCopyFormat instanceof RepresentationWithNotes) {
+            doTestOnNewDiagram(differences, semanticTargetFullTestConfiguration, configuration, true);
+        } else {
+            doTestOnNewDiagram(differences, semanticTargetFullTestConfiguration, configuration, false);
+        }
+        assertTrue("Found differences : \n" + differences, differences.length() == 0);
+    }
+
+    /**
+     * Test method, generate new diagram with mapping = subset of elements
+     *
+     * @throws Exception
+     *             Test error.
+     */
+    @Test
+    public void testApplyPredefinedFormatDataOnNewDiagramSubset() throws Exception {
+        if (TestsUtil.shouldSkipLongTests()) {
+            return;
+        }
+
+        StringBuilder differences = new StringBuilder();
+        MappingBasedTestConfiguration semanticTargetSubsetMapConfiguration = getSubsetTestConfiguration();
+        Configuration configuration = ConfigurationFactory.buildConfiguration();
+
+        if (representationToCopyFormat instanceof RepresentationWithNotes) {
+            doTestOnNewDiagram(differences, semanticTargetSubsetMapConfiguration, configuration, true);
+        } else {
+            doTestOnNewDiagram(differences, semanticTargetSubsetMapConfiguration, configuration, false);
+        }
+        assertTrue("Found differences : \n" + differences, differences.length() == 0);
+    }
+
+    /**
+     * Compute configuration for source to target EObjects mapping. Uses all the source model elements.
+     * 
+     * @return
+     */
+    @Override
+    protected MappingBasedTestConfiguration getFullTestConfiguration() {
+        Map<String, String> full_map = new HashMap<String, String>();
+        full_map.put("//p1", "//targetp1");
+        full_map.put("//p1/C1-1", "//targetp1/targetC1-1");
+        full_map.put("//p1/C1-1/aC1-2", "//targetp1/targetC1-1/targetaC1-2");
+        full_map.put("//p1/C1-1/aC1-2/@eGenericType", "//targetp1/targetC1-1/targetaC1-2/@eGenericType");
+        full_map.put("//p1/C1-1/aC1-1-1", "//targetp1/targetC1-1/targetaC1-1-1");
+        full_map.put("//p1/C1-1/aC1-1-1/@eGenericType", "//targetp1/targetC1-1/targetaC1-1-1/@eGenericType");
+        full_map.put("//p1/C1-2", "//targetp1/targetC1-2");
+        full_map.put("//p1/C1-3", "//targetp1/targetC1-3");
+        full_map.put("//p1/C1-3/m1", "//targetp1/targetC1-3/targetm1");
+        full_map.put("//p1/p1-1", "//targetp1/targetp1-1");
+        full_map.put("//p1/p1-1/C1-1-1", "//targetp1/targetp1-1/targetC1-1-1");
+        full_map.put("//p1/p1-1/C1-1-1/m1", "//targetp1/targetp1-1/targetC1-1-1/targetm1");
+        full_map.put("//p1/p1-1/C1-1-2", "//targetp1/targetp1-1/targetC1-1-2");
+        full_map.put("//p1/p1-2", "//targetp1/targetp1-2");
+        full_map.put("//p1/p1-2/C1-2-1", "//targetp1/targetp1-2/targetC1-2-1");
+        full_map.put("//p1/p1-3", "//targetp1/targetp1-3");
+        full_map.put("//p2", "//targetp2");
+        full_map.put("//p2/p2-1", "//targetp2/targetp2-1");
+        full_map.put("//p2/p2-1/new%20EClass%201", "//targetp2/targetp2-1/targetnew%20EClass%201");
+        full_map.put("//p2/p2-1/new%20EClass%201/m1", "//targetp2/targetp2-1/targetnew%20EClass%201/targetm1");
+        full_map.put("//p2/p2-2", "//targetp2/targetp2-2");
+        full_map.put("//p3", "//targetp3");
+        full_map.put("//p4", "//targetp4");
+
+        return new MappingBasedTestConfiguration(semanticModel, targetSemanticTargetModel, full_map, null, "full");
+    }
+
+    /**
+     * Compute configuration for source to target EObjects mapping. Uses a subset of the source model elements.
+     * 
+     * @return
+     */
+    @Override
+    protected MappingBasedTestConfiguration getSubsetTestConfiguration() {
+        Map<String, String> subset_map = new HashMap<String, String>();
+        subset_map.put("//p1", "//targetp1");
+        subset_map.put("//p1/C1-1", "//targetp1/targetC1-1");
+        subset_map.put("//p1/C1-1/aC1-1-1", "//targetp1/targetC1-1/targetaC1-1-1");
+        subset_map.put("//p1/C1-1/aC1-1-1/@eGenericType", "//targetp1/targetC1-1/targetaC1-1-1/@eGenericType");
+        subset_map.put("//p1/C1-2", "//targetp1/targetC1-2");
+        subset_map.put("//p1/p1-1", "//targetp1/targetp1-1");
+        subset_map.put("//p1/p1-1/C1-1-1", "//targetp1/targetp1-1/targetC1-1-1");
+        subset_map.put("//p1/p1-1/C1-1-1/m1", "//targetp1/targetp1-1/targetC1-1-1/targetm1");
+        subset_map.put("//p2", "//targetp2");
+        subset_map.put("//p2/p2-1", "//targetp2/targetp2-1");
+        subset_map.put("//p2/p2-1/new%20EClass%201", "//targetp2/targetp2-1/targetnew%20EClass%201");
+        subset_map.put("//p2/p2-2", "//targetp2/targetp2-2");
+        subset_map.put("//p4", "//targetp4");
+
+        return new MappingBasedTestConfiguration(semanticModel, targetSemanticTargetModel, subset_map, null, "subset");
+    }
+
+    private void doTestOnNewDiagram(StringBuilder differences, MappingBasedTestConfiguration explicitMappingTestConfiguration, Configuration configuration, boolean includeNotes) {
+
+        List<DRepresentationDescriptor> allDDiagramDescriptors = getRepresentationDescriptors(representationToCopyFormat.name, session).stream().collect(Collectors.toList());
+        DRepresentationDescriptor dRepresentationDescriptorToFind = ViewpointFactory.eINSTANCE.createDRepresentationDescriptor();
+        dRepresentationDescriptorToFind.setName(representationToCopyFormat.diagrams.get(0).name);
+        Collections.sort(allDDiagramDescriptors, USING_NAME);
+        final int search = Collections.binarySearch(allDDiagramDescriptors, dRepresentationDescriptorToFind, USING_NAME);
+
+        assertTrue("Diagram " + dRepresentationDescriptorToFind.getName() + " is not found in representation", search > -1);
+
+        final DDiagram dDiagram = (DDiagram) allDDiagramDescriptors.get(search).getRepresentation();
+        Collection<DiagramEditPart> sourceDiagramEditParts = getDiagramEditPart(session, dDiagram);
+
+        if (!sourceDiagramEditParts.isEmpty()) {
+            DiagramEditPart sourceDiagramEditPart = sourceDiagramEditParts.stream().findFirst().get();
+
+            final MappingBasedSiriusFormatDataManager originalManager = new MappingBasedSiriusFormatDataManager(explicitMappingTestConfiguration.getObjectsMap());
+            originalManager.storeFormatData(sourceDiagramEditPart);
+
+            final MappingBasedSiriusFormatDataManager newManager = new MappingBasedSiriusFormatDataManager(explicitMappingTestConfiguration.getObjectsMap());
+            final String newDiagramName = dDiagram.getName() + " " + explicitMappingTestConfiguration.getName() + " New" + (includeNotes ? " notes" : "");
+
+            if (MB_GENERATE_IMAGES_TEST_DATA) {
+                exportDiagramToTempFolder(newDiagramName + "_from", dDiagram);
+            }
+
+            final RecordingCommand command = new RecordingCommand(sourceDiagramEditPart.getEditingDomain()) {
+                @Override
+                protected void doExecute() {
+                    // Update diagram, but transaction will be
+                    // rollbacked
+                    DDiagram newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnNewDiagram(session, dDiagram, explicitMappingTestConfiguration.getObjectsMap(),
+                            targetSession, newDiagramName, explicitMappingTestConfiguration.getTargetRoot(), includeNotes);
+
+                    Collection<DiagramEditPart> targetDiagramEditParts = getDiagramEditPart(targetSession, newDiagram);
+                    assertTrue(!targetDiagramEditParts.isEmpty());
+
+                    DiagramEditPart targetDiagramEditPart = targetDiagramEditParts.stream().findFirst().get();
+                    newManager.storeFormatData(targetDiagramEditPart);
+
+                    if (MB_GENERATE_IMAGES_TEST_DATA) {
+                        exportDiagramToTempFolder(newDiagramName + "_to", newDiagram);
+                    }
+                }
+            };
+
+            try {
+                // Force rollback of transaction to let raw diagram
+                // unchanged
+                // targetSession.getTransactionalEditingDomain().addResourceSetListener(ROLLBACK_LISTENER);
+                targetSession.getTransactionalEditingDomain().getCommandStack().execute(command);
+                targetSession.save(new NullProgressMonitor());
+            } finally {
+                // targetSession.getTransactionalEditingDomain().removeResourceSetListener(ROLLBACK_LISTENER);
+            }
+
+            final String diagramToCopyFormatName = representationToCopyFormat.diagrams.get(0).name;
+            final String partialPath = "multi_from___" + encodeDiagramName(diagramToCopyFormatName) + "___to___" + encodeDiagramName(newDiagramName) + XMI_EXTENSION;
+
+            try {
+                // Enable this if you want to generate referenced files
+                if (MB_REGENERATE_TEST_DATA) {
+                    final String path = getPlatformRelatedXmiDataPath() + RAW_FOLDER + partialPath;
+                    saveDiagramFiltered(path, explicitMappingTestConfiguration, newManager);
+                }
+
+                String fullPath = getPlatformRelatedFullXmiDataPath() + RAW_FOLDER + partialPath;
+                String message = "between diagram ";
+                message += diagramToCopyFormatName + " and diagram " + newDiagramName;
+                FormatDifference<?> foundDifference = loadAndCompareFiltered(fullPath, newManager, configuration, explicitMappingTestConfiguration);
+                if (foundDifference != null) {
+                    differences.append("\n. " + message + foundDifference);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+
+            }
+        }
+    }
+}

@@ -77,7 +77,6 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTes
     @Override
     @Before
     public void setUp() throws Exception {
-
         copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, getDataPath(), TYPES_MODEL_NAME);
         super.setUp();
     }

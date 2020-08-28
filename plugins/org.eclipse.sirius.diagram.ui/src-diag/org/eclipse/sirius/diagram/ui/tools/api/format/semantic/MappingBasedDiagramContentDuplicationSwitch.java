@@ -336,6 +336,8 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
                 replicateShowHideAndFiltersOnElement(sourceDElement, createdTargetElement);
 
                 getSourceDDiagramElementToTargetDDiagramElementMap().put(sourceDElement, createdTargetElement);
+
+                result = createdTargetElement;
             } else {
                 throw new IllegalArgumentException(
                         MessageFormat.format(Messages.MappingBasedDiagramContentDumplicationSwitch_ErrorImpossibleToCreateNodeFromNodeCandidate, abstractDNodeCandidate, sourceDElement));
@@ -346,10 +348,10 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
     }
 
     private void replicateShowHideAndFiltersOnElement(DDiagramElement sourceDElement, DDiagramElement targetDElement) {
-         targetDElement.getGraphicalFilters().clear();
-         targetDElement.getGraphicalFilters().addAll(SiriusCopierHelper.copyAllWithNoUidDuplication(sourceDElement.getGraphicalFilters()));
+        targetDElement.getGraphicalFilters().clear();
+        targetDElement.getGraphicalFilters().addAll(SiriusCopierHelper.copyAllWithNoUidDuplication(sourceDElement.getGraphicalFilters()));
 
-         targetDElement.setVisible(sourceDElement.isVisible());
+        targetDElement.setVisible(sourceDElement.isVisible());
     }
 
     /**
@@ -454,7 +456,9 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
                             MessageFormat.format(Messages.MappingBasedDiagramContentDumplicationSwitch_ErrorImpossibleToCreateEdgeFromEdgeCandidate, abstractDEdgeCandidate, toHandleEdge));
                 }
             } else {
-                edgesToEdge.add(toHandleEdge);
+                if (!handledEdges.contains(toHandleEdge)) {
+                    edgesToEdge.add(toHandleEdge);
+                }
                 return;
             }
         }

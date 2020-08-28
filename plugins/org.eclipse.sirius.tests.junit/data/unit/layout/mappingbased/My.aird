@@ -94,12 +94,6 @@
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
-    <ownedViews xmi:type="viewpoint:DView" uid="_am5TwLDFEeanMtzDRncztA">
-      <viewpoint xmi:type="description:Viewpoint" href="3.6/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']"/>
-    </ownedViews>
-    <ownedViews xmi:type="viewpoint:DView" uid="_c7z8sLDFEeanMtzDRncztA">
-      <viewpoint xmi:type="description:Viewpoint" href="3.5/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']"/>
-    </ownedViews>
   </viewpoint:DAnalysis>
   <diagram:DSemanticDiagram uid="_5zhU8M4UEd6bS_KBCUv05A">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_67mUgBFQEeKQrpwaBKeVCA" source="GMF_DIAGRAMS">

@@ -417,6 +417,8 @@ public class MappingBasedSiriusFormatManagerFactory {
                 targetDiagram.eAdapters().remove(NotYetOpenedDiagramAdapter.INSTANCE);
             }
             return targetDiagram;
+        } else {
+            DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.MappingBasedSiriusFormatManagerFactory_ImpossibleToSuitableDescription, descs, sourceDescName, targetSession));
         }
         return null;
     }

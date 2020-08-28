@@ -234,8 +234,9 @@ public abstract class AbstractSiriusFormatDataManagerForSemanticElementsTest ext
     protected void setUp() throws Exception {
         super.setUp();
 
-        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, getDataPath(), getSessionModelName(), getSemanticModelName(), getModelerName());
-        genericSetUp(getSemanticModelPaths(), getModelerPathAsList(), TEMPORARY_PROJECT_NAME + "/" + getSessionModelName());
+        // copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, getDataPath(), getSessionModelName(),
+        // getSemanticModelName());
+        genericSetUp(getSemanticModelPaths(), getModelerPathAsList(), getSessionModelPath());
 
         // Disable refresh on opening
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), false);
@@ -247,11 +248,15 @@ public abstract class AbstractSiriusFormatDataManagerForSemanticElementsTest ext
     }
 
     protected List<String> getModelerPathAsList() {
-        return Collections.singletonList(TEMPORARY_PROJECT_NAME + "/" + getModelerName());
+        return Collections.singletonList(PLUGIN_PATH + getPlatformRelatedDataPath() + getModelerName());
     }
 
     protected List<String> getSemanticModelPaths() {
-        return Collections.singletonList(TEMPORARY_PROJECT_NAME + "/" + getSemanticModelName());
+        return Collections.singletonList(PLUGIN_PATH + getPlatformRelatedDataPath() + getSemanticModelName());
+    }
+
+    protected String getSessionModelPath() {
+        return PLUGIN_PATH + getPlatformRelatedDataPath() + getSessionModelName();
     }
 
     protected String getSessionModelName() {
