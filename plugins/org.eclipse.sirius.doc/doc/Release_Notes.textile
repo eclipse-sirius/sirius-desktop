@@ -4,6 +4,25 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius6.3.4). Changes in Sirius 6.3.4
+
+h3. User-Visible Changes
+
+* <span class="label label-info">Modified</span> In properties views, the labels are correctly rendered again. There used to be a regression on recent versions of Eclipse which made changes in styling/theming. Sirius now includes an updated version of EEF (v2.1.5) which fixes [the issue](https://bugs.eclipse.org/bugs/show_bug.cgi?id=552626).
+
+h3. Developer-Visible Changes
+
+* Sirius 6.3.4 is compatible with Eclipse 2020-09 (this required some internal changes to adapt to changes in the platform).
+* EEF has been updated to version 2.1.5 which fixes 
+
+h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
+
+* The Sirius SWTBot test APIs have been updated to be compatible with SWTBot 3.0 final (in addition to SWTBot 3.0M2).
+
+h2(#sirius6.3.3). Changes in Sirius 6.3.3
+
+Sirius 6.3.3 fixes a single performance issue which only occurred in specific circumstances should not have any visible impact in normal use.
+
 h2(#sirius6.3.2). Changes in Sirius 6.3.2
 
 h3. User-Visible Changes

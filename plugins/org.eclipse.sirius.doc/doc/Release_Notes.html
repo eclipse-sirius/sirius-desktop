@@ -13,7 +13,7 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
-						<a href="#sirius6.3.2">Changes in Sirius 6.3.2</a>
+						<a href="#sirius6.3.4">Changes in Sirius 6.3.4</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#UserVisibleChanges">User-Visible Changes</a>
@@ -24,7 +24,10 @@
 						</ol>
 					</li>
 					<li>
-						<a href="#sirius6.3.1">Changes in Sirius 6.3.1</a>
+						<a href="#sirius6.3.3">Changes in Sirius 6.3.3</a>
+					</li>
+					<li>
+						<a href="#sirius6.3.2">Changes in Sirius 6.3.2</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#UserVisibleChanges2">User-Visible Changes</a>
@@ -35,16 +38,27 @@
 						</ol>
 					</li>
 					<li>
-						<a href="#sirius6.3.0">Changes in Sirius 6.3.0</a>
+						<a href="#sirius6.3.1">Changes in Sirius 6.3.1</a>
 						<ol style="list-style: disc;">
 							<li>
 								<a href="#UserVisibleChanges3">User-Visible Changes</a>
 							</li>
 							<li>
+								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
+							</li>
+						</ol>
+					</li>
+					<li>
+						<a href="#sirius6.3.0">Changes in Sirius 6.3.0</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#UserVisibleChanges4">User-Visible Changes</a>
+							</li>
+							<li>
 								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -55,7 +69,7 @@
 						<a href="#sirius6.2.1">Changes in Sirius 6.2.1</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges5">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -63,13 +77,13 @@
 						<a href="#sirius6.2.0">Changes in Sirius 6.2.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges4">User-Visible Changes</a>
+								<a href="#UserVisibleChanges5">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges5">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges6">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -77,10 +91,10 @@
 						<a href="#sirius6.1.2">Changes in Sirius 6.1.2</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges5">User-Visible Changes</a>
+								<a href="#UserVisibleChanges6">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges6">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges7">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -96,13 +110,13 @@
 						<a href="#sirius6.1.0">Changes in Sirius 6.1.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges6">User-Visible Changes</a>
+								<a href="#UserVisibleChanges7">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges7">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges8">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -110,13 +124,13 @@
 						<a href="#sirius6.0.0">Changes in Sirius 6.0.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#UserVisibleChanges7">User-Visible Changes</a>
+								<a href="#UserVisibleChanges8">User-Visible Changes</a>
 							</li>
 							<li>
 								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges8">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges9">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -126,8 +140,26 @@
 		<p>This document contains the release notes for recent major releases of Sirius. See also 
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
-		<h2 id="sirius6.3.2">Changes in Sirius 6.3.2</h2>
+		<h2 id="sirius6.3.4">Changes in Sirius 6.3.4</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
+		<ul>
+			<li><span class="label label-info">Modified</span> In properties views, the labels are correctly rendered again. There used to be a regression on recent versions of Eclipse which made changes in styling/theming. Sirius now includes an updated version of EEF (v2.1.5) which fixes [the issue](https://bugs.eclipse.org/bugs/show_bug.cgi?id=552626).</li>
+		</ul>
+		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<ul>
+			<li>Sirius 6.3.4 is compatible with Eclipse 2020-09 (this required some internal changes to adapt to changes in the platform).</li>
+			<li>EEF has been updated to version 2.1.5 which fixes </li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
+			<code>org.eclipse.sirius.tests.swtbot.support</code>
+		</h4>
+		<ul>
+			<li>The Sirius SWTBot test APIs have been updated to be compatible with SWTBot 3.0 final (in addition to SWTBot 3.0M2).</li>
+		</ul>
+		<h2 id="sirius6.3.3">Changes in Sirius 6.3.3</h2>
+		<p>Sirius 6.3.3 fixes a single performance issue which only occurred in specific circumstances should not have any visible impact in normal use.</p>
+		<h2 id="sirius6.3.2">Changes in Sirius 6.3.2</h2>
+		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> In diagrams, the display of the label of the compartments has been improved. When there is not enough space to display the label of the compartment container or the contained compartments, it is displayed on multiple lines. Refer to 
 				<a href="user/diagrams/Diagrams.html#Compartments">Compartment section</a> for more information.
@@ -139,7 +171,7 @@
 		</ul> 
 		<img border="0" src="images/combined_fragment_label_before.png"/> With Sirius 6.3.2, the label is now on the top of execution: 
 		<img border="0" src="images/combined_fragment_label_after.png"/>
-		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius.common">Changes in  
 			<code>org.eclipse.sirius.common</code>
 		</h4>
@@ -176,7 +208,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius6.3.1">Changes in Sirius 6.3.1</h2>
-		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> A new type of jump link has been added in Sirius 6.3.1. As reminder, a jump link is a way to graphically improve the way how 2 edges intersect. This new type is graphically represented by a blank line instead of the classical &#8220;jump&#8221;. This new type is documented in the 
 				<a href="user/diagrams/Diagrams.html#Appearance">Appearance</a> section of edge Properties view.
@@ -192,7 +224,7 @@
 		<ul>
 			<li><span class="label label-danger">Removed</span> The feature concerning the capability to move labels on border of node, or border node, all around the node, added in 6.3.0, has been reverted. There are unexpected side effects (wrong location after a rename of a label for example).</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> Upgraded ELK version from 0.5.0 to 0.6.1, see the 
 				<a href="https://projects.eclipse.org/projects/modeling.elk/releases/0.6.1">ELK documentation</a> for the list of changes in that version (and previous).
@@ -257,7 +289,7 @@
 			<a href="i18n_changes.html#sirius631">this document</a> for the complete list of message keys added or removed in Sirius 6.3.1.
 		</p>
 		<h2 id="sirius6.3.0">Changes in Sirius 6.3.0</h2>
-		<h3 id="UserVisibleChanges3">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> It is now possible to move labels on border of node, or border node, all around the node. Before, for label larger than the node, only centered location was authorized on North or South side.</li>
 			<li><span class="label label-info">Modified</span> The GIF and BMP formats which are currently supported when exporting diagrams as images should be considered 
@@ -273,7 +305,7 @@
 				<code>Type</code>.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> Upgraded ELK version from 0.4.1 to 0.5.0, see the <a href="https://projects.eclipse.org/projects/modeling.elk/releases/0.5.0" target="_blank">ELK documentation</a> for the list of changes in that version.</li>
 			<li><span class="label label-info">Modified</span> Upgraded EEF version from 2.1.2 to 2.1.3 (which contains a single bugfix, for <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=550436" target="_blank">#550436</a>).</li>
@@ -411,7 +443,7 @@
 		<h2 id="sirius6.2.2">Changes in Sirius 6.2.2</h2>
 		<p>There are no user-visible changes in Sirius 6.2.2 compared to 6.2.1. The only changes are internal and related either to the build process or to the automated tests.</p>
 		<h2 id="sirius6.2.1">Changes in Sirius 6.2.1</h2>
-		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges5">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius2">Changes in  
 			<code>org.eclipse.sirius</code>
 		</h4>
@@ -447,7 +479,7 @@
 				<code>org.eclipse.sirius.diagram.ui.business.api.image.ImageSelector.IMAGES_RESOURCE_NAME</code> constant has been deprecated. It was present in the initial commit of Sirius but has never been used in its open source components.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support2">Changes in  
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
@@ -474,7 +506,7 @@
 			</li>
 		</ul>
 		<h2 id="sirius6.2.0">Changes in Sirius 6.2.0</h2>
-		<h3 id="UserVisibleChanges4">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges5">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> On sequence diagrams, it is now possible to remove vertical blank spaces on standard edition mode by dragging the mouse from bottom to top anywhere in the canvas with the Ctrl+Shift keys pressed. This 
 				<a href="user/sequences/Sequence%20Diagrams.html#remove_vertical_blank_space">feature</a> was here since version 6.0.0 but was only accessible through the ruler.
@@ -486,7 +518,7 @@
 				<a href="specifier/diagrams/Diagrams.html#group">corresponding documentation</a> .
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges5">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges6">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius.common3">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
@@ -838,7 +870,7 @@
 				<code>java.util.Optional&lt;T&gt;</code> instead.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support3">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
@@ -857,13 +889,13 @@
 			</li>
 		</ul>
 		<h2 id="sirius6.1.2">Changes in Sirius 6.1.2</h2>
-		<h3 id="UserVisibleChanges5">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges6">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> Invalid representations, that are either representations which semantic target does not exist anymore or representations that can not be retrieved anymore, are grayed in the Model Explorer and the only available action is 
 				<em>Delete</em>. It was previously the case only for representations which semantic target does not exist anymore.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges6">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges7">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> If the 
 				<code>org.eclipse.sirius.diagam.ui.hidePrintingOfPermissionAuthorityDecoration</code> system property is set to true and if there is no other printable decoration provided at the same location (South-West), the permission authority decorations displayed on diagrams are not printed nor exported in images (export as image actions).
@@ -942,7 +974,7 @@
 			</li>
 			<li><span class="label label-info">IMPORTANT</span> Please note that starting from version 6.1, Sirius is now licensed under <a href="https://www.eclipse.org/legal/epl-2.0/" target="_blank">version 2.0 of the Eclipse Public License</a>, which updates some wording and clarifies some points but neither changes the open-source nature of Sirius nor the implications of using or embedding it. See <a href="https://www.eclipse.org/legal/epl-2.0/faq.php" target="_blank">the official FAQ</a> for details about the difference between EPL v1.0 (which was used before) and v2.0.</li>
 		</ul>
-		<h3 id="UserVisibleChanges6">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges7">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> A new preference has been added in the Sirius preference panel. It allows Sirius to ask the user if he wants to save session resources after an automatic migration. If the new preference is ticked, the pop-up will only appear for session opening caused by a direct action of the user (i.e. opening a diagram or unfolding the resources in the model explorer). You can refer to the 
 				<a href="user/general/Modeling%20Project.html#Migration">user documentation </a> for more details.
@@ -1014,7 +1046,7 @@
 				<a href="specifier/tables/Tables.html#edition_tables">the documentation</a> for details.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges7">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges8">Developer-Visible Changes</h3>
 		<p><span class="label label-info">IMPORTANT</span> Note that all plug-ins in the 
 			<em>Sirius Server</em> feature (
 			<code>org.eclipse.sirius.server.*</code> and 
@@ -1247,7 +1279,7 @@
 				<code>org.eclipse.emf.ecore.util.EcoreUtil.generateUUID()</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support4">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
@@ -1280,7 +1312,7 @@
 			<a href="i18n_changes.html#sirius61">this document</a> for the complete list of message keys added or removed in Sirius 6.1.0.
 		</p>
 		<h2 id="sirius6.0.0">Changes in Sirius 6.0.0</h2>
-		<h3 id="UserVisibleChanges7">User-Visible Changes</h3>
+		<h3 id="UserVisibleChanges8">User-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> A new feature allows user to insert vertical blank space in sequence diagram. You can refer to the 
 				<a href="user/sequences/Sequence%20Diagrams.html#insert_vertical_blank_space">user documentation </a> for more details. 
@@ -1331,7 +1363,7 @@
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=531487">bugzilla 531487</a> for more details.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges8">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges9">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> The SWTBot test framework version has been upgraded toward SWTBot 2.6. The main impacts are described below:
 				<ul>
@@ -1519,7 +1551,7 @@
 				<code>org.eclipse.sirius.tests.swtbot.Activator.PLUGIN_ID</code>). It avoids to build a wrong target platform containing each Sirius plug-ins twice. 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support5">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
