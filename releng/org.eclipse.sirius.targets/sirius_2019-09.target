@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_2019-09" sequenceNumber="1596701727">
+<target name="sirius_2019-09" sequenceNumber="1598864815">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
@@ -52,7 +52,7 @@
       <unit id="org.eclipse.eef.sdk.feature.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.eef.ext.widgets.reference.feature.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.eef.ext.widgets.reference.feature.source.feature.group" version="0.0.0"/>
-      <repository id="EEF-2.1.2" location="https://download.eclipse.org/modeling/emft/eef/updates/releases/2.1/R201909051307"/>
+      <repository id="EEF-2.1.5" location="https://download.eclipse.org/modeling/emft/eef/updates/nightly/2.1.5-N264/2019-12/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.elk.sdk.feature.feature.group" version="0.0.0"/>

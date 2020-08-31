@@ -6,7 +6,7 @@ include "modules/jetty-9.4.tpd"
 
 with source, requirements
 
-location Sirius-Photon-Master "https://download.eclipse.org/sirius/updates/nightly/latest/photon/" {
+location Sirius-6.3.2-Photon "https://download.eclipse.org/sirius/updates/releases/6.3.2/photon/" {
     org.eclipse.sirius.common.interpreter lazy
 }
 
@@ -36,7 +36,6 @@ location Orbit-latest-I "https://download.eclipse.org/tools/orbit/downloads/late
     ch.qos.logback.classic [1.0.7,1.0.8)
     ch.qos.logback.core [1.0.7,1.0.8)
     org.apache.xalan 2.7.1
-    org.antlr.runtime [4.7.1,4.8.0)
     org.reactivestreams [1.0.2,1.0.3)
     com.graphql.java.dataloader [2.1.1,2.1.2)
     com.graphql.java [11.0.0,11.0.1)
@@ -89,16 +88,8 @@ location EMF-Transaction-LastSuccessful "https://ci.eclipse.org/emfservices/job/
 }
 
 include "modules/eef-1.5.tpd"
-
-location Acceleo-LastSuccessful "https://ci.eclipse.org/acceleo/job/acceleo-master/lastSuccessfulBuild/artifact/releng/org.eclipse.acceleo-updatesite/target/repository/" {
-    org.eclipse.acceleo.feature.group lazy
-    org.eclipse.acceleo.ide.ui lazy
-    org.eclipse.acceleo.ui.interpreter.feature.group lazy
-    org.eclipse.acceleo.ui.interpreter.source.feature.group lazy
-    org.eclipse.acceleo.query.feature.group lazy
-    org.eclipse.acceleo.query.source.feature.group lazy
-    org.antlr.runtime [4.7.1,4.8.0)
-}
+include "modules/acceleo-3.7.tpd"
+include "modules/aql-3.7.tpd"
 
 location EMF-Compare-Nightly "https://download.eclipse.org/modeling/emf/compare/updates/nightly/latest/" {
 	org.eclipse.emf.compare.feature.group lazy
