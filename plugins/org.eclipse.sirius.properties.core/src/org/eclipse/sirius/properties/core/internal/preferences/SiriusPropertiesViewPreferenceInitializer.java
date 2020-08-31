@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 Obeo.
+ * Copyright (c) 2016, 2020 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,8 +13,8 @@
 package org.eclipse.sirius.properties.core.internal.preferences;
 
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
+import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.sirius.properties.core.internal.SiriusPropertiesCorePlugin;
 
 /**
@@ -31,7 +31,7 @@ public class SiriusPropertiesViewPreferenceInitializer extends AbstractPreferenc
      */
     @Override
     public void initializeDefaultPreferences() {
-        IEclipsePreferences preferences = InstanceScope.INSTANCE.getNode(SiriusPropertiesCorePlugin.PLUGIN_ID);
+        IEclipsePreferences preferences = DefaultScope.INSTANCE.getNode(SiriusPropertiesCorePlugin.PLUGIN_ID);
         preferences.put(SiriusPropertiesCorePreferencesKeys.PREF_FILTER_PROPERTIES_VIEW_DEFAULT_TAB.name(),
                 SiriusPropertiesCorePreferencesKeys.PREF_FILTER_PROPERTIES_VIEW_DEFAULT_TAB.getDefaultValue());
         preferences.put(SiriusPropertiesCorePreferencesKeys.PREF_FILTER_PROPERTIES_VIEW_SEMANTIC_TAB.name(),
