@@ -5,7 +5,7 @@ include "../modules/swtbot-2.8.tpd"
 include "../modules/shared-license.tpd"
 include "../modules/aql-3.7.tpd"
 include "../modules/acceleo-3.7.tpd"
-include "../modules/elk-0.6.tpd"
+include "../modules/elk-0.7.tpd"
 include "../modules/gmf-runtime-1.13.tpd"
 
 
