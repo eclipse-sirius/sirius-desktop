@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,12 +34,14 @@ public class SiriusRectilinearRouter extends RectilinearRouter {
 
     @Override
     public void routeLine(Connection conn, int nestedRoutingDepth, PointList newLine) {
-        super.routeLine(conn, nestedRoutingDepth, newLine);
+        if (newLine.size() > 1) {
+            super.routeLine(conn, nestedRoutingDepth, newLine);
 
-        // if the edge is currently reconnected for instance, we do not perform
-        // the centering.
-        if (!isReorienting(conn)) {
-            handleEdgeCentering(conn, newLine);
+            // if the edge is currently reconnected for instance, we do not perform
+            // the centering.
+            if (!isReorienting(conn)) {
+                handleEdgeCentering(conn, newLine);
+            }
         }
     }
 

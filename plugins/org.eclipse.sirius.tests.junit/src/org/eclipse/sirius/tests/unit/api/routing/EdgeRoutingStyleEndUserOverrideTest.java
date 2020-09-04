@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,9 @@
 package org.eclipse.sirius.tests.unit.api.routing;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.draw2d.PolylineConnection;
+import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -34,6 +37,7 @@ import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.tools.internal.routers.SiriusRectilinearRouter;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -365,5 +369,22 @@ public class EdgeRoutingStyleEndUserOverrideTest extends SiriusDiagramTestCase {
         if (!edgeFound) {
             fail("There is no edge that has a source with name " + sourceNodeName);
         }
+    }
+
+    /**
+     * Check that none NPE is raised when a conversion of the polyline to a rectilinear version is performed on an edge
+     * with only one point.
+     */
+    public void testRoutingOnCorruptedEdge() {
+        // Create a new edge with tool createTree
+        applyEdgeCreationTool("CreateTree", diagram, (EdgeTarget) getFirstDiagramElement(diagram, source), (EdgeTarget) getFirstDiagramElement(diagram, target));
+        IDiagramEdgeEditPart edgeEditPart = (IDiagramEdgeEditPart) editor.getDiagramEditPart().getConnections().get(0);
+
+        // Route the corresponded polyline
+        PolylineConnection connection = edgeEditPart.getPolylineConnectionFigure();
+        SiriusRectilinearRouter rectilinearRouter = new SiriusRectilinearRouter();
+        PointList newLine = new PointList();
+        newLine.addPoint(new Point(1, 1));
+        rectilinearRouter.routeLine(connection, 0, newLine);
     }
 }
