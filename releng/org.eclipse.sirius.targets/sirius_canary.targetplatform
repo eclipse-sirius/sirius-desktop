@@ -6,7 +6,7 @@ include "modules/jetty-9.4.tpd"
 
 with source, requirements
 
-location Sirius-Photon-Master "https://download.eclipse.org/sirius/updates/nightly/latest/photon/" {
+location Sirius-6.3.2-Photon "https://download.eclipse.org/sirius/updates/releases/6.3.2/photon/" {
     org.eclipse.sirius.common.interpreter lazy
 }
 
@@ -90,14 +90,14 @@ location EMF-Transaction-LastSuccessful "https://ci.eclipse.org/emfservices/job/
 
 include "modules/eef-1.5.tpd"
 
-location Acceleo-LastSuccessful "https://ci.eclipse.org/acceleo/job/acceleo-master/lastSuccessfulBuild/artifact/releng/org.eclipse.acceleo-updatesite/target/repository/" {
+location Acceleo-3.7 "https://download.eclipse.org/acceleo/updates/releases/3.7/R202002210922/" {
     org.eclipse.acceleo.feature.group lazy
     org.eclipse.acceleo.ide.ui lazy
     org.eclipse.acceleo.ui.interpreter.feature.group lazy
     org.eclipse.acceleo.ui.interpreter.source.feature.group lazy
     org.eclipse.acceleo.query.feature.group lazy
     org.eclipse.acceleo.query.source.feature.group lazy
-    org.antlr.runtime [4.7.1,4.8.0)
+    org.antlr.runtime [4.7.2,4.7.3)
 }
 
 location EMF-Compare-Nightly "https://download.eclipse.org/modeling/emf/compare/updates/nightly/latest/" {
