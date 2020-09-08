@@ -15,11 +15,6 @@ location Sirius-Photon-6.2.0 "http://download.eclipse.org/sirius/updates/release
     org.eclipse.sirius.common.interpreter lazy
 }
 
-location Sirius-Query-Legacy-1.1.0 "http://download.eclipse.org/sirius/updates/legacy/1.1.0" {
-    org.eclipse.sirius.query.legacy.feature.feature.group lazy
-    org.eclipse.sirius.query.legacy.feature.source.feature.group lazy
-}
-
 location Eclipse-2019-06 "http://download.eclipse.org/releases/2019-06" {
     com.google.guava lazy
     com.ibm.icu lazy
