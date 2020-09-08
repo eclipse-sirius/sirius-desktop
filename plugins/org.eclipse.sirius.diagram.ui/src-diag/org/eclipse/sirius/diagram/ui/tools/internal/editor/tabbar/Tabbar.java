@@ -67,6 +67,8 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
 
     private Collection<Object> currentSelection;
 
+    private boolean closingInProgress;
+
     /**
      * Instantiate a new tab bar.
      * 
@@ -200,17 +202,19 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
         EclipseUIUtil.displayAsyncExec(new Runnable() {
             @Override
             public void run() {
-                try {
-                    List<IContributionItem> items = Arrays.asList(manager.getItems());
-                    for (IContributionItem item : items) {
-                        // The enablement update of Diagram actions encapsulated in
-                        // DiagramActionContributionItem is directly performed in
-                        // their item update.
-                        item.update();
+                if (!isClosingInProgress()) {
+                    try {
+                        List<IContributionItem> items = Arrays.asList(manager.getItems());
+                        for (IContributionItem item : items) {
+                            // The enablement update of Diagram actions encapsulated in
+                            // DiagramActionContributionItem is directly performed in
+                            // their item update.
+                            item.update();
+                        }
+                    } catch (IllegalStateException e) {
+                        // Nothing to log here, this can happen if the resource is not accessible anymore (distant
+                        // resource).
                     }
-                } catch (IllegalStateException e) {
-                    // Nothing to log here, this can happen if the resource is not accessible anymore (distant
-                    // resource).
                 }
             }
         });
@@ -251,4 +255,22 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
     public boolean setFocus() {
         return false;
     }
+
+    /**
+     * This method must be called only when the corresponding editor will be closed. As soon as it is called, the async
+     * code of {@link #updateAllItems()} does nothing. It is no longer necessary and worth can cause problem.
+     */
+    public void closingInProgress() {
+        closingInProgress = true;
+    }
+
+    /**
+     * Check if the closing of the corresponding editor is in progress.
+     * 
+     * @return true is the closing of the corresponding editor is in progress, false otherwise.
+     */
+    protected boolean isClosingInProgress() {
+        return closingInProgress;
+    }
+
 }

@@ -260,6 +260,9 @@ public final class Messages {
     public static String DDiagramEditorImpl_diagramRefreshTitle;
 
     @TranslatableMessage
+    public static String DDiagramEditorImpl_diagramRefreshNeededMsg;
+
+    @TranslatableMessage
     public static String DDiagramEditorImpl_editorToBeClosedAndReopenedSinceContentIsNotAccessible;
 
     @TranslatableMessage

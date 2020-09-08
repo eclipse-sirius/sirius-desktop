@@ -461,6 +461,12 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             toolManagement.removeToolChangeListener(paletteToolChangeListener);
             DiagramPlugin.getPlugin().removeToolManagement(getDiagram());
         }
+        // Change the status of the tabbar to avoid untimely async refresh of the tabbar.
+        Tabbar currentTabbar = getTabbar();
+        if (currentTabbar != null) {
+            currentTabbar.closingInProgress();
+        }
+
         if (refreshJob != null) {
             try {
                 refreshJob.join();
@@ -655,7 +661,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                 }
             }
         } catch (ClassCastException | NullPointerException | IllegalArgumentException | AssertionError e) {
-
+            DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, MessageFormat.format(Messages.DDiagramEditorImpl_diagramRefreshNeededMsg, e.getMessage()), e));
             Boolean response = MessageDialog.openConfirm(parent.getShell(), Messages.DDiagramEditorImpl_diagramRefreshTitle, Messages.DDiagramEditorImpl_shouldWeRefreshQuestion);
             close(false);
             if (response) {
