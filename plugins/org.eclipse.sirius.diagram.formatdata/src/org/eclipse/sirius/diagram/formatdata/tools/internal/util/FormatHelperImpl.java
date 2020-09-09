@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -271,7 +271,9 @@ public class FormatHelperImpl implements FormatHelper {
             haveSameLayout = haveSameLayout && StringUtil.equals(edgeFormat1.getTargetTerminal(), edgeFormat2.getTargetTerminal());
 
             haveSameLayout = haveSameLayout && edgeFormat1.getRouting() == edgeFormat2.getRouting();
-            haveSameLayout = haveSameLayout && isAroundPoint(edgeFormat1.getSourceRefPoint(), edgeFormat2.getSourceRefPoint(), edgeConfiguration.getDistanceAroundPointsOfEdgeBendpointsList());
+            if (edgeFormat1.getSourceRefPoint() != null && edgeFormat2.getSourceRefPoint() != null) {
+                haveSameLayout = haveSameLayout && isAroundPoint(edgeFormat1.getSourceRefPoint(), edgeFormat2.getSourceRefPoint(), edgeConfiguration.getDistanceAroundPointsOfEdgeBendpointsList());
+            }
 
             haveSameLayout = haveSameLayout && edgeFormat1.getPointList().size() == edgeFormat2.getPointList().size();
 
