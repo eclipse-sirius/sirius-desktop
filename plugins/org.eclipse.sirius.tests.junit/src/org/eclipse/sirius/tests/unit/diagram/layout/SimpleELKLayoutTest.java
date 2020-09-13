@@ -46,6 +46,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IContainerLabelOffsets;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -300,6 +301,31 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         DEdgeEditPart edgeEditPart = (DEdgeEditPart) c2EditPart.getTargetConnections().get(0);
         assertTrue("The edge figure should be a PolylineConnectionEx", edgeEditPart.getFigure() instanceof PolylineConnectionEx);
         assertEquals("The edge should have only 2 points (ie without intermediate bendpoints)", 2, ((PolylineConnectionEx) edgeEditPart.getFigure()).getPoints().size());
+    }
+
+    /**
+     * Check that the size of an empty ListContainer without title is OK (ie same size as default Sirius Size : 40x40).
+     */
+    public void testEmptyListContainerMinimalSizeLayout() {
+        openDiagram("diagramWithEmptyListWithoutTitle");
+
+        Optional<DDiagramElement> dde = diagram.getDiagramElements().stream().findFirst();
+        assertTrue("The diagram should have at least one node.", dde.isPresent());
+        IGraphicalEditPart editPart = getEditPart(dde.get());
+        assertTrue("The first node should be a DNodeListEditPart.", editPart instanceof DNodeListEditPart);
+
+        assertEquals("Wrong number of list items, the list should be empty.", 0, ((DNodeList) dde.get()).getOwnedElements().stream().count());
+
+        // Launch an arrange all
+        arrangeAll((DiagramEditor) editorPart);
+
+        // Check that the new size is the default one
+        // (org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart.getDefaultDimension(DDiagramElement)
+        // ie LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION.
+        assertEquals("The width of the list should be the default Sirius one (to have a minimal size for empty list)", LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION.width,
+                ((DNodeListEditPart) editPart).getFigure().getSize().width());
+        assertEquals("The height of the list should be the default Sirius one (to have a minimal size for empty list)", LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION.height,
+                ((DNodeListEditPart) editPart).getFigure().getSize().height());
     }
 
     /**
