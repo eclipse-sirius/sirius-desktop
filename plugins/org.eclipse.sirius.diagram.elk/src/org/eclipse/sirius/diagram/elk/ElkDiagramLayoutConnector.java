@@ -1096,7 +1096,13 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             if (text != null) {
                 ElkLabel label = ElkGraphUtil.createLabel(elknode);
                 applyOptionsRelatedToElementTarget(label, elkTargetToOptionsOverrideMap);
-                label.setText(text);
+                if (StringUtil.isEmpty(text)) {
+                    // Set at least a white space character (otherwise, ELK "ignores" this label and the layout of its
+                    // container is not OK (wrong width/height)
+                    label.setText(" ");
+                } else {
+                    label.setText(text);
+                }
                 Rectangle labelBounds = getAbsoluteBounds(labelFigure);
                 Rectangle nodeBounds;
                 if (!(labelEditPart instanceof IAbstractDiagramNodeEditPart)) {
