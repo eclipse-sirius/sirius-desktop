@@ -73,8 +73,8 @@ import org.eclipse.sirius.diagram.ui.edit.internal.part.AbstractDiagramNodeEditP
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.validators.ResizeValidator;
-import org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabelsDrawerFigure;
 import org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabel;
+import org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabelsDrawerFigure;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDiagramElementContainerNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode4EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.NonResizableAndNonDuplicableEditPolicy;
@@ -436,7 +436,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     @Override
     protected void refreshBounds() {
         if (isRegion()) {
-            Dimension defaultSize = getDefaultDimension(resolveDiagramElement()).getCopy();
+            Dimension defaultSize = getDefaultDimension().getCopy();
             IFigure mainFigure = ((BorderedNodeFigure) getFigure()).getMainFigure();
             if (mainFigure instanceof DefaultSizeNodeFigure) {
                 ((DefaultSizeNodeFigure) mainFigure).setDefaultSize(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height));
@@ -446,7 +446,13 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         super.refreshBounds();
     }
 
-    private Dimension getDefaultDimension(DDiagramElement dde) {
+    /**
+     * Get the default figure dimension of this edit part.
+     * 
+     * @return the default figure dimension of this edit part
+     */
+    public Dimension getDefaultDimension() {
+        DDiagramElement dde = resolveDiagramElement();
         Dimension defaultSize = LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION;
         if (dde instanceof DNodeContainer) {
             defaultSize = new DNodeContainerQuery((DNodeContainer) dde).getDefaultDimension();
@@ -466,7 +472,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
     protected NodeFigure createNodePlate() {
         NodeFigure result;
         DDiagramElement dde = resolveDiagramElement();
-        Dimension defaultSize = getDefaultDimension(dde);
+        Dimension defaultSize = getDefaultDimension();
         Option<LabelBorderStyleDescription> getLabelBorderStyle = getLabelBorderStyle(dde);
         if (getLabelBorderStyle.some()) {
             result = new ContainerWithTitleBlockFigure(getMapMode().DPtoLP(defaultSize.width), getMapMode().DPtoLP(defaultSize.height), dde, getLabelBorderStyle.get());

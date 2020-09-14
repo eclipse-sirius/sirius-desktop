@@ -175,6 +175,15 @@
 }
 
 </code></pre>
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in  
+			<code>org.eclipse.sirius.diagram.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> A new method, 
+				<code>getDefaultDimension()</code> has been added in 
+				<code>org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart()</code>. This method was already used previously in Sirius but was private. It is now public and is used for example for having information during ELK layout.
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in  
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
@@ -229,7 +238,7 @@
 				<code>org.eclipse.sirius.common.package_meta_data</code> extension point, it is now possible for a given metamodel (nsURI) to declare some EClasses as potential DocumentRoots. This is needed with some XSD-derived metamodels which normally declare some of their containment references as transient to make sure Sirius will properly consider these classes (and their contents) as needing to be serialized. 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in  
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -520,7 +529,7 @@
 				<code>org.eclipse.sirius.business.api.helper.task.NotificationTask</code> class has been removed. It was not used anywhere.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in  
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -845,7 +854,7 @@
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui4">Changes in  
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -963,7 +972,7 @@
 				<code>DRepresentationDescriptor.repPath</code> can not be found) or can not by retrieved.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui4">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui5">Changes in  
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -1147,7 +1156,7 @@
 				<code>org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE</code> has been added. Its default value is true. It allows to display, in the color palette, the user fixed color(defined in the activated viewpoints) in addition to standard colors. The color palette is available in Appearance tab of the Properties view.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui6">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -1544,7 +1553,7 @@
 				<code>org.eclipse.sirius.diagram.tools.api.managment</code>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui6">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui7">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>

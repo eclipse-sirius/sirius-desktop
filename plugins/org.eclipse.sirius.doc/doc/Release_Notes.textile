@@ -28,6 +28,10 @@ try {
 	}
 }
 
+h4. Changes in  @org.eclipse.sirius.diagram.ui@
+
+* <span class="label label-success">Added</span> A new method, @getDefaultDimension()@ has been added in @org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart()@. This method was already used previously in Sirius but was private. It is now public and is used for example for having information during ELK layout.
+
 h4. Changes in  @org.eclipse.sirius.ui@
 
 * <span class="label label-success">Added</span> A new method, @preClose()@ has been added in @org.eclipse.sirius.ui.business.api.dialect.DialectEditor@. This method is called in sync when the editor is asking to be closed (the real closure is done in async). This allows to dispose actions, for example, as soon as the closure is requested. There is a default implementation, that does nothing, for all dialect editors.

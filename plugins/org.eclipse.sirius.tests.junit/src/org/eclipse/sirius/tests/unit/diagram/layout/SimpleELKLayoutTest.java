@@ -351,8 +351,10 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
 
         // Check that the new size of list item is sufficiently large to display the label without wrapping : one line
         // label height + label offset + 1 pixel for the separator between 2 regions.
-        int expectedRegionHeight = expectedOneLineHeight + IContainerLabelOffsets.LABEL_OFFSET + 1;
-        assertEquals("The empty region should be on one line (with one line height)", expectedRegionHeight, ((AbstractDiagramContainerEditPart) c2EditPart).getFigure().getSize().height());
+        int expectedRegionHeight = Math.max(expectedOneLineHeight + IContainerLabelOffsets.LABEL_OFFSET + 1, LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION.height);
+        int currentLineHeight = ((AbstractDiagramContainerEditPart) c2EditPart).getFigure().getSize().height();
+        assertTrue("The empty region should be on one line (with at least one line height; more than " + expectedRegionHeight + " but was " + currentLineHeight + ")",
+                currentLineHeight >= expectedRegionHeight);
 
         // The GMF size of VStack container should be "auto-size" ie {-1,-1}
         assertTrue(vStackContainerEditPart.getNotationView() instanceof Node);
@@ -377,7 +379,6 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         assertTrue(compartmentEditPart instanceof AbstractDNodeContainerCompartmentEditPart);
         int previousRegionWidth = 0;
         int previousRegionHeight = 0;
-        boolean isFirstRegion = true;
         int previousY = 0;
         for (Object child : ((AbstractDNodeContainerCompartmentEditPart) compartmentEditPart).getChildren()) {
             if (child instanceof AbstractDiagramContainerEditPart) {
@@ -400,11 +401,6 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
                 if (previousRegionHeight == 0) {
                     previousRegionHeight = regionBounds.getHeight();
                 } else {
-                    if (isFirstRegion) {
-                        // The first region is one pixel less than others (no upper border)
-                        previousRegionHeight += 1;
-                        isFirstRegion = false;
-                    }
                     assertEquals("Each region should have the same height, height of \"" + ((DNodeContainer) regionEditPart.resolveSemanticElement()).getName()
                             + "\" is not the same than the previous region", previousRegionHeight, regionBounds.getHeight());
                     previousRegionHeight = regionBounds.getHeight();

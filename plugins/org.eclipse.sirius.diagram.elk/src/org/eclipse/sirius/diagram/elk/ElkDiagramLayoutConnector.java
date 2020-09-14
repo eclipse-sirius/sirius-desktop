@@ -276,6 +276,24 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
     }
 
     /**
+     * Get the default dimension for a container edit part..
+     * 
+     * @param editPart
+     *            an edit part
+     * @return The default dimension for a container edit part
+     */
+    public static KVector getDefaultDimension(final AbstractDiagramElementContainerEditPart editPart) {
+        Dimension defaultDimension = editPart.getDefaultDimension();
+        KVector result = new KVector(defaultDimension.preciseWidth(), defaultDimension.preciseHeight());
+        // Remove shadow border size for container: Indeed, the edges and border nodes use the "internal figure bounds"
+        // (ie without shadow). So for ELK the shadow size must be removed. It will be added before applying the layout
+        // in org.eclipse.sirius.diagram.elk.GmfLayoutEditPolicy.addShapeLayout(GmfLayoutCommand, ElkShape,
+        // GraphicalEditPart, double).
+        double shadowBorderSize = ElkDiagramLayoutConnector.getShadowBorderSize(editPart);
+        return result.sub(shadowBorderSize, shadowBorderSize);
+    }
+
+    /**
      * If the workbench part is a diagram editor, returns that. Otherwise, returns {@code null}. This is more or less
      * just a fancy cast.
      *
@@ -465,7 +483,11 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 ElkNode node = createNode(mapping, editPart, topNode, elkTargetToOptionsOevrrideMap);
                 minx = Math.min(minx, node.getX());
                 miny = Math.min(miny, node.getY());
-                buildLayoutGraphRecursively(mapping, node, editPart, elkTargetToOptionsOevrrideMap);
+                boolean childrenLayouted = buildLayoutGraphRecursively(mapping, node, editPart, elkTargetToOptionsOevrrideMap);
+                if (!childrenLayouted && editPart instanceof AbstractDiagramElementContainerEditPart) {
+                    node.setProperty(CoreOptions.NODE_SIZE_MINIMUM, getDefaultDimension((AbstractDiagramElementContainerEditPart) editPart));
+                }
+
             }
             mapping.setProperty(COORDINATE_OFFSET, new KVector(minx, miny));
         } else {
@@ -610,7 +632,6 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                     // We ignore compartment edit part that are created into ELK side just to have good layout results
                     applyLayoutRequest.addElement(graphElement, part);
                 }
-
             }
         }
 
@@ -680,10 +701,11 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      *            the currently analyzed edit part
      * @param elkTargetToOptionsOverrideMap
      *            a map of option targets to corresponding options.
+     * @return false if no child has been layouted, true otherwise
      */
-    protected void buildLayoutGraphRecursively(final LayoutMapping mapping, final ElkNode parentLayoutNode, final IGraphicalEditPart currentEditPart,
+    protected boolean buildLayoutGraphRecursively(final LayoutMapping mapping, final ElkNode parentLayoutNode, final IGraphicalEditPart currentEditPart,
             Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
-
+        boolean childrenLayouted = false;
         // iterate through the children of the element
         double maxChildShadowBorderSize = -1;
         for (Object obj : currentEditPart.getChildren()) {
@@ -723,6 +745,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                             DDiagramElement dde = ideep.resolveDiagramElement();
                             if (dde instanceof DNodeList || (dde instanceof DNodeContainer && (new DNodeContainerExperimentalQuery((DNodeContainer) dde)).isHorizontaltackContainer()
                                     || new DNodeContainerExperimentalQuery((DNodeContainer) dde).isVerticalStackContainer())) {
+                                childrenLayouted = true;
                                 // Create a node representing the compartment
                                 intermediateNode = createNode(mapping, compartment, parentLayoutNode, elkTargetToOptionsOverrideMap);
                                 // Add some additional layout option to its container to have "fit" layout result
@@ -766,7 +789,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                                 }
                             }
                         }
-                        buildLayoutGraphRecursively(mapping, intermediateNode, compartment, elkTargetToOptionsOverrideMap);
+                        childrenLayouted = buildLayoutGraphRecursively(mapping, intermediateNode, compartment, elkTargetToOptionsOverrideMap) || childrenLayouted;
                     }
                 }
 
@@ -775,10 +798,15 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             } else if (obj instanceof ShapeNodeEditPart) {
                 ShapeNodeEditPart childNodeEditPart = (ShapeNodeEditPart) obj;
                 if (editPartFilter.filter(childNodeEditPart)) {
+                    childrenLayouted = true;
                     ElkNode node = createNode(mapping, childNodeEditPart, parentLayoutNode, elkTargetToOptionsOverrideMap);
                     maxChildShadowBorderSize = Math.max(maxChildShadowBorderSize, ElkDiagramLayoutConnector.getShadowBorderSize(childNodeEditPart));
                     // process the child as new current edit part
-                    buildLayoutGraphRecursively(mapping, node, childNodeEditPart, elkTargetToOptionsOverrideMap);
+                    boolean currentChildrenLayouted = buildLayoutGraphRecursively(mapping, node, childNodeEditPart, elkTargetToOptionsOverrideMap);
+                    if (!currentChildrenLayouted && childNodeEditPart instanceof AbstractDiagramElementContainerEditPart) {
+                        Dimension defaultDimension = ((AbstractDiagramElementContainerEditPart) childNodeEditPart).getDefaultDimension();
+                        node.setProperty(CoreOptions.NODE_SIZE_MINIMUM, new KVector(defaultDimension.width(), defaultDimension.height()));
+                    }
                 }
 
                 // process a label of the current node
@@ -803,6 +831,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             }
 
         }
+        return childrenLayouted;
     }
 
     /**
