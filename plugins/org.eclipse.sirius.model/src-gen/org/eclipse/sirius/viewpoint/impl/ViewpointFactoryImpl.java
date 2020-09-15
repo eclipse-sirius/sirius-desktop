@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2024 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
  */
 package org.eclipse.sirius.viewpoint.impl;
 
+import java.util.Arrays;
 import java.util.Iterator;
 
 import org.eclipse.emf.ecore.EClass;
@@ -48,8 +49,6 @@ import org.eclipse.sirius.viewpoint.ToolSectionInstance;
 import org.eclipse.sirius.viewpoint.UIState;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
-
-import com.google.common.base.Splitter;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
@@ -467,7 +466,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
         int g = 0;
         int b = 0;
         if (!ViewpointFactoryImpl.isEmpty(initialValue)) {
-            Iterator<String> it = Splitter.on(',').split(initialValue).iterator();
+            Iterator<String> it = Arrays.asList(initialValue.split(",")).iterator(); //$NON-NLS-1$
             if (it.hasNext()) {
                 r = toInt(it.next());
             }
