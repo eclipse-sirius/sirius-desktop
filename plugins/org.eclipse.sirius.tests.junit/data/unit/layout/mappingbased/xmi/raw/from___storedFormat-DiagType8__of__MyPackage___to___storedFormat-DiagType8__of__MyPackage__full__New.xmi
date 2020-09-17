@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:formatdata="http://www.eclipse.org/sirius/dsl/formatdata/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0">
-  <formatdata:NodeFormatData id="//targetp4" width="188" height="70">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ifZXsvG8Eeq2Uoeqj40Gfg" borderSize="1" borderSizeComputationExpression="1">
-      <customFeatures>uid</customFeatures>
-      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
-    </siriusStyle>
-    <gmfView xsi:type="notation:Node" type="2002">
-      <children type="5006"/>
-      <children type="7001">
-        <styles xsi:type="notation:SortingStyle"/>
-        <styles xsi:type="notation:FilteringStyle"/>
-      </children>
-      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="1616" y="29" width="188" height="70"/>
-    </gmfView>
-    <location x="1616" y="29"/>
-  </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp1" width="635" height="323">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ifYJkPG8Eeq2Uoeqj40Gfg" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ir2zABRxEeuW-MeaV_B1zA" borderSize="1" borderSizeComputationExpression="1">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
     </siriusStyle>
@@ -63,217 +47,73 @@
       <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
       <layoutConstraint xsi:type="notation:Bounds" x="200" y="380" width="635" height="323"/>
     </gmfView>
-    <children id="//targetp1/targetC1-1" width="61" height="18">
-      <label id="//targetp1/targetC1-1">
-        <location y="5"/>
-      </label>
-      <siriusStyle xsi:type="diagram:Dot" uid="_ifYJkfG8Eeq2Uoeqj40Gfg">
-        <customFeatures>uid</customFeatures>
-        <description xsi:type="style:DotDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
-      </siriusStyle>
-      <gmfView xsi:type="notation:Node" type="3012">
-        <children type="5010">
-          <layoutConstraint xsi:type="notation:Location" y="5"/>
-        </children>
-        <children type="3002">
-          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
-          <layoutConstraint xsi:type="notation:Bounds"/>
-        </children>
-        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-        <layoutConstraint xsi:type="notation:Bounds" x="120" y="-10" width="61" height="18"/>
-      </gmfView>
-      <location x="120" y="-10"/>
-    </children>
-    <children id="//targetp1/targetC1-2" width="30" height="30">
-      <label id="//targetp1/targetC1-2">
-        <location y="5"/>
-      </label>
-      <siriusStyle xsi:type="diagram:Dot" uid="_ifYJkvG8Eeq2Uoeqj40Gfg">
-        <customFeatures>uid</customFeatures>
-        <description xsi:type="style:DotDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
-      </siriusStyle>
-      <gmfView xsi:type="notation:Node" type="3012">
-        <children type="5010">
-          <layoutConstraint xsi:type="notation:Location" y="5"/>
-        </children>
-        <children type="3002">
-          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
-          <layoutConstraint xsi:type="notation:Bounds"/>
-        </children>
-        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-        <layoutConstraint xsi:type="notation:Bounds" x="432" y="-22" width="30" height="30"/>
-      </gmfView>
-      <location x="432" y="-22"/>
-    </children>
-    <children id="//targetp1/targetC1-3" width="30" height="30">
-      <label id="//targetp1/targetC1-3">
-        <location y="5"/>
-      </label>
-      <siriusStyle xsi:type="diagram:Dot" uid="_ifYJk_G8Eeq2Uoeqj40Gfg">
-        <customFeatures>uid</customFeatures>
-        <description xsi:type="style:DotDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
-      </siriusStyle>
-      <gmfView xsi:type="notation:Node" type="3012">
-        <children type="5010">
-          <layoutConstraint xsi:type="notation:Location" y="5"/>
-        </children>
-        <children type="3002">
-          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
-          <layoutConstraint xsi:type="notation:Bounds"/>
-        </children>
-        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-        <layoutConstraint xsi:type="notation:Bounds" x="-22" y="81" width="30" height="30"/>
-      </gmfView>
-      <location x="-22" y="81"/>
-    </children>
     <location x="200" y="380"/>
   </formatdata:NodeFormatData>
-  <formatdata:NodeFormatData id="//targetp2" width="499" height="114">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ifYwpfG8Eeq2Uoeqj40Gfg" borderSize="1" borderSizeComputationExpression="1">
+  <formatdata:NodeFormatData id="//targetp1/targetC1-1" width="61" height="18">
+    <label id="//targetp1/targetC1-1">
+      <location y="5"/>
+    </label>
+    <siriusStyle xsi:type="diagram:Dot" uid="_ir2zBBRxEeuW-MeaV_B1zA">
       <customFeatures>uid</customFeatures>
-      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
+      <description xsi:type="style:DotDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
     </siriusStyle>
-    <gmfView xsi:type="notation:Node" type="2002">
-      <children type="5006"/>
-      <children type="7001">
-        <styles xsi:type="notation:SortingStyle"/>
-        <styles xsi:type="notation:FilteringStyle"/>
+    <gmfView xsi:type="notation:Node" type="3012">
+      <children type="5010">
+        <layoutConstraint xsi:type="notation:Location" y="5"/>
+      </children>
+      <children type="3002">
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+        <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="826" y="29" width="499" height="114"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="120" y="-10" width="61" height="18"/>
     </gmfView>
-    <location x="826" y="29"/>
+    <location x="120" y="-10"/>
   </formatdata:NodeFormatData>
-  <formatdata:NodeFormatData id="//targetp3" width="188" height="70">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ifZXsfG8Eeq2Uoeqj40Gfg" borderSize="1" borderSizeComputationExpression="1">
+  <formatdata:NodeFormatData id="//targetp1/targetC1-2" width="30" height="30">
+    <label id="//targetp1/targetC1-2">
+      <location y="5"/>
+    </label>
+    <siriusStyle xsi:type="diagram:Dot" uid="_ir2zBRRxEeuW-MeaV_B1zA">
       <customFeatures>uid</customFeatures>
-      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
+      <description xsi:type="style:DotDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
     </siriusStyle>
-    <gmfView xsi:type="notation:Node" type="2002">
-      <children type="5006"/>
-      <children type="7001">
-        <styles xsi:type="notation:SortingStyle"/>
-        <styles xsi:type="notation:FilteringStyle"/>
+    <gmfView xsi:type="notation:Node" type="3012">
+      <children type="5010">
+        <layoutConstraint xsi:type="notation:Location" y="5"/>
+      </children>
+      <children type="3002">
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+        <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="1370" y="29" width="188" height="70"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="432" y="-22" width="30" height="30"/>
     </gmfView>
-    <location x="1370" y="29"/>
+    <location x="432" y="-22"/>
   </formatdata:NodeFormatData>
-  <formatdata:NodeFormatData id="//targetp2/targetp2-1" width="199" height="70">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ifYwpvG8Eeq2Uoeqj40Gfg" borderSize="1" borderSizeComputationExpression="1">
+  <formatdata:NodeFormatData id="//targetp1/targetC1-3" width="30" height="30">
+    <label id="//targetp1/targetC1-3">
+      <location y="5"/>
+    </label>
+    <siriusStyle xsi:type="diagram:Dot" uid="_ir2zBhRxEeuW-MeaV_B1zA">
       <customFeatures>uid</customFeatures>
-      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
+      <description xsi:type="style:DotDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
     </siriusStyle>
-    <gmfView xsi:type="notation:Node" type="2002">
-      <children type="3012">
-        <children type="5010">
-          <layoutConstraint xsi:type="notation:Location" y="5"/>
-        </children>
-        <children type="3002">
-          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
-          <layoutConstraint xsi:type="notation:Bounds"/>
-        </children>
-        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-        <layoutConstraint xsi:type="notation:Bounds" x="-22" width="30" height="30"/>
+    <gmfView xsi:type="notation:Node" type="3012">
+      <children type="5010">
+        <layoutConstraint xsi:type="notation:Location" y="5"/>
       </children>
-      <children type="5006"/>
-      <children type="7001">
-        <styles xsi:type="notation:SortingStyle"/>
-        <styles xsi:type="notation:FilteringStyle"/>
+      <children type="3002">
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+        <layoutConstraint xsi:type="notation:Bounds"/>
       </children>
       <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="901" y="130" width="199" height="70"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="-22" y="81" width="30" height="30"/>
     </gmfView>
-    <children id="//targetp2/targetp2-1/targetnew%20EClass%201" width="30" height="30">
-      <label id="//targetp2/targetp2-1/targetnew%20EClass%201">
-        <location y="5"/>
-      </label>
-      <siriusStyle xsi:type="diagram:Dot" uid="_ifYwp_G8Eeq2Uoeqj40Gfg">
-        <customFeatures>uid</customFeatures>
-        <description xsi:type="style:DotDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
-      </siriusStyle>
-      <gmfView xsi:type="notation:Node" type="3012">
-        <children type="5010">
-          <layoutConstraint xsi:type="notation:Location" y="5"/>
-        </children>
-        <children type="3002">
-          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
-          <layoutConstraint xsi:type="notation:Bounds"/>
-        </children>
-        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-        <layoutConstraint xsi:type="notation:Bounds" x="-22" width="30" height="30"/>
-      </gmfView>
-      <location x="-22"/>
-    </children>
-    <location x="901" y="130"/>
-  </formatdata:NodeFormatData>
-  <formatdata:NodeFormatData id="//targetp2/targetp2-2" width="199" height="70">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ifZXsPG8Eeq2Uoeqj40Gfg" borderSize="1" borderSizeComputationExpression="1">
-      <customFeatures>uid</customFeatures>
-      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
-    </siriusStyle>
-    <gmfView xsi:type="notation:Node" type="2002">
-      <children type="5006"/>
-      <children type="7001">
-        <styles xsi:type="notation:SortingStyle"/>
-        <styles xsi:type="notation:FilteringStyle"/>
-      </children>
-      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="1158" y="113" width="199" height="70"/>
-    </gmfView>
-    <location x="1158" y="113"/>
-  </formatdata:NodeFormatData>
-  <formatdata:NodeFormatData id="//targetp1/targetp1-2" width="199" height="70">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ifYwovG8Eeq2Uoeqj40Gfg" borderSize="1" borderSizeComputationExpression="1">
-      <customFeatures>uid</customFeatures>
-      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
-    </siriusStyle>
-    <gmfView xsi:type="notation:Node" type="2002">
-      <children type="3012">
-        <children type="5010">
-          <layoutConstraint xsi:type="notation:Location" y="5"/>
-        </children>
-        <children type="3002">
-          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
-          <layoutConstraint xsi:type="notation:Bounds"/>
-        </children>
-        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-        <layoutConstraint xsi:type="notation:Bounds" x="158" y="60" width="30" height="30"/>
-      </children>
-      <children type="5006"/>
-      <children type="7001">
-        <styles xsi:type="notation:SortingStyle"/>
-        <styles xsi:type="notation:FilteringStyle"/>
-      </children>
-      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="348" y="59" width="199" height="70"/>
-    </gmfView>
-    <children id="//targetp1/targetp1-2/targetC1-2-1" width="30" height="30">
-      <label id="//targetp1/targetp1-2/targetC1-2-1">
-        <location y="5"/>
-      </label>
-      <siriusStyle xsi:type="diagram:Dot" uid="_ifYwo_G8Eeq2Uoeqj40Gfg">
-        <customFeatures>uid</customFeatures>
-        <description xsi:type="style:DotDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
-      </siriusStyle>
-      <gmfView xsi:type="notation:Node" type="3012">
-        <children type="5010">
-          <layoutConstraint xsi:type="notation:Location" y="5"/>
-        </children>
-        <children type="3002">
-          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
-          <layoutConstraint xsi:type="notation:Bounds"/>
-        </children>
-        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-        <layoutConstraint xsi:type="notation:Bounds" x="158" y="60" width="30" height="30"/>
-      </gmfView>
-      <location x="158" y="60"/>
-    </children>
-    <location x="348" y="59"/>
+    <location x="-22" y="81"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp1/targetp1-1" width="199" height="137">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ifYJlPG8Eeq2Uoeqj40Gfg" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ir3aEBRxEeuW-MeaV_B1zA" borderSize="1" borderSizeComputationExpression="1">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
     </siriusStyle>
@@ -308,52 +148,100 @@
       <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
       <layoutConstraint xsi:type="notation:Bounds" x="96" y="53" width="199" height="137"/>
     </gmfView>
-    <children id="//targetp1/targetp1-1/targetC1-1-1" width="30" height="30">
-      <label id="//targetp1/targetp1-1/targetC1-1-1">
-        <location y="5"/>
-      </label>
-      <siriusStyle xsi:type="diagram:Dot" uid="_ifYwoPG8Eeq2Uoeqj40Gfg">
-        <customFeatures>uid</customFeatures>
-        <description xsi:type="style:DotDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
-      </siriusStyle>
-      <gmfView xsi:type="notation:Node" type="3012">
-        <children type="5010">
-          <layoutConstraint xsi:type="notation:Location" y="5"/>
-        </children>
-        <children type="3002">
-          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
-          <layoutConstraint xsi:type="notation:Bounds"/>
-        </children>
-        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-        <layoutConstraint xsi:type="notation:Bounds" x="189" y="33" width="30" height="30"/>
-      </gmfView>
-      <location x="189" y="33"/>
-    </children>
-    <children id="//targetp1/targetp1-1/targetC1-1-2" width="30" height="30">
-      <label id="//targetp1/targetp1-1/targetC1-1-2">
-        <location y="5"/>
-      </label>
-      <siriusStyle xsi:type="diagram:Dot" uid="_ifYwofG8Eeq2Uoeqj40Gfg">
-        <customFeatures>uid</customFeatures>
-        <description xsi:type="style:DotDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
-      </siriusStyle>
-      <gmfView xsi:type="notation:Node" type="3012">
-        <children type="5010">
-          <layoutConstraint xsi:type="notation:Location" y="5"/>
-        </children>
-        <children type="3002">
-          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
-          <layoutConstraint xsi:type="notation:Bounds"/>
-        </children>
-        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-        <layoutConstraint xsi:type="notation:Bounds" x="-22" y="33" width="30" height="30"/>
-      </gmfView>
-      <location x="-22" y="33"/>
-    </children>
     <location x="96" y="53"/>
   </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//targetp1/targetp1-1/targetC1-1-1" width="30" height="30">
+    <label id="//targetp1/targetp1-1/targetC1-1-1">
+      <location y="5"/>
+    </label>
+    <siriusStyle xsi:type="diagram:Dot" uid="_ir3aExRxEeuW-MeaV_B1zA">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:DotDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="3012">
+      <children type="5010">
+        <layoutConstraint xsi:type="notation:Location" y="5"/>
+      </children>
+      <children type="3002">
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+        <layoutConstraint xsi:type="notation:Bounds"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="189" y="33" width="30" height="30"/>
+    </gmfView>
+    <location x="189" y="33"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//targetp1/targetp1-1/targetC1-1-2" width="30" height="30">
+    <label id="//targetp1/targetp1-1/targetC1-1-2">
+      <location y="5"/>
+    </label>
+    <siriusStyle xsi:type="diagram:Dot" uid="_ir3aFBRxEeuW-MeaV_B1zA">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:DotDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="3012">
+      <children type="5010">
+        <layoutConstraint xsi:type="notation:Location" y="5"/>
+      </children>
+      <children type="3002">
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+        <layoutConstraint xsi:type="notation:Bounds"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="-22" y="33" width="30" height="30"/>
+    </gmfView>
+    <location x="-22" y="33"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//targetp1/targetp1-2" width="199" height="70">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ir2zDRRxEeuW-MeaV_B1zA" borderSize="1" borderSizeComputationExpression="1">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2002">
+      <children type="3012">
+        <children type="5010">
+          <layoutConstraint xsi:type="notation:Location" y="5"/>
+        </children>
+        <children type="3002">
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="158" y="60" width="30" height="30"/>
+      </children>
+      <children type="5006"/>
+      <children type="7001">
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="348" y="59" width="199" height="70"/>
+    </gmfView>
+    <location x="348" y="59"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//targetp1/targetp1-2/targetC1-2-1" width="30" height="30">
+    <label id="//targetp1/targetp1-2/targetC1-2-1">
+      <location y="5"/>
+    </label>
+    <siriusStyle xsi:type="diagram:Dot" uid="_ir2zDxRxEeuW-MeaV_B1zA">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:DotDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="3012">
+      <children type="5010">
+        <layoutConstraint xsi:type="notation:Location" y="5"/>
+      </children>
+      <children type="3002">
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+        <layoutConstraint xsi:type="notation:Bounds"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="158" y="60" width="30" height="30"/>
+    </gmfView>
+    <location x="158" y="60"/>
+  </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp1/targetp1-3" width="199" height="70">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ifYwpPG8Eeq2Uoeqj40Gfg" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ir3aFRRxEeuW-MeaV_B1zA" borderSize="1" borderSizeComputationExpression="1">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
     </siriusStyle>
@@ -367,5 +255,117 @@
       <layoutConstraint xsi:type="notation:Bounds" x="604" y="59" width="199" height="70"/>
     </gmfView>
     <location x="604" y="59"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//targetp2" width="499" height="114">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ir2zBxRxEeuW-MeaV_B1zA" borderSize="1" borderSizeComputationExpression="1">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2002">
+      <children type="5006"/>
+      <children type="7001">
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="826" y="29" width="499" height="114"/>
+    </gmfView>
+    <location x="826" y="29"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//targetp2/targetp2-1" width="199" height="70">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ir2zCRRxEeuW-MeaV_B1zA" borderSize="1" borderSizeComputationExpression="1">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2002">
+      <children type="3012">
+        <children type="5010">
+          <layoutConstraint xsi:type="notation:Location" y="5"/>
+        </children>
+        <children type="3002">
+          <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+          <layoutConstraint xsi:type="notation:Bounds"/>
+        </children>
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+        <layoutConstraint xsi:type="notation:Bounds" x="-22" width="30" height="30"/>
+      </children>
+      <children type="5006"/>
+      <children type="7001">
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="901" y="130" width="199" height="70"/>
+    </gmfView>
+    <location x="901" y="130"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//targetp2/targetp2-1/targetnew%20EClass%201" width="30" height="30">
+    <label id="//targetp2/targetp2-1/targetnew%20EClass%201">
+      <location y="5"/>
+    </label>
+    <siriusStyle xsi:type="diagram:Dot" uid="_ir2zCxRxEeuW-MeaV_B1zA">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:DotDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="3012">
+      <children type="5010">
+        <layoutConstraint xsi:type="notation:Location" y="5"/>
+      </children>
+      <children type="3002">
+        <styles xsi:type="notation:ShapeStyle" fontName="Sans"/>
+        <layoutConstraint xsi:type="notation:Bounds"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="-22" width="30" height="30"/>
+    </gmfView>
+    <location x="-22"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//targetp2/targetp2-2" width="199" height="70">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ir2zDBRxEeuW-MeaV_B1zA" borderSize="1" borderSizeComputationExpression="1">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2002">
+      <children type="5006"/>
+      <children type="7001">
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="1158" y="113" width="199" height="70"/>
+    </gmfView>
+    <location x="1158" y="113"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//targetp3" width="188" height="70">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ir2zCBRxEeuW-MeaV_B1zA" borderSize="1" borderSizeComputationExpression="1">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2002">
+      <children type="5006"/>
+      <children type="7001">
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="1370" y="29" width="188" height="70"/>
+    </gmfView>
+    <location x="1370" y="29"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//targetp4" width="188" height="70">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_ir2L8BRxEeuW-MeaV_B1zA" borderSize="1" borderSizeComputationExpression="1">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']/@containerMappings[name='DT8_Package']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="2002">
+      <children type="5006"/>
+      <children type="7001">
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="1616" y="29" width="188" height="70"/>
+    </gmfView>
+    <location x="1616" y="29"/>
   </formatdata:NodeFormatData>
 </xmi:XMI>

@@ -215,13 +215,13 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest extends 
                 // Enable this if you want to generate referenced files
                 if (MB_REGENERATE_TEST_DATA) {
                     final String path = getPlatformRelatedXmiDataPath() + RAW_FOLDER + partialPath;
-                    saveDiagram(newManager.getRootNodeFormatData().values(), path);
+                    saveDiagramFiltered(path, explicitMappingTestConfiguration, newManager);
                 }
 
                 String fullPath = getPlatformRelatedFullXmiDataPath() + RAW_FOLDER + partialPath;
                 String message = "between diagram ";
                 message += diagramToCopyFormatName + " and diagram " + newDiagramName;
-                FormatDifference<?> foundDifference = loadAndCompare(fullPath, newManager, configuration);
+                FormatDifference<?> foundDifference = loadAndCompareFiltered(fullPath, newManager, configuration, explicitMappingTestConfiguration);
                 if (foundDifference != null) {
                     differences.append("\n. " + message + foundDifference);
                 }

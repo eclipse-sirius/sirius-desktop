@@ -24,7 +24,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.TreeMap;
+import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IStatus;
@@ -33,9 +33,13 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
@@ -49,18 +53,20 @@ import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.eclipse.sirius.diagram.formatdata.AbstractFormatData;
+import org.eclipse.sirius.diagram.formatdata.EdgeFormatData;
 import org.eclipse.sirius.diagram.formatdata.NodeFormatData;
+import org.eclipse.sirius.diagram.formatdata.Point;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.FormatHelper;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.FormatHelper.FormatDifference;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.Configuration;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.format.semantic.MappingBasedSiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService;
-import org.eclipse.sirius.diagram.ui.tools.internal.format.AdvancedSiriusFormatDataManager;
-import org.eclipse.sirius.diagram.ui.tools.internal.format.NodeFormatDataKey;
+import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.unit.diagram.format.data.manager.mappingbased.MappingBasedTestConfiguration;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
+import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
@@ -278,32 +284,250 @@ public class AbstractMappingBasedSiriusFormatDataManagerTest extends AbstractSir
         this.representationToCopyFormat = representationToCopyFormat;
     }
 
-    protected FormatDifference<?> loadAndCompare(final String path, AdvancedSiriusFormatDataManager newManager, Configuration configuration) throws IOException {
+    /**
+     * Overridden version of the loadAndCompare method taking into account the need to filter the elements to compare
+     * (only take the elements that are provided in the mapping).
+     * 
+     * @param path
+     *            The path to the file to load.
+     * @param newManager
+     *            The FormatDataManager containing the checked diagram FormatData.
+     * @param configuration
+     *            The test configuration.
+     * @param explicitMappingTestConfiguration
+     *            The mapping test configuration.
+     * @return
+     * @throws IOException
+     */
+    protected FormatDifference<?> loadAndCompareFiltered(final String path, MappingBasedSiriusFormatDataManager newManager, Configuration configuration,
+            MappingBasedTestConfiguration explicitMappingTestConfiguration) throws IOException {
         // Load referenced data
         final List<EObject> contents = loadReferenceData(path);
 
-        // Data will be sorted by id
-        final List<EObject> expected = new ArrayList<EObject>();
+        // Data will be sorted by id and content
+        final List<AbstractFormatData> expected = new ArrayList<AbstractFormatData>();
         for (final EObject eObject : contents) {
-            expected.add(eObject);
+            expected.add((AbstractFormatData) eObject);
         }
         Collections.sort(expected, new Comparator<EObject>() {
             @Override
             public int compare(EObject o1, EObject o2) {
                 AbstractFormatData formatData1 = (AbstractFormatData) o1;
                 AbstractFormatData formatData2 = (AbstractFormatData) o2;
-                return formatData1.getId().compareTo(formatData2.getId());
+                return toComparableString(formatData1).compareTo(toComparableString(formatData2));
             }
         });
 
-        // Sort elements, SemanticNodeFormatDataKey are comparable
-        TreeMap<NodeFormatDataKey, Map<String, NodeFormatData>> rootNodeFormatDataMap = new TreeMap<NodeFormatDataKey, Map<String, NodeFormatData>>(newManager.getRootNodeFormatData());
-
-        List<NodeFormatData> nodeFormatDataList = getNodeFormatDataList(rootNodeFormatDataMap);
+        // Get checked diagram filtered and sorted FormatData
+        Collection<AbstractFormatData> filteredData = getSortedAbstractFormatDataFromManager(explicitMappingTestConfiguration, newManager);
 
         // Compare results
-        final FormatDifference<?> difference = FormatHelper.INSTANCE.computeFirstFormatDifference(expected, nodeFormatDataList, configuration);
+        final FormatDifference<?> difference = FormatHelper.INSTANCE.computeFirstFormatDifference(expected, filteredData, configuration);
         return difference;
+    }
+
+    /**
+     * Overridden version of the SaveDiagram method saving format data of a diagram. This version only save FormatData
+     * for diagram elements that represent non filtered elements (elements that are present in the
+     * {@code explicitMappingTestConfiguration}).
+     * 
+     * @param path
+     *            The file path where to save the FormatData information.
+     * @param explicitMappingTestConfiguration
+     *            The mapping test configuration.
+     * @param newManager
+     *            The FormatDataManager containing the saved diagram FormatData.
+     * @throws IOException
+     */
+    protected void saveDiagramFiltered(final String path, final MappingBasedTestConfiguration explicitMappingTestConfiguration, MappingBasedSiriusFormatDataManager newManager) throws IOException {
+        final ResourceSet resourceSet = new ResourceSetImpl();
+        final URI uri = URI.createFileURI(path);
+        final Resource resource = ModelUtils.createResource(uri, resourceSet);
+
+        Collection<AbstractFormatData> filteredData = getSortedAbstractFormatDataFromManager(explicitMappingTestConfiguration, newManager);
+        resource.getContents().addAll(filteredData);
+
+        resource.save(Collections.EMPTY_MAP);
+    }
+
+    /**
+     * Retrieve FormatData among the one present in {@code newManager} for every element present in the mapping provided
+     * in {@code explicitMappingTestConfiguration}.
+     * 
+     * @param explicitMappingTestConfiguration
+     *            The mapping test configuration.
+     * @param newManager
+     *            The FormatDataManager containing the diagram FormatData.
+     * @return
+     */
+    private Collection<AbstractFormatData> getSortedAbstractFormatDataFromManager(MappingBasedTestConfiguration explicitMappingTestConfiguration, MappingBasedSiriusFormatDataManager newManager) {
+        final Collection<Map<String, NodeFormatData>> rootNodeFormatData = newManager.getRootNodeFormatData().values();
+        final Collection<Map<String, EdgeFormatData>> edgesFormatData = newManager.getEdgeFormatData().values();
+
+        List<AbstractFormatData> filteredData = filterAndRetrieveNodeFormatData(explicitMappingTestConfiguration, rootNodeFormatData);
+        filteredData.addAll(filterAndRetrieveEdgeFormatData(explicitMappingTestConfiguration, edgesFormatData));
+        Collections.sort(filteredData, new Comparator<EObject>() {
+            @Override
+            public int compare(EObject o1, EObject o2) {
+                AbstractFormatData formatData1 = (AbstractFormatData) o1;
+                AbstractFormatData formatData2 = (AbstractFormatData) o2;
+                return toComparableString(formatData1).compareTo(toComparableString(formatData2));
+            }
+        });
+
+        return filteredData;
+    }
+
+    /**
+     * Computes a String representation for the AbstractFormatData. We need a string representation that is independent
+     * of the Object ID, the ID used here is the id of the target element. This method is based on the code from the
+     * toString methods of {@link NodeFormatData} and {@link EdgeFormatData}.
+     * 
+     * @param formatData
+     *            The format data to convert.
+     * @return
+     */
+    private String toComparableString(AbstractFormatData formatData) {
+        StringBuffer result = new StringBuffer(formatData.getId());
+        if (formatData instanceof NodeFormatData) {
+            NodeFormatData nFormatData = (NodeFormatData) formatData;
+            Point location = nFormatData.getLocation();
+            if (location != null) {
+                result.append(" (x: "); //$NON-NLS-1$
+                result.append(location.getX());
+                result.append(", y: "); //$NON-NLS-1$
+                result.append(location.getY());
+                result.append(") "); //$NON-NLS-1$
+            }
+
+            result.append(" (width: "); //$NON-NLS-1$
+            result.append(nFormatData.getWidth());
+            result.append(", height: "); //$NON-NLS-1$
+            result.append(nFormatData.getHeight());
+            result.append(')');
+        } else {
+            EdgeFormatData eFormatData = (EdgeFormatData) formatData;
+            result.append(" (sourceTerminal: "); //$NON-NLS-1$
+            result.append(eFormatData.getSourceTerminal());
+            result.append(", targetTerminal: "); //$NON-NLS-1$
+            result.append(eFormatData.getTargetTerminal());
+            result.append(", routing: "); //$NON-NLS-1$
+            result.append(eFormatData.getRouting());
+            result.append(", jumpLinkStatus: "); //$NON-NLS-1$
+            result.append(eFormatData.getJumpLinkStatus());
+            result.append(", jumpLinkType: "); //$NON-NLS-1$
+            result.append(eFormatData.getJumpLinkType());
+            result.append(", reverseJumpLink: "); //$NON-NLS-1$
+            result.append(eFormatData.isReverseJumpLink());
+            result.append(", smoothness: "); //$NON-NLS-1$
+            result.append(eFormatData.getSmoothness());
+            result.append(')');
+        }
+        return result.toString();
+    }
+
+    /**
+     * Filter the list of {@link NodeFormatData} values of {@code formatData} to only keep format data corresponding to
+     * elements not filtered in the mapping configuration.
+     * 
+     * @param explicitMappingTestConfiguration
+     *            The mapping configuration.
+     * @param formatData
+     *            The format data to filter.
+     * @return
+     */
+    private List<AbstractFormatData> filterAndRetrieveNodeFormatData(MappingBasedTestConfiguration explicitMappingTestConfiguration, Collection<Map<String, NodeFormatData>> formatData) {
+        List<AbstractFormatData> result = new ArrayList<AbstractFormatData>();
+
+        Collection<EObject> acceptedValues = explicitMappingTestConfiguration.getObjectsMap().values();
+        List<String> acceptedValuesIDs = acceptedValues.stream().map(val -> EcoreUtil.getURI(val).fragment()).collect(Collectors.toList());
+        Iterator<Map<String, NodeFormatData>> formatDataIterator = formatData.iterator();
+
+        while (formatDataIterator.hasNext()) {
+            Map<String, NodeFormatData> formatDataMap = formatDataIterator.next();
+            if (!formatDataMap.isEmpty()) {
+                formatDataMap.forEach((k, v) -> {
+                    if (acceptedValuesIDs.contains(v.getId())) {
+                        result.add(copyFormatDataWithoutChildren(v));
+                    }
+                    if (v instanceof NodeFormatData) {
+                        result.addAll(filterAndRetrieveSubFormatData(v.getChildren(), acceptedValuesIDs));
+                    }
+                });
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * Filter the list of {@link EdgeFormatData} values of {@code formatData} to only keep format data corresponding to
+     * elements not filtered in the mapping configuration.
+     * 
+     * @param explicitMappingTestConfiguration
+     *            The mapping configuration.
+     * @param formatData
+     *            The format data to filter.
+     * @return
+     */
+    private List<AbstractFormatData> filterAndRetrieveEdgeFormatData(MappingBasedTestConfiguration explicitMappingTestConfiguration, Collection<Map<String, EdgeFormatData>> formatData) {
+        List<AbstractFormatData> result = new ArrayList<AbstractFormatData>();
+
+        Collection<EObject> acceptedValues = explicitMappingTestConfiguration.getObjectsMap().values();
+        List<String> acceptedValuesIDs = acceptedValues.stream().map(val -> EcoreUtil.getURI(val).fragment()).collect(Collectors.toList());
+        Iterator<Map<String, EdgeFormatData>> formatDataIterator = formatData.iterator();
+
+        while (formatDataIterator.hasNext()) {
+            Map<String, EdgeFormatData> formatDataMap = formatDataIterator.next();
+            if (!formatDataMap.isEmpty()) {
+                formatDataMap.forEach((k, v) -> {
+                    if (acceptedValuesIDs.contains(v.getId())) {
+                        result.add(copyFormatDataWithoutChildren(v));
+                    }
+                    if (v instanceof NodeFormatData) {
+                        result.addAll(filterAndRetrieveSubFormatData(((NodeFormatData) v).getChildren(), acceptedValuesIDs));
+                    }
+                });
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * Filter the list of children {@link NodeFormatData} of {@code formatData} to only keep format data corresponding
+     * to elements not filtered in the mapping configuration.
+     * 
+     * @param explicitMappingTestConfiguration
+     *            The mapping configuration.
+     * @param formatData
+     *            The format data to filter.
+     * @return
+     */
+    private List<AbstractFormatData> filterAndRetrieveSubFormatData(EList<NodeFormatData> children, List<String> acceptedValuesIDs) {
+        List<AbstractFormatData> result = new ArrayList<AbstractFormatData>();
+        children.forEach(nfd -> {
+            if (acceptedValuesIDs.contains(nfd.getId())) {
+                result.add(copyFormatDataWithoutChildren(nfd));
+                if (nfd instanceof NodeFormatData) {
+                    result.addAll(filterAndRetrieveSubFormatData(nfd.getChildren(), acceptedValuesIDs));
+                }
+            }
+        });
+        return result;
+    }
+
+    /**
+     * @param toCopy
+     *            The element to copy
+     * @return A copy of a format data and remove the content of the children collection in the copy
+     */
+    private AbstractFormatData copyFormatDataWithoutChildren(AbstractFormatData toCopy) {
+        AbstractFormatData fullCopy = SiriusCopierHelper.copyWithNoUidDuplication(toCopy);
+        if (toCopy instanceof NodeFormatData) {
+            ((NodeFormatData) fullCopy).getChildren().clear();
+        }
+        return fullCopy;
     }
 
     protected String encodeDiagramName(final String name) {
@@ -315,6 +539,13 @@ public class AbstractMappingBasedSiriusFormatDataManagerTest extends AbstractSir
         return XMI_PREFIX + diagramName;
     }
 
+    /**
+     * Helper to retrieve a DiagramEditPart from a DRepresentation.
+     * 
+     * @param session
+     * @param representation
+     * @return
+     */
     protected Collection<DiagramEditPart> getDiagramEditPart(Session session, DRepresentation representation) {
         final List<DiagramEditPart> result = new ArrayList<DiagramEditPart>();
         final Collection<EObject> data = session.getServices().getCustomData(CustomDataConstants.GMF_DIAGRAMS, representation);

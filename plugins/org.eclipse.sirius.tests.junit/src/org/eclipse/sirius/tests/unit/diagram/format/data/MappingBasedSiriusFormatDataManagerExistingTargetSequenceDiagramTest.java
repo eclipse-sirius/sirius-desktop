@@ -327,14 +327,14 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTes
                 // Enable this if you want to generate referenced files
                 if (MB_SEQ_REGENERATE_TEST_DATA) {
                     final String path = getPlatformRelatedXmiDataPath() + RAW_FOLDER + partialPath;
-                    saveDiagram(newManager.getRootNodeFormatData().values(), path);
+                    saveDiagramFiltered(path, semanticTargetFullTestConfiguration, newManager);
                 }
 
                 String fullPath = getPlatformRelatedFullXmiDataPath() + RAW_FOLDER + partialPath;
                 String message = "between diagram ";
                 message += diagramToCopyFormat.name;
                 message += " and raw diagram " + diagramToPasteFormat.name;
-                FormatDifference<?> foundDifference = loadAndCompare(diagramToPasteFormat, fullPath, newManager, configuration);
+                FormatDifference<?> foundDifference = loadAndCompareFiltered(fullPath, newManager, configuration, semanticTargetFullTestConfiguration);
                 if (foundDifference != null) {
                     differences.append("\n. " + message + foundDifference);
                 }

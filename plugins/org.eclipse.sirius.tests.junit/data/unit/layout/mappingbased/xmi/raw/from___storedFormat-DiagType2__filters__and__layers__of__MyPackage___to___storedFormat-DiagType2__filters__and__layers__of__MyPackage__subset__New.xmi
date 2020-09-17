@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:formatdata="http://www.eclipse.org/sirius/dsl/formatdata/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0">
-  <formatdata:NodeFormatData id="//targetp4" width="150" height="70">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_O8aqwvKBEeqr26l8abM-ag" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
-      <customFeatures>uid</customFeatures>
-      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@style"/>
-    </siriusStyle>
-    <gmfView xsi:type="notation:Node" type="2002">
-      <children type="5006"/>
-      <children type="7001">
-        <styles xsi:type="notation:SortingStyle"/>
-        <styles xsi:type="notation:FilteringStyle"/>
-      </children>
-      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="10"/>
-      <layoutConstraint xsi:type="notation:Bounds" x="450" y="205" width="150" height="70"/>
-    </gmfView>
-    <location x="450" y="205"/>
-  </formatdata:NodeFormatData>
-  <formatdata:NodeFormatData id="//targetp4" width="150" height="70">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_O8bR0PKBEeqr26l8abM-ag" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+  <formatdata:NodeFormatData id="//targetp1" width="150" height="70">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_iFiZ4RRxEeuW-MeaV_B1zA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@style"/>
     </siriusStyle>
@@ -33,7 +17,7 @@
     <location/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp1" width="827" height="178">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_O8XncPKBEeqr26l8abM-ag" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_iFgkshRxEeuW-MeaV_B1zA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@style"/>
     </siriusStyle>
@@ -127,142 +111,126 @@
       <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="10"/>
       <layoutConstraint xsi:type="notation:Bounds" width="827" height="178"/>
     </gmfView>
-    <children id="//targetp1/targetC1-1" width="46" height="41">
-      <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_O8YOgPKBEeqr26l8abM-ag" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+    <location/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//targetp1/targetC1-1" width="46" height="41">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_iFhy0BRxEeuW-MeaV_B1zA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@subContainerMappings[name='EClass_import']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="3009">
+      <children type="5004"/>
+      <children type="7003">
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="305" y="113" width="46" height="41"/>
+    </gmfView>
+    <outgoingEdges id="//targetp1/targetC1-1/targetaC1-2" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
+      <label id="//targetp1/targetC1-1/targetaC1-2" width="-1" height="-1">
+        <location y="-10"/>
+      </label>
+      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_iFhy0RRxEeuW-MeaV_B1zA">
+        <description xsi:type="style:EdgeStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@defaultLayer/@edgeMappings[name='DT2_EReference']/@style"/>
+        <centerLabelStyle uid="_iFhy0hRxEeuW-MeaV_B1zA" showIcon="false"/>
+      </siriusStyle>
+      <gmfView xsi:type="notation:Edge" type="4001">
+        <children type="6001">
+          <layoutConstraint xsi:type="notation:Bounds" y="-10"/>
+        </children>
+        <children type="6002">
+          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
+        </children>
+        <children type="6003">
+          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
+        </children>
+        <styles xsi:type="notation:ConnectorStyle"/>
+        <styles xsi:type="notation:FontStyle" fontName="Sans" fontHeight="8"/>
+        <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
+        <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
+      </gmfView>
+    </outgoingEdges>
+    <outgoingEdges id="//targetp1/targetC1-1/targetaC1-1-1" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
+      <label id="//targetp1/targetC1-1/targetaC1-1-1" width="-1" height="-1">
+        <location x="-30" y="-13"/>
+      </label>
+      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_iFhy0xRxEeuW-MeaV_B1zA">
         <customFeatures>uid</customFeatures>
-        <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@subContainerMappings[name='EClass_import']/@style"/>
+        <description xsi:type="style:EdgeStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@defaultLayer/@edgeMappings[name='DT2_EReference']/@style"/>
+        <centerLabelStyle uid="_iFhy1BRxEeuW-MeaV_B1zA" showIcon="false"/>
       </siriusStyle>
-      <gmfView xsi:type="notation:Node" type="3009">
-        <children type="5004"/>
-        <children type="7003">
-          <styles xsi:type="notation:SortingStyle"/>
-          <styles xsi:type="notation:FilteringStyle"/>
+      <gmfView xsi:type="notation:Edge" visible="false" type="4001">
+        <children type="6001">
+          <layoutConstraint xsi:type="notation:Bounds" x="-30" y="-13"/>
         </children>
-        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
-        <layoutConstraint xsi:type="notation:Bounds" x="305" y="113" width="46" height="41"/>
-      </gmfView>
-      <outgoingEdges id="//targetp1/targetC1-1/targetaC1-2" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
-        <label id="//targetp1/targetC1-1/targetaC1-2" width="-1" height="-1">
-          <location y="-10"/>
-        </label>
-        <siriusStyle xsi:type="diagram:EdgeStyle" uid="_O8YOgfKBEeqr26l8abM-ag">
-          <description xsi:type="style:EdgeStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@defaultLayer/@edgeMappings[name='DT2_EReference']/@style"/>
-          <centerLabelStyle uid="_O8YOgvKBEeqr26l8abM-ag" showIcon="false"/>
-        </siriusStyle>
-        <gmfView xsi:type="notation:Edge" type="4001">
-          <children type="6001">
-            <layoutConstraint xsi:type="notation:Bounds" y="-10"/>
-          </children>
-          <children type="6002">
-            <layoutConstraint xsi:type="notation:Bounds" y="10"/>
-          </children>
-          <children type="6003">
-            <layoutConstraint xsi:type="notation:Bounds" y="10"/>
-          </children>
-          <styles xsi:type="notation:ConnectorStyle"/>
-          <styles xsi:type="notation:FontStyle" fontName="Sans" fontHeight="8"/>
-          <bendpoints xsi:type="notation:RelativeBendpoints" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
-          <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
-          <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
-        </gmfView>
-      </outgoingEdges>
-      <outgoingEdges id="//targetp1/targetC1-1/targetaC1-1-1" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
-        <label id="//targetp1/targetC1-1/targetaC1-1-1" width="-1" height="-1">
-          <location x="-30" y="-13"/>
-        </label>
-        <siriusStyle xsi:type="diagram:EdgeStyle" uid="_O8YOg_KBEeqr26l8abM-ag">
-          <customFeatures>uid</customFeatures>
-          <description xsi:type="style:EdgeStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@defaultLayer/@edgeMappings[name='DT2_EReference']/@style"/>
-          <centerLabelStyle uid="_O8YOhPKBEeqr26l8abM-ag" showIcon="false"/>
-        </siriusStyle>
-        <gmfView xsi:type="notation:Edge" visible="false" type="4001">
-          <children type="6001">
-            <layoutConstraint xsi:type="notation:Bounds" x="-30" y="-13"/>
-          </children>
-          <children type="6002">
-            <layoutConstraint xsi:type="notation:Bounds" y="10"/>
-          </children>
-          <children type="6003">
-            <layoutConstraint xsi:type="notation:Bounds" y="10"/>
-          </children>
-          <styles xsi:type="notation:ConnectorStyle"/>
-          <styles xsi:type="notation:FontStyle" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xsi:type="notation:RelativeBendpoints"/>
-          <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
-          <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
-        </gmfView>
-      </outgoingEdges>
-      <location x="310" y="119"/>
-    </children>
-    <children id="//targetp1/targetC1-2" width="46" height="41">
-      <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_O8YOhfKBEeqr26l8abM-ag" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
-        <customFeatures>uid</customFeatures>
-        <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@subContainerMappings[name='EClass_import']/@style"/>
-      </siriusStyle>
-      <gmfView xsi:type="notation:Node" type="3009">
-        <children type="5004"/>
-        <children type="7003">
-          <styles xsi:type="notation:SortingStyle"/>
-          <styles xsi:type="notation:FilteringStyle"/>
+        <children type="6002">
+          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
         </children>
-        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
-        <layoutConstraint xsi:type="notation:Bounds" x="560" y="34" width="46" height="41"/>
-      </gmfView>
-      <location x="565" y="40"/>
-    </children>
-    <children id="//targetp1/targetC1-3" width="72" height="41">
-      <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_O8Y1kPKBEeqr26l8abM-ag" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
-        <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@defaultLayer/@containerMappings[name='DT2_Package_filters']/@subContainerMappings[name='DT2_Class_filters']/@style"/>
-      </siriusStyle>
-      <gmfView xsi:type="notation:Node" type="3009">
-        <children type="5004"/>
-        <children type="7003">
-          <styles xsi:type="notation:SortingStyle"/>
-          <styles xsi:type="notation:FilteringStyle"/>
+        <children type="6003">
+          <layoutConstraint xsi:type="notation:Bounds" y="10"/>
         </children>
-        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-        <layoutConstraint xsi:type="notation:Bounds"/>
+        <styles xsi:type="notation:ConnectorStyle"/>
+        <styles xsi:type="notation:FontStyle" fontName="Segoe UI" fontHeight="8"/>
+        <bendpoints xsi:type="notation:RelativeBendpoints"/>
+        <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
+        <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
       </gmfView>
-      <location x="5" y="6"/>
-    </children>
-    <children id="//targetp1/targetp1-1" width="184" height="91">
-      <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_O8Y1kfKBEeqr26l8abM-ag" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
-        <customFeatures>uid</customFeatures>
-        <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@style"/>
-      </siriusStyle>
-      <gmfView xsi:type="notation:Node" type="3008">
-        <children type="5005"/>
-        <children type="7002">
-          <children type="3009">
-            <children type="5004"/>
-            <children type="7003">
-              <styles xsi:type="notation:SortingStyle"/>
-              <styles xsi:type="notation:FilteringStyle"/>
-            </children>
-            <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xsi:type="notation:Bounds" x="30" y="29" width="56" height="48"/>
-          </children>
-          <children type="3009">
-            <children type="5004"/>
-            <children type="7003">
-              <styles xsi:type="notation:SortingStyle"/>
-              <styles xsi:type="notation:FilteringStyle"/>
-            </children>
-            <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-            <layoutConstraint xsi:type="notation:Bounds"/>
-          </children>
-          <styles xsi:type="notation:SortingStyle"/>
-          <styles xsi:type="notation:FilteringStyle"/>
-        </children>
-        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="10"/>
-        <layoutConstraint xsi:type="notation:Bounds" x="630" y="29" width="184" height="91"/>
-      </gmfView>
-      <children id="//targetp1/targetp1-1/targetC1-1-1" width="56" height="48">
-        <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_O8Y1kvKBEeqr26l8abM-ag" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
-          <customFeatures>uid</customFeatures>
-          <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@subContainerMappings[name='EClass_import']/@style"/>
-        </siriusStyle>
-        <gmfView xsi:type="notation:Node" type="3009">
+    </outgoingEdges>
+    <location x="310" y="119"/>
+  </formatdata:NodeFormatData>
+  <formatdata:EdgeFormatData id="//targetp1/targetC1-1/targetaC1-1-1" sourceTerminal="(0.5,0.5)" targetTerminal="(0.5,0.5)">
+    <label id="//targetp1/targetC1-1/targetaC1-1-1" width="-1" height="-1">
+      <location x="-30" y="-13"/>
+    </label>
+    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_iFjA8BRxEeuW-MeaV_B1zA">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:EdgeStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@defaultLayer/@edgeMappings[name='DT2_EReference']/@style"/>
+      <centerLabelStyle uid="_iFjA8RRxEeuW-MeaV_B1zA" showIcon="false"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Edge" visible="false" type="4001">
+      <children type="6001">
+        <layoutConstraint xsi:type="notation:Bounds" x="-30" y="-13"/>
+      </children>
+      <children type="6002">
+        <layoutConstraint xsi:type="notation:Bounds" y="10"/>
+      </children>
+      <children type="6003">
+        <layoutConstraint xsi:type="notation:Bounds" y="10"/>
+      </children>
+      <styles xsi:type="notation:ConnectorStyle"/>
+      <styles xsi:type="notation:FontStyle" fontName="Segoe UI" fontHeight="8"/>
+      <bendpoints xsi:type="notation:RelativeBendpoints"/>
+      <sourceAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
+      <targetAnchor xsi:type="notation:IdentityAnchor" id="(0.5,0.5)"/>
+    </gmfView>
+  </formatdata:EdgeFormatData>
+  <formatdata:NodeFormatData id="//targetp1/targetC1-2" width="46" height="41">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_iFhy1RRxEeuW-MeaV_B1zA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@subContainerMappings[name='EClass_import']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="3009">
+      <children type="5004"/>
+      <children type="7003">
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="560" y="34" width="46" height="41"/>
+    </gmfView>
+    <location x="565" y="40"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//targetp1/targetp1-1" width="184" height="91">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_iFhy1hRxEeuW-MeaV_B1zA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="3008">
+      <children type="5005"/>
+      <children type="7002">
+        <children type="3009">
           <children type="5004"/>
           <children type="7003">
             <styles xsi:type="notation:SortingStyle"/>
@@ -270,14 +238,8 @@
           </children>
           <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xsi:type="notation:Bounds" x="30" y="29" width="56" height="48"/>
-        </gmfView>
-        <location x="35" y="35"/>
-      </children>
-      <children id="//targetp1/targetp1-1/targetC1-1-2" width="81" height="41">
-        <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_O8ZcoPKBEeqr26l8abM-ag" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
-          <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@defaultLayer/@containerMappings[name='DT2_Package_filters']/@subContainerMappings[name='DT2_Class_filters']/@style"/>
-        </siriusStyle>
-        <gmfView xsi:type="notation:Node" type="3009">
+        </children>
+        <children type="3009">
           <children type="5004"/>
           <children type="7003">
             <styles xsi:type="notation:SortingStyle"/>
@@ -285,69 +247,33 @@
           </children>
           <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
           <layoutConstraint xsi:type="notation:Bounds"/>
-        </gmfView>
-        <location x="5" y="6"/>
-      </children>
-      <location x="635" y="35"/>
-    </children>
-    <children id="//targetp1/targetp1-2" width="150" height="70">
-      <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_O8ZcofKBEeqr26l8abM-ag" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
-        <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@defaultLayer/@containerMappings[name='DT2_Package_filters']/@style"/>
-      </siriusStyle>
-      <gmfView xsi:type="notation:Node" type="3008">
-        <children type="5005"/>
-        <children type="7002">
-          <children type="3009">
-            <children type="5004"/>
-            <children type="7003">
-              <styles xsi:type="notation:SortingStyle"/>
-              <styles xsi:type="notation:FilteringStyle"/>
-            </children>
-            <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-            <layoutConstraint xsi:type="notation:Bounds"/>
-          </children>
-          <styles xsi:type="notation:SortingStyle"/>
-          <styles xsi:type="notation:FilteringStyle"/>
         </children>
-        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="10"/>
-        <layoutConstraint xsi:type="notation:Bounds"/>
-      </gmfView>
-      <children id="//targetp1/targetp1-2/targetC1-2-1" width="81" height="41">
-        <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_O8ZcovKBEeqr26l8abM-ag" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
-          <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@defaultLayer/@containerMappings[name='DT2_Package_filters']/@subContainerMappings[name='DT2_Class_filters']/@style"/>
-        </siriusStyle>
-        <gmfView xsi:type="notation:Node" type="3009">
-          <children type="5004"/>
-          <children type="7003">
-            <styles xsi:type="notation:SortingStyle"/>
-            <styles xsi:type="notation:FilteringStyle"/>
-          </children>
-          <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="8"/>
-          <layoutConstraint xsi:type="notation:Bounds"/>
-        </gmfView>
-        <location x="5" y="6"/>
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
       </children>
-      <location x="5" y="6"/>
-    </children>
-    <children id="//targetp1/targetp1-3" width="150" height="70">
-      <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_O8aDsPKBEeqr26l8abM-ag" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
-        <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@defaultLayer/@containerMappings[name='DT2_Package_filters']/@style"/>
-      </siriusStyle>
-      <gmfView xsi:type="notation:Node" type="3008">
-        <children type="5005"/>
-        <children type="7002">
-          <styles xsi:type="notation:SortingStyle"/>
-          <styles xsi:type="notation:FilteringStyle"/>
-        </children>
-        <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="10"/>
-        <layoutConstraint xsi:type="notation:Bounds"/>
-      </gmfView>
-      <location x="5" y="6"/>
-    </children>
-    <location/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="630" y="29" width="184" height="91"/>
+    </gmfView>
+    <location x="635" y="35"/>
   </formatdata:NodeFormatData>
-  <formatdata:NodeFormatData id="//targetp1" width="150" height="70">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_O8aqw_KBEeqr26l8abM-ag" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+  <formatdata:NodeFormatData id="//targetp1/targetp1-1/targetC1-1-1" width="56" height="48">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_iFiZ4BRxEeuW-MeaV_B1zA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@subContainerMappings[name='EClass_import']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="3009">
+      <children type="5004"/>
+      <children type="7003">
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="30" y="29" width="56" height="48"/>
+    </gmfView>
+    <location x="35" y="35"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//targetp2" width="150" height="70">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_iFiZ6hRxEeuW-MeaV_B1zA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@style"/>
     </siriusStyle>
@@ -363,7 +289,7 @@
     <location/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp2" width="403" height="228">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_O8aDsfKBEeqr26l8abM-ag" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_iFiZ4hRxEeuW-MeaV_B1zA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@style"/>
     </siriusStyle>
@@ -403,35 +329,17 @@
       <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="10"/>
       <layoutConstraint xsi:type="notation:Bounds" x="30" y="205" width="403" height="228"/>
     </gmfView>
-    <children id="//targetp2/targetp2-1" width="150" height="91">
-      <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_O8aDsvKBEeqr26l8abM-ag" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
-        <customFeatures>uid</customFeatures>
-        <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@style"/>
-      </siriusStyle>
-      <gmfView xsi:type="notation:Node" type="3008">
-        <children type="5005"/>
-        <children type="7002">
-          <children type="3009">
-            <children type="5004"/>
-            <children type="7003">
-              <styles xsi:type="notation:SortingStyle"/>
-              <styles xsi:type="notation:FilteringStyle"/>
-            </children>
-            <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
-            <layoutConstraint xsi:type="notation:Bounds" x="30" y="29" width="89" height="48"/>
-          </children>
-          <styles xsi:type="notation:SortingStyle"/>
-          <styles xsi:type="notation:FilteringStyle"/>
-        </children>
-        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="10"/>
-        <layoutConstraint xsi:type="notation:Bounds" x="25" y="109" width="150" height="91"/>
-      </gmfView>
-      <children id="//targetp2/targetp2-1/targetnew%20EClass%201" width="89" height="48">
-        <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_O8aDs_KBEeqr26l8abM-ag" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
-          <customFeatures>uid</customFeatures>
-          <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@subContainerMappings[name='EClass_import']/@style"/>
-        </siriusStyle>
-        <gmfView xsi:type="notation:Node" type="3009">
+    <location x="30" y="205"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//targetp2/targetp2-1" width="150" height="91">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_iFiZ5hRxEeuW-MeaV_B1zA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="3008">
+      <children type="5005"/>
+      <children type="7002">
+        <children type="3009">
           <children type="5004"/>
           <children type="7003">
             <styles xsi:type="notation:SortingStyle"/>
@@ -439,31 +347,49 @@
           </children>
           <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
           <layoutConstraint xsi:type="notation:Bounds" x="30" y="29" width="89" height="48"/>
-        </gmfView>
-        <location x="35" y="35"/>
-      </children>
-      <location x="30" y="115"/>
-    </children>
-    <children id="//targetp2/targetp2-2" width="150" height="70">
-      <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_O8aqwPKBEeqr26l8abM-ag" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
-        <customFeatures>uid</customFeatures>
-        <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@style"/>
-      </siriusStyle>
-      <gmfView xsi:type="notation:Node" type="3008">
-        <children type="5005"/>
-        <children type="7002">
-          <styles xsi:type="notation:SortingStyle"/>
-          <styles xsi:type="notation:FilteringStyle"/>
         </children>
-        <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="10"/>
-        <layoutConstraint xsi:type="notation:Bounds" x="210" y="29" width="150" height="70"/>
-      </gmfView>
-      <location x="215" y="35"/>
-    </children>
-    <location x="30" y="205"/>
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="25" y="109" width="150" height="91"/>
+    </gmfView>
+    <location x="30" y="115"/>
   </formatdata:NodeFormatData>
-  <formatdata:NodeFormatData id="//targetp2" width="150" height="70">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_O8aqxPKBEeqr26l8abM-ag" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+  <formatdata:NodeFormatData id="//targetp2/targetp2-1/targetnew%20EClass%201" width="89" height="48">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_iFiZ6BRxEeuW-MeaV_B1zA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@subContainerMappings[name='EClass_import']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="3009">
+      <children type="5004"/>
+      <children type="7003">
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="8"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="30" y="29" width="89" height="48"/>
+    </gmfView>
+    <location x="35" y="35"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//targetp2/targetp2-2" width="150" height="70">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_iFiZ6RRxEeuW-MeaV_B1zA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@style"/>
+    </siriusStyle>
+    <gmfView xsi:type="notation:Node" type="3008">
+      <children type="5005"/>
+      <children type="7002">
+        <styles xsi:type="notation:SortingStyle"/>
+        <styles xsi:type="notation:FilteringStyle"/>
+      </children>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="210" y="29" width="150" height="70"/>
+    </gmfView>
+    <location x="215" y="35"/>
+  </formatdata:NodeFormatData>
+  <formatdata:NodeFormatData id="//targetp4" width="150" height="70">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_iFgksRRxEeuW-MeaV_B1zA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@style"/>
     </siriusStyle>
@@ -478,9 +404,10 @@
     </gmfView>
     <location/>
   </formatdata:NodeFormatData>
-  <formatdata:NodeFormatData id="//targetp3" width="150" height="70">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_O8aqwfKBEeqr26l8abM-ag" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
-      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@defaultLayer/@containerMappings[name='DT2_Package_filters']/@style"/>
+  <formatdata:NodeFormatData id="//targetp4" width="150" height="70">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_iFgksBRxEeuW-MeaV_B1zA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+      <customFeatures>uid</customFeatures>
+      <description xsi:type="style:FlatContainerStyleDescription" href="platform:/resource/DesignerTestProject/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']/@additionalLayers[name='Operations']/@containerMappings[name='EPackage_import']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2002">
       <children type="5006"/>
@@ -488,9 +415,9 @@
         <styles xsi:type="notation:SortingStyle"/>
         <styles xsi:type="notation:FilteringStyle"/>
       </children>
-      <styles xsi:type="notation:ShapeStyle" fontName="Sans" fontHeight="10"/>
-      <layoutConstraint xsi:type="notation:Bounds"/>
+      <styles xsi:type="notation:ShapeStyle" fontName="Segoe UI" fontHeight="10"/>
+      <layoutConstraint xsi:type="notation:Bounds" x="450" y="205" width="150" height="70"/>
     </gmfView>
-    <location/>
+    <location x="450" y="205"/>
   </formatdata:NodeFormatData>
 </xmi:XMI>
