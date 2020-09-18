@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,13 +16,14 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 import org.eclipse.gmf.runtime.common.ui.action.IDisposableAction;
-import org.eclipse.gmf.runtime.diagram.ui.actions.internal.SelectAllAction;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.SelectMenuManager;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusSelectAllAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.menu.PopupMenuContribution;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
@@ -112,10 +113,10 @@ public class TabbarSelectMenuManager extends SelectMenuManager {
             if (isEmpty()) {
                 IWorkbenchPage page = EclipseUIUtil.getActivePage();
                 if (page != null) {
-                    add(SelectAllAction.createToolbarSelectAllAction(page));
-                    add(SelectAllAction.createToolbarSelectAllConnectionsAction(page));
-                    add(SelectAllAction.createToolbarSelectAllShapesAction(page));
-                    setDefaultAction("toolbarSelectAllAction"); //$NON-NLS-1$
+                    add(SiriusSelectAllAction.createToolbarSelectAllAction(page));
+                    add(SiriusSelectAllAction.createToolbarSelectAllConnectionsAction(page));
+                    add(SiriusSelectAllAction.createToolbarSelectAllShapesAction(page));
+                    setDefaultAction(ActionIds.ACTION_SIRIUS_TOOLBAR_SELECT_ALL);
 
                 }
             }

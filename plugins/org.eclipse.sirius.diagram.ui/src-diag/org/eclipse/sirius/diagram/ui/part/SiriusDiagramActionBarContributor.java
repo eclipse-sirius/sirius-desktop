@@ -31,6 +31,7 @@ import org.eclipse.jface.action.IContributionManager;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.action.Separator;
+import org.eclipse.jface.action.SubContributionItem;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.action.ConcernComboContributionItem;
@@ -55,6 +56,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.RevealAll
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.actions.RetargetAction;
 import org.eclipse.ui.internal.WorkbenchWindow;
 import org.osgi.framework.Bundle;
@@ -246,6 +248,12 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
                 removeExistingItem(ActionIds.ACTION_AUTOSIZE, "/diagramMenu", bars.getMenuManager(), true).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
                 removeExistingItem(ActionIds.ACTION_COPY_APPEARANCE_PROPERTIES, "/", bars.getToolBarManager(), false).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
                 removeExistingItem(ActionIds.ACTION_COPY_APPEARANCE_PROPERTIES, "/diagramMenu", bars.getMenuManager(), true).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
+                removeExistingItem(ActionIds.ACTION_TOOLBAR_SELECT_ALL_SHAPES, "/selectMenu", bars.getToolBarManager(), false).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
+                removeExistingItem(ActionFactory.SELECT_ALL.getId(), "/diagramMenu/selectMenu", bars.getMenuManager(), true).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
+                removeExistingItem(ActionIds.ACTION_SELECT_ALL_SHAPES, "/diagramMenu/selectMenu", bars.getMenuManager(), true).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
+                removeExistingItem(ActionIds.ACTION_TOOLBAR_SELECT_ALL_CONNECTIONS, "/selectMenu", bars.getToolBarManager(), false).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
+                removeExistingItem(ActionIds.ACTION_SELECT_ALL_CONNECTIONS, "/diagramMenu/selectMenu", bars.getMenuManager(), true).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
+                removeExistingItem(ActionIds.ACTION_TOOLBAR_SELECT_ALL, "/selectMenu", bars.getToolBarManager(), false).ifPresent(contributionItem -> disposeIfPossible(contributionItem)); //$NON-NLS-1$
                 cleanOldToolBarGMFAction(toolBarManager, ActionIds.CUSTOM_ZOOM);
 
                 cleanOldToolBarGMFAction(toolBarManager, ActionIds.MENU_ARRANGE);
@@ -369,6 +377,8 @@ public class SiriusDiagramActionBarContributor extends DiagramActionBarContribut
             if (((ActionContributionItem) contribution).getAction() instanceof Disposable) {
                 ((Disposable) ((ActionContributionItem) contribution).getAction()).dispose();
             }
+        } else if (contribution instanceof SubContributionItem) {
+            disposeIfPossible(((SubContributionItem) contribution).getInnerItem());
         }
     }
 

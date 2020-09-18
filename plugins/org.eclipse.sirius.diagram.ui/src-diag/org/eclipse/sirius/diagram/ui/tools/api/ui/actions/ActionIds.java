@@ -27,7 +27,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 public interface ActionIds {
     // CHECKSTYLE:ON
 
-    /** Action's id to the custom Sirius Auto Size Action (that replace the GMF AutoSize action). */
+    /** Action's id to the custom Sirius Auto Size Action (that replaces the GMF AutoSize action). */
     String ACTION_SIRIUS_AUTOSIZE = "siriusAutoSizeAction"; //$NON-NLS-1$
 
     /** Action contribution id for the copy format (layout and style). */
@@ -164,4 +164,18 @@ public interface ActionIds {
      */
     String DEFAULT_MODE = "defaultMode"; //$NON-NLS-1$
 
+    /** Action's id to the custom Sirius Select All Shapes Action (that replaces the GMF action). */
+    String ACTION_SIRIUS_SELECT_ALL_SHAPES = "siriusSelectAllShapesAction"; //$NON-NLS-1$
+
+    /** Action's id to the custom Sirius Select All Connections Action (that replaces the GMF action). */
+    String ACTION_SIRIUS_SELECT_ALL_CONNECTIONS = "siriusSelectAllConnectorsAction"; //$NON-NLS-1$
+
+    /** Action's id to the custom Sirius Select All Action, from tool bar (that replaces the GMF action). */
+    String ACTION_SIRIUS_TOOLBAR_SELECT_ALL = "siriusToolbarSelectAllAction"; //$NON-NLS-1$
+
+    /** Action's id to the custom Sirius Select All Shapes Action, from tool bar (that replaces the GMF action). */
+    String ACTION_SIRIUS_TOOLBAR_SELECT_ALL_SHAPES = "siriusToolbarSelectAllShapesAction"; //$NON-NLS-1$
+
+    /** Action's id to the custom Sirius Select All Connections Action, from tool bar (that replaces the GMF action). */
+    String ACTION_SIRIUS_TOOLBAR_SELECT_ALL_CONNECTIONS = "siriusToolbarSelectAllConnectorsAction"; //$NON-NLS-1$
 }
