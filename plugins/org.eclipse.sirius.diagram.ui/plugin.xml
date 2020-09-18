@@ -172,6 +172,24 @@
                  menubarPath="/diagramMenu/copyAppearanceGroup"
                  toolbarPath="/toolbarCopyAppearanceGroup">
            </partAction>
+                       <partMenu menubarPath="/diagramMenu/formatGroup" id="selectMenu">
+            </partMenu>
+            <partMenu toolbarPath="/toolbarViewGroup" id="selectMenuToolbar">
+            </partMenu>
+            <partMenuGroup menubarPath="/diagramMenu/selectMenu/" toolbarPath="/selectMenu/" id="selectGroup">
+            </partMenuGroup>
+            <partAction global="true" menubarPath="/diagramMenu/selectMenu/selectGroup" id="selectAll">
+            </partAction>
+            <partAction global="true" toolbarPath="/selectMenu/selectGroup" id="siriusToolbarSelectAllAction">
+            </partAction>
+            <partAction menubarPath="/diagramMenu/selectMenu/selectGroup" id="siriusSelectAllShapesAction">
+            </partAction>
+            <partAction toolbarPath="/selectMenu/selectGroup" id="siriusToolbarSelectAllShapesAction">
+            </partAction>
+            <partAction menubarPath="/diagramMenu/selectMenu/selectGroup" id="siriusSelectAllConnectorsAction">
+            </partAction>
+            <partAction toolbarPath="/selectMenu/selectGroup" id="siriusToolbarSelectAllConnectorsAction">
+            </partAction>
          </partContribution>
 
          <popupContribution
@@ -263,6 +281,25 @@
                   separator="true">
             </popupMenuGroup>
          </popupContribution>
+        <!-- added here for display ordering purposes -->
+       	<popupContribution class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
+            <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart">
+            </popupStructuredContributionCriteria>
+            <popupStructuredContributionCriteria objectClass="org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart">
+            </popupStructuredContributionCriteria>
+            <popupMenu path="/filterFormatGroup" id="selectMenu">
+            </popupMenu>
+            <popupMenuGroup path="/selectMenu/" id="selectGroup">
+            </popupMenuGroup>
+            <popupAction path="/selectMenu/selectGroup" id="selectAll">
+            </popupAction>
+            <popupAction path="/selectMenu/selectGroup" id="siriusSelectAllShapesAction">
+            </popupAction>
+            <popupAction path="/selectMenu/selectGroup" id="siriusSelectAllConnectorsAction">
+            </popupAction>
+            <popupAction path="/filterFormatGroup" id="toolbarArrangeAllAction">
+            </popupAction>             
+        </popupContribution>  
       </contributionItemProvider>
 
 

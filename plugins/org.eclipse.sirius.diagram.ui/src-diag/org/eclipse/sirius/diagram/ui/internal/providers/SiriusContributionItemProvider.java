@@ -24,6 +24,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.SelectHiddenElements
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusAutoSizeAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusCopyAppearancePropertiesAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusEdgeSnapBackAction;
+import org.eclipse.sirius.diagram.ui.tools.internal.actions.SiriusSelectAllAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.SizeBothAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.TabbarRouterAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.distribute.DistributeAction;
@@ -38,6 +39,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.actions.straighten.Straighte
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.DistributeMenuManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.StraightenToMenuManager;
 import org.eclipse.ui.IWorkbenchPage;
+import org.eclipse.ui.actions.ActionFactory;
 
 /**
  * @was-generated
@@ -112,6 +114,18 @@ public class SiriusContributionItemProvider extends AbstractContributionItemProv
             result = StraightenToAction.createStraightenLeftSidePinnedAction(workbenchPage);
         } else if (ActionIds.STRAIGHTEN_RIGHT_SIDE_PINNED.equals(actionId)) {
             result = StraightenToAction.createStraightenRightSidePinnedAction(workbenchPage);
+        } else if (ActionFactory.SELECT_ALL.getId().equals(actionId)) {
+            result = SiriusSelectAllAction.createSelectAllAction(workbenchPage);
+        } else if (ActionIds.ACTION_SIRIUS_SELECT_ALL_SHAPES.equals(actionId)) {
+            result = SiriusSelectAllAction.createSelectAllShapesAction(workbenchPage);
+        } else if (ActionIds.ACTION_SIRIUS_SELECT_ALL_CONNECTIONS.equals(actionId)) {
+            result = SiriusSelectAllAction.createSelectAllConnectionsAction(workbenchPage);
+        } else if (ActionIds.ACTION_SIRIUS_TOOLBAR_SELECT_ALL.equals(actionId)) {
+            result = SiriusSelectAllAction.createToolbarSelectAllAction(workbenchPage);
+        } else if (ActionIds.ACTION_SIRIUS_TOOLBAR_SELECT_ALL_SHAPES.equals(actionId)) {
+            result = SiriusSelectAllAction.createToolbarSelectAllShapesAction(workbenchPage);
+        } else if (ActionIds.ACTION_SIRIUS_TOOLBAR_SELECT_ALL_CONNECTIONS.equals(actionId)) {
+            result = SiriusSelectAllAction.createToolbarSelectAllConnectionsAction(workbenchPage);
         } else {
             result = super.createAction(actionId, partDescriptor);
         }

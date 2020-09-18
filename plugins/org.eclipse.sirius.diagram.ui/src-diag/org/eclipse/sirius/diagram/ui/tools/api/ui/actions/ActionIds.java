@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -161,4 +161,18 @@ public interface ActionIds {
      */
     String DEFAULT_MODE = "defaultMode"; //$NON-NLS-1$
 
+    /** Action's id to the custom Sirius Select All Shapes Action (that replaces the GMF action). */
+    String ACTION_SIRIUS_SELECT_ALL_SHAPES = "siriusSelectAllShapesAction"; //$NON-NLS-1$
+
+    /** Action's id to the custom Sirius Select All Connections Action (that replaces the GMF action). */
+    String ACTION_SIRIUS_SELECT_ALL_CONNECTIONS = "siriusSelectAllConnectorsAction"; //$NON-NLS-1$
+
+    /** Action's id to the custom Sirius Select All Action, from tool bar (that replaces the GMF action). */
+    String ACTION_SIRIUS_TOOLBAR_SELECT_ALL = "siriusToolbarSelectAllAction"; //$NON-NLS-1$
+
+    /** Action's id to the custom Sirius Select All Shapes Action, from tool bar (that replaces the GMF action). */
+    String ACTION_SIRIUS_TOOLBAR_SELECT_ALL_SHAPES = "siriusToolbarSelectAllShapesAction"; //$NON-NLS-1$
+
+    /** Action's id to the custom Sirius Select All Connections Action, from tool bar (that replaces the GMF action). */
+    String ACTION_SIRIUS_TOOLBAR_SELECT_ALL_CONNECTIONS = "siriusToolbarSelectAllConnectorsAction"; //$NON-NLS-1$
 }

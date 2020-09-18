@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -43,6 +43,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.ArrangeAllOn
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.actions.ActionFactory;
 
 /**
  * A Custom menu provider to contribute our custom delete action.
@@ -108,6 +109,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                 public void run() {
                     ContributionItemService.getInstance().contributeToPopupMenu(DiagramEditorContextMenuProvider.this, part);
                     menu.remove(ActionIds.ACTION_DELETE_FROM_MODEL);
+                    updateSelectMenu(menu);
                     updateFormatMenu(menu);
                     final IMenuManager manager = menu.findMenuUsingPath(ActionIds.MENU_EDIT);
                     IContributionItem find = manager.find(DELETE_FROM_GROUP);
@@ -216,6 +218,21 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                     manager2.insertAfter(ActionIds.ACTION_FONT_DIALOG, ColorPropertyContributionItem.createFontColorContributionItem(part.getSite().getPage()));
                 }
             }
+        }
+    }
+
+    /**
+     * Remove default select GMF actions from contextual menu.
+     * 
+     * @param menu
+     *            The root menu
+     */
+    private void updateSelectMenu(IMenuManager menu) {
+        final IMenuManager manager2 = menu.findMenuUsingPath(ActionIds.MENU_SELECT);
+        if (manager2 != null) {
+            manager2.remove(ActionFactory.SELECT_ALL.getId());
+            manager2.remove(ActionIds.ACTION_SELECT_ALL_SHAPES);
+            manager2.remove(ActionIds.ACTION_SELECT_ALL_CONNECTIONS);
         }
     }
 
