@@ -26,7 +26,7 @@ try {
 
 h4. Changes in  @org.eclipse.sirius.ui@
 
-* <span class="label label-success">Added</span> A new method, @preClose()@ has been added in @org.eclipse.sirius.ui.business.api.dialect.DialectEditor@. This method is called in sync when the editor is asking to be closed (the real close is done in async). This allows to dispose actions, for example, as soos as the close is requested. There is a default implementation, that does nothing, for all dialect editors.
+* <span class="label label-success">Added</span> A new method, @preClose()@ has been added in @org.eclipse.sirius.ui.business.api.dialect.DialectEditor@. This method is called in sync when the editor is asking to be closed (the real closure is done in async). This allows to dispose actions, for example, as soon as the closure is requested. There is a default implementation, that does nothing, for all dialect editors.
 
 h4. Changes in  @org.eclipse.sirius.tests.junit.support@
 
