@@ -35,19 +35,30 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IPrimaryEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.ISurfaceEditPart;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
+import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.actions.ActionFactory;
 
 /**
  * Sirius specific select all action: Only to always launch refresh in UI thread. This new class has been created
- * waiting the resolution in GMF of bugzilla 567128. Only the method refresh is not from the original class
- * {@link org.eclipse.gmf.runtime.diagram.ui.actions.internal.SelectAllAction}.
+ * waiting the resolution in GMF of bugzilla 567128.<BR>
+ * Only the method refresh is not from the original class
+ * {@link org.eclipse.gmf.runtime.diagram.ui.actions.internal.SelectAllAction}. The field siriusOperationSet has been
+ * also added instead of private _operationSet. So all methods using this field have also been duplicated (dispose,
+ * getSiriusOperationSet, and internalRefresh).
  * 
  * @author lredor
  * 
  */
 // CHECKSTYLE:OFF
 public class SiriusSelectAllAction extends DiagramAction {
+
+    /**
+     * the cached operation set. This field replaces {@link DiagramAction#_operationSet} as it is private in super class
+     * (used in dispose(), getOperationSet() and refresh());.
+     */
+    private List siriusOperationSet = Collections.EMPTY_LIST;
+
     /** whether to select shapes */
     private boolean selectShapes;
 
@@ -248,11 +259,11 @@ public class SiriusSelectAllAction extends DiagramAction {
      * Returns true if the operation set is not empty and only if the diagram is selected.
      */
     protected boolean calculateEnabled() {
-        return !getOperationSet().isEmpty();
+        return !getSiriusOperationSet().isEmpty();
     }
 
     protected void doRun(IProgressMonitor progressMonitor) {
-        getDiagramGraphicalViewer().setSelection(new StructuredSelection(getOperationSet()));
+        getDiagramGraphicalViewer().setSelection(new StructuredSelection(getSiriusOperationSet()));
     }
 
     protected boolean isSelectionListener() {
@@ -355,8 +366,53 @@ public class SiriusSelectAllAction extends DiagramAction {
     }
 
     @Override
+    public void dispose() {
+        super.dispose();
+        siriusOperationSet = null;
+    }
+
+    /**
+     * A copy of {@link DiagramAction#getOperationSet()} to manipulate siriusOperationSet instead of _operationSet.
+     * 
+     * Return the list of editparts considered the operation set after caching them
+     * 
+     * @return A list of editparts conidered the operation set
+     */
+    protected final List getSiriusOperationSet() {
+        if (siriusOperationSet == null) {
+            siriusOperationSet = createOperationSet();
+            if (siriusOperationSet == null)
+                siriusOperationSet = Collections.EMPTY_LIST;
+        }
+        return siriusOperationSet;
+    }
+
+    @Override
     public void refresh() {
-        super.refresh();
+        if (Display.getCurrent() == null) {
+            /*
+             * We are not in a UI thread, so we call the refresh later to avoid potential
+             * ConcurrentModificationException or worse.
+             */
+            Display.getDefault().asyncExec(new Runnable() {
+                @Override
+                public void run() {
+                    internalRefresh();
+                }
+            });
+        } else {
+            /* Here we are in UI Thread */
+            internalRefresh();
+        }
+    }
+
+    /**
+     * A copy of original {@link DiagramAction#refresh()} but using siriusOperationSet instead of _operationSet.
+     */
+    public void internalRefresh() {
+        siriusOperationSet = null; // invalidate the cached set
+        updateTargetRequest();
+        setEnabled(calculateEnabled());
     }
 }
 // CHECKSTYLE:ON
