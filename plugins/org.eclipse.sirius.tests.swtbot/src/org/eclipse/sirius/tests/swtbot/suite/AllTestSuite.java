@@ -310,8 +310,8 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(HideRevealDiagramElementsLabelsTestWithOldUI.class);
         suite.addTestSuite(HideLabelIconsWithPreferencesTest.class);
         // suite.addTestSuite(LabelFontModificationsTest.class);
-        suite.addTestSuite(MultiLineLabelDiagramTest.class);
 		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+            suite.addTestSuite(MultiLineLabelDiagramTest.class);
 			suite.addTestSuite(NodeCreationPositionTest.class);
 		}
         suite.addTestSuite(OpenMultipleRepresentationsTest.class);
