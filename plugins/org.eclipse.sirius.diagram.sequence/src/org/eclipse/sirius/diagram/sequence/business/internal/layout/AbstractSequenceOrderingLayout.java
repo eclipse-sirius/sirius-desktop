@@ -10,20 +10,25 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.layout;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 
 import com.google.common.base.Function;
-import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 
 /**
- * Computes the appropriate graphical locations of sequence events and lifelines
- * on a sequence diagram to reflect the semantic order.
+ * Computes the appropriate graphical locations of sequence events and lifelines on a sequence diagram to reflect the
+ * semantic order.
  * 
  * @param <S>
  *            the layouted element type.
@@ -67,15 +72,16 @@ public abstract class AbstractSequenceOrderingLayout<S, T, U> extends AbstractSe
     public AbstractSequenceOrderingLayout(SequenceDiagram sequenceDiagram) {
         super(sequenceDiagram);
 
-        this.semanticOrdering = Lists.newArrayList();
-        this.graphicalOrdering = Lists.newArrayList();
-        this.flaggedEnds = Lists.newArrayList();
-        this.oldFlaggedLayoutData = Maps.newHashMap();
+        this.semanticOrdering = new ArrayList<>();
+        this.graphicalOrdering = new ArrayList<>();
+        this.flaggedEnds = new ArrayList<>();
+        this.oldFlaggedLayoutData = new HashMap<>();
     }
 
     /**
      * Dispose the layout context after layout application.
      */
+    @Override
     protected void dispose() {
         semanticOrdering.clear();
         graphicalOrdering.clear();
@@ -86,8 +92,8 @@ public abstract class AbstractSequenceOrderingLayout<S, T, U> extends AbstractSe
 
     /**
      * 
-     * Look in the semantic, graphical and flaggedEnds orderings to retrieve the
-     * safest predecessor and try to keep a stable delta regarding it.
+     * Look in the semantic, graphical and flaggedEnds orderings to retrieve the safest predecessor and try to keep a
+     * stable delta regarding it.
      * 
      * @param currentPos
      *            the current position (x or y)
@@ -104,21 +110,24 @@ public abstract class AbstractSequenceOrderingLayout<S, T, U> extends AbstractSe
         int flaggedIndex = flaggedEnds.indexOf(element);
 
         if (flaggedIndex != -1 && semanticIndex != 0 && graphicalIndex != -1) {
-            List<U> semanticPredecessors = Lists.newArrayList(semanticOrdering.subList(0, semanticIndex));
-            List<U> graphicalPredecessors = Lists.newArrayList(graphicalOrdering.subList(0, graphicalIndex));
-            List<U> flaggedPredecessors = Lists.newArrayList(flaggedEnds.subList(0, flaggedIndex));
+            Set<U> semanticPredecessors = new LinkedHashSet<>(semanticOrdering.subList(0, semanticIndex));
+            Set<U> graphicalPredecessors = new LinkedHashSet<>(graphicalOrdering.subList(0, graphicalIndex));
+            Set<U> flaggedPredecessors = new LinkedHashSet<>(flaggedEnds.subList(0, flaggedIndex));
 
             // Intersection
-            semanticPredecessors.retainAll(flaggedEnds);
-            graphicalPredecessors.retainAll(flaggedEnds);
-            flaggedPredecessors.retainAll(semanticPredecessors);
+            HashSet<U> flaggedEndsSet = new LinkedHashSet<>(flaggedEnds);
+            semanticPredecessors = Sets.intersection(semanticPredecessors, flaggedEndsSet);
+            graphicalPredecessors = Sets.intersection(graphicalPredecessors, flaggedEndsSet);
+            flaggedPredecessors = Sets.intersection(flaggedPredecessors, semanticPredecessors);
 
             // Which is the safer position ?
             Function<U, Integer> oldPosition = getOldPosition();
             U flaggedPred = null;
 
-            if (Iterables.elementsEqual(semanticPredecessors, graphicalPredecessors) && !graphicalPredecessors.isEmpty()) {
-                flaggedPred = graphicalPredecessors.get(graphicalPredecessors.size() - 1);
+            Optional<U> lastGraphPredecessor = getLastGraphPredecessorIfEquals(semanticPredecessors, graphicalPredecessors);
+
+            if (lastGraphPredecessor.isPresent()) {
+                flaggedPred = lastGraphPredecessor.get();
             } else {
                 // Desynchronisation -> flagged position
                 oldPosition = getOldFlaggedPosition();
@@ -126,19 +135,23 @@ public abstract class AbstractSequenceOrderingLayout<S, T, U> extends AbstractSe
                 // Look for the last semantic predecessor with same index in
                 // semantic and flagged lists.
                 U potentialSafePred = null;
-                for (int i = 0; i < flaggedPredecessors.size(); i++) {
-                    U semPot = semanticPredecessors.get(i);
-                    U flaggedPot = flaggedPredecessors.get(i);
+                Iterator<U> semanticPredecessorsIterator = semanticPredecessors.iterator();
+                Iterator<U> flaggedPredecessorsIterator = flaggedPredecessors.iterator();
+                int i = 0;
+
+                while (flaggedPredecessorsIterator.hasNext() && semanticPredecessorsIterator.hasNext() && i < flaggedPredecessors.size()) {
+                    U flaggedPot = flaggedPredecessorsIterator.next();
+                    U semPot = semanticPredecessorsIterator.next();
                     if (semPot != null && semPot.equals(flaggedPot)) {
                         potentialSafePred = semPot;
                     }
+                    i++;
                 }
 
                 if (potentialSafePred != null) {
                     flaggedPred = potentialSafePred;
                 }
             }
-
             if (flaggedPred != null) {
                 Integer predY = oldPosition.apply(flaggedPred);
                 Integer flaggedY = oldPosition.apply(element);
@@ -149,6 +162,28 @@ public abstract class AbstractSequenceOrderingLayout<S, T, U> extends AbstractSe
             }
         }
         return deltaStablePos;
+
+    }
+
+    private Optional<U> getLastGraphPredecessorIfEquals(Set<U> semanticPredecessors, Set<U> graphicalPredecessors) {
+        Optional<U> result;
+        if (semanticPredecessors.size() != graphicalPredecessors.size()) {
+            result = Optional.empty();
+        } else {
+            Iterator<U> graphicalPredecessorsIterator = graphicalPredecessors.iterator();
+            Iterator<U> semanticPredecessorsIterator = semanticPredecessors.iterator();
+            U lastGraphPredecessor = null;
+            while (graphicalPredecessorsIterator.hasNext() && semanticPredecessorsIterator.hasNext()) {
+                U graphPred = graphicalPredecessorsIterator.next();
+                U semPred = semanticPredecessorsIterator.next();
+                if (!graphPred.equals(semPred)) {
+                    return Optional.empty();
+                }
+                lastGraphPredecessor = graphPred;
+            }
+            result = Optional.ofNullable(lastGraphPredecessor);
+        }
+        return result;
     }
 
     /**
