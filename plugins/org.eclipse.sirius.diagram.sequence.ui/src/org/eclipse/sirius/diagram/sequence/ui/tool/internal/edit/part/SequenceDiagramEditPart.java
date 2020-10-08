@@ -22,6 +22,7 @@ import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.internal.properties.WorkspaceViewerProperties;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
+import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.util.IPropertyChangeListener;
@@ -47,8 +48,8 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceZOrde
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ContainerCreationEditPolicy;
-import org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabelsDrawerFigure;
 import org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabel;
+import org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabelsDrawerFigure;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.properties.PropertiesService;
@@ -197,7 +198,8 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
          */
         boolean autoRefresh = PropertiesService.getInstance().getPropertiesProvider().getProperty(IPropertiesProvider.KEY_AUTO_REFRESH);
         boolean refreshOnOpen = DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening();
-        getEditingDomain().getCommandStack().execute(new RefreshLayoutCommand(getEditingDomain(), getDiagramView(), autoRefresh || refreshOnOpen));
+        Diagram diagramView = getDiagramView();
+        getEditingDomain().getCommandStack().execute(new RefreshLayoutCommand(getEditingDomain(), diagramView, autoRefresh || refreshOnOpen));
         getEditingDomain().addResourceSetListener(semanticOrderingSynchronizer);
         getEditingDomain().addResourceSetListener(refreshZorder);
 
@@ -205,8 +207,8 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
         if (broker.some()) {
             SessionEventBroker sessionEventBroker = broker.get();
 
-            Predicate<Notification> refreshLayoutScope = new RefreshLayoutScope();
-            refreshLayout = new RefreshLayoutTrigger(getDiagramView());
+            Predicate<Notification> refreshLayoutScope = new RefreshLayoutScope(diagramView);
+            refreshLayout = new RefreshLayoutTrigger(diagramView);
             sessionEventBroker.addLocalTrigger(SessionEventBrokerImpl.asFilter(refreshLayoutScope), refreshLayout);
 
             Predicate<Notification> sequenceCanonicalSynchronizerLayoutScope = new SequenceCanonicalSynchronizerAdapterScope();

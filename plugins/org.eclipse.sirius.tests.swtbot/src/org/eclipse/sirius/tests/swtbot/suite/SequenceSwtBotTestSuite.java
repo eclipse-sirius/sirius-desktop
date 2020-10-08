@@ -60,7 +60,7 @@ import org.eclipse.sirius.tests.swtbot.sequence.NoteAttachmentTest;
 import org.eclipse.sirius.tests.swtbot.sequence.NoteAttachmentsWithCombinedFragmentTests;
 import org.eclipse.sirius.tests.swtbot.sequence.ObservationPointTests;
 import org.eclipse.sirius.tests.swtbot.sequence.PunctualStateTests;
-import org.eclipse.sirius.tests.swtbot.sequence.RefreshLayoutNotExecutedOnNoSequenceChangesTests;
+import org.eclipse.sirius.tests.swtbot.sequence.RefreshLayoutScopeTests;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceArrangeLinkedBorderedNodesTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceBasicMessageTest;
 import org.eclipse.sirius.tests.swtbot.sequence.SequenceDestroyMessageMoveTest;
@@ -149,6 +149,8 @@ public class SequenceSwtBotTestSuite extends TestCase {
         suite.addTestSuite(ExternalModificationsTests.class);
         suite.addTestSuite(FoundLostMessageTests.class);
         suite.addTestSuite(SequenceSpaceTest.class);
+        suite.addTestSuite(RefreshLayoutScopeTests.class);
+        suite.addTestSuite(InstanceRoleOrderingTests.class);
         // suite.addTestSuite(ContextMenuInDiagramTest.class);
     }
 
@@ -204,14 +206,12 @@ public class SequenceSwtBotTestSuite extends TestCase {
             suite.addTestSuite(CombinedFragmentsOperandOverlapTests.class);
             suite.addTestSuite(StateBasicTests.class);
             suite.addTestSuite(PunctualStateTests.class);
-            suite.addTestSuite(RefreshLayoutNotExecutedOnNoSequenceChangesTests.class);
             suite.addTestSuite(StateNoMessageTests.class);
             suite.addTestSuite(ComplexInOutCombinedFragmentTest.class);
             suite.addTestSuite(ObservationPointTests.class);
             suite.addTestSuite(ActionDisabledOnSequenceDiagramTest.class);
             suite.addTestSuite(ActionDisabledOnExtendedMessagesTest.class);
             suite.addTestSuite(FrameReparentTest.class);
-            suite.addTestSuite(InstanceRoleOrderingTests.class);
             suite.addTestSuite(HeaderSequenceDiagramTests.class);
             suite.addTestSuite(SequenceExecutionBasicAndReturnMessageTest.class);
             suite.addTestSuite(ExecutionMoveTests.class);
