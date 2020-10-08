@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -11,12 +11,16 @@
 package org.eclipse.sirius.diagram.sequence.business.internal.refresh;
 
 import java.util.Collection;
+import java.util.Collections;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
@@ -30,18 +34,24 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import com.google.common.base.Predicate;
 
 /**
- * Default refresh layout scope for sequence diagram. This predicate decides
- * whether or not we need to refresh the graphical layout, i.e. launch a
- * non-packing layout
+ * Default refresh layout scope for sequence diagram. This predicate decides whether or not we need to refresh the
+ * graphical layout, i.e. launch a non-packing layout
  * 
  * @author mporhel
  */
 public class RefreshLayoutScope implements Predicate<Notification> {
 
+    private final Diagram diagram;
+
+    private final DDiagram dDiagram;
+
+    private final EObject semanticElement;
+
     private final Predicate<Notification> isLayoutConstraintNotationChange = new Predicate<Notification>() {
         Object[] features = new Object[] { NotationPackage.eINSTANCE.getRelativeBendpoints_Points(), NotationPackage.eINSTANCE.getLocation_Y(), NotationPackage.eINSTANCE.getLocation_X(),
                 NotationPackage.eINSTANCE.getSize_Width(), NotationPackage.eINSTANCE.getSize_Height(), };
 
+        @Override
         public boolean apply(Notification input) {
             boolean isLayout = false;
             Object feature = input.getFeature();
@@ -59,6 +69,7 @@ public class RefreshLayoutScope implements Predicate<Notification> {
     private final Predicate<Notification> isSructuralNotationChange = new Predicate<Notification>() {
         int[] types = new int[] { Notification.ADD, Notification.ADD_MANY, Notification.MOVE, Notification.REMOVE, Notification.REMOVE_MANY };
 
+        @Override
         public boolean apply(Notification input) {
             return isStructural(input.getEventType());
         }
@@ -73,20 +84,33 @@ public class RefreshLayoutScope implements Predicate<Notification> {
         }
     };
 
+    /**
+     * Constructor.
+     * 
+     * @param notationDiagram
+     *            the diagram of interest.
+     */
+    public RefreshLayoutScope(Diagram notationDiagram) {
+        this.diagram = notationDiagram;
+        this.dDiagram = diagram != null ? (DDiagram) diagram.getElement() : null;
+        this.semanticElement = dDiagram instanceof DSemanticDiagram ? ((DSemanticDiagram) dDiagram).getTarget() : null;
+    }
+
     @Override
     public boolean apply(Notification input) {
-        return !input.isTouch() && needLayout(input);
+        boolean validScopeContext = diagram != null && !diagram.eIsProxy();
+        validScopeContext = validScopeContext && dDiagram != null && !dDiagram.eIsProxy();
+        validScopeContext = validScopeContext && semanticElement != null && !semanticElement.eIsProxy();
+        return validScopeContext && !input.isTouch() && needLayout(input);
     }
 
     /**
-     * Sequence layout must be triggered only if it is a change about sequence
-     * related GMF notation model or a workspace image set on viewpoint model
-     * about a sequence element.
+     * Sequence layout must be triggered only if it is a change about sequence related GMF notation model or a workspace
+     * image set on viewpoint model about a sequence element.
      * 
      * @param notification
      *            the change to analyze
-     * @return true if it is a change which need sequence layout, false
-     *         otherwise
+     * @return true if it is a change which need sequence layout, false otherwise
      */
     private boolean needLayout(Notification notification) {
         if (isSequenceChange(notification)) {
@@ -103,54 +127,51 @@ public class RefreshLayoutScope implements Predicate<Notification> {
     private boolean isSequenceElementChange(Notification notification) {
         boolean isSequenceElement = false;
         Object notifier = notification.getNotifier();
-        View view = getView(notifier);
-        isSequenceElement = view != null && ISequenceElementAccessor.isPartOfSequenceElement(view);
+        View notifierView = getView(notifier);
+        isSequenceElement = notifierView != null && ISequenceElementAccessor.isPartOfSequenceElement(notifierView) && shouldTriggerLayoutForChangeOn(notifierView.getDiagram());
         if (isSequenceElement) {
-            Object value = getValue(notification);
-            if (value != null) {
+            Collection<?> values = getValues(notification);
+            if (values != null) {
                 boolean valueIsSequenceElt = false;
-                if (value instanceof EObject) {
-                    view = getView(value);
-                    valueIsSequenceElt = view == null || ISequenceElementAccessor.isPartOfSequenceElement(view);
-                } else if (value instanceof Collection<?>) {
-                    Collection<?> values = (Collection<?>) value;
-                    for (Object val : values) {
-                        view = getView(val);
-                        if (view == null || ISequenceElementAccessor.isPartOfSequenceElement(view)) {
-                            valueIsSequenceElt = true;
-                            break;
-                        }
+                for (Object val : values) {
+                    View valueView = getView(val);
+                    if (valueView == null || valueView == notifierView || ISequenceElementAccessor.isPartOfSequenceElement(valueView)) {
+                        valueIsSequenceElt = true;
+                        break;
                     }
                 }
                 isSequenceElement = valueIsSequenceElt;
             }
         }
         return isSequenceElement;
+
     }
 
-    private Object getValue(Notification notification) {
-        Object value = null;
+    private Collection<?> getValues(Notification notification) {
+        Collection<?> values = null;
         Object newValue = notification.getNewValue();
-        if (newValue instanceof EObject || newValue instanceof Collection<?>) {
-            value = newValue;
+        if (newValue instanceof EObject) {
+            values = Collections.singletonList(newValue);
+        } else if (newValue instanceof Collection<?>) {
+            values = (Collection<?>) newValue;
         } else {
             Object oldValue = notification.getOldValue();
-            if (oldValue instanceof EObject || oldValue instanceof Collection<?>) {
-                value = oldValue;
+            if (oldValue instanceof EObject) {
+                values = Collections.singletonList(oldValue);
+            } else if (oldValue instanceof Collection<?>) {
+                values = (Collection<?>) oldValue;
             }
         }
-        return value;
+        return values;
     }
 
-    private View getView(Object notifier) {
+    private View getView(Object obj) {
         View view = null;
-        if (notifier instanceof EObject) {
-            if (notifier instanceof View) {
-                view = (View) notifier;
-            } else if (((EObject) notifier).eContainer() instanceof View) {
-                // Needed for GMF Style and LayoutConstraint
-                view = (View) ((EObject) notifier).eContainer();
-            }
+        if (obj instanceof View) {
+            view = (View) obj;
+        } else if (obj instanceof EObject && ((EObject) obj).eContainer() instanceof View) {
+            // Needed for GMF Style and LayoutConstraint
+            view = (View) ((EObject) obj).eContainer();
         }
         return view;
     }
@@ -176,10 +197,12 @@ public class RefreshLayoutScope implements Predicate<Notification> {
         boolean wkpImageCustomization = false;
         boolean wkpImageDeCustomization = false;
 
-        if (notification.getEventType() == Notification.SET && DiagramPackage.eINSTANCE.getDNode_OwnedStyle().equals(notification.getFeature()) && hasSequenceMapping(notification.getNotifier())) {
+        Object notifier = notification.getNotifier();
+        if (notification.getEventType() == Notification.SET && DiagramPackage.eINSTANCE.getDNode_OwnedStyle().equals(notification.getFeature()) && hasSequenceMapping(notifier)) {
             newStyle = true;
-        } else if (ViewpointPackage.eINSTANCE.getCustomizable_CustomFeatures().equals(notification.getFeature()) && notification.getNotifier() instanceof WorkspaceImage) {
-            WorkspaceImage workspaceImage = (WorkspaceImage) notification.getNotifier();
+        } else if (ViewpointPackage.eINSTANCE.getCustomizable_CustomFeatures().equals(notification.getFeature()) && notifier instanceof WorkspaceImage
+                && hasSequenceMapping(((WorkspaceImage) notifier).eContainer())) {
+            WorkspaceImage workspaceImage = (WorkspaceImage) notifier;
             wkpImageCustomization = !workspaceImage.getCustomFeatures().isEmpty();
             wkpImageDeCustomization = !wkpImageCustomization;
         }
@@ -190,8 +213,28 @@ public class RefreshLayoutScope implements Predicate<Notification> {
     private boolean hasSequenceMapping(Object notifier) {
         if (notifier instanceof DDiagramElement) {
             DDiagramElement dde = (DDiagramElement) notifier;
-            return AbstractNodeEvent.viewpointElementPredicate().apply(dde) || EndOfLife.viewpointElementPredicate().apply(dde) || InstanceRole.viewpointElementPredicate().apply(dde);
+            boolean hasSequenceMapping = AbstractNodeEvent.viewpointElementPredicate().apply(dde) || EndOfLife.viewpointElementPredicate().apply(dde)
+                    || InstanceRole.viewpointElementPredicate().apply(dde);
+            return hasSequenceMapping && shouldTriggerLayoutForChangeOn(dde.getParentDiagram());
         }
         return false;
+    }
+
+    private boolean shouldTriggerLayoutForChangeOn(Diagram impactedDiagram) {
+        boolean needsLayoutOnCurrentDiagram = impactedDiagram == diagram;
+        if (!needsLayoutOnCurrentDiagram && impactedDiagram != null) {
+            EObject element = impactedDiagram.getElement();
+            needsLayoutOnCurrentDiagram = element instanceof DDiagram && shouldTriggerLayoutForChangeOn((DDiagram) element);
+        }
+        return needsLayoutOnCurrentDiagram;
+    }
+
+    private boolean shouldTriggerLayoutForChangeOn(DDiagram impactedDDiagram) {
+        boolean needsLayoutOnCurrentDiagram = impactedDDiagram == dDiagram;
+        if (!needsLayoutOnCurrentDiagram && impactedDDiagram instanceof DSemanticDiagram) {
+            needsLayoutOnCurrentDiagram = semanticElement == ((DSemanticDiagram) impactedDDiagram).getTarget();
+        }
+
+        return needsLayoutOnCurrentDiagram;
     }
 }

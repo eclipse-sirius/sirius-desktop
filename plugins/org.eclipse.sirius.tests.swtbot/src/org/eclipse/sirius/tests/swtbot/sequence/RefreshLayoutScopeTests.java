@@ -19,6 +19,7 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.TextEditPart;
+import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.refresh.RefreshLayoutScope;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
@@ -27,11 +28,15 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
+import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckToolIsActivated;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 
 /**
  * Test non sequence changes do not trigger sequence layout.
@@ -41,7 +46,7 @@ import org.eclipse.swtbot.swt.finder.waits.ICondition;
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 @SuppressWarnings("restriction")
-public class RefreshLayoutNotExecutedOnNoSequenceChangesTests extends AbstractSiriusSwtBotGefTestCase {
+public class RefreshLayoutScopeTests extends AbstractSiriusSwtBotGefTestCase {
 
     private static final String PATH = "/data/unit/sequence/455443/";
 
@@ -70,13 +75,12 @@ public class RefreshLayoutNotExecutedOnNoSequenceChangesTests extends AbstractSi
 
         maximizeEditor(editor);
 
-        refreshLayoutScopeAsserter = new RefreshLayoutScopeAsserter(localSession.getOpenedSession().getTransactionalEditingDomain());
+        refreshLayoutScopeAsserter = new RefreshLayoutScopeAsserter(localSession.getOpenedSession().getTransactionalEditingDomain(), editor.getDiagramEditPart().getDiagramView());
 
     }
 
     /**
-     * Test that creation of a GMF NoteAttachement on sequence diagram does not
-     * trigger sequence refresh layout.
+     * Test that creation of a GMF NoteAttachement on sequence diagram does not trigger sequence refresh layout.
      */
     public void testGMFNoteAttachementOnSequenceDiagramDoesNotTriggerRefreshLayout() {
         Point creationLocation = new Point(700, 300);
@@ -96,27 +100,61 @@ public class RefreshLayoutNotExecutedOnNoSequenceChangesTests extends AbstractSi
     }
 
     /**
-     * Test that creation and change of a GMF Note on sequence diagram does not
-     * trigger sequence refresh layout.
+     * Test that creation and change of a GMF Note on sequence diagram does not trigger sequence refresh layout.
      */
     public void testGMFNoteOnSequenceDiagramDoesNotTriggerRefreshLayout() {
         testNodeOnSequenceDiagramDoesNotTriggerRefreshLayout("Note", NoteEditPart.class);
     }
 
     /**
-     * Test that creation and change of a GMF Text on sequence diagram does not
-     * trigger sequence refresh layout.
+     * Test that creation and change of a GMF Text on sequence diagram does not trigger sequence refresh layout.
      */
     public void testGMFTextCreationOnSequenceDiagramDoesNotTriggerRefreshLayout() {
         testNodeOnSequenceDiagramDoesNotTriggerRefreshLayout("Text", TextEditPart.class);
     }
 
     /**
-     * Test that creation and change of a Viewpoint Node on sequence diagram
-     * does not trigger sequence refresh layout.
+     * Test that creation and change of a Viewpoint Node on sequence diagram does not trigger sequence refresh layout.
      */
     public void testViewpointNodeCreationOnSequenceDiagramDoesNotTriggerRefreshLayout() {
         testNodeOnSequenceDiagramDoesNotTriggerRefreshLayout("EClass", DNodeEditPart.class);
+    }
+
+    /**
+     * Test that modification of a Sequence Diagram which triggers the sequence refresh layout of this sequence diagram
+     * does not trigger the layout on other sequence diagrams.
+     */
+    public void testModificationOnSequenceDiagramDoesNotTriggerRefreshLayoutOnOtherSequenceDiagram() {
+
+        SWTBotSiriusDiagramEditor editorOnOtherInyteractionToModify = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Sequence Diagram on Interaction",
+                "Sequence Diagram on otherInteraction", DDiagram.class);
+
+        maximizeEditor(editorOnOtherInyteractionToModify);
+        RefreshLayoutScopeAsserter diagramOnOtherInteractionRefreshLayoutScopeAsserter = new RefreshLayoutScopeAsserter(localSession.getOpenedSession().getTransactionalEditingDomain(),
+                editorOnOtherInyteractionToModify.getDiagramEditPart().getDiagramView());
+
+        localSession.selectView();
+        SWTBotTreeItem interactionNode = localSession.getRootSessionTreeItem().select().getNode(1).select().expand().getNode("Interaction 455443");
+        interactionNode.select();
+        UIDiagramRepresentation uiDiagramRepresentation = localSession.newDiagramRepresentation("Sequence Diagram on 455443", "Sequence Diagram on Interaction").on(interactionNode)
+                .withName("Sequence Diagram to modify").ok();
+
+        SWTBotSiriusDiagramEditor editorToModify = uiDiagramRepresentation.getEditor();
+        maximizeEditor(editorToModify);
+        RefreshLayoutScopeAsserter modifiedDiagramRefreshLayoutScopeAsserter = new RefreshLayoutScopeAsserter(localSession.getOpenedSession().getTransactionalEditingDomain(),
+                editorToModify.getDiagramEditPart().getDiagramView());
+
+        ICondition done = new CheckToolIsActivated(editorToModify, InteractionsConstants.EXECUTION_TOOL_ID);
+        editorToModify.activateTool(InteractionsConstants.EXECUTION_TOOL_ID);
+        bot.waitUntil(done);
+        done = new OperationDoneCondition();
+        editorToModify.click(770, 230);
+        bot.waitUntil(done);
+
+        assertTrue("Layout refresh must be triggered on modified Sequence diagram.", modifiedDiagramRefreshLayoutScopeAsserter.refreshLayoutScopeApply());
+        assertTrue("Layout refresh must be triggered on Sequence diagram on the same interaction.", refreshLayoutScopeAsserter.refreshLayoutScopeApply());
+        assertFalse("Layout refresh must not be triggered on Sequence diagram which has another interaction as semantic model.",
+                diagramOnOtherInteractionRefreshLayoutScopeAsserter.refreshLayoutScopeApply());
     }
 
     private void testNodeOnSequenceDiagramDoesNotTriggerRefreshLayout(String toolToCreateNode, Class<? extends EditPart> typeOfEditPartToCreate) {
@@ -151,12 +189,13 @@ public class RefreshLayoutNotExecutedOnNoSequenceChangesTests extends AbstractSi
 
     private static class RefreshLayoutScopeAsserter extends ResourceSetListenerImpl {
 
-        private RefreshLayoutScope refreshLayoutScope = new RefreshLayoutScope();
+        private RefreshLayoutScope refreshLayoutScope;
 
         private boolean refreshLayoutScopeApply;
 
-        public RefreshLayoutScopeAsserter(TransactionalEditingDomain domain) {
+        public RefreshLayoutScopeAsserter(TransactionalEditingDomain domain, Diagram diagramView) {
             domain.addResourceSetListener(this);
+            refreshLayoutScope = new RefreshLayoutScope(diagramView);
         }
 
         @Override
@@ -165,8 +204,8 @@ public class RefreshLayoutNotExecutedOnNoSequenceChangesTests extends AbstractSi
             for (Notification notification : event.getNotifications()) {
                 if (refreshLayoutScope.apply(notification)) {
                     refreshLayoutScopeApply = true;
+                    break;
                 }
-                break;
             }
         }
 
