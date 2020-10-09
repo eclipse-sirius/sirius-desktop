@@ -40,6 +40,7 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
@@ -263,6 +264,38 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         assertEquals("The Text should have the same size before and after the arrange.", initialTextBounds.getSize(), currentTextBounds.getSize());
     }
 
+    /**
+     * Check that the height of a ListContainer is sufficient to display the list items (when list items are only icons
+     * without text).
+     */
+    public void testListContainerWithIconListItemsLayout() {
+        openDiagram("diagramWithListWithIconListItems");
+
+        // Check for a list in the diagram
+        checkForListContainerWithIconListItems("L_MyClass1");
+        // Check for a list in a container
+        checkForListContainerWithIconListItems("MyClass1");
+    }
+
+    private void checkForListContainerWithIconListItems(String listName) {
+        Optional<DDiagramElement> dde = diagram.getDiagramElements().stream().filter(ode -> ode.getName().equals(listName)).findFirst();
+        assertTrue("The diagram should have a node named \"" + listName + "\".", dde.isPresent());
+        IGraphicalEditPart editPart = getEditPart(dde.get());
+        assertTrue("The node for \"" + listName + "\" should be a AbstractDiagramListEditPart but was a " + editPart.getClass().getSimpleName(), editPart instanceof AbstractDiagramListEditPart);
+
+        assertEquals("Wrong number of list items, the list should contain 3 list items.", 3, ((DNodeList) dde.get()).getOwnedElements().stream().count());
+
+        Dimension listItemSize = getEditPart(((DNodeList) dde.get()).getOwnedElements().get(0)).getFigure().getSize();
+
+        // Launch an arrange all
+        arrangeAll((DiagramEditor) editorPart);
+
+        Dimension listSize = editPart.getFigure().getSize();
+
+        assertTrue("The height of the list should be at least bigger that thrice the size of a list item + 20 pixels for the title. Expected more than " + (20 + (3 * listItemSize.height()))
+                + " but was "
+                + listSize.height(), listSize.height() > (20 + (3 * listItemSize.height())));
+    }
     /**
      * Check that the size of a ListContainer is OK:
      * <UL>
