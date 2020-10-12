@@ -157,6 +157,19 @@ public final class Messages {
     @TranslatableMessage
     public static String AddSemanticResourceAction_title;
 
+    @TranslatableMessage
+    public static String AnalysisSelectorFilteredItemsSelectionDialog_helpMessage;
+
+    @TranslatableMessage
+    public static String AnalysisSelectorFilteredItemsSelectionDialog_defaultHeader;
+
+    @TranslatableMessage
+    public static String AnalysisSelectorFilteredItemsSelectionDialog_labelProviderDefault;
+
+    @TranslatableMessage
+    public static String AnalysisSelectorFilteredItemsSelectionDialog_labelProviderLocal;
+
+    @TranslatableMessage
     public static String AskSessionOpeningRunnable_title;
 
     @TranslatableMessage
@@ -622,6 +635,9 @@ public final class Messages {
     public static String MoveRepresentationAction_text;
 
     @TranslatableMessage
+    public static String MoveRepresentationAction_label;
+
+    @TranslatableMessage
     public static String NameAndLocationWizardPage_title;
 
     @TranslatableMessage
@@ -1040,6 +1056,21 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SmartDialogAnalysisSelector_title;
+
+    @TranslatableMessage
+    public static String SmartDialogAnalysisSelector_otherFragments;
+
+    @TranslatableMessage
+    public static String SmartDialogAnalysisSelector_titleWithRepresentationName;
+
+    @TranslatableMessage
+    public static String SmartDialogAnalysisSelector_messageWithRepresentationName;
+
+    @TranslatableMessage
+    public static String SmartDialogAnalysisSelector_titleWithoutRepresentationName;
+
+    @TranslatableMessage
+    public static String SmartDialogAnalysisSelector_messageWithoutRepresentationName;
 
     @TranslatableMessage
     public static String SpecificEditorInputTranformer_defaultFileName;

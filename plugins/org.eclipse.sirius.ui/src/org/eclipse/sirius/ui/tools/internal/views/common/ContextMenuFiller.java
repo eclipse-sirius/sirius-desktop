@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -58,6 +58,8 @@ import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionStatus;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.ecore.extender.business.internal.permission.ReadOnlyPermissionAuthority;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.session.IEditingSession;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
@@ -86,7 +88,6 @@ import org.eclipse.sirius.ui.tools.internal.views.common.item.ControlledRoot;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.RepresentationItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.navigator.SiriusCommonLabelProvider;
 import org.eclipse.sirius.ui.tools.internal.views.modelexplorer.extension.IContextMenuActionProvider;
-import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.provider.Messages;
@@ -312,8 +313,21 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
                     if (originResources.size() == 1) {
                         targetResources.removeAll(originResources);
                     }
+                    // The move action will be available only if the selected representation can be edited
+                    boolean locked = false;
+                    for (DRepresentationDescriptor repDesc : reachableRepresentations) {
+                        if (!((ReadOnlyPermissionAuthority) PermissionAuthorityRegistry.getDefault().getPermissionAuthority(repDesc)).canEditInstance(repDesc)) {
+                            locked = true;
+                            break;
+                        } else if (!((ReadOnlyPermissionAuthority) PermissionAuthorityRegistry.getDefault().getPermissionAuthority(repDesc.eContainer())).canEditInstance(repDesc.eContainer())) {
+                            locked = true;
+                            break;
+                        }
+                    }
                     if (targetResources.size() > 0) {
-                        computeMoveMenu(menu, session, reachableRepresentations, targetResources);
+                        Action buildMoveRepresentationsActions = buildMoveRepresentationsActions(session, reachableRepresentations);
+                        buildMoveRepresentationsActions.setEnabled(!locked);
+                        addActionToMenu(menu, GROUP_REORGANIZE, buildMoveRepresentationsActions);
                     }
                     addActionToMenu(menu, GROUP_REORGANIZE, buildExtractRepresentationsAction(session, reachableRepresentations));
                 }
@@ -533,22 +547,6 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
         }
     }
 
-    /**
-     * @param menu
-     * @param session
-     * @param movableRepresentations
-     * @param targetResources
-     */
-    private void computeMoveMenu(IMenuManager menu, final Session session, final Collection<DRepresentationDescriptor> movableRepresentations, final Collection<Resource> targetResources) {
-        final MenuManager moveMenu = new MenuManager(Messages.ContextMenuFiller_move, "1"); //$NON-NLS-1$
-        for (final Resource target : targetResources) {
-            if (!target.getContents().isEmpty() && target.getContents().get(0) instanceof DAnalysis) {
-                moveMenu.add(buildMoveRepresentationsActions(session, movableRepresentations, (DAnalysis) target.getContents().get(0)));
-            }
-        }
-        addContributionToMenu(menu, GROUP_REORGANIZE, moveMenu);
-    }
-
     private void computeContextMenuContribution(IMenuManager menu, ISelection selection) {
         if (ViewHelper.INSTANCE instanceof ViewHelperImpl) {
             final Collection<IContextMenuActionProvider> providers = ((ViewHelperImpl) ViewHelper.INSTANCE).getContextMenuActionsProviders();
@@ -585,8 +583,8 @@ public class ContextMenuFiller implements IMenuListener, IMenuListener2 {
         return new ExtractRepresentationAction(session, movableRepresentations);
     }
 
-    private Action buildMoveRepresentationsActions(final Session session, final Collection<DRepresentationDescriptor> movableRepresentations, final DAnalysis targetAnalysis) {
-        return new MoveRepresentationAction(session, targetAnalysis, movableRepresentations);
+    private Action buildMoveRepresentationsActions(final Session session, final Collection<DRepresentationDescriptor> movableRepresentations) {
+        return new MoveRepresentationAction(session, movableRepresentations);
     }
 
     private Action buildViewpointsSelectionDialogAction(final Session session) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015-2020 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -247,16 +247,14 @@ public class LockedRepresentationContainerTest extends AbstractSiriusSwtBotGefTe
         DAnalysis slaveAnalysis = ViewpointFactory.eINSTANCE.createDAnalysis();
         domain.getCommandStack().execute(new PrepareNewAnalysisCommand(domain, airdResource, slaveAnalysis, session));
 
-        final String moveAction = "move to " + airdUri.toString();
-
         // Before locking the representation container
-        assertTrue("The action '" + moveAction + "' should be enabled", getSelectedDiagramNode().contextMenu(MOVE_ACTION).menu(moveAction).isEnabled());
+        assertTrue("The action 'Move' should be enabled", getSelectedDiagramNode().contextMenu(MOVE_ACTION).isEnabled());
 
         // Lock the representation container
         lockRepresentationContainer();
 
         // After locking the representation container
-        assertFalse("The action '" + moveAction + "' should be disabled when the representation container is locked", getSelectedDiagramNode().contextMenu(MOVE_ACTION).menu(moveAction).isEnabled());
+        assertFalse("The action 'Move' should be disabled when the representation container is locked", getSelectedDiagramNode().contextMenu(MOVE_ACTION).isEnabled());
     }
 
     /**

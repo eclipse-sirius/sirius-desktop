@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008-2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,26 +12,27 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.api.session.analysis;
 
+import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.emf.transaction.RunnableWithResult;
-import org.eclipse.jface.dialogs.IDialogConstants;
-import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.window.Window;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
+import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.ui.tools.api.dialogs.AnalysisSelectorFilteredItemsSelectionDialog;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.provider.Messages;
-import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
-import org.eclipse.swt.graphics.Image;
-import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
-import org.eclipse.ui.IDecoratorManager;
-import org.eclipse.ui.PlatformUI;
-import org.eclipse.ui.dialogs.ElementListSelectionDialog;
+import org.eclipse.swt.widgets.Shell;
 
 /**
  * A dialog which select smartly analysis.
@@ -39,15 +40,25 @@ import org.eclipse.ui.dialogs.ElementListSelectionDialog;
  * @author mchauvin
  */
 public class SmartDialogAnalysisSelector implements DAnalysisSelector {
+    
+    /**
+     * The dialog that displays the analysis where the representation will be placed.
+     */
+    protected AnalysisSelectorFilteredItemsSelectionDialog dialog;
 
     @Override
     public DAnalysis selectSmartlyAnalysisForAddedResource(final Resource resource, final Collection<DAnalysis> allAnalysis) {
-        return selectSmartlyAnalysis(allAnalysis);
+        return selectSmartlyAnalysis(allAnalysis, null);
     }
 
     @Override
     public DAnalysis selectSmartlyAnalysisForAddedRepresentation(final DRepresentation representation, final Collection<DAnalysis> allAnalysis) {
-        return selectSmartlyAnalysis(allAnalysis);
+        DAnalysis selectSmartlyAnalysis = selectSmartlyAnalysis(allAnalysis, representation.getName());
+        if (selectSmartlyAnalysis == null) {
+            DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representation).getRepresentationDescriptor();
+            selectSmartlyAnalysis = (DAnalysis) new EObjectQuery(representationDescriptor).getFirstAncestorOfType(ViewpointPackage.eINSTANCE.getDAnalysis()).get();
+        }
+        return selectSmartlyAnalysis;
     }
 
     /**
@@ -57,49 +68,35 @@ public class SmartDialogAnalysisSelector implements DAnalysisSelector {
      *            all available analysis
      * @return selected analysis
      */
-    private DAnalysis selectSmartlyAnalysis(final Collection<DAnalysis> allAnalysis) {
+    private DAnalysis selectSmartlyAnalysis(final Collection<DAnalysis> allAnalysis, String representationName) {
 
-        final ILabelProvider provider = new AdapterFactoryLabelProvider(SiriusEditPlugin.getPlugin().getItemProvidersAdapterFactory()) {
-            private IDecoratorManager decoratorManager = PlatformUI.getWorkbench().getDecoratorManager();
 
-            @Override
-            public String getText(final Object object) {
-                if (object instanceof DAnalysis) {
-                    return ((DAnalysis) object).eResource().getURI().toString();
-                }
-                return super.getText(object);
-            }
-
-            @Override
-            public Image getImage(Object object) {
-                return decoratorManager.decorateImage(super.getImage(object), object);
-            }
-        };
         RunnableWithResult<Object> runnable = new RunnableWithResult.Impl<Object>() {
 
             @Override
             public void run() {
-                final ElementListSelectionDialog dialog = new ElementListSelectionDialog(Display.getDefault().getActiveShell(), provider) {
+                
+                dialog = createAnalysisSelectorDialog(Display.getDefault().getActiveShell(), allAnalysis.iterator().next(), allAnalysis, new ArrayList<>(allAnalysis));
+                dialog.setSeparatorLabel(Messages.SmartDialogAnalysisSelector_otherFragments);
+                if (representationName != null && !representationName.isEmpty()) {
+                    dialog.setTitle(MessageFormat.format(Messages.SmartDialogAnalysisSelector_titleWithRepresentationName, representationName));
+                    dialog.setMessage(MessageFormat.format(Messages.SmartDialogAnalysisSelector_messageWithRepresentationName, representationName));
+                } else {
+                    dialog.setTitle(Messages.SmartDialogAnalysisSelector_titleWithoutRepresentationName);
+                    dialog.setMessage(Messages.SmartDialogAnalysisSelector_messageWithoutRepresentationName);
+                }
 
-                    /**
-                     * do not allow cancel {@inheritDoc}
-                     *
-                     * @see org.eclipse.ui.dialogs.SelectionDialog#createButtonsForButtonBar(org.eclipse.swt.widgets.Composite)
-                     */
-                    @Override
-                    protected void createButtonsForButtonBar(final Composite parent) {
-                        createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
-                    }
+                if (allAnalysis.iterator().next() != null) {
+                    dialog.setInitialElementSelections(Collections.singletonList(allAnalysis.iterator().next()));
+                }
 
-                };
-
-                dialog.setTitle(Messages.SmartDialogAnalysisSelector_title);
-                dialog.setMessage(Messages.SmartDialogAnalysisSelector_message);
-                dialog.setElements(allAnalysis.toArray());
                 if (dialog.open() == Window.OK) {
                     if (dialog.getFirstResult() != null) {
                         setResult(dialog.getFirstResult());
                     }
+                } else {
+                    // Box closed by cancel, ESC key ...
+                    setResult(null);
                 }
             }
         };
@@ -108,6 +105,24 @@ public class SmartDialogAnalysisSelector implements DAnalysisSelector {
         if (runnable.getResult() instanceof DAnalysis) {
             return (DAnalysis) runnable.getResult();
         }
-        return (DAnalysis) allAnalysis.toArray()[0];
+        return null;
     }
+
+    /**
+     * Initializes the dialog that will be used for selecting the targeted {@link DAnalysis}.
+     * 
+     * @param shell
+     *            shell to parent the dialog on
+     * @param bestCandidate
+     *            the best candidate that will be selected by default
+     * @param allAnalysis
+     *            all the analysis available
+     * @param bestCandidates
+     *            list of best candidates
+     * @return the dialog that will be used for selecting the targeted {@link DAnalysis}
+     */
+    protected AnalysisSelectorFilteredItemsSelectionDialog createAnalysisSelectorDialog(Shell shell, DAnalysis bestCandidate, Collection<DAnalysis> allAnalysis, List<DAnalysis> bestCandidates) {
+        return new AnalysisSelectorFilteredItemsSelectionDialog(Display.getDefault().getActiveShell(), allAnalysis.iterator().next(), allAnalysis, new ArrayList<>(allAnalysis));
+    }
+
 }
