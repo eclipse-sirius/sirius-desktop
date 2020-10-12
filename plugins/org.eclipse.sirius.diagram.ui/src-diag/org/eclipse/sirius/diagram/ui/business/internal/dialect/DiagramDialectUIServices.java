@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.ui.business.internal.dialect;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -303,6 +304,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
                     }
                     if (!display.isDisposed()) {
                         display.syncExec(new Runnable() {
+                            @Override
                             public void run() {
                                 if (!PlatformUI.getWorkbench().isClosing()) {
                                     ((DialectEditor) editorPart).preClose();
@@ -457,7 +459,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
                     prefs.setValue(SiriusDiagramUiPreferencesKeys.PREF_PRINT_DECORATION.name(), exportDecorations);
 
                     final DiagramEditPart diagramEditPart = tool.createDiagramEditPart(diagram, shell, PreferencesHint.USE_DEFAULTS);
-
                     try {
                         /* refresh to avoid blank images */
                         diagramEditPart.getRoot().refresh();
@@ -480,7 +481,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
 
                         // We finally ensure that the image has been created
                         if (!new File(correctPath.toOSString()).exists()) {
-                            throw new CoreException(new Status(IStatus.ERROR, SiriusPlugin.ID, MessageFormat.format(Messages.DiagramDialectUIServices_exportedDiagramImageCreationError, correctPath)));
+                            throw new FileNotFoundException(MessageFormat.format(Messages.DiagramDialectUIServices_exportedDiagramImageCreationError, correctPath));
                         }
                     } catch (final CoreException exception) {
                         if (exception instanceof SizeTooLargeException) {
@@ -488,8 +489,10 @@ public class DiagramDialectUIServices implements DialectUIServices {
                         } else if (exception.getStatus() != null && exception.getStatus().getException() instanceof SWTException) {
                             /* Case that can occurs on Windows. */
                             throw new SizeTooLargeException(new Status(IStatus.ERROR, SiriusPlugin.ID, representationDescriptor.getName()));
+                        } else {
+                            SiriusPlugin.getDefault().error(MessageFormat.format(Messages.DiagramDialectUIServices_exportedDiagramImageCreationError, correctPath), exception);
+                            throw new WrappedException(exception.getMessage(), exception);
                         }
-                        SiriusPlugin.getDefault().error(MessageFormat.format(Messages.DiagramDialectUIServices_exportedDiagramImageCreationError, correctPath), exception);
                     } catch (final ArrayIndexOutOfBoundsException e) {
                         /*
                          * On linux and when using Cairo it might happen that the image creation fails with an
@@ -504,9 +507,7 @@ public class DiagramDialectUIServices implements DialectUIServices {
                         prefs.setValue(SiriusDiagramUiPreferencesKeys.PREF_PRINT_DECORATION.name(), printDecoration);
 
                         diagramEditPart.deactivate();
-                        // Memory leak : also disposing the
-                        // DiagramGraphicalViewer associated to this
-                        // DiagramEditPart
+                        // Memory leak : also disposing the DiagramGraphicalViewer associated to this DiagramEditPart
                         diagramEditPart.getViewer().flush();
                         diagramEditPart.getViewer().getEditDomain().getCommandStack().flush();
                         diagramEditPart.getViewer().getControl().dispose();
@@ -519,9 +520,13 @@ public class DiagramDialectUIServices implements DialectUIServices {
         // The GMF refresh was added because of a possible ClassCastException during the diagram edit parts creation.
         // Since we decide to avoid any model modification during the export as image action, we catch this possible
         // exception here.
-        catch (ClassCastException e) {
+        catch (ClassCastException | NullPointerException e) {
+            SiriusEditPlugin.getPlugin().getLog().error(MessageFormat.format(Messages.DiagramDialectUIServices_exportedDiagramImageClassCastError, representationDescriptor.getName()), e);
             // To avoid API break, we throw an unchecked exception that need to be caught and handled by the caller.
             throw new WrappedException(MessageFormat.format(Messages.DiagramDialectUIServices_exportedDiagramImageClassCastError, representationDescriptor.getName()), e);
+        } catch (FileNotFoundException e) {
+            SiriusPlugin.getDefault().error(MessageFormat.format(Messages.DiagramDialectUIServices_exportedDiagramImageCreationError, correctPath), e);
+            throw new WrappedException(e.getMessage(), e);
         } finally {
             disposeShell(shell);
         }

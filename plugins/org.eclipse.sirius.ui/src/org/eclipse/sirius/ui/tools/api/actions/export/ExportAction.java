@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.tools.api.actions.export;
 
+import java.io.FileNotFoundException;
 import java.lang.reflect.InvocationTargetException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -27,12 +29,17 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.common.tools.api.util.FileUtil;
+import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
+import org.eclipse.sirius.ext.emf.edit.EditingDomainServices;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
 import org.eclipse.sirius.viewpoint.DRepresentation;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.provider.Messages;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.ui.actions.WorkspaceModifyOperation;
 
 /**
@@ -46,6 +53,8 @@ public class ExportAction extends WorkspaceModifyOperation {
      * Export action name.
      */
     public static final String EXPORT_DIAGRAMS_AS_IMAGES_ACTION_TITLE = Messages.ExportAction_exportDiagramsAsImagesTitle;
+
+    private static final String CR = "\n"; //$NON-NLS-1$
 
     private static final char POINT = '.';
 
@@ -187,9 +196,9 @@ public class ExportAction extends WorkspaceModifyOperation {
             }
         } else {
             // To know if error from image size to large
-            boolean errorDuringExport = false;
-            List<Throwable> tooLargemessageException = new ArrayList<Throwable>();
-            List<Throwable> otherMessageException = new ArrayList<Throwable>();
+            List<DRepresentation> representationWithSizeTooLargeException = new ArrayList<DRepresentation>();
+            List<DRepresentation> representationWithOtherException = new ArrayList<DRepresentation>();
+            List<DRepresentation> representationWithImageFileCreationError = new ArrayList<DRepresentation>();
             try {
                 for (final DRepresentation representation : dRepresentationsToExportAsImage) {
                     final IPath filePath;
@@ -221,12 +230,14 @@ public class ExportAction extends WorkspaceModifyOperation {
                             monitor.worked(1);
                         } catch (CoreException exception) {
                             if (exception instanceof SizeTooLargeException) {
-                                errorDuringExport = true;
-                                tooLargemessageException.add(exception);
+                                representationWithSizeTooLargeException.add(representation);
                             }
                         } catch (WrappedException exception) {
-                            errorDuringExport = true;
-                            otherMessageException.add(exception);
+                            if (exception.getCause() instanceof FileNotFoundException) {
+                                representationWithImageFileCreationError.add(representation);
+                            } else {
+                                representationWithOtherException.add(representation);
+                            }
                         }
                     }
                     /*
@@ -238,8 +249,8 @@ public class ExportAction extends WorkspaceModifyOperation {
                 }
 
             } finally {
-                if (errorDuringExport) {
-                    handleErrors(tooLargemessageException, otherMessageException);
+                if (!representationWithSizeTooLargeException.isEmpty() || !representationWithOtherException.isEmpty() || !representationWithImageFileCreationError.isEmpty()) {
+                    handleErrors(representationWithSizeTooLargeException, representationWithOtherException, representationWithImageFileCreationError);
                 }
             }
         }
@@ -251,28 +262,53 @@ public class ExportAction extends WorkspaceModifyOperation {
         }
     }
 
-    private void handleErrors(List<Throwable> tooLargemessageException, List<Throwable> otherMessageException) throws CoreException {
+    private void handleErrors(List<DRepresentation> representationWithSizeTooLargeException, List<DRepresentation> representationWithOtherException,
+            List<DRepresentation> representationWithImageFileCreationError) throws CoreException {
+
         // Construct message for dialog and error in error log.
         StringBuffer messageExceptionForDialog = new StringBuffer();
-        if (!tooLargemessageException.isEmpty()) {
+        messageExceptionForDialog.append(Messages.ExportAction_exportErrorReport);
+        if (!representationWithSizeTooLargeException.isEmpty()) {
+            messageExceptionForDialog.append(CR);
             messageExceptionForDialog.append(Messages.ExportAction_imagesTooLargeMessage);
         }
-        for (Throwable thr : tooLargemessageException) {
-            messageExceptionForDialog.append("\n"); //$NON-NLS-1$
-            messageExceptionForDialog.append(" - "); //$NON-NLS-1$
-            messageExceptionForDialog.append(thr.getMessage());
+        for (DRepresentation rep : representationWithSizeTooLargeException) {
+            addRepresentationInformation(messageExceptionForDialog, rep);
         }
-        for (Throwable thr : otherMessageException) {
-            if (!tooLargemessageException.isEmpty()) {
-                messageExceptionForDialog.append("\n"); //$NON-NLS-1$
-            }
-            if (otherMessageException.size() > 1) {
-                messageExceptionForDialog.append(" - "); //$NON-NLS-1$
-            }
-            messageExceptionForDialog.append(thr.getMessage());
+
+        if (!representationWithOtherException.isEmpty()) {
+            messageExceptionForDialog.append(CR);
+            messageExceptionForDialog.append(Messages.ExportAction_exportOtherError);
+        }
+        for (DRepresentation rep : representationWithOtherException) {
+            addRepresentationInformation(messageExceptionForDialog, rep);
+        }
+
+        if (!representationWithImageFileCreationError.isEmpty()) {
+            messageExceptionForDialog.append(CR);
+            messageExceptionForDialog.append(Messages.ExportAction_exportedDiagramImageCreationError);
+        }
+        for (DRepresentation rep : representationWithImageFileCreationError) {
+            addRepresentationInformation(messageExceptionForDialog, rep);
         }
         Status status = new Status(IStatus.ERROR, SiriusPlugin.ID, messageExceptionForDialog.toString());
+        SiriusEditPlugin.getPlugin().getLog().error(messageExceptionForDialog.toString());
         throw new CoreException(status);
+    }
+
+    private void addRepresentationInformation(StringBuffer messageExceptionForDialog, DRepresentation rep) {
+        messageExceptionForDialog.append(CR);
+        messageExceptionForDialog.append(" - "); //$NON-NLS-1$
+        Object description = ReflectionHelper.invokeMethodWithoutExceptionWithReturn(rep, "getDescription", new Class[] {}, new Object[] {}); //$NON-NLS-1$
+        String descriptionName = null;
+        if (description instanceof RepresentationDescription) {
+            descriptionName = ((RepresentationDescription) description).getName();
+        }
+        String semanticTargetName = null;
+        if (rep instanceof DSemanticDecorator) {
+            semanticTargetName = new EditingDomainServices().getLabelProviderText(((DSemanticDecorator) rep).getTarget());
+        }
+        messageExceptionForDialog.append(MessageFormat.format(Messages.ExportAction_representationInformation, rep.getName(), descriptionName, semanticTargetName));
     }
 
     /**

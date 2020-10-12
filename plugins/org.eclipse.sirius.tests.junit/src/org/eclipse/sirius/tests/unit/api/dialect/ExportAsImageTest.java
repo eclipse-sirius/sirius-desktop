@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -241,6 +241,37 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
     }
 
     /**
+     * Tests the export of diagrams as image with an invalid path
+     * 
+     * @throws Exception
+     */
+    public void testExportInvalidImagePath() throws Exception {
+        // The session must be close before launching the migration (see
+        // RepresentationFilesMigration.run and
+        // RepresentationFilesMigrationValidator);
+        closeSession(session);
+
+        // Migrates the session
+        runRepairProcess(SESSION_MODEL_FILENAME);
+        DRepresentation representation = getRepresentation();
+        String outputPath = "/" + TEMPORARY_PROJECT_NAME + "pipo/";
+        ExportAction exportAction = new ExportAction(session, Collections.singleton(representation), new Path(outputPath), ImageFileFormat.PNG, false, true);
+
+        try {
+            exportAction.run(new NullProgressMonitor());
+            fail("The export should fail because the path is invalid.");
+        } catch (InvocationTargetException | InterruptedException e) {
+            assertEquals(InvocationTargetException.class, e.getClass());
+            assertEquals(CoreException.class, e.getCause().getClass());
+            String badMessageError = "Bad error message: " + e.getMessage();
+            assertTrue(badMessageError, e.getMessage().contains(Messages.ExportAction_exportOtherError));
+            assertTrue(badMessageError, e.getMessage().contains(representation.getName()));
+            assertTrue(doesAnErrorOccurs());
+            errors.clear();
+        }
+    }
+
+    /**
      * Tests the export of a diagram too large to fit in the image creation buffer.
      * 
      * @throws Exception
@@ -266,15 +297,17 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
         representationsToExport.add(getRepresentation(representationName));
         ExportAction exportAction = new ExportAction(session, representationsToExport, new Path(outputPath), ImageFileFormat.PNG, false, true);
 
-        String errorMessage = Messages.ExportAction_imagesTooLargeMessage + "\n - " + representationName;
-
         try {
             exportAction.run(new NullProgressMonitor());
             fail("The export should fail because the diagram is too big.");
         } catch (InvocationTargetException | InterruptedException e) {
             assertEquals(InvocationTargetException.class, e.getClass());
             assertEquals(CoreException.class, e.getCause().getClass());
-            assertEquals(errorMessage, e.getMessage());
+            String badMessageError = "Bad error message: " + e.getMessage();
+            assertTrue(badMessageError, e.getMessage().contains(Messages.ExportAction_imagesTooLargeMessage));
+            assertTrue(badMessageError, e.getMessage().contains(representationName));
+            assertTrue(doesAnErrorOccurs());
+            errors.clear();
         }
     }
 

@@ -413,7 +413,16 @@ public final class Messages {
     public static String ExportAction_exportError;
 
     @TranslatableMessage
+    public static String ExportAction_exportedDiagramImageCreationError;
+
+    @TranslatableMessage
+    public static String ExportAction_exportErrorReport;
+
+    @TranslatableMessage
     public static String ExportAction_exportImpossibleTitle;
+
+    @TranslatableMessage
+    public static String ExportAction_exportOtherError;
 
     @TranslatableMessage
     public static String ExportAction_imagesTooLargeMessage;
@@ -423,6 +432,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ExportAction_invalidLevel;
+
+    @TranslatableMessage
+    public static String ExportAction_representationInformation;
 
     @TranslatableMessage
     public static String ExportAsImage_dialogSizeGroupName;
