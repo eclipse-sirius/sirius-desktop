@@ -140,6 +140,12 @@
 			<li><span class="label label-info">Modified</span> Upgraded ELK version from 0.6.1 to 0.7.0, see the 
 				<a href="https://projects.eclipse.org/projects/modeling.elk/releases/0.7.0">ELK documentation</a> for the list of changes in that version (and previous).
 			</li>
+			<li><span class="label label-success">Added</span> The method 
+				<code>org.eclipse.sirius.tools.api.command.ui.UICallBack.askUserToRefreshTheDiagram()</code> has been added. It is used to ask the user to refresh the representation when something wrong happens when opening the editor. This method allows to skip the UI part.
+			</li>
+			<li><span class="label label-success">Added</span> The method 
+				<code>org.eclipse.sirius.ui.business.api.dialect.DialectEditor.isLastRepresentationRefreshSucceeded()</code> to know if the last refresh done in the editor has succeeded.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.common">Changes in  
 			<code>org.eclipse.sirius.common</code>

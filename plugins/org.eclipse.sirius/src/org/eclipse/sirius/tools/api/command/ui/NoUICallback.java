@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -186,5 +186,11 @@ public class NoUICallback implements UICallBack {
     @Override
     public void askUserAndSaveMigratedSession(Session session) {
         // Do nothing
+    }
+
+    @Override
+    public boolean askUserToRefreshTheDiagram() {
+        // Do nothing
+        return false;
     }
 }

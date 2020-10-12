@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -154,8 +154,8 @@ public abstract class AbstractSWTCallback implements UICallBack {
             description += "\n\n"; //$NON-NLS-1$
         }
         description += Messages.createRepresentationInputDialog_NewRepresentationNameLabel;
-        final InputDialog askSiriusName = new InputDialog(getActiveShell(), MessageFormat.format(Messages.createRepresentationInputDialog_Title, representationDescriptionName),
-                description, defaultName, new IInputValidator() {
+        final InputDialog askSiriusName = new InputDialog(getActiveShell(), MessageFormat.format(Messages.createRepresentationInputDialog_Title, representationDescriptionName), description,
+                defaultName, new IInputValidator() {
 
                     @Override
                     public String isValid(final String newText) {
@@ -431,5 +431,11 @@ public abstract class AbstractSWTCallback implements UICallBack {
         RepresentationsFileVersionSAXParser representationsFileVersionSAXParser = new RepresentationsFileVersionSAXParser(airdResourceUri);
         Version lastMigrationVersion = RepresentationsFileMigrationService.getInstance().getLastMigrationVersion();
         return lastMigrationVersion != null && !lastMigrationVersion.equals(Version.parseVersion(representationsFileVersionSAXParser.getVersion(new NullProgressMonitor())));
+    }
+
+    @Override
+    public boolean askUserToRefreshTheDiagram() {
+        return MessageDialog.openConfirm(getActiveShell(), org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_shouldWeRefreshTitle,
+                org.eclipse.sirius.viewpoint.provider.Messages.AbstractSWTCallback_shouldWeRefreshQuestion);
     }
 }

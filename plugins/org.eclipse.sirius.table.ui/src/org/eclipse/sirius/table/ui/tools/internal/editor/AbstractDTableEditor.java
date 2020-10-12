@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -326,7 +326,14 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
 
     @Override
     protected void launchRefresh() {
-        getEditingDomain().getCommandStack().execute(new RefreshRepresentationsCommand(getEditingDomain(), new NullProgressMonitor(), getRepresentation()));
+        try {
+            getEditingDomain().getCommandStack().execute(new RefreshRepresentationsCommand(getEditingDomain(), new NullProgressMonitor(), getRepresentation()));
+            isLastRefreshSucceeded = Optional.of(Boolean.TRUE);
+        } catch (ClassCastException | NullPointerException | IllegalArgumentException | AssertionError e) {
+            TableUIPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, TableUIPlugin.ID,
+                    MessageFormat.format(org.eclipse.sirius.table.metamodel.table.provider.Messages.AbstractDTreeEditor_RepresentationRefreshFailed, getRepresentation().getName()), e));
+            isLastRefreshSucceeded = Optional.of(Boolean.FALSE);
+        }
     }
 
     @Override

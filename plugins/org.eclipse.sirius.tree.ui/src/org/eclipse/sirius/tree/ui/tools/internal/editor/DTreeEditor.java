@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,6 +27,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -291,9 +292,16 @@ public class DTreeEditor extends AbstractDTreeEditor implements org.eclipse.siri
     }
 
     private void launchRefresh(boolean loading) {
-        getEditingDomain().getCommandStack().execute(new RefreshRepresentationsCommand(getEditingDomain(), new NullProgressMonitor(), getTreeModel()));
-        if (!loading) {
-            getViewer().refresh();
+        try {
+            getEditingDomain().getCommandStack().execute(new RefreshRepresentationsCommand(getEditingDomain(), new NullProgressMonitor(), getTreeModel()));
+            if (!loading) {
+                getViewer().refresh();
+            }
+            isLastRefreshSucceeded = Optional.of(Boolean.TRUE);
+        } catch (ClassCastException | NullPointerException | IllegalArgumentException | AssertionError e) {
+            TreeUIPlugin.getPlugin().getLog()
+                    .log(new Status(IStatus.WARNING, TreeUIPlugin.ID, MessageFormat.format(Messages.DTreeEditor_RepresentationRefreshFailed, getRepresentation().getName()), e));
+            isLastRefreshSucceeded = Optional.of(Boolean.FALSE);
         }
     }
 

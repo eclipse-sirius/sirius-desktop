@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -257,4 +257,11 @@ public interface UICallBack {
      * @since 6.1.0
      */
     void askUserAndSaveMigratedSession(Session session);
+
+    /**
+     * Ask user if he wants to refresh the diagram.
+     * 
+     * @return the value provided by the user (true or false)
+     */
+    boolean askUserToRefreshTheDiagram();
 }

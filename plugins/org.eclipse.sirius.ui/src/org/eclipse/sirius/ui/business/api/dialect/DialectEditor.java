@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.api.dialect;
 
+import java.util.Optional;
+
 import org.eclipse.sirius.ui.business.api.editor.ISiriusEditor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 
@@ -65,7 +67,7 @@ public interface DialectEditor extends ISiriusEditor {
      * @since 0.9.0
      */
     DialectEditorDialogFactory getDialogFactory();
-    
+
     /**
      * Method that is called in sync when the editor is asking to be closed (the real close is done in async). This
      * allows to dispose actions, for example, as soos as the close is requested.
@@ -73,4 +75,11 @@ public interface DialectEditor extends ISiriusEditor {
     default void preClose() {
         // Do nothing by default;
     }
+
+    /**
+     * This method informs if the last representation refresh succeeded.
+     * 
+     * @return any empty optional if the representation has never been refreshed in this editor.
+     */
+    Optional<Boolean> isLastRepresentationRefreshSucceeded();
 }

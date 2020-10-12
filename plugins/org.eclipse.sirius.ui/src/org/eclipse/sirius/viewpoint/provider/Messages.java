@@ -140,6 +140,12 @@ public final class Messages {
     public static String AbstractSWTCallback_shouldRemove_title;
 
     @TranslatableMessage
+    public static String AbstractSWTCallback_shouldWeRefreshQuestion;
+
+    @TranslatableMessage
+    public static String AbstractSWTCallback_shouldWeRefreshTitle;
+
+    @TranslatableMessage
     public static String AddModelDependencyAction_error;
 
     @TranslatableMessage

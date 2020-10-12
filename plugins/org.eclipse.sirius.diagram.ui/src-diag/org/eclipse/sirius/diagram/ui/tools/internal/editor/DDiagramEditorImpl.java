@@ -93,7 +93,6 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IToolBarManager;
-import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.preference.PreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.text.AbstractInformationControlManager;
@@ -211,6 +210,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.dnd.DND;
 import org.eclipse.swt.dnd.DropTarget;
@@ -439,6 +439,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      */
     private PaletteToolChangeListener paletteToolChangeListener;
 
+    private Optional<Boolean> isLastRefreshSucceeded = Optional.empty();
+
     /**
      * Create a new instance.
      */
@@ -456,6 +458,11 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     public DDiagramEditorImpl(IOperationHistoryListener operationHistoryListener) {
         super();
         this.operationHistoryListener = operationHistoryListener;
+    }
+
+    @Override
+    public Optional<Boolean> isLastRepresentationRefreshSucceeded() {
+        return isLastRefreshSucceeded;
     }
 
     @Override
@@ -665,8 +672,9 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                 }
             }
         } catch (ClassCastException | NullPointerException | IllegalArgumentException | AssertionError e) {
-            DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, MessageFormat.format(Messages.DDiagramEditorImpl_diagramRefreshNeededMsg, e.getMessage()), e));
-            Boolean response = MessageDialog.openConfirm(parent.getShell(), Messages.DDiagramEditorImpl_diagramRefreshTitle, Messages.DDiagramEditorImpl_shouldWeRefreshQuestion);
+            DiagramUIPlugin.getPlugin().getLog().log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, e.getMessage(), e));
+
+            Boolean response = SiriusEditPlugin.getPlugin().getUiCallback().askUserToRefreshTheDiagram();
             close(false);
             if (response) {
                 launchRefresh(true);
@@ -1145,14 +1153,14 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                     Optional<DSemanticDiagram> optionalSemanticElement = getDSemanticDiagram((GraphicalEditPart) editPart);
                     if (optionalSemanticElement.isPresent() && isSemanticDiagramOK(optionalSemanticElement.get())) {
                         if (SessionManager.INSTANCE.getSession(optionalSemanticElement.get().getTarget()) != null) {
-                                /*
-                                 * The element has been deleted, we should close the editor
-                                 */
-                                myDialogFactory.editorWillBeClosedInformationDialog(getSite().getShell());
-                                close(false);
-                            }
-                            return;
+                            /*
+                             * The element has been deleted, we should close the editor
+                             */
+                            myDialogFactory.editorWillBeClosedInformationDialog(getSite().getShell());
+                            close(false);
                         }
+                        return;
+                    }
                 }
             }
 
@@ -1441,35 +1449,42 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
      *            True if this refresh is launch during the opening of the editor, false otherwise.
      */
     private void launchRefresh(boolean opening) {
-        Diagram gmfDiag = getDiagram();
-        if (gmfDiag != null) {
-            EObject eObject = gmfDiag.getElement();
+        try {
+            Diagram gmfDiag = getDiagram();
+            if (gmfDiag != null) {
+                EObject eObject = gmfDiag.getElement();
 
-            Command command = null;
-            if (eObject instanceof DSemanticDiagram) {
-                DSemanticDiagram dDiagram = (DSemanticDiagram) eObject;
+                Command command = null;
+                if (eObject instanceof DSemanticDiagram) {
+                    DSemanticDiagram dDiagram = (DSemanticDiagram) eObject;
 
-                if (opening) {
-                    CompoundCommand compoundCommand = new CompoundCommand();
+                    if (opening) {
+                        CompoundCommand compoundCommand = new CompoundCommand();
 
-                    Command refreshOnOpeningCmd = new RefreshDiagramOnOpeningCommand(getEditingDomain(), dDiagram);
-                    compoundCommand.append(refreshOnOpeningCmd);
+                        Command refreshOnOpeningCmd = new RefreshDiagramOnOpeningCommand(getEditingDomain(), dDiagram);
+                        compoundCommand.append(refreshOnOpeningCmd);
 
-                    compoundCommand.setLabel(refreshOnOpeningCmd.getLabel());
+                        compoundCommand.setLabel(refreshOnOpeningCmd.getLabel());
 
-                    // We are during the opening, the diagramEditPart is not
-                    // already
-                    // available, but we synchronize the GMF diag
-                    CanonicalSynchronizer canonicalSynchronizer = CanonicalSynchronizerFactory.INSTANCE.createCanonicalSynchronizer(gmfDiag);
-                    Command synchronizeGMFModel = new SynchronizeGMFModelCommand(getEditingDomain(), canonicalSynchronizer);
-                    compoundCommand.append(synchronizeGMFModel);
+                        // We are during the opening, the diagramEditPart is not
+                        // already
+                        // available, but we synchronize the GMF diag
+                        CanonicalSynchronizer canonicalSynchronizer = CanonicalSynchronizerFactory.INSTANCE.createCanonicalSynchronizer(gmfDiag);
+                        Command synchronizeGMFModel = new SynchronizeGMFModelCommand(getEditingDomain(), canonicalSynchronizer);
+                        compoundCommand.append(synchronizeGMFModel);
 
-                    command = compoundCommand;
-                } else {
-                    command = new RefreshRepresentationsCommand(getEditingDomain(), new NullProgressMonitor(), dDiagram);
+                        command = compoundCommand;
+                    } else {
+                        command = new RefreshRepresentationsCommand(getEditingDomain(), new NullProgressMonitor(), dDiagram);
+                    }
+                    getEditingDomain().getCommandStack().execute(command);
                 }
-                getEditingDomain().getCommandStack().execute(command);
             }
+            isLastRefreshSucceeded = Optional.of(Boolean.TRUE);
+        } catch (ClassCastException | NullPointerException | IllegalArgumentException | AssertionError e) {
+            DiagramPlugin.getDefault().getLog()
+                    .log(new Status(IStatus.WARNING, DiagramPlugin.ID, MessageFormat.format(Messages.DDiagramEditorImpl_error_representationRefresh, getRepresentation().getName()), e));
+            isLastRefreshSucceeded = Optional.of(Boolean.FALSE);
         }
     }
 
@@ -2033,7 +2048,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     public void rebuildStatusLine() {
         super.rebuildStatusLine();
     }
-    
+
     /**
      * This method dispose all the actions that can be potentially be notified between the asking of closing of an
      * editor and the real closing of it. Indeed the close of an editor is done in async and in case of a server lost,

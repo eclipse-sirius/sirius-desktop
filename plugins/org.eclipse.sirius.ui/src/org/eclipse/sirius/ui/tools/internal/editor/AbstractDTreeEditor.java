@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -205,6 +205,11 @@ public abstract class AbstractDTreeEditor extends EditorPart
     /** Singleton instance of the Image for the REPRESENTATION_FROZEN status. */
     protected Image frozenRepresentationImage;
 
+    /**
+     * To know if the last representation refresh succeeded in this editor.
+     */
+    protected Optional<Boolean> isLastRefreshSucceeded = Optional.empty();
+
     /** The {@link IAuthorityListener}. */
     private IAuthorityListener dRepresentationLockStatusListener;
 
@@ -227,6 +232,11 @@ public abstract class AbstractDTreeEditor extends EditorPart
     public AbstractDTreeEditor() {
         super();
         emfCommandFactory = null;
+    }
+
+    @Override
+    public Optional<Boolean> isLastRepresentationRefreshSucceeded() {
+        return isLastRefreshSucceeded;
     }
 
     /**
