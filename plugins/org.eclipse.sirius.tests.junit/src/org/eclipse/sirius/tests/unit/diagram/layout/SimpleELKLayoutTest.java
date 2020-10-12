@@ -15,6 +15,8 @@ import java.util.Map.Entry;
 import java.util.Optional;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
@@ -27,9 +29,11 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.ArrangeRequest;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
+import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -39,6 +43,7 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
@@ -49,6 +54,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPar
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IContainerLabelOffsets;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -265,6 +271,61 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     }
 
     /**
+     * Check that the location of the label is centered under the bottom side of its border node.
+     */
+    public void testLocationOfLabelOnBorderOnBorderNode() {
+        openDiagram("diagramWithBorderNodesWithLabelOnBorder");
+
+        Optional<DDiagramElement> dde = diagram.getDiagramElements().stream().filter(ode -> ode.getName().equals("att1")).findFirst();
+        assertTrue("The diagram should have a node named \"att1\".", dde.isPresent());
+        IGraphicalEditPart portEditPart = getEditPart(dde.get());
+        assertTrue("The node for \"att1\" should be a AbstractDiagramBorderNodeEditPart but was a " + portEditPart.getClass().getSimpleName(),
+                portEditPart instanceof AbstractDiagramBorderNodeEditPart);
+
+        Rectangle borderNodeBounds = portEditPart.getFigure().getBounds();
+
+        // Launch an arrange all
+        arrangeAll((DiagramEditor) editorPart);
+
+        // Check the label location
+        boolean labelFound = false;
+        for (Object portChildObj : portEditPart.getChildren()) {
+            if (portChildObj instanceof IGraphicalEditPart) {
+                IFigure labelFigure = ((IGraphicalEditPart) portChildObj).getFigure();
+                String text = null;
+                if (labelFigure instanceof WrappingLabel) {
+                    text = ((WrappingLabel) labelFigure).getText();
+                } else if (labelFigure instanceof Label) {
+                    text = ((Label) labelFigure).getText();
+                } else if (labelFigure instanceof SiriusWrapLabel) {
+                    SiriusWrapLabel label = (SiriusWrapLabel) labelFigure;
+                    text = label.getText();
+                }
+
+                if (text != null) {
+                    labelFound = true;
+                    Rectangle labelBounds = labelFigure.getBounds();
+                    assertEquals("The label of the border node is visually not horizontally centered on its border node (draw2d x coordinate).", labelBounds.getCenter().x(),
+                            borderNodeBounds.getCenter().x());
+                    assertEquals("The label of the border node is visually not under the bottom side of its border node (draw2d y coordinate).", labelBounds.getTop().y(),
+                            borderNodeBounds.getBottom().y() + 1);
+                    assertTrue(((IGraphicalEditPart) portChildObj).getModel() instanceof Node);
+                    Node labelNode = (Node) ((IGraphicalEditPart) portChildObj).getModel();
+                    Location gmfLabelLocation = (Location) labelNode.getLayoutConstraint();
+                    assertEquals("The x GMF coordinate of the label of the border node does not correspond to a centered location.", -(labelBounds.width() - borderNodeBounds.width()) / 2,
+                            gmfLabelLocation.getX(), 1);
+                    assertEquals("The y GMF coordinate of the label of the border node does not correspond to a location under its border node.", borderNodeBounds.height() + 1,
+                            gmfLabelLocation.getY());
+                }
+            }
+            if (!labelFound) {
+                fail("The label of the border node has not been found.");
+            }
+        }
+
+    }
+
+    /**
      * Check that the height of a ListContainer is sufficient to display the list items (when list items are only icons
      * without text).
      */
@@ -296,6 +357,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
                 + " but was "
                 + listSize.height(), listSize.height() > (20 + (3 * listItemSize.height())));
     }
+
     /**
      * Check that the size of a ListContainer is OK:
      * <UL>
