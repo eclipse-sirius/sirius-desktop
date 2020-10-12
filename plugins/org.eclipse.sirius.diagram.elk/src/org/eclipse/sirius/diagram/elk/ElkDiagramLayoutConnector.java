@@ -48,6 +48,7 @@ import org.eclipse.elk.core.math.KVector;
 import org.eclipse.elk.core.options.CoreOptions;
 import org.eclipse.elk.core.options.EdgeLabelPlacement;
 import org.eclipse.elk.core.options.NodeLabelPlacement;
+import org.eclipse.elk.core.options.PortLabelPlacement;
 import org.eclipse.elk.core.options.SizeConstraint;
 import org.eclipse.elk.core.service.IDiagramLayoutConnector;
 import org.eclipse.elk.core.service.LayoutMapping;
@@ -990,6 +991,11 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
 
         ElkPort port = ElkGraphUtil.createPort(elknode);
         applyOptionsRelatedToElementTarget(port, elkTargetToOptionsOverrideMap);
+
+        // Set the location of port label fixed (indeed the location returned by ELK is currently not compatible with
+        // Sirius constraint). The label is, by default, located centered below the port.
+        elknode.setProperty(CoreOptions.PORT_LABELS_PLACEMENT, PortLabelPlacement.fixed());
+
         // set the port's layout, relative to the node position
         Rectangle portBounds = getAbsoluteBounds(portEditPart.getFigure());
         Rectangle nodeBounds = getAbsoluteBounds(nodeEditPart.getFigure());
@@ -1035,9 +1041,9 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                     portLabel.setText(text);
                     mapping.getGraphMap().put(portLabel, portChildObj);
 
-                    // set the port label's layout
+                    // Set the port label's layout (centered below the port)
                     Rectangle labelBounds = getAbsoluteBounds(labelFigure);
-                    portLabel.setLocation(labelBounds.x - portBounds.x, labelBounds.y - portBounds.y);
+                    portLabel.setLocation((portBounds.preciseWidth() / 2) - (labelBounds.preciseWidth() / 2), portBounds.height + 1);
                     try {
                         Dimension size = labelFigure.getPreferredSize();
                         portLabel.setDimensions(size.width, size.height);
