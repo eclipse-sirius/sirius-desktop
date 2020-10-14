@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -44,9 +44,8 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * An operation to re-compute the global semantic orderings of events and
- * instance roles in a sequence diagram according to the user-specified
- * criteria.
+ * An operation to re-compute the global semantic orderings of events and instance roles in a sequence diagram according
+ * to the user-specified criteria.
  * 
  * <pre>
  * Semantic Model + User-specified Ordering Expression ---> SemanticMessageOrdering
@@ -56,8 +55,7 @@ import com.google.common.collect.Lists;
  */
 public class RefreshSemanticOrderingsOperation extends AbstractModelChangeOperation<Boolean> {
     /**
-     * The name of the variable used to pass event ends to sort to
-     * user-specified expressions.
+     * The name of the variable used to pass event ends to sort to user-specified expressions.
      */
     private static final String EVENT_ENDS_TO_SORT_VARIABLE = "eventEnds"; //$NON-NLS-1$
 
@@ -100,16 +98,17 @@ public class RefreshSemanticOrderingsOperation extends AbstractModelChangeOperat
     }
 
     /**
-     * Returns all the event ends of the current Sequence diagram. 
+     * Returns all the event ends of the current Sequence diagram.
      * 
-     * The default implementation does the computation on each call, subclasses may override this method to change this behavior.
+     * The default implementation does the computation on each call, subclasses may override this method to change this
+     * behavior.
      * 
      * @return an Iterable with all event ends.
      */
     protected Iterable<? extends EventEnd> getAllEventEnds() {
         return RefreshOrderingHelper.getAllEventEnds(sequenceDDiagram);
     }
-    
+
     private List<EventEnd> computeEventEndsOrdering(EventEndsOrdering semanticOrdering, Iterable<? extends EventEnd> allEnds) {
         Map<EObject, EventEnd> index = new HashMap<>();
         for (EventEnd eventEnd : allEnds) {
