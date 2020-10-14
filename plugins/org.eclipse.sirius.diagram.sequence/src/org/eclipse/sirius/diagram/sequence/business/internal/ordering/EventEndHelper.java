@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,15 +10,23 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.ordering;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
+import org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering;
+import org.eclipse.sirius.diagram.sequence.ordering.OrderingPackage;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.eclipse.sirius.ext.base.Option;
 
@@ -28,18 +36,17 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * Helper class to factor common code for semantic and graphical orders
- * refreshing.
+ * Helper class to factor common code for semantic and graphical orders refreshing.
  * 
  * @author mporhel
  */
 public final class EventEndHelper {
 
     /**
-     * Function to find and returns the EventEnds corresponding to the given
-     * part.
+     * Function to find and returns the EventEnds corresponding to the given part.
      */
     public static final Function<ISequenceEvent, List<EventEnd>> EVENT_ENDS = new Function<ISequenceEvent, List<EventEnd>>() {
+        @Override
         public List<EventEnd> apply(ISequenceEvent from) {
             return EventEndHelper.findEndsFromSemanticOrdering(from);
         }
@@ -49,26 +56,27 @@ public final class EventEndHelper {
      * A function which compute the semantic end element from a event end.
      */
     public static final Function<EventEnd, EObject> SEMANTIC_END = new Function<EventEnd, EObject>() {
+        @Override
         public EObject apply(EventEnd from) {
             return from.getSemanticEnd();
         }
     };
 
     /**
-     * A predicate which check that the given {@link SingleEventEnd} is a
-     * starting event.
+     * A predicate which check that the given {@link SingleEventEnd} is a starting event.
      */
     public static final Predicate<SingleEventEnd> IS_START = new Predicate<SingleEventEnd>() {
+        @Override
         public boolean apply(SingleEventEnd from) {
             return from.isStart();
         }
     };
 
     /**
-     * A predicate which check that the given {@link EventEnd} is a punctual
-     * compound event end.
+     * A predicate which check that the given {@link EventEnd} is a punctual compound event end.
      */
     public static final Predicate<EventEnd> PUNCTUAL_COMPOUND_EVENT_END = new Predicate<EventEnd>() {
+        @Override
         public boolean apply(EventEnd input) {
             return input instanceof CompoundEventEnd && EventEndHelper.getSemanticEvents(input).size() == 1;
         }
@@ -124,9 +132,8 @@ public final class EventEndHelper {
     }
 
     /**
-     * Finds and returns the EventEnds corresponding to the given part, using
-     * the semantic ordering instead of the graphical ordering used by the plain
-     * {@link #findEnds(ISequenceEventEditPart)}.
+     * Finds and returns the EventEnds corresponding to the given part, using the semantic ordering instead of the
+     * graphical ordering used by the plain {@link #findEnds(ISequenceEventEditPart)}.
      * 
      * @param part
      *            the part to look for
@@ -137,11 +144,32 @@ public final class EventEndHelper {
         SequenceDiagram sdep = part.getDiagram();
         SequenceDDiagram seqDiag = (SequenceDDiagram) sdep.getNotationDiagram().getElement();
         Option<EObject> semanticEvent = part.getSemanticTargetElement();
-        for (EventEnd ee : seqDiag.getSemanticOrdering().getEventEnds()) {
-            if (semanticEvent.some() && EventEndHelper.getSemanticEvents(ee).contains(semanticEvent.get())) {
-                ends.add(ee);
+        if (semanticEvent.some()) {
+            EObject eObject = semanticEvent.get();
+
+            EventEndsOrdering semanticOrdering = seqDiag.getSemanticOrdering();
+            Optional<EventEndsCache> eventEndsCache = semanticOrdering.eAdapters().stream().filter(EventEndsCache.class::isInstance).map(EventEndsCache.class::cast).findFirst();
+            if (eventEndsCache.isPresent()) {
+                ends = eventEndsCache.get().getEventEndsFromCache(eObject);
+            } else {
+                EventEndsCache cache = new EventEndsCache();
+                semanticOrdering.eAdapters().add(cache);
+                eventEndsCache = Optional.of(cache);
             }
+
+            if (ends == null) {
+                ends = new ArrayList<EventEnd>();
+
+                for (EventEnd ee : semanticOrdering.getEventEnds()) {
+                    if (EventEndHelper.getSemanticEvents(ee).contains(eObject)) {
+                        ends.add(ee);
+                    }
+                }
+                eventEndsCache.get().putEventEndsInCache(eObject, ends);
+            }
+            ends = Lists.newArrayList(ends);
         }
+
         return ends;
     }
 
@@ -158,9 +186,10 @@ public final class EventEndHelper {
     public static Iterable<ISequenceEvent> getIndependantEvents(ISequenceEvent self, Collection<ISequenceEvent> childrenEvents) {
         final List<EventEnd> parentEnds = EventEndHelper.findEndsFromSemanticOrdering(self);
         Predicate<ISequenceEvent> isValidSubEvent = new Predicate<ISequenceEvent>() {
+            @Override
             public boolean apply(ISequenceEvent input) {
                 List<EventEnd> inputEnds = EventEndHelper.findEndsFromSemanticOrdering(input);
-                boolean res = inputEnds.removeAll(parentEnds);
+                boolean res = inputEnds.stream().anyMatch(element -> parentEnds.contains(element));
                 return !res;
             }
         };
@@ -168,15 +197,13 @@ public final class EventEndHelper {
     }
 
     /**
-     * Returns the list of direct compound-events of this given event, in
-     * chronological (and thus also graphical) order. This includes events with
-     * same semantic ends
+     * Returns the list of direct compound-events of this given event, in chronological (and thus also graphical) order.
+     * This includes events with same semantic ends
      * 
      * @param self
      *            The given {@link ISequenceEventEditPart}.
      * 
-     * @return the list of direct compound-events of this event, in
-     *         chronological order.
+     * @return the list of direct compound-events of this event, in chronological order.
      */
     public static List<ISequenceEvent> getCompoundEvents(ISequenceEvent self) {
         List<ISequenceEvent> compoundEvents = Lists.newArrayList();
@@ -198,8 +225,7 @@ public final class EventEndHelper {
     }
 
     /**
-     * Finds and returns the ISequenceEvent corresponding to the given
-     * SingleEventEnd.
+     * Finds and returns the ISequenceEvent corresponding to the given SingleEventEnd.
      * 
      * @param end
      *            the end to look for
@@ -215,5 +241,42 @@ public final class EventEndHelper {
             }
         }
         return null;
+    }
+
+    private static final class EventEndsCache extends AdapterImpl {
+
+        private Map<EObject, List<EventEnd>> eventEndCache = new ConcurrentHashMap<>();
+
+        @Override
+        public void notifyChanged(Notification notification) {
+            if (!notification.isTouch() && OrderingPackage.eINSTANCE.getEventEndsOrdering_EventEnds().equals(notification.getFeature())) {
+                eventEndCache.clear();
+            }
+
+        }
+
+        /**
+         * Return event ends for eObject.
+         * 
+         * @param eObject
+         *            EObject
+         * @return event ends for eObject.
+         */
+        public List<EventEnd> getEventEndsFromCache(EObject eObject) {
+            return eventEndCache.get(eObject);
+        }
+
+        /**
+         * Put event ends for eObject.
+         * 
+         * @param eObject
+         *            EObject
+         * @param ends
+         *            List<EventEnd>
+         */
+        public void putEventEndsInCache(EObject eObject, List<EventEnd> ends) {
+            eventEndCache.put(eObject, ends);
+        }
+
     }
 }
