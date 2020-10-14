@@ -75,6 +75,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.SiriusConnectionEndPointEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.internal.routers.SiriusBendpointConnectionRouter;
 import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToHelperUtil;
+import org.eclipse.sirius.ext.gmf.runtime.draw2d.ui.figures.SiriusPolylineConnectionEx;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
@@ -498,7 +499,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
     /**
      * The figure.
      */
-    public class ViewEdgeFigure extends PolylineConnectionEx implements ITreeConnection {
+    public class ViewEdgeFigure extends SiriusPolylineConnectionEx implements ITreeConnection {
         /**
          * Label figure that allows to set the model {@link View}. These labels are created before label edit parts are
          * created so we need to be able to attached the right view after.

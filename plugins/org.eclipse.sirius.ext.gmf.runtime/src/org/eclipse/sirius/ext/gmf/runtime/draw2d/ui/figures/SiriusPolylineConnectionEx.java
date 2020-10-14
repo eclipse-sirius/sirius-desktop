@@ -36,6 +36,7 @@ import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IPolygonAnchorableFigure;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.figures.ConnectionLayerEx;
@@ -54,7 +55,7 @@ import org.eclipse.swt.widgets.Display;
  * 
  * @author sshaw
  */
-public class SiriusPolylineConnectionEx extends PolylineConnection implements IPolygonAnchorableFigure {
+public class SiriusPolylineConnectionEx extends PolylineConnectionEx implements IPolygonAnchorableFigure {
     /**
     * The default value for the field <code>isPartialJumpLinksDisabled</code>. It can be changed globally by changing
     * this default value or individually by using method {@link #disablePartialJumpLinks(boolean)}.
@@ -140,7 +141,7 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
 	// the original value of roundedBendpointsRadius (so it can be used in future attempts)
 	private int origRoundedBendpointsRad = 0;
     
-    private long styleBits;
+    private long siriusStyleBits;
     private JumpLinkSet jumpLinkSet;
     private Hashtable connectionAnchors;
     /**
@@ -187,7 +188,8 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
      * 
      */
     public SiriusPolylineConnectionEx() {
-        styleBits =
+        super();
+        siriusStyleBits =
                 JUMPLINK_FLAG_BELOW
                 | JUMPLINK_FLAG_SMOOTH
                 | JUMPLINK_FLAG_ANGLEIN;            
@@ -235,27 +237,7 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
      * @return  Bounds to hold all the points.
      */
     public Rectangle getBounds(){
-        if (bounds == null) {
-            if (getSmoothFactor() != 0) {
-                bounds = getSmoothPoints().getBounds();
-                bounds.expand(lineWidth/2, lineWidth/2);
-                
-                for(int i=0; i<getChildren().size(); i++) {
-                    IFigure child = (IFigure)getChildren().get(i);
-                    bounds.union(child.getBounds());
-                }
-            }
-            else
-                super.getBounds();
-            
-            boolean isFeedbackLayer = isFeedbackLayer();
-            int calculatedTolerance = calculateTolerance(isFeedbackLayer);
-            Dimension jumpLinkSize = calculateJumpLinkSize(isFeedbackLayer, hasTunnelAspect());
-            
-            // extend the boundary slightly by the jumplinks height value
-            bounds.expand(jumpLinkSize.height + calculatedTolerance, jumpLinkSize.height + calculatedTolerance);
-        }
-        return getSourceAnchor() != null && getTargetAnchor() != null ? bounds : EMPTY_BOUNDS;
+        return super.getBounds();
     }
 
     /**
@@ -427,26 +409,26 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
         	}
         }
         
-        int incline = calculateJumpLinkIncline(isFeedbackLayer(), hasTunnelAspect());
+        int incline = calculateJumpLinkIncline(isFeedbackLayer(), hasSiriusTunnelAspect());
         
-        if (shouldJumpLinks()) {
+        if (shouldSiriusJumpLinks()) {
        	            
         	regenerateJumpLinks();
 
             JumpLinkSet pJumpLinkSet = getJumpLinkSet();
             if (pJumpLinkSet != null && pJumpLinkSet.m_pJumpLinks != null) {
                 int nSmoothNess = 0;
-                if (isJumpLinksSmooth())
+                if (isSiriusJumpLinksSmooth())
                     nSmoothNess = JUMPLINK_DEFAULT_SMOOTHNESS;
 
-                boolean bOnBottom = isJumpLinksOnBottom();
+                boolean bOnBottom = isSiriusJumpLinksOnBottom();
 
                 ListIterator linkIter = pJumpLinkSet.m_pJumpLinks.listIterator();
                 
                 while (linkIter.hasNext()) {
                     JumpLink pJumpLink = (JumpLink) linkIter.next();
 
-                    if (hasTunnelAspect()) {
+                    if (hasSiriusTunnelAspect()) {
                         List<PointList> jumpLinkPoints = PointListUtilities.routeAroundPoint(displayPointsWithoutJumpLinksList.get(displayPointsWithoutJumpLinksList.size() - 1), pJumpLink.m_ptIntersect, pJumpLink.m_nWidth, nSmoothNess);
                         if (jumpLinkPoints != null) {
                             if (displayPointsWithoutJumpLinksList.isEmpty()) {
@@ -494,7 +476,7 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
             		// Consider points at indexes j-1, j, j+1.
             		int x0 = 0, y0 = 0;
             		boolean firstPointAssigned = false;
-            		if (shouldJumpLinks() && !hasTunnelAspect()) {
+                    if (shouldSiriusJumpLinks() && !hasSiriusTunnelAspect()) {
             			boolean containsPoint2;
             			boolean containsPoint3;
             			PointList jumpLinkPoints = new PointList();
@@ -721,7 +703,7 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
      * @param hasTunnelAspect the <code>boolean</code> that determines if the jump link has a tunnel aspect or not.
      */
     private int calculateJumpLinkIncline(boolean isFeedbackLayer, boolean hasTunnelAspect) {
-    	if (isJumpLinksAngledIn())
+        if (isSiriusJumpLinksAngledIn())
         	return calculateJumpLinkSize(isFeedbackLayer, hasTunnelAspect).width / 5;
     	
     	return 0;
@@ -877,7 +859,7 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
 
             PointList tmpLine = getSmoothPoints();
 
-            long jumpType = (styleBits & JUMPLINK_FLAG_ALL);
+            long jumpType = (siriusStyleBits & JUMPLINK_FLAG_ALL);
 
             // only check intersections with connect views which are below this one.
             List children = pParent.getChildren();
@@ -893,7 +875,7 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
             }
             
             boolean isFeedbackLayer = isFeedbackLayer();
-            Dimension jumpLinkSize = calculateJumpLinkSize(isFeedbackLayer, hasTunnelAspect());
+            Dimension jumpLinkSize = calculateJumpLinkSize(isFeedbackLayer, hasSiriusTunnelAspect());
             
             while (bForwards ? childIter.hasNext() : childIter.hasPrevious()) {
                 IFigure figure =
@@ -923,7 +905,7 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
                                 double minDist = Math.min(Math.min(dist1,dist2), Math.min(dist3,dist4));
                                 if (minDist > jumpLinkSize.width / 2
                                         && (!isPartialJumpLinksDisabled() || !hasCommonSourceOrEnd(intersections.getPoint(i), tmpLine, checkLine, jumpLinkSize.width / 2))) {
-                                    addJumpLink(intersections.getPoint(i), distances.getPoint(i).x, isFeedbackLayer, hasTunnelAspect());
+                                    addJumpLink(intersections.getPoint(i), distances.getPoint(i).x, isFeedbackLayer, hasSiriusTunnelAspect());
                                 }
                             }
                         }
@@ -967,7 +949,7 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
             if (m_pJumpLinks == null || m_pJumpLinks.size() < 2)
                 return;
 
-            Dimension jumpLinkSize = calculateJumpLinkSize(isFeedbackLayer(), hasTunnelAspect());
+            Dimension jumpLinkSize = calculateJumpLinkSize(isFeedbackLayer(), hasSiriusTunnelAspect());
             int nCurrentWidth = jumpLinkSize.width;
             ArrayList jumpLinks = new ArrayList(m_pJumpLinks.size());
 
@@ -1037,7 +1019,7 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
      * SMOOTH_FACTOR_NORMAL - more curved look, SMOOTH_FACTOR_MORE - exagerated curving
      */
     private final int getSmoothFactor() {
-        int smoothStyle = getSmoothness();
+        int smoothStyle = getSiriusSmoothness();
 
         if (smoothStyle == SMOOTH_LESS)
             return SMOOTH_FACTOR_LESS;
@@ -1092,14 +1074,12 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
      * @param smooth the value is one of SMOOTH_NONE - no smoothing, SMOOTH_LESS - rounded edges, 
      * SMOOTH_NORMAL - more curved look, SMOOTH_MORE - exagerated curving.
      */
-    public final void setSmoothness(int smooth) {
+    public final void setSiriusSmoothness(int smooth) {
         // always turn off all smoothing
-        styleBits &= ~(SMOOTH_LESS | SMOOTH_NORMAL | SMOOTH_MORE);
+        siriusStyleBits &= ~(SMOOTH_LESS | SMOOTH_NORMAL | SMOOTH_MORE);
 
-        if (smooth == SMOOTH_LESS
-            || smooth == SMOOTH_NORMAL
-            || smooth == SMOOTH_MORE) {
-            styleBits |= smooth;
+        if (smooth == SMOOTH_LESS || smooth == SMOOTH_NORMAL || smooth == SMOOTH_MORE) {
+            siriusStyleBits |= smooth;
         }
     }
 
@@ -1109,14 +1089,12 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
      * @return the value is one of SMOOTH_NONE - no smoothing, SMOOTH_LESS - rounded edges, 
      * SMOOTH_NORMAL - more curved look, SMOOTH_MORE - exagerated curving.
      */
-    public final int getSmoothness() {
-        if ((styleBits & SMOOTH_LESS) != 0)
+    public final int getSiriusSmoothness() {
+        if ((siriusStyleBits & SMOOTH_LESS) != 0)
             return SMOOTH_LESS;
-        else
-            if ((styleBits & SMOOTH_NORMAL) != 0)
+        else if ((siriusStyleBits & SMOOTH_NORMAL) != 0)
                 return SMOOTH_NORMAL;
-            else
-                if ((styleBits & SMOOTH_MORE) != 0)
+        else if ((siriusStyleBits & SMOOTH_MORE) != 0)
                     return SMOOTH_MORE;
 
         return 0;
@@ -1128,8 +1106,8 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
      * @return <code>boolean</code> <code>true</code> if it should be using closest distance routing, 
      * <code>false</code otherwise.
      */
-    public final boolean isClosestDistanceRouting() {
-        return ((styleBits & ROUTE_CLOSEST_ROUTE) != 0);
+    public final boolean isSiriusClosestDistanceRouting() {
+        return ((siriusStyleBits & ROUTE_CLOSEST_ROUTE) != 0);
     }
 
     /**
@@ -1138,8 +1116,8 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
      * @return <code>boolean</code> <code>true</code> if it should be using avoid obstruction routing, 
      * <code>false</code otherwise.
      */
-    public final boolean isAvoidObstacleRouting() {
-        return ((styleBits & ROUTE_AVOID_OBSTACLE) != 0);
+    public final boolean isSiriusAvoidObstacleRouting() {
+        return ((siriusStyleBits & ROUTE_AVOID_OBSTACLE) != 0);
     }
 
     /**
@@ -1148,8 +1126,8 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
      * @return <code>boolean</code> <code>true</code> if it should be drawn with a tunnel effect, 
      * <code>false</code otherwise.
      */
-    public final boolean hasTunnelAspect() {
-        return ((styleBits & JUMPLINK_FLAG_HAS_TUNNEL_EFFECT) != 0);
+    public final boolean hasSiriusTunnelAspect() {
+        return ((siriusStyleBits & JUMPLINK_FLAG_HAS_TUNNEL_EFFECT) != 0);
     }
 
     /**
@@ -1163,20 +1141,20 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
     public void setRoutingStyles(
         final boolean closestDistance,
         final boolean avoidObstacles) {
-        
+        super.setRoutingStyles(closestDistance, avoidObstacles);
         if (closestDistance)
-            styleBits |= ROUTE_CLOSEST_ROUTE;
+            siriusStyleBits |= ROUTE_CLOSEST_ROUTE;
         else {
-            styleBits &= ~ROUTE_CLOSEST_ROUTE;
+            siriusStyleBits &= ~ROUTE_CLOSEST_ROUTE;
         }
 
         if (avoidObstacles) {
             if (!closestDistance)
-                styleBits |= ROUTE_CLOSEST_ROUTE;
+                siriusStyleBits |= ROUTE_CLOSEST_ROUTE;
 
-            styleBits |= ROUTE_AVOID_OBSTACLE;
+            siriusStyleBits |= ROUTE_AVOID_OBSTACLE;
         } else
-            styleBits &= ~ROUTE_AVOID_OBSTACLE;
+            siriusStyleBits &= ~ROUTE_AVOID_OBSTACLE;
     }
       
     /**
@@ -1224,8 +1202,8 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
      * @return <code>boolean</code> <code>true</code> if this connection should support jump links, 
      * <code>false</code> otherwise.
      */
-    public final boolean shouldJumpLinks() {
-        if ((styleBits & ROUTE_JUMP_LINKS) != 0) {
+    public final boolean shouldSiriusJumpLinks() {
+        if ((siriusStyleBits & ROUTE_JUMP_LINKS) != 0) {
             IFigure pParent = getParent();
             if (pParent instanceof ConnectionLayerEx)
                 return ConnectionLayerEx.shouldJumpLinks();
@@ -1243,10 +1221,11 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
      * <code>false</code> otherwise.
      */
     public void setJumpLinks(boolean on) {
+        super.setJumpLinks(on);
         if (on)
-            styleBits |= ROUTE_JUMP_LINKS;
+            siriusStyleBits |= ROUTE_JUMP_LINKS;
         else
-            styleBits &= ~ROUTE_JUMP_LINKS;
+            siriusStyleBits &= ~ROUTE_JUMP_LINKS;
     }
 
     /**
@@ -1311,29 +1290,30 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
         boolean angleIn,
         boolean onBottom,
         boolean hasTunnelAspect) {
+        super.setJumpLinksStyles(jumpType, curved, angleIn, onBottom, hasTunnelAspect);
 
-        styleBits &= ~JUMPLINK_FLAG_ALL;
-        styleBits |= jumpType;
+        siriusStyleBits &= ~JUMPLINK_FLAG_ALL;
+        siriusStyleBits |= jumpType;
 
         if (curved)
-            styleBits |= JUMPLINK_FLAG_SMOOTH;
+            siriusStyleBits |= JUMPLINK_FLAG_SMOOTH;
         else
-            styleBits &= ~JUMPLINK_FLAG_SMOOTH;
+            siriusStyleBits &= ~JUMPLINK_FLAG_SMOOTH;
 
         if (angleIn)
-            styleBits |= JUMPLINK_FLAG_ANGLEIN;
+            siriusStyleBits |= JUMPLINK_FLAG_ANGLEIN;
         else
-            styleBits &= ~JUMPLINK_FLAG_ANGLEIN;
+            siriusStyleBits &= ~JUMPLINK_FLAG_ANGLEIN;
 
         if (onBottom)
-            styleBits |= JUMPLINK_FLAG_ONBOTTOM;
+            siriusStyleBits |= JUMPLINK_FLAG_ONBOTTOM;
         else
-            styleBits &= ~JUMPLINK_FLAG_ONBOTTOM;
+            siriusStyleBits &= ~JUMPLINK_FLAG_ONBOTTOM;
 
         if (hasTunnelAspect)
-            styleBits |= JUMPLINK_FLAG_HAS_TUNNEL_EFFECT;
+            siriusStyleBits |= JUMPLINK_FLAG_HAS_TUNNEL_EFFECT;
         else
-            styleBits &= ~JUMPLINK_FLAG_HAS_TUNNEL_EFFECT;
+            siriusStyleBits &= ~JUMPLINK_FLAG_HAS_TUNNEL_EFFECT;
 
         dirtyJumpLinks();
     }
@@ -1344,8 +1324,8 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
      * @return <code>boolean</code> indicating if <code>true</code> the jump link should be curved (semi-circle) or 
      * if <code>false</code> it should be straight (rectangular).
      */
-    public final boolean isJumpLinksSmooth() {
-        return ((styleBits & JUMPLINK_FLAG_SMOOTH) != 0);
+    public final boolean isSiriusJumpLinksSmooth() {
+        return ((siriusStyleBits & JUMPLINK_FLAG_SMOOTH) != 0);
     }
 
     /**
@@ -1354,8 +1334,8 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
      * @return <code>boolean</code> if <code>true</code> indicating the sides of the jump link are angled or 
      * if <code>false</code> then the sides of the jump link are straight.
      */
-    public final boolean isJumpLinksAngledIn() {
-        return ((styleBits & JUMPLINK_FLAG_ANGLEIN) != 0);
+    public final boolean isSiriusJumpLinksAngledIn() {
+        return ((siriusStyleBits & JUMPLINK_FLAG_ANGLEIN) != 0);
     }
 
     /**
@@ -1364,8 +1344,8 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
      * @return <code>boolean</code> <code>true</code> it will be oriented on the bottom of the connection,
      * <code>false</code> it will oriented on top.
      */
-    public final boolean isJumpLinksOnBottom() {
-        return ((styleBits & JUMPLINK_FLAG_ONBOTTOM) != 0);
+    public final boolean isSiriusJumpLinksOnBottom() {
+        return ((siriusStyleBits & JUMPLINK_FLAG_ONBOTTOM) != 0);
     }
 
     /**
@@ -1659,7 +1639,7 @@ public class SiriusPolylineConnectionEx extends PolylineConnection implements IP
 	 * Overriden to display special cursor when needed. Fix for bug #145467 
 	 */
 	public Cursor getCursor() {
-		if (isAvoidObstacleRouting())
+        if (isSiriusAvoidObstacleRouting())
 			return NO_COMMAND_SPECIAL_CURSOR;
 		return super.getCursor();
 	}

@@ -242,6 +242,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
             // By default in Sirius, we don't want to consider the partial jump links. This is a new behavior available
             // in GMF since 1.13.0.
             PolylineConnectionEx.DISABLE_PARTIAL_JUMP_LINKS = true;
+            org.eclipse.sirius.ext.gmf.runtime.draw2d.ui.figures.SiriusPolylineConnectionEx.DISABLE_PARTIAL_JUMP_LINKS = true;
 
             PreferencesHint.registerPreferenceStore(DiagramUIPlugin.DIAGRAM_PREFERENCES_HINT, getPreferenceStore());
             dynamicPreferences = new DynamicDiagramUIPreferences(getPreferenceStore());
