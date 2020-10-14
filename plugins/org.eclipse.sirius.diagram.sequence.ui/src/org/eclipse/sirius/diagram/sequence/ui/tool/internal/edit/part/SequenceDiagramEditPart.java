@@ -211,7 +211,7 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
             refreshLayout = new RefreshLayoutTrigger(diagramView);
             sessionEventBroker.addLocalTrigger(SessionEventBrokerImpl.asFilter(refreshLayoutScope), refreshLayout);
 
-            Predicate<Notification> sequenceCanonicalSynchronizerLayoutScope = new SequenceCanonicalSynchronizerAdapterScope();
+            Predicate<Notification> sequenceCanonicalSynchronizerLayoutScope = new SequenceCanonicalSynchronizerAdapterScope(diagramView);
             sequenceCanonicalSynchronizer = new SequenceCanonicalSynchronizerAdapter();
             sessionEventBroker.addLocalTrigger(SessionEventBrokerImpl.asFilter(sequenceCanonicalSynchronizerLayoutScope), sequenceCanonicalSynchronizer);
         }
