@@ -26,7 +26,6 @@ import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.ConnectionLocator;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
-import org.eclipse.draw2d.PolylineConnection;
 import org.eclipse.draw2d.RotatableDecoration;
 import org.eclipse.draw2d.RoutingAnimator;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -999,7 +998,7 @@ public class SiriusPolylineConnectionEx extends PolylineConnectionEx implements 
                 } else {
                     if (pPrevJumpLink == null)
                         pPrevJumpLink = pLastJumpLink;
-                    nCurrentWidth += jumpLinkSize.width - (nDeltaMin - nDelta);
+                    nCurrentWidth += nDelta;
                 }
 
                 pLastJumpLink = pJumpLink;
