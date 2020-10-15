@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -46,8 +46,7 @@ public class InstanceRole extends AbstractSequenceNode {
     public static final int VISUAL_ID = 2001;
 
     /**
-     * Predicate to check whether a Sirius DDiagramElement represents an
-     * instance role.
+     * Predicate to check whether a Sirius DDiagramElement represents an instance role.
      */
     private enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
@@ -71,33 +70,28 @@ public class InstanceRole extends AbstractSequenceNode {
     }
 
     /**
-     * Returns a predicate to check whether a GMF View represents an instance
-     * role.
+     * Returns a predicate to check whether a GMF View represents an instance role.
      * 
-     * @return a predicate to check whether a GMF View represents an instance
-     *         role.
+     * @return a predicate to check whether a GMF View represents an instance role.
      */
     public static Predicate<View> notationPredicate() {
         return new NotationPredicate(NotationPackage.eINSTANCE.getNode(), VISUAL_ID, InstanceRole.viewpointElementPredicate());
     }
 
     /**
-     * Returns a predicate to check whether a Sirius DDiagramElement
-     * represents an instance role.
+     * Returns a predicate to check whether a Sirius DDiagramElement represents an instance role.
      * 
-     * @return a predicate to check whether a Sirius DDiagramElement
-     *         represents an instance role.
+     * @return a predicate to check whether a Sirius DDiagramElement represents an instance role.
      */
     public static Predicate<DDiagramElement> viewpointElementPredicate() {
         return SiriusElementPredicate.INSTANCE;
     }
 
     /**
-     * Tests whether the instance role is explicitly created by a creation
-     * message, or if it starts from the beginning of the sequence.
+     * Tests whether the instance role is explicitly created by a creation message, or if it starts from the beginning
+     * of the sequence.
      * 
-     * @return <code>true</code> if the instance role is explicitly created by a
-     *         creation message.
+     * @return <code>true</code> if the instance role is explicitly created by a creation message.
      */
     public boolean isExplicitlyCreated() {
         return getCreationMessage().some();
@@ -121,13 +115,20 @@ public class InstanceRole extends AbstractSequenceNode {
 
     @Override
     public Option<Lifeline> getLifeline() {
-        for (View child : Iterables.filter(getNotationView().getChildren(), View.class)) {
-            Option<Lifeline> lifeline = ISequenceElementAccessor.getLifeline(child);
-            if (lifeline.some()) {
-                return lifeline;
+        Option<Lifeline> result = Options.newNone();
+        if (cachedLifeline != null) {
+            result = cachedLifeline;
+        } else {
+            for (View child : Iterables.filter(getNotationView().getChildren(), View.class)) {
+                Option<Lifeline> lifeline = ISequenceElementAccessor.getLifeline(child);
+                if (lifeline.some()) {
+                    result = lifeline;
+                    break;
+                }
             }
+            cachedLifeline = result;
         }
-        return Options.newNone();
+        return result;
     }
 
     @Override
@@ -141,11 +142,9 @@ public class InstanceRole extends AbstractSequenceNode {
     }
 
     /**
-     * Return the name of the DRepresentationElement associated to this Instance
-     * role.
+     * Return the name of the DRepresentationElement associated to this Instance role.
      * 
-     * @return the name of the DRepresentationElement associated to this
-     *         Instance role
+     * @return the name of the DRepresentationElement associated to this Instance role
      */
     public String getName() {
         EObject targetElement = getNotationNode().getElement();
@@ -156,11 +155,9 @@ public class InstanceRole extends AbstractSequenceNode {
     }
 
     /**
-     * Return the background color of the style of the DRepresentationElement
-     * associated to this Instance role.
+     * Return the background color of the style of the DRepresentationElement associated to this Instance role.
      * 
-     * @return the background color of the style of the DRepresentationElement
-     *         associated to this Instance role.
+     * @return the background color of the style of the DRepresentationElement associated to this Instance role.
      */
     public Option<RGBValues> getBackgroundColor() {
         EObject targetElement = getNotationNode().getElement();
@@ -171,11 +168,9 @@ public class InstanceRole extends AbstractSequenceNode {
     }
 
     /**
-     * Return the label color of the style of the DRepresentationElement
-     * associated to this Instance role.
+     * Return the label color of the style of the DRepresentationElement associated to this Instance role.
      * 
-     * @return the label color of the style of the DRepresentationElement
-     *         associated to this Instance role.
+     * @return the label color of the style of the DRepresentationElement associated to this Instance role.
      */
     public Option<RGBValues> getLabelColor() {
         EObject targetElement = getNotationNode().getElement();
