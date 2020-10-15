@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
+
 /**
  * Helper to locate sequence events inside a given context event.
  * 
@@ -51,6 +52,7 @@ public class EventFinder {
     private boolean reparent;
 
     private Function<ISequenceEvent, Range> verticalRangeFunction = new Function<ISequenceEvent, Range>() {
+        @Override
         public Range apply(ISequenceEvent from) {
             return from.getVerticalRange();
         }
@@ -62,8 +64,7 @@ public class EventFinder {
      * Constructor.
      * 
      * @param context
-     *            the event in which to look for. Only sub-events of the context
-     *            are considered in the search.
+     *            the event in which to look for. Only sub-events of the context are considered in the search.
      */
     public EventFinder(Lifeline context) {
         this.context = context;
@@ -74,8 +75,7 @@ public class EventFinder {
      * Constructor.
      * 
      * @param context
-     *            the event in which to look for. Only sub-events of the context
-     *            are considered in the search.
+     *            the event in which to look for. Only sub-events of the context are considered in the search.
      */
     public EventFinder(AbstractNodeEvent context) {
         this.context = context;
@@ -87,8 +87,7 @@ public class EventFinder {
      * Constructor.
      * 
      * @param context
-     *            the event in which to look for. Only sub-events of the context
-     *            are considered in the search.
+     *            the event in which to look for. Only sub-events of the context are considered in the search.
      * 
      * @param lifeline
      *            the lifeline on which to look for an event.
@@ -99,8 +98,7 @@ public class EventFinder {
     }
 
     /**
-     * Allow to use another way to compute the range of the context (iG range
-     * after move?..).
+     * Allow to use another way to compute the range of the context (iG range after move?..).
      * 
      * @param rangeFunction
      *            the range function to use to compute the context range.
@@ -136,20 +134,21 @@ public class EventFinder {
     }
 
     /**
-     * Returns the deepest event in the hierarchy of sub-event starting from
-     * this finder's context which includes completely the specified range.
+     * Returns the deepest event in the hierarchy of sub-event starting from this finder's context which includes
+     * completely the specified range.
      * 
      * @param range
      *            the range to look for.
-     * @return the deepest event, starting from this finder's context, which
-     *         includes the specified range, or <code>null</code>.
+     * @return the deepest event, starting from this finder's context, which includes the specified range, or
+     *         <code>null</code>.
      */
     public ISequenceEvent findMostSpecificEvent(Range range) {
         if (context instanceof Message) {
             return null;
         }
         ISequenceEvent result = null;
-        if (contextIncludesRange(range)) {
+        boolean contextIncludesRange = contextIncludesRange(range);
+        if (contextIncludesRange) {
             if (context != null && !shouldIgnore().apply(context)) {
                 boolean okForReconnection = !isReconnection() || !Message.NO_RECONNECTABLE_EVENTS.apply(context);
                 boolean okForReparent = !isReparent() || !AbstractNodeEvent.NO_REPARENTABLE_EVENTS.apply(context);
@@ -158,8 +157,17 @@ public class EventFinder {
                 }
             }
         }
-        if (contextIncludesRange(range) || isReparent()) {
+        if (contextIncludesRange || isReparent()) {
             Predicate<ISequenceEvent> sameLifeline = new SameLifelinePredicate(lifeline);
+            Predicate<ISequenceEvent> includeRange = new Predicate<ISequenceEvent>() {
+
+                @Override
+                public boolean apply(ISequenceEvent ise) {
+                    return includeRange(ise, range);
+                }
+
+            };
+
             List<ISequenceEvent> eventsToInspect = new ArrayList<>();
             if ((reconnect || reparent) && (context instanceof AbstractNodeEvent || context instanceof Lifeline)) {
                 for (View view : Iterables.filter(context.getNotationView().getChildren(), View.class)) {
@@ -179,7 +187,8 @@ public class EventFinder {
             } else {
                 eventsToInspect.addAll(context.getSubEvents());
             }
-            for (ISequenceEvent child : Iterables.filter(eventsToInspect, Predicates.and(sameLifeline, Predicates.not(shouldIgnore())))) {
+
+            for (ISequenceEvent child : Iterables.filter(eventsToInspect, Predicates.and(includeRange, Predicates.not(shouldIgnore()), sameLifeline))) {
                 EventFinder childFinder = new EventFinder(child, lifeline);
                 childFinder.setReconnection(isReconnection());
                 childFinder.setReparent(isReparent());
@@ -199,17 +208,23 @@ public class EventFinder {
     }
 
     /**
-     * Tests whether this finder's context element includes the specified range,
-     * considering the optional expansion step.
+     * Tests whether this finder's context element includes the specified range, considering the optional expansion
+     * step.
      */
     private boolean contextIncludesRange(Range range) {
-        Range currentContextRange = verticalRangeFunction.apply(context);
+        return includeRange(context, range);
+    }
+
+    /**
+     * Tests whether this finder's ise element includes the specified range, considering the optional expansion step.
+     */
+    private boolean includeRange(ISequenceEvent ise, Range range) {
+        Range currentContextRange = verticalRangeFunction.apply(ise);
         return getRangeAfterExpansion(currentContextRange).includes(range);
     }
 
     /**
-     * Returns a predicate which tests whether an element should be ignored in
-     * the search for descendants.
+     * Returns a predicate which tests whether an element should be ignored in the search for descendants.
      */
     private Predicate<ISequenceEvent> shouldIgnore() {
         if (eventsToIgnore == null) {
