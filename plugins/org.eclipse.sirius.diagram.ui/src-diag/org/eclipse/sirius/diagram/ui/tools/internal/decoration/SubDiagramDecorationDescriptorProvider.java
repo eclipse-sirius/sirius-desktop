@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
@@ -33,6 +34,7 @@ import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl.NoSubDecorationDescriptor;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -94,20 +96,27 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
             if (parentRepresentation != null) {
                 subDiagramDecorationDescriptors = parentRepresentation.getUiState().getSubDiagramDecorationDescriptors();
                 decorationDescriptor = subDiagramDecorationDescriptors.get(node);
-            }
 
-            if (decorationDescriptor instanceof DecorationDescriptor) {
-                results = Arrays.asList((DecorationDescriptor) decorationDescriptor);
-            } else if (shouldHaveSubDiagDecoration(node, session)) {
-
-                DecorationDescriptor decoDesc = new DecorationDescriptor();
-                decoDesc.setName(NAME);
-                decoDesc.setPosition(Position.SOUTH_EAST_LITERAL);
-                decoDesc.setDistributionDirection(DecorationDistributionDirection.HORIZONTAL);
-                decoDesc.setDisplayPriority(DisplayPriority.HIGH_PRIORITY.getValue());
-                decoDesc.setDecorationAsImage(getSubDiagramImage());
-                subDiagramDecorationDescriptors.put(node, decoDesc);
-                results = Arrays.asList(decoDesc);
+                if (decorationDescriptor instanceof DecorationDescriptor) {
+                    results = Arrays.asList((DecorationDescriptor) decorationDescriptor);
+                } else if (decorationDescriptor instanceof NoSubDecorationDescriptor) {
+                    // Do nothing, evaluation already done in a previous decoration refresh : no found other
+                    // representation on the semantic element nor navigation tools with existing target.
+                    // See
+                    // org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl.DRepresentationChangeListener
+                    // for invalidation.
+                } else if (shouldHaveSubDiagDecoration(node, session)) {
+                    DecorationDescriptor decoDesc = new DecorationDescriptor();
+                    decoDesc.setName(NAME);
+                    decoDesc.setPosition(Position.SOUTH_EAST_LITERAL);
+                    decoDesc.setDistributionDirection(DecorationDistributionDirection.HORIZONTAL);
+                    decoDesc.setDisplayPriority(DisplayPriority.HIGH_PRIORITY.getValue());
+                    decoDesc.setDecorationAsImage(getSubDiagramImage());
+                    subDiagramDecorationDescriptors.put(node, decoDesc);
+                    results = Arrays.asList(decoDesc);
+                } else {
+                    subDiagramDecorationDescriptors.put(node, new NoSubDecorationDescriptor());
+                }
             }
         }
 
@@ -119,32 +128,45 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
     }
 
     private boolean shouldHaveSubDiagDecoration(DRepresentationElement node, Session session) {
+        Map<EObject, Collection<DRepresentationDescriptor>> knownRepDescriptors = new ConcurrentHashMap<>();
         EObject target = node.getTarget();
         boolean shouldHaveSubDiagramDecorator = false;
         if (target != null && target.eResource() != null) {
             if (session != null && !parentHasSameSemanticElement(node)) {
-                shouldHaveSubDiagramDecorator = checkExistingRepresentationDescriptors(node, session);
+                shouldHaveSubDiagramDecorator = checkExistingRepresentationDescriptors(node, session, knownRepDescriptors);
                 if (node.getMapping() != null && !shouldHaveSubDiagramDecorator) {
-                    shouldHaveSubDiagramDecorator = checkRepresentationNavigationDescriptions(node, session);
+                    shouldHaveSubDiagramDecorator = checkRepresentationNavigationDescriptions(node, session, knownRepDescriptors);
                 }
             }
         }
+        knownRepDescriptors.clear();
         return shouldHaveSubDiagramDecorator;
     }
 
     /**
      * Check if an existing {@link DRepresentationDescriptor} as the node target element as target element.
      * 
+     * @param knownRepDescriptors
+     * 
      * @return the value
      */
-    private boolean checkExistingRepresentationDescriptors(DRepresentationElement node, Session session) {
+    private boolean checkExistingRepresentationDescriptors(DRepresentationElement node, Session session, Map<EObject, Collection<DRepresentationDescriptor>> knownRepDescriptors) {
         // Does the target element has any representation on it? Exclude
         // the current representation itself to avoid redundant markers.
         EObject semanticObject = node.getTarget();
         DRepresentation representation = new DRepresentationElementQuery(node).getParentRepresentation();
         DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representation, session).getRepresentationDescriptor();
 
-        return DialectManager.INSTANCE.getRepresentationDescriptors(semanticObject, session).stream().filter(repDesc -> !Objects.equals(repDesc, representationDescriptor)).count() > 0;
+        return getRepresentationDescriptors(session, semanticObject, knownRepDescriptors).stream().filter(repDesc -> !Objects.equals(repDesc, representationDescriptor)).count() > 0;
+    }
+
+    private Collection<DRepresentationDescriptor> getRepresentationDescriptors(Session session, EObject semanticObject, Map<EObject, Collection<DRepresentationDescriptor>> knownRepDescriptors) {
+        Collection<DRepresentationDescriptor> repDescs = knownRepDescriptors.get(semanticObject);
+        if (repDescs == null) {
+            repDescs = DialectManager.INSTANCE.getRepresentationDescriptors(semanticObject, session);
+            knownRepDescriptors.put(semanticObject, repDescs);
+        }
+        return repDescs;
     }
 
     /**
@@ -154,7 +176,7 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
         return (element.eContainer() instanceof DDiagramElement) && ((DDiagramElement) element.eContainer()).getTarget() == element.getTarget();
     }
 
-    private boolean checkRepresentationNavigationDescriptions(DRepresentationElement element, Session session) {
+    private boolean checkRepresentationNavigationDescriptions(DRepresentationElement element, Session session, Map<EObject, Collection<DRepresentationDescriptor>> knownRepDescriptors) {
         boolean isAnyRepresentation = false;
         EObject target = element.getTarget();
         if (session.isOpen()) {
@@ -179,7 +201,7 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
                     }
 
                     if (precondition) {
-                        isAnyRepresentation = checkRepresentationNavigationDescription(interpreter, navDesc, element, session);
+                        isAnyRepresentation = checkRepresentationNavigationDescription(interpreter, navDesc, element, session, knownRepDescriptors);
                     }
 
                     interpreter.unSetVariable(navDesc.getContainerVariable().getName());
@@ -195,7 +217,8 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
         return vp != null && session.getSelectedViewpoints(false).contains(vp);
     }
 
-    private boolean checkRepresentationNavigationDescription(IInterpreter interpreter, RepresentationNavigationDescription navDesc, DRepresentationElement element, Session session) {
+    private boolean checkRepresentationNavigationDescription(IInterpreter interpreter, RepresentationNavigationDescription navDesc, DRepresentationElement element, Session session,
+            Map<EObject, Collection<DRepresentationDescriptor>> knownRepDescriptors) {
         Collection<EObject> candidates = new ArrayList<EObject>();
 
         if (!StringUtil.isEmpty(navDesc.getBrowseExpression())) {
@@ -209,7 +232,7 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
         }
         long count = 0;
         for (EObject candidate : candidates) {
-            count += DialectManager.INSTANCE.getRepresentationDescriptors(candidate, session).stream().filter(repDesc -> {
+            count += getRepresentationDescriptors(session, candidate, knownRepDescriptors).stream().filter(repDesc -> {
                 return repDesc.getDescription().equals(navDesc.getRepresentationDescription());
             }).count();
         }
@@ -225,5 +248,4 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
     public void deactivate(IDecorator decorator, org.eclipse.gef.GraphicalEditPart editPart) {
         // do nothing
     }
-
 }

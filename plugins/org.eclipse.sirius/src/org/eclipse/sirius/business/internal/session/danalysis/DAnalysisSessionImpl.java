@@ -24,6 +24,7 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -218,12 +219,28 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         @Override
         public void resourceSetChanged(ResourceSetChangeEvent event) {
             List<Notification> notifications = event.getNotifications();
+            boolean subDiagramDecorationDesciptorCleared = false;
+            Collection<DRepresentation> allLoadedRepresentations = DialectManager.INSTANCE.getAllLoadedRepresentations(session);
             for (Notification notification : notifications) {
                 if (notification.getNewValue() instanceof DRepresentation || notification.getOldValue() instanceof DRepresentation) {
-                    Collection<DRepresentation> allLoadedRepresentations = DialectManager.INSTANCE.getAllLoadedRepresentations(session);
                     allLoadedRepresentations.stream().forEach(rep -> rep.getUiState().getSubDiagramDecorationDescriptors().clear());
+                    subDiagramDecorationDesciptorCleared = true;
                     break;
                 }
+            }
+
+            if (!subDiagramDecorationDesciptorCleared) {
+                // The model has changed, remove subDiagramDescriptors marked as no sub diagram descriptors as the
+                // navigation tools might now have valid target in the next evaluation of their expressions.
+                allLoadedRepresentations.stream().forEach(rep -> {
+                    Iterator<Entry<Object, Object>> it = rep.getUiState().getSubDiagramDecorationDescriptors().entrySet().iterator();
+                    while (it.hasNext()) {
+                        Entry<Object, Object> next = it.next();
+                        if (next.getValue() instanceof NoSubDecorationDescriptor) {
+                            it.remove();
+                        }
+                    }
+                });
             }
         }
 
@@ -235,7 +252,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                 @Override
                 public boolean matches(Notification notification) {
                     Object notifier = notification.getNotifier();
-                    if (notifier instanceof EObject && !new NotificationQuery(notification).isTransientNotification()) {
+                    if (!notification.isTouch() && notifier instanceof EObject && !new NotificationQuery(notification).isTransientNotification()) {
                         return true;
                     }
                     return false;
@@ -248,6 +265,14 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         public boolean isPostcommitOnly() {
             return true;
         }
+    }
+
+    /**
+     * Simple marker to indicate that the shouldHaveSubDiagDecoration returned false.
+     * 
+     */
+    public static final class NoSubDecorationDescriptor {
+
     }
 
     /**
