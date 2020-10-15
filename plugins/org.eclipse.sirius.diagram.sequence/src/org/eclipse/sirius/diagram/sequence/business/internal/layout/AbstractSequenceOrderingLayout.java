@@ -12,7 +12,6 @@ package org.eclipse.sirius.diagram.sequence.business.internal.layout;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -24,6 +23,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 
 import com.google.common.base.Function;
+import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
 /**
@@ -62,6 +62,11 @@ public abstract class AbstractSequenceOrderingLayout<S, T, U> extends AbstractSe
      * Old flagged absolute bounds.
      */
     protected final Map<S, Rectangle> oldFlaggedLayoutData;
+
+    /**
+     * Flag to indicates that semanticOrdering, graphicalOrdering and flaggedEnds are equals.
+     */
+    private boolean allOrderingInSync;
 
     /**
      * Constructor.
@@ -110,46 +115,37 @@ public abstract class AbstractSequenceOrderingLayout<S, T, U> extends AbstractSe
         int flaggedIndex = flaggedEnds.indexOf(element);
 
         if (flaggedIndex != -1 && semanticIndex != 0 && graphicalIndex != -1) {
-            Set<U> semanticPredecessors = new LinkedHashSet<>(semanticOrdering.subList(0, semanticIndex));
-            Set<U> graphicalPredecessors = new LinkedHashSet<>(graphicalOrdering.subList(0, graphicalIndex));
-            Set<U> flaggedPredecessors = new LinkedHashSet<>(flaggedEnds.subList(0, flaggedIndex));
-
-            // Intersection
-            HashSet<U> flaggedEndsSet = new LinkedHashSet<>(flaggedEnds);
-            semanticPredecessors = Sets.intersection(semanticPredecessors, flaggedEndsSet);
-            graphicalPredecessors = Sets.intersection(graphicalPredecessors, flaggedEndsSet);
-            flaggedPredecessors = Sets.intersection(flaggedPredecessors, semanticPredecessors);
-
             // Which is the safer position ?
             Function<U, Integer> oldPosition = getOldPosition();
             U flaggedPred = null;
 
-            Optional<U> lastGraphPredecessor = getLastGraphPredecessorIfEquals(semanticPredecessors, graphicalPredecessors);
-
-            if (lastGraphPredecessor.isPresent()) {
-                flaggedPred = lastGraphPredecessor.get();
+            if (allOrderingInSync && semanticIndex == flaggedIndex && semanticIndex == graphicalIndex) {
+                // If all ordering are in sync and if indexes are equals as expected : shortcut, take the graphical
+                // predecessors without looking for it.
+                int predecessorIndex = graphicalIndex - 1;
+                flaggedPred = graphicalOrdering.get(predecessorIndex);
             } else {
-                // Desynchronisation -> flagged position
-                oldPosition = getOldFlaggedPosition();
+                Set<U> semanticPredecessors = new LinkedHashSet<>(semanticOrdering.subList(0, semanticIndex));
+                Set<U> graphicalPredecessors = new LinkedHashSet<>(graphicalOrdering.subList(0, graphicalIndex));
+                Set<U> flaggedPredecessors = new LinkedHashSet<>(flaggedEnds.subList(0, flaggedIndex));
 
-                // Look for the last semantic predecessor with same index in
-                // semantic and flagged lists.
-                U potentialSafePred = null;
-                Iterator<U> semanticPredecessorsIterator = semanticPredecessors.iterator();
-                Iterator<U> flaggedPredecessorsIterator = flaggedPredecessors.iterator();
-                int i = 0;
+                // Intersection
+                Set<U> flaggedEndsSet = new LinkedHashSet<>(flaggedEnds);
+                semanticPredecessors = Sets.intersection(semanticPredecessors, flaggedEndsSet);
+                graphicalPredecessors = Sets.intersection(graphicalPredecessors, flaggedEndsSet);
+                flaggedPredecessors = Sets.intersection(flaggedPredecessors, semanticPredecessors);
 
-                while (flaggedPredecessorsIterator.hasNext() && semanticPredecessorsIterator.hasNext() && i < flaggedPredecessors.size()) {
-                    U flaggedPot = flaggedPredecessorsIterator.next();
-                    U semPot = semanticPredecessorsIterator.next();
-                    if (semPot != null && semPot.equals(flaggedPot)) {
-                        potentialSafePred = semPot;
+                Optional<U> lastGraphPredecessor = getLastGraphPredecessorIfEquals(semanticPredecessors, graphicalPredecessors);
+                if (lastGraphPredecessor.isPresent()) {
+                    flaggedPred = lastGraphPredecessor.get();
+                } else {
+                    // Desynchronisation -> flagged position
+                    oldPosition = getOldFlaggedPosition();
+
+                    Optional<U> potentialSafePred = getLastFlaggedPredecessor(semanticPredecessors, flaggedPredecessors);
+                    if (potentialSafePred.isPresent()) {
+                        flaggedPred = potentialSafePred.get();
                     }
-                    i++;
-                }
-
-                if (potentialSafePred != null) {
-                    flaggedPred = potentialSafePred;
                 }
             }
             if (flaggedPred != null) {
@@ -184,6 +180,32 @@ public abstract class AbstractSequenceOrderingLayout<S, T, U> extends AbstractSe
             result = Optional.ofNullable(lastGraphPredecessor);
         }
         return result;
+    }
+
+    private Optional<U> getLastFlaggedPredecessor(Set<U> semanticPredecessors, Set<U> flaggedPredecessors) {
+        // Look for the last semantic predecessor with same index in
+        // semantic and flagged lists.
+        U potentialSafePred = null;
+        Iterator<U> semanticPredecessorsIterator = semanticPredecessors.iterator();
+        Iterator<U> flaggedPredecessorsIterator = flaggedPredecessors.iterator();
+        int i = 0;
+
+        while (flaggedPredecessorsIterator.hasNext() && semanticPredecessorsIterator.hasNext() && i < flaggedPredecessors.size()) {
+            U flaggedPot = flaggedPredecessorsIterator.next();
+            U semPot = semanticPredecessorsIterator.next();
+            if (semPot != null && semPot.equals(flaggedPot)) {
+                potentialSafePred = semPot;
+            }
+            i++;
+        }
+        return Optional.ofNullable(potentialSafePred);
+    }
+
+    /**
+     * Check if all elements in the orderings are equals. Set allOrderingInSync to true if it is the case.
+     */
+    protected void checkOrderingSync() {
+        allOrderingInSync = Iterables.elementsEqual(semanticOrdering, graphicalOrdering) && Iterables.elementsEqual(semanticOrdering, flaggedEnds);
     }
 
     /**

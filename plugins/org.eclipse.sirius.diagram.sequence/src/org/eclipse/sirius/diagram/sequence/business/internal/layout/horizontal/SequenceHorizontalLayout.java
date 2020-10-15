@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,21 +51,21 @@ import com.google.common.base.Function;
 import com.google.common.base.Predicates;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.Multimaps;
 import com.google.common.collect.Ordering;
 
 /**
- * Computes the appropriate graphical locations of sequence events and lifelines
- * on a sequence diagram to reflect the semantic order.
+ * Computes the appropriate graphical locations of sequence events and lifelines on a sequence diagram to reflect the
+ * semantic order.
  * 
  * @author pcdavid, mporhel
  */
 public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISequenceElement, Rectangle, InstanceRole> {
 
     private static final Function<Rectangle, Integer> RECT_TO_X = new Function<Rectangle, Integer>() {
+        @Override
         public Integer apply(Rectangle input) {
             return input.x;
         }
@@ -73,28 +73,27 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
 
     private final Insets padding = new Insets(LayoutConstants.LIFELINES_START_Y, LayoutConstants.LIFELINES_START_X, 0, LayoutConstants.LIFELINES_MIN_X_GAP - LayoutConstants.LIFELINES_START_X);
 
-    private final Collection<AbstractFrame> frames = Lists.newArrayList();
+    private final Collection<AbstractFrame> frames = new ArrayList<>();
 
     private final Multimap<AbstractFrame, Lifeline> coverage = HashMultimap.create();
 
     private final Multimap<Lifeline, AbstractFrame> invCoverage = HashMultimap.create();
 
-    private final Map<AbstractFrame, Range> ranges = Maps.newHashMap();
+    private final Map<AbstractFrame, Range> ranges = new HashMap<>();
 
-    private final Map<AbstractFrame, Integer> frameChildrenDepths = Maps.newHashMap();
+    private final Map<AbstractFrame, Integer> frameChildrenDepths = new HashMap<>();
 
-    private final Map<Lifeline, Integer> lifelineChildrenDepths = Maps.newHashMap();
+    private final Map<Lifeline, Integer> lifelineChildrenDepths = new HashMap<>();
 
     private LostMessageEndHorizontalLayoutHelper lostMessageEndHorizontalLayoutHelper;
 
-    private final Map<Message, Integer> reflexiveMessagesToLayout = Maps.newHashMap();
+    private final Map<Message, Integer> reflexiveMessagesToLayout = new HashMap<>();
 
     /**
      * Constructor.
      * 
      * @param diagram
-     *            the sequence diagram for which to compute the horizontal
-     *            locations.
+     *            the sequence diagram for which to compute the horizontal locations.
      */
     public SequenceHorizontalLayout(SequenceDiagram diagram) {
         super(diagram);
@@ -132,7 +131,7 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
      */
     @Override
     protected Map<ISequenceElement, Rectangle> computeLayout(boolean pack) {
-        LinkedHashMap<ISequenceElement, Rectangle> allMoves = Maps.newLinkedHashMap();
+        LinkedHashMap<ISequenceElement, Rectangle> allMoves = new LinkedHashMap<>();
 
         Map<LostMessageEnd, Integer> lostEndsDelta = lostMessageEndHorizontalLayoutHelper.computeLostMessageEndDeltaWithLifeline(pack);
         Map<Message, Rectangle> reflexiveMessagesMoves = computeReflexiveMessagesHorizontalBounds();
@@ -224,6 +223,7 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
         if (sequenceDDiagram != null && !sequenceDDiagram.getInstanceRoleSemanticOrdering().getSemanticInstanceRoles().isEmpty()) {
             final List<EObject> semanticOrder = sequenceDDiagram.getInstanceRoleSemanticOrdering().getSemanticInstanceRoles();
             Function<InstanceRole, Integer> semanticIndex = new Function<InstanceRole, Integer>() {
+                @Override
                 public Integer apply(InstanceRole ir) {
                     Option<EObject> semIr = ir.getSemanticTargetElement();
                     return semIr.some() ? semanticOrder.indexOf(semIr.get()) : -1;
@@ -242,6 +242,8 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
         }
 
         Collections.sort(flaggedEnds, Ordering.natural().onResultOf(getOldFlaggedPosition()));
+
+        checkOrderingSync();
     }
 
     private void populateLifelineDepth() {
@@ -258,7 +260,7 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
     }
 
     private void populateFrames() {
-        Collection<AbstractFrame> allFrames = Lists.newArrayList();
+        Collection<AbstractFrame> allFrames = new ArrayList<>();
         allFrames.addAll(sequenceDiagram.getAllInteractionUses());
         allFrames.addAll(sequenceDiagram.getAllCombinedFragments());
 
@@ -312,7 +314,7 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
                 Range potentialRange = ranges.get(potentialChild);
 
                 if (frame != potentialChild && frameCoverage.containsAll(potentialCoverage) && frameRange.includes(potentialRange)) {
-                    ArrayList<AbstractFrame> newArrayList = Lists.newArrayList(framesToIgnore);
+                    ArrayList<AbstractFrame> newArrayList = new ArrayList<AbstractFrame>(framesToIgnore);
                     newArrayList.add(potentialChild);
                     children = Math.max(children, 1 + getOrComputeMaxChildrenDepth(potentialChild, newArrayList));
                 }
@@ -325,7 +327,7 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
     }
 
     private Map<AbstractFrame, Rectangle> computeFrameHorizontalBounds(Map<InstanceRole, Rectangle> irMoves, Map<LostMessageEnd, Integer> lostEndsDelta) {
-        Map<AbstractFrame, Rectangle> frameMoves = Maps.newHashMap();
+        Map<AbstractFrame, Rectangle> frameMoves = new HashMap<>();
 
         for (AbstractFrame frame : frames) {
             Rectangle newBounds = null;
@@ -390,8 +392,7 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
      * @param lostEndsDelta
      * @param reflexiveMessagesMoves
      * 
-     * @return a map associating each instance role edit part to the new
-     *         absolute horizontal location it should have.
+     * @return a map associating each instance role edit part to the new absolute horizontal location it should have.
      */
     private Map<InstanceRole, Rectangle> computeInstanceRoleHorizontalLocations(boolean pack, Map<LostMessageEnd, Integer> lostEndsDelta) {
         final Map<InstanceRole, Rectangle> computedMoves = new HashMap<InstanceRole, Rectangle>();
@@ -405,8 +406,8 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
     }
 
     /**
-     * Compute and store the new bounds of the instance roles, the x location
-     * will be the only modified value. Return the next minimum x.
+     * Compute and store the new bounds of the instance roles, the x location will be the only modified value. Return
+     * the next minimum x.
      */
     private int computeLocation(final int currentX, final InstanceRole instanceRole, boolean pack, Map<LostMessageEnd, Integer> lostEndsDelta, final Map<InstanceRole, Rectangle> computedMoves) {
         final Rectangle oldBounds = instanceRole.getProperLogicalBounds();
@@ -495,8 +496,7 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
      * @param lifeline
      *            the current lifeline.
      * @param zone
-     *            if not null, the restricted vertical range to look for
-     *            execution and lost ends.
+     *            if not null, the restricted vertical range to look for execution and lost ends.
      * @param irWidth
      *            the instance role width.
      * @param lostEndsDelta
@@ -617,7 +617,7 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
                     RelativeBendpoint newP1 = new RelativeBendpoint(p1.getSourceX() + deltaX, p1.getSourceY(), p1.getTargetX() + deltaX, p1.getTargetY());
                     RelativeBendpoint newP2 = new RelativeBendpoint(p2.getSourceX() + deltaX, p2.getSourceY(), p2.getTargetX() + deltaX, p2.getTargetY());
 
-                    List<RelativeBendpoint> newPoints = Lists.newArrayList();
+                    List<RelativeBendpoint> newPoints = new ArrayList<>();
                     newPoints.add(p0);
                     newPoints.add(newP1);
                     newPoints.add(newP2);
@@ -634,6 +634,7 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
     @Override
     protected Function<InstanceRole, Integer> getOldPosition() {
         return new Function<InstanceRole, Integer>() {
+            @Override
             public Integer apply(InstanceRole input) {
                 return input.getProperLogicalBounds().x;
             }
@@ -643,6 +644,7 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
     @Override
     protected Function<InstanceRole, Integer> getOldFlaggedPosition() {
         return new Function<InstanceRole, Integer>() {
+            @Override
             public Integer apply(InstanceRole input) {
                 int oldFlaggedPosition = Integer.MIN_VALUE;
                 Rectangle flaggedData = oldFlaggedLayoutData.get(input);
