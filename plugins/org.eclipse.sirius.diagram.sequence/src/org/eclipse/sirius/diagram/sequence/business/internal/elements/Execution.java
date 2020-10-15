@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
 import java.text.MessageFormat;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -26,6 +27,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConsta
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceNodeQuery;
+import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.ParentOperandFinder;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.RangeSetter;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.SubEventsHelper;
@@ -50,8 +52,7 @@ import com.google.common.collect.Sets;
  */
 public class Execution extends AbstractNodeEvent {
     /**
-     * Predicate to filter Frames and Operand from possible new parents of an
-     * execution reparent.
+     * Predicate to filter Frames and Operand from possible new parents of an execution reparent.
      */
     public static final Predicate<ISequenceEvent> NO_REPARENTABLE_EVENTS = new Predicate<ISequenceEvent>() {
         @Override
@@ -66,8 +67,7 @@ public class Execution extends AbstractNodeEvent {
     public static final int VISUAL_ID = 3001;
 
     /**
-     * Predicate to check whether a Sirius DDiagramElement represents an
-     * execution.
+     * Predicate to check whether a Sirius DDiagramElement represents an execution.
      */
     private enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
@@ -100,11 +100,9 @@ public class Execution extends AbstractNodeEvent {
     }
 
     /**
-     * Returns a predicate to check whether a Sirius DDiagramElement represents
-     * an execution.
+     * Returns a predicate to check whether a Sirius DDiagramElement represents an execution.
      * 
-     * @return a predicate to check whether a Sirius DDiagramElement represents
-     *         an execution.
+     * @return a predicate to check whether a Sirius DDiagramElement represents an execution.
      */
     public static Predicate<DDiagramElement> viewpointElementPredicate() {
         return SiriusElementPredicate.INSTANCE;
@@ -128,8 +126,7 @@ public class Execution extends AbstractNodeEvent {
     }
 
     /**
-     * Returns the message linked to the start (i.e. top side) of this
-     * execution, if any.
+     * Returns the message linked to the start (i.e. top side) of this execution, if any.
      * 
      * @return the message linked to the start of this execution, if any.
      */
@@ -138,31 +135,56 @@ public class Execution extends AbstractNodeEvent {
     }
 
     private Option<Message> getCompoundMessage(boolean start) {
-        Node node = getNotationNode();
-        Set<Edge> edges = Sets.newHashSet();
-        Iterables.addAll(edges, Iterables.filter(node.getSourceEdges(), Edge.class));
-        Iterables.addAll(edges, Iterables.filter(node.getTargetEdges(), Edge.class));
+        Message result = null;
+        Option<Message> resultOption = Options.newNone();
+        if (CacheHelper.isDragTrackerCacheEnabled()) {
+            if (start) {
+                result = CacheHelper.getStartCompoundMessageCache().get(this);
+            } else {
+                result = CacheHelper.getEndCompoundMessageCache().get(this);
+            }
+            if (result != null) {
+                resultOption = Options.newSome(result);
+            }
+        }
 
-        List<EventEnd> ends = EventEndHelper.findEndsFromSemanticOrdering(this);
-        for (Edge edge : edges) {
-            Option<Message> message = ISequenceElementAccessor.getMessage(edge);
-            if (message.some()) {
-                List<EventEnd> messageEnds = EventEndHelper.findEndsFromSemanticOrdering(message.get());
-                Iterables.retainAll(messageEnds, ends);
-                if (!messageEnds.isEmpty()) {
-                    SingleEventEnd see = EventEndHelper.getSingleEventEnd(messageEnds.get(0), getSemanticTargetElement().get());
-                    if (start == see.isStart()) {
-                        return message;
+        if (!resultOption.some()) {
+            Node node = getNotationNode();
+            Set<Edge> edges = new HashSet<>();
+            Iterables.addAll(edges, Iterables.filter(node.getSourceEdges(), Edge.class));
+            Iterables.addAll(edges, Iterables.filter(node.getTargetEdges(), Edge.class));
+
+            List<EventEnd> ends = EventEndHelper.findEndsFromSemanticOrdering(this);
+            for (Edge edge : edges) {
+                Option<Message> message = ISequenceElementAccessor.getMessage(edge);
+                if (message.some()) {
+                    List<EventEnd> messageEnds = EventEndHelper.findEndsFromSemanticOrdering(message.get());
+                    Iterables.retainAll(messageEnds, ends);
+                    if (!messageEnds.isEmpty()) {
+                        SingleEventEnd see = EventEndHelper.getSingleEventEnd(messageEnds.get(0), getSemanticTargetElement().get());
+                        if (start == see.isStart()) {
+                            putMessageInCache(start, message.get());
+                            return message;
+                        }
                     }
                 }
             }
         }
-        return Options.newNone();
+        return resultOption;
+    }
+
+    private void putMessageInCache(boolean start, Message message) {
+        if (CacheHelper.isDragTrackerCacheEnabled()) {
+            if (start) {
+                CacheHelper.getStartCompoundMessageCache().put(this, message);
+            } else {
+                CacheHelper.getEndCompoundMessageCache().put(this, message);
+            }
+        }
     }
 
     /**
-     * Returns the message linked to the end (i.e. bottom side) of this
-     * execution, if any.
+     * Returns the message linked to the end (i.e. bottom side) of this execution, if any.
      * 
      * @return the message linked to the end of this execution, if any.
      */
@@ -173,8 +195,7 @@ public class Execution extends AbstractNodeEvent {
     /**
      * Tests whether this execution starts with a reflective message.
      * 
-     * @return <code>true</code> if this execution has a reflective message
-     *         linked to its start.
+     * @return <code>true</code> if this execution has a reflective message linked to its start.
      */
     public boolean startsWithReflectiveMessage() {
         Option<Message> startMessage = getStartMessage();
@@ -188,8 +209,7 @@ public class Execution extends AbstractNodeEvent {
     /**
      * Tests whether this execution ends with a reflective message.
      * 
-     * @return <code>true</code> if this execution has a reflective message
-     *         linked to its end.
+     * @return <code>true</code> if this execution has a reflective message linked to its end.
      */
     public boolean endsWithReflectiveMessage() {
         Option<Message> finishMessage = getEndMessage();
@@ -201,9 +221,8 @@ public class Execution extends AbstractNodeEvent {
     }
 
     /**
-     * Validate that the execution is reflective. Therefore, its start message
-     * must be reflective and its return message must be null (Asynchronous
-     * message) or reflexive.
+     * Validate that the execution is reflective. Therefore, its start message must be reflective and its return message
+     * must be null (Asynchronous message) or reflexive.
      * 
      * @return if the execution is reflective
      */
@@ -355,8 +374,7 @@ public class Execution extends AbstractNodeEvent {
     }
 
     /**
-     * Sub-events can occur anywhere on a normal execution as long as it is
-     * strictly inside.
+     * Sub-events can occur anywhere on a normal execution as long as it is strictly inside.
      * <p>
      * {@inheritDoc}
      */
@@ -371,9 +389,8 @@ public class Execution extends AbstractNodeEvent {
     }
 
     /**
-     * Finds all linked executions (by messages with CompoundEventEnd) from
-     * executionEditPart. Depending on the value of investigateRecursively, it
-     * will recursively investigate the linked execution.
+     * Finds all linked executions (by messages with CompoundEventEnd) from executionEditPart. Depending on the value of
+     * investigateRecursively, it will recursively investigate the linked execution.
      * 
      * @param recurse
      *            investigate recursively if true
@@ -386,8 +403,7 @@ public class Execution extends AbstractNodeEvent {
     }
 
     /**
-     * Recursive function of the previous one that add the result in the
-     * parameter list impactedExecutionEditPart.
+     * Recursive function of the previous one that add the result in the parameter list impactedExecutionEditPart.
      * 
      * @param impactedExecutioExecutions
      *            the list of linked {@link Execution} from executionEditPart
@@ -419,11 +435,9 @@ public class Execution extends AbstractNodeEvent {
     }
 
     /**
-     * Returns the extended vertical range of this execution, i.e. the vertical
-     * range of the execution including any extensions like branches for linked
-     * start/end reflective messages. This corresponds to the range of all the
-     * elements which are tied to the execution and will move along with it when
-     * the execution is moved.
+     * Returns the extended vertical range of this execution, i.e. the vertical range of the execution including any
+     * extensions like branches for linked start/end reflective messages. This corresponds to the range of all the
+     * elements which are tied to the execution and will move along with it when the execution is moved.
      * 
      * @return the extended vertical range of this execution.
      */

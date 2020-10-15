@@ -18,6 +18,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 
 /**
@@ -35,6 +36,10 @@ public final class CacheHelper {
     private static ConcurrentHashMap<ISequenceEvent, Collection<ISequenceEvent>> subEventsCache = new ConcurrentHashMap<>();
 
     private static ConcurrentHashMap<View, Range> viewToRangeCache = new ConcurrentHashMap<>();
+
+    private static ConcurrentHashMap<ISequenceEvent, Message> startCompoundMessageCache = new ConcurrentHashMap<>();
+
+    private static ConcurrentHashMap<ISequenceEvent, Message> endCompoundMessageCache = new ConcurrentHashMap<>();
 
     /**
      * Avoid instantiation.
@@ -69,6 +74,8 @@ public final class CacheHelper {
         coverageCache.clear();
         subEventsCache.clear();
         viewToRangeCache.clear();
+        startCompoundMessageCache.clear();
+        endCompoundMessageCache.clear();
     }
 
     /**
@@ -112,5 +119,23 @@ public final class CacheHelper {
      */
     public static Map<View, Range> getViewToRangeCache() {
         return viewToRangeCache;
+    }
+
+    /**
+     * get start message cache.
+     * 
+     * @return the message
+     */
+    public static ConcurrentHashMap<ISequenceEvent, Message> getStartCompoundMessageCache() {
+        return startCompoundMessageCache;
+    }
+
+    /**
+     * get end message cache.
+     * 
+     * @return the message
+     */
+    public static ConcurrentHashMap<ISequenceEvent, Message> getEndCompoundMessageCache() {
+        return endCompoundMessageCache;
     }
 }
