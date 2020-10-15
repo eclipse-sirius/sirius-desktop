@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,15 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
-import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
@@ -55,7 +53,11 @@ import com.google.common.collect.Lists;
  */
 public class AbstractNodeEventResizeSelectionValidator {
 
-    private static final String EXECUTION_RESIZE_VALIDATOR = "org.eclipse.sirius.sequence.resize.execution.validator"; //$NON-NLS-1$
+    /** Last validator. */
+    protected static AbstractNodeEventResizeSelectionValidator lastValidator;
+
+    /** Last request. */
+    protected static ChangeBoundsRequest lastRequest;
 
     /**
      * The expansionZine.
@@ -67,10 +69,8 @@ public class AbstractNodeEventResizeSelectionValidator {
      */
     protected ISequenceEvent finalParent;
 
-    /**
-     * Common map of future location for executions in move/resize.
-     */
-    protected Map<AbstractNodeEvent, Location> moveDeltas = new HashMap<AbstractNodeEvent, Location>();
+    /** validation done ? */
+    protected boolean validationDone;
 
     private boolean valid;
 
@@ -115,9 +115,9 @@ public class AbstractNodeEventResizeSelectionValidator {
      * reconnection.
      */
     public final void validate() {
-        if (!initialized) {
+        if (!validationDone) {
             doValidation();
-            initialized = true;
+            validationDone = true;
         }
     }
 
@@ -127,6 +127,10 @@ public class AbstractNodeEventResizeSelectionValidator {
      */
     private void doValidation() {
         Preconditions.checkNotNull(host, Messages.AbstractNodeEventResizeSelectionValidator_nullExecution);
+        if (!initialized) {
+            // Nothing to do
+            initialized = true;
+        }
 
         FinalParentHelper finalParentHelper = new FinalParentHelper(host, requestQuery);
         finalParentHelper.computeFinalParent();
@@ -136,7 +140,6 @@ public class AbstractNodeEventResizeSelectionValidator {
         if (finalParent == null && requestQuery.isResizeFromBottom() && expansionZone != null && expansionZone.width() != 0) {
             finalParent = host.getParentEvent();
         }
-
         valid = validateNewBoundsForAllTargets() && finalParent != null;
         valid = valid && checkGlobalPositions();
     }
@@ -221,6 +224,7 @@ public class AbstractNodeEventResizeSelectionValidator {
         }
         return okForParent;
     }
+
     /**
      * If this execution is delimited by a start and finish message, make sure they always point to the same remote
      * execution/lifeline.
@@ -412,21 +416,35 @@ public class AbstractNodeEventResizeSelectionValidator {
      * @return a validator.
      */
     public static AbstractNodeEventResizeSelectionValidator getOrCreateValidator(ChangeBoundsRequest cbr, AbstractNodeEvent host) {
-        RequestQuery requestQuery = new RequestQuery(cbr);
         AbstractNodeEventResizeSelectionValidator validator = null;
-        Object object = cbr.getExtendedData().get(EXECUTION_RESIZE_VALIDATOR);
-        if (object instanceof AbstractNodeEventResizeSelectionValidator) {
-            validator = (AbstractNodeEventResizeSelectionValidator) object;
-            if (!validator.getRequestQuery().getLogicalDelta().equals(requestQuery.getLogicalDelta())) {
-                validator = null;
-            }
+        if (lastRequest != cbr) {
+            lastValidator = null;
+            lastRequest = null;
+        } else {
+            validator = lastValidator;
+        }
+        RequestQuery requestQuery = new RequestQuery(cbr);
+        if (validator != null && validator.getRequestQuery().getLogicalDelta() != new RequestQuery(lastRequest).getLogicalDelta() && validateSameSelection(validator, cbr, requestQuery, host)) {
+            validator.reInit(requestQuery);
         }
 
         if (validator == null && requestQuery.isResize()) {
             validator = new AbstractNodeEventResizeSelectionValidator(host, cbr);
-            cbr.getExtendedData().put(EXECUTION_RESIZE_VALIDATOR, validator);
+            lastValidator = validator;
+            lastRequest = cbr;
         }
         return validator;
+    }
+
+    private void reInit(RequestQuery rq) {
+        validationDone = false;
+        requestQuery = rq;
+        valid = false;
+        invalidPositions = new ArrayList<>();
+    }
+
+    private static boolean validateSameSelection(AbstractNodeEventResizeSelectionValidator validator, ChangeBoundsRequest cbr, RequestQuery requestQuery, ISequenceEvent host) {
+        return !requestQuery.getISequenceEvents().isEmpty() && requestQuery.getISequenceEvents().iterator().next().equals(validator.host);
     }
 
     private RequestQuery getRequestQuery() {
