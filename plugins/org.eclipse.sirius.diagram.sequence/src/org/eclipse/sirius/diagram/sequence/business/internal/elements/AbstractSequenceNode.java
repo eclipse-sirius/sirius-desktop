@@ -27,6 +27,9 @@ import org.eclipse.sirius.ext.base.Options;
  * @author mporhel, pcdavid
  */
 abstract class AbstractSequenceNode extends AbstractSequenceElement implements ISequenceNode {
+
+    protected Option<Lifeline> cachedLifeline;
+
     /**
      * Constructor.
      * 
@@ -77,7 +80,14 @@ abstract class AbstractSequenceNode extends AbstractSequenceElement implements I
 
     @Override
     public Option<Lifeline> getLifeline() {
-        return getParentLifeline();
+        Option<Lifeline> result;
+        if (cachedLifeline != null) {
+            result = cachedLifeline;
+        } else {
+            result = getParentLifeline();
+            cachedLifeline = result;
+        }
+        return result;
     }
 
     /**
