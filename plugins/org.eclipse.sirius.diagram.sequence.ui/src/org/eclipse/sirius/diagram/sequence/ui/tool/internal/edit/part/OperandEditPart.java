@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,11 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.GraphicalViewer;
+import org.eclipse.gef.Request;
+import org.eclipse.gef.requests.SelectionRequest;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
@@ -28,9 +32,12 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.Seque
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.OperandResizableEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.OperandFigure;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceDragEditPartsTrackerEx;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceNoCopyDragEditPartsTrackerEx;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.OneLineMarginBorder;
+import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.RubberbandDragTracker;
 import org.eclipse.sirius.viewpoint.DStylizable;
 
 import com.google.common.base.Preconditions;
@@ -70,8 +77,7 @@ public class OperandEditPart extends DNodeContainer2EditPart implements ISequenc
     }
 
     /**
-     * Overridden to install a specific edit policy managing the moving and
-     * resizing requests on operands.
+     * Overridden to install a specific edit policy managing the moving and resizing requests on operands.
      * <p>
      * {@inheritDoc}
      */
@@ -120,8 +126,7 @@ public class OperandEditPart extends DNodeContainer2EditPart implements ISequenc
     /**
      * {@inheritDoc}
      * 
-     * Overridden to create our own figure without border but only a bottom dash
-     * line.
+     * Overridden to create our own figure without border but only a bottom dash line.
      */
     @Override
     protected IFigure createNodeShape() {
@@ -170,5 +175,21 @@ public class OperandEditPart extends DNodeContainer2EditPart implements ISequenc
         Preconditions.checkArgument(getParent() instanceof CombinedFragmentCompartmentEditPart);
         Preconditions.checkArgument(getParent().getParent() instanceof CombinedFragmentEditPart);
         return (CombinedFragmentEditPart) getParent().getParent();
+    }
+
+    @Override
+    public DragTracker getDragTracker(final Request request) {
+        DragTracker result = null;
+        if (result == null && request instanceof SelectionRequest && ((SelectionRequest) request).getLastButtonPressed() == 3) {
+            result = new SequenceDragEditPartsTrackerEx(this);
+        } else {
+            if (request instanceof SelectionRequest && ((SelectionRequest) request).isAltKeyPressed()) {
+                result = new RubberbandDragTracker();
+            } else {
+                return new SequenceNoCopyDragEditPartsTrackerEx(this);
+
+            }
+        }
+        return result;
     }
 }
