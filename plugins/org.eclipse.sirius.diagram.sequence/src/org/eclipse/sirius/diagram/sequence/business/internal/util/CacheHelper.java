@@ -10,6 +10,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.util;
 
+import java.util.Collection;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
+
 /**
  * Sequence cache helper.
  * 
@@ -19,6 +26,8 @@ package org.eclipse.sirius.diagram.sequence.business.internal.util;
 public final class CacheHelper {
 
     private static boolean dragTrackercacheEnabled;
+
+    private static Map<AbstractFrame, Collection<Lifeline>> coverageCache = new ConcurrentHashMap<>();
 
     /**
      * Avoid instantiation.
@@ -50,6 +59,7 @@ public final class CacheHelper {
      * Clear drag tracker caches.
      */
     public static void clearDragTrackerCaches() {
+        coverageCache.clear();
     }
 
     /**
@@ -68,4 +78,12 @@ public final class CacheHelper {
         CacheHelper.setDragTrackerCacheEnabled(true);
     }
 
+    /**
+     * Get AbstractFrame.coveredCache.
+     * 
+     * @return Map<AbstractFrame, Collection<Lifeline>>
+     */
+    public static Map<AbstractFrame, Collection<Lifeline>> getCoverageCache() {
+        return coverageCache;
+    }
 }
