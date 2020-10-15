@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.sequence.Messages;
+import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.EventFinder;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.ParentOperandFinder;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
@@ -50,7 +51,7 @@ import com.google.common.base.Predicates;
  */
 public abstract class AbstractFrame extends AbstractSequenceNode implements ISequenceEvent {
 
-    private static final ProfilerTask COVERAGE = new ProfilerTask(Messages.AbstractFrame_coverageProfilerTaskCategory, Messages.AbstractFrame_coverageProfilerTaskName, SiriusTasks.IMAGES_VIEWPOINT); 
+    private static final ProfilerTask COVERAGE = new ProfilerTask(Messages.AbstractFrame_coverageProfilerTaskCategory, Messages.AbstractFrame_coverageProfilerTaskName, SiriusTasks.IMAGES_VIEWPOINT);
 
     /**
      * Constructor.
@@ -79,8 +80,7 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
     @Override
     public Rectangle getProperLogicalBounds() {
         /*
-         * Combined Fragments are directly on the diagram itself, so we can use
-         * the raw GMF bounds as is.
+         * Combined Fragments are directly on the diagram itself, so we can use the raw GMF bounds as is.
          */
         return getRawNotationBounds();
     }
@@ -91,7 +91,15 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
      * @return the covered lifelines.
      */
     public Collection<Lifeline> computeCoveredLifelines() {
+        if (CacheHelper.isDragTrackerCacheEnabled()) {
+            Collection<Lifeline> coverage = CacheHelper.getCoverageCache().get(this);
+            if (coverage != null) {
+                return new ArrayList<Lifeline>(coverage);
+            }
+        }
+
         DslCommonPlugin.PROFILER.startWork(COVERAGE);
+
         Collection<EObject> semLifelines = new ArrayList<>();
         Collection<Lifeline> coveredLifelines = new ArrayList<>();
 
@@ -123,6 +131,11 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
         }
 
         DslCommonPlugin.PROFILER.stopWork(COVERAGE);
+
+        if (CacheHelper.isDragTrackerCacheEnabled()) {
+            CacheHelper.getCoverageCache().put(this, coveredLifelines);
+        }
+
         return coveredLifelines;
     }
 
@@ -140,17 +153,16 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
      * Get the covered lifelines.
      * 
      * @param coveredLifelines
-     *            a collection of lifelines that should be a subset of computed
-     *            lifelines (NO CHECK)
+     *            a collection of lifelines that should be a subset of computed lifelines (NO CHECK)
      * 
      * @return the covered lifelines.
      */
     public Collection<ISequenceEvent> computeParentEvents(Collection<Lifeline> coveredLifelines) {
         Collection<ISequenceEvent> parentEvents = new HashSet<>();
+        Range verticalRange = this.getVerticalRange();
         for (Lifeline lifeline : coveredLifelines) {
             EventFinder finder = new EventFinder(lifeline);
             finder.setEventsToIgnore(Predicates.equalTo((ISequenceEvent) this));
-            Range verticalRange = this.getVerticalRange();
             ISequenceEvent localParent = finder.findMostSpecificEvent(verticalRange);
             if (localParent != null && localParent.getVerticalRange().includes(verticalRange)) {
                 parentEvents.add(localParent);
