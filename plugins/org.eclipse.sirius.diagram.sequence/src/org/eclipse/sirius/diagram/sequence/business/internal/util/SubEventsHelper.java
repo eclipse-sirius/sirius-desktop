@@ -89,8 +89,17 @@ public final class SubEventsHelper {
      *         bottom.
      */
     public List<ISequenceEvent> getSubEvents() {
+        Collection<ISequenceEvent> subEvents = CacheHelper.getSubEventsCache().get(parentEvent);
+        if (subEvents != null) {
+            return new ArrayList<ISequenceEvent>(subEvents);
+        }
+
         List<ISequenceEvent> result = getValidSubEvents();
         Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+
+        if (CacheHelper.isDragTrackerCacheEnabled()) {
+            CacheHelper.getSubEventsCache().put(parentEvent, new ArrayList<>(result));
+        }
         return result;
     }
 
