@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
+import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
 import org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping;
 import org.eclipse.sirius.diagram.sequence.description.ExecutionMapping;
 import org.eclipse.sirius.diagram.sequence.description.StateMapping;
@@ -71,8 +72,7 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
     }
 
     /**
-     * This method is overridden to have the Lifeline (bordered node) starting
-     * from the border of the Instance Role.
+     * This method is overridden to have the Lifeline (bordered node) starting from the border of the Instance Role.
      * <p>
      * {@inheritDoc}
      */
@@ -124,8 +124,8 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
     }
 
     /**
-     * This method has been overridden to be able to select the parent
-     * InstanceRoleEditPart when selecting this LifelineEditPart.
+     * This method has been overridden to be able to select the parent InstanceRoleEditPart when selecting this
+     * LifelineEditPart.
      * <p>
      * {@inheritDoc}
      */
@@ -139,8 +139,8 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
     }
 
     /**
-     * This method has been overridden to use a specific Tracker to be able to
-     * select the InstanceRole and group requests.
+     * This method has been overridden to use a specific Tracker to be able to select the InstanceRole and group
+     * requests.
      * <p>
      * {@inheritDoc}
      */
@@ -155,8 +155,7 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
     }
 
     /**
-     * This method has been overridden to use a specific BorderItemLocator to
-     * place the Destroy end item properly.
+     * This method has been overridden to use a specific BorderItemLocator to place the Destroy end item properly.
      * <p>
      * {@inheritDoc}
      */
@@ -202,8 +201,8 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
     }
 
     /**
-     * Specific tracker used to select the parent InstanceRole instead of the
-     * RootExecution and append request on RootExecution to InstanceRole.
+     * Specific tracker used to select the parent InstanceRole instead of the RootExecution and append request on
+     * RootExecution to InstanceRole.
      * 
      * @author smonnier
      */
@@ -220,10 +219,8 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
         }
 
         /**
-         * This method has been overridden to be able to manipulate the parent
-         * InstanceRoleEditPart as well as this LifelineEditPart. For instance,
-         * moving the LifelineEditPart will also move the parent
-         * InstanceRoleEditPart.
+         * This method has been overridden to be able to manipulate the parent InstanceRoleEditPart as well as this
+         * LifelineEditPart. For instance, moving the LifelineEditPart will also move the parent InstanceRoleEditPart.
          * <p>
          * {@inheritDoc}
          */
@@ -240,8 +237,8 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
         }
 
         /**
-         * This method has been overridden to be able to select the parent
-         * InstanceRoleEditPart when selecting this LifelineEditPart.
+         * This method has been overridden to be able to select the parent InstanceRoleEditPart when selecting this
+         * LifelineEditPart.
          * <p>
          * {@inheritDoc}
          */
@@ -268,8 +265,8 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
         }
 
         /**
-         * Always disable the clone with Ctrl key in Sirius because it only
-         * clone the graphical element and not the semantic element.
+         * Always disable the clone with Ctrl key in Sirius because it only clone the graphical element and not the
+         * semantic element.
          * 
          * @param cloneActive
          *            true if cloning should be active (never considered here)
@@ -281,5 +278,27 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
             super.setCloneActive(false);
         }
 
+        /**
+         * (non-Javadoc)
+         * 
+         * @see org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx#handleButtonDown(int) {@inheritDoc}
+         */
+        @Override
+        protected boolean handleButtonDown(int button) {
+            boolean handleButtonDown = super.handleButtonDown(button);
+            CacheHelper.initCaches();
+            return handleButtonDown;
+        }
+
+        /**
+         * (non-Javadoc)
+         * 
+         * @see org.eclipse.gef.tools.DragEditPartsTracker#handleButtonUp(int) {@inheritDoc}
+         */
+        @Override
+        protected boolean handleButtonUp(int button) {
+            CacheHelper.clearCaches();
+            return super.handleButtonUp(button);
+        }
     }
 }

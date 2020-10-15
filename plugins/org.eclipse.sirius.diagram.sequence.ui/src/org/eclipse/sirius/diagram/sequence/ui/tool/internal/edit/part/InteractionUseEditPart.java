@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,10 @@ import java.util.Iterator;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gef.Request;
+import org.eclipse.gef.requests.SelectionRequest;
 import org.eclipse.gmf.runtime.diagram.core.listener.DiagramEventBroker;
 import org.eclipse.gmf.runtime.diagram.core.listener.NotificationListener;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
@@ -36,8 +39,10 @@ import org.eclipse.sirius.diagram.sequence.description.FrameMapping;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.InteractionUseResizableEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceNoCopyDragEditPartsTrackerEx;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabel;
+import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.RubberbandDragTracker;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.swt.SWT;
 
@@ -54,8 +59,7 @@ public class InteractionUseEditPart extends DNodeContainerEditPart implements IS
     private SiriusWrapLabel fExpressionLabelFigure;
 
     /**
-     * Post commit listener to refresh the centered label on targeted
-     * interaction change.
+     * Post commit listener to refresh the centered label on targeted interaction change.
      */
     private NotificationListener usedInteractionLabelUpdater = new NotificationListener() {
 
@@ -96,8 +100,7 @@ public class InteractionUseEditPart extends DNodeContainerEditPart implements IS
     }
 
     /**
-     * Overridden to install a specific edit policy managing the moving and
-     * resizing requests on lifelines.
+     * Overridden to install a specific edit policy managing the moving and resizing requests on lifelines.
      * <p>
      * {@inheritDoc}
      */
@@ -170,8 +173,7 @@ public class InteractionUseEditPart extends DNodeContainerEditPart implements IS
     /**
      * {@inheritDoc}
      * 
-     * Overridden to add a post commit notification listener on all semantic
-     * elements for the centered label refresh.
+     * Overridden to add a post commit notification listener on all semantic elements for the centered label refresh.
      */
     @Override
     public void activate() {
@@ -195,8 +197,8 @@ public class InteractionUseEditPart extends DNodeContainerEditPart implements IS
     /**
      * {@inheritDoc}
      * 
-     * Overridden to remove the post commit notification listener on all
-     * semantic elements for the centered label refresh.
+     * Overridden to remove the post commit notification listener on all semantic elements for the centered label
+     * refresh.
      */
     @Override
     public void deactivate() {
@@ -251,4 +253,16 @@ public class InteractionUseEditPart extends DNodeContainerEditPart implements IS
 
         return figure;
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public DragTracker getDragTracker(Request request) {
+        if (request instanceof SelectionRequest && ((SelectionRequest) request).isAltKeyPressed()) {
+            return new RubberbandDragTracker();
+        }
+        return new SequenceNoCopyDragEditPartsTrackerEx(this);
+    }
+
 }
