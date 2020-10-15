@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -57,8 +57,6 @@ import com.google.common.collect.Iterables;
  */
 public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidator {
 
-    private static final String VALIDATOR = "org.eclipse.sirius.sequence.move.validator"; //$NON-NLS-1$
-
     /** List of top levels events of the current move. */
     protected final Set<ISequenceEvent> topLevelElements = new HashSet<ISequenceEvent>();
 
@@ -71,7 +69,7 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
     /** The primary selected {@link ISequenceEvent}. */
     protected ISequenceEvent primarySelected;
 
-    private final int vMove;
+    private int vMove;
 
     private LinkedHashSet<ISequenceNode> sequenceNodesToMove = new LinkedHashSet<>();
 
@@ -167,9 +165,12 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
 
     @Override
     protected void doValidation() {
-        populateMoves();
-        populateMessageToResize();
-        categorizeMoves();
+        if (!initialized) {
+            populateMoves();
+            populateMessageToResize();
+            categorizeMoves();
+            initialized = true;
+        }
 
         checkMoves();
 
@@ -177,6 +178,7 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
         if (!startReflexiveMessageToResize.isEmpty() || !endReflexiveMessageToResize.isEmpty()) {
             valid = valid && (expansionZone == null || expansionZone.isEmpty());
         }
+
     }
 
     private void populateMoves() {
@@ -598,21 +600,39 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
      */
     public static ISEComplexMoveValidator getOrCreateValidator(ChangeBoundsRequest cbr, RequestQuery requestQuery, ISequenceEvent host) {
         ISEComplexMoveValidator validator = null;
-        Object object = cbr.getExtendedData().get(VALIDATOR);
-        if (object instanceof ISEComplexMoveValidator) {
-            validator = (ISEComplexMoveValidator) object;
-            if (validator.request == null || !validator.request.getLogicalDelta().equals(requestQuery.getLogicalDelta())) {
-                validator = null;
-            }
+        if (lastRequest != cbr) {
+            lastValidator = null;
+            lastRequest = null;
+        } else {
+            validator = lastValidator;
+        }
+        if (validator != null && validator.vMove != requestQuery.getLogicalDelta().y && validateSameSelection(validator, cbr, requestQuery, host)) {
+            validator.reInit(requestQuery);
         }
 
         if (validator == null && requestQuery.isMove()) {
             Collection<ISequenceEvent> selectedIses = new RequestQuery(cbr).getISequenceEvents();
             validator = new ISEComplexMoveValidator(host, requestQuery);
             validator.addAdditionalEntryPoints(selectedIses);
-            cbr.getExtendedData().put(VALIDATOR, validator);
+            lastValidator = validator;
+            lastRequest = cbr;
         }
         return validator;
     }
 
+    private void reInit(RequestQuery requestQuery) {
+        validationDone = false;
+        request = requestQuery;
+        vMove = request.getLogicalDelta().y;
+        valid = true;
+        expansionZone = Range.emptyRange();
+        eventInError = new HashSet<ISequenceEvent>();
+        invalidPositions = new HashSet<Integer>();
+        invalidRanges = new HashSet<Range>();
+        createdElements = new ArrayList<Range>();
+    }
+
+    private static boolean validateSameSelection(ISEComplexMoveValidator validator, ChangeBoundsRequest cbr, RequestQuery requestQuery, ISequenceEvent host) {
+        return Iterables.elementsEqual(requestQuery.getISequenceEvents(), validator.otherEntryPoints);
+    }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
@@ -32,29 +33,35 @@ import com.google.common.base.Function;
  */
 public abstract class AbstractSequenceInteractionValidator {
 
+    /** Last validator. */
+    protected static ISEComplexMoveValidator lastValidator;
+
+    /** Last request. */
+    protected static ChangeBoundsRequest lastRequest;
+
     /** Keep the value of the validation. */
     protected boolean valid = true;
 
     /** {@link RequestQuery} for the current Request. */
-    protected final RequestQuery request;
+    protected RequestQuery request;
 
     /** The expansionZine. */
     protected Range expansionZone = Range.emptyRange();
 
     /** {@link ISequenceEvent} in errors. */
-    protected final Set<ISequenceEvent> eventInError = new HashSet<ISequenceEvent>();
+    protected Set<ISequenceEvent> eventInError = new HashSet<ISequenceEvent>();
 
     /** invalid positions. */
-    protected final Set<Integer> invalidPositions = new HashSet<Integer>();
+    protected Set<Integer> invalidPositions = new HashSet<Integer>();
 
     /** invalid ranges. */
-    protected final Set<Range> invalidRanges = new HashSet<Range>();
+    protected Set<Range> invalidRanges = new HashSet<Range>();
 
     /** {@link ISequenceEvent}s moved. */
     protected final Collection<ISequenceEvent> movedElements = new ArrayList<ISequenceEvent>();
 
     /** {@link ISequenceEvent}s moved. */
-    protected final Collection<Range> createdElements = new ArrayList<Range>();
+    protected Collection<Range> createdElements = new ArrayList<Range>();
 
     /** startReflexiveMessageToResize. */
     protected final Collection<Message> startReflexiveMessageToResize = new HashSet<Message>();
@@ -62,7 +69,11 @@ public abstract class AbstractSequenceInteractionValidator {
     /** endReflexiveMessageToResize. */
     protected final Collection<Message> endReflexiveMessageToResize = new HashSet<Message>();
 
-    private boolean initialized;
+    /** validation done ? */
+    protected boolean validationDone;
+
+    /** initialized ? */
+    protected boolean initialized;
 
     /**
      * Constructor.
@@ -82,8 +93,7 @@ public abstract class AbstractSequenceInteractionValidator {
     public abstract SequenceDiagram getDiagram();
 
     /**
-     * Get the {@link Function} which give the {@link Range} of a
-     * {@link ISequenceEvent}.
+     * Get the {@link Function} which give the {@link Range} of a {@link ISequenceEvent}.
      * 
      * @return the {@link Range} of a {@link ISequenceEvent}
      */
@@ -95,8 +105,7 @@ public abstract class AbstractSequenceInteractionValidator {
     protected abstract void doValidation();
 
     /**
-     * Return the validation status. Validate the request result in the first
-     * call only.
+     * Return the validation status. Validate the request result in the first call only.
      * 
      * @return the validation status.
      */
@@ -106,15 +115,14 @@ public abstract class AbstractSequenceInteractionValidator {
     }
 
     /**
-     * Performs all the computations required to validate the resizing, and
-     * stores any important information which will be useful to actually execute
-     * the move if it is valid, like for example avoid contact with siblings or
-     * handle reconnection.
+     * Performs all the computations required to validate the resizing, and stores any important information which will
+     * be useful to actually execute the move if it is valid, like for example avoid contact with siblings or handle
+     * reconnection.
      */
     public final void validate() {
-        if (!initialized) {
+        if (!validationDone) {
             doValidation();
-            initialized = true;
+            validationDone = true;
         }
     }
 
