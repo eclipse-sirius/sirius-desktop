@@ -49,8 +49,7 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
- * Abstract class to validate Execution move & resize request and get from it a
- * command.
+ * Abstract class to validate Execution move & resize request and get from it a command.
  * 
  * @author mporhel
  * 
@@ -409,14 +408,16 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
     }
 
     private boolean checkOperandStability(ISequenceEvent ise, boolean topLevel, ISequenceEvent insertionParent) {
-        Option<Operand> parentOperand = ise.getParentOperand();
-        Operand futureOperand = null;
-        if (insertionParent instanceof Operand) {
-            futureOperand = (Operand) insertionParent;
-        } else {
-            futureOperand = insertionParent.getParentOperand().get();
-        }
-
+        // Do not compute getParentOperand() if the result is not used.
+        // TODO Check why this has method has been disabled by returning a direct true.
+        // Option<Operand> parentOperand = ise.getParentOperand();
+        // Operand futureOperand = null;
+        // if (insertionParent instanceof Operand) {
+        // futureOperand = (Operand) insertionParent;
+        // } else {
+        // futureOperand = insertionParent.getParentOperand().get();
+        // }
+        //
         return true; // futureOperand == parentOperand.get();
     }
 
@@ -508,8 +509,8 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
     /**
      * Specific switch returning allowing to categorize and event.
      * 
-     * The doSwitch will return the extended range occupied by the event
-     * (including the linked messages for reflexives executions).
+     * The doSwitch will return the extended range occupied by the event (including the linked messages for reflexives
+     * executions).
      * 
      * @author mporhel
      * 
