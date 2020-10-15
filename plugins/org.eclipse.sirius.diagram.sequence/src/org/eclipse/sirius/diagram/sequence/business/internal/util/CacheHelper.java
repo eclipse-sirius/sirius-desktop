@@ -15,6 +15,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 
 /**
@@ -28,6 +29,8 @@ public final class CacheHelper {
     private static boolean dragTrackercacheEnabled;
 
     private static Map<AbstractFrame, Collection<Lifeline>> coverageCache = new ConcurrentHashMap<>();
+
+    private static ConcurrentHashMap<ISequenceEvent, Collection<ISequenceEvent>> subEventsCache = new ConcurrentHashMap<>();
 
     /**
      * Avoid instantiation.
@@ -60,6 +63,7 @@ public final class CacheHelper {
      */
     public static void clearDragTrackerCaches() {
         coverageCache.clear();
+        subEventsCache.clear();
     }
 
     /**
@@ -86,4 +90,14 @@ public final class CacheHelper {
     public static Map<AbstractFrame, Collection<Lifeline>> getCoverageCache() {
         return coverageCache;
     }
+
+    /**
+     * get subEvents cache.
+     * 
+     * @return the subEventsCache
+     */
+    public static ConcurrentHashMap<ISequenceEvent, Collection<ISequenceEvent>> getSubEventsCache() {
+        return subEventsCache;
+    }
+
 }
