@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.requests.BendpointRequest;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
+import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.SelectConnectionEditPartTracker;
@@ -76,6 +77,7 @@ public class SequenceMessageSelectConnectionEditPartTracker extends SelectConnec
     @Override
     protected boolean handleButtonDown(int button) {
         boolean res = super.handleButtonDown(button);
+        CacheHelper.initCaches();
         SequenceMessageEditPart smep = (SequenceMessageEditPart) getSourceEditPart();
         if (new ISequenceEventQuery(smep.getISequenceEvent()).isReflectiveMessage()) {
             Range range = smep.getISequenceEvent().getVerticalRange();
@@ -94,4 +96,15 @@ public class SequenceMessageSelectConnectionEditPartTracker extends SelectConnec
         }
         return res;
     }
+
+    /*
+     * (non-Javadoc)
+     * @see org.eclipse.sirius.diagram.ui.tools.internal.ui.SelectConnectionEditPartTracker#handleButtonUp(int)
+     */
+    @Override
+    protected boolean handleButtonUp(int button) {
+        CacheHelper.clearCaches();
+        return super.handleButtonUp(button);
+    }
+
 }

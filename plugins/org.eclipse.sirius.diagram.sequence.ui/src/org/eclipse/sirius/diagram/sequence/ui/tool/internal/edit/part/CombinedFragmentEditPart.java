@@ -29,8 +29,10 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConsta
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.CombinedFragmentResizableEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceDragEditPartsTrackerEx;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceNoCopyDragEditPartsTrackerEx;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
-import org.eclipse.sirius.diagram.ui.tools.internal.ui.SiriusDragEditPartsTrackerEx;
+import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.RubberbandDragTracker;
 
 /**
  * Special edit part for combined fragments.
@@ -117,9 +119,13 @@ public class CombinedFragmentEditPart extends DNodeContainerEditPart implements 
     public DragTracker getDragTracker(final Request request) {
         DragTracker result = null;
         if (request instanceof SelectionRequest && ((SelectionRequest) request).getLastButtonPressed() == 3) {
-            result = new SiriusDragEditPartsTrackerEx(this);
+            result = new SequenceDragEditPartsTrackerEx(this);
         } else {
-            result = super.getDragTracker(request);
+            if (request instanceof SelectionRequest && ((SelectionRequest) request).isAltKeyPressed()) {
+                result = new RubberbandDragTracker();
+            } else {
+                return new SequenceNoCopyDragEditPartsTrackerEx(this);
+            }
         }
         return result;
     }

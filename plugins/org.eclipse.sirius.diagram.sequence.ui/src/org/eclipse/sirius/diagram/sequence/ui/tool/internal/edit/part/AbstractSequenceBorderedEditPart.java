@@ -38,11 +38,11 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.Execu
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.ExecutionSemanticEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceDragEditPartsTrackerEx;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.SiriusBlankSpacesDragTracker;
-import org.eclipse.sirius.diagram.ui.tools.internal.ui.SiriusDragEditPartsTrackerEx;
 import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.RubberbandDragTracker;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
@@ -177,11 +177,11 @@ public abstract class AbstractSequenceBorderedEditPart extends DNode2EditPart im
         SelectionRequest selectionRequest = (SelectionRequest) req;
         DragTracker result = SiriusBlankSpacesDragTracker.getDragTracker(this, (GraphicalViewer) getViewer(), req, true, true);
         if (result == null && req instanceof SelectionRequest && ((SelectionRequest) req).getLastButtonPressed() == 3) {
-            result = new SiriusDragEditPartsTrackerEx(this);
+            result = new SequenceDragEditPartsTrackerEx(this);
         } else if (selectionRequest.isShiftKeyPressed() && selectionRequest.isControlKeyPressed() && result == null) {
             result = new RubberbandDragTracker();
         } else if (!(selectionRequest.isShiftKeyPressed() && selectionRequest.isControlKeyPressed())) {
-            result = super.getDragTracker(req);
+            result = new SequenceDragEditPartsTrackerEx(this);
         }
         return result;
     }

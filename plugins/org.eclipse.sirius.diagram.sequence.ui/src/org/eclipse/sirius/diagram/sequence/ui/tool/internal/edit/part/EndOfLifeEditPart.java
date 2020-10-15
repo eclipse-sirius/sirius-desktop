@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 
 import org.eclipse.draw2d.ConnectionAnchor;
+import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
@@ -25,16 +26,15 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.Seque
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.EndOfLifeSelectionPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.LayoutEditPartConstants;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceDragEditPartsTrackerEx;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNode2EditPart;
 
 /**
- * The edit part for lifeline end of lives. Implemented as a bordered node on
- * the lifeline, and constrained on the south side of the lifeline. Such a node
- * can be used either to represent the actual "End of Life" of the lifeline when
- * it is explicitly destroyed or a "handle" which can be used to resize the
- * lifeline vertically.
+ * The edit part for lifeline end of lives. Implemented as a bordered node on the lifeline, and constrained on the south
+ * side of the lifeline. Such a node can be used either to represent the actual "End of Life" of the lifeline when it is
+ * explicitly destroyed or a "handle" which can be used to resize the lifeline vertically.
  * 
  * @author pcdavid
  */
@@ -75,8 +75,7 @@ public class EndOfLifeEditPart extends DNode2EditPart {
     }
 
     /**
-     * This method is overridden to have the EndOfLife (bordered node) starting
-     * from the border of the Instance Role.
+     * This method is overridden to have the EndOfLife (bordered node) starting from the border of the Instance Role.
      * <p>
      * {@inheritDoc}
      */
@@ -143,5 +142,10 @@ public class EndOfLifeEditPart extends DNode2EditPart {
             return (LifelineEditPart) parent;
         }
         return null;
+    }
+
+    @Override
+    public DragTracker getDragTracker(final Request request) {
+        return new SequenceDragEditPartsTrackerEx(this);
     }
 }

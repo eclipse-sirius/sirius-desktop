@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 
 import org.eclipse.draw2d.ConnectionAnchor;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
@@ -29,6 +30,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.Instance
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.SouthCenteredBorderItemLocator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.LayoutEditPartConstants;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceNoCopyDragEditPartsTrackerEx;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 
@@ -91,8 +93,7 @@ public class InstanceRoleEditPart extends DNodeEditPart {
     }
 
     /**
-     * This method has been overridden to use a specific BorderItemLocator to
-     * place the lifeline properly.
+     * This method has been overridden to use a specific BorderItemLocator to place the lifeline properly.
      * <p>
      * {@inheritDoc}
      */
@@ -108,8 +109,7 @@ public class InstanceRoleEditPart extends DNodeEditPart {
     }
 
     /**
-     * Overridden to install a specific edit policy managing the moving and
-     * resizing requests on lifelines.
+     * Overridden to install a specific edit policy managing the moving and resizing requests on lifelines.
      * <p>
      * {@inheritDoc}
      */
@@ -137,4 +137,13 @@ public class InstanceRoleEditPart extends DNodeEditPart {
     public InstanceRole getInstanceRole() {
         return ISequenceElementAccessor.getInstanceRole(getNotationView()).get();
     }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public DragTracker getDragTracker(Request request) {
+        return new SequenceNoCopyDragEditPartsTrackerEx(this);
+    }
+
 }

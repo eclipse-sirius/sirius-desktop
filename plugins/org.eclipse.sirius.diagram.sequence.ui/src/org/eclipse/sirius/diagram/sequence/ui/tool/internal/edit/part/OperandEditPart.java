@@ -34,10 +34,12 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.Seque
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.OperandResizableEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.OperandFigure;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceDragEditPartsTrackerEx;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceNoCopyDragEditPartsTrackerEx;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainer2EditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.SiriusBlankSpacesDragTracker;
-import org.eclipse.sirius.diagram.ui.tools.internal.ui.SiriusDragEditPartsTrackerEx;
+import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.RubberbandDragTracker;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.OneLineMarginBorder;
 import org.eclipse.sirius.viewpoint.DStylizable;
 
@@ -182,9 +184,14 @@ public class OperandEditPart extends DNodeContainer2EditPart implements ISequenc
     public DragTracker getDragTracker(final Request request) {
         DragTracker result = SiriusBlankSpacesDragTracker.getDragTracker(this, (GraphicalViewer) getViewer(), request, true, true);
         if (result == null && request instanceof SelectionRequest && ((SelectionRequest) request).getLastButtonPressed() == 3) {
-            result = new SiriusDragEditPartsTrackerEx(this);
+            result = new SequenceDragEditPartsTrackerEx(this);
         } else {
-            result = super.getDragTracker(request);
+            if (request instanceof SelectionRequest && ((SelectionRequest) request).isAltKeyPressed()) {
+                result = new RubberbandDragTracker();
+            } else {
+                return new SequenceNoCopyDragEditPartsTrackerEx(this);
+
+            }
         }
         return result;
     }

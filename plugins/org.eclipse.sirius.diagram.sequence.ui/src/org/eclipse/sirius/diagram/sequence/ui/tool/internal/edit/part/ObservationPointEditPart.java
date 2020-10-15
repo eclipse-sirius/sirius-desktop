@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.Request;
@@ -37,6 +38,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.Conne
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.ObservationPointSelectionPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceLaunchToolEditPolicy;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceNoCopyDragEditPartsTrackerEx;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
@@ -84,8 +86,8 @@ public class ObservationPointEditPart extends DNodeEditPart {
     }
 
     /**
-     * Use the same y location as the corresponding source connection anchor,
-     * stored in ViewLocationHint, to improve user feedback.
+     * Use the same y location as the corresponding source connection anchor, stored in ViewLocationHint, to improve
+     * user feedback.
      * <p>
      * {@inheritDoc}
      */
@@ -95,8 +97,8 @@ public class ObservationPointEditPart extends DNodeEditPart {
     }
 
     /**
-     * Use the same y location as the corresponding source connection anchor,
-     * stored in ViewLocationHint, to improve user feedback.
+     * Use the same y location as the corresponding source connection anchor, stored in ViewLocationHint, to improve
+     * user feedback.
      * <p>
      * {@inheritDoc}
      */
@@ -120,8 +122,7 @@ public class ObservationPointEditPart extends DNodeEditPart {
     }
 
     /**
-     * Overridden to install a specific edit policy managing the moving and
-     * resizing requests on lost message ends.
+     * Overridden to install a specific edit policy managing the moving and resizing requests on lost message ends.
      * <p>
      * {@inheritDoc}
      */
@@ -236,6 +237,14 @@ public class ObservationPointEditPart extends DNodeEditPart {
             nodePlate = result;
         }
         return result;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public DragTracker getDragTracker(Request request) {
+        return new SequenceNoCopyDragEditPartsTrackerEx(this);
     }
 
     /**
