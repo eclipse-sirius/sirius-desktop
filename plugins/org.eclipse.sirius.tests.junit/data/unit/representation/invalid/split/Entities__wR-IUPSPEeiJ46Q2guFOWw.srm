@@ -18,8 +18,8 @@
     </data>
   </ownedAnnotationEntries>
   <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_wR-vbvSPEeiJ46Q2guFOWw" uid="_wR-IVPSPEeiJ46Q2guFOWw" name="NewEClass1" tooltipText="P0.NewEClass1">
-    <target xmi:type="ecore:EClass" href="../My.ecore#//NewEClass1"/>
-    <semanticElements xmi:type="ecore:EClass" href="../My.ecore#//NewEClass1"/>
+    <target xmi:type="ecore:EClass" href="My.ecore#//NewEClass1"/>
+    <semanticElements xmi:type="ecore:EClass" href="My.ecore#//NewEClass1"/>
     <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_wR-vb_SPEeiJ46Q2guFOWw" uid="_wR-IVfSPEeiJ46Q2guFOWw" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
     </ownedStyle>
@@ -29,5 +29,5 @@
   <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_wR-vcPSPEeiJ46Q2guFOWw" uid="_wR-IVvSPEeiJ46Q2guFOWw"/>
   <activatedLayers xmi:type="description_1:Layer" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer"/>
   <activatedLayers xmi:type="description_1:AdditionalLayer" href="platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@additionalLayers[name='Package']"/>
-  <target xmi:type="ecore:EPackage" href="../My.ecore#/"/>
+  <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
 </diagram:DSemanticDiagram>

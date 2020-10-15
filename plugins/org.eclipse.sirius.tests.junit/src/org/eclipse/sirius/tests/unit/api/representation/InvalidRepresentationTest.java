@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -50,6 +50,8 @@ public class InvalidRepresentationTest extends GenericTestCase {
 
     private static final String DIAGRAM_NAME_6 = "newPackage1 package entities with NULL target";
 
+    private static final String DIAGRAM_NAME_7 = "P0 package entities with no existing target from Rep";
+
     @Override
     protected void setUp() throws Exception {
         super.setUp();
@@ -73,6 +75,7 @@ public class InvalidRepresentationTest extends GenericTestCase {
         checkRepresentationValidity(DIAGRAM_NAME_4, false);
         checkRepresentationValidity(DIAGRAM_NAME_5, false);
         checkRepresentationValidity(DIAGRAM_NAME_6, false);
+        checkRepresentationValidity(DIAGRAM_NAME_7, false);
     }
 
     /**

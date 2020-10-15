@@ -90,12 +90,17 @@ public class DRepresentationDescriptorQuery {
 
     /**
      * Check if the representation is valid that is, both not {@link isDangling} and {@link isRepresentationReachable}.
+     * In case the representation is loaded, it also checks if the representation target is a dangling reference.
      * 
      * @return true if the representation is valid
      */
     public boolean isRepresentationValid() {
         try {
-            return !isDangling() && isRepresentationReachable();
+            boolean isValid = !isDangling() && isRepresentationReachable();
+            if (isValid && repDescriptor.isLoadedRepresentation()) {
+                isValid = !(new DRepresentationQuery(repDescriptor.getRepresentation()).isDanglingRepresentation());
+            }
+            return isValid;
         } catch (IllegalStateException e) {
             if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
                 return false;
