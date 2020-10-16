@@ -65,7 +65,10 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
     /** List of entry points events of the current move (selection). */
     protected final Set<ISequenceEvent> otherEntryPoints = new HashSet<ISequenceEvent>();
 
-    /** The global moved range. */
+    /** The initial range. */
+    protected Range globalInitialRange = Range.emptyRange();
+
+    /** The final target range. */
     protected Range globalMovedRange = Range.emptyRange();
 
     /** The primary selected {@link ISequenceEvent}. */
@@ -144,6 +147,20 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
         return primarySelected.getDiagram();
     }
 
+    /**
+     * Returns the initial range of moved elements.
+     * 
+     * @return the initial range of moved elements.
+     */
+    public Range getInitialRange() {
+        return globalInitialRange;
+    }
+
+    /**
+     * Returns the final expected range of moved elements.
+     * 
+     * @return the final expected range of moved elements.
+     */
     public Range getMovedRange() {
         return globalMovedRange;
     }
@@ -223,7 +240,7 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
         MoveSwitch moveAnalyzer = new MoveSwitch();
         for (ISequenceEvent movedEvent : Lists.newArrayList(movedElements)) {
             Range extendedRange = moveAnalyzer.doSwitch(movedEvent);
-            globalMovedRange = globalMovedRange.union(extendedRange);
+            globalInitialRange = globalInitialRange.union(extendedRange);
         }
 
         Set<ISequenceEvent> move = Sets.newHashSet();
@@ -232,7 +249,7 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
         Iterables.retainAll(move, sequenceNodesToMove);
         Iterables.addAll(topLevelElements, move);
 
-        Rectangle movedRange = new Rectangle(0, globalMovedRange.getLowerBound(), 0, globalMovedRange.width());
+        Rectangle movedRange = new Rectangle(0, globalInitialRange.getLowerBound(), 0, globalInitialRange.width());
         globalMovedRange = RangeHelper.verticalRange(request.getLogicalTransformedRectangle(movedRange));
     }
 

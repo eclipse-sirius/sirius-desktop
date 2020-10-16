@@ -40,6 +40,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
@@ -209,8 +210,22 @@ public class ISEComplexMoveCommandBuilder {
         Collection<AbstractNodeEvent> movedExecutions = Lists.newArrayList(Iterables.filter(sequenceNodesToMove, AbstractNodeEvent.class));
 
         // reparent unmoved executions
-        Collection<AbstractNodeEvent> unmovedExecutions = Lists.newArrayList(Iterables.filter(validator.getDiagram().getAllAbstractNodeEvents(),
-                Predicates.not(Predicates.in(validator.getMovedElements()))));
+        
+        // filter unmoved executions to keep only ones with an intersection with initial or final range
+        Range validatorInitialRange = validator.getInitialRange();
+        Range validatorFinalRange = validator.getMovedRange();
+        Predicate<AbstractNodeEvent> filterRange = new Predicate<AbstractNodeEvent>() {
+
+            @Override
+            public boolean apply(AbstractNodeEvent nodeEvent) {
+                Range initialRange = nodeEvent.getVerticalRange();
+                Range futureRange = validator.getRangeFunction().apply(nodeEvent);
+                return validatorInitialRange.intersects(initialRange) || validatorFinalRange.intersects(futureRange);
+            }
+        };
+        Iterable<AbstractNodeEvent> filterUnmovedExecutions = Iterables.filter(validator.getDiagram().getAllAbstractNodeEvents(),
+                Predicates.and(Predicates.not(Predicates.in(validator.getMovedElements())), filterRange));
+        Collection<AbstractNodeEvent> unmovedExecutions = Lists.newArrayList(filterUnmovedExecutions);
 
         for (AbstractNodeEvent execToReparent : Iterables.concat(movedExecutions, unmovedExecutions)) {
             ISequenceEvent potentialParent = getNewParent(execToReparent, reparents);
