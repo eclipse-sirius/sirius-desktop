@@ -18,7 +18,9 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
@@ -75,11 +77,25 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
 
     private Collection<Message> messagesToMove = new LinkedHashSet<>();
 
+    private Function<ISequenceEvent, Range> initialRangeFunction = new Function<ISequenceEvent, Range>() {
+        private Map<ISequenceEvent, Range> sequenceEventToRangeCache = new ConcurrentHashMap<>();
+
+        @Override
+        public Range apply(ISequenceEvent sequenceEvent) {
+            Range range = sequenceEventToRangeCache.get(sequenceEvent);
+            if (range == null) {
+                range = sequenceEvent.getVerticalRange();
+                sequenceEventToRangeCache.put(sequenceEvent, range);
+            }
+            return range;
+        }
+    };
+
     private Function<ISequenceEvent, Range> rangeFunction = new Function<ISequenceEvent, Range>() {
 
         @Override
         public Range apply(ISequenceEvent from) {
-            Range range = from.getVerticalRange();
+            Range range = initialRangeFunction.apply(from);
             if (movedElements.contains(from)) {
                 range = range.shifted(vMove);
             } else if (startReflexiveMessageToResize.contains(from)) {
@@ -540,7 +556,7 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
                 startReflexiveMessageToResize.remove(movedEvent);
                 endReflexiveMessageToResize.remove(movedEvent);
             }
-            return movedEvent.getVerticalRange();
+            return initialRangeFunction.apply(movedEvent);
         }
 
         @Override
@@ -553,12 +569,12 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
             Range extendedVerticalRange = movedEvent.getExtendedVerticalRange();
             Option<Message> startMessage = movedEvent.getStartMessage();
             if (startMessage.some() && startReflexiveMessageToResize.contains(startMessage.get())) {
-                extendedVerticalRange = new Range(startMessage.get().getVerticalRange().getUpperBound(), extendedVerticalRange.getUpperBound());
+                extendedVerticalRange = new Range(initialRangeFunction.apply(startMessage.get()).getUpperBound(), extendedVerticalRange.getUpperBound());
             }
 
             Option<Message> endMessage = movedEvent.getEndMessage();
             if (endMessage.some() && endReflexiveMessageToResize.contains(endMessage.get())) {
-                extendedVerticalRange = new Range(extendedVerticalRange.getLowerBound(), endMessage.get().getVerticalRange().getLowerBound());
+                extendedVerticalRange = new Range(extendedVerticalRange.getLowerBound(), initialRangeFunction.apply(endMessage.get()).getLowerBound());
             }
 
             return extendedVerticalRange;
@@ -570,20 +586,20 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
             if (hierarchicalParentEvent instanceof ISequenceNode && !movedElements.contains(hierarchicalParentEvent)) {
                 sequenceNodesToMove.add(movedEvent);
             }
-            return movedEvent.getVerticalRange();
+            return initialRangeFunction.apply(movedEvent);
         }
 
         @Override
         public Range caseFrame(AbstractFrame movedEvent) {
             sequenceNodesToMove.add(movedEvent);
-            return movedEvent.getVerticalRange();
+            return initialRangeFunction.apply(movedEvent);
         }
 
         @Override
         public Range caseOperand(Operand movedEvent) {
             // Do nothing, operand is silently moved by its parent combined
             // fragment.
-            return movedEvent.getVerticalRange();
+            return initialRangeFunction.apply(movedEvent);
         }
     }
 
