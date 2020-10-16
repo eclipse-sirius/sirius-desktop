@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceE
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
+import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -104,26 +105,34 @@ public class SequenceMessageViewQuery {
      * @return the vertical range of the message.
      */
     public Range getVerticalRange() {
-        Range result;
-        RelativeBendpoints bendpoints = (RelativeBendpoints) edge.getBendpoints();
-        if (bendpoints == null || bendpoints.getPoints().isEmpty()) {
-            result = Range.emptyRange();
-        } else {
-            int firstY = getFirstPointVerticalPosition(true);
-            if (isLogicallyInstantaneous()) {
-                if (validateFirstPointStability(firstY)) {
-                    result = new Range(firstY, firstY);
+        Range result = null;
+        if (CacheHelper.isDragTrackerCacheEnabled()) {
+            result = CacheHelper.getViewToRangeCache().get(edge);
+        }
+        if (result == null) {
+            RelativeBendpoints bendpoints = (RelativeBendpoints) edge.getBendpoints();
+            if (bendpoints == null || bendpoints.getPoints().isEmpty()) {
+                result = Range.emptyRange();
+            } else {
+                int firstY = getFirstPointVerticalPosition(true);
+                if (isLogicallyInstantaneous()) {
+                    if (validateFirstPointStability(firstY)) {
+                        result = new Range(firstY, firstY);
+                    } else {
+                        int lastY = getLastPointVerticalPosition(false);
+                        result = new Range(lastY, lastY);
+                    }
                 } else {
                     int lastY = getLastPointVerticalPosition(false);
-                    result = new Range(lastY, lastY);
+                    if (msgToSelfInvalidEndLocation(edge.getSource(), edge.getTarget())) {
+                        firstY = VerticalRangeFunction.INSTANCE.apply(edge.getSource()).getUpperBound();
+                        lastY = firstY + LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP;
+                    }
+                    result = new Range(Math.min(firstY, lastY), Math.max(firstY, lastY));
                 }
-            } else {
-                int lastY = getLastPointVerticalPosition(false);
-                if (msgToSelfInvalidEndLocation(edge.getSource(), edge.getTarget())) {
-                    firstY = VerticalRangeFunction.INSTANCE.apply(edge.getSource()).getUpperBound();
-                    lastY = firstY + LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP;
-                }
-                result = new Range(Math.min(firstY, lastY), Math.max(firstY, lastY));
+            }
+            if (CacheHelper.isDragTrackerCacheEnabled()) {
+                CacheHelper.getViewToRangeCache().put(edge, result);
             }
         }
         return result;
@@ -252,7 +261,10 @@ public class SequenceMessageViewQuery {
         View source = edge.getSource();
         Range sourceRange = new Range(0, 0);
         if (source instanceof Node) {
+            boolean cacheEnabled = CacheHelper.isDragTrackerCacheEnabled();
+            CacheHelper.setDragTrackerCacheEnabled(false);
             sourceRange = new SequenceNodeQuery((Node) source).getVerticalRange();
+            CacheHelper.setDragTrackerCacheEnabled(cacheEnabled);
         }
         return getAnchorAbsolutePosition(srcAnchor, sourceRange);
         // could not return 0 : other utility method take 0,5 precision point
@@ -273,7 +285,11 @@ public class SequenceMessageViewQuery {
         }
         View target = edge.getTarget();
         if (target instanceof Node) {
+            boolean cacheEnabled = CacheHelper.isDragTrackerCacheEnabled();
+            CacheHelper.setDragTrackerCacheEnabled(false);
             Range targetRange = new SequenceNodeQuery((Node) target).getVerticalRange();
+            CacheHelper.setDragTrackerCacheEnabled(cacheEnabled);
+
             return getAnchorAbsolutePosition(tgtAnchor, targetRange);
         }
         return getSourceAnchorVerticalPosition();
