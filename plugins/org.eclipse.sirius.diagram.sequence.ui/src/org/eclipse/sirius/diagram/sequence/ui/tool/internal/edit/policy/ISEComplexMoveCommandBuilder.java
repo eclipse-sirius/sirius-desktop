@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -132,7 +132,8 @@ public class ISEComplexMoveCommandBuilder {
                 tgtBounds = requestQuery.getLogicalTransformedRectangle(tgtBounds);
             }
 
-            Range newRange = movedElements.contains(message) ? message.getVerticalRange().shifted(vMove) : message.getVerticalRange();
+            Range verticalRange = message.getVerticalRange();
+            Range newRange = movedElements.contains(message) ? verticalRange.shifted(vMove) : verticalRange;
             SetMessageRangeOperation smrc = new SetMessageRangeOperation((Edge) message.getNotationView(), newRange);
             smrc.setSource(source.getNotationNode(), srcBounds);
             smrc.setTarget(target.getNotationNode(), tgtBounds);
