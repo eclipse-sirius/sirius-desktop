@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 
 /**
  * Function to compute position of and EventEnd.
@@ -59,6 +58,7 @@ public class EventEndToPositionFunction implements Function<EventEnd, Integer> {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Integer apply(EventEnd from) {
         return getOldPosition(from, eventEndToSequenceEvents.apply(from));
     }
@@ -84,9 +84,9 @@ public class EventEndToPositionFunction implements Function<EventEnd, Integer> {
     private ISequenceEvent getSafeEvent(Collection<ISequenceEvent> ises) {
         ISequenceEvent ise = null;
         Predicate<Object> safe = Predicates.or(Predicates.instanceOf(AbstractNodeEvent.class), Predicates.instanceOf(AbstractFrame.class));
-        Collection<? extends ISequenceEvent> safeEvents = Lists.newArrayList(Iterables.filter(ises, safe));
+        Iterable<? extends ISequenceEvent> safeEvents = Iterables.filter(ises, safe);
 
-        if (!safeEvents.isEmpty()) {
+        if (!Iterables.isEmpty(safeEvents)) {
             ise = safeEvents.iterator().next();
         } else if (Iterables.size(Iterables.filter(ises, Operand.class)) == 2) {
             ise = getSafeOperandEnd(ises);
@@ -112,8 +112,7 @@ public class EventEndToPositionFunction implements Function<EventEnd, Integer> {
     }
 
     /**
-     * Get the old position of the corresponding event end, regarding the given
-     * event old range. event.
+     * Get the old position of the corresponding event end, regarding the given event old range. event.
      * 
      * @param see
      *            event end
