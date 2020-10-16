@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -10,9 +10,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.util;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -52,7 +54,7 @@ import com.google.common.collect.Sets;
  */
 public final class SubEventsHelper {
 
-    private static Collection<Class<?>> types = Lists.newArrayList();
+    private static Collection<Class<?>> types = new ArrayList<>();
     {
         types.add(Execution.class);
         types.add(Lifeline.class);
@@ -69,8 +71,7 @@ public final class SubEventsHelper {
      * Default constructor.
      * 
      * @param event
-     *            a supported {@link ISequenceEvent} : {@linkLifeline},
-     *            {@link AbstractNodeEvent}, {@link Operand}.
+     *            a supported {@link ISequenceEvent} : {@linkLifeline}, {@link AbstractNodeEvent}, {@link Operand}.
      */
     public SubEventsHelper(ISequenceEvent event) {
         Preconditions.checkArgument(types.contains(event.getClass()));
@@ -82,8 +83,8 @@ public final class SubEventsHelper {
     /**
      * Common implementation of {@link ISequenceEvent#getSubEvents()}.
      * 
-     * @return the sub-events of the (root) execution, ordered by their starting
-     *         position (graphically) from top to bottom.
+     * @return the sub-events of the (root) execution, ordered by their starting position (graphically) from top to
+     *         bottom.
      */
     public List<ISequenceEvent> getSubEvents() {
         List<ISequenceEvent> result = getValidSubEvents();
@@ -97,10 +98,10 @@ public final class SubEventsHelper {
      * @return the sub events.
      */
     private List<ISequenceEvent> getValidSubEvents() {
-        List<ISequenceEvent> childrenEvents = Lists.newArrayList();
+        List<ISequenceEvent> childrenEvents = new ArrayList<>();
 
-        Set<ISequenceEvent> localParents = Sets.newLinkedHashSet();
-        Set<Lifeline> coveredLifelines = Sets.newLinkedHashSet();
+        Set<ISequenceEvent> localParents = new LinkedHashSet<>();
+        Set<Lifeline> coveredLifelines = new LinkedHashSet<>();
         if (parentEvent instanceof AbstractNodeEvent || parentEvent instanceof Lifeline) {
             localParents.add(parentEvent);
             coveredLifelines.add(parentEvent.getLifeline().get());
@@ -126,7 +127,7 @@ public final class SubEventsHelper {
         }
 
         Option<Lifeline> lifeline = ise.getLifeline();
-        Collection<Lifeline> coveredLifelines = Sets.newLinkedHashSet();
+        Collection<Lifeline> coveredLifelines = new LinkedHashSet<>();
         if (lifeline.some()) {
             coveredLifelines.add(lifeline.get());
         } else if (ise instanceof Operand) {
@@ -149,7 +150,7 @@ public final class SubEventsHelper {
     }
 
     private Collection<ISequenceEvent> getCarryingParents(AbstractFrame frame, Set<Lifeline> coveredLifelines) {
-        Set<ISequenceEvent> coveredEvents = Sets.newLinkedHashSet();
+        Set<ISequenceEvent> coveredEvents = new LinkedHashSet<>();
         for (Lifeline lifeline : coveredLifelines) {
             EventFinder localParentFinder = new EventFinder(lifeline);
             localParentFinder.setReparent(true);
@@ -169,9 +170,9 @@ public final class SubEventsHelper {
      * @return
      */
     private Set<ISequenceEvent> getNotationDirectChildrenInParentRange(Collection<ISequenceEvent> localParents) {
-        Collection<View> childViews = Sets.newLinkedHashSet();
-        Collection<View> parentConnections = Sets.newHashSet();
-        Set<ISequenceEvent> childrenEvents = Sets.newLinkedHashSet();
+        Collection<View> childViews = new LinkedHashSet<>();
+        Collection<View> parentConnections = new HashSet<>();
+        Set<ISequenceEvent> childrenEvents = new LinkedHashSet<>();
 
         for (ISequenceEvent ise : localParents) {
             View notationView = ise.getNotationView();
@@ -205,9 +206,9 @@ public final class SubEventsHelper {
     }
 
     private Set<ISequenceEvent> getFrameChildrenInParentRange(Set<Lifeline> coveredLifelines) {
-        Set<ISequenceEvent> childrenEvents = Sets.newHashSet();
+        Set<ISequenceEvent> childrenEvents = new HashSet<>();
         SequenceDiagram diagram = parentEvent.getDiagram();
-        Set<AbstractFrame> frames = Sets.newHashSet();
+        Set<AbstractFrame> frames = new HashSet<>();
         frames.addAll(diagram.getAllFrames());
 
         for (AbstractFrame frame : frames) {
@@ -220,7 +221,7 @@ public final class SubEventsHelper {
     }
 
     private Set<ISequenceEvent> getTopLevelEvents(Set<ISequenceEvent> events, Collection<ISequenceEvent> potentialParents, Set<Lifeline> coveredLifelines) {
-        HashSet<ISequenceEvent> topLevel = Sets.newLinkedHashSet();
+        HashSet<ISequenceEvent> topLevel = new LinkedHashSet<>();
         boolean parentFrames = Iterables.size(Iterables.filter(potentialParents, AbstractFrame.class)) != 0;
 
         for (ISequenceEvent event : events) {
@@ -228,6 +229,7 @@ public final class SubEventsHelper {
             final ISequenceEvent potentialChild = event;
 
             Predicate<ISequenceEvent> isParentOfCurrent = new Predicate<ISequenceEvent>() {
+                @Override
                 public boolean apply(ISequenceEvent input) {
                     Range inputRange = input.getVerticalRange();
                     boolean isParent = inputRange.includes(verticalRange);
@@ -235,12 +237,13 @@ public final class SubEventsHelper {
                 }
             };
 
-            List<ISequenceEvent> parents = Lists.newArrayList(Iterables.filter(potentialParents, isParentOfCurrent));
-            if (parents.isEmpty()) {
+            Iterable<ISequenceEvent> parents = Iterables.filter(potentialParents, isParentOfCurrent);
+            if (Iterables.isEmpty(parents)) {
                 topLevel.add(potentialChild);
             } else if (potentialChild instanceof AbstractFrame && !parentFrames) {
-                Collection<ISequenceEvent> carriers = Lists.newArrayList(getCarryingParents((AbstractFrame) potentialChild, coveredLifelines));
-                Iterables.removeAll(carriers, parents);
+                Collection<ISequenceEvent> carriers = new ArrayList<ISequenceEvent>(getCarryingParents((AbstractFrame) potentialChild, coveredLifelines));
+                List<ISequenceEvent> parentsList = Lists.newArrayList(parents);
+                Iterables.removeAll(carriers, parentsList);
                 if (!carriers.isEmpty()) {
                     topLevel.add(potentialChild);
                 }
@@ -262,35 +265,32 @@ public final class SubEventsHelper {
     }
 
     /**
-     * Implementation of
-     * {@link ISequenceEvent#canChildOccupy(ISequenceEvent, Range)} .
+     * Implementation of {@link ISequenceEvent#canChildOccupy(ISequenceEvent, Range)} .
      * 
      * @param child
      *            the child.
      * @param range
      *            the vertical range to test.
-     * @return <code>true</code> if the child can be placed anywhere inside the
-     *         specified vertical range (including occupying the whole range).
+     * @return <code>true</code> if the child can be placed anywhere inside the specified vertical range (including
+     *         occupying the whole range).
      */
     public boolean canChildOccupy(ISequenceEvent child, Range range) {
         return canChildOccupy(child, range, null, child == null ? getCoverage(parentEvent) : getCoverage(child));
     }
 
     /**
-     * Implementation of
-     * {@link ISequenceEvent#canChildOccupy(ISequenceEvent, Range)} .
+     * Implementation of {@link ISequenceEvent#canChildOccupy(ISequenceEvent, Range)} .
      * 
      * @param child
-     *            the child, if child is null it means that it is a insertion
-     *            point request from a CreationTool.
+     *            the child, if child is null it means that it is a insertion point request from a CreationTool.
      * @param range
      *            the vertical range to test.
      * @param eventsToIgnore
      *            the list of events to ignore while compute canChildOccupy.
      * @param lifelines
      *            lifelines to inspect
-     * @return <code>true</code> if the child can be placed anywhere inside the
-     *         specified vertical range (including occupying the whole range).
+     * @return <code>true</code> if the child can be placed anywhere inside the specified vertical range (including
+     *         occupying the whole range).
      */
     public boolean canChildOccupy(ISequenceEvent child, final Range range, List<ISequenceEvent> eventsToIgnore, Collection<Lifeline> lifelines) {
         boolean result = true;
@@ -360,9 +360,10 @@ public final class SubEventsHelper {
     }
 
     private Iterable<ISequenceEvent> getSequenceEventsToFilter(ISequenceEvent self, ISequenceEvent child, final Range range, final Collection<Lifeline> lifelines) {
-        Set<ISequenceEvent> result = Sets.newHashSet(self.getSubEvents());
+        Set<ISequenceEvent> result = new HashSet<ISequenceEvent>(self.getSubEvents());
         Predicate<ISequenceEvent> inRangePredicate = new Predicate<ISequenceEvent>() {
 
+            @Override
             public boolean apply(ISequenceEvent input) {
                 Range inputRange = input.getVerticalRange();
                 return range.includesAtLeastOneBound(inputRange) || new ISequenceEventQuery(input).isReflectiveMessage() && inputRange.includesAtLeastOneBound(range);
@@ -371,8 +372,9 @@ public final class SubEventsHelper {
         };
         Predicate<ISequenceEvent> inCoverage = new Predicate<ISequenceEvent>() {
 
+            @Override
             public boolean apply(ISequenceEvent input) {
-                Collection<Lifeline> inputCoverage = Lists.newArrayList(getCoverage(input));
+                Collection<Lifeline> inputCoverage = new ArrayList<Lifeline>(getCoverage(input));
                 return Iterables.removeAll(inputCoverage, lifelines);
             }
 
