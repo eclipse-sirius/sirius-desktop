@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
+import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.DecreasingRange;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
@@ -54,39 +55,47 @@ public class SequenceNodeQuery {
      * @return the vertical range of the element.
      */
     public Range getVerticalRange() {
+        Range result = null;
         EObject element = node.getElement();
         if (!(element instanceof DDiagramElement)) {
-            return null;
+            result = null;
         } else {
-            Rectangle absoluteBounds = GMFHelper.getAbsoluteBounds(node);
-            int y = absoluteBounds.y;
-            int height = absoluteBounds.height;
-            // GMFHelper.getAbsoluteBounds() use default
-            // DDiagramElementContainer (DNodeContainer/DNodeList) dimension if
-            // size == (-1,-1) and here we need to have the real GMF size if ==
-            // to (-1,-1)
-            if (node.getLayoutConstraint() instanceof Size) {
-                Size size = (Size) node.getLayoutConstraint();
-                height = size.getHeight();
+            if (CacheHelper.isDragTrackerCacheEnabled()) {
+                result = CacheHelper.getViewToRangeCache().get(node);
             }
-            // handle container auto size -> range.widht = 0, next layout will
-            // set the good value
-            // check in interaction use view factory, that it cannot be there
-            if (element instanceof DNodeContainer && height == -1) {
-                height = 0;
-            }
-            if (height == -1 && element instanceof DNode && ((DNode) element).getOwnedStyle() instanceof WorkspaceImage) {
-                height = new DNodeQuery((DNode) element).getDefaultDimension().height;
-            }
+            if (result == null) {
+                Rectangle absoluteBounds = GMFHelper.getAbsoluteBounds(node);
+                int y = absoluteBounds.y;
+                int height = absoluteBounds.height;
+                // GMFHelper.getAbsoluteBounds() use default
+                // DDiagramElementContainer (DNodeContainer/DNodeList) dimension if
+                // size == (-1,-1) and here we need to have the real GMF size if ==
+                // to (-1,-1)
+                if (node.getLayoutConstraint() instanceof Size) {
+                    Size size = (Size) node.getLayoutConstraint();
+                    height = size.getHeight();
+                }
+                // handle container auto size -> range.widht = 0, next layout will
+                // set the good value
+                // check in interaction use view factory, that it cannot be there
+                if (element instanceof DNodeContainer && height == -1) {
+                    height = 0;
+                }
+                if (height == -1 && element instanceof DNode && ((DNode) element).getOwnedStyle() instanceof WorkspaceImage) {
+                    height = new DNodeQuery((DNode) element).getDefaultDimension().height;
+                }
 
-            Range result = y > y + height ? new DecreasingRange(y, y + height) : new Range(y, y + height);
+                result = y > y + height ? new DecreasingRange(y, y + height) : new Range(y, y + height);
 
-            if (isShifted()) {
-                result = result.shifted(IBorderItemOffsets.DEFAULT_OFFSET.height);
+                if (isShifted()) {
+                    result = result.shifted(IBorderItemOffsets.DEFAULT_OFFSET.height);
+                }
+                if (CacheHelper.isDragTrackerCacheEnabled()) {
+                    CacheHelper.getViewToRangeCache().put(node, result);
+                }
             }
-
-            return result;
         }
+        return result;
     }
 
     private boolean isShifted() {
