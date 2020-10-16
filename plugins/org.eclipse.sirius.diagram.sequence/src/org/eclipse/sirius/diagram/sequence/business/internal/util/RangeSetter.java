@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -58,9 +58,8 @@ public final class RangeSetter {
     }
 
     /**
-     * Common implementation of
-     * {@link ISequenceEventEditPart#setVerticalRange(Range)} for lifelines and
-     * executions. Assumes the {@link ISequenceEventEditPart} is a Node.
+     * Common implementation of {@link ISequenceEventEditPart#setVerticalRange(Range)} for lifelines and executions.
+     * Assumes the {@link ISequenceEventEditPart} is a Node.
      * 
      * @param self
      *            the (root) execution edit part.
@@ -68,6 +67,9 @@ public final class RangeSetter {
      *            the vertical range of the given sequence event.
      */
     public static void setVerticalRange(AbstractNodeEvent self, Range range) {
+        if (CacheHelper.isDragTrackerCacheEnabled()) {
+            CacheHelper.clearCaches();
+        }
         Range oldRange = self.getVerticalRange();
         int deltaY = range.getLowerBound() - oldRange.getLowerBound();
         int size = range.width();
@@ -76,9 +78,8 @@ public final class RangeSetter {
     }
 
     /**
-     * Common implementation of
-     * {@link ISequenceEventEditPart#setVerticalRange(Range)} for states.
-     * Assumes the {@link ISequenceEventEditPart} is a Node.
+     * Common implementation of {@link ISequenceEventEditPart#setVerticalRange(Range)} for states. Assumes the
+     * {@link ISequenceEventEditPart} is a Node.
      * 
      * @param self
      *            the state edit part.
@@ -86,6 +87,9 @@ public final class RangeSetter {
      *            the vertical range of the given sequence event.
      */
     public static void setVerticalRange(State self, Range range) {
+        if (CacheHelper.isDragTrackerCacheEnabled()) {
+            CacheHelper.clearCaches();
+        }
         Range oldRange = self.getVerticalRange();
         int deltaY = range.getLowerBound() - oldRange.getLowerBound();
         int size = range.width();
@@ -94,9 +98,8 @@ public final class RangeSetter {
     }
 
     /**
-     * Common implementation of
-     * {@link ISequenceEventEditPart#setVerticalRange(Range)} for interaction
-     * uses. Assumes the {@link ISequenceEventEditPart} is a Node.
+     * Common implementation of {@link ISequenceEventEditPart#setVerticalRange(Range)} for interaction uses. Assumes the
+     * {@link ISequenceEventEditPart} is a Node.
      * 
      * @param self
      *            the InteractionUse.
@@ -104,6 +107,9 @@ public final class RangeSetter {
      *            the vertical range of the given sequence event.
      */
     public static void setVerticalRange(InteractionUse self, Range range) {
+        if (CacheHelper.isDragTrackerCacheEnabled()) {
+            CacheHelper.clearCaches();
+        }
         Range oldRange = self.getVerticalRange();
         int deltaY = range.getLowerBound() - oldRange.getLowerBound();
         int size = range.width();
@@ -112,9 +118,8 @@ public final class RangeSetter {
     }
 
     /**
-     * Common implementation of
-     * {@link ISequenceEventEditPart#setVerticalRange(Range)} for combined
-     * fragments. Assumes the {@link ISequenceEventEditPart} is a Node.
+     * Common implementation of {@link ISequenceEventEditPart#setVerticalRange(Range)} for combined fragments. Assumes
+     * the {@link ISequenceEventEditPart} is a Node.
      * 
      * @param self
      *            the CombinedFragment.
@@ -122,6 +127,9 @@ public final class RangeSetter {
      *            the vertical range of the given sequence event.
      */
     public static void setVerticalRange(CombinedFragment self, Range range) {
+        if (CacheHelper.isDragTrackerCacheEnabled()) {
+            CacheHelper.clearCaches();
+        }
         Range oldRange = self.getVerticalRange();
         int deltaY = range.getLowerBound() - oldRange.getLowerBound();
         int size = range.width();
@@ -130,9 +138,8 @@ public final class RangeSetter {
     }
 
     /**
-     * Common implementation of
-     * {@link ISequenceEventEditPart#setVerticalRange(Range)} for combined
-     * fragments. Assumes the {@link ISequenceEventEditPart} is a Node.
+     * Common implementation of {@link ISequenceEventEditPart#setVerticalRange(Range)} for combined fragments. Assumes
+     * the {@link ISequenceEventEditPart} is a Node.
      * 
      * @param self
      *            the CombinedFragment.
@@ -140,6 +147,9 @@ public final class RangeSetter {
      *            the vertical range of the given sequence event.
      */
     public static void setVerticalRange(Operand self, Range range) {
+        if (CacheHelper.isDragTrackerCacheEnabled()) {
+            CacheHelper.clearCaches();
+        }
         Range oldRange = self.getVerticalRange();
         int deltaY = range.getLowerBound() - oldRange.getLowerBound();
         int size = range.width();
@@ -148,9 +158,8 @@ public final class RangeSetter {
     }
 
     /**
-     * Common implementation of
-     * {@link ISequenceEventEditPart#setVerticalRange(Range)} for lifelines and
-     * executions. Assumes the {@link ISequenceEventEditPart} is a Node.
+     * Common implementation of {@link ISequenceEventEditPart#setVerticalRange(Range)} for lifelines and executions.
+     * Assumes the {@link ISequenceEventEditPart} is a Node.
      * 
      * @param self
      *            the (root) execution edit part.
@@ -158,6 +167,10 @@ public final class RangeSetter {
      *            the vertical range of the given sequence event.
      */
     public static void setVerticalRange(Lifeline self, Range range) {
+        if (CacheHelper.isDragTrackerCacheEnabled()) {
+            CacheHelper.clearCaches();
+        }
+
         InstanceRole instanceRole = self.getInstanceRole();
         Rectangle irepBounds = instanceRole.getBounds();
         Range irRange = new Range(range.getLowerBound() - irepBounds.height, range.getUpperBound());
@@ -244,9 +257,8 @@ public final class RangeSetter {
     }
 
     /**
-     * Common implementation of
-     * {@link ISequenceEventEditPart#setVerticalRange(Range)} for lifelines and
-     * executions. Assumes the {@link ISequenceEventEditPart} is a Node.
+     * Common implementation of {@link ISequenceEventEditPart#setVerticalRange(Range)} for lifelines and executions.
+     * Assumes the {@link ISequenceEventEditPart} is a Node.
      * 
      * @param self
      *            the (root) execution edit part.
@@ -254,6 +266,10 @@ public final class RangeSetter {
      *            the vertical range of the given sequence event.
      */
     public static void setVerticalRange(Message self, Range range) {
+        if (CacheHelper.isDragTrackerCacheEnabled()) {
+            CacheHelper.clearCaches();
+        }
+
         RangeSetter.handlePotentialLostEnd(self.getSourceElement(), range);
         RangeSetter.handlePotentialLostEnd(self.getTargetElement(), range);
 
