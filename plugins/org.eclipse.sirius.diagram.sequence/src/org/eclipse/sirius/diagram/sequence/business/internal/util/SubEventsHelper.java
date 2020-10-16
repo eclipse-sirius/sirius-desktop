@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -73,8 +73,7 @@ public final class SubEventsHelper {
      * Default constructor.
      * 
      * @param event
-     *            a supported {@link ISequenceEvent} : {@linkLifeline},
-     *            {@link AbstractNodeEvent}, {@link Operand}.
+     *            a supported {@link ISequenceEvent} : {@linkLifeline}, {@link AbstractNodeEvent}, {@link Operand}.
      */
     public SubEventsHelper(ISequenceEvent event) {
         Preconditions.checkArgument(types.contains(event.getClass()));
@@ -86,8 +85,8 @@ public final class SubEventsHelper {
     /**
      * Common implementation of {@link ISequenceEvent#getSubEvents()}.
      * 
-     * @return the sub-events of the (root) execution, ordered by their starting
-     *         position (graphically) from top to bottom.
+     * @return the sub-events of the (root) execution, ordered by their starting position (graphically) from top to
+     *         bottom.
      */
     public List<ISequenceEvent> getSubEvents() {
         List<ISequenceEvent> result = getValidSubEvents();
@@ -232,6 +231,7 @@ public final class SubEventsHelper {
             final ISequenceEvent potentialChild = event;
 
             Predicate<ISequenceEvent> isParentOfCurrent = new Predicate<ISequenceEvent>() {
+                @Override
                 public boolean apply(ISequenceEvent input) {
                     Range inputRange = input.getVerticalRange();
                     boolean isParent = inputRange.includes(verticalRange);
@@ -239,12 +239,13 @@ public final class SubEventsHelper {
                 }
             };
 
-            List<ISequenceEvent> parents = Lists.newArrayList(Iterables.filter(potentialParents, isParentOfCurrent));
-            if (parents.isEmpty()) {
+            Iterable<ISequenceEvent> parents = Iterables.filter(potentialParents, isParentOfCurrent);
+            if (Iterables.isEmpty(parents)) {
                 topLevel.add(potentialChild);
             } else if (potentialChild instanceof AbstractFrame && !parentFrames) {
                 Collection<ISequenceEvent> carriers = new ArrayList<ISequenceEvent>(getCarryingParents((AbstractFrame) potentialChild, coveredLifelines));
-                Iterables.removeAll(carriers, parents);
+                List<ISequenceEvent> parentsList = Lists.newArrayList(parents);
+                Iterables.removeAll(carriers, parentsList);
                 if (!carriers.isEmpty()) {
                     topLevel.add(potentialChild);
                 }
@@ -266,35 +267,32 @@ public final class SubEventsHelper {
     }
 
     /**
-     * Implementation of
-     * {@link ISequenceEvent#canChildOccupy(ISequenceEvent, Range)} .
+     * Implementation of {@link ISequenceEvent#canChildOccupy(ISequenceEvent, Range)} .
      * 
      * @param child
      *            the child.
      * @param range
      *            the vertical range to test.
-     * @return <code>true</code> if the child can be placed anywhere inside the
-     *         specified vertical range (including occupying the whole range).
+     * @return <code>true</code> if the child can be placed anywhere inside the specified vertical range (including
+     *         occupying the whole range).
      */
     public boolean canChildOccupy(ISequenceEvent child, Range range) {
         return canChildOccupy(child, range, null, child == null ? getCoverage(parentEvent) : getCoverage(child));
     }
 
     /**
-     * Implementation of
-     * {@link ISequenceEvent#canChildOccupy(ISequenceEvent, Range)} .
+     * Implementation of {@link ISequenceEvent#canChildOccupy(ISequenceEvent, Range)} .
      * 
      * @param child
-     *            the child, if child is null it means that it is a insertion
-     *            point request from a CreationTool.
+     *            the child, if child is null it means that it is a insertion point request from a CreationTool.
      * @param range
      *            the vertical range to test.
      * @param eventsToIgnore
      *            the list of events to ignore while compute canChildOccupy.
      * @param lifelines
      *            lifelines to inspect
-     * @return <code>true</code> if the child can be placed anywhere inside the
-     *         specified vertical range (including occupying the whole range).
+     * @return <code>true</code> if the child can be placed anywhere inside the specified vertical range (including
+     *         occupying the whole range).
      */
     public boolean canChildOccupy(ISequenceEvent child, final Range range, List<ISequenceEvent> eventsToIgnore, Collection<Lifeline> lifelines) {
         boolean result = true;
@@ -367,6 +365,7 @@ public final class SubEventsHelper {
         Set<ISequenceEvent> result = new HashSet<ISequenceEvent>(self.getSubEvents());
         Predicate<ISequenceEvent> inRangePredicate = new Predicate<ISequenceEvent>() {
 
+            @Override
             public boolean apply(ISequenceEvent input) {
                 Range inputRange = input.getVerticalRange();
                 return range.includesAtLeastOneBound(inputRange) || new ISequenceEventQuery(input).isReflectiveMessage() && inputRange.includesAtLeastOneBound(range);
@@ -375,6 +374,7 @@ public final class SubEventsHelper {
         };
         Predicate<ISequenceEvent> inCoverage = new Predicate<ISequenceEvent>() {
 
+            @Override
             public boolean apply(ISequenceEvent input) {
                 Collection<Lifeline> inputCoverage = new ArrayList<Lifeline>(getCoverage(input));
                 return Iterables.removeAll(inputCoverage, lifelines);
