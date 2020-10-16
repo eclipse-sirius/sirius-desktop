@@ -16,6 +16,7 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.function.Supplier;
 
+import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.DefaultLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.ArrangeSelectionLayoutProvider;
@@ -69,6 +70,14 @@ public final class CustomLayoutAlgorithm {
      * 
      */
     private boolean useStandardArrangeSelectionMechanism = true;
+
+    /**
+     * In Sirius, when several levels of container are used in arrange (see
+     * {@link org.eclipse.sirius.diagram.ui.internal.refresh.layout.SiriusCanonicalLayoutHandler#getCreatedViewsToLayoutMap(DiagramEditPart)],
+     * one arrange command is called for each level. They are sort from the highest level container to the lowest level
+     * container. For some layout, it can be useful to reverse this order.
+     */
+    private boolean shouldReverseLayoutsOrder;
 
     private CustomLayoutAlgorithm() {
 
@@ -138,6 +147,17 @@ public final class CustomLayoutAlgorithm {
         return useStandardArrangeSelectionMechanism;
     }
 
+    /**
+     * Whether the current algorithm should reverse the layouts order in
+     * {@link org.eclipse.sirius.diagram.ui.internal.refresh.layout.SiriusCanonicalLayoutHandler#launchArrangeCommand(DiagramEditPart)}
+     * (from the lowest level container to the highest).
+     * 
+     * @return true if the order of layouts should be reversed, false otherwise.
+     */
+    public boolean shouldReverseLayoutsOrder() {
+        return shouldReverseLayoutsOrder;
+    }
+
     @Override
     public String toString() {
         return this.id;
@@ -175,6 +195,8 @@ public final class CustomLayoutAlgorithm {
         private boolean launchSnapAfter;
 
         private boolean useStandardArrangeSelectionMechanism;
+
+        private boolean shouldReverseLayoutsOrder;
 
         CustomLayoutAlgorithmBuilder(String id) {
             this.id = Objects.requireNonNull(id);
@@ -256,6 +278,21 @@ public final class CustomLayoutAlgorithm {
         }
 
         /**
+         * Set whether the current algorithm should reverse the layouts order in
+         * {@link org.eclipse.sirius.diagram.ui.internal.refresh.layout.SiriusCanonicalLayoutHandler#launchArrangeCommand(DiagramEditPart)}
+         * (from the lowest level container to the highest).
+         * 
+         * @param shouldReverseLayoutsOrder
+         *            true if the order of layouts should be reversed, false otherwise. .
+         * 
+         * @return the current builder for convenience.
+         */
+        public CustomLayoutAlgorithmBuilder reverseLayoutsOrder(boolean shouldReverseLayoutsOrder) {
+            this.shouldReverseLayoutsOrder = shouldReverseLayoutsOrder;
+            return this;
+        }
+
+        /**
          * Build the new CustomLayoutAlgorithm according to the builder parameters.
          * 
          * @return the new CustomLayoutAlgorithm.
@@ -269,6 +306,7 @@ public final class CustomLayoutAlgorithm {
             customLayoutAlgorithm.layoutOptions = Objects.requireNonNull(this.layoutOptions);
             customLayoutAlgorithm.launchSnapAfter = this.launchSnapAfter;
             customLayoutAlgorithm.useStandardArrangeSelectionMechanism = this.useStandardArrangeSelectionMechanism;
+            customLayoutAlgorithm.shouldReverseLayoutsOrder = this.shouldReverseLayoutsOrder;
             return customLayoutAlgorithm;
         }
 

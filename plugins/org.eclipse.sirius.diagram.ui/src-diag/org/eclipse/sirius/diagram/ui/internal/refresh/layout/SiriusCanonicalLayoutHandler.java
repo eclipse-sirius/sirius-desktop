@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,13 +33,16 @@ import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.layout.GenericLayoutProvider;
+import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.LayoutProvider;
+import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
- * Helper to execute a ArrangeRequest's {@link Command} for created views (in
- * the DDiagramCanonicalSynchronizer ) to arrange.
+ * Helper to execute a ArrangeRequest's {@link Command} for created views (in the DDiagramCanonicalSynchronizer ) to
+ * arrange.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -50,17 +53,27 @@ public final class SiriusCanonicalLayoutHandler {
     }
 
     /**
-     * Execute ArrangeRequest's {@link Command} for created views (in the
-     * DDiagramCanonicalSynchronizer) to arrange.
+     * Execute ArrangeRequest's {@link Command} for created views (in the DDiagramCanonicalSynchronizer) to arrange.
      * 
      * @param diagramEditPart
-     *            The {@link DiagramEditPart} used to get parent
-     *            {@link IGraphicalEditPart} of created {@link View}s to layout.
+     *            The {@link DiagramEditPart} used to get parent {@link IGraphicalEditPart} of created {@link View}s to
+     *            layout.
      */
     public static void launchArrangeCommand(DiagramEditPart diagramEditPart) {
         TransactionalEditingDomain editingDomain = diagramEditPart.getEditingDomain();
         Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = getCreatedViewsToLayoutMap(diagramEditPart);
         Map<IGraphicalEditPart, List<IAdaptable>> createdViewsWithSpecialLayoutMap = getCreatedViewsWithSpecialLayoutMap(diagramEditPart);
+        LayoutProvider layoutProvider = LayoutService.getProvider(diagramEditPart);
+        if (layoutProvider instanceof GenericLayoutProvider && ((GenericLayoutProvider) layoutProvider).shouldReverseLayoutsOrder(diagramEditPart)) {
+            // Reverse order as contrary to classic layout. For example for ELK, it is better to do it from the lowest level to the
+            // highest.
+            LinkedHashMap<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap_reverse = new LinkedHashMap<IGraphicalEditPart, List<IAdaptable>>();
+            ArrayList<IGraphicalEditPart> keys = new ArrayList<IGraphicalEditPart>(createdViewsToLayoutMap.keySet());
+            for (int i = keys.size() - 1; i >= 0; i--) {
+                createdViewsToLayoutMap_reverse.put(keys.get(i), createdViewsToLayoutMap.get(keys.get(i)));
+            }
+            createdViewsToLayoutMap = createdViewsToLayoutMap_reverse;
+        }
         Command layoutCommand = getLayoutCommand(createdViewsToLayoutMap, createdViewsWithSpecialLayoutMap, editingDomain);
         if (layoutCommand.canExecute()) {
             editingDomain.getCommandStack().execute(layoutCommand);
@@ -154,10 +167,11 @@ public final class SiriusCanonicalLayoutHandler {
         // computed multiple times
         Predicate<Entry<IGraphicalEditPart, List<IAdaptable>>> typeOfElementToLayout = new Predicate<Map.Entry<IGraphicalEditPart, List<IAdaptable>>>() {
 
+            @Override
             public boolean apply(Entry<IGraphicalEditPart, List<IAdaptable>> input) {
-                return input.getKey() instanceof DDiagramEditPart
-                        || input.getKey() instanceof DNodeContainerViewNodeContainerCompartmentEditPart
-                        || (input.getKey() instanceof DNodeContainerViewNodeContainerCompartment2EditPart && !(input.getKey().getParent().getParent() instanceof DNodeContainerViewNodeContainerCompartment2EditPart));
+                return input.getKey() instanceof DDiagramEditPart || input.getKey() instanceof DNodeContainerViewNodeContainerCompartmentEditPart
+                        || (input.getKey() instanceof DNodeContainerViewNodeContainerCompartment2EditPart
+                                && !(input.getKey().getParent().getParent() instanceof DNodeContainerViewNodeContainerCompartment2EditPart));
             }
         };
 

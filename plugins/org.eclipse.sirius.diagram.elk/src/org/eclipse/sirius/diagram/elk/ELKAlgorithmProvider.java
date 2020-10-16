@@ -65,6 +65,7 @@ public class ELKAlgorithmProvider implements CustomLayoutAlgorithmProvider {
                     .setLayoutOptions(layoutOptions)
                     .setLaunchSnapAfter(false)
                     .setStandardArrangeSelectionMechanism(false)
+                    .reverseLayoutsOrder(true)
                     .build();
             //@formatter:on
             layoutAlgorithms.add(customLayoutAlgorithm);

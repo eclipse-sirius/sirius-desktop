@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.ui.internal.layout;
 import java.util.Optional;
 import java.util.WeakHashMap;
 
+import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.AbstractLayoutEditPartProvider;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -114,6 +115,27 @@ public class GenericLayoutProvider implements LayoutProvider {
             Optional<CustomLayoutAlgorithm> customLayoutAlgorithm = getCustomLayoutAlgorithm(customLayoutConfiguration.get());
             if (customLayoutAlgorithm.isPresent()) {
                 return customLayoutAlgorithm.get().isLaunchSnapAfter();
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Whether the current layout provider should reverse the layouts order in
+     * {@link org.eclipse.sirius.diagram.ui.internal.refresh.layout.SiriusCanonicalLayoutHandler#launchArrangeCommand(DiagramEditPart)}
+     * (from the lowest level container to the highest).
+     * 
+     * @param partToLayout
+     *            A part to layout (to find associated configuration)
+     * 
+     * @return true if the order of layouts should be reversed, false otherwise.
+     */
+    public boolean shouldReverseLayoutsOrder(final IGraphicalEditPart partToLayout) {
+        Optional<CustomLayoutConfiguration> customLayoutConfiguration = getLayoutConfiguration(partToLayout);
+        if (customLayoutConfiguration.isPresent()) {
+            Optional<CustomLayoutAlgorithm> customLayoutAlgorithm = getCustomLayoutAlgorithm(customLayoutConfiguration.get());
+            if (customLayoutAlgorithm.isPresent()) {
+                return customLayoutAlgorithm.get().shouldReverseLayoutsOrder();
             }
         }
         return false;

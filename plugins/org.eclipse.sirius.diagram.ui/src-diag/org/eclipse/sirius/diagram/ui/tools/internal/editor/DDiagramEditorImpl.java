@@ -1680,9 +1680,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
             super.initializeGraphicalViewer();
 
-            // After EditPart instantiation call arrange command on views marked
-            // as
-            // to be arranged
+            // After EditPart instantiation call arrange command on views marked as to be arranged
             final DiagramEditPart diagramEditPart = getDiagramEditPart();
             if (diagramEditPart != null) {
                 SiriusCanonicalLayoutHandler.launchArrangeCommand(diagramEditPart);
