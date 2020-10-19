@@ -199,7 +199,7 @@ public class Execution extends AbstractNodeEvent {
     private Option<Message> getCompoundMessage(boolean start) {
         Message result = null;
         Option<Message> resultOption = Options.newNone();
-        if (CacheHelper.isDragTrackerCacheEnabled()) {
+        if (CacheHelper.isCacheEnabled()) {
             if (start) {
                 result = CacheHelper.getStartCompoundMessageCache().get(this);
             } else {
@@ -236,7 +236,7 @@ public class Execution extends AbstractNodeEvent {
     }
 
     private void putMessageInCache(boolean start, Message message) {
-        if (CacheHelper.isDragTrackerCacheEnabled()) {
+        if (CacheHelper.isCacheEnabled()) {
             if (start) {
                 CacheHelper.getStartCompoundMessageCache().put(this, message);
             } else {
