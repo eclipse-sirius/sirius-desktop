@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -211,7 +211,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             ctc.setLabel(cmd.getLabel());
 
             if (self instanceof Execution) {
-                addChildrenAdjustmentCommands((Execution) self, ctc, editingDomain, request, validator);
+                addChildrenAdjustmentCommands((Execution) self, ctc, request, validator);
             }
             solution = postProcessCommand(ctc, hostPart, requestQuery);
         }
@@ -277,27 +277,26 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         return logicalDelta.y;
     }
 
-    private void addChildrenAdjustmentCommands(Execution exec, CompositeTransactionalCommand cc, TransactionalEditingDomain editingDomain, final ChangeBoundsRequest cbr,
-            AbstractNodeEventResizeSelectionValidator validator) {
+    private void addChildrenAdjustmentCommands(Execution exec, CompositeTransactionalCommand cc, final ChangeBoundsRequest cbr, AbstractNodeEventResizeSelectionValidator validator) {
         RequestQuery rq = new RequestQuery(cbr);
         Rectangle logicalDelta = rq.getLogicalDelta();
         int moveDelta = logicalDelta.y;
         int sizeDelta = logicalDelta.height;
         if (rq.isResizeFromTop()) {
-            cc.compose(CommandFactory.createICommand(editingDomain, new ShiftDirectSubExecutionsOperation(exec, sizeDelta)));
-            cc.compose(CommandFactory.createICommand(editingDomain, new ShiftDescendantMessagesOperation(exec, moveDelta, true, false, true)));
+            cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDirectSubExecutionsOperation(exec, sizeDelta)));
+            cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDescendantMessagesOperation(exec, moveDelta, true, false, true)));
 
-            addCompoundEventsMoveCommands(exec, cc, editingDomain, true, moveDelta, cbr, validator);
-            addCompoundEventsMoveCommands(exec, cc, editingDomain, false, 0, cbr, validator);
+            addCompoundEventsMoveCommands(exec, cc, true, moveDelta, cbr, validator);
+            addCompoundEventsMoveCommands(exec, cc, false, 0, cbr, validator);
         } else if (rq.isResizeFromBottom()) {
-            cc.compose(CommandFactory.createICommand(editingDomain, new ShiftDescendantMessagesOperation(exec, sizeDelta, true, false, false)));
+            cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new ShiftDescendantMessagesOperation(exec, sizeDelta, true, false, false)));
 
-            addCompoundEventsMoveCommands(exec, cc, editingDomain, true, 0, cbr, validator);
-            addCompoundEventsMoveCommands(exec, cc, editingDomain, false, sizeDelta, cbr, validator);
+            addCompoundEventsMoveCommands(exec, cc, true, 0, cbr, validator);
+            addCompoundEventsMoveCommands(exec, cc, false, sizeDelta, cbr, validator);
         }
     }
 
-    private void addCompoundEventsMoveCommands(Execution self, CompositeTransactionalCommand cc, TransactionalEditingDomain editingDomain, final boolean top, int height, ChangeBoundsRequest request,
+    private void addCompoundEventsMoveCommands(Execution self, CompositeTransactionalCommand cc, final boolean top, int height, ChangeBoundsRequest request,
             AbstractNodeEventResizeSelectionValidator validator) {
         List<EventEnd> findEnds = EventEndHelper.findEndsFromSemanticOrdering(self);
         RequestQuery rq = new RequestQuery(request);
@@ -352,9 +351,9 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
                     final Range newRange = new Range(seeRange.getLowerBound() + lDelta, seeRange.getUpperBound() + uDelta);
                     if (ise instanceof Message && !hasBothEndMoving((Message) ise)) {
                         Message msg = (Message) ise;
-                        addMessageReconnectionCommand(self, cc, editingDomain, msg, newRange, request, validator);
+                        addMessageReconnectionCommand(self, cc, msg, newRange, request, validator, sequenceDiagram);
                     } else {
-                        cc.compose(CommandFactory.createICommand(editingDomain, new SetVerticalRangeOperation(ise, newRange)));
+                        cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), new SetVerticalRangeOperation(ise, newRange)));
                     }
                 } else {
                     cc.compose(org.eclipse.gmf.runtime.common.core.command.UnexecutableCommand.INSTANCE);
@@ -372,8 +371,8 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         return Integer.MIN_VALUE;
     }
 
-    private void addMessageReconnectionCommand(Execution self, CompositeTransactionalCommand cc, TransactionalEditingDomain editingDomain, Message message, Range newRange, ChangeBoundsRequest request,
-            AbstractNodeEventResizeSelectionValidator validator) {
+    private void addMessageReconnectionCommand(Execution self, CompositeTransactionalCommand cc, Message message, Range newRange, ChangeBoundsRequest request,
+            AbstractNodeEventResizeSelectionValidator validator, SequenceDiagram sequenceDiagram) {
 
         Set<Execution> executionsInMove = new RequestQuery(request).getExecutions();
         boolean invalidCommand = false;
@@ -407,7 +406,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         // if a verticalSpaceExpansion will occurs, ignore ISequenceEvent under
         // the insertionPoint
         if (needVerticalSpaceExpansion(validator, request)) {
-            Collection<ISequenceEvent> sequenceEventsUpperToInsertionTime = getSequenceEventsUpperToInsertionTime(self.getDiagram(), validator.getExpansionZone().getLowerBound());
+            Collection<ISequenceEvent> sequenceEventsUpperToInsertionTime = getSequenceEventsUpperToInsertionTime(sequenceDiagram, validator.getExpansionZone().getLowerBound());
             sequenceEventsUpperToInsertionTime.removeAll(executionsInMove);
             toIgnore.addAll(sequenceEventsUpperToInsertionTime);
         }
@@ -435,7 +434,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         // if a verticalSpaceExpansion will occurs, ignore ISequenceEvent under
         // the insertionPoint
         if (needVerticalSpaceExpansion(validator, request)) {
-            Collection<ISequenceEvent> sequenceEventsUpperToInsertionTime = getSequenceEventsUpperToInsertionTime(self.getDiagram(), validator.getExpansionZone().getLowerBound());
+            Collection<ISequenceEvent> sequenceEventsUpperToInsertionTime = getSequenceEventsUpperToInsertionTime(sequenceDiagram, validator.getExpansionZone().getLowerBound());
             sequenceEventsUpperToInsertionTime.removeAll(executionsInMove);
             toIgnore.addAll(sequenceEventsUpperToInsertionTime);
         }
@@ -461,7 +460,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         if (invalidCommand) {
             cc.compose(org.eclipse.gmf.runtime.common.core.command.UnexecutableCommand.INSTANCE);
         } else {
-            cc.compose(CommandFactory.createICommand(editingDomain, smrc));
+            cc.compose(CommandFactory.createICommand(cc.getEditingDomain(), smrc));
         }
 
     }

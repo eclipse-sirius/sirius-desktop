@@ -268,14 +268,15 @@ public class ISEComplexMoveValidator extends AbstractSequenceInteractionValidato
 
     private boolean checkConflictesInFinalPositions() {
         List<Integer> conflicts = new ArrayList<>();
-        conflicts.addAll(new PositionsChecker(getDiagram(), rangeFunction).getInvalidPositions());
+        SequenceDiagram diagram = getDiagram();
+        conflicts.addAll(new PositionsChecker(diagram, rangeFunction).getInvalidPositions());
 
         if (!conflicts.isEmpty()) {
             // try with global moved range...
             if (!expansionZone.isEmpty() && globalMovedRange != expansionZone) {
                 expansionZone = globalMovedRange;
                 conflicts = new ArrayList<>();
-                conflicts.addAll(new PositionsChecker(getDiagram(), rangeFunction).getInvalidPositions());
+                conflicts.addAll(new PositionsChecker(diagram, rangeFunction).getInvalidPositions());
             }
         }
 
