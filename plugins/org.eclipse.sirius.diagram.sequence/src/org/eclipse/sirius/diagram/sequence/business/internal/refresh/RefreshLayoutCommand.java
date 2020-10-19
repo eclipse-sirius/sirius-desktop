@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshGr
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.RefreshSemanticOrderingsOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SynchronizeGraphicalOrderingOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.RefreshOrderingHelper;
+import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
@@ -47,8 +48,8 @@ public class RefreshLayoutCommand extends RecordingCommand {
      * Default constructor.
      * 
      * @param diagram
-     *            {@link Diagram} to refresh, used also to access
-     *            {@link SequenceDDiagram} & {@link SequenceDiagram} to refresh
+     *            {@link Diagram} to refresh, used also to access {@link SequenceDDiagram} & {@link SequenceDiagram} to
+     *            refresh
      * 
      * @param refreshDiagram
      *            <code>true</code> if we should actually update the GMF model
@@ -74,10 +75,11 @@ public class RefreshLayoutCommand extends RecordingCommand {
         IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(sequenceDDiagram);
         if (permissionAuthority != null && permissionAuthority.canEditInstance(sequenceDDiagram)) {
             sequenceDiagram.useCache(true);
+            CacheHelper.initRefreshLayoutCaches();
             try {
                 /*
-                 * Everything has been committed, so we should be in a stable
-                 * state where it is safe to refresh both orderings.
+                 * Everything has been committed, so we should be in a stable state where it is safe to refresh both
+                 * orderings.
                  */
 
                 // Compute only once (and not three times) the event ends.
@@ -109,8 +111,8 @@ public class RefreshLayoutCommand extends RecordingCommand {
                     AbstractModelChangeOperation<Boolean> synchronizeGraphicalOrderingOperation = new SynchronizeGraphicalOrderingOperation(diagram, false);
                     synchronizeGraphicalOrderingOperation.execute();
                     /*
-                     * The layout has probably changed graphical positions:
-                     * re-compute the ordering to make sure it is up-to-date.
+                     * The layout has probably changed graphical positions: re-compute the ordering to make sure it is
+                     * up-to-date.
                      */
                     if (refreshGraphicalOrderingOperation.execute()) {
                         sequenceDiagram.clearOrderedCaches();
@@ -119,6 +121,7 @@ public class RefreshLayoutCommand extends RecordingCommand {
             } finally {
                 sequenceDiagram.useCache(false);
                 sequenceDiagram.clearAllCaches();
+                CacheHelper.clearCaches();
             }
         }
         DslCommonPlugin.PROFILER.stopWork(REFRESH_LAYOUT);
