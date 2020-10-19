@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -20,7 +19,6 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
@@ -30,10 +28,7 @@ import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
-import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceNodeQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
-import org.eclipse.sirius.diagram.sequence.business.internal.util.ParentOperandFinder;
-import org.eclipse.sirius.diagram.sequence.business.internal.util.RangeSetter;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.SubEventsHelper;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
@@ -111,6 +106,62 @@ public class Execution extends AbstractNodeEvent {
     }
 
     @Override
+    public boolean canChildOccupy(ISequenceEvent child, Range range) {
+        return new SubEventsHelper(this).canChildOccupy(child, range);
+    }
+
+    @Override
+    public boolean canChildOccupy(ISequenceEvent child, Range range, List<ISequenceEvent> eventsToIgnore, Collection<Lifeline> lifelines) {
+        return new SubEventsHelper(this).canChildOccupy(child, range, eventsToIgnore, lifelines);
+    }
+
+    @Override
+    public boolean isLogicallyInstantaneous() {
+        return false;
+    }
+
+    @Override
+    public ISequenceEvent getHierarchicalParentEvent() {
+        return getHierarchicalParentEvent(Messages.Execution_invalidExecutionContext);
+    }
+
+    @Override
+    public List<ISequenceEvent> getSubEvents() {
+        return new SubEventsHelper(this).getSubEvents();
+    }
+
+    @Override
+    public Collection<ISequenceEvent> getEventsToMoveWith() {
+        Set<ISequenceEvent> toMove = new LinkedHashSet<>();
+        List<ISequenceEvent> subEvents = getSubEvents();
+        toMove.addAll(findLinkedExecutions(subEvents));
+        toMove.addAll(getLinkedMessages());
+        toMove.addAll(findCoveredExecutions(subEvents));
+        toMove.addAll(subEvents);
+        return toMove;
+    }
+
+    @Override
+    public Range getOccupiedRange() {
+        return new ISequenceEventQuery(this).getOccupiedRange();
+    }
+
+    /**
+     * Sub-events can occur anywhere on a normal execution as long as it is strictly inside.
+     * <p>
+     * {@inheritDoc}
+     */
+    @Override
+    public Range getValidSubEventsRange() {
+        Range range = getVerticalRange();
+        if (range.width() > 2 * LayoutConstants.EXECUTION_CHILDREN_MARGIN) {
+            return range.shrinked(LayoutConstants.EXECUTION_CHILDREN_MARGIN);
+        } else {
+            return range;
+        }
+    }
+
+    @Override
     public List<Message> getLinkedMessages() {
         List<Message> linkedMessages = new ArrayList<>();
 
@@ -134,6 +185,15 @@ public class Execution extends AbstractNodeEvent {
      */
     public Option<Message> getStartMessage() {
         return getCompoundMessage(true);
+    }
+
+    /**
+     * Returns the message linked to the end (i.e. bottom side) of this execution, if any.
+     * 
+     * @return the message linked to the end of this execution, if any.
+     */
+    public Option<Message> getEndMessage() {
+        return getCompoundMessage(false);
     }
 
     private Option<Message> getCompoundMessage(boolean start) {
@@ -186,15 +246,6 @@ public class Execution extends AbstractNodeEvent {
     }
 
     /**
-     * Returns the message linked to the end (i.e. bottom side) of this execution, if any.
-     * 
-     * @return the message linked to the end of this execution, if any.
-     */
-    public Option<Message> getEndMessage() {
-        return getCompoundMessage(false);
-    }
-
-    /**
      * Tests whether this execution starts with a reflective message.
      * 
      * @return <code>true</code> if this execution has a reflective message linked to its start.
@@ -234,83 +285,6 @@ public class Execution extends AbstractNodeEvent {
         return startMessage.some() && startMessage.get().isReflective() && (!endMessage.some() || endMessage.get().isReflective());
     }
 
-    @Override
-    public ISequenceEvent getParentEvent() {
-        ISequenceEvent parent = getHierarchicalParentEvent();
-
-        List<ISequenceEvent> potentialSiblings = parent.getSubEvents();
-        if (!potentialSiblings.contains(this)) {
-            // look for parentOperand
-            parent = getParentOperand().get();
-        }
-        return parent;
-    }
-
-    @Override
-    public ISequenceEvent getHierarchicalParentEvent() {
-        EObject viewContainer = this.view.eContainer();
-        if (viewContainer instanceof View) {
-            View parentView = (View) viewContainer;
-            Option<ISequenceEvent> parentElement = ISequenceElementAccessor.getISequenceEvent(parentView);
-            if (parentElement.some()) {
-                return parentElement.get();
-            }
-        }
-        throw new RuntimeException(MessageFormat.format(Messages.Execution_invalidExecutionContext, this));
-    }
-
-    /**
-     * Finds the deepest Operand container including the position if existing.
-     * 
-     * @param verticalPosition
-     *            the position where to look for the deepest operand
-     * @return the deepest Operand convering this lifeline at this range
-     * @see ISequenceEvent#getParentOperand()
-     */
-    @Override
-    public Option<Operand> getParentOperand(final int verticalPosition) {
-        return new ParentOperandFinder(this).getParentOperand(new Range(verticalPosition, verticalPosition));
-    }
-
-    /**
-     * Finds the deepest Operand container including the position if existing.
-     * 
-     * @param range
-     *            the range where to look for the deepest operand
-     * @return the deepest Operand convering this lifeline at this range
-     * @see ISequenceEvent#getParentOperand()
-     */
-    @Override
-    public Option<Operand> getParentOperand(final Range range) {
-        return new ParentOperandFinder(this).getParentOperand(range);
-    }
-
-    /**
-     * Finds the deepest Operand container if existing.
-     * 
-     * @return the deepest Operand container if existing
-     */
-    @Override
-    public Option<Operand> getParentOperand() {
-        return new ParentOperandFinder(this).getParentOperand();
-    }
-
-    @Override
-    public List<ISequenceEvent> getSubEvents() {
-        return new SubEventsHelper(this).getSubEvents();
-    }
-
-    @Override
-    public Collection<ISequenceEvent> getEventsToMoveWith() {
-        Set<ISequenceEvent> toMove = new LinkedHashSet<>();
-        List<ISequenceEvent> subEvents = getSubEvents();
-        toMove.addAll(findLinkedExecutions(subEvents));
-        toMove.addAll(getLinkedMessages());
-        toMove.addAll(findCoveredExecutions(subEvents));
-        toMove.addAll(subEvents);
-        return toMove;
-    }
-
     private Collection<? extends ISequenceEvent> findLinkedExecutions(List<ISequenceEvent> subEvents) {
         Set<Execution> linkedExecutions = new LinkedHashSet<>();
         for (Message message : Iterables.filter(subEvents, Message.class)) {
@@ -338,56 +312,6 @@ public class Execution extends AbstractNodeEvent {
             Iterables.addAll(coveredExecutions, Iterables.filter(parentEvents, Execution.class));
         }
         return coveredExecutions;
-    }
-
-    @Override
-    public Range getVerticalRange() {
-        return new SequenceNodeQuery(getNotationNode()).getVerticalRange();
-    }
-
-    @Override
-    public boolean isLogicallyInstantaneous() {
-        return false;
-    }
-
-    @Override
-    public void setVerticalRange(Range range) throws IllegalStateException {
-        RangeSetter.setVerticalRange(this, range);
-    }
-
-    @Override
-    public Option<Lifeline> getLifeline() {
-        return getParentLifeline();
-    }
-
-    @Override
-    public boolean canChildOccupy(ISequenceEvent child, Range range) {
-        return new SubEventsHelper(this).canChildOccupy(child, range);
-    }
-
-    @Override
-    public boolean canChildOccupy(ISequenceEvent child, Range range, List<ISequenceEvent> eventsToIgnore, Collection<Lifeline> lifelines) {
-        return new SubEventsHelper(this).canChildOccupy(child, range, eventsToIgnore, lifelines);
-    }
-
-    @Override
-    public Range getOccupiedRange() {
-        return new ISequenceEventQuery(this).getOccupiedRange();
-    }
-
-    /**
-     * Sub-events can occur anywhere on a normal execution as long as it is strictly inside.
-     * <p>
-     * {@inheritDoc}
-     */
-    @Override
-    public Range getValidSubEventsRange() {
-        Range range = getVerticalRange();
-        if (range.width() > 2 * LayoutConstants.EXECUTION_CHILDREN_MARGIN) {
-            return range.shrinked(LayoutConstants.EXECUTION_CHILDREN_MARGIN);
-        } else {
-            return range;
-        }
     }
 
     /**

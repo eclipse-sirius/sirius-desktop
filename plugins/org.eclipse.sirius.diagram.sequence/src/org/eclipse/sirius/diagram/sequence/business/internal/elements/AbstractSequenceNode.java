@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,13 +15,16 @@ package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.notation.Bounds;
+import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
+import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 
 /**
- * Abstract base class for sequence elements which are represented by a GMF
- * Node.
+ * Abstract base class for sequence elements which are represented by a GMF Node.
  * 
  * @author mporhel, pcdavid
  */
@@ -41,6 +44,7 @@ abstract class AbstractSequenceNode extends AbstractSequenceElement implements I
      * 
      * @return the GMF Node representing this element.
      */
+    @Override
     public Node getNotationNode() {
         return (Node) view;
     }
@@ -48,6 +52,7 @@ abstract class AbstractSequenceNode extends AbstractSequenceElement implements I
     /**
      * {@inheritDoc}
      */
+    @Override
     public Rectangle getBounds() {
         Node node = getNotationNode();
         if (!(node.getElement() instanceof DDiagramElement)) {
@@ -70,5 +75,28 @@ abstract class AbstractSequenceNode extends AbstractSequenceElement implements I
         } else {
             throw new RuntimeException();
         }
+    }
+
+    @Override
+    public Option<Lifeline> getLifeline() {
+        return getParentLifeline();
+    }
+
+    /**
+     * Tries to find a lifeline among the ancestors of this element (including the element itself).
+     * 
+     * @return option on the parent lifeline of this sequenceElement
+     */
+    protected Option<Lifeline> getParentLifeline() {
+        View current = view;
+        do {
+            Option<Lifeline> lifeline = ISequenceElementAccessor.getLifeline(current);
+            if (lifeline.some()) {
+                return lifeline;
+            } else {
+                current = (View) current.eContainer();
+            }
+        } while (current != null && !(current instanceof Diagram));
+        return Options.newNone();
     }
 }

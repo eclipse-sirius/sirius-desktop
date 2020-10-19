@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -49,9 +49,8 @@ public abstract class AbstractSequenceElement extends AdapterImpl implements ISe
     }
 
     /**
-     * Generic test function used by all the more specific predicates: checks
-     * that a diagram element is valid, is part of a sequence diagram, and has
-     * the specified type of mapping (or a sub-type).
+     * Generic test function used by all the more specific predicates: checks that a diagram element is valid, is part
+     * of a sequence diagram, and has the specified type of mapping (or a sub-type).
      * 
      * This method handle edge mapping imports.
      * 
@@ -114,25 +113,6 @@ public abstract class AbstractSequenceElement extends AdapterImpl implements ISe
         } else {
             return Options.newNone();
         }
-    }
-
-    /**
-     * Tries to find a lifeline among the ancestors of this element (including
-     * the element itself).
-     * 
-     * @return option on the parent lifeline of this sequenceElement
-     */
-    protected Option<Lifeline> getParentLifeline() {
-        View current = view;
-        do {
-            Option<Lifeline> lifeline = ISequenceElementAccessor.getLifeline(current);
-            if (lifeline.some()) {
-                return lifeline;
-            } else {
-                current = (View) current.eContainer();
-            }
-        } while (current != null && !(current instanceof Diagram));
-        return Options.newNone();
     }
 
     @Override
