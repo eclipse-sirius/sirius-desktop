@@ -11,7 +11,8 @@
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui;
 
 import org.eclipse.gef.EditPart;
-import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceDragEditPartsTrackerEx.SequenceCacheDragTrackerHelper;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.NoCopyDragEditPartsTrackerEx;
 
 /**
@@ -33,14 +34,14 @@ public class SequenceNoCopyDragEditPartsTrackerEx extends NoCopyDragEditPartsTra
 
     @Override
     protected boolean handleButtonUp(int button) {
-        CacheHelper.clearCaches();
+        SequenceCacheDragTrackerHelper.handleButtonUp((IGraphicalEditPart) getSourceEditPart());
         return super.handleButtonUp(button);
     }
 
     @Override
     protected boolean handleButtonDown(int button) {
         boolean handleButtonDown = super.handleButtonDown(button);
-        CacheHelper.initCaches();
+        SequenceCacheDragTrackerHelper.handleButtonDown((IGraphicalEditPart) getSourceEditPart());
         return handleButtonDown;
     }
 

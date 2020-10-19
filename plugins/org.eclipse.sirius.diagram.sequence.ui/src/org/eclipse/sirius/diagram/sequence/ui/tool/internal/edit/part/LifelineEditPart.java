@@ -23,6 +23,7 @@ import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.editpolicies.ResizableEditPolicy;
 import org.eclipse.gef.requests.SelectionRequest;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
@@ -33,7 +34,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
-import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
 import org.eclipse.sirius.diagram.sequence.description.EndOfLifeMapping;
 import org.eclipse.sirius.diagram.sequence.description.ExecutionMapping;
 import org.eclipse.sirius.diagram.sequence.description.StateMapping;
@@ -42,6 +42,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.ExecutionItem
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.LifelineNodeFigure;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.SouthCenteredBorderItemLocator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.LayoutEditPartConstants;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceDragEditPartsTrackerEx.SequenceCacheDragTrackerHelper;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramBorderNodeEditPartOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
@@ -284,10 +285,9 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
          * @see org.eclipse.gmf.runtime.diagram.ui.tools.DragEditPartsTrackerEx#handleButtonDown(int) {@inheritDoc}
          */
         @Override
-        protected boolean handleButtonDown(int button) {
-            boolean handleButtonDown = super.handleButtonDown(button);
-            CacheHelper.initCaches();
-            return handleButtonDown;
+        protected boolean handleButtonUp(int button) {
+            SequenceCacheDragTrackerHelper.handleButtonUp((IGraphicalEditPart) getSourceEditPart());
+            return super.handleButtonUp(button);
         }
 
         /**
@@ -296,9 +296,10 @@ public class LifelineEditPart extends AbstractSequenceBorderedEditPart {
          * @see org.eclipse.gef.tools.DragEditPartsTracker#handleButtonUp(int) {@inheritDoc}
          */
         @Override
-        protected boolean handleButtonUp(int button) {
-            CacheHelper.clearCaches();
-            return super.handleButtonUp(button);
+        protected boolean handleButtonDown(int button) {
+            boolean handleButtonDown = super.handleButtonDown(button);
+            SequenceCacheDragTrackerHelper.handleButtonDown((IGraphicalEditPart) getSourceEditPart());
+            return handleButtonDown;
         }
     }
 }

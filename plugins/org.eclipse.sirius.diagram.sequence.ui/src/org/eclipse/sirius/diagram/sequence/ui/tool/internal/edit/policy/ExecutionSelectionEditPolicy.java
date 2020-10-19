@@ -57,7 +57,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.operation.ShiftDire
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansion;
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
-import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.EventFinder;
 import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
@@ -72,6 +71,7 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.Abstr
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.ISEComplexMoveValidator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.HorizontalGuide;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.RangeGuide;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceDragEditPartsTrackerEx.SequenceCacheDragTrackerHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.EditPartsHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
@@ -745,14 +745,14 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
 
             @Override
             protected boolean handleButtonUp(int button) {
-                CacheHelper.clearCaches();
+                SequenceCacheDragTrackerHelper.handleButtonUp((IGraphicalEditPart) getOwner());
                 return super.handleButtonUp(button);
             }
 
             @Override
             protected boolean handleButtonDown(int button) {
                 boolean handleButtonDown = super.handleButtonDown(button);
-                CacheHelper.initCaches();
+                SequenceCacheDragTrackerHelper.handleButtonDown((IGraphicalEditPart) getOwner());
                 return handleButtonDown;
             }
         };
