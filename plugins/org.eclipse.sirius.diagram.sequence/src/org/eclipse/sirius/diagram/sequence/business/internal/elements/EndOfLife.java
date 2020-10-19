@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -28,11 +28,9 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
- * Represents the EndOfLife marker which can appear at the bottom of a lifeline.
- * This element can be present even in the case where the lifeline is not
- * explicitly destroyed by a destruction message. In that case, it is used as a
- * convenience to allow the user to resize the lifeline vertically by dragging
- * the EndOfLife marker.
+ * Represents the EndOfLife marker which can appear at the bottom of a lifeline. This element can be present even in the
+ * case where the lifeline is not explicitly destroyed by a destruction message. In that case, it is used as a
+ * convenience to allow the user to resize the lifeline vertically by dragging the EndOfLife marker.
  * 
  * @author mporhel, pcdavid
  */
@@ -45,8 +43,7 @@ public class EndOfLife extends AbstractSequenceNode {
     public static final int VISUAL_ID = 3001;
 
     /**
-     * Predicate to check whether a Sirius DDiagramElement represents an
-     * EndOfLife.
+     * Predicate to check whether a Sirius DDiagramElement represents an EndOfLife.
      */
     private enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
@@ -78,19 +75,12 @@ public class EndOfLife extends AbstractSequenceNode {
     }
 
     /**
-     * Returns a predicate to check whether a Sirius DDiagramElement represents
-     * an EndOfLife.
+     * Returns a predicate to check whether a Sirius DDiagramElement represents an EndOfLife.
      * 
-     * @return a predicate to check whether a Sirius DDiagramElement represents
-     *         an EndOfLife.
+     * @return a predicate to check whether a Sirius DDiagramElement represents an EndOfLife.
      */
     public static Predicate<DDiagramElement> viewpointElementPredicate() {
         return SiriusElementPredicate.INSTANCE;
-    }
-
-    @Override
-    public Option<Lifeline> getLifeline() {
-        return getParentLifeline();
     }
 
     /**
@@ -123,11 +113,10 @@ public class EndOfLife extends AbstractSequenceNode {
     }
 
     /**
-     * Tests whether this EOL marker (and thus the associated lifeline) is
-     * explicitly destroyed by a destruction message.
+     * Tests whether this EOL marker (and thus the associated lifeline) is explicitly destroyed by a destruction
+     * message.
      * 
-     * @return <code>true</code> if this EOL marker is the target of a
-     *         destruction message.
+     * @return <code>true</code> if this EOL marker is the target of a destruction message.
      */
     public boolean isExplicitelyDestroyed() {
         return getDestructionMessage().some();
