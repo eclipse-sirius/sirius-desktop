@@ -39,6 +39,11 @@ public abstract class AbstractSequenceElement extends AdapterImpl implements ISe
     protected final View view;
 
     /**
+     * The parent SequenceDiagram.
+     */
+    protected Option<SequenceDiagram> cachedDiagram;
+
+    /**
      * Constructor.
      * 
      * @param view
@@ -81,10 +86,13 @@ public abstract class AbstractSequenceElement extends AdapterImpl implements ISe
 
     @Override
     public SequenceDiagram getDiagram() {
-        Diagram gmfDiagram = view.getDiagram();
-        Option<SequenceDiagram> diagram = ISequenceElementAccessor.getSequenceDiagram(gmfDiagram);
-        assert diagram.some() : Messages.AbstractSequenceElement_invalidDiagram;
-        return diagram.get();
+        if (cachedDiagram == null) {
+            Diagram gmfDiagram = view.getDiagram();
+            Option<SequenceDiagram> diagram = ISequenceElementAccessor.getSequenceDiagram(gmfDiagram);
+            assert diagram.some() : Messages.AbstractSequenceElement_invalidDiagram;
+            cachedDiagram = diagram;
+        }
+        return cachedDiagram.get();
     }
 
     @Override
