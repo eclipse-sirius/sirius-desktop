@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -39,12 +39,12 @@ import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
-import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
 import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.OperandEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.OperandResizeValidator;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceDragEditPartsTrackerEx.SequenceCacheDragTrackerHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirResizableEditPolicy;
@@ -359,16 +359,17 @@ public class OperandResizableEditPolicy extends AirResizableEditPolicy {
     @Override
     protected ResizeTracker getResizeTracker(int direction) {
         return new SiriusResizeTracker((GraphicalEditPart) getHost(), direction) {
+
             @Override
             protected boolean handleButtonUp(int button) {
-                CacheHelper.clearCaches();
+                SequenceCacheDragTrackerHelper.handleButtonUp((IGraphicalEditPart) getOwner());
                 return super.handleButtonUp(button);
             }
 
             @Override
             protected boolean handleButtonDown(int button) {
                 boolean handleButtonDown = super.handleButtonDown(button);
-                CacheHelper.initCaches();
+                SequenceCacheDragTrackerHelper.handleButtonDown((IGraphicalEditPart) getOwner());
                 return handleButtonDown;
             }
         };

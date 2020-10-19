@@ -18,9 +18,11 @@ import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.Request;
 import org.eclipse.gef.requests.BendpointRequest;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
-import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceDragEditPartsTrackerEx.SequenceCacheDragTrackerHelper;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.SelectConnectionEditPartTracker;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
@@ -75,10 +77,12 @@ public class SequenceMessageSelectConnectionEditPartTracker extends SelectConnec
     @Override
     protected boolean handleButtonDown(int button) {
         boolean res = super.handleButtonDown(button);
-        CacheHelper.initCaches();
         SequenceMessageEditPart smep = (SequenceMessageEditPart) getSourceEditPart();
-        if (new ISequenceEventQuery(smep.getISequenceEvent()).isReflectiveMessage()) {
-            Range range = smep.getISequenceEvent().getVerticalRange();
+        SequenceCacheDragTrackerHelper.handleButtonDown(smep);
+
+        ISequenceEvent iSequenceEvent = smep.getISequenceEvent();
+        if (new ISequenceEventQuery(iSequenceEvent).isReflectiveMessage()) {
+            Range range = iSequenceEvent.getVerticalRange();
             Point location = getLocation().getCopy();
             GraphicalHelper.screen2logical(location, smep);
 
@@ -101,7 +105,7 @@ public class SequenceMessageSelectConnectionEditPartTracker extends SelectConnec
      */
     @Override
     protected boolean handleButtonUp(int button) {
-        CacheHelper.clearCaches();
+        SequenceCacheDragTrackerHelper.handleButtonUp((IGraphicalEditPart) getSourceEditPart());
         return super.handleButtonUp(button);
     }
 
