@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo
+ * Copyright (c) 2018, 2020 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,17 +19,17 @@ import java.util.Optional;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.core.runtime.IConfigurationElement;
-import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.draw2d.graph.Node;
 import org.eclipse.elk.core.service.LayoutConnectorsService;
 import org.eclipse.elk.core.service.LayoutMapping;
 import org.eclipse.gef.commands.Command;
+import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutExtender;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.DefaultLayoutProvider;
-import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.ExtendableLayoutProvider;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 
 import com.google.inject.Injector;
 
@@ -39,19 +39,33 @@ import com.google.inject.Injector;
  * @author <a href=mailto:pierre.guilet@obeo.fr>Pierre Guilet</a>
  *
  */
-public class ELKLayoutNodeProvider extends DefaultLayoutProvider implements ExtendableLayoutProvider {
-    private final LayoutExtender extender = new LayoutExtender(this);
+@SuppressWarnings("restriction")
+public class ELKLayoutNodeProvider extends DefaultLayoutProvider {
 
-    @SuppressWarnings("rawtypes")
+    @SuppressWarnings({ "rawtypes" })
     @Override
     public Command layoutEditParts(final List selectedObjects, final IAdaptable layoutHint) {
+        return layoutEditParts(selectedObjects, layoutHint, false);
+    }
+
+    @SuppressWarnings({ "rawtypes" })
+    @Override
+    public Command layoutEditParts(final List selectedObjects, final IAdaptable layoutHint, final boolean isArrangeAll) {
         List<IELKLayoutExtension> elkLayoutExtensions = getLayoutExtensions();
         DiagramEditPart diagramEditPart = layoutHint.getAdapter(DiagramEditPart.class);
+
+        if (diagramEditPart == null) {
+            IGraphicalEditPart editPart = layoutHint.getAdapter(IGraphicalEditPart.class);
+            diagramEditPart = Optional.ofNullable(editPart).map(graphicalEditPart -> new EditPartQuery(graphicalEditPart).getFirstAncestorOfType(DDiagramEditPart.class)).get();
+        }
+        if (diagramEditPart == null) {
+            return UnexecutableCommand.INSTANCE;
+        }
         Injector injector = LayoutConnectorsService.getInstance().getInjector(null, selectedObjects);
         ElkDiagramLayoutConnector connector = injector.getInstance(ElkDiagramLayoutConnector.class);
 
         connector.setLayoutConfiguration(layoutConfiguration);
-        LayoutMapping layoutMapping = connector.buildLayoutGraph(diagramEditPart, selectedObjects);
+        LayoutMapping layoutMapping = connector.buildLayoutGraph(diagramEditPart, selectedObjects, isArrangeAll);
 
         if (DiagramElkPlugin.getDefault().isDebugging()) {
             ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(),
@@ -111,20 +125,5 @@ public class ELKLayoutNodeProvider extends DefaultLayoutProvider implements Exte
             }
         }
         return layoutExtensions;
-    }
-
-    @Override
-    public boolean handleConnectableListItems() {
-        return true;
-    }
-
-    @Override
-    public Rectangle provideNodeMetrics(Node node) {
-        return null;
-    }
-
-    @Override
-    public LayoutExtender getExtender() {
-        return extender;
     }
 }

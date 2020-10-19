@@ -38,22 +38,47 @@ import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.PinnedElemen
  */
 public class GenericLayoutProvider implements LayoutProvider {
 
-    private WeakHashMap<IGraphicalEditPart, DefaultLayoutProvider> editPartToLayoutProviderCache = new WeakHashMap<>();
+    /**
+     * An internal class to store the {@link DefaultLayoutProvider} and some associated data.
+     * 
+     * @author lredor
+     */
+    private class LayoutProviderData {
+        DefaultLayoutProvider defaultLayoutProvider;
+
+        @SuppressWarnings("unused")
+        boolean shouldLaunchSnapTo;
+
+        @SuppressWarnings("unused")
+        boolean useStandardArrangeSelectionMechanism;
+
+        public LayoutProviderData(DefaultLayoutProvider defaultLayoutProvider, boolean shouldLaunchSnapTo, boolean useStandardArrangeSelectionMechanism) {
+            this.defaultLayoutProvider = defaultLayoutProvider;
+            this.shouldLaunchSnapTo = shouldLaunchSnapTo;
+            this.useStandardArrangeSelectionMechanism = useStandardArrangeSelectionMechanism;
+        }
+    }
+
+    private WeakHashMap<IGraphicalEditPart, LayoutProviderData> editPartToLayoutProviderCache = new WeakHashMap<>();
 
     @Override
     public AbstractLayoutEditPartProvider getLayoutNodeProvider(final IGraphicalEditPart partToLayout) {
-        DefaultLayoutProvider defaultLayoutProvider = Optional.ofNullable(editPartToLayoutProviderCache.get(partToLayout)).orElseGet(() -> getGenericLayoutProvider(partToLayout));
-        if (defaultLayoutProvider != null) {
+        AbstractLayoutEditPartProvider result = null;
+        LayoutProviderData layoutProviderData = Optional.ofNullable(editPartToLayoutProviderCache.get(partToLayout)).orElseGet(() -> getLayoutProviderData(partToLayout).orElseGet(null));
+        if (layoutProviderData != null) {
             final CompoundLayoutProvider clp = new CompoundLayoutProvider();
-            clp.addProvider(defaultLayoutProvider);
-            if (defaultLayoutProvider instanceof ExtendableLayoutProvider) {
-                ExtendableLayoutProvider layoutProvider = (ExtendableLayoutProvider) defaultLayoutProvider;
+            clp.addProvider(layoutProviderData.defaultLayoutProvider);
+            if (layoutProviderData.defaultLayoutProvider instanceof ExtendableLayoutProvider) {
+                ExtendableLayoutProvider layoutProvider = (ExtendableLayoutProvider) layoutProviderData.defaultLayoutProvider;
                 clp.addProvider(new PinnedElementsLayoutProvider(layoutProvider));
             }
-
-            return new ArrangeSelectionLayoutProvider(clp);
+            if (layoutProviderData.useStandardArrangeSelectionMechanism) {
+                result = new ArrangeSelectionLayoutProvider(clp);
+            } else {
+                result = clp;
+            }
         }
-        return null;
+        return result;
     }
 
     /**
@@ -61,9 +86,10 @@ public class GenericLayoutProvider implements LayoutProvider {
      * 
      * @param partToLayout
      *            the part that will be layouted.
-     * @return the layout configuration that should be used by the layout algorithm. Null if no such element exist.
+     * @return the layout configuration that should be used by the layout algorithm. Empty {@link Optional} if no such
+     *         element exist.
      */
-    public CustomLayoutConfiguration getLayoutConfiguration(final IGraphicalEditPart partToLayout) {
+    public Optional<CustomLayoutConfiguration> getLayoutConfiguration(final IGraphicalEditPart partToLayout) {
         // we retrieve the layout configuration from the VSM.
         EditPartQuery editPartQuery = new EditPartQuery(partToLayout);
         DiagramDescription diagramDescription = editPartQuery.getDiagramDescription();
@@ -71,7 +97,30 @@ public class GenericLayoutProvider implements LayoutProvider {
         if (diagramDescription != null && diagramDescription.getLayout() instanceof CustomLayoutConfiguration) {
             layoutConfiguration = (CustomLayoutConfiguration) diagramDescription.getLayout();
         }
-        return layoutConfiguration;
+        return Optional.ofNullable(layoutConfiguration);
+    }
+
+    /**
+     * Whether the current layout provider authorize the "Snap to" features (snap to grid and snap to shape).
+     * 
+     * @param partToLayout
+     *            A part to layout (to find associated configuration)
+     * 
+     * @return true if it authorizes, false otherwise.
+     */
+    public boolean shouldLaunchSnapTo(final IGraphicalEditPart partToLayout) {
+        Optional<CustomLayoutConfiguration> customLayoutConfiguration = getLayoutConfiguration(partToLayout);
+        if (customLayoutConfiguration.isPresent()) {
+            Optional<CustomLayoutAlgorithm> customLayoutAlgorithm = getCustomLayoutAlgorithm(customLayoutConfiguration.get());
+            if (customLayoutAlgorithm.isPresent()) {
+                return customLayoutAlgorithm.get().isLaunchSnapAfter();
+            }
+        }
+        return false;
+    }
+
+    private Optional<CustomLayoutAlgorithm> getCustomLayoutAlgorithm(CustomLayoutConfiguration configuration) {
+        return Optional.ofNullable(DiagramUIPlugin.getPlugin().getLayoutAlgorithms().get(configuration.getId()));
     }
 
     @Override
@@ -79,14 +128,28 @@ public class GenericLayoutProvider implements LayoutProvider {
         // To avoid to compute the getGenericLayoutProvider twice (at the time we are testing that this provider
         // provides a layout for the given edit part and the second time when calling getLayoutNodeProvider), we keep in
         // cache the result.
-        Optional<DefaultLayoutProvider> optionalLayoutProvider = Optional.ofNullable(getGenericLayoutProvider(container));
-        if (optionalLayoutProvider.isPresent()) {
-            editPartToLayoutProviderCache.put(container, optionalLayoutProvider.get());
+        Optional<LayoutProviderData> layoutProviderData = getLayoutProviderData(container);
+        if (layoutProviderData.isPresent()) {
+            editPartToLayoutProviderCache.put(container, layoutProviderData.get());
             return true;
         }
         // In case of a provider was available but it could be not the case anymore.
         editPartToLayoutProviderCache.remove(container);
         return false;
+    }
+
+    private Optional<LayoutProviderData> getLayoutProviderData(IGraphicalEditPart container) {
+        LayoutProviderData layoutProviderData = null;
+        Optional<CustomLayoutConfiguration> customLayoutConfiguration = getLayoutConfiguration(container);
+        if (customLayoutConfiguration.isPresent()) {
+            Optional<CustomLayoutAlgorithm> customLayoutAlgorithm = getCustomLayoutAlgorithm(customLayoutConfiguration.get());
+            if (customLayoutAlgorithm.isPresent()) {
+                DefaultLayoutProvider defaultLayoutProvider = getGenericLayoutProvider(customLayoutConfiguration.get(), customLayoutAlgorithm.get());
+                layoutProviderData = new LayoutProviderData(defaultLayoutProvider, customLayoutAlgorithm.get().isLaunchSnapAfter(), customLayoutAlgorithm.get().useStandardArrangeSelectionMechanism());
+            }
+        }
+
+        return Optional.ofNullable(layoutProviderData);
     }
 
     @Override
@@ -103,17 +166,33 @@ public class GenericLayoutProvider implements LayoutProvider {
      * @return the generic layout provider associated to the description of the {@link DDiagram} related to the given
      *         part. Null if no such element exists.
      */
-    private DefaultLayoutProvider getGenericLayoutProvider(final IGraphicalEditPart partToLayout) {
-        CustomLayoutConfiguration customLayoutConfiguration = getLayoutConfiguration(partToLayout);
-        if (customLayoutConfiguration != null) {
-            CustomLayoutAlgorithm customLayoutAlgorithm = DiagramUIPlugin.getPlugin().getLayoutAlgorithms().get(customLayoutConfiguration.getId());
-            if (customLayoutAlgorithm != null) {
-                DefaultLayoutProvider layoutAlgorithmInstance = customLayoutAlgorithm.getLayoutAlgorithmInstance();
-                layoutAlgorithmInstance.setLayoutConfiguration(customLayoutConfiguration);
-                return layoutAlgorithmInstance;
-            }
+    private Optional<DefaultLayoutProvider> getGenericLayoutProvider(final IGraphicalEditPart partToLayout) {
+        Optional<CustomLayoutConfiguration> customLayoutConfiguration = getLayoutConfiguration(partToLayout);
+        if (customLayoutConfiguration.isPresent()) {
+            return getGenericLayoutProvider(customLayoutConfiguration.get());
         }
-        return null;
+        return Optional.empty();
     }
 
+    /**
+     * Returns the generic layout provider associated to the given layout configuration.
+     * 
+     * @param customLayoutConfiguration
+     *            the layout configuration to get the generic layout provider.
+     * @return the generic layout provider associated to the given layout configuration..
+     */
+    private Optional<DefaultLayoutProvider> getGenericLayoutProvider(final CustomLayoutConfiguration customLayoutConfiguration) {
+        DefaultLayoutProvider defaultLayoutProvider = null;
+        Optional<CustomLayoutAlgorithm> customLayoutAlgorithm = getCustomLayoutAlgorithm(customLayoutConfiguration);
+        if (customLayoutAlgorithm.isPresent()) {
+            defaultLayoutProvider = getGenericLayoutProvider(customLayoutConfiguration, customLayoutAlgorithm.get());
+        }
+        return Optional.ofNullable(defaultLayoutProvider);
+    }
+
+    private DefaultLayoutProvider getGenericLayoutProvider(final CustomLayoutConfiguration customLayoutConfiguration, final CustomLayoutAlgorithm customLayoutAlgorithm) {
+        DefaultLayoutProvider layoutAlgorithmInstance = customLayoutAlgorithm.getLayoutAlgorithmInstance();
+        layoutAlgorithmInstance.setLayoutConfiguration(customLayoutConfiguration);
+        return layoutAlgorithmInstance;
+    }
 }

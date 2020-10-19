@@ -18,6 +18,7 @@ import java.util.function.Supplier;
 
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.DefaultLayoutProvider;
+import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.ArrangeSelectionLayoutProvider;
 
 /**
  * A component providing all needed information to provide a custom layout algorithm that can be used to layout Sirius
@@ -60,6 +61,14 @@ public final class CustomLayoutAlgorithm {
      * considers that the figure should not be moved after its layout result.
      */
     private boolean launchSnapAfter = true;
+
+    /**
+     * In Sirius, the arrange selection is handled by using the arrange all and specific "pinned" elements. This is the
+     * scope of {@link ArrangeSelectionLayoutProvider}. For some layout algorithms, it can be useful to disable this
+     * specific behavior. This is the case for ELK, for example.
+     * 
+     */
+    private boolean useStandardArrangeSelectionMechanism = true;
 
     private CustomLayoutAlgorithm() {
 
@@ -119,6 +128,16 @@ public final class CustomLayoutAlgorithm {
         return launchSnapAfter;
     }
 
+    /**
+     * Whether the current algorithm relies on the standard ArrangeSelection mechanism see
+     * {@link ArrangeSelectionLayoutProvider} for more details.
+     * 
+     * @return true if it relies on the standard ArrangeSelection, false otherwise.
+     */
+    public boolean useStandardArrangeSelectionMechanism() {
+        return useStandardArrangeSelectionMechanism;
+    }
+
     @Override
     public String toString() {
         return this.id;
@@ -154,6 +173,8 @@ public final class CustomLayoutAlgorithm {
         private Map<String, LayoutOption> layoutOptions;
 
         private boolean launchSnapAfter;
+
+        private boolean useStandardArrangeSelectionMechanism;
 
         CustomLayoutAlgorithmBuilder(String id) {
             this.id = Objects.requireNonNull(id);
@@ -222,6 +243,19 @@ public final class CustomLayoutAlgorithm {
         }
 
         /**
+         * Set whether the algorithm relies on the standard ArrangeSelection mechanism see
+         * {@link ArrangeSelectionLayoutProvider} for more details.
+         * 
+         * @param useStandardArrangeSelectionMechanism
+         *            true if the standard ArrangeSelection mechanism should be used with this algorithm, false otherwise.
+         * @return the current builder for convenience.
+         */
+        public CustomLayoutAlgorithmBuilder setStandardArrangeSelectionMechanism(boolean useStandardArrangeSelectionMechanism) {
+            this.useStandardArrangeSelectionMechanism = useStandardArrangeSelectionMechanism;
+            return this;
+        }
+
+        /**
          * Build the new CustomLayoutAlgorithm according to the builder parameters.
          * 
          * @return the new CustomLayoutAlgorithm.
@@ -234,6 +268,7 @@ public final class CustomLayoutAlgorithm {
             customLayoutAlgorithm.layoutSupplier = Objects.requireNonNull(this.layoutSupplier);
             customLayoutAlgorithm.layoutOptions = Objects.requireNonNull(this.layoutOptions);
             customLayoutAlgorithm.launchSnapAfter = this.launchSnapAfter;
+            customLayoutAlgorithm.useStandardArrangeSelectionMechanism = this.useStandardArrangeSelectionMechanism;
             return customLayoutAlgorithm;
         }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2019 Kiel University and others.
+ * Copyright (c) 2009, 2020 Kiel University and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -130,7 +130,12 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
                 // edges... For the time being, we set the routing style according to the property value of the root
                 // element.
                 if (layoutRequest.getElements().size() > 0) {
-                    ElkNode rootElement = ElkGraphUtil.containingGraph(layoutRequest.getElements().get(0).getFirst());
+                    ElkGraphElement graphElement = layoutRequest.getElements().get(0).getFirst();
+                    ElkNode rootElement = ElkGraphUtil.containingGraph(graphElement);
+                    if (rootElement == null && graphElement instanceof ElkNode) {
+                        // The first item of the list elements to layout is the root.
+                        rootElement = (ElkNode) graphElement;
+                    }
                     if (rootElement != null) {
                         EdgeRouting edgeRouting = rootElement.getProperty(CoreOptions.EDGE_ROUTING);
                         if (edgeRouting.equals(EdgeRouting.ORTHOGONAL)) {

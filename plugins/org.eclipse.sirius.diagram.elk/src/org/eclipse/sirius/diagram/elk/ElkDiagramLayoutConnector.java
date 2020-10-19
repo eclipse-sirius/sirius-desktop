@@ -86,6 +86,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ResizableCompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeNodeEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.TopGraphicEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
@@ -128,6 +129,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPar
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusDescriptionCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusNoteEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusTextEditPart;
+import org.eclipse.sirius.diagram.ui.internal.operation.ResetOriginChangeModelOperation;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AlphaDropShadowBorder;
@@ -162,6 +164,7 @@ import com.google.inject.Singleton;
  * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
  *
  */
+@SuppressWarnings("restriction")
 @Singleton
 public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
 
@@ -183,6 +186,12 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
     public static final IProperty<KVector> COORDINATE_OFFSET = new Property<KVector>("gmf.coordinateOffset");
 
     public static final String PREF_EXEC_TIME_MEASUREMENT = "elk.exectime.measure";
+
+    /**
+     * By default, the layout provider will enlarge a container until it is large enough to contain its children. If
+     * this option is set, it won't do so (during the application of the layout: {@link #transferLayout(LayoutMapping)}.
+     */
+    public static final IProperty<Boolean> NODE_SIZE_FIXED_SIZE = new Property<Boolean>("org.eclipse.sirius.diagram.elk.fixedNodeSize", false, null, null);
 
     @Inject
     private IEditPartFilter editPartFilter;
@@ -331,9 +340,11 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      *            the diagram edit part for which layout is performed
      * @param layoutedPart
      *            the part(s) for which layout is performed, or {@code null} if the whole diagram shall be layouted
+     * @param isArrangeAll
+     *            true if the layout concerns an arrange of all elements of the diagram, false otherwise.
      * @return a layout graph mapping, or {@code null} if the given workbench part or diagram part is not supported
      */
-    public LayoutMapping buildLayoutGraph(final DiagramEditPart diagramEditPart, final Object layoutedPart) {
+    public LayoutMapping buildLayoutGraph(final DiagramEditPart diagramEditPart, final Object layoutedPart, final boolean isArrangeAll) {
 
         // choose the layout root edit part
         IGraphicalEditPart layoutRootPart = null;
@@ -351,7 +362,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             for (Object object : selection) {
                 if (object instanceof IGraphicalEditPart) {
                     if (layoutRootPart != null) {
-                        EditPart parent = commonParent(layoutRootPart, (EditPart) object);
+                        EditPart parent = commonParent(layoutRootPart, (IGraphicalEditPart) object);
                         if (parent != null && !(parent instanceof RootEditPart)) {
                             layoutRootPart = (IGraphicalEditPart) parent;
                         }
@@ -365,9 +376,9 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 selectedParts = new ArrayList<ShapeNodeEditPart>(selection.size());
                 for (Object object : selection) {
                     if (object instanceof IGraphicalEditPart) {
-                        EditPart editPart = (EditPart) object;
-                        while (editPart != null && editPart.getParent() != layoutRootPart) {
-                            editPart = editPart.getParent();
+                        IGraphicalEditPart editPart = (IGraphicalEditPart) object;
+                        while (editPart != null && getTopGraphicParentEditPartIfPresent(editPart) != layoutRootPart) {
+                            editPart = getTopGraphicParentEditPartIfPresent(editPart);
                         }
                         if (editPart instanceof ShapeNodeEditPart && editPartFilter.filter(editPart) && !selectedParts.contains(editPart)) {
                             if (editPart instanceof SiriusNoteEditPart) {
@@ -383,8 +394,12 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             }
         }
 
+        if (layoutRootPart == null) {
+            layoutRootPart = diagramEditPart;
+        }
+
         // create the mapping
-        LayoutMapping mapping = buildLayoutGraph(selectedParts, diagramEditPart);
+        LayoutMapping mapping = buildLayoutGraph(layoutRootPart, selectedParts, diagramEditPart, isArrangeAll);
 
         return mapping;
     }
@@ -398,9 +413,9 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      *            the second edit part
      * @return the common parent, or {@code null} if there is none
      */
-    protected static EditPart commonParent(final EditPart editPart1, final EditPart editPart2) {
-        EditPart ep1 = editPart1;
-        EditPart ep2 = editPart2;
+    protected static EditPart commonParent(final IGraphicalEditPart editPart1, final IGraphicalEditPart editPart2) {
+        IGraphicalEditPart ep1 = editPart1;
+        IGraphicalEditPart ep2 = editPart2;
         do {
             if (isParent(ep1, ep2)) {
                 return ep1;
@@ -408,9 +423,25 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             if (isParent(ep2, ep1)) {
                 return ep2;
             }
-            ep1 = ep1.getParent();
-            ep2 = ep2.getParent();
+            ep1 = getTopGraphicParentEditPartIfPresent(ep1);
+            ep2 = getTopGraphicParentEditPartIfPresent(ep2);
         } while (ep1 != null && ep2 != null);
+        return null;
+    }
+
+    /**
+     * Return the {@link TopGraphicEditPart} of the parent, if it has one, or the parent itself. This avoids to consider
+     * potential intermediate AbstractDNode*CompartmentEditPart as parent.
+     * 
+     * @return The {@link TopGraphicEditPart} of the parent, if it has one, or the parent itself.
+     */
+    private static IGraphicalEditPart getTopGraphicParentEditPartIfPresent(IGraphicalEditPart node) {
+        EditPart parentEditPart = node.getParent();
+        if (parentEditPart instanceof IGraphicalEditPart) {
+            IGraphicalEditPart graphicalParentEditPart = (IGraphicalEditPart) parentEditPart;
+            TopGraphicEditPart topGraphicEditPart = graphicalParentEditPart.getTopGraphicEditPart();
+            return topGraphicEditPart != null ? topGraphicEditPart : graphicalParentEditPart;
+        }
         return null;
     }
 
@@ -449,32 +480,64 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      *            processed
      * @param diagramEditPart
      *            the diagram edit part, or {@code null}
+     * @param isArrangeAll
+     *            true if the layout concerns an arrange of all elements of the diagram, false otherwise.
      * @return a layout graph mapping
      */
-    protected LayoutMapping buildLayoutGraph(final List<ShapeNodeEditPart> selection, final DiagramEditPart diagramEditPart) {
+    protected LayoutMapping buildLayoutGraph(final IGraphicalEditPart layoutRootPart, final List<ShapeNodeEditPart> selection, final DiagramEditPart diagramEditPart, final boolean isArrangeAll) {
 
         LayoutMapping mapping = new LayoutMapping(null);
         mapping.setProperty(CONNECTIONS, new LinkedList<ConnectionEditPart>());
-        mapping.setParentElement(diagramEditPart);
+        mapping.setParentElement(layoutRootPart);
 
         // find the diagram edit part
         mapping.setProperty(DIAGRAM_EDIT_PART, diagramEditPart);
 
         Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOevrrideMap = constructElkOptionTargetToOptionsMap();
 
-        // start with the whole diagram as root for layout. We cannot start from a diagram element even with a selection
-        // layouting because if it has ports it is not supported. The top node is there only to support some meta data.
         ElkNode topNode = ElkGraphUtil.createGraph();
         applyOptionsRelatedToElementTarget(topNode, elkTargetToOptionsOevrrideMap);
-        Rectangle rootBounds = diagramEditPart.getFigure().getBounds();
-        String labelText = diagramEditPart.getDiagramView().getName();
-        if (labelText.length() > 0) {
-            ElkLabel label = ElkGraphUtil.createLabel(topNode);
-            label.setText(labelText);
+        if (layoutRootPart instanceof ShapeNodeEditPart && selection.isEmpty()) {
+            // If the root part is a ShapeNodeEditPart and the selection is empty, this implies an arrange selection on
+            // only one element (ie one parent). So we want to keep it at a fixed location. For that we use the bounds
+            // of the node to determine the size of the graph. We also set its identifier according to its only child.
+            // We can not use directly the node as the graph root (in case of it has bordered node) .
+            if (((View) layoutRootPart.getModel()).getElement() instanceof DDiagramElement) {
+                topNode.setIdentifier(((DDiagramElement) ((View) layoutRootPart.getModel()).getElement()).getName() + "_graph");
+            }
+
+            IFigure nodeFigure = layoutRootPart.getFigure();
+            Rectangle childAbsoluteBounds = getAbsoluteBounds(nodeFigure);
+
+            topNode.setLocation(0, 0);
+            topNode.setDimensions(childAbsoluteBounds.preciseX() + childAbsoluteBounds.preciseWidth(), childAbsoluteBounds.preciseY() + childAbsoluteBounds.preciseHeight());
+
+            // We add the node to layout to the selection (that is empty)
+            selection.add((ShapeNodeEditPart) layoutRootPart);
+        } else {
+            // Arrange all elements of the diagram, or arrange selection (sub-part of the diagram or a container)
+            // Start with the container (ie container or diagram) as root for layout. This top node is there to support
+            // some meta data.
+            Rectangle rootBounds = layoutRootPart.getFigure().getBounds();
+            if (layoutRootPart == diagramEditPart) {
+                String labelText = diagramEditPart.getDiagramView().getName();
+                if (labelText.length() > 0) {
+                    ElkLabel label = ElkGraphUtil.createLabel(topNode);
+                    label.setText(labelText);
+                }
+            } else {
+                topNode.setLocation(rootBounds.x, rootBounds.y);
+            }
+            topNode.setDimensions(rootBounds.width, rootBounds.height);
+            if (layoutRootPart instanceof ShapeNodeEditPart) {
+                // Fix the size of the container. Even if this option is ignored by ELK, we use it to store this
+                // information. It is used later to ignore the layout of this container as we want to keep the same size
+                // and location.
+                topNode.setProperty(ElkDiagramLayoutConnector.NODE_SIZE_FIXED_SIZE, true);
+            }
+            mapping.getGraphMap().put(topNode, layoutRootPart);
         }
-        topNode.setDimensions(rootBounds.width, rootBounds.height);
-        mapping.getGraphMap().put(topNode, diagramEditPart);
-        // we set the ELK algorithm to use from viewpoint id defined.
+        // Set the ELK algorithm to use from viewpoint id defined.
         topNode.setProperty(CoreOptions.ALGORITHM, layoutConfiguration.getId().trim());
 
         mapping.setLayoutGraph(topNode);
@@ -494,10 +557,16 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 }
 
             }
-            mapping.setProperty(COORDINATE_OFFSET, new KVector(minx, miny));
+            // Use ResetOriginChangeModelOperation.MARGIN instead of minx or miny when arranging all elements of the
+            // diagram
+            if (isArrangeAll) {
+                mapping.setProperty(COORDINATE_OFFSET, new KVector(ResetOriginChangeModelOperation.MARGIN, ResetOriginChangeModelOperation.MARGIN));
+            } else {
+                mapping.setProperty(COORDINATE_OFFSET, new KVector(minx, miny));
+            }
         } else {
             // traverse all children of the layout root part
-            buildLayoutGraphRecursively(mapping, topNode, diagramEditPart, elkTargetToOptionsOevrrideMap);
+            buildLayoutGraphRecursively(mapping, topNode, layoutRootPart, elkTargetToOptionsOevrrideMap);
         }
 
         // transform all connections in the selected area
@@ -635,7 +704,10 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 IGraphicalEditPart part = (IGraphicalEditPart) entry.getValue();
                 if (!(part instanceof AbstractDNodeListCompartmentEditPart || part instanceof AbstractDNodeContainerCompartmentEditPart)) {
                     // We ignore compartment edit part that are created into ELK side just to have good layout results
-                    applyLayoutRequest.addElement(graphElement, part);
+                    if (!graphElement.getProperty(ElkDiagramLayoutConnector.NODE_SIZE_FIXED_SIZE)) {
+                        // We do not modify layout of node/graph if the option "Fixed Graph Size" has been set before.
+                        applyLayoutRequest.addElement(graphElement, part);
+                    }
                 }
             }
         }

@@ -64,6 +64,7 @@ public class ELKAlgorithmProvider implements CustomLayoutAlgorithmProvider {
                     .setLayoutSupplier(() -> new ELKLayoutNodeProvider())
                     .setLayoutOptions(layoutOptions)
                     .setLaunchSnapAfter(false)
+                    .setStandardArrangeSelectionMechanism(false)
                     .build();
             //@formatter:on
             layoutAlgorithms.add(customLayoutAlgorithm);

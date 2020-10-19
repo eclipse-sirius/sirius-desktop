@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 Obeo
+ * Copyright (c) 2019, 2020 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.elk.debug;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -52,7 +53,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutPro
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.LayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.handlers.HandlerUtil;
@@ -76,8 +76,8 @@ public class ExportToElkGraphHandler extends AbstractHandler {
             if (structuredSelection.getFirstElement() instanceof DiagramEditPart) {
                 DiagramEditPart diagramEditPart = (DiagramEditPart) structuredSelection.getFirstElement();
                 CustomLayoutConfiguration customLayoutConfiguration;
-                Option<CustomLayoutConfiguration> optionnalCustomLayoutConfiguration = getAssociatedElkLayoutConfiguration(diagramEditPart);
-                if (optionnalCustomLayoutConfiguration.some()) {
+                Optional<CustomLayoutConfiguration> optionnalCustomLayoutConfiguration = getAssociatedElkLayoutConfiguration(diagramEditPart);
+                if (optionnalCustomLayoutConfiguration.isPresent()) {
                     customLayoutConfiguration = optionnalCustomLayoutConfiguration.get();
                 } else {
                     MessageDialog.openWarning(PlatformUI.getWorkbench().getDisplay().getActiveShell(), Messages.ExportToElkGraphHandler_elkExportDialogTitle,
@@ -106,7 +106,7 @@ public class ExportToElkGraphHandler extends AbstractHandler {
                 ElkDiagramLayoutConnector connector = injector.getInstance(ElkDiagramLayoutConnector.class);
                 connector.setLayoutConfiguration(customLayoutConfiguration);
 
-                LayoutMapping layoutMapping = connector.buildLayoutGraph(diagramEditPart, diagramEditPart.getChildren());
+                LayoutMapping layoutMapping = connector.buildLayoutGraph(diagramEditPart, diagramEditPart.getChildren(), true);
                 ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(),
                         ((org.eclipse.sirius.viewpoint.DRepresentation) ((org.eclipse.gmf.runtime.notation.Diagram) diagramEditPart.getModel()).getElement()).getName(), "", true);
 
@@ -119,8 +119,8 @@ public class ExportToElkGraphHandler extends AbstractHandler {
         return null;
     }
 
-    public Option<CustomLayoutConfiguration> getAssociatedElkLayoutConfiguration(DiagramEditPart diagramEditPart) {
-        Option<CustomLayoutConfiguration> result = Options.newNone();
+    public Optional<CustomLayoutConfiguration> getAssociatedElkLayoutConfiguration(DiagramEditPart diagramEditPart) {
+        Optional<CustomLayoutConfiguration> result = Optional.empty();
         org.eclipse.sirius.diagram.elk.debug.gmf.layout.LayoutService layoutService = org.eclipse.sirius.diagram.elk.debug.gmf.layout.LayoutService.getInstance();
         List<Object> hints = new ArrayList<>(2);
         hints.add(LayoutType.DEFAULT);
@@ -142,11 +142,7 @@ public class ExportToElkGraphHandler extends AbstractHandler {
             if (optionalProvider.get() instanceof AbstractLayoutProvider) {
                 LayoutProvider layoutProvider = ((AbstractLayoutProvider) optionalProvider.get()).getDiagramLayoutProvider(diagramEditPart, layoutHint);
                 if (layoutProvider instanceof GenericLayoutProvider) {
-                    CustomLayoutConfiguration customLayoutConfiguration = ((GenericLayoutProvider) layoutProvider).getLayoutConfiguration(diagramEditPart);
-                    if (customLayoutConfiguration != null) {
-                        result = Options.newSome(customLayoutConfiguration);
-                    }
-
+                    result = ((GenericLayoutProvider) layoutProvider).getLayoutConfiguration(diagramEditPart);
                 }
             }
         }

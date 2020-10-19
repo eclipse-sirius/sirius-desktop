@@ -191,6 +191,12 @@
 				<code>org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider</code>. It allows for implementations to do specific code according to the arrangeAll or arrangeSelection aspect when layoutEditParts is called. By default, the code called is the same than the 
 				<code>org.eclipse.gmf.runtime.diagram.ui.services.layout.AbstractLayoutEditPartProvider.layoutEditParts(List, IAdaptable)</code> implementation.
 			</li>
+			<li><span class="label label-success">Added</span> A new method, 
+				<code>useStandardArrangeSelectionMechanism()</code> has been added in 
+				<code>org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm</code> to know if a specific layout algorithm relies on the behavior of 
+				<code>org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.ArrangeSelectionLayoutProvider</code>. Previously, this was the case for all layout algorithm but it can be useful to disable it (for ELK layout for example). This method is associated with 
+				<code>org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm.CustomLayoutAlgorithmBuilder.setStandardArrangeSelectionMechanism(boolean)</code>
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in  
 			<code>org.eclipse.sirius.ui</code>

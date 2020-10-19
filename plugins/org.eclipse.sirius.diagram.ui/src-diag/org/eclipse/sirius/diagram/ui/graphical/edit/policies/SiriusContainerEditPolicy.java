@@ -42,13 +42,11 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.gmf.runtime.diagram.ui.services.layout.LayoutType;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
-import org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.CenterEdgeLayoutCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.DistributeCommand;
 import org.eclipse.sirius.diagram.ui.internal.layout.GenericLayoutProvider;
-import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.LayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.DistributeRequest;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.SnapCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
@@ -197,29 +195,12 @@ public class SiriusContainerEditPolicy extends ContainerEditPolicy {
     private boolean shouldLaunchSnapTo(List<? extends IGraphicalEditPart> editparts) {
         Optional<? extends IGraphicalEditPart> optionalFirstEditPart = editparts.stream().findFirst();
         if (optionalFirstEditPart.isPresent()) {
-            Optional<CustomLayoutAlgorithm> optionalLayoutAlgorithm = getCustomLayoutAlgorithm(optionalFirstEditPart.get());
-            // If a CustomLayoutAlgorithm has been provided, we check that it allows to perform the Snap to command
-            // after.
-            if (optionalLayoutAlgorithm.isPresent()) {
-                return optionalLayoutAlgorithm.get().isLaunchSnapAfter();
+            LayoutProvider layoutProvider = LayoutService.getProvider(optionalFirstEditPart.get());
+            if (layoutProvider instanceof GenericLayoutProvider) {
+                return ((GenericLayoutProvider) layoutProvider).shouldLaunchSnapTo(optionalFirstEditPart.get());
             }
         }
         return true;
-    }
-
-    private Optional<CustomLayoutAlgorithm> getCustomLayoutAlgorithm(IGraphicalEditPart iGraphicalEditPart) {
-        //@formatter:off
-        return Optional.of(iGraphicalEditPart)
-                .map(LayoutService::getProvider)
-                .filter(GenericLayoutProvider.class::isInstance)
-                .map(GenericLayoutProvider.class::cast)
-                .map(layoutProvider -> layoutProvider.getLayoutConfiguration(iGraphicalEditPart))
-                .flatMap(this::getCustomLayoutAlgorithm);
-        //@formatter:on
-    }
-
-    private Optional<CustomLayoutAlgorithm> getCustomLayoutAlgorithm(CustomLayoutConfiguration configuration) {
-        return Optional.ofNullable(DiagramUIPlugin.getPlugin().getLayoutAlgorithms().get(configuration.getId()));
     }
 
     // CHECKSTYLE:ON
