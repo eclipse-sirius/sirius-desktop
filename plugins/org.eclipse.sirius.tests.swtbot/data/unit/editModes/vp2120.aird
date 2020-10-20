@@ -211,13 +211,13 @@
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_at-CV9apEeiyWO58F3yA9g" x="5" y="6" width="40" height="41"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_at-CUdapEeiyWO58F3yA9g" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_at-CUtapEeiyWO58F3yA9g" x="12" y="12" width="50" height="52"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_at-CUtapEeiyWO58F3yA9g" x="40" y="20" width="50" height="52"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_at7mEdapEeiyWO58F3yA9g"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_at7mEtapEeiyWO58F3yA9g"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_at6_AdapEeiyWO58F3yA9g" fontName="Segoe UI" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_at6_AtapEeiyWO58F3yA9g" x="4" y="90" width="74" height="76"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_at6_AtapEeiyWO58F3yA9g" x="4" y="90" width="200" height="100"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_at7mE9apEeiyWO58F3yA9g" visible="false" type="2002" element="_atkZs9apEeiyWO58F3yA9g">
           <children xmi:type="notation:Node" xmi:id="_at7mFtapEeiyWO58F3yA9g" type="5006"/>

@@ -27,6 +27,8 @@ import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeListCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.NoteEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusNoteEditPart;
 import org.eclipse.sirius.ext.base.Option;
@@ -74,7 +76,7 @@ public final class EditPartQuery {
      */
     public Optional<DDiagram> getDDiagram() {
         IDDiagramEditPart effectiveDiagramEditPart = null;
-        if (editPart instanceof IDiagramElementEditPart) {
+        if (editPart instanceof IDiagramElementEditPart || editPart instanceof AbstractDNodeContainerCompartmentEditPart || editPart instanceof AbstractDNodeListCompartmentEditPart) {
             effectiveDiagramEditPart = getDiagramEditPart(editPart);
         } else if (editPart instanceof IDDiagramEditPart) {
             effectiveDiagramEditPart = (IDDiagramEditPart) editPart;
