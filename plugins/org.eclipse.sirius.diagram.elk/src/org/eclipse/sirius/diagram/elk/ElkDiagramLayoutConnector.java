@@ -48,7 +48,9 @@ import org.eclipse.elk.core.math.KVector;
 import org.eclipse.elk.core.options.CoreOptions;
 import org.eclipse.elk.core.options.EdgeLabelPlacement;
 import org.eclipse.elk.core.options.NodeLabelPlacement;
+import org.eclipse.elk.core.options.PortConstraints;
 import org.eclipse.elk.core.options.PortLabelPlacement;
+import org.eclipse.elk.core.options.PortSide;
 import org.eclipse.elk.core.options.SizeConstraint;
 import org.eclipse.elk.core.service.IDiagramLayoutConnector;
 import org.eclipse.elk.core.service.LayoutMapping;
@@ -100,6 +102,7 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.business.api.query.DNodeQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.description.BooleanLayoutOption;
@@ -113,6 +116,7 @@ import org.eclipse.sirius.diagram.description.IntegerLayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOption;
 import org.eclipse.sirius.diagram.description.LayoutOptionTarget;
 import org.eclipse.sirius.diagram.description.StringLayoutOption;
+import org.eclipse.sirius.diagram.description.style.Side;
 import org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
@@ -1013,8 +1017,37 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             }
         }
         port.setProperty(CoreOptions.PORT_BORDER_OFFSET, borderNodeOffset);
-        // We would set the modified flag to false here, but that doesn't exist
-        // anymore
+
+        // If the port has location constraints, we add it
+        if (eObj instanceof DNode) {
+            PortSide authorizedSide = PortSide.UNDEFINED;
+            DNodeQuery query = new DNodeQuery((DNode) eObj);
+            List<Side> forbiddenSides = query.getForbiddenSide();
+            Set<PortSide> authorizedSides = new HashSet<PortSide>(PortSide.SIDES_NORTH_EAST_SOUTH_WEST);
+            for (Side side : forbiddenSides) {
+                authorizedSides.remove(convertSideToPortSide(side));
+            }
+            if (authorizedSides.size() != 4) {
+                // If the 4 sides are authorizes there is no constraint.
+                if (authorizedSides.size() > 1) {
+                    // Only consider the first in UI order of Sirius, ie WEST, SOUTH, EAST, NORTH (as ELK constraint
+                    // only handles one side)
+                    if (authorizedSides.contains(PortSide.WEST)) {
+                        authorizedSide = PortSide.WEST;
+                    } else if (authorizedSides.contains(PortSide.SOUTH)) {
+                        authorizedSide = PortSide.SOUTH;
+                    } else if (authorizedSides.contains(PortSide.EAST)) {
+                        authorizedSide = PortSide.EAST;
+                    } else if (authorizedSides.contains(PortSide.NORTH)) {
+                        authorizedSide = PortSide.NORTH;
+                    }
+                } else {
+                    authorizedSide = authorizedSides.iterator().next();
+                }
+                elknode.setProperty(CoreOptions.PORT_CONSTRAINTS, PortConstraints.FIXED_SIDE);
+                port.setProperty(CoreOptions.PORT_SIDE, authorizedSide);
+            }
+        }
 
         mapping.getGraphMap().put(port, portEditPart);
 
@@ -1058,6 +1091,20 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         }
 
         return port;
+    }
+
+    private PortSide convertSideToPortSide(Side side) {
+        PortSide result = PortSide.UNDEFINED;
+        if (Side.WEST.equals(side)) {
+            result = PortSide.WEST;
+        } else if (Side.EAST.equals(side)) {
+            result = PortSide.EAST;
+        } else if (Side.NORTH.equals(side)) {
+            result = PortSide.NORTH;
+        } else if (Side.SOUTH.equals(side)) {
+            result = PortSide.SOUTH;
+        }
+        return result;
     }
 
     /**
