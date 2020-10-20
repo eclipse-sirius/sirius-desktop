@@ -10,6 +10,7 @@ package org.eclipse.sirius.tests.unit.diagram.layout;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
@@ -52,6 +53,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
+import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IContainerLabelOffsets;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
@@ -502,6 +504,108 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
                 }
             }
         }
+    }
+
+    /**
+     * Check that the "authorized side" constraint of a border node is considered in ELK layout.
+     */
+    public void testBorderNodeLayoutWithOneAuthorizedSide() {
+        openDiagram("diagramWithBorderNodesWithOneAuthorizedSide");
+
+        // Initialization checks
+        Optional<DDiagramElement> p1Dde = diagram.getOwnedDiagramElements().stream().filter(dde -> dde.getName().equals("p1")).findFirst();
+        assertTrue("The diagram should have an element named \"p1\".", p1Dde.isPresent());
+        assertTrue("The diagram should have a node named \"p1\".", p1Dde.get() instanceof DNode);
+
+        Optional<DDiagramElement> p2Dde = diagram.getOwnedDiagramElements().stream().filter(dde -> dde.getName().equals("p2")).findFirst();
+        assertTrue("The diagram should have an element named \"p2\".", p2Dde.isPresent());
+        assertTrue("The diagram should have a node named \"p2\".", p2Dde.get() instanceof DNode);
+
+        List<DNode> borderNodesOfP1 = ((DNode) p1Dde.get()).getOwnedBorderedNodes();
+        assertEquals("\"p1\" should have one border node.", 1, borderNodesOfP1.size());
+
+        List<DNode> borderNodesOfP2 = ((DNode) p2Dde.get()).getOwnedBorderedNodes();
+        assertEquals("\"p2\" should have one border node.", 1, borderNodesOfP2.size());
+
+        // Launch an arrange all
+        arrangeAll((DiagramEditor) editorPart);
+
+        // Check that the figure of border node of p1 is above them from 2 pixels.
+        IGraphicalEditPart p1EditPart = getEditPart(p1Dde.get());
+        IGraphicalEditPart borderNodeOfp1EditPart = getEditPart(borderNodesOfP1.get(0));
+        Rectangle borderNodeOfp1Bounds = borderNodeOfp1EditPart.getFigure().getBounds();
+        int p1Delta = borderNodeOfp1Bounds.height() - IBorderItemOffsets.DEFAULT_OFFSET.height();
+        assertEquals("The y location of p1 should be 2 pixels lower that its border node as border node is constaint on North side.", p1EditPart.getFigure().getBounds().y() - p1Delta,
+                borderNodeOfp1Bounds.y());
+        // Check that GMF coordinates also reflect that
+        assertTrue(borderNodeOfp1EditPart.getModel() instanceof Node);
+        Node borderNodeOfp1Node = (Node) borderNodeOfp1EditPart.getModel();
+        Location gmfLocation1 = (Location) borderNodeOfp1Node.getLayoutConstraint();
+        assertEquals("The y GMF coordinate of the the border node of p1 is wrong.", -p1Delta, gmfLocation1.getY());
+        // Check that the figure of border node of p2 is below them from 2 pixels.
+        IGraphicalEditPart p2EditPart = getEditPart(p2Dde.get());
+        IGraphicalEditPart borderNodeOfp2EditPart = getEditPart(borderNodesOfP2.get(0));
+        Rectangle p2Bounds = p2EditPart.getFigure().getBounds();
+        Rectangle borderNodeOfp2Bounds = borderNodeOfp2EditPart.getFigure().getBounds();
+        int p2Delta = borderNodeOfp2Bounds.height() - IBorderItemOffsets.DEFAULT_OFFSET.height();
+        assertEquals("The bottom location of p2 should be 2 pixels upper that its border node as border node is constaint on South side.", p2Bounds.getBottom().y() + p2Delta,
+                borderNodeOfp2Bounds.getBottom().y());
+        // Check that GMF coordinates also reflect that
+        assertTrue(borderNodeOfp2EditPart.getModel() instanceof Node);
+        Node borderNodeOfp2Node = (Node) borderNodeOfp2EditPart.getModel();
+        Location gmfLocation2 = (Location) borderNodeOfp2Node.getLayoutConstraint();
+        assertEquals("The y GMF coordinate of the the border node of p2 is wrong.", p2Bounds.height() - IBorderItemOffsets.DEFAULT_OFFSET.height(), gmfLocation2.getY());
+    }
+
+    /**
+     * Check that when all sides are "authorized", a classical ELK layout (from left to right) is done.
+     */
+    public void testBorderNodeLayoutWithAllAuthorizedSides() {
+        openDiagram("diagramWithBorderNodesWithAllAuthorizedSides");
+
+        // Initialization checks
+        Optional<DDiagramElement> p1Dde = diagram.getOwnedDiagramElements().stream().filter(dde -> dde.getName().equals("p1")).findFirst();
+        assertTrue("The diagram should have an element named \"p1\".", p1Dde.isPresent());
+        assertTrue("The diagram should have a node named \"p1\".", p1Dde.get() instanceof DNode);
+
+        Optional<DDiagramElement> p2Dde = diagram.getOwnedDiagramElements().stream().filter(dde -> dde.getName().equals("p2")).findFirst();
+        assertTrue("The diagram should have an element named \"p2\".", p2Dde.isPresent());
+        assertTrue("The diagram should have a node named \"p2\".", p2Dde.get() instanceof DNode);
+
+        List<DNode> borderNodesOfP1 = ((DNode) p1Dde.get()).getOwnedBorderedNodes();
+        assertEquals("\"p1\" should have one border node.", 1, borderNodesOfP1.size());
+
+        List<DNode> borderNodesOfP2 = ((DNode) p2Dde.get()).getOwnedBorderedNodes();
+        assertEquals("\"p2\" should have one border node.", 1, borderNodesOfP2.size());
+
+        // Launch an arrange all
+        arrangeAll((DiagramEditor) editorPart);
+
+        // Check that the figure of border node of p1 is above them from 2 pixels.
+        IGraphicalEditPart p1EditPart = getEditPart(p1Dde.get());
+        IGraphicalEditPart borderNodeOfp1EditPart = getEditPart(borderNodesOfP1.get(0));
+        Rectangle p1Bounds = p1EditPart.getFigure().getBounds();
+        Rectangle borderNodeOfp1Bounds = borderNodeOfp1EditPart.getFigure().getBounds();
+        int p1Delta = borderNodeOfp1Bounds.width() - IBorderItemOffsets.DEFAULT_OFFSET.height();
+        assertEquals("The right location of p1 should be 2 pixels lefter that its border node as border node has no constraint (East side is used).", p1Bounds.getRight().x() + p1Delta,
+                borderNodeOfp1Bounds.getRight().x());
+        // Check that GMF coordinates also reflect that
+        assertTrue(borderNodeOfp1EditPart.getModel() instanceof Node);
+        Node borderNodeOfp1Node = (Node) borderNodeOfp1EditPart.getModel();
+        Location gmfLocation1 = (Location) borderNodeOfp1Node.getLayoutConstraint();
+        assertEquals("The x GMF coordinate of the the border node of p1 is wrong.", p1Bounds.width() - IBorderItemOffsets.DEFAULT_OFFSET.height(), gmfLocation1.getX());
+        // Check that the figure of border node of p2 is below them from 2 pixels.
+        IGraphicalEditPart p2EditPart = getEditPart(p2Dde.get());
+        IGraphicalEditPart borderNodeOfp2EditPart = getEditPart(borderNodesOfP2.get(0));
+        Rectangle p2Bounds = p2EditPart.getFigure().getBounds();
+        Rectangle borderNodeOfp2Bounds = borderNodeOfp2EditPart.getFigure().getBounds();
+        int p2Delta = borderNodeOfp2Bounds.height() - IBorderItemOffsets.DEFAULT_OFFSET.height();
+        assertEquals("The x location of p2 should be 2 pixels righter that its border node as border node has no constraint (West side is used).", p2Bounds.x() - p2Delta, borderNodeOfp2Bounds.x());
+        // Check that GMF coordinates also reflect that
+        assertTrue(borderNodeOfp2EditPart.getModel() instanceof Node);
+        Node borderNodeOfp2Node = (Node) borderNodeOfp2EditPart.getModel();
+        Location gmfLocation2 = (Location) borderNodeOfp2Node.getLayoutConstraint();
+        assertEquals("The x GMF coordinate of the the border node of p2 is wrong.", -p2Delta, gmfLocation2.getX());
     }
 
     protected void openDiagram(String diagramName) {

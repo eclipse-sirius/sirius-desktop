@@ -17,4 +17,14 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="to4" eType="#//MyClass4"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MyClass4"/>
+  <eSubpackages name="packageForAuthorizedSideTest">
+    <eSubpackages name="p1">
+      <eClassifiers xsi:type="ecore:EClass" name="C1">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="toC2" eType="#//packageForAuthorizedSideTest/p2/C2"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="p2">
+      <eClassifiers xsi:type="ecore:EClass" name="C2"/>
+    </eSubpackages>
+  </eSubpackages>
 </ecore:EPackage>
