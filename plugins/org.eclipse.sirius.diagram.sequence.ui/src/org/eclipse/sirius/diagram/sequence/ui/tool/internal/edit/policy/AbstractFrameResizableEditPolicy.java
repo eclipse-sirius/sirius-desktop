@@ -30,9 +30,12 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.requests.AlignmentRequest;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
+import org.eclipse.gef.tools.ResizeTracker;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
+import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.AbstractInteractionFrameValidator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.ISEComplexMoveValidator;
@@ -40,22 +43,21 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure.RangeGuide;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirResizableEditPolicy;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusResizeTracker;
 import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
 import org.eclipse.sirius.ext.draw2d.figure.HorizontalGuide;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.swt.graphics.Color;
 
 /**
- * A specific AirResizableEditPolicy to manage interaction use roles move &
- * resize requests.
+ * A specific AirResizableEditPolicy to manage interaction use roles move & resize requests.
  * 
  * @author mporhel
  */
 public abstract class AbstractFrameResizableEditPolicy extends AirResizableEditPolicy {
 
     /**
-     * The color to use for the horizontal feedback rules shown when
-     * moving/resizing an execution.
+     * The color to use for the horizontal feedback rules shown when moving/resizing an execution.
      */
     private static final Color FRAME_FEEDBACK_COLOR = ColorConstants.lightGray;
 
@@ -275,4 +277,22 @@ public abstract class AbstractFrameResizableEditPolicy extends AirResizableEditP
      * @return a collection of {@link ISequenceEventEditPart} to feedback.
      */
     protected abstract Collection<ISequenceEventEditPart> getChildrenToFeedBack(ChangeBoundsRequest request);
+
+    @Override
+    protected ResizeTracker getResizeTracker(int direction) {
+        return new SiriusResizeTracker((GraphicalEditPart) getHost(), direction) {
+            @Override
+            protected boolean handleButtonUp(int button) {
+                CacheHelper.clearCaches();
+                return super.handleButtonUp(button);
+            }
+
+            @Override
+            protected boolean handleButtonDown(int button) {
+                boolean handleButtonDown = super.handleButtonDown(button);
+                CacheHelper.initCaches();
+                return handleButtonDown;
+            }
+        };
+    }
 }

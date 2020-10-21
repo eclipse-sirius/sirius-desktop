@@ -36,10 +36,12 @@ import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.commands.UnexecutableCommand;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
+import org.eclipse.gef.tools.ResizeTracker;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.gmf.runtime.common.core.command.IdentityCommand;
 import org.eclipse.gmf.runtime.diagram.ui.commands.CommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.Edge;
@@ -58,6 +60,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.operation.ShiftDire
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansionOrReduction;
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
+import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.EventFinder;
 import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
@@ -734,5 +737,24 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         if (sizeDelta != null) {
             request.setSizeDelta(new Dimension(0, sizeDelta.height));
         }
+    }
+
+    @Override
+    protected ResizeTracker getResizeTracker(int direction) {
+        return new ResizeTracker((GraphicalEditPart) getHost(), direction) {
+
+            @Override
+            protected boolean handleButtonUp(int button) {
+                CacheHelper.clearCaches();
+                return super.handleButtonUp(button);
+            }
+
+            @Override
+            protected boolean handleButtonDown(int button) {
+                boolean handleButtonDown = super.handleButtonDown(button);
+                CacheHelper.initCaches();
+                return handleButtonDown;
+            }
+        };
     }
 }

@@ -18,10 +18,13 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.util.Range;
+import org.eclipse.sirius.ext.base.Option;
 
 /**
  * Sequence cache helper.
@@ -44,6 +47,12 @@ public final class CacheHelper {
     private static ConcurrentHashMap<ISequenceEvent, Message> startCompoundMessageCache = new ConcurrentHashMap<>();
 
     private static ConcurrentHashMap<ISequenceEvent, Message> endCompoundMessageCache = new ConcurrentHashMap<>();
+
+    private static ConcurrentHashMap<AbstractNodeEvent, ISequenceEvent> nodeEventToHierarchicalParentCache = new ConcurrentHashMap<>();
+
+    private static ConcurrentHashMap<ISequenceEvent, Option<Operand>> eventToParentOperandCache = new ConcurrentHashMap<>();
+
+    private static ConcurrentHashMap<ISequenceEvent, ISequenceEvent> eventToParentEventCache = new ConcurrentHashMap<>();
 
     /**
      * Avoid instantiation.
@@ -115,6 +124,9 @@ public final class CacheHelper {
         subEventsCache.clear();
         startCompoundMessageCache.clear();
         endCompoundMessageCache.clear();
+        nodeEventToHierarchicalParentCache.clear();
+        eventToParentOperandCache.clear();
+        eventToParentEventCache.clear();
     }
 
     /**
@@ -187,5 +199,32 @@ public final class CacheHelper {
      */
     public static ConcurrentHashMap<ISequenceEvent, Message> getEndCompoundMessageCache() {
         return endCompoundMessageCache;
+    }
+
+    /**
+     * get end message cache.
+     * 
+     * @return the message
+     */
+    public static ConcurrentHashMap<AbstractNodeEvent, ISequenceEvent> getAbstractNodeEventToHierarchicalParentCache() {
+        return nodeEventToHierarchicalParentCache;
+    }
+
+    /**
+     * get end message cache.
+     * 
+     * @return the message
+     */
+    public static ConcurrentHashMap<ISequenceEvent, Option<Operand>> getEventToParentOperandCache() {
+        return eventToParentOperandCache;
+    }
+
+    /**
+     * get end message cache.
+     * 
+     * @return the message
+     */
+    public static ConcurrentHashMap<ISequenceEvent, ISequenceEvent> getEventToParentEventCache() {
+        return eventToParentEventCache;
     }
 }

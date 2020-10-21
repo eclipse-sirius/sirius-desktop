@@ -26,6 +26,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceNodeQuery;
+import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.ParentOperandFinder;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.RangeSetter;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
@@ -41,6 +42,7 @@ import com.google.common.base.Predicate;
  * @author mporhel, pcdavid, smonnier
  */
 public abstract class AbstractNodeEvent extends AbstractSequenceNode implements ISequenceEvent {
+
     /**
      * Predicate to filter Frames and Operand from possible new parents of an execution reparent.
      */
@@ -103,12 +105,22 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNode implements 
 
     @Override
     public ISequenceEvent getParentEvent() {
-        ISequenceEvent parent = getHierarchicalParentEvent();
+        if (CacheHelper.isCacheEnabled()) {
+            ISequenceEvent parentEvent = CacheHelper.getEventToParentEventCache().get(this);
+            if (parentEvent != null) {
+                return parentEvent;
+            }
+        }
 
+        ISequenceEvent parent = getHierarchicalParentEvent();
         List<ISequenceEvent> potentialSiblings = parent.getSubEvents();
         if (!potentialSiblings.contains(this)) {
             // look for parentOperand
             parent = getParentOperand().get();
+        }
+
+        if (CacheHelper.isCacheEnabled()) {
+            CacheHelper.getEventToParentEventCache().put(this, parent);
         }
         return parent;
     }
@@ -144,7 +156,18 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNode implements 
      */
     @Override
     public Option<Operand> getParentOperand() {
-        return new ParentOperandFinder(this).getParentOperand();
+        if (CacheHelper.isCacheEnabled()) {
+            Option<Operand> parentOperand = CacheHelper.getEventToParentOperandCache().get(this);
+            if (parentOperand != null) {
+                return parentOperand;
+            }
+        }
+
+        Option<Operand> parentOperand = new ParentOperandFinder(this).getParentOperand();
+        if (CacheHelper.isCacheEnabled()) {
+            CacheHelper.getEventToParentOperandCache().put(this, parentOperand);
+        }
+        return parentOperand;
     }
 
     @Override
@@ -219,11 +242,22 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNode implements 
      * @return the hierarchical parent event of this event, if any.
      */
     protected ISequenceEvent getHierarchicalParentEvent(String noFoundParentExceptionMessage) {
+        if (CacheHelper.isCacheEnabled()) {
+            ISequenceEvent hierarchicalParent = CacheHelper.getAbstractNodeEventToHierarchicalParentCache().get(this);
+            if (hierarchicalParent != null) {
+                return hierarchicalParent;
+            }
+        }
+
         EObject viewContainer = this.view.eContainer();
         if (viewContainer instanceof View) {
             View parentView = (View) viewContainer;
             Option<ISequenceEvent> parentElement = ISequenceElementAccessor.getISequenceEvent(parentView);
             if (parentElement.some()) {
+                if (CacheHelper.isCacheEnabled()) {
+                    CacheHelper.getAbstractNodeEventToHierarchicalParentCache().put(this, parentElement.get());
+                }
+
                 return parentElement.get();
             }
         }

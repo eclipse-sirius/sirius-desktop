@@ -32,6 +32,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConsta
 import org.eclipse.sirius.diagram.sequence.business.internal.ordering.EventEndHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceMessageViewQuery;
+import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.RangeSetter;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
@@ -379,6 +380,13 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
 
     @Override
     public Option<Operand> getParentOperand() {
+        if (CacheHelper.isCacheEnabled()) {
+            Option<Operand> parentOperand = CacheHelper.getEventToParentOperandCache().get(this);
+            if (parentOperand != null) {
+                return parentOperand;
+            }
+        }
+
         Option<Lifeline> sourceLifeline = getSourceLifeline();
         Option<Operand> sourceParentOperand = Options.newNone();
         Range verticalRange = getVerticalRange();
@@ -400,6 +408,10 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
         Option<Operand> parentOperand = sourceParentOperand;
         if (!parentOperand.some()) {
             parentOperand = targetParentOperand;
+        }
+
+        if (CacheHelper.isCacheEnabled()) {
+            CacheHelper.getEventToParentOperandCache().put(this, parentOperand);
         }
 
         return parentOperand;
