@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -44,6 +44,8 @@ public class RefreshLayoutCommand extends RecordingCommand {
 
     private boolean refreshDiagram;
 
+    private boolean packingLayout;
+
     /**
      * Default constructor.
      * 
@@ -57,9 +59,30 @@ public class RefreshLayoutCommand extends RecordingCommand {
      *            {@inheritDoc}
      */
     public RefreshLayoutCommand(TransactionalEditingDomain domain, Diagram diagram, boolean refreshDiagram) {
+        this(domain, diagram, refreshDiagram, false);
+    }
+
+    /**
+     * Default constructor.
+     * 
+     * @param diagram
+     *            {@link Diagram} to refresh, used also to access {@link SequenceDDiagram} & {@link SequenceDiagram} to
+     *            refresh
+     * 
+     * @param refreshDiagram
+     *            <code>true</code> if we should actually update the GMF model
+     * 
+     * @param packingLayout
+     *            <code>true</code> if the GMF model update must be done with a packing layout (arrange all for
+     *            example).
+     * 
+     *            {@inheritDoc}
+     */
+    public RefreshLayoutCommand(TransactionalEditingDomain domain, Diagram diagram, boolean refreshDiagram, boolean packingLayout) {
         super(domain, Messages.RefreshLayoutCommand_commandName);
         this.diagram = diagram;
         this.refreshDiagram = refreshDiagram;
+        this.packingLayout = packingLayout;
     }
 
     /**
@@ -110,7 +133,7 @@ public class RefreshLayoutCommand extends RecordingCommand {
                     /*
                      * Launch a non-packing layout
                      */
-                    AbstractModelChangeOperation<Boolean> synchronizeGraphicalOrderingOperation = new SynchronizeGraphicalOrderingOperation(diagram, false);
+                    AbstractModelChangeOperation<Boolean> synchronizeGraphicalOrderingOperation = new SynchronizeGraphicalOrderingOperation(diagram, packingLayout);
                     synchronizeGraphicalOrderingOperation.execute();
                     /*
                      * The layout has probably changed graphical positions: re-compute the ordering to make sure it is
