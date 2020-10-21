@@ -105,7 +105,7 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
                     // See
                     // org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl.DRepresentationChangeListener
                     // for invalidation.
-                } else if (shouldHaveSubDiagDecoration(node, session)) {
+                } else if (shouldHaveSubDiagDecoration(node, parentRepresentation, session)) {
                     DecorationDescriptor decoDesc = new DecorationDescriptor();
                     decoDesc.setName(NAME);
                     decoDesc.setPosition(Position.SOUTH_EAST_LITERAL);
@@ -127,15 +127,15 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
         return WorkspaceImageFigure.flyWeightImage(DiagramUIPlugin.Implementation.getBundledImageDescriptor(DiagramImagesPath.HAS_DIAG_IMG));
     }
 
-    private boolean shouldHaveSubDiagDecoration(DRepresentationElement node, Session session) {
+    private boolean shouldHaveSubDiagDecoration(DRepresentationElement node, DRepresentation parentRepresentation, Session session) {
         Map<EObject, Collection<DRepresentationDescriptor>> knownRepDescriptors = new ConcurrentHashMap<>();
         EObject target = node.getTarget();
         boolean shouldHaveSubDiagramDecorator = false;
         if (target != null && target.eResource() != null) {
-            if (session != null && !parentHasSameSemanticElement(node)) {
-                shouldHaveSubDiagramDecorator = checkExistingRepresentationDescriptors(node, session, knownRepDescriptors);
+            if (session != null && !parentHasSameSemanticElement(node, target)) {
+                shouldHaveSubDiagramDecorator = checkExistingRepresentationDescriptors(target, node, parentRepresentation, session, knownRepDescriptors);
                 if (node.getMapping() != null && !shouldHaveSubDiagramDecorator) {
-                    shouldHaveSubDiagramDecorator = checkRepresentationNavigationDescriptions(node, session, knownRepDescriptors);
+                    shouldHaveSubDiagramDecorator = checkRepresentationNavigationDescriptions(target, node, session, knownRepDescriptors);
                 }
             }
         }
@@ -150,12 +150,11 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
      * 
      * @return the value
      */
-    private boolean checkExistingRepresentationDescriptors(DRepresentationElement node, Session session, Map<EObject, Collection<DRepresentationDescriptor>> knownRepDescriptors) {
+    private boolean checkExistingRepresentationDescriptors(EObject semanticObject, DRepresentationElement node, DRepresentation parentRepresentation, Session session,
+            Map<EObject, Collection<DRepresentationDescriptor>> knownRepDescriptors) {
         // Does the target element has any representation on it? Exclude
         // the current representation itself to avoid redundant markers.
-        EObject semanticObject = node.getTarget();
-        DRepresentation representation = new DRepresentationElementQuery(node).getParentRepresentation();
-        DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(representation, session).getRepresentationDescriptor();
+        DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(parentRepresentation, session).getRepresentationDescriptor();
 
         return getRepresentationDescriptors(session, semanticObject, knownRepDescriptors).stream().filter(repDesc -> !Objects.equals(repDesc, representationDescriptor)).count() > 0;
     }
@@ -171,14 +170,17 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
 
     /**
      * Tests whether the specified node has the same semantic element as its parent.
+     * 
+     * @param target
      */
-    private boolean parentHasSameSemanticElement(DRepresentationElement element) {
-        return (element.eContainer() instanceof DDiagramElement) && ((DDiagramElement) element.eContainer()).getTarget() == element.getTarget();
+    private boolean parentHasSameSemanticElement(DRepresentationElement element, EObject target) {
+        EObject eContainer = element.eContainer();
+        return (eContainer instanceof DDiagramElement) && ((DDiagramElement) eContainer).getTarget() == target;
     }
 
-    private boolean checkRepresentationNavigationDescriptions(DRepresentationElement element, Session session, Map<EObject, Collection<DRepresentationDescriptor>> knownRepDescriptors) {
+    private boolean checkRepresentationNavigationDescriptions(EObject target, DRepresentationElement element, Session session,
+            Map<EObject, Collection<DRepresentationDescriptor>> knownRepDescriptors) {
         boolean isAnyRepresentation = false;
-        EObject target = element.getTarget();
         if (session.isOpen()) {
 
             IInterpreter interpreter = session.getInterpreter();
@@ -201,7 +203,7 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
                     }
 
                     if (precondition) {
-                        isAnyRepresentation = checkRepresentationNavigationDescription(interpreter, navDesc, element, session, knownRepDescriptors);
+                        isAnyRepresentation = checkRepresentationNavigationDescription(interpreter, navDesc, target, element, session, knownRepDescriptors);
                     }
 
                     interpreter.unSetVariable(navDesc.getContainerVariable().getName());
@@ -217,15 +219,14 @@ public class SubDiagramDecorationDescriptorProvider implements SiriusDecorationD
         return vp != null && session.getSelectedViewpoints(false).contains(vp);
     }
 
-    private boolean checkRepresentationNavigationDescription(IInterpreter interpreter, RepresentationNavigationDescription navDesc, DRepresentationElement element, Session session,
+    private boolean checkRepresentationNavigationDescription(IInterpreter interpreter, RepresentationNavigationDescription navDesc, EObject target, DRepresentationElement element, Session session,
             Map<EObject, Collection<DRepresentationDescriptor>> knownRepDescriptors) {
         Collection<EObject> candidates = new ArrayList<EObject>();
 
         if (!StringUtil.isEmpty(navDesc.getBrowseExpression())) {
-            candidates.addAll(RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateCollection(element.getTarget(), navDesc,
-                    ToolPackage.eINSTANCE.getRepresentationNavigationDescription_BrowseExpression()));
+            candidates.addAll(RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateCollection(target, navDesc, ToolPackage.eINSTANCE.getRepresentationNavigationDescription_BrowseExpression()));
         } else {
-            Iterator<EObject> it = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(element.getTarget()).eAllContents(element.getTarget());
+            Iterator<EObject> it = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(target).eAllContents(target);
             while (it.hasNext()) {
                 candidates.add(it.next());
             }

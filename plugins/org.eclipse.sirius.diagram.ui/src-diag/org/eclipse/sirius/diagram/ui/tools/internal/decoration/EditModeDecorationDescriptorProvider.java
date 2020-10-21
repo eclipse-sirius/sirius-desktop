@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -82,7 +82,7 @@ public class EditModeDecorationDescriptorProvider extends AbstractSiriusDecorati
     private String getToolTip(IDiagramElementEditPart editPart) {
         try {
             EObject representedObject = editPart.resolveTargetSemanticElement();
-    
+
             if (representedObject != null) {
                 IToolTipProvider tooltipProvider = Platform.getAdapterManager().getAdapter(representedObject, IToolTipProvider.class);
                 if (tooltipProvider != null) {
@@ -143,28 +143,21 @@ public class EditModeDecorationDescriptorProvider extends AbstractSiriusDecorati
      */
     protected void addDecorationImage(IDiagramElementEditPart editPart, DecorationDescriptor decoDesc) {
         Image decorationImage = null;
-        IDiagramElementEditPart part = editPart;
 
         Boolean isBroken = null;
         // Case 1 : permission authority forbids the edition of the semantic
         // element associated to this edit part
-        if (isDecorableEditPart(part)) {
-            IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(part.getEditingDomain().getResourceSet());
-            if (auth != null) {
-                EObject representedObject = part.resolveTargetSemanticElement();
-                isBroken = isBroken(representedObject);
-                if (!isBroken) {
-                    if (Boolean.getBoolean(DISABLE_PRINT_FOR_PERMISSION_AUTHORITY_DECORATION)) {
-                        decoDesc.setPrintable(false);
-                    }
-                    decorationImage = getLockStatusDecorationImage(auth.getLockStatus(representedObject));
-                }
+        if (isDecorableEditPart(editPart)) {
+            EObject representedObject = editPart.resolveTargetSemanticElement();
+            isBroken = isBroken(representedObject);
+            if (!isBroken) {
+                decorationImage = addDecorationImage(editPart, representedObject, decoDesc);
             }
         }
 
         // Case 2 : edit part is broken
         if (decorationImage == null) {
-            if ((isBroken != null && isBroken.booleanValue()) || (isBroken == null && isBroken(part))) {
+            if ((isBroken != null && isBroken.booleanValue()) || (isBroken == null && isBroken(editPart))) {
                 // If the edit part is broken, we return a "deleted" image (red cross)
                 decorationImage = DiagramUIPlugin.getPlugin().getImage(DELETED_DIAG_ELEM_DECORATOR_IMAGE_DESCRIPTOR);
             }
@@ -173,6 +166,29 @@ public class EditModeDecorationDescriptorProvider extends AbstractSiriusDecorati
         if (decorationImage != null) {
             decoDesc.setDecorationAsImage(decorationImage);
         }
+    }
+
+    /**
+     * Get the decoration image.<br>
+     * 
+     * @param editPart
+     *            the edit part to get the decoration image from
+     * @param representedObject
+     *            the semanticTarget of the part.
+     * @param decoDesc
+     *            the DecorationDescriptor on which to set the image
+     * @return the image set on the decoDesc if any.
+     */
+    protected Image addDecorationImage(IDiagramElementEditPart editPart, EObject representedObject, DecorationDescriptor decoDesc) {
+        Image decorationImage = null;
+        IPermissionAuthority auth = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(editPart.getEditingDomain().getResourceSet());
+        if (auth != null) {
+            if (Boolean.getBoolean(DISABLE_PRINT_FOR_PERMISSION_AUTHORITY_DECORATION)) {
+                decoDesc.setPrintable(false);
+            }
+            decorationImage = getLockStatusDecorationImage(auth.getLockStatus(representedObject));
+        }
+        return decorationImage;
     }
 
     /**

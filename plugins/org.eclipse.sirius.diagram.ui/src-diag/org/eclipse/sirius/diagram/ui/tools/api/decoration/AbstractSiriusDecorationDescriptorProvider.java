@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.ui.tools.api.decoration;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gef.RootEditPart;
@@ -138,10 +139,12 @@ public abstract class AbstractSiriusDecorationDescriptorProvider implements Siri
         } else if (editPart instanceof DNodeListElementEditPart) {
             // We only decorate DNodeListElementEditParts if the semantic
             // element is different from parent editpart
-            EditPart parentEditPart = editPart.getParent();
-            if (parentEditPart.getModel() instanceof View && editPart.getNotationView() != null) {
-                View parentView = (View) parentEditPart.getModel();
-                result = parentView.getElement() != null && !parentView.getElement().equals(editPart.getNotationView().getElement());
+            Object parentModel = editPart.getParent().getModel();
+            View notationView = editPart.getNotationView();
+            if (parentModel instanceof View && notationView != null) {
+                View parentView = (View) parentModel;
+                EObject parentElement = parentView.getElement();
+                result = parentElement != null && !parentElement.equals(notationView.getElement());
             }
         }
         return result;
