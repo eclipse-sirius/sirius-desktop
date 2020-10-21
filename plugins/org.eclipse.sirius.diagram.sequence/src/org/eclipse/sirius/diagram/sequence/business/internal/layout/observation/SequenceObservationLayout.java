@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,8 +38,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.ext.base.Option;
 
 /**
- * Computes the appropriate graphical locations of observation points on a
- * sequence diagram.
+ * Computes the appropriate graphical locations of observation points on a sequence diagram.
  * 
  * @author mporhel
  */
@@ -51,8 +50,7 @@ public class SequenceObservationLayout extends AbstractSequenceLayout<Observatio
      * Constructor.
      * 
      * @param sequenceDiagram
-     *            the sequence diagram for which to compute the observation
-     *            point locations.
+     *            the sequence diagram for which to compute the observation point locations.
      */
     public SequenceObservationLayout(SequenceDiagram sequenceDiagram) {
         super(sequenceDiagram);
@@ -74,6 +72,10 @@ public class SequenceObservationLayout extends AbstractSequenceLayout<Observatio
     @Override
     protected Map<? extends ObservationPoint, Point> computeLayout(boolean pack) {
         HashMap<ObservationPoint, Point> computedLayout = new HashMap<>();
+
+        if (endToObservationPoint.isEmpty()) {
+            return computedLayout;
+        }
 
         for (ISequenceEvent ise : sequenceDiagram.getAllDelimitedSequenceEvents()) {
             Rectangle bounds = ise.getProperLogicalBounds();
