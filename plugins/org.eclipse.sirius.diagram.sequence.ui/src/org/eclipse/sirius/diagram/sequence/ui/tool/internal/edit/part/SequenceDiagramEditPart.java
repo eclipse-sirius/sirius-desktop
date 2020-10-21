@@ -10,7 +10,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 
+import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.stream.Stream;
+
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.ResourceSetListener;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -19,6 +24,7 @@ import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.internal.properties.WorkspaceViewerProperties;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
+import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.preference.IPreferenceStore;
@@ -28,7 +34,9 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionEventBroker;
 import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.refresh.RefreshLayoutCommand;
 import org.eclipse.sirius.diagram.sequence.business.internal.refresh.RefreshLayoutScope;
@@ -82,8 +90,35 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
 
         @Override
         public void resourceSetChanged(org.eclipse.emf.transaction.ResourceSetChangeEvent event) {
+            refreshInstanceRoleEditPartsOnAbstractNodeEventSetBounds(event);
             new SequenceZOrderingRefresher(SequenceDiagramEditPart.this).run();
             refreshConnectionsBendpoints();
+        }
+
+        private void refreshInstanceRoleEditPartsOnAbstractNodeEventSetBounds(org.eclipse.emf.transaction.ResourceSetChangeEvent event) {
+            Collection<View> instanceOfRoleToRefresh = new LinkedHashSet<>();
+            for (Notification notification : event.getNotifications()) {
+                if (!notification.isTouch() && notification.getEventType() == Notification.SET && notification.getNotifier() instanceof Bounds) {
+                    Bounds notifier = (Bounds) notification.getNotifier();
+                    EObject eContainer = notifier.eContainer();
+                    if (eContainer instanceof View) {
+                        Option<AbstractNodeEvent> abstractNodeEvent = ISequenceElementAccessor.getAbstractNodeEvent((View) eContainer);
+                        if (abstractNodeEvent.some()) {
+                            Option<Lifeline> lifeline = abstractNodeEvent.get().getLifeline();
+                            if (lifeline.some()) {
+                                instanceOfRoleToRefresh.add(lifeline.get().getInstanceRole().getNotationView());
+                            }
+                        }
+                    }
+                }
+            }
+
+            // @formatter:off
+            Stream<InstanceRoleEditPart> instanceRoleEditParts = SequenceDiagramEditPart.this.getChildren().stream()
+                                                                          .filter(InstanceRoleEditPart.class::isInstance)
+                                                                          .map(InstanceRoleEditPart.class::cast);
+            // @formatter:on
+            instanceRoleEditParts.filter(part -> instanceOfRoleToRefresh.contains(part.getModel())).forEach(EditPart::refresh);
         }
     };
 

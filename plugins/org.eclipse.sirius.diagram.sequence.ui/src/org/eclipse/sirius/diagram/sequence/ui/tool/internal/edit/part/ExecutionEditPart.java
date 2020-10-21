@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -12,16 +12,13 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPolicy;
 import org.eclipse.gef.editpolicies.ResizableEditPolicy;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
-import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -38,12 +35,11 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.anchor.AnchorProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ICollapseMode;
-import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.viewpoint.DStylizable;
 
 /**
- * Special edit part for Executions. Implemented as bordered nodes, either
- * directly on a lifeline parts or on another execution.
+ * Special edit part for Executions. Implemented as bordered nodes, either directly on a lifeline parts or on another
+ * execution.
  * 
  * @author pcdavid, smonnier
  */
@@ -70,20 +66,6 @@ public class ExecutionEditPart extends AbstractSequenceBorderedEditPart {
             DiagramBorderNodeEditPartOperation.updateResizeKind(result, node);
         }
         return result;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void handleNotificationEvent(Notification notification) {
-        super.handleNotificationEvent(notification);
-        if (notification.getEventType() == Notification.SET && notification.getNotifier() instanceof Bounds) {
-            final EditPart parentInstanceRole = new EditPartQuery(this).getFirstAncestorOfType(InstanceRoleEditPart.class);
-            if (parentInstanceRole != null) {
-                parentInstanceRole.refresh();
-            }
-        }
     }
 
     /**
@@ -155,6 +137,7 @@ public class ExecutionEditPart extends AbstractSequenceBorderedEditPart {
     /**
      * {@inheritDoc}
      */
+    @Override
     public ISequenceEvent getISequenceEvent() {
         return ISequenceElementAccessor.getExecution(getNotationView()).get();
     }
