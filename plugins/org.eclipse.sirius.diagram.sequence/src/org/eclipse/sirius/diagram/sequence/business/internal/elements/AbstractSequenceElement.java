@@ -114,8 +114,9 @@ public abstract class AbstractSequenceElement extends AdapterImpl implements ISe
 
     @Override
     public Option<EObject> getSemanticTargetElement() {
-        if (view.getElement() instanceof DSemanticDecorator) {
-            return Options.newSome(((DSemanticDecorator) view.getElement()).getTarget());
+        EObject element = view.getElement();
+        if (element instanceof DSemanticDecorator) {
+            return Options.newSome(((DSemanticDecorator) element).getTarget());
         } else {
             return Options.newNone();
         }
