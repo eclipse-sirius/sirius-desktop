@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -42,8 +42,8 @@ import com.google.common.collect.Multimap;
 import com.google.common.collect.Sets;
 
 /**
- * Computes the appropriate graphical locations of sequence events and lifelines
- * on a sequence diagram to reflect the semantic order.
+ * Computes the appropriate graphical locations of sequence events and lifelines on a sequence diagram to reflect the
+ * semantic order.
  * 
  * @author pcdavid, mporhel
  */
@@ -69,8 +69,7 @@ public class LostMessageEndHorizontalLayoutHelper {
      * Constructor.
      * 
      * @param diagram
-     *            the sequence diagram for which to compute the horizontal
-     *            locations.
+     *            the sequence diagram for which to compute the horizontal locations.
      */
     public LostMessageEndHorizontalLayoutHelper(SequenceDiagram diagram) {
         this.sequenceDiagram = diagram;
@@ -130,7 +129,6 @@ public class LostMessageEndHorizontalLayoutHelper {
         ISequenceNode sourceElement = msg.getSourceElement();
         ISequenceNode targetElement = msg.getTargetElement();
 
-        Option<Operand> parentOperand = msg.getParentOperand();
         if (sourceElement != null && targetElement != null) {
             Option<Lifeline> sourceLifeline = sourceElement.getLifeline();
             Option<Lifeline> targetLifeline = targetElement.getLifeline();
@@ -140,6 +138,7 @@ public class LostMessageEndHorizontalLayoutHelper {
                 LostMessageEnd sourceLME = (LostMessageEnd) sourceElement;
                 lostSources.put(targetLifeline.get(), sourceLME);
                 lostMessages.put(sourceLME, msg);
+                Option<Operand> parentOperand = msg.getParentOperand();
                 if (parentOperand.some()) {
                     operands.put(sourceLME, parentOperand.get());
                     operands2lostEnds.put(parentOperand.get(), sourceLME);
@@ -150,6 +149,7 @@ public class LostMessageEndHorizontalLayoutHelper {
                 LostMessageEnd targetLME = (LostMessageEnd) targetElement;
                 lostTargets.put(sourceLifeline.get(), targetLME);
                 lostMessages.put(targetLME, msg);
+                Option<Operand> parentOperand = msg.getParentOperand();
                 if (parentOperand.some()) {
                     operands.put(targetLME, parentOperand.get());
                     operands2lostEnds.put(parentOperand.get(), targetLME);
