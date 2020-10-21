@@ -7,6 +7,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.layout;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
@@ -27,6 +28,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.RequestConstants;
+import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gef.rulers.RulerProvider;
 import org.eclipse.gef.tools.ToolUtilities;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
@@ -55,6 +58,7 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.tools.internal.commands.PinElementsCommand;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
@@ -226,7 +230,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * @throws Exception
      *             in case of problem
      */
-    public void _testNoteLayoutWithPrefFalse() throws Exception {
+    public void testNoteLayoutWithPrefFalse() throws Exception {
         testNoteLayoutAccordingToPref(false);
     }
 
@@ -831,6 +835,48 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     }
 
     /**
+     * Makes sure that pinned elements do no affect result of layout when using ELK.
+     */
+    public void testArrangeWithPinnedElements() {
+        // Create a new diagram
+        EObject root = session.getSemanticResources().stream().findFirst().get().getContents().get(0);
+        DRepresentation representation = createRepresentation("SimpleDiagram", root);
+        // Open the editor
+        IEditorPart newEditorPart = DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
+        // Move 3 nodes
+        Optional<DDiagramElement> c2Dde = ((DDiagram) representation).getDiagramElements().stream().filter(dde -> dde.getName().equals("MyClass2")).findFirst();
+        assertTrue("The diagram should have an element named \"MyClass2\".", c2Dde.isPresent());
+        Optional<DDiagramElement> c3Dde = ((DDiagram) representation).getDiagramElements().stream().filter(dde -> dde.getName().equals("MyClass3")).findFirst();
+        assertTrue("The diagram should have an element named \"MyClass3\".", c3Dde.isPresent());
+        Optional<DDiagramElement> c4Dde = ((DDiagram) representation).getDiagramElements().stream().filter(dde -> dde.getName().equals("MyClass4")).findFirst();
+        assertTrue("The diagram should have an element named \"MyClass4\".", c4Dde.isPresent());
+        moveEditPart(c2Dde.get(), new Point(100, 50));
+        moveEditPart(c3Dde.get(), new Point(100, 50));
+        moveEditPart(c4Dde.get(), new Point(100, 50));
+        // Arrange the diagram without any pinned elements
+        arrangeAll((DiagramEditor) newEditorPart);
+        TestsUtil.synchronizationWithUIThread();
+        // Keep the figures bounds after the arrange all without pinned elements.
+        Map<DNode, Rectangle> DNodes2Bounds = computeNodesBounds(representation);
+        // Move the same elements and pin 2 of them.
+        moveEditPart(c2Dde.get(), new Point(100, 50));
+        moveEditPart(c3Dde.get(), new Point(100, 50));
+        moveEditPart(c4Dde.get(), new Point(100, 50));;
+        List<DDiagramElement> elementsToPin = new ArrayList<DDiagramElement>();
+        elementsToPin.add(c2Dde.get());
+        elementsToPin.add(c4Dde.get());
+        executeCommand(new PinElementsCommand(elementsToPin));
+        // Perform the arrange all again.
+        arrangeAll((DiagramEditor) newEditorPart);
+        TestsUtil.synchronizationWithUIThread();
+        // Check that the layout is the same as without pinned elements
+        Map<DNode, Rectangle> afterDNodes2Bounds = computeNodesBounds(representation);
+        afterDNodes2Bounds.forEach((dNode, rect) -> {
+            assertEquals("The layout result should not change after having pinned some elements.", DNodes2Bounds.get(dNode), rect);
+        });
+    }
+
+    /**
      * Make sure that arrange all launched at diagram creation is OK when using ELK.
      */
     public void testArrangeAtCreation1() {
@@ -1126,5 +1172,24 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         Point locationOfB = editPartB.getFigure().getBounds().getTopLeft();
         Point topLeftCorner = new Point(Math.min(locationOfA.x(), locationOfB.x()), Math.min(locationOfA.y(), locationOfB.y()));
         return topLeftCorner;
+    }
+
+    /**
+     * Move the edit part.
+     * 
+     * @param dde
+     *            the DDiagramElement of the edit part to move.
+     * @param point
+     *            delta to move.
+     * 
+     */
+    private void moveEditPart(DDiagramElement dde, Point point) {
+        IGraphicalEditPart editPart = getEditPart(dde);
+        ChangeBoundsRequest request = new ChangeBoundsRequest();
+        request.setMoveDelta(point);
+        request.setLocation(point);
+        request.setType(RequestConstants.REQ_MOVE);
+        editPart.performRequest(request);
+        TestsUtil.synchronizationWithUIThread();
     }
 }
