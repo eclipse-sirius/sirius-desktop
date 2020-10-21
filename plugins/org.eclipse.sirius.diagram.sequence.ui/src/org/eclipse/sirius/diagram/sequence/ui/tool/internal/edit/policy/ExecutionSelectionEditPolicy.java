@@ -397,7 +397,8 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         boolean isReflective = message.isReflective();
         ISequenceNode sourceElement = message.getSourceElement();
         ISequenceNode targetElement = message.getTargetElement();
-        if (!isReplyMessage && isReflective && Iterables.any(EventEndHelper.findEndsFromSemanticOrdering(message), filterCompoundEventEnd) && targetElement == self) {
+        List<EventEnd> messageEnds = EventEndHelper.findEndsFromSemanticOrdering(message);
+        if (!isReplyMessage && isReflective && Iterables.any(messageEnds, filterCompoundEventEnd) && targetElement == self) {
             // Avoid target of the return message of a reflexive sync call to
             // reconnect on its execution
             toIgnore.add(self);
@@ -425,7 +426,7 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         }
 
         toIgnore.clear();
-        if (isReplyMessage && isReflective && Iterables.any(EventEndHelper.findEndsFromSemanticOrdering(message), filterCompoundEventEnd) && sourceElement == self) {
+        if (isReplyMessage && isReflective && Iterables.any(messageEnds, filterCompoundEventEnd) && sourceElement == self) {
             // Avoid target of the return message of a reflexive sync call to
             // reconnect on its execution
             toIgnore.add(self);

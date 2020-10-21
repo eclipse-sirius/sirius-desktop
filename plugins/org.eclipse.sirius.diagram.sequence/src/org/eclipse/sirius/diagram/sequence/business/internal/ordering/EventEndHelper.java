@@ -140,14 +140,28 @@ public final class EventEndHelper {
      * @return the EventEnds corresponding to the given part
      */
     public static List<EventEnd> findEndsFromSemanticOrdering(ISequenceEvent part) {
-        List<EventEnd> ends = Lists.newArrayList();
         SequenceDiagram sdep = part.getDiagram();
-        SequenceDDiagram seqDiag = (SequenceDDiagram) sdep.getNotationDiagram().getElement();
+        SequenceDDiagram seqDiag = sdep != null ? sdep.getSequenceDDiagram() : null;
+        return findEndsFromSemanticOrdering(part, seqDiag);
+    }
+
+    /**
+     * Finds and returns the EventEnds corresponding to the given part, using the semantic ordering instead of the
+     * graphical ordering used by the plain {@link #findEnds(ISequenceEventEditPart)}.
+     * 
+     * @param part
+     *            the part to look for
+     * @param sequenceDDiagram
+     *            the current SequenceDDiagram
+     * @return the EventEnds corresponding to the given part
+     */
+    public static List<EventEnd> findEndsFromSemanticOrdering(ISequenceEvent part, SequenceDDiagram sequenceDDiagram) {
+        List<EventEnd> ends = new ArrayList<>();
         Option<EObject> semanticEvent = part.getSemanticTargetElement();
-        if (semanticEvent.some()) {
+        if (sequenceDDiagram != null && semanticEvent.some()) {
             EObject eObject = semanticEvent.get();
 
-            EventEndsOrdering semanticOrdering = seqDiag.getSemanticOrdering();
+            EventEndsOrdering semanticOrdering = sequenceDDiagram.getSemanticOrdering();
             Optional<EventEndsCache> eventEndsCache = semanticOrdering.eAdapters().stream().filter(EventEndsCache.class::isInstance).map(EventEndsCache.class::cast).findFirst();
             if (eventEndsCache.isPresent()) {
                 ends = eventEndsCache.get().getEventEndsFromCache(eObject);
@@ -167,9 +181,8 @@ public final class EventEndHelper {
                 }
                 eventEndsCache.get().putEventEndsInCache(eObject, ends);
             }
-            ends = Lists.newArrayList(ends);
+            ends = new ArrayList<>(ends);
         }
-
         return ends;
     }
 

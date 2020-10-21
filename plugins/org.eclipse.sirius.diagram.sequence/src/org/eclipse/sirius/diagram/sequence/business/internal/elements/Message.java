@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -55,8 +55,7 @@ import com.google.common.collect.Sets;
  */
 public class Message extends AbstractSequenceElement implements ISequenceEvent {
     /**
-     * Predicate to filter States, Frames and Operand from possible new source
-     * or target of a message reconnection.
+     * Predicate to filter States, Frames and Operand from possible new source or target of a message reconnection.
      */
     public static final Predicate<ISequenceEvent> NO_RECONNECTABLE_EVENTS = new Predicate<ISequenceEvent>() {
         @Override
@@ -89,8 +88,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
     /**
      * The visual ID.
      * 
-     * see org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEditPart.
-     * VISUAL_ID
+     * see org.eclipse.sirius.diagram.internal.edit.parts.DEdgeEditPart. VISUAL_ID
      */
     public static final int VISUAL_ID = 4001;
 
@@ -149,11 +147,9 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
     }
 
     /**
-     * Returns a predicate to check whether a Sirius DDiagramElement represents
-     * a message.
+     * Returns a predicate to check whether a Sirius DDiagramElement represents a message.
      * 
-     * @return a predicate to check whether a Sirius DDiagramElement represents
-     *         a message.
+     * @return a predicate to check whether a Sirius DDiagramElement represents a message.
      */
     public static Predicate<DDiagramElement> viewpointElementPredicate() {
         return SiriusElementPredicate.INSTANCE;
@@ -219,8 +215,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
     }
 
     /**
-     * Tests whether this a reflective message, i.e. both its source and target
-     * are in the context of the same lifeline.
+     * Tests whether this a reflective message, i.e. both its source and target are in the context of the same lifeline.
      * 
      * @return <code>true</code> if this message is reflective.
      */
@@ -257,18 +252,14 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
     }
 
     /**
-     * Returns the lifeline on "the other side" of the message, with respect to
-     * the specified lifeline. For reflective messages, this is the same as the
-     * local lifeline. The specified local lifeline <em>must</em> be either the
-     * source of target lifeline of this message. Otherwise the result is
-     * unspecified.
+     * Returns the lifeline on "the other side" of the message, with respect to the specified lifeline. For reflective
+     * messages, this is the same as the local lifeline. The specified local lifeline <em>must</em> be either the source
+     * of target lifeline of this message. Otherwise the result is unspecified.
      * 
      * @param local
-     *            the lifeline to consider as "local", either the source or
-     *            target lifeline of the message.
-     * @return the lifeline on "the other side" of the message, i.e. the the
-     *         target lifeline is <code>local</code> it the source lifeline, and
-     *         the source lifeline otherwise.
+     *            the lifeline to consider as "local", either the source or target lifeline of the message.
+     * @return the lifeline on "the other side" of the message, i.e. the the target lifeline is <code>local</code> it
+     *         the source lifeline, and the source lifeline otherwise.
      */
     public Option<Lifeline> getRemoteLifeline(Lifeline local) {
         Option<Lifeline> sourceLifeline = getSourceLifeline();
@@ -280,7 +271,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
     }
 
     public boolean isCompoundMessage() {
-        return !Iterables.isEmpty(Iterables.filter(getDiagram().findEnds(this), CompoundEventEnd.class));
+        return !Iterables.isEmpty(Iterables.filter(EventEndHelper.findEndsFromSemanticOrdering(this), CompoundEventEnd.class));
     }
 
     @Override
@@ -413,11 +404,9 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
     }
 
     /**
-     * Check if the current message is reflexive and surrounds other events on
-     * the same lifeline.
+     * Check if the current message is reflexive and surrounds other events on the same lifeline.
      * 
-     * @return true if the current message is reflexive and surrounds other
-     *         events on the same lifeline.
+     * @return true if the current message is reflexive and surrounds other events on the same lifeline.
      */
     public boolean surroundsEventOnSameLifeline() {
         return !getSurroundedSameLifelineEvents().isEmpty();
