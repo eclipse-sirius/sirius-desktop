@@ -421,40 +421,43 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
      */
     public int getReflexiveMessageWidth() {
         Collection<ISequenceEvent> events = getSurroundedSameLifelineEvents();
-        final Range range = getVerticalRange();
-        Predicate<ISequenceEvent> toConsider = new Predicate<ISequenceEvent>() {
-            @Override
-            public boolean apply(ISequenceEvent input) {
-                boolean toConsider = range.includes(input.getVerticalRange());
-                if (input instanceof Message) {
-                    toConsider = toConsider && ((Message) input).isReflective();
-                }
-                return toConsider;
-            }
-        };
-
-        List<ISequenceEvent> impactingEvents = Lists.newArrayList(Iterables.filter(events, toConsider));
-        Collections.sort(impactingEvents, Ordering.natural().onResultOf(Functions.compose(RangeHelper.lowerBoundFunction(), ISequenceEvent.VERTICAL_RANGE)));
-        int subMessagesMaxRight = 0;
-        for (Message msg : Iterables.filter(impactingEvents, Message.class)) {
-            int reflexiveMessageWidth = msg.getReflexiveMessageWidth();
-            int origin = msg.getSourceElement().getProperLogicalBounds().right();
-            origin = Math.max(origin, msg.getTargetElement().getProperLogicalBounds().right());
-            subMessagesMaxRight = Math.max(subMessagesMaxRight, origin + reflexiveMessageWidth);
-        }
-
-        int maxRight = 0;
-        for (AbstractNodeEvent node : Iterables.filter(impactingEvents, AbstractNodeEvent.class)) {
-            maxRight = Math.max(maxRight, node.getProperLogicalBounds().right());
-        }
-
-        int origin = getSourceElement().getProperLogicalBounds().right();
-        origin = Math.max(origin, getTargetElement().getProperLogicalBounds().right());
 
         int width = LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_HORIZONTAL_GAP;
-        width = Math.max(width, maxRight - origin + LayoutConstants.MESSAGE_TO_SELF_HORIZONTAL_GAP);
-        width = Math.max(width, subMessagesMaxRight - origin + LayoutConstants.MESSAGE_TO_SELF_HORIZONTAL_GAP);
+        if (!events.isEmpty()) {
 
+            final Range range = getVerticalRange();
+            Predicate<ISequenceEvent> toConsider = new Predicate<ISequenceEvent>() {
+                @Override
+                public boolean apply(ISequenceEvent input) {
+                    boolean toConsider = range.includes(input.getVerticalRange());
+                    if (input instanceof Message) {
+                        toConsider = toConsider && ((Message) input).isReflective();
+                    }
+                    return toConsider;
+                }
+            };
+
+            List<ISequenceEvent> impactingEvents = Lists.newArrayList(Iterables.filter(events, toConsider));
+            Collections.sort(impactingEvents, Ordering.natural().onResultOf(Functions.compose(RangeHelper.lowerBoundFunction(), ISequenceEvent.VERTICAL_RANGE)));
+            int subMessagesMaxRight = 0;
+            for (Message msg : Iterables.filter(impactingEvents, Message.class)) {
+                int reflexiveMessageWidth = msg.getReflexiveMessageWidth();
+                int origin = msg.getSourceElement().getProperLogicalBounds().right();
+                origin = Math.max(origin, msg.getTargetElement().getProperLogicalBounds().right());
+                subMessagesMaxRight = Math.max(subMessagesMaxRight, origin + reflexiveMessageWidth);
+            }
+
+            int maxRight = 0;
+            for (AbstractNodeEvent node : Iterables.filter(impactingEvents, AbstractNodeEvent.class)) {
+                maxRight = Math.max(maxRight, node.getProperLogicalBounds().right());
+            }
+
+            int origin = getSourceElement().getProperLogicalBounds().right();
+            origin = Math.max(origin, getTargetElement().getProperLogicalBounds().right());
+
+            width = Math.max(width, maxRight - origin + LayoutConstants.MESSAGE_TO_SELF_HORIZONTAL_GAP);
+            width = Math.max(width, subMessagesMaxRight - origin + LayoutConstants.MESSAGE_TO_SELF_HORIZONTAL_GAP);
+        }
         return width;
     }
 
