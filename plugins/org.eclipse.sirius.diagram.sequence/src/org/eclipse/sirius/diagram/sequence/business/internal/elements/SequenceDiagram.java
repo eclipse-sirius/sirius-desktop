@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -72,8 +72,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
     }
 
     /**
-     * Predicate to check whether a Sirius DDiagram represents a sequence
-     * diagram.
+     * Predicate to check whether a Sirius DDiagram represents a sequence diagram.
      */
     private enum SiriusElementPredicate implements Predicate<DDiagram> {
         INSTANCE;
@@ -90,8 +89,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
     }
 
     /**
-     * Indicate if this class should use cache or not. Use
-     * {@link #useCache(boolean))} to enable/disable this mode and {
+     * Indicate if this class should use cache or not. Use {@link #useCache(boolean))} to enable/disable this mode and {
      * {@link #clearAllCaches()} to clear caches.
      */
     private boolean useCache;
@@ -154,22 +152,18 @@ public class SequenceDiagram extends AbstractSequenceElement {
     }
 
     /**
-     * Returns a predicate to check whether a GMF View represents a sequence
-     * diagram.
+     * Returns a predicate to check whether a GMF View represents a sequence diagram.
      * 
-     * @return a predicate to check whether a GMF View represents a sequence
-     *         diagram.
+     * @return a predicate to check whether a GMF View represents a sequence diagram.
      */
     public static Predicate<View> notationPredicate() {
         return NotationPredicate.INSTANCE;
     }
 
     /**
-     * Returns a predicate to check whether a Sirius DDiagram represents a
-     * sequence diagram.
+     * Returns a predicate to check whether a Sirius DDiagram represents a sequence diagram.
      * 
-     * @return a predicate to check whether a Sirius DDiagram represents a
-     *         sequence diagram.
+     * @return a predicate to check whether a Sirius DDiagram represents a sequence diagram.
      */
     public static Predicate<DDiagram> viewpointElementPredicate() {
         return SiriusElementPredicate.INSTANCE;
@@ -184,14 +178,11 @@ public class SequenceDiagram extends AbstractSequenceElement {
     }
 
     /**
-     * Finds all the lifelines in this diagram which are at least partially
-     * covered by the specified rectangular area.
+     * Finds all the lifelines in this diagram which are at least partially covered by the specified rectangular area.
      * 
      * @param area
-     *            the rectangular area to check for lifelines (in logical
-     *            coordinates).
-     * @return all the lifelines in this diagram which are at least partially
-     *         covered by the area.
+     *            the rectangular area to check for lifelines (in logical coordinates).
+     * @return all the lifelines in this diagram which are at least partially covered by the area.
      */
     public Set<Lifeline> getGraphicallyCoveredLifelines(final Rectangle area) {
         List<Lifeline> result = new ArrayList<>();
@@ -289,12 +280,10 @@ public class SequenceDiagram extends AbstractSequenceElement {
     }
 
     /**
-     * Returns all the {@link Node}s in the specified diagram which represent an
-     * ObservationPoint.
+     * Returns all the {@link Node}s in the specified diagram which represent an ObservationPoint.
      * 
-     * @return the Nodes inside this diagram which represent sequence
-     *         ObservationPoint. An empty iterator is returned if the diagram is
-     *         not a sequence diagram.
+     * @return the Nodes inside this diagram which represent sequence ObservationPoint. An empty iterator is returned if
+     *         the diagram is not a sequence diagram.
      */
     public Collection<ObservationPoint> getAllObservationPoints() {
         Collection<ObservationPoint> allObservationPoints = null;
@@ -321,12 +310,10 @@ public class SequenceDiagram extends AbstractSequenceElement {
     }
 
     /**
-     * Returns all the {@link Node}s in the specified diagram which represent a
-     * lost sequence message end.
+     * Returns all the {@link Node}s in the specified diagram which represent a lost sequence message end.
      * 
-     * @return the Nodes inside this diagram which represent lost sequence
-     *         messages end. An empty iterator is returned if the diagram is not
-     *         a sequence diagram.
+     * @return the Nodes inside this diagram which represent lost sequence messages end. An empty iterator is returned
+     *         if the diagram is not a sequence diagram.
      */
     public Collection<LostMessageEnd> getAllLostMessageEnds() {
         Collection<LostMessageEnd> allLostMessageEnd = null;
@@ -353,12 +340,10 @@ public class SequenceDiagram extends AbstractSequenceElement {
     }
 
     /**
-     * Returns all the {@link Edge}s in the specified diagram which represent a
-     * sequence message of any kind.
+     * Returns all the {@link Edge}s in the specified diagram which represent a sequence message of any kind.
      * 
-     * @return the Edges inside this diagram which represent sequence messages.
-     *         An empty iterator is returned if the diagram is not a sequence
-     *         diagram.
+     * @return the Edges inside this diagram which represent sequence messages. An empty iterator is returned if the
+     *         diagram is not a sequence diagram.
      */
     public Set<Message> getAllMessages() {
         List<Message> allMessages = null;
@@ -688,8 +673,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
     }
 
     /**
-     * Returns all sequence events in the given diagram. The result is ordered
-     * regarding the lower bound ordering.
+     * Returns all sequence events in the given diagram. The result is ordered regarding the lower bound ordering.
      * 
      * @return all sequence events on the given diagram.
      */
@@ -714,8 +698,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
     }
 
     /**
-     * Returns all sequence events in the given diagram. The result is not
-     * ordered and will be computed on iteration.
+     * Returns all sequence events in the given diagram. The result is not ordered and will be computed on iteration.
      * 
      * @return all sequence events on the given diagram.
      */
@@ -739,17 +722,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
      * @return the EventEnds corresponding to the given part
      */
     public List<EventEnd> findEnds(ISequenceEvent event) {
-        List<EventEnd> ends = new ArrayList<>();
-        EObject seqDiag = getNotationDiagram().getElement();
-        Option<EObject> semanticEvent = event.getSemanticTargetElement();
-        if (seqDiag instanceof SequenceDDiagram && semanticEvent.some()) {
-            for (EventEnd ee : ((SequenceDDiagram) seqDiag).getGraphicalOrdering().getEventEnds()) {
-                if (EventEndHelper.getSemanticEvents(ee).contains(semanticEvent.get())) {
-                    ends.add(ee);
-                }
-            }
-        }
-        return ends;
+        return EventEndHelper.findEndsFromSemanticOrdering(event, getSequenceDDiagram());
     }
 
     /**
@@ -803,8 +776,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
     }
 
     /**
-     * Clear all the ordered caches. The order has been changed and it must be
-     * computed again.
+     * Clear all the ordered caches. The order has been changed and it must be computed again.
      */
     public void clearOrderedCaches() {
         this.allOrderedAbstractNodeEventsCache = null;
