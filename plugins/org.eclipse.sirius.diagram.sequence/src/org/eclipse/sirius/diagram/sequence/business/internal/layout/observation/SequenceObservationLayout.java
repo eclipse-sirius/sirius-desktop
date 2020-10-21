@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -38,8 +38,7 @@ import org.eclipse.sirius.ext.base.Option;
 import com.google.common.collect.Maps;
 
 /**
- * Computes the appropriate graphical locations of observation points on a
- * sequence diagram.
+ * Computes the appropriate graphical locations of observation points on a sequence diagram.
  * 
  * @author mporhel
  */
@@ -51,8 +50,7 @@ public class SequenceObservationLayout extends AbstractSequenceLayout<Observatio
      * Constructor.
      * 
      * @param sequenceDiagram
-     *            the sequence diagram for which to compute the observation
-     *            point locations.
+     *            the sequence diagram for which to compute the observation point locations.
      */
     public SequenceObservationLayout(SequenceDiagram sequenceDiagram) {
         super(sequenceDiagram);
@@ -74,6 +72,10 @@ public class SequenceObservationLayout extends AbstractSequenceLayout<Observatio
     @Override
     protected Map<? extends ObservationPoint, Point> computeLayout(boolean pack) {
         HashMap<ObservationPoint, Point> computedLayout = Maps.newHashMap();
+
+        if (endToObservationPoint.isEmpty()) {
+            return computedLayout;
+        }
 
         for (ISequenceEvent ise : sequenceDiagram.getAllDelimitedSequenceEvents()) {
             Rectangle bounds = ise.getProperLogicalBounds();
