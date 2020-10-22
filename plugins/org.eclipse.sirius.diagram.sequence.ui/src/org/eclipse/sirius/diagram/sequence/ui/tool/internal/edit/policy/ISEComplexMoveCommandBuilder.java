@@ -12,6 +12,7 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
@@ -239,7 +240,26 @@ public class ISEComplexMoveCommandBuilder {
     private Collection<Reconnection> computeReconnections() {
         Collection<Reconnection> reconnections = Lists.newArrayList();
         // Reconnect moved and unmoved messages
-        for (Message message : validator.getDiagram().getAllMessages()) {
+
+        Set<Message> allMessages = validator.getDiagram().getAllMessages();
+
+        Range validatorInitialRange = validator.getInitialRange();
+        Range validatorFinalRange = validator.getMovedRange();
+        Predicate<Message> filterRange = new Predicate<Message>() {
+
+            @Override
+            public boolean apply(Message msg) {
+                Range initialRange = msg.getVerticalRange();
+                Range futureRange = validator.getRangeFunction().apply(msg);
+
+                if (initialRange.width() == 0) {
+                    return validatorInitialRange.includes(initialRange.getLowerBound()) || validatorFinalRange.includes(futureRange.getLowerBound());
+                }
+                return validatorInitialRange.intersects(initialRange) || validatorFinalRange.intersects(futureRange);
+            }
+        };
+
+        for (Message message : Iterables.filter(allMessages, filterRange)) {
 
             // check source change
             ISequenceNode sourceElement = message.getSourceElement();
