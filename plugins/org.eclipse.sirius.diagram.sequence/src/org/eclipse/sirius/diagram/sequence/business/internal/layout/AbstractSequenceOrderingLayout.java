@@ -129,10 +129,10 @@ public abstract class AbstractSequenceOrderingLayout<S, T, U> extends AbstractSe
                 Set<U> graphicalPredecessors = new LinkedHashSet<>(graphicalOrdering.subList(0, graphicalIndex));
                 Set<U> flaggedPredecessors = new LinkedHashSet<>(flaggedEnds.subList(0, flaggedIndex));
 
-                // Intersection
+                // Intersection : keep the lazy initialization only for the flagged predecessors set.
                 Set<U> flaggedEndsSet = new LinkedHashSet<>(flaggedEnds);
-                semanticPredecessors = Sets.intersection(semanticPredecessors, flaggedEndsSet);
-                graphicalPredecessors = Sets.intersection(graphicalPredecessors, flaggedEndsSet);
+                semanticPredecessors = new LinkedHashSet<>(Sets.intersection(semanticPredecessors, flaggedEndsSet));
+                graphicalPredecessors = new LinkedHashSet<>(Sets.intersection(graphicalPredecessors, flaggedEndsSet));
                 flaggedPredecessors = Sets.intersection(flaggedPredecessors, semanticPredecessors);
 
                 Optional<U> lastGraphPredecessor = getLastGraphPredecessorIfEquals(semanticPredecessors, graphicalPredecessors);
@@ -182,21 +182,18 @@ public abstract class AbstractSequenceOrderingLayout<S, T, U> extends AbstractSe
         return result;
     }
 
-    private Optional<U> getLastFlaggedPredecessor(Set<U> semanticPredecessors, Set<U> flaggedPredecessors) {
+    private Optional<U> getLastFlaggedPredecessor(Set<U> semanticPredecessors, Iterable<U> flaggedPredecessors) {
         // Look for the last semantic predecessor with same index in
         // semantic and flagged lists.
         U potentialSafePred = null;
         Iterator<U> semanticPredecessorsIterator = semanticPredecessors.iterator();
         Iterator<U> flaggedPredecessorsIterator = flaggedPredecessors.iterator();
-        int i = 0;
-
-        while (flaggedPredecessorsIterator.hasNext() && semanticPredecessorsIterator.hasNext() && i < flaggedPredecessors.size()) {
+        while (flaggedPredecessorsIterator.hasNext() && semanticPredecessorsIterator.hasNext()) {
             U flaggedPot = flaggedPredecessorsIterator.next();
             U semPot = semanticPredecessorsIterator.next();
             if (semPot != null && semPot.equals(flaggedPot)) {
                 potentialSafePred = semPot;
             }
-            i++;
         }
         return Optional.ofNullable(potentialSafePred);
     }
