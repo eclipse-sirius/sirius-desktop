@@ -380,7 +380,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
 
     @Override
     public Option<Operand> getParentOperand() {
-        if (CacheHelper.isCacheEnabled()) {
+        if (CacheHelper.isStructuralCacheEnabled()) {
             Option<Operand> parentOperand = CacheHelper.getEventToParentOperandCache().get(this);
             if (parentOperand != null) {
                 return parentOperand;
@@ -410,7 +410,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
             parentOperand = targetParentOperand;
         }
 
-        if (CacheHelper.isCacheEnabled()) {
+        if (CacheHelper.isStructuralCacheEnabled()) {
             CacheHelper.getEventToParentOperandCache().put(this, parentOperand);
         }
 
@@ -483,9 +483,9 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
         if (isReflective()) {
             Lifeline lifeline = getLifeline().get();
             SequenceDiagram diagram = getDiagram();
-            EventEndsOrdering semanticOrdering = diagram.getSequenceDDiagram().getSemanticOrdering();
             List<EventEnd> msgEnds = EventEndHelper.findEndsFromSemanticOrdering(this);
             if (msgEnds.size() == 2) {
+                EventEndsOrdering semanticOrdering = diagram.getSequenceDDiagram().getSemanticOrdering();
                 int start = semanticOrdering.getEventEnds().indexOf(msgEnds.get(0));
                 int end = semanticOrdering.getEventEnds().indexOf(msgEnds.get(1));
                 if (Math.abs(start - end) > 1) {

@@ -34,9 +34,9 @@ import org.eclipse.sirius.ext.base.Option;
  */
 public final class CacheHelper {
 
-    private static boolean dragTrackercacheEnabled;
+    private static boolean structuralCacheEnabled;
 
-    private static boolean refreshLayoutcacheEnabled;
+    private static boolean verticalRangeCacheEnabled;
 
     private static Map<AbstractFrame, Collection<Lifeline>> coverageCache = new ConcurrentHashMap<>();
 
@@ -62,98 +62,64 @@ public final class CacheHelper {
     }
 
     /**
-     * Return if all caches types are enabled.
+     * Return true if the structural caches are enabled.
      * 
-     * @return if all caches are enabled.
+     * @return true if the structural caches are enabled.
      */
-    public static boolean isCacheEnabled() {
-        return dragTrackercacheEnabled || refreshLayoutcacheEnabled;
+    public static boolean isStructuralCacheEnabled() {
+        return structuralCacheEnabled;
     }
 
     /**
-     * Return if drag tracker cache is enabled.
-     * 
-     * @return if drag tracker cache is enabled.
-     */
-    public static boolean isDragTrackerCacheEnabled() {
-        return dragTrackercacheEnabled;
-    }
-
-    /**
-     * Return if refresh layout cache is enabled.
-     * 
-     * @return if refresh layout cache is enabled.
-     */
-    public static boolean isRefreshLayoutCacheEnabled() {
-        return refreshLayoutcacheEnabled;
-    }
-
-    /**
-     * Set if drag tracker cache is enabled.
+     * Set if the structural cache cache is enabled.
      * 
      * @param enabled
      *            boolean
      */
-    public static void setDragTrackerCacheEnabled(boolean enabled) {
-        CacheHelper.dragTrackercacheEnabled = enabled;
+    public static void setStructuralCacheEnabled(boolean enabled) {
+        CacheHelper.structuralCacheEnabled = enabled;
     }
 
     /**
-     * Set if refresh layout cache is enabled.
+     * Return true if the vertical range cache is enabled.
+     * 
+     * @return true if the vertical range cache is enabled.
+     */
+    public static boolean isVerticalRangeCacheEnabled() {
+        return verticalRangeCacheEnabled;
+    }
+
+    /**
+     * Set if vertical range is enabled.
      * 
      * @param enabled
      *            boolean
      */
-    public static void setRefreshLayoutCacheEnabled(boolean enabled) {
-        CacheHelper.refreshLayoutcacheEnabled = enabled;
-    }
-
-    /**
-     * Clear drag tracker caches.
-     */
-    public static void clearDragTrackerCaches() {
-        viewToRangeCache.clear();
-        clearRefreshLayoutCaches();
-    }
-
-    /**
-     * Clear refresh layout caches.
-     */
-    public static void clearRefreshLayoutCaches() {
-        coverageCache.clear();
-        subEventsCache.clear();
-        startCompoundMessageCache.clear();
-        endCompoundMessageCache.clear();
-        nodeEventToHierarchicalParentCache.clear();
-        eventToParentOperandCache.clear();
-        eventToParentEventCache.clear();
+    public static void setVerticalRangeCacheEnabled(boolean enabled) {
+        CacheHelper.verticalRangeCacheEnabled = enabled;
     }
 
     /**
      * Clear and disable all caches.
      */
     public static void clearCaches() {
-        CacheHelper.setDragTrackerCacheEnabled(false);
-        CacheHelper.setRefreshLayoutCacheEnabled(false);
-        CacheHelper.clearDragTrackerCaches();
+        // Structural caches
+        coverageCache.clear();
+        startCompoundMessageCache.clear();
+        endCompoundMessageCache.clear();
+        nodeEventToHierarchicalParentCache.clear();
+        clearRangeDependantCaches();
     }
 
     /**
-     * Init and enable all caches.
+     * Clear and disable range dependant caches.
      */
-    public static void initCaches() {
-        clearCaches();
-        CacheHelper.setDragTrackerCacheEnabled(true);
-        CacheHelper.setRefreshLayoutCacheEnabled(false);
-    }
-
-    /**
-     * Init and enable refresh layout caches.
-     */
-    public static void initRefreshLayoutCaches() {
-        clearCaches();
-        CacheHelper.setRefreshLayoutCacheEnabled(true);
-        CacheHelper.setDragTrackerCacheEnabled(false);
+    public static void clearRangeDependantCaches() {
+        // Range dependant cache
+        subEventsCache.clear();
+        eventToParentOperandCache.clear();
+        eventToParentEventCache.clear();
+        viewToRangeCache.clear();
     }
 
     /**
@@ -166,7 +132,7 @@ public final class CacheHelper {
     }
 
     /**
-     * get subEvents cache.
+     * Get subEvents cache.
      * 
      * @return the subEventsCache
      */
@@ -184,47 +150,48 @@ public final class CacheHelper {
     }
 
     /**
-     * get start message cache.
+     * Get start message cache.
      * 
-     * @return the message
+     * @return the cache
      */
     public static ConcurrentHashMap<ISequenceEvent, Message> getStartCompoundMessageCache() {
         return startCompoundMessageCache;
     }
 
     /**
-     * get end message cache.
+     * Get end message cache.
      * 
-     * @return the message
+     * @return the cache
      */
     public static ConcurrentHashMap<ISequenceEvent, Message> getEndCompoundMessageCache() {
         return endCompoundMessageCache;
     }
 
     /**
-     * get end message cache.
+     * Get hierarchical parent cache.
      * 
-     * @return the message
+     * @return the cache
      */
     public static ConcurrentHashMap<AbstractNodeEvent, ISequenceEvent> getAbstractNodeEventToHierarchicalParentCache() {
         return nodeEventToHierarchicalParentCache;
     }
 
     /**
-     * get end message cache.
+     * Get parent operand cache.
      * 
-     * @return the message
+     * @return the cache
      */
     public static ConcurrentHashMap<ISequenceEvent, Option<Operand>> getEventToParentOperandCache() {
         return eventToParentOperandCache;
     }
 
     /**
-     * get end message cache.
+     * Get parent event cache.
      * 
-     * @return the message
+     * @return the cache
      */
     public static ConcurrentHashMap<ISequenceEvent, ISequenceEvent> getEventToParentEventCache() {
         return eventToParentEventCache;
     }
+
 }

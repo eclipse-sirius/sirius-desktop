@@ -91,7 +91,7 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
      * @return the covered lifelines.
      */
     public Collection<Lifeline> computeCoveredLifelines() {
-        if (CacheHelper.isCacheEnabled()) {
+        if (CacheHelper.isStructuralCacheEnabled()) {
             Collection<Lifeline> coverage = CacheHelper.getCoverageCache().get(this);
             if (coverage != null) {
                 return new ArrayList<Lifeline>(coverage);
@@ -132,7 +132,7 @@ public abstract class AbstractFrame extends AbstractSequenceNode implements ISeq
 
         DslCommonPlugin.PROFILER.stopWork(COVERAGE);
 
-        if (CacheHelper.isCacheEnabled()) {
+        if (CacheHelper.isStructuralCacheEnabled()) {
             CacheHelper.getCoverageCache().put(this, coveredLifelines);
         }
 

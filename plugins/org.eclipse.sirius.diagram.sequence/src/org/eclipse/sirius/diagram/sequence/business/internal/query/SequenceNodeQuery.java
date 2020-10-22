@@ -60,7 +60,7 @@ public class SequenceNodeQuery {
         if (!(element instanceof DDiagramElement)) {
             result = null;
         } else {
-            if (CacheHelper.isDragTrackerCacheEnabled()) {
+            if (CacheHelper.isVerticalRangeCacheEnabled()) {
                 result = CacheHelper.getViewToRangeCache().get(node);
             }
             if (result == null) {
@@ -90,7 +90,7 @@ public class SequenceNodeQuery {
                 if (isShifted()) {
                     result = result.shifted(IBorderItemOffsets.DEFAULT_OFFSET.height);
                 }
-                if (CacheHelper.isDragTrackerCacheEnabled()) {
+                if (CacheHelper.isVerticalRangeCacheEnabled()) {
                     CacheHelper.getViewToRangeCache().put(node, result);
                 }
             }

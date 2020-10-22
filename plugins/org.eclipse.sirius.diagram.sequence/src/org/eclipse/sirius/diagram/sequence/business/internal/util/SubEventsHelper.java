@@ -97,7 +97,7 @@ public final class SubEventsHelper {
         List<ISequenceEvent> result = getValidSubEvents();
         Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
 
-        if (CacheHelper.isCacheEnabled()) {
+        if (CacheHelper.isStructuralCacheEnabled()) {
             CacheHelper.getSubEventsCache().put(parentEvent, new ArrayList<>(result));
         }
         return result;

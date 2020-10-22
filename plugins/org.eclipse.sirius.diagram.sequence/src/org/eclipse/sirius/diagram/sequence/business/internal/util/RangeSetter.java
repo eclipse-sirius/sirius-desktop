@@ -67,9 +67,8 @@ public final class RangeSetter {
      *            the vertical range of the given sequence event.
      */
     public static void setVerticalRange(AbstractNodeEvent self, Range range) {
-        if (CacheHelper.isDragTrackerCacheEnabled()) {
-            CacheHelper.clearCaches();
-        }
+        CacheHelper.clearRangeDependantCaches();
+
         Range oldRange = self.getVerticalRange();
         int deltaY = range.getLowerBound() - oldRange.getLowerBound();
         int size = range.width();
@@ -87,9 +86,8 @@ public final class RangeSetter {
      *            the vertical range of the given sequence event.
      */
     public static void setVerticalRange(State self, Range range) {
-        if (CacheHelper.isDragTrackerCacheEnabled()) {
-            CacheHelper.clearCaches();
-        }
+        CacheHelper.clearRangeDependantCaches();
+
         Range oldRange = self.getVerticalRange();
         int deltaY = range.getLowerBound() - oldRange.getLowerBound();
         int size = range.width();
@@ -107,9 +105,8 @@ public final class RangeSetter {
      *            the vertical range of the given sequence event.
      */
     public static void setVerticalRange(InteractionUse self, Range range) {
-        if (CacheHelper.isDragTrackerCacheEnabled()) {
-            CacheHelper.clearCaches();
-        }
+        CacheHelper.clearRangeDependantCaches();
+
         Range oldRange = self.getVerticalRange();
         int deltaY = range.getLowerBound() - oldRange.getLowerBound();
         int size = range.width();
@@ -127,9 +124,8 @@ public final class RangeSetter {
      *            the vertical range of the given sequence event.
      */
     public static void setVerticalRange(CombinedFragment self, Range range) {
-        if (CacheHelper.isDragTrackerCacheEnabled()) {
-            CacheHelper.clearCaches();
-        }
+        CacheHelper.clearRangeDependantCaches();
+
         Range oldRange = self.getVerticalRange();
         int deltaY = range.getLowerBound() - oldRange.getLowerBound();
         int size = range.width();
@@ -147,9 +143,8 @@ public final class RangeSetter {
      *            the vertical range of the given sequence event.
      */
     public static void setVerticalRange(Operand self, Range range) {
-        if (CacheHelper.isDragTrackerCacheEnabled()) {
-            CacheHelper.clearCaches();
-        }
+        CacheHelper.clearRangeDependantCaches();
+
         Range oldRange = self.getVerticalRange();
         int deltaY = range.getLowerBound() - oldRange.getLowerBound();
         int size = range.width();
@@ -167,9 +162,7 @@ public final class RangeSetter {
      *            the vertical range of the given sequence event.
      */
     public static void setVerticalRange(Lifeline self, Range range) {
-        if (CacheHelper.isDragTrackerCacheEnabled()) {
-            CacheHelper.clearCaches();
-        }
+        CacheHelper.clearRangeDependantCaches();
 
         InstanceRole instanceRole = self.getInstanceRole();
         Rectangle irepBounds = instanceRole.getBounds();
@@ -266,9 +259,7 @@ public final class RangeSetter {
      *            the vertical range of the given sequence event.
      */
     public static void setVerticalRange(Message self, Range range) {
-        if (CacheHelper.isDragTrackerCacheEnabled()) {
-            CacheHelper.clearCaches();
-        }
+        CacheHelper.clearRangeDependantCaches();
 
         RangeSetter.handlePotentialLostEnd(self.getSourceElement(), range);
         RangeSetter.handlePotentialLostEnd(self.getTargetElement(), range);
