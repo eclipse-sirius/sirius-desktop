@@ -7,10 +7,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.layout;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
@@ -19,18 +21,26 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gef.ConnectionEditPart;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.rulers.RulerProvider;
+import org.eclipse.gef.tools.ToolUtilities;
 import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.internal.properties.WorkspaceViewerProperties;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
+import org.eclipse.gmf.runtime.diagram.ui.render.util.DiagramImageUtils;
 import org.eclipse.gmf.runtime.diagram.ui.requests.ArrangeRequest;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
+import org.eclipse.gmf.runtime.draw2d.ui.internal.figures.AnimatableScrollPane;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
@@ -47,11 +57,13 @@ import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferences
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.operation.ResetOriginChangeModelOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
@@ -63,6 +75,9 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.ui.IEditorPart;
+
+import com.google.common.collect.Iterables;
+import com.google.common.collect.Lists;
 
 /**
  * Tests to realize some verification of arrange result with basic ELK layouts.
@@ -284,10 +299,10 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         assertTrue("The node for \"att1\" should be a AbstractDiagramBorderNodeEditPart but was a " + portEditPart.getClass().getSimpleName(),
                 portEditPart instanceof AbstractDiagramBorderNodeEditPart);
 
-        Rectangle borderNodeBounds = portEditPart.getFigure().getBounds();
-
         // Launch an arrange all
         arrangeAll((DiagramEditor) editorPart);
+
+        Rectangle borderNodeBounds = portEditPart.getFigure().getBounds().getCopy();
 
         // Check the label location
         boolean labelFound = false;
@@ -356,8 +371,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         Dimension listSize = editPart.getFigure().getSize();
 
         assertTrue("The height of the list should be at least bigger that thrice the size of a list item + 20 pixels for the title. Expected more than " + (20 + (3 * listItemSize.height()))
-                + " but was "
-                + listSize.height(), listSize.height() > (20 + (3 * listItemSize.height())));
+                + " but was " + listSize.height(), listSize.height() > (20 + (3 * listItemSize.height())));
     }
 
     /**
@@ -608,6 +622,182 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         assertEquals("The x GMF coordinate of the the border node of p2 is wrong.", -p2Delta, gmfLocation2.getX());
     }
 
+    /**
+     * Makes sure that the result of an arrange all respect the following rules:
+     * <UL>
+     * <LI>The top left corner of the bounding box is {20, 20}</LI>
+     * <LI>There is no scrollbar on all containers</LI>
+     * <LI>All the containers's contents correctly layouted</LI>
+     * <UL>
+     */
+    public void testArrangeAllResult() {
+        openDiagram("diagramWithContainer");
+
+        // Launch an arrange all
+        arrangeAll((DiagramEditor) editorPart);
+
+        // Assert that the bounding box coordinates of all elements are {20, 20}
+        // Compute primary edit parts (first level edit parts of the container)
+        List<?> primaryEditParts = getPrimaryEditParts(editorPart.getDiagramEditPart());
+        List<IGraphicalEditPart> primaryGraphicalEditParts = Lists.newArrayList(Iterables.filter(primaryEditParts, IGraphicalEditPart.class));
+        Rectangle boundingbox = DiagramImageUtils.calculateImageRectangle(primaryGraphicalEditParts, 0, new Dimension(0, 0));
+        assertEquals("Wrong x coordinate for the bounding box of all diagram elements.", ResetOriginChangeModelOperation.MARGIN, boundingbox.x());
+        assertEquals("Wrong y coordinate for the bounding box of all diagram elements.", ResetOriginChangeModelOperation.MARGIN, boundingbox.y());
+
+        // Assert that there is no scroll bar on all containers
+        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p1"));
+        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p2"));
+        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p3"));
+
+        // Assert that content of all containers is "correctly layouted"
+        assertAlignCentered(50, "Class1", "Class2", "Class3", "Class4", "p1", "p2", "p3");
+        assertAlignCentered(50, "Class1_1", "Class1_2");
+        assertAlignCentered(50, "p2_2", "Class2_1", "Class2_2", "Class2_3");
+        assertAlignCentered(50, "Class3_1", "Class3_2", "Class3_3", "Class3_4");
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection on one container respect the following rules:
+     * <UL>
+     * <LI>No scroll bar in the container (container resized)</LI>
+     * <LI>Container is not moved</LI>
+     * <LI>Container's content is correctly layouted</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultOnOneContainer() {
+        openDiagram("diagramWithContainer");
+
+        IGraphicalEditPart editPart = getEditPart("p1");
+        Point locationOfP1BeforeLayout = editPart.getFigure().getBounds().getTopLeft();
+
+        // Launch an arrange selection
+        arrangeSelection(editPart);
+
+        // Assert that there is no scroll bar on p1
+        assertNoVisibleScrollBar((IDiagramContainerEditPart) editPart);
+
+        // Assert that the location of the container is the same before and after the layout
+        assertEquals("The location of the container should be the same before and after the layout.", locationOfP1BeforeLayout, editPart.getFigure().getBounds().getTopLeft());
+
+        // Assert content is layouted
+        assertAlignCentered(50, "Class1_1", "Class1_2");
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection on one container respect the following rules:
+     * <UL>
+     * <LI>No scroll bar in the container (container resized)</LI>
+     * <LI>Container is not moved</LI>
+     * <LI>Container's content is correctly layouted</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultOnOneContainerWithBorderNode() {
+        openDiagram("diagramWithContainer");
+
+        IGraphicalEditPart editPart = getEditPart("p4");
+        Point locationOfP4BeforeLayout = editPart.getFigure().getBounds().getTopLeft();
+
+        // Launch an arrange selection
+        arrangeSelection(editPart);
+
+        // Assert that there is no scroll bar on p1
+        assertNoVisibleScrollBar((IDiagramContainerEditPart) editPart);
+
+        // Assert that the location of the container is the same before and after the layout
+        assertEquals("The location of the container should be the same before and after the layout.", locationOfP4BeforeLayout, editPart.getFigure().getBounds().getTopLeft());
+
+        // Assert content is layouted
+        assertAlignCentered(50, "Class4_1", "Class4_2");
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection on two containers respect the following rules:
+     * <UL>
+     * <LI>The top-left corner of bounding box of selected elements remains the same</LI>
+     * <LI>Selected elements are layouted according to each others (but by ignoring other not selected elements,
+     * potential overlap with these elements)</LI>
+     * <LI>The content of the selected container is correctly layouted</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultOnTwoContainers() {
+        openDiagram("diagramWithContainer");
+
+        IGraphicalEditPart p1EditPart = getEditPart("p1");
+        IGraphicalEditPart p3EditPart = getEditPart("p3");
+        Point topLeftCornerBeforeLayout = getTopLeftCorner(p1EditPart, p3EditPart);
+
+        // Launch an arrange selection
+        arrangeSelection(p1EditPart, p3EditPart);
+
+        // Assert that the top-left corner of bounding box remains the same
+        assertEquals("The top-left corner of the bounding box of layouted elements should remain the same.", topLeftCornerBeforeLayout, getTopLeftCorner(p1EditPart, p3EditPart));
+
+        // Assert that p1 and p3 is layouted according to each other
+        assertAlignCentered(50, "p1", "p3");
+
+        // Assert that content of all containers is "correctly layouted"
+        assertAlignCentered(50, "Class1_1", "Class1_2");
+        assertAlignCentered(50, "Class3_1", "Class3_2", "Class3_3", "Class3_4");
+
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection of a container and some of its children respect the following
+     * rules:
+     * <UL>
+     * <LI>Same rules of arrange selection on only the container</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultOnOneContainerAndSomeOfItsChildren() {
+        openDiagram("diagramWithContainer");
+
+        IGraphicalEditPart p2EditPart = getEditPart("p2");
+        Point locationOfP2BeforeLayout = p2EditPart.getFigure().getBounds().getTopLeft();
+        IGraphicalEditPart class21EditPart = getEditPart("Class2_1");
+        IGraphicalEditPart class23EditPart = getEditPart("Class2_3");
+
+        // Launch an arrange selection
+        arrangeSelection(p2EditPart, class21EditPart, class23EditPart);
+
+        // Assert that there is no scroll bar on p2
+        assertNoVisibleScrollBar((IDiagramContainerEditPart) p2EditPart);
+
+        // Assert that the location of the container is the same before and after the layout
+        assertEquals("The location of the container should be the same before and after the layout.", locationOfP2BeforeLayout, p2EditPart.getFigure().getBounds().getTopLeft());
+
+        // Assert content is layouted
+        assertAlignCentered(50, "p2_2", "Class2_1", "Class2_2", "Class2_3");
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection of a container and some children of other container respect
+     * the following rules:
+     * <UL>
+     * <LI>No rules: No layout is perform as this kind of arrange selection is forbidden (see comment in method
+     * org.eclipse.gmf.runtime.diagram.ui.actions.internal.ArrangeAction.getTargetEditPartForArrangeSelection(List)).</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultOnAContainerAndSomeChildrenOfOtherConainer() {
+        openDiagram("diagramWithContainer");
+
+        IGraphicalEditPart p1EditPart = getEditPart("p1");
+        IGraphicalEditPart class22EditPart = getEditPart("Class2_2");
+        IGraphicalEditPart class21EditPart = getEditPart("Class2_1");
+
+        // Keep the figures bounds after the arrange all without pinned elements.
+        Map<DNode, Rectangle> DNodes2Bounds = computeNodesBounds(diagram);
+
+        // Launch an arrange selection
+        arrangeSelection(p1EditPart, class22EditPart, class21EditPart);
+
+        // Check that the layout is the same (because arrange selection on element not in the same parent has no
+        // result).
+        Map<DNode, Rectangle> afterDNodes2Bounds = computeNodesBounds(diagram);
+        afterDNodes2Bounds.forEach((dNode, rect) -> {
+            assertEquals("The layout result should not change after an arrange selection of elements without parent link.", DNodes2Bounds.get(dNode), rect);
+        });
+    }
+
     protected void openDiagram(String diagramName) {
         diagram = (DDiagram) getRepresentationsByName(diagramName).toArray()[0];
         editorPart = (IDiagramWorkbenchPart) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
@@ -707,5 +897,126 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         arrangeRequest.setPartsToArrange(Collections.singletonList(editorPart));
         editorPart.getDiagramEditPart().performRequest(arrangeRequest);
         TestsUtil.synchronizationWithUIThread();
+    }
+
+    private void arrangeSelection(final IGraphicalEditPart... editPartsToSelect) {
+        arrangeSelection(Arrays.asList(editPartsToSelect));
+    }
+
+    private void arrangeSelection(List<IGraphicalEditPart> editPartsToSelect) {
+        ArrangeRequest arrangeRequest = new ArrangeRequest(ActionIds.ACTION_ARRANGE_SELECTION);
+        // Filter the list as it is done in
+        // org.eclipse.gmf.runtime.diagram.ui.actions.internal.ArrangeAction.createOperationSet()
+        List<IGraphicalEditPart> realEditPartsToSelect = ToolUtilities.getSelectionWithoutDependants(editPartsToSelect);
+        arrangeRequest.setPartsToArrange(realEditPartsToSelect);
+        // Validate that there is a common parent (as in
+        // org.eclipse.gmf.runtime.diagram.ui.actions.internal.ArrangeAction.getTargetEditPartForArrangeSelection(List)).
+        boolean validated = true;
+        EditPart parentEP = getSelectionParent(realEditPartsToSelect);
+        for (int i = 1; i < realEditPartsToSelect.size(); i++) {
+            EditPart part = (EditPart) realEditPartsToSelect.get(i);
+            if (part instanceof ConnectionEditPart) {
+                continue;
+            }
+            // if there is no common parent, then Arrange Selected isn't
+            // supported.
+            if (part.getParent() != parentEP) {
+                validated = false;
+            }
+        }
+        if (validated) {
+            editorPart.getDiagramEditPart().performRequest(arrangeRequest);
+            TestsUtil.synchronizationWithUIThread();
+        }
+    }
+
+    /**
+     * Copy of org.eclipse.gmf.runtime.diagram.ui.actions.internal.ArrangeAction.getSelectionParent(List).<BR/>
+     * getSelectionParent Utility to return the logical parent of the selection list
+     * 
+     * @param editparts
+     *            List to parse for a common parent.
+     * @return EditPart that is the parent or null if a common parent doesn't exist.
+     */
+    private EditPart getSelectionParent(List editparts) {
+        ListIterator li = editparts.listIterator();
+        while (li.hasNext()) {
+            Object obj = li.next();
+            if (!(obj instanceof ConnectionEditPart) && obj instanceof EditPart) {
+                return ((EditPart) obj).getParent();
+            }
+        }
+        return null;
+    }
+
+    private IGraphicalEditPart getEditPart(String editorPartName) {
+        Optional<DDiagramElement> dde = diagram.getDiagramElements().stream().filter(ode -> ode.getName().equals(editorPartName)).findFirst();
+        assertTrue("The diagram should have a node named \"" + editorPartName + "\".", dde.isPresent());
+        return getEditPart(dde.get());
+    }
+
+    /**
+     * Gets the primary editparts on this container, that is, the top-level shapes and connectors.
+     * 
+     * @param containerEditPart
+     *            the concerned container
+     * 
+     * @return List of primary edit parts. If there are none then it returns a Collections.EMPTY_LIST, which is
+     *         immutable
+     */
+    private List<?> getPrimaryEditParts(IGraphicalEditPart containerEditPart) {
+        List<?> result = null;
+        if (containerEditPart instanceof DiagramEditPart) {
+            result = ((DiagramEditPart) containerEditPart).getPrimaryEditParts();
+        } else {
+            for (Object child : containerEditPart.getChildren()) {
+                if (child instanceof AbstractDNodeContainerCompartmentEditPart) {
+                    result = ((AbstractDNodeContainerCompartmentEditPart) child).getChildren();
+                }
+            }
+        }
+        if (result == null) {
+            result = Collections.EMPTY_LIST;
+        }
+        return result;
+    }
+
+    private void assertNoVisibleScrollBar(IDiagramContainerEditPart part) {
+        IFigure hScrollBar = null;
+        IFigure vScrollBar = null;
+        Object child = part.getChildren().get(1);
+        if (child instanceof AbstractDNodeContainerCompartmentEditPart) {
+            ResizableCompartmentFigure compartmentFigure = (ResizableCompartmentFigure) ((IGraphicalEditPart) child).getFigure();
+            hScrollBar = ((AnimatableScrollPane) compartmentFigure.getScrollPane()).basicGetHorizontalScrollBar();
+            vScrollBar = ((AnimatableScrollPane) compartmentFigure.getScrollPane()).basicGetVerticalScrollBar();
+        }
+        boolean hScrollBarVisible = hScrollBar != null && hScrollBar.isVisible();
+        boolean vScrollBarVisible = vScrollBar != null && vScrollBar.isVisible();
+        assertFalse("No scrollbar should be visible for this container (hScrollBar:" + hScrollBarVisible + ", vScrollBar:" + vScrollBarVisible + ").", hScrollBarVisible || vScrollBarVisible);
+    }
+
+    private void assertAlignCentered(int verticalSpace, String... names) {
+        String previousName = "";
+        int previousCenter = 0;
+        int previousRight = 0;
+        for (String name : names) {
+            IGraphicalEditPart editPart = getEditPart(name);
+            Rectangle bounds = editPart.getFigure().getBounds();
+            if (!previousName.isEmpty()) {
+                Point leftPoint = bounds.getLeft();
+                int currentCenter = leftPoint.y();
+                assertEquals("\"" + previousName + "\" is not centered aligned with \"" + name + "\".", previousCenter, currentCenter);
+                previousCenter = currentCenter;
+                assertEquals("\"" + name + "\" should be " + verticalSpace + " after \"" + previousName + "\".", previousRight + verticalSpace, leftPoint.x());
+                previousRight = bounds.getRight().x();
+            }
+        }
+    }
+
+    private Point getTopLeftCorner(IGraphicalEditPart editPartA, IGraphicalEditPart editPartB) {
+        Point locationOfA = editPartA.getFigure().getBounds().getTopLeft();
+        Point locationOfB = editPartB.getFigure().getBounds().getTopLeft();
+        Point topLeftCorner = new Point(Math.min(locationOfA.x(), locationOfB.x()), Math.min(locationOfA.y(), locationOfB.y()));
+        return topLeftCorner;
     }
 }

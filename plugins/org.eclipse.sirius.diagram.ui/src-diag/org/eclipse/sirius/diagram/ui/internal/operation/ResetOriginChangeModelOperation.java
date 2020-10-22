@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2014, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -53,10 +53,12 @@ import com.google.common.collect.Lists;
  */
 public class ResetOriginChangeModelOperation extends AbstractModelChangeOperation<Void> {
 
+    /** The margin on top and left around the bounding box of all figures. */
+    public static final int MARGIN = 20;
+
     /** The diagram or a container edit part. */
     private GraphicalEditPart containerEditPart;
 
-    private int MARGIN = 20;
 
     private List<Connection> maskedConnections = new ArrayList<Connection>();
 
