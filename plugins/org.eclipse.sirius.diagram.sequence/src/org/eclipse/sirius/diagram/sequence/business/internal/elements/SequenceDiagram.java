@@ -10,6 +10,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -136,6 +137,8 @@ public class SequenceDiagram extends AbstractSequenceElement {
     private LinkedHashSet<Operand> allOrderedOperandsCache;
 
     private LinkedHashSet<State> allOrderedStatesCache;
+
+    private List<ISequenceEvent> allDelimitedEventsCache;
 
     /**
      * Constructor.
@@ -700,15 +703,32 @@ public class SequenceDiagram extends AbstractSequenceElement {
      * @return all sequence events on the given diagram.
      */
     public Iterable<? extends ISequenceEvent> getAllDelimitedSequenceEvents() {
-        Function<View, ? extends ISequenceEvent> getISE = new Function<View, ISequenceEvent>() {
-            @Override
-            public ISequenceEvent apply(View from) {
-                Option<ISequenceEvent> ise = ISequenceElementAccessor.getISequenceEvent(from);
-                assert ise.some() : Messages.SequenceDiagram_InternalError;
-                return ise.get();
+        Iterable<? extends ISequenceEvent> allDelimitedEvents = null;
+        if (useCache) {
+            // Initialize from cache
+            allDelimitedEvents = allDelimitedEventsCache;
+        }
+
+        if (allDelimitedEvents == null) {
+            Function<View, ? extends ISequenceEvent> getISE = new Function<View, ISequenceEvent>() {
+                @Override
+                public ISequenceEvent apply(View from) {
+                    Option<ISequenceEvent> ise = ISequenceElementAccessor.getISequenceEvent(from);
+                    assert ise.some() : Messages.SequenceDiagram_InternalError;
+                    return ise.get();
+                }
+            };
+            allDelimitedEvents = Iterables.transform(Iterables.filter(Iterables.filter(AllContents.of(getNotationDiagram()), View.class), ISequenceEvent.ISEQUENCEEVENT_NOTATION_PREDICATE), getISE);
+            if (useCache) {
+                // Store the result
+                List<ISequenceEvent> result = new ArrayList<>();
+                Iterables.addAll(result, allDelimitedEvents);
+
+                allDelimitedEventsCache = result;
+                allDelimitedEvents = allDelimitedEventsCache;
             }
-        };
-        return Iterables.transform(Iterables.filter(Iterables.filter(AllContents.of(getNotationDiagram()), View.class), ISequenceEvent.ISEQUENCEEVENT_NOTATION_PREDICATE), getISE);
+        }
+        return allDelimitedEvents;
     }
 
     /**
@@ -769,6 +789,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         this.allObservationPointsCache = null;
         this.allOperandsCache = null;
         this.allStatesCache = null;
+        this.allDelimitedEventsCache = null;
         clearOrderedCaches();
     }
 
