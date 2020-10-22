@@ -106,7 +106,7 @@ public class SequenceMessageViewQuery {
      */
     public Range getVerticalRange() {
         Range result = null;
-        if (CacheHelper.isDragTrackerCacheEnabled()) {
+        if (CacheHelper.isVerticalRangeCacheEnabled()) {
             result = CacheHelper.getViewToRangeCache().get(edge);
         }
         if (result == null) {
@@ -131,7 +131,7 @@ public class SequenceMessageViewQuery {
                     result = new Range(Math.min(firstY, lastY), Math.max(firstY, lastY));
                 }
             }
-            if (CacheHelper.isDragTrackerCacheEnabled()) {
+            if (CacheHelper.isVerticalRangeCacheEnabled()) {
                 CacheHelper.getViewToRangeCache().put(edge, result);
             }
         }
@@ -261,10 +261,10 @@ public class SequenceMessageViewQuery {
         View source = edge.getSource();
         Range sourceRange = new Range(0, 0);
         if (source instanceof Node) {
-            boolean cacheEnabled = CacheHelper.isDragTrackerCacheEnabled();
-            CacheHelper.setDragTrackerCacheEnabled(false);
+            boolean cacheEnabled = CacheHelper.isVerticalRangeCacheEnabled();
+            CacheHelper.setVerticalRangeCacheEnabled(false);
             sourceRange = new SequenceNodeQuery((Node) source).getVerticalRange();
-            CacheHelper.setDragTrackerCacheEnabled(cacheEnabled);
+            CacheHelper.setVerticalRangeCacheEnabled(cacheEnabled);
         }
         return getAnchorAbsolutePosition(srcAnchor, sourceRange);
         // could not return 0 : other utility method take 0,5 precision point
@@ -285,10 +285,10 @@ public class SequenceMessageViewQuery {
         }
         View target = edge.getTarget();
         if (target instanceof Node) {
-            boolean cacheEnabled = CacheHelper.isDragTrackerCacheEnabled();
-            CacheHelper.setDragTrackerCacheEnabled(false);
+            boolean cacheEnabled = CacheHelper.isVerticalRangeCacheEnabled();
+            CacheHelper.setVerticalRangeCacheEnabled(false);
             Range targetRange = new SequenceNodeQuery((Node) target).getVerticalRange();
-            CacheHelper.setDragTrackerCacheEnabled(cacheEnabled);
+            CacheHelper.setVerticalRangeCacheEnabled(cacheEnabled);
 
             return getAnchorAbsolutePosition(tgtAnchor, targetRange);
         }
