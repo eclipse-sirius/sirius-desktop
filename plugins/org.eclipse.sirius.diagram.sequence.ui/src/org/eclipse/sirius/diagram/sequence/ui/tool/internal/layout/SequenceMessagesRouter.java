@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -82,24 +82,26 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
     /**
      * {@inheritDoc}
      */
+    @Override
     public void route(Connection conn) {
         if (!isValidConnection(conn)) {
             return;
         }
-
-        List<Bendpoint> bendpoints = getRefreshedConstraint(conn);
 
         IGraphicalEditPart part = null;
         if (conn instanceof AbstractDiagramEdgeEditPart.ViewEdgeFigure) {
             part = ((AbstractDiagramEdgeEditPart.ViewEdgeFigure) conn).getEditPart();
         }
 
+        boolean isReflexiveMessage = isReflectiveMessage(part);
+        List<Bendpoint> bendpoints = getRefreshedConstraint(conn, isReflexiveMessage);
+
         Point sourceRef = getReferencePoint(conn, true, bendpoints);
         Point targetRef = getReferencePoint(conn, false, bendpoints);
 
         boolean leftToRight = conn.getSourceAnchor().getReferencePoint().x < conn.getTargetAnchor().getReferencePoint().x;
         boolean msgToSelf = sourceRef.x == targetRef.x && sourceRef.y != targetRef.y || bendpoints.size() >= 4;
-        msgToSelf = msgToSelf || isReflectiveMessage(part);
+        msgToSelf = msgToSelf || isReflexiveMessage;
 
         Rectangle sourceOwnerBounds = getAnchorOwnerBounds(conn.getSourceAnchor());
         Rectangle targetOwnerBounds = getAnchorOwnerBounds(conn.getTargetAnchor());
@@ -120,7 +122,7 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
             int hGap = LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_HORIZONTAL_GAP;
             if (part instanceof SequenceMessageEditPart) {
                 Message msg = (Message) ((SequenceMessageEditPart) part).getISequenceEvent();
-                if (msg.isReflective()) {
+                if (isReflexiveMessage) {
                     hGap = msg.getReflexiveMessageWidth();
                 }
             }
@@ -197,7 +199,7 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
         return false;
     }
 
-    private List<Bendpoint> getRefreshedConstraint(Connection conn) {
+    private List<Bendpoint> getRefreshedConstraint(Connection conn, boolean isReflectiveMessage) {
         boolean noBendpointsAtbeginning = false;
         @SuppressWarnings("unchecked")
         List<Bendpoint> bendpoints = (List<Bendpoint>) getConstraint(conn);
@@ -205,7 +207,7 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
             noBendpointsAtbeginning = true;
             bendpoints = Collections.emptyList();
         }
-        refreshBendpoints(bendpoints, conn);
+        refreshBendpoints(bendpoints, conn, isReflectiveMessage);
 
         if (!(noBendpointsAtbeginning && Collections.emptyList().equals(bendpoints))) {
             // There is no need to set constraint if there is no bendpoints at
@@ -223,14 +225,15 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
         return anchor != null && anchor.getOwner() != null;
     }
 
-    private void refreshBendpoints(List<Bendpoint> bendpoints, Connection conn) {
+    private void refreshBendpoints(List<Bendpoint> bendpoints, Connection conn, boolean isReflexiveMessage) {
 
         IGraphicalEditPart part = null;
         if (conn instanceof AbstractDiagramEdgeEditPart.ViewEdgeFigure) {
             part = ((AbstractDiagramEdgeEditPart.ViewEdgeFigure) conn).getEditPart();
         }
+
         if (bendpoints.size() > 2) {
-            if (isReflectiveMessage(part)) {
+            if (isReflexiveMessage) {
                 if (bendpoints.size() > 4) {
                     // The user want to resize a message to self by pulling an
                     // edge (between bendpoints)
@@ -243,11 +246,9 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
                 }
             } else {
                 /*
-                 * The only case where we have more than two bendpoints is when
-                 * the user has dragged a connection, which created a temporary
-                 * intermediate bendpoint. We use that new point as the
-                 * reference Y coordinate for the start and end points, but
-                 * remove the intermediate bendpoint itself.
+                 * The only case where we have more than two bendpoints is when the user has dragged a connection, which
+                 * created a temporary intermediate bendpoint. We use that new point as the reference Y coordinate for
+                 * the start and end points, but remove the intermediate bendpoint itself.
                  */
                 Bendpoint start = bendpoints.get(0);
                 Bendpoint end = bendpoints.get(bendpoints.size() - 1);
@@ -259,9 +260,8 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
                 Bendpoint newStart = new AbsoluteBendpoint(A_POINT);
                 bendpoints.add(newStart);
                 /*
-                 * I don't understand exactly why, but the intermediate point
-                 * must be kept here, otherwise the edges can only be moved of a
-                 * very small vertical distance at a time.
+                 * I don't understand exactly why, but the intermediate point must be kept here, otherwise the edges can
+                 * only be moved of a very small vertical distance at a time.
                  */
                 bendpoints.add(moveRef);
                 A_POINT.setLocation(end.getLocation());
@@ -277,7 +277,7 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
             Bendpoint newStart = new AbsoluteBendpoint(start.getLocation());
             Bendpoint newEnd = new AbsoluteBendpoint(end.getLocation());
 
-            if (isReflectiveMessage(part)) {
+            if (isReflexiveMessage) {
                 bendpoints.addAll(createMessageToSelf(start, end, (SequenceMessageEditPart) part));
             } else {
                 if (part instanceof SequenceMessageEditPart
@@ -297,10 +297,9 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
     }
 
     /**
-     * Having a connection with 5 bendpoints means that we are working on a
-     * message to self. We will compare the positions of the bendpoints with the
-     * previous ones. This way, we will know if the user has pulled a bendpoint
-     * and will move the other closest bendpoints to keep the layout.
+     * Having a connection with 5 bendpoints means that we are working on a message to self. We will compare the
+     * positions of the bendpoints with the previous ones. This way, we will know if the user has pulled a bendpoint and
+     * will move the other closest bendpoints to keep the layout.
      * 
      * @param bendpoints
      *            the list of bendpoints on a connection
@@ -352,10 +351,9 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
     }
 
     /**
-     * Having a connection with 5 bendpoints means that we are working on a
-     * message to self that the user is resizing by pulling an edge between 2
-     * bendpoints. In that case we will align the bendpoints just before and
-     * after to keep the same layout.
+     * Having a connection with 5 bendpoints means that we are working on a message to self that the user is resizing by
+     * pulling an edge between 2 bendpoints. In that case we will align the bendpoints just before and after to keep the
+     * same layout.
      * 
      * @param bendpoints
      *            the list of bendpoints on a connection
@@ -401,15 +399,14 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
     }
 
     /**
-     * Creates a message to self from start to end by adding 2 bendpoints
-     * shifted on the right by LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_GAP.
+     * Creates a message to self from start to end by adding 2 bendpoints shifted on the right by
+     * LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_GAP.
      * 
      * @param start
      *            the message to self start position
      * @param end
      *            the message to self end position
-     * @return the list of bendpoints to create a message to self from start to
-     *         end
+     * @return the list of bendpoints to create a message to self from start to end
      */
     private List<Bendpoint> createMessageToSelf(Bendpoint start, Bendpoint end, SequenceMessageEditPart part) {
         ArrayList<Bendpoint> messageToSelfBendpoint = new ArrayList<Bendpoint>();
