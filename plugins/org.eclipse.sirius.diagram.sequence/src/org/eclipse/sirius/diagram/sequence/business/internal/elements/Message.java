@@ -57,6 +57,7 @@ import com.google.common.collect.Ordering;
  * @author mporhel
  */
 public class Message extends AbstractSequenceElement implements ISequenceEvent {
+
     /**
      * Predicate to filter States, Frames and Operand from possible new source or target of a message reconnection.
      */
@@ -128,6 +129,8 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
             return AbstractSequenceElement.isSequenceDiagramElement(input, DescriptionPackage.eINSTANCE.getMessageMapping());
         }
     }
+
+    private Option<Integer> reflexiveMessageWidth = Options.newNone();
 
     /**
      * .
@@ -206,6 +209,7 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
 
     @Override
     public void setVerticalRange(Range range) throws IllegalStateException {
+        reflexiveMessageWidth = Options.newNone();
         RangeSetter.setVerticalRange(this, range);
     }
 
@@ -427,11 +431,15 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
     }
 
     /**
-     * Get the surrounded reflexives message depth.
+     * Get the surrounded reflexive message depth.
      * 
-     * @return the surrounded reflexives message depth.
+     * @return the surrounded reflexive message depth.
      */
     public int getReflexiveMessageWidth() {
+        if (reflexiveMessageWidth.some()) {
+            return reflexiveMessageWidth.get();
+        }
+
         Collection<ISequenceEvent> events = getSurroundedSameLifelineEvents();
 
         int width = LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_HORIZONTAL_GAP;
@@ -441,9 +449,10 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
             Predicate<ISequenceEvent> toConsider = new Predicate<ISequenceEvent>() {
                 @Override
                 public boolean apply(ISequenceEvent input) {
-                    boolean toConsider = range.includes(input.getVerticalRange());
+                    Range inputRange = input.getVerticalRange();
+                    boolean toConsider = range.includes(inputRange);
                     if (input instanceof Message) {
-                        toConsider = toConsider && ((Message) input).isReflective();
+                        toConsider = toConsider && range.width() > 0 && ((Message) input).isReflective();
                     }
                     return toConsider;
                 }
@@ -452,11 +461,11 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
             List<ISequenceEvent> impactingEvents = Lists.newArrayList(Iterables.filter(events, toConsider));
             Collections.sort(impactingEvents, Ordering.natural().onResultOf(Functions.compose(RangeHelper.lowerBoundFunction(), ISequenceEvent.VERTICAL_RANGE)));
             int subMessagesMaxRight = 0;
-            for (Message msg : Iterables.filter(impactingEvents, Message.class)) {
-                int reflexiveMessageWidth = msg.getReflexiveMessageWidth();
-                int origin = msg.getSourceElement().getProperLogicalBounds().right();
-                origin = Math.max(origin, msg.getTargetElement().getProperLogicalBounds().right());
-                subMessagesMaxRight = Math.max(subMessagesMaxRight, origin + reflexiveMessageWidth);
+            for (Message impactingMsg : Iterables.filter(impactingEvents, Message.class)) {
+                int impactingMsgWidth = impactingMsg.getReflexiveMessageWidth();
+                int origin = impactingMsg.getSourceElement().getProperLogicalBounds().right();
+                origin = Math.max(origin, impactingMsg.getTargetElement().getProperLogicalBounds().right());
+                subMessagesMaxRight = Math.max(subMessagesMaxRight, origin + impactingMsgWidth);
             }
 
             int maxRight = 0;
@@ -470,6 +479,9 @@ public class Message extends AbstractSequenceElement implements ISequenceEvent {
             width = Math.max(width, maxRight - origin + LayoutConstants.MESSAGE_TO_SELF_HORIZONTAL_GAP);
             width = Math.max(width, subMessagesMaxRight - origin + LayoutConstants.MESSAGE_TO_SELF_HORIZONTAL_GAP);
         }
+
+        reflexiveMessageWidth = Options.newSome(width);
+
         return width;
     }
 
