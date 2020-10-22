@@ -75,7 +75,9 @@ public class RefreshLayoutCommand extends RecordingCommand {
         IPermissionAuthority permissionAuthority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(sequenceDDiagram);
         if (permissionAuthority != null && permissionAuthority.canEditInstance(sequenceDDiagram)) {
             sequenceDiagram.useCache(true);
-            CacheHelper.initRefreshLayoutCaches();
+            CacheHelper.clearCaches();
+            CacheHelper.setStructuralCacheEnabled(true);
+            CacheHelper.setVerticalRangeCacheEnabled(false);
             try {
                 /*
                  * Everything has been committed, so we should be in a stable state where it is safe to refresh both
@@ -121,6 +123,9 @@ public class RefreshLayoutCommand extends RecordingCommand {
             } finally {
                 sequenceDiagram.useCache(false);
                 sequenceDiagram.clearAllCaches();
+
+                CacheHelper.setStructuralCacheEnabled(false);
+                CacheHelper.setVerticalRangeCacheEnabled(false);
                 CacheHelper.clearCaches();
             }
         }

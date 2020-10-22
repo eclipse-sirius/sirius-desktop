@@ -103,7 +103,7 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNode implements 
 
     @Override
     public ISequenceEvent getParentEvent() {
-        if (CacheHelper.isCacheEnabled()) {
+        if (CacheHelper.isStructuralCacheEnabled()) {
             ISequenceEvent parentEvent = CacheHelper.getEventToParentEventCache().get(this);
             if (parentEvent != null) {
                 return parentEvent;
@@ -117,7 +117,7 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNode implements 
             parent = getParentOperand().get();
         }
 
-        if (CacheHelper.isCacheEnabled()) {
+        if (CacheHelper.isStructuralCacheEnabled()) {
             CacheHelper.getEventToParentEventCache().put(this, parent);
         }
         return parent;
@@ -154,7 +154,7 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNode implements 
      */
     @Override
     public Option<Operand> getParentOperand() {
-        if (CacheHelper.isCacheEnabled()) {
+        if (CacheHelper.isStructuralCacheEnabled()) {
             Option<Operand> parentOperand = CacheHelper.getEventToParentOperandCache().get(this);
             if (parentOperand != null) {
                 return parentOperand;
@@ -162,7 +162,7 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNode implements 
         }
 
         Option<Operand> parentOperand = new ParentOperandFinder(this).getParentOperand();
-        if (CacheHelper.isCacheEnabled()) {
+        if (CacheHelper.isStructuralCacheEnabled()) {
             CacheHelper.getEventToParentOperandCache().put(this, parentOperand);
         }
         return parentOperand;
@@ -240,7 +240,7 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNode implements 
      * @return the hierarchical parent event of this event, if any.
      */
     protected ISequenceEvent getHierarchicalParentEvent(String noFoundParentExceptionMessage) {
-        if (CacheHelper.isCacheEnabled()) {
+        if (CacheHelper.isStructuralCacheEnabled()) {
             ISequenceEvent hierarchicalParent = CacheHelper.getAbstractNodeEventToHierarchicalParentCache().get(this);
             if (hierarchicalParent != null) {
                 return hierarchicalParent;
@@ -252,7 +252,7 @@ public abstract class AbstractNodeEvent extends AbstractSequenceNode implements 
             View parentView = (View) viewContainer;
             Option<ISequenceEvent> parentElement = ISequenceElementAccessor.getISequenceEvent(parentView);
             if (parentElement.some()) {
-                if (CacheHelper.isCacheEnabled()) {
+                if (CacheHelper.isStructuralCacheEnabled()) {
                     CacheHelper.getAbstractNodeEventToHierarchicalParentCache().put(this, parentElement.get());
                 }
 
