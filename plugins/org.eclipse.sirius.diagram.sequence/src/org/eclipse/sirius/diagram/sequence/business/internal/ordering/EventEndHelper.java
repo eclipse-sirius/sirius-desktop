@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
+import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
 import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering;
@@ -170,6 +171,7 @@ public final class EventEndHelper {
                 EventEndsCache cache = new EventEndsCache();
                 semanticOrdering.eAdapters().add(cache);
                 eventEndsCache = Optional.of(cache);
+                ends = null;
             }
 
             if (ends == null) {
@@ -248,13 +250,24 @@ public final class EventEndHelper {
      * @return the ISequenceEvent corresponding to the given part
      */
     public static ISequenceEvent findISequenceEvent(SingleEventEnd end, SequenceDiagram sdep) {
+        if (CacheHelper.isStructuralCacheEnabled()) {
+            Optional<ISequenceEvent> ise = CacheHelper.getEventEndToISequenceEventCache().get(end);
+            if (ise != null) {
+                return ise.get();
+            }
+        }
+        ISequenceEvent foundEvent = null;
         for (ISequenceEvent ise : sdep.getAllDelimitedSequenceEvents()) {
             Option<EObject> semanticEvent = ise.getSemanticTargetElement();
             if (semanticEvent.some() && end.getSemanticEvent().equals(semanticEvent.get())) {
-                return ise;
+                foundEvent = ise;
+                break;
             }
         }
-        return null;
+        if (CacheHelper.isStructuralCacheEnabled()) {
+            CacheHelper.getEventEndToISequenceEventCache().put(end, Optional.ofNullable(foundEvent));
+        }
+        return foundEvent;
     }
 
     private static final class EventEndsCache extends AdapterImpl {

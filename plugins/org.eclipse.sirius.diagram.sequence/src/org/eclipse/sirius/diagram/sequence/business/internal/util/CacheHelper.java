@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.sequence.business.internal.util;
 
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.gmf.runtime.notation.View;
@@ -23,6 +24,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceE
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
+import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.ext.base.Option;
 
@@ -53,6 +55,8 @@ public final class CacheHelper {
     private static ConcurrentHashMap<ISequenceEvent, Option<Operand>> eventToParentOperandCache = new ConcurrentHashMap<>();
 
     private static ConcurrentHashMap<ISequenceEvent, ISequenceEvent> eventToParentEventCache = new ConcurrentHashMap<>();
+
+    private static ConcurrentHashMap<SingleEventEnd, Optional<ISequenceEvent>> eventEndToISequenceEventCache = new ConcurrentHashMap<>();
 
     /**
      * Avoid instantiation.
@@ -108,6 +112,7 @@ public final class CacheHelper {
         startCompoundMessageCache.clear();
         endCompoundMessageCache.clear();
         nodeEventToHierarchicalParentCache.clear();
+        eventEndToISequenceEventCache.clear();
         clearRangeDependantCaches();
     }
 
@@ -194,4 +199,12 @@ public final class CacheHelper {
         return eventToParentEventCache;
     }
 
+    /**
+     * Get end to sequence event cache.
+     * 
+     * @return the cache
+     */
+    public static ConcurrentHashMap<SingleEventEnd, Optional<ISequenceEvent>> getEventEndToISequenceEventCache() {
+        return eventEndToISequenceEventCache;
+    }
 }
