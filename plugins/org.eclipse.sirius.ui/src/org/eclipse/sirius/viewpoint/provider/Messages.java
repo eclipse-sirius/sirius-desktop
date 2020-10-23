@@ -161,9 +161,6 @@ public final class Messages {
     public static String AnalysisSelectorFilteredItemsSelectionDialog_helpMessage;
 
     @TranslatableMessage
-    public static String AnalysisSelectorFilteredItemsSelectionDialog_defaultHeader;
-
-    @TranslatableMessage
     public static String AnalysisSelectorFilteredItemsSelectionDialog_labelProviderDefault;
 
     @TranslatableMessage

@@ -28,7 +28,6 @@ import org.eclipse.jface.dialogs.IDialogSettings;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.widgets.WidgetFactory;
-import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.ui.tools.api.views.ViewHelper;
 import org.eclipse.sirius.ui.tools.internal.views.common.SessionLabelProvider;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -42,7 +41,6 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
-import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.IMemento;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.dialogs.FilteredItemsSelectionDialog;
@@ -66,6 +64,11 @@ public class AnalysisSelectorFilteredItemsSelectionDialog extends FilteredItemsS
      */
     protected String helpMessage = Messages.AnalysisSelectorFilteredItemsSelectionDialog_helpMessage;
 
+    /**
+     * The availability of the cancel button.
+     */
+    protected boolean allowCancel;
+
     private final DAnalysis bestCandidate;
 
     private final Collection<DAnalysis> allAnalysis;
@@ -73,10 +76,6 @@ public class AnalysisSelectorFilteredItemsSelectionDialog extends FilteredItemsS
     private final List<DAnalysis> bestCandidates;
 
     private final ILabelProvider labelProvider;
-
-    private Text messageText;
-
-    private final String defaultHeader = Messages.AnalysisSelectorFilteredItemsSelectionDialog_defaultHeader;
 
     /**
      * Default constructor.
@@ -89,8 +88,10 @@ public class AnalysisSelectorFilteredItemsSelectionDialog extends FilteredItemsS
      *            all the analysis available
      * @param bestCandidates
      *            list of best candidates
+     * @param allowCancel
+     *            if true a cancel button is available. If the dialog is cancelled, a null DAnalysis is set as a result.
      */
-    public AnalysisSelectorFilteredItemsSelectionDialog(Shell shell, DAnalysis bestCandidate, Collection<DAnalysis> allAnalysis, List<DAnalysis> bestCandidates) {
+    public AnalysisSelectorFilteredItemsSelectionDialog(Shell shell, DAnalysis bestCandidate, Collection<DAnalysis> allAnalysis, List<DAnalysis> bestCandidates, boolean allowCancel) {
         super(shell);
         this.bestCandidate = bestCandidate;
         this.allAnalysis = allAnalysis;
@@ -99,6 +100,8 @@ public class AnalysisSelectorFilteredItemsSelectionDialog extends FilteredItemsS
         this.setHelpAvailable(true);
         setDetailsLabelProvider(this.labelProvider);
         setListLabelProvider(this.labelProvider);
+        setInitialSelections(bestCandidate);
+        this.allowCancel = allowCancel;
     }
 
     protected ILabelProvider getLocationLabelProvider() {
@@ -118,28 +121,7 @@ public class AnalysisSelectorFilteredItemsSelectionDialog extends FilteredItemsS
                 }
                 return result;
             }
-
         };
-    }
-
-    /**
-     * Changes the header message.
-     * 
-     * @param text
-     *            new message to display in the header
-     */
-    public void setHeaderMessageText(String text) {
-        EclipseUIUtil.displaySyncExec(new Runnable() {
-            public void run() {
-                if (!PlatformUI.getWorkbench().isClosing() && messageText != null) {
-                    if (text.isEmpty()) {
-                        messageText.setText(defaultHeader);
-                    } else {
-                        messageText.setText(text);
-                    }
-                }
-            }
-        });
     }
 
     /**
@@ -152,14 +134,8 @@ public class AnalysisSelectorFilteredItemsSelectionDialog extends FilteredItemsS
         layout.marginWidth = 0;
         layout.verticalSpacing = 0;
         Composite composite = WidgetFactory.composite(0).layout(layout).layoutData(new GridData(GridData.FILL_BOTH)).create(parent);
-        messageText = new Text(composite, SWT.READ_ONLY);
-        messageText.setText(defaultHeader);
-        final GridData anyElementData = new GridData();
-        anyElementData.horizontalAlignment = GridData.FILL;
-        anyElementData.horizontalIndent = 8;
-        anyElementData.verticalIndent = 8;
-        anyElementData.grabExcessHorizontalSpace = true;
-        messageText.setLayoutData(anyElementData);
+        createHeaderMessagePart(composite);
+
         applyDialogFont(composite);
         // initialize the dialog units
         initializeDialogUnits(composite);
@@ -179,10 +155,18 @@ public class AnalysisSelectorFilteredItemsSelectionDialog extends FilteredItemsS
         return parent;
     }
 
+    /**
+     * Create the part containing the header messages.
+     * 
+     * @param parent
+     *            the parent composite
+     */
+    protected void createHeaderMessagePart(Composite parent) {
+    }
+
     protected String getHelpMessage() {
         return helpMessage;
     }
-
 
     @Override
     protected Control createExtendedContentArea(Composite parent) {
@@ -193,7 +177,9 @@ public class AnalysisSelectorFilteredItemsSelectionDialog extends FilteredItemsS
     protected void createButtonsForButtonBar(Composite parent) {
         // create OK and Cancel button
         createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
-        createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
+        if (allowCancel) {
+            createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
+        }
     }
 
     @Override
@@ -266,7 +252,6 @@ public class AnalysisSelectorFilteredItemsSelectionDialog extends FilteredItemsS
                 }
                 return o2.equals(bestCandidate) ? +2 : labelProvider.getText(o1).compareTo(labelProvider.getText(o2));
             }
-
         };
     }
 

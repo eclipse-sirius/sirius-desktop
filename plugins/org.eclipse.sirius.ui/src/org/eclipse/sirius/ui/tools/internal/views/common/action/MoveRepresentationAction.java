@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.Collections;
 
 import org.eclipse.core.runtime.Assert;
+import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -83,7 +84,7 @@ public class MoveRepresentationAction extends Action {
             this.setEnabled(false);
         }
     }
-    
+
     /**
      * Construct a new instance.
      *
@@ -118,15 +119,19 @@ public class MoveRepresentationAction extends Action {
                 Option<EObject> dAnalysisOption = new EObjectQuery(dRepresentationDescriptor).getFirstAncestorOfType(ViewpointPackage.eINSTANCE.getDAnalysis());
                 Collection<DAnalysis> analysesCandidates = ((DAnalysisSession) session).allAnalyses();
                 analysesCandidates.remove(dAnalysisOption.get());
-                DAnalysis selectedDAnalysis = dAnalysisSelector.selectSmartlyAnalysisForAddedRepresentation(dRepresentationDescriptor.getRepresentation(), analysesCandidates);
-                if (selectedDAnalysis != dAnalysisOption.get()) {
-                    session.getTransactionalEditingDomain().getCommandStack()
-                            .execute(new MoveRepresentationCommand(session, selectedDAnalysis, Collections.<DRepresentationDescriptor> singleton(dRepresentationDescriptor)));
+                try {
+                    DAnalysis selectedDAnalysis = dAnalysisSelector.selectSmartlyAnalysisForAddedRepresentation(dRepresentationDescriptor.getRepresentation(), analysesCandidates);
+                    if (selectedDAnalysis != dAnalysisOption.get()) {
+                        session.getTransactionalEditingDomain().getCommandStack()
+                                .execute(new MoveRepresentationCommand(session, selectedDAnalysis, Collections.<DRepresentationDescriptor> singleton(dRepresentationDescriptor)));
+                    }
+                } catch (OperationCanceledException e) {
+                    // do nothing
                 }
             }
-            
+
         } else {
-            
+
             final IEditingSession uiSession = SessionUIManager.INSTANCE.getUISession(session);
             if (uiSession != null) {
                 for (final DRepresentationDescriptor repDescriptor : repDescriptors) {
@@ -148,16 +153,15 @@ public class MoveRepresentationAction extends Action {
     private boolean isValidSelection() {
         if (targetAnalysis == null) {
 
-
             return session.getReferencedSessionResources().size() > 0;
         } else {
 
             boolean anyInvalidMove = Iterables.any(repDescriptors, new Predicate<DRepresentationDescriptor>() {
-    
+
                 @Override
                 public boolean apply(DRepresentationDescriptor input) {
                     boolean invalid = false; // false is the default value
-    
+
                     // Step 1: Check source representation container
                     EObject container = input.eContainer();
                     if (container instanceof DView) {
@@ -166,7 +170,7 @@ public class MoveRepresentationAction extends Action {
                             invalid = true;
                         }
                     }
-    
+
                     // Step 2: Check target representation container
                     if (!invalid) {
                         DView targetContainer = DAnalysisSessionHelper.findDViewForAddedRepresentation(targetAnalysis, input.getDescription());
@@ -177,11 +181,11 @@ public class MoveRepresentationAction extends Action {
                             }
                         }
                     }
-    
+
                     return invalid;
                 }
             });
-    
+
             return !anyInvalidMove;
         }
     }
