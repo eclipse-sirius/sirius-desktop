@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -314,8 +314,7 @@ public final class DAnalysisSessionHelper {
      * 
      * @param diagramResource
      *            the diagram resource
-     * @return the semantic resource or <code>null</code> if it can not be
-     *         founded.
+     * @return the semantic resource or <code>null</code> if it can not be founded.
      */
     public static Collection<Resource> getSemanticResource(final Resource diagramResource) {
         final Collection<Resource> semanticResources = new HashSet<Resource>();
@@ -334,13 +333,11 @@ public final class DAnalysisSessionHelper {
     }
 
     /**
-     * Complete the models references of the DAnalysis according to all the
-     * {@link DSemanticDecorator} of the {@link DRepresentation}
-     * contained(precisely referenced by the DRepresentationDescriptor contained
-     * by the dView) in the dView.<BR>
-     * For each {@link DSemanticDecorator} we add the root container of the
-     * target to the <code>models</code> references (except if this root is the
-     * main semantic root of a referenced analysis).
+     * Complete the models references of the DAnalysis according to all the {@link DSemanticDecorator} of the
+     * {@link DRepresentation} contained(precisely referenced by the DRepresentationDescriptor contained by the dView)
+     * in the dView.<BR>
+     * For each {@link DSemanticDecorator} we add the root container of the target to the <code>models</code> references
+     * (except if this root is the main semantic root of a referenced analysis).
      * 
      * @param dView
      *            An iterator on each DSemanticDecorator to check.
@@ -349,23 +346,23 @@ public final class DAnalysisSessionHelper {
         DAnalysis analysis = (DAnalysis) dView.eContainer();
         List<DRepresentationDescriptor> repDescriptors = dView.getOwnedRepresentationDescriptors();
         for (DRepresentationDescriptor repDescriptor : repDescriptors) {
-            updateModelsReferences(analysis, repDescriptor.getTarget());
+            if (repDescriptor.getRepresentation() != null) {
+                updateModelsReferences(analysis, repDescriptor.getTarget());
 
-            Iterator<DSemanticDecorator> iterator = Iterators.filter(repDescriptor.getRepresentation().eAllContents(), DSemanticDecorator.class);
-            while (iterator.hasNext()) {
-                EObject semanticTarget = iterator.next().getTarget();
-                updateModelsReferences(analysis, semanticTarget);
+                Iterator<DSemanticDecorator> iterator = Iterators.filter(repDescriptor.getRepresentation().eAllContents(), DSemanticDecorator.class);
+                while (iterator.hasNext()) {
+                    EObject semanticTarget = iterator.next().getTarget();
+                    updateModelsReferences(analysis, semanticTarget);
+                }
             }
         }
     }
 
     /**
-     * Complete the models references of the DAnalysis according to a semantic
-     * object<BR>
+     * Complete the models references of the DAnalysis according to a semantic object<BR>
      * 
      * @param analysis
-     *            The DAnalysis for which the <code>models</code> references
-     *            must be complete.
+     *            The DAnalysis for which the <code>models</code> references must be complete.
      * @param semanticObject
      *            the semantic object
      */
@@ -435,8 +432,7 @@ public final class DAnalysisSessionHelper {
      * Create a representation container for a viewpoint.
      * 
      * @param analysis
-     *            the analysis that will contain the new representation
-     *            container
+     *            the analysis that will contain the new representation container
      * @param viewpoint
      *            selected viewpoint
      * @return the new representation container
