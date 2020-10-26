@@ -497,6 +497,15 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
 
         ElkNode topNode = ElkGraphUtil.createGraph();
         applyOptionsRelatedToElementTarget(topNode, elkTargetToOptionsOevrrideMap);
+        // The parentLocation is used when launching an arrange selection of one container contained in another
+        // container
+        Point parentLocation = new Point(0, 0);
+        IGraphicalEditPart parentEditPart = getTopGraphicParentEditPartIfPresent(layoutRootPart);
+        if (parentEditPart != null && !(parentEditPart instanceof DiagramEditPart)) {
+            // Compute the parent location origin
+            parentLocation = getAbsoluteBounds(parentEditPart.getFigure()).getTopLeft();
+        }
+
         if (layoutRootPart instanceof ShapeNodeEditPart && selection.isEmpty()) {
             // If the root part is a ShapeNodeEditPart and the selection is empty, this implies an arrange selection on
             // only one element (ie one parent). So we want to keep it at a fixed location. For that we use the bounds
@@ -506,9 +515,8 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 topNode.setIdentifier(((DDiagramElement) ((View) layoutRootPart.getModel()).getElement()).getName() + "_graph");
             }
 
-            IFigure nodeFigure = layoutRootPart.getFigure();
-            Rectangle childAbsoluteBounds = getAbsoluteBounds(nodeFigure);
-
+            Rectangle childAbsoluteBounds = getAbsoluteBounds(layoutRootPart.getFigure());
+            
             topNode.setLocation(0, 0);
             topNode.setDimensions(childAbsoluteBounds.preciseX() + childAbsoluteBounds.preciseWidth(), childAbsoluteBounds.preciseY() + childAbsoluteBounds.preciseHeight());
 
@@ -557,12 +565,27 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 }
 
             }
-            // Use ResetOriginChangeModelOperation.MARGIN instead of minx or miny when arranging all elements of the
-            // diagram
-            if (isArrangeAll) {
-                mapping.setProperty(COORDINATE_OFFSET, new KVector(ResetOriginChangeModelOperation.MARGIN, ResetOriginChangeModelOperation.MARGIN));
+            if (layoutRootPart instanceof ShapeNodeEditPart) {
+                if (selection.size() == 1 && selection.get(0).equals(layoutRootPart)) {
+                    mapping.setProperty(COORDINATE_OFFSET, new KVector(minx - parentLocation.x(), miny - parentLocation.y()));
+                } else if (parentLocation.x() == 0 && parentLocation.y() == 0) {
+                    // the parent of the container is the diagram use "classical coordinate offset
+                    mapping.setProperty(COORDINATE_OFFSET, new KVector(minx, miny));
+                } else {
+                    // Use the parent node bounds if the arrange selection concerns sub part of a container (with the
+                    // insets added)
+                    Dimension topLeftInsets = GMFHelper.getContainerTopLeftInsetsAfterLabel((Node) layoutRootPart.getNotationView(), true);
+                    // Add the insets
+                    mapping.setProperty(COORDINATE_OFFSET, new KVector(minx - parentLocation.x() - topLeftInsets.width, miny - parentLocation.y() - topLeftInsets.height));
+                }
             } else {
-                mapping.setProperty(COORDINATE_OFFSET, new KVector(minx, miny));
+                if (isArrangeAll) {
+                    // Use ResetOriginChangeModelOperation.MARGIN instead of minx or miny when arranging all elements of
+                    // the current diagram
+                    mapping.setProperty(COORDINATE_OFFSET, new KVector(ResetOriginChangeModelOperation.MARGIN, ResetOriginChangeModelOperation.MARGIN));
+                } else {
+                    mapping.setProperty(COORDINATE_OFFSET, new KVector(minx - parentLocation.x(), miny - parentLocation.y()));
+                }
             }
         } else {
             // traverse all children of the layout root part
