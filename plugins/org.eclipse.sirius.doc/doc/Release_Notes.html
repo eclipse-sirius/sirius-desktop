@@ -186,6 +186,11 @@
 				<code>getDefaultDimension()</code> has been added in 
 				<code>org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart()</code>. This method was already used previously in Sirius but was private. It is now public and is used for example for having information during ELK layout.
 			</li>
+			<li><span class="label label-success">Added</span> A new method, 
+				<code>layoutEditParts(List, IAdaptable, boolean)</code> has been added in 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider</code>. It allows for implementations to do specific code according to the arrangeAll or arrangeSelection aspect when layoutEditParts is called. By default, the code called is the same than the 
+				<code>org.eclipse.gmf.runtime.diagram.ui.services.layout.AbstractLayoutEditPartProvider.layoutEditParts(List, IAdaptable)</code> implementation.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in  
 			<code>org.eclipse.sirius.ui</code>

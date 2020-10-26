@@ -32,6 +32,7 @@ try {
 h4. Changes in  @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-success">Added</span> A new method, @getDefaultDimension()@ has been added in @org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart()@. This method was already used previously in Sirius but was private. It is now public and is used for example for having information during ELK layout.
+* <span class="label label-success">Added</span> A new method, @layoutEditParts(List, IAdaptable, boolean)@ has been added in @org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider@. It allows for implementations to do specific code according to the arrangeAll or arrangeSelection aspect when layoutEditParts is called. By default, the code called is the same than the @org.eclipse.gmf.runtime.diagram.ui.services.layout.AbstractLayoutEditPartProvider.layoutEditParts(List, IAdaptable)@ implementation.
 
 h4. Changes in  @org.eclipse.sirius.ui@
 

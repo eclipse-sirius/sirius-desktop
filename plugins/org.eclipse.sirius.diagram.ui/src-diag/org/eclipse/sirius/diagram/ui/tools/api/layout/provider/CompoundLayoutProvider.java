@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -47,14 +47,13 @@ public class CompoundLayoutProvider extends AbstractLayoutProvider {
         this.realDelegatedProviders.add(provider);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.gmf.runtime.diagram.ui.services.layout.AbstractLayoutEditPartProvider#layoutEditParts(java.util.List,
-     *      org.eclipse.core.runtime.IAdaptable)
-     */
     @Override
     public Command layoutEditParts(final List selectedObjects, final IAdaptable layoutHint) {
+        return layoutEditParts(selectedObjects, layoutHint, false);
+    }
+
+    @Override
+    public Command layoutEditParts(final List selectedObjects, final IAdaptable layoutHint, final boolean isArrangeAll) {
         final CompoundCommand cc = new CompoundCommand();
         final ArrayList<AbstractLayoutEditPartProvider> inverse = new ArrayList<AbstractLayoutEditPartProvider>(this.realDelegatedProviders);
         final Iterator<AbstractLayoutEditPartProvider> iterRealDelegatedProviders = inverse.listIterator();
@@ -63,7 +62,12 @@ public class CompoundLayoutProvider extends AbstractLayoutProvider {
             if (provider instanceof AbstractLayoutProvider) {
                 ((AbstractLayoutProvider) provider).setViewsToChangeBoundsRequest(this.getViewsToChangeBoundsRequest());
             }
-            final Command command = provider.layoutEditParts(new ArrayList<>(selectedObjects), layoutHint);
+            Command command;
+            if (provider instanceof AbstractLayoutProvider) {
+                command = ((AbstractLayoutProvider) provider).layoutEditParts(new ArrayList<>(selectedObjects), layoutHint, isArrangeAll);
+            } else {
+                command = provider.layoutEditParts(new ArrayList<>(selectedObjects), layoutHint);
+            }
             if (command != null && command.canExecute()) {
                 cc.add(command);
             }

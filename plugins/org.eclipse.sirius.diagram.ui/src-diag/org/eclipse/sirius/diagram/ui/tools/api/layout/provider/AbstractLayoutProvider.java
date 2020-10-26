@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -132,6 +132,28 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
     }
 
     /**
+     * Layout this list of selected objects, using the specified layout hint. The selected objects all reside within the
+     * same parent container. Other elements that are part of the container but not specified in the list of objects,
+     * are ignored.<BR/>
+     * This method is similar to {@link #layoutEditParts(List, IAdaptable)} but with additional information concerning
+     * <code>isArrangeAll</code>. Indeed, sometimes in caller we have this information and this avoids to recompute it
+     * later. The default implementation does nothing specific but implementation can do specific behavior.
+     * 
+     * 
+     * @param selectedObjects
+     *            <code>List</code> of <code>EditPart</code> objects that are to be layed out.
+     * @param layoutHint
+     *            <code>IAdaptable</code> hint to the provider to determine the layout kind.
+     * @param isArrangeAll
+     *            true if the layout concerns an arrange of all elements of the diagram (ie the
+     *            <code>selectedObjects</code> represent all the children of the diagram), false otherwise.
+     * @return <code>Command</code> that when executed will layout the edit parts in the container
+     */
+    public Command layoutEditParts(List selectedObjects, IAdaptable layoutHint, boolean isArrangeAll) {
+        return layoutEditParts(selectedObjects, layoutHint);
+    }
+
+    /**
      * Get the the diagram layout provider if there is one.
      *
      * @param diagramEditPart
@@ -167,7 +189,11 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
         }
         if (command == null) {
             final List<?> children = diagramEditPart.getChildren();
-            command = layoutProvider.layoutEditParts(children, layoutHint);
+            if (layoutProvider instanceof AbstractLayoutProvider) {
+                command = ((AbstractLayoutProvider) layoutProvider).layoutEditParts(children, layoutHint, true);
+            } else {
+                command = layoutProvider.layoutEditParts(children, layoutHint);
+            }
         }
         return command;
     }
