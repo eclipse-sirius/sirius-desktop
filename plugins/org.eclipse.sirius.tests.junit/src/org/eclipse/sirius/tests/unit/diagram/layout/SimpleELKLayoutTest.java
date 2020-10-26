@@ -688,6 +688,34 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         assertAlignCentered(50, "Class1_1", "Class1_2");
     }
 
+
+    /**
+     * Makes sure that the result of an arrange selection on one container respect the following rules:
+     * <UL>
+     * <LI>No scroll bar in the container (container resized)</LI>
+     * <LI>Container is not moved</LI>
+     * <LI>Container's content is correctly layouted</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultOnOneContainerInAnotherContainer() {
+        openDiagram("diagramWithContainer");
+
+        IGraphicalEditPart editPart = getEditPart("p2_2");
+        Point locationOfP22BeforeLayout = editPart.getFigure().getBounds().getTopLeft();
+
+        // Launch an arrange selection
+        arrangeSelection(editPart);
+
+        // Assert that there is no scroll bar on p2_2
+        assertNoVisibleScrollBar((IDiagramContainerEditPart) editPart);
+
+        // Assert that the location of the container is the same before and after the layout
+        assertEquals("The location of the container should be the same before and after the layout.", locationOfP22BeforeLayout, editPart.getFigure().getBounds().getTopLeft());
+
+        // Assert content is layouted
+        assertAlignCentered(50, "Class2_2_1", "Class2_2_2");
+    }
+
     /**
      * Makes sure that the result of an arrange selection on one container respect the following rules:
      * <UL>
@@ -803,6 +831,38 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
 
         // Assert that the location and the size of the container is the same before and after the layout
         assertEquals("The location and the size of the container should be the same before and after the layout.", boundsOfP2BeforeLayout, p2EditPart.getFigure().getBounds());
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection of some children of a container (contained in another
+     * container) respect the following rules:
+     * <UL>
+     * <LI>The top-left corner of bounding box of selected elements remains the same</LI>
+     * <LI>Selected elements are layouted according to each others (but by ignoring other not selected elements,
+     * potential overlap with these elements)</LI>
+     * <LI>The container size and location are not changed.</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultOnSomeContainerChildren_ContainedInAContainer() {
+        openDiagram("diagramWithContainer");
+
+        IGraphicalEditPart p22EditPart = getEditPart("p2_2");
+        Rectangle boundsOfP22BeforeLayout = p22EditPart.getFigure().getBounds().getCopy();
+        IGraphicalEditPart class222EditPart = getEditPart("Class2_2_2");
+        IGraphicalEditPart class221EditPart = getEditPart("Class2_2_1");
+        Point topLeftCornerBeforeLayout = getTopLeftCorner(class221EditPart, class222EditPart);
+
+        // Launch an arrange selection
+        arrangeSelection(class222EditPart, class221EditPart);
+
+        // Assert that the top-left corner of bounding box remains the same
+        assertEquals("The top-left corner of the bounding box of layouted elements should remain the same.", topLeftCornerBeforeLayout, getTopLeftCorner(class221EditPart, class222EditPart));
+
+        // Assert content is layouted
+        assertAlignCentered(50, "Class2_2_1", "Class2_2_2");
+
+        // Assert that the location and the size of the container is the same before and after the layout
+        assertEquals("The location and the size of the container should be the same before and after the layout.", boundsOfP22BeforeLayout, p22EditPart.getFigure().getBounds());
     }
 
     /**
