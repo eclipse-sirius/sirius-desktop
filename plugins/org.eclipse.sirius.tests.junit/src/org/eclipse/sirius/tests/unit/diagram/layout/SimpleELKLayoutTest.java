@@ -24,6 +24,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.gef.ConnectionEditPart;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.rulers.RulerProvider;
@@ -826,6 +827,82 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         Map<DNode, Rectangle> afterDNodes2Bounds = computeNodesBounds(diagram);
         afterDNodes2Bounds.forEach((dNode, rect) -> {
             assertEquals("The layout result should not change after an arrange selection of elements without parent link.", DNodes2Bounds.get(dNode), rect);
+        });
+    }
+
+    /**
+     * Make sure that arrange all launched at diagram creation is OK when using ELK.
+     */
+    public void testArrangeAtCreation1() {
+        EObject root = session.getSemanticResources().stream().findFirst().get().getContents().get(0);
+        assertTrue(root instanceof EPackage);
+        EPackage subPackage = ((EPackage) root).getESubpackages().get(1);
+        assertEquals("Wrong name for the second subpackage.", "packageForArrangeSelectionTest", subPackage.getName());
+
+        testArrangeAtCreation(subPackage, "DiagramWithContainer");
+    }
+
+    /**
+     * Make sure that arrange all launched at diagram creation is OK when using ELK.
+     */
+    public void testArrangeAtCreation2() {
+        testArrangeAtCreation("SimpleDiagram");
+    }
+
+    /**
+     * Make sure that arrange all launched at diagram creation is OK when using ELK.
+     */
+    public void testArrangeAtCreation3() {
+        testArrangeAtCreation("DiagramWithBorderNodesWithOneAuthorizedSide");
+    }
+
+    /**
+     * Make sure that arrange all launched at diagram creation is OK when using ELK.
+     */
+    public void testArrangeAtCreation4() {
+        EObject root = session.getSemanticResources().stream().findFirst().get().getContents().get(0);
+        assertTrue(root instanceof EPackage);
+        EPackage subPackage = ((EPackage) root).getESubpackages().get(1);
+        assertEquals("Wrong name for the second subpackage.", "packageForArrangeSelectionTest", subPackage.getName());
+
+        testArrangeAtCreation("DiagramWithContainerAndEdges");
+    }
+
+    /**
+     * Make sure that arrange all launched at diagram creation is OK when using ELK.
+     * 
+     * @param diagramName
+     *            The name of the diagram to use
+     */
+    public void testArrangeAtCreation(String diagramName) {
+        testArrangeAtCreation(session.getSemanticResources().stream().findFirst().get().getContents().get(0), diagramName);
+    }
+
+    /**
+     * Make sure that arrange all launched at diagram creation is OK when using ELK.
+     * 
+     * @param semanticRootElement
+     *            The semantic root element used to create the diagram
+     * @param diagramName
+     *            The name of the diagram to use
+     */
+
+    public void testArrangeAtCreation(EObject semanticRootElement, String diagramName) {
+        // Create a new diagram
+        DRepresentation representation = createRepresentation(diagramName, semanticRootElement);
+        // Open the editor
+        IEditorPart newEditorPart = DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
+
+        // Keep the figures bounds after the arrange all launches automatically at opening.
+        Map<DNode, Rectangle> DNodes2Bounds = computeNodesBounds(representation);
+
+        // Launch an arrange all explicitly
+        arrangeAll((DiagramEditor) newEditorPart);
+
+        // Check that the layout is the same as after opening
+        Map<DNode, Rectangle> afterDNodes2Bounds = computeNodesBounds(representation);
+        afterDNodes2Bounds.forEach((dNode, rect) -> {
+            assertEquals("The layout result should not change.", DNodes2Bounds.get(dNode), rect);
         });
     }
 
