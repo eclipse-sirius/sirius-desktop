@@ -100,6 +100,7 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
+import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
@@ -511,10 +512,6 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             // only one element (ie one parent). So we want to keep it at a fixed location. For that we use the bounds
             // of the node to determine the size of the graph. We also set its identifier according to its only child.
             // We can not use directly the node as the graph root (in case of it has bordered node) .
-            if (((View) layoutRootPart.getModel()).getElement() instanceof DDiagramElement) {
-                topNode.setIdentifier(((DDiagramElement) ((View) layoutRootPart.getModel()).getElement()).getName() + "_graph");
-            }
-
             Rectangle childAbsoluteBounds = getAbsoluteBounds(layoutRootPart.getFigure());
             
             topNode.setLocation(0, 0);
@@ -547,6 +544,10 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         }
         // Set the ELK algorithm to use from viewpoint id defined.
         topNode.setProperty(CoreOptions.ALGORITHM, layoutConfiguration.getId().trim());
+        // Set the identifier for the graph according to the diagram name
+        if (((View) diagramEditPart.getModel()).getElement() instanceof DSemanticDiagram) {
+            topNode.setIdentifier(((DSemanticDiagram) ((View) diagramEditPart.getModel()).getElement()).getName() + "_graph");
+        }
 
         mapping.setLayoutGraph(topNode);
 
@@ -742,6 +743,10 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         KVector offset = mapping.getProperty(COORDINATE_OFFSET);
         if (offset != null) {
             addOffset(mapping.getLayoutGraph(), offset);
+        }
+
+        if (DiagramElkPlugin.getDefault().isDebugging()) {
+            ElkDiagramLayoutConnector.storeResult(mapping.getLayoutGraph(), mapping.getLayoutGraph().getIdentifier(), "5_afterAddingOffset", false);
         }
 
         // check the validity of the editing domain to catch cases where it is

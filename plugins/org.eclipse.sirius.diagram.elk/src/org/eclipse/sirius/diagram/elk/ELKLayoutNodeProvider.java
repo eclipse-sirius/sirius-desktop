@@ -68,32 +68,27 @@ public class ELKLayoutNodeProvider extends DefaultLayoutProvider {
         LayoutMapping layoutMapping = connector.buildLayoutGraph(diagramEditPart, selectedObjects, isArrangeAll);
 
         if (DiagramElkPlugin.getDefault().isDebugging()) {
-            ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(),
-                    ((org.eclipse.sirius.viewpoint.DRepresentation) ((org.eclipse.gmf.runtime.notation.Diagram) diagramEditPart.getModel()).getElement()).getName(), "initialState", false);
+            ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(), layoutMapping.getLayoutGraph().getIdentifier(), "1_initialState", false);
         }
 
         // We perform "before" actions provided by extension point.
         elkLayoutExtensions.forEach(e -> e.beforeELKLayout(layoutMapping));
 
         if (DiagramElkPlugin.getDefault().isDebugging()) {
-            ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(),
-                    ((org.eclipse.sirius.viewpoint.DRepresentation) ((org.eclipse.gmf.runtime.notation.Diagram) diagramEditPart.getModel()).getElement()).getName(), "beforeELKLayout", false);
+            ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(), layoutMapping.getLayoutGraph().getIdentifier(), "2_beforeELKLayout", false);
         }
 
         connector.layout(layoutMapping);
 
         if (DiagramElkPlugin.getDefault().isDebugging()) {
-            ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(),
-                    ((org.eclipse.sirius.viewpoint.DRepresentation) ((org.eclipse.gmf.runtime.notation.Diagram) diagramEditPart.getModel()).getElement()).getName(), "afterELKLayout", false);
+            ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(), layoutMapping.getLayoutGraph().getIdentifier(), "3_afterELKLayout", false);
         }
 
         // We perform "after" actions provided by extension point.
         elkLayoutExtensions.forEach(e -> e.afterELKLayout(layoutMapping));
 
         if (DiagramElkPlugin.getDefault().isDebugging()) {
-            ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(),
-                    ((org.eclipse.sirius.viewpoint.DRepresentation) ((org.eclipse.gmf.runtime.notation.Diagram) diagramEditPart.getModel()).getElement()).getName(),
-                    "afterExtensionUpdate", false);
+            ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(), layoutMapping.getLayoutGraph().getIdentifier(), "4_afterExtensionUpdate", false);
         }
         connector.transferLayout(layoutMapping);
         Command gmfLayoutCommand = connector.getApplyCommand(layoutMapping);
