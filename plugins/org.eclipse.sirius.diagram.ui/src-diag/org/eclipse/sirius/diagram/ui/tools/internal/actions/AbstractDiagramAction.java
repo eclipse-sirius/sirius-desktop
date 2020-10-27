@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -50,13 +50,26 @@ public abstract class AbstractDiagramAction extends DiagramAction {
     }
 
     /**
+     * Check if the action let the model unchanged.
+     * 
+     * @return <true> if the action let the model unchanged, <false> otherwise.
+     */
+    protected boolean isReadOnlyAction() {
+        return false;
+    }
+
+    /**
      * Calculate the enable state.
      * 
      * @return true to enable the action
      */
     @Override
     protected boolean calculateEnabled() {
-        return canEditInstance() && super.calculateEnabled();
+        if (isReadOnlyAction()) {
+            return super.calculateEnabled();
+        } else {
+            return canEditInstance() && super.calculateEnabled();
+        }
     }
 
     /**

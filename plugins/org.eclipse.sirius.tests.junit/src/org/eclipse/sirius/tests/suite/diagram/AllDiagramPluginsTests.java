@@ -87,6 +87,7 @@ import org.eclipse.sirius.tests.unit.common.DRepresentationDescriptorChangeIdTes
 import org.eclipse.sirius.tests.unit.common.SiriusUriTests;
 import org.eclipse.sirius.tests.unit.common.TypeNameTest;
 import org.eclipse.sirius.tests.unit.diagram.CanonicalDBorderItemLocatorTest;
+import org.eclipse.sirius.tests.unit.diagram.action.CopyFormatActionTests;
 import org.eclipse.sirius.tests.unit.diagram.action.DeleteEdgeOnEdgeTest;
 import org.eclipse.sirius.tests.unit.diagram.action.DeleteFromDiagramActionTests;
 import org.eclipse.sirius.tests.unit.diagram.action.DeleteFromModelActionTests;
@@ -376,6 +377,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(DiagramElementSelectionDialogPatternMatcherTest.class);
         suite.addTestSuite(PinnedElementsTest.class);
         suite.addTestSuite(SimpleELKLayoutTest.class);
+        suite.addTestSuite(CopyFormatActionTests.class);
 
         suite.addTestSuite(DDiagramCanonicalSynchronizerTests.class);
         suite.addTestSuite(DiagramSynchronizationTest.class);
