@@ -694,8 +694,221 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * <LI>Container's content is correctly layouted</LI>
      * <UL>
      */
-    public void testArrangeSelectionResultOnOneContainer() {
-        openDiagram("diagramWithContainer");
+    public void testArrangeSelectionResultOnOneContainerInDiagram() {
+        testArrangeSelectionResultOnOneContainerInDiagram("diagramWithContainer");
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection on one container respect the following rules:
+     * <UL>
+     * <LI>No scroll bar in the container (container resized)</LI>
+     * <LI>Container is not moved</LI>
+     * <LI>Container's content is correctly layouted</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultOnOneContainerInAnotherContainer() {
+        testArrangeSelectionResultOnOneContainerInAnotherContainer("diagramWithContainer");
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection on one container respect the following rules:
+     * <UL>
+     * <LI>No scroll bar in the container (container resized)</LI>
+     * <LI>Container is not moved</LI>
+     * <LI>Container's content is correctly layouted</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultOnOneContainerWithBorderNode() {
+        testArrangeSelectionResultOnOneContainerWithBorderNode("diagramWithContainer");
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection on two containers respect the following rules:
+     * <UL>
+     * <LI>The top-left corner of bounding box of selected elements remains the same</LI>
+     * <LI>Selected elements are layouted according to each others (but by ignoring other not selected elements,
+     * potential overlap with these elements)</LI>
+     * <LI>The content of the selected container is correctly layouted</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultOnTwoContainers() {
+        testArrangeSelectionResultOnTwoContainers("diagramWithContainer");
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection of a container and some of its children respect the following
+     * rules:
+     * <UL>
+     * <LI>Same rules of arrange selection on only the container</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultOnOneContainerAndSomeOfItsChildren() {
+        testArrangeSelectionResultOnOneContainerAndSomeOfItsChildren("diagramWithContainer");
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection of some children of a container respect the following rules:
+     * <UL>
+     * <LI>The top-left corner of bounding box of selected elements remains the same</LI>
+     * <LI>Selected elements are layouted according to each others (but by ignoring other not selected elements,
+     * potential overlap with these elements)</LI>
+     * <LI>The container size and location are not changed.</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultOnSomeContainerChildren() {
+        testArrangeSelectionResultOnSomeContainerChildren("diagramWithContainer");
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection of some children of a container (contained in another
+     * container) respect the following rules:
+     * <UL>
+     * <LI>The top-left corner of bounding box of selected elements remains the same</LI>
+     * <LI>Selected elements are layouted according to each others (but by ignoring other not selected elements,
+     * potential overlap with these elements)</LI>
+     * <LI>The container size and location are not changed.</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultOnSomeContainerChildren_ContainedInAContainer() {
+        testArrangeSelectionResultOnSomeContainerChildren_ContainedInAContainer("diagramWithContainer");
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection of a container and some children of other container respect
+     * the following rules:
+     * <UL>
+     * <LI>No rules: No layout is perform as this kind of arrange selection is forbidden (see comment in method
+     * org.eclipse.gmf.runtime.diagram.ui.actions.internal.ArrangeAction.getTargetEditPartForArrangeSelection(List)).</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultOnAContainerAndSomeChildrenOfOtherConainer() {
+        testArrangeSelectionResultOnAContainerAndSomeChildrenOfOtherConainer("diagramWithContainer");
+    }
+
+    /**
+     * Makes sure that the result of an arrange all respect the following rules:
+     * <UL>
+     * <LI>The top left corner of the bounding box is {20, 20}</LI>
+     * <LI>There is no scrollbar on all containers</LI>
+     * <LI>All the containers's contents correctly layouted</LI>
+     * <UL>
+     */
+    public void testArrangeAllResultWithScroll() {
+        testArrangeAllResult("diagramWithContainerAndScroll");
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection on one container respect the following rules:
+     * <UL>
+     * <LI>No scroll bar in the container (container resized)</LI>
+     * <LI>Container is not moved</LI>
+     * <LI>Container's content is correctly layouted</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultWithScrollOnOneContainerInDiagram() {
+        testArrangeSelectionResultOnOneContainerInDiagram("diagramWithContainerAndScroll");
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection on one container respect the following rules:
+     * <UL>
+     * <LI>No scroll bar in the container (container resized)</LI>
+     * <LI>Container is not moved</LI>
+     * <LI>Container's content is correctly layouted</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultWithScrollOnOneContainerInAnotherContainer() {
+        testArrangeSelectionResultOnOneContainerInAnotherContainer("diagramWithContainerAndScroll");
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection on one container respect the following rules:
+     * <UL>
+     * <LI>No scroll bar in the container (container resized)</LI>
+     * <LI>Container is not moved</LI>
+     * <LI>Container's content is correctly layouted</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultWithScrollOnOneContainerWithBorderNode() {
+        testArrangeSelectionResultOnOneContainerWithBorderNode("diagramWithContainerAndScroll");
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection on two containers respect the following rules:
+     * <UL>
+     * <LI>The top-left corner of bounding box of selected elements remains the same</LI>
+     * <LI>Selected elements are layouted according to each others (but by ignoring other not selected elements,
+     * potential overlap with these elements)</LI>
+     * <LI>The content of the selected container is correctly layouted</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultWithScrollOnTwoContainers() {
+        testArrangeSelectionResultOnTwoContainers("diagramWithContainerAndScroll");
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection of a container and some of its children respect the following
+     * rules:
+     * <UL>
+     * <LI>Same rules of arrange selection on only the container</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultWithScrollOnOneContainerAndSomeOfItsChildren() {
+        testArrangeSelectionResultOnOneContainerAndSomeOfItsChildren("diagramWithContainerAndScroll");
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection of some children of a container respect the following rules:
+     * <UL>
+     * <LI>The top-left corner of bounding box of selected elements remains the same</LI>
+     * <LI>Selected elements are layouted according to each others (but by ignoring other not selected elements,
+     * potential overlap with these elements)</LI>
+     * <LI>The container size and location are not changed.</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultWithScrollOnSomeContainerChildren() {
+        testArrangeSelectionResultOnSomeContainerChildren("diagramWithContainerAndScroll");
+    }
+
+
+    /**
+     * Makes sure that the result of an arrange selection of some children of a container respect the following rules:
+     * <UL>
+     * <LI>The top-left corner of bounding box of selected elements remains the same</LI>
+     * <LI>Selected elements are layouted according to each others (but by ignoring other not selected elements,
+     * potential overlap with these elements)</LI>
+     * <LI>The container size and location are not changed.</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultWithScrollOnSomeContainerChildrenn_ContainedInAContainer() {
+        testArrangeSelectionResultOnSomeContainerChildren_ContainedInAContainer("diagramWithContainerAndScroll");
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection of a container and some children of other container respect
+     * the following rules:
+     * <UL>
+     * <LI>No rules: No layout is perform as this kind of arrange selection is forbidden (see comment in method
+     * org.eclipse.gmf.runtime.diagram.ui.actions.internal.ArrangeAction.getTargetEditPartForArrangeSelection(List)).</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultWithScrollOnAContainerAndSomeChildrenOfOtherConainer() {
+        testArrangeSelectionResultOnAContainerAndSomeChildrenOfOtherConainer("diagramWithContainerAndScroll");
+    }
+
+    /**
+     * Makes sure that the result of an arrange selection on one container respect the following rules:
+     * <UL>
+     * <LI>No scroll bar in the container (container resized)</LI>
+     * <LI>Container is not moved</LI>
+     * <LI>Container's content is correctly layouted</LI>
+     * <UL>
+     * 
+     * @param diagramName
+     *            The name of the diagram to use
+     */
+    public void testArrangeSelectionResultOnOneContainerInDiagram(String diagramName) {
+        openDiagram(diagramName);
 
         IGraphicalEditPart editPart = getEditPart("p1");
         Point locationOfP1BeforeLayout = editPart.getFigure().getBounds().getTopLeft();
@@ -713,7 +926,6 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         assertAlignCentered(50, "Class1_1", "Class1_2");
     }
 
-
     /**
      * Makes sure that the result of an arrange selection on one container respect the following rules:
      * <UL>
@@ -721,9 +933,12 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * <LI>Container is not moved</LI>
      * <LI>Container's content is correctly layouted</LI>
      * <UL>
+     * 
+     * @param diagramName
+     *            The name of the diagram to use
      */
-    public void testArrangeSelectionResultOnOneContainerInAnotherContainer() {
-        openDiagram("diagramWithContainer");
+    public void testArrangeSelectionResultOnOneContainerInAnotherContainer(String diagramName) {
+        openDiagram(diagramName);
 
         IGraphicalEditPart editPart = getEditPart("p2_2");
         Point locationOfP22BeforeLayout = editPart.getFigure().getBounds().getTopLeft();
@@ -748,9 +963,12 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * <LI>Container is not moved</LI>
      * <LI>Container's content is correctly layouted</LI>
      * <UL>
+     * 
+     * @param diagramName
+     *            The name of the diagram to use
      */
-    public void testArrangeSelectionResultOnOneContainerWithBorderNode() {
-        openDiagram("diagramWithContainer");
+    public void testArrangeSelectionResultOnOneContainerWithBorderNode(String diagramName) {
+        openDiagram(diagramName);
 
         IGraphicalEditPart editPart = getEditPart("p4");
         Point locationOfP4BeforeLayout = editPart.getFigure().getBounds().getTopLeft();
@@ -776,9 +994,12 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * potential overlap with these elements)</LI>
      * <LI>The content of the selected container is correctly layouted</LI>
      * <UL>
+     * 
+     * @param diagramName
+     *            The name of the diagram to use
      */
-    public void testArrangeSelectionResultOnTwoContainers() {
-        openDiagram("diagramWithContainer");
+    public void testArrangeSelectionResultOnTwoContainers(String diagramName) {
+        openDiagram(diagramName);
 
         IGraphicalEditPart p1EditPart = getEditPart("p1");
         IGraphicalEditPart p3EditPart = getEditPart("p3");
@@ -796,7 +1017,6 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         // Assert that content of all containers is "correctly layouted"
         assertAlignCentered(50, "Class1_1", "Class1_2");
         assertAlignCentered(50, "Class3_1", "Class3_2", "Class3_3", "Class3_4");
-
     }
 
     /**
@@ -805,9 +1025,12 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * <UL>
      * <LI>Same rules of arrange selection on only the container</LI>
      * <UL>
+     * 
+     * @param diagramName
+     *            The name of the diagram to use
      */
-    public void testArrangeSelectionResultOnOneContainerAndSomeOfItsChildren() {
-        openDiagram("diagramWithContainer");
+    public void testArrangeSelectionResultOnOneContainerAndSomeOfItsChildren(String diagramName) {
+        openDiagram(diagramName);
 
         IGraphicalEditPart p2EditPart = getEditPart("p2");
         Point locationOfP2BeforeLayout = p2EditPart.getFigure().getBounds().getTopLeft();
@@ -835,41 +1058,12 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * potential overlap with these elements)</LI>
      * <LI>The container size and location are not changed.</LI>
      * <UL>
+     * 
+     * @param diagramName
+     *            The name of the diagram to use
      */
-    public void testArrangeSelectionResultOnSomeContainerChildren() {
-        openDiagram("diagramWithContainer");
-
-        IGraphicalEditPart p2EditPart = getEditPart("p2");
-        Rectangle boundsOfP2BeforeLayout = p2EditPart.getFigure().getBounds().getCopy();
-        IGraphicalEditPart class22EditPart = getEditPart("Class2_2");
-        IGraphicalEditPart class21EditPart = getEditPart("Class2_1");
-        Point topLeftCornerBeforeLayout = getTopLeftCorner(class21EditPart, class22EditPart);
-
-        // Launch an arrange selection
-        arrangeSelection(class22EditPart, class21EditPart);
-
-        // Assert that the top-left corner of bounding box remains the same
-        assertEquals("The top-left corner of the bounding box of layouted elements should remain the same.", topLeftCornerBeforeLayout, getTopLeftCorner(class21EditPart, class22EditPart));
-
-        // Assert content is layouted
-        assertAlignCentered(50, "Class2_1", "Class2_2");
-
-        // Assert that the location and the size of the container is the same before and after the layout
-        assertEquals("The location and the size of the container should be the same before and after the layout.", boundsOfP2BeforeLayout, p2EditPart.getFigure().getBounds());
-    }
-
-    /**
-     * Makes sure that the result of an arrange selection of some children of a container (contained in another
-     * container) respect the following rules:
-     * <UL>
-     * <LI>The top-left corner of bounding box of selected elements remains the same</LI>
-     * <LI>Selected elements are layouted according to each others (but by ignoring other not selected elements,
-     * potential overlap with these elements)</LI>
-     * <LI>The container size and location are not changed.</LI>
-     * <UL>
-     */
-    public void testArrangeSelectionResultOnSomeContainerChildren_ContainedInAContainer() {
-        openDiagram("diagramWithContainer");
+    public void testArrangeSelectionResultOnSomeContainerChildren_ContainedInAContainer(String diagramName) {
+        openDiagram(diagramName);
 
         IGraphicalEditPart p22EditPart = getEditPart("p2_2");
         Rectangle boundsOfP22BeforeLayout = p22EditPart.getFigure().getBounds().getCopy();
@@ -891,15 +1085,52 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     }
 
     /**
+     * Makes sure that the result of an arrange selection of some children of a container respect the following rules:
+     * <UL>
+     * <LI>The top-left corner of bounding box of selected elements remains the same</LI>
+     * <LI>Selected elements are layouted according to each others (but by ignoring other not selected elements,
+     * potential overlap with these elements)</LI>
+     * <LI>The container size and location are not changed.</LI>
+     * <UL>
+     * 
+     * @param diagramName
+     *            The name of the diagram to use
+     */
+    public void testArrangeSelectionResultOnSomeContainerChildren(String diagramName) {
+        openDiagram(diagramName);
+
+        IGraphicalEditPart p2EditPart = getEditPart("p2");
+        Rectangle boundsOfP2BeforeLayout = p2EditPart.getFigure().getBounds().getCopy();
+        IGraphicalEditPart class22EditPart = getEditPart("Class2_2");
+        IGraphicalEditPart class21EditPart = getEditPart("Class2_1");
+        Point topLeftCornerBeforeLayout = getTopLeftCorner(class21EditPart, class22EditPart);
+
+        // Launch an arrange selection
+        arrangeSelection(class22EditPart, class21EditPart);
+
+        // Assert that the top-left corner of bounding box remains the same
+        assertEquals("The top-left corner of the bounding box of layouted elements should remain the same.", topLeftCornerBeforeLayout, getTopLeftCorner(class21EditPart, class22EditPart));
+
+        // Assert content is layouted
+        assertAlignCentered(50, "Class2_1", "Class2_2");
+
+        // Assert that the location and the size of the container is the same before and after the layout
+        assertEquals("The location and the size of the container should be the same before and after the layout.", boundsOfP2BeforeLayout, p2EditPart.getFigure().getBounds());
+    }
+
+    /**
      * Makes sure that the result of an arrange selection of a container and some children of other container respect
      * the following rules:
      * <UL>
      * <LI>No rules: No layout is perform as this kind of arrange selection is forbidden (see comment in method
      * org.eclipse.gmf.runtime.diagram.ui.actions.internal.ArrangeAction.getTargetEditPartForArrangeSelection(List)).</LI>
      * <UL>
+     * 
+     * @param diagramName
+     *            The name of the diagram to use
      */
-    public void testArrangeSelectionResultOnAContainerAndSomeChildrenOfOtherConainer() {
-        openDiagram("diagramWithContainer");
+    public void testArrangeSelectionResultOnAContainerAndSomeChildrenOfOtherConainer(String diagramName) {
+        openDiagram(diagramName);
 
         IGraphicalEditPart p1EditPart = getEditPart("p1");
         IGraphicalEditPart class22EditPart = getEditPart("Class2_2");
@@ -957,6 +1188,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         assertAlignCentered(50, "Class3_1", "Class3_2", "Class3_3", "Class3_4");
         assertAlignCentered(50, "Class4_1", "Class4_2");
     }
+
 
     /**
      * Makes sure that pinned elements do no affect result of layout when using ELK.
