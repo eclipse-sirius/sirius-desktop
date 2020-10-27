@@ -515,6 +515,11 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
 
     @Override
     public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> createdViewsWithCenterLayout, IGraphicalEditPart host) {
+        return getArrangeCreatedViewsCommand(createdViews, createdViewsWithCenterLayout, host, false);
+    }
+
+    @Override
+    public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> createdViewsWithCenterLayout, IGraphicalEditPart host, boolean useSpecificLayoutType) {
         // Layout only the views that are not
         // already layout (by a drag'n'drop for example)
         // if (createdViewsToLayout.size() == 1) {
@@ -526,7 +531,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
             removeAlreadyArrangeMarker(createdViews.get(0));
             return UnexecutableCommand.INSTANCE;
         }
-        return getCreatedViewsCommandFromLayoutType(createdViews, createdViewsWithCenterLayout, host);
+        return getCreatedViewsCommandFromLayoutType(createdViews, createdViewsWithCenterLayout, host, useSpecificLayoutType);
     }
 
     /**
@@ -537,7 +542,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * @param host
      * @return the arrange command
      */
-    private Command getCreatedViewsCommandFromLayoutType(List<IAdaptable> createdViews, List<IAdaptable> createdViewsWithCenterLayout, IGraphicalEditPart host) {
+    private Command getCreatedViewsCommandFromLayoutType(List<IAdaptable> createdViews, List<IAdaptable> createdViewsWithCenterLayout, IGraphicalEditPart host, boolean useSpecificLayoutType) {
         CompoundCommand cc = new CompoundCommand();
         // Center Layout case
         if (createdViewsWithCenterLayout != null) {
@@ -551,7 +556,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
         }
 
         // "normal" layout case
-        return arrangeSeveralCreatedViews(createdViews, host);
+        return arrangeSeveralCreatedViews(createdViews, host, useSpecificLayoutType);
     }
 
     /**
@@ -616,7 +621,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * @param host
      * @return arrange command
      */
-    private Command arrangeSeveralCreatedViews(List<IAdaptable> createdViewsAdapters, IGraphicalEditPart host) {
+    private Command arrangeSeveralCreatedViews(List<IAdaptable> createdViewsAdapters, IGraphicalEditPart host, boolean useSpecificLayoutType) {
         if (createdViewsAdapters != null) {
             int size = createdViewsAdapters.size();
             CompoundCommand cc = new CompoundCommand();
@@ -632,7 +637,12 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
                 }
 
                 if (createdViewsToLayoutAdapters.size() > 0) {
-                    final DeferredLayoutCommand layoutCmd = new DeferredLayoutCommand(host.getEditingDomain(), createdViewsToLayoutAdapters, host);
+                    DeferredLayoutCommand layoutCmd;
+                    if (useSpecificLayoutType) {
+                        layoutCmd = new DeferredLayoutCommand(host.getEditingDomain(), createdViewsToLayoutAdapters, host, LAYOUT_TYPE_ARRANGE_AT_OPENING);
+                    } else {
+                        layoutCmd = new DeferredLayoutCommand(host.getEditingDomain(), createdViewsToLayoutAdapters, host);
+                    }
                     cc.add(new ICommandProxy(layoutCmd));
                     return cc;
                 }

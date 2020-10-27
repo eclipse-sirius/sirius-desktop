@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.ArrangeRequest;
+import org.eclipse.gmf.runtime.diagram.ui.services.layout.LayoutType;
 import org.eclipse.gmf.runtime.emf.commands.core.command.AbstractTransactionalCommand;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
@@ -53,6 +54,14 @@ public interface SiriusLayoutDataManager {
      * Padding for several created view in same time.
      */
     int PADDING = 30;
+
+    /**
+     * Replace the {@link LayoutType#DEFAULT} during the opening of the diagram, if the layout used handle this kind of
+     * type (see
+     * org.eclipse.sirius.diagram.ui.business.internal.view.SiriusLayoutDataManagerImpl.arrangeSeveralCreatedViews(List<IAdaptable>,
+     * IGraphicalEditPart, boolean))..
+     */
+    String LAYOUT_TYPE_ARRANGE_AT_OPENING = "OPENING"; //$NON-NLS-1$
 
     /**
      * Add a new AbstractLayoutData of this SiriusLayoutDataManagerImpl.
@@ -186,6 +195,22 @@ public interface SiriusLayoutDataManager {
      * @return the layout command
      */
     Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> childViewsAdaptersForCenterLayout, IGraphicalEditPart host);
+
+    /**
+     * layout the new created views.
+     * 
+     * @param createdViews
+     *            the new created views
+     * @param childViewsAdaptersForCenterLayout
+     *            the new created views for center layout
+     * @param host
+     *            container edit part
+     * @param useSpecificLayoutType
+     *            true if we have to use a specific layout type to differentiate an arrange selection from the end-user
+     *            and an arrange from the opening and a refresh.
+     * @return the layout command
+     */
+    Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> childViewsAdaptersForCenterLayout, IGraphicalEditPart host, boolean useSpecificLayoutType);
 
     /**
      * layout the new created views after opening the editor.

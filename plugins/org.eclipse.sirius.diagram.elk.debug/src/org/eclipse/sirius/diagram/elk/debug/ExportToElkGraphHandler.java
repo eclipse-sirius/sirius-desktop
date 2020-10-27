@@ -106,7 +106,7 @@ public class ExportToElkGraphHandler extends AbstractHandler {
                 ElkDiagramLayoutConnector connector = injector.getInstance(ElkDiagramLayoutConnector.class);
                 connector.setLayoutConfiguration(customLayoutConfiguration);
 
-                LayoutMapping layoutMapping = connector.buildLayoutGraph(diagramEditPart, diagramEditPart.getChildren(), true);
+                LayoutMapping layoutMapping = connector.buildLayoutGraph(diagramEditPart, diagramEditPart.getChildren(), true, false);
                 ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(),
                         ((org.eclipse.sirius.viewpoint.DRepresentation) ((org.eclipse.gmf.runtime.notation.Diagram) diagramEditPart.getModel()).getElement()).getName(), "", true);
 

@@ -64,6 +64,7 @@ public final class SiriusCanonicalLayoutHandler {
         Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = getCreatedViewsToLayoutMap(diagramEditPart);
         Map<IGraphicalEditPart, List<IAdaptable>> createdViewsWithSpecialLayoutMap = getCreatedViewsWithSpecialLayoutMap(diagramEditPart);
         LayoutProvider layoutProvider = LayoutService.getProvider(diagramEditPart);
+        boolean handleSpecificLayoutType = false;
         if (layoutProvider instanceof GenericLayoutProvider && ((GenericLayoutProvider) layoutProvider).shouldReverseLayoutsOrder(diagramEditPart)) {
             // Reverse order as contrary to classic layout. For example for ELK, it is better to do it from the lowest level to the
             // highest.
@@ -73,8 +74,9 @@ public final class SiriusCanonicalLayoutHandler {
                 createdViewsToLayoutMap_reverse.put(keys.get(i), createdViewsToLayoutMap.get(keys.get(i)));
             }
             createdViewsToLayoutMap = createdViewsToLayoutMap_reverse;
+            handleSpecificLayoutType = true;
         }
-        Command layoutCommand = getLayoutCommand(createdViewsToLayoutMap, createdViewsWithSpecialLayoutMap, editingDomain);
+        Command layoutCommand = getLayoutCommand(createdViewsToLayoutMap, createdViewsWithSpecialLayoutMap, editingDomain, handleSpecificLayoutType);
         if (layoutCommand.canExecute()) {
             editingDomain.getCommandStack().execute(layoutCommand);
         }
@@ -160,7 +162,7 @@ public final class SiriusCanonicalLayoutHandler {
     }
 
     private static Command getLayoutCommand(Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap, Map<IGraphicalEditPart, List<IAdaptable>> createdViewsWithSpecialLayoutMap,
-            TransactionalEditingDomain editingDomain) {
+            TransactionalEditingDomain editingDomain, boolean useSpecificLayoutType) {
         final CompoundCommand compoundCommand = new CompoundCommand();
 
         // Filter type of element to layout to avoid having elements layout
@@ -178,14 +180,14 @@ public final class SiriusCanonicalLayoutHandler {
         for (Entry<IGraphicalEditPart, List<IAdaptable>> entry : Iterables.filter(createdViewsToLayoutMap.entrySet(), typeOfElementToLayout)) {
             IGraphicalEditPart parentEditPart = entry.getKey();
             List<IAdaptable> childViewsAdapters = entry.getValue();
-            Command viewpointLayoutCanonicalSynchronizerCommand = new SiriusCanonicalLayoutCommand(editingDomain, parentEditPart, childViewsAdapters, null);
+            Command viewpointLayoutCanonicalSynchronizerCommand = new SiriusCanonicalLayoutCommand(editingDomain, parentEditPart, childViewsAdapters, null, useSpecificLayoutType);
             compoundCommand.append(viewpointLayoutCanonicalSynchronizerCommand);
         }
 
         for (Entry<IGraphicalEditPart, List<IAdaptable>> entry : Iterables.filter(createdViewsWithSpecialLayoutMap.entrySet(), typeOfElementToLayout)) {
             IGraphicalEditPart parentEditPart = entry.getKey();
             List<IAdaptable> childViewsAdapters = entry.getValue();
-            Command viewpointLayoutCanonicalSynchronizerCommand = new SiriusCanonicalLayoutCommand(editingDomain, parentEditPart, null, childViewsAdapters);
+            Command viewpointLayoutCanonicalSynchronizerCommand = new SiriusCanonicalLayoutCommand(editingDomain, parentEditPart, null, childViewsAdapters, useSpecificLayoutType);
             compoundCommand.append(viewpointLayoutCanonicalSynchronizerCommand);
         }
         return compoundCommand;

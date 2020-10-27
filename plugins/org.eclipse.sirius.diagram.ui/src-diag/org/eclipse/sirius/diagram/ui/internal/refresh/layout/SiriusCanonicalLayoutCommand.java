@@ -41,6 +41,8 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
 
     private List<IAdaptable> childViewsAdaptersForCenterLayout;
 
+    boolean useSpecificLayoutType;
+
     /**
      * Constructor used to do a layout on all created views child (directly or
      * indirectly) of Diagram. </br> NOTE : to use at diagram representation
@@ -71,10 +73,16 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
      *            list of {@link IAdaptable} for created Views to center layout
      */
     public SiriusCanonicalLayoutCommand(TransactionalEditingDomain domain, IGraphicalEditPart parentEditPart, List<IAdaptable> childViewsAdapters, List<IAdaptable> childViewsAdaptersForCenterLayout) {
+        this(domain, parentEditPart, childViewsAdapters, childViewsAdaptersForCenterLayout, false);
+    }
+
+    public SiriusCanonicalLayoutCommand(TransactionalEditingDomain domain, IGraphicalEditPart parentEditPart, List<IAdaptable> childViewsAdapters, List<IAdaptable> childViewsAdaptersForCenterLayout,
+            boolean useSpecificLayoutType) {
         super(domain, Messages.SiriusCanonicalLayoutCommand_label);
         this.diagramEditPart = parentEditPart;
         this.childViewsAdapters = childViewsAdapters;
         this.childViewsAdaptersForCenterLayout = childViewsAdaptersForCenterLayout;
+        this.useSpecificLayoutType = useSpecificLayoutType;
     }
 
     /**
@@ -104,7 +112,8 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
     }
 
     private void executeLayoutDueToExternalChanges() {
-        org.eclipse.gef.commands.Command arrangeCmd = SiriusLayoutDataManager.INSTANCE.getArrangeCreatedViewsCommand(childViewsAdapters, childViewsAdaptersForCenterLayout, diagramEditPart);
+        org.eclipse.gef.commands.Command arrangeCmd = SiriusLayoutDataManager.INSTANCE.getArrangeCreatedViewsCommand(childViewsAdapters, childViewsAdaptersForCenterLayout, diagramEditPart,
+                useSpecificLayoutType);
         if (arrangeCmd != null && arrangeCmd.canExecute()) {
             arrangeCmd.execute();
         }

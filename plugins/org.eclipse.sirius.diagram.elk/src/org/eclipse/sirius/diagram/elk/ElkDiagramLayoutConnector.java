@@ -343,9 +343,12 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      *            the part(s) for which layout is performed, or {@code null} if the whole diagram shall be layouted
      * @param isArrangeAll
      *            true if the layout concerns an arrange of all elements of the diagram, false otherwise.
+     * @param isArrangeAtOpening
+     *            true if this layout is launched during the opening of the diagram, false otherwise. It allows to adapt
+     *            the layout (with a different result than arrange selection).
      * @return a layout graph mapping, or {@code null} if the given workbench part or diagram part is not supported
      */
-    public LayoutMapping buildLayoutGraph(final DiagramEditPart diagramEditPart, final Object layoutedPart, final boolean isArrangeAll) {
+    public LayoutMapping buildLayoutGraph(final DiagramEditPart diagramEditPart, final Object layoutedPart, final boolean isArrangeAll, final boolean isArrangeAtOpening) {
 
         // choose the layout root edit part
         IGraphicalEditPart layoutRootPart = null;
@@ -400,7 +403,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         }
 
         // create the mapping
-        LayoutMapping mapping = buildLayoutGraph(layoutRootPart, selectedParts, diagramEditPart, isArrangeAll);
+        LayoutMapping mapping = buildLayoutGraph(layoutRootPart, selectedParts, diagramEditPart, isArrangeAll, isArrangeAtOpening);
 
         return mapping;
     }
@@ -483,9 +486,14 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      *            the diagram edit part, or {@code null}
      * @param isArrangeAll
      *            true if the layout concerns an arrange of all elements of the diagram, false otherwise.
+     * @param isArrangeAtOpening
+     *            true if this layout is launched during the opening of the diagram, false otherwise. It allows to adapt
+     *            the layout (with a different result than arrange selection).
+     * 
      * @return a layout graph mapping
      */
-    protected LayoutMapping buildLayoutGraph(final IGraphicalEditPart layoutRootPart, final List<ShapeNodeEditPart> selection, final DiagramEditPart diagramEditPart, final boolean isArrangeAll) {
+    protected LayoutMapping buildLayoutGraph(final IGraphicalEditPart layoutRootPart, final List<ShapeNodeEditPart> selection, final DiagramEditPart diagramEditPart, final boolean isArrangeAll,
+            final boolean isArrangeAtOpening) {
 
         LayoutMapping mapping = new LayoutMapping(null);
         mapping.setProperty(CONNECTIONS, new LinkedList<ConnectionEditPart>());
@@ -497,32 +505,57 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOevrrideMap = constructElkOptionTargetToOptionsMap();
 
         ElkNode topNode = ElkGraphUtil.createGraph();
+        ElkNode parentNode = topNode;
         applyOptionsRelatedToElementTarget(topNode, elkTargetToOptionsOevrrideMap);
         // The parentLocation is used when launching an arrange selection of one container contained in another
         // container
         Point parentLocation = new Point(0, 0);
-        IGraphicalEditPart parentEditPart = getTopGraphicParentEditPartIfPresent(layoutRootPart);
-        if (parentEditPart != null && !(parentEditPart instanceof DiagramEditPart)) {
-            // Compute the parent location origin
-            parentLocation = getAbsoluteBounds(parentEditPart.getFigure()).getTopLeft();
-        }
 
-        if (layoutRootPart instanceof ShapeNodeEditPart && selection.isEmpty()) {
+        if (layoutRootPart instanceof ShapeNodeEditPart) {
             // If the root part is a ShapeNodeEditPart and the selection is empty, this implies an arrange selection on
             // only one element (ie one parent). So we want to keep it at a fixed location. For that we use the bounds
             // of the node to determine the size of the graph. We also set its identifier according to its only child.
             // We can not use directly the node as the graph root (in case of it has bordered node) .
             Rectangle childAbsoluteBounds = getAbsoluteBounds(layoutRootPart.getFigure());
-            
+            IGraphicalEditPart parentEditPart = getTopGraphicParentEditPartIfPresent(layoutRootPart);
+            if (parentEditPart != null && !(parentEditPart instanceof DiagramEditPart)) {
+                // Compute the parent location origin
+                parentLocation = getAbsoluteBounds(parentEditPart.getFigure()).getTopLeft();
+            }
             topNode.setLocation(0, 0);
             topNode.setDimensions(childAbsoluteBounds.preciseX() + childAbsoluteBounds.preciseWidth(), childAbsoluteBounds.preciseY() + childAbsoluteBounds.preciseHeight());
 
-            // We add the node to layout to the selection (that is empty)
-            selection.add((ShapeNodeEditPart) layoutRootPart);
+            if (selection.isEmpty()) {
+                // We add the node to layout to the selection (that is empty)
+                selection.add((ShapeNodeEditPart) layoutRootPart);
+            } else if (isArrangeAtOpening) {
+                // Add an intermediate node for the parent of elements to layout, to have a correct behavior
+                parentNode = createNode(mapping, layoutRootPart, topNode, elkTargetToOptionsOevrrideMap);
+
+                // During the arrange at opening, the size is allow to be increased if the new elements layout is
+                // larger than the existing one. But it is not allowed to be reduced.
+                parentNode.setProperty(CoreOptions.NODE_SIZE_MINIMUM, new KVector(parentNode.getHeight(), parentNode.getWidth()));
+            } else {
+                Rectangle rootBounds = layoutRootPart.getFigure().getBounds();
+                if (layoutRootPart == diagramEditPart) {
+                    String labelText = diagramEditPart.getDiagramView().getName();
+                    if (labelText.length() > 0) {
+                        ElkLabel label = ElkGraphUtil.createLabel(topNode);
+                        label.setText(labelText);
+                    }
+                } else {
+                    topNode.setLocation(rootBounds.x, rootBounds.y);
+                }
+                topNode.setDimensions(rootBounds.width, rootBounds.height);
+                mapping.getGraphMap().put(topNode, layoutRootPart);
+                // Fix the size of the container. This option is ignored/unknown by ELK, we use it to store this
+                // information. It is used later, in transfertLayout, to ignore the layout of this container as we want
+                // to keep the same size and location.
+                parentNode.setProperty(ElkDiagramLayoutConnector.NODE_SIZE_FIXED_SIZE, true);
+            }
         } else {
-            // Arrange all elements of the diagram, or arrange selection (sub-part of the diagram or a container)
-            // Start with the container (ie container or diagram) as root for layout. This top node is there to support
-            // some meta data.
+            // Arrange all the diagram or arrange sub part of the diagram
+            // Start with the whole diagram as root for layout. This top node is there to support some meta data.
             Rectangle rootBounds = layoutRootPart.getFigure().getBounds();
             if (layoutRootPart == diagramEditPart) {
                 String labelText = diagramEditPart.getDiagramView().getName();
@@ -534,12 +567,6 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 topNode.setLocation(rootBounds.x, rootBounds.y);
             }
             topNode.setDimensions(rootBounds.width, rootBounds.height);
-            if (layoutRootPart instanceof ShapeNodeEditPart) {
-                // Fix the size of the container. Even if this option is ignored by ELK, we use it to store this
-                // information. It is used later to ignore the layout of this container as we want to keep the same size
-                // and location.
-                topNode.setProperty(ElkDiagramLayoutConnector.NODE_SIZE_FIXED_SIZE, true);
-            }
             mapping.getGraphMap().put(topNode, layoutRootPart);
         }
         // Set the ELK algorithm to use from viewpoint id defined.
@@ -548,7 +575,6 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         if (((View) diagramEditPart.getModel()).getElement() instanceof DSemanticDiagram) {
             topNode.setIdentifier(((DSemanticDiagram) ((View) diagramEditPart.getModel()).getElement()).getName() + "_graph");
         }
-
         mapping.setLayoutGraph(topNode);
 
         if (selection != null && !selection.isEmpty()) {
@@ -557,7 +583,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             double miny = Integer.MAX_VALUE;
 
             for (ShapeNodeEditPart editPart : selection) {
-                ElkNode node = createNode(mapping, editPart, topNode, elkTargetToOptionsOevrrideMap);
+                ElkNode node = createNode(mapping, editPart, parentNode, elkTargetToOptionsOevrrideMap);
                 minx = Math.min(minx, node.getX());
                 miny = Math.min(miny, node.getY());
                 boolean childrenLayouted = buildLayoutGraphRecursively(mapping, node, editPart, elkTargetToOptionsOevrrideMap);
@@ -569,20 +595,23 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             if (layoutRootPart instanceof ShapeNodeEditPart) {
                 if (selection.size() == 1 && selection.get(0).equals(layoutRootPart)) {
                     mapping.setProperty(COORDINATE_OFFSET, new KVector(minx - parentLocation.x(), miny - parentLocation.y()));
-                } else if (parentLocation.x() == 0 && parentLocation.y() == 0) {
-                    // the parent of the container is the diagram use "classical coordinate offset
-                    mapping.setProperty(COORDINATE_OFFSET, new KVector(minx, miny));
                 } else {
-                    // Use the parent node bounds if the arrange selection concerns sub part of a container (with the
-                    // insets added)
-                    Dimension topLeftInsets = GMFHelper.getContainerTopLeftInsetsAfterLabel((Node) layoutRootPart.getNotationView(), true);
-                    // Add the insets
-                    mapping.setProperty(COORDINATE_OFFSET, new KVector(minx - parentLocation.x() - topLeftInsets.width, miny - parentLocation.y() - topLeftInsets.height));
+                    if (isArrangeAtOpening) {
+                        // Use the parent node bounds if the arrange selection concerns sub part of a container during
+                        // an arrange at opening
+                        mapping.setProperty(COORDINATE_OFFSET, new KVector(parentNode.getX() - parentLocation.x(), parentNode.getY() - parentLocation.y()));
+                    } else {
+                        // Use the standard coordinates if the arrange selection concerns sub part of a container (with
+                        // the insets added)
+                        Dimension topLeftInsets = GMFHelper.getContainerTopLeftInsetsAfterLabel((Node) layoutRootPart.getNotationView(), true);
+                        // Add the insets
+                        mapping.setProperty(COORDINATE_OFFSET, new KVector(minx - parentLocation.x() - topLeftInsets.width, miny - parentLocation.y() - topLeftInsets.height));
+                    }
                 }
             } else {
-                if (isArrangeAll) {
+                if (isArrangeAll || isArrangeAtOpening) {
                     // Use ResetOriginChangeModelOperation.MARGIN instead of minx or miny when arranging all elements of
-                    // the current diagram
+                    // the current diagram or when layouting new elements on the diagram during opening
                     mapping.setProperty(COORDINATE_OFFSET, new KVector(ResetOriginChangeModelOperation.MARGIN, ResetOriginChangeModelOperation.MARGIN));
                 } else {
                     mapping.setProperty(COORDINATE_OFFSET, new KVector(minx - parentLocation.x(), miny - parentLocation.y()));
@@ -1520,8 +1549,8 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      * @param edge
      *            the layout edge
      * @param placement
-     *            predefined placement for all labels, or {@code Optional#empty()} if the placement shall be derived from the
-     *            edit part
+     *            predefined placement for all labels, or {@code Optional#empty()} if the placement shall be derived
+     *            from the edit part
      * @param offset
      *            the offset for coordinates
      * @param elkTargetToOptionsOverrideMap

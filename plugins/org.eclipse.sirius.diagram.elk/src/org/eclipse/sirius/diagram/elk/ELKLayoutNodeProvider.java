@@ -27,6 +27,7 @@ import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.DefaultLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
@@ -65,7 +66,8 @@ public class ELKLayoutNodeProvider extends DefaultLayoutProvider {
         ElkDiagramLayoutConnector connector = injector.getInstance(ElkDiagramLayoutConnector.class);
 
         connector.setLayoutConfiguration(layoutConfiguration);
-        LayoutMapping layoutMapping = connector.buildLayoutGraph(diagramEditPart, selectedObjects, isArrangeAll);
+        boolean isArrangeAtOpening = SiriusLayoutDataManager.LAYOUT_TYPE_ARRANGE_AT_OPENING.equals(layoutHint.getAdapter(String.class));
+        LayoutMapping layoutMapping = connector.buildLayoutGraph(diagramEditPart, selectedObjects, isArrangeAll, isArrangeAtOpening);
 
         if (DiagramElkPlugin.getDefault().isDebugging()) {
             ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(), layoutMapping.getLayoutGraph().getIdentifier(), "1_initialState", false);

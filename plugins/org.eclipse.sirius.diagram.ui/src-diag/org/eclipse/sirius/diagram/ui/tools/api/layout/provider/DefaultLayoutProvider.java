@@ -36,6 +36,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.description.CustomLayoutConfiguration;
+import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
 
 import com.google.common.collect.Iterables;
@@ -57,7 +58,7 @@ public class DefaultLayoutProvider extends AbstractLayoutProvider {
             ILayoutNodeOperation layoutNodeOperation = (ILayoutNodeOperation) operation;
             IAdaptable layoutHint = layoutNodeOperation.getLayoutHint();
             String layoutType = layoutHint.getAdapter(String.class);
-            return LayoutType.DEFAULT.equals(layoutType) && isLayoutForSiriusDiagram(layoutNodeOperation);
+            return (LayoutType.DEFAULT.equals(layoutType) || SiriusLayoutDataManager.LAYOUT_TYPE_ARRANGE_AT_OPENING.equals(layoutType)) && isLayoutForSiriusDiagram(layoutNodeOperation);
         }
         return false;
     }
