@@ -19,6 +19,8 @@ import java.util.Map.Entry;
 import java.util.Optional;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.geometry.Dimension;
@@ -51,6 +53,7 @@ import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.jface.preference.IPreferenceStore;
+import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
@@ -74,6 +77,8 @@ import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItem
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IContainerLabelOffsets;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
+import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
@@ -91,11 +96,15 @@ import com.google.common.collect.Lists;
  */
 @SuppressWarnings("restriction")
 public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
-    private static final String SEMANTIC_MODEL_PATH = "/org.eclipse.sirius.tests.junit/data/unit/layout/withELK/My.ecore";
+    private static final String PATH = "/data/unit/layout/withELK/";
 
-    private static final String VSM_PATH = "/org.eclipse.sirius.tests.junit/data/unit/layout/withELK/My.odesign";
+    private static final String PATH_REPLACE = "/data/unit/layout/withELK/replace/";
 
-    private static final String REPRESENTATIONS_MODEL_PATH = "/org.eclipse.sirius.tests.junit/data/unit/layout/withELK/representations.aird";
+    private static final String VSM_RESOURCE_NAME = "My.odesign";
+
+    private static final String SEMANTIC_RESOURCE_NAME = "My.ecore";
+
+    private static final String REPRESENTATIONS_RESOURCE_NAME = "representations.aird";
 
     private DDiagram diagram;
 
@@ -110,7 +119,14 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     @Override
     protected void setUp() throws Exception {
         super.setUp();
-        genericSetUp(SEMANTIC_MODEL_PATH, VSM_PATH, REPRESENTATIONS_MODEL_PATH);
+
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID + PATH + VSM_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/" + VSM_RESOURCE_NAME);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID + PATH + SEMANTIC_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME);
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID + PATH + REPRESENTATIONS_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/" + REPRESENTATIONS_RESOURCE_NAME);
+
+        genericSetUp("/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/" + VSM_RESOURCE_NAME,
+                "/" + TEMPORARY_PROJECT_NAME + "/" + REPRESENTATIONS_RESOURCE_NAME);
+
         SessionUIManager.INSTANCE.createUISession(session);
     }
 
@@ -237,6 +253,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     /**
      * Check that the size of a Note is the same before and after an arrange.
      */
+    @SuppressWarnings("rawtypes")
     public void testNoteHaveFixedSizeAfterLayout() {
         openDiagram("simpleDiagramWithNote");
 
@@ -267,6 +284,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     /**
      * Check that the size of a Text is the same before and after an arrange.
      */
+    @SuppressWarnings("rawtypes")
     public void testTextHaveFixedSizeAfterLayout() {
         openDiagram("simpleDiagramWithText");
 
@@ -636,29 +654,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * <UL>
      */
     public void testArrangeAllResult() {
-        openDiagram("diagramWithContainer");
-
-        // Launch an arrange all
-        arrangeAll((DiagramEditor) editorPart);
-
-        // Assert that the bounding box coordinates of all elements are {20, 20}
-        // Compute primary edit parts (first level edit parts of the container)
-        List<?> primaryEditParts = getPrimaryEditParts(editorPart.getDiagramEditPart());
-        List<IGraphicalEditPart> primaryGraphicalEditParts = Lists.newArrayList(Iterables.filter(primaryEditParts, IGraphicalEditPart.class));
-        Rectangle boundingbox = DiagramImageUtils.calculateImageRectangle(primaryGraphicalEditParts, 0, new Dimension(0, 0));
-        assertEquals("Wrong x coordinate for the bounding box of all diagram elements.", ResetOriginChangeModelOperation.MARGIN, boundingbox.x());
-        assertEquals("Wrong y coordinate for the bounding box of all diagram elements.", ResetOriginChangeModelOperation.MARGIN, boundingbox.y());
-
-        // Assert that there is no scroll bar on all containers
-        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p1"));
-        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p2"));
-        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p3"));
-
-        // Assert that content of all containers is "correctly layouted"
-        assertAlignCentered(50, "Class1", "Class2", "Class3", "Class4", "p1", "p2", "p3");
-        assertAlignCentered(50, "Class1_1", "Class1_2");
-        assertAlignCentered(50, "p2_2", "Class2_1", "Class2_2", "Class2_3");
-        assertAlignCentered(50, "Class3_1", "Class3_2", "Class3_3", "Class3_4");
+        testArrangeAllResult("diagramWithContainer");
     }
 
     /**
@@ -895,6 +891,45 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     }
 
     /**
+     * Makes sure that the result of an arrange all respect the following rules:
+     * <UL>
+     * <LI>The top left corner of the bounding box is {20, 20}</LI>
+     * <LI>There is no scrollbar on all containers</LI>
+     * <LI>All the containers's contents correctly layouted</LI>
+     * <UL>
+     * 
+     * @param diagramName
+     *            The name of the diagram to use
+     */
+    public void testArrangeAllResult(String diagramName) {
+        openDiagram(diagramName);
+
+        // Launch an arrange all
+        arrangeAll((DiagramEditor) editorPart);
+
+        // Assert that the bounding box coordinates of all elements are {20, 20}
+        // Compute primary edit parts (first level edit parts of the container)
+        List<?> primaryEditParts = getPrimaryEditParts(editorPart.getDiagramEditPart());
+        List<IGraphicalEditPart> primaryGraphicalEditParts = Lists.newArrayList(Iterables.filter(primaryEditParts, IGraphicalEditPart.class));
+        Rectangle boundingbox = DiagramImageUtils.calculateImageRectangle(primaryGraphicalEditParts, 0, new Dimension(0, 0));
+        assertEquals("Wrong x coordinate for the bounding box of all diagram elements.", ResetOriginChangeModelOperation.MARGIN, boundingbox.x());
+        assertEquals("Wrong y coordinate for the bounding box of all diagram elements.", ResetOriginChangeModelOperation.MARGIN, boundingbox.y());
+
+        // Assert that there is no scroll bar on all containers
+        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p1"));
+        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p2"));
+        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p3"));
+        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p4"));
+
+        // Assert that content of all containers is "correctly layouted"
+        assertAlignCentered(50, "Class1", "Class2", "Class3", "Class4", "p1", "p2", "p3", "p4");
+        assertAlignCentered(50, "Class1_1", "Class1_2");
+        assertAlignCentered(50, "p2_2", "Class2_1", "Class2_2", "Class2_3");
+        assertAlignCentered(50, "Class3_1", "Class3_2", "Class3_3", "Class3_4");
+        assertAlignCentered(50, "Class4_1", "Class4_2");
+    }
+
+    /**
      * Makes sure that pinned elements do no affect result of layout when using ELK.
      */
     public void testArrangeWithPinnedElements() {
@@ -975,6 +1010,121 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     }
 
     /**
+     * Make sure that arrange launched at diagram opening, with new elements created because of the refresh is OK when
+     * using ELK.
+     */
+    public void testArrangeAtOpening1() {
+        // Open the diagram, launch an arrange all and close the diagram
+        testArrangeAllResult("diagramWithContainer");
+
+        Rectangle boundsOfP1BeforeLayoutAtOpening = getEditPart("p1").getFigure().getBounds().getCopy();
+        Rectangle boundsOfP22BeforeLayoutAtOpening = getEditPart("p2_2").getFigure().getBounds().getCopy();
+        Rectangle boundsOfP3BeforeLayoutAtOpening = getEditPart("p3").getFigure().getBounds().getCopy();
+
+        SessionUIManager.INSTANCE.getUISession(session).closeEditors(false, Collections.singleton((DDiagramEditor) editorPart));
+        TestsUtil.emptyEventsFromUIThread();
+
+        // Modify externally session file (Copy another ecore file with additional semantic elements)
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID + PATH_REPLACE + SEMANTIC_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME);
+        try {
+            Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
+        } catch (OperationCanceledException | InterruptedException e) {
+            fail(e.getMessage());
+        }
+
+        openDiagram("diagramWithContainer");
+
+        // Assert new elements are layouted
+        assertAlignCentered(50, "Class5", "Class6");
+        assertAlignCentered(50, "Class1_3", "Class1_4", "Class1_5");
+        assertAlignCentered(50, "Class3_5", "Class3_6");
+
+        // Assert that top left corner of new layouted elements is OK
+        assertEquals(new Point(ResetOriginChangeModelOperation.MARGIN, ResetOriginChangeModelOperation.MARGIN), getTopLeftCorner(getEditPart("Class5"), getEditPart("Class6")));
+        // TODO : This top left container corresponds to the insets (it could be computed). But by default, it should be
+        // the same location is during an arrange all (further improvement)
+        Point expectedContainerTopLeftCorner = new Point(7, 6);
+        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class1_3"), getEditPart("Class1_4"), getEditPart("Class1_5")));
+        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class3_5"), getEditPart("Class3_6")));
+        // TODO : The top left corner should be the same for container in other container (it is currently not the case)
+        // (further improvement)
+        expectedContainerTopLeftCorner = new Point(0, 0);
+        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class2_2_3")));
+
+        // Assert that there is no scroll bar on container (for p1 and p3 the new elements layout is larger than
+        // previous)
+        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p1"));
+        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p2_2"));
+        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p3"));
+
+        // Assert that the location of the container with new elements are the same before and after the layout
+        assertEquals("The location of the container p1 should be the same before and after the layout.", boundsOfP1BeforeLayoutAtOpening.getLocation(),
+                getEditPart("p1").getFigure().getBounds().getLocation());
+        assertEquals("The location of the container p2_2 should be the same before and after the layout.", boundsOfP22BeforeLayoutAtOpening.getLocation(),
+                getEditPart("p2_2").getFigure().getBounds().getLocation());
+        assertEquals("The location of the container p3 should be the same before and after the layout.", boundsOfP3BeforeLayoutAtOpening.getLocation(),
+                getEditPart("p3").getFigure().getBounds().getLocation());
+    }
+
+    /**
+     * Make sure that arrange launched at diagram opening, with new elements created because of the refresh is OK when
+     * using ELK.
+     */
+    public void testArrangeAtOpening2() {
+        // Open the diagram, launch an arrange all and close the diagram
+        testArrangeAllResult("diagramWithContainerAndEdges");
+
+        Rectangle boundsOfP1BeforeLayoutAtOpening = getEditPart("p1").getFigure().getBounds().getCopy();
+        Rectangle boundsOfP22BeforeLayoutAtOpening = getEditPart("p2_2").getFigure().getBounds().getCopy();
+        Rectangle boundsOfP3BeforeLayoutAtOpening = getEditPart("p3").getFigure().getBounds().getCopy();
+
+        SessionUIManager.INSTANCE.getUISession(session).closeEditors(false, Collections.singleton((DDiagramEditor) editorPart));
+        TestsUtil.emptyEventsFromUIThread();
+
+        // Modify externally session file (Copy another ecore file with additional semantic elements)
+        EclipseTestsSupportHelper.INSTANCE.copyFile(SiriusTestsPlugin.PLUGIN_ID + PATH_REPLACE + SEMANTIC_RESOURCE_NAME, "/" + TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_RESOURCE_NAME);
+        try {
+            Job.getJobManager().join(ResourceSyncClientNotifier.FAMILY, new NullProgressMonitor());
+        } catch (OperationCanceledException | InterruptedException e) {
+            fail(e.getMessage());
+        }
+
+        openDiagram("diagramWithContainerAndEdges");
+
+        // Assert new elements are layouted
+        assertAlignCentered(50, "Class5", "Class6");
+        assertAlignCentered(50, "Class1_3", "Class1_4");
+        assertAlignCentered(50, "Class3_5", "Class3_6");
+
+        // Assert that top left corner of new layouted elements is OK
+        assertEquals(new Point(ResetOriginChangeModelOperation.MARGIN, ResetOriginChangeModelOperation.MARGIN), getTopLeftCorner(getEditPart("Class5"), getEditPart("Class6")));
+        // TODO : This top left container corresponds to the insets (it could be computed). But by default, it should be
+        // the same location is during an arrange all (further improvement)
+        Point expectedContainerTopLeftCorner = new Point(7, 6);
+        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class1_3"), getEditPart("Class1_4"), getEditPart("Class1_5")));
+        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class3_5"), getEditPart("Class3_6")));
+        // TODO : The top left corner should be the same for container in other container (it is currently not the case)
+        // (further improvement)
+        expectedContainerTopLeftCorner = new Point(0, 0);
+        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class2_2_3")));
+
+        // Assert that there is no scroll bar on container (for p1 and p3 the new elements layout is larger than
+        // previous)
+        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p1"));
+        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p2_2"));
+        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p3"));
+
+        // Assert that the location and the size of the container with new elements are the same before and after the
+        // layout
+        assertEquals("The location of the container p1 should be the same before and after the layout.", boundsOfP1BeforeLayoutAtOpening.getLocation(),
+                getEditPart("p1").getFigure().getBounds().getLocation());
+        assertEquals("The location of the container p2_2 should be the same before and after the layout.", boundsOfP22BeforeLayoutAtOpening.getLocation(),
+                getEditPart("p2_2").getFigure().getBounds().getLocation());
+        assertEquals("The location of the container p3 should be the same before and after the layout.", boundsOfP3BeforeLayoutAtOpening.getLocation(),
+                getEditPart("p3").getFigure().getBounds().getLocation());
+    }
+
+    /**
      * Make sure that arrange all launched at diagram creation is OK when using ELK.
      * 
      * @param diagramName
@@ -1025,6 +1175,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * @throws Exception
      *             in case of problem
      */
+    @SuppressWarnings("rawtypes")
     protected void testNoteLayoutAccordingToPref(boolean moveNoteDuringLayout) throws Exception {
         openDiagram("simpleDiagramWithNote");
 
@@ -1152,6 +1303,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      *            List to parse for a common parent.
      * @return EditPart that is the parent or null if a common parent doesn't exist.
      */
+    @SuppressWarnings("rawtypes")
     private EditPart getSelectionParent(List editparts) {
         ListIterator li = editparts.listIterator();
         while (li.hasNext()) {
@@ -1227,12 +1379,15 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         }
     }
 
-    private Point getTopLeftCorner(IGraphicalEditPart editPartA, IGraphicalEditPart editPartB) {
-        Point locationOfA = editPartA.getFigure().getBounds().getTopLeft();
-        Point locationOfB = editPartB.getFigure().getBounds().getTopLeft();
-        Point topLeftCorner = new Point(Math.min(locationOfA.x(), locationOfB.x()), Math.min(locationOfA.y(), locationOfB.y()));
+    private Point getTopLeftCorner(IGraphicalEditPart... editParts) {
+        Point topLeftCorner = new Point(Integer.MAX_VALUE, Integer.MAX_VALUE);
+        for (IGraphicalEditPart editPart : editParts) {
+            Point location = editPart.getFigure().getBounds().getTopLeft();
+            topLeftCorner = new Point(Math.min(location.x(), topLeftCorner.x()), Math.min(location.y(), topLeftCorner.y()));
+        }
         return topLeftCorner;
     }
+
 
     /**
      * Move the edit part.

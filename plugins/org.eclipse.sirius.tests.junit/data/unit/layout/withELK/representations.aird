@@ -60,6 +60,10 @@
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainer']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//packageForArrangeSelectionTest"/>
       </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_qMQesRhpEeuS0-Pypc-trA" name="diagramWithContainerAndEdges" repPath="#_qMPQkBhpEeuS0-Pypc-trA" changeId="6031c143-fb70-4de2-8b0b-9d93333401ad">
+        <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//packageForArrangeSelectionTest"/>
+      </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
   <diagram:DSemanticDiagram uid="_vIWEMJjaEemHnMaPJFLfQA">
@@ -2908,6 +2912,681 @@
     <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainer']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_TDc8lxgvEeuS0-Pypc-trA"/>
     <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainer']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#//packageForArrangeSelectionTest"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_qMPQkBhpEeuS0-Pypc-trA">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_qMQeshhpEeuS0-Pypc-trA" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_qMQesxhpEeuS0-Pypc-trA" type="Sirius" element="_qMPQkBhpEeuS0-Pypc-trA" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_qMXMYBhpEeuS0-Pypc-trA" type="2001" element="_qMRFwBhpEeuS0-Pypc-trA">
+          <children xmi:type="notation:Node" xmi:id="_qMXMYxhpEeuS0-Pypc-trA" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_yexHcBhpEeuS0-Pypc-trA" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMXzhRhpEeuS0-Pypc-trA" type="3003" element="_qMRFwRhpEeuS0-Pypc-trA">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_qMXzhhhpEeuS0-Pypc-trA" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMXzhxhpEeuS0-Pypc-trA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_qMXMYRhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yev5UBhpEeuS0-Pypc-trA" x="175" y="71" width="74" height="31"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_qMXMZRhpEeuS0-Pypc-trA" type="2001" element="_qMRFwxhpEeuS0-Pypc-trA">
+          <children xmi:type="notation:Node" xmi:id="_qMXMaBhpEeuS0-Pypc-trA" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_yeyVkRhpEeuS0-Pypc-trA" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMXziBhpEeuS0-Pypc-trA" type="3003" element="_qMRFxBhpEeuS0-Pypc-trA">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_qMXziRhpEeuS0-Pypc-trA" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMXzihhpEeuS0-Pypc-trA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_qMXMZhhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yeyVkBhpEeuS0-Pypc-trA" x="269" y="71" width="74" height="31"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_qMXMahhpEeuS0-Pypc-trA" type="2001" element="_qMRFxhhpEeuS0-Pypc-trA">
+          <children xmi:type="notation:Node" xmi:id="_qMXMbRhpEeuS0-Pypc-trA" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_yey8oRhpEeuS0-Pypc-trA" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMXzixhpEeuS0-Pypc-trA" type="3003" element="_qMRFxxhpEeuS0-Pypc-trA">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_qMXzjBhpEeuS0-Pypc-trA" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMXzjRhpEeuS0-Pypc-trA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_qMXMaxhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yey8oBhpEeuS0-Pypc-trA" x="157" y="128" width="74" height="31"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_qMXMbxhpEeuS0-Pypc-trA" type="2001" element="_qMRFyRhpEeuS0-Pypc-trA">
+          <children xmi:type="notation:Node" xmi:id="_qMXMchhpEeuS0-Pypc-trA" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_yey8oxhpEeuS0-Pypc-trA" y="5"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMYagBhpEeuS0-Pypc-trA" type="3003" element="_qMRFyhhpEeuS0-Pypc-trA">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_qMYagRhpEeuS0-Pypc-trA" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMYaghhpEeuS0-Pypc-trA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_qMXMcBhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yey8ohhpEeuS0-Pypc-trA" x="251" y="128" width="74" height="31"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_qMXMdBhpEeuS0-Pypc-trA" type="2002" element="_qMRs0BhpEeuS0-Pypc-trA">
+          <children xmi:type="notation:Node" xmi:id="_qMXMdxhpEeuS0-Pypc-trA" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_qMXMeBhpEeuS0-Pypc-trA" type="7001">
+            <children xmi:type="notation:Node" xmi:id="_qMYagxhpEeuS0-Pypc-trA" type="3007" element="_qMST4BhpEeuS0-Pypc-trA">
+              <children xmi:type="notation:Node" xmi:id="_qMYahhhpEeuS0-Pypc-trA" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_yey8phhpEeuS0-Pypc-trA" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_qMZBkhhpEeuS0-Pypc-trA" type="3003" element="_qMST4RhpEeuS0-Pypc-trA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_qMZBkxhpEeuS0-Pypc-trA" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMZBlBhpEeuS0-Pypc-trA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_qMYahBhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yey8pRhpEeuS0-Pypc-trA" x="17" y="24" width="90" height="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_qMYaiBhpEeuS0-Pypc-trA" type="3007" element="_qMST4xhpEeuS0-Pypc-trA">
+              <children xmi:type="notation:Node" xmi:id="_qMZBkBhpEeuS0-Pypc-trA" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_yey8qBhpEeuS0-Pypc-trA" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_qMZBlRhpEeuS0-Pypc-trA" type="3003" element="_qMST5BhpEeuS0-Pypc-trA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_qMZBlhhpEeuS0-Pypc-trA" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMZBlxhpEeuS0-Pypc-trA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_qMYaiRhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yey8pxhpEeuS0-Pypc-trA" x="56" y="61" width="90" height="31"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_qMXMeRhpEeuS0-Pypc-trA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_qMXMehhpEeuS0-Pypc-trA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_qMXMdRhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yey8pBhpEeuS0-Pypc-trA" x="155" y="323" width="152" height="137"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_qMXzcBhpEeuS0-Pypc-trA" type="2002" element="_qMRs0xhpEeuS0-Pypc-trA">
+          <children xmi:type="notation:Node" xmi:id="_qMXzcxhpEeuS0-Pypc-trA" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_qMXzdBhpEeuS0-Pypc-trA" type="7001">
+            <children xmi:type="notation:Node" xmi:id="_qMZBmBhpEeuS0-Pypc-trA" type="3008" element="_qMST5hhpEeuS0-Pypc-trA">
+              <children xmi:type="notation:Node" xmi:id="_qMZBmxhpEeuS0-Pypc-trA" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="_qMZBnBhpEeuS0-Pypc-trA" type="7002">
+                <children xmi:type="notation:Node" xmi:id="_qMZoohhpEeuS0-Pypc-trA" type="3007" element="_qMST6RhpEeuS0-Pypc-trA">
+                  <children xmi:type="notation:Node" xmi:id="_qMZopRhpEeuS0-Pypc-trA" type="5003">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_yey8rBhpEeuS0-Pypc-trA" y="5"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_qMZorBhpEeuS0-Pypc-trA" type="3003" element="_qMST6hhpEeuS0-Pypc-trA">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_qMZorRhpEeuS0-Pypc-trA" fontName="Segoe UI"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMZorhhpEeuS0-Pypc-trA"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_qMZooxhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yey8qxhpEeuS0-Pypc-trA" x="7" y="32" width="106" height="31"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_qMZopxhpEeuS0-Pypc-trA" type="3007" element="_qMS68BhpEeuS0-Pypc-trA">
+                  <children xmi:type="notation:Node" xmi:id="_qMZoqhhpEeuS0-Pypc-trA" type="5003">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_yey8rhhpEeuS0-Pypc-trA" y="5"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_qMZorxhpEeuS0-Pypc-trA" type="3003" element="_qMS68RhpEeuS0-Pypc-trA">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_qMZosBhpEeuS0-Pypc-trA" fontName="Segoe UI"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMZosRhpEeuS0-Pypc-trA"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_qMZoqBhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yey8rRhpEeuS0-Pypc-trA" x="88" y="12" width="106" height="31"/>
+                </children>
+                <styles xmi:type="notation:SortingStyle" xmi:id="_qMZBnRhpEeuS0-Pypc-trA"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_qMZBnhhpEeuS0-Pypc-trA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_qMZBmRhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yey8qhhpEeuS0-Pypc-trA" x="117" y="32" width="195" height="83"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_qMZBnxhpEeuS0-Pypc-trA" type="3007" element="_qMS68xhpEeuS0-Pypc-trA">
+              <children xmi:type="notation:Node" xmi:id="_qMZBohhpEeuS0-Pypc-trA" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_yey8sBhpEeuS0-Pypc-trA" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_qMZoshhpEeuS0-Pypc-trA" type="3003" element="_qMS69BhpEeuS0-Pypc-trA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_qMZosxhpEeuS0-Pypc-trA" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMZotBhpEeuS0-Pypc-trA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_qMZBoBhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yey8rxhpEeuS0-Pypc-trA" x="351" y="26" width="90" height="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_qMZBpBhpEeuS0-Pypc-trA" type="3007" element="_qMS69hhpEeuS0-Pypc-trA">
+              <children xmi:type="notation:Node" xmi:id="_qMZBpxhpEeuS0-Pypc-trA" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_yey8shhpEeuS0-Pypc-trA" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_qMZotRhpEeuS0-Pypc-trA" type="3003" element="_qMS69xhpEeuS0-Pypc-trA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_qMZothhpEeuS0-Pypc-trA" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMZotxhpEeuS0-Pypc-trA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_qMZBpRhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yey8sRhpEeuS0-Pypc-trA" x="7" y="57" width="90" height="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_qMZBqRhpEeuS0-Pypc-trA" type="3007" element="_qMS6-RhpEeuS0-Pypc-trA">
+              <children xmi:type="notation:Node" xmi:id="_qMZooBhpEeuS0-Pypc-trA" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_yey8tBhpEeuS0-Pypc-trA" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_qMZouBhpEeuS0-Pypc-trA" type="3003" element="_qMS6-hhpEeuS0-Pypc-trA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_qMZouRhpEeuS0-Pypc-trA" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMZouhhpEeuS0-Pypc-trA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_qMZBqhhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yey8sxhpEeuS0-Pypc-trA" x="353" y="75" width="90" height="31"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_qMXzdRhpEeuS0-Pypc-trA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_qMXzdhhpEeuS0-Pypc-trA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_qMXzcRhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yey8qRhpEeuS0-Pypc-trA" x="422" y="55" width="442" height="133"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_qMXzdxhpEeuS0-Pypc-trA" type="2002" element="_qMRs1hhpEeuS0-Pypc-trA">
+          <children xmi:type="notation:Node" xmi:id="_qMXzehhpEeuS0-Pypc-trA" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_qMXzexhpEeuS0-Pypc-trA" type="7001">
+            <children xmi:type="notation:Node" xmi:id="_qMaPsBhpEeuS0-Pypc-trA" type="3007" element="_qMS6_BhpEeuS0-Pypc-trA">
+              <children xmi:type="notation:Node" xmi:id="_qMaPsxhpEeuS0-Pypc-trA" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_yey8txhpEeuS0-Pypc-trA" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_qMaPxBhpEeuS0-Pypc-trA" type="3003" element="_qMS6_RhpEeuS0-Pypc-trA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_qMaPxRhpEeuS0-Pypc-trA" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMaPxhhpEeuS0-Pypc-trA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_qMaPsRhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yey8thhpEeuS0-Pypc-trA" x="69" y="19" width="90" height="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_qMaPtRhpEeuS0-Pypc-trA" type="3007" element="_qMTiARhpEeuS0-Pypc-trA">
+              <children xmi:type="notation:Node" xmi:id="_qMaPuBhpEeuS0-Pypc-trA" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_yezjsBhpEeuS0-Pypc-trA" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_qMaPxxhpEeuS0-Pypc-trA" type="3003" element="_qMTiAhhpEeuS0-Pypc-trA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_qMaPyBhpEeuS0-Pypc-trA" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMaPyRhpEeuS0-Pypc-trA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_qMaPthhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yey8uBhpEeuS0-Pypc-trA" x="179" y="19" width="90" height="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_qMaPuhhpEeuS0-Pypc-trA" type="3007" element="_qMTiBBhpEeuS0-Pypc-trA">
+              <children xmi:type="notation:Node" xmi:id="_qMaPvRhpEeuS0-Pypc-trA" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_yezjshhpEeuS0-Pypc-trA" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_qMaPyhhpEeuS0-Pypc-trA" type="3003" element="_qMTiBRhpEeuS0-Pypc-trA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_qMaPyxhpEeuS0-Pypc-trA" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMaPzBhpEeuS0-Pypc-trA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_qMaPuxhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yezjsRhpEeuS0-Pypc-trA" x="7" y="32" width="90" height="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_qMaPvxhpEeuS0-Pypc-trA" type="3007" element="_qMTiBxhpEeuS0-Pypc-trA">
+              <children xmi:type="notation:Node" xmi:id="_qMaPwhhpEeuS0-Pypc-trA" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_yezjtBhpEeuS0-Pypc-trA" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_qMaPzRhpEeuS0-Pypc-trA" type="3003" element="_qMTiCBhpEeuS0-Pypc-trA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_qMaPzhhpEeuS0-Pypc-trA" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMaPzxhpEeuS0-Pypc-trA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_qMaPwBhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yezjsxhpEeuS0-Pypc-trA" x="261" y="35" width="90" height="31"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_qMXzfBhpEeuS0-Pypc-trA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_qMXzfRhpEeuS0-Pypc-trA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_qMXzeBhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yey8tRhpEeuS0-Pypc-trA" x="147" y="211" width="477" height="103"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_qMXzfhhpEeuS0-Pypc-trA" type="2002" element="_qMRs2RhpEeuS0-Pypc-trA">
+          <children xmi:type="notation:Node" xmi:id="_qMXzgRhpEeuS0-Pypc-trA" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_qMXzghhpEeuS0-Pypc-trA" type="7001">
+            <children xmi:type="notation:Node" xmi:id="_qMa2wBhpEeuS0-Pypc-trA" type="3007" element="_qMTiDRhpEeuS0-Pypc-trA">
+              <children xmi:type="notation:Node" xmi:id="_qMa2wxhpEeuS0-Pypc-trA" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_yezjtxhpEeuS0-Pypc-trA" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_qMa2yhhpEeuS0-Pypc-trA" type="3003" element="_qMTiDhhpEeuS0-Pypc-trA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_qMa2yxhpEeuS0-Pypc-trA" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMa2zBhpEeuS0-Pypc-trA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_qMa2wRhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yezjthhpEeuS0-Pypc-trA" x="7" y="32" width="90" height="31"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_qMa2xRhpEeuS0-Pypc-trA" type="3007" element="_qMTiEBhpEeuS0-Pypc-trA">
+              <children xmi:type="notation:Node" xmi:id="_qMa2yBhpEeuS0-Pypc-trA" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_yezjuRhpEeuS0-Pypc-trA" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_qMa2zRhpEeuS0-Pypc-trA" type="3003" element="_qMTiERhpEeuS0-Pypc-trA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_qMa2zhhpEeuS0-Pypc-trA" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMa2zxhpEeuS0-Pypc-trA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_qMa2xhhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yezjuBhpEeuS0-Pypc-trA" x="58" y="52" width="90" height="31"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_qMXzgxhpEeuS0-Pypc-trA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_qMXzhBhpEeuS0-Pypc-trA"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMaP0BhpEeuS0-Pypc-trA" type="3012" element="_qMTiChhpEeuS0-Pypc-trA">
+            <children xmi:type="notation:Node" xmi:id="_qMaP0xhpEeuS0-Pypc-trA" type="5010">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_yezjuxhpEeuS0-Pypc-trA" y="5"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_qMa20BhpEeuS0-Pypc-trA" type="3003" element="_qMTiCxhpEeuS0-Pypc-trA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_qMa20RhpEeuS0-Pypc-trA" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMa20hhpEeuS0-Pypc-trA"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_qMaP0RhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yezjuhhpEeuS0-Pypc-trA" x="-2" y="34" width="10" height="10"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_qMXzfxhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yezjtRhpEeuS0-Pypc-trA" x="350" y="333" width="140" height="122"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_qMQetBhpEeuS0-Pypc-trA"/>
+        <edges xmi:type="notation:Edge" xmi:id="_qMa20xhpEeuS0-Pypc-trA" type="4001" element="_qMUJEBhpEeuS0-Pypc-trA" source="_qMXMYBhpEeuS0-Pypc-trA" target="_qMXMZRhpEeuS0-Pypc-trA">
+          <children xmi:type="notation:Node" xmi:id="_qMbd0xhpEeuS0-Pypc-trA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMbd1BhpEeuS0-Pypc-trA" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMbd1RhpEeuS0-Pypc-trA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMbd1hhpEeuS0-Pypc-trA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMbd1xhpEeuS0-Pypc-trA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMbd2BhpEeuS0-Pypc-trA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_qMbd0BhpEeuS0-Pypc-trA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_qMbd0RhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+          <styles xmi:type="notation:StringValueStyle" xmi:id="_qSN8wBhpEeuS0-Pypc-trA" name="junctionPoints" stringValue="()"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qMbd0hhpEeuS0-Pypc-trA" points="[0, 0, 0, -30]$[0, 30, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qMbd2RhpEeuS0-Pypc-trA" id="(0.3333333333333336,1.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qMbd2hhpEeuS0-Pypc-trA" id="(0.5,0.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_qMbd2xhpEeuS0-Pypc-trA" type="4001" element="_qMUwIhhpEeuS0-Pypc-trA" source="_qMXMYBhpEeuS0-Pypc-trA" target="_qMXMahhpEeuS0-Pypc-trA">
+          <children xmi:type="notation:Node" xmi:id="_qMbd3xhpEeuS0-Pypc-trA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMbd4BhpEeuS0-Pypc-trA" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMbd4RhpEeuS0-Pypc-trA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMbd4hhpEeuS0-Pypc-trA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMbd4xhpEeuS0-Pypc-trA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMbd5BhpEeuS0-Pypc-trA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_qMbd3BhpEeuS0-Pypc-trA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_qMbd3RhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+          <styles xmi:type="notation:StringValueStyle" xmi:id="_qSN8wRhpEeuS0-Pypc-trA" name="junctionPoints" stringValue="()"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qMbd3hhpEeuS0-Pypc-trA" points="[0, 0, -99, -60]$[0, 15, -99, -45]$[99, 15, 0, -45]$[99, 60, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qMcE4BhpEeuS0-Pypc-trA" id="(0.6666666666666664,1.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qMcE4RhpEeuS0-Pypc-trA" id="(0.5,0.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_qMcE4hhpEeuS0-Pypc-trA" type="4001" element="_qMUwJxhpEeuS0-Pypc-trA" source="_qMXMahhpEeuS0-Pypc-trA" target="_qMXMbxhpEeuS0-Pypc-trA">
+          <children xmi:type="notation:Node" xmi:id="_qMcE5hhpEeuS0-Pypc-trA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMcE5xhpEeuS0-Pypc-trA" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMcE6BhpEeuS0-Pypc-trA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMcE6RhpEeuS0-Pypc-trA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMcE6hhpEeuS0-Pypc-trA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMcE6xhpEeuS0-Pypc-trA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_qMcE4xhpEeuS0-Pypc-trA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_qMcE5BhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+          <styles xmi:type="notation:StringValueStyle" xmi:id="_qSN8whhpEeuS0-Pypc-trA" name="junctionPoints" stringValue="()"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qMcE5RhpEeuS0-Pypc-trA" points="[0, 0, 0, -60]$[0, 60, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qMcE7BhpEeuS0-Pypc-trA" id="(0.5,1.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qMcE7RhpEeuS0-Pypc-trA" id="(0.5,0.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_qMcE7hhpEeuS0-Pypc-trA" type="4001" element="_qMUwLBhpEeuS0-Pypc-trA" source="_qMZBpBhpEeuS0-Pypc-trA" target="_qMa2xRhpEeuS0-Pypc-trA">
+          <children xmi:type="notation:Node" xmi:id="_qMcE8hhpEeuS0-Pypc-trA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMcE8xhpEeuS0-Pypc-trA" x="-4" y="9"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMcE9BhpEeuS0-Pypc-trA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMcE9RhpEeuS0-Pypc-trA" x="4" y="-9"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMcE9hhpEeuS0-Pypc-trA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMcE9xhpEeuS0-Pypc-trA" x="4" y="-9"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_qMcE7xhpEeuS0-Pypc-trA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_qMcE8BhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+          <styles xmi:type="notation:StringValueStyle" xmi:id="_qSN8yBhpEeuS0-Pypc-trA" name="junctionPoints" stringValue="()"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qMcE8RhpEeuS0-Pypc-trA" points="[0, 0, 339, -161]$[-339, 161, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qMcr8BhpEeuS0-Pypc-trA" id="(0.6666666666666666,1.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qMcr8RhpEeuS0-Pypc-trA" id="(0.5,0.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_qMcr8hhpEeuS0-Pypc-trA" type="4001" element="_qMUwMRhpEeuS0-Pypc-trA" source="_qMZBpBhpEeuS0-Pypc-trA" target="_qMZBqRhpEeuS0-Pypc-trA">
+          <children xmi:type="notation:Node" xmi:id="_qMcr9hhpEeuS0-Pypc-trA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMcr9xhpEeuS0-Pypc-trA" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMcr-BhpEeuS0-Pypc-trA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMcr-RhpEeuS0-Pypc-trA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMcr-hhpEeuS0-Pypc-trA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMcr-xhpEeuS0-Pypc-trA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_qMcr8xhpEeuS0-Pypc-trA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_qMcr9BhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+          <styles xmi:type="notation:StringValueStyle" xmi:id="_qSN8wxhpEeuS0-Pypc-trA" name="junctionPoints" stringValue="()"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qMcr9RhpEeuS0-Pypc-trA" points="[0, 0, 0, -20]$[0, 20, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qMcr_BhpEeuS0-Pypc-trA" id="(0.3333333333333333,1.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qMcr_RhpEeuS0-Pypc-trA" id="(0.5,0.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_qMcr_hhpEeuS0-Pypc-trA" type="4001" element="_qMUwNhhpEeuS0-Pypc-trA" source="_qMaPsBhpEeuS0-Pypc-trA" target="_qMaPtRhpEeuS0-Pypc-trA">
+          <children xmi:type="notation:Node" xmi:id="_qMcsAhhpEeuS0-Pypc-trA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMcsAxhpEeuS0-Pypc-trA" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMcsBBhpEeuS0-Pypc-trA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMcsBRhpEeuS0-Pypc-trA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMcsBhhpEeuS0-Pypc-trA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMcsBxhpEeuS0-Pypc-trA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_qMcr_xhpEeuS0-Pypc-trA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_qMcsABhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+          <styles xmi:type="notation:StringValueStyle" xmi:id="_qSN8xRhpEeuS0-Pypc-trA" name="junctionPoints" stringValue="()"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qMcsARhpEeuS0-Pypc-trA" points="[0, 0, -110, -20]$[0, 10, -110, -10]$[110, 10, 0, -10]$[110, 20, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qMcsCBhpEeuS0-Pypc-trA" id="(0.6666666666666666,1.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qMcsCRhpEeuS0-Pypc-trA" id="(0.5,0.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_qMcsChhpEeuS0-Pypc-trA" type="4001" element="_qMVXMBhpEeuS0-Pypc-trA" source="_qMaPsBhpEeuS0-Pypc-trA" target="_qMaPuhhpEeuS0-Pypc-trA">
+          <children xmi:type="notation:Node" xmi:id="_qMcsDhhpEeuS0-Pypc-trA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMcsDxhpEeuS0-Pypc-trA" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMcsEBhpEeuS0-Pypc-trA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMcsERhpEeuS0-Pypc-trA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMcsEhhpEeuS0-Pypc-trA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMcsExhpEeuS0-Pypc-trA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_qMcsCxhpEeuS0-Pypc-trA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_qMcsDBhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+          <styles xmi:type="notation:StringValueStyle" xmi:id="_qSN8xhhpEeuS0-Pypc-trA" name="junctionPoints" stringValue="()"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qMcsDRhpEeuS0-Pypc-trA" points="[0, 0, 0, -20]$[0, 20, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qMcsFBhpEeuS0-Pypc-trA" id="(0.3333333333333333,1.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qMcsFRhpEeuS0-Pypc-trA" id="(0.5,0.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_qMdTABhpEeuS0-Pypc-trA" type="4001" element="_qMVXNRhpEeuS0-Pypc-trA" source="_qMaPtRhpEeuS0-Pypc-trA" target="_qMaPvxhpEeuS0-Pypc-trA">
+          <children xmi:type="notation:Node" xmi:id="_qMdTBBhpEeuS0-Pypc-trA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMdTBRhpEeuS0-Pypc-trA" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMdTBhhpEeuS0-Pypc-trA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMdTBxhpEeuS0-Pypc-trA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMdTCBhpEeuS0-Pypc-trA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMdTCRhpEeuS0-Pypc-trA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_qMdTARhpEeuS0-Pypc-trA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_qMdTAhhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+          <styles xmi:type="notation:StringValueStyle" xmi:id="_qSN8xxhpEeuS0-Pypc-trA" name="junctionPoints" stringValue="()"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qMdTAxhpEeuS0-Pypc-trA" points="[0, 0, 0, -20]$[0, 20, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qMdTChhpEeuS0-Pypc-trA" id="(0.5,1.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qMdTCxhpEeuS0-Pypc-trA" id="(0.5,0.0)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_qMdTDBhpEeuS0-Pypc-trA" type="4001" element="_qMVXOhhpEeuS0-Pypc-trA" source="_qMa2wBhpEeuS0-Pypc-trA" target="_qMaPsBhpEeuS0-Pypc-trA">
+          <children xmi:type="notation:Node" xmi:id="_qMdTEBhpEeuS0-Pypc-trA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMdTERhpEeuS0-Pypc-trA" x="-4"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMdTEhhpEeuS0-Pypc-trA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMdTExhpEeuS0-Pypc-trA" x="4" y="2"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_qMdTFBhpEeuS0-Pypc-trA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qMdTFRhpEeuS0-Pypc-trA" x="3" y="3"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_qMdTDRhpEeuS0-Pypc-trA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_qMdTDhhpEeuS0-Pypc-trA" fontName="Segoe UI" fontHeight="12"/>
+          <styles xmi:type="notation:StringValueStyle" xmi:id="_qSN8xBhpEeuS0-Pypc-trA" name="junctionPoints" stringValue="()"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_qMdTDxhpEeuS0-Pypc-trA" points="[0, 0, 469, -29]$[-469, 29, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qMdTFhhpEeuS0-Pypc-trA" id="(0.5,1.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_qMdTFxhpEeuS0-Pypc-trA" id="(0.5,0.0)"/>
+        </edges>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_qMVXPxhpEeuS0-Pypc-trA" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_qMVXQBhpEeuS0-Pypc-trA"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_qMRFwBhpEeuS0-Pypc-trA" name="Class1" outgoingEdges="_qMUJEBhpEeuS0-Pypc-trA _qMUwIhhpEeuS0-Pypc-trA" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/Class1"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/Class1"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_qMRFwRhpEeuS0-Pypc-trA" labelSize="12" borderColor="39,76,114" labelPosition="node" color="114,159,207">
+        <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_qMRFwxhpEeuS0-Pypc-trA" name="Class2" incomingEdges="_qMUJEBhpEeuS0-Pypc-trA" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/Class2"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/Class2"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_qMRFxBhpEeuS0-Pypc-trA" labelSize="12" borderColor="39,76,114" labelPosition="node" color="114,159,207">
+        <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_qMRFxhhpEeuS0-Pypc-trA" name="Class3" outgoingEdges="_qMUwJxhpEeuS0-Pypc-trA" incomingEdges="_qMUwIhhpEeuS0-Pypc-trA" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/Class3"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/Class3"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_qMRFxxhpEeuS0-Pypc-trA" labelSize="12" borderColor="39,76,114" labelPosition="node" color="114,159,207">
+        <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_qMRFyRhpEeuS0-Pypc-trA" name="Class4" incomingEdges="_qMUwJxhpEeuS0-Pypc-trA" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/Class4"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/Class4"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_qMRFyhhpEeuS0-Pypc-trA" labelSize="12" borderColor="39,76,114" labelPosition="node" color="114,159,207">
+        <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_qMRs0BhpEeuS0-Pypc-trA" name="p1">
+      <target xmi:type="ecore:EPackage" href="My.ecore#//packageForArrangeSelectionTest/p1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//packageForArrangeSelectionTest/p1"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_qMRs0RhpEeuS0-Pypc-trA" labelSize="12" borderSize="1" borderSizeComputationExpression="1" backgroundColor="114,159,207" foregroundColor="194,239,255">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@containerMappings[name='Packages']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@containerMappings[name='Packages']"/>
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_qMST4BhpEeuS0-Pypc-trA" name="Class1_1" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p1/Class1_1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p1/Class1_1"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_qMST4RhpEeuS0-Pypc-trA" labelSize="12" borderColor="39,76,114" labelPosition="node" color="114,159,207">
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_qMST4xhpEeuS0-Pypc-trA" name="Class1_2" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p1/Class1_2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p1/Class1_2"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_qMST5BhpEeuS0-Pypc-trA" labelSize="12" borderColor="39,76,114" labelPosition="node" color="114,159,207">
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']"/>
+      </ownedDiagramElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_qMRs0xhpEeuS0-Pypc-trA" name="p2">
+      <target xmi:type="ecore:EPackage" href="My.ecore#//packageForArrangeSelectionTest/p2"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//packageForArrangeSelectionTest/p2"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_qMRs1BhpEeuS0-Pypc-trA" labelSize="12" borderSize="1" borderSizeComputationExpression="1" backgroundColor="114,159,207" foregroundColor="194,239,255">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@containerMappings[name='Packages']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@containerMappings[name='Packages']"/>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_qMST5hhpEeuS0-Pypc-trA" name="p2_2">
+        <target xmi:type="ecore:EPackage" href="My.ecore#//packageForArrangeSelectionTest/p2/p2_2"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//packageForArrangeSelectionTest/p2/p2_2"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_qMST5xhpEeuS0-Pypc-trA" labelSize="12" borderSize="1" borderSizeComputationExpression="1" backgroundColor="114,159,207" foregroundColor="194,239,255">
+          <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@containerMappings[name='Packages']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@containerMappings[name='Packages']"/>
+        <ownedDiagramElements xmi:type="diagram:DNode" uid="_qMST6RhpEeuS0-Pypc-trA" name="Class2_2_1" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p2/p2_2/Class2_2_1"/>
+          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p2/p2_2/Class2_2_1"/>
+          <ownedStyle xmi:type="diagram:Square" uid="_qMST6hhpEeuS0-Pypc-trA" labelSize="12" borderColor="39,76,114" labelPosition="node" color="114,159,207">
+            <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']"/>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNode" uid="_qMS68BhpEeuS0-Pypc-trA" name="Class2_2_2" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p2/p2_2/Class2_2_2"/>
+          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p2/p2_2/Class2_2_2"/>
+          <ownedStyle xmi:type="diagram:Square" uid="_qMS68RhpEeuS0-Pypc-trA" labelSize="12" borderColor="39,76,114" labelPosition="node" color="114,159,207">
+            <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_qMS68xhpEeuS0-Pypc-trA" name="Class2_1" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p2/Class2_1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p2/Class2_1"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_qMS69BhpEeuS0-Pypc-trA" labelSize="12" borderColor="39,76,114" labelPosition="node" color="114,159,207">
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_qMS69hhpEeuS0-Pypc-trA" name="Class2_2" outgoingEdges="_qMUwLBhpEeuS0-Pypc-trA _qMUwMRhpEeuS0-Pypc-trA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p2/Class2_2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p2/Class2_2"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_qMS69xhpEeuS0-Pypc-trA" labelSize="12" borderColor="39,76,114" labelPosition="node" color="114,159,207">
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_qMS6-RhpEeuS0-Pypc-trA" name="Class2_3" incomingEdges="_qMUwMRhpEeuS0-Pypc-trA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p2/Class2_3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p2/Class2_3"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_qMS6-hhpEeuS0-Pypc-trA" labelSize="12" borderColor="39,76,114" labelPosition="node" color="114,159,207">
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']"/>
+      </ownedDiagramElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_qMRs1hhpEeuS0-Pypc-trA" name="p3">
+      <target xmi:type="ecore:EPackage" href="My.ecore#//packageForArrangeSelectionTest/p3"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//packageForArrangeSelectionTest/p3"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_qMRs1xhpEeuS0-Pypc-trA" labelSize="12" borderSize="1" borderSizeComputationExpression="1" backgroundColor="114,159,207" foregroundColor="194,239,255">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@containerMappings[name='Packages']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@containerMappings[name='Packages']"/>
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_qMS6_BhpEeuS0-Pypc-trA" name="Class3_1" outgoingEdges="_qMUwNhhpEeuS0-Pypc-trA _qMVXMBhpEeuS0-Pypc-trA" incomingEdges="_qMVXOhhpEeuS0-Pypc-trA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p3/Class3_1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p3/Class3_1"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_qMS6_RhpEeuS0-Pypc-trA" labelSize="12" borderColor="39,76,114" labelPosition="node" color="114,159,207">
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_qMTiARhpEeuS0-Pypc-trA" name="Class3_2" outgoingEdges="_qMVXNRhpEeuS0-Pypc-trA" incomingEdges="_qMUwNhhpEeuS0-Pypc-trA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p3/Class3_2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p3/Class3_2"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_qMTiAhhpEeuS0-Pypc-trA" labelSize="12" borderColor="39,76,114" labelPosition="node" color="114,159,207">
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_qMTiBBhpEeuS0-Pypc-trA" name="Class3_3" incomingEdges="_qMVXMBhpEeuS0-Pypc-trA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p3/Class3_3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p3/Class3_3"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_qMTiBRhpEeuS0-Pypc-trA" labelSize="12" borderColor="39,76,114" labelPosition="node" color="114,159,207">
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_qMTiBxhpEeuS0-Pypc-trA" name="Class3_4" incomingEdges="_qMVXNRhpEeuS0-Pypc-trA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p3/Class3_4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p3/Class3_4"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_qMTiCBhpEeuS0-Pypc-trA" labelSize="12" borderColor="39,76,114" labelPosition="node" color="114,159,207">
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']"/>
+      </ownedDiagramElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_qMRs2RhpEeuS0-Pypc-trA" name="p4">
+      <target xmi:type="ecore:EPackage" href="My.ecore#//packageForArrangeSelectionTest/p4"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//packageForArrangeSelectionTest/p4"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_qMTiChhpEeuS0-Pypc-trA" name="att1" width="1" height="1" resizeKind="NSEW">
+        <target xmi:type="ecore:EAttribute" href="My.ecore#//packageForArrangeSelectionTest/p4/Class4_1/att1"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//packageForArrangeSelectionTest/p4/Class4_1/att1"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_qMTiCxhpEeuS0-Pypc-trA" labelSize="12" labelPosition="node" color="39,76,114">
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@containerMappings[name='Packages']/@borderedNodeMappings[name='attributesOfClasses']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@containerMappings[name='Packages']/@borderedNodeMappings[name='attributesOfClasses']"/>
+      </ownedBorderedNodes>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_qMRs2hhpEeuS0-Pypc-trA" labelSize="12" borderSize="1" borderSizeComputationExpression="1" backgroundColor="114,159,207" foregroundColor="194,239,255">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@containerMappings[name='Packages']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@containerMappings[name='Packages']"/>
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_qMTiDRhpEeuS0-Pypc-trA" name="Class4_1" outgoingEdges="_qMVXOhhpEeuS0-Pypc-trA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p4/Class4_1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p4/Class4_1"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_qMTiDhhpEeuS0-Pypc-trA" labelSize="12" borderColor="39,76,114" labelPosition="node" color="114,159,207">
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_qMTiEBhpEeuS0-Pypc-trA" name="Class4_2" incomingEdges="_qMUwLBhpEeuS0-Pypc-trA" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p4/Class4_2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//packageForArrangeSelectionTest/p4/Class4_2"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_qMTiERhpEeuS0-Pypc-trA" labelSize="12" borderColor="39,76,114" labelPosition="node" color="114,159,207">
+          <description xmi:type="style:SquareDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@nodeMappings[name='Classes']"/>
+      </ownedDiagramElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_qMUJEBhpEeuS0-Pypc-trA" sourceNode="_qMRFwBhpEeuS0-Pypc-trA" targetNode="_qMRFwxhpEeuS0-Pypc-trA">
+      <target xmi:type="ecore:EReference" href="My.ecore#//packageForArrangeSelectionTest/Class1/to2"/>
+      <semanticElements xmi:type="ecore:EReference" href="My.ecore#//packageForArrangeSelectionTest/Class1/to2"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_qMUJERhpEeuS0-Pypc-trA" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@edgeMappings[name='References']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_qMUJEhhpEeuS0-Pypc-trA" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@edgeMappings[name='References']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_qMUwIhhpEeuS0-Pypc-trA" sourceNode="_qMRFwBhpEeuS0-Pypc-trA" targetNode="_qMRFxhhpEeuS0-Pypc-trA">
+      <target xmi:type="ecore:EReference" href="My.ecore#//packageForArrangeSelectionTest/Class1/to3"/>
+      <semanticElements xmi:type="ecore:EReference" href="My.ecore#//packageForArrangeSelectionTest/Class1/to3"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_qMUwIxhpEeuS0-Pypc-trA" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@edgeMappings[name='References']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_qMUwJBhpEeuS0-Pypc-trA" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@edgeMappings[name='References']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_qMUwJxhpEeuS0-Pypc-trA" sourceNode="_qMRFxhhpEeuS0-Pypc-trA" targetNode="_qMRFyRhpEeuS0-Pypc-trA">
+      <target xmi:type="ecore:EReference" href="My.ecore#//packageForArrangeSelectionTest/Class3/to4"/>
+      <semanticElements xmi:type="ecore:EReference" href="My.ecore#//packageForArrangeSelectionTest/Class3/to4"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_qMUwKBhpEeuS0-Pypc-trA" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@edgeMappings[name='References']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_qMUwKRhpEeuS0-Pypc-trA" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@edgeMappings[name='References']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_qMUwLBhpEeuS0-Pypc-trA" sourceNode="_qMS69hhpEeuS0-Pypc-trA" targetNode="_qMTiEBhpEeuS0-Pypc-trA">
+      <target xmi:type="ecore:EReference" href="My.ecore#//packageForArrangeSelectionTest/p2/Class2_2/toClass4_2"/>
+      <semanticElements xmi:type="ecore:EReference" href="My.ecore#//packageForArrangeSelectionTest/p2/Class2_2/toClass4_2"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_qMUwLRhpEeuS0-Pypc-trA" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@edgeMappings[name='References']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_qMUwLhhpEeuS0-Pypc-trA" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@edgeMappings[name='References']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_qMUwMRhpEeuS0-Pypc-trA" sourceNode="_qMS69hhpEeuS0-Pypc-trA" targetNode="_qMS6-RhpEeuS0-Pypc-trA">
+      <target xmi:type="ecore:EReference" href="My.ecore#//packageForArrangeSelectionTest/p2/Class2_2/toClass2_3"/>
+      <semanticElements xmi:type="ecore:EReference" href="My.ecore#//packageForArrangeSelectionTest/p2/Class2_2/toClass2_3"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_qMUwMhhpEeuS0-Pypc-trA" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@edgeMappings[name='References']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_qMUwMxhpEeuS0-Pypc-trA" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@edgeMappings[name='References']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_qMUwNhhpEeuS0-Pypc-trA" sourceNode="_qMS6_BhpEeuS0-Pypc-trA" targetNode="_qMTiARhpEeuS0-Pypc-trA">
+      <target xmi:type="ecore:EReference" href="My.ecore#//packageForArrangeSelectionTest/p3/Class3_1/toClass3_2"/>
+      <semanticElements xmi:type="ecore:EReference" href="My.ecore#//packageForArrangeSelectionTest/p3/Class3_1/toClass3_2"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_qMUwNxhpEeuS0-Pypc-trA" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@edgeMappings[name='References']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_qMUwOBhpEeuS0-Pypc-trA" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@edgeMappings[name='References']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_qMVXMBhpEeuS0-Pypc-trA" sourceNode="_qMS6_BhpEeuS0-Pypc-trA" targetNode="_qMTiBBhpEeuS0-Pypc-trA">
+      <target xmi:type="ecore:EReference" href="My.ecore#//packageForArrangeSelectionTest/p3/Class3_1/toClass3_3"/>
+      <semanticElements xmi:type="ecore:EReference" href="My.ecore#//packageForArrangeSelectionTest/p3/Class3_1/toClass3_3"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_qMVXMRhpEeuS0-Pypc-trA" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@edgeMappings[name='References']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_qMVXMhhpEeuS0-Pypc-trA" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@edgeMappings[name='References']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_qMVXNRhpEeuS0-Pypc-trA" sourceNode="_qMTiARhpEeuS0-Pypc-trA" targetNode="_qMTiBxhpEeuS0-Pypc-trA">
+      <target xmi:type="ecore:EReference" href="My.ecore#//packageForArrangeSelectionTest/p3/Class3_2/toClass3_4"/>
+      <semanticElements xmi:type="ecore:EReference" href="My.ecore#//packageForArrangeSelectionTest/p3/Class3_2/toClass3_4"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_qMVXNhhpEeuS0-Pypc-trA" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@edgeMappings[name='References']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_qMVXNxhpEeuS0-Pypc-trA" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@edgeMappings[name='References']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_qMVXOhhpEeuS0-Pypc-trA" sourceNode="_qMTiDRhpEeuS0-Pypc-trA" targetNode="_qMS6_BhpEeuS0-Pypc-trA">
+      <target xmi:type="ecore:EReference" href="My.ecore#//packageForArrangeSelectionTest/p4/Class4_1/toClass3_1"/>
+      <semanticElements xmi:type="ecore:EReference" href="My.ecore#//packageForArrangeSelectionTest/p4/Class4_1/toClass3_1"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_qMVXOxhpEeuS0-Pypc-trA" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@edgeMappings[name='References']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_qMVXPBhpEeuS0-Pypc-trA" labelSize="12"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer/@edgeMappings[name='References']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_qMP3oBhpEeuS0-Pypc-trA"/>
+    <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithContainerAndEdges']/@defaultLayer"/>
     <target xmi:type="ecore:EPackage" href="My.ecore#//packageForArrangeSelectionTest"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>

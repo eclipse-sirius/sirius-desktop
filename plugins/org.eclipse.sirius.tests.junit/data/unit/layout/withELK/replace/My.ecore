@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root">
+  <eClassifiers xsi:type="ecore:EClass" name="MyClass1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="to2" eType="#//MyClass2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="to3" eType="#//MyClass3"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="att1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="att2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="att3" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="att4" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="att5" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="att6" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="att6" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MyClass2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MyClass3">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="to4" eType="#//MyClass4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MyClass4"/>
+  <eSubpackages name="packageForAuthorizedSideTest">
+    <eSubpackages name="p1">
+      <eClassifiers xsi:type="ecore:EClass" name="C1">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="toC2" eType="#//packageForAuthorizedSideTest/p2/C2"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="p2">
+      <eClassifiers xsi:type="ecore:EClass" name="C2"/>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="packageForArrangeSelectionTest">
+    <eClassifiers xsi:type="ecore:EClass" name="Class1">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="to2" eType="#//packageForArrangeSelectionTest/Class2"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="to3" eType="#//packageForArrangeSelectionTest/Class3"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="att1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="att2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="att3" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="att4" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="att5" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="att6" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="att6" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Class2"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Class3">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="to4" eType="#//packageForArrangeSelectionTest/Class4"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="Class4"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Class5"/>
+    <eClassifiers xsi:type="ecore:EClass" name="Class6"/>
+    <eSubpackages name="p1">
+      <eClassifiers xsi:type="ecore:EClass" name="Class1_1"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Class1_2"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Class1_3"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Class1_4"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Class1_5"/>
+    </eSubpackages>
+    <eSubpackages name="p2">
+      <eClassifiers xsi:type="ecore:EClass" name="Class2_1"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Class2_2">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="toClass4_2" eType="#//packageForArrangeSelectionTest/p4/Class4_2"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="toClass2_3" eType="#//packageForArrangeSelectionTest/p2/Class2_3"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Class2_3"/>
+      <eSubpackages name="p2_2">
+        <eClassifiers xsi:type="ecore:EClass" name="Class2_2_1"/>
+        <eClassifiers xsi:type="ecore:EClass" name="Class2_2_2"/>
+        <eClassifiers xsi:type="ecore:EClass" name="Class2_2_3"/>
+      </eSubpackages>
+    </eSubpackages>
+    <eSubpackages name="p3">
+      <eClassifiers xsi:type="ecore:EClass" name="Class3_1">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="toClass3_2" eType="#//packageForArrangeSelectionTest/p3/Class3_2"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="toClass3_3" eType="#//packageForArrangeSelectionTest/p3/Class3_3"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Class3_2">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="toClass3_4" eType="#//packageForArrangeSelectionTest/p3/Class3_4"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="toClass3_6" eType="#//packageForArrangeSelectionTest/p3/Class3_6"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Class3_3"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Class3_4"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Class3_5">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="toClass3_6" eType="#//packageForArrangeSelectionTest/p3/Class3_6"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Class3_6"/>
+    </eSubpackages>
+    <eSubpackages name="p4">
+      <eClassifiers xsi:type="ecore:EClass" name="Class4_1">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="att1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+        <eStructuralFeatures xsi:type="ecore:EReference" name="toClass3_1" eType="#//packageForArrangeSelectionTest/p3/Class3_1"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="Class4_2"/>
+    </eSubpackages>
+  </eSubpackages>
+</ecore:EPackage>
