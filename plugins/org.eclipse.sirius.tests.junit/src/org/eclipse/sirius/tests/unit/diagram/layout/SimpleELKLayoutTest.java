@@ -770,6 +770,37 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     }
 
     /**
+     * Makes sure that the result of an arrange selection of some children of a container respect the following rules:
+     * <UL>
+     * <LI>The top-left corner of bounding box of selected elements remains the same</LI>
+     * <LI>Selected elements are layouted according to each others (but by ignoring other not selected elements,
+     * potential overlap with these elements)</LI>
+     * <LI>The container size and location are not changed.</LI>
+     * <UL>
+     */
+    public void testArrangeSelectionResultOnSomeContainerChildren() {
+        openDiagram("diagramWithContainer");
+
+        IGraphicalEditPart p2EditPart = getEditPart("p2");
+        Rectangle boundsOfP2BeforeLayout = p2EditPart.getFigure().getBounds().getCopy();
+        IGraphicalEditPart class22EditPart = getEditPart("Class2_2");
+        IGraphicalEditPart class21EditPart = getEditPart("Class2_1");
+        Point topLeftCornerBeforeLayout = getTopLeftCorner(class21EditPart, class22EditPart);
+
+        // Launch an arrange selection
+        arrangeSelection(class22EditPart, class21EditPart);
+
+        // Assert that the top-left corner of bounding box remains the same
+        assertEquals("The top-left corner of the bounding box of layouted elements should remain the same.", topLeftCornerBeforeLayout, getTopLeftCorner(class21EditPart, class22EditPart));
+
+        // Assert content is layouted
+        assertAlignCentered(50, "Class2_1", "Class2_2");
+
+        // Assert that the location and the size of the container is the same before and after the layout
+        assertEquals("The location and the size of the container should be the same before and after the layout.", boundsOfP2BeforeLayout, p2EditPart.getFigure().getBounds());
+    }
+
+    /**
      * Makes sure that the result of an arrange selection of a container and some children of other container respect
      * the following rules:
      * <UL>
