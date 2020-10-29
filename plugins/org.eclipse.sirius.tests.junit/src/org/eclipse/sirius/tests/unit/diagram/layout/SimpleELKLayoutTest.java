@@ -658,6 +658,35 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     }
 
     /**
+     * Makes sure that the result of an arrange all respect the following rules:
+     * <UL>
+     * <LI>The top left corner of the bounding box is {20, 20}</LI>
+     * <LI>There is no scrollbar on all containers</LI>
+     * <LI>All the containers's contents correctly layouted</LI>
+     * <UL>
+     */
+    public void testArrangeAllResultOfDiagramWithOneChild() {
+        openDiagram("diagramWithContainerWithOnlyOneChild");
+
+        // Launch an arrange all
+        arrangeAll((DiagramEditor) editorPart);
+
+        // Assert that the bounding box coordinates of all elements are {20, 20}
+        // Compute primary edit parts (first level edit parts of the container)
+        List<?> primaryEditParts = getPrimaryEditParts(editorPart.getDiagramEditPart());
+        List<IGraphicalEditPart> primaryGraphicalEditParts = Lists.newArrayList(Iterables.filter(primaryEditParts, IGraphicalEditPart.class));
+        Rectangle boundingbox = DiagramImageUtils.calculateImageRectangle(primaryGraphicalEditParts, 0, new Dimension(0, 0));
+        assertEquals("Wrong x coordinate for the bounding box of all diagram elements.", ResetOriginChangeModelOperation.MARGIN, boundingbox.x());
+        assertEquals("Wrong y coordinate for the bounding box of all diagram elements.", ResetOriginChangeModelOperation.MARGIN, boundingbox.y());
+
+        // Assert that there is no scroll bar on all containers
+        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p1"));
+
+        // Assert that content of all containers is "correctly layouted"
+        assertAlignCentered(50, "Class1_1", "Class1_2");
+    }
+
+    /**
      * Makes sure that the result of an arrange selection on one container respect the following rules:
      * <UL>
      * <LI>No scroll bar in the container (container resized)</LI>
