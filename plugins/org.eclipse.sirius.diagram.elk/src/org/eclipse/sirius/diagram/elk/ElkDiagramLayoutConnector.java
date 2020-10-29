@@ -133,6 +133,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusTextEditPart;
 import org.eclipse.sirius.diagram.ui.internal.operation.ResetOriginChangeModelOperation;
 import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
+import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AlphaDropShadowBorder;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
@@ -521,11 +522,11 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             // only one element (ie one parent). So we want to keep it at a fixed location. For that we use the bounds
             // of the node to determine the size of the graph. We also set its identifier according to its only child.
             // We can not use directly the node as the graph root (in case of it has bordered node) .
-            Rectangle childAbsoluteBounds = getAbsoluteBounds(layoutRootPart.getFigure());
+            Rectangle childAbsoluteBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(layoutRootPart, true);
             IGraphicalEditPart parentEditPart = getTopGraphicParentEditPartIfPresent(layoutRootPart);
             if (parentEditPart != null && !(parentEditPart instanceof DiagramEditPart)) {
                 // Compute the parent location origin
-                parentLocation = getAbsoluteBounds(parentEditPart.getFigure()).getTopLeft();
+                parentLocation = GraphicalHelper.getAbsoluteBoundsIn100Percent(parentEditPart).getTopLeft();
             }
             topNode.setLocation(0, 0);
             topNode.setDimensions(childAbsoluteBounds.preciseX() + childAbsoluteBounds.preciseWidth(), childAbsoluteBounds.preciseY() + childAbsoluteBounds.preciseHeight());
@@ -541,7 +542,6 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 // larger than the existing one. But it is not allowed to be reduced.
                 parentNode.setProperty(CoreOptions.NODE_SIZE_MINIMUM, new KVector(parentNode.getHeight(), parentNode.getWidth()));
             } else {
-                Rectangle rootBounds = layoutRootPart.getFigure().getBounds();
                 if (layoutRootPart == diagramEditPart) {
                     String labelText = diagramEditPart.getDiagramView().getName();
                     if (labelText.length() > 0) {
@@ -549,9 +549,9 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                         label.setText(labelText);
                     }
                 } else {
-                    topNode.setLocation(rootBounds.x, rootBounds.y);
+                    topNode.setLocation(childAbsoluteBounds.x, childAbsoluteBounds.y);
                 }
-                topNode.setDimensions(rootBounds.width, rootBounds.height);
+                topNode.setDimensions(childAbsoluteBounds.width, childAbsoluteBounds.height);
                 mapping.getGraphMap().put(topNode, layoutRootPart);
                 // Fix the size of the container. This option is ignored/unknown by ELK, we use it to store this
                 // information. It is used later, in transfertLayout, to ignore the layout of this container as we want
@@ -598,20 +598,20 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
 
             }
             if (layoutRootPart instanceof ShapeNodeEditPart) {
+                Dimension topLeftInsets = GMFHelper.getContainerTopLeftInsetsAfterLabel((Node) layoutRootPart.getNotationView(), true);
                 if (selection.size() == 1 && selection.get(0).equals(layoutRootPart)) {
-                    mapping.setProperty(COORDINATE_OFFSET, new KVector(minx - parentLocation.x(), miny - parentLocation.y()));
-                } else {
                     if (isArrangeAtOpening) {
+                        mapping.setProperty(COORDINATE_OFFSET, new KVector(minx - parentLocation.x() + topLeftInsets.width, miny - parentLocation.y() + topLeftInsets.height));
+                    } else {
+                        mapping.setProperty(COORDINATE_OFFSET, new KVector(minx - parentLocation.x(), miny - parentLocation.y()));
+                    }
+                } else if (!isArrangeAtOpening) {
+                    mapping.setProperty(COORDINATE_OFFSET, new KVector(minx, miny));
+                } else {
                         // Use the parent node bounds if the arrange selection concerns sub part of a container during
                         // an arrange at opening
-                        mapping.setProperty(COORDINATE_OFFSET, new KVector(parentNode.getX() - parentLocation.x(), parentNode.getY() - parentLocation.y()));
-                    } else {
-                        // Use the standard coordinates if the arrange selection concerns sub part of a container (with
-                        // the insets added)
-                        Dimension topLeftInsets = GMFHelper.getContainerTopLeftInsetsAfterLabel((Node) layoutRootPart.getNotationView(), true);
-                        // Add the insets
-                        mapping.setProperty(COORDINATE_OFFSET, new KVector(minx - parentLocation.x() - topLeftInsets.width, miny - parentLocation.y() - topLeftInsets.height));
-                    }
+                        mapping.setProperty(COORDINATE_OFFSET,
+                                new KVector(parentNode.getX() - parentLocation.x() - topLeftInsets.width, parentNode.getY() - parentLocation.y() - topLeftInsets.height));
                 }
             } else {
                 if (isArrangeAll || isArrangeAtOpening) {
@@ -994,7 +994,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         applyOptionsRelatedToElementTarget(newNode, elkTargetToOptionsOverrideMap);
 
         // set location and size
-        Rectangle childAbsoluteBounds = getAbsoluteBounds(nodeFigure);
+        Rectangle childAbsoluteBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent(nodeEditPart, true);
         KVector containerAbsoluteLocation = new KVector();
         ElkUtil.toAbsolute(containerAbsoluteLocation, parentElkNode);
         newNode.setX(childAbsoluteBounds.x - containerAbsoluteLocation.x);

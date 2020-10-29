@@ -1309,7 +1309,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class3_5"), getEditPart("Class3_6")));
         // TODO : The top left corner should be the same for container in other container (it is currently not the case)
         // (further improvement)
-        expectedContainerTopLeftCorner = new Point(0, 0);
+        expectedContainerTopLeftCorner = new Point(5, 6);
         assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class2_2_3")));
 
         // Assert that there is no scroll bar on container (for p1 and p3 the new elements layout is larger than
@@ -1366,7 +1366,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class3_5"), getEditPart("Class3_6")));
         // TODO : The top left corner should be the same for container in other container (it is currently not the case)
         // (further improvement)
-        expectedContainerTopLeftCorner = new Point(0, 0);
+        expectedContainerTopLeftCorner = new Point(5, 6);
         assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class2_2_3")));
 
         // Assert that there is no scroll bar on container (for p1 and p3 the new elements layout is larger than
