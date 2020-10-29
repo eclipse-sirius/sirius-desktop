@@ -371,7 +371,12 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                             layoutRootPart = (IGraphicalEditPart) parent;
                         }
                     } else if (!(object instanceof ConnectionEditPart)) {
-                        layoutRootPart = (IGraphicalEditPart) object;
+                        if (selection.size() == 1 && isArrangeAll) {
+                            // Specific case of arrange all launch on a diagram with only one children
+                            layoutRootPart = getTopGraphicParentEditPartIfPresent((IGraphicalEditPart) object);
+                        } else {
+                            layoutRootPart = (IGraphicalEditPart) object;
+                        }
                     }
                 }
             }
