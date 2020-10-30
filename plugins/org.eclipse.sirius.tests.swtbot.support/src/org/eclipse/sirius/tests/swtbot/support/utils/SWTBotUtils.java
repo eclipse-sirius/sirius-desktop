@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES and others
+ * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES and others
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -60,6 +60,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarDropDownButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.swtbot.swt.finder.widgets.TimeoutException;
+import org.eclipse.ui.forms.widgets.ExpandableComposite;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.junit.Assert;
@@ -824,6 +825,24 @@ public final class SWTBotUtils {
             @Override
             public String getFailureMessage() {
                 return "No model was added after the drag and drop.";
+            }
+        });
+    }
+
+    /**
+     * Expand an ExpandableComposite.
+     * 
+     * @param widget
+     *            the label of the ExpandableComposite.
+     * @param expanded
+     *            the expanded state.
+     */
+    public static void setExpanded(Label widget, boolean expanded) {
+        widget.getDisplay().syncExec(new Runnable() {
+            @Override
+            public void run() {
+                ExpandableComposite ec = (ExpandableComposite) widget.getParent();
+                ec.setExpanded(expanded);
             }
         });
     }
