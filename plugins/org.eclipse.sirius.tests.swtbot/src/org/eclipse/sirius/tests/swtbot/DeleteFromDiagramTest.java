@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
-import org.junit.Assert;
 
 /**
  * An exception was raised in some case when performing a delete from diagram.
@@ -42,8 +41,6 @@ public class DeleteFromDiagramTest extends AbstractSiriusSwtBotGefTestCase {
 
     private SWTBotGefEditPart node1Bot;
 
-    private int nbStatusInErrorLogBefore;
-
     @Override
     protected void onSetUpBeforeClosingWelcomePage() throws Exception {
         copyFileToTestProject(Activator.PLUGIN_ID, PATH, SEMANTIC_MODEL_PATH, AIRD_MODEL_PATH, MODELER_PATH);
@@ -59,7 +56,12 @@ public class DeleteFromDiagramTest extends AbstractSiriusSwtBotGefTestCase {
 
         node1Bot = editor.getEditPart("EClass1").parent();
 
-        nbStatusInErrorLogBefore = getNbStatusInErrorLog();
+        // Activate error and warning catch mechanisms (if it is not already done) and reset the previous messages
+        // caught
+        setErrorCatchActive(true);
+        setWarningCatchActive(true);
+        errors.clear();
+        warnings.clear();
     }
 
     private void initEditor() {
@@ -79,8 +81,9 @@ public class DeleteFromDiagramTest extends AbstractSiriusSwtBotGefTestCase {
 
         node1Bot.select();
         deleteFromDiagram();
-        // Checks that not new Status has appeared in error log
-        Assert.assertEquals(nbStatusInErrorLogBefore, getNbStatusInErrorLog());
+        // Checks that no new Status has appeared in error log
+        assertFalse("At least one warning occurs.", doesAWarningOccurs());
+        assertFalse("At least one errors occurs.", doesAnErrorOccurs());
     }
 
     @Override
