@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>copy_paste_format_new_semantic</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="CopyPasteFormatonnewsemantictargets">Copy-Paste Format on new semantic targets</h1>
+		<p>The current copy-paste format (layout and style) between diagrams relies on semantic target elements to find out which target element (paste) matches the source element (copy).</p>
+		<p>This new API allows to perform this copy-paste format based on a semantic source to semantic target map. </p>
+		<h2 id="APIdetails">API details</h2>
+		<p>A new API in 
+			<code>org.eclipse.sirius.diagram.ui.tools.api.format.MappingBasedSiriusFormatManagerFactory</code> has been added to make it possible to apply a copy-paste format to an existing or a new diagram with different semantic targets.
+		</p>
+		<h3 id="Precondition">Precondition</h3>
+		<p>The target diagram should have the same description (same definition in the VSM) than the source one.</p>
+		<h3 id="Applythecopypastefromasourcediagramtoanexistingtargetdiagram">Apply the copy-paste from a source diagram to an existing target diagram</h3>
+		<pre> /**
+     * Apply format on {@code targetDiagram} based on the {@code sourceDiagram}. Format data are applied only for
+     * diagram elements whose semantic object is provided in the {@code correspondenceMap}.
+     * 
+     * Calls to this API shall be embedded in a command.
+     * 
+     * @param sourceSession
+     *            The {@link Session} for the source diagram. Must not be null.
+     * @param sourceDiagram
+     *            The source diagram. Must not be null.
+     * @param correspondenceMap
+     *            The mapping function between source diagram elements and target diagram elements Must not be null. In
+     *            the case where {@code sourceDiagram} is a Sequence diagram, must provide a mapping for each semantic
+     *            element of {@code sourceDiagram}.
+     * @param targetSession
+     *            The {@link Session} for the target diagram. Must not be null.
+     * @param targetDiagram
+     *            The target diagram. Must not be null.
+     * @param copyNotes
+     *            Whether or not to copy source diagram notes to target diagram.
+     * @return The target diagram.
+     */
+    public DDiagram applyFormatOnDiagram(Session sourceSession, DDiagram sourceDiagram, final Map&lt;EObject, EObject&gt; correspondenceMap, Session targetSession, DDiagram targetDiagram, boolean copyNotes) 
+
+</pre>
+		<p>This first method will perform the copy-paste format from a source diagram to an existing target diagram. The target elements on which the layout and style will be applied are retrieved by using the source-target correspondence map. </p>
+		<p>Note that if an element in the target diagram has no corresponding source element in the source diagram, this element will keep its current style and layout.</p>
+		<h3 id="Applythecopypastefromasourcediagramtoanewtargetdiagram">Apply the copy-paste from a source diagram to a new target diagram</h3>
+		<pre>    /**
+     * Apply format on a new {@link DDiagram} for name {@code targetDiagramName} based on the {@code sourceDiagram}.
+     * Format data are applied only for diagram elements whose semantic object is provided in the
+     * {@code correspondenceMap}.
+     * 
+     * Calls to this API shall be embedded in a command.
+     * 
+     * @param sourceSession
+     *            The {@link Session} for the source diagram. Must not be null.
+     * @param sourceDiagram
+     *            The source diagram. Must not be null.
+     * @param correspondenceMap
+     *            The mapping function between source diagram elements and target diagram elements. Must not be null. In
+     *            the case where {@code sourceDiagram} is a Sequence diagram, must provide a mapping for each semantic
+     *            element of {@code sourceDiagram}.
+     * @param targetSession
+     *            The {@link Session} for the target diagram. Must not be null.
+     * @param targetDiagramName
+     *            The target diagram name. Must not be null or equal to "".
+     * @param targetDiagramRoot
+     *            The root EObject for the new diagram. Must not be null.
+     * @param copyNotes
+     *            Whether or not to copy source diagram notes to target diagram.
+     * @return The created target diagram.
+     */
+    public DDiagram applyFormatOnNewDiagram(Session sourceSession, DDiagram sourceDiagram, final Map&lt;EObject, EObject&gt; correspondenceMap, Session targetSession, String targetDiagramName,
+            EObject targetDiagramRoot, boolean copyNotes)
+
+
+</pre>
+		<p>This method will create a new diagram, based on the correspondence map. The new diagram will be created only if the same source diagram description can be applied on the new semantic target. Once the new target diagram is created, the format from the source diagram is applied in the same way than the first method.</p>
+		<p>Only diagram elements for which an entry exists in the correspondence map will be created. If the new target diagram description has synchronized mapping (that means graphical elements are automatically created according to the mappings defined in  the VSM), new graphical elements might appear. If those new graphical elements semantic targets have no entry in the correspondence map, they will not be formatted and will keep their default style and layout.</p>
+		<h3 id="FiltersandLayers">Filters and Layers</h3>
+		<p>Filters and layers activated in the source diagram are automatically activated in the target diagram.</p>
+		<h3 id="Notes">Notes</h3>
+		<p>If this option is activated (
+			<code>copyNotes</code> parameter), existing notes in the source diagram are copied in the target diagram. If a note attachment exists in the source diagram, this one is also created in the target diagram, if the graphical target exists.
+		</p>
+		<h2 id="Sequencediagrams">Sequence diagrams</h2>
+		<p>The sequence diagram layout is linked to the semantic model: the vertical or horizontal graphical ordering perfectly match the semantic ordering. 
+			<br/>Because of this constraint, this feature can only be applied between sequence diagrams with a perfect match between their semantic models. That means the target semantic model, on which the existing target sequence diagram or the new one are based on, has to be the exact copy of the source semantic model. All target semantic elements have to be present in the corresponding map and all source semantic elements have to be present in the map.
+		</p>
+	</body>
+</html>

@@ -233,6 +233,8 @@
        </topic>
        <topic href="doc/developer/representations_lazy_loading.html" label="Representations lazy loading (experimental)">
        </topic>
+       <topic href="doc/developer/copy_paste_format_new_semantic.html" label="Diagram Copy-Paste format on new semantic targets">
+       </topic>
     </topic>
     <topic label="Extension Points">
       <topic href="doc/developer/integration-plm.html" label="Integration with Product Life Cycle Management" />

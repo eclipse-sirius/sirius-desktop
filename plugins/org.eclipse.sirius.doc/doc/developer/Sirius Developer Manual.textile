@@ -7,6 +7,7 @@ This document gives an overview of the internals of the _Sirius_ platform, and d
 * The Sirius platform publishs a set of API, and the next sections describe some which require particular attention:
 ** "*SiriusCrossReferenceAdapter*":siriusCrossReferenceAdapter.html
 ** "*Representations lazy loading (experimental)*":representations_lazy_loading.html
+** "*Diagram Copy-Paste format on new semantic targets*":copy_paste_format_new_semantic.html
 * The Sirius platform is extensible, and the next sections describe some common extension scenarios:
 ** "*Integration with Product Life Cycle Management*":integration-plm.html
 ** "*Deploy a Modeler Description File*":integration-modeler_description_file_deployment.html
