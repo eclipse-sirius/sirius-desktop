@@ -239,7 +239,7 @@ public class MappingBasedSiriusFormatManagerFactory {
             CompositeFilterApplicationBuilder builder = new CompositeFilterApplicationBuilder(targetDiagram);
             builder.computeCompositeFilterApplications();
         }
-
+        DialectManager.INSTANCE.refresh(targetDiagram, new NullProgressMonitor());
         if (DisplayMode.NORMAL.equals(DisplayServiceManager.INSTANCE.getMode())) {
             DisplayServiceManager.INSTANCE.getDisplayService().refreshAllElementsVisibility(targetDiagram);
         }
