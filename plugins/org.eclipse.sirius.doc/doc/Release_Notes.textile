@@ -6,6 +6,10 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius6.4.0). Changes in Sirius 6.4.0
 
+h3. User-Visible Changes
+
+* <span class="label label-success">Added</span> With a non modeling project (a.k.a. legacy project), a "Invalid representations" section is displayed under the aird node. It is displayed only if a representation is invalid in the Sirius Session.
+
 h3. Specifier-Visible Changes
 
 Several improvements have been done concerning ELK integration. This feature is always considered as experimental (because several bugs remain). Additional documentation is available "here":specifier/diagrams/Diagrams.html#useElk .

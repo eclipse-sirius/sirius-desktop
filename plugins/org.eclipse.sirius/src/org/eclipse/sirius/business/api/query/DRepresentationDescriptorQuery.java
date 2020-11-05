@@ -14,6 +14,9 @@ package org.eclipse.sirius.business.api.query;
 
 import java.text.MessageFormat;
 
+import org.eclipse.emf.common.notify.Adapter;
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
@@ -32,6 +35,43 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 public class DRepresentationDescriptorQuery {
 
     private DRepresentationDescriptor repDescriptor;
+
+    /**
+     * This adapter holds information if the {@link DRepresentationDescriptor} is valid.
+     * 
+     * @author <a href="mailto:laurent.fasani@obeo.fr">Laurent Fasani</a>
+     */
+    public class DRepresentationDescriptorValidityAdapter extends AdapterImpl implements Adapter {
+        private boolean validity;
+
+        /**
+         * Default constructor.
+         * 
+         * @param representationDescriptor
+         *            the {@link DRepresentationDescriptor} on which the adapter will be added.
+         */
+        public DRepresentationDescriptorValidityAdapter(DRepresentationDescriptor representationDescriptor) {
+            representationDescriptor.eAdapters().add(this);
+            validity = computeRepresentationValid();
+        }
+
+        /**
+         * Returns if the {@link DRepresentationDescriptor} is valid.</br>
+         * 
+         * @return the value
+         */
+        public boolean isValid() {
+            return validity;
+        }
+
+        @Override
+        public void notifyChanged(Notification notification) {
+            Object notifier = notification.getNotifier();
+            if (notifier instanceof DRepresentationDescriptor) {
+                validity = computeRepresentationValid();
+            }
+        }
+    }
 
     /**
      * Create a new query.
@@ -95,6 +135,23 @@ public class DRepresentationDescriptorQuery {
      * @return true if the representation is valid
      */
     public boolean isRepresentationValid() {
+      //@formatter:off
+        DRepresentationDescriptorValidityAdapter dRepDescriptorValidityAdapter = (DRepresentationDescriptorValidityAdapter) repDescriptor.eAdapters().stream()
+                .filter(DRepresentationDescriptorValidityAdapter.class::isInstance)
+                .findFirst()
+                .orElseGet(() -> new DRepresentationDescriptorValidityAdapter(repDescriptor));
+      //@formatter:on
+
+        return dRepDescriptorValidityAdapter.isValid();
+    }
+
+    /**
+     * Check if the representation is valid that is, both not {@link isDangling} and {@link isRepresentationReachable}.
+     * In case the representation is loaded, it also checks if the representation target is a dangling reference.
+     * 
+     * @return true if the representation is valid
+     */
+    private boolean computeRepresentationValid() {
         try {
             boolean isValid = !isDangling() && isRepresentationReachable();
             if (isValid && repDescriptor.isLoadedRepresentation()) {

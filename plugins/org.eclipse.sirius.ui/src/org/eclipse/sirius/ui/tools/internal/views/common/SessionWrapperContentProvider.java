@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -25,6 +26,7 @@ import org.eclipse.emf.edit.ui.provider.AdapterFactoryContentProvider;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -33,6 +35,7 @@ import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ControlledRoot;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ResourcesFolderItemImpl;
+import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointsFolderInvalidItemImpl;
 import org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointsFolderItemImpl;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -160,6 +163,12 @@ public class SessionWrapperContentProvider implements ITreeContentProvider {
         }
 
         all.add(new ViewpointsFolderItemImpl(session, session));
+        List<DRepresentationDescriptor> repDescriptorsInvalid = DialectManager.INSTANCE.getAllRepresentationDescriptors(session).stream()
+                .filter(repDesc -> !new DRepresentationDescriptorQuery(repDesc).isRepresentationValid()).collect(Collectors.toList());
+        if (!repDescriptorsInvalid.isEmpty()) {
+            all.add(new ViewpointsFolderInvalidItemImpl(session, session, repDescriptorsInvalid));
+        }
+
         all.addAll(getSemanticResources(session));
         return all;
     }

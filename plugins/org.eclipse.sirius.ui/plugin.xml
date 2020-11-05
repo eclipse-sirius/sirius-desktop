@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 <!--
-  Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others
+  Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others
   This program and the accompanying materials
   are made available under the terms of the Eclipse Public License 2.0
   which accompanies this distribution, and is available at
@@ -499,10 +499,12 @@
            name="%commonFilter.representationPerCategory.name">
         <filterExpression>
            <instanceof
-                 value="org.eclipse.sirius.ui.tools.api.views.common.item.ViewpointsFolderItem">
+                 value="org.eclipse.sirius.ui.tools.internal.views.common.item.ViewpointsFolderItemImpl">
            </instanceof>
         </filterExpression>
      </commonFilter>
+     
+     
      <commonFilter
            class="org.eclipse.sirius.ui.tools.internal.views.common.navigator.filter.RepresentationInSemanticNodeCommonFilter"
            description="%commonFilter.representations.description"

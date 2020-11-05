@@ -63,6 +63,7 @@ import org.eclipse.sirius.tests.swtbot.modelexplorer.ContextualMenuTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.LinkWithEditorFeatureWithModelExplorerViewTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.LockedModelExplorerTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ModelExplorerFilterTests;
+import org.eclipse.sirius.tests.swtbot.modelexplorer.ModelExplorerInvalidRepTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ProjectDependenciesTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.ProjectsConcurrentCloseTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.PropertyViewOnModelExplorerSelectionTests;
@@ -239,13 +240,13 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(CreateMandatoryElementsTest.class);
         suite.addTestSuite(LockedModelExplorerTest.class);
         suite.addTestSuite(SnapAllShapesTest.class);
-		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
-			suite.addTestSuite(MoveEdgeGroupTest.class);
-		}
+        if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+            suite.addTestSuite(MoveEdgeGroupTest.class);
+        }
         suite.addTestSuite(TabbarContributorExtensionTest.class);
-		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
-			suite.addTestSuite(BorderNodeSideTest.class);
-		}
+        if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+            suite.addTestSuite(BorderNodeSideTest.class);
+        }
         suite.addTestSuite(SecurityExceptionPopupTest.class);
         suite.addTestSuite(CenteredEdgesRepairTest.class);
         suite.addTestSuite(MetamodelPropertyTabTests.class);
@@ -310,10 +311,10 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(HideRevealDiagramElementsLabelsTestWithOldUI.class);
         suite.addTestSuite(HideLabelIconsWithPreferencesTest.class);
         // suite.addTestSuite(LabelFontModificationsTest.class);
-		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+        if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
             suite.addTestSuite(MultiLineLabelDiagramTest.class);
-			suite.addTestSuite(NodeCreationPositionTest.class);
-		}
+            suite.addTestSuite(NodeCreationPositionTest.class);
+        }
         suite.addTestSuite(OpenMultipleRepresentationsTest.class);
         suite.addTestSuite(ShapeResizingEdgePositionStabilityTests.class);
         suite.addTestSuite(PortsOnNodePositionStabilityTest.class);
@@ -426,6 +427,7 @@ public class AllTestSuite extends TestCase {
         suite.addTest(new JUnit4TestAdapter(DragAndDropFromControlledResourceTest.class));
         suite.addTestSuite(RoundedCornerRefreshTest.class);
         suite.addTestSuite(ModelExplorerFilterTests.class);
+        suite.addTestSuite(ModelExplorerInvalidRepTest.class);
         suite.addTestSuite(ProjectDependenciesTest.class);
         suite.addTestSuite(ProjectsConcurrentCloseTest.class);
         suite.addTestSuite(PropertyViewOnModelExplorerSelectionWithLockedObjectTest.class);
@@ -436,9 +438,9 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(ContextualMenuTest.class);
         suite.addTestSuite(BracketEdgeTests.class);
         suite.addTestSuite(EdgeCopyPasteFormatTest.class);
-		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
-			suite.addTestSuite(BendpointsStabilityOnMovesTest.class);
-		}
+        if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+            suite.addTestSuite(BendpointsStabilityOnMovesTest.class);
+        }
         suite.addTestSuite(BendpointsStabilityOnMovesSpecificCasesTest.class);
         suite.addTestSuite(BorderedNodeCopyPasteFormatTest.class);
         suite.addTestSuite(ContainerAndNodeCopyPasteFormatTest.class);
@@ -463,9 +465,9 @@ public class AllTestSuite extends TestCase {
 
         // Scenario test cases
         suite.addTestSuite(ESEDemoTest.class);
-		if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
-			suite.addTestSuite(ValidationTest.class);
-		}
+        if (!(System.getProperty("os.name").contains("Linux") && TestsUtil.is202003Platform())) {
+            suite.addTestSuite(ValidationTest.class);
+        }
         suite.addTestSuite(ViewpointSelectionDialogTest.class);
         suite.addTestSuite(InitializeEmptySessionTest.class);
         suite.addTestSuite(InitializeSessionTest.class);

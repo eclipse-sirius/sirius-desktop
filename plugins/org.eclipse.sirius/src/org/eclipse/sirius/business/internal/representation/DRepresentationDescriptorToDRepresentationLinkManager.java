@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,12 +15,15 @@ package org.eclipse.sirius.business.internal.representation;
 import java.util.HashMap;
 import java.util.Optional;
 
+import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.impl.NotificationImpl;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
 /**
  * This class is intended to manage the link between the {@link DRepresentationDescriptor} and its
@@ -76,6 +79,21 @@ public class DRepresentationDescriptorToDRepresentationLinkManager {
                 crossRef.setTarget(repDescriptor);
                 rep.eAdapters().add(crossRef);
             }));
+
+            if (representation.isPresent()) {
+                NotificationImpl setRepresentationNotification = new NotificationImpl(Notification.RESOLVE, null, representation.get()) {
+                    @Override
+                    public Object getNotifier() {
+                        return repDescriptor;
+                    }
+
+                    @Override
+                    public Object getFeature() {
+                        return ViewpointPackage.eINSTANCE.getDRepresentationDescriptor_Representation();
+                    }
+                };
+                repDescriptor.eNotify(setRepresentationNotification);
+            }
         }
 
         return representation;

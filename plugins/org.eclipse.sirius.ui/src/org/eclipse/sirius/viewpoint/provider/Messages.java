@@ -1199,6 +1199,9 @@ public final class Messages {
     public static String ViewpointSelectionDialog_title;
 
     @TranslatableMessage
+    public static String ViewpointsFolderInvalidItemImpl_invalidRepresentations_title;
+
+    @TranslatableMessage
     public static String ViewpointsFolderItemImpl_representationsPerCategory_title;
 
     @TranslatableMessage

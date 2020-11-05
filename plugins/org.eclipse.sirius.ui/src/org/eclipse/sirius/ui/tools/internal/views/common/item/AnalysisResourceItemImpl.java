@@ -38,9 +38,12 @@ public class AnalysisResourceItemImpl implements AnalysisResourceItem {
 
     private static final String SESSION_IMAGE = "icons/obj16/SiriusFile.gif"; //$NON-NLS-1$
 
-    private final Session session;
+    /**
+     * The resource for representations per resource.
+     */
+    protected final Resource resource;
 
-    private final Resource resource;
+    private final Session session;
 
     private final Object parent;
 
@@ -139,10 +142,8 @@ public class AnalysisResourceItemImpl implements AnalysisResourceItem {
     }
 
     /**
-     * Allow to use this object as a children creator. It should not be added to
-     * a hierarchy. It will link all created
-     * {@link org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem}
-     * to its parent.
+     * Allow to use this object as a children creator. It should not be added to a hierarchy. It will link all created
+     * {@link org.eclipse.sirius.ui.tools.api.views.common.item.CommonSessionItem} to its parent.
      *
      * @param linkChildrenToParent
      *            activate/deactivate the creator mode.
