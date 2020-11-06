@@ -11,4 +11,6 @@ location ELK-0.7 "https://download.eclipse.org/elk/updates/releases/0.7.0/" {
     org.eclipse.elk.algorithms.feature.source.feature.group lazy
     org.eclipse.elk.graphviz.feature.feature.group lazy
     org.eclipse.elk.graphviz.feature.source.feature.group lazy
+    org.eclipse.elk.ui.feature.feature.group lazy
+    org.eclipse.elk.ui.feature.source.feature.group lazy
 }

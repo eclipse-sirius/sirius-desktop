@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_2020-09" sequenceNumber="1600758782">
+<target name="sirius_2020-09" sequenceNumber="1604685232">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
@@ -63,6 +63,8 @@
       <unit id="org.eclipse.elk.algorithms.feature.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.elk.graphviz.feature.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.elk.graphviz.feature.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.elk.ui.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.elk.ui.feature.source.feature.group" version="0.0.0"/>
       <repository id="ELK-0.7" location="https://download.eclipse.org/elk/updates/releases/0.7.0/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
