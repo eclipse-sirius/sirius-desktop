@@ -517,6 +517,7 @@
         <module>../../packaging/org.eclipse.sirius.workflow-feature</module>
 
         <module>../../packaging/org.eclipse.sirius.diagram.elk.feature</module>
+		<module>../../packaging/org.eclipse.sirius.diagram.elk.sdk.feature</module>
         <module>../../packaging/org.eclipse.sirius.server.ui.autostart.feature</module>
         <module>../../packaging/org.eclipse.sirius.sample.basicfamily.feature</module>
 
