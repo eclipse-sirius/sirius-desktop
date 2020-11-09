@@ -56,6 +56,7 @@ import org.eclipse.elk.core.service.IDiagramLayoutConnector;
 import org.eclipse.elk.core.service.LayoutMapping;
 import org.eclipse.elk.core.util.BasicProgressMonitor;
 import org.eclipse.elk.core.util.ElkUtil;
+import org.eclipse.elk.graph.ElkBendPoint;
 import org.eclipse.elk.graph.ElkConnectableShape;
 import org.eclipse.elk.graph.ElkEdge;
 import org.eclipse.elk.graph.ElkEdgeSection;
@@ -608,10 +609,9 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                 } else if (!isArrangeAtOpening) {
                     mapping.setProperty(COORDINATE_OFFSET, new KVector(minx, miny));
                 } else {
-                        // Use the parent node bounds if the arrange selection concerns sub part of a container during
-                        // an arrange at opening
-                        mapping.setProperty(COORDINATE_OFFSET,
-                                new KVector(parentNode.getX() - parentLocation.x() - topLeftInsets.width, parentNode.getY() - parentLocation.y() - topLeftInsets.height));
+                    // Use the parent node bounds if the arrange selection concerns sub part of a container during
+                    // an arrange at opening
+                    mapping.setProperty(COORDINATE_OFFSET, new KVector(parentNode.getX() - parentLocation.x() - topLeftInsets.width, parentNode.getY() - parentLocation.y() - topLeftInsets.height));
                 }
             } else {
                 if (isArrangeAll || isArrangeAtOpening) {
@@ -752,8 +752,11 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      * 
      * @param mapping
      *            a layout mapping that was created by this layout connector
+     * @param isArrangeAllOrArrangeAtOpeningOnDiagram
+     *            true if the layout concerns an arrange of all elements of the diagram or an arrange launched for the
+     *            diagram at the editor opening, false otherwise.
      */
-    public void transferLayout(final LayoutMapping mapping) {
+    public void transferLayout(final LayoutMapping mapping, final boolean isArrangeAllOrArrangeAtOpeningOnDiagram) {
         // create a new request to change the layout
         ApplyLayoutRequest applyLayoutRequest = new ApplyLayoutRequest();
         for (Entry<ElkGraphElement, Object> entry : mapping.getGraphMap().entrySet()) {
@@ -783,6 +786,16 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             ElkDiagramLayoutConnector.storeResult(mapping.getLayoutGraph(), mapping.getLayoutGraph().getIdentifier(), "5_afterAddingOffset", false);
         }
 
+        if (isArrangeAllOrArrangeAtOpeningOnDiagram) {
+            // Reset origin (for edges and border nodes as the origin of the children bound is, in theory, already
+            // "reset").
+            resetOrigin(mapping.getLayoutGraph());
+
+            if (DiagramElkPlugin.getDefault().isDebugging()) {
+                ElkDiagramLayoutConnector.storeResult(mapping.getLayoutGraph(), mapping.getLayoutGraph().getIdentifier(), "6_afterResetOrigin", false);
+            }
+        }
+
         // check the validity of the editing domain to catch cases where it is
         // disposed
         DiagramEditPart diagramEditPart = mapping.getProperty(DIAGRAM_EDIT_PART);
@@ -792,6 +805,67 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             Command applyLayoutCommand = diagramEditPart.getCommand(applyLayoutRequest);
             mapping.setProperty(LAYOUT_COMMAND, applyLayoutCommand);
         }
+    }
+
+    /**
+     * Reset origin for the content of <code>parentNode<code> to {20, 20}:
+     * <UL>
+     * <LI>The origin of the bounding box of all children of the <code>parentNode</code> are set to {20, 20},</LI>
+     * <LI>this bounding box is also expanded with the ports of these children,</LI>
+     * <LI>this bounding box is also expanded with the edges of parentNode.</LI>
+     * </UL>
+     * The result can be slightly different from the {@link ResetOriginChangeModelOperation} because in this action:
+     * <UL>
+     * <LI>The border nodes are ignored,</LI>
+     * <LI>and a margin is considered around the edges (see
+     * {@link org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx#getBounds()}:
+     * <code>calculatedTolerance</code> and <code>jumpLinkSize</code>).</LI>
+     * </UL>
+     * 
+     * @param parentNode
+     *            The node to consider
+     */
+    public static void resetOrigin(ElkNode parentNode) {
+        double minx = Integer.MAX_VALUE;
+        double miny = Integer.MAX_VALUE;
+        // Handle children of this parent node
+        for (ElkNode child : parentNode.getChildren()) {
+            minx = Math.min(minx, child.getX());
+            miny = Math.min(miny, child.getY());
+            // Handle ports of this child
+            for (ElkPort port : child.getPorts()) {
+                KVector absolutePortLocation = ElkUtil.absolutePosition(port);
+                minx = Math.min(minx, absolutePortLocation.x);
+                miny = Math.min(miny, absolutePortLocation.y);
+                // Handle labels of this port
+                for (ElkLabel label : port.getLabels()) {
+                    KVector absoluteLabelLocation = ElkUtil.absolutePosition(label);
+                    minx = Math.min(minx, absoluteLabelLocation.x);
+                    miny = Math.min(miny, absoluteLabelLocation.y);
+                }
+            }
+        }
+        // Handle edges contains in this parent node
+        for (ElkEdge edge : parentNode.getContainedEdges()) {
+            for (ElkEdgeSection section : edge.getSections()) {
+                minx = Math.min(minx, section.getStartX());
+                miny = Math.min(miny, section.getStartY());
+                for (ElkBendPoint bendPoint : section.getBendPoints()) {
+                    minx = Math.min(minx, bendPoint.getX());
+                    miny = Math.min(miny, bendPoint.getY());
+                }
+                minx = Math.min(minx, section.getEndX());
+                miny = Math.min(miny, section.getEndY());
+            }
+            // Handle labels of this edge
+            for (ElkLabel label : edge.getLabels()) {
+                KVector absoluteLabelLocation = ElkUtil.absolutePosition(label);
+                minx = Math.min(minx, absoluteLabelLocation.x);
+                miny = Math.min(miny, absoluteLabelLocation.y);
+            }
+        }
+
+        ElkUtil.translate(parentNode, ResetOriginChangeModelOperation.MARGIN - minx, ResetOriginChangeModelOperation.MARGIN - miny);
     }
 
     /**

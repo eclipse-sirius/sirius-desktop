@@ -55,7 +55,9 @@ public class ELKLayoutNodeProvider extends DefaultLayoutProvider {
         List<IELKLayoutExtension> elkLayoutExtensions = getLayoutExtensions();
         DiagramEditPart diagramEditPart = layoutHint.getAdapter(DiagramEditPart.class);
 
+        boolean layoutOnDiagram = true;
         if (diagramEditPart == null) {
+            layoutOnDiagram = false;
             IGraphicalEditPart editPart = layoutHint.getAdapter(IGraphicalEditPart.class);
             diagramEditPart = Optional.ofNullable(editPart).map(graphicalEditPart -> new EditPartQuery(graphicalEditPart).getFirstAncestorOfType(DDiagramEditPart.class)).get();
         }
@@ -92,7 +94,7 @@ public class ELKLayoutNodeProvider extends DefaultLayoutProvider {
         if (DiagramElkPlugin.getDefault().isDebugging()) {
             ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(), layoutMapping.getLayoutGraph().getIdentifier(), "4_afterExtensionUpdate", false);
         }
-        connector.transferLayout(layoutMapping);
+        connector.transferLayout(layoutMapping, isArrangeAll || (layoutOnDiagram && isArrangeAtOpening));
         Command gmfLayoutCommand = connector.getApplyCommand(layoutMapping);
         Optional<GmfLayoutCommand> concreteGmfLayoutCommand = getConcreteGMFLayoutCommand(gmfLayoutCommand);
         if (concreteGmfLayoutCommand.isPresent()) {
