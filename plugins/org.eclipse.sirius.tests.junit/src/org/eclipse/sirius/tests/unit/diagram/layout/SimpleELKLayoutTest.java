@@ -654,7 +654,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * <UL>
      */
     public void testArrangeAllResult() {
-        testArrangeAllResult("diagramWithContainer");
+        testArrangeAllResult_ForPackageArrangeSelection("diagramWithContainer");
     }
 
     /**
@@ -794,7 +794,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * <UL>
      */
     public void testArrangeAllResultWithScroll() {
-        testArrangeAllResult("diagramWithContainerAndScroll");
+        testArrangeAllResult_ForPackageArrangeSelection("diagramWithContainerAndScroll");
     }
 
     /**
@@ -1157,11 +1157,12 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * <LI>There is no scrollbar on all containers</LI>
      * <LI>All the containers's contents correctly layouted</LI>
      * <UL>
+     * This method should be used for diagram on the package packageForArrangeSelectionTest.
      * 
      * @param diagramName
      *            The name of the diagram to use
      */
-    public void testArrangeAllResult(String diagramName) {
+    protected void testArrangeAllResult_ForPackageArrangeSelection(String diagramName) {
         openDiagram(diagramName);
 
         // Launch an arrange all
@@ -1188,7 +1189,6 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         assertAlignCentered(50, "Class3_1", "Class3_2", "Class3_3", "Class3_4");
         assertAlignCentered(50, "Class4_1", "Class4_2");
     }
-
 
     /**
      * Makes sure that pinned elements do no affect result of layout when using ELK.
@@ -1276,7 +1276,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      */
     public void testArrangeAtOpening1() {
         // Open the diagram, launch an arrange all and close the diagram
-        testArrangeAllResult("diagramWithContainer");
+        testArrangeAllResult_ForPackageArrangeSelection("diagramWithContainer");
 
         Rectangle boundsOfP1BeforeLayoutAtOpening = getEditPart("p1").getFigure().getBounds().getCopy();
         Rectangle boundsOfP22BeforeLayoutAtOpening = getEditPart("p2_2").getFigure().getBounds().getCopy();
@@ -1333,7 +1333,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      */
     public void testArrangeAtOpening2() {
         // Open the diagram, launch an arrange all and close the diagram
-        testArrangeAllResult("diagramWithContainerAndEdges");
+        testArrangeAllResult_ForPackageArrangeSelection("diagramWithContainerAndEdges");
 
         Rectangle boundsOfP1BeforeLayoutAtOpening = getEditPart("p1").getFigure().getBounds().getCopy();
         Rectangle boundsOfP22BeforeLayoutAtOpening = getEditPart("p2_2").getFigure().getBounds().getCopy();
@@ -1421,6 +1421,87 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         afterDNodes2Bounds.forEach((dNode, rect) -> {
             assertEquals("The layout result should not change.", DNodes2Bounds.get(dNode), rect);
         });
+    }
+
+    /**
+     * Makes sure that the border node is not in the margin area of {20x20}.
+     * 
+     * @param diagramName
+     *            The name of the diagram to use
+     */
+    public void testArrangeAllResultWithBorderNode() {
+        testArrangeAllResult_ForPackageResetOrigin("resetOrigin1");
+    }
+
+    /**
+     * Makes sure that the label of border node is not in the margin area of {20x20}.
+     * 
+     * @param diagramName
+     *            The name of the diagram to use
+     */
+    public void testArrangeAllResultWithBorderNodeWithLabel() {
+        testArrangeAllResult_ForPackageResetOrigin("resetOrigin2");
+    }
+
+    /**
+     * Makes sure that the edge is not in the margin area of {20x20}.
+     * 
+     * @param diagramName
+     *            The name of the diagram to use
+     */
+    public void testArrangeAllResultWithEdgeOutsideOfBoundingBox() {
+        testArrangeAllResult_ForPackageResetOrigin("resetOrigin3", false, true);
+    }
+
+    /**
+     * Makes sure that no diagram element are not in the margin area of {20x20}.<BR/>
+     * This method should be used for diagram on the package "resetOriginCases".
+     * 
+     * @param diagramName
+     *            The name of the diagram to use
+     */
+    protected void testArrangeAllResult_ForPackageResetOrigin(String diagramName) {
+        testArrangeAllResult_ForPackageResetOrigin(diagramName, false, false);
+    }
+
+    /**
+     * Makes sure that no diagram element are not in the margin area of {20x20}.<BR/>
+     * This method should be used for diagram on the package "resetOriginCases".
+     * 
+     * @param diagramName
+     *            The name of the diagram to use
+     * @param withHorizontalEdgeCase
+     *            true if the diagram contains at least one edge outside of the bounding box of nodes on the horizontal
+     *            axis, false otherwise.
+     * @param withVerticalEdgeCase
+     *            true if the diagram contains at least one edge outside of the bounding box of nodes on the vertical
+     *            axis, false otherwise.
+     */
+    protected void testArrangeAllResult_ForPackageResetOrigin(String diagramName, boolean withHorizontalEdgeCase, boolean withVerticalEdgeCase) {
+        openDiagram(diagramName);
+
+        // Launch an arrange all
+        arrangeAll((DiagramEditor) editorPart);
+
+        // Assert that the bounding box coordinates of all elements are {20, 20}
+        // Compute primary edit parts (first level edit parts of the container)
+        List<?> primaryEditParts = getPrimaryEditParts(editorPart.getDiagramEditPart());
+        List<IGraphicalEditPart> primaryGraphicalEditParts = Lists.newArrayList(Iterables.filter(primaryEditParts, IGraphicalEditPart.class));
+        Rectangle boundingbox = DiagramImageUtils.calculateImageRectangle(primaryGraphicalEditParts, 0, new Dimension(0, 0));
+        // Fix the bounding box according to :
+        // * calculatedTolerance, ie 4 pixels used in
+        // org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx#getBounds())
+        // * jumpLinkSize, ie 10 pixels , used in
+        // org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx#getBounds())
+        // * expand, ie 1 pixel, used in org.eclipse.draw2d.Polyline.getBounds()
+        if (withHorizontalEdgeCase) {
+            boundingbox.shrink(15, 0);
+        }
+        if (withVerticalEdgeCase) {
+            boundingbox.shrink(0, 15);
+        }
+        assertEquals("Wrong x coordinate for the bounding box of all diagram elements.", ResetOriginChangeModelOperation.MARGIN, boundingbox.x());
+        assertEquals("Wrong y coordinate for the bounding box of all diagram elements.", ResetOriginChangeModelOperation.MARGIN, boundingbox.y());
     }
 
     protected void openDiagram(String diagramName) {

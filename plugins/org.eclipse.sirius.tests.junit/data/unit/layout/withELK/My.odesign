@@ -463,10 +463,15 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramWithBorderNodesWithOneAuthorizedSide" domainClass="ecore::EPackage">
       <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
-      <layout xsi:type="description_1:CustomLayoutConfiguration" id="org.eclipse.elk.layered" label="ELK Layered" description="Layer-based algorithm provided by the Eclipse Layout Kernel. Arranges as many edges as possible into one direction by placing nodes into subsequent layers. This implementation supports different routing styles (straight, orthogonal, splines); if orthogonal routing is selected, arbitrary port constraints are respected, thus enabling the layout of block diagrams such as actor-oriented models or circuit schematics. Furthermore, full layout of compound graphs with cross-hierarchy edges is supported when the respective option is activated on the top level."/>
+      <layout xsi:type="description_1:CustomLayoutConfiguration" id="org.eclipse.elk.layered" label="ELK Layered" description="Layer-based algorithm provided by the Eclipse Layout Kernel. Arranges as many edges as possible into one direction by placing nodes into subsequent layers. This implementation supports different routing styles (straight, orthogonal, splines); if orthogonal routing is selected, arbitrary port constraints are respected, thus enabling the layout of block diagrams such as actor-oriented models or circuit schematics. Furthermore, full layout of compound graphs with cross-hierarchy edges is supported when the respective option is activated on the top level.">
+        <layoutOptions xsi:type="description_1:EnumLayoutOption" id="org.eclipse.elk.direction">
+          <targets>PARENT</targets>
+          <value name="DOWN"/>
+        </layoutOptions>
+      </layout>
       <defaultLayer name="Default">
         <nodeMappings name="Packages" semanticCandidatesExpression="feature:eSubpackages" domainClass="ecore::EPackage">
-          <borderedNodeMappings name="BlueClasses" preconditionExpression="aql:self.name.equalsIgnoreCase('C1')" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore::EClass">
+          <borderedNodeMappings name="BlueClasses" semanticCandidatesExpression="aql:self.eClassifiers->select(c | c.name.equalsIgnoreCase('C1'))" domainClass="ecore::EClass">
             <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -476,7 +481,7 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
             </style>
           </borderedNodeMappings>
-          <borderedNodeMappings name="RedClasses" preconditionExpression="aql:self.name.equalsIgnoreCase('C2')" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore::EClass">
+          <borderedNodeMappings name="RedClasses" semanticCandidatesExpression="aql:self.eClassifiers->select(c | c.name.equalsIgnoreCase('C2'))" domainClass="ecore::EClass">
             <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="1">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -484,6 +489,16 @@
               <forbiddenSides>EAST</forbiddenSides>
               <forbiddenSides>NORTH</forbiddenSides>
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            </style>
+          </borderedNodeMappings>
+          <borderedNodeMappings name="GreenClasses" semanticCandidatesExpression="aql:self.eClassifiers->select(c | c.name.equalsIgnoreCase('C3'))" domainClass="ecore::EClass">
+            <style xsi:type="style:SquareDescription" labelSize="12" showIcon="false" hideLabelByDefault="true" sizeComputationExpression="1">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <forbiddenSides>SOUTH</forbiddenSides>
+              <forbiddenSides>EAST</forbiddenSides>
+              <forbiddenSides>NORTH</forbiddenSides>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
             </style>
           </borderedNodeMappings>
           <style xsi:type="style:SquareDescription" labelSize="12" labelPosition="node" resizeKind="NSEW" width="10" height="5">

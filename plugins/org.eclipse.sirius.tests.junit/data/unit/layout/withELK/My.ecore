@@ -79,4 +79,28 @@
       <eClassifiers xsi:type="ecore:EClass" name="Class4_2"/>
     </eSubpackages>
   </eSubpackages>
+  <eSubpackages name="resetOriginCases">
+    <eSubpackages name="p11">
+      <eClassifiers xsi:type="ecore:EClass" name="C1">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="toP12C2" eType="#//resetOriginCases/p12/C2"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="C2"/>
+      <eClassifiers xsi:type="ecore:EClass" name="C3"/>
+      <eClassifiers xsi:type="ecore:EClass" name="MyClass1">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="attribute1"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="p12">
+      <eClassifiers xsi:type="ecore:EClass" name="C1">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="toP13C2" eType="#//resetOriginCases/p13/C2"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="C2"/>
+    </eSubpackages>
+    <eSubpackages name="p13">
+      <eClassifiers xsi:type="ecore:EClass" name="C1">
+        <eStructuralFeatures xsi:type="ecore:EReference" name="toP11C2" eType="#//resetOriginCases/p11/C2"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="C2"/>
+    </eSubpackages>
+  </eSubpackages>
 </ecore:EPackage>
