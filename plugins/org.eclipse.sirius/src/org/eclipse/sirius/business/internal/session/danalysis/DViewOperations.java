@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES, Obeo
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES, Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -77,7 +76,7 @@ final class DViewOperations {
     }
 
     public Collection<DView> getSelectedViews(Iterable<DAnalysis> analyses) {
-        Collection<DView> selectedViews = new HashSet<DView>();
+        Collection<DView> selectedViews = new LinkedHashSet<>();
         for (DAnalysis analysis : analyses) {
             if (analysis != null) {
                 selectedViews.addAll(analysis.getSelectedViews());
@@ -181,7 +180,7 @@ final class DViewOperations {
     }
 
     public Collection<DView> getOwnedViews() {
-        Collection<DView> ownedViews = new HashSet<DView>();
+        Collection<DView> ownedViews = new LinkedHashSet<>();
         for (DAnalysis analysis : session.allAnalyses()) {
             ownedViews.addAll(analysis.getOwnedViews());
         }

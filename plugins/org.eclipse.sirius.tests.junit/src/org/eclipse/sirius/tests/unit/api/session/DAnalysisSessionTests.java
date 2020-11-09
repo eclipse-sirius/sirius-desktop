@@ -14,7 +14,9 @@ package org.eclipse.sirius.tests.unit.api.session;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.TreeSet;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.notify.Notification;
@@ -34,6 +36,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
+import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
@@ -142,8 +145,7 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
     }
 
     /**
-     * Check the saving fails correctly (without NPE and with a message in error
-     * log) when the saving policy fails.
+     * Check the saving fails correctly (without NPE and with a message in error log) when the saving policy fails.
      */
     public void testSaveSessionWithErrorDuringSave() {
         // Open session
@@ -339,10 +341,15 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
         doOpenSession();
         doCreateViews();
         final int wantedViews = viewpoints.size();
-        Assert.assertTrue("We should have 0 free views", 0 == computeFreeViews());
-        Assert.assertEquals("We should have " + wantedViews + " owned views", wantedViews, session.getOwnedViews().size());
-        Assert.assertEquals("We should have " + wantedViews + " selected views", wantedViews, session.getSelectedViews().size());
-        Assert.assertEquals("We should have " + wantedViews + " selected viewpoints", wantedViews, session.getSelectedViewpoints(false).size());
+        assertTrue("We should have 0 free views", 0 == computeFreeViews());
+        assertEquals("We should have " + wantedViews + " owned views", wantedViews, session.getOwnedViews().size());
+        assertEquals("We should have " + wantedViews + " selected views", wantedViews, session.getSelectedViews().size());
+        assertEquals("We should have " + wantedViews + " selected viewpoints", wantedViews, session.getSelectedViewpoints(false).size());
+
+        assertTrue("Owned views iteration order must be predicable and have no duplicate.", session.getOwnedViews() instanceof LinkedHashSet);
+        assertTrue("Selected views iteration order must be predicable and have no duplicate.", session.getSelectedViews() instanceof LinkedHashSet);
+        assertTrue("Selected viewpoints iteration order must be predicable and have no duplicate.",
+                ReflectionHelper.getFieldValueWithoutException(session.getSelectedViewpoints(false), "c").get() instanceof TreeSet);
 
         doCleanup();
     }
