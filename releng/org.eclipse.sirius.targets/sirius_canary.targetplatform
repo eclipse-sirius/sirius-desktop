@@ -51,6 +51,8 @@ location ELK-Nightly "https://build.eclipse.org/modeling/elk/updates/nightly/" {
     org.eclipse.elk.algorithms.feature.source.feature.group lazy
     org.eclipse.elk.graphviz.feature.feature.group lazy
     org.eclipse.elk.graphviz.feature.source.feature.group lazy
+    org.eclipse.elk.ui.feature.feature.group lazy
+    org.eclipse.elk.ui.feature.source.feature.group lazy
 }
 
 location GEF-Legacy-3.11 "https://download.eclipse.org/tools/gef/updates/legacy/releases/4.0.0_gef-master_1952/" {

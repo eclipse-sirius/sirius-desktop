@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_canary" sequenceNumber="1599547814">
+<target name="sirius_canary" sequenceNumber="1604909712">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
@@ -79,6 +79,8 @@
       <unit id="org.eclipse.elk.algorithms.feature.source.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.elk.graphviz.feature.feature.group" version="0.0.0"/>
       <unit id="org.eclipse.elk.graphviz.feature.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.elk.ui.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.elk.ui.feature.source.feature.group" version="0.0.0"/>
       <repository id="ELK-Nightly" location="https://build.eclipse.org/modeling/elk/updates/nightly/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
