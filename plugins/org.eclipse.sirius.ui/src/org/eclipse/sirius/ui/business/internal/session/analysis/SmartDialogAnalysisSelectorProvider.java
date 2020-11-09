@@ -18,8 +18,7 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.ui.business.api.session.analysis.SmartDialogAnalysisSelector;
 
 /**
- * Default provided {@link DAnalysisSelectorProvider} to provide the
- * {@link SmartDialogAnalysisSelector}.
+ * Default provided {@link DAnalysisSelectorProvider} to provide the {@link SmartDialogAnalysisSelector}.
  * 
  * @author edugueperoux
  */
@@ -30,6 +29,7 @@ public class SmartDialogAnalysisSelectorProvider implements DAnalysisSelectorPro
      * 
      * {@inheritDoc}
      */
+    @Override
     public boolean provides(DAnalysisSession session) {
         return true;
     }
@@ -39,8 +39,14 @@ public class SmartDialogAnalysisSelectorProvider implements DAnalysisSelectorPro
      * 
      * {@inheritDoc}
      */
+    @Override
     public DAnalysisSelector getSelector(DAnalysisSession session) {
         return new SmartDialogAnalysisSelector();
     }
 
+    @Override
+    public int getPriority() {
+        // Lowest priority except but higher than DefaultAnalysisSelectorProvider.
+        return 1;
+    }
 }

@@ -20,13 +20,11 @@ package org.eclipse.sirius.business.api.session.danalysis;
 public interface DAnalysisSelectorProvider {
 
     /**
-     * Returns <code>true</code> if this provider provides a selector for the
-     * given session.
+     * Returns <code>true</code> if this provider provides a selector for the given session.
      * 
      * @param session
      *            the session.
-     * @return <code>true</code> if this provider provides a selector for the
-     *         given session.
+     * @return <code>true</code> if this provider provides a selector for the given session.
      */
     boolean provides(DAnalysisSession session);
 
@@ -38,5 +36,15 @@ public interface DAnalysisSelectorProvider {
      * @return the selector to use for the given session.
      */
     DAnalysisSelector getSelector(DAnalysisSession session);
+
+    /**
+     * Returns an integer that corresponds to the priority of this provider.<br>
+     * DAnalysisSelectorService.getSelector will search first in the DAnalysisSelectorProvider with an higher
+     * priority.<br>
+     * Zero is the lowest priority.
+     * 
+     * @return the priority
+     */
+    int getPriority();
 
 }

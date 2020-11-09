@@ -15,9 +15,11 @@ package org.eclipse.sirius.business.api.session.danalysis;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.viewpoint.Messages;
@@ -54,16 +56,18 @@ public final class DAnalysisSelectorService {
     }
 
     /**
-     * Returns the analysis selector to use for the given session or
-     * <code>null</code> if none is provided.
+     * Returns the analysis selector to use for the given session or <code>null</code> if none is provided.<br>
+     * The {@link DAnalysisSelector} is searched first with the {@link DAnalysisSelectorProvider
+     * DAnalysisSelectorProviders} with higher priority.
      * 
      * @param session
      *            the analysis session.
-     * @return the analysis selector to use for the given session or
-     *         <code>null</code> if none is provided.
+     * @return the analysis selector to use for the given session or <code>null</code> if none is provided.
      */
     public static DAnalysisSelector getSelector(final DAnalysisSession session) {
-        for (final DAnalysisSelectorProvider provider : DAnalysisSelectorService.getCustomerProviders()) {
+        List<DAnalysisSelectorProvider> customProviders = DAnalysisSelectorService.getCustomerProviders().stream().sorted(Comparator.comparingInt(DAnalysisSelectorProvider::getPriority).reversed())
+                .collect(Collectors.toList());
+        for (final DAnalysisSelectorProvider provider : customProviders) {
             if (provider.provides(session)) {
                 return provider.getSelector(session);
             }
@@ -72,8 +76,7 @@ public final class DAnalysisSelectorService {
     }
 
     /**
-     * Returns the Sirius default provider (that is used if there is no customer
-     * provider).
+     * Returns the Sirius default provider (that is used if there is no customer provider).
      * 
      * @return the Sirius default provider
      */

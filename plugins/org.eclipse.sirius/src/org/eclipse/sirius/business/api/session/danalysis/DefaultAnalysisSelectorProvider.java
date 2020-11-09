@@ -19,8 +19,7 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 
 /**
- * A default analysis selector provider to make sure there is always at least
- * one present even when no UI is there.
+ * A default analysis selector provider to make sure there is always at least one present even when no UI is there.
  * 
  * @author cedric
  *
@@ -48,4 +47,9 @@ public class DefaultAnalysisSelectorProvider implements DAnalysisSelectorProvide
         };
     }
 
+    @Override
+    public int getPriority() {
+        // This is the default DAnalysisSelectorProvider with the lowest possible priority.
+        return 0;
+    }
 }
