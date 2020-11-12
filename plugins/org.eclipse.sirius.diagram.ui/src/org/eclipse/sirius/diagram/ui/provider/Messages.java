@@ -749,6 +749,12 @@ public final class Messages {
     public static String MessageFormatParser_InvalidInputError;
 
     @TranslatableMessage
+    public static String MessageFormatParser_ProxyOrNullSemanticTargetMessage;
+
+    @TranslatableMessage
+    public static String MessageFormatParser_ProxyOrNullTargetMessage;
+
+    @TranslatableMessage
     public static String MiscPropertySection_nullObject;
 
     @TranslatableMessage
@@ -1616,7 +1622,7 @@ public final class Messages {
     public static String RemoveBlankSpace_cmdName;
 
     @TranslatableMessage
-    public static String MappingBasedDiagramContentDumplicationSwitch_ImpossibleToFindBestMapping;
+    public static String MappingBasedDiagramContentDuplicationSwitch_ImpossibleToFindBestMapping;
 
     @TranslatableMessage
     public static String MappingBasedSiriusFormatManagerFactory_ImpossibleToCopyNoteInNonExistingOrUnreachableTarget;
@@ -1628,10 +1634,10 @@ public final class Messages {
     public static String MappingBasedSiriusFormatManagerFactory_ImpossibleToFindTargetTextNoteContainer;
 
     @TranslatableMessage
-    public static String MappingBasedDiagramContentDumplicationSwitch_ErrorImpossibleToCreateNodeFromNodeCandidate;
+    public static String MappingBasedDiagramContentDuplicationSwitch_ErrorImpossibleToCreateNodeFromNodeCandidate;
 
     @TranslatableMessage
-    public static String MappingBasedDiagramContentDumplicationSwitch_ErrorImpossibleToCreateEdgeFromEdgeCandidate;
+    public static String MappingBasedDiagramContentDuplicationSwitch_ErrorImpossibleToCreateEdgeFromEdgeCandidate;
 
     @TranslatableMessage
     public static String MappingBasedSiriusFormatManagerFactory_ErrorMappingfunctionIncompleteOnSequenceDiagram;

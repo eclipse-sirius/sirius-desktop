@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,8 @@ import java.text.MessageFormat;
 import java.text.ParsePosition;
 
 import org.eclipse.core.runtime.IAdaptable;
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
@@ -28,7 +30,13 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramElementMappingHelper;
 import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
-import org.eclipse.sirius.diagram.ui.part.Messages;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
+import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
@@ -85,6 +93,7 @@ public class MessageFormatParser extends AbstractParser {
     /**
      * @was-generated
      */
+    @Override
     public String getViewPattern() {
         String pattern = super.getViewPattern();
         return pattern != null ? pattern : getDefaultPattern();
@@ -93,6 +102,7 @@ public class MessageFormatParser extends AbstractParser {
     /**
      * @was-generated
      */
+    @Override
     public void setViewPattern(String viewPattern) {
         super.setViewPattern(viewPattern);
         viewProcessor = null;
@@ -118,6 +128,7 @@ public class MessageFormatParser extends AbstractParser {
     /**
      * @was-generated
      */
+    @Override
     public String getEditorPattern() {
         String pattern = super.getEditorPattern();
         return pattern != null ? pattern : getDefaultPattern();
@@ -126,6 +137,7 @@ public class MessageFormatParser extends AbstractParser {
     /**
      * @was-generated
      */
+    @Override
     public void setEditorPattern(String editorPattern) {
         super.setEditorPattern(editorPattern);
         editorProcessor = null;
@@ -151,6 +163,7 @@ public class MessageFormatParser extends AbstractParser {
     /**
      * @was-generated
      */
+    @Override
     public String getEditPattern() {
         String pattern = super.getEditPattern();
         return pattern != null ? pattern : getDefaultPattern();
@@ -159,6 +172,7 @@ public class MessageFormatParser extends AbstractParser {
     /**
      * @was-generated
      */
+    @Override
     public void setEditPattern(String editPattern) {
         super.setEditPattern(editPattern);
         editProcessor = null;
@@ -184,17 +198,18 @@ public class MessageFormatParser extends AbstractParser {
     /**
      * @was-generated
      */
+    @Override
     public String getPrintString(IAdaptable adapter, int flags) {
         EObject element = adapter.getAdapter(EObject.class);
         return getViewProcessor().format(getValues(element), new StringBuffer(), new FieldPosition(0)).toString();
     }
 
     /**
-     * Return the result of the evaluation of the expression
-     * directEditLabel.InputLabelExpression.
+     * Return the result of the evaluation of the expression directEditLabel.InputLabelExpression.
      * 
      * @not-generated
      */
+    @Override
     public String getEditString(IAdaptable adapter, int flags) {
         EObject element = adapter.getAdapter(EObject.class);
         if (element instanceof DDiagramElement) {
@@ -214,7 +229,30 @@ public class MessageFormatParser extends AbstractParser {
     /**
      * @was-generated
      */
+    @Override
     public IParserEditStatus isValidEditString(IAdaptable adapter, String editString) {
+        Exception exception = null;
+        EObject eObjectAdapter = adapter.getAdapter(EObject.class);
+        if (eObjectAdapter instanceof DSemanticDecorator && !eObjectAdapter.eIsProxy()) {
+            EObject target = ((DSemanticDecorator) eObjectAdapter).getTarget();
+            if (target != null && !target.eIsProxy()) {
+                IPermissionAuthority authority = PermissionAuthorityRegistry.getDefault().getPermissionAuthority(target);
+                if (authority != null && LockStatus.LOCKED_BY_OTHER == authority.getLockStatus(target)) {
+                    exception = new LockedInstanceException(target);
+                }
+            } else {
+                exception = new IllegalStateException(Messages.MessageFormatParser_ProxyOrNullSemanticTargetMessage); // $NON-NLS-1$
+            }
+        } else {
+            exception = new IllegalStateException(Messages.MessageFormatParser_ProxyOrNullTargetMessage); // $NON-NLS-1$
+        }
+
+        if (exception != null) {
+            IStatus status = new Status(IStatus.WARNING, DiagramUIPlugin.ID, exception.getMessage(), exception);
+            DiagramUIPlugin.getPlugin().getLog().log(status);
+            return new ParserEditStatus(DiagramPlugin.ID, IParserEditStatus.UNEDITABLE, exception.getMessage());
+        }
+
         ParsePosition pos = new ParsePosition(0);
         Object[] values = getEditProcessor().parse(editString, pos);
         if (values == null) {
@@ -226,6 +264,7 @@ public class MessageFormatParser extends AbstractParser {
     /**
      * @was-generated
      */
+    @Override
     public ICommand getParseCommand(IAdaptable adapter, String newString, int flags) {
         Object[] values = getEditProcessor().parse(newString, new ParsePosition(0));
         return getParseCommand(adapter, values, flags);

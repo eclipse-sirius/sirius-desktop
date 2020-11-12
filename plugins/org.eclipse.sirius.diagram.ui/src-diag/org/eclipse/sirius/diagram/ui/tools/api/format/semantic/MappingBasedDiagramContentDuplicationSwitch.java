@@ -289,7 +289,7 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
             }
 
             if (bestMapping == null) {
-                DiagramPlugin.getDefault().logInfo(MessageFormat.format(Messages.MappingBasedDiagramContentDumplicationSwitch_ImpossibleToFindBestMapping, targetElement));
+                DiagramPlugin.getDefault().logInfo(MessageFormat.format(Messages.MappingBasedDiagramContentDuplicationSwitch_ImpossibleToFindBestMapping, targetElement));
                 bestMapping = (DiagramElementMapping) sourceDElement.getMapping();
             }
 
@@ -340,7 +340,7 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
                 result = createdTargetElement;
             } else {
                 throw new IllegalArgumentException(
-                        MessageFormat.format(Messages.MappingBasedDiagramContentDumplicationSwitch_ErrorImpossibleToCreateNodeFromNodeCandidate, abstractDNodeCandidate, sourceDElement));
+                        MessageFormat.format(Messages.MappingBasedDiagramContentDuplicationSwitch_ErrorImpossibleToCreateNodeFromNodeCandidate, abstractDNodeCandidate, sourceDElement));
             }
         }
 
@@ -453,7 +453,7 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
                     getSourceDDiagramElementToTargetDDiagramElementMap().put(toHandleEdge, createdNewEdge);
                 } else {
                     throw new IllegalArgumentException(
-                            MessageFormat.format(Messages.MappingBasedDiagramContentDumplicationSwitch_ErrorImpossibleToCreateEdgeFromEdgeCandidate, abstractDEdgeCandidate, toHandleEdge));
+                            MessageFormat.format(Messages.MappingBasedDiagramContentDuplicationSwitch_ErrorImpossibleToCreateEdgeFromEdgeCandidate, abstractDEdgeCandidate, toHandleEdge));
                 }
             } else {
                 if (!handledEdges.contains(toHandleEdge)) {

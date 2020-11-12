@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -61,9 +61,7 @@ public class SiriusParserProvider extends AbstractProvider implements IParserPro
      * @was-generated
      */
     protected IParser createDNodeName_5002Parser() {
-        EAttribute[] features = new EAttribute[] { ViewpointPackage.eINSTANCE.getDRepresentationElement_Name(), };
-        MessageFormatParser parser = new MessageFormatParser(features);
-        return parser;
+        return createDRepresentationElementNameParser();
     }
 
     /**
@@ -85,9 +83,7 @@ public class SiriusParserProvider extends AbstractProvider implements IParserPro
      * @was-generated
      */
     protected IParser createDNodeContainerName_5006Parser() {
-        EAttribute[] features = new EAttribute[] { ViewpointPackage.eINSTANCE.getDRepresentationElement_Name(), };
-        MessageFormatParser parser = new MessageFormatParser(features);
-        return parser;
+        return createDRepresentationElementNameParser();
     }
 
     /**
@@ -109,9 +105,7 @@ public class SiriusParserProvider extends AbstractProvider implements IParserPro
      * @was-generated
      */
     protected IParser createDNodeListName_5007Parser() {
-        EAttribute[] features = new EAttribute[] { ViewpointPackage.eINSTANCE.getDRepresentationElement_Name(), };
-        MessageFormatParser parser = new MessageFormatParser(features);
-        return parser;
+        return createDRepresentationElementNameParser();
     }
 
     /**
@@ -133,9 +127,7 @@ public class SiriusParserProvider extends AbstractProvider implements IParserPro
      * @was-generated
      */
     protected IParser createDNodeName_5001Parser() {
-        EAttribute[] features = new EAttribute[] { ViewpointPackage.eINSTANCE.getDRepresentationElement_Name(), };
-        MessageFormatParser parser = new MessageFormatParser(features);
-        return parser;
+        return createDRepresentationElementNameParser();
     }
 
     /**
@@ -157,9 +149,7 @@ public class SiriusParserProvider extends AbstractProvider implements IParserPro
      * @was-generated
      */
     protected IParser createDNodeName_5003Parser() {
-        EAttribute[] features = new EAttribute[] { ViewpointPackage.eINSTANCE.getDRepresentationElement_Name(), };
-        MessageFormatParser parser = new MessageFormatParser(features);
-        return parser;
+        return createDRepresentationElementNameParser();
     }
 
     /**
@@ -181,9 +171,7 @@ public class SiriusParserProvider extends AbstractProvider implements IParserPro
      * @was-generated
      */
     protected IParser createDNodeContainerName_5005Parser() {
-        EAttribute[] features = new EAttribute[] { ViewpointPackage.eINSTANCE.getDRepresentationElement_Name(), };
-        MessageFormatParser parser = new MessageFormatParser(features);
-        return parser;
+        return createDRepresentationElementNameParser();
     }
 
     /**
@@ -205,9 +193,7 @@ public class SiriusParserProvider extends AbstractProvider implements IParserPro
      * @was-generated
      */
     protected IParser createDNodeListName_5004Parser() {
-        EAttribute[] features = new EAttribute[] { ViewpointPackage.eINSTANCE.getDRepresentationElement_Name(), };
-        MessageFormatParser parser = new MessageFormatParser(features);
-        return parser;
+        return createDRepresentationElementNameParser();
     }
 
     /**
@@ -229,9 +215,7 @@ public class SiriusParserProvider extends AbstractProvider implements IParserPro
      * @was-generated
      */
     protected IParser createDNodeListElement_3010Parser() {
-        EAttribute[] features = new EAttribute[] { ViewpointPackage.eINSTANCE.getDRepresentationElement_Name(), };
-        MessageFormatParser parser = new MessageFormatParser(features);
-        return parser;
+        return createDRepresentationElementNameParser();
     }
 
     /**
@@ -253,9 +237,7 @@ public class SiriusParserProvider extends AbstractProvider implements IParserPro
      * @was-generated
      */
     protected IParser createDNodeName_5010Parser() {
-        EAttribute[] features = new EAttribute[] { ViewpointPackage.eINSTANCE.getDRepresentationElement_Name(), };
-        MessageFormatParser parser = new MessageFormatParser(features);
-        return parser;
+        return createDRepresentationElementNameParser();
     }
 
     /**
@@ -301,9 +283,7 @@ public class SiriusParserProvider extends AbstractProvider implements IParserPro
      * @was-generated
      */
     protected IParser createDEdgeName_6001Parser() {
-        EAttribute[] features = new EAttribute[] { ViewpointPackage.eINSTANCE.getDRepresentationElement_Name(), };
-        MessageFormatParser parser = new MessageFormatParser(features);
-        return parser;
+        return createDRepresentationElementNameParser();
     }
 
     protected IParser createDEdgeName_6002Parser() {
@@ -314,6 +294,12 @@ public class SiriusParserProvider extends AbstractProvider implements IParserPro
 
     protected IParser createDEdgeName_6003Parser() {
         EAttribute[] features = new EAttribute[] { DiagramPackage.eINSTANCE.getDEdge_EndLabel(), };
+        MessageFormatParser parser = new MessageFormatParser(features);
+        return parser;
+    }
+
+    protected IParser createDRepresentationElementNameParser() {
+        EAttribute[] features = new EAttribute[] { ViewpointPackage.eINSTANCE.getDRepresentationElement_Name(), };
         MessageFormatParser parser = new MessageFormatParser(features);
         return parser;
     }
