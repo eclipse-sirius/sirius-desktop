@@ -17,9 +17,9 @@ Several improvements have been done concerning ELK integration. This feature is 
 h3. Developer-Visible Changes
 
 * <span class="label label-success">Added</span> @org.eclipse.sirius.ui.tools.api.dialogs.AnalysisSelectorFilteredItemsSelectionDialog@ has been created in order to have custom analysis selector provider able to modify the analysis selector dialog.
-* <span class="label label-info">Modified</span> Upgraded ELK version from 0.6.1 to 0.7.0, see the "ELK documentation":https://projects.eclipse.org/projects/modeling.elk/releases/0.7.0 for the list of changes in that version (and previous).
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.tools.api.command.ui.UICallBack.askUserToRefreshTheDiagram()@ has been added. It is used to ask the user to refresh the representation when something wrong happens when opening the editor. This method allows to skip the UI part.
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.ui.business.api.dialect.DialectEditor.isLastRepresentationRefreshSucceeded()@ to know if the last refresh done in the editor has succeeded.
+* <span class="label label-info">Modified</span> Upgraded ELK version from 0.6.1 to 0.7.0, see the "ELK documentation":https://projects.eclipse.org/projects/modeling.elk/releases/0.7.0 for the list of changes in that version (and previous).
 
 h4. Changes in  @org.eclipse.sirius@
 
