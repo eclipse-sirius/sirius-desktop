@@ -6,6 +6,20 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius6.4.0). Changes in Sirius 6.4.0
 
+<span class="label label-info">Important</span> In order to reduce the maintenance burden of Sirius, we have decided to deprecate some older mechanisms for which there exist better alternatives. In Sirius 6.4.x all of these are still available, but they may be removed in future versions
+(6.5 or 7.0) without further notice. If any of these planned removals are an issue for you, please "open a ticket":https://bugs.eclipse.org/bugs/enter_bug.cgi?product=Sirius so we can discuss options.
+
+The features which are deprecated starting from 6.4.0 are:
+
+* **Exporting diagrams as GIF, BMP or PDF**. We will focus on PNG and JPG support for raster formats, and SVG for vector formats. If you need another image format, use an external tool to do the conversion.
+* **OCL expressions in VSMs (@odesign@ files)**, as supported by the @org.eclipse.sirius.common.ocl@ plug-in. Use AQL expressions instead.
+* **The "Workflow" feature**. Workflow was experimental and to our knowledge not used in practice. This corresponds to the @org.eclipse.sirius.workflow.*@ and @org.eclipse.sirius.editor.workflow@ plug-ins.
+* **The server parts which supported the Workflow feature**. It was our first experiment in moving Sirius to the web, but this is now replaced by the newly published "Sirius Web":https://www.eclipse.org/sirius/sirius-web.html. This corresponds to all the @org.eclipse.sirius.server.*@ plug-ins.
+
+Also note that Sirius 6.4 is still compatible with Java 8, but we may move to Java 11 (LTS) in 2021. Eclipse 2020-09 already requires Java 11 to start, and Java 8 is quite old at this point. When we move to Java 11 we will drop support for Eclipse versions older than 2020-09. Again, if that is an issue for you, please open a ticket so we can discuss it.
+
+Sirius 6.4 is officially supported on Eclipse 2020-03 to 2020-12, with Eclipse 2020-06 being the reference platform (where the tests are run and verified). It most likely works fine with any Eclipse from 2019-06 onward, but this is not guaranteed.
+
 h3. User-Visible Changes
 
 * <span class="label label-success">Added</span> With a non modeling project (a.k.a. legacy project), a "Invalid representations" section is displayed under the aird node. It is displayed only if a representation is invalid in the Sirius Session.
