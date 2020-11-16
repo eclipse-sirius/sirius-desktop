@@ -241,10 +241,10 @@ public class MessageFormatParser extends AbstractParser {
                     exception = new LockedInstanceException(target);
                 }
             } else {
-                exception = new IllegalStateException(Messages.MessageFormatParser_ProxyOrNullSemanticTargetMessage); // $NON-NLS-1$
+                exception = new IllegalStateException(Messages.MessageFormatParser_ProxyOrNullSemanticTargetMessage);
             }
         } else {
-            exception = new IllegalStateException(Messages.MessageFormatParser_ProxyOrNullTargetMessage); // $NON-NLS-1$
+            exception = new IllegalStateException(Messages.MessageFormatParser_ProxyOrNullTargetMessage);
         }
 
         if (exception != null) {
