@@ -111,10 +111,12 @@ public class AnalysisSelectorFilteredItemsSelectionDialog extends FilteredItemsS
                 String result;
                 if (object instanceof DAnalysis) {
                     DAnalysis dAnalysis = (DAnalysis) object;
+                    String decodedURIPath = URI.decode(dAnalysis.eResource().getURI().path());
                     if (dAnalysis.eResource().getURI().isPlatformResource()) {
-                        result = MessageFormat.format(Messages.AnalysisSelectorFilteredItemsSelectionDialog_labelProviderLocal, dAnalysis.eResource().getURI().path().replace("/resource/", "/")); //$NON-NLS-1$ //$NON-NLS-2$
+                        result = MessageFormat.format(Messages.AnalysisSelectorFilteredItemsSelectionDialog_labelProviderLocal,
+                                decodedURIPath.replace("/resource/", "/")); //$NON-NLS-1$ //$NON-NLS-2$
                     } else {
-                        result = Messages.AnalysisSelectorFilteredItemsSelectionDialog_labelProviderDefault + dAnalysis.eResource().getURI().path();
+                        result = Messages.AnalysisSelectorFilteredItemsSelectionDialog_labelProviderDefault + decodedURIPath;
                     }
                 } else {
                     result = super.getText(object);
