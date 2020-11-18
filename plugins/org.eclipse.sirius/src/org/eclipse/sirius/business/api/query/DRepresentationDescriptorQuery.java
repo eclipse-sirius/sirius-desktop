@@ -106,7 +106,10 @@ public class DRepresentationDescriptorQuery {
             // the representation exists then it would be yet loaded then we can rely on isLoadedRepresentation.
             String extention = repDescriptor.getRepPath().getResourceURI().fileExtension();
             if (SiriusUtil.SESSION_RESOURCE_EXTENSION.equals(extention)) {
-                return isRepresentationReachable;
+                // need to call getRepresentation() and not rely only on isLoadedRepresentation() because, if the
+                // representation has been moved from a resource to another it may be seen as not loaded yet as it is
+                // though reachable.
+                return repDescriptor.getRepresentation() != null;
             }
             Resource eResource = repDescriptor.eResource();
             if (eResource != null) {
