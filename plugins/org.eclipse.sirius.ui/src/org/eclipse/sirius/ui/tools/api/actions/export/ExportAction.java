@@ -292,7 +292,7 @@ public class ExportAction extends WorkspaceModifyOperation {
             addRepresentationInformation(messageExceptionForDialog, rep);
         }
         Status status = new Status(IStatus.ERROR, SiriusPlugin.ID, messageExceptionForDialog.toString());
-        SiriusEditPlugin.getPlugin().getLog().error(messageExceptionForDialog.toString());
+        SiriusEditPlugin.getPlugin().getLog().log(status);
         throw new CoreException(status);
     }
 

@@ -521,11 +521,11 @@ public class DiagramDialectUIServices implements DialectUIServices {
         // Since we decide to avoid any model modification during the export as image action, we catch this possible
         // exception here.
         catch (ClassCastException | NullPointerException e) {
-            SiriusEditPlugin.getPlugin().getLog().error(MessageFormat.format(Messages.DiagramDialectUIServices_exportedDiagramImageClassCastError, representationDescriptor.getName()), e);
+            DiagramUIPlugin.getPlugin().error(MessageFormat.format(Messages.DiagramDialectUIServices_exportedDiagramImageClassCastError, representationDescriptor.getName()), e);
             // To avoid API break, we throw an unchecked exception that need to be caught and handled by the caller.
             throw new WrappedException(MessageFormat.format(Messages.DiagramDialectUIServices_exportedDiagramImageClassCastError, representationDescriptor.getName()), e);
         } catch (FileNotFoundException e) {
-            SiriusPlugin.getDefault().error(MessageFormat.format(Messages.DiagramDialectUIServices_exportedDiagramImageCreationError, correctPath), e);
+            DiagramUIPlugin.getPlugin().error(MessageFormat.format(Messages.DiagramDialectUIServices_exportedDiagramImageCreationError, correctPath), e);
             throw new WrappedException(e.getMessage(), e);
         } finally {
             disposeShell(shell);
