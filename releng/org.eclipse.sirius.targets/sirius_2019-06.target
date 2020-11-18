@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_2019-06" sequenceNumber="1604685223">
+<target name="sirius_2019-06" sequenceNumber="1605712924">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
@@ -68,24 +68,24 @@
       <repository id="ELK-0.7" location="https://download.eclipse.org/elk/updates/releases/0.7.0/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.jetty.io" version="9.4.24.v20191120"/>
-      <unit id="org.eclipse.jetty.continuation" version="9.4.24.v20191120"/>
-      <unit id="org.eclipse.jetty.http" version="9.4.24.v20191120"/>
-      <unit id="org.eclipse.jetty.server" version="9.4.24.v20191120"/>
-      <unit id="org.eclipse.jetty.servlet" version="9.4.24.v20191120"/>
-      <unit id="org.eclipse.jetty.servlets" version="9.4.24.v20191120"/>
-      <unit id="org.eclipse.jetty.util" version="9.4.24.v20191120"/>
-      <unit id="org.eclipse.jetty.security" version="9.4.24.v20191120"/>
-      <unit id="org.eclipse.jetty.websocket.servlet" version="9.4.24.v20191120"/>
-      <unit id="org.eclipse.jetty.websocket.common" version="9.4.24.v20191120"/>
-      <unit id="org.eclipse.jetty.websocket.server" version="9.4.24.v20191120"/>
-      <unit id="org.eclipse.jetty.websocket.api" version="9.4.24.v20191120"/>
-      <unit id="org.eclipse.jetty.client" version="9.4.24.v20191120"/>
-      <unit id="org.eclipse.jetty.websocket.client" version="9.4.24.v20191120"/>
-      <unit id="org.eclipse.jetty.xml" version="9.4.24.v20191120"/>
-      <unit id="org.eclipse.jetty.websocket.javax.websocket" version="9.4.24.v20191120"/>
-      <unit id="org.eclipse.jetty.websocket.javax.websocket.server" version="9.4.24.v20191120"/>
-      <repository id="Jetty-9.4.24" location="https://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.24.v20191120/"/>
+      <unit id="org.eclipse.jetty.io" version="9.4.29.v20200521"/>
+      <unit id="org.eclipse.jetty.continuation" version="9.4.29.v20200521"/>
+      <unit id="org.eclipse.jetty.http" version="9.4.29.v20200521"/>
+      <unit id="org.eclipse.jetty.server" version="9.4.29.v20200521"/>
+      <unit id="org.eclipse.jetty.servlet" version="9.4.29.v20200521"/>
+      <unit id="org.eclipse.jetty.servlets" version="9.4.29.v20200521"/>
+      <unit id="org.eclipse.jetty.util" version="9.4.29.v20200521"/>
+      <unit id="org.eclipse.jetty.security" version="9.4.29.v20200521"/>
+      <unit id="org.eclipse.jetty.websocket.servlet" version="9.4.29.v20200521"/>
+      <unit id="org.eclipse.jetty.websocket.common" version="9.4.29.v20200521"/>
+      <unit id="org.eclipse.jetty.websocket.server" version="9.4.29.v20200521"/>
+      <unit id="org.eclipse.jetty.websocket.api" version="9.4.29.v20200521"/>
+      <unit id="org.eclipse.jetty.client" version="9.4.29.v20200521"/>
+      <unit id="org.eclipse.jetty.websocket.client" version="9.4.29.v20200521"/>
+      <unit id="org.eclipse.jetty.xml" version="9.4.29.v20200521"/>
+      <unit id="org.eclipse.jetty.websocket.javax.websocket" version="9.4.29.v20200521"/>
+      <unit id="org.eclipse.jetty.websocket.javax.websocket.server" version="9.4.29.v20200521"/>
+      <repository id="Jetty-9.4.29" location="https://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.29.v20200521/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.gmf.runtime.notation.sdk.feature.group" version="0.0.0"/>

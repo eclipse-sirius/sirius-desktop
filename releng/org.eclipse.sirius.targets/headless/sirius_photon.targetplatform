@@ -8,11 +8,10 @@ include "../modules/gmf-runtime-1.13.tpd"
 
 with source, requirements
 
-location Acceleo-3.7 "https://download.eclipse.org/acceleo/updates/releases/3.7/R201902261618/" {
+location Acceleo-3.7 "https://download.eclipse.org/acceleo/updates/releases/3.7/R202002210922/" {
     org.eclipse.acceleo.engine lazy
     org.eclipse.acceleo.parser lazy
     org.eclipse.acceleo.query.feature.group lazy
-    org.antlr.runtime [4.3.0,4.4.0)
 }
 
 location Eclipse-Oxygen "http://download.eclipse.org/releases/photon" {
