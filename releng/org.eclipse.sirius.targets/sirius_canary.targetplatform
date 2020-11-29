@@ -106,11 +106,11 @@ location EMF-Compare-Nightly "https://download.eclipse.org/modeling/emf/compare/
 	org.eclipse.emf.compare.feature.group lazy
 }
 
-location GMF-Notation-LastSuccessful "https://ci.eclipse.org/gmf-runtime/job/gmf-notation-master/lastSuccessfulBuild/artifact/update-site/" {
+location GMF-Notation-LastSuccessful "https://ci.eclipse.org/gmf-runtime/job/gmf-notation-master/PLATFORM=photon,jdk=oracle-jdk8-latest,label=migration/lastSuccessfulBuild/artifact/update-site/" {
 	org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
 }
 
-location GMF-Runtime-LastSuccessful "https://ci.eclipse.org/gmf-runtime/job/gmf-runtime-master/lastSuccessfulBuild/artifact/update-site/" {
+location GMF-Runtime-LastSuccessful "https://ci.eclipse.org/gmf-runtime/job/gmf-runtime-master/PLATFORM=photon,jdk=oracle-jdk8-latest,label=migration/lastSuccessfulBuild/artifact/update-site/" {
 	org.eclipse.gmf.runtime.sdk.feature.group lazy
 }
 
