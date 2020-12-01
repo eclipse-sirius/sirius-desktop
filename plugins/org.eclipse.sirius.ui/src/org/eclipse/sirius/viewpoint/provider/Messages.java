@@ -158,7 +158,16 @@ public final class Messages {
     public static String AddSemanticResourceAction_title;
 
     @TranslatableMessage
-    public static String AnalysisSelectorFilteredItemsSelectionDialog_helpMessage;
+    public static String AnalysisSelectorFilteredItemsSelectionDialog_helpCreateMessage;
+
+    @TranslatableMessage
+    public static String AnalysisSelectorFilteredItemsSelectionDialog_helpCreateTitle;
+
+    @TranslatableMessage
+    public static String AnalysisSelectorFilteredItemsSelectionDialog_helpMoveTitle;
+
+    @TranslatableMessage
+    public static String AnalysisSelectorFilteredItemsSelectionDialog_helpMoveMessage;
 
     @TranslatableMessage
     public static String AnalysisSelectorFilteredItemsSelectionDialog_labelProviderDefault;

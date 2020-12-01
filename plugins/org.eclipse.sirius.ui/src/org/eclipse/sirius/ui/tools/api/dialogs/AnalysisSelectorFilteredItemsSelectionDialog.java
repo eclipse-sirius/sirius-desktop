@@ -60,18 +60,24 @@ public class AnalysisSelectorFilteredItemsSelectionDialog extends FilteredItemsS
     public static final String DIALOG_SETTINGS_ID = "MoveRepresentations"; //$NON-NLS-1$
 
     /**
-     * Message to display when the help button or F1 are pressed.
-     */
-    protected String helpMessage = Messages.AnalysisSelectorFilteredItemsSelectionDialog_helpMessage;
-
-    /**
      * The availability of the cancel button.
      */
     protected boolean allowCancel;
 
-    private final DAnalysis bestCandidate;
+    /**
+     * The bestCandidate.
+     */
+    protected final DAnalysis bestCandidate;
 
-    private final Collection<DAnalysis> allAnalysis;
+    /**
+     * Indicates if the representation is being moved or created.
+     */
+    protected boolean isMoveRepresentation;
+
+    /**
+     * The whole list of DAnalysis.
+     */
+    protected final Collection<DAnalysis> allAnalysis;
 
     private final List<DAnalysis> bestCandidates;
 
@@ -113,8 +119,7 @@ public class AnalysisSelectorFilteredItemsSelectionDialog extends FilteredItemsS
                     DAnalysis dAnalysis = (DAnalysis) object;
                     String decodedURIPath = URI.decode(dAnalysis.eResource().getURI().path());
                     if (dAnalysis.eResource().getURI().isPlatformResource()) {
-                        result = MessageFormat.format(Messages.AnalysisSelectorFilteredItemsSelectionDialog_labelProviderLocal,
-                                decodedURIPath.replace("/resource/", "/")); //$NON-NLS-1$ //$NON-NLS-2$
+                        result = MessageFormat.format(Messages.AnalysisSelectorFilteredItemsSelectionDialog_labelProviderLocal, decodedURIPath.replace("/resource/", "/")); //$NON-NLS-1$ //$NON-NLS-2$
                     } else {
                         result = Messages.AnalysisSelectorFilteredItemsSelectionDialog_labelProviderDefault + decodedURIPath;
                     }
@@ -149,7 +154,7 @@ public class AnalysisSelectorFilteredItemsSelectionDialog extends FilteredItemsS
             @Override
             public void helpRequested(HelpEvent e) {
                 Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-                String title = "Help: Move representation"; //$NON-NLS-1$
+                String title = isMoveRepresentation ? Messages.AnalysisSelectorFilteredItemsSelectionDialog_helpMoveTitle : Messages.AnalysisSelectorFilteredItemsSelectionDialog_helpCreateTitle;
                 MessageDialog dialog = new MessageDialog(activeShell, title, null, getHelpMessage(), MessageDialog.INFORMATION, new String[] { IDialogConstants.OK_LABEL }, 0);
                 dialog.open();
             }
@@ -166,7 +171,13 @@ public class AnalysisSelectorFilteredItemsSelectionDialog extends FilteredItemsS
     protected void createHeaderMessagePart(Composite parent) {
     }
 
+    /**
+     * Get the help message.
+     * 
+     * @return the message
+     */
     protected String getHelpMessage() {
+        String helpMessage = isMoveRepresentation ? Messages.AnalysisSelectorFilteredItemsSelectionDialog_helpMoveMessage : Messages.AnalysisSelectorFilteredItemsSelectionDialog_helpCreateMessage;
         return helpMessage;
     }
 
@@ -302,5 +313,15 @@ public class AnalysisSelectorFilteredItemsSelectionDialog extends FilteredItemsS
     @Override
     protected void setShellStyle(int newShellStyle) {
         super.setShellStyle(SWT.TITLE | SWT.BORDER | SWT.APPLICATION_MODAL | SWT.RESIZE | getDefaultOrientation());
+    }
+
+    /**
+     * Indicates if the representation is being moved or created.
+     * 
+     * @param isMoveRep
+     *            true if the representation is being moved
+     */
+    public void setMoveRepresentation(boolean isMoveRep) {
+        this.isMoveRepresentation = isMoveRep;
     }
 }

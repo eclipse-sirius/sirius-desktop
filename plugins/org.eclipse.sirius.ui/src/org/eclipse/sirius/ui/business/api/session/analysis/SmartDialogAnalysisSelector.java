@@ -81,6 +81,7 @@ public class SmartDialogAnalysisSelector implements DAnalysisSelector {
                 if (representationName != null && !representationName.isEmpty()) {
                     dialog.setTitle(MessageFormat.format(Messages.SmartDialogAnalysisSelector_titleWithRepresentationName, representationName));
                     dialog.setMessage(MessageFormat.format(Messages.SmartDialogAnalysisSelector_messageWithRepresentationName, representationName));
+                    dialog.setMoveRepresentation(true);
                 } else {
                     dialog.setTitle(Messages.SmartDialogAnalysisSelector_titleWithoutRepresentationName);
                     dialog.setMessage(Messages.SmartDialogAnalysisSelector_messageWithoutRepresentationName);
