@@ -13,7 +13,6 @@
 package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 
 import org.eclipse.draw2d.FlowLayout;
-import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.ecore.EObject;
@@ -38,7 +37,6 @@ import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusContainerDropPolicy;
@@ -49,10 +47,11 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClipping
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.SiriusDBorderedNodeFigure;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.ViewNodeFigure;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AirDefaultSizeNodeFigure;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.DBorderedNodeFigure;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
-import org.eclipse.sirius.diagram.ui.tools.internal.figure.ViewNodeFigure;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.AnchorProvider;
 import org.eclipse.sirius.viewpoint.DStylizable;
 
@@ -205,18 +204,7 @@ public class DNode3EditPart extends AbstractDiagramNodeEditPart {
      */
     @Override
     protected NodeFigure createNodeFigure() {
-        DBorderedNodeFigure nodeFigure = new DBorderedNodeFigure(createMainFigure()) {
-            @Override
-            public void paint(Graphics graphics) {
-                ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, (View) getModel());
-                try {
-                    super.paint(graphics);
-                    graphics.restoreState();
-                } finally {
-                    graphics.popState();
-                }
-            }
-        };
+        DBorderedNodeFigure nodeFigure = new SiriusDBorderedNodeFigure(createMainFigure(), this);
         nodeFigure.getBorderItemContainer().add(new FoldingToggleImageFigure(this));
         nodeFigure.getBorderItemContainer().setClippingStrategy(new FoldingToggleAwareClippingStrategy());
         return nodeFigure;

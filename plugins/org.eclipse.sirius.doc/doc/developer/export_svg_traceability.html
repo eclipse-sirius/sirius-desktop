@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>export_svg_traceability</title>
+		<link type="text/css" rel="stylesheet" href="../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="ExportSVGSemanticTraceability">Export SVG Semantic Traceability</h1>
+		<p>The Sirius API allows to activate the semantic traceability during the representation export. This feature is for now only supported for diagram SVG export.
+			<br/>More specifically, if this feature is enabled, every SVG element will have an additional attribute 
+			<code>diagram:semanticTargetId</code> that will own the semantic target id on which the graphical element is based on. The semantic id is the result of applying 
+			<code>EcoreUtil.getURI(o)</code> on the semantic eObject.
+		</p>
+		<p>Here is an example of a produced SVG Element with 
+			<code>diagram:semanticTargetId</code> attribute:
+		</p>
+		<pre><code>&lt;rect x="43" y="50" diagram:semanticTargetId="platform:/resource/DesignerTestProject/My.ecore#//p1/C1/a1" clip-path="url(#clipPath8)" fill="none" width="9" height="9" stroke="black"/&gt;
+</code></pre>
+		<p>This feature can be activated in two different ways:</p>
+		<ul>
+			<li>By using the export API: by calling 
+				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.exportWithResult</code> with the 
+				<code>ExportFormat</code> as parameter with 
+				<code>semanticTraceabilityEnabled</code> set at true. See 
+				<code>org.eclipse.sirius.ui.business.api.dialect.ExportFormat.setSemanticTraceabilityEnabled(boolean)</code>
+			</li>
+		</ul>
+		<ul>
+			<li>By activating the Sirius preference 
+				<code>org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_EXPORT_SEMANTIC_TRACEABILITY</code>. If true, this will activate the traceability for any export by using the user interface (through the Sirius export as image dialog) or by calling the high level API 
+				<code>org.eclipse.sirius.ui.tools.api.actions.export.ExportAction</code>.
+			</li>
+		</ul>
+	</body>
+</html>

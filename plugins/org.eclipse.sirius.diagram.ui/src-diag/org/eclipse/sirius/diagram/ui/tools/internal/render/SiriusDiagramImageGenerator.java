@@ -16,14 +16,22 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.SWTGraphics;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PrecisionRectangle;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.gef.ConnectionEditPart;
+import org.eclipse.gef.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.image.PartPositionInfo;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramImageGenerator;
@@ -31,6 +39,7 @@ import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
 import org.eclipse.gmf.runtime.draw2d.ui.render.internal.graphics.RenderedMapModeGraphics;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.swt.SWT;
 
 /**
@@ -113,9 +122,54 @@ public class SiriusDiagramImageGenerator extends DiagramImageGenerator {
     
     @Override
     protected void renderToGraphics(Graphics graphics, Point translateOffset, List editparts) {
-        super.renderToGraphics(graphics, translateOffset, editparts);
+        graphics.translate(-translateOffset.x, -translateOffset.y);
+        graphics.pushState();
+
+        List<GraphicalEditPart> connectionsToPaint = new LinkedList<>();
+
+        Map decorations = findDecorations(editparts);
+
+        for (Iterator editPartsItr = editparts.listIterator(); editPartsItr.hasNext(); /**/) {
+            IGraphicalEditPart editPart = (IGraphicalEditPart) editPartsItr.next();
+
+            // do not paint selected connection part
+            if (editPart instanceof ConnectionEditPart) {
+                connectionsToPaint.add(editPart);
+            } else {                
+                connectionsToPaint.addAll(findConnectionsToPaint(editPart));
+                // paint shape figure
+                IFigure figure = editPart.getFigure();
+                setCurrentId(graphics, editPart); // ADDED
+                paintFigure(graphics, figure);
+
+                paintDecorations(graphics, figure, decorations);
+            }
+        }
+        
+        // paint the connection parts after shape parts paint
+        decorations = findDecorations(connectionsToPaint);
+
+        for (Iterator<GraphicalEditPart> connItr = connectionsToPaint.iterator(); connItr.hasNext(); /**/) {
+            GraphicalEditPart conn = connItr.next();
+            setCurrentId(graphics, conn); // ADDED
+            IFigure figure = conn.getFigure();
+            paintFigure(graphics, figure);
+            paintDecorations(graphics, figure, decorations);
+        }
+        
         if (this.overlayFigure != null) {
             paintFigure(graphics, overlayFigure);
+        }
+    }
+    
+    private void setCurrentId(Graphics gfx, GraphicalEditPart part) {
+        if (gfx instanceof SiriusGraphicsSVG && part instanceof org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart) {
+            SiriusGraphicsSVG sgfx = (SiriusGraphicsSVG) gfx;
+            EObject o = ((org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart) part).resolveSemanticElement();
+            if (o instanceof DSemanticDecorator) {
+                o = ((DSemanticDecorator) o).getTarget();
+            }
+            sgfx.setCurrentId(EcoreUtil.getURI(o).toString());
         }
     }
 

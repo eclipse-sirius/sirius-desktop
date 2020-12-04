@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.LabelPosition;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusElementTypes;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
@@ -170,7 +171,9 @@ public class DNodeNameEditPart extends AbstractGeneratedDiagramNameEditPart impl
             if (getModel() instanceof View) {
                 ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, (View) getModel());
                 try {
+                    CommonEditPartOperation.setGraphicsTraceabilityId(graphics, () -> resolveTargetSemanticElement());
                     super.paint(graphics);
+                    CommonEditPartOperation.setGraphicsTraceabilityId(graphics, null);
                     graphics.restoreState();
                 } finally {
                     graphics.popState();

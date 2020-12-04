@@ -77,6 +77,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleAwareClipping
 import org.eclipse.sirius.diagram.ui.tools.api.figure.FoldingToggleImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.SiriusDBorderedNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToHelperUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.ui.SiriusDragEditPartsTrackerEx;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
@@ -114,7 +115,7 @@ public abstract class AbstractDiagramBorderNodeEditPart extends BorderedBorderIt
 
     @Override
     protected NodeFigure createNodeFigure() {
-        DBorderedNodeFigure nodeFigure = new DBorderedNodeFigure(createMainFigure());
+        DBorderedNodeFigure nodeFigure = new SiriusDBorderedNodeFigure(createMainFigure(), this);
         DiagramBorderNodeEditPartOperation.updateAuthorizedSide(nodeFigure, this);
         nodeFigure.getBorderItemContainer().add(new FoldingToggleImageFigure(this));
         nodeFigure.getBorderItemContainer().setClippingStrategy(new FoldingToggleAwareClippingStrategy());

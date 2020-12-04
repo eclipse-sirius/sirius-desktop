@@ -70,6 +70,7 @@ import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContain
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeContainerQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.AbstractDiagramNodeEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramContainerEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.validators.ResizeValidator;
@@ -540,7 +541,9 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
             public void paint(Graphics graphics) {
                 ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, (View) getModel());
                 try {
+                    CommonEditPartOperation.setGraphicsTraceabilityId(graphics, () -> resolveTargetSemanticElement());
                     super.paint(graphics);
+                    CommonEditPartOperation.setGraphicsTraceabilityId(graphics, null);
                     graphics.restoreState();
                 } finally {
                     graphics.popState();

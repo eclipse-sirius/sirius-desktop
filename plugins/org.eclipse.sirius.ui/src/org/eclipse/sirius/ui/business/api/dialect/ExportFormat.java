@@ -29,6 +29,14 @@ public class ExportFormat {
     private final ScalingPolicy scalingPolicy;
 
     /**
+     * If true, and if the actual dialect and export format backend supports it, augment the exported document with
+     * semantic traceability information. The details will depend on each format backend, but each element (for whatever
+     * definition of "element" makes sense in the format) in the exported document is augmented with the unique id of
+     * the semantic element it represents (a part of).
+     */
+    private boolean exportTraceabilityData;
+
+    /**
      * Scaling level from 0 to 100 by step of 10. It is used only if scaling policy is set to WORKSPACE_DEFAULT,
      * AUTO_SCALING or AUTO_SCALING_IF_LARGER. A scaling level set to 0 corresponds to the NO_SCALING scaling policy
      * (even with other policies).
@@ -117,6 +125,25 @@ public class ExportFormat {
      */
     public Integer getScalingLevel() {
         return scalingLevel;
+    }
+
+    /**
+     * Returns whether semantic traceability information should be exported (if supported by the actual implementation).
+     * 
+     * @param exportTraceability
+     *            <code>true</code> if the exported documentation should include semantic traceability information.
+     */
+    public void setSemanticTraceabilityEnabled(boolean exportTraceability) {
+        this.exportTraceabilityData = exportTraceability;
+    }
+
+    /**
+     * Tests whether the exported documentation should include semantic traceability information.
+     * 
+     * @return <code>true</code> if the exported documentation should include semantic traceability information.
+     */
+    public boolean isSemanticTraceabilityEnabled() {
+        return exportTraceabilityData;
     }
 
     /**

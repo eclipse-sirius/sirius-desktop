@@ -73,6 +73,7 @@ import org.eclipse.swt.widgets.Shell;
  *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
+@SuppressWarnings("restriction")
 public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.render.util.CopyToImageUtil {
 
     private static Class<?> exportToHtmlClass;
@@ -101,6 +102,28 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
      * The actual scaling factor used when exporting. 1.0 means 100%; 2.0 means 200% etc.
      */
     private double scalingFactor;
+
+    /**
+     * Whether we should insert a new attribute in SVG export to keep the traceability with the semantic element.
+     */
+    private boolean enableSemanticTraceability;
+
+    /**
+     * Constructor.
+     */
+    public DiagramEditPartService() {
+        this(false);
+    }
+
+    /**
+     * Constructor.
+     * 
+     * @param semanticTraceability
+     *            whether to include semantic traceability (if the image format supports it).
+     */
+    public DiagramEditPartService(boolean semanticTraceability) {
+        this.enableSemanticTraceability = semanticTraceability;
+    }
 
     /**
      * Check if GMF is able to export in HTML.
@@ -235,13 +258,6 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
         return result;
     }
 
-    /**
-     * {@inheritDoc}
-     *
-     * @see org.eclipse.gmf.runtime.diagram.ui.render.util.CopyToImageUtil#copyToImage(org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart,
-     *      org.eclipse.core.runtime.IPath, org.eclipse.gmf.runtime.diagram.ui.image.ImageFileFormat,
-     *      org.eclipse.core.runtime.IProgressMonitor)
-     */
     @Override
     public DiagramGenerator copyToImage(DiagramEditPart diagramEP, IPath destination, org.eclipse.gmf.runtime.diagram.ui.image.ImageFileFormat format, IProgressMonitor monitor) throws CoreException {
         if (exportToHtml && DiagramEditPartService.canExportToHtml()) {
@@ -338,7 +354,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     @Override
     protected DiagramGenerator getDiagramGenerator(DiagramEditPart diagramEP, ImageFileFormat format) {
         if (format.equals(ImageFileFormat.SVG) || format.equals(ImageFileFormat.PDF)) {
-            return new SiriusDiagramSVGGenerator(diagramEP);
+            return new SiriusDiagramSVGGenerator(diagramEP, enableSemanticTraceability);
         } else {
             SiriusDiagramImageGenerator generator = new SiriusDiagramImageGenerator(diagramEP);
             double factor = getExportResolutionFactor(diagramEP, generator);

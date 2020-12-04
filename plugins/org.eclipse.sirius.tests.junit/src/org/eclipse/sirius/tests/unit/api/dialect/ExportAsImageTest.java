@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,10 +25,16 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 
 import javax.imageio.ImageIO;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.transcoder.TranscoderException;
@@ -79,6 +85,9 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.junit.Ignore;
+import org.xml.sax.Attributes;
+import org.xml.sax.SAXException;
+import org.xml.sax.helpers.DefaultHandler;
 
 /**
  * Tests the export of diagrams as image after the migration of the session
@@ -108,6 +117,16 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
     private static final String SESSION_MODEL_FILENAME = "My.aird";
 
     private static final String IMAGE_FILE_NAME = "new diagExportAsImage.";
+
+    private static final String EXPECTED_P1_ID = "platform:/resource/DesignerTestProject/My.ecore#//p1";
+
+    private static final String EXPECTED_LP2_ID = "platform:/resource/DesignerTestProject/My.ecore#//Lp2";
+
+    private static final String EXPECTED_C1_ID = EXPECTED_P1_ID + "/C1";
+
+    private static final String EXPECTED_P2C1_ID = EXPECTED_LP2_ID + "/P2C1";
+
+    private static final String EXPECTED_A1_ID = EXPECTED_C1_ID + "/a1";
 
     @Override
     protected void setUp() throws Exception {
@@ -163,9 +182,14 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
     }
 
     private DiagramExportResult exportImage(DRepresentation representation, ImageFileFormat fileFormat, ScalingPolicy scalingPolicy) throws SizeTooLargeException {
+        return this.exportImage(representation, fileFormat, scalingPolicy, false);
+    }
+
+    private DiagramExportResult exportImage(DRepresentation representation, ImageFileFormat fileFormat, ScalingPolicy scalingPolicy, boolean traceability) throws SizeTooLargeException {
         IPath absoluteImagePath = ResourcesPlugin.getWorkspace().getRoot().getProject(TEMPORARY_PROJECT_NAME).getLocation().append(IMAGE_FILE_NAME + fileFormat.getName().toLowerCase());
-        DiagramExportResult exportResult = (DiagramExportResult) DialectUIManager.INSTANCE.exportWithResult(representation, session, absoluteImagePath,
-                new ExportFormat(ExportDocumentFormat.NONE, fileFormat, scalingPolicy), new NullProgressMonitor(), false);
+        ExportFormat exportFormat = new ExportFormat(ExportDocumentFormat.NONE, fileFormat, scalingPolicy);
+        exportFormat.setSemanticTraceabilityEnabled(traceability);
+        DiagramExportResult exportResult = (DiagramExportResult) DialectUIManager.INSTANCE.exportWithResult(representation, session, absoluteImagePath, exportFormat, new NullProgressMonitor(), false);
         return exportResult;
     }
 
@@ -402,6 +426,18 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
     public void testExportAsSVGZAutoScaling() throws Exception {
         DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.SVGZ, ExportFormat.ScalingPolicy.AUTO_SCALING);
         checkResultsWithAutoUpScale(exportResult);
+    }
+
+    /**
+     * Tests the export of diagrams as image with SVG format with traceability activated. We expect a specific number of
+     * "diagram:semanticTargetId" attributes in the SVG file. Note that we also test that no diagram:semanticTargetId
+     * attributes are visible in other tests using SVG format, with deactivated traceability.
+     * 
+     * @throws Exception
+     */
+    public void testExportAsSVGWithTraceability() throws Exception {
+        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING, true);
+        checkResultsNoAutoScaling(exportResult, true, true);
     }
 
     /**
@@ -795,7 +831,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
         double originalWidth;
         if (upscale) {
             originalHeight = 77;
-            originalWidth = 150;
+            originalWidth = 322;
         } else {
             originalHeight = 10070;
             originalWidth = 4936;
@@ -819,12 +855,46 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
         return image;
     }
 
-    private void checkResultsNoAutoScaling(DiagramExportResult exportResult, boolean isSVGExport) throws IOException {
+    private void checkResultsNoAutoScaling(DiagramExportResult exportResult, boolean isSVGExport, boolean traceability) throws IOException {
         if (isSVGExport) {
-            checkResults(exportResult, 97, 170, 0.0);
+            checkResults(exportResult, 97, 343, 0.0);
+            checkTraceability(exportResult.getExportedFiles(), traceability);
         } else {
-            checkResults(exportResult, 97, 170, 1.0);
+            checkResults(exportResult, 97, 343, 1.0);
         }
+    }
+
+    private void checkTraceability(Set<IPath> paths, boolean traceability) {
+
+        Optional<IPath> optionalFirstFile = paths.stream().findFirst();
+        IPath path = optionalFirstFile.get();
+        SAXParserFactory factory = SAXParserFactory.newInstance();
+
+        try {
+            SAXParser saxParser = factory.newSAXParser();
+            SVGUIDHandler handler = new SVGUIDHandler();
+            saxParser.parse(path.toOSString(), handler);
+            Map<String, Integer> semanticTargetIdToOccurrences = handler.getSemanticTargetIdToOccurrences();
+            if (!traceability) {
+                assertTrue("The semantic target id should not be exported in the SVG file", semanticTargetIdToOccurrences.isEmpty());
+            } else {
+                assertEquals("The package p1 id is not exported in the SVG file as expected", Integer.valueOf(6), semanticTargetIdToOccurrences.get(EXPECTED_P1_ID));
+                assertEquals("The package Lp2 id is not exported in the SVG file as expected", Integer.valueOf(6), semanticTargetIdToOccurrences.get(EXPECTED_LP2_ID));
+                assertEquals("The class C1 id is not exported in the SVG file as expected", Integer.valueOf(4), semanticTargetIdToOccurrences.get(EXPECTED_C1_ID));
+                assertEquals("The class P2C1 id is not exported in the SVG file as expected", Integer.valueOf(2), semanticTargetIdToOccurrences.get(EXPECTED_P2C1_ID));
+                assertEquals("The attribute a1 id is not exported in the SVG file as expected", Integer.valueOf(3), semanticTargetIdToOccurrences.get(EXPECTED_A1_ID));
+            }
+        } catch (ParserConfigurationException e) {
+        } catch (SAXException e) {
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
+
+    private void checkResultsNoAutoScaling(DiagramExportResult exportResult, boolean isSVGExport) throws IOException {
+        checkResultsNoAutoScaling(exportResult, isSVGExport, false);
     }
 
     /**
@@ -932,6 +1002,27 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
             assertEquals("The scale level must be a percentage (between 0 to 100).", iae.getMessage());
         } catch (Exception e) {
             fail(failureMessage);
+        }
+    }
+
+    private class SVGUIDHandler extends DefaultHandler {
+
+        private Map<String, Integer> semanticTargetIdToOccurrences = new HashMap<>();
+
+        @Override
+        public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
+            String idValue = attributes.getValue("diagram:semanticTargetId");
+            if (idValue != null) {
+                Integer occurence = semanticTargetIdToOccurrences.get(idValue);
+                if (occurence == null) {
+                    occurence = 0;
+                }
+                semanticTargetIdToOccurrences.put(idValue, ++occurence);
+            }
+        }
+
+        public Map<String, Integer> getSemanticTargetIdToOccurrences() {
+            return semanticTargetIdToOccurrences;
         }
     }
 }

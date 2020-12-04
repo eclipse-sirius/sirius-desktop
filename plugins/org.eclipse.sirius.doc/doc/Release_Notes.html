@@ -160,11 +160,9 @@
 		<h2 id="sirius6.5.0">Changes in Sirius 6.5.0</h2>
 		<h3 id="UserVisibleChanges">User-Visible Changes</h3>
 		<ul>
-			<li><span class="label label-success">Added</span> It is possible to override at the aird level both &#8220;Sirius/Do Refresh on representation opening&#8221; and &#8220;Sirius/Automatic refresh&#8221; preferences. To override the preferences, go to the Properties/Sirius settings section. The preferences are stored in the project scope and associated to the aird file. For more details, refer the 
+			<li><span class="label label-success">Added</span> It is possible to override at the aird level both &#8220;Sirius/Do Refresh on representation opening&#8221; and &#8220;Sirius/Automatic refresh&#8221; preferences. To override the preferences, right-click on the 
+				<code>aird</code> file, select &#8220;Properties&#8221;, and in the dialog go to the &#8220;Sirius settings&#8221; section. The preferences are stored in the project scope and associated to the aird file. For more details, refer the 
 				<a href="user/general/Aird_Preferences.html">documentation</a> .
-			</li>
-			<li><span class="label label-success">Added</span> The method 
-				<code>org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority.getLockedObjects()</code> has been added the get all the locked objects.
 			</li>
 			<li><span class="label label-success">Added</span> A new tab has been added in the properties dialog box, when an aird is selected, to present technical information about the Sirius Session. For more details, refer the 
 				<a href="user/general/SiriusSessionDetailedInformation.html">documentation</a> .
@@ -198,6 +196,9 @@
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>
+			<li><span class="label label-success">Added</span> The method 
+				<code>org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority.getLockedObjects()</code> has been added the get all the locked objects.
+			</li>
 			<li><span class="label label-success">Added</span> The API 
 				<code>org.eclipse.sirius.business.api.session.SiriusPreferences</code> has been added to get preferences related to a Sirius Session that is to a main aird file. An instance of this API can be accessed with 
 				<code>org.eclipse.sirius.business.api.session.Session.getSiriusPreferences()</code>. Both 
@@ -215,6 +216,27 @@
 			<li><span class="label label-success">Added</span> The API 
 				<code>org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IFigureWithoutLabels</code> has been created so that a Figure, that implements this API, can provide its bounds without considering its labels. The method 
 				<code>org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper.getAbsoluteBoundsWithoutLabelsIn100Percent(GraphicalEditPart)</code> has been added to get the rectangle bounds without taking labels into account. This is used, in particular, to compute the bendpoints of an edge when the source or the target of the edge is an edge.
+			</li>
+			<li><span class="label label-success">Added</span> It is now possible to keep semantic element traceability during the representation export. For now, this option is only supported for diagram SVG export. In this case, a new attribute 
+				<code>diagram:targetSemanticId</code> is added on SVG elements to reference the target semantic id on which the graphical element is based on. This option can be activated programmatically or by setting a preference. See the details below:
+				<ul>
+					<li><span class="label label-success">Added</span> The constructor 
+						<code>org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService.DiagramEditPartService(boolean)</code> has been added to make it possible to activate the semantic traceability during the SVG export. Note that this constructor will also be called by 
+						<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.exportWithResult</code> with the 
+						<code>ExportFormat</code> as parameter, which own the 
+						<code>SemanticTraceabilityEnabled</code> value.
+					</li>
+					<li><span class="label label-success">Added</span> In 
+						<code>org.eclipse.sirius.ui.business.api.dialect.ExportFormat</code>, 
+						<code>setSemanticTraceabilityEnabled(boolean)</code> and 
+						<code>isSemanticTraceabilityEnabled()</code> have been added to specify through the ExportFormat if the traceability should be enabled.
+					</li>
+					<li><span class="label label-success">Added</span> 
+						<code>org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_EXPORT_SEMANTIC_TRACEABILITY</code> has been added to make it possible to activate the  traceability on representation export. This will activate the traceability for any export by using the user interface (through the export specific wizard) or by calling the 
+						<code>ExportAction</code>. Direct calls to the 
+						<code>DialectUIServices.exportWithResult</code> are not impacted.
+					</li>
+				</ul>
 			</li>
 			<li><span class="label label-info">Modified</span> Upgraded ELK version from 0.7.0 to 0.7.1, see the 
 				<a href="https://projects.eclipse.org/projects/modeling.elk/releases/0.7.1">ELK documentation</a> for the list of changes in that version (and previous).

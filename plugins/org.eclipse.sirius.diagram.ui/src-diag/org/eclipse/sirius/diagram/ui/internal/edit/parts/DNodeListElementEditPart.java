@@ -29,6 +29,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
 import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ListItemDeletionEditPolicy;
@@ -198,7 +199,9 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
                 if (getModel() instanceof View) {
                     ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, (View) getModel());
                     try {
+                        CommonEditPartOperation.setGraphicsTraceabilityId(graphics, () -> resolveTargetSemanticElement());
                         super.paint(graphics);
+                        CommonEditPartOperation.setGraphicsTraceabilityId(graphics, null);
                         graphics.restoreState();
                     } finally {
                         graphics.popState();

@@ -13,7 +13,7 @@
 package org.eclipse.sirius.ui.business.api.preferences;
 
 /**
- * This class bundles all the preferences keys for viewpoint.
+ * This class bundles all the preferences keys for Sirius.
  * 
  * @author ymortier
  */
@@ -64,6 +64,14 @@ public enum SiriusUIPreferencesKeys {
      * Indicates if the UserFixedColors, defined in the VSM, are displayed in the color palette.</br>
      * The color palette is used in appearance tab of properties view.
      */
-    PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE;
+    PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE,
+
+    /**
+     * Indicates whether (and if the actual dialect and export format backend supports it), the representation export
+     * should augment the exported document with semantic traceability information. The details will depend on each
+     * format backend, but each element (for whatever definition of "element" makes sense in the format) in the exported
+     * document is augmented with the unique id of the semantic element it represents (a part of).
+     */
+    PREF_EXPORT_SEMANTIC_TRACEABILITY;
 
 }

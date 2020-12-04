@@ -14,11 +14,17 @@ package org.eclipse.sirius.diagram.ui.tools.internal.render;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Image;
+import java.awt.geom.AffineTransform;
+import java.awt.image.renderable.RenderableImage;
+import java.util.Optional;
 
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.dom.svg.SVGOMDocument;
 import org.apache.batik.dom.util.DOMUtilities;
 import org.apache.batik.svggen.DOMTreeManager;
+import org.apache.batik.svggen.GenericImageHandler;
+import org.apache.batik.svggen.SVGGeneratorContext;
 import org.apache.batik.svggen.SVGGraphics2D;
 import org.apache.batik.util.SVGConstants;
 import org.eclipse.draw2d.geometry.Point;
@@ -29,6 +35,8 @@ import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.SVGColorConvert
 import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.SVGImage;
 import org.eclipse.gmf.runtime.draw2d.ui.render.internal.DrawableRenderedImage;
 import org.eclipse.gmf.runtime.draw2d.ui.render.internal.RenderingListener;
+import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -45,20 +53,88 @@ import org.w3c.dom.Element;
  * @author jschofie / sshaw
  */
 // CHECKSTYLE:OFF
+@SuppressWarnings("restriction")
 public class SiriusGraphicsSVG extends SiriusGraphicsToGraphics2DAdaptor implements DrawableRenderedImage {
+
+    private static class CustomSVGGraphics2D extends SVGGraphics2D {
+        private boolean svgTraceability;
+
+        private String currentId;
+
+        public CustomSVGGraphics2D(Document doc, boolean svgTraceability) {
+            super(doc);
+            this.svgTraceability = svgTraceability;
+        }
+
+        public void setupCustomShapeConverter() {
+            this.shapeConverter = new AnnotatedSVGShape(this.generatorCtx, DiagramPackage.eNS_URI, svgTraceability);
+            final GenericImageHandler handler = getGenericImageHandler();
+            this.getGeneratorContext().setGenericImageHandler(new GenericImageHandler() {
+
+                @Override
+                public void setDOMTreeManager(DOMTreeManager domTreeManager) {
+                    handler.setDOMTreeManager(domTreeManager);
+                }
+
+                @Override
+                public AffineTransform handleImage(RenderableImage image, Element imageElement, double x, double y, double width, double height, SVGGeneratorContext generatorContext) {
+                    return handler.handleImage(image, imageElement, x, y, width, height, generatorContext);
+                }
+
+                @Override
+                public AffineTransform handleImage(java.awt.image.RenderedImage image, Element imageElement, int x, int y, int width, int height, SVGGeneratorContext generatorContext) {
+                    return handler.handleImage(image, imageElement, x, y, width, height, generatorContext);
+                }
+
+                @Override
+                public AffineTransform handleImage(Image image, Element imageElement, int x, int y, int width, int height, SVGGeneratorContext generatorContext) {
+                    return handler.handleImage(image, imageElement, x, y, width, height, generatorContext);
+                }
+
+                @Override
+                public Element createElement(SVGGeneratorContext generatorContext) {
+                    Element result = handler.createElement(generatorContext);
+                    if (svgTraceability) {
+                        result.setAttributeNS(DiagramPackage.eNS_URI, AnnotatedSVGShape.ATTR_NAME, currentId);
+                    }
+                    return result;
+                }
+            });
+        }
+
+        public void setCurrentId(String id) {
+            ((AnnotatedSVGShape) this.shapeConverter).setCurrentId(id);
+            this.currentId = id;
+        }
+
+        @Override
+        public void drawString(String s, float x, float y) {
+            super.drawString(s, x, y);
+            if (svgTraceability) {
+                Optional<Object> currentGroup = ReflectionHelper.getFieldValueWithoutException(domGroupManager, "currentGroup"); //$NON-NLS-1$
+                if (currentGroup.isPresent() && currentGroup.get() instanceof Element) {
+                    Element group = (Element) currentGroup.get();
+                    if (group.getLastChild() instanceof Element) {
+                        ((Element) group.getLastChild()).setAttributeNS(DiagramPackage.eNS_URI, AnnotatedSVGShape.ATTR_NAME, currentId);
+                    }
+                }
+            }
+        }
+    }
 
     private Document doc;
 
     /**
-     * Static initializer that will return an instance of
-     * <code>SiriusGraphicsSVG</code>
+     * Static initializer that will return an instance of <code>SiriusGraphicsSVG</code>
      *
      * @param viewPort
      *            the <code>Rectangle</code> area that is to be rendered.
+     * @param svgTraceability
+     *            whether we should add an attribute on SVG elements to keep the semantic target ID.
      * @return a new <code>SiriusGraphicsSVG</code> object.
      */
-    public static SiriusGraphicsSVG getInstance(Rectangle viewPort) {
-        SVGGraphics2D svgGraphics;
+    public static SiriusGraphicsSVG getInstance(Rectangle viewPort, boolean svgTraceability) {
+        CustomSVGGraphics2D svgGraphics;
 
         // Get the DOM implementation and create the document
         DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
@@ -66,13 +142,15 @@ public class SiriusGraphicsSVG extends SiriusGraphicsToGraphics2DAdaptor impleme
         Document doc = impl.createDocument(svgNameSpace, "svg", null); //$NON-NLS-1$
 
         // Create the SVG Graphics Object
-        svgGraphics = new SVGGraphics2D(doc);
+        svgGraphics = new CustomSVGGraphics2D(doc, svgTraceability);
 
         // Set the precision level to avoid NPEs (issue with Batik 1.5)
         svgGraphics.getGeneratorContext().setPrecision(3);
 
         // Set the Width and Height Attributes on the Root Element
         svgGraphics.setSVGCanvasSize(new Dimension(viewPort.width, viewPort.height));
+
+        svgGraphics.setupCustomShapeConverter();
 
         return new SiriusGraphicsSVG(svgGraphics, doc, svgNameSpace, viewPort);
     }
@@ -82,6 +160,10 @@ public class SiriusGraphicsSVG extends SiriusGraphicsToGraphics2DAdaptor impleme
      */
     public SVGGraphics2D getSVGGraphics2D() {
         return (SVGGraphics2D) getGraphics2D();
+    }
+
+    public void setCurrentId(String id) {
+        ((CustomSVGGraphics2D) getSVGGraphics2D()).setCurrentId(id);
     }
 
     /**

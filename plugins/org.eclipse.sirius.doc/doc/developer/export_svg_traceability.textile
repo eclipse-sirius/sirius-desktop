@@ -1,0 +1,16 @@
+h1. Export SVG Semantic Traceability
+
+The Sirius API allows to activate the semantic traceability during the representation export. This feature is for now only supported for diagram SVG export.
+More specifically, if this feature is enabled, every SVG element will have an additional attribute @diagram:semanticTargetId@ that will own the semantic target id on which the graphical element is based on. The semantic id is the result of applying @EcoreUtil.getURI(o)@ on the semantic eObject.
+
+Here is an example of a produced SVG Element with @diagram:semanticTargetId@ attribute:
+
+bc. <rect x="43" y="50" diagram:semanticTargetId="platform:/resource/DesignerTestProject/My.ecore#//p1/C1/a1" clip-path="url(#clipPath8)" fill="none" width="9" height="9" stroke="black"/>
+
+This feature can be activated in two different ways:
+
+* By using the export API: by calling @org.eclipse.sirius.ui.business.api.dialect.DialectUIServices.exportWithResult@ with the @ExportFormat@ as parameter with @semanticTraceabilityEnabled@ set at true. See @org.eclipse.sirius.ui.business.api.dialect.ExportFormat.setSemanticTraceabilityEnabled(boolean)@
+
+
+
+* By activating the Sirius preference @org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_EXPORT_SEMANTIC_TRACEABILITY@. If true, this will activate the traceability for any export by using the user interface (through the Sirius export as image dialog) or by calling the high level API @org.eclipse.sirius.ui.tools.api.actions.export.ExportAction@.
