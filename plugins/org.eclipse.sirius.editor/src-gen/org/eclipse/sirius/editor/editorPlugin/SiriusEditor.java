@@ -416,13 +416,7 @@ implements IAdapterFactoryProvider, IEditingDomainProvider, ISelectionProvider, 
                     if (!visitor.getRemovedResources().isEmpty()) {
                         removedResources.addAll(visitor.getRemovedResources());
                         if (!isDirty()) {
-                            getSite().getShell().getDisplay().asyncExec(new Runnable() {
-                                @Override
-                                public void run() {
-                                    getSite().getPage().closeEditor(SiriusEditor.this, false);
-                                    SiriusEditor.this.dispose();
-                                }
-                            });
+                            getSite().getShell().getDisplay().asyncExec(() -> getSite().getPage().closeEditor(SiriusEditor.this, false));
                         }
                     }
 
