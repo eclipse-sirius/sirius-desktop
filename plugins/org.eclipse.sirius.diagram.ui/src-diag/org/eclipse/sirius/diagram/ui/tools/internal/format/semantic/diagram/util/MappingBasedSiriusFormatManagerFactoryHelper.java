@@ -173,7 +173,7 @@ public final class MappingBasedSiriusFormatManagerFactoryHelper {
             if (element instanceof DDiagramElement) {
                 DDiagramElement dDiagramElement = diagramContentDuplicationSwitch.getSourceDDiagramElementToTargetDDiagramElementMap().get(element);
                 textNoteContainer = SiriusGMFHelper.getGmfNode(dDiagramElement);
-                if (!parentNode.isSetElement()) {
+                if (textNoteContainer != null && !parentNode.isSetElement()) {
                     Iterator<?> iterator = textNoteContainer.getChildren().iterator();
                     while (iterator.hasNext()) {
                         View child = (View) iterator.next();
@@ -218,7 +218,7 @@ public final class MappingBasedSiriusFormatManagerFactoryHelper {
             matchingTargetElement = sourceToTargetNoteMap.get(sourceEdgeOtherBoundView);
         } else {
             DDiagramElement targetDiagramElement = diagramContentDuplicationSwitch.getSourceDDiagramElementToTargetDDiagramElementMap().get(sourceEdgeOtherBoundElement);
-            if (targetDiagramElement != null) {
+            if (targetDiagramElement != null && targetDiagramElement.eResource() != null) {
                 matchingTargetElement = SiriusGMFHelper.getGmfView(targetDiagramElement, targetSession);
             } else {
                 // Here, either the target of the note attachment is not present in the target diagram or the
@@ -304,7 +304,8 @@ public final class MappingBasedSiriusFormatManagerFactoryHelper {
         List<View> sourceViewForSynchronizedMappingElements = new ArrayList<View>();
         allDiagramElements.forEach(dE -> {
             DDiagramElement targetDE = diagramContentDuplicationSwitch.getSourceDDiagramElementToTargetDDiagramElementMap().get(dE);
-            if (targetDE != null) {
+            // we make sure that the targetDE has not been removed by the refresh (detached)
+            if (targetDE != null && targetDE.eResource() != null) {
                 View sourceView = SiriusGMFHelper.getGmfView(dE);
                 allSourceViews.add(sourceView);
                 View targetView = SiriusGMFHelper.getGmfView(targetDE);

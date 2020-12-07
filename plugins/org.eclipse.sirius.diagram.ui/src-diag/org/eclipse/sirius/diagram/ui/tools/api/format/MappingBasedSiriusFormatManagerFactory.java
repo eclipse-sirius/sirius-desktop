@@ -184,6 +184,24 @@ public class MappingBasedSiriusFormatManagerFactory {
         return null;
     }
 
+    /**
+     * This is the core of the format application API.
+     * 
+     * @param sourceSession
+     *            The {@link Session} for the source diagram. Must not be null.
+     * @param sourceDiagram
+     *            The source diagram. Must not be null.
+     * @param correspondenceMap
+     *            The mapping function between source diagram elements and target diagram elements. Must not be null. In
+     *            the case where {@code sourceDiagram} is a Sequence diagram, must provide a mapping for each semantic
+     *            element of {@code sourceDiagram}.
+     * @param targetSession
+     *            The {@link Session} for the target diagram. Must not be null.
+     * @param targetDiagramName
+     *            The target diagram name. Must not be null or equal to "".
+     * @param copyNotes
+     *            Whether or not to copy source diagram notes to target diagram.
+     */
     private void applyFormatAccordingToMap(Session sourceSession, DDiagram sourceDiagram, final Map<EObject, EObject> correspondenceMap, Session targetSession, DDiagram targetDiagram,
             boolean copyNotes) {
 
@@ -239,7 +257,7 @@ public class MappingBasedSiriusFormatManagerFactory {
             CompositeFilterApplicationBuilder builder = new CompositeFilterApplicationBuilder(targetDiagram);
             builder.computeCompositeFilterApplications();
         }
-        DialectManager.INSTANCE.refresh(targetDiagram, new NullProgressMonitor());
+
         if (DisplayMode.NORMAL.equals(DisplayServiceManager.INSTANCE.getMode())) {
             DisplayServiceManager.INSTANCE.getDisplayService().refreshAllElementsVisibility(targetDiagram);
         }
@@ -357,6 +375,11 @@ public class MappingBasedSiriusFormatManagerFactory {
      *            The {@link DiagramEditPart} of the target diagram.
      */
     private void synchronizeTargetDiagram(Session targetSession, DSemanticDiagram targetDiagram, DiagramEditPart targetDiagramEditPart) {
+
+        // We do a Sirius refresh before to keep both Sirius and GMF diagram consistent. Indeed, some DDiagramElements
+        // might have been created according to the source diagram but for some reasons (inconsistency between the
+        // target and source semantic model) some Sirius elements might have been removed by the refresh.
+        DialectManager.INSTANCE.refresh(targetDiagram, new NullProgressMonitor());
         // Generate GMF views
         final DiagramCreationUtil targetDiagramUtil = new DiagramCreationUtil(targetDiagram);
         if (!targetDiagramUtil.findAssociatedGMFDiagram()) {
@@ -366,9 +389,6 @@ public class MappingBasedSiriusFormatManagerFactory {
         CanonicalSynchronizer canonicalSynchronizer = CanonicalSynchronizerFactory.INSTANCE.createCanonicalSynchronizer(targetGMFDiagram);
         canonicalSynchronizer.storeViewsToArrange(false);
         canonicalSynchronizer.synchronize();
-
-        targetSession.getRefreshEditorsListener().setForceRefresh(true);
-        targetSession.getRefreshEditorsListener().addRepresentationToForceRefresh(targetDiagram);
 
         // Prevent automatic layout
         Map<Diagram, Set<View>> viewToArrangeCenter = SiriusLayoutDataManager.INSTANCE.getCreatedViewWithCenterLayout();
