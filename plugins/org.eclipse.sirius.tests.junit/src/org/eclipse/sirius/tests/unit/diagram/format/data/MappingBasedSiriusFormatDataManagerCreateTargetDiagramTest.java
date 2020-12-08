@@ -80,8 +80,13 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest extends 
 
     protected static final Representation MB_REPRES_TYPE8UNSYNC = new Representation("DiagType8_unsync", MB_DIAG_TYPE8UNSYNC_MYPACKAGE);
 
-    protected static final Representation[] MB_ALL_REPRESENTATIONS = { MB_REPRES_TYPE2, MB_REPRES_TYPE2_FILTERS, MB_REPRES_TYPE2UNSYNC, MB_REPRES_TYPE2UNSYNC_EDGE, MB_REPRES_TYPE8,
-            MB_REPRES_TYPE8UNSYNC, MB_REPRES_NOTES_TYPE2 };
+    protected static final Diagram MB_DIAG_TYPE11_MYPACKAGE = new Diagram("DiagType11 of MyPackage", 16, 2);
+
+    protected static final Representation MB_REPRES_TYPE11 = new Representation("DiagType11", MB_DIAG_TYPE11_MYPACKAGE);
+
+    protected static final Representation[] MB_ALL_REPRESENTATIONS = {
+            MB_REPRES_TYPE2, MB_REPRES_TYPE2_FILTERS, MB_REPRES_TYPE2UNSYNC, MB_REPRES_TYPE2UNSYNC_EDGE, MB_REPRES_TYPE8, MB_REPRES_TYPE8UNSYNC, MB_REPRES_NOTES_TYPE2,
+            MB_REPRES_TYPE11 };
 
     public MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest(Representation representationToCopyFormat) throws Exception {
         super(representationToCopyFormat);
@@ -178,34 +183,35 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest extends 
             if (MB_GENERATE_IMAGES_TEST_DATA) {
                 exportDiagramToTempFolder(newDiagramName + "_from", dDiagram);
             }
-
             final RecordingCommand command = new RecordingCommand(sourceDiagramEditPart.getEditingDomain()) {
+                private DDiagram newDiagram;
+
                 @Override
                 protected void doExecute() {
-                    // Update diagram, but transaction will be
-                    // rollbacked
-                    DDiagram newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnNewDiagram(session, dDiagram, explicitMappingTestConfiguration.getObjectsMap(), session,
+                    newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnNewDiagram(session, dDiagram, explicitMappingTestConfiguration.getObjectsMap(), session,
                             newDiagramName, explicitMappingTestConfiguration.getTargetRoot(), includeNotes);
+                }
 
-                    Collection<DiagramEditPart> targetDiagramEditParts = getDiagramEditPart(session, newDiagram);
-                    assertTrue(!targetDiagramEditParts.isEmpty());
-
-                    DiagramEditPart targetDiagramEditPart = targetDiagramEditParts.stream().findFirst().get();
-                    newManager.storeFormatData(targetDiagramEditPart);
-
-                    if (MB_GENERATE_IMAGES_TEST_DATA) {
-                        exportDiagramToTempFolder(newDiagramName + "_to", newDiagram);
-                    }
+                @Override
+                public Collection<?> getResult() {
+                    return Collections.singleton(newDiagram);
                 }
             };
 
             try {
-                // Force rollback of transaction to let raw diagram
-                // unchanged
-                sourceDiagramEditPart.getEditingDomain().addResourceSetListener(ROLLBACK_LISTENER);
                 sourceDiagramEditPart.getEditingDomain().getCommandStack().execute(command);
+                DDiagram newDiagram = (DDiagram) command.getResult().stream().findFirst().get();
+                Collection<DiagramEditPart> targetDiagramEditParts = getDiagramEditPart(session, newDiagram);
+                assertTrue(!targetDiagramEditParts.isEmpty());
+
+                DiagramEditPart targetDiagramEditPart = targetDiagramEditParts.stream().findFirst().get();
+                newManager.storeFormatData(targetDiagramEditPart);
+
+                if (MB_GENERATE_IMAGES_TEST_DATA) {
+                    exportDiagramToTempFolder(newDiagramName + "_to", newDiagram);
+                }
             } finally {
-                sourceDiagramEditPart.getEditingDomain().removeResourceSetListener(ROLLBACK_LISTENER);
+                sourceDiagramEditPart.getEditingDomain().getCommandStack().undo();
             }
 
             final String diagramToCopyFormatName = representationToCopyFormat.diagrams.get(0).name;
@@ -227,6 +233,7 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest extends 
                 }
             } catch (IOException e) {
                 e.printStackTrace();
+                fail(e.getMessage());
             } finally {
 
             }

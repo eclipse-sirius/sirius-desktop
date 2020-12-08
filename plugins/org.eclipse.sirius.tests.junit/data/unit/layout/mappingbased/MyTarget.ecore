@@ -23,7 +23,7 @@
   </eSubpackages>
   <eSubpackages name="targetp2">
     <eSubpackages name="targetp2-1">
-      <eClassifiers xsi:type="ecore:EClass" name="targetnew EClass 1">
+      <eClassifiers xsi:type="ecore:EClass" name="targetnew EClass 1" eSuperTypes="#//targetp1/targetC1-1">
         <eOperations name="targetm1"/>
       </eClassifiers>
     </eSubpackages>

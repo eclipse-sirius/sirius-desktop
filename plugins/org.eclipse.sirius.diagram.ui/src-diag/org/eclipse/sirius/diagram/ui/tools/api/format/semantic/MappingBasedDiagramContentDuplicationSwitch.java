@@ -33,7 +33,6 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
@@ -44,18 +43,14 @@ import org.eclipse.sirius.diagram.business.internal.sync.DDiagramElementSynchron
 import org.eclipse.sirius.diagram.business.internal.sync.DEdgeCandidate;
 import org.eclipse.sirius.diagram.business.internal.sync.DNodeCandidate;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
-import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
-import org.eclipse.sirius.diagram.description.NodeMapping;
-import org.eclipse.sirius.diagram.tools.api.refresh.BestMappingGetter;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.util.DiagramSwitch;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 import org.eclipse.sirius.viewpoint.description.SemanticBasedDecoration;
@@ -278,21 +273,7 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
     private DDiagramElement handleDDiagramElement(DDiagramElement sourceDElement) {
         EObject targetElement = correspondenceMap.get(sourceDElement.getTarget());
         if (targetElement != null) {
-            BestMappingGetter bestMappingGetter = new BestMappingGetter((DSemanticDecorator) sourceDElement.eContainer(), sourceDElement.getTarget());
             DiagramElementMapping bestMapping = (DiagramElementMapping) sourceDElement.getMapping();
-            if (bestMapping instanceof NodeMapping) {
-                bestMapping = bestMappingGetter.getBestNodeMapping(Collections.singletonList((NodeMapping) sourceDElement.getMapping()));
-            } else if (bestMapping instanceof ContainerMapping) {
-                bestMapping = bestMappingGetter.getBestContainerMapping(Collections.singletonList((ContainerMapping) sourceDElement.getMapping()));
-            } else if (bestMapping instanceof EdgeMapping) {
-                bestMapping = bestMappingGetter.getBestEdgeMapping(Collections.singletonList((EdgeMapping) sourceDElement.getMapping()));
-            }
-
-            if (bestMapping == null) {
-                DiagramPlugin.getDefault().logInfo(MessageFormat.format(Messages.MappingBasedDiagramContentDuplicationSwitch_ImpossibleToFindBestMapping, targetElement));
-                bestMapping = (DiagramElementMapping) sourceDElement.getMapping();
-            }
-
             return getOrCreateTargetDiagramElement(sourceDElement, targetElement, bestMapping);
         }
         return null;
