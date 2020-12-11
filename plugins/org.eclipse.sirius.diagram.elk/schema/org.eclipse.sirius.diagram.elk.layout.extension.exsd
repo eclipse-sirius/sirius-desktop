@@ -52,10 +52,10 @@ Warning: Using this extension point can break the ELK layout result. It must be 
 
    <element name="layoutExtension">
       <complexType>
-         <attribute name="class" type="string">
+         <attribute name="class" type="string" use="required">
             <annotation>
                <documentation>
-                  
+                  A class implementing org.eclipse.sirius.diagram.elk.IELKLayoutExtension to perform specific treatments before and/or after the ELK Layout.
                </documentation>
                <appinfo>
                   <meta.attribute kind="java" basedOn=":org.eclipse.sirius.diagram.elk.IELKLayoutExtension"/>
