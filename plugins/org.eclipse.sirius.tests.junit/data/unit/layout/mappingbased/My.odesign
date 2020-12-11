@@ -468,5 +468,72 @@
         </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagType12" titleExpression="aql:'DiagType2 of ' + self.name" domainClass="EPackage">
+      <defaultLayer name="Default">
+        <edgeMappings name="DT12_EReference" semanticCandidatesExpression="aql:self.eAllContents(ecore::EReference)->select(e| e.eOpposite = null)" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']/@subContainerMappings[name='DT12_Class']" targetMapping="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']/@subContainerMappings[name='DT12_Class']" targetFinderExpression="aql:self.eType" sourceFinderExpression="feature:eContainer" domainClass="EReference" useDomainElement="true">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql:self.name">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="RBE_SuperType" sourceMapping="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']/@subContainerMappings[name='DT12_Class']" targetMapping="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Class_External']" targetFinderExpression="aql:self.eSuperTypes">
+          <style sizeComputationExpression="2" routingStyle="tree">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <centerLabelStyleDescription labelSize="12">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='red']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="DT12_Package" semanticCandidatesExpression="feature:eContents" domainClass="EPackage" reusedContainerMappings="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']">
+          <subContainerMappings name="DT12_Class" semanticCandidatesExpression="aql:self.eContents()->filter(ecore::EClass)" domainClass="EClass" childrenPresentation="List">
+            <subNodeMappings name="DT2_Attribute" semanticCandidatesExpression="feature:eAllContents" domainClass="EAttribute">
+              <style xsi:type="style:BundledImageDescription" labelExpression="aql:if self.derived then '/'  else  ''  endif  + self.name + ' : ' + self.eType.name " labelAlignment="LEFT" sizeComputationExpression="1">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <subNodeMappings name="DT2_Operation" semanticCandidatesExpression="feature:eAllContents" domainClass="EOperation">
+              <style xsi:type="style:BundledImageDescription" labelSize="10" labelAlignment="LEFT" tooltipExpression="aql:self.name + '(' + self.eParameters.name->sep(',') + '): '+ self.eType.name" sizeComputationExpression="2">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" tooltipExpression="aql:self.eContainer().name + '.' + self.name" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+            </style>
+            <conditionnalStyles predicateExpression="aql:self.abstract">
+              <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" tooltipExpression="aql:self.eContainer().name + '.' + self.name" backgroundStyle="GradientTopToBottom">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>italic</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+              </style>
+            </conditionnalStyles>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelSize="10" labelExpression="aql:'Container ' + self.name" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="DT12_Class_External" semanticCandidatesExpression="aql:self.eAllContents()->filter(ecore::EClass).oclAsType(ecore::EClass).eSuperTypes" domainClass="EClass">
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" tooltipExpression="aql:self.eContainer().name + '.' + self.name" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='orange']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
   </ownedViewpoints>
 </description:Group>

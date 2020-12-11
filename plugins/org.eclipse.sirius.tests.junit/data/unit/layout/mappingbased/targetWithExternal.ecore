@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="targetMyPackage">
+  <eSubpackages name="targetp1">
+    <eClassifiers xsi:type="ecore:EClass" name="targetC1-1" eSuperTypes="external.ecore#//ExternalEClass2">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="targetaC1-2" eType="#//targetp1/targetC1-2"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="targetaC1-1-1" eType="#//targetp1/targetp1-1/targetC1-1-1"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="targetC1-2"/>
+    <eClassifiers xsi:type="ecore:EClass" name="targetC1-3">
+      <eOperations name="targetm1"/>
+    </eClassifiers>
+    <eSubpackages name="targetp1-1">
+      <eClassifiers xsi:type="ecore:EClass" name="targetC1-1-1">
+        <eOperations name="targetm1"/>
+      </eClassifiers>
+      <eClassifiers xsi:type="ecore:EClass" name="targetC1-1-2"/>
+    </eSubpackages>
+    <eSubpackages name="targetp1-2">
+      <eClassifiers xsi:type="ecore:EClass" name="targetC1-2-1"/>
+    </eSubpackages>
+    <eSubpackages name="targetp1-3"/>
+  </eSubpackages>
+  <eSubpackages name="targetp2">
+    <eSubpackages name="targetp2-1">
+      <eClassifiers xsi:type="ecore:EClass" name="targetnew EClass 1" eSuperTypes="external.ecore#//ExternalEClass">
+        <eOperations name="targetm1"/>
+      </eClassifiers>
+    </eSubpackages>
+    <eSubpackages name="targetp2-2"/>
+  </eSubpackages>
+  <eSubpackages name="targetp3"/>
+  <eSubpackages name="targetp4"/>
+</ecore:EPackage>

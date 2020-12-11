@@ -203,6 +203,7 @@ public class AbstractMappingBasedSiriusFormatDataManagerTest extends AbstractSir
     public void setUp() throws Exception {
         super.setUp();
         // Load target mapping model
+        semanticModel = getModelFromPath(PLUGIN_PATH + getPlatformRelatedDataPath() + getSemanticModelName(), session);
         semanticTargetModel = getModelFromPath(PLUGIN_PATH + getPlatformRelatedDataPath() + getSemanticTargetModelName(), session);
 
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
@@ -585,7 +586,7 @@ public class AbstractMappingBasedSiriusFormatDataManagerTest extends AbstractSir
 
     protected void exportDiagramToTempFolder(String name, DRepresentation dDiagram) {
         // TODO: remove hardcoded path
-        final File temporaryFolder = new File("C:\\work\\cs\\tmp");
+        final File temporaryFolder = new File("path/to/folder");
         try {
             temporaryFolder.createNewFile();
             IPath tempsrcFilePath = new Path(temporaryFolder.getCanonicalPath()).append(name + ".png");

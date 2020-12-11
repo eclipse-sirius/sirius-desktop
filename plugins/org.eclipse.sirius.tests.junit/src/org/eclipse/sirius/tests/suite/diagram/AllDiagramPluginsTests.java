@@ -140,6 +140,7 @@ import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusForma
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTest;
+import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerExternalRefTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.SiriusFormatDataManagerForDDiagramElementWithSameSemanticElementsTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.SiriusFormatDataManagerForSemanticElementsApplyWithPredefinedDataTest;
@@ -453,6 +454,7 @@ public class AllDiagramPluginsTests {
         suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest.class));
         suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest.class));
         suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTest.class));
+        suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerExternalRefTest.class));
         // suite.addTest(new
         // JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerCreateTargetDiagramDiffSessionTest.class));
         suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerCallCheckTest.class));
