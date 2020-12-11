@@ -585,7 +585,6 @@ public class AbstractMappingBasedSiriusFormatDataManagerTest extends AbstractSir
     }
 
     protected void exportDiagramToTempFolder(String name, DRepresentation dDiagram) {
-        // TODO: remove hardcoded path
         final File temporaryFolder = new File("path/to/folder");
         try {
             temporaryFolder.createNewFile();

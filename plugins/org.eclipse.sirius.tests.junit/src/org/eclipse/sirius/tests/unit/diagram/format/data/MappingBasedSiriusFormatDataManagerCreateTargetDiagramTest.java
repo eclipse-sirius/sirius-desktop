@@ -174,8 +174,6 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest extends 
         if (!sourceDiagramEditParts.isEmpty()) {
             DiagramEditPart sourceDiagramEditPart = sourceDiagramEditParts.stream().findFirst().get();
 
-            final MappingBasedSiriusFormatDataManager originalManager = new MappingBasedSiriusFormatDataManager(explicitMappingTestConfiguration.getObjectsMap());
-            originalManager.storeFormatData(sourceDiagramEditPart);
 
             final MappingBasedSiriusFormatDataManager newManager = new MappingBasedSiriusFormatDataManager(explicitMappingTestConfiguration.getObjectsMap());
             final String newDiagramName = dDiagram.getName() + " " + explicitMappingTestConfiguration.getName() + " New" + (includeNotes ? " notes" : "");

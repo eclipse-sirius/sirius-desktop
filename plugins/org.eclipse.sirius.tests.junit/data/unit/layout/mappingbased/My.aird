@@ -104,6 +104,10 @@
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']"/>
         <target xmi:type="ecore:EPackage" href="srcWithExternal.ecore#/"/>
       </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__W6YsDvCEeuhG5MHStv3hA" name="DiagType13 of MyPackage" repPath="#__W38cDvCEeuhG5MHStv3hA" changeId="5760827c-c286-4447-93a9-0bf46a1605db">
+        <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']"/>
+        <target xmi:type="ecore:EPackage" href="srcWithExternal.ecore#/"/>
+      </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
   <diagram:DSemanticDiagram uid="_5zhU8M4UEd6bS_KBCUv05A">
@@ -6819,6 +6823,492 @@
     <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_1TLAgDuOEeuhG5MHStv3hA"/>
     <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="srcWithExternal.ecore#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="__W38cDvCEeuhG5MHStv3hA">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="__W6_wDvCEeuhG5MHStv3hA" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="__W6_wTvCEeuhG5MHStv3hA" type="Sirius" element="__W38cDvCEeuhG5MHStv3hA" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="__XJCMDvCEeuhG5MHStv3hA" type="2002" element="__W8N4DvCEeuhG5MHStv3hA">
+          <children xmi:type="notation:Node" xmi:id="__XJpQDvCEeuhG5MHStv3hA" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="__XJpQTvCEeuhG5MHStv3hA" type="7001">
+            <children xmi:type="notation:Node" xmi:id="__XK3ZDvCEeuhG5MHStv3hA" type="3009" element="__W9cBDvCEeuhG5MHStv3hA">
+              <children xmi:type="notation:Node" xmi:id="__XK3ZzvCEeuhG5MHStv3hA" type="5004"/>
+              <children xmi:type="notation:Node" xmi:id="__XLecDvCEeuhG5MHStv3hA" type="7003">
+                <styles xmi:type="notation:SortingStyle" xmi:id="__XLecTvCEeuhG5MHStv3hA"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="__XLecjvCEeuhG5MHStv3hA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="__XK3ZTvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_SNkDvDEeuhG5MHStv3hA" x="540" y="149" width="113" height="88"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="__XLeczvCEeuhG5MHStv3hA" type="3009" element="__W-DEjvCEeuhG5MHStv3hA">
+              <children xmi:type="notation:Node" xmi:id="__XLedjvCEeuhG5MHStv3hA" type="5004"/>
+              <children xmi:type="notation:Node" xmi:id="__XLedzvCEeuhG5MHStv3hA" type="7003">
+                <styles xmi:type="notation:SortingStyle" xmi:id="__XLeeDvCEeuhG5MHStv3hA"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="__XLeeTvCEeuhG5MHStv3hA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="__XLedDvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_UCxTvDEeuhG5MHStv3hA" x="510" y="29" width="103" height="63"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="__XMFgDvCEeuhG5MHStv3hA" type="3009" element="__W-qIjvCEeuhG5MHStv3hA">
+              <children xmi:type="notation:Node" xmi:id="__XMFgzvCEeuhG5MHStv3hA" type="5004"/>
+              <children xmi:type="notation:Node" xmi:id="__XMFhDvCEeuhG5MHStv3hA" type="7003">
+                <children xmi:type="notation:Node" xmi:id="__XOhwDvCEeuhG5MHStv3hA" type="3010" element="__W_RMDvCEeuhG5MHStv3hA">
+                  <styles xmi:type="notation:FontStyle" xmi:id="__XOhwTvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="10"/>
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="__XOhwjvCEeuhG5MHStv3hA"/>
+                </children>
+                <styles xmi:type="notation:SortingStyle" xmi:id="__XMFhTvCEeuhG5MHStv3hA"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="__XMFhjvCEeuhG5MHStv3hA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="__XMFgTvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_Up0DvDEeuhG5MHStv3hA" x="5" y="29" width="108" height="87"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="__XMFhzvCEeuhG5MHStv3hA" type="3008" element="__W_4QDvCEeuhG5MHStv3hA">
+              <children xmi:type="notation:Node" xmi:id="__XMskDvCEeuhG5MHStv3hA" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="__XMskTvCEeuhG5MHStv3hA" type="7002">
+                <children xmi:type="notation:Node" xmi:id="__XOhwzvCEeuhG5MHStv3hA" type="3009" element="__XAfVTvCEeuhG5MHStv3hA">
+                  <children xmi:type="notation:Node" xmi:id="__XOhxjvCEeuhG5MHStv3hA" type="5004"/>
+                  <children xmi:type="notation:Node" xmi:id="__XPI0DvCEeuhG5MHStv3hA" type="7003">
+                    <children xmi:type="notation:Node" xmi:id="__XPI2jvCEeuhG5MHStv3hA" type="3010" element="__XBtcTvCEeuhG5MHStv3hA">
+                      <styles xmi:type="notation:FontStyle" xmi:id="__XPI2zvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="10"/>
+                      <layoutConstraint xmi:type="notation:Location" xmi:id="__XPI3DvCEeuhG5MHStv3hA"/>
+                    </children>
+                    <styles xmi:type="notation:SortingStyle" xmi:id="__XPI0TvCEeuhG5MHStv3hA"/>
+                    <styles xmi:type="notation:FilteringStyle" xmi:id="__XPI0jvCEeuhG5MHStv3hA"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="__XOhxDvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_VQ4DvDEeuhG5MHStv3hA" x="15" y="22" width="138" height="77"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="__XPI0zvCEeuhG5MHStv3hA" type="3009" element="__XBGYjvCEeuhG5MHStv3hA">
+                  <children xmi:type="notation:Node" xmi:id="__XPI1jvCEeuhG5MHStv3hA" type="5004"/>
+                  <children xmi:type="notation:Node" xmi:id="__XPI1zvCEeuhG5MHStv3hA" type="7003">
+                    <styles xmi:type="notation:SortingStyle" xmi:id="__XPI2DvCEeuhG5MHStv3hA"/>
+                    <styles xmi:type="notation:FilteringStyle" xmi:id="__XPI2TvCEeuhG5MHStv3hA"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="__XPI1DvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_VQ4jvDEeuhG5MHStv3hA" x="175" y="29" width="128" height="70"/>
+                </children>
+                <styles xmi:type="notation:SortingStyle" xmi:id="__XNToDvCEeuhG5MHStv3hA"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="__XNToTvCEeuhG5MHStv3hA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="__XMFiDvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_Up0jvDEeuhG5MHStv3hA" x="680" y="22" width="323" height="155"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="__XNTojvCEeuhG5MHStv3hA" type="3008" element="__W_4QzvCEeuhG5MHStv3hA">
+              <children xmi:type="notation:Node" xmi:id="__XN6sDvCEeuhG5MHStv3hA" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="__XN6sTvCEeuhG5MHStv3hA" type="7002">
+                <children xmi:type="notation:Node" xmi:id="__XPv4DvCEeuhG5MHStv3hA" type="3009" element="__XCUgDvCEeuhG5MHStv3hA">
+                  <children xmi:type="notation:Node" xmi:id="__XPv4zvCEeuhG5MHStv3hA" type="5004"/>
+                  <children xmi:type="notation:Node" xmi:id="__XPv5DvCEeuhG5MHStv3hA" type="7003">
+                    <styles xmi:type="notation:SortingStyle" xmi:id="__XPv5TvCEeuhG5MHStv3hA"/>
+                    <styles xmi:type="notation:FilteringStyle" xmi:id="__XPv5jvCEeuhG5MHStv3hA"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="__XPv4TvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_V38jvDEeuhG5MHStv3hA" x="30" y="28" width="113" height="58"/>
+                </children>
+                <styles xmi:type="notation:SortingStyle" xmi:id="__XN6sjvCEeuhG5MHStv3hA"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="__XN6szvCEeuhG5MHStv3hA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="__XNTozvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_V38DvDEeuhG5MHStv3hA" x="135" y="39" width="168" height="107"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="__XN6tDvCEeuhG5MHStv3hA" type="3008" element="__XAfUjvCEeuhG5MHStv3hA">
+              <children xmi:type="notation:Node" xmi:id="__XN6tzvCEeuhG5MHStv3hA" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="__XN6uDvCEeuhG5MHStv3hA" type="7002">
+                <styles xmi:type="notation:SortingStyle" xmi:id="__XN6uTvCEeuhG5MHStv3hA"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="__XN6ujvCEeuhG5MHStv3hA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="__XN6tTvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_V39DvDEeuhG5MHStv3hA" x="320" y="29" width="168" height="91"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="__XJpQjvCEeuhG5MHStv3hA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="__XJpQzvCEeuhG5MHStv3hA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="__XJCMTvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="10"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_QYYDvDEeuhG5MHStv3hA" x="50" y="15" width="1118" height="303"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="__XJpRDvCEeuhG5MHStv3hA" type="2002" element="__W808DvCEeuhG5MHStv3hA">
+          <children xmi:type="notation:Node" xmi:id="__XJpRzvCEeuhG5MHStv3hA" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="__XJpSDvCEeuhG5MHStv3hA" type="7001">
+            <children xmi:type="notation:Node" xmi:id="__XQW8DvCEeuhG5MHStv3hA" type="3008" element="__XEJsDvCEeuhG5MHStv3hA">
+              <children xmi:type="notation:Node" xmi:id="__XQW8zvCEeuhG5MHStv3hA" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="__XQW9DvCEeuhG5MHStv3hA" type="7002">
+                <children xmi:type="notation:Node" xmi:id="__XQ-AzvCEeuhG5MHStv3hA" type="3009" element="__XEwwTvCEeuhG5MHStv3hA">
+                  <children xmi:type="notation:Node" xmi:id="__XRlEDvCEeuhG5MHStv3hA" type="5004"/>
+                  <children xmi:type="notation:Node" xmi:id="__XRlETvCEeuhG5MHStv3hA" type="7003">
+                    <children xmi:type="notation:Node" xmi:id="__XRlFDvCEeuhG5MHStv3hA" type="3010" element="__XFX0DvCEeuhG5MHStv3hA">
+                      <styles xmi:type="notation:FontStyle" xmi:id="__XRlFTvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="10"/>
+                      <layoutConstraint xmi:type="notation:Location" xmi:id="__XRlFjvCEeuhG5MHStv3hA"/>
+                    </children>
+                    <styles xmi:type="notation:SortingStyle" xmi:id="__XRlEjvCEeuhG5MHStv3hA"/>
+                    <styles xmi:type="notation:FilteringStyle" xmi:id="__XRlEzvCEeuhG5MHStv3hA"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="__XQ-BDvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_XGEjvDEeuhG5MHStv3hA" x="10" y="24" width="143" height="83"/>
+                </children>
+                <styles xmi:type="notation:SortingStyle" xmi:id="__XQW9TvCEeuhG5MHStv3hA"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="__XQW9jvCEeuhG5MHStv3hA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="__XQW8TvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_XGEDvDEeuhG5MHStv3hA" x="30" y="29" width="383" height="248"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="__XQW9zvCEeuhG5MHStv3hA" type="3008" element="__XEJszvCEeuhG5MHStv3hA">
+              <children xmi:type="notation:Node" xmi:id="__XQW-jvCEeuhG5MHStv3hA" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="__XQ-ADvCEeuhG5MHStv3hA" type="7002">
+                <styles xmi:type="notation:SortingStyle" xmi:id="__XQ-ATvCEeuhG5MHStv3hA"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="__XQ-AjvCEeuhG5MHStv3hA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="__XQW-DvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_XtJDvDEeuhG5MHStv3hA" x="490" y="54" width="183" height="98"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="__XKQUDvCEeuhG5MHStv3hA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="__XKQUTvCEeuhG5MHStv3hA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="__XJpRTvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="10"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_WfADvDEeuhG5MHStv3hA" x="165" y="345" width="823" height="363"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="__XKQUjvCEeuhG5MHStv3hA" type="2002" element="__W808zvCEeuhG5MHStv3hA">
+          <children xmi:type="notation:Node" xmi:id="__XKQVTvCEeuhG5MHStv3hA" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="__XKQVjvCEeuhG5MHStv3hA" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="__XKQVzvCEeuhG5MHStv3hA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="__XKQWDvCEeuhG5MHStv3hA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="__XKQUzvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="10"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_YUMDvDEeuhG5MHStv3hA" x="1380" width="150" height="70"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="__XKQWTvCEeuhG5MHStv3hA" type="2002" element="__W9cATvCEeuhG5MHStv3hA">
+          <children xmi:type="notation:Node" xmi:id="__XK3YDvCEeuhG5MHStv3hA" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="__XK3YTvCEeuhG5MHStv3hA" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="__XK3YjvCEeuhG5MHStv3hA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="__XK3YzvCEeuhG5MHStv3hA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="__XKQWjvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="10"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_YUMjvDEeuhG5MHStv3hA" x="1590" width="150" height="70"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_CaoBUDvDEeuhG5MHStv3hA" type="2002" element="_CZpw8DvDEeuhG5MHStv3hA">
+          <children xmi:type="notation:Node" xmi:id="_CaooYDvDEeuhG5MHStv3hA" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_CaooYTvDEeuhG5MHStv3hA" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_CaooYjvDEeuhG5MHStv3hA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_CaooYzvDEeuhG5MHStv3hA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_CaoBUTvDEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_YUNDvDEeuhG5MHStv3hA" x="1115" y="495" width="173" height="78"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_CaooZDvDEeuhG5MHStv3hA" type="2002" element="_CZqYATvDEeuhG5MHStv3hA">
+          <children xmi:type="notation:Node" xmi:id="_CaooZzvDEeuhG5MHStv3hA" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_CaooaDvDEeuhG5MHStv3hA" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_CaooaTvDEeuhG5MHStv3hA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_CaooajvDEeuhG5MHStv3hA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_CaooZTvDEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_Y7QDvDEeuhG5MHStv3hA" x="1120" y="355" width="173" height="88"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="__W6_wjvCEeuhG5MHStv3hA"/>
+        <edges xmi:type="notation:Edge" xmi:id="__XSMIDvCEeuhG5MHStv3hA" type="4001" element="__XGl8DvCEeuhG5MHStv3hA" source="__XK3ZDvCEeuhG5MHStv3hA" target="__XLeczvCEeuhG5MHStv3hA">
+          <children xmi:type="notation:Node" xmi:id="__XSMJDvCEeuhG5MHStv3hA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_TbsjvDEeuhG5MHStv3hA" x="-7" y="-7"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="__XSzMDvCEeuhG5MHStv3hA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="__XSzMTvCEeuhG5MHStv3hA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="__XSzMjvCEeuhG5MHStv3hA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="__XSzMzvCEeuhG5MHStv3hA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="__XSMITvCEeuhG5MHStv3hA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="__XSMIjvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_C_S0oDvDEeuhG5MHStv3hA" points="[0, 0, 10, 81]$[-8, -59, 2, 22]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="__XTaQDvCEeuhG5MHStv3hA" id="(0.2072072072072072,0.0)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="__XTaQTvCEeuhG5MHStv3hA" id="(0.42574257425742573,0.639344262295082)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="__XUBUDvCEeuhG5MHStv3hA" type="4001" element="__XHNADvCEeuhG5MHStv3hA" source="__XK3ZDvCEeuhG5MHStv3hA" target="__XOhwzvCEeuhG5MHStv3hA">
+          <children xmi:type="notation:Node" xmi:id="__XUBVDvCEeuhG5MHStv3hA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_UCwDvDEeuhG5MHStv3hA" x="-25" y="-8"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="__XUBVjvCEeuhG5MHStv3hA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="__XUBVzvCEeuhG5MHStv3hA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="__XUoYDvCEeuhG5MHStv3hA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="__XUoYTvCEeuhG5MHStv3hA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="__XUBUTvCEeuhG5MHStv3hA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="__XUBUjvCEeuhG5MHStv3hA" fontName="Cantarell" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_C_TbszvDEeuhG5MHStv3hA" points="[33, -19, -132, 76]$[138, -80, -27, 15]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="__XVPcDvCEeuhG5MHStv3hA" id="(0.1981981981981982,0.22674418604651161)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="__XVPcTvCEeuhG5MHStv3hA" id="(0.19852941176470587,0.30666666666666664)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_Cap2gDvDEeuhG5MHStv3hA" type="4001" element="_CZtbWDvDEeuhG5MHStv3hA" source="__XK3ZDvCEeuhG5MHStv3hA" target="_CaoBUDvDEeuhG5MHStv3hA">
+          <children xmi:type="notation:Node" xmi:id="_Cap2hDvDEeuhG5MHStv3hA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_UCxDvDEeuhG5MHStv3hA" x="54" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Cap2hjvDEeuhG5MHStv3hA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Cap2hzvDEeuhG5MHStv3hA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_Cap2iDvDEeuhG5MHStv3hA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Cap2iTvDEeuhG5MHStv3hA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_Cap2gTvDEeuhG5MHStv3hA" routing="Tree"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_Cap2gjvDEeuhG5MHStv3hA" fontColor="2697711" fontName="Cantarell" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_C_UCwTvDEeuhG5MHStv3hA" points="[0, 61, -565, -277]$[0, 605, -565, 267]$[566, 605, 1, 267]$[566, 376, 1, 38]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CaqdkDvDEeuhG5MHStv3hA" id="(0.36486486486486486,0.29651162790697677)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CaqdkTvDEeuhG5MHStv3hA" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_CaqdkjvDEeuhG5MHStv3hA" type="4001" element="_CZuCZDvDEeuhG5MHStv3hA" source="__XQ-AzvCEeuhG5MHStv3hA" target="_CaooZDvDEeuhG5MHStv3hA">
+          <children xmi:type="notation:Node" xmi:id="_CaqdljvDEeuhG5MHStv3hA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_C_XtIzvDEeuhG5MHStv3hA" x="-43" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CaqdmDvDEeuhG5MHStv3hA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CaqdmTvDEeuhG5MHStv3hA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_CaqdmjvDEeuhG5MHStv3hA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_CaqdmzvDEeuhG5MHStv3hA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_CaqdkzvDEeuhG5MHStv3hA" routing="Tree"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_CaqdlDvDEeuhG5MHStv3hA" fontColor="2697711" fontName="Cantarell" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_C_XtIDvDEeuhG5MHStv3hA" points="[0, 51, -935, 93]$[0, 230, -935, 272]$[936, 230, 1, 272]$[936, 1, 1, 43]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CarEoDvDEeuhG5MHStv3hA" id="(0.39361702127659576,0.3765432098765432)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_CarEoTvDEeuhG5MHStv3hA" id="(0.5,0.5)"/>
+        </edges>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="__XH0EDvCEeuhG5MHStv3hA" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="__XH0ETvCEeuhG5MHStv3hA"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="__W8N4DvCEeuhG5MHStv3hA" name="Container p1">
+      <target xmi:type="ecore:EPackage" href="srcWithExternal.ecore#//p1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="srcWithExternal.ecore#//p1"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_C_Q_cDvDEeuhG5MHStv3hA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+        <customFeatures>uid</customFeatures>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']"/>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" uid="__W9cBDvCEeuhG5MHStv3hA" name="C1-1" tooltipText="p1.C1-1" outgoingEdges="__XGl8DvCEeuhG5MHStv3hA __XHNADvCEeuhG5MHStv3hA _CZtbWDvDEeuhG5MHStv3hA">
+        <target xmi:type="ecore:EClass" href="srcWithExternal.ecore#//p1/C1-1"/>
+        <semanticElements xmi:type="ecore:EClass" href="srcWithExternal.ecore#//p1/C1-1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_C_SNkTvDEeuhG5MHStv3hA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+          <customFeatures>uid</customFeatures>
+          <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']/@subContainerMappings[name='DT12_Class']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']/@subContainerMappings[name='DT13_Class']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" uid="__W-DEjvCEeuhG5MHStv3hA" name="C1-2" tooltipText="p1.C1-2" incomingEdges="__XGl8DvCEeuhG5MHStv3hA">
+        <target xmi:type="ecore:EClass" href="srcWithExternal.ecore#//p1/C1-2"/>
+        <semanticElements xmi:type="ecore:EClass" href="srcWithExternal.ecore#//p1/C1-2"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_C_UCxjvDEeuhG5MHStv3hA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+          <customFeatures>uid</customFeatures>
+          <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']/@subContainerMappings[name='DT12_Class']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']/@subContainerMappings[name='DT13_Class']"/>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeList" uid="__W-qIjvCEeuhG5MHStv3hA" name="C1-3" tooltipText="p1.C1-3">
+        <target xmi:type="ecore:EClass" href="srcWithExternal.ecore#//p1/C1-3"/>
+        <semanticElements xmi:type="ecore:EClass" href="srcWithExternal.ecore#//p1/C1-3"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_C_Up0TvDEeuhG5MHStv3hA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+          <customFeatures>uid</customFeatures>
+          <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']/@subContainerMappings[name='DT12_Class']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']/@subContainerMappings[name='DT13_Class']"/>
+        <ownedElements xmi:type="diagram:DNodeListElement" uid="__W_RMDvCEeuhG5MHStv3hA" name="m1" tooltipText="m1(): ">
+          <target xmi:type="ecore:EOperation" href="srcWithExternal.ecore#//p1/C1-3/m1"/>
+          <semanticElements xmi:type="ecore:EOperation" href="srcWithExternal.ecore#//p1/C1-3/m1"/>
+          <ownedStyle xmi:type="diagram:BundledImage" uid="__W_RMTvCEeuhG5MHStv3hA" labelSize="10" labelAlignment="LEFT">
+            <description xmi:type="style:BundledImageDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']/@subContainerMappings[name='DT13_Class']/@subNodeMappings[name='DT3_Operation']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']/@subContainerMappings[name='DT13_Class']/@subNodeMappings[name='DT3_Operation']"/>
+        </ownedElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="__W_4QDvCEeuhG5MHStv3hA" name="Container p1-1">
+        <target xmi:type="ecore:EPackage" href="srcWithExternal.ecore#//p1/p1-1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="srcWithExternal.ecore#//p1/p1-1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_C_Up0zvDEeuhG5MHStv3hA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+          <customFeatures>uid</customFeatures>
+          <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" uid="__XAfVTvCEeuhG5MHStv3hA" name="C1-1-1" tooltipText="p1-1.C1-1-1" incomingEdges="__XHNADvCEeuhG5MHStv3hA">
+          <target xmi:type="ecore:EClass" href="srcWithExternal.ecore#//p1/p1-1/C1-1-1"/>
+          <semanticElements xmi:type="ecore:EClass" href="srcWithExternal.ecore#//p1/p1-1/C1-1-1"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_C_VQ4TvDEeuhG5MHStv3hA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+            <customFeatures>uid</customFeatures>
+            <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']/@subContainerMappings[name='DT12_Class']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']/@subContainerMappings[name='DT13_Class']"/>
+          <ownedElements xmi:type="diagram:DNodeListElement" uid="__XBtcTvCEeuhG5MHStv3hA" name="m1" tooltipText="m1(): ">
+            <target xmi:type="ecore:EOperation" href="srcWithExternal.ecore#//p1/p1-1/C1-1-1/m1"/>
+            <semanticElements xmi:type="ecore:EOperation" href="srcWithExternal.ecore#//p1/p1-1/C1-1-1/m1"/>
+            <ownedStyle xmi:type="diagram:BundledImage" uid="__XBtcjvCEeuhG5MHStv3hA" labelSize="10" labelAlignment="LEFT">
+              <description xmi:type="style:BundledImageDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']/@subContainerMappings[name='DT13_Class']/@subNodeMappings[name='DT3_Operation']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']/@subContainerMappings[name='DT13_Class']/@subNodeMappings[name='DT3_Operation']"/>
+          </ownedElements>
+        </ownedDiagramElements>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" uid="__XBGYjvCEeuhG5MHStv3hA" name="C1-1-2" tooltipText="p1-1.C1-1-2">
+          <target xmi:type="ecore:EClass" href="srcWithExternal.ecore#//p1/p1-1/C1-1-2"/>
+          <semanticElements xmi:type="ecore:EClass" href="srcWithExternal.ecore#//p1/p1-1/C1-1-2"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_C_VQ4zvDEeuhG5MHStv3hA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+            <customFeatures>uid</customFeatures>
+            <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']/@subContainerMappings[name='DT12_Class']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']/@subContainerMappings[name='DT13_Class']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="__W_4QzvCEeuhG5MHStv3hA" name="Container p1-2">
+        <target xmi:type="ecore:EPackage" href="srcWithExternal.ecore#//p1/p1-2"/>
+        <semanticElements xmi:type="ecore:EPackage" href="srcWithExternal.ecore#//p1/p1-2"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_C_V38TvDEeuhG5MHStv3hA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+          <customFeatures>uid</customFeatures>
+          <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" uid="__XCUgDvCEeuhG5MHStv3hA" name="C1-2-1" tooltipText="p1-2.C1-2-1">
+          <target xmi:type="ecore:EClass" href="srcWithExternal.ecore#//p1/p1-2/C1-2-1"/>
+          <semanticElements xmi:type="ecore:EClass" href="srcWithExternal.ecore#//p1/p1-2/C1-2-1"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_C_V38zvDEeuhG5MHStv3hA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+            <customFeatures>uid</customFeatures>
+            <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']/@subContainerMappings[name='DT12_Class']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']/@subContainerMappings[name='DT13_Class']"/>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="__XAfUjvCEeuhG5MHStv3hA" name="Container p1-3">
+        <target xmi:type="ecore:EPackage" href="srcWithExternal.ecore#//p1/p1-3"/>
+        <semanticElements xmi:type="ecore:EPackage" href="srcWithExternal.ecore#//p1/p1-3"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_C_V39TvDEeuhG5MHStv3hA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+          <customFeatures>uid</customFeatures>
+          <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']"/>
+      </ownedDiagramElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="__W808DvCEeuhG5MHStv3hA" name="Container p2">
+      <target xmi:type="ecore:EPackage" href="srcWithExternal.ecore#//p2"/>
+      <semanticElements xmi:type="ecore:EPackage" href="srcWithExternal.ecore#//p2"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_C_WfATvDEeuhG5MHStv3hA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+        <customFeatures>uid</customFeatures>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']"/>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="__XEJsDvCEeuhG5MHStv3hA" name="Container p2-1">
+        <target xmi:type="ecore:EPackage" href="srcWithExternal.ecore#//p2/p2-1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="srcWithExternal.ecore#//p2/p2-1"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_C_XGETvDEeuhG5MHStv3hA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+          <customFeatures>uid</customFeatures>
+          <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']"/>
+        <ownedDiagramElements xmi:type="diagram:DNodeList" uid="__XEwwTvCEeuhG5MHStv3hA" name="new EClass 1" tooltipText="p2-1.new EClass 1" outgoingEdges="_CZuCZDvDEeuhG5MHStv3hA">
+          <target xmi:type="ecore:EClass" href="srcWithExternal.ecore#//p2/p2-1/new%20EClass%201"/>
+          <semanticElements xmi:type="ecore:EClass" href="srcWithExternal.ecore#//p2/p2-1/new%20EClass%201"/>
+          <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_C_XGEzvDEeuhG5MHStv3hA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+            <customFeatures>uid</customFeatures>
+            <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']/@subContainerMappings[name='DT12_Class']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']/@subContainerMappings[name='DT13_Class']"/>
+          <ownedElements xmi:type="diagram:DNodeListElement" uid="__XFX0DvCEeuhG5MHStv3hA" name="m1" tooltipText="m1(): ">
+            <target xmi:type="ecore:EOperation" href="srcWithExternal.ecore#//p2/p2-1/new%20EClass%201/m1"/>
+            <semanticElements xmi:type="ecore:EOperation" href="srcWithExternal.ecore#//p2/p2-1/new%20EClass%201/m1"/>
+            <ownedStyle xmi:type="diagram:BundledImage" uid="__XFX0TvCEeuhG5MHStv3hA" labelSize="10" labelAlignment="LEFT">
+              <description xmi:type="style:BundledImageDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']/@subContainerMappings[name='DT13_Class']/@subNodeMappings[name='DT3_Operation']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']/@subContainerMappings[name='DT13_Class']/@subNodeMappings[name='DT3_Operation']"/>
+          </ownedElements>
+        </ownedDiagramElements>
+      </ownedDiagramElements>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="__XEJszvCEeuhG5MHStv3hA" name="Container p2-2">
+        <target xmi:type="ecore:EPackage" href="srcWithExternal.ecore#//p2/p2-2"/>
+        <semanticElements xmi:type="ecore:EPackage" href="srcWithExternal.ecore#//p2/p2-2"/>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_C_XtJTvDEeuhG5MHStv3hA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+          <customFeatures>uid</customFeatures>
+          <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']"/>
+      </ownedDiagramElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="__W808zvCEeuhG5MHStv3hA" name="Container p3">
+      <target xmi:type="ecore:EPackage" href="srcWithExternal.ecore#//p3"/>
+      <semanticElements xmi:type="ecore:EPackage" href="srcWithExternal.ecore#//p3"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_C_YUMTvDEeuhG5MHStv3hA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+        <customFeatures>uid</customFeatures>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="__W9cATvCEeuhG5MHStv3hA" name="Container p4">
+      <target xmi:type="ecore:EPackage" href="srcWithExternal.ecore#//p4"/>
+      <semanticElements xmi:type="ecore:EPackage" href="srcWithExternal.ecore#//p4"/>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_C_YUMzvDEeuhG5MHStv3hA" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+        <customFeatures>uid</customFeatures>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@containerMappings[name='DT13_Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="__XGl8DvCEeuhG5MHStv3hA" name="aC1-2" sourceNode="__W9cBDvCEeuhG5MHStv3hA" targetNode="__W-DEjvCEeuhG5MHStv3hA">
+      <target xmi:type="ecore:EReference" href="srcWithExternal.ecore#//p1/C1-1/aC1-2"/>
+      <semanticElements xmi:type="ecore:EReference" href="srcWithExternal.ecore#//p1/C1-1/aC1-2"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_C_TbsDvDEeuhG5MHStv3hA">
+        <customFeatures>uid</customFeatures>
+        <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@edgeMappings[name='DT12_EReference']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_C_TbsTvDEeuhG5MHStv3hA" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@edgeMappings[name='DT13_EReference']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="__XHNADvCEeuhG5MHStv3hA" name="aC1-1-1" sourceNode="__W9cBDvCEeuhG5MHStv3hA" targetNode="__XAfVTvCEeuhG5MHStv3hA">
+      <target xmi:type="ecore:EReference" href="srcWithExternal.ecore#//p1/C1-1/aC1-1-1"/>
+      <semanticElements xmi:type="ecore:EReference" href="srcWithExternal.ecore#//p1/C1-1/aC1-1-1"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_C_TbtDvDEeuhG5MHStv3hA">
+        <customFeatures>uid</customFeatures>
+        <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@edgeMappings[name='DT12_EReference']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_C_TbtTvDEeuhG5MHStv3hA" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@edgeMappings[name='DT13_EReference']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_CZpw8DvDEeuhG5MHStv3hA" name="ExternalEClass2" tooltipText="external.ExternalEClass2" incomingEdges="_CZtbWDvDEeuhG5MHStv3hA">
+      <target xmi:type="ecore:EClass" href="external.ecore#//ExternalEClass2"/>
+      <semanticElements xmi:type="ecore:EClass" href="external.ecore#//ExternalEClass2"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_C_YUNTvDEeuhG5MHStv3hA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="252,175,62">
+        <customFeatures>uid</customFeatures>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Class_External']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@additionalLayers[name='external']/@containerMappings[name='DT13_Class_External']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_CZqYATvDEeuhG5MHStv3hA" name="ExternalEClass" tooltipText="external.ExternalEClass" incomingEdges="_CZuCZDvDEeuhG5MHStv3hA">
+      <target xmi:type="ecore:EClass" href="external.ecore#//ExternalEClass"/>
+      <semanticElements xmi:type="ecore:EClass" href="external.ecore#//ExternalEClass"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_C_Y7QTvDEeuhG5MHStv3hA" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="252,175,62">
+        <customFeatures>uid</customFeatures>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@containerMappings[name='DT12_Class_External']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@additionalLayers[name='external']/@containerMappings[name='DT13_Class_External']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_CZtbWDvDEeuhG5MHStv3hA" sourceNode="__W9cBDvCEeuhG5MHStv3hA" targetNode="_CZpw8DvDEeuhG5MHStv3hA">
+      <target xmi:type="ecore:EClass" href="srcWithExternal.ecore#//p1/C1-1"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_C_UCwjvDEeuhG5MHStv3hA" size="2" routingStyle="tree" strokeColor="252,175,62">
+        <customFeatures>uid</customFeatures>
+        <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@edgeMappings[name='RBE_SuperType']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_C_UCwzvDEeuhG5MHStv3hA" labelSize="12" labelColor="239,41,41"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@edgeMappings[name='RBE_SuperType']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_CZuCZDvDEeuhG5MHStv3hA" sourceNode="__XEwwTvCEeuhG5MHStv3hA" targetNode="_CZqYATvDEeuhG5MHStv3hA">
+      <target xmi:type="ecore:EClass" href="srcWithExternal.ecore#//p2/p2-1/new%20EClass%201"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_C_XtITvDEeuhG5MHStv3hA" size="2" routingStyle="tree" strokeColor="252,175,62">
+        <customFeatures>uid</customFeatures>
+        <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType12']/@defaultLayer/@edgeMappings[name='RBE_SuperType']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_C_XtIjvDEeuhG5MHStv3hA" labelSize="12" labelColor="239,41,41"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer/@edgeMappings[name='RBE_SuperType']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="__W38cTvCEeuhG5MHStv3hA"/>
+    <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer"/>
+    <activatedLayers xmi:type="description_1:AdditionalLayer" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@additionalLayers[name='external']"/>
     <target xmi:type="ecore:EPackage" href="srcWithExternal.ecore#/"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>

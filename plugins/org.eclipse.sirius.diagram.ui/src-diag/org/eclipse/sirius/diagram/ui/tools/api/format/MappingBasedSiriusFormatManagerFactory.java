@@ -208,6 +208,9 @@ public class MappingBasedSiriusFormatManagerFactory {
         diagramContentDuplicationSwitch = new MappingBasedDiagramContentDuplicationSwitch((DSemanticDiagram) targetDiagram, correspondenceMap, targetSession);
         diagramContentDuplicationSwitch.doSwitch(sourceDiagram);
 
+        // Apply filters and layers state on target diagram
+        applyFiltersAndLayersState(sourceDiagram, targetDiagram);
+        synchronizeTargetDiagram(targetSession, (DSemanticDiagram) targetDiagram);
         DiagramEditPart sourceDiagramEditPart = null;
         DiagramEditPart targetDiagramEditPart = null;
         try {
@@ -218,24 +221,18 @@ public class MappingBasedSiriusFormatManagerFactory {
                 sourceDiagramEditPart = sourceDiagramEditParts.stream().findFirst().get();
                 targetDiagramEditPart = targetDiagramEditParts.stream().findFirst().get();
 
-                synchronizeTargetDiagram(targetSession, (DSemanticDiagram) targetDiagram, targetDiagramEditPart);
-
                 // Apply format according to map
                 applyFormatOnDiagram(sourceDiagramEditPart, correspondenceMap, targetDiagramEditPart);
-
-                synchronizeTargetDiagram(targetSession, (DSemanticDiagram) targetDiagram, targetDiagramEditPart);
+                synchronizeTargetDiagram(targetSession, (DSemanticDiagram) targetDiagram);
 
                 // Copy notes if asked to
                 if (copyNotes) {
                     copyNotes(sourceDiagram, targetDiagram, targetSession);
+                    synchronizeTargetDiagram(targetSession, (DSemanticDiagram) targetDiagram);
                 }
 
                 MappingBasedSiriusFormatManagerFactoryHelper.applyNodeDepthPositions(sourceDiagram, targetDiagram, copyNotes, diagramContentDuplicationSwitch, sourceToTargetNoteMap);
-
-                // Apply filters and layers state on target diagram
-                applyFiltersAndLayersState(sourceDiagram, targetDiagram);
-
-                synchronizeTargetDiagram(targetSession, (DSemanticDiagram) targetDiagram, targetDiagramEditPart);
+                synchronizeTargetDiagram(targetSession, (DSemanticDiagram) targetDiagram);
             }
         } finally {
             cleanAndDispose(sourceDiagramEditPart);
@@ -371,10 +368,8 @@ public class MappingBasedSiriusFormatManagerFactory {
      *            The session holding the target diagram.
      * @param targetDiagram
      *            The target diagram.
-     * @param targetDiagramEditPart
-     *            The {@link DiagramEditPart} of the target diagram.
      */
-    private void synchronizeTargetDiagram(Session targetSession, DSemanticDiagram targetDiagram, DiagramEditPart targetDiagramEditPart) {
+    private void synchronizeTargetDiagram(Session targetSession, DSemanticDiagram targetDiagram) {
 
         // We do a Sirius refresh before to keep both Sirius and GMF diagram consistent. Indeed, some DDiagramElements
         // might have been created according to the source diagram but for some reasons (inconsistency between the
@@ -386,23 +381,24 @@ public class MappingBasedSiriusFormatManagerFactory {
             targetDiagramUtil.createNewGMFDiagram();
         }
         final Diagram targetGMFDiagram = targetDiagramUtil.getAssociatedGMFDiagram();
-        CanonicalSynchronizer canonicalSynchronizer = CanonicalSynchronizerFactory.INSTANCE.createCanonicalSynchronizer(targetGMFDiagram);
-        canonicalSynchronizer.storeViewsToArrange(false);
-        canonicalSynchronizer.synchronize();
+        if (targetGMFDiagram != null) {
+            CanonicalSynchronizer canonicalSynchronizer = CanonicalSynchronizerFactory.INSTANCE.createCanonicalSynchronizer(targetGMFDiagram);
+            canonicalSynchronizer.storeViewsToArrange(false);
+            canonicalSynchronizer.synchronize();
 
-        // Prevent automatic layout
-        Map<Diagram, Set<View>> viewToArrangeCenter = SiriusLayoutDataManager.INSTANCE.getCreatedViewWithCenterLayout();
-        Map<Diagram, Set<View>> viewToArrange = SiriusLayoutDataManager.INSTANCE.getCreatedViewsToLayout();
+            // Prevent automatic layout
+            Map<Diagram, Set<View>> viewToArrangeCenter = SiriusLayoutDataManager.INSTANCE.getCreatedViewWithCenterLayout();
+            Map<Diagram, Set<View>> viewToArrange = SiriusLayoutDataManager.INSTANCE.getCreatedViewsToLayout();
 
-        View diagramView = targetDiagramEditPart.getDiagramView();
-        Set<View> set = viewToArrange.get(diagramView);
-        if (set != null) {
-            set.clear();
-        }
+            Set<View> set = viewToArrange.get(targetGMFDiagram);
+            if (set != null) {
+                set.clear();
+            }
 
-        Set<View> set2 = viewToArrangeCenter.get(diagramView);
-        if (set2 != null) {
-            set2.clear();
+            Set<View> set2 = viewToArrangeCenter.get(targetGMFDiagram);
+            if (set2 != null) {
+                set2.clear();
+            }
         }
     }
 

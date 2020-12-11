@@ -20,8 +20,9 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
 
 /**
- * Test that shared external references between the source and target model are properly handled: The target diagram
- * contains the external references as well. The layout is properly applied.
+ * Test that shared external references between the source and target model are properly handled:
+ * The target diagram contains the external references as well.
+ * The layout is poperly applied.
  * 
  * @author fbarbin
  */
@@ -35,6 +36,11 @@ public class MappingBasedSiriusFormatDataManagerExternalRefTest extends MappingB
 
     protected static final Representation MB_REPRES_TYPE12 = new Representation("DiagType12", MB_DIAG_TYPE12_MYPACKAGE);
 
+    protected static final Diagram MB_DIAG_TYPE13_MYPACKAGE = new Diagram("DiagType13 of MyPackage", 16, 2);
+
+    protected static final Representation MB_REPRES_TYPE13 = new Representation("DiagType13", MB_DIAG_TYPE13_MYPACKAGE);
+
+    private static final Representation[] REPRESENTATIONS = { MB_REPRES_TYPE12, MB_REPRES_TYPE13 };
 
     public MappingBasedSiriusFormatDataManagerExternalRefTest(Representation representationToCopyFormat) throws Exception {
         super(representationToCopyFormat);
@@ -52,8 +58,13 @@ public class MappingBasedSiriusFormatDataManagerExternalRefTest extends MappingB
 
     @Parameters
     public static Collection<Object[]> data() {
+        // We could use @Theories and @Datapoints but the theory stops as soon
+        // as there is a failure. With parameters, we have feedback for all
+        // scenarii.
         Collection<Object[]> data = new ArrayList<>();
-        data.add(new Object[] { MB_REPRES_TYPE12 });
+        for (Representation copyRep : REPRESENTATIONS) {
+            data.add(new Object[] { copyRep });
+        }
         return data;
     }
 }
