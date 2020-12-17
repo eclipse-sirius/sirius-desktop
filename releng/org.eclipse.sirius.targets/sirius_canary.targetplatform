@@ -42,7 +42,7 @@ location Orbit-latest-I "https://download.eclipse.org/tools/orbit/downloads/late
     com.graphql.java [11.0.0,11.0.1)
 }
 
-location ELK-Nightly "https://build.eclipse.org/modeling/elk/updates/nightly/" {
+location ELK-Nightly "https://download.eclipse.org/elk/updates/nightly/" {
     org.eclipse.elk.sdk.feature.feature.group lazy
     org.eclipse.elk.sdk.feature.source.feature.group lazy
     org.eclipse.elk.feature.feature.group lazy
