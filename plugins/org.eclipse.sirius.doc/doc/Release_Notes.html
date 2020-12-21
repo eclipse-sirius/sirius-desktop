@@ -13,6 +13,9 @@
 				<a href="#ReleaseNotesforSirius">Release Notes for Sirius</a>
 				<ol style="list-style: disc;">
 					<li>
+						<a href="#sirius6.4.1">Changes in Sirius 6.4.1</a>
+					</li>
+					<li>
 						<a href="#sirius6.4.0">Changes in Sirius 6.4.0</a>
 						<ol style="list-style: disc;">
 							<li>
@@ -140,6 +143,11 @@
 		<p>This document contains the release notes for recent major releases of Sirius. See also 
 			<a href="Release_Notes_Previous.html">the release notes from previous versions</a> for details about older releases.
 		</p>
+		<h2 id="sirius6.4.1">Changes in Sirius 6.4.1</h2>
+		<p>This is service release to fix two issues which were not detected in time for 6.4.0. The issues only impact a new API which was introduced in 6.4.0 (Bug 563117 - 
+			<em>Copy format to existing/new diagram based on source to target semantic elements mapping</em>).
+		</p>
+		<p>Users who want to use this specific feature are encouraged to move to 6.4.1. The bugs have zero impact on the rest of Sirius so there is no need to update if you do not use this specific API.</p>
 		<h2 id="sirius6.4.0">Changes in Sirius 6.4.0</h2>
 		<p><span class="label label-info">Important</span> In order to reduce the maintenance burden of Sirius, we have decided to deprecate some older mechanisms for which there exist better alternatives. In Sirius 6.4.x all of these are still available, but they may be removed in future versions
 			<br/>(6.5 or 7.0) without further notice. If any of these planned removals are an issue for you, please 
@@ -248,11 +256,10 @@
 				<code>org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.ArrangeSelectionLayoutProvider</code>. Previously, this was the case for all layout algorithm but it can be useful to disable it (for ELK layout for example). This method is associated with 
 				<code>org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm.CustomLayoutAlgorithmBuilder.setStandardArrangeSelectionMechanism(boolean)</code>
 			</li>
-		</ul>
-		<ul>
 			<li><span class="label label-success">Added</span> A new API in 
 				<code>org.eclipse.sirius.diagram.ui.tools.api.format.MappingBasedSiriusFormatManagerFactory</code> has been added to make it possible to apply a copy-paste format to an existing or a new diagram with different semantic targets. This API receives a mapping between the source and target semantic elements to retrieve which graphical element in the target diagram corresponds to the one in source diagram. See the 
-				<a href="developer/copy_paste_format_new_semantic.html">developer</a> documentation for more details.
+				<a href="developer/copy_paste_format_new_semantic.html">developer</a> documentation for more details. 
+				<strong>NOTE:</strong> The initial version of this new API available in Sirius 6.4.0 has a few issues that have been fixed in 6.4.1. If you wan to leverage this new API you are encouraged to use Sirius 6.4.1.
 			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in  

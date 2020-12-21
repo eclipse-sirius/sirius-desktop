@@ -4,6 +4,12 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius6.4.1). Changes in Sirius 6.4.1
+
+This is service release to fix two issues which were not detected in time for 6.4.0. The issues only impact a new API which was introduced in 6.4.0 (Bug 563117 - _Copy format to existing/new diagram based on source to target semantic elements mapping_).
+
+Users who want to use this specific feature are encouraged to move to 6.4.1. The bugs have zero impact on the rest of Sirius so there is no need to update if you do not use this specific API.
+
 h2(#sirius6.4.0). Changes in Sirius 6.4.0
 
 <span class="label label-info">Important</span> In order to reduce the maintenance burden of Sirius, we have decided to deprecate some older mechanisms for which there exist better alternatives. In Sirius 6.4.x all of these are still available, but they may be removed in future versions
@@ -60,8 +66,7 @@ h4. Changes in  @org.eclipse.sirius.diagram.ui@
 * <span class="label label-success">Added</span> A new method, @getDefaultDimension()@ has been added in @org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart()@. This method was already used previously in Sirius but was private. It is now public and is used for example for having information during ELK layout.
 * <span class="label label-success">Added</span> A new method, @layoutEditParts(List, IAdaptable, boolean)@ has been added in @org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider@. It allows for implementations to do specific code according to the arrangeAll or arrangeSelection aspect when layoutEditParts is called. By default, the code called is the same than the @org.eclipse.gmf.runtime.diagram.ui.services.layout.AbstractLayoutEditPartProvider.layoutEditParts(List, IAdaptable)@ implementation.
 * <span class="label label-success">Added</span> A new method, @useStandardArrangeSelectionMechanism()@ has been added in @org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm@ to know if a specific layout algorithm relies on the behavior of @org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.ArrangeSelectionLayoutProvider@. Previously, this was the case for all layout algorithm but it can be useful to disable it (for ELK layout for example). This method is associated with @org.eclipse.sirius.diagram.ui.api.layout.CustomLayoutAlgorithm.CustomLayoutAlgorithmBuilder.setStandardArrangeSelectionMechanism(boolean)@
-
-* <span class="label label-success">Added</span> A new API in @org.eclipse.sirius.diagram.ui.tools.api.format.MappingBasedSiriusFormatManagerFactory@ has been added to make it possible to apply a copy-paste format to an existing or a new diagram with different semantic targets. This API receives a mapping between the source and target semantic elements to retrieve which graphical element in the target diagram corresponds to the one in source diagram. See the "developer":developer/copy_paste_format_new_semantic.html documentation for more details.
+* <span class="label label-success">Added</span> A new API in @org.eclipse.sirius.diagram.ui.tools.api.format.MappingBasedSiriusFormatManagerFactory@ has been added to make it possible to apply a copy-paste format to an existing or a new diagram with different semantic targets. This API receives a mapping between the source and target semantic elements to retrieve which graphical element in the target diagram corresponds to the one in source diagram. See the "developer":developer/copy_paste_format_new_semantic.html documentation for more details. *NOTE:* The initial version of this new API available in Sirius 6.4.0 has a few issues that have been fixed in 6.4.1. If you wan to leverage this new API you are encouraged to use Sirius 6.4.1.
 
 h4. Changes in  @org.eclipse.sirius.ui@
 
