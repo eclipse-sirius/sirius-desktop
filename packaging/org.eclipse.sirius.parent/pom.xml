@@ -83,14 +83,6 @@
     </pluginRepository>
   </pluginRepositories>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.eclipse.acceleo</groupId>
-      <artifactId>org.eclipse.acceleo.maven</artifactId>
-      <version>3.5.2</version>
-    </dependency>
-  </dependencies>
-
   <distributionManagement>
     <repository>
       <id>repo.eclipse.org</id>
