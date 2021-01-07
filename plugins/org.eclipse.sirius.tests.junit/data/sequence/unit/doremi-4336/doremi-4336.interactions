@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interactions:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:interactions="http://www.eclipse.org/sirius/sample/interactions">
+  <ownedInteractions name="I1">
+    <participants name="newParticipant1">
+      <type href="doremi-4336.ecore#//A"/>
+    </participants>
+    <participants name="newParticipant2">
+      <type href="doremi-4336.ecore#//B"/>
+    </participants>
+    <messages xsi:type="interactions:CallMessage" name="m1" sendingEnd="//@ownedInteractions.0/@ends.2" receivingEnd="//@ownedInteractions.0/@ends.3">
+      <operation href="doremi-4336.ecore#//B/testSomethingElse"/>
+    </messages>
+    <executions name="e1" owner="//@ownedInteractions.0/@participants.1" start="//@ownedInteractions.0/@ends.3" end="//@ownedInteractions.0/@ends.4"/>
+    <combinedFragments operator="alt.1" coveredParticipants="//@ownedInteractions.0/@participants.0 //@ownedInteractions.0/@participants.1" start="//@ownedInteractions.0/@ends.0" finish="//@ownedInteractions.0/@ends.6">
+      <ownedOperands name="condition1" start="//@ownedInteractions.0/@ends.1"/>
+      <ownedOperands name="condition.2" start="//@ownedInteractions.0/@ends.5"/>
+    </combinedFragments>
+    <ends xsi:type="interactions:CombinedFragmentEnd" name="start_alt.1" owner="//@ownedInteractions.0/@combinedFragments.0"/>
+    <ends xsi:type="interactions:OperandEnd" name="start_condition1" owner="//@ownedInteractions.0/@combinedFragments.0/@ownedOperands.0"/>
+    <ends xsi:type="interactions:MessageEnd" name="send_m1" context="//@ownedInteractions.0/@participants.0" message="//@ownedInteractions.0/@messages.0"/>
+    <ends xsi:type="interactions:MixEnd" name="start_e1" context="//@ownedInteractions.0/@participants.1" execution="//@ownedInteractions.0/@executions.0" message="//@ownedInteractions.0/@messages.0"/>
+    <ends xsi:type="interactions:ExecutionEnd" context="//@ownedInteractions.0/@participants.1" execution="//@ownedInteractions.0/@executions.0"/>
+    <ends xsi:type="interactions:OperandEnd" name="start_condition.2" owner="//@ownedInteractions.0/@combinedFragments.0/@ownedOperands.1"/>
+    <ends xsi:type="interactions:CombinedFragmentEnd" name="finish_alt.1" owner="//@ownedInteractions.0/@combinedFragments.0"/>
+  </ownedInteractions>
+</interactions:Model>

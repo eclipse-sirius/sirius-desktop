@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.suite.diagram.sequence;
 
 import org.eclipse.sirius.tests.unit.diagram.sequence.CollapseFilterSequenceMigrationTest;
+import org.eclipse.sirius.tests.unit.diagram.sequence.DeleteElementsLinkedToNoteTest;
 import org.eclipse.sirius.tests.unit.diagram.sequence.ExecutionTests;
 import org.eclipse.sirius.tests.unit.diagram.sequence.HeaderHeightTests;
 import org.eclipse.sirius.tests.unit.diagram.sequence.LifelineTests;
@@ -74,6 +75,7 @@ public class AllSequenceDiagramsPluginTests extends TestCase {
         suite.addTestSuite(CollapseFilterSequenceMigrationTest.class);
         suite.addTestSuite(SequenceMessageFlagResetMigrationTest.class);
         suite.addTestSuite(OperandFigureAndEdgesTest.class);
+        suite.addTestSuite(DeleteElementsLinkedToNoteTest.class);
         return suite;
     }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -50,8 +50,7 @@ public final class DeleteHelper {
     }
 
     /**
-     * Delete all notes attached to view. If a note is attached to an other
-     * view, the note is not destroyed.
+     * Delete all notes attached to view. If a note is attached to an other view, the note is not destroyed.
      *
      * @param command
      *            the command
@@ -112,9 +111,8 @@ public final class DeleteHelper {
     }
 
     /**
-     * Delete note if this is associated to node deleted. If a note is
-     * associated at two node, the note is not deleted if the two node are not
-     * deleted.
+     * Delete note if this is associated to node deleted. If a note is associated at two node, the note is not deleted
+     * if the two node are not deleted.
      *
      * @author <a href="mailto:julien.dupont@obeo.fr">Julien DUPONT</a>
      *
@@ -145,7 +143,7 @@ public final class DeleteHelper {
                 EcoreUtil.remove(v);
             }
 
-            // Hide notes associated to element hide in model.
+            // Hide notes associated to element hidden in model.
             for (final View v : noteToHide) {
                 v.setVisible(false);
             }
@@ -190,8 +188,8 @@ public final class DeleteHelper {
         }
 
         /**
-         * Remove all contains set if the set contains an element that is not a
-         * note. It the element is hide, hide notes associated.
+         * Remove all contains set if the set contains an element that is not a note. If the element is hide, hide notes
+         * associated.
          *
          * @param linked
          *            set of notes to delete.
@@ -199,10 +197,10 @@ public final class DeleteHelper {
          */
         private Collection<? extends View> getSafe(Set<View> linked) {
             for (View linkedView : linked) {
-                if (!(linkedView instanceof Node && GMFNotationHelper.isNote((Node) linkedView))) {
-                    if (!((Node) linkedView).isVisible()) {
+                if (!isNote(linkedView)) {
+                    if (!linkedView.isVisible()) {
                         for (View linkedV : linked) {
-                            if (linkedV instanceof Node && GMFNotationHelper.isNote((Node) linkedV)) {
+                            if (isNote(linkedV)) {
                                 noteToHide.add(linkedV);
                             }
                         }
@@ -214,12 +212,16 @@ public final class DeleteHelper {
             return linked;
         }
 
+        private boolean isNote(View linkedView) {
+            return linkedView instanceof Node && GMFNotationHelper.isNote((Node) linkedView);
+        }
+
         private void collectLinkedViews(final View v, Set<View> linkedViews) {
             linkedViews.add(v);
             for (Edge sourceEdge : Iterables.filter(v.getSourceEdges(), Edge.class)) {
                 View target = sourceEdge.getTarget();
                 if (GMFNotationHelper.isNoteAttachment(sourceEdge)) {
-                    if (!linkedViews.contains(target) && target instanceof Node && GMFNotationHelper.isNote((Node) target)) {
+                    if (!linkedViews.contains(target) && isNote(target)) {
                         collectLinkedViews(target, linkedViews);
                     } else {
                         linkedViews.add(target);
@@ -230,7 +232,7 @@ public final class DeleteHelper {
             for (Edge targetEdge : Iterables.filter(v.getTargetEdges(), Edge.class)) {
                 View source = targetEdge.getSource();
                 if (GMFNotationHelper.isNoteAttachment(targetEdge)) {
-                    if (!linkedViews.contains(source) && source instanceof Node && GMFNotationHelper.isNote((Node) source)) {
+                    if (!linkedViews.contains(source) && isNote(source)) {
                         collectLinkedViews(source, linkedViews);
                     } else {
                         linkedViews.add(source);
