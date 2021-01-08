@@ -15,10 +15,13 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.eclipse.core.runtime.IStatus;
+import org.eclipse.core.runtime.Status;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
+import org.eclipse.sirius.diagram.sequence.ui.SequenceDiagramUIPlugin;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
 
@@ -118,9 +121,15 @@ public abstract class AbstractSequenceInteractionValidator {
      * reconnection.
      */
     public final void validate() {
-        if (!validationDone) {
-            doValidation();
-            validationDone = true;
+        try {
+            if (!validationDone) {
+                doValidation();
+                validationDone = true;
+            }
+        } catch (ClassCastException e) {
+            IStatus status = new Status(IStatus.WARNING, SequenceDiagramUIPlugin.PLUGIN_ID, "Sequence diagram might need to be refreshed.", e); //$NON-NLS-1$
+            SequenceDiagramUIPlugin.getPlugin().getLog().log(status);
+            valid = false;
         }
     }
 
