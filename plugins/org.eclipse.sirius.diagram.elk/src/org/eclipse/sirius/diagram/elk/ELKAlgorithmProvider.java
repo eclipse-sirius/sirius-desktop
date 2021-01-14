@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2020 Obeo
+ * Copyright (c) 2018, 2021 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -79,19 +79,27 @@ public class ELKAlgorithmProvider implements CustomLayoutAlgorithmProvider {
 
                 switch (layoutOptionData.getType()) {
                 case STRING:
-                    layoutOptions.put(layoutOptionData.getId(), layoutOptionFactory.createStringOption((String) layoutOptionData.getDefaultDefault(), layoutOptionData.getId(),
+                    layoutOptions.put(layoutOptionData.getId(),
+                            layoutOptionFactory.createStringOption((String) (layoutOptionData.getDefault() != null ? layoutOptionData.getDefault() : layoutOptionData.getDefaultDefault()),
+                                    layoutOptionData.getId(),
                             layoutOptionData.getDescription(), layoutOptionData.getName(), getOptionTargets(layoutOptionData.getTargets())));
                     break;
                 case BOOLEAN:
-                    layoutOptions.put(layoutOptionData.getId(), layoutOptionFactory.createBooleanOption((Boolean) layoutOptionData.getDefaultDefault(), layoutOptionData.getId(),
+                    layoutOptions.put(layoutOptionData.getId(),
+                            layoutOptionFactory.createBooleanOption((Boolean) (layoutOptionData.getDefault() != null ? layoutOptionData.getDefault() : layoutOptionData.getDefaultDefault()),
+                                    layoutOptionData.getId(),
                             layoutOptionData.getDescription(), layoutOptionData.getName(), getOptionTargets(layoutOptionData.getTargets())));
                     break;
                 case INT:
-                    layoutOptions.put(layoutOptionData.getId(), layoutOptionFactory.createIntegerOption((Integer) layoutOptionData.getDefaultDefault(), layoutOptionData.getId(),
+                    layoutOptions.put(layoutOptionData.getId(),
+                            layoutOptionFactory.createIntegerOption((Integer) (layoutOptionData.getDefault() != null ? layoutOptionData.getDefault() : layoutOptionData.getDefaultDefault()),
+                                    layoutOptionData.getId(),
                             layoutOptionData.getDescription(), layoutOptionData.getName(), getOptionTargets(layoutOptionData.getTargets())));
                     break;
                 case DOUBLE:
-                    layoutOptions.put(layoutOptionData.getId(), layoutOptionFactory.createDoubleOption((Double) layoutOptionData.getDefaultDefault(), layoutOptionData.getId(),
+                    layoutOptions.put(layoutOptionData.getId(),
+                            layoutOptionFactory.createDoubleOption((Double) (layoutOptionData.getDefault() != null ? layoutOptionData.getDefault() : layoutOptionData.getDefaultDefault()),
+                                    layoutOptionData.getId(),
                             layoutOptionData.getDescription(), layoutOptionData.getName(), getOptionTargets(layoutOptionData.getTargets())));
                     break;
                 case ENUMSET:
@@ -104,7 +112,7 @@ public class ELKAlgorithmProvider implements CustomLayoutAlgorithmProvider {
                         choicesList.add(new EnumChoice(choiceId, ""));
 
                     }
-                    Object defaultObject = layoutOptionData.getDefaultDefault();
+                    Object defaultObject = (layoutOptionData.getDefault() != null ? layoutOptionData.getDefault() : layoutOptionData.getDefaultDefault());
                     if (layoutOptionData.getType() == Type.ENUM) {
                         String defaultValue = null;
                         if (defaultObject instanceof Enum) {
