@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,9 +13,6 @@
  */
 package org.eclipse.sirius.viewpoint;
 
-import java.util.Optional;
-
-import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
 import org.eclipse.sirius.business.internal.representation.DRepresentationDescriptorToDRepresentationLinkManager;
@@ -158,7 +155,6 @@ public interface DRepresentationDescriptor extends IdentifiedElement, DModelElem
      *            the {@link DRepresentation} to update path.
      */
     default void updateRepresentation(DRepresentation representation) {
-        Optional.ofNullable(representation).ifPresent(rep -> Assert.isNotNull(rep.eResource()));
         DRepresentationDescriptorToDRepresentationLinkManager pathManager = new DRepresentationDescriptorToDRepresentationLinkManager(this);
         pathManager.setRepresentation(representation);
     }

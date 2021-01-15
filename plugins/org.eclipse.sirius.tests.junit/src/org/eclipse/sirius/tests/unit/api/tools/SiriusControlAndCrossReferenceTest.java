@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.api.tools;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
 
@@ -33,12 +34,15 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tools.api.command.ui.NoUICallback;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 
 public class SiriusControlAndCrossReferenceTest extends SiriusDiagramTestCase {
+
+    private static final String TEST_REPRESENTATION_NAME = "Test Rep";
 
     private static final String PATH = "/data/unit/control/vp-2824/";
 
@@ -47,6 +51,20 @@ public class SiriusControlAndCrossReferenceTest extends SiriusDiagramTestCase {
     private static final String SESSION_MODEL_FILENAME_1 = "main.aird";
 
     UICallBack originalSiriusUICallBack = SiriusEditPlugin.getPlugin().getUiCallback();
+
+    private class CheckRepresentationAnalysisSelector extends SimpleAnalysisSelector {
+
+        public CheckRepresentationAnalysisSelector(DAnalysis analysisToSelect) {
+            super(analysisToSelect);
+        }
+
+        @Override
+        public DAnalysis selectSmartlyAnalysisForAddedRepresentation(DRepresentation representation, Collection<DAnalysis> allAnalysis) {
+            assertEquals("The representation under creation has no name when handled by a DAnalysisSelector", TEST_REPRESENTATION_NAME, representation.getName());
+            return super.selectSmartlyAnalysisForAddedRepresentation(representation, allAnalysis);
+        }
+
+    }
 
     @Override
     protected void setUp() throws Exception {
@@ -111,11 +129,11 @@ public class SiriusControlAndCrossReferenceTest extends SiriusDiagramTestCase {
         checkCrossReferences(packageToControl, 2);
 
         // Add a diagram
-        ((DAnalysisSession) session).setAnalysisSelector(new SimpleAnalysisSelector(((DAnalysisSessionEObject) session).getAnalyses().get(0).getReferencedAnalysis().get(0)));
+        ((DAnalysisSession) session).setAnalysisSelector(new CheckRepresentationAnalysisSelector(((DAnalysisSessionEObject) session).getAnalyses().get(0).getReferencedAnalysis().get(0)));
         Command crc = new IdentityCommand() {
             @Override
             public void execute() {
-                DRepresentation rep3 = DialectManager.INSTANCE.createRepresentation("Test Rep", packageToControl, DialectManager.INSTANCE.getDescription(representationTocontrol), session,
+                DRepresentation rep3 = DialectManager.INSTANCE.createRepresentation(TEST_REPRESENTATION_NAME, packageToControl, DialectManager.INSTANCE.getDescription(representationTocontrol), session,
                         new NullProgressMonitor());
                 DRepresentationQuery dRepresentationQuery = new DRepresentationQuery(rep3);
                 DRepresentationDescriptor descriptor = dRepresentationQuery.getRepresentationDescriptor();

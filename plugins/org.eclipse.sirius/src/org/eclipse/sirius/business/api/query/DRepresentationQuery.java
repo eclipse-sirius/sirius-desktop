@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ package org.eclipse.sirius.business.api.query;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Optional;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -23,6 +24,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
+import org.eclipse.sirius.business.internal.session.danalysis.DRepresentationDescriptorAdapter;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DAnalysis;
@@ -146,7 +148,11 @@ public class DRepresentationQuery {
      */
     public DRepresentationDescriptor getRepresentationDescriptor() {
         DRepresentationDescriptor result = null;
-        if (representation instanceof DSemanticDecorator) {
+        Optional<DRepresentationDescriptorAdapter> optionalRepDesc = representation.eAdapters().stream().filter(a -> a instanceof DRepresentationDescriptorAdapter)
+                .map(DRepresentationDescriptorAdapter.class::cast).findFirst();
+        if (optionalRepDesc.isPresent()) {
+            return optionalRepDesc.get().getdRepresentationDescriptor();
+        } else if (representation instanceof DSemanticDecorator) {
             if (session == null) {
                 session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) representation).getTarget());
             }
@@ -159,6 +165,11 @@ public class DRepresentationQuery {
                 // There is no session (during a migration participant for example) so we search the analysis of the
                 // eResource
                 result = findDescriptorFromEResource();
+            }
+            // Addition of an adapter to look for the session and use the cross referencer only once
+            if (result != null) {
+                DRepresentationDescriptorAdapter representationDescriptorAdaptor = new DRepresentationDescriptorAdapter(result);
+                representation.eAdapters().add(representationDescriptorAdaptor);
             }
         }
         return result;

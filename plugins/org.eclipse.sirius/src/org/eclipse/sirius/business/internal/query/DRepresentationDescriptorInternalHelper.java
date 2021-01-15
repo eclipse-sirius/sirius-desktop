@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.internal.representation.DRepresentationLocationManager;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionServicesImpl;
+import org.eclipse.sirius.business.internal.session.danalysis.DRepresentationDescriptorAdapter;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
@@ -100,6 +101,11 @@ public final class DRepresentationDescriptorInternalHelper {
             final EObject semanticRoot = semanticResource.getContents().iterator().next();
             RepresentationDescription description = DialectManager.INSTANCE.getDescription(representation);
 
+            // Add an adapter in the representation referencing the descriptor
+            dRepresentationDescriptor = DRepresentationDescriptorInternalHelper.createDescriptor(representation, representationName, representationDocumentation);
+            DRepresentationDescriptorAdapter representationDescriptorAdaptor = new DRepresentationDescriptorAdapter(dRepresentationDescriptor);
+            representation.eAdapters().add(representationDescriptorAdaptor);
+
             DAnalysisSelector analysisSelector = ((DAnalysisSessionServicesImpl) session.getServices()).getAnalysisSelector();
 
             final Viewpoint viewpoint = new RepresentationDescriptionQuery(description).getParentViewpoint();
@@ -122,9 +128,11 @@ public final class DRepresentationDescriptorInternalHelper {
             if (resourceforRepresentation != null) {
                 session.registerResourceInCrossReferencer(resourceforRepresentation);
                 resourceforRepresentation.getContents().add(representation);
+                // Now that the representation is in a resource, the DRepresentationDescriptor can compute its path and
+                // reference it.
+                dRepresentationDescriptor.setRepresentation(representation);
             }
 
-            dRepresentationDescriptor = DRepresentationDescriptorInternalHelper.createDescriptor(representation, representationName, representationDocumentation);
             dView.getOwnedRepresentationDescriptors().add(dRepresentationDescriptor);
 
         }
