@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -42,7 +42,6 @@ import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
 import com.google.common.collect.Sets;
 
@@ -269,7 +268,8 @@ public class SequenceDiagram extends AbstractSequenceElement {
                         return from.getLifeline().get();
                     }
                 };
-                allLifelines = Lists.newArrayList(Iterables.transform(allInstanceRoles, lifelineFunction));
+                allLifelines = new ArrayList<Lifeline>();
+                Iterables.addAll(allLifelines, Iterables.transform(allInstanceRoles, lifelineFunction));
                 if (useCache) {
                     // Store the result
                     allLifelinesCache = allLifelines;
@@ -466,7 +466,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         LinkedHashSet<State> allOrderedStates = null;
         if (useCache) {
             // Initialize from cache
-            if (allOperandsCache != null) {
+            if (allStatesCache != null) {
                 allStates = new ArrayList<State>(allStatesCache);
             }
             allOrderedStates = allOrderedStatesCache;
@@ -504,7 +504,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         LinkedHashSet<AbstractFrame> allOrderedFrames = null;
         if (useCache) {
             // Initialize from cache
-            if (allExecutionsCache != null) {
+            if (allFramesCache != null) {
                 allFrames = new ArrayList<AbstractFrame>(allFramesCache);
             }
             allOrderedFrames = allOrderedFramesCache;
