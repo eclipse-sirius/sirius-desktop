@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 Obeo.
+ * Copyright (c) 2020, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,8 +19,11 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
@@ -33,17 +36,18 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
+import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.helper.decoration.DecorationHelperInternal;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
 import org.eclipse.sirius.diagram.business.internal.sync.DDiagramElementSynchronizer;
 import org.eclipse.sirius.diagram.business.internal.sync.DEdgeCandidate;
 import org.eclipse.sirius.diagram.business.internal.sync.DNodeCandidate;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
-import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.MappingBasedDecoration;
@@ -273,10 +277,22 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
     private DDiagramElement handleDDiagramElement(DDiagramElement sourceDElement) {
         EObject targetElement = correspondenceMap.get(sourceDElement.getTarget());
         if (targetElement != null) {
-            DiagramElementMapping bestMapping = (DiagramElementMapping) sourceDElement.getMapping();
-            return getOrCreateTargetDiagramElement(sourceDElement, targetElement, bestMapping);
+            Optional<DiagramElementMapping> bestMapping = getTargetSessionMapping(sourceDElement.getMapping(), targetElement);
+            if (bestMapping.isPresent()) {
+                return getOrCreateTargetDiagramElement(sourceDElement, targetElement, bestMapping.get());
+            }
         }
         return null;
+    }
+
+    private Optional<DiagramElementMapping> getTargetSessionMapping(RepresentationElementMapping mapping, EObject targetElement) {
+      //@formatter:off
+        return Optional.ofNullable(targetElement.eResource())
+                .map(Resource::getResourceSet)
+                .map(resourceSet -> resourceSet.getEObject(EcoreUtil.getURI(mapping), false))
+                .filter(DiagramElementMapping.class::isInstance)
+                .map(DiagramElementMapping.class::cast);
+        //@formatter:on
     }
 
     /**
@@ -347,10 +363,11 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
      * @return
      */
     private DDiagramElement isAlreadyCreated(EObject targetElement, DiagramElementMapping bestMapping) {
+        DiagramElementMappingQuery query = new DiagramElementMappingQuery(bestMapping);
         List<DDiagramElement> dDiagramElements = alreadyCreatedDiagramElementMap.get(targetElement);
         if (dDiagramElements != null && bestMapping.isCreateElements()) {
             for (DDiagramElement dDiagramElement : dDiagramElements) {
-                if (dDiagramElement.getMapping().equals(bestMapping)) {
+                if (query.isTypeOf(dDiagramElement)) {
                     return dDiagramElement;
                 }
             }
@@ -366,7 +383,7 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
      * @return
      */
     private boolean isBorderedNode(DDiagramElement object) {
-        return object.eContainingFeature().equals(DescriptionPackage.Literals.ABSTRACT_NODE_MAPPING__BORDERED_NODE_MAPPINGS);
+        return object.eContainingFeature().equals(DiagramPackage.Literals.ABSTRACT_DNODE__OWNED_BORDERED_NODES);
     }
 
     /**
@@ -412,9 +429,11 @@ public class MappingBasedDiagramContentDuplicationSwitch extends DiagramSwitch<V
             if (sourceDiagramSourceEdgeTarget != null && sourceDiagramTargetEdgeTarget != null && sourceDiagramSourceEdgeTarget instanceof EdgeTarget
                     && sourceDiagramTargetEdgeTarget instanceof EdgeTarget) {
                 RepresentationElementMapping mapping = toHandleEdge.getMapping();
+                Optional<DiagramElementMapping> targetSessionMapping = getTargetSessionMapping(mapping, targetElement);
 
                 // Create new edge candidate
-                DEdgeCandidate abstractDEdgeCandidate = new DEdgeCandidate((EdgeMapping) mapping, targetElement, (EdgeTarget) sourceDiagramSourceEdgeTarget, (EdgeTarget) sourceDiagramTargetEdgeTarget,
+                DEdgeCandidate abstractDEdgeCandidate = new DEdgeCandidate((EdgeMapping) targetSessionMapping.get(), targetElement, (EdgeTarget) sourceDiagramSourceEdgeTarget,
+                        (EdgeTarget) sourceDiagramTargetEdgeTarget,
                         RefreshIdsHolder.getOrCreateHolder(getTargetDiagram()));
                 ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(targetElement);
                 DDiagramElementSynchronizer sync = new DDiagramElementSynchronizer(getTargetDiagram(), interpreter, accessor);

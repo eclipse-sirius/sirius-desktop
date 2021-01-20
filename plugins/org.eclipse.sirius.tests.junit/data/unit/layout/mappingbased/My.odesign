@@ -341,19 +341,39 @@
       </containerMappings>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagType8_unsync" titleExpression="aql:'DiagType8_unsync of ' + self.name" domainClass="EPackage">
-      <defaultLayer name="Default" reusedMappings="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package'] //@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']" reusedTools="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@defaultLayer/@toolSections.0/@ownedTools[name='border%20class']">
+      <defaultLayer name="Default" reusedMappings="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package'] //@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@borderedNodeMappings[name='DT8_unsync_Class']" reusedTools="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@defaultLayer/@toolSections.0/@ownedTools[name='border%20class']">
         <toolSections>
-          <ownedTools xsi:type="tool:NodeCreationDescription" name="border class" nodeMappings="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@borderedNodeMappings[name='DT8_Class']">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="border class" nodeMappings="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@borderedNodeMappings[name='DT8_unsync_Class']">
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers"/>
             </initialOperation>
           </ownedTools>
+          <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="selectSubClasss" candidatesExpression="aql:container.oclAsType(ecore::EPackage).eClassifiers">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@borderedNodeMappings[name='DT8_unsync_Class']" containerViewExpression="var:containerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="selectPackages" label="Select packages to add" candidatesExpression="aql:container.oclAsType(ecore::EPackage).eSubpackages">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']" containerViewExpression="var:containerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
         </toolSections>
       </defaultLayer>
-      <containerMappings name="DT8_Package" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage">
-        <borderedNodeMappings name="DT8_Class" semanticCandidatesExpression="feature:eContents" createElements="false" domainClass="EClass">
+      <containerMappings name="DT8_unsync_Package" semanticCandidatesExpression="feature:eAllContents" createElements="false" domainClass="EPackage">
+        <borderedNodeMappings name="DT8_unsync_Class" semanticCandidatesExpression="feature:eContents" createElements="false" domainClass="EClass">
           <style xsi:type="style:DotDescription" resizeKind="EAST_WEST">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -367,6 +387,44 @@
           <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
         </style>
       </containerMappings>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagType8_unsync_onlyBN" titleExpression="aql:'DiagType8_unsyncBN of ' + self.name" domainClass="EPackage">
+      <defaultLayer name="Default" reusedMappings="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package'] //@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@borderedNodeMappings[name='DT8_unsyncBN_Class']" reusedTools="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@toolSections.0/@ownedTools[name='border%20class']">
+        <containerMappings name="DT8_unsyncBN_Package" semanticCandidatesExpression="feature:eAllContents" domainClass="EPackage">
+          <borderedNodeMappings name="DT8_unsyncBN_Class" semanticCandidatesExpression="feature:eContents" createElements="false" domainClass="EClass">
+            <style xsi:type="style:DotDescription" resizeKind="EAST_WEST">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </borderedNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" arcWidth="1" arcHeight="1" borderSizeComputationExpression="1" labelExpression="aql:'Container without children ' + self.name">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
+          </style>
+        </containerMappings>
+        <toolSections>
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="border class" nodeMappings="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@borderedNodeMappings[name='DT8_unsyncBN_Class']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:SelectionWizardDescription" name="selectSubClasss" candidatesExpression="aql:container.oclAsType(ecore::EPackage).eClassifiers">
+            <element name="element"/>
+            <containerView name="containerView"/>
+            <container name="container"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:element">
+                <subModelOperations xsi:type="tool:CreateView" mapping="//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@borderedNodeMappings[name='DT8_unsyncBN_Class']" containerViewExpression="var:containerView"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagType9" titleExpression="aql:'DiagType9 of ' + self.name" domainClass="EPackage">
       <containerMappings name="DT9_Package" semanticCandidatesExpression="feature:eContents" domainClass="EPackage">

@@ -20,7 +20,7 @@
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType3']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiE7DFEeanMtzDRncztA" name="DiagType5 of MyPackage" repPath="#_8IynYN8kEd6puriA092P2A" changeId="e7a1344d-7e2c-498d-bb98-e0d4b07b1796">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiE7DFEeanMtzDRncztA" name="DiagType5 of MyPackage" repPath="#_8IynYN8kEd6puriA092P2A" changeId="6b28f023-98d4-4807-84c5-012a490796c2">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType5']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -28,19 +28,19 @@
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType4']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiFbDFEeanMtzDRncztA" name="DiagType6 of MyPackage" repPath="#_RLK_wd9LEd62yq234upbUg" changeId="4ab5a332-70b3-4ba9-9058-f0cd24253e1f">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiFbDFEeanMtzDRncztA" name="DiagType6 of MyPackage" repPath="#_RLK_wd9LEd62yq234upbUg" changeId="a93da2ff-3b0e-4c14-a6f2-c34b90111750">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType6']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiFrDFEeanMtzDRncztA" name="DiagType7 of MyPackage" repPath="#_XI_pEd9LEd62yq234upbUg" changeId="00412680-9368-46ba-823b-d1bbe13d03b0">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiFrDFEeanMtzDRncztA" name="DiagType7 of MyPackage" repPath="#_XI_pEd9LEd62yq234upbUg" changeId="98949a61-f148-4dbe-8822-201c8c2aea96">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType7']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiF7DFEeanMtzDRncztA" name="DiagType8 of MyPackage" repPath="#_UJ_2cN9NEd69CIe_kfq8uw" changeId="61f80053-5598-4df7-ae7b-a1ede2413241">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiF7DFEeanMtzDRncztA" name="DiagType8 of MyPackage" repPath="#_UJ_2cN9NEd69CIe_kfq8uw" changeId="5c960794-4467-428f-a073-c47949e04be2">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiGLDFEeanMtzDRncztA" name="DiagType9 of MyPackage" repPath="#_BXkP4OWoEd6JMo4lxOczEg" changeId="eb2291bb-4e77-46d3-8fef-36bc73dd4540">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiGLDFEeanMtzDRncztA" name="DiagType9 of MyPackage" repPath="#_BXkP4OWoEd6JMo4lxOczEg" changeId="97eda397-25e5-4013-abdc-a5645f9d58af">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType9']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -56,7 +56,7 @@
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType7']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiHbDFEeanMtzDRncztA" name="Type9 Raw Diagram" repPath="#_Zf70oPoNEd6aXOd_1RF62g" changeId="50121de6-6660-4dec-be4d-2e38de8c6ff3">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_RSeiHbDFEeanMtzDRncztA" name="Type9 Raw Diagram" repPath="#_Zf70oPoNEd6aXOd_1RF62g" changeId="227880ed-71f4-4e97-bdb7-9be208b4e79a">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType9']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -68,15 +68,15 @@
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_SX7NAZbnEeqmVr1aflqdRg" name="DiagType8_unsync of MyPackage" repPath="#_SXquUJbnEeqmVr1aflqdRg" changeId="a879c398-48a5-45c8-8aac-aadb55351d51">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_SX7NAZbnEeqmVr1aflqdRg" name="DiagType8_unsync of MyPackage" repPath="#_SXquUJbnEeqmVr1aflqdRg" changeId="40ad8d06-1e98-4cb9-baa3-5da96a7a465a">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sti4EJmiEeqnUYf-_wecXA" name="DiagType8_unsync Raw of targetMyPackage" repPath="#_StTngJmiEeqnUYf-_wecXA" changeId="20b9e538-01b9-412d-a5d0-817dbaeb59c9">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Sti4EJmiEeqnUYf-_wecXA" name="DiagType8_unsync Raw of targetMyPackage" repPath="#_StTngJmiEeqnUYf-_wecXA" changeId="a57a32db-fdac-4afd-81cc-5ed66fd5e619">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']"/>
         <target xmi:type="ecore:EPackage" href="MyTarget.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_kQFhwJmiEeqnUYf-_wecXA" name="DiagType8 Raw of targetMyPackage" repPath="#_kQApQJmiEeqnUYf-_wecXA" changeId="24aa7bcc-ad89-4dbb-8312-32395aaf1adf">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_kQFhwJmiEeqnUYf-_wecXA" name="DiagType8 Raw of targetMyPackage" repPath="#_kQApQJmiEeqnUYf-_wecXA" changeId="a53f3239-aa45-4f12-9061-75db21ea5053">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8']"/>
         <target xmi:type="ecore:EPackage" href="MyTarget.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -92,7 +92,7 @@
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_yhHpYOfAEeq3AOgvALrX2w" name="DiagType2 filters and layers of MyPackage" repPath="#_yg-fYOfAEeq3AOgvALrX2w" changeId="b13bdc91-cb81-4188-9667-5186e23179bc">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_yhHpYOfAEeq3AOgvALrX2w" name="DiagType2 filters and layers of MyPackage" repPath="#_yg-fYOfAEeq3AOgvALrX2w" changeId="383e690e-ca79-4b8b-b40c-3f7b5fead87b">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_filters_layers']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
@@ -107,6 +107,14 @@
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="__W6YsDvCEeuhG5MHStv3hA" name="DiagType13 of MyPackage" repPath="#__W38cDvCEeuhG5MHStv3hA" changeId="5760827c-c286-4447-93a9-0bf46a1605db">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']"/>
         <target xmi:type="ecore:EPackage" href="srcWithExternal.ecore#/"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_VkB14Gr8Eeud3aCUsm-5zQ" name="DiagType8_unsyncBN of MyPackage" repPath="#_Vj-ykGr8Eeud3aCUsm-5zQ" changeId="9bd96177-a6b3-42a1-819b-0ace1f26d10a">
+        <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_pENQ8Wr8Eeud3aCUsm-5zQ" name="DiagType8_unsyncBN Raw of targetMyPackage" repPath="#_pEMp4Gr8Eeud3aCUsm-5zQ" changeId="ced91854-6adc-48b6-82c4-5fcae2ff013f">
+        <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']"/>
+        <target xmi:type="ecore:EPackage" href="MyTarget.ecore#/"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
@@ -745,7 +753,7 @@
       <data xmi:type="notation:Diagram" xmi:id="_8LIJsN8kEd6puriA092P2A" type="Sirius" element="_8IynYN8kEd6puriA092P2A" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_8Ozv0N8kEd6puriA092P2A" type="2001" element="_nKmeM0ggEeClJJrVvqnbbg">
           <children xmi:type="notation:Node" xmi:id="_8O52cN8kEd6puriA092P2A" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_8O52cd8kEd6puriA092P2A" y="5"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_8O52cd8kEd6puriA092P2A" x="97" y="9"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_209M8BrMEeukEpq9x8tFhw" type="3016" element="_nKnFQEggEeClJJrVvqnbbg">
             <styles xmi:type="notation:ShapeStyle" xmi:id="_209M8RrMEeukEpq9x8tFhw" fontName="Cantarell"/>
@@ -756,7 +764,7 @@
         </children>
         <children xmi:type="notation:Node" xmi:id="_8O7EkN8kEd6puriA092P2A" type="2001" element="_nKnFR0ggEeClJJrVvqnbbg">
           <children xmi:type="notation:Node" xmi:id="_8O7roN8kEd6puriA092P2A" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_8O7rod8kEd6puriA092P2A" y="5"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_8O7rod8kEd6puriA092P2A" x="77" y="9"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_21AQQBrMEeukEpq9x8tFhw" type="3016" element="_nKnFSEggEeClJJrVvqnbbg">
             <styles xmi:type="notation:ShapeStyle" xmi:id="_21AQQRrMEeukEpq9x8tFhw" fontName="Cantarell"/>
@@ -767,7 +775,7 @@
         </children>
         <children xmi:type="notation:Node" xmi:id="_8O8SsN8kEd6puriA092P2A" type="2001" element="_nKnsU0ggEeClJJrVvqnbbg">
           <children xmi:type="notation:Node" xmi:id="_8O85wN8kEd6puriA092P2A" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_8O85wd8kEd6puriA092P2A" y="5"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_8O85wd8kEd6puriA092P2A" x="103" y="23"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_21BeYBrMEeukEpq9x8tFhw" type="3016" element="_nKnsVEggEeClJJrVvqnbbg">
             <styles xmi:type="notation:ShapeStyle" xmi:id="_21BeYRrMEeukEpq9x8tFhw" fontName="Cantarell"/>
@@ -976,7 +984,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_RMcLEN9LEd62yq234upbUg" type="3001" element="_nKvoIkggEeClJJrVvqnbbg">
             <children xmi:type="notation:Node" xmi:id="_RMdZMN9LEd62yq234upbUg" type="5001">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_RMdZMd9LEd62yq234upbUg" x="-44" y="1"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_RMdZMd9LEd62yq234upbUg" x="31" y="6"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_RMjf0N9LEd62yq234upbUg" type="3003" element="_nKvoI0ggEeClJJrVvqnbbg">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_RMjf0d9LEd62yq234upbUg" fontName="Sans"/>
@@ -987,7 +995,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_RMdZMt9LEd62yq234upbUg" type="3001" element="_nKwPMUggEeClJJrVvqnbbg">
             <children xmi:type="notation:Node" xmi:id="_RMdZNd9LEd62yq234upbUg" type="5001">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_RMdZNt9LEd62yq234upbUg" x="1" y="29"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_RMdZNt9LEd62yq234upbUg" x="31" y="10"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_RMq0kN9LEd62yq234upbUg" type="3003" element="_nKwPMkggEeClJJrVvqnbbg">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_RMq0kd9LEd62yq234upbUg" fontName="Sans"/>
@@ -1005,7 +1013,7 @@
         </children>
         <children xmi:type="notation:Node" xmi:id="_RLWl8N9LEd62yq234upbUg" type="2001" element="_nKsk2EggEeClJJrVvqnbbg">
           <children xmi:type="notation:Node" xmi:id="_RLWl899LEd62yq234upbUg" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_RLWl9N9LEd62yq234upbUg" x="-41" y="18"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_RLWl9N9LEd62yq234upbUg" x="31" y="8"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_ubuwYDV0EeK3CJPJKDfW0g" type="3016" element="_nKtL4EggEeClJJrVvqnbbg">
             <styles xmi:type="notation:ShapeStyle" xmi:id="_ubuwYTV0EeK3CJPJKDfW0g" fontName="Sans"/>
@@ -1060,7 +1068,7 @@
         </children>
         <children xmi:type="notation:Node" xmi:id="_twECQO8SEd6XKL8iki2fzg" type="2001" element="_nKvBF0ggEeClJJrVvqnbbg">
           <children xmi:type="notation:Node" xmi:id="_twECQ-8SEd6XKL8iki2fzg" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_twECRO8SEd6XKL8iki2fzg" x="-79"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_twECRO8SEd6XKL8iki2fzg" x="31" y="7"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_ub36UDV0EeK3CJPJKDfW0g" type="3016" element="_nKvBGEggEeClJJrVvqnbbg">
             <styles xmi:type="notation:ShapeStyle" xmi:id="_ub36UTV0EeK3CJPJKDfW0g" fontName="Sans"/>
@@ -1272,7 +1280,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_XJ6PEN9LEd62yq234upbUg" type="3012" element="_nKz5k0ggEeClJJrVvqnbbg">
             <children xmi:type="notation:Node" xmi:id="_XJ62IN9LEd62yq234upbUg" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_XJ62Id9LEd62yq234upbUg" x="142" y="43"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_XJ62Id9LEd62yq234upbUg" x="62" y="1"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_XJ_uoN9LEd62yq234upbUg" type="3002" element="_nKz5lEggEeClJJrVvqnbbg">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_XJ_uod9LEd62yq234upbUg" fontName="Sans"/>
@@ -1531,7 +1539,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_UNLGQN9NEd69CIe_kfq8uw" type="3012" element="_nK9qmEggEeClJJrVvqnbbg">
             <children xmi:type="notation:Node" xmi:id="_UNSbAN9NEd69CIe_kfq8uw" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_UNSbAd9NEd69CIe_kfq8uw" y="5"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_UNSbAd9NEd69CIe_kfq8uw" x="62" y="2"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_UNX6kN9NEd69CIe_kfq8uw" type="3002" element="_nK9qmUggEeClJJrVvqnbbg">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_UNX6kd9NEd69CIe_kfq8uw" fontName="Sans"/>
@@ -1813,7 +1821,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_BYtfYOWoEd6JMo4lxOczEg" type="3012" element="_nLDKIEggEeClJJrVvqnbbg">
             <children xmi:type="notation:Node" xmi:id="_BY1bMOWoEd6JMo4lxOczEg" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_BY1bMeWoEd6JMo4lxOczEg" y="5"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_BY1bMeWoEd6JMo4lxOczEg" x="62"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_BaC8IOWoEd6JMo4lxOczEg" type="3002" element="_nLDKIUggEeClJJrVvqnbbg">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_BaC8IeWoEd6JMo4lxOczEg" fontName="Sans"/>
@@ -1888,7 +1896,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_uxRnoO8SEd6XKL8iki2fzg" type="3012" element="_nLE_WUggEeClJJrVvqnbbg">
             <children xmi:type="notation:Node" xmi:id="_uxSOsO8SEd6XKL8iki2fzg" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_uxSOse8SEd6XKL8iki2fzg" x="31" y="15"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_uxSOse8SEd6XKL8iki2fzg" x="31" y="4"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_uxTc0O8SEd6XKL8iki2fzg" type="3002" element="_nLFmYEggEeClJJrVvqnbbg">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_uxTc0e8SEd6XKL8iki2fzg" fontName="Sans"/>
@@ -2588,7 +2596,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_Zgkt0PoNEd6aXOd_1RF62g" type="3012" element="_nLfPA0ggEeClJJrVvqnbbg">
             <children xmi:type="notation:Node" xmi:id="_ZglU4PoNEd6aXOd_1RF62g" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_ZglU4foNEd6aXOd_1RF62g" y="5"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_ZglU4foNEd6aXOd_1RF62g" x="62"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_ZgoYMPoNEd6aXOd_1RF62g" type="3002" element="_nLfPBEggEeClJJrVvqnbbg">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_ZgoYMfoNEd6aXOd_1RF62g" fontName="Sans"/>
@@ -3537,7 +3545,7 @@
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_121TEZaOEeq4T6-2msJ3qg"/>
     <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_SXquUJbnEeqmVr1aflqdRg">
+  <diagram:DSemanticDiagram uid="_SXquUJbnEeqmVr1aflqdRg" synchronized="false">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_SX4JsJbnEeqmVr1aflqdRg" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_SX4JsZbnEeqmVr1aflqdRg"/>
     </ownedAnnotationEntries>
@@ -3558,6 +3566,17 @@
             <styles xmi:type="notation:SortingStyle" xmi:id="_SYLrspbnEeqmVr1aflqdRg"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_SYLrs5bnEeqmVr1aflqdRg"/>
           </children>
+          <children xmi:type="notation:Node" xmi:id="_zpLBAFtEEeukMZianniATQ" type="3012" element="_zpH9sFtEEeukMZianniATQ">
+            <children xmi:type="notation:Node" xmi:id="_zpLoEFtEEeukMZianniATQ" type="5010">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_zpLoEVtEEeukMZianniATQ" x="31" y="7"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_zpMPIFtEEeukMZianniATQ" type="3002" element="_zpIkwFtEEeukMZianniATQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_zpMPIVtEEeukMZianniATQ" fontName="Cantarell"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zpMPIltEEeukMZianniATQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_zpLBAVtEEeukMZianniATQ" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_zpLBAltEEeukMZianniATQ" x="115" y="68" width="30" height="30"/>
+          </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_SYLEpJbnEeqmVr1aflqdRg" fontName="Sans" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_SYLEpZbnEeqmVr1aflqdRg" x="240" width="203" height="78"/>
         </children>
@@ -3566,6 +3585,17 @@
           <children xmi:type="notation:Node" xmi:id="_SYMSwZbnEeqmVr1aflqdRg" type="7001">
             <styles xmi:type="notation:SortingStyle" xmi:id="_SYMSwpbnEeqmVr1aflqdRg"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_SYMSw5bnEeqmVr1aflqdRg"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_1HJa4FtEEeukMZianniATQ" type="3012" element="_1HG-oFtEEeukMZianniATQ">
+            <children xmi:type="notation:Node" xmi:id="_1HJa41tEEeukMZianniATQ" type="5010">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_1HJa5FtEEeukMZianniATQ" x="31" y="7"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_1HLQEFtEEeukMZianniATQ" type="3002" element="_1HHlsFtEEeukMZianniATQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_1HLQEVtEEeukMZianniATQ" fontName="Cantarell"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1HLQEltEEeukMZianniATQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_1HJa4VtEEeukMZianniATQ" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1HJa4ltEEeukMZianniATQ" x="65" y="68" width="30" height="30"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_SYLrtZbnEeqmVr1aflqdRg" fontName="Sans" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_SYLrtpbnEeqmVr1aflqdRg" x="490" width="203" height="78"/>
@@ -3631,73 +3661,89 @@
       <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_SX0fUJbnEeqmVr1aflqdRg" borderSize="1" borderSizeComputationExpression="1">
-        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@style"/>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']"/>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SX2UgZbnEeqmVr1aflqdRg" name="Container without children p1-1">
       <target xmi:type="ecore:EPackage" href="My.ecore#//p1/p1-1"/>
       <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p1/p1-1"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_zpH9sFtEEeukMZianniATQ" name="C1-1-1" width="3" height="3" resizeKind="EAST_WEST">
+        <target xmi:type="ecore:EClass" href="My.ecore#//p1/p1-1/C1-1-1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/p1-1/C1-1-1"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_zpIkwFtEEeukMZianniATQ">
+          <description xmi:type="style:DotDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@borderedNodeMappings[name='DT8_unsync_Class']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@borderedNodeMappings[name='DT8_unsync_Class']"/>
+      </ownedBorderedNodes>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_SX2UgpbnEeqmVr1aflqdRg" borderSize="1" borderSizeComputationExpression="1">
-        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@style"/>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']"/>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SX27kJbnEeqmVr1aflqdRg" name="Container without children p1-2">
       <target xmi:type="ecore:EPackage" href="My.ecore#//p1/p1-2"/>
       <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p1/p1-2"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_1HG-oFtEEeukMZianniATQ" name="C1-2-1" width="3" height="3" resizeKind="EAST_WEST">
+        <target xmi:type="ecore:EClass" href="My.ecore#//p1/p1-2/C1-2-1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/p1-2/C1-2-1"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_1HHlsFtEEeukMZianniATQ">
+          <description xmi:type="style:DotDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@borderedNodeMappings[name='DT8_unsync_Class']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@borderedNodeMappings[name='DT8_unsync_Class']"/>
+      </ownedBorderedNodes>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_SX27kZbnEeqmVr1aflqdRg" borderSize="1" borderSizeComputationExpression="1">
-        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@style"/>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']"/>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SX27k5bnEeqmVr1aflqdRg" name="Container without children p1-3">
       <target xmi:type="ecore:EPackage" href="My.ecore#//p1/p1-3"/>
       <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p1/p1-3"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_SX27lJbnEeqmVr1aflqdRg" borderSize="1" borderSizeComputationExpression="1">
-        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@style"/>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']"/>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SX27lpbnEeqmVr1aflqdRg" name="Container without children p2">
       <target xmi:type="ecore:EPackage" href="My.ecore#//p2"/>
       <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p2"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_SX27l5bnEeqmVr1aflqdRg" borderSize="1" borderSizeComputationExpression="1">
-        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@style"/>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']"/>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SX3ioZbnEeqmVr1aflqdRg" name="Container without children p2-1">
       <target xmi:type="ecore:EPackage" href="My.ecore#//p2/p2-1"/>
       <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p2/p2-1"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_SX3iopbnEeqmVr1aflqdRg" borderSize="1" borderSizeComputationExpression="1">
-        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@style"/>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']"/>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SX3ipJbnEeqmVr1aflqdRg" name="Container without children p2-2">
       <target xmi:type="ecore:EPackage" href="My.ecore#//p2/p2-2"/>
       <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p2/p2-2"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_SX3ipZbnEeqmVr1aflqdRg" borderSize="1" borderSizeComputationExpression="1">
-        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@style"/>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']"/>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SX3ip5bnEeqmVr1aflqdRg" name="Container without children p3">
       <target xmi:type="ecore:EPackage" href="My.ecore#//p3"/>
       <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p3"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_SX3iqJbnEeqmVr1aflqdRg" borderSize="1" borderSizeComputationExpression="1">
-        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@style"/>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']"/>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_SX3iqpbnEeqmVr1aflqdRg" name="Container without children p4">
       <target xmi:type="ecore:EPackage" href="My.ecore#//p4"/>
       <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p4"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_SX3iq5bnEeqmVr1aflqdRg" borderSize="1" borderSizeComputationExpression="1">
-        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@style"/>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']"/>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']"/>
     </ownedDiagramElements>
     <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_SXr8cJbnEeqmVr1aflqdRg"/>
@@ -3717,13 +3763,24 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_Stmic5miEeqnUYf-_wecXA"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_StlUUZmiEeqnUYf-_wecXA" fontName="Sans" fontHeight="8" fillColor="230880"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_StlUUpmiEeqnUYf-_wecXA" x="270" y="45" height="183"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_StlUUpmiEeqnUYf-_wecXA" x="270" y="45" width="226" height="183"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_StmidJmiEeqnUYf-_wecXA" type="2002" element="_StfNsJmiEeqnUYf-_wecXA">
           <children xmi:type="notation:Node" xmi:id="_StnJgJmiEeqnUYf-_wecXA" type="5006"/>
           <children xmi:type="notation:Node" xmi:id="_StnJgZmiEeqnUYf-_wecXA" type="7001">
             <styles xmi:type="notation:SortingStyle" xmi:id="_StnJgpmiEeqnUYf-_wecXA"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_StnJg5miEeqnUYf-_wecXA"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_3cO74Gr7Eeud3aCUsm-5zQ" type="3012" element="_3cBggGr7Eeud3aCUsm-5zQ">
+            <children xmi:type="notation:Node" xmi:id="_3cSmQGr7Eeud3aCUsm-5zQ" type="5010">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_3cTNUGr7Eeud3aCUsm-5zQ" x="31" y="7"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_3cXewGr7Eeud3aCUsm-5zQ" type="3002" element="_3cD8wGr7Eeud3aCUsm-5zQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_3cXewWr7Eeud3aCUsm-5zQ" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3cXewmr7Eeud3aCUsm-5zQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_3cO74Wr7Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3cO74mr7Eeud3aCUsm-5zQ" x="10" y="-22" width="30" height="30"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_StmidZmiEeqnUYf-_wecXA" fontName="Sans" fontHeight="8"/>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_StmidpmiEeqnUYf-_wecXA" x="185" y="120"/>
@@ -3735,7 +3792,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_Stnwk5miEeqnUYf-_wecXA"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_StnJhZmiEeqnUYf-_wecXA" fontName="Sans" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_StnJhpmiEeqnUYf-_wecXA" x="245" y="85"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_StnJhpmiEeqnUYf-_wecXA" x="245" y="85" width="218"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_StnwlJmiEeqnUYf-_wecXA" type="2002" element="_StfNtpmiEeqnUYf-_wecXA">
           <children xmi:type="notation:Node" xmi:id="_StoXoJmiEeqnUYf-_wecXA" type="5006"/>
@@ -3744,7 +3801,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_StoXo5miEeqnUYf-_wecXA"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_StnwlZmiEeqnUYf-_wecXA" fontName="Sans" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_StnwlpmiEeqnUYf-_wecXA" x="185" y="140"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_StnwlpmiEeqnUYf-_wecXA" x="185" y="140" width="225"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_StoXpJmiEeqnUYf-_wecXA" type="2002" element="_Stf0wpmiEeqnUYf-_wecXA">
           <children xmi:type="notation:Node" xmi:id="_Sto-sJmiEeqnUYf-_wecXA" type="5006"/>
@@ -3753,7 +3810,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_Sto-s5miEeqnUYf-_wecXA"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_StoXpZmiEeqnUYf-_wecXA" fontName="Sans" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_StoXppmiEeqnUYf-_wecXA" x="255" y="100"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_StoXppmiEeqnUYf-_wecXA" x="255" y="100" width="209"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_Sto-tJmiEeqnUYf-_wecXA" type="2002" element="_Stf0xZmiEeqnUYf-_wecXA">
           <children xmi:type="notation:Node" xmi:id="_Sto-t5miEeqnUYf-_wecXA" type="5006"/>
@@ -3762,7 +3819,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_StplwpmiEeqnUYf-_wecXA"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_Sto-tZmiEeqnUYf-_wecXA" fontName="Sans" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Sto-tpmiEeqnUYf-_wecXA" x="195" y="110"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Sto-tpmiEeqnUYf-_wecXA" x="195" y="110" width="231"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_Stqz4JmiEeqnUYf-_wecXA" type="2002" element="_Stf0yJmiEeqnUYf-_wecXA">
           <children xmi:type="notation:Node" xmi:id="_Stra8JmiEeqnUYf-_wecXA" type="5006"/>
@@ -3771,7 +3828,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_StsCApmiEeqnUYf-_wecXA"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_Stqz4ZmiEeqnUYf-_wecXA" fontName="Sans" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Stqz4pmiEeqnUYf-_wecXA" x="412" y="38"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Stqz4pmiEeqnUYf-_wecXA" x="412" y="38" width="210"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_StsCA5miEeqnUYf-_wecXA" type="2002" element="_Stf0y5miEeqnUYf-_wecXA">
           <children xmi:type="notation:Node" xmi:id="_StspEJmiEeqnUYf-_wecXA" type="5006"/>
@@ -3780,7 +3837,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_StspE5miEeqnUYf-_wecXA"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_StsCBJmiEeqnUYf-_wecXA" fontName="Sans" fontHeight="8" fillColor="1345869"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_StsCBZmiEeqnUYf-_wecXA" x="85" y="145" height="148"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_StsCBZmiEeqnUYf-_wecXA" x="85" y="145" width="225" height="148"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_StspFJmiEeqnUYf-_wecXA" type="2002" element="_Stf0zpmiEeqnUYf-_wecXA">
           <children xmi:type="notation:Node" xmi:id="_SttQIJmiEeqnUYf-_wecXA" type="5006"/>
@@ -3789,7 +3846,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_SttQI5miEeqnUYf-_wecXA"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_StspFZmiEeqnUYf-_wecXA" fontName="Sans" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_StspFpmiEeqnUYf-_wecXA" x="170" y="105"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_StspFpmiEeqnUYf-_wecXA" x="170" y="105" width="218"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_StkGMpmiEeqnUYf-_wecXA"/>
       </data>
@@ -3803,20 +3860,28 @@
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_StdYgJmiEeqnUYf-_wecXA" borderSize="1" borderSizeComputationExpression="1" backgroundColor="224,133,3" foregroundColor="224,133,3">
         <customFeatures>backgroundColor</customFeatures>
         <customFeatures>foregroundColor</customFeatures>
-        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@style"/>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']"/>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_StfNsJmiEeqnUYf-_wecXA" name="Container without children targetp1-1">
       <target xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp1/targetp1-1"/>
       <semanticElements xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp1/targetp1-1"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_3cBggGr7Eeud3aCUsm-5zQ" name="targetC1-1-1" width="3" height="3" resizeKind="EAST_WEST">
+        <target xmi:type="ecore:EClass" href="MyTarget.ecore#//targetp1/targetp1-1/targetC1-1-1"/>
+        <semanticElements xmi:type="ecore:EClass" href="MyTarget.ecore#//targetp1/targetp1-1/targetC1-1-1"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_3cD8wGr7Eeud3aCUsm-5zQ">
+          <description xmi:type="style:DotDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@borderedNodeMappings[name='DT8_unsync_Class']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@borderedNodeMappings[name='DT8_unsync_Class']"/>
+      </ownedBorderedNodes>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_StfNsZmiEeqnUYf-_wecXA" borderSize="1" borderSizeComputationExpression="1">
-        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@style"/>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']"/>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_StfNs5miEeqnUYf-_wecXA" name="Container without children targetp1-2">
       <target xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp1/targetp1-2"/>
@@ -3825,9 +3890,9 @@
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_StfNtJmiEeqnUYf-_wecXA" borderSize="1" borderSizeComputationExpression="1">
-        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@style"/>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']"/>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_StfNtpmiEeqnUYf-_wecXA" name="Container without children targetp1-3">
       <target xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp1/targetp1-3"/>
@@ -3836,9 +3901,9 @@
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Stf0wJmiEeqnUYf-_wecXA" borderSize="1" borderSizeComputationExpression="1">
-        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@style"/>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']"/>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Stf0wpmiEeqnUYf-_wecXA" name="Container without children targetp2">
       <target xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp2"/>
@@ -3847,9 +3912,9 @@
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Stf0w5miEeqnUYf-_wecXA" borderSize="1" borderSizeComputationExpression="1">
-        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@style"/>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']"/>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Stf0xZmiEeqnUYf-_wecXA" name="Container without children targetp2-1">
       <target xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp2/targetp2-1"/>
@@ -3858,9 +3923,9 @@
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Stf0xpmiEeqnUYf-_wecXA" borderSize="1" borderSizeComputationExpression="1">
-        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@style"/>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']"/>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Stf0yJmiEeqnUYf-_wecXA" name="Container without children targetp2-2">
       <target xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp2/targetp2-2"/>
@@ -3869,9 +3934,9 @@
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Stf0yZmiEeqnUYf-_wecXA" borderSize="1" borderSizeComputationExpression="1">
-        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@style"/>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']"/>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Stf0y5miEeqnUYf-_wecXA" name="Container without children targetp3">
       <target xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp3"/>
@@ -3882,9 +3947,9 @@
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Stf0zJmiEeqnUYf-_wecXA" borderSize="1" borderSizeComputationExpression="1" backgroundColor="77,137,20" foregroundColor="77,137,20">
         <customFeatures>backgroundColor</customFeatures>
         <customFeatures>foregroundColor</customFeatures>
-        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@style"/>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']"/>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Stf0zpmiEeqnUYf-_wecXA" name="Container without children targetp4">
       <target xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp4"/>
@@ -3893,9 +3958,9 @@
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Stf0z5miEeqnUYf-_wecXA" borderSize="1" borderSizeComputationExpression="1">
-        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']/@style"/>
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']/@style"/>
       </ownedStyle>
-      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_Package']"/>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']/@containerMappings[name='DT8_unsync_Package']"/>
     </ownedDiagramElements>
     <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_StaVMJmiEeqnUYf-_wecXA"/>
@@ -3923,7 +3988,7 @@
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQaR4pmiEeqnUYf-_wecXA"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_kQOrsZmiEeqnUYf-_wecXA" fontName="Sans" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQOrspmiEeqnUYf-_wecXA" x="200" y="30" width="30" height="30"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQOrspmiEeqnUYf-_wecXA" x="225" y="30" width="30" height="30"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_kQX1oJmiEeqnUYf-_wecXA" type="3012" element="_kQDskpmiEeqnUYf-_wecXA">
             <children xmi:type="notation:Node" xmi:id="_kQX1o5miEeqnUYf-_wecXA" type="5010">
@@ -3948,7 +4013,7 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQYcspmiEeqnUYf-_wecXA" x="10" y="203" width="30" height="30"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_kQGI1JmiEeqnUYf-_wecXA" fontName="Sans" fontHeight="8" fillColor="230880"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQGI1ZmiEeqnUYf-_wecXA" x="380" y="10" height="213"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQGI1ZmiEeqnUYf-_wecXA" x="380" y="10" width="212" height="213"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_kQGv5JmiEeqnUYf-_wecXA" type="2002" element="_kQB3Y5miEeqnUYf-_wecXA">
           <children xmi:type="notation:Node" xmi:id="_kQGv55miEeqnUYf-_wecXA" type="5006"/>
@@ -3976,10 +4041,10 @@
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQcHFZmiEeqnUYf-_wecXA"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_kQbgAZmiEeqnUYf-_wecXA" fontName="Sans" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQbgApmiEeqnUYf-_wecXA" x="210" y="88" width="30" height="30"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQbgApmiEeqnUYf-_wecXA" x="259" y="88" width="30" height="30"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_kQGv5ZmiEeqnUYf-_wecXA" fontName="Sans" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQGv5pmiEeqnUYf-_wecXA" x="505" y="247" height="183"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQGv5pmiEeqnUYf-_wecXA" x="505" y="247" width="245" height="183"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_kQHW85miEeqnUYf-_wecXA" type="2002" element="_kQB3ZpmiEeqnUYf-_wecXA">
           <children xmi:type="notation:Node" xmi:id="_kQHW9pmiEeqnUYf-_wecXA" type="5006"/>
@@ -3999,7 +4064,7 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQcHGJmiEeqnUYf-_wecXA" x="90" y="60" width="30" height="30"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_kQHW9JmiEeqnUYf-_wecXA" fontName="Sans" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQHW9ZmiEeqnUYf-_wecXA" x="250" y="310"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQHW9ZmiEeqnUYf-_wecXA" x="250" y="310" width="227"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_kQHW-pmiEeqnUYf-_wecXA" type="2002" element="_kQCecZmiEeqnUYf-_wecXA">
           <children xmi:type="notation:Node" xmi:id="_kQH-AJmiEeqnUYf-_wecXA" type="5006"/>
@@ -4008,7 +4073,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_kQH-A5miEeqnUYf-_wecXA"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_kQHW-5miEeqnUYf-_wecXA" fontName="Sans" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQHW_JmiEeqnUYf-_wecXA" x="635" y="140"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQHW_JmiEeqnUYf-_wecXA" x="635" y="140" width="223"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_kQH-BJmiEeqnUYf-_wecXA" type="2002" element="_kQCedJmiEeqnUYf-_wecXA">
           <children xmi:type="notation:Node" xmi:id="_kQH-B5miEeqnUYf-_wecXA" type="5006"/>
@@ -4017,7 +4082,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_kQIlEpmiEeqnUYf-_wecXA"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_kQH-BZmiEeqnUYf-_wecXA" fontName="Sans" fontHeight="8" fillColor="230880"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQH-BpmiEeqnUYf-_wecXA" x="242" y="165" height="188"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQH-BpmiEeqnUYf-_wecXA" x="242" y="165" width="229" height="188"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_kQIlE5miEeqnUYf-_wecXA" type="2002" element="_kQCed5miEeqnUYf-_wecXA">
           <children xmi:type="notation:Node" xmi:id="_kQIlFpmiEeqnUYf-_wecXA" type="5006"/>
@@ -4034,10 +4099,10 @@
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQd8QpmiEeqnUYf-_wecXA"/>
             </children>
             <styles xmi:type="notation:ShapeStyle" xmi:id="_kQdVMZmiEeqnUYf-_wecXA" fontName="Sans" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQdVMpmiEeqnUYf-_wecXA" x="210" y="58" width="30" height="30"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQdVMpmiEeqnUYf-_wecXA" x="240" y="58" width="30" height="30"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_kQIlFJmiEeqnUYf-_wecXA" fontName="Sans" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQIlFZmiEeqnUYf-_wecXA" x="475" y="87" height="163"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQIlFZmiEeqnUYf-_wecXA" x="475" y="87" width="226" height="163"/>
         </children>
         <children xmi:type="notation:Node" xmi:id="_kQJMI5miEeqnUYf-_wecXA" type="2002" element="_kQCeepmiEeqnUYf-_wecXA">
           <children xmi:type="notation:Node" xmi:id="_kQJMJpmiEeqnUYf-_wecXA" type="5006"/>
@@ -4064,7 +4129,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_kQLBU5miEeqnUYf-_wecXA"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_kQKaRJmiEeqnUYf-_wecXA" fontName="Sans" fontHeight="8"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQKaRZmiEeqnUYf-_wecXA" x="640" y="30"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQKaRZmiEeqnUYf-_wecXA" x="640" y="30" width="226"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_kQGI0pmiEeqnUYf-_wecXA"/>
       </data>
@@ -5473,7 +5538,7 @@
                     <styles xmi:type="notation:FilteringStyle" xmi:id="_8u4BZOfBEeq3AOgvALrX2w"/>
                   </children>
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_8u4BX-fBEeq3AOgvALrX2w" fontName="Segoe UI" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8u4BYOfBEeq3AOgvALrX2w" x="30" y="29" width="68" height="53"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8u4BYOfBEeq3AOgvALrX2w" x="25" y="29" width="73" height="53"/>
                 </children>
                 <children xmi:type="notation:Node" xmi:id="_8u4BZefBEeq3AOgvALrX2w" type="3009" element="_8qcNQefBEeq3AOgvALrX2w">
                   <children xmi:type="notation:Node" xmi:id="_8u4BaOfBEeq3AOgvALrX2w" type="5004"/>
@@ -5500,7 +5565,7 @@
                     <styles xmi:type="notation:FilteringStyle" xmi:id="_8u4BeefBEeq3AOgvALrX2w"/>
                   </children>
                   <styles xmi:type="notation:ShapeStyle" xmi:id="_8u4BdOfBEeq3AOgvALrX2w" fontName="Segoe UI" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8u4BdefBEeq3AOgvALrX2w" x="30" y="29"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8u4BdefBEeq3AOgvALrX2w" x="30" y="29" width="73"/>
                 </children>
                 <styles xmi:type="notation:SortingStyle" xmi:id="_yhHpoefAEeq3AOgvALrX2w"/>
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_yhHpoufAEeq3AOgvALrX2w"/>
@@ -5533,7 +5598,7 @@
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_2WZcXefBEeq3AOgvALrX2w"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_2WZcWOfBEeq3AOgvALrX2w" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2WZcWefBEeq3AOgvALrX2w" x="560" y="34"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2WZcWefBEeq3AOgvALrX2w" x="540" y="34" width="66"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_2WZcXufBEeq3AOgvALrX2w" type="3009" element="_2SYfKufBEeq3AOgvALrX2w">
               <children xmi:type="notation:Node" xmi:id="_2WZcYefBEeq3AOgvALrX2w" type="5004"/>
@@ -5546,7 +5611,7 @@
                 <styles xmi:type="notation:FilteringStyle" xmi:id="_2WZcZOfBEeq3AOgvALrX2w"/>
               </children>
               <styles xmi:type="notation:ShapeStyle" xmi:id="_2WZcX-fBEeq3AOgvALrX2w" fontName="Segoe UI" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2WZcYOfBEeq3AOgvALrX2w" x="535" y="90"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2WZcYOfBEeq3AOgvALrX2w" x="530" y="90" width="63"/>
             </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_yhHpaefAEeq3AOgvALrX2w"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_yhHpaufAEeq3AOgvALrX2w"/>
@@ -7310,5 +7375,434 @@
     <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@defaultLayer"/>
     <activatedLayers xmi:type="description_1:AdditionalLayer" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType13']/@additionalLayers[name='external']"/>
     <target xmi:type="ecore:EPackage" href="srcWithExternal.ecore#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_Vj-ykGr8Eeud3aCUsm-5zQ">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_VkGuYGr8Eeud3aCUsm-5zQ" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_VkGuYWr8Eeud3aCUsm-5zQ" type="Sirius" element="_Vj-ykGr8Eeud3aCUsm-5zQ" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_VkUw0Gr8Eeud3aCUsm-5zQ" type="2002" element="_VkOqMGr8Eeud3aCUsm-5zQ">
+          <children xmi:type="notation:Node" xmi:id="_VkV-8Gr8Eeud3aCUsm-5zQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_VkV-8Wr8Eeud3aCUsm-5zQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_VkV-8mr8Eeud3aCUsm-5zQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_VkV-82r8Eeud3aCUsm-5zQ"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_g2S0U2r8Eeud3aCUsm-5zQ" type="3012" element="_g2S0UGr8Eeud3aCUsm-5zQ">
+            <children xmi:type="notation:Node" xmi:id="_g2TbYGr8Eeud3aCUsm-5zQ" type="5010">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_g2TbYWr8Eeud3aCUsm-5zQ" x="31" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_g2TbYmr8Eeud3aCUsm-5zQ" type="3002" element="_g2S0UWr8Eeud3aCUsm-5zQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_g2TbY2r8Eeud3aCUsm-5zQ" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g2TbZGr8Eeud3aCUsm-5zQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_g2S0VGr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_g2S0VWr8Eeud3aCUsm-5zQ" x="41" y="89" width="30" height="30"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_hexwoGr8Eeud3aCUsm-5zQ" type="3012" element="_hexJkGr8Eeud3aCUsm-5zQ">
+            <children xmi:type="notation:Node" xmi:id="_hexwo2r8Eeud3aCUsm-5zQ" type="5010">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_hexwpGr8Eeud3aCUsm-5zQ" x="31" y="9"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_heyXsGr8Eeud3aCUsm-5zQ" type="3002" element="_hexJkWr8Eeud3aCUsm-5zQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_heyXsWr8Eeud3aCUsm-5zQ" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_heyXsmr8Eeud3aCUsm-5zQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_hexwoWr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_hexwomr8Eeud3aCUsm-5zQ" x="202" y="37" width="30" height="30"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_VkUw0Wr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VkUw0mr8Eeud3aCUsm-5zQ" x="62" y="99" width="212" height="99"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_VkWmAGr8Eeud3aCUsm-5zQ" type="2002" element="_VkP4UWr8Eeud3aCUsm-5zQ">
+          <children xmi:type="notation:Node" xmi:id="_VkWmA2r8Eeud3aCUsm-5zQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_VkWmBGr8Eeud3aCUsm-5zQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_VkWmBWr8Eeud3aCUsm-5zQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_VkWmBmr8Eeud3aCUsm-5zQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_VkWmAWr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VkWmAmr8Eeud3aCUsm-5zQ" x="62" y="243" width="212" height="99"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_VkWmB2r8Eeud3aCUsm-5zQ" type="2002" element="_VkQfYWr8Eeud3aCUsm-5zQ">
+          <children xmi:type="notation:Node" xmi:id="_VkWmCmr8Eeud3aCUsm-5zQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_VkWmC2r8Eeud3aCUsm-5zQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_VkWmDGr8Eeud3aCUsm-5zQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_VkWmDWr8Eeud3aCUsm-5zQ"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_jWDbUGr8Eeud3aCUsm-5zQ" type="3012" element="_jWC0QGr8Eeud3aCUsm-5zQ">
+            <children xmi:type="notation:Node" xmi:id="_jWECYGr8Eeud3aCUsm-5zQ" type="5010">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_jWECYWr8Eeud3aCUsm-5zQ" x="31" y="10"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_jWECYmr8Eeud3aCUsm-5zQ" type="3002" element="_jWC0QWr8Eeud3aCUsm-5zQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_jWECY2r8Eeud3aCUsm-5zQ" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jWECZGr8Eeud3aCUsm-5zQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_jWDbUWr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_jWDbUmr8Eeud3aCUsm-5zQ" x="19" y="89" width="30" height="30"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_VkWmCGr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VkWmCWr8Eeud3aCUsm-5zQ" x="62" y="387" width="212" height="99"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_VkXNEGr8Eeud3aCUsm-5zQ" type="2002" element="_VkQfZGr8Eeud3aCUsm-5zQ">
+          <children xmi:type="notation:Node" xmi:id="_VkXNE2r8Eeud3aCUsm-5zQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_VkXNFGr8Eeud3aCUsm-5zQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_VkXNFWr8Eeud3aCUsm-5zQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_VkXNFmr8Eeud3aCUsm-5zQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_VkXNEWr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VkXNEmr8Eeud3aCUsm-5zQ" x="62" y="532" width="212" height="99"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_VkXNF2r8Eeud3aCUsm-5zQ" type="2002" element="_VkQfZ2r8Eeud3aCUsm-5zQ">
+          <children xmi:type="notation:Node" xmi:id="_VkXNGmr8Eeud3aCUsm-5zQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_VkXNG2r8Eeud3aCUsm-5zQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_VkXNHGr8Eeud3aCUsm-5zQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_VkXNHWr8Eeud3aCUsm-5zQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_VkXNGGr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VkXNGWr8Eeud3aCUsm-5zQ" x="366" y="175" width="212" height="99"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_VkXNHmr8Eeud3aCUsm-5zQ" type="2002" element="_VkQfamr8Eeud3aCUsm-5zQ">
+          <children xmi:type="notation:Node" xmi:id="_VkXNIWr8Eeud3aCUsm-5zQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_VkX0IGr8Eeud3aCUsm-5zQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_VkX0IWr8Eeud3aCUsm-5zQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_VkX0Imr8Eeud3aCUsm-5zQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_VkXNH2r8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VkXNIGr8Eeud3aCUsm-5zQ" x="366" y="302" width="212" height="99"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_VkX0I2r8Eeud3aCUsm-5zQ" type="2002" element="_VkRGcmr8Eeud3aCUsm-5zQ">
+          <children xmi:type="notation:Node" xmi:id="_VkX0Jmr8Eeud3aCUsm-5zQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_VkYbMGr8Eeud3aCUsm-5zQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_VkYbMWr8Eeud3aCUsm-5zQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_VkYbMmr8Eeud3aCUsm-5zQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_VkX0JGr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VkX0JWr8Eeud3aCUsm-5zQ" x="366" y="428" width="212" height="99"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_VkYbM2r8Eeud3aCUsm-5zQ" type="2002" element="_VkRGdWr8Eeud3aCUsm-5zQ">
+          <children xmi:type="notation:Node" xmi:id="_VkYbNmr8Eeud3aCUsm-5zQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_VkYbN2r8Eeud3aCUsm-5zQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_VkYbOGr8Eeud3aCUsm-5zQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_VkYbOWr8Eeud3aCUsm-5zQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_VkYbNGr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VkYbNWr8Eeud3aCUsm-5zQ" x="698" y="225" width="212" height="99"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_VkYbOmr8Eeud3aCUsm-5zQ" type="2002" element="_VkRGeGr8Eeud3aCUsm-5zQ">
+          <children xmi:type="notation:Node" xmi:id="_VkYbPWr8Eeud3aCUsm-5zQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_VkYbPmr8Eeud3aCUsm-5zQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_VkYbP2r8Eeud3aCUsm-5zQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_VkYbQGr8Eeud3aCUsm-5zQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_VkYbO2r8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VkYbPGr8Eeud3aCUsm-5zQ" x="698" y="373" width="212" height="99"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_VkGuYmr8Eeud3aCUsm-5zQ"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_VkTisGr8Eeud3aCUsm-5zQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_VkTisWr8Eeud3aCUsm-5zQ"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_VkOqMGr8Eeud3aCUsm-5zQ" name="Container without children p1">
+      <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_g2S0UGr8Eeud3aCUsm-5zQ" name="C1-1" width="3" height="3" resizeKind="EAST_WEST">
+        <target xmi:type="ecore:EClass" href="My.ecore#//p1/C1-1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C1-1"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_g2S0UWr8Eeud3aCUsm-5zQ">
+          <description xmi:type="style:DotDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@borderedNodeMappings[name='DT8_unsyncBN_Class']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@borderedNodeMappings[name='DT8_unsyncBN_Class']"/>
+      </ownedBorderedNodes>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_hexJkGr8Eeud3aCUsm-5zQ" name="C1-2" width="3" height="3" resizeKind="EAST_WEST">
+        <target xmi:type="ecore:EClass" href="My.ecore#//p1/C1-2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C1-2"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_hexJkWr8Eeud3aCUsm-5zQ">
+          <description xmi:type="style:DotDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@borderedNodeMappings[name='DT8_unsyncBN_Class']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@borderedNodeMappings[name='DT8_unsyncBN_Class']"/>
+      </ownedBorderedNodes>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_VkPRQGr8Eeud3aCUsm-5zQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_VkP4UWr8Eeud3aCUsm-5zQ" name="Container without children p1-1">
+      <target xmi:type="ecore:EPackage" href="My.ecore#//p1/p1-1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p1/p1-1"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_VkP4Umr8Eeud3aCUsm-5zQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_VkQfYWr8Eeud3aCUsm-5zQ" name="Container without children p1-2">
+      <target xmi:type="ecore:EPackage" href="My.ecore#//p1/p1-2"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p1/p1-2"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_jWC0QGr8Eeud3aCUsm-5zQ" name="C1-2-1" width="3" height="3" resizeKind="EAST_WEST">
+        <target xmi:type="ecore:EClass" href="My.ecore#//p1/p1-2/C1-2-1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/p1-2/C1-2-1"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_jWC0QWr8Eeud3aCUsm-5zQ">
+          <description xmi:type="style:DotDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@borderedNodeMappings[name='DT8_unsyncBN_Class']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@borderedNodeMappings[name='DT8_unsyncBN_Class']"/>
+      </ownedBorderedNodes>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_VkQfYmr8Eeud3aCUsm-5zQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_VkQfZGr8Eeud3aCUsm-5zQ" name="Container without children p1-3">
+      <target xmi:type="ecore:EPackage" href="My.ecore#//p1/p1-3"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p1/p1-3"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_VkQfZWr8Eeud3aCUsm-5zQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_VkQfZ2r8Eeud3aCUsm-5zQ" name="Container without children p2">
+      <target xmi:type="ecore:EPackage" href="My.ecore#//p2"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p2"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_VkQfaGr8Eeud3aCUsm-5zQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_VkQfamr8Eeud3aCUsm-5zQ" name="Container without children p2-1">
+      <target xmi:type="ecore:EPackage" href="My.ecore#//p2/p2-1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p2/p2-1"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_VkRGcGr8Eeud3aCUsm-5zQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_VkRGcmr8Eeud3aCUsm-5zQ" name="Container without children p2-2">
+      <target xmi:type="ecore:EPackage" href="My.ecore#//p2/p2-2"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p2/p2-2"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_VkRGc2r8Eeud3aCUsm-5zQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_VkRGdWr8Eeud3aCUsm-5zQ" name="Container without children p3">
+      <target xmi:type="ecore:EPackage" href="My.ecore#//p3"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p3"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_VkRGdmr8Eeud3aCUsm-5zQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_VkRGeGr8Eeud3aCUsm-5zQ" name="Container without children p4">
+      <target xmi:type="ecore:EPackage" href="My.ecore#//p4"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//p4"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_VkRGeWr8Eeud3aCUsm-5zQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_Vj-ykWr8Eeud3aCUsm-5zQ"/>
+    <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_pEMp4Gr8Eeud3aCUsm-5zQ">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_pEN4AGr8Eeud3aCUsm-5zQ" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_pEN4AWr8Eeud3aCUsm-5zQ" type="Sirius" element="_pEMp4Gr8Eeud3aCUsm-5zQ" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_pESJcGr8Eeud3aCUsm-5zQ" type="2002" element="_pEPGIGr8Eeud3aCUsm-5zQ">
+          <children xmi:type="notation:Node" xmi:id="_pESJc2r8Eeud3aCUsm-5zQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_pESJdGr8Eeud3aCUsm-5zQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_pESJdWr8Eeud3aCUsm-5zQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_pESJdmr8Eeud3aCUsm-5zQ"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_1bD44Gr8Eeud3aCUsm-5zQ" type="3012" element="_1bDR0Gr8Eeud3aCUsm-5zQ">
+            <children xmi:type="notation:Node" xmi:id="_1bD442r8Eeud3aCUsm-5zQ" type="5010">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_1bD45Gr8Eeud3aCUsm-5zQ" x="31" y="7"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_1bD45Wr8Eeud3aCUsm-5zQ" type="3002" element="_1bDR0Wr8Eeud3aCUsm-5zQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_1bD45mr8Eeud3aCUsm-5zQ" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1bD452r8Eeud3aCUsm-5zQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_1bD44Wr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1bD44mr8Eeud3aCUsm-5zQ" x="18" y="84" width="30" height="30"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_pESJcWr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pESJcmr8Eeud3aCUsm-5zQ" x="86" y="64" width="261" height="94"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_pESJd2r8Eeud3aCUsm-5zQ" type="2002" element="_pEPtMWr8Eeud3aCUsm-5zQ">
+          <children xmi:type="notation:Node" xmi:id="_pESwgGr8Eeud3aCUsm-5zQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_pESwgWr8Eeud3aCUsm-5zQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_pESwgmr8Eeud3aCUsm-5zQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_pESwg2r8Eeud3aCUsm-5zQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_pESJeGr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pESJeWr8Eeud3aCUsm-5zQ" x="161" y="170" width="261" height="94"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_pESwhGr8Eeud3aCUsm-5zQ" type="2002" element="_pEPtNGr8Eeud3aCUsm-5zQ">
+          <children xmi:type="notation:Node" xmi:id="_pESwh2r8Eeud3aCUsm-5zQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_pESwiGr8Eeud3aCUsm-5zQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_pESwiWr8Eeud3aCUsm-5zQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_pESwimr8Eeud3aCUsm-5zQ"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_4HxWwGr8Eeud3aCUsm-5zQ" type="3012" element="_4HwIoGr8Eeud3aCUsm-5zQ">
+            <children xmi:type="notation:Node" xmi:id="_4HxWw2r8Eeud3aCUsm-5zQ" type="5010">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_4HxWxGr8Eeud3aCUsm-5zQ" x="31" y="7"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_4HxWxWr8Eeud3aCUsm-5zQ" type="3002" element="_4HwvsGr8Eeud3aCUsm-5zQ">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_4HxWxmr8Eeud3aCUsm-5zQ" fontName="Segoe UI"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_4HxWx2r8Eeud3aCUsm-5zQ"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_4HxWwWr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_4HxWwmr8Eeud3aCUsm-5zQ" x="251" y="27" width="30" height="30"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_pESwhWr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pESwhmr8Eeud3aCUsm-5zQ" x="190" y="276" width="261" height="94"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_pESwi2r8Eeud3aCUsm-5zQ" type="2002" element="_pEPtN2r8Eeud3aCUsm-5zQ">
+          <children xmi:type="notation:Node" xmi:id="_pETXkGr8Eeud3aCUsm-5zQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_pETXkWr8Eeud3aCUsm-5zQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_pETXkmr8Eeud3aCUsm-5zQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_pETXk2r8Eeud3aCUsm-5zQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_pESwjGr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pESwjWr8Eeud3aCUsm-5zQ" x="233" y="382" width="261" height="94"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_pETXlGr8Eeud3aCUsm-5zQ" type="2002" element="_pEQUQWr8Eeud3aCUsm-5zQ">
+          <children xmi:type="notation:Node" xmi:id="_pETXl2r8Eeud3aCUsm-5zQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_pETXmGr8Eeud3aCUsm-5zQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_pETXmWr8Eeud3aCUsm-5zQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_pETXmmr8Eeud3aCUsm-5zQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_pETXlWr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pETXlmr8Eeud3aCUsm-5zQ" x="351" y="488" width="261" height="94"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_pET-oGr8Eeud3aCUsm-5zQ" type="2002" element="_pEQURGr8Eeud3aCUsm-5zQ">
+          <children xmi:type="notation:Node" xmi:id="_pET-o2r8Eeud3aCUsm-5zQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_pET-pGr8Eeud3aCUsm-5zQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_pET-pWr8Eeud3aCUsm-5zQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_pET-pmr8Eeud3aCUsm-5zQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_pET-oWr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pET-omr8Eeud3aCUsm-5zQ" x="511" y="382" width="261" height="94"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_pET-p2r8Eeud3aCUsm-5zQ" type="2002" element="_pEQUR2r8Eeud3aCUsm-5zQ">
+          <children xmi:type="notation:Node" xmi:id="_pEVMwGr8Eeud3aCUsm-5zQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_pEVMwWr8Eeud3aCUsm-5zQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_pEVMwmr8Eeud3aCUsm-5zQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_pEVMw2r8Eeud3aCUsm-5zQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_pET-qGr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pET-qWr8Eeud3aCUsm-5zQ" x="638" y="276" width="261" height="94"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_pEVMxGr8Eeud3aCUsm-5zQ" type="2002" element="_pEQ7UWr8Eeud3aCUsm-5zQ">
+          <children xmi:type="notation:Node" xmi:id="_pEVMx2r8Eeud3aCUsm-5zQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_pEVMyGr8Eeud3aCUsm-5zQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_pEVMyWr8Eeud3aCUsm-5zQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_pEVMymr8Eeud3aCUsm-5zQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_pEVMxWr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pEVMxmr8Eeud3aCUsm-5zQ" x="763" y="170" width="261" height="94"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_pEVMy2r8Eeud3aCUsm-5zQ" type="2002" element="_pEQ7VGr8Eeud3aCUsm-5zQ">
+          <children xmi:type="notation:Node" xmi:id="_pEVz0mr8Eeud3aCUsm-5zQ" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_pEVz02r8Eeud3aCUsm-5zQ" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_pEVz1Gr8Eeud3aCUsm-5zQ"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_pEVz1Wr8Eeud3aCUsm-5zQ"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_pEVz0Gr8Eeud3aCUsm-5zQ" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pEVz0Wr8Eeud3aCUsm-5zQ" x="917" y="64" width="261" height="94"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_pEN4Amr8Eeud3aCUsm-5zQ"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_pERiYGr8Eeud3aCUsm-5zQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_pERiYWr8Eeud3aCUsm-5zQ"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_pEPGIGr8Eeud3aCUsm-5zQ" name="Container without children targetp1">
+      <target xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp1"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_1bDR0Gr8Eeud3aCUsm-5zQ" name="targetC1-2" width="3" height="3" resizeKind="EAST_WEST">
+        <target xmi:type="ecore:EClass" href="MyTarget.ecore#//targetp1/targetC1-2"/>
+        <semanticElements xmi:type="ecore:EClass" href="MyTarget.ecore#//targetp1/targetC1-2"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_1bDR0Wr8Eeud3aCUsm-5zQ">
+          <description xmi:type="style:DotDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@borderedNodeMappings[name='DT8_unsyncBN_Class']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@borderedNodeMappings[name='DT8_unsyncBN_Class']"/>
+      </ownedBorderedNodes>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_pEPGIWr8Eeud3aCUsm-5zQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_pEPtMWr8Eeud3aCUsm-5zQ" name="Container without children targetp1-1">
+      <target xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp1/targetp1-1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp1/targetp1-1"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_pEPtMmr8Eeud3aCUsm-5zQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_pEPtNGr8Eeud3aCUsm-5zQ" name="Container without children targetp1-2">
+      <target xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp1/targetp1-2"/>
+      <semanticElements xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp1/targetp1-2"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_4HwIoGr8Eeud3aCUsm-5zQ" name="targetC1-2-1" width="3" height="3" resizeKind="EAST_WEST">
+        <target xmi:type="ecore:EClass" href="MyTarget.ecore#//targetp1/targetp1-2/targetC1-2-1"/>
+        <semanticElements xmi:type="ecore:EClass" href="MyTarget.ecore#//targetp1/targetp1-2/targetC1-2-1"/>
+        <ownedStyle xmi:type="diagram:Dot" uid="_4HwvsGr8Eeud3aCUsm-5zQ">
+          <description xmi:type="style:DotDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@borderedNodeMappings[name='DT8_unsyncBN_Class']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@borderedNodeMappings[name='DT8_unsyncBN_Class']"/>
+      </ownedBorderedNodes>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_pEPtNWr8Eeud3aCUsm-5zQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_pEPtN2r8Eeud3aCUsm-5zQ" name="Container without children targetp1-3">
+      <target xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp1/targetp1-3"/>
+      <semanticElements xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp1/targetp1-3"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_pEPtOGr8Eeud3aCUsm-5zQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_pEQUQWr8Eeud3aCUsm-5zQ" name="Container without children targetp2">
+      <target xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp2"/>
+      <semanticElements xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp2"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_pEQUQmr8Eeud3aCUsm-5zQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_pEQURGr8Eeud3aCUsm-5zQ" name="Container without children targetp2-1">
+      <target xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp2/targetp2-1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp2/targetp2-1"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_pEQURWr8Eeud3aCUsm-5zQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_pEQUR2r8Eeud3aCUsm-5zQ" name="Container without children targetp2-2">
+      <target xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp2/targetp2-2"/>
+      <semanticElements xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp2/targetp2-2"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_pEQUSGr8Eeud3aCUsm-5zQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_pEQ7UWr8Eeud3aCUsm-5zQ" name="Container without children targetp3">
+      <target xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp3"/>
+      <semanticElements xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp3"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_pEQ7Umr8Eeud3aCUsm-5zQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_pEQ7VGr8Eeud3aCUsm-5zQ" name="Container without children targetp4">
+      <target xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp4"/>
+      <semanticElements xmi:type="ecore:EPackage" href="MyTarget.ecore#//targetp4"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_pEQ7VWr8Eeud3aCUsm-5zQ" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer/@containerMappings[name='DT8_unsyncBN_Package']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_pENQ8Gr8Eeud3aCUsm-5zQ"/>
+    <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType8_unsync_onlyBN']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="MyTarget.ecore#/"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>

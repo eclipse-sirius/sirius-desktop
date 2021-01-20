@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 Obeo.
+ * Copyright (c) 2020, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,8 @@ import java.util.stream.Collectors;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewType;
@@ -38,6 +40,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -50,6 +53,8 @@ import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
 import org.eclipse.sirius.diagram.business.internal.dialect.NotYetOpenedDiagramAdapter;
+import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
@@ -242,21 +247,33 @@ public class MappingBasedSiriusFormatManagerFactory {
 
     private void applyFiltersAndLayersState(DDiagram sourceDiagram, DDiagram targetDiagram) {
         DisplayServiceManager.INSTANCE.getDisplayService().refreshAllElementsVisibility(targetDiagram);
-        sourceDiagram.getActivatedLayers().forEach(layer -> {
-            targetDiagram.getActivatedLayers().add(layer);
-        });
+        Optional<ResourceSet> optionalTargetResourceSet = Optional.ofNullable(targetDiagram).map(EObject::eResource).map(Resource::getResourceSet);
+        if (optionalTargetResourceSet.isPresent()) {
+            ResourceSet targetResourceSet = optionalTargetResourceSet.get();
+            sourceDiagram.getActivatedLayers().forEach(layer -> {
+                EObject targetLayer = targetResourceSet.getEObject(EcoreUtil.getURI(layer), false);
+                if (targetLayer instanceof Layer) {
+                    targetDiagram.getActivatedLayers().add((Layer) targetLayer);
+                }
+            });
 
-        targetDiagram.getActivatedFilters().clear();
-        targetDiagram.getActivatedFilters().addAll(sourceDiagram.getActivatedFilters());
-        // Execute same code as in
-        // org.eclipse.sirius.diagram.ui.business.internal.command.RefreshDiagramOnOpeningCommand.doExecute()
-        if (targetDiagram.getActivatedFilters().size() != 0) {
-            CompositeFilterApplicationBuilder builder = new CompositeFilterApplicationBuilder(targetDiagram);
-            builder.computeCompositeFilterApplications();
-        }
+            targetDiagram.getActivatedFilters().clear();
+            sourceDiagram.getActivatedFilters().forEach(filter -> {
+                EObject targetFilter = targetResourceSet.getEObject(EcoreUtil.getURI(filter), false);
+                if (targetFilter instanceof FilterDescription) {
+                    targetDiagram.getActivatedFilters().add((FilterDescription) targetFilter);
+                }
+            });
+            // Execute same code as in
+            // org.eclipse.sirius.diagram.ui.business.internal.command.RefreshDiagramOnOpeningCommand.doExecute()
+            if (targetDiagram.getActivatedFilters().size() != 0) {
+                CompositeFilterApplicationBuilder builder = new CompositeFilterApplicationBuilder(targetDiagram);
+                builder.computeCompositeFilterApplications();
+            }
 
-        if (DisplayMode.NORMAL.equals(DisplayServiceManager.INSTANCE.getMode())) {
-            DisplayServiceManager.INSTANCE.getDisplayService().refreshAllElementsVisibility(targetDiagram);
+            if (DisplayMode.NORMAL.equals(DisplayServiceManager.INSTANCE.getMode())) {
+                DisplayServiceManager.INSTANCE.getDisplayService().refreshAllElementsVisibility(targetDiagram);
+            }
         }
     }
 
@@ -295,7 +312,7 @@ public class MappingBasedSiriusFormatManagerFactory {
         if (sourceDiagram.equals(targetDiagram)) {
             throw new IllegalArgumentException(Messages.MappingBasedSiriusFormatManagerFactory_ErrorSourceAndTargetDiagramsAreTheSame);
         }
-        if (!sourceDiagram.getDescription().equals(targetDiagram.getDescription())) {
+        if (!EqualityHelper.areEquals(sourceDiagram.getDescription(), targetDiagram.getDescription())) {
             throw new IllegalArgumentException(MessageFormat.format(Messages.MappingBasedSiriusFormatManagerFactory_ErrorSourceAndTargetDiagramDecriptionsDoesNotMatch, sourceDiagram.getDescription(),
                     targetDiagram.getDescription()));
         }

@@ -136,8 +136,10 @@ import org.eclipse.sirius.tests.unit.diagram.format.data.FormatHelperImplNodeFor
 import org.eclipse.sirius.tests.unit.diagram.format.data.LabelPositionOnContainerAndListTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerCallCheckSequenceTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerCallCheckTest;
+import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerCreateTargetDiagramDiffSessionTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest;
+import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerExistingTargetDiagramDiffSessionTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerExternalRefTest;
@@ -455,8 +457,8 @@ public class AllDiagramPluginsTests {
         suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest.class));
         suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTest.class));
         suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerExternalRefTest.class));
-        // suite.addTest(new
-        // JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerCreateTargetDiagramDiffSessionTest.class));
+        suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerCreateTargetDiagramDiffSessionTest.class));
+        suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerExistingTargetDiagramDiffSessionTest.class));
         suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerCallCheckTest.class));
         suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerCallCheckSequenceTest.class));
         suite.addTestSuite(LabelPositionOnContainerAndListTest.class);

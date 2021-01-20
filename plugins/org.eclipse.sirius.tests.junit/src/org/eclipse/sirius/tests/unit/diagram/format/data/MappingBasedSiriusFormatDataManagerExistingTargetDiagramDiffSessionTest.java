@@ -12,17 +12,17 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.unit.diagram.format.data;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.FormatHelper.FormatDifference;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.Configuration;
@@ -33,10 +33,10 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.format.data.manager.mappingbased.MappingBasedTestConfiguration;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
 
 /**
  * Test class for {@link MappingBasedSiriusFormatDataManager}. Inspired from
@@ -45,63 +45,8 @@ import org.junit.runners.Parameterized.Parameters;
  * @author adieumegard
  */
 @RunWith(value = Parameterized.class)
-public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest extends AbstractMappingBasedSiriusFormatDataManagerTest {
+public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramDiffSessionTest extends MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest {
 
-    protected static final boolean MB_REGENERATE_TEST_DATA = false;
-
-    protected static final boolean MB_GENERATE_IMAGES_TEST_DATA = false;
-
-    protected static final Predicate<Diagram> ONLY_RAW_DIAGRAM = new Predicate<Diagram>() {
-
-        @Override
-        public boolean test(final Diagram input) {
-            return input.raw;
-        }
-    };
-
-    protected static final Diagram MB_DIAG_TYPE8_MYPACKAGE = new Diagram("DiagType8 of MyPackage", 16, 0);
-
-    protected static final Diagram MB_DIAG_TYPE8_P2 = new Diagram("DiagType8 of p2", 3, 0);
-
-    protected static final Diagram MB_DIAG_TYPE8_RAW = new Diagram("DiagType8 Raw of targetMyPackage", 16, 0, true);
-
-    protected static final Representation MB_REPRES_TYPE8 = new Representation("DiagType8", MB_DIAG_TYPE8_MYPACKAGE, MB_DIAG_TYPE8_P2, MB_DIAG_TYPE8_RAW);
-
-    protected static final Diagram MB_DIAG_TYPE8_NOTES_MYPACKAGE = new Diagram("DiagType8 with notes of MyPackage", 16, 0);
-
-    protected static final RepresentationWithNotes MB_REPRES_TYPE8_NOTES = new RepresentationWithNotes("DiagType8", MB_DIAG_TYPE8_NOTES_MYPACKAGE, MB_DIAG_TYPE8_RAW);
-
-    protected static final Diagram MB_DIAG_TYPE8UNSYNC_MYPACKAGE = new Diagram("DiagType8_unsync of MyPackage", 16, 0);
-
-    protected static final Diagram MB_DIAG_TYPE8UNSYNC_RAW = new Diagram("DiagType8_unsync Raw of targetMyPackage", 16, 0, true);
-
-    protected static final Representation MB_REPRES_TYPE8UNSYNC = new Representation("DiagType8_unsync", MB_DIAG_TYPE8UNSYNC_MYPACKAGE, MB_DIAG_TYPE8UNSYNC_RAW);
-
-    protected static final Diagram MB_DIAG_TYPE8UNSYNCBN_MYPACKAGE = new Diagram("DiagType8_unsyncBN of MyPackage", 12, 0);
-
-    protected static final Diagram MB_DIAG_TYPE8UNSYNCBN_RAW = new Diagram("DiagType8_unsyncBN Raw of targetMyPackage", 11, 0, true);
-
-    protected static final Representation MB_REPRES_TYPE8UNSYNCBN = new Representation("DiagType8_unsync_onlyBN", MB_DIAG_TYPE8UNSYNCBN_MYPACKAGE, MB_DIAG_TYPE8UNSYNCBN_RAW);
-
-    protected static final Diagram MB_DIAG_TYPE10_MYPACKAGE = new Diagram("DiagType10 of MyPackage", 16, 2);
-
-    protected static final Diagram MB_DIAG_TYPE10_RAW = new Diagram("DiagType10 Raw of targetMyPackage", 16, 2, true);
-
-    protected static final Representation MB_REPRES_TYPE10 = new Representation("DiagType10", MB_DIAG_TYPE10_MYPACKAGE, MB_DIAG_TYPE10_RAW);
-
-    protected static final Representation[] MB_ALL_REPRESENTATIONS = { MB_REPRES_TYPE8, MB_REPRES_TYPE8UNSYNC, MB_REPRES_TYPE8UNSYNCBN, MB_REPRES_TYPE10 };
-
-    @Parameters
-    public static Collection<Object[]> data() {
-        // We could use @Theories and @Datapoints but the theory stops as soon
-        // as there is a failure. With parameters, we have feedback for all
-        // scenarii.
-        Collection<Object[]> data = new ArrayList<>();
-        for (Representation copyRep : MB_ALL_REPRESENTATIONS) {
-            data.add(new Object[] { copyRep });
-        }
-        return data;
-    }
 
     /**
      * Constructor for parameterized test.
@@ -116,8 +61,38 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest extend
      *            the zoom data to set for format application in the current scenario
      * @throws Exception
      */
-    public MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest(Representation representationToCopyFormat) throws Exception {
+    public MappingBasedSiriusFormatDataManagerExistingTargetDiagramDiffSessionTest(Representation representationToCopyFormat) throws Exception {
         super(representationToCopyFormat);
+    }
+
+    protected Session targetSession;
+
+    protected EObject targetSemanticModel;
+
+    protected EObject targetSemanticTargetModel;
+
+    /** Name of the file containing the session target mapped elements */
+    protected static final String SESSION_TARGET_MODEL_NAME = "My2.aird";
+
+    @Override
+    @Before
+    public void setUp() throws Exception {
+
+        genericSetUp(getSemanticTargetModelPaths(), getModelerPathAsList(), getSessionTargetModelPath());
+
+        targetSession = session;
+        targetSemanticModel = semanticModel;
+        targetSemanticTargetModel = getModelFromPath(getSemanticTargetModelPaths().get(0), targetSession);
+
+        super.setUp();
+    }
+
+    protected List<String> getSemanticTargetModelPaths() {
+        return Collections.singletonList(PLUGIN_PATH + getPlatformRelatedDataPath() + getSemanticTargetModelName());
+    }
+
+    protected String getSessionTargetModelPath() {
+        return PLUGIN_PATH + getPlatformRelatedDataPath() + SESSION_TARGET_MODEL_NAME;
     }
 
     /**
@@ -170,27 +145,86 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest extend
         assertTrue("Found differences : \n" + differences, differences.length() == 0);
     }
 
+    /**
+     * Compute configuration for source to target EObjects mapping. Uses all the source model elements.
+     * 
+     * @return
+     */
+    protected MappingBasedTestConfiguration getFullTestConfiguration() {
+        Map<String, String> full_map = new HashMap<String, String>();
+        full_map.put("//p1", "//targetp1");
+        full_map.put("//p1/C1-1", "//targetp1/targetC1-1");
+        full_map.put("//p1/C1-1/aC1-2", "//targetp1/targetC1-1/targetaC1-2");
+        full_map.put("//p1/C1-1/aC1-2/@eGenericType", "//targetp1/targetC1-1/targetaC1-2/@eGenericType");
+        full_map.put("//p1/C1-1/aC1-1-1", "//targetp1/targetC1-1/targetaC1-1-1");
+        full_map.put("//p1/C1-1/aC1-1-1/@eGenericType", "//targetp1/targetC1-1/targetaC1-1-1/@eGenericType");
+        full_map.put("//p1/C1-2", "//targetp1/targetC1-2");
+        full_map.put("//p1/C1-3", "//targetp1/targetC1-3");
+        full_map.put("//p1/C1-3/m1", "//targetp1/targetC1-3/targetm1");
+        full_map.put("//p1/p1-1", "//targetp1/targetp1-1");
+        full_map.put("//p1/p1-1/C1-1-1", "//targetp1/targetp1-1/targetC1-1-1");
+        full_map.put("//p1/p1-1/C1-1-1/m1", "//targetp1/targetp1-1/targetC1-1-1/targetm1");
+        full_map.put("//p1/p1-1/C1-1-2", "//targetp1/targetp1-1/targetC1-1-2");
+        full_map.put("//p1/p1-2", "//targetp1/targetp1-2");
+        full_map.put("//p1/p1-2/C1-2-1", "//targetp1/targetp1-2/targetC1-2-1");
+        full_map.put("//p1/p1-3", "//targetp1/targetp1-3");
+        full_map.put("//p2", "//targetp2");
+        full_map.put("//p2/p2-1", "//targetp2/targetp2-1");
+        full_map.put("//p2/p2-1/new%20EClass%201", "//targetp2/targetp2-1/targetnew%20EClass%201");
+        full_map.put("//p2/p2-1/new%20EClass%201/m1", "//targetp2/targetp2-1/targetnew%20EClass%201/targetm1");
+        full_map.put("//p2/p2-2", "//targetp2/targetp2-2");
+        full_map.put("//p3", "//targetp3");
+        full_map.put("//p4", "//targetp4");
+
+        return new MappingBasedTestConfiguration(semanticModel, targetSemanticTargetModel, full_map, null, "full");
+    }
+
+    /**
+     * Compute configuration for source to target EObjects mapping. Uses a subset of the source model elements.
+     * 
+     * @return
+     */
+    @Override
+    protected MappingBasedTestConfiguration getSubsetTestConfiguration() {
+        Map<String, String> subset_map = new HashMap<String, String>();
+        subset_map.put("//p1", "//targetp1");
+        subset_map.put("//p1/C1-1", "//targetp1/targetC1-1");
+        subset_map.put("//p1/C1-1/aC1-1-1", "//targetp1/targetC1-1/targetaC1-1-1");
+        subset_map.put("//p1/C1-1/aC1-1-1/@eGenericType", "//targetp1/targetC1-1/targetaC1-1-1/@eGenericType");
+        subset_map.put("//p1/C1-2", "//targetp1/targetC1-2");
+        subset_map.put("//p1/p1-1", "//targetp1/targetp1-1");
+        subset_map.put("//p1/p1-1/C1-1-1", "//targetp1/targetp1-1/targetC1-1-1");
+        subset_map.put("//p1/p1-1/C1-1-1/m1", "//targetp1/targetp1-1/targetC1-1-1/targetm1");
+        subset_map.put("//p2", "//targetp2");
+        subset_map.put("//p2/p2-1", "//targetp2/targetp2-1");
+        subset_map.put("//p2/p2-1/new%20EClass%201", "//targetp2/targetp2-1/targetnew%20EClass%201");
+        subset_map.put("//p2/p2-2", "//targetp2/targetp2-2");
+        subset_map.put("//p4", "//targetp4");
+
+        return new MappingBasedTestConfiguration(semanticModel, targetSemanticTargetModel, subset_map, null, "subset");
+    }
     protected void applyPredefinedFormatDataOnRawDiagrams(Diagram diagramToCopyFormat, Diagram diagramToPasteFormat, Configuration configuration, StringBuilder differences,
             MappingBasedTestConfiguration mapTestConfiguration) throws Exception {
 
-        List<DRepresentationDescriptor> allDDiagramDescriptors = getRepresentationDescriptors(representationToCopyFormat.name, session).stream().collect(Collectors.toList());
+        List<DRepresentationDescriptor> allSourceDDiagramDescriptors = getRepresentationDescriptors(representationToCopyFormat.name, session).stream().collect(Collectors.toList());
         DRepresentationDescriptor dRepresentationDescriptorToFind = ViewpointFactory.eINSTANCE.createDRepresentationDescriptor();
         dRepresentationDescriptorToFind.setName(diagramToCopyFormat.name);
-        Collections.sort(allDDiagramDescriptors, USING_NAME);
-        final int search = Collections.binarySearch(allDDiagramDescriptors, dRepresentationDescriptorToFind, USING_NAME);
+        Collections.sort(allSourceDDiagramDescriptors, USING_NAME);
+        final int search = Collections.binarySearch(allSourceDDiagramDescriptors, dRepresentationDescriptorToFind, USING_NAME);
 
         assertTrue("Source Diagram " + dRepresentationDescriptorToFind.getName() + " is not found in representation", search > -1);
 
-        final DDiagram dDiagram = (DDiagram) allDDiagramDescriptors.get(search).getRepresentation();
+        final DDiagram dDiagram = (DDiagram) allSourceDDiagramDescriptors.get(search).getRepresentation();
         Collection<DiagramEditPart> sourceDiagramEditParts = getDiagramEditPart(session, dDiagram);
 
+        List<DRepresentationDescriptor> allTargetDDiagramDescriptors = getRepresentationDescriptors(representationToCopyFormat.name, targetSession).stream().collect(Collectors.toList());
         dRepresentationDescriptorToFind.setName(diagramToPasteFormat.name);
-        final int searchTarget = Collections.binarySearch(allDDiagramDescriptors, dRepresentationDescriptorToFind, USING_NAME);
+        final int searchTarget = Collections.binarySearch(allTargetDDiagramDescriptors, dRepresentationDescriptorToFind, USING_NAME);
 
         assertTrue("Target Diagram " + dRepresentationDescriptorToFind.getName() + " is not found in representation", searchTarget > -1);
 
-        final DDiagram targetdDiagram = (DDiagram) allDDiagramDescriptors.get(searchTarget).getRepresentation();
-        Collection<DiagramEditPart> targetDiagramEditParts = getDiagramEditPart(session, targetdDiagram);
+        final DDiagram targetdDiagram = (DDiagram) allTargetDDiagramDescriptors.get(searchTarget).getRepresentation();
+        Collection<DiagramEditPart> targetDiagramEditParts = getDiagramEditPart(targetSession, targetdDiagram);
 
         if (!sourceDiagramEditParts.isEmpty() && !targetDiagramEditParts.isEmpty()) {
             final DiagramEditPart sourceDiagramEditPart = sourceDiagramEditParts.stream().findFirst().get();
@@ -216,7 +250,8 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest extend
                             exportDiagramToTempFolder(diagramMappingName + "_from_raw", targetdDiagram);
                         }
                         // Update diagram, but transaction will be rollbacked
-                        DDiagram newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnDiagram(session, (DDiagram) getDRepresentation(sourceDiagramEditPart), map, session,
+                        DDiagram newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnDiagram(session, (DDiagram) getDRepresentation(sourceDiagramEditPart), map,
+                                targetSession,
                                 (DDiagram) getDRepresentation(targetDiagramEditPart), false);
                         newManager.storeFormatData(targetDiagramEditPart);
 

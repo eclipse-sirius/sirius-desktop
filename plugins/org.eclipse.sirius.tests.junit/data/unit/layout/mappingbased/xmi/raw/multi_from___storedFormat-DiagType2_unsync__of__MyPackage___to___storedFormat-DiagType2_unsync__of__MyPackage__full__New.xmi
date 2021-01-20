@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ASCII"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:formatdata="http://www.eclipse.org/sirius/dsl/formatdata/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0">
   <formatdata:NodeFormatData id="//targetp1" width="913" height="303">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_KHYacR3vEeuk5t3A32Nisg" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_YmzXgWfUEeufp-JGtxGT7w" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@containerMappings[name='DT2_Package']/@style"/>
     </siriusStyle>
@@ -98,7 +98,7 @@
     <location/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp1/targetC1-1" width="58" height="48">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_KHZolR3vEeuk5t3A32Nisg" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_Ymz-nWfUEeufp-JGtxGT7w" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@containerMappings[name='DT2_Package']/@subContainerMappings[name='DT2_Class']/@style"/>
     </siriusStyle>
@@ -115,10 +115,10 @@
       <label id="//targetp1/targetC1-1/targetaC1-2" width="-1" height="-1">
         <location y="-10"/>
       </label>
-      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_KHZolh3vEeuk5t3A32Nisg">
+      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_Ymz-nmfUEeufp-JGtxGT7w">
         <customFeatures>uid</customFeatures>
         <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@edgeMappings[name='DT2_EReference']/@style"/>
-        <centerLabelStyle uid="_KHZolx3vEeuk5t3A32Nisg" showIcon="false"/>
+        <centerLabelStyle uid="_Ymz-n2fUEeufp-JGtxGT7w" showIcon="false"/>
       </siriusStyle>
       <gmfView xsi:type="notation:Edge" type="4001">
         <children type="6001">
@@ -145,10 +145,10 @@
       <label id="//targetp1/targetC1-1/targetaC1-1-1" width="-1" height="-1">
         <location x="3" y="10"/>
       </label>
-      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_KHZomB3vEeuk5t3A32Nisg">
+      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_Ymz-oGfUEeufp-JGtxGT7w">
         <customFeatures>uid</customFeatures>
         <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@edgeMappings[name='DT2_EReference']/@style"/>
-        <centerLabelStyle uid="_KHZomR3vEeuk5t3A32Nisg" showIcon="false"/>
+        <centerLabelStyle uid="_Ymz-oWfUEeufp-JGtxGT7w" showIcon="false"/>
       </siriusStyle>
       <gmfView xsi:type="notation:Edge" type="4001">
         <children type="6001">
@@ -178,10 +178,10 @@
     <label id="//targetp1/targetC1-1/targetaC1-1-1" width="-1" height="-1">
       <location x="3" y="10"/>
     </label>
-    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_KHa2tR3vEeuk5t3A32Nisg">
+    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_Ym0lsWfUEeufp-JGtxGT7w">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@edgeMappings[name='DT2_EReference']/@style"/>
-      <centerLabelStyle uid="_KHa2th3vEeuk5t3A32Nisg" showIcon="false"/>
+      <centerLabelStyle uid="_Ym0lsmfUEeufp-JGtxGT7w" showIcon="false"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Edge" type="4001">
       <children type="6001">
@@ -209,10 +209,10 @@
     <label id="//targetp1/targetC1-1/targetaC1-2" width="-1" height="-1">
       <location y="-10"/>
     </label>
-    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_KHa2tx3vEeuk5t3A32Nisg">
+    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_Ym0ls2fUEeufp-JGtxGT7w">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@edgeMappings[name='DT2_EReference']/@style"/>
-      <centerLabelStyle uid="_KHa2uB3vEeuk5t3A32Nisg" showIcon="false"/>
+      <centerLabelStyle uid="_Ym0ltGfUEeufp-JGtxGT7w" showIcon="false"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Edge" type="4001">
       <children type="6001">
@@ -236,7 +236,7 @@
     <targetRefPoint x="558" y="74"/>
   </formatdata:EdgeFormatData>
   <formatdata:NodeFormatData id="//targetp1/targetC1-2" width="158" height="70">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_KHaPoB3vEeuk5t3A32Nisg" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_Ymz-omfUEeufp-JGtxGT7w" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@containerMappings[name='DT2_Package']/@subContainerMappings[name='DT2_Class']/@style"/>
     </siriusStyle>
@@ -252,7 +252,7 @@
     <location x="535" y="35"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp1/targetC1-3" width="63" height="63">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_KHaPoR3vEeuk5t3A32Nisg" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_Ymz-o2fUEeufp-JGtxGT7w" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@containerMappings[name='DT2_Package']/@subContainerMappings[name='DT2_Class']/@style"/>
     </siriusStyle>
@@ -268,7 +268,7 @@
     <location x="35" y="35"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp1/targetp1-1" width="251" height="113">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_KHaPoh3vEeuk5t3A32Nisg" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_Ymz-pGfUEeufp-JGtxGT7w" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@containerMappings[name='DT2_Package']/@style"/>
     </siriusStyle>
@@ -302,7 +302,7 @@
     <location x="397" y="120"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp1/targetp1-1/targetC1-1-1" width="110" height="60">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_KHaPpR3vEeuk5t3A32Nisg" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_Ym0lomfUEeufp-JGtxGT7w" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@containerMappings[name='DT2_Package']/@subContainerMappings[name='DT2_Class']/@style"/>
     </siriusStyle>
@@ -318,7 +318,7 @@
     <location x="16" y="33"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp1/targetp1-1/targetC1-1-2" width="70" height="50">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_KHaPph3vEeuk5t3A32Nisg" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_Ym0lo2fUEeufp-JGtxGT7w" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@containerMappings[name='DT2_Package']/@subContainerMappings[name='DT2_Class']/@style"/>
     </siriusStyle>
@@ -334,7 +334,7 @@
     <location x="156" y="33"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp1/targetp1-2" width="158" height="92">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_KHaPpx3vEeuk5t3A32Nisg" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_Ym0lpGfUEeufp-JGtxGT7w" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@containerMappings[name='DT2_Package']/@style"/>
     </siriusStyle>
@@ -359,7 +359,7 @@
     <location x="115" y="36"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp1/targetp1-2/targetC1-2-1" width="73" height="53">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_KHaPqR3vEeuk5t3A32Nisg" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_Ym0lpmfUEeufp-JGtxGT7w" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@containerMappings[name='DT2_Package']/@subContainerMappings[name='DT2_Class']/@style"/>
     </siriusStyle>
@@ -375,7 +375,7 @@
     <location x="35" y="24"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp1/targetp1-3" width="160" height="78">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_KHaPqh3vEeuk5t3A32Nisg" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_Ym0lp2fUEeufp-JGtxGT7w" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@containerMappings[name='DT2_Package']/@style"/>
     </siriusStyle>
@@ -391,7 +391,7 @@
     <location x="300" y="80"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp2" width="388" height="153">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_KHaPqx3vEeuk5t3A32Nisg" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_Ym0lqGfUEeufp-JGtxGT7w" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@containerMappings[name='DT2_Package']/@style"/>
     </siriusStyle>
@@ -434,7 +434,7 @@
     <location x="55" y="255"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp2/targetp2-1" width="163" height="98">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_KHa2sB3vEeuk5t3A32Nisg" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_Ym0lrGfUEeufp-JGtxGT7w" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@containerMappings[name='DT2_Package']/@style"/>
     </siriusStyle>
@@ -459,7 +459,7 @@
     <location x="35" y="35"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp2/targetp2-1/targetnew%20EClass%201" width="103" height="53">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_KHa2sh3vEeuk5t3A32Nisg" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_Ym0lrmfUEeufp-JGtxGT7w" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@containerMappings[name='DT2_Package']/@subContainerMappings[name='DT2_Class']/@style"/>
     </siriusStyle>
@@ -475,7 +475,7 @@
     <location x="35" y="35"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp2/targetp2-2" width="160" height="78">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_KHa2sx3vEeuk5t3A32Nisg" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_Ym0lr2fUEeufp-JGtxGT7w" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@containerMappings[name='DT2_Package']/@style"/>
     </siriusStyle>
@@ -491,7 +491,7 @@
     <location x="205" y="35"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp3" width="158" height="83">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_KHa2tB3vEeuk5t3A32Nisg" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_Ym0lsGfUEeufp-JGtxGT7w" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@containerMappings[name='DT2_Package']/@style"/>
     </siriusStyle>
@@ -507,7 +507,7 @@
     <location x="550" y="255"/>
   </formatdata:NodeFormatData>
   <formatdata:NodeFormatData id="//targetp4" width="163" height="83">
-    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_KHYacB3vEeuk5t3A32Nisg" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
+    <siriusStyle xsi:type="diagram:FlatContainerStyle" uid="_YmzXgGfUEeufp-JGtxGT7w" labelSize="10" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType2_unsync']/@containerMappings[name='DT2_Package']/@style"/>
     </siriusStyle>

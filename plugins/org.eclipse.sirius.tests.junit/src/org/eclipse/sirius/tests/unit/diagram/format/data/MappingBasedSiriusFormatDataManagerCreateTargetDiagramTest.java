@@ -80,12 +80,16 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest extends 
 
     protected static final Representation MB_REPRES_TYPE8UNSYNC = new Representation("DiagType8_unsync", MB_DIAG_TYPE8UNSYNC_MYPACKAGE);
 
+    protected static final Diagram MB_DIAG_TYPE8UNSYNCBN_MYPACKAGE = new Diagram("DiagType8_unsyncBN of MyPackage", 12, 0);
+
+    protected static final Representation MB_REPRES_TYPE8UNSYNCBN = new Representation("DiagType8_unsync_onlyBN", MB_DIAG_TYPE8UNSYNCBN_MYPACKAGE);
+
     protected static final Diagram MB_DIAG_TYPE11_MYPACKAGE = new Diagram("DiagType11 of MyPackage", 16, 2);
 
     protected static final Representation MB_REPRES_TYPE11 = new Representation("DiagType11", MB_DIAG_TYPE11_MYPACKAGE);
 
     protected static final Representation[] MB_ALL_REPRESENTATIONS = {
-            MB_REPRES_TYPE2, MB_REPRES_TYPE2_FILTERS, MB_REPRES_TYPE2UNSYNC, MB_REPRES_TYPE2UNSYNC_EDGE, MB_REPRES_TYPE8, MB_REPRES_TYPE8UNSYNC, MB_REPRES_NOTES_TYPE2,
+            MB_REPRES_TYPE2, MB_REPRES_TYPE2_FILTERS, MB_REPRES_TYPE2UNSYNC, MB_REPRES_TYPE2UNSYNC_EDGE, MB_REPRES_TYPE8, MB_REPRES_TYPE8UNSYNC, MB_REPRES_TYPE8UNSYNCBN, MB_REPRES_NOTES_TYPE2,
             MB_REPRES_TYPE11 };
 
     public MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest(Representation representationToCopyFormat) throws Exception {
@@ -158,7 +162,7 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest extends 
         assertTrue("Found differences : \n" + differences, differences.length() == 0);
     }
 
-    private void doTestOnNewDiagram(StringBuilder differences, MappingBasedTestConfiguration explicitMappingTestConfiguration, Configuration configuration, boolean includeNotes) {
+    protected void doTestOnNewDiagram(StringBuilder differences, MappingBasedTestConfiguration explicitMappingTestConfiguration, Configuration configuration, boolean includeNotes) {
 
         List<DRepresentationDescriptor> allDDiagramDescriptors = getRepresentationDescriptors(representationToCopyFormat.name, session).stream().collect(Collectors.toList());
         DRepresentationDescriptor dRepresentationDescriptorToFind = ViewpointFactory.eINSTANCE.createDRepresentationDescriptor();
