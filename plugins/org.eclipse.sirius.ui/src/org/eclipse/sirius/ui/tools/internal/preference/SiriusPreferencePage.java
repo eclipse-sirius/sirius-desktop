@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -36,6 +36,10 @@ import org.eclipse.ui.IWorkbenchPreferencePage;
  * @author ymortier
  */
 public class SiriusPreferencePage extends FieldEditorPreferencePage implements IWorkbenchPreferencePage {
+    /**
+     * Id of the preference page.
+     */
+    public static final String PAGE_ID = "org.eclipse.sirius.ui.page"; //$NON-NLS-1$
 
     /**
      * Label of the check box emptyAirdFragmentOnControl.
@@ -114,11 +118,12 @@ public class SiriusPreferencePage extends FieldEditorPreferencePage implements I
     private void addRefreshFields(Composite parent) {
         Composite refreshComposite = createGroup(parent, Messages.SiriusPreferencePage_refreshGroup);
 
-        refreshOnRepresentationOpening = new BooleanFieldEditor(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), Messages.SiriusPreferencePage_refreshOnRepresentationOpening,
-                new Composite(refreshComposite, SWT.NONE));
+        refreshOnRepresentationOpening = new BooleanFieldEditorWithHelp(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(),
+                Messages.SiriusPreferencePage_refreshOnRepresentationOpening, Messages.SiriusPreferencePage_refreshInfo, new Composite(refreshComposite, SWT.NONE));
         addField(refreshOnRepresentationOpening);
 
-        autoRefresh = new BooleanFieldEditor(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), Messages.SiriusPreferencePage_autoRefresh, new Composite(refreshComposite, SWT.NONE));
+        autoRefresh = new BooleanFieldEditorWithHelp(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), Messages.SiriusPreferencePage_autoRefresh, Messages.SiriusPreferencePage_refreshInfo,
+                new Composite(refreshComposite, SWT.NONE));
         addField(autoRefresh);
     }
 

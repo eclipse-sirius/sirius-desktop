@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2020 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -1041,6 +1041,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SiriusPreferencePage_refreshGroup;
+
+    @TranslatableMessage
+    public static String SiriusPreferencePage_refreshInfo;
 
     @TranslatableMessage
     public static String SiriusPreferencePage_refreshOnRepresentationOpening;

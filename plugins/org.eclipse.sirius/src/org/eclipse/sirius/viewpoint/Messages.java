@@ -582,10 +582,13 @@ public final class Messages {
     public static String SiriusControlCommand_controlResourceMsg;
 
     @TranslatableMessage
-    public static String SiriusRepairProcess_errorMsg;
+    public static String SiriusPreferencesImpl_noProjectScope;
 
     @TranslatableMessage
     public static String SiriusRepairProcess_contributionInstantationErrorMsg;
+
+    @TranslatableMessage
+    public static String SiriusRepairProcess_errorMsg;
 
     @TranslatableMessage
     public static String SiriusRepairProcess_inProgressMsg;

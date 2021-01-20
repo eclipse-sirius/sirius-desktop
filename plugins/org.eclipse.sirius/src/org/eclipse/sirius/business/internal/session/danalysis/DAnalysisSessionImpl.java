@@ -79,6 +79,7 @@ import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionService;
 import org.eclipse.sirius.business.api.session.SessionStatus;
+import org.eclipse.sirius.business.api.session.SiriusPreferences;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelectorService;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
@@ -201,6 +202,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     private ChangeIdUpdaterListener changeIdUpdaterListener;
 
     private final String id;
+
+    private SiriusPreferences siriusPreferences;
 
     /**
      * Listener that clears the sub diagram decoration descriptors when a {@link DRepresentation} is either created or
@@ -1717,5 +1720,13 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             siriusReferenceFinder = new SiriusReferenceFinderImpl(this);
         }
         return siriusReferenceFinder;
+    }
+
+    @Override
+    public SiriusPreferences getSiriusPreferences() {
+        if (siriusPreferences == null) {
+            siriusPreferences = new SiriusPreferencesImpl(this);
+        }
+        return siriusPreferences;
     }
 }

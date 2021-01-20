@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
@@ -245,6 +246,21 @@ public class DRepresentationQuery {
             }
         }
         return result;
+    }
+
+    /**
+     * Gives the value of the preference {@link SiriusPreferencesKeys}.PREF_AUTO_REFRESH for this representation.
+     * 
+     * @return the value
+     */
+    public boolean isAutoRefresh() {
+        if (session == null) {
+            session = Session.of(representation).get();
+        }
+        if (session != null) {
+            return session.getSiriusPreferences().isAutoRefresh();
+        }
+        return false;
     }
 
 }
