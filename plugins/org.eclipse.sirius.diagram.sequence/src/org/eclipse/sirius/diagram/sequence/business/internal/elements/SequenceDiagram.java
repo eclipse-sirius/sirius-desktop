@@ -464,7 +464,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         LinkedHashSet<State> allOrderedStates = null;
         if (useCache) {
             // Initialize from cache
-            if (allOperandsCache != null) {
+            if (allStatesCache != null) {
                 allStates = Lists.newArrayList(allStatesCache);
             }
             allOrderedStates = allOrderedStatesCache;
@@ -502,7 +502,7 @@ public class SequenceDiagram extends AbstractSequenceElement {
         LinkedHashSet<AbstractFrame> allOrderedFrames = null;
         if (useCache) {
             // Initialize from cache
-            if (allExecutionsCache != null) {
+            if (allFramesCache != null) {
                 allFrames = Lists.newArrayList(allFramesCache);
             }
             allOrderedFrames = allOrderedFramesCache;
