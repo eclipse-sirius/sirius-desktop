@@ -19,14 +19,11 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ProjectScope;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.core.runtime.preferences.ConfigurationScope;
-import org.eclipse.core.runtime.preferences.DefaultScope;
 import org.eclipse.core.runtime.preferences.IEclipsePreferences;
-import org.eclipse.core.runtime.preferences.IScopeContext;
-import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.SiriusPreferences;
+import org.eclipse.sirius.business.internal.preferences.PreferenceHelper;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.osgi.service.prefs.BackingStoreException;
@@ -63,7 +60,7 @@ public class SiriusPreferencesImpl implements SiriusPreferences {
 
     @Override
     public boolean isAutoRefresh() {
-        Boolean preference = getPreference(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), Boolean.class);
+        Boolean preference = PreferenceHelper.getPreference(projectScope, SiriusPlugin.ID, sessionId, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), Boolean.class);
 
         return preference.booleanValue();
     }
@@ -102,7 +99,7 @@ public class SiriusPreferencesImpl implements SiriusPreferences {
 
     @Override
     public boolean isRefreshOnRepresentationOpening() {
-        Boolean preference = getPreference(ORG_ECLIPSE_SIRIUS_UI_PLUGIN_ID, PREF_REFRESH_ON_REPRESENTATION_OPENING, Boolean.class);
+        Boolean preference = PreferenceHelper.getPreference(projectScope, ORG_ECLIPSE_SIRIUS_UI_PLUGIN_ID, sessionId, PREF_REFRESH_ON_REPRESENTATION_OPENING, Boolean.class);
 
         return preference.booleanValue();
     }
@@ -137,45 +134,5 @@ public class SiriusPreferencesImpl implements SiriusPreferences {
         } catch (IllegalStateException | BackingStoreException e) {
             SiriusPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, SiriusPlugin.ID, e.getMessage(), e));
         }
-    }
-
-    @SuppressWarnings("unchecked")
-    private <T> T getPreference(String qualifier, String preferenceKey, Class<T> preferenceType) {
-        IScopeContext[] contexts;
-        contexts = new IScopeContext[] { projectScope, InstanceScope.INSTANCE, ConfigurationScope.INSTANCE, DefaultScope.INSTANCE };
-
-        String value = null;
-
-        // The qualifier of the ProjectScope is suffixed with the session uid.
-        if (contexts[0] != null) {
-            value = getValueFromScope(contexts[0], qualifier + sessionId, preferenceKey);
-        }
-        if (value == null) {
-            for (int i = 1; i < contexts.length; ++i) {
-                value = getValueFromScope(contexts[i], qualifier, preferenceKey);
-                if (value != null) {
-                    break;
-                }
-            }
-        }
-
-        if (value != null) {
-            if (preferenceType.equals(Boolean.class)) {
-                return (T) Boolean.valueOf(value);
-            }
-        }
-        return null;
-    }
-
-    private String getValueFromScope(IScopeContext scope, String qualifier, String preferenceKey) {
-        String value = scope.getNode(qualifier).get(preferenceKey, null);
-        if (value != null) {
-            value = value.trim();
-            if (!value.isEmpty()) {
-                return value;
-            }
-        }
-
-        return null;
     }
 }

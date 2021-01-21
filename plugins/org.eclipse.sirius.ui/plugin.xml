@@ -651,4 +651,14 @@
 			markerType="org.eclipse.sirius.modelingMarker">
 		</markerResolutionGenerator>
 	</extension>
+   <extension
+     point = "org.eclipse.ui.propertyPages">
+        <page
+           id="org.eclipse.sirius.ui.SiriusPreferencesPropertyPage"
+           name="%property.page.preferences.name"
+	   objectClass="org.eclipse.core.resources.IFile"
+	   class="org.eclipse.sirius.ui.business.internal.preference.SiriusPreferencesPropertyPage"
+           nameFilter="*.aird">
+        </page>
+   </extension>
 </plugin>

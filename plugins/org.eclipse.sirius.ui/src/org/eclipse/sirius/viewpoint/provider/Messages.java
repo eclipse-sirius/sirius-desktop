@@ -1052,6 +1052,12 @@ public final class Messages {
     public static String SiriusPreferencePage_autoSessionEditorOpening;
 
     @TranslatableMessage
+    public static String SiriusPreferencesPropertyPage_enableProjectSpecificSettings;
+
+    @TranslatableMessage
+    public static String SiriusPreferencesPropertyPage_configureWorkspaceSettings;
+
+    @TranslatableMessage
     public static String SiriusRepresentationWithInactiveStatusLabelProvider_viewpointItem_tooltip;
 
     @TranslatableMessage
