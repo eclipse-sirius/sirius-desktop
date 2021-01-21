@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,13 +16,11 @@ import java.lang.reflect.InvocationTargetException;
 import java.text.MessageFormat;
 
 import org.eclipse.core.runtime.IProgressMonitor;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tree.DTreeItem;
@@ -31,7 +29,6 @@ import org.eclipse.sirius.tree.business.internal.dialect.common.tree.TreeRefresh
 import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.GlobalContext;
 import org.eclipse.sirius.tree.business.internal.helper.RefreshTreeElementTask;
 import org.eclipse.sirius.tree.ui.provider.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Refresh tree elements when a SWT TreeItem is expanded.
@@ -82,7 +79,7 @@ public class ExpandDTreeItemRunnableWithProgress implements IRunnableWithProgres
                 monitor.beginTask(Messages.ExpandDTreeItemRunnableWithProgress_treeItemExpanding, 1);
                 CompoundCommand expandDTreeItemCmd = new CompoundCommand(MessageFormat.format(Messages.ExpandDTreeItemRunnableWithProgress_expandTreeItem, dTreeItem.getName()));
                 expandDTreeItemCmd.append(new DTreeItemExpansionChangeCommand(globalContext, domain, dTreeItem, monitor, true));
-                if (!Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null)) {
+                if (!session.getSiriusPreferences().isAutoRefresh()) {
                     SiriusCommand result = new SiriusCommand(domain);
                     result.getTasks().add(new RefreshTreeElementTask(dTreeItem));
                     expandDTreeItemCmd.append(result);

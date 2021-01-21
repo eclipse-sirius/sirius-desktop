@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,19 +17,18 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.helper.task.DeleteEObjectTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
@@ -78,12 +77,11 @@ public class DeleteDRepresentationElementsTask extends AbstractCompoundTask {
     @Override
     protected List<ICommandTask> prepareSubTasks() {
         /*
-         * Now delete all the DSemanticDecorators corresponding to the semantic
-         * elements
+         * Now delete all the DSemanticDecorators corresponding to the semantic elements
          */
         final List<ICommandTask> tasks = new ArrayList<ICommandTask>();
         EObject root = null;
-        final boolean automaticRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
+        final boolean automaticRefresh = new DRepresentationQuery(new DRepresentationElementQuery(repElt).getParentRepresentation()).isAutoRefresh();
         if (automaticRefresh) {
             root = new EObjectQuery(this.repElt).getDAnalysis();
         } else {
@@ -109,9 +107,8 @@ public class DeleteDRepresentationElementsTask extends AbstractCompoundTask {
     }
 
     /**
-     * This method can be overridden to add Dialect specific additional delete
-     * tasks. A DeleteEObjectTask for the given decorator has already been added
-     * to subtasks.
+     * This method can be overridden to add Dialect specific additional delete tasks. A DeleteEObjectTask for the given
+     * decorator has already been added to subtasks.
      * 
      * @param decorator
      *            the current decorator to delete

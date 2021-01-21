@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,19 +21,17 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Predicate;
 
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.base.Preconditions;
 
@@ -69,7 +67,8 @@ public final class RefreshHelper {
             Object notifier = notification.getNotifier();
             if (notifier instanceof EObject) {
                 EObject eObjectNotifier = (EObject) notifier;
-                if (!alreadyDoneNotifiers.contains(eObjectNotifier) && isImpactingNotification(notification, eObjectNotifier, alreadyDoneNotifiers, notifierWithResource, notifierIsInAirdOrSrmResource)) {
+                if (!alreadyDoneNotifiers.contains(eObjectNotifier)
+                        && isImpactingNotification(notification, eObjectNotifier, alreadyDoneNotifiers, notifierWithResource, notifierIsInAirdOrSrmResource)) {
                     return true;
                 }
             }
@@ -117,32 +116,27 @@ public final class RefreshHelper {
         if (notifierResource != null && !isImpactingNotification && isSpecificImpactingNotification(notification)) {
             // The impacting notification is a graphical one, so if we are in manual refresh, we must add
             // the corresponding representation to the force refresh list
-            if (!isAutoRefresh()) {
-                Option<DRepresentation> optionalDRepresentation = new EObjectQuery(notifier).getRepresentation();
+            Option<DRepresentation> optionalDRepresentation = Options.newNone();
+            Session session = SessionManager.INSTANCE.getExistingSession(notifierResource.getURI());
+            if (session == null) {
+                // Maybe the notifier resource is not the session resource (for example a SRM resource in
+                // Collab), in this case, use a more global session search.
+                optionalDRepresentation = new EObjectQuery(notifier).getRepresentation();
                 if (optionalDRepresentation.some()) {
-                    Session session = SessionManager.INSTANCE.getExistingSession(notifierResource.getURI());
-                    if (session == null) {
-                        // Maybe the notifier resource is not the session resource (for example a SRM resource in
-                        // Collab), in this case, use a more global session search.
-                        session = new EObjectQuery(optionalDRepresentation.get()).getSession();
-                    }
-                    if (session != null) {
-                        session.getRefreshEditorsListener().addRepresentationToForceRefresh(optionalDRepresentation.get());
-                    }
+                    session = new EObjectQuery(optionalDRepresentation.get()).getSession();
+                }
+            }
+            if (session != null && session.getSiriusPreferences().isAutoRefresh()) {
+                if (!optionalDRepresentation.some()) {
+                    optionalDRepresentation = new EObjectQuery(notifier).getRepresentation();
+                }
+                if (optionalDRepresentation.some()) {
+                    session.getRefreshEditorsListener().addRepresentationToForceRefresh(optionalDRepresentation.get());
                 }
             }
             isImpactingNotification = true;
         }
         return isImpactingNotification;
-    }
-
-    /**
-     * Return true if the automatic refresh mode is activated, false otherwise.
-     * 
-     * @return true if the automatic refresh mode is activated, false otherwise.
-     */
-    public static boolean isAutoRefresh() {
-        return Platform.isRunning() && Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,13 +27,11 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.document.IDocumentEditor;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.diagram.ui.tools.api.properties.PropertiesService;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.diagram.modeler.ecore.EcoreModeler;
-import org.eclipse.sirius.tools.api.ui.property.IPropertiesProvider;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -76,15 +74,15 @@ public class EntitiesSpecificEditorTests extends SiriusDiagramTestCase implement
     public void testSessionisCreated() throws Exception {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
-            junit.framework.AssertionFailedError: expected:<0> but was:<1>
-            at junit.framework.Assert.fail(Assert.java:57)
-            at junit.framework.Assert.failNotEquals(Assert.java:329)
-            at junit.framework.Assert.assertEquals(Assert.java:78)
-            at junit.framework.Assert.assertEquals(Assert.java:234)
-            at junit.framework.Assert.assertEquals(Assert.java:241)
-            at junit.framework.TestCase.assertEquals(TestCase.java:409)
-            at org.eclipse.sirius.tests.unit.api.editors.EntitiesSpecificEditorTests.testSessionisCreated(EntitiesSpecificEditorTests.java:75)
-            */
+             * junit.framework.AssertionFailedError: expected:<0> but was:<1> at
+             * junit.framework.Assert.fail(Assert.java:57) at junit.framework.Assert.failNotEquals(Assert.java:329) at
+             * junit.framework.Assert.assertEquals(Assert.java:78) at
+             * junit.framework.Assert.assertEquals(Assert.java:234) at
+             * junit.framework.Assert.assertEquals(Assert.java:241) at
+             * junit.framework.TestCase.assertEquals(TestCase.java:409) at
+             * org.eclipse.sirius.tests.unit.api.editors.EntitiesSpecificEditorTests.testSessionisCreated(
+             * EntitiesSpecificEditorTests.java:75)
+             */
             return;
         }
         assertEquals(0, SessionManager.INSTANCE.getSessions().size());
@@ -101,7 +99,6 @@ public class EntitiesSpecificEditorTests extends SiriusDiagramTestCase implement
         openEditor();
         try {
             DRepresentation representation = ((DialectEditor) editor).getRepresentation();
-            PropertiesService.getInstance().getPropertiesProvider().getProperty(IPropertiesProvider.KEY_AUTO_REFRESH);
             assertEquals(5, representation.getOwnedRepresentationElements().size());
         } finally {
             closeEditor();

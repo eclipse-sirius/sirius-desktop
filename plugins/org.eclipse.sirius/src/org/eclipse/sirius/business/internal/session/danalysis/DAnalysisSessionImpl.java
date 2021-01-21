@@ -1291,7 +1291,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     protected void addRefreshEditorsListener() {
         if (refreshEditorsListeners == null) {
-            refreshEditorsListeners = new RefreshEditorsPrecommitListener(transactionalEditingDomain);
+            refreshEditorsListeners = new RefreshEditorsPrecommitListener(this);
             getEventBroker().addLocalTrigger(RefreshEditorsPrecommitListener.IS_IMPACTING, refreshEditorsListeners);
             this.addListener(refreshEditorsListeners);
         }

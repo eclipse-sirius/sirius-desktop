@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,6 +40,7 @@ import org.eclipse.gmf.runtime.diagram.ui.internal.tools.CompartmentCollapseTrac
 import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalCommand;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -59,7 +60,6 @@ import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IContainerLabelOffsets;
-import org.eclipse.sirius.tools.api.ui.RefreshHelper;
 import org.eclipse.sirius.viewpoint.LabelAlignment;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.Style;
@@ -617,32 +617,31 @@ public class RegionResizableEditPolicy extends AirResizableEditPolicy {
         @SuppressWarnings("restriction")
         @Override
         protected DragTracker createDragTracker() {
-            return new CompartmentCollapseTracker(
-                    (IResizableCompartmentEditPart) getOwner()) {
+            return new CompartmentCollapseTracker((IResizableCompartmentEditPart) getOwner()) {
                 @Override
                 protected Command getCommand(Boolean expand) {
                     Command command = super.getCommand(expand);
                     CompoundCommand commandPlusForceRefresh = new CompoundCommand(command.getLabel());
                     // If we are in manual refresh, add a new command to force the refresh of the current diagram.
-                    if (!RefreshHelper.isAutoRefresh()) {
-                        commandPlusForceRefresh.add(new Command() {
-                            @Override
-                            public void execute() {
-                                Optional<DDiagram> optionalDDiagram = new org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery(regionPart).getDDiagram();
-                                if (optionalDDiagram.isPresent()) {
+                    Optional<DDiagram> optionalDDiagram = new org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery(regionPart).getDDiagram();
+                    if (optionalDDiagram.isPresent()) {
+                        if (!new DRepresentationQuery(optionalDDiagram.get()).isAutoRefresh()) {
+                            commandPlusForceRefresh.add(new Command() {
+                                @Override
+                                public void execute() {
                                     Session session = SessionManager.INSTANCE.getSession(optionalDDiagram.get());
                                     if (session != null) {
                                         // Set the RefreshEditorsListener in forceRefresh mode
                                         session.getRefreshEditorsListener().setForceRefresh(true);
                                     }
                                 }
-                            }
 
-                            @Override
-                            public void undo() {
-                                execute();
-                            }
-                        });
+                                @Override
+                                public void undo() {
+                                    execute();
+                                }
+                            });
+                        }
                     }
                     commandPlusForceRefresh.add(command);
                     return commandPlusForceRefresh;

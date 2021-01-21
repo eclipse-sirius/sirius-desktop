@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ package org.eclipse.sirius.tests.unit.common;
 import java.util.Collection;
 import java.util.Collections;
 
+import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.emf.common.command.Command;
@@ -33,6 +34,8 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.ext.base.Option;
@@ -47,8 +50,8 @@ import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import junit.framework.TestCase;
 
 /**
- * Test that {@link RefreshEditorsPrecommitListener} return a {@link Command} to
- * refresh a {@link DRepresentation} only on semantic change notification.
+ * Test that {@link RefreshEditorsPrecommitListener} return a {@link Command} to refresh a {@link DRepresentation} only
+ * on semantic change notification.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -76,14 +79,16 @@ public class RefreshEditorsPrecommitListenerTests extends TestCase {
     protected void setUp() throws Exception {
         super.setUp();
 
-        domain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
-        refreshEditorsPrecommitListener = new RefreshEditorsPrecommitListener(domain);
-
-        resourceSet = domain.getResourceSet();
         sessionResourceURI = URI.createPlatformPluginURI(SiriusTestsPlugin.PLUGIN_ID + PATH + "vp1753.aird", true);
         semanticResourceURI = URI.createPlatformPluginURI(SiriusTestsPlugin.PLUGIN_ID + PATH + "vp1753.ecore", true);
+        Session session = SessionManager.INSTANCE.getSession(sessionResourceURI, new NullProgressMonitor());
+        domain = session.getTransactionalEditingDomain();
+
+        resourceSet = domain.getResourceSet();
 
         sessionResource = resourceSet.getResource(sessionResourceURI, true);
+
+        refreshEditorsPrecommitListener = new RefreshEditorsPrecommitListener(session);
 
         final DRepresentation firstDRepresentation = getFirstElement(sessionResource, DRepresentation.class);
         refreshFilterStub = new RefreshFilterStub(firstDRepresentation);
@@ -94,8 +99,7 @@ public class RefreshEditorsPrecommitListenerTests extends TestCase {
     }
 
     /**
-     * Test that no refresh command is returned by the
-     * {@link RefreshEditorsPrecommitListener} when it receives a
+     * Test that no refresh command is returned by the {@link RefreshEditorsPrecommitListener} when it receives a
      * {@link DRepresentationElement} change notification.
      */
     public void testNoRefreshOnDRepresentationElementChangeNotification() {
@@ -112,9 +116,8 @@ public class RefreshEditorsPrecommitListenerTests extends TestCase {
     }
 
     /**
-     * Test that no refresh command is returned by the
-     * {@link RefreshEditorsPrecommitListener} when it receives a GMF notation
-     * model change notification.
+     * Test that no refresh command is returned by the {@link RefreshEditorsPrecommitListener} when it receives a GMF
+     * notation model change notification.
      */
     public void testNoRefreshOnGMFNodeChangeNotification() {
         // 1. Create a Notification for theRefreshEditorsPrecommitListener
@@ -129,9 +132,8 @@ public class RefreshEditorsPrecommitListenerTests extends TestCase {
     }
 
     /**
-     * Test that a refresh command is returned by the
-     * {@link RefreshEditorsPrecommitListener} when it receives a semantic
-     * change notification.
+     * Test that a refresh command is returned by the {@link RefreshEditorsPrecommitListener} when it receives a
+     * semantic change notification.
      */
     public void testRefreshOnSemanticChangeNotification() {
         // 1. Create a Notification for theRefreshEditorsPrecommitListener
@@ -166,10 +168,12 @@ public class RefreshEditorsPrecommitListenerTests extends TestCase {
             this.dRepresentation = dRepresentation;
         }
 
+        @Override
         public boolean shouldRefresh(DRepresentation representation) {
             return true;
         }
 
+        @Override
         public Collection<DRepresentation> getOpenedRepresantationsToRefresh() {
             return Collections.singletonList(dRepresentation);
         }

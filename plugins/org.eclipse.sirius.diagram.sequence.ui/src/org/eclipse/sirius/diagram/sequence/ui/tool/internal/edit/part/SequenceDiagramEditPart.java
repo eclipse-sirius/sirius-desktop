@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.util.IPropertyChangeListener;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionEventBroker;
@@ -55,16 +56,15 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.Sequence
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceZOrderingRefresher;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.diagram.ui.business.api.query.EditPartQuery;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.ContainerCreationEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabel;
 import org.eclipse.sirius.diagram.ui.graphical.figures.OverlayLabelsDrawerFigure;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
-import org.eclipse.sirius.diagram.ui.tools.api.properties.PropertiesService;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.part.DDiagramRootEditPart;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.tools.api.ui.property.IPropertiesProvider;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 
 import com.google.common.base.Predicate;
@@ -231,9 +231,9 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
          * Once the diagram (and all its children) is active, refresh the various ordering. This is especially needed
          * when creating/opening a diagram as some commands need a properly initialized graphically ordering to work.
          */
-        boolean autoRefresh = PropertiesService.getInstance().getPropertiesProvider().getProperty(IPropertiesProvider.KEY_AUTO_REFRESH);
         boolean refreshOnOpen = DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening();
         Diagram diagramView = getDiagramView();
+        boolean autoRefresh = new DRepresentationQuery(new EditPartQuery(this).getDDiagram().get()).isAutoRefresh();
         getEditingDomain().getCommandStack().execute(new RefreshLayoutCommand(getEditingDomain(), diagramView, autoRefresh || refreshOnOpen));
         getEditingDomain().addResourceSetListener(semanticOrderingSynchronizer);
         getEditingDomain().addResourceSetListener(refreshZorder);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,6 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.notify.Notification;
@@ -26,8 +25,8 @@ import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.internal.dialect.command.RefreshImpactedElementsCommand;
 import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger;
@@ -36,16 +35,14 @@ import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilterManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A listener to refresh all Sirius opened editors. It is used as :
  * <UL>
  * <LI>precommit listener (a model change trigger of the
- * {@link org.eclipse.sirius.business.api.session.SessionEventBroker}) : on
- * semantic modifications (with localChangesAboutToCommit())</LI>
- * <LI>session listener : on reloading of resources detecting by the session
- * itself (with notify())</LI>
+ * {@link org.eclipse.sirius.business.api.session.SessionEventBroker}) : on semantic modifications (with
+ * localChangesAboutToCommit())</LI>
+ * <LI>session listener : on reloading of resources detecting by the session itself (with notify())</LI>
  * </UL>
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
@@ -58,11 +55,9 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
     public static final int REFRESH_EDITOR_PRIORITY = DanglingRefRemovalTrigger.DANGLING_REFERENCE_REMOVAL_PRIORITY + 1;
 
     /**
-     * Filter {@link Notification}s which are not touch. More filtering work is
-     * done later in localChangesAboutToCommit, see
-     * isImpactingNotification(Collection<Notification>) which return true as
-     * soon as an impacting notification is found. This is not done here for
-     * performance reason: we need the container resource of the notifier.
+     * Filter {@link Notification}s which are not touch. More filtering work is done later in localChangesAboutToCommit,
+     * see isImpactingNotification(Collection<Notification>) which return true as soon as an impacting notification is
+     * found. This is not done here for performance reason: we need the container resource of the notifier.
      */
     public static final NotificationFilter IS_IMPACTING = new NotificationFilter.Custom() {
         @Override
@@ -77,8 +72,12 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
     TransactionalEditingDomain transactionalEditingDomain;
 
     /**
-     * True if this listener must launch a refresh even if the autoRefresh is
-     * off.
+     * The session.
+     */
+    Session session;
+
+    /**
+     * True if this listener must launch a refresh even if the autoRefresh is off.
      */
     private boolean forceRefresh;
 
@@ -88,9 +87,8 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
     private final Collection<DRepresentation> representationsToForceRefresh = new ArrayList<DRepresentation>();
 
     /**
-     * A list of {@link PostRefreshCommandFactory} that is called to complete
-     * the refresh command. The commands provided by the factory is added after
-     * the refresh command if it can be executed.
+     * A list of {@link PostRefreshCommandFactory} that is called to complete the refresh command. The commands provided
+     * by the factory is added after the refresh command if it can be executed.
      */
     private final Collection<PostRefreshCommandFactory> postRefreshCommandFactories = new ArrayList<PostRefreshCommandFactory>();
 
@@ -99,11 +97,14 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
     /**
      * Default constructor.
      * 
-     * @param transactionalEditingDomain
-     *            The editing domain used to create the refresh command.
+     * The editing domain used to create the refresh command.
+     * 
+     * @param session
+     *            the session
      */
-    public RefreshEditorsPrecommitListener(TransactionalEditingDomain transactionalEditingDomain) {
-        this.transactionalEditingDomain = transactionalEditingDomain;
+    public RefreshEditorsPrecommitListener(Session session) {
+        this.transactionalEditingDomain = session.getTransactionalEditingDomain();
+        this.session = session;
     }
 
     @Override
@@ -114,8 +115,7 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
     /**
      * {@inheritDoc}
      * 
-     * Do a refresh only if there is at least one notification that concern
-     * another thing that an aird Resource.
+     * Do a refresh only if there is at least one notification that concern another thing that an aird Resource.
      */
     @Override
     public Option<Command> localChangesAboutToCommit(Collection<Notification> notifications) {
@@ -149,8 +149,7 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
      * Compute the refresh command or null if no refresh is needed.
      * 
      * @param isChanged
-     *            True if there is some semantic changes or a reloading of the
-     *            session, false otherwise
+     *            True if there is some semantic changes or a reloading of the session, false otherwise
      * @return An optional command if at least one refresh is needed.
      */
     private Option<? extends Command> getRefreshOpenedRepresentationsCommand(boolean isChanged) {
@@ -221,8 +220,7 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
     }
 
     /**
-     * Force this PrecommitListener to launch a refresh the next time it is
-     * called.
+     * Force this PrecommitListener to launch a refresh the next time it is called.
      * 
      * @param forceRefresh
      *            the forceRefresh to set
@@ -236,13 +234,12 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
     }
 
     /**
-     * Check if someone notify me for a force refresh or if the preference
-     * AutoRefresh is on.
+     * Check if someone notify me for a force refresh or if the preference AutoRefresh is on.
      * 
      * @return true if a refresh must be launch.
      */
     private boolean isAutoRefresh() {
-        return Platform.isRunning() && Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
+        return session.getSiriusPreferences().isAutoRefresh();
     }
 
     @Override
@@ -277,9 +274,8 @@ public class RefreshEditorsPrecommitListener implements ModelChangeTrigger, Sess
     }
 
     /**
-     * Add a new PostRefreshCommandFactory to the
-     * RefreshEditorsPrecommitListener. The commands provided by the factory is
-     * added after the refresh command if it can be executed.
+     * Add a new PostRefreshCommandFactory to the RefreshEditorsPrecommitListener. The commands provided by the factory
+     * is added after the refresh command if it can be executed.
      * 
      * The factory is removed after the first refresh.
      * 

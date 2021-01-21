@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,11 +12,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.internal.command.builders;
 
-import org.eclipse.core.runtime.Platform;
+import java.util.Optional;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.helper.task.TaskHelper;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -24,7 +26,6 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuth
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * Default implementation for {@link CommandBuilder}.
@@ -58,22 +59,24 @@ public abstract class AbstractCommandBuilder implements CommandBuilder {
      *      org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor,
      *      org.eclipse.emf.transaction.TransactionalEditingDomain)
      */
+    @Override
     public void init(final ModelAccessor accessor, final TransactionalEditingDomain domain, final UICallBack ui) {
         this.modelAccessor = accessor;
         this.editingDomain = domain;
         this.uiCallback = ui;
         this.permissionAuthority = accessor.getPermissionAuthority();
         this.taskHelper = new TaskHelper(modelAccessor, uiCallback);
-        this.autoRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), false, null);
+        Optional<Session> session = SessionManager.INSTANCE.getSessions().stream().filter(s -> s.getTransactionalEditingDomain().equals(editingDomain)).findAny();
+        if (session.isPresent()) {
+            this.autoRefresh = session.get().getSiriusPreferences().isAutoRefresh();
+        }
     }
 
     /**
-     * Evaluates the precondition on the current tool. Must only be overridden
-     * to add specific variables.
+     * Evaluates the precondition on the current tool. Must only be overridden to add specific variables.
      * 
      * @param interpreter
-     *            the interpreter capable to interpret the precondition
-     *            expression
+     *            the interpreter capable to interpret the precondition expression
      * @param semanticContainer
      *            the semantic element on which evaluates the expression
      * @param precondition

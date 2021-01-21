@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,6 @@ import java.util.Optional;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
-import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.notify.AdapterFactory;
@@ -35,7 +34,6 @@ import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
-import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
@@ -562,7 +560,7 @@ public abstract class AbstractDTreeEditor extends EditorPart
     public boolean needsRefresh(int propId) {
         boolean result = false;
         if (propId == DialectEditor.PROP_REFRESH) {
-            if (isAutoRefresh()) {
+            if (session.getSiriusPreferences().isAutoRefresh()) {
                 result = true;
             }
         } else if (propId == DialectEditor.PROP_FORCE_REFRESH) {
@@ -771,21 +769,6 @@ public abstract class AbstractDTreeEditor extends EditorPart
         return isDirty();
     }
 
-    /**
-     * .
-     * 
-     * @return if is auto refresh
-     */
-    protected boolean isAutoRefresh() {
-        boolean autoRefresh = false;
-        try {
-            autoRefresh = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), autoRefresh, null);
-        } catch (final IllegalArgumentException e) {
-            SiriusTransPlugin.getPlugin().getLog().log(new Status(IStatus.ERROR, SiriusTransPlugin.PLUGIN_ID, IStatus.OK, e.getMessage(), e));
-        }
-        return autoRefresh;
-    }
-
     @Override
     public void setDialogFactory(DialectEditorDialogFactory dialogFactory) {
         myDialogFactory = dialogFactory;
@@ -902,7 +885,7 @@ public abstract class AbstractDTreeEditor extends EditorPart
      * @see org.eclipse.sirius.business.api.componentization.ViewpointRegistryListener2#modelerDesciptionFilesLoaded()
      */
     protected void modelerDescriptionFilesLoaded() {
-        if (isAutoRefresh()) {
+        if (session.getSiriusPreferences().isAutoRefresh()) {
             Job refreshJob = new Job(Messages.AbstractDTreeEditor_modelerDescriptionFilesLoadedJob) {
                 @Override
                 protected IStatus run(IProgressMonitor monitor) {
