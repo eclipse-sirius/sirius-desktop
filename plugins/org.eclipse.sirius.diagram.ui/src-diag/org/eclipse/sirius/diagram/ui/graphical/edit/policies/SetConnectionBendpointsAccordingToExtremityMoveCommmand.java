@@ -359,6 +359,7 @@ public class SetConnectionBendpointsAccordingToExtremityMoveCommmand extends Set
                         newLine.addPoint((source.getLeft().x + target.getRight().x) / 2, lastRemovedFromSource.y);
                     }
                 }
+                 newLine.addPoint(end);
             }
         } else {
             // Add necessary point to complete the first (or last) segment if
