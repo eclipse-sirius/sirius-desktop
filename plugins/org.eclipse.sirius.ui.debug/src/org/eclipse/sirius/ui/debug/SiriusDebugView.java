@@ -1326,8 +1326,8 @@ public class SiriusDebugView extends AbstractDebugView {
      */
     private void addShowFiguresHierarchyAction() {
         addAction("Show figures", () -> {
-            if (selection instanceof IAbstractDiagramNodeEditPart) {
-                IAbstractDiagramNodeEditPart part = (IAbstractDiagramNodeEditPart) selection;
+            if (selection instanceof IGraphicalEditPart) {
+                IGraphicalEditPart part = (IGraphicalEditPart) selection;
                 StringBuilder sb = new StringBuilder();
                 showFigures(part.getFigure(), 0, sb);
                 setText(sb.toString());
