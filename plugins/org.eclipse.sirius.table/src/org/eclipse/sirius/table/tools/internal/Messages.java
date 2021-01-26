@@ -1,7 +1,7 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -73,7 +73,13 @@ public final class Messages {
     public static String TableExportHelper_ExceptionOnSave;
 
     @TranslatableMessage
+    public static String TableToolVariables_CellEditorResult;
+
+    @TranslatableMessage
     public static String TableToolVariables_CurrentSemanticElement;
+
+    @TranslatableMessage
+    public static String TableToolVariables_LineElement;
 
     @TranslatableMessage
     public static String TableToolVariables_SemanticColumnElement;
@@ -88,16 +94,13 @@ public final class Messages {
     public static String TableToolVariables_SemanticRootElement;
 
     @TranslatableMessage
+    public static String TableToolVariables_TableElement;
+
+    @TranslatableMessage
     public static String Table_UnexpectedExceptionMessage;
 
     @TranslatableMessage
     public static String Table_WrongStyleAttribute;
-
-    @TranslatableMessage
-    public static String TableToolVariables_TableElement;
-
-    @TranslatableMessage
-    public static String TableToolVariables_LineElement;
 
     // CHECKSTYLE:ON
 

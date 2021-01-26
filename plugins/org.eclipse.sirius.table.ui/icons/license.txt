@@ -6,6 +6,7 @@ SPDX-License-Identifier: EPL-2.0
 
 <icon file path> - <original eclipse plug-in> - <original file path>
 
+icons/full/obj16/CellEditorTool.gif - org.eclipse.sirius.table.ui - /org.eclipse.sirius.table.ui/icons/full/obj16/LabelEditTool.gif and /org.eclipse.sirius.table.ui/icons/full/obj16/DCell.gif
 icons/full/obj16/CellUpdater.gif - org.eclipse.emf.codegen.ecore - org.eclipse.emf.codegen.ecore/templates/edit/Item.gif
 icons/full/obj16/ColumnMapping.gif - org.eclipse.emf.codegen.ecore - org.eclipse.emf.codegen.ecore/templates/edit/Item.gif
 icons/full/obj16/DCellStyle.gif - org.eclipse.emf.codegen.ecore - org.eclipse.emf.codegen.ecore/templates/edit/Item.gif

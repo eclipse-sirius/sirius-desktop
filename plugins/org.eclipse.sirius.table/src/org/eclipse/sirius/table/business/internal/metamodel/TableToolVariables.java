@@ -1,7 +1,7 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -14,6 +14,7 @@ package org.eclipse.sirius.table.business.internal.metamodel;
 
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
+import org.eclipse.sirius.table.metamodel.table.description.CellEditorTool;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
 import org.eclipse.sirius.table.metamodel.table.description.CreateTool;
 import org.eclipse.sirius.table.metamodel.table.description.DeleteTool;
@@ -75,6 +76,16 @@ public class TableToolVariables extends DescriptionSwitch<Object> {
         return super.caseLabelEditTool(object);
     }
 
+    @Override
+    public Object caseCellEditorTool(CellEditorTool object) {
+        addVariableDescriptor(object, IInterpreterSiriusVariables.ELEMENT, Messages.TableToolVariables_CurrentSemanticElement);
+        addVariableDescriptor(object, IInterpreterSiriusTableVariables.TABLE, Messages.TableToolVariables_TableElement);
+        addVariableDescriptor(object, IInterpreterSiriusTableVariables.LINE, Messages.TableToolVariables_LineElement);
+        addVariableDescriptor(object, IInterpreterSiriusTableVariables.LINE_SEMANTIC, Messages.TableToolVariables_SemanticLineElement);
+        addVariableDescriptor(object, IInterpreterSiriusVariables.ROOT, Messages.TableToolVariables_SemanticRootElement);
+        addVariableDescriptor(object, IInterpreterSiriusTableVariables.CELL_EDITOR_RESULT, Messages.TableToolVariables_CellEditorResult);
+        return super.caseCellEditorTool(object);
+    }
     /**
      * {@inheritDoc}
      */

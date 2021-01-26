@@ -1,7 +1,7 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -30,6 +30,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
+import org.eclipse.sirius.table.metamodel.table.description.CellEditorTool;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
 import org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool;
@@ -96,6 +97,10 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
             for (AbstractVariable subVar : ((LabelEditTool) context).getVariables()) {
                 availableVariables.put(subVar.getName(), getVariableTypeName(subVar));
             }
+        } else if (context instanceof CellEditorTool) {
+            for (AbstractVariable subVar : ((CellEditorTool) context).getVariables()) {
+                availableVariables.put(subVar.getName(), getVariableTypeName(subVar));
+            }
         } else if (context instanceof CreateCellTool) {
             emv = ((CreateCellTool) context).getMask();
         }
@@ -118,6 +123,9 @@ public class TableInterpretedExpressionQuery extends AbstractInterpretedExpressi
                 IntersectionMapping interMapping = (IntersectionMapping) tool.eContainer();
                 declareLineAndColumnSemantic(availableVariables, interMapping);
             }
+            availableVariables.put(IInterpreterSiriusTableVariables.LINE, VariableType.fromEClassifiers(Arrays.asList(TablePackage.Literals.DLINE)));
+            availableVariables.put(IInterpreterSiriusTableVariables.TABLE, VariableType.fromEClassifiers(Arrays.asList(TablePackage.Literals.DTABLE)));
+        } else if (toolContext instanceof CellEditorTool) {
             availableVariables.put(IInterpreterSiriusTableVariables.LINE, VariableType.fromEClassifiers(Arrays.asList(TablePackage.Literals.DLINE)));
             availableVariables.put(IInterpreterSiriusTableVariables.TABLE, VariableType.fromEClassifiers(Arrays.asList(TablePackage.Literals.DTABLE)));
         } else if (toolContext instanceof CreateLineTool) {

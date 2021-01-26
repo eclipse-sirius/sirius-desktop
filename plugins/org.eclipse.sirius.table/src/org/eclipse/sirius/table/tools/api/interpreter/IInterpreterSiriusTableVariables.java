@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,4 +40,9 @@ public interface IInterpreterSiriusTableVariables extends IInterpreterSiriusVari
      * The column semantic element.
      */
     String COLUMN_SEMANTIC = "columnSemantic"; //$NON-NLS-1$
+
+    /**
+     * The result returned by the cell editor.
+     */
+    String CELL_EDITOR_RESULT = "cellEditorResult"; //$NON-NLS-1$
 }

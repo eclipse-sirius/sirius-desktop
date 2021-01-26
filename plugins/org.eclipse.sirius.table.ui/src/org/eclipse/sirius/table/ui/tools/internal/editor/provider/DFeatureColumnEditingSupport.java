@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,9 +15,14 @@ package org.eclipse.sirius.table.ui.tools.internal.editor.provider;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
+import javax.lang.model.SourceVersion;
+
+import org.eclipse.core.runtime.Assert;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.ui.celleditor.ExtendedComboBoxCellEditor;
@@ -51,6 +56,9 @@ import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.ViewerCell;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
+import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
@@ -62,11 +70,16 @@ import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DFeatureColumn;
 import org.eclipse.sirius.table.metamodel.table.DLine;
+import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
+import org.eclipse.sirius.table.metamodel.table.description.CellEditorTool;
 import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.provider.Messages;
+import org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin;
 import org.eclipse.sirius.table.tools.api.command.ITableCommandFactory;
+import org.eclipse.sirius.table.tools.api.interpreter.IInterpreterSiriusTableVariables;
+import org.eclipse.sirius.table.ui.tools.api.editor.ITableCellEditorFactory;
 import org.eclipse.sirius.table.ui.tools.internal.editor.AbstractDTableEditor;
 import org.eclipse.sirius.table.ui.tools.internal.editor.DTableTreeViewer;
 import org.eclipse.sirius.tools.api.interpreter.IInterpreterMessages;
@@ -156,15 +169,75 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
 
     @Override
     protected CellEditor getCellEditor(final Object element) {
+        CellEditor cellEditor = null;
         if (element instanceof DLine) {
             final Option<DCell> editedCell = TableHelper.getCell((DLine) element, featureColumn);
             if (editedCell.some()) {
                 CellUpdater updater = editedCell.get().getUpdater();
-                final boolean directEdit = updater != null && updater.getDirectEdit() != null;
-                return getBestCellEditor(editedCell.get().getTarget(), directEdit);
+                if (updater != null) {
+                    cellEditor = getCellEditor(element, editedCell.get(), updater);
+                }
             }
         }
-        return null;
+        return cellEditor;
+    }
+
+    /**
+     * The editor to be shown.
+     *
+     * @param element
+     *            the model element
+     * @param editedCell
+     *            the current edited cell
+     * @param updater
+     *            the updater
+     * @return the CellEditor
+     */
+    protected CellEditor getCellEditor(final Object element, final DCell editedCell, CellUpdater updater) {
+        Assert.isNotNull(element, "The \"element\" parameter should not be null"); //$NON-NLS-1$
+        Assert.isNotNull(editedCell, "The \"editedCell\" parameter should not be null"); //$NON-NLS-1$
+        Assert.isNotNull(updater, "The \"updater\" parameter should not be null"); //$NON-NLS-1$
+        CellEditor cellEditor = null;
+        CellEditorTool cellEditorTool = updater.getCellEditor();
+        boolean specificCellEditorProvided = false;
+        if (cellEditorTool != null) {
+            String qualifiedClassName = cellEditorTool.getQualifiedClassName();
+            if (qualifiedClassName != null && SourceVersion.isName(qualifiedClassName)) {
+                Session session = SessionManager.INSTANCE.getSession(((DLine) element).getTarget());
+                if (session instanceof DAnalysisSessionImpl) {
+                    try {
+                        // Instantiate the cell editor factory corresponding to this qualified name
+                        ITableCellEditorFactory cellEditorFactory = CellEditorFactoryManager.getCellEditorFactory((DAnalysisSessionImpl) session, qualifiedClassName);
+                        // Initialize parameters
+                        Map<String, Object> parameters = new HashMap<String, Object>();
+                        parameters.put(IInterpreterSiriusTableVariables.ELEMENT, editedCell);
+                        DTable dTable = TableHelper.getTable((DLine) element);
+                        parameters.put(IInterpreterSiriusTableVariables.TABLE, dTable);
+                        parameters.put(IInterpreterSiriusTableVariables.LINE, element);
+                        parameters.put(IInterpreterSiriusTableVariables.LINE_SEMANTIC, ((DLine) element).getTarget());
+                        parameters.put(IInterpreterSiriusTableVariables.ROOT, dTable.getTarget());
+                        // Get the cell editor according to parameters
+                        final Tree tree = ((TreeViewer) getViewer()).getTree();
+                        cellEditor = cellEditorFactory.getCellEditor(tree, parameters);
+                        if (cellEditor != null) {
+                            specificCellEditorProvided = true;
+                        } else {
+                            TableUIPlugin.getPlugin().warning(MessageFormat.format(Messages.DFeatureColumnEditingSupport_nullCellEditor, qualifiedClassName), null);
+                        }
+                    } catch (IllegalArgumentException e) {
+                        TableUIPlugin.getPlugin().warning(MessageFormat.format(Messages.DFeatureColumnEditingSupport_unusableCellEditor, qualifiedClassName, e.getMessage()), e);
+                    }
+                }
+            } else {
+                TableUIPlugin.getPlugin().warning(MessageFormat.format(Messages.DFeatureColumnEditingSupport_notJavaQualifiedName, qualifiedClassName), null);
+            }
+        }
+        if (!specificCellEditorProvided) {
+            // Fallback on default behavior
+            boolean directEdit = updater.getDirectEdit() != null;
+            cellEditor = getBestCellEditor(editedCell.getTarget(), directEdit);
+        }
+        return cellEditor;
     }
 
     @Override
@@ -257,7 +330,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
                 if (tempValue != null || isEReference(featureParent)) {
                     final Object finalValue = tempValue;
                     CellUpdater updater = editedCell.getUpdater();
-                    if (updater != null && updater.getDirectEdit() != null) {
+                    if (updater != null && (updater.getDirectEdit() != null || updater.getCellEditor() != null)) {
                         // Specific set
                         specificSetValue(editedCell, finalValue);
                     } else {
@@ -318,6 +391,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
         CellEditor result = null;
         final Tree tree = ((TreeViewer) getViewer()).getTree();
         final EClassifier eClassifier = getEClassifier(element);
+
         final IItemPropertyDescriptor iItemPropertyDescriptor = getPropertyDescriptor(element);
         if (directEdit) {
             boolean isMultiLine = false;

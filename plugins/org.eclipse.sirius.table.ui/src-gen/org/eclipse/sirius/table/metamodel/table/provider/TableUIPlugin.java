@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -175,6 +175,26 @@ public final class TableUIPlugin extends EMFPlugin {
                 this.getLog().log(((CoreException) e).getStatus());
             } else {
                 IStatus status = new Status(IStatus.ERROR, this.getBundle().getSymbolicName(), message, e);
+                this.getLog().log(status);
+            }
+        }
+
+        /**
+         * Logs a warning in the error log.
+         *
+         * @param message
+         *            the message to log (optionnal).
+         * @param e
+         *            the exception (optionnal).
+         */
+        public void warning(String message, Exception e) {
+            if (message == null && e != null) {
+                message = e.getMessage();
+            }
+            if (e instanceof CoreException) {
+                this.getLog().log(((CoreException) e).getStatus());
+            } else {
+                IStatus status = new Status(IStatus.WARNING, this.getBundle().getSymbolicName(), message, e);
                 this.getLog().log(status);
             }
         }

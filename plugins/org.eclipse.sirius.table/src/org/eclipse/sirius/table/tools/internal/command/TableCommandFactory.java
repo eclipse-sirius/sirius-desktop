@@ -1,7 +1,7 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -50,6 +50,7 @@ import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
+import org.eclipse.sirius.table.metamodel.table.description.CellEditorTool;
 import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
@@ -345,7 +346,8 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
 
     /**
      * Build a command that covers all the model operations corresponding to a the {@link DCell currentCell} and the
-     * corresponding {@link org.eclipse.sirius.table.metamodel.table.description.LabelEditTool directEdit tool} or
+     * corresponding {@link org.eclipse.sirius.table.metamodel.table.description.LabelEditTool directEdit tool},
+     * {@link org.eclipse.sirius.table.metamodel.table.description.CellEditorTool cellEditor tool} or
      * {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool createCell tool}.
      *
      * @param currentCell
@@ -376,6 +378,9 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
             }
             if (tool instanceof LabelEditTool) {
                 variables.put(TableHelper.getVariable(tool, IInterpreterSiriusVariables.ELEMENT), currentCell.getTarget());
+            } else if (tool instanceof CellEditorTool) {
+                variables.put(TableHelper.getVariable(tool, IInterpreterSiriusVariables.ELEMENT), currentCell.getTarget());
+                variables.put(TableHelper.getVariable(tool, IInterpreterSiriusTableVariables.CELL_EDITOR_RESULT), newValue);
             }
             // Initialization of the variables
             result.getTasks().add(new InitInterpreterVariablesTask(variables, InterpreterUtil.getInterpreter(interpreterContext), uiCallBack));
@@ -388,8 +393,7 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
                     final String messageFormat = labelEditTool.getMask().getMask();
                     result.getTasks().add(new InitInterpreterFromParsedVariableTask2(InterpreterUtil.getInterpreter(interpreterContext), messageFormat, newValue));
                 }
-            }
-            if (tool instanceof CreateCellTool) {
+            } else if (tool instanceof CreateCellTool) {
                 final CreateCellTool createCellTool = (CreateCellTool) tool;
                 if (createCellTool.getMask() != null) {
                     /*
@@ -487,7 +491,8 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
      * @param newValue
      *            the new value for this cell
      * @return a command able to set the content of a cell, corresponding to the
-     *         {@link org.eclipse.sirius.table.metamodel.table.description.LabelEditTool LabelEditTool} or
+     *         {@link org.eclipse.sirius.table.metamodel.table.description.LabelEditTool LabelEditTool},
+     *         {@link org.eclipse.sirius.table.metamodel.table.description.CellEditorTool CellEditorTool} or
      *         {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool CreateCellTool}.
      */
     @Override
@@ -498,8 +503,14 @@ public class TableCommandFactory extends AbstractCommandFactory implements ITabl
         } else {
             CellUpdater updater = editedCell.getUpdater();
             if (updater != null) {
-                if (updater.getDirectEdit() != null) {
-                    result = buildCommandFromCell(editedCell, updater.getDirectEdit(), newValue);
+                if (updater.getDirectEdit() != null || updater.getCellEditor() != null) {
+                    // If both directEdit and cellEditor is defined, the cell editor has priority (explained in
+                    // documentation).
+                    if (updater.getCellEditor() != null) {
+                        result = buildCommandFromCell(editedCell, updater.getCellEditor(), newValue);
+                    } else {
+                        result = buildCommandFromCell(editedCell, updater.getDirectEdit(), newValue);
+                    }
                     addRefreshTask(TableHelper.getTable(editedCell), (SiriusCommand) result, null);
                 }
             }

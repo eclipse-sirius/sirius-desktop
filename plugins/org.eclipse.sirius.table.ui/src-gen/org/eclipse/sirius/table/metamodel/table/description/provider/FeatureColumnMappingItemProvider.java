@@ -1,7 +1,7 @@
 /*******************************************************************************
  * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -26,6 +26,7 @@ import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle;
+import org.eclipse.sirius.table.metamodel.table.description.CellEditorTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
 import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping;
@@ -249,13 +250,23 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
 
         LabelEditTool labelEditTool = DescriptionFactory.eINSTANCE.createLabelEditTool();
         labelEditTool.setMask(ToolFactory.eINSTANCE.createEditMaskVariables());
-        addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.ELEMENT, Messages.Table_CurrentSemanticElement);
+        addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.ELEMENT, Messages.Table_CellElement);
         addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.TABLE, Messages.Table_TableElement);
         addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.LINE, Messages.Table_LineElement);
         addVariableDescriptor(labelEditTool, IInterpreterSiriusTableVariables.LINE_SEMANTIC, Messages.Table_SemanticLineElement);
         addVariableDescriptor(labelEditTool, IInterpreterSiriusVariables.ROOT, Messages.Table_SemanticRootElement);
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CELL_UPDATER__DIRECT_EDIT, labelEditTool));
+
+        CellEditorTool cellEditorTool = DescriptionFactory.eINSTANCE.createCellEditorTool();
+        addVariableDescriptor(cellEditorTool, IInterpreterSiriusVariables.ELEMENT, Messages.Table_CellElement);
+        addVariableDescriptor(cellEditorTool, IInterpreterSiriusVariables.TABLE, Messages.Table_TableElement);
+        addVariableDescriptor(cellEditorTool, IInterpreterSiriusTableVariables.LINE, Messages.Table_LineElement);
+        addVariableDescriptor(cellEditorTool, IInterpreterSiriusTableVariables.LINE_SEMANTIC, Messages.Table_SemanticLineElement);
+        addVariableDescriptor(cellEditorTool, IInterpreterSiriusVariables.ROOT, Messages.Table_SemanticRootElement);
+        addVariableDescriptor(cellEditorTool, IInterpreterSiriusTableVariables.CELL_EDITOR_RESULT, Messages.Table_CellEditorResult);
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CELL_UPDATER__CELL_EDITOR, cellEditorTool));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__DEFAULT_FOREGROUND, DescriptionFactory.eINSTANCE.createForegroundStyleDescription()));
 

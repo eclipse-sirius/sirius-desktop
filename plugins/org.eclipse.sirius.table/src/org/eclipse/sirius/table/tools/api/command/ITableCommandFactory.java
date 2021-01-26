@@ -1,7 +1,7 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -99,10 +99,9 @@ public interface ITableCommandFactory extends ICommandFactory {
      * @param newValue
      *            the new value for this cell
      * @return a command able to set the content of a cell, corresponding to the
-     *         {@link org.eclipse.sirius.table.metamodel.table.description.LabelEditTool
-     *         LabelEditTool} or
-     *         {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool
-     *         CreateCellTool}.
+     *         {@link org.eclipse.sirius.table.metamodel.table.description.LabelEditTool LabelEditTool},
+     *         {@link org.eclipse.sirius.table.metamodel.table.description.CellEditorTool CellEditorTool}, or
+     *         {@link org.eclipse.sirius.table.metamodel.table.description.CreateCellTool CreateCellTool}.
      */
     Command buildSetCellValueFromTool(DCell editedCell, Object newValue);
 

@@ -1,7 +1,7 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
- * are made available under theier instead of EcoreUtil.Copier in tests
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -15,6 +15,7 @@ package org.eclipse.sirius.tests.unit.table.unit.tools;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.table.business.internal.metamodel.TableToolVariables;
+import org.eclipse.sirius.table.metamodel.table.description.CellEditorTool;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
 import org.eclipse.sirius.table.metamodel.table.description.CreateColumnTool;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCrossColumnTool;
@@ -46,10 +47,10 @@ public class NoVariableDuplicationTest extends TestCase {
 
         // Add variables.
         new TableToolVariables().doSwitch(createLineTool);
-        assertEquals("The number of variable of createLineTool must be 3", 3, createLineTool.getVariables().size());
+        assertEquals("Wrong number of variables in createLineTool.", 3, createLineTool.getVariables().size());
         for (TableVariable variable : createLineTool.getVariables()) {
             if (!"root".equals(variable.getName()) && !"element".equals(variable.getName()) && !"container".equals(variable.getName())) {
-                fail("The createLineTool variables' must be naming element, root and container, not " + variable.getName());
+                fail("The createLineTool variables must be naming element, root and container, not " + variable.getName());
             }
         }
 
@@ -57,7 +58,7 @@ public class NoVariableDuplicationTest extends TestCase {
         for (TableVariable variable : createLineTool.getVariables()) {
             variable.setName(variable.getName() + "1");
             if (!"root1".equals(variable.getName()) && !"element1".equals(variable.getName()) && !"container1".equals(variable.getName())) {
-                fail("The createLineTool variables' must be naming element1, root1 and container1, not " + variable.getName());
+                fail("The createLineTool variables must be naming element1, root1 and container1, not " + variable.getName());
             }
         }
 
@@ -74,10 +75,10 @@ public class NoVariableDuplicationTest extends TestCase {
 
         // Add variables.
         new TableToolVariables().doSwitch(deleteLineTool);
-        assertEquals("The number of variable of deleteLineTool must be 2", 2, deleteLineTool.getVariables().size());
+        assertEquals("Wrong number of variables in deleteLineTool.", 2, deleteLineTool.getVariables().size());
         for (TableVariable variable : deleteLineTool.getVariables()) {
             if (!"root".equals(variable.getName()) && !"element".equals(variable.getName())) {
-                fail("The deleteLineTool variables' must be naming element and root, not " + variable.getName());
+                fail("The deleteLineTool variables must be naming element and root, not " + variable.getName());
             }
         }
 
@@ -85,7 +86,7 @@ public class NoVariableDuplicationTest extends TestCase {
         for (TableVariable variable : deleteLineTool.getVariables()) {
             variable.setName(variable.getName() + "1");
             if (!"root1".equals(variable.getName()) && !"element1".equals(variable.getName())) {
-                fail("The deleteLineTool variables' must be naming element1, and root1, not " + variable.getName());
+                fail("The deleteLineTool variables must be naming element1, and root1, not " + variable.getName());
             }
         }
 
@@ -102,10 +103,10 @@ public class NoVariableDuplicationTest extends TestCase {
 
         // Add variables.
         new TableToolVariables().doSwitch(createCellTool);
-        assertEquals("The number of variable of createCellTool must be 3", 3, createCellTool.getVariables().size());
+        assertEquals("Wrong number of variables in createCellTool.", 3, createCellTool.getVariables().size());
         for (TableVariable variable : createCellTool.getVariables()) {
             if (!"root".equals(variable.getName()) && !"lineSemantic".equals(variable.getName()) && !"columnSemantic".equals(variable.getName())) {
-                fail("The createCellTool variables' must be naming root, lineSemantic and columnSemantic not " + variable.getName());
+                fail("The createCellTool variables must be naming root, lineSemantic and columnSemantic not " + variable.getName());
             }
         }
 
@@ -113,7 +114,7 @@ public class NoVariableDuplicationTest extends TestCase {
         for (TableVariable variable : createCellTool.getVariables()) {
             variable.setName(variable.getName() + "1");
             if (!"root1".equals(variable.getName()) && !"lineSemantic1".equals(variable.getName()) && !"columnSemantic1".equals(variable.getName())) {
-                fail("The createLineTool variables' must be naming root1, lineSemantic1 and columnSemantic1 not " + variable.getName());
+                fail("The createLineTool variables must be naming root1, lineSemantic1 and columnSemantic1 not " + variable.getName());
             }
         }
 
@@ -130,10 +131,10 @@ public class NoVariableDuplicationTest extends TestCase {
 
         // Add variables.
         new TableToolVariables().doSwitch(createColumnTool);
-        assertEquals("The number of variable of createColumnTool must be 3", 3, createColumnTool.getVariables().size());
+        assertEquals("Wrong number of variables in createColumnTool.", 3, createColumnTool.getVariables().size());
         for (TableVariable variable : createColumnTool.getVariables()) {
             if (!"root".equals(variable.getName()) && !"element".equals(variable.getName()) && !"container".equals(variable.getName())) {
-                fail("The createColumnTool variables' must be naming element, root and container, not " + variable.getName());
+                fail("The createColumnTool variables must be naming element, root and container, not " + variable.getName());
             }
         }
 
@@ -141,7 +142,7 @@ public class NoVariableDuplicationTest extends TestCase {
         for (TableVariable variable : createColumnTool.getVariables()) {
             variable.setName(variable.getName() + "1");
             if (!"root1".equals(variable.getName()) && !"element1".equals(variable.getName()) && !"container1".equals(variable.getName())) {
-                fail("The createColumnTool variables' must be naming element1, root1 and container1, not " + variable.getName());
+                fail("The createColumnTool variables must be naming element1, root1 and container1, not " + variable.getName());
             }
         }
 
@@ -158,10 +159,10 @@ public class NoVariableDuplicationTest extends TestCase {
 
         // Add variables.
         new TableToolVariables().doSwitch(createCrossColumnTool);
-        assertEquals("The number of variable of createCrossColumnTool must be 3", 3, createCrossColumnTool.getVariables().size());
+        assertEquals("Wrong number of variables in createCrossColumnTool.", 3, createCrossColumnTool.getVariables().size());
         for (TableVariable variable : createCrossColumnTool.getVariables()) {
             if (!"root".equals(variable.getName()) && !"element".equals(variable.getName()) && !"container".equals(variable.getName())) {
-                fail("The createCrossColumnTool variables' must be naming element, root and container, not " + variable.getName());
+                fail("The createCrossColumnTool variables must be naming element, root and container, not " + variable.getName());
             }
         }
 
@@ -169,7 +170,7 @@ public class NoVariableDuplicationTest extends TestCase {
         for (TableVariable variable : createCrossColumnTool.getVariables()) {
             variable.setName(variable.getName() + "1");
             if (!"root1".equals(variable.getName()) && !"element1".equals(variable.getName()) && !"container1".equals(variable.getName())) {
-                fail("The createCrossColumnTool variables' must be naming element1, root1 and container1, not " + variable.getName());
+                fail("The createCrossColumnTool variables must be naming element1, root1 and container1, not " + variable.getName());
             }
         }
 
@@ -186,10 +187,10 @@ public class NoVariableDuplicationTest extends TestCase {
 
         // Add variables.
         new TableToolVariables().doSwitch(deleteColumnTool);
-        assertEquals("The number of variable of deleteColumnTool must be 2", 2, deleteColumnTool.getVariables().size());
+        assertEquals("Wrong number of variables in deleteColumnTool.", 2, deleteColumnTool.getVariables().size());
         for (TableVariable variable : deleteColumnTool.getVariables()) {
             if (!"root".equals(variable.getName()) && !"element".equals(variable.getName())) {
-                fail("The deleteColumnTool variables' must be naming element and root, not " + variable.getName());
+                fail("The deleteColumnTool variables must be naming element and root, not " + variable.getName());
             }
         }
 
@@ -197,7 +198,7 @@ public class NoVariableDuplicationTest extends TestCase {
         for (TableVariable variable : deleteColumnTool.getVariables()) {
             variable.setName(variable.getName() + "1");
             if (!"root1".equals(variable.getName()) && !"element1".equals(variable.getName())) {
-                fail("The deleteColumnTool variables' must be naming element1, and root1, not " + variable.getName());
+                fail("The deleteColumnTool variables must be naming element1, and root1, not " + variable.getName());
             }
         }
 
@@ -205,33 +206,64 @@ public class NoVariableDuplicationTest extends TestCase {
     }
 
     /**
-     * Test that the renaming and copy of createLabelEditTool not duplicates variables.
+     * Test that the renaming and copy of LabelEditTool not duplicates variables.
      */
-    public void testNoVariableDuplicationInCreateLabelEditTool() {
-        // Create createLabelEditTool
-        LabelEditTool createLabelEditTool = DescriptionFactory.eINSTANCE.createLabelEditTool();
-        assertEquals("No variable must be present in the createLabelEditTool", 0, createLabelEditTool.getVariables().size());
+    public void testNoVariableDuplicationInLabelEditTool() {
+        // Create labelEditTool
+        LabelEditTool labelEditTool = DescriptionFactory.eINSTANCE.createLabelEditTool();
+        assertEquals("No variable must be present in the labelEditTool", 0, labelEditTool.getVariables().size());
 
         // Add variables.
-        new TableToolVariables().doSwitch(createLabelEditTool);
-        assertEquals("The number of variable of createLabelEditTool must be 6", 6, createLabelEditTool.getVariables().size());
-        for (TableVariable variable : createLabelEditTool.getVariables()) {
+        new TableToolVariables().doSwitch(labelEditTool);
+        assertEquals("Wrong number of variables in labelEditTool.", 6, labelEditTool.getVariables().size());
+        for (TableVariable variable : labelEditTool.getVariables()) {
             if (!"root".equals(variable.getName()) && !"lineSemantic".equals(variable.getName()) && !"columnSemantic".equals(variable.getName()) && !"element".equals(variable.getName())
                     && !"line".equals(variable.getName()) && !"table".equals(variable.getName())) {
-                fail("The createLabelEditTool variables' must be naming root, element, lineSemantic and columnSemantic not " + variable.getName());
+                fail("The labelEditTool variables must be naming root, element, lineSemantic and columnSemantic not " + variable.getName());
             }
         }
 
         // Name customization.
-        for (TableVariable variable : createLabelEditTool.getVariables()) {
+        for (TableVariable variable : labelEditTool.getVariables()) {
             variable.setName(variable.getName() + "1");
             if (!"root1".equals(variable.getName()) && !"lineSemantic1".equals(variable.getName()) && !"columnSemantic1".equals(variable.getName()) && !"line1".equals(variable.getName())
                     && !"table1".equals(variable.getName()) && !"element1".equals(variable.getName())) {
-                fail("The createLineTool variables' must be naming root1, element1, lineSemantic1 and columnSemantic1 not " + variable.getName());
+                fail("The labelEditTool variables must be naming root1, element1, lineSemantic1 and columnSemantic1 not " + variable.getName());
             }
         }
 
-        checkNoModifOncopy(createLabelEditTool);
+        checkNoModifOncopy(labelEditTool);
+    }
+
+    /**
+     * Test that the renaming and copy of CellEditorTool do not duplicate variables.
+     */
+    public void testNoVariableDuplicationInCellEditorTool() {
+        // Create cellEditorTool
+        CellEditorTool cellEditorTool = DescriptionFactory.eINSTANCE.createCellEditorTool();
+        assertEquals("No variable must be present in the cellEditorTool", 0, cellEditorTool.getVariables().size());
+
+        // Add variables.
+        new TableToolVariables().doSwitch(cellEditorTool);
+
+        assertEquals("Wrong number of variables in cellEditorTool.", 6, cellEditorTool.getVariables().size());
+        for (TableVariable variable : cellEditorTool.getVariables()) {
+            if (!"root".equals(variable.getName()) && !"element".equals(variable.getName()) && !"lineSemantic".equals(variable.getName()) && !"line".equals(variable.getName())
+                    && !"table".equals(variable.getName()) && !"cellEditorResult".equals(variable.getName())) {
+                fail("The cellEditorTool variables must be naming root, element, lineSemantic, line, table and cellEditorResult not " + variable.getName());
+            }
+        }
+
+        // Name customization.
+        for (TableVariable variable : cellEditorTool.getVariables()) {
+            variable.setName(variable.getName() + "1");
+            if (!"root1".equals(variable.getName()) && !"element1".equals(variable.getName()) && !"lineSemantic1".equals(variable.getName()) && !"line1".equals(variable.getName())
+                    && !"table1".equals(variable.getName()) && !"cellEditorResult1".equals(variable.getName())) {
+                fail("The cellEditorTool variables must be naming root1, element1, lineSemantic1, line1, table1 and cellEditorResult1 not " + variable.getName());
+            }
+        }
+
+        checkNoModifOncopy(cellEditorTool);
     }
 
     private void checkNoModifOncopy(EObject tool) {

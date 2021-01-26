@@ -1,7 +1,7 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2020 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License 2.0
+ * are made available under the terms of the Eclipse Public License v2.0
  * which accompanies this distribution, and is available at
  * https://www.eclipse.org/legal/epl-2.0/
  *
@@ -21,6 +21,7 @@ import org.eclipse.sirius.ext.base.I18N.TranslatableMessage;
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  */
 public final class Messages {
+
     static {
         I18N.initializeMessages(Messages.class, TableUIPlugin.INSTANCE);
     }
@@ -48,6 +49,15 @@ public final class Messages {
     public static String Action_setValues;
 
     @TranslatableMessage
+    public static String CelEditorFactoryManager_impossibleInstantiation;
+
+    @TranslatableMessage
+    public static String CelEditorFactoryManager_notFound;
+
+    @TranslatableMessage
+    public static String CelEditorFactoryManager_wrongImplementation;
+
+    @TranslatableMessage
     public static String DeleteLinesAction_label;
 
     @TranslatableMessage
@@ -73,6 +83,15 @@ public final class Messages {
 
     @TranslatableMessage
     public static String DFeatureColumnEditingSupport_notValidValue;
+
+    @TranslatableMessage
+    public static String DFeatureColumnEditingSupport_nullCellEditor;
+
+    @TranslatableMessage
+    public static String DFeatureColumnEditingSupport_notJavaQualifiedName;
+
+    @TranslatableMessage
+    public static String DFeatureColumnEditingSupport_unusableCellEditor;
 
     @TranslatableMessage
     public static String DTableEditor_ErrorSaveDeletedMessage;
@@ -216,7 +235,16 @@ public final class Messages {
     public static String SortLinesByColumnAction_label;
 
     @TranslatableMessage
+    public static String Table_CellEditorResult;
+
+    @TranslatableMessage
+    public static String Table_CellElement;
+
+    @TranslatableMessage
     public static String Table_CurrentSemanticElement;
+
+    @TranslatableMessage
+    public static String Table_LineElement;
 
     @TranslatableMessage
     public static String Table_SemanticColumnElement;
@@ -226,6 +254,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String Table_SemanticRootElement;
+
+    @TranslatableMessage
+    public static String Table_TableElement;
 
     @TranslatableMessage
     public static String TableDialectUIServices_newTableName;
@@ -250,12 +281,6 @@ public final class Messages {
 
     @TranslatableMessage
     public static String TableUIHelper_unsupportedColor;
-
-    @TranslatableMessage
-    public static String Table_TableElement;
-
-    @TranslatableMessage
-    public static String Table_LineElement;
 
     // CHECKSTYLE:ON
 
