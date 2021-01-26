@@ -38,6 +38,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionEventBroker;
 import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
@@ -65,7 +66,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.part.DDiagramRootEditPart;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -231,9 +231,10 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
          * Once the diagram (and all its children) is active, refresh the various ordering. This is especially needed
          * when creating/opening a diagram as some commands need a properly initialized graphically ordering to work.
          */
-        boolean refreshOnOpen = DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening();
         Diagram diagramView = getDiagramView();
-        boolean autoRefresh = new DRepresentationQuery(new EditPartQuery(this).getDDiagram().get()).isAutoRefresh();
+        DDiagram dDiagram = new EditPartQuery(this).getDDiagram().get();
+        boolean autoRefresh = new DRepresentationQuery(dDiagram).isAutoRefresh();
+        boolean refreshOnOpen = Session.of(dDiagram).get().getSiriusPreferences().isRefreshOnRepresentationOpening();
         getEditingDomain().getCommandStack().execute(new RefreshLayoutCommand(getEditingDomain(), diagramView, autoRefresh || refreshOnOpen));
         getEditingDomain().addResourceSetListener(semanticOrderingSynchronizer);
         getEditingDomain().addResourceSetListener(refreshZorder);

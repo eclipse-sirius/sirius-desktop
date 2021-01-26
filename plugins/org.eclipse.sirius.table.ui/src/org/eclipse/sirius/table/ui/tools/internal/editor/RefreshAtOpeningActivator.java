@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,6 @@ import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.provider.Messages;
 import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableEditorUtil;
 import org.eclipse.sirius.table.ui.tools.internal.editor.utils.TreeColumnWidthQuery;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeColumn;
@@ -30,9 +29,8 @@ import org.eclipse.ui.IPartListener;
 import org.eclipse.ui.IWorkbenchPart;
 
 /**
- * IPartListener to update the {@code TablePackage#DTABLE__HEADER_COLUMN_WIDTH}
- * feature of the {@link DTable} and the {@code TablePackage#DCOLUMN__WIDTH}
- * feature of the {@link DColumn}s at opening.
+ * IPartListener to update the {@code TablePackage#DTABLE__HEADER_COLUMN_WIDTH} feature of the {@link DTable} and the
+ * {@code TablePackage#DCOLUMN__WIDTH} feature of the {@link DColumn}s at opening.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -63,9 +61,7 @@ public class RefreshAtOpeningActivator implements IPartListener {
         this.tree = (Tree) abstractDTableEditor.getControl();
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void partActivated(IWorkbenchPart part) {
         if (part == abstractDTableEditor && enablePropertiesRefreshOnNextActivate) {
             refreshDTableModelFromTreeColumnWidth();
@@ -78,30 +74,22 @@ public class RefreshAtOpeningActivator implements IPartListener {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void partBroughtToTop(IWorkbenchPart part) {
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void partClosed(IWorkbenchPart part) {
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void partDeactivated(IWorkbenchPart part) {
 
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public void partOpened(IWorkbenchPart part) {
         if (part == abstractDTableEditor) {
             enablePropertiesRefreshOnNextActivate = true;
@@ -109,7 +97,7 @@ public class RefreshAtOpeningActivator implements IPartListener {
     }
 
     private void refreshDTableModelFromTreeColumnWidth() {
-        if (DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
+        if (Session.of(dTable).get().getSiriusPreferences().isRefreshOnRepresentationOpening()) {
             CompoundCommand refreshDTableAtOpeningCmd = new CompoundCommand(Messages.RefreshAtOpeningActivator_refreshTableCmdName);
 
             TreeColumn[] treeColumns = tree.getColumns();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -45,6 +45,7 @@ import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.business.api.dialect.command.RefreshRepresentationsCommand;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.table.metamodel.table.DTable;
@@ -58,7 +59,6 @@ import org.eclipse.sirius.table.ui.tools.internal.editor.provider.DTableEditorUt
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.marker.TraceabilityMarkerNavigationProvider;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.tools.internal.editor.AbstractDTableViewerManager;
@@ -208,7 +208,7 @@ public abstract class AbstractDTableEditor extends AbstractDTreeEditor implement
 
         if (getTableModel() != null) {
             // Launch the refresh if needed
-            if (DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening()) {
+            if (Session.of(getRepresentation()).get().getSiriusPreferences().isRefreshOnRepresentationOpening()) {
                 launchRefresh();
             }
 

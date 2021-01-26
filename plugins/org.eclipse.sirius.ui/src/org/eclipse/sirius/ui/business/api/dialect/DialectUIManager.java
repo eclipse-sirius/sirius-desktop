@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -55,40 +55,28 @@ public interface DialectUIManager extends DialectUIServices {
     void disableDialectUI(DialectUI dialect);
 
     /**
-     * Return true if at least one dialect is able to export this
-     * <code>representation</code> to this <code>format<code>, false otherwise.
+     * Return true if at least one dialect is able to export this <code>representation</code> to this
+     * <code>format</code>, false otherwise.
      * 
      * @param representation
      *            The representation to export.
      * @param format
      *            The desired format.
-     * @return true if at least one dialect is able to export this
-     *         <code>representation </code> to this <code>format<code>, false
-     *         otherwise
+     * @return true if at least one dialect is able to export this <code>representation </code> to this
+     *         <code>format</code>, false otherwise
      */
     boolean canExport(DRepresentation representation, ExportFormat format);
 
     /**
-     * Return true if at least one dialect is able to export the
-     * <code>representation</code> associated to the <code>repDescriptor</code>
-     * to this <code>format</code>, false otherwise.
+     * Return true if at least one dialect is able to export the <code>representation</code> associated to the
+     * <code>repDescriptor</code> to this <code>format</code>, false otherwise.
      * 
      * @param repDescriptor
      *            Represents the representation to export.
      * @param format
      *            The desired format.
-     * @return true if at least one dialect is able to export this
-     *         <code>representation </code> to this <code>format</code>, false
-     *         otherwise
+     * @return true if at least one dialect is able to export this <code>representation </code> to this
+     *         <code>format</code>, false otherwise
      */
     boolean canExport(DRepresentationDescriptor repDescriptor, ExportFormat format);
-
-    /**
-     * Returns <code>true</code> if the refresh should be done on representation
-     * opening.
-     * 
-     * @return <code>true</code> if the refresh should be done on representation
-     *         opening.
-     */
-    boolean isRefreshActivatedOnRepresentationOpening();
 }
