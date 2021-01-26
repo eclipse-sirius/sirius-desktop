@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -39,10 +39,10 @@ import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
 import org.eclipse.gmf.runtime.notation.Anchor;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.sirius.ext.draw2d.figure.FigureUtilities;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IFigureWithoutLabels;
 
 /**
- * Utility class to collect helper methods which deal with GraphicalOrdering but
- * which are not part of its API.
+ * Utility class to collect helper methods which deal with GraphicalOrdering but which are not part of its API.
  * 
  * @author nlepine
  */
@@ -73,19 +73,15 @@ public final class GraphicalHelper {
      * Applied zoom on relative point.<BR>
      * For example:
      * <UL>
-     * <LI>For a zoom of 200%, the result of this method for the point (100,
-     * 100) is (200, 200)</LI>
-     * <LI>For a zoom of 50%, the result of this method for the point (100, 100)
-     * is (50, 50)</LI>
+     * <LI>For a zoom of 200%, the result of this method for the point (100, 100) is (200, 200)</LI>
+     * <LI>For a zoom of 50%, the result of this method for the point (100, 100) is (50, 50)</LI>
      * </UL>
      * 
      * @param part
      *            the current part
      * @param relativePoint
      *            relative point
-     * @deprecated Use
-     *             {@link #applyInverseZoomOnPoint(IGraphicalEditPart, Point)}
-     *             instead
+     * @deprecated Use {@link #applyInverseZoomOnPoint(IGraphicalEditPart, Point)} instead
      */
     @Deprecated
     public static void appliedZoomOnRelativePoint(IGraphicalEditPart part, Point relativePoint) {
@@ -101,10 +97,8 @@ public final class GraphicalHelper {
      * Applies zoom on a point and returns this point for convenience.<BR>
      * For example:
      * <UL>
-     * <LI>For a zoom of 200%, the result of this method for the point (100,
-     * 100) is (200, 200)</LI>
-     * <LI>For a zoom of 50%, the result of this method for the point (100, 100)
-     * is (50, 50)</LI>
+     * <LI>For a zoom of 200%, the result of this method for the point (100, 100) is (200, 200)</LI>
+     * <LI>For a zoom of 50%, the result of this method for the point (100, 100) is (50, 50)</LI>
      * </UL>
      * 
      * @param part
@@ -124,14 +118,11 @@ public final class GraphicalHelper {
     }
 
     /**
-     * Applies inverse zoom on a point and returns this point for convenience.
-     * <BR>
+     * Applies inverse zoom on a point and returns this point for convenience. <BR>
      * For example:
      * <UL>
-     * <LI>For a zoom of 200%, the result of this method for the point (100,
-     * 100) is (50, 50)</LI>
-     * <LI>For a zoom of 50%, the result of this method for the point (100, 100)
-     * is (200, 200)</LI>
+     * <LI>For a zoom of 200%, the result of this method for the point (100, 100) is (50, 50)</LI>
+     * <LI>For a zoom of 50%, the result of this method for the point (100, 100) is (200, 200)</LI>
      * </UL>
      * 
      * @param part
@@ -168,9 +159,8 @@ public final class GraphicalHelper {
     }
 
     /**
-     * Returns the difference between the logical origin (0, 0) and the top-left
-     * point actually visible. This corresponds to how much the scrollbars
-     * "shift" the diagram.
+     * Returns the difference between the logical origin (0, 0) and the top-left point actually visible. This
+     * corresponds to how much the scrollbars "shift" the diagram.
      * 
      * @param part
      *            an edit part on the view
@@ -322,9 +312,8 @@ public final class GraphicalHelper {
     }
 
     /**
-     * Converts a dimension from logical coordinates to screen coordinates.
-     * Dimensions have no defined position, so only the current zoom level is
-     * take into account, not the scroll state.
+     * Converts a dimension from logical coordinates to screen coordinates. Dimensions have no defined position, so only
+     * the current zoom level is take into account, not the scroll state.
      * 
      * @param dim
      *            the dimension to convert.
@@ -336,9 +325,8 @@ public final class GraphicalHelper {
     }
 
     /**
-     * Return the Point (absolute draw2d coordinates) corresponding to this
-     * Anchor. If anchor is not an IdentityAnchor, the center of
-     * <code>parent</code> is returned.
+     * Return the Point (absolute draw2d coordinates) corresponding to this Anchor. If anchor is not an IdentityAnchor,
+     * the center of <code>parent</code> is returned.
      * 
      * @param parent
      *            The parent node
@@ -386,9 +374,8 @@ public final class GraphicalHelper {
     }
 
     /**
-     * Get intersection between a line between lineOrigin and lineTerminus, and
-     * the rectangle bounds of the part. If there are several intersections, the
-     * shortest is returned.
+     * Get intersection between a line between lineOrigin and lineTerminus, and the rectangle bounds of the part. If
+     * there are several intersections, the shortest is returned.
      * 
      * @param lineOrigin
      *            Origin of the line
@@ -397,8 +384,7 @@ public final class GraphicalHelper {
      * @param part
      *            Part to detect intersection.
      * @param minimalDistancefromLineOrigin
-     *            true if the shortest distance is between the line origin and
-     *            the part, false otherwise.
+     *            true if the shortest distance is between the line origin and the part, false otherwise.
      * @return Intersection between a line and a rectangle.
      */
     public static Optional<Point> getIntersection(Point lineOrigin, Point lineTerminus, IGraphicalEditPart part, boolean minimalDistancefromLineOrigin) {
@@ -406,9 +392,8 @@ public final class GraphicalHelper {
     }
 
     /**
-     * Get intersection between a line between lineOrigin and lineTerminus, and
-     * the rectangle bounds of the part. If there are several intersections, the
-     * shortest is returned.
+     * Get intersection between a line between lineOrigin and lineTerminus, and the rectangle bounds of the part. If
+     * there are several intersections, the shortest is returned.
      * 
      * @param lineOrigin
      *            Origin of the line
@@ -417,11 +402,9 @@ public final class GraphicalHelper {
      * @param part
      *            Part to detect intersection.
      * @param minimalDistancefromLineOrigin
-     *            true if the shortest distance is between the line origin and
-     *            the part, false otherwise.
+     *            true if the shortest distance is between the line origin and the part, false otherwise.
      * @param useNearestPoint
-     *            If true, if there is no intersection, the nearest point on the
-     *            rectangle is returned.
+     *            If true, if there is no intersection, the nearest point on the rectangle is returned.
      * @return Intersection between a line and a rectangle.
      */
     public static Optional<Point> getIntersection(Point lineOrigin, Point lineTerminus, IGraphicalEditPart part, boolean minimalDistancefromLineOrigin, boolean useNearestPoint) {
@@ -431,9 +414,8 @@ public final class GraphicalHelper {
     }
 
     /**
-     * Get intersection between a line between lineOrigin and lineTerminus, and
-     * a rectangle. If there are several intersections, the shortest is
-     * returned.
+     * Get intersection between a line between lineOrigin and lineTerminus, and a rectangle. If there are several
+     * intersections, the shortest is returned.
      * 
      * @param lineOrigin
      *            Origin of the line
@@ -442,8 +424,7 @@ public final class GraphicalHelper {
      * @param rectangle
      *            rectangle to detect intersection.
      * @param minimalDistancefromLineOrigin
-     *            true if the shortest distance is between the line origin and
-     *            the part, false otherwise.
+     *            true if the shortest distance is between the line origin and the part, false otherwise.
      * @return Intersection between a line and a rectangle.
      */
     public static Optional<Point> getIntersection(Point lineOrigin, Point lineTerminus, Rectangle rectangle, boolean minimalDistancefromLineOrigin) {
@@ -451,9 +432,8 @@ public final class GraphicalHelper {
     }
 
     /**
-     * Get intersection between a line between lineOrigin and lineTerminus, and
-     * a rectangle. If there are several intersections, the shortest is
-     * returned.
+     * Get intersection between a line between lineOrigin and lineTerminus, and a rectangle. If there are several
+     * intersections, the shortest is returned.
      * 
      * @param lineOrigin
      *            Origin of the line
@@ -462,11 +442,9 @@ public final class GraphicalHelper {
      * @param rectangle
      *            rectangle to detect intersection.
      * @param minimalDistancefromLineOrigin
-     *            true if the shortest distance is between the line origin and
-     *            the part, false otherwise.
+     *            true if the shortest distance is between the line origin and the part, false otherwise.
      * @param useNearestPoint
-     *            If true, if there is no intersection, the nearest point on the
-     *            rectangle is returned.
+     *            If true, if there is no intersection, the nearest point on the rectangle is returned.
      * @return Intersection between a line and a rectangle.
      */
     public static Optional<Point> getIntersection(Point lineOrigin, Point lineTerminus, Rectangle rectangle, boolean minimalDistancefromLineOrigin, boolean useNearestPoint) {
@@ -551,8 +529,8 @@ public final class GraphicalHelper {
     }
 
     /**
-     * Get the intersection point list between the segment formed by the start
-     * and end points and the given figure bounds.
+     * Get the intersection point list between the segment formed by the start and end points and the given figure
+     * bounds.
      * 
      * @param start
      *            start point
@@ -578,8 +556,8 @@ public final class GraphicalHelper {
 
     /**
      * Get the absolute bounds of this <code>part</code>.<BR>
-     * Detail: If the zoom is set to 200%, the location and the size are
-     * multiplied by two with respect to the real location and size.
+     * Detail: If the zoom is set to 200%, the location and the size are multiplied by two with respect to the real
+     * location and size.
      * 
      * @param part
      *            The part to consider.
@@ -597,8 +575,8 @@ public final class GraphicalHelper {
     }
 
     /**
-     * Get the absolute bounds of this <code>part</code>. In case of zoom or/and
-     * a scrollbar, the bounds are converted from screen to logical.<BR>
+     * Get the absolute bounds of this <code>part</code>. In case of zoom or/and a scrollbar, the bounds are converted
+     * from screen to logical.<BR>
      * 
      * @param part
      *            The part to consider.
@@ -632,13 +610,31 @@ public final class GraphicalHelper {
     }
 
     /**
-     * Return true if the snapToGrid is enabled for the diagram containing this
-     * edit part, false otherwise.
+     * Get the absolute bounds of this <code>part</code> by excluding labels from the bounds.<br/>
+     * In case of zoom or/and scrollbars, the bounds are converted from screen to logical.<BR>
+     * 
+     * @param part
+     *            The part to consider.
+     * @return The absolute bounds.
+     */
+    public static Rectangle getAbsoluteBoundsWithoutLabelsIn100Percent(GraphicalEditPart part) {
+        PrecisionRectangle bounds;
+        if (part.getFigure() instanceof IFigureWithoutLabels) {
+            bounds = new PrecisionRectangle(((IFigureWithoutLabels) part.getFigure()).getBoundsWithoutLabels());
+            part.getFigure().translateToAbsolute(bounds);
+            screen2logical(bounds, part, false);
+        } else {
+            bounds = new PrecisionRectangle(getAbsoluteBoundsIn100Percent(part));
+        }
+        return bounds;
+    }
+
+    /**
+     * Return true if the snapToGrid is enabled for the diagram containing this edit part, false otherwise.
      * 
      * @param editPart
      *            The edit part to use.
-     * @return true if the snapToGrid is enabled for the diagram containing this
-     *         edit part, false otherwise.
+     * @return true if the snapToGrid is enabled for the diagram containing this edit part, false otherwise.
      */
     public static boolean isSnapToGridEnabled(EditPart editPart) {
         return (Boolean) editPart.getViewer().getProperty(SnapToGrid.PROPERTY_GRID_ENABLED);

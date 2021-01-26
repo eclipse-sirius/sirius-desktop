@@ -199,6 +199,10 @@
 				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIManager.isRefreshActivatedOnRepresentationOpening()</code> has been removed. Use 
 				<code>org.eclipse.sirius.business.api.session.SiriusPreferences.isRefreshAtRepresentationOpening()</code> instead.
 			</li>
+			<li><span class="label label-success">Added</span> The API 
+				<code>org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IFigureWithoutLabels</code> has been created so that a Figure, that implements this API, can provide its bounds without considering its labels. The method 
+				<code>org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper.getAbsoluteBoundsWithoutLabelsIn100Percent(GraphicalEditPart)</code> has been added to get the rectangle bounds without taking labels into account. This is used, in particular, to compute the bendpoints of an edge when the source or the target of the edge is an edge.
+			</li>
 		</ul>
 		<h2 id="sirius6.4.1">Changes in Sirius 6.4.1</h2>
 		<p>This is service release to fix two issues which were not detected in time for 6.4.0. The issues only impact a new API which was introduced in 6.4.0 (Bug 563117 - 

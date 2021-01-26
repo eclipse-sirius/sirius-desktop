@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -77,6 +77,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.routers.SiriusBendpointConne
 import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToHelperUtil;
 import org.eclipse.sirius.ext.gmf.runtime.draw2d.ui.figures.SiriusPolylineConnectionEx;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
+import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IFigureWithoutLabels;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
@@ -499,7 +500,7 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
     /**
      * The figure.
      */
-    public class ViewEdgeFigure extends SiriusPolylineConnectionEx implements ITreeConnection {
+    public class ViewEdgeFigure extends SiriusPolylineConnectionEx implements ITreeConnection, IFigureWithoutLabels {
         /**
          * Label figure that allows to set the model {@link View}. These labels are created before label edit parts are
          * created so we need to be able to attached the right view after.
@@ -841,6 +842,11 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
         public IGraphicalEditPart getEditPart() {
             return AbstractDiagramEdgeEditPart.this;
         }
+
+        @Override
+        public Rectangle getBoundsWithoutLabels() {
+            return getPoints().getBounds();
+        }
     }
 
     private static boolean invalidPath(final AbstractDiagramEdgeEditPart editPart, final DEdge edge) {
@@ -1042,7 +1048,6 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
     public RoutingStyle getRoutingStyle() {
         return routingStyle;
     }
-
 
     /**
      * Set the routing style for which a listener is added in the DiagramEventBroker during the activation of this edit
