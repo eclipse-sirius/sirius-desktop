@@ -31,6 +31,7 @@
       <topic href="doc/user/general/Aird_Editor.html#semantic_models" label="Managing the Semantic Models" />
       <topic href="doc/user/general/Aird_Editor.html#representations" label="Managing Representations and Viewpoints" />
     </topic>
+    <topic href="doc/user/general/Aird_Preferences.html" label="Sirius Preferences at the aird level"/>
     <topic href="doc/user/diagrams/Diagrams.html" label="Diagrams">
       <topic href="doc/user/diagrams/Diagrams.html#introduction" label="Introduction" />
       <topic href="doc/user/diagrams/Diagrams.html#features_overview" label="Features Overview" />

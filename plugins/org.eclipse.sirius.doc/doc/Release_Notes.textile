@@ -4,6 +4,20 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius6.5.0). Changes in Sirius 6.5.0
+
+h3. User-Visible Changes
+
+* <span class="label label-success">Added</span> It is possible to override at the aird level both "Sirius/Do Refresh on representation opening" and "Sirius/Automatic refresh" preferences. To override the preferences, go to the Properties/Sirius settings section. The preferences are stored in the project scope and associated to the aird file. For more details, refer the "documentation":user/general/Aird_Preferences.html .
+
+h3. Developer-Visible Changes
+
+* <span class="label label-success">Added</span> The API @org.eclipse.sirius.business.api.session.SiriusPreferences@ has been added to get preferences related to a Sirius Session that is to a main aird file. An instance of this API can be accessed with @org.eclipse.sirius.business.api.session.Session.getSiriusPreferences()@. Both @org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys.PREF_AUTO_REFRESH@ and @org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING@ **should not be used any more by clients with Eclipse preference API** but @org.eclipse.sirius.business.api.session.SiriusPreferences.isAutoRefresh()@ and @org.eclipse.sirius.business.api.session.SiriusPreferences.isRefreshAtRepresentationOpening()@ should be used instead.
+The reason  is that the implementation of @SiriusPreferences@ wraps the logic of getting or storing the preferences on a ProjectScope.
+* <span class="label label-danger">Removed</span> @org.eclipse.sirius.tools.api.ui.RefreshHelper.isAutoRefresh()@ has been removed. Clients should call @Session.getPreferences.isAutoRefresh()@ or @new DRepresentationQuery(DRpresentation).isAutoRefresh()@ instead.
+* <span class="label label-danger">Removed</span> @org.eclipse.sirius.diagram.ui.tools.api.properties.PropertiesService@, @org.eclipse.sirius.tools.api.ui.property.IPropertiesProvider@ and @org.eclipse.sirius.diagram.ui.tools.internal.properties.SiriusDiagramEditorPropertiesProvider@ have been removed. Clients should call @Session.getPreferences.isAutoRefresh()@ or @new DRepresentationQuery(DRpresentation).isAutoRefresh()@ instead.
+* <span class="label label-danger">Removed</span> @org.eclipse.sirius.ui.business.api.dialect.DialectUIManager.isRefreshActivatedOnRepresentationOpening()@ has been removed. Use @org.eclipse.sirius.business.api.session.SiriusPreferences.isRefreshAtRepresentationOpening()@ instead.
+
 h2(#sirius6.4.1). Changes in Sirius 6.4.1
 
 This is service release to fix two issues which were not detected in time for 6.4.0. The issues only impact a new API which was introduced in 6.4.0 (Bug 563117 - _Copy format to existing/new diagram based on source to target semantic elements mapping_).

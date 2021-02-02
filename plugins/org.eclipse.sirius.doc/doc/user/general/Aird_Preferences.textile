@@ -1,0 +1,27 @@
+h1. Sirius Preferences at the aird level
+
+This document describes the possiblity to associate Sirius preferences to an aird file that will override the values defined in Window/Preferences/Sirius.
+
+{toc:style=disc|minLevel=2|maxLevel=3}
+
+h2. Overview
+
+Window/Preference/Sirius give access to Sirius preferences and especially Refresh preferences.
+!images/refreshPreferences.png!
+
+These preferences are used for every aird file unless there are overridden.
+
+h2. Overriding preferences for an aird
+
+It is possible to override these preferences for the main aird that is the aird used to open a Sirius Session.
+Note that, in non modeling project(legacy project), there may be several main aird.
+
+The user can see and change the preferences using **Properties** dialog, contextual to an aird file.
+
+!images/siriusProperties.png!
+
+If **Enable project specific settings** is checked, the value of the preferences can be set for the selected aird.
+It will overrides the preference displayed in Window/Preferences/Sirius
+
+Note that the preferences are stored in the project in <pre><code>&lt;project&gt;/.settings/&lt;qualifier&gt;&lt;aird_uid&gt;.prefs</code></pre>
+There is a preference file per qualifier and per aird unique identifier.

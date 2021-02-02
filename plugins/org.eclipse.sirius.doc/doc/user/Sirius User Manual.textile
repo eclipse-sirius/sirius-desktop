@@ -7,6 +7,7 @@ Note that each specific modeler will have its own set of features, and not all o
 You will find the following sections:
 * "*Modeling Project*":general/Modeling%20Project.html explains how to use the simple UI to create and manage your models and their representations.
 * "*Aird editor*":general/Aird_Editor.html describes the Sirius entry point editor gathering all functionalities allowing to create and manage your models and representations and to enable/disable available viewpoints in a unified easy to use UI.
+* "*Sirius Preferences at aird level*":general/Aird_Preferences.html describes the possiblity to associate Sirius preferences to an aird file that will override the values defined in Window/Preferences/Sirius.
 * "*Diagrams*":diagrams/Diagrams.html shows all the common features of graphical modelers made with Sirius.
 * "*Sequence Diagrams*":sequences/Sequence%20Diagrams.html are a special case of diagram with some specific behaviors which are described here.
 * "*Tables*":tables/Tables.html covers how to use the two kinds of tabular representations supported by Sirius: edition tables and cross-tables.

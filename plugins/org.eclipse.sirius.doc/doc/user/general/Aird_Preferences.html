@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8' ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>Aird_Preferences</title>
+		<link type="text/css" rel="stylesheet" href="../../resources/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../../resources/custom.css"/>
+	</head>
+	<body>
+		<h1 id="SiriusPreferencesattheairdlevel">Sirius Preferences at the aird level</h1>
+		<p>This document describes the possiblity to associate Sirius preferences to an aird file that will override the values defined in Window/Preferences/Sirius.</p>
+		<ol class="toc" style="list-style: disc;">
+			<li>
+				<a href="#SiriusPreferencesattheairdlevel">Sirius Preferences at the aird level</a>
+				<ol style="list-style: disc;">
+					<li>
+						<a href="#Overview">Overview</a>
+					</li>
+					<li>
+						<a href="#Overridingpreferencesforanaird">Overriding preferences for an aird</a>
+					</li>
+				</ol>
+			</li>
+		</ol>
+		<h2 id="Overview">Overview</h2>
+		<p>Window/Preference/Sirius give access to Sirius preferences and especially Refresh preferences.
+			<br/>
+			<img border="0" src="images/refreshPreferences.png"/>
+		</p>
+		<p>These preferences are used for every aird file unless there are overridden.</p>
+		<h2 id="Overridingpreferencesforanaird">Overriding preferences for an aird</h2>
+		<p>It is possible to override these preferences for the main aird that is the aird used to open a Sirius Session.
+			<br/>Note that, in non modeling project(legacy project), there may be several main aird.
+		</p>
+		<p>The user can see and change the preferences using 
+			<b>Properties</b> dialog, contextual to an aird file.
+		</p>
+		<p>
+			<img border="0" src="images/siriusProperties.png"/>
+		</p>
+		<p>If 
+			<b>Enable project specific settings</b> is checked, the value of the preferences can be set for the selected aird.
+			<br/>It will overrides the preference displayed in Window/Preferences/Sirius
+		</p>
+		<p>Note that the preferences are stored in the project in <pre><code>&lt;project&gt;/.settings/&lt;qualifier&gt;&lt;aird_uid&gt;.prefs</code></pre>
+			<br/>There is a preference file per qualifier and per aird unique identifier.
+		</p>
+	</body>
+</html>
