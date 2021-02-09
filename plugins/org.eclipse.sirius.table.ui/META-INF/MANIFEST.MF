@@ -41,7 +41,7 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.8.0",
  org.eclipse.ui.views.properties.tabbed;bundle-version="3.5.300",
  org.eclipse.emf.edit.ui;bundle-version="2.8.0",
  org.eclipse.emf.workspace;bundle-version="1.5.1",
- com.google.guava;bundle-version="[21.0,27.2)",
+ com.google.guava;bundle-version="[21.0,30.2)",
  org.eclipse.sirius.common.ui;bundle-version="2.0.0",
  org.eclipse.jface.text;bundle-version="3.8.2"
 Eclipse-LazyStart: true
