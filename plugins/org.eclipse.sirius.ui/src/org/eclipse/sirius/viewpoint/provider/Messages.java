@@ -1070,6 +1070,21 @@ public final class Messages {
     public static String SiriusRepresentationWithInactiveStatusLabelProvider_representationDescriptionItem_tooltip;
 
     @TranslatableMessage
+    public static String SiriusSessionDetailsPropertyPage_sessionNotOpened;
+
+    @TranslatableMessage
+    public static String SiriusSessionDetailsPropertyPage_computeSessionDetails;
+
+    @TranslatableMessage
+    public static String SiriusSessionDetailsPropertyPage_computingSessionDetails;
+
+    @TranslatableMessage
+    public static String SiriusSessionDetailsPropertyPage_repOpenedInEditor;
+
+    @TranslatableMessage
+    public static String SiriusSessionDetailsPropertyPage_copyToClipboard;
+
+    @TranslatableMessage
     public static String SiriusUncontrolHandler_uncontrolRepresentationsMessage;
 
     @TranslatableMessage

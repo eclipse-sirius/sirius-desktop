@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2020 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -559,6 +559,75 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SessionManagerImpl_representationsFileLoadingSeeErrorLogMsg;
+
+    @TranslatableMessage
+    public static String SessionQuery_Date;
+
+    @TranslatableMessage
+    public static String SessionQuery_Resources;
+
+    @TranslatableMessage
+    public static String SessionQuery_SessionResources;
+
+    @TranslatableMessage
+    public static String SessionQuery_SemanticResources;
+
+    @TranslatableMessage
+    public static String SessionQuery_ControlledResources;
+
+    @TranslatableMessage
+    public static String SessionQuery_Elements;
+
+    @TranslatableMessage
+    public static String SessionQuery_FileSize;
+
+    @TranslatableMessage
+    public static String SessionQuery_Viewpoints;
+
+    @TranslatableMessage
+    public static String SessionQuery_ActiveViewpoints;
+
+    @TranslatableMessage
+    public static String SessionQuery_InactiveViewpoints;
+
+    @TranslatableMessage
+    public static String SessionQuery_LoadedFromResource;
+
+    @TranslatableMessage
+    public static String SessionQuery_Representations;
+
+    @TranslatableMessage
+    public static String SessionQuery_AllRepresentations;
+
+    @TranslatableMessage
+    public static String SessionQuery_Diagram;
+
+    @TranslatableMessage
+    public static String SessionQuery_Tree;
+
+    @TranslatableMessage
+    public static String SessionQuery_Table;
+
+    @TranslatableMessage
+    public static String SessionQuery_Sequence;
+
+    @TranslatableMessage
+    public static String SessionQuery_LoadedReps;
+
+    @TranslatableMessage
+    public static String SessionQuery_NbRepElements;
+
+    @TranslatableMessage
+    public static String SessionQuery_LoadedBrokenReps;
+
+    @TranslatableMessage
+    public static String SessionQuery_InvalidReps;
+
+    @TranslatableMessage
+    public static String SessionQuery_RepUid;
+
+    @TranslatableMessage
+    public static String SessionQuery_RepresentationDescriptorDetails;
 
     @TranslatableMessage
     public static String SessionResourcesSynchronizer_cantHandleResourceChangeMsg;

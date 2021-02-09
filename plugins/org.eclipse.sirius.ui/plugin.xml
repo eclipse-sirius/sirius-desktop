@@ -654,11 +654,26 @@
    <extension
      point = "org.eclipse.ui.propertyPages">
         <page
-           id="org.eclipse.sirius.ui.SiriusPreferencesPropertyPage"
-           name="%property.page.preferences.name"
-	   objectClass="org.eclipse.core.resources.IFile"
-	   class="org.eclipse.sirius.ui.business.internal.preference.SiriusPreferencesPropertyPage"
-           nameFilter="*.aird">
+            id="org.eclipse.sirius.ui.SiriusPreferencesPropertyPage"
+            name="%property.page.preferences.name"
+            class="org.eclipse.sirius.ui.business.internal.preference.SiriusPreferencesPropertyPage"
+            nameFilter="*.aird">
+           <enabledWhen>
+              <instanceof
+                    value="org.eclipse.core.resources.IFile">
+              </instanceof>
+           </enabledWhen>
+        </page>
+        <page
+            class="org.eclipse.sirius.ui.business.internal.session.SiriusSessionDetailsPropertyPage"
+            id="org.eclipse.sirius.ui.SiriusSessionDetailsPropertyPage"
+            name="%property.page.session.details.name"
+            nameFilter="*.aird">
+           <enabledWhen>
+              <instanceof
+                    value="org.eclipse.core.resources.IFile">
+              </instanceof>
+           </enabledWhen>
         </page>
    </extension>
 </plugin>

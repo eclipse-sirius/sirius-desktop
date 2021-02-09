@@ -70,6 +70,7 @@ import org.eclipse.sirius.tests.swtbot.modelexplorer.PropertyViewOnModelExplorer
 import org.eclipse.sirius.tests.swtbot.modelexplorer.PropertyViewOnModelExplorerSelectionWithLockedObjectTest;
 import org.eclipse.sirius.tests.swtbot.modelexplorer.RepresentationVisibilityAfterSessionReloadTest;
 import org.eclipse.sirius.tests.swtbot.propertypage.SiriusPreferencesPropertyPageTest;
+import org.eclipse.sirius.tests.swtbot.propertypage.SiriusSessionDetailsPropertyPageTest;
 import org.eclipse.sirius.tests.swtbot.sessioneditor.SessionEditorOpeningTests;
 import org.eclipse.sirius.tests.swtbot.tabbar.LockedTabBarTest;
 import org.eclipse.sirius.tests.swtbot.tabbar.NotInvisibleTabBarTest;
@@ -195,6 +196,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(OpenDiagramWithExceptionTest.class);
         suite.addTestSuite(CompartmentsSizeTest.class);
         suite.addTestSuite(SiriusPreferencesPropertyPageTest.class);
+        suite.addTestSuite(SiriusSessionDetailsPropertyPageTest.class);
     }
 
     /**

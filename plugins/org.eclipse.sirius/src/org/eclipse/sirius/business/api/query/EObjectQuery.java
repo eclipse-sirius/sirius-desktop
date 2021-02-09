@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import java.util.stream.Collectors;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
@@ -64,6 +65,24 @@ import com.google.common.collect.Iterables;
  * 
  */
 public class EObjectQuery {
+
+    private static final String BRACKET_OPEN = "{"; //$NON-NLS-1$
+
+    private static final String BRACKET_CLOSE = "}"; //$NON-NLS-1$
+
+    private static final String COMMA = ", "; //$NON-NLS-1$
+
+    private static final String COLON = ": "; //$NON-NLS-1$
+
+    private static final String DOUBLE_COLON = "::"; //$NON-NLS-1$
+
+    private static final String ECLASS = "eClass"; //$NON-NLS-1$
+
+    private static final String NAME_ATTR = "name"; //$NON-NLS-1$
+
+    private static final String ID_ATTR = "id"; //$NON-NLS-1$
+
+    private static final String UID_ATTR = "uid"; //$NON-NLS-1$
 
     /** The concerned {@link EObject}. */
     protected EObject eObject;
@@ -477,8 +496,9 @@ public class EObjectQuery {
     }
 
     /**
-     * Provides a mean to get SiriusReferenceFinder to some Sirius Elements (such as DRepresentationElement, DRepresentation or DRepresentationDescriptor) from some semantic objects
-     * within the scope of the Sirius {@link Session} the semanticObject belongs to.
+     * Provides a mean to get SiriusReferenceFinder to some Sirius Elements (such as DRepresentationElement,
+     * DRepresentation or DRepresentationDescriptor) from some semantic objects within the scope of the Sirius
+     * {@link Session} the semanticObject belongs to.
      * 
      * @return the API
      */
@@ -486,5 +506,54 @@ public class EObjectQuery {
         SiriusReferenceFinder inverseCrossRef = Optional.ofNullable(getSession()).filter(DAnalysisSessionImpl.class::isInstance).map(DAnalysisSessionImpl.class::cast)
                 .map(DAnalysisSessionImpl::getSiriusReferenceFinder).orElse(null);
         return inverseCrossRef;
+    }
+
+    /**
+     * Returns a generic description of an EObject.<br/>
+     * This method will try to find a name, id and uid attributes and display their value if it exists.<br/>
+     * Warning: This method is readOnly and must not lead to resource loading or proxy resolution.
+     * 
+     * @return the description on the form {eClass: <eClass>, name: <name>, id: <id>, uid: <uid>}
+     */
+    public String getGenericDecription() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(BRACKET_OPEN).append(ECLASS).append(COLON).append(eObject.eClass().getEPackage().getName()).append(DOUBLE_COLON).append(eObject.eClass().getName());
+        String name = getAttributeValue(NAME_ATTR);
+        if (name != null) {
+            sb.append(COMMA).append(NAME_ATTR).append(COLON).append(name);
+        }
+        String id = getAttributeValue(ID_ATTR);
+        if (id != null) {
+            sb.append(COMMA).append(ID_ATTR).append(COLON).append(id);
+        }
+        String uid = getAttributeValue(UID_ATTR);
+        if (uid != null) {
+            sb.append(COMMA).append(UID_ATTR).append(COLON).append(uid);
+        }
+        sb.append(BRACKET_CLOSE);
+        return sb.toString();
+    }
+
+    /**
+     * Tries to find an attribute which name contains attributeName among all EAttribute.
+     * 
+     * @return the attribute value if found otherwise null;
+     */
+    private String getAttributeValue(String attributeName) {
+        String valueStr = null;
+        EList<EAttribute> eAllAttributes = eObject.eClass().getEAllAttributes();
+        Optional<EAttribute> optAttribute = eAllAttributes.stream().filter(att -> {
+            return att.getName() != null && att.getName().contains(attributeName);
+        }).findFirst();
+        if (optAttribute.isPresent()) {
+            try {
+                Object value = eObject.eGet(optAttribute.get());
+                if (value != null) {
+                    valueStr = value.toString();
+                }
+            } catch (IllegalArgumentException e) {
+            }
+        }
+        return valueStr;
     }
 }
