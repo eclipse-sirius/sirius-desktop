@@ -67,6 +67,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.format.semantic.diagram.util
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
@@ -313,8 +314,8 @@ public class MappingBasedSiriusFormatManagerFactory {
             throw new IllegalArgumentException(Messages.MappingBasedSiriusFormatManagerFactory_ErrorSourceAndTargetDiagramsAreTheSame);
         }
         if (!EqualityHelper.areEquals(sourceDiagram.getDescription(), targetDiagram.getDescription())) {
-            throw new IllegalArgumentException(MessageFormat.format(Messages.MappingBasedSiriusFormatManagerFactory_ErrorSourceAndTargetDiagramDecriptionsDoesNotMatch, sourceDiagram.getDescription(),
-                    targetDiagram.getDescription()));
+            throw new IllegalArgumentException(MessageFormat.format(Messages.MappingBasedSiriusFormatManagerFactory_ErrorSourceAndTargetDiagramDecriptionsDoesNotMatch,
+                    sourceDiagram.getDescription().getName(), targetDiagram.getDescription().getName(), sourceDiagram.getDescription(), targetDiagram.getDescription()));
         }
     }
 
@@ -451,7 +452,10 @@ public class MappingBasedSiriusFormatManagerFactory {
             }
             return targetDiagram;
         } else {
-            DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.MappingBasedSiriusFormatManagerFactory_ImpossibleToSuitableDescription, descs, sourceDescName, targetSession));
+            DiagramPlugin.getDefault()
+                    .logError(MessageFormat.format(Messages.MappingBasedSiriusFormatManagerFactory_ImpossibleToSuitableDescription,
+                            descs.stream().map(desc -> desc.getName()).collect(Collectors.joining(", ")), sourceDescName, //$NON-NLS-1$
+                    SiriusEditPlugin.getPlugin().getUiCallback().getSessionNameToDisplayWhileSaving(targetSession)));
         }
         return null;
     }

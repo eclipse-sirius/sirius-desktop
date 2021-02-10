@@ -212,7 +212,8 @@ public class MappingBasedSiriusFormatDataManagerCallCheckTest extends AbstractMa
         try {
             applyPredefinedFormatDataOnRawDiagrams(diagramToCopyFormat, diagramToPasteFormat, getFullTestConfiguration(), session, session);
         } catch (IllegalArgumentException e) {
-            assertEquals(e.getMessage(), MessageFormat.format(Messages.MappingBasedSiriusFormatManagerFactory_ErrorSourceAndTargetDiagramDecriptionsDoesNotMatch, diagramToCopyFormat.getDescription(),
+            assertEquals(e.getMessage(), MessageFormat.format(Messages.MappingBasedSiriusFormatManagerFactory_ErrorSourceAndTargetDiagramDecriptionsDoesNotMatch,
+                    diagramToCopyFormat.getDescription().getName(), diagramToPasteFormat.getDescription().getName(), diagramToCopyFormat.getDescription(),
                     diagramToPasteFormat.getDescription()));
         }
     }
