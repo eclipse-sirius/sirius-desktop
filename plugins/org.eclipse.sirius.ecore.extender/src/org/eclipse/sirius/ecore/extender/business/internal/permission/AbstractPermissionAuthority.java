@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009-2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,9 +12,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.ecore.extender.business.internal.permission;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -61,6 +63,12 @@ public abstract class AbstractPermissionAuthority implements IPermissionAuthorit
         for (IAuthorityListener listener : listeners) {
             listener.notifyIsLocked(eObject);
         }
+    }
+
+    @Override
+    public List<EObject> getLockedObjects() {
+        List<EObject> lockedEObjects = lockedObjects.keySet().stream().filter(EObject.class::isInstance).map(EObject.class::cast).collect(Collectors.toList());
+        return Collections.unmodifiableList(lockedEObjects);
     }
 
     /**

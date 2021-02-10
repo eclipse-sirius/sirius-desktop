@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,13 +13,14 @@
 package org.eclipse.sirius.ecore.extender.business.api.permission;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 /**
- * A permission authority is able to say whether the software has the right, or
- * not, to set/unset add or remove attributes.
+ * A permission authority is able to say whether the software has the right, or not, to set/unset add or remove
+ * attributes.
  * 
  * @author cbrun
  * 
@@ -50,8 +51,7 @@ public interface IPermissionAuthority {
      * 
      * @param eObj
      *            any instance.
-     * @return true if an instance may be aggregated to the given one, false
-     *         otherwise.
+     * @return true if an instance may be aggregated to the given one, false otherwise.
      */
     boolean canCreateIn(EObject eObj);
 
@@ -133,27 +133,23 @@ public interface IPermissionAuthority {
      * Tell whether the authority should report issues through Exceptions.
      * 
      * @param report
-     *            if true then the permission authority will complain when a
-     *            locked element has been changed.
+     *            if true then the permission authority will complain when a locked element has been changed.
      */
     void setReportIssues(boolean report);
 
     /**
-     * Tell whether the authority should listen the model changes and notify
-     * listeners accordingly or not.
+     * Tell whether the authority should listen the model changes and notify listeners accordingly or not.
      * 
      * @param shouldListen
-     *            true if the authority should listen for changes, false
-     *            otherwise.
+     *            true if the authority should listen for changes, false otherwise.
      */
     void setListening(boolean shouldListen);
 
     /**
-     * Tell whether the given instance may be deleted or not. An instance can be
-     * deleted if the following conditions are satisfied:
+     * Tell whether the given instance may be deleted or not. An instance can be deleted if the following conditions are
+     * satisfied:
      * <ul>
-     * <li>The parent modification is authorized. (The deletion will modify the
-     * containing feature)</li>
+     * <li>The parent modification is authorized. (The deletion will modify the containing feature)</li>
      * <li>The element itself can be deleted.</li>
      * <li>The children can be deleted.</li>
      * </ul>
@@ -190,4 +186,10 @@ public interface IPermissionAuthority {
      */
     LockStatus getLockStatus(EObject element);
 
+    /**
+     * Get the locked objects.
+     * 
+     * @return an unmodifiable list of the locked objects.
+     */
+    List<EObject> getLockedObjects();
 }

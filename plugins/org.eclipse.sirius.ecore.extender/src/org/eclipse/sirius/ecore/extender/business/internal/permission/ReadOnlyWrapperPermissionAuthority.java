@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,8 @@
 package org.eclipse.sirius.ecore.extender.business.internal.permission;
 
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
@@ -21,8 +23,7 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuth
 import org.eclipse.sirius.ecore.extender.business.api.permission.LockStatus;
 
 /**
- * A permission authority which will not allow write access depending on the
- * activation of the read only mode.
+ * A permission authority which will not allow write access depending on the activation of the read only mode.
  * 
  * @author mchauvin
  */
@@ -31,8 +32,7 @@ public class ReadOnlyWrapperPermissionAuthority extends ReadOnlyPermissionAuthor
     private IPermissionAuthority wrappedAuthority;
 
     /***
-     * Construct a new instance of eadOnlyPermissionAuthority by wrapping an
-     * existing one.
+     * Construct a new instance of eadOnlyPermissionAuthority by wrapping an existing one.
      * 
      * @param authority
      *            the existing authority to wrap. May not be null
@@ -45,11 +45,11 @@ public class ReadOnlyWrapperPermissionAuthority extends ReadOnlyPermissionAuthor
         return wrappedAuthority;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.eclipse.sirius.ecore.extender.business.internal.permission.DummyPermissionAuthority#canCreateIn(org.eclipse.emf.ecore.EObject)
-     */
+    @Override
+    public List<EObject> getLockedObjects() {
+        return Collections.unmodifiableList(wrappedAuthority.getLockedObjects());
+    }
+
     @Override
     public boolean canCreateIn(final EObject obj) {
         if (super.canCreateIn(obj)) {
