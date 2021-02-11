@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.eclipse.sirius.tests.rcptt.sample.properties.design.hyperlink
 Bundle-SymbolicName: org.eclipse.sirius.tests.rcptt.sample.properties.design.hyperlink;singleton:=true
-Bundle-Version: 6.4.2
+Bundle-Version: 6.5.0
 Bundle-Activator: org.eclipse.sirius.tests.rcptt.sample.properties.design.hyperlink.Activator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
