@@ -16,6 +16,7 @@
 		</p>
 		<h3 id="Precondition">Precondition</h3>
 		<p>The target diagram should have the same description (same definition in the VSM) than the source one.</p>
+		<p>These methods update the models and need to have access to UI thread. According to these constraints, the methods must be called into a RecordingCommand and run in the UI Thread.</p>
 		<h3 id="Applythecopypastefromasourcediagramtoanexistingtargetdiagram">Apply the copy-paste from a source diagram to an existing target diagram</h3>
 		<pre> /**
      * Apply format on {@code targetDiagram} based on the {@code sourceDiagram}. Format data are applied only for
