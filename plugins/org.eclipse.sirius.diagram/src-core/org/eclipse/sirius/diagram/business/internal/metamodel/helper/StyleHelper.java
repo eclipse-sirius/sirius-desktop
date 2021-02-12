@@ -907,17 +907,8 @@ public final class StyleHelper {
      * @return true if the feature can be set otherwise false.
      */
     private boolean featureCanBeSet(Integer value, DDiagramElementContainer container, EStructuralFeature feature) {
-        boolean returnValue = false;
-
-        // if the feature has already been set we can set it without verify if
-        // we have the VSM default value.
-        if (container.eIsSet(feature)) {
-            returnValue = true;
-        } else if (value.intValue() > 0) {
-            returnValue = true;
-
-        }
-        return returnValue;
+        // if the feature has already been set we can set it without verifying if we have the VSM default value.
+        return container.eIsSet(feature) || (value != null && value.intValue() > 0);
     }
 
     private Integer computeExpressions(EObject target, SizeComputationContainerStyleDescription description, EStructuralFeature feature) {
