@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import java.util.Collection;
 import java.util.HashSet;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.util.TreeIterator;
@@ -57,11 +58,13 @@ import org.eclipse.uml2.uml.VisibilityKind;
 import com.google.common.collect.Iterables;
 
 /**
- * Test the label's icon refresh on semantic change with customized
- * XXXItemProvider.getImage() method.
+ * Test the label's icon refresh on semantic change with customized XXXItemProvider.getImage() method.<BR/>
+ * Also test a bug about labels of border nodes with conditional style (bug 570055).
  *
  * @see bug 475685
+ * @see bug 570055
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
+ * @author lredor
  */
 public class IconRefreshTests extends SiriusDiagramTestCase {
 
@@ -172,8 +175,11 @@ public class IconRefreshTests extends SiriusDiagramTestCase {
                 siriusWrapLabel = (SiriusWrapLabel) editPart.getFigure();
             }
             assertNotNull("We should have a SiriusWrapLabel to display a icon", siriusWrapLabel);
+            Dimension labelSize = siriusWrapLabel.getSize();
+            assertFalse("The width of the label figure, for " + siriusWrapLabel.getText() + ", should not be equal to 1 pixel.", labelSize.width() == 1);
+            assertFalse("The height of the label figure, for \" + siriusWrapLabel.getText() + \", should not be equal to  1 pixel.", labelSize.height() == 1);
             Image currentImage = siriusWrapLabel.getIcon();
-            assertNotNull("A image should be displayed for : " + adapterFactoryItemDelegator.getText(namedElement), currentImage);
+            assertNotNull("An image should be displayed for : " + adapterFactoryItemDelegator.getText(namedElement), currentImage);
             boolean areEqualImages = ImageEquality.areEqualImages(expectedImage, currentImage);
             assertTrue("Icon of EditPart \"" + editPart + "\" representing \"" + adapterFactoryItemDelegator.getText(namedElement) + "\" should be same as the one from XXXItemProvider",
                     areEqualImages);
