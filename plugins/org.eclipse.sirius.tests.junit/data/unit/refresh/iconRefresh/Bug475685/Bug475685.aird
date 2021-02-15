@@ -1,521 +1,438 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style" xmi:id="_x58e4EpjEeWCnrNss1oNrA" selectedViews="_0BQwsEpjEeWCnrNss1oNrA" version="10.1.0.201507101000">
-  <semanticResources>Bug475685.uml</semanticResources>
-  <ownedViews xmi:type="viewpoint:DRepresentationContainer" xmi:id="_0BQwsEpjEeWCnrNss1oNrA">
-    <ownedRepresentations xmi:type="diagram:DSemanticDiagram" xmi:id="_bvX9UEpnEeWCnrNss1oNrA" name="new Bug475685_DiagDef">
-      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_bvbAoEpnEeWCnrNss1oNrA" source="GMF_DIAGRAMS">
-        <data xmi:type="notation:Diagram" xmi:id="_bvbAoUpnEeWCnrNss1oNrA" type="Sirius" element="_bvX9UEpnEeWCnrNss1oNrA" measurementUnit="Pixel">
-          <children xmi:type="notation:Node" xmi:id="_bvbAo0pnEeWCnrNss1oNrA" type="2001" element="_bvX9UUpnEeWCnrNss1oNrA">
-            <children xmi:type="notation:Node" xmi:id="_bvbnsEpnEeWCnrNss1oNrA" type="5002">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_bvbnsUpnEeWCnrNss1oNrA" y="5"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_bvdc5EpnEeWCnrNss1oNrA" type="3001" element="_bvX9UkpnEeWCnrNss1oNrA">
-              <children xmi:type="notation:Node" xmi:id="_bveD8EpnEeWCnrNss1oNrA" type="5001">
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_bveD8UpnEeWCnrNss1oNrA" y="5"/>
-              </children>
-              <children xmi:type="notation:Node" xmi:id="_bverA0pnEeWCnrNss1oNrA" type="3003" element="_bvX9WEpnEeWCnrNss1oNrA">
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_bverBEpnEeWCnrNss1oNrA" fontName="Cantarell"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bverBUpnEeWCnrNss1oNrA"/>
-              </children>
-              <children xmi:type="notation:Node" xmi:id="_bvfSEEpnEeWCnrNss1oNrA" type="3001" element="_bvX9U0pnEeWCnrNss1oNrA">
-                <children xmi:type="notation:Node" xmi:id="_bvfSE0pnEeWCnrNss1oNrA" type="5001">
-                  <layoutConstraint xmi:type="notation:Location" xmi:id="_bvfSFEpnEeWCnrNss1oNrA" y="5"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_bvf5IEpnEeWCnrNss1oNrA" type="3002" element="_bvX9VEpnEeWCnrNss1oNrA">
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_bvf5IUpnEeWCnrNss1oNrA" fontName="Cantarell"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvf5IkpnEeWCnrNss1oNrA"/>
-                </children>
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_bvfSEUpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvfSEkpnEeWCnrNss1oNrA" x="70" y="-3" width="113" height="37"/>
-              </children>
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_bvdc5UpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvdc5kpnEeWCnrNss1oNrA" x="83" y="18" width="78" height="43"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_bveD8kpnEeWCnrNss1oNrA" type="3001" element="_bvX9XEpnEeWCnrNss1oNrA">
-              <children xmi:type="notation:Node" xmi:id="_bveD9UpnEeWCnrNss1oNrA" type="5001">
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_bveD9kpnEeWCnrNss1oNrA" y="5"/>
-              </children>
-              <children xmi:type="notation:Node" xmi:id="_bvf5I0pnEeWCnrNss1oNrA" type="3003" element="_bvX9YkpnEeWCnrNss1oNrA">
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_bvf5JEpnEeWCnrNss1oNrA" fontName="Cantarell"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvf5JUpnEeWCnrNss1oNrA"/>
-              </children>
-              <children xmi:type="notation:Node" xmi:id="_bvf5JkpnEeWCnrNss1oNrA" type="3001" element="_bvX9XUpnEeWCnrNss1oNrA">
-                <children xmi:type="notation:Node" xmi:id="_bvhuUEpnEeWCnrNss1oNrA" type="5001">
-                  <layoutConstraint xmi:type="notation:Location" xmi:id="_bvhuUUpnEeWCnrNss1oNrA" y="5"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_bviVYEpnEeWCnrNss1oNrA" type="3002" element="_bvX9XkpnEeWCnrNss1oNrA">
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_bviVYUpnEeWCnrNss1oNrA" fontName="Cantarell"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bviVYkpnEeWCnrNss1oNrA"/>
-                </children>
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_bvf5J0pnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvf5KEpnEeWCnrNss1oNrA" x="-70" y="22" width="100" height="30"/>
-              </children>
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_bveD80pnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bveD9EpnEeWCnrNss1oNrA" x="-70" y="13" width="78" height="49"/>
-            </children>
-            <children xmi:type="notation:Node" xmi:id="_bverAEpnEeWCnrNss1oNrA" type="3003" element="_bvX9ZkpnEeWCnrNss1oNrA">
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_bverAUpnEeWCnrNss1oNrA" fontName="Cantarell"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bverAkpnEeWCnrNss1oNrA"/>
-            </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_bvbApEpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvbApUpnEeWCnrNss1oNrA" x="180" y="72" width="91" height="87"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_x58e4EpjEeWCnrNss1oNrA" selectedViews="_0BQwsEpjEeWCnrNss1oNrA" version="14.3.1.202003261200">
+    <semanticResources>Bug475685.uml</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_0BQwsEpjEeWCnrNss1oNrA">
+      <viewpoint xmi:type="description:Viewpoint" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_7E_9sW-uEeu1eKMoxso4HA" name="new Bug475685_DiagDef" repPath="#_bvX9UEpnEeWCnrNss1oNrA" changeId="fecb95d3-89d7-4aa9-9347-97cc2e22bd5a">
+        <description xmi:type="description_1:DiagramDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']"/>
+        <target xmi:type="uml:Model" href="Bug475685.uml#_7G3zYEphEeW5J5ZbPCvtCw"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_bvX9UEpnEeWCnrNss1oNrA">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_bvbAoEpnEeWCnrNss1oNrA" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_bvbAoUpnEeWCnrNss1oNrA" type="Sirius" element="_bvX9UEpnEeWCnrNss1oNrA" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_bvbAo0pnEeWCnrNss1oNrA" type="2001" element="_bvX9UUpnEeWCnrNss1oNrA">
+          <children xmi:type="notation:Node" xmi:id="_bvbnsEpnEeWCnrNss1oNrA" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_bvbnsUpnEeWCnrNss1oNrA" y="5"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_bvbnskpnEeWCnrNss1oNrA" type="2002" element="_bvX9akpnEeWCnrNss1oNrA">
-            <children xmi:type="notation:Node" xmi:id="_bvbntUpnEeWCnrNss1oNrA" type="5006"/>
-            <children xmi:type="notation:Node" xmi:id="_bvbntkpnEeWCnrNss1oNrA" type="7001">
-              <children xmi:type="notation:Node" xmi:id="_bviVY0pnEeWCnrNss1oNrA" type="3008" element="_bvX9cEpnEeWCnrNss1oNrA">
-                <children xmi:type="notation:Node" xmi:id="_bvi8cEpnEeWCnrNss1oNrA" type="5005"/>
-                <children xmi:type="notation:Node" xmi:id="_bvi8cUpnEeWCnrNss1oNrA" type="7002">
-                  <styles xmi:type="notation:SortingStyle" xmi:id="_bvi8ckpnEeWCnrNss1oNrA"/>
-                  <styles xmi:type="notation:FilteringStyle" xmi:id="_bvi8c0pnEeWCnrNss1oNrA"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_bvlYskpnEeWCnrNss1oNrA" type="3012" element="_bvX9cUpnEeWCnrNss1oNrA">
-                  <children xmi:type="notation:Node" xmi:id="_bvlYtUpnEeWCnrNss1oNrA" type="5010">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_bvlYtkpnEeWCnrNss1oNrA" y="5"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_bvl_wEpnEeWCnrNss1oNrA" type="3017" element="_bvX9ckpnEeWCnrNss1oNrA">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_bvl_wUpnEeWCnrNss1oNrA" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvl_wkpnEeWCnrNss1oNrA"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_bvlYs0pnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvlYtEpnEeWCnrNss1oNrA" x="35" y="-25" width="86" height="33"/>
-                </children>
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_bviVZEpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bviVZUpnEeWCnrNss1oNrA" x="35" y="49"/>
-              </children>
-              <children xmi:type="notation:Node" xmi:id="_bvkxpEpnEeWCnrNss1oNrA" type="3009" element="_bvX9tkpnEeWCnrNss1oNrA">
-                <children xmi:type="notation:Node" xmi:id="_1yL-8EpnEeWCnrNss1oNrA" type="3012" element="_1x6SIEpnEeWCnrNss1oNrA">
-                  <children xmi:type="notation:Node" xmi:id="_1yL-80pnEeWCnrNss1oNrA" type="5010">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_1yL-9EpnEeWCnrNss1oNrA" y="5"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_1yMmBUpnEeWCnrNss1oNrA" type="3003" element="_1x8HUEpnEeWCnrNss1oNrA">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_1yMmBkpnEeWCnrNss1oNrA" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yMmB0pnEeWCnrNss1oNrA"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_1yNNEEpnEeWCnrNss1oNrA" type="3012" element="_1x9VcEpnEeWCnrNss1oNrA">
-                    <children xmi:type="notation:Node" xmi:id="_1yNNE0pnEeWCnrNss1oNrA" type="5010">
-                      <layoutConstraint xmi:type="notation:Location" xmi:id="_1yNNFEpnEeWCnrNss1oNrA" x="-24" y="-17"/>
-                    </children>
-                    <children xmi:type="notation:Node" xmi:id="_1yNNFUpnEeWCnrNss1oNrA" type="3002" element="_1x-jkEpnEeWCnrNss1oNrA">
-                      <styles xmi:type="notation:ShapeStyle" xmi:id="_1yNNFkpnEeWCnrNss1oNrA" fontName="Cantarell"/>
-                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yNNF0pnEeWCnrNss1oNrA"/>
-                    </children>
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_1yNNEUpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yNNEkpnEeWCnrNss1oNrA" x="47" width="61" height="30"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_1yL-8UpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yL-8kpnEeWCnrNss1oNrA" x="108" y="25" width="48" height="40"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_1yMmAEpnEeWCnrNss1oNrA" type="3012" element="_1x8uYEpnEeWCnrNss1oNrA">
-                  <children xmi:type="notation:Node" xmi:id="_1yMmA0pnEeWCnrNss1oNrA" type="5010">
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_1yMmBEpnEeWCnrNss1oNrA" y="5"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_1yN0IEpnEeWCnrNss1oNrA" type="3003" element="_1x8uYUpnEeWCnrNss1oNrA">
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_1yN0IUpnEeWCnrNss1oNrA" fontName="Cantarell"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yN0IkpnEeWCnrNss1oNrA"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_1yN0I0pnEeWCnrNss1oNrA" type="3012" element="_1x_KoEpnEeWCnrNss1oNrA">
-                    <children xmi:type="notation:Node" xmi:id="_1yN0JkpnEeWCnrNss1oNrA" type="5010">
-                      <layoutConstraint xmi:type="notation:Location" xmi:id="_1yN0J0pnEeWCnrNss1oNrA" x="-16" y="-17"/>
-                    </children>
-                    <children xmi:type="notation:Node" xmi:id="_1yObMEpnEeWCnrNss1oNrA" type="3002" element="_1x_KoUpnEeWCnrNss1oNrA">
-                      <styles xmi:type="notation:ShapeStyle" xmi:id="_1yObMUpnEeWCnrNss1oNrA" fontName="Cantarell"/>
-                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yObMkpnEeWCnrNss1oNrA"/>
-                    </children>
-                    <styles xmi:type="notation:ShapeStyle" xmi:id="_1yN0JEpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yN0JUpnEeWCnrNss1oNrA" x="-45" y="1" width="46" height="30"/>
-                  </children>
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_1yMmAUpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yMmAkpnEeWCnrNss1oNrA" x="-35" y="28" width="43" height="37"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_bvkxp0pnEeWCnrNss1oNrA" type="5004"/>
-                <children xmi:type="notation:Node" xmi:id="_bvkxqEpnEeWCnrNss1oNrA" type="7003">
-                  <children xmi:type="notation:Node" xmi:id="_bvpqIEpnEeWCnrNss1oNrA" type="3010" element="_bvX9vEpnEeWCnrNss1oNrA">
-                    <styles xmi:type="notation:FontStyle" xmi:id="_CwIp0EptEeW7VugKxHxluA"/>
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_bvpqIUpnEeWCnrNss1oNrA"/>
-                  </children>
-                  <children xmi:type="notation:Node" xmi:id="_bvpqIkpnEeWCnrNss1oNrA" type="3010" element="_bvX9wUpnEeWCnrNss1oNrA">
-                    <styles xmi:type="notation:FontStyle" xmi:id="_CwIp0UptEeW7VugKxHxluA"/>
-                    <layoutConstraint xmi:type="notation:Location" xmi:id="_bvpqI0pnEeWCnrNss1oNrA"/>
-                  </children>
-                  <styles xmi:type="notation:SortingStyle" xmi:id="_bvkxqUpnEeWCnrNss1oNrA"/>
-                  <styles xmi:type="notation:FilteringStyle" xmi:id="_bvkxqkpnEeWCnrNss1oNrA"/>
-                </children>
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_bvkxpUpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvkxpkpnEeWCnrNss1oNrA" x="330" y="41" width="118" height="85"/>
-              </children>
-              <children xmi:type="notation:Node" xmi:id="_tdjPQkpnEeWCnrNss1oNrA" type="3007" element="_tdYQIEpnEeWCnrNss1oNrA">
-                <children xmi:type="notation:Node" xmi:id="_tdj2UEpnEeWCnrNss1oNrA" type="5003">
-                  <layoutConstraint xmi:type="notation:Location" xmi:id="_tdj2UUpnEeWCnrNss1oNrA" y="5"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_tdkdYEpnEeWCnrNss1oNrA" type="3017" element="_tdY3MEpnEeWCnrNss1oNrA">
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_tdkdYUpnEeWCnrNss1oNrA" fontName="Cantarell"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tdkdYkpnEeWCnrNss1oNrA"/>
-                </children>
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_tdjPQ0pnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tdjPREpnEeWCnrNss1oNrA" x="605" y="58" width="66" height="50"/>
-              </children>
-              <styles xmi:type="notation:SortingStyle" xmi:id="_bvbnt0pnEeWCnrNss1oNrA"/>
-              <styles xmi:type="notation:FilteringStyle" xmi:id="_bvbnuEpnEeWCnrNss1oNrA"/>
+          <children xmi:type="notation:Node" xmi:id="_bvdc5EpnEeWCnrNss1oNrA" type="3001" element="_bvX9UkpnEeWCnrNss1oNrA">
+            <children xmi:type="notation:Node" xmi:id="_bveD8EpnEeWCnrNss1oNrA" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_bveD8UpnEeWCnrNss1oNrA" y="5"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_tdioMEpnEeWCnrNss1oNrA" type="3012" element="_tdT-sEpnEeWCnrNss1oNrA">
-              <children xmi:type="notation:Node" xmi:id="_tdjPQEpnEeWCnrNss1oNrA" type="5010">
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_tdjPQUpnEeWCnrNss1oNrA" y="5"/>
-              </children>
-              <children xmi:type="notation:Node" xmi:id="_tdlEcEpnEeWCnrNss1oNrA" type="3017" element="_tdUlwEpnEeWCnrNss1oNrA">
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_tdlEcUpnEeWCnrNss1oNrA" fontName="Cantarell"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tdlEckpnEeWCnrNss1oNrA"/>
-              </children>
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_tdioMUpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tdioMkpnEeWCnrNss1oNrA" x="-75" y="50" width="83" height="54"/>
+            <children xmi:type="notation:Node" xmi:id="_bverA0pnEeWCnrNss1oNrA" type="3003" element="_bvX9WEpnEeWCnrNss1oNrA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_bverBEpnEeWCnrNss1oNrA" fontName="Cantarell"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bverBUpnEeWCnrNss1oNrA"/>
             </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_bvbns0pnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvbntEpnEeWCnrNss1oNrA" x="60" y="255" width="728" height="168"/>
+            <children xmi:type="notation:Node" xmi:id="_bvfSEEpnEeWCnrNss1oNrA" type="3001" element="_bvX9U0pnEeWCnrNss1oNrA">
+              <children xmi:type="notation:Node" xmi:id="_bvfSE0pnEeWCnrNss1oNrA" type="5001">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_bvfSFEpnEeWCnrNss1oNrA" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_HoukAG-vEeu1eKMoxso4HA" type="3002" element="_HotV5W-vEeu1eKMoxso4HA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_HoukAW-vEeu1eKMoxso4HA" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HoukAm-vEeu1eKMoxso4HA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_bvfSEUpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvfSEkpnEeWCnrNss1oNrA" x="70" y="-3" width="113" height="37"/>
+            </children>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_bvdc5UpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvdc5kpnEeWCnrNss1oNrA" x="83" y="18" width="78" height="43"/>
           </children>
-          <children xmi:type="notation:Node" xmi:id="_bvcOwEpnEeWCnrNss1oNrA" type="2003" element="_bvX9y0pnEeWCnrNss1oNrA">
-            <children xmi:type="notation:Node" xmi:id="_1yPCQEpnEeWCnrNss1oNrA" type="3012" element="_1yA_0EpnEeWCnrNss1oNrA">
-              <children xmi:type="notation:Node" xmi:id="_1yPCQ0pnEeWCnrNss1oNrA" type="5010">
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_1yPCREpnEeWCnrNss1oNrA" y="5"/>
-              </children>
-              <children xmi:type="notation:Node" xmi:id="_1yPpUkpnEeWCnrNss1oNrA" type="3003" element="_1yA_0UpnEeWCnrNss1oNrA">
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_1yPpU0pnEeWCnrNss1oNrA" fontName="Cantarell"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yPpVEpnEeWCnrNss1oNrA"/>
-              </children>
-              <children xmi:type="notation:Node" xmi:id="_1yQQYEpnEeWCnrNss1oNrA" type="3012" element="_1yCN8EpnEeWCnrNss1oNrA">
-                <children xmi:type="notation:Node" xmi:id="_1yQQY0pnEeWCnrNss1oNrA" type="5010">
-                  <layoutConstraint xmi:type="notation:Location" xmi:id="_1yQQZEpnEeWCnrNss1oNrA" x="-24" y="31"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_1yQQZUpnEeWCnrNss1oNrA" type="3002" element="_1yCN8UpnEeWCnrNss1oNrA">
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_1yQQZkpnEeWCnrNss1oNrA" fontName="Cantarell"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yQQZ0pnEeWCnrNss1oNrA"/>
-                </children>
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_1yQQYUpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yQQYkpnEeWCnrNss1oNrA" x="-29" y="15" width="30" height="30"/>
-              </children>
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_1yPCQUpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yPCQkpnEeWCnrNss1oNrA" x="-55" y="25" width="63" height="46"/>
+          <children xmi:type="notation:Node" xmi:id="_bveD8kpnEeWCnrNss1oNrA" type="3001" element="_bvX9XEpnEeWCnrNss1oNrA">
+            <children xmi:type="notation:Node" xmi:id="_bveD9UpnEeWCnrNss1oNrA" type="5001">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_bveD9kpnEeWCnrNss1oNrA" y="5"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_1yPCRUpnEeWCnrNss1oNrA" type="3012" element="_1yBm4EpnEeWCnrNss1oNrA">
-              <children xmi:type="notation:Node" xmi:id="_1yPpUEpnEeWCnrNss1oNrA" type="5010">
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_1yPpUUpnEeWCnrNss1oNrA" y="5"/>
-              </children>
-              <children xmi:type="notation:Node" xmi:id="_1yQ3cEpnEeWCnrNss1oNrA" type="3003" element="_1yBm4UpnEeWCnrNss1oNrA">
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_1yQ3cUpnEeWCnrNss1oNrA" fontName="Cantarell"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yQ3ckpnEeWCnrNss1oNrA"/>
-              </children>
-              <children xmi:type="notation:Node" xmi:id="_1yQ3c0pnEeWCnrNss1oNrA" type="3012" element="_1yC1AEpnEeWCnrNss1oNrA">
-                <children xmi:type="notation:Node" xmi:id="_1yQ3dkpnEeWCnrNss1oNrA" type="5010">
-                  <layoutConstraint xmi:type="notation:Location" xmi:id="_1yRegEpnEeWCnrNss1oNrA" x="31"/>
-                </children>
-                <children xmi:type="notation:Node" xmi:id="_1yRegUpnEeWCnrNss1oNrA" type="3002" element="_1yDcEEpnEeWCnrNss1oNrA">
-                  <styles xmi:type="notation:ShapeStyle" xmi:id="_1yRegkpnEeWCnrNss1oNrA" fontName="Cantarell"/>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yReg0pnEeWCnrNss1oNrA"/>
-                </children>
-                <styles xmi:type="notation:ShapeStyle" xmi:id="_1yQ3dEpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yQ3dUpnEeWCnrNss1oNrA" x="85" y="7" width="30" height="30"/>
-              </children>
-              <styles xmi:type="notation:ShapeStyle" xmi:id="_1yPCRkpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yPCR0pnEeWCnrNss1oNrA" x="105" y="28" width="86" height="46"/>
+            <children xmi:type="notation:Node" xmi:id="_bvf5I0pnEeWCnrNss1oNrA" type="3003" element="_bvX9YkpnEeWCnrNss1oNrA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_bvf5JEpnEeWCnrNss1oNrA" fontName="Cantarell"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvf5JUpnEeWCnrNss1oNrA"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_bvcOw0pnEeWCnrNss1oNrA" type="5007"/>
-            <children xmi:type="notation:Node" xmi:id="_bvcOxEpnEeWCnrNss1oNrA" type="7004">
-              <children xmi:type="notation:Node" xmi:id="_bvqRMEpnEeWCnrNss1oNrA" type="3010" element="_bvX90UpnEeWCnrNss1oNrA">
-                <styles xmi:type="notation:FontStyle" xmi:id="_CwIp0kptEeW7VugKxHxluA"/>
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_bvqRMUpnEeWCnrNss1oNrA"/>
+            <children xmi:type="notation:Node" xmi:id="_bvf5JkpnEeWCnrNss1oNrA" type="3001" element="_bvX9XUpnEeWCnrNss1oNrA">
+              <children xmi:type="notation:Node" xmi:id="_bvhuUEpnEeWCnrNss1oNrA" type="5001">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_bvhuUUpnEeWCnrNss1oNrA" y="5"/>
               </children>
-              <children xmi:type="notation:Node" xmi:id="_bvqRMkpnEeWCnrNss1oNrA" type="3010" element="_bvX91kpnEeWCnrNss1oNrA">
-                <styles xmi:type="notation:FontStyle" xmi:id="_CwIp00ptEeW7VugKxHxluA"/>
-                <layoutConstraint xmi:type="notation:Location" xmi:id="_bvqRM0pnEeWCnrNss1oNrA"/>
+              <children xmi:type="notation:Node" xmi:id="_HoukA2-vEeu1eKMoxso4HA" type="3002" element="_Hot88W-vEeu1eKMoxso4HA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_HoukBG-vEeu1eKMoxso4HA" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HoukBW-vEeu1eKMoxso4HA"/>
               </children>
-              <styles xmi:type="notation:SortingStyle" xmi:id="_bvcOxUpnEeWCnrNss1oNrA"/>
-              <styles xmi:type="notation:FilteringStyle" xmi:id="_bvcOxkpnEeWCnrNss1oNrA"/>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_bvf5J0pnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvf5KEpnEeWCnrNss1oNrA" x="-70" y="22" width="100" height="30"/>
             </children>
-            <styles xmi:type="notation:ShapeStyle" xmi:id="_bvcOwUpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvcOwkpnEeWCnrNss1oNrA" x="605" y="85" width="115" height="88"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_bveD80pnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bveD9EpnEeWCnrNss1oNrA" x="-70" y="13" width="78" height="49"/>
           </children>
-          <styles xmi:type="notation:DiagramStyle" xmi:id="_bvbAokpnEeWCnrNss1oNrA"/>
-          <edges xmi:type="notation:Edge" xmi:id="_2RacIEpoEeWCnrNss1oNrA" type="4001" element="_2RLyoEpoEeWCnrNss1oNrA" source="_bvcOwEpnEeWCnrNss1oNrA" target="_bvcOwEpnEeWCnrNss1oNrA">
-            <children xmi:type="notation:Node" xmi:id="_2RacJEpoEeWCnrNss1oNrA" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RacJUpoEeWCnrNss1oNrA" y="-10"/>
+          <children xmi:type="notation:Node" xmi:id="_bverAEpnEeWCnrNss1oNrA" type="3003" element="_bvX9ZkpnEeWCnrNss1oNrA">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_bverAUpnEeWCnrNss1oNrA" fontName="Cantarell"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bverAkpnEeWCnrNss1oNrA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_bvbApEpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvbApUpnEeWCnrNss1oNrA" x="180" y="72" width="91" height="87"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_bvbnskpnEeWCnrNss1oNrA" type="2002" element="_bvX9akpnEeWCnrNss1oNrA">
+          <children xmi:type="notation:Node" xmi:id="_bvbntUpnEeWCnrNss1oNrA" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_bvbntkpnEeWCnrNss1oNrA" type="7001">
+            <children xmi:type="notation:Node" xmi:id="_bviVY0pnEeWCnrNss1oNrA" type="3008" element="_bvX9cEpnEeWCnrNss1oNrA">
+              <children xmi:type="notation:Node" xmi:id="_bvi8cEpnEeWCnrNss1oNrA" type="5005"/>
+              <children xmi:type="notation:Node" xmi:id="_bvi8cUpnEeWCnrNss1oNrA" type="7002">
+                <styles xmi:type="notation:SortingStyle" xmi:id="_bvi8ckpnEeWCnrNss1oNrA"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_bvi8c0pnEeWCnrNss1oNrA"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_bvlYskpnEeWCnrNss1oNrA" type="3012" element="_bvX9cUpnEeWCnrNss1oNrA">
+                <children xmi:type="notation:Node" xmi:id="_bvlYtUpnEeWCnrNss1oNrA" type="5010">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_bvlYtkpnEeWCnrNss1oNrA" y="5"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_bvl_wEpnEeWCnrNss1oNrA" type="3017" element="_bvX9ckpnEeWCnrNss1oNrA">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_bvl_wUpnEeWCnrNss1oNrA" fontName="Cantarell"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvl_wkpnEeWCnrNss1oNrA"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_bvlYs0pnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvlYtEpnEeWCnrNss1oNrA" x="35" y="-25" width="86" height="33"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_bviVZEpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bviVZUpnEeWCnrNss1oNrA" x="35" y="49"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_2RbDMEpoEeWCnrNss1oNrA" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RbDMUpoEeWCnrNss1oNrA" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_bvkxpEpnEeWCnrNss1oNrA" type="3009" element="_bvX9tkpnEeWCnrNss1oNrA">
+              <children xmi:type="notation:Node" xmi:id="_1yL-8EpnEeWCnrNss1oNrA" type="3012" element="_1x6SIEpnEeWCnrNss1oNrA">
+                <children xmi:type="notation:Node" xmi:id="_1yL-80pnEeWCnrNss1oNrA" type="5010">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_1yL-9EpnEeWCnrNss1oNrA" y="5"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_1yMmBUpnEeWCnrNss1oNrA" type="3003" element="_1x8HUEpnEeWCnrNss1oNrA">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_1yMmBkpnEeWCnrNss1oNrA" fontName="Cantarell"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yMmB0pnEeWCnrNss1oNrA"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_1yNNEEpnEeWCnrNss1oNrA" type="3012" element="_1x9VcEpnEeWCnrNss1oNrA">
+                  <children xmi:type="notation:Node" xmi:id="_1yNNE0pnEeWCnrNss1oNrA" type="5010">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_1yNNFEpnEeWCnrNss1oNrA" x="-24" y="-17"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_HovLEG-vEeu1eKMoxso4HA" type="3002" element="_Hot882-vEeu1eKMoxso4HA">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_HovLEW-vEeu1eKMoxso4HA" fontName="Segoe UI"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HovLEm-vEeu1eKMoxso4HA"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_1yNNEUpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yNNEkpnEeWCnrNss1oNrA" x="47" width="61" height="30"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_1yL-8UpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yL-8kpnEeWCnrNss1oNrA" x="108" y="25" width="48" height="40"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_1yMmAEpnEeWCnrNss1oNrA" type="3012" element="_1x8uYEpnEeWCnrNss1oNrA">
+                <children xmi:type="notation:Node" xmi:id="_1yMmA0pnEeWCnrNss1oNrA" type="5010">
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_1yMmBEpnEeWCnrNss1oNrA" y="5"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_1yN0IEpnEeWCnrNss1oNrA" type="3003" element="_1x8uYUpnEeWCnrNss1oNrA">
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_1yN0IUpnEeWCnrNss1oNrA" fontName="Cantarell"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yN0IkpnEeWCnrNss1oNrA"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_1yN0I0pnEeWCnrNss1oNrA" type="3012" element="_1x_KoEpnEeWCnrNss1oNrA">
+                  <children xmi:type="notation:Node" xmi:id="_1yN0JkpnEeWCnrNss1oNrA" type="5010">
+                    <layoutConstraint xmi:type="notation:Location" xmi:id="_1yN0J0pnEeWCnrNss1oNrA" x="-16" y="-17"/>
+                  </children>
+                  <children xmi:type="notation:Node" xmi:id="_HovLE2-vEeu1eKMoxso4HA" type="3002" element="_HotV4W-vEeu1eKMoxso4HA">
+                    <styles xmi:type="notation:ShapeStyle" xmi:id="_HovLFG-vEeu1eKMoxso4HA" fontName="Segoe UI"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HovLFW-vEeu1eKMoxso4HA"/>
+                  </children>
+                  <styles xmi:type="notation:ShapeStyle" xmi:id="_1yN0JEpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yN0JUpnEeWCnrNss1oNrA" x="-45" y="1" width="46" height="30"/>
+                </children>
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_1yMmAUpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yMmAkpnEeWCnrNss1oNrA" x="-35" y="28" width="43" height="37"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_bvkxp0pnEeWCnrNss1oNrA" type="5004"/>
+              <children xmi:type="notation:Node" xmi:id="_bvkxqEpnEeWCnrNss1oNrA" type="7003">
+                <children xmi:type="notation:Node" xmi:id="_bvpqIEpnEeWCnrNss1oNrA" type="3010" element="_bvX9vEpnEeWCnrNss1oNrA">
+                  <styles xmi:type="notation:FontStyle" xmi:id="_CwIp0EptEeW7VugKxHxluA"/>
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_bvpqIUpnEeWCnrNss1oNrA"/>
+                </children>
+                <children xmi:type="notation:Node" xmi:id="_bvpqIkpnEeWCnrNss1oNrA" type="3010" element="_bvX9wUpnEeWCnrNss1oNrA">
+                  <styles xmi:type="notation:FontStyle" xmi:id="_CwIp0UptEeW7VugKxHxluA"/>
+                  <layoutConstraint xmi:type="notation:Location" xmi:id="_bvpqI0pnEeWCnrNss1oNrA"/>
+                </children>
+                <styles xmi:type="notation:SortingStyle" xmi:id="_bvkxqUpnEeWCnrNss1oNrA"/>
+                <styles xmi:type="notation:FilteringStyle" xmi:id="_bvkxqkpnEeWCnrNss1oNrA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_bvkxpUpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvkxpkpnEeWCnrNss1oNrA" x="330" y="41" width="118" height="85"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_2RbDMkpoEeWCnrNss1oNrA" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RbDM0poEeWCnrNss1oNrA" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_tdjPQkpnEeWCnrNss1oNrA" type="3007" element="_tdYQIEpnEeWCnrNss1oNrA">
+              <children xmi:type="notation:Node" xmi:id="_tdj2UEpnEeWCnrNss1oNrA" type="5003">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_tdj2UUpnEeWCnrNss1oNrA" y="5"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_tdkdYEpnEeWCnrNss1oNrA" type="3017" element="_tdY3MEpnEeWCnrNss1oNrA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_tdkdYUpnEeWCnrNss1oNrA" fontName="Cantarell"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tdkdYkpnEeWCnrNss1oNrA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_tdjPQ0pnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tdjPREpnEeWCnrNss1oNrA" x="605" y="58" width="66" height="50"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_2RacIUpoEeWCnrNss1oNrA"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_2RacIkpoEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_2RacI0poEeWCnrNss1oNrA" points="[9, 31, 78, 9]$[9, 85, 78, 63]$[-69, 85, 0, 63]$[-69, 31, 0, 9]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2RbDNEpoEeWCnrNss1oNrA" id="(0.7654867256637168,0.6453488372093024)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2RbDNUpoEeWCnrNss1oNrA" id="(0.1565217391304348,0.8977272727272727)"/>
-          </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_2RbDNkpoEeWCnrNss1oNrA" type="4001" element="_2RMZtEpoEeWCnrNss1oNrA" source="_bvcOwEpnEeWCnrNss1oNrA" target="_bvbAo0pnEeWCnrNss1oNrA">
-            <children xmi:type="notation:Node" xmi:id="_2RbDOkpoEeWCnrNss1oNrA" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RbDO0poEeWCnrNss1oNrA" y="-10"/>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_bvbnt0pnEeWCnrNss1oNrA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_bvbnuEpnEeWCnrNss1oNrA"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_tdioMEpnEeWCnrNss1oNrA" type="3012" element="_tdT-sEpnEeWCnrNss1oNrA">
+            <children xmi:type="notation:Node" xmi:id="_tdjPQEpnEeWCnrNss1oNrA" type="5010">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_tdjPQUpnEeWCnrNss1oNrA" y="5"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_2RbDPEpoEeWCnrNss1oNrA" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RbDPUpoEeWCnrNss1oNrA" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_tdlEcEpnEeWCnrNss1oNrA" type="3017" element="_tdUlwEpnEeWCnrNss1oNrA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_tdlEcUpnEeWCnrNss1oNrA" fontName="Cantarell"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tdlEckpnEeWCnrNss1oNrA"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_2RbqQEpoEeWCnrNss1oNrA" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RbqQUpoEeWCnrNss1oNrA" y="10"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_tdioMUpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tdioMkpnEeWCnrNss1oNrA" x="-75" y="50" width="83" height="54"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_bvbns0pnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvbntEpnEeWCnrNss1oNrA" x="60" y="255" width="728" height="168"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_bvcOwEpnEeWCnrNss1oNrA" type="2003" element="_bvX9y0pnEeWCnrNss1oNrA">
+          <children xmi:type="notation:Node" xmi:id="_1yPCQEpnEeWCnrNss1oNrA" type="3012" element="_1yA_0EpnEeWCnrNss1oNrA">
+            <children xmi:type="notation:Node" xmi:id="_1yPCQ0pnEeWCnrNss1oNrA" type="5010">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_1yPCREpnEeWCnrNss1oNrA" y="5"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_2RbDN0poEeWCnrNss1oNrA"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_2RbDOEpoEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_2RbDOUpoEeWCnrNss1oNrA" points="[-42, -55, 424, -30]$[-61, -80, 405, -55]$[-431, -80, 35, -55]$[-439, -68, 27, -43]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2RbqQkpoEeWCnrNss1oNrA" id="(0.7654867256637168,0.6453488372093024)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2RbqQ0poEeWCnrNss1oNrA" id="(0.4945054945054945,0.4942528735632184)"/>
-          </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_2RbqREpoEeWCnrNss1oNrA" type="4001" element="_2RNAwEpoEeWCnrNss1oNrA" source="_bvbAo0pnEeWCnrNss1oNrA" target="_bvcOwEpnEeWCnrNss1oNrA">
-            <children xmi:type="notation:Node" xmi:id="_2RbqSEpoEeWCnrNss1oNrA" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RbqSUpoEeWCnrNss1oNrA" y="-10"/>
+            <children xmi:type="notation:Node" xmi:id="_1yPpUkpnEeWCnrNss1oNrA" type="3003" element="_1yA_0UpnEeWCnrNss1oNrA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_1yPpU0pnEeWCnrNss1oNrA" fontName="Cantarell"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yPpVEpnEeWCnrNss1oNrA"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_2RbqSkpoEeWCnrNss1oNrA" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RbqS0poEeWCnrNss1oNrA" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_1yQQYEpnEeWCnrNss1oNrA" type="3012" element="_1yCN8EpnEeWCnrNss1oNrA">
+              <children xmi:type="notation:Node" xmi:id="_1yQQY0pnEeWCnrNss1oNrA" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_1yQQZEpnEeWCnrNss1oNrA" x="-24" y="31"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_HovLFm-vEeu1eKMoxso4HA" type="3002" element="_HotV42-vEeu1eKMoxso4HA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_HovLF2-vEeu1eKMoxso4HA" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HovLGG-vEeu1eKMoxso4HA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_1yQQYUpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yQQYkpnEeWCnrNss1oNrA" x="-29" y="15" width="30" height="30"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_2RbqTEpoEeWCnrNss1oNrA" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RbqTUpoEeWCnrNss1oNrA" y="10"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_1yPCQUpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yPCQkpnEeWCnrNss1oNrA" x="-55" y="25" width="63" height="46"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_1yPCRUpnEeWCnrNss1oNrA" type="3012" element="_1yBm4EpnEeWCnrNss1oNrA">
+            <children xmi:type="notation:Node" xmi:id="_1yPpUEpnEeWCnrNss1oNrA" type="5010">
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_1yPpUUpnEeWCnrNss1oNrA" y="5"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_2RbqRUpoEeWCnrNss1oNrA"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_2RbqRkpoEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_2RbqR0poEeWCnrNss1oNrA" points="[0, -43, -466, -68]$[0, -80, -466, -105]$[466, -80, 0, -105]$[466, -30, 0, -55]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2RbqTkpoEeWCnrNss1oNrA" id="(0.4945054945054945,0.4942528735632184)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2RbqT0poEeWCnrNss1oNrA" id="(0.7654867256637168,0.6453488372093024)"/>
-          </edges>
-          <edges xmi:type="notation:Edge" xmi:id="_2RcRUEpoEeWCnrNss1oNrA" type="4001" element="_2RNn0EpoEeWCnrNss1oNrA" source="_bvbAo0pnEeWCnrNss1oNrA" target="_bvbAo0pnEeWCnrNss1oNrA">
-            <children xmi:type="notation:Node" xmi:id="_2RcRVEpoEeWCnrNss1oNrA" type="6001">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RcRVUpoEeWCnrNss1oNrA" y="-10"/>
+            <children xmi:type="notation:Node" xmi:id="_1yQ3cEpnEeWCnrNss1oNrA" type="3003" element="_1yBm4UpnEeWCnrNss1oNrA">
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_1yQ3cUpnEeWCnrNss1oNrA" fontName="Cantarell"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yQ3ckpnEeWCnrNss1oNrA"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_2RcRVkpoEeWCnrNss1oNrA" type="6002">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RcRV0poEeWCnrNss1oNrA" y="10"/>
+            <children xmi:type="notation:Node" xmi:id="_1yQ3c0pnEeWCnrNss1oNrA" type="3012" element="_1yC1AEpnEeWCnrNss1oNrA">
+              <children xmi:type="notation:Node" xmi:id="_1yQ3dkpnEeWCnrNss1oNrA" type="5010">
+                <layoutConstraint xmi:type="notation:Location" xmi:id="_1yRegEpnEeWCnrNss1oNrA" x="31"/>
+              </children>
+              <children xmi:type="notation:Node" xmi:id="_HovLGW-vEeu1eKMoxso4HA" type="3002" element="_HotV52-vEeu1eKMoxso4HA">
+                <styles xmi:type="notation:ShapeStyle" xmi:id="_HovLGm-vEeu1eKMoxso4HA" fontName="Segoe UI"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_HovLG2-vEeu1eKMoxso4HA"/>
+              </children>
+              <styles xmi:type="notation:ShapeStyle" xmi:id="_1yQ3dEpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yQ3dUpnEeWCnrNss1oNrA" x="85" y="7" width="30" height="30"/>
             </children>
-            <children xmi:type="notation:Node" xmi:id="_2RcRWEpoEeWCnrNss1oNrA" type="6003">
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RcRWUpoEeWCnrNss1oNrA" y="10"/>
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_1yPCRkpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_1yPCR0pnEeWCnrNss1oNrA" x="105" y="28" width="86" height="46"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_bvcOw0pnEeWCnrNss1oNrA" type="5007"/>
+          <children xmi:type="notation:Node" xmi:id="_bvcOxEpnEeWCnrNss1oNrA" type="7004">
+            <children xmi:type="notation:Node" xmi:id="_bvqRMEpnEeWCnrNss1oNrA" type="3010" element="_bvX90UpnEeWCnrNss1oNrA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_CwIp0kptEeW7VugKxHxluA"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_bvqRMUpnEeWCnrNss1oNrA"/>
             </children>
-            <styles xmi:type="notation:ConnectorStyle" xmi:id="_2RcRUUpoEeWCnrNss1oNrA"/>
-            <styles xmi:type="notation:FontStyle" xmi:id="_2RcRUkpoEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
-            <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_2RcRU0poEeWCnrNss1oNrA" points="[7, 3, 81, 3]$[7, 65, 81, 65]$[-74, 65, 0, 65]$[-74, 3, 0, 3]"/>
-            <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2RcRWkpoEeWCnrNss1oNrA" id="(0.9120879120879121,0.9655172413793104)"/>
-            <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2RcRW0poEeWCnrNss1oNrA" id="(0.0989010989010989,0.9655172413793104)"/>
-          </edges>
-        </data>
-      </ownedAnnotationEntries>
-      <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_CvctUEptEeW7VugKxHxluA" source="DANNOTATION_CUSTOMIZATION_KEY">
-        <data xmi:type="diagram:ComputedStyleDescriptionRegistry" xmi:id="_CvctUUptEeW7VugKxHxluA"/>
-      </ownedAnnotationEntries>
-      <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_bvX9UUpnEeWCnrNss1oNrA" name="Node1" outgoingEdges="_2RNAwEpoEeWCnrNss1oNrA _2RNn0EpoEeWCnrNss1oNrA" incomingEdges="_2RMZtEpoEeWCnrNss1oNrA _2RNn0EpoEeWCnrNss1oNrA" width="3" height="3" resizeKind="NSEW">
-        <target xmi:type="uml:Class" href="Bug475685.uml#_JRudoEpkEeWCnrNss1oNrA"/>
-        <semanticElements xmi:type="uml:Class" href="Bug475685.uml#_JRudoEpkEeWCnrNss1oNrA"/>
-        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_bvX9UkpnEeWCnrNss1oNrA" name="att1" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="uml:Property" href="Bug475685.uml#_OrpoUEpnEeWCnrNss1oNrA"/>
-          <semanticElements xmi:type="uml:Property" href="Bug475685.uml#_OrpoUEpnEeWCnrNss1oNrA"/>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_bvX9U0pnEeWCnrNss1oNrA" name="MyDataType" width="3" height="3" resizeKind="NSEW">
-            <target xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
-            <semanticElements xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
-            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Dot" xmi:id="_bvX9VEpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node" backgroundColor="173,127,168">
-              <description xmi:type="style:DotDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfAbstractNodes']/@style"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfAbstractNodes']"/>
-          </ownedBorderedNodes>
+            <children xmi:type="notation:Node" xmi:id="_bvqRMkpnEeWCnrNss1oNrA" type="3010" element="_bvX91kpnEeWCnrNss1oNrA">
+              <styles xmi:type="notation:FontStyle" xmi:id="_CwIp00ptEeW7VugKxHxluA"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_bvqRM0pnEeWCnrNss1oNrA"/>
+            </children>
+            <styles xmi:type="notation:SortingStyle" xmi:id="_bvcOxUpnEeWCnrNss1oNrA"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_bvcOxkpnEeWCnrNss1oNrA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_bvcOwUpnEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_bvcOwkpnEeWCnrNss1oNrA" x="605" y="85" width="115" height="88"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_AapzwG-vEeu1eKMoxso4HA" type="2001" element="_AajtJG-vEeu1eKMoxso4HA">
+          <children xmi:type="notation:Node" xmi:id="_Aaqa0G-vEeu1eKMoxso4HA" type="5002">
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_Aaqa0W-vEeu1eKMoxso4HA" x="109" y="31"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_DUHUMG-vEeu1eKMoxso4HA" type="3003" element="_DUGtI2-vEeu1eKMoxso4HA">
+            <styles xmi:type="notation:ShapeStyle" xmi:id="_DUHUMW-vEeu1eKMoxso4HA" fontName="Segoe UI"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_DUHUMm-vEeu1eKMoxso4HA"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_AapzwW-vEeu1eKMoxso4HA" fontName="Segoe UI" fontHeight="8"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Aapzwm-vEeu1eKMoxso4HA" x="210" y="447" width="108" height="72"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_bvbAokpnEeWCnrNss1oNrA"/>
+        <edges xmi:type="notation:Edge" xmi:id="_2RacIEpoEeWCnrNss1oNrA" type="4001" element="_2RLyoEpoEeWCnrNss1oNrA" source="_bvcOwEpnEeWCnrNss1oNrA" target="_bvcOwEpnEeWCnrNss1oNrA">
+          <children xmi:type="notation:Node" xmi:id="_2RacJEpoEeWCnrNss1oNrA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RacJUpoEeWCnrNss1oNrA" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_2RbDMEpoEeWCnrNss1oNrA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RbDMUpoEeWCnrNss1oNrA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_2RbDMkpoEeWCnrNss1oNrA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RbDM0poEeWCnrNss1oNrA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_2RacIUpoEeWCnrNss1oNrA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_2RacIkpoEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_2RacI0poEeWCnrNss1oNrA" points="[9, 31, 78, 9]$[9, 85, 78, 63]$[-69, 85, 0, 63]$[-69, 31, 0, 9]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2RbDNEpoEeWCnrNss1oNrA" id="(0.7654867256637168,0.6453488372093024)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2RbDNUpoEeWCnrNss1oNrA" id="(0.1565217391304348,0.8977272727272727)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_2RbDNkpoEeWCnrNss1oNrA" type="4001" element="_2RMZtEpoEeWCnrNss1oNrA" source="_bvcOwEpnEeWCnrNss1oNrA" target="_bvbAo0pnEeWCnrNss1oNrA">
+          <children xmi:type="notation:Node" xmi:id="_2RbDOkpoEeWCnrNss1oNrA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RbDO0poEeWCnrNss1oNrA" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_2RbDPEpoEeWCnrNss1oNrA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RbDPUpoEeWCnrNss1oNrA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_2RbqQEpoEeWCnrNss1oNrA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RbqQUpoEeWCnrNss1oNrA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_2RbDN0poEeWCnrNss1oNrA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_2RbDOEpoEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_2RbDOUpoEeWCnrNss1oNrA" points="[-42, -55, 424, -30]$[-61, -80, 405, -55]$[-431, -80, 35, -55]$[-439, -68, 27, -43]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2RbqQkpoEeWCnrNss1oNrA" id="(0.7654867256637168,0.6453488372093024)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2RbqQ0poEeWCnrNss1oNrA" id="(0.4945054945054945,0.4942528735632184)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_2RbqREpoEeWCnrNss1oNrA" type="4001" element="_2RNAwEpoEeWCnrNss1oNrA" source="_bvbAo0pnEeWCnrNss1oNrA" target="_bvcOwEpnEeWCnrNss1oNrA">
+          <children xmi:type="notation:Node" xmi:id="_2RbqSEpoEeWCnrNss1oNrA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RbqSUpoEeWCnrNss1oNrA" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_2RbqSkpoEeWCnrNss1oNrA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RbqS0poEeWCnrNss1oNrA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_2RbqTEpoEeWCnrNss1oNrA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RbqTUpoEeWCnrNss1oNrA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_2RbqRUpoEeWCnrNss1oNrA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_2RbqRkpoEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_2RbqR0poEeWCnrNss1oNrA" points="[0, -43, -466, -68]$[0, -80, -466, -105]$[466, -80, 0, -105]$[466, -30, 0, -55]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2RbqTkpoEeWCnrNss1oNrA" id="(0.4945054945054945,0.4942528735632184)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2RbqT0poEeWCnrNss1oNrA" id="(0.7654867256637168,0.6453488372093024)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_2RcRUEpoEeWCnrNss1oNrA" type="4001" element="_2RNn0EpoEeWCnrNss1oNrA" source="_bvbAo0pnEeWCnrNss1oNrA" target="_bvbAo0pnEeWCnrNss1oNrA">
+          <children xmi:type="notation:Node" xmi:id="_2RcRVEpoEeWCnrNss1oNrA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RcRVUpoEeWCnrNss1oNrA" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_2RcRVkpoEeWCnrNss1oNrA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RcRV0poEeWCnrNss1oNrA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_2RcRWEpoEeWCnrNss1oNrA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2RcRWUpoEeWCnrNss1oNrA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_2RcRUUpoEeWCnrNss1oNrA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_2RcRUkpoEeWCnrNss1oNrA" fontName="Cantarell" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_2RcRU0poEeWCnrNss1oNrA" points="[7, 3, 81, 3]$[7, 65, 81, 65]$[-74, 65, 0, 65]$[-74, 3, 0, 3]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2RcRWkpoEeWCnrNss1oNrA" id="(0.9120879120879121,0.9655172413793104)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_2RcRW0poEeWCnrNss1oNrA" id="(0.0989010989010989,0.9655172413793104)"/>
+        </edges>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_CvctUEptEeW7VugKxHxluA" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_CvctUUptEeW7VugKxHxluA"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_bvX9UUpnEeWCnrNss1oNrA" name="Node1" outgoingEdges="_2RNAwEpoEeWCnrNss1oNrA _2RNn0EpoEeWCnrNss1oNrA" incomingEdges="_2RMZtEpoEeWCnrNss1oNrA _2RNn0EpoEeWCnrNss1oNrA" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="uml:Class" href="Bug475685.uml#_JRudoEpkEeWCnrNss1oNrA"/>
+      <semanticElements xmi:type="uml:Class" href="Bug475685.uml#_JRudoEpkEeWCnrNss1oNrA"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_bvX9UkpnEeWCnrNss1oNrA" name="att1" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="uml:Property" href="Bug475685.uml#_OrpoUEpnEeWCnrNss1oNrA"/>
+        <semanticElements xmi:type="uml:Property" href="Bug475685.uml#_OrpoUEpnEeWCnrNss1oNrA"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_bvX9U0pnEeWCnrNss1oNrA" name="MyDataType" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
+          <semanticElements xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_bvX9WEpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node" color="252,175,62">
-            <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']/@style"/>
+          <ownedStyle xmi:type="diagram:Dot" uid="_HotV5W-vEeu1eKMoxso4HA" labelAlignment="RIGHT" labelPosition="node" backgroundColor="173,127,168">
+            <description xmi:type="style:DotDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfAbstractNodes']/@style"/>
           </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']"/>
-        </ownedBorderedNodes>
-        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_bvX9XEpnEeWCnrNss1oNrA" name="att2" tooltipText="" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="uml:Property" href="Bug475685.uml#_OrpoUUpnEeWCnrNss1oNrA"/>
-          <semanticElements xmi:type="uml:Property" href="Bug475685.uml#_OrpoUUpnEeWCnrNss1oNrA"/>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_bvX9XUpnEeWCnrNss1oNrA" name="MyDataType" tooltipText="" width="3" height="3" resizeKind="NSEW">
-            <target xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
-            <semanticElements xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
-            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Dot" xmi:id="_bvX9XkpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node" backgroundColor="173,127,168">
-              <description xmi:type="style:DotDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfAbstractNodes']/@style"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfAbstractNodes']"/>
-          </ownedBorderedNodes>
-          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_bvX9YkpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node" color="252,175,62">
-            <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']/@style"/>
-          </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']"/>
+          <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfAbstractNodes']"/>
         </ownedBorderedNodes>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:Square" xmi:id="_bvX9ZkpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
-          <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@style"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_bvX9WEpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node" color="252,175,62">
+          <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']"/>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_bvX9akpnEeWCnrNss1oNrA" name="Package2">
-        <target xmi:type="uml:Package" href="Bug475685.uml#_JRvEuUpkEeWCnrNss1oNrA"/>
-        <semanticElements xmi:type="uml:Package" href="Bug475685.uml#_JRvEuUpkEeWCnrNss1oNrA"/>
-        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_tdT-sEpnEeWCnrNss1oNrA" name="EClass1" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="uml:Class" href="Bug475685.uml#_TqZaQEpnEeWCnrNss1oNrA"/>
-          <semanticElements xmi:type="uml:Class" href="Bug475685.uml#_TqZaQEpnEeWCnrNss1oNrA"/>
+        <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']"/>
+      </ownedBorderedNodes>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_bvX9XEpnEeWCnrNss1oNrA" name="att2" tooltipText="" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="uml:Property" href="Bug475685.uml#_OrpoUUpnEeWCnrNss1oNrA"/>
+        <semanticElements xmi:type="uml:Property" href="Bug475685.uml#_OrpoUUpnEeWCnrNss1oNrA"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_bvX9XUpnEeWCnrNss1oNrA" name="MyDataType" tooltipText="" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
+          <semanticElements xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_tdUlwEpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
-            <description xmi:type="style:LozengeNodeDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']/@style"/>
+          <ownedStyle xmi:type="diagram:Dot" uid="_Hot88W-vEeu1eKMoxso4HA" labelAlignment="RIGHT" labelPosition="node" backgroundColor="173,127,168">
+            <description xmi:type="style:DotDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfAbstractNodes']/@style"/>
           </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']"/>
+          <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfAbstractNodes']"/>
         </ownedBorderedNodes>
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_bvX9a0pnEeWCnrNss1oNrA" labelAlignment="RIGHT" borderSize="1" borderSizeComputationExpression="1">
-          <description xmi:type="style:FlatContainerStyleDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@style"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_bvX9YkpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node" color="252,175,62">
+          <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:ContainerMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']"/>
-        <ownedDiagramElements xmi:type="diagram:DNodeContainer" xmi:id="_bvX9cEpnEeWCnrNss1oNrA" name="Package21">
-          <target xmi:type="uml:Package" href="Bug475685.uml#_JRvEukpkEeWCnrNss1oNrA"/>
-          <semanticElements xmi:type="uml:Package" href="Bug475685.uml#_JRvEukpkEeWCnrNss1oNrA"/>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_bvX9cUpnEeWCnrNss1oNrA" name="EClass211" width="3" height="3" resizeKind="NSEW">
-            <target xmi:type="uml:Class" href="Bug475685.uml#_JRvEu0pkEeWCnrNss1oNrA"/>
-            <semanticElements xmi:type="uml:Class" href="Bug475685.uml#_JRvEu0pkEeWCnrNss1oNrA"/>
-            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_bvX9ckpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
-              <description xmi:type="style:LozengeNodeDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']/@style"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']"/>
-          </ownedBorderedNodes>
+        <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']"/>
+      </ownedBorderedNodes>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:Square" uid="_bvX9ZkpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
+        <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_bvX9akpnEeWCnrNss1oNrA" name="Package2">
+      <target xmi:type="uml:Package" href="Bug475685.uml#_JRvEuUpkEeWCnrNss1oNrA"/>
+      <semanticElements xmi:type="uml:Package" href="Bug475685.uml#_JRvEuUpkEeWCnrNss1oNrA"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_tdT-sEpnEeWCnrNss1oNrA" name="EClass1" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="uml:Class" href="Bug475685.uml#_TqZaQEpnEeWCnrNss1oNrA"/>
+        <semanticElements xmi:type="uml:Class" href="Bug475685.uml#_TqZaQEpnEeWCnrNss1oNrA"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Lozenge" uid="_tdUlwEpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
+          <description xmi:type="style:LozengeNodeDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']"/>
+      </ownedBorderedNodes>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_bvX9a0pnEeWCnrNss1oNrA" labelAlignment="RIGHT" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']"/>
+      <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_bvX9cEpnEeWCnrNss1oNrA" name="Package21">
+        <target xmi:type="uml:Package" href="Bug475685.uml#_JRvEukpkEeWCnrNss1oNrA"/>
+        <semanticElements xmi:type="uml:Package" href="Bug475685.uml#_JRvEukpkEeWCnrNss1oNrA"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_bvX9cUpnEeWCnrNss1oNrA" name="EClass211" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="uml:Class" href="Bug475685.uml#_JRvEu0pkEeWCnrNss1oNrA"/>
+          <semanticElements xmi:type="uml:Class" href="Bug475685.uml#_JRvEu0pkEeWCnrNss1oNrA"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_bvX9dkpnEeWCnrNss1oNrA" labelAlignment="RIGHT">
-            <description xmi:type="style:FlatContainerStyleDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@style"/>
+          <ownedStyle xmi:type="diagram:Lozenge" uid="_bvX9ckpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
+            <description xmi:type="style:LozengeNodeDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']/@style"/>
           </ownedStyle>
-          <actualMapping xmi:type="description_1:ContainerMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']"/>
-        </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_bvX9tkpnEeWCnrNss1oNrA" name="EClass1" tooltipText="">
-          <target xmi:type="uml:Class" href="Bug475685.uml#_TqZaQEpnEeWCnrNss1oNrA"/>
-          <semanticElements xmi:type="uml:Class" href="Bug475685.uml#_TqZaQEpnEeWCnrNss1oNrA"/>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_1x6SIEpnEeWCnrNss1oNrA" name="att1" width="3" height="3" resizeKind="NSEW">
-            <target xmi:type="uml:Property" href="Bug475685.uml#_OrpoUEpnEeWCnrNss1oNrA"/>
-            <semanticElements xmi:type="uml:Property" href="Bug475685.uml#_OrpoUEpnEeWCnrNss1oNrA"/>
-            <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_1x9VcEpnEeWCnrNss1oNrA" name="MyDataType" width="3" height="3" resizeKind="NSEW">
-              <target xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
-              <semanticElements xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
-              <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-              <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-              <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-              <ownedStyle xmi:type="diagram:Dot" xmi:id="_1x-jkEpnEeWCnrNss1oNrA" labelAlignment="RIGHT">
-                <description xmi:type="style:DotDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfEClassListContainerMapping']/@style"/>
-              </ownedStyle>
-              <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfEClassListContainerMapping']"/>
-            </ownedBorderedNodes>
-            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Square" xmi:id="_1x8HUEpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
-              <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@style"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']"/>
-          </ownedBorderedNodes>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_1x8uYEpnEeWCnrNss1oNrA" name="att2" width="3" height="3" resizeKind="NSEW">
-            <target xmi:type="uml:Property" href="Bug475685.uml#_OrpoUUpnEeWCnrNss1oNrA"/>
-            <semanticElements xmi:type="uml:Property" href="Bug475685.uml#_OrpoUUpnEeWCnrNss1oNrA"/>
-            <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_1x_KoEpnEeWCnrNss1oNrA" name="MyDataType" width="3" height="3" resizeKind="NSEW">
-              <target xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
-              <semanticElements xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
-              <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-              <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-              <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-              <ownedStyle xmi:type="diagram:Dot" xmi:id="_1x_KoUpnEeWCnrNss1oNrA" labelAlignment="RIGHT">
-                <description xmi:type="style:DotDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfEClassListContainerMapping']/@style"/>
-              </ownedStyle>
-              <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfEClassListContainerMapping']"/>
-            </ownedBorderedNodes>
-            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Square" xmi:id="_1x8uYUpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
-              <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@style"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']"/>
-          </ownedBorderedNodes>
-          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_bvX9t0pnEeWCnrNss1oNrA" labelAlignment="RIGHT" borderSize="1" borderSizeComputationExpression="1">
-            <description xmi:type="style:FlatContainerStyleDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@style"/>
-          </ownedStyle>
-          <actualMapping xmi:type="description_1:ContainerMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']"/>
-          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_bvX9vEpnEeWCnrNss1oNrA" name="att1">
-            <target xmi:type="uml:Property" href="Bug475685.uml#_OrpoUEpnEeWCnrNss1oNrA"/>
-            <semanticElements xmi:type="uml:Property" href="Bug475685.uml#_OrpoUEpnEeWCnrNss1oNrA"/>
-            <ownedStyle xmi:type="diagram:Square" xmi:id="_bvX9vUpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
-              <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@subNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@style"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@subNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']"/>
-          </ownedElements>
-          <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_bvX9wUpnEeWCnrNss1oNrA" name="att2">
-            <target xmi:type="uml:Property" href="Bug475685.uml#_OrpoUUpnEeWCnrNss1oNrA"/>
-            <semanticElements xmi:type="uml:Property" href="Bug475685.uml#_OrpoUUpnEeWCnrNss1oNrA"/>
-            <ownedStyle xmi:type="diagram:Square" xmi:id="_bvX9wkpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
-              <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@subNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@style"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@subNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']"/>
-          </ownedElements>
-        </ownedDiagramElements>
-        <ownedDiagramElements xmi:type="diagram:DNode" xmi:id="_tdYQIEpnEeWCnrNss1oNrA" name="EClass1" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="uml:Class" href="Bug475685.uml#_TqZaQEpnEeWCnrNss1oNrA"/>
-          <semanticElements xmi:type="uml:Class" href="Bug475685.uml#_TqZaQEpnEeWCnrNss1oNrA"/>
-          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Lozenge" xmi:id="_tdY3MEpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
-            <description xmi:type="style:LozengeNodeDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subNodeMappings[name='ClassAsNodeMapping']/@style"/>
-          </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subNodeMappings[name='ClassAsNodeMapping']"/>
-        </ownedDiagramElements>
+          <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']"/>
+        </ownedBorderedNodes>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_bvX9dkpnEeWCnrNss1oNrA" labelAlignment="RIGHT">
+          <description xmi:type="style:FlatContainerStyleDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:ContainerMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_bvX9y0pnEeWCnrNss1oNrA" name="Node1" outgoingEdges="_2RLyoEpoEeWCnrNss1oNrA _2RMZtEpoEeWCnrNss1oNrA" incomingEdges="_2RLyoEpoEeWCnrNss1oNrA _2RNAwEpoEeWCnrNss1oNrA">
-        <target xmi:type="uml:Class" href="Bug475685.uml#_JRudoEpkEeWCnrNss1oNrA"/>
-        <semanticElements xmi:type="uml:Class" href="Bug475685.uml#_JRudoEpkEeWCnrNss1oNrA"/>
-        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_1yA_0EpnEeWCnrNss1oNrA" name="att1" width="3" height="3" resizeKind="NSEW">
+      <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_bvX9tkpnEeWCnrNss1oNrA" name="EClass1" tooltipText="">
+        <target xmi:type="uml:Class" href="Bug475685.uml#_TqZaQEpnEeWCnrNss1oNrA"/>
+        <semanticElements xmi:type="uml:Class" href="Bug475685.uml#_TqZaQEpnEeWCnrNss1oNrA"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_1x6SIEpnEeWCnrNss1oNrA" name="att1" width="3" height="3" resizeKind="NSEW">
           <target xmi:type="uml:Property" href="Bug475685.uml#_OrpoUEpnEeWCnrNss1oNrA"/>
           <semanticElements xmi:type="uml:Property" href="Bug475685.uml#_OrpoUEpnEeWCnrNss1oNrA"/>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_1yCN8EpnEeWCnrNss1oNrA" name="MyDataType" width="3" height="3" resizeKind="NSEW">
+          <ownedBorderedNodes xmi:type="diagram:DNode" uid="_1x9VcEpnEeWCnrNss1oNrA" name="MyDataType" width="3" height="3" resizeKind="NSEW">
             <target xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
             <semanticElements xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
             <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
             <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
             <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Dot" xmi:id="_1yCN8UpnEeWCnrNss1oNrA" labelAlignment="RIGHT">
-              <description xmi:type="style:DotDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfEClassListContainerMapping']/@style"/>
-            </ownedStyle>
-            <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfEClassListContainerMapping']"/>
-          </ownedBorderedNodes>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_1yA_0UpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
-            <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@style"/>
-          </ownedStyle>
-          <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']"/>
-        </ownedBorderedNodes>
-        <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_1yBm4EpnEeWCnrNss1oNrA" name="att2" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="uml:Property" href="Bug475685.uml#_OrpoUUpnEeWCnrNss1oNrA"/>
-          <semanticElements xmi:type="uml:Property" href="Bug475685.uml#_OrpoUUpnEeWCnrNss1oNrA"/>
-          <ownedBorderedNodes xmi:type="diagram:DNode" xmi:id="_1yC1AEpnEeWCnrNss1oNrA" name="MyDataType" width="3" height="3" resizeKind="NSEW">
-            <target xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
-            <semanticElements xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
-            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
-            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
-            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-            <ownedStyle xmi:type="diagram:Dot" xmi:id="_1yDcEEpnEeWCnrNss1oNrA" labelAlignment="RIGHT">
+            <ownedStyle xmi:type="diagram:Dot" uid="_Hot882-vEeu1eKMoxso4HA" labelAlignment="RIGHT">
               <description xmi:type="style:DotDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfEClassListContainerMapping']/@style"/>
             </ownedStyle>
             <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfEClassListContainerMapping']"/>
@@ -523,7 +440,29 @@
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_1yBm4UpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
+          <ownedStyle xmi:type="diagram:Square" uid="_1x8HUEpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
+            <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']"/>
+        </ownedBorderedNodes>
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_1x8uYEpnEeWCnrNss1oNrA" name="att2" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="uml:Property" href="Bug475685.uml#_OrpoUUpnEeWCnrNss1oNrA"/>
+          <semanticElements xmi:type="uml:Property" href="Bug475685.uml#_OrpoUUpnEeWCnrNss1oNrA"/>
+          <ownedBorderedNodes xmi:type="diagram:DNode" uid="_1x_KoEpnEeWCnrNss1oNrA" name="MyDataType" width="3" height="3" resizeKind="NSEW">
+            <target xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
+            <semanticElements xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
+            <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+            <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+            <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+            <ownedStyle xmi:type="diagram:Dot" uid="_HotV4W-vEeu1eKMoxso4HA" labelAlignment="RIGHT">
+              <description xmi:type="style:DotDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfEClassListContainerMapping']/@style"/>
+            </ownedStyle>
+            <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfEClassListContainerMapping']"/>
+          </ownedBorderedNodes>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Square" uid="_1x8uYUpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']"/>
@@ -531,76 +470,162 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:FlatContainerStyle" xmi:id="_bvX9zEpnEeWCnrNss1oNrA" labelAlignment="RIGHT" borderSize="1" borderSizeComputationExpression="1">
+        <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_bvX9t0pnEeWCnrNss1oNrA" labelAlignment="RIGHT" borderSize="1" borderSizeComputationExpression="1">
           <description xmi:type="style:FlatContainerStyleDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']"/>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_bvX90UpnEeWCnrNss1oNrA" name="att1">
+        <ownedElements xmi:type="diagram:DNodeListElement" uid="_bvX9vEpnEeWCnrNss1oNrA" name="att1">
           <target xmi:type="uml:Property" href="Bug475685.uml#_OrpoUEpnEeWCnrNss1oNrA"/>
           <semanticElements xmi:type="uml:Property" href="Bug475685.uml#_OrpoUEpnEeWCnrNss1oNrA"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_bvX90kpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
+          <ownedStyle xmi:type="diagram:Square" uid="_bvX9vUpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@subNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@subNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']"/>
         </ownedElements>
-        <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_bvX91kpnEeWCnrNss1oNrA" name="att2">
+        <ownedElements xmi:type="diagram:DNodeListElement" uid="_bvX9wUpnEeWCnrNss1oNrA" name="att2">
           <target xmi:type="uml:Property" href="Bug475685.uml#_OrpoUUpnEeWCnrNss1oNrA"/>
           <semanticElements xmi:type="uml:Property" href="Bug475685.uml#_OrpoUUpnEeWCnrNss1oNrA"/>
-          <ownedStyle xmi:type="diagram:Square" xmi:id="_bvX910pnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
+          <ownedStyle xmi:type="diagram:Square" uid="_bvX9wkpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@subNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@subNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']"/>
         </ownedElements>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_2RLyoEpoEeWCnrNss1oNrA" name="Name" sourceNode="_bvX9y0pnEeWCnrNss1oNrA" targetNode="_bvX9y0pnEeWCnrNss1oNrA" beginLabel="Name" endLabel="Name">
-        <target xmi:type="uml:Association" href="Bug475685.uml#_g13gkEpoEeWCnrNss1oNrA"/>
-        <semanticElements xmi:type="uml:Association" href="Bug475685.uml#_g13gkEpoEeWCnrNss1oNrA"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_2RMZsEpoEeWCnrNss1oNrA" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
-          <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_9S1YwEseEeWvRsn0nw-KYQ"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_2RMZskpoEeWCnrNss1oNrA"/>
-          <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_9S1_0EseEeWvRsn0nw-KYQ"/>
+      <ownedDiagramElements xmi:type="diagram:DNode" uid="_tdYQIEpnEeWCnrNss1oNrA" name="EClass1" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="uml:Class" href="Bug475685.uml#_TqZaQEpnEeWCnrNss1oNrA"/>
+        <semanticElements xmi:type="uml:Class" href="Bug475685.uml#_TqZaQEpnEeWCnrNss1oNrA"/>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Lozenge" uid="_tdY3MEpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
+          <description xmi:type="style:LozengeNodeDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subNodeMappings[name='ClassAsNodeMapping']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
+        <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subNodeMappings[name='ClassAsNodeMapping']"/>
       </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_2RMZtEpoEeWCnrNss1oNrA" name="Name" sourceNode="_bvX9y0pnEeWCnrNss1oNrA" targetNode="_bvX9UUpnEeWCnrNss1oNrA" beginLabel="Name" endLabel="Name">
-        <target xmi:type="uml:Association" href="Bug475685.uml#_g13gkEpoEeWCnrNss1oNrA"/>
-        <semanticElements xmi:type="uml:Association" href="Bug475685.uml#_g13gkEpoEeWCnrNss1oNrA"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_2RMZtUpoEeWCnrNss1oNrA" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
-          <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_9S2m4EseEeWvRsn0nw-KYQ"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_2RMZt0poEeWCnrNss1oNrA"/>
-          <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_9S2m4UseEeWvRsn0nw-KYQ"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_bvX9y0pnEeWCnrNss1oNrA" name="Node1" outgoingEdges="_2RLyoEpoEeWCnrNss1oNrA _2RMZtEpoEeWCnrNss1oNrA" incomingEdges="_2RLyoEpoEeWCnrNss1oNrA _2RNAwEpoEeWCnrNss1oNrA">
+      <target xmi:type="uml:Class" href="Bug475685.uml#_JRudoEpkEeWCnrNss1oNrA"/>
+      <semanticElements xmi:type="uml:Class" href="Bug475685.uml#_JRudoEpkEeWCnrNss1oNrA"/>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_1yA_0EpnEeWCnrNss1oNrA" name="att1" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="uml:Property" href="Bug475685.uml#_OrpoUEpnEeWCnrNss1oNrA"/>
+        <semanticElements xmi:type="uml:Property" href="Bug475685.uml#_OrpoUEpnEeWCnrNss1oNrA"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_1yCN8EpnEeWCnrNss1oNrA" name="MyDataType" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
+          <semanticElements xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Dot" uid="_HotV42-vEeu1eKMoxso4HA" labelAlignment="RIGHT">
+            <description xmi:type="style:DotDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfEClassListContainerMapping']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfEClassListContainerMapping']"/>
+        </ownedBorderedNodes>
+        <ownedStyle xmi:type="diagram:Square" uid="_1yA_0UpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_2RNAwEpoEeWCnrNss1oNrA" name="Name" sourceNode="_bvX9UUpnEeWCnrNss1oNrA" targetNode="_bvX9y0pnEeWCnrNss1oNrA" beginLabel="Name" endLabel="Name">
-        <target xmi:type="uml:Association" href="Bug475685.uml#_g13gkEpoEeWCnrNss1oNrA"/>
-        <semanticElements xmi:type="uml:Association" href="Bug475685.uml#_g13gkEpoEeWCnrNss1oNrA"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_2RNAwUpoEeWCnrNss1oNrA" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
-          <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_9S31AEseEeWvRsn0nw-KYQ"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_2RNAw0poEeWCnrNss1oNrA"/>
-          <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_9S31AUseEeWvRsn0nw-KYQ"/>
+        <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']"/>
+      </ownedBorderedNodes>
+      <ownedBorderedNodes xmi:type="diagram:DNode" uid="_1yBm4EpnEeWCnrNss1oNrA" name="att2" width="3" height="3" resizeKind="NSEW">
+        <target xmi:type="uml:Property" href="Bug475685.uml#_OrpoUUpnEeWCnrNss1oNrA"/>
+        <semanticElements xmi:type="uml:Property" href="Bug475685.uml#_OrpoUUpnEeWCnrNss1oNrA"/>
+        <ownedBorderedNodes xmi:type="diagram:DNode" uid="_1yC1AEpnEeWCnrNss1oNrA" name="MyDataType" width="3" height="3" resizeKind="NSEW">
+          <target xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
+          <semanticElements xmi:type="uml:DataType" href="Bug475685.uml#_JRvEsUpkEeWCnrNss1oNrA"/>
+          <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+          <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+          <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+          <ownedStyle xmi:type="diagram:Dot" uid="_HotV52-vEeu1eKMoxso4HA" labelAlignment="RIGHT">
+            <description xmi:type="style:DotDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfEClassListContainerMapping']/@style"/>
+          </ownedStyle>
+          <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfEClassListContainerMapping']"/>
+        </ownedBorderedNodes>
+        <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+        <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+        <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+        <ownedStyle xmi:type="diagram:Square" uid="_1yBm4UpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
-      </ownedDiagramElements>
-      <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_2RNn0EpoEeWCnrNss1oNrA" name="Name" sourceNode="_bvX9UUpnEeWCnrNss1oNrA" targetNode="_bvX9UUpnEeWCnrNss1oNrA" beginLabel="Name" endLabel="Name">
-        <target xmi:type="uml:Association" href="Bug475685.uml#_g13gkEpoEeWCnrNss1oNrA"/>
-        <semanticElements xmi:type="uml:Association" href="Bug475685.uml#_g13gkEpoEeWCnrNss1oNrA"/>
-        <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_2RNn0UpoEeWCnrNss1oNrA" size="2">
-          <description xmi:type="style:EdgeStyleDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
-          <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_9S31AkseEeWvRsn0nw-KYQ"/>
-          <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_2RNn00poEeWCnrNss1oNrA"/>
-          <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_9S4cEEseEeWvRsn0nw-KYQ"/>
+        <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']"/>
+      </ownedBorderedNodes>
+      <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
+      <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
+      <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_bvX9zEpnEeWCnrNss1oNrA" labelAlignment="RIGHT" borderSize="1" borderSizeComputationExpression="1">
+        <description xmi:type="style:FlatContainerStyleDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']"/>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_bvX90UpnEeWCnrNss1oNrA" name="att1">
+        <target xmi:type="uml:Property" href="Bug475685.uml#_OrpoUEpnEeWCnrNss1oNrA"/>
+        <semanticElements xmi:type="uml:Property" href="Bug475685.uml#_OrpoUEpnEeWCnrNss1oNrA"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_bvX90kpnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@subNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@style"/>
         </ownedStyle>
-        <actualMapping xmi:type="description_1:EdgeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
-      </ownedDiagramElements>
-      <description xmi:type="description_1:DiagramDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']"/>
-      <filterVariableHistory xmi:type="diagram:FilterVariableHistory" xmi:id="_bvX-ZUpnEeWCnrNss1oNrA"/>
-      <activatedLayers xmi:type="description_1:Layer" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer"/>
-      <target xmi:type="uml:Package" href="Bug475685.uml#_7G3zYEphEeW5J5ZbPCvtCw"/>
-    </ownedRepresentations>
-    <viewpoint xmi:type="description:Viewpoint" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']"/>
-  </ownedViews>
-</viewpoint:DAnalysis>
+        <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@subNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" uid="_bvX91kpnEeWCnrNss1oNrA" name="att2">
+        <target xmi:type="uml:Property" href="Bug475685.uml#_OrpoUUpnEeWCnrNss1oNrA"/>
+        <semanticElements xmi:type="uml:Property" href="Bug475685.uml#_OrpoUUpnEeWCnrNss1oNrA"/>
+        <ownedStyle xmi:type="diagram:Square" uid="_bvX910pnEeWCnrNss1oNrA" labelAlignment="RIGHT" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@subNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@subNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']"/>
+      </ownedElements>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_2RLyoEpoEeWCnrNss1oNrA" name="Name" sourceNode="_bvX9y0pnEeWCnrNss1oNrA" targetNode="_bvX9y0pnEeWCnrNss1oNrA" beginLabel="Name" endLabel="Name">
+      <target xmi:type="uml:Association" href="Bug475685.uml#_g13gkEpoEeWCnrNss1oNrA"/>
+      <semanticElements xmi:type="uml:Association" href="Bug475685.uml#_g13gkEpoEeWCnrNss1oNrA"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_2RMZsEpoEeWCnrNss1oNrA" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_9S1YwEseEeWvRsn0nw-KYQ"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_2RMZskpoEeWCnrNss1oNrA"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_9S1_0EseEeWvRsn0nw-KYQ"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_2RMZtEpoEeWCnrNss1oNrA" name="Name" sourceNode="_bvX9y0pnEeWCnrNss1oNrA" targetNode="_bvX9UUpnEeWCnrNss1oNrA" beginLabel="Name" endLabel="Name">
+      <target xmi:type="uml:Association" href="Bug475685.uml#_g13gkEpoEeWCnrNss1oNrA"/>
+      <semanticElements xmi:type="uml:Association" href="Bug475685.uml#_g13gkEpoEeWCnrNss1oNrA"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_2RMZtUpoEeWCnrNss1oNrA" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_9S2m4EseEeWvRsn0nw-KYQ"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_2RMZt0poEeWCnrNss1oNrA"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_9S2m4UseEeWvRsn0nw-KYQ"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_2RNAwEpoEeWCnrNss1oNrA" name="Name" sourceNode="_bvX9UUpnEeWCnrNss1oNrA" targetNode="_bvX9y0pnEeWCnrNss1oNrA" beginLabel="Name" endLabel="Name">
+      <target xmi:type="uml:Association" href="Bug475685.uml#_g13gkEpoEeWCnrNss1oNrA"/>
+      <semanticElements xmi:type="uml:Association" href="Bug475685.uml#_g13gkEpoEeWCnrNss1oNrA"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_2RNAwUpoEeWCnrNss1oNrA" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_9S31AEseEeWvRsn0nw-KYQ"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_2RNAw0poEeWCnrNss1oNrA"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_9S31AUseEeWvRsn0nw-KYQ"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_2RNn0EpoEeWCnrNss1oNrA" name="Name" sourceNode="_bvX9UUpnEeWCnrNss1oNrA" targetNode="_bvX9UUpnEeWCnrNss1oNrA" beginLabel="Name" endLabel="Name">
+      <target xmi:type="uml:Association" href="Bug475685.uml#_g13gkEpoEeWCnrNss1oNrA"/>
+      <semanticElements xmi:type="uml:Association" href="Bug475685.uml#_g13gkEpoEeWCnrNss1oNrA"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_2RNn0UpoEeWCnrNss1oNrA" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@edgeMappings[name='EC_EReference']/@style"/>
+        <beginLabelStyle xmi:type="diagram:BeginLabelStyle" uid="_9S31AkseEeWvRsn0nw-KYQ"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_2RNn00poEeWCnrNss1oNrA"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" uid="_9S4cEEseEeWvRsn0nw-KYQ"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNode" uid="_AajtJG-vEeu1eKMoxso4HA" name="Node1Border" width="3" height="3" resizeKind="NSEW">
+      <target xmi:type="uml:Class" href="Bug475685.uml#_JRudoEpkEeWCnrNss1oNrA"/>
+      <semanticElements xmi:type="uml:Class" href="Bug475685.uml#_JRudoEpkEeWCnrNss1oNrA"/>
+      <ownedStyle xmi:type="diagram:Square" uid="_DUGtI2-vEeu1eKMoxso4HA" labelAlignment="RIGHT" color="114,159,207">
+        <description xmi:type="style:SquareDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='NodesWithLabelOnBorder']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:NodeMapping" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='NodesWithLabelOnBorder']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_bvX-ZUpnEeWCnrNss1oNrA"/>
+    <activatedLayers xmi:type="description_1:Layer" href="Bug475685.odesign#//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer"/>
+    <target xmi:type="uml:Model" href="Bug475685.uml#_7G3zYEphEeW5J5ZbPCvtCw"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

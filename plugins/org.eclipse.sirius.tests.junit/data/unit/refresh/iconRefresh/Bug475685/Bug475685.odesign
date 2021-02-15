@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="Bug475685" version="10.1.0.201507271600">
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" name="Bug475685" version="12.0.0.2017041100">
   <ownedViewpoints name="Bug475685_Viewpoint" modelFileExtension="uml">
-    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Bug475685_DiagDef" domainClass="uml.Package">
-      <metamodel href="http://www.eclipse.org/uml2/4.0.0/UML#/"/>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Bug475685_DiagDef" domainClass="uml::Package">
+      <metamodel href="http://www.eclipse.org/uml2/5.0.0/UML#/"/>
       <defaultLayer name="Default1">
-        <nodeMappings name="Nodes" semanticCandidatesExpression="feature:ownedElement" domainClass="uml.Class">
-          <borderedNodeMappings name="NodeMappingOfNodes" semanticCandidatesExpression="feature:ownedElement" domainClass="uml.Property">
-            <borderedNodeMappings name="EDataTypeBorderedNodeMappingOfAbstractNodes" semanticCandidatesExpression="feature:type" domainClass="uml.DataType">
+        <nodeMappings name="Nodes" semanticCandidatesExpression="feature:ownedElement" domainClass="uml::Class">
+          <borderedNodeMappings name="NodeMappingOfNodes" semanticCandidatesExpression="feature:ownedElement" domainClass="uml::Property">
+            <borderedNodeMappings name="EDataTypeBorderedNodeMappingOfAbstractNodes" semanticCandidatesExpression="feature:type" domainClass="uml::DataType">
               <style xsi:type="style:DotDescription" labelAlignment="RIGHT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
               </style>
+              <conditionnalStyles predicateExpression="aql:self.visibility = uml::VisibilityKind::private">
+                <style xsi:type="style:DotDescription" labelAlignment="RIGHT" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+                </style>
+              </conditionnalStyles>
             </borderedNodeMappings>
             <style xsi:type="style:SquareDescription" labelAlignment="RIGHT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -25,7 +32,21 @@
             <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
           </style>
         </nodeMappings>
-        <edgeMappings name="EC_EReference" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfEClassListContainerMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']/@borderedNodeMappings[name='EAttributeAsBorderedNodeMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfAbstractNodes'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']" targetMapping="//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']/@borderedNodeMappings[name='EAttributeAsBorderedNodeMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfEClassListContainerMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfAbstractNodes']" targetFinderExpression="feature:redefinedClassifier" sourceFinderExpression="feature:eContainer" domainClass="Association" useDomainElement="true">
+        <nodeMappings name="NodesWithLabelOnBorder" semanticCandidatesExpression="feature:ownedElement" domainClass="uml::Class">
+          <style xsi:type="style:SquareDescription" labelExpression="aql:self.name + 'Border'" labelAlignment="RIGHT" resizeKind="NSEW">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+          </style>
+          <conditionnalStyles predicateExpression="aql:self.visibility = uml::VisibilityKind::private">
+            <style xsi:type="style:SquareDescription" labelExpression="aql:self.name + 'Border'" labelAlignment="RIGHT" resizeKind="NSEW">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            </style>
+          </conditionnalStyles>
+        </nodeMappings>
+        <edgeMappings name="EC_EReference" semanticElements="var:self" sourceMapping="//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfEClassListContainerMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']/@borderedNodeMappings[name='EAttributeAsBorderedNodeMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfAbstractNodes'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']" targetMapping="//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping']/@borderedNodeMappings[name='EAttributeAsBorderedNodeMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping']/@borderedNodeMappings[name='EClassAsBorderedNodeMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ']/@subContainerMappings[name='SubPackageCompartmentContainerMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='PackageCompartmentContainerMappingZ'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfEClassListContainerMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']/@borderedNodeMappings[name='AttributeNodeMappingOfEClassListContainerMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes'] //@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@nodeMappings[name='Nodes']/@borderedNodeMappings[name='NodeMappingOfNodes']/@borderedNodeMappings[name='EDataTypeBorderedNodeMappingOfAbstractNodes']" targetFinderExpression="feature:redefinedClassifier" sourceFinderExpression="feature:eContainer" domainClass="uml::Association" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <beginLabelStyleDescription labelExpression="Name">
@@ -39,9 +60,9 @@
             </endLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="PackageCompartmentContainerMappingZ" semanticCandidatesExpression="feature:nestedPackage" domainClass="uml.Package" reusedContainerMappings="//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']">
-          <borderedNodeMappings name="EClassAsBorderedNodeMapping" semanticCandidatesExpression="feature:ownedElement" domainClass="uml.Class">
-            <borderedNodeMappings name="EAttributeAsBorderedNodeMapping" semanticCandidatesExpression="feature:attribute" domainClass="uml.Property">
+        <containerMappings name="PackageCompartmentContainerMappingZ" semanticCandidatesExpression="feature:nestedPackage" domainClass="uml::Package" reusedContainerMappings="//@ownedViewpoints[name='Bug475685_Viewpoint']/@ownedRepresentations[name='Bug475685_DiagDef']/@defaultLayer/@containerMappings[name='EClassListContainerMapping']">
+          <borderedNodeMappings name="EClassAsBorderedNodeMapping" semanticCandidatesExpression="feature:ownedElement" domainClass="uml::Class">
+            <borderedNodeMappings name="EAttributeAsBorderedNodeMapping" semanticCandidatesExpression="feature:attribute" domainClass="uml::Property">
               <style xsi:type="style:EllipseNodeDescription" labelAlignment="RIGHT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -54,8 +75,8 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </borderedNodeMappings>
-          <subNodeMappings name="ClassAsNodeMapping" semanticCandidatesExpression="feature:ownedElement" domainClass="uml.Class">
-            <borderedNodeMappings name="EAttributeAsBorderedNodeMapping" semanticCandidatesExpression="feature:attribute" domainClass="uml.Property">
+          <subNodeMappings name="ClassAsNodeMapping" semanticCandidatesExpression="feature:ownedElement" domainClass="uml::Class">
+            <borderedNodeMappings name="EAttributeAsBorderedNodeMapping" semanticCandidatesExpression="feature:attribute" domainClass="uml::Property">
               <style xsi:type="style:EllipseNodeDescription" labelAlignment="RIGHT" labelPosition="node" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -68,9 +89,9 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </subNodeMappings>
-          <subContainerMappings name="SubPackageCompartmentContainerMapping" semanticCandidatesExpression="feature:ownedElement" domainClass="uml.Package">
-            <borderedNodeMappings name="EClassAsBorderedNodeMapping" semanticCandidatesExpression="feature:ownedElement" domainClass="uml.Class">
-              <borderedNodeMappings name="EAttributeAsBorderedNodeMapping" semanticCandidatesExpression="feature:ownedElement" domainClass="uml.Property">
+          <subContainerMappings name="SubPackageCompartmentContainerMapping" semanticCandidatesExpression="feature:ownedElement" domainClass="uml::Package">
+            <borderedNodeMappings name="EClassAsBorderedNodeMapping" semanticCandidatesExpression="feature:ownedElement" domainClass="uml::Class">
+              <borderedNodeMappings name="EAttributeAsBorderedNodeMapping" semanticCandidatesExpression="feature:ownedElement" domainClass="uml::Property">
                 <style xsi:type="style:EllipseNodeDescription" labelAlignment="RIGHT" labelPosition="node" resizeKind="NSEW">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -97,14 +118,21 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EClassListContainerMapping" semanticCandidatesExpression="feature:ownedElement" domainClass="uml.Class" childrenPresentation="List">
-          <borderedNodeMappings name="AttributeNodeMappingOfEClassListContainerMapping" domainClass="uml.Property">
-            <borderedNodeMappings name="EDataTypeBorderedNodeMappingOfEClassListContainerMapping" semanticCandidatesExpression="feature:type" domainClass="uml.DataType">
+        <containerMappings name="EClassListContainerMapping" semanticCandidatesExpression="feature:ownedElement" domainClass="uml::Class" childrenPresentation="List">
+          <borderedNodeMappings name="AttributeNodeMappingOfEClassListContainerMapping" domainClass="uml::Property">
+            <borderedNodeMappings name="EDataTypeBorderedNodeMappingOfEClassListContainerMapping" semanticCandidatesExpression="feature:type" domainClass="uml::DataType">
               <style xsi:type="style:DotDescription" labelAlignment="RIGHT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
               </style>
+              <conditionnalStyles predicateExpression="aql:self.visibility = uml::VisibilityKind::private">
+                <style xsi:type="style:DotDescription" labelAlignment="RIGHT" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+                </style>
+              </conditionnalStyles>
             </borderedNodeMappings>
             <style xsi:type="style:SquareDescription" labelAlignment="RIGHT" labelPosition="node" resizeKind="NSEW">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -112,8 +140,8 @@
               <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             </style>
           </borderedNodeMappings>
-          <subNodeMappings name="AttributeNodeMappingOfEClassListContainerMapping" domainClass="uml.Property">
-            <borderedNodeMappings name="EDataTypeBorderedNodeMappingOfEClassListContainerMapping" semanticCandidatesExpression="feature:type" domainClass="uml.DataType">
+          <subNodeMappings name="AttributeNodeMappingOfEClassListContainerMapping" domainClass="uml::Property">
+            <borderedNodeMappings name="EDataTypeBorderedNodeMappingOfEClassListContainerMapping" semanticCandidatesExpression="feature:type" domainClass="uml::DataType">
               <style xsi:type="style:DotDescription" labelAlignment="RIGHT" resizeKind="NSEW">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

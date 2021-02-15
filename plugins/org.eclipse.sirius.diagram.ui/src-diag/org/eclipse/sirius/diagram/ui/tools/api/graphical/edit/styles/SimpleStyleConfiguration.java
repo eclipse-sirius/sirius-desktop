@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.BorderItemLocator;
+import org.eclipse.gmf.runtime.diagram.ui.internal.figures.BorderItemContainerFigure;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.gef.ui.figures.DefaultSizeNodeFigure;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -58,6 +59,7 @@ import org.eclipse.swt.graphics.Image;
  * 
  * @author ymortier
  */
+@SuppressWarnings("restriction")
 public class SimpleStyleConfiguration implements StyleConfiguration {
 
     /**
@@ -69,6 +71,10 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
     @Override
     public void adaptNodeLabel(final DNode node, final SiriusWrapLabel nodeLabel) {
         if (nodeLabel.getParent() != null) {
+            if (nodeLabel.getParent() instanceof BorderItemContainerFigure) {
+                // The label is on border of its "parent" so the constraint of the parent is ignored.
+                return;
+            }
             final Rectangle constraint = new Rectangle(nodeLabel.getParent().getBounds());
             if (nodeLabel.getParent() instanceof GaugeCompositeFigure) {
                 constraint.x = 0;
