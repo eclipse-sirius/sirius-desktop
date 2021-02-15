@@ -482,7 +482,9 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(DecoratorTest.class);
         suite.addTestSuite(LayoutOptionsTests.class);
         suite.addTestSuite(RenameProjectWithSessionTest.class);
-
+        suite.addTestSuite(RectilinearNoteAttachmentWithNoteTest.class);
+        suite.addTestSuite(RectilinearNoteAttachmentWithRepresentationLinkTest.class);
+        suite.addTestSuite(RectilinearNoteAttachmentWithTextTest.class);
     }
 
     /**

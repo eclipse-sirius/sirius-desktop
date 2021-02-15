@@ -17,54 +17,39 @@ import java.util.List;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.gef.GraphicalEditPart;
+import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
-import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusNoteEditPart;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
-import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.BendpointMovedCondition;
-import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 
 /**
- * Ensures that NoteAttachment with Rectilinear style works correctly.
+ * Common behavior for Rectilinear NoteAttachment tests.
  * 
  * @author <a href="mailto:glenn.plouhinec@obeo.fr">Glenn Plouhinec</a>
  *
  */
-public class RectilinearNoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
-
-    private static final String MODEL_FILE = "bugzilla_570518.ecore";
-
-    private static final String SESSION_FILE = "bugzilla_570518.aird";
-
-    private static final String DATA_UNIT_DIR = "data/unit/noteAttachments/bugzilla_570518/";
-
-    @Override
-    protected void onSetUpBeforeClosingWelcomePage() throws Exception {
-        copyFileToTestProject(Activator.PLUGIN_ID, DATA_UNIT_DIR, MODEL_FILE, SESSION_FILE);
-        sessionAirdResource = new UIResource(designerProject, SESSION_FILE);
-        localSession = designerPerspective.openSessionFromFile(sessionAirdResource, true);
-        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), "Entities", " package entities", DDiagram.class);
-    }
+public class AbstractRectilinearNoteAttachmentTest extends AbstractSiriusSwtBotGefTestCase {
 
     /**
-     * Checks in this particular scenario that the bendpoints of the NoteAttachment remain consistent and that there is
-     * not just one bendpoint left.
+     * Checks in this particular scenario that the bendpoints of the NoteAttachment remain consistent after moving the
+     * Note and that there is not just one bendpoint left.
      * 
      * @see "https://bugs.eclipse.org/bugs/show_bug.cgi?id=570518"
+     * 
+     * @param swtBotGefEditPart
+     *            the swtBotGefEditPart corresponding to the Note, Representation Link or Text.
      */
     @SuppressWarnings("rawtypes")
-    public void testConsistentNumberBendpoints() {
-        SWTBotGefEditPart note = editor.getEditPart("Text", SiriusNoteEditPart.class);
-        editor.select(note);
-        final Point pointToDrag = editor.getAbsoluteCenter((GraphicalEditPart) note.part());
+    public void testConsistentNumberBendpoints(SWTBotGefEditPart swtBotGefEditPart) {
+        editor.select(swtBotGefEditPart);
+        final Point pointToDrag = editor.getAbsoluteCenter((GraphicalEditPart) swtBotGefEditPart.part());
         final Point endpoint = new Point(80, 155);
 
-        SiriusNoteEditPart noteEP = (SiriusNoteEditPart) note.part();
+        AbstractGraphicalEditPart noteEP = (AbstractGraphicalEditPart) swtBotGefEditPart.part();
         ConnectionEditPart attachmentEP = (ConnectionEditPart) noteEP.getSourceConnections().get(0);
         PointList points = attachmentEP.getConnectionFigure().getPoints();
         List bendpoints = ((RelativeBendpoints) ((Edge) attachmentEP.getModel()).getBendpoints()).getPoints();
@@ -79,8 +64,7 @@ public class RectilinearNoteAttachmentTest extends AbstractSiriusSwtBotGefTestCa
         points = attachmentEP.getConnectionFigure().getPoints();
         bendpoints = ((RelativeBendpoints) ((Edge) attachmentEP.getModel()).getBendpoints()).getPoints();
 
-        assertTrue("There must be 5 points.", points.size() == 4);
-        assertTrue("There must be 5 bendpoints.", bendpoints.size() == 4);
-
+        assertTrue("There must be 4 points.", points.size() == 4);
+        assertTrue("There must be 4 bendpoints.", bendpoints.size() == 4);
     }
 }
