@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -138,6 +138,7 @@ import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusForma
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerCallCheckTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerCreateTargetDiagramDiffSessionTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest;
+import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramDiffSessionTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerExistingTargetDiagramDiffSessionTest;
 import org.eclipse.sirius.tests.unit.diagram.format.data.MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest;
@@ -459,6 +460,7 @@ public class AllDiagramPluginsTests {
         suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerExternalRefTest.class));
         suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerCreateTargetDiagramDiffSessionTest.class));
         suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerExistingTargetDiagramDiffSessionTest.class));
+        suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramDiffSessionTest.class));
         suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerCallCheckTest.class));
         suite.addTest(new JUnit4TestAdapter(MappingBasedSiriusFormatDataManagerCallCheckSequenceTest.class));
         suite.addTestSuite(LabelPositionOnContainerAndListTest.class);

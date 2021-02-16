@@ -25,6 +25,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
+import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -246,10 +247,11 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest 
             protected void doExecute() {
                 // Update diagram, but transaction will be
                 // rollbacked
-                DDiagram newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnNewDiagram(session, dDiagram, explicitMappingTestConfiguration.getObjectsMap(), session,
+                DDiagram newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnNewDiagram(session, dDiagram, explicitMappingTestConfiguration.getObjectsMap(),
+                        getTargetSession(),
                         newDiagramName, explicitMappingTestConfiguration.getTargetRoot(), includeNotes);
 
-                Collection<DiagramEditPart> targetDiagramEditParts = getDiagramEditPart(session, newDiagram);
+                Collection<DiagramEditPart> targetDiagramEditParts = getDiagramEditPart(getTargetSession(), newDiagram);
                 assertTrue(!targetDiagramEditParts.isEmpty());
 
                 DiagramEditPart targetDiagramEditPart = targetDiagramEditParts.stream().findFirst().get();
@@ -264,10 +266,10 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest 
         try {
             // Force rollback of transaction to let raw diagram
             // unchanged
-            sourceDiagramEditPart.getEditingDomain().addResourceSetListener(ROLLBACK_LISTENER);
-            sourceDiagramEditPart.getEditingDomain().getCommandStack().execute(command);
+            getTargetSession().getTransactionalEditingDomain().addResourceSetListener(ROLLBACK_LISTENER);
+            getTargetSession().getTransactionalEditingDomain().getCommandStack().execute(command);
         } finally {
-            sourceDiagramEditPart.getEditingDomain().removeResourceSetListener(ROLLBACK_LISTENER);
+            getTargetSession().getTransactionalEditingDomain().removeResourceSetListener(ROLLBACK_LISTENER);
         }
 
         final String diagramToCopyFormatName = representationToCopyFormat.diagrams.get(0).name;
@@ -293,6 +295,10 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest 
 
         }
 
+    }
+
+    protected Session getTargetSession() {
+        return session;
     }
 
     @Override
