@@ -47,6 +47,8 @@ p. This first method will perform the copy-paste format from a source diagram to
 
 p. Note that if an element in the target diagram has no corresponding source element in the source diagram, this element will keep its current style and layout.
 
+p. Elements not visible in the source diagram (hidden by user, because of a deactivated layer or because of a filter) are not considered by the copy-paste.
+
 h3. Apply the copy-paste from a source diagram to a new target diagram
 
 pre.. 
@@ -83,13 +85,17 @@ p. This method will create a new diagram, based on the correspondence map. The n
 
 p. Only diagram elements for which an entry exists in the correspondence map will be created. If the new target diagram description has synchronized mapping (that means graphical elements are automatically created according to the mappings defined in  the VSM), new graphical elements might appear. If those new graphical elements semantic targets have no entry in the correspondence map, they will not be formatted and will keep their default style and layout.
 
+p. Elements not visible in the source diagram (hidden by user, because of a deactivated layer or because of a filter) are not considered by the copy-paste.
+
 h3. Filters and Layers
 
 Filters and layers activated in the source diagram are automatically activated in the target diagram.
 
-h3. Notes
+h3. Notes and Texts
 
-If this option is activated (@copyNotes@ parameter), existing notes in the source diagram are copied in the target diagram. If a note attachment exists in the source diagram, this one is also created in the target diagram, if the graphical target exists.
+If the corresponding option is activated (@copyNotes@ parameter), existing notes and texts in the source diagram are copied in the target diagram. If a note attachment exists in the source diagram, this one is also created in the target diagram, if the graphical target exists.
+
+The label of Note/Text and target of attachment are used to retrieve a potential existing Note/Text in the target diagram. In other words, if the label is different or if the target of attachment is different, a new Node/Text will be created. 
 
 h2. Sequence diagrams
 
