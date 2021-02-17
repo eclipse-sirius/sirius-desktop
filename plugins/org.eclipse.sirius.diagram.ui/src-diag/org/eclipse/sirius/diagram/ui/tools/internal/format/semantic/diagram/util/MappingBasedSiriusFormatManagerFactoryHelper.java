@@ -207,9 +207,13 @@ public final class MappingBasedSiriusFormatManagerFactoryHelper {
      *            The mapping between source diagram notes nodes and target diagram notes nodes
      * @param formatDataManager
      *            The format data manager to apply format
+     * @param targetGMFDiagram
+     *            the GMF diagram where note attachment should be duplicated
      */
+    // CHECKSTYLE:OFF
     public static void duplicateNoteAttachment(Edge edge, Node targetNote, Session targetSession, boolean targetNoteIsSource,
-            MappingBasedDiagramContentDuplicationSwitch diagramContentDuplicationSwitch, Map<Node, Node> sourceToTargetNoteMap, MappingBasedSiriusFormatDataManager formatDataManager) {
+            MappingBasedDiagramContentDuplicationSwitch diagramContentDuplicationSwitch, Map<Node, Node> sourceToTargetNoteMap, MappingBasedSiriusFormatDataManager formatDataManager,
+            Diagram targetGMFDiagram) {
         View sourceEdgeOtherBoundView = targetNoteIsSource ? edge.getTarget() : edge.getSource();
         EObject sourceEdgeOtherBoundElement = sourceEdgeOtherBoundView.getElement();
         View matchingTargetElement = null;
@@ -229,11 +233,18 @@ public final class MappingBasedSiriusFormatManagerFactoryHelper {
             }
         }
         if (matchingTargetElement != null) {
+            Collection<Edge> targetNotesAttachments = GMFNotationHelper.getNotesAttachments(targetGMFDiagram);
             Edge noteAttachmentEdge = null;
             if (targetNoteIsSource) {
-                noteAttachmentEdge = ViewService.createEdge(targetNote, matchingTargetElement, ViewType.NOTEATTACHMENT, PreferencesHint.USE_DEFAULTS);
+                noteAttachmentEdge = searchNoteAttachment(targetNotesAttachments, targetNote, matchingTargetElement);
+                if (noteAttachmentEdge == null) {
+                    noteAttachmentEdge = ViewService.createEdge(targetNote, matchingTargetElement, ViewType.NOTEATTACHMENT, PreferencesHint.USE_DEFAULTS);
+                }
             } else {
-                noteAttachmentEdge = ViewService.createEdge(matchingTargetElement, targetNote, ViewType.NOTEATTACHMENT, PreferencesHint.USE_DEFAULTS);
+                noteAttachmentEdge = searchNoteAttachment(targetNotesAttachments, matchingTargetElement, targetNote);
+                if (noteAttachmentEdge == null) {
+                    noteAttachmentEdge = ViewService.createEdge(matchingTargetElement, targetNote, ViewType.NOTEATTACHMENT, PreferencesHint.USE_DEFAULTS);
+                }
             }
 
             copyEdgeFormatAndStyle(edge, noteAttachmentEdge, formatDataManager);
@@ -243,6 +254,27 @@ public final class MappingBasedSiriusFormatManagerFactoryHelper {
             // GMFNotationHelper.getNotes have been transformed.
             DiagramPlugin.getDefault().logInfo(MessageFormat.format(Messages.MappingBasedSiriusFormatManagerFactory_ImpossibleToResolveOtherBoundTargetNote, sourceEdgeOtherBoundView));
         }
+    }
+    // CHECKSTYLE:ON
+
+    /**
+     * Search a corresponding note attachment in the list <code>targetNotesAttachments</code>.
+     * 
+     * @param targetNotesAttachments
+     *            List of note attachments in which to search.
+     * @param sourceView
+     *            the source view of the searched note attachment
+     * @param targetView
+     *            the target view of the searched note attachment
+     * @return the found note attachment or null if any
+     */
+    private static Edge searchNoteAttachment(Collection<Edge> targetNotesAttachments, View sourceView, View targetView) {
+        for (Edge edge : targetNotesAttachments) {
+            if (sourceView != null && sourceView.equals(edge.getSource()) && targetView != null && targetView.equals(edge.getTarget())) {
+                return edge;
+            }
+        }
+        return null;
     }
 
     /**

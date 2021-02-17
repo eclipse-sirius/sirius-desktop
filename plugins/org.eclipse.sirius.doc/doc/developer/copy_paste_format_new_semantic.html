@@ -45,6 +45,7 @@
 </pre>
 		<p>This first method will perform the copy-paste format from a source diagram to an existing target diagram. The target elements on which the layout and style will be applied are retrieved by using the source-target correspondence map. </p>
 		<p>Note that if an element in the target diagram has no corresponding source element in the source diagram, this element will keep its current style and layout.</p>
+		<p>Elements not visible in the source diagram (hidden by user, because of a deactivated layer or because of a filter) are not considered by the copy-paste.</p>
 		<h3 id="Applythecopypastefromasourcediagramtoanewtargetdiagram">Apply the copy-paste from a source diagram to a new target diagram</h3>
 		<pre>    /**
      * Apply format on a new {@link DDiagram} for name {@code targetDiagramName} based on the {@code sourceDiagram}.
@@ -78,12 +79,14 @@
 </pre>
 		<p>This method will create a new diagram, based on the correspondence map. The new diagram will be created only if the same source diagram description can be applied on the new semantic target. Once the new target diagram is created, the format from the source diagram is applied in the same way than the first method.</p>
 		<p>Only diagram elements for which an entry exists in the correspondence map will be created. If the new target diagram description has synchronized mapping (that means graphical elements are automatically created according to the mappings defined in  the VSM), new graphical elements might appear. If those new graphical elements semantic targets have no entry in the correspondence map, they will not be formatted and will keep their default style and layout.</p>
+		<p>Elements not visible in the source diagram (hidden by user, because of a deactivated layer or because of a filter) are not considered by the copy-paste.</p>
 		<h3 id="FiltersandLayers">Filters and Layers</h3>
 		<p>Filters and layers activated in the source diagram are automatically activated in the target diagram.</p>
-		<h3 id="Notes">Notes</h3>
-		<p>If this option is activated (
-			<code>copyNotes</code> parameter), existing notes in the source diagram are copied in the target diagram. If a note attachment exists in the source diagram, this one is also created in the target diagram, if the graphical target exists.
+		<h3 id="NotesandTexts">Notes and Texts</h3>
+		<p>If the corresponding option is activated (
+			<code>copyNotes</code> parameter), existing notes and texts in the source diagram are copied in the target diagram. If a note attachment exists in the source diagram, this one is also created in the target diagram, if the graphical target exists.
 		</p>
+		<p>The label of Note/Text and target of attachment are used to retrieve a potential existing Note/Text in the target diagram. In other words, if the label is different or if the target of attachment is different, a new Node/Text will be created. </p>
 		<h2 id="Sequencediagrams">Sequence diagrams</h2>
 		<p>The sequence diagram layout is linked to the semantic model: the vertical or horizontal graphical ordering perfectly match the semantic ordering. 
 			<br/>Because of this constraint, this feature can only be applied between sequence diagrams with a perfect match between their semantic models. That means the target semantic model, on which the existing target sequence diagram or the new one are based on, has to be the exact copy of the source semantic model. All target semantic elements have to be present in the corresponding map and all source semantic elements have to be present in the map.

@@ -16,6 +16,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -30,12 +31,12 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
-import org.eclipse.gmf.runtime.diagram.core.util.ViewType;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditDomain;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
@@ -459,7 +460,7 @@ public class MappingBasedSiriusFormatManagerFactory {
             DiagramPlugin.getDefault()
                     .logError(MessageFormat.format(Messages.MappingBasedSiriusFormatManagerFactory_ImpossibleToSuitableDescription,
                             descs.stream().map(desc -> desc.getName()).collect(Collectors.joining(", ")), sourceDescName, //$NON-NLS-1$
-                    SiriusEditPlugin.getPlugin().getUiCallback().getSessionNameToDisplayWhileSaving(targetSession)));
+                            SiriusEditPlugin.getPlugin().getUiCallback().getSessionNameToDisplayWhileSaving(targetSession)));
         }
         return null;
     }
@@ -564,43 +565,68 @@ public class MappingBasedSiriusFormatManagerFactory {
         final Diagram sourceGMFDiagram = MappingBasedSiriusFormatManagerFactoryHelper.getGMFDiagram(sourceDiagram);
         final Diagram targetGMFDiagram = MappingBasedSiriusFormatManagerFactoryHelper.getGMFDiagram(targetDiagram);
 
-        // Get all notes
-        Collection<Node> sourceNotes = GMFNotationHelper.getNotes(sourceGMFDiagram);
-        sourceNotes.addAll(GMFNotationHelper.getTextNotes(sourceGMFDiagram));
-
         // Initialize and clear sourceToTargetNoteMap
         if (sourceToTargetNoteMap == null) {
             sourceToTargetNoteMap = new HashMap<Node, Node>();
         }
         sourceToTargetNoteMap.clear();
 
+        // Get all notes
+        Collection<Node> sourceNotes = GMFNotationHelper.getNotes(sourceGMFDiagram);
+        Collection<Node> targetNotes = GMFNotationHelper.getNotes(targetGMFDiagram);
+
         // Duplicate notes into target diagram and apply source note style
         sourceNotes.forEach(sourceNote -> {
-            Node targetNote = null;
-            if (ViewType.NOTE.equals(sourceNote.getType())) {
-                // Handle notes
-                targetNote = GMFNotationHelper.createNote(targetGMFDiagram, GMFNotationHelper.getNoteDescription(sourceNote));
+            if (sourceNote instanceof Shape && ((Shape) sourceNote).getDescription() != null) {
+                String labelOfNote = ((Shape) sourceNote).getDescription();
+                Optional<Node> existingTargetNote = search(targetNotes, (Shape) sourceNote, labelOfNote);
+                Node targetNote;
+                if (existingTargetNote.isPresent()) {
+                    targetNote = existingTargetNote.get();
+                } else {
+                    targetNote = GMFNotationHelper.createNote(targetGMFDiagram, GMFNotationHelper.getNoteDescription(sourceNote));
+                }
+                targetNote.setLayoutConstraint(EcoreUtil.copy(sourceNote.getLayoutConstraint()));
+                if (sourceNote.isSetElement()) {
+                    targetNote.setElement(sourceNote.getElement());
+                }
+                formatDataManager.copyGMFStyle(sourceNote, targetNote);
+                sourceToTargetNoteMap.put(sourceNote, targetNote);
+            }
+        });
+
+        // Get all texts
+        Collection<Node> sourceTexts = GMFNotationHelper.getTextNotes(sourceGMFDiagram);
+        Collection<Node> targetTexts = GMFNotationHelper.getTextNotes(targetGMFDiagram);
+
+        // Duplicate texts into target diagram and apply source text style
+        sourceTexts.forEach(sourceText -> {
+            View targetParentNode = null;
+            if (sourceText.eContainer().equals(sourceGMFDiagram)) {
+                targetParentNode = targetGMFDiagram;
             } else {
-                // Handle text notes
-                View targetParentNode = null;
-                if (sourceNote.eContainer().equals(sourceGMFDiagram)) {
-                    targetParentNode = targetGMFDiagram;
-                } else {
-                    targetParentNode = MappingBasedSiriusFormatManagerFactoryHelper.getTargetDiagramTextNoteContainer(sourceNote, diagramContentDuplicationSwitch);
-                }
-                if (targetParentNode != null) {
-                    targetNote = GMFNotationHelper.createTextNote(targetParentNode, GMFNotationHelper.getNoteDescription(sourceNote));
-                } else {
-                    DiagramPlugin.getDefault().logInfo(MessageFormat.format(Messages.MappingBasedSiriusFormatManagerFactory_ImpossibleToFindTargetTextNoteContainer, sourceNote));
-                    return;
-                }
+                targetParentNode = MappingBasedSiriusFormatManagerFactoryHelper.getTargetDiagramTextNoteContainer(sourceText, diagramContentDuplicationSwitch);
             }
-            targetNote.setLayoutConstraint(EcoreUtil.copy(sourceNote.getLayoutConstraint()));
-            if (sourceNote.isSetElement()) {
-                targetNote.setElement(sourceNote.getElement());
+            if (targetParentNode == null) {
+                DiagramPlugin.getDefault().logInfo(MessageFormat.format(Messages.MappingBasedSiriusFormatManagerFactory_ImpossibleToFindTargetTextNoteContainer, sourceText));
+                return;
             }
-            formatDataManager.copyGMFStyle(sourceNote, targetNote);
-            sourceToTargetNoteMap.put(sourceNote, targetNote);
+            if (sourceText instanceof Shape && ((Shape) sourceText).getDescription() != null) {
+                String labelOfText = ((Shape) sourceText).getDescription();
+                Optional<Node> existingTargetText = search(targetTexts, (Shape) sourceText, labelOfText);
+                Node targetText;
+                if (existingTargetText.isPresent()) {
+                    targetText = existingTargetText.get();
+                } else {
+                    targetText = GMFNotationHelper.createTextNote(targetParentNode, labelOfText);
+                }
+                targetText.setLayoutConstraint(EcoreUtil.copy(sourceText.getLayoutConstraint()));
+                if (sourceText.isSetElement()) {
+                    targetText.setElement(sourceText.getElement());
+                }
+                formatDataManager.copyGMFStyle(sourceText, targetText);
+                sourceToTargetNoteMap.put(sourceText, targetText);
+            }
         });
 
         // Duplicate note attachments if possible
@@ -613,9 +639,96 @@ public class MappingBasedSiriusFormatManagerFactory {
                 noteIsSource = false;
             }
             MappingBasedSiriusFormatManagerFactoryHelper.duplicateNoteAttachment(attach, sourceToTargetNoteMap.get(nodeAttachment), targetSession, noteIsSource, diagramContentDuplicationSwitch,
-                    sourceToTargetNoteMap, formatDataManager);
+                    sourceToTargetNoteMap, formatDataManager, targetGMFDiagram);
         });
+    }
 
+    /**
+     * Search in <code>nodes</code> a Node (Text or Note) with the same label (<code>searchedLabel</code>) and the same
+     * attachments than the <code>sourceNode</code>.
+     * 
+     * @param nodes
+     *            List in which to search
+     * @param sourceNode
+     *            The node to compare attachments with.
+     * @param searchedLabel
+     *            The searched label
+     * @return An optional with the corresponding node if any.
+     */
+    private Optional<Node> search(Collection<Node> nodes, Shape sourceNode, String searchedLabel) {
+        List<Node> matchingNodes = new ArrayList<Node>();
+        // Get the nodes with same description (same label) as the <code>searchedLabel</code>
+            for (Node node : nodes) {
+                if (node instanceof Shape) {
+                    if (searchedLabel.equals(((Shape) node).getDescription())) {
+                        matchingNodes.add(node);
+                    }
+                }
+            }
+            // Remove elements that have not the same attachment on source side
+            matchingNodes = removeNotSameAttachment(sourceNode, matchingNodes, true);
+            // Remove elements that have not the same attachment on target side
+            matchingNodes = removeNotSameAttachment(sourceNode, matchingNodes, false);
+            // Only the first is considered. At this step, if several nodes remain, we are in a case not handled by the
+            // Copy/Paste format API.
+            return matchingNodes.stream().findFirst();
+    }
+
+    /**
+     * Search in <code>nodesCandidates</code> which candidate has the same source/target attachments.
+     * 
+     * @param nodeToCompareWith
+     *            the node to use as comparator
+     * @param nodesCandidates
+     *            list of nodes
+     * @param testSource
+     *            true if the attachment on source side must bu tested, false if the attachment on target side must be
+     *            tested.
+     * @return a sub list of nodesCandidates
+     */
+    protected List<Node> removeNotSameAttachment(Shape nodeToCompareWith, List<Node> nodesCandidates, boolean testSource) {
+        List<Node> matchingNodes;
+        boolean hasAttachment = testSource ? nodeToCompareWith.getSourceEdges().size() != 0 : nodeToCompareWith.getTargetEdges().size() != 0;
+        if (!hasAttachment) {
+            // Select only nodes without source/target attachment
+            if (testSource) {
+                matchingNodes = nodesCandidates.stream().filter(node -> node.getSourceEdges().size() == 0).collect(Collectors.toList());
+            } else {
+                matchingNodes = nodesCandidates.stream().filter(node -> node.getTargetEdges().size() == 0).collect(Collectors.toList());
+            }
+        } else {
+            // Select nodes that have the same source/target attachments
+            matchingNodes = new ArrayList<Node>(nodesCandidates);
+            for (Iterator<Node> iterator = matchingNodes.iterator(); iterator.hasNext(); /* */) {
+                Node node = iterator.next();
+                boolean sameAttachments = true;
+
+                for (Iterator<Edge> edgesIterators = testSource ? ((List<Edge>) nodeToCompareWith.getSourceEdges()).iterator()
+                        : ((List<Edge>) nodeToCompareWith.getTargetEdges()).iterator(); edgesIterators.hasNext(); /* */ ) {
+                    Edge e = edgesIterators.next();
+                    // Get the target DDiagramElement corresponding to the copy of the other extremity of the
+                    // NoteAttachment.
+                    EObject otherExtremityElement = testSource ? e.getTarget().getElement() : e.getSource().getElement();
+                    DDiagramElement targetDiagramElement = diagramContentDuplicationSwitch.getSourceDDiagramElementToTargetDDiagramElementMap().get(otherExtremityElement);
+                    if (targetDiagramElement != null && targetDiagramElement.eResource() != null) {
+                        if (testSource) {
+                            sameAttachments = sameAttachments && node.getSourceEdges().stream().anyMatch(edge -> ((Edge) edge).getTarget().getElement().equals(targetDiagramElement));
+                        } else {
+                            sameAttachments = sameAttachments && node.getTargetEdges().stream().anyMatch(edge -> ((Edge) edge).getSource().getElement().equals(targetDiagramElement));
+                        }
+                    } else {
+                        // Here, either the target of the note attachment is not present in the target diagram or
+                        // the source/target semantic has not been added to the semantic map while source element
+                        // being represented by a synchronized mapping.
+                        DiagramPlugin.getDefault().logInfo(MessageFormat.format(Messages.MappingBasedSiriusFormatManagerFactory_ImpossibleToCopyNoteInNonExistingOrUnreachableTarget, e.getTarget()));
+                    }
+                }
+                if (!sameAttachments) {
+                    iterator.remove();
+                }
+            }
+        }
+        return matchingNodes;
     }
 
     /**
