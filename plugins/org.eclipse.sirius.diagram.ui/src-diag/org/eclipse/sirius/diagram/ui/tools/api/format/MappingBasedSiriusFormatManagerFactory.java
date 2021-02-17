@@ -241,8 +241,12 @@ public class MappingBasedSiriusFormatManagerFactory {
                 synchronizeTargetDiagram(targetSession, (DSemanticDiagram) targetDiagram);
             }
         } finally {
-            cleanAndDispose(sourceDiagramEditPart);
-            cleanAndDispose(targetDiagramEditPart);
+            if (sourceDiagramEditPart != null) {
+                cleanAndDispose(sourceDiagramEditPart);
+            }
+            if (targetDiagramEditPart != null) {
+                cleanAndDispose(targetDiagramEditPart);
+            }
         }
     }
 
