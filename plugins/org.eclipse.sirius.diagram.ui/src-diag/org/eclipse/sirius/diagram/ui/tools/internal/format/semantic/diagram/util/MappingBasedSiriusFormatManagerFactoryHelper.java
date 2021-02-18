@@ -151,6 +151,22 @@ public final class MappingBasedSiriusFormatManagerFactoryHelper {
     }
 
     /**
+     * Copy border label layout information from {@code sourceNode} to {@code targetNode}.
+     * 
+     * @param sourceNode
+     *            The source node
+     * @param targetNode
+     *            The target node
+     */
+    public static void copyBorderLabelLayout(Node sourceNode, Node targetNode) {
+        final Node sourceLabelNode = SiriusGMFHelper.getLabelNode(sourceNode);
+        final Node targetLabelNode = SiriusGMFHelper.getLabelNode(targetNode);
+        if (sourceLabelNode != null && targetLabelNode != null) {
+            copyNodeLayout(sourceLabelNode, targetLabelNode);
+        }
+    }
+
+    /**
      * Copy label layout information from {@code sourceEdge} to {@code targetEdge}.
      * 
      * @param sourceEdge
