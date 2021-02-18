@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_canary" sequenceNumber="1608233492">
+<target name="sirius_canary" sequenceNumber="1613553890">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
@@ -36,7 +36,7 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sirius.common.interpreter" version="0.0.0"/>
-      <repository id="Sirius-6.3.2-Photon" location="https://download.eclipse.org/sirius/updates/releases/6.3.2/photon/"/>
+      <repository id="Sirius-6.4.1" location="https://download.eclipse.org/sirius/updates/releases/6.4.1/2020-06/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform.ide" version="0.0.0"/>
