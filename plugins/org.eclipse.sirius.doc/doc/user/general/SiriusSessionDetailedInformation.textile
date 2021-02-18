@@ -1,0 +1,17 @@
+h1. Sirius Session detailed information
+
+This document describes how to see information on the opened Sirius Session.
+
+The Sirius Session is the runtime concept of a Sirius Modeling Project. It corresponds to the information in memory of an opened modeling project.
+
+To get this information, right click on the aird and select *Properties* and then *Sirius Session Details*.
+
+The Sirius Session detailed information tab provides information about
+* the resources used (aird, srm, semantic and controlled resources as well) with number of contained elements
+* the viewpoints used
+* the representations (number, size, loaded representations, invalid representations, etc)
+
+
+Example:
+
+!images/SiriusSessionDetails.png!

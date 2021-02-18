@@ -10,6 +10,7 @@ h3. User-Visible Changes
 
 * <span class="label label-success">Added</span> It is possible to override at the aird level both "Sirius/Do Refresh on representation opening" and "Sirius/Automatic refresh" preferences. To override the preferences, go to the Properties/Sirius settings section. The preferences are stored in the project scope and associated to the aird file. For more details, refer the "documentation":user/general/Aird_Preferences.html .
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority.getLockedObjects()@ has been added the get all the locked objects.
+* <span class="label label-success">Added</span> A new tab has been added in the properties dialog box, when an aird is selected, to present technical information about the Sirius Session. For more details, refer the "documentation":user/general/SiriusSessionDetailedInformation.html .
 
 h3. Developer-Visible Changes
 
