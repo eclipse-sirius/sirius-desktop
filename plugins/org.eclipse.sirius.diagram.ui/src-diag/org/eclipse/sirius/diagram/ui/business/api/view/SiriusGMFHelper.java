@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.ui.business.api.view;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -295,12 +296,9 @@ public final class SiriusGMFHelper {
      */
     public static Node getLabelNode(final View gmfView) {
         Node result = null;
-        if (!gmfView.getChildren().isEmpty()) {
-            final View labelView = (View) gmfView.getChildren().iterator().next();
-
-            if (labelView instanceof Node && SiriusGMFHelper.isLabel(labelView)) {
-                result = (Node) labelView;
-            }
+        Optional<Object> optionalLabelView = gmfView.getChildren().stream().filter(child -> child instanceof Node && SiriusGMFHelper.isLabel((Node) child)).findFirst();
+        if (optionalLabelView.isPresent()) {
+            result = (Node) optionalLabelView.get();
         }
         return result;
     }

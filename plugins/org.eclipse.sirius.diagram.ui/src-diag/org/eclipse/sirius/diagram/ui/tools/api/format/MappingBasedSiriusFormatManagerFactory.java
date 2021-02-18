@@ -44,12 +44,14 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
+import org.eclipse.sirius.diagram.business.api.query.DNodeQuery;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
@@ -490,6 +492,9 @@ public class MappingBasedSiriusFormatManagerFactory {
                     MappingBasedSiriusFormatManagerFactoryHelper.copyNodeLayout(sourceNode, targetNode);
                     formatDataManager.copySiriusStyle(entry.getKey(), entry.getValue());
                     formatDataManager.copyGMFStyle(sourceNode, targetNode);
+                    if (entry.getKey() instanceof DNode && new DNodeQuery((DNode) entry.getKey()).hasLabelOnBorder()) {
+                        MappingBasedSiriusFormatManagerFactoryHelper.copyBorderLabelLayout(sourceNode, targetNode);
+                    }
                 } else if (sourceGmfView instanceof Edge && targetGmfView instanceof Edge) {
                     Edge sourceEdge = (Edge) sourceGmfView;
                     Edge targetEdge = (Edge) targetGmfView;
