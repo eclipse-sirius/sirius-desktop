@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,10 +15,12 @@ package org.eclipse.sirius.diagram.ui.internal.edit.parts;
 import java.util.List;
 import java.util.Optional;
 
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.gef.DragTracker;
 import org.eclipse.gef.Request;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DescriptionCompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.editparts.TextEditPart;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
@@ -110,6 +112,15 @@ public class SiriusTextEditPart extends TextEditPart {
     @Override
     protected void setVisibility(boolean vis) {
         ShowingViewUtil.setVisibility(this, vis, SELECTED_NONE, getFlag(FLAG__AUTO_CONNECTIONS_VISIBILITY));
+    }
+
+    @Override
+    protected void handleNotificationEvent(Notification notification) {
+        super.handleNotificationEvent(notification);
+        Object feature = notification.getFeature();
+        if (NotationPackage.eINSTANCE.getNode_LayoutConstraint().equals(feature)) {
+            refreshBounds();
+        }
     }
 
 }
