@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,8 +14,6 @@ package org.eclipse.sirius.diagram.ui.edit.api.part;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
-import org.eclipse.gmf.runtime.diagram.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.diagram.BeginLabelStyle;
@@ -118,11 +116,6 @@ public final class DiagramNameEditPartOperation {
         Color labelColor = VisualBindingManager.getDefault().getLabelColorFromRGBValues(labelRGBColor);
         if (!(figure.getForegroundColor() != null && figure.getForegroundColor().equals(labelColor))) {
             figure.setForegroundColor(labelColor);
-        }
-        if (self instanceof IBorderItemEditPart) {
-            IBorderItemEditPart borderItemEditPart = (IBorderItemEditPart) self;
-            IBorderItemLocator borderItemLocator = borderItemEditPart.getBorderItemLocator();
-            borderItemLocator.setConstraint(figure.getBounds());
         }
     }
 
