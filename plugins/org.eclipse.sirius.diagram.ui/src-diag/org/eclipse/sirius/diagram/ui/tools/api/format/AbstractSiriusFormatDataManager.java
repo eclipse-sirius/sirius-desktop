@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -263,8 +263,17 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
      * @param formatData
      */
     private void applyEdgeFormat(final Edge gmfEdge, final EdgeFormatData formatData) {
-        final Bendpoints bendpoints = convertPointsToGMFBendpoint(formatData);
-        gmfEdge.setBendpoints(bendpoints);
+        final Bendpoints newBendpoints = convertPointsToGMFBendpoint(formatData);
+        Bendpoints oldBendpoints = gmfEdge.getBendpoints();
+        if (oldBendpoints instanceof RelativeBendpoints && newBendpoints instanceof RelativeBendpoints) {
+            // Use this method to allow correct notification handle in
+            // org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart.handleNotificationEvent(Notification) and
+            // induce a refresh of the edge figure.
+            ((RelativeBendpoints) oldBendpoints).setPoints(((RelativeBendpoints) newBendpoints).getPoints());
+        } else {
+            // Fallback but seems not necessary
+            gmfEdge.setBendpoints(newBendpoints);
+        }
 
         if (formatData.getSourceTerminal() != null) {
             if (gmfEdge.getSourceAnchor() == null) {

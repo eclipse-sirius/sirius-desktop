@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.gmf.runtime.diagram.ui.figures.NoteFigure;
 import org.eclipse.gmf.runtime.diagram.ui.internal.properties.Properties;
 import org.eclipse.gmf.runtime.draw2d.ui.mapmode.IMapMode;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
+import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
@@ -171,8 +172,11 @@ public class SiriusNoteEditPart extends NoteEditPart {
     @Override
     protected void handleNotificationEvent(Notification notification) {
         super.handleNotificationEvent(notification);
-        if (notification.getNotifier() == getNotationView().getElement() && notification.getFeature() == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__NAME) {
+        Object feature = notification.getFeature();
+        if (notification.getNotifier() == getNotationView().getElement() && feature == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__NAME) {
             refreshDiagramNameCompartmentEditPart();
+        } else if (NotationPackage.eINSTANCE.getNode_LayoutConstraint().equals(feature)) {
+            refreshBounds();
         }
     }
 

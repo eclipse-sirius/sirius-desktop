@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -35,6 +35,7 @@ import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.requests.CreateViewRequest;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
+import org.eclipse.gmf.runtime.notation.Bendpoints;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
@@ -42,6 +43,7 @@ import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
+import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.RoutingStyle;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
@@ -379,7 +381,17 @@ public final class LayoutUtils {
             final Edge edgeSource = (Edge) sourceView;
             final Edge edgeTarget = (Edge) targetView;
             if (edgeSource.getBendpoints() != null) {
-                edgeTarget.setBendpoints(SiriusCopierHelper.copyWithNoUidDuplication(edgeSource.getBendpoints()));
+                Bendpoints oldBendpoints = edgeTarget.getBendpoints();
+                Bendpoints newBendpoints = SiriusCopierHelper.copyWithNoUidDuplication(edgeSource.getBendpoints());
+                if (oldBendpoints instanceof RelativeBendpoints && newBendpoints instanceof RelativeBendpoints) {
+                    // Use this method to allow correct notification handle in
+                    // org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart.handleNotificationEvent(Notification)
+                    // and induce a refresh of the edge figure.
+                    ((RelativeBendpoints) oldBendpoints).setPoints(((RelativeBendpoints) newBendpoints).getPoints());
+                } else {
+                    // Fallback but seems not necessary
+                    edgeTarget.setBendpoints(newBendpoints);
+                }
             }
             if (edgeSource.getSourceAnchor() != null) {
                 edgeTarget.setSourceAnchor(SiriusCopierHelper.copyWithNoUidDuplication(edgeSource.getSourceAnchor()));

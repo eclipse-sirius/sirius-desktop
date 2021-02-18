@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
+import org.eclipse.gmf.runtime.notation.Bendpoints;
 import org.eclipse.gmf.runtime.notation.ConnectorStyle;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
@@ -113,7 +114,16 @@ public class ExternalJavaActionSpecificVerticalLayout implements IExternalJavaAc
                             relativeBendpoints.add(new RelativeBendpoint(0, 34, 0, -186));
                             relativeBendpoints.add(new RelativeBendpoint(0, 186, 0, -34));
                             result.setPoints(relativeBendpoints);
-                            ((Edge) node.getTargetEdges().get(0)).setBendpoints(result);
+                            Bendpoints oldBendpoints = ((Edge) node.getTargetEdges().get(0)).getBendpoints();
+                            if (oldBendpoints instanceof RelativeBendpoints && result instanceof RelativeBendpoints) {
+                                // Use this method to allow correct notification handle in
+                                // org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart.handleNotificationEvent(Notification)
+                                // and induce a refresh of the edge figure.
+                                ((RelativeBendpoints) oldBendpoints).setPoints(((RelativeBendpoints) result).getPoints());
+                            } else {
+                                // Fallback but seems not necessary
+                                ((Edge) node.getTargetEdges().get(0)).setBendpoints(result);
+                            }
                             // Change its routing style
                             Style style = dContainer.getIncomingEdges().get(0).getStyle();
                             ((EdgeStyle) style).setRoutingStyle(EdgeRouting.MANHATTAN_LITERAL);

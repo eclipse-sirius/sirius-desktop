@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 Obeo.
+ * Copyright (c) 2020, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,6 +34,7 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
+import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
 import org.eclipse.gmf.runtime.notation.RoutingStyle;
 import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.View;
@@ -125,7 +126,16 @@ public final class MappingBasedSiriusFormatManagerFactoryHelper {
         Anchor targetAnchorCopy = SiriusCopierHelper.copyWithNoUidDuplication(sourceEdge.getTargetAnchor());
 
         // Apply
-        targetEdge.setBendpoints(bendpointsCopy);
+        Bendpoints oldBendpoints = targetEdge.getBendpoints();
+        if (oldBendpoints instanceof RelativeBendpoints && bendpointsCopy instanceof RelativeBendpoints) {
+            // Use this method to allow correct notification handle in
+            // org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart.handleNotificationEvent(Notification) and
+            // induce a refresh of the edge figure.
+            ((RelativeBendpoints) oldBendpoints).setPoints(((RelativeBendpoints) bendpointsCopy).getPoints());
+        } else {
+            // Fallback but seems not necessary
+            targetEdge.setBendpoints(bendpointsCopy);
+        }
         targetEdge.setSourceAnchor(sourceAnchorCopy);
         targetEdge.setTargetAnchor(targetAnchorCopy);
 
@@ -286,7 +296,17 @@ public final class MappingBasedSiriusFormatManagerFactoryHelper {
      */
     private static void copyEdgeFormatAndStyle(Edge sourceEdge, Edge targetEdge, MappingBasedSiriusFormatDataManager formatDataManager) {
         formatDataManager.copyGMFStyle(sourceEdge, targetEdge);
-        targetEdge.setBendpoints(EcoreUtil.copy(sourceEdge.getBendpoints()));
+        Bendpoints oldBendpoints = targetEdge.getBendpoints();
+        Bendpoints newBendpoints = EcoreUtil.copy(sourceEdge.getBendpoints());
+        if (oldBendpoints instanceof RelativeBendpoints && newBendpoints instanceof RelativeBendpoints) {
+            // Use this method to allow correct notification handle in
+            // org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart.handleNotificationEvent(Notification) and
+            // induce a refresh of the edge figure.
+            ((RelativeBendpoints) oldBendpoints).setPoints(((RelativeBendpoints) newBendpoints).getPoints());
+        } else {
+            // Fallback but seems not necessary
+            targetEdge.setBendpoints(EcoreUtil.copy(sourceEdge.getBendpoints()));
+        }
 
         if (sourceEdge.getSourceAnchor() != null) {
             targetEdge.setSourceAnchor(EcoreUtil.copy(sourceEdge.getSourceAnchor()));
