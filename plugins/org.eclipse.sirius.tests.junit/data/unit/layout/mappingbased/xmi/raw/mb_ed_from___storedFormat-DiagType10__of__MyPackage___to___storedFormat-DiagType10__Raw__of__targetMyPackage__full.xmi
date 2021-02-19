@@ -4,7 +4,7 @@
     <label id="//targetp1/targetC1-1">
       <location x="31"/>
     </label>
-    <siriusStyle xsi:type="diagram:Lozenge" uid="_LjHDR2ysEeuxXtQYUb0q2w" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:Lozenge" uid="_PRhamnKSEeucccBCuyOcEw" borderSize="1" borderSizeComputationExpression="1">
       <customFeatures>borderSize</customFeatures>
       <customFeatures>borderSizeComputationExpression</customFeatures>
       <customFeatures>color</customFeatures>
@@ -27,7 +27,7 @@
     <label id="//targetp1/targetC1-1">
       <location x="31"/>
     </label>
-    <siriusStyle xsi:type="diagram:Ellipse" uid="_LjHDSGysEeuxXtQYUb0q2w" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:Ellipse" uid="_PRham3KSEeucccBCuyOcEw" borderSize="1" borderSizeComputationExpression="1">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@nodeMappings[name='DT10_Class']/@style"/>
     </siriusStyle>
@@ -46,10 +46,10 @@
       <label id="//targetp1/targetC1-1/targetaC1-2" width="-1" height="-1">
         <location y="-10"/>
       </label>
-      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_LjHDSWysEeuxXtQYUb0q2w">
+      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_PRhanHKSEeucccBCuyOcEw">
         <customFeatures>uid</customFeatures>
         <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@edgeMappings[name='DT10_EReference']/@style"/>
-        <centerLabelStyle uid="_LjHDSmysEeuxXtQYUb0q2w" showIcon="false"/>
+        <centerLabelStyle uid="_PRhanXKSEeucccBCuyOcEw" showIcon="false"/>
       </siriusStyle>
       <gmfView xsi:type="notation:Edge" type="4001">
         <children type="6001">
@@ -76,10 +76,10 @@
       <label id="//targetp1/targetC1-1/targetaC1-1-1" width="-1" height="-1">
         <location y="-10"/>
       </label>
-      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_LjHqUGysEeuxXtQYUb0q2w">
+      <siriusStyle xsi:type="diagram:EdgeStyle" uid="_PRiBoHKSEeucccBCuyOcEw">
         <customFeatures>uid</customFeatures>
         <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@edgeMappings[name='DT10_EReference']/@style"/>
-        <centerLabelStyle uid="_LjHqUWysEeuxXtQYUb0q2w" showIcon="false"/>
+        <centerLabelStyle uid="_PRiBoXKSEeucccBCuyOcEw" showIcon="false"/>
       </siriusStyle>
       <gmfView xsi:type="notation:Edge" type="4001">
         <children type="6001">
@@ -108,10 +108,10 @@
     <label id="//targetp1/targetC1-1/targetaC1-1-1" width="-1" height="-1">
       <location y="-10"/>
     </label>
-    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_LjHqVGysEeuxXtQYUb0q2w">
+    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_PRiBpHKSEeucccBCuyOcEw">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@edgeMappings[name='DT10_EReference']/@style"/>
-      <centerLabelStyle uid="_LjHqVWysEeuxXtQYUb0q2w" showIcon="false"/>
+      <centerLabelStyle uid="_PRiBpXKSEeucccBCuyOcEw" showIcon="false"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Edge" type="4001">
       <children type="6001">
@@ -138,10 +138,10 @@
     <label id="//targetp1/targetC1-1/targetaC1-2" width="-1" height="-1">
       <location y="-10"/>
     </label>
-    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_LjHqVmysEeuxXtQYUb0q2w">
+    <siriusStyle xsi:type="diagram:EdgeStyle" uid="_PRiBpnKSEeucccBCuyOcEw">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@edgeMappings[name='DT10_EReference']/@style"/>
-      <centerLabelStyle uid="_LjHqV2ysEeuxXtQYUb0q2w" showIcon="false"/>
+      <centerLabelStyle uid="_PRiBp3KSEeucccBCuyOcEw" showIcon="false"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Edge" type="4001">
       <children type="6001">
@@ -168,7 +168,7 @@
     <label id="//targetp1/targetC1-2">
       <location x="31"/>
     </label>
-    <siriusStyle xsi:type="diagram:Lozenge" uid="_LjGcMGysEeuxXtQYUb0q2w" color="114,73,110">
+    <siriusStyle xsi:type="diagram:Lozenge" uid="_PRhakHKSEeucccBCuyOcEw" color="114,73,110">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:LozengeNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@nodeMappings[name='DT10_2_Class']/@style"/>
     </siriusStyle>
@@ -189,7 +189,7 @@
     <label id="//targetp1/targetC1-2">
       <location x="31"/>
     </label>
-    <siriusStyle xsi:type="diagram:Ellipse" uid="_LjGcMWysEeuxXtQYUb0q2w" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:Ellipse" uid="_PRhakXKSEeucccBCuyOcEw" borderSize="1" borderSizeComputationExpression="1">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@nodeMappings[name='DT10_Class']/@style"/>
     </siriusStyle>
@@ -210,7 +210,7 @@
     <label id="//targetp1/targetC1-3">
       <location x="31" y="7"/>
     </label>
-    <siriusStyle xsi:type="diagram:Ellipse" uid="_LjHDQmysEeuxXtQYUb0q2w" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:Ellipse" uid="_PRhalXKSEeucccBCuyOcEw" borderSize="1" borderSizeComputationExpression="1">
       <description xsi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@nodeMappings[name='DT10_Class']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -230,7 +230,7 @@
     <label id="//targetp1/targetC1-3">
       <location x="31" y="7"/>
     </label>
-    <siriusStyle xsi:type="diagram:Lozenge" uid="_LjHDQWysEeuxXtQYUb0q2w" color="114,73,110">
+    <siriusStyle xsi:type="diagram:Lozenge" uid="_PRhalHKSEeucccBCuyOcEw" color="114,73,110">
       <description xsi:type="style:LozengeNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@nodeMappings[name='DT10_2_Class']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -250,7 +250,7 @@
     <label id="//targetp1/targetp1-1/targetC1-1-1">
       <location x="31"/>
     </label>
-    <siriusStyle xsi:type="diagram:Lozenge" uid="_LjGcMmysEeuxXtQYUb0q2w" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:Lozenge" uid="_PRhaknKSEeucccBCuyOcEw" borderSize="1" borderSizeComputationExpression="1">
       <customFeatures>borderSize</customFeatures>
       <customFeatures>borderSizeComputationExpression</customFeatures>
       <customFeatures>color</customFeatures>
@@ -273,7 +273,7 @@
     <label id="//targetp1/targetp1-1/targetC1-1-1">
       <location x="31"/>
     </label>
-    <siriusStyle xsi:type="diagram:Ellipse" uid="_LjHDQGysEeuxXtQYUb0q2w" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:Ellipse" uid="_PRhak3KSEeucccBCuyOcEw" borderSize="1" borderSizeComputationExpression="1">
       <customFeatures>uid</customFeatures>
       <description xsi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@nodeMappings[name='DT10_Class']/@style"/>
     </siriusStyle>
@@ -294,7 +294,7 @@
     <label id="//targetp1/targetp1-1/targetC1-1-2">
       <location x="31" y="7"/>
     </label>
-    <siriusStyle xsi:type="diagram:Ellipse" uid="_LjHDRGysEeuxXtQYUb0q2w" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:Ellipse" uid="_PRhal3KSEeucccBCuyOcEw" borderSize="1" borderSizeComputationExpression="1">
       <description xsi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@nodeMappings[name='DT10_Class']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -314,7 +314,7 @@
     <label id="//targetp1/targetp1-1/targetC1-1-2">
       <location x="31" y="7"/>
     </label>
-    <siriusStyle xsi:type="diagram:Lozenge" uid="_LjHDQ2ysEeuxXtQYUb0q2w" color="114,73,110">
+    <siriusStyle xsi:type="diagram:Lozenge" uid="_PRhalnKSEeucccBCuyOcEw" color="114,73,110">
       <description xsi:type="style:LozengeNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@nodeMappings[name='DT10_2_Class']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -334,7 +334,7 @@
     <label id="//targetp1/targetp1-2/targetC1-2-1">
       <location x="31" y="7"/>
     </label>
-    <siriusStyle xsi:type="diagram:Ellipse" uid="_LjHDRmysEeuxXtQYUb0q2w" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:Ellipse" uid="_PRhamXKSEeucccBCuyOcEw" borderSize="1" borderSizeComputationExpression="1">
       <description xsi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@nodeMappings[name='DT10_Class']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -354,7 +354,7 @@
     <label id="//targetp1/targetp1-2/targetC1-2-1">
       <location x="31" y="7"/>
     </label>
-    <siriusStyle xsi:type="diagram:Lozenge" uid="_LjHDRWysEeuxXtQYUb0q2w" color="114,73,110">
+    <siriusStyle xsi:type="diagram:Lozenge" uid="_PRhamHKSEeucccBCuyOcEw" color="114,73,110">
       <description xsi:type="style:LozengeNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@nodeMappings[name='DT10_2_Class']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -374,7 +374,7 @@
     <label id="//targetp2/targetp2-1/targetnew%20EClass%201">
       <location x="31" y="7"/>
     </label>
-    <siriusStyle xsi:type="diagram:Ellipse" uid="_LjHqU2ysEeuxXtQYUb0q2w" borderSize="1" borderSizeComputationExpression="1">
+    <siriusStyle xsi:type="diagram:Ellipse" uid="_PRiBo3KSEeucccBCuyOcEw" borderSize="1" borderSizeComputationExpression="1">
       <description xsi:type="style:EllipseNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@nodeMappings[name='DT10_Class']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">
@@ -394,7 +394,7 @@
     <label id="//targetp2/targetp2-1/targetnew%20EClass%201">
       <location x="31" y="7"/>
     </label>
-    <siriusStyle xsi:type="diagram:Lozenge" uid="_LjHqUmysEeuxXtQYUb0q2w" color="114,73,110">
+    <siriusStyle xsi:type="diagram:Lozenge" uid="_PRiBonKSEeucccBCuyOcEw" color="114,73,110">
       <description xsi:type="style:LozengeNodeDescription" href="platform:/plugin/org.eclipse.sirius.tests.junit/data/unit/layout/mappingbased/My.odesign#//@ownedViewpoints[name='TestLayoutCopy']/@ownedRepresentations[name='DiagType10']/@nodeMappings[name='DT10_2_Class']/@style"/>
     </siriusStyle>
     <gmfView xsi:type="notation:Node" type="2001">

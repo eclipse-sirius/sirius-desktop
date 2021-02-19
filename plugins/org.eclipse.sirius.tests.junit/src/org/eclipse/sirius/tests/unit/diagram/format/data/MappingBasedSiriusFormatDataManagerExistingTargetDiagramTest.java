@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 Obeo.
+ * Copyright (c) 2020, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,9 @@ import java.util.stream.Collectors;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
+import org.eclipse.gmf.runtime.notation.Location;
+import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.gmf.runtime.notation.Shape;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.FormatHelper.FormatDifference;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.Configuration;
@@ -67,10 +70,6 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest extend
 
     protected static final Representation MB_REPRES_TYPE8 = new Representation("DiagType8", MB_DIAG_TYPE8_MYPACKAGE, MB_DIAG_TYPE8_P2, MB_DIAG_TYPE8_RAW);
 
-    protected static final Diagram MB_DIAG_TYPE8_NOTES_MYPACKAGE = new Diagram("DiagType8 with notes of MyPackage", 16, 0);
-
-    protected static final RepresentationWithNotes MB_REPRES_TYPE8_NOTES = new RepresentationWithNotes("DiagType8", MB_DIAG_TYPE8_NOTES_MYPACKAGE, MB_DIAG_TYPE8_RAW);
-
     protected static final Diagram MB_DIAG_TYPE8UNSYNC_MYPACKAGE = new Diagram("DiagType8_unsync of MyPackage", 16, 0);
 
     protected static final Diagram MB_DIAG_TYPE8UNSYNC_RAW = new Diagram("DiagType8_unsync Raw of targetMyPackage", 16, 0, true);
@@ -89,7 +88,13 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest extend
 
     protected static final Representation MB_REPRES_TYPE10 = new Representation("DiagType10", MB_DIAG_TYPE10_MYPACKAGE, MB_DIAG_TYPE10_RAW);
 
-    protected static final Representation[] MB_ALL_REPRESENTATIONS = { MB_REPRES_TYPE8, MB_REPRES_TYPE8UNSYNC, MB_REPRES_TYPE8UNSYNCBN, MB_REPRES_TYPE10 };
+    protected static final Diagram MB_DIAG_TYPE2_NOTES_MYPACKAGE = new Diagram("DiagType2 with notes of MyPackage", 16, 2);
+
+    protected static final Diagram MB_DIAG_TYPE2_RAW = new Diagram("DiagType2 Raw of targetMyPackage", 16, 2, true);
+
+    protected static final RepresentationWithNotes MB_REPRES_NOTES_TYPE2 = new RepresentationWithNotes("DiagType2", MB_DIAG_TYPE2_NOTES_MYPACKAGE, MB_DIAG_TYPE2_RAW);
+
+    protected static final Representation[] MB_ALL_REPRESENTATIONS = { MB_REPRES_TYPE8, MB_REPRES_TYPE8UNSYNC, MB_REPRES_TYPE8UNSYNCBN, MB_REPRES_TYPE10, MB_REPRES_NOTES_TYPE2 };
 
     @Parameters
     public static Collection<Object[]> data() {
@@ -217,12 +222,37 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest extend
                         }
                         // Update diagram, but transaction will be rollbacked
                         DDiagram newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnDiagram(session, (DDiagram) getDRepresentation(sourceDiagramEditPart), map, session,
-                                (DDiagram) getDRepresentation(targetDiagramEditPart), false);
+                                (DDiagram) getDRepresentation(targetDiagramEditPart), true);
                         newManager.storeFormatData(targetDiagramEditPart);
 
                         if (MB_GENERATE_IMAGES_TEST_DATA) {
                             exportDiagramToTempFolder(diagramMappingName + "_from", dDiagram);
                             exportDiagramToTempFolder(diagramMappingName + "_to", newDiagram);
+                        }
+                        if (MB_DIAG_TYPE2_NOTES_MYPACKAGE.name.equals(diagramToCopyFormat.name)) {
+                            // Specific checks about notes and texts that are not tested by "FormatData"
+                            Collection<Node> sourceNotes = org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getNotes(sourceDiagramEditPart.getDiagramView());
+                            Collection<Node> targetNotes = org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getNotes(targetDiagramEditPart.getDiagramView());
+                            // There is 1 additional notes in target diagram
+                            assertEquals("The number of Notes is wrong.", sourceNotes.size() + 1, targetNotes.size());
+                            Collection<Node> sourceTexts = org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getTextNotes(sourceDiagramEditPart.getDiagramView());
+                            Collection<Node> targetTexts = org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getTextNotes(targetDiagramEditPart.getDiagramView());
+                            // 2 Texts in source and target diagrams
+                            assertEquals("The number of Texts in source diagram is wrong.", 2, sourceTexts.size());
+                            assertEquals("The number of Texts is wrong.", sourceTexts.size(), targetTexts.size());
+                            // Check the location of Texts (it is not done for Notes because there are several Notes
+                            // with the same description
+                            for (Node sourceText : sourceTexts) {
+                                String sourceDescription = ((Shape) sourceText).getDescription();
+                                for (Node targetText : targetTexts) {
+                                    if (sourceDescription.equals(((Shape) targetText).getDescription())) {
+                                        Location sourceLocation = (Location) sourceText.getLayoutConstraint();
+                                        Location targetLocation = (Location) sourceText.getLayoutConstraint();
+                                        assertEquals("The location of the Text \"" + sourceDescription + "\" is wrong (X coordinate).", sourceLocation.getX(), targetLocation.getX());
+                                        assertEquals("The location of the Text \"" + sourceDescription + "\" is wrong (Y coordinate).", sourceLocation.getY(), targetLocation.getY());
+                                    }
+                                }
+                            }
                         }
                     }
                 };
@@ -232,6 +262,7 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest extend
                     // unchanged
                     targetDiagramEditPart.getEditingDomain().addResourceSetListener(ROLLBACK_LISTENER);
                     targetDiagramEditPart.getEditingDomain().getCommandStack().execute(command);
+
                 } finally {
                     targetDiagramEditPart.getEditingDomain().removeResourceSetListener(ROLLBACK_LISTENER);
                 }
