@@ -46,7 +46,7 @@
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']"/>
         <target xmi:type="interactions:Interaction" href="targetfixture.interactions#//@ownedInteractions.4"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_JPJP88KfEeqU-93gZTge2Q" name="Basic Executions Diagram Raw" repPath="#_JO4KMMKfEeqU-93gZTge2Q" changeId="037cf7d8-16c4-4ed2-9a71-b8c8467d30a9">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_JPJP88KfEeqU-93gZTge2Q" name="Basic Executions Diagram Raw" repPath="#_JO4KMMKfEeqU-93gZTge2Q" changeId="2c339368-94e7-4199-a42b-66803610f6ff">
         <description xmi:type="description_1:SequenceDiagramDescription" href="platform:/plugin/org.eclipse.sirius.sample.interactions.design/description/interaction.odesign#//@ownedViewpoints[name='Interactions']/@ownedRepresentations[name='Sequence%20Diagram%20on%20Interaction']"/>
         <target xmi:type="interactions:Interaction" href="targetfixture.interactions#//@ownedInteractions.1"/>
       </ownedRepresentationDescriptors>
@@ -76,7 +76,7 @@
       </ownedRepresentationDescriptors>
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_tVX7IJp6EeqtI6odJsxW3w">
-      <viewpoint xmi:type="description:Viewpoint" href="../../../../unit/interpreter/validateExpression/sequenceDiagram.odesign#//@ownedViewpoints[name='Interactions']"/>
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/../../unit/interpreter/validateExpression/sequenceDiagram.odesign#//@ownedViewpoints[name='Interactions']"/>
     </ownedViews>
   </viewpoint:DAnalysis>
   <sequence:SequenceDDiagram uid="_3c2zYOc2Ed-ci9l1AsdpKw">
@@ -1832,7 +1832,7 @@
                     </children>
                     <children xmi:type="notation:Node" xmi:id="_A31IoC97EeCqwes0k-A2Dw" type="3001" element="_iIP50E_PEeCF36t5vBAODQ">
                       <children xmi:type="notation:Node" xmi:id="_A31Ioy97EeCqwes0k-A2Dw" type="5001">
-                        <layoutConstraint xmi:type="notation:Location" xmi:id="_A31IpC97EeCqwes0k-A2Dw" y="5"/>
+                        <layoutConstraint xmi:type="notation:Location" xmi:id="_A31IpC97EeCqwes0k-A2Dw" x="-27" y="-14"/>
                       </children>
                       <children xmi:type="notation:Node" xmi:id="_A33k4C97EeCqwes0k-A2Dw" type="3003" element="_iIP50U_PEeCF36t5vBAODQ">
                         <styles xmi:type="notation:ShapeStyle" xmi:id="_A33k4S97EeCqwes0k-A2Dw" fontName="Sans"/>
@@ -2033,7 +2033,7 @@
                 <semanticElements xmi:type="interactions:ExecutionEnd" href="fixture.interactions#//@ownedInteractions.1/@ends.8"/>
                 <semanticElements xmi:type="interactions:Participant" href="fixture.interactions#//@ownedInteractions.1/@participants.1"/>
                 <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_A46txC97EeCqwes0k-A2Dw" x="315" y="230" height="90" width="20"/>
-                <ownedBorderedNodes xmi:type="diagram:DNode" uid="_iIP50E_PEeCF36t5vBAODQ" width="2" height="5" resizeKind="NORTH_SOUTH">
+                <ownedBorderedNodes xmi:type="diagram:DNode" uid="_iIP50E_PEeCF36t5vBAODQ" name="MyManuelLabel" width="2" height="5" resizeKind="NORTH_SOUTH">
                   <target xmi:type="interactions:Execution" href="fixture.interactions#//@ownedInteractions.1/@executions.5"/>
                   <semanticElements xmi:type="interactions:Execution" href="fixture.interactions#//@ownedInteractions.1/@executions.5"/>
                   <semanticElements xmi:type="interactions:ExecutionEnd" href="fixture.interactions#//@ownedInteractions.1/@ends.6"/>
@@ -5707,7 +5707,7 @@
                     </children>
                     <children xmi:type="notation:Node" xmi:id="_JPWrU8KfEeqU-93gZTge2Q" type="3001" element="_JPBUI8KfEeqU-93gZTge2Q">
                       <children xmi:type="notation:Node" xmi:id="_JPWrVsKfEeqU-93gZTge2Q" type="5001">
-                        <layoutConstraint xmi:type="notation:Location" xmi:id="_JPWrV8KfEeqU-93gZTge2Q" x="-1"/>
+                        <layoutConstraint xmi:type="notation:Location" xmi:id="_JPWrV8KfEeqU-93gZTge2Q" x="21" y="6"/>
                       </children>
                       <children xmi:type="notation:Node" xmi:id="_JPXSYMKfEeqU-93gZTge2Q" type="3003" element="_JPBUJMKfEeqU-93gZTge2Q">
                         <styles xmi:type="notation:ShapeStyle" xmi:id="_JPXSYcKfEeqU-93gZTge2Q" fontName="Arial"/>
@@ -5905,7 +5905,7 @@
                 <semanticElements xmi:type="interactions:ExecutionEnd" href="targetfixture.interactions#//@ownedInteractions.1/@ends.8"/>
                 <semanticElements xmi:type="interactions:Participant" href="targetfixture.interactions#//@ownedInteractions.1/@participants.1"/>
                 <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_JUyk98KfEeqU-93gZTge2Q" x="295" y="230" height="90" width="20"/>
-                <ownedBorderedNodes xmi:type="diagram:DNode" uid="_JPBUI8KfEeqU-93gZTge2Q" width="2" height="5" resizeKind="NORTH_SOUTH">
+                <ownedBorderedNodes xmi:type="diagram:DNode" uid="_JPBUI8KfEeqU-93gZTge2Q" name="MyManuelLabel" width="2" height="5" resizeKind="NORTH_SOUTH">
                   <target xmi:type="interactions:Execution" href="targetfixture.interactions#//@ownedInteractions.1/@executions.5"/>
                   <semanticElements xmi:type="interactions:Execution" href="targetfixture.interactions#//@ownedInteractions.1/@executions.5"/>
                   <semanticElements xmi:type="interactions:ExecutionEnd" href="targetfixture.interactions#//@ownedInteractions.1/@ends.6"/>
