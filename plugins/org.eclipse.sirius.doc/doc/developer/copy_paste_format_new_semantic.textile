@@ -4,7 +4,9 @@ h1. Copy-Paste Format on new semantic targets
 
 The current copy-paste format (layout and style) between diagrams relies on semantic target elements to find out which target element (paste) matches the source element (copy).
 
-This new API allows to perform this copy-paste format based on a semantic source to semantic target map. 
+This new API allows to perform this copy-paste format based on a semantic source to semantic target map.
+
+As for the standard copy-paste format, only visible elements are concerned by the copy. So if elements are not visible in the source diagram, their styles and layouts will not be copied.
 
 h2. API details
 

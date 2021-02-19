@@ -9,7 +9,8 @@
 	<body>
 		<h1 id="CopyPasteFormatonnewsemantictargets">Copy-Paste Format on new semantic targets</h1>
 		<p>The current copy-paste format (layout and style) between diagrams relies on semantic target elements to find out which target element (paste) matches the source element (copy).</p>
-		<p>This new API allows to perform this copy-paste format based on a semantic source to semantic target map. </p>
+		<p>This new API allows to perform this copy-paste format based on a semantic source to semantic target map.</p>
+		<p>As for the standard copy-paste format, only visible elements are concerned by the copy. So if elements are not visible in the source diagram, their styles and layouts will not be copied.</p>
 		<h2 id="APIdetails">API details</h2>
 		<p>A new API in 
 			<code>org.eclipse.sirius.diagram.ui.tools.api.format.MappingBasedSiriusFormatManagerFactory</code> has been added to make it possible to apply a copy-paste format to an existing or a new diagram with different semantic targets.
