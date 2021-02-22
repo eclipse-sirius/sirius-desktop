@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
-<!-- generated with https://github.com/mbarbero/fr.obeo.releng.targetplatform -->
-<target name="sirius_neon" sequenceNumber="1517408821">
+<!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
+<target name="sirius_neon" sequenceNumber="1614020402">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
@@ -42,7 +42,7 @@
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.sirius.common.interpreter" version="0.0.0"/>
-      <repository id="Sirius-Neon-Master" location="http://download.eclipse.org/sirius/updates/nightly/5.1.x/neon/"/>
+      <repository id="Sirius-Neon-5.1.2" location="http://download.eclipse.org/sirius/updates/releases/5.1.2/neon"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="com.google.guava" version="0.0.0"/>

@@ -9,7 +9,7 @@ include "modules/eef-2.0.tpd"
 
 with source, requirements
 
-location Sirius-Oxygen-Master "http://download.eclipse.org/sirius/updates/nightly/5.1.x/oxygen/" {
+location Sirius-Oxygen-5.1.2 "http://download.eclipse.org/sirius/updates/releases/5.1.2/oxygen" {
     org.eclipse.sirius.common.interpreter lazy
 }
 
