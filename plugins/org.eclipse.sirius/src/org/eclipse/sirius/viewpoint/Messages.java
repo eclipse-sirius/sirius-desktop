@@ -606,7 +606,10 @@ public final class Messages {
     public static String SessionQuery_Tree;
 
     @TranslatableMessage
-    public static String SessionQuery_Table;
+    public static String SessionQuery_EditionTable;
+
+    @TranslatableMessage
+    public static String SessionQuery_CrossTable;
 
     @TranslatableMessage
     public static String SessionQuery_Sequence;
@@ -624,10 +627,13 @@ public final class Messages {
     public static String SessionQuery_InvalidReps;
 
     @TranslatableMessage
-    public static String SessionQuery_RepUid;
+    public static String SessionQuery_RepresentationDescriptorDetails;
 
     @TranslatableMessage
-    public static String SessionQuery_RepresentationDescriptorDetails;
+    public static String SessionQuery_TagInvalid;
+
+    @TranslatableMessage
+    public static String SessionQuery_TagLoaded;
 
     @TranslatableMessage
     public static String SessionResourcesSynchronizer_cantHandleResourceChangeMsg;

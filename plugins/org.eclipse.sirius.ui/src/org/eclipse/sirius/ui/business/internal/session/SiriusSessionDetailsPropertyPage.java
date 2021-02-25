@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.internal.session;
 
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,9 +25,9 @@ import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
-import org.eclipse.sirius.business.api.query.SessionQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
+import org.eclipse.sirius.business.internal.query.SessionDetailsReport;
 import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.provider.Messages;
@@ -104,7 +105,7 @@ public class SiriusSessionDetailsPropertyPage extends PropertyPage {
     }
 
     private String getSessionInformation(Session session) {
-        SessionQuery sessionQuery = new SessionQuery(session);
+        SessionDetailsReport sessionQuery = new SessionDetailsReport(session);
         String formattedInformation = sessionQuery.getSessionFormattedInformation();
 
         // Add part about the opened editors
@@ -112,7 +113,7 @@ public class SiriusSessionDetailsPropertyPage extends PropertyPage {
         List<DRepresentation> openedRepresentations = SessionUIManager.INSTANCE.getUISession(session).getEditors().stream().map(editor -> editor.getRepresentation()).collect(Collectors.toList());
         String cr = "\n"; //$NON-NLS-1$
         String tab = "  "; //$NON-NLS-1$
-        informations.append(cr + Messages.SiriusSessionDetailsPropertyPage_repOpenedInEditor + openedRepresentations.size() + cr);
+        informations.append(cr + MessageFormat.format(Messages.SiriusSessionDetailsPropertyPage_repOpenedInEditor, openedRepresentations.size()) + cr);
         openedRepresentations.stream().forEach(rep -> {
             informations.append(tab);
             sessionQuery.addRepresentationDescriptorSimpleInfo(informations, new DRepresentationQuery(rep).getRepresentationDescriptor());
