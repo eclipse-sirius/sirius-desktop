@@ -1667,7 +1667,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             /*
              * Refresh diagram if needed. Must be done before that
              */
-            if (Session.of(getRepresentation()).get().getSiriusPreferences().isRefreshOnRepresentationOpening()) {
+            if (getSession() != null && session.getSiriusPreferences().isRefreshOnRepresentationOpening()) {
                 launchRefresh(true);
             }
 

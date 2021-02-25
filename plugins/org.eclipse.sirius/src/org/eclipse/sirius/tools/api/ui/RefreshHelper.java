@@ -126,7 +126,7 @@ public final class RefreshHelper {
                     session = new EObjectQuery(optionalDRepresentation.get()).getSession();
                 }
             }
-            if (session != null && session.getSiriusPreferences().isAutoRefresh()) {
+            if (session != null && !session.getSiriusPreferences().isAutoRefresh()) {
                 if (!optionalDRepresentation.some()) {
                     optionalDRepresentation = new EObjectQuery(notifier).getRepresentation();
                 }
