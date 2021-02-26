@@ -149,28 +149,30 @@ public class DRepresentationQuery {
      */
     public DRepresentationDescriptor getRepresentationDescriptor() {
         DRepresentationDescriptor result = null;
-        Optional<DRepresentationDescriptorAdapter> optionalRepDesc = representation.eAdapters().stream().filter(a -> a instanceof DRepresentationDescriptorAdapter)
-                .map(DRepresentationDescriptorAdapter.class::cast).findFirst();
-        if (optionalRepDesc.isPresent()) {
-            return optionalRepDesc.get().getdRepresentationDescriptor();
-        } else if (representation instanceof DSemanticDecorator) {
-            if (session == null) {
-                session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) representation).getTarget());
-            }
-            if (session != null) {
-                result = findDescriptorFromCrossReferencer();
-                if (result == null) {
-                    result = findDescriptorFromAnalysis();
+        if (representation != null) {
+            Optional<DRepresentationDescriptorAdapter> optionalRepDesc = representation.eAdapters().stream().filter(a -> a instanceof DRepresentationDescriptorAdapter)
+                    .map(DRepresentationDescriptorAdapter.class::cast).findFirst();
+            if (optionalRepDesc.isPresent()) {
+                return optionalRepDesc.get().getdRepresentationDescriptor();
+            } else if (representation instanceof DSemanticDecorator) {
+                if (session == null) {
+                    session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) representation).getTarget());
                 }
-            } else {
-                // There is no session (during a migration participant for example) so we search the analysis of the
-                // eResource
-                result = findDescriptorFromEResource();
-            }
-            // Addition of an adapter to look for the session and use the cross referencer only once
-            if (result != null) {
-                DRepresentationDescriptorAdapter representationDescriptorAdaptor = new DRepresentationDescriptorAdapter(result);
-                representation.eAdapters().add(representationDescriptorAdaptor);
+                if (session != null) {
+                    result = findDescriptorFromCrossReferencer();
+                    if (result == null) {
+                        result = findDescriptorFromAnalysis();
+                    }
+                } else {
+                    // There is no session (during a migration participant for example) so we search the analysis of the
+                    // eResource
+                    result = findDescriptorFromEResource();
+                }
+                // Addition of an adapter to look for the session and use the cross referencer only once
+                if (result != null) {
+                    DRepresentationDescriptorAdapter representationDescriptorAdaptor = new DRepresentationDescriptorAdapter(result);
+                    representation.eAdapters().add(representationDescriptorAdaptor);
+                }
             }
         }
         return result;
