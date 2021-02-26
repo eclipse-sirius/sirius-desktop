@@ -637,15 +637,19 @@ public class MappingBasedSiriusFormatManagerFactory {
         // Duplicate note attachments if possible
         Collection<Edge> notesAttachments = GMFNotationHelper.getNotesAttachments(sourceGMFDiagram);
         notesAttachments.forEach(attach -> {
-            Node nodeAttachment = (Node) attach.getSource();
+            View nodeAttachment = attach.getSource();
             Boolean noteIsSource = true;
-            if (!GMFNotationHelper.isNote(nodeAttachment) && !GMFNotationHelper.isTextNote(nodeAttachment)) {
-                nodeAttachment = (Node) attach.getTarget();
+            if (!isNoteOrText(nodeAttachment)) {
+                nodeAttachment = attach.getTarget();
                 noteIsSource = false;
             }
             MappingBasedSiriusFormatManagerFactoryHelper.duplicateNoteAttachment(attach, sourceToTargetNoteMap.get(nodeAttachment), targetSession, noteIsSource, diagramContentDuplicationSwitch,
                     sourceToTargetNoteMap, formatDataManager, targetGMFDiagram);
         });
+    }
+
+    private boolean isNoteOrText(View nodeAttachment) {
+        return nodeAttachment instanceof Node && (GMFNotationHelper.isNote((Node) nodeAttachment) || GMFNotationHelper.isTextNote((Node) nodeAttachment));
     }
 
     /**
