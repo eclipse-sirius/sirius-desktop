@@ -12,11 +12,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.query;
 
-import java.sql.Date;
 import java.text.MessageFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
