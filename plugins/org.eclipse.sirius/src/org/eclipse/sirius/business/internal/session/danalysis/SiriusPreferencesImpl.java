@@ -13,6 +13,7 @@
 package org.eclipse.sirius.business.internal.session.danalysis;
 
 import java.text.MessageFormat;
+import java.util.Arrays;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -98,6 +99,19 @@ public class SiriusPreferencesImpl implements SiriusPreferences {
     }
 
     @Override
+    public boolean hasSpecificSettingAutoRefresh() {
+        try {
+            if (projectScope != null) {
+                IEclipsePreferences sessionScopeNode = projectScope.getNode(SiriusPlugin.ID + sessionId);
+                return Arrays.asList(sessionScopeNode.keys()).contains(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name());
+            }
+        } catch (IllegalStateException | BackingStoreException e) {
+            SiriusPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, SiriusPlugin.ID, e.getMessage(), e));
+        }
+        return false;
+    }
+
+    @Override
     public boolean isRefreshOnRepresentationOpening() {
         Boolean preference = PreferenceHelper.getPreference(projectScope, ORG_ECLIPSE_SIRIUS_UI_PLUGIN_ID, sessionId, PREF_REFRESH_ON_REPRESENTATION_OPENING, Boolean.class);
 
@@ -134,5 +148,18 @@ public class SiriusPreferencesImpl implements SiriusPreferences {
         } catch (IllegalStateException | BackingStoreException e) {
             SiriusPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, SiriusPlugin.ID, e.getMessage(), e));
         }
+    }
+
+    @Override
+    public boolean hasSpecificSettingRefreshOnRepresentationOpening() {
+        try {
+            if (projectScope != null) {
+                IEclipsePreferences sessionScopeNode = projectScope.getNode(ORG_ECLIPSE_SIRIUS_UI_PLUGIN_ID + sessionId);
+                return Arrays.asList(sessionScopeNode.keys()).contains(PREF_REFRESH_ON_REPRESENTATION_OPENING);
+            }
+        } catch (IllegalStateException | BackingStoreException e) {
+            SiriusPlugin.getDefault().getLog().log(new Status(IStatus.ERROR, SiriusPlugin.ID, e.getMessage(), e));
+        }
+        return false;
     }
 }

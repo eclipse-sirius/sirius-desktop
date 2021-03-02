@@ -65,6 +65,9 @@ public class SiriusPreferencesPropertyPageTest extends AbstractSiriusSwtBotGefTe
         changeSiriusUIPreference(SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING.name(), false);
         changeSiriusPreference(SiriusPreferencesKeys.PREF_AUTO_REFRESH.name(), true);
 
+        // Check the initial Settings value via the Session
+        checkSessionSettings(false, false, true);
+
         // The page is called from its contribution instead of the contextual menu via
         // SWTBot because most of the time SWTBot wrongly focuses on the properties view instead.
         IProject project = ResourcesPlugin.getWorkspace().getRoot().getProject(designerProject.getName());
@@ -115,20 +118,23 @@ public class SiriusPreferencesPropertyPageTest extends AbstractSiriusSwtBotGefTe
         shellBot.button("Apply and Close").click();
 
         // Check the Settings value via the Session
-        checkSessionSettings();
+        checkSessionSettings(true, true, false);
     }
 
     /**
      * Check the value of the Preferences from SiriusPreferences API;
      */
-    private void checkSessionSettings() {
+    private void checkSessionSettings(boolean hasSpecificSetting, boolean isRefreshOnRepresentationOpening, boolean isAutoRefresh) {
         sessionAirdResource = new UIResource(designerProject, "/", SESSION_FILE);
         localSession = designerPerspective.openSessionFromFile(sessionAirdResource);
         session = localSession.getOpenedSession();
 
-        assertEquals("Bad Session preference value for " + org.eclipse.sirius.viewpoint.provider.Messages.SiriusPreferencePage_refreshOnRepresentationOpening, true,
+        assertEquals(hasSpecificSetting, session.getSiriusPreferences().hasSpecificSettingAutoRefresh());
+        assertEquals("Bad Session preference value for " + org.eclipse.sirius.viewpoint.provider.Messages.SiriusPreferencePage_refreshOnRepresentationOpening, isRefreshOnRepresentationOpening,
                 session.getSiriusPreferences().isRefreshOnRepresentationOpening());
-        assertEquals("Bad Session preference value for " + org.eclipse.sirius.viewpoint.provider.Messages.SiriusPreferencePage_autoRefresh, false, session.getSiriusPreferences().isAutoRefresh());
+        assertEquals(hasSpecificSetting, session.getSiriusPreferences().hasSpecificSettingRefreshOnRepresentationOpening());
+        assertEquals("Bad Session preference value for " + org.eclipse.sirius.viewpoint.provider.Messages.SiriusPreferencePage_autoRefresh, isAutoRefresh,
+                session.getSiriusPreferences().isAutoRefresh());
 
         session.close(new NullProgressMonitor());
     }
