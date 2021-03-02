@@ -12,16 +12,21 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part;
 
 import java.util.Collection;
 import java.util.LinkedHashSet;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListener;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gef.EditPolicy;
+import org.eclipse.gmf.runtime.common.ui.util.DisplayUtils;
+import org.eclipse.gmf.runtime.diagram.core.listener.DiagramEventBroker;
+import org.eclipse.gmf.runtime.diagram.ui.DiagramEventBrokerThreadSafe;
 import org.eclipse.gmf.runtime.diagram.ui.internal.properties.WorkspaceViewerProperties;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.gmf.runtime.notation.Bounds;
@@ -33,6 +38,7 @@ import org.eclipse.sirius.business.api.session.ModelChangeTrigger;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionEventBroker;
 import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
+import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
@@ -60,6 +66,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.ui.property.IPropertiesProvider;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
+import org.eclipse.swt.widgets.Display;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -71,8 +78,8 @@ import com.google.common.collect.Iterables;
  */
 public class SequenceDiagramEditPart extends DDiagramEditPart {
     /**
-     * The listener in charge with refreshing the graphical ordering and layout
-     * when the model and/or graphics positions change.
+     * The listener in charge with refreshing the graphical ordering and layout when the model and/or graphics positions
+     * change.
      */
     private final VisibilityEventHandler semanticOrderingSynchronizer;
 
@@ -82,45 +89,7 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
 
     private ModelChangeTrigger sequenceCanonicalSynchronizer;
 
-    private ResourceSetListener refreshZorder = new ResourceSetListenerImpl() {
-        @Override
-        public boolean isPostcommitOnly() {
-            return true;
-        }
-
-        @Override
-        public void resourceSetChanged(org.eclipse.emf.transaction.ResourceSetChangeEvent event) {
-            refreshInstanceRoleEditPartsOnAbstractNodeEventSetBounds(event);
-            new SequenceZOrderingRefresher(SequenceDiagramEditPart.this).run();
-            refreshConnectionsBendpoints();
-        }
-
-        private void refreshInstanceRoleEditPartsOnAbstractNodeEventSetBounds(org.eclipse.emf.transaction.ResourceSetChangeEvent event) {
-            Collection<View> instanceOfRoleToRefresh = new LinkedHashSet<>();
-            for (Notification notification : event.getNotifications()) {
-                if (!notification.isTouch() && notification.getEventType() == Notification.SET && notification.getNotifier() instanceof Bounds) {
-                    Bounds notifier = (Bounds) notification.getNotifier();
-                    EObject eContainer = notifier.eContainer();
-                    if (eContainer instanceof View) {
-                        Option<AbstractNodeEvent> abstractNodeEvent = ISequenceElementAccessor.getAbstractNodeEvent((View) eContainer);
-                        if (abstractNodeEvent.some()) {
-                            Option<Lifeline> lifeline = abstractNodeEvent.get().getLifeline();
-                            if (lifeline.some()) {
-                                instanceOfRoleToRefresh.add(lifeline.get().getInstanceRole().getNotationView());
-                            }
-                        }
-                    }
-                }
-            }
-
-            // @formatter:off
-            Stream<InstanceRoleEditPart> instanceRoleEditParts = SequenceDiagramEditPart.this.getChildren().stream()
-                                                                          .filter(InstanceRoleEditPart.class::isInstance)
-                                                                          .map(InstanceRoleEditPart.class::cast);
-            // @formatter:on
-            instanceRoleEditParts.filter(part -> instanceOfRoleToRefresh.contains(part.getModel())).forEach(EditPart::refresh);
-        }
-    };
+    private ResourceSetListener zOrderAndInstanceRolePartRefresher = new ZOrderAndInstanceRolePartRefresher();
 
     private IPropertyChangeListener snapDisabler;
 
@@ -215,17 +184,15 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
             }
         }
         /*
-         * Once the diagram (and all its children) is active, refresh the
-         * various ordering. This is especially needed when creating/opening a
-         * diagram as some commands need a properly initialized graphically
-         * ordering to work.
+         * Once the diagram (and all its children) is active, refresh the various ordering. This is especially needed
+         * when creating/opening a diagram as some commands need a properly initialized graphically ordering to work.
          */
         boolean autoRefresh = PropertiesService.getInstance().getPropertiesProvider().getProperty(IPropertiesProvider.KEY_AUTO_REFRESH);
         boolean refreshOnOpen = DialectUIManager.INSTANCE.isRefreshActivatedOnRepresentationOpening();
         Diagram diagramView = getDiagramView();
         getEditingDomain().getCommandStack().execute(new RefreshLayoutCommand(getEditingDomain(), diagramView, autoRefresh || refreshOnOpen));
         getEditingDomain().addResourceSetListener(semanticOrderingSynchronizer);
-        getEditingDomain().addResourceSetListener(refreshZorder);
+        getEditingDomain().addResourceSetListener(zOrderAndInstanceRolePartRefresher);
 
         Option<SessionEventBroker> broker = getSessionBroker();
         if (broker.some()) {
@@ -282,7 +249,7 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
             snapDisabler = null;
         }
 
-        getEditingDomain().removeResourceSetListener(refreshZorder);
+        getEditingDomain().removeResourceSetListener(zOrderAndInstanceRolePartRefresher);
         getEditingDomain().removeResourceSetListener(semanticOrderingSynchronizer);
         Option<SessionEventBroker> broker = getSessionBroker();
         if (broker.some()) {
@@ -326,5 +293,80 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
      */
     public SequenceDiagram getSequenceDiagram() {
         return ISequenceElementAccessor.getSequenceDiagram(getDiagramView()).get();
+    }
+
+    private class ZOrderAndInstanceRolePartRefresher extends ResourceSetListenerImpl {
+
+        @Override
+        public boolean isPostcommitOnly() {
+            return true;
+        }
+
+        @Override
+        public void resourceSetChanged(org.eclipse.emf.transaction.ResourceSetChangeEvent event) {
+            refreshInstanceRoleEditPartsOnAbstractNodeEventSetBounds(event);
+            new SequenceZOrderingRefresher(SequenceDiagramEditPart.this).run();
+            refreshConnectionsBendpoints();
+        }
+
+        private void refreshInstanceRoleEditPartsOnAbstractNodeEventSetBounds(ResourceSetChangeEvent event) {
+            Collection<View> instanceOfRoleToRefresh = new LinkedHashSet<>();
+            for (Notification notification : event.getNotifications()) {
+                if (!notification.isTouch() && notification.getEventType() == Notification.SET && notification.getNotifier() instanceof Bounds) {
+                    Bounds notifier = (Bounds) notification.getNotifier();
+                    EObject eContainer = notifier.eContainer();
+                    if (eContainer instanceof View) {
+                        Option<AbstractNodeEvent> abstractNodeEvent = ISequenceElementAccessor.getAbstractNodeEvent((View) eContainer);
+                        if (abstractNodeEvent.some()) {
+                            Option<Lifeline> lifeline = abstractNodeEvent.get().getLifeline();
+                            if (lifeline.some()) {
+                                instanceOfRoleToRefresh.add(lifeline.get().getInstanceRole().getNotationView());
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (instanceOfRoleToRefresh.isEmpty()) {
+                return;
+            }
+
+            Runnable instanceRoleRefreshRunnable = () -> {
+                // @formatter:off
+                Stream<InstanceRoleEditPart> instanceRoleEditParts = SequenceDiagramEditPart.this.getChildren().stream()
+                                                                              .filter(InstanceRoleEditPart.class::isInstance)
+                                                                              .map(InstanceRoleEditPart.class::cast);
+                // @formatter:on
+                instanceRoleEditParts.filter(part -> instanceOfRoleToRefresh.contains(part.getModel())).forEach(EditPart::refresh);
+            };
+
+            if (Display.getCurrent() != null) {
+                instanceRoleRefreshRunnable.run();
+            } else {
+                boolean safeSynchroneRefresh = isDefaultSiriusDiagramEventBroker(event);
+                if (safeSynchroneRefresh) {
+                    DisplayUtils.getDisplay().syncExec(event.getEditingDomain().createPrivilegedRunnable(instanceRoleRefreshRunnable));
+                } else {
+                    // DiagramEventBroker is overridden by some products to do an async refresh of the edit parts
+                    // Do the same here.
+                    EclipseUIUtil.displayAsyncExec(instanceRoleRefreshRunnable);
+                }
+            }
+        }
+
+        private boolean isDefaultSiriusDiagramEventBroker(ResourceSetChangeEvent event) {
+            TransactionalEditingDomain editingDomain = event.getEditingDomain();
+            if (editingDomain != null) {
+                // Do not use DiagramEventBroker.getInstance(editingDomain) to avoid the initialization of a broker if
+                // there is no broker on the editing domain.
+                Option<?> postCommitListeners = ReflectionHelper.getFieldValueWithoutException(editingDomain, "postListeners"); //$NON-NLS-1$
+                if (postCommitListeners.some()) {
+                    Optional<DiagramEventBroker> broker = ((Collection<ResourceSetListener>) postCommitListeners.get()).stream().filter(DiagramEventBroker.class::isInstance).findFirst()
+                            .map(DiagramEventBroker.class::cast);
+                    return broker.isPresent() && DiagramEventBrokerThreadSafe.class.equals(broker.get().getClass());
+                }
+            }
+            return false;
+        }
     }
 }
