@@ -12,8 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.ui.business.api.preferences;
 
-import org.eclipse.sirius.business.api.session.SiriusPreferences;
-
 /**
  * This class bundles all the preferences keys for viewpoint.
  * 
@@ -22,10 +20,8 @@ import org.eclipse.sirius.business.api.session.SiriusPreferences;
 public enum SiriusUIPreferencesKeys {
 
     /**
-     * Says if the refresh should automatically be done on representation opening.<br/>
-     * 
-     * @deprecated This preference should not be used directly by client with Eclipse preference API. Use
-     *             {@link SiriusPreferences}.isRefreshAtRepresentationOpening instead.
+     * Says if the refresh should automatically be done on representation opening. However, this is a global preference
+     * that can be overridden by {@link Session.getSiriusPreferences()}.<br/>
      */
     PREF_REFRESH_ON_REPRESENTATION_OPENING,
 

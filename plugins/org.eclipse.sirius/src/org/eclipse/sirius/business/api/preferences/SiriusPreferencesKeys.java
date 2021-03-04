@@ -12,8 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.preferences;
 
-import org.eclipse.sirius.business.api.session.SiriusPreferences;
-
 /**
  * Provides constants for preferences.
  * 
@@ -22,10 +20,8 @@ import org.eclipse.sirius.business.api.session.SiriusPreferences;
 public enum SiriusPreferencesKeys {
 
     /**
-     * Says if the refresh should automatically be done or not.<br/>
-     * 
-     * @deprecated This preference should not be used directly by client with Eclipse preference API. Use
-     *             {@link SiriusPreferences.isAutoRefresh} instead.
+     * Says if the refresh should automatically be done or not. However, this is a global preference that can be
+     * overridden by {@link Session.getSiriusPreferences()}.<br/>
      */
     PREF_AUTO_REFRESH(boolean.class),
 
