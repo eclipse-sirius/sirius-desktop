@@ -257,7 +257,7 @@ public class DRepresentationQuery {
      */
     public boolean isAutoRefresh() {
         if (session == null) {
-            session = Session.of(representation).get();
+            session = Session.of(representation).orElse(null);
         }
         if (session != null) {
             return session.getSiriusPreferences().isAutoRefresh();
