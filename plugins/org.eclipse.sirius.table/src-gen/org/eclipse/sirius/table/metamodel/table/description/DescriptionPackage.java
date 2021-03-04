@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -1360,13 +1360,22 @@ public interface DescriptionPackage extends EPackage {
     int FEATURE_COLUMN_MAPPING__CAN_EDIT = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 1;
 
     /**
+     * The feature id for the '<em><b>Cell Editor</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int FEATURE_COLUMN_MAPPING__CELL_EDITOR = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 2;
+
+    /**
      * The feature id for the '<em><b>Default Foreground</b></em>' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__DEFAULT_FOREGROUND = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 2;
+    int FEATURE_COLUMN_MAPPING__DEFAULT_FOREGROUND = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Foreground Conditional Style</b></em>' containment reference list. <!--
@@ -1375,7 +1384,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__FOREGROUND_CONDITIONAL_STYLE = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 3;
+    int FEATURE_COLUMN_MAPPING__FOREGROUND_CONDITIONAL_STYLE = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Default Background</b></em>' containment reference. <!-- begin-user-doc --> <!--
@@ -1384,7 +1393,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__DEFAULT_BACKGROUND = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 4;
+    int FEATURE_COLUMN_MAPPING__DEFAULT_BACKGROUND = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Background Conditional Style</b></em>' containment reference list. <!--
@@ -1393,7 +1402,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__BACKGROUND_CONDITIONAL_STYLE = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 5;
+    int FEATURE_COLUMN_MAPPING__BACKGROUND_CONDITIONAL_STYLE = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Feature Name</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1401,7 +1410,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__FEATURE_NAME = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 6;
+    int FEATURE_COLUMN_MAPPING__FEATURE_NAME = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1410,7 +1419,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__LABEL_EXPRESSION = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 7;
+    int FEATURE_COLUMN_MAPPING__LABEL_EXPRESSION = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Feature Parent Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -1419,7 +1428,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING__FEATURE_PARENT_EXPRESSION = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 8;
+    int FEATURE_COLUMN_MAPPING__FEATURE_PARENT_EXPRESSION = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 9;
 
     /**
      * The number of structural features of the '<em>Feature Column Mapping</em>' class. <!-- begin-user-doc --> <!--
@@ -1428,7 +1437,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int FEATURE_COLUMN_MAPPING_FEATURE_COUNT = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 9;
+    int FEATURE_COLUMN_MAPPING_FEATURE_COUNT = DescriptionPackage.COLUMN_MAPPING_FEATURE_COUNT + 10;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.table.metamodel.table.description.impl.CellUpdaterImpl
@@ -1458,13 +1467,22 @@ public interface DescriptionPackage extends EPackage {
     int CELL_UPDATER__CAN_EDIT = 1;
 
     /**
+     * The feature id for the '<em><b>Cell Editor</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CELL_UPDATER__CELL_EDITOR = 2;
+
+    /**
      * The number of structural features of the '<em>Cell Updater</em>' class. <!-- begin-user-doc --> <!-- end-user-doc
      * -->
      *
      * @generated
      * @ordered
      */
-    int CELL_UPDATER_FEATURE_COUNT = 2;
+    int CELL_UPDATER_FEATURE_COUNT = 3;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.table.metamodel.table.description.impl.StyleUpdaterImpl
@@ -1593,13 +1611,22 @@ public interface DescriptionPackage extends EPackage {
     int INTERSECTION_MAPPING__CAN_EDIT = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 1;
 
     /**
+     * The feature id for the '<em><b>Cell Editor</b></em>' containment reference. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int INTERSECTION_MAPPING__CELL_EDITOR = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 2;
+
+    /**
      * The feature id for the '<em><b>Default Foreground</b></em>' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__DEFAULT_FOREGROUND = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 2;
+    int INTERSECTION_MAPPING__DEFAULT_FOREGROUND = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 3;
 
     /**
      * The feature id for the '<em><b>Foreground Conditional Style</b></em>' containment reference list. <!--
@@ -1608,7 +1635,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__FOREGROUND_CONDITIONAL_STYLE = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 3;
+    int INTERSECTION_MAPPING__FOREGROUND_CONDITIONAL_STYLE = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 4;
 
     /**
      * The feature id for the '<em><b>Default Background</b></em>' containment reference. <!-- begin-user-doc --> <!--
@@ -1617,7 +1644,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__DEFAULT_BACKGROUND = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 4;
+    int INTERSECTION_MAPPING__DEFAULT_BACKGROUND = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 5;
 
     /**
      * The feature id for the '<em><b>Background Conditional Style</b></em>' containment reference list. <!--
@@ -1626,7 +1653,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__BACKGROUND_CONDITIONAL_STYLE = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 5;
+    int INTERSECTION_MAPPING__BACKGROUND_CONDITIONAL_STYLE = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 6;
 
     /**
      * The feature id for the '<em><b>Line Mapping</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1635,7 +1662,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__LINE_MAPPING = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 6;
+    int INTERSECTION_MAPPING__LINE_MAPPING = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 7;
 
     /**
      * The feature id for the '<em><b>Column Mapping</b></em>' reference. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1643,7 +1670,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__COLUMN_MAPPING = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 7;
+    int INTERSECTION_MAPPING__COLUMN_MAPPING = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 8;
 
     /**
      * The feature id for the '<em><b>Label Expression</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1652,7 +1679,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__LABEL_EXPRESSION = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 8;
+    int INTERSECTION_MAPPING__LABEL_EXPRESSION = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 9;
 
     /**
      * The feature id for the '<em><b>Use Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1661,7 +1688,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__USE_DOMAIN_CLASS = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 9;
+    int INTERSECTION_MAPPING__USE_DOMAIN_CLASS = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 10;
 
     /**
      * The feature id for the '<em><b>Column Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -1670,7 +1697,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__COLUMN_FINDER_EXPRESSION = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 10;
+    int INTERSECTION_MAPPING__COLUMN_FINDER_EXPRESSION = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 11;
 
     /**
      * The feature id for the '<em><b>Line Finder Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -1679,7 +1706,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__LINE_FINDER_EXPRESSION = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 11;
+    int INTERSECTION_MAPPING__LINE_FINDER_EXPRESSION = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 12;
 
     /**
      * The feature id for the '<em><b>Semantic Candidates Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -1688,7 +1715,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 12;
+    int INTERSECTION_MAPPING__SEMANTIC_CANDIDATES_EXPRESSION = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 13;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -1696,7 +1723,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__DOMAIN_CLASS = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 13;
+    int INTERSECTION_MAPPING__DOMAIN_CLASS = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 14;
 
     /**
      * The feature id for the '<em><b>Precondition Expression</b></em>' attribute. <!-- begin-user-doc --> <!--
@@ -1705,7 +1732,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__PRECONDITION_EXPRESSION = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 14;
+    int INTERSECTION_MAPPING__PRECONDITION_EXPRESSION = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 15;
 
     /**
      * The feature id for the '<em><b>Create</b></em>' containment reference. <!-- begin-user-doc --> <!-- end-user-doc
@@ -1714,7 +1741,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING__CREATE = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 15;
+    int INTERSECTION_MAPPING__CREATE = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 16;
 
     /**
      * The number of structural features of the '<em>Intersection Mapping</em>' class. <!-- begin-user-doc --> <!--
@@ -1723,7 +1750,7 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      * @ordered
      */
-    int INTERSECTION_MAPPING_FEATURE_COUNT = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 16;
+    int INTERSECTION_MAPPING_FEATURE_COUNT = DescriptionPackage.TABLE_MAPPING_FEATURE_COUNT + 17;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.table.metamodel.table.description.impl.TableToolImpl
@@ -3198,6 +3225,52 @@ public interface DescriptionPackage extends EPackage {
     int TABLE_NAVIGATION_DESCRIPTION_FEATURE_COUNT = ToolPackage.REPRESENTATION_NAVIGATION_DESCRIPTION_FEATURE_COUNT + 1;
 
     /**
+     * The meta object id for the '{@link org.eclipse.sirius.table.metamodel.table.description.impl.CellEditorToolImpl
+     * <em>Cell Editor Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see org.eclipse.sirius.table.metamodel.table.description.impl.CellEditorToolImpl
+     * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCellEditorTool()
+     * @generated
+     */
+    int CELL_EDITOR_TOOL = 28;
+
+    /**
+     * The feature id for the '<em><b>Variables</b></em>' containment reference list. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CELL_EDITOR_TOOL__VARIABLES = DescriptionPackage.TABLE_TOOL__VARIABLES;
+
+    /**
+     * The feature id for the '<em><b>First Model Operation</b></em>' containment reference. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CELL_EDITOR_TOOL__FIRST_MODEL_OPERATION = DescriptionPackage.TABLE_TOOL__FIRST_MODEL_OPERATION;
+
+    /**
+     * The feature id for the '<em><b>Qualified Class Name</b></em>' attribute. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CELL_EDITOR_TOOL__QUALIFIED_CLASS_NAME = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 0;
+
+    /**
+     * The number of structural features of the '<em>Cell Editor Tool</em>' class. <!-- begin-user-doc --> <!--
+     * end-user-doc -->
+     *
+     * @generated
+     * @ordered
+     */
+    int CELL_EDITOR_TOOL_FEATURE_COUNT = DescriptionPackage.TABLE_TOOL_FEATURE_COUNT + 1;
+
+    /**
      * Returns the meta object for class '{@link org.eclipse.sirius.table.metamodel.table.description.TableDescription
      * <em>Table Description</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -3807,6 +3880,18 @@ public interface DescriptionPackage extends EPackage {
      * @generated
      */
     EAttribute getCellUpdater_CanEdit();
+
+    /**
+     * Returns the meta object for the containment reference
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.CellUpdater#getCellEditor <em>Cell Editor</em>}'.
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the containment reference '<em>Cell Editor</em>'.
+     * @see org.eclipse.sirius.table.metamodel.table.description.CellUpdater#getCellEditor()
+     * @see #getCellUpdater()
+     * @generated
+     */
+    EReference getCellUpdater_CellEditor();
 
     /**
      * Returns the meta object for class '{@link org.eclipse.sirius.table.metamodel.table.description.StyleUpdater
@@ -4427,6 +4512,28 @@ public interface DescriptionPackage extends EPackage {
     EReference getTableNavigationDescription_TableDescription();
 
     /**
+     * Returns the meta object for class '{@link org.eclipse.sirius.table.metamodel.table.description.CellEditorTool
+     * <em>Cell Editor Tool</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for class '<em>Cell Editor Tool</em>'.
+     * @see org.eclipse.sirius.table.metamodel.table.description.CellEditorTool
+     * @generated
+     */
+    EClass getCellEditorTool();
+
+    /**
+     * Returns the meta object for the attribute
+     * '{@link org.eclipse.sirius.table.metamodel.table.description.CellEditorTool#getQualifiedClassName <em>Qualified
+     * Class Name</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute '<em>Qualified Class Name</em>'.
+     * @see org.eclipse.sirius.table.metamodel.table.description.CellEditorTool#getQualifiedClassName()
+     * @see #getCellEditorTool()
+     * @generated
+     */
+    EAttribute getCellEditorTool_QualifiedClassName();
+
+    /**
      * Returns the factory that creates the instances of the model. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @return the factory that creates the instances of the model.
@@ -4889,6 +4996,14 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EAttribute CELL_UPDATER__CAN_EDIT = DescriptionPackage.eINSTANCE.getCellUpdater_CanEdit();
+
+        /**
+         * The meta object literal for the '<em><b>Cell Editor</b></em>' containment reference feature. <!--
+         * begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EReference CELL_UPDATER__CELL_EDITOR = DescriptionPackage.eINSTANCE.getCellUpdater_CellEditor();
 
         /**
          * The meta object literal for the
@@ -5378,6 +5493,25 @@ public interface DescriptionPackage extends EPackage {
          * @generated
          */
         EReference TABLE_NAVIGATION_DESCRIPTION__TABLE_DESCRIPTION = DescriptionPackage.eINSTANCE.getTableNavigationDescription_TableDescription();
+
+        /**
+         * The meta object literal for the
+         * '{@link org.eclipse.sirius.table.metamodel.table.description.impl.CellEditorToolImpl <em>Cell Editor
+         * Tool</em>}' class. <!-- begin-user-doc --> <!-- end-user-doc -->
+         *
+         * @see org.eclipse.sirius.table.metamodel.table.description.impl.CellEditorToolImpl
+         * @see org.eclipse.sirius.table.metamodel.table.description.impl.DescriptionPackageImpl#getCellEditorTool()
+         * @generated
+         */
+        EClass CELL_EDITOR_TOOL = DescriptionPackage.eINSTANCE.getCellEditorTool();
+
+        /**
+         * The meta object literal for the '<em><b>Qualified Class Name</b></em>' attribute feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute CELL_EDITOR_TOOL__QUALIFIED_CLASS_NAME = DescriptionPackage.eINSTANCE.getCellEditorTool_QualifiedClassName();
 
     }
 

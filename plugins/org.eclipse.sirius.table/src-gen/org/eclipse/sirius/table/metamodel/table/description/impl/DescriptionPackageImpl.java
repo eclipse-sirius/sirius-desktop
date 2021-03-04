@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription;
+import org.eclipse.sirius.table.metamodel.table.description.CellEditorTool;
 import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
@@ -255,6 +256,13 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     private EClass tableNavigationDescriptionEClass = null;
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    private EClass cellEditorToolEClass = null;
 
     /**
      * Creates an instance of the model <b>Package</b>, registered with {@link org.eclipse.emf.ecore.EPackage.Registry
@@ -855,6 +863,16 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
+    public EReference getCellUpdater_CellEditor() {
+        return (EReference) cellUpdaterEClass.getEStructuralFeatures().get(2);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getStyleUpdater() {
         return styleUpdaterEClass;
     }
@@ -1395,6 +1413,26 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
      * @generated
      */
     @Override
+    public EClass getCellEditorTool() {
+        return cellEditorToolEClass;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public EAttribute getCellEditorTool_QualifiedClassName() {
+        return (EAttribute) cellEditorToolEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public DescriptionFactory getDescriptionFactory() {
         return (DescriptionFactory) getEFactoryInstance();
     }
@@ -1479,6 +1517,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         cellUpdaterEClass = createEClass(DescriptionPackage.CELL_UPDATER);
         createEReference(cellUpdaterEClass, DescriptionPackage.CELL_UPDATER__DIRECT_EDIT);
         createEAttribute(cellUpdaterEClass, DescriptionPackage.CELL_UPDATER__CAN_EDIT);
+        createEReference(cellUpdaterEClass, DescriptionPackage.CELL_UPDATER__CELL_EDITOR);
 
         styleUpdaterEClass = createEClass(DescriptionPackage.STYLE_UPDATER);
         createEReference(styleUpdaterEClass, DescriptionPackage.STYLE_UPDATER__DEFAULT_FOREGROUND);
@@ -1552,6 +1591,9 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
 
         tableNavigationDescriptionEClass = createEClass(DescriptionPackage.TABLE_NAVIGATION_DESCRIPTION);
         createEReference(tableNavigationDescriptionEClass, DescriptionPackage.TABLE_NAVIGATION_DESCRIPTION__TABLE_DESCRIPTION);
+
+        cellEditorToolEClass = createEClass(DescriptionPackage.CELL_EDITOR_TOOL);
+        createEAttribute(cellEditorToolEClass, DescriptionPackage.CELL_EDITOR_TOOL__QUALIFIED_CLASS_NAME);
     }
 
     /**
@@ -1623,6 +1665,7 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         tableVariableEClass.getESuperTypes().add(theToolPackage.getVariableContainer());
         tableCreationDescriptionEClass.getESuperTypes().add(theToolPackage.getRepresentationCreationDescription());
         tableNavigationDescriptionEClass.getESuperTypes().add(theToolPackage.getRepresentationNavigationDescription());
+        cellEditorToolEClass.getESuperTypes().add(this.getTableTool());
 
         // Initialize classes and features; add operations and parameters
         initEClass(tableDescriptionEClass, TableDescription.class, "TableDescription", EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
@@ -1760,6 +1803,8 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
                 EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
         initEAttribute(getCellUpdater_CanEdit(), theDescriptionPackage_1.getInterpretedExpression(), "canEdit", null, 0, 1, CellUpdater.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
                 EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+        initEReference(getCellUpdater_CellEditor(), this.getCellEditorTool(), null, "cellEditor", null, 0, 1, CellUpdater.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, EPackageImpl.IS_COMPOSITE, !EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         addEOperation(cellUpdaterEClass, theDescriptionPackage_1.getInterpretedExpression(), "getLabelComputationExpression", 1, 1, EPackageImpl.IS_UNIQUE, EPackageImpl.IS_ORDERED); //$NON-NLS-1$
 
@@ -1896,6 +1941,10 @@ public class DescriptionPackageImpl extends EPackageImpl implements DescriptionP
         initEReference(getTableNavigationDescription_TableDescription(), this.getTableDescription(), null, "tableDescription", null, 1, 1, TableNavigationDescription.class, !EPackageImpl.IS_TRANSIENT, //$NON-NLS-1$
                 !EPackageImpl.IS_VOLATILE, EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_COMPOSITE, EPackageImpl.IS_RESOLVE_PROXIES, !EPackageImpl.IS_UNSETTABLE, EPackageImpl.IS_UNIQUE,
                 !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
+
+        initEClass(cellEditorToolEClass, CellEditorTool.class, "CellEditorTool", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getCellEditorTool_QualifiedClassName(), ecorePackage.getEString(), "qualifiedClassName", null, 1, 1, CellEditorTool.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         // Create annotations
         // http://www.eclipse.org/sirius/interpreted/expression/returnType

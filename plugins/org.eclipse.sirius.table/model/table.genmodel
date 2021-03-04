@@ -157,6 +157,7 @@
       <genClasses ecoreClass="table.ecore#//description/CellUpdater">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/CellUpdater/directEdit"/>
         <genFeatures createChild="false" propertyCategory="Behavior" ecoreFeature="ecore:EAttribute table.ecore#//description/CellUpdater/canEdit"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/CellUpdater/cellEditor"/>
         <genOperations ecoreOperation="table.ecore#//description/CellUpdater/getLabelComputationExpression"/>
         <genOperations ecoreOperation="table.ecore#//description/CellUpdater/getCreateCell"/>
       </genClasses>
@@ -249,6 +250,11 @@
       <genClasses ecoreClass="table.ecore#//description/TableNavigationDescription">
         <genFeatures notify="false" createChild="false" propertyCategory="General"
             propertySortChoices="true" ecoreFeature="ecore:EReference table.ecore#//description/TableNavigationDescription/tableDescription"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/CellEditorTool">
+        <genFeatures documentation="The qualified name of the CellEditorFactory class to provide a CellEditor. This class This class must implement \&quot;org.eclipse.sirius.table.ui.tools.api.editor.ITableCellEditorFactory\&quot;."
+            createChild="false" propertyDescription="The qualified name of the CellEditorFactory class to provide a CellEditor. This class must implement \&quot;org.eclipse.sirius.table.ui.tools.api.editor.ITableCellEditorFactory\&quot;."
+            ecoreFeature="ecore:EAttribute table.ecore#//description/CellEditorTool/qualifiedClassName"/>
       </genClasses>
     </nestedGenPackages>
   </genPackages>

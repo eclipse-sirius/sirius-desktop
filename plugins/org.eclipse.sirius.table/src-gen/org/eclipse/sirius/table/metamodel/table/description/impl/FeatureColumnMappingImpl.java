@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription;
+import org.eclipse.sirius.table.metamodel.table.description.CellEditorTool;
 import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
@@ -44,6 +45,8 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  * <em>Direct Edit</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl#getCanEdit <em>Can
  * Edit</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl#getCellEditor <em>Cell
+ * Editor</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl#getDefaultForeground
  * <em>Default Foreground</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.FeatureColumnMappingImpl#getForegroundConditionalStyle
@@ -92,6 +95,16 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
      * @ordered
      */
     protected String canEdit = FeatureColumnMappingImpl.CAN_EDIT_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getCellEditor() <em>Cell Editor</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getCellEditor()
+     * @generated
+     * @ordered
+     */
+    protected CellEditorTool cellEditor;
 
     /**
      * The cached value of the '{@link #getDefaultForeground() <em>Default Foreground</em>}' containment reference. <!--
@@ -286,6 +299,59 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
         canEdit = newCanEdit;
         if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.FEATURE_COLUMN_MAPPING__CAN_EDIT, oldCanEdit, canEdit));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public CellEditorTool getCellEditor() {
+        return cellEditor;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public NotificationChain basicSetCellEditor(CellEditorTool newCellEditor, NotificationChain msgs) {
+        CellEditorTool oldCellEditor = cellEditor;
+        cellEditor = newCellEditor;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.FEATURE_COLUMN_MAPPING__CELL_EDITOR, oldCellEditor, newCellEditor);
+            if (msgs == null) {
+                msgs = notification;
+            } else {
+                msgs.add(notification);
+            }
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setCellEditor(CellEditorTool newCellEditor) {
+        if (newCellEditor != cellEditor) {
+            NotificationChain msgs = null;
+            if (cellEditor != null) {
+                msgs = ((InternalEObject) cellEditor).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.FEATURE_COLUMN_MAPPING__CELL_EDITOR, null, msgs);
+            }
+            if (newCellEditor != null) {
+                msgs = ((InternalEObject) newCellEditor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.FEATURE_COLUMN_MAPPING__CELL_EDITOR, null, msgs);
+            }
+            msgs = basicSetCellEditor(newCellEditor, msgs);
+            if (msgs != null) {
+                msgs.dispatch();
+            }
+        } else if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.FEATURE_COLUMN_MAPPING__CELL_EDITOR, newCellEditor, newCellEditor));
         }
     }
 
@@ -529,6 +595,8 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
         switch (featureID) {
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__DIRECT_EDIT:
             return basicSetDirectEdit(null, msgs);
+        case DescriptionPackage.FEATURE_COLUMN_MAPPING__CELL_EDITOR:
+            return basicSetCellEditor(null, msgs);
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_FOREGROUND:
             return basicSetDefaultForeground(null, msgs);
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__FOREGROUND_CONDITIONAL_STYLE:
@@ -553,6 +621,8 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
             return getDirectEdit();
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__CAN_EDIT:
             return getCanEdit();
+        case DescriptionPackage.FEATURE_COLUMN_MAPPING__CELL_EDITOR:
+            return getCellEditor();
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_FOREGROUND:
             return getDefaultForeground();
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__FOREGROUND_CONDITIONAL_STYLE:
@@ -585,6 +655,9 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
             return;
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__CAN_EDIT:
             setCanEdit((String) newValue);
+            return;
+        case DescriptionPackage.FEATURE_COLUMN_MAPPING__CELL_EDITOR:
+            setCellEditor((CellEditorTool) newValue);
             return;
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_FOREGROUND:
             setDefaultForeground((ForegroundStyleDescription) newValue);
@@ -627,6 +700,9 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__CAN_EDIT:
             setCanEdit(FeatureColumnMappingImpl.CAN_EDIT_EDEFAULT);
             return;
+        case DescriptionPackage.FEATURE_COLUMN_MAPPING__CELL_EDITOR:
+            setCellEditor((CellEditorTool) null);
+            return;
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_FOREGROUND:
             setDefaultForeground((ForegroundStyleDescription) null);
             return;
@@ -664,6 +740,8 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
             return directEdit != null;
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__CAN_EDIT:
             return FeatureColumnMappingImpl.CAN_EDIT_EDEFAULT == null ? canEdit != null : !FeatureColumnMappingImpl.CAN_EDIT_EDEFAULT.equals(canEdit);
+        case DescriptionPackage.FEATURE_COLUMN_MAPPING__CELL_EDITOR:
+            return cellEditor != null;
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_FOREGROUND:
             return defaultForeground != null;
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__FOREGROUND_CONDITIONAL_STYLE:
@@ -696,6 +774,8 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
                 return DescriptionPackage.CELL_UPDATER__DIRECT_EDIT;
             case DescriptionPackage.FEATURE_COLUMN_MAPPING__CAN_EDIT:
                 return DescriptionPackage.CELL_UPDATER__CAN_EDIT;
+            case DescriptionPackage.FEATURE_COLUMN_MAPPING__CELL_EDITOR:
+                return DescriptionPackage.CELL_UPDATER__CELL_EDITOR;
             default:
                 return -1;
             }
@@ -730,6 +810,8 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
                 return DescriptionPackage.FEATURE_COLUMN_MAPPING__DIRECT_EDIT;
             case DescriptionPackage.CELL_UPDATER__CAN_EDIT:
                 return DescriptionPackage.FEATURE_COLUMN_MAPPING__CAN_EDIT;
+            case DescriptionPackage.CELL_UPDATER__CELL_EDITOR:
+                return DescriptionPackage.FEATURE_COLUMN_MAPPING__CELL_EDITOR;
             default:
                 return -1;
             }

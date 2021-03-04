@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -140,6 +140,7 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(DescriptionPackage.Literals.CELL_UPDATER__DIRECT_EDIT);
+            childrenFeatures.add(DescriptionPackage.Literals.CELL_UPDATER__CELL_EDITOR);
             childrenFeatures.add(DescriptionPackage.Literals.STYLE_UPDATER__DEFAULT_FOREGROUND);
             childrenFeatures.add(DescriptionPackage.Literals.STYLE_UPDATER__FOREGROUND_CONDITIONAL_STYLE);
             childrenFeatures.add(DescriptionPackage.Literals.STYLE_UPDATER__DEFAULT_BACKGROUND);
@@ -201,6 +202,7 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__DIRECT_EDIT:
+        case DescriptionPackage.FEATURE_COLUMN_MAPPING__CELL_EDITOR:
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_FOREGROUND:
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__FOREGROUND_CONDITIONAL_STYLE:
         case DescriptionPackage.FEATURE_COLUMN_MAPPING__DEFAULT_BACKGROUND:
@@ -221,6 +223,8 @@ public class FeatureColumnMappingItemProvider extends ColumnMappingItemProvider 
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CELL_UPDATER__DIRECT_EDIT, DescriptionFactory.eINSTANCE.createLabelEditTool()));
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CELL_UPDATER__CELL_EDITOR, DescriptionFactory.eINSTANCE.createCellEditorTool()));
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.STYLE_UPDATER__DEFAULT_FOREGROUND, DescriptionFactory.eINSTANCE.createForegroundStyleDescription()));
 

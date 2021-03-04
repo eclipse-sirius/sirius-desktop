@@ -380,6 +380,8 @@
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
       </eStructuralFeatures>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="cellEditor" eType="#//description/CellEditorTool"
+          containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="StyleUpdater" abstract="true">
       <eStructuralFeatures xsi:type="ecore:EReference" name="defaultForeground" eType="#//description/ForegroundStyleDescription"
@@ -556,6 +558,14 @@
     <eClassifiers xsi:type="ecore:EClass" name="TableNavigationDescription" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/RepresentationNavigationDescription">
       <eStructuralFeatures xsi:type="ecore:EReference" name="tableDescription" lowerBound="1"
           eType="#//description/TableDescription"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="CellEditorTool" eSuperTypes="#//description/TableTool">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="qualifiedClassName" lowerBound="1"
+          eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+          <details key="documentation" value="The qualified name of the CellEditorFactory class to provide a CellEditor. This class must implement &quot;org.eclipse.sirius.table.ui.tools.api.editor.ITableCellEditorFactory&quot;."/>
+        </eAnnotations>
+      </eStructuralFeatures>
     </eClassifiers>
   </eSubpackages>
 </ecore:EPackage>

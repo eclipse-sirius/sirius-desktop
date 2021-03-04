@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -92,6 +92,7 @@ public class CellUpdaterItemProvider extends ItemProviderAdapter
         if (childrenFeatures == null) {
             super.getChildrenFeatures(object);
             childrenFeatures.add(DescriptionPackage.Literals.CELL_UPDATER__DIRECT_EDIT);
+            childrenFeatures.add(DescriptionPackage.Literals.CELL_UPDATER__CELL_EDITOR);
         }
         return childrenFeatures;
     }
@@ -147,6 +148,7 @@ public class CellUpdaterItemProvider extends ItemProviderAdapter
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
             return;
         case DescriptionPackage.CELL_UPDATER__DIRECT_EDIT:
+        case DescriptionPackage.CELL_UPDATER__CELL_EDITOR:
             fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
             return;
         }
@@ -164,6 +166,8 @@ public class CellUpdaterItemProvider extends ItemProviderAdapter
         super.collectNewChildDescriptors(newChildDescriptors, object);
 
         newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CELL_UPDATER__DIRECT_EDIT, DescriptionFactory.eINSTANCE.createLabelEditTool()));
+
+        newChildDescriptors.add(createChildParameter(DescriptionPackage.Literals.CELL_UPDATER__CELL_EDITOR, DescriptionFactory.eINSTANCE.createCellEditorTool()));
     }
 
     /**

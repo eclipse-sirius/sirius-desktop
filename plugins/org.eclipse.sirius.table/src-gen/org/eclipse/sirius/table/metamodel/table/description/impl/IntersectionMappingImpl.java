@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription;
+import org.eclipse.sirius.table.metamodel.table.description.CellEditorTool;
 import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
@@ -47,6 +48,8 @@ import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
  * Edit</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getCanEdit <em>Can
  * Edit</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getCellEditor <em>Cell
+ * Editor</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getDefaultForeground
  * <em>Default Foreground</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.IntersectionMappingImpl#getForegroundConditionalStyle
@@ -109,6 +112,16 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
      * @ordered
      */
     protected String canEdit = IntersectionMappingImpl.CAN_EDIT_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getCellEditor() <em>Cell Editor</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getCellEditor()
+     * @generated
+     * @ordered
+     */
+    protected CellEditorTool cellEditor;
 
     /**
      * The cached value of the '{@link #getDefaultForeground() <em>Default Foreground</em>}' containment reference. <!--
@@ -413,6 +426,59 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
         canEdit = newCanEdit;
         if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.INTERSECTION_MAPPING__CAN_EDIT, oldCanEdit, canEdit));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public CellEditorTool getCellEditor() {
+        return cellEditor;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public NotificationChain basicSetCellEditor(CellEditorTool newCellEditor, NotificationChain msgs) {
+        CellEditorTool oldCellEditor = cellEditor;
+        cellEditor = newCellEditor;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.INTERSECTION_MAPPING__CELL_EDITOR, oldCellEditor, newCellEditor);
+            if (msgs == null) {
+                msgs = notification;
+            } else {
+                msgs.add(notification);
+            }
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setCellEditor(CellEditorTool newCellEditor) {
+        if (newCellEditor != cellEditor) {
+            NotificationChain msgs = null;
+            if (cellEditor != null) {
+                msgs = ((InternalEObject) cellEditor).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.INTERSECTION_MAPPING__CELL_EDITOR, null, msgs);
+            }
+            if (newCellEditor != null) {
+                msgs = ((InternalEObject) newCellEditor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.INTERSECTION_MAPPING__CELL_EDITOR, null, msgs);
+            }
+            msgs = basicSetCellEditor(newCellEditor, msgs);
+            if (msgs != null) {
+                msgs.dispatch();
+            }
+        } else if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.INTERSECTION_MAPPING__CELL_EDITOR, newCellEditor, newCellEditor));
         }
     }
 
@@ -878,6 +944,8 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
         switch (featureID) {
         case DescriptionPackage.INTERSECTION_MAPPING__DIRECT_EDIT:
             return basicSetDirectEdit(null, msgs);
+        case DescriptionPackage.INTERSECTION_MAPPING__CELL_EDITOR:
+            return basicSetCellEditor(null, msgs);
         case DescriptionPackage.INTERSECTION_MAPPING__DEFAULT_FOREGROUND:
             return basicSetDefaultForeground(null, msgs);
         case DescriptionPackage.INTERSECTION_MAPPING__FOREGROUND_CONDITIONAL_STYLE:
@@ -904,6 +972,8 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
             return getDirectEdit();
         case DescriptionPackage.INTERSECTION_MAPPING__CAN_EDIT:
             return getCanEdit();
+        case DescriptionPackage.INTERSECTION_MAPPING__CELL_EDITOR:
+            return getCellEditor();
         case DescriptionPackage.INTERSECTION_MAPPING__DEFAULT_FOREGROUND:
             return getDefaultForeground();
         case DescriptionPackage.INTERSECTION_MAPPING__FOREGROUND_CONDITIONAL_STYLE:
@@ -953,6 +1023,9 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
             return;
         case DescriptionPackage.INTERSECTION_MAPPING__CAN_EDIT:
             setCanEdit((String) newValue);
+            return;
+        case DescriptionPackage.INTERSECTION_MAPPING__CELL_EDITOR:
+            setCellEditor((CellEditorTool) newValue);
             return;
         case DescriptionPackage.INTERSECTION_MAPPING__DEFAULT_FOREGROUND:
             setDefaultForeground((ForegroundStyleDescription) newValue);
@@ -1017,6 +1090,9 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
         case DescriptionPackage.INTERSECTION_MAPPING__CAN_EDIT:
             setCanEdit(IntersectionMappingImpl.CAN_EDIT_EDEFAULT);
             return;
+        case DescriptionPackage.INTERSECTION_MAPPING__CELL_EDITOR:
+            setCellEditor((CellEditorTool) null);
+            return;
         case DescriptionPackage.INTERSECTION_MAPPING__DEFAULT_FOREGROUND:
             setDefaultForeground((ForegroundStyleDescription) null);
             return;
@@ -1075,6 +1151,8 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
             return directEdit != null;
         case DescriptionPackage.INTERSECTION_MAPPING__CAN_EDIT:
             return IntersectionMappingImpl.CAN_EDIT_EDEFAULT == null ? canEdit != null : !IntersectionMappingImpl.CAN_EDIT_EDEFAULT.equals(canEdit);
+        case DescriptionPackage.INTERSECTION_MAPPING__CELL_EDITOR:
+            return cellEditor != null;
         case DescriptionPackage.INTERSECTION_MAPPING__DEFAULT_FOREGROUND:
             return defaultForeground != null;
         case DescriptionPackage.INTERSECTION_MAPPING__FOREGROUND_CONDITIONAL_STYLE:
@@ -1124,6 +1202,8 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
                 return DescriptionPackage.CELL_UPDATER__DIRECT_EDIT;
             case DescriptionPackage.INTERSECTION_MAPPING__CAN_EDIT:
                 return DescriptionPackage.CELL_UPDATER__CAN_EDIT;
+            case DescriptionPackage.INTERSECTION_MAPPING__CELL_EDITOR:
+                return DescriptionPackage.CELL_UPDATER__CELL_EDITOR;
             default:
                 return -1;
             }
@@ -1158,6 +1238,8 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
                 return DescriptionPackage.INTERSECTION_MAPPING__DIRECT_EDIT;
             case DescriptionPackage.CELL_UPDATER__CAN_EDIT:
                 return DescriptionPackage.INTERSECTION_MAPPING__CAN_EDIT;
+            case DescriptionPackage.CELL_UPDATER__CELL_EDITOR:
+                return DescriptionPackage.INTERSECTION_MAPPING__CELL_EDITOR;
             default:
                 return -1;
             }

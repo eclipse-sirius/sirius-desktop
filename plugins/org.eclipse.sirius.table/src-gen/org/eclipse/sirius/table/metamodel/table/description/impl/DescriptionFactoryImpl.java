@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,7 @@ import org.eclipse.sirius.table.business.internal.metamodel.description.spec.Tab
 import org.eclipse.sirius.table.business.internal.metamodel.description.spec.TableNavigationDescriptionSpec;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundStyleDescription;
+import org.eclipse.sirius.table.metamodel.table.description.CellEditorTool;
 import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
 import org.eclipse.sirius.table.metamodel.table.description.ColumnMapping;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
@@ -146,6 +147,8 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
             return createTableCreationDescription();
         case DescriptionPackage.TABLE_NAVIGATION_DESCRIPTION:
             return createTableNavigationDescription();
+        case DescriptionPackage.CELL_EDITOR_TOOL:
+            return createCellEditorTool();
         default:
             throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
         }
@@ -415,6 +418,17 @@ public class DescriptionFactoryImpl extends EFactoryImpl implements DescriptionF
     public TableNavigationDescription createTableNavigationDescription() {
         TableNavigationDescriptionImpl tableNavigationDescription = new TableNavigationDescriptionSpec();
         return tableNavigationDescription;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public CellEditorTool createCellEditorTool() {
+        CellEditorToolImpl cellEditorTool = new CellEditorToolImpl();
+        return cellEditorTool;
     }
 
     /**

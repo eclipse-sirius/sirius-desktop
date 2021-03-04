@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.sirius.table.metamodel.table.description.CellEditorTool;
 import org.eclipse.sirius.table.metamodel.table.description.CellUpdater;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage;
@@ -33,6 +34,8 @@ import org.eclipse.sirius.table.metamodel.table.description.LabelEditTool;
  * Edit</em>}</li>
  * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.CellUpdaterImpl#getCanEdit <em>Can
  * Edit</em>}</li>
+ * <li>{@link org.eclipse.sirius.table.metamodel.table.description.impl.CellUpdaterImpl#getCellEditor <em>Cell
+ * Editor</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,6 +70,16 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
      * @ordered
      */
     protected String canEdit = CellUpdaterImpl.CAN_EDIT_EDEFAULT;
+
+    /**
+     * The cached value of the '{@link #getCellEditor() <em>Cell Editor</em>}' containment reference. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @see #getCellEditor()
+     * @generated
+     * @ordered
+     */
+    protected CellEditorTool cellEditor;
 
     /**
      * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -170,6 +183,59 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
      * @generated
      */
     @Override
+    public CellEditorTool getCellEditor() {
+        return cellEditor;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    public NotificationChain basicSetCellEditor(CellEditorTool newCellEditor, NotificationChain msgs) {
+        CellEditorTool oldCellEditor = cellEditor;
+        cellEditor = newCellEditor;
+        if (eNotificationRequired()) {
+            ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DescriptionPackage.CELL_UPDATER__CELL_EDITOR, oldCellEditor, newCellEditor);
+            if (msgs == null) {
+                msgs = notification;
+            } else {
+                msgs.add(notification);
+            }
+        }
+        return msgs;
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public void setCellEditor(CellEditorTool newCellEditor) {
+        if (newCellEditor != cellEditor) {
+            NotificationChain msgs = null;
+            if (cellEditor != null) {
+                msgs = ((InternalEObject) cellEditor).eInverseRemove(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.CELL_UPDATER__CELL_EDITOR, null, msgs);
+            }
+            if (newCellEditor != null) {
+                msgs = ((InternalEObject) newCellEditor).eInverseAdd(this, InternalEObject.EOPPOSITE_FEATURE_BASE - DescriptionPackage.CELL_UPDATER__CELL_EDITOR, null, msgs);
+            }
+            msgs = basicSetCellEditor(newCellEditor, msgs);
+            if (msgs != null) {
+                msgs.dispatch();
+            }
+        } else if (eNotificationRequired()) {
+            eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.CELL_UPDATER__CELL_EDITOR, newCellEditor, newCellEditor));
+        }
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public String getLabelComputationExpression() {
         // TODO: implement this method
         // Ensure that you remove @generated or mark it @generated NOT
@@ -198,6 +264,8 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
         switch (featureID) {
         case DescriptionPackage.CELL_UPDATER__DIRECT_EDIT:
             return basicSetDirectEdit(null, msgs);
+        case DescriptionPackage.CELL_UPDATER__CELL_EDITOR:
+            return basicSetCellEditor(null, msgs);
         }
         return super.eInverseRemove(otherEnd, featureID, msgs);
     }
@@ -214,6 +282,8 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
             return getDirectEdit();
         case DescriptionPackage.CELL_UPDATER__CAN_EDIT:
             return getCanEdit();
+        case DescriptionPackage.CELL_UPDATER__CELL_EDITOR:
+            return getCellEditor();
         }
         return super.eGet(featureID, resolve, coreType);
     }
@@ -231,6 +301,9 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
             return;
         case DescriptionPackage.CELL_UPDATER__CAN_EDIT:
             setCanEdit((String) newValue);
+            return;
+        case DescriptionPackage.CELL_UPDATER__CELL_EDITOR:
+            setCellEditor((CellEditorTool) newValue);
             return;
         }
         super.eSet(featureID, newValue);
@@ -250,6 +323,9 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
         case DescriptionPackage.CELL_UPDATER__CAN_EDIT:
             setCanEdit(CellUpdaterImpl.CAN_EDIT_EDEFAULT);
             return;
+        case DescriptionPackage.CELL_UPDATER__CELL_EDITOR:
+            setCellEditor((CellEditorTool) null);
+            return;
         }
         super.eUnset(featureID);
     }
@@ -266,6 +342,8 @@ public class CellUpdaterImpl extends MinimalEObjectImpl.Container implements Cel
             return directEdit != null;
         case DescriptionPackage.CELL_UPDATER__CAN_EDIT:
             return CellUpdaterImpl.CAN_EDIT_EDEFAULT == null ? canEdit != null : !CellUpdaterImpl.CAN_EDIT_EDEFAULT.equals(canEdit);
+        case DescriptionPackage.CELL_UPDATER__CELL_EDITOR:
+            return cellEditor != null;
         }
         return super.eIsSet(featureID);
     }

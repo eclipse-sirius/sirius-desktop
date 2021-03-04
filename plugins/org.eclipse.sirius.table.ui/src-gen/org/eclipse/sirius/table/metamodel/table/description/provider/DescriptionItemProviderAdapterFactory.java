@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -663,6 +663,30 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
     }
 
     /**
+     * This keeps track of the one adapter used for all
+     * {@link org.eclipse.sirius.table.metamodel.table.description.CellEditorTool} instances. <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected CellEditorToolItemProvider cellEditorToolItemProvider;
+
+    /**
+     * This creates an adapter for a {@link org.eclipse.sirius.table.metamodel.table.description.CellEditorTool}. <!--
+     * begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
+    public Adapter createCellEditorToolAdapter() {
+        if (cellEditorToolItemProvider == null) {
+            cellEditorToolItemProvider = new CellEditorToolItemProvider(this);
+        }
+
+        return cellEditorToolItemProvider;
+    }
+
+    /**
      * This returns the root adapter factory that contains this factory. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
      * @generated
@@ -833,6 +857,9 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
         }
         if (tableNavigationDescriptionItemProvider != null) {
             tableNavigationDescriptionItemProvider.dispose();
+        }
+        if (cellEditorToolItemProvider != null) {
+            cellEditorToolItemProvider.dispose();
         }
     }
 
