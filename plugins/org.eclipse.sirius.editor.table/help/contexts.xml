@@ -620,4 +620,15 @@
    
       </description>
    </context>
+   <context id="CellEditorTool">
+     <description>
+       
+       
+         
+   <!-- Start of user code CellEditorTool description -->
+   
+   <!-- End of user code CellEditorTool description -->
+   
+      </description>
+   </context>
 </contexts>

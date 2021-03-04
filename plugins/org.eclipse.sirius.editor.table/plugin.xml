@@ -20,6 +20,13 @@
   <extension point="org.eclipse.ui.views.properties.tabbed.propertySections">
     <propertySections contributorId="org.eclipse.sirius.editor.editorPlugin.SiriusEditorContributor">
   	  <propertySection
+               class="org.eclipse.sirius.table.editor.properties.sections.description.celleditortool.CellEditorToolQualifiedClassNamePropertySection"
+               id="description.section.cellEditorTool.QualifiedClassName"
+               filter="org.eclipse.sirius.table.editor.properties.filters.description.celleditortool.CellEditorToolQualifiedClassNameFilter"
+                tab="viewpoint.tab.general">
+        <input type="org.eclipse.sirius.table.metamodel.table.description.CellEditorTool"/>
+      </propertySection>
+  	  <propertySection
                class="org.eclipse.sirius.table.editor.properties.sections.description.tablenavigationdescription.TableNavigationDescriptionTableDescriptionPropertySection"
                id="description.section.tableNavigationDescription.TableDescription"
                filter="org.eclipse.sirius.table.editor.properties.filters.description.tablenavigationdescription.TableNavigationDescriptionTableDescriptionFilter"
