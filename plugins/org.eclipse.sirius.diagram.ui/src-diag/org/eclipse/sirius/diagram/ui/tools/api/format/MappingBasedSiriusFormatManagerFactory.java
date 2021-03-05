@@ -42,6 +42,7 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
@@ -71,7 +72,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
-import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 
 /**
@@ -222,9 +223,11 @@ public class MappingBasedSiriusFormatManagerFactory {
         synchronizeTargetDiagram(targetSession, (DSemanticDiagram) targetDiagram);
         DiagramEditPart sourceDiagramEditPart = null;
         DiagramEditPart targetDiagramEditPart = null;
+        Collection<DiagramEditPart> sourceDiagramEditParts = null;
+        Collection<DiagramEditPart> targetDiagramEditParts = null;
         try {
-            Collection<DiagramEditPart> sourceDiagramEditParts = getDiagramEditPart(sourceSession, sourceDiagram);
-            Collection<DiagramEditPart> targetDiagramEditParts = getDiagramEditPart(targetSession, targetDiagram);
+            sourceDiagramEditParts = getDiagramEditPart(sourceSession, sourceDiagram);
+            targetDiagramEditParts = getDiagramEditPart(targetSession, targetDiagram);
 
             if (!sourceDiagramEditParts.isEmpty() && !targetDiagramEditParts.isEmpty()) {
                 sourceDiagramEditPart = sourceDiagramEditParts.stream().findFirst().get();
@@ -244,11 +247,18 @@ public class MappingBasedSiriusFormatManagerFactory {
                 synchronizeTargetDiagram(targetSession, (DSemanticDiagram) targetDiagram);
             }
         } finally {
-            if (sourceDiagramEditPart != null) {
-                cleanAndDispose(sourceDiagramEditPart);
+            // Several org.eclipse.draw2d.DeferredUpdateManager (UpdateRequest) could be launched, in async, during the
+            // paste process.
+            // We should execute them to avoid potential "Widget is disposed" during the cleanAndDispose.
+            EclipseUIUtil.synchronizeWithUIThread();
+            // Even if in theory, only one diagram is created, the above code can create several DiagramEditParts for
+            // source and target, so we clean all of them and not directly sourceDiagramEditPart and
+            // targetDiagramEditPart
+            if (sourceDiagramEditParts != null) {
+                sourceDiagramEditParts.stream().forEach(dep -> cleanAndDispose(dep));
             }
-            if (targetDiagramEditPart != null) {
-                cleanAndDispose(targetDiagramEditPart);
+            if (targetDiagramEditParts != null) {
+                targetDiagramEditParts.stream().forEach(dep -> cleanAndDispose(dep));
             }
         }
     }
@@ -536,6 +546,7 @@ public class MappingBasedSiriusFormatManagerFactory {
     private Collection<DiagramEditPart> getDiagramEditPart(Session session, DRepresentation representation) {
         final List<DiagramEditPart> result = new ArrayList<DiagramEditPart>();
         final Collection<EObject> data = session.getServices().getCustomData(CustomDataConstants.GMF_DIAGRAMS, representation);
+        // Create a new shell for the diagramEditPart, it will be disposed later in cleanAndDispose(DiagramEditPart).
         Shell shell = new Shell();
         for (final EObject dataElement : data) {
             if (dataElement instanceof Diagram) {
@@ -545,12 +556,6 @@ public class MappingBasedSiriusFormatManagerFactory {
                 result.add(diagramEditPart);
             }
         }
-        Display.getCurrent().asyncExec(new Runnable() {
-            @Override
-            public void run() {
-                shell.dispose();
-            }
-        });
         return result;
     }
 
@@ -744,16 +749,26 @@ public class MappingBasedSiriusFormatManagerFactory {
      * Clean {@code diagramEditPart} element to avoid memory leaks.
      * 
      * @param diagramEditPart
+     *            The diagram edit part to dispose and to use to also dispose associated elements.
      */
     private void cleanAndDispose(DiagramEditPart diagramEditPart) {
-        // Clean to avoid memory leaks
-        diagramEditPart.deactivate();
-        // Memory leak : also disposing the
-        // DiagramGraphicalViewer associated to this
-        // DiagramEditPart
-        diagramEditPart.getViewer().flush();
-        diagramEditPart.getViewer().getEditDomain().getCommandStack().flush();
-        diagramEditPart.getViewer().getControl().dispose();
-        ((DiagramEditDomain) diagramEditPart.getViewer().getEditDomain()).removeViewer(diagramEditPart.getViewer());
+        if (diagramEditPart != null) {
+            // Clean to avoid memory leaks
+            diagramEditPart.deactivate();
+            // Memory leak : also disposing the
+            // DiagramGraphicalViewer associated to this
+            // DiagramEditPart
+            diagramEditPart.getViewer().flush();
+            diagramEditPart.getViewer().getEditDomain().getCommandStack().flush();
+            Control control = diagramEditPart.getViewer().getControl();
+            if (control.getParent() != null) {
+                // Dispose the shell created in method getDiagramEditPart(Session, DRepresentation).
+                control.getParent().dispose();
+            } else {
+                // This code should not occurred, but it's just to be sure.
+                control.isDisposed();
+            }
+            ((DiagramEditDomain) diagramEditPart.getViewer().getEditDomain()).removeViewer(diagramEditPart.getViewer());
+        }
     }
 }
