@@ -1,0 +1,689 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:table="http://www.eclipse.org/sirius/table/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/table/description/1.1.0 http://www.eclipse.org/sirius/table/1.1.0#//description">
+  <viewpoint:DAnalysis uid="_Mm500SJgEeGPA-fqNyckkw" selectedViews="_NRTcsCJgEeGPA-fqNyckkw _2woeYH24Eeu_2e3JAnkktg" version="14.3.1.202003261200">
+    <semanticResources>My.ecore</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_NRTcsCJgEeGPA-fqNyckkw">
+      <viewpoint xmi:type="description:Viewpoint" href="different_parent_expression.odesign#//@ownedViewpoints[name='different_parent_expression']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_n1MRQH2hEeuT1rwZ66iidA" name="new different_parent_expression" repPath="#_n0u-QH2hEeuT1rwZ66iidA" changeId="29429697-fe50-46bf-920b-92922d4d1cdf">
+        <description xmi:type="description_1:EditionTableDescription" href="different_parent_expression.odesign#//@ownedViewpoints[name='different_parent_expression']/@ownedRepresentations[name='different_parent_expression']"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//case1"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+    <ownedViews xmi:type="viewpoint:DView" uid="_2woeYH24Eeu_2e3JAnkktg">
+      <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_47U0UX24Eeu_2e3JAnkktg" name="new ClassTable" repPath="#_453bwH24Eeu_2e3JAnkktg" changeId="d5cb2704-30e6-4c44-aa94-a77f76933d5a">
+        <description xmi:type="description_1:EditionTableDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTable']"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//case2"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Ewg2MIDFEeu2oeyj6onH1Q" name="new AttributeTable" repPath="#_EwfoEIDFEeu2oeyj6onH1Q" changeId="034f50e0-aa8d-4b0d-acbd-bbbf2165f279">
+        <description xmi:type="description_1:EditionTableDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='AttributeTable']"/>
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_L-pXYIDyEeuSatyv9qf1gQ" name="new ClassTableWithInvalidCellEditor" repPath="#_L-iCoIDyEeuSatyv9qf1gQ" changeId="c518076a-010e-4d2e-8f14-ebfead9899e3">
+        <description xmi:type="description_1:EditionTableDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTableWithInvalidCellEditor']"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//case2"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <table:DTable uid="_n0u-QH2hEeuT1rwZ66iidA" headerColumnWidth="56">
+    <target xmi:type="ecore:EPackage" href="My.ecore#//case1"/>
+    <lines xmi:type="table:DLine" uid="_n08ZoH2hEeuT1rwZ66iidA" label="A0">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case1/A0"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case1/A0"/>
+      <originMapping xmi:type="description_1:LineMapping" href="different_parent_expression.odesign#//@ownedViewpoints[name='different_parent_expression']/@ownedRepresentations[name='different_parent_expression']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_n1J1B32hEeuT1rwZ66iidA" label="true" column="_n1J1A32hEeuT1rwZ66iidA">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case1/A0"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case1/A0"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_n1J1AX2hEeuT1rwZ66iidA" label="B0">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case1/B0"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case1/B0"/>
+      <originMapping xmi:type="description_1:LineMapping" href="different_parent_expression.odesign#//@ownedViewpoints[name='different_parent_expression']/@ownedRepresentations[name='different_parent_expression']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_n1LDIH2hEeuT1rwZ66iidA" label="false" column="_n1J1A32hEeuT1rwZ66iidA">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case1/B0"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case1/B0"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_n1LDIn2hEeuT1rwZ66iidA" label="true" column="_n1J1BX2hEeuT1rwZ66iidA">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case1/A0"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case1/A0"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case1/B0"/>
+      </cells>
+    </lines>
+    <columns xmi:type="table:DFeatureColumn" uid="_n1J1A32hEeuT1rwZ66iidA" label="IsAbstract" cells="_n1J1B32hEeuT1rwZ66iidA _n1LDIH2hEeuT1rwZ66iidA" width="67" featureName="abstract">
+      <originMapping xmi:type="description_1:FeatureColumnMapping" href="different_parent_expression.odesign#//@ownedViewpoints[name='different_parent_expression']/@ownedRepresentations[name='different_parent_expression']/@ownedColumnMappings[name='IsAbstract']"/>
+    </columns>
+    <columns xmi:type="table:DFeatureColumn" uid="_n1J1BX2hEeuT1rwZ66iidA" label="InheritsFromAbstract" cells="_n1LDIn2hEeuT1rwZ66iidA" width="126" featureName="abstract">
+      <originMapping xmi:type="description_1:FeatureColumnMapping" href="different_parent_expression.odesign#//@ownedViewpoints[name='different_parent_expression']/@ownedRepresentations[name='different_parent_expression']/@ownedColumnMappings[name='InheritsFromAbstract']"/>
+    </columns>
+    <description xmi:type="description_1:EditionTableDescription" href="different_parent_expression.odesign#//@ownedViewpoints[name='different_parent_expression']/@ownedRepresentations[name='different_parent_expression']"/>
+  </table:DTable>
+  <table:DTable uid="_453bwH24Eeu_2e3JAnkktg" headerColumnWidth="145">
+    <target xmi:type="ecore:EPackage" href="My.ecore#//case2"/>
+    <lines xmi:type="table:DLine" uid="_46ML4H24Eeu_2e3JAnkktg" label="MyClass1">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTable']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_47OGsH24Eeu_2e3JAnkktg" label="false" column="_47OGoH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47PUwX24Eeu_2e3JAnkktg" label="false" column="_47OGon24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47PUw324Eeu_2e3JAnkktg" label="false" column="_47OGpH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47PUxX24Eeu_2e3JAnkktg" label="false" column="_47OGpn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47P70X24Eeu_2e3JAnkktg" label="[]" column="_47OGrH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47P70324Eeu_2e3JAnkktg" label="[]" column="_47OGrn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_47LqYH24Eeu_2e3JAnkktg" label="MyClass2">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTable']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_47P71X24Eeu_2e3JAnkktg" label="false" column="_47OGoH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47P71324Eeu_2e3JAnkktg" label="false" column="_47OGon24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47P72X24Eeu_2e3JAnkktg" label="false" column="_47OGpH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47P72324Eeu_2e3JAnkktg" label="false" column="_47OGpn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47Qi5X24Eeu_2e3JAnkktg" label="[]" column="_47OGrH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47Qi5324Eeu_2e3JAnkktg" label="[]" column="_47OGrn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_47LqYn24Eeu_2e3JAnkktg" label="SubstituteMyClass3">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTable']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_47Qi6X24Eeu_2e3JAnkktg" label="false" column="_47OGoH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47Qi6324Eeu_2e3JAnkktg" label="false" column="_47OGon24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47Qi7X24Eeu_2e3JAnkktg" label="false" column="_47OGpH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47Qi7324Eeu_2e3JAnkktg" label="false" column="_47OGpn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47RJ8X24Eeu_2e3JAnkktg" label="[]" column="_47OGrH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47RJ8324Eeu_2e3JAnkktg" label="[]" column="_47OGrn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_47LqZH24Eeu_2e3JAnkktg" label="AbstractMyClass1">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTable']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_47RJ9X24Eeu_2e3JAnkktg" label="true" column="_47OGoH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47RJ9324Eeu_2e3JAnkktg" label="true" column="_47OGon24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47RJ-X24Eeu_2e3JAnkktg" label="true" column="_47OGpH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47RJ-324Eeu_2e3JAnkktg" label="true" column="_47OGpn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47RKAX24Eeu_2e3JAnkktg" label="[]" column="_47OGrH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47RKA324Eeu_2e3JAnkktg" label="[]" column="_47OGrn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_47MRcX24Eeu_2e3JAnkktg" label="AbstractMyClass2">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTable']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_47RKBX24Eeu_2e3JAnkktg" label="true" column="_47OGoH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47RKB324Eeu_2e3JAnkktg" label="true" column="_47OGon24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47RKCX24Eeu_2e3JAnkktg" label="true" column="_47OGpH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47RxAX24Eeu_2e3JAnkktg" label="true" column="_47OGpn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47RxB324Eeu_2e3JAnkktg" label="[]" column="_47OGrH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47RxCX24Eeu_2e3JAnkktg" label="[]" column="_47OGrn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_47MRc324Eeu_2e3JAnkktg" label="AbstractMyClass3">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTable']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_47RxC324Eeu_2e3JAnkktg" label="true" column="_47OGoH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47RxDX24Eeu_2e3JAnkktg" label="true" column="_47OGon24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47RxD324Eeu_2e3JAnkktg" label="true" column="_47OGpH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47RxEX24Eeu_2e3JAnkktg" label="true" column="_47OGpn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47SYFX24Eeu_2e3JAnkktg" label="[]" column="_47OGrH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47SYF324Eeu_2e3JAnkktg" label="[]" column="_47OGrn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_47MRdX24Eeu_2e3JAnkktg" label="AbstractMyClass4">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTable']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_47SYGX24Eeu_2e3JAnkktg" label="true" column="_47OGoH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47SYG324Eeu_2e3JAnkktg" label="true" column="_47OGon24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47SYHX24Eeu_2e3JAnkktg" label="true" column="_47OGpH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47SYH324Eeu_2e3JAnkktg" label="true" column="_47OGpn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47SYJX24Eeu_2e3JAnkktg" label="[]" column="_47OGrH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47SYJ324Eeu_2e3JAnkktg" label="[]" column="_47OGrn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_47MRd324Eeu_2e3JAnkktg" label="NullMyClass4">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTable']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_47SYKX24Eeu_2e3JAnkktg" label="false" column="_47OGoH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47S_IX24Eeu_2e3JAnkktg" label="false" column="_47OGon24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47S_I324Eeu_2e3JAnkktg" label="false" column="_47OGpH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47S_JX24Eeu_2e3JAnkktg" label="false" column="_47OGpn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47S_K324Eeu_2e3JAnkktg" label="[]" column="_47OGrH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47S_LX24Eeu_2e3JAnkktg" label="[]" column="_47OGrn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_47MReX24Eeu_2e3JAnkktg" label="MyClass5">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTable']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_47S_L324Eeu_2e3JAnkktg" label="false" column="_47OGoH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47S_MX24Eeu_2e3JAnkktg" label="false" column="_47OGon24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47S_M324Eeu_2e3JAnkktg" label="false" column="_47OGpH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47S_NX24Eeu_2e3JAnkktg" label="false" column="_47OGpn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47TmMH24Eeu_2e3JAnkktg" label="[AbstractMyClass1]" column="_47OGrH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47UNQX24Eeu_2e3JAnkktg" label="[AbstractMyClass1]" column="_47OGrn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_47MRe324Eeu_2e3JAnkktg" label="MyClass6">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTable']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_47UNQ324Eeu_2e3JAnkktg" label="false" column="_47OGoH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47UNRX24Eeu_2e3JAnkktg" label="false" column="_47OGon24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47UNR324Eeu_2e3JAnkktg" label="false" column="_47OGpH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47UNSX24Eeu_2e3JAnkktg" label="false" column="_47OGpn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47UNT324Eeu_2e3JAnkktg" label="[MyClass2, AbstractMyClass2, NullMyClass4]" column="_47OGrH24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_47UNUX24Eeu_2e3JAnkktg" label="[MyClass2, AbstractMyClass2, NullMyClass4]" column="_47OGrn24Eeu_2e3JAnkktg">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+      </cells>
+    </lines>
+    <columns xmi:type="table:DFeatureColumn" uid="_47OGoH24Eeu_2e3JAnkktg" label="IsAbstract_Std" cells="_47OGsH24Eeu_2e3JAnkktg _47P71X24Eeu_2e3JAnkktg _47Qi6X24Eeu_2e3JAnkktg _47RJ9X24Eeu_2e3JAnkktg _47RKBX24Eeu_2e3JAnkktg _47RxC324Eeu_2e3JAnkktg _47SYGX24Eeu_2e3JAnkktg _47SYKX24Eeu_2e3JAnkktg _47S_L324Eeu_2e3JAnkktg _47UNQ324Eeu_2e3JAnkktg" width="89" featureName="abstract">
+      <originMapping xmi:type="description_1:FeatureColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTable']/@ownedColumnMappings[name='IsAbstract_Std']"/>
+    </columns>
+    <columns xmi:type="table:DFeatureColumn" uid="_47OGon24Eeu_2e3JAnkktg" label="IsAbstract_LabelEdit" cells="_47PUwX24Eeu_2e3JAnkktg _47P71324Eeu_2e3JAnkktg _47Qi6324Eeu_2e3JAnkktg _47RJ9324Eeu_2e3JAnkktg _47RKB324Eeu_2e3JAnkktg _47RxDX24Eeu_2e3JAnkktg _47SYG324Eeu_2e3JAnkktg _47S_IX24Eeu_2e3JAnkktg _47S_MX24Eeu_2e3JAnkktg _47UNRX24Eeu_2e3JAnkktg" width="120" featureName="abstract">
+      <originMapping xmi:type="description_1:FeatureColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTable']/@ownedColumnMappings[name='IsAbstract_LabelEdit']"/>
+    </columns>
+    <columns xmi:type="table:DFeatureColumn" uid="_47OGpH24Eeu_2e3JAnkktg" label="IsAbstract_CellEditor" cells="_47PUw324Eeu_2e3JAnkktg _47P72X24Eeu_2e3JAnkktg _47Qi7X24Eeu_2e3JAnkktg _47RJ-X24Eeu_2e3JAnkktg _47RKCX24Eeu_2e3JAnkktg _47RxD324Eeu_2e3JAnkktg _47SYHX24Eeu_2e3JAnkktg _47S_I324Eeu_2e3JAnkktg _47S_M324Eeu_2e3JAnkktg _47UNR324Eeu_2e3JAnkktg" width="123" featureName="abstract">
+      <originMapping xmi:type="description_1:FeatureColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTable']/@ownedColumnMappings[name='IsAbstract_CellEditor']"/>
+    </columns>
+    <columns xmi:type="table:DFeatureColumn" uid="_47OGpn24Eeu_2e3JAnkktg" label="IsAbstract_CellEditorOnName" cells="_47PUxX24Eeu_2e3JAnkktg _47P72324Eeu_2e3JAnkktg _47Qi7324Eeu_2e3JAnkktg _47RJ-324Eeu_2e3JAnkktg _47RxAX24Eeu_2e3JAnkktg _47RxEX24Eeu_2e3JAnkktg _47SYH324Eeu_2e3JAnkktg _47S_JX24Eeu_2e3JAnkktg _47S_NX24Eeu_2e3JAnkktg _47UNSX24Eeu_2e3JAnkktg" width="171" featureName="name">
+      <originMapping xmi:type="description_1:FeatureColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTable']/@ownedColumnMappings[name='IsAbstract_CellEditorOnName']"/>
+    </columns>
+    <columns xmi:type="table:DFeatureColumn" uid="_47OGrH24Eeu_2e3JAnkktg" label="superTypes_Std" cells="_47P70X24Eeu_2e3JAnkktg _47Qi5X24Eeu_2e3JAnkktg _47RJ8X24Eeu_2e3JAnkktg _47RKAX24Eeu_2e3JAnkktg _47RxB324Eeu_2e3JAnkktg _47SYFX24Eeu_2e3JAnkktg _47SYJX24Eeu_2e3JAnkktg _47S_K324Eeu_2e3JAnkktg _47TmMH24Eeu_2e3JAnkktg _47UNT324Eeu_2e3JAnkktg" width="245" featureName="eSuperTypes">
+      <originMapping xmi:type="description_1:FeatureColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTable']/@ownedColumnMappings[name='superTypes_Std']"/>
+    </columns>
+    <columns xmi:type="table:DFeatureColumn" uid="_47OGrn24Eeu_2e3JAnkktg" label="superTypes_CellEditor" cells="_47P70324Eeu_2e3JAnkktg _47Qi5324Eeu_2e3JAnkktg _47RJ8324Eeu_2e3JAnkktg _47RKA324Eeu_2e3JAnkktg _47RxCX24Eeu_2e3JAnkktg _47SYF324Eeu_2e3JAnkktg _47SYJ324Eeu_2e3JAnkktg _47S_LX24Eeu_2e3JAnkktg _47UNQX24Eeu_2e3JAnkktg _47UNUX24Eeu_2e3JAnkktg" width="245" featureName="eSuperTypes">
+      <originMapping xmi:type="description_1:FeatureColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTable']/@ownedColumnMappings[name='superTypes_CellEditor']"/>
+    </columns>
+    <description xmi:type="description_1:EditionTableDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTable']"/>
+  </table:DTable>
+  <table:DTable uid="_EwfoEIDFEeu2oeyj6onH1Q" headerColumnWidth="93">
+    <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+    <lines xmi:type="table:DLine" uid="_LZCCUIDFEeu2oeyj6onH1Q" label="att1">
+      <target xmi:type="ecore:EAttribute" href="My.ecore#//case2/MyClass1/att1"/>
+      <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//case2/MyClass1/att1"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='AttributeTable']/@ownedLineMappings[name='Attribute']"/>
+      <cells xmi:type="table:DCell" uid="_LZIwBIDFEeu2oeyj6onH1Q" label="att1" column="_EwgPIIDFEeu2oeyj6onH1Q">
+        <target xmi:type="ecore:EAttribute" href="My.ecore#//case2/MyClass1/att1"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//case2/MyClass1/att1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_hb9G9YDFEeu2oeyj6onH1Q" label="att1" column="_hb9G8oDFEeu2oeyj6onH1Q">
+        <target xmi:type="ecore:EAttribute" href="My.ecore#//case2/MyClass1/att1"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//case2/MyClass1/att1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_Dj6r8IDgEeu2oeyj6onH1Q" label="EString [java.lang.String]" column="_Dj5d1IDgEeu2oeyj6onH1Q">
+        <target xmi:type="ecore:EAttribute" href="My.ecore#//case2/MyClass1/att1"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//case2/MyClass1/att1"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_LZIwAYDFEeu2oeyj6onH1Q" label="att2">
+      <target xmi:type="ecore:EAttribute" href="My.ecore#//case2/MyClass1/att2"/>
+      <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//case2/MyClass1/att2"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='AttributeTable']/@ownedLineMappings[name='Attribute']"/>
+      <cells xmi:type="table:DCell" uid="_LZJXEYDFEeu2oeyj6onH1Q" label="att2" column="_EwgPIIDFEeu2oeyj6onH1Q">
+        <target xmi:type="ecore:EAttribute" href="My.ecore#//case2/MyClass1/att2"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//case2/MyClass1/att2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_hb9uAYDFEeu2oeyj6onH1Q" label="att2" column="_hb9G8oDFEeu2oeyj6onH1Q">
+        <target xmi:type="ecore:EAttribute" href="My.ecore#//case2/MyClass1/att2"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//case2/MyClass1/att2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_Dj7TA4DgEeu2oeyj6onH1Q" label="EFloat [float]" column="_Dj5d1IDgEeu2oeyj6onH1Q">
+        <target xmi:type="ecore:EAttribute" href="My.ecore#//case2/MyClass1/att2"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//case2/MyClass1/att2"/>
+      </cells>
+    </lines>
+    <columns xmi:type="table:DFeatureColumn" uid="_hb9G8oDFEeu2oeyj6onH1Q" label="NameStd" cells="_hb9G9YDFEeu2oeyj6onH1Q _hb9uAYDFEeu2oeyj6onH1Q" width="64" featureName="name">
+      <originMapping xmi:type="description_1:FeatureColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='AttributeTable']/@ownedColumnMappings[name='nameStd']"/>
+    </columns>
+    <columns xmi:type="table:DFeatureColumn" uid="_EwgPIIDFEeu2oeyj6onH1Q" label="Name from type" cells="_LZIwBIDFEeu2oeyj6onH1Q _LZJXEYDFEeu2oeyj6onH1Q" width="102" featureName="name">
+      <originMapping xmi:type="description_1:FeatureColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='AttributeTable']/@ownedColumnMappings[name='name%20from%20type']"/>
+    </columns>
+    <columns xmi:type="table:DFeatureColumn" uid="_Dj5d1IDgEeu2oeyj6onH1Q" label="eType" cells="_Dj6r8IDgEeu2oeyj6onH1Q _Dj7TA4DgEeu2oeyj6onH1Q" width="138" featureName="eType">
+      <originMapping xmi:type="description_1:FeatureColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='AttributeTable']/@ownedColumnMappings[name='eType']"/>
+    </columns>
+    <description xmi:type="description_1:EditionTableDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='AttributeTable']"/>
+  </table:DTable>
+  <table:DTable uid="_L-iCoIDyEeuSatyv9qf1gQ" headerColumnWidth="145">
+    <target xmi:type="ecore:EPackage" href="My.ecore#//case2"/>
+    <lines xmi:type="table:DLine" uid="_L-ipsIDyEeuSatyv9qf1gQ" label="MyClass1">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTableWithInvalidCellEditor']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_L-j30IDyEeuSatyv9qf1gQ" label="false" column="_L-jQzYDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-j30oDyEeuSatyv9qf1gQ" label="false" column="_L-jQz4DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-j31IDyEeuSatyv9qf1gQ" label="false" column="_L-jQ0YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-j31oDyEeuSatyv9qf1gQ" label="false" column="_L-jQ04DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-j32IDyEeuSatyv9qf1gQ" label="false" column="_L-jQ1YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass1"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_L-ipsoDyEeuSatyv9qf1gQ" label="MyClass2">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTableWithInvalidCellEditor']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_L-j32oDyEeuSatyv9qf1gQ" label="false" column="_L-jQzYDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-ke4IDyEeuSatyv9qf1gQ" label="false" column="_L-jQz4DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-ke4oDyEeuSatyv9qf1gQ" label="false" column="_L-jQ0YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-ke5IDyEeuSatyv9qf1gQ" label="false" column="_L-jQ04DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-ke5oDyEeuSatyv9qf1gQ" label="false" column="_L-jQ1YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass2"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_L-iptIDyEeuSatyv9qf1gQ" label="SubstituteMyClass3">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTableWithInvalidCellEditor']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_L-ke6IDyEeuSatyv9qf1gQ" label="false" column="_L-jQzYDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-ke6oDyEeuSatyv9qf1gQ" label="false" column="_L-jQz4DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-ke7IDyEeuSatyv9qf1gQ" label="false" column="_L-jQ0YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-ke7oDyEeuSatyv9qf1gQ" label="false" column="_L-jQ04DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-lF8YDyEeuSatyv9qf1gQ" label="false" column="_L-jQ1YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/SubstituteMyClass3"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_L-iptoDyEeuSatyv9qf1gQ" label="AbstractMyClass1">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTableWithInvalidCellEditor']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_L-lF84DyEeuSatyv9qf1gQ" label="true" column="_L-jQzYDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-lF9YDyEeuSatyv9qf1gQ" label="true" column="_L-jQz4DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-lF94DyEeuSatyv9qf1gQ" label="true" column="_L-jQ0YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-ltAYDyEeuSatyv9qf1gQ" label="true" column="_L-jQ04DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-ltA4DyEeuSatyv9qf1gQ" label="true" column="_L-jQ1YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass1"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_L-jQwYDyEeuSatyv9qf1gQ" label="AbstractMyClass2">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTableWithInvalidCellEditor']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_L-ltBYDyEeuSatyv9qf1gQ" label="true" column="_L-jQzYDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-ltB4DyEeuSatyv9qf1gQ" label="true" column="_L-jQz4DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-ltCYDyEeuSatyv9qf1gQ" label="true" column="_L-jQ0YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-ltC4DyEeuSatyv9qf1gQ" label="true" column="_L-jQ04DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-mUEYDyEeuSatyv9qf1gQ" label="true" column="_L-jQ1YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass2"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_L-jQw4DyEeuSatyv9qf1gQ" label="AbstractMyClass3">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTableWithInvalidCellEditor']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_L-mUE4DyEeuSatyv9qf1gQ" label="true" column="_L-jQzYDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-mUFYDyEeuSatyv9qf1gQ" label="true" column="_L-jQz4DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-mUF4DyEeuSatyv9qf1gQ" label="true" column="_L-jQ0YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-mUGYDyEeuSatyv9qf1gQ" label="true" column="_L-jQ04DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-mUG4DyEeuSatyv9qf1gQ" label="true" column="_L-jQ1YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass3"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_L-jQxYDyEeuSatyv9qf1gQ" label="AbstractMyClass4">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTableWithInvalidCellEditor']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_L-mUHYDyEeuSatyv9qf1gQ" label="true" column="_L-jQzYDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-m7IYDyEeuSatyv9qf1gQ" label="true" column="_L-jQz4DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-m7I4DyEeuSatyv9qf1gQ" label="true" column="_L-jQ0YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-m7JYDyEeuSatyv9qf1gQ" label="true" column="_L-jQ04DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-m7J4DyEeuSatyv9qf1gQ" label="true" column="_L-jQ1YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/AbstractMyClass4"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_L-jQx4DyEeuSatyv9qf1gQ" label="NullMyClass4">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTableWithInvalidCellEditor']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_L-m7KYDyEeuSatyv9qf1gQ" label="false" column="_L-jQzYDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-m7K4DyEeuSatyv9qf1gQ" label="false" column="_L-jQz4DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-m7LYDyEeuSatyv9qf1gQ" label="false" column="_L-jQ0YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-niMIDyEeuSatyv9qf1gQ" label="false" column="_L-jQ04DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-niMoDyEeuSatyv9qf1gQ" label="false" column="_L-jQ1YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/NullMyClass4"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_L-jQyYDyEeuSatyv9qf1gQ" label="MyClass5">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTableWithInvalidCellEditor']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_L-niNIDyEeuSatyv9qf1gQ" label="false" column="_L-jQzYDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-niNoDyEeuSatyv9qf1gQ" label="false" column="_L-jQz4DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-niOIDyEeuSatyv9qf1gQ" label="false" column="_L-jQ0YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-niOoDyEeuSatyv9qf1gQ" label="false" column="_L-jQ04DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-niPIDyEeuSatyv9qf1gQ" label="false" column="_L-jQ1YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass5"/>
+      </cells>
+    </lines>
+    <lines xmi:type="table:DLine" uid="_L-jQy4DyEeuSatyv9qf1gQ" label="MyClass6">
+      <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+      <originMapping xmi:type="description_1:LineMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTableWithInvalidCellEditor']/@ownedLineMappings[name='Class']"/>
+      <cells xmi:type="table:DCell" uid="_L-oJQYDyEeuSatyv9qf1gQ" label="false" column="_L-jQzYDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-oJQ4DyEeuSatyv9qf1gQ" label="false" column="_L-jQz4DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-oJRYDyEeuSatyv9qf1gQ" label="false" column="_L-jQ0YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-oJR4DyEeuSatyv9qf1gQ" label="false" column="_L-jQ04DyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+      </cells>
+      <cells xmi:type="table:DCell" uid="_L-oJSYDyEeuSatyv9qf1gQ" label="false" column="_L-jQ1YDyEeuSatyv9qf1gQ">
+        <target xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//case2/MyClass6"/>
+      </cells>
+    </lines>
+    <columns xmi:type="table:DFeatureColumn" uid="_L-jQzYDyEeuSatyv9qf1gQ" label="IsAbstract_LabelEdit" cells="_L-j30IDyEeuSatyv9qf1gQ _L-j32oDyEeuSatyv9qf1gQ _L-ke6IDyEeuSatyv9qf1gQ _L-lF84DyEeuSatyv9qf1gQ _L-ltBYDyEeuSatyv9qf1gQ _L-mUE4DyEeuSatyv9qf1gQ _L-mUHYDyEeuSatyv9qf1gQ _L-m7KYDyEeuSatyv9qf1gQ _L-niNIDyEeuSatyv9qf1gQ _L-oJQYDyEeuSatyv9qf1gQ" width="120" featureName="abstract">
+      <originMapping xmi:type="description_1:FeatureColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTableWithInvalidCellEditor']/@ownedColumnMappings[name='IsAbstract_LabelEditAndCellEditor']"/>
+    </columns>
+    <columns xmi:type="table:DFeatureColumn" uid="_L-jQz4DyEeuSatyv9qf1gQ" label="wrongCellEditor1" cells="_L-j30oDyEeuSatyv9qf1gQ _L-ke4IDyEeuSatyv9qf1gQ _L-ke6oDyEeuSatyv9qf1gQ _L-lF9YDyEeuSatyv9qf1gQ _L-ltB4DyEeuSatyv9qf1gQ _L-mUFYDyEeuSatyv9qf1gQ _L-m7IYDyEeuSatyv9qf1gQ _L-m7K4DyEeuSatyv9qf1gQ _L-niNoDyEeuSatyv9qf1gQ _L-oJQ4DyEeuSatyv9qf1gQ" width="106" featureName="abstract">
+      <originMapping xmi:type="description_1:FeatureColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTableWithInvalidCellEditor']/@ownedColumnMappings[name='IsAbstract_WrongCellEditor1']"/>
+    </columns>
+    <columns xmi:type="table:DFeatureColumn" uid="_L-jQ0YDyEeuSatyv9qf1gQ" label="wrongCellEditor2" cells="_L-j31IDyEeuSatyv9qf1gQ _L-ke4oDyEeuSatyv9qf1gQ _L-ke7IDyEeuSatyv9qf1gQ _L-lF94DyEeuSatyv9qf1gQ _L-ltCYDyEeuSatyv9qf1gQ _L-mUF4DyEeuSatyv9qf1gQ _L-m7I4DyEeuSatyv9qf1gQ _L-m7LYDyEeuSatyv9qf1gQ _L-niOIDyEeuSatyv9qf1gQ _L-oJRYDyEeuSatyv9qf1gQ" width="106" featureName="abstract">
+      <originMapping xmi:type="description_1:FeatureColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTableWithInvalidCellEditor']/@ownedColumnMappings[name='IsAbstract_WrongCellEditor2']"/>
+    </columns>
+    <columns xmi:type="table:DFeatureColumn" uid="_L-jQ04DyEeuSatyv9qf1gQ" label="wrongCellEditor3" cells="_L-j31oDyEeuSatyv9qf1gQ _L-ke5IDyEeuSatyv9qf1gQ _L-ke7oDyEeuSatyv9qf1gQ _L-ltAYDyEeuSatyv9qf1gQ _L-ltC4DyEeuSatyv9qf1gQ _L-mUGYDyEeuSatyv9qf1gQ _L-m7JYDyEeuSatyv9qf1gQ _L-niMIDyEeuSatyv9qf1gQ _L-niOoDyEeuSatyv9qf1gQ _L-oJR4DyEeuSatyv9qf1gQ" width="106" featureName="abstract">
+      <originMapping xmi:type="description_1:FeatureColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTableWithInvalidCellEditor']/@ownedColumnMappings[name='IsAbstract_WrongCellEditor3']"/>
+    </columns>
+    <columns xmi:type="table:DFeatureColumn" uid="_L-jQ1YDyEeuSatyv9qf1gQ" label="wrongCellEditor4" cells="_L-j32IDyEeuSatyv9qf1gQ _L-ke5oDyEeuSatyv9qf1gQ _L-lF8YDyEeuSatyv9qf1gQ _L-ltA4DyEeuSatyv9qf1gQ _L-mUEYDyEeuSatyv9qf1gQ _L-mUG4DyEeuSatyv9qf1gQ _L-m7J4DyEeuSatyv9qf1gQ _L-niMoDyEeuSatyv9qf1gQ _L-niPIDyEeuSatyv9qf1gQ _L-oJSYDyEeuSatyv9qf1gQ" width="106" featureName="abstract">
+      <originMapping xmi:type="description_1:FeatureColumnMapping" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTableWithInvalidCellEditor']/@ownedColumnMappings[name='IsAbstract_WrongCellEditor4']"/>
+    </columns>
+    <description xmi:type="description_1:EditionTableDescription" href="platform:/plugin/org.eclipse.sirius.tests.swtbot/data/unit/table/vsmWithCellEditorTools/vsmWithCellEditorTools.odesign#//@ownedViewpoints[name='VpWithCellEditorTools']/@ownedRepresentations[name='ClassTableWithInvalidCellEditor']"/>
+  </table:DTable>
+</xmi:XMI>
