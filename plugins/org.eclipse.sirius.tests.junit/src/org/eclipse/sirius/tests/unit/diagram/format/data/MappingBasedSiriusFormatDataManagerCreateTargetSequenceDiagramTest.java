@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 Obeo.
+ * Copyright (c) 2020, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -241,58 +242,62 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetSequenceDiagramTest 
         if (MB_SEQ_GENERATE_IMAGES_TEST_DATA) {
             exportDiagramToTempFolder(newDiagramName + "_from", dDiagram);
         }
+        Collection<DiagramEditPart> targetDiagramEditParts = null;
+        try {
+            final RecordingCommand command = new RecordingCommand(sourceDiagramEditPart.getEditingDomain()) {
+                DDiagram newDiagram;
 
-        final RecordingCommand command = new RecordingCommand(sourceDiagramEditPart.getEditingDomain()) {
-            @Override
-            protected void doExecute() {
-                // Update diagram, but transaction will be
-                // rollbacked
-                DDiagram newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnNewDiagram(session, dDiagram, explicitMappingTestConfiguration.getObjectsMap(),
-                        getTargetSession(),
-                        newDiagramName, explicitMappingTestConfiguration.getTargetRoot(), includeNotes);
-
-                Collection<DiagramEditPart> targetDiagramEditParts = getDiagramEditPart(getTargetSession(), newDiagram);
-                assertTrue(!targetDiagramEditParts.isEmpty());
-
-                DiagramEditPart targetDiagramEditPart = targetDiagramEditParts.stream().findFirst().get();
-                newManager.storeFormatData(targetDiagramEditPart);
-
-                if (MB_SEQ_GENERATE_IMAGES_TEST_DATA) {
-                    exportDiagramToTempFolder(newDiagramName + "_to", newDiagram);
+                @Override
+                protected void doExecute() {
+                    newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnNewDiagram(session, dDiagram, explicitMappingTestConfiguration.getObjectsMap(), getTargetSession(),
+                            newDiagramName, explicitMappingTestConfiguration.getTargetRoot(), includeNotes);
                 }
-            }
-        };
 
-        try {
-            // Force rollback of transaction to let raw diagram
-            // unchanged
-            getTargetSession().getTransactionalEditingDomain().addResourceSetListener(ROLLBACK_LISTENER);
+                @Override
+                public Collection<?> getResult() {
+                    return Collections.singleton(newDiagram);
+                }
+            };
+
             getTargetSession().getTransactionalEditingDomain().getCommandStack().execute(command);
-        } finally {
-            getTargetSession().getTransactionalEditingDomain().removeResourceSetListener(ROLLBACK_LISTENER);
-        }
-
-        final String diagramToCopyFormatName = representationToCopyFormat.diagrams.get(0).name;
-        final String partialPath = "from___" + encodeDiagramName(diagramToCopyFormatName) + "___to___" + encodeDiagramName(newDiagramName) + XMI_EXTENSION;
-
-        try {
-            // Enable this if you want to generate referenced files
-            if (MB_SEQ_REGENERATE_TEST_DATA) {
-                final String path = getPlatformRelatedXmiDataPath() + RAW_FOLDER + partialPath;
-                saveDiagramFiltered(path, explicitMappingTestConfiguration, newManager);
+            // Let the post commit listeners make the draw2d changes
+            EclipseUIUtil.synchronizeWithUIThread();
+            DDiagram newDiagram = (DDiagram) command.getResult().stream().findFirst().get();
+            targetDiagramEditParts = getDiagramEditPart(getTargetSession(), newDiagram);
+            assertTrue(!targetDiagramEditParts.isEmpty());
+            // Store the format data
+            DiagramEditPart targetDiagramEditPart = targetDiagramEditParts.stream().findFirst().get();
+            newManager.storeFormatData(targetDiagramEditPart);
+            if (MB_SEQ_GENERATE_IMAGES_TEST_DATA) {
+                exportDiagramToTempFolder(newDiagramName + "_to", newDiagram);
             }
+            // undo the command to let the session "unchanged"
+            sourceDiagramEditPart.getEditingDomain().getCommandStack().undo();
 
-            String fullPath = getPlatformRelatedFullXmiDataPath() + RAW_FOLDER + partialPath;
-            String message = "between diagram ";
-            message += diagramToCopyFormatName + " and diagram " + newDiagramName;
-            FormatDifference<?> foundDifference = loadAndCompareFiltered(fullPath, newManager, configuration, explicitMappingTestConfiguration);
-            if (foundDifference != null) {
-                differences.append("\n. " + message + foundDifference);
+            final String diagramToCopyFormatName = representationToCopyFormat.diagrams.get(0).name;
+            final String partialPath = "from___" + encodeDiagramName(diagramToCopyFormatName) + "___to___" + encodeDiagramName(newDiagramName) + XMI_EXTENSION;
+
+            try {
+                // Enable this if you want to generate referenced files
+                if (MB_SEQ_REGENERATE_TEST_DATA) {
+                    final String path = getPlatformRelatedXmiDataPath() + RAW_FOLDER + partialPath;
+                    saveDiagramFiltered(path, explicitMappingTestConfiguration, newManager);
+                }
+
+                String fullPath = getPlatformRelatedFullXmiDataPath() + RAW_FOLDER + partialPath;
+                String message = "between diagram ";
+                message += diagramToCopyFormatName + " and diagram " + newDiagramName;
+                FormatDifference<?> foundDifference = loadAndCompareFiltered(fullPath, newManager, configuration, explicitMappingTestConfiguration);
+                if (foundDifference != null) {
+                    differences.append("\n. " + message + foundDifference);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         } finally {
-
+            cleanAndDispose(targetDiagramEditParts);
         }
 
     }

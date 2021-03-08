@@ -546,10 +546,11 @@ public class MappingBasedSiriusFormatManagerFactory {
     private Collection<DiagramEditPart> getDiagramEditPart(Session session, DRepresentation representation) {
         final List<DiagramEditPart> result = new ArrayList<DiagramEditPart>();
         final Collection<EObject> data = session.getServices().getCustomData(CustomDataConstants.GMF_DIAGRAMS, representation);
-        // Create a new shell for the diagramEditPart, it will be disposed later in cleanAndDispose(DiagramEditPart).
-        Shell shell = new Shell();
         for (final EObject dataElement : data) {
             if (dataElement instanceof Diagram) {
+                // Create a new shell for the diagramEditPart, it will be disposed later in
+                // cleanAndDispose(DiagramEditPart).
+                Shell shell = new Shell();
                 final Diagram diagram = (Diagram) dataElement;
                 final DiagramEditPartService tool = new DiagramEditPartService();
                 final DiagramEditPart diagramEditPart = tool.createDiagramEditPart(diagram, shell, PreferencesHint.USE_DEFAULTS);

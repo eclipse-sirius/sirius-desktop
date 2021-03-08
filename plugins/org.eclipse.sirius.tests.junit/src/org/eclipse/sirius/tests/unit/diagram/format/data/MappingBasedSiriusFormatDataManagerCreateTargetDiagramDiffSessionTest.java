@@ -20,11 +20,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.FormatHelper.FormatDifference;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.Configuration;
@@ -165,34 +165,41 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramDiffSessionTe
                 exportDiagramToTempFolder(newDiagramName + "_from", dDiagram);
             }
 
-            final RecordingCommand command = new RecordingCommand(sourceDiagramEditPart.getEditingDomain()) {
+            final RecordingCommand command = new RecordingCommand(targetSession.getTransactionalEditingDomain()) {
+                DDiagram newDiagram;
+
                 @Override
                 protected void doExecute() {
-                    // Update diagram, but transaction will be
-                    // rollbacked
-                    DDiagram newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnNewDiagram(session, dDiagram, explicitMappingTestConfiguration.getObjectsMap(),
+                    newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnNewDiagram(session, dDiagram, explicitMappingTestConfiguration.getObjectsMap(),
                             targetSession, newDiagramName, explicitMappingTestConfiguration.getTargetRoot(), includeNotes);
-
-                    Collection<DiagramEditPart> targetDiagramEditParts = getDiagramEditPart(targetSession, newDiagram);
-                    assertTrue(!targetDiagramEditParts.isEmpty());
-
-                    DiagramEditPart targetDiagramEditPart = targetDiagramEditParts.stream().findFirst().get();
-                    newManager.storeFormatData(targetDiagramEditPart);
 
                     if (MB_GENERATE_IMAGES_TEST_DATA) {
                         exportDiagramToTempFolder(newDiagramName + "_to", newDiagram);
                     }
                 }
+
+                @Override
+                public java.util.Collection<?> getResult() {
+                    return Collections.singleton(newDiagram);
+                }
             };
 
+            Collection<DiagramEditPart> targetDiagramEditParts = null;
             try {
-                // Force rollback of transaction to let raw diagram
-                // unchanged
-                // targetSession.getTransactionalEditingDomain().addResourceSetListener(ROLLBACK_LISTENER);
                 targetSession.getTransactionalEditingDomain().getCommandStack().execute(command);
-                targetSession.save(new NullProgressMonitor());
+                // Let the post commit listeners make the draw2d changes
+                EclipseUIUtil.synchronizeWithUIThread();
+                // Store the format data
+                DDiagram newDiagram = (DDiagram) command.getResult().stream().findFirst().get();
+                targetDiagramEditParts = getDiagramEditPart(targetSession, newDiagram);
+                assertTrue(!targetDiagramEditParts.isEmpty());
+                DiagramEditPart targetDiagramEditPart = targetDiagramEditParts.stream().findFirst().get();
+                newManager.storeFormatData(targetDiagramEditPart);
+                // Undo the command to let raw diagram unchanged
+                targetDiagramEditPart.getEditingDomain().getCommandStack().undo();
             } finally {
-                sourceDiagramEditPart.getEditingDomain().getCommandStack().undo();
+                cleanAndDispose(sourceDiagramEditParts);
+                cleanAndDispose(targetDiagramEditParts);
             }
 
             final String diagramToCopyFormatName = representationToCopyFormat.diagrams.get(0).name;

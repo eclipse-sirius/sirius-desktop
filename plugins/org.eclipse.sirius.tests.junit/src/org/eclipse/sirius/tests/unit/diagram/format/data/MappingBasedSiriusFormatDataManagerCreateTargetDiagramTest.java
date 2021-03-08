@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 Obeo.
+ * Copyright (c) 2020, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import java.util.stream.Collectors;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.FormatHelper.FormatDifference;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.Configuration;
@@ -174,71 +175,75 @@ public class MappingBasedSiriusFormatDataManagerCreateTargetDiagramTest extends 
 
         final DDiagram dDiagram = (DDiagram) allDDiagramDescriptors.get(search).getRepresentation();
         Collection<DiagramEditPart> sourceDiagramEditParts = getDiagramEditPart(session, dDiagram);
+        Collection<DiagramEditPart> targetDiagramEditParts = null;
+        try {
+            if (!sourceDiagramEditParts.isEmpty()) {
+                DiagramEditPart sourceDiagramEditPart = sourceDiagramEditParts.stream().findFirst().get();
 
-        if (!sourceDiagramEditParts.isEmpty()) {
-            DiagramEditPart sourceDiagramEditPart = sourceDiagramEditParts.stream().findFirst().get();
+                final MappingBasedSiriusFormatDataManager newManager = new MappingBasedSiriusFormatDataManager(explicitMappingTestConfiguration.getObjectsMap());
+                final String newDiagramName = dDiagram.getName() + " " + explicitMappingTestConfiguration.getName() + " New" + (includeNotes ? " notes" : "");
 
-
-            final MappingBasedSiriusFormatDataManager newManager = new MappingBasedSiriusFormatDataManager(explicitMappingTestConfiguration.getObjectsMap());
-            final String newDiagramName = dDiagram.getName() + " " + explicitMappingTestConfiguration.getName() + " New" + (includeNotes ? " notes" : "");
-
-            if (MB_GENERATE_IMAGES_TEST_DATA) {
-                exportDiagramToTempFolder(newDiagramName + "_from", dDiagram);
-            }
-            final RecordingCommand command = new RecordingCommand(sourceDiagramEditPart.getEditingDomain()) {
-                private DDiagram newDiagram;
-
-                @Override
-                protected void doExecute() {
-                    newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnNewDiagram(session, dDiagram, explicitMappingTestConfiguration.getObjectsMap(), session,
-                            newDiagramName, explicitMappingTestConfiguration.getTargetRoot(), includeNotes);
+                if (MB_GENERATE_IMAGES_TEST_DATA) {
+                    exportDiagramToTempFolder(newDiagramName + "_from", dDiagram);
                 }
+                final RecordingCommand command = new RecordingCommand(sourceDiagramEditPart.getEditingDomain()) {
+                    private DDiagram newDiagram;
 
-                @Override
-                public Collection<?> getResult() {
-                    return Collections.singleton(newDiagram);
-                }
-            };
+                    @Override
+                    protected void doExecute() {
+                        newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnNewDiagram(session, dDiagram, explicitMappingTestConfiguration.getObjectsMap(), session,
+                                newDiagramName, explicitMappingTestConfiguration.getTargetRoot(), includeNotes);
+                    }
 
-            try {
+                    @Override
+                    public Collection<?> getResult() {
+                        return Collections.singleton(newDiagram);
+                    }
+                };
+
                 sourceDiagramEditPart.getEditingDomain().getCommandStack().execute(command);
+                // Let the post commit listeners make the draw2d changes
+                EclipseUIUtil.synchronizeWithUIThread();
                 DDiagram newDiagram = (DDiagram) command.getResult().stream().findFirst().get();
-                Collection<DiagramEditPart> targetDiagramEditParts = getDiagramEditPart(session, newDiagram);
+                targetDiagramEditParts = getDiagramEditPart(session, newDiagram);
                 assertTrue(!targetDiagramEditParts.isEmpty());
-
+                // Store the format data
                 DiagramEditPart targetDiagramEditPart = targetDiagramEditParts.stream().findFirst().get();
                 newManager.storeFormatData(targetDiagramEditPart);
 
                 if (MB_GENERATE_IMAGES_TEST_DATA) {
                     exportDiagramToTempFolder(newDiagramName + "_to", newDiagram);
                 }
-            } finally {
+                // undo the command to let the session "unchanged"
                 sourceDiagramEditPart.getEditingDomain().getCommandStack().undo();
-            }
 
-            final String diagramToCopyFormatName = representationToCopyFormat.diagrams.get(0).name;
-            final String partialPath = "from___" + encodeDiagramName(diagramToCopyFormatName) + "___to___" + encodeDiagramName(newDiagramName) + XMI_EXTENSION;
+                final String diagramToCopyFormatName = representationToCopyFormat.diagrams.get(0).name;
+                final String partialPath = "from___" + encodeDiagramName(diagramToCopyFormatName) + "___to___" + encodeDiagramName(newDiagramName) + XMI_EXTENSION;
 
-            try {
-                // Enable this if you want to generate referenced files
-                if (MB_REGENERATE_TEST_DATA) {
-                    final String path = getPlatformRelatedXmiDataPath() + RAW_FOLDER + partialPath;
-                    saveDiagramFiltered(path, explicitMappingTestConfiguration, newManager);
+                try {
+                    // Enable this if you want to generate referenced files
+                    if (MB_REGENERATE_TEST_DATA) {
+                        final String path = getPlatformRelatedXmiDataPath() + RAW_FOLDER + partialPath;
+                        saveDiagramFiltered(path, explicitMappingTestConfiguration, newManager);
+                    }
+
+                    String fullPath = getPlatformRelatedFullXmiDataPath() + RAW_FOLDER + partialPath;
+                    String message = "between diagram ";
+                    message += diagramToCopyFormatName + " and diagram " + newDiagramName;
+                    FormatDifference<?> foundDifference = loadAndCompareFiltered(fullPath, newManager, configuration, explicitMappingTestConfiguration);
+                    if (foundDifference != null) {
+                        differences.append("\n. " + message + foundDifference);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    fail(e.getMessage());
+                } finally {
+
                 }
-
-                String fullPath = getPlatformRelatedFullXmiDataPath() + RAW_FOLDER + partialPath;
-                String message = "between diagram ";
-                message += diagramToCopyFormatName + " and diagram " + newDiagramName;
-                FormatDifference<?> foundDifference = loadAndCompareFiltered(fullPath, newManager, configuration, explicitMappingTestConfiguration);
-                if (foundDifference != null) {
-                    differences.append("\n. " + message + foundDifference);
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-                fail(e.getMessage());
-            } finally {
-
             }
+        } finally {
+            cleanAndDispose(sourceDiagramEditParts);
+            cleanAndDispose(targetDiagramEditParts);
         }
     }
 }

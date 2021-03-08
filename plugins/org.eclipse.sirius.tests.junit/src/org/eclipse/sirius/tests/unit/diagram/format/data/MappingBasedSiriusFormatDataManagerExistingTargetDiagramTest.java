@@ -26,6 +26,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Shape;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.FormatHelper.FormatDifference;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.Configuration;
@@ -223,49 +224,46 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest extend
                         // Update diagram, but transaction will be rollbacked
                         DDiagram newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnDiagram(session, (DDiagram) getDRepresentation(sourceDiagramEditPart), map, session,
                                 (DDiagram) getDRepresentation(targetDiagramEditPart), true);
-                        newManager.storeFormatData(targetDiagramEditPart);
-
                         if (MB_GENERATE_IMAGES_TEST_DATA) {
                             exportDiagramToTempFolder(diagramMappingName + "_from", dDiagram);
                             exportDiagramToTempFolder(diagramMappingName + "_to", newDiagram);
                         }
-                        if (MB_DIAG_TYPE2_NOTES_MYPACKAGE.name.equals(diagramToCopyFormat.name)) {
-                            // Specific checks about notes and texts that are not tested by "FormatData"
-                            Collection<Node> sourceNotes = org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getNotes(sourceDiagramEditPart.getDiagramView());
-                            Collection<Node> targetNotes = org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getNotes(targetDiagramEditPart.getDiagramView());
-                            // There is 1 additional notes in target diagram
-                            assertEquals("The number of Notes is wrong.", sourceNotes.size() + 1, targetNotes.size());
-                            Collection<Node> sourceTexts = org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getTextNotes(sourceDiagramEditPart.getDiagramView());
-                            Collection<Node> targetTexts = org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getTextNotes(targetDiagramEditPart.getDiagramView());
-                            // 2 Texts in source and target diagrams
-                            assertEquals("The number of Texts in source diagram is wrong.", 2, sourceTexts.size());
-                            assertEquals("The number of Texts is wrong.", sourceTexts.size(), targetTexts.size());
-                            // Check the location of Texts (it is not done for Notes because there are several Notes
-                            // with the same description
-                            for (Node sourceText : sourceTexts) {
-                                String sourceDescription = ((Shape) sourceText).getDescription();
-                                for (Node targetText : targetTexts) {
-                                    if (sourceDescription.equals(((Shape) targetText).getDescription())) {
-                                        Location sourceLocation = (Location) sourceText.getLayoutConstraint();
-                                        Location targetLocation = (Location) sourceText.getLayoutConstraint();
-                                        assertEquals("The location of the Text \"" + sourceDescription + "\" is wrong (X coordinate).", sourceLocation.getX(), targetLocation.getX());
-                                        assertEquals("The location of the Text \"" + sourceDescription + "\" is wrong (Y coordinate).", sourceLocation.getY(), targetLocation.getY());
-                                    }
-                                }
-                            }
-                        }
                     }
                 };
 
-                try {
-                    // Force rollback of transaction to let raw diagram
-                    // unchanged
-                    targetDiagramEditPart.getEditingDomain().addResourceSetListener(ROLLBACK_LISTENER);
-                    targetDiagramEditPart.getEditingDomain().getCommandStack().execute(command);
+                targetDiagramEditPart.getEditingDomain().getCommandStack().execute(command);
+                // Let the post commit listeners make the draw2d changes
+                EclipseUIUtil.synchronizeWithUIThread();
+                // Store the format data
+                newManager.storeFormatData(targetDiagramEditPart);
 
-                } finally {
-                    targetDiagramEditPart.getEditingDomain().removeResourceSetListener(ROLLBACK_LISTENER);
+                if (MB_DIAG_TYPE2_NOTES_MYPACKAGE.name.equals(diagramToCopyFormat.name)) {
+                    // Specific checks about notes and texts that are not tested by "FormatData"
+                    Collection<Node> sourceNotes = org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getNotes(sourceDiagramEditPart.getDiagramView());
+                    Collection<Node> targetNotes = org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getNotes(targetDiagramEditPart.getDiagramView());
+                    // There is 1 additional notes in target diagram
+                    assertEquals("The number of Notes is wrong.", sourceNotes.size() + 1, targetNotes.size());
+                    Collection<Node> sourceTexts = org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getTextNotes(sourceDiagramEditPart.getDiagramView());
+                    Collection<Node> targetTexts = org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper.getTextNotes(targetDiagramEditPart.getDiagramView());
+                    // 2 Texts in source and target diagrams
+                    assertEquals("The number of Texts in source diagram is wrong.", 2, sourceTexts.size());
+                    assertEquals("The number of Texts is wrong.", sourceTexts.size(), targetTexts.size());
+                    // Check the location of Texts (it is not done for Notes because there are several Notes
+                    // with the same description
+                    for (Node sourceText : sourceTexts) {
+                        String sourceDescription = ((Shape) sourceText).getDescription();
+                        for (Node targetText : targetTexts) {
+                            if (sourceDescription.equals(((Shape) targetText).getDescription())) {
+                                Location sourceLocation = (Location) sourceText.getLayoutConstraint();
+                                Location targetLocation = (Location) sourceText.getLayoutConstraint();
+                                assertEquals("The location of the Text \"" + sourceDescription + "\" is wrong (X coordinate).", sourceLocation.getX(), targetLocation.getX());
+                                assertEquals("The location of the Text \"" + sourceDescription + "\" is wrong (Y coordinate).", sourceLocation.getY(), targetLocation.getY());
+                            }
+                        }
+                    }
                 }
+                // undo the command to let raw diagram unchanged
+                targetDiagramEditPart.getEditingDomain().getCommandStack().undo();
 
                 final String partialPath = diagramMappingName + XMI_EXTENSION;
 
@@ -286,6 +284,8 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramTest extend
                 TestsUtil.synchronizationWithUIThread();
 
             } finally {
+                cleanAndDispose(sourceDiagramEditParts);
+                cleanAndDispose(targetDiagramEditParts);
                 closeRawDiagram(diagramToPasteFormat);
             }
         }

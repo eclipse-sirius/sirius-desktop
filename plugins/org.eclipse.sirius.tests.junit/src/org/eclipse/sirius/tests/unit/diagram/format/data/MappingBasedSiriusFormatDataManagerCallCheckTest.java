@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 Obeo.
+ * Copyright (c) 2020, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -213,8 +213,7 @@ public class MappingBasedSiriusFormatDataManagerCallCheckTest extends AbstractMa
             applyPredefinedFormatDataOnRawDiagrams(diagramToCopyFormat, diagramToPasteFormat, getFullTestConfiguration(), session, session);
         } catch (IllegalArgumentException e) {
             assertEquals(e.getMessage(), MessageFormat.format(Messages.MappingBasedSiriusFormatManagerFactory_ErrorSourceAndTargetDiagramDecriptionsDoesNotMatch,
-                    diagramToCopyFormat.getDescription().getName(), diagramToPasteFormat.getDescription().getName(), diagramToCopyFormat.getDescription(),
-                    diagramToPasteFormat.getDescription()));
+                    diagramToCopyFormat.getDescription().getName(), diagramToPasteFormat.getDescription().getName(), diagramToCopyFormat.getDescription(), diagramToPasteFormat.getDescription()));
         }
     }
 
@@ -298,29 +297,18 @@ public class MappingBasedSiriusFormatDataManagerCallCheckTest extends AbstractMa
 
         Map<EObject, EObject> map = mapTestConfiguration.getObjectsMap();
 
-        try {
-            final RecordingCommand command = new RecordingCommand(session.getTransactionalEditingDomain()) {
-                @Override
-                protected void doExecute() {
-                    // Update diagram, but transaction will be rollbacked
-                    DDiagram newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnDiagram(sourceSession, diagramToCopyFormat, map, targetSession, diagramToPasteFormat,
-                            false);
-                }
-            };
-
-            try {
-                // Force rollback of transaction to let raw diagram
-                // unchanged
-                session.getTransactionalEditingDomain().addResourceSetListener(ROLLBACK_LISTENER);
-                session.getTransactionalEditingDomain().getCommandStack().execute(command);
-            } finally {
-                session.getTransactionalEditingDomain().removeResourceSetListener(ROLLBACK_LISTENER);
+        final RecordingCommand command = new RecordingCommand(session.getTransactionalEditingDomain()) {
+            @Override
+            protected void doExecute() {
+                MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnDiagram(sourceSession, diagramToCopyFormat, map, targetSession, diagramToPasteFormat, false);
             }
-            TestsUtil.synchronizationWithUIThread();
+        };
 
-        } finally {
-
-        }
+        // Execute the command to see if there is a problem
+        session.getTransactionalEditingDomain().getCommandStack().execute(command);
+        // Undo the command to let the session, more or less, in its previous state
+        session.getTransactionalEditingDomain().getCommandStack().undo();
+        TestsUtil.synchronizationWithUIThread();
     }
 
     protected void applyPredefinedFormatDataOnNewDiagram(DDiagram diagramToCopyFormat, MappingBasedTestConfiguration mapTestConfiguration, String diagramName, EObject targetDiagramRoot,
@@ -328,29 +316,18 @@ public class MappingBasedSiriusFormatDataManagerCallCheckTest extends AbstractMa
 
         Map<EObject, EObject> map = mapTestConfiguration.getObjectsMap();
 
-        try {
-            final RecordingCommand command = new RecordingCommand(session.getTransactionalEditingDomain()) {
-                @Override
-                protected void doExecute() {
-                    // Update diagram, but transaction will be rollbacked
-                    DDiagram newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnNewDiagram(sourceSession, diagramToCopyFormat, map, targetSession, diagramName,
-                            targetDiagramRoot, false);
-                }
-            };
-
-            try {
-                // Force rollback of transaction to let raw diagram
-                // unchanged
-                session.getTransactionalEditingDomain().addResourceSetListener(ROLLBACK_LISTENER);
-                session.getTransactionalEditingDomain().getCommandStack().execute(command);
-            } finally {
-                session.getTransactionalEditingDomain().removeResourceSetListener(ROLLBACK_LISTENER);
+        final RecordingCommand command = new RecordingCommand(session.getTransactionalEditingDomain()) {
+            @Override
+            protected void doExecute() {
+                MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnNewDiagram(sourceSession, diagramToCopyFormat, map, targetSession, diagramName, targetDiagramRoot, false);
             }
-            TestsUtil.synchronizationWithUIThread();
+        };
 
-        } finally {
-
-        }
+        // Execute the command to see if there is a problem
+        session.getTransactionalEditingDomain().getCommandStack().execute(command);
+        // Undo the command to let the session, more or less, in its previous state
+        session.getTransactionalEditingDomain().getCommandStack().undo();
+        TestsUtil.synchronizationWithUIThread();
     }
 
     /**

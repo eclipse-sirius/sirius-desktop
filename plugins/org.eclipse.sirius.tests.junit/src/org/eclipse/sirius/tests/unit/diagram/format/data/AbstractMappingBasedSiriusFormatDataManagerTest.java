@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 Obeo.
+ * Copyright (c) 2020, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,11 +27,9 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.IPath;
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
@@ -40,11 +38,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.transaction.ResourceSetChangeEvent;
-import org.eclipse.emf.transaction.ResourceSetListenerImpl;
-import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
+import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditDomain;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.IPreferenceConstants;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.preference.PreferenceConverter;
@@ -63,7 +59,6 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.format.semantic.MappingBasedSiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
-import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.unit.diagram.format.data.manager.mappingbased.MappingBasedTestConfiguration;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
 import org.eclipse.sirius.tools.internal.SiriusCopierHelper;
@@ -73,7 +68,7 @@ import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFor
 import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.graphics.FontData;
-import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -115,28 +110,6 @@ public class AbstractMappingBasedSiriusFormatDataManagerTest extends AbstractSir
 
     }
 
-    protected static final ResourceSetListenerImpl ROLLBACK_LISTENER = new ResourceSetListenerImpl() {
-        @Override
-        public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
-            throw new RollbackException(new Status(IStatus.ERROR, SiriusTestsPlugin.PLUGIN_ID, "Don't want to change this diagram"));
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public boolean isAggregatePrecommitListener() {
-            return true;
-        }
-
-        /**
-         * {@inheritDoc}
-         */
-        @Override
-        public boolean isPrecommitOnly() {
-            return true;
-        }
-    };
 
     /**
      * Compute configuration for source to target EObjects mapping. Uses all the source model elements.
@@ -537,7 +510,7 @@ public class AbstractMappingBasedSiriusFormatDataManagerTest extends AbstractSir
     }
 
     /**
-     * Helper to retrieve a DiagramEditPart from a DRepresentation.
+     * Helper to retrieve a DiagramEditPart from a DRepresentation. A {@link Shell} is created for this, the caller has the responsibility to dispose it when it no longer needs it.
      * 
      * @param session
      * @param representation
@@ -546,21 +519,17 @@ public class AbstractMappingBasedSiriusFormatDataManagerTest extends AbstractSir
     protected Collection<DiagramEditPart> getDiagramEditPart(Session session, DRepresentation representation) {
         final List<DiagramEditPart> result = new ArrayList<DiagramEditPart>();
         final Collection<EObject> data = session.getServices().getCustomData(CustomDataConstants.GMF_DIAGRAMS, representation);
-        Shell shell = new Shell();
         for (final EObject dataElement : data) {
             if (dataElement instanceof org.eclipse.gmf.runtime.notation.Diagram) {
+                // Create a new shell for the diagramEditPart, it will be disposed later in
+                // cleanAndDispose(DiagramEditPart).
+                Shell shell = new Shell();
                 final org.eclipse.gmf.runtime.notation.Diagram diagram = (org.eclipse.gmf.runtime.notation.Diagram) dataElement;
                 final DiagramEditPartService tool = new DiagramEditPartService();
                 final DiagramEditPart diagramEditPart = tool.createDiagramEditPart(diagram, shell, PreferencesHint.USE_DEFAULTS);
                 result.add(diagramEditPart);
             }
         }
-        Display.getCurrent().asyncExec(new Runnable() {
-            @Override
-            public void run() {
-                shell.dispose();
-            }
-        });
         return result;
     }
 
@@ -614,5 +583,42 @@ public class AbstractMappingBasedSiriusFormatDataManagerTest extends AbstractSir
         fontData.setName(fontName);
         PreferenceConverter.setDefault(preferenceStore, IPreferenceConstants.PREF_DEFAULT_FONT, fontData);
         return oldName;
+    }
+
+    /**
+     * Clean all diagram edit parts of the list {@code diagramEditParts} to avoid memory leaks.
+     * 
+     * @param diagramEditParts
+     *            The diagram edit parts to dispose and to use to also dispose associated elements.
+     */
+    protected void cleanAndDispose(Collection<DiagramEditPart> diagramEditParts) {
+        if (diagramEditParts != null) {
+            diagramEditParts.stream().forEach(dep -> cleanAndDispose(dep));
+        }
+    }
+
+    /**
+     * Clean {@code diagramEditPart} element to avoid memory leaks.
+     * 
+     * @param diagramEditPart
+     *            The diagram edit part to dispose and to use to also dispose associated elements.
+     */
+    protected void cleanAndDispose(DiagramEditPart diagramEditPart) {
+        if (diagramEditPart != null) {
+            // Clean to avoid memory leaks
+            diagramEditPart.deactivate();
+            // Memory leak : also disposing the DiagramGraphicalViewer associated to this DiagramEditPart
+            diagramEditPart.getViewer().flush();
+            diagramEditPart.getViewer().getEditDomain().getCommandStack().flush();
+            Control control = diagramEditPart.getViewer().getControl();
+            if (control.getParent() != null) {
+                // Dispose the shell created in method getDiagramEditPart(Session, DRepresentation).
+                control.getParent().dispose();
+            } else {
+                // This code should not occurred, but it's just to be sure.
+                control.isDisposed();
+            }
+            ((DiagramEditDomain) diagramEditPart.getViewer().getEditDomain()).removeViewer(diagramEditPart.getViewer());
+        }
     }
 }
