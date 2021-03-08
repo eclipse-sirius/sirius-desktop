@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 Obeo.
+ * Copyright (c) 2020, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
@@ -307,19 +308,16 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTes
                             exportDiagramToTempFolder(diagramMappingName + "_to", newDiagram);
                         }
 
-                        newManager.storeFormatData(targetDiagramEditPart);
-
                     }
                 };
 
-                try {
-                    // Force rollback of transaction to let raw diagram
-                    // unchanged
-                    targetDiagramEditPart.getEditingDomain().addResourceSetListener(ROLLBACK_LISTENER);
-                    targetDiagramEditPart.getEditingDomain().getCommandStack().execute(command);
-                } finally {
-                    targetDiagramEditPart.getEditingDomain().removeResourceSetListener(ROLLBACK_LISTENER);
-                }
+                targetDiagramEditPart.getEditingDomain().getCommandStack().execute(command);
+                // Let the post commit listeners make the draw2d changes
+                EclipseUIUtil.synchronizeWithUIThread();
+                // Store the format data
+                newManager.storeFormatData(targetDiagramEditPart);
+                // undo the command to let raw diagram unchanged
+                targetDiagramEditPart.getEditingDomain().getCommandStack().undo();
 
                 final String partialPath = diagramMappingName + XMI_EXTENSION;
 
@@ -340,6 +338,8 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetSequenceDiagramTes
                 TestsUtil.synchronizationWithUIThread();
 
             } finally {
+                cleanAndDispose(sourceDiagramEditParts);
+                cleanAndDispose(targetDiagramEditParts);
                 closeRawDiagram(diagramToPasteFormat);
             }
         }

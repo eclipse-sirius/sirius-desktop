@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 Obeo.
+ * Copyright (c) 2020, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.FormatHelper.FormatDifference;
 import org.eclipse.sirius.diagram.formatdata.tools.api.util.configuration.Configuration;
@@ -253,7 +254,6 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramDiffSession
                         DDiagram newDiagram = MappingBasedSiriusFormatManagerFactory.getInstance().applyFormatOnDiagram(session, (DDiagram) getDRepresentation(sourceDiagramEditPart), map,
                                 targetSession,
                                 (DDiagram) getDRepresentation(targetDiagramEditPart), false);
-                        newManager.storeFormatData(targetDiagramEditPart);
 
                         if (MB_GENERATE_IMAGES_TEST_DATA) {
                             exportDiagramToTempFolder(diagramMappingName + "_from", dDiagram);
@@ -262,14 +262,13 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramDiffSession
                     }
                 };
 
-                try {
-                    // Force rollback of transaction to let raw diagram
-                    // unchanged
-                    targetDiagramEditPart.getEditingDomain().addResourceSetListener(ROLLBACK_LISTENER);
-                    targetDiagramEditPart.getEditingDomain().getCommandStack().execute(command);
-                } finally {
-                    targetDiagramEditPart.getEditingDomain().removeResourceSetListener(ROLLBACK_LISTENER);
-                }
+                targetDiagramEditPart.getEditingDomain().getCommandStack().execute(command);
+                // Let the post commit listeners make the draw2d changes
+                EclipseUIUtil.synchronizeWithUIThread();
+                // Store the format data
+                newManager.storeFormatData(targetDiagramEditPart);
+                // undo the command to let raw diagram unchanged
+                targetDiagramEditPart.getEditingDomain().getCommandStack().undo();
 
                 final String partialPath = diagramMappingName + XMI_EXTENSION;
 
@@ -290,6 +289,8 @@ public class MappingBasedSiriusFormatDataManagerExistingTargetDiagramDiffSession
                 TestsUtil.synchronizationWithUIThread();
 
             } finally {
+                cleanAndDispose(sourceDiagramEditParts);
+                cleanAndDispose(targetDiagramEditParts);
                 closeRawDiagram(diagramToPasteFormat);
             }
         }
