@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2020 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.sequence.business.internal.util;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -20,6 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
@@ -57,6 +59,10 @@ public final class CacheHelper {
     private static ConcurrentHashMap<ISequenceEvent, ISequenceEvent> eventToParentEventCache = new ConcurrentHashMap<>();
 
     private static ConcurrentHashMap<SingleEventEnd, Optional<ISequenceEvent>> eventEndToISequenceEventCache = new ConcurrentHashMap<>();
+
+    private static ConcurrentHashMap<CombinedFragment, List<Operand>> combinedFragmentToOperandsCache = new ConcurrentHashMap<>();
+
+    private static ConcurrentHashMap<Operand, CombinedFragment> operandToCombinedFragmentCache = new ConcurrentHashMap<>();
 
     /**
      * Avoid instantiation.
@@ -113,6 +119,8 @@ public final class CacheHelper {
         endCompoundMessageCache.clear();
         nodeEventToHierarchicalParentCache.clear();
         eventEndToISequenceEventCache.clear();
+        combinedFragmentToOperandsCache.clear();
+        operandToCombinedFragmentCache.clear();
         clearRangeDependantCaches();
     }
 
@@ -207,4 +215,23 @@ public final class CacheHelper {
     public static ConcurrentHashMap<SingleEventEnd, Optional<ISequenceEvent>> getEventEndToISequenceEventCache() {
         return eventEndToISequenceEventCache;
     }
+
+    /**
+     * Get combined fragment cache.
+     * 
+     * @return the combinedFragmentToOperands cache
+     */
+    public static ConcurrentHashMap<CombinedFragment, List<Operand>> getCombinedFragmentToOperandsCache() {
+        return combinedFragmentToOperandsCache;
+    }
+
+    /**
+     * Get operand cache.
+     * 
+     * @return the operandToCombinedFragment cache
+     */
+    public static ConcurrentHashMap<Operand, CombinedFragment> getOperandToCombinedFragmentCache() {
+        return operandToCombinedFragmentCache;
+    }
+
 }

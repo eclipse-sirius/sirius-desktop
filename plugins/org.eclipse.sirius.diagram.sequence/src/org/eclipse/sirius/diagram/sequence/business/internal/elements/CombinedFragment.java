@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceNodeQuery;
+import org.eclipse.sirius.diagram.sequence.business.internal.util.CacheHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.RangeSetter;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.sequence.util.Range;
@@ -48,16 +49,15 @@ public class CombinedFragment extends AbstractFrame {
     public static final int VISUAL_ID = 2002;
 
     /**
-     * The visual ID of the compartment contained by the combined fragment. It
-     * is this compartment that contains the operands.
+     * The visual ID of the compartment contained by the combined fragment. It is this compartment that contains the
+     * operands.
      * 
      * @see DNodeContainerViewNodeContainerCompartmentEditPart.VISUAL_ID.
      */
     public static final int COMPARTMENT_VISUAL_ID = 7001;
 
     /**
-     * Predicate to check whether a Sirius DDiagramElement represents an
-     * execution.
+     * Predicate to check whether a Sirius DDiagramElement represents an execution.
      */
     private enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
@@ -80,33 +80,27 @@ public class CombinedFragment extends AbstractFrame {
     }
 
     /**
-     * Returns a predicate to check whether a GMF View represents an combined
-     * fragment.
+     * Returns a predicate to check whether a GMF View represents an combined fragment.
      * 
-     * @return a predicate to check whether a GMF View represents an combined
-     *         fragment.
+     * @return a predicate to check whether a GMF View represents an combined fragment.
      */
     public static Predicate<View> notationPredicate() {
         return new NotationPredicate(NotationPackage.eINSTANCE.getNode(), VISUAL_ID, CombinedFragment.viewpointElementPredicate());
     }
 
     /**
-     * Returns a predicate to check whether a GMF View represents an combined
-     * fragment compartment.
+     * Returns a predicate to check whether a GMF View represents an combined fragment compartment.
      * 
-     * @return a predicate to check whether a GMF View represents an combined
-     *         fragment compartment.
+     * @return a predicate to check whether a GMF View represents an combined fragment compartment.
      */
     public static Predicate<View> compartmentNotationPredicate() {
         return new NotationPredicate(NotationPackage.eINSTANCE.getNode(), COMPARTMENT_VISUAL_ID, CombinedFragment.viewpointElementPredicate());
     }
 
     /**
-     * Returns a predicate to check whether a Sirius DDiagramElement
-     * represents an execution.
+     * Returns a predicate to check whether a Sirius DDiagramElement represents an execution.
      * 
-     * @return a predicate to check whether a Sirius DDiagramElement
-     *         represents an execution.
+     * @return a predicate to check whether a Sirius DDiagramElement represents an execution.
      */
     public static Predicate<DDiagramElement> viewpointElementPredicate() {
         return SiriusElementPredicate.INSTANCE;
@@ -135,27 +129,37 @@ public class CombinedFragment extends AbstractFrame {
      * @return the operands of the current combined fragment.
      */
     public List<Operand> getOperands() {
-        List<Operand> result = new ArrayList<>();
-        Predicate<View> compartementView = new Predicate<View>() {
+        List<Operand> result = null;
+        if (CacheHelper.isStructuralCacheEnabled()) {
+            result = CacheHelper.getCombinedFragmentToOperandsCache().get(this);
+        }
 
-            @Override
-            public boolean apply(View input) {
-                return input.getType().equals(Integer.toString(COMPARTMENT_VISUAL_ID));
-            }
-        };
-        // The combined fragment contains a compartment that contains the
-        // operands
-        for (View view : Iterables.filter(Iterables.filter(this.view.eContents(), View.class), compartementView)) {
-            // Filtering compartments
-            for (View viewChild : Iterables.filter(view.eContents(), View.class)) {
-                // Filtering operands
-                Option<Operand> operand = ISequenceElementAccessor.getOperand(viewChild);
-                if (operand.some()) {
-                    result.add(operand.get());
+        if (result == null) {
+            result = new ArrayList<>();
+            Predicate<View> compartementView = new Predicate<View>() {
+
+                @Override
+                public boolean apply(View input) {
+                    return input.getType().equals(Integer.toString(COMPARTMENT_VISUAL_ID));
+                }
+            };
+            // The combined fragment contains a compartment that contains the
+            // operands
+            for (View view : Iterables.filter(Iterables.filter(this.view.eContents(), View.class), compartementView)) {
+                // Filtering compartments
+                for (View viewChild : Iterables.filter(view.eContents(), View.class)) {
+                    // Filtering operands
+                    Option<Operand> operand = ISequenceElementAccessor.getOperand(viewChild);
+                    if (operand.some()) {
+                        result.add(operand.get());
+                    }
                 }
             }
+            Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
+            if (CacheHelper.isStructuralCacheEnabled()) {
+                CacheHelper.getCombinedFragmentToOperandsCache().put(this, result);
+            }
         }
-        Collections.sort(result, RangeHelper.lowerBoundOrdering().onResultOf(ISequenceEvent.VERTICAL_RANGE));
         return result;
     }
 
@@ -164,8 +168,7 @@ public class CombinedFragment extends AbstractFrame {
      * 
      * @param index
      *            the position of the wanted operand
-     * @return an Option of Operand if there is an operand at the given index,
-     *         an Options.newNone() otherwise
+     * @return an Option of Operand if there is an operand at the given index, an Options.newNone() otherwise
      */
     public Option<Operand> getOperand(int index) {
         try {
@@ -176,8 +179,7 @@ public class CombinedFragment extends AbstractFrame {
     }
 
     /**
-     * calculate the index of the operand among the list of operands in this
-     * {@link CombinedFragment}.
+     * calculate the index of the operand among the list of operands in this {@link CombinedFragment}.
      * 
      * @param operand
      *            the operand to find out its index
