@@ -48,6 +48,21 @@ public class RectilinearNoteAttachmentWithRepresentationLinkTest extends Abstrac
      */
     public void testConsistentNumberBendpoints() {
         SWTBotGefEditPart representationLink = editor.getEditPart("Text", SiriusNoteEditPart.class);
-        testConsistentNumberBendpoints(representationLink);
+        consistentNumberBendpoints(representationLink);
+    }
+
+    /**
+     * @see AbstractRectilinearNoteAttachmentTest#removeBendpointsOnNoteAttachmentBeforeMovingElement()
+     */
+    public void testRemoveBendpointsOnNoteAttachmentBeforeMovingElement() {
+        super.removeBendpointsOnNoteAttachmentBeforeMovingElement();
+    }
+
+    /**
+     * @see AbstractRectilinearNoteAttachmentTest#removeBendpointsOnNoteAttachmentAfterMovingElement(SWTBotGefEditPart)
+     */
+    public void testRemoveBendpointsOnNoteAttachmentAfterMovingNote() {
+        SWTBotGefEditPart representationLink = editor.getEditPart("Text", SiriusNoteEditPart.class);
+        super.removeBendpointsOnNoteAttachmentAfterMovingElement(representationLink);
     }
 }

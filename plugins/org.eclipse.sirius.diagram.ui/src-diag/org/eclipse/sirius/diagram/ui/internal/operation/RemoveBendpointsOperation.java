@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2014, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -130,8 +130,8 @@ public class RemoveBendpointsOperation extends AbstractModelChangeOperation<Void
                     srcConnectionBendpoint = Optional.ofNullable(pointList.getFirstPoint());
                     tgtConnectionBendpoint = Optional.ofNullable(pointList.getLastPoint());
                 } else {
-                    srcConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, srcAbsoluteBounds, true);
-                    tgtConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, tgtAbsoluteBounds, false);
+                    srcConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, srcAbsoluteBounds, true, true);
+                    tgtConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, tgtAbsoluteBounds, false, true);
                     Point srcPoint = srcConnectionBendpoint.get();
                     Point tgtPoint = tgtConnectionBendpoint.get();
                     if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
@@ -194,7 +194,7 @@ public class RemoveBendpointsOperation extends AbstractModelChangeOperation<Void
 
     private Rectangle getFigureBounds(EditPart editPart) {
         if (editPart instanceof GraphicalEditPart) {
-            return GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) editPart);
+            return GraphicalHelper.getAbsoluteBoundsWithoutLabelsIn100Percent((GraphicalEditPart) editPart);
         }
         return null;
     }

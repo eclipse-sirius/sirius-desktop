@@ -41,13 +41,28 @@ public class RectilinearNoteAttachmentWithNoteTest extends AbstractRectilinearNo
     }
 
     /**
-     * Checks in this particular scenario that the bendpoints of the NoteAttachment remain consistent after moving the Note and that there is
-     * not just one bendpoint left.
+     * Checks in this particular scenario that the bendpoints of the NoteAttachment remain consistent after moving the
+     * Note and that there is not just one bendpoint left.
      * 
      * @see "https://bugs.eclipse.org/bugs/show_bug.cgi?id=570518"
      */
     public void testConsistentNumberBendpoints() {
         SWTBotGefEditPart note = editor.getEditPart("Text", SiriusNoteEditPart.class);
-        testConsistentNumberBendpoints(note);
+        consistentNumberBendpoints(note);
+    }
+
+    /**
+     * @see AbstractRectilinearNoteAttachmentTest#removeBendpointsOnNoteAttachmentBeforeMovingElement()
+     */
+    public void testRemoveBendpointsOnNoteAttachmentBeforeMovingElement() {
+        super.removeBendpointsOnNoteAttachmentBeforeMovingElement();
+    }
+
+    /**
+     * @see AbstractRectilinearNoteAttachmentTest#removeBendpointsOnNoteAttachmentAfterMovingElement(SWTBotGefEditPart)
+     */
+    public void testRemoveBendpointsOnNoteAttachmentAfterMovingNote() {
+        SWTBotGefEditPart note = editor.getEditPart("Text", SiriusNoteEditPart.class);
+        super.removeBendpointsOnNoteAttachmentAfterMovingElement(note);
     }
 }
