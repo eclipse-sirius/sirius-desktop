@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.sirius.diagram.ui.internal.refresh.GMFHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
@@ -189,8 +190,7 @@ public class EdgeWithBorderNodeCreationPositionWithSnapToGridTest extends EdgeWi
 
     /*
      * (non-Javadoc)
-     * @see org.eclipse.sirius.tests.swtbot.EdgeCreationPositionTest#
-     * test_Bordered_Node_on_Container()
+     * @see org.eclipse.sirius.tests.swtbot.EdgeCreationPositionTest# test_Bordered_Node_on_Container()
      */
     @Override
     public void test_Bordered_Node_on_Container() {
@@ -205,34 +205,35 @@ public class EdgeWithBorderNodeCreationPositionWithSnapToGridTest extends EdgeWi
     }
 
     /**
-     * For closed source and target points on an axis, the feedback shows a
-     * straighten edge, the result must be also 2 aligned border nodes.
+     * For closed source and target points on an axis, the feedback shows a straighten edge, the result must be also 2
+     * aligned border nodes.
      */
     public void testBorderNodesAreAligned() {
         testBorderNodesAreAligned("TC2185 Node", "NodeForStraightCase", "A", AbstractDiagramNodeEditPart.class, 100, "B", AbstractDiagramNodeEditPart.class, 109, true);
     }
 
     /**
-     * For closed source and target points on an axis, the feedback shows a
-     * straighten edge, the result must be also 2 aligned border nodes.<BR>
-     * For this test, the feedback behavior is slightly different as
-     * {@link #testBorderNodesAreAligned()}.
+     * For closed source and target points on an axis, the feedback shows a straighten edge, the result must be also 2
+     * aligned border nodes.<BR>
+     * For this test, the feedback behavior is slightly different as {@link #testBorderNodesAreAligned()}.
      */
     public void testBorderNodesAreAlignedAnotherCase() {
         testBorderNodesAreAligned("TC2185 Node", "NodeForStraightCase", "A", AbstractDiagramNodeEditPart.class, 100, "B", AbstractDiagramNodeEditPart.class, 110, true);
     }
 
     /**
-     * Same as {@link #testBorderNodesAreAligned()} but with scroll bar on
-     * diagram.
+     * Same as {@link #testBorderNodesAreAligned()} but with scroll bar on diagram.
      */
     public void testBorderNodesAreAlignedWithScrollOnDiagram() {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
+
         testBorderNodesAreAligned("TC2185 Node", "NodeForStraightCaseWithScroll", "A", AbstractDiagramNodeEditPart.class, 100, "B", AbstractDiagramNodeEditPart.class, 109, true);
     }
 
     /**
-     * Same as {@link #testBorderNodesAreAlignedAnotherCase()} but with scroll
-     * bar on diagram and zoom at 50%.
+     * Same as {@link #testBorderNodesAreAlignedAnotherCase()} but with scroll bar on diagram and zoom at 50%.
      */
     public void testBorderNodesAreAlignedWithScrollOnDiagramAndWithZoom() {
         testBorderNodesAreAligned("TC2185 Node", "NodeForStraightCaseWithScroll", "A", AbstractDiagramNodeEditPart.class, 100, "B", AbstractDiagramNodeEditPart.class, 110, true, ZoomLevel.ZOOM_50);
@@ -263,8 +264,7 @@ public class EdgeWithBorderNodeCreationPositionWithSnapToGridTest extends EdgeWi
     }
 
     /**
-     * Case of edge created between 2 border nodes of container with scroll and
-     * zoom.
+     * Case of edge created between 2 border nodes of container with scroll and zoom.
      */
     public void testBorderNodesOnBorderNodeOnContainerAreAlignedWithScrollOnDiagramAndZoom() {
         testBorderNodesAreAligned("TC2185 Bordered Node on Container", "Bordered Node on Container With Scroll", "C", AbstractDiagramBorderNodeEditPart.class, 100, "D",
@@ -280,8 +280,7 @@ public class EdgeWithBorderNodeCreationPositionWithSnapToGridTest extends EdgeWi
     }
 
     /**
-     * Case of edge created between 2 containers in container with scroll and
-     * zoom.
+     * Case of edge created between 2 containers in container with scroll and zoom.
      */
     public void testBorderNodesOnContainerInContainerAreAlignedWithScrollOnDiagramAndContainerAndZoom() {
         testBorderNodesAreAligned("TC2185 Container in Container", "Container in Container With Scroll", "C", AbstractDiagramContainerEditPart.class, 100, "D", AbstractDiagramContainerEditPart.class,
@@ -289,8 +288,7 @@ public class EdgeWithBorderNodeCreationPositionWithSnapToGridTest extends EdgeWi
     }
 
     /**
-     * Create an edge with its associated border nodes between two elements
-     * (zoom 100%).
+     * Create an edge with its associated border nodes between two elements (zoom 100%).
      * 
      * @param diagramDescriptionName
      *            The diagram description name
@@ -301,17 +299,15 @@ public class EdgeWithBorderNodeCreationPositionWithSnapToGridTest extends EdgeWi
      * @param sourceEditPartType
      *            The type of the source EditPart
      * @param sourceDelta
-     *            The delta from left if <code>verticalEdge</code> is true, or
-     *            from top otherwise, of the source node to compute the source
-     *            point of the edge.
+     *            The delta from left if <code>verticalEdge</code> is true, or from top otherwise, of the source node to
+     *            compute the source point of the edge.
      * @param targetName
      *            The name of the target node
      * @param targetEditPartType
      *            The type of the target EditPart
      * @param targetDelta
-     *            The delta from left if <code>verticalEdge</code> is true, or
-     *            from top otherwise, of the target node to compute the target
-     *            point of the edge.
+     *            The delta from left if <code>verticalEdge</code> is true, or from top otherwise, of the target node to
+     *            compute the target point of the edge.
      * @param verticalEdge
      *            true if the edge is a vertical edge, false otherwise
      */
@@ -332,17 +328,15 @@ public class EdgeWithBorderNodeCreationPositionWithSnapToGridTest extends EdgeWi
      * @param sourceEditPartType
      *            The type of the source EditPart
      * @param sourceDelta
-     *            The delta from left if <code>verticalEdge</code> is true, or
-     *            from top otherwise, of the source node to compute the source
-     *            point of the edge.
+     *            The delta from left if <code>verticalEdge</code> is true, or from top otherwise, of the source node to
+     *            compute the source point of the edge.
      * @param targetName
      *            The name of the target node
      * @param targetEditPartType
      *            The type of the target EditPart
      * @param targetDelta
-     *            The delta from left if <code>verticalEdge</code> is true, or
-     *            from top otherwise, of the target node to compute the target
-     *            point of the edge.
+     *            The delta from left if <code>verticalEdge</code> is true, or from top otherwise, of the target node to
+     *            compute the target point of the edge.
      * @param verticalEdge
      *            true if the edge is a vertical edge, false otherwise
      * @param zoomLevel
@@ -367,24 +361,22 @@ public class EdgeWithBorderNodeCreationPositionWithSnapToGridTest extends EdgeWi
      * @param sourceEditPartType
      *            The type of the source EditPart
      * @param sourceDelta
-     *            The delta from left if <code>verticalEdge</code> is true, or
-     *            from top otherwise, of the source node to compute the source
-     *            point of the edge.
+     *            The delta from left if <code>verticalEdge</code> is true, or from top otherwise, of the source node to
+     *            compute the source point of the edge.
      * @param targetName
      *            The name of the target node
      * @param targetEditPartType
      *            The type of the target EditPart
      * @param targetDelta
-     *            The delta from left if <code>verticalEdge</code> is true, or
-     *            from top otherwise, of the target node to compute the target
-     *            point of the edge.
+     *            The delta from left if <code>verticalEdge</code> is true, or from top otherwise, of the target node to
+     *            compute the target point of the edge.
      * @param verticalEdge
      *            true if the edge is a vertical edge, false otherwise
      * @param zoomLevel
      *            The zoom to apply to the diagram
      * @param nameOfElementToRevealInFirst
-     *            The optional name of element to reveal in first if necessary
-     *            (to fully see node in a container node for example).
+     *            The optional name of element to reveal in first if necessary (to fully see node in a container node
+     *            for example).
      */
     private void testBorderNodesAreAligned(String diagramDescriptionName, String diagramName, String sourceName, Class<? extends EditPart> sourceEditPartType, int sourceDelta, String targetName,
             Class<? extends EditPart> targetEditPartType, int targetDelta, final boolean verticalEdge, ZoomLevel zoomLevel, Option<String> nameOfElementToRevealInFirst) {
