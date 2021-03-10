@@ -46,7 +46,8 @@ public class RectilinearNoteAttachmentWithRepresentationLinkTest extends Abstrac
      * 
      * @see "https://bugs.eclipse.org/bugs/show_bug.cgi?id=570518"
      */
-    public void testConsistentNumberBendpoints() {
+    public void _testConsistentNumberBendpoints() {
+        // This test cannot be run correctly. The Representation Link is not moved by SWTBot.
         SWTBotGefEditPart representationLink = editor.getEditPart("Text", SiriusNoteEditPart.class);
         consistentNumberBendpoints(representationLink);
     }
@@ -61,7 +62,8 @@ public class RectilinearNoteAttachmentWithRepresentationLinkTest extends Abstrac
     /**
      * @see AbstractRectilinearNoteAttachmentTest#removeBendpointsOnNoteAttachmentAfterMovingElement(SWTBotGefEditPart)
      */
-    public void testRemoveBendpointsOnNoteAttachmentAfterMovingNote() {
+    public void _testRemoveBendpointsOnNoteAttachmentAfterMovingNote() {
+        // This test cannot be run correctly. The Representation Link is not moved by SWTBot.
         SWTBotGefEditPart representationLink = editor.getEditPart("Text", SiriusNoteEditPart.class);
         super.removeBendpointsOnNoteAttachmentAfterMovingElement(representationLink);
     }
