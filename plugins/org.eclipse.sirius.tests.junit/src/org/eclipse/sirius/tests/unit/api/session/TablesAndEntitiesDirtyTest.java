@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -74,26 +74,22 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
     }
 
     /**
-     * Tests if already existing table ("Classes" diagram) is dirty when open,
-     * save, reopen the session and the diagram itself
+     * Tests if already existing table ("Classes" diagram) is dirty when open, save, reopen the session and the diagram
+     * itself
      * 
      * @throws Exception
      */
     public void testOpenTableRepresentationInEditor() throws Exception {
         if (TestsUtil.shouldSkipLongTests()) {
             /*
-             * junit.framework.AssertionFailedError: expected:<DIRTY> but
-             * was:<SYNC> at junit.framework.Assert.fail(Assert.java:57) at
-             * junit.framework.Assert.failNotEquals(Assert.java:329) at
+             * junit.framework.AssertionFailedError: expected:<DIRTY> but was:<SYNC> at
+             * junit.framework.Assert.fail(Assert.java:57) at junit.framework.Assert.failNotEquals(Assert.java:329) at
              * junit.framework.Assert.assertEquals(Assert.java:78) at
              * junit.framework.Assert.assertEquals(Assert.java:86) at
-             * junit.framework.TestCase.assertEquals(TestCase.java:253) at
-             * org.eclipse
+             * junit.framework.TestCase.assertEquals(TestCase.java:253) at org.eclipse
              * .sirius.tests.unit.api.session.TablesAndEntitiesDirtyTest
-             * .openRepresentation(TablesAndEntitiesDirtyTest.java:261) at
-             * org.eclipse
-             * .sirius.tests.unit.api.session.TablesAndEntitiesDirtyTest
-             * .testOpenTableRepresentationInEditor
+             * .openRepresentation(TablesAndEntitiesDirtyTest.java:261) at org.eclipse
+             * .sirius.tests.unit.api.session.TablesAndEntitiesDirtyTest .testOpenTableRepresentationInEditor
              * (TablesAndEntitiesDirtyTest.java:86)
              */
             return;
@@ -132,8 +128,8 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
     }
 
     /**
-     * Tests if after the creation of a table ("Classes" diagram) is dirty when
-     * open, save, reopen the session and the diagram itself.
+     * Tests if after the creation of a table ("Classes" diagram) is dirty when open, save, reopen the session and the
+     * diagram itself.
      * 
      * @throws Exception
      */
@@ -164,12 +160,16 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
     }
 
     /**
-     * Tests if a cross table ("Documentation" diagram) is dirty when open,
-     * save, reopen the session and the diagram itself.
+     * Tests if a cross table ("Documentation" diagram) is dirty when open, save, reopen the session and the diagram
+     * itself.
      * 
      * @throws Exception
      */
     public void testOpenCrossTableRepresentationInEditor() throws Exception {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
+
         initViewpoint(REVIEW_VIEWPOINT_NAME);
         assertNotNull("Representation \"" + CROSS_TABLES_DESC_NAME + "\" has not been created.", createRepresentation(CROSS_TABLES_DESC_NAME, childEPackage));
 
@@ -211,8 +211,7 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
     }
 
     /**
-     * Tests if an "Entities" diagram is dirty when open, save, reopen the
-     * session and the diagram itself.
+     * Tests if an "Entities" diagram is dirty when open, save, reopen the session and the diagram itself.
      * 
      * @throws Exception
      */
