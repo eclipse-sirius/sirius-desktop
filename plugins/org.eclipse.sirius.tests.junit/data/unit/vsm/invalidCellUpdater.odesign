@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<description:Group xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/table/description/1.1.0" xmlns:tool="http://www.eclipse.org/sirius/description/tool/1.1.0" name="vsmWithCellEditorTools" version="12.0.0.2017041100">
+  <ownedViewpoints name="VpWithCellEditorTools" modelFileExtension="ecore">
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="ClassTable" domainClass="ecore::EPackage">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <ownedLineMappings name="Class" domainClass="ecore::EClass" semanticCandidatesExpression="feature:eClassifiers" headerLabelExpression="aql:self.name"/>
+      <ownedColumnMappings name="IsAbstract_Std" headerLabelExpression="IsAbstract_Std" featureName="abstract" labelExpression="aql:self.abstract" featureParentExpression="var:self"/>
+      <ownedColumnMappings name="IsAbstract_LabelEdit" headerLabelExpression="IsAbstract_LabelEdit" featureName="abstract" labelExpression="aql:self.abstract" featureParentExpression="var:self">
+        <directEdit>
+          <variables name="element" documentation="The current DCell."/>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:SetValue" featureName="abstract" valueExpression="var:arg0"/>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+      </ownedColumnMappings>
+      <ownedColumnMappings name="IsAbstract_CellEditor" headerLabelExpression="IsAbstract_CellEditor" featureName="abstract" labelExpression="aql:self.abstract" featureParentExpression="var:self">
+        <cellEditor qualifiedClassName="org.eclipse.sirius.tests.swtbot.table.celleditorfactory.BooleanCellEditorFactory">
+          <variables name="element" documentation="The current DCell."/>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <variables name="cellEditorResult" documentation="The result returned by the cell editor. So it is only available during the operations (not to get the CellEditor itself)."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:SetValue" featureName="abstract" valueExpression="var:cellEditorResult"/>
+          </firstModelOperation>
+        </cellEditor>
+      </ownedColumnMappings>
+      <ownedColumnMappings name="IsAbstract_CellEditorOnName" headerLabelExpression="IsAbstract_CellEditorOnName" featureName="name" labelExpression="aql:self.abstract" featureParentExpression="var:self">
+        <cellEditor qualifiedClassName="org.eclipse.sirius.tests.swtbot.table.celleditorfactory.BooleanCellEditorFactory">
+          <variables name="element" documentation="The current DCell."/>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <variables name="cellEditorResult" documentation="The result returned by the cell editor. So it is only available during the operations (not to get the CellEditor itself)."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:SetValue" featureName="abstract" valueExpression="var:cellEditorResult"/>
+          </firstModelOperation>
+        </cellEditor>
+      </ownedColumnMappings>
+      <ownedColumnMappings name="superTypes_Std" headerLabelExpression="superTypes_Std" featureName="eSuperTypes"/>
+      <ownedColumnMappings name="superTypes_CellEditor" headerLabelExpression="superTypes_CellEditor" featureName="eSuperTypes">
+        <cellEditor qualifiedClassName="org.eclipse.sirius.tests.swtbot.table.celleditorfactory.AbstractClassCellEditorFactory">
+          <variables name="element" documentation="The current DCell."/>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <variables name="cellEditorResult" documentation="The result returned by the cell editor. So it is only available during the operations (not to get the CellEditor itself)."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:SetValue" featureName="eSuperTypes" valueExpression="var:cellEditorResult"/>
+          </firstModelOperation>
+        </cellEditor>
+      </ownedColumnMappings>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:EditionTableDescription" name="ClassTableWithInvalidCellEditor" domainClass="ecore::EPackage">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <ownedLineMappings name="Class" domainClass="ecore::EClass" semanticCandidatesExpression="feature:eClassifiers" headerLabelExpression="aql:self.name"/>
+      <ownedColumnMappings name="IsAbstract_LabelEditAndCellEditor" headerLabelExpression="IsAbstract_LabelEdit" featureName="abstract" labelExpression="aql:self.abstract" featureParentExpression="var:self">
+        <directEdit>
+          <variables name="element" documentation="The current DCell."/>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:SetValue" featureName="abstract" valueExpression="var:arg0"/>
+          </firstModelOperation>
+          <mask mask="{0}"/>
+        </directEdit>
+        <cellEditor qualifiedClassName="org.eclipse.sirius.tests.swtbot.table.celleditorfactory.BooleanCellEditorFactory">
+          <variables name="element" documentation="The current DCell."/>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <variables name="cellEditorResult" documentation="The result returned by the cell editor. So it is only available during the operations (not to get the CellEditor itself)."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:SetValue" featureName="abstract" valueExpression="var:cellEditorResult"/>
+          </firstModelOperation>
+        </cellEditor>
+      </ownedColumnMappings>
+      <ownedColumnMappings name="IsAbstract_WrongCellEditor1" headerLabelExpression="wrongCellEditor1" featureName="abstract" labelExpression="aql:self.abstract" featureParentExpression="var:self">
+        <cellEditor qualifiedClassName="org.eclipse.sirius.tests.swtbot.table.celleditorfactory.UnexistingCellEditorFactory">
+          <variables name="element" documentation="The current DCell."/>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <variables name="cellEditorResult" documentation="The result returned by the cell editor. So it is only available during the operations (not to get the CellEditor itself)."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:SetValue" featureName="abstract" valueExpression="var:cellEditorResult"/>
+          </firstModelOperation>
+        </cellEditor>
+      </ownedColumnMappings>
+      <ownedColumnMappings name="IsAbstract_WrongCellEditor2" headerLabelExpression="wrongCellEditor2" featureName="abstract" labelExpression="aql:self.abstract" featureParentExpression="var:self">
+        <cellEditor qualifiedClassName="org.eclipse.sirius.tests.swtbot.table.celleditorfactory.WrongQualifiedName/CellEditorFactory">
+          <variables name="element" documentation="The current DCell."/>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <variables name="cellEditorResult" documentation="The result returned by the cell editor. So it is only available during the operations (not to get the CellEditor itself)."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:SetValue" featureName="abstract" valueExpression="var:cellEditorResult"/>
+          </firstModelOperation>
+        </cellEditor>
+      </ownedColumnMappings>
+      <ownedColumnMappings name="IsAbstract_WrongCellEditor3" headerLabelExpression="wrongCellEditor3" featureName="abstract" labelExpression="aql:self.abstract" featureParentExpression="var:self">
+        <cellEditor qualifiedClassName="org.eclipse.sirius.tests.swtbot.table.celleditorfactory.NotATableCellEditorFactory">
+          <variables name="element" documentation="The current DCell."/>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <variables name="cellEditorResult" documentation="The result returned by the cell editor. So it is only available during the operations (not to get the CellEditor itself)."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:SetValue" featureName="abstract" valueExpression="var:cellEditorResult"/>
+          </firstModelOperation>
+        </cellEditor>
+      </ownedColumnMappings>
+      <ownedColumnMappings name="IsAbstract_WrongCellEditor4" headerLabelExpression="wrongCellEditor4" featureName="abstract" labelExpression="aql:self.abstract" featureParentExpression="var:self">
+        <cellEditor qualifiedClassName="org.eclipse.sirius.tests.swtbot.table.celleditorfactory.WrongQualifiedName/CellEditorFactory">
+          <variables name="element" documentation="The current DCell."/>
+          <variables name="table" documentation="The current DTable."/>
+          <variables name="line" documentation="The DLine of the current DCell."/>
+          <variables name="lineSemantic" documentation="The semantic element corresponding to the line."/>
+          <variables name="root" documentation="The semantic root element of the table."/>
+          <variables name="cellEditorResult" documentation="The result returned by the cell editor. So it is only available during the operations (not to get the CellEditor itself)."/>
+          <firstModelOperation xsi:type="tool:ChangeContext" browseExpression="var:lineSemantic">
+            <subModelOperations xsi:type="tool:SetValue" featureName="abstract" valueExpression="var:cellEditorResult"/>
+          </firstModelOperation>
+        </cellEditor>
+      </ownedColumnMappings>
+    </ownedRepresentations>
+  </ownedViewpoints>
+</description:Group>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 <!--
-  Copyright (c) 2007, 2008 THALES GLOBAL SERVICES
+  Copyright (c) 2007, 2021 THALES GLOBAL SERVICES
   This program and the accompanying materials
   are made available under the terms of the Eclipse Public License 2.0
   which accompanies this distribution, and is available at
@@ -51,5 +51,40 @@
             class="org.eclipse.sirius.table.business.internal.migration.description.LabelEditToolVariableMigrationParticipant"
             kind="VSM">
       </participant>
-   </extension>   
+   </extension>
+  <extension
+         point="org.eclipse.emf.validation.constraintProviders">
+     <category
+           id="org.eclipse.sirius.table.constraints"
+           name="%category.siriusTableConstraints.name">
+     </category>
+     <constraintProvider
+           cache="true"
+           mode="Batch">
+        <package
+              namespaceUri="http://www.eclipse.org/sirius/description/tool/1.1.0">
+        </package>
+        <package
+              namespaceUri="http://www.eclipse.org/sirius/table/description/tool/1.1.0">
+        </package>
+        <constraints
+              categories="org.eclipse.sirius.table.constraints">
+           <constraint
+                 class="org.eclipse.sirius.table.tools.internal.validation.constraints.BothCellEditorEditLabelToolConstraint"
+                 id="org.eclipse.sirius.table.constraints.BothCellEditorEditLabelTool"
+                 lang="Java"
+                 mode="Batch"
+                 name="%constraint.bothCellEditorEditLabelTool.name"
+                 severity="WARNING"
+                 statusCode="1">
+              <message>
+                 %Constraint_bothCellEditorEditLabelTool_message
+              </message>
+              <description>
+                 %constraint.bothCellEditorEditLabelTool.description
+              </description>
+           </constraint>
+        </constraints>
+     </constraintProvider>
+  </extension>
 </plugin>

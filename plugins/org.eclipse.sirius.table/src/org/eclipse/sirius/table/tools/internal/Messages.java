@@ -27,6 +27,10 @@ public final class Messages {
     }
 
     // CHECKSTYLE:OFF
+
+    @TranslatableMessage
+    public static String Constraint_bothCellEditorEditLabelTool_message;
+
     @TranslatableMessage
     public static String ContributionTrakingIdentifier_ElementWithoutMatchingData;
 

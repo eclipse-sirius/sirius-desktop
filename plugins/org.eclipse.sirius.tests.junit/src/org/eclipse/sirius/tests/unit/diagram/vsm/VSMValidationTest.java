@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES, and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES, and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -64,7 +64,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
     private Group modelerForVariableNameValidation;
 
     private Group modelerForInvalidVariableNameValidation;
-    
+
     private Group modelerForInvalidTypeValidation;
 
     private Group modelerForImagePathValidation;
@@ -74,6 +74,8 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
     private Group modelerWithAllKindOfError;
 
     private Group aqlDomainClassDef;
+
+    private Group modelerForCellUpdaterValidation;
 
     private TransactionalEditingDomain editingDomain;
 
@@ -94,6 +96,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
         modelerForDefaultLayerValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateDefaultLayerVSM.odesign", true), set);
         modelerWithAllKindOfError = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/validateVSMProblemSeverity.odesign", true), set);
         aqlDomainClassDef = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/aqlDomainClassDef.odesign", true), set);
+        modelerForCellUpdaterValidation = (Group) ModelUtils.load(URI.createPlatformPluginURI("/org.eclipse.sirius.tests.junit/data/unit/vsm/invalidCellUpdater.odesign", true), set);
     }
 
     /**
@@ -290,7 +293,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
         assertEquals("The VSM is not valid, it should have popup error message", Diagnostic.ERROR, diagnostic.getSeverity());
         assertEquals("Validation should have found 2 invalid variable names", 2, diagnostic.getChildren().size());
     }
-    
+
     /**
      * Ensure that VSM validation detects inconsistent referenceName type.
      */
@@ -302,7 +305,7 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test VSM validation with diferent paths for images (there are valid and
+     * Test VSM validation with different paths for images (there are valid and
      * invalid paths).
      */
     public void testValidationImagePathVSM() {
@@ -342,6 +345,20 @@ public class VSMValidationTest extends SiriusDiagramTestCase {
         assertEquals("The diagnostic must contain 2 validation errors", 2, children.size());
         assertEquals("The first error does not match", "The default layer is missing for the diagram 'D1'.", children.get(0).getMessage());
         assertEquals("The second error does not match", "The default layer is missing for the diagram 'S2'.", children.get(1).getMessage());
+    }
+
+    /**
+     * Ensures that VSM Validation detects that there is both CellEditor and LabelEdit tools under a FeatureColumn and
+     * that this raises an error.
+     */
+    public void testBothEditLabelToolAndCellEditorTool() {
+        Diagnostician diagnostician = new Diagnostician();
+        Diagnostic diagnostic = diagnostician.validate(modelerForCellUpdaterValidation);
+        assertEquals("The VSM is not valid, it should have popup error message", Diagnostic.WARNING, diagnostic.getSeverity());
+        assertEquals("Validation should have found 1 invalid CellUpdater", 1, diagnostic.getChildren().size());
+        assertEquals("Wrong message for validation error.",
+                MessageFormat.format(org.eclipse.sirius.table.tools.internal.Messages.Constraint_bothCellEditorEditLabelTool_message, "IsAbstract_LabelEditAndCellEditor"),
+                diagnostic.getChildren().get(0).getMessage());
     }
 
     private void addSpaceInDomainClassValue(EObject current, EAttribute attribute, int iterate) {
