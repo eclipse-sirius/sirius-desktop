@@ -13,7 +13,10 @@
 package org.eclipse.sirius.diagram.ui.edit.api.part;
 
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.diagram.ui.editparts.IBorderItemEditPart;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.IBorderItemLocator;
 import org.eclipse.gmf.runtime.notation.FontStyle;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.diagram.BeginLabelStyle;
@@ -27,6 +30,7 @@ import org.eclipse.sirius.diagram.ui.business.internal.query.StyleConfigurationQ
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.StyleConfiguration;
 import org.eclipse.sirius.ext.base.Option;
@@ -116,6 +120,21 @@ public final class DiagramNameEditPartOperation {
         Color labelColor = VisualBindingManager.getDefault().getLabelColorFromRGBValues(labelRGBColor);
         if (!(figure.getForegroundColor() != null && figure.getForegroundColor().equals(labelColor))) {
             figure.setForegroundColor(labelColor);
+        }
+        if (self instanceof IBorderItemEditPart) {
+            IBorderItemEditPart borderItemEditPart = (IBorderItemEditPart) self;
+            IBorderItemLocator borderItemLocator = borderItemEditPart.getBorderItemLocator();
+            if (borderItemLocator instanceof DBorderItemLocator) {
+                // Just change the constraint twice to force a recompute of preferred side in
+                // org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator.relocate(IFigure); by
+                // changing the DBorderItemLocator.borderItemHasMoved value.
+                // Indeed, a Font change can have effect on the size of the label and indirectly on the "preferred side"
+                // in DBorderItemLocator. Without this change, the label remains on the same size (and visually, the
+                // result can be different after a reopening).
+                Rectangle oldConstraint = ((DBorderItemLocator) borderItemLocator).getCurrentConstraint();
+                borderItemLocator.setConstraint(Rectangle.SINGLETON);
+                borderItemLocator.setConstraint(oldConstraint);
+            }
         }
     }
 
