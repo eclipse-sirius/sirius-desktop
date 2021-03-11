@@ -269,11 +269,47 @@
 			<a href="#line_style">the corresponding section</a> for more details.
 		</p>
 		<h4 id="column_tools">Column Tools</h4>
-		<p>Column can currently only define a 
-			<em>Label edit</em> tool, which will apply to all the cells of the column. It works like all edit The 
-			<em>Edit Mask</em> element (contained inside the tool) is used to parse the new label&#8217;s value as entered by the user, and to select part of this label as input variables to the editing action&#8217;s body. The mask can contain substrings of the form 
-			<code>{N}</code> where 
-			<em>N</em> is a number. The parts of the new label&#8217;s value which correspond to these substring will be available as variables named <code>argN</code>. For example, with an edit mask of <code>{0}:{1}</code> and an input string entered by the user of <code>attr : EString</code>, the tool&#8217;s body would be executed with variables <code>arg0</code> set to <code>attr&#9251;</code> and <code>arg1</code> set to <code>&#9251;EString</code>.
+		<p>Column can currently define two tools:</p>
+		<ul>
+			<li>A 
+				<em>Label edit</em> tool, which will apply to all the cells of the column. It works like all edit The 
+				<em>Edit Mask</em> element (contained inside the tool) is used to parse the new label&#8217;s value as entered by the user, and to select part of this label as input variables to the editing action&#8217;s body. The mask can contain substrings of the form 
+				<code>{N}</code> where 
+				<em>N</em> is a number. The parts of the new label&#8217;s value which correspond to these substring will be available as variables named <code>argN</code>. For example, with an edit mask of <code>{0}:{1}</code> and an input string entered by the user of <code>attr : EString</code>, the tool&#8217;s body would be executed with variables <code>arg0</code> set to <code>attr&#9251;</code> and <code>arg1</code> set to <code>&#9251;EString</code>.
+			</li>
+			<li>A 
+				<em>Cell editor</em> tool, which will also apply to all the cells of the column. The use of a 
+				<em>Cell editor</em> tool requires to set its 
+				<em>qualified name</em> with a Java class which must implement 
+				<code>org.eclipse.sirius.table.ui.tools.api.editor.ITableCellEditorFactory</code> and its method 
+				<code>ITableCellEditorFactory.getCellEditor(Tree, Map&lt;String, Object&gt;)</code>. The 
+				<em>Map&lt;String, Object&gt;</em> parameter allows access to the different variables of the 
+				<em>CellEditor</em> tool: 
+				<em>element</em>, 
+				<em>table</em>, 
+				<em>line</em>, 
+				<em>lineSemantic</em>, 
+				<em>root</em>. The parameter 
+				<em>cellEditorResult</em> is set with the result contained in the 
+				<em>CellEditor</em> returned by 
+				<code>ITableCellEditorFactory.getCellEditor(Tree, Map&lt;String, Object&gt;)</code>. As indicated by the 
+				<code>org.eclipse.jface.viewers.CellEditor</code> documentation, it is possible to implement 
+				<em>TextCellEditor</em>, 
+				<em>ColorCellEditor</em>, 
+				<em>ComboBoxCellEditor</em>, 
+				<em>CheckboxCellEditor</em>, 
+				<em>DialogCellEditor</em>. If no implementation is provided or an invalid 
+				<em>CellEditor</em> is returned, a default CellEditor is built in 
+				<code>org.eclipse.sirius.table.ui.tools.internal.editor.provider.DFeatureColumnEditingSupport.getBestCellEditor(EObject, boolean)</code>. You can refer to Sirius 
+				<a href="https://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tree/plugins/org.eclipse.sirius.table.ui/src/org/eclipse/sirius/table/ui/tools/internal/editor/provider/DFeatureColumnEditingSupport.java#n317">source code</a> as sample, or use 
+				<a href="https://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tree/plugins/org.eclipse.sirius.tests.swtbot/src/org/eclipse/sirius/tests/swtbot/table/celleditorfactory/BooleanCellEditorFactory.java#n45">one of our tests</a> to implement your own &#8220;CellEditorFactory&#8221;.
+			</li>
+		</ul>
+		<p>It is possible to define both a 
+			<em>Label edit</em> tool and a 
+			<em>Cell editor</em> tool for a column mapping. In this case, the 
+			<em>Cell editor</em> tool has priority. This kind of configuration is useless. Indeed, in this case the 
+			<em>Label edit</em> tool is never used.
 		</p>
 		<h2 id="cross_tables">Cross Tables</h2>
 		<p>

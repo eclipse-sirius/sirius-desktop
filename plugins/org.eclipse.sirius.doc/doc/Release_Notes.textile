@@ -12,6 +12,10 @@ h3. User-Visible Changes
 * <span class="label label-success">Added</span> The method @org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority.getLockedObjects()@ has been added the get all the locked objects.
 * <span class="label label-success">Added</span> A new tab has been added in the properties dialog box, when an aird is selected, to present technical information about the Sirius Session. For more details, refer the "documentation":user/general/SiriusSessionDetailedInformation.html .
 
+h3. Specifier-Visible Changes
+
+* <span class="label label-success">Added</span> A new @CellEditor@ tool is available for feature column mapping of edition table. It allows to define a specific @org.eclipse.jface.viewers.CellEditor@ to edit a cell (see "documentation":specifier/tables/Tables.html#column_tools for more details).
+
 h3. Developer-Visible Changes
 
 * <span class="label label-success">Added</span> The API @org.eclipse.sirius.business.api.session.SiriusPreferences@ has been added to get preferences related to a Sirius Session that is to a main aird file. An instance of this API can be accessed with @org.eclipse.sirius.business.api.session.Session.getSiriusPreferences()@. Both @org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys.PREF_AUTO_REFRESH@ and @org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING@ **should not be used any more by clients with Eclipse preference API** but @org.eclipse.sirius.business.api.session.SiriusPreferences.isAutoRefresh()@ and @org.eclipse.sirius.business.api.session.SiriusPreferences.isRefreshAtRepresentationOpening()@ should be used instead.
