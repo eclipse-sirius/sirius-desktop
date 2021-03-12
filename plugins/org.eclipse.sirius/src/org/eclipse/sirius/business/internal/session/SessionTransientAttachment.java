@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,16 +12,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.internal.session;
 
-import java.util.Iterator;
+import java.util.Objects;
+import java.util.Optional;
 
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
-
-import com.google.common.collect.Iterators;
-import com.google.common.collect.Sets;
 
 /**
  * This adapter might be used as a marker to retrieve a {@link Session} from any
@@ -40,7 +36,7 @@ import com.google.common.collect.Sets;
  */
 public class SessionTransientAttachment extends AdapterImpl {
 
-    private Session session;
+    private final Session session;
 
     /**
      * Create a new session attachment.
@@ -49,7 +45,7 @@ public class SessionTransientAttachment extends AdapterImpl {
      *            the session to attach.
      */
     public SessionTransientAttachment(Session session) {
-        this.session = session;
+        this.session = Objects.requireNonNull(session);
     }
 
     /**
@@ -70,12 +66,8 @@ public class SessionTransientAttachment extends AdapterImpl {
      *            the instance to inspect.
      * @return an optional SessionTransientAttachment.
      */
-    public static Option<SessionTransientAttachment> getSessionTransientAttachement(Notifier eObj) {
-        Iterator<SessionTransientAttachment> it = Iterators.filter(Sets.newLinkedHashSet(eObj.eAdapters()).iterator(), SessionTransientAttachment.class);
-        if (it.hasNext()) {
-            return Options.newSome(it.next());
-        }
-        return Options.newNone();
+    public static Optional<SessionTransientAttachment> of(Notifier eObj) {
+        return eObj.eAdapters().stream().filter(SessionTransientAttachment.class::isInstance).map(SessionTransientAttachment.class::cast).findFirst();
     }
 
 }

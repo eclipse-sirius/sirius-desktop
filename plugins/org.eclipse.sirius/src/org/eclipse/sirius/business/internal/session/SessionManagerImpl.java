@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -206,8 +206,8 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
             }
             // Handle explicit SessionTransientAttachment
             if (found == null) {
-                Option<SessionTransientAttachment> attachment = SessionTransientAttachment.getSessionTransientAttachement(any);
-                if (attachment.some()) {
+                Optional<SessionTransientAttachment> attachment = SessionTransientAttachment.of(any);
+                if (attachment.isPresent()) {
                     found = attachment.get().getSession();
                 }
             }
@@ -240,9 +240,9 @@ public class SessionManagerImpl extends SessionManagerEObjectImpl implements Ses
     @Override
     public Session getSession(final Resource semanticResource) {
         Session found = null;
-        Option<SessionTransientAttachment> attachment = SessionTransientAttachment.getSessionTransientAttachement(semanticResource);
+        Optional<SessionTransientAttachment> attachment = SessionTransientAttachment.of(semanticResource);
 
-        if (attachment.some()) {
+        if (attachment.isPresent()) {
             found = attachment.get().getSession();
         }
         if (found == null) {
