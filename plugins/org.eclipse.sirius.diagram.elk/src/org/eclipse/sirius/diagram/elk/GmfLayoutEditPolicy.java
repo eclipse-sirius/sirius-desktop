@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2020 Kiel University and others.
+ * Copyright (c) 2009, 2021 Kiel University and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.elk;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 import org.eclipse.draw2d.ConnectionAnchor;
@@ -23,6 +24,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionDimension;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
+import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.elk.core.math.ElkMath;
 import org.eclipse.elk.core.math.KVector;
@@ -30,9 +32,11 @@ import org.eclipse.elk.core.math.KVectorChain;
 import org.eclipse.elk.core.options.CoreOptions;
 import org.eclipse.elk.core.options.EdgeLabelPlacement;
 import org.eclipse.elk.core.options.EdgeRouting;
+import org.eclipse.elk.core.service.LayoutMapping;
 import org.eclipse.elk.core.util.ElkUtil;
 import org.eclipse.elk.core.util.Pair;
 import org.eclipse.elk.core.util.WrappedException;
+import org.eclipse.elk.graph.ElkBendPoint;
 import org.eclipse.elk.graph.ElkConnectableShape;
 import org.eclipse.elk.graph.ElkEdge;
 import org.eclipse.elk.graph.ElkEdgeSection;
@@ -42,6 +46,7 @@ import org.eclipse.elk.graph.ElkNode;
 import org.eclipse.elk.graph.ElkPort;
 import org.eclipse.elk.graph.ElkShape;
 import org.eclipse.elk.graph.util.ElkGraphUtil;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.gef.GraphicalEditPart;
@@ -54,8 +59,10 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.ConnectionEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.INodeEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.LabelEditPart;
+import org.eclipse.gmf.runtime.draw2d.ui.figures.BaseSlidableAnchor;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
 import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
+import org.eclipse.gmf.runtime.draw2d.ui.geometry.PrecisionPointList;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.gef.ui.figures.SlidableAnchor;
 import org.eclipse.gmf.runtime.notation.Edge;
@@ -89,7 +96,7 @@ import org.eclipse.sirius.viewpoint.Style;
 public class GmfLayoutEditPolicy extends AbstractEditPolicy {
 
     /** map of edge layouts to existing point lists. */
-    private Map<ElkEdgeSection, PointList> pointListMap = new HashMap<>();
+    private Map<ElkEdgeSection, PrecisionPointList> pointListMap = new HashMap<>();
 
     /**
      * {@inheritDoc}
@@ -249,7 +256,14 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
     }
 
     /**
-     * Adds an edge layout to the given command.
+     * Adds an edge layout to the given command. This method handles standard edges, edges pointing to another edge (as
+     * source or as target) but not in all conditions (bugzilla 571925 is a first step to handle edge on edge). It does
+     * not handle "note attachment" (as Note is currently not layouted).</BR>
+     * With bugzilla 571925 and "egde on egde" specific behavior, the ELKGraph is modified during this step (during the
+     * construction of the command). It's not the classical way. Maybe all the ELKGraph modification (around virtual
+     * nodes and split edges) must be done at the end of method
+     * {@link org.eclipse.sirius.diagram.elk.ElkDiagramLayoutConnector#transferLayout(LayoutMapping, boolean)} just
+     * before calling " diagramEditPart.getCommand(applyLayoutRequest)". This will be maybe done later.
      * 
      * @param command
      *            command to which an edge layout shall be added
@@ -262,42 +276,141 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
      */
     private void addEdgeLayout(final GmfLayoutCommand command, final ElkEdge elkEdge, final ConnectionEditPart connectionEditPart, final double scale) {
 
+        ElkEdge secondPartOfEdge = elkEdge.getProperty(ElkDiagramLayoutConnector.SECOND_PART_OF_SPLIT_EDGE);
+        if (secondPartOfEdge != null) {
+            // It's an edge on edge case. We should "reconstruct" the original layout (build the full edge from the 2
+            // parts)
+            ElkEdgeSection firstSection = elkEdge.getSections().get(0);
+            ElkEdgeSection secondSection = secondPartOfEdge.getSections().get(0);
+            // Be sure to have a vertical or an horizontal segment for the "junction". Indeed, the virtual node
+            // can leads to some double location not exactly on the same axis. This boolean is set to true when the
+            // alignment is done.
+            boolean firstPointOfSecondPartAfterStartPoint = true;
+            int firstSectionRoundEndY = (int) Math.round(firstSection.getEndY());
+            int firstSectionRoundEndX = (int) Math.round(firstSection.getEndX());
+            for (ElkBendPoint elkBendPoint : secondSection.getBendPoints()) {
+                if (firstPointOfSecondPartAfterStartPoint) {
+                    int secondSectionRoundFirstBendpointY = (int) Math.round(elkBendPoint.getY());
+                    int secondSectionRoundFirstBendpointX = (int) Math.round(elkBendPoint.getX());
+                    if (secondSectionRoundFirstBendpointY - 1 <= firstSectionRoundEndY && firstSectionRoundEndY <= secondSectionRoundFirstBendpointY + 1) {
+                        // Align the previous point
+                        if (firstSection.getBendPoints().isEmpty()) {
+                            firstSection.setStartY(firstSectionRoundEndY);
+                        } else {
+                            firstSection.getBendPoints().get(firstSection.getBendPoints().size() - 1).setY(firstSectionRoundEndY);;
+                        }
+                        // Create a bendpoint aligned on the end point of first part
+                        ElkGraphUtil.createBendPoint(firstSection, elkBendPoint.getX(), firstSectionRoundEndY);
+                    } else if (secondSectionRoundFirstBendpointX - 1 <= firstSectionRoundEndX && firstSectionRoundEndX <= secondSectionRoundFirstBendpointX + 1) {
+                        // Align the previous point
+                        if (firstSection.getBendPoints().isEmpty()) {
+                            firstSection.setStartX(firstSectionRoundEndX);
+                        } else {
+                            firstSection.getBendPoints().get(firstSection.getBendPoints().size() - 1).setX(firstSectionRoundEndX);
+                        }
+                        // Create a bendpoint aligned on the end point of first part
+                        ElkGraphUtil.createBendPoint(firstSection, Math.round(firstSection.getEndX()), elkBendPoint.getY());
+                    }
+                    firstPointOfSecondPartAfterStartPoint = false;
+                } else {
+                    ElkGraphUtil.createBendPoint(firstSection, elkBendPoint.getX(), elkBendPoint.getY());
+                }
+            }
+            if (firstPointOfSecondPartAfterStartPoint) {
+                int secondSectionRoundEndX = (int) Math.round(secondSection.getEndX());
+                int secondSectionRoundEndY = (int) Math.round(secondSection.getEndY());
+                if (secondSectionRoundEndY - 1 <= firstSectionRoundEndY && firstSectionRoundEndY <= secondSectionRoundEndY + 1) {
+                    // Align the previous point
+                    if (firstSection.getBendPoints().isEmpty()) {
+                        firstSection.setStartY(firstSectionRoundEndY);
+                    } else {
+                        firstSection.getBendPoints().get(firstSection.getBendPoints().size() - 1).setY(firstSectionRoundEndY);;
+                    }
+                    // Change the end point
+                    firstSection.setEndX(secondSection.getEndX());
+                    firstSection.setEndY(firstSectionRoundEndY);
+                } else if (secondSectionRoundEndX - 1 <= firstSectionRoundEndX && firstSectionRoundEndX <= secondSectionRoundEndX + 1) {
+                    // Align the previous point
+                    if (firstSection.getBendPoints().isEmpty()) {
+                        firstSection.setStartX(firstSectionRoundEndX);
+                    } else {
+                        firstSection.getBendPoints().get(firstSection.getBendPoints().size() - 1).setX(firstSectionRoundEndX);
+                    }
+                    // Change the end point
+                    firstSection.setEndX(firstSectionRoundEndX);
+                    firstSection.setEndY(secondSection.getEndY());
+                }
+            } else {
+                firstSection.setEndX(secondSection.getEndX());
+                firstSection.setEndY(secondSection.getEndY());
+            }
+            // Reset to the original target (we keep the "virtual" node as target, used later for edge(s) pointing to
+            // this edge)
+            elkEdge.getTargets().add(0, secondPartOfEdge.getTargets().get(0));
+        }
         if (connectionEditPart.getSource() != null && connectionEditPart.getTarget() != null) {
+            PointList currentEdgeBendpoints = getBendPoints(elkEdge, connectionEditPart.getFigure(), scale);
             // create source terminal identifier
             INodeEditPart sourceEditPart = (INodeEditPart) connectionEditPart.getSource();
             ConnectionAnchor sourceAnchor;
-            if (sourceEditPart instanceof ConnectionEditPart) {
-                // if the edge source is a connection, don't consider the source
-                // point
-                sourceAnchor = new SlidableAnchor(sourceEditPart.getFigure());
-            } else {
+            if (!ElkDiagramLayoutConnector.EDGE_ON_EDGE_ID_NODE.equals(elkEdge.getSources().get(0).getIdentifier())) {
                 KVector sourceRel = getRelativeSourcePoint(elkEdge);
                 sourceAnchor = new SlidableAnchor(sourceEditPart.getFigure(), new PrecisionPoint(sourceRel.x, sourceRel.y));
+            } else {
+                // Case of edge pointing to another edge as source: This edge should probably be split: As there is a
+                // virtual node, a potential overlap between the two edges exists. We must change that because the
+                // virtual node will no longer exist on Sirius side.
+                // Identify the last bendpoint of the current edge that is on the source edge and stop on it (do not use
+                // the path that overlap the source edge).
+                currentEdgeBendpoints = cutEdgeOnEdge(elkEdge, connectionEditPart, scale, true);
+
+                // Compute the source anchor
+                PrecisionPointList sourceEdgePointsListInAsboluteCoordinates = getPointListInAbsoluteCoordinates(searchEdgeWithSecondPartProperty(elkEdge.getSources().get(0).getIncomingEdges()));
+                Rectangle absoluteBounds = sourceEdgePointsListInAsboluteCoordinates.getBounds();
+                // Set a minimal witdh or height to 1 pixel instead of 0 (to avoid computation problem in anchor)
+                if (absoluteBounds.width() == 0) {
+                    absoluteBounds.setWidth(1);
+                } else if (absoluteBounds.height() == 0) {
+                    absoluteBounds.setHeight(1);
+                }
+                Point absoluteOrigin = absoluteBounds.getTopLeft();
+                KVector relativeOrigin = ElkUtil.toRelative(new KVector(absoluteOrigin.preciseX(), absoluteOrigin.preciseY()), elkEdge.getContainingNode());
+                PrecisionPoint sourceAnchorPoint = BaseSlidableAnchor.getAnchorRelativeLocation(currentEdgeBendpoints.getFirstPoint(),
+                        new PrecisionRectangle(relativeOrigin.x, relativeOrigin.y, absoluteBounds.width(), absoluteBounds.height()));
+                sourceAnchor = new SlidableAnchor(sourceEditPart.getFigure(), sourceAnchorPoint);
             }
             String sourceTerminal = sourceEditPart.mapConnectionAnchorToTerminal(sourceAnchor);
 
             // create target terminal identifier
             INodeEditPart targetEditPart = (INodeEditPart) connectionEditPart.getTarget();
             ConnectionAnchor targetAnchor;
-            if (targetEditPart instanceof ConnectionEditPart) {
-                // if the edge target is a connection, don't consider the target
-                // point
-                targetAnchor = new SlidableAnchor(targetEditPart.getFigure());
-            } else {
+            if (!ElkDiagramLayoutConnector.EDGE_ON_EDGE_ID_NODE.equals(elkEdge.getTargets().get(0).getIdentifier())) {
                 KVector targetRel = getRelativeTargetPoint(elkEdge);
                 targetAnchor = new SlidableAnchor(targetEditPart.getFigure(), new PrecisionPoint(targetRel.x, targetRel.y));
+            } else {
+                // Case of edge pointing to another edge as target: This edge should probably be split: As there is a
+                // virtual node, a potential overlap between the two edges exists. We must change that because the
+                // virtual node will no longer exist on Sirius side.
+                // Identify the first bendpoint of the current edge that is on the target edge and stop on it (do not
+                // use the path that overlap the target edge).
+                currentEdgeBendpoints = cutEdgeOnEdge(elkEdge, connectionEditPart, scale, false);
+
+                // Compute the target anchor
+                PrecisionPointList targetEdgePointsListInAsboluteCoordinates = getPointListInAbsoluteCoordinates(searchEdgeWithSecondPartProperty(elkEdge.getTargets().get(0).getIncomingEdges()));
+                Rectangle absoluteBounds = targetEdgePointsListInAsboluteCoordinates.getBounds();
+                // Set a minimal witdh or height to 1 pixel instead of 0 (to avoid computation problem in anchor)
+                if (absoluteBounds.width() == 0) {
+                    absoluteBounds.setWidth(1);
+                } else if (absoluteBounds.height() == 0) {
+                    absoluteBounds.setHeight(1);
+                }
+                Point absoluteOrigin = absoluteBounds.getTopLeft();
+                KVector relativeOrigin = ElkUtil.toRelative(new KVector(absoluteOrigin.preciseX(), absoluteOrigin.preciseY()), elkEdge.getContainingNode());
+                PrecisionPoint targetAnchorPoint = BaseSlidableAnchor.getAnchorRelativeLocation(currentEdgeBendpoints.getLastPoint(),
+                        new Rectangle((int) Math.round(relativeOrigin.x), (int) Math.round(relativeOrigin.y), absoluteBounds.width(), absoluteBounds.height()));
+                targetAnchor = new SlidableAnchor(targetEditPart.getFigure(), targetAnchorPoint);
             }
             String targetTerminal = targetEditPart.mapConnectionAnchorToTerminal(targetAnchor);
-
-            PointList bendPoints = getBendPoints(elkEdge, connectionEditPart.getFigure(), scale);
-
-            // check whether the connection is a note attachment to an edge,
-            // then remove bend points
-            if (sourceEditPart instanceof ConnectionEditPart || targetEditPart instanceof ConnectionEditPart) {
-                while (bendPoints.size() > 2) {
-                    bendPoints.removePoint(1);
-                }
-            }
 
             // retrieve junction points and transform them to absolute
             // coordinates
@@ -310,8 +423,167 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
                 serializedJP = junctionPoints.toString();
             }
 
-            command.addEdgeLayout((Edge) connectionEditPart.getModel(), bendPoints, sourceTerminal, targetTerminal, serializedJP);
+            command.addEdgeLayout((Edge) connectionEditPart.getModel(), currentEdgeBendpoints, sourceTerminal, targetTerminal, serializedJP);
         }
+    }
+
+    private PrecisionPointList getPointListInAbsoluteCoordinates(ElkEdge edge) {
+        ElkEdgeSection edgeSection = edge.getSections().get(0);
+        PrecisionPointList edgePointsListInAsboluteCoordinates = new PrecisionPointList();
+        KVector absolutePoint = ElkUtil.toAbsolute(new KVector(edgeSection.getStartX(), edgeSection.getStartY()), edge.getContainingNode());
+        edgePointsListInAsboluteCoordinates.addPrecisionPoint(absolutePoint.x, absolutePoint.y);
+        for (ElkBendPoint elkBendpoint : edgeSection.getBendPoints()) {
+            absolutePoint = ElkUtil.toAbsolute(new KVector(elkBendpoint.getX(), elkBendpoint.getY()), edge.getContainingNode());
+            edgePointsListInAsboluteCoordinates.addPrecisionPoint(absolutePoint.x, absolutePoint.y);
+        }
+        absolutePoint = ElkUtil.toAbsolute(new KVector(edgeSection.getEndX(), edgeSection.getEndY()), edge.getContainingNode());
+        edgePointsListInAsboluteCoordinates.addPrecisionPoint(absolutePoint.x, absolutePoint.y);
+        return edgePointsListInAsboluteCoordinates;
+    }
+
+    private PointList cutEdgeOnEdge(ElkEdge elkEdgeToCut, ConnectionEditPart connectionEditPart, double scale, boolean sourceIsAnotherEdge) {
+        LineSeg lineSegToCutInAbsolute;
+        PrecisionPoint junctionPoint = new PrecisionPoint();
+        ElkEdgeSection sectionToCut = elkEdgeToCut.getSections().get(0);
+        if (sourceIsAnotherEdge) {
+            junctionPoint = new PrecisionPoint(sectionToCut.getStartX(), sectionToCut.getStartY());
+            if (sectionToCut.getBendPoints().size() > 0) {
+                ElkBendPoint otherPoint = sectionToCut.getBendPoints().get(0);
+                lineSegToCutInAbsolute = new LineSeg(junctionPoint, new PrecisionPoint(otherPoint.getX(), otherPoint.getY()));
+            } else {
+                lineSegToCutInAbsolute = new LineSeg(junctionPoint, new PrecisionPoint(sectionToCut.getEndX(), sectionToCut.getEndY()));
+            }
+        } else {
+            junctionPoint = new PrecisionPoint(elkEdgeToCut.getSections().get(0).getEndX(), elkEdgeToCut.getSections().get(0).getEndY());
+            if (sectionToCut.getBendPoints().size() > 0) {
+                ElkBendPoint otherPoint = sectionToCut.getBendPoints().get(sectionToCut.getBendPoints().size() - 1);
+                lineSegToCutInAbsolute = new LineSeg(junctionPoint, new PrecisionPoint(otherPoint.getX(), otherPoint.getY()));
+            } else {
+                lineSegToCutInAbsolute = new LineSeg(junctionPoint, new PrecisionPoint(sectionToCut.getStartX(), sectionToCut.getStartY()));
+            }
+        }
+        KVector absolutePoint = ElkUtil.toAbsolute(new KVector(lineSegToCutInAbsolute.getOrigin().preciseX(), lineSegToCutInAbsolute.getOrigin().preciseY()), elkEdgeToCut.getContainingNode());
+        lineSegToCutInAbsolute.setOrigin(new PrecisionPoint(absolutePoint.x, absolutePoint.y));
+        absolutePoint = ElkUtil.toAbsolute(new KVector(lineSegToCutInAbsolute.getTerminus().preciseX(), lineSegToCutInAbsolute.getTerminus().preciseY()), elkEdgeToCut.getContainingNode());
+        lineSegToCutInAbsolute.setTerminus(new PrecisionPoint(absolutePoint.x, absolutePoint.y));
+
+        // Search the segment on source or target edge that contains the junction point, and use its coordinates
+        // (aligned before in addEdgeLayout for this source or target edge)
+        ElkEdge sourceOrTargetEdge;
+        if (sourceIsAnotherEdge) {
+            sourceOrTargetEdge = searchEdgeWithSecondPartProperty(elkEdgeToCut.getSources().get(0).getIncomingEdges());
+        } else {
+            sourceOrTargetEdge = searchEdgeWithSecondPartProperty(elkEdgeToCut.getTargets().get(0).getIncomingEdges());
+        }
+        PrecisionPointList sourceOrTargetEdgePointsListInAsboluteCoordinates = getPointListInAbsoluteCoordinates(sourceOrTargetEdge);
+        // Use the source or target edge coordinates (aligned before in addEdgeLayout for this source or target edge)
+        LineSeg sourceOrTargetEdgeLineSegInAbsolute = findNearestLineSegOfPoint(sourceOrTargetEdgePointsListInAsboluteCoordinates, junctionPoint);
+        if (sourceOrTargetEdgeLineSegInAbsolute.isHorizontal()) {
+            // Use the y of source or target edge segment (if points of segment to cut are near it)
+            double yToUse = ((PrecisionPoint) sourceOrTargetEdgeLineSegInAbsolute.getOrigin()).preciseY();
+            PrecisionPoint origin = (PrecisionPoint) lineSegToCutInAbsolute.getOrigin();
+            if (yToUse - 1 <= origin.preciseY() && origin.preciseY() <= yToUse + 1) {
+                lineSegToCutInAbsolute.setOrigin(new PrecisionPoint(origin.preciseX(), yToUse));
+            }
+            PrecisionPoint terminus = (PrecisionPoint) lineSegToCutInAbsolute.getTerminus();
+            if (yToUse - 1 <= terminus.preciseY() && terminus.preciseY() <= yToUse + 1) {
+                lineSegToCutInAbsolute.setTerminus(new PrecisionPoint(terminus.preciseX(), yToUse));
+            }
+        } else if (sourceOrTargetEdgeLineSegInAbsolute.isVertical()) {
+            // Use the x of source or target edge segment (if points of segment to cut are near it)
+            double xToUse = ((PrecisionPoint) sourceOrTargetEdgeLineSegInAbsolute.getOrigin()).preciseX();
+            PrecisionPoint origin = (PrecisionPoint) lineSegToCutInAbsolute.getOrigin();
+            if (xToUse - 1 <= origin.preciseX() && origin.preciseX() <= xToUse + 1) {
+                lineSegToCutInAbsolute.setOrigin(new PrecisionPoint(xToUse, origin.preciseY()));
+            }
+            PrecisionPoint terminus = (PrecisionPoint) lineSegToCutInAbsolute.getTerminus();
+            if (xToUse - 1 <= terminus.preciseX() && terminus.preciseX() <= xToUse + 1) {
+                lineSegToCutInAbsolute.setTerminus(new PrecisionPoint(xToUse, terminus.preciseY()));
+            }
+        }
+        // Do the cut
+        PointList elkEdgeToCutPointList = getBendPoints(elkEdgeToCut, connectionEditPart.getFigure(), scale);
+        if (sourceOrTargetEdgeLineSegInAbsolute.containsPoint(lineSegToCutInAbsolute.getTerminus(), 1)) {
+            // lineSegToCut other extremity is on the sourceOrTargetEdgeLineSeg, only this point should be kept. The
+            // first/last should be delete.
+            KVector relativeOriginPoint = ElkUtil.toRelative(new KVector(lineSegToCutInAbsolute.getTerminus().preciseX(), lineSegToCutInAbsolute.getTerminus().preciseY()),
+                    elkEdgeToCut.getContainingNode());
+            if (sourceIsAnotherEdge) {
+                // First point to delete
+                elkEdgeToCutPointList.removePoint(0);
+                Point point = elkEdgeToCutPointList.getFirstPoint();
+                if (sourceOrTargetEdgeLineSegInAbsolute.isHorizontal()) {
+                    // y should be used
+                    point.setY((int) Math.round(relativeOriginPoint.y));
+                } else if (sourceOrTargetEdgeLineSegInAbsolute.isVertical()) {
+                    // x should be used
+                    point.setX((int) Math.round(relativeOriginPoint.x));
+                }
+                elkEdgeToCutPointList.setPoint(point, 0);
+            } else {
+                // Last point to delete
+                elkEdgeToCutPointList.removePoint(elkEdgeToCutPointList.size() - 1);
+                Point point = elkEdgeToCutPointList.getLastPoint();
+                if (sourceOrTargetEdgeLineSegInAbsolute.isHorizontal()) {
+                    // y should be used
+                    point.setY((int) Math.round(relativeOriginPoint.y));
+                } else if (sourceOrTargetEdgeLineSegInAbsolute.isVertical()) {
+                    // x should be used
+                    point.setX((int) Math.round(relativeOriginPoint.x));
+                }
+                elkEdgeToCutPointList.setPoint(point, elkEdgeToCutPointList.size() - 1);
+            }
+        } else if (lineSegToCutInAbsolute.containsPoint(sourceOrTargetEdgeLineSegInAbsolute.getOrigin(), 1)) {
+            // lineSegToCut contains the starting point of the sourceOrTargetEdgeLineSeg, this point replace the
+            // first/last point.
+            KVector relativeOriginPoint = ElkUtil.toRelative(new KVector(sourceOrTargetEdgeLineSegInAbsolute.getOrigin().preciseX(), sourceOrTargetEdgeLineSegInAbsolute.getOrigin().preciseY()),
+                    elkEdgeToCut.getContainingNode());
+            if (sourceIsAnotherEdge) {
+                // First point to replace
+                elkEdgeToCutPointList.setPoint(new PrecisionPoint(relativeOriginPoint.x, relativeOriginPoint.y), 0);
+            } else {
+                // Last point to replace
+                elkEdgeToCutPointList.setPoint(sourceOrTargetEdgeLineSegInAbsolute.getOrigin(), elkEdgeToCutPointList.size() - 1);
+            }
+        } else if (lineSegToCutInAbsolute.containsPoint(sourceOrTargetEdgeLineSegInAbsolute.getTerminus(), 1)) {
+            // lineSegToCut contains the ending point of the sourceOrTargetEdgeLineSeg, this point replace the
+            // first/last point.
+            KVector relativeTerminusPoint = ElkUtil.toRelative(new KVector(sourceOrTargetEdgeLineSegInAbsolute.getTerminus().preciseX(), sourceOrTargetEdgeLineSegInAbsolute.getTerminus().preciseY()),
+                    elkEdgeToCut.getContainingNode());
+            if (sourceIsAnotherEdge) {
+                // First point to replace
+                elkEdgeToCutPointList.setPoint(new PrecisionPoint(relativeTerminusPoint.x, relativeTerminusPoint.y), 0);
+                // "Aligned" the second last point
+                if (sourceOrTargetEdgeLineSegInAbsolute.isHorizontal()) {
+                    // y should be used
+                    elkEdgeToCutPointList.setPoint(new PrecisionPoint(elkEdgeToCutPointList.getPoint(1).x, relativeTerminusPoint.y), 1);
+                } else if (sourceOrTargetEdgeLineSegInAbsolute.isVertical()) {
+                    // x should be used
+                    elkEdgeToCutPointList.setPoint(new PrecisionPoint(relativeTerminusPoint.x, elkEdgeToCutPointList.getPoint(1).y), 1);
+                }
+            } else {
+                // Last point to replace
+                elkEdgeToCutPointList.setPoint(new PrecisionPoint(relativeTerminusPoint.x, relativeTerminusPoint.y), elkEdgeToCutPointList.size() - 1);
+                // "Aligned" the before last point
+                if (sourceOrTargetEdgeLineSegInAbsolute.isHorizontal()) {
+                    // y should be used
+                    elkEdgeToCutPointList.setPoint(new PrecisionPoint(elkEdgeToCutPointList.getPoint(elkEdgeToCutPointList.size() - 2).x, relativeTerminusPoint.y), elkEdgeToCutPointList.size() - 2);
+                } else if (sourceOrTargetEdgeLineSegInAbsolute.isVertical()) {
+                    // x should be used
+                    elkEdgeToCutPointList.setPoint(new PrecisionPoint(relativeTerminusPoint.x, elkEdgeToCutPointList.getPoint(elkEdgeToCutPointList.size() - 2).y), elkEdgeToCutPointList.size() - 2);
+                }
+            }
+        }
+        return elkEdgeToCutPointList;
+    }
+
+    private ElkEdge searchEdgeWithSecondPartProperty(EList<ElkEdge> edges) {
+        for (ElkEdge elkEdge : edges) {
+            if (elkEdge.getProperty(ElkDiagramLayoutConnector.SECOND_PART_OF_SPLIT_EDGE) != null) {
+                return elkEdge;
+            }
+        }
+        return null;
     }
 
     /**
@@ -332,7 +604,9 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
         // We will now make the source point absolute, and then relative to the
         // source node
         ElkUtil.toAbsolute(sourcePoint, edge.getContainingNode());
-        ElkUtil.toRelative(sourcePoint, ElkGraphUtil.connectableShapeToNode(sourceShape));
+        // The method ElkUtil.toRelative is not used here. Indeed, the decimals are then ignored for node, and this
+        // leads to a slightly wrong value for the anchor.
+        GmfLayoutEditPolicy.toRelativeRound(sourcePoint, ElkGraphUtil.connectableShapeToNode(sourceShape));
 
         // The end result will be coordinates between 0 and 1, with 0 being at
         // the left / top or the source shape and
@@ -378,17 +652,19 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
      * @return the relative target point
      */
     private KVector getRelativeTargetPoint(final ElkEdge edge) {
-        // The edge should have exactly one source shape
+        // The edge should have exactly one target shape
         ElkConnectableShape targetShape = edge.getTargets().get(0);
 
         // The edge should have one edge section after layout
         ElkEdgeSection edgeSection = edge.getSections().get(0);
         KVector targetPoint = new KVector(edgeSection.getEndX(), edgeSection.getEndY());
 
-        // We will now make the source point absolute, and then relative to the
-        // source node
+        // We will now make the target point absolute, and then relative to the
+        // target node
         ElkUtil.toAbsolute(targetPoint, edge.getContainingNode());
-        ElkUtil.toRelative(targetPoint, ElkGraphUtil.connectableShapeToNode(targetShape));
+        // The method ElkUtil.toRelative is not used here. Indeed, the decimals are then ignored for node, and this
+        // leads to a slightly wrong value for the anchor.
+        GmfLayoutEditPolicy.toRelativeRound(targetPoint, ElkGraphUtil.connectableShapeToNode(targetShape));
 
         // The end result will be coordinates between 0 and 1, with 0 being at
         // the left / top or the source shape and
@@ -523,7 +799,7 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
         // This assumes that the edge has at least one edge section, which by
         // this point it should
         ElkEdgeSection edgeSection = edge.getSections().get(0);
-        PointList pointList = pointListMap.get(edgeSection);
+        PrecisionPointList pointList = pointListMap.get(edgeSection);
         if (pointList == null) {
             KVectorChain bendPoints = ElkUtil.createVectorChain(edgeSection);
 
@@ -537,9 +813,9 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
             }
 
             bendPoints.scale(scale);
-            pointList = new PointList(bendPoints.size() + 2);
+            pointList = new PrecisionPointList(bendPoints.size() + 2);
             for (KVector bendPoint : bendPoints) {
-                pointList.addPoint((int) bendPoint.x, (int) bendPoint.y);
+                pointList.addPrecisionPoint(bendPoint.x, bendPoint.y);
             }
 
             pointListMap.put(edgeSection, pointList);
@@ -674,4 +950,67 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
         return null;
     }
 
+    /**
+     * Method inspired from {@link PointListUtilities#findNearestLineSegIndexOfPoint(PointList, Point)}. Calculate the
+     * nearest line segment index distance wise to the given point.
+     * 
+     * @param points
+     *            PointList to calculate the nearest line segment of.
+     * @param ptCoord
+     *            the <code>Point</code> to test containment of.
+     * @return int Index of line segment that is nearest in the polyline to the given point. The index is 1 based where
+     *         1 represents the first segment.
+     */
+    static public LineSeg findNearestLineSegOfPoint(PointList points, final Point ptCoord) {
+        int BIGDISTANCE = 32766;
+        List<?> mySegments = PointListUtilities.getLineSegments(points);
+        ListIterator<?> lineIter = mySegments.listIterator();
+        double minDistance = BIGDISTANCE;
+        double nextDistance = 0;
+
+        LineSeg result = null;
+        while (lineIter.hasNext()) {
+            LineSeg aSegment = (LineSeg) lineIter.next();
+
+            nextDistance = aSegment.preciseDistanceToPoint(ptCoord.x, ptCoord.y);
+
+            if (nextDistance < minDistance) {
+                minDistance = nextDistance;
+                result = aSegment;
+            }
+        }
+
+        return result;
+    }
+
+    /**
+     * Converts a double value into an integer value, avoiding rounding effects.</BR>
+     * Copied from {@link org.eclipse.draw2d.geometry.PrecisionGeometry#doubleToInteger(double)}.
+     * 
+     * @param doubleValue
+     *            the double value to convert
+     * @return the integer value for the double.
+     */
+    protected static final int doubleToInteger(double doubleValue) {
+        return (int) Math.floor(doubleValue + 0.000000001);
+    }
+
+    /**
+     * Converts the given absolute point to a relative location (using round coordinates, as it will we in Draw2D
+     * after)./BR> Copied from {@link ElkUtil#toRelative(KVector, ElkNode)}.
+     *
+     * @param point
+     *            an absolute point
+     * @param parent
+     *            the parent node to which the point shall be made relative to
+     * @return {@code point} for convenience
+     */
+    public static KVector toRelativeRound(final KVector point, final ElkNode parent) {
+        ElkNode node = parent;
+        while (node != null) {
+            point.add(-doubleToInteger(node.getX()), -doubleToInteger(node.getY()));
+            node = node.getParent();
+        }
+        return point;
+    }
 }

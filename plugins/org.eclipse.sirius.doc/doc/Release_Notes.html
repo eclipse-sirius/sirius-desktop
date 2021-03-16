@@ -177,6 +177,24 @@
 				<code>org.eclipse.jface.viewers.CellEditor</code> to edit a cell (see 
 				<a href="specifier/tables/Tables.html#column_tools">documentation</a> for more details).
 			</li>
+			<li><span class="label label-info">Modified</span> ELK integration now handles &#8220;egde on edge&#8221; case. As reminder, Sirius allows to have an edge as source or target of another edge. This kind of construction is not allowed by ELK. Sirius 6.5.0 introduces a specific transformation from Sirius graph to EKL graph (and reciprocally) in</li>
+		</ul>
+		<p>order, despite this problem, to have a satisfactory layout result. This new behavior has been tested with 
+			<a href="https://www.eclipse.org/elk/reference/algorithms/org-eclipse-elk-layered.html">ELK Layered</a> algorithm with option 
+			<a href="https://www.eclipse.org/elk/reference/options/org-eclipse-elk-layered-layering-strategy.html">
+				<code>Node Layering Strategy</code>
+			</a> set to 
+			<code>NETWORK_SIMPLEX</code>. There is no guarantee with other kind of layouts. All cases are not supported. Further additional developments are needed to support more. There are probably still some constructions not correctly handled but it is a first step. As example, the edges with label(s) have not been tested. Here is a list of supported/tested cases:
+		</p>
+		<ul>
+			<li>
+				<ul>
+					<li>An edge having another edge as source,</li>
+					<li>An edge having another edge as target,</li>
+					<li>An edge that is the source of several edges,</li>
+					<li>An edge that is the target of several edges.</li>
+				</ul>
+			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>

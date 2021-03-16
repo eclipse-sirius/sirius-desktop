@@ -103,4 +103,62 @@
       <eClassifiers xsi:type="ecore:EClass" name="C2"/>
     </eSubpackages>
   </eSubpackages>
+  <eSubpackages name="simpleEdgeOnEdge">
+    <eClassifiers xsi:type="ecore:EClass" name="C1">
+      <eOperations name="op1" eType="#//simpleEdgeOnEdge/C2"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="toC7" eType="#//simpleEdgeOnEdge/C2"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="C2"/>
+  </eSubpackages>
+  <eSubpackages name="complexeEdgeOnEdge">
+    <eClassifiers xsi:type="ecore:EClass" name="C1">
+      <eOperations name="op1" eType="#//complexeEdgeOnEdge/C2"/>
+      <eOperations name="op3" eType="#//complexeEdgeOnEdge/C2"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="toC7" eType="#//complexeEdgeOnEdge/C2"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="C2">
+      <eStructuralFeatures xsi:type="ecore:EReference" name="toC8" eType="#//complexeEdgeOnEdge/C3"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="C3">
+      <eOperations name="op2" eType="#//complexeEdgeOnEdge/C4"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="toC9" eType="#//complexeEdgeOnEdge/C4"/>
+    </eClassifiers>
+    <eClassifiers xsi:type="ecore:EClass" name="C4"/>
+  </eSubpackages>
+  <eSubpackages name="levels1EdgeOnEdge">
+    <eClassifiers xsi:type="ecore:EClass" name="C1">
+      <eOperations name="op1" eType="#//levels1EdgeOnEdge/a/b/c/C2"/>
+      <eStructuralFeatures xsi:type="ecore:EReference" name="toC2" eType="#//levels1EdgeOnEdge/a/b/c/C2"/>
+    </eClassifiers>
+    <eSubpackages name="a">
+      <eSubpackages name="b">
+        <eSubpackages name="c">
+          <eClassifiers xsi:type="ecore:EClass" name="C2">
+            <eOperations name="op2" eType="#//levels1EdgeOnEdge/a/b/c/C2"/>
+            <eOperations name="op3" eType="#//levels1EdgeOnEdge/a/b/c/C2"/>
+            <eOperations name="op4" eType="#//levels1EdgeOnEdge/a/b/c/C2"/>
+            <eOperations name="op5" eType="#//levels1EdgeOnEdge/a/b/c/C2"/>
+          </eClassifiers>
+        </eSubpackages>
+      </eSubpackages>
+    </eSubpackages>
+  </eSubpackages>
+  <eSubpackages name="levels2EdgeOnEdge">
+    <eSubpackages name="a">
+      <eSubpackages name="b">
+        <eSubpackages name="c">
+          <eClassifiers xsi:type="ecore:EClass" name="C1">
+            <eOperations name="op2" eType="#//levels2EdgeOnEdge/a/b/c/C1"/>
+            <eOperations name="op3" eType="#//levels2EdgeOnEdge/a/b/c/C1"/>
+            <eOperations name="op4" eType="#//levels2EdgeOnEdge/a/b/c/C1"/>
+            <eOperations name="op5" eType="#//levels2EdgeOnEdge/a/b/c/C1"/>
+          </eClassifiers>
+          <eClassifiers xsi:type="ecore:EClass" name="C2">
+            <eOperations name="op1" eType="#//levels2EdgeOnEdge/a/b/c/C1"/>
+            <eStructuralFeatures xsi:type="ecore:EReference" name="toC1" eType="#//levels2EdgeOnEdge/a/b/c/C1"/>
+          </eClassifiers>
+        </eSubpackages>
+      </eSubpackages>
+    </eSubpackages>
+  </eSubpackages>
 </ecore:EPackage>

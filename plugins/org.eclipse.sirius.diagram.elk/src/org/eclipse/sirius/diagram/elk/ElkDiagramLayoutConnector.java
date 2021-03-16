@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2020 Kiel University and others.
+ * Copyright (c) 2009, 2021 Kiel University and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import java.util.Collections;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -37,6 +38,7 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
+import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.elk.alg.layered.options.CrossingMinimizationStrategy;
 import org.eclipse.elk.alg.layered.options.LayeredOptions;
@@ -91,6 +93,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.TopGraphicEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
+import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
@@ -188,6 +191,18 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
     /** the offset to add for all coordinates. */
     public static final IProperty<KVector> COORDINATE_OFFSET = new Property<KVector>("gmf.coordinateOffset");
 
+    /**
+     * Used in case of edge on edge: the source edge or target edge is split into two edges for the graph given to ELK.
+     * Only the first one is associated with the ConnectionEditPart. This property is used to retrieve the second edge
+     * during the layout application into Sirius.
+     */
+    public static final IProperty<ElkEdge> SECOND_PART_OF_SPLIT_EDGE = new Property<ElkEdge>("org.eclipse.sirius.diagram.elk.edge.split");
+
+    /**
+     * Name given to the node between the split edge.
+     */
+    public static final String EDGE_ON_EDGE_ID_NODE = "virtualNodeForEdgeToEdgeCase";
+
     public static final String PREF_EXEC_TIME_MEASUREMENT = "elk.exectime.measure";
 
     /**
@@ -195,6 +210,19 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      * this option is set, it won't do so (during the application of the layout: {@link #transferLayout(LayoutMapping)}.
      */
     public static final IProperty<Boolean> NODE_SIZE_FIXED_SIZE = new Property<Boolean>("org.eclipse.sirius.diagram.elk.fixedNodeSize", false, null, null);
+
+    /**
+     * Value used for split edge for property {@link LayeredOptions#PRIORITY_STRAIGHTNESS}. It allows to give the
+     * priority for "straight aspect" to split edges (compared to edges using split edge as source or target).
+     */
+    private static final int PRIORITY_STRAIGHTNESS_SPLIT_EDGE_VALUE = 10;
+
+    /**
+     * Value used for split edge for property {@link LayeredOptions#PRIORITY_DIRECTION}. It allows to give the priority
+     * for "straight aspect" to split edges (compared to edges using split edge as source or target).
+     */
+    private static final int PRIORITY_DIRECTION_SPLIT_EDGE_VALUE = 10;
+
 
     @Inject
     private IEditPartFilter editPartFilter;
@@ -1497,82 +1525,184 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             }
             applyOptionsRelatedToElementTarget(edge, elkTargetToOptionsOverrideMap);
             BiMap<Object, ElkGraphElement> inverseGraphMap = mapping.getGraphMap().inverse();
-
-            // find a proper source node and source port
-            ElkGraphElement sourceElem;
-            EditPart sourceObj = connection.getSource();
-            if (sourceObj instanceof ConnectionEditPart) {
-                sourceElem = inverseGraphMap.get(((ConnectionEditPart) sourceObj).getSource());
-                if (sourceElem == null) {
-                    sourceElem = inverseGraphMap.get(((ConnectionEditPart) sourceObj).getTarget());
-                }
-            } else {
-                sourceElem = inverseGraphMap.get(sourceObj);
-            }
-
-            ElkConnectableShape sourceShape = null;
-            ElkPort sourcePort = null;
-            ElkNode sourceNode = null;
-            if (sourceElem instanceof ElkNode) {
-                sourceNode = (ElkNode) sourceElem;
-                sourceShape = sourceNode;
-            } else if (sourceElem instanceof ElkPort) {
-                sourcePort = (ElkPort) sourceElem;
-                sourceNode = sourcePort.getParent();
-                sourceShape = sourcePort;
-            } else {
+            ElkGraphElement sourceElement = inverseGraphMap.get(connection.getSource());
+            ElkGraphElement targetElement = inverseGraphMap.get(connection.getTarget());
+            if (sourceElement == null || targetElement == null) {
                 continue;
             }
+            ElkNode edgeContainer = ElkDiagramLayoutConnector.findLowestCommonAncestor(sourceElement, targetElement);
 
-            // find a proper target node and target port
-            ElkGraphElement targetElem;
-            EditPart targetObj = connection.getTarget();
-            if (targetObj instanceof ConnectionEditPart) {
-                targetElem = inverseGraphMap.get(((ConnectionEditPart) targetObj).getTarget());
-                if (targetElem == null) {
-                    targetElem = inverseGraphMap.get(((ConnectionEditPart) targetObj).getSource());
-                }
-            } else {
-                targetElem = inverseGraphMap.get(targetObj);
-            }
-
-            ElkConnectableShape targetShape = null;
-            ElkNode targetNode = null;
-            ElkPort targetPort = null;
-            if (targetElem instanceof ElkNode) {
-                targetNode = (ElkNode) targetElem;
-                targetShape = targetNode;
-            } else if (targetElem instanceof ElkPort) {
-                targetPort = (ElkPort) targetElem;
-                targetNode = targetPort.getParent();
-                targetShape = targetPort;
-            } else {
-                continue;
-            }
-
-            // calculate offset for edge and label coordinates
-            ElkNode edgeContainment = ElkGraphUtil.findLowestCommonAncestor(sourceNode, targetNode);
-
+            // Calculate offset for edge and label coordinates
             KVector offset = new KVector();
-            ElkUtil.toAbsolute(offset, edgeContainment);
+            ElkUtil.toAbsolute(offset, edgeContainer);
 
             if (!isOppositeEdge) {
-                // set source and target
-                edge.getSources().add(sourceShape);
-                edge.getTargets().add(targetShape);
-
-                // now that source and target are set, put the edge into the
-                // graph
-                edgeContainment.getContainedEdges().add(edge);
+                // Put the edge into the graph
+                edgeContainer.getContainedEdges().add(edge);
 
                 mapping.getGraphMap().put(edge, connection);
 
                 // store the current coordinates of the edge
                 setEdgeLayout(edge, connection, offset);
+                // Connect this edge to corresponding source and target.
+                ElkConnectableShape sourceShape = getRealElementToConnectTo(sourceElement, getStartingPoint(edge), mapping, elkTargetToOptionsOverrideMap);
+                edge.getSources().add(sourceShape);
+                ElkConnectableShape targetShape = getRealElementToConnectTo(targetElement, getEndingPoint(edge), mapping, elkTargetToOptionsOverrideMap);
+                edge.getTargets().add(targetShape);
             }
 
             // process edge labels
             processEdgeLabels(mapping, connection, edge, edgeLabelPlacement, offset, elkTargetToOptionsOverrideMap);
+        }
+    }
+
+    private PrecisionPoint getStartingPoint(ElkEdge edge) {
+        ElkEdgeSection section = edge.getSections().get(0);
+        return new PrecisionPoint(section.getStartX(), section.getStartY());
+    }
+
+    private PrecisionPoint getEndingPoint(ElkEdge edge) {
+        ElkEdgeSection section = edge.getSections().get(0);
+        return new PrecisionPoint(section.getEndX(), section.getEndY());
+    }
+
+    /**
+     * This method returns the {@link ElkConnectableShape} which has to be used for the current edge.</BR>
+     * In a simple case, this method only returns the <code>graphElement</code> as is (when the graphElement is directly
+     * a {@link ElkConnectableShape}.</BR>
+     * But if the <code>graphElement</code> is another ElkEdge, we have to adapt the model as ELK do not handle "edge on
+     * edge" case. In this case, the source/target edge, called destination edge, is split into two edges with an
+     * intermediate virtual node. This virtual node is used as source/target of the current edge.
+     * 
+     * @param graphElement
+     *            The source or the target of an edge.
+     * @param pointToCreateNodeIfNecessary
+     *            The point where to create the virtual node (starting point of the edge if graphElement is the source,
+     *            ending point of the edge is graphElement is the target).
+     * @param mapping
+     *            the layout mapping
+     * @param elkTargetToOptionsOverrideMap
+     *            a map of option targets to corresponding options.
+     * @return the {@link ElkConnectableShape} which has to be used for the current edge
+     */
+    private ElkConnectableShape getRealElementToConnectTo(ElkGraphElement graphElement, PrecisionPoint pointToCreateNodeIfNecessary, LayoutMapping mapping,
+            Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
+        ElkConnectableShape result = null;
+        if (graphElement instanceof ElkConnectableShape) {
+            result = (ElkConnectableShape) graphElement;
+        } else if (graphElement instanceof ElkEdge) {
+            // Edge on edge is not a possible construction in ELK (see meta model for details:
+            // https://www.eclipse.org/elk/documentation/tooldevelopers/graphdatastructure.html#the-meta-model).
+            // So we adapt this construction by inserting a virtual Node corresponding to the junction between the 2
+            // edges.
+            ElkEdge secondPartOfEdge = graphElement.getProperty(ElkDiagramLayoutConnector.SECOND_PART_OF_SPLIT_EDGE);
+            if (secondPartOfEdge != null) {
+                // This destination edge has been already split: this edge is used several times as source or target. In
+                // this case, we reuse the existing "virtual" node.
+                result = (ElkNode) ((ElkEdge) graphElement).getTargets().get(0);
+            } else {
+                ElkNode edgeContainer = ((ElkEdge) graphElement).getContainingNode();
+                ElkNode newNode = ElkGraphUtil.createNode(edgeContainer);
+                applyOptionsRelatedToElementTarget(newNode, elkTargetToOptionsOverrideMap);
+                newNode.setIdentifier(EDGE_ON_EDGE_ID_NODE);
+                newNode.setX(pointToCreateNodeIfNecessary.preciseX());
+                newNode.setY(pointToCreateNodeIfNecessary.preciseY());
+                newNode.setDimensions(1, 1);
+                newNode.setProperty(CoreOptions.NODE_SIZE_CONSTRAINTS, SizeConstraint.fixed());
+                if (edgeContainer != null) {
+                    edgeContainer.getChildren().add(newNode);
+                    applyParentNodeOption(edgeContainer, elkTargetToOptionsOverrideMap);
+                }
+                result = newNode;
+                // Split the destination edge into 2 edges one from source to virtual node and another one from
+                // virtual node to target.
+                splitEdge((ElkEdge) graphElement, newNode, mapping, elkTargetToOptionsOverrideMap);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * This method splits the <code>edgeToSplit</code> into 2 edges, one from the current source to the
+     * <code>intermediateNode</code> node and the another one from <code>intermediateNode</code> to target.
+     * 
+     * @param edgeToSplit
+     *            The edge to split
+     * @param intermediateNode
+     *            The node to pass through
+     * @param mapping
+     *            the layout mapping
+     * @param elkTargetToOptionsOverrideMap
+     *            a map of option targets to corresponding options.
+     */
+    private void splitEdge(ElkEdge edgeToSplit, ElkNode intermediateNode, LayoutMapping mapping, Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
+        Object editPart = mapping.getGraphMap().get(edgeToSplit);
+        if (editPart instanceof ConnectionEditPart) {
+            // Use the existing edge as the first part of the split edge (from source to intermediate node).
+            // To force that this edge is as straight as possible (better layout result), use the layered option
+            // "LayeredOptions.PRIORITY_STRAIGHTNESS". 10 is used arbitrary (more than 1 by default).
+            // TODO : This is OK only if Layered layout is used. See if there is equivalent option for other kind of
+            // layout.
+            edgeToSplit.setProperty(LayeredOptions.PRIORITY_STRAIGHTNESS, PRIORITY_STRAIGHTNESS_SPLIT_EDGE_VALUE);
+            edgeToSplit.getTargets().add(intermediateNode);
+            // TODO : There is maybe something specific to handle edge's labels (coordinates are maybe wrong after this
+            // split).
+            // Create second edge part
+            int indexOfEdgeToSplit = edgeToSplit.getContainingNode().getContainedEdges().indexOf(edgeToSplit);
+            ElkEdge secondEdge = ElkGraphUtil.createEdge(null);
+            // Add the new edge just after the edge to split: and so before the other edge having it as source or
+            // target. This allows that the layout result is more straighten for the edges "edgeToSplit-secondEdge" than
+            // for edge having it as source or target.
+            edgeToSplit.getContainingNode().getContainedEdges().add(indexOfEdgeToSplit + 1, secondEdge);
+            applyOptionsRelatedToElementTarget(secondEdge, elkTargetToOptionsOverrideMap);
+            secondEdge.getSources().add(intermediateNode);
+            secondEdge.getTargets().add(edgeToSplit.getTargets().get(0));
+            edgeToSplit.getTargets().remove(0);
+            secondEdge.getProperties().putAll(edgeToSplit.getProperties());
+            // The layout result is better is this second part as also a notion of priority direction
+            secondEdge.setProperty(LayeredOptions.PRIORITY_DIRECTION, PRIORITY_DIRECTION_SPLIT_EDGE_VALUE);
+            // Keep a link between first edge part and second edge part (used later to apply layout result into Sirius)
+            edgeToSplit.getProperties().put(ElkDiagramLayoutConnector.SECOND_PART_OF_SPLIT_EDGE, secondEdge);
+
+            ElkEdgeSection originalSection = edgeToSplit.getSections().get(0);
+            // Create sections according to edgeToSplit and intermediateNode
+            ElkEdgeSection secondEdgeSection = ElkGraphUtil.createEdgeSection(secondEdge);
+            Point originalEndingPoint = new PrecisionPoint(originalSection.getEndX(), originalSection.getEndY());
+            Point intermediateNodeLocation = new PrecisionPoint(intermediateNode.getX(), intermediateNode.getY());
+            Point startPoint = new PrecisionPoint(originalSection.getStartX(), originalSection.getStartY());
+            Point endPoint;
+            if (originalSection.getBendPoints().isEmpty()) {
+                originalSection.setEndX(intermediateNodeLocation.x);
+                originalSection.setEndY(intermediateNodeLocation.y);
+                secondEdgeSection.setStartX(intermediateNodeLocation.x);
+                secondEdgeSection.setStartY(intermediateNodeLocation.y);
+            } else {
+                boolean isOnSecondPart = false;
+                for (Iterator<ElkBendPoint> iterator = originalSection.getBendPoints().iterator(); iterator.hasNext();) {
+                    ElkBendPoint bendPoint = iterator.next();
+                    endPoint = new PrecisionPoint(bendPoint.getX(), bendPoint.getY());
+                    if (new LineSeg(startPoint, endPoint).containsPoint(intermediateNodeLocation, 1)) {
+                        originalSection.setEndX(intermediateNodeLocation.x);
+                        originalSection.setEndY(intermediateNodeLocation.y);
+                        isOnSecondPart = true;
+                        secondEdgeSection.setStartX(intermediateNodeLocation.x);
+                        secondEdgeSection.setStartY(intermediateNodeLocation.y);
+                    }
+                    if (isOnSecondPart) {
+                        ElkGraphUtil.createBendPoint(secondEdgeSection, endPoint.preciseX(), endPoint.preciseY());
+                        iterator.remove();
+                    }
+                    startPoint = endPoint;
+                }
+                if (isOnSecondPart) {
+                    originalSection.setEndX(intermediateNodeLocation.x);
+                    originalSection.setEndY(intermediateNodeLocation.y);
+                    secondEdgeSection.setStartX(intermediateNodeLocation.x);
+                    secondEdgeSection.setStartY(intermediateNodeLocation.y);
+                }
+            }
+            secondEdgeSection.setEndX(originalEndingPoint.preciseX());
+            secondEdgeSection.setEndY(originalEndingPoint.preciseY());
         }
     }
 
@@ -1753,4 +1883,37 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         return null;
     }
 
+    /**
+     * Returns the lowest common ancestor of the given two graph elements. If the two graph elements are not part of the
+     * same graph (that is, their root nodes differ), there is no common ancestor.
+     *
+     * @param graphElement1
+     *            the first graph element.
+     * @param graphElement2
+     *            the second graph element.
+     * @return the lowest common ancestor or {@code null} if there is none.
+     */
+    public static ElkNode findLowestCommonAncestor(final ElkGraphElement graphElement1, final ElkGraphElement graphElement2) {
+        ElkNode node1 = null;
+        if (graphElement1 instanceof ElkPort) {
+            node1 = ((ElkPort) graphElement1).getParent();
+        } else if (graphElement1 instanceof ElkNode) {
+            node1 = (ElkNode) graphElement1;
+        } else if (graphElement1 instanceof ElkEdge) {
+            node1 = ElkGraphUtil.findBestEdgeContainment((ElkEdge) graphElement1);
+        }
+        ElkNode node2 = null;
+        if (graphElement2 instanceof ElkPort) {
+            node2 = ((ElkPort) graphElement2).getParent();
+        } else if (graphElement2 instanceof ElkNode) {
+            node2 = (ElkNode) graphElement2;
+        } else if (graphElement2 instanceof ElkEdge) {
+            node2 = ElkGraphUtil.findBestEdgeContainment((ElkEdge) graphElement2);
+        }
+        if (node1 != null && node2 != null) {
+            return ElkGraphUtil.findLowestCommonAncestor(node1, node2);
+        } else {
+            return null;
+        }
+    }
 }

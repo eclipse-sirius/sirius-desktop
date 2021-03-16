@@ -21,10 +21,12 @@ import java.util.Optional;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.draw2d.Connection;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.Label;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
+import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -46,6 +48,8 @@ import org.eclipse.gmf.runtime.diagram.ui.render.util.DiagramImageUtils;
 import org.eclipse.gmf.runtime.diagram.ui.requests.ArrangeRequest;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
+import org.eclipse.gmf.runtime.draw2d.ui.geometry.LineSeg;
+import org.eclipse.gmf.runtime.draw2d.ui.geometry.PointListUtilities;
 import org.eclipse.gmf.runtime.draw2d.ui.internal.figures.AnimatableScrollPane;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.gmf.runtime.notation.Diagram;
@@ -712,11 +716,9 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
                     assertEquals("The y GMF coordinate of the label of the border node does not correspond to a location under its border node.", borderNodeBounds.height() + 1,
                             gmfLabelLocation.getY());
                     assertEquals("Even if GMF coordinates are OK, the label of the border node is visually not horizontally centered on its border node (draw2d x coordinate).",
-                            labelBounds.getCenter().x(),
-                            borderNodeBounds.getCenter().x());
+                            labelBounds.getCenter().x(), borderNodeBounds.getCenter().x());
                     assertEquals("Even if GMF coordinates are OK, the label of the border node is visually not under the bottom side of its border node (draw2d y coordinate).",
-                            labelBounds.getTop().y(),
-                            borderNodeBounds.getBottom().y() + 1);
+                            labelBounds.getTop().y(), borderNodeBounds.getBottom().y() + 1);
                 }
             }
             if (!labelFound) {
@@ -937,7 +939,6 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     public void testArrangeSelectionResultWithScrollOnSomeContainerChildren() {
         testArrangeSelectionResultOnSomeContainerChildren("diagramWithContainerAndScroll");
     }
-
 
     /**
      * Makes sure that the result of an arrange selection of some children of a container respect the following rules:
@@ -1518,9 +1519,219 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      *            The name of the diagram to use
      */
     public void testArrangeAllResultWithEdgeOutsideOfBoundingBox() {
-        testArrangeAllResult_ForPackageResetOrigin("resetOrigin3", false, true);
+        testArrangeAllResult_ForPackageResetOrigin("resetOrigin3", true, false);
     }
 
+    /**
+     * Makes sure that the result of an arrange containing an edge on edge respect the following rules:
+     * <UL>
+     * <LI>The top left corner of the bounding box is {20, 20}</LI>
+     * <LI>The main edge from C1 to C2 is a straight line (2 points on the same y axis)</LI>
+     * <LI>The edge on edge has 2 sections, and its end point is the only point on the main edge</LI>
+     * <UL>
+     */
+    public void testArrangeAll_edgeOnEdge_Simple_EdgeAsTarget() {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_subClasses for simpleEdgeOnEdge");
+        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", true);
+        Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
+        checkEdgeWithEdgeAsTarget("op1", targetConnection, 3);
+    }
+
+    /**
+     * Makes sure that the result of an arrange containing an edge on edge respect the following rules:
+     * <UL>
+     * <LI>The top left corner of the bounding box is {20, 20}</LI>
+     * <LI>The main edge from C1 to C2 is a straight line (2 points on the same y axis)</LI>
+     * <LI>The edge on edge, from op1 to other edge, has 2 sections, and its start point is the only point on the main
+     * edge</LI>
+     * <UL>
+     */
+    public void testArrangeAll_edgeOnEdge_Simple_EdgeAsSource() {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_subClassesReverse for simpleEdgeOnEdge");
+        DEdgeEditPart sourceEdgeEditPart = checkEdge("C1", "C2", true);
+        Connection sourceConnection = sourceEdgeEditPart.getConnectionFigure();
+        checkEdgeWithEdgeAsSource("op1", sourceConnection, 3);
+    }
+
+    /**
+     * Makes sure that the result of an arrange containing an edge on edge respect the following rules:
+     * <UL>
+     * <LI>The top left corner of the bounding box is {20, 20}</LI>
+     * <LI>The main edge from C1 to C2 is a straight line (2 points on the same y axis)</LI>
+     * <LI>The main edge from C3 to C4 is a straight line (2 points on the same y axis)</LI>
+     * <LI>The edge on edge, from op1 to edge C1-C2, has 2 sections, and its end point is the only point on the main
+     * edge</LI>
+     * <LI>The edge on edge, from op3 to edge C1-C2, has 2 sections, and its end point is the only point on the main
+     * edge</LI>
+     * <LI>The edge on edge, from op2 to edge C3-C4, has 2 sections, and its end point is the only point on the main
+     * edge</LI>
+     * <UL>
+     */
+    public void testArrangeAll_edgeOnEdge_Complexe_EdgeAsTarget() {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_subClasses for complexeEdgeOnEdge");
+        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", true);
+        Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
+        checkEdgeWithEdgeAsTarget("op1", targetConnection, 3);
+        checkEdgeWithEdgeAsTarget("op3", targetConnection, 3);
+        targetEdgeEditPart = checkEdge("C3", "C4", true);
+        targetConnection = targetEdgeEditPart.getConnectionFigure();
+        checkEdgeWithEdgeAsTarget("op2", targetConnection, 3);
+    }
+
+    /**
+     * Makes sure that the result of an arrange containing an edge on edge respect the following rules:
+     * <UL>
+     * <LI>The top left corner of the bounding box is {20, 20}</LI>
+     * <LI>The main edge from C1 to C2 is a straight line (2 points on the same y axis)</LI>
+     * <LI>The main edge from C3 to C4 is a straight line (2 points on the same y axis)</LI>
+     * <LI>The edge on edge, from edge C1-C2 to op1, has 2 sections, and its start point is the only point on the main
+     * edge</LI>
+     * <LI>The edge on edge, from edge C1-C2 to op3, has 2 sections, and its start point is the only point on the main
+     * edge</LI>
+     * <LI>The edge on edge, from edge C3-C4 to op2, has 2 sections, and its start point is the only point on the main
+     * edge</LI>
+     * <UL>
+     */
+    public void testArrangeAll_edgeOnEdge_Complexe_EdgeAsSource() {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_subClassesReverse for complexeEdgeOnEdge");
+        DEdgeEditPart sourceEdgeEditPart = checkEdge("C1", "C2", true);
+        Connection sourceConnection = sourceEdgeEditPart.getConnectionFigure();
+        checkEdgeWithEdgeAsSource("op1", sourceConnection, 3);
+        checkEdgeWithEdgeAsSource("op3", sourceConnection, 3);
+        // TODO : I failed to get a layout setting that force edges used as source or target to be straight. This is the
+        // case here.
+        // I asked on gitter to see if someone has an idea: https://gitter.im/eclipse/elk?at=6059b3cd88edaa1eb8d56f8d
+        // In this context, we adapt the test (no check about horizontality and different number of expected points.
+        sourceEdgeEditPart = checkEdge("C3", "C4", false);
+        sourceConnection = sourceEdgeEditPart.getConnectionFigure();
+        checkEdgeWithEdgeAsSource("op2", sourceConnection, 2);
+    }
+
+    /**
+     * Makes sure that the result of an arrange containing an edge on edge and with edges with different containing
+     * levels respect the following rules:
+     * <UL>
+     * <LI>The top left corner of the bounding box is {20, 20}</LI>
+     * <LI>The main edge from C1 to C2 is a straight line (2 points on the same y axis)</LI>
+     * <LI>The other edges, pointing to it, are "rectilinear" with expected number of bendpoints, and their end points
+     * are the only points on the main edge</LI>
+     * <UL>
+     */
+    public void testArrangeAll_edgeOnEdge_DifferentLevel1_EdgeAsTarget() {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackage for levels1EdgeOnEdge", true, false);
+        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", false);
+        Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
+        checkEdgeWithEdgeAsTarget("op1", targetConnection, 2);
+        checkEdgeWithEdgeAsTarget("op2", targetConnection, 5);
+        checkEdgeWithEdgeAsTarget("op3", targetConnection, 5);
+        checkEdgeWithEdgeAsTarget("op4", targetConnection, 5);
+        checkEdgeWithEdgeAsTarget("op5", targetConnection, 5);
+    }
+
+    /**
+     * Makes sure that the result of an arrange containing an edge on edge and with edges with different containing
+     * levels respect the following rules:
+     * <UL>
+     * <LI>The top left corner of the bounding box is {20, 20}</LI>
+     * <LI>The main edge from C1 to C2 is a straight line (2 points on the same y axis)</LI>
+     * <LI>The other edges, pointing to it, are "rectilinear" with expected number of bendpoints, and their end points
+     * are the only points on the main edge</LI>
+     * <UL>
+     */
+    public void testArrangeAll_edgeOnEdge_DifferentLevel2_EdgeAsTarget() {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackageWithOpAtRoot for levels1EdgeOnEdge");
+        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", true);
+        Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
+        checkEdgeWithEdgeAsTarget("op1", targetConnection, 3);
+        checkEdgeWithEdgeAsTarget("op2", targetConnection, 3);
+        checkEdgeWithEdgeAsTarget("op3", targetConnection, 3);
+        checkEdgeWithEdgeAsTarget("op4", targetConnection, 3);
+        checkEdgeWithEdgeAsTarget("op5", targetConnection, 3);
+    }
+
+    /**
+     * Makes sure that the result of an arrange containing an edge on edge and with edges with different containing
+     * levels respect the following rules:
+     * <UL>
+     * <LI>The top left corner of the bounding box is {20, 20}</LI>
+     * <LI>The main edge from C1 to C2 is a straight line (2 points on the same y axis)</LI>
+     * <LI>The other edges, pointing to it, are "rectilinear" with expected number of bendpoints, and their end points
+     * are the only points on the main edge</LI>
+     * <UL>
+     */
+    public void testArrangeAll_edgeOnEdge_DifferentLevel3_EdgeAsTarget() {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackageWithOpAtRoot for levels2EdgeOnEdge");
+        DEdgeEditPart targetEdgeEditPart = checkEdge("C2", "C1", true);
+        Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
+        checkEdgeWithEdgeAsTarget("op1", targetConnection, 3);
+        checkEdgeWithEdgeAsTarget("op2", targetConnection, 5);
+        checkEdgeWithEdgeAsTarget("op3", targetConnection, 5);
+        checkEdgeWithEdgeAsTarget("op4", targetConnection, 5);
+        checkEdgeWithEdgeAsTarget("op5", targetConnection, 5);
+    }
+
+    /**
+     * Makes sure that the result of an arrange containing an edge on edge and with edges with different containing
+     * levels respect the following rules:
+     * <UL>
+     * <LI>The top left corner of the bounding box is {20, 20}</LI>
+     * <LI>The main edge from C1 to C2 is a straight line (2 points on the same y axis)</LI>
+     * <LI>The other edges, starting from it, are "rectilinear" with expected number of bendpoints, and their start
+     * points are the only points on the main edge</LI>
+     * <UL>
+     */
+    public void testArrangeAll_edgeOnEdge_DifferentLevel1_EdgeAsSource() {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackageReverse for levels1EdgeOnEdge");
+        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", false);
+        Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
+        checkEdgeWithEdgeAsSource("op1", targetConnection, 3);
+        checkEdgeWithEdgeAsSource("op2", targetConnection, 3);
+        checkEdgeWithEdgeAsSource("op3", targetConnection, 2);
+        checkEdgeWithEdgeAsSource("op4", targetConnection, 3);
+        checkEdgeWithEdgeAsSource("op5", targetConnection, 3);
+    }
+
+    /**
+     * Makes sure that the result of an arrange containing an edge on edge and with edges with different containing
+     * levels respect the following rules:
+     * <UL>
+     * <LI>The top left corner of the bounding box is {20, 20}</LI>
+     * <LI>The main edge from C1 to C2 is a straight line (2 points on the same y axis)</LI>
+     * <LI>The other edges, starting from it, are "rectilinear" with expected number of bendpoints, and their start
+     * points are the only points on the main edge</LI>
+     * <UL>
+     */
+    public void testArrangeAll_edgeOnEdge_DifferentLevel2_EdgeAsSource() {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackageWithOpAtRootReverse for levels1EdgeOnEdge");
+        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", false);
+        Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
+        checkEdgeWithEdgeAsSource("op1", targetConnection, 3);
+        checkEdgeWithEdgeAsSource("op2", targetConnection, 2);
+        checkEdgeWithEdgeAsSource("op3", targetConnection, 4);
+        checkEdgeWithEdgeAsSource("op4", targetConnection, 4);
+        checkEdgeWithEdgeAsSource("op5", targetConnection, 4);
+    }
+
+    /**
+     * Makes sure that the result of an arrange containing an edge on edge and with edges with different containing
+     * levels respect the following rules:
+     * <UL>
+     * <LI>The top left corner of the bounding box is {20, 20}</LI>
+     * <LI>The main edge from C1 to C2 is a straight line (2 points on the same y axis)</LI>
+     * <LI>The other edges, starting from it, are "rectilinear" with expected number of bendpoints, and their start
+     * points are the only points on the main edge</LI>
+     * <UL>
+     */
+    public void testArrangeAll_edgeOnEdge_DifferentLevel3_EdgeAsSource() {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackageWithOpAtRootReverse for levels2EdgeOnEdge");
+        DEdgeEditPart targetEdgeEditPart = checkEdge("C2", "C1", true);
+        Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
+        checkEdgeWithEdgeAsSource("op1", targetConnection, 5);
+        checkEdgeWithEdgeAsSource("op2", targetConnection, 5);
+        checkEdgeWithEdgeAsSource("op3", targetConnection, 3);
+        checkEdgeWithEdgeAsSource("op4", targetConnection, 5);
+        checkEdgeWithEdgeAsSource("op5", targetConnection, 5);
+    }
     /**
      * Makes sure that no diagram element are not in the margin area of {20x20}.<BR/>
      * This method should be used for diagram on the package "resetOriginCases".
@@ -1562,10 +1773,10 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         // * jumpLinkSize, ie 10 pixels , used in
         // org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx#getBounds())
         // * expand, ie 1 pixel, used in org.eclipse.draw2d.Polyline.getBounds()
-        if (withHorizontalEdgeCase) {
+        if (withVerticalEdgeCase) {
             boundingbox.shrink(15, 0);
         }
-        if (withVerticalEdgeCase) {
+        if (withHorizontalEdgeCase) {
             boundingbox.shrink(0, 15);
         }
         assertEquals("Wrong x coordinate for the bounding box of all diagram elements.", ResetOriginChangeModelOperation.MARGIN, boundingbox.x());
@@ -1798,7 +2009,6 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         return topLeftCorner;
     }
 
-
     /**
      * Move the edit part.
      * 
@@ -1816,5 +2026,148 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         request.setType(RequestConstants.REQ_MOVE);
         editPart.performRequest(request);
         TestsUtil.synchronizationWithUIThread();
+    }
+
+    private void checkEdgeWithEdgeAsTarget(String sourceNodeName, Connection targetConnection, int expectedNumberOfPoints) {
+        DEdgeEditPart edgePointingToAnotherEdge = getEdgeWithNodeAsSource(sourceNodeName);
+        Connection connectionFigure = edgePointingToAnotherEdge.getConnectionFigure();
+        PointList points = connectionFigure.getPoints();
+        assertEquals("Wrong number of points for the edge between \"" + sourceNodeName + "\" and another edge.", expectedNumberOfPoints, points.size());
+        List<Object> targetLineSegments = PointListUtilities.getLineSegments(targetConnection.getPoints());
+        assertTrue("The last point of the egde between \"" + sourceNodeName + "\" and another edge should be on the target edge.", containsPoint(targetLineSegments, points.getLastPoint()));
+        for (int i = 0; i < points.size() - 1; i++) {
+            Point pointToTest = points.getPoint(i);
+            assertFalse("Only the last point of the egde between \"" + sourceNodeName + "\" and another edge should be on the target edge. The point " + pointToTest + " is also on the target edge.",
+                    containsPoint(targetLineSegments, pointToTest));
+        }
+        if (expectedNumberOfPoints == 2) {
+            assertTrue("The edge between \"" + sourceNodeName + "\" and another edge is not horizontal.",
+                    new LineSeg(connectionFigure.getPoints().getFirstPoint(), connectionFigure.getPoints().getLastPoint()).isHorizontal());
+        } else if (expectedNumberOfPoints == 3 || expectedNumberOfPoints == 5) {
+            for (int i = 0; i < points.size() - 2; i++) {
+                LineSeg aSegment = new LineSeg(points.getPoint(i), points.getPoint(i + 1));
+                LineSeg aFollowingSegment = new LineSeg(points.getPoint(i + 1), points.getPoint(i + 2));
+                assertTrue("A segment of the egde between \"" + sourceNodeName + "\" and another edge should make a right angle with its following segment.",
+                        (aSegment.isHorizontal() && aFollowingSegment.isVertical()) || (aSegment.isVertical() && aFollowingSegment.isHorizontal()));
+            }
+        } else {
+            fail(expectedNumberOfPoints + " is not an handled value for the expectedNumberOfPoints parameters.");
+        }
+    }
+
+    private void checkEdgeWithEdgeAsSource(String targetNodeName, Connection sourceConnection, int expectedNumberOfPoints) {
+        DEdgeEditPart edgeStartingFormAnotherEdge = getEdgeWithNodeAsTarget(targetNodeName);
+        Connection connectionFigure = edgeStartingFormAnotherEdge.getConnectionFigure();
+        PointList points = connectionFigure.getPoints();
+        assertEquals("Wrong number of points for the edge between another edge and \"" + targetNodeName + "\".", expectedNumberOfPoints, points.size());
+        List<Object> sourceLineSegments = PointListUtilities.getLineSegments(sourceConnection.getPoints());
+        assertTrue("The first point of the egde between another edge and \"" + targetNodeName + "\" should be on the source edge.", containsPoint(sourceLineSegments, points.getFirstPoint()));
+        for (int i = 1; i < points.size(); i++) {
+            Point pointToTest = points.getPoint(i);
+            assertFalse("Only the first point of the egde between another edge and \"" + targetNodeName + "\" should be on the source edge. The point " + pointToTest + " is also on the source edge.",
+                    containsPoint(sourceLineSegments, pointToTest));
+        }
+        if (expectedNumberOfPoints == 2) {
+            assertTrue("The edge between another edge and \"" + targetNodeName + "\" is not horizontal.",
+                    new LineSeg(connectionFigure.getPoints().getFirstPoint(), connectionFigure.getPoints().getLastPoint()).isHorizontal());
+        } else if (expectedNumberOfPoints == 3 || expectedNumberOfPoints == 4 || expectedNumberOfPoints == 5) {
+            for (int i = 0; i < points.size() - 2; i++) {
+                LineSeg aSegment = new LineSeg(points.getPoint(i), points.getPoint(i + 1));
+                LineSeg aFollowingSegment = new LineSeg(points.getPoint(i + 1), points.getPoint(i + 2));
+                assertTrue("The first segment of the egde between another edge and \"" + targetNodeName + "\" should make a right angle with the second segment.",
+                        (aSegment.isHorizontal() && aFollowingSegment.isVertical()) || (aSegment.isVertical() && aFollowingSegment.isHorizontal()));
+            }
+        } else {
+            fail(expectedNumberOfPoints + " is not an handled value for the expectedNumberOfPoints parameters.");
+        }
+    }
+
+    private boolean containsPoint(List<Object> targetLineSegments, Point pointTotest) {
+        LineSeg lineSeg = PointListUtilities.getNearestSegment(targetLineSegments, pointTotest.x, pointTotest.y);
+        return lineSeg.containsPoint(pointTotest, 0);
+    }
+
+    /**
+     * Check that the edge between <code>sourceNodeName</code> and <code>targetNodeName</code> exists and optionally
+     * check if it is an horizontal straight line (only two points with same y axis).
+     * 
+     * @param sourceNodeName
+     *            The name of the source node of the edge
+     * @param targetNodeName
+     *            The name of the target node of the edge
+     * @param mustBeHorizontal
+     *            true if we must check that the edge is an horizontal edge, false if we want to check that the edge has
+     *            3 segments with right angle between each of them.
+     */
+    private DEdgeEditPart checkEdge(String sourceNodeName, String targetNodeName, boolean mustBeHorizontal) {
+        IGraphicalEditPart sourceNodeEditPart = getDDiagramElement(sourceNodeName);
+        IGraphicalEditPart targetNodeEditPart = getDDiagramElement(targetNodeName);
+
+        Optional<DEdgeEditPart> edgeEditPart = sourceNodeEditPart.getSourceConnections().stream().filter(DEdgeEditPart.class::isInstance).map(DEdgeEditPart.class::cast)
+                .filter(deep -> targetNodeEditPart.equals(((DEdgeEditPart) deep).getTarget())).findFirst();
+        assertTrue("The diagram should have an edge between \"" + sourceNodeName + "\" and \"" + targetNodeName + "\".", edgeEditPart.isPresent());
+        Connection connectionFigure = edgeEditPart.get().getConnectionFigure();
+        if (mustBeHorizontal) {
+            assertEquals("Wrong number of points for the edge between \"" + sourceNodeName + "\" and \"" + targetNodeName + "\".", 2, connectionFigure.getPoints().size());
+            assertTrue("The edge between \"" + sourceNodeName + "\" and \"" + targetNodeName + "\" is not horizontal.",
+                    new LineSeg(connectionFigure.getPoints().getFirstPoint(), connectionFigure.getPoints().getLastPoint()).isHorizontal());
+        } else {
+            assertEquals("Wrong number of points for the edge between \"" + sourceNodeName + "\" and \"" + targetNodeName + "\".", 4, connectionFigure.getPoints().size());
+            PointList points = connectionFigure.getPoints();
+            LineSeg firstSegment = new LineSeg(points.getPoint(0), points.getPoint(1));
+            LineSeg secondSegment = new LineSeg(points.getPoint(1), points.getPoint(2));
+            LineSeg thirdSegment = new LineSeg(points.getPoint(2), points.getPoint(3));
+            assertTrue("The first segment of the egde between \"" + sourceNodeName + "\" and \"" + targetNodeName + "\" should make a right angle with the second segment.",
+                    (firstSegment.isHorizontal() && secondSegment.isVertical()) || (firstSegment.isVertical() && secondSegment.isHorizontal()));
+            assertTrue("The second segment of the egde between \"" + sourceNodeName + "\" and \"" + targetNodeName + "\" should make a right angle with the third segment.",
+                    (secondSegment.isHorizontal() && thirdSegment.isVertical()) || (secondSegment.isVertical() && thirdSegment.isHorizontal()));
+        }
+        return edgeEditPart.get();
+    }
+
+    /**
+     * Get the diagramElement with the current name.
+     * 
+     * @param nodeName
+     *            The node of the diagram element
+     * @return the corresponding diagramElement.
+     */
+    protected IGraphicalEditPart getDDiagramElement(String nodeName) {
+        Optional<DDiagramElement> ddeSource = diagram.getDiagramElements().stream().filter(dde -> dde.getName().equals(nodeName)).findFirst();
+        assertTrue("The diagram should have a node named \"" + nodeName + "\".", ddeSource.isPresent());
+        IGraphicalEditPart sourceNodeEditPart = getEditPart(ddeSource.get());
+        assertTrue("The node for \"" + nodeName + "\" should be a AbstractDiagramContainerEditPart but was a " + sourceNodeEditPart.getClass().getSimpleName(),
+                sourceNodeEditPart instanceof AbstractDiagramContainerEditPart);
+        return sourceNodeEditPart;
+    }
+
+    /**
+     * Get the first edge having <code>sourceNodeName</code> as source node.
+     * 
+     * @param sourceNodeName
+     *            The name of the source node of the edge
+     * @return the first edge having <code>sourceNodeName</code> as source node.
+     */
+    private DEdgeEditPart getEdgeWithNodeAsSource(String sourceNodeName) {
+        IGraphicalEditPart sourceNodeEditPart = getDDiagramElement(sourceNodeName);
+
+        Optional<DEdgeEditPart> edgeEditPart = sourceNodeEditPart.getSourceConnections().stream().filter(DEdgeEditPart.class::isInstance).map(DEdgeEditPart.class::cast).findFirst();
+        assertTrue("The diagram should have an edge starting from \"" + sourceNodeName + "\".", edgeEditPart.isPresent());
+        return edgeEditPart.get();
+    }
+
+    /**
+     * Get the first edge having <code>targetNodeName</code> as target node.
+     * 
+     * @param targetNodeName
+     *            The name of the target node of the edge
+     * @return the first edge having <code>targetNodeName</code> as target node.
+     */
+    private DEdgeEditPart getEdgeWithNodeAsTarget(String targetNodeName) {
+        IGraphicalEditPart targetNodeEditPart = getDDiagramElement(targetNodeName);
+
+        Optional<DEdgeEditPart> edgeEditPart = targetNodeEditPart.getTargetConnections().stream().filter(DEdgeEditPart.class::isInstance).map(DEdgeEditPart.class::cast).findFirst();
+        assertTrue("The diagram should have an edge ending to \"" + targetNodeName + "\".", edgeEditPart.isPresent());
+        return edgeEditPart.get();
     }
 }
