@@ -410,6 +410,8 @@ public class SessionEditorInput extends URIEditorInput {
                 Session inputSession = getSession(false);
                 if (inputSession != null && inputSession.isOpen()) {
                     a = EclipseUtil.getAdapter(adapter, inputSession.getSessionResource().getURI());
+                } else if (sessionResourceURI != null) {
+                    a = EclipseUtil.getAdapter(adapter, sessionResourceURI);
                 }
             }
         }
