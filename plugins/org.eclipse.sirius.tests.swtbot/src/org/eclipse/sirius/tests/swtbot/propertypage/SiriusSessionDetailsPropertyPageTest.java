@@ -27,6 +27,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemSelected;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.ui.business.internal.session.SiriusSessionDetailsPropertyPage;
+import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.SWTBot;
@@ -161,19 +162,21 @@ public class SiriusSessionDetailsPropertyPageTest extends AbstractSiriusSwtBotGe
         strBuilder.append("Loaded representations:  3\n");
         strBuilder.append("Representation elements in loaded representations:  22\n");
         strBuilder.append("\n");
-        strBuilder.append("Loaded representations containing elements with no semantic target (2)\n");
+        strBuilder.append("Loaded representations containing elements with no semantic target(red cross decorator) (2)\n");
         strBuilder.append("  root package entities BROKEN - uid: _X14A0Gu5EeucgZBzLx9xaw\n");
         strBuilder.append("  Classes in root package - uid: _KjzRUGu6EeucgZBzLx9xaw\n");
+        strBuilder.append(Messages.SessionQuery_LoadedBrokenRepsInfo + "\n");
         strBuilder.append("\n");
         strBuilder.append("Invalid representations (0)\n");
+        strBuilder.append(Messages.SessionQuery_InvalidRepsInfo + "\n");
         strBuilder.append("\n");
         strBuilder.append("Representation descriptors details (3)\n");
         strBuilder.append(
-                "  root package entities - uid: _8t7_oGu3EeuuXbLvG4gakA - description: platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities'] - repPath: platform:/resource/DesignerTestProject/representations.aird#_8tukQGu3EeuuXbLvG4gakA -> {eClass: ecore::EPackage, name: root}  [Loaded][Diagram]\n");
+                "  root package entities - uid: _8t7_oGu3EeuuXbLvG4gakA - description: Entities - viewpoint: Design - repPath: platform:/resource/DesignerTestProject/representations.aird#_8tukQGu3EeuuXbLvG4gakA -> {eClass: ecore::EPackage, name: root}  [Loaded][Diagram]\n");
         strBuilder.append(
-                "  root package entities BROKEN - uid: _X14A0Gu5EeucgZBzLx9xaw - description: platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities'] - repPath: platform:/resource/DesignerTestProject/representations.aird#_X1N5gGu5EeucgZBzLx9xaw -> {eClass: ecore::EPackage, name: root}  [Loaded][Diagram]\n");
+                "  root package entities BROKEN - uid: _X14A0Gu5EeucgZBzLx9xaw - description: Entities - viewpoint: Design - repPath: platform:/resource/DesignerTestProject/representations.aird#_X1N5gGu5EeucgZBzLx9xaw -> {eClass: ecore::EPackage, name: root}  [Loaded][Diagram]\n");
         strBuilder.append(
-                "  Classes in root package - uid: _KjzRUGu6EeucgZBzLx9xaw - description: platform:/plugin/org.eclipse.sirius.sample.ecore.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Classes'] - repPath: platform:/resource/DesignerTestProject/representations.aird#_Kh3-sGu6EeucgZBzLx9xaw -> {eClass: ecore::EPackage, name: root}  [Loaded][EditionTable]\n");
+                "  Classes in root package - uid: _KjzRUGu6EeucgZBzLx9xaw - description: Classes - viewpoint: Design - repPath: platform:/resource/DesignerTestProject/representations.aird#_Kh3-sGu6EeucgZBzLx9xaw -> {eClass: ecore::EPackage, name: root}  [Loaded][EditionTable]\n");
         strBuilder.append("\n");
         strBuilder.append("Representations opened in an editor (1)\n");
         strBuilder.append("  root package entities - uid: _8t7_oGu3EeuuXbLvG4gakA\n");

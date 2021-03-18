@@ -624,7 +624,13 @@ public final class Messages {
     public static String SessionQuery_LoadedBrokenReps;
 
     @TranslatableMessage
+    public static String SessionQuery_LoadedBrokenRepsInfo;
+
+    @TranslatableMessage
     public static String SessionQuery_InvalidReps;
+
+    @TranslatableMessage
+    public static String SessionQuery_InvalidRepsInfo;
 
     @TranslatableMessage
     public static String SessionQuery_RepresentationDescriptorDetails;

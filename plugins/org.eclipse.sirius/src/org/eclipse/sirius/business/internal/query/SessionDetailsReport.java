@@ -21,6 +21,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.Spliterator;
 import java.util.Spliterators;
@@ -42,7 +43,6 @@ import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.DAnalysisSessionEObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -50,6 +50,7 @@ import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
@@ -118,32 +119,61 @@ public final class SessionDetailsReport {
         // Gather information
         Collection<DRepresentation> loadedReps = DialectManager.INSTANCE.getAllLoadedRepresentations(session);
         //@formatter:off
-        @SuppressWarnings("unchecked")
         List<DRepresentationElement> repElements = loadedReps.stream()
-            .flatMap(rep -> {
-                try {
-                    // Using aql allows to optimize performances
-                    return ((Collection<DRepresentationElement>) session.getInterpreter().evaluate(rep, "aql:self.eAllContents(viewpoint::DRepresentationElement)")).stream(); //$NON-NLS-1$
-                } catch (EvaluationException e) {
-                }
-                return null;
-            })
+            .flatMap(rep -> rep.getRepresentationElements().stream())
+            .filter(Objects::nonNull)
             .collect(Collectors.toList());
         
         Set<DRepresentation> representationsWithoutTarget = repElements.stream()
-            .filter(repElement -> repElement.getTarget() == null || repElement.getTarget().eResource() == null)
+            .filter(repElement -> {
+                EObject target = repElement.getTarget();
+                return target == null || target.eResource() == null;
+            })
             .map(repElement -> new DRepresentationElementQuery(repElement).getParentRepresentation())
+            .filter(Objects::nonNull)
             .collect(Collectors.toCollection(LinkedHashSet::new));
         //@formatter:on
 
         Collection<DRepresentationDescriptor> allRepDescs = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
+        List<DRepresentationDescriptor> invalidReps = new ArrayList<DRepresentationDescriptor>();
+        Map<DRepresentationDescriptor, String> repDescToTags = new LinkedHashMap<DRepresentationDescriptor, String>();
+
+        processGeneralInformation(informations, allRepDescs, invalidReps, repDescToTags);
+
+        informations.append(CR).append(Messages.SessionQuery_LoadedReps).append(TAB).append(loadedReps.size()).append(CR);
+        informations.append(Messages.SessionQuery_NbRepElements).append(TAB).append(repElements.size()).append(CR);
+
+        informations.append(CR).append(MessageFormat.format(Messages.SessionQuery_LoadedBrokenReps, representationsWithoutTarget.size())).append(CR);
+        representationsWithoutTarget.stream().map(rep -> new DRepresentationQuery(rep).getRepresentationDescriptor()).forEach(repDescriptor -> {
+            informations.append(TAB);
+            addRepresentationDescriptorSimpleInfo(informations, repDescriptor);
+            informations.append(CR);
+        });
+        informations.append(Messages.SessionQuery_LoadedBrokenRepsInfo).append(CR);
+
+        informations.append(CR).append(MessageFormat.format(Messages.SessionQuery_InvalidReps, invalidReps.size())).append(CR);
+        invalidReps.stream().forEach(repDescriptor -> {
+            informations.append(TAB);
+            addRepresentationDescriptorSimpleInfo(informations, repDescriptor);
+            informations.append(CR);
+        });
+        informations.append(Messages.SessionQuery_InvalidRepsInfo).append(CR);
+
+        informations.append(CR).append(MessageFormat.format(Messages.SessionQuery_RepresentationDescriptorDetails, allRepDescs.size())).append(CR);
+        allRepDescs.stream().forEach(repDescriptor -> {
+            informations.append(TAB);
+            addRepresentationDescriptorExtendedInfo(informations, repDescriptor, repDescToTags);
+            informations.append(CR);
+        });
+    }
+
+    private void processGeneralInformation(StringBuilder informations, Collection<DRepresentationDescriptor> allRepDescs, List<DRepresentationDescriptor> invalidReps,
+            Map<DRepresentationDescriptor, String> repDescToTags) {
         long nbDiagram = 0;
         long nbEditionTables = 0;
         long nbCrossTables = 0;
         long nbTree = 0;
         long nbSequence = 0;
-        List<DRepresentationDescriptor> invalidReps = new ArrayList<DRepresentationDescriptor>();
-        Map<DRepresentationDescriptor, String> repDescToTags = new LinkedHashMap<DRepresentationDescriptor, String>();
         for (DRepresentationDescriptor dRepresentationDescriptor : allRepDescs) {
             StringBuilder tags = new StringBuilder();
             if (!new DRepresentationDescriptorQuery(dRepresentationDescriptor).isRepresentationValid()) {
@@ -185,30 +215,6 @@ public final class SessionDetailsReport {
         informations.append(TAB).append(Messages.SessionQuery_EditionTable).append(COLON).append(SPACE).append(nbEditionTables).append(CR);
         informations.append(TAB).append(Messages.SessionQuery_CrossTable).append(COLON).append(SPACE).append(nbCrossTables).append(CR);
         informations.append(TAB).append(Messages.SessionQuery_Tree).append(COLON).append(SPACE).append(nbTree).append(CR);
-
-        informations.append(CR).append(Messages.SessionQuery_LoadedReps).append(TAB).append(loadedReps.size()).append(CR);
-        informations.append(Messages.SessionQuery_NbRepElements).append(TAB).append(repElements.size()).append(CR);
-
-        informations.append(CR).append(MessageFormat.format(Messages.SessionQuery_LoadedBrokenReps, representationsWithoutTarget.size())).append(CR);
-        representationsWithoutTarget.stream().map(rep -> new DRepresentationQuery(rep).getRepresentationDescriptor()).forEach(repDescriptor -> {
-            informations.append(TAB);
-            addRepresentationDescriptorSimpleInfo(informations, repDescriptor);
-            informations.append(CR);
-        });
-
-        informations.append(CR).append(MessageFormat.format(Messages.SessionQuery_InvalidReps, invalidReps.size())).append(CR);
-        invalidReps.stream().forEach(repDescriptor -> {
-            informations.append(TAB);
-            addRepresentationDescriptorSimpleInfo(informations, repDescriptor);
-            informations.append(CR);
-        });
-
-        informations.append(CR).append(MessageFormat.format(Messages.SessionQuery_RepresentationDescriptorDetails, allRepDescs.size())).append(CR);
-        allRepDescs.stream().forEach(repDescriptor -> {
-            informations.append(TAB);
-            addRepresentationDescriptorExtendedInfo(informations, repDescriptor, repDescToTags);
-            informations.append(CR);
-        });
     }
 
     private void addResourcesInformation(StringBuilder informations) {
@@ -239,21 +245,38 @@ public final class SessionDetailsReport {
 
     private String getViewpointDescription(Viewpoint viewpoint) {
         String vpDescription = null;
-        Resource resource = viewpoint.eResource();
-        if (resource == null) {
-            // toString allows to get the eProxyURI
-            vpDescription = viewpoint.toString();
-        } else {
-            vpDescription = viewpoint.getName() + SPACE + Messages.SessionQuery_LoadedFromResource + SPACE + resource.getURI().toString();
+        if (viewpoint != null) {
+            Resource resource = viewpoint.eResource();
+            if (resource == null) {
+                // toString allows to get the eProxyURI
+                vpDescription = viewpoint.toString();
+            } else {
+                vpDescription = viewpoint.getName() + SPACE + Messages.SessionQuery_LoadedFromResource + SPACE + resource.getURI().toString();
+            }
         }
+
         return vpDescription;
     }
 
     private void addRepresentationDescriptorExtendedInfo(StringBuilder informations, DRepresentationDescriptor repDescriptor, Map<DRepresentationDescriptor, String> repDescToTags) {
         addRepresentationDescriptorSimpleInfo(informations, repDescriptor);
         informations.append(SEPARATOR);
-        informations.append("description: "); //$NON-NLS-1$
-        informations.append(EcoreUtil.getURI(repDescriptor.getDescription()));
+        RepresentationDescription description = repDescriptor.getDescription();
+        if (description != null) {
+            informations.append("description: "); //$NON-NLS-1$
+            informations.append(description.getName());
+            informations.append(SEPARATOR);
+
+            Viewpoint vp = (Viewpoint) description.eContainer();
+            if (vp != null) {
+                informations.append("viewpoint: "); //$NON-NLS-1$
+                informations.append(vp.getName());
+            } else {
+                informations.append("viewpoint: null"); //$NON-NLS-1$
+            }
+        } else {
+            informations.append("description: null"); //$NON-NLS-1$
+        }
         informations.append(SEPARATOR);
         informations.append("repPath: "); //$NON-NLS-1$
         informations.append(repDescriptor.getRepPath().toString());
