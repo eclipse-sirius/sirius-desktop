@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -91,6 +91,7 @@ public class DNodeNameEditPart extends AbstractGeneratedDiagramNameEditPart impl
                 final int width = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Width())).intValue();
                 final int height = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getSize_Height())).intValue();
                 getBorderItemLocator().setConstraint(new Rectangle(x, y, width, height));
+                getFigure().revalidate();
             } else {
                 getBorderItemLocator().setConstraint(new Rectangle(0, 0, 0, 0));
                 getFigure().setBounds(new Rectangle(0, 0, 0, 0));
