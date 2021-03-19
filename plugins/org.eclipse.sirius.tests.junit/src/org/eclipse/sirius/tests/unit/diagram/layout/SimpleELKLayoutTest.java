@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 Obeo.
+ * Copyright (c) 2020, 2021 Obeo.
  * All rights reserved.
  *
  * Contributors:
@@ -655,6 +655,74 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      */
     public void testArrangeAllResult() {
         testArrangeAllResult_ForPackageArrangeSelection("diagramWithContainer");
+    }
+
+    /**
+     * Makes sure that the label on border of a node is moved when only its location is changed (nothing else is
+     * changed).
+     */
+    public void testArrangeAllResultWhenOnlyABorderLabelShouldBeMoved() {
+        openDiagram("diagramWithJustALabelOnBorderMove");
+
+        // Get locations of MyClass1 and of attribute1 (they should not be moved in this test, already correctly
+        // located))
+        Optional<DDiagramElement> ddeClass = diagram.getDiagramElements().stream().filter(ode -> ode.getName().equals("MyClass1")).findFirst();
+        assertTrue("The diagram should have a node named \"MyClass1\".", ddeClass.isPresent());
+        IGraphicalEditPart nodeEditPart = getEditPart(ddeClass.get());
+        assertTrue("The node for \"MyClass1\" should be a AbstractDiagramContainerEditPart but was a " + nodeEditPart.getClass().getSimpleName(),
+                nodeEditPart instanceof AbstractDiagramContainerEditPart);
+        Rectangle nodeBounds = nodeEditPart.getFigure().getBounds().getCopy();
+
+        Optional<DDiagramElement> dde = diagram.getDiagramElements().stream().filter(ode -> ode.getName().equals("attribute1")).findFirst();
+        assertTrue("The diagram should have a node named \"attribute1\".", dde.isPresent());
+        IGraphicalEditPart portEditPart = getEditPart(dde.get());
+        assertTrue("The node for \"attribute1\" should be a AbstractDiagramBorderNodeEditPart but was a " + portEditPart.getClass().getSimpleName(),
+                portEditPart instanceof AbstractDiagramBorderNodeEditPart);
+        Rectangle borderNodeBounds = portEditPart.getFigure().getBounds().getCopy();
+
+        // Launch an arrange all
+        arrangeAll((DiagramEditor) editorPart);
+
+        assertEquals("The node for \"MyClass1\" should not move during this test (data corrupted or behavior unexpected).", nodeBounds, nodeEditPart.getFigure().getBounds().getCopy());
+        assertEquals("The border node for \"attribute1\" should not move during this test (data corrupted or behavior unexpected).", borderNodeBounds, portEditPart.getFigure().getBounds().getCopy());
+
+        // Check the label location
+        boolean labelFound = false;
+        for (Object portChildObj : portEditPart.getChildren()) {
+            if (portChildObj instanceof IGraphicalEditPart) {
+                IFigure labelFigure = ((IGraphicalEditPart) portChildObj).getFigure();
+                String text = null;
+                if (labelFigure instanceof WrappingLabel) {
+                    text = ((WrappingLabel) labelFigure).getText();
+                } else if (labelFigure instanceof Label) {
+                    text = ((Label) labelFigure).getText();
+                } else if (labelFigure instanceof SiriusWrapLabel) {
+                    SiriusWrapLabel label = (SiriusWrapLabel) labelFigure;
+                    text = label.getText();
+                }
+
+                if (text != null) {
+                    labelFound = true;
+                    Rectangle labelBounds = labelFigure.getBounds();
+                    assertTrue(((IGraphicalEditPart) portChildObj).getModel() instanceof Node);
+                    Node labelNode = (Node) ((IGraphicalEditPart) portChildObj).getModel();
+                    Location gmfLabelLocation = (Location) labelNode.getLayoutConstraint();
+                    assertEquals("The x GMF coordinate of the label of the border node does not correspond to a centered location.", -(labelBounds.width() - borderNodeBounds.width()) / 2,
+                            gmfLabelLocation.getX(), 1);
+                    assertEquals("The y GMF coordinate of the label of the border node does not correspond to a location under its border node.", borderNodeBounds.height() + 1,
+                            gmfLabelLocation.getY());
+                    assertEquals("Even if GMF coordinates are OK, the label of the border node is visually not horizontally centered on its border node (draw2d x coordinate).",
+                            labelBounds.getCenter().x(),
+                            borderNodeBounds.getCenter().x());
+                    assertEquals("Even if GMF coordinates are OK, the label of the border node is visually not under the bottom side of its border node (draw2d y coordinate).",
+                            labelBounds.getTop().y(),
+                            borderNodeBounds.getBottom().y() + 1);
+                }
+            }
+            if (!labelFound) {
+                fail("The label of the border node has not been found.");
+            }
+        }
     }
 
     /**
