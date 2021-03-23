@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -102,7 +102,22 @@ public class UIProject {
         final SWTBot projectExplorerBot = bot.viewById(IModelExplorerView.ID).bot();
 
         final SWTBotTree projectExplorerTree = projectExplorerBot.tree();
-        final SWTBotTreeItem treeItem = projectExplorerTree.getTreeItem(getName());
+        SWTBotTreeItem[] allItems = projectExplorerTree.getAllItems();
+        SWTBotTreeItem treeItem = null;
+
+        // find the root project tree item considering the fact that the project may be dirty
+        String projectName = getName();
+        String dirtyProjectName = "*" + projectName;
+        for (SWTBotTreeItem swtBotTreeItem : allItems) {
+            String text = swtBotTreeItem.getText();
+            if (projectName.equals(text) || dirtyProjectName.equals(text)) {
+                treeItem = swtBotTreeItem;
+                break;
+            }
+        }
+        if (treeItem == null) {
+            throw new WidgetNotFoundException("The project " + getName() + " is not found");
+        }
 
         TreeItemExpanded treeItemExpanded = new TreeItemExpanded(treeItem, getName());
         treeItem.expand();
@@ -198,8 +213,7 @@ public class UIProject {
     }
 
     /**
-     * Convert the current project to a Modeling Project using the configure
-     * contextual menu.
+     * Convert the current project to a Modeling Project using the configure contextual menu.
      */
     public void convertToModelingProject() {
         getProjectTreeItem().select();
@@ -210,9 +224,7 @@ public class UIProject {
      * Save the Modeling Project.
      */
     public void save() {
-        SWTBot projectExplorerBot = bot.viewById(IModelExplorerView.ID).bot();
-        SWTBotTree projectExplorerTree = projectExplorerBot.tree();
-        SWTBotTreeItem treeItem = projectExplorerTree.getTreeItem("*" + getName());
+        SWTBotTreeItem treeItem = getProjectTreeItem();
         SWTBotUtils.clickContextMenu(treeItem, "Save");
     }
 
