@@ -162,7 +162,7 @@ public class SiriusSessionDetailsPropertyPageTest extends AbstractSiriusSwtBotGe
         strBuilder.append("Loaded representations:  3\n");
         strBuilder.append("Representation elements in loaded representations:  22\n");
         strBuilder.append("\n");
-        strBuilder.append("Loaded representations containing elements with no semantic target(red cross decorator) (2)\n");
+        strBuilder.append("Loaded representations containing elements with no semantic target (red cross decorator) (2)\n");
         strBuilder.append("  root package entities BROKEN - uid: _X14A0Gu5EeucgZBzLx9xaw\n");
         strBuilder.append("  Classes in root package - uid: _KjzRUGu6EeucgZBzLx9xaw\n");
         strBuilder.append(Messages.SessionQuery_LoadedBrokenRepsInfo + "\n");
