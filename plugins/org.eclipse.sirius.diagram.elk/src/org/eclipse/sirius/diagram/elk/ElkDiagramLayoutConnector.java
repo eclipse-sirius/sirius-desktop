@@ -212,6 +212,12 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
     public static final IProperty<Boolean> NODE_SIZE_FIXED_SIZE = new Property<Boolean>("org.eclipse.sirius.diagram.elk.fixedNodeSize", false, null, null);
 
     /**
+     * Value used for split edge for property {@link LayeredOptions#PRIORITY}. It allows to give the priority for
+     * "straight aspect" to split edges (compared to edges using split edge as source or target).
+     */
+    private static final int PRIORITY_SPLIT_EDGE_VALUE = 10;
+
+    /**
      * Value used for split edge for property {@link LayeredOptions#PRIORITY_STRAIGHTNESS}. It allows to give the
      * priority for "straight aspect" to split edges (compared to edges using split edge as source or target).
      */
@@ -1641,8 +1647,9 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
             // Use the existing edge as the first part of the split edge (from source to intermediate node).
             // To force that this edge is as straight as possible (better layout result), use the layered option
             // "LayeredOptions.PRIORITY_STRAIGHTNESS". 10 is used arbitrary (more than 1 by default).
-            // TODO : This is OK only if Layered layout is used. See if there is equivalent option for other kind of
-            // layout.
+            // TODO : Tested with Layered layout and nodePlacement.strategy==NETWORK_SIMPLEX. See later if there are
+            // equivalent options for other kind of layout.
+            edgeToSplit.setProperty(CoreOptions.PRIORITY, PRIORITY_SPLIT_EDGE_VALUE);
             edgeToSplit.setProperty(LayeredOptions.PRIORITY_STRAIGHTNESS, PRIORITY_STRAIGHTNESS_SPLIT_EDGE_VALUE);
             edgeToSplit.getTargets().add(intermediateNode);
             // TODO : There is maybe something specific to handle edge's labels (coordinates are maybe wrong after this

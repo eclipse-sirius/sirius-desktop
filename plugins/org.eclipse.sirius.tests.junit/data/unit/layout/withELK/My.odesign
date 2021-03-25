@@ -725,6 +725,16 @@
         <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.nodeNodeBetweenLayers" value="50.0">
           <targets>PARENT</targets>
         </layoutOptions>
+        <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.edgeEdgeBetweenLayers" value="20.0">
+          <targets>PARENT</targets>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.edgeNodeBetweenLayers" value="20.0">
+          <targets>PARENT</targets>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:EnumLayoutOption" id="org.eclipse.elk.layered.nodePlacement.strategy">
+          <targets>PARENT</targets>
+          <value name="NETWORK_SIMPLEX"/>
+        </layoutOptions>
       </layout>
       <defaultLayer name="Default">
         <edgeMappings name="SuperTypesAndRef" sourceMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClasses']/@defaultLayer/@containerMappings[name='Classes']" targetMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClasses']/@defaultLayer/@edgeMappings[name='References']" targetFinderExpression="aql:self.eReferences->select(ref | self.eSuperTypes->includes(ref.eType))">
@@ -799,6 +809,16 @@
         </layoutOptions>
         <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.nodeNodeBetweenLayers" value="50.0">
           <targets>PARENT</targets>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.edgeEdgeBetweenLayers" value="20.0">
+          <targets>PARENT</targets>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.edgeNodeBetweenLayers" value="20.0">
+          <targets>PARENT</targets>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:EnumLayoutOption" id="org.eclipse.elk.layered.nodePlacement.strategy">
+          <targets>PARENT</targets>
+          <value name="NETWORK_SIMPLEX"/>
         </layoutOptions>
       </layout>
       <defaultLayer name="Default">
@@ -875,6 +895,16 @@
         <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.nodeNodeBetweenLayers" value="50.0">
           <targets>PARENT</targets>
         </layoutOptions>
+        <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.edgeEdgeBetweenLayers" value="20.0">
+          <targets>PARENT</targets>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.edgeNodeBetweenLayers" value="20.0">
+          <targets>PARENT</targets>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:EnumLayoutOption" id="org.eclipse.elk.layered.nodePlacement.strategy">
+          <targets>PARENT</targets>
+          <value name="NETWORK_SIMPLEX"/>
+        </layoutOptions>
       </layout>
       <defaultLayer name="Default">
         <edgeMappings name="References" sourceMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_withPackage']/@defaultLayer/@containerMappings[name='Classes']" targetMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_withPackage']/@defaultLayer/@containerMappings[name='Classes']" targetFinderExpression="feature:eType" sourceFinderExpression="feature:eContainer" domainClass="ecore::EReference" useDomainElement="true">
@@ -942,6 +972,16 @@
         <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.nodeNodeBetweenLayers" value="50.0">
           <targets>PARENT</targets>
         </layoutOptions>
+        <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.edgeEdgeBetweenLayers" value="20.0">
+          <targets>PARENT</targets>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.edgeNodeBetweenLayers" value="20.0">
+          <targets>PARENT</targets>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:EnumLayoutOption" id="org.eclipse.elk.layered.nodePlacement.strategy">
+          <targets>PARENT</targets>
+          <value name="NETWORK_SIMPLEX"/>
+        </layoutOptions>
       </layout>
       <defaultLayer name="Default">
         <edgeMappings name="References" sourceMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_withPackageWithOpAtRoot']/@defaultLayer/@containerMappings[name='Classes']" targetMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_withPackageWithOpAtRoot']/@defaultLayer/@containerMappings[name='Classes']" targetFinderExpression="feature:eType" sourceFinderExpression="feature:eContainer" domainClass="ecore::EReference" useDomainElement="true">
@@ -1008,6 +1048,16 @@
         </layoutOptions>
         <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.nodeNodeBetweenLayers" value="50.0">
           <targets>PARENT</targets>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.edgeEdgeBetweenLayers" value="20.0">
+          <targets>PARENT</targets>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.edgeNodeBetweenLayers" value="20.0">
+          <targets>PARENT</targets>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:EnumLayoutOption" id="org.eclipse.elk.layered.nodePlacement.strategy">
+          <targets>PARENT</targets>
+          <value name="NETWORK_SIMPLEX"/>
         </layoutOptions>
       </layout>
       <defaultLayer name="Default">
@@ -1078,6 +1128,16 @@
         </layoutOptions>
         <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.edgeEdgeBetweenLayers" value="20.0">
           <targets>PARENT</targets>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.edgeEdgeBetweenLayers" value="20.0">
+          <targets>PARENT</targets>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.edgeNodeBetweenLayers" value="20.0">
+          <targets>PARENT</targets>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:EnumLayoutOption" id="org.eclipse.elk.layered.nodePlacement.strategy">
+          <targets>PARENT</targets>
+          <value name="NETWORK_SIMPLEX"/>
         </layoutOptions>
       </layout>
       <defaultLayer name="Default">

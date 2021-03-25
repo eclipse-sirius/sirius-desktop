@@ -1598,13 +1598,9 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         Connection sourceConnection = sourceEdgeEditPart.getConnectionFigure();
         checkEdgeWithEdgeAsSource("op1", sourceConnection, 3);
         checkEdgeWithEdgeAsSource("op3", sourceConnection, 3);
-        // TODO : I failed to get a layout setting that force edges used as source or target to be straight. This is the
-        // case here.
-        // I asked on gitter to see if someone has an idea: https://gitter.im/eclipse/elk?at=6059b3cd88edaa1eb8d56f8d
-        // In this context, we adapt the test (no check about horizontality and different number of expected points.
-        sourceEdgeEditPart = checkEdge("C3", "C4", false);
+        sourceEdgeEditPart = checkEdge("C3", "C4", true);
         sourceConnection = sourceEdgeEditPart.getConnectionFigure();
-        checkEdgeWithEdgeAsSource("op2", sourceConnection, 2);
+        checkEdgeWithEdgeAsSource("op2", sourceConnection, 3);
     }
 
     /**
@@ -1619,9 +1615,9 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      */
     public void testArrangeAll_edgeOnEdge_DifferentLevel1_EdgeAsTarget() {
         testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackage for levels1EdgeOnEdge", true, false);
-        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", false);
+        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", true);
         Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
-        checkEdgeWithEdgeAsTarget("op1", targetConnection, 2);
+        checkEdgeWithEdgeAsTarget("op1", targetConnection, 3);
         checkEdgeWithEdgeAsTarget("op2", targetConnection, 5);
         checkEdgeWithEdgeAsTarget("op3", targetConnection, 5);
         checkEdgeWithEdgeAsTarget("op4", targetConnection, 5);
@@ -1663,10 +1659,10 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackageWithOpAtRoot for levels2EdgeOnEdge");
         DEdgeEditPart targetEdgeEditPart = checkEdge("C2", "C1", true);
         Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
-        checkEdgeWithEdgeAsTarget("op1", targetConnection, 3);
+        checkEdgeWithEdgeAsTarget("op1", targetConnection, 5);
         checkEdgeWithEdgeAsTarget("op2", targetConnection, 5);
         checkEdgeWithEdgeAsTarget("op3", targetConnection, 5);
-        checkEdgeWithEdgeAsTarget("op4", targetConnection, 5);
+        checkEdgeWithEdgeAsTarget("op4", targetConnection, 3);
         checkEdgeWithEdgeAsTarget("op5", targetConnection, 5);
     }
 
@@ -1682,11 +1678,11 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      */
     public void testArrangeAll_edgeOnEdge_DifferentLevel1_EdgeAsSource() {
         testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackageReverse for levels1EdgeOnEdge");
-        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", false);
+        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", true);
         Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
         checkEdgeWithEdgeAsSource("op1", targetConnection, 3);
         checkEdgeWithEdgeAsSource("op2", targetConnection, 3);
-        checkEdgeWithEdgeAsSource("op3", targetConnection, 2);
+        checkEdgeWithEdgeAsSource("op3", targetConnection, 3);
         checkEdgeWithEdgeAsSource("op4", targetConnection, 3);
         checkEdgeWithEdgeAsSource("op5", targetConnection, 3);
     }
@@ -1703,13 +1699,13 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      */
     public void testArrangeAll_edgeOnEdge_DifferentLevel2_EdgeAsSource() {
         testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackageWithOpAtRootReverse for levels1EdgeOnEdge");
-        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", false);
+        DEdgeEditPart targetEdgeEditPart = checkEdge("C1", "C2", true);
         Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
         checkEdgeWithEdgeAsSource("op1", targetConnection, 3);
-        checkEdgeWithEdgeAsSource("op2", targetConnection, 2);
-        checkEdgeWithEdgeAsSource("op3", targetConnection, 4);
-        checkEdgeWithEdgeAsSource("op4", targetConnection, 4);
-        checkEdgeWithEdgeAsSource("op5", targetConnection, 4);
+        checkEdgeWithEdgeAsSource("op2", targetConnection, 3);
+        checkEdgeWithEdgeAsSource("op3", targetConnection, 3);
+        checkEdgeWithEdgeAsSource("op4", targetConnection, 3);
+        checkEdgeWithEdgeAsSource("op5", targetConnection, 3);
     }
 
     /**
@@ -1726,9 +1722,9 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_withPackageWithOpAtRootReverse for levels2EdgeOnEdge");
         DEdgeEditPart targetEdgeEditPart = checkEdge("C2", "C1", true);
         Connection targetConnection = targetEdgeEditPart.getConnectionFigure();
-        checkEdgeWithEdgeAsSource("op1", targetConnection, 5);
+        checkEdgeWithEdgeAsSource("op1", targetConnection, 3);
         checkEdgeWithEdgeAsSource("op2", targetConnection, 5);
-        checkEdgeWithEdgeAsSource("op3", targetConnection, 3);
+        checkEdgeWithEdgeAsSource("op3", targetConnection, 5);
         checkEdgeWithEdgeAsSource("op4", targetConnection, 5);
         checkEdgeWithEdgeAsSource("op5", targetConnection, 5);
     }
