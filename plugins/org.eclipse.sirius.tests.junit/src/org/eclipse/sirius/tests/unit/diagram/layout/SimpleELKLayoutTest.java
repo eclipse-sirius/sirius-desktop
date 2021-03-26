@@ -69,10 +69,11 @@ import org.eclipse.sirius.diagram.tools.internal.commands.PinElementsCommand;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramListEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
-import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.operation.ResetOriginChangeModelOperation;
@@ -217,11 +218,8 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     public void testSizeOfRootNode() {
         openDiagram("simpleDiagram");
 
-        Optional<DDiagramElement> c1Dde = diagram.getDiagramElements().stream().filter(dde -> dde.getName().equals("MyClass1")).findFirst();
-        assertTrue("The diagram should have a node named \"MyClass1\".", c1Dde.isPresent());
-        IGraphicalEditPart c1EditPart = getEditPart(c1Dde.get());
-        assertTrue("The node for \"MyClass1\" should be a DNodeEditPart.", c1EditPart instanceof DNodeEditPart);
-        Dimension minimumTextSize = ((DNodeEditPart) c1EditPart).getNodeLabel().getPreferredSize();
+        AbstractDiagramNodeEditPart c1EditPart = getEditPart("MyClass1", AbstractDiagramNodeEditPart.class);
+        Dimension minimumTextSize = c1EditPart.getNodeLabel().getPreferredSize();
 
         // Launch an arrange all
         arrangeAll((DiagramEditor) editorPart);
@@ -320,11 +318,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     public void testLocationOfLabelOnBorderOnBorderNode() {
         openDiagram("diagramWithBorderNodesWithLabelOnBorder");
 
-        Optional<DDiagramElement> dde = diagram.getDiagramElements().stream().filter(ode -> ode.getName().equals("att1")).findFirst();
-        assertTrue("The diagram should have a node named \"att1\".", dde.isPresent());
-        IGraphicalEditPart portEditPart = getEditPart(dde.get());
-        assertTrue("The node for \"att1\" should be a AbstractDiagramBorderNodeEditPart but was a " + portEditPart.getClass().getSimpleName(),
-                portEditPart instanceof AbstractDiagramBorderNodeEditPart);
+        AbstractDiagramBorderNodeEditPart portEditPart = getEditPart("att1", AbstractDiagramBorderNodeEditPart.class);
 
         // Launch an arrange all
         arrangeAll((DiagramEditor) editorPart);
@@ -383,14 +377,12 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     }
 
     private void checkForListContainerWithIconListItems(String listName) {
-        Optional<DDiagramElement> dde = diagram.getDiagramElements().stream().filter(ode -> ode.getName().equals(listName)).findFirst();
-        assertTrue("The diagram should have a node named \"" + listName + "\".", dde.isPresent());
-        IGraphicalEditPart editPart = getEditPart(dde.get());
-        assertTrue("The node for \"" + listName + "\" should be a AbstractDiagramListEditPart but was a " + editPart.getClass().getSimpleName(), editPart instanceof AbstractDiagramListEditPart);
+        DDiagramElement dde = getDDiagramElement(listName);
+        AbstractDiagramListEditPart editPart = getEditPart(dde, AbstractDiagramListEditPart.class);
 
-        assertEquals("Wrong number of list items, the list should contain 3 list items.", 3, ((DNodeList) dde.get()).getOwnedElements().stream().count());
+        assertEquals("Wrong number of list items, the list should contain 3 list items.", 3, ((DNodeList) dde).getOwnedElements().stream().count());
 
-        Dimension listItemSize = getEditPart(((DNodeList) dde.get()).getOwnedElements().get(0)).getFigure().getSize();
+        Dimension listItemSize = getEditPart(((DNodeList) dde).getOwnedElements().get(0), IGraphicalEditPart.class).getFigure().getSize();
 
         // Launch an arrange all
         arrangeAll((DiagramEditor) editorPart);
@@ -412,12 +404,10 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     public void testListContainerLayout() {
         openDiagram("diagramWithList");
 
-        Optional<DDiagramElement> c2Dde = diagram.getDiagramElements().stream().filter(dde -> dde.getName().equals("MyClass2")).findFirst();
-        assertTrue("The diagram should have a node named \"MyClass2\".", c2Dde.isPresent());
-        IGraphicalEditPart c2EditPart = getEditPart(c2Dde.get());
-        assertTrue("The node for \"MyClass2\" should be a DNodeListEditPart.", c2EditPart instanceof DNodeListEditPart);
+        DDiagramElement c2Dde = getDDiagramElement("MyClass2");
+        DNodeListEditPart c2EditPart = getEditPart(c2Dde, DNodeListEditPart.class);
 
-        Optional<DNodeListElement> listItem = ((DNodeList) c2Dde.get()).getOwnedElements().stream().filter(dde -> dde.getName().equals("listItemWithALongName")).findFirst();
+        Optional<DNodeListElement> listItem = ((DNodeList) c2Dde).getOwnedElements().stream().filter(dde -> dde.getName().equals("listItemWithALongName")).findFirst();
         assertTrue("The container \"MyClass2\" should have a list item named \"listItemWithALongName\".", listItem.isPresent());
         IGraphicalEditPart listItemEditPart = getEditPart(listItem.get());
         assertTrue("The node for \"listItemWithALongName\" should be a DNodeListElementEditPart.", listItemEditPart instanceof DNodeListElementEditPart);
@@ -472,12 +462,10 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     public void testVStackContainerLayout() {
         openDiagram("diagramWithRegions");
 
-        Optional<DDiagramElement> vStackContainer = diagram.getDiagramElements().stream().filter(dde -> dde.getName().equals("root_V")).findFirst();
-        assertTrue("The diagram should have a node named \"root_V\".", vStackContainer.isPresent());
-        IGraphicalEditPart vStackContainerEditPart = getEditPart(vStackContainer.get());
-        assertTrue("The node for \"root_V\" should be an AbstractDiagramContainerEditPart.", vStackContainerEditPart instanceof AbstractDiagramContainerEditPart);
+        DDiagramElement vStackContainer = getDDiagramElement("root_V");
+        IGraphicalEditPart vStackContainerEditPart = getEditPart(vStackContainer, AbstractDiagramContainerEditPart.class);
 
-        Optional<DDiagramElement> c2Dde = ((DNodeContainer) vStackContainer.get()).getOwnedDiagramElements().stream().filter(dde -> dde.getName().equals("MyClass2")).findFirst();
+        Optional<DDiagramElement> c2Dde = ((DNodeContainer) vStackContainer).getOwnedDiagramElements().stream().filter(dde -> dde.getName().equals("MyClass2")).findFirst();
         assertTrue("The container \"root_V\" should have a region named \"MyClass2\".", c2Dde.isPresent());
         IGraphicalEditPart c2EditPart = getEditPart(c2Dde.get());
         assertTrue("The node for \"MyClass2\" should be a AbstractDiagramContainerEditPart.", c2EditPart instanceof AbstractDiagramContainerEditPart);
@@ -670,18 +658,10 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
 
         // Get locations of MyClass1 and of attribute1 (they should not be moved in this test, already correctly
         // located))
-        Optional<DDiagramElement> ddeClass = diagram.getDiagramElements().stream().filter(ode -> ode.getName().equals("MyClass1")).findFirst();
-        assertTrue("The diagram should have a node named \"MyClass1\".", ddeClass.isPresent());
-        IGraphicalEditPart nodeEditPart = getEditPart(ddeClass.get());
-        assertTrue("The node for \"MyClass1\" should be a AbstractDiagramContainerEditPart but was a " + nodeEditPart.getClass().getSimpleName(),
-                nodeEditPart instanceof AbstractDiagramContainerEditPart);
+        AbstractDiagramContainerEditPart nodeEditPart = getEditPart("MyClass1", AbstractDiagramContainerEditPart.class);
         Rectangle nodeBounds = nodeEditPart.getFigure().getBounds().getCopy();
 
-        Optional<DDiagramElement> dde = diagram.getDiagramElements().stream().filter(ode -> ode.getName().equals("attribute1")).findFirst();
-        assertTrue("The diagram should have a node named \"attribute1\".", dde.isPresent());
-        IGraphicalEditPart portEditPart = getEditPart(dde.get());
-        assertTrue("The node for \"attribute1\" should be a AbstractDiagramBorderNodeEditPart but was a " + portEditPart.getClass().getSimpleName(),
-                portEditPart instanceof AbstractDiagramBorderNodeEditPart);
+        AbstractDiagramBorderNodeEditPart portEditPart = getEditPart("attribute1", AbstractDiagramBorderNodeEditPart.class);
         Rectangle borderNodeBounds = portEditPart.getFigure().getBounds().getCopy();
 
         // Launch an arrange all
@@ -750,7 +730,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         assertEquals("Wrong y coordinate for the bounding box of all diagram elements.", ResetOriginChangeModelOperation.MARGIN, boundingbox.y());
 
         // Assert that there is no scroll bar on all containers
-        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p1"));
+        assertNoVisibleScrollBar(getEditPart("p1", IDiagramContainerEditPart.class));
 
         // Assert that content of all containers is "correctly layouted"
         assertAlignCentered(50, "Class1_1", "Class1_2");
@@ -979,14 +959,14 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     public void testArrangeSelectionResultOnOneContainerInDiagram(String diagramName) {
         openDiagram(diagramName);
 
-        IGraphicalEditPart editPart = getEditPart("p1");
+        IDiagramContainerEditPart editPart = getEditPart("p1", IDiagramContainerEditPart.class);
         Point locationOfP1BeforeLayout = editPart.getFigure().getBounds().getTopLeft();
 
         // Launch an arrange selection
         arrangeSelection(editPart);
 
         // Assert that there is no scroll bar on p1
-        assertNoVisibleScrollBar((IDiagramContainerEditPart) editPart);
+        assertNoVisibleScrollBar(editPart);
 
         // Assert that the location of the container is the same before and after the layout
         assertEquals("The location of the container should be the same before and after the layout.", locationOfP1BeforeLayout, editPart.getFigure().getBounds().getTopLeft());
@@ -1009,14 +989,14 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     public void testArrangeSelectionResultOnOneContainerInAnotherContainer(String diagramName) {
         openDiagram(diagramName);
 
-        IGraphicalEditPart editPart = getEditPart("p2_2");
+        IDiagramContainerEditPart editPart = getEditPart("p2_2", IDiagramContainerEditPart.class);
         Point locationOfP22BeforeLayout = editPart.getFigure().getBounds().getTopLeft();
 
         // Launch an arrange selection
         arrangeSelection(editPart);
 
         // Assert that there is no scroll bar on p2_2
-        assertNoVisibleScrollBar((IDiagramContainerEditPart) editPart);
+        assertNoVisibleScrollBar(editPart);
 
         // Assert that the location of the container is the same before and after the layout
         assertEquals("The location of the container should be the same before and after the layout.", locationOfP22BeforeLayout, editPart.getFigure().getBounds().getTopLeft());
@@ -1039,14 +1019,14 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     public void testArrangeSelectionResultOnOneContainerWithBorderNode(String diagramName) {
         openDiagram(diagramName);
 
-        IGraphicalEditPart editPart = getEditPart("p4");
+        IDiagramContainerEditPart editPart = getEditPart("p4", IDiagramContainerEditPart.class);
         Point locationOfP4BeforeLayout = editPart.getFigure().getBounds().getTopLeft();
 
         // Launch an arrange selection
         arrangeSelection(editPart);
 
         // Assert that there is no scroll bar on p1
-        assertNoVisibleScrollBar((IDiagramContainerEditPart) editPart);
+        assertNoVisibleScrollBar(editPart);
 
         // Assert that the location of the container is the same before and after the layout
         assertEquals("The location of the container should be the same before and after the layout.", locationOfP4BeforeLayout, editPart.getFigure().getBounds().getTopLeft());
@@ -1070,8 +1050,8 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     public void testArrangeSelectionResultOnTwoContainers(String diagramName) {
         openDiagram(diagramName);
 
-        IGraphicalEditPart p1EditPart = getEditPart("p1");
-        IGraphicalEditPart p3EditPart = getEditPart("p3");
+        IGraphicalEditPart p1EditPart = getEditPart("p1", IDiagramContainerEditPart.class);
+        IGraphicalEditPart p3EditPart = getEditPart("p3", IDiagramContainerEditPart.class);
         Point topLeftCornerBeforeLayout = getTopLeftCorner(p1EditPart, p3EditPart);
 
         // Launch an arrange selection
@@ -1101,16 +1081,16 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     public void testArrangeSelectionResultOnOneContainerAndSomeOfItsChildren(String diagramName) {
         openDiagram(diagramName);
 
-        IGraphicalEditPart p2EditPart = getEditPart("p2");
+        IDiagramContainerEditPart p2EditPart = getEditPart("p2", IDiagramContainerEditPart.class);
         Point locationOfP2BeforeLayout = p2EditPart.getFigure().getBounds().getTopLeft();
-        IGraphicalEditPart class21EditPart = getEditPart("Class2_1");
-        IGraphicalEditPart class23EditPart = getEditPart("Class2_3");
+        IGraphicalEditPart class21EditPart = getEditPart("Class2_1", AbstractDiagramNodeEditPart.class);
+        IGraphicalEditPart class23EditPart = getEditPart("Class2_3", AbstractDiagramNodeEditPart.class);
 
         // Launch an arrange selection
         arrangeSelection(p2EditPart, class21EditPart, class23EditPart);
 
         // Assert that there is no scroll bar on p2
-        assertNoVisibleScrollBar((IDiagramContainerEditPart) p2EditPart);
+        assertNoVisibleScrollBar(p2EditPart);
 
         // Assert that the location of the container is the same before and after the layout
         assertEquals("The location of the container should be the same before and after the layout.", locationOfP2BeforeLayout, p2EditPart.getFigure().getBounds().getTopLeft());
@@ -1134,10 +1114,10 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     public void testArrangeSelectionResultOnSomeContainerChildren_ContainedInAContainer(String diagramName) {
         openDiagram(diagramName);
 
-        IGraphicalEditPart p22EditPart = getEditPart("p2_2");
+        IDiagramContainerEditPart p22EditPart = getEditPart("p2_2", IDiagramContainerEditPart.class);
         Rectangle boundsOfP22BeforeLayout = p22EditPart.getFigure().getBounds().getCopy();
-        IGraphicalEditPart class222EditPart = getEditPart("Class2_2_2");
-        IGraphicalEditPart class221EditPart = getEditPart("Class2_2_1");
+        IGraphicalEditPart class222EditPart = getEditPart("Class2_2_2", AbstractDiagramNodeEditPart.class);
+        IGraphicalEditPart class221EditPart = getEditPart("Class2_2_1", AbstractDiagramNodeEditPart.class);
         Point topLeftCornerBeforeLayout = getTopLeftCorner(class221EditPart, class222EditPart);
 
         // Launch an arrange selection
@@ -1168,10 +1148,10 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     public void testArrangeSelectionResultOnSomeContainerChildren(String diagramName) {
         openDiagram(diagramName);
 
-        IGraphicalEditPart p2EditPart = getEditPart("p2");
+        IGraphicalEditPart p2EditPart = getEditPart("p2", IDiagramContainerEditPart.class);
         Rectangle boundsOfP2BeforeLayout = p2EditPart.getFigure().getBounds().getCopy();
-        IGraphicalEditPart class22EditPart = getEditPart("Class2_2");
-        IGraphicalEditPart class21EditPart = getEditPart("Class2_1");
+        IGraphicalEditPart class22EditPart = getEditPart("Class2_2", AbstractDiagramNodeEditPart.class);
+        IGraphicalEditPart class21EditPart = getEditPart("Class2_1", AbstractDiagramNodeEditPart.class);
         Point topLeftCornerBeforeLayout = getTopLeftCorner(class21EditPart, class22EditPart);
 
         // Launch an arrange selection
@@ -1201,9 +1181,9 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
     public void testArrangeSelectionResultOnAContainerAndSomeChildrenOfOtherConainer(String diagramName) {
         openDiagram(diagramName);
 
-        IGraphicalEditPart p1EditPart = getEditPart("p1");
-        IGraphicalEditPart class22EditPart = getEditPart("Class2_2");
-        IGraphicalEditPart class21EditPart = getEditPart("Class2_1");
+        IGraphicalEditPart p1EditPart = getEditPart("p1", IDiagramContainerEditPart.class);
+        IGraphicalEditPart class22EditPart = getEditPart("Class2_2", IDiagramNodeEditPart.class);
+        IGraphicalEditPart class21EditPart = getEditPart("Class2_1", IDiagramNodeEditPart.class);
 
         // Keep the figures bounds after the arrange all without pinned elements.
         Map<DNode, Rectangle> DNodes2Bounds = computeNodesBounds(diagram);
@@ -1246,10 +1226,10 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         assertEquals("Wrong y coordinate for the bounding box of all diagram elements.", ResetOriginChangeModelOperation.MARGIN, boundingbox.y());
 
         // Assert that there is no scroll bar on all containers
-        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p1"));
-        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p2"));
-        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p3"));
-        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p4"));
+        assertNoVisibleScrollBar(getEditPart("p1", IDiagramContainerEditPart.class));
+        assertNoVisibleScrollBar(getEditPart("p2", IDiagramContainerEditPart.class));
+        assertNoVisibleScrollBar(getEditPart("p3", IDiagramContainerEditPart.class));
+        assertNoVisibleScrollBar(getEditPart("p4", IDiagramContainerEditPart.class));
 
         // Assert that content of all containers is "correctly layouted"
         assertAlignCentered(50, "Class1", "Class2", "Class3", "Class4", "p1", "p2", "p3", "p4");
@@ -1347,9 +1327,9 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         // Open the diagram, launch an arrange all and close the diagram
         testArrangeAllResult_ForPackageArrangeSelection("diagramWithContainer");
 
-        Rectangle boundsOfP1BeforeLayoutAtOpening = getEditPart("p1").getFigure().getBounds().getCopy();
-        Rectangle boundsOfP22BeforeLayoutAtOpening = getEditPart("p2_2").getFigure().getBounds().getCopy();
-        Rectangle boundsOfP3BeforeLayoutAtOpening = getEditPart("p3").getFigure().getBounds().getCopy();
+        Rectangle boundsOfP1BeforeLayoutAtOpening = getEditPart("p1", IDiagramContainerEditPart.class).getFigure().getBounds().getCopy();
+        Rectangle boundsOfP22BeforeLayoutAtOpening = getEditPart("p2_2", IDiagramContainerEditPart.class).getFigure().getBounds().getCopy();
+        Rectangle boundsOfP3BeforeLayoutAtOpening = getEditPart("p3", IDiagramContainerEditPart.class).getFigure().getBounds().getCopy();
 
         SessionUIManager.INSTANCE.getUISession(session).closeEditors(false, Collections.singleton((DDiagramEditor) editorPart));
         TestsUtil.emptyEventsFromUIThread();
@@ -1370,30 +1350,32 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         assertAlignCentered(50, "Class3_5", "Class3_6");
 
         // Assert that top left corner of new layouted elements is OK
-        assertEquals(new Point(ResetOriginChangeModelOperation.MARGIN, ResetOriginChangeModelOperation.MARGIN), getTopLeftCorner(getEditPart("Class5"), getEditPart("Class6")));
+        assertEquals(new Point(ResetOriginChangeModelOperation.MARGIN, ResetOriginChangeModelOperation.MARGIN),
+                getTopLeftCorner(getEditPart("Class5", IDiagramNodeEditPart.class), getEditPart("Class6", IDiagramNodeEditPart.class)));
         // TODO : This top left container corresponds to the insets (it could be computed). But by default, it should be
         // the same location is during an arrange all (further improvement)
         Point expectedContainerTopLeftCorner = new Point(7, 6);
-        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class1_3"), getEditPart("Class1_4"), getEditPart("Class1_5")));
-        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class3_5"), getEditPart("Class3_6")));
+        assertEquals(expectedContainerTopLeftCorner,
+                getTopLeftCorner(getEditPart("Class1_3", IDiagramNodeEditPart.class), getEditPart("Class1_4", IDiagramNodeEditPart.class), getEditPart("Class1_5", IDiagramNodeEditPart.class)));
+        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class3_5", IDiagramNodeEditPart.class), getEditPart("Class3_6", IDiagramNodeEditPart.class)));
         // TODO : The top left corner should be the same for container in other container (it is currently not the case)
         // (further improvement)
         expectedContainerTopLeftCorner = new Point(5, 6);
-        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class2_2_3")));
+        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class2_2_3", IDiagramNodeEditPart.class)));
 
         // Assert that there is no scroll bar on container (for p1 and p3 the new elements layout is larger than
         // previous)
-        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p1"));
-        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p2_2"));
-        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p3"));
+        assertNoVisibleScrollBar(getEditPart("p1", IDiagramContainerEditPart.class));
+        assertNoVisibleScrollBar(getEditPart("p2_2", IDiagramContainerEditPart.class));
+        assertNoVisibleScrollBar(getEditPart("p3", IDiagramContainerEditPart.class));
 
         // Assert that the location of the container with new elements are the same before and after the layout
         assertEquals("The location of the container p1 should be the same before and after the layout.", boundsOfP1BeforeLayoutAtOpening.getLocation(),
-                getEditPart("p1").getFigure().getBounds().getLocation());
+                getEditPart("p1", IDiagramContainerEditPart.class).getFigure().getBounds().getLocation());
         assertEquals("The location of the container p2_2 should be the same before and after the layout.", boundsOfP22BeforeLayoutAtOpening.getLocation(),
-                getEditPart("p2_2").getFigure().getBounds().getLocation());
+                getEditPart("p2_2", IDiagramContainerEditPart.class).getFigure().getBounds().getLocation());
         assertEquals("The location of the container p3 should be the same before and after the layout.", boundsOfP3BeforeLayoutAtOpening.getLocation(),
-                getEditPart("p3").getFigure().getBounds().getLocation());
+                getEditPart("p3", IDiagramContainerEditPart.class).getFigure().getBounds().getLocation());
     }
 
     /**
@@ -1404,9 +1386,9 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         // Open the diagram, launch an arrange all and close the diagram
         testArrangeAllResult_ForPackageArrangeSelection("diagramWithContainerAndEdges");
 
-        Rectangle boundsOfP1BeforeLayoutAtOpening = getEditPart("p1").getFigure().getBounds().getCopy();
-        Rectangle boundsOfP22BeforeLayoutAtOpening = getEditPart("p2_2").getFigure().getBounds().getCopy();
-        Rectangle boundsOfP3BeforeLayoutAtOpening = getEditPart("p3").getFigure().getBounds().getCopy();
+        Rectangle boundsOfP1BeforeLayoutAtOpening = getEditPart("p1", IDiagramContainerEditPart.class).getFigure().getBounds().getCopy();
+        Rectangle boundsOfP22BeforeLayoutAtOpening = getEditPart("p2_2", IDiagramContainerEditPart.class).getFigure().getBounds().getCopy();
+        Rectangle boundsOfP3BeforeLayoutAtOpening = getEditPart("p3", IDiagramContainerEditPart.class).getFigure().getBounds().getCopy();
 
         SessionUIManager.INSTANCE.getUISession(session).closeEditors(false, Collections.singleton((DDiagramEditor) editorPart));
         TestsUtil.emptyEventsFromUIThread();
@@ -1427,31 +1409,33 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         assertAlignCentered(50, "Class3_5", "Class3_6");
 
         // Assert that top left corner of new layouted elements is OK
-        assertEquals(new Point(ResetOriginChangeModelOperation.MARGIN, ResetOriginChangeModelOperation.MARGIN), getTopLeftCorner(getEditPart("Class5"), getEditPart("Class6")));
+        assertEquals(new Point(ResetOriginChangeModelOperation.MARGIN, ResetOriginChangeModelOperation.MARGIN),
+                getTopLeftCorner(getEditPart("Class5", IDiagramNodeEditPart.class), getEditPart("Class6", IDiagramNodeEditPart.class)));
         // TODO : This top left container corresponds to the insets (it could be computed). But by default, it should be
         // the same location is during an arrange all (further improvement)
         Point expectedContainerTopLeftCorner = new Point(7, 6);
-        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class1_3"), getEditPart("Class1_4"), getEditPart("Class1_5")));
-        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class3_5"), getEditPart("Class3_6")));
+        assertEquals(expectedContainerTopLeftCorner,
+                getTopLeftCorner(getEditPart("Class1_3", IDiagramNodeEditPart.class), getEditPart("Class1_4", IDiagramNodeEditPart.class), getEditPart("Class1_5", IDiagramNodeEditPart.class)));
+        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class3_5", IDiagramNodeEditPart.class), getEditPart("Class3_6", IDiagramNodeEditPart.class)));
         // TODO : The top left corner should be the same for container in other container (it is currently not the case)
         // (further improvement)
         expectedContainerTopLeftCorner = new Point(5, 6);
-        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class2_2_3")));
+        assertEquals(expectedContainerTopLeftCorner, getTopLeftCorner(getEditPart("Class2_2_3", IDiagramNodeEditPart.class)));
 
         // Assert that there is no scroll bar on container (for p1 and p3 the new elements layout is larger than
         // previous)
-        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p1"));
-        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p2_2"));
-        assertNoVisibleScrollBar((IDiagramContainerEditPart) getEditPart("p3"));
+        assertNoVisibleScrollBar(getEditPart("p1", IDiagramContainerEditPart.class));
+        assertNoVisibleScrollBar(getEditPart("p2_2", IDiagramContainerEditPart.class));
+        assertNoVisibleScrollBar(getEditPart("p3", IDiagramContainerEditPart.class));
 
         // Assert that the location and the size of the container with new elements are the same before and after the
         // layout
         assertEquals("The location of the container p1 should be the same before and after the layout.", boundsOfP1BeforeLayoutAtOpening.getLocation(),
-                getEditPart("p1").getFigure().getBounds().getLocation());
+                getEditPart("p1", IDiagramContainerEditPart.class).getFigure().getBounds().getLocation());
         assertEquals("The location of the container p2_2 should be the same before and after the layout.", boundsOfP22BeforeLayoutAtOpening.getLocation(),
-                getEditPart("p2_2").getFigure().getBounds().getLocation());
+                getEditPart("p2_2", IDiagramContainerEditPart.class).getFigure().getBounds().getLocation());
         assertEquals("The location of the container p3 should be the same before and after the layout.", boundsOfP3BeforeLayoutAtOpening.getLocation(),
-                getEditPart("p3").getFigure().getBounds().getLocation());
+                getEditPart("p3", IDiagramContainerEditPart.class).getFigure().getBounds().getLocation());
     }
 
     /**
@@ -1818,14 +1802,9 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
             assertFalse("The Note should be moved during the arrange.", initialNoteBounds.getLocation().equals(currentNoteBounds.getLocation()));
         } else {
             assertTrue("The Note should not be moved during the arrange.", initialNoteBounds.getLocation().equals(currentNoteBounds.getLocation()));
-            Optional<DDiagramElement> c4Dde = diagram.getDiagramElements().stream().filter(dde -> dde.getName().equals("MyClass4")).findFirst();
-            if (c4Dde.isPresent()) {
-                IGraphicalEditPart c4EditPart = getEditPart(c4Dde.get());
-                Rectangle c4Bounds = c4EditPart.getFigure().getBounds().getCopy();
-                assertTrue("As the Note is not moved, it is expected to overlap \"MyClass4\" node.", currentNoteBounds.intersects(c4Bounds));
-            } else {
-                fail("The diagram should have a node named \"MyClass4\".");
-            }
+            IGraphicalEditPart c4EditPart = getEditPart("MyClass4", IGraphicalEditPart.class);
+            Rectangle c4Bounds = c4EditPart.getFigure().getBounds().getCopy();
+            assertTrue("As the Note is not moved, it is expected to overlap \"MyClass4\" node.", currentNoteBounds.intersects(c4Bounds));
         }
     }
 
@@ -1932,12 +1911,6 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         return null;
     }
 
-    private IGraphicalEditPart getEditPart(String editorPartName) {
-        Optional<DDiagramElement> dde = diagram.getDiagramElements().stream().filter(ode -> ode.getName().equals(editorPartName)).findFirst();
-        assertTrue("The diagram should have a node named \"" + editorPartName + "\".", dde.isPresent());
-        return getEditPart(dde.get());
-    }
-
     /**
      * Gets the primary editparts on this container, that is, the top-level shapes and connectors.
      * 
@@ -1983,7 +1956,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         int previousCenter = 0;
         int previousRight = 0;
         for (String name : names) {
-            IGraphicalEditPart editPart = getEditPart(name);
+            IGraphicalEditPart editPart = getEditPart(name, IGraphicalEditPart.class);
             Rectangle bounds = editPart.getFigure().getBounds();
             if (!previousName.isEmpty()) {
                 Point leftPoint = bounds.getLeft();
@@ -2096,8 +2069,8 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      *            3 segments with right angle between each of them.
      */
     private DEdgeEditPart checkEdge(String sourceNodeName, String targetNodeName, boolean mustBeHorizontal) {
-        IGraphicalEditPart sourceNodeEditPart = getDDiagramElement(sourceNodeName);
-        IGraphicalEditPart targetNodeEditPart = getDDiagramElement(targetNodeName);
+        IGraphicalEditPart sourceNodeEditPart = getEditPart(sourceNodeName, AbstractDiagramContainerEditPart.class);
+        IGraphicalEditPart targetNodeEditPart = getEditPart(targetNodeName, AbstractDiagramContainerEditPart.class);
 
         Optional<DEdgeEditPart> edgeEditPart = sourceNodeEditPart.getSourceConnections().stream().filter(DEdgeEditPart.class::isInstance).map(DEdgeEditPart.class::cast)
                 .filter(deep -> targetNodeEditPart.equals(((DEdgeEditPart) deep).getTarget())).findFirst();
@@ -2128,13 +2101,41 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      *            The node of the diagram element
      * @return the corresponding diagramElement.
      */
-    protected IGraphicalEditPart getDDiagramElement(String nodeName) {
-        Optional<DDiagramElement> ddeSource = diagram.getDiagramElements().stream().filter(dde -> dde.getName().equals(nodeName)).findFirst();
-        assertTrue("The diagram should have a node named \"" + nodeName + "\".", ddeSource.isPresent());
-        IGraphicalEditPart sourceNodeEditPart = getEditPart(ddeSource.get());
-        assertTrue("The node for \"" + nodeName + "\" should be a AbstractDiagramContainerEditPart but was a " + sourceNodeEditPart.getClass().getSimpleName(),
-                sourceNodeEditPart instanceof AbstractDiagramContainerEditPart);
-        return sourceNodeEditPart;
+    protected DDiagramElement getDDiagramElement(String nodeName) {
+        Optional<DDiagramElement> optionalDDE = diagram.getDiagramElements().stream().filter(dde -> dde.getName().equals(nodeName)).findFirst();
+        assertTrue("The diagram should have a node named \"" + nodeName + "\".", optionalDDE.isPresent());
+        return optionalDDE.get();
+    }
+
+    /**
+     * Get the edit part with the current name.
+     * 
+     * @param nodeName
+     *            The node of the diagram element
+     * @param expectedClassType
+     *            the expected type of representation element
+     * @return the corresponding diagramElement.
+     */
+    protected <T> T getEditPart(String nodeName, Class<T> expectedClassType) {
+        DDiagramElement dde = getDDiagramElement(nodeName);
+        return getEditPart(dde, expectedClassType);
+    }
+
+    /**
+     * Get the edit part with the current name.
+     * 
+     * @param dDiagramElement
+     *            The diagram element
+     * @param expectedClassType
+     *            the expected type of representation element
+     * @return the corresponding diagramElement.
+     */
+    @SuppressWarnings("unchecked")
+    protected <T> T getEditPart(DDiagramElement dDiagramElement, Class<T> expectedClassType) {
+        IGraphicalEditPart editPart = getEditPart(dDiagramElement);
+        assertTrue("The node for \"" + dDiagramElement.getName() + "\" should be a " + expectedClassType.getSimpleName() + " but was a " + editPart.getClass().getSimpleName(),
+                expectedClassType.isInstance(editPart));
+        return (T) editPart;
     }
 
     /**
@@ -2145,7 +2146,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * @return the first edge having <code>sourceNodeName</code> as source node.
      */
     private DEdgeEditPart getEdgeWithNodeAsSource(String sourceNodeName) {
-        IGraphicalEditPart sourceNodeEditPart = getDDiagramElement(sourceNodeName);
+        IGraphicalEditPart sourceNodeEditPart = getEditPart(sourceNodeName, AbstractDiagramContainerEditPart.class);
 
         Optional<DEdgeEditPart> edgeEditPart = sourceNodeEditPart.getSourceConnections().stream().filter(DEdgeEditPart.class::isInstance).map(DEdgeEditPart.class::cast).findFirst();
         assertTrue("The diagram should have an edge starting from \"" + sourceNodeName + "\".", edgeEditPart.isPresent());
@@ -2160,7 +2161,7 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
      * @return the first edge having <code>targetNodeName</code> as target node.
      */
     private DEdgeEditPart getEdgeWithNodeAsTarget(String targetNodeName) {
-        IGraphicalEditPart targetNodeEditPart = getDDiagramElement(targetNodeName);
+        IGraphicalEditPart targetNodeEditPart = getEditPart(targetNodeName, AbstractDiagramContainerEditPart.class);
 
         Optional<DEdgeEditPart> edgeEditPart = targetNodeEditPart.getTargetConnections().stream().filter(DEdgeEditPart.class::isInstance).map(DEdgeEditPart.class::cast).findFirst();
         assertTrue("The diagram should have an edge ending to \"" + targetNodeName + "\".", edgeEditPart.isPresent());
