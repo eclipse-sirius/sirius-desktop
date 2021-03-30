@@ -26,6 +26,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemSelected;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
+import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.ui.business.internal.session.SiriusSessionDetailsPropertyPage;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.swt.widgets.Shell;
@@ -71,6 +73,14 @@ public class SiriusSessionDetailsPropertyPageTest extends AbstractSiriusSwtBotGe
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(session, REPRESENTATION_DECRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
     }
 
+    @Override
+    protected void tearDown() throws Exception {
+        // Reopen outline
+        new DesignerViews(bot).openOutlineView();
+        SWTBotUtils.waitAllUiEvents();
+        super.tearDown();
+    }
+    
     /**
      * Tests the content of {@link SiriusSessionDetailsPropertyPage}
      */
