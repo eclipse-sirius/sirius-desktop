@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,10 +40,9 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * This class is responsible to check whether a request on an interaction use
- * should be accepted (i.e. it would produce a well-formed diagram). While doing
- * the validation, it also stores all the relevant information required to
- * actually perform the interaction properly.
+ * This class is responsible to check whether a request on an interaction use should be accepted (i.e. it would produce
+ * a well-formed diagram). While doing the validation, it also stores all the relevant information required to actually
+ * perform the interaction properly.
  * 
  * @author mporhel
  */
@@ -126,8 +125,7 @@ public abstract class AbstractInteractionFrameValidator {
      * Constructor.
      * 
      * @param frame
-     *            the interaction use or combined fragment which will be
-     *            resized.
+     *            the interaction use or combined fragment which will be resized.
      * @param requestQuery
      *            a query on the request targeting the execution.
      */
@@ -141,8 +139,7 @@ public abstract class AbstractInteractionFrameValidator {
     }
 
     /**
-     * Return the validation status. Validate the request result in the first
-     * call only.
+     * Return the validation status. Validate the request result in the first call only.
      * 
      * @return the validation status.
      */
@@ -159,9 +156,8 @@ public abstract class AbstractInteractionFrameValidator {
     }
 
     /**
-     * Performs all the computations required to validate the resizing, and
-     * stores any important information which will be useful to actually execute
-     * the resize if it is valid, like for example avoid contact with siblings.
+     * Performs all the computations required to validate the resizing, and stores any important information which will
+     * be useful to actually execute the resize if it is valid, like for example avoid contact with siblings.
      */
     protected void validate() {
         valid = checkAndComputeRanges();
@@ -205,8 +201,7 @@ public abstract class AbstractInteractionFrameValidator {
     }
 
     /**
-     * Computes, checks and stores the initial and final range of the
-     * interaction use if the resize is performed.
+     * Computes, checks and stores the initial and final range of the interaction use if the resize is performed.
      */
     private boolean checkAndComputeRanges() {
         // Proper range
@@ -223,10 +218,9 @@ public abstract class AbstractInteractionFrameValidator {
     }
 
     /**
-     * Resizing an interaction use can not change which parents it is on, and
-     * can not have any impact on that parents's ranges, so the final range of
-     * the interaction use after the resize must be strictly included in the
-     * ranges of the parents.
+     * Resizing an interaction use can not change which parents it is on, and can not have any impact on that parents's
+     * ranges, so the final range of the interaction use after the resize must be strictly included in the ranges of the
+     * parents.
      */
     private boolean checkFinalRangeStrictlyIncludedInParents(Collection<ISequenceEvent> parentEvents) {
         boolean checked = true;
@@ -241,8 +235,8 @@ public abstract class AbstractInteractionFrameValidator {
                 parentRange = new Range(parentRange.getLowerBound(), parentRange.getUpperBound() + expansionZone.width());
             }
             /*
-             * We make two tests separately so that is is easier when debugging
-             * to determine which of the conditions went wrong, if any.
+             * We make two tests separately so that is is easier when debugging to determine which of the conditions
+             * went wrong, if any.
              */
             boolean interactionInRange = parentRange.includes(finalRange.grown(LayoutConstants.EXECUTION_CHILDREN_MARGIN));
             checked = checked && interactionInRange;
@@ -347,7 +341,7 @@ public abstract class AbstractInteractionFrameValidator {
      * @param cbr
      *            the current resize request.
      * @param host
-     *            the host execution
+     *            the host frame
      * @return a validator.
      */
     public static AbstractInteractionFrameValidator getOrCreateResizeValidator(ChangeBoundsRequest cbr, AbstractFrame host) {

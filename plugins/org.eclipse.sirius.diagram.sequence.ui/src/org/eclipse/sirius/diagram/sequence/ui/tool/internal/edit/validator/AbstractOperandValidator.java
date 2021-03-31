@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,9 +24,8 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
 /**
- * This class is responsible to check whether a request on an operand should be
- * accepted (i.e. it would produce a well-formed diagram). While doing the
- * validation, it also stores all the relevant information required to actually
+ * This class is responsible to check whether a request on an operand should be accepted (i.e. it would produce a
+ * well-formed diagram). While doing the validation, it also stores all the relevant information required to actually
  * perform the interaction properly.
  * 
  * @author smonnier
@@ -56,7 +55,9 @@ public abstract class AbstractOperandValidator {
 
     private Range finalSiblingOperandRange;
 
-    private boolean valid;
+    private boolean valid = true;
+
+    private boolean initialized;
 
     /**
      * Constructor.
@@ -78,7 +79,16 @@ public abstract class AbstractOperandValidator {
         }
     }
 
-    public boolean isValid() {
+    /**
+     * Return the validation status. Validate the request result in the first call only.
+     * 
+     * @return the validation status.
+     */
+    public final boolean isValid() {
+        if (!initialized) {
+            validate();
+            initialized = true;
+        }
         return valid;
     }
 
@@ -87,19 +97,17 @@ public abstract class AbstractOperandValidator {
     }
 
     /**
-     * Performs all the computations required to validate the resizing, and
-     * stores any important information which will be useful to actually execute
-     * the resize if it is valid, like for example avoid contact with siblings.
+     * Performs all the computations required to validate the resizing, and stores any important information which will
+     * be useful to actually execute the resize if it is valid, like for example avoid contact with siblings.
      */
-    public void validate() {
+    protected void validate() {
         valid = checkAndComputeRanges();
 
         valid = valid && checkContainedISequenceEvent();
     }
 
     /**
-     * Computes, checks and stores the initial and final range of the operand if
-     * the resize is performed.
+     * Computes, checks and stores the initial and final range of the operand if the resize is performed.
      */
     private boolean checkAndComputeRanges() {
         boolean result = true;
@@ -109,6 +117,7 @@ public abstract class AbstractOperandValidator {
 
         if (newBounds.height < LayoutConstants.DEFAULT_OPERAND_HEIGHT) {
             result = false;
+            finalOperandRange = RangeHelper.verticalRange(newBounds);
         } else {
             // The current operand new range is valid, we can check the sibling
             // operand
@@ -150,5 +159,9 @@ public abstract class AbstractOperandValidator {
             moveDelta = new Point(size.width, size.height);
         }
         return bounds.getCopy().translate(moveDelta).resize(sizeDelta);
+    }
+
+    public RequestQuery getRequestQuery() {
+        return requestQuery;
     }
 }

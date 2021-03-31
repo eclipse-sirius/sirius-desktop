@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,6 @@
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
 
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
@@ -71,9 +70,8 @@ import com.google.common.collect.Iterables;
 /**
  * A specialized semantic edit policy for sequence diagram elements.
  * <ul>
- * <li>Overrides the REQ_CONNECTION_END to invoke the appropriate message
- * creation tool with the additional variables required for its insertion at the
- * right place in the semantic model.</li>
+ * <li>Overrides the REQ_CONNECTION_END to invoke the appropriate message creation tool with the additional variables
+ * required for its insertion at the right place in the semantic model.</li>
  * <li>Shows horizontal feedback lines when an execution is moved/resized.</li>
  * </ul>
  * 
@@ -84,8 +82,8 @@ public class ExecutionSemanticEditPolicy extends DNode2ItemSemanticEditPolicy {
     private RangeGuide forbiddenRangeArea;
 
     /**
-     * Overridden to handle the REQ_CONNECTION_END specially as the location at
-     * which a message is created has a semantic meaning.
+     * Overridden to handle the REQ_CONNECTION_END specially as the location at which a message is created has a
+     * semantic meaning.
      * <p>
      * {@inheritDoc}
      */
@@ -185,7 +183,7 @@ public class ExecutionSemanticEditPolicy extends DNode2ItemSemanticEditPolicy {
                     screenRange.performScale(GraphicalHelper.getZoom(getHost()));
                     Range forbiddenRange = RangeHelper.verticalRange(screenRange);
 
-                    forbiddenRangeArea = new RangeGuide(ColorConstants.red, forbiddenRange, true);
+                    forbiddenRangeArea = new RangeGuide(SequenceInteractionFeedBackBuilder.CONFLICT_FEEDBACK_COLOR, forbiddenRange, true);
                     Rectangle bounds = layer.getBounds().getCopy();
                     bounds.height = forbiddenRange.width();
                     bounds.y = forbiddenRange.getLowerBound();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.FreeformViewport;
 import org.eclipse.draw2d.IFigure;
@@ -60,7 +59,11 @@ public abstract class AbstractFrameResizableEditPolicy extends AirResizableEditP
     /**
      * The color to use for the horizontal feedback rules shown when moving/resizing an execution.
      */
-    private static final Color FRAME_FEEDBACK_COLOR = ColorConstants.lightGray;
+    private static final Color FRAME_FEEDBACK_COLOR = SequenceInteractionFeedBackBuilder.ISE_FEEDBACK_COLOR;
+
+    private static final Color CONFLICT_FEEDBACK_COLOR = SequenceInteractionFeedBackBuilder.CONFLICT_FEEDBACK_COLOR;
+
+    private static final Color EXPANSION_FEEDBACK_COLOR = SequenceInteractionFeedBackBuilder.EXPANSION_FEEDBACK_COLOR;
 
     private Collection<Figure> guides = new ArrayList<>();
 
@@ -151,7 +154,7 @@ public abstract class AbstractFrameResizableEditPolicy extends AirResizableEditP
             screenRange.performScale(GraphicalHelper.getZoom(getHost()));
             Range expand = RangeHelper.verticalRange(screenRange);
 
-            RangeGuide expansion = new RangeGuide(validator.isValid() ? ColorConstants.blue : ColorConstants.red, expand, true);
+            RangeGuide expansion = new RangeGuide(validator.isValid() ? EXPANSION_FEEDBACK_COLOR : CONFLICT_FEEDBACK_COLOR, expand, true);
             bounds.height = expand.width();
             bounds.y = expand.getLowerBound();
             expansion.setBounds(bounds);
@@ -169,7 +172,7 @@ public abstract class AbstractFrameResizableEditPolicy extends AirResizableEditP
             bounds.y = conflictingPosition.y;
             bounds.height = 1;
 
-            HorizontalGuide conflictGuide = new HorizontalGuide(ColorConstants.red, conflictingPosition.y);
+            HorizontalGuide conflictGuide = new HorizontalGuide(CONFLICT_FEEDBACK_COLOR, conflictingPosition.y);
             conflictGuide.setBounds(bounds);
             addFeedback(conflictGuide);
             guides.add(conflictGuide);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import org.eclipse.draw2d.ColorConstants;
 import org.eclipse.draw2d.Cursors;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.PositionConstants;
@@ -93,9 +92,8 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * Specialized edit policy for sequence diagrams messages: tracks graphical
- * reordering and invokes user-specified reordering tool to reflect the changes
- * in the semantic model.
+ * Specialized edit policy for sequence diagrams messages: tracks graphical reordering and invokes user-specified
+ * reordering tool to reflect the changes in the semantic model.
  * <p>
  * This edit policy should only be installed on SequenceMessageEditParts.
  * 
@@ -109,10 +107,9 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
     public static final String REQUEST_FROM_SEQUENCE_MESSAGE_EDIT_POLICY = "org.eclipse.sirius.sequence.resize.execution.from.bendpoint.request"; //$NON-NLS-1$
 
     /**
-     * The color top use for the horizontal feedback rules shown when moving a
-     * message.
+     * The color top use for the horizontal feedback rules shown when moving a message.
      */
-    private static final Color MESSAGE_FEEDBACK_COLOR = ColorConstants.lightGray;
+    private static final Color MESSAGE_FEEDBACK_COLOR = SequenceInteractionFeedBackBuilder.ISE_FEEDBACK_COLOR;
 
     private final Collection<Figure> guides = new ArrayList<>();
 
@@ -138,9 +135,8 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
     @Override
     protected void addInvisibleCreationHandle(List list, ConnectionEditPart connEP, int i) {
         /*
-         * Do nothing: the handles created by default use a raw GEF drag tracker
-         * which we do not control, and which can lead to disconnections of
-         * branches on reflective messages.
+         * Do nothing: the handles created by default use a raw GEF drag tracker which we do not control, and which can
+         * lead to disconnections of branches on reflective messages.
          */
     }
 
@@ -208,7 +204,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                     Point conflictingPosition = new Point(0, conflict);
                     conflictingPosition.performScale(GraphicalHelper.getZoom(getHost()));
 
-                    HorizontalGuide conflictGuide = new HorizontalGuide(ColorConstants.red, conflictingPosition.y);
+                    HorizontalGuide conflictGuide = new HorizontalGuide(SequenceInteractionFeedBackBuilder.CONFLICT_FEEDBACK_COLOR, conflictingPosition.y);
                     bounds.y = conflictingPosition.y;
                     bounds.height = 1;
                     conflictGuide.setBounds(bounds);
@@ -274,8 +270,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
     }
 
     /**
-     * Moving a create message up and down will also show the feedback of the
-     * targeted instance role.
+     * Moving a create message up and down will also show the feedback of the targeted instance role.
      * 
      * @param request
      *            the "create message" move request
@@ -313,8 +308,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
     }
 
     /**
-     * Moving a destroy message up and down will also show the feedback of the
-     * targeted end of life.
+     * Moving a destroy message up and down will also show the feedback of the targeted end of life.
      * 
      * @param request
      *            the "create message" move request
@@ -367,8 +361,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
     }
 
     /**
-     * Change the place of the message in the semantic model if the new
-     * graphical positions requires it.
+     * Change the place of the message in the semantic model if the new graphical positions requires it.
      * <p>
      * {@inheritDoc}
      */
@@ -401,7 +394,8 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             result = UnexecutableCommand.INSTANCE;
         } else {
             String label = baseCommand.getLabel();
-            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(thisEvent.getEditingDomain(), MessageFormat.format(Messages.SequenceMessageEditPolicy_synchronizeOrderingCompositeCommand, label != null ? label : "<null>")); //$NON-NLS-1$
+            CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(thisEvent.getEditingDomain(),
+                    MessageFormat.format(Messages.SequenceMessageEditPolicy_synchronizeOrderingCompositeCommand, label != null ? label : "<null>")); //$NON-NLS-1$
             SequenceEditPartsOperations.appendFullRefresh(thisEvent, ctc);
 
             MoveType move = getMoveType(thisEvent, request, ends);
@@ -410,8 +404,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                 thisEvent.setCursor(Cursors.SIZENS);
             } else {
                 /*
-                 * Overridden to handle lifeline move/resize when moving the
-                 * selected create/destroy message.
+                 * Overridden to handle lifeline move/resize when moving the selected create/destroy message.
                  */
                 if (thisEvent.getTarget() instanceof InstanceRoleEditPart) {
                     ctc.compose(getMoveCreateMessageCommand(request, thisEvent, baseCommand));
@@ -656,16 +649,14 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
     }
 
     /**
-     * Overridden to resize the targeted RoteExecitionEditPart when moving the
-     * selected destroy message.
+     * Overridden to resize the targeted RoteExecitionEditPart when moving the selected destroy message.
      * 
      * @param baseCommand
      * @param smep
      * 
      * @param request
      *            the current request
-     * @return a compound command if the destroy message is moved, the super
-     *         command otherwise
+     * @return a compound command if the destroy message is moved, the super command otherwise
      */
     private AbstractEMFOperation getMoveDestroyMessageCommand(BendpointRequest br, SequenceMessageEditPart smep, Command baseCommand) {
         CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(smep.getEditingDomain(), Messages.SequenceMessageEditPolicy_moveCreateMessageCommand);
@@ -712,14 +703,12 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
     }
 
     /**
-     * Overridden to move the targeted InstanceRoleEditPart when moving the
-     * selected create message.
+     * Overridden to move the targeted InstanceRoleEditPart when moving the selected create message.
      * 
      * @param request
      *            the current request
      * @param baseCommand
-     * @return a compound command if the create message is moved, the super
-     *         command otherwise
+     * @return a compound command if the create message is moved, the super command otherwise
      */
     private AbstractEMFOperation getMoveCreateMessageCommand(BendpointRequest request, SequenceMessageEditPart smep, Command baseCommand) {
         Point normalizedLocation = request.getLocation().getCopy();
@@ -752,11 +741,9 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         cc.compose(new CommandProxy(baseCommand));
 
         /*
-         * These additional commands adjust the positions of the executions and
-         * messages on the lifeline so that visually they do not move. They are
-         * dual to the commands we add when moving a normal execution, as in
-         * that case we want all the executions and messages it contains to move
-         * along.
+         * These additional commands adjust the positions of the executions and messages on the lifeline so that
+         * visually they do not move. They are dual to the commands we add when moving a normal execution, as in that
+         * case we want all the executions and messages it contains to move along.
          */
         final LifelineEditPart lep = EditPartsHelper.getAllLifelines(instanceRoleEditPart).get(0);
 
@@ -772,8 +759,8 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
     private void updateMovingTargetReferencePoint(Command baseCommand, final ChangeBoundsRequest cbr) {
         if (baseCommand instanceof ICommandProxy && ((ICommandProxy) baseCommand).getICommand() instanceof SetConnectionBendpointsCommand) {
             /*
-             * Update target reference point of the SetConnectionBendpoint base
-             * command to take into account he move ot the instance role.
+             * Update target reference point of the SetConnectionBendpoint base command to take into account he move ot
+             * the instance role.
              */
             SetConnectionBendpointsCommand scbc = (SetConnectionBendpointsCommand) ((ICommandProxy) baseCommand).getICommand();
             scbc.setNewPointList(scbc.getNewPointList(), scbc.getSourceRefPoint(), scbc.getTargetRefPoint().getCopy().getTranslated(cbr.getMoveDelta()));

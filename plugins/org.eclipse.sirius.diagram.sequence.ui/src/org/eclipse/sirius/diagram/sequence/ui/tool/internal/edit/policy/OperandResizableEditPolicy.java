@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
+import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
@@ -40,10 +43,12 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.SequenceEditPartsOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart;
+import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.OperandEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.OperandResizeValidator;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.ui.SequenceDragEditPartsTrackerEx.SequenceCacheDragTrackerHelper;
@@ -52,7 +57,10 @@ import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirResizableEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusResizeTracker;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.ext.draw2d.figure.HorizontalGuide;
+import org.eclipse.swt.graphics.Color;
 
+import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 
 /**
@@ -61,6 +69,15 @@ import com.google.common.collect.Iterables;
  * @author smonnier
  */
 public class OperandResizableEditPolicy extends AirResizableEditPolicy {
+
+    /**
+     * The color to use for the horizontal feedback rules shown when moving/resizing an execution.
+     */
+    private static final Color OPERAND_FEEDBACK_COLOR = SequenceInteractionFeedBackBuilder.ISE_FEEDBACK_COLOR;
+
+    private static final String OPERAND_RESIZE_VALIDATOR = "org.eclipse.sirius.sequence.resize.operand.validator"; //$NON-NLS-1$
+
+    private Collection<Figure> guides = new ArrayList<>();
 
     /**
      * Constructor.
@@ -86,8 +103,7 @@ public class OperandResizableEditPolicy extends AirResizableEditPolicy {
         cancelHorizontalDelta(request);
 
         OperandEditPart oep = (OperandEditPart) getHost();
-        OperandResizeValidator operandResizeValidator = new OperandResizeValidator((Operand) oep.getISequenceEvent(), new RequestQuery(request));
-        operandResizeValidator.validate();
+        OperandResizeValidator operandResizeValidator = getOrCreateResizeValidator(request, (Operand) oep.getISequenceEvent());
 
         Command result;
         if (operandResizeValidator.isValid()) {
@@ -337,12 +353,42 @@ public class OperandResizableEditPolicy extends AirResizableEditPolicy {
      */
     @Override
     protected void showChangeBoundsFeedback(ChangeBoundsRequest request) {
+        eraseChangeBoundsFeedback(request);
+
         cancelHorizontalDelta(request);
         RequestQuery query = new RequestQuery(request);
         if (query.isMove()) {
             cancelVerticalDelta(request);
         }
+
+        cancelHorizontalDelta(request);
+
         super.showChangeBoundsFeedback(request);
+
+        ISequenceEventEditPart hostPart = (ISequenceEventEditPart) getHost();
+        RequestQuery requestQuery = new RequestQuery(request);
+
+        ISequenceEvent operand = hostPart.getISequenceEvent();
+        if (hostPart.getSelected() == EditPart.SELECTED_PRIMARY && requestQuery.isResize()) {
+            if (operand instanceof Operand) {
+                OperandResizeValidator validator = getOrCreateResizeValidator(request, (Operand) operand);
+
+                boolean valid = validator.isValid();
+                Range finalRange = validator.getFinalRange();
+                int y = requestQuery.isResizeFromTop() ? finalRange.getLowerBound() : finalRange.getUpperBound();
+                Color color = valid ? OPERAND_FEEDBACK_COLOR : SequenceInteractionFeedBackBuilder.CONFLICT_FEEDBACK_COLOR;
+
+                Figure guide = new HorizontalGuide(color, y);
+                Rectangle bounds = getFeedbackLayer().getBounds().getCopy();
+                bounds.height = 1;
+                bounds.y = y;
+                guide.setBounds(bounds);
+                addFeedback(guide);
+                guides.add(guide);
+
+            }
+        }
+
     }
 
     /**
@@ -375,6 +421,52 @@ public class OperandResizableEditPolicy extends AirResizableEditPolicy {
                 return handleButtonDown;
             }
         };
+    }
+
+    /**
+     * Get the validator from the request extended data or a new one.
+     * 
+     * @param cbr
+     *            the current resize request.
+     * @param host
+     *            the host operand
+     * @return a validator.
+     */
+    public static OperandResizeValidator getOrCreateResizeValidator(ChangeBoundsRequest cbr, Operand host) {
+        RequestQuery requestQuery = new RequestQuery(cbr);
+        Preconditions.checkArgument(requestQuery.isResize());
+        OperandResizeValidator validator = null;
+        Object object = cbr.getExtendedData().get(OPERAND_RESIZE_VALIDATOR);
+        if (object instanceof OperandResizeValidator) {
+            validator = (OperandResizeValidator) object;
+            if (!validator.getRequestQuery().getLogicalDelta().equals(requestQuery.getLogicalDelta())) {
+                validator = null;
+            }
+        }
+
+        if (validator == null && requestQuery.isResize()) {
+            validator = new OperandResizeValidator(host, requestQuery);
+            cbr.getExtendedData().put(OPERAND_RESIZE_VALIDATOR, validator);
+        }
+        return validator;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void eraseChangeBoundsFeedback(ChangeBoundsRequest request) {
+        removeFeedBackOnGuides();
+        super.eraseChangeBoundsFeedback(request);
+    }
+
+    private void removeFeedBackOnGuides() {
+        if (guides != null && !guides.isEmpty()) {
+            for (Figure hGuide : guides) {
+                removeFeedback(hGuide);
+            }
+            guides.clear();
+        }
     }
 
 }

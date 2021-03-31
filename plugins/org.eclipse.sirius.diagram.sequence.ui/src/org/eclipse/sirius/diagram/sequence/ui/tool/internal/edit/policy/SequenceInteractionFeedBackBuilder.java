@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -39,11 +39,21 @@ import com.google.common.collect.Iterables;
  * @author mporhel
  */
 public class SequenceInteractionFeedBackBuilder {
+
     /**
-     * The color to use for the horizontal feedback rules shown when
-     * moving/resizing an ISequencEvent.
+     * The color to use for the horizontal feedback rules shown when moving/resizing an ISequencEvent.
      */
-    private static final Color ISE_FEEDBACK_COLOR = ColorConstants.lightGray;
+    public static final Color ISE_FEEDBACK_COLOR = ColorConstants.lightGray;
+
+    /**
+     * The color to use for the horizontal feedback rules shown when an expansion is triggered.
+     */
+    public static final Color EXPANSION_FEEDBACK_COLOR = ColorConstants.blue;
+
+    /**
+     * The color to use for the horizontal feedback rules shown when there command is not valid.
+     */
+    public static final Color CONFLICT_FEEDBACK_COLOR = ColorConstants.red;
 
     private final AbstractSequenceInteractionValidator validator;
 
@@ -102,8 +112,8 @@ public class SequenceInteractionFeedBackBuilder {
             Rectangle bounds = feedBackLayer.getBounds().getCopy();
             bounds.y = conflictingPosition.y;
             bounds.height = 1;
-            
-            HorizontalGuide conflictGuide = new HorizontalGuide(ColorConstants.red, conflictingPosition.y);
+
+            HorizontalGuide conflictGuide = new HorizontalGuide(CONFLICT_FEEDBACK_COLOR, conflictingPosition.y);
             conflictGuide.setBounds(bounds);
             feedbacks.add(conflictGuide);
         }
@@ -117,7 +127,7 @@ public class SequenceInteractionFeedBackBuilder {
             bounds.y = conflictRange.getLowerBound();
             bounds.height = Math.max(1, conflictRange.width());
 
-            RangeGuide guide = new RangeGuide(ColorConstants.red, conflictRange, true);
+            RangeGuide guide = new RangeGuide(CONFLICT_FEEDBACK_COLOR, conflictRange, true);
             guide.setBounds(bounds);
             feedbacks.add(guide);
         }
@@ -125,7 +135,7 @@ public class SequenceInteractionFeedBackBuilder {
 
     private void feedBackErrors(Collection<Figure> feedbacks) {
         for (ISequenceEvent errorEvent : validator.getEventsInError()) {
-            addFeedBack(errorEvent, ColorConstants.red, true, feedbacks, validator.getRangeFunction().apply(errorEvent));
+            addFeedBack(errorEvent, CONFLICT_FEEDBACK_COLOR, true, feedbacks, validator.getRangeFunction().apply(errorEvent));
         }
     }
 
@@ -158,7 +168,7 @@ public class SequenceInteractionFeedBackBuilder {
             screenRange.performScale(GraphicalHelper.getZoom(hostPart));
             Range expand = RangeHelper.verticalRange(screenRange);
 
-            RangeGuide expansion = new RangeGuide(validator.isValid() ? ColorConstants.blue : ColorConstants.red, expand, true);
+            RangeGuide expansion = new RangeGuide(validator.isValid() ? EXPANSION_FEEDBACK_COLOR : CONFLICT_FEEDBACK_COLOR, expand, true);
             bounds.height = expand.width();
             bounds.y = expand.getLowerBound();
             expansion.setBounds(bounds);
@@ -175,7 +185,7 @@ public class SequenceInteractionFeedBackBuilder {
 
     private void feedBackCreatedElements(Collection<Figure> feedbacks) {
         for (Range creationRange : validator.getCreatedElements()) {
-            addFeedBack(null, validator.isValid() ? ISE_FEEDBACK_COLOR : ColorConstants.red, false, feedbacks, creationRange);
+            addFeedBack(null, validator.isValid() ? ISE_FEEDBACK_COLOR : CONFLICT_FEEDBACK_COLOR, false, feedbacks, creationRange);
         }
     }
 
