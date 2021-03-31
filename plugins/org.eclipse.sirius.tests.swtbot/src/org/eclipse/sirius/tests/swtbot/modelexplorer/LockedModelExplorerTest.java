@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -146,7 +146,6 @@ public class LockedModelExplorerTest extends AbstractSiriusSwtBotGefTestCase {
             lockRepresentation(false);
             assertFalse("The job should not be scheduled as one unlock notification has been send and ModelExplorer view is not opened.", refreshJobScheduled);
         } finally {
-            takeScreenshot("before reopening of ModelExplorer view");
             // Reopen the model explorer view (for following tests in suite)
             Display.getDefault().syncExec(new Runnable() {
                 @Override
