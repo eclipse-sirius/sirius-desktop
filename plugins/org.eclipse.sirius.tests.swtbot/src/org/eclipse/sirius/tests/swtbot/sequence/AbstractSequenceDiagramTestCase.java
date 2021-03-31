@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -378,6 +378,8 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
     protected void initEditor() {
         if (editor != null) {
             editor.setFocus();
+            // Reset potential editor scroll
+            editor.scrollTo(0, 0);
         }
     }
 
@@ -1614,7 +1616,7 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
     
     @Override
     protected void manualRefresh() {
-    	// Do nothing, sequence diagrams only work in auto-refresh mode anyway.
+        // Do nothing, sequence diagrams only work in auto-refresh mode anyway.
     }
 
     @Override
@@ -1622,8 +1624,11 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
         if (editor != null) {
             // Many tests pass the editor in full screen (maximized) and do not
             // restore the initial state. This can have side effects on the
-            // following tests. To avoid this, a restore is force here.
+            // following tests. To avoid this, some reset are done here:
+            // * a restore
             editor.restore();
+            // * a reset editor scroll
+            editor.scrollTo(0, 0);
         }
         super.tearDown();
     }

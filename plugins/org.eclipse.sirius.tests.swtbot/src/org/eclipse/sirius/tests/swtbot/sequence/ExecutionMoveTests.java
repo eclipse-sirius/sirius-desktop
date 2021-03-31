@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDi
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.sample.interactions.Interaction;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartResized;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
@@ -143,6 +142,7 @@ public class ExecutionMoveTests extends AbstractDefaultModelSequenceTests {
 
         maximizeEditor(editor);
         editor.reveal(LIFELINE_A);
+        editor.scrollTo(0, 0);
 
         sequenceDiagramBot = editor.mainEditPart();
         SequenceDiagramEditPart sequenceDiagramEditPart = (SequenceDiagramEditPart) sequenceDiagramBot.part();
@@ -190,9 +190,6 @@ public class ExecutionMoveTests extends AbstractDefaultModelSequenceTests {
      * Move e6 with a message in lifeline start zone.
      */
     public void test_move_execution_with_message_in_init_zone() {
-    	if (TestsUtil.shouldSkipUnreliableTests()) {
-            return;
-        }
         ICondition done = new OperationDoneCondition();
         arrangeAll();
         bot.waitUntil(done);
@@ -206,6 +203,7 @@ public class ExecutionMoveTests extends AbstractDefaultModelSequenceTests {
 
         done = new OperationDoneCondition();
         arrangeAll();
+        editor.scrollTo(0, 0);
         bot.waitUntil(done);
 
         bounds = getExecutionLogicalBounds(LIFELINE_B, 0);
@@ -282,9 +280,6 @@ public class ExecutionMoveTests extends AbstractDefaultModelSequenceTests {
      * Move e3 just above e1 but close enough to trigger a shift.
      */
     public void test_move_plain_execution_above_sibling_shifts_sibling_and_children() {
-    	if (TestsUtil.shouldSkipUnreliableTests()) {
-            return;
-        }
     	int newY = 170;
         int dy = newY - e3Bounds.y;
         
@@ -298,9 +293,9 @@ public class ExecutionMoveTests extends AbstractDefaultModelSequenceTests {
         ICondition conditionE7 = new CheckEditPartMoved(e7Bot);
         ICondition conditionE8 = new CheckEditPartMoved(e8Bot);
         ICondition conditionE9 = new CheckEditPartMoved(e9Bot);
-        
+
         editor.drag(e3Bot, e3Bounds.x, newY);
-        
+
         bot.waitUntil(conditionE1);
         bot.waitUntil(conditionE2);
         bot.waitUntil(conditionE3);
@@ -421,9 +416,6 @@ public class ExecutionMoveTests extends AbstractDefaultModelSequenceTests {
      * Move e2 out of e1, just above it
      */
     public void test_move_execution_out_of_parent_and_above_it() {
-        if (TestsUtil.shouldSkipUnreliableTests()) {
-            return;
-        }
         int newY = 170;
         int dy = newY - e2Bounds.y;
         
