@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 Obeo.
+ * Copyright (c) 2020, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.unit.diagram.compartment;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.draw2d.FigureUtilities;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.ecore.EPackage;
@@ -158,11 +159,6 @@ public class CompartmentsMultiLabelLayoutTest extends SiriusDiagramTestCase {
      * Check behavior with main and sub-elements label changes
      */
     public void testFreeFormContainerWithAutoSize() {
-        if (TestsUtil.shouldSkipUnreliableTests()) {
-            // checkFreeFormContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(192, 75), new Dimension(218, 75));
-            // fails on some IC server: "Wrong Draw2D width for StandardContainerSmall expected:<218.0> but was:<209.0>"
-            return;
-        }
         checkFreeFormContainerDimensions(AUTO_SIZE_DIMENSION, new Dimension(182, 75), new Dimension(207, 75));
 
         changeLabelSize(rootPackage, LONG_LABEL);
@@ -379,7 +375,21 @@ public class CompartmentsMultiLabelLayoutTest extends SiriusDiagramTestCase {
         }
 
         if (expectedFigureDimension.width() != -1) {
-            assertEquals("Wrong Draw2D width for " + label, expectedFigureDimension.width(), mainFigure.getBounds().width(), widthDelta);
+            // We also compute the width according the text width (indeed, all Windows OS or all Linux OS have not the
+            // same fonts). So we check the expected width or a computed one.
+            int expectedWidthFromTextWidth = FigureUtilities.getTextWidth(label, mainFigure.getFont()) + 16 + 7;
+            // 16 is added for the icon size, and 7 for shadow and margins
+            int expectedWidth = expectedFigureDimension.width();
+            int actualWidth = mainFigure.getBounds().width();
+            if (Integer.compare(expectedWidth, actualWidth) != 0) {
+                if (!(Math.abs(expectedWidth - actualWidth) <= widthDelta)) {
+                    if (Integer.compare(expectedWidthFromTextWidth, actualWidth) != 0) {
+                        if (!(Math.abs(expectedWidthFromTextWidth - actualWidth) <= widthDelta)) {
+                            fail("Wrong Draw2D width for " + label + " expected:<" + expectedWidth + "> or <" + expectedWidthFromTextWidth + "> but was:<" + actualWidth + ">.");
+                        }
+                    }
+                }
+            }
         }
         if (expectedFigureDimension.height() != -1) {
             assertEquals("Wrong Draw2D height for " + label, expectedFigureDimension.height(), mainFigure.getBounds().height(), heightDelta);
