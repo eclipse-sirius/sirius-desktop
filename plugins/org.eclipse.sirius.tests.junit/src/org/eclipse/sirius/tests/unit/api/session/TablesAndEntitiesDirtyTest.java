@@ -80,21 +80,6 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
      * @throws Exception
      */
     public void testOpenTableRepresentationInEditor() throws Exception {
-        if (TestsUtil.shouldSkipLongTests()) {
-            /*
-             * junit.framework.AssertionFailedError: expected:<DIRTY> but was:<SYNC> at
-             * junit.framework.Assert.fail(Assert.java:57) at junit.framework.Assert.failNotEquals(Assert.java:329) at
-             * junit.framework.Assert.assertEquals(Assert.java:78) at
-             * junit.framework.Assert.assertEquals(Assert.java:86) at
-             * junit.framework.TestCase.assertEquals(TestCase.java:253) at org.eclipse
-             * .sirius.tests.unit.api.session.TablesAndEntitiesDirtyTest
-             * .openRepresentation(TablesAndEntitiesDirtyTest.java:261) at org.eclipse
-             * .sirius.tests.unit.api.session.TablesAndEntitiesDirtyTest .testOpenTableRepresentationInEditor
-             * (TablesAndEntitiesDirtyTest.java:86)
-             */
-            return;
-        }
-
         assertsSessionIsSyncAndReload(session);
         loadModeler(URI.createPlatformPluginURI(MODELER_PATH, true), session.getTransactionalEditingDomain());
 
@@ -134,10 +119,6 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
      * @throws Exception
      */
     public void testCreateAndOpenTableRepresentationInEditor() throws Exception {
-        if (TestsUtil.shouldSkipUnreliableTests()) {
-            return;
-        }
-
         assertsSessionIsSyncAndReload(session);
         loadModeler(URI.createPlatformPluginURI(MODELER_PATH, true), session.getTransactionalEditingDomain());
 
@@ -166,10 +147,6 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
      * @throws Exception
      */
     public void testOpenCrossTableRepresentationInEditor() throws Exception {
-        if (TestsUtil.shouldSkipUnreliableTests()) {
-            return;
-        }
-
         initViewpoint(REVIEW_VIEWPOINT_NAME);
         assertNotNull("Representation \"" + CROSS_TABLES_DESC_NAME + "\" has not been created.", createRepresentation(CROSS_TABLES_DESC_NAME, childEPackage));
 
@@ -222,7 +199,18 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
             TestsUtil.synchronizationWithUIThread();
         }
 
-        assertEquals(SessionStatus.DIRTY, session.getStatus());
+        TestsUtil.waitUntil(new ICondition() {
+
+            @Override
+            public boolean test() throws Exception {
+                return SessionStatus.DIRTY.equals(session.getStatus());
+            }
+
+            @Override
+            public String getFailureMessage() {
+                return "The session is not in the expected state: expected:<" + SessionStatus.DIRTY + "> but was:<" + session.getStatus() + ">";
+            }
+        });
         session.save(new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
 
@@ -277,6 +265,7 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
      */
     public IEditorPart openRepresentation(DRepresentation representation, final SessionStatus expectedStatus) {
         IEditorPart editor = DialectUIManager.INSTANCE.openEditor(session, representation, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
         TestsUtil.waitUntil(new ICondition() {
 
             @Override

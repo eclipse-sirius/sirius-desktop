@@ -592,6 +592,7 @@ public class AllDiagramPluginsTests {
             suite.addTestSuite(MappingBasedSiriusFormatDataManagerTest.class);
             suite.addTest(new JUnit4TestAdapter(SiriusFormatDataManagerForSemanticElementsStoreWithPredefinedDataTest.class));
         }
+        suite.addTestSuite(TablesAndEntitiesDirtyTest.class);
     }
 
     /**
@@ -606,7 +607,6 @@ public class AllDiagramPluginsTests {
             // This one is long (~9 minutes), so it is ignored when running
             suite.addTest(new JUnit4TestAdapter(SiriusFormatDataManagerForSemanticElementsApplyWithPredefinedDataTest.class));
         }
-        suite.addTestSuite(TablesAndEntitiesDirtyTest.class);
     }
 
     /**

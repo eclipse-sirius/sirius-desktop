@@ -70,6 +70,7 @@ import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.swt.graphics.FontData;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -208,8 +209,8 @@ public class AbstractMappingBasedSiriusFormatDataManagerTest extends AbstractSir
     }
 
     @Override
-    protected void tearDown() throws Exception {
-        // TODO Auto-generated method stub
+    @After
+    public void tearDown() throws Exception {
         super.tearDown();
 
         if (oldFont != null) {
