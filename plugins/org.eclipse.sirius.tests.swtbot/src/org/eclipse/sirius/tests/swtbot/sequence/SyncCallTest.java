@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,7 +40,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.LayoutEditPar
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.EditPartsHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
-import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckMessageEditPartIsDisplayed;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberExecutionOnLifeline;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckResize;
@@ -1444,13 +1443,11 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
      *             Test error.
      */
     public void test_SyncCall_Move_Reconnect2() throws Exception {
-        if (TestsUtil.shouldSkipUnreliableTests()) {
-            return;
-        }
         // Click on the diagram to unfocus the created element
         editor.click(LayoutConstants.LIFELINES_START_X - 10, LayoutConstants.LIFELINES_START_Y - 10);
 
         resizeLifeline(LIFELINE_B, 200);
+        editor.scrollTo(0, 0);
 
         // Calculate the X position of the center of lifelines A and B
         int lifelineAPosition = getScreenPosition(LIFELINE_A).x + getScreenSize(LIFELINE_A).width / 2;
@@ -1508,13 +1505,13 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
         bot.waitUntil(cR);
 
         // Validates the position of the execution
-        assertEquals("The execution index 0 on lifeline " + LIFELINE_B + " is not at the expected vertical position", firstExecutionScreenBounds.x, getExecutionScreenPosition(LIFELINE_B, 0).x);
+        assertEquals("The execution index 0 on lifeline " + LIFELINE_B + " is not at the expected horizontal position", firstExecutionScreenBounds.x, getExecutionScreenPosition(LIFELINE_B, 0).x);
         assertEquals("The execution index 0 on lifeline " + LIFELINE_B + " is not at the expected vertical position", firstExecutionScreenBounds.y, getExecutionScreenPosition(LIFELINE_B, 0).y);
-        assertEquals("The execution index 0 on lifeline " + LIFELINE_C + " is not at the expected vertical position", secondExecutionScreenPosition.x, getExecutionScreenPosition(LIFELINE_C, 0).x);
+        assertEquals("The execution index 0 on lifeline " + LIFELINE_C + " is not at the expected horizontal position", secondExecutionScreenPosition.x, getExecutionScreenPosition(LIFELINE_C, 0).x);
         assertEquals("The execution index 0 on lifeline " + LIFELINE_C + " is not at the expected vertical position", secondExecutionScreenPosition.y, getExecutionScreenPosition(LIFELINE_C, 0).y);
-        assertEquals("The execution index 1 on lifeline " + LIFELINE_C + " is not at the expected vertical position", thirdExecutionScreenPosition.x, getExecutionScreenPosition(LIFELINE_C, 1).x);
+        assertEquals("The execution index 1 on lifeline " + LIFELINE_C + " is not at the expected horizontal position", thirdExecutionScreenPosition.x, getExecutionScreenPosition(LIFELINE_C, 1).x);
         assertEquals("The execution index 1 on lifeline " + LIFELINE_C + " is not at the expected vertical position", thirdExecutionScreenPosition.y, getExecutionScreenPosition(LIFELINE_C, 1).y);
-        assertEquals("The execution index 2 on lifeline " + LIFELINE_C + " is not at the expected vertical position", fourthExecutionScreenPosition.x, getExecutionScreenPosition(LIFELINE_C, 2).x);
+        assertEquals("The execution index 2 on lifeline " + LIFELINE_C + " is not at the expected horizontal position", fourthExecutionScreenPosition.x, getExecutionScreenPosition(LIFELINE_C, 2).x);
         assertEquals("The execution index 2 on lifeline " + LIFELINE_C + " is not at the expected vertical position", fourthExecutionScreenPosition.y, getExecutionScreenPosition(LIFELINE_C, 2).y);
 
         // Validates the dimension of the execution
@@ -1595,6 +1592,7 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
         fourthExecutionDimension = getExecutionScreenDimension(LIFELINE_C, 2).getCopy();
 
         resizeLifeline(LIFELINE_A, 50);
+        editor.scrollTo(0, 0);
         editor.click(0, 0);
 
         int dragPositionTarget = getSequenceMessageScreenVerticalPosition(SEVENTH_MESSAGE_ON_LIFELINE_C) - LayoutConstants.MIN_INTER_SEQUENCE_EVENTS_VERTICAL_GAP - 10;
@@ -1603,14 +1601,14 @@ public class SyncCallTest extends AbstractDefaultModelSequenceTests {
         editor.drag(firstExecutionScreenBounds.getLocation(), new Point(firstExecutionScreenBounds.x, dragPositionTarget));
 
         // Validates the position of the execution
-        assertEquals("The execution index 0 on lifeline " + LIFELINE_B + " is not at the expected vertical position", firstExecutionScreenBounds.x, getExecutionLogicalPosition(LIFELINE_B, 0).x);
+        assertEquals("The execution index 0 on lifeline " + LIFELINE_B + " is not at the expected horizontal position", firstExecutionScreenBounds.x, getExecutionLogicalPosition(LIFELINE_B, 0).x);
         assertEquals("The execution index 0 on lifeline " + LIFELINE_B + " is not at the expected vertical position", dragPositionTarget, getExecutionLogicalPosition(LIFELINE_B, 0).y);
-        assertEquals("The execution index 0 on lifeline " + LIFELINE_C + " is not at the expected vertical position", secondExecutionScreenPosition.x, getExecutionLogicalPosition(LIFELINE_C, 0).x);
+        assertEquals("The execution index 0 on lifeline " + LIFELINE_C + " is not at the expected horizontal position", secondExecutionScreenPosition.x, getExecutionLogicalPosition(LIFELINE_C, 0).x);
         assertEquals("The execution index 0 on lifeline " + LIFELINE_C + " is not at the expected vertical position", secondExecutionScreenPosition.y - firstExecutionScreenBounds.y,
                 getExecutionScreenPosition(LIFELINE_C, 0).y - getExecutionScreenPosition(LIFELINE_B, 0).y);
-        assertEquals("The execution index 1 on lifeline " + LIFELINE_C + " is not at the expected vertical position", thirdExecutionScreenPosition.x, getExecutionLogicalPosition(LIFELINE_C, 1).x);
+        assertEquals("The execution index 1 on lifeline " + LIFELINE_C + " is not at the expected horizontal position", thirdExecutionScreenPosition.x, getExecutionLogicalPosition(LIFELINE_C, 1).x);
         assertEquals("The execution index 1 on lifeline " + LIFELINE_C + " is not at the expected vertical position", thirdExecutionScreenPosition.y, getExecutionLogicalPosition(LIFELINE_C, 1).y);
-        assertEquals("The execution index 2 on lifeline " + LIFELINE_C + " is not at the expected vertical position", fourthExecutionScreenPosition.x, getExecutionLogicalPosition(LIFELINE_C, 2).x);
+        assertEquals("The execution index 2 on lifeline " + LIFELINE_C + " is not at the expected horizontal position", fourthExecutionScreenPosition.x, getExecutionLogicalPosition(LIFELINE_C, 2).x);
         assertEquals("The execution index 2 on lifeline " + LIFELINE_C + " is not at the expected vertical position", fourthExecutionScreenPosition.y, getExecutionLogicalPosition(LIFELINE_C, 2).y);
 
         // Validates the dimension of the execution
