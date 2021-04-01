@@ -181,24 +181,24 @@ public class SyncCall2Test extends AbstractDefaultModelSequenceTests {
         int lifelineCPosition = getLifelineScreenX(LIFELINE_C);
 
         Point firstExecutionScreenPosition = new Point(270, 156);
-        Dimension firstExecutionDimension = new Dimension(LayoutConstants.DEFAULT_EXECUTION_WIDTH, 535);
-        Point secondExecutionScreenPosition = new Point(285, 240);
-        Dimension secondExecutionDimension = new Dimension(LayoutConstants.DEFAULT_EXECUTION_WIDTH, 415);
-        Point thirdExecutionScreenPosition = new Point(300, 272);
+        Dimension firstExecutionDimension = new Dimension(LayoutConstants.DEFAULT_EXECUTION_WIDTH, 427);
+        Point secondExecutionScreenPosition = new Point(285, 186);
+        Dimension secondExecutionDimension = new Dimension(LayoutConstants.DEFAULT_EXECUTION_WIDTH, 380);
+        Point thirdExecutionScreenPosition = new Point(300, 218);
         Dimension thirdExecutionDimension = new Dimension(LayoutConstants.DEFAULT_EXECUTION_WIDTH, 83);
-        Point fourthExecutionScreenPosition = new Point(300, 450);
+        Point fourthExecutionScreenPosition = new Point(300, 371);
         Dimension fourthExecutionDimension = new Dimension(LayoutConstants.DEFAULT_EXECUTION_WIDTH, 182);
-        Point fifthExecutionScreenPosition = new Point(315, 481);
+        Point fifthExecutionScreenPosition = new Point(315, 402);
         Dimension fifthExecutionDimension = new Dimension(LayoutConstants.DEFAULT_EXECUTION_WIDTH, 78);
 
-        int m9ExpectedVerticalPosition = 302;
-        int m10ExpectedVerticalPosition = 327;
-        int m11ExpectedVerticalPosition = 379;
-        int m12ExpectedVerticalPosition = 415;
-        int m13ExpectedVerticalPosition = 512;
-        int m14ExpectedVerticalPosition = 537;
-        int m15ExpectedVerticalPosition = 582;
-        int m16ExpectedVerticalPosition = 611;
+        int m9ExpectedVerticalPosition = 248;
+        int m10ExpectedVerticalPosition = 273;
+        int m11ExpectedVerticalPosition = 325;
+        int m12ExpectedVerticalPosition = 361;
+        int m13ExpectedVerticalPosition = 433;
+        int m14ExpectedVerticalPosition = 458;
+        int m15ExpectedVerticalPosition = 503;
+        int m16ExpectedVerticalPosition = 532;
 
         // Validates the position of the execution
         assertEquals("The execution index 0 on lifeline " + LIFELINE_B + " is not at the expected vertical position", firstExecutionScreenPosition.x, getExecutionScreenPosition(LIFELINE_B, 0).x);
