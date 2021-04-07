@@ -72,7 +72,7 @@ location EMF-Nightly "https://download.eclipse.org/modeling/emf/emf/builds/night
 	org.eclipse.emf.ecore.feature.group lazy
 }
 
-location UML2-LastSuccessful "https://ci.eclipse.org/uml2/job/mdt-uml2-master/ws/releng/org.eclipse.uml2.build-feature/target/repository/" {
+location UML2-LastSuccessful "https://download.eclipse.org/modeling/mdt/uml2/updates/interim/latest" {
 	org.eclipse.uml2.sdk.feature.group lazy
 }
 
