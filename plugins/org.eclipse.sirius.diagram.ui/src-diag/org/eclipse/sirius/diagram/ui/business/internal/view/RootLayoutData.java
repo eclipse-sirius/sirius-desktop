@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.view;
 
-import java.text.MessageFormat;
 import java.util.ArrayList;
 
 import org.eclipse.draw2d.geometry.Dimension;
@@ -26,8 +25,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.DiagramPlugin;
-import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.format.AbstractSiriusFormatDataManager;
 import org.eclipse.sirius.diagram.ui.tools.api.util.EditPartTools;
 
 /**
@@ -67,7 +65,7 @@ public class RootLayoutData extends LayoutData {
         } else if (adaptObject instanceof DEdge) {
             init((DEdge) adaptObject, location, size);
         } else {
-            DiagramPlugin.getDefault().logWarning(MessageFormat.format(Messages.RootLayoutData_unhandledDiagramElementKind, adaptObject.getClass().getName()));
+            AbstractSiriusFormatDataManager.logUnhandledDiagramElementKindMessage(adaptObject);
         }
     }
 
@@ -116,7 +114,7 @@ public class RootLayoutData extends LayoutData {
         } else if (adaptObject instanceof DEdge) {
             init((DEdge) adaptObject, location, size);
         } else {
-            DiagramPlugin.getDefault().logWarning(MessageFormat.format(Messages.RootLayoutData_unhandledDiagramElementKind, adaptObject.getClass().getName()));
+            AbstractSiriusFormatDataManager.logUnhandledDiagramElementKindMessage(adaptObject);
         }
     }
 

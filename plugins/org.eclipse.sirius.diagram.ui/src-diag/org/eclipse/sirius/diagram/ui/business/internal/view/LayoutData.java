@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.view;
 
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,10 +31,10 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.format.AbstractSiriusFormatDataManager;
 
 /**
  * Store the layout information of an AbstractDNode at a given time.
@@ -108,7 +107,7 @@ public class LayoutData extends AbstractLayoutData {
         } else if (target instanceof DNodeList) {
             addNodeListChildren();
         } else {
-            DiagramPlugin.getDefault().logWarning(MessageFormat.format(Messages.LayoutData_unhandledDiagramElementKind, target.getClass().getName()));
+            AbstractSiriusFormatDataManager.logUnhandledDiagramElementKindMessage(target);
         }
         if (target instanceof EdgeTarget) {
             addOutgoingEdge();

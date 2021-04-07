@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2020 Obeo and THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2021 Obeo and THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -602,12 +602,6 @@ public final class Messages {
     public static String FontPropertySection_underline;
 
     @TranslatableMessage
-    public static String FormatData_illegalTarget;
-
-    @TranslatableMessage
-    public static String FormatData_unhandledDiagramElementKind;
-
-    @TranslatableMessage
     public static String FormatDataHelperImpl_unkownFormatData;
 
     @TranslatableMessage
@@ -702,9 +696,6 @@ public final class Messages {
 
     @TranslatableMessage
     public static String LayoutData_illegalTarget;
-
-    @TranslatableMessage
-    public static String LayoutData_unhandledDiagramElementKind;
 
     @TranslatableMessage
     public static String LayoutDataHelperImpl_unkownLayoutData;
@@ -1011,9 +1002,6 @@ public final class Messages {
 
     @TranslatableMessage
     public static String RevealOutlineLabelsAction_label;
-
-    @TranslatableMessage
-    public static String RootLayoutData_unhandledDiagramElementKind;
 
     @TranslatableMessage
     public static String SafeStyleConfiguration_customStyleInvocationError;

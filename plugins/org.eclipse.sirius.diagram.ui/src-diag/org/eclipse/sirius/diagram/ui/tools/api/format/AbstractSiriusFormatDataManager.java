@@ -465,7 +465,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
         } else if (semanticDecorator instanceof DNodeList) {
             applyFormatToNodeListChildren((DNodeList) semanticDecorator, editPartViewer, formatData, applyFormat, applyStyle);
         } else {
-            logWarnMessage(semanticDecorator);
+            logUnhandledDiagramElementKindMessage(semanticDecorator);
         }
         // Deal with the outgoing edges
         if (semanticDecorator instanceof EdgeTarget) {
@@ -527,8 +527,17 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
         }
     }
 
-    private void logWarnMessage(final DSemanticDecorator semanticDecorator) {
-        final Class<?> clazz = semanticDecorator.getClass();
+    /**
+     * Log a warning to explain that this kind of element is not managed by the LayoutDataManager. By default, some
+     * elements are excluded, no message is displayed for them. Currently, only {@link DNodeListElement} are excluded.
+     * Indeed, it is expected that nothing is stored in LayoutDataManager for {@link DNodeListElement} as their location
+     * and size are constraint by their parents.
+     * 
+     * @param notManagedObject
+     *            A not managed {@link Object}, usually a {@link DSemanticDecorator}.
+     */
+    public static void logUnhandledDiagramElementKindMessage(final Object notManagedObject) {
+        final Class<?> clazz = notManagedObject.getClass();
 
         boolean logWarn = true;
         for (final Class<?> exceptionClass : CLASS_EXCEPTIONS) {
@@ -539,7 +548,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
         }
 
         if (logWarn) {
-            DiagramPlugin.getDefault().logWarning(MessageFormat.format(Messages.AbstractSiriusLayoutDataManager_unhandledDiagramElementKind, semanticDecorator.getClass().getName()));
+            DiagramPlugin.getDefault().logWarning(MessageFormat.format(Messages.AbstractSiriusLayoutDataManager_unhandledDiagramElementKind, clazz.getName()));
         }
     }
 
@@ -744,7 +753,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
         } else if (semanticDecorator instanceof DNodeList) {
             applyFormatToNodeListChildren((DNodeList) semanticDecorator, editPartViewer, formatData, applyFormat, applyStyle);
         } else {
-            logWarnMessage(semanticDecorator);
+            logUnhandledDiagramElementKindMessage(semanticDecorator);
         }
         if (semanticDecorator instanceof EdgeTarget) {
             applyFormatToOutgoingEdge((EdgeTarget) semanticDecorator, editPartViewer, applyFormat, applyStyle);
@@ -920,7 +929,7 @@ public abstract class AbstractSiriusFormatDataManager implements SiriusFormatDat
         } else if (child instanceof DNodeList) {
             addNodeListChildren((DNodeList) child, childFormatData, editPart, discoveredKeys);
         } else {
-            logWarnMessage(child);
+            logUnhandledDiagramElementKindMessage(child);
         }
         if (child instanceof EdgeTarget) {
             addOutgoingEdge(childFormatData, (EdgeTarget) child, editPart.getRoot().getViewer());

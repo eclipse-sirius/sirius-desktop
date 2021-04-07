@@ -196,27 +196,6 @@
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
 		<ul>
-			<li><span class="label label-success">Added</span> The method 
-				<code>org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority.getLockedObjects()</code> has been added the get all the locked objects.
-			</li>
-			<li><span class="label label-success">Added</span> The API 
-				<code>org.eclipse.sirius.business.api.session.SiriusPreferences</code> has been added to get preferences related to a Sirius Session that is to a main aird file. An instance of this API can be accessed with 
-				<code>org.eclipse.sirius.business.api.session.Session.getSiriusPreferences()</code>. Both 
-				<code>org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys.PREF_AUTO_REFRESH</code> and 
-				<code>org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING</code> 
-				<b>should not be used any more by clients with Eclipse preference API</b> but 
-				<code>org.eclipse.sirius.business.api.session.SiriusPreferences.isAutoRefresh()</code> and 
-				<code>org.eclipse.sirius.business.api.session.SiriusPreferences.isRefreshAtRepresentationOpening()</code> should be used instead.
-			</li>
-		</ul>
-		<p>The reason  is that the implementation of 
-			<code>SiriusPreferences</code> wraps the logic of getting or storing the preferences on a ProjectScope.
-		</p>
-		<ul>
-			<li><span class="label label-success">Added</span> The API 
-				<code>org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IFigureWithoutLabels</code> has been created so that a Figure, that implements this API, can provide its bounds without considering its labels. The method 
-				<code>org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper.getAbsoluteBoundsWithoutLabelsIn100Percent(GraphicalEditPart)</code> has been added to get the rectangle bounds without taking labels into account. This is used, in particular, to compute the bendpoints of an edge when the source or the target of the edge is an edge.
-			</li>
 			<li><span class="label label-success">Added</span> It is now possible to keep semantic element traceability during the representation export. For now, this option is only supported for diagram SVG export. In this case, a new attribute 
 				<code>diagram:targetSemanticId</code> is added on SVG elements to reference the target semantic id on which the graphical element is based on. This option can be activated programmatically or by setting a preference. See the details below:
 				<ul>
@@ -241,6 +220,25 @@
 			<li><span class="label label-info">Modified</span> Upgraded ELK version from 0.7.0 to 0.7.1, see the 
 				<a href="https://projects.eclipse.org/projects/modeling.elk/releases/0.7.1">ELK documentation</a> for the list of changes in that version (and previous).
 			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius">Changes in 
+			<code>org.eclipse.sirius</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The API 
+				<code>org.eclipse.sirius.business.api.session.SiriusPreferences</code> has been added to get preferences related to a Sirius Session that is to a main aird file. An instance of this API can be accessed with 
+				<code>org.eclipse.sirius.business.api.session.Session.getSiriusPreferences()</code>. Both 
+				<code>org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys.PREF_AUTO_REFRESH</code> and 
+				<code>org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_REFRESH_ON_REPRESENTATION_OPENING</code> 
+				<b>should not be used any more by clients with Eclipse preference API</b> but 
+				<code>org.eclipse.sirius.business.api.session.SiriusPreferences.isAutoRefresh()</code> and 
+				<code>org.eclipse.sirius.business.api.session.SiriusPreferences.isRefreshAtRepresentationOpening()</code> should be used instead.
+			</li>
+		</ul>
+		<p>The reason  is that the implementation of 
+			<code>SiriusPreferences</code> wraps the logic of getting or storing the preferences on a ProjectScope.
+		</p>
+		<ul>
 			<li><span class="label label-danger">Removed</span> 
 				<code>org.eclipse.sirius.tools.api.ui.RefreshHelper.isAutoRefresh()</code> has been removed. Clients should call 
 				<code>Session.getPreferences.isAutoRefresh()</code> or 
@@ -253,9 +251,43 @@
 				<code>Session.getPreferences.isAutoRefresh()</code> or 
 				<code>new DRepresentationQuery(DRpresentation).isAutoRefresh()</code> instead.
 			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+			<code>org.eclipse.sirius.diagram.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The method 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.format.AbstractSiriusFormatDataManager.logUnhandledDiagramElementKindMessage(Object)</code> has been added to mutualize the code concerning the log of a warning for 
+				<code>Object</code> not managed by the 
+				<code>SiriusLayoutDataManager</code>. This method avoids to log a message for 
+				<code>DNodeListElement</code>, as it is expected that nothing is stored in LayoutDataManager for 
+				<code>DNodeListElement</code> as their location and size are constrained by their parents.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in 
+			<code>org.eclipse.sirius.ui</code>
+		</h4>
+		<ul>
 			<li><span class="label label-danger">Removed</span> 
 				<code>org.eclipse.sirius.ui.business.api.dialect.DialectUIManager.isRefreshActivatedOnRepresentationOpening()</code> has been removed. Use 
 				<code>org.eclipse.sirius.business.api.session.SiriusPreferences.isRefreshAtRepresentationOpening()</code> instead.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in 
+			<code>org.eclipse.sirius.ecore.extender</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The method 
+				<code>org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority.getLockedObjects()</code> has been added the get all the locked objects.
+			</li>
+		</ul>
+		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime">Changes in 
+			<code>org.eclipse.sirius.ext.gmf.runtime</code>
+		</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> The API 
+				<code>org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IFigureWithoutLabels</code> has been created so that a Figure, that implements this API, can provide its bounds without considering its labels. The method 
+				<code>org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper.getAbsoluteBoundsWithoutLabelsIn100Percent(GraphicalEditPart)</code> has been added to get the rectangle bounds without taking labels into account. This is used, in particular, to compute the bendpoints of an edge when the source or the target of the edge is an edge.
 			</li>
 		</ul>
 		<h2 id="sirius6.4.1">Changes in Sirius 6.4.1</h2>
@@ -315,7 +347,7 @@
 				<a href="https://projects.eclipse.org/projects/modeling.elk/releases/0.7.0">ELK documentation</a> for the list of changes in that version (and previous).
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius2">Changes in  
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -352,7 +384,7 @@
 }
 
 </code></pre>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in  
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -377,7 +409,7 @@
 				<strong>NOTE:</strong> The initial version of this new API available in Sirius 6.4.0 has a few issues that have been fixed in 6.4.1. If you wan to leverage this new API you are encouraged to use Sirius 6.4.1.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in  
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -431,7 +463,7 @@
 				<code>org.eclipse.sirius.common.package_meta_data</code> extension point, it is now possible for a given metamodel (nsURI) to declare some EClasses as potential DocumentRoots. This is needed with some XSD-derived metamodels which normally declare some of their containment references as transient to make sure Sirius will properly consider these classes (and their contents) as needing to be serialized. 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in  
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -565,7 +597,7 @@
 			<li><span class="label label-info">Modified</span> Upgraded ELK version from 0.4.1 to 0.5.0, see the <a href="https://projects.eclipse.org/projects/modeling.elk/releases/0.5.0" target="_blank">ELK documentation</a> for the list of changes in that version.</li>
 			<li><span class="label label-info">Modified</span> Upgraded EEF version from 2.1.2 to 2.1.3 (which contains a single bugfix, for <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=550436" target="_blank">#550436</a>).</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius2">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius3">Changes in  
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -699,7 +731,7 @@
 		<p>There are no user-visible changes in Sirius 6.2.2 compared to 6.2.1. The only changes are internal and related either to the build process or to the automated tests.</p>
 		<h2 id="sirius6.2.1">Changes in Sirius 6.2.1</h2>
 		<h3 id="DeveloperVisibleChanges6">Developer-Visible Changes</h3>
-		<h4 id="Changesinorg.eclipse.sirius3">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius4">Changes in  
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -726,7 +758,7 @@
 				<code>org.eclipse.sirius.business.api.helper.task.NotificationTask</code> class has been removed. It was not used anywhere.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui4">Changes in  
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -1051,7 +1083,7 @@
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui4">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui5">Changes in  
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -1103,7 +1135,7 @@
 				<code>org.eclipse.sirius.tests.swtbot.support.api.widget.SWTBotSiriusFigureCanvas.mouseDragWithKeys(int, int, int, int, AtomicBoolean, int...)</code>, have been added to make a drag an drop with more than one key modifier.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ecore.extender">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ecore.extender2">Changes in 
 			<code>org.eclipse.sirius.ecore.extender</code>
 		</h4>
 		<ul>
@@ -1115,7 +1147,7 @@
 				<code>org.eclipse.sirius.ext.base.Option&lt;T&gt;</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ext.gmf.runtime2">Changes in 
 			<code>org.eclipse.sirius.ext.gmf.runtime</code>
 		</h4>
 		<ul>
@@ -1156,7 +1188,7 @@
 				<code>org.eclipse.sirius.diagam.ui.hidePrintingOfPermissionAuthorityDecoration</code> system property is set to true and if there is no other printable decoration provided at the same location (South-West), the permission authority decorations displayed on diagrams are not printed nor exported in images (export as image actions).
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius4">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius5">Changes in  
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1169,7 +1201,7 @@
 				<code>DRepresentationDescriptor.repPath</code> can not be found) or can not by retrieved.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui5">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui6">Changes in  
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -1345,7 +1377,7 @@
 				<code>org.eclipse.sirius.business.internal.metamodel.description.validation.operations.ValidationRuleOperations</code> class.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
@@ -1353,7 +1385,7 @@
 				<code>org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE</code> has been added. Its default value is true. It allows to display, in the color palette, the user fixed color(defined in the activated viewpoints) in addition to standard colors. The color palette is available in Appearance tab of the Properties view.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui6">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui7">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -1667,7 +1699,7 @@
 				<code>org.eclipse.sirius.common.tools.api.contentassist</code> which has its own types.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius5">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius6">Changes in 
 			<code>org.eclipse.sirius</code>
 		</h4>
 		<ul>
@@ -1750,7 +1782,7 @@
 				<code>org.eclipse.sirius.diagram.tools.api.managment</code>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui7">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui8">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -1785,7 +1817,7 @@
 				<code>DDiagram</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.ui3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.ui4">Changes in 
 			<code>org.eclipse.sirius.ui</code>
 		</h4>
 		<ul>
