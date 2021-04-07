@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -184,7 +184,16 @@ public class UmlClassDragAndDropTest extends AbstractUmlDragAndDropTest {
      *             Test error.
      */
     public void testDragAndDropClassesWithEdgeFromContainerToContainer() throws Exception {
-        dragAndDropClassesWithEdge(PT_IN_CONTAINER_TO_DROP);
+        boolean oldWarningCatchActiveValue = isWarningCatchActive();
+        setWarningCatchActive(true);
+        try {
+            dragAndDropClassesWithEdge(PT_IN_CONTAINER_TO_DROP);
+            if (doesAWarningOccurs()) {
+                fail("This drag'n'drop should be done without warning in Error Log view.");
+            }
+        } finally {
+            setWarningCatchActive(oldWarningCatchActiveValue);
+        }
     }
 
     /**

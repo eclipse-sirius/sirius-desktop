@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/4.0.0/UML" xmi:id="_Wh_KkEjgEd2dA-w4B9F6fQ" name="root">
+<uml:Model xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" xmi:id="_Wh_KkEjgEd2dA-w4B9F6fQ" name="root">
   <packagedElement xmi:type="uml:Actor" xmi:id="_Q6CBUKa0Ed6_bbQViMLzVA" name="boss"/>
   <packagedElement xmi:type="uml:Package" xmi:id="_05Rt4MlFEd6R3_bpV99jfA" name="RootPackage1">
     <packagedElement xmi:type="uml:Class" xmi:id="__eyUAMlFEd6R3_bpV99jfA" name="InClass1"/>
-    <packagedElement xmi:type="uml:Class" xmi:id="_BXnocMlHEd6R3_bpV99jfA" name="InClass3"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_BXnocMlHEd6R3_bpV99jfA" name="InClass3">
+      <ownedOperation xmi:id="_-xAkEJd8Eeuh94zEXzGwkg" name="Op1"/>
+    </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_KfsAMMlHEd6R3_bpV99jfA" name="InAndOutClass4">
       <generalization xmi:id="_MJEY0MlHEd6R3_bpV99jfA" general="_BXnocMlHEd6R3_bpV99jfA"/>
     </packagedElement>
