@@ -86,7 +86,7 @@ public class ContributorWrapper extends AbstractEEFTabbedPropertySheetPageContri
             // Keep only the first line in case of multiline labels
             String[] result = LINE_SEPARATOR_PATTERN.split(text, 2);
             if (result.length >= 1) {
-                form.setText(result[0]);
+                form.setText(result[0].replace("&", "&&")); //$NON-NLS-1$ //$NON-NLS-2$
             }
         } else {
             form.setText(""); //$NON-NLS-1$
