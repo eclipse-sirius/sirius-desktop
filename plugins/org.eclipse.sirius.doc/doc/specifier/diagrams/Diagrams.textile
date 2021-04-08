@@ -72,7 +72,7 @@ Using the button @Add option override@ will open a dialog allowing you to overri
 
 Also you can filter the options by using the text field. The filtering applies to all columns except for the values.
 
-To get an overview of what is possible with ELK you can read this "article":https://blog.obeo.fr/a-picture-is-worth-a-thousand-words.
+To get an overview of what is possible with ELK you can read this "article":https://blog.obeosoft.com/a-picture-is-worth-a-thousand-words.
 
 h4. Use a custom layout algorithm
 

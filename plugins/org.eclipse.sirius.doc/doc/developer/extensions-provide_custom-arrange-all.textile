@@ -228,9 +228,6 @@ For example the ELK layout algorithms if installed are using it:
 bc.. /**
  * Layout node provider allowing to apply an ELK layout algorithm while
  * arranging diagram elements.
- * 
- * @author <a href=mailto:pierre.guilet@obeo.fr>Pierre Guilet</a>
- *
  */
 public class ELKLayoutNodeProvider extends DefaultLayoutProvider {
 
