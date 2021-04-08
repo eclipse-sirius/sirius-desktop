@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -195,6 +195,9 @@ public class SessionManagerListener2Tests extends SiriusDiagramTestCase implemen
     }
 
     public void testCreateRepresentationEvents() throws Exception {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
         assertEquals("Bad number of selected viewpoint in current session.", 1, session.getSelectedViewpoints(false).size());
         Viewpoint selectedSirius = session.getSelectedViewpoints(false).iterator().next();
         // start recording
@@ -389,6 +392,9 @@ public class SessionManagerListener2Tests extends SiriusDiagramTestCase implemen
     }
 
     public void testOpenMultipleSessions() throws Exception {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
         assertNotNull("Alternate Session has not been well initialized", alternateSession);
         assertNotNull("Alternate Domain has not been well initialized", alternateSession.getTransactionalEditingDomain());
         assertNotNull("Alternate semantic model has not been well initialized", alternateSemanticModel);

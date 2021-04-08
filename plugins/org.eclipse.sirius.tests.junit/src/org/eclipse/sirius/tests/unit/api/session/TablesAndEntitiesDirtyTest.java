@@ -193,6 +193,9 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
      * @throws Exception
      */
     public void testOpenEntitiesRepresentationInEditor() throws Exception {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
         Collection<DRepresentation> diagrams = getRepresentations(ENTITIES_DESC_NAME);
         for (DRepresentation dRepresentation : diagrams) {
             DialectUIManager.INSTANCE.openEditor(session, dRepresentation, new NullProgressMonitor());

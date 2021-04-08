@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.swtbot.swt.finder.SWTBot;
@@ -101,6 +102,9 @@ public class RenameProjectWithSessionTest extends AbstractSiriusSwtBotGefTestCas
      * Rename the project with close session
      */
     public void testRenameProjectWithCloseSession() {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
         // rename the project
         renameProject(designerProject.getName(), RENAMED_PROJECT);
         bot.waitUntil(new ProjectExistCondition(RENAMED_PROJECT));
