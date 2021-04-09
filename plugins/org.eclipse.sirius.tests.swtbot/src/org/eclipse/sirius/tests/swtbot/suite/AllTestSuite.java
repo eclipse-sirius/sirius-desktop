@@ -486,6 +486,7 @@ public class AllTestSuite extends TestCase {
         suite.addTestSuite(RectilinearNoteAttachmentWithRepresentationLinkTest.class);
         suite.addTestSuite(RectilinearNoteAttachmentWithTextTest.class);
         suite.addTestSuite(RemoveBendpointsRectilinearNoteAttachmentTest.class);
+        suite.addTestSuite(RectilinearNoteAttachmentWithOneBendpointTest.class);
     }
 
     /**

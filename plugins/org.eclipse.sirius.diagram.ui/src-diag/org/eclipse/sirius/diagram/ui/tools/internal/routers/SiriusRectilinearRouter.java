@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,14 +34,38 @@ public class SiriusRectilinearRouter extends RectilinearRouter {
 
     @Override
     public void routeLine(Connection conn, int nestedRoutingDepth, PointList newLine) {
-        if (newLine.size() > 1) {
-            super.routeLine(conn, nestedRoutingDepth, newLine);
+        repairInvalidPointList(conn, newLine);
+        super.routeLine(conn, nestedRoutingDepth, newLine);
 
-            // if the edge is currently reconnected for instance, we do not perform
-            // the centering.
-            if (!isReorienting(conn)) {
-                handleEdgeCentering(conn, newLine);
+        // if the edge is currently reconnected for instance, we do not perform
+        // the centering.
+        if (!isReorienting(conn)) {
+            handleEdgeCentering(conn, newLine);
+        }
+    }
+
+    /**
+     * Repairs the PointList if it is invalid and contains less than 2 points, in which case it is set to two points by
+     * default.
+     * 
+     * @param conn
+     *            the connection figure.
+     * @param newLine
+     *            the current point list.
+     */
+    private void repairInvalidPointList(Connection conn, PointList newLine) {
+        if (newLine.size() < 2) {
+            Point anchorPoint = new Point(0, 0);
+            Point targetPoint = new Point(0, 0);
+            if (conn.getSourceAnchor() != null) {
+                anchorPoint = conn.getSourceAnchor().getReferencePoint();
             }
+            if (conn.getTargetAnchor() != null) {
+                targetPoint = conn.getTargetAnchor().getReferencePoint();
+            }
+            newLine.removeAllPoints();
+            newLine.addPoint(anchorPoint);
+            newLine.addPoint(targetPoint);
         }
     }
 
@@ -93,8 +117,8 @@ public class SiriusRectilinearRouter extends RectilinearRouter {
     }
 
     private Point getAnchorOwnerCenter(ConnectionAnchor anchor) {
-        Rectangle rBox = anchor.getOwner() instanceof HandleBounds ? new PrecisionRectangle(((HandleBounds) anchor.getOwner()).getHandleBounds()) : new PrecisionRectangle(anchor.getOwner()
-                .getBounds());
+        Rectangle rBox = anchor.getOwner() instanceof HandleBounds ? new PrecisionRectangle(((HandleBounds) anchor.getOwner()).getHandleBounds())
+                : new PrecisionRectangle(anchor.getOwner().getBounds());
         anchor.getOwner().translateToAbsolute(rBox);
         return rBox.getCenter();
     }
