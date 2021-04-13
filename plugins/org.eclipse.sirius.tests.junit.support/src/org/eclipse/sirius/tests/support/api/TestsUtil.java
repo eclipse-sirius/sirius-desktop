@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -127,7 +127,11 @@ public final class TestsUtil {
      * Assume.assumeTrue(TestUtil.shouldRunUnreliableTests())
      * </pre>
      * 
-     * at the beginning of such tests.
+     * at the beginning of such tests.<BR/>
+     * 
+     * <B>WARNING:</B> All tests using this method must be added in a corresponding tests suite class:
+     * org.eclipse.sirius.tests.suite.AllSiriusUnreliableTestSuite,
+     * org.eclipse.sirius.tests.swtbot.suite.AllUnreliableTestSuite, ...
      * 
      * @return <code>true</code> iff unreliable tests should be run.
      */
@@ -137,7 +141,10 @@ public final class TestsUtil {
 
     /**
      * Tests whether the environment is configured to skip tests which are known to be unreliable (i.e. they sometimes
-     * work, sometimes fail).
+     * work, sometimes fail).<BR/>
+     * <B>WARNING:</B> All tests using this method must be added in a corresponding tests suite class:
+     * org.eclipse.sirius.tests.suite.AllSiriusUnreliableTestSuite,
+     * org.eclipse.sirius.tests.swtbot.suite.AllUnreliableTestSuite, ...
      * 
      * @return <code>true</code> if the environment is setup to skip unreliable tests.
      */

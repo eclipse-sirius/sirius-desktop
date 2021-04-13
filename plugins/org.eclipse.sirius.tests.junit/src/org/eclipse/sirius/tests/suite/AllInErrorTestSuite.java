@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,15 +12,6 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.suite;
 
-import org.eclipse.sirius.tests.unit.api.componentization.DiagramComponentizationManagerTest;
-import org.eclipse.sirius.tests.unit.api.convert.ConvertProjectToModelingProjectTest;
-import org.eclipse.sirius.tests.unit.api.modelingproject.SaveWhenNoEditorsTests;
-import org.eclipse.sirius.tests.unit.api.semantic.DAnalysisModelsUpdateTests;
-import org.eclipse.sirius.tests.unit.api.session.SessionWorkspaceSyncTests;
-import org.eclipse.sirius.tests.unit.api.session.TablesAndEntitiesDirtyTest;
-import org.eclipse.sirius.tests.unit.api.tools.SiriusControlTest;
-import org.eclipse.sirius.tests.unit.common.TransientSessionTests;
-import org.eclipse.sirius.tests.unit.common.WorkspaceResourceSyncTestCase;
 import org.eclipse.sirius.tests.unit.diagram.control.ControlTest;
 import org.eclipse.sirius.tests.unit.diagram.filter.CompositeFilterTest;
 import org.eclipse.sirius.tests.unit.diagram.synchronization.UnsynchronizedMappingAndDeleteFromOutsideEditorTests;
@@ -62,18 +53,12 @@ public class AllInErrorTestSuite extends TestCase {
 
         /* Unreliable */
         current = unreliable;
+        current.addTest(org.eclipse.sirius.tests.suite.AllSiriusUnreliableTestSuite.suite());
+        // The below tests do not use method "TestsUtil.shouldSkipUnreliableTests()" and have not been modified for a
+        // long time so I let them here.
         current.addTestSuite(ControlTest.class);
         current.addTestSuite(CompositeFilterTest.class);
-        current.addTestSuite(SiriusControlTest.class);
-        current.addTestSuite(TablesAndEntitiesDirtyTest.class);
-        current.addTestSuite(ConvertProjectToModelingProjectTest.class);
-        current.addTestSuite(DiagramComponentizationManagerTest.class);
-        current.addTestSuite(TransientSessionTests.class);
-        current.addTestSuite(SaveWhenNoEditorsTests.class);
-        current.addTestSuite(SessionWorkspaceSyncTests.class);
-        current.addTestSuite(WorkspaceResourceSyncTestCase.class);
         current.addTestSuite(UnsynchronizedMappingAndDeleteFromOutsideEditorTests.class);
-        current.addTestSuite(DAnalysisModelsUpdateTests.class);
 
         /* In Error */
         current = inError;
