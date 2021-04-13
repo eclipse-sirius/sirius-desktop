@@ -29,6 +29,34 @@
   <packaging>eclipse-test-plugin</packaging>
   <version>6.5.0-SNAPSHOT</version>
 
+  <profiles>
+    <profile>
+      <id>unreliable-tests</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <!-- There is currently no unreliable tests in this plug-in, so the tests are deactivated for unreliable-tests profile.
+          This is to avoid an error of kind 
+          "Failed to execute goal org.eclipse.tycho:tycho-surefire-plugin:2.0.0:test (default-test) 
+          on projectorg.eclipse.sirius.tests.ui.properties: No tests found."-->
+        <tests.junit.skip>true</tests.junit.skip>
+      </properties>
+    </profile>
+    <profile>
+      <id>long-tests</id>
+      <activation>
+        <activeByDefault>false</activeByDefault>
+      </activation>
+      <properties>
+        <!-- There is currently no long tests in this plug-in, so the tests are deactivated for long-tests profile.
+          This is to avoid an error of kind 
+          "Failed to execute goal org.eclipse.tycho:tycho-surefire-plugin:2.0.0:test (default-test) 
+          on project org.eclipse.sirius.tests.ui.properties: No tests found."-->
+        <tests.junit.skip>true</tests.junit.skip>
+      </properties>
+    </profile>
+  </profiles>
   <build>
     <plugins>
       <plugin>
