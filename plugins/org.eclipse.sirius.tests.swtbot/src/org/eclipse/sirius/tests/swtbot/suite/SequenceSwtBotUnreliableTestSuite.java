@@ -18,6 +18,7 @@ import org.eclipse.sirius.tests.swtbot.sequence.ActionDisabledOnExtendedMessages
 import org.eclipse.sirius.tests.swtbot.sequence.ActionDisabledOnSequenceDiagramTest;
 import org.eclipse.sirius.tests.swtbot.sequence.CombinedFragmentsAndElementsCreationTests;
 import org.eclipse.sirius.tests.swtbot.sequence.CombinedFragmentsOperandCreationTests;
+import org.eclipse.sirius.tests.swtbot.sequence.SequenceExecutionMessageToSelfTest;
 import org.eclipse.sirius.tests.unit.common.EnvironmentReportTest;
 
 import junit.framework.JUnit4TestAdapter;
@@ -79,6 +80,7 @@ public class SequenceSwtBotUnreliableTestSuite extends TestCase {
                 suite.addTestSuite(ActionDisabledOnSequenceDiagramTest.class);
                 suite.addTestSuite(CombinedFragmentsAndElementsCreationTests.class);
                 suite.addTestSuite(CombinedFragmentsOperandCreationTests.class);
+                suite.addTestSuite(SequenceExecutionMessageToSelfTest.class);
             }
         }
         return suite;

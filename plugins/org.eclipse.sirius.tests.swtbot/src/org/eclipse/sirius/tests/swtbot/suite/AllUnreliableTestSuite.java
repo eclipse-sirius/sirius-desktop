@@ -17,6 +17,8 @@ import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.DeleteHookTests;
 import org.eclipse.sirius.tests.swtbot.DiagramCreationDescriptionTest;
 import org.eclipse.sirius.tests.swtbot.DndWorkspaceToAirdEditorTest;
+import org.eclipse.sirius.tests.swtbot.DragAndDropWithSnapToGridTest;
+import org.eclipse.sirius.tests.swtbot.DragNDropTest;
 import org.eclipse.sirius.tests.swtbot.EdgeWithBorderNodeCreationPositionWithSnapToGridTest;
 import org.eclipse.sirius.tests.swtbot.ExportDiagramAsImageWhenManyRepresentationsHaveSameNameTest;
 import org.eclipse.sirius.tests.swtbot.ExportDiagramsAsImagesAndHtmlTest;
@@ -104,6 +106,8 @@ public class AllUnreliableTestSuite extends TestCase {
                 suite.addTestSuite(DeleteHookTests.class);
                 suite.addTestSuite(DiagramCreationDescriptionTest.class);
                 suite.addTest(new JUnit4TestAdapter(DndWorkspaceToAirdEditorTest.class));
+                suite.addTest(new JUnit4TestAdapter(DragAndDropWithSnapToGridTest.class));
+                suite.addTest(new JUnit4TestAdapter(DragNDropTest.class));
                 suite.addTestSuite(EdgeWithBorderNodeCreationPositionWithSnapToGridTest.class);
                 suite.addTestSuite(ExportDiagramAsImageWhenManyRepresentationsHaveSameNameTest.class);
                 suite.addTestSuite(ExportDiagramsAsImagesAndHtmlTest.class);

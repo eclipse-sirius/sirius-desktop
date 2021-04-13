@@ -80,6 +80,9 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
      * @throws Exception
      */
     public void testOpenTableRepresentationInEditor() throws Exception {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
         assertsSessionIsSyncAndReload(session);
         loadModeler(URI.createPlatformPluginURI(MODELER_PATH, true), session.getTransactionalEditingDomain());
 
@@ -119,6 +122,9 @@ public class TablesAndEntitiesDirtyTest extends SiriusDiagramTestCase implements
      * @throws Exception
      */
     public void testCreateAndOpenTableRepresentationInEditor() throws Exception {
+        if (TestsUtil.shouldSkipUnreliableTests()) {
+            return;
+        }
         assertsSessionIsSyncAndReload(session);
         loadModeler(URI.createPlatformPluginURI(MODELER_PATH, true), session.getTransactionalEditingDomain());
 
