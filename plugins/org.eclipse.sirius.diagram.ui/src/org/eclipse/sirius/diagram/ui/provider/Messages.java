@@ -962,6 +962,12 @@ public final class Messages {
     public static String RemoveInvalidViewsCommand_label;
 
     @TranslatableMessage
+    public static String RepairEdgesWithOneBendpointMigrationParticipant_edgesModified;
+
+    @TranslatableMessage
+    public static String RepairEdgesWithOneBendpointMigrationParticipant_title;
+
+    @TranslatableMessage
     public static String RepairGMFbendpointsMigrationParticipant_edgesModified;
 
     @TranslatableMessage

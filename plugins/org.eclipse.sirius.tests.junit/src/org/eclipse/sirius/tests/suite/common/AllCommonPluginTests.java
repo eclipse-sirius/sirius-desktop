@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -145,6 +145,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.NoteShapeDefaultLabelAlig
 import org.eclipse.sirius.tests.unit.diagram.migration.OptionalLayerToAdditionalLayerMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.ReferencedModelResourceMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RemoveAcceleoReferencesMigrationTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.RepairEdgesWithOneBendpointMigrationParticipantTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RepairGMFbendpointsMigrationParticipantTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RepairMigrateLostDiagramElementsTC1Test;
 import org.eclipse.sirius.tests.unit.diagram.migration.RepairMigrateLostDiagramElementsTC2Test;
@@ -249,6 +250,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(DecorationDescriptionImageExpressionMigrationTest.class);
         suite.addTestSuite(DeleteMultipleConnectorStyleMigrationParticipantTest.class);
         suite.addTestSuite(RepairGMFbendpointsMigrationParticipantTest.class);
+        suite.addTestSuite(RepairEdgesWithOneBendpointMigrationParticipantTest.class);
         suite.addTestSuite(TransientLayerMigrationTest.class);
         suite.addTestSuite(RepresentationLinkMigrationParticipantTest.class);
         suite.addTestSuite(TechnicalUidMigrationTest.class);

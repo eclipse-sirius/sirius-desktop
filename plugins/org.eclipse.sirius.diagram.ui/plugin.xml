@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.0"?>
 <!--
-  Copyright (c) 2014, 2019 THALES GLOBAL SERVICES
+  Copyright (c) 2014, 2021 THALES GLOBAL SERVICES
   This program and the accompanying materials
   are made available under the terms of the Eclipse Public License 2.0
   which accompanies this distribution, and is available at
@@ -1987,6 +1987,10 @@
       </participant>
       <participant
             class="org.eclipse.sirius.diagram.ui.business.internal.migration.LabelOnBorderMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
+      <participant
+            class="org.eclipse.sirius.diagram.ui.business.internal.migration.RepairEdgesWithOneBendpointMigrationParticipant"
             kind="RepresentationsFile">
       </participant>
    </extension>

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2017, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -81,9 +81,9 @@ public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentat
 
     @Override
     protected void postLoad(DAnalysis dAnalysis, Version loadedVersion) {
-        if (loadedVersion.compareTo(MIGRATION_VERSION) < 0) {
+        if (loadedVersion.compareTo(getMigrationVersion()) < 0) {
             boolean isModified = false;
-            StringBuilder sb = new StringBuilder(Messages.RepairGMFbendpointsMigrationParticipant_title);
+            StringBuilder sb = new StringBuilder(getMessageMigrationParticipantTitle());
             for (DView dView : dAnalysis.getOwnedViews()) {
                 for (DDiagram dDiagram : Iterables.filter(new DViewQuery(dView).getLoadedRepresentations(), DDiagram.class)) {
                     if ("DSemanticDiagramSpec".equals(dDiagram.getClass().getSimpleName())) { //$NON-NLS-1$
@@ -94,7 +94,7 @@ public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentat
                         }
                         if (isEdgeModified) {
                             isModified = true;
-                            sb.append(MessageFormat.format(Messages.RepairGMFbendpointsMigrationParticipant_edgesModified, representationToNameMap.get(dDiagram)));
+                            sb.append(getMessageEdgesModified(dDiagram));
                         }
                     }
                 }
@@ -105,6 +105,21 @@ public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentat
         }
     }
 
+    protected String getMessageMigrationParticipantTitle() {
+        return Messages.RepairGMFbendpointsMigrationParticipant_title;
+    }
+
+    /**
+     * Get information Message built with the name of the diagram.
+     * 
+     * @param dDiagram
+     *            the diagram of which we are looking for the name
+     * @return message built with the name of the diagram
+     */
+    protected String getMessageEdgesModified(DDiagram dDiagram) {
+        return MessageFormat.format(Messages.RepairGMFbendpointsMigrationParticipant_edgesModified, representationToNameMap.get(dDiagram));
+    }
+
     /**
      * Check bend-points of a given edge and repair them if necessary.
      * 
@@ -112,7 +127,7 @@ public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentat
      *            the edge which contains bend-points to check
      * @return true if bend-points of the given edge have been modified, false otherwise
      */
-    private boolean checkAndRepairBendpointsOfEdge(Edge edge) {
+    protected boolean checkAndRepairBendpointsOfEdge(Edge edge) {
         boolean isEdgeModified = false;
         // compute Source and Target Reference point
         View source = edge.getSource();
@@ -167,7 +182,7 @@ public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentat
      *            target point used as reference to compute bend-points
      * @return true if bend-points of the given edge have been modified, false otherwise
      */
-    private boolean repairBendpointsOfEdge(Edge edge, Rectangle srcBounds, Point srcRef, Rectangle tgtBounds, Point tgtRef) {
+    protected boolean repairBendpointsOfEdge(Edge edge, Rectangle srcBounds, Point srcRef, Rectangle tgtBounds, Point tgtRef) {
         boolean isEdgeModified = false;
         PointList newPointList = new PointList();
 
@@ -208,7 +223,7 @@ public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentat
      * @param newPointList
      *            the new bend-points list
      */
-    private void setNewBendPoints(Edge edge, Point srcRef, Point tgtRef, PointList newPointList) {
+    protected void setNewBendPoints(Edge edge, Point srcRef, Point tgtRef, PointList newPointList) {
         List<RelativeBendpoint> newBendpoints = new ArrayList<RelativeBendpoint>();
 
         int numOfPoints = newPointList.size();
@@ -231,7 +246,7 @@ public class RepairGMFbendpointsMigrationParticipant extends AbstractRepresentat
      *            <code>View</code> that this anchor is associated with.
      * @return relative coordinates of the anchor.
      */
-    private Point getAnchorPosition(IdentityAnchor anchor, View view) {
+    protected Point getAnchorPosition(IdentityAnchor anchor, View view) {
         String id = anchor.getId();
         PrecisionPoint relativeReference = SlidableAnchor.parseTerminalString(id);
         SlidableAnchor slidableAnchor = new SlidableAnchor(view, relativeReference);
