@@ -96,7 +96,11 @@ public final class TestsUtil {
     /**
      * Tests whether the environment is configured to skip non-critical tests which take a long time. This possibility
      * to skip some tests should only be used on developer machines to get faster feedback, and never on a continuous
-     * integration server.
+     * integration server.<BR/>
+     * 
+     * <B>WARNING:</B> All tests using this method must be added in a corresponding tests suite class:
+     * org.eclipse.sirius.tests.suite.AllSiriusLongTestSuite, org.eclipse.sirius.tests.swtbot.suite.AllLongTestSuite,
+     * ...
      * 
      * @return <code>true</code> if the environment is setup to skip long tests.
      */
@@ -159,7 +163,11 @@ public final class TestsUtil {
      * Assume.assumeTrue(TestUtil.shouldRunLongTests())
      * </pre>
      * 
-     * at the beginning of such tests.
+     * at the beginning of such tests.<BR/>
+     * 
+     * <B>WARNING:</B> All tests using this method must be added in a corresponding tests suite class:
+     * org.eclipse.sirius.tests.suite.AllSiriusLongTestSuite, org.eclipse.sirius.tests.swtbot.suite.AllLongTestSuite,
+     * ...
      * 
      * @return <code>true</code> iff long running tests should be run.
      */
