@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -107,7 +107,11 @@ public class SiriusFormatDataManagerForSemanticElementsApplyWithPredefinedDataTe
             for (Representation pasteRep : ALL_REPRESENTATIONS) {
                 for (double[] copyZoomData : ALL_ZOOM_DATA) {
                     for (double[] pasteZoomData : ALL_ZOOM_DATA) {
-                        data.add(new Object[] { copyRep, copyZoomData, pasteRep, pasteZoomData });
+                        // Test only if one or the other zoom level is 1
+                        // (IDENTITY) to reduce length of test
+                        if (copyZoomData[0] == IDENTITY_ZOOM_LEVEL || pasteZoomData[0] == IDENTITY_ZOOM_LEVEL) {
+                            data.add(new Object[] { copyRep, copyZoomData, pasteRep, pasteZoomData });
+                        }
                     }
                 }
             }
@@ -151,17 +155,12 @@ public class SiriusFormatDataManagerForSemanticElementsApplyWithPredefinedDataTe
         StringBuilder differences = new StringBuilder();
         for (final Diagram diagramToPasteFormat : Collections2.filter(representationToPasteFormat.diagrams, ONLY_RAW_DIAGRAM)) {
             for (final Diagram diagramToCopyFormat : openAllDiagramsInRepresentation(representationToCopyFormat, true)) {
-                // Test only if one or the other zoom level is 1
-                // (IDENTITY) to reduce length of test
-                if (diagramToCopyFormatZoomData[0] == IDENTITY_ZOOM_LEVEL || diagramToPasteFormatZoomData[0] == IDENTITY_ZOOM_LEVEL) {
-
                     Configuration configuration = ConfigurationFactory.buildConfiguration();
 
                     configuration.getEdgeConfiguration().setDistanceAroundPointsOfEdgeBendpointsList(Math.max(diagramToCopyFormatZoomData[1], diagramToPasteFormatZoomData[1]));
 
                     applyPredefinedFormatDataOnRawDiagramsWithZoom(diagramToCopyFormat, diagramToPasteFormat, diagramToCopyFormatZoomData[0], diagramToPasteFormatZoomData[0], configuration,
                             differences);
-                }
             }
         }
 
