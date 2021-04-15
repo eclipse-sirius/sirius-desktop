@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008-2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008-2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -81,11 +81,11 @@ public class SmartDialogAnalysisSelector implements DAnalysisSelector {
                 if (representationName != null && !representationName.isEmpty()) {
                     dialog.setTitle(MessageFormat.format(Messages.SmartDialogAnalysisSelector_titleWithRepresentationName, representationName));
                     dialog.setMessage(MessageFormat.format(Messages.SmartDialogAnalysisSelector_messageWithRepresentationName, representationName));
-                    dialog.setMoveRepresentation(true);
                 } else {
                     dialog.setTitle(Messages.SmartDialogAnalysisSelector_titleWithoutRepresentationName);
                     dialog.setMessage(Messages.SmartDialogAnalysisSelector_messageWithoutRepresentationName);
                 }
+                dialog.setMoveRepresentation(representation.eResource() != null);
 
                 if (dialog.open() == Window.OK) {
                     if (dialog.getFirstResult() != null) {
