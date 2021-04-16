@@ -15,8 +15,8 @@ package org.eclipse.sirius.diagram.ui.tools.internal.render;
 import java.awt.Color;
 import java.awt.Dimension;
 
-import org.apache.batik.dom.svg.SVGDOMImplementation;
-import org.apache.batik.dom.svg.SVGOMDocument;
+import org.apache.batik.anim.dom.SVGDOMImplementation;
+import org.apache.batik.anim.dom.SVGOMDocument;
 import org.apache.batik.dom.util.DOMUtilities;
 import org.apache.batik.svggen.DOMTreeManager;
 import org.apache.batik.svggen.SVGGraphics2D;

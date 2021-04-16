@@ -30,7 +30,7 @@ import java.util.Set;
 
 import javax.imageio.ImageIO;
 
-import org.apache.batik.dom.svg.SVGDOMImplementation;
+import org.apache.batik.anim.dom.SVGDOMImplementation;
 import org.apache.batik.transcoder.TranscoderException;
 import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
