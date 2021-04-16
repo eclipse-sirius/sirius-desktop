@@ -39,7 +39,7 @@ export VERSION="6.4.0"
 
 # The type of build being published
 export BUILD_TYPE="nightly"
-export BUILD_TYPE_PREFIX="N"
+export BUILD_TYPE_PREFIX="batik-1.14-N"
 
 # The SSH account to use
 export SSH_ACCOUNT="genie.sirius@projects-storage.eclipse.org"
