@@ -52,6 +52,10 @@ h4. Changes in @org.eclipse.sirius.ext.gmf.runtime@
 
 * <span class="label label-success">Added</span> The API @org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.IFigureWithoutLabels@ has been created so that a Figure, that implements this API, can provide its bounds without considering its labels. The method @org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper.getAbsoluteBoundsWithoutLabelsIn100Percent(GraphicalEditPart)@ has been added to get the rectangle bounds without taking labels into account. This is used, in particular, to compute the bendpoints of an edge when the source or the target of the edge is an edge.
 
+h4. Migrations
+
+* <span class="label label-success">Added</span> A migration participant has been added to unset . This feature is no longer used by Sirius and, if set, it may cause errors when loading the aird because of dangling reference. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _14.5.0.202104161500_.
+
 h2(#sirius6.4.1). Changes in Sirius 6.4.1
 
 This is service release to fix two issues which were not detected in time for 6.4.0. The issues only impact a new API which was introduced in 6.4.0 (Bug 563117 - _Copy format to existing/new diagram based on source to target semantic elements mapping_).

@@ -281,6 +281,15 @@ public final class Messages {
     public static String UnpinElementsCommand_commandLabel;
 
     @TranslatableMessage
+    public static String UnsetOriginalStyleFeatureMigrationParticipant_title;
+
+    @TranslatableMessage
+    public static String UnsetOriginalStyleFeatureMigrationParticipant_unsetFeatures;
+
+    @TranslatableMessage
+    public static String UnsetOriginalStyleFeatureMigrationParticipant_danglingFeatures;
+
+    @TranslatableMessage
     public static String ValidStyleConstraint_validationErrorMsg;
 
     @TranslatableMessage
