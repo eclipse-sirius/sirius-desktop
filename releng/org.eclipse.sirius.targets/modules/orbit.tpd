@@ -1,6 +1,6 @@
 target "orbit" with source, requirements
 
-location Orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R20190602212107/repository" {
+location Orbit-2021-06M1 "https://download.eclipse.org/tools/orbit/downloads/drops/S20210406213021/repository" {
     org.apache.log4j lazy
     org.easymock lazy
     org.hamcrest.core lazy
@@ -18,4 +18,6 @@ location Orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R201906
     org.reactivestreams [1.0.2,1.0.3)
     com.graphql.java.dataloader [2.1.1,2.1.2)
     com.graphql.java [11.0.0,11.0.1)
+    org.apache.batik.ext [1.14.0,1.14.1)
+    org.apache.batik.codec [1.14.0,1.14.1)
 }
