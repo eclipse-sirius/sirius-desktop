@@ -42,6 +42,13 @@ import org.w3c.dom.Document;
 
 //CHECKSTYLE:OFF
 public class SimpleImageTranscoder extends SVGAbstractTranscoder {
+    
+    private static final class NoExternalAccessUserAgentAdapter extends UserAgentAdapter {
+        @Override
+        public ExternalResourceSecurity getExternalResourceSecurity(ParsedURL resourceURL, ParsedURL docURL) {
+            throw new SecurityException("External resources access from SVG images disabled"); //$NON-NLS-1$
+        }
+    }
 
     private BufferedImage bufferedImage;
 
@@ -62,12 +69,7 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
      */
     @Override
     protected UserAgent createUserAgent() {
-        return new UserAgentAdapter() {
-            @Override
-            public ExternalResourceSecurity getExternalResourceSecurity(ParsedURL resourceURL, ParsedURL docURL) {
-                throw new SecurityException("External resources access from SVG images disabled"); //$NON-NLS-1$
-            }
-        };
+        return new NoExternalAccessUserAgentAdapter();
     }
 
     public final Document getDocument() {
