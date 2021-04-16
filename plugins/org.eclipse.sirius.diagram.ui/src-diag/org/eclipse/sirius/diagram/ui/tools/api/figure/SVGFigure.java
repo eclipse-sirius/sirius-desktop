@@ -294,21 +294,23 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
         if (Messages.BundledImageShape_idMissing.equals(uri)) {
             DiagramPlugin.getDefault().logError(Messages.SVGFigure_usingInvalidBundledImageShape);
         } else {
+            ClassLoader previousClassLoader = null; 
             if (forceClassLoader) {
+                previousClassLoader = Thread.currentThread().getContextClassLoader();
                 Thread.currentThread().setContextClassLoader(this.getClass().getClassLoader());
             }
             try {
                 return factory.createDocument(uri);
             } catch (IOException e) {
                 boolean saxParserNotFound = e.getMessage() != null && e.getMessage().contains("SAX2 driver class org.apache.xerces.parsers.SAXParser not found"); //$NON-NLS-1$
-                if (!forceClassLoader && saxParserNotFound && Thread.currentThread().getContextClassLoader() == null) {
+                if (!forceClassLoader && saxParserNotFound) {
                     return createDocument(factory, true);
                 } else {
                     DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.SVGFigure_loadError, uri), e);
                 }
             } finally {
                 if (forceClassLoader) {
-                    Thread.currentThread().setContextClassLoader(null);
+                    Thread.currentThread().setContextClassLoader(previousClassLoader);
                 }
             }
         }
