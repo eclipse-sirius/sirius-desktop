@@ -55,7 +55,7 @@ h4. Changes in @org.eclipse.sirius.ext.gmf.runtime@
 h4. Migrations
 
 * <span class="label label-success">Added</span> A migration participant has been added to repair rectilinear edges containing only one bendpoint. Bracket edges are not relevant. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _14.5.0.202104070943_.
-* <span class="label label-success">Added</span> A migration participant has been added to unset . This feature is no longer used by Sirius and, if set, it may cause errors when loading the aird because of dangling reference. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _14.5.0.202104161500_.
+* <span class="label label-success">Added</span> A migration participant has been added to unset originalStyle features. This feature is no longer used by Sirius and, if set, it may cause errors when loading the aird because of dangling reference. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _14.5.0.202104161500_.
 
 h2(#sirius6.4.1). Changes in Sirius 6.4.1
 
