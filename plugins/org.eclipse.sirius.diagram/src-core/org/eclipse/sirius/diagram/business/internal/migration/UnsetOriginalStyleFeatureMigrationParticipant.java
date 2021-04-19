@@ -56,7 +56,7 @@ public class UnsetOriginalStyleFeatureMigrationParticipant extends AbstractRepre
 
     @Override
     public Object getValue(EObject object, EStructuralFeature feature, Object value, String loadedVersion) {
-        if (loadedVersion.compareTo(MIGRATION_VERSION.toString()) < 0) {
+        if (Version.parseVersion(loadedVersion).compareTo(UnsetOriginalStyleFeatureMigrationParticipant.MIGRATION_VERSION) < 0) {
             if (originalStyleReferences.contains(feature)) {
 
                 numberOfOrignalStyeFeatureUnset++;
