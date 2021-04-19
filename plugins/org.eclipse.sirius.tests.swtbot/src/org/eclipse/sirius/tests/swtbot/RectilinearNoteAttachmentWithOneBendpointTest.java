@@ -63,7 +63,7 @@ public class RectilinearNoteAttachmentWithOneBendpointTest extends AbstractSiriu
         ConnectionEditPart attachmentEP = (ConnectionEditPart) noteGraphicalEditPart.getSourceConnections().get(0);
         List bendpoints = ((RelativeBendpoints) ((Edge) attachmentEP.getModel()).getBendpoints()).getPoints();
 
-        assertTrue("There must be 1 bendpoint.", bendpoints.size() == 1);
+        assertEquals("Wrong number of bendpoints,", 1, bendpoints.size());
 
         final Point pointToDrag = editor.getAbsoluteCenter(noteGraphicalEditPart);
         final Point endpoint = new Point(300, 300);
@@ -72,6 +72,6 @@ public class RectilinearNoteAttachmentWithOneBendpointTest extends AbstractSiriu
 
         bendpoints = ((RelativeBendpoints) ((Edge) attachmentEP.getModel()).getBendpoints()).getPoints();
 
-        assertTrue("There must be 3 bendpoints.", bendpoints.size() == 3);
+        assertEquals("Wrong number of bendpoints,", 3, bendpoints.size());
     }
 }
