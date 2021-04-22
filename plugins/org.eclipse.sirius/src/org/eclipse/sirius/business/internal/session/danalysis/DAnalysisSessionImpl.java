@@ -25,6 +25,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -63,6 +64,7 @@ import org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchExce
 import org.eclipse.sirius.business.api.migration.DescriptionResourceVersionMismatchException;
 import org.eclipse.sirius.business.api.migration.ResourceVersionMismatchDiagnostic;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
+import org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery.DRepresentationDescriptorValidityAdapter;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
@@ -219,16 +221,39 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
             this.session = session;
         }
 
+        @SuppressWarnings("unchecked")
         @Override
         public void resourceSetChanged(ResourceSetChangeEvent event) {
             List<Notification> notifications = event.getNotifications();
             boolean subDiagramDecorationDesciptorCleared = false;
             Collection<DRepresentation> allLoadedRepresentations = DialectManager.INSTANCE.getAllLoadedRepresentations(session);
+            Set<DRepresentationDescriptor> dRepresentationDescriptorsSetToValidate = new LinkedHashSet<DRepresentationDescriptor>();
             for (Notification notification : notifications) {
                 if (notification.getNewValue() instanceof DRepresentation || notification.getOldValue() instanceof DRepresentation) {
                     allLoadedRepresentations.stream().forEach(rep -> rep.getUiState().getSubDiagramDecorationDescriptors().clear());
                     subDiagramDecorationDesciptorCleared = true;
                     break;
+                } else if (notification.getNotifier() instanceof DView && ViewpointPackage.eINSTANCE.getDView_OwnedRepresentationDescriptors().equals(notification.getFeature())) {
+                    // Detection of addition or deletion of a DRepresentationDescriptor triggers here an update of its
+                    // validity adapter
+                    switch (notification.getEventType()) {
+                    case Notification.REMOVE:
+                        dRepresentationDescriptorsSetToValidate.add((DRepresentationDescriptor) notification.getOldValue());
+                        break;
+                    case Notification.REMOVE_MANY:
+                        dRepresentationDescriptorsSetToValidate.addAll((Collection<? extends DRepresentationDescriptor>) notification.getOldValue());
+                        break;
+                    case Notification.ADD:
+                        dRepresentationDescriptorsSetToValidate.add((DRepresentationDescriptor) notification.getNewValue());
+                        break;
+                    case Notification.ADD_MANY:
+                        dRepresentationDescriptorsSetToValidate.addAll((Collection<? extends DRepresentationDescriptor>) notification.getNewValue());
+                        break;
+                    default:
+                        break;
+                    }
+                } else if (notification.getNotifier() instanceof DRepresentationDescriptor) {
+                    dRepresentationDescriptorsSetToValidate.add((DRepresentationDescriptor) notification.getNotifier());
                 }
             }
 
@@ -244,6 +269,14 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
                         }
                     }
                 });
+            }
+
+            for (DRepresentationDescriptor dRepresentationDescriptorToValidate : dRepresentationDescriptorsSetToValidate) {
+                Optional<DRepresentationDescriptorValidityAdapter> findFirst = dRepresentationDescriptorToValidate.eAdapters().stream()
+                        .filter(DRepresentationDescriptorValidityAdapter.class::isInstance).map(DRepresentationDescriptorValidityAdapter.class::cast).findFirst();
+                if (findFirst.isPresent()) {
+                    findFirst.get().triggerRepresentationValidation();
+                }
             }
         }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -56,6 +56,13 @@ public class DRepresentationDescriptorQuery {
         }
 
         /**
+         * Triggers a representation validation.
+         */
+        public void triggerRepresentationValidation() {
+            validity = computeRepresentationValid();
+        }
+
+        /**
          * Returns if the {@link DRepresentationDescriptor} is valid.</br>
          * 
          * @return the value
@@ -66,10 +73,7 @@ public class DRepresentationDescriptorQuery {
 
         @Override
         public void notifyChanged(Notification notification) {
-            Object notifier = notification.getNotifier();
-            if (notifier instanceof DRepresentationDescriptor) {
-                validity = computeRepresentationValid();
-            }
+            // The computation of the validity is triggered by the Post-Commit listener DRepresentationChangeListener
         }
     }
 
