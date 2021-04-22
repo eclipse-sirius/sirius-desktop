@@ -34,7 +34,7 @@ import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.query.DRepresentationElementQuery;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl.NoSubDecorationDescriptor;
+import org.eclipse.sirius.business.internal.representation.DRepresentationChangeListener.NoSubDecorationDescriptor;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;

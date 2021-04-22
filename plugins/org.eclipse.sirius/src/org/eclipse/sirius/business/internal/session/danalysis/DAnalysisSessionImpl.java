@@ -18,14 +18,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -33,24 +29,17 @@ import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.command.BasicCommandStack;
-import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CommandStack;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.transaction.NotificationFilter;
 import org.eclipse.emf.transaction.RecordingCommand;
-import org.eclipse.emf.transaction.ResourceSetChangeEvent;
-import org.eclipse.emf.transaction.ResourceSetListenerImpl;
-import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.emf.transaction.RunnableWithResult;
 import org.eclipse.emf.transaction.Transaction;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -58,14 +47,10 @@ import org.eclipse.emf.transaction.impl.InternalTransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.emf.transaction.util.ValidateEditSupport;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
-import org.eclipse.sirius.business.api.helper.RepresentationHelper;
 import org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchException;
 import org.eclipse.sirius.business.api.migration.DescriptionResourceVersionMismatchException;
 import org.eclipse.sirius.business.api.migration.ResourceVersionMismatchDiagnostic;
 import org.eclipse.sirius.business.api.query.DAnalysisQuery;
-import org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery.DRepresentationDescriptorValidityAdapter;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.business.api.query.RepresentationDescriptionQuery;
 import org.eclipse.sirius.business.api.query.ResourceQuery;
@@ -87,6 +72,7 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelectorServic
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionService;
+import org.eclipse.sirius.business.internal.representation.DRepresentationChangeListener;
 import org.eclipse.sirius.business.internal.representation.DRepresentationLocationManager;
 import org.eclipse.sirius.business.internal.resource.ResourceModifiedFieldUpdater;
 import org.eclipse.sirius.business.internal.session.IsModifiedSavingPolicy;
@@ -95,7 +81,6 @@ import org.eclipse.sirius.business.internal.session.RepresentationNameListener;
 import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.common.tools.api.query.NotificationQuery;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
@@ -117,7 +102,6 @@ import org.eclipse.sirius.tools.internal.resource.ResourceSetUtil;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
@@ -208,221 +192,6 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
     private SiriusPreferences siriusPreferences;
 
     /**
-     * Listener that clears the sub diagram decoration descriptors when a {@link DRepresentation} is either created or
-     * deleted.
-     * 
-     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
-     */
-    private final class DRepresentationChangeListener extends ResourceSetListenerImpl {
-
-        private DAnalysisSession session;
-
-        private DRepresentationChangeListener(DAnalysisSession session) {
-            this.session = session;
-        }
-
-        @SuppressWarnings("unchecked")
-        @Override
-        public void resourceSetChanged(ResourceSetChangeEvent event) {
-            List<Notification> notifications = event.getNotifications();
-            boolean subDiagramDecorationDesciptorCleared = false;
-            Collection<DRepresentation> allLoadedRepresentations = DialectManager.INSTANCE.getAllLoadedRepresentations(session);
-            Set<DRepresentationDescriptor> dRepresentationDescriptorsSetToValidate = new LinkedHashSet<DRepresentationDescriptor>();
-            for (Notification notification : notifications) {
-                if (notification.getNewValue() instanceof DRepresentation || notification.getOldValue() instanceof DRepresentation) {
-                    allLoadedRepresentations.stream().forEach(rep -> rep.getUiState().getSubDiagramDecorationDescriptors().clear());
-                    subDiagramDecorationDesciptorCleared = true;
-                    break;
-                } else if (notification.getNotifier() instanceof DView && ViewpointPackage.eINSTANCE.getDView_OwnedRepresentationDescriptors().equals(notification.getFeature())) {
-                    // Detection of addition or deletion of a DRepresentationDescriptor triggers here an update of its
-                    // validity adapter
-                    switch (notification.getEventType()) {
-                    case Notification.REMOVE:
-                        dRepresentationDescriptorsSetToValidate.add((DRepresentationDescriptor) notification.getOldValue());
-                        break;
-                    case Notification.REMOVE_MANY:
-                        dRepresentationDescriptorsSetToValidate.addAll((Collection<? extends DRepresentationDescriptor>) notification.getOldValue());
-                        break;
-                    case Notification.ADD:
-                        dRepresentationDescriptorsSetToValidate.add((DRepresentationDescriptor) notification.getNewValue());
-                        break;
-                    case Notification.ADD_MANY:
-                        dRepresentationDescriptorsSetToValidate.addAll((Collection<? extends DRepresentationDescriptor>) notification.getNewValue());
-                        break;
-                    default:
-                        break;
-                    }
-                } else if (notification.getNotifier() instanceof DRepresentationDescriptor) {
-                    dRepresentationDescriptorsSetToValidate.add((DRepresentationDescriptor) notification.getNotifier());
-                }
-            }
-
-            if (!subDiagramDecorationDesciptorCleared) {
-                // The model has changed, remove subDiagramDescriptors marked as no sub diagram descriptors as the
-                // navigation tools might now have valid target in the next evaluation of their expressions.
-                allLoadedRepresentations.stream().forEach(rep -> {
-                    Iterator<Entry<Object, Object>> it = rep.getUiState().getSubDiagramDecorationDescriptors().entrySet().iterator();
-                    while (it.hasNext()) {
-                        Entry<Object, Object> next = it.next();
-                        if (next.getValue() instanceof NoSubDecorationDescriptor) {
-                            it.remove();
-                        }
-                    }
-                });
-            }
-
-            for (DRepresentationDescriptor dRepresentationDescriptorToValidate : dRepresentationDescriptorsSetToValidate) {
-                Optional<DRepresentationDescriptorValidityAdapter> findFirst = dRepresentationDescriptorToValidate.eAdapters().stream()
-                        .filter(DRepresentationDescriptorValidityAdapter.class::isInstance).map(DRepresentationDescriptorValidityAdapter.class::cast).findFirst();
-                if (findFirst.isPresent()) {
-                    findFirst.get().triggerRepresentationValidation();
-                }
-            }
-        }
-
-        @Override
-        public NotificationFilter getFilter() {
-            NotificationFilter filter = super.getFilter();
-            filter = filter.and(new NotificationFilter.Custom() {
-
-                @Override
-                public boolean matches(Notification notification) {
-                    Object notifier = notification.getNotifier();
-                    if (!notification.isTouch() && notifier instanceof EObject && !new NotificationQuery(notification).isTransientNotification()) {
-                        return true;
-                    }
-                    return false;
-                }
-            });
-            return filter;
-        }
-
-        @Override
-        public boolean isPostcommitOnly() {
-            return true;
-        }
-    }
-
-    /**
-     * Simple marker to indicate that the shouldHaveSubDiagDecoration returned false.
-     * 
-     */
-    public static final class NoSubDecorationDescriptor {
-
-    }
-
-    /**
-     * Listen to any change to a {@link DRepresentation} or one of its {@link DRepresentationElement} and update the
-     * associated {@link DRepresentationDescriptorn} change id.
-     * 
-     * @author <a href="mailto:pierre.guilet@obeo.fr">Pierre Guilet</a>
-     *
-     */
-    public class ChangeIdUpdaterListener extends ResourceSetListenerImpl {
-
-        Set<EObject> notifierWithoutRepresentationDescriptors;
-
-        Map<EObject, DRepresentationDescriptor> notifierToDRepMap;
-
-        @Override
-        public boolean isPrecommitOnly() {
-            return true;
-        }
-
-        @Override
-        public boolean isAggregatePrecommitListener() {
-            return true;
-        }
-
-        @Override
-        public Command transactionAboutToCommit(ResourceSetChangeEvent event) throws RollbackException {
-            List<Notification> notifications = event.getNotifications();
-            notifierWithoutRepresentationDescriptors = new HashSet<>();
-            notifierToDRepMap = new HashMap<>();
-            Set<DRepresentationDescriptor> descriptorsToUpdate = new HashSet<>();
-            // Descriptors to ignore because their change ids have already been updated (because of Rollback command or
-            // a diff-merge for example).
-            Set<DRepresentationDescriptor> descriptorsToIgnore = new HashSet<>();
-
-            Iterator<Notification> notifIterator = notifications.iterator();
-
-            while (notifIterator.hasNext()) {
-                Notification notification = notifIterator.next();
-                Object notifier = notification.getNotifier();
-                boolean isEObject = notifier instanceof EObject;
-                boolean isTransient = notification.getFeature() instanceof EStructuralFeature && ((EStructuralFeature) notification.getFeature()).isTransient();
-                if (isEObject && !isTransient && ViewpointPackage.Literals.IDENTIFIED_ELEMENT.isInstance(notifier)) {
-                    final DRepresentationDescriptor representationDescriptor = getDRepresentationDescriptor((EObject) notifier);
-                    if (representationDescriptor != null) {
-                        descriptorsToUpdate.add(representationDescriptor);
-                    }
-                    if (ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR.isInstance(notifier)
-                            && ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__CHANGE_ID.equals(notification.getFeature())) {
-                        // Ignore descriptor with a change of "ChangeId"
-                        descriptorsToIgnore.add((DRepresentationDescriptor) notifier);
-                    }
-                } else if (isEObject && !isTransient) {
-                    EClass eClass = ((EObject) notifier).eClass();
-                    EPackage ePackage = eClass.getEPackage();
-                    if ("notation".equals(ePackage.getNsPrefix())) { //$NON-NLS-1$
-                        final DRepresentationDescriptor representationDescriptor = getDRepresentationDescriptor((EObject) notifier);
-                        if (representationDescriptor != null) {
-                            descriptorsToUpdate.add(representationDescriptor);
-
-                        }
-                    }
-                }
-            }
-            descriptorsToUpdate.removeAll(descriptorsToIgnore);
-            if (!descriptorsToUpdate.isEmpty()) {
-                RecordingCommand changeIdRecordingCommand = new RecordingCommand(transactionalEditingDomain) {
-                    @Override
-                    protected void doExecute() {
-                        for (DRepresentationDescriptor dRepresentationDescriptor : descriptorsToUpdate) {
-                            RepresentationHelper.updateChangeId(dRepresentationDescriptor);
-                        }
-                    }
-                };
-                return changeIdRecordingCommand;
-            }
-            return null;
-        }
-
-        private DRepresentationDescriptor getDRepresentationDescriptor(EObject eObject) {
-            DRepresentationDescriptor dRepresentationDescriptor = null;
-            DRepresentationDescriptor repAssociatedToEObject = notifierToDRepMap.get(eObject);
-            if (repAssociatedToEObject == null && !notifierWithoutRepresentationDescriptors.contains(eObject)) {
-                EObject eContainer = eObject.eContainer();
-                if (!(eObject.eContainingFeature() != null && eObject.eContainingFeature().isTransient())) {
-                    // We check for a descriptor from the top element to the current element to be sure the current
-                    // element is not related to a transient feature.
-                    if (eContainer != null && !(eObject instanceof DRepresentation)) {
-                        dRepresentationDescriptor = getDRepresentationDescriptor(eContainer);
-                        if (dRepresentationDescriptor == null) {
-                            // the parent is not associated to any descriptor so are the children.
-                            notifierWithoutRepresentationDescriptors.add(eObject);
-                        } else {
-                            // we have a valid descriptor from the parent so we associate it to this eObject in case
-                            // we parse it again later.
-                            notifierToDRepMap.put(eObject, dRepresentationDescriptor);
-                        }
-                    } else if (eObject instanceof DRepresentation) {
-                        // we have reached the parent representation so we retrieve its descriptor.
-                        dRepresentationDescriptor = new DRepresentationQuery((DRepresentation) eObject).getRepresentationDescriptor();
-                        notifierToDRepMap.put(eObject, dRepresentationDescriptor);
-                    }
-                } else {
-                    // eObject is associated to a transient feature so we ignore it.
-                    notifierWithoutRepresentationDescriptors.add(eObject);
-                }
-            } else {
-                dRepresentationDescriptor = repAssociatedToEObject;
-            }
-            return dRepresentationDescriptor;
-        }
-    }
-
-    /**
      * Create a new session.
      * 
      * @param mainDAnalysis
@@ -447,7 +216,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         setSaveInExclusiveTransaction(true);
         dRepresentationChangeListener = new DRepresentationChangeListener(this);
         getTransactionalEditingDomain().addResourceSetListener(dRepresentationChangeListener);
-        changeIdUpdaterListener = new ChangeIdUpdaterListener();
+        changeIdUpdaterListener = new ChangeIdUpdaterListener(this);
         getTransactionalEditingDomain().addResourceSetListener(changeIdUpdaterListener);
     }
 
