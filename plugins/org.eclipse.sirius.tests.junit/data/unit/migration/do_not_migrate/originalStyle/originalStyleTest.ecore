@@ -8,4 +8,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="NewEClass2"/>
   </eSubpackages>
+  <eSubpackages name="newPackage2">
+    <eClassifiers xsi:type="ecore:EClass" name="NewEClass1"/>
+  </eSubpackages>
 </ecore:EPackage>

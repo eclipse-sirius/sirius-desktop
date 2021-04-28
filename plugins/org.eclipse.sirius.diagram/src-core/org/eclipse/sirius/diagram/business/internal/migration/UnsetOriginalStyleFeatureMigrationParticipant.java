@@ -25,9 +25,17 @@ import org.eclipse.emf.ecore.resource.Resource.Diagnostic;
 import org.eclipse.emf.ecore.xmi.UnresolvedReferenceException;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant;
+import org.eclipse.sirius.business.api.query.DViewQuery;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.DDiagramElementContainer;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.Messages;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
+import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.osgi.framework.Version;
 
 /**
@@ -64,6 +72,37 @@ public class UnsetOriginalStyleFeatureMigrationParticipant extends AbstractRepre
             }
         }
         return super.getValue(object, feature, value, loadedVersion);
+    }
+
+    /**
+     * This method is overridden to unset originalStyle features.<br/>
+     * It is not sufficient to implement {@code getValue(EObject , EStructuralFeature , Object , String )} method for
+     * not dangling features.
+     * 
+     * @see org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigrationParticipant#postLoad(org.eclipse.sirius.viewpoint.DAnalysis,
+     *      org.osgi.framework.Version)
+     */
+    @Override
+    protected void postLoad(DAnalysis dAnalysis, Version loadedVersion) {
+        if (loadedVersion.compareTo(MIGRATION_VERSION) < 0) {
+            //@formatter:off 
+            dAnalysis.getOwnedViews().stream()
+                .flatMap(dView -> new DViewQuery(dView).getLoadedRepresentations().stream())
+                .filter(DDiagram.class::isInstance)
+                .flatMap(diagram -> new DDiagramQuery((DDiagram) diagram).getAllDiagramElements().stream())
+                .forEach(diagElement -> {
+                    if (diagElement instanceof DNode) {
+                        ((DNode) diagElement).setOriginalStyle(null);
+                    } else if (diagElement instanceof DEdge) {
+                        ((DEdge) diagElement).setOriginalStyle(null);
+                    } else if (diagElement instanceof DDiagramElementContainer) {
+                        ((DDiagramElementContainer) diagElement).setOriginalStyle(null);
+                    } else if (diagElement instanceof DNodeListElement) {
+                        ((DNodeListElement) diagElement).setOriginalStyle(null);
+                    }
+                });
+            //@formatter:on
+        }
     }
 
     @Override
