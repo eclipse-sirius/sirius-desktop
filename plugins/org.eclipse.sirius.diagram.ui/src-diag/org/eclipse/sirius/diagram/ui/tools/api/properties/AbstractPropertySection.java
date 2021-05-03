@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2003, 2015 IBM Corporation and others.
+ * Copyright (c) 2003, 2021 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.gmf.runtime.diagram.ui.properties.sections.AbstractModelerPro
 import org.eclipse.gmf.runtime.emf.ui.properties.sections.UndoableModelPropertySheetEntry;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CLabel;
 import org.eclipse.swt.layout.FormAttachment;
@@ -295,8 +296,17 @@ public abstract class AbstractPropertySection extends AbstractModelerPropertySec
 
                 @Override
                 public void run() {
-                    if (!isDisposed() && !isNotifierDeleted(notification)) {
-                        refresh();
+                    try {
+                        if (!isDisposed() && !isNotifierDeleted(notification)) {
+                            refresh();
+                        }
+                    } catch (IllegalStateException e) {
+                        if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+                            // Nothing to log here, this can happen if the resource is not accessible anymore (distant
+                            // resource).
+                        } else {
+                            throw e;
+                        }
                     }
                 }
             });
