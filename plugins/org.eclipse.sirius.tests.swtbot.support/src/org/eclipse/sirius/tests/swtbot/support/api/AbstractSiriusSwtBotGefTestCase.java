@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -117,7 +117,6 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchPage;
@@ -495,23 +494,6 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
                 TestCase.fail("Unable to open errorLog view : " + e.getMessage());
             }
         });
-    }
-
-    /**
-     * Get the number of Status in the error log at the time of the call.
-     *
-     * @return the number of Status in the error log at the time of the call
-     */
-    public int getNbStatusInErrorLog() {
-        openErrorLogViewByAPI();
-
-        SWTBotView logViewBot = bot.viewByPartName("Error Log");
-        logViewBot.show();
-        SWTBotTree tree = logViewBot.bot().tree();
-        int nbStatus = tree.getAllItems().length;
-        logViewBot.close();
-
-        return nbStatus;
     }
 
     /**

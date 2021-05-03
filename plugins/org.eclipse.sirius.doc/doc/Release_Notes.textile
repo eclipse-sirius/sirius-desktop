@@ -10,6 +10,12 @@ h2(#sirius7.0.0). Changes in Sirius 7.0.0
 * <span class="label label-danger">Removed</span> **The "Workflow" feature** has been removed . Workflow was experimental and to our knowledge not used in practice. This corresponds to the @org.eclipse.sirius.workflow.*@ and @org.eclipse.sirius.editor.workflow@ plug-ins.
 * <span class="label label-danger">Removed</span> **The server parts which supported the Workflow feature** has been removed too. It was our first experiment in moving Sirius to the web, but this is now replaced by the newly published "Sirius Web":https://www.eclipse.org/sirius/sirius-web.html. This corresponds to all the @org.eclipse.sirius.server.*@ plug-ins.
 
+h3. Developer-Visible Changes
+
+h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
+
+* <span class="label label-danger">Removed</span> The method @org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase.getNbStatusInErrorLog()@ has been removed. It is not reliable (sometimes the number of elements returned is 0 instead of the real number). It should be replaced by @doesAnErrorOccurs()@ and @doesAWarningOccurs()@.
+
 
 h2(#sirius6.6.0). Changes in Sirius 6.6.0
 

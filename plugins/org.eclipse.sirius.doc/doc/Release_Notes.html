@@ -14,12 +14,17 @@
 				<ol style="list-style: disc;">
 					<li>
 						<a href="#sirius7.0.0">Changes in Sirius 7.0.0</a>
+						<ol style="list-style: disc;">
+							<li>
+								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
+							</li>
+						</ol>
 					</li>
 					<li>
 						<a href="#sirius6.6.0">Changes in Sirius 6.6.0</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#DeveloperVisibleChanges">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -33,7 +38,7 @@
 								<a href="#SpecifierVisibleChanges">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges2">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -50,7 +55,7 @@
 								<a href="#SpecifierVisibleChanges2">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges3">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -61,7 +66,7 @@
 								<a href="#UserVisibleChanges3">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges4">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges5">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -72,7 +77,7 @@
 								<a href="#UserVisibleChanges4">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges5">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges6">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -86,7 +91,7 @@
 								<a href="#SpecifierVisibleChanges3">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges6">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges7">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -97,7 +102,7 @@
 						<a href="#sirius6.2.1">Changes in Sirius 6.2.1</a>
 						<ol style="list-style: disc;">
 							<li>
-								<a href="#DeveloperVisibleChanges7">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges8">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -111,7 +116,7 @@
 								<a href="#SpecifierVisibleChanges4">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges8">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges9">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -122,7 +127,7 @@
 								<a href="#UserVisibleChanges7">User-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges9">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges10">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -144,7 +149,7 @@
 								<a href="#SpecifierVisibleChanges5">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges10">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges11">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -158,7 +163,7 @@
 								<a href="#SpecifierVisibleChanges6">Specifier-Visible Changes</a>
 							</li>
 							<li>
-								<a href="#DeveloperVisibleChanges11">Developer-Visible Changes</a>
+								<a href="#DeveloperVisibleChanges12">Developer-Visible Changes</a>
 							</li>
 						</ol>
 					</li>
@@ -181,8 +186,19 @@
 				<code>org.eclipse.sirius.server.*</code> plug-ins.
 			</li>
 		</ul>
-		<h2 id="sirius6.6.0">Changes in Sirius 6.6.0</h2>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
+			<code>org.eclipse.sirius.tests.swtbot.support</code>
+		</h4>
+		<ul>
+			<li><span class="label label-danger">Removed</span> The method 
+				<code>org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase.getNbStatusInErrorLog()</code> has been removed. It is not reliable (sometimes the number of elements returned is 0 instead of the real number). It should be replaced by 
+				<code>doesAnErrorOccurs()</code> and 
+				<code>doesAWarningOccurs()</code>.
+			</li>
+		</ul>
+		<h2 id="sirius6.6.0">Changes in Sirius 6.6.0</h2>
+		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
 		<h4 id="Migrations">Migrations</h4>
 		<ul>
 			<li><span class="label label-info">Modified</span> The migration participant 
@@ -227,7 +243,7 @@
 				</ul>
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges2">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> It is now possible to keep semantic element traceability during the representation export. For now, this option is only supported for diagram SVG export. In this case, a new attribute 
 				<code>diagram:targetSemanticId</code> is added on SVG elements to reference the target semantic id on which the graphical element is based on. This option can be activated programmatically or by setting a preference. See the details below:
@@ -374,7 +390,7 @@
 		<p>Several improvements have been done concerning ELK integration. This feature is always considered as experimental (because several bugs remain). Additional documentation is available 
 			<a href="specifier/diagrams/Diagrams.html#useElk">here</a> .
 		</p>
-		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> 
 				<code>org.eclipse.sirius.ui.tools.api.dialogs.AnalysisSelectorFilteredItemsSelectionDialog</code> has been created in order to have custom analysis selector provider able to modify the analysis selector dialog.
@@ -496,7 +512,7 @@
 		</ul> 
 		<img border="0" src="images/combined_fragment_label_before.png"/> With Sirius 6.3.2, the label is now on the top of execution: 
 		<img border="0" src="images/combined_fragment_label_after.png"/>
-		<h3 id="DeveloperVisibleChanges4">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges5">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius.common2">Changes in  
 			<code>org.eclipse.sirius.common</code>
 		</h4>
@@ -553,7 +569,7 @@
 		<ul>
 			<li><span class="label label-danger">Removed</span> The feature concerning the capability to move labels on border of node, or border node, all around the node, added in 6.3.0, has been reverted. There are unexpected side effects (wrong location after a rename of a label for example).</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges5">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges6">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> Upgraded ELK version from 0.5.0 to 0.6.1, see the 
 				<a href="https://projects.eclipse.org/projects/modeling.elk/releases/0.6.1">ELK documentation</a> for the list of changes in that version (and previous).
@@ -634,7 +650,7 @@
 				<code>Type</code>.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges6">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges7">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> Upgraded ELK version from 0.4.1 to 0.5.0, see the <a href="https://projects.eclipse.org/projects/modeling.elk/releases/0.5.0" target="_blank">ELK documentation</a> for the list of changes in that version.</li>
 			<li><span class="label label-info">Modified</span> Upgraded EEF version from 2.1.2 to 2.1.3 (which contains a single bugfix, for <a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=550436" target="_blank">#550436</a>).</li>
@@ -772,7 +788,7 @@
 		<h2 id="sirius6.2.2">Changes in Sirius 6.2.2</h2>
 		<p>There are no user-visible changes in Sirius 6.2.2 compared to 6.2.1. The only changes are internal and related either to the build process or to the automated tests.</p>
 		<h2 id="sirius6.2.1">Changes in Sirius 6.2.1</h2>
-		<h3 id="DeveloperVisibleChanges7">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges8">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius4">Changes in  
 			<code>org.eclipse.sirius</code>
 		</h4>
@@ -808,7 +824,7 @@
 				<code>org.eclipse.sirius.diagram.ui.business.api.image.ImageSelector.IMAGES_RESOURCE_NAME</code> constant has been deprecated. It was present in the initial commit of Sirius but has never been used in its open source components.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support2">Changes in  
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
@@ -847,7 +863,7 @@
 				<a href="specifier/diagrams/Diagrams.html#group">corresponding documentation</a> .
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges8">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges9">Developer-Visible Changes</h3>
 		<h4 id="Changesinorg.eclipse.sirius.common4">Changes in 
 			<code>org.eclipse.sirius.common</code>
 		</h4>
@@ -1199,7 +1215,7 @@
 				<code>java.util.Optional&lt;T&gt;</code> instead.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support2">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support3">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
@@ -1224,7 +1240,7 @@
 				<em>Delete</em>. It was previously the case only for representations which semantic target does not exist anymore.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges9">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges10">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-success">Added</span> If the 
 				<code>org.eclipse.sirius.diagam.ui.hidePrintingOfPermissionAuthorityDecoration</code> system property is set to true and if there is no other printable decoration provided at the same location (South-West), the permission authority decorations displayed on diagrams are not printed nor exported in images (export as image actions).
@@ -1375,7 +1391,7 @@
 				<a href="specifier/tables/Tables.html#edition_tables">the documentation</a> for details.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges10">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges11">Developer-Visible Changes</h3>
 		<p><span class="label label-info">IMPORTANT</span> Note that all plug-ins in the 
 			<em>Sirius Server</em> feature (
 			<code>org.eclipse.sirius.server.*</code> and 
@@ -1608,7 +1624,7 @@
 				<code>org.eclipse.emf.ecore.util.EcoreUtil.generateUUID()</code>.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support3">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support4">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
@@ -1692,7 +1708,7 @@
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=531487">bugzilla 531487</a> for more details.
 			</li>
 		</ul>
-		<h3 id="DeveloperVisibleChanges11">Developer-Visible Changes</h3>
+		<h3 id="DeveloperVisibleChanges12">Developer-Visible Changes</h3>
 		<ul>
 			<li><span class="label label-info">Modified</span> The SWTBot test framework version has been upgraded toward SWTBot 2.6. The main impacts are described below:
 				<ul>
@@ -1880,7 +1896,7 @@
 				<code>org.eclipse.sirius.tests.swtbot.Activator.PLUGIN_ID</code>). It avoids to build a wrong target platform containing each Sirius plug-ins twice. 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support4">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support5">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
 		<ul>
