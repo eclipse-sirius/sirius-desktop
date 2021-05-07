@@ -85,9 +85,6 @@ public final class Messages {
     public static String DFeatureColumnEditingSupport_notValidValue;
 
     @TranslatableMessage
-    public static String DFeatureColumnEditingSupport_nullCellEditor;
-
-    @TranslatableMessage
     public static String DFeatureColumnEditingSupport_notJavaQualifiedName;
 
     @TranslatableMessage

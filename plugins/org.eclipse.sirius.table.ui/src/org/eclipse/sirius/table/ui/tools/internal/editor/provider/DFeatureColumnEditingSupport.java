@@ -199,7 +199,6 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
         Assert.isNotNull(updater, "The \"updater\" parameter should not be null"); //$NON-NLS-1$
         CellEditor cellEditor = null;
         CellEditorTool cellEditorTool = updater.getCellEditor();
-        boolean specificCellEditorProvided = false;
         if (cellEditorTool != null) {
             String qualifiedClassName = cellEditorTool.getQualifiedClassName();
             if (qualifiedClassName != null && SourceVersion.isName(qualifiedClassName)) {
@@ -219,11 +218,9 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
                         // Get the cell editor according to parameters
                         final Tree tree = ((TreeViewer) getViewer()).getTree();
                         cellEditor = cellEditorFactory.getCellEditor(tree, parameters);
-                        if (cellEditor != null) {
-                            specificCellEditorProvided = true;
-                        } else {
-                            TableUIPlugin.getPlugin().warning(MessageFormat.format(Messages.DFeatureColumnEditingSupport_nullCellEditor, qualifiedClassName), null);
-                        }
+                        // if specific cellEditor is not provided, 
+                        // it is safer to assume that the cell should not be edited 
+                        // than provide a generic capability.
                     } catch (IllegalArgumentException e) {
                         TableUIPlugin.getPlugin().warning(MessageFormat.format(Messages.DFeatureColumnEditingSupport_unusableCellEditor, qualifiedClassName, e.getMessage()), e);
                     }
@@ -231,11 +228,9 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
             } else {
                 TableUIPlugin.getPlugin().warning(MessageFormat.format(Messages.DFeatureColumnEditingSupport_notJavaQualifiedName, qualifiedClassName), null);
             }
-        }
-        if (!specificCellEditorProvided) {
-            // Fallback on default behavior
+        } else {
             boolean directEdit = updater.getDirectEdit() != null;
-            cellEditor = getBestCellEditor(editedCell.getTarget(), directEdit);
+            cellEditor = getBuiltInCellEditor(editedCell.getTarget(), directEdit);
         }
         return cellEditor;
     }
@@ -265,27 +260,11 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
                     result = getAccessor().eGet(featureParent, getFeatureName());
                 }
 
-                if ((!isEReference(featureParent) && !isMany(featureParent)) || directEdit) {
-                    // If the type of the value is a EEnum and the cellEditor is
-                    // not an ExtendedComboBoxCellEditor, we must return the
-                    // index of the ComboBox
-                    final EClassifier eClassifier = getEClassifier(featureParent);
-                    if (eClassifier instanceof EEnum && !(getCellEditor(element) instanceof ExtendedComboBoxCellEditor)) {
-                        int index = 0;
-                        if (result instanceof String) {
-                            index = getIndex((EEnum) eClassifier, (String) result);
-                        } else if (result instanceof Enumerator) {
-                            index = getIndex((EEnum) eClassifier, ((Enumerator) result).getLiteral());
-                        }
-                        result = Integer.valueOf(index);
-                    } else if (result != null) {
-                        if (!(result instanceof Boolean) && !(result instanceof Enumerator)) {
-                            result = result.toString();
-                        }
-                    } else {
-                        result = ""; //$NON-NLS-1$
-                    }
+                
+                if (updater == null || updater.getCellEditor() == null) {
+                    result = adaptValueforBuiltInEditor(result, element, featureParent, directEdit);
                 }
+                
             } catch (final FeatureNotFoundException e) {
                 SiriusPlugin.getDefault().error(Messages.DFeatureColumnEditingSupport_errorGettingPropertyValue, e);
             }
@@ -293,6 +272,34 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
         return result;
     }
 
+    private Object adaptValueforBuiltInEditor(final Object value, final Object element, 
+            final EObject featureParent, final boolean directEdit) {
+        Object result = value;
+        if ((!isEReference(featureParent) && !isMany(featureParent)) || directEdit) {
+            // If the type of the value is a EEnum and the cellEditor is
+            // not an ExtendedComboBoxCellEditor, we must return the
+            // index of the ComboBox
+            final EClassifier eClassifier = getEClassifier(featureParent);
+            if (eClassifier instanceof EEnum && !(getCellEditor(element) instanceof ExtendedComboBoxCellEditor)) {
+                int index = 0;
+                if (result instanceof String) {
+                    index = getIndex((EEnum) eClassifier, (String) result);
+                } else if (result instanceof Enumerator) {
+                    index = getIndex((EEnum) eClassifier, ((Enumerator) result).getLiteral());
+                }
+                result = Integer.valueOf(index);
+            } else if (result != null) {
+                if (!(result instanceof Boolean) && !(result instanceof Enumerator)) {
+                    result = result.toString();
+                }
+            } else {
+                result = ""; //$NON-NLS-1$
+            }
+        }
+        return result;
+    }
+    
+    
     @Override
     protected void setValue(final Object element, final Object value) {
         if (element instanceof DLine) {
@@ -307,7 +314,12 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
             final EObject featureParent = editedCell.getTarget();
             final EClassifier eClassifier = getEClassifier(featureParent);
             Object tempValue = value;
-            if (!isMany(featureParent)) {
+            
+            CellUpdater updater = editedCell.getUpdater();
+            boolean isCellEditorProvided = updater != null && updater.getCellEditor() != null;
+            if (!isCellEditorProvided
+                    // For user defined editor, the bare value is expected.
+                    && !isMany(featureParent)) {
                 if (eClassifier instanceof EEnum) {
                     if (value instanceof Enumerator) {
                         tempValue = ((Enumerator) value).getValue();
@@ -319,6 +331,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
                         if (eClassifier instanceof EDataType) {
                             tempValue = eClassifier.getEPackage().getEFactoryInstance().createFromString((EDataType) eClassifier, (String) value);
                         } else if ("UnlimitedNatural".equals(eClassifier.getName())) { //$NON-NLS-1$
+                            // XXX This hack should be updated by a custom cellEditor.
                             tempValue = Integer.valueOf((String) value);
                         }
                     } catch (final NumberFormatException e) {
@@ -327,9 +340,11 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
                 }
             }
             try {
-                if (tempValue != null || isEReference(featureParent)) {
+                if (isCellEditorProvided
+                        // user-defined editor may be able to handle null as it had provided it.
+                        || tempValue != null || isEReference(featureParent)) {
                     final Object finalValue = tempValue;
-                    CellUpdater updater = editedCell.getUpdater();
+
                     if (updater != null && (updater.getDirectEdit() != null || updater.getCellEditor() != null)) {
                         // Specific set
                         specificSetValue(editedCell, finalValue);
@@ -387,7 +402,7 @@ public class DFeatureColumnEditingSupport extends EditingSupport {
      *            true if this cell has a direct edit tool, false otherwise
      * @return An adapted cell Editor
      */
-    private CellEditor getBestCellEditor(final EObject element, final boolean directEdit) {
+    private CellEditor getBuiltInCellEditor(final EObject element, final boolean directEdit) {
         CellEditor result = null;
         final Tree tree = ((TreeViewer) getViewer()).getTree();
         final EClassifier eClassifier = getEClassifier(element);

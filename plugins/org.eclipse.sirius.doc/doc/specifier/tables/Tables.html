@@ -299,8 +299,7 @@
 				<em>ComboBoxCellEditor</em>, 
 				<em>CheckboxCellEditor</em>, 
 				<em>DialogCellEditor</em>. If no implementation is provided or an invalid 
-				<em>CellEditor</em> is returned, a default CellEditor is built in 
-				<code>org.eclipse.sirius.table.ui.tools.internal.editor.provider.DFeatureColumnEditingSupport.getBestCellEditor(EObject, boolean)</code>. You can refer to Sirius 
+				<em>CellEditor</em> is returned, the cell is not editable. You can refer to Sirius 
 				<a href="https://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tree/plugins/org.eclipse.sirius.table.ui/src/org/eclipse/sirius/table/ui/tools/internal/editor/provider/DFeatureColumnEditingSupport.java#n317">source code</a> as sample, or use 
 				<a href="https://git.eclipse.org/c/sirius/org.eclipse.sirius.git/tree/plugins/org.eclipse.sirius.tests.swtbot/src/org/eclipse/sirius/tests/swtbot/table/celleditorfactory/BooleanCellEditorFactory.java#n45">one of our tests</a> to implement your own &#8220;CellEditorFactory&#8221;.
 			</li>

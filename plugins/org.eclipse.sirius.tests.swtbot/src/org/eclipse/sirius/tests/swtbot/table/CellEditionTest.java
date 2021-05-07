@@ -167,8 +167,8 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
                     "org.eclipse.sirius.tests.swtbot.table.celleditorfactory.WrongQualifiedName/CellEditorFactory");
             String message = warnings.values().iterator().next().getMessage();
             assertEquals("The displayed message in the Error Log view is not the expected one.", expectedMessage, message);
-            // Check that the value has been changed (with standard edition as fallback).
-            assertEquals("true", items[lineIndexToTest].cell(columnIndexToTest));
+            // Check that the value has not been changed (in this case the Cell is not editable).
+            assertEquals("The value must not be changed in case of a CellEditor with a wrong qualified name.", "false", items[lineIndexToTest].cell(columnIndexToTest));
         } finally {
             setWarningCatchActive(false);
             warnings.clear();
@@ -203,13 +203,10 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
             items[lineIndexToTest].doubleClick(columnIndexToTest);
             SWTBotUtils.waitAllUiEvents();
 
-            // Check that the expected warning is displayed in the Error Log view
-            assertEquals("One warning must be displayed in Error Log view when using double click on a column using a CellEditor with a wrong qualified name.", 1, warnings.size());
-            String expectedMessage = MessageFormat.format(Messages.DFeatureColumnEditingSupport_nullCellEditor, "org.eclipse.sirius.tests.swtbot.table.celleditorfactory.BooleanCellEditorFactory");
-            String message = warnings.values().iterator().next().getMessage();
-            assertEquals("The displayed message in the Error Log view is not the expected one.", expectedMessage, message);
-            // Check that the value has been changed (with standard edition as fallback).
-            assertEquals("true", items[lineIndexToTest].cell(columnIndexToTest));
+            // Check that there is no warning displayed in the Error Log view.
+            assertEquals("0 warning must be displayed in Error Log view when using double click on a column using a CellEditorFactory returning null as CellEditor.", 0, warnings.size());
+            // Check that the value has not been changed (in this case the Cell is not editable).
+            assertEquals("The value must not be changed in case of a null CellEditor returned by the CellEditorFactory.", "false", items[lineIndexToTest].cell(columnIndexToTest));
         } finally {
             setWarningCatchActive(false);
             warnings.clear();
@@ -465,14 +462,14 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
             SWTBotUtils.waitAllUiEvents();
 
             // Check that the expected warning is displayed in the Error Log view
-            assertEquals("One warning must be displayed in Error Log view when using double click on a column using a CellEditor with a wrong qualified name.", 1, warnings.size());
+            assertEquals("One warning must be displayed in Error Log view when using double click on a column using a CellEditor with an unexisting CellEditorFactory.", 1, warnings.size());
             String qualifiedName = "org.eclipse.sirius.tests.swtbot.table.celleditorfactory.UnexistingCellEditorFactory";
             String expectedMessage = MessageFormat.format(Messages.DFeatureColumnEditingSupport_unusableCellEditor, qualifiedName,
                     MessageFormat.format(Messages.CelEditorFactoryManager_notFound, qualifiedName));
             String message = warnings.values().iterator().next().getMessage();
             assertEquals("The displayed message in the Error Log view is not the expected one.", expectedMessage, message);
-            // Check that the value has been changed (with standard edition as fallback).
-            assertEquals("true", items[lineIndexToTest].cell(columnIndexToTest));
+            // Check that the value has not been changed (in this case the Cell is not editable).
+            assertEquals("The value must not be changed in case of a CellEditor with an unexisting CellEditorFactory.", "false", items[lineIndexToTest].cell(columnIndexToTest));
         } finally {
             setWarningCatchActive(false);
             warnings.clear();
@@ -508,14 +505,14 @@ public class CellEditionTest extends AbstractSiriusSwtBotGefTestCase {
             SWTBotUtils.waitAllUiEvents();
 
             // Check that the expected warning is displayed in the Error Log view
-            assertEquals("One warning must be displayed in Error Log view when using double click on a column using a CellEditor with a wrong qualified name.", 1, warnings.size());
+            assertEquals("One warning must be displayed in Error Log view when using double click on a column using a CellEditor that does not implement ITableCellEditorFactory.", 1, warnings.size());
             String qualifiedName = "org.eclipse.sirius.tests.swtbot.table.celleditorfactory.NotATableCellEditorFactory";
             String expectedMessage = MessageFormat.format(Messages.DFeatureColumnEditingSupport_unusableCellEditor, qualifiedName,
                     MessageFormat.format(Messages.CelEditorFactoryManager_wrongImplementation, qualifiedName));
             String message = warnings.values().iterator().next().getMessage();
             assertEquals("The displayed message in the Error Log view is not the expected one.", expectedMessage, message);
-            // Check that the value has been changed (with standard edition as fallback).
-            assertEquals("true", items[lineIndexToTest].cell(columnIndexToTest));
+            // Check that the value has not been changed (in this case the Cell is not editable).
+            assertEquals("The value must not be changed in case of a CellEditor that does not implement ITableCellEditorFactory.", "false", items[lineIndexToTest].cell(columnIndexToTest));
         } finally {
             setWarningCatchActive(false);
             warnings.clear();
