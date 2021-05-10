@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019, 2020 Obeo
+ * Copyright (c) 2019, 2021 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -48,6 +48,7 @@ import org.eclipse.sirius.diagram.description.EnumLayoutOption;
 import org.eclipse.sirius.diagram.description.EnumLayoutValue;
 import org.eclipse.sirius.diagram.description.LayoutOptionTarget;
 import org.eclipse.sirius.diagram.elk.ElkDiagramLayoutConnector;
+import org.eclipse.sirius.diagram.elk.IELKLayoutExtension;
 import org.eclipse.sirius.diagram.ui.internal.layout.GenericLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.AbstractLayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.LayoutProvider;
@@ -107,6 +108,10 @@ public class ExportToElkGraphHandler extends AbstractHandler {
                 connector.setLayoutConfiguration(customLayoutConfiguration);
 
                 LayoutMapping layoutMapping = connector.buildLayoutGraph(diagramEditPart, diagramEditPart.getChildren(), true, false);
+                // Perform "before" actions provided by extension point.
+                List<IELKLayoutExtension> elkLayoutExtensions = IELKLayoutExtension.getLayoutExtensions();
+                elkLayoutExtensions.forEach(e -> e.beforeELKLayout(layoutMapping));
+                // Store the result in ELKG file
                 ElkDiagramLayoutConnector.storeResult(layoutMapping.getLayoutGraph(),
                         ((org.eclipse.sirius.viewpoint.DRepresentation) ((org.eclipse.gmf.runtime.notation.Diagram) diagramEditPart.getModel()).getElement()).getName(), "", true);
 
