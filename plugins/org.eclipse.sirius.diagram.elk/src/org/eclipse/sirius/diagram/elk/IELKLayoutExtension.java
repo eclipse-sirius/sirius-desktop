@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 Obeo
+ * Copyright (c) 2019, 2021 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,7 +13,13 @@
 
 package org.eclipse.sirius.diagram.elk;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.elk.core.service.LayoutMapping;
+import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 
 /**
  * <p>
@@ -46,6 +52,29 @@ public interface IELKLayoutExtension {
      * Extension point ID.
      */
     public final static String EXTENSION_ID = "org.eclipse.sirius.diagram.elk.layout.extension";
+
+    /**
+     * Return the list of implementation of {@link IELKLayoutExtension} provided through extension point.
+     * 
+     * @return The list of implementations of {@link IELKLayoutExtension} provided through extension point.
+     */
+    static List<IELKLayoutExtension> getLayoutExtensions() {
+        List<IELKLayoutExtension> layoutExtensions = new ArrayList<>();
+        IConfigurationElement[] config = EclipseUtil.getConfigurationElementsFor(IELKLayoutExtension.EXTENSION_ID); // $NON-NLS-1$
+        for (IConfigurationElement configurationElement : config) {
+            try {
+
+                Object contribution = configurationElement.createExecutableExtension("class"); //$NON-NLS-1$
+                if (contribution instanceof IELKLayoutExtension) {
+                    layoutExtensions.add((IELKLayoutExtension) contribution);
+                }
+
+            } catch (CoreException e) {
+                // Do nothing, we return a list without this "malformed" extension.
+            }
+        }
+        return layoutExtensions;
+    }
 
     /**
      * called before the ELK Graph is layouted by the ELK algorithm.
