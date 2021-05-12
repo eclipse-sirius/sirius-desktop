@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2005, 2018 IBM Corporation and others.
+ * Copyright (c) 2005, 2021 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@
  ****************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.dialogs;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -46,6 +47,11 @@ public class ColorPalettePopup {
     private static final Integer MAXIMUM_BUTTON_NUMBER = 50;
 
     private static final Integer BUTTON_COLUMN_NUMBER = 10;
+
+    /**
+     * A map associating a RGB color with the corresponding Image.
+     */
+    private static Map<RGB, Image> rgbToImages = new HashMap<>();
 
     /** variable to store previous color */
     private int previousColor;
@@ -180,8 +186,11 @@ public class ColorPalettePopup {
             button.setLayoutData(data);
 
             final RGB rgb = defaultColors.get(colorName);
-            InventoryColorDescriptor colorDesc = new InventoryColorDescriptor(rgb);
-            final Image image = colorDesc.createImage();
+            if (!rgbToImages.containsKey(rgb)) {
+                InventoryColorDescriptor colorDesc = new InventoryColorDescriptor(rgb);
+                rgbToImages.put(rgb, colorDesc.createImage());
+            }
+            final Image image = rgbToImages.get(rgb);
             button.setImage(image);
             button.setToolTipText(colorName);
             button.addSelectionListener(new SelectionAdapter() {
