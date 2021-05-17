@@ -6,7 +6,7 @@ include "modules/jetty-9.4.tpd"
 
 with source, requirements
 
-location Sirius-6.4.1 "https://download.eclipse.org/sirius/updates/releases/6.4.1/2020-06/" {
+location Sirius-6.5.0 "https://download.eclipse.org/sirius/updates/releases/6.5.0/2020-06/" {
     org.eclipse.sirius.common.interpreter lazy
 }
 
