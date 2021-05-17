@@ -2,7 +2,7 @@ target "acceleo-nightly"
 
 with source, requirements
 
-location Acceleo-Nightly "http://download.eclipse.org/acceleo/updates/nightly/latest" {
+location Acceleo-Nightly "https://download.eclipse.org/acceleo/updates/nightly/latest" {
 	org.eclipse.acceleo.feature.group lazy
 	org.eclipse.acceleo.ide.ui lazy
     org.eclipse.acceleo.ui.interpreter.feature.group lazy

@@ -14,7 +14,7 @@ location Acceleo-3.7 "https://download.eclipse.org/acceleo/updates/releases/3.7/
     org.eclipse.acceleo.query.feature.group lazy
 }
 
-location Eclipse-2020-06 "http://download.eclipse.org/releases/2020-06/" {
+location Eclipse-2020-06 "https://download.eclipse.org/releases/2020-06/" {
     org.eclipse.equinox.core.feature.feature.group lazy
     org.eclipse.equinox.compendium.sdk.feature.group lazy
     org.eclipse.equinox.executable.feature.group lazy

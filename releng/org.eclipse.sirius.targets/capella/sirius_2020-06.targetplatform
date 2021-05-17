@@ -10,11 +10,11 @@ include "../modules/gmf-runtime-1.13.tpd"
 
 with source, requirements
 
-location Sirius-Photon-6.3.0 "http://download.eclipse.org/sirius/updates/releases/6.3.0/2019-06/" {
+location Sirius-Photon-6.3.0 "https://download.eclipse.org/sirius/updates/releases/6.3.0/2019-06/" {
     org.eclipse.sirius.common.interpreter lazy
 }
 
-location Eclipse-2020-06 "http://download.eclipse.org/releases/2020-06/" {
+location Eclipse-2020-06 "https://download.eclipse.org/releases/2020-06/" {
 	com.google.guava lazy
 	com.ibm.icu lazy
 	org.eclipse.draw2d.sdk.feature.group lazy
