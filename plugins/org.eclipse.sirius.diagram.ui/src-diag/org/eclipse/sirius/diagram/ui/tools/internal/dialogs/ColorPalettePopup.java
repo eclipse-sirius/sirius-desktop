@@ -58,7 +58,14 @@ public class ColorPalettePopup {
 
     private Button customColorButton;
 
-    private Map<Object, Object> buttonMap = new LinkedHashMap<>();
+    private Map<RGB, Button> buttonMap = new LinkedHashMap<>();
+
+    /**
+     * This field allows to dispose the current popup (and associated Shell and buttons) on deactivation (see
+     * "shell.addListener(SWT.Deactivate,...)"). It is set to false when the button "Custom..." is clicked. Indeed, in
+     * this case, the dispose is done just after the click on "OK" or "Cancel" button of the "ColorDialog" dialog.
+     */
+    private boolean shouldBeDisposedOnDeactivation = true;
 
     /**
      * A descirptor for an inventory color
@@ -198,7 +205,7 @@ public class ColorPalettePopup {
                 @Override
                 public void widgetSelected(SelectionEvent e1) {
                     selectedColor = rgb;
-                    shell.dispose();
+                    dispose();
                 }
             });
             buttonMap.put(rgb, button);
@@ -207,21 +214,6 @@ public class ColorPalettePopup {
                 break;
             }
         }
-
-        // Button defaultButton = new Button(shell, SWT.PUSH);
-        // defaultButton.setText(DEAFULT_COLOR_STRING);
-        // GridData data = new GridData(GridData.HORIZONTAL_ALIGN_FILL);
-        // data.horizontalSpan = 4;
-        // data.heightHint = rowHeight;
-        // defaultButton.setLayoutData(data);
-        //
-        // defaultButton.addSelectionListener(new SelectionAdapter() {
-        //
-        // public void widgetSelected(SelectionEvent event) {
-        // useDefaultColor = true;
-        // shell.dispose();
-        // }
-        // });
 
         Button moreColors = new Button(shell, SWT.PUSH);
         moreColors.setText(CUSTOM_COLOR_STRING);
@@ -234,7 +226,7 @@ public class ColorPalettePopup {
 
             @Override
             public void widgetSelected(SelectionEvent event) {
-
+                shouldBeDisposedOnDeactivation = false;
                 ColorDialog dialog = new ColorDialog(Display.getCurrent().getActiveShell());
                 dialog.setRGB(FigureUtilities.integerToRGB(getPreviousColor()));
                 WindowUtil.centerDialog(dialog.getParent(), Display.getCurrent().getActiveShell());
@@ -242,16 +234,21 @@ public class ColorPalettePopup {
                 if (returnedSelectedColor != null) { // case of cancel
                     selectedColor = dialog.getRGB();
                 }
-                shell.dispose();
+                dispose();
 
             }
         });
-        // close dialog if user selects outside of the shell
+        // Hide dialog if user clicks on "Custom..." button or dispose it if user selects outside of the shell (without
+        // clicking on any button)
         shell.addListener(SWT.Deactivate, new Listener() {
 
             @Override
             public void handleEvent(Event e) {
-                shell.setVisible(false);
+                if (shouldBeDisposedOnDeactivation) {
+                    dispose();
+                } else {
+                    shell.setVisible(false);
+                }
             }
         });
         customColorButton = moreColors;
@@ -335,5 +332,17 @@ public class ColorPalettePopup {
      */
     public void setPreviousColor(int previousColor) {
         this.previousColor = previousColor;
+    }
+
+    /**
+     * Dispose the popup.
+     */
+    public void dispose() {
+        // Dispose all SWT Buttons
+        buttonMap.values().forEach(b -> b.dispose());
+        // Clear the map
+        buttonMap.clear();
+        // Dispose the associated shell
+        shell.dispose();
     }
 }
