@@ -13,11 +13,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.elk;
 
+import static java.util.stream.Collectors.toList;
+
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -229,6 +232,10 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
      */
     private static final int PRIORITY_DIRECTION_SPLIT_EDGE_VALUE = 10;
 
+    /**
+     * A comparator to sort in first edges that are used as source or target by another edges.
+     */
+    private static final EdgeEditPartComparator CONNECTION_COMPARATOR = new EdgeEditPartComparator();
 
     @Inject
     private IEditPartFilter editPartFilter;
@@ -1505,7 +1512,8 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
     protected void processConnections(final LayoutMapping mapping, Map<LayoutOptionTarget, Set<LayoutOption>> elkTargetToOptionsOverrideMap) {
         Map<EReference, ElkEdge> reference2EdgeMap = new HashMap<>();
 
-        for (ConnectionEditPart connection : mapping.getProperty(CONNECTIONS)) {
+        List<ConnectionEditPart> connections = mapping.getProperty(CONNECTIONS).stream().sorted(CONNECTION_COMPARATOR).collect(toList());
+        for (ConnectionEditPart connection : connections) {
             boolean isOppositeEdge = false;
             Optional<EdgeLabelPlacement> edgeLabelPlacement = Optional.empty();
             ElkEdge edge;
@@ -1922,5 +1930,38 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
         } else {
             return null;
         }
+    }
+
+    /**
+     * Comparator of {@link ConnectionEditPart}s that will sort connections by dependency. The less dependent are first.
+     * It aims to avoid processing a connection if the {@link ConnectionEditPart#getSource()} and
+     * {@link ConnectionEditPart#getTarget()} have not be processed yet.
+     */
+    private static class EdgeEditPartComparator implements Comparator<ConnectionEditPart> {
+
+        @Override
+        public int compare(ConnectionEditPart o1, ConnectionEditPart o2) {
+
+            EditPart source1 = o1.getSource();
+            EditPart source2 = o2.getSource();
+            EditPart target1 = o1.getTarget();
+            EditPart target2 = o2.getTarget();
+
+            if (o2 == source1 || o2 == target1) {
+                return 1;
+            } else if (o1 == source2 || o1 == target2) {
+                return -1;
+            } else if (isTargetingEdge(o1) && !isTargetingEdge(o2)) {
+                return 1;
+            } else if (!isTargetingEdge(o1) && isTargetingEdge(o2)) {
+                return -1;
+            }
+            return 0;
+        }
+
+        private boolean isTargetingEdge(ConnectionEditPart part) {
+            return part.getSource() instanceof ConnectionEditPart || part.getTarget() instanceof ConnectionEditPart;
+        }
+
     }
 }
