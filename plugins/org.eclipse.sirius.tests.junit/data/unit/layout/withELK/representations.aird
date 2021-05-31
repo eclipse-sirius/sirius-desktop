@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_-CmScJjZEemHnMaPJFLfQA" selectedViews="_tX8dkJjaEemHnMaPJFLfQA" version="14.3.1.202003261200">
+  <viewpoint:DAnalysis uid="_-CmScJjZEemHnMaPJFLfQA" selectedViews="_tX8dkJjaEemHnMaPJFLfQA" version="14.5.0.202104161500">
     <semanticResources>My.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_tX8dkJjaEemHnMaPJFLfQA">
       <viewpoint xmi:type="description:Viewpoint" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']"/>
@@ -84,11 +84,11 @@
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramWithLabelOnBorderOfContainer']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//resetOriginCases/p11"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ScRFMIsxEeuorewaJNbjRw" name="diagramEdgeOnEdge_subClasses for simpleEdgeOnEdge" repPath="#_ScP3EIsxEeuorewaJNbjRw" changeId="c3cdb9f5-fbff-4e26-b2b8-04ae9fbc14ff">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ScRFMIsxEeuorewaJNbjRw" name="diagramEdgeOnEdge_subClasses for simpleEdgeOnEdge" repPath="#_ScP3EIsxEeuorewaJNbjRw" changeId="d552ad80-8450-4ce5-9275-2e29d6aa7f4f">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClasses']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//simpleEdgeOnEdge"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Ueie8IsxEeuorewaJNbjRw" name="diagramEdgeOnEdge_subClassesReverse for simpleEdgeOnEdge" repPath="#_UehQ0IsxEeuorewaJNbjRw" changeId="8ddc3915-ed66-4b79-8de0-489ca4cd4419">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Ueie8IsxEeuorewaJNbjRw" name="diagramEdgeOnEdge_subClassesReverse for simpleEdgeOnEdge" repPath="#_UehQ0IsxEeuorewaJNbjRw" changeId="e6c5fcf5-a4e2-4b01-8268-ee2fd8734064">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//simpleEdgeOnEdge"/>
       </ownedRepresentationDescriptors>
@@ -123,6 +123,10 @@
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_3YERQIvvEeu-V9896WqlTA" name="diagramEdgeOnEdge_withPackageWithOpAtRootReverse for levels1EdgeOnEdge" repPath="#_3YDqMIvvEeu-V9896WqlTA" changeId="db15bc31-c21f-473c-9e48-1c7f90780c16">
         <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_withPackageWithOpAtRootReverse']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//levels1EdgeOnEdge"/>
+      </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_3FvUQMIrEeuu39_9v37X7w" name="diagramEdgeOnEdge_subClassesReverse_nodeOrderReverse for simpleEdgeOnEdge" repPath="#_3FutMMIrEeuu39_9v37X7w" changeId="bc5b5a72-156b-4a82-8bde-9c35baf20b0c">
+        <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//simpleEdgeOnEdge"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
@@ -4674,7 +4678,7 @@
       <semanticElements xmi:type="ecore:EReference" href="My.ecore#//simpleEdgeOnEdge/C1/toC7"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_ScUIgYsxEeuorewaJNbjRw" size="2">
         <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClasses']/@defaultLayer/@edgeMappings[name='References']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_ScUIgosxEeuorewaJNbjRw" labelSize="12"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_ScUIgosxEeuorewaJNbjRw" labelSize="12" showIcon="false"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClasses']/@defaultLayer/@edgeMappings[name='References']"/>
     </ownedDiagramElements>
@@ -4683,7 +4687,7 @@
       <semanticElements xmi:type="ecore:EOperation" href="My.ecore#//simpleEdgeOnEdge/C1/op1"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_ScVWoYsxEeuorewaJNbjRw" size="2">
         <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClasses']/@defaultLayer/@edgeMappings[name='OpToRef']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_ScVWoosxEeuorewaJNbjRw" labelSize="12"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_ScVWoosxEeuorewaJNbjRw" labelSize="12" showIcon="false"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClasses']/@defaultLayer/@edgeMappings[name='OpToRef']"/>
     </ownedDiagramElements>
@@ -4795,7 +4799,7 @@
       <semanticElements xmi:type="ecore:EReference" href="My.ecore#//simpleEdgeOnEdge/C1/toC7"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_UekUIYsxEeuorewaJNbjRw" size="2">
         <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse']/@defaultLayer/@edgeMappings[name='References']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_UekUIosxEeuorewaJNbjRw" labelSize="12"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_UekUIosxEeuorewaJNbjRw" labelSize="12" showIcon="false"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse']/@defaultLayer/@edgeMappings[name='References']"/>
     </ownedDiagramElements>
@@ -4804,7 +4808,7 @@
       <semanticElements xmi:type="ecore:EOperation" href="My.ecore#//simpleEdgeOnEdge/C1/op1"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Uek7MYsxEeuorewaJNbjRw" size="2">
         <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse']/@defaultLayer/@edgeMappings[name='OpToRef']/@style"/>
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_Uek7MosxEeuorewaJNbjRw" labelSize="12"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_Uek7MosxEeuorewaJNbjRw" labelSize="12" showIcon="false"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse']/@defaultLayer/@edgeMappings[name='OpToRef']"/>
     </ownedDiagramElements>
@@ -7531,5 +7535,120 @@
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_3YDqMYvvEeu-V9896WqlTA"/>
     <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_withPackageWithOpAtRootReverse']/@defaultLayer"/>
     <target xmi:type="ecore:EPackage" href="My.ecore#//levels1EdgeOnEdge"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_3FutMMIrEeuu39_9v37X7w">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_3Fv7UMIrEeuu39_9v37X7w" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_3Fv7UcIrEeuu39_9v37X7w" type="Sirius" element="_3FutMMIrEeuu39_9v37X7w" measurementUnit="Pixel">
+        <children xmi:type="notation:Node" xmi:id="_3Fy-oMIrEeuu39_9v37X7w" type="2002" element="_3FwiYMIrEeuu39_9v37X7w">
+          <children xmi:type="notation:Node" xmi:id="_3Fy-o8IrEeuu39_9v37X7w" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_3FzlsMIrEeuu39_9v37X7w" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_3FzlscIrEeuu39_9v37X7w"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_3FzlssIrEeuu39_9v37X7w"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_3Fy-ocIrEeuu39_9v37X7w" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_455ZgMIrEeuu39_9v37X7w" x="430" y="15" width="146" height="66"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_3Fzls8IrEeuu39_9v37X7w" type="2002" element="_3FwiY8IrEeuu39_9v37X7w">
+          <children xmi:type="notation:Node" xmi:id="_3FzltsIrEeuu39_9v37X7w" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_3Fzlt8IrEeuu39_9v37X7w" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_3FzluMIrEeuu39_9v37X7w"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_3FzlucIrEeuu39_9v37X7w"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_3FzltMIrEeuu39_9v37X7w" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_455ZgcIrEeuu39_9v37X7w" x="40" y="104" width="146" height="66"/>
+        </children>
+        <children xmi:type="notation:Node" xmi:id="_3FzlusIrEeuu39_9v37X7w" type="2002" element="_3FwiZsIrEeuu39_9v37X7w">
+          <children xmi:type="notation:Node" xmi:id="_3FzlvcIrEeuu39_9v37X7w" type="5006"/>
+          <children xmi:type="notation:Node" xmi:id="_3FzlvsIrEeuu39_9v37X7w" type="7001">
+            <styles xmi:type="notation:SortingStyle" xmi:id="_3Fzlv8IrEeuu39_9v37X7w"/>
+            <styles xmi:type="notation:FilteringStyle" xmi:id="_3FzlwMIrEeuu39_9v37X7w"/>
+          </children>
+          <styles xmi:type="notation:ShapeStyle" xmi:id="_3Fzlu8IrEeuu39_9v37X7w" fontName="Segoe UI" fontHeight="12"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_456AkMIrEeuu39_9v37X7w" x="265" y="104" width="146" height="66"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_3Fv7UsIrEeuu39_9v37X7w"/>
+        <edges xmi:type="notation:Edge" xmi:id="_3F0MwMIrEeuu39_9v37X7w" type="4001" element="_3FxJcsIrEeuu39_9v37X7w" source="_3Fzls8IrEeuu39_9v37X7w" target="_3FzlusIrEeuu39_9v37X7w">
+          <children xmi:type="notation:Node" xmi:id="_3F0MxMIrEeuu39_9v37X7w" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_455ZgsIrEeuu39_9v37X7w" x="5" y="-11"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_3F0MxsIrEeuu39_9v37X7w" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3F0Mx8IrEeuu39_9v37X7w" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_3F0MyMIrEeuu39_9v37X7w" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3F0MycIrEeuu39_9v37X7w" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_3F0MwcIrEeuu39_9v37X7w"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_3F0MwsIrEeuu39_9v37X7w" fontName="Segoe UI" fontHeight="12"/>
+          <styles xmi:type="notation:StringValueStyle" xmi:id="_3K4S8MIrEeuu39_9v37X7w" name="junctionPoints" stringValue="()"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_3F0Mw8IrEeuu39_9v37X7w" points="[17, 32, -136, 32]$[83, 149, -70, 149]$[428, 134, 275, 134]$[388, 9, 235, 9]$[297, 9, 144, 9]"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_3F0My8IrEeuu39_9v37X7w" id="(0.0,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_3F0MzMIrEeuu39_9v37X7w" type="4001" element="_3FyXkMIrEeuu39_9v37X7w" source="_3F0MwMIrEeuu39_9v37X7w" target="_3Fy-oMIrEeuu39_9v37X7w">
+          <children xmi:type="notation:Node" xmi:id="_3F0M0MIrEeuu39_9v37X7w" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3F0M0cIrEeuu39_9v37X7w" x="4" y="-11"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_3F0M0sIrEeuu39_9v37X7w" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3F0M08IrEeuu39_9v37X7w" x="-2" y="8"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_3F0M1MIrEeuu39_9v37X7w" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_3F0M1cIrEeuu39_9v37X7w" x="-3" y="8"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_3F0MzcIrEeuu39_9v37X7w"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_3F0MzsIrEeuu39_9v37X7w" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_3F0Mz8IrEeuu39_9v37X7w" points="[5, -15, -43, 98]$[34, -81, -14, 32]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_3F0z0MIrEeuu39_9v37X7w" id="(0.7895927601809954,0.10919540229885058)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_3F0z0cIrEeuu39_9v37X7w" id="(0.5,0.5)"/>
+        </edges>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_3FyXlcIrEeuu39_9v37X7w" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_3FyXlsIrEeuu39_9v37X7w"/>
+    </ownedAnnotationEntries>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_3FwiYMIrEeuu39_9v37X7w" name="op1" incomingEdges="_3FyXkMIrEeuu39_9v37X7w">
+      <target xmi:type="ecore:EOperation" href="My.ecore#//simpleEdgeOnEdge/C1/op1"/>
+      <semanticElements xmi:type="ecore:EOperation" href="My.ecore#//simpleEdgeOnEdge/C1/op1"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_3FwiYcIrEeuu39_9v37X7w" labelSize="12" borderSize="1" borderSizeComputationExpression="1" backgroundColor="204,242,166" foregroundColor="204,242,166">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@containerMappings[name='Operations']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@containerMappings[name='Operations']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_3FwiY8IrEeuu39_9v37X7w" name="C1" outgoingEdges="_3FxJcsIrEeuu39_9v37X7w">
+      <target xmi:type="ecore:EClass" href="My.ecore#//simpleEdgeOnEdge/C1"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//simpleEdgeOnEdge/C1"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_3FwiZMIrEeuu39_9v37X7w" labelSize="12" borderSize="1" borderSizeComputationExpression="1" backgroundColor="194,239,255" foregroundColor="194,239,255">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@containerMappings[name='Classes']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@containerMappings[name='Classes']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_3FwiZsIrEeuu39_9v37X7w" name="C2" incomingEdges="_3FxJcsIrEeuu39_9v37X7w">
+      <target xmi:type="ecore:EClass" href="My.ecore#//simpleEdgeOnEdge/C2"/>
+      <semanticElements xmi:type="ecore:EClass" href="My.ecore#//simpleEdgeOnEdge/C2"/>
+      <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_3FxJcMIrEeuu39_9v37X7w" labelSize="12" borderSize="1" borderSizeComputationExpression="1" backgroundColor="194,239,255" foregroundColor="194,239,255">
+        <description xmi:type="style:FlatContainerStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@containerMappings[name='Classes']/@style"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:ContainerMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@containerMappings[name='Classes']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_3FxJcsIrEeuu39_9v37X7w" outgoingEdges="_3FyXkMIrEeuu39_9v37X7w" sourceNode="_3FwiY8IrEeuu39_9v37X7w" targetNode="_3FwiZsIrEeuu39_9v37X7w">
+      <target xmi:type="ecore:EReference" href="My.ecore#//simpleEdgeOnEdge/C1/toC7"/>
+      <semanticElements xmi:type="ecore:EReference" href="My.ecore#//simpleEdgeOnEdge/C1/toC7"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_3FxJc8IrEeuu39_9v37X7w" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@edgeMappings[name='References']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_3FxJdMIrEeuu39_9v37X7w" labelSize="12" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@edgeMappings[name='References']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" uid="_3FyXkMIrEeuu39_9v37X7w" sourceNode="_3FxJcsIrEeuu39_9v37X7w" targetNode="_3FwiYMIrEeuu39_9v37X7w">
+      <target xmi:type="ecore:EOperation" href="My.ecore#//simpleEdgeOnEdge/C1/op1"/>
+      <semanticElements xmi:type="ecore:EOperation" href="My.ecore#//simpleEdgeOnEdge/C1/op1"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" uid="_3FyXkcIrEeuu39_9v37X7w" size="2">
+        <description xmi:type="style:EdgeStyleDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@edgeMappings[name='OpToRef']/@style"/>
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_3FyXksIrEeuu39_9v37X7w" labelSize="12" showIcon="false"/>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@edgeMappings[name='OpToRef']"/>
+    </ownedDiagramElements>
+    <description xmi:type="description_1:DiagramDescription" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_3FutMcIrEeuu39_9v37X7w"/>
+    <activatedLayers xmi:type="description_1:Layer" href="My.odesign#//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#//simpleEdgeOnEdge"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>
