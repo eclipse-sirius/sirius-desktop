@@ -1712,6 +1712,23 @@ public class SimpleELKLayoutTest extends SiriusDiagramTestCase {
         checkEdgeWithEdgeAsSource("op4", targetConnection, 5);
         checkEdgeWithEdgeAsSource("op5", targetConnection, 5);
     }
+
+    /**
+     * Makes sure that the result of an arrange containing an edge on edge respect the following rules:
+     * <UL>
+     * <LI>The top left corner of the bounding box is {20, 20}</LI>
+     * <LI>The main edge from C1 to C2 is a straight line (2 points on the same y axis)</LI>
+     * <LI>The edge on edge, from other edge to op1, has 2 sections, and its start point is the only point on the main
+     * edge</LI>
+     * <UL>
+     */
+    public void testArrangeAll_edgeOnEdge_nodeMappingOrderReversed() {
+        testArrangeAllResult_ForPackageResetOrigin("diagramEdgeOnEdge_subClassesReverse_nodeOrderReverse for simpleEdgeOnEdge");
+        DEdgeEditPart sourceEdgeEditPart = checkEdge("C1", "C2", true);
+        Connection sourceConnection = sourceEdgeEditPart.getConnectionFigure();
+        checkEdgeWithEdgeAsSource("op1", sourceConnection, 3);
+    }
+
     /**
      * Makes sure that no diagram element are not in the margin area of {20x20}.<BR/>
      * This method should be used for diagram on the package "resetOriginCases".

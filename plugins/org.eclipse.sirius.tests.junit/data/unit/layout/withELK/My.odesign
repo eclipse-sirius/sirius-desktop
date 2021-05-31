@@ -1191,5 +1191,90 @@
         </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse" titleExpression="aql:'new DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse for '.concat(self.name)" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <layout xsi:type="description_1:CustomLayoutConfiguration" id="org.eclipse.elk.layered" label="ELK Layered" description="Layer-based algorithm provided by the Eclipse Layout Kernel. Arranges as many edges as possible into one direction by placing nodes into subsequent layers. This implementation supports different routing styles (straight, orthogonal, splines); if orthogonal routing is selected, arbitrary port constraints are respected, thus enabling the layout of block diagrams such as actor-oriented models or circuit schematics. Furthermore, full layout of compound graphs with cross-hierarchy edges is supported when the respective option is activated on the top level.">
+        <layoutOptions xsi:type="description_1:EnumLayoutOption" id="org.eclipse.elk.direction">
+          <targets>PARENT</targets>
+          <value name="RIGHT"/>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:EnumLayoutOption" id="org.eclipse.elk.hierarchyHandling">
+          <targets>PARENT</targets>
+          <targets>NODE</targets>
+          <value name="INCLUDE_CHILDREN"/>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.nodeNodeBetweenLayers" value="50.0">
+          <targets>PARENT</targets>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.edgeEdgeBetweenLayers" value="20.0">
+          <targets>PARENT</targets>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:DoubleLayoutOption" id="org.eclipse.elk.layered.spacing.edgeNodeBetweenLayers" value="20.0">
+          <targets>PARENT</targets>
+        </layoutOptions>
+        <layoutOptions xsi:type="description_1:EnumLayoutOption" id="org.eclipse.elk.layered.nodePlacement.strategy">
+          <targets>PARENT</targets>
+          <value name="NETWORK_SIMPLEX"/>
+        </layoutOptions>
+      </layout>
+      <defaultLayer name="Default">
+        <edgeMappings name="SuperTypesAndRef" sourceMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@containerMappings[name='Classes']" targetMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@edgeMappings[name='References']" targetFinderExpression="aql:self.eReferences->select(ref | self.eSuperTypes->includes(ref.eType))">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="References" sourceMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@containerMappings[name='Classes']" targetMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@containerMappings[name='Classes']" targetFinderExpression="feature:eType" sourceFinderExpression="feature:eContainer" domainClass="ecore::EReference" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ParamToOp" sourceMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@containerMappings[name='Parameters']" targetMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@edgeMappings[name='OpToRef']" targetFinderExpression="aql:self.eContainer()">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="OpToRef" sourceMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@edgeMappings[name='References']" targetMapping="//@ownedViewpoints[name='ElkTestViewpoint']/@ownedRepresentations[name='DiagramEdgeOnEdge_subClassesReverse_nodeOrderReverse']/@defaultLayer/@containerMappings[name='Operations']" targetFinderExpression="aql:self" sourceFinderExpression="aql:self.eContainer().eReferences->select(ref | ref.eType = self.eType))" domainClass="ecore::EOperation" useDomainElement="true">
+          <style sizeComputationExpression="2">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
+            <centerLabelStyleDescription labelSize="12" showIcon="false">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="Operations" semanticCandidatesExpression="aql:self.eClassifiers->filter(ecore::EClass).eOperations" domainClass="ecore::EOperation">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="Classes" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore::EClass">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="Parameters" semanticCandidatesExpression="aql:self.eClassifiers->filter(ecore::EClass).eOperations.eParameters" domainClass="ecore::EParameter">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
   </ownedViewpoints>
 </description:Group>
