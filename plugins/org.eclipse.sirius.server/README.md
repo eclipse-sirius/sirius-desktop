@@ -206,13 +206,13 @@ osgi> ss org.eclipse.sirius.server
 
 
 id	State       Bundle
-1860	ACTIVE      org.eclipse.sirius.server_6.5.0.qualifier
-1861	STARTING    org.eclipse.sirius.server.application_6.5.0.qualifier
-1862	ACTIVE      org.eclipse.sirius.server.backend_6.5.0.qualifier
-1863	ACTIVE      org.eclipse.sirius.server.diagram_6.5.0.qualifier
-1864	ACTIVE      org.eclipse.sirius.server.frontend_6.5.0.qualifier
-1865	ACTIVE      org.eclipse.sirius.server.graphql_6.5.0.qualifier
-1866	ACTIVE      org.eclipse.sirius.server.images_6.5.0.qualifier
+1860	ACTIVE      org.eclipse.sirius.server_7.0.0.qualifier
+1861	STARTING    org.eclipse.sirius.server.application_7.0.0.qualifier
+1862	ACTIVE      org.eclipse.sirius.server.backend_7.0.0.qualifier
+1863	ACTIVE      org.eclipse.sirius.server.diagram_7.0.0.qualifier
+1864	ACTIVE      org.eclipse.sirius.server.frontend_7.0.0.qualifier
+1865	ACTIVE      org.eclipse.sirius.server.graphql_7.0.0.qualifier
+1866	ACTIVE      org.eclipse.sirius.server.images_7.0.0.qualifier
 ```
 
 You can see the components matching the given scope, their id and their state.
