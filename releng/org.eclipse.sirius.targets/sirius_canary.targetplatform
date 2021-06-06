@@ -62,7 +62,7 @@ location GEF-Legacy-3.11 "https://download.eclipse.org/tools/gef/updates/legacy/
 }
 
 // We can not depend on the actual latest SWTbot build, it has too many API breaks compared to our reference version
-include "modules/swtbot-2.8.tpd"
+include "modules/swtbot-3.0.tpd"
 
 location EMF-Nightly "https://download.eclipse.org/modeling/emf/emf/builds/nightly/latest" {
 	org.eclipse.emf.feature.group lazy
