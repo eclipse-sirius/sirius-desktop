@@ -142,6 +142,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.MigrationOfHideLabelFilte
 import org.eclipse.sirius.tests.unit.diagram.migration.MigrationRoutingStyleEndUserOverrideTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.NoteAttachmentMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.NoteShapeDefaultLabelAlignmentMigrationTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.NoteShapeDefaultLabelAlignmentMigrationTest2;
 import org.eclipse.sirius.tests.unit.diagram.migration.OptionalLayerToAdditionalLayerMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.ReferencedModelResourceMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RemoveAcceleoReferencesMigrationTest;
@@ -239,6 +240,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(ChangeIdAPIForMigrationTest.class);
         suite.addTestSuite(RgbValuesEDataTypeMigrationTest.class);
         suite.addTestSuite(NoteShapeDefaultLabelAlignmentMigrationTest.class);
+        suite.addTestSuite(NoteShapeDefaultLabelAlignmentMigrationTest2.class);
         suite.addTestSuite(SnapBackDistantLabelsMigrationTest.class);
         suite.addTestSuite(ConvertViewpointModelingProjectToSiriusModelingProjectTest.class);
         suite.addTestSuite(FontFormatMigrationTest.class);

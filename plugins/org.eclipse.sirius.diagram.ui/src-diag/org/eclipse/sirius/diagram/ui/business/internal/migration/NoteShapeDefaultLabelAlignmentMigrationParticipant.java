@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -37,21 +37,24 @@ import com.google.common.collect.Iterables;
 /**
  * Default label alignment of Note's shapes have been updated in GMF runtime 1.8.0 (see
  * https://bugs.eclipse.org/bugs/show_bug.cgi?id=432387). This migration participant restores the old default alignment
- * value.
+ * value.<BR>
+ * 
+ * @since 6.5.1 In a collaborative environment, there is a regression in Sirius 6.3.2. So this migration has been
+ *        modified to also cover the new case. The migration version has been updated.
  * 
  * @see org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusDescriptionCompartmentEditPart
  * @see org.eclipse.sirius.diagram.ui.internal.providers.SiriusNoteViewProvider
  * @see org.eclipse.sirius.diagram.ui.internal.view.factories.SiriusNoteViewFactory
  * 
  * @author <a href="mailto:axel.richard@obeo.fr">Axel Richard</a>
- * 
+ * @author Laurent Redor
  */
 public class NoteShapeDefaultLabelAlignmentMigrationParticipant extends AbstractRepresentationsFileMigrationParticipant {
 
     /**
      * The Sirius version for which this migration is added.
      */
-    private static final Version MIGRATION_VERSION = new Version("12.0.0.201704070000"); //$NON-NLS-1$
+    private static final Version MIGRATION_VERSION = new Version("14.5.1.202106111100"); //$NON-NLS-1$
 
     @Override
     public Version getMigrationVersion() {
@@ -71,8 +74,11 @@ public class NoteShapeDefaultLabelAlignmentMigrationParticipant extends Abstract
                             textStyle.setTextAlignment(TextAlignment.CENTER_LITERAL);
                         }
                     }
+                    // Check that this specific style has the vertical alignment defined (potential regression since
+                    // Sirius 6.3.2).
+                } else if (!SiriusNoteViewFactory.hasDefaultVerticalAlignment(specificStyles)) {
+                    SiriusNoteViewFactory.addDefaultVerticalAlignment(specificStyles);
                 }
-
             }
         }
     }
