@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -46,13 +46,15 @@ import com.google.common.collect.UnmodifiableIterator;
  */
 public class NoteShapeDefaultLabelAlignmentMigrationTest extends SiriusTestCase {
 
-    private static final String PATH = "data/unit/migration/do_not_migrate/noteAttachmentAlignment/";
-
     private static final String SESSION_RESOURCE_NAME = "noteAttachmentAlignment.aird";
 
     private static final String SEMANTIC_RESOURCE_NAME = "noteAttachmentAlignment.ecore";
 
     private static final String VSM_RESOURCE_NAME = "noteAttachmentAlignment.odesign";
+
+    protected String dataPath = "data/unit/migration/do_not_migrate/noteAttachmentAlignment/";
+
+    protected String errorMessage = "One note should be found in this session to check the migration of a Note with the problem of bugzilla 515044.";
 
     private Resource sessionResource;
 
@@ -65,7 +67,7 @@ public class NoteShapeDefaultLabelAlignmentMigrationTest extends SiriusTestCase 
     protected void setUp() throws Exception {
         super.setUp();
         genericSetUp();
-        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, PATH, SESSION_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME, VSM_RESOURCE_NAME);
+        copyFilesToTestProject(SiriusTestsPlugin.PLUGIN_ID, dataPath, SESSION_RESOURCE_NAME, SEMANTIC_RESOURCE_NAME, VSM_RESOURCE_NAME);
         URI sessionResourceURI = URI.createPlatformResourceURI(SiriusTestCase.TEMPORARY_PROJECT_NAME + "/" + SESSION_RESOURCE_NAME, true);
         ResourceSet resourceSet = new ResourceSetImpl();
         sessionResource = resourceSet.getResource(sessionResourceURI, true);
@@ -90,7 +92,9 @@ public class NoteShapeDefaultLabelAlignmentMigrationTest extends SiriusTestCase 
     public void testNoteShapeAlignmentAfterMigration() {
         TreeIterator<EObject> allContents = sessionResource.getAllContents();
         UnmodifiableIterator<EObject> shapes = Iterators.filter(allContents, input -> input instanceof Shape && ViewType.NOTE.equals(((Shape) input).getType()));
-        if (shapes.hasNext()) {
+        int nbTestedShapes = 0;
+        while (shapes.hasNext()) {
+            nbTestedShapes++;
             Shape note = (Shape) shapes.next();
             Iterable<TextStyle> textStyles = Iterables.filter(note.getStyles(), TextStyle.class);
             assertEquals("The text style must be defined on the view for the note", 1, Iterables.size(textStyles));
@@ -102,9 +106,7 @@ public class NoteShapeDefaultLabelAlignmentMigrationTest extends SiriusTestCase 
             Entry<String, String> entry = details.iterator().next();
             assertSame("The eAnnotation detail for the vertical alignment is missing", ViewQuery.VERTICAL_ALIGNMENT, entry.getKey());
             assertEquals("The vertical alignment of the note should be set to TOP", String.valueOf(PositionConstants.TOP), entry.getValue());
-            assertFalse("Only one Note should be found in this session", shapes.hasNext());
-        } else {
-            assertTrue("A Note should be found in this session", false);
         }
+        assertEquals(errorMessage, 1, nbTestedShapes);
     }
 }

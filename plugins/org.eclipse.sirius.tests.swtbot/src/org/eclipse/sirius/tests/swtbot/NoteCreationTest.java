@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,10 +18,12 @@ import java.util.List;
 
 import org.eclipse.draw2d.Border;
 import org.eclipse.draw2d.IFigure;
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Insets;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.draw2d.text.FlowPage;
+import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.edit.domain.AdapterFactoryEditingDomain;
 import org.eclipse.emf.edit.provider.IItemLabelProvider;
@@ -31,10 +33,14 @@ import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.NoteEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.figures.NoteFigure;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel;
+import org.eclipse.gmf.runtime.notation.Shape;
+import org.eclipse.gmf.runtime.notation.TextAlignment;
+import org.eclipse.gmf.runtime.notation.TextStyle;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.DeleteRepresentationCommand;
 import org.eclipse.sirius.business.api.dialect.command.RenameRepresentationCommand;
 import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeList2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.SiriusDescriptionCompartmentEditPart;
@@ -62,6 +68,8 @@ import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.ui.PartInitException;
+
+import com.google.common.collect.Iterables;
 
 /**
  * Test class for double click tool and navigation operation.
@@ -596,9 +604,19 @@ public class NoteCreationTest extends AbstractSiriusSwtBotGefTestCase {
 
         assertTrue(editor.selectedEditParts().size() == 1);
 
-        if (link != null) {
+        SWTBotGefEditPart note = editor.selectedEditParts().get(0);
+        // Check alignment stored in GMF model
+        Shape gefNoteShape = (Shape) note.part().getModel();
+        Iterable<TextStyle> textStyles = Iterables.filter(gefNoteShape.getStyles(), TextStyle.class);
+        assertEquals("The text style must be defined on the view for the gefNoteShape", 1, Iterables.size(textStyles));
+        assertSame("The text style must be center aligned for the note", TextAlignment.CENTER_LITERAL, textStyles.iterator().next().getTextAlignment());
+        EAnnotation specificStyles = gefNoteShape.getEAnnotation(ViewQuery.SPECIFIC_STYLES);
+        assertNotNull("The note should have an eAnnotation for the vertical alignment", specificStyles);
+        specificStyles.getDetails().stream().anyMatch(entry -> entry.getKey().equals(ViewQuery.VERTICAL_ALIGNMENT));
+        assertTrue("The eAnnotation detail for the vertical alignment is missing",
+                specificStyles.getDetails().stream().anyMatch(entry -> ViewQuery.VERTICAL_ALIGNMENT.equals(entry.getKey()) && String.valueOf(PositionConstants.TOP).equals(entry.getValue())));
 
-            SWTBotGefEditPart note = editor.selectedEditParts().get(0);
+        if (link != null) {
 
             validateDiagramNameCompartment(note, link.getName(), getIcon(link));
 

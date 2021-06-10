@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description">
+  <viewpoint:DAnalysis uid="_k7WwEebREeaOa_5yitWewA" selectedViews="_jkvtAObSEeaOa_5yitWewA" version="14.5.0.202104161500">
+    <semanticResources>noteAttachmentAlignment.ecore</semanticResources>
+    <ownedViews xmi:type="viewpoint:DView" uid="_jkvtAObSEeaOa_5yitWewA">
+      <viewpoint xmi:type="description:Viewpoint" href="noteAttachmentAlignment.odesign#//@ownedViewpoints[name='MyViewpoint']"/>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_1md08BVUEeeX-9J1yKditQ" name="new ClassDiag" repPath="#_1mecABVUEeeX-9J1yKditQ" changeId="75e78830-111e-46dd-8319-059c93cb2e3c">
+        <description xmi:type="description_1:DiagramDescription" href="noteAttachmentAlignment.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='ClassDiag']"/>
+        <target xmi:type="ecore:EPackage" href="noteAttachmentAlignment.ecore#/"/>
+      </ownedRepresentationDescriptors>
+    </ownedViews>
+  </viewpoint:DAnalysis>
+  <diagram:DSemanticDiagram uid="_1mecABVUEeeX-9J1yKditQ">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_1mecARVUEeeX-9J1yKditQ" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_1mecAhVUEeeX-9J1yKditQ"/>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_1mmX0BVUEeeX-9J1yKditQ" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_1mmX0RVUEeeX-9J1yKditQ" type="Sirius" element="_1mecABVUEeeX-9J1yKditQ" measurementUnit="Pixel">
+        <children xmi:type="notation:Shape" xmi:id="_2SWDgBVUEeeX-9J1yKditQ" type="Note" fontName="Segoe UI" description="Text2" fillColor="13369343" transparency="0" lineColor="6737151" lineWidth="1">
+          <eAnnotations xmi:type="ecore:EAnnotation" xmi:id="_dnXWYMqEEeuH8KT3tnBg5g" source="specificStyles"/>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_2SXRoBVUEeeX-9J1yKditQ" type="DiagramName">
+            <element xsi:nil="true"/>
+          </children>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_2SXRoRVUEeeX-9J1yKditQ" type="Description">
+            <element xsi:nil="true"/>
+          </children>
+          <styles xmi:type="notation:TextStyle" xmi:id="_2SWDgRVUEeeX-9J1yKditQ" textAlignment="Center"/>
+          <styles xmi:type="notation:LineTypeStyle" xmi:id="_2SWDghVUEeeX-9J1yKditQ"/>
+          <element xsi:nil="true"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2SWDgxVUEeeX-9J1yKditQ" x="160" y="80" width="261" height="196"/>
+        </children>
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_1mmX0hVUEeeX-9J1yKditQ"/>
+      </data>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="noteAttachmentAlignment.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='ClassDiag']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_1mecAxVUEeeX-9J1yKditQ"/>
+    <activatedLayers xmi:type="description_1:Layer" href="noteAttachmentAlignment.odesign#//@ownedViewpoints[name='MyViewpoint']/@ownedRepresentations[name='ClassDiag']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="noteAttachmentAlignment.ecore#/"/>
+  </diagram:DSemanticDiagram>
+</xmi:XMI>

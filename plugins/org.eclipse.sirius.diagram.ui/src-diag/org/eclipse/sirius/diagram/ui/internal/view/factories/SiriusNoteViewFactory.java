@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.ui.internal.view.factories;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.draw2d.PositionConstants;
@@ -22,7 +23,6 @@ import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.EcorePackage;
-import org.eclipse.emf.ecore.impl.EStringToStringMapEntryImpl;
 import org.eclipse.gmf.runtime.diagram.ui.view.factories.NoteViewFactory;
 import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.TextAlignment;
@@ -53,13 +53,23 @@ public class SiriusNoteViewFactory extends NoteViewFactory {
     public static EAnnotation createDefaultVerticalAlignmentEAnnotation() {
         EAnnotation specificStyles = EcoreFactory.eINSTANCE.createEAnnotation();
         specificStyles.setSource(ViewQuery.SPECIFIC_STYLES);
-        EObject defaultVerticalAlignment = EcoreFactory.eINSTANCE.create(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY);
-        if (defaultVerticalAlignment instanceof EStringToStringMapEntryImpl) {
-            ((EStringToStringMapEntryImpl) defaultVerticalAlignment).setKey(ViewQuery.VERTICAL_ALIGNMENT);
-            ((EStringToStringMapEntryImpl) defaultVerticalAlignment).setValue(String.valueOf(PositionConstants.TOP));
-            specificStyles.getDetails().add((EStringToStringMapEntryImpl) defaultVerticalAlignment);
-        }
+        addDefaultVerticalAlignment(specificStyles);
         return specificStyles;
+    }
+
+    public static boolean hasDefaultVerticalAlignment(EAnnotation specificStyles) {
+        return !specificStyles.getDetails().isEmpty() && specificStyles.getDetails().stream().anyMatch(entry -> entry.getKey().equals(ViewQuery.VERTICAL_ALIGNMENT));
+    }
+
+    public static void addDefaultVerticalAlignment(EAnnotation specificStyles) {
+        EObject defaultVerticalAlignment = EcoreFactory.eINSTANCE.create(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY);
+        if (defaultVerticalAlignment instanceof Map.Entry<?, ?>
+                && defaultVerticalAlignment.eClass().getEAttributes().stream().allMatch(att -> String.class.getName().equals(att.getEAttributeType().getInstanceTypeName()))
+                && EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY.equals(defaultVerticalAlignment.eClass())) {
+            defaultVerticalAlignment.eSet(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY__KEY, ViewQuery.VERTICAL_ALIGNMENT);
+            defaultVerticalAlignment.eSet(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY__VALUE, String.valueOf(PositionConstants.TOP));
+            specificStyles.getDetails().add((Map.Entry<String, String>) defaultVerticalAlignment);
+        }
     }
 
     /**
