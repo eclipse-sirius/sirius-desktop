@@ -6,6 +6,12 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius6.6.0). Changes in Sirius 6.6.0
 
+h3. Developer-Visible Changes
+
+h4. Migrations
+
+* <span class="label label-info">Modified</span> The migration participant @org.eclipse.sirius.diagram.ui.business.internal.migration.NoteShapeDefaultLabelAlignmentMigrationParticipant@ has been updated to repair Notes with a potential wrong vertical label alignment. This problem can occur since Sirius 6.3.2 used in a collaborative environment, Obeo Designer Team Edition or Team For Capella for example. The corresponding version, stored in the attribute version of viewpoint:DAnalysis of the aird file, is _14.5.1.202106111100_ (migration added in Sirius 6.5.1).
+
 h2(#sirius6.5.0). Changes in Sirius 6.5.0
 
 h3. User-Visible Changes
