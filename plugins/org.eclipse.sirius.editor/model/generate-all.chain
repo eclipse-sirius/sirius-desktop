@@ -8,6 +8,5 @@
     <actions xsi:type="chain:ChainCall" documentation="org.eclipse.sirius.editor.sequence" chainPath="/org.eclipse.sirius.editor.sequence/model/generate-advance-editor-properties.chain"/>
     <actions xsi:type="chain:ChainCall" documentation="org.eclipse.sirius.editor.table" chainPath="/org.eclipse.sirius.editor.table/model/generate-properties.chain"/>
     <actions xsi:type="chain:ChainCall" documentation="org.eclipse.sirius.editor.tree" chainPath="/org.eclipse.sirius.editor.tree/model/generate-advance-editor-properties.chain"/>
-    <actions xsi:type="chain:ChainCall" documentation="org.eclipse.sirius.editor.workflow" chainPath="/org.eclipse.sirius.editor.workflow/model/generate-advance-editor-properties.chain"/>
   </actions>
 </chain:Chain>

@@ -6,6 +6,11 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius7.0.0). Changes in Sirius 7.0.0
 
+
+* <span class="label label-danger">Removed</span> **The "Workflow" feature** has been removed . Workflow was experimental and to our knowledge not used in practice. This corresponds to the @org.eclipse.sirius.workflow.*@ and @org.eclipse.sirius.editor.workflow@ plug-ins.
+* <span class="label label-danger">Removed</span> **The server parts which supported the Workflow feature** has been removed too. It was our first experiment in moving Sirius to the web, but this is now replaced by the newly published "Sirius Web":https://www.eclipse.org/sirius/sirius-web.html. This corresponds to all the @org.eclipse.sirius.server.*@ plug-ins.
+
+
 h2(#sirius6.6.0). Changes in Sirius 6.6.0
 
 h2(#sirius6.5.0). Changes in Sirius 6.5.0

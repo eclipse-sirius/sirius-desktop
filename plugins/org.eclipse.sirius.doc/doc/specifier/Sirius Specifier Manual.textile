@@ -10,7 +10,6 @@ You will find the following sections:
 ** "*Tables*":tables/Tables.html covers how to specify both edition tables and matrix-like cross-tables.
 ** "*Trees*":trees/Trees.html shows how to create tree-like modelers for a hierarchical view of data.
 ** "*Properties View*":properties/Properties_View_Description.html shows how to define custom properties views for your modelers.
-** "*Workflows*":workflows/Workflows.html (**EXPERIMENTAL**) shows how to define in the aird editor a custom workflow improving usability of your modeling environment.
 * "*Model Operations*":general/Model_Operations.html describes the small language which can be used throughout "_Viewpoint Specification Models_":../Glossary.html#VSM to describe behavior (for example for tools).
 * "*Colors*":general/Colors.html explains how colors can be specified for all kinds of representations.
 * "*Queries and Interpreted Expressions*":general/Writing_Queries.html explains the general rules to follow to write the expressions used inside "_Viewpoint Specification Models_":../Glossary.html#VSM, and the various languages supported.

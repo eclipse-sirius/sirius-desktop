@@ -205,8 +205,6 @@
         <topic href="doc/specifier/properties/Properties_View_Description.html#tab_filtering" label="Tab Filtering"></topic>
       </topic>
     </topic>
-    <topic href="doc/specifier/workflows/Workflows.html" label="Workflows (experimental)">
-    </topic>
     <anchor id="moreSpecifierDialectRefs" />
     <topic href="doc/specifier/general/ToolsSpecification.html" label="Tools Specification" />
     <topic href="doc/specifier/general/Model_Operations.html" label="Model Operations" />

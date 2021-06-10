@@ -1,256 +1,224 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-  <description url="http://www.eclipse.org/sirius">
-    Eclipse Sirius - The easiest way to get your own Modeling Tool.
-  </description>
-  <category-def name="Sirius" label="Sirius">
-    <description>
-      The Sirius Modeling Platform
-    </description>
-  </category-def>
-
-  <feature id="org.eclipse.sirius.runtime" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.aql" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.runtime.aql" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.specifier.properties.feature" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.workflow.feature" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.runtime.ide.ui" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.specifier.ide.ui.aql" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.runtime" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.runtime.acceleo" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.samples" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.server.feature" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.runtime.ide.ui.acceleo" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.specifier" version="0.0.0">
-    <!-- <category name="Sirius" /> -->
-  </feature>
-  <feature id="org.eclipse.sirius.interpreter.feature" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.doc.feature" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.runtime.ide.eef" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.specifier.ide.ui" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.properties.feature" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.samples.properties.feature" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.server.ui.autostart.feature" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.specifier.ide.ui.acceleo" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.server.product.feature" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.runtime.ide.xtext" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.diagram.elk.feature" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-  <feature id="org.eclipse.sirius.runtime.ocl" version="0.0.0">
-    <category name="Sirius" />
-  </feature>
-
-  <category-def name="Sirius.SDK" label="Sirius SDK">
-    <description>
-      The Sirius Modeling Platform SDK: sources, test suites and tools for developing Sirius.
-    </description>
-  </category-def>
-
-  <feature id="org.eclipse.sirius.tests.rcptt.feature" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.tests" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.tests.support" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.diagram.elk.sdk.feature" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.aql.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.runtime.aql.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.specifier.properties.feature.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.workflow.feature.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.runtime.ide.ui.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.specifier.ide.ui.aql.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.runtime.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.runtime.acceleo.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.samples.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.server.feature.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.runtime.ide.ui.acceleo.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.specifier.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.interpreter.feature.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.doc.feature.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.runtime.ide.eef.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.specifier.ide.ui.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.properties.feature.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.samples.properties.feature.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.server.ui.autostart.feature.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.tests.rcptt.feature.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.specifier.ide.ui.acceleo.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.server.product.feature.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.runtime.ide.xtext.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.tests.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.diagram.elk.feature.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.tests.support.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.runtime.ocl.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-  <feature id="org.eclipse.sirius.diagram.elk.sdk.feature.source" version="0.0.0">
-    <category name="Sirius.SDK" />
-  </feature>
-
-  <category-def name="Sirius.Dependencies" label="Sirius Dependencies">
-    <description>
-      Parts of other projects that are needed by some Sirius features.
-    </description>
-  </category-def>
-
-  <feature id="org.eclipse.acceleo.query" version="0.0.0">
-    <category name="Sirius.Dependencies" />
-  </feature>
-  <feature id="org.eclipse.acceleo.query.source" version="0.0.0">
-    <category name="Sirius.Dependencies" />
-  </feature>
-  <feature id="org.eclipse.acceleo.ui.interpreter" version="0.0.0">
-    <category name="Sirius.Dependencies" />
-  </feature>
-  <feature id="org.eclipse.acceleo.ui.interpreter.source" version="0.0.0">
-    <category name="Sirius.Dependencies" />
-  </feature>
-  <feature id="org.eclipse.eef.sdk.feature" version="0.0.0">
-    <category name="Sirius.Dependencies" />
-  </feature>
-  <feature id="org.eclipse.eef.sdk.feature.source" version="0.0.0">
-    <category name="Sirius.Dependencies" />
-  </feature>
-  <feature id="org.eclipse.eef.ext.widgets.reference.feature" version="0.0.0">
-    <category name="Sirius.Dependencies" />
-  </feature>
-  <feature id="org.eclipse.eef.ext.widgets.reference.feature.source" version="0.0.0">
-    <category name="Sirius.Dependencies" />
-  </feature>
-  <feature id="org.eclipse.elk.algorithms.feature" version="0.0.0">
-    <category name="Sirius.Dependencies" />
-  </feature>
-  <feature id="org.eclipse.elk.feature" version="0.0.0">
-    <category name="Sirius.Dependencies" />
-  </feature>
-  <feature id="org.eclipse.elk.graphviz.feature" version="0.0.0">
-    <category name="Sirius.Dependencies" />
-  </feature>
-  <feature id="org.eclipse.elk.sdk.feature" version="0.0.0">
-    <category name="Sirius.Dependencies" />
-  </feature>
-  <feature id="org.eclipse.elk.ui.feature" version="0.0.0">
-    <category name="Sirius.Dependencies" />
-  </feature>
-  <feature id="org.eclipse.elk.algorithms.feature.source" version="0.0.0">
-    <category name="Sirius.Dependencies" />
-  </feature>
-  <feature id="org.eclipse.elk.feature.source" version="0.0.0">
-    <category name="Sirius.Dependencies" />
-  </feature>
-  <feature id="org.eclipse.elk.graphviz.feature.source" version="0.0.0">
-    <category name="Sirius.Dependencies" />
-  </feature>
-  <feature id="org.eclipse.elk.sdk.feature.source" version="0.0.0">
-    <category name="Sirius.Dependencies" />
-  </feature>
-  <feature id="org.eclipse.elk.ui.feature.source" version="0.0.0">
-    <category name="Sirius.Dependencies" />
-  </feature>
-  <bundle id="com.google.gson" version="0.0.0">
-    <category name="Sirius.Dependencies" />
-  </bundle>
-  
-  <repository-reference location="http://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.10.v20180503/" enabled="true" />
+   <description url="http://www.eclipse.org/sirius">
+      Eclipse Sirius - The easiest way to get your own Modeling Tool.
+   </description>
+   <feature id="org.eclipse.sirius.runtime" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.aql" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.aql" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.specifier.properties.feature" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.ide.ui" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.specifier.ide.ui.aql" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.acceleo" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.samples" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.ide.ui.acceleo" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.specifier" version="0.0.0"/>
+   <feature id="org.eclipse.sirius.interpreter.feature" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.doc.feature" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.ide.eef" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.specifier.ide.ui" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.properties.feature" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.samples.properties.feature" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.specifier.ide.ui.acceleo" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.ide.xtext" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.diagram.elk.feature" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.ocl" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.tests.rcptt.feature" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.tests" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.tests.support" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.diagram.elk.sdk.feature" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.aql.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.aql.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.specifier.properties.feature.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.ide.ui.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.specifier.ide.ui.aql.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.acceleo.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.samples.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.ide.ui.acceleo.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.specifier.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.interpreter.feature.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.doc.feature.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.ide.eef.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.specifier.ide.ui.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.properties.feature.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.samples.properties.feature.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.tests.rcptt.feature.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.specifier.ide.ui.acceleo.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.ide.xtext.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.tests.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.diagram.elk.feature.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.tests.support.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.runtime.ocl.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.sirius.diagram.elk.sdk.feature.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
+   <feature id="org.eclipse.acceleo.query" version="0.0.0">
+      <category name="Sirius.Dependencies"/>
+   </feature>
+   <feature id="org.eclipse.acceleo.query.source" version="0.0.0">
+      <category name="Sirius.Dependencies"/>
+   </feature>
+   <feature id="org.eclipse.acceleo.ui.interpreter" version="0.0.0">
+      <category name="Sirius.Dependencies"/>
+   </feature>
+   <feature id="org.eclipse.acceleo.ui.interpreter.source" version="0.0.0">
+      <category name="Sirius.Dependencies"/>
+   </feature>
+   <feature id="org.eclipse.eef.sdk.feature" version="0.0.0">
+      <category name="Sirius.Dependencies"/>
+   </feature>
+   <feature id="org.eclipse.eef.sdk.feature.source" version="0.0.0">
+      <category name="Sirius.Dependencies"/>
+   </feature>
+   <feature id="org.eclipse.eef.ext.widgets.reference.feature" version="0.0.0">
+      <category name="Sirius.Dependencies"/>
+   </feature>
+   <feature id="org.eclipse.eef.ext.widgets.reference.feature.source" version="0.0.0">
+      <category name="Sirius.Dependencies"/>
+   </feature>
+   <feature id="org.eclipse.elk.algorithms.feature" version="0.0.0">
+      <category name="Sirius.Dependencies"/>
+   </feature>
+   <feature id="org.eclipse.elk.feature" version="0.0.0">
+      <category name="Sirius.Dependencies"/>
+   </feature>
+   <feature id="org.eclipse.elk.graphviz.feature" version="0.0.0">
+      <category name="Sirius.Dependencies"/>
+   </feature>
+   <feature id="org.eclipse.elk.sdk.feature" version="0.0.0">
+      <category name="Sirius.Dependencies"/>
+   </feature>
+   <feature id="org.eclipse.elk.ui.feature" version="0.0.0">
+      <category name="Sirius.Dependencies"/>
+   </feature>
+   <feature id="org.eclipse.elk.algorithms.feature.source" version="0.0.0">
+      <category name="Sirius.Dependencies"/>
+   </feature>
+   <feature id="org.eclipse.elk.feature.source" version="0.0.0">
+      <category name="Sirius.Dependencies"/>
+   </feature>
+   <feature id="org.eclipse.elk.graphviz.feature.source" version="0.0.0">
+      <category name="Sirius.Dependencies"/>
+   </feature>
+   <feature id="org.eclipse.elk.sdk.feature.source" version="0.0.0">
+      <category name="Sirius.Dependencies"/>
+   </feature>
+   <feature id="org.eclipse.elk.ui.feature.source" version="0.0.0">
+      <category name="Sirius.Dependencies"/>
+   </feature>
+   <bundle id="com.google.gson" version="0.0.0">
+      <category name="Sirius.Dependencies"/>
+   </bundle>
+   <category-def name="Sirius" label="Sirius">
+      <description>
+         The Sirius Modeling Platform
+      </description>
+   </category-def>
+   <category-def name="Sirius.SDK" label="Sirius SDK">
+      <description>
+         The Sirius Modeling Platform SDK: sources, test suites and tools for developing Sirius.
+      </description>
+   </category-def>
+   <category-def name="Sirius.Dependencies" label="Sirius Dependencies">
+      <description>
+         Parts of other projects that are needed by some Sirius features.
+      </description>
+   </category-def>
+   <repository-reference location="http://download.eclipse.org/jetty/updates/jetty-bundles-9.x/9.4.10.v20180503/" enabled="true" />
 </site>

@@ -347,7 +347,6 @@
         <module>../../plugins/org.eclipse.sirius.synchronizer</module>
         <module>../../plugins/org.eclipse.sirius.table</module>
         <module>../../plugins/org.eclipse.sirius.tree</module>
-        <module>../../plugins/org.eclipse.sirius.workflow.model</module>
 
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.runtime</module>
@@ -357,51 +356,6 @@
 
         <!-- update sites -->
         <module>../../packaging/org.eclipse.sirius.headless.update</module>
-      </modules>
-    </profile>
-    <profile>
-      <id>headless-server</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <build>
-          <directory>${build-folder-name}</directory>
-      </build>
-      <properties>
-        <target-platform-path>headless</target-platform-path>
-      </properties>
-      <modules>
-        <!-- plugins -->
-        <module>../../plugins/org.eclipse.sirius.services.common</module>
-        <module>../../plugins/org.eclipse.sirius.services.diagram</module>
-        <module>../../plugins/org.eclipse.sirius.services.graphql.common</module>
-        <module>../../plugins/org.eclipse.sirius.services.graphql.core</module>
-        <module>../../plugins/org.eclipse.sirius.services.graphql.emf</module>
-        <module>../../plugins/org.eclipse.sirius.services.graphql.workspace</module>
-        <module>../../plugins/org.eclipse.sirius.services.graphql</module>
-        <module>../../plugins/org.eclipse.sirius.server</module>
-        <module>../../plugins/org.eclipse.sirius.server.application</module>
-        <module>../../plugins/org.eclipse.sirius.server.backend</module>
-        <module>../../plugins/org.eclipse.sirius.server.diagram</module>
-        <!-- Disabled by default, see the README inside the plug-in for more details -->
-        <!--
-        <module>../../plugins/org.eclipse.sirius.server.diagram.sprotty</module>
-        -->
-        <module>../../plugins/org.eclipse.sirius.server.frontend</module>
-        <module>../../plugins/org.eclipse.sirius.server.frontend.workflow</module>
-        <module>../../plugins/org.eclipse.sirius.server.graphql</module>
-        <module>../../plugins/org.eclipse.sirius.server.images</module>
-        
-        <!-- tests -->
-        <module>../../plugins/org.eclipse.sirius.tests.server</module>
-        <module>../../plugins/org.eclipse.sirius.tests.services.graphql</module>
-
-        <!-- features -->
-        <module>../../packaging/org.eclipse.sirius.server.feature</module>
-        <module>../../packaging/org.eclipse.sirius.server.product.feature</module>
-
-        <!-- update sites -->
-        <module>../../packaging/org.eclipse.sirius.server.product</module>
       </modules>
     </profile>
     <profile>
@@ -442,7 +396,6 @@
         <module>../../plugins/org.eclipse.sirius.editor.sequence</module>
         <module>../../plugins/org.eclipse.sirius.editor.table</module>
         <module>../../plugins/org.eclipse.sirius.editor.tree</module>
-        <module>../../plugins/org.eclipse.sirius.editor.workflow</module>
         <module>../../plugins/org.eclipse.sirius.editor</module>
         <module>../../plugins/org.eclipse.sirius.eef.adapters</module>
         <module>../../plugins/org.eclipse.sirius.interpreter</module>
@@ -455,7 +408,6 @@
         <module>../../plugins/org.eclipse.sirius.ui.editor</module>
         <module>../../plugins/org.eclipse.sirius.tests.junit.support</module>
         <module>../../plugins/org.eclipse.sirius.tests.swtbot.support</module>
-        <module>../../plugins/org.eclipse.sirius.workflow.edit</module>
 
         <module>../../plugins/org.eclipse.sirius.samples.family/samples/org.eclipse.sirius.sample.basicfamily</module>
         <module>../../plugins/org.eclipse.sirius.samples.family/samples/org.eclipse.sirius.sample.basicfamily.edit</module>
@@ -480,8 +432,6 @@
         <module>../../plugins/org.eclipse.sirius.sample.properties.radio</module>
         <module>../../plugins/org.eclipse.sirius.sample.properties.textarea</module>
         <module>../../plugins/org.eclipse.sirius.tests.ui.properties</module>
-        <module>../../plugins/org.eclipse.sirius.workflow.ui.page</module>
-        <module>../../plugins/org.eclipse.sirius.server.ui.autostart</module>
 
         <!-- features -->
         <module>../../packaging/org.eclipse.sirius.aql</module>
@@ -501,11 +451,9 @@
         <module>../../packaging/org.eclipse.sirius.properties.feature</module>
         <module>../../packaging/org.eclipse.sirius.specifier.properties.feature</module>
         <module>../../packaging/org.eclipse.sirius.samples.properties.feature</module>
-        <module>../../packaging/org.eclipse.sirius.workflow-feature</module>
 
         <module>../../packaging/org.eclipse.sirius.diagram.elk.feature</module>
-		<module>../../packaging/org.eclipse.sirius.diagram.elk.sdk.feature</module>
-        <module>../../packaging/org.eclipse.sirius.server.ui.autostart.feature</module>
+		    <module>../../packaging/org.eclipse.sirius.diagram.elk.sdk.feature</module>
         <module>../../packaging/org.eclipse.sirius.sample.basicfamily.feature</module>
 
         <!-- update sites -->
