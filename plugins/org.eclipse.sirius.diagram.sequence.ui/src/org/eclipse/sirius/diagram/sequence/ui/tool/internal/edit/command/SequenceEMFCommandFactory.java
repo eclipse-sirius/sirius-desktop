@@ -13,12 +13,14 @@
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.command;
 
 import java.util.Collections;
+import java.util.List;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
@@ -33,6 +35,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.operation.SetVertic
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.SynchronizeISequenceEventsSemanticOrderingOperation;
 import org.eclipse.sirius.diagram.sequence.business.internal.operation.VerticalSpaceExpansionOrReduction;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.DecreasingRange;
+import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.operation.ExecutionOperations;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.OperandEditPart;
@@ -99,6 +102,26 @@ public final class SequenceEMFCommandFactory extends UndoRedoCapableEMFCommandFa
 
         }
 
+    }
+
+    @Override
+    public Command buildBringToFrontCommand(List<? extends View> elementsToBringToFront) {
+        throw new UnsupportedOperationException(Messages.SequenceEMFCommandFactory_notSupportedZorderCommandsMessage);
+    }
+
+    @Override
+    public Command buildSendToBackCommand(List<? extends View> elementsToSendToBack) {
+        throw new UnsupportedOperationException(Messages.SequenceEMFCommandFactory_notSupportedZorderCommandsMessage);
+    }
+
+    @Override
+    public Command buildBringForwardCommand(List<? extends View> elementsToBringForward, int index) {
+        throw new UnsupportedOperationException(Messages.SequenceEMFCommandFactory_notSupportedZorderCommandsMessage);
+    }
+
+    @Override
+    public Command buildSendBackwardCommand(List<? extends View> elementsToSendBackward, int index) {
+        throw new UnsupportedOperationException(Messages.SequenceEMFCommandFactory_notSupportedZorderCommandsMessage);
     }
 
     private Command getDeleteExecutionCommand(ExecutionEditPart executionPart, Command basicDelete) {

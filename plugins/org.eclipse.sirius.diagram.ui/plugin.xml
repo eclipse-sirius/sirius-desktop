@@ -1118,6 +1118,22 @@
            id="org.eclipse.sirius.diagram.ui.command.deselectAll"
            name="%command.deselectAll.name">
      </command>
+     <command
+           id="org.eclipse.sirius.diagram.ui.command.bringToFront"
+           name="%command.bringToFront.name">
+     </command>
+     <command
+           id="org.eclipse.sirius.diagram.ui.command.sendToBack"
+           name="%command.sendToBack.name">
+     </command>
+     <command
+           id="org.eclipse.sirius.diagram.ui.command.bringForward"
+           name="%command.bringForward.name">
+     </command>
+     <command
+           id="org.eclipse.sirius.diagram.ui.command.sendBackward"
+           name="%command.sendBackward.name">
+     </command>
      <category name="%category.sirius.name" id="org.eclipse.sirius.common.ui.category"/>
      <command categoryId="org.eclipse.sirius.common.ui.category" description="%command.findInModel.description" id="org.eclipse.sirius.diagram.ui.find.binding.FindElementAction" name="%command.findInModel.name"/>
      <command
@@ -1199,6 +1215,30 @@
             contextId="org.eclipse.sirius.diagram.ui.diagramContext"
             schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
             sequence="M1+HOME">
+      </key>
+      <key
+            commandId="org.eclipse.sirius.diagram.ui.command.bringToFront"
+            contextId="org.eclipse.sirius.diagram.ui.diagramContext"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+F">
+      </key>
+      <key
+            commandId="org.eclipse.sirius.diagram.ui.command.sendToBack"
+            contextId="org.eclipse.sirius.diagram.ui.diagramContext"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+M2+B">
+      </key>
+      <key
+            commandId="org.eclipse.sirius.diagram.ui.command.bringForward"
+            contextId="org.eclipse.sirius.diagram.ui.diagramContext"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+F">
+      </key>
+      <key
+            commandId="org.eclipse.sirius.diagram.ui.command.sendBackward"
+            contextId="org.eclipse.sirius.diagram.ui.diagramContext"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+B">
       </key>
    </extension>
 
@@ -1440,6 +1480,86 @@
                </iterate>
             </with>
          </visibleWhen>
+      </menu>
+      <menu
+            id="formatMenu"
+            label="%command.format.name">
+         <menu
+               id="zorderMenu"
+               label="%command.order.name">
+            <command
+                  commandId="org.eclipse.sirius.diagram.ui.command.bringToFront"
+                  icon="icons/bring_to_front.gif"
+                  label="%command.bringToFront.name"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeMenuSelection">
+                     <iterate
+                           operator="and">
+                        <instanceof
+                              value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart">
+                        </instanceof>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.eclipse.sirius.diagram.ui.command.sendToBack"
+                  icon="icons/send_to_back.gif"
+                  label="%command.sendToBack.name"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeMenuSelection">
+                     <iterate
+                           operator="and">
+                        <instanceof
+                              value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart">
+                        </instanceof>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.eclipse.sirius.diagram.ui.command.bringForward"
+                  icon="icons/bring_forward.gif"
+                  label="%command.bringForward.name"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeMenuSelection">
+                     <iterate
+                           operator="and">
+                        <instanceof
+                              value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart">
+                        </instanceof>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="org.eclipse.sirius.diagram.ui.command.sendBackward"
+                  icon="icons/send_backward.gif"
+                  label="%command.sendBackward.name"
+                  style="push">
+               <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="activeMenuSelection">
+                     <iterate
+                           operator="and">
+                        <instanceof
+                              value="org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart">
+                        </instanceof>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </command>
+         </menu>
       </menu>
    </menuContribution>
    <menuContribution
@@ -1842,6 +1962,22 @@
      <handler
            class="org.eclipse.sirius.diagram.ui.tools.internal.commands.DeselectAllCommand"
            commandId="org.eclipse.sirius.diagram.ui.command.deselectAll">
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.BringToFrontCommand"
+           commandId="org.eclipse.sirius.diagram.ui.command.bringToFront">
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.SendToBackCommand"
+           commandId="org.eclipse.sirius.diagram.ui.command.sendToBack">
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.BringForwardCommand"
+           commandId="org.eclipse.sirius.diagram.ui.command.bringForward">
+     </handler>
+     <handler
+           class="org.eclipse.sirius.diagram.ui.tools.internal.commands.SendBackwardCommand"
+           commandId="org.eclipse.sirius.diagram.ui.command.sendBackward">
      </handler>
      <handler
            class="org.eclipse.sirius.diagram.ui.tools.internal.handler.RemoveBendpointsHandler"

@@ -307,6 +307,11 @@ public class SequenceDiagramEditPart extends DDiagramEditPart {
         new SequenceZOrderingRefresher(this).run();
     }
 
+    @Override
+    protected void reorderEdgesFiguresAccordingToGmfOrder() {
+        // Do nothing for sequence diagram. Indeed, the z-order is managed differently in sequence diagram.
+    }
+
     /**
      * Refresh the bendpoints of source & target connections.
      */

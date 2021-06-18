@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,6 +17,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -28,6 +29,7 @@ import org.eclipse.emf.common.command.UnexecutableCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.business.api.helper.task.ICommandTask;
 import org.eclipse.sirius.business.api.helper.task.InitInterpreterVariablesTask;
@@ -55,6 +57,8 @@ import org.eclipse.sirius.diagram.description.tool.NodeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.diagram.tools.api.Messages;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
+import org.eclipse.sirius.diagram.tools.api.command.view.BringElementsForward;
+import org.eclipse.sirius.diagram.tools.api.command.view.BringElementsToFront;
 import org.eclipse.sirius.diagram.tools.api.command.view.CreateDiagramWithInitialOperation;
 import org.eclipse.sirius.diagram.tools.api.command.view.HideDDiagramElement;
 import org.eclipse.sirius.diagram.tools.api.command.view.HideDDiagramElementLabel;
@@ -62,6 +66,9 @@ import org.eclipse.sirius.diagram.tools.api.command.view.RefreshSiriusElement;
 import org.eclipse.sirius.diagram.tools.api.command.view.RevealAllElementsCommand;
 import org.eclipse.sirius.diagram.tools.api.command.view.RevealDDiagramElements;
 import org.eclipse.sirius.diagram.tools.api.command.view.RevealDDiagramElementsLabel;
+import org.eclipse.sirius.diagram.tools.api.command.view.SendElementsBackward;
+import org.eclipse.sirius.diagram.tools.api.command.view.SendElementsToBack;
+import org.eclipse.sirius.diagram.tools.internal.Messages;
 import org.eclipse.sirius.diagram.tools.internal.command.builders.ContainerCreationCommandBuilder;
 import org.eclipse.sirius.diagram.tools.internal.command.builders.DeletionCommandBuilder;
 import org.eclipse.sirius.diagram.tools.internal.command.builders.DirectEditCommandBuilder;
@@ -672,5 +679,25 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     public Command buildInsertOrRemoveVerticalBlankSpaceCommand(DDiagram diagram, int startY, int spaceToInsert) {
         // Not implemented in "standard" diagram
         throw new UnsupportedOperationException(Messages.UndoRedoCapableEMFCommandFactory_insertVerticalBlankSpaceNotImplemented);
+    }
+
+    @Override
+    public Command buildBringToFrontCommand(List<? extends View> elementsToBringToFront) {
+        return new BringElementsToFront(domain, elementsToBringToFront);
+    }
+
+    @Override
+    public Command buildSendToBackCommand(List<? extends View> elementsToSendToBack) {
+        return new SendElementsToBack(domain, elementsToSendToBack);
+    }
+
+    @Override
+    public Command buildBringForwardCommand(List<? extends View> elementsToBringForward, int index) {
+        return new BringElementsForward(domain, elementsToBringForward, index);
+    }
+
+    @Override
+    public Command buildSendBackwardCommand(List<? extends View> elementsToSendBackward, int index) {
+        return new SendElementsBackward(domain, elementsToSendBackward, index);
     }
 }
