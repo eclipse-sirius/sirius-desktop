@@ -46,6 +46,11 @@
 							</li>
 							<li>
 								<a href="#Movingelements">Moving elements</a>
+								<ol style="list-style: disc;">
+									<li>
+										<a href="#node_zorder">Change z-order of nodes</a>
+									</li>
+								</ol>
 							</li>
 							<li>
 								<a href="#Manageedges">Manage edges</a>
@@ -67,6 +72,9 @@
 									</li>
 									<li>
 										<a href="#move_edge_group">Move edge group</a>
+									</li>
+									<li>
+										<a href="#edge_zorder">Change z-order of edges</a>
 									</li>
 									<li>
 										<a href="#edge_label_attachment">Display attachment link between edge and its labels</a>
@@ -419,6 +427,28 @@
 				<a href="#snap_to_shapes">Snap to shapes</a> is already activated for the current diagram)
 			</li>
 		</ul>
+		<h4 id="node_zorder">Change z-order of nodes</h4>
+		<p>For readability reason, it is preferable to have no overlap between nodes. But if it is the case, you can decide the z-order of nodes (having the same parent).</p>
+		<p>To change the z-order of one or several nodes, you have to select them and choose one of these actions in contextual menu 
+			<em>Format/Order</em>:
+		</p>
+		<ul>
+			<li>
+				<em>Bring to Front</em>: The selected node is put above all others. If several nodes are selected, the order of these nodes is retained.
+			</li>
+			<li>
+				<em>Send to Back</em>: The selected node is put below all others. If several nodes are selected, the order of these nodes is retained.
+			</li>
+			<li>
+				<em>Bring Forward</em>: The selected node is moved forward by one node. If several nodes are selected, the result is the same than if you launch the action several times on each node.
+			</li>
+			<li>
+				<em>Send Backward</em>: The selected node is moved backward by one node. If several nodes are selected, the result is the same than if you launch the action several times on each node.
+			</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/nodesZOrderContextualMenu.png"/>
+		</p>
 		<h3 id="Manageedges">Manage edges</h3>
 		<h4 id="Properties">Properties</h4>
 		<p>The Properties view of an edge allows to change several aspects of the edge.</p>
@@ -657,6 +687,34 @@
 			<li>each edge groups must remain in its source and target parent bounds at the end of the move. Therefore, the move is not limited by the primary selection only (the edge that is grabbed to move the whole selection) but by each edge group.</li>
 		</ul>
 		<p>Note that an edge group new location corresponding to the former location of another edge group in the selection is valid.</p>
+		<h4 id="edge_zorder">Change z-order of edges</h4>
+		<p>As for 
+			<a href="./Diagrams.html#node_zorder">nodes</a>, there is a z-order for edges. It is less visible than for nodes but you can see it if you change the color of edges or in case of 
+			<a href="./Diagrams.html#Appearance">jump links</a>:
+		</p>
+		<p>	
+			<img border="0" src="images/edgesZOrder.png"/>
+		</p>
+		<p>To change the z-order of one or several edges, you have to select them and choose one of these actions in contextual menu 
+			<em>Format/Order</em> (or by using the associated shortcut):
+		</p>
+		<ul>
+			<li>
+				<em>Bring to Front</em> (Ctrl+Shift+F): The selected edge is put above all others. If several edges are selected, the order of these edges is retained.
+			</li>
+			<li>
+				<em>Send to Back</em> (Ctrl+Shift+B): The selected edge is put below all others. If several edges are selected, the order of these edges is retained.
+			</li>
+			<li>
+				<em>Bring Forward</em> (Ctrl+F): The selected edge is put above the following edge, in z-order, that crosses it. If the selected edge does not cross any other, this action has no effect. If several edges are selected, the order of these edges is retained. For each selected edge, the following edge, in z-order, that crosses it, is retained (by ignoring selected edges) and then the upper edge of these retained edges, is considered for moving all selected edges above it. The behavior is slightly different than for nodes because it relies on intersection. In case of a multiple selection, it is possible to have an edge that is brought forward several edges.
+			</li>
+			<li>
+				<em>Send Backward</em> (Ctrl+B): The selected edge is put below the previous edge, in z-order, that crosses it. If the selected edge does not cross any other, this action has no effect. If several edges are selected, the order of these edges is retained. For each selected edge, the previous edge, in z-order, that crosses it, is retained (by ignoring selected edges) and then the lower edge of these retained edges, is considered for moving all selected edges below it. The behavior is slightly different than for nodes because it relies on intersection. In case of a multiple selection, it is possible to have an edge that is sent backward several edges.
+			</li>
+		</ul>
+		<p>	
+			<img border="0" src="images/edgesZOrderContextualMenu.png"/>
+		</p>
 		<h4 id="edge_label_attachment">Display attachment link between edge and its labels</h4>
 		<p>It is possible to display an attachment link between an edge and its labels when edge or label is selected. This is not the default behavior but it can be activated by a preference in 
 			<em>Sirius/Sirius Diagram/Connections</em> preference page.

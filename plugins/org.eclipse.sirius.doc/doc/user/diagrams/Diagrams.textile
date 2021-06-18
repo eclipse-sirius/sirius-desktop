@@ -110,6 +110,18 @@ There are specific shortcuts to change the move behavior:
 * F3: Move the edge source and target if pressed during the edge move. See the "Move edge group" subsection below for more details. 
 * F4: Move with snap to all shapes (if the "Snap to shapes":#snap_to_shapes is already activated for the current diagram)
 
+h4(#node_zorder). Change z-order of nodes
+
+For readability reason, it is preferable to have no overlap between nodes. But if it is the case, you can decide the z-order of nodes (having the same parent).
+
+To change the z-order of one or several nodes, you have to select them and choose one of these actions in contextual menu _Format/Order_:
+* _Bring to Front_: The selected node is put above all others. If several nodes are selected, the order of these nodes is retained.
+* _Send to Back_: The selected node is put below all others. If several nodes are selected, the order of these nodes is retained.
+* _Bring Forward_: The selected node is moved forward by one node. If several nodes are selected, the result is the same than if you launch the action several times on each node.
+* _Send Backward_: The selected node is moved backward by one node. If several nodes are selected, the result is the same than if you launch the action several times on each node.
+
+	!images/nodesZOrderContextualMenu.png!
+
 h3. Manage edges
 
 h4. Properties
@@ -273,6 +285,20 @@ Furthermore, since Sirius 4.1, it is possible to move several edge groups at onc
 * each edge groups must remain in its source and target parent bounds at the end of the move. Therefore, the move is not limited by the primary selection only (the edge that is grabbed to move the whole selection) but by each edge group.
 
 Note that an edge group new location corresponding to the former location of another edge group in the selection is valid.
+
+h4(#edge_zorder). Change z-order of edges
+
+As for "nodes":./Diagrams.html#node_zorder, there is a z-order for edges. It is less visible than for nodes but you can see it if you change the color of edges or in case of "jump links":./Diagrams.html#Appearance:
+
+	!images/edgesZOrder.png!
+	
+To change the z-order of one or several edges, you have to select them and choose one of these actions in contextual menu _Format/Order_ (or by using the associated shortcut):
+* _Bring to Front_ (Ctrl+Shift+F): The selected edge is put above all others. If several edges are selected, the order of these edges is retained.
+* _Send to Back_ (Ctrl+Shift+B): The selected edge is put below all others. If several edges are selected, the order of these edges is retained.
+* _Bring Forward_ (Ctrl+F): The selected edge is put above the following edge, in z-order, that crosses it. If the selected edge does not cross any other, this action has no effect. If several edges are selected, the order of these edges is retained. For each selected edge, the following edge, in z-order, that crosses it, is retained (by ignoring selected edges) and then the upper edge of these retained edges, is considered for moving all selected edges above it. The behavior is slightly different than for nodes because it relies on intersection. In case of a multiple selection, it is possible to have an edge that is brought forward several edges.
+* _Send Backward_ (Ctrl+B): The selected edge is put below the previous edge, in z-order, that crosses it. If the selected edge does not cross any other, this action has no effect. If several edges are selected, the order of these edges is retained. For each selected edge, the previous edge, in z-order, that crosses it, is retained (by ignoring selected edges) and then the lower edge of these retained edges, is considered for moving all selected edges below it. The behavior is slightly different than for nodes because it relies on intersection. In case of a multiple selection, it is possible to have an edge that is sent backward several edges.
+
+	!images/edgesZOrderContextualMenu.png!
 
 h4(#edge_label_attachment). Display attachment link between edge and its labels
 

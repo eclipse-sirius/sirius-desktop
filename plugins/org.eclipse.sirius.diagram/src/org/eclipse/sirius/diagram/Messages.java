@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2019 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -42,6 +42,21 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ActivatedFilterSortingMigrationParticipant_updatedDiagrams;
+
+    @TranslatableMessage
+    public static String BringElementsForward_oneElementLabel;
+
+    @TranslatableMessage
+    public static String BringElementsForward_severalElementsLabel;
+
+    @TranslatableMessage
+    public static String BringElementsForward_wrongIndex;
+
+    @TranslatableMessage
+    public static String BringElementsToFront_oneElementLabel;
+
+    @TranslatableMessage
+    public static String BringElementsToFront_severalElementsLabel;
 
     @TranslatableMessage
     public static String ChangeLayerActivationCommand_executeMsg;
@@ -259,6 +274,22 @@ public final class Messages {
     @TranslatableMessage
     public static String RevealDDiagramElementsLabel_revealLabels;
 
+
+    @TranslatableMessage
+    public static String SendElementsBackward_oneElementLabel;
+
+    @TranslatableMessage
+    public static String SendElementsBackward_severalElementsLabel;
+
+    @TranslatableMessage
+    public static String SendElementsBackward_wrongIndex;
+
+    @TranslatableMessage
+    public static String SendElementsToBack_oneElementLabel;
+
+    @TranslatableMessage
+    public static String SendElementsToBack_severalElementsLabel;
+
     @TranslatableMessage
     public static String SetEdgeActualMappingCommand_commandLabel;
 
@@ -309,6 +340,15 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SynchronizeGMFModelCommand_label;
+
+    @TranslatableMessage
+    public static String ZOrderRecordingCommand_emptyList;
+
+    @TranslatableMessage
+    public static String ZOrderRecordingCommand_notSameParent;
+
+    @TranslatableMessage
+    public static String ZOrderRecordingCommand_notSameType;
 
     // CHECKSTYLE:ON
     private Messages() {

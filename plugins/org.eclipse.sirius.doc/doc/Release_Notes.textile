@@ -6,7 +6,29 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius6.6.0). Changes in Sirius 6.6.0
 
+h3. User-Visible Changes
+
+* <span class="label label-success">Added</span> 4 new actions have been added to control the "z-order" of edges. These actions are mainly useful in the context of "jump links":user/diagrams/Diagrams.html#Appearance. Similar actions already existed for nodes but not for edges. A chapter dedicated to these new actions has been added in "Sirius User Manual":user/diagrams/Diagrams.html#edge_zorder.
+* <span class="label label-danger">Removed</span> To be coherent, the actions available "Diagram/Order" menu of Eclipse menu bar have been removed. Indeed, these actions are always visible but only valid for nodes. Now, only the contextual menus are to be used (for nodes or for edges).
+
 h3. Developer-Visible Changes
+
+h4. Changes in @org.eclipse.sirius.diagram@
+
+* <span class="label label-success">Added</span> New methods returning z-order commands have been added in @org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory@ to support the new z-order actions on edges. The returned commands are currently only used by new actions for edges but they also manage nodes (same code than in existing GMF commands).
+** @buildBringToFrontCommand(List<? extends View>)@: Build a command that is able to bring to the front many elements. These elements, nodes or edges, must be of the same type and have the same parent.
+** @buildSendToBackCommand(List<? extends View>@: Build a command that is able to send to the back many elements. These elements, nodes or edges, must be of the same type and have the same parent.
+** @buildBringForwardCommand(List<? extends View>)@: Build a command that is able to bring forward many elements. These elements, nodes or edges, must be of the same type and have the same parent.
+** @buildSendBackwardCommand(List<? extends View>)@: Build a command that is able to send backward many elements. These elements, nodes or edges, must be of the same type and have the same parent.
+* <span class="label label-success">Added</span> The 4 commands corresponding to the above method has been added as API:
+** @org.eclipse.sirius.diagram.tools.api.command.view.BringForwardElements@
+** @org.eclipse.sirius.diagram.tools.api.command.view.BringToFrontElements@
+** @org.eclipse.sirius.diagram.tools.api.command.view.SendBackwardElements@
+** @org.eclipse.sirius.diagram.tools.api.command.view.SendToBackElements@
+
+h4. Changes in @org.eclipse.sirius.diagram.ui@
+
+* * <span class="label label-info">Modified</span> The method @org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart.refreshChildren()@ has been overridden to redraw the edges figures according to the order of the GMF edges.
 
 h4. Migrations
 

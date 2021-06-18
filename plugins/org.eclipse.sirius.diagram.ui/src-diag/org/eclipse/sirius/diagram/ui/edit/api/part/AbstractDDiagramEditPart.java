@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.eclipse.draw2d.Connection;
+import org.eclipse.draw2d.ConnectionRouter;
+import org.eclipse.draw2d.IFigure;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
@@ -88,6 +91,7 @@ import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAutho
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.gmf.runtime.diagram.ui.tools.RubberbandDragTracker;
+import org.eclipse.sirius.ext.gmf.runtime.draw2d.ui.figures.SiriusPolylineConnectionEx;
 import org.eclipse.sirius.ext.gmf.runtime.editpolicies.SiriusSnapFeedbackPolicy;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
@@ -231,6 +235,11 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
                 refresh();
             }
         }
+
+        // Specific case for a z-order change on edges (useful for undo)
+        if (NotationPackage.Literals.DIAGRAM__PERSISTED_EDGES.equals(notification.getFeature()) && notification.getEventType() == Notification.MOVE) {
+            refreshChildren();
+        }
     }
 
     /**
@@ -307,6 +316,58 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
         }
         for (IGraphicalEditPart editPartToRefresh : editPartsToRefresh) {
             editPartToRefresh.refresh();
+        }
+    }
+
+    @Override
+    protected void refreshChildren() {
+        super.refreshChildren();
+        // Reorder edges according to GMF order (that can be changed with Sirius AbstractEdgesZOrderAction)
+        reorderEdgesFiguresAccordingToGmfOrder();
+    }
+
+    /**
+     * Reorder the figure of edges according to the GMF order. This allows to manage the z-order of edges.
+     */
+    protected void reorderEdgesFiguresAccordingToGmfOrder() {
+        int visibleGmfIndex = 0;
+        IFigure connectionLayer = getLayer(CONNECTION_LAYER);
+        for (Object object : this.getDiagramView().getEdges()) {
+            Edge anEdge = (Edge) object;
+            if (anEdge.isVisible()) {
+                Option<IGraphicalEditPart> optionalEditPart = getEditPartFor(anEdge);
+                if (optionalEditPart.some()) {
+                    IFigure figureToMove = optionalEditPart.get().getFigure();
+                    int figureIndex = connectionLayer.getChildren().indexOf(figureToMove);
+                    if (visibleGmfIndex != figureIndex) {
+                        // For performance reason, the figure is moved only if it is not at the right location.
+                        Object routingConstraint = null;
+                        ConnectionRouter connectionRouter = null;
+                        if (figureToMove instanceof Connection) {
+                            // The connection router and routing constraint are removed when the edge is removed from
+                            // the layer. They are stored to be restored after the move. The connection router does not
+                            // concern all edges but it is useful for BracketEdge for example.
+                            routingConstraint = ((Connection) figureToMove).getRoutingConstraint();
+                            connectionRouter = ((Connection) figureToMove).getConnectionRouter();
+                        }
+                        connectionLayer.remove(figureToMove);
+                        connectionLayer.add(figureToMove, visibleGmfIndex);
+                        if (connectionRouter != null) {
+                            ((Connection) figureToMove).setConnectionRouter(connectionRouter);
+                        }
+                        if (routingConstraint != null) {
+                            ((Connection) figureToMove).setRoutingConstraint(routingConstraint);
+                        }
+                    } else {
+                        // Even if the figure is not moved, a "refreshLine" is done to recompute jump links (that can
+                        // be impacted by other edge index changes)
+                        if (figureToMove instanceof SiriusPolylineConnectionEx) {
+                            ((SiriusPolylineConnectionEx) figureToMove).refreshLine();
+                        }
+                    }
+                }
+                visibleGmfIndex++;
+            }
         }
     }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,11 +13,13 @@
 package org.eclipse.sirius.diagram.tools.api.command;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
@@ -449,4 +451,52 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      * @return a command able to insert blank space (move all elements).
      */
     Command buildInsertOrRemoveVerticalBlankSpaceCommand(DDiagram diagram, int startX, int spaceToInsert);
+
+    /**
+     * Build a command that is able to bring to front many elements.
+     * 
+     * @param elementsToBringToFront
+     *            The elements to bring to front (Node or Edge). These elements must be of the same type and have the
+     *            same parent.
+     * @return a command that is able to bring to front many elements.
+     */
+    Command buildBringToFrontCommand(List<? extends View> elementsToBringToFront);
+
+    /**
+     * Build a command that is able to send to back many elements.
+     * 
+     * @param elementsToSendToBack
+     *            The elements to send to back (Node or Edge). These elements must be of the same type and have the same
+     *            parent.
+     * @return a command that is able to send to back many elements.
+     */
+    Command buildSendToBackCommand(List<? extends View> elementsToSendToBack);
+
+    /**
+     * Build a command that is able to bring forward many elements.
+     * 
+     * @param elementsToBringForward
+     *            the elements to bring forward (Node or Edge). These elements must be of the same type and have the
+     *            same parent.
+     * @param index
+     *            -1 for a default behavior (move forward of one element) or the new index to move element to (index
+     *            mainly used for edges to move them on the next crossing edge over them for example)
+     * 
+     * @return a command that is able to bring forward many elements.
+     */
+    Command buildBringForwardCommand(List<? extends View> elementsToBringForward, int index);
+
+    /**
+     * Build a command that is able to send backward many elements.
+     * 
+     * @param elementsToSendBackward
+     *            The elements to send backward (Node or Edge). These elements must be of the same type and have the
+     *            same parent.
+     * @param index
+     *            -1 for a default behavior (move backward of one element) or the new index to move element to (index
+     *            mainly used for edges to move them on the next crossing edge below them for example)
+     * 
+     * @return a command that is able to send backward many elements.
+     */
+    Command buildSendBackwardCommand(List<? extends View> elementsToSendBackward, int index);
 }

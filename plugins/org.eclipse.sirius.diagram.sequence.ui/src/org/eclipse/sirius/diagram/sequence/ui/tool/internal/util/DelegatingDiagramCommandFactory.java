@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,11 +13,13 @@
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.util;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -360,5 +362,25 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
     @Override
     public Command buildInsertOrRemoveVerticalBlankSpaceCommand(DDiagram diagram, int startY, int spaceToInsert) {
         return baseFactory.buildInsertOrRemoveVerticalBlankSpaceCommand(diagram, startY, spaceToInsert);
+    }
+
+    @Override
+    public Command buildBringToFrontCommand(List<? extends View> elementsToBringToFront) {
+        return baseFactory.buildBringToFrontCommand(elementsToBringToFront);
+    }
+
+    @Override
+    public Command buildSendToBackCommand(List<? extends View> elementsToSendToBack) {
+        return baseFactory.buildSendToBackCommand(elementsToSendToBack);
+    }
+
+    @Override
+    public Command buildBringForwardCommand(List<? extends View> elementsToBringForward, int index) {
+        return baseFactory.buildBringForwardCommand(elementsToBringForward, index);
+    }
+
+    @Override
+    public Command buildSendBackwardCommand(List<? extends View> elementsToSendBackward, int index) {
+        return baseFactory.buildSendBackwardCommand(elementsToSendBackward, index);
     }
 }
