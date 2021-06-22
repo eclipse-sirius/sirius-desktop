@@ -23,7 +23,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.tree.business.internal.metamodel.TreeToolVariables;
+import org.eclipse.sirius.tree.business.internal.dialect.description.TreeToolVariables;
 import org.eclipse.sirius.tree.description.ConditionalTreeItemStyleDescription;
 import org.eclipse.sirius.tree.description.DescriptionFactory;
 import org.eclipse.sirius.tree.description.DescriptionPackage;

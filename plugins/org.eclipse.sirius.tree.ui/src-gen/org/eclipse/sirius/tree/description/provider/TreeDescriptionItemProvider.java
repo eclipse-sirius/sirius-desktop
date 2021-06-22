@@ -26,7 +26,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.tree.business.internal.metamodel.TreeToolVariables;
+import org.eclipse.sirius.tree.business.internal.dialect.description.TreeToolVariables;
 import org.eclipse.sirius.tree.description.DescriptionFactory;
 import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.tree.description.TreeItemContainerDropTool;

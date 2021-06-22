@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,8 +26,8 @@ import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.Global
 import org.eclipse.sirius.tree.tools.internal.Messages;
 
 /**
- * This class is responsible for providing an entry point to all the user
- * interactions available on an opened DTree instance.
+ * This class is responsible for providing an entry point to all the user interactions available on an opened DTree
+ * instance.
  * 
  * @author cbrun
  * 
@@ -67,8 +67,8 @@ public class DTreeUserInteraction {
      * Refreshes the content of the {@link DTree}.
      * 
      * @param fullRefresh
-     *            true to do a full refresh of {@link DTree} even sub tree of
-     *            collapsed {@link org.eclipse.sirius.tree.DTreeItemContainer}
+     *            true to do a full refresh of {@link DTree} even sub tree of collapsed
+     *            {@link org.eclipse.sirius.tree.DTreeItemContainer}
      * 
      * @param monitor
      *            a {@link IProgressMonitor} to use

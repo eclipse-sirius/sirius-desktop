@@ -1,5 +1,5 @@
 /*******************************************************************************
-@ * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+@ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -44,7 +44,7 @@ import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
-import org.eclipse.sirius.tree.business.internal.metamodel.TreeToolVariables;
+import org.eclipse.sirius.tree.business.internal.dialect.description.TreeToolVariables;
 import org.eclipse.sirius.tree.description.DescriptionFactory;
 import org.eclipse.sirius.tree.description.TreeCreationDescription;
 import org.eclipse.sirius.tree.description.TreeDescription;

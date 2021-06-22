@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,8 +31,8 @@ import org.eclipse.sirius.tree.DTreeElement;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.TreeFactory;
 import org.eclipse.sirius.tree.TreeItemStyle;
+import org.eclipse.sirius.tree.business.internal.color.TreeStyleColorUpdater;
 import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
-import org.eclipse.sirius.tree.business.internal.internal.color.TreeStyleColorUpdater;
 import org.eclipse.sirius.tree.description.ConditionalTreeItemStyleDescription;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.StyleUpdater;

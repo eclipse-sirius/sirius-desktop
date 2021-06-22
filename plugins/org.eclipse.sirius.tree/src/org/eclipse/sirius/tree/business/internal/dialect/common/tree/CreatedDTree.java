@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -79,8 +79,7 @@ class CreatedDTree extends AbstractCreatedDTreeItemContainer {
     @Override
     public void refresh() {
         /*
-         * here we should update any DTree info computed from semantic elements.
-         * So far nothing...
+         * here we should update any DTree info computed from semantic elements. So far nothing...
          */
     }
 
@@ -95,8 +94,8 @@ class CreatedDTree extends AbstractCreatedDTreeItemContainer {
     }
 
     /**
-     * Always synchronize direct children of a {@link DTree} as it has not the
-     * capability of collapse as {@link fr.obeo.dsl.viewpoint.tree.DTreeItem}.
+     * Always synchronize direct children of a {@link DTree} as it has not the capability of collapse as
+     * {@link fr.obeo.dsl.viewpoint.tree.DTreeItem}.
      */
     @Override
     public boolean synchronizeChildren(RefreshPlan refreshPlan) {

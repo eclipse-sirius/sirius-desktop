@@ -15,19 +15,7 @@
 
 <plugin>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <package
-            uri="http://www.eclipse.org/sirius/tree/1.0.0"
-            class="org.eclipse.sirius.tree.TreePackage"
-            genModel="model/tree.genmodel"/>
-   </extension>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <package
-            uri="http://www.eclipse.org/sirius/tree/description/1.0.0"
-            class="org.eclipse.sirius.tree.description.DescriptionPackage"
-            genModel="model/tree.genmodel"/>
-   </extension>
    <extension
          point="org.eclipse.sirius.dialect">
       <dialect

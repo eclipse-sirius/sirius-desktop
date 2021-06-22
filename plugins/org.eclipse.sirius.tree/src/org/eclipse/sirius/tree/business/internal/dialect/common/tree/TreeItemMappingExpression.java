@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -55,15 +55,14 @@ public class TreeItemMappingExpression {
     }
 
     /**
-     * Indicates if the the given semantic element checks the precondition
-     * associated to the given DTreeItemContainer.
+     * Indicates if the the given semantic element checks the precondition associated to the given DTreeItemContainer.
      * 
      * @param semantic
      *            the semantic element to test
      * @param containerView
      *            the DTreeItemContainer
-     * @return true if the the given semantic element checks the precondition
-     *         associated to the given DTreeItemContainer, false otherwise
+     * @return true if the the given semantic element checks the precondition associated to the given
+     *         DTreeItemContainer, false otherwise
      */
     public boolean checkPrecondition(EObject semantic, DTreeItemContainer containerView) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHECK_PRECONDITION_KEY);

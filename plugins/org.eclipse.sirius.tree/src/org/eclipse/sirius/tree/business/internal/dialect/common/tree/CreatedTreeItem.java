@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -114,8 +114,7 @@ class CreatedTreeItem extends AbstractCreatedDTreeItemContainer {
     }
 
     /**
-     * Synchronize direct children only if the current {@link DTreeItem} is
-     * expanded.
+     * Synchronize direct children only if the current {@link DTreeItem} is expanded.
      */
     @Override
     public boolean synchronizeChildren(RefreshPlan refreshPlan) {
@@ -130,9 +129,8 @@ class CreatedTreeItem extends AbstractCreatedDTreeItemContainer {
     /**
      * Tells if the current {@link DTreeItem} must be expanded to show children.
      * 
-     * . And as being based on
-     * {@link org.eclipse.emf.ecore.change.ChangeDescription#getObjectsToDetach()}
-     * work only from Eclipse Mars. See Bug 460206.
+     * . And as being based on {@link org.eclipse.emf.ecore.change.ChangeDescription#getObjectsToDetach()} work only
+     * from Eclipse Mars. See Bug 460206.
      */
     private boolean willBeExpandedOnSelection(RefreshPlan refreshPlan) {
         Collection<EObject> createdObjects = getCreatedObjects(this);
@@ -143,7 +141,7 @@ class CreatedTreeItem extends AbstractCreatedDTreeItemContainer {
         }
         return false;
     }
-    
+
     private static Collection<EObject> getCreatedObjects(CreatedTreeItem item) {
         GlobalContext ctx = item.getGlobalContext();
         if (ctx instanceof TreeRefreshContext) {

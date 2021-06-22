@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.VariableType;
 import org.eclipse.sirius.tests.support.api.AbstractInterpretedExpressionTestCase;
 import org.eclipse.sirius.tools.internal.interpreter.SiriusInterpreterContextFactory;
 import org.eclipse.sirius.tree.TreePackage;
-import org.eclipse.sirius.tree.business.internal.metamodel.TreeToolVariables;
+import org.eclipse.sirius.tree.business.internal.dialect.description.TreeToolVariables;
 import org.eclipse.sirius.tree.description.DescriptionFactory;
 import org.eclipse.sirius.tree.description.TreeDescription;
 import org.eclipse.sirius.tree.description.TreeItemContainerDropTool;

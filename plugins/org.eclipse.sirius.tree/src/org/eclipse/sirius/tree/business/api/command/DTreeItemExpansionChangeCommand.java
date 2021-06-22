@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -44,8 +44,7 @@ public class DTreeItemExpansionChangeCommand extends RecordingCommand {
      * @param globalContext
      *            the {@link GlobalContext} to synchronize the model.
      * @param domain
-     *            the {@link TransactionalEditingDomain} on which execute this
-     *            command
+     *            the {@link TransactionalEditingDomain} on which execute this command
      * @param dTreeItem
      *            the {@link DTreeItem} to expand/collapse
      * @param expand
@@ -65,8 +64,7 @@ public class DTreeItemExpansionChangeCommand extends RecordingCommand {
      * @param globalContext
      *            the {@link GlobalContext} to synchronize the model.
      * @param domain
-     *            the {@link TransactionalEditingDomain} on which execute this
-     *            command
+     *            the {@link TransactionalEditingDomain} on which execute this command
      * @param dTreeItem
      *            the {@link DTreeItem} to expand/collapse
      * @param expand

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -68,8 +68,7 @@ public class DTreeRefresh {
     }
 
     /**
-     * Refreshes the tree lazily, i.e. does not refresh sub tree of collapsed
-     * {@link DTreeItemContainer}.
+     * Refreshes the tree lazily, i.e. does not refresh sub tree of collapsed {@link DTreeItemContainer}.
      * 
      * @param monitor
      *            a {@link IProgressMonitor} to use
@@ -82,8 +81,8 @@ public class DTreeRefresh {
      * Refreshes the tree.
      * 
      * @param fullRefresh
-     *            true to do a full refresh of {@link DTreeItemContainer} even
-     *            sub tree of collapsed {@link DTreeItemContainer}
+     *            true to do a full refresh of {@link DTreeItemContainer} even sub tree of collapsed
+     *            {@link DTreeItemContainer}
      * 
      * @param monitor
      *            a {@link IProgressMonitor} to use

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
+import org.eclipse.sirius.tree.business.internal.metamodel.helper.TreeModelHelper;
 import org.eclipse.sirius.tree.description.TreeItemTool;
 import org.eclipse.sirius.tree.description.TreeVariable;
 
@@ -100,12 +101,7 @@ public final class TreeHelper {
      * @return The corresponding variable or null if not found
      */
     public static TreeVariable getVariable(final TreeItemTool tool, final String name) {
-        for (final TreeVariable tableVariable : tool.getVariables()) {
-            if (name != null && name.equals(tableVariable.getName())) {
-                return tableVariable;
-            }
-        }
-        return null;
+        return TreeModelHelper.getVariable(tool, name);
     }
 
 }

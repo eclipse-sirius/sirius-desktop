@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo. 
+ * Copyright (c) 2015, 2021 Obeo. 
  * All rights reserved. This program
  * and the accompanying materials are made available under the terms of the
  * Eclipse Public License 2.0 which accompanies this distribution, and is
@@ -43,8 +43,7 @@ public class DTreeItemLocalRefreshCommand extends RecordingCommand {
      * @param dTreeItems
      *            the {@link DTreeItem} to refresh
      * @param fullRefresh
-     *            true to do a full refresh of the {@link DTreeItem} and its
-     *            children recursively
+     *            true to do a full refresh of the {@link DTreeItem} and its children recursively
      */
     public DTreeItemLocalRefreshCommand(TransactionalEditingDomain domain, GlobalContext globalContext, Collection<DTreeItem> dTreeItems, boolean fullRefresh) {
         super(domain, Messages.DTreeItemLocalRefreshCommand_refreshLocally);

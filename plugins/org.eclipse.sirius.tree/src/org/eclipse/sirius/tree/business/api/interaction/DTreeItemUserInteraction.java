@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,8 +26,7 @@ import org.eclipse.sirius.tree.business.internal.dialect.common.viewpoint.Global
 import org.eclipse.sirius.tree.tools.internal.Messages;
 
 /**
- * Class allowing to synchronizer a {@link DTreeItem} model according to its
- * semantic model.
+ * Class allowing to synchronizer a {@link DTreeItem} model according to its semantic model.
  * 
  * @author cbrun
  */
@@ -97,8 +96,7 @@ public class DTreeItemUserInteraction {
      * Refresh the content of the TreeItem.
      * 
      * @param fullRefresh
-     *            true to do a full refresh of the {@link DTreeItem} and its
-     *            children recursively
+     *            true to do a full refresh of the {@link DTreeItem} and its children recursively
      */
     public void refreshContent(boolean fullRefresh) {
         refreshContent(fullRefresh, new NullProgressMonitor());
@@ -108,8 +106,7 @@ public class DTreeItemUserInteraction {
      * Refresh the content of the TreeItem.
      * 
      * @param fullRefresh
-     *            true to do a full refresh of the {@link DTreeItem} and its
-     *            children recursively
+     *            true to do a full refresh of the {@link DTreeItem} and its children recursively
      * 
      * @param monitor
      *            a {@link IProgressMonitor} to give progression

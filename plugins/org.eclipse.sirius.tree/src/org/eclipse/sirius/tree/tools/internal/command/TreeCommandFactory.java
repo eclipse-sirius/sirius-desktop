@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -121,8 +121,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
      * Returns a command that can delete the specified element.
      * 
      * @param element
-     *            the element to delete (a {@link DLine} or a
-     *            {@link DTargetColumn}).
+     *            the element to delete (a {@link DLine} or a {@link DTargetColumn}).
      * @return a command that can delete the specified element.
      */
     @Override
@@ -160,8 +159,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
     }
 
     /**
-     * Check the delete availability from tool based on its condition
-     * expression.
+     * Check the delete availability from tool based on its condition expression.
      * 
      * @param element
      *            the DTreeElement
@@ -197,16 +195,13 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
     }
 
     /**
-     * Build a command that covers all the model operations corresponding to a
-     * the semantic container and a
+     * Build a command that covers all the model operations corresponding to a the semantic container and a
      * {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription}.
      * 
      * @param semanticCurrentElement
      *            the semantic current Element.
      * @param tool
-     *            the
-     *            {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription}
-     *            .
+     *            the {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription} .
      * @param containerView
      *            the container View
      * @return a command able to execute the tool.
@@ -262,14 +257,13 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
      * Create a command that creates a line.
      * 
      * @param lineContainer
-     *            container element in which the command should put the created
-     *            line.
+     *            container element in which the command should put the created line.
      * @param semanticCurrentElement
      *            the semantic current element
      * @param tool
      *            {@link CreateTool} used to build the command.
-     * @return a command able to create the line and putting it in the
-     *         container, corresponding to the {@link CreateTool}.
+     * @return a command able to create the line and putting it in the container, corresponding to the
+     *         {@link CreateTool}.
      */
     @Override
     public Command buildCreateLineCommandFromTool(final DTreeItemContainer lineContainer, final EObject semanticCurrentElement, final TreeItemCreationTool tool) {
@@ -298,8 +292,7 @@ public class TreeCommandFactory extends AbstractCommandFactory implements ITreeC
      * @param semanticElement
      *            the element from which the table will be created.
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of
-     *            {@link DTree} creation
+     *            a {@link IProgressMonitor} to show progression of {@link DTree} creation
      * @return a command that is able to create a table.
      */
     public DCommand buildCreateTreeFromDescription(final TreeDescription description, final EObject semanticElement, IProgressMonitor monitor) {
