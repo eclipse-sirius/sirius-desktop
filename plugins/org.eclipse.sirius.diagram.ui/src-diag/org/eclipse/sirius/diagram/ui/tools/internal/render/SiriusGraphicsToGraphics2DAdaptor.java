@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2004, 2019 IBM Corporation and others.
+ * Copyright (c) 2004, 2021 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -1060,7 +1060,8 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
 
             int height = fontInfo[0].getHeight();
 
-            float fsize = height * 96.0f / 72.0f; // default display DPI / default DPI of AWT
+            int dpi = Integer.getInteger("org.eclipse.gmf.runtime.draw2d.ui.render.dpi", DisplayUtils.getDisplay().getDPI().x); //$NON-NLS-1$
+            float fsize = (float) height * (float) dpi  / 72.0f;        // default display DPI / default DPI of AWT
             height = (int) fsize;
 
             int style = fontInfo[0].getStyle();
