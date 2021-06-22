@@ -101,9 +101,6 @@ public final class Messages {
     public static String TableToolVariables_TableElement;
 
     @TranslatableMessage
-    public static String Table_UnexpectedExceptionMessage;
-
-    @TranslatableMessage
     public static String Table_WrongStyleAttribute;
 
     // CHECKSTYLE:ON

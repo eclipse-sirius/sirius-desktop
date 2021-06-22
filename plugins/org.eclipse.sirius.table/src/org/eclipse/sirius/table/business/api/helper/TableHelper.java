@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.table.business.api.metamodel.helper.TableModelHelper;
 import org.eclipse.sirius.table.business.api.query.DCellQuery;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DColumn;
@@ -72,14 +73,12 @@ public final class TableHelper {
     }
 
     /**
-     * Caches the content of a table to optimize the performance of
-     * {@link #getCell(DLine, DColumn)}. This method must be called carefully
-     * when the model is not supposed to be modified. The method
-     * {@link #clearCache()} must be called just after the calls to
-     * {@link #getCell(DLine, DColumn)} are finished and that the model could be
-     * modified again.<BR>
-     * If the <code>table</code> is modified while the cache is enabled, the
-     * result of {@link #getCell(DLine, DColumn)} will be unpredictable.
+     * Caches the content of a table to optimize the performance of {@link #getCell(DLine, DColumn)}. This method must
+     * be called carefully when the model is not supposed to be modified. The method {@link #clearCache()} must be
+     * called just after the calls to {@link #getCell(DLine, DColumn)} are finished and that the model could be modified
+     * again.<BR>
+     * If the <code>table</code> is modified while the cache is enabled, the result of {@link #getCell(DLine, DColumn)}
+     * will be unpredictable.
      * 
      * @param table
      *            The line container to cache
@@ -156,8 +155,7 @@ public final class TableHelper {
      *            the cell line.
      * @param column
      *            the cell column.
-     * @return the option with cell corresponding to both lines and columns,
-     *         empty option if not found.
+     * @return the option with cell corresponding to both lines and columns, empty option if not found.
      */
     public static Option<DCell> getCell(final DLine line, final DColumn column) {
         DCell found = null;
@@ -180,8 +178,7 @@ public final class TableHelper {
     }
 
     /**
-     * Get the {@link DCell} in the {@link DTable} corresponding to the
-     * intersection of this line and column.
+     * Get the {@link DCell} in the {@link DTable} corresponding to the intersection of this line and column.
      * 
      * @param table
      *            The table in which seek
@@ -189,8 +186,7 @@ public final class TableHelper {
      *            The index of the line
      * @param columnIndex
      *            the index of the column
-     * @return the {@link DCell} in the {@link DTable} corresponding to the
-     *         intersection of this line and column.
+     * @return the {@link DCell} in the {@link DTable} corresponding to the intersection of this line and column.
      */
     public static DCell getCell(final DTable table, final int lineIndex, final int columnIndex) {
         DCell result = null;
@@ -209,15 +205,13 @@ public final class TableHelper {
     }
 
     /**
-     * Get the classifier of the attribute of the column. The column must be a
-     * DFeatureColumn
+     * Get the classifier of the attribute of the column. The column must be a DFeatureColumn
      * 
      * @param line
      *            The line for getting the column of the table
      * @param column
      *            The column
-     * @return the classifier of the attribute or null if not found or wrong
-     *         column type
+     * @return the classifier of the attribute or null if not found or wrong column type
      */
     public static EClassifier getEClassifier(final DLine line, final DColumn column) {
         EStructuralFeature feature = getEStructuralFeature(line, column);
@@ -228,15 +222,13 @@ public final class TableHelper {
     }
 
     /**
-     * Get the {@link EStructuralFeature} of the column. The column must be a
-     * DFeatureColumn
+     * Get the {@link EStructuralFeature} of the column. The column must be a DFeatureColumn
      * 
      * @param line
      *            The line for getting the column of the table
      * @param column
      *            The column
-     * @return The {@link EStructuralFeature} or null if not found or wrong
-     *         column type
+     * @return The {@link EStructuralFeature} or null if not found or wrong column type
      */
     public static EStructuralFeature getEStructuralFeature(final DLine line, final DColumn column) {
         if (column instanceof DFeatureColumn) {
@@ -296,17 +288,11 @@ public final class TableHelper {
      * @return The corresponding variable or null if not found
      */
     public static TableVariable getVariable(final TableTool tool, final String name) {
-        for (final TableVariable tableVariable : tool.getVariables()) {
-            if (name != null && name.equals(tableVariable.getName())) {
-                return tableVariable;
-            }
-        }
-        return null;
+        return TableModelHelper.getVariable(tool, name);
     }
 
     /**
-     * Test if the cell can be edited. The cell can be edited if it has a
-     * CellUpdater which provides a LabelEditTool.
+     * Test if the cell can be edited. The cell can be edited if it has a CellUpdater which provides a LabelEditTool.
      * 
      * @param cell
      *            The cell to test
@@ -324,10 +310,8 @@ public final class TableHelper {
     /**
      * Test if the cell can be edited. The cell can be edited if :
      * <UL>
-     * <LI>The cell is blank and it has a CellUpdater which provides a
-     * CellCreateTool</LI>
-     * <LI>The cell is not blank and it has a CellUpdater which provides a
-     * LabelEditTool</LI>
+     * <LI>The cell is blank and it has a CellUpdater which provides a CellCreateTool</LI>
+     * <LI>The cell is not blank and it has a CellUpdater which provides a LabelEditTool</LI>
      * </UL>
      * 
      * @param dLine
@@ -348,34 +332,27 @@ public final class TableHelper {
     }
 
     /**
-     * Search the associated createTool corresponding to the intersection of
-     * this line and column and return true if one is found.
+     * Search the associated createTool corresponding to the intersection of this line and column and return true if one
+     * is found.
      * 
      * @param line
-     *            The line for which we want to know if there is a create tool
-     *            (associated with the column)
+     *            The line for which we want to know if there is a create tool (associated with the column)
      * @param column
-     *            The column for which we want to know if there is a create tool
-     *            (associated with the line)
-     * @return true if a createTool exists for this intersection, false
-     *         otherwise
+     *            The column for which we want to know if there is a create tool (associated with the line)
+     * @return true if a createTool exists for this intersection, false otherwise
      */
     private static boolean canCreate(final DLine line, final DTargetColumn column) {
         return TableHelper.getCreateCellTool(line, column) != null;
     }
 
     /**
-     * Return the first CreateCellTool corresponding to the intersection of this
-     * line and column.
+     * Return the first CreateCellTool corresponding to the intersection of this line and column.
      * 
      * @param line
-     *            The line for which we want to know if there is a create tool
-     *            (associated with the column)
+     *            The line for which we want to know if there is a create tool (associated with the column)
      * @param column
-     *            The column for which we want to know if there is a create tool
-     *            (associated with the line)
-     * @return Return an optional (the first) CreateCellTool corresponding to
-     *         the intersection of this line and column
+     *            The column for which we want to know if there is a create tool (associated with the line)
+     * @return Return an optional (the first) CreateCellTool corresponding to the intersection of this line and column
      */
     public static Option<CreateCellTool> getCreateCellTool(final DLine line, final DColumn column) {
         final DTable table = TableHelper.getTable(line);
@@ -397,8 +374,7 @@ public final class TableHelper {
      * 
      * @param tableElement
      *            A table element
-     * @return true if the table description contains only one line mapping,
-     *         false otherwise
+     * @return true if the table description contains only one line mapping, false otherwise
      */
     public static boolean hasTableDescriptionOnlyOneLineMapping(final DTableElement tableElement) {
         final DTable table = TableHelper.getTable(tableElement);
@@ -413,8 +389,7 @@ public final class TableHelper {
      * 
      * @param mapping
      *            A table mapping element
-     * @return true if the table description contains only one line mapping,
-     *         false otherwise
+     * @return true if the table description contains only one line mapping, false otherwise
      */
     public static boolean hasTableDescriptionOnlyOneLineMapping(final TableMapping mapping) {
         return TableHelper.hasTableDescriptionOnlyOneLineMapping(TableHelper.getTableDescription(mapping));
@@ -425,8 +400,7 @@ public final class TableHelper {
      * 
      * @param tableDescription
      *            The table description
-     * @return true if the table description contains only one line mapping,
-     *         false otherwise
+     * @return true if the table description contains only one line mapping, false otherwise
      */
     private static boolean hasTableDescriptionOnlyOneLineMapping(final TableDescription tableDescription) {
         if (tableDescription != null) {
@@ -447,13 +421,11 @@ public final class TableHelper {
     }
 
     /**
-     * return the {@link TableDescription} containing the element if there is
-     * one.
+     * return the {@link TableDescription} containing the element if there is one.
      * 
      * @param mapping
      *            any table mapping element.
-     * @return the {@link TableDescription} containing the element if there is
-     *         one.
+     * @return the {@link TableDescription} containing the element if there is one.
      */
     public static TableDescription getTableDescription(final TableMapping mapping) {
         EObject container = mapping.eContainer();
@@ -467,16 +439,14 @@ public final class TableHelper {
     }
 
     /**
-     * Return an optional DTableElementStyle to use for the foreground of the
-     * cell intersection of line and column. The DCell corresponding to this
-     * intersection does not exist.
+     * Return an optional DTableElementStyle to use for the foreground of the cell intersection of line and column. The
+     * DCell corresponding to this intersection does not exist.
      * 
      * @param line
      *            The line of intersection
      * @param column
      *            The column of intersection
-     * @return an optional DTableElementStyle to use for the foreground of the
-     *         cell intersection of line and column.
+     * @return an optional DTableElementStyle to use for the foreground of the cell intersection of line and column.
      */
     public static Option<DTableElementStyle> getBackgroundStyleToApply(DLine line, DColumn column) {
         DTableElementStyle styleToApply = null;
@@ -527,16 +497,14 @@ public final class TableHelper {
     }
 
     /**
-     * Return an optional DTableElementStyle to use for the background of the
-     * cell intersection of line and column. The DCell corresponding to this
-     * intersection does not exist.
+     * Return an optional DTableElementStyle to use for the background of the cell intersection of line and column. The
+     * DCell corresponding to this intersection does not exist.
      * 
      * @param line
      *            The line of intersection
      * @param column
      *            The column of intersection
-     * @return an optional DTableElementStyle to use for the background of the
-     *         cell intersection of line and column.
+     * @return an optional DTableElementStyle to use for the background of the cell intersection of line and column.
      */
     public static Option<DTableElementStyle> getForegroundStyleToApply(DLine line, DColumn column) {
         DTableElementStyle styleToApply = null;

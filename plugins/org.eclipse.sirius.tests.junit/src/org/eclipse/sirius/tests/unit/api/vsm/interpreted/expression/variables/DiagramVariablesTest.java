@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,7 @@ import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.diagram.description.tool.ToolFactory;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
-import org.eclipse.sirius.table.business.internal.metamodel.TableToolVariables;
+import org.eclipse.sirius.table.business.internal.dialect.description.TableToolVariables;
 import org.eclipse.sirius.table.metamodel.table.description.TableCreationDescription;
 import org.eclipse.sirius.tests.support.api.AbstractInterpretedExpressionTestCase;
 import org.eclipse.sirius.tools.internal.interpreter.SiriusInterpreterContextFactory;
@@ -64,24 +64,20 @@ public class DiagramVariablesTest extends AbstractInterpretedExpressionTestCase 
         DiagramDescription diagramDescription = DescriptionFactory.eINSTANCE.createDiagramDescription();
         diagramDescription.setDefaultLayer(DescriptionFactory.eINSTANCE.createLayer());
 
-        NodeMapping createNodeMapping = org.eclipse.sirius.diagram.description.DescriptionFactory.eINSTANCE
-                .createNodeMapping();
+        NodeMapping createNodeMapping = org.eclipse.sirius.diagram.description.DescriptionFactory.eINSTANCE.createNodeMapping();
         diagramDescription.getDefaultLayer().getNodeMappings().add(createNodeMapping);
         createNodeMapping.setDomainClass("ecore.EClass");
 
-        EdgeMapping createEdgeMapping = org.eclipse.sirius.diagram.description.DescriptionFactory.eINSTANCE
-                .createEdgeMapping();
+        EdgeMapping createEdgeMapping = org.eclipse.sirius.diagram.description.DescriptionFactory.eINSTANCE.createEdgeMapping();
         diagramDescription.getDefaultLayer().getEdgeMappings().add(createEdgeMapping);
         createEdgeMapping.getSourceMapping().add(createNodeMapping);
         createEdgeMapping.getSourceMapping().add(createEdgeMapping);
 
         // Test
-        IInterpreterContext context = SiriusInterpreterContextFactory.createInterpreterContext(createEdgeMapping,
-                ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION);
+        IInterpreterContext context = SiriusInterpreterContextFactory.createInterpreterContext(createEdgeMapping, ToolPackage.Literals.ABSTRACT_TOOL_DESCRIPTION__PRECONDITION);
 
         Set<String> variables = context.getVariables().keySet();
-        assertTrue("The interpreter context for " + createEdgeMapping.getName()
-            + " should contains the variable container", variables.contains("container"));
+        assertTrue("The interpreter context for " + createEdgeMapping.getName() + " should contains the variable container", variables.contains("container"));
     }
 
     public void testInterpreterContextForAbstractToolPreconditionVariables() {
@@ -212,7 +208,8 @@ public class DiagramVariablesTest extends AbstractInterpretedExpressionTestCase 
         assertVariableExistence(createReconnectEdgeDescription, "element", variables);
 
         // check variables from create operation
-        assertVariableExistenceAndType(createReconnectEdgeDescription, "otherEnd", VariableType.fromStrings(Arrays.asList("diagram.DEdge","diagram.DDiagramElementContainer","diagram.DNode")), variables, variablesToType);
+        assertVariableExistenceAndType(createReconnectEdgeDescription, "otherEnd", VariableType.fromStrings(Arrays.asList("diagram.DEdge", "diagram.DDiagramElementContainer", "diagram.DNode")),
+                variables, variablesToType);
         assertVariableExistenceAndType(createReconnectEdgeDescription, "edgeView", "diagram.DEdge", variables, variablesToType);
     }
 }

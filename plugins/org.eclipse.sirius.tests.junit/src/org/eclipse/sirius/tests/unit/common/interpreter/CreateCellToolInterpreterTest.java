@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Obeo.
+ * Copyright (c) 2014, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,7 @@ import org.eclipse.sirius.common.tools.api.contentassist.ContentContext;
 import org.eclipse.sirius.common.tools.api.contentassist.ContentProposal;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
-import org.eclipse.sirius.table.business.internal.metamodel.TableToolVariables;
+import org.eclipse.sirius.table.business.internal.dialect.description.TableToolVariables;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
 import org.eclipse.sirius.table.metamodel.table.description.CrossTableDescription;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
@@ -45,8 +45,7 @@ import com.google.common.collect.Iterables;
  */
 public class CreateCellToolInterpreterTest extends TableTestCase {
     /**
-     * Ensures that the "Arg0" variable for the edit mask is available in
-     * auto-completion for a Create Cell Tool. See
+     * Ensures that the "Arg0" variable for the edit mask is available in auto-completion for a Create Cell Tool. See
      * https://bugs.eclipse.org/bugs/show_bug.cgi?id=428759
      */
     public void testEditMaskVariable() {

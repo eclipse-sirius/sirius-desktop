@@ -24,7 +24,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.table.business.internal.metamodel.TableToolVariables;
+import org.eclipse.sirius.table.business.internal.dialect.description.TableToolVariables;
 import org.eclipse.sirius.table.metamodel.table.description.CreateLineTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;
 import org.eclipse.sirius.table.metamodel.table.description.TableDescription;

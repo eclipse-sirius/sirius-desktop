@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.&#xD;&#xA;This program and the accompanying materials&#xD;&#xA;are made available under the terms of the Eclipse Public License v2.0&#xD;&#xA;which accompanies this distribution, and is available at&#xD;&#xA;https://www.eclipse.org/legal/epl-2.0/&#xD;&#xA;&#xD;&#xA;SPDX-License-Identifier: EPL-2.0&#xD;&#xA;&#xD;&#xA;Contributors:&#xD;&#xA;   Obeo - initial API and implementation"
+    modelDirectory="/org.eclipse.sirius.table.model/src-gen" creationIcons="false"
+    editDirectory="/org.eclipse.sirius.table.ui/src-gen" editorDirectory="" modelPluginID="org.eclipse.sirius.table.model"
+    modelName="Table" editPluginClass="org.eclipse.sirius.table.metamodel.table.provider.TableUIPlugin"
+    nonNLSMarkers="true" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    codeFormatting="true" testsDirectory="" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" editPluginID="org.eclipse.sirius.table.ui"
+    testsPluginID="org.eclipse.sirius.table.model.editor" runtimeVersion="2.3" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint"
+    importOrganizing="true" cleanup="true">
+  <foreignModel>table.ecore</foreignModel>
+  <genPackages prefix="Table" basePackage="org.eclipse.sirius.table.metamodel" disposableProviderFactory="true"
+      ecorePackage="table.ecore#/">
+    <genClasses ecoreClass="table.ecore#//DTable">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//DTable/columns"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DTable/headerColumnWidth"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference table.ecore#//DTable/description"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="table.ecore#//DTableElement">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference table.ecore#//DTableElement/tableElementMapping"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="table.ecore#//LineContainer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//LineContainer/lines"/>
+    </genClasses>
+    <genClasses ecoreClass="table.ecore#//DLine">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DLine/label"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference table.ecore#//DLine/originMapping"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DLine/visible"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DLine/collapsed"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference table.ecore#//DLine/cells"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference table.ecore#//DLine/container"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" propertyDescription=""
+          ecoreFeature="ecore:EReference table.ecore#//DLine/orderedCells"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference table.ecore#//DLine/currentStyle"/>
+    </genClasses>
+    <genClasses ecoreClass="table.ecore#//DCell">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DCell/label"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference table.ecore#//DCell/line"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference table.ecore#//DCell/column"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference table.ecore#//DCell/currentStyle"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference table.ecore#//DCell/updater"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference table.ecore#//DCell/intersectionMapping"/>
+    </genClasses>
+    <genClasses ecoreClass="table.ecore#//DCellStyle">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference table.ecore#//DCellStyle/foregroundStyleOrigin"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference table.ecore#//DCellStyle/backgroundStyleOrigin"/>
+    </genClasses>
+    <genClasses ecoreClass="table.ecore#//DColumn">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DColumn/label"/>
+      <genFeatures notify="false" createChild="false" propertyDescription="" propertySortChoices="true"
+          ecoreFeature="ecore:EReference table.ecore#//DColumn/cells"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference table.ecore#//DColumn/originMapping"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference table.ecore#//DColumn/table"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" propertyDescription=""
+          ecoreFeature="ecore:EReference table.ecore#//DColumn/orderedCells"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DColumn/visible"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DColumn/width"/>
+      <genFeatures property="None" children="true" createChild="true" propertyDescription=""
+          ecoreFeature="ecore:EReference table.ecore#//DColumn/currentStyle"/>
+    </genClasses>
+    <genClasses ecoreClass="table.ecore#//DTargetColumn"/>
+    <genClasses ecoreClass="table.ecore#//DFeatureColumn">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DFeatureColumn/featureName"/>
+    </genClasses>
+    <genClasses ecoreClass="table.ecore#//DTableElementStyle">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DTableElementStyle/labelSize"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DTableElementStyle/labelFormat"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DTableElementStyle/defaultForegroundStyle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DTableElementStyle/defaultBackgroundStyle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DTableElementStyle/foregroundColor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute table.ecore#//DTableElementStyle/backgroundColor"/>
+    </genClasses>
+    <nestedGenPackages prefix="Description" basePackage="org.eclipse.sirius.table.metamodel.table"
+        disposableProviderFactory="true" ecorePackage="table.ecore#//description">
+      <genClasses ecoreClass="table.ecore#//description/TableDescription">
+        <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="The precondition is an expression preventing the creation of a table.\n If the precondition is set and the expression returns false on the root table\n element, then the table won't be created."
+            ecoreFeature="ecore:EAttribute table.ecore#//description/TableDescription/preconditionExpression"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="The type of the root table element. For instance you may want to create a table on UML2 Class,\n then the root domain class will probably be 'Package'. On the other side if you want a table \n displaying the whole classes model, then the root domain class is 'Model' in UML2."
+            ecoreFeature="ecore:EAttribute table.ecore#//description/TableDescription/domainClass"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/TableDescription/ownedRepresentationCreationDescriptions"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference table.ecore#//description/TableDescription/reusedRepresentationCreationDescriptions"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference table.ecore#//description/TableDescription/allRepresentationCreationDescriptions"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/TableDescription/ownedRepresentationNavigationDescriptions"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference table.ecore#//description/TableDescription/reusedRepresentationNavigationDescriptions"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference table.ecore#//description/TableDescription/allRepresentationNavigationDescriptions"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/TableDescription/ownedLineMappings"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference table.ecore#//description/TableDescription/reusedLineMappings"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference table.ecore#//description/TableDescription/allLineMappings"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/TableDescription/ownedCreateLine"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference table.ecore#//description/TableDescription/reusedCreateLine"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference table.ecore#//description/TableDescription/allCreateLine"/>
+        <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="The initial width of the column header (calculated if not available)."
+            ecoreFeature="ecore:EAttribute table.ecore#//description/TableDescription/initialHeaderColumnWidth"/>
+        <genFeatures property="None" createChild="false" ecoreFeature="ecore:EReference table.ecore#//description/TableDescription/importedElements"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/EditionTableDescription">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/EditionTableDescription/ownedColumnMappings"/>
+        <genFeatures property="None" notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference table.ecore#//description/EditionTableDescription/reusedColumnMappings"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference table.ecore#//description/EditionTableDescription/allColumnMappings"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/CrossTableDescription">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/CrossTableDescription/ownedColumnMappings"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/CrossTableDescription/intersection"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/CrossTableDescription/createColumn"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/TableMapping">
+        <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="Expression used to associate more than one semantic element to the viewpoint element."
+            ecoreFeature="ecore:EAttribute table.ecore#//description/TableMapping/semanticElements"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/LineMapping">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/LineMapping/ownedSubLines"/>
+        <genFeatures notify="false" createChild="false" propertySortChoices="true"
+            ecoreFeature="ecore:EReference table.ecore#//description/LineMapping/reusedSubLines"/>
+        <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference table.ecore#//description/LineMapping/allSubLines"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="Import"
+            propertyDescription="Line mappings wich reused this mapping as sub-line."
+            propertySortChoices="true" ecoreFeature="ecore:EReference table.ecore#//description/LineMapping/reusedInMappings"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Type of the element represented by the Line."
+            ecoreFeature="ecore:EAttribute table.ecore#//description/LineMapping/domainClass"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/LineMapping/create"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/LineMapping/delete"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Restrict the list of elements to consider before creating the graphical elements. If it is not set,\nthen the whole model hiearchy will be browsed and any element of the given type validating\nthe precondition expression will cause the creation of a graphical element. If you set this\nattribute then only the elements returned by the expression evaluation will be considered."
+            ecoreFeature="ecore:EAttribute table.ecore#//description/LineMapping/semanticCandidatesExpression"/>
+        <genFeatures createChild="false" propertyCategory="Label" ecoreFeature="ecore:EAttribute table.ecore#//description/LineMapping/headerLabelExpression"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/ColumnMapping">
+        <genFeatures createChild="false" propertyCategory="Label" ecoreFeature="ecore:EAttribute table.ecore#//description/ColumnMapping/headerLabelExpression"/>
+        <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="The initial width of the column (calculated if not available)."
+            ecoreFeature="ecore:EAttribute table.ecore#//description/ColumnMapping/initialWidth"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/ElementColumnMapping">
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Type of the element represented by the Column."
+            ecoreFeature="ecore:EAttribute table.ecore#//description/ElementColumnMapping/domainClass"/>
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="Restrict the list of elements to consider before creating the graphical elements. If it is not set,\nthen the whole model hiearchy will be browsed and any element of the given type validating\nthe precondition expression will cause the creation of a graphical element. If you set this\nattribute then only the elements returned by the expression evaluation will be considered."
+            ecoreFeature="ecore:EAttribute table.ecore#//description/ElementColumnMapping/semanticCandidatesExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/ElementColumnMapping/create"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/ElementColumnMapping/delete"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/FeatureColumnMapping">
+        <genFeatures createChild="false" propertyCategory="General" propertyDescription="The name of the feature."
+            ecoreFeature="ecore:EAttribute table.ecore#//description/FeatureColumnMapping/featureName"/>
+        <genFeatures createChild="false" propertyCategory="Label" propertyDescription="The label to display in the cell."
+            ecoreFeature="ecore:EAttribute table.ecore#//description/FeatureColumnMapping/labelExpression"/>
+        <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="An expression to get the parent of the feature. By default, the parent of the feature is the semantic element of the line. Remember, if this expression is used, you should probably add a LabelEdit tool to create intermediate objects if they don't exist."
+            ecoreFeature="ecore:EAttribute table.ecore#//description/FeatureColumnMapping/featureParentExpression"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/CellUpdater">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/CellUpdater/directEdit"/>
+        <genFeatures createChild="false" propertyCategory="Behavior" ecoreFeature="ecore:EAttribute table.ecore#//description/CellUpdater/canEdit"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/CellUpdater/cellEditor"/>
+        <genOperations ecoreOperation="table.ecore#//description/CellUpdater/getLabelComputationExpression"/>
+        <genOperations ecoreOperation="table.ecore#//description/CellUpdater/getCreateCell"/>
+      </genClasses>
+      <genClasses image="false" ecoreClass="table.ecore#//description/StyleUpdater">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/StyleUpdater/defaultForeground"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/StyleUpdater/foregroundConditionalStyle"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/StyleUpdater/defaultBackground"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/StyleUpdater/backgroundConditionalStyle"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/IntersectionMapping">
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertyDescription="Mapping concerned by this intersection" propertySortChoices="true"
+            ecoreFeature="ecore:EReference table.ecore#//description/IntersectionMapping/lineMapping"/>
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertyDescription="Mapping concerned by this intersection" propertySortChoices="true"
+            ecoreFeature="ecore:EReference table.ecore#//description/IntersectionMapping/columnMapping"/>
+        <genFeatures createChild="false" propertyCategory="Label" propertyDescription="The label to display in the cell."
+            ecoreFeature="ecore:EAttribute table.ecore#//description/IntersectionMapping/labelExpression"/>
+        <genFeatures createChild="false" propertyCategory="Domain Based" ecoreFeature="ecore:EAttribute table.ecore#//description/IntersectionMapping/useDomainClass"/>
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute table.ecore#//description/IntersectionMapping/columnFinderExpression"/>
+        <genFeatures createChild="false" propertyCategory="Domain Based" ecoreFeature="ecore:EAttribute table.ecore#//description/IntersectionMapping/lineFinderExpression"/>
+        <genFeatures createChild="false" propertyCategory="Domain Based" propertyDescription="Restrict the list of elements to consider before creating the graphical elements. If it is not set,\nthen the whole model hiearchy will be browsed and any element of the given type validating\nthe precondition expression will cause the creation of a graphical element. If you set this\nattribute then only the elements returned by the expression evaluation will be considered."
+            ecoreFeature="ecore:EAttribute table.ecore#//description/IntersectionMapping/semanticCandidatesExpression"/>
+        <genFeatures createChild="false" propertyCategory="Domain Based" propertyDescription="Type of the element represented by the Cell."
+            ecoreFeature="ecore:EAttribute table.ecore#//description/IntersectionMapping/domainClass"/>
+        <genFeatures createChild="false" propertyCategory="Advanced" propertyDescription="An expression guarding the effect if evaluated to false."
+            ecoreFeature="ecore:EAttribute table.ecore#//description/IntersectionMapping/preconditionExpression"/>
+        <genFeatures children="true" createChild="true" propertySortChoices="true"
+            ecoreFeature="ecore:EReference table.ecore#//description/IntersectionMapping/create"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/TableTool">
+        <genFeatures property="None" children="true" createChild="false" ecoreFeature="ecore:EReference table.ecore#//description/TableTool/variables"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/TableTool/firstModelOperation"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/LabelEditTool">
+        <genFeatures property="None" children="true" createChild="true" propertyCategory=""
+            ecoreFeature="ecore:EReference table.ecore#//description/LabelEditTool/mask"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/CreateTool"/>
+      <genClasses ecoreClass="table.ecore#//description/CreateColumnTool">
+        <genFeatures property="None" notify="false" createChild="false" propertyCategory=""
+            ecoreFeature="ecore:EReference table.ecore#//description/CreateColumnTool/mapping"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/CreateCrossColumnTool">
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertySortChoices="true" ecoreFeature="ecore:EReference table.ecore#//description/CreateCrossColumnTool/mapping"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/CreateLineTool">
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertyDescription="" propertySortChoices="true" ecoreFeature="ecore:EReference table.ecore#//description/CreateLineTool/mapping"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/CreateCellTool">
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/CreateCellTool/mask"/>
+        <genFeatures property="None" notify="false" createChild="false" propertyCategory="General"
+            ecoreFeature="ecore:EReference table.ecore#//description/CreateCellTool/mapping"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/DeleteTool"/>
+      <genClasses ecoreClass="table.ecore#//description/DeleteColumnTool">
+        <genFeatures property="None" notify="false" createChild="false" propertyCategory="General"
+            ecoreFeature="ecore:EReference table.ecore#//description/DeleteColumnTool/mapping"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/DeleteLineTool">
+        <genFeatures property="None" notify="false" createChild="false" propertyCategory="General"
+            ecoreFeature="ecore:EReference table.ecore#//description/DeleteLineTool/mapping"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/ForegroundStyleDescription">
+        <genFeatures createChild="false" propertyCategory="Label" ecoreFeature="ecore:EAttribute table.ecore#//description/ForegroundStyleDescription/labelSize"/>
+        <genFeatures createChild="false" propertyCategory="Label" ecoreFeature="ecore:EAttribute table.ecore#//description/ForegroundStyleDescription/labelFormat"/>
+        <genFeatures createChild="false" propertyCategory="Color" propertyDescription=""
+            ecoreFeature="ecore:EReference table.ecore#//description/ForegroundStyleDescription/foreGroundColor"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/BackgroundStyleDescription">
+        <genFeatures createChild="false" propertyCategory="Color" ecoreFeature="ecore:EReference table.ecore#//description/BackgroundStyleDescription/backgroundColor"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/ForegroundConditionalStyle">
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute table.ecore#//description/ForegroundConditionalStyle/predicateExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/ForegroundConditionalStyle/style"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/BackgroundConditionalStyle">
+        <genFeatures createChild="false" propertyCategory="General" ecoreFeature="ecore:EAttribute table.ecore#//description/BackgroundConditionalStyle/predicateExpression"/>
+        <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference table.ecore#//description/BackgroundConditionalStyle/style"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/TableVariable">
+        <genFeatures createChild="false" propertyCategory="Documentation" ecoreFeature="ecore:EAttribute table.ecore#//description/TableVariable/documentation"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/TableCreationDescription">
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertySortChoices="true" ecoreFeature="ecore:EReference table.ecore#//description/TableCreationDescription/tableDescription"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/TableNavigationDescription">
+        <genFeatures notify="false" createChild="false" propertyCategory="General"
+            propertySortChoices="true" ecoreFeature="ecore:EReference table.ecore#//description/TableNavigationDescription/tableDescription"/>
+      </genClasses>
+      <genClasses ecoreClass="table.ecore#//description/CellEditorTool">
+        <genFeatures documentation="The qualified name of the CellEditorFactory class to provide a CellEditor. This class This class must implement \&quot;org.eclipse.sirius.table.ui.tools.api.editor.ITableCellEditorFactory\&quot;."
+            createChild="false" propertyDescription="The qualified name of the CellEditorFactory class to provide a CellEditor. This class must implement \&quot;org.eclipse.sirius.table.ui.tools.api.editor.ITableCellEditorFactory\&quot;."
+            ecoreFeature="ecore:EAttribute table.ecore#//description/CellEditorTool/qualifiedClassName"/>
+      </genClasses>
+    </nestedGenPackages>
+  </genPackages>
+</genmodel:GenModel>

@@ -25,7 +25,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.table.business.api.helper.TableHelper;
-import org.eclipse.sirius.table.business.internal.metamodel.TableToolVariables;
+import org.eclipse.sirius.table.business.internal.dialect.description.TableToolVariables;
 import org.eclipse.sirius.table.metamodel.table.description.BackgroundConditionalStyle;
 import org.eclipse.sirius.table.metamodel.table.description.CreateCellTool;
 import org.eclipse.sirius.table.metamodel.table.description.DescriptionFactory;

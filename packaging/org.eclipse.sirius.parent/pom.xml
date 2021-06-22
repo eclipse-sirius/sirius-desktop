@@ -345,6 +345,7 @@
         <module>../../plugins/org.eclipse.sirius.diagram.formatdata</module>
         <module>../../plugins/org.eclipse.sirius.ecore.extender</module>
         <module>../../plugins/org.eclipse.sirius.synchronizer</module>
+        <module>../../plugins/org.eclipse.sirius.table.model</module>
         <module>../../plugins/org.eclipse.sirius.table</module>
         <module>../../plugins/org.eclipse.sirius.tree.model</module>
         <module>../../plugins/org.eclipse.sirius.tree</module>

@@ -15,19 +15,7 @@
 
 <plugin>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <package
-            uri="http://www.eclipse.org/sirius/table/1.1.0"
-            class="org.eclipse.sirius.table.metamodel.table.TablePackage"
-            genModel="model/table.genmodel"/>
-   </extension>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <package
-            uri="http://www.eclipse.org/sirius/table/description/1.1.0"
-            class="org.eclipse.sirius.table.metamodel.table.description.DescriptionPackage"
-            genModel="model/table.genmodel"/>
-   </extension>
    
     <extension
          point="org.eclipse.sirius.dialect">
