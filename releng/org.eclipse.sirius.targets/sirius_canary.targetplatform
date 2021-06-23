@@ -109,7 +109,7 @@ location GMF-Notation-LastSuccessful "https://ci.eclipse.org/gmf-runtime/job/gmf
 	org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
 }
 
-location GMF-Runtime-1.13.1rc1 "https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S202102251702/" {
+location GMF-Runtime-1.14.0rc1 "https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S202104161416/" {
 	org.eclipse.gmf.runtime.sdk.feature.group lazy
 }
 //location GMF-Runtime-LastSuccessful "https://ci.eclipse.org/gmf-runtime/job/gmf-runtime-master/PLATFORM=photon,jdk=oracle-jdk8-latest,label=migration/lastSuccessfulBuild/artifact/update-site/" {

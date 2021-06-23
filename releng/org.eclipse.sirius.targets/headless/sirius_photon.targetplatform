@@ -3,7 +3,7 @@ target "sirius_headless_photon"
 include "../modules/orbit.tpd"
 include "../modules/elk-0.7.tpd"
 include "../modules/shared-license.tpd"
-include "../modules/gmf-runtime-1.13.tpd"
+include "../modules/gmf-runtime-1.14.tpd"
 
 with source, requirements
 

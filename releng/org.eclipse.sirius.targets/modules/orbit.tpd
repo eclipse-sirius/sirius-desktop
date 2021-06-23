@@ -1,6 +1,6 @@
 target "orbit" with source, requirements
 
-location Orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R20190602212107/repository" {
+location Orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R20210602031627/repository" {
     org.apache.log4j lazy
     org.easymock lazy
     org.hamcrest.library lazy
@@ -11,4 +11,6 @@ location Orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R201906
     ch.qos.logback.core [1.0.7,1.0.8)
     org.apache.xalan 2.7.1
     org.antlr.runtime [4.7.1,4.7.2)
+    org.apache.batik.ext [1.14.0,1.14.1)
+    org.apache.batik.codec [1.14.0,1.14.1)
 }
