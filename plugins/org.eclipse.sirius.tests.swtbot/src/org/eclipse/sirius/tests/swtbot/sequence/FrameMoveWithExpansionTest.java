@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,11 +12,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot.sequence;
 
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionUseEditPart;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
@@ -52,14 +52,17 @@ public class FrameMoveWithExpansionTest extends AbstractDefaultModelSequenceTest
         return DATA_UNIT_DIR + "frames/";
     }
 
+    @Override
     protected String getSemanticModel() {
         return "frames_move_with_expansion.interactions";
     }
 
+    @Override
     protected String getTypesSemanticModel() {
         return "types.ecore";
     }
 
+    @Override
     protected String getSessionModel() {
         return "frames_move_with_expansion.aird";
     }

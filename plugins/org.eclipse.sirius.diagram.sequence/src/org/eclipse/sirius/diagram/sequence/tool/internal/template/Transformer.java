@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Obeo.
+ * Copyright (c) 2014, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,11 +10,10 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.sequence.template;
+package org.eclipse.sirius.diagram.sequence.tool.internal.template;
 
 /**
- * Simple interface to implement a transformation from an input value to an
- * output value.
+ * Simple interface to implement a transformation from an input value to an output value.
  * 
  * @param <F>
  *            the type of the input value.

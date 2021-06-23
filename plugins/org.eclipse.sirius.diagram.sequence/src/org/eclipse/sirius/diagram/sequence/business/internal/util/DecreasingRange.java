@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2019, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.util;
 
-import org.eclipse.sirius.diagram.sequence.util.Range;
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 
 /**
  * Specific {@link Range} accepting decreasing range (lower is superior to upper).

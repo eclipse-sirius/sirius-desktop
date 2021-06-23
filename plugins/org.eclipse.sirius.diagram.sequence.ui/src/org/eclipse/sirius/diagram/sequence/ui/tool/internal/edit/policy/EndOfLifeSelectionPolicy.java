@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.gmf.runtime.emf.commands.core.command.CompositeTransactionalC
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.EndOfLife;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
@@ -46,7 +47,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDi
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceGraphicalHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.EditPartsHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.SequenceDiagramEPQuery;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SpecificBorderItemSelectionEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
@@ -56,8 +56,8 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import com.google.common.base.Preconditions;
 
 /**
- * This policy controls the moves of {@link EndOfLifeEditPart}s, and in
- * particular how such moves actually resize the parent lifeline.
+ * This policy controls the moves of {@link EndOfLifeEditPart}s, and in particular how such moves actually resize the
+ * parent lifeline.
  * 
  * @author pcdavid
  */
@@ -129,8 +129,7 @@ public class EndOfLifeSelectionPolicy extends SpecificBorderItemSelectionEditPol
     }
 
     /**
-     * Modifies the requested moves so that the part only moves vertically.
-     * Horizontal motion is disabled/ignored.
+     * Modifies the requested moves so that the part only moves vertically. Horizontal motion is disabled/ignored.
      */
     private void constrainMoveVertically(Request request) {
         if (request instanceof ChangeBoundsRequest) {
@@ -148,17 +147,14 @@ public class EndOfLifeSelectionPolicy extends SpecificBorderItemSelectionEditPol
         if (lep != null) {
             if (destroyed) {
                 /*
-                 * Moving a real EOL (i.e. one which represents the explicit
-                 * destruction of the message) only resizes the corresponding
-                 * lifeline.
+                 * Moving a real EOL (i.e. one which represents the explicit destruction of the message) only resizes
+                 * the corresponding lifeline.
                  */
                 addLifelineResizeCommand(self, cbr, ctc, lep);
             } else {
                 /*
-                 * Otherwise the EOL is just a handle to control the vertical
-                 * range of the whole scenario, so we resize all the lifelines
-                 * which are free, i.e. not explicitly destroyed at some
-                 * specific position.
+                 * Otherwise the EOL is just a handle to control the vertical range of the whole scenario, so we resize
+                 * all the lifelines which are free, i.e. not explicitly destroyed at some specific position.
                  */
                 SequenceDiagramEditPart diagram = EditPartsHelper.getSequenceDiagramPart(self);
                 for (LifelineEditPart lifeline : new SequenceDiagramEPQuery(diagram).getAllLifelines()) {

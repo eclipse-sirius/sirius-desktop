@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,6 +33,7 @@ import org.eclipse.gmf.runtime.diagram.ui.requests.CreateConnectionViewRequest;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -49,7 +50,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.validator.Destr
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceGraphicalHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceMessagesRouter;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.ui.business.internal.view.EdgeLayoutData;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
@@ -57,10 +57,9 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
- * This edit policy is overridden to use our own connection router. This way
- * during the creation of a message to self, the feedback will just be an edge
- * between the first click and the pointer, instead of a polyline connected to
- * the bottom of the source edit part (lifeline).
+ * This edit policy is overridden to use our own connection router. This way during the creation of a message to self,
+ * the feedback will just be an edge between the first click and the pointer, instead of a polyline connected to the
+ * bottom of the source edit part (lifeline).
  * 
  * @author smonnier
  * 
@@ -68,8 +67,7 @@ import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 public class SequenceSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNodeEditPolicy {
 
     /**
-     * Constant used to store the location in draw2d absolute coordinates of the
-     * click on the {@link EdgeTarget} source.
+     * Constant used to store the location in draw2d absolute coordinates of the click on the {@link EdgeTarget} source.
      */
     protected static final String DRAW2D_EDGE_LOCATION_SOURCE = "edge.absolute.location.source"; //$NON-NLS-1$
 
@@ -89,11 +87,9 @@ public class SequenceSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNodeEd
     }
 
     /**
-     * Overridden to use LayerConstants.SCALED_FEEDBACK_LAYER instead of
-     * LayerConstants.FEEDBACK_LAYER, to have connection creation feedback
-     * scalable with zoom & scroll. If LayerConstants.SCALED_FEEDBACK_LAYER
-     * layer not available, return by default a LayerConstants.FEEDBACK_LAYER
-     * layer.
+     * Overridden to use LayerConstants.SCALED_FEEDBACK_LAYER instead of LayerConstants.FEEDBACK_LAYER, to have
+     * connection creation feedback scalable with zoom & scroll. If LayerConstants.SCALED_FEEDBACK_LAYER layer not
+     * available, return by default a LayerConstants.FEEDBACK_LAYER layer.
      * 
      * {@inheritDoc}
      */
@@ -242,9 +238,8 @@ public class SequenceSiriusGraphicalNodeEditPolicy extends SiriusGraphicalNodeEd
     }
 
     /**
-     * The snap to grid should be disabled in sequence diagram, but to avoid
-     * confusion the specific method for edge behavior with snap to grid is
-     * disabled.
+     * The snap to grid should be disabled in sequence diagram, but to avoid confusion the specific method for edge
+     * behavior with snap to grid is disabled.
      * 
      * {@inheritDoc}
      */

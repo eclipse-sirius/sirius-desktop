@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.tool.EdgeCreationDescription;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
@@ -43,7 +44,6 @@ import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceGraphicalHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.EditPartsHelper;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.ui.internal.view.factories.ViewLocationHint;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
@@ -52,8 +52,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.edit.command.CommandFactory;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
- * Helper class to share code between different kinds of edit parts when
- * inheritance is not possible or inconvenient.
+ * Helper class to share code between different kinds of edit parts when inheritance is not possible or inconvenient.
  * 
  * @author pcdavid, smonnier, mporhel
  */
@@ -63,8 +62,7 @@ public final class SequenceEditPartsOperations {
     }
 
     /**
-     * Add graphical and semantic synchronize commands to do a full refresh of
-     * the semantic and graphical orderings.
+     * Add graphical and semantic synchronize commands to do a full refresh of the semantic and graphical orderings.
      * 
      * @param self
      *            the edit part which created the base command.
@@ -80,8 +78,7 @@ public final class SequenceEditPartsOperations {
     }
 
     /**
-     * Add graphical and semantic synchronize commands to do a full refresh of
-     * the semantic and graphical orderings.
+     * Add graphical and semantic synchronize commands to do a full refresh of the semantic and graphical orderings.
      * 
      * @param self
      *            the edit part which created the base command.
@@ -94,8 +91,7 @@ public final class SequenceEditPartsOperations {
     }
 
     /**
-     * Append a command to refresh the graphical ordering of the sequence
-     * diagram containing the specified edit part.
+     * Append a command to refresh the graphical ordering of the sequence diagram containing the specified edit part.
      * 
      * @param cc
      *            the target CompositeTransactionalCommand.
@@ -124,14 +120,13 @@ public final class SequenceEditPartsOperations {
     }
 
     /**
-     * Append a command to synchronize the semantic ordering of the specified
-     * event.
+     * Append a command to synchronize the semantic ordering of the specified event.
      * 
      * @param cc
      *            the target CompositeTransactionalCommand.
      * @param event
-     *            the event which has moved graphically and whose semantic
-     *            ordering should be updated to match the new position.
+     *            the event which has moved graphically and whose semantic ordering should be updated to match the new
+     *            position.
      * @param set
      */
     public static void addSynchronizeSemanticOrderingCommand(CompositeTransactionalCommand cc, ISequenceEvent event) {
@@ -139,14 +134,13 @@ public final class SequenceEditPartsOperations {
     }
 
     /**
-     * Append a command to synchronize the semantic ordering of the specified
-     * event.
+     * Append a command to synchronize the semantic ordering of the specified event.
      * 
      * @param cc
      *            the target CompositeTransactionalCommand.
      * @param event
-     *            the event which has moved graphically and whose semantic
-     *            ordering should be updated to match the new position.
+     *            the event which has moved graphically and whose semantic ordering should be updated to match the new
+     *            position.
      * @param selection
      *            additionnal events to reorder.
      */
@@ -155,14 +149,13 @@ public final class SequenceEditPartsOperations {
     }
 
     /**
-     * Append a command to synchronize the semantic ordering of the specified
-     * event.
+     * Append a command to synchronize the semantic ordering of the specified event.
      * 
      * @param cc
      *            the target CompositeTransactionalCommand.
      * @param instanceRole
-     *            the instance role which has moved graphically and whose
-     *            semantic ordering should be updated to match the new position.
+     *            the instance role which has moved graphically and whose semantic ordering should be updated to match
+     *            the new position.
      * @param set
      */
     public static void addSynchronizeSemanticOrderingCommand(CompositeTransactionalCommand cc, InstanceRole instanceRole) {
@@ -170,14 +163,13 @@ public final class SequenceEditPartsOperations {
     }
 
     /**
-     * Append a command to synchronize the semantic ordering of the specified
-     * event.
+     * Append a command to synchronize the semantic ordering of the specified event.
      * 
      * @param cc
      *            the target CompositeTransactionalCommand.
      * @param instanceRole
-     *            the instance role which has moved graphically and whose
-     *            semantic ordering should be updated to match the new position.
+     *            the instance role which has moved graphically and whose semantic ordering should be updated to match
+     *            the new position.
      * @param selection
      *            additionnal instance roles to reorder.
      */
@@ -186,8 +178,8 @@ public final class SequenceEditPartsOperations {
     }
 
     /**
-     * Registers an edit part in the viewer's registry using the specified
-     * <code>DDiagramElement</code> of <code>DDiagram</code> as key.
+     * Registers an edit part in the viewer's registry using the specified <code>DDiagramElement</code> of
+     * <code>DDiagram</code> as key.
      * 
      * @param self
      *            the edit part to register.
@@ -199,8 +191,8 @@ public final class SequenceEditPartsOperations {
     }
 
     /**
-     * Unregisters an edit part in the viewer's registry using the specified
-     * <code>DDiagramElement</code> of <code>DDiagram</code> as key.
+     * Unregisters an edit part in the viewer's registry using the specified <code>DDiagramElement</code> of
+     * <code>DDiagram</code> as key.
      * 
      * @param self
      *            the edit part to unregister.
@@ -215,16 +207,14 @@ public final class SequenceEditPartsOperations {
     }
 
     /**
-     * Configures a bordered node to appear on the given side and at the given
-     * offset of its parent part.
+     * Configures a bordered node to appear on the given side and at the given offset of its parent part.
      * 
      * @param self
      *            the bordered node.
      * @param side
      *            the side of the parent on which the node should be.
      * @param offset
-     *            the offset (relative to the parent) at which the node should
-     *            be placed.
+     *            the offset (relative to the parent) at which the node should be placed.
      */
     public static void setBorderItemLocation(AbstractBorderItemEditPart self, int side, Dimension offset) {
         IBorderItemLocator borderItemLocator = self.getBorderItemLocator();
@@ -236,8 +226,7 @@ public final class SequenceEditPartsOperations {
     }
 
     /**
-     * Shared implementation of most of
-     * SiriusBaseItemSemanticEditPolicy.buildCreateEdgeCommand() for use in
+     * Shared implementation of most of SiriusBaseItemSemanticEditPolicy.buildCreateEdgeCommand() for use in
      * ExecutionSemanticEditPolicy and InstanceRoleSemanticEditPolicy.
      * 
      * @param self
@@ -253,8 +242,7 @@ public final class SequenceEditPartsOperations {
      * @param edgeCreationDescription
      *            the tool to use to create the edge.
      * @param cmdFactoryProvider
-     *            the command factory provider to use to build a command from
-     *            the tool.
+     *            the command factory provider to use to build a command from the tool.
      */
     public static void buildCreateEdgeCommand(IGraphicalEditPart self, CompoundCommand result, CreateConnectionRequest request, EdgeTarget source, EdgeTarget target,
             EdgeCreationDescription edgeCreationDescription, IDiagramCommandFactoryProvider cmdFactoryProvider) {
@@ -299,8 +287,7 @@ public final class SequenceEditPartsOperations {
     }
 
     /**
-     * Common implementation of
-     * {@link ISequenceEventEditPart#getVerticalRange()}.
+     * Common implementation of {@link ISequenceEventEditPart#getVerticalRange()}.
      * 
      * @param self
      *            the event.
@@ -312,8 +299,7 @@ public final class SequenceEditPartsOperations {
     }
 
     /**
-     * Common implementation of
-     * {@link ISequenceEventEditPart#setVerticalRange()}.
+     * Common implementation of {@link ISequenceEventEditPart#setVerticalRange()}.
      * 
      * @param self
      *            the event.

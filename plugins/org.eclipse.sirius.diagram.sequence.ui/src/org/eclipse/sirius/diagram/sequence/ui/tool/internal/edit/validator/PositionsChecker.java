@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,13 +16,13 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.State;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 
 import com.google.common.base.Function;
 import com.google.common.base.Predicate;
@@ -107,6 +107,7 @@ public class PositionsChecker {
 
         Set<Integer> invalidPositions = new HashSet<>();
         Iterables.addAll(invalidPositions, Iterables.filter(positions, new Predicate<Integer>() {
+            @Override
             public boolean apply(Integer input) {
                 int count = positions.count(input);
                 return count != 1;

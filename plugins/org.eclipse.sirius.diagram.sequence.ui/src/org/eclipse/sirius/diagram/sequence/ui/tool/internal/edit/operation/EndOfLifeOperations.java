@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,11 +19,11 @@ import org.eclipse.gef.Request;
 import org.eclipse.gef.requests.BendpointRequest;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.EndOfLifeEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 
 /**
@@ -58,8 +58,7 @@ public final class EndOfLifeOperations {
     }
 
     /**
-     * Erases for the specified {@link Request}.
-     * {@link #showSourceFeedback(Request)}.
+     * Erases for the specified {@link Request}. {@link #showSourceFeedback(Request)}.
      * 
      * @param request
      *            the type of feedback that is being erased
@@ -82,8 +81,7 @@ public final class EndOfLifeOperations {
     }
 
     /**
-     * Compute a request to resize the lifeline, from a request on its end of
-     * life.
+     * Compute a request to resize the lifeline, from a request on its end of life.
      * 
      * @param request
      *            the type of feedback that is wanted.

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,11 +17,11 @@ import java.util.List;
 import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.unit.diagram.sequence.InteractionsConstants;
 import org.eclipse.swtbot.eclipse.gef.finder.matchers.IsInstanceOf;
@@ -96,8 +96,8 @@ public class ExecutionSelectionEditPolicyTests extends AbstractDefaultModelSeque
     }
 
     /**
-     * Test ExecutionSelectionEditPolicy#getMoveCommand : Try to reparent a
-     * reflexive synCall child of a execution to be child of its lifeline
+     * Test ExecutionSelectionEditPolicy#getMoveCommand : Try to reparent a reflexive synCall child of a execution to be
+     * child of its lifeline
      */
     public void testGetMoveCommand2() {
         editor.reveal(LIFELINE_A);

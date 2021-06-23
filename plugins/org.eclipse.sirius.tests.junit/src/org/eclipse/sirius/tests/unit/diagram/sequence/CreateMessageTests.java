@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,11 +17,11 @@ import org.eclipse.gmf.runtime.emf.type.core.requests.DestroyElementRequest;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceMessageViewQuery;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.sample.interactions.Message;
 import org.eclipse.sirius.sample.interactions.Participant;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
@@ -194,8 +194,8 @@ public class CreateMessageTests extends AbstractSequenceSiriusDiagramTests {
     }
 
     /**
-     * Test that CreateMessage deletion is effective and reposition the target
-     * InstanceRole at LayoutConstants.LIFELINES_START_Y.
+     * Test that CreateMessage deletion is effective and reposition the target InstanceRole at
+     * LayoutConstants.LIFELINES_START_Y.
      */
     public void testCreateMessageDeletion1() {
         // Delete createP2Message
@@ -249,8 +249,7 @@ public class CreateMessageTests extends AbstractSequenceSiriusDiagramTests {
     }
 
     /**
-     * Test that InstanceRole deletion is effective and delete also all related
-     * CreateMessage.
+     * Test that InstanceRole deletion is effective and delete also all related CreateMessage.
      */
     public void testCreateMessageDeletion2() {
         // Delete createP2Message

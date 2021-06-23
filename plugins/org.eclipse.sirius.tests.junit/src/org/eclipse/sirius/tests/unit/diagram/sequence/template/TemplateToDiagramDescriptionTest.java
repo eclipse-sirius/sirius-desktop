@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,7 @@ import org.eclipse.sirius.diagram.sequence.template.TExecutionMapping;
 import org.eclipse.sirius.diagram.sequence.template.TLifelineMapping;
 import org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.template.TemplateFactory;
-import org.eclipse.sirius.diagram.sequence.template.TemplateToDiagramDescriptionTransformer;
+import org.eclipse.sirius.diagram.sequence.tool.internal.template.TemplateToDiagramDescriptionTransformer;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 
 import junit.framework.TestCase;
@@ -216,8 +216,7 @@ public class TemplateToDiagramDescriptionTest extends TestCase {
         assertEquals(tMessage.getTarget().size(), message.getTargetMapping().size());
 
         /*
-         * Let's remove one of the source/target mappings to make sure the
-         * refresh keep everything in sync.
+         * Let's remove one of the source/target mappings to make sure the refresh keep everything in sync.
          */
 
         EcoreUtil.delete(templateQuery.getExecutionMappings("Execution").next());

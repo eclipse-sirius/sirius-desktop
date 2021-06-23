@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import java.util.Set;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
@@ -29,7 +30,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionE
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InteractionUseEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberExecutionOnLifeline;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckSequenceMessageEditPartMoved;
@@ -45,8 +45,7 @@ import org.junit.Assert;
 import com.google.common.collect.Iterables;
 
 /**
- * Tests only zoom and creation with single/double click, others features to
- * test are Junit Plugin Tests.
+ * Tests only zoom and creation with single/double click, others features to test are Junit Plugin Tests.
  * 
  * NOTE : transversal aspect tested for each tests :
  * <ul>
@@ -70,8 +69,7 @@ import com.google.common.collect.Iterables;
 public class InteractionUseMoveDownTests extends AbstractInteractionUseSequenceTests {
 
     /**
-     * Test that move a the second InteractionUse under the end of lifeline is
-     * forbidden.
+     * Test that move a the second InteractionUse under the end of lifeline is forbidden.
      */
     public void testSecondInteractionUseMoveUnderEndLifelineNotPossible() {
         int endOfLifeline = editor.getBounds(instanceRoleEditPartABot.parent().descendants(IsInstanceOf.instanceOf(LifelineEditPart.class)).get(0)).getBottom().y;
@@ -84,8 +82,8 @@ public class InteractionUseMoveDownTests extends AbstractInteractionUseSequenceT
     }
 
     /**
-     * Test that vertical move down of the first InteractionUse is allowed until
-     * top of Exec e1, and shift all figures below
+     * Test that vertical move down of the first InteractionUse is allowed until top of Exec e1, and shift all figures
+     * below
      */
     public void testFirstInteractionUseVerticalMoveDownUntilE1TopPossibleAndShiftFiguresBelow() {
 
@@ -360,16 +358,21 @@ public class InteractionUseMoveDownTests extends AbstractInteractionUseSequenceT
     public void testSecondInteractionUseVerticalMoveDownToCenterOfReflexiveSyncCallOnNotSemanticallyCoveredParticipant() {
         if (TestsUtil.shouldSkipLongTests()) {
             /*
-            junit.framework.AssertionFailedError: The execution named  is not displayed at the expected vertical position expected:<420.0> but was:<485.0>
-            at junit.framework.Assert.fail(Assert.java:57)
-            at junit.framework.Assert.failNotEquals(Assert.java:329)
-            at junit.framework.Assert.assertEquals(Assert.java:142)
-            at junit.framework.TestCase.assertEquals(TestCase.java:298)
-            at org.eclipse.sirius.tests.swtbot.sequence.AbstractSequenceDiagramTestCase.assertSequenceNodeHasValidBounds(AbstractSequenceDiagramTestCase.java:1371)
-            at org.eclipse.sirius.tests.swtbot.sequence.AbstractSequenceDiagramTestCase.assertExecutionHasValidScreenBounds(AbstractSequenceDiagramTestCase.java:1305)
-            at org.eclipse.sirius.tests.swtbot.sequence.InteractionUseMoveDownTests.commonPreparationForMoveDownTests(InteractionUseMoveDownTests.java:227)
-            at org.eclipse.sirius.tests.swtbot.sequence.InteractionUseMoveDownTests.testSecondInteractionUseVerticalMoveDownToCenterOfReflexiveSyncCallOnNotSemanticallyCoveredParticipant(InteractionUseMoveDownTests.java:360)
-            */
+             * junit.framework.AssertionFailedError: The execution named is not displayed at the expected vertical
+             * position expected:<420.0> but was:<485.0> at junit.framework.Assert.fail(Assert.java:57) at
+             * junit.framework.Assert.failNotEquals(Assert.java:329) at
+             * junit.framework.Assert.assertEquals(Assert.java:142) at
+             * junit.framework.TestCase.assertEquals(TestCase.java:298) at
+             * org.eclipse.sirius.tests.swtbot.sequence.AbstractSequenceDiagramTestCase.assertSequenceNodeHasValidBounds
+             * (AbstractSequenceDiagramTestCase.java:1371) at
+             * org.eclipse.sirius.tests.swtbot.sequence.AbstractSequenceDiagramTestCase.
+             * assertExecutionHasValidScreenBounds(AbstractSequenceDiagramTestCase.java:1305) at
+             * org.eclipse.sirius.tests.swtbot.sequence.InteractionUseMoveDownTests.commonPreparationForMoveDownTests(
+             * InteractionUseMoveDownTests.java:227) at
+             * org.eclipse.sirius.tests.swtbot.sequence.InteractionUseMoveDownTests.
+             * testSecondInteractionUseVerticalMoveDownToCenterOfReflexiveSyncCallOnNotSemanticallyCoveredParticipant(
+             * InteractionUseMoveDownTests.java:360)
+             */
             return;
         }
 

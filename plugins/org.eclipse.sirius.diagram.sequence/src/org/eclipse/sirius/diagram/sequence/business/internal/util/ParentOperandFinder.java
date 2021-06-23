@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
@@ -28,7 +29,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.State;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
@@ -65,8 +65,7 @@ public final class ParentOperandFinder {
      * Default constructor.
      * 
      * @param event
-     *            a supported {@link ISequenceEvent} : {@linkLifeline},
-     *            {@link AbstractNodeEvent}, {@link Operand}.
+     *            a supported {@link ISequenceEvent} : {@linkLifeline}, {@link AbstractNodeEvent}, {@link Operand}.
      */
     public ParentOperandFinder(ISequenceEvent event) {
         Preconditions.checkArgument(types.contains(event.getClass()));
@@ -78,8 +77,7 @@ public final class ParentOperandFinder {
      * Default constructor.
      * 
      * @param event
-     *            a supported {@link ISequenceEvent} : {@linkLifeline},
-     *            {@link AbstractNodeEvent}, {@link Operand}.
+     *            a supported {@link ISequenceEvent} : {@linkLifeline}, {@link AbstractNodeEvent}, {@link Operand}.
      * @param rangeFunction
      *            function to compute expected range.
      */
@@ -117,6 +115,7 @@ public final class ParentOperandFinder {
 
         Predicate<Operand> coveredLifeline = new Predicate<Operand>() {
             // Filter the operands that cover the execution parent lifeline
+            @Override
             public boolean apply(Operand input) {
                 CombinedFragment parentCombinedFragment = input.getCombinedFragment();
                 Collection<Lifeline> computeCoveredLifelines = combinedFragmentToCoveredLifelines.get(parentCombinedFragment);
@@ -131,6 +130,7 @@ public final class ParentOperandFinder {
         Predicate<Operand> includingExecutionRange = new Predicate<Operand>() {
             // Filter the operands having a range that contains the execution
             // range (we consider the insertion point : lowerbound of range)
+            @Override
             public boolean apply(Operand input) {
                 return rangeFunction.apply(input).includes(new Range(verticalRange.getLowerBound(), verticalRange.getLowerBound()));
                 // return rangeFunction.apply(input).includes(verticalRange);

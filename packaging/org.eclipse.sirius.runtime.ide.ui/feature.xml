@@ -61,6 +61,13 @@ Install this if you need to use Sirius-based modelers or create new ones.
          install-size="0"
          version="0.0.0"
          unpack="false"/>
+         
+   <plugin
+         id="org.eclipse.sirius.diagram.sequence.model"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
 
    <plugin
          id="org.eclipse.sirius.diagram.sequence.edit"

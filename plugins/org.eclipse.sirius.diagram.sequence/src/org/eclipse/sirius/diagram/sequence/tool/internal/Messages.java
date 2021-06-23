@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2019 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.sequence;
+package org.eclipse.sirius.diagram.sequence.tool.internal;
 
 import org.eclipse.sirius.ext.base.I18N;
 import org.eclipse.sirius.ext.base.I18N.TranslatableMessage;

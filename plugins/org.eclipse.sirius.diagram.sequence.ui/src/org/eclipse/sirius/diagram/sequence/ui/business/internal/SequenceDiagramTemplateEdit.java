@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,15 +20,14 @@ import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.template.TemplateFactory;
 import org.eclipse.sirius.diagram.sequence.template.TemplatePackage;
-import org.eclipse.sirius.diagram.sequence.template.TemplateToDiagramDescriptionTransformer;
+import org.eclipse.sirius.diagram.sequence.tool.internal.template.TemplateToDiagramDescriptionTransformer;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEdit;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
 
 /**
- * Implementation of a representation template Edit for the sequence diagram
- * template.
+ * Implementation of a representation template Edit for the sequence diagram template.
  * 
  * @author cbrun
  * 
@@ -37,6 +36,7 @@ public class SequenceDiagramTemplateEdit implements RepresentationTemplateEdit {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Object getNewChildDescriptor() {
         return new CommandParameter(null, DescriptionPackage.Literals.VIEWPOINT__OWNED_TEMPLATES, TemplateFactory.eINSTANCE.createTSequenceDiagram());
     }
@@ -44,6 +44,7 @@ public class SequenceDiagramTemplateEdit implements RepresentationTemplateEdit {
     /**
      * {@inheritDoc}
      */
+    @Override
     public EObject getSourceElement(EObject vsmObject) {
         Option<TSequenceDiagram> result = new EObjectQuery(vsmObject).getParentSequenceDiagramTemplate();
         if (result.some()) {
@@ -62,6 +63,7 @@ public class SequenceDiagramTemplateEdit implements RepresentationTemplateEdit {
     /**
      * {@inheritDoc}
      */
+    @Override
     public void update(RepresentationTemplate template) {
         if (template instanceof TSequenceDiagram) {
             TemplateToDiagramDescriptionTransformer transformer = new TemplateToDiagramDescriptionTransformer((TSequenceDiagram) template);
@@ -72,6 +74,7 @@ public class SequenceDiagramTemplateEdit implements RepresentationTemplateEdit {
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean isGenerated(EObject vsmObject) {
         return getSourceElement(vsmObject) != null;
     }
@@ -88,6 +91,7 @@ public class SequenceDiagramTemplateEdit implements RepresentationTemplateEdit {
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean isOverriden(EObject eObj, EStructuralFeature feature) {
         Option<TSequenceDiagram> result = new EObjectQuery(eObj).getParentSequenceDiagramTemplate();
         if (result.some()) {

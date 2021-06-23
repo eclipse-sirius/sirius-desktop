@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.description.tool.ContainerCreationDescription;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
@@ -43,7 +44,6 @@ import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ISequenceEventEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceGraphicalHelper;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.CreateRequestQuery;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
@@ -62,8 +62,8 @@ import com.google.common.collect.Multimap;
 public class FrameCreationValidator extends AbstractSequenceInteractionValidator {
 
     /**
-     * The key used in request's extended data map to identify the original
-     * target edit part of a request which was redirected to us.
+     * The key used in request's extended data map to identify the original target edit part of a request which was
+     * redirected to us.
      */
     public static final String ORIGINAL_TARGET = "original.target"; //$NON-NLS-1$
 
@@ -93,8 +93,7 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
     private Rectangle creationBounds;
 
     /**
-     * Default constructor to validate InteractionUse or CombinedFragment
-     * creation.
+     * Default constructor to validate InteractionUse or CombinedFragment creation.
      * 
      * @param sequenceDiagram
      *            the {@link SequenceDiagram} on which do the creation
@@ -253,10 +252,8 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
     }
 
     /**
-     * Checks if the specified inclusion range overlap partially
-     * {@link ISequenceEvent} of the specified {@link Lifeline} vertically (for
-     * Execution, ...) or horizontally (for {@link Message} or
-     * {@link AbstractFrame}).
+     * Checks if the specified inclusion range overlap partially {@link ISequenceEvent} of the specified
+     * {@link Lifeline} vertically (for Execution, ...) or horizontally (for {@link Message} or {@link AbstractFrame}).
      * 
      * @param lifeline
      *            the {@link Lifeline} to check
@@ -310,7 +307,8 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
         }
     }
 
-    private void categorizeCombinedFragmentOverlappedEvents(Range creationRange, Collection<ISequenceEvent> alreadyChecked, SortedSet<ISequenceEvent> overlappedEvents, ISequenceEvent lFirstIseInRange) {
+    private void categorizeCombinedFragmentOverlappedEvents(Range creationRange, Collection<ISequenceEvent> alreadyChecked, SortedSet<ISequenceEvent> overlappedEvents,
+            ISequenceEvent lFirstIseInRange) {
         // Check horizontal overlap.
         for (Message message : Iterables.filter(overlappedEvents, Message.class)) {
             if (!alreadyChecked.contains(message)) {
@@ -411,13 +409,11 @@ public class FrameCreationValidator extends AbstractSequenceInteractionValidator
     }
 
     /**
-     * Finds the deepest operand covering at least one of the lifelines on range
-     * of rect.
+     * Finds the deepest operand covering at least one of the lifelines on range of rect.
      * 
      * @param graphicallyCoveredLifelines
      *            the covered lifelines
-     * @return the deepest operand covering at least one of the lifelines on
-     *         range of rect.
+     * @return the deepest operand covering at least one of the lifelines on range of rect.
      */
     private Option<Operand> findDeepestCoveringOperand(Set<Lifeline> graphicallyCoveredLifelines) {
         Option<Operand> deepestOperandOption = Options.newNone();

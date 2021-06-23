@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,21 +16,20 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InteractionUse;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.EventFinder;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicates;
 
 /**
- * This class is responsible to check whether a resize request on an interaction
- * use should be accepted (i.e. it would produce a well-formed diagram). While
- * doing the validation, it also stores all the relevant information required to
+ * This class is responsible to check whether a resize request on an interaction use should be accepted (i.e. it would
+ * produce a well-formed diagram). While doing the validation, it also stores all the relevant information required to
  * actually perform the resize properly.
  * 
  * @author mporhel

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,8 +17,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 
 import junit.framework.TestCase;
 
@@ -39,8 +39,7 @@ public class RangeTests extends TestCase {
     }
 
     /**
-     * Tests that an empty range produced with {@link Range#emptyRange()} does
-     * not include any element.
+     * Tests that an empty range produced with {@link Range#emptyRange()} does not include any element.
      */
     public void testEmptyRangeContainsNoValue() {
         Range empty = Range.emptyRange();
@@ -54,8 +53,7 @@ public class RangeTests extends TestCase {
     }
 
     /**
-     * Tests the both bounds of a range produced with {@link Range#emptyRange()}
-     * are <code>null</code>.
+     * Tests the both bounds of a range produced with {@link Range#emptyRange()} are <code>null</code>.
      */
     public void testEmptyRangeHasNaNBounds() {
         Range invalid = Range.emptyRange();
@@ -65,8 +63,7 @@ public class RangeTests extends TestCase {
     }
 
     /**
-     * Tests that it is possible to create a range with a single element, i.e.
-     * start == end.
+     * Tests that it is possible to create a range with a single element, i.e. start == end.
      */
     public void testAtomicRangeCanBeCreated() {
         Range atomic = new Range(1, 1);
@@ -75,8 +72,7 @@ public class RangeTests extends TestCase {
     }
 
     /**
-     * Tests that an atomic range includes its value (i.e. the bounds are
-     * inclusive).
+     * Tests that an atomic range includes its value (i.e. the bounds are inclusive).
      */
     public void testAtomicRangeIncludesTheValue() {
         int theValue = 1;
@@ -85,8 +81,7 @@ public class RangeTests extends TestCase {
     }
 
     /**
-     * Tests that an atomic range does not include the values immediately below
-     * or above its value.
+     * Tests that an atomic range does not include the values immediately below or above its value.
      */
     public void testAtomicValueDoesNotContainsNeighboringValues() {
         int theValue = 1;
@@ -96,8 +91,7 @@ public class RangeTests extends TestCase {
     }
 
     /**
-     * Tests that is is possible to access the bounds of a range after its
-     * creation.
+     * Tests that is is possible to access the bounds of a range after its creation.
      */
     public void testRangeBoundsAreAccessible() {
         Range range = new Range(1, 3);
@@ -106,8 +100,7 @@ public class RangeTests extends TestCase {
     }
 
     /**
-     * Tests that trying to create a range with an upper bound below the lower
-     * bound is correctly detected as an error.
+     * Tests that trying to create a range with an upper bound below the lower bound is correctly detected as an error.
      */
     public void testCreatingRangeWithInvalidBoundsThrowsException() {
         try {
@@ -119,8 +112,8 @@ public class RangeTests extends TestCase {
     }
 
     /**
-     * Tests that values between the lower and upper bounds of the range are
-     * correctly detected as included in the range.
+     * Tests that values between the lower and upper bounds of the range are correctly detected as included in the
+     * range.
      */
     public void testMiddleValuesAreIncludedInRange() {
         Range range = new Range(2, 10);

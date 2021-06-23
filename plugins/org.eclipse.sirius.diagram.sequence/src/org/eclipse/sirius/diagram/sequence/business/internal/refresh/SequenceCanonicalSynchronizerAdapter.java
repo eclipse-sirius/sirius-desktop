@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -43,6 +43,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.VerticalPositionFunction;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Execution;
@@ -58,7 +59,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceElem
 import org.eclipse.sirius.diagram.sequence.business.internal.query.RangeComparator;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceDiagramQuery;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.view.LayoutData;
 import org.eclipse.sirius.diagram.ui.internal.refresh.listeners.FilterListener;
@@ -71,9 +71,8 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
 /**
- * {@link ModelChangeTrigger} which return a {@link Command} to be executed just
- * a SynchronizeGMFModelCommand to correct y location of execution (Node) and
- * bendpoints of message (Edge).
+ * {@link ModelChangeTrigger} which return a {@link Command} to be executed just a SynchronizeGMFModelCommand to correct
+ * y location of execution (Node) and bendpoints of message (Edge).
  * 
  * @author edugueperoux
  */
@@ -85,11 +84,11 @@ public class SequenceCanonicalSynchronizerAdapter implements ModelChangeTrigger 
     public static final int SEQUENCE_CANONICAL_REFRESH_PRIORITY = FilterListener.COMPOSITE_FILTER_REFRESH_PRIORITY + 1;
 
     /**
-     * Overridden to return a Command to adapt CanonicalSynchronizer work for
-     * sequence.
+     * Overridden to return a Command to adapt CanonicalSynchronizer work for sequence.
      * 
      * {@inheritDoc}
      */
+    @Override
     public Option<Command> localChangesAboutToCommit(Collection<Notification> notifications) {
         Option<Command> result;
         CompoundCommand compoundCommand = new CompoundCommand();
@@ -250,9 +249,8 @@ public class SequenceCanonicalSynchronizerAdapter implements ModelChangeTrigger 
     }
 
     /*
-     * Simple Execution creation implies that GMF Node at creation have a
-     * LayoutConstants.DEFAULT_EXECUTION_HEIGHT as minimum height and tries to
-     * take the maximum available space up to the next event.
+     * Simple Execution creation implies that GMF Node at creation have a LayoutConstants.DEFAULT_EXECUTION_HEIGHT as
+     * minimum height and tries to take the maximum available space up to the next event.
      */
     private void expandSimpleExecution(Node newNode, Command fixSequenceNodeLowerBoundCmd, TransactionalEditingDomain domain, int y) {
         Option<Execution> execOption = ISequenceElementAccessor.getExecution(newNode);
@@ -346,12 +344,12 @@ public class SequenceCanonicalSynchronizerAdapter implements ModelChangeTrigger 
     }
 
     /**
-     * Overridden to specify a priority upper than
-     * {@link CollapseFilterListener#COLLAPSE_FILTER_REFRESH_PRIORITY} to be
+     * Overridden to specify a priority upper than {@link CollapseFilterListener#COLLAPSE_FILTER_REFRESH_PRIORITY} to be
      * executed after it.
      * 
      * {@inheritDoc}
      */
+    @Override
     public int priority() {
         return SEQUENCE_CANONICAL_REFRESH_PRIORITY;
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,11 +16,11 @@ import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.ExecutionEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckResize;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation.ZoomLevel;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
@@ -215,9 +215,8 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
     }
 
     /**
-     * Test that creation of a subExecution e3 on exec e1 in the same range as
-     * the exec e2 owned by e1, add correctly e3 as child of e2 and with range
-     * of e3 included in range of e2.
+     * Test that creation of a subExecution e3 on exec e1 in the same range as the exec e2 owned by e1, add correctly e3
+     * as child of e2 and with range of e3 included in range of e2.
      */
     public void testExecutionCreationAsSubExecutionOfExecutionOwningAlreadyAExecution() {
         // Create e1 Exec
@@ -719,15 +718,13 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
     /**
      * Test move execution in combinedFragment and on life line.
      * <p>
-     * Step 1 : Move execution in combinedFragment's title. This operation is
-     * forbidden.
+     * Step 1 : Move execution in combinedFragment's title. This operation is forbidden.
      * <p>
      * Step 2 : Move execution in combinedFragment
      * <p>
      * Step 3 : Move execution under combinedFragment
      * <p>
-     * Step 4 : Move execution in combinedFragment (from under combinedFragment
-     * to combinedFragment)
+     * Step 4 : Move execution in combinedFragment (from under combinedFragment to combinedFragment)
      */
     public void test_Move_In_CombinedFragment() {
         editor.reveal(LIFELINE_A);
@@ -810,14 +807,11 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
     /**
      * Test resize execution simple.
      * <p>
-     * Step 1 : Resize execution overlap first execution. Execution includes the
-     * execution overlap.
+     * Step 1 : Resize execution overlap first execution. Execution includes the execution overlap.
      * <p>
-     * Step 2 : Resize execution overlap third execution. Execution include the
-     * execution overlap.
+     * Step 2 : Resize execution overlap third execution. Execution include the execution overlap.
      * <p>
-     * Step 3 : Resize execution on the first execution. This action is
-     * forbidden.
+     * Step 3 : Resize execution on the first execution. This action is forbidden.
      * <p>
      * Step 4 : Resize execution on the third execution.
      */
@@ -916,17 +910,13 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
     /**
      * Test resize execution with sync call.
      * <p>
-     * Step 1 : Resize execution above the first sync call. The execution is in
-     * the sync call
+     * Step 1 : Resize execution above the first sync call. The execution is in the sync call
      * <p>
-     * Step 2 : Resize execution in the first sync call. This action is
-     * forbidden
+     * Step 2 : Resize execution in the first sync call. This action is forbidden
      * <p>
-     * Step 3 : Resize execution in the second sync call. This action move sync
-     * call
+     * Step 3 : Resize execution in the second sync call. This action move sync call
      * <p>
-     * Step 4 : Resize execution after the second sync call. The execution is in
-     * the sync call
+     * Step 4 : Resize execution after the second sync call. The execution is in the sync call
      */
     public void test_Resize_Execution_With_Sync_Call() {
         editor.reveal(LIFELINE_A);
@@ -1015,17 +1005,13 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
     /**
      * Test resize execution with async call.
      * <p>
-     * Step 1 : Resize execution under the first message async call. The
-     * execution is in the async call
+     * Step 1 : Resize execution under the first message async call. The execution is in the async call
      * <p>
-     * Step 2 : Resize execution on the first message async call. This action is
-     * forbidden.
+     * Step 2 : Resize execution on the first message async call. This action is forbidden.
      * <p>
-     * Step 3 : Resize execution under the second message async call. The
-     * execution is in the async call
+     * Step 3 : Resize execution under the second message async call. The execution is in the async call
      * <p>
-     * Step 4 : Resize execution on the second message async call. This action
-     * is forbidden
+     * Step 4 : Resize execution on the second message async call. This action is forbidden
      */
     public void test_Resize_Execution_With_Async_Call() {
         editor.reveal(LIFELINE_A);
@@ -1114,13 +1100,12 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
      * <p>
      * Step 1 : Resize sync call execution above the first execution.
      * <p>
-     * Step 2 : Resize sync call execution between the limit of the first
-     * execution. This action is forbidden.
+     * Step 2 : Resize sync call execution between the limit of the first execution. This action is forbidden.
      * <p>
      * Step 3 : Resize sync call execution under the second execution.
      * <p>
-     * Step 4 : Resize sync call execution between the limit of the second
-     * execution. This action move the second execution down.
+     * Step 4 : Resize sync call execution between the limit of the second execution. This action move the second
+     * execution down.
      */
     public void test_Resize_Sync_Call_With_2_Executions() {
         editor.reveal(LIFELINE_A);
@@ -1192,8 +1177,7 @@ public class ExecutionTests extends AbstractDefaultModelSequenceTests {
     /**
      * Test move execution in combinedFragment and on life line.
      * <p>
-     * Step 1 : Resize execution in limits of Operand upper bounds. This
-     * operation is forbidden.
+     * Step 1 : Resize execution in limits of Operand upper bounds. This operation is forbidden.
      * <p>
      * Step 2 : Resize execution in combinedFragment
      */

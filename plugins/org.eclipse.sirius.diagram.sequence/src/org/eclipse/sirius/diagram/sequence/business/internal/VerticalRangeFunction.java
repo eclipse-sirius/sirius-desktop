@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,16 +13,15 @@
 package org.eclipse.sirius.diagram.sequence.business.internal;
 
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.base.Function;
 
 /**
- * Computes the absolute vertical range occupied by an element of a sequence
- * diagram, from its GMF View.
+ * Computes the absolute vertical range occupied by an element of a sequence diagram, from its GMF View.
  * 
  * @author pcdavid
  */
@@ -35,6 +34,7 @@ public enum VerticalRangeFunction implements Function<View, Range> {
     /**
      * {@inheritDoc}
      */
+    @Override
     public Range apply(View view) {
         Range result = Range.emptyRange();
         Option<ISequenceEvent> iSequenceEvent = ISequenceElementAccessor.getISequenceEvent(view);

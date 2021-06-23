@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,6 +25,7 @@ import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.VerticalPositionFunction;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
@@ -32,7 +33,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDi
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.InstanceRoleEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LifelineEditPart;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.sirius.ext.base.Option;
@@ -42,8 +42,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * Utility class to collect helper methods which deal with GraphicalOrdering but
- * which are not part of its API.
+ * Utility class to collect helper methods which deal with GraphicalOrdering but which are not part of its API.
  * 
  * @author pcdavid
  */
@@ -53,8 +52,8 @@ public final class SequenceGraphicalHelper {
     }
 
     /**
-     * Finds and returns the EventEnd which corresponds to the first event
-     * graphically above the specified Y coordinate in a diagram.
+     * Finds and returns the EventEnd which corresponds to the first event graphically above the specified Y coordinate
+     * in a diagram.
      * 
      * @param diagram
      *            the diagram.
@@ -74,9 +73,8 @@ public final class SequenceGraphicalHelper {
     }
 
     /**
-     * Finds and returns the InstanceRole semantic element which corresponds to
-     * the first element graphically above the specified X coordinate in a
-     * diagram.
+     * Finds and returns the InstanceRole semantic element which corresponds to the first element graphically above the
+     * specified X coordinate in a diagram.
      * 
      * @param diagram
      *            the diagram.
@@ -101,8 +99,8 @@ public final class SequenceGraphicalHelper {
     }
 
     /**
-     * Finds and returns the EventEnd which corresponds to the first event
-     * graphically below the specified Y coordinate in a diagram.
+     * Finds and returns the EventEnd which corresponds to the first event graphically below the specified Y coordinate
+     * in a diagram.
      * 
      * @param diagram
      *            the diagram.
@@ -122,13 +120,12 @@ public final class SequenceGraphicalHelper {
     }
 
     /**
-     * Returns the normalized Y location of the Center of an edit part, using
-     * only information from the GMF model (not Draw2D figures).
+     * Returns the normalized Y location of the Center of an edit part, using only information from the GMF model (not
+     * Draw2D figures).
      * 
      * @param part
      *            the edit part.
-     * @return the absolute, normalized Y location of the Center of the
-     *         DNodeEditPart.
+     * @return the absolute, normalized Y location of the Center of the DNodeEditPart.
      */
     public static int getAbsoluteYCenterFromGMFView(IGraphicalEditPart part) {
         if (part instanceof ShapeNodeEditPart) {
@@ -142,13 +139,12 @@ public final class SequenceGraphicalHelper {
     }
 
     /**
-     * Returns the normalized Y location of the Center of an edit part, using
-     * only information from the GMF model (not Draw2D figures).
+     * Returns the normalized Y location of the Center of an edit part, using only information from the GMF model (not
+     * Draw2D figures).
      * 
-     * Use information from the GMF Notation model if available (which is most
-     * of the time), and fall back to the Draw2D Figure's bounds otherwise. The
-     * figure's bounds is always available, but depending on the time of the
-     * call it may be out of date (pending a revalidate/repaint).
+     * Use information from the GMF Notation model if available (which is most of the time), and fall back to the Draw2D
+     * Figure's bounds otherwise. The figure's bounds is always available, but depending on the time of the call it may
+     * be out of date (pending a revalidate/repaint).
      * 
      * @param part
      *            the edit part
@@ -159,8 +155,7 @@ public final class SequenceGraphicalHelper {
         Rectangle rect;
 
         /*
-         * Initialize with Draw2D information. May be out of date under some
-         * conditions.
+         * Initialize with Draw2D information. May be out of date under some conditions.
          */
         rect = part.getFigure().getBounds().getCopy();
         if (part instanceof LifelineEditPart) {

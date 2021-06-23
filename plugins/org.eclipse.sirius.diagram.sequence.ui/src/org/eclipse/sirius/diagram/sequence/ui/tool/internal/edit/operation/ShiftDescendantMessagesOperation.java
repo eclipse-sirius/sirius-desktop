@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.IdentityAnchor;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
@@ -37,16 +38,14 @@ import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEven
 import org.eclipse.sirius.diagram.sequence.business.internal.util.ISequenceEventsTreeIterator;
 import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout.SequenceGraphicalHelper;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
- * This operation is called when an execution is moved or resized vertically. It
- * adjusts the GMF bendpoints of the messages to/from an execution (or any of
- * its sub-executions) so that the messages are moved along with the execution
+ * This operation is called when an execution is moved or resized vertically. It adjusts the GMF bendpoints of the
+ * messages to/from an execution (or any of its sub-executions) so that the messages are moved along with the execution
  * of the same amount.
  * 
  * @author pcdavid, mporhel, smonnier
@@ -89,12 +88,10 @@ public class ShiftDescendantMessagesOperation extends ShiftMessagesOperation {
      * @param revert
      *            if true, revert the adjustments from source/target vectors
      * @param move
-     *            if true, the messages of any of its sub-executions will be
-     *            shifted. If false, the parent part was resized and only direct
-     *            sub messages will be shifted
+     *            if true, the messages of any of its sub-executions will be shifted. If false, the parent part was
+     *            resized and only direct sub messages will be shifted
      * @param fromTop
-     *            Used if move = false (resize) to know from where the
-     *            parentPart is resized.
+     *            Used if move = false (resize) to know from where the parentPart is resized.
      */
     public ShiftDescendantMessagesOperation(ISequenceEvent parent, int deltaY, boolean revert, boolean move, boolean fromTop) {
         super(MessageFormat.format(Messages.ShifDescendantMessagesOperation_operationName, deltaY), deltaY, revert, move);
@@ -111,13 +108,12 @@ public class ShiftDescendantMessagesOperation extends ShiftMessagesOperation {
      * @param parent
      *            the execution whose descendant messages must be adjusted.
      * @param finalGrandParent
-     *            the actual grandparent of the "executionEditPart" replacement
-     *            (after a refresh) at the time of command execution.
+     *            the actual grandparent of the "executionEditPart" replacement (after a refresh) at the time of command
+     *            execution.
      * @param deltaY
      *            the vertical amount the execution was moved.
      * @param ignoreContainedReflexiveMessage
-     *            the parameter to decide if we need to ignore the contained
-     *            reflexive messages.
+     *            the parameter to decide if we need to ignore the contained reflexive messages.
      */
     public ShiftDescendantMessagesOperation(ISequenceEvent parent, ISequenceEvent finalGrandParent, int deltaY, boolean ignoreContainedReflexiveMessage) {
         this(parent, deltaY);
@@ -188,7 +184,7 @@ public class ShiftDescendantMessagesOperation extends ShiftMessagesOperation {
     private boolean isNoteAttachment(Edge conn) {
         return conn != null && GMFNotationHelper.isNoteAttachment(conn);
     }
-    
+
     private boolean isNonSequenceEdgeAttachment(Edge conn) {
         return conn != null && conn.getElement() instanceof DEdge && !ISequenceElementAccessor.getMessage(conn).some();
     }

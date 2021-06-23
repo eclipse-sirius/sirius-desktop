@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 Obeo.
+ * Copyright (c) 2014, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,13 +13,13 @@
 package org.eclipse.sirius.diagram.sequence.business.internal;
 
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.sirius.diagram.sequence.util.Range;
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 
 import com.google.common.base.Function;
 import com.google.common.collect.Ordering;
 
 /**
- * Helper functions and orderings for the Range type. 
+ * Helper functions and orderings for the Range type.
  * 
  * @author pcdavid
  */
@@ -27,6 +27,7 @@ public final class RangeHelper {
     private RangeHelper() {
         // Prevent instanciation
     }
+
     /**
      * A function to obtain the lower bound of a range.
      * 
@@ -84,8 +85,7 @@ public final class RangeHelper {
     }
 
     /**
-     * Returns a range representing the horizontal range occupied by a
-     * rectangle.
+     * Returns a range representing the horizontal range occupied by a rectangle.
      * 
      * @param rect
      *            the rectangle.
@@ -101,6 +101,7 @@ public final class RangeHelper {
     private enum LowerBoundFunction implements Function<Range, Integer> {
         INSTANCE;
 
+        @Override
         public Integer apply(Range from) {
             return from.getLowerBound();
         }
@@ -117,6 +118,7 @@ public final class RangeHelper {
     private enum UpperBoundFunction implements Function<Range, Integer> {
         INSTANCE;
 
+        @Override
         public Integer apply(Range from) {
             return from.getUpperBound();
         }
@@ -133,6 +135,7 @@ public final class RangeHelper {
     private enum WidthFunction implements Function<Range, Integer> {
         INSTANCE;
 
+        @Override
         public Integer apply(Range from) {
             return from.width();
         }

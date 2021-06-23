@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,7 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.sequence.Messages;
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.ISequenceEventQuery;
 import org.eclipse.sirius.diagram.sequence.business.internal.query.SequenceNodeQuery;
@@ -30,7 +30,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.util.ParentOperandF
 import org.eclipse.sirius.diagram.sequence.business.internal.util.RangeSetter;
 import org.eclipse.sirius.diagram.sequence.business.internal.util.SubEventsHelper;
 import org.eclipse.sirius.diagram.sequence.description.DescriptionPackage;
-import org.eclipse.sirius.diagram.sequence.util.Range;
+import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
@@ -53,8 +53,7 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
     public static final int VISUAL_ID = 3001;
 
     /**
-     * Predicate to check whether a Sirius DDiagramElement represents a
-     * lifeline.
+     * Predicate to check whether a Sirius DDiagramElement represents a lifeline.
      */
     private enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
@@ -87,11 +86,9 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
     }
 
     /**
-     * Returns a predicate to check whether a Sirius DDiagramElement represents
-     * a lifeline.
+     * Returns a predicate to check whether a Sirius DDiagramElement represents a lifeline.
      * 
-     * @return a predicate to check whether a Sirius DDiagramElement represents
-     *         a lifeline.
+     * @return a predicate to check whether a Sirius DDiagramElement represents a lifeline.
      */
     public static Predicate<DDiagramElement> viewpointElementPredicate() {
         return SiriusElementPredicate.INSTANCE;
@@ -117,10 +114,9 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
     }
 
     /**
-     * Returns the0 EOL marker for this lifeline, if any. Note that the mere
-     * presence of an EOL does not mean this lifeline is explicitly destroyed,
-     * as EOLs can be used just to serve as visual hints of the end of lifelines
-     * and convenient resize handles.
+     * Returns the0 EOL marker for this lifeline, if any. Note that the mere presence of an EOL does not mean this
+     * lifeline is explicitly destroyed, as EOLs can be used just to serve as visual hints of the end of lifelines and
+     * convenient resize handles.
      * 
      * @return the EOL marker for this lifeline, if any.
      */
@@ -210,11 +206,10 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
     }
 
     /**
-     * Tests whether the lifeline is explicitly destroyed by a destruction
-     * message, or if it goes until the end of the sequence.
+     * Tests whether the lifeline is explicitly destroyed by a destruction message, or if it goes until the end of the
+     * sequence.
      * 
-     * @return <code>true</code> if the lifeline is explicitly destroyed by a
-     *         destruction message.
+     * @return <code>true</code> if the lifeline is explicitly destroyed by a destruction message.
      */
     public boolean isExplicitlyDestroyed() {
         Option<EndOfLife> optEOL = getEndOfLife();
@@ -226,11 +221,10 @@ public class Lifeline extends AbstractSequenceNode implements ISequenceEvent {
     }
 
     /**
-     * Tests whether the lifeline is explicitly created by a creation message,
-     * or if it starts from the beginning of the sequence.
+     * Tests whether the lifeline is explicitly created by a creation message, or if it starts from the beginning of the
+     * sequence.
      * 
-     * @return <code>true</code> if the lifeline is explicitly created by a
-     *         creation message.
+     * @return <code>true</code> if the lifeline is explicitly created by a creation message.
      */
     public boolean isExplicitlyCreated() {
         InstanceRole opt = getInstanceRole();

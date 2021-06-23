@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.gef.ui.figures.NodeFigure;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElementAccessor;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -39,7 +40,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.LostMessag
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceMessageEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceNodeCreationPolicy;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.policy.SequenceSiriusGraphicalNodeEditPolicy;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeCreationEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusGraphicalNodeEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.policy.CompoundEditPolicy;
@@ -51,8 +51,8 @@ import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AirDefaultSizeNodeFigur
 import com.google.common.collect.Iterables;
 
 /**
- * Helper class to factor common code between root executions (lifelines) and
- * normal executions which can not be shared by inheritance.
+ * Helper class to factor common code between root executions (lifelines) and normal executions which can not be shared
+ * by inheritance.
  * 
  * @author pcdavid, smonnier
  */
@@ -62,9 +62,8 @@ public final class ExecutionOperations {
     }
 
     /**
-     * Install/replace a NodeCreationEditPolicy on the CONTAINER_ROLE which is
-     * aware of the ExecutionCreationTool and calls it instead of the generic
-     * NodeCreationDescription.
+     * Install/replace a NodeCreationEditPolicy on the CONTAINER_ROLE which is aware of the ExecutionCreationTool and
+     * calls it instead of the generic NodeCreationDescription.
      * 
      * @param self
      *            the edit part.
@@ -89,10 +88,8 @@ public final class ExecutionOperations {
     public static void replaceEditPolicy(IGraphicalEditPart self, String role, EditPolicy editPolicy, Class<?> policyType) {
         if (self.getEditPolicy(role) instanceof CompoundEditPolicy) {
             /*
-             * See
-             * AbstractDiagramNodeEditPartOperation.createDefaultEditPolicies
-             * (IAbstractDiagramNodeEditPart self) for the expected structure of
-             * the policy on CONTAINER_ROLE.
+             * See AbstractDiagramNodeEditPartOperation.createDefaultEditPolicies (IAbstractDiagramNodeEditPart self)
+             * for the expected structure of the policy on CONTAINER_ROLE.
              */
             CompoundEditPolicy cep = (CompoundEditPolicy) self.getEditPolicy(role);
             for (int i = 0; i < cep.getEditPolicies().size(); i++) {
@@ -109,10 +106,9 @@ public final class ExecutionOperations {
     }
 
     /**
-     * If possible, make the whole figure's area a valid location for a
-     * SlidableAnchor. Executions are usually very narrow vertically, and the
-     * default setting (0.5) makes the zone usable to anchor a message too small
-     * to be usable.
+     * If possible, make the whole figure's area a valid location for a SlidableAnchor. Executions are usually very
+     * narrow vertically, and the default setting (0.5) makes the zone usable to anchor a message too small to be
+     * usable.
      * 
      * @param figure
      *            the figure to adjust.
@@ -124,14 +120,13 @@ public final class ExecutionOperations {
     }
 
     /**
-     * Returns a command to reconnect any connection incident to the specified
-     * execution (which is about to be removed) to the parent of that execution
-     * while keeping the same vertical range.
+     * Returns a command to reconnect any connection incident to the specified execution (which is about to be removed)
+     * to the parent of that execution while keeping the same vertical range.
      * 
      * @param exec
      *            the execution which is about to be removed.
-     * @return a command to reconnect all the edges incident to that execution
-     *         on its parent, while keeping the same vertical range.
+     * @return a command to reconnect all the edges incident to that execution on its parent, while keeping the same
+     *         vertical range.
      */
     public static org.eclipse.emf.common.command.Command getReconnectEdgesToParentCommand(ExecutionEditPart exec) {
         org.eclipse.emf.common.command.CompoundCommand result = new org.eclipse.emf.common.command.CompoundCommand();
@@ -142,15 +137,12 @@ public final class ExecutionOperations {
         Range parentRange = parent.getVerticalRange();
 
         /**
-         * Previously, we assumed that the call/return messages of an execution
-         * will be deleted with it ; and GMF could be confused if they were
-         * reconnected (leaving invalid edit parts on the diagram, leading to a
-         * grey cross appearing which can not be removed except by
-         * closing/reopening the diagram).
+         * Previously, we assumed that the call/return messages of an execution will be deleted with it ; and GMF could
+         * be confused if they were reconnected (leaving invalid edit parts on the diagram, leading to a grey cross
+         * appearing which can not be removed except by closing/reopening the diagram).
          * <p>
-         * This assumption was highly specific to a particular semantic of the
-         * delete tool associated with the execution. Now the reconnection is
-         * done before the call of the delete tool.
+         * This assumption was highly specific to a particular semantic of the delete tool associated with the
+         * execution. Now the reconnection is done before the call of the delete tool.
          */
 
         for (SequenceMessageEditPart msg : Iterables.filter(exec.getSourceConnections(), SequenceMessageEditPart.class)) {
@@ -244,14 +236,13 @@ public final class ExecutionOperations {
     }
 
     /**
-     * Returns a command to reconnect all the direct sub-executions of the
-     * specified execution (which is about to be removed) to the parent of that
-     * execution while keeping the same vertical range.
+     * Returns a command to reconnect all the direct sub-executions of the specified execution (which is about to be
+     * removed) to the parent of that execution while keeping the same vertical range.
      * 
      * @param removedExecEditPart
      *            the execution which is about to be removed.
-     * @return a command to reconnect all the direct sub-executions of that
-     *         execution on its parent, while keeping the same vertical range.
+     * @return a command to reconnect all the direct sub-executions of that execution on its parent, while keeping the
+     *         same vertical range.
      */
     public static org.eclipse.emf.common.command.Command getReconnectSubExecutionsToParentCommand(final ExecutionEditPart removedExecEditPart) {
         org.eclipse.emf.common.command.CompoundCommand result = new org.eclipse.emf.common.command.CompoundCommand();

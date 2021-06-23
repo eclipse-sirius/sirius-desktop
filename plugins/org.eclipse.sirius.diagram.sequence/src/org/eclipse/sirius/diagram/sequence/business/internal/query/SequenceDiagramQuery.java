@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@ import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import org.eclipse.sirius.diagram.sequence.Messages;
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractFrame;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
@@ -26,7 +26,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
-import org.eclipse.sirius.diagram.sequence.util.Range;
+import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 import org.eclipse.sirius.ext.base.Option;
 
@@ -55,14 +55,13 @@ public class SequenceDiagramQuery {
     }
 
     /**
-     * Get all {@link ISequenceEvent} of the current {@link SequenceDiagram}
-     * with range's lower bound strictly inferior to timePoint.
+     * Get all {@link ISequenceEvent} of the current {@link SequenceDiagram} with range's lower bound strictly inferior
+     * to timePoint.
      * 
      * @param timePoint
      *            the timePoint from which get all lower {@link ISequenceEvent}
      * 
-     * @return the set of {@link ISequenceEvent} lower timePoint, sorted by
-     *         range from lower to upper
+     * @return the set of {@link ISequenceEvent} lower timePoint, sorted by range from lower to upper
      */
     public Set<ISequenceEvent> getAllSequenceEventsLowerThan(int timePoint) {
         Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
@@ -79,15 +78,12 @@ public class SequenceDiagramQuery {
     }
 
     /**
-     * Get all {@link ISequenceEvent} of the current {@link SequenceDiagram}
-     * with range's including strictly timePoint.
+     * Get all {@link ISequenceEvent} of the current {@link SequenceDiagram} with range's including strictly timePoint.
      * 
      * @param timePoint
-     *            the timePoint from which get all {@link ISequenceEvent}
-     *            including it in their range
+     *            the timePoint from which get all {@link ISequenceEvent} including it in their range
      * 
-     * @return the set of {@link ISequenceEvent} having timePoint in their
-     *         range, sorted by range from lower to upper
+     * @return the set of {@link ISequenceEvent} having timePoint in their range, sorted by range from lower to upper
      */
     public Set<ISequenceEvent> getAllSequenceEventsOn(int timePoint) {
         Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
@@ -104,14 +100,13 @@ public class SequenceDiagramQuery {
     }
 
     /**
-     * Get all {@link ISequenceEvent} of the current {@link SequenceDiagram}
-     * with range's lowerbound strictly upper to timePoint.
+     * Get all {@link ISequenceEvent} of the current {@link SequenceDiagram} with range's lowerbound strictly upper to
+     * timePoint.
      * 
      * @param timePoint
      *            the timePoint from which get all upper {@link ISequenceEvent}
      * 
-     * @return the set of {@link ISequenceEvent} upper timePoint, sorted by
-     *         range from lower to upper
+     * @return the set of {@link ISequenceEvent} upper timePoint, sorted by range from lower to upper
      */
     public Set<ISequenceEvent> getAllSequenceEventsUpperThan(int timePoint) {
         Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
@@ -130,8 +125,8 @@ public class SequenceDiagramQuery {
     /**
      * Get all {@link ISequenceEvent} of the current {@link SequenceDiagram}.
      * 
-     * @return the set of {@link ISequenceEvent} of the current
-     *         {@link SequenceDiagram}, sorted by range from lower to upper
+     * @return the set of {@link ISequenceEvent} of the current {@link SequenceDiagram}, sorted by range from lower to
+     *         upper
      */
     public Set<ISequenceEvent> getAllSequenceEvents() {
         Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
@@ -148,15 +143,13 @@ public class SequenceDiagramQuery {
     }
 
     /**
-     * Get all {@link ISequenceEvent} of the current {@link SequenceDiagram} of
-     * the specified {@link Lifeline}.
+     * Get all {@link ISequenceEvent} of the current {@link SequenceDiagram} of the specified {@link Lifeline}.
      * 
      * @param lifeline
      *            the specified {@link Lifeline}
      * 
-     * @return the set of {@link ISequenceEvent} of the current
-     *         {@link SequenceDiagram} of the specified {@link Lifeline}, sorted
-     *         by range from lower to upper
+     * @return the set of {@link ISequenceEvent} of the current {@link SequenceDiagram} of the specified
+     *         {@link Lifeline}, sorted by range from lower to upper
      */
     public Set<ISequenceEvent> getAllSequenceEventsOnLifeline(Lifeline lifeline) {
         Set<ISequenceEvent> allSequenceEventsOnLifeline = new TreeSet<ISequenceEvent>(new RangeComparator());
@@ -187,8 +180,7 @@ public class SequenceDiagramQuery {
     }
 
     /**
-     * Get all events having at least one bound on the given {@link Lifeline} in
-     * the given range.
+     * Get all events having at least one bound on the given {@link Lifeline} in the given range.
      * 
      * @param lifeline
      *            the lifeline to check.
@@ -208,14 +200,13 @@ public class SequenceDiagramQuery {
     }
 
     /**
-     * Get all {@link ISequenceNode} of the current {@link SequenceDiagram} with
-     * range's lowerbound strictly lower to timePoint.
+     * Get all {@link ISequenceNode} of the current {@link SequenceDiagram} with range's lowerbound strictly lower to
+     * timePoint.
      * 
      * @param timePoint
      *            the timePoint from which get all lower {@link ISequenceNode}
      * 
-     * @return the set of {@link ISequenceNode} lower timePoint, sorted by range
-     *         from lower to upper
+     * @return the set of {@link ISequenceNode} lower timePoint, sorted by range from lower to upper
      */
     public Set<ISequenceNode> getAllSequenceNodesLowerThan(int timePoint) {
         Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
@@ -232,15 +223,12 @@ public class SequenceDiagramQuery {
     }
 
     /**
-     * Get all {@link ISequenceNode} of the current {@link SequenceDiagram} with
-     * range's including strictly timePoint.
+     * Get all {@link ISequenceNode} of the current {@link SequenceDiagram} with range's including strictly timePoint.
      * 
      * @param timePoint
-     *            the timePoint from which get all {@link ISequenceNode}
-     *            including it in their range
+     *            the timePoint from which get all {@link ISequenceNode} including it in their range
      * 
-     * @return the set of {@link ISequenceNode} having timePoint in their range,
-     *         sorted by range from lower to upper
+     * @return the set of {@link ISequenceNode} having timePoint in their range, sorted by range from lower to upper
      */
     public Set<ISequenceNode> getAllSequenceNodesOn(int timePoint) {
         Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
@@ -257,14 +245,13 @@ public class SequenceDiagramQuery {
     }
 
     /**
-     * Get all {@link ISequenceNode} of the current {@link SequenceDiagram} with
-     * range's lowerbound strictly upper to timePoint.
+     * Get all {@link ISequenceNode} of the current {@link SequenceDiagram} with range's lowerbound strictly upper to
+     * timePoint.
      * 
      * @param timePoint
      *            the timePoint from which get all upper {@link ISequenceNode}
      * 
-     * @return the set of {@link ISequenceNode} upper timePoint, sorted by range
-     *         from lower to upper
+     * @return the set of {@link ISequenceNode} upper timePoint, sorted by range from lower to upper
      */
     public Set<ISequenceNode> getAllSequenceNodesUpperThan(int timePoint) {
         Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
@@ -283,8 +270,8 @@ public class SequenceDiagramQuery {
     /**
      * Get all {@link ISequenceNode} of the current {@link SequenceDiagram}.
      * 
-     * @return the set of {@link ISequenceNode} of the current
-     *         {@link SequenceDiagram}, sorted by range from lower to upper
+     * @return the set of {@link ISequenceNode} of the current {@link SequenceDiagram}, sorted by range from lower to
+     *         upper
      */
     public Set<ISequenceNode> getAllSequenceNodes() {
         Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
@@ -301,13 +288,11 @@ public class SequenceDiagramQuery {
     }
 
     /**
-     * Get the initial time from which event ends can graphically start. This
-     * initial time corresponds to y coordinate of the bottom of the biggest
-     * InstanceRole not connected to a Create message +
+     * Get the initial time from which event ends can graphically start. This initial time corresponds to y coordinate
+     * of the bottom of the biggest InstanceRole not connected to a Create message +
      * {@link LayoutConstants#TIME_START_OFFSET}.
      * 
-     * @return the initial time if the current {@link SequenceDiagram} contains
-     *         {@link Lifeline}, 0 else
+     * @return the initial time if the current {@link SequenceDiagram} contains {@link Lifeline}, 0 else
      */
     public int getInitialTime() {
         Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
@@ -322,12 +307,10 @@ public class SequenceDiagramQuery {
     }
 
     /**
-     * Get the final time until which event ends can graphically end. This final
-     * time corresponds to y coordinate of the bottom of {@link Lifeline} -
-     * {@link LayoutConstants#TIME_STOP_OFFSET}.
+     * Get the final time until which event ends can graphically end. This final time corresponds to y coordinate of the
+     * bottom of {@link Lifeline} - {@link LayoutConstants#TIME_STOP_OFFSET}.
      * 
-     * @return the final time if the current {@link SequenceDiagram} contains
-     *         {@link Lifeline}, 0 else
+     * @return the final time if the current {@link SequenceDiagram} contains {@link Lifeline}, 0 else
      */
     public int getFinalTime() {
         Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);

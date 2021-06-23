@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.sequence.template;
+package org.eclipse.sirius.diagram.sequence.tool.internal.template;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -39,14 +39,27 @@ import org.eclipse.sirius.diagram.sequence.description.InstanceRoleMapping;
 import org.eclipse.sirius.diagram.sequence.description.MessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
+import org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping;
+import org.eclipse.sirius.diagram.sequence.template.TConditionalExecutionStyle;
+import org.eclipse.sirius.diagram.sequence.template.TConditionalLifelineStyle;
+import org.eclipse.sirius.diagram.sequence.template.TConditionalMessageStyle;
+import org.eclipse.sirius.diagram.sequence.template.TCreationMessageMapping;
+import org.eclipse.sirius.diagram.sequence.template.TDestructionMessageMapping;
+import org.eclipse.sirius.diagram.sequence.template.TExecutionMapping;
+import org.eclipse.sirius.diagram.sequence.template.TExecutionStyle;
+import org.eclipse.sirius.diagram.sequence.template.TLifelineMapping;
+import org.eclipse.sirius.diagram.sequence.template.TLifelineStyle;
+import org.eclipse.sirius.diagram.sequence.template.TMessageStyle;
+import org.eclipse.sirius.diagram.sequence.template.TReturnMessageMapping;
+import org.eclipse.sirius.diagram.sequence.template.TSequenceDiagram;
+import org.eclipse.sirius.diagram.sequence.template.TSourceTargetMessageMapping;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * Class responsible for refreshing the computed representations based on the
- * given sequence diagram template.
+ * Class responsible for refreshing the computed representations based on the given sequence diagram template.
  * 
  * @author cbrun
  * 
@@ -62,9 +75,8 @@ public class TemplateToDiagramDescriptionTransformer {
     private Template2SequenceDiag template2SequenceDiag = new Template2SequenceDiag(marker);
 
     /**
-     * A TSequenceDiagram produces a SequenceDiagramDescription element with the
-     * same name, domainClass and endsOrdering. The lifelineMappings and
-     * messageMappings produce concrete mappings inside the
+     * A TSequenceDiagram produces a SequenceDiagramDescription element with the same name, domainClass and
+     * endsOrdering. The lifelineMappings and messageMappings produce concrete mappings inside the
      * SequenceDiagramDescription as specified below.
      * 
      * @author cbrun
@@ -531,15 +543,13 @@ public class TemplateToDiagramDescriptionTransformer {
     }
 
     /**
-     * Return true if the transformation is going to override the given feature
-     * in the given EObject.
+     * Return true if the transformation is going to override the given feature in the given EObject.
      * 
      * @param eObj
      *            eObject to update.
      * @param feature
      *            feature to check.
-     * @return true if the transformation is going to override the given feature
-     *         in the given EObject.
+     * @return true if the transformation is going to override the given feature in the given EObject.
      * 
      */
     public boolean isOverriding(EObject eObj, EStructuralFeature feature) {

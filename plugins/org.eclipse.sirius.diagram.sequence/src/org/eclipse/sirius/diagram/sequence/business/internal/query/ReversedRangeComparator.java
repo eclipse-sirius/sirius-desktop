@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,16 +16,15 @@ import java.io.Serializable;
 import java.util.Comparator;
 import java.util.List;
 
+import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
-import org.eclipse.sirius.diagram.sequence.util.Range;
 
 /**
- * {@link Comparator} used to order Set of {@link ISequenceElement} according to
- * their {@link Range#getUpperBound()}.
+ * {@link Comparator} used to order Set of {@link ISequenceElement} according to their {@link Range#getUpperBound()}.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -37,11 +36,11 @@ public class ReversedRangeComparator implements Comparator<ISequenceElement>, Se
     private static final long serialVersionUID = -962057468507177598L;
 
     /**
-     * Overridden to compare {@link ISequenceElement} order according to their
-     * range from upper to lower.
+     * Overridden to compare {@link ISequenceElement} order according to their range from upper to lower.
      * 
      * {@inheritDoc}
      */
+    @Override
     public int compare(ISequenceElement sequenceElement1, ISequenceElement sequenceElement2) {
         Range sequenceElement1Range = RangeHelper.verticalRange(sequenceElement1.getProperLogicalBounds());
         Range sequenceElement2Range = RangeHelper.verticalRange(sequenceElement2.getProperLogicalBounds());

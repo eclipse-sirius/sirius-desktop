@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.sequence.Messages;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.AbstractNodeEvent;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
@@ -43,6 +42,7 @@ import org.eclipse.sirius.diagram.sequence.description.tool.ReorderTool;
 import org.eclipse.sirius.diagram.sequence.ordering.CompoundEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
+import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
@@ -56,14 +56,11 @@ import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 /**
- * Refreshes the semantic ordering of a an element of a sequence diagram to
- * reflect the current graphical ordering. This command assumes that the
- * <code>GraphicalMessageOrdering</code> and the
- * <code>SemanticMessageOrdering</code> are up to date according to the current
- * visual (resp. semantic) order but that when they do not match, the graphical
- * ordering is the authoritative one and the semantic ordering should be changed
- * to match it, through the appropriate use of the user-specified
- * <code>ReorderTool</code>.
+ * Refreshes the semantic ordering of a an element of a sequence diagram to reflect the current graphical ordering. This
+ * command assumes that the <code>GraphicalMessageOrdering</code> and the <code>SemanticMessageOrdering</code> are up to
+ * date according to the current visual (resp. semantic) order but that when they do not match, the graphical ordering
+ * is the authoritative one and the semantic ordering should be changed to match it, through the appropriate use of the
+ * user-specified <code>ReorderTool</code>.
  * 
  * @author pcdavid, smonnier
  */
@@ -272,8 +269,8 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
             }
         };
 
-        final Set<EObject> semanticDescendants = Sets.newHashSet(Iterables.filter(Iterables.transform(new ISequenceEventQuery(ise).getAllDescendants(), ISequenceElement.SEMANTIC_TARGET),
-                Predicates.notNull()));
+        final Set<EObject> semanticDescendants = Sets
+                .newHashSet(Iterables.filter(Iterables.transform(new ISequenceEventQuery(ise).getAllDescendants(), ISequenceElement.SEMANTIC_TARGET), Predicates.notNull()));
         final Predicate<EObject> isSemanticSubEventEnd = new Predicate<EObject>() {
             @Override
             public boolean apply(EObject input) {

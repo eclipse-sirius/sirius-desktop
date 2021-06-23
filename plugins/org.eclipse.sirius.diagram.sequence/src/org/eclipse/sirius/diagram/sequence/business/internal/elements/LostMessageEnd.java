@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,7 @@ import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.sequence.Messages;
+import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
@@ -31,10 +31,10 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
+
 /**
- * Represents the LostMEssageEnd marker which can appear at at the end of a
- * message. This element can be present if a message do not have a starting end
- * or a finishing end.
+ * Represents the LostMEssageEnd marker which can appear at at the end of a message. This element can be present if a
+ * message do not have a starting end or a finishing end.
  * 
  * @author mporhel
  */
@@ -42,14 +42,12 @@ public class LostMessageEnd extends AbstractSequenceNode {
     /**
      * The visual ID. Same as a standard node.
      * 
-     * see org.eclipse.sirius.diagram.internal.edit.parts.DNodeEditPart.
-     * VISUAL_ID
+     * see org.eclipse.sirius.diagram.internal.edit.parts.DNodeEditPart. VISUAL_ID
      */
     public static final int VISUAL_ID = 2001;
 
     /**
-     * Predicate to check whether a Sirius DDiagramElement represents an Lost
-     * Message End.
+     * Predicate to check whether a Sirius DDiagramElement represents an Lost Message End.
      */
     private enum SiriusElementPredicate implements Predicate<DDiagramElement> {
         INSTANCE;
@@ -86,22 +84,18 @@ public class LostMessageEnd extends AbstractSequenceNode {
     }
 
     /**
-     * Returns a predicate to check whether a GMF View represents an Lost
-     * Message End.
+     * Returns a predicate to check whether a GMF View represents an Lost Message End.
      * 
-     * @return a predicate to check whether a GMF View represents an Lost
-     *         Message End.
+     * @return a predicate to check whether a GMF View represents an Lost Message End.
      */
     public static Predicate<View> notationPredicate() {
         return new NotationPredicate(NotationPackage.eINSTANCE.getNode(), VISUAL_ID, LostMessageEnd.viewpointElementPredicate());
     }
 
     /**
-     * Returns a predicate to check whether a Sirius DDiagramElement represents
-     * an EndOfLife.
+     * Returns a predicate to check whether a Sirius DDiagramElement represents an EndOfLife.
      * 
-     * @return a predicate to check whether a Sirius DDiagramElement represents
-     *         an EndOfLife.
+     * @return a predicate to check whether a Sirius DDiagramElement represents an EndOfLife.
      */
     public static Predicate<DDiagramElement> viewpointElementPredicate() {
         return SiriusElementPredicate.INSTANCE;
