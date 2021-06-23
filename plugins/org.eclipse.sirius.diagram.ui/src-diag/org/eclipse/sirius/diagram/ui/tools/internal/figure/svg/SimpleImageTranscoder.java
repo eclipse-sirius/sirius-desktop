@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2008, 2016 Borland Software Corporation and others.
+ * Copyright (c) 2008, 2016, 2021 Borland Software Corporation and others.
  * 
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -19,6 +19,10 @@ import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
+import org.apache.batik.bridge.ExternalResourceSecurity;
+import org.apache.batik.bridge.NoLoadExternalResourceSecurity;
+import org.apache.batik.bridge.UserAgent;
+import org.apache.batik.bridge.UserAgentAdapter;
 import org.apache.batik.gvt.renderer.ImageRenderer;
 import org.apache.batik.gvt.renderer.StaticRenderer;
 import org.apache.batik.transcoder.SVGAbstractTranscoder;
@@ -26,6 +30,7 @@ import org.apache.batik.transcoder.TranscoderException;
 import org.apache.batik.transcoder.TranscoderInput;
 import org.apache.batik.transcoder.TranscoderOutput;
 import org.apache.batik.transcoder.image.ImageTranscoder;
+import org.apache.batik.util.ParsedURL;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -50,6 +55,16 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
     public SimpleImageTranscoder(Document document) {
         this.document = document;
         renderingHints = new RenderingHints(null);
+    }
+    
+    @Override
+    protected UserAgent createUserAgent() {
+        return new UserAgentAdapter() {
+            @Override
+            public ExternalResourceSecurity getExternalResourceSecurity(ParsedURL resourceURL, ParsedURL docURL) {
+                return new NoLoadExternalResourceSecurity();
+            }
+        };
     }
 
     public final Document getDocument() {

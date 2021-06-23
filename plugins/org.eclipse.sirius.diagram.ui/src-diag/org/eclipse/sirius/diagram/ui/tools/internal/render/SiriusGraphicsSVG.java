@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2004, 2016 IBM Corporation and others.
+ * Copyright (c) 2004, 2016, 2021 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,8 +19,8 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.renderable.RenderableImage;
 import java.util.Optional;
 
-import org.apache.batik.dom.svg.SVGDOMImplementation;
-import org.apache.batik.dom.svg.SVGOMDocument;
+import org.apache.batik.anim.dom.SVGDOMImplementation;
+import org.apache.batik.anim.dom.SVGOMDocument;
 import org.apache.batik.dom.util.DOMUtilities;
 import org.apache.batik.svggen.DOMTreeManager;
 import org.apache.batik.svggen.GenericImageHandler;

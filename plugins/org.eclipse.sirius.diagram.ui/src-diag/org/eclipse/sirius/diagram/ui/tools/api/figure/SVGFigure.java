@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2008, 2017 Borland Software Corporation and others.
+ * Copyright (c) 2008, 2017, 2021 Borland Software Corporation and others.
  * 
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -21,7 +21,7 @@ import java.util.Collection;
 import java.util.Optional;
 import java.util.WeakHashMap;
 
-import org.apache.batik.dom.svg.SAXSVGDocumentFactory;
+import org.apache.batik.anim.dom.SAXSVGDocumentFactory;
 import org.apache.batik.util.XMLResourceDescriptor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
@@ -301,7 +301,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
                 return factory.createDocument(uri);
             } catch (IOException e) {
                 boolean saxParserNotFound = e.getMessage() != null && e.getMessage().contains("SAX2 driver class org.apache.xerces.parsers.SAXParser not found"); //$NON-NLS-1$
-                if (!forceClassLoader && saxParserNotFound && Thread.currentThread().getContextClassLoader() == null) {
+                if (!forceClassLoader && saxParserNotFound) {
                     return createDocument(factory, true);
                 } else {
                     DiagramPlugin.getDefault().logError(MessageFormat.format(Messages.SVGFigure_loadError, uri), e);
