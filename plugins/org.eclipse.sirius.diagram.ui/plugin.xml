@@ -510,6 +510,30 @@
               removeFromMenubar="true"
               removeFromToolbar="false">
         </partPredefinedItem>
+        <partPredefinedItem
+              id="bringToFrontAction"
+              menubarPath="/diagramMenu/zorderMenu/zorderGroup"
+              removeFromMenubar="true"
+              removeFromToolbar="false">
+        </partPredefinedItem>
+        <partPredefinedItem
+              id="sendToBackAction"
+              menubarPath="/diagramMenu/zorderMenu/zorderGroup"
+              removeFromMenubar="true"
+              removeFromToolbar="false">
+        </partPredefinedItem>
+        <partPredefinedItem
+              id="bringForwardAction"
+              menubarPath="/diagramMenu/zorderMenu/zorderGroup"
+              removeFromMenubar="true"
+              removeFromToolbar="false">
+        </partPredefinedItem>
+        <partPredefinedItem
+              id="sendBackwardAction"
+              menubarPath="/diagramMenu/zorderMenu/zorderGroup"
+              removeFromMenubar="true"
+              removeFromToolbar="false">
+        </partPredefinedItem>
      </partContribution>
      <popupContribution
            class="org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider">
