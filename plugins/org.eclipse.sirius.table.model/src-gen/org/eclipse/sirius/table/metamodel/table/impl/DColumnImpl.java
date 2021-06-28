@@ -190,7 +190,7 @@ public abstract class DColumnImpl extends DTableElementImpl implements DColumn {
     @Override
     public EList<DCell> getCells() {
         if (cells == null) {
-            cells = new EObjectWithInverseResolvingEList<DCell>(DCell.class, this, TablePackage.DCOLUMN__CELLS, TablePackage.DCELL__COLUMN);
+            cells = new EObjectWithInverseResolvingEList<>(DCell.class, this, TablePackage.DCOLUMN__CELLS, TablePackage.DCELL__COLUMN);
         }
         return cells;
     }

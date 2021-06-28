@@ -236,7 +236,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
     @Override
     public EList<EObject> getSemanticElements() {
         if (semanticElements == null) {
-            semanticElements = new EObjectResolvingEList<EObject>(EObject.class, this, TablePackage.DLINE__SEMANTIC_ELEMENTS);
+            semanticElements = new EObjectResolvingEList<>(EObject.class, this, TablePackage.DLINE__SEMANTIC_ELEMENTS);
         }
         return semanticElements;
     }
@@ -383,7 +383,7 @@ public class DLineImpl extends LineContainerImpl implements DLine {
     @Override
     public EList<DCell> getCells() {
         if (cells == null) {
-            cells = new EObjectContainmentWithInverseEList<DCell>(DCell.class, this, TablePackage.DLINE__CELLS, TablePackage.DCELL__LINE);
+            cells = new EObjectContainmentWithInverseEList<>(DCell.class, this, TablePackage.DLINE__CELLS, TablePackage.DCELL__LINE);
         }
         return cells;
     }

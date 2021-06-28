@@ -238,7 +238,7 @@ public class TreeItemStyleDescriptionImpl extends MinimalEObjectImpl.Container i
     @Override
     public EList<FontFormat> getLabelFormat() {
         if (labelFormat == null) {
-            labelFormat = new EDataTypeUniqueEList<FontFormat>(FontFormat.class, this, DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__LABEL_FORMAT);
+            labelFormat = new EDataTypeUniqueEList<>(FontFormat.class, this, DescriptionPackage.TREE_ITEM_STYLE_DESCRIPTION__LABEL_FORMAT);
         }
         return labelFormat;
     }

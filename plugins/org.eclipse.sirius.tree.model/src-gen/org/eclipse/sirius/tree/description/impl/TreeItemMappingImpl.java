@@ -368,7 +368,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
     @Override
     public EList<TreeItemMapping> getSubItemMappings() {
         if (subItemMappings == null) {
-            subItemMappings = new EObjectContainmentEList<TreeItemMapping>(TreeItemMapping.class, this, DescriptionPackage.TREE_ITEM_MAPPING__SUB_ITEM_MAPPINGS);
+            subItemMappings = new EObjectContainmentEList<>(TreeItemMapping.class, this, DescriptionPackage.TREE_ITEM_MAPPING__SUB_ITEM_MAPPINGS);
         }
         return subItemMappings;
     }
@@ -381,7 +381,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
     @Override
     public EList<TreeItemContainerDropTool> getDropTools() {
         if (dropTools == null) {
-            dropTools = new EObjectContainmentEList<TreeItemContainerDropTool>(TreeItemContainerDropTool.class, this, DescriptionPackage.TREE_ITEM_MAPPING__DROP_TOOLS);
+            dropTools = new EObjectContainmentEList<>(TreeItemContainerDropTool.class, this, DescriptionPackage.TREE_ITEM_MAPPING__DROP_TOOLS);
         }
         return dropTools;
     }
@@ -394,7 +394,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
     @Override
     public EList<ConditionalTreeItemStyleDescription> getConditionalStyles() {
         if (conditionalStyles == null) {
-            conditionalStyles = new EObjectContainmentEList<ConditionalTreeItemStyleDescription>(ConditionalTreeItemStyleDescription.class, this,
+            conditionalStyles = new EObjectContainmentEList<>(ConditionalTreeItemStyleDescription.class, this,
                     DescriptionPackage.TREE_ITEM_MAPPING__CONDITIONAL_STYLES);
         }
         return conditionalStyles;
@@ -485,7 +485,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
     @Override
     public EList<TreeItemMapping> getReusedTreeItemMappings() {
         if (reusedTreeItemMappings == null) {
-            reusedTreeItemMappings = new EObjectResolvingEList<TreeItemMapping>(TreeItemMapping.class, this, DescriptionPackage.TREE_ITEM_MAPPING__REUSED_TREE_ITEM_MAPPINGS);
+            reusedTreeItemMappings = new EObjectResolvingEList<>(TreeItemMapping.class, this, DescriptionPackage.TREE_ITEM_MAPPING__REUSED_TREE_ITEM_MAPPINGS);
         }
         return reusedTreeItemMappings;
     }
@@ -608,7 +608,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
     @Override
     public EList<TreeItemCreationTool> getCreate() {
         if (create == null) {
-            create = new EObjectContainmentEList<TreeItemCreationTool>(TreeItemCreationTool.class, this, DescriptionPackage.TREE_ITEM_MAPPING__CREATE);
+            create = new EObjectContainmentEList<>(TreeItemCreationTool.class, this, DescriptionPackage.TREE_ITEM_MAPPING__CREATE);
         }
         return create;
     }
@@ -621,7 +621,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
     @Override
     public EList<TreeItemDragTool> getDndTools() {
         if (dndTools == null) {
-            dndTools = new EObjectContainmentEList<TreeItemDragTool>(TreeItemDragTool.class, this, DescriptionPackage.TREE_ITEM_MAPPING__DND_TOOLS);
+            dndTools = new EObjectContainmentEList<>(TreeItemDragTool.class, this, DescriptionPackage.TREE_ITEM_MAPPING__DND_TOOLS);
         }
         return dndTools;
     }
@@ -634,7 +634,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
     @Override
     public EList<TreePopupMenu> getPopupMenus() {
         if (popupMenus == null) {
-            popupMenus = new EObjectContainmentEList<TreePopupMenu>(TreePopupMenu.class, this, DescriptionPackage.TREE_ITEM_MAPPING__POPUP_MENUS);
+            popupMenus = new EObjectContainmentEList<>(TreePopupMenu.class, this, DescriptionPackage.TREE_ITEM_MAPPING__POPUP_MENUS);
         }
         return popupMenus;
     }

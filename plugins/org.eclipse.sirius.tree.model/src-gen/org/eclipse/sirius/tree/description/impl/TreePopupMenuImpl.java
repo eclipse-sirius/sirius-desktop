@@ -76,7 +76,7 @@ public class TreePopupMenuImpl extends AbstractToolDescriptionImpl implements Tr
     @Override
     public EList<MenuItemOrRef> getMenuItemDescriptions() {
         if (menuItemDescriptions == null) {
-            menuItemDescriptions = new EObjectContainmentEList<MenuItemOrRef>(MenuItemOrRef.class, this, DescriptionPackage.TREE_POPUP_MENU__MENU_ITEM_DESCRIPTIONS);
+            menuItemDescriptions = new EObjectContainmentEList<>(MenuItemOrRef.class, this, DescriptionPackage.TREE_POPUP_MENU__MENU_ITEM_DESCRIPTIONS);
         }
         return menuItemDescriptions;
     }

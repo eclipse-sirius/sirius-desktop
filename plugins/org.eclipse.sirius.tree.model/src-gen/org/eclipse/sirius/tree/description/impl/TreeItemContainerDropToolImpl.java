@@ -234,7 +234,7 @@ public class TreeItemContainerDropToolImpl extends MappingBasedToolDescriptionIm
     @Override
     public EList<TreeVariable> getVariables() {
         if (variables == null) {
-            variables = new EObjectContainmentEList<TreeVariable>(TreeVariable.class, this, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__VARIABLES);
+            variables = new EObjectContainmentEList<>(TreeVariable.class, this, DescriptionPackage.TREE_ITEM_CONTAINER_DROP_TOOL__VARIABLES);
         }
         return variables;
     }

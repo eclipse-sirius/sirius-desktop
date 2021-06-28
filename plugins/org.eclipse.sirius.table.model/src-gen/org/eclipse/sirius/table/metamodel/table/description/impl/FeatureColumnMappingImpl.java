@@ -416,7 +416,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
     @Override
     public EList<ForegroundConditionalStyle> getForegroundConditionalStyle() {
         if (foregroundConditionalStyle == null) {
-            foregroundConditionalStyle = new EObjectContainmentEList<ForegroundConditionalStyle>(ForegroundConditionalStyle.class, this,
+            foregroundConditionalStyle = new EObjectContainmentEList<>(ForegroundConditionalStyle.class, this,
                     DescriptionPackage.FEATURE_COLUMN_MAPPING__FOREGROUND_CONDITIONAL_STYLE);
         }
         return foregroundConditionalStyle;
@@ -483,7 +483,7 @@ public class FeatureColumnMappingImpl extends ColumnMappingImpl implements Featu
     @Override
     public EList<BackgroundConditionalStyle> getBackgroundConditionalStyle() {
         if (backgroundConditionalStyle == null) {
-            backgroundConditionalStyle = new EObjectContainmentEList<BackgroundConditionalStyle>(BackgroundConditionalStyle.class, this,
+            backgroundConditionalStyle = new EObjectContainmentEList<>(BackgroundConditionalStyle.class, this,
                     DescriptionPackage.FEATURE_COLUMN_MAPPING__BACKGROUND_CONDITIONAL_STYLE);
         }
         return backgroundConditionalStyle;

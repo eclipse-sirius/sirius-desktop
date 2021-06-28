@@ -75,7 +75,7 @@ public abstract class LineContainerImpl extends DSemanticDecoratorImpl implement
     @Override
     public EList<DLine> getLines() {
         if (lines == null) {
-            lines = new EObjectContainmentWithInverseEList<DLine>(DLine.class, this, TablePackage.LINE_CONTAINER__LINES, TablePackage.DLINE__CONTAINER);
+            lines = new EObjectContainmentWithInverseEList<>(DLine.class, this, TablePackage.LINE_CONTAINER__LINES, TablePackage.DLINE__CONTAINER);
         }
         return lines;
     }

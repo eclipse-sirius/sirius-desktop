@@ -75,7 +75,7 @@ public abstract class DTreeItemContainerImpl extends DSemanticDecoratorImpl impl
     @Override
     public EList<DTreeItem> getOwnedTreeItems() {
         if (ownedTreeItems == null) {
-            ownedTreeItems = new EObjectContainmentWithInverseEList<DTreeItem>(DTreeItem.class, this, TreePackage.DTREE_ITEM_CONTAINER__OWNED_TREE_ITEMS, TreePackage.DTREE_ITEM__CONTAINER);
+            ownedTreeItems = new EObjectContainmentWithInverseEList<>(DTreeItem.class, this, TreePackage.DTREE_ITEM_CONTAINER__OWNED_TREE_ITEMS, TreePackage.DTREE_ITEM__CONTAINER);
         }
         return ownedTreeItems;
     }

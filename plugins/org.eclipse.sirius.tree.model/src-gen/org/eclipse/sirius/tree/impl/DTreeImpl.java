@@ -157,7 +157,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
     @Override
     public EList<DTreeItem> getOwnedTreeItems() {
         if (ownedTreeItems == null) {
-            ownedTreeItems = new EObjectContainmentWithInverseEList<DTreeItem>(DTreeItem.class, this, TreePackage.DTREE__OWNED_TREE_ITEMS, TreePackage.DTREE_ITEM__CONTAINER);
+            ownedTreeItems = new EObjectContainmentWithInverseEList<>(DTreeItem.class, this, TreePackage.DTREE__OWNED_TREE_ITEMS, TreePackage.DTREE_ITEM__CONTAINER);
         }
         return ownedTreeItems;
     }
@@ -170,7 +170,7 @@ public class DTreeImpl extends DRepresentationImpl implements DTree {
     @Override
     public EList<EObject> getSemanticElements() {
         if (semanticElements == null) {
-            semanticElements = new EObjectResolvingEList<EObject>(EObject.class, this, TreePackage.DTREE__SEMANTIC_ELEMENTS);
+            semanticElements = new EObjectResolvingEList<>(EObject.class, this, TreePackage.DTREE__SEMANTIC_ELEMENTS);
         }
         return semanticElements;
     }

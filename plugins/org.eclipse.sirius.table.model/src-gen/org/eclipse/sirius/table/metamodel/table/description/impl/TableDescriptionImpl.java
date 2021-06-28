@@ -501,7 +501,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     @Override
     public EList<EPackage> getMetamodel() {
         if (metamodel == null) {
-            metamodel = new EObjectResolvingEList<EPackage>(EPackage.class, this, DescriptionPackage.TABLE_DESCRIPTION__METAMODEL);
+            metamodel = new EObjectResolvingEList<>(EPackage.class, this, DescriptionPackage.TABLE_DESCRIPTION__METAMODEL);
         }
         return metamodel;
     }
@@ -610,7 +610,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     @Override
     public EList<RepresentationCreationDescription> getOwnedRepresentationCreationDescriptions() {
         if (ownedRepresentationCreationDescriptions == null) {
-            ownedRepresentationCreationDescriptions = new EObjectContainmentEList<RepresentationCreationDescription>(RepresentationCreationDescription.class, this,
+            ownedRepresentationCreationDescriptions = new EObjectContainmentEList<>(RepresentationCreationDescription.class, this,
                     DescriptionPackage.TABLE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS);
         }
         return ownedRepresentationCreationDescriptions;
@@ -624,7 +624,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     @Override
     public EList<RepresentationCreationDescription> getReusedRepresentationCreationDescriptions() {
         if (reusedRepresentationCreationDescriptions == null) {
-            reusedRepresentationCreationDescriptions = new EObjectResolvingEList<RepresentationCreationDescription>(RepresentationCreationDescription.class, this,
+            reusedRepresentationCreationDescriptions = new EObjectResolvingEList<>(RepresentationCreationDescription.class, this,
                     DescriptionPackage.TABLE_DESCRIPTION__REUSED_REPRESENTATION_CREATION_DESCRIPTIONS);
         }
         return reusedRepresentationCreationDescriptions;
@@ -653,7 +653,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     @Override
     public EList<RepresentationNavigationDescription> getOwnedRepresentationNavigationDescriptions() {
         if (ownedRepresentationNavigationDescriptions == null) {
-            ownedRepresentationNavigationDescriptions = new EObjectContainmentEList<RepresentationNavigationDescription>(RepresentationNavigationDescription.class, this,
+            ownedRepresentationNavigationDescriptions = new EObjectContainmentEList<>(RepresentationNavigationDescription.class, this,
                     DescriptionPackage.TABLE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS);
         }
         return ownedRepresentationNavigationDescriptions;
@@ -667,7 +667,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     @Override
     public EList<RepresentationNavigationDescription> getReusedRepresentationNavigationDescriptions() {
         if (reusedRepresentationNavigationDescriptions == null) {
-            reusedRepresentationNavigationDescriptions = new EObjectResolvingEList<RepresentationNavigationDescription>(RepresentationNavigationDescription.class, this,
+            reusedRepresentationNavigationDescriptions = new EObjectResolvingEList<>(RepresentationNavigationDescription.class, this,
                     DescriptionPackage.TABLE_DESCRIPTION__REUSED_REPRESENTATION_NAVIGATION_DESCRIPTIONS);
         }
         return reusedRepresentationNavigationDescriptions;
@@ -696,7 +696,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     @Override
     public EList<LineMapping> getOwnedLineMappings() {
         if (ownedLineMappings == null) {
-            ownedLineMappings = new EObjectContainmentEList<LineMapping>(LineMapping.class, this, DescriptionPackage.TABLE_DESCRIPTION__OWNED_LINE_MAPPINGS);
+            ownedLineMappings = new EObjectContainmentEList<>(LineMapping.class, this, DescriptionPackage.TABLE_DESCRIPTION__OWNED_LINE_MAPPINGS);
         }
         return ownedLineMappings;
     }
@@ -709,7 +709,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     @Override
     public EList<LineMapping> getReusedLineMappings() {
         if (reusedLineMappings == null) {
-            reusedLineMappings = new EObjectResolvingEList<LineMapping>(LineMapping.class, this, DescriptionPackage.TABLE_DESCRIPTION__REUSED_LINE_MAPPINGS);
+            reusedLineMappings = new EObjectResolvingEList<>(LineMapping.class, this, DescriptionPackage.TABLE_DESCRIPTION__REUSED_LINE_MAPPINGS);
         }
         return reusedLineMappings;
     }
@@ -737,7 +737,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     @Override
     public EList<CreateLineTool> getOwnedCreateLine() {
         if (ownedCreateLine == null) {
-            ownedCreateLine = new EObjectContainmentEList<CreateLineTool>(CreateLineTool.class, this, DescriptionPackage.TABLE_DESCRIPTION__OWNED_CREATE_LINE);
+            ownedCreateLine = new EObjectContainmentEList<>(CreateLineTool.class, this, DescriptionPackage.TABLE_DESCRIPTION__OWNED_CREATE_LINE);
         }
         return ownedCreateLine;
     }
@@ -750,7 +750,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     @Override
     public EList<CreateLineTool> getReusedCreateLine() {
         if (reusedCreateLine == null) {
-            reusedCreateLine = new EObjectResolvingEList<CreateLineTool>(CreateLineTool.class, this, DescriptionPackage.TABLE_DESCRIPTION__REUSED_CREATE_LINE);
+            reusedCreateLine = new EObjectResolvingEList<>(CreateLineTool.class, this, DescriptionPackage.TABLE_DESCRIPTION__REUSED_CREATE_LINE);
         }
         return reusedCreateLine;
     }
@@ -802,7 +802,7 @@ public abstract class TableDescriptionImpl extends DocumentedElementImpl impleme
     @Override
     public EList<EObject> getImportedElements() {
         if (importedElements == null) {
-            importedElements = new EObjectContainmentEList<EObject>(EObject.class, this, DescriptionPackage.TABLE_DESCRIPTION__IMPORTED_ELEMENTS);
+            importedElements = new EObjectContainmentEList<>(EObject.class, this, DescriptionPackage.TABLE_DESCRIPTION__IMPORTED_ELEMENTS);
         }
         return importedElements;
     }

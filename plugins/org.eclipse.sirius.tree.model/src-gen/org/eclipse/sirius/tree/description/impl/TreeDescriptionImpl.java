@@ -438,7 +438,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     @Override
     public EList<EPackage> getMetamodel() {
         if (metamodel == null) {
-            metamodel = new EObjectResolvingEList<EPackage>(EPackage.class, this, DescriptionPackage.TREE_DESCRIPTION__METAMODEL);
+            metamodel = new EObjectResolvingEList<>(EPackage.class, this, DescriptionPackage.TREE_DESCRIPTION__METAMODEL);
         }
         return metamodel;
     }
@@ -523,7 +523,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     @Override
     public EList<TreeItemMapping> getSubItemMappings() {
         if (subItemMappings == null) {
-            subItemMappings = new EObjectContainmentEList<TreeItemMapping>(TreeItemMapping.class, this, DescriptionPackage.TREE_DESCRIPTION__SUB_ITEM_MAPPINGS);
+            subItemMappings = new EObjectContainmentEList<>(TreeItemMapping.class, this, DescriptionPackage.TREE_DESCRIPTION__SUB_ITEM_MAPPINGS);
         }
         return subItemMappings;
     }
@@ -536,7 +536,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     @Override
     public EList<TreeItemContainerDropTool> getDropTools() {
         if (dropTools == null) {
-            dropTools = new EObjectContainmentEList<TreeItemContainerDropTool>(TreeItemContainerDropTool.class, this, DescriptionPackage.TREE_DESCRIPTION__DROP_TOOLS);
+            dropTools = new EObjectContainmentEList<>(TreeItemContainerDropTool.class, this, DescriptionPackage.TREE_DESCRIPTION__DROP_TOOLS);
         }
         return dropTools;
     }
@@ -549,7 +549,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     @Override
     public EList<TreeItemCreationTool> getCreateTreeItem() {
         if (createTreeItem == null) {
-            createTreeItem = new EObjectContainmentEList<TreeItemCreationTool>(TreeItemCreationTool.class, this, DescriptionPackage.TREE_DESCRIPTION__CREATE_TREE_ITEM);
+            createTreeItem = new EObjectContainmentEList<>(TreeItemCreationTool.class, this, DescriptionPackage.TREE_DESCRIPTION__CREATE_TREE_ITEM);
         }
         return createTreeItem;
     }
@@ -562,7 +562,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     @Override
     public EList<RepresentationCreationDescription> getOwnedRepresentationCreationDescriptions() {
         if (ownedRepresentationCreationDescriptions == null) {
-            ownedRepresentationCreationDescriptions = new EObjectContainmentEList<RepresentationCreationDescription>(RepresentationCreationDescription.class, this,
+            ownedRepresentationCreationDescriptions = new EObjectContainmentEList<>(RepresentationCreationDescription.class, this,
                     DescriptionPackage.TREE_DESCRIPTION__OWNED_REPRESENTATION_CREATION_DESCRIPTIONS);
         }
         return ownedRepresentationCreationDescriptions;
@@ -576,7 +576,7 @@ public class TreeDescriptionImpl extends DocumentedElementImpl implements TreeDe
     @Override
     public EList<RepresentationNavigationDescription> getOwnedRepresentationNavigationDescriptions() {
         if (ownedRepresentationNavigationDescriptions == null) {
-            ownedRepresentationNavigationDescriptions = new EObjectContainmentEList<RepresentationNavigationDescription>(RepresentationNavigationDescription.class, this,
+            ownedRepresentationNavigationDescriptions = new EObjectContainmentEList<>(RepresentationNavigationDescription.class, this,
                     DescriptionPackage.TREE_DESCRIPTION__OWNED_REPRESENTATION_NAVIGATION_DESCRIPTIONS);
         }
         return ownedRepresentationNavigationDescriptions;

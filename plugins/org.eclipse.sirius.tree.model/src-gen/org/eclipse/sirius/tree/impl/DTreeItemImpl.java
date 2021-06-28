@@ -181,7 +181,7 @@ public class DTreeItemImpl extends DTreeItemContainerImpl implements DTreeItem {
     @Override
     public EList<EObject> getSemanticElements() {
         if (semanticElements == null) {
-            semanticElements = new EObjectResolvingEList<EObject>(EObject.class, this, TreePackage.DTREE_ITEM__SEMANTIC_ELEMENTS);
+            semanticElements = new EObjectResolvingEList<>(EObject.class, this, TreePackage.DTREE_ITEM__SEMANTIC_ELEMENTS);
         }
         return semanticElements;
     }

@@ -179,7 +179,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
     @Override
     public EList<DLine> getLines() {
         if (lines == null) {
-            lines = new EObjectContainmentWithInverseEList<DLine>(DLine.class, this, TablePackage.DTABLE__LINES, TablePackage.DLINE__CONTAINER);
+            lines = new EObjectContainmentWithInverseEList<>(DLine.class, this, TablePackage.DTABLE__LINES, TablePackage.DLINE__CONTAINER);
         }
         return lines;
     }
@@ -192,7 +192,7 @@ public class DTableImpl extends DRepresentationImpl implements DTable {
     @Override
     public EList<DColumn> getColumns() {
         if (columns == null) {
-            columns = new EObjectContainmentWithInverseEList<DColumn>(DColumn.class, this, TablePackage.DTABLE__COLUMNS, TablePackage.DCOLUMN__TABLE);
+            columns = new EObjectContainmentWithInverseEList<>(DColumn.class, this, TablePackage.DTABLE__COLUMNS, TablePackage.DCOLUMN__TABLE);
         }
         return columns;
     }

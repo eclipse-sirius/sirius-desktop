@@ -213,7 +213,7 @@ public class DTableElementStyleImpl extends IdentifiedElementImpl implements DTa
     @Override
     public EList<FontFormat> getLabelFormat() {
         if (labelFormat == null) {
-            labelFormat = new EDataTypeUniqueEList<FontFormat>(FontFormat.class, this, TablePackage.DTABLE_ELEMENT_STYLE__LABEL_FORMAT);
+            labelFormat = new EDataTypeUniqueEList<>(FontFormat.class, this, TablePackage.DTABLE_ELEMENT_STYLE__LABEL_FORMAT);
         }
         return labelFormat;
     }

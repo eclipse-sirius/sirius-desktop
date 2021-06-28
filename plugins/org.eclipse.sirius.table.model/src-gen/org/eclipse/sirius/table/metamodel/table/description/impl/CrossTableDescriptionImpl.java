@@ -101,7 +101,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
     @Override
     public EList<ElementColumnMapping> getOwnedColumnMappings() {
         if (ownedColumnMappings == null) {
-            ownedColumnMappings = new EObjectContainmentEList<ElementColumnMapping>(ElementColumnMapping.class, this, DescriptionPackage.CROSS_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS);
+            ownedColumnMappings = new EObjectContainmentEList<>(ElementColumnMapping.class, this, DescriptionPackage.CROSS_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS);
         }
         return ownedColumnMappings;
     }
@@ -114,7 +114,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
     @Override
     public EList<IntersectionMapping> getIntersection() {
         if (intersection == null) {
-            intersection = new EObjectContainmentEList<IntersectionMapping>(IntersectionMapping.class, this, DescriptionPackage.CROSS_TABLE_DESCRIPTION__INTERSECTION);
+            intersection = new EObjectContainmentEList<>(IntersectionMapping.class, this, DescriptionPackage.CROSS_TABLE_DESCRIPTION__INTERSECTION);
         }
         return intersection;
     }
@@ -127,7 +127,7 @@ public class CrossTableDescriptionImpl extends TableDescriptionImpl implements C
     @Override
     public EList<CreateCrossColumnTool> getCreateColumn() {
         if (createColumn == null) {
-            createColumn = new EObjectContainmentEList<CreateCrossColumnTool>(CreateCrossColumnTool.class, this, DescriptionPackage.CROSS_TABLE_DESCRIPTION__CREATE_COLUMN);
+            createColumn = new EObjectContainmentEList<>(CreateCrossColumnTool.class, this, DescriptionPackage.CROSS_TABLE_DESCRIPTION__CREATE_COLUMN);
         }
         return createColumn;
     }

@@ -62,7 +62,7 @@ public class TreeItemProviderAdapterFactory extends TreeAdapterFactory implement
      *
      * @generated
      */
-    protected Collection<Object> supportedTypes = new ArrayList<Object>();
+    protected Collection<Object> supportedTypes = new ArrayList<>();
 
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc -->

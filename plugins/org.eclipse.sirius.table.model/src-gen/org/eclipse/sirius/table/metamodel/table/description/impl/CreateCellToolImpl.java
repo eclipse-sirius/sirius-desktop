@@ -370,7 +370,7 @@ public class CreateCellToolImpl extends TableToolImpl implements CreateCellTool 
     @Override
     public EList<ToolFilterDescription> getFilters() {
         if (filters == null) {
-            filters = new EObjectContainmentEList.Resolving<ToolFilterDescription>(ToolFilterDescription.class, this, DescriptionPackage.CREATE_CELL_TOOL__FILTERS);
+            filters = new EObjectContainmentEList.Resolving<>(ToolFilterDescription.class, this, DescriptionPackage.CREATE_CELL_TOOL__FILTERS);
         }
         return filters;
     }

@@ -43,7 +43,7 @@ import org.eclipse.sirius.viewpoint.description.tool.provider.AbstractToolDescri
  * @generated
  */
 public class DeleteToolItemProvider extends AbstractToolDescriptionItemProvider {
-    private static final Collection<EClass> TYPES_TO_HIDE = new ArrayList<EClass>(Arrays.asList(ToolPackage.Literals.DELETE_VIEW));
+    private static final Collection<EClass> TYPES_TO_HIDE = new ArrayList<>(Arrays.asList(ToolPackage.Literals.DELETE_VIEW));
 
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->

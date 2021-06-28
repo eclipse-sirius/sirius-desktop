@@ -219,7 +219,7 @@ public class DCellImpl extends DSemanticDecoratorImpl implements DCell {
     @Override
     public EList<EObject> getSemanticElements() {
         if (semanticElements == null) {
-            semanticElements = new EObjectResolvingEList<EObject>(EObject.class, this, TablePackage.DCELL__SEMANTIC_ELEMENTS);
+            semanticElements = new EObjectResolvingEList<>(EObject.class, this, TablePackage.DCELL__SEMANTIC_ELEMENTS);
         }
         return semanticElements;
     }

@@ -91,7 +91,7 @@ public abstract class CreateToolImpl extends AbstractToolDescriptionImpl impleme
     @Override
     public EList<TableVariable> getVariables() {
         if (variables == null) {
-            variables = new EObjectContainmentEList<TableVariable>(TableVariable.class, this, DescriptionPackage.CREATE_TOOL__VARIABLES);
+            variables = new EObjectContainmentEList<>(TableVariable.class, this, DescriptionPackage.CREATE_TOOL__VARIABLES);
         }
         return variables;
     }

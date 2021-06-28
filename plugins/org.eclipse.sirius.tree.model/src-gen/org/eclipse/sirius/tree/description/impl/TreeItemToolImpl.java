@@ -143,7 +143,7 @@ public abstract class TreeItemToolImpl extends AbstractToolDescriptionImpl imple
     @Override
     public EList<TreeVariable> getVariables() {
         if (variables == null) {
-            variables = new EObjectContainmentEList<TreeVariable>(TreeVariable.class, this, DescriptionPackage.TREE_ITEM_TOOL__VARIABLES);
+            variables = new EObjectContainmentEList<>(TreeVariable.class, this, DescriptionPackage.TREE_ITEM_TOOL__VARIABLES);
         }
         return variables;
     }

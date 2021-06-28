@@ -244,7 +244,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
     @Override
     public EList<TreeVariable> getVariables() {
         if (variables == null) {
-            variables = new EObjectContainmentEList<TreeVariable>(TreeVariable.class, this, DescriptionPackage.TREE_ITEM_DRAG_TOOL__VARIABLES);
+            variables = new EObjectContainmentEList<>(TreeVariable.class, this, DescriptionPackage.TREE_ITEM_DRAG_TOOL__VARIABLES);
         }
         return variables;
     }
@@ -481,7 +481,7 @@ public class TreeItemDragToolImpl extends MappingBasedToolDescriptionImpl implem
     @Override
     public EList<TreeItemMappingContainer> getContainers() {
         if (containers == null) {
-            containers = new EObjectResolvingEList<TreeItemMappingContainer>(TreeItemMappingContainer.class, this, DescriptionPackage.TREE_ITEM_DRAG_TOOL__CONTAINERS);
+            containers = new EObjectResolvingEList<>(TreeItemMappingContainer.class, this, DescriptionPackage.TREE_ITEM_DRAG_TOOL__CONTAINERS);
         }
         return containers;
     }

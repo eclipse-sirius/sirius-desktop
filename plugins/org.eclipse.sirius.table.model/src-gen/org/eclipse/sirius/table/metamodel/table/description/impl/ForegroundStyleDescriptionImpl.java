@@ -136,7 +136,7 @@ public class ForegroundStyleDescriptionImpl extends MinimalEObjectImpl.Container
     @Override
     public EList<FontFormat> getLabelFormat() {
         if (labelFormat == null) {
-            labelFormat = new EDataTypeUniqueEList<FontFormat>(FontFormat.class, this, DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__LABEL_FORMAT);
+            labelFormat = new EDataTypeUniqueEList<>(FontFormat.class, this, DescriptionPackage.FOREGROUND_STYLE_DESCRIPTION__LABEL_FORMAT);
         }
         return labelFormat;
     }

@@ -241,7 +241,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
     @Override
     public EList<ForegroundConditionalStyle> getForegroundConditionalStyle() {
         if (foregroundConditionalStyle == null) {
-            foregroundConditionalStyle = new EObjectContainmentEList<ForegroundConditionalStyle>(ForegroundConditionalStyle.class, this,
+            foregroundConditionalStyle = new EObjectContainmentEList<>(ForegroundConditionalStyle.class, this,
                     DescriptionPackage.ELEMENT_COLUMN_MAPPING__FOREGROUND_CONDITIONAL_STYLE);
         }
         return foregroundConditionalStyle;
@@ -308,7 +308,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
     @Override
     public EList<BackgroundConditionalStyle> getBackgroundConditionalStyle() {
         if (backgroundConditionalStyle == null) {
-            backgroundConditionalStyle = new EObjectContainmentEList<BackgroundConditionalStyle>(BackgroundConditionalStyle.class, this,
+            backgroundConditionalStyle = new EObjectContainmentEList<>(BackgroundConditionalStyle.class, this,
                     DescriptionPackage.ELEMENT_COLUMN_MAPPING__BACKGROUND_CONDITIONAL_STYLE);
         }
         return backgroundConditionalStyle;
@@ -371,7 +371,7 @@ public class ElementColumnMappingImpl extends ColumnMappingImpl implements Eleme
     @Override
     public EList<CreateColumnTool> getCreate() {
         if (create == null) {
-            create = new EObjectContainmentWithInverseEList<CreateColumnTool>(CreateColumnTool.class, this, DescriptionPackage.ELEMENT_COLUMN_MAPPING__CREATE,
+            create = new EObjectContainmentWithInverseEList<>(CreateColumnTool.class, this, DescriptionPackage.ELEMENT_COLUMN_MAPPING__CREATE,
                     DescriptionPackage.CREATE_COLUMN_TOOL__MAPPING);
         }
         return create;

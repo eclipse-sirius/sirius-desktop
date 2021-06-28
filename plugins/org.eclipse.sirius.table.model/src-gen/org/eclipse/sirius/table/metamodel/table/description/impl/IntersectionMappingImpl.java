@@ -543,7 +543,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     @Override
     public EList<ForegroundConditionalStyle> getForegroundConditionalStyle() {
         if (foregroundConditionalStyle == null) {
-            foregroundConditionalStyle = new EObjectContainmentEList<ForegroundConditionalStyle>(ForegroundConditionalStyle.class, this,
+            foregroundConditionalStyle = new EObjectContainmentEList<>(ForegroundConditionalStyle.class, this,
                     DescriptionPackage.INTERSECTION_MAPPING__FOREGROUND_CONDITIONAL_STYLE);
         }
         return foregroundConditionalStyle;
@@ -610,7 +610,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     @Override
     public EList<BackgroundConditionalStyle> getBackgroundConditionalStyle() {
         if (backgroundConditionalStyle == null) {
-            backgroundConditionalStyle = new EObjectContainmentEList<BackgroundConditionalStyle>(BackgroundConditionalStyle.class, this,
+            backgroundConditionalStyle = new EObjectContainmentEList<>(BackgroundConditionalStyle.class, this,
                     DescriptionPackage.INTERSECTION_MAPPING__BACKGROUND_CONDITIONAL_STYLE);
         }
         return backgroundConditionalStyle;
@@ -624,7 +624,7 @@ public class IntersectionMappingImpl extends TableMappingImpl implements Interse
     @Override
     public EList<LineMapping> getLineMapping() {
         if (lineMapping == null) {
-            lineMapping = new EObjectResolvingEList<LineMapping>(LineMapping.class, this, DescriptionPackage.INTERSECTION_MAPPING__LINE_MAPPING);
+            lineMapping = new EObjectResolvingEList<>(LineMapping.class, this, DescriptionPackage.INTERSECTION_MAPPING__LINE_MAPPING);
         }
         return lineMapping;
     }

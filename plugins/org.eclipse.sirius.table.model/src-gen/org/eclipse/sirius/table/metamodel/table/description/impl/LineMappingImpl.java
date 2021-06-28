@@ -298,7 +298,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
     @Override
     public EList<ForegroundConditionalStyle> getForegroundConditionalStyle() {
         if (foregroundConditionalStyle == null) {
-            foregroundConditionalStyle = new EObjectContainmentEList<ForegroundConditionalStyle>(ForegroundConditionalStyle.class, this, DescriptionPackage.LINE_MAPPING__FOREGROUND_CONDITIONAL_STYLE);
+            foregroundConditionalStyle = new EObjectContainmentEList<>(ForegroundConditionalStyle.class, this, DescriptionPackage.LINE_MAPPING__FOREGROUND_CONDITIONAL_STYLE);
         }
         return foregroundConditionalStyle;
     }
@@ -364,7 +364,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
     @Override
     public EList<BackgroundConditionalStyle> getBackgroundConditionalStyle() {
         if (backgroundConditionalStyle == null) {
-            backgroundConditionalStyle = new EObjectContainmentEList<BackgroundConditionalStyle>(BackgroundConditionalStyle.class, this, DescriptionPackage.LINE_MAPPING__BACKGROUND_CONDITIONAL_STYLE);
+            backgroundConditionalStyle = new EObjectContainmentEList<>(BackgroundConditionalStyle.class, this, DescriptionPackage.LINE_MAPPING__BACKGROUND_CONDITIONAL_STYLE);
         }
         return backgroundConditionalStyle;
     }
@@ -377,7 +377,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
     @Override
     public EList<LineMapping> getOwnedSubLines() {
         if (ownedSubLines == null) {
-            ownedSubLines = new EObjectContainmentEList<LineMapping>(LineMapping.class, this, DescriptionPackage.LINE_MAPPING__OWNED_SUB_LINES);
+            ownedSubLines = new EObjectContainmentEList<>(LineMapping.class, this, DescriptionPackage.LINE_MAPPING__OWNED_SUB_LINES);
         }
         return ownedSubLines;
     }
@@ -390,7 +390,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
     @Override
     public EList<LineMapping> getReusedSubLines() {
         if (reusedSubLines == null) {
-            reusedSubLines = new EObjectWithInverseResolvingEList.ManyInverse<LineMapping>(LineMapping.class, this, DescriptionPackage.LINE_MAPPING__REUSED_SUB_LINES,
+            reusedSubLines = new EObjectWithInverseResolvingEList.ManyInverse<>(LineMapping.class, this, DescriptionPackage.LINE_MAPPING__REUSED_SUB_LINES,
                     DescriptionPackage.LINE_MAPPING__REUSED_IN_MAPPINGS);
         }
         return reusedSubLines;
@@ -428,7 +428,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
     @Override
     public EList<CreateLineTool> getCreate() {
         if (create == null) {
-            create = new EObjectContainmentEList<CreateLineTool>(CreateLineTool.class, this, DescriptionPackage.LINE_MAPPING__CREATE);
+            create = new EObjectContainmentEList<>(CreateLineTool.class, this, DescriptionPackage.LINE_MAPPING__CREATE);
         }
         return create;
     }
@@ -557,7 +557,7 @@ public class LineMappingImpl extends TableMappingImpl implements LineMapping {
     @Override
     public EList<LineMapping> getReusedInMappings() {
         if (reusedInMappings == null) {
-            reusedInMappings = new EObjectWithInverseResolvingEList.ManyInverse<LineMapping>(LineMapping.class, this, DescriptionPackage.LINE_MAPPING__REUSED_IN_MAPPINGS,
+            reusedInMappings = new EObjectWithInverseResolvingEList.ManyInverse<>(LineMapping.class, this, DescriptionPackage.LINE_MAPPING__REUSED_IN_MAPPINGS,
                     DescriptionPackage.LINE_MAPPING__REUSED_SUB_LINES);
         }
         return reusedInMappings;

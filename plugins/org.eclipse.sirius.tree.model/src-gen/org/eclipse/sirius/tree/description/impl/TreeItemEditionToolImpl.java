@@ -163,7 +163,7 @@ public class TreeItemEditionToolImpl extends TreeItemToolImpl implements TreeIte
     @Override
     public EList<TreeItemMapping> getMapping() {
         if (mapping == null) {
-            mapping = new EObjectResolvingEList<TreeItemMapping>(TreeItemMapping.class, this, DescriptionPackage.TREE_ITEM_EDITION_TOOL__MAPPING);
+            mapping = new EObjectResolvingEList<>(TreeItemMapping.class, this, DescriptionPackage.TREE_ITEM_EDITION_TOOL__MAPPING);
         }
         return mapping;
     }

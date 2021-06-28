@@ -228,7 +228,7 @@ public final class TreeUIPlugin extends EMFPlugin {
          * @generated NOT use THE mighty factory
          */
         public ComposedAdapterFactory createAdapterFactory() {
-            List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
+            List<AdapterFactory> factories = new ArrayList<>();
             factories.add(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
             fillItemProviderFactories(factories);
             return new ComposedAdapterFactory(factories);

@@ -102,7 +102,7 @@ public class TableVariableImpl extends AbstractVariableImpl implements TableVari
     @Override
     public EList<SubVariable> getSubVariables() {
         if (subVariables == null) {
-            subVariables = new EObjectContainmentEList.Resolving<SubVariable>(SubVariable.class, this, DescriptionPackage.TABLE_VARIABLE__SUB_VARIABLES);
+            subVariables = new EObjectContainmentEList.Resolving<>(SubVariable.class, this, DescriptionPackage.TABLE_VARIABLE__SUB_VARIABLES);
         }
         return subVariables;
     }

@@ -142,7 +142,7 @@ public class StyleUpdaterImpl extends MinimalEObjectImpl.Container implements St
     @Override
     public EList<ConditionalTreeItemStyleDescription> getConditionalStyles() {
         if (conditionalStyles == null) {
-            conditionalStyles = new EObjectContainmentEList<ConditionalTreeItemStyleDescription>(ConditionalTreeItemStyleDescription.class, this, DescriptionPackage.STYLE_UPDATER__CONDITIONAL_STYLES);
+            conditionalStyles = new EObjectContainmentEList<>(ConditionalTreeItemStyleDescription.class, this, DescriptionPackage.STYLE_UPDATER__CONDITIONAL_STYLES);
         }
         return conditionalStyles;
     }

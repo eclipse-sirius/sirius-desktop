@@ -242,7 +242,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
     @Override
     public EList<EObject> getSemanticElements() {
         if (semanticElements == null) {
-            semanticElements = new EObjectResolvingEList<EObject>(EObject.class, this, TablePackage.DTARGET_COLUMN__SEMANTIC_ELEMENTS);
+            semanticElements = new EObjectResolvingEList<>(EObject.class, this, TablePackage.DTARGET_COLUMN__SEMANTIC_ELEMENTS);
         }
         return semanticElements;
     }
@@ -299,7 +299,7 @@ public class DTargetColumnImpl extends DSemanticDecoratorImpl implements DTarget
     @Override
     public EList<DCell> getCells() {
         if (cells == null) {
-            cells = new EObjectWithInverseResolvingEList<DCell>(DCell.class, this, TablePackage.DTARGET_COLUMN__CELLS, TablePackage.DCELL__COLUMN);
+            cells = new EObjectWithInverseResolvingEList<>(DCell.class, this, TablePackage.DTARGET_COLUMN__CELLS, TablePackage.DCELL__COLUMN);
         }
         return cells;
     }

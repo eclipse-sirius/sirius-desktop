@@ -90,7 +90,7 @@ public class TableToolImpl extends MinimalEObjectImpl.Container implements Table
     @Override
     public EList<TableVariable> getVariables() {
         if (variables == null) {
-            variables = new EObjectContainmentEList<TableVariable>(TableVariable.class, this, DescriptionPackage.TABLE_TOOL__VARIABLES);
+            variables = new EObjectContainmentEList<>(TableVariable.class, this, DescriptionPackage.TABLE_TOOL__VARIABLES);
         }
         return variables;
     }

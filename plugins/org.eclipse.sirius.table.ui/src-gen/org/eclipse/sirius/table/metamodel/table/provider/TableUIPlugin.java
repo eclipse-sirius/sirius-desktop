@@ -138,7 +138,7 @@ public final class TableUIPlugin extends EMFPlugin {
          * @not-generated
          */
         public ComposedAdapterFactory createAdapterFactory() {
-            List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
+            List<AdapterFactory> factories = new ArrayList<>();
             factories.add(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
             fillItemProviderFactories(factories);
             return new ComposedAdapterFactory(factories);

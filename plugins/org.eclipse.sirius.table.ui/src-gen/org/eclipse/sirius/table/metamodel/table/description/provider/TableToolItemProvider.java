@@ -45,7 +45,7 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
  */
 public class TableToolItemProvider extends ItemProviderAdapter
         implements IEditingDomainItemProvider, IStructuredItemContentProvider, ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
-    private static final Collection<EClass> TYPES_TO_HIDE = new ArrayList<EClass>(Arrays.asList(ToolPackage.Literals.DELETE_VIEW));
+    private static final Collection<EClass> TYPES_TO_HIDE = new ArrayList<>(Arrays.asList(ToolPackage.Literals.DELETE_VIEW));
 
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->

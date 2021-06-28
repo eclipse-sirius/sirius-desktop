@@ -90,7 +90,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
     @Override
     public EList<FeatureColumnMapping> getOwnedColumnMappings() {
         if (ownedColumnMappings == null) {
-            ownedColumnMappings = new EObjectContainmentEList<FeatureColumnMapping>(FeatureColumnMapping.class, this, DescriptionPackage.EDITION_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS);
+            ownedColumnMappings = new EObjectContainmentEList<>(FeatureColumnMapping.class, this, DescriptionPackage.EDITION_TABLE_DESCRIPTION__OWNED_COLUMN_MAPPINGS);
         }
         return ownedColumnMappings;
     }
@@ -103,7 +103,7 @@ public class EditionTableDescriptionImpl extends TableDescriptionImpl implements
     @Override
     public EList<FeatureColumnMapping> getReusedColumnMappings() {
         if (reusedColumnMappings == null) {
-            reusedColumnMappings = new EObjectResolvingEList<FeatureColumnMapping>(FeatureColumnMapping.class, this, DescriptionPackage.EDITION_TABLE_DESCRIPTION__REUSED_COLUMN_MAPPINGS);
+            reusedColumnMappings = new EObjectResolvingEList<>(FeatureColumnMapping.class, this, DescriptionPackage.EDITION_TABLE_DESCRIPTION__REUSED_COLUMN_MAPPINGS);
         }
         return reusedColumnMappings;
     }
