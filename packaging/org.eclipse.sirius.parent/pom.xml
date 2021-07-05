@@ -535,6 +535,7 @@
         <module>../../plugins/org.eclipse.sirius.diagram.elk.debug</module>
         <module>../../plugins/org.eclipse.sirius.diagram.sequence.edit</module>
         <module>../../plugins/org.eclipse.sirius.diagram.sequence.ui</module>
+        <module>../../plugins/org.eclipse.sirius.diagram.sequence.model</module>
         <module>../../plugins/org.eclipse.sirius.diagram.sequence</module>
         <module>../../plugins/org.eclipse.sirius.diagram.ui</module>
         <module>../../plugins/org.eclipse.sirius.diagram.ui.ext</module>
