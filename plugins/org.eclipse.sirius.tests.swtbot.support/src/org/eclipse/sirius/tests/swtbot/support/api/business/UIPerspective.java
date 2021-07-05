@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionManagerListener;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UISessionCreationWizardFlow.SessionChoice;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.OpenedSessionCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemAvailableCondition;
@@ -59,7 +60,9 @@ public class UIPerspective {
 
     private static final String VIEWPOINT = "Sirius";
 
-    private static final String WIZARDS_LIST_TITLE = "New";
+    private static final String NEW_MENU = "New";
+
+    private static final String WIZARDS_LIST_TITLE = "Select a wizard";
 
     private static final String REPRESENTATIONS_FILE_LABEL = "Representations File";
 
@@ -203,11 +206,18 @@ public class UIPerspective {
      * Opens the "New Representation Files" wizard through the File > New > Other... menu.
      */
     private void openRepresentationsFileWizard() {
-        SWTBotSiriusHelper.menu(bot, "File").menu(UIPerspective.WIZARDS_LIST_TITLE).menu("Other...").click();
+        SWTBotSiriusHelper.menu(bot, "File").menu(UIPerspective.NEW_MENU).menu("Other...").click();
 
-        bot.waitUntil(Conditions.shellIsActive(UIPerspective.WIZARDS_LIST_TITLE));
+        String shellTitle;
+        if (TestsUtil.is202106Platform()) {
+            shellTitle = UIPerspective.WIZARDS_LIST_TITLE;
+        } else {
+            // Older versions.
+            shellTitle = NEW_MENU;
+        }
 
-        SWTBot wizardListBot = bot.shell(UIPerspective.WIZARDS_LIST_TITLE).bot();
+        bot.waitUntil(Conditions.shellIsActive(shellTitle));
+        SWTBot wizardListBot = bot.shell(shellTitle).bot();
         wizardListBot.text().setText(UIPerspective.REPRESENTATIONS_FILE_LABEL);
 
         SWTBotTree wizardsTree = wizardListBot.tree();
