@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="sirius_capella_2021-06" sequenceNumber="1624970890">
+<target name="sirius_capella_2021-06" sequenceNumber="1625687069">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.log4j" version="0.0.0"/>
@@ -17,12 +17,12 @@
       <repository id="Orbit" location="https://download.eclipse.org/tools/orbit/downloads/drops/R20190602212107/repository"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="org.eclipse.swtbot.eclipse.feature.group" version="3.0.0.202006031738"/>
-      <unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="3.0.0.202006031738"/>
-      <unit id="org.eclipse.swtbot.feature.group" version="3.0.0.202006031738"/>
-      <unit id="org.eclipse.swtbot.forms.feature.group" version="3.0.0.202006031738"/>
-      <unit id="org.eclipse.swtbot.ide.feature.group" version="3.0.0.202006031738"/>
-      <repository id="SWTBot-3_0" location="https://download.eclipse.org/technology/swtbot/releases/3.0.0/"/>
+      <unit id="org.eclipse.swtbot.eclipse.feature.group" version="3.1.0.202106041005"/>
+      <unit id="org.eclipse.swtbot.eclipse.gef.feature.group" version="3.1.0.202106041005"/>
+      <unit id="org.eclipse.swtbot.feature.group" version="3.1.0.202106041005"/>
+      <unit id="org.eclipse.swtbot.forms.feature.group" version="3.1.0.202106041005"/>
+      <unit id="org.eclipse.swtbot.ide.feature.group" version="3.1.0.202106041005"/>
+      <repository id="SWTBot-3_1" location="https://download.eclipse.org/technology/swtbot/releases/3.1.0/"/>
     </location>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.license.feature.group" version="0.0.0"/>
