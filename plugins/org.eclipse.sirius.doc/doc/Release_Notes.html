@@ -187,6 +187,14 @@
 			</li>
 		</ul>
 		<h3 id="DeveloperVisibleChanges">Developer-Visible Changes</h3>
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+			<code>org.eclipse.sirius.diagram.ui</code>
+		</h4>
+		<ul>
+			<li><span class="label label-info">Modified</span> 
+				<code>org.eclipse.sirius.diagram.ui</code> now depends on GMF Runtime 1.14.0, which itself uses Apache Batik 1.14.0 to support SVG (both rendering SVG images on diagrams and exporting diagrams to SVG files). As a result, exporting diagrams to PDF is not supported anymore (as GMF Runtime 1.14.0 itself has dropped support for this).
+			</li>
+		</ul>
 		<h4 id="Changesinorg.eclipse.sirius.tests.swtbot.support">Changes in 
 			<code>org.eclipse.sirius.tests.swtbot.support</code>
 		</h4>
@@ -301,7 +309,7 @@
 				<code>new DRepresentationQuery(DRpresentation).isAutoRefresh()</code> instead.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -442,7 +450,7 @@
 }
 
 </code></pre>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui2">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in  
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -521,7 +529,7 @@
 				<code>org.eclipse.sirius.common.package_meta_data</code> extension point, it is now possible for a given metamodel (nsURI) to declare some EClasses as potential DocumentRoots. This is needed with some XSD-derived metamodels which normally declare some of their containment references as transient to make sure Sirius will properly consider these classes (and their contents) as needing to be serialized. 
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui3">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui4">Changes in  
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -816,7 +824,7 @@
 				<code>org.eclipse.sirius.business.api.helper.task.NotificationTask</code> class has been removed. It was not used anywhere.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui4">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui5">Changes in  
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -1141,7 +1149,7 @@
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui5">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui6">Changes in  
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -1259,7 +1267,7 @@
 				<code>DRepresentationDescriptor.repPath</code> can not be found) or can not by retrieved.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui6">Changes in  
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui7">Changes in  
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -1443,7 +1451,7 @@
 				<code>org.eclipse.sirius.ui.business.api.preferences.SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE</code> has been added. Its default value is true. It allows to display, in the color palette, the user fixed color(defined in the activated viewpoints) in addition to standard colors. The color palette is available in Appearance tab of the Properties view.
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui7">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui8">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>
@@ -1840,7 +1848,7 @@
 				<code>org.eclipse.sirius.diagram.tools.api.managment</code>
 			</li>
 		</ul>
-		<h4 id="Changesinorg.eclipse.sirius.diagram.ui8">Changes in 
+		<h4 id="Changesinorg.eclipse.sirius.diagram.ui9">Changes in 
 			<code>org.eclipse.sirius.diagram.ui</code>
 		</h4>
 		<ul>

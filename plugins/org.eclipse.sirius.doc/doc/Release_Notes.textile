@@ -12,6 +12,10 @@ h2(#sirius7.0.0). Changes in Sirius 7.0.0
 
 h3. Developer-Visible Changes
 
+h4. Changes in @org.eclipse.sirius.diagram.ui@
+
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui@ now depends on GMF Runtime 1.14.0, which itself uses Apache Batik 1.14.0 to support SVG (both rendering SVG images on diagrams and exporting diagrams to SVG files). As a result, exporting diagrams to PDF is not supported anymore (as GMF Runtime 1.14.0 itself has dropped support for this).
+
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
 * <span class="label label-danger">Removed</span> The method @org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase.getNbStatusInErrorLog()@ has been removed. It is not reliable (sometimes the number of elements returned is 0 instead of the real number). It should be replaced by @doesAnErrorOccurs()@ and @doesAWarningOccurs()@.
