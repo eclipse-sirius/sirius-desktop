@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2005, 2019 IBM Corporation and others.
+ * Copyright (c) 2005, 2019, 2021 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -42,8 +42,6 @@ import org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramGenerator;
 import org.eclipse.gmf.runtime.diagram.ui.render.internal.DiagramUIRenderPlugin;
 import org.eclipse.gmf.runtime.diagram.ui.render.util.CopyToImageUtil;
 import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.image.ImageExporter;
-import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.SVGImage;
-import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.SVGImageConverter;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.ui.internal.refresh.layout.SiriusCanonicalLayoutHandler;
@@ -240,7 +238,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
                 editParts = diagramEP.getPrimaryEditParts();
                 // CHECKSTYLE:ON
             }
-            if (format.equals(ImageFileFormat.SVG) || format.equals(ImageFileFormat.PDF)) {
+            if (format.equals(ImageFileFormat.SVG)) {
                 gen.createConstrainedSWTImageDecriptorForParts(editParts, maxWidth, maxHeight, useMargins);
                 monitor.worked(1);
                 saveToOutputStream(stream, (SiriusDiagramSVGGenerator) gen, format, monitor);
@@ -353,7 +351,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
      */
     @Override
     protected DiagramGenerator getDiagramGenerator(DiagramEditPart diagramEP, ImageFileFormat format) {
-        if (format.equals(ImageFileFormat.SVG) || format.equals(ImageFileFormat.PDF)) {
+        if (format.equals(ImageFileFormat.SVG)) {
             return new SiriusDiagramSVGGenerator(diagramEP, enableSemanticTraceability);
         } else {
             SiriusDiagramImageGenerator generator = new SiriusDiagramImageGenerator(diagramEP);
@@ -374,7 +372,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     protected void copyToImage(DiagramGenerator gen, List editParts, org.eclipse.swt.graphics.Rectangle imageRect, IPath destination, ImageFileFormat format, IProgressMonitor monitor)
             throws CoreException {
         boolean found = false;
-        if (format.equals(ImageFileFormat.SVG) || format.equals(ImageFileFormat.PDF)) {
+        if (format.equals(ImageFileFormat.SVG)) {
             gen.createSWTImageDescriptorForParts(editParts, imageRect);
             monitor.worked(1);
             saveToFile(destination, (SiriusDiagramSVGGenerator) gen, format, monitor);
@@ -482,7 +480,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
     }
 
     /**
-     * Saves an SVG or PDF files.<BR>
+     * Saves an SVG files.<BR>
      * Method duplicated from
      * {@link #saveToFile(IPath, org.eclipse.gmf.runtime.diagram.ui.render.clipboard.DiagramSVGGenerator, ImageFileFormat, IProgressMonitor)}
      * to use a {@link SiriusDiagramSVGGenerator} instead of a DiagramSVGGenerator.
@@ -492,7 +490,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
      * @param generator
      *            the svg generator for a diagram, used to write
      * @param format
-     *            currently supports SVG or PDF
+     *            currently supports SVG
      * @param monitor
      *            the progress monitor
      * @exception CoreException
@@ -528,9 +526,7 @@ public class DiagramEditPartService extends org.eclipse.gmf.runtime.diagram.ui.r
      * to use a {@link SiriusDiagramSVGGenerator} instead of a DiagramSVGGenerator.
      */
     private void saveToOutputStream(OutputStream stream, SiriusDiagramSVGGenerator generator, ImageFileFormat format, IProgressMonitor monitor) throws CoreException {
-        if (format == ImageFileFormat.PDF) {
-            SVGImageConverter.exportToPDF((SVGImage) generator.getRenderedImage(), stream);
-        } else if (format == ImageFileFormat.SVG) {
+        if (format == ImageFileFormat.SVG) {
             generator.stream(stream);
         } else {
             throw new IllegalArgumentException("Unexpected format: " + format.getName()); //$NON-NLS-1$
