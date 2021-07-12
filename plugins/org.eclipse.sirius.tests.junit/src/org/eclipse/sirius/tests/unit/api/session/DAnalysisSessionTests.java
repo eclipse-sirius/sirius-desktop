@@ -348,9 +348,6 @@ public class DAnalysisSessionTests extends SiriusDiagramTestCase {
 
         assertTrue("Owned views iteration order must be predicable and have no duplicate.", session.getOwnedViews() instanceof LinkedHashSet);
         assertTrue("Selected views iteration order must be predicable and have no duplicate.", session.getSelectedViews() instanceof LinkedHashSet);
-        assertTrue("Selected viewpoints iteration order must be predicable and have no duplicate.",
-                ReflectionHelper.getFieldValueWithoutException(session.getSelectedViewpoints(false), "c").get() instanceof TreeSet);
-
         doCleanup();
     }
 
