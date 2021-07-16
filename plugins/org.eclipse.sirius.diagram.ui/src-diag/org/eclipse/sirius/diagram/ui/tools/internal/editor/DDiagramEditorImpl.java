@@ -242,8 +242,8 @@ import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.PartInitException;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.Saveable;
-import org.eclipse.ui.SubActionBars;
 import org.eclipse.ui.actions.ActionFactory;
+import org.eclipse.ui.internal.EditorActionBars;
 import org.eclipse.ui.internal.PartSite;
 import org.eclipse.ui.part.FileEditorInput;
 import org.eclipse.ui.part.IPage;
@@ -259,6 +259,7 @@ import com.google.common.collect.Sets;
  * @author mchauvin
  * @since 0.9.0
  */
+@SuppressWarnings("restriction")
 public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramEditor, ISelectionListener, SessionListener {
     /**
      * This class has the responsibility to open the editing session corresponding to a session added to the session
@@ -2056,8 +2057,12 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         // Dispose the actions of "standard Eclipse"
         if (getSite() instanceof PartSite) {
             IActionBars actionBars = ((PartSite) getSite()).getActionBars();
-            if (actionBars instanceof SubActionBars) {
-                ((SubActionBars) actionBars).dispose();
+            if (actionBars instanceof EditorActionBars) {
+                EditorActionBars editorActionBars = (EditorActionBars) actionBars;
+                int refCount = editorActionBars.getRef();
+                if (refCount <= 1) {
+                    editorActionBars.dispose();
+                }
             } else {
                 ((PartSite) getSite()).deactivateActionBars(false);
             }
