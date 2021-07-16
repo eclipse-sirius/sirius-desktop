@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,17 +10,19 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tests.unit.diagram.tabbar;
+package org.eclipse.sirius.tests.unit.diagram.actionbars;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.ListenerList;
 import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
@@ -34,15 +36,19 @@ import org.eclipse.ui.IPartService;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.internal.EditorActionBars;
 
 /**
- * This test ensures that selection changed listeners are correctly disposed
- * when the editors are disposed.(see VP-3632)
+ * This test ensures that actions bars, tabbar or editor actions bars, are correctly cleaned:
+ * <ul>
+ * <li>Selection changed listeners are correctly disposed when the editors are disposed (see VP-3632).</li>
+ * <li>Editor action bars, and associated actions, are correctly disposed (see bugzilla 574889).</li>
+ * </ul>
  * 
  * @author fbarbin
  * 
  */
-public class TabbarActionSelectionListenerTest extends SiriusDiagramTestCase implements EcoreModeler {
+public class ActionBarsTest extends SiriusDiagramTestCase implements EcoreModeler {
     private static final String PATH = "/data/unit/tabbar/vp-3632/";
 
     private static final String SEMANTIC_MODEL_FILENAME = "vp-3632.ecore";
@@ -68,17 +74,15 @@ public class TabbarActionSelectionListenerTest extends SiriusDiagramTestCase imp
      * <li>Get the listeners list before opening any editor.</li>
      * <li>Open all editors.</li>
      * <li>Close all editors.</li>
-     * <li>Check that the selection listeners list did not grew up during the
-     * open/close first cycle, except for additional PagePartSelectionTracker</li>
+     * <li>Check that the selection listeners list did not grew up during the open/close first cycle, except for
+     * additional PagePartSelectionTracker</li>
      * <li>Open all editors.</li>
      * <li>Close all editors.</li>
-     * <li>Check that the selection listeners list length is the same than after
-     * the first open/close cycle.</li>
+     * <li>Check that the selection listeners list length is the same than after the first open/close cycle.</li>
      * <li>Open one editor</li>
      * <li>Open a second editor</li>
      * <li>Close the second editor</li>
-     * <li>Check that listener list length is the same as after having opened
-     * one editor.</li>
+     * <li>Check that listener list length is the same as after having opened one editor.</li>
      * </ul>
      */
     public void testNumberOfListenerIsCorrectAfterOpenCloseDiagrams() {
@@ -144,6 +148,31 @@ public class TabbarActionSelectionListenerTest extends SiriusDiagramTestCase imp
         assertTrue("Too many page selection listeners.", expectedPageSelectionListener >= getPageSelectionListeners().size());
         assertTrue("Too many part service listeners.", expectedPartServiceListeners >= getPartServiceListeners().size());
         assertTrue("Too many workbench window listeners.", expectedWindowSelectionListener >= getWorkbenchWindowSelectionListeners().size());
+    }
+
+    /**
+     * Verifies that when closing one editor, the GlobalActionHandlers are still registered in the ActionBars. The
+     * ActionBars should be dispose only when the last editor is closed.
+     */
+    public void testNumberOfActionBarReferences() {
+
+        openAllEditors();
+
+        assertEquals("6 editors should be opened", 6, editors.size());
+        DDiagramEditor dDiagramEditor = editors.get(0);
+        EditorActionBars actionBars = (EditorActionBars) dDiagramEditor.getEditorSite().getActionBars();
+        assertEquals("The EditorActionsBars should have 6 references", 6, actionBars.getRef());
+
+        closeEditor(editors.get(0));
+        assertEquals("The EditorActionsBars should have 5 references", 5, actionBars.getRef());
+        Map<String, IAction> globalActionHandlers = actionBars.getGlobalActionHandlers();
+        assertNotNull("The Undo GlobalActionHandler should be still present if editors are still opened.", globalActionHandlers.get("undo"));
+        assertNotNull("The Redo GlobalActionHandler should be still present if editors are still opened.", globalActionHandlers.get("redo"));
+
+        closeAllEditors();
+        assertEquals("The EditorActionsBars should have no more references", 0, actionBars.getRef());
+        assertEquals("All GlobalActionHandlers should be disposed.", 0, globalActionHandlers.size());
+
     }
 
     private void closeEditor(DDiagramEditor editor) {

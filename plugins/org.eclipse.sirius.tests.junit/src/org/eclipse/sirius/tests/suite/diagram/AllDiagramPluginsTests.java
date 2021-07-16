@@ -95,6 +95,7 @@ import org.eclipse.sirius.tests.unit.diagram.action.DeleteWithoutToolFromModelAc
 import org.eclipse.sirius.tests.unit.diagram.action.EdgeOnEdgeHideRevealTest;
 import org.eclipse.sirius.tests.unit.diagram.action.EntitiesDiagramHideRevealTests;
 import org.eclipse.sirius.tests.unit.diagram.action.LabelHideRevealTests;
+import org.eclipse.sirius.tests.unit.diagram.actionbars.ActionBarsTest;
 import org.eclipse.sirius.tests.unit.diagram.command.BuildDeleteCommandTest;
 import org.eclipse.sirius.tests.unit.diagram.command.DeleteViewCommandTest;
 import org.eclipse.sirius.tests.unit.diagram.compartment.CompartmentsLayoutTest;
@@ -241,7 +242,6 @@ import org.eclipse.sirius.tests.unit.diagram.synchronization.DiagramSynchronizat
 import org.eclipse.sirius.tests.unit.diagram.synchronization.DiagramUnsynchronizedRefreshTest;
 import org.eclipse.sirius.tests.unit.diagram.synchronization.SynchronizationLockTest;
 import org.eclipse.sirius.tests.unit.diagram.synchronization.UnsynchronizedMappingAndDeleteFromOutsideEditorTests;
-import org.eclipse.sirius.tests.unit.diagram.tabbar.TabbarActionSelectionListenerTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.CreateViewWithMappingImportTests;
 import org.eclipse.sirius.tests.unit.diagram.tools.CreationTest;
 import org.eclipse.sirius.tests.unit.diagram.tools.DoubleClicCommandBuilderForceRefreshTest;
@@ -534,7 +534,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(ServiceCallsWithOperationCanceledExceptionTest.class);
 
         // Specific diagram editor tests (tabbar, palette...)
-        suite.addTestSuite(TabbarActionSelectionListenerTest.class);
+        suite.addTestSuite(ActionBarsTest.class);
         suite.addTestSuite(DiagramListenersTests.class);
         // uml
 
