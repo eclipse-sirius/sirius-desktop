@@ -13,4 +13,6 @@ location Orbit "https://download.eclipse.org/tools/orbit/downloads/drops/R202106
     org.antlr.runtime [4.7.1,4.7.2)
     org.apache.batik.ext [1.14.0,1.14.1)
     org.apache.batik.codec [1.14.0,1.14.1)
+    org.apache.batik.bridge [1.14.0,1.14.1)
+    org.apache.batik.script [1.14.0,1.14.1)
 }
