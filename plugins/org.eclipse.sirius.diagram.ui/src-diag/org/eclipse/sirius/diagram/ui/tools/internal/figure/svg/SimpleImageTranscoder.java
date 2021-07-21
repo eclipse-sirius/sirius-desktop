@@ -19,8 +19,8 @@ import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
+import org.apache.batik.bridge.EmbededExternalResourceSecurity;
 import org.apache.batik.bridge.ExternalResourceSecurity;
-import org.apache.batik.bridge.NoLoadExternalResourceSecurity;
 import org.apache.batik.bridge.UserAgent;
 import org.apache.batik.bridge.UserAgentAdapter;
 import org.apache.batik.gvt.renderer.ImageRenderer;
@@ -62,7 +62,7 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
         return new UserAgentAdapter() {
             @Override
             public ExternalResourceSecurity getExternalResourceSecurity(ParsedURL resourceURL, ParsedURL docURL) {
-                return new NoLoadExternalResourceSecurity();
+                return new EmbededExternalResourceSecurity(resourceURL);
             }
         };
     }

@@ -44,6 +44,7 @@ import org.eclipse.emf.edit.ui.provider.ExtendedImageRegistry;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.diagram.core.preferences.PreferencesHint;
 import org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx;
+import org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.Draw2dRenderPlugin;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.DecorationOverlayIcon;
@@ -266,6 +267,10 @@ public final class DiagramUIPlugin extends EMFPlugin {
             Platform.getExtensionRegistry().addListener(layoutAlgorithmProviderRegistry, CustomLayoutAlgorithmProviderRegistry.LAYOUT_ALGORITHM_PROVIDER_EXTENSION_POINT_ID);
 
             registerCoreDecorationProviders();
+            
+            // Force initialization of org.eclipse.gmf.runtime.draw2d.ui.render.awt to register the Batik image formats
+            // needed
+            Draw2dRenderPlugin.getInstance();
         }
 
         private void registerCoreDecorationProviders() {
