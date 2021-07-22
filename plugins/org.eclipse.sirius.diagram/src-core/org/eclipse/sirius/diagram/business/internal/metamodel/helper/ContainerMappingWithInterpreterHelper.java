@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,17 +21,13 @@ import java.util.LinkedList;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
-import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.ContainerStyle;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -50,7 +46,6 @@ import org.eclipse.sirius.diagram.business.api.query.ContainerMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.ContainerMappingSpec;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
@@ -64,7 +59,6 @@ import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
-import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.Style;
@@ -98,7 +92,6 @@ public final class ContainerMappingWithInterpreterHelper {
      */
     public static void clearDNodesDone(IContainerMappingExt self) {
         self.getViewContainerDone().clear();
-        self.getCandidatesCache().clear();
     }
 
     /**
@@ -133,65 +126,6 @@ public final class ContainerMappingWithInterpreterHelper {
             self.getViewContainerDone().put(node.getTarget(), list);
         }
         list.add(node);
-    }
-
-    /**
-     * Implementation of {@link ContainerMapping#getNodesCandidates(EObject, EObject, EObject)}.
-     * 
-     * @param self
-     *            the container mapping.
-     * @param semanticOrigin
-     *            the origin of the computation.
-     * @param container
-     *            the semantic element (DSemanticDecorator.getTarget()) of the DDiagramElement (or
-     *            DDiagramElementContainer or DDiagram) that contains the containers.
-     * @param containerView
-     *            the DDiagramElement (or DDiagramElementContainer or DDiagram) that contains the containers.
-     * @return all semantic candidates for this mapping. It checks the DiagramElementMapping.getPreconditionExpression()
-     *         and return all objects that satisfied the expression.
-     */
-    public static EList<EObject> getNodesCandidates(IContainerMappingExt self, EObject semanticOrigin, EObject container, EObject containerView) {
-        DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.GET_CONTAINER_CANDIDATES_KEY);
-        //
-        // find the parent diagram.
-        DDiagram diagram = null;
-        if (containerView instanceof DDiagramElement) {
-            diagram = ((DDiagramElement) containerView).getParentDiagram();
-        } else if (containerView instanceof DDiagram) {
-            diagram = (DDiagram) containerView;
-        }
-        //
-        // The container variable.
-        EObject safeContainer;
-        if (container == null) {
-            safeContainer = semanticOrigin;
-        } else {
-            safeContainer = container;
-        }
-        final EObjectCouple couple = new EObjectCouple(semanticOrigin, safeContainer, RefreshIdsHolder.getOrCreateHolder(diagram));
-        EList<EObject> result = self.getCandidatesCache().get(couple);
-        if (result == null) {
-            result = new UniqueEList<EObject>();
-            Iterator<EObject> it;
-            it = DiagramElementMappingHelper.getSemanticIterator(self, semanticOrigin, diagram);
-            if (self.getDomainClass() != null) {
-                while (it.hasNext()) {
-                    final EObject eObj = it.next();
-                    if (isInstanceOf(eObj, self.getDomainClass()) && SiriusElementMappingSpecOperations.checkPrecondition(self, eObj, safeContainer, containerView)) {
-                        result.add(eObj);
-                    }
-                }
-            } else {
-                SiriusPlugin.getDefault().error(Messages.ContainerMappingHelper_nodeCreationErrorMsg, new RuntimeException());
-            }
-            self.getCandidatesCache().put(couple, result);
-        }
-        DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.GET_CONTAINER_CANDIDATES_KEY);
-        return result;
-    }
-
-    private static boolean isInstanceOf(EObject eObj, final String typename) {
-        return SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(eObj).eInstanceOf(eObj, typename);
     }
 
     /**

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -47,17 +47,6 @@ public final class DDiagramElementSpecOperations {
             cur = cur.eContainer();
         }
         return result;
-    }
-
-    /**
-     * Validate the element.
-     * 
-     * @param elem
-     *            the element to validate.
-     * @return <code>true</code> if the element is valid.
-     */
-    public static boolean validate(final DDiagramElement elem) {
-        return true;
     }
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,20 +28,15 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
-import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingWithInterpreterHelper;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DSemanticDiagramHelper;
-import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.DragSource;
@@ -73,49 +68,6 @@ public final class DDiagramElementContainerWithInterpreterOperations {
          * subclasses should override it
          */
         return new BasicEList<DDiagramElement>();
-    }
-
-    /**
-     * Validated the specified container.
-     * 
-     * @param container
-     *            the container to validate.
-     * @return <code>true</code> if the container is valid.
-     */
-    public static boolean validate(final DDiagramElementContainer container) {
-        ContainerMapping actualMapping = container.getActualMapping();
-        if (actualMapping != null && container.getTarget() != null && DDiagramElementContainerWithInterpreterOperations.getFirstParentWithSemantic(container) != null) {
-            final EObject mySemanticElement = container.getTarget();
-            final EObject representedParent = DDiagramElementContainerWithInterpreterOperations.getFirstParentWithSemantic(container);
-            EObject representedParentSemantic = DDiagramElementContainerWithInterpreterOperations.getFirstParentWithSemantic(container).getTarget();
-            if (representedParent instanceof DSemanticDiagram) {
-                representedParentSemantic = DSemanticDiagramHelper.getRootContent((DSemanticDiagram) representedParent);
-            }
-            if (!ContainerMappingWithInterpreterHelper
-                    .getNodesCandidates((IContainerMappingExt) actualMapping, representedParentSemantic, ((DSemanticDecorator) representedParent).getTarget(), container).contains(mySemanticElement)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
-     * Return the first parent of the specified container that is a {@link DSemanticDecorator}.
-     * 
-     * @param container
-     *            the container.
-     * @return the first parent of the specified container that is a {@link DSemanticDecorator}.
-     */
-    public static DSemanticDecorator getFirstParentWithSemantic(final DDiagramElementContainer container) {
-        DSemanticDecorator result = null;
-        EObject cur = container.eContainer();
-        while (cur != null && result == null) {
-            if (cur instanceof DSemanticDecorator) {
-                result = (DSemanticDecorator) cur;
-            }
-            cur = cur.eContainer();
-        }
-        return result;
     }
 
     /**

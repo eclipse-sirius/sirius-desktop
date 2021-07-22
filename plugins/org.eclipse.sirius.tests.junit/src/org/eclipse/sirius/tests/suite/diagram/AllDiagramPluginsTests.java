@@ -35,7 +35,6 @@ import org.eclipse.sirius.tests.unit.api.mappings.EdgeMappingTest;
 import org.eclipse.sirius.tests.unit.api.mappings.MappingImportAndFiltersTests;
 import org.eclipse.sirius.tests.unit.api.mappings.MappingsReuseTests;
 import org.eclipse.sirius.tests.unit.api.mappings.NodeMappingImportTests;
-import org.eclipse.sirius.tests.unit.api.mappings.NodeMappingTest;
 import org.eclipse.sirius.tests.unit.api.mm.MMTest;
 import org.eclipse.sirius.tests.unit.api.mmextension.ExtensionPaletteToolTest;
 import org.eclipse.sirius.tests.unit.api.refresh.ChangeIdAndLabelTests;
@@ -485,7 +484,6 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(ActivateLayerOnInvalidDiagramTest.class);
         suite.addTestSuite(MultipleMappingImportTests.class);
         suite.addTestSuite(MultipleMappingImportTests2.class);
-        suite.addTestSuite(NodeMappingTest.class);
         suite.addTestSuite(EdgeMappingTest.class);
         suite.addTestSuite(ContainerMappingImportTests.class);
         suite.addTestSuite(CompartmentMappingsTests.class);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,11 +14,9 @@ package org.eclipse.sirius.diagram.business.internal.metamodel.description.spec;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.WeakHashMap;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
@@ -35,8 +33,6 @@ public class NodeMappingSpec extends NodeMappingImpl implements INodeMappingExt 
 
     private final Map<EObject, EList<DSemanticDecorator>> viewNodesDone = new HashMap<EObject, EList<DSemanticDecorator>>();
 
-    private final Map<EObjectCouple, EList<EObject>> candidatesCache = new WeakHashMap<EObjectCouple, EList<EObject>>();
-
     /**
      * {@inheritDoc}
      */
@@ -49,15 +45,6 @@ public class NodeMappingSpec extends NodeMappingImpl implements INodeMappingExt 
      * {@inheritDoc}
      */
     @Override
-    public Map<EObjectCouple, EList<EObject>> getCandidatesCache() {
-        return candidatesCache;
-    }
-
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public EList<DDiagramElement> findDNodeFromEObject(final EObject object) {
         throw new UnsupportedOperationException();
     }
@@ -65,7 +52,6 @@ public class NodeMappingSpec extends NodeMappingImpl implements INodeMappingExt 
     /*
      * Behavior inherited from DiagramElementMapping
      */
-
 
     /**
      * {@inheritDoc}
