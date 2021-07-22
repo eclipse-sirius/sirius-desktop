@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,12 +14,10 @@ package org.eclipse.sirius.diagram.business.internal.metamodel.description.spec;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.WeakHashMap;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.description.impl.ContainerMappingImpl;
@@ -34,8 +32,6 @@ public class ContainerMappingSpec extends ContainerMappingImpl implements IConta
 
     private final Map<EObject, EList<DSemanticDecorator>> viewContainerDone = new HashMap<EObject, EList<DSemanticDecorator>>();
 
-    private final Map<EObjectCouple, EList<EObject>> candidatesCache = new WeakHashMap<EObjectCouple, EList<EObject>>();
-
     /**
      * {@inheritDoc}
      */
@@ -48,15 +44,6 @@ public class ContainerMappingSpec extends ContainerMappingImpl implements IConta
      * {@inheritDoc}
      */
     @Override
-    public Map<EObjectCouple, EList<EObject>> getCandidatesCache() {
-        return candidatesCache;
-    }
-
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public EList<DDiagramElement> findDNodeFromEObject(final EObject object) {
         EList result = this.getViewContainerDone().get(object);
         if (result == null) {
@@ -64,8 +51,6 @@ public class ContainerMappingSpec extends ContainerMappingImpl implements IConta
         }
         return result;
     }
-
-
 
     /**
      * {@inheritDoc}

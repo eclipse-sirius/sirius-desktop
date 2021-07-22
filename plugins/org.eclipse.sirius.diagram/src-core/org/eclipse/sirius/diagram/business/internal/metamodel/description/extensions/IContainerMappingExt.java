@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,13 +16,11 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
- * Extension to the ContainerMapping interface to support more efficient
- * implementation.
+ * Extension to the ContainerMapping interface to support more efficient implementation.
  * 
  * @author pcdavid
  */
@@ -34,10 +32,4 @@ public interface IContainerMappingExt extends ContainerMapping {
      */
     Map<EObject, EList<DSemanticDecorator>> getViewContainerDone();
 
-    /**
-     * Return the candidates cache for this mapping.
-     * 
-     * @return the candidates cache for this mapping.
-     */
-    Map<EObjectCouple, EList<EObject>> getCandidatesCache();
 }

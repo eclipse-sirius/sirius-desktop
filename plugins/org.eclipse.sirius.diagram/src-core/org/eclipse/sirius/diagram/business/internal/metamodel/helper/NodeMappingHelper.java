@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,31 +13,25 @@
 package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
 import java.util.Collections;
-import java.util.Iterator;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.common.util.UniqueEList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.common.tools.api.util.EObjectCouple;
-import org.eclipse.sirius.common.tools.api.util.RefreshIdsHolder;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramFactory;
-import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.SiriusElementMappingSpecOperations;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.ext.base.Option;
@@ -68,72 +62,6 @@ public final class NodeMappingHelper {
     public NodeMappingHelper(IInterpreter interpreter) {
         this.interpreter = interpreter;
         this.styleHelper = new StyleHelper(interpreter);
-    }
-
-    /**
-     * Implementation of {@link NodeMapping#getNodesCandidates(EObject, EObject)}.
-     * 
-     * @param self
-     *            the node mapping.
-     * @param semanticOrigin
-     *            the root element.
-     * @param container
-     *            the container element.
-     * @return all semantic elements that are candidates for the mapping.
-     */
-    public static EList<EObject> getNodesCandidates(NodeMapping self, EObject semanticOrigin, EObject container) {
-        SiriusPlugin.getDefault().warning(Messages.NodeMappingHelper_methodInvocationErrorMsg, null);
-        return NodeMappingHelper.getNodesCandidates((INodeMappingExt) self, semanticOrigin, container, null);
-    }
-
-    /**
-     * ! Implementation of {@link NodeMapping#getNodesCandidates(EObject, EObject, EObject)}.
-     * 
-     * @param self
-     *            the node mapping.
-     * @param semanticOrigin
-     *            the root element.
-     * @param container
-     *            the container element.
-     * @param containerView
-     *            the view of the container.
-     * @return all semantic elements that are candidates for the mapping.
-     */
-    public static EList<EObject> getNodesCandidates(INodeMappingExt self, EObject semanticOrigin, final EObject container, final EObject containerView) {
-        DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.GET_NODE_CANDIDATES_KEY);
-        EObject safeContainer;
-        if (container == null) {
-            safeContainer = semanticOrigin;
-        } else {
-            safeContainer = container;
-        }
-
-        DDiagram diagram = null;
-        if (containerView instanceof DDiagramElement) {
-            diagram = ((DDiagramElement) containerView).getParentDiagram();
-        } else if (containerView instanceof DDiagram) {
-            diagram = (DDiagram) containerView;
-        }
-        final EObjectCouple couple = new EObjectCouple(semanticOrigin, safeContainer, RefreshIdsHolder.getOrCreateHolder(diagram));
-        EList<EObject> result = self.getCandidatesCache().get(couple);
-        if (result == null) {
-            result = new UniqueEList<EObject>();
-            Iterator<EObject> it;
-            it = DiagramElementMappingHelper.getSemanticIterator(self, semanticOrigin, diagram);
-            if (self.getDomainClass() != null) {
-                while (it.hasNext()) {
-                    final EObject eObj = it.next();
-                    if (NodeMappingHelper.isInstanceOf(eObj, self.getDomainClass()) && SiriusElementMappingSpecOperations.checkPrecondition(self, eObj, safeContainer, containerView)) {
-                        result.add(eObj);
-                    }
-                }
-            } else {
-                SiriusPlugin.getDefault().error(Messages.NodeMappingHelper_nodeCreationErrorMsg, new RuntimeException());
-            }
-            self.getCandidatesCache().put(couple, result);
-        }
-        DslCommonPlugin.PROFILER.stopWork(SiriusTasksKey.GET_NODE_CANDIDATES_KEY);
-        return result;
     }
 
     /**
@@ -328,8 +256,7 @@ public final class NodeMappingHelper {
         // getting the right style description : default or conditional
         DDiagram parentDiagram = listElement.getParentDiagram();
         if (container != null) {
-            style = (NodeStyleDescription) new MappingWithInterpreterHelper(interpreter).getBestStyleDescription(self, modelElement, listElement, container.getTarget(),
-                    parentDiagram);
+            style = (NodeStyleDescription) new MappingWithInterpreterHelper(interpreter).getBestStyleDescription(self, modelElement, listElement, container.getTarget(), parentDiagram);
         }
 
         if (style != null && !StringUtil.isEmpty(style.getLabelExpression())) {
@@ -395,7 +322,6 @@ public final class NodeMappingHelper {
      */
     public static void clearDNodesDone(INodeMappingExt self) {
         self.getViewNodesDone().clear();
-        self.getCandidatesCache().clear();
     }
 
     /**

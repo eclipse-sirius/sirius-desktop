@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2019 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -207,9 +207,6 @@ public final class Messages {
 
     @TranslatableMessage
     public static String NodeIdentifier_parametersErrorMsg;
-
-    @TranslatableMessage
-    public static String NodeMappingHelper_methodInvocationErrorMsg;
 
     @TranslatableMessage
     public static String NodeMappingHelper_nodeCreationErrorMsg;
