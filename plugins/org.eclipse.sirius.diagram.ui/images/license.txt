@@ -15,7 +15,8 @@ images/decorator_lock.png - org.eclipse.jdt.doc.user - org.eclipse.jdt.doc.user/
 images/decorator_lockWithoutTarget.png - org.eclipse.jdt.doc.user - org.eclipse.jdt.doc.user/images/org.eclipse.jdt.debug.ui/elcl16/deadlock_view.png
 images/dot.svg - org.eclipse.sirius.diagram.ui - org.eclipse.sirius.diagram.ui/images/dot.svg
 images/hide.gif - org.eclipse.ant.ui - org.eclipse.ant.ui/icons/full/dlcl16/filter_internal_targets.gif
-images/losange.svg - org.eclipse.sirius.diagram.ui - org.eclipse.sirius.diagram.ui/images/losange.svg
+images/loading.png - org.eclipse.sirius.diagram.ui - org.eclipse.sirius.diagram.ui/images/loading.png
+images/lozange.svg - org.eclipse.sirius.diagram.ui - org.eclipse.sirius.diagram.ui/images/lozange.svg
 images/png/* - org.eclipse.sirius.diagram.ui - org.eclipse.sirius.diagram.ui/images/*
 images/refresh.gif - org.eclipse.pde.ui - org.eclipse.pde.ui/icons/elcl16/refresh.gif
 images/reveal.gif - org.eclipse.ant.ui - org.eclipse.ant.ui/icons/full/obj16/targetinternal_obj.gif

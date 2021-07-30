@@ -1013,6 +1013,18 @@ public final class Messages {
     public static String ResourceMissingDocumentProvider_defaultMessage;
 
     @TranslatableMessage
+    public static String ResourceSelectionDialog_title;
+
+    @TranslatableMessage
+    public static String ResourceSelectionDialog_ImageTreeComposite_filterText;
+
+    @TranslatableMessage
+    public static String ResourceSelectionDialog_ImageTreeComposite_radioGridDisplay;
+
+    @TranslatableMessage
+    public static String ResourceSelectionDialog_ImageTreeComposite_radioListDisplay;
+
+    @TranslatableMessage
     public static String RevealOutlineElementsAction_label;
 
     @TranslatableMessage

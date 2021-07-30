@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,12 +30,12 @@ import org.eclipse.ui.model.WorkbenchContentProvider;
 import org.eclipse.ui.model.WorkbenchLabelProvider;
 
 /**
- * This dialog can be used to select a workspace resource. A filter field allows
- * user to filter the resources.
+ * This dialog can be used to select a workspace resource. A filter field allows user to filter the resources.
  * 
  * @author lredor
  * 
  */
+@Deprecated
 public class WorkspaceResourceDialogWithFilter extends org.eclipse.emf.common.ui.dialogs.WorkspaceResourceDialog {
 
     /**
@@ -67,8 +67,7 @@ public class WorkspaceResourceDialogWithFilter extends org.eclipse.emf.common.ui
      *            the initial selection in this selection dialog
      * @param viewerFilters
      *            List of filters to add to the tree viewer.
-     * @return the list of selected IFile or an empty array if nothing is
-     *         selected.
+     * @return the list of selected IFile or an empty array if nothing is selected.
      */
     public static IContainer[] openFolderSelection(Shell parent, String title, String message, boolean allowMultipleSelection, Object[] initialSelection, List<ViewerFilter> viewerFilters) {
         WorkspaceResourceDialogWithFilter dialog = new WorkspaceResourceDialogWithFilter(parent, new WorkbenchLabelProvider(), new WorkbenchContentProvider());
@@ -107,8 +106,7 @@ public class WorkspaceResourceDialogWithFilter extends org.eclipse.emf.common.ui
      *            the initial selection in this selection dialog
      * @param viewerFilters
      *            List of filters to add to the tree viewer.
-     * @return the list of selected IFile or an empty array if nothing is
-     *         selected.
+     * @return the list of selected IFile or an empty array if nothing is selected.
      */
     public static IFile[] openFileSelection(Shell parent, String title, String message, boolean allowMultipleSelection, Object[] initialSelection, List<ViewerFilter> viewerFilters) {
         WorkspaceResourceDialogWithFilter dialog = new WorkspaceResourceDialogWithFilter(parent, new WorkbenchLabelProvider(), new WorkbenchContentProvider());

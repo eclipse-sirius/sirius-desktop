@@ -17,7 +17,7 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.window.Window;
-import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.SelectDiagramElementBackgroundImageDialog;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
@@ -32,7 +32,9 @@ public class WorkspaceImageSelector implements ImageSelector {
     public List<String> selectImages(EObject eObject, ImageSelector.SelectionMode selectionMode) {
         String imagePath = null;
         Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-        SelectDiagramElementBackgroundImageDialog dialog = new SelectDiagramElementBackgroundImageDialog(activeShell, eObject);
+
+        ImageSelectionDialog dialog = new ImageSelectionDialog(activeShell);
+        dialog.setTitle(Messages.SelectDiagramElementBackgroundImageDialog_title);
         if (dialog.open() == Window.OK) {
             imagePath = dialog.getImagePath();
         }
