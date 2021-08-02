@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,6 +26,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelector;
 import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelectorService;
+import org.eclipse.sirius.diagram.ui.business.api.image.WorkspaceImageHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -75,9 +76,9 @@ public class SetStyleToWorkspaceImageAction extends Action {
         ImageSelector imageSelector = ImageSelectorService.INSTANCE.getImageSelector();
         List<BasicLabelStyle> styles = getStyles();
         for (BasicLabelStyle basicLabelStyle : styles) {
-            String imagePath = imageSelector.selectImage(basicLabelStyle);
-            if (imagePath != null) {
-                ImageSelectorService.INSTANCE.updateStyle(basicLabelStyle, imagePath);
+            List<String> imagePaths = imageSelector.selectImages(basicLabelStyle, ImageSelector.SelectionMode.MONO_SELECTION);
+            if (imagePaths.size() == 1) {
+                WorkspaceImageHelper.INSTANCE.updateStyle(basicLabelStyle, imagePaths.get(0));
             }
         }
     }

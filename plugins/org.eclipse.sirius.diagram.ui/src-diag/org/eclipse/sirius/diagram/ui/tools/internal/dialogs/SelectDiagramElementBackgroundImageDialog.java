@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,6 +16,7 @@ import org.eclipse.core.databinding.DataBindingContext;
 import org.eclipse.core.databinding.UpdateValueStrategy;
 import org.eclipse.core.databinding.observable.value.IObservableValue;
 import org.eclipse.emf.databinding.EMFProperties;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.databinding.swt.ISWTObservableValue;
 import org.eclipse.jface.databinding.swt.WidgetProperties;
 import org.eclipse.jface.dialogs.Dialog;
@@ -60,7 +61,7 @@ public class SelectDiagramElementBackgroundImageDialog extends Dialog {
      * @param basicLabelStyle
      *            {@link BasicLabelStyle}
      */
-    public SelectDiagramElementBackgroundImageDialog(Shell shell, BasicLabelStyle basicLabelStyle) {
+    public SelectDiagramElementBackgroundImageDialog(Shell shell, EObject basicLabelStyle) {
         super(shell);
         this.workspaceImageForWorkspace = DiagramFactory.eINSTANCE.createWorkspaceImage();
         if (basicLabelStyle instanceof WorkspaceImage) {
@@ -70,8 +71,7 @@ public class SelectDiagramElementBackgroundImageDialog extends Dialog {
     }
 
     /**
-     * Creates and returns the contents of the upper part of this dialog (above
-     * the button bar). {@inheritDoc}
+     * Creates and returns the contents of the upper part of this dialog (above the button bar). {@inheritDoc}
      * 
      * @see org.eclipse.jface.dialogs.Dialog#createDialogArea(org.eclipse.swt.widgets.Composite)
      */
@@ -121,8 +121,7 @@ public class SelectDiagramElementBackgroundImageDialog extends Dialog {
     }
 
     /**
-     * Configures the shell in preparation for opening this window in it.
-     * {@inheritDoc}
+     * Configures the shell in preparation for opening this window in it. {@inheritDoc}
      * 
      * @see org.eclipse.jface.window.Window#configureShell(org.eclipse.swt.widgets.Shell)
      */

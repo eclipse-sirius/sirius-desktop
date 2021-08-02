@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,7 +38,7 @@ import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
-import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelectorService;
+import org.eclipse.sirius.diagram.ui.business.api.image.WorkspaceImageHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.DesignerEditPartHelper;
 import org.eclipse.sirius.diagram.ui.tools.api.migration.DiagramCrossReferencer;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
@@ -51,64 +51,58 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * This will be used to save the current state of a given DDiagramElement. An
- * element is identified via the URIs of both its target and its mapping.
+ * This will be used to save the current state of a given DDiagramElement. An element is identified via the URIs of both
+ * its target and its mapping.
  * 
  * @param <D>
  *            Type of diagram element.
- * @author lgoubet
- *         <a href="mailto:laurent.goubet@obeo.fr">laurent.goubet@obeo.fr</a>
+ * @author lgoubet <a href="mailto:laurent.goubet@obeo.fr">laurent.goubet@obeo.fr</a>
  */
 public abstract class AbstractDiagramElementState<D extends DDiagramElement> implements IDiagramElementState<D> {
 
     /**
-     * This cross referencer will return all the references named "element" on
-     * GMF Nodes.
+     * This cross referencer will return all the references named "element" on GMF Nodes.
      */
     protected DiagramCrossReferencer crossReferencer;
 
     /**
-     * Saved state of the element's 'isVisible' boolean attribute, indicating
-     * whether the element is currently visible on the view.
+     * Saved state of the element's 'isVisible' boolean attribute, indicating whether the element is currently visible
+     * on the view.
      */
     protected boolean isVisible;
 
     /**
-     * Saved state of an element's HideFilter existence in 'graphicalFilter'
-     * reference list, indicating whether the element is currently directly
-     * hidden on the view.
+     * Saved state of an element's HideFilter existence in 'graphicalFilter' reference list, indicating whether the
+     * element is currently directly hidden on the view.
      */
     protected boolean isHidden;
 
     /**
-     * Saved state of an element's HideLabelFilter existence in
-     * 'graphicalFilter' reference list, indicating whether the element label is
-     * currently directly hidden on the view.
+     * Saved state of an element's HideLabelFilter existence in 'graphicalFilter' reference list, indicating whether the
+     * element label is currently directly hidden on the view.
      */
     protected boolean isLabelHidden;
 
     /**
-     * These are the GMF Nodes referencing the element which state is saved by
-     * this instance. These references will later be fixed.
+     * These are the GMF Nodes referencing the element which state is saved by this instance. These references will
+     * later be fixed.
      */
     protected List<Node> nodes = new ArrayList<Node>();
 
     /**
-     * These are the GMF Edges referencing the element which state is being
-     * saved. These instances will later be fixed.
+     * These are the GMF Edges referencing the element which state is being saved. These instances will later be fixed.
      */
     protected List<Edge> edges = new ArrayList<Edge>();
 
     /**
-     * Saved state of an element's FoldingPointFilter existence in
-     * 'graphicalFilter' reference list, indicating whether the element view is
-     * directly fold.
+     * Saved state of an element's FoldingPointFilter existence in 'graphicalFilter' reference list, indicating whether
+     * the element view is directly fold.
      */
     private boolean isExplictlyFolded;
 
     /**
-     * Saved state of an element's FoldingFilter existence in 'graphicalFilter'
-     * reference list, indicating whether the element view is indirectly fold.
+     * Saved state of an element's FoldingFilter existence in 'graphicalFilter' reference list, indicating whether the
+     * element view is indirectly fold.
      */
     private boolean isIndirectlyFold;
 
@@ -120,15 +114,13 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
     private List<AbsoluteBoundsFilter> boundsFilters;
 
     /**
-     * if the node is collapsed, we keep its expanded dimension contained in its
-     * CollapseFilter.
+     * if the node is collapsed, we keep its expanded dimension contained in its CollapseFilter.
      */
     private Dimension expandedDimension;
 
     /**
-     * This constructor will create an instance of this class given the
-     * identifier of the element to save (both its target semantic element and
-     * its Mapping) as well as the element itself.
+     * This constructor will create an instance of this class given the identifier of the element to save (both its
+     * target semantic element and its Mapping) as well as the element itself.
      * 
      * @param id
      *            the id of {@link DDiagramElement}
@@ -351,7 +343,7 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
                 EObject eContainer = currentCustomizable.eContainer();
                 EReference eContainmentFeature = currentCustomizable.eContainmentFeature();
                 if (object instanceof String && currentCustomizable instanceof BasicLabelStyle && eContainer != null && eContainmentFeature != null) {
-                    ImageSelectorService.INSTANCE.updateStyle((BasicLabelStyle) currentCustomizable, (String) object);
+                    WorkspaceImageHelper.INSTANCE.updateStyle((BasicLabelStyle) currentCustomizable, (String) object);
                     currentCustomizable = (Customizable) eContainer.eGet(eContainmentFeature);
                 }
             }
@@ -381,13 +373,11 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
     }
 
     /**
-     * Return <code>true</code> if the specified notation node references a
-     * Style.
+     * Return <code>true</code> if the specified notation node references a Style.
      * 
      * @param node
      *            the notation node.
-     * @return <code>true</code> if the specified notation node references a
-     *         Style.
+     * @return <code>true</code> if the specified notation node references a Style.
      */
     private boolean isStyle(final Node node) {
         final String typeStr = node.getType();
@@ -412,8 +402,7 @@ public abstract class AbstractDiagramElementState<D extends DDiagramElement> imp
      * Restore {@link GraphicalFilter}.
      * 
      * @param element
-     *            the {@link DDiagramElement} on which restore the specified
-     *            {@link GraphicalFilter}
+     *            the {@link DDiagramElement} on which restore the specified {@link GraphicalFilter}
      * @param filter
      *            the specified {@link GraphicalFilter} to restore
      */

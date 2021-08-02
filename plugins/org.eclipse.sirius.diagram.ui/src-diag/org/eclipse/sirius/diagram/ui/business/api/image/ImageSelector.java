@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.api.image;
 
-import org.eclipse.sirius.viewpoint.BasicLabelStyle;
+import java.util.List;
+
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * A interface use to select a image from a image source (workspace, CDO repo, ...).
@@ -22,19 +24,23 @@ import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 public interface ImageSelector {
 
     /**
-     * The name of the CDOResource containing shared images at the top level of
-     * the repo.
+     * Used to know how many images can be selected.
+     * 
+     * @author lfasani
      */
-    @Deprecated
-    String IMAGES_RESOURCE_NAME = "images"; //$NON-NLS-1$
+    enum SelectionMode {
+        MONO_SELECTION, MULTI_SELECTION
+    };
 
     /**
-     * Get a image.
+     * Get the selected image paths.
      * 
-     * @param basicLabelStyle
-     *            the {@link BasicLabelStyle} to use
-     * @return the image path selected
+     * @param eObject
+     *            the {@link EObject} used to associate the image with
+     * @param selectionMode
+     *            the selectionMode
+     * @return a non null list of the selected image paths
      */
-    String selectImage(BasicLabelStyle basicLabelStyle);
+    List<String> selectImages(EObject eObject, SelectionMode selectionMode);
 
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,9 +12,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.api.image;
 
+import java.util.Collections;
+import java.util.List;
+
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.window.Window;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.SelectDiagramElementBackgroundImageDialog;
-import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
@@ -25,17 +28,15 @@ import org.eclipse.ui.PlatformUI;
  */
 public class WorkspaceImageSelector implements ImageSelector {
 
-    /**
-     * {@inheritDoc}
-     */
-    public String selectImage(BasicLabelStyle basicLabelStyle) {
+    @Override
+    public List<String> selectImages(EObject eObject, ImageSelector.SelectionMode selectionMode) {
         String imagePath = null;
         Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
-        SelectDiagramElementBackgroundImageDialog dialog = new SelectDiagramElementBackgroundImageDialog(activeShell, basicLabelStyle);
+        SelectDiagramElementBackgroundImageDialog dialog = new SelectDiagramElementBackgroundImageDialog(activeShell, eObject);
         if (dialog.open() == Window.OK) {
             imagePath = dialog.getImagePath();
         }
-        return imagePath;
+        return Collections.<String> singletonList(imagePath);
     }
 
 }
