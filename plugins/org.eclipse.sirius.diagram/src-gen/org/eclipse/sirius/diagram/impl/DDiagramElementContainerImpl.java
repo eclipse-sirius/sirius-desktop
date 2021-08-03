@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -219,7 +219,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
     @Override
     public EList<DNode> getOwnedBorderedNodes() {
         if (ownedBorderedNodes == null) {
-            ownedBorderedNodes = new EObjectContainmentEList.Resolving<DNode>(DNode.class, this, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_BORDERED_NODES);
+            ownedBorderedNodes = new EObjectContainmentEList.Resolving<>(DNode.class, this, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OWNED_BORDERED_NODES);
         }
         return ownedBorderedNodes;
     }
@@ -232,7 +232,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
     @Override
     public EList<ArrangeConstraint> getArrangeConstraints() {
         if (arrangeConstraints == null) {
-            arrangeConstraints = new EDataTypeUniqueEList<ArrangeConstraint>(ArrangeConstraint.class, this, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ARRANGE_CONSTRAINTS);
+            arrangeConstraints = new EDataTypeUniqueEList<>(ArrangeConstraint.class, this, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__ARRANGE_CONSTRAINTS);
         }
         return arrangeConstraints;
     }
@@ -245,7 +245,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
     @Override
     public EList<DEdge> getOutgoingEdges() {
         if (outgoingEdges == null) {
-            outgoingEdges = new EObjectWithInverseResolvingEList<DEdge>(DEdge.class, this, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OUTGOING_EDGES, DiagramPackage.DEDGE__SOURCE_NODE);
+            outgoingEdges = new EObjectWithInverseResolvingEList<>(DEdge.class, this, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__OUTGOING_EDGES, DiagramPackage.DEDGE__SOURCE_NODE);
         }
         return outgoingEdges;
     }
@@ -258,7 +258,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
     @Override
     public EList<DEdge> getIncomingEdges() {
         if (incomingEdges == null) {
-            incomingEdges = new EObjectWithInverseResolvingEList<DEdge>(DEdge.class, this, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__INCOMING_EDGES, DiagramPackage.DEDGE__TARGET_NODE);
+            incomingEdges = new EObjectWithInverseResolvingEList<>(DEdge.class, this, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__INCOMING_EDGES, DiagramPackage.DEDGE__TARGET_NODE);
         }
         return incomingEdges;
     }
@@ -479,7 +479,7 @@ public abstract class DDiagramElementContainerImpl extends DDiagramElementImpl i
     @Override
     public EList<ContainerMapping> getCandidatesMapping() {
         if (candidatesMapping == null) {
-            candidatesMapping = new EObjectResolvingEList<ContainerMapping>(ContainerMapping.class, this, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__CANDIDATES_MAPPING);
+            candidatesMapping = new EObjectResolvingEList<>(ContainerMapping.class, this, DiagramPackage.DDIAGRAM_ELEMENT_CONTAINER__CANDIDATES_MAPPING);
         }
         return candidatesMapping;
     }

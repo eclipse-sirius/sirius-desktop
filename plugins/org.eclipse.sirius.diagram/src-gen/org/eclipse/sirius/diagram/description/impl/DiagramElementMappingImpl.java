@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -229,7 +229,7 @@ public abstract class DiagramElementMappingImpl extends RepresentationElementMap
     @Override
     public EList<PasteDescription> getPasteDescriptions() {
         if (pasteDescriptions == null) {
-            pasteDescriptions = new EObjectResolvingEList<PasteDescription>(PasteDescription.class, this, DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__PASTE_DESCRIPTIONS);
+            pasteDescriptions = new EObjectResolvingEList<>(PasteDescription.class, this, DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__PASTE_DESCRIPTIONS);
         }
         return pasteDescriptions;
     }

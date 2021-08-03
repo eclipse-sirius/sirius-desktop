@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.&#xD;&#xA;This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v2.0&#xA;which accompanies this distribution, and is available at&#xA;https://www.eclipse.org/legal/epl-2.0/&#xA;&#xA;SPDX-License-Identifier: EPL-2.0&#xA;&#xA;Contributors:&#xA;   Obeo - initial API and implementation"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.&#xD;&#xA;This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v2.0&#xA;which accompanies this distribution, and is available at&#xA;https://www.eclipse.org/legal/epl-2.0/&#xA;&#xA;SPDX-License-Identifier: EPL-2.0&#xA;&#xA;Contributors:&#xA;   Obeo - initial API and implementation"
     modelDirectory="/org.eclipse.sirius.diagram/src-gen" creationIcons="false" editDirectory="/org.eclipse.sirius.diagram.ui/src-gen"
     editorDirectory="" modelPluginID="org.eclipse.sirius.diagram" templateDirectory=""
     redirection="" modelName="Diagram" editPluginClass="org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin"
     nonNLSMarkers="true" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     codeFormatting="true" testsDirectory="" importerID="org.eclipse.emf.importer.ecore"
-    containmentProxies="true" complianceLevel="5.0" copyrightFields="false" editPluginID="org.eclipse.sirius.diagram.ui"
+    containmentProxies="true" complianceLevel="8.0" copyrightFields="false" editPluginID="org.eclipse.sirius.diagram.ui"
     runtimeVersion="2.3" language="" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint"
     importOrganizing="true" cleanup="true">
   <foreignModel>diagram.ecore</foreignModel>

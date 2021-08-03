@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -337,7 +337,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
     @Override
     public EList<NodeMapping> getNodeMappings() {
         if (nodeMappings == null) {
-            nodeMappings = new EObjectContainmentEList.Resolving<NodeMapping>(NodeMapping.class, this, DescriptionPackage.LAYER__NODE_MAPPINGS);
+            nodeMappings = new EObjectContainmentEList.Resolving<>(NodeMapping.class, this, DescriptionPackage.LAYER__NODE_MAPPINGS);
         }
         return nodeMappings;
     }
@@ -350,7 +350,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
     @Override
     public EList<EdgeMapping> getEdgeMappings() {
         if (edgeMappings == null) {
-            edgeMappings = new EObjectContainmentEList.Resolving<EdgeMapping>(EdgeMapping.class, this, DescriptionPackage.LAYER__EDGE_MAPPINGS);
+            edgeMappings = new EObjectContainmentEList.Resolving<>(EdgeMapping.class, this, DescriptionPackage.LAYER__EDGE_MAPPINGS);
         }
         return edgeMappings;
     }
@@ -363,7 +363,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
     @Override
     public EList<EdgeMappingImport> getEdgeMappingImports() {
         if (edgeMappingImports == null) {
-            edgeMappingImports = new EObjectContainmentEList.Resolving<EdgeMappingImport>(EdgeMappingImport.class, this, DescriptionPackage.LAYER__EDGE_MAPPING_IMPORTS);
+            edgeMappingImports = new EObjectContainmentEList.Resolving<>(EdgeMappingImport.class, this, DescriptionPackage.LAYER__EDGE_MAPPING_IMPORTS);
         }
         return edgeMappingImports;
     }
@@ -376,7 +376,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
     @Override
     public EList<ContainerMapping> getContainerMappings() {
         if (containerMappings == null) {
-            containerMappings = new EObjectContainmentEList.Resolving<ContainerMapping>(ContainerMapping.class, this, DescriptionPackage.LAYER__CONTAINER_MAPPINGS);
+            containerMappings = new EObjectContainmentEList.Resolving<>(ContainerMapping.class, this, DescriptionPackage.LAYER__CONTAINER_MAPPINGS);
         }
         return containerMappings;
     }
@@ -389,7 +389,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
     @Override
     public EList<DiagramElementMapping> getReusedMappings() {
         if (reusedMappings == null) {
-            reusedMappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, DescriptionPackage.LAYER__REUSED_MAPPINGS);
+            reusedMappings = new EObjectResolvingEList<>(DiagramElementMapping.class, this, DescriptionPackage.LAYER__REUSED_MAPPINGS);
         }
         return reusedMappings;
     }
@@ -417,7 +417,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
     @Override
     public EList<ToolSection> getToolSections() {
         if (toolSections == null) {
-            toolSections = new EObjectContainmentEList.Resolving<ToolSection>(ToolSection.class, this, DescriptionPackage.LAYER__TOOL_SECTIONS);
+            toolSections = new EObjectContainmentEList.Resolving<>(ToolSection.class, this, DescriptionPackage.LAYER__TOOL_SECTIONS);
         }
         return toolSections;
     }
@@ -430,7 +430,7 @@ public class LayerImpl extends DocumentedElementImpl implements Layer {
     @Override
     public EList<AbstractToolDescription> getReusedTools() {
         if (reusedTools == null) {
-            reusedTools = new EObjectResolvingEList<AbstractToolDescription>(AbstractToolDescription.class, this, DescriptionPackage.LAYER__REUSED_TOOLS);
+            reusedTools = new EObjectResolvingEList<>(AbstractToolDescription.class, this, DescriptionPackage.LAYER__REUSED_TOOLS);
         }
         return reusedTools;
     }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -698,7 +698,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
     @Override
     public EList<EPackage> getMetamodel() {
         if (metamodel == null) {
-            metamodel = new EObjectResolvingEList<EPackage>(EPackage.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__METAMODEL);
+            metamodel = new EObjectResolvingEList<>(EPackage.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__METAMODEL);
         }
         return metamodel;
     }
@@ -735,7 +735,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
     @Override
     public EList<PasteDescription> getPasteDescriptions() {
         if (pasteDescriptions == null) {
-            pasteDescriptions = new EObjectResolvingEList<PasteDescription>(PasteDescription.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__PASTE_DESCRIPTIONS);
+            pasteDescriptions = new EObjectResolvingEList<>(PasteDescription.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__PASTE_DESCRIPTIONS);
         }
         return pasteDescriptions;
     }
@@ -748,7 +748,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
     @Override
     public EList<FilterDescription> getFilters() {
         if (filters == null) {
-            filters = new EObjectContainmentEList.Resolving<FilterDescription>(FilterDescription.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__FILTERS);
+            filters = new EObjectContainmentEList.Resolving<>(FilterDescription.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__FILTERS);
         }
         return filters;
     }
@@ -1316,7 +1316,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
     @Override
     public EList<AdditionalLayer> getAdditionalLayers() {
         if (additionalLayers == null) {
-            additionalLayers = new EObjectContainmentEList.Resolving<AdditionalLayer>(AdditionalLayer.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS);
+            additionalLayers = new EObjectContainmentEList.Resolving<>(AdditionalLayer.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__ADDITIONAL_LAYERS);
         }
         return additionalLayers;
     }
@@ -1329,7 +1329,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
     @Override
     public EList<NodeMapping> getNodeMappings() {
         if (nodeMappings == null) {
-            nodeMappings = new EObjectContainmentEList.Resolving<NodeMapping>(NodeMapping.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__NODE_MAPPINGS);
+            nodeMappings = new EObjectContainmentEList.Resolving<>(NodeMapping.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__NODE_MAPPINGS);
         }
         return nodeMappings;
     }
@@ -1342,7 +1342,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
     @Override
     public EList<EdgeMapping> getEdgeMappings() {
         if (edgeMappings == null) {
-            edgeMappings = new EObjectContainmentEList.Resolving<EdgeMapping>(EdgeMapping.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS);
+            edgeMappings = new EObjectContainmentEList.Resolving<>(EdgeMapping.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__EDGE_MAPPINGS);
         }
         return edgeMappings;
     }
@@ -1355,7 +1355,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
     @Override
     public EList<EdgeMappingImport> getEdgeMappingImports() {
         if (edgeMappingImports == null) {
-            edgeMappingImports = new EObjectContainmentEList.Resolving<EdgeMappingImport>(EdgeMappingImport.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS);
+            edgeMappingImports = new EObjectContainmentEList.Resolving<>(EdgeMappingImport.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__EDGE_MAPPING_IMPORTS);
         }
         return edgeMappingImports;
     }
@@ -1368,7 +1368,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
     @Override
     public EList<ContainerMapping> getContainerMappings() {
         if (containerMappings == null) {
-            containerMappings = new EObjectContainmentEList.Resolving<ContainerMapping>(ContainerMapping.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS);
+            containerMappings = new EObjectContainmentEList.Resolving<>(ContainerMapping.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__CONTAINER_MAPPINGS);
         }
         return containerMappings;
     }
@@ -1381,7 +1381,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
     @Override
     public EList<DiagramElementMapping> getReusedMappings() {
         if (reusedMappings == null) {
-            reusedMappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__REUSED_MAPPINGS);
+            reusedMappings = new EObjectResolvingEList<>(DiagramElementMapping.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__REUSED_MAPPINGS);
         }
         return reusedMappings;
     }
@@ -1473,7 +1473,7 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
     @Override
     public EList<AbstractToolDescription> getReusedTools() {
         if (reusedTools == null) {
-            reusedTools = new EObjectResolvingEList<AbstractToolDescription>(AbstractToolDescription.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__REUSED_TOOLS);
+            reusedTools = new EObjectResolvingEList<>(AbstractToolDescription.class, this, DescriptionPackage.DIAGRAM_DESCRIPTION__REUSED_TOOLS);
         }
         return reusedTools;
     }

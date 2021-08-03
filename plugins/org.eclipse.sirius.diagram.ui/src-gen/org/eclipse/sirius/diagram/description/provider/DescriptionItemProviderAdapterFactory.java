@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -87,7 +87,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
      *
      * @generated
      */
-    protected Collection<Object> supportedTypes = new ArrayList<Object>();
+    protected Collection<Object> supportedTypes = new ArrayList<>();
 
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -974,7 +974,7 @@ public class DescriptionItemProviderAdapterFactory extends DescriptionAdapterFac
          */
         @Override
         public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
-            ArrayList<Object> result = new ArrayList<Object>();
+            ArrayList<Object> result = new ArrayList<>();
             new CreationSwitch(result, editingDomain).doSwitch((EObject) object);
             return result;
         }

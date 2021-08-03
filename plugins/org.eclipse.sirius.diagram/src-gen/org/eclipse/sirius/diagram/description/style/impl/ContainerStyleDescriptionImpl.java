@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -444,7 +444,7 @@ public abstract class ContainerStyleDescriptionImpl extends RoundedCornerStyleDe
     @Override
     public EList<FontFormat> getLabelFormat() {
         if (labelFormat == null) {
-            labelFormat = new EDataTypeUniqueEList<FontFormat>(FontFormat.class, this, StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT);
+            labelFormat = new EDataTypeUniqueEList<>(FontFormat.class, this, StylePackage.CONTAINER_STYLE_DESCRIPTION__LABEL_FORMAT);
         }
         return labelFormat;
     }

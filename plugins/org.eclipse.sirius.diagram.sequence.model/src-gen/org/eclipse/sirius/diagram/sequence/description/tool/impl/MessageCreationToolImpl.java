@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -532,7 +532,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     @Override
     public EList<ToolFilterDescription> getFilters() {
         if (filters == null) {
-            filters = new EObjectContainmentEList.Resolving<ToolFilterDescription>(ToolFilterDescription.class, this, ToolPackage.MESSAGE_CREATION_TOOL__FILTERS);
+            filters = new EObjectContainmentEList.Resolving<>(ToolFilterDescription.class, this, ToolPackage.MESSAGE_CREATION_TOOL__FILTERS);
         }
         return filters;
     }
@@ -593,7 +593,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     @Override
     public EList<EdgeMapping> getEdgeMappings() {
         if (edgeMappings == null) {
-            edgeMappings = new EObjectResolvingEList<EdgeMapping>(EdgeMapping.class, this, ToolPackage.MESSAGE_CREATION_TOOL__EDGE_MAPPINGS);
+            edgeMappings = new EObjectResolvingEList<>(EdgeMapping.class, this, ToolPackage.MESSAGE_CREATION_TOOL__EDGE_MAPPINGS);
         }
         return edgeMappings;
     }
@@ -1025,7 +1025,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     @Override
     public EList<DiagramElementMapping> getExtraSourceMappings() {
         if (extraSourceMappings == null) {
-            extraSourceMappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_SOURCE_MAPPINGS);
+            extraSourceMappings = new EObjectResolvingEList<>(DiagramElementMapping.class, this, ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_SOURCE_MAPPINGS);
         }
         return extraSourceMappings;
     }
@@ -1038,7 +1038,7 @@ public class MessageCreationToolImpl extends SequenceDiagramToolDescriptionImpl 
     @Override
     public EList<DiagramElementMapping> getExtraTargetMappings() {
         if (extraTargetMappings == null) {
-            extraTargetMappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_TARGET_MAPPINGS);
+            extraTargetMappings = new EObjectResolvingEList<>(DiagramElementMapping.class, this, ToolPackage.MESSAGE_CREATION_TOOL__EXTRA_TARGET_MAPPINGS);
         }
         return extraTargetMappings;
     }

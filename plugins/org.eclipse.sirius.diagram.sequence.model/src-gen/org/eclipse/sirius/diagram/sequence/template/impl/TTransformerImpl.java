@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -71,7 +71,7 @@ public class TTransformerImpl extends MinimalEObjectImpl.Container implements TT
     @Override
     public EList<EObject> getOutputs() {
         if (outputs == null) {
-            outputs = new EObjectResolvingEList<EObject>(EObject.class, this, TemplatePackage.TTRANSFORMER__OUTPUTS);
+            outputs = new EObjectResolvingEList<>(EObject.class, this, TemplatePackage.TTRANSFORMER__OUTPUTS);
         }
         return outputs;
     }

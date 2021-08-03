@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -76,7 +76,7 @@ public class CompoundEventEndImpl extends EventEndImpl implements CompoundEventE
     @Override
     public EList<SingleEventEnd> getEventEnds() {
         if (eventEnds == null) {
-            eventEnds = new EObjectContainmentEList<SingleEventEnd>(SingleEventEnd.class, this, OrderingPackage.COMPOUND_EVENT_END__EVENT_ENDS);
+            eventEnds = new EObjectContainmentEList<>(SingleEventEnd.class, this, OrderingPackage.COMPOUND_EVENT_END__EVENT_ENDS);
         }
         return eventEnds;
     }

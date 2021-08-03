@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -188,7 +188,7 @@ public class ContainerDropDescriptionImpl extends MappingBasedToolDescriptionImp
     @Override
     public EList<DiagramElementMapping> getMappings() {
         if (mappings == null) {
-            mappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, ToolPackage.CONTAINER_DROP_DESCRIPTION__MAPPINGS);
+            mappings = new EObjectResolvingEList<>(DiagramElementMapping.class, this, ToolPackage.CONTAINER_DROP_DESCRIPTION__MAPPINGS);
         }
         return mappings;
     }

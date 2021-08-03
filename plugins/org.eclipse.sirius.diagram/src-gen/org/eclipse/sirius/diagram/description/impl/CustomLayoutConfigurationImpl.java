@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -213,7 +213,7 @@ public class CustomLayoutConfigurationImpl extends DocumentedElementImpl impleme
     @Override
     public EList<LayoutOption> getLayoutOptions() {
         if (layoutOptions == null) {
-            layoutOptions = new EObjectContainmentEList.Resolving<LayoutOption>(LayoutOption.class, this, DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS);
+            layoutOptions = new EObjectContainmentEList.Resolving<>(LayoutOption.class, this, DescriptionPackage.CUSTOM_LAYOUT_CONFIGURATION__LAYOUT_OPTIONS);
         }
         return layoutOptions;
     }

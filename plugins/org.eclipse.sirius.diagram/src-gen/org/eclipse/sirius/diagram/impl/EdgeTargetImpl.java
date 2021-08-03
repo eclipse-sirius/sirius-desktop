@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -86,7 +86,7 @@ public abstract class EdgeTargetImpl extends IdentifiedElementImpl implements Ed
     @Override
     public EList<DEdge> getOutgoingEdges() {
         if (outgoingEdges == null) {
-            outgoingEdges = new EObjectWithInverseResolvingEList<DEdge>(DEdge.class, this, DiagramPackage.EDGE_TARGET__OUTGOING_EDGES, DiagramPackage.DEDGE__SOURCE_NODE);
+            outgoingEdges = new EObjectWithInverseResolvingEList<>(DEdge.class, this, DiagramPackage.EDGE_TARGET__OUTGOING_EDGES, DiagramPackage.DEDGE__SOURCE_NODE);
         }
         return outgoingEdges;
     }
@@ -99,7 +99,7 @@ public abstract class EdgeTargetImpl extends IdentifiedElementImpl implements Ed
     @Override
     public EList<DEdge> getIncomingEdges() {
         if (incomingEdges == null) {
-            incomingEdges = new EObjectWithInverseResolvingEList<DEdge>(DEdge.class, this, DiagramPackage.EDGE_TARGET__INCOMING_EDGES, DiagramPackage.DEDGE__TARGET_NODE);
+            incomingEdges = new EObjectWithInverseResolvingEList<>(DEdge.class, this, DiagramPackage.EDGE_TARGET__INCOMING_EDGES, DiagramPackage.DEDGE__TARGET_NODE);
         }
         return incomingEdges;
     }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -181,7 +181,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
     @Override
     public EList<ContainerDropDescription> getDropDescriptions() {
         if (dropDescriptions == null) {
-            dropDescriptions = new EObjectResolvingEList<ContainerDropDescription>(ContainerDropDescription.class, this, DescriptionPackage.CONTAINER_MAPPING__DROP_DESCRIPTIONS);
+            dropDescriptions = new EObjectResolvingEList<>(ContainerDropDescription.class, this, DescriptionPackage.CONTAINER_MAPPING__DROP_DESCRIPTIONS);
         }
         return dropDescriptions;
     }
@@ -194,7 +194,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
     @Override
     public EList<NodeMapping> getSubNodeMappings() {
         if (subNodeMappings == null) {
-            subNodeMappings = new EObjectContainmentEList.Resolving<NodeMapping>(NodeMapping.class, this, DescriptionPackage.CONTAINER_MAPPING__SUB_NODE_MAPPINGS);
+            subNodeMappings = new EObjectContainmentEList.Resolving<>(NodeMapping.class, this, DescriptionPackage.CONTAINER_MAPPING__SUB_NODE_MAPPINGS);
         }
         return subNodeMappings;
     }
@@ -207,7 +207,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
     @Override
     public EList<NodeMapping> getReusedNodeMappings() {
         if (reusedNodeMappings == null) {
-            reusedNodeMappings = new EObjectResolvingEList<NodeMapping>(NodeMapping.class, this, DescriptionPackage.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS);
+            reusedNodeMappings = new EObjectResolvingEList<>(NodeMapping.class, this, DescriptionPackage.CONTAINER_MAPPING__REUSED_NODE_MAPPINGS);
         }
         return reusedNodeMappings;
     }
@@ -220,7 +220,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
     @Override
     public EList<ContainerMapping> getSubContainerMappings() {
         if (subContainerMappings == null) {
-            subContainerMappings = new EObjectContainmentEList.Resolving<ContainerMapping>(ContainerMapping.class, this, DescriptionPackage.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS);
+            subContainerMappings = new EObjectContainmentEList.Resolving<>(ContainerMapping.class, this, DescriptionPackage.CONTAINER_MAPPING__SUB_CONTAINER_MAPPINGS);
         }
         return subContainerMappings;
     }
@@ -233,7 +233,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
     @Override
     public EList<ContainerMapping> getReusedContainerMappings() {
         if (reusedContainerMappings == null) {
-            reusedContainerMappings = new EObjectResolvingEList<ContainerMapping>(ContainerMapping.class, this, DescriptionPackage.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS);
+            reusedContainerMappings = new EObjectResolvingEList<>(ContainerMapping.class, this, DescriptionPackage.CONTAINER_MAPPING__REUSED_CONTAINER_MAPPINGS);
         }
         return reusedContainerMappings;
     }
@@ -325,8 +325,7 @@ public class ContainerMappingImpl extends AbstractNodeMappingImpl implements Con
     @Override
     public EList<ConditionalContainerStyleDescription> getConditionnalStyles() {
         if (conditionnalStyles == null) {
-            conditionnalStyles = new EObjectContainmentEList.Resolving<ConditionalContainerStyleDescription>(ConditionalContainerStyleDescription.class, this,
-                    DescriptionPackage.CONTAINER_MAPPING__CONDITIONNAL_STYLES);
+            conditionnalStyles = new EObjectContainmentEList.Resolving<>(ConditionalContainerStyleDescription.class, this, DescriptionPackage.CONTAINER_MAPPING__CONDITIONNAL_STYLES);
         }
         return conditionnalStyles;
     }

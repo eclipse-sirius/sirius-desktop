@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -76,7 +76,7 @@ public class CompositeFilterDescriptionImpl extends FilterDescriptionImpl implem
     @Override
     public EList<Filter> getFilters() {
         if (filters == null) {
-            filters = new EObjectContainmentEList.Resolving<Filter>(Filter.class, this, FilterPackage.COMPOSITE_FILTER_DESCRIPTION__FILTERS);
+            filters = new EObjectContainmentEList.Resolving<>(Filter.class, this, FilterPackage.COMPOSITE_FILTER_DESCRIPTION__FILTERS);
         }
         return filters;
     }

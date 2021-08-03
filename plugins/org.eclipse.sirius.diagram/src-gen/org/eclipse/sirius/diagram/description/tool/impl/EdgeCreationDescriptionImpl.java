@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -212,7 +212,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
     @Override
     public EList<EdgeMapping> getEdgeMappings() {
         if (edgeMappings == null) {
-            edgeMappings = new EObjectResolvingEList<EdgeMapping>(EdgeMapping.class, this, ToolPackage.EDGE_CREATION_DESCRIPTION__EDGE_MAPPINGS);
+            edgeMappings = new EObjectResolvingEList<>(EdgeMapping.class, this, ToolPackage.EDGE_CREATION_DESCRIPTION__EDGE_MAPPINGS);
         }
         return edgeMappings;
     }
@@ -644,7 +644,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
     @Override
     public EList<DiagramElementMapping> getExtraSourceMappings() {
         if (extraSourceMappings == null) {
-            extraSourceMappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_SOURCE_MAPPINGS);
+            extraSourceMappings = new EObjectResolvingEList<>(DiagramElementMapping.class, this, ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_SOURCE_MAPPINGS);
         }
         return extraSourceMappings;
     }
@@ -657,7 +657,7 @@ public class EdgeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
     @Override
     public EList<DiagramElementMapping> getExtraTargetMappings() {
         if (extraTargetMappings == null) {
-            extraTargetMappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_TARGET_MAPPINGS);
+            extraTargetMappings = new EObjectResolvingEList<>(DiagramElementMapping.class, this, ToolPackage.EDGE_CREATION_DESCRIPTION__EXTRA_TARGET_MAPPINGS);
         }
         return extraTargetMappings;
     }

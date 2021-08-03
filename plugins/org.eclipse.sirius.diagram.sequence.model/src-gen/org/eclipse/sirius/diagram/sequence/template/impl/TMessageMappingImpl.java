@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -234,7 +234,7 @@ public abstract class TMessageMappingImpl extends TAbstractMappingImpl implement
     @Override
     public EList<TConditionalMessageStyle> getConditionalStyle() {
         if (conditionalStyle == null) {
-            conditionalStyle = new EObjectContainmentEList<TConditionalMessageStyle>(TConditionalMessageStyle.class, this, TemplatePackage.TMESSAGE_MAPPING__CONDITIONAL_STYLE);
+            conditionalStyle = new EObjectContainmentEList<>(TConditionalMessageStyle.class, this, TemplatePackage.TMESSAGE_MAPPING__CONDITIONAL_STYLE);
         }
         return conditionalStyle;
     }

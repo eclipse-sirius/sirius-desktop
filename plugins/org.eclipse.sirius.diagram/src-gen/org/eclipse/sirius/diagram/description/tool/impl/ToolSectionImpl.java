@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -256,7 +256,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     @Override
     public EList<ToolEntry> getOwnedTools() {
         if (ownedTools == null) {
-            ownedTools = new EObjectContainmentEList.Resolving<ToolEntry>(ToolEntry.class, this, ToolPackage.TOOL_SECTION__OWNED_TOOLS);
+            ownedTools = new EObjectContainmentEList.Resolving<>(ToolEntry.class, this, ToolPackage.TOOL_SECTION__OWNED_TOOLS);
         }
         return ownedTools;
     }
@@ -269,7 +269,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     @Override
     public EList<ToolSection> getSubSections() {
         if (subSections == null) {
-            subSections = new EObjectContainmentEList.Resolving<ToolSection>(ToolSection.class, this, ToolPackage.TOOL_SECTION__SUB_SECTIONS);
+            subSections = new EObjectContainmentEList.Resolving<>(ToolSection.class, this, ToolPackage.TOOL_SECTION__SUB_SECTIONS);
         }
         return subSections;
     }
@@ -297,7 +297,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     @Override
     public EList<ToolEntry> getReusedTools() {
         if (reusedTools == null) {
-            reusedTools = new EObjectResolvingEList<ToolEntry>(ToolEntry.class, this, ToolPackage.TOOL_SECTION__REUSED_TOOLS);
+            reusedTools = new EObjectResolvingEList<>(ToolEntry.class, this, ToolPackage.TOOL_SECTION__REUSED_TOOLS);
         }
         return reusedTools;
     }
@@ -310,7 +310,7 @@ public class ToolSectionImpl extends DocumentedElementImpl implements ToolSectio
     @Override
     public EList<ToolGroupExtension> getGroupExtensions() {
         if (groupExtensions == null) {
-            groupExtensions = new EObjectContainmentEList.Resolving<ToolGroupExtension>(ToolGroupExtension.class, this, ToolPackage.TOOL_SECTION__GROUP_EXTENSIONS);
+            groupExtensions = new EObjectContainmentEList.Resolving<>(ToolGroupExtension.class, this, ToolPackage.TOOL_SECTION__GROUP_EXTENSIONS);
         }
         return groupExtensions;
     }

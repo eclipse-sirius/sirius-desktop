@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -207,7 +207,7 @@ public abstract class LayoutOptionImpl extends MinimalEObjectImpl.Container impl
     @Override
     public EList<LayoutOptionTarget> getTargets() {
         if (targets == null) {
-            targets = new EDataTypeUniqueEList<LayoutOptionTarget>(LayoutOptionTarget.class, this, DescriptionPackage.LAYOUT_OPTION__TARGETS);
+            targets = new EDataTypeUniqueEList<>(LayoutOptionTarget.class, this, DescriptionPackage.LAYOUT_OPTION__TARGETS);
         }
         return targets;
     }

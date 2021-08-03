@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -317,7 +317,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     @Override
     public EList<DiagramElementMapping> getSourceMapping() {
         if (sourceMapping == null) {
-            sourceMapping = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, DescriptionPackage.EDGE_MAPPING__SOURCE_MAPPING);
+            sourceMapping = new EObjectResolvingEList<>(DiagramElementMapping.class, this, DescriptionPackage.EDGE_MAPPING__SOURCE_MAPPING);
         }
         return sourceMapping;
     }
@@ -331,7 +331,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     @Override
     public EList<DiagramElementMapping> getTargetMapping() {
         if (targetMapping == null) {
-            targetMapping = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, DescriptionPackage.EDGE_MAPPING__TARGET_MAPPING);
+            targetMapping = new EObjectResolvingEList<>(DiagramElementMapping.class, this, DescriptionPackage.EDGE_MAPPING__TARGET_MAPPING);
         }
         return targetMapping;
     }
@@ -471,8 +471,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     @Override
     public EList<ConditionalEdgeStyleDescription> getConditionnalStyles() {
         if (conditionnalStyles == null) {
-            conditionnalStyles = new EObjectContainmentEList.Resolving<ConditionalEdgeStyleDescription>(ConditionalEdgeStyleDescription.class, this,
-                    DescriptionPackage.EDGE_MAPPING__CONDITIONNAL_STYLES);
+            conditionnalStyles = new EObjectContainmentEList.Resolving<>(ConditionalEdgeStyleDescription.class, this, DescriptionPackage.EDGE_MAPPING__CONDITIONNAL_STYLES);
         }
         return conditionnalStyles;
     }
@@ -557,7 +556,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     @Override
     public EList<ReconnectEdgeDescription> getReconnections() {
         if (reconnections == null) {
-            reconnections = new EObjectResolvingEList<ReconnectEdgeDescription>(ReconnectEdgeDescription.class, this, DescriptionPackage.EDGE_MAPPING__RECONNECTIONS);
+            reconnections = new EObjectResolvingEList<>(ReconnectEdgeDescription.class, this, DescriptionPackage.EDGE_MAPPING__RECONNECTIONS);
         }
         return reconnections;
     }
@@ -594,7 +593,7 @@ public class EdgeMappingImpl extends DiagramElementMappingImpl implements EdgeMa
     @Override
     public EList<AbstractNodeMapping> getPathNodeMapping() {
         if (pathNodeMapping == null) {
-            pathNodeMapping = new EObjectResolvingEList<AbstractNodeMapping>(AbstractNodeMapping.class, this, DescriptionPackage.EDGE_MAPPING__PATH_NODE_MAPPING);
+            pathNodeMapping = new EObjectResolvingEList<>(AbstractNodeMapping.class, this, DescriptionPackage.EDGE_MAPPING__PATH_NODE_MAPPING);
         }
         return pathNodeMapping;
     }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -247,8 +247,7 @@ public class EdgeMappingImportImpl extends DocumentedElementImpl implements Edge
     @Override
     public EList<ConditionalEdgeStyleDescription> getConditionnalStyles() {
         if (conditionnalStyles == null) {
-            conditionnalStyles = new EObjectContainmentEList.Resolving<ConditionalEdgeStyleDescription>(ConditionalEdgeStyleDescription.class, this,
-                    DescriptionPackage.EDGE_MAPPING_IMPORT__CONDITIONNAL_STYLES);
+            conditionnalStyles = new EObjectContainmentEList.Resolving<>(ConditionalEdgeStyleDescription.class, this, DescriptionPackage.EDGE_MAPPING_IMPORT__CONDITIONNAL_STYLES);
         }
         return conditionnalStyles;
     }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -104,7 +104,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
     @Override
     public EList<ContainerDropDescription> getDropDescriptions() {
         if (dropDescriptions == null) {
-            dropDescriptions = new EObjectResolvingEList<ContainerDropDescription>(ContainerDropDescription.class, this, DescriptionPackage.NODE_MAPPING__DROP_DESCRIPTIONS);
+            dropDescriptions = new EObjectResolvingEList<>(ContainerDropDescription.class, this, DescriptionPackage.NODE_MAPPING__DROP_DESCRIPTIONS);
         }
         return dropDescriptions;
     }
@@ -196,8 +196,7 @@ public class NodeMappingImpl extends AbstractNodeMappingImpl implements NodeMapp
     @Override
     public EList<ConditionalNodeStyleDescription> getConditionnalStyles() {
         if (conditionnalStyles == null) {
-            conditionnalStyles = new EObjectContainmentEList.Resolving<ConditionalNodeStyleDescription>(ConditionalNodeStyleDescription.class, this,
-                    DescriptionPackage.NODE_MAPPING__CONDITIONNAL_STYLES);
+            conditionnalStyles = new EObjectContainmentEList.Resolving<>(ConditionalNodeStyleDescription.class, this, DescriptionPackage.NODE_MAPPING__CONDITIONNAL_STYLES);
         }
         return conditionnalStyles;
     }

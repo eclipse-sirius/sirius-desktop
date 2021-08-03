@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -118,7 +118,7 @@ public class DoubleClickDescriptionImpl extends MappingBasedToolDescriptionImpl 
     @Override
     public EList<DiagramElementMapping> getMappings() {
         if (mappings == null) {
-            mappings = new EObjectWithInverseResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, ToolPackage.DOUBLE_CLICK_DESCRIPTION__MAPPINGS,
+            mappings = new EObjectWithInverseResolvingEList<>(DiagramElementMapping.class, this, ToolPackage.DOUBLE_CLICK_DESCRIPTION__MAPPINGS,
                     DescriptionPackage.DIAGRAM_ELEMENT_MAPPING__DOUBLE_CLICK_DESCRIPTION);
         }
         return mappings;

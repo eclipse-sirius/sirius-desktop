@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -256,7 +256,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
     @Override
     public EList<EPackage> getMetamodel() {
         if (metamodel == null) {
-            metamodel = new EObjectResolvingEList<EPackage>(EPackage.class, this, DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__METAMODEL);
+            metamodel = new EObjectResolvingEList<>(EPackage.class, this, DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__METAMODEL);
         }
         return metamodel;
     }
@@ -269,7 +269,7 @@ public class DiagramExtensionDescriptionImpl extends MinimalEObjectImpl.Containe
     @Override
     public EList<AdditionalLayer> getLayers() {
         if (layers == null) {
-            layers = new EObjectContainmentEList.Resolving<AdditionalLayer>(AdditionalLayer.class, this, DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__LAYERS);
+            layers = new EObjectContainmentEList.Resolving<>(AdditionalLayer.class, this, DescriptionPackage.DIAGRAM_EXTENSION_DESCRIPTION__LAYERS);
         }
         return layers;
     }

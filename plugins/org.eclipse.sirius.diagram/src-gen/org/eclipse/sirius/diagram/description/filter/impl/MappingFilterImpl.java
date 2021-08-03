@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -118,7 +118,7 @@ public class MappingFilterImpl extends FilterImpl implements MappingFilter {
     @Override
     public EList<DiagramElementMapping> getMappings() {
         if (mappings == null) {
-            mappings = new EObjectResolvingEList<DiagramElementMapping>(DiagramElementMapping.class, this, FilterPackage.MAPPING_FILTER__MAPPINGS);
+            mappings = new EObjectResolvingEList<>(DiagramElementMapping.class, this, FilterPackage.MAPPING_FILTER__MAPPINGS);
         }
         return mappings;
     }

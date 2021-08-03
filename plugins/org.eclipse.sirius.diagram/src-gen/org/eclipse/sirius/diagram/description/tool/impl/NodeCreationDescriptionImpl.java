@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -152,7 +152,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
     @Override
     public EList<NodeMapping> getNodeMappings() {
         if (nodeMappings == null) {
-            nodeMappings = new EObjectResolvingEList<NodeMapping>(NodeMapping.class, this, ToolPackage.NODE_CREATION_DESCRIPTION__NODE_MAPPINGS);
+            nodeMappings = new EObjectResolvingEList<>(NodeMapping.class, this, ToolPackage.NODE_CREATION_DESCRIPTION__NODE_MAPPINGS);
         }
         return nodeMappings;
     }
@@ -426,7 +426,7 @@ public class NodeCreationDescriptionImpl extends MappingBasedToolDescriptionImpl
     @Override
     public EList<AbstractNodeMapping> getExtraMappings() {
         if (extraMappings == null) {
-            extraMappings = new EObjectResolvingEList<AbstractNodeMapping>(AbstractNodeMapping.class, this, ToolPackage.NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS);
+            extraMappings = new EObjectResolvingEList<>(AbstractNodeMapping.class, this, ToolPackage.NODE_CREATION_DESCRIPTION__EXTRA_MAPPINGS);
         }
         return extraMappings;
     }

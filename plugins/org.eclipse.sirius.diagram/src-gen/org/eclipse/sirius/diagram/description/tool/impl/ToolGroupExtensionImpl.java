@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -132,7 +132,7 @@ public class ToolGroupExtensionImpl extends MinimalEObjectImpl.Container impleme
     @Override
     public EList<AbstractToolDescription> getTools() {
         if (tools == null) {
-            tools = new EObjectContainmentEList.Resolving<AbstractToolDescription>(AbstractToolDescription.class, this, ToolPackage.TOOL_GROUP_EXTENSION__TOOLS);
+            tools = new EObjectContainmentEList.Resolving<>(AbstractToolDescription.class, this, ToolPackage.TOOL_GROUP_EXTENSION__TOOLS);
         }
         return tools;
     }

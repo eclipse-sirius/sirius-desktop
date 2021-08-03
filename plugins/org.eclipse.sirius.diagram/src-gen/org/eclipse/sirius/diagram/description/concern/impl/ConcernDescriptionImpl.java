@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -192,7 +192,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
     @Override
     public EList<FilterDescription> getFilters() {
         if (filters == null) {
-            filters = new EObjectResolvingEList<FilterDescription>(FilterDescription.class, this, ConcernPackage.CONCERN_DESCRIPTION__FILTERS);
+            filters = new EObjectResolvingEList<>(FilterDescription.class, this, ConcernPackage.CONCERN_DESCRIPTION__FILTERS);
         }
         return filters;
     }
@@ -205,7 +205,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
     @Override
     public EList<ValidationRule> getRules() {
         if (rules == null) {
-            rules = new EObjectResolvingEList<ValidationRule>(ValidationRule.class, this, ConcernPackage.CONCERN_DESCRIPTION__RULES);
+            rules = new EObjectResolvingEList<>(ValidationRule.class, this, ConcernPackage.CONCERN_DESCRIPTION__RULES);
         }
         return rules;
     }
@@ -218,7 +218,7 @@ public class ConcernDescriptionImpl extends DocumentedElementImpl implements Con
     @Override
     public EList<BehaviorTool> getBehaviors() {
         if (behaviors == null) {
-            behaviors = new EObjectResolvingEList<BehaviorTool>(BehaviorTool.class, this, ConcernPackage.CONCERN_DESCRIPTION__BEHAVIORS);
+            behaviors = new EObjectResolvingEList<>(BehaviorTool.class, this, ConcernPackage.CONCERN_DESCRIPTION__BEHAVIORS);
         }
         return behaviors;
     }

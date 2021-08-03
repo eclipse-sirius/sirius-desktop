@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -299,7 +299,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     @Override
     public EList<DEdge> getOutgoingEdges() {
         if (outgoingEdges == null) {
-            outgoingEdges = new EObjectWithInverseResolvingEList<DEdge>(DEdge.class, this, DiagramPackage.DEDGE__OUTGOING_EDGES, DiagramPackage.DEDGE__SOURCE_NODE);
+            outgoingEdges = new EObjectWithInverseResolvingEList<>(DEdge.class, this, DiagramPackage.DEDGE__OUTGOING_EDGES, DiagramPackage.DEDGE__SOURCE_NODE);
         }
         return outgoingEdges;
     }
@@ -312,7 +312,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     @Override
     public EList<DEdge> getIncomingEdges() {
         if (incomingEdges == null) {
-            incomingEdges = new EObjectWithInverseResolvingEList<DEdge>(DEdge.class, this, DiagramPackage.DEDGE__INCOMING_EDGES, DiagramPackage.DEDGE__TARGET_NODE);
+            incomingEdges = new EObjectWithInverseResolvingEList<>(DEdge.class, this, DiagramPackage.DEDGE__INCOMING_EDGES, DiagramPackage.DEDGE__TARGET_NODE);
         }
         return incomingEdges;
     }
@@ -730,7 +730,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     @Override
     public EList<EdgeTarget> getPath() {
         if (path == null) {
-            path = new EObjectResolvingEList<EdgeTarget>(EdgeTarget.class, this, DiagramPackage.DEDGE__PATH);
+            path = new EObjectResolvingEList<>(EdgeTarget.class, this, DiagramPackage.DEDGE__PATH);
         }
         return path;
     }
@@ -743,7 +743,7 @@ public class DEdgeImpl extends DDiagramElementImpl implements DEdge {
     @Override
     public EList<ArrangeConstraint> getArrangeConstraints() {
         if (arrangeConstraints == null) {
-            arrangeConstraints = new EDataTypeUniqueEList<ArrangeConstraint>(ArrangeConstraint.class, this, DiagramPackage.DEDGE__ARRANGE_CONSTRAINTS);
+            arrangeConstraints = new EDataTypeUniqueEList<>(ArrangeConstraint.class, this, DiagramPackage.DEDGE__ARRANGE_CONSTRAINTS);
         }
         return arrangeConstraints;
     }

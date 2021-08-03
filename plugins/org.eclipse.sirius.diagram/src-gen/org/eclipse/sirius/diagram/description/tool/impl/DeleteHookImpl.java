@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -120,7 +120,7 @@ public class DeleteHookImpl extends MinimalEObjectImpl.Container implements Dele
     @Override
     public EList<DeleteHookParameter> getParameters() {
         if (parameters == null) {
-            parameters = new EObjectContainmentEList.Resolving<DeleteHookParameter>(DeleteHookParameter.class, this, ToolPackage.DELETE_HOOK__PARAMETERS);
+            parameters = new EObjectContainmentEList.Resolving<>(DeleteHookParameter.class, this, ToolPackage.DELETE_HOOK__PARAMETERS);
         }
         return parameters;
     }

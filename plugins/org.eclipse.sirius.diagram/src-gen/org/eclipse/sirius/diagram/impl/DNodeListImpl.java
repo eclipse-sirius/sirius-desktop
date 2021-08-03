@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -74,7 +74,7 @@ public class DNodeListImpl extends DDiagramElementContainerImpl implements DNode
     @Override
     public EList<DNodeListElement> getOwnedElements() {
         if (ownedElements == null) {
-            ownedElements = new EObjectContainmentEList.Resolving<DNodeListElement>(DNodeListElement.class, this, DiagramPackage.DNODE_LIST__OWNED_ELEMENTS);
+            ownedElements = new EObjectContainmentEList.Resolving<>(DNodeListElement.class, this, DiagramPackage.DNODE_LIST__OWNED_ELEMENTS);
         }
         return ownedElements;
     }

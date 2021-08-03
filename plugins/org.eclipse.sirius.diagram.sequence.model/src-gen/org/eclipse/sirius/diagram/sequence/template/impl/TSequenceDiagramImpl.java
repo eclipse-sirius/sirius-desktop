@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -149,7 +149,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
     @Override
     public EList<EObject> getOutputs() {
         if (outputs == null) {
-            outputs = new EObjectResolvingEList<EObject>(EObject.class, this, TemplatePackage.TSEQUENCE_DIAGRAM__OUTPUTS);
+            outputs = new EObjectResolvingEList<>(EObject.class, this, TemplatePackage.TSEQUENCE_DIAGRAM__OUTPUTS);
         }
         return outputs;
     }
@@ -186,7 +186,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
     @Override
     public EList<TLifelineMapping> getLifelineMappings() {
         if (lifelineMappings == null) {
-            lifelineMappings = new EObjectContainmentEList<TLifelineMapping>(TLifelineMapping.class, this, TemplatePackage.TSEQUENCE_DIAGRAM__LIFELINE_MAPPINGS);
+            lifelineMappings = new EObjectContainmentEList<>(TLifelineMapping.class, this, TemplatePackage.TSEQUENCE_DIAGRAM__LIFELINE_MAPPINGS);
         }
         return lifelineMappings;
     }
@@ -199,7 +199,7 @@ public class TSequenceDiagramImpl extends RepresentationTemplateImpl implements 
     @Override
     public EList<TMessageMapping> getMessageMappings() {
         if (messageMappings == null) {
-            messageMappings = new EObjectContainmentEList<TMessageMapping>(TMessageMapping.class, this, TemplatePackage.TSEQUENCE_DIAGRAM__MESSAGE_MAPPINGS);
+            messageMappings = new EObjectContainmentEList<>(TMessageMapping.class, this, TemplatePackage.TSEQUENCE_DIAGRAM__MESSAGE_MAPPINGS);
         }
         return messageMappings;
     }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -209,7 +209,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     @Override
     public EList<Layer> getParentLayers() {
         if (parentLayers == null) {
-            parentLayers = new EObjectResolvingEList<Layer>(Layer.class, this, DiagramPackage.DDIAGRAM_ELEMENT__PARENT_LAYERS);
+            parentLayers = new EObjectResolvingEList<>(Layer.class, this, DiagramPackage.DDIAGRAM_ELEMENT__PARENT_LAYERS);
         }
         return parentLayers;
     }
@@ -222,7 +222,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     @Override
     public EList<Decoration> getDecorations() {
         if (decorations == null) {
-            decorations = new EObjectContainmentEList.Resolving<Decoration>(Decoration.class, this, DiagramPackage.DDIAGRAM_ELEMENT__DECORATIONS);
+            decorations = new EObjectContainmentEList.Resolving<>(Decoration.class, this, DiagramPackage.DDIAGRAM_ELEMENT__DECORATIONS);
         }
         return decorations;
     }
@@ -235,7 +235,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     @Override
     public EList<Decoration> getTransientDecorations() {
         if (transientDecorations == null) {
-            transientDecorations = new EObjectContainmentEList.Resolving<Decoration>(Decoration.class, this, DiagramPackage.DDIAGRAM_ELEMENT__TRANSIENT_DECORATIONS);
+            transientDecorations = new EObjectContainmentEList.Resolving<>(Decoration.class, this, DiagramPackage.DDIAGRAM_ELEMENT__TRANSIENT_DECORATIONS);
         }
         return transientDecorations;
     }
@@ -268,7 +268,7 @@ public abstract class DDiagramElementImpl extends DRepresentationElementImpl imp
     @Override
     public EList<GraphicalFilter> getGraphicalFilters() {
         if (graphicalFilters == null) {
-            graphicalFilters = new EObjectContainmentEList.Resolving<GraphicalFilter>(GraphicalFilter.class, this, DiagramPackage.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS);
+            graphicalFilters = new EObjectContainmentEList.Resolving<>(GraphicalFilter.class, this, DiagramPackage.DDIAGRAM_ELEMENT__GRAPHICAL_FILTERS);
         }
         return graphicalFilters;
     }

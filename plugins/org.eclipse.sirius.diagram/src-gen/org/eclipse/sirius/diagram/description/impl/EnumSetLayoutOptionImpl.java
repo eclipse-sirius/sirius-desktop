@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -75,7 +75,7 @@ public class EnumSetLayoutOptionImpl extends EnumOptionImpl implements EnumSetLa
     @Override
     public EList<EnumLayoutValue> getValues() {
         if (values == null) {
-            values = new EObjectContainmentEList.Resolving<EnumLayoutValue>(EnumLayoutValue.class, this, DescriptionPackage.ENUM_SET_LAYOUT_OPTION__VALUES);
+            values = new EObjectContainmentEList.Resolving<>(EnumLayoutValue.class, this, DescriptionPackage.ENUM_SET_LAYOUT_OPTION__VALUES);
         }
         return values;
     }

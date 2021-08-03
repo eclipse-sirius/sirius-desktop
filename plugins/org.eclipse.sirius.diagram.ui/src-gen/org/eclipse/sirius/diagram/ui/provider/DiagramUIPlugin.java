@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -249,7 +249,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
             dynamicPreferences = new DynamicDiagramUIPreferences(getPreferenceStore());
 
             adapterFactory = createAdapterFactory();
-            descriptorsToImages = new HashMap<ImageWithDimensionDescriptor, Image>();
+            descriptorsToImages = new HashMap<>();
             ressourceMissingDocumentProvider = new ResourceMissingDocumentProvider();
 
             workspaceImageFigureRefresher = new WorkspaceImageFigureRefresher();
@@ -261,13 +261,13 @@ public final class DiagramUIPlugin extends EMFPlugin {
             formatDataManagerRegistryListener = new FormatDataManagerRegistryListener();
             formatDataManagerRegistryListener.init();
 
-            layoutAlgorithmsRegistry = new HashMap<String, CustomLayoutAlgorithm>();
+            layoutAlgorithmsRegistry = new HashMap<>();
 
             layoutAlgorithmProviderRegistry = new CustomLayoutAlgorithmProviderRegistry(layoutAlgorithmsRegistry);
             Platform.getExtensionRegistry().addListener(layoutAlgorithmProviderRegistry, CustomLayoutAlgorithmProviderRegistry.LAYOUT_ALGORITHM_PROVIDER_EXTENSION_POINT_ID);
 
             registerCoreDecorationProviders();
-            
+
             // Force initialization of org.eclipse.gmf.runtime.draw2d.ui.render.awt to register the Batik image formats
             // needed
             Draw2dRenderPlugin.getInstance();
@@ -343,7 +343,7 @@ public final class DiagramUIPlugin extends EMFPlugin {
          * @was-generated NOT use THE mighty factory
          */
         protected ComposedAdapterFactory createAdapterFactory() {
-            List<AdapterFactory> factories = new ArrayList<AdapterFactory>();
+            List<AdapterFactory> factories = new ArrayList<>();
             factories.add(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
             fillItemProviderFactories(factories);
             return new ComposedAdapterFactory(factories);

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -42,7 +42,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
      *
      * @not-generated
      */
-    HashMap<Object, DNodeLabelItemProvider> nodeLabelItemProviders = new HashMap<Object, DNodeLabelItemProvider>();
+    HashMap<Object, DNodeLabelItemProvider> nodeLabelItemProviders = new HashMap<>();
 
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -336,7 +336,7 @@ public class DNodeItemProvider extends DDiagramElementItemProvider {
     public Collection<?> getChildren(Object object) {
         Collection<Object> result = (Collection<Object>) super.getChildren(object);
         if (object instanceof DNode && DNodeLabelItemProvider.hasRelevantLabelItem((DNode) object)) {
-            Collection<Object> resultTemp = new ArrayList<Object>();
+            Collection<Object> resultTemp = new ArrayList<>();
             if (nodeLabelItemProviders.get(object) == null) {
                 nodeLabelItemProviders.put(object, new DNodeLabelItemProvider(adapterFactory, (DNode) object));
             }

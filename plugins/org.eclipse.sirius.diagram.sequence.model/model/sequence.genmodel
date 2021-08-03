@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.&#xD;&#xA;This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v2.0&#xA;which accompanies this distribution, and is available at&#xA;https://www.eclipse.org/legal/epl-2.0/&#xA;&#xA;SPDX-License-Identifier: EPL-2.0&#xA;&#xA;Contributors:&#xA;   Obeo - initial API and implementation"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.&#xD;&#xA;This program and the accompanying materials&#xA;are made available under the terms of the Eclipse Public License v2.0&#xA;which accompanies this distribution, and is available at&#xA;https://www.eclipse.org/legal/epl-2.0/&#xA;&#xA;SPDX-License-Identifier: EPL-2.0&#xA;&#xA;Contributors:&#xA;   Obeo - initial API and implementation"
     modelDirectory="/org.eclipse.sirius.diagram.sequence.model/src-gen" creationIcons="false"
     editDirectory="/org.eclipse.sirius.diagram.sequence.edit/src-gen" editorDirectory=""
     modelPluginID="org.eclipse.sirius.diagram.sequence.model" redirection="" modelName="Sequence"
@@ -8,7 +8,8 @@
     editorPluginClass="org.eclipse.sirius.diagram.sequence.description.presentation.SequenceEditorPlugin"
     nonNLSMarkers="true" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     codeFormatting="true" testsDirectory="" testSuiteClass="org.eclipse.sirius.diagram.sequence.description.tests.SequenceAllTests"
-    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    editPluginID="org.eclipse.sirius.diagram.sequence.edit" editorPluginID="org.eclipse.sirius.diagram.sequence.editor"
     runtimeVersion="2.3" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint ../../org.eclipse.sirius.diagram/model/diagram.genmodel#//diagram"
     importOrganizing="true" cleanup="true">
   <foreignModel>sequence.ecore</foreignModel>

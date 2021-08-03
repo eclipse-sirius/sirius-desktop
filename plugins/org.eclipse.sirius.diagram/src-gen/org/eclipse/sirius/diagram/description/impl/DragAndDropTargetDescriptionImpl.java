@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -74,7 +74,7 @@ public abstract class DragAndDropTargetDescriptionImpl extends MinimalEObjectImp
     @Override
     public EList<ContainerDropDescription> getDropDescriptions() {
         if (dropDescriptions == null) {
-            dropDescriptions = new EObjectResolvingEList<ContainerDropDescription>(ContainerDropDescription.class, this, DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS);
+            dropDescriptions = new EObjectResolvingEList<>(ContainerDropDescription.class, this, DescriptionPackage.DRAG_AND_DROP_TARGET_DESCRIPTION__DROP_DESCRIPTIONS);
         }
         return dropDescriptions;
     }

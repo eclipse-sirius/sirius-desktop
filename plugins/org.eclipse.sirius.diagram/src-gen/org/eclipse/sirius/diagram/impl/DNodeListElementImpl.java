@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -141,7 +141,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
     @Override
     public EList<DNode> getOwnedBorderedNodes() {
         if (ownedBorderedNodes == null) {
-            ownedBorderedNodes = new EObjectContainmentEList.Resolving<DNode>(DNode.class, this, DiagramPackage.DNODE_LIST_ELEMENT__OWNED_BORDERED_NODES);
+            ownedBorderedNodes = new EObjectContainmentEList.Resolving<>(DNode.class, this, DiagramPackage.DNODE_LIST_ELEMENT__OWNED_BORDERED_NODES);
         }
         return ownedBorderedNodes;
     }
@@ -154,7 +154,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
     @Override
     public EList<ArrangeConstraint> getArrangeConstraints() {
         if (arrangeConstraints == null) {
-            arrangeConstraints = new EDataTypeUniqueEList<ArrangeConstraint>(ArrangeConstraint.class, this, DiagramPackage.DNODE_LIST_ELEMENT__ARRANGE_CONSTRAINTS);
+            arrangeConstraints = new EDataTypeUniqueEList<>(ArrangeConstraint.class, this, DiagramPackage.DNODE_LIST_ELEMENT__ARRANGE_CONSTRAINTS);
         }
         return arrangeConstraints;
     }
@@ -330,7 +330,7 @@ public class DNodeListElementImpl extends DDiagramElementImpl implements DNodeLi
     @Override
     public EList<NodeMapping> getCandidatesMapping() {
         if (candidatesMapping == null) {
-            candidatesMapping = new EObjectResolvingEList<NodeMapping>(NodeMapping.class, this, DiagramPackage.DNODE_LIST_ELEMENT__CANDIDATES_MAPPING);
+            candidatesMapping = new EObjectResolvingEList<>(NodeMapping.class, this, DiagramPackage.DNODE_LIST_ELEMENT__CANDIDATES_MAPPING);
         }
         return candidatesMapping;
     }

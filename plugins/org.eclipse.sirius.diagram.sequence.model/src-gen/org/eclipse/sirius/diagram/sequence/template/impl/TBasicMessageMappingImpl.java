@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -71,7 +71,7 @@ public class TBasicMessageMappingImpl extends TSourceTargetMessageMappingImpl im
     @Override
     public EList<TMessageExtremity> getTarget() {
         if (target == null) {
-            target = new EObjectResolvingEList<TMessageExtremity>(TMessageExtremity.class, this, TemplatePackage.TBASIC_MESSAGE_MAPPING__TARGET);
+            target = new EObjectResolvingEList<>(TMessageExtremity.class, this, TemplatePackage.TBASIC_MESSAGE_MAPPING__TARGET);
         }
         return target;
     }

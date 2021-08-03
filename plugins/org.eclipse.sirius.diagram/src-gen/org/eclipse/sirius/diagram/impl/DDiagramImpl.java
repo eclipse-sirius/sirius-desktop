@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -282,7 +282,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     @Override
     public EList<DDiagramElement> getOwnedDiagramElements() {
         if (ownedDiagramElements == null) {
-            ownedDiagramElements = new EObjectContainmentEList.Resolving<DDiagramElement>(DDiagramElement.class, this, DiagramPackage.DDIAGRAM__OWNED_DIAGRAM_ELEMENTS);
+            ownedDiagramElements = new EObjectContainmentEList.Resolving<>(DDiagramElement.class, this, DiagramPackage.DDIAGRAM__OWNED_DIAGRAM_ELEMENTS);
         }
         return ownedDiagramElements;
     }
@@ -454,7 +454,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     @Override
     public EList<FilterDescription> getActivatedFilters() {
         if (activatedFilters == null) {
-            activatedFilters = new EObjectResolvingEList<FilterDescription>(FilterDescription.class, this, DiagramPackage.DDIAGRAM__ACTIVATED_FILTERS);
+            activatedFilters = new EObjectResolvingEList<>(FilterDescription.class, this, DiagramPackage.DDIAGRAM__ACTIVATED_FILTERS);
         }
         return activatedFilters;
     }
@@ -467,7 +467,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     @Override
     public EList<AdditionalLayer> getActivatedTransientLayers() {
         if (activatedTransientLayers == null) {
-            activatedTransientLayers = new EObjectResolvingEList.Unsettable<AdditionalLayer>(AdditionalLayer.class, this, DiagramPackage.DDIAGRAM__ACTIVATED_TRANSIENT_LAYERS);
+            activatedTransientLayers = new EObjectResolvingEList.Unsettable<>(AdditionalLayer.class, this, DiagramPackage.DDIAGRAM__ACTIVATED_TRANSIENT_LAYERS);
         }
         return activatedTransientLayers;
     }
@@ -517,7 +517,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     @Override
     public EList<ValidationRule> getActivatedRules() {
         if (activatedRules == null) {
-            activatedRules = new EObjectResolvingEList<ValidationRule>(ValidationRule.class, this, DiagramPackage.DDIAGRAM__ACTIVATED_RULES);
+            activatedRules = new EObjectResolvingEList<>(ValidationRule.class, this, DiagramPackage.DDIAGRAM__ACTIVATED_RULES);
         }
         return activatedRules;
     }
@@ -530,7 +530,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     @Override
     public EList<BehaviorTool> getActivateBehaviors() {
         if (activateBehaviors == null) {
-            activateBehaviors = new EObjectResolvingEList<BehaviorTool>(BehaviorTool.class, this, DiagramPackage.DDIAGRAM__ACTIVATE_BEHAVIORS);
+            activateBehaviors = new EObjectResolvingEList<>(BehaviorTool.class, this, DiagramPackage.DDIAGRAM__ACTIVATE_BEHAVIORS);
         }
         return activateBehaviors;
     }
@@ -622,7 +622,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     @Override
     public EList<Layer> getActivatedLayers() {
         if (activatedLayers == null) {
-            activatedLayers = new EObjectResolvingEList<Layer>(Layer.class, this, DiagramPackage.DDIAGRAM__ACTIVATED_LAYERS);
+            activatedLayers = new EObjectResolvingEList<>(Layer.class, this, DiagramPackage.DDIAGRAM__ACTIVATED_LAYERS);
         }
         return activatedLayers;
     }
@@ -659,7 +659,7 @@ public class DDiagramImpl extends DRepresentationImpl implements DDiagram {
     @Override
     public EList<DDiagramElement> getHiddenElements() {
         if (hiddenElements == null) {
-            hiddenElements = new EObjectResolvingEList<DDiagramElement>(DDiagramElement.class, this, DiagramPackage.DDIAGRAM__HIDDEN_ELEMENTS);
+            hiddenElements = new EObjectResolvingEList<>(DDiagramElement.class, this, DiagramPackage.DDIAGRAM__HIDDEN_ELEMENTS);
         }
         return hiddenElements;
     }

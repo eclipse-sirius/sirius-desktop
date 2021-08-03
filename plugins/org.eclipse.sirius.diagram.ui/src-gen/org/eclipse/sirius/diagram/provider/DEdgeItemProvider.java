@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -42,7 +42,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
      *
      * @not-generated
      */
-    HashMap<Object, DEdgeLabelItemProvider> edgeLabelItemProviders = new HashMap<Object, DEdgeLabelItemProvider>();
+    HashMap<Object, DEdgeLabelItemProvider> edgeLabelItemProviders = new HashMap<>();
 
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -367,7 +367,7 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
     public Collection<?> getChildren(Object object) {
         Collection<Object> result = (Collection<Object>) super.getChildren(object);
         if (object instanceof DEdge && hasRelevantLabelItem(object)) {
-            Collection<Object> resultTemp = new ArrayList<Object>();
+            Collection<Object> resultTemp = new ArrayList<>();
             if (DEdgeLabelItemProvider.hasRelevantLabelItem((DEdge) object) && (edgeLabelItemProviders.get(object) == null)) {
                 edgeLabelItemProviders.put(object, new DEdgeLabelItemProvider(adapterFactory, (DEdge) object));
             }

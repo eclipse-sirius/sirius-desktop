@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -125,7 +125,7 @@ public class GaugeCompositeStyleDescriptionImpl extends NodeStyleDescriptionImpl
     @Override
     public EList<GaugeSectionDescription> getSections() {
         if (sections == null) {
-            sections = new EObjectContainmentEList.Resolving<GaugeSectionDescription>(GaugeSectionDescription.class, this, StylePackage.GAUGE_COMPOSITE_STYLE_DESCRIPTION__SECTIONS);
+            sections = new EObjectContainmentEList.Resolving<>(GaugeSectionDescription.class, this, StylePackage.GAUGE_COMPOSITE_STYLE_DESCRIPTION__SECTIONS);
         }
         return sections;
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -239,7 +239,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
     @Override
     public EList<TExecutionMapping> getExecutionMappings() {
         if (executionMappings == null) {
-            executionMappings = new EObjectContainmentEList<TExecutionMapping>(TExecutionMapping.class, this, TemplatePackage.TEXECUTION_MAPPING__EXECUTION_MAPPINGS);
+            executionMappings = new EObjectContainmentEList<>(TExecutionMapping.class, this, TemplatePackage.TEXECUTION_MAPPING__EXECUTION_MAPPINGS);
         }
         return executionMappings;
     }
@@ -305,7 +305,7 @@ public class TExecutionMappingImpl extends TAbstractMappingImpl implements TExec
     @Override
     public EList<TConditionalExecutionStyle> getConditionalStyles() {
         if (conditionalStyles == null) {
-            conditionalStyles = new EObjectContainmentEList<TConditionalExecutionStyle>(TConditionalExecutionStyle.class, this, TemplatePackage.TEXECUTION_MAPPING__CONDITIONAL_STYLES);
+            conditionalStyles = new EObjectContainmentEList<>(TConditionalExecutionStyle.class, this, TemplatePackage.TEXECUTION_MAPPING__CONDITIONAL_STYLES);
         }
         return conditionalStyles;
     }

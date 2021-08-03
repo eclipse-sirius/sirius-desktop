@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -76,7 +76,7 @@ public class ConcernSetImpl extends DocumentedElementImpl implements ConcernSet 
     @Override
     public EList<ConcernDescription> getOwnedConcernDescriptions() {
         if (ownedConcernDescriptions == null) {
-            ownedConcernDescriptions = new EObjectContainmentEList.Resolving<ConcernDescription>(ConcernDescription.class, this, ConcernPackage.CONCERN_SET__OWNED_CONCERN_DESCRIPTIONS);
+            ownedConcernDescriptions = new EObjectContainmentEList.Resolving<>(ConcernDescription.class, this, ConcernPackage.CONCERN_SET__OWNED_CONCERN_DESCRIPTIONS);
         }
         return ownedConcernDescriptions;
     }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -76,7 +76,7 @@ public class FilterVariableHistoryImpl extends IdentifiedElementImpl implements 
     @Override
     public EList<VariableValue> getOwnedValues() {
         if (ownedValues == null) {
-            ownedValues = new EObjectContainmentEList.Resolving<VariableValue>(VariableValue.class, this, DiagramPackage.FILTER_VARIABLE_HISTORY__OWNED_VALUES);
+            ownedValues = new EObjectContainmentEList.Resolving<>(VariableValue.class, this, DiagramPackage.FILTER_VARIABLE_HISTORY__OWNED_VALUES);
         }
         return ownedValues;
     }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -77,8 +77,7 @@ public class ComputedStyleDescriptionRegistryImpl extends IdentifiedElementImpl 
     @Override
     public EList<StyleDescription> getComputedStyleDescriptions() {
         if (computedStyleDescriptions == null) {
-            computedStyleDescriptions = new EObjectContainmentEList.Resolving<StyleDescription>(StyleDescription.class, this,
-                    DiagramPackage.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS);
+            computedStyleDescriptions = new EObjectContainmentEList.Resolving<>(StyleDescription.class, this, DiagramPackage.COMPUTED_STYLE_DESCRIPTION_REGISTRY__COMPUTED_STYLE_DESCRIPTIONS);
         }
         return computedStyleDescriptions;
     }
