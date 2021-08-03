@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -46,7 +46,8 @@ import org.eclipse.sirius.diagram.business.api.query.EdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.EdgeMappingImportWrapper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.MappingExtHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
@@ -332,10 +333,10 @@ public final class EdgeMappingHelper {
         List<DDiagramElement> result = new BasicEList<>();
         if (currentNodeMapping instanceof IContainerMappingExt) {
             IContainerMappingExt containerMapping = (IContainerMappingExt) currentNodeMapping;
-            result = ContainerMappingWithInterpreterHelper.findDNodeFromEObject(containerMapping, current);
+            result = MappingExtHelper.findDNodeFromEObject(containerMapping, current);
         } else if (currentNodeMapping instanceof INodeMappingExt) {
             INodeMappingExt nodeMapping = (INodeMappingExt) currentNodeMapping;
-            result = NodeMappingHelper.findDNodeFromEObject(nodeMapping, current);
+            result = MappingExtHelper.findDNodeFromEObject(nodeMapping, current);
         }
         return result;
     }

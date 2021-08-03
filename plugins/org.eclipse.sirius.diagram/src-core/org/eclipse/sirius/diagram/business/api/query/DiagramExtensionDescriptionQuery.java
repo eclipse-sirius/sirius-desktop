@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,14 +14,13 @@ package org.eclipse.sirius.diagram.business.api.query;
 
 import java.util.Collection;
 
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.ContentHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 
 /**
- * A class aggregating all the queries (read-only!) having a DiagramDescription
- * as a starting point.
+ * A class aggregating all the queries (read-only!) having a DiagramDescription as a starting point.
  * 
  * @author jdupont
  * 

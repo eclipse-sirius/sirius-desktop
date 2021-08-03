@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,16 +17,8 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
-import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
-import org.eclipse.sirius.diagram.description.ContainerMapping;
-import org.eclipse.sirius.diagram.description.ContainerMappingImport;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
-import org.eclipse.sirius.diagram.description.NodeMapping;
-import org.eclipse.sirius.diagram.description.NodeMappingImport;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 
@@ -76,43 +68,6 @@ public final class MappingWithInterpreterHelper {
         final Style bestStyle = getBestStyle(mapping, semanticElement, diagramElement, containerVariable, parentDiagram);
 
         this.styleHelper.setAndRefreshStyle(diagramElement, currentStyle, bestStyle);
-    }
-
-    /**
-     * Add a node marked as done in given mapping.
-     * 
-     * @param nodeMapping
-     *            the node mapping to be filled with done node.
-     * @param node
-     *            the node to mark as done.
-     */
-    @Deprecated
-    public static void addDoneNode(final AbstractNodeMapping nodeMapping, final DSemanticDecorator node) {
-        if (node instanceof NodeMapping) {
-            NodeMappingHelper.addDoneNode((INodeMappingExt) nodeMapping, node);
-        } else if (node instanceof ContainerMapping) {
-            ContainerMappingWithInterpreterHelper.addDoneNode((IContainerMappingExt) nodeMapping, node);
-        } else if (node instanceof NodeMappingImport) {
-            addDoneNode((NodeMappingImport) nodeMapping, node);
-        } else if (node instanceof ContainerMappingImport) {
-            addDoneNode((ContainerMappingImport) nodeMapping, node);
-        }
-    }
-
-    @Deprecated
-    private static void addDoneNode(final ContainerMappingImport containerMapping, final DSemanticDecorator node) {
-        ContainerMappingWithInterpreterHelper.addDoneNode((IContainerMappingExt) containerMapping, node);
-        if (containerMapping.getImportedMapping() != null && containerMapping.getImportedMapping() != containerMapping) {
-            addDoneNode(containerMapping.getImportedMapping(), node);
-        }
-    }
-
-    @Deprecated
-    private static void addDoneNode(final NodeMappingImport nodeMapping, final DSemanticDecorator node) {
-        NodeMappingHelper.addDoneNode((INodeMappingExt) nodeMapping, node);
-        if (nodeMapping.getImportedMapping() != null && nodeMapping.getImportedMapping() != nodeMapping) {
-            addDoneNode(nodeMapping.getImportedMapping(), node);
-        }
     }
 
     /**

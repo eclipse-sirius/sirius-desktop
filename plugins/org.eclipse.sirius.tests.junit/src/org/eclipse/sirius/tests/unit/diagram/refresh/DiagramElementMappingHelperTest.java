@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2016, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramElementMappingHelper;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 
 import com.google.common.collect.Iterators;
@@ -63,7 +63,7 @@ public class DiagramElementMappingHelperTest extends TestCase {
         try {
             rootPackage = (EPackage) session.getSemanticResources().iterator().next().getContents().get(0);
             diagram = (DSemanticDiagram) DialectManager.INSTANCE.getRepresentations(rootPackage, session).iterator().next();
-            nodeMapping = LayerHelper.getAllLayers(diagram.getDescription()).get(0).getNodeMappings().get(0);
+            nodeMapping = LayerModelHelper.getAllLayers(diagram.getDescription()).get(0).getNodeMappings().get(0);
         } catch (Exception e) {
             fail(THE_UNIT_TEST_DATA_SEEMS_INCORRECT + ":" + e.getMessage());
         }

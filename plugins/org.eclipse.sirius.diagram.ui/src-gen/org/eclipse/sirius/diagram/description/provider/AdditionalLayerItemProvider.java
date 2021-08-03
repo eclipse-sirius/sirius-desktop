@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,7 +30,7 @@ import org.eclipse.emf.edit.provider.StyledString;
 import org.eclipse.emf.edit.provider.StyledString.Style;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.Layer;
@@ -135,7 +135,7 @@ public class AdditionalLayerItemProvider extends LayerItemProvider implements II
     @Override
     public Object getStyledText(Object object) {
         StyledString styledString = new StyledString(getText(object));
-        if (LayerHelper.isTransientLayer((Layer) object)) {
+        if (LayerModelHelper.isTransientLayer((Layer) object)) {
             styledString.append(MessageFormat.format(" ({0})", getString("AdditionalLayerItemProvider_transientLayer")), AdditionalLayerItemProvider.TRANSIENT_LAYER_STYLE); //$NON-NLS-1$ //$NON-NLS-2$
         }
         return styledString;

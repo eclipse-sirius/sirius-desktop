@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,7 +15,7 @@ package org.eclipse.sirius.diagram.ui.business.internal.migration.description;
 import java.util.List;
 
 import org.eclipse.sirius.business.api.migration.AbstractVSMMigrationParticipant;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -94,7 +94,7 @@ public class BorderSizeComputationExpressionMigrationParticipant extends Abstrac
         for (Viewpoint viewpoint : group.getOwnedViewpoints()) {
             for (DiagramDescription diagramDescription : Iterables.filter(viewpoint.getOwnedRepresentations(), DiagramDescription.class)) {
                 // Migrate container mappings from default and additional layers
-                for (Layer layer : LayerHelper.getAllLayers(diagramDescription)) {
+                for (Layer layer : LayerModelHelper.getAllLayers(diagramDescription)) {
                     // Migrate container mappings contained by the layer (no
                     // need to migrate reused mappings, they will be migrated by
                     // the migration of their containing resource).

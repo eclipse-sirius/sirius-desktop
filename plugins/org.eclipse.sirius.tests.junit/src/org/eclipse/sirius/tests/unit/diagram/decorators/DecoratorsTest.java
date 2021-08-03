@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,8 +38,8 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
-import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramSpecOperations;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.model.DDiagramSpecOperations;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -96,7 +96,7 @@ public class DecoratorsTest extends GenericTestCase {
 
     private void setLayerVisibility(final DDiagram diagram, final Layer layer, final boolean visible) {
 
-        boolean transientLayer = LayerHelper.isTransientLayer(layer);
+        boolean transientLayer = LayerModelHelper.isTransientLayer(layer);
         EList<Layer> activatedLayers = diagram.getActivatedLayers();
         EList<AdditionalLayer> activatedTransientLayers = diagram.getActivatedTransientLayers();
 

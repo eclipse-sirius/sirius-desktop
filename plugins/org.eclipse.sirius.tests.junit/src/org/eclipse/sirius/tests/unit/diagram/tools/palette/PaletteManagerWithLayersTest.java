@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocumentEditor;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.sirius.diagram.DiagramPlugin;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.tools.internal.management.UpdateToolRecordingCommand;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
@@ -274,7 +274,7 @@ public class PaletteManagerWithLayersTest extends AbstractPaletteManagerSectionT
 
     private Layer getLayer(String partialId) {
         Layer result = null;
-        EList<Layer> allLayers = LayerHelper.getAllLayers(dDiagram.getDescription());
+        EList<Layer> allLayers = LayerModelHelper.getAllLayers(dDiagram.getDescription());
         for (Layer layer : allLayers) {
             if (layer.getName().contains(partialId)) {
                 result = layer;

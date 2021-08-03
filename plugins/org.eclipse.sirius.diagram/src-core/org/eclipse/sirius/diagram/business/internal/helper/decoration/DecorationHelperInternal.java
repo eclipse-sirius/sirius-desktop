@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -32,7 +32,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
@@ -126,7 +126,7 @@ public final class DecorationHelperInternal {
         if (checkDecoratorPrecondition(element.getTarget(), element, decorationDescription)) {
             final Decoration decoration = ViewpointFactory.eINSTANCE.createDecoration();
             decoration.setDescription(decorationDescription);
-            if (LayerHelper.isTransientLayer((Layer) decorationDescription.eContainer().eContainer())) {
+            if (LayerModelHelper.isTransientLayer((Layer) decorationDescription.eContainer().eContainer())) {
                 element.getTransientDecorations().add(decoration);
             } else {
                 element.getDecorations().add(decoration);
@@ -135,17 +135,14 @@ public final class DecorationHelperInternal {
     }
 
     /**
-     * Check that the {@link DecorationDescription} conditions (and not
-     * preconditions) are valid for the {@link DDiagramElement}.
+     * Check that the {@link DecorationDescription} conditions (and not preconditions) are valid for the
+     * {@link DDiagramElement}.
      * 
      * @param element
-     *            the {@link DDiagramElement} that is investigated for
-     *            decoration update.
+     *            the {@link DDiagramElement} that is investigated for decoration update.
      * @param decorationDescription
-     *            the {@link DecorationDescription} to be applied or not on the
-     *            {@link DDiagramElement}.
-     * @return if this {@link DecorationDescription} should be applied on the
-     *         given {@link DDiagramElement}.
+     *            the {@link DecorationDescription} to be applied or not on the {@link DDiagramElement}.
+     * @return if this {@link DecorationDescription} should be applied on the given {@link DDiagramElement}.
      */
     private boolean checkDecoratorCondition(final DDiagramElement element, DecorationDescription decorationDescription) {
         // True if it is a GenericDecorationDescription
@@ -294,7 +291,7 @@ public final class DecorationHelperInternal {
         while (it.hasNext()) {
             Decoration decoration = it.next();
             final DecorationDescription description = decoration.getDescription();
-            if (!activatedLayers.contains(LayerHelper.getParentLayer(description)) || !checkDecoratorPrecondition(element.getTarget(), element, description)) {
+            if (!activatedLayers.contains(LayerModelHelper.getParentLayer(description)) || !checkDecoratorPrecondition(element.getTarget(), element, description)) {
                 it.remove();
             } else {
                 // reset image in cache
@@ -324,8 +321,7 @@ public final class DecorationHelperInternal {
     }
 
     /**
-     * Investigate {@link DecorationDescription} from the given {@link Layer}
-     * and call addDecoration with it.
+     * Investigate {@link DecorationDescription} from the given {@link Layer} and call addDecoration with it.
      * 
      * @param element
      *            current {@link DDiagramElement} to decorate

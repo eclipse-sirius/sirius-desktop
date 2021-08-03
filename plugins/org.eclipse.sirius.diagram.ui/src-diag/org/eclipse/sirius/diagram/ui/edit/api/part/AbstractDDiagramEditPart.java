@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -59,8 +59,9 @@ import org.eclipse.sirius.diagram.business.api.query.CompositeFilterDescriptionQ
 import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.business.api.query.DMappingBasedQuery;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.MappingHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -216,7 +217,7 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
                 || DiagramPackage.eINSTANCE.getDDiagram_ActivatedLayers().equals(notification.getFeature())) {
             // We don't launch a refresh if the notification is an addition of
             // a layer that has only tools
-            if (!(notification.getNewValue() instanceof Layer && LayerHelper.containsOnlyTools((Layer) notification.getNewValue()))) {
+            if (!(notification.getNewValue() instanceof Layer && LayerModelHelper.containsOnlyTools((Layer) notification.getNewValue()))) {
                 refresh();
             }
         } else {
@@ -497,7 +498,7 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
         if (element instanceof DNodeContainer) {
             final ContainerMapping containerMapping = ((DNodeContainer) element).getActualMapping();
             if (containerMapping != null) {
-                final Iterator<DiagramElementMapping> iterAllMappings = ContainerMappingHelper.getAllMappings(containerMapping).iterator();
+                final Iterator<DiagramElementMapping> iterAllMappings = MappingHelper.getAllMappings(containerMapping).iterator();
                 while (iterAllMappings.hasNext()) {
                     final DiagramElementMapping diagramElementMapping = iterAllMappings.next();
                     final ViewOrderingProvider provider = ViewOrderingProviderRegistry.getInstance().getProvider(diagramElementMapping);

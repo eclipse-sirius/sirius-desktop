@@ -14,8 +14,6 @@ package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
 import java.util.Collections;
 
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
@@ -24,7 +22,6 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramFactory;
@@ -32,6 +29,7 @@ import org.eclipse.sirius.diagram.NodeStyle;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.MappingExtHelper;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.ext.base.Option;
@@ -108,7 +106,7 @@ public final class NodeMappingHelper {
             newNode.setOwnedStyle(bestStyle);
         }
 
-        MappingWithInterpreterHelper.addDoneNode(self, newNode);
+        MappingExtHelper.addDoneNode(self, newNode);
 
         interpreter.unSetVariable(IInterpreterSiriusVariables.VIEW);
         interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
@@ -195,7 +193,7 @@ public final class NodeMappingHelper {
 
         styleHelper.setAndRefreshStyle(node, node.getStyle(), bestStyle);
 
-        MappingWithInterpreterHelper.addDoneNode(self, node);
+        MappingExtHelper.addDoneNode(self, node);
     }
 
     /**
@@ -229,7 +227,7 @@ public final class NodeMappingHelper {
         /*
          * Getting the node size
          */
-        MappingWithInterpreterHelper.addDoneNode(self, newNode);
+        MappingExtHelper.addDoneNode(self, newNode);
 
         final NodeStyle bestStyle = (NodeStyle) new MappingWithInterpreterHelper(interpreter).getBestStyle(self, modelElement, newNode, null, diagram);
         if (bestStyle != null) {
@@ -277,51 +275,7 @@ public final class NodeMappingHelper {
             listElement.setOwnedStyle(bestStyle);
         }
         styleHelper.setAndRefreshStyle(listElement, listElement.getStyle(), bestStyle);
-        MappingWithInterpreterHelper.addDoneNode(self, listElement);
-    }
-
-    /**
-     * Implementation of {@link NodeMapping#findDNodeFromEObject(EObject)}.
-     * 
-     * @param self
-     *            the node mapping.
-     * @param object
-     *            the semantic element.
-     * @return the node found.
-     */
-    public static EList<DDiagramElement> findDNodeFromEObject(INodeMappingExt self, EObject object) {
-        EList result = self.getViewNodesDone().get(object);
-        if (result == null) {
-            result = new BasicEList<DDiagramElement>();
-        }
-        return result;
-    }
-
-    /**
-     * Implementation of {@link NodeMapping#addDoneNode(DSemanticDecorator)}.
-     * 
-     * @param self
-     *            the node mapping.
-     * @param node
-     *            the node to add.
-     */
-    public static void addDoneNode(INodeMappingExt self, DSemanticDecorator node) {
-        EList<DSemanticDecorator> list = self.getViewNodesDone().get(node.getTarget());
-        if (list == null) {
-            list = new BasicEList<DSemanticDecorator>();
-            self.getViewNodesDone().put(node.getTarget(), list);
-        }
-        list.add(node);
-    }
-
-    /**
-     * Implementation of {@link NodeMapping#clearDNodesDone()}.
-     * 
-     * @param self
-     *            the node mapping.
-     */
-    public static void clearDNodesDone(INodeMappingExt self) {
-        self.getViewNodesDone().clear();
+        MappingExtHelper.addDoneNode(self, listElement);
     }
 
     /**

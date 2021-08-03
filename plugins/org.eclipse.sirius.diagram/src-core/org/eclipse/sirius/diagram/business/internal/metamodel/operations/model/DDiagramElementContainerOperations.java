@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 Obeo.
+ * Copyright (c) 2018, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.metamodel.operations;
+package org.eclipse.sirius.diagram.business.internal.metamodel.operations.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,7 +18,6 @@ import java.util.Collection;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.diagram.AbstractDNode;
-import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
@@ -30,8 +29,7 @@ import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 
 /**
- * Implementation of DDiagramElementContainerImpl.java used for diagram
- * metamodel only.
+ * Implementation of DDiagramElementContainerImpl.java used for diagram metamodel only.
  * 
  * @author jmallet
  */
@@ -96,13 +94,11 @@ public final class DDiagramElementContainerOperations {
     }
 
     /**
-     * Return all containers that are directly contained in the specified
-     * container.
+     * Return all containers that are directly contained in the specified container.
      * 
      * @param container
      *            the container.
-     * @return all containers that are directly contained in the specified
-     *         container.
+     * @return all containers that are directly contained in the specified container.
      */
     public static Collection<DDiagramElementContainer> getContainers(final DDiagramElementContainer container) {
         final Collection<DDiagramElementContainer> result = new ArrayList<DDiagramElementContainer>();
@@ -130,15 +126,13 @@ public final class DDiagramElementContainerOperations {
     }
 
     /**
-     * Return all nodes that are in the specified container and that have been
-     * created from the specified mapping.
+     * Return all nodes that are in the specified container and that have been created from the specified mapping.
      * 
      * @param container
      *            the container.
      * @param mapping
      *            the node mapping.
-     * @return all nodes that are in the specified container and that have been
-     *         created from the specified mapping.
+     * @return all nodes that are in the specified container and that have been created from the specified mapping.
      */
     public static EList<DNode> getNodesFromMapping(final DDiagramElementContainer container, final NodeMapping mapping) {
         final EList<DNode> result = new BasicEList<DNode>();
@@ -151,15 +145,13 @@ public final class DDiagramElementContainerOperations {
     }
 
     /**
-     * Return all containers that are in the specified container and that have
-     * been created from the specified mapping.
+     * Return all containers that are in the specified container and that have been created from the specified mapping.
      * 
      * @param current
      *            the container.
      * @param mapping
      *            the node mapping.
-     * @return all containers that are in the specified container and that have
-     *         been created from the specified mapping.
+     * @return all containers that are in the specified container and that have been created from the specified mapping.
      */
     public static EList<DDiagramElementContainer> getContainersFromMapping(final DDiagramElementContainer current, final ContainerMapping mapping) {
         final EList<DDiagramElementContainer> result = new BasicEList<DDiagramElementContainer>();
@@ -169,17 +161,6 @@ public final class DDiagramElementContainerOperations {
             }
         }
         return result;
-    }
-
-    /**
-     * Return the parent {@link DDiagram} of the specified container.
-     * 
-     * @param container
-     *            the container.
-     * @return the parent {@link DDiagram} of the specified container.
-     */
-    public static DDiagram getParentDiagram(final DDiagramElementContainer container) {
-        return DDiagramElementSpecOperations.getParentDiagram(container);
     }
 
     /**

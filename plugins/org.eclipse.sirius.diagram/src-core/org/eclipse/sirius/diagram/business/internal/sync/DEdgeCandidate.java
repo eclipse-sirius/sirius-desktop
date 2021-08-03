@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
@@ -26,8 +26,8 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.cache.KeyCache;
 
 /**
- * This class represents a candidate for a DEdge, a candidate is a "possible"
- * DEdge which has not been confirmed yet by validation and preconditions.
+ * This class represents a candidate for a DEdge, a candidate is a "possible" DEdge which has not been confirmed yet by
+ * validation and preconditions.
  * 
  * @author cbrun
  * 
@@ -145,11 +145,9 @@ public class DEdgeCandidate {
     }
 
     /**
-     * return the source element if the candidate has been created from an
-     * element.
+     * return the source element if the candidate has been created from an element.
      * 
-     * @return the source element if the candidate has been created from an
-     *         element.
+     * @return the source element if the candidate has been created from an element.
      */
     public DEdge getEdge() {
         return element;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
@@ -51,9 +51,8 @@ import org.eclipse.ui.IEditorPart;
 import com.google.common.collect.Iterables;
 
 /**
- * Test that the {@link CreateView} tool's operation create a
- * {@link DDiagramElement} with the correct mapping, i.e. the more specific
- * mapping, for example a mapping import.
+ * Test that the {@link CreateView} tool's operation create a {@link DDiagramElement} with the correct mapping, i.e. the
+ * more specific mapping, for example a mapping import.
  * 
  * See VP-3834.
  * 
@@ -164,9 +163,8 @@ public class CreateViewWithMappingImportTests extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test that the {@link CreateView} tool's operation create a
-     * {@link DDiagramElement} with the correct mapping, i.e. the more specific
-     * mapping, for example a mapping import.
+     * Test that the {@link CreateView} tool's operation create a {@link DDiagramElement} with the correct mapping, i.e.
+     * the more specific mapping, for example a mapping import.
      */
     public void testCreateViewWithoutMappingImportWithoutLayer() {
         // Test creation in default layer
@@ -188,9 +186,8 @@ public class CreateViewWithMappingImportTests extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test that the {@link CreateView} tool's operation create a
-     * {@link DDiagramElement} with the correct mapping, i.e. the more specific
-     * mapping, for example a mapping import.
+     * Test that the {@link CreateView} tool's operation create a {@link DDiagramElement} with the correct mapping, i.e.
+     * the more specific mapping, for example a mapping import.
      */
     public void testCreateViewWithMappingImportWithLayerL1() {
         // Test creation in layer L1
@@ -214,9 +211,8 @@ public class CreateViewWithMappingImportTests extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test that the {@link CreateView} tool's operation create a
-     * {@link DDiagramElement} with the correct mapping, i.e. the more specific
-     * mapping, for example a mapping import.
+     * Test that the {@link CreateView} tool's operation create a {@link DDiagramElement} with the correct mapping, i.e.
+     * the more specific mapping, for example a mapping import.
      */
     public void testCreateViewWithMappingImportWithLayerL1AndL2() {
         // Test creation in layer L2
@@ -240,9 +236,8 @@ public class CreateViewWithMappingImportTests extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test that the {@link CreateView} tool's operation create a
-     * {@link DDiagramElement} with the correct mapping, i.e. the more specific
-     * mapping, for example a mapping import.
+     * Test that the {@link CreateView} tool's operation create a {@link DDiagramElement} with the correct mapping, i.e.
+     * the more specific mapping, for example a mapping import.
      */
     public void testCreateViewInContainerViewWithoutMappingImportWithoutLayer() {
         // Test creation in default layer
@@ -268,9 +263,8 @@ public class CreateViewWithMappingImportTests extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test that the {@link CreateView} tool's operation create a
-     * {@link DDiagramElement} with the correct mapping, i.e. the more specific
-     * mapping, for example a mapping import.
+     * Test that the {@link CreateView} tool's operation create a {@link DDiagramElement} with the correct mapping, i.e.
+     * the more specific mapping, for example a mapping import.
      */
     public void testCreateViewInContainerViewWithMappingImportWithLayerL1() {
         // Test creation in layer L1
@@ -303,9 +297,8 @@ public class CreateViewWithMappingImportTests extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test that the {@link CreateView} tool's operation create a
-     * {@link DDiagramElement} with the correct mapping, i.e. the more specific
-     * mapping, for example a mapping import.
+     * Test that the {@link CreateView} tool's operation create a {@link DDiagramElement} with the correct mapping, i.e.
+     * the more specific mapping, for example a mapping import.
      */
     public void testCreateViewInContainerViewWithMappingImportWithLayerL1AndL2() {
         // Test creation in layer L2
@@ -333,8 +326,8 @@ public class CreateViewWithMappingImportTests extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test the effect of {@link AbstractMappingImport#isHideSubMappings()}
-     * attribute on creation of view in manual refresh.
+     * Test the effect of {@link AbstractMappingImport#isHideSubMappings()} attribute on creation of view in manual
+     * refresh.
      */
     public void testSubMappingImportThroughHideSubMappingsAttribute() {
         // Test creation of a EPackage with a EClass owning a EAttribute and a

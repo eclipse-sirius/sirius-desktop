@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,7 @@ import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.helper.decoration.DecorationHelper;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.tools.internal.management.UpdateToolRecordingCommand;
@@ -83,7 +83,7 @@ public final class ChangeLayerActivationCommand extends RecordingCommand {
                 return; // do nothing; getResult will return an empty collection
             }
             monitor.beginTask(Messages.ChangeLayerActivationCommand_executeMsg, 3);
-            boolean transientLayer = LayerHelper.isTransientLayer(layer);
+            boolean transientLayer = LayerModelHelper.isTransientLayer(layer);
             if (transientLayer) {
                 NotificationUtil.sendNotification(dDiagram, Notification.Kind.START, Notification.VISIBILITY);
             }

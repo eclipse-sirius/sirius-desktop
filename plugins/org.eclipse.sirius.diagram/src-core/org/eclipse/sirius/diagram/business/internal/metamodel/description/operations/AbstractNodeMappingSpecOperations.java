@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -42,8 +42,8 @@ import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilte
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.MappingHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.NodeMapping;
@@ -64,29 +64,6 @@ public final class AbstractNodeMappingSpecOperations {
      */
     private AbstractNodeMappingSpecOperations() {
         // empty.
-    }
-
-    /**
-     * Implementation of {@link AbstractNodeMapping#findViewNodeFromEObject(EObject)}.
-     * 
-     * @param mapping
-     *            the node mapping.
-     * @param eObject
-     *            the semantic element
-     * @return the view node corresponding to the element
-     */
-    public static DDiagramElement findViewNodeFromEObject(final AbstractNodeMapping mapping, final EObject eObject) {
-        // subclasses should override it
-        return null;
-    }
-
-    /**
-     * Implementation of {@link AbstractNodeMapping#clearViewNodesDone()}.
-     * 
-     * @param mapping
-     *            the node mapping.
-     */
-    public static void clearViewNodesDone(final AbstractNodeMapping mapping) {
     }
 
     private static boolean isInstanceOf(final AbstractNodeMapping mapping, final EObject eObj, final String typename) {

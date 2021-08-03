@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramImportDescription;
 import org.eclipse.sirius.diagram.description.Layer;
@@ -210,7 +210,7 @@ public class DiagramDescriptionQuery {
         }
 
         // Layers tools
-        final Iterator<Layer> it = LayerHelper.getAllLayers(diagramDescription).iterator();
+        final Iterator<Layer> it = LayerModelHelper.getAllLayers(diagramDescription).iterator();
         while (it.hasNext()) {
             final Layer layer = it.next();
             if (layer != null) {

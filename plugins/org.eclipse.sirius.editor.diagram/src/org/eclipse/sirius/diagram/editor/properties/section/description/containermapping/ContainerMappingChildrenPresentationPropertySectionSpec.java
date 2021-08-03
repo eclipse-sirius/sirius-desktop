@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,7 @@ package org.eclipse.sirius.diagram.editor.properties.section.description.contain
 
 import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.business.api.query.ContainerMappingQuery;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.MappingHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.editor.properties.sections.description.containermapping.ContainerMappingChildrenPresentationPropertySection;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;

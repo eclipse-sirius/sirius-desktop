@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.MappingExtHelper;
 import org.eclipse.sirius.diagram.sequence.description.impl.InstanceRoleMappingImpl;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
@@ -39,7 +39,7 @@ public class InstanceRoleMappingSpec extends InstanceRoleMappingImpl implements 
 
     @Override
     public EList<DDiagramElement> findDNodeFromEObject(final EObject object) {
-        return NodeMappingHelper.findDNodeFromEObject(this, object);
+        return MappingExtHelper.findDNodeFromEObject(this, object);
     }
 
     @Override

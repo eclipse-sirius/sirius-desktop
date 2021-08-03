@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,7 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.api.query;
 
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
@@ -20,8 +20,7 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
 /**
- * A class aggregating all the queries (read-only!) having a
- * {@link IEdgeMapping} as a starting point.
+ * A class aggregating all the queries (read-only!) having a {@link IEdgeMapping} as a starting point.
  * 
  * @author mporhel
  * 
@@ -41,8 +40,7 @@ public class IEdgeMappingQuery {
     }
 
     /**
-     * Return the wrapper in case of EdgeMappingImport or
-     * EdgeMappingImportWrapper, or the EdgeMapping itself otherwise.
+     * Return the wrapper in case of EdgeMappingImport or EdgeMappingImportWrapper, or the EdgeMapping itself otherwise.
      * 
      * @return The correct EdgeMapping
      */
@@ -57,9 +55,8 @@ public class IEdgeMappingQuery {
     }
 
     /**
-     * Returns the real edge mapping. For example, in case of edge mapping
-     * import of an edge mapping import, the method will recursively call
-     * getImportedMapping until to get the real one.
+     * Returns the real edge mapping. For example, in case of edge mapping import of an edge mapping import, the method
+     * will recursively call getImportedMapping until to get the real one.
      * 
      * @return the real edge mapping.
      */

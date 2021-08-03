@@ -19,13 +19,13 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
 import org.eclipse.sirius.diagram.description.impl.NodeMappingImpl;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
- * The implementation of NodeMapping. The actual code should be placed in {@link NodeMappingHelper} so that it can be
- * reused without copy/paste by specialized node mapping types.
+ * The implementation of NodeMapping. The actual code should be placed in
+ * {@link org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper} so that it can be reused
+ * without copy/paste by specialized node mapping types.
  * 
  * @author ymortier, pcdavid
  */

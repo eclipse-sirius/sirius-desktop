@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,7 @@ import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
@@ -121,13 +121,10 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
     }
 
     /**
-     * Check that {@link MappingBasedDecoration} in a transient layer behave as
-     * expected:<br/>
-     * - Activating a transient layer does not put the session to dirty state
-     * <br/>
+     * Check that {@link MappingBasedDecoration} in a transient layer behave as expected:<br/>
+     * - Activating a transient layer does not put the session to dirty state <br/>
      * - Closing/Reopening a diagram does not deactivate a transient layer<br/>
-     * - Closing/Reopening a diagram and its project deactivates a transient
-     * layer<br/>
+     * - Closing/Reopening a diagram and its project deactivates a transient layer<br/>
      * 
      * @throws OperationCanceledException
      * @throws InterruptedException
@@ -139,8 +136,8 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, diagramDescription);
 
         final EList<AdditionalLayer> transientLayers = diagramDescription.getAdditionalLayers();
-        Assert.assertTrue(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, LayerHelper.isTransientLayer(transientLayers.get(0)));
-        Assert.assertTrue(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, LayerHelper.isTransientLayer(transientLayers.get(1)));
+        Assert.assertTrue(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, LayerModelHelper.isTransientLayer(transientLayers.get(0)));
+        Assert.assertTrue(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, LayerModelHelper.isTransientLayer(transientLayers.get(1)));
         Assert.assertEquals("There should be 2 transient layers", 6, transientLayers.size());
         Assert.assertEquals("The first transient layer has not the expected name", TRANSIENT_LAYER_MAPPING_BASED_DECORATOR_LABEL, transientLayers.get(0).getLabel());
 
@@ -167,13 +164,10 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
     }
 
     /**
-     * Check that {@link MappingBasedDecoration} in a transient layer behave as
-     * expected:<br/>
-     * - Activating a transient layer does not put the session to dirty state
-     * <br/>
+     * Check that {@link MappingBasedDecoration} in a transient layer behave as expected:<br/>
+     * - Activating a transient layer does not put the session to dirty state <br/>
      * - Closing/Reopening a diagram does not deactivate a transient layer<br/>
-     * - Closing/Reopening a diagram and its project deactivates a transient
-     * layer<br/>
+     * - Closing/Reopening a diagram and its project deactivates a transient layer<br/>
      * 
      * @throws Exception
      */
@@ -219,8 +213,8 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
     }
 
     /**
-     * This test checks that a default layer is applied by default. As it is
-     * optional, it also checks that the layer can be deactivated.
+     * This test checks that a default layer is applied by default. As it is optional, it also checks that the layer can
+     * be deactivated.
      * 
      */
     public void testMappingBasedDecoration_Default_Optional() {
@@ -259,8 +253,8 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
     }
 
     /**
-     * This test checks that a default layer is applied by default. As it is non
-     * optional, it also checks that the layer cannot be deactivated.
+     * This test checks that a default layer is applied by default. As it is non optional, it also checks that the layer
+     * cannot be deactivated.
      * 
      */
     public void testMappingBasedDecoration_Default_NotOptional() {
@@ -300,13 +294,10 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
     }
 
     /**
-     * Check that {@link SemanticBasedDecoration} in a transient layer behave as
-     * expected:<br/>
-     * - Activating a transient layer does not put the session to dirty state
-     * <br/>
+     * Check that {@link SemanticBasedDecoration} in a transient layer behave as expected:<br/>
+     * - Activating a transient layer does not put the session to dirty state <br/>
      * - Closing/Reopening a diagram does not deactivate a transient layer<br/>
-     * - Closing/Reopening a diagram and its project deactivates a transient
-     * layer<br/>
+     * - Closing/Reopening a diagram and its project deactivates a transient layer<br/>
      * 
      * @throws OperationCanceledException
      * @throws InterruptedException
@@ -318,8 +309,8 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
         assertNotNull(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, diagramDescription);
 
         final List<AdditionalLayer> transientLayers = diagramDescription.getAdditionalLayers();
-        Assert.assertTrue(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, LayerHelper.isTransientLayer(transientLayers.get(0)));
-        Assert.assertTrue(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, LayerHelper.isTransientLayer(transientLayers.get(1)));
+        Assert.assertTrue(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, LayerModelHelper.isTransientLayer(transientLayers.get(0)));
+        Assert.assertTrue(THE_UNIT_TEST_DATA_SEEMS_INCORRECT, LayerModelHelper.isTransientLayer(transientLayers.get(1)));
         Assert.assertEquals("There should be 6 transient layers", 6, transientLayers.size());
         Assert.assertEquals("The second transient layer has not the expected name", TRANSIENT_LAYER_SEMANTIC_BASED_DECORATOR_LABEL, transientLayers.get(1).getLabel());
 
@@ -346,15 +337,11 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
     }
 
     /**
-     * Check that {@link SemanticBasedDecoration} in a transient layer behave as
-     * expected:<br/>
-     * - Activating a transient layer does not put the session to dirty state
-     * <br/>
+     * Check that {@link SemanticBasedDecoration} in a transient layer behave as expected:<br/>
+     * - Activating a transient layer does not put the session to dirty state <br/>
      * - Closing/Reopening a diagram does not deactivate a transient layer<br/>
-     * - Closing/Reopening a diagram does not change layer activation status
-     * <br/>
-     * - Closing/Reopening a diagram and its project deactivates a transient
-     * layer<br/>
+     * - Closing/Reopening a diagram does not change layer activation status <br/>
+     * - Closing/Reopening a diagram and its project deactivates a transient layer<br/>
      * 
      * @throws OperationCanceledException
      * @throws InterruptedException
@@ -402,10 +389,8 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
 
     /**
      * This test checks that a default layer is applied by default. </br>
-     * - As it is optional, it also checks that the layer can be
-     * deactivated.</br>
-     * - After closing and reopening the diagram, the transient layer activation
-     * should not change .</br>
+     * - As it is optional, it also checks that the layer can be deactivated.</br>
+     * - After closing and reopening the diagram, the transient layer activation should not change .</br>
      * - The transient layer application should not dirtyfy the diagram
      * 
      * @throws OperationCanceledException
@@ -454,8 +439,8 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
     }
 
     /**
-     * This test checks that the transient layer activation or deactivation will
-     * not update the diagram making the session dirty.
+     * This test checks that the transient layer activation or deactivation will not update the diagram making the
+     * session dirty.
      * 
      * @throws OperationCanceledException
      * @throws InterruptedException
@@ -513,8 +498,8 @@ public class TransientLayerAndDecoratorTest extends GenericTestCase {
 
     /**
      * 
-     * This test checks that a default layer is applied by default. As it is non
-     * optional, it also checks that the layer cannot be deactivated.
+     * This test checks that a default layer is applied by default. As it is non optional, it also checks that the layer
+     * cannot be deactivated.
      * 
      * @throws OperationCanceledException
      * @throws InterruptedException

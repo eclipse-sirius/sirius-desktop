@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,7 @@ import java.util.List;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.internal.helper.decoration.DecorationHelperInternal;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
@@ -63,7 +63,7 @@ public class DecorationHelper {
     public void updateDecorations(List<Layer> layers) {
         Collection<DDiagramElement> dDiagramElements = Lists.newArrayList(Iterators.filter(diagram.eAllContents(), DDiagramElement.class));
         for (Layer layer : layers) {
-            boolean transientLayer = LayerHelper.isTransientLayer(layer);
+            boolean transientLayer = LayerModelHelper.isTransientLayer(layer);
             List<Layer> activatedLayers = diagram.getActivatedLayers();
             List<AdditionalLayer> activatedTransientLayers = diagram.getActivatedTransientLayers();
             for (DDiagramElement diagElement : dDiagramElements) {

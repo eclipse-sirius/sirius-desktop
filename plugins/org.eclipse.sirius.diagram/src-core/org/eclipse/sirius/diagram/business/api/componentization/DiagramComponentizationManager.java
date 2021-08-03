@@ -24,10 +24,10 @@ import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.diagram.business.api.query.DiagramDescriptionQuery;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentLayerHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramComponentizationHelper;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.ContentHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.ContentLayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
@@ -71,7 +71,7 @@ public class DiagramComponentizationManager {
      * @return all the available layers
      */
     public EList<Layer> getAllLayers(final Collection<Viewpoint> enabledViewpoints, final DiagramDescription diagramDescription) {
-        final Collection<Layer> layers = new ArrayList<Layer>(LayerHelper.getAllLayers(diagramDescription));
+        final Collection<Layer> layers = new ArrayList<Layer>(LayerModelHelper.getAllLayers(diagramDescription));
 
         if (enabledViewpoints != null) {
             if (!DiagramComponentizationManager.isInSelectedViewpoints(enabledViewpoints, diagramDescription)) {

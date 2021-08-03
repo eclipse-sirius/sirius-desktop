@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,8 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementContainerOperations;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.model.DDiagramElementContainerOperations;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.model.DDiagramElementSpecOperations;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
@@ -54,7 +55,7 @@ public class DNodeContainerSpec extends DNodeContainerImpl {
 
     @Override
     public DDiagram getParentDiagram() {
-        return DDiagramElementContainerOperations.getParentDiagram(this);
+        return DDiagramElementSpecOperations.getParentDiagram(this);
     }
 
     @Override

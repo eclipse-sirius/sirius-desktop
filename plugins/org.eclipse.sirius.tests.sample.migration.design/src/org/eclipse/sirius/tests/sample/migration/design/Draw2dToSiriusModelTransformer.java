@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -43,7 +43,7 @@ import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
@@ -729,7 +729,7 @@ public class Draw2dToSiriusModelTransformer {
             migrationDiagram.getLayers().add(migrationLayer);
         }
 
-        List<Layer> allLayers = new ArrayList<Layer>(LayerHelper.getAllLayers(dSemanticDiagram.getDescription()));
+        List<Layer> allLayers = new ArrayList<Layer>(LayerModelHelper.getAllLayers(dSemanticDiagram.getDescription()));
         allLayers.removeAll(activatedLayers);
 
         for (Layer layer : allLayers) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,7 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.diagram.business.internal.metamodel.operations.DDiagramElementSpecOperations;
+import org.eclipse.sirius.diagram.business.internal.metamodel.operations.model.DDiagramElementSpecOperations;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.impl.DEdgeImpl;
 import org.eclipse.sirius.viewpoint.Style;
@@ -55,8 +55,7 @@ public class DEdgeSpec extends DEdgeImpl {
     }
 
     /**
-     * Overridden because of
-     * https://bugs.eclipse.org/bugs/show_bug.cgi?id=89325. {@inheritDoc}
+     * Overridden because of https://bugs.eclipse.org/bugs/show_bug.cgi?id=89325. {@inheritDoc}
      * 
      * @see org.eclipse.sirius.viewpoint.impl.DEdgeImpl#getPath()
      */

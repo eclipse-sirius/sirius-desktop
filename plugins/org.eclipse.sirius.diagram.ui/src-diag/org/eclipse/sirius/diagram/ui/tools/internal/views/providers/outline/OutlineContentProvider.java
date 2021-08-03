@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -129,6 +129,7 @@ public class OutlineContentProvider implements ITreeContentProvider, DiagramOutl
      * 
      * @see org.eclipse.jface.viewers.ITreeContentProvider#getParent(java.lang.Object)
      */
+    @Override
     public Object getParent(final Object element) {
 
         Object theParent = null;
@@ -166,6 +167,7 @@ public class OutlineContentProvider implements ITreeContentProvider, DiagramOutl
      * 
      * @see org.eclipse.jface.viewers.ITreeContentProvider#getChildren(java.lang.Object)
      */
+    @Override
     public Object[] getChildren(final Object parentElement) {
 
         Object[] children = null;
@@ -218,6 +220,7 @@ public class OutlineContentProvider implements ITreeContentProvider, DiagramOutl
      * 
      * @see org.eclipse.jface.viewers.ITreeContentProvider#hasChildren(java.lang.Object)
      */
+    @Override
     public boolean hasChildren(final Object element) {
 
         boolean hasChildren = false;
@@ -234,6 +237,7 @@ public class OutlineContentProvider implements ITreeContentProvider, DiagramOutl
      * 
      * @see org.eclipse.jface.viewers.IStructuredContentProvider#getElements(java.lang.Object)
      */
+    @Override
     public Object[] getElements(final Object inputElement) {
 
         // in case of diagram return the viewpoint
@@ -254,6 +258,7 @@ public class OutlineContentProvider implements ITreeContentProvider, DiagramOutl
      * 
      * @see org.eclipse.jface.viewers.IContentProvider#dispose()
      */
+    @Override
     public void dispose() {
         // do nothing
     }
@@ -261,9 +266,10 @@ public class OutlineContentProvider implements ITreeContentProvider, DiagramOutl
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer,
-     *      java.lang.Object, java.lang.Object)
+     * @see org.eclipse.jface.viewers.IContentProvider#inputChanged(org.eclipse.jface.viewers.Viewer, java.lang.Object,
+     *      java.lang.Object)
      */
+    @Override
     public void inputChanged(final Viewer viewer, final Object oldInput, final Object newInput) {
         // Only remove listener of oldInput if old input is valid
         if (oldInput != null && (!(oldInput instanceof EObject) || ((EObject) oldInput).eResource() != null)) {
@@ -303,6 +309,7 @@ public class OutlineContentProvider implements ITreeContentProvider, DiagramOutl
      * 
      * @see org.eclipse.sirius.common.ui.tools.api.outline.DiagramOutlinePageListener#activate(int)
      */
+    @Override
     public void activate(int page) {
         this.outlineContentResourceSetListener.activate(page);
     }
@@ -312,6 +319,7 @@ public class OutlineContentProvider implements ITreeContentProvider, DiagramOutl
      * 
      * @see org.eclipse.sirius.common.ui.tools.api.outline.DiagramOutlinePageListener#deactivate(int)
      */
+    @Override
     public void deactivate(int page) {
         this.outlineContentResourceSetListener.deactivate(page);
     }

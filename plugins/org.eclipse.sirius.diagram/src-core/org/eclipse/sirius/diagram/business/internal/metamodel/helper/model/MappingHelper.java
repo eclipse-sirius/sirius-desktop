@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,9 +10,12 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
+package org.eclipse.sirius.diagram.business.internal.metamodel.helper.model;
 
 import java.util.Collection;
+import java.util.LinkedHashSet;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.BasicEList.UnmodifiableEList;
@@ -46,9 +49,13 @@ public final class MappingHelper {
     public static EList<DiagramElementMapping> getAllMappings(final DiagramElementMapping mapping) {
         EList<DiagramElementMapping> diagramElementMappings = new BasicEList<>();
         if (mapping instanceof ContainerMapping) {
-            diagramElementMappings = ContainerMappingHelper.getAllMappings((ContainerMapping) mapping);
+            final BasicEList<DiagramElementMapping> allMappings = new BasicEList<DiagramElementMapping>();
+            allMappings.addAll(MappingHelper.getAllContainerMappings((ContainerMapping) mapping));
+            allMappings.addAll(MappingHelper.getAllNodeMappings((ContainerMapping) mapping));
+            allMappings.addAll(MappingHelper.getAllBorderedNodeMappings((AbstractNodeMapping) mapping));
+            diagramElementMappings = new BasicEList.UnmodifiableEList<DiagramElementMapping>(allMappings.size(), allMappings.toArray());
         } else if (mapping instanceof EdgeMappingImport) {
-            final EdgeMapping edgeMapping = MappingHelper.getEdgeMapping((EdgeMappingImport) mapping);
+            final EdgeMapping edgeMapping = getEdgeMapping((EdgeMappingImport) mapping);
             if (edgeMapping != null) {
                 diagramElementMappings = getAllMappings(edgeMapping);
             }
@@ -84,7 +91,9 @@ public final class MappingHelper {
      * @return an unmodifiable EList of all node mapping contained by the given container mapping.
      */
     public static EList<NodeMapping> getAllNodeMappings(ContainerMapping containerMapping) {
-        final Collection<NodeMapping> result = ContainerMappingHelper.getAllNodeMappings(containerMapping);
+        final Collection<NodeMapping> result = Stream.concat(containerMapping.getSubNodeMappings().stream(), containerMapping.getReusedNodeMappings().stream())
+                .collect(Collectors.toCollection(LinkedHashSet::new));
+
         return new UnmodifiableEList<>(result.size(), result.toArray());
     }
 
@@ -96,7 +105,8 @@ public final class MappingHelper {
      * @return an unmodifiable EList of all container mapping contained by the given container mapping.
      */
     public static EList<ContainerMapping> getAllContainerMappings(ContainerMapping containerMapping) {
-        final Collection<ContainerMapping> result = ContainerMappingHelper.getAllContainerMappings(containerMapping);
+        final Collection<ContainerMapping> result = Stream.concat(containerMapping.getSubContainerMappings().stream(), containerMapping.getReusedContainerMappings().stream())
+                .collect(Collectors.toCollection(LinkedHashSet::new));
         return new UnmodifiableEList<>(result.size(), result.toArray());
     }
 
@@ -113,7 +123,7 @@ public final class MappingHelper {
         if (iEdgeMapping instanceof EdgeMapping) {
             result = (EdgeMapping) iEdgeMapping;
         } else if (iEdgeMapping instanceof EdgeMappingImport) {
-            result = MappingHelper.getEdgeMapping((EdgeMappingImport) iEdgeMapping);
+            result = getEdgeMapping((EdgeMappingImport) iEdgeMapping);
         }
         return result;
     }

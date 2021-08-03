@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
@@ -141,14 +141,14 @@ public class ChangeIdAndLabelTests extends SiriusDiagramTestCase implements Ecor
      */
     public void testModificationOfIdOfLayer() {
         assertEquals("The data is incorrect (bad number of representations).", 1, getRepresentations(REPRESENTATION_DESC_NAME).size());
-        assertEquals("The data is incorrect (bad number of layers).", 3, LayerHelper.getAllLayers(diagram.getDescription()).size());
+        assertEquals("The data is incorrect (bad number of layers).", 3, LayerModelHelper.getAllLayers(diagram.getDescription()).size());
         int nbDiagramElementsExpected = diagram.getOwnedDiagramElements().size();
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
             /** {@inheritDoc} */
             @Override
             protected void doExecute() {
-                Layer layer = LayerHelper.getAllLayers(diagram.getDescription()).get(1);
+                Layer layer = LayerModelHelper.getAllLayers(diagram.getDescription()).get(1);
                 layer.setName(layer.getName() + "Modify");
             }
         });
@@ -161,14 +161,14 @@ public class ChangeIdAndLabelTests extends SiriusDiagramTestCase implements Ecor
      */
     public void testModificationOfLabelOfLayer() {
         assertEquals("The data is incorrect (bad number of representations).", 1, getRepresentations(REPRESENTATION_DESC_NAME).size());
-        assertEquals("The data is incorrect (bad number of layers).", 3, LayerHelper.getAllLayers(diagram.getDescription()).size());
+        assertEquals("The data is incorrect (bad number of layers).", 3, LayerModelHelper.getAllLayers(diagram.getDescription()).size());
         int nbDiagramElementsExpected = diagram.getOwnedDiagramElements().size();
 
         session.getTransactionalEditingDomain().getCommandStack().execute(new RecordingCommand(session.getTransactionalEditingDomain()) {
             /** {@inheritDoc} */
             @Override
             protected void doExecute() {
-                Layer layer = LayerHelper.getAllLayers(diagram.getDescription()).get(1);
+                Layer layer = LayerModelHelper.getAllLayers(diagram.getDescription()).get(1);
                 layer.setLabel(layer.getLabel() + "Modify");
             }
         });

@@ -19,8 +19,6 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.business.api.session.Session;
@@ -47,6 +45,9 @@ import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.ContainerMappingSpec;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.ContentHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.MappingExtHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.MappingHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.ContainerMappingImport;
@@ -82,50 +83,6 @@ public final class ContainerMappingWithInterpreterHelper {
      */
     public ContainerMappingWithInterpreterHelper(IInterpreter interpreter) {
         this.interpreter = interpreter;
-    }
-
-    /**
-     * Implementation of {@link ContainerMapping#clearDNodesDone()}.
-     * 
-     * @param self
-     *            the container mapping.
-     */
-    public static void clearDNodesDone(IContainerMappingExt self) {
-        self.getViewContainerDone().clear();
-    }
-
-    /**
-     * Implementation of {@link ContainerMapping#findDNodeFromEObject(EObject)}.
-     * 
-     * @param self
-     *            the container mapping.
-     * @param object
-     *            the semantic element.
-     * @return the node that has been created by this mapping and the specified EObject as semantic element.
-     */
-    public static EList<DDiagramElement> findDNodeFromEObject(IContainerMappingExt self, EObject object) {
-        EList result = self.getViewContainerDone().get(object);
-        if (result == null) {
-            result = new BasicEList<DDiagramElement>();
-        }
-        return result;
-    }
-
-    /**
-     * Implementation of {@link ContainerMapping#addDoneNode(DSemanticDecorator)}.
-     * 
-     * @param self
-     *            the container mapping.
-     * @param node
-     *            the node to add.
-     */
-    public static void addDoneNode(IContainerMappingExt self, DSemanticDecorator node) {
-        EList<DSemanticDecorator> list = self.getViewContainerDone().get(node.getTarget());
-        if (list == null) {
-            list = new BasicEList<DSemanticDecorator>();
-            self.getViewContainerDone().put(node.getTarget(), list);
-        }
-        list.add(node);
     }
 
     /**
@@ -307,7 +264,7 @@ public final class ContainerMappingWithInterpreterHelper {
             Option<ContainerStyle> noPreviousStyle = Options.newNone();
             new StyleHelper(interpreter).refreshStyle(newContainer.getOwnedStyle(), noPreviousStyle);
         }
-        MappingWithInterpreterHelper.addDoneNode(self, newContainer);
+        MappingExtHelper.addDoneNode(self, newContainer);
 
         interpreter.unSetVariable(IInterpreterSiriusVariables.VIEW);
         interpreter.unSetVariable(IInterpreterSiriusVariables.DIAGRAM);
@@ -387,7 +344,7 @@ public final class ContainerMappingWithInterpreterHelper {
             }
         }
 
-        MappingWithInterpreterHelper.addDoneNode(self, container);
+        MappingExtHelper.addDoneNode(self, container);
     }
 
     /**

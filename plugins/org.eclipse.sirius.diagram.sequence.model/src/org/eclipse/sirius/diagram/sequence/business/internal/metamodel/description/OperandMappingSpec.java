@@ -19,7 +19,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingWithInterpreterHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.MappingExtHelper;
 import org.eclipse.sirius.diagram.sequence.description.impl.OperandMappingImpl;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
@@ -39,7 +39,7 @@ public class OperandMappingSpec extends OperandMappingImpl implements IContainer
 
     @Override
     public EList<DDiagramElement> findDNodeFromEObject(final EObject object) {
-        return ContainerMappingWithInterpreterHelper.findDNodeFromEObject(this, object);
+        return MappingExtHelper.findDNodeFromEObject(this, object);
     }
 
     @Override

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
+package org.eclipse.sirius.diagram.business.internal.metamodel.helper.model;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.business.api.helper.layers.LayerService;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -283,7 +283,7 @@ public final class ContentHelper {
         List<NodeMapping> result = new ArrayList<NodeMapping>();
         result.addAll(nodeMapping.getBorderedNodeMappings());
         result.addAll(nodeMapping.getReusedBorderedNodeMappings());
-        if (!LayerHelper.withoutLayersMode(nodeMapping)) {
+        if (!LayerModelHelper.withoutLayersMode(nodeMapping)) {
             result = ContentHelper.developMappingsInheritance(result);
         }
         return new BasicEList<NodeMapping>(result);

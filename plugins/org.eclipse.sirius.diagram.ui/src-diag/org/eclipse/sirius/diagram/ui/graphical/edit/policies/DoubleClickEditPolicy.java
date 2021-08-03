@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -49,6 +49,7 @@ import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsM
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
@@ -302,7 +303,7 @@ public class DoubleClickEditPolicy extends OpenEditPolicy {
 
     private Collection<Layer> getLayerToActivate(DDiagram parentDiagram, final DDiagramElement ddiagramElement, DiagramMappingsManager mappingManager) {
         Collection<Layer> layers = mappingManager.getActiveParentLayers(ddiagramElement.getDiagramElementMapping());
-        List<Layer> allLayers = LayerHelper.getAllLayers(parentDiagram.getDescription());
+        List<Layer> allLayers = LayerModelHelper.getAllLayers(parentDiagram.getDescription());
         Set<Layer> deactivatedLayers = allLayers.stream().filter(elmt -> !layers.contains(elmt)).collect(Collectors.toSet());
 
         Collection<Layer> diagramElementLayers = LayerHelper.getParentLayers(ddiagramElement.getDiagramElementMapping());

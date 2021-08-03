@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.metamodel.operations;
+package org.eclipse.sirius.diagram.business.internal.metamodel.operations.model;
 
 import java.util.Iterator;
 
@@ -21,8 +21,8 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.EdgeMappingImportWrapper;
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
@@ -64,15 +64,13 @@ public final class DDiagramSpecOperations {
     }
 
     /**
-     * Returns all nodes that are in the specified viewpoint and that have been
-     * created from the specified mapping.
+     * Returns all nodes that are in the specified viewpoint and that have been created from the specified mapping.
      * 
      * @param vp
      *            the viewpoint.
      * @param mapping
      *            the mapping.
-     * @return all nodes that are in the specified viewpoint and that have been
-     *         created from the specified mapping.
+     * @return all nodes that are in the specified viewpoint and that have been created from the specified mapping.
      */
     public static EList<DNode> getNodesFromMapping(final DDiagram vp, final NodeMapping mapping) {
         final EList<DNode> result = new BasicEList<DNode>();
@@ -87,16 +85,14 @@ public final class DDiagramSpecOperations {
     }
 
     /**
-     * Returns all edges that are in the specified viewpoint and that have been
-     * created from the specified mapping or by an imported mapping of the
-     * specified mapping or by a mapping which import the specified mapping.
+     * Returns all edges that are in the specified viewpoint and that have been created from the specified mapping or by
+     * an imported mapping of the specified mapping or by a mapping which import the specified mapping.
      * 
      * @param vp
      *            the viewpoint.
      * @param mapping
      *            the mapping.
-     * @return all edges that are in the specified viewpoint and that have been
-     *         created from the specified mapping.
+     * @return all edges that are in the specified viewpoint and that have been created from the specified mapping.
      */
     public static EList<DEdge> getEdgesFromMapping(final DDiagram vp, final EdgeMapping mapping) {
         final EList<DEdge> result = new BasicEList<DEdge>();
@@ -115,10 +111,10 @@ public final class DDiagramSpecOperations {
             }
 
             if (mappingToCompare instanceof EdgeMappingImport) {
-                importedOrImport = LayerHelper.isImported(edgeMapping, (EdgeMappingImport) mappingToCompare);
+                importedOrImport = LayerModelHelper.isImported(edgeMapping, (EdgeMappingImport) mappingToCompare);
             }
             if (!importedOrImport && edgeMapping instanceof EdgeMappingImport) {
-                importedOrImport = LayerHelper.isImported(mappingToCompare, (EdgeMappingImport) edgeMapping);
+                importedOrImport = LayerModelHelper.isImported(mappingToCompare, (EdgeMappingImport) edgeMapping);
             }
             if (edgeMapping == mappingToCompare || importedOrImport) {
                 result.add(edge);
@@ -128,15 +124,13 @@ public final class DDiagramSpecOperations {
     }
 
     /**
-     * Returns all containers that are in the specified viewpoint and that have
-     * been created from the specified mapping.
+     * Returns all containers that are in the specified viewpoint and that have been created from the specified mapping.
      * 
      * @param vp
      *            the viewpoint.
      * @param mapping
      *            the mapping.
-     * @return all containers that are in the specified viewpoint and that have
-     *         been created from the specified mapping.
+     * @return all containers that are in the specified viewpoint and that have been created from the specified mapping.
      */
     public static EList<DDiagramElementContainer> getContainersFromMapping(final DDiagram vp, final ContainerMapping mapping) {
         final EList<DDiagramElementContainer> result = new BasicEList<DDiagramElementContainer>();
