@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,17 +20,15 @@ import java.util.Map;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.query.ViewpointQuery;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
+import org.eclipse.sirius.diagram.business.api.query.DiagramDescriptionQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentLayerHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramComponentizationHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
-import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
@@ -94,14 +92,13 @@ public class DiagramComponentizationManager {
      * @return all the available edge mappings
      */
     public EList<EdgeMapping> getAllEdgeMappings(final Collection<Viewpoint> enabledViewpoints, final DiagramDescription diagramDescription) {
-        final Collection<EdgeMapping> edgeMappings = new ArrayList<EdgeMapping>(diagramDescription.getAllEdgeMappings());
+        final Collection<EdgeMapping> edgeMappings = new ArrayList<EdgeMapping>(ContentHelper.getAllEdgeMappings(diagramDescription, false));
         if (enabledViewpoints != null) {
             for (final Layer layer : DiagramComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints)) {
                 edgeMappings.addAll(ContentLayerHelper.getAllEdgeMappings(layer));
             }
         }
-        return new EcoreEList.UnmodifiableEList<EdgeMapping>((InternalEObject) diagramDescription, DescriptionPackage.eINSTANCE.getDiagramDescription_AllEdgeMappings(), edgeMappings.size(),
-                edgeMappings.toArray());
+        return new BasicEList.UnmodifiableEList<EdgeMapping>(edgeMappings.size(), edgeMappings.toArray());
     }
 
     /**
@@ -173,14 +170,13 @@ public class DiagramComponentizationManager {
      * @return all the available tools
      */
     public EList<AbstractToolDescription> getAllTools(final Collection<Viewpoint> enabledViewpoints, final DiagramDescription diagramDescription) {
-        final Collection<AbstractToolDescription> tools = new ArrayList<AbstractToolDescription>(diagramDescription.getAllTools());
+        final Collection<AbstractToolDescription> tools = new ArrayList<AbstractToolDescription>(new DiagramDescriptionQuery(diagramDescription).getAllTools());
         if (enabledViewpoints != null) {
             for (final Layer layer : DiagramComponentizationHelper.getContributedLayers(diagramDescription, enabledViewpoints)) {
                 tools.addAll(layer.getAllTools());
             }
         }
-        return new EcoreEList.UnmodifiableEList<AbstractToolDescription>((InternalEObject) diagramDescription, DescriptionPackage.eINSTANCE.getDiagramDescription_AllTools(), tools.size(),
-                tools.toArray());
+        return new BasicEList.UnmodifiableEList<>(tools.size(), tools.toArray());
     }
 
     /**

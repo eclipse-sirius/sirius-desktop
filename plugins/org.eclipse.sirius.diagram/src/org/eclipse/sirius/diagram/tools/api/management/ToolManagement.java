@@ -41,6 +41,7 @@ import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponent
 import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil;
 import org.eclipse.sirius.diagram.business.api.helper.layers.LayerService;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
+import org.eclipse.sirius.diagram.business.api.query.DiagramDescriptionQuery;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.tool.ToolGroup;
@@ -372,7 +373,7 @@ public class ToolManagement {
         // Update the filters
         DiagramDescription diagramDescription = dDiagram.getDescription();
         if (updateFilters) {
-            updateFilters(session, diagramDescription.getAllTools());
+            updateFilters(session, new DiagramDescriptionQuery(diagramDescription).getAllTools());
         }
 
         // Owned tools
@@ -515,7 +516,7 @@ public class ToolManagement {
      * @param toolEntries
      *            the list of entry of tools to add.
      */
-    private void updateFilters(final Session session, final List<? extends ToolEntry> toolEntries) {
+    private void updateFilters(final Session session, final Collection<? extends ToolEntry> toolEntries) {
         if (session != null) {
             final IInterpreter interpreter = session.getInterpreter();
             if (interpreter != null) {

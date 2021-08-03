@@ -170,7 +170,7 @@ public final class ContainerMappingWithInterpreterHelper {
                 allMappings.addAll(MappingHelper.getAllBorderedNodeMappings(containerMapping));
                 final DDiagram diagram = elementContainer.getParentDiagram();
                 final DiagramDescription desc = diagram.getDescription();
-                allMappings.addAll(desc.getAllEdgeMappings());
+                allMappings.addAll(ContentHelper.getAllEdgeMappings(desc, false));
                 iterCandidates = allMappings.iterator();
             }
         } else if (targetContainer instanceof DNode) {

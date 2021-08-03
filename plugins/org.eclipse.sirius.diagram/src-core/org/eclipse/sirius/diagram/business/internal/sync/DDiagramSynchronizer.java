@@ -433,7 +433,7 @@ public class DDiagramSynchronizer {
 
         // @formatter:off
         Predicate<DiagramElementMapping> isMappingOfCurrentDiagramDescription = diagramElementMapping ->
-                description.getAllEdgeMappings().contains(diagramElementMapping) ||
+                ContentHelper.getAllEdgeMappings(description, false).contains(diagramElementMapping) ||
                 ContentHelper.getAllNodeMappings(description, false).contains(diagramElementMapping) ||
                 ContentHelper.getAllContainerMappings(description, false).contains(diagramElementMapping);
         // @formatter:on

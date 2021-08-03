@@ -80,8 +80,6 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
             addMetamodelPropertyDescriptor(object);
             addShowOnStartupPropertyDescriptor(object);
             addPasteDescriptionsPropertyDescriptor(object);
-            addAllEdgeMappingsPropertyDescriptor(object);
-            addAllToolsPropertyDescriptor(object);
             addDomainClassPropertyDescriptor(object);
             addPreconditionExpressionPropertyDescriptor(object);
             addDefaultConcernPropertyDescriptor(object);
@@ -213,30 +211,6 @@ public class DiagramDescriptionItemProvider extends DragAndDropTargetDescription
                 getString("_UI_PasteTargetDescription_pasteDescriptions_description"), //$NON-NLS-1$
                 DescriptionPackage.Literals.PASTE_TARGET_DESCRIPTION__PASTE_DESCRIPTIONS, true, false, true, null, getString("_UI_BehaviorPropertyCategory"), //$NON-NLS-1$
                 null));
-    }
-
-    /**
-     * This adds a property descriptor for the All Edge Mappings feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected void addAllEdgeMappingsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors.add(
-                createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DiagramDescription_allEdgeMappings_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_DiagramDescription_allEdgeMappings_feature", "_UI_DiagramDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS, false, false, false, null, null, null));
-    }
-
-    /**
-     * This adds a property descriptor for the All Tools feature. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    protected void addAllToolsPropertyDescriptor(Object object) {
-        itemPropertyDescriptors
-                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_DiagramDescription_allTools_feature"), //$NON-NLS-1$
-                        getString("_UI_PropertyDescriptor_description", "_UI_DiagramDescription_allTools_feature", "_UI_DiagramDescription_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-                        org.eclipse.sirius.diagram.description.DescriptionPackage.Literals.DIAGRAM_DESCRIPTION__ALL_TOOLS, false, false, false, null, null, null));
     }
 
     /**

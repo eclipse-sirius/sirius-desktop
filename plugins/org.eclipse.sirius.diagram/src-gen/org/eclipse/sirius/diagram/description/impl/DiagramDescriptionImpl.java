@@ -75,12 +75,9 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramDescriptionImpl#getPasteDescriptions <em>Paste
  * Descriptions</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramDescriptionImpl#getFilters <em>Filters</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramDescriptionImpl#getAllEdgeMappings <em>All Edge
- * Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramDescriptionImpl#getValidationSet <em>Validation
  * Set</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramDescriptionImpl#getConcerns <em>Concerns</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramDescriptionImpl#getAllTools <em>All Tools</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramDescriptionImpl#getDomainClass <em>Domain
  * Class</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramDescriptionImpl#getPreconditionExpression
@@ -762,21 +759,6 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
      * @generated
      */
     @Override
-    public EList<EdgeMapping> getAllEdgeMappings() {
-        // TODO: implement this method to return the 'All Edge Mappings' reference list
-        // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
-        // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public ValidationSet getValidationSet() {
         if (validationSet != null && validationSet.eIsProxy()) {
             InternalEObject oldValidationSet = (InternalEObject) validationSet;
@@ -927,21 +909,6 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
         } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS, newConcerns, newConcerns));
         }
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EList<AbstractToolDescription> getAllTools() {
-        // TODO: implement this method to return the 'All Tools' reference list
-        // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
-        // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-        throw new UnsupportedOperationException();
     }
 
     /**
@@ -1653,8 +1620,6 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
             return getPasteDescriptions();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__FILTERS:
             return getFilters();
-        case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS:
-            return getAllEdgeMappings();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET:
             if (resolve) {
                 return getValidationSet();
@@ -1665,8 +1630,6 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
                 return getConcerns();
             }
             return basicGetConcerns();
-        case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_TOOLS:
-            return getAllTools();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__DOMAIN_CLASS:
             return getDomainClass();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION:
@@ -1971,14 +1934,10 @@ public class DiagramDescriptionImpl extends DragAndDropTargetDescriptionImpl imp
             return pasteDescriptions != null && !pasteDescriptions.isEmpty();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__FILTERS:
             return filters != null && !filters.isEmpty();
-        case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS:
-            return !getAllEdgeMappings().isEmpty();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET:
             return validationSet != null;
         case DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS:
             return concerns != null;
-        case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_TOOLS:
-            return !getAllTools().isEmpty();
         case DescriptionPackage.DIAGRAM_DESCRIPTION__DOMAIN_CLASS:
             return DiagramDescriptionImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !DiagramDescriptionImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case DescriptionPackage.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION:

@@ -38,11 +38,8 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * </p>
  * <ul>
  * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getFilters <em>Filters</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getAllEdgeMappings <em>All Edge
- * Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getValidationSet <em>Validation Set</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getConcerns <em>Concerns</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getAllTools <em>All Tools</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getDomainClass <em>Domain Class</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.DiagramDescription#getPreconditionExpression <em>Precondition
  * Expression</em>}</li>
@@ -86,19 +83,6 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * @generated
      */
     EList<FilterDescription> getFilters();
-
-    /**
-     * Returns the value of the '<em><b>All Edge Mappings</b></em>' reference list. The list contents are of type
-     * {@link org.eclipse.sirius.diagram.description.EdgeMapping}. <!-- begin-user-doc --> <!-- end-user-doc --> <!--
-     * begin-model-doc --> All edge mappings (including import edge ampping) of this simple mapping. <!-- end-model-doc
-     * -->
-     *
-     * @return the value of the '<em>All Edge Mappings</em>' reference list.
-     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_AllEdgeMappings()
-     * @model transient="true" changeable="false" volatile="true" derived="true"
-     * @generated
-     */
-    EList<EdgeMapping> getAllEdgeMappings();
 
     /**
      * Returns the value of the '<em><b>Validation Set</b></em>' containment reference. <!-- begin-user-doc --> <!--
@@ -146,18 +130,6 @@ public interface DiagramDescription extends DragAndDropTargetDescription, Repres
      * @generated
      */
     void setConcerns(ConcernSet value);
-
-    /**
-     * Returns the value of the '<em><b>All Tools</b></em>' reference list. The list contents are of type
-     * {@link org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription} . <!-- begin-user-doc --> <!--
-     * end-user-doc --> <!-- begin-model-doc --> All tools of the viewpoint. <!-- end-model-doc -->
-     *
-     * @return the value of the '<em>All Tools</em>' reference list.
-     * @see org.eclipse.sirius.diagram.description.DescriptionPackage#getDiagramDescription_AllTools()
-     * @model transient="true" changeable="false" volatile="true" derived="true"
-     * @generated
-     */
-    EList<AbstractToolDescription> getAllTools();
 
     /**
      * Returns the value of the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->

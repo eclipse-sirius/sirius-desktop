@@ -26,6 +26,7 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramComponentizationManager;
+import org.eclipse.sirius.diagram.business.api.query.DiagramDescriptionQuery;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
@@ -318,12 +319,12 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
 
     private ReorderTool findReorderTool(DDiagramElement diagramElement) {
         if (diagramElement != null) {
-            List<AbstractToolDescription> allTools;
+            Collection<AbstractToolDescription> allTools;
             Session session = SessionManager.INSTANCE.getSession(diagramElement);
             if (session != null) {
                 allTools = new DiagramComponentizationManager().getAllTools(session.getSelectedViewpoints(false), sequenceDiagram.getDescription());
             } else {
-                allTools = sequenceDiagram.getDescription().getAllTools();
+                allTools = new DiagramDescriptionQuery(sequenceDiagram.getDescription()).getAllTools();
             }
 
             DiagramElementMapping mappingToCheck = new DiagramElementMappingQuery(diagramElement.getDiagramElementMapping()).getRootMapping();

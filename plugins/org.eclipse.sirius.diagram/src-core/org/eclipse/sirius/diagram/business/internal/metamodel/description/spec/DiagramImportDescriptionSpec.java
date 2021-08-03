@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -92,8 +92,7 @@ public class DiagramImportDescriptionSpec extends DiagramDescriptionSpec impleme
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramImportDescriptionImpl#eGet(int,
-     *      boolean, boolean)
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramImportDescriptionImpl#eGet(int, boolean, boolean)
      */
     @Override
     public Object eGet(final int featureID, final boolean resolve, final boolean coreType) {
@@ -118,8 +117,7 @@ public class DiagramImportDescriptionSpec extends DiagramDescriptionSpec impleme
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramImportDescriptionImpl#eSet(int,
-     *      java.lang.Object)
+     * @see org.eclipse.sirius.viewpoint.description.impl.DiagramImportDescriptionImpl#eSet(int, java.lang.Object)
      */
     @Override
     public void eSet(final int featureID, final Object newValue) {
@@ -184,8 +182,7 @@ public class DiagramImportDescriptionSpec extends DiagramDescriptionSpec impleme
     /**
      * Add the case importedDiagram to the default eIsSet method.
      * 
-     * @see package org.eclipse.sirius.description.impl.DiagramDescriptionImpl
-     *      #eIsSet()
+     * @see package org.eclipse.sirius.description.impl.DiagramDescriptionImpl #eIsSet()
      * 
      * @param featureID
      *            the id of the feature to check.

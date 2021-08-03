@@ -972,13 +972,6 @@
           <details key="documentation" value="Filters that are owned by this simple mapping."/>
         </eAnnotations>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="allEdgeMappings" upperBound="-1"
-          eType="#//description/EdgeMapping" changeable="false" volatile="true" transient="true"
-          derived="true">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="All edge mappings (including import edge ampping) of this simple mapping."/>
-        </eAnnotations>
-      </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="validationSet" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/validation/ValidationSet"
           containment="true">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -989,13 +982,6 @@
           containment="true">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="All concerns of the viewpoint. A concern is a set of filters, validations and behaviors."/>
-        </eAnnotations>
-      </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EReference" name="allTools" upperBound="-1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractToolDescription"
-          changeable="false" volatile="true" transient="true" derived="true">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="All tools of the viewpoint."/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" lowerBound="1"

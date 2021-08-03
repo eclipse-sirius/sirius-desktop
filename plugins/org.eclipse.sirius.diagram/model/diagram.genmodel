@@ -358,11 +358,8 @@
       </genEnums>
       <genClasses ecoreClass="diagram.ecore#//description/DiagramDescription">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/filters"/>
-        <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/allEdgeMappings"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/validationSet"/>
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/concerns"/>
-        <genFeatures property="Readonly" notify="false" createChild="false" propertyCategory=""
-            ecoreFeature="ecore:EReference diagram.ecore#//description/DiagramDescription/allTools"/>
         <genFeatures createChild="false" propertyCategory="General" propertyDescription="The type of the root diagram element. For instance you may want to create an UML2 Class diagram,\n then the root domain class will probably be 'Package'. On the other side if you want a Class Diagram\n displaying the whole model, then the root domain class is 'Model' in UML2."
             ecoreFeature="ecore:EAttribute diagram.ecore#//description/DiagramDescription/domainClass"/>
         <genFeatures createChild="false" propertyCategory="General" propertyDescription="The precondition is an expression preventing the creation of a diagram.\n If the precondition is set and the expression returns false on the root diagram\n element, then the diagram won't be created."

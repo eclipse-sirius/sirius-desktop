@@ -78,14 +78,10 @@ import org.eclipse.sirius.viewpoint.description.validation.ValidationSet;
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getPasteDescriptions <em>Paste
  * Descriptions</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getFilters <em>Filters</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getAllEdgeMappings <em>All Edge
- * Mappings</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getValidationSet <em>Validation
  * Set</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getConcerns
  * <em>Concerns</em>}</li>
- * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getAllTools <em>All
- * Tools</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getDomainClass <em>Domain
  * Class</em>}</li>
  * <li>{@link org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl#getPreconditionExpression
@@ -758,21 +754,6 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
      * @generated
      */
     @Override
-    public EList<EdgeMapping> getAllEdgeMappings() {
-        // TODO: implement this method to return the 'All Edge Mappings' reference list
-        // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
-        // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-        throw new UnsupportedOperationException();
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
     public ValidationSet getValidationSet() {
         if (validationSet != null && validationSet.eIsProxy()) {
             InternalEObject oldValidationSet = (InternalEObject) validationSet;
@@ -923,21 +904,6 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
         } else if (eNotificationRequired()) {
             eNotify(new ENotificationImpl(this, Notification.SET, DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__CONCERNS, newConcerns, newConcerns));
         }
-    }
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     */
-    @Override
-    public EList<AbstractToolDescription> getAllTools() {
-        // TODO: implement this method to return the 'All Tools' reference list
-        // Ensure that you remove @generated or mark it @generated NOT
-        // The list is expected to implement org.eclipse.emf.ecore.util.InternalEList and
-        // org.eclipse.emf.ecore.EStructuralFeature.Setting
-        // so it's likely that an appropriate subclass of org.eclipse.emf.ecore.util.EcoreEList should be used.
-        throw new UnsupportedOperationException();
     }
 
     /**
@@ -1691,8 +1657,6 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
             return getPasteDescriptions();
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__FILTERS:
             return getFilters();
-        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_EDGE_MAPPINGS:
-            return getAllEdgeMappings();
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__VALIDATION_SET:
             if (resolve) {
                 return getValidationSet();
@@ -1703,8 +1667,6 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
                 return getConcerns();
             }
             return basicGetConcerns();
-        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_TOOLS:
-            return getAllTools();
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__DOMAIN_CLASS:
             return getDomainClass();
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__PRECONDITION_EXPRESSION:
@@ -2022,14 +1984,10 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
             return pasteDescriptions != null && !pasteDescriptions.isEmpty();
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__FILTERS:
             return filters != null && !filters.isEmpty();
-        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_EDGE_MAPPINGS:
-            return !getAllEdgeMappings().isEmpty();
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__VALIDATION_SET:
             return validationSet != null;
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__CONCERNS:
             return concerns != null;
-        case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_TOOLS:
-            return !getAllTools().isEmpty();
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__DOMAIN_CLASS:
             return DiagramImportDescriptionImpl.DOMAIN_CLASS_EDEFAULT == null ? domainClass != null : !DiagramImportDescriptionImpl.DOMAIN_CLASS_EDEFAULT.equals(domainClass);
         case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__PRECONDITION_EXPRESSION:
@@ -2118,14 +2076,10 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
             switch (derivedFeatureID) {
             case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__FILTERS:
                 return DescriptionPackage.DIAGRAM_DESCRIPTION__FILTERS;
-            case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_EDGE_MAPPINGS:
-                return DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS;
             case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__VALIDATION_SET:
                 return DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET;
             case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__CONCERNS:
                 return DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS;
-            case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_TOOLS:
-                return DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_TOOLS;
             case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__DOMAIN_CLASS:
                 return DescriptionPackage.DIAGRAM_DESCRIPTION__DOMAIN_CLASS;
             case DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__PRECONDITION_EXPRESSION:
@@ -2214,14 +2168,10 @@ public class DiagramImportDescriptionImpl extends DocumentedElementImpl implemen
             switch (baseFeatureID) {
             case DescriptionPackage.DIAGRAM_DESCRIPTION__FILTERS:
                 return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__FILTERS;
-            case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS:
-                return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_EDGE_MAPPINGS;
             case DescriptionPackage.DIAGRAM_DESCRIPTION__VALIDATION_SET:
                 return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__VALIDATION_SET;
             case DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS:
                 return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__CONCERNS;
-            case DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_TOOLS:
-                return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__ALL_TOOLS;
             case DescriptionPackage.DIAGRAM_DESCRIPTION__DOMAIN_CLASS:
                 return DescriptionPackage.DIAGRAM_IMPORT_DESCRIPTION__DOMAIN_CLASS;
             case DescriptionPackage.DIAGRAM_DESCRIPTION__PRECONDITION_EXPRESSION:

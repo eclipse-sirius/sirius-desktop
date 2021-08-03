@@ -164,15 +164,6 @@ public interface DescriptionPackage extends EPackage {
     int SEQUENCE_DIAGRAM_DESCRIPTION__FILTERS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__FILTERS;
 
     /**
-     * The feature id for the '<em><b>All Edge Mappings</b></em>' reference list. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_EDGE_MAPPINGS;
-
-    /**
      * The feature id for the '<em><b>Validation Set</b></em>' containment reference. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
@@ -189,14 +180,6 @@ public interface DescriptionPackage extends EPackage {
      * @ordered
      */
     int SEQUENCE_DIAGRAM_DESCRIPTION__CONCERNS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__CONCERNS;
-
-    /**
-     * The feature id for the '<em><b>All Tools</b></em>' reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
-     *
-     * @generated
-     * @ordered
-     */
-    int SEQUENCE_DIAGRAM_DESCRIPTION__ALL_TOOLS = org.eclipse.sirius.diagram.description.DescriptionPackage.DIAGRAM_DESCRIPTION__ALL_TOOLS;
 
     /**
      * The feature id for the '<em><b>Domain Class</b></em>' attribute. <!-- begin-user-doc --> <!-- end-user-doc -->

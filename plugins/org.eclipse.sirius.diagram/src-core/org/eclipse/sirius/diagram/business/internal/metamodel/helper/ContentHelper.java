@@ -20,13 +20,10 @@ import java.util.List;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.InternalEObject;
-import org.eclipse.emf.ecore.util.EcoreEList;
 import org.eclipse.sirius.diagram.business.api.helper.layers.LayerService;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
-import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
@@ -93,8 +90,7 @@ public final class ContentHelper {
                 result.addAll(ContentLayerHelper.getAllEdgeMappings(layer));
             }
         }
-        return new EcoreEList.UnmodifiableEList<EdgeMapping>((InternalEObject) diagramDescription, DescriptionPackage.eINSTANCE.getDiagramDescription_AllEdgeMappings(), result.size(),
-                result.toArray());
+        return new BasicEList.UnmodifiableEList<EdgeMapping>(result.size(), result.toArray());
     }
 
     /**
