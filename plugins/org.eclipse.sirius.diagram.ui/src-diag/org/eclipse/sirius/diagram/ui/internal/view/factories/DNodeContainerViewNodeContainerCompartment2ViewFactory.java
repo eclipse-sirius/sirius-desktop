@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,7 @@ import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.TitleStyle;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.model.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 
@@ -37,6 +37,7 @@ public class DNodeContainerViewNodeContainerCompartment2ViewFactory extends Basi
     /**
      * @was-generated
      */
+    @Override
     protected List<?> createStyles(View view) {
         List<Style> styles = new ArrayList<>();
         styles.add(NotationFactory.eINSTANCE.createSortingStyle());
@@ -53,6 +54,7 @@ public class DNodeContainerViewNodeContainerCompartment2ViewFactory extends Basi
     /**
      * @was-generated
      */
+    @Override
     protected void decorateView(View containerView, View view, IAdaptable semanticAdapter, String semanticHint, int index, boolean persisted) {
         if (semanticHint == null) {
             semanticHint = SiriusVisualIDRegistry.getType(DNodeContainerViewNodeContainerCompartment2EditPart.VISUAL_ID);

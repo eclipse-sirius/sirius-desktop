@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
-public class EAttributeCustomizationQuery extends org.eclipse.sirius.business.internal.query.EAttributeCustomizationQuery {
+public class EAttributeCustomizationQuery extends org.eclipse.sirius.business.internal.query.model.EAttributeCustomizationQuery {
 
     /**
      * Default constructor.
@@ -38,12 +38,10 @@ public class EAttributeCustomizationQuery extends org.eclipse.sirius.business.in
     }
 
     /**
-     * Get the new value computed for the current
-     * {@link EAttributeCustomization}.
+     * Get the new value computed for the current {@link EAttributeCustomization}.
      * 
      * @param bestStyleDescriptionKey
-     *            the {@link BestStyleDescriptionKey} identifying the best
-     *            StyleDescription to customize
+     *            the {@link BestStyleDescriptionKey} identifying the best StyleDescription to customize
      * @param interpreter
      *            the interpreter used to get the new value
      * @return the new value

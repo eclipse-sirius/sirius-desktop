@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,7 @@ import org.eclipse.sirius.business.api.migration.AbstractRepresentationsFileMigr
 import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.model.DDiagramInternalQuery;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
@@ -30,8 +30,8 @@ import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 import org.osgi.framework.Version;
 
 /**
- * Migration participant which optimize computed {@link StyleDescription}
- * storage in a {@link DDiagram} by removing duplicates.
+ * Migration participant which optimize computed {@link StyleDescription} storage in a {@link DDiagram} by removing
+ * duplicates.
  * 
  * @author <a href="mailto:cedric.brun@obeo.fr">Cedric Brun</a>
  */
@@ -60,8 +60,7 @@ public class ComputedStyleDescriptionCachePackingFileMigrationParticipant extend
     }
 
     /**
-     * Optimize a DDiagram by keeping only unique computed StyleDescriptions and
-     * updating the styles accordingly.
+     * Optimize a DDiagram by keeping only unique computed StyleDescriptions and updating the styles accordingly.
      * 
      * @param dDiagram
      *            the diagram to optimize.

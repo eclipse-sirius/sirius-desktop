@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,7 +19,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.eclipse.sirius.business.internal.query.DSemanticDecoratorQuery;
+import org.eclipse.sirius.business.internal.query.model.DSemanticDecoratorQuery;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DNode;
@@ -46,8 +46,7 @@ import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * A manager of mappings available for a given diagram depending of the
- * activated layers.
+ * A manager of mappings available for a given diagram depending of the activated layers.
  * 
  * @author mchauvin
  */
@@ -78,6 +77,7 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
      * {@inheritDoc}
      **/
 
+    @Override
     public void computeMappings(Collection<Viewpoint> enabledVPs, final boolean computeDescriptionMappings) {
         if (computeDescriptionMappings) {
             this.descriptionMappings.computeMappings(enabledVPs);
@@ -90,6 +90,7 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
      * 
      * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager#getNodeMappings()
      */
+    @Override
     public List<NodeMapping> getNodeMappings() {
         if (descriptionMappings.isLayerMode()) {
             return mappingsTable.getNodeMappings();
@@ -103,6 +104,7 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
      * 
      * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager#getContainerMappings()
      */
+    @Override
     public List<ContainerMapping> getContainerMappings() {
         if (descriptionMappings.isLayerMode()) {
             return mappingsTable.getContainerMappings();
@@ -116,6 +118,7 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
      * 
      * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager#getEdgeMappings()
      */
+    @Override
     public List<EdgeMapping> getEdgeMappings() {
         if (descriptionMappings.isLayerMode()) {
             return mappingsTable.getEdgeMappings();
@@ -129,6 +132,7 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
      * 
      * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager#getContainerMappings(org.eclipse.sirius.viewpoint.DNodeContainer)
      */
+    @Override
     public List<ContainerMapping> getContainerMappings(final DNodeContainer container) {
         return getContainerMappings(container, false);
     }
@@ -139,6 +143,7 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
      * @see org.eclipse.sirius.business.api.componentization.DiagramMappingsManager#getContainerMappings(DNodeContainer,
      *      boolean))
      */
+    @Override
     public List<ContainerMapping> getContainerMappings(DNodeContainer container, boolean takeAlsoChildrenOfAllImportedMappings) {
         List<ContainerMapping> childrenContainerMappings = new ArrayList<ContainerMapping>();
         ContainerMapping containerViewMapping = container.getActualMapping();
@@ -175,6 +180,7 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
      * 
      * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager#getNodeMappings(org.eclipse.sirius.viewpoint.DNodeList)
      */
+    @Override
     public List<NodeMapping> getNodeMappings(final DNodeList container) {
         return getNodeMappings(container, false);
     }
@@ -182,9 +188,9 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.business.api.componentization.DiagramMappingsManager#getNodeMappings(DNodeList,
-     *      boolean))
+     * @see org.eclipse.sirius.business.api.componentization.DiagramMappingsManager#getNodeMappings(DNodeList, boolean))
      */
+    @Override
     public List<NodeMapping> getNodeMappings(DNodeList container, boolean takeAlsoChildrenOfAllImportedMappings) {
         List<NodeMapping> childrenNodeMappings = new ArrayList<NodeMapping>();
         ContainerMapping containerViewMapping = container.getActualMapping();
@@ -221,6 +227,7 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
      * 
      * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager#getNodeMappings(org.eclipse.sirius.viewpoint.DNodeContainer)
      */
+    @Override
     public List<NodeMapping> getNodeMappings(final DNodeContainer container) {
         return getNodeMappings(container, false);
     }
@@ -231,6 +238,7 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
      * @see org.eclipse.sirius.business.api.componentization.DiagramMappingsManager#getNodeMappings(DNodeContainer,
      *      boolean))
      */
+    @Override
     public List<NodeMapping> getNodeMappings(DNodeContainer container, boolean takeAlsoChildrenOfAllImportedMappings) {
         List<NodeMapping> childrenNodeMappings = new ArrayList<NodeMapping>();
         ContainerMapping containerViewMapping = container.getActualMapping();
@@ -267,6 +275,7 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
      * 
      * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager#getBorderedNodeMappings(org.eclipse.sirius.viewpoint.AbstractDNode)
      */
+    @Override
     public List<NodeMapping> getBorderedNodeMappings(final AbstractDNode node) {
         return getBorderedNodeMappings(node, false);
     }
@@ -277,6 +286,7 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
      * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager#getBorderedNodeMappings(org.eclipse.sirius.viewpoint.AbstractDNode,
      *      boolean)
      */
+    @Override
     public List<NodeMapping> getBorderedNodeMappings(AbstractDNode node, boolean takeAlsoChildrenOfAllImportedMappings) {
         List<NodeMapping> childrenBorderedNodeMappings = new ArrayList<NodeMapping>();
         AbstractNodeMapping containerViewMapping = (AbstractNodeMapping) node.getMapping();
@@ -313,6 +323,7 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
      * 
      * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager#getOtherImportersMappings()
      */
+    @Override
     public List<DiagramElementMapping> getOtherImportersMappings() {
         if (descriptionMappings.isLayerMode()) {
             return mappingsTable.getOtherImportersMappings();
@@ -327,6 +338,7 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
      * 
      * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManagerListener#mappingsComputed()
      */
+    @Override
     public void mappingsComputed(Collection<Viewpoint> enabledViewpoints) {
         computeMappings(enabledViewpoints, false);
     }
@@ -336,6 +348,7 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
      * 
      * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramDescriptionMappingsManagerListener#dispose()
      */
+    @Override
     public void dispose() {
         DiagramMappingsManagerRegistry.INSTANCE.removeDiagramMappingsManagers(this);
     }
@@ -343,6 +356,7 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<Layer> getActiveParentLayers(final DiagramElementMapping mapping) {
         return mappingsTable.getIndirectParentLayers(mapping);
     }
@@ -354,6 +368,7 @@ public final class DiagramMappingsManagerImpl implements DiagramMappingsManager,
      * @see org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager#iterate(org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingsListVisitor,
      *      org.eclipse.sirius.diagram.DragAndDropTarget)
      */
+    @Override
     public <T extends AbstractNodeMapping> void iterate(final MappingsListVisitor visitor, final DragAndDropTarget container) {
         if (descriptionMappings.isLayerMode()) {
             if (container instanceof DSemanticDecorator) {

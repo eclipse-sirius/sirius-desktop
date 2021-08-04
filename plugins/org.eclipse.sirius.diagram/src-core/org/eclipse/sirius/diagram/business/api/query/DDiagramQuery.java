@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,7 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.model.DDiagramInternalQuery;
 import org.eclipse.sirius.diagram.description.Layer;
 
 /**

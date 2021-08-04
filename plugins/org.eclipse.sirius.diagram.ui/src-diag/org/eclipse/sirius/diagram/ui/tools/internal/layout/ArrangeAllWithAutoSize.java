@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,8 +40,8 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.model.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.model.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
@@ -62,8 +62,8 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * This class capture all the needed changes to make to the arrange all behavior
- * so that auto-size is automatically applied on containers.
+ * This class capture all the needed changes to make to the arrange all behavior so that auto-size is automatically
+ * applied on containers.
  * 
  * @author cbrun
  */
@@ -100,11 +100,9 @@ public class ArrangeAllWithAutoSize {
 
     /**
      * Tests if the gmf view attached to this part contained the
-     * <code>{@link AbstractContainerViewFactory} JUST_CREATED</code> marker
-     * adapter. The marker is added by the DNodeContainerViewFactory to
-     * distinguish the views which have just been created to keep their default
-     * dimension setted by the view factory. We removed this marker if it's
-     * found.
+     * <code>{@link AbstractContainerViewFactory} JUST_CREATED</code> marker adapter. The marker is added by the
+     * DNodeContainerViewFactory to distinguish the views which have just been created to keep their default dimension
+     * setted by the view factory. We removed this marker if it's found.
      * 
      * @param part
      *            the graphical edit part.
@@ -134,22 +132,18 @@ public class ArrangeAllWithAutoSize {
     }
 
     /**
-     * return true if the auto-size on arrange all feature is enabled in the
-     * preferences.
+     * return true if the auto-size on arrange all feature is enabled in the preferences.
      * 
-     * @return true if the auto-size on arrange all feature is enabled in the
-     *         preferences.
+     * @return true if the auto-size on arrange all feature is enabled in the preferences.
      */
     public static boolean isEnabled() {
         return DiagramUIPlugin.getPlugin().getPreferenceStore().getBoolean(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name());
     }
 
     /**
-     * Prepare the auto-size support for an incoming arrange all. This
-     * preparation involve activating specific behavior on edit parts figures so
-     * that they are able, later on, to provide their 'incoming size after
-     * auto-size has been applied' so that the layout can leverage this
-     * information.
+     * Prepare the auto-size support for an incoming arrange all. This preparation involve activating specific behavior
+     * on edit parts figures so that they are able, later on, to provide their 'incoming size after auto-size has been
+     * applied' so that the layout can leverage this information.
      * 
      * @param unmodifiableIterator
      *            list iterator of edit parts.
@@ -159,11 +153,9 @@ public class ArrangeAllWithAutoSize {
     }
 
     /**
-     * Prepare the auto-size support for an incoming arrange all. This
-     * preparation involve activating specific behavior on edit parts figures so
-     * that they are able, later on, to provide their 'incoming size after
-     * auto-size has been applied' so that the layout can leverage this
-     * information.
+     * Prepare the auto-size support for an incoming arrange all. This preparation involve activating specific behavior
+     * on edit parts figures so that they are able, later on, to provide their 'incoming size after auto-size has been
+     * applied' so that the layout can leverage this information.
      * 
      * @param unmodifiableIterator
      *            list iterator of edit parts.
@@ -187,13 +179,11 @@ public class ArrangeAllWithAutoSize {
     }
 
     /**
-     * Return the dimension this edit part is going to take after application of
-     * the auto-size behavior.
+     * Return the dimension this edit part is going to take after application of the auto-size behavior.
      * 
      * @param ep
      *            any edit part part of the initialization process.
-     * @return the dimension this edit part is going to take after application
-     *         of the auto-size behavior.
+     * @return the dimension this edit part is going to take after application of the auto-size behavior.
      */
     public Dimension getSizeToConsiderDuringArrangeAll(final IGraphicalEditPart ep) {
         final Dimension size;
@@ -207,8 +197,7 @@ public class ArrangeAllWithAutoSize {
 
     // CHECKSTYLE:OFF
     /**
-     * Create the "Arrange All" sub-commands considering setting all the
-     * containers as auto-sized.
+     * Create the "Arrange All" sub-commands considering setting all the containers as auto-sized.
      * 
      * @param globalDiff
      *            current diff.
@@ -385,10 +374,9 @@ public class ArrangeAllWithAutoSize {
         if (node.data instanceof IGraphicalEditPart) {
             IGraphicalEditPart gep = (IGraphicalEditPart) node.data;
             /*
-             * 'delta' is how much the bordered node's parent has moved from its
-             * original position. For the bordered nodes, we can only get their
-             * original position (through the figure), but we assume they are
-             * moved along with their parent of the same delta.
+             * 'delta' is how much the bordered node's parent has moved from its original position. For the bordered
+             * nodes, we can only get their original position (through the figure), but we assume they are moved along
+             * with their parent of the same delta.
              */
             Dimension delta = box.getLocation().getDifference(gep.getFigure().getBounds().getLocation());
             for (AbstractDiagramBorderNodeEditPart borderedNode : Iterables.filter(gep.getChildren(), AbstractDiagramBorderNodeEditPart.class)) {

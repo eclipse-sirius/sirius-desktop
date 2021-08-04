@@ -17,7 +17,7 @@ import java.util.List;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.util.EcoreEList;
-import org.eclipse.sirius.business.internal.query.DModelElementInternalQuery;
+import org.eclipse.sirius.business.internal.query.model.DModelElementInternalQuery;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.impl.DTreeImpl;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;

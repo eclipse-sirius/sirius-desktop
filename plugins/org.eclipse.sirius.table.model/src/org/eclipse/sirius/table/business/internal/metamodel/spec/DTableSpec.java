@@ -15,7 +15,7 @@ package org.eclipse.sirius.table.business.internal.metamodel.spec;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.util.EcoreEList;
-import org.eclipse.sirius.business.internal.query.DModelElementInternalQuery;
+import org.eclipse.sirius.business.internal.query.model.DModelElementInternalQuery;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.impl.DTableImpl;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;

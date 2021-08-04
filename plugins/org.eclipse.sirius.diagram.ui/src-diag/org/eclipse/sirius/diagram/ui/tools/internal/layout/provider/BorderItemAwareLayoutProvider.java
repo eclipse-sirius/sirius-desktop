@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -80,7 +80,7 @@ import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.model.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
@@ -486,6 +486,7 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
      *            Tell if the normal arrange process must be called before the border item arrange
      * @return <code>Command</code> that when executed will layout the edit parts in the container
      */
+    @Override
     @SuppressWarnings("rawtypes")
     public Command layoutEditParts(final List selectedObjects, final IAdaptable layoutHint, final boolean normalArrangeMustBeCalled) {
         this.launchNormalArrange = normalArrangeMustBeCalled;

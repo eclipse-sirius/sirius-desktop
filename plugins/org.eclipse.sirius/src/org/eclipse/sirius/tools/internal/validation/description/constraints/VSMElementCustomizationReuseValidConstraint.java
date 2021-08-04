@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,8 +17,8 @@ import java.text.MessageFormat;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.IValidationContext;
-import org.eclipse.sirius.business.internal.query.EAttributeCustomizationQuery;
-import org.eclipse.sirius.business.internal.query.EReferenceCustomizationQuery;
+import org.eclipse.sirius.business.internal.query.model.EAttributeCustomizationQuery;
+import org.eclipse.sirius.business.internal.query.model.EReferenceCustomizationQuery;
 import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
 import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
@@ -26,9 +26,8 @@ import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
 import org.eclipse.sirius.viewpoint.description.VSMElementCustomizationReuse;
 
 /**
- * A
- * {@link AbstractEStructuralFeatureCustomizationFeatureNameCommonToAppliedOnConstraint}
- * to check validity of {@link VSMElementCustomizationReuse}.
+ * A {@link AbstractEStructuralFeatureCustomizationFeatureNameCommonToAppliedOnConstraint} to check validity of
+ * {@link VSMElementCustomizationReuse}.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */

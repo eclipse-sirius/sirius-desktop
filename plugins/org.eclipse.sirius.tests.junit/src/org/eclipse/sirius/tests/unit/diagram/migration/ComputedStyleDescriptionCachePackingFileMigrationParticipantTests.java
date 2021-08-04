@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo
+ * Copyright (c) 2015, 2021 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.internal.migration.ComputedStyleDescriptionCachePackingFileMigrationParticipant;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.model.DDiagramInternalQuery;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
@@ -29,10 +29,8 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.osgi.framework.Version;
 
 /**
- * Test if the migration of Bug 457481, i.e.
- * ComputedStyleDescriptionCachePackingFileMigrationParticipant, is correctly
- * launched. This migration optimize the storage of StyleDescription computed
- * through StyleCustomizations.
+ * Test if the migration of Bug 457481, i.e. ComputedStyleDescriptionCachePackingFileMigrationParticipant, is correctly
+ * launched. This migration optimize the storage of StyleDescription computed through StyleCustomizations.
  * 
  * @author cbrun
  */
@@ -56,8 +54,8 @@ public class ComputedStyleDescriptionCachePackingFileMigrationParticipantTests e
     }
 
     /**
-     * Test that the data were not migrated on the repo. It allows to check the
-     * effect of the migration in the other test.
+     * Test that the data were not migrated on the repo. It allows to check the effect of the migration in the other
+     * test.
      */
     public void testMigrationIsNeededOnData() {
         Version loadedVersion = checkRepresentationFileMigrationStatus(URI.createPlatformPluginURI(SESSION_RESOURCE_NAME, true), true);
@@ -68,9 +66,8 @@ public class ComputedStyleDescriptionCachePackingFileMigrationParticipantTests e
     }
 
     /**
-     * The test case contains Node, Container, Edges and List mappings and style
-     * customization reacting when a class is abstract. This test make sure we
-     * don't have too many instances of computed style description kepts in the
+     * The test case contains Node, Container, Edges and List mappings and style customization reacting when a class is
+     * abstract. This test make sure we don't have too many instances of computed style description kepts in the
      * diagram. inconsistency.
      */
     public void testMigration() {

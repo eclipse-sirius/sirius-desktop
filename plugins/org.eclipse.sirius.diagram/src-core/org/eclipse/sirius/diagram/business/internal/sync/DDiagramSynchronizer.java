@@ -78,8 +78,8 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.helper.EdgeMapping
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.MappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.model.DDiagramSpecOperations;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.model.DDiagramInternalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.model.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.ContainerMapping;

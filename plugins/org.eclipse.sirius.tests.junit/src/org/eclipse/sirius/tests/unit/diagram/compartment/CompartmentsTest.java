@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,8 +21,8 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.business.api.query.ContainerMappingQuery;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.model.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.model.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
@@ -57,8 +57,7 @@ public class CompartmentsTest extends SiriusDiagramTestCase implements ICompartm
     }
 
     /**
-     * Ensure that the different queries and helper methods correctly detect
-     * horizontal RegionContainers and Regions.
+     * Ensure that the different queries and helper methods correctly detect horizontal RegionContainers and Regions.
      */
     public void testHorizontalStackDetection() {
         diagram = (DDiagram) getRepresentations(HORIZONTAL_STACK_REPRESENTATION_NAME).iterator().next();
@@ -69,8 +68,7 @@ public class CompartmentsTest extends SiriusDiagramTestCase implements ICompartm
     }
 
     /**
-     * Ensure that the different queries and helper methods correctly detect
-     * vertical RegionContainers and Regions.
+     * Ensure that the different queries and helper methods correctly detect vertical RegionContainers and Regions.
      */
     public void testVerticalStackDetection() {
         diagram = (DDiagram) getRepresentations(VERTICAL_STACK_REPRESENTATION_NAME).iterator().next();

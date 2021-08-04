@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,12 +10,13 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.query;
+package org.eclipse.sirius.business.internal.query.model;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
 
 /**
@@ -38,22 +39,21 @@ public class EReferenceCustomizationQuery {
     }
 
     /**
-     * Tells if the current {@link EReferenceCustomization} is conforms to the
-     * specified style description element.
+     * Tells if the current {@link EReferenceCustomization} is conforms to the specified style description element.
      * 
      * @param eObject
      *            the specified style description element
-     * @return true if the current {@link EReferenceCustomization} is conforms,
-     *         false else
+     * @return true if the current {@link EReferenceCustomization} is conforms, false else
      */
     public boolean isStyleDescriptionEltConformToEReferenceCustomization(EObject eObject) {
         boolean isStyleDescriptionEltConformToEReferenceCustomization = false;
         String referenceName = eReferenceCustomization.getReferenceName();
         EObject value = eReferenceCustomization.getValue();
         if (referenceName != null && referenceName.length() > 0) {
-            isStyleDescriptionEltConformToEReferenceCustomization = eObject.eClass().getEStructuralFeature(referenceName) instanceof EReference;
+            EStructuralFeature eStructuralFeature = eObject.eClass().getEStructuralFeature(referenceName);
+            isStyleDescriptionEltConformToEReferenceCustomization = eStructuralFeature instanceof EReference;
             if (isStyleDescriptionEltConformToEReferenceCustomization && value != null) {
-                EClassifier eType = eObject.eClass().getEStructuralFeature(referenceName).getEType();
+                EClassifier eType = eStructuralFeature.getEType();
                 if (eType instanceof EClass) {
                     EClass type = (EClass) eType;
                     isStyleDescriptionEltConformToEReferenceCustomization = type.isSuperTypeOf(value.eClass());

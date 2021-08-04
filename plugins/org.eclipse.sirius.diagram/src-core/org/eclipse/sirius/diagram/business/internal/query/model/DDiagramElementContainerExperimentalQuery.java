@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.query;
+package org.eclipse.sirius.diagram.business.internal.query.model;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
@@ -42,8 +42,7 @@ public class DDiagramElementContainerExperimentalQuery {
     }
 
     /**
-     * Tests whether or not the {@link DNodeContainer} is a region (e.g. child
-     * of a region container, see
+     * Tests whether or not the {@link DNodeContainer} is a region (e.g. child of a region container, see
      * {@link DNodeContainerExperimentalQuery#isRegionContainer()}).
      * 
      * @return <code>true</code> if the {@link DNodeContainer} is a region.
@@ -59,9 +58,8 @@ public class DDiagramElementContainerExperimentalQuery {
     }
 
     /**
-     * Tests whether or not the {@link DNodeContainer} is a region (e.g. child
-     * of an horizontal stack region container, see
-     * {@link DNodeContainerExperimentalQuery#isHorizontaltackContainer()}).
+     * Tests whether or not the {@link DNodeContainer} is a region (e.g. child of an horizontal stack region container,
+     * see {@link DNodeContainerExperimentalQuery#isHorizontaltackContainer()}).
      * 
      * @return <code>true</code> if the {@link DNodeContainer} is a region.
      */
@@ -76,8 +74,7 @@ public class DDiagramElementContainerExperimentalQuery {
     }
 
     /**
-     * Tests whether or not the {@link DNodeContainer} is a region (e.g. child
-     * of a vertical stack region container, see
+     * Tests whether or not the {@link DNodeContainer} is a region (e.g. child of a vertical stack region container, see
      * {@link DNodeContainerExperimentalQuery#isVerticalStackContainer()}).
      * 
      * @return <code>true</code> if the {@link DNodeContainer} is a region.
@@ -93,8 +90,7 @@ public class DDiagramElementContainerExperimentalQuery {
     }
 
     /**
-     * Get the label border style of the current
-     * {@link DDiagramElementContainer} if it exists.
+     * Get the label border style of the current {@link DDiagramElementContainer} if it exists.
      * 
      * @return an {@link Option} with the found label border style if it exists.
      */

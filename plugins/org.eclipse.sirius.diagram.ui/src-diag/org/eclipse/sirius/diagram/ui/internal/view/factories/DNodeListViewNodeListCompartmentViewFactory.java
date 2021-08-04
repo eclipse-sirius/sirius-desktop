@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,7 @@ import org.eclipse.gmf.runtime.notation.Style;
 import org.eclipse.gmf.runtime.notation.TitleStyle;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DNodeList;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.model.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 
@@ -37,6 +37,7 @@ public class DNodeListViewNodeListCompartmentViewFactory extends BasicNodeViewFa
     /**
      * @was-generated
      */
+    @Override
     protected List<?> createStyles(View view) {
         List<Style> styles = new ArrayList<>();
         styles.add(NotationFactory.eINSTANCE.createSortingStyle());
@@ -53,6 +54,7 @@ public class DNodeListViewNodeListCompartmentViewFactory extends BasicNodeViewFa
     /**
      * @was-generated
      */
+    @Override
     protected void decorateView(View containerView, View view, IAdaptable semanticAdapter, String semanticHint, int index, boolean persisted) {
         if (semanticHint == null) {
             semanticHint = SiriusVisualIDRegistry.getType(DNodeListViewNodeListCompartmentEditPart.VISUAL_ID);
@@ -78,13 +80,13 @@ public class DNodeListViewNodeListCompartmentViewFactory extends BasicNodeViewFa
      */
     protected void setupCompartmentCollapsed(View view) {
         DrawerStyle drawerStyle = (DrawerStyle) view.getStyle(NotationPackage.eINSTANCE.getDrawerStyle());
-        
+
         EObject element = view.getElement();
         if (drawerStyle == null && element instanceof DNodeList && new DDiagramElementContainerExperimentalQuery((DNodeList) element).isRegion()) {
             drawerStyle = NotationFactory.eINSTANCE.createDrawerStyle();
             view.getStyles().add(drawerStyle);
         }
-        
+
         if (drawerStyle != null) {
             drawerStyle.setCollapsed(false);
         }

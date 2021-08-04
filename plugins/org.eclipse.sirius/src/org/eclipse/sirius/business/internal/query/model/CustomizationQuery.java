@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.query;
+package org.eclipse.sirius.business.internal.query.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,11 +40,9 @@ public class CustomizationQuery {
     }
 
     /**
-     * Get the {@link VSMElementCustomization}s owned by this
-     * {@link Customization}.
+     * Get the {@link VSMElementCustomization}s owned by this {@link Customization}.
      * 
-     * @return the {@link VSMElementCustomization}s owned by this
-     *         {@link Customization}
+     * @return the {@link VSMElementCustomization}s owned by this {@link Customization}
      */
     public List<VSMElementCustomization> getVSMElementCustomizations() {
         List<VSMElementCustomization> vsmElementCustomizations = new ArrayList<VSMElementCustomization>();
@@ -57,11 +55,9 @@ public class CustomizationQuery {
     }
 
     /**
-     * the {@link VSMElementCustomizationReuse}s owned by this
-     * {@link Customization}.
+     * the {@link VSMElementCustomizationReuse}s owned by this {@link Customization}.
      * 
-     * @return the {@link VSMElementCustomizationReuse}s owned by this
-     *         {@link Customization}
+     * @return the {@link VSMElementCustomizationReuse}s owned by this {@link Customization}
      */
     public List<VSMElementCustomizationReuse> getVSMElementCustomzationReuses() {
         List<VSMElementCustomizationReuse> vsmElementCustomizationReuses = new ArrayList<VSMElementCustomizationReuse>();

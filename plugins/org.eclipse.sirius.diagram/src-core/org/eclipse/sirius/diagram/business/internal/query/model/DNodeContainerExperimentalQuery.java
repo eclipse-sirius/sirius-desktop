@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.business.internal.query;
+package org.eclipse.sirius.diagram.business.internal.query.model;
 
 import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.DNodeContainer;
@@ -34,44 +34,40 @@ public class DNodeContainerExperimentalQuery {
     }
 
     /**
-     * Tests whether or not the {@link DNodeContainer} is a free form container,
-     * according to the {@link ContainerLayout} specified in the VSM.
+     * Tests whether or not the {@link DNodeContainer} is a free form container, according to the
+     * {@link ContainerLayout} specified in the VSM.
      * 
-     * @return <code>true</code> if the {@link DNodeContainer} has a free form
-     *         children presentation.
+     * @return <code>true</code> if the {@link DNodeContainer} has a free form children presentation.
      */
     public boolean isFreeFormContainer() {
         return ContainerLayout.FREE_FORM == container.getChildrenPresentation();
     }
 
     /**
-     * Tests whether or not the {@link DNodeContainer} is a vertical stack
-     * container, according to the {@link ContainerLayout} specified in the VSM.
+     * Tests whether or not the {@link DNodeContainer} is a vertical stack container, according to the
+     * {@link ContainerLayout} specified in the VSM.
      * 
-     * @return <code>true</code> if the {@link DNodeContainer} has a vertical
-     *         stack children presentation.
+     * @return <code>true</code> if the {@link DNodeContainer} has a vertical stack children presentation.
      */
     public boolean isVerticalStackContainer() {
         return ContainerLayout.VERTICAL_STACK == container.getChildrenPresentation();
     }
 
     /**
-     * Tests whether or not the {@link DNodeContainer} is a horizontal stack
-     * container, according to the {@link ContainerLayout} specified in the VSM.
+     * Tests whether or not the {@link DNodeContainer} is a horizontal stack container, according to the
+     * {@link ContainerLayout} specified in the VSM.
      * 
-     * @return <code>true</code> if the {@link DNodeContainer} has a horizontal
-     *         stack children presentation.
+     * @return <code>true</code> if the {@link DNodeContainer} has a horizontal stack children presentation.
      */
     public boolean isHorizontaltackContainer() {
         return ContainerLayout.HORIZONTAL_STACK == container.getChildrenPresentation();
     }
 
     /**
-     * Tests whether or not the {@link DNodeContainer} is a region container,
-     * according to the {@link ContainerLayout} specified in the VSM.
+     * Tests whether or not the {@link DNodeContainer} is a region container, according to the {@link ContainerLayout}
+     * specified in the VSM.
      * 
-     * @return <code>true</code> if the {@link DNodeContainer} is a region
-     *         container.
+     * @return <code>true</code> if the {@link DNodeContainer} is a region container.
      */
     public boolean isRegionContainer() {
         return isVerticalStackContainer() || isHorizontaltackContainer();

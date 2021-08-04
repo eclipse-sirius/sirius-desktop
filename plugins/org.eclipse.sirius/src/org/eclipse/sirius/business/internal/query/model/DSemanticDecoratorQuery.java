@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES. All rights reserved. This program
+ * Copyright (c) 2014, 2021 THALES GLOBAL SERVICES. All rights reserved. This program
  * and the accompanying materials are made available under the terms of the
  * Eclipse Public License 2.0 which accompanies this distribution, and is
 t https://www.eclipse.org/legal/epl-2.0/
@@ -8,7 +8,7 @@ t SPDX-License-Identifier: EPL-2.0
  *
  * Contributors: Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.business.internal.query;
+package org.eclipse.sirius.business.internal.query.model;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;

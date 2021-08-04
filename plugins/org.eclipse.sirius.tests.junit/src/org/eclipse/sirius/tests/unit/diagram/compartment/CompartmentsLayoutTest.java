@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -63,8 +63,8 @@ import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.LineStyle;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.model.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.model.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
 import org.eclipse.sirius.diagram.ui.business.internal.edit.helpers.LabelAlignmentHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
@@ -144,8 +144,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
     }
 
     /**
-     * Ensure that labels in a horizontal compartment stack are correctly
-     * layouted.
+     * Ensure that labels in a horizontal compartment stack are correctly layouted.
      */
     public void testLabelAlignmentInHorizontalStack() {
         diagram = (DDiagram) getRepresentations(HORIZONTAL_STACK_REPRESENTATION_NAME).iterator().next();
@@ -156,8 +155,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
     }
 
     /**
-     * Ensure that labels in a vertical compartment stack are correctly
-     * layouted.
+     * Ensure that labels in a vertical compartment stack are correctly layouted.
      */
     public void testLabelAlignmentInVerticalStack() {
         diagram = (DDiagram) getRepresentations(VERTICAL_STACK_REPRESENTATION_NAME).iterator().next();
@@ -286,10 +284,8 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
      * @param expectedGmfBounds
      *            The GMF expected bounds
      * @param expectedFigureBounds
-     *            The draw2d expected bounds. If the x, y , width or height in
-     *            this bounds is equal to -1, we don't check it. This is useful
-     *            in case of size that depends on Font (with different result
-     *            according to OS).
+     *            The draw2d expected bounds. If the x, y , width or height in this bounds is equal to -1, we don't
+     *            check it. This is useful in case of size that depends on Font (with different result according to OS).
      * @return the current DrawD2 bounds
      */
     private Rectangle checkBounds(String label, Rectangle expectedGmfBounds, Rectangle expectedFigureBounds) {
@@ -304,16 +300,14 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
      * @param expectedGmfBounds
      *            The GMF expected bounds
      * @param expectedFigureBounds
-     *            The draw2d expected bounds. If the x, y , width or height in
-     *            this bounds is equal to -1, we don't check it. This is useful
-     *            in case of size that depends on Font (with different result
-     *            according to OS).
+     *            The draw2d expected bounds. If the x, y , width or height in this bounds is equal to -1, we don't
+     *            check it. This is useful in case of size that depends on Font (with different result according to OS).
      * @param widthDelta
-     *            The width delta to consider the width as equal (because of
-     *            font size that can be slightly different on each OS).
+     *            The width delta to consider the width as equal (because of font size that can be slightly different on
+     *            each OS).
      * @param heightDelta
-     *            The height delta to consider the height as equal (because of
-     *            font size that can be slightly different on each OS).
+     *            The height delta to consider the height as equal (because of font size that can be slightly different
+     *            on each OS).
      * @return the current DrawD2 bounds
      */
     private Rectangle checkBounds(String label, Rectangle expectedGmfBounds, Rectangle expectedFigureBounds, int widthDelta, int heightDelta) {
@@ -404,8 +398,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
     }
 
     /**
-     * Ensure that borders changes in a horizontal compartment stack are
-     * correctly done.
+     * Ensure that borders changes in a horizontal compartment stack are correctly done.
      */
     public void testHorizontalStackBorderChanges() {
         diagram = (DDiagram) getRepresentations(HORIZONTAL_STACK_REPRESENTATION_NAME).iterator().next();
@@ -416,8 +409,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
     }
 
     /**
-     * Ensure that borders changes in a vertical compartment stack are correctly
-     * done.
+     * Ensure that borders changes in a vertical compartment stack are correctly done.
      */
     public void testVerticalStackBorderChanges() {
         diagram = (DDiagram) getRepresentations(VERTICAL_STACK_REPRESENTATION_NAME).iterator().next();
@@ -469,8 +461,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
     }
 
     /**
-     * Ensure that borders changes in a horizontal compartment stack are
-     * correctly done.
+     * Ensure that borders changes in a horizontal compartment stack are correctly done.
      */
     public void testHorizontalStackCornerChanges() {
         diagram = (DDiagram) getRepresentations(HORIZONTAL_STACK_REPRESENTATION_NAME).iterator().next();
@@ -481,8 +472,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
     }
 
     /**
-     * Ensure that borders changes in a vertical compartment stack are correctly
-     * done.
+     * Ensure that borders changes in a vertical compartment stack are correctly done.
      */
     public void testVerticalStackCornerChanges() {
         diagram = (DDiagram) getRepresentations(VERTICAL_STACK_REPRESENTATION_NAME).iterator().next();
@@ -713,8 +703,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
     }
 
     /**
-     * Test the layout after a deletion of a semantic element represented by the
-     * first region of a HStack container.
+     * Test the layout after a deletion of a semantic element represented by the first region of a HStack container.
      */
     public void testRemoveSemanticElementInHorizontalStack() {
         diagram = (DDiagram) getRepresentations(HORIZONTAL_STACK_REPRESENTATION_NAME).iterator().next();
@@ -734,8 +723,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
     }
 
     /**
-     * Test the layout after a deletion of a semantic element represented by the
-     * first region of a VStack container.
+     * Test the layout after a deletion of a semantic element represented by the first region of a VStack container.
      */
     public void testRemoveSemanticElementInVerticalStack() {
         diagram = (DDiagram) getRepresentations(VERTICAL_STACK_REPRESENTATION_NAME).iterator().next();
@@ -778,8 +766,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
     }
 
     /**
-     * Test the layout after an add of a semantic element represented by a
-     * region of a HStack container.
+     * Test the layout after an add of a semantic element represented by a region of a HStack container.
      */
     public void testAddSemanticElementInHorizontalStack() {
         diagram = (DDiagram) getRepresentations(HORIZONTAL_STACK_REPRESENTATION_NAME).iterator().next();
@@ -809,8 +796,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
     }
 
     /**
-     * Test the layout after an add of a semantic element represented by a
-     * region of a VStack container.
+     * Test the layout after an add of a semantic element represented by a region of a VStack container.
      */
     public void testAddSemanticElementInVerticalStack() {
         diagram = (DDiagram) getRepresentations(VERTICAL_STACK_REPRESENTATION_NAME).iterator().next();
@@ -1178,8 +1164,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
     }
 
     /**
-     * Return the actual label alignment of the given part. See
-     * LabelAlignmentHelper.
+     * Return the actual label alignment of the given part. See LabelAlignmentHelper.
      * 
      * @param abstractDiagramNameEditPart
      *            the given part

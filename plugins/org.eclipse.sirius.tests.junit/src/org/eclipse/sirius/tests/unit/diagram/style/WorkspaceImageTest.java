@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,7 +26,7 @@ import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramInternalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.model.DDiagramInternalQuery;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
@@ -168,8 +168,8 @@ public class WorkspaceImageTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Makes sure that the node P1 has a workspace image. The workspace image
-     * description has an empty image path. see VP-3313.
+     * Makes sure that the node P1 has a workspace image. The workspace image description has an empty image path. see
+     * VP-3313.
      */
     public void testEmptyWorkspaceImagePath() {
         diagram = (DDiagram) getRepresentations(REPRESENTATION_DESC_NAME).toArray()[0];
@@ -184,8 +184,8 @@ public class WorkspaceImageTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Makes sure that the container and list has a workspace image when the
-     * description references a non existing image.
+     * Makes sure that the container and list has a workspace image when the description references a non existing
+     * image.
      */
     public void testNotFoundImage() {
         diagram = (DDiagram) getRepresentations(REPRESENTATION_DESC_NAME).toArray()[0];
@@ -210,6 +210,7 @@ public class WorkspaceImageTest extends SiriusDiagramTestCase {
     private void validateNodeSize(final EClass type, Dimension expectedSize) {
 
         Predicate<DNode> expectedType = new Predicate<DNode>() {
+            @Override
             public boolean apply(DNode input) {
                 return type.isInstance(input.getTarget());
             }

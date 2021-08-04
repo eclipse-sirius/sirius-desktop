@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,7 @@ import java.util.Set;
 
 import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.business.internal.query.CustomizationQuery;
+import org.eclipse.sirius.business.internal.query.model.CustomizationQuery;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.BestStyleDescriptionKey;
@@ -56,20 +56,16 @@ public class StyleDescriptionQuery {
     }
 
     /**
-     * Get all {@link EStructuralFeatureCustomization} applied on the current
-     * {@link StyleDescription} or a element owned by a {@link StyleDescription}
-     * , for example a BasicLabelStyleDescription, a
-     * LabelBorderStyleDescription, a GaugeSectionDescription or a
-     * ConditionalStyleDescription, which is enabled.
+     * Get all {@link EStructuralFeatureCustomization} applied on the current {@link StyleDescription} or a element
+     * owned by a {@link StyleDescription} , for example a BasicLabelStyleDescription, a LabelBorderStyleDescription, a
+     * GaugeSectionDescription or a ConditionalStyleDescription, which is enabled.
      * 
      * @param bestStyleDescriptionKey
-     *            the {@link BestStyleDescriptionKey} identifying the best
-     *            {@link StyleDescription}
+     *            the {@link BestStyleDescriptionKey} identifying the best {@link StyleDescription}
      * @param interpreter
-     *            the {@link IInterpreter} used to know if a
-     *            {@link EStructuralFeatureCustomization} is enabled
-     * @return all {@link EStructuralFeatureCustomization} applied on the
-     *         current {@link StyleDescription} which is enabled
+     *            the {@link IInterpreter} used to know if a {@link EStructuralFeatureCustomization} is enabled
+     * @return all {@link EStructuralFeatureCustomization} applied on the current {@link StyleDescription} which is
+     *         enabled
      */
     public Map<EStructuralFeatureCustomization, Set<EObject>> getEStructuralFeatureCustomizationAppliedOn(BestStyleDescriptionKey bestStyleDescriptionKey, IInterpreter interpreter) {
         Map<EStructuralFeatureCustomization, Set<EObject>> eStructuralFeatureCustomizationsAppliedOn = new LinkedHashMap<EStructuralFeatureCustomization, Set<EObject>>();
@@ -183,11 +179,9 @@ public class StyleDescriptionQuery {
     }
 
     /**
-     * Get the {@link DiagramDescription} parent of the {@link StyleDescription}
-     * .
+     * Get the {@link DiagramDescription} parent of the {@link StyleDescription} .
      * 
-     * @return the {@link DiagramDescription} parent of the
-     *         {@link StyleDescription}
+     * @return the {@link DiagramDescription} parent of the {@link StyleDescription}
      */
     public DiagramDescription getDiagramDescription() {
         DiagramDescription diagramDescription = null;

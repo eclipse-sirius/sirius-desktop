@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2016 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,7 +28,7 @@ import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.model.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListViewNodeListCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
@@ -42,9 +42,8 @@ import com.google.common.collect.Iterators;
 import com.google.common.collect.Lists;
 
 /**
- * Add a GMF {@link DrawerStyle} instance on existing {@link View} with an
- * element that is an instance of {@link DDiagramElementContainer} and is a
- * specified as a Region/compartiment.
+ * Add a GMF {@link DrawerStyle} instance on existing {@link View} with an element that is an instance of
+ * {@link DDiagramElementContainer} and is a specified as a Region/compartiment.
  * 
  * @author <a href="mailto:maxime.porhel@obeo.fr">Maxime Porhel</a>
  *
@@ -90,8 +89,7 @@ public class CollapseSupportOnRegionMigrationParticipant extends AbstractReprese
     }
 
     /**
-     * A predicate that checks if the element represents the compartiment node
-     * of a region.
+     * A predicate that checks if the element represents the compartiment node of a region.
      * 
      * @author mporhel
      * 

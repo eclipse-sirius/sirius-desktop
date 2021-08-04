@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2006, 2013 IBM Corporation and others.
+ * Copyright (c) 2006, 2021 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -45,8 +45,8 @@ import org.eclipse.gmf.runtime.draw2d.ui.internal.graph.VirtualNode;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
-import org.eclipse.sirius.diagram.business.internal.query.DDiagramElementContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.business.internal.query.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.model.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.business.internal.query.model.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IAbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
@@ -54,19 +54,16 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 
 /**
- * Customized version of the standard CompositeDirectedGraphLayout to improve
- * auto-size handling. The original class does not support extensibility, so its
- * whole code has been copied here and adapted, from the version in GMF 1.0.101.
+ * Customized version of the standard CompositeDirectedGraphLayout to improve auto-size handling. The original class
+ * does not support extensibility, so its whole code has been copied here and adapted, from the version in GMF 1.0.101.
  * <p>
  * Changes from original:
  * <ul>
  * <li>Backport of the fix in version 1.4 of the fils in CVS (
  * <code>http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.gmf/plugins/org.eclipse.gmf.runtime.draw2d.ui/src/org/eclipse/gmf/runtime/draw2d/ui/internal/graph/CompositeDirectedGraphLayout.java?revision=1.4&root=Modeling_Project&view=markup</code>
  * )</li>
- * <LI>Add a graph direction variable as in GMF 1.3.0 to manage correctly the
- * leftRight layout of CompositeLayout</LI>
- * <LI>Change the insets used in recursiveHandleVirtualNode to get the computed
- * Insets of our CompositeLayout</LI>
+ * <LI>Add a graph direction variable as in GMF 1.3.0 to manage correctly the leftRight layout of CompositeLayout</LI>
+ * <LI>Change the insets used in recursiveHandleVirtualNode to get the computed Insets of our CompositeLayout</LI>
  * </ul>
  * 
  * @author pcdavid
@@ -79,9 +76,7 @@ public class AutoSizeAndRegionAwareGraphLayout extends CompositeDirectedGraphLay
 
     /*
      * (non-Javadoc)
-     * @see
-     * org.eclipse.draw2d.graph.DirectedGraphLayout#visit(org.eclipse.draw2d
-     * .graph.DirectedGraph)
+     * @see org.eclipse.draw2d.graph.DirectedGraphLayout#visit(org.eclipse.draw2d .graph.DirectedGraph)
      */
     @Override
     public void visit(DirectedGraph graph) {
@@ -130,8 +125,8 @@ public class AutoSizeAndRegionAwareGraphLayout extends CompositeDirectedGraphLay
 
             final boolean concernRegions = (parent == null && areRegions(nodes)) || (parent != null && getRegionContainer(parent).some());
             /*
-             * Handle regions : deactivate the default behavior where all nodes
-             * of a same row have the same vertical bounds
+             * Handle regions : deactivate the default behavior where all nodes of a same row have the same vertical
+             * bounds
              */
             if (!concernRegions) {
                 DirectedGraphLayout layout = new DirectedGraphLayout();
@@ -139,10 +134,9 @@ public class AutoSizeAndRegionAwareGraphLayout extends CompositeDirectedGraphLay
             }
 
             /*
-             * <handle_bordered_nodes> Translate all the elements at this level
-             * of the appropriate offsets to consider their bordered nodes.
-             * Otherwise elements are put too close to their parent's border,
-             * and the bordered nodes cause the appearance of scrollbars.
+             * <handle_bordered_nodes> Translate all the elements at this level of the appropriate offsets to consider
+             * their bordered nodes. Otherwise elements are put too close to their parent's border, and the bordered
+             * nodes cause the appearance of scrollbars.
              */
             Dimension offsets = getOffsets(nodes);
             for (int j = 0; j < nodes.size(); j++) {
@@ -152,8 +146,8 @@ public class AutoSizeAndRegionAwareGraphLayout extends CompositeDirectedGraphLay
             }
 
             /*
-             * Handle regions : deactivate the default behavior where all nodes
-             * of a same row have the same vertical bounds
+             * Handle regions : deactivate the default behavior where all nodes of a same row have the same vertical
+             * bounds
              */
             if (concernRegions) {
                 adjustRegionsLayout(nodes, parent);
@@ -193,7 +187,7 @@ public class AutoSizeAndRegionAwareGraphLayout extends CompositeDirectedGraphLay
             commonWidth = Math.max(commonWidth, n.width);
             commonHeight = Math.max(commonHeight, n.height);
         }
-        
+
         int y = 0;
         int x = 0;
         for (int j = 0; j < nodes.size(); j++) {
@@ -259,9 +253,8 @@ public class AutoSizeAndRegionAwareGraphLayout extends CompositeDirectedGraphLay
     }
 
     /**
-     * Computes how much the specified nodes should be moved to make enough room
-     * for the parent container to contain them
-     * <em>with their bordered nodes</em>.
+     * Computes how much the specified nodes should be moved to make enough room for the parent container to contain
+     * them <em>with their bordered nodes</em>.
      */
     private Dimension getOffsets(NodeList nodes) {
         Node node = nodes.getNode(0);
@@ -482,8 +475,7 @@ public class AutoSizeAndRegionAwareGraphLayout extends CompositeDirectedGraphLay
         subGraph.height = bottom - top + yDiff;
 
         /*
-         * <auto-size_fix> This algorithm comes from
-         * org.eclipse.gmf.runtime.diagram.ui.layout.FreeFormLayoutEx
+         * <auto-size_fix> This algorithm comes from org.eclipse.gmf.runtime.diagram.ui.layout.FreeFormLayoutEx
          * .layout(IFigure parent).
          */
         if (subGraph.data instanceof IGraphicalEditPart) {
