@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2008 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.api.helper.layers;
 
+import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 
 /**
@@ -33,10 +34,9 @@ public final class LayerService {
      * 
      * @param diagramDescription
      *            the diagram description to check
-     * @return <code>true</code> if we are in the without layer mode,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if we are in the without layer mode, <code>false</code> otherwise
      */
     public static boolean withoutLayersMode(final DiagramDescription diagramDescription) {
-        return diagramDescription.getDefaultLayer() == null;
+        return LayerModelHelper.withoutLayersMode(diagramDescription);
     }
 }

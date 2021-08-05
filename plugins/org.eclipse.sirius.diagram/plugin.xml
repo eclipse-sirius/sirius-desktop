@@ -247,63 +247,15 @@
             <param name="semanticHint" value="3001"/>
          </metamodelType>
       </metamodel>
-	</extension>
+    </extension>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated diagram -->
-      <package
-            uri="http://www.eclipse.org/sirius/diagram/1.1.0"
-            class="org.eclipse.sirius.diagram.DiagramPackage"
-            genModel="model/diagram.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated diagram -->
-      <package
-            uri="http://www.eclipse.org/sirius/diagram/description/1.1.0"
-            class="org.eclipse.sirius.diagram.description.DescriptionPackage"
-            genModel="model/diagram.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated diagram -->
-      <package
-            uri="http://www.eclipse.org/sirius/diagram/description/style/1.1.0"
-            class="org.eclipse.sirius.diagram.description.style.StylePackage"
-            genModel="model/diagram.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated diagram -->
-      <package
-            uri="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0"
-            class="org.eclipse.sirius.diagram.description.tool.ToolPackage"
-            genModel="model/diagram.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated diagram -->
-      <package
-            uri="http://www.eclipse.org/sirius/diagram/description/filter/1.1.0"
-            class="org.eclipse.sirius.diagram.description.filter.FilterPackage"
-            genModel="model/diagram.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated diagram -->
-      <package
-            uri="http://www.eclipse.org/sirius/diagram/description/concern/1.1.0"
-            class="org.eclipse.sirius.diagram.description.concern.ConcernPackage"
-            genModel="model/diagram.genmodel"/>
-   </extension>
-   
   <extension
          point="org.eclipse.emf.validation.constraintProviders">
       <category
-		id="org.eclipse.sirius.diagram.category"
-		mandatory="false"
-		name="%category.siriusValidation.name">   
-			<![CDATA[Sirius]]>
+        id="org.eclipse.sirius.diagram.category"
+        mandatory="false"
+        name="%category.siriusValidation.name">
+            <![CDATA[Sirius]]>
       </category>	
       <constraintProvider
             cache="false"            

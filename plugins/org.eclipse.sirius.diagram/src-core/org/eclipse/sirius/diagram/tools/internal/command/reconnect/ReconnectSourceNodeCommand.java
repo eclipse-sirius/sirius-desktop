@@ -17,7 +17,7 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.Messages;
+import org.eclipse.sirius.diagram.tools.internal.Messages;
 
 /**
  * Specific command to change the source node and the semantic target of a

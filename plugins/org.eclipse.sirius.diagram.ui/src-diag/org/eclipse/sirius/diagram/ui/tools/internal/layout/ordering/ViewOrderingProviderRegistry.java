@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,8 +22,8 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.EMFPlugin;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.ordering.ViewOrderingProvider;
 
@@ -56,8 +56,7 @@ public final class ViewOrderingProviderRegistry {
     }
 
     /**
-     * This will parse the currently running platform for extensions and store
-     * all the match engines that can be found.
+     * This will parse the currently running platform for extensions and store all the match engines that can be found.
      */
     private void parseExtensionMetadata() {
         if (EMFPlugin.IS_ECLIPSE_RUNNING) {
@@ -98,14 +97,12 @@ public final class ViewOrderingProviderRegistry {
     }
 
     /**
-     * Return the {@link ViewOrderingProvider} to use for the specified mapping.
-     * Return <code>null</code> if no {@link ViewOrderingProvider} is available
-     * for the specified mapping.
+     * Return the {@link ViewOrderingProvider} to use for the specified mapping. Return <code>null</code> if no
+     * {@link ViewOrderingProvider} is available for the specified mapping.
      * 
      * @param mapping
      *            the mapping.
-     * @return the {@link ViewOrderingProvider} to use for the specified
-     *         mapping.
+     * @return the {@link ViewOrderingProvider} to use for the specified mapping.
      */
     public ViewOrderingProvider getProvider(final DiagramElementMapping mapping) {
         final Iterator<ViewOrderingProvider> iterProviders = this.getAllProviders().iterator();

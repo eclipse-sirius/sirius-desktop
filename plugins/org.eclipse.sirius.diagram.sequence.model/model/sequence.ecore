@@ -2,7 +2,7 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="sequence" nsURI="http://www.eclipse.org/sirius/diagram/sequence/2.0.0"
     nsPrefix="sequence">
-  <eClassifiers xsi:type="ecore:EClass" name="SequenceDDiagram" eSuperTypes="../../org.eclipse.sirius.diagram/model/diagram.ecore#//DSemanticDiagram">
+  <eClassifiers xsi:type="ecore:EClass" name="SequenceDDiagram" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//DSemanticDiagram">
     <eStructuralFeatures xsi:type="ecore:EReference" name="semanticOrdering" eType="#//ordering/EventEndsOrdering"
         transient="true" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="graphicalOrdering" eType="#//ordering/EventEndsOrdering"
@@ -12,7 +12,7 @@
   </eClassifiers>
   <eSubpackages name="description" nsURI="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0"
       nsPrefix="description">
-    <eClassifiers xsi:type="ecore:EClass" name="SequenceDiagramDescription" eSuperTypes="../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/DiagramDescription">
+    <eClassifiers xsi:type="ecore:EClass" name="SequenceDiagramDescription" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/DiagramDescription">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="endsOrdering" lowerBound="1"
           eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
@@ -30,7 +30,7 @@
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
       </eStructuralFeatures>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="InstanceRoleMapping" eSuperTypes="../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/NodeMapping"/>
+    <eClassifiers xsi:type="ecore:EClass" name="InstanceRoleMapping" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/NodeMapping"/>
     <eClassifiers xsi:type="ecore:EClass" name="EventMapping" abstract="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="DelimitedEventMapping" abstract="true"
         eSuperTypes="#//description/EventMapping">
@@ -49,10 +49,10 @@
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
       </eStructuralFeatures>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="ExecutionMapping" eSuperTypes="../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/NodeMapping #//description/DelimitedEventMapping"/>
-    <eClassifiers xsi:type="ecore:EClass" name="StateMapping" eSuperTypes="../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/NodeMapping #//description/DelimitedEventMapping"/>
-    <eClassifiers xsi:type="ecore:EClass" name="EndOfLifeMapping" eSuperTypes="../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/NodeMapping"/>
-    <eClassifiers xsi:type="ecore:EClass" name="MessageMapping" abstract="true" eSuperTypes="../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/EdgeMapping #//description/EventMapping">
+    <eClassifiers xsi:type="ecore:EClass" name="ExecutionMapping" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/NodeMapping #//description/DelimitedEventMapping"/>
+    <eClassifiers xsi:type="ecore:EClass" name="StateMapping" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/NodeMapping #//description/DelimitedEventMapping"/>
+    <eClassifiers xsi:type="ecore:EClass" name="EndOfLifeMapping" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/NodeMapping"/>
+    <eClassifiers xsi:type="ecore:EClass" name="MessageMapping" abstract="true" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/EdgeMapping #//description/EventMapping">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="sendingEndFinderExpression"
           lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
@@ -82,7 +82,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="DestructionMessageMapping" eSuperTypes="#//description/MessageMapping"/>
     <eClassifiers xsi:type="ecore:EClass" name="MessageEndVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/AbstractVariable"/>
     <eClassifiers xsi:type="ecore:EClass" name="CoveredLifelinesVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/AbstractVariable"/>
-    <eClassifiers xsi:type="ecore:EClass" name="FrameMapping" abstract="true" eSuperTypes="../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/ContainerMapping #//description/DelimitedEventMapping">
+    <eClassifiers xsi:type="ecore:EClass" name="FrameMapping" abstract="true" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/ContainerMapping #//description/DelimitedEventMapping">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="coveredLifelinesExpression"
           lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
@@ -100,8 +100,8 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="InteractionUseMapping" eSuperTypes="#//description/FrameMapping"/>
     <eClassifiers xsi:type="ecore:EClass" name="CombinedFragmentMapping" eSuperTypes="#//description/FrameMapping"/>
-    <eClassifiers xsi:type="ecore:EClass" name="OperandMapping" eSuperTypes="../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/ContainerMapping #//description/DelimitedEventMapping"/>
-    <eClassifiers xsi:type="ecore:EClass" name="ObservationPointMapping" eSuperTypes="../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/NodeMapping"/>
+    <eClassifiers xsi:type="ecore:EClass" name="OperandMapping" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/ContainerMapping #//description/DelimitedEventMapping"/>
+    <eClassifiers xsi:type="ecore:EClass" name="ObservationPointMapping" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/NodeMapping"/>
     <eSubpackages name="tool" nsURI="http://www.eclipse.org/sirius/diagram/sequence/description/tool/2.0.0"
         nsPrefix="tool">
       <eClassifiers xsi:type="ecore:EClass" name="SequenceDiagramToolDescription"/>
@@ -123,7 +123,7 @@
         <eStructuralFeatures xsi:type="ecore:EReference" name="coveredLifelines" lowerBound="1"
             eType="#//description/CoveredLifelinesVariable" containment="true"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="InstanceRoleCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/tool/NodeCreationDescription #//description/tool/SequenceDiagramToolDescription">
+      <eClassifiers xsi:type="ecore:EClass" name="InstanceRoleCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/tool/NodeCreationDescription #//description/tool/SequenceDiagramToolDescription">
         <eStructuralFeatures xsi:type="ecore:EReference" name="predecessor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ElementVariable"
             containment="true">
           <eAnnotations source="toolVariable">
@@ -131,14 +131,14 @@
           </eAnnotations>
         </eStructuralFeatures>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="LifelineCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/tool/ContainerCreationDescription #//description/tool/SequenceDiagramToolDescription"/>
-      <eClassifiers xsi:type="ecore:EClass" name="MessageCreationTool" eSuperTypes="#//description/tool/SequenceDiagramToolDescription ../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/tool/EdgeCreationDescription #//description/tool/OrderedElementCreationTool"/>
-      <eClassifiers xsi:type="ecore:EClass" name="ExecutionCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/tool/NodeCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool"/>
-      <eClassifiers xsi:type="ecore:EClass" name="StateCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/tool/NodeCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool"/>
-      <eClassifiers xsi:type="ecore:EClass" name="InteractionUseCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/tool/ContainerCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool #//description/tool/CoveringElementCreationTool"/>
-      <eClassifiers xsi:type="ecore:EClass" name="CombinedFragmentCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/tool/ContainerCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool #//description/tool/CoveringElementCreationTool"/>
-      <eClassifiers xsi:type="ecore:EClass" name="OperandCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/tool/ContainerCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool"/>
-      <eClassifiers xsi:type="ecore:EClass" name="ObservationPointCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/tool/NodeCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool"/>
+      <eClassifiers xsi:type="ecore:EClass" name="LifelineCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/tool/ContainerCreationDescription #//description/tool/SequenceDiagramToolDescription"/>
+      <eClassifiers xsi:type="ecore:EClass" name="MessageCreationTool" eSuperTypes="#//description/tool/SequenceDiagramToolDescription ../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/tool/EdgeCreationDescription #//description/tool/OrderedElementCreationTool"/>
+      <eClassifiers xsi:type="ecore:EClass" name="ExecutionCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/tool/NodeCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool"/>
+      <eClassifiers xsi:type="ecore:EClass" name="StateCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/tool/NodeCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool"/>
+      <eClassifiers xsi:type="ecore:EClass" name="InteractionUseCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/tool/ContainerCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool #//description/tool/CoveringElementCreationTool"/>
+      <eClassifiers xsi:type="ecore:EClass" name="CombinedFragmentCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/tool/ContainerCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool #//description/tool/CoveringElementCreationTool"/>
+      <eClassifiers xsi:type="ecore:EClass" name="OperandCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/tool/ContainerCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool"/>
+      <eClassifiers xsi:type="ecore:EClass" name="ObservationPointCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/tool/NodeCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool"/>
       <eClassifiers xsi:type="ecore:EClass" name="ReorderTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractToolDescription #//description/tool/SequenceDiagramToolDescription">
         <eStructuralFeatures xsi:type="ecore:EReference" name="mappings" upperBound="-1"
             eType="#//description/EventMapping"/>
@@ -292,12 +292,12 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="executionMappings" upperBound="-1"
           eType="#//template/TExecutionMapping" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="instanceRoleStyle" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/style/NodeStyleDescription"
+          eType="ecore:EClass ../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/style/NodeStyleDescription"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="lifelineStyle" lowerBound="1"
           eType="#//template/TLifelineStyle" containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="endOfLifeStyle" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius.diagram/model/diagram.ecore#//description/style/NodeStyleDescription"
+          eType="ecore:EClass ../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/style/NodeStyleDescription"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalLifeLineStyles"
           upperBound="-1" eType="#//template/TConditionalLifelineStyle" containment="true">
@@ -423,20 +423,20 @@
           <details key="documentation" value="The color of the edge."/>
         </eAnnotations>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="lineStyle" eType="ecore:EEnum ../../org.eclipse.sirius.diagram/model/diagram.ecore#//LineStyle">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="lineStyle" eType="ecore:EEnum ../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//LineStyle">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The style of the line."/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceArrow" lowerBound="1"
-          eType="ecore:EEnum ../../org.eclipse.sirius.diagram/model/diagram.ecore#//EdgeArrows"
+          eType="ecore:EEnum ../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//EdgeArrows"
           defaultValueLiteral="NoDecoration">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The source decoration."/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetArrow" lowerBound="1"
-          eType="ecore:EEnum ../../org.eclipse.sirius.diagram/model/diagram.ecore#//EdgeArrows"
+          eType="ecore:EEnum ../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//EdgeArrows"
           defaultValueLiteral="InputArrow">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The target decoration."/>

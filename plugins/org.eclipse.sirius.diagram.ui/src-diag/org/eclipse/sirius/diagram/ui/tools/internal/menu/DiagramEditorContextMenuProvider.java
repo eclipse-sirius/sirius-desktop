@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,8 +34,8 @@ import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.delete.DeleteFromModelWithHookAction;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.ColorPropertyContributionItem;
@@ -138,7 +138,8 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
                         menu.remove(item1);
                         final IMenuManager arrangeMenu = menu.findMenuUsingPath(org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds.MENU_ARRANGE);
                         if (PLUGIN_MENU_MANAGER_CLASS_NAME.equals(arrangeMenu.getClass().getSimpleName())) { // $NON-NLS-1$
-                            //We move the arrangeMenu only if it is contributed through plugin contribution. In case of VSM contribution, we ignore it.
+                            // We move the arrangeMenu only if it is contributed through plugin contribution. In case of
+                            // VSM contribution, we ignore it.
                             updateArrangeMenuName(arrangeMenu);
                             arrangeMenu.insertAfter(ActionIds.ACTION_TOOLBAR_ARRANGE_ALL, item1);
                         }
@@ -167,11 +168,9 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
     }
 
     /**
-     * Get the value of the preference
-     * SiriusDiagramPreferencesKeys.PREF_CLIPBOOARD_SUPPORT_ONLY_ON_NOTE.
+     * Get the value of the preference SiriusDiagramPreferencesKeys.PREF_CLIPBOOARD_SUPPORT_ONLY_ON_NOTE.
      * 
-     * @return the value of the preference
-     *         SiriusDiagramPreferencesKeys.PREF_CLIPBOOARD_SUPPORT_ONLY_ON_NOTE
+     * @return the value of the preference SiriusDiagramPreferencesKeys.PREF_CLIPBOOARD_SUPPORT_ONLY_ON_NOTE
      */
     private boolean clipboardSupportOnlyOnNote() {
         return Platform.getPreferencesService().getBoolean(DiagramPlugin.ID, SiriusDiagramPreferencesKeys.PREF_CLIPBOOARD_SUPPORT_ONLY_ON_NOTE.name(), false, null);
@@ -180,8 +179,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
     /**
      * Check if there is views of {@link DDiagramElement} selected.
      * 
-     * @return true if there is views of {@link DDiagramElement} selected, false
-     *         else
+     * @return true if there is views of {@link DDiagramElement} selected, false else
      */
     private boolean hasViewOfDDiagramElementSelected() {
         boolean hasViewOfDDiagramElementSelected = false;
@@ -238,8 +236,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
 
     // CHECKSTYLE:ON
     /**
-     * Rename the Arrange menu (new name=Layout menu), move it and reorganize
-     * it.
+     * Rename the Arrange menu (new name=Layout menu), move it and reorganize it.
      * 
      * @param menu
      *            The parent menu containing "Format" menu
@@ -267,13 +264,11 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
     }
 
     /**
-     * Disables the "Arrange Selection" Action (if contained) of the given
-     * arrangeMenu, if the given selection contains element that forbid this
-     * action.
+     * Disables the "Arrange Selection" Action (if contained) of the given arrangeMenu, if the given selection contains
+     * element that forbid this action.
      * 
      * @param arrangeMenu
-     *            the menu containing all the Arrange Action ("ArrangeAll",
-     *            "Arrange Selection"...).
+     *            the menu containing all the Arrange Action ("ArrangeAll", "Arrange Selection"...).
      * @param selection
      *            the current selected graphical elements
      */
@@ -312,8 +307,7 @@ public class DiagramEditorContextMenuProvider extends DiagramContextMenuProvider
     }
 
     /**
-     * Disables the "Arrange Selection" action from (if contained in) the given
-     * menu.
+     * Disables the "Arrange Selection" action from (if contained in) the given menu.
      * 
      * @param arrangeMenu
      *            the menu to remove the "Arrange Selection" action from

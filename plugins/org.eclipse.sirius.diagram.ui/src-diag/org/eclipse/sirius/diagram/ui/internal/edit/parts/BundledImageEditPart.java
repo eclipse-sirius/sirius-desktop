@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,7 +29,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.BundledImage;
 import org.eclipse.sirius.diagram.BundledImageShape;
 import org.eclipse.sirius.diagram.DiagramFactory;
-import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractNotSelectableShapeNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IStyleEditPart;
@@ -166,8 +166,8 @@ public class BundledImageEditPart extends AbstractNotSelectableShapeNodeEditPart
     /**
      * Creates figure for this edit part.
      *
-     * Body of this method does not depend on settings in generation model so
-     * you may safely remove <i>generated</i> tag and modify it.
+     * Body of this method does not depend on settings in generation model so you may safely remove <i>generated</i> tag
+     * and modify it.
      *
      * @not-generated
      */
@@ -182,8 +182,8 @@ public class BundledImageEditPart extends AbstractNotSelectableShapeNodeEditPart
     }
 
     /**
-     * Default implementation treats passed figure as content pane. Respects
-     * layout one may have set for generated figure.
+     * Default implementation treats passed figure as content pane. Respects layout one may have set for generated
+     * figure.
      *
      * @param nodeShape
      *            instance of generated figure class

@@ -44,7 +44,6 @@ import org.eclipse.sirius.diagram.Ellipse;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.GaugeCompositeStyle;
 import org.eclipse.sirius.diagram.Lozenge;
-import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.Note;
 import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.Square;
@@ -63,6 +62,7 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.operations.StyleSp
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.tools.internal.Messages;
 import org.eclipse.sirius.diagram.util.DiagramSwitch;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilter;

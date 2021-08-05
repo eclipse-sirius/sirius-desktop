@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2008, 2016, 2021 Borland Software Corporation and others.
+ * Copyright (c) 2008, 2021 Borland Software Corporation and others.
  * 
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -34,7 +34,7 @@ import org.apache.batik.util.ParsedURL;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.PrecisionRectangle;
 import org.eclipse.draw2d.geometry.Rectangle;
-import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGFigure;
 import org.eclipse.swt.graphics.Image;
@@ -56,7 +56,7 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
         this.document = document;
         renderingHints = new RenderingHints(null);
     }
-    
+
     @Override
     protected UserAgent createUserAgent() {
         return new UserAgentAdapter() {

@@ -12,12 +12,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.api.query;
 
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
-import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link IEdgeMapping} as a starting point.
@@ -27,7 +24,7 @@ import org.eclipse.sirius.ext.base.Options;
  */
 public class IEdgeMappingQuery {
 
-    private IEdgeMapping iEdgeMapping;
+    private org.eclipse.sirius.diagram.business.internal.metamodel.query.IEdgeMappingQuery internalQuery;
 
     /**
      * Create a new query.
@@ -36,7 +33,7 @@ public class IEdgeMappingQuery {
      *            the element to query.
      */
     public IEdgeMappingQuery(IEdgeMapping iEdgeMapping) {
-        this.iEdgeMapping = iEdgeMapping;
+        this.internalQuery = new org.eclipse.sirius.diagram.business.internal.metamodel.query.IEdgeMappingQuery(iEdgeMapping);
     }
 
     /**
@@ -45,13 +42,7 @@ public class IEdgeMappingQuery {
      * @return The correct EdgeMapping
      */
     public Option<EdgeMapping> getEdgeMapping() {
-        EdgeMapping result = null;
-        if (iEdgeMapping instanceof EdgeMappingImport && !(iEdgeMapping instanceof EdgeMappingImportWrapper)) {
-            result = EdgeMappingImportWrapper.getWrapper((EdgeMappingImport) iEdgeMapping);
-        } else {
-            result = (EdgeMapping) iEdgeMapping;
-        }
-        return Options.newSome(result);
+        return this.internalQuery.getEdgeMapping();
     }
 
     /**
@@ -61,22 +52,6 @@ public class IEdgeMappingQuery {
      * @return the real edge mapping.
      */
     public Option<EdgeMapping> getOriginalEdgeMapping() {
-        EdgeMapping result = null;
-        if (iEdgeMapping instanceof EdgeMappingImport) {
-            result = getOriginalEdgeMapping((EdgeMappingImport) iEdgeMapping);
-        } else {
-            result = (EdgeMapping) iEdgeMapping;
-        }
-        return Options.newSome(result);
-    }
-
-    private EdgeMapping getOriginalEdgeMapping(EdgeMappingImport edgeMappingImport) {
-        EdgeMapping result = null;
-        if (edgeMappingImport.getImportedMapping() instanceof EdgeMappingImport) {
-            result = getOriginalEdgeMapping((EdgeMappingImport) edgeMappingImport.getImportedMapping());
-        } else if (edgeMappingImport.getImportedMapping() instanceof EdgeMapping) {
-            result = (EdgeMapping) edgeMappingImport.getImportedMapping();
-        }
-        return result;
+        return this.internalQuery.getOriginalEdgeMapping();
     }
 }

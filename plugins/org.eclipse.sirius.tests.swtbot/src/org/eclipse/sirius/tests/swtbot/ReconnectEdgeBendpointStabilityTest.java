@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2014, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,10 +28,10 @@ import org.eclipse.gmf.runtime.notation.Routing;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramCorePreferences;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -98,8 +98,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
     }
 
     /**
-     * Test that reconnects straight edge target and validates bendpoints
-     * positions.
+     * Test that reconnects straight edge target and validates bendpoints positions.
      */
     public void testReconnectStraightEdgeTarget() {
         initializeModelingProjectSample();
@@ -107,8 +106,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
     }
 
     /**
-     * Test that reconnects straight edge source and validates bendpoints
-     * positions.
+     * Test that reconnects straight edge source and validates bendpoints positions.
      */
     public void testReconnectStraightEdgeSource() {
         initializeModelingProjectSample();
@@ -116,8 +114,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
     }
 
     /**
-     * Test that reconnects Manhattan edge target and validates bendpoints
-     * positions.
+     * Test that reconnects Manhattan edge target and validates bendpoints positions.
      */
     public void testReconnectManhattanEdgeTarget() {
         initializeModelingProjectSample();
@@ -125,8 +122,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
     }
 
     /**
-     * Test that reconnects Manhattan edge source and validates bendpoints
-     * positions.
+     * Test that reconnects Manhattan edge source and validates bendpoints positions.
      */
     public void testReconnectManhattanEdgeSource() {
         initializeModelingProjectSample();
@@ -150,8 +146,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
     }
 
     /**
-     * Test that using a reconnect tool that create a different edge doesn't
-     * fail.
+     * Test that using a reconnect tool that create a different edge doesn't fail.
      */
     public void testNewEdgeAfterReconnectSource() {
         initializeModelingProjectSample();
@@ -165,8 +160,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
     }
 
     /**
-     * This test validates that using a specific line style will not cause NPE
-     * after several reconnections.
+     * This test validates that using a specific line style will not cause NPE after several reconnections.
      */
     public void testReconnectWithUserSpecificLineStyle() {
         initializeModelingProjectSample();
@@ -206,9 +200,8 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
     }
 
     /**
-     * Test that "try" reconnects an edge with broken Bendpoints gmf vectors to
-     * a non candidate target and validates that the edge post-reconnection has
-     * the same bendpoints as the edge pre-reconnection.
+     * Test that "try" reconnects an edge with broken Bendpoints gmf vectors to a non candidate target and validates
+     * that the edge post-reconnection has the same bendpoints as the edge pre-reconnection.
      */
     public void testReconnectEdgeWithBadGMFBendpointAndNoReconnectionCandidate() {
         initializeModelingProjectSample2();
@@ -287,8 +280,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
      * @param originalPointList
      *            locations of bendpoints before reconnection
      * @param reconnectedSource
-     *            true if reconnection of the source, false if reconnection of
-     *            the target
+     *            true if reconnection of the source, false if reconnection of the target
      */
     private void checkConnectionPoints(String sourceEditPartName, String targetEditPartName, PointList originalPointList, boolean reconnectedSource) {
 
@@ -327,8 +319,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
      * @param originalPointList
      *            locations of bendpoints before reconnection
      * @param reconnectedSource
-     *            true if reconnection of the source, false if reconnection of
-     *            the target
+     *            true if reconnection of the source, false if reconnection of the target
      */
     private void checkConnectionPoints(String sourceEditPartName, String targetEditPartName, PointList originalPointList, boolean reconnectedSource, int expectedMovedBendpoint) {
         ConnectionEditPart connectionEditPart = getConnectionEditPart(sourceEditPartName, targetEditPartName);
@@ -343,8 +334,7 @@ public class ReconnectEdgeBendpointStabilityTest extends AbstractSiriusSwtBotGef
      * @param originalPointList
      *            locations of bendpoints before reconnection
      * @param reconnectedSource
-     *            true if reconnection of the source, false if reconnection of
-     *            the target
+     *            true if reconnection of the source, false if reconnection of the target
      */
     private void checkConnectionPoints(ConnectionEditPart connectionEditPart, PointList originalPointList, boolean reconnectedSource, int expectedMovedBendpoint) {
         assertTrue(connectionEditPart.getFigure() instanceof ViewEdgeFigure);

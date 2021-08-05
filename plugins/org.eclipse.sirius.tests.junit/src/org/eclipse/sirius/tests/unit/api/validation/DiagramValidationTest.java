@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,7 +34,8 @@ import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.model.tools.internal.DiagramModelPlugin;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusMarkerNavigationProvider;
 import org.eclipse.sirius.diagram.ui.part.ValidateAction;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -89,6 +90,7 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
         logListener = createMock(ILogListener.class);
         replay(logListener);
         DiagramPlugin.getDefault().getLog().addLogListener(logListener);
+        DiagramModelPlugin.getDefault().getLog().addLogListener(logListener);
         DiagramUIPlugin.getPlugin().getLog().addLogListener(logListener);
 
         genericSetUp(Collections.singleton(SEMANTIC_MODEL_PATH), Arrays.asList(MODELER_PATH, MODELER_PATH_EXT), null);
@@ -161,11 +163,11 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
     }
 
     /**
-     * Test there is only one error by elements not validated and not many
-     * errors message duplicate for same element. See VP-2940
+     * Test there is only one error by elements not validated and not many errors message duplicate for same element.
+     * See VP-2940
      * 
-     * Also check that there is only one semantic error for the root element.
-     * See https://bugs.eclipse.org/bugs/show_bug.cgi?id=441642
+     * Also check that there is only one semantic error for the root element. See
+     * https://bugs.eclipse.org/bugs/show_bug.cgi?id=441642
      * 
      * @throws CoreException
      *             Test errors.
@@ -212,7 +214,7 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
      * @return first valid {@link DNode} found
      */
     private DDiagramElement getGraphicNodeElement(final EObject target) {
-        return diagram.getDiagramElements().stream().filter(element->element instanceof DNode && element.getTarget() == target).findFirst().orElse(null);
+        return diagram.getDiagramElements().stream().filter(element -> element instanceof DNode && element.getTarget() == target).findFirst().orElse(null);
     }
 
     /**
@@ -223,8 +225,8 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
      * @param foundMarkers
      *            markers found
      * @param expectedNbViewMarker
-     *            expected number of view marker for the first {@link DNode}
-     *            with target equals to {@code semanticElement}
+     *            expected number of view marker for the first {@link DNode} with target equals to
+     *            {@code semanticElement}
      * @param expectedNbSemanticMarker
      *            expected number of semantic marker for {@code semanticElement}
      */
@@ -299,6 +301,7 @@ public class DiagramValidationTest extends SiriusDiagramTestCase {
     @Override
     protected void tearDown() throws Exception {
         DiagramPlugin.getDefault().getLog().removeLogListener(logListener);
+        DiagramModelPlugin.getDefault().getLog().removeLogListener(logListener);
         DiagramUIPlugin.getPlugin().getLog().removeLogListener(logListener);
         DialectUIManager.INSTANCE.closeEditor(editorPart, false);
         TestsUtil.synchronizationWithUIThread();

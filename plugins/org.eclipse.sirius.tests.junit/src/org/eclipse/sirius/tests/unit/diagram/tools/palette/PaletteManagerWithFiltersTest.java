@@ -22,9 +22,9 @@ import org.eclipse.gef.palette.PaletteRoot;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.session.CustomDataConstants;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.management.ToolFilter;
 import org.eclipse.sirius.diagram.tools.api.management.ToolManagement;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.internal.management.ToolManagementRegistry;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.palette.PaletteManagerImpl;
@@ -62,9 +62,9 @@ public class PaletteManagerWithFiltersTest extends AbstractPaletteManagerTest {
 
     private static final SortedSet<Entry> NO_ENTRIES = new TreeSet<Entry>(Arrays.asList(createNewEntry("never deleted")));
 
-    private static final ToolFilter hideAll = new ToolFilter(){
-        @Override 
-        public boolean filter(DDiagram diagram,AbstractToolDescription tool){
+    private static final ToolFilter hideAll = new ToolFilter() {
+        @Override
+        public boolean filter(DDiagram diagram, AbstractToolDescription tool) {
             return true;
         }
     };

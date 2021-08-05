@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -66,8 +66,8 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.EdgeTarget;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.graphical.figures.SiriusLayoutHelper;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
@@ -162,9 +162,8 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     };
 
     /**
-     * A list of layout data (the root can be an AbstractDNode or a DDiagram).
-     * The layout data are removed from this list when all the layout data in
-     * its are consumed.
+     * A list of layout data (the root can be an AbstractDNode or a DDiagram). The layout data are removed from this
+     * list when all the layout data in its are consumed.
      */
     List<AbstractLayoutData> rootsLayoutData = new ArrayList<AbstractLayoutData>();
 
@@ -186,10 +185,9 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     private boolean ignoreConsumeState;
 
     /**
-     * List of created view to arrange with a center layout : case where one or
-     * several views are created and a position has been registered in the
-     * layoutDataManager : the view must be created in the center location of
-     * the visible part of its container.
+     * List of created view to arrange with a center layout : case where one or several views are created and a position
+     * has been registered in the layoutDataManager : the view must be created in the center location of the visible
+     * part of its container.
      */
     private Map<Diagram, Set<View>> createdViewWithCenterLayout = new HashMap<Diagram, Set<View>>();
 
@@ -230,7 +228,8 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
                 LayoutData aLayoutDataInParam = (LayoutData) aLayoutData;
                 if (existingLayoutData.getTarget().equals(aLayoutDataInParam.getTarget())) {
                     iterator.remove();
-                    // DiagramPlugin.getDefault().logWarning("The previous layout data were replaced by new ones. It may leads to unexpected layout behavior.");
+                    // DiagramPlugin.getDefault().logWarning("The previous layout data were replaced by new ones. It may
+                    // leads to unexpected layout behavior.");
                 }
             }
         }
@@ -238,8 +237,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     }
 
     /**
-     * Search recursively in all the LayoutData is there is one which have the
-     * node for target.
+     * Search recursively in all the LayoutData is there is one which have the node for target.
      * 
      * @param node
      *            The search element
@@ -326,8 +324,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     }
 
     /**
-     * Search recursively in all the LayoutData is there is one which have the
-     * edge for target.
+     * Search recursively in all the LayoutData is there is one which have the edge for target.
      * 
      * @param edge
      *            The search element
@@ -405,8 +402,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     }
 
     /**
-     * Search recursively in all the LayoutData is there is one which have the
-     * diagram for target.
+     * Search recursively in all the LayoutData is there is one which have the diagram for target.
      * 
      * @param diagram
      *            The search element
@@ -560,8 +556,8 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     }
 
     /**
-     * Calculate the center location of the visible part of the container. Do
-     * the same work than XYLayoutEditPolicy.getConstraintFor(request).
+     * Calculate the center location of the visible part of the container. Do the same work than
+     * XYLayoutEditPolicy.getConstraintFor(request).
      * 
      * @param host
      * @param cc
@@ -725,8 +721,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * 
      * @param viewAdapter
      *            The view to check
-     * @return true if this view is already arrange, false otherwise (need
-     *         arrange)
+     * @return true if this view is already arrange, false otherwise (need arrange)
      */
     private boolean isAlreadyArrange(IAdaptable viewAdapter) {
         boolean alreadyArranged = false;
@@ -747,8 +742,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
      * 
      * @param viewAdapter
      *            The view to check
-     * @return true if this view has a center layout, false otherwise (need
-     *         arrange)
+     * @return true if this view has a center layout, false otherwise (need arrange)
      */
     private boolean hasCenterLayout(IAdaptable viewAdapter) {
         boolean centerLayout = false;
@@ -866,21 +860,20 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
             } else {
                 TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) host).getEditingDomain();
                 arrangeCommand = new ICommandProxy(new AbstractTransactionalCommand(editingDomain, "", null) { //$NON-NLS-1$
-                            @Override
-                            protected CommandResult doExecuteWithResult(IProgressMonitor progressMonitor, IAdaptable info) throws ExecutionException {
-                                layoutRun.run();
-                                return CommandResult.newOKCommandResult();
-                            }
-                        });
+                    @Override
+                    protected CommandResult doExecuteWithResult(IProgressMonitor progressMonitor, IAdaptable info) throws ExecutionException {
+                        layoutRun.run();
+                        return CommandResult.newOKCommandResult();
+                    }
+                });
             }
         }
         return arrangeCommand;
     }
 
     /**
-     * Getter for the SiriusLayoutDataFlusher which listens IOperationHistory
-     * events to flush the list RootsLayoutData after a
-     * OperationHistoryEvent#DONE event.
+     * Getter for the SiriusLayoutDataFlusher which listens IOperationHistory events to flush the list RootsLayoutData
+     * after a OperationHistoryEvent#DONE event.
      */
     private IOperationHistoryListener getSiriusLayoutDataFlusher() {
         if (viewPointLayoutDataFlusher == null) {
@@ -890,16 +883,14 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     }
 
     /**
-     * package internal method to flush the list of {@link RootLayoutData}, used
-     * by the {@link SiriusLayoutDataFlusher}.
+     * package internal method to flush the list of {@link RootLayoutData}, used by the {@link SiriusLayoutDataFlusher}.
      */
     protected void flushRootLayoutDatas() {
         rootsLayoutData.clear();
     }
 
     /**
-     * Overridden to remove the SiriusLayoutDataFlusher from the
-     * IOperationHistoryListener list of listeners.
+     * Overridden to remove the SiriusLayoutDataFlusher from the IOperationHistoryListener list of listeners.
      * 
      * @throws Throwable
      * 

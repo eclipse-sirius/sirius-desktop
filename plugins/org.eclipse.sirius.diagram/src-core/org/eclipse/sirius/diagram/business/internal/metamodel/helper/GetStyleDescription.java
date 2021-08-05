@@ -15,11 +15,11 @@ package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 import java.text.MessageFormat;
 
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription;
 import org.eclipse.sirius.diagram.description.util.DescriptionSwitch;
+import org.eclipse.sirius.diagram.tools.internal.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 

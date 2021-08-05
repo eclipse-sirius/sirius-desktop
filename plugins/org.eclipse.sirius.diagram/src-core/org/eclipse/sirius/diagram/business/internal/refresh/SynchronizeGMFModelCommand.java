@@ -14,8 +14,8 @@ package org.eclipse.sirius.diagram.business.internal.refresh;
 
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
-import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
+import org.eclipse.sirius.diagram.tools.internal.Messages;
 
 /**
  * EMF Command to execute the {@link CanonicalSynchronizer}.

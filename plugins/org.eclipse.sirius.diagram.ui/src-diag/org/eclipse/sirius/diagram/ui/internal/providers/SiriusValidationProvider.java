@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,7 @@ import org.eclipse.gmf.runtime.common.ui.services.action.contributionitem.Abstra
 import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IAction;
-import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.part.ValidateAction;
@@ -83,7 +83,7 @@ public class SiriusValidationProvider extends AbstractContributionItemProvider {
             try {
                 txDomain.runExclusive(task);
             } catch (Exception e) {
-                DiagramPlugin.getDefault().logError(Messages.SiriusValidationProvider_validationFailed, e); 
+                DiagramPlugin.getDefault().logError(Messages.SiriusValidationProvider_validationFailed, e);
             }
         } else {
             task.run();

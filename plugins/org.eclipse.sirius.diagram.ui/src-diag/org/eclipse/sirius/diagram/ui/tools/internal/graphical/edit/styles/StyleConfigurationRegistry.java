@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -35,10 +35,10 @@ import org.eclipse.sirius.common.tools.api.profiler.ProfilerTask;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.diagram.BundledImage;
 import org.eclipse.sirius.diagram.BundledImageShape;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.Square;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IStyleConfigurationRegistry;
@@ -92,8 +92,7 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
     }
 
     /**
-     * This will parse the currently running platform for extensions and store
-     * all the match engines that can be found.
+     * This will parse the currently running platform for extensions and store all the match engines that can be found.
      */
     private static void parseExtensionMetadata() {
         if (EMFPlugin.IS_ECLIPSE_RUNNING) {
@@ -152,15 +151,13 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
     }
 
     /**
-     * Return the {@link StyleConfiguration} corresponding to the specified
-     * {@link StyleWrapper}.
+     * Return the {@link StyleConfiguration} corresponding to the specified {@link StyleWrapper}.
      * 
      * @param styleWrapper
      *            the {@link StyleWrapper}.
      * @param style
      *            the style of the element that needs a configuration
-     * @return the {@link StyleConfiguration} corresponding to the specified
-     *         {@link StyleWrapper}.
+     * @return the {@link StyleConfiguration} corresponding to the specified {@link StyleWrapper}.
      */
     private StyleConfiguration getStyleConfiguration(final StyleWrapper styleWrapper, final Style style) {
         StyleConfiguration styleConfiguration = this.styleToConfig.get(styleWrapper);
@@ -172,15 +169,14 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
     }
 
     /**
-     * Create a {@link StyleConfiguration} corresponding to the specified
-     * {@link DiagramElementMapping} and {@link Style}.
+     * Create a {@link StyleConfiguration} corresponding to the specified {@link DiagramElementMapping} and
+     * {@link Style}.
      * 
      * @param vpElementMapping
      *            the view point element to customize.
      * @param style
      *            the {@link Style}.
-     * @return a {@link StyleConfiguration} corresponding to the specified
-     *         {@link Style}.
+     * @return a {@link StyleConfiguration} corresponding to the specified {@link Style}.
      */
     private StyleConfiguration createStyleConfiguration(final DiagramElementMapping vpElementMapping, final Style style) {
         //
@@ -235,11 +231,10 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
     }
 
     /**
-     * Encapsulate the (logical) parameters and result of a single invocation to
-     * getStyleConfiguration(). Used to optimize the common case where
-     * getStyleConfiguration() will be called many times in a row with different
-     * Style instances, but all pointing to the same StyleDescription (the
-     * actual value relevant to the computation of the result).
+     * Encapsulate the (logical) parameters and result of a single invocation to getStyleConfiguration(). Used to
+     * optimize the common case where getStyleConfiguration() will be called many times in a row with different Style
+     * instances, but all pointing to the same StyleDescription (the actual value relevant to the computation of the
+     * result).
      */
     private static final class Invocation {
         DiagramElementMapping elementMapping;
@@ -260,8 +255,7 @@ public final class StyleConfigurationRegistry extends SessionManagerListener.Stu
     }
 
     /**
-     * This class wraps a {@link DiagramElementMapping} and {@link Style} to
-     * redefine the equals and hashCode methods.
+     * This class wraps a {@link DiagramElementMapping} and {@link Style} to redefine the equals and hashCode methods.
      * 
      * @author ymortier
      */

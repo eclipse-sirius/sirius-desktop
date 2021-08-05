@@ -47,7 +47,6 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
 import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
@@ -59,6 +58,7 @@ import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
 import org.eclipse.sirius.diagram.business.internal.dialect.NotYetOpenedDiagramAdapter;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.helper.graphicalfilters.CompositeFilterApplicationBuilder;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
@@ -673,20 +673,20 @@ public class MappingBasedSiriusFormatManagerFactory {
     private Optional<Node> search(Collection<Node> nodes, Shape sourceNode, String searchedLabel) {
         List<Node> matchingNodes = new ArrayList<Node>();
         // Get the nodes with same description (same label) as the <code>searchedLabel</code>
-            for (Node node : nodes) {
-                if (node instanceof Shape) {
-                    if (searchedLabel.equals(((Shape) node).getDescription())) {
-                        matchingNodes.add(node);
-                    }
+        for (Node node : nodes) {
+            if (node instanceof Shape) {
+                if (searchedLabel.equals(((Shape) node).getDescription())) {
+                    matchingNodes.add(node);
                 }
             }
-            // Remove elements that have not the same attachment on source side
-            matchingNodes = removeNotSameAttachment(sourceNode, matchingNodes, true);
-            // Remove elements that have not the same attachment on target side
-            matchingNodes = removeNotSameAttachment(sourceNode, matchingNodes, false);
-            // Only the first is considered. At this step, if several nodes remain, we are in a case not handled by the
-            // Copy/Paste format API.
-            return matchingNodes.stream().findFirst();
+        }
+        // Remove elements that have not the same attachment on source side
+        matchingNodes = removeNotSameAttachment(sourceNode, matchingNodes, true);
+        // Remove elements that have not the same attachment on target side
+        matchingNodes = removeNotSameAttachment(sourceNode, matchingNodes, false);
+        // Only the first is considered. At this step, if several nodes remain, we are in a case not handled by the
+        // Copy/Paste format API.
+        return matchingNodes.stream().findFirst();
     }
 
     /**

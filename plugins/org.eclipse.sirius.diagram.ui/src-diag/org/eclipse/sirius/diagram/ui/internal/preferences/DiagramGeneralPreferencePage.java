@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,8 +16,8 @@ import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.DiagramsPreferencePage;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.internal.preferences.SiriusDiagramInternalPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
@@ -126,8 +126,8 @@ public class DiagramGeneralPreferencePage extends DiagramsPreferencePage {
         imageSizeGroup.setLayoutData(gridData);
         imageSizeGroup.setText(Messages.DiagramGeneralPreferencePage_sizeGroupLabel);
 
-        scaleWithLegendFieldEditor = new ScaleWithLegendFieldEditorWithHelp(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name(),
-                Messages.DiagramGeneralPreferencePage_sizeGroupLabel, org.eclipse.sirius.viewpoint.provider.Messages.ExportAsImage_sizeTooltip, imageSizeGroup);
+        scaleWithLegendFieldEditor = new ScaleWithLegendFieldEditorWithHelp(SiriusUIPreferencesKeys.PREF_SCALE_LEVEL_DIAGRAMS_ON_EXPORT.name(), Messages.DiagramGeneralPreferencePage_sizeGroupLabel,
+                org.eclipse.sirius.viewpoint.provider.Messages.ExportAsImage_sizeTooltip, imageSizeGroup);
         scaleWithLegendFieldEditor.setMinimum(MIN_QUALITY);
         scaleWithLegendFieldEditor.setMaximum(MAX_QUALITY);
         scaleWithLegendFieldEditor.setPageIncrement(INCREMENT_QUALITY);

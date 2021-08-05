@@ -32,9 +32,9 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
-import org.eclipse.sirius.diagram.DiagramPlugin;
-import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.internal.Messages;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.osgi.framework.Version;
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,8 +16,8 @@ import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.gmf.runtime.diagram.ui.preferences.AppearancePreferencePage;
 import org.eclipse.jface.preference.BooleanFieldEditor;
 import org.eclipse.jface.preference.IPreferenceStore;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
@@ -65,8 +65,8 @@ public class DiagramAppearancePreferencePage extends AppearancePreferencePage {
     protected void addFontAndColorFields(Composite composite) {
         super.addFontAndColorFields(composite);
 
-        displayUserFixedColor = new BooleanFieldEditor(SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE.name(), Messages.DiagramAppearancePreferencePage_displayUserFixedColorsInPaletteLabel,
-                composite);
+        displayUserFixedColor = new BooleanFieldEditor(SiriusUIPreferencesKeys.PREF_DISPLAY_VSM_USER_FIXED_COLOR_IN_PALETTE.name(),
+                Messages.DiagramAppearancePreferencePage_displayUserFixedColorsInPaletteLabel, composite);
 
         addField(displayUserFixedColor);
     }

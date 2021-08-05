@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,7 +25,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.model.tools.internal.DiagramModelPlugin;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
@@ -36,8 +37,7 @@ import org.eclipse.sirius.viewpoint.description.tool.OperationAction;
 import org.eclipse.ui.IEditorPart;
 
 /**
- * Test for the "Navigation" model operation, in particular when it need to
- * create a new representation.
+ * Test for the "Navigation" model operation, in particular when it need to create a new representation.
  * 
  * @author pcdavid
  */
@@ -69,6 +69,7 @@ public class NavigationOperationTest extends SiriusDiagramTestCase {
         logListener = createMock(ILogListener.class);
         replay(logListener);
         DiagramPlugin.getDefault().getLog().addLogListener(logListener);
+        DiagramModelPlugin.getDefault().getLog().addLogListener(logListener);
         DiagramUIPlugin.getPlugin().getLog().addLogListener(logListener);
 
         genericSetUp(SEMANTIC_MODEL_PATH, MODELER_PATH);
@@ -80,6 +81,7 @@ public class NavigationOperationTest extends SiriusDiagramTestCase {
     protected void tearDown() throws Exception {
         DialectUIManager.INSTANCE.closeEditor(editorPart, false);
         TestsUtil.synchronizationWithUIThread();
+        DiagramModelPlugin.getDefault().getLog().removeLogListener(logListener);
         DiagramPlugin.getDefault().getLog().removeLogListener(logListener);
         DiagramUIPlugin.getPlugin().getLog().removeLogListener(logListener);
         logListener = null;

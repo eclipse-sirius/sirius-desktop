@@ -38,10 +38,8 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.EdgeTarget;
-import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayMode;
@@ -69,6 +67,8 @@ import org.eclipse.sirius.diagram.description.tool.CreateView;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
 import org.eclipse.sirius.diagram.tools.api.refresh.BestMappingGetter;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.internal.Messages;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
@@ -165,8 +165,7 @@ public class CreateViewTask extends AbstractOperationTask {
             if (bestMapping instanceof AbstractNodeMapping) {
                 AbstractNodeMapping abstractNodeMapping = (AbstractNodeMapping) bestMapping;
                 if (extPackage.eInstanceOf(semanticElt, abstractNodeMapping.getDomainClass())) {
-                    DNodeCandidate abstractDNodeCandidate = new DNodeCandidate(abstractNodeMapping, semanticElt, (DragAndDropTarget) containerView,
-                            RefreshIdsHolder.getOrCreateHolder(parentDDiagram));
+                    DNodeCandidate abstractDNodeCandidate = new DNodeCandidate(abstractNodeMapping, semanticElt, (DragAndDropTarget) containerView, RefreshIdsHolder.getOrCreateHolder(parentDDiagram));
                     DDiagramElementSynchronizer dDiagramElementSynchronizer = new DDiagramElementSynchronizer(parentDDiagram, interpreter, extPackage);
                     DiagramMappingsManager mappingManager = DiagramMappingsManagerRegistry.INSTANCE.getDiagramMappingsManager(session, parentDDiagram);
                     AbstractDNode createdAbstractDNode = dDiagramElementSynchronizer.createNewNode(mappingManager, abstractDNodeCandidate,

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,7 +24,7 @@ import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
-import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SVGWorkspaceImageFigure;
@@ -69,13 +69,11 @@ public class WorkspaceImageChangeDetector implements IResourceDeltaVisitor {
     }
 
     /**
-     * Tells if the specified resource correspond to a supported workspace
-     * image.
+     * Tells if the specified resource correspond to a supported workspace image.
      * 
      * @param resource
      *            the specified resource
-     * @return true if the specified resource correspond to a supported
-     *         workspace image, false else
+     * @return true if the specified resource correspond to a supported workspace image, false else
      */
     private boolean isWorkspaceImage(IResource resource) {
         boolean isWorkspaceImage = resource != null && resource.getType() == IResource.FILE && resource.getFileExtension() != null && isSupportedImageFormat(resource.getFileExtension());
@@ -87,8 +85,7 @@ public class WorkspaceImageChangeDetector implements IResourceDeltaVisitor {
      * 
      * @param fileExtension
      *            the file extension of a image file.
-     * @return true the specified file extension if one of a supported image
-     *         format.
+     * @return true the specified file extension if one of a supported image format.
      */
     private boolean isSupportedImageFormat(final String fileExtension) {
         boolean isSupportedImageFormat = false;
@@ -111,8 +108,7 @@ public class WorkspaceImageChangeDetector implements IResourceDeltaVisitor {
     }
 
     /**
-     * Clear cache if necessary and return true if a refresh of figure of opened
-     * editors must be done, false otherwise.
+     * Clear cache if necessary and return true if a refresh of figure of opened editors must be done, false otherwise.
      * 
      * @param delta
      *            , resource delta

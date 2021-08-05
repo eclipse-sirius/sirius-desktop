@@ -341,6 +341,7 @@
         <module>../../plugins/org.eclipse.sirius.common.acceleo.mtl</module>
         <module>../../plugins/org.eclipse.sirius.common.interpreter</module>
         <module>../../plugins/org.eclipse.sirius.common.ocl</module>
+        <module>../../plugins/org.eclipse.sirius.diagram.model</module>
         <module>../../plugins/org.eclipse.sirius.diagram</module>
         <module>../../plugins/org.eclipse.sirius.diagram.formatdata</module>
         <module>../../plugins/org.eclipse.sirius.ecore.extender</module>

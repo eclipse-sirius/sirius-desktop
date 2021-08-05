@@ -29,7 +29,6 @@ import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
-import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.internal.helper.refresh.EdgeFilter;
 import org.eclipse.sirius.diagram.business.internal.metamodel.operations.model.DDiagramSpecOperations;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
@@ -37,6 +36,7 @@ import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.tools.internal.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.collect.Lists;

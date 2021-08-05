@@ -15,9 +15,9 @@ package org.eclipse.sirius.diagram.tools.internal.management;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DiagramPlugin;
-import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.tools.api.management.ToolManagement;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.internal.Messages;
 
 /**
  * Recording command updating tools available for a diagram and their filter listeners.

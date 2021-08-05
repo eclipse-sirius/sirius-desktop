@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -35,8 +35,8 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
 import org.eclipse.jface.viewers.ICellEditorValidator;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNameEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
@@ -76,6 +76,7 @@ public final class DefaultDirectEditOperation {
         final Request theRequest = request;
         try {
             self.getEditingDomain().runExclusive(new Runnable() {
+                @Override
                 public void run() {
                     if (self.isActive() && self.isEditModeEnabled() && hasDirectEditTool(self)) {
 
@@ -194,14 +195,17 @@ public final class DefaultDirectEditOperation {
          * 
          * @see org.eclipse.sirius.diagram.edit.api.part.IDiagramNameEditPart#setLabel(org.eclipse.draw2d.IFigure)
          */
+        @Override
         public void setLabel(final IFigure label) {
             this.label = label;
         }
 
+        @Override
         public IContentAssistProcessor getCompletionProcessor() {
             return null;
         }
 
+        @Override
         public String getEditText() {
             if (resolveSemanticElement() == null || getParser() == null) {
                 return ""; //$NON-NLS-1$
@@ -214,9 +218,11 @@ public final class DefaultDirectEditOperation {
          * 
          * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart#getEditTextValidator()
          */
+        @Override
         public ICellEditorValidator getEditTextValidator() {
             return new ICellEditorValidator() {
 
+                @Override
                 public String isValid(final Object value) {
                     if (value instanceof String) {
                         final EObject element = resolveSemanticElement();
@@ -224,6 +230,7 @@ public final class DefaultDirectEditOperation {
                         try {
                             final IParserEditStatus valid = (IParserEditStatus) getEditingDomain().runExclusive(new RunnableWithResult.Impl() {
 
+                                @Override
                                 public void run() {
                                     setResult(iParser.isValidEditString(new EObjectAdapter(element), (String) value));
                                 }
@@ -245,6 +252,7 @@ public final class DefaultDirectEditOperation {
          * 
          * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart#getParser()
          */
+        @Override
         public IParser getParser() {
             if (parser == null) {
                 final String parserHint = Integer.toString(NotationViewIDs.DNODE_NAME_EDIT_PART_VISUAL_ID);
@@ -259,6 +267,7 @@ public final class DefaultDirectEditOperation {
          * 
          * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart#getParserOptions()
          */
+        @Override
         public ParserOptions getParserOptions() {
             return ParserOptions.NONE;
         }
@@ -268,6 +277,7 @@ public final class DefaultDirectEditOperation {
          * 
          * @see org.eclipse.gmf.runtime.diagram.ui.editparts.ITextAwareEditPart#setLabelText(java.lang.String)
          */
+        @Override
         public void setLabelText(final String text) {
             // empty
         }

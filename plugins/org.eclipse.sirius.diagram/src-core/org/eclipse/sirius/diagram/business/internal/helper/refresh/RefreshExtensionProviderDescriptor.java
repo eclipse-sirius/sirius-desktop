@@ -15,8 +15,8 @@ package org.eclipse.sirius.diagram.business.internal.helper.refresh;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.sirius.business.internal.helper.refresh.AbstractProviderDescriptor;
-import org.eclipse.sirius.diagram.Messages;
 import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtensionProvider;
+import org.eclipse.sirius.diagram.tools.internal.Messages;
 import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**

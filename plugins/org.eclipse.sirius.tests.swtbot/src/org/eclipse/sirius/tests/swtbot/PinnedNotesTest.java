@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,8 +29,8 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.resource.JFaceResources;
 import org.eclipse.sirius.diagram.DDiagram;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
@@ -81,8 +81,7 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
     }
 
     /**
-     * Attach note to a pinned element, launch arrange all and check that the
-     * notes does not move.
+     * Attach note to a pinned element, launch arrange all and check that the notes does not move.
      * 
      * @throws Exception
      *             if an error occurred.
@@ -140,8 +139,8 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
     }
 
     /**
-     * Set the preference "Move unlinked notes during layout" to true, launch
-     * arrange all and check that the note unpined has moved
+     * Set the preference "Move unlinked notes during layout" to true, launch arrange all and check that the note
+     * unpined has moved
      */
     public void testPreferenceEnableMoveToTrue() {
         changeDiagramPreference(SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name(), true);
@@ -196,8 +195,8 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
     }
 
     /**
-     * Attach note to a pinned element and to an unpined element, launch arrange
-     * all and check that the note does not move.
+     * Attach note to a pinned element and to an unpined element, launch arrange all and check that the note does not
+     * move.
      */
     public void testAttachNoteToPinnedElementAndToUnpinnedElement() {
         changeDiagramPreference(SiriusDiagramPreferencesKeys.PREF_MOVE_NOTES_DURING_LATOUT.name(), true);
@@ -322,7 +321,7 @@ public class PinnedNotesTest extends AbstractPinnedElementsTest {
         bot.tree().getTreeItem("Sirius").expand().select().getNode("Sirius Diagram").select();
         assertEquals(expectedValue, bot.checkBox("Move unlinked notes during layout").isChecked());
         bot.button(TestsUtil.isOxygenPlatform() ? JFaceResources.getString("PreferencesDialog.okButtonLabel") : IDialogConstants.OK_LABEL).click();
-        
+
     }
 
     /**

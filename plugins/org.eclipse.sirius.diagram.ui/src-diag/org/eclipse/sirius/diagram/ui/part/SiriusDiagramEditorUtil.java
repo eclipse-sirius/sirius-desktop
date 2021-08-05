@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -56,7 +56,7 @@ import org.eclipse.jface.wizard.WizardDialog;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetFactory;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DiagramFactory;
-import org.eclipse.sirius.diagram.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
@@ -116,7 +116,7 @@ public class SiriusDiagramEditorUtil {
             containerFullPath = new Path(""); //$NON-NLS-1$
         }
         if (fileName == null || fileName.trim().length() == 0) {
-            fileName = org.eclipse.sirius.diagram.ui.provider.Messages.SiriusDiagramEditorUtil_defaultFileName; 
+            fileName = org.eclipse.sirius.diagram.ui.provider.Messages.SiriusDiagramEditorUtil_defaultFileName;
         }
         IPath filePath = containerFullPath.append(fileName);
         if (extension != null && !extension.equals(filePath.getFileExtension())) {
@@ -154,8 +154,7 @@ public class SiriusDiagramEditorUtil {
     }
 
     /**
-     * This method should be called within a workspace modify operation since it
-     * creates resources.
+     * This method should be called within a workspace modify operation since it creates resources.
      * 
      * @was-generated
      */
@@ -200,8 +199,7 @@ public class SiriusDiagramEditorUtil {
     }
 
     /**
-     * Create a new instance of domain element associated with canvas. <!--
-     * begin-user-doc --> <!-- end-user-doc -->
+     * Create a new instance of domain element associated with canvas. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @was-generated
      */
@@ -210,8 +208,7 @@ public class SiriusDiagramEditorUtil {
     }
 
     /**
-     * Store model element in the resource. <!-- begin-user-doc --> <!--
-     * end-user-doc -->
+     * Store model element in the resource. <!-- begin-user-doc --> <!-- end-user-doc -->
      * 
      * @was-generated
      */
@@ -241,8 +238,7 @@ public class SiriusDiagramEditorUtil {
     }
 
     /**
-     * Select all the editParts. The last editPart of this list will be the
-     * primarySelected element.
+     * Select all the editParts. The last editPart of this list will be the primarySelected element.
      * 
      * @was-generated-not
      */

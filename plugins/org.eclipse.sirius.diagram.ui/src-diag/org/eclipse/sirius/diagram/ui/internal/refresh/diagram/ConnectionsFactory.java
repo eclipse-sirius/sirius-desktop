@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -45,9 +45,9 @@ import org.eclipse.gmf.runtime.notation.datatype.RelativeBendpoint;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.CenterLabelStyle;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.CenteringStyle;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.query.EdgeQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.view.EdgeLayoutData;
@@ -342,8 +342,7 @@ public class ConnectionsFactory {
                     // Compute anchor logical coordinates
                     if (Routing.RECTILINEAR_LITERAL.equals(routingStyle) && srceEditPart != null && srceEditPart.equals(tgtEditPart)) {
                         // Set a default first bendpoint position on the center of the east side of the source
-                        pointList = RectilinearEdgeUtil.computeRectilinearBendpointsSameSourceAndTarget(optionalSourceBounds, srceEditPart.getFigure().getBounds().getRight(),
-                                PositionConstants.EAST);
+                        pointList = RectilinearEdgeUtil.computeRectilinearBendpointsSameSourceAndTarget(optionalSourceBounds, srceEditPart.getFigure().getBounds().getRight(), PositionConstants.EAST);
                     } else if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
                         pointList = RectilinearEdgeUtil.computeRectilinearBendpoints(optionalSourceBounds, optionaltargetBounds, srcConnectionBendpoint.get(), tgtConnectionBendpoint.get());
                     } else {

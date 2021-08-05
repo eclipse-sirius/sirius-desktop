@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -47,7 +47,6 @@ import org.eclipse.sirius.common.tools.api.util.ReflectionHelper;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
-import org.eclipse.sirius.diagram.DiagramPlugin;
 import org.eclipse.sirius.diagram.business.api.helper.SiriusDiagramUtil;
 import org.eclipse.sirius.diagram.business.api.helper.layers.LayerService;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
@@ -63,6 +62,7 @@ import org.eclipse.sirius.diagram.tools.api.management.ToolConstants;
 import org.eclipse.sirius.diagram.tools.api.management.ToolFilter;
 import org.eclipse.sirius.diagram.tools.api.management.ToolManagement;
 import org.eclipse.sirius.diagram.tools.api.preferences.SiriusDiagramPreferencesKeys;
+import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.ext.base.Option;
@@ -287,8 +287,7 @@ public class PaletteManagerImpl implements PaletteManager {
             paletteRoot.add(descGroup.get());
         }
         // Update the root of the palette with only VSM tools
-        updateContainer(session, dDiagram, descGroup.get(),
-                dDiagram.getUiState().getToolSections().stream().flatMap(section -> section.getTools().stream()).collect(Collectors.toList()));
+        updateContainer(session, dDiagram, descGroup.get(), dDiagram.getUiState().getToolSections().stream().flatMap(section -> section.getTools().stream()).collect(Collectors.toList()));
     }
 
     /**
