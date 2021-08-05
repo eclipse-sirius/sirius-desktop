@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -49,8 +49,8 @@ import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.AbstractSelectionWizardCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.PaneBasedSelectionWizardCommand;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.SelectionWizardCommand;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
@@ -60,8 +60,7 @@ import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 
 /**
- * Useful operations for {@link NodeCreationEditPolicy} and
- * {@link ContainerCreationEditPolicy}.
+ * Useful operations for {@link NodeCreationEditPolicy} and {@link ContainerCreationEditPolicy}.
  * 
  * @author ymortier
  */
@@ -83,8 +82,7 @@ public class CreationUtil {
     private final EditPart editPart;
 
     /**
-     * Creates a new <code>CreationUtil</code> with the specified request and
-     * location.
+     * Creates a new <code>CreationUtil</code> with the specified request and location.
      * 
      * @param request
      *            the request.
@@ -105,8 +103,7 @@ public class CreationUtil {
     }
 
     /**
-     * Creates a new <code>CreationUtil</code> with the specified request and
-     * location.
+     * Creates a new <code>CreationUtil</code> with the specified request and location.
      * 
      * @param request
      *            the request.
@@ -115,8 +112,7 @@ public class CreationUtil {
      * @param realLocation
      *            the location of the clicked point.
      * @param realSize
-     *            the computed size of the element to create, null if the
-     *            default size must be used
+     *            the computed size of the element to create, null if the default size must be used
      * @param editPart
      *            the edit part
      * @since 0.9.0
@@ -130,15 +126,13 @@ public class CreationUtil {
     }
 
     /**
-     * Returns a command that is able to create a node in the specified
-     * container with the specified tool.
+     * Returns a command that is able to create a node in the specified container with the specified tool.
      * 
      * @param container
      *            the container.
      * @param tool
      *            the node creation description tool.
-     * @return a command that is able to create a node in the specified
-     *         container with the specified tool.
+     * @return a command that is able to create a node in the specified container with the specified tool.
      */
     public Command getNodeCreationCommand(final DDiagramElementContainer container, final NodeCreationDescription tool) {
         if (new NodeCreationDescriptionQuery(tool).canCreateIn(container)) {
@@ -153,15 +147,13 @@ public class CreationUtil {
     }
 
     /**
-     * Returns a command that is able to create a node in the specified node
-     * with the specified tool.
+     * Returns a command that is able to create a node in the specified node with the specified tool.
      * 
      * @param node
      *            the node.
      * @param tool
      *            the node creation description tool.
-     * @return a command that is able to create a node in the specified node
-     *         with the specified tool.
+     * @return a command that is able to create a node in the specified node with the specified tool.
      */
     public Command getNodeCreationCommand(final DNode node, final NodeCreationDescription tool) {
         if (new NodeCreationDescriptionQuery(tool).canCreateIn(node)) {
@@ -175,15 +167,13 @@ public class CreationUtil {
     }
 
     /**
-     * Returns a command that is able to create a node in the specified
-     * viewpoint with the specified tool.
+     * Returns a command that is able to create a node in the specified viewpoint with the specified tool.
      * 
      * @param diagram
      *            the diagram.
      * @param tool
      *            the node creation description tool.
-     * @return a command that is able to create a node in the specified
-     *         viewpoint with the specified tool.
+     * @return a command that is able to create a node in the specified viewpoint with the specified tool.
      */
     public Command getNodeCreationCommand(final DDiagram diagram, final NodeCreationDescription tool) {
 
@@ -198,15 +188,13 @@ public class CreationUtil {
     }
 
     /**
-     * Returns a command that is able to create a container in the specified
-     * container with the specified tool.
+     * Returns a command that is able to create a container in the specified container with the specified tool.
      * 
      * @param viewNodeContainer
      *            the container
      * @param ccdTool
      *            the container creation description tool.
-     * @return a command that is able to create a container in the specified
-     *         container with the specified tool.
+     * @return a command that is able to create a container in the specified container with the specified tool.
      */
     public Command getContainerCreationDescription(final DDiagramElementContainer viewNodeContainer, final ContainerCreationDescription ccdTool) {
         if (new ContainerCreationDescriptionQuery(ccdTool).canCreateIn(viewNodeContainer)) {
@@ -220,15 +208,13 @@ public class CreationUtil {
     }
 
     /**
-     * Returns a command that is able to create a container in the specified
-     * viewpoint with the specified tool.
+     * Returns a command that is able to create a container in the specified viewpoint with the specified tool.
      * 
      * @param diagram
      *            the diagram.
      * @param ccdTool
      *            the container creation description tool.
-     * @return a command that is able to create a container in the specified
-     *         viewpoint with the specified tool.
+     * @return a command that is able to create a container in the specified viewpoint with the specified tool.
      */
     public Command getContainerCreationDescription(final DDiagram diagram, final ContainerCreationDescription ccdTool) {
         // if (container instanceof DiagramDescription) {
@@ -258,8 +244,8 @@ public class CreationUtil {
             final TreeItemWrapper input = new TreeItemWrapper(null, null);
             if (AbstractSelectionWizardCommand.canCreateCommand(selectionTool, containerView, input)) {
                 compoundCommand.add(createLayoutDataCommand(Predicates.<EditPart> alwaysTrue()));
-                compoundCommand.add(new ICommandProxy(
-                        new GMFCommandWrapper(getEditingDomain(), new SelectionWizardCommand(emfCommandFactory, selectionTool, input, (DSemanticDecorator) containerView))));
+                compoundCommand
+                        .add(new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), new SelectionWizardCommand(emfCommandFactory, selectionTool, input, (DSemanticDecorator) containerView))));
                 cmd = compoundCommand;
                 cmd.setLabel(selectionTool.getName());
             }
@@ -283,8 +269,8 @@ public class CreationUtil {
             final TreeItemWrapper input = new TreeItemWrapper(null, null);
             if (AbstractSelectionWizardCommand.canCreateCommand(selectionTool, containerView, input)) {
                 compoundCommand.add(createLayoutDataCommand(Predicates.<EditPart> alwaysTrue()));
-                compoundCommand.add(new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), new PaneBasedSelectionWizardCommand(emfCommandFactory, selectionTool, input,
-                        (DSemanticDecorator) containerView))));
+                compoundCommand.add(
+                        new ICommandProxy(new GMFCommandWrapper(getEditingDomain(), new PaneBasedSelectionWizardCommand(emfCommandFactory, selectionTool, input, (DSemanticDecorator) containerView))));
                 cmd = compoundCommand;
                 cmd.setLabel(selectionTool.getName());
             }
@@ -341,16 +327,14 @@ public class CreationUtil {
     }
 
     /**
-     * Returns <code>true</code> if a node can be created on the container with
-     * the specified tool. Returns a command that is able to execute a generic
-     * {@link ToolDescription}.
+     * Returns <code>true</code> if a node can be created on the container with the specified tool. Returns a command
+     * that is able to execute a generic {@link ToolDescription}.
      * 
      * @param containerView
      *            the view element on which the tool has been invoked.
      * @param toolDesc
      *            the tool to invoke.
-     * @return a command which executes the specified {@link ToolDescription} in
-     *         the context of the view element.
+     * @return a command which executes the specified {@link ToolDescription} in the context of the view element.
      */
     public Command getGenericToolCommand(final EObject containerView, final ToolDescription toolDesc) {
         final CompoundCommand compoundCommand = new CompoundCommand(toolDesc.getName());

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -63,11 +63,11 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.tools.api.Messages;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.tools.internal.uri.ViewpointProtocolException;
 import org.eclipse.sirius.tools.internal.uri.ViewpointProtocolParser;
-import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.Component;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
@@ -128,7 +128,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
             }
 
             private List<Diagnostic> getErrors(final EObject descRoot) {
-                if (descRoot == null || descRoot.eResource() == null) { 
+                if (descRoot == null || descRoot.eResource() == null) {
                     return Collections.emptyList();
                 } else {
                     return descRoot.eResource().getErrors();
@@ -149,8 +149,8 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * @param fileExtension
      *            the file extension.
      * @param collector
-     *            the collector responsible for providing the viewpoints from a
-     *            loaded model having the given file extension.
+     *            the collector responsible for providing the viewpoints from a loaded model having the given file
+     *            extension.
      */
     public void addViewpointFileCollector(String fileExtension, ViewpointFileCollector collector) {
         this.collectors.put(fileExtension, collector);
@@ -162,11 +162,9 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * @param fileExtension
      *            the file extension.
      * @param collector
-     *            the collector responsible for providing the viewpoints from a
-     *            loaded model having the given file extension.
-     * @deprecated use
-     *             {@link ViewpointRegistryImpl#addViewpointFileCollector(String, ViewpointFileCollector)}
-     *             instead
+     *            the collector responsible for providing the viewpoints from a loaded model having the given file
+     *            extension.
+     * @deprecated use {@link ViewpointRegistryImpl#addViewpointFileCollector(String, ViewpointFileCollector)} instead
      */
     @Deprecated
     public void addSiriusFileCollector(String fileExtension, ViewpointFileCollector collector) {
@@ -202,8 +200,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      *            the viewpoint uri. It should used viewpoint protocol.
      * @return the viewpoint if found, throw an exception otherwise
      * @throws ViewpointProtocolException
-     *             if the uri could not be parsed or the viewpoint could not be
-     *             found
+     *             if the uri could not be parsed or the viewpoint could not be found
      * @since 0.9.0
      */
     @Override
@@ -231,8 +228,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * @see ViewpointRegistry#getViewpoints()
      * @param filter
      *            the filter to add;
-     * @return <code>true</code> if the filter was added, <code>false</code>
-     *         otherwise.
+     * @return <code>true</code> if the filter was added, <code>false</code> otherwise.
      */
     @Override
     public boolean addFilter(final ViewpointRegistryFilter filter) {
@@ -287,8 +283,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * 
      * @param listener
      *            the listener to add;
-     * @return <code>true</code> if the listener was added, <code>false</code>
-     *         otherwise.
+     * @return <code>true</code> if the listener was added, <code>false</code> otherwise.
      */
     @Override
     public boolean addListener(final ViewpointRegistryListener2 listener) {
@@ -368,7 +363,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         invalidateCache();
         return addedViewpoints;
     }
-    
+
     @Override
     public void reloadAllFromPlugins() {
         boolean[] touched = { false };
@@ -404,8 +399,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     }
 
     /**
-     * Registers all components from the workspace. All previously registered
-     * components will be disposed.
+     * Registers all components from the workspace. All previously registered components will be disposed.
      * 
      * @param components
      *            the viewpoints to register.
@@ -469,8 +463,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
         }
 
         /*
-         * resource does not contribute anymore viewpoints => remove cross
-         * referencer
+         * resource does not contribute anymore viewpoints => remove cross referencer
          */
         removeCrossReferencer(viewpoint.eResource());
         invalidateCache();
@@ -517,13 +510,11 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     }
 
     /**
-     * Returns the viewpoint which defines the specified representation
-     * description.
+     * Returns the viewpoint which defines the specified representation description.
      * 
      * @param description
      *            the representation description.
-     * @return the Sirius which defines the representation description, or
-     *         <code>null</code> if it could not be found.
+     * @return the Sirius which defines the representation description, or <code>null</code> if it could not be found.
      * @since 0.9.0
      */
     @Override
@@ -536,8 +527,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
      * 
      * @param viewpoint
      *            the viewpoint to check.
-     * @return <code>true</code> if the plug-in comes from plug-in false if it
-     *         comes from workspace.
+     * @return <code>true</code> if the plug-in comes from plug-in false if it comes from workspace.
      */
     @Override
     public boolean isFromPlugin(final Viewpoint viewpoint) {
@@ -573,8 +563,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     }
 
     /**
-     * Scan all the workspaces and update the registry with added and removed
-     * components.
+     * Scan all the workspaces and update the registry with added and removed components.
      */
     private void refreshComponentsFromWorkspace() {
         /*
@@ -656,8 +645,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
                 removeCrossReferencer(resource);
             } catch (final ClassCastException e) {
                 /*
-                 * the cross reference remove may fail, but we should unload the
-                 * resource
+                 * the cross reference remove may fail, but we should unload the resource
                  */
             }
             try {
@@ -701,8 +689,8 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     }
 
     /**
-     * Should be called only at initialization or if user want to reload all
-     * Sirius plug-ins (all diagrams should be closed) !.
+     * Should be called only at initialization or if user want to reload all Sirius plug-ins (all diagrams should be
+     * closed) !.
      */
     private void initViewpointsFromPlugins() {
         /* should be sufficient to load one class of each plug-in */
@@ -718,8 +706,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     @Override
     public void resourceChanged(final IResourceChangeEvent event) {
         /*
-         * Refresh the registry when an odesign resource changed, is added or
-         * removed.
+         * Refresh the registry when an odesign resource changed, is added or removed.
          */
 
         this.refreshWorkspaceComponents(event.getDelta());
@@ -736,8 +723,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     }
 
     /**
-     * Refreshes components that come from the workspace with the given resource
-     * delta.
+     * Refreshes components that come from the workspace with the given resource delta.
      * 
      * @param resourceDelta
      *            a resource delta.
@@ -921,8 +907,8 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     }
 
     /**
-     * Remove the current viewpoint from viewpointFromWorkspace and update uri
-     * mapping to corresponding viewpoint from plugins if exists
+     * Remove the current viewpoint from viewpointFromWorkspace and update uri mapping to corresponding viewpoint from
+     * plugins if exists
      * 
      * @param viewpoint
      */
@@ -955,8 +941,7 @@ public class ViewpointRegistryImpl extends ViewpointRegistry {
     }
 
     /**
-     * Find the emf object equals to the given one in the viewpoint registry
-     * resource set.
+     * Find the emf object equals to the given one in the viewpoint registry resource set.
      * 
      * @param eObject
      *            the emf object to look for

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,6 +34,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -41,13 +42,11 @@ import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ModelOperation;
 
 /**
- * Helper for get tasks from ModelOperation. Provide some utilities reused in
- * different EMFCommandFactory
+ * Helper for get tasks from ModelOperation. Provide some utilities reused in different EMFCommandFactory
  * 
  * @author lredor
  * 
@@ -74,8 +73,7 @@ public class TaskHelper {
     }
 
     /**
-     * Create an {@link ExecuteToolOperationTask} with the specified context and
-     * operation.
+     * Create an {@link ExecuteToolOperationTask} with the specified context and operation.
      * 
      * @param target
      *            the context.
@@ -89,8 +87,7 @@ public class TaskHelper {
     }
 
     /**
-     * Create an {@link ExecuteToolOperationTask} with the specified context and
-     * operation.
+     * Create an {@link ExecuteToolOperationTask} with the specified context and operation.
      * 
      * @param representation
      *            the representation
@@ -107,12 +104,10 @@ public class TaskHelper {
     }
 
     /**
-     * Returns all the {@link DSemanticDecorator} elements to delete inside a
-     * context object.
+     * Returns all the {@link DSemanticDecorator} elements to delete inside a context object.
      * 
      * @param context
-     *            the context can be a {@link DAnalysis}, a {@link DView} or a
-     *            {@link DRepresentation}.
+     *            the context can be a {@link DAnalysis}, a {@link DView} or a {@link DRepresentation}.
      * @param semanticElements
      *            semantic elements.
      * @return all the {@link DSemanticDecorator} elements to delete.
@@ -209,15 +204,12 @@ public class TaskHelper {
     }
 
     /**
-     * Check the precondition of the specified tool with the specified
-     * container.
+     * Check the precondition of the specified tool with the specified container.
      * 
      * @param container
      *            the container variable.
      * @param toolDescription
-     *            the
-     *            {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription}
-     *            .
+     *            the {@link org.eclipse.sirius.viewpoint.description.tool.ToolDescription} .
      * @return <code>true</code> if the predicate is <code>true</code>.
      */
     public boolean checkPrecondition(final EObject container, final AbstractToolDescription toolDescription) {

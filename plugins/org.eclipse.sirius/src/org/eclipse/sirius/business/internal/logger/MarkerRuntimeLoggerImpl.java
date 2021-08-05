@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,8 +26,8 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.business.api.logger.MarkerRuntimeLogger;
 import org.eclipse.sirius.business.api.logger.RuntimeLogger;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.Messages;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 
 /**
  * Default implementation of {@link MarkerRuntimeLogger}.
@@ -162,8 +162,7 @@ public class MarkerRuntimeLoggerImpl implements RuntimeLogger, MarkerRuntimeLogg
      * @param markerTarget
      *            An eObject for which an EMF marker must be added
      * @param message
-     *            The message of the marker we want to display in the Problem
-     *            View.
+     *            The message of the marker we want to display in the Problem View.
      * @param markerSeverity
      *            The severity of the marker
      */
@@ -222,8 +221,7 @@ public class MarkerRuntimeLoggerImpl implements RuntimeLogger, MarkerRuntimeLogg
      *            the message of the marker to look for.
      * @param markerSeverity
      *            the severity of the marker to look for.
-     * @return <code>true</code> if and only if a marker matching all the
-     *         specified properties already exists.
+     * @return <code>true</code> if and only if a marker matching all the specified properties already exists.
      * @throws CoreException
      *             if the specified resource is not accessible.
      */

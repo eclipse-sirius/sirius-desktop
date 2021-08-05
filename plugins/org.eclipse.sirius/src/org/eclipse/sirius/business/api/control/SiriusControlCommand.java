@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,20 +34,19 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.internal.command.control.ControlCommand;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tools.api.Messages;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.collect.Iterables;
 
 /**
- * An extension of the basic {@link ControlCommand} to handle both the semantic
- * model and the corresponding Sirius representations. Also handles session
- * state and modification-tracking management.
+ * An extension of the basic {@link ControlCommand} to handle both the semantic model and the corresponding Sirius
+ * representations. Also handles session state and modification-tracking management.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
@@ -57,20 +56,18 @@ public class SiriusControlCommand extends ControlCommand {
     private final Session session;
 
     /**
-     * The representation descriptors corresponding to representations which
-     * must be controlled in addition to the semantic element.
+     * The representation descriptors corresponding to representations which must be controlled in addition to the
+     * semantic element.
      */
     private final Set<DRepresentationDescriptor> repDescriptors;
 
     /**
-     * The URI of the <code>.aird</code> resource in which to move the
-     * representations.
+     * The URI of the <code>.aird</code> resource in which to move the representations.
      */
     private final URI representationsDestination;
 
     /**
-     * A boolean to set if the session should be save at the end of this
-     * command.
+     * A boolean to set if the session should be save at the end of this command.
      */
     private final boolean shouldEndBySaving;
 
@@ -82,22 +79,16 @@ public class SiriusControlCommand extends ControlCommand {
      * @param semanticRoot
      *            the semantic element to control.
      * @param semanticDest
-     *            the URI of the resource in which to control the semantic
-     *            element.
+     *            the URI of the resource in which to control the semantic element.
      * @param repDescriptors
-     *            the set of representation descriptors corresponding to
-     *            representations to control in addition to the semantic
-     *            element.
+     *            the set of representation descriptors corresponding to representations to control in addition to the
+     *            semantic element.
      * @param representationsDest
-     *            the URI of the <code>.aird</code> resource in which to move
-     *            the representations.
+     *            the URI of the <code>.aird</code> resource in which to move the representations.
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of control
-     *            operation
-     * @deprecated use the other constructor instead, which requires mentioning
-     *             explicitly whether or not to save the session as part of the
-     *             command (most code should do the saving themselves outside of
-     *             the command).
+     *            a {@link IProgressMonitor} to show progression of control operation
+     * @deprecated use the other constructor instead, which requires mentioning explicitly whether or not to save the
+     *             session as part of the command (most code should do the saving themselves outside of the command).
      */
     @Deprecated
     public SiriusControlCommand(final EObject semanticRoot, final URI semanticDest, final Set<DRepresentationDescriptor> repDescriptors, final URI representationsDest, IProgressMonitor monitor) {
@@ -110,20 +101,15 @@ public class SiriusControlCommand extends ControlCommand {
      * @param semanticRoot
      *            the semantic element to control.
      * @param semanticDest
-     *            the URI of the resource in which to control the semantic
-     *            element.
+     *            the URI of the resource in which to control the semantic element.
      * @param representations
-     *            the set of representations to control in addition to the
-     *            semantic element.
+     *            the set of representations to control in addition to the semantic element.
      * @param representationsDest
-     *            the URI of the <code>.aird</code> resource in which to move
-     *            the representations.
+     *            the URI of the <code>.aird</code> resource in which to move the representations.
      * @param shouldEndBySaving
-     *            A boolean to set if the session should be save at the end of
-     *            this command.
+     *            A boolean to set if the session should be save at the end of this command.
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of control
-     *            operation
+     *            a {@link IProgressMonitor} to show progression of control operation
      */
     public SiriusControlCommand(final EObject semanticRoot, final URI semanticDest, final Set<DRepresentationDescriptor> representations, final URI representationsDest,
             final boolean shouldEndBySaving, IProgressMonitor monitor) {
@@ -168,8 +154,8 @@ public class SiriusControlCommand extends ControlCommand {
 
     /**
      * Get root container of specified object.<br>
-     * Default implementation consists in getting the resource container i.e the
-     * first parent container serialized in its own resource.
+     * Default implementation consists in getting the resource container i.e the first parent container serialized in
+     * its own resource.
      * 
      * @param eObject
      *            the current EObject.
@@ -183,11 +169,9 @@ public class SiriusControlCommand extends ControlCommand {
      * Create a new representations resource if needed :
      * <UL>
      * <LI>some representations must be moved</LI>
-     * <LI>or the preference to create empty representations file is set to true
-     * </LI>
+     * <LI>or the preference to create empty representations file is set to true</LI>
      * </UL>
-     * then move the representations to this new resource (if there are some
-     * representations to move).
+     * then move the representations to this new resource (if there are some representations to move).
      */
     private void createNewRepresentationsFileAndMoveRepresentations() {
         boolean emptyAirdFragmentOnControl = Platform.getPreferencesService().getBoolean(SiriusPlugin.ID, SiriusPreferencesKeys.PREF_EMPTY_AIRD_FRAGMENT_ON_CONTROL.name(), false, null);
@@ -229,18 +213,14 @@ public class SiriusControlCommand extends ControlCommand {
     }
 
     /**
-     * The new analysis is added to the referencedAnalysis of the first parent
-     * representations file and the children analysis of this first parent
-     * representations file are analyzed to be eventually moved.<BR>
+     * The new analysis is added to the referencedAnalysis of the first parent representations file and the children
+     * analysis of this first parent representations file are analyzed to be eventually moved.<BR>
      * <UL>
-     * <LI>Take the root of the resource container the parent of the controlled
-     * semantic element</LI>
+     * <LI>Take the root of the resource container the parent of the controlled semantic element</LI>
      * <LI>For each analysis that have this root as first models:</LI>
      * <UL>
-     * <LI>If the controlled semantic element contains the first models of a
-     * referencedAnalysis of the current analysis, then move this one in the new
-     * analysis (this corresponds to a fragmentation of intermediate level).
-     * </LI>
+     * <LI>If the controlled semantic element contains the first models of a referencedAnalysis of the current analysis,
+     * then move this one in the new analysis (this corresponds to a fragmentation of intermediate level).</LI>
      * <LI>Add the new analysis to the referencedAnalysis references</LI>
      * <UL>
      * </UL>
@@ -277,9 +257,8 @@ public class SiriusControlCommand extends ControlCommand {
     }
 
     /**
-     * Move the selected representations from this session to another analysis.
-     * The models references of the target analysis are updated according to the
-     * moved representations.
+     * Move the selected representations from this session to another analysis. The models references of the target
+     * analysis are updated according to the moved representations.
      * 
      * @param targetAnalysis
      *            The analysis in which the representations must be moved.
@@ -291,8 +270,7 @@ public class SiriusControlCommand extends ControlCommand {
     }
 
     /**
-     * Update the models references of all representations files of this
-     * session.
+     * Update the models references of all representations files of this session.
      * 
      * @param analysisToIgnore
      *            The models references of this DAnalysis will not be updated.
@@ -317,8 +295,8 @@ public class SiriusControlCommand extends ControlCommand {
     }
 
     /**
-     * Returns the first DAnalysis among the roots of the specified resource.
-     * Creates and adds a new one if none is found.
+     * Returns the first DAnalysis among the roots of the specified resource. Creates and adds a new one if none is
+     * found.
      */
     private DAnalysis getDAnalysis(final Resource aird) {
         for (EObject root : aird.getContents()) {

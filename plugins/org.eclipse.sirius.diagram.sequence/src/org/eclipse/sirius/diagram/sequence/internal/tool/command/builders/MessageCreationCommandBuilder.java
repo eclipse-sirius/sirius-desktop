@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,9 +31,9 @@ import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.EMFCommandFacto
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 
 /**
@@ -59,17 +59,14 @@ public class MessageCreationCommandBuilder extends EdgeCreationCommandBuilder {
     protected DDiagram diagram;
 
     /**
-     * Constructor to renseign default elts needed by NodeCreationCommandBuilder
-     * and value needed by StateCreationTool.
+     * Constructor to renseign default elts needed by NodeCreationCommandBuilder and value needed by StateCreationTool.
      * 
      * @param tool
      *            the StateCreationTool tool
      * @param source
-     *            the EdgeTarget source from which the created element should be
-     *            displayed
+     *            the EdgeTarget source from which the created element should be displayed
      * @param target
-     *            the EdgeTarget target from which the created element should be
-     *            displayed
+     *            the EdgeTarget target from which the created element should be displayed
      * @param startingEndPredecessor
      *            the eventEnd starting
      * @param finishingEndPredecessor
@@ -123,8 +120,7 @@ public class MessageCreationCommandBuilder extends EdgeCreationCommandBuilder {
      * {@inheritDoc}
      * 
      * Overridden to have OrderedElementCreationTool.startingEndPredecessor &
-     * OrderedElementCreationTool.finishingEndPredecessor variables in tool's
-     * precondition expression.
+     * OrderedElementCreationTool.finishingEndPredecessor variables in tool's precondition expression.
      */
     @Override
     protected boolean evaluatePrecondition(IInterpreter interpreter, EObject semanticContainer, String precondition) {

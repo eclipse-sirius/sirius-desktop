@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 
 /**
  * Utility class to factor customizations for DSemanticDiagram and related.
@@ -33,14 +33,12 @@ public final class DSemanticDiagramHelper {
     }
 
     /**
-     * Finds the element which should be considered as the root of the diagram's
-     * content. It may differ from the diagram's target element if a
-     * <em>root expression</em> has been defined.
+     * Finds the element which should be considered as the root of the diagram's content. It may differ from the
+     * diagram's target element if a <em>root expression</em> has been defined.
      * 
      * @param self
      *            the diagram.
-     * @return the element which should be considered as the root of the
-     *         diagram's content.
+     * @return the element which should be considered as the root of the diagram's content.
      */
     public static EObject getRootContent(DSemanticDiagram self) {
         EObject rootContent = self.getTarget();

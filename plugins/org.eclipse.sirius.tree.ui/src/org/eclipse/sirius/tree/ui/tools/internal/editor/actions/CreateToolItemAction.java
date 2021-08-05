@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariabl
 import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
@@ -40,7 +41,6 @@ import org.eclipse.sirius.tree.description.TreeItemMapping;
 import org.eclipse.sirius.tree.description.TreeItemTool;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewerManager;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
@@ -109,8 +109,7 @@ public class CreateToolItemAction extends AbstractToolItemAction {
                 result = anInstance;
             } catch (final MetaClassNotFoundException e) {
                 /*
-                 * silent catch, it's just a bit more magic, if we're able to
-                 * retrieve the right type then we'll do.
+                 * silent catch, it's just a bit more magic, if we're able to retrieve the right type then we'll do.
                  */
             }
 

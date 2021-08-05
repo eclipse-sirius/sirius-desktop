@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,7 +23,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.description.impl.IdentifiedElementImpl;
 import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
 import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;

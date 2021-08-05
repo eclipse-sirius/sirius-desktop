@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,13 +15,12 @@ package org.eclipse.sirius.tools.internal.validation.description.constraints;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.sirius.business.api.query.IdentifiedElementQuery;
-import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 
 /**
- * A abstract {@link AbstractModelConstraint} common to constraint with the tool
- * to recovery the path.
+ * A abstract {@link AbstractModelConstraint} common to constraint with the tool to recovery the path.
  * 
  * @author <a href="mailto:jessy.mallet@obeo.fr">Jessy Mallet</a>
  */

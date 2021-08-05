@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,14 +24,13 @@ import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.sirius.diagram.tools.internal.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 
 /**
  * Registry for all diagram types.
  * <p>
- * Warning: This class implements a NON thread safe singleton. You have to
- * synchronize calls if you use the shared instance in a multi threads
- * environment.
+ * Warning: This class implements a NON thread safe singleton. You have to synchronize calls if you use the shared
+ * instance in a multi threads environment.
  * </p>
  * 
  * @author ymortier
@@ -72,12 +71,10 @@ public final class DiagramTypeDescriptorRegistry {
     }
 
     /**
-     * Returns all diagram type descriptors. The returned collection is
-     * unmodifiable. All attempts to modify the result will fail with a
-     * {@link UnsupportedOperationException}.
+     * Returns all diagram type descriptors. The returned collection is unmodifiable. All attempts to modify the result
+     * will fail with a {@link UnsupportedOperationException}.
      * 
-     * @return all diagram type descriptors (the returned collection is
-     *         unmodifiable).
+     * @return all diagram type descriptors (the returned collection is unmodifiable).
      */
     public Collection<IDiagramTypeDescriptor> getAllDiagramTypeDescriptors() {
         return Collections.unmodifiableCollection(this.internalGetAllDiagramTypeDescriptors());
@@ -104,8 +101,7 @@ public final class DiagramTypeDescriptorRegistry {
     }
 
     /**
-     * Returns all descriptors. Lazy loads the desciptor that used the
-     * diagramDescriptionProvider extension point.
+     * Returns all descriptors. Lazy loads the desciptor that used the diagramDescriptionProvider extension point.
      * 
      * @return all descriptors.
      */
@@ -144,8 +140,7 @@ public final class DiagramTypeDescriptorRegistry {
     }
 
     /**
-     * Basic implementation of {@link IDiagramTypeDescriptor} for the
-     * diagramType extension.
+     * Basic implementation of {@link IDiagramTypeDescriptor} for the diagramType extension.
      * 
      * @author ymortier
      */
@@ -158,8 +153,7 @@ public final class DiagramTypeDescriptorRegistry {
         private IDiagramDescriptionProvider diagramDescriptionProvider;
 
         /**
-         * Creates a new diagram type descriptor with the given label and
-         * diagram description provider.
+         * Creates a new diagram type descriptor with the given label and diagram description provider.
          * 
          * @param label
          *            the label of the diagram type.

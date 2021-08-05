@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,17 +21,16 @@ import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.CompoundInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.tools.api.Messages;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.JavaExtension;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.collect.Iterables;
 
 /**
- * This class registers all {@link AcceleoInterpreter} for each viewpoint
- * specification file.
+ * This class registers all {@link AcceleoInterpreter} for each viewpoint specification file.
  * 
  * 
  * @author cbrun
@@ -45,14 +44,12 @@ public class InterpreterRegistry {
     public static final String ERROR_MSG_IMPOSSIBLE_TO_FIND_AN_INTERPRETER = Messages.InterpreterRegistry_ImpossibleToFindInterpreterErrorMsg;
 
     /**
-     * Return the model requests interpreter for the specified
-     * <code>modelElement</code>. The model requests interpreter is retrieved
-     * with the resourceSet of <code>modelElement</code>.
+     * Return the model requests interpreter for the specified <code>modelElement</code>. The model requests interpreter
+     * is retrieved with the resourceSet of <code>modelElement</code>.
      * 
      * @param modelElement
      *            a model element.
-     * @return the model requests interpreter for the specified
-     *         <code>modelElement</code>.
+     * @return the model requests interpreter for the specified <code>modelElement</code>.
      */
     public IInterpreter getInterpreter(final EObject modelElement) {
         IInterpreter result = null;
@@ -78,8 +75,7 @@ public class InterpreterRegistry {
     }
 
     /**
-     * Prepare all imports of the specified model request interpreter and
-     * session.
+     * Prepare all imports of the specified model request interpreter and session.
      * 
      * @param inter
      *            the model requests interpreter to prepare.

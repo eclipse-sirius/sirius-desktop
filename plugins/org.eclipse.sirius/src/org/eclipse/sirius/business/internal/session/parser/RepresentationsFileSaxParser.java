@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,7 @@ import javax.xml.parsers.SAXParserFactory;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.xml.sax.SAXException;
 
 /**
@@ -96,8 +96,7 @@ public class RepresentationsFileSaxParser {
     }
 
     /**
-     * Get the representationsFile URI corresponding the parsed representations
-     * file.
+     * Get the representationsFile URI corresponding the parsed representations file.
      * 
      * @return the representationsFileURI
      */

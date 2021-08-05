@@ -40,6 +40,7 @@ Export-Package: org.eclipse.sirius.diagram;version="7.0.0",
  org.eclipse.sirius.diagram.description.util;version="7.0.0",
  org.eclipse.sirius.diagram.impl;version="7.0.0",
  org.eclipse.sirius.diagram.model.tools.internal;version="7.0.0";x-internal:=true,
+ org.eclipse.sirius.diagram.model.tools.internal.util,
  org.eclipse.sirius.diagram.util;version="7.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,9 +19,9 @@ import java.util.List;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEdit;
 import org.eclipse.sirius.ui.business.api.template.RepresentationTemplateEditManager;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
 
 /**
@@ -37,6 +37,7 @@ public class RepresentationTemplateEditManagerImpl implements RepresentationTemp
     /**
      * {@inheritDoc}
      */
+    @Override
     public Collection<? extends Object> provideNewChildDescriptors() {
         Collection result = new ArrayList<>();
         for (RepresentationTemplateEdit edit : edits) {
@@ -63,6 +64,7 @@ public class RepresentationTemplateEditManagerImpl implements RepresentationTemp
     /**
      * {@inheritDoc}
      */
+    @Override
     public EObject getSourceElement(EObject produced) {
         for (RepresentationTemplateEdit edit : edits) {
             EObject found = edit.getSourceElement(produced);
@@ -76,6 +78,7 @@ public class RepresentationTemplateEditManagerImpl implements RepresentationTemp
     /**
      * {@inheritDoc}
      */
+    @Override
     public void update(RepresentationTemplate template) {
         for (RepresentationTemplateEdit edit : edits) {
             edit.update(template);
@@ -85,6 +88,7 @@ public class RepresentationTemplateEditManagerImpl implements RepresentationTemp
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean isGenerated(EObject vsmObject) {
         for (RepresentationTemplateEdit edit : edits) {
             if (edit.isGenerated(vsmObject)) {
@@ -97,6 +101,7 @@ public class RepresentationTemplateEditManagerImpl implements RepresentationTemp
     /**
      * {@inheritDoc}
      */
+    @Override
     public boolean isOverriden(EObject eObj, EStructuralFeature feature) {
         for (RepresentationTemplateEdit edit : edits) {
             if (edit.isOverriden(eObj, feature)) {

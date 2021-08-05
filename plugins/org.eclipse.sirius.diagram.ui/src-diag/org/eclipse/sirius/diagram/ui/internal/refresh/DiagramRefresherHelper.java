@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 Obeo
+ * Copyright (c) 2017, 2021 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,8 +21,8 @@ import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.refresh.RefreshRunnableWithProgress;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.ui.business.api.action.RefreshActionListenerRegistry;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 

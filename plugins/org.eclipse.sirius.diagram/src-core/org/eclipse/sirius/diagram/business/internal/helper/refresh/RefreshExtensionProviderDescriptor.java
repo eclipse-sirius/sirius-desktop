@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@ import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.sirius.business.internal.helper.refresh.AbstractProviderDescriptor;
 import org.eclipse.sirius.diagram.business.api.refresh.IRefreshExtensionProvider;
 import org.eclipse.sirius.diagram.tools.internal.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 
 /**
  * Descriptor of a {@link IRefreshExtensionProvider}.

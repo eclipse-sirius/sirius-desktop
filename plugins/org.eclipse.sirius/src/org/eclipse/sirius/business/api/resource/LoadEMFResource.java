@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,8 +27,8 @@ import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLParserPoolImpl;
 import org.eclipse.sirius.business.api.resource.strategy.ResourceStrategyRegistry;
 import org.eclipse.sirius.business.internal.resource.parser.XMIModelFileSaxParser;
-import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.Messages;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 
 import com.google.common.base.Preconditions;
 
@@ -108,8 +108,7 @@ public class LoadEMFResource implements Runnable {
     /**
      * Returns the loaded resource.
      * 
-     * @return the loaded resource, or <code>null</code> if it could not be
-     *         loaded
+     * @return the loaded resource, or <code>null</code> if it could not be loaded
      */
     public Resource getLoadedResource() {
         return res;

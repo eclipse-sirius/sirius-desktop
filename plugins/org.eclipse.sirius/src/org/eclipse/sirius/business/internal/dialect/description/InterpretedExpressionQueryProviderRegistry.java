@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 Obeo
+ * Copyright (c) 2016, 2021 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,8 +29,8 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Plugin;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQueryProvider;
+import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.tools.internal.ui.ExternalJavaActionDescriptor;
-import org.eclipse.sirius.viewpoint.Messages;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;

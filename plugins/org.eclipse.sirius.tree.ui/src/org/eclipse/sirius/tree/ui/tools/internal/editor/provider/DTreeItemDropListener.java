@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -41,6 +41,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.DTreeItemContainer;
@@ -49,7 +50,6 @@ import org.eclipse.sirius.tree.description.TreeDragSource;
 import org.eclipse.sirius.tree.description.TreeItemContainerDropTool;
 import org.eclipse.sirius.tree.ui.provider.Messages;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.dnd.DropTargetListener;
 import org.eclipse.swt.dnd.TransferData;
@@ -58,8 +58,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
 /**
- * Drop Listener used to validate and perform Drag and Drop operations on
- * DTreeItems.
+ * Drop Listener used to validate and perform Drag and Drop operations on DTreeItems.
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  */
@@ -112,8 +111,8 @@ public class DTreeItemDropListener extends ViewerDropAdapter implements DropTarg
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.jface.viewers.ViewerDropAdapter#validateDrop(java.lang.Object,
-     *      int, org.eclipse.swt.dnd.TransferData)
+     * @see org.eclipse.jface.viewers.ViewerDropAdapter#validateDrop(java.lang.Object, int,
+     *      org.eclipse.swt.dnd.TransferData)
      */
     @Override
     public boolean validateDrop(Object target, int operation, TransferData transferType) {
@@ -150,22 +149,18 @@ public class DTreeItemDropListener extends ViewerDropAdapter implements DropTarg
     }
 
     /**
-     * Computes the actual Target of the DnD and the preceding siblings
-     * variables , according to the current Location value :
+     * Computes the actual Target of the DnD and the preceding siblings variables , according to the current Location
+     * value :
      * <ul>
-     * <li>if the currentLocation is LOCATION_BEFORE : then the target of the
-     * DnD is the container of the default target. Preceding siblings will be
-     * all TreeItems contained by this container and located before the current
+     * <li>if the currentLocation is LOCATION_BEFORE : then the target of the DnD is the container of the default
+     * target. Preceding siblings will be all TreeItems contained by this container and located before the current
      * target.</li>
-     * <li>if the currentLocation is LOCATION_AFTER : then the target of the DnD
-     * is the container of the default target. Preceding siblings will be all
-     * TreeItems contained by this container and located before the current
-     * target, including the current target.</li>
-     * <li>for all other values of currentLocation, then the target of the DnD
-     * is the current target, and the precedingSiblings will be all TreeItmes
-     * contained in the current target.</li>
-     * <li>if the target of the DnD is null, then the real container is the tree
-     * itself.</li>
+     * <li>if the currentLocation is LOCATION_AFTER : then the target of the DnD is the container of the default target.
+     * Preceding siblings will be all TreeItems contained by this container and located before the current target,
+     * including the current target.</li>
+     * <li>for all other values of currentLocation, then the target of the DnD is the current target, and the
+     * precedingSiblings will be all TreeItmes contained in the current target.</li>
+     * <li>if the target of the DnD is null, then the real container is the tree itself.</li>
      * </ul>
      * 
      * @param target
@@ -229,8 +224,8 @@ public class DTreeItemDropListener extends ViewerDropAdapter implements DropTarg
     }
 
     /**
-     * Compute the sources of the drag and drop from the local selection
-     * transfer's selection (for example the Model Explorer View).
+     * Compute the sources of the drag and drop from the local selection transfer's selection (for example the Model
+     * Explorer View).
      * 
      */
     private void computeDraggedDataFromLocalSelectionTransfer() {
@@ -324,8 +319,7 @@ public class DTreeItemDropListener extends ViewerDropAdapter implements DropTarg
      *            the dragged element
      * @param dropTarget
      *            the drop target
-     * @return true if one of the dragged sources is a container of the target,
-     *         false otherwise
+     * @return true if one of the dragged sources is a container of the target, false otherwise
      */
     private boolean sourceIsTargetContainer() {
         Object targetContainer = dropTarget;
@@ -386,13 +380,12 @@ public class DTreeItemDropListener extends ViewerDropAdapter implements DropTarg
     }
 
     /**
-     * Indicates whether the given DSemanticDecorator (TreeItem or DTree) can be
-     * edited or not, using the Permission Authority and the CanEdit feature.
+     * Indicates whether the given DSemanticDecorator (TreeItem or DTree) can be edited or not, using the Permission
+     * Authority and the CanEdit feature.
      * 
      * @param decorator
      *            the item to determine if it is editable or not
-     * @return true if the given DSemanticDecorator and its target can be
-     *         edited, false otherwise
+     * @return true if the given DSemanticDecorator and its target can be edited, false otherwise
      */
     protected boolean canEditSemanticDecorator(DSemanticDecorator decorator) {
         // Permission Authority must allow edition of the DTreeItem and its
@@ -406,8 +399,7 @@ public class DTreeItemDropListener extends ViewerDropAdapter implements DropTarg
     }
 
     /**
-     * Indicates whether the given object can be edited or not, using the
-     * Permission Authority and the CanEdit feature.
+     * Indicates whether the given object can be edited or not, using the Permission Authority and the CanEdit feature.
      * 
      * @param obj
      *            the item to determine if it is editable or not
@@ -431,8 +423,7 @@ public class DTreeItemDropListener extends ViewerDropAdapter implements DropTarg
      * @param droppedElement
      *            The semantic dropped element
      * @param oldContainer
-     *            The old semantic container, can be null (for instance if drop
-     *            comes from project explorer)
+     *            The old semantic container, can be null (for instance if drop comes from project explorer)
      * @param newContainer
      *            The new semantic container
      * @param newViewContainer
@@ -466,8 +457,7 @@ public class DTreeItemDropListener extends ViewerDropAdapter implements DropTarg
                 if (bestDropDescription == null) {
                     bestDropDescription = dropTool;
                 } else {
-                    SiriusPlugin.getDefault().warning(
-                            MessageFormat.format(Messages.DTreeItemDropListener_ambigousDropWarning, droppedElement, bestDropDescription.getName(), dropTool.getName()),
+                    SiriusPlugin.getDefault().warning(MessageFormat.format(Messages.DTreeItemDropListener_ambigousDropWarning, droppedElement, bestDropDescription.getName(), dropTool.getName()),
                             new RuntimeException());
                     break;
                 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.tools.api.Messages;
 
 /**
  * Specific command do remove semantic resources from the given session.
@@ -53,8 +53,7 @@ public class RemoveSemanticResourceCommand extends RecordingCommand {
      * @param semanticResource
      *            resource to remove
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of semantic
-     *            resource removal
+     *            a {@link IProgressMonitor} to show progression of semantic resource removal
      * @param removeReferencingResources
      *            indicates if the referencing resources are also to remove
      */

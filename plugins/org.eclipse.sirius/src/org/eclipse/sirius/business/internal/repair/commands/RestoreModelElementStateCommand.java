@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,8 +18,8 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.command.IdentityCommand;
 import org.eclipse.sirius.business.api.repair.IRepairParticipant;
+import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * RestoreModelElementStateRecordingCommand.

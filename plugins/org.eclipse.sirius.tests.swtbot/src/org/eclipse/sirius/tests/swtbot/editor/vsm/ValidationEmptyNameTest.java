@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2017 Obeo.
+ * Copyright (c) 2014, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,8 +27,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckTreeItemEnable
 import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemWithImageCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotVSMEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.ui.business.api.descriptor.ComposedImageDescriptor;
-import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
@@ -58,8 +58,8 @@ public class ValidationEmptyNameTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that the empty name validation error appears in the "problems" view
-     * when the name of a diagram node is not filled.
+     * Test that the empty name validation error appears in the "problems" view when the name of a diagram node is not
+     * filled.
      */
     public void testValidationErrorValue() {
         // Opened VSM
@@ -93,8 +93,7 @@ public class ValidationEmptyNameTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Check that a red cross appears on the icon Node Mapping to show problem
-     * validation.
+     * Check that a red cross appears on the icon Node Mapping to show problem validation.
      * 
      * @param odesignEditor
      *            the odesign editor

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,8 +28,8 @@ import org.eclipse.sirius.tests.swtbot.support.api.condition.TreeItemSelected;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.view.DesignerViews;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.ui.business.internal.session.SiriusSessionDetailsPropertyPage;
-import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swtbot.eclipse.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.SWTBot;
@@ -80,7 +80,7 @@ public class SiriusSessionDetailsPropertyPageTest extends AbstractSiriusSwtBotGe
         SWTBotUtils.waitAllUiEvents();
         super.tearDown();
     }
-    
+
     /**
      * Tests the content of {@link SiriusSessionDetailsPropertyPage}
      */

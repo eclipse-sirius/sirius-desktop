@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,8 +31,8 @@ import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.EObjectCollectionWrapper;
+import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
-import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.SubVariable;
 import org.eclipse.sirius.viewpoint.description.tool.AcceleoVariable;
@@ -51,14 +51,12 @@ public class InitInterpreterVariablesTask extends AbstractCommandTask {
     private final IInterpreter interpreter;
 
     /**
-     * The variables. Each key is an {@link AbstractVariable} and each value is
-     * an {@link EObject}.s
+     * The variables. Each key is an {@link AbstractVariable} and each value is an {@link EObject}.s
      */
     private final Map<AbstractVariable, Object> variables;
 
     /**
-     * The string variables. Each key is an {@link AbstractVariable} and each
-     * value is a {@link String}.
+     * The string variables. Each key is an {@link AbstractVariable} and each value is a {@link String}.
      */
     private final Map<AbstractVariable, String> stringVariables;
 
@@ -68,10 +66,8 @@ public class InitInterpreterVariablesTask extends AbstractCommandTask {
     private final UICallBack uiCallBack;
 
     /**
-     * Create a new {@link InitInterpreterVariablesTask} with the variables to
-     * initialize and the acceleo interpreter to use. The {@link Map} variables
-     * is composed of {@link AbstractVariable} (keys) and {@link EObject}
-     * (values).
+     * Create a new {@link InitInterpreterVariablesTask} with the variables to initialize and the acceleo interpreter to
+     * use. The {@link Map} variables is composed of {@link AbstractVariable} (keys) and {@link EObject} (values).
      * 
      * @param variables
      *            the variables to initialize.
@@ -85,11 +81,9 @@ public class InitInterpreterVariablesTask extends AbstractCommandTask {
     }
 
     /**
-     * Create a new {@link InitInterpreterVariablesTask} with the variables to
-     * initialize and the acceleo interpreter to use. The {@link Map} variables
-     * is composed of {@link AbstractVariable} (keys) and {@link EObject}
-     * (values). The {@link Map} stringVariables is composed of
-     * {@link AbstractVariable} (keys) and {@link String} (values)
+     * Create a new {@link InitInterpreterVariablesTask} with the variables to initialize and the acceleo interpreter to
+     * use. The {@link Map} variables is composed of {@link AbstractVariable} (keys) and {@link EObject} (values). The
+     * {@link Map} stringVariables is composed of {@link AbstractVariable} (keys) and {@link String} (values)
      * 
      * @param variables
      *            the variables to initialize.
@@ -116,9 +110,8 @@ public class InitInterpreterVariablesTask extends AbstractCommandTask {
     public void execute() {
         interpreter.clearVariables();
         /*
-         * last value is used to keep track of the latest variable on which we
-         * get a value, as it will be the source of some possible dialog or
-         * wizard to get the candidate objects.
+         * last value is used to keep track of the latest variable on which we get a value, as it will be the source of
+         * some possible dialog or wizard to get the candidate objects.
          */
         // EObject lastValue = null;
         final SortedMap<AbstractVariable, Object> sortedVariables = new TreeMap<AbstractVariable, Object>(new ModelVariableComparator());

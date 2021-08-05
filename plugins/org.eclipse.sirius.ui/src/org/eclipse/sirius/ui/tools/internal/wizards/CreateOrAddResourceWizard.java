@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -39,6 +39,7 @@ import org.eclipse.jface.window.Window;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.ui.business.api.viewpoint.ViewpointSelection;
 import org.eclipse.sirius.ui.tools.api.actions.analysis.IAddModelDependencyWizard;
 import org.eclipse.sirius.ui.tools.internal.dialogs.SemanticResourceDialog;
@@ -47,7 +48,6 @@ import org.eclipse.sirius.ui.tools.internal.wizards.pages.CreateOrAddResourceWiz
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.GenericInitialObjectPage;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.GenericModelCreationPage;
 import org.eclipse.sirius.ui.tools.internal.wizards.pages.SelectMetamodelWizardPage;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Composite;
@@ -68,8 +68,7 @@ public class CreateOrAddResourceWizard extends Wizard implements IAddModelDepend
     protected IStructuredSelection selection;
 
     /**
-     * The wizard page to select between file resource creation and resource
-     * addition.
+     * The wizard page to select between file resource creation and resource addition.
      */
     protected CreateOrAddResourceWizardPage selectionPage;
 
@@ -226,8 +225,7 @@ public class CreateOrAddResourceWizard extends Wizard implements IAddModelDepend
                         final Resource resource = resourceSet.createResource(fileURI);
 
                         /*
-                         * Create the initial model object and add it to the
-                         * contents
+                         * Create the initial model object and add it to the contents
                          */
                         final EPackage ePackage = metamodelPage.getEPackage();
                         final EClass eClass = (EClass) ePackage.getEClassifier(initialObjectPage.getInitialObjectName());

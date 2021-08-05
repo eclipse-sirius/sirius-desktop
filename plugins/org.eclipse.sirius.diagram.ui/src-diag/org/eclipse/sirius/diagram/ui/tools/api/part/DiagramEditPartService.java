@@ -51,8 +51,8 @@ import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPrefer
 import org.eclipse.sirius.diagram.ui.tools.internal.part.OffscreenEditPartFactory;
 import org.eclipse.sirius.diagram.ui.tools.internal.render.SiriusDiagramImageGenerator;
 import org.eclipse.sirius.diagram.ui.tools.internal.render.SiriusDiagramSVGGenerator;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.ImageData;

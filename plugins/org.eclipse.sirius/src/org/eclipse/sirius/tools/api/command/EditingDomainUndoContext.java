@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2006, 2015 IBM Corporation and others.
+ * Copyright (c) 2006, 2021 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,12 +15,11 @@ package org.eclipse.sirius.tools.api.command;
 
 import org.eclipse.core.commands.operations.IUndoContext;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.tools.api.Messages;
 
 /**
- * An {@link IUndoContext} that tags an EMF operation with the editing domain
- * that it affects. Two editing domain contexts match if and only if they
- * reference the same {@link EditingDomain} instance.
+ * An {@link IUndoContext} that tags an EMF operation with the editing domain that it affects. Two editing domain
+ * contexts match if and only if they reference the same {@link EditingDomain} instance.
  * 
  * @author ldamus
  * @since 0.9.0
@@ -54,9 +53,8 @@ public final class EditingDomainUndoContext implements IUndoContext {
      * 
      * @see org.eclipse.core.commands.operations.IUndoContext#matches(org.eclipse.core.commands.operations.IUndoContext)
      * 
-     *      I match another <code>context</code> if it is a
-     *      <code>EditingDomainUndoContext</code> representing the same editing
-     *      domain as I.
+     *      I match another <code>context</code> if it is a <code>EditingDomainUndoContext</code> representing the same
+     *      editing domain as I.
      */
     @Override
     public boolean matches(final IUndoContext context) {
@@ -64,8 +62,7 @@ public final class EditingDomainUndoContext implements IUndoContext {
     }
 
     /**
-     * {@inheritDoc} I am equal to other <code>EditingDomainUndoContext</code>
-     * on the same editing domain as mine.
+     * {@inheritDoc} I am equal to other <code>EditingDomainUndoContext</code> on the same editing domain as mine.
      */
     @Override
     public boolean equals(final Object o) {

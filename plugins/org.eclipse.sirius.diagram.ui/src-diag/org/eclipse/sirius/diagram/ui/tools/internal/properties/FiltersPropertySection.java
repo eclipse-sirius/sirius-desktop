@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -50,7 +50,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.commands.ActivateFiltersComm
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.DeactivateFiltersCommand;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.audit.provider.AuditItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.description.validation.provider.ValidationItemProviderAdapterFactory;
 import org.eclipse.sirius.viewpoint.provider.ViewpointItemProviderAdapterFactory;
@@ -72,8 +72,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
 /**
- * This Property section shows currently activated filters and helps in
- * adding/removing new ones.
+ * This Property section shows currently activated filters and helps in adding/removing new ones.
  * 
  * 
  * 

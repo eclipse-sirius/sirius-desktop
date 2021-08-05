@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,11 +23,10 @@ import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.IRegistryChangeEvent;
 import org.eclipse.core.runtime.IRegistryChangeListener;
 import org.eclipse.core.runtime.Platform;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 
 /**
- * This listener will allow us to be aware of contribution changes against the
- * sessionFactory extension point.
+ * This listener will allow us to be aware of contribution changes against the sessionFactory extension point.
  * 
  * @author smonnier
  */
@@ -95,9 +94,8 @@ public class SessionFactoryRegistryListener implements IRegistryChangeListener {
     }
 
     /**
-     * Though this listener reacts to the extension point changes, there could
-     * have been contributions before it's been registered. This will parse
-     * these initial contributions.
+     * Though this listener reacts to the extension point changes, there could have been contributions before it's been
+     * registered. This will parse these initial contributions.
      */
     public void parseInitialContributions() {
         final IExtensionRegistry registry = Platform.getExtensionRegistry();
@@ -111,8 +109,7 @@ public class SessionFactoryRegistryListener implements IRegistryChangeListener {
      * Parses a single extension contribution.
      * 
      * @param extension
-     *            Parses the given extension and adds its contribution to the
-     *            registry.
+     *            Parses the given extension and adds its contribution to the registry.
      */
     private void parseExtension(IExtension extension) {
         final IConfigurationElement[] configElements = extension.getConfigurationElements();
@@ -124,11 +121,11 @@ public class SessionFactoryRegistryListener implements IRegistryChangeListener {
     }
 
     /**
-     * Overridden to support TP 3.3, because IRegistryEventListener exists only
-     * from 3.4.
+     * Overridden to support TP 3.3, because IRegistryEventListener exists only from 3.4.
      * 
      * {@inheritDoc}
      */
+    @Override
     public void registryChanged(IRegistryChangeEvent event) {
         IExtensionDelta[] deltas = event.getExtensionDeltas();
         List<IExtension> addedExtensions = new ArrayList<IExtension>();

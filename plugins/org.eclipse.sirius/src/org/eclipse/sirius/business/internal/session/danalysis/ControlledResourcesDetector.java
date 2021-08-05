@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,8 +26,8 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.sirius.business.api.session.SessionListener;
-import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.business.internal.query.ResourceQueryInternal;
+import org.eclipse.sirius.tools.api.Messages;
 
 import com.google.common.base.Preconditions;
 
@@ -40,8 +40,8 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
     /**
      * The events of interest for {@link ControlledResourcesDetector}.
      */
-    private static final NotificationFilter CONTROLLED_RESOURCES_EVENTS = NotificationFilter.createFeatureFilter(ResourceSet.class, ResourceSet.RESOURCE_SET__RESOURCES).and(
-            NotificationFilter.NOT_TOUCH);
+    private static final NotificationFilter CONTROLLED_RESOURCES_EVENTS = NotificationFilter.createFeatureFilter(ResourceSet.class, ResourceSet.RESOURCE_SET__RESOURCES)
+            .and(NotificationFilter.NOT_TOUCH);
 
     private DAnalysisSessionImpl session;
 
@@ -91,8 +91,7 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
     }
 
     /**
-     * Dispose the current listener and remove it from the transactional editing
-     * domain.
+     * Dispose the current listener and remove it from the transactional editing domain.
      */
     public void dispose() {
         if (session != null) {
@@ -102,9 +101,8 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
     }
 
     /**
-     * Refresh a session's {@link DAnalysisSession.getControlledResources()}
-     * list, adding newly controlled semantic resources and removing obsolete
-     * ones which are not in the ResourceSet anymore.
+     * Refresh a session's {@link DAnalysisSession.getControlledResources()} list, adding newly controlled semantic
+     * resources and removing obsolete ones which are not in the ResourceSet anymore.
      */
     static void refreshControlledResources(DAnalysisSessionImpl session) {
         Collection<Resource> semantics = session.getSemanticResources();
@@ -140,8 +138,7 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
     }
 
     /**
-     * Simply wraps a call to {@link #refreshControlledResources()} into a
-     * {@link RecordingCommand}.
+     * Simply wraps a call to {@link #refreshControlledResources()} into a {@link RecordingCommand}.
      */
     private static class RefreshControlledResourcesCommand extends RecordingCommand {
         private final DAnalysisSessionImpl session;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,7 @@ import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
-import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.tools.api.Messages;
 
 /**
  * A command wrapper to avoid execution of command if a resource is null.
@@ -38,8 +38,7 @@ public class NoNullResourceCommand extends AbstractCommand implements IAdaptable
      * @param element
      *            the element to test
      * 
-     *            throw an exception if command is an instance of
-     *            {@link RecordingCommand} and not an instance of
+     *            throw an exception if command is an instance of {@link RecordingCommand} and not an instance of
      *            {@link SiriusCommand}
      */
     public NoNullResourceCommand(Command cmd, EObject element) {

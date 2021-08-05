@@ -49,9 +49,9 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.GaugeCompositeFigure;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.util.AnchorProvider;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.LabelStyle;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.swt.graphics.Image;
 
 /**
@@ -95,8 +95,7 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.diagram.tools.api.graphical.edit.styles.StyleConfiguration#adaptViewNodeSizeWithLabel(org.eclipse.sirius.viewpoint.DNode,
-     *      org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.draw2d.ui.figures.SiriusWrapLabel,
-     *      int)
+     *      org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.draw2d.ui.figures.SiriusWrapLabel, int)
      */
     @Override
     public int adaptViewNodeSizeWithLabel(final DNode viewNode, final SiriusWrapLabel nodeLabel, final int nodeWidth) {
@@ -196,15 +195,13 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
     }
 
     /**
-     * Return <code>true</code> if the icon of the specified
-     * {@link DDiagramElement} is shown.
+     * Return <code>true</code> if the icon of the specified {@link DDiagramElement} is shown.
      * 
      * @param vpElement
      *            the {@link DDiagramElement}.
      * @param editPart
      *            the edit part
-     * @return <code>true</code> if the icon of the specified
-     *         {@link DDiagramElement} is shown.
+     * @return <code>true</code> if the icon of the specified {@link DDiagramElement} is shown.
      */
     protected boolean isShowIcon(final DDiagramElement vpElement, final IGraphicalEditPart editPart) {
         BasicLabelStyle bls = getBasicLabelStyle(vpElement, editPart);

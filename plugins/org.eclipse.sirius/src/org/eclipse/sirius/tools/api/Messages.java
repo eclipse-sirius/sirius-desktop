@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.viewpoint;
+package org.eclipse.sirius.tools.api;
 
 import org.eclipse.sirius.ext.base.I18N;
 import org.eclipse.sirius.ext.base.I18N.TranslatableMessage;

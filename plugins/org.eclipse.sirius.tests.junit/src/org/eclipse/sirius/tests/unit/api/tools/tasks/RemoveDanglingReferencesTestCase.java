@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,14 +22,13 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveDanglingReferences;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import junit.framework.TestCase;
 
 /**
- * Check the behavior and scope of the static methods of
- * {@link RemoveDanglingReferences}.
+ * Check the behavior and scope of the static methods of {@link RemoveDanglingReferences}.
  * 
  * @author mporhel
  */
@@ -132,7 +131,7 @@ public class RemoveDanglingReferencesTestCase extends TestCase {
     }
 */
     // @formatter:on
-    
+
     private void checkDanglingReferences(TestData testData, boolean expectedDanglingSubClass1, boolean expectedDanglingSubClass2, boolean expectedDanglingSubClassInOtherResource) {
         checkDanglingReferences(testData.subClass1, expectedDanglingSubClass1);
         checkDanglingReferences(testData.subClass2, expectedDanglingSubClass2);
@@ -149,9 +148,8 @@ public class RemoveDanglingReferencesTestCase extends TestCase {
     }
 
     /*
-     * Init the test data: 1 resource set, 2 EPackage in 2 resources. 4
-     * eClasses: 3 in the first package, 1 in the other. 1 classes from the
-     * first package is added as supertype of the 3 other classes.
+     * Init the test data: 1 resource set, 2 EPackage in 2 resources. 4 eClasses: 3 in the first package, 1 in the
+     * other. 1 classes from the first package is added as supertype of the 3 other classes.
      */
     private TestData initResourceSet() {
         ResourceSet rset = new ResourceSetImpl();

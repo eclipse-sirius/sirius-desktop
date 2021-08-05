@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,14 +26,13 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.tools.internal.Messages;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
- * A class aggregating all the queries (read-only!) having a EdgeMapping as a
- * starting point.
+ * A class aggregating all the queries (read-only!) having a EdgeMapping as a starting point.
  * 
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  * 
@@ -54,15 +53,13 @@ public class EdgeMappingQuery extends DiagramElementMappingQuery {
     }
 
     /**
-     * return true if the edge could be created on the current source and target
-     * checking the mapping consistency.
+     * return true if the edge could be created on the current source and target checking the mapping consistency.
      * 
      * @param source
      *            any source element
      * @param target
      *            any target element
-     * @return true if the edge could be created on the current source and
-     *         target checking the mapping consistency.
+     * @return true if the edge could be created on the current source and target checking the mapping consistency.
      */
     public boolean canCreate(DMappingBased source, DMappingBased target) {
         return new DMappingBasedQuery(source).isFromAnyMapping(mapping.getSourceMapping()) && new DMappingBasedQuery(target).isFromAnyMapping(mapping.getTargetMapping());
@@ -74,19 +71,16 @@ public class EdgeMappingQuery extends DiagramElementMappingQuery {
      * @param diagram
      *            the {@link DSemanticDiagram} context of the evaluation
      * @param containerView
-     *            the view container of the node corresponding to the specified
-     *            semantic element
+     *            the view container of the node corresponding to the specified semantic element
      * @param interpreter
-     *            the {@link IInterpreter} used to evaluate the precondition
-     *            expression
+     *            the {@link IInterpreter} used to evaluate the precondition expression
      * @param semantic
      *            the semantic context for expression evaluation
      * @param sourceView
      *            the diagram element source
      * @param targetView
      *            the diagram element target
-     * @return <code>true</code> if the precondition is valid,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the precondition is valid, <code>false</code> otherwise
      */
     public boolean evaluatePrecondition(DSemanticDiagram diagram, DragAndDropTarget containerView, IInterpreter interpreter, EObject semantic, DSemanticDecorator sourceView,
             DSemanticDecorator targetView) {
@@ -131,8 +125,7 @@ public class EdgeMappingQuery extends DiagramElementMappingQuery {
      * @param diagram
      *            the {@link DSemanticDiagram} context of the evaluation
      * @param interpreter
-     *            the {@link IInterpreter} used to evaluate the precondition
-     *            expression
+     *            the {@link IInterpreter} used to evaluate the precondition expression
      * @param sourceSemantic
      *            the source view semantic element
      * @return the result of the evaluation
@@ -174,8 +167,7 @@ public class EdgeMappingQuery extends DiagramElementMappingQuery {
      * @param diagram
      *            the {@link DSemanticDiagram} context of the evaluation
      * @param interpreter
-     *            the {@link IInterpreter} used to evaluate the precondition
-     *            expression
+     *            the {@link IInterpreter} used to evaluate the precondition expression
      * @param sourceSemantic
      *            the source view semantic element
      * @return the result of the evaluation

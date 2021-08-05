@@ -35,7 +35,7 @@ import org.eclipse.sirius.diagram.description.NodeMappingImport;
 import org.eclipse.sirius.diagram.description.util.DescriptionSwitch;
 import org.eclipse.sirius.diagram.tools.internal.Messages;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 
 import com.google.common.collect.Iterables;

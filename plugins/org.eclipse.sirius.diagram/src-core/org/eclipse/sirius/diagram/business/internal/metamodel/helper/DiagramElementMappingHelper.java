@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -40,10 +40,10 @@ import org.eclipse.sirius.diagram.description.tool.DirectEditLabel;
 import org.eclipse.sirius.diagram.description.tool.ToolPackage;
 import org.eclipse.sirius.diagram.tools.internal.Messages;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.interpreter.IInterpreterMessages;
 import org.eclipse.sirius.tools.api.ui.resource.ISiriusMessages;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.style.BasicLabelStyleDescription;
 import org.eclipse.sirius.viewpoint.description.style.StylePackage;
 
@@ -61,11 +61,9 @@ public final class DiagramElementMappingHelper {
     }
 
     /**
-     * Evaluate the semantic elements feature of the mapping and affect them to
-     * the given diagram element.
+     * Evaluate the semantic elements feature of the mapping and affect them to the given diagram element.
      * 
-     * Add the semantic target if there is no computed elements, except the case
-     * of non domain based edges.
+     * Add the semantic target if there is no computed elements, except the case of non domain based edges.
      * 
      * The semantic target of the current DDiagramElement must be set.
      * 

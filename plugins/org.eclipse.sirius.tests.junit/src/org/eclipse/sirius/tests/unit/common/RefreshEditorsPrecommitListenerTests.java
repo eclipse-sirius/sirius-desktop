@@ -40,12 +40,12 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilter;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilterManager;
 import org.eclipse.sirius.tools.api.ui.RefreshEditorsPrecommitListener;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import junit.framework.TestCase;
 

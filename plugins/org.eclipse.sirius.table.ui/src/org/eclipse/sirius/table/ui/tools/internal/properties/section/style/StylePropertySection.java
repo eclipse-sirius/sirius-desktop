@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,7 +22,7 @@ import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
 import org.eclipse.sirius.table.ui.tools.internal.properties.propertysource.StyleCompositeEObjectpropertySource;
 import org.eclipse.sirius.table.ui.tools.internal.properties.section.common.AbstractDTablePropertySection;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.ui.views.properties.IPropertySource;
 
 /**
@@ -37,6 +37,7 @@ public class StylePropertySection extends AbstractDTablePropertySection {
      * 
      * @see org.eclipse.ui.views.properties.IPropertySourceProvider#getPropertySource(java.lang.Object)
      */
+    @Override
     public IPropertySource getPropertySource(final Object object) {
         IPropertySource propSrc = null;
 
@@ -65,8 +66,7 @@ public class StylePropertySection extends AbstractDTablePropertySection {
      * 
      * @param cell
      *            the cell
-     * @return the property source for the cell passed in (maybe
-     *         <code>null</code>)
+     * @return the property source for the cell passed in (maybe <code>null</code>)
      */
     protected IPropertySource getPropertySource(final DCell cell) {
         final StyleCompositeEObjectpropertySource propertySource = new StyleCompositeEObjectpropertySource();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
-import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.tools.api.Messages;
 
 /**
  * A common operation to create a session and open it.
@@ -47,8 +47,7 @@ public class DefaultLocalSessionCreationOperation implements SessionCreationOper
      * @param sessionResourceURI
      *            the {@link URI} of the Resource {@link Session} model
      * @param monitor
-     *            {@link IProgressMonitor} to show progression of
-     *            {@link Session} creation
+     *            {@link IProgressMonitor} to show progression of {@link Session} creation
      */
     public DefaultLocalSessionCreationOperation(URI sessionResourceURI, IProgressMonitor monitor) {
         this.sessionResourceURI = sessionResourceURI;

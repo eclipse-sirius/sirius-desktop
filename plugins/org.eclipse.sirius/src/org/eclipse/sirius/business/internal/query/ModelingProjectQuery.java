@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,11 +29,10 @@ import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.modelingproject.ModelingProject;
 import org.eclipse.sirius.business.internal.session.parser.RepresentationsFileSaxParser;
 import org.eclipse.sirius.common.tools.api.util.WorkspaceUtil;
-import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.tools.api.Messages;
 
 /**
- * A class aggregating all the queries (read-only!) having a
- * {@link ModelingProject} as a starting point.
+ * A class aggregating all the queries (read-only!) having a {@link ModelingProject} as a starting point.
  * 
  * @author lredor
  */
@@ -64,27 +63,23 @@ public class ModelingProjectQuery {
     /**
      * Retrieve the representations files in this project.
      * 
-     * @return the representations files associated to this project, empty list
-     *         if there is no representations file in this project
+     * @return the representations files associated to this project, empty list if there is no representations file in
+     *         this project
      */
     public List<IFile> getRepresentationFiles() {
         return WorkspaceUtil.getFilesFromWorkspace(Collections.singleton(modelingProject.getProject()), SiriusUtil.SESSION_RESOURCE_EXTENSION);
     }
 
     /**
-     * Return an optional URI corresponding to the main representations file of
-     * this project. It will be computed by a specific SaxParser that analyzes
-     * representations files of this project to determine which is never
-     * referenced.
+     * Return an optional URI corresponding to the main representations file of this project. It will be computed by a
+     * specific SaxParser that analyzes representations files of this project to determine which is never referenced.
      * 
      * @param monitor
-     *            the monitor to be used for reporting progress and responding
-     *            to cancellation. The monitor is never <code>null</code>
-     * @return an optional URI corresponding to the main representations file of
-     *         this project.
+     *            the monitor to be used for reporting progress and responding to cancellation. The monitor is never
+     *            <code>null</code>
+     * @return an optional URI corresponding to the main representations file of this project.
      * @throws IllegalArgumentException
-     *             In case of zero or multiples main representations file in the
-     *             references.
+     *             In case of zero or multiples main representations file in the references.
      */
     public URI computeMainRepresentationsFileURI(IProgressMonitor monitor) throws IllegalArgumentException {
         URI result = null;
@@ -127,13 +122,11 @@ public class ModelingProjectQuery {
     }
 
     /**
-     * Return a String representing the fragment of this URIs separated by a
-     * comma.
+     * Return a String representing the fragment of this URIs separated by a comma.
      * 
      * @param uris
      *            the list of URIs
-     * @return a String representing the fragment of this URIs separated by a
-     *         comma.
+     * @return a String representing the fragment of this URIs separated by a comma.
      */
     private String getFragments(List<URI> uris) {
         StringBuffer result = new StringBuffer();

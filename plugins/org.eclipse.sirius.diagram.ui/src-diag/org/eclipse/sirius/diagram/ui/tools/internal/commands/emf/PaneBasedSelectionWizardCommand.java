@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -35,8 +35,8 @@ import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.widgets.Shell;
@@ -214,20 +214,19 @@ public class PaneBasedSelectionWizardCommand extends AbstractSelectionWizardComm
     }
 
     /**
-     * Compute the TreeItemWrapper corresponding to this
-     * {@link PaneBasedSelectionWizardDescription}.
+     * Compute the TreeItemWrapper corresponding to this {@link PaneBasedSelectionWizardDescription}.
      * 
      * @param paneBasedSelectionWizardDescription
      *            the selection description
      * @param container
      *            the semantic element
      * @param interpreter
-     *            the interpreter used to compute expressions of the selection
-     *            description
+     *            the interpreter used to compute expressions of the selection description
      * @param input
      *            the TreeItemWrapper to complete
      */
-    private static void computeInput(final PaneBasedSelectionWizardDescription paneBasedSelectionWizardDescription, final EObject container, final IInterpreter interpreter, final TreeItemWrapper input) {
+    private static void computeInput(final PaneBasedSelectionWizardDescription paneBasedSelectionWizardDescription, final EObject container, final IInterpreter interpreter,
+            final TreeItemWrapper input) {
 
         final Collection<EObject> referencingENode = ImmutableSet.copyOf(RuntimeLoggerManager.INSTANCE.decorate(interpreter).evaluateCollection(container, paneBasedSelectionWizardDescription,
                 ToolPackage.eINSTANCE.getPaneBasedSelectionWizardDescription_CandidatesExpression()));

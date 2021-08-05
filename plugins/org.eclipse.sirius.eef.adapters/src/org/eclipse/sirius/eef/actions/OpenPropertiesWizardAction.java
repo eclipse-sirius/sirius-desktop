@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009-2012 Obeo.
+ * Copyright (c) 2009, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,11 +25,10 @@ import org.eclipse.sirius.business.api.action.AbstractExternalJavaAction;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.eef.adapters.Messages;
 import org.eclipse.sirius.eef.util.VPDecoratorHelper;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 
 /**
- * An External Java Action which opens an EEF wizard/dialog on the selected
- * object, if one is available.
+ * An External Java Action which opens an EEF wizard/dialog on the selected object, if one is available.
  * 
  * @author Goulwen Le Fur
  */
@@ -47,8 +46,8 @@ public class OpenPropertiesWizardAction extends AbstractExternalJavaAction {
                 VPDecoratorHelper helper = new VPDecoratorHelper(eObject);
                 if (helper.canAdapt()) {
                     TransactionalEditingDomain editingDomain = org.eclipse.emf.transaction.util.TransactionUtil.getEditingDomain(eObject);
-                    DomainPropertiesEditionContext propertiesEditionContext = new DomainPropertiesEditionContext(null, null, editingDomain, DiagramUIPlugin.getPlugin()
-                            .getItemProvidersAdapterFactory(), helper.createSemanticAdapterFromDSemanticDecorator().getEObject());
+                    DomainPropertiesEditionContext propertiesEditionContext = new DomainPropertiesEditionContext(null, null, editingDomain,
+                            DiagramUIPlugin.getPlugin().getItemProvidersAdapterFactory(), helper.createSemanticAdapterFromDSemanticDecorator().getEObject());
                     WizardEditingOperation wizardEditingCommand = new WizardEditingOperation(propertiesEditionContext);
                     wizardEditingCommand.execute(new NullProgressMonitor(), null);
                     propertiesEditionContext.dispose();

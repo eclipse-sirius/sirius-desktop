@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2017 Obeo.
+ * Copyright (c) 2014, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCa
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckTreeItemEnabled;
-import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
@@ -74,8 +74,7 @@ public class CrossTableIntersectionExpressionTest extends AbstractSiriusSwtBotGe
     }
 
     /**
-     * Test that the column finder expression appears in the "problems" view
-     * when there is a mistake.
+     * Test that the column finder expression appears in the "problems" view when there is a mistake.
      */
     public void testLoggerExpressionValue() {
         openRepresentation(localSession.getOpenedSession(), "CrossTableDesc", "new CrossTableDesc", DTable.class);

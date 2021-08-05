@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,21 +21,16 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.validation.IValidationContext;
-import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;
 
 /**
- * A
- * {@link AbstractEStructuralFeatureCustomizationFeatureNameCommonToAppliedOnConstraint}
- * to check the constraint that
- * {@link EReferenceCustomization#getReferenceName()} is the name of a common
- * {@link EReference} to all referenced style description or a description
- * element owned by a style description through
- * {@link EReferenceCustomization#getAppliedOn()} or different
- * {@link EReference} with same name and having a common type. Check also that
- * the {@link EReferenceCustomization#getValue()} type is conforming to the type
- * of the common {@link EReference} or the common type of different
- * {@link EReference} available.
+ * A {@link AbstractEStructuralFeatureCustomizationFeatureNameCommonToAppliedOnConstraint} to check the constraint that
+ * {@link EReferenceCustomization#getReferenceName()} is the name of a common {@link EReference} to all referenced style
+ * description or a description element owned by a style description through
+ * {@link EReferenceCustomization#getAppliedOn()} or different {@link EReference} with same name and having a common
+ * type. Check also that the {@link EReferenceCustomization#getValue()} type is conforming to the type of the common
+ * {@link EReference} or the common type of different {@link EReference} available.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */

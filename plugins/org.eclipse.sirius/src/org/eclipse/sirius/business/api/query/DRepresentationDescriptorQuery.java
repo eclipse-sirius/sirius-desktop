@@ -22,9 +22,9 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.query.IllegalStateExceptionQuery;
+import org.eclipse.sirius.tools.api.Messages;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link DRepresentationDescriptor} as a starting point.

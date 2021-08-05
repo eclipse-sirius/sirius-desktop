@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,9 +26,9 @@ import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.sirius.business.api.modelingproject.AbstractRepresentationsFileJob;
 import org.eclipse.sirius.business.api.session.Session;
+import org.eclipse.sirius.tools.api.Messages;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
-import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A {@link Job} to attach semantic resource added to a modeling project.
@@ -43,8 +43,7 @@ public class AttachSemanticResourcesJob extends Job {
      * Default constructor.
      * 
      * @param semanticResourcesURIsToAddPerSession
-     *            {@link Map} associating to one {@link Session} all semantic
-     *            resource {@link URI} to attach to it
+     *            {@link Map} associating to one {@link Session} all semantic resource {@link URI} to attach to it
      */
     public AttachSemanticResourcesJob(Map<Session, Set<URI>> semanticResourcesURIsToAddPerSession) {
         super(Messages.AttachSemanticResourcesJob_name);

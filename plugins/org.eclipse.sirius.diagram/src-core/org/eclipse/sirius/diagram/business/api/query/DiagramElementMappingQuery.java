@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -43,9 +43,9 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.ext.base.collect.MultipleCollection;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.AbstractMappingImport;
 import org.eclipse.sirius.viewpoint.description.PasteTargetDescription;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
@@ -53,8 +53,7 @@ import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
 import com.google.common.collect.Iterators;
 
 /**
- * A class aggregating all the queries (read-only!) having a
- * DiagramElementMapping as a starting point.
+ * A class aggregating all the queries (read-only!) having a DiagramElementMapping as a starting point.
  * 
  * @author cbrun
  * 
@@ -87,8 +86,8 @@ public class DiagramElementMappingQuery {
     }
 
     /**
-     * return true if the given element is described by the current mapping. See
-     * isInstanceOf to check for the whole mapping hiearchy.
+     * return true if the given element is described by the current mapping. See isInstanceOf to check for the whole
+     * mapping hiearchy.
      * 
      * @param element
      *            any mapping based element.
@@ -161,8 +160,7 @@ public class DiagramElementMappingQuery {
     }
 
     /**
-     * Return the paste tools targeting the the current mapping ( or its import
-     * hierarchy).
+     * Return the paste tools targeting the the current mapping ( or its import hierarchy).
      * 
      * @return the paste tools of the mapping.
      */
@@ -187,13 +185,12 @@ public class DiagramElementMappingQuery {
     }
 
     /**
-     * return true if the given element is described by the current mapping or
-     * one of its super mappings. See isTypeOf to check only for one mapping.
+     * return true if the given element is described by the current mapping or one of its super mappings. See isTypeOf
+     * to check only for one mapping.
      * 
      * @param element
      *            any mapping based element.
-     * @return true if the given element is described by the current mapping or
-     *         one of its super mappings.
+     * @return true if the given element is described by the current mapping or one of its super mappings.
      */
     public boolean isInstanceOf(DMappingBased element) {
         DiagramElementMapping otherMapping = (DiagramElementMapping) element.getMapping();
@@ -201,8 +198,7 @@ public class DiagramElementMappingQuery {
     }
 
     /**
-     * return true if this mapping (the query one) is the same as, or a super
-     * type of, some other mapping.
+     * return true if this mapping (the query one) is the same as, or a super type of, some other mapping.
      * 
      * @param otherMapping
      *            any other mapping.
@@ -224,8 +220,7 @@ public class DiagramElementMappingQuery {
      * 
      * @param superType
      *            The superType to check.
-     * @return true if the {@code mapping} imports the superType, false
-     *         otherwise.
+     * @return true if the {@code mapping} imports the superType, false otherwise.
      */
     public boolean isSubTypeOf(DiagramElementMapping superType) {
         boolean isSubTypeOf = false;
@@ -240,19 +235,16 @@ public class DiagramElementMappingQuery {
     /**
      * browse the mappings from the most specific to the most general.
      * 
-     * @return a collection to browse the mappings from the most specific to the
-     *         most general.
+     * @return a collection to browse the mappings from the most specific to the most general.
      */
     public Iterable<DiagramElementMapping> hierachy() {
         return new SuperTypes(mapping);
     }
 
     /**
-     * return an iterator browsing the mappings from the most specific to the
-     * most general.
+     * return an iterator browsing the mappings from the most specific to the most general.
      * 
-     * @return an iterator browsing the mappings from the most specific to the
-     *         most general.
+     * @return an iterator browsing the mappings from the most specific to the most general.
      */
     public Iterator<DiagramElementMapping> superTypes() {
         return new SuperTypesIterator(mapping);
@@ -346,8 +338,8 @@ public class DiagramElementMappingQuery {
     }
 
     /**
-     * Get the root mapping (the highest mapping in the hierarchy of imported
-     * mappings) of this mapping if it is a mapping import, self otherwise.
+     * Get the root mapping (the highest mapping in the hierarchy of imported mappings) of this mapping if it is a
+     * mapping import, self otherwise.
      * 
      * @return the root mapping
      */
@@ -356,8 +348,8 @@ public class DiagramElementMappingQuery {
     }
 
     /**
-     * Get the root mapping (the highest mapping in the hierarchy of imported
-     * mappings) of this mapping if it is a mapping import, self otherwise.
+     * Get the root mapping (the highest mapping in the hierarchy of imported mappings) of this mapping if it is a
+     * mapping import, self otherwise.
      * 
      * @param current
      *            the mapping
@@ -388,8 +380,8 @@ public class DiagramElementMappingQuery {
     }
 
     /**
-     * Check if both "synchronized" attribute of the {@link DDiagram} and
-     * "createElements" attribute of the {@link DiagramElementMapping} are true.
+     * Check if both "synchronized" attribute of the {@link DDiagram} and "createElements" attribute of the
+     * {@link DiagramElementMapping} are true.
      * 
      * @param dDiagram
      *            the {@link DDiagram} to check
@@ -402,13 +394,11 @@ public class DiagramElementMappingQuery {
     }
 
     /**
-     * Check if both "synchronized" attribute of the parent {@link DDiagram} of
-     * the {@link DDiagramElement} and "createElements" attribute of the
-     * {@link DiagramElementMapping} are true.
+     * Check if both "synchronized" attribute of the parent {@link DDiagram} of the {@link DDiagramElement} and
+     * "createElements" attribute of the {@link DiagramElementMapping} are true.
      * 
      * @param dDiagramElement
-     *            the {@link DDiagramElement} to check its parent
-     *            {@link DDiagram}
+     *            the {@link DDiagramElement} to check its parent {@link DDiagram}
      * @return true if both true.
      */
     public boolean isSynchronizedAndCreateElement(DDiagramElement dDiagramElement) {
@@ -465,19 +455,13 @@ public class DiagramElementMappingQuery {
     private EObject getRootContent(DSemanticDiagram diagram, IInterpreter interpreter, DragAndDropTarget containerView) {
         EObject rootContent = ((DSemanticDecorator) containerView).getTarget();
         /*
-         * FIXME : we should do that but the old behavior was buggy :S final
-         * String rootContentExpression =
-         * diagram.getDescription().getRootExpression(); if
-         * (!StringUtil.isEmpty(rootContentExpression)) {
-         * this.interpreter.setVariable
-         * (IAcceleoInterpreterSiriusVariables.VIEWPOINT, this.diagram); try {
-         * rootContent =
-         * ENodeHelper.getAsEObject(ENodeHelper.evaluate(this.interpreter,
-         * rootContent, rootContentExpression)); } catch (EvaluationException e)
-         * {SiriusPlugin.getDefault().error(IAcceleoInterpreterMessages.
+         * FIXME : we should do that but the old behavior was buggy :S final String rootContentExpression =
+         * diagram.getDescription().getRootExpression(); if (!StringUtil.isEmpty(rootContentExpression)) {
+         * this.interpreter.setVariable (IAcceleoInterpreterSiriusVariables.VIEWPOINT, this.diagram); try { rootContent
+         * = ENodeHelper.getAsEObject(ENodeHelper.evaluate(this.interpreter, rootContent, rootContentExpression)); }
+         * catch (EvaluationException e) {SiriusPlugin.getDefault().error(IAcceleoInterpreterMessages.
          * EVALUATION_ERROR_ON_SEMANTIC_ITERATOR_RETRIEVING, e); }
-         * this.interpreter.unSetVariable(IAcceleoInterpreterSiriusVariables.
-         * VIEWPOINT); }
+         * this.interpreter.unSetVariable(IAcceleoInterpreterSiriusVariables. VIEWPOINT); }
          */
         // The rootExpression evaluation was disabled for EdgeMapping in
         // DEdgeSynchronizedHelper, don't know why
@@ -504,8 +488,7 @@ public class DiagramElementMappingQuery {
     }
 
     /**
-     * Get all candidates corresponding to the the given mapping in the current
-     * session.
+     * Get all candidates corresponding to the the given mapping in the current session.
      * 
      * @param session
      *            the {@link Session} to use

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,7 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -57,8 +57,8 @@ public class RepresentationsFileHandler extends DefaultHandler {
     /**
      * {@inheritDoc}
      * 
-     * @see org.xml.sax.helpers.DefaultHandler#startElement(java.lang.String,
-     *      java.lang.String, java.lang.String, org.xml.sax.Attributes)
+     * @see org.xml.sax.helpers.DefaultHandler#startElement(java.lang.String, java.lang.String, java.lang.String,
+     *      org.xml.sax.Attributes)
      */
     @Override
     public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
@@ -78,7 +78,7 @@ public class RepresentationsFileHandler extends DefaultHandler {
             throw new SiriusSaxParserNormalAbortException(Messages.XMIModelFileHandler_parsingStopedMsg);
         }
     }
-    
+
     @Override
     public void endDocument() throws SAXException {
         throw new SiriusSaxParserNormalAbortException(Messages.XMIModelFileHandler_parsingStopedMsg);

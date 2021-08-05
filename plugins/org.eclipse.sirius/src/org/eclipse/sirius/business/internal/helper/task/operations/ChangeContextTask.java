@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,14 +17,13 @@ import org.eclipse.sirius.business.api.logger.RuntimeLoggerInterpreter;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.tools.api.command.CommandContext;
-import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.tool.ChangeContext;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 
 /**
- * This task allows to change the context of model request language expressions
- * that are in a "tool".
+ * This task allows to change the context of model request language expressions that are in a "tool".
  * 
  * @author cbrun
  */
@@ -42,8 +41,7 @@ public class ChangeContextTask extends AbstractOperationTask {
      * @param context
      *            the stack of contexts.
      * @param extPackage
-     *            the {@link ModelAccessor} that is useful for the extension
-     *            management.
+     *            the {@link ModelAccessor} that is useful for the extension management.
      * @param op
      *            The operation that describes how to change the context
      * @param interpreter

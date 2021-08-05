@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,20 +21,18 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.tools.api.Messages;
 
 /**
- * A recording version of the standard EMF "Control" action. In addition to
- * being transactional, this version also separates Control from Uncontrol (see
- * {@link UncontrolCommand}) and does not do user-interaction (so it can be
- * called from automated tests for example).
+ * A recording version of the standard EMF "Control" action. In addition to being transactional, this version also
+ * separates Control from Uncontrol (see {@link UncontrolCommand}) and does not do user-interaction (so it can be called
+ * from automated tests for example).
  * 
  * @author pcdavid
  */
 public class ControlCommand extends RecordingCommand {
     /**
-     * The {@link org.eclipse.emf.edit.domain.EditingDomain} in which to perform
-     * the change.
+     * The {@link org.eclipse.emf.edit.domain.EditingDomain} in which to perform the change.
      */
     protected final TransactionalEditingDomain domain;
 
@@ -49,8 +47,7 @@ public class ControlCommand extends RecordingCommand {
     protected final URI destination;
 
     /**
-     * The resource in which the controlled element ha been moved, after the
-     * command is successfully executed.
+     * The resource in which the controlled element ha been moved, after the command is successfully executed.
      */
     protected Resource controlledResource;
 
@@ -58,11 +55,10 @@ public class ControlCommand extends RecordingCommand {
      * Create a new {@link ControlCommand}.
      * 
      * @param semanticObjectToControl
-     *            the model object to control (i.e. to move into a separate
-     *            resource).
+     *            the model object to control (i.e. to move into a separate resource).
      * @param destination
-     *            the resource in which the controlled element ha been moved,
-     *            after the command is successfully executed.
+     *            the resource in which the controlled element ha been moved, after the command is successfully
+     *            executed.
      */
     public ControlCommand(final EObject semanticObjectToControl, final URI destination) {
         super(TransactionUtil.getEditingDomain(semanticObjectToControl));
@@ -72,8 +68,7 @@ public class ControlCommand extends RecordingCommand {
     }
 
     /**
-     * Check that the specified object is controllable, and thus that the
-     * command seems executable without error.
+     * Check that the specified object is controllable, and thus that the command seems executable without error.
      * 
      * @return <code>true</code> if the specified object is controllable.
      * 
@@ -94,15 +89,13 @@ public class ControlCommand extends RecordingCommand {
     }
 
     /**
-     * Move the specified object as a root of the resource identified by the
-     * URI. If the target resource does not exist, it is created. After
-     * successful completion, the target resource is loaded in the resource-set.
+     * Move the specified object as a root of the resource identified by the URI. If the target resource does not exist,
+     * it is created. After successful completion, the target resource is loaded in the resource-set.
      * 
      * @param root
      *            the root element to control.
      * @param uri
-     *            the URI of the controlled/child resource to move the element
-     *            into.
+     *            the URI of the controlled/child resource to move the element into.
      */
     protected void move(final EObject root, final URI uri) {
         controlledResource = getOrCreateChildResource(root.eResource(), uri);
@@ -114,18 +107,14 @@ public class ControlCommand extends RecordingCommand {
     }
 
     /**
-     * Returns the child resource specified by its URI in which to move the
-     * controlled element.
+     * Returns the child resource specified by its URI in which to move the controlled element.
      * 
      * @param parent
-     *            the parent resource, which currently contains the element to
-     *            control.
+     *            the parent resource, which currently contains the element to control.
      * @param uri
-     *            the URI of the controlled/child resource to move the element
-     *            into.
-     * @return the child resource in which the element to control can be moved,
-     *         or <code>null</code> if the specified target is invalid or can
-     *         not be created.
+     *            the URI of the controlled/child resource to move the element into.
+     * @return the child resource in which the element to control can be moved, or <code>null</code> if the specified
+     *         target is invalid or can not be created.
      */
     protected Resource getOrCreateChildResource(final Resource parent, final URI uri) {
         final Resource existingResource = parent.getResourceSet().getResource(uri, false);

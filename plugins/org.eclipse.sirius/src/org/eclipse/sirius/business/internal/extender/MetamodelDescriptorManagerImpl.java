@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,7 @@ import org.eclipse.sirius.business.api.extender.MetamodelDescriptorManager;
 import org.eclipse.sirius.business.api.extender.MetamodelDescriptorProvider;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.MetamodelDescriptor;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 import com.google.common.collect.Iterables;
@@ -61,6 +61,7 @@ public class MetamodelDescriptorManagerImpl implements MetamodelDescriptorManage
      * 
      * {@inheritDoc}
      */
+    @Override
     public Collection<MetamodelDescriptor> provides(final Collection<Viewpoint> enabledViewpoints) {
         final Collection<MetamodelDescriptor> result = new LinkedHashSet<>();
         for (MetamodelDescriptorProvider provider : Iterables.filter(providers, MetamodelDescriptorProvider.class)) {

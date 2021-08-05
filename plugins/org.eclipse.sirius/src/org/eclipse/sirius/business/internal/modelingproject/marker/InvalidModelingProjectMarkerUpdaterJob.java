@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2016, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,8 +20,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
-import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.Messages;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 
 /**
  * A {@link WorkspaceJob} to update markers for a invalid project.
@@ -38,8 +38,7 @@ public class InvalidModelingProjectMarkerUpdaterJob extends WorkspaceJob {
      * Default constructor.
      * 
      * @param project
-     *            the project for which update markers to mark this project as
-     *            invalid
+     *            the project for which update markers to mark this project as invalid
      * @param message
      *            the message to display in marker
      */

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -59,11 +59,11 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStat
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.common.tools.api.util.ResourceUtil;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+import org.eclipse.sirius.tools.api.Messages;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
@@ -71,8 +71,7 @@ import com.google.common.base.Predicate;
 import com.google.common.collect.Collections2;
 
 /**
- * Repair process extract from
- * org.eclipse.sirius.ui.RepresentationFilesMigrationProcess.
+ * Repair process extract from org.eclipse.sirius.ui.RepresentationFilesMigrationProcess.
  * 
  * @author fbarbin
  * 
@@ -245,8 +244,8 @@ public class SiriusRepairProcess {
     }
 
     /**
-     * Notifies that a given number of work unit of the main task has been
-     * completed and check if the user cancel the current task.
+     * Notifies that a given number of work unit of the main task has been completed and check if the user cancel the
+     * current task.
      * 
      * @param monitor
      *            The monitor to deal with.
@@ -277,16 +276,13 @@ public class SiriusRepairProcess {
     /**
      * The repair of the model :
      * <UL>
-     * <LI>Remove the representation that have empty target (target == null or
-     * target not in a eResource)</LI>
+     * <LI>Remove the representation that have empty target (target == null or target not in a eResource)</LI>
      * <LI>Store the element states</LI>
-     * <LI>Remove all elements that have mapping with createElements value to
-     * true,</LI>
+     * <LI>Remove all elements that have mapping with createElements value to true,</LI>
      * <LI>Refresh the diagram (to automatically re-create above elements)</LI>
      * <LI>Call external migration participant</LI>
      * <LI>Restore the element states</LI>
-     * <LI>All representations, even those owned by disabled viewpoints, are
-     * displayed.</LI>
+     * <LI>All representations, even those owned by disabled viewpoints, are displayed.</LI>
      * </UL>
      * 
      * @param session
@@ -422,8 +418,8 @@ public class SiriusRepairProcess {
     }
 
     /**
-     * Inform model. The DAnalysis must reference all semantic root elements to
-     * correctly resolved the SessionManager.getSession(semanticElement).
+     * Inform model. The DAnalysis must reference all semantic root elements to correctly resolved the
+     * SessionManager.getSession(semanticElement).
      * 
      * @param view
      *            {@link DView} to inform
@@ -555,11 +551,9 @@ public class SiriusRepairProcess {
     /**
      * Handle {@link DView}.
      * <ul>
-     * <li>Cleans filters variables, activated filters, activated behaviors,
-     * activated rules</li>
+     * <li>Cleans filters variables, activated filters, activated behaviors, activated rules</li>
      * <li>Deletes representations without description.</li>
-     * <li>Deletes representations without target element or without a target
-     * element into an eResource.</li>
+     * <li>Deletes representations without target element or without a target element into an eResource.</li>
      * </ul>
      * 
      * @param view

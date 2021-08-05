@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,13 +34,12 @@ import org.eclipse.sirius.table.metamodel.table.description.FeatureColumnMapping
 import org.eclipse.sirius.table.metamodel.table.description.ForegroundStyleDescription;
 import org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping;
 import org.eclipse.sirius.table.tools.internal.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 
 import com.google.common.base.Preconditions;
 
 /**
- * A class aggregating all the queries (read-only!) having a {@link DCell} as a
- * starting point.
+ * A class aggregating all the queries (read-only!) having a {@link DCell} as a starting point.
  *
  * @author <a href="mailto:laurent.redor@obeo.fr">Laurent Redor</a>
  *
@@ -64,18 +63,13 @@ public class DCellQuery {
     }
 
     /**
-     * We use the first conditional cell style (with predicate expression that
-     * returns true) <BR>
-     * Otherwise, we use the first conditional line style (with predicate
-     * expression that returns true) <BR>
-     * Otherwise, we use the first conditional column style (with predicate
-     * expression that returns true) <BR>
-     * Otherwise, we use the default cell style if it exists Otherwise, we use
-     * the default line style if it exists <BR>
+     * We use the first conditional cell style (with predicate expression that returns true) <BR>
+     * Otherwise, we use the first conditional line style (with predicate expression that returns true) <BR>
+     * Otherwise, we use the first conditional column style (with predicate expression that returns true) <BR>
+     * Otherwise, we use the default cell style if it exists Otherwise, we use the default line style if it exists <BR>
      * Otherwise, we use the default column style if it exists.
      *
-     * @return an optional DTableElementStyle to use for the foreground of this
-     *         cell (one of cell, line or column).
+     * @return an optional DTableElementStyle to use for the foreground of this cell (one of cell, line or column).
      */
     public Option<DTableElementStyle> getForegroundStyleToApply() {
         DTableElementStyle styleToApply = null;
@@ -175,18 +169,13 @@ public class DCellQuery {
     }
 
     /**
-     * We use the first conditional cell style (with predicate expression that
-     * returns true) <BR>
-     * Otherwise, we use the first conditional line style (with predicate
-     * expression that returns true) <BR>
-     * Otherwise, we use the first conditional column style (with predicate
-     * expression that returns true) <BR>
-     * Otherwise, we use the default cell style if it exists Otherwise, we use
-     * the default line style if it exists <BR>
+     * We use the first conditional cell style (with predicate expression that returns true) <BR>
+     * Otherwise, we use the first conditional line style (with predicate expression that returns true) <BR>
+     * Otherwise, we use the first conditional column style (with predicate expression that returns true) <BR>
+     * Otherwise, we use the default cell style if it exists Otherwise, we use the default line style if it exists <BR>
      * Otherwise, we use the default column style if it exists.
      *
-     * @return an optional DTableElementStyle to use for the foreground of this
-     *         cell (one of cell, line or column).
+     * @return an optional DTableElementStyle to use for the foreground of this cell (one of cell, line or column).
      */
     public Option<DTableElementStyle> getBackgroundStyleToApply() {
         DTableElementStyle styleToApply = null;
@@ -261,15 +250,13 @@ public class DCellQuery {
     }
 
     /**
-     * Check if the <code>style</code> ({@link ForegroundStyleDescription} or
-     * {@link BackgroundStyleDescription}) is the style of the
-     * intersectionMapping of the current <code>cell</code>.
+     * Check if the <code>style</code> ({@link ForegroundStyleDescription} or {@link BackgroundStyleDescription}) is the
+     * style of the intersectionMapping of the current <code>cell</code>.
      *
      * @param style
-     *            The style to check ({@link ForegroundStyleDescription} or
-     *            {@link BackgroundStyleDescription})
-     * @return true if the style is the style of the intersectionMapping of the
-     *         current <code>cell</code>, false otherwise
+     *            The style to check ({@link ForegroundStyleDescription} or {@link BackgroundStyleDescription})
+     * @return true if the style is the style of the intersectionMapping of the current <code>cell</code>, false
+     *         otherwise
      */
     public boolean isStyleDescriptionInIntersectionMapping(EObject style) {
         if (!(style instanceof ForegroundStyleDescription || style instanceof BackgroundStyleDescription)) {
@@ -295,13 +282,10 @@ public class DCellQuery {
     }
 
     /**
-     * When a cell belongs to a column defined by a FeatureColumnMapping with an
-     * empty label computation expression, the item property descriptor is used
-     * to compute the DCell label to display. For non Boolean and non EEnum data
-     * types, org.eclipse.emf.edit.provider.ItemPropertyDescriptor.ItemDelegator
-     * .convert(EDataType, Object) crops the obtained value at the first found
-     * char on which Character.isISOControl return true, the "..." is added to
-     * the label.
+     * When a cell belongs to a column defined by a FeatureColumnMapping with an empty label computation expression, the
+     * item property descriptor is used to compute the DCell label to display. For non Boolean and non EEnum data types,
+     * org.eclipse.emf.edit.provider.ItemPropertyDescriptor.ItemDelegator .convert(EDataType, Object) crops the obtained
+     * value at the first found char on which Character.isISOControl return true, the "..." is added to the label.
      *
      * This method return the label value before the crop.
      *

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -100,7 +100,7 @@ public class AirDResourceImpl extends XMIResourceImpl implements DResource, Aird
             String uid = idElem.getUid();
             String cachedId = getID(eObject);
             if (uid == null) {
-                throw new NullPointerException(org.eclipse.sirius.viewpoint.Messages.AirDResourceImpl_nullUid); // $NON-NLS-1$
+                throw new NullPointerException(org.eclipse.sirius.tools.api.Messages.AirDResourceImpl_nullUid); // $NON-NLS-1$
             } else if (cachedId == null || !isLoading && !cachedId.equals(uid)) {
                 // Uid must be used as id for href, urifragment and other kind of internal/external reference,
                 // Update cache if it is not known or different.

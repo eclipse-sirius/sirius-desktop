@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -75,6 +75,7 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirDestroyElementRe
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tools.api.command.semantic.AddSemanticResourceCommand;
@@ -84,7 +85,6 @@ import org.eclipse.sirius.ui.business.api.session.SessionUIManager;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -97,21 +97,18 @@ import org.eclipse.ui.actions.WorkspaceModifyOperation;
 import junit.framework.TestCase;
 
 /**
- * This class has the responsibility to create the profiled commands of a
- * scenario.
+ * This class has the responsibility to create the profiled commands of a scenario.
  * 
  * @author ymortier
  */
 public class ProfiledCommandFactory {
     /**
-     * Avoiding too many opened editors at a given time prevents OutOfMemory
-     * errors.
+     * Avoiding too many opened editors at a given time prevents OutOfMemory errors.
      */
     public static final int MAX_OPENED_EDITORS = 30;
 
     /**
-     * Avoiding too many representation in the same aird to prevent OutOfMemory
-     * errors.
+     * Avoiding too many representation in the same aird to prevent OutOfMemory errors.
      */
     public static final int MAX_REPRESENTATION_IN_SAME_AIRD = 1000;
 
@@ -124,8 +121,7 @@ public class ProfiledCommandFactory {
     private final BenchmarkScenario benchmarkScenario;
 
     /**
-     * Keeps track of the representations that have been created in the current
-     * session.
+     * Keeps track of the representations that have been created in the current session.
      */
     private final List<DRepresentation> representations = new ArrayList<DRepresentation>();
 
@@ -212,8 +208,7 @@ public class ProfiledCommandFactory {
                             final EObject nextElement = it.next();
                             if (DialectManager.INSTANCE.canCreate(nextElement, (DiagramDescription) description)) {
                                 final DRepresentation representation = DialectManager.INSTANCE.createRepresentation("Diagram for " + nextElement.toString(), nextElement,
-                                        (DiagramDescription) description,
-                                        session, new NullProgressMonitor());
+                                        (DiagramDescription) description, session, new NullProgressMonitor());
                                 TestCase.assertNotNull("The representation hasn't been created.", representation);
                                 TestCase.assertNotNull("Representation hasn't been added to its resource.", representation.eResource());
                                 representations.add(representation);
@@ -1370,14 +1365,12 @@ public class ProfiledCommandFactory {
     }
 
     /**
-     * This will create, initialize and open an analysis so as to load all
-     * required plugins for our tests.
+     * This will create, initialize and open an analysis so as to load all required plugins for our tests.
      * 
      * @param viewpoint
      *            We'll need a viewpoint to initialize the analysis contents.
      * @param semantic
-     *            This will provide the semantic objects for which to create
-     *            graphical representations.
+     *            This will provide the semantic objects for which to create graphical representations.
      */
     public void warmUpRun(final Viewpoint viewpoint, final EObject semantic) {
         final EObject model = resolve(semantic);

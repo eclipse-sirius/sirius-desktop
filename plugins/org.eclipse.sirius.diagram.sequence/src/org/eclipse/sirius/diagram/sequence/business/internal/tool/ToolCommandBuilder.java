@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -64,19 +64,18 @@ import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.eclipse.sirius.diagram.tools.internal.command.builders.NodeCreationCommandBuilder;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.emf.EMFCommandFactoryUI;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.tools.internal.command.builders.CommandBuilder;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.PaneBasedSelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 
 /**
- * Helper class to build the concrete commands executing the user-specified
- * tools on specific parameters.
+ * Helper class to build the concrete commands executing the user-specified tools on specific parameters.
  * 
  * @author pcdavid
  */
@@ -87,8 +86,7 @@ public final class ToolCommandBuilder {
     }
 
     /**
-     * Builds the command which will execute the user-tasks specified operations
-     * to reorder an event.
+     * Builds the command which will execute the user-tasks specified operations to reorder an event.
      * 
      * @param sequenceDDiagram
      *            the DRepresentation to use for the ModelOperations
@@ -97,13 +95,10 @@ public final class ToolCommandBuilder {
      * @param event
      *            the semantic element of the event which was moved.
      * @param startingEndPredecessor
-     *            the event end immediately preceding the reordered event's
-     *            starting end after the move.
+     *            the event end immediately preceding the reordered event's starting end after the move.
      * @param finishingEndPredecessor
-     *            the event end immediately preceding the reordered event's
-     *            finishing end after the move.
-     * @return a command which executes the user-specified operations with the
-     *         appropriate variables set.
+     *            the event end immediately preceding the reordered event's finishing end after the move.
+     * @return a command which executes the user-specified operations with the appropriate variables set.
      */
     public static SiriusCommand buildReorderCommand(SequenceDDiagram sequenceDDiagram, ReorderTool reorderTool, EObject event, EventEnd startingEndPredecessor, EventEnd finishingEndPredecessor) {
         ModelAccessor modelAccessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(event);
@@ -127,8 +122,7 @@ public final class ToolCommandBuilder {
     }
 
     /**
-     * Builds the command which will execute the user-tasks specified operations
-     * to reorder an instance role.
+     * Builds the command which will execute the user-tasks specified operations to reorder an instance role.
      * 
      * @param sequenceDDiagram
      *            the DRepresentation to use for the ModelOperations
@@ -137,15 +131,12 @@ public final class ToolCommandBuilder {
      * @param element
      *            the semantic element of the instance role which was moved.
      * @param predecessorBefore
-     *            the semantic element corresponding to the instance role
-     *            immediately preceding the reordered instance role before the
-     *            move.
+     *            the semantic element corresponding to the instance role immediately preceding the reordered instance
+     *            role before the move.
      * @param predecessorAfter
-     *            the semantic element corresponding to the instance role
-     *            immediately preceding the reordered instance role after the
-     *            move.
-     * @return a command which executes the user-specified operations with the
-     *         appropriate variables set.
+     *            the semantic element corresponding to the instance role immediately preceding the reordered instance
+     *            role after the move.
+     * @return a command which executes the user-specified operations with the appropriate variables set.
      */
     public static SiriusCommand buildInstanceRoleReorderCommand(SequenceDDiagram sequenceDDiagram, InstanceRoleReorderTool reorderTool, EObject element, EObject predecessorBefore,
             EObject predecessorAfter) {
@@ -169,8 +160,7 @@ public final class ToolCommandBuilder {
     }
 
     /**
-     * Builds the command which will execute the user-specified operations to
-     * create a new message.
+     * Builds the command which will execute the user-specified operations to create a new message.
      * 
      * @param source
      *            the source of the new message to create.
@@ -179,13 +169,11 @@ public final class ToolCommandBuilder {
      * @param tool
      *            the tool to use to create the message.
      * @param startingEndBefore
-     *            the event end which precedes graphically the source location
-     *            of the new message, to be used by the tool do decide where to
-     *            insert the message in the semantic model.
+     *            the event end which precedes graphically the source location of the new message, to be used by the
+     *            tool do decide where to insert the message in the semantic model.
      * @param finishingEndBefore
-     *            the event end which precedes graphically the target location
-     *            of the new message, to be used by the tool do decide where to
-     *            insert the message in the semantic model.
+     *            the event end which precedes graphically the target location of the new message, to be used by the
+     *            tool do decide where to insert the message in the semantic model.
      * @return a command to create the message.
      */
     public static Command buildCreateMessageCommand(final EdgeTarget source, final EdgeTarget target, final MessageCreationTool tool, final EventEnd startingEndBefore,
@@ -209,16 +197,15 @@ public final class ToolCommandBuilder {
     }
 
     /**
-     * Builds the command which will execute the user-specified operations to
-     * create a new instance role.
+     * Builds the command which will execute the user-specified operations to create a new instance role.
      * 
      * @param diagram
      *            the sequence diagram on which to create the new instance role.
      * @param tool
      *            the tool to use to create the instance role.
      * @param predecessor
-     *            the semantic element corresponding to the instance role
-     *            graphically preceding the x location of the new instance role.
+     *            the semantic element corresponding to the instance role graphically preceding the x location of the
+     *            new instance role.
      * @param location
      *            the clicked location.
      * @return a command to create the instance role.
@@ -229,19 +216,16 @@ public final class ToolCommandBuilder {
     }
 
     /**
-     * Builds the command which will execute the user-specified operations to
-     * create a new execution.
+     * Builds the command which will execute the user-specified operations to create a new execution.
      * 
      * @param node
      *            the node on which to create the new execution.
      * @param tool
      *            the tool to use to create the execution.
      * @param startingEndPredecessor
-     *            the event end graphically preceding the starting position of
-     *            the new execution.
+     *            the event end graphically preceding the starting position of the new execution.
      * @param finishingEndPredecessor
-     *            the event end graphically preceding the finishing position of
-     *            the new execution.
+     *            the event end graphically preceding the finishing position of the new execution.
      * @param location
      *            the clicked location.
      * @return a command to create the execution.
@@ -254,19 +238,16 @@ public final class ToolCommandBuilder {
     }
 
     /**
-     * Builds the command which will execute the user-specified operations to
-     * create a new observation point.
+     * Builds the command which will execute the user-specified operations to create a new observation point.
      * 
      * @param diagramElement
      *            the clicked diagram element.
      * @param tool
      *            the tool to use to create the execution.
      * @param startingEndPredecessor
-     *            the event end graphically preceding the starting position of
-     *            the new execution.
+     *            the event end graphically preceding the starting position of the new execution.
      * @param finishingEndPredecessor
-     *            the event end graphically preceding the finishing position of
-     *            the new execution.
+     *            the event end graphically preceding the finishing position of the new execution.
      * @return a command to create the execution.
      */
     public static Command buildCreateObservationPointCommandFromTool(final DDiagramElement diagramElement, final ObservationPointCreationTool tool, final EventEnd startingEndPredecessor,
@@ -277,19 +258,16 @@ public final class ToolCommandBuilder {
     }
 
     /**
-     * Builds the command which will execute the user-specified operations to
-     * create a new observation point.
+     * Builds the command which will execute the user-specified operations to create a new observation point.
      * 
      * @param diagram
      *            the diagram on which to create the new execution.
      * @param tool
      *            the tool to use to create the execution.
      * @param startingEndPredecessor
-     *            the event end graphically preceding the starting position of
-     *            the new execution.
+     *            the event end graphically preceding the starting position of the new execution.
      * @param finishingEndPredecessor
-     *            the event end graphically preceding the finishing position of
-     *            the new execution.
+     *            the event end graphically preceding the finishing position of the new execution.
      * @return a command to create the execution.
      */
     public static Command buildCreateObservationPointCommandFromTool(final DDiagram diagram, final ObservationPointCreationTool tool, final EventEnd startingEndPredecessor,
@@ -299,19 +277,16 @@ public final class ToolCommandBuilder {
     }
 
     /**
-     * Builds the command which will execute the user-specified operations to
-     * create a new state.
+     * Builds the command which will execute the user-specified operations to create a new state.
      * 
      * @param node
      *            the node on which to create the new state.
      * @param tool
      *            the tool to use to create the state.
      * @param startingEndPredecessor
-     *            the event end graphically preceding the starting position of
-     *            the new state.
+     *            the event end graphically preceding the starting position of the new state.
      * @param finishingEndPredecessor
-     *            the event end graphically preceding the finishing position of
-     *            the new state.
+     *            the event end graphically preceding the finishing position of the new state.
      * @return a command to create the state.
      */
     public static Command buildCreateStateCommandFromTool(final DNode node, final StateCreationTool tool, final EventEnd startingEndPredecessor, final EventEnd finishingEndPredecessor) {
@@ -321,22 +296,18 @@ public final class ToolCommandBuilder {
     }
 
     /**
-     * Builds the command which will execute the user-specified operations to
-     * create a new interaction use.
+     * Builds the command which will execute the user-specified operations to create a new interaction use.
      * 
      * @param diagram
      *            the diagram on which to create the new IU.
      * @param tool
      *            the tool to use to create the IU.
      * @param startingEndPredecessor
-     *            the event end graphically preceding the starting position of
-     *            the new IU.
+     *            the event end graphically preceding the starting position of the new IU.
      * @param finishingEndPredecessor
-     *            the event end graphically preceding the finishing position of
-     *            the new IU.
+     *            the event end graphically preceding the finishing position of the new IU.
      * @param coverage
-     *            the semantic elements representing the lifelines graphically
-     *            covered by the initial area of the IU.
+     *            the semantic elements representing the lifelines graphically covered by the initial area of the IU.
      * @return a command to create the IU.
      */
     public static Command buildCreateInteractionUseCommandFromTool(DDiagram diagram, InteractionUseCreationTool tool, EventEnd startingEndPredecessor, EventEnd finishingEndPredecessor,
@@ -345,22 +316,18 @@ public final class ToolCommandBuilder {
     }
 
     /**
-     * Builds the command which will execute the user-specified operations to
-     * create a new combined fragment.
+     * Builds the command which will execute the user-specified operations to create a new combined fragment.
      * 
      * @param diagram
      *            the diagram on which to create the new CF.
      * @param tool
      *            the tool to use to create the CF.
      * @param startingEndPredecessor
-     *            the event end graphically preceding the starting position of
-     *            the new CF.
+     *            the event end graphically preceding the starting position of the new CF.
      * @param finishingEndPredecessor
-     *            the event end graphically preceding the finishing position of
-     *            the new CF.
+     *            the event end graphically preceding the finishing position of the new CF.
      * @param coverage
-     *            the semantic elements representing the lifelines graphically
-     *            covered by the initial area of the CF.
+     *            the semantic elements representing the lifelines graphically covered by the initial area of the CF.
      * @return a command to create the CF.
      */
     public static Command buildCreateCombinedFragmentCommandFromTool(DDiagram diagram, CombinedFragmentCreationTool tool, EventEnd startingEndPredecessor, EventEnd finishingEndPredecessor,
@@ -369,22 +336,18 @@ public final class ToolCommandBuilder {
     }
 
     /**
-     * Builds the command which will execute the user-specified operations to
-     * create a new combined fragment.
+     * Builds the command which will execute the user-specified operations to create a new combined fragment.
      * 
      * @param diagram
      *            the diagram on which to create the new execution.
      * @param tool
      *            the tool to use to create the combined fragment.
      * @param startingEndPredecessor
-     *            the event end graphically preceding the starting position of
-     *            the new CF.
+     *            the event end graphically preceding the starting position of the new CF.
      * @param finishingEndPredecessor
-     *            the event end graphically preceding the finishing position of
-     *            the new CF.
+     *            the event end graphically preceding the finishing position of the new CF.
      * @param coverage
-     *            the semantic elements representing the lifelines graphically
-     *            covered by the initial area of the CF.
+     *            the semantic elements representing the lifelines graphically covered by the initial area of the CF.
      * @return a command to create the execution.
      */
     private static Command buildCreateFrameCommandFromTool(DDiagram diagram, final ContainerCreationDescription tool, final EventEnd startingEndPredecessor, final EventEnd finishingEndPredecessor,
@@ -394,19 +357,16 @@ public final class ToolCommandBuilder {
     }
 
     /**
-     * Builds the command which will execute the user-specified operations to
-     * create a new operand.
+     * Builds the command which will execute the user-specified operations to create a new operand.
      * 
      * @param nodeContainer
      *            the container in which to create the operand.
      * @param tool
      *            the tool to use to create the operand.
      * @param startingEndPredecessor
-     *            the event end graphically preceding the starting position of
-     *            the new Operand.
+     *            the event end graphically preceding the starting position of the new Operand.
      * @param finishingEndPredecessor
-     *            the event end graphically preceding the finishing position of
-     *            the new Operand.
+     *            the event end graphically preceding the finishing position of the new Operand.
      * @return a command to create the execution.
      */
     public static org.eclipse.emf.common.command.Command buildCreateOperantCommandFromTool(DDiagramElementContainer nodeContainer, final OperandCreationTool tool,
@@ -417,15 +377,13 @@ public final class ToolCommandBuilder {
     }
 
     /**
-     * Check if startingEndPredecessor is a starting {@link EventEnd} of
-     * {@link CombinedFragment}.
+     * Check if startingEndPredecessor is a starting {@link EventEnd} of {@link CombinedFragment}.
      * 
      * @param sequenceDiagram
      *            the {@link SequenceDiagram} on which checks the property
      * @param startingEndPredecessor
      *            the {@link EventEnd} to evaluate
-     * @return true if startingEndPredecessor is a starting {@link EventEnd} of
-     *         {@link CombinedFragment}
+     * @return true if startingEndPredecessor is a starting {@link EventEnd} of {@link CombinedFragment}
      */
     public static boolean isStartingEventEndOfCombinedFragment(SequenceDiagram sequenceDiagram, EventEnd startingEndPredecessor) {
         if (sequenceDiagram != null && startingEndPredecessor instanceof SingleEventEnd && ((SingleEventEnd) startingEndPredecessor).isStart()) {
@@ -436,8 +394,7 @@ public final class ToolCommandBuilder {
     }
 
     /**
-     * Builds the command which will execute the user-specified operations with
-     * a generic tool.
+     * Builds the command which will execute the user-specified operations with a generic tool.
      * 
      * @param containerView
      *            the clicked diagram element.
@@ -457,8 +414,7 @@ public final class ToolCommandBuilder {
     }
 
     /**
-     * Builds the command which will execute the user-specified operations with
-     * a pane based selection tool.
+     * Builds the command which will execute the user-specified operations with a pane based selection tool.
      * 
      * @param tool
      *            the pane based selection tool.
@@ -480,8 +436,7 @@ public final class ToolCommandBuilder {
     }
 
     /**
-     * Builds the command which will execute the user-specified operations with
-     * a selection tool.
+     * Builds the command which will execute the user-specified operations with a selection tool.
      * 
      * @param tool
      *            the selection tool.

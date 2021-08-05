@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -78,11 +78,11 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.draw2d.ui.figures.FigureUtilities;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.ui.ExternalJavaActionProvider;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.GroupMenu;
@@ -640,7 +640,7 @@ public class PopupMenuContribution implements IContributionItemProvider {
                 DiagramUIPlugin.getPlugin()
                         .log(new Status(IStatus.WARNING, DiagramUIPlugin.ID, IStatus.OK,
                                 MessageFormat.format(Messages.Group_Not_Displayed, group.getName(),
-                                        MessageFormat.format(org.eclipse.sirius.viewpoint.Messages.Constraint_validNullLocationURIForGroupInPopupMenuConstraint_message, group.getLocationURI())),
+                                        MessageFormat.format(org.eclipse.sirius.tools.api.Messages.Constraint_validNullLocationURIForGroupInPopupMenuConstraint_message, group.getLocationURI())),
                                 null));
             } else {
                 menuContainingNewGroup = parentMenu;

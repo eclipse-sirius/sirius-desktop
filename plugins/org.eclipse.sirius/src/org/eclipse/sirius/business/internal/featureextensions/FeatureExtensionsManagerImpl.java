@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -22,14 +22,14 @@ import org.eclipse.sirius.business.api.featureextensions.FeatureExtension;
 import org.eclipse.sirius.business.api.featureextensions.FeatureExtensionsManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.DFeatureExtension;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.FeatureExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
 /**
- * Class able to manage a set of featureExtensions to provides the usual fetaure
- * extension services using the Eclipse environment.
+ * Class able to manage a set of featureExtensions to provides the usual fetaure extension services using the Eclipse
+ * environment.
  * 
  * @author mchauvin
  */
@@ -58,6 +58,7 @@ public class FeatureExtensionsManagerImpl implements FeatureExtensionsManager {
      * 
      * @see org.eclipse.sirius.business.api.featureextensions.FeatureExtensionsManager#disableFeatureExtension(org.eclipse.sirius.business.api.featureextensions.FeatureExtension)
      */
+    @Override
     public void disableFeatureExtension(final FeatureExtension featureExtension) {
         featureExtensions.remove(featureExtension.getName());
     }
@@ -67,6 +68,7 @@ public class FeatureExtensionsManagerImpl implements FeatureExtensionsManager {
      * 
      * @see org.eclipse.sirius.business.api.dialect.DialectManager#enableDialect(org.eclipse.sirius.business.api.dialect.Dialect)
      */
+    @Override
     public void enableFeatureExtension(final FeatureExtension featureExtension) {
         featureExtensions.put(featureExtension.getName(), featureExtension);
     }
@@ -76,6 +78,7 @@ public class FeatureExtensionsManagerImpl implements FeatureExtensionsManager {
      * 
      * @see org.eclipse.sirius.business.api.featureextensions.FeatureExtensionServices#getPerspective(java.lang.Class)
      */
+    @Override
     public <T extends FeatureExtensionDescription> List<T> getFeatureExtensionDescriptions(final Viewpoint viewpoint, final Class<T> clazz) {
         for (final FeatureExtension featureExtension : featureExtensions.values()) {
             final List<T> perspectives = featureExtension.getServices().getFeatureExtensionDescriptions(viewpoint, clazz);
@@ -90,10 +93,10 @@ public class FeatureExtensionsManagerImpl implements FeatureExtensionsManager {
      * {@inheritDoc}
      * 
      * @see org.eclipse.sirius.business.api.featureextensions.FeatureExtensionServices#saveFeatureExtensionData(java.lang.String,
-     *      org.eclipse.sirius.business.api.session.Session,
-     *      org.eclipse.emf.ecore.EObject,
+     *      org.eclipse.sirius.business.api.session.Session, org.eclipse.emf.ecore.EObject,
      *      org.eclipse.sirius.viewpoint.DFeatureExtension)
      */
+    @Override
     public void saveFeatureExtensionData(final String id, final Session session, final EObject associatedInstance, final DFeatureExtension data) {
         final FeatureExtension featureExtension = featureExtensions.get(id);
         if (featureExtension != null) {
@@ -107,6 +110,7 @@ public class FeatureExtensionsManagerImpl implements FeatureExtensionsManager {
      * @see org.eclipse.sirius.business.api.featureextensions.FeatureExtensionServices#retrieveFeatureExtensionData(java.lang.String,
      *      org.eclipse.sirius.business.api.session.Session)
      */
+    @Override
     public Collection<DFeatureExtension> retrieveFeatureExtensionData(final String id, final Session session) {
         final FeatureExtension featureExtension = featureExtensions.get(id);
         if (featureExtension != null) {

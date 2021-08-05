@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,16 +20,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.internal.helper.task.IDeletionTask;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
+import org.eclipse.sirius.tools.api.Messages;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
-import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.DeleteView;
 import org.eclipse.sirius.viewpoint.description.tool.RemoveElement;
 
 /**
- * This task remove an element and unset all the references an element may have
- * DRepresentationElement on this one.
+ * This task remove an element and unset all the references an element may have DRepresentationElement on this one.
  *
  * @author Cedric Brun (cbrun)
  *

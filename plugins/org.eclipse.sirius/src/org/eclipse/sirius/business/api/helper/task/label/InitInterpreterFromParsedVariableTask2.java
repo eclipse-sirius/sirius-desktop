@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,13 +17,12 @@ import java.text.ParseException;
 
 import org.eclipse.sirius.business.api.helper.task.AbstractCommandTask;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
-import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.tools.api.Messages;
 
 /**
- * Task to init interpeter variables. This task is like
- * InitInterpreterFromParsedVariableTask but if the message is not a String and
- * the message mask is {0}, it just initializes the variable $0 with the message
- * (without passed through MessageFormat).
+ * Task to init interpeter variables. This task is like InitInterpreterFromParsedVariableTask but if the message is not
+ * a String and the message mask is {0}, it just initializes the variable $0 with the message (without passed through
+ * MessageFormat).
  * 
  * @author lredor
  */
@@ -73,8 +72,7 @@ public class InitInterpreterFromParsedVariableTask2 extends AbstractCommandTask 
                 }
             } catch (final ParseException e) {
                 /*
-                 * it seems impossible to arrive here as the "canExecute"
-                 * prevent that
+                 * it seems impossible to arrive here as the "canExecute" prevent that
                  */
             }
         }

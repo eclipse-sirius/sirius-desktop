@@ -29,7 +29,7 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.Mappi
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.tools.internal.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 
 import com.google.common.base.Objects;
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterSiriusVariables;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.ConditionalStyleDescription;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 
@@ -35,8 +35,7 @@ public final class ConditionalStyleSpecOperations {
     }
 
     /**
-     * Implementation of.
-     * {@link ConditionalStyleDescription#checkPredicate(EObject, EObject, EObject)}
+     * Implementation of. {@link ConditionalStyleDescription#checkPredicate(EObject, EObject, EObject)}
      * 
      * @param style
      *            the current conditional style
@@ -54,8 +53,7 @@ public final class ConditionalStyleSpecOperations {
     }
 
     /**
-     * Implementation of.
-     * {@link ConditionalStyleDescription#checkPredicate(EObject, EObject, EObject)}
+     * Implementation of. {@link ConditionalStyleDescription#checkPredicate(EObject, EObject, EObject)}
      * 
      * @param style
      *            the current conditional style

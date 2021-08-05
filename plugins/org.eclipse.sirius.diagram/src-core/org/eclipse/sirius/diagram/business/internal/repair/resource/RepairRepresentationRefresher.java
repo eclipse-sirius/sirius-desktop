@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,12 +38,12 @@ import org.eclipse.sirius.diagram.business.internal.repair.resource.session.diag
 import org.eclipse.sirius.diagram.business.internal.repair.resource.session.diagram.data.LostElementDataState;
 import org.eclipse.sirius.diagram.business.internal.repair.resource.session.diagram.data.LostElementDataWithMapping;
 import org.eclipse.sirius.diagram.business.internal.repair.resource.session.diagram.data.LostNodeData;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.ListMultimap;
@@ -156,8 +156,7 @@ public class RepairRepresentationRefresher {
      * @param transactionalEditingDomain
      *            the editing domain.
      * @param migrationCommandExecutor
-     *            the command executor to execute the
-     *            {@link RefreshAllElementsVisibilityCommand}
+     *            the command executor to execute the {@link RefreshAllElementsVisibilityCommand}
      */
     public void refreshAllElementsVisibility(final DView view, TransactionalEditingDomain transactionalEditingDomain, MigrationCommandExecutor migrationCommandExecutor) {
         for (final DRepresentation representation : new DViewQuery(view).getLoadedRepresentations()) {
@@ -248,8 +247,7 @@ public class RepairRepresentationRefresher {
     }
 
     /**
-     * @return boolean <code>true</code> indicates that diagram has changed
-     *         after refresh. <code>false</code> otherwise.
+     * @return boolean <code>true</code> indicates that diagram has changed after refresh. <code>false</code> otherwise.
      */
     private boolean refreshDiagramAndCheckIfNumberOfElementsHasChanged(final DSemanticDiagram designerDiagram) {
         boolean doContinue;

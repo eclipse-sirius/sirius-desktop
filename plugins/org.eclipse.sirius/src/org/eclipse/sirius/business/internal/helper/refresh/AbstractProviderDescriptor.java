@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,7 @@ import java.text.MessageFormat;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.sirius.business.api.refresh.RefreshConstants;
-import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.tools.api.Messages;
 
 /**
  * The provider descriptor for the refresh API.
@@ -35,8 +35,7 @@ public abstract class AbstractProviderDescriptor implements Comparable<AbstractP
     private String providerClassName;
 
     /**
-     * Create a new {@link AbstractProviderDescriptor} with the specified
-     * configuration element.
+     * Create a new {@link AbstractProviderDescriptor} with the specified configuration element.
      * 
      * @param element
      *            the configuration.
@@ -58,16 +57,14 @@ public abstract class AbstractProviderDescriptor implements Comparable<AbstractP
     }
 
     /**
-     * Returns the value of the attribute <code>name</code> of this descriptor's
-     * configuration element. if the attribute hasn't been set, we'll return
-     * <code>defaultValue</code> instead.
+     * Returns the value of the attribute <code>name</code> of this descriptor's configuration element. if the attribute
+     * hasn't been set, we'll return <code>defaultValue</code> instead.
      * 
      * @param name
      *            Name of the attribute we seek the value of.
      * @param defaultValue
      *            Value to return if the attribute hasn't been set.
-     * @return The value of the attribute <code>name</code>,
-     *         <code>defaultValue</code> if it hasn't been set.
+     * @return The value of the attribute <code>name</code>, <code>defaultValue</code> if it hasn't been set.
      */
     private String getAttribute(final String name, final String defaultValue) {
         final String value = element.getAttribute(name);
@@ -90,23 +87,19 @@ public abstract class AbstractProviderDescriptor implements Comparable<AbstractP
     }
 
     /**
-     * Returns the value of the priority described by the given {@link String}.
-     * <br/>
+     * Returns the value of the priority described by the given {@link String}. <br/>
      * Returned values according to <code>priorityString</code> value :
      * <ul>
-     * <li>&quot;lowest&quot; =&gt; {@value RefreshConstants#PRIORITY_LOWEST}
-     * </li>
+     * <li>&quot;lowest&quot; =&gt; {@value RefreshConstants#PRIORITY_LOWEST}</li>
      * <li>&quot;low&quot; =&gt; {@value RefreshConstants#PRIORITY_LOW}</li>
      * <li>&quot;high&quot; =&gt; {@value RefreshConstants#PRIORITY_HIGH}</li>
-     * <li>&quot;highest&quot; =&gt; {@value RefreshConstants#PRIORITY_HIGHEST}
-     * </li>
+     * <li>&quot;highest&quot; =&gt; {@value RefreshConstants#PRIORITY_HIGHEST}</li>
      * <li>anything else =&gt; {@value RefreshConstants#PRIORITY_NORMAL}</li>
      * </ul>
      * 
      * @param priorityString
      *            {@link String} value of the priority we seek.
-     * @return <code>int</code> corresponding to the given priority
-     *         {@link String}.
+     * @return <code>int</code> corresponding to the given priority {@link String}.
      */
     private int getPriorityValue(final String priorityString) {
         int priorityValue = RefreshConstants.NORMAL_PRIORITY;

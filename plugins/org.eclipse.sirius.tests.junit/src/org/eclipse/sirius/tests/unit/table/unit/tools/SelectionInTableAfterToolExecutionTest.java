@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,9 +29,9 @@ import org.eclipse.sirius.table.ui.tools.api.editor.DTableEditor;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.AbstractToolDescriptionTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**
@@ -127,8 +127,7 @@ public class SelectionInTableAfterToolExecutionTest extends AbstractToolDescript
     }
 
     /**
-     * Check that variables are recognized during expression run time
-     * computation for CreateLineTool
+     * Check that variables are recognized during expression run time computation for CreateLineTool
      */
     public void testRunTimeVariableAfterCreateLineTool() {
         DLine dLine = tableClasses.getLines().get(0);

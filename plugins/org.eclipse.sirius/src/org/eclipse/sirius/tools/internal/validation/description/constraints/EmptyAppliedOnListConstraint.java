@@ -1,5 +1,5 @@
 /*****************************************************************************************
- * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES
+ * Copyright (c) 2013, 2021 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,12 +16,11 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.validation.AbstractModelConstraint;
 import org.eclipse.emf.validation.IValidationContext;
-import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.description.EStructuralFeatureCustomization;
 
 /**
- * Validation constraint to check that the
- * {@link EStructuralFeatureCustomization#getAppliedOn()} is not empty when the
+ * Validation constraint to check that the {@link EStructuralFeatureCustomization#getAppliedOn()} is not empty when the
  * {@link EStructuralFeatureCustomization#isApplyOnAll()} is false.
  * 
  * @author lredor

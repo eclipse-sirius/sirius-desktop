@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,12 +33,12 @@ import org.eclipse.sirius.diagram.EdgeRouting;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.DStylizable;
 import org.eclipse.sirius.viewpoint.FontFormat;
 import org.eclipse.sirius.viewpoint.LabelStyle;
 import org.eclipse.sirius.viewpoint.RGBValues;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.swt.graphics.RGB;
@@ -116,8 +116,8 @@ public class StylePropertySection extends SemanticPropertySection {
     }
 
     /**
-     * Transform selection to have {@link DSemanticDecorator} instead of
-     * {@link EditPart} or null if the semantic element (target) not exists.
+     * Transform selection to have {@link DSemanticDecorator} instead of {@link EditPart} or null if the semantic
+     * element (target) not exists.
      * 
      * @param selection
      *            the currently selected object
@@ -156,8 +156,8 @@ public class StylePropertySection extends SemanticPropertySection {
     /**
      * {@inheritDoc}
      * 
-     * This is used to automatically set the "custom" attribute of a Style if
-     * there is any manual change in the PropertySection.
+     * This is used to automatically set the "custom" attribute of a Style if there is any manual change in the
+     * PropertySection.
      * 
      * @author mPorhel
      * 
@@ -167,8 +167,7 @@ public class StylePropertySection extends SemanticPropertySection {
         private View view;
 
         /**
-         * An instance is constructed from an object and its item property
-         * source.
+         * An instance is constructed from an object and its item property source.
          */
         StylePropertySource(final Object object, final IItemPropertySource itemPropertySource) {
             super(object, itemPropertySource);
@@ -176,8 +175,7 @@ public class StylePropertySection extends SemanticPropertySection {
         }
 
         /**
-         * An instance is constructed from an object, its edit part and its item
-         * property source.
+         * An instance is constructed from an object, its edit part and its item property source.
          */
         StylePropertySource(final Object object, final View view, final IItemPropertySource itemPropertySource) {
             super(object, itemPropertySource);
@@ -188,8 +186,7 @@ public class StylePropertySection extends SemanticPropertySection {
          * 
          * {@inheritDoc}
          * 
-         * @see org.eclipse.emf.edit.ui.provider.PropertySource#setPropertyValue(java.lang.Object,
-         *      java.lang.Object)
+         * @see org.eclipse.emf.edit.ui.provider.PropertySource#setPropertyValue(java.lang.Object, java.lang.Object)
          */
         @Override
         public void setPropertyValue(final Object propertyId, final Object value) {

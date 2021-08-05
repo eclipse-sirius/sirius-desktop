@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -32,6 +32,7 @@ import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.MessageTranslator;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.ui.ExternalJavaActionProvider;
 import org.eclipse.sirius.tools.api.ui.IExternalJavaAction;
 import org.eclipse.sirius.tree.DTreeItem;
@@ -40,7 +41,6 @@ import org.eclipse.sirius.tree.business.api.query.TreePopupMenuQuery;
 import org.eclipse.sirius.tree.description.TreePopupMenu;
 import org.eclipse.sirius.tree.ui.provider.TreeUIPlugin;
 import org.eclipse.sirius.tree.ui.tools.internal.editor.DTreeViewerManager;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.CreateInstance;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaAction;
 import org.eclipse.sirius.viewpoint.description.tool.ExternalJavaActionCall;
@@ -51,8 +51,8 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import com.google.common.collect.Iterators;
 
 /**
- * A Class that will populate a {@link DTreeItem}'s contextual menu using all
- * the {@link org.eclipse.sirius.viewpoint.description.tool.PopupMenu}s defined with its associate
+ * A Class that will populate a {@link DTreeItem}'s contextual menu using all the
+ * {@link org.eclipse.sirius.viewpoint.description.tool.PopupMenu}s defined with its associate
  * {@link org.eclipse.sirius.tree.description.TreeItemMapping}.
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
@@ -83,14 +83,12 @@ public final class TreePopupMenuContributionSupport {
     }
 
     /**
-     * Adds all menus and actions defined for the given {@link DTreeItem} to the
-     * given contextual menu.
+     * Adds all menus and actions defined for the given {@link DTreeItem} to the given contextual menu.
      * 
      * @param menu
      *            the contextual menu about to be shown
      * @param selectedItem
-     *            the selected {@link DTreeItem} from which getting the
-     *            additional menus and actions
+     *            the selected {@link DTreeItem} from which getting the additional menus and actions
      */
     public void contributeToPopupMenu(final IMenuManager menu, DTreeItem selectedItem) {
         EList<TreePopupMenu> popupMenus = selectedItem.getActualMapping().getPopupMenus();
@@ -138,14 +136,12 @@ public final class TreePopupMenuContributionSupport {
     }
 
     /**
-     * Builds all the Actions specified in the given popupMenu and adds them to
-     * the given subMenu
+     * Builds all the Actions specified in the given popupMenu and adds them to the given subMenu
      * 
      * @param subMenu
      *            the subMenu in which create the actions
      * @param selectedItem
-     *            the {@link DTreeItem} from which the contextual menu is
-     *            computed
+     *            the {@link DTreeItem} from which the contextual menu is computed
      * @param popupMenu
      *            the popupMenu containing the Actions to create
      * @param domain
@@ -174,8 +170,8 @@ public final class TreePopupMenuContributionSupport {
     }
 
     /**
-     * Builds a JFace Action from the given {@link MenuItemDescription}, which
-     * target is the given selected {@link DTreeItem}.
+     * Builds a JFace Action from the given {@link MenuItemDescription}, which target is the given selected
+     * {@link DTreeItem}.
      * 
      * @param candidateMenuItem
      *            the {@link MenuItemDescription} to create an Action from
@@ -217,8 +213,8 @@ public final class TreePopupMenuContributionSupport {
     }
 
     /**
-     * Builds a JFace Action from the given {@link ExternalJavaAction}, which
-     * target is the given selected {@link DTreeItem}.
+     * Builds a JFace Action from the given {@link ExternalJavaAction}, which target is the given selected
+     * {@link DTreeItem}.
      * 
      * @param javaActionItem
      *            the ExternalJavaAction action to create an Action from
@@ -261,8 +257,8 @@ public final class TreePopupMenuContributionSupport {
     }
 
     /**
-     * Builds a JFace Action from the given {@link OperationAction}, which
-     * target is the given selected {@link DTreeItem}.
+     * Builds a JFace Action from the given {@link OperationAction}, which target is the given selected
+     * {@link DTreeItem}.
      * 
      * @param operationAction
      *            the operation action to create an Action from
@@ -331,8 +327,7 @@ public final class TreePopupMenuContributionSupport {
                 result = anInstance;
             } catch (final MetaClassNotFoundException e) {
                 /*
-                 * silent catch, it's just a bit more magic, if we're able to
-                 * retrieve the right type then we'll do.
+                 * silent catch, it's just a bit more magic, if we're able to retrieve the right type then we'll do.
                  */
             }
 

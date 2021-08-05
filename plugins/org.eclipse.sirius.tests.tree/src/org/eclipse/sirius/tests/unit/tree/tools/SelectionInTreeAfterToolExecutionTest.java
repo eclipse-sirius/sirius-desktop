@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,6 +24,7 @@ import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.AbstractToolDescriptionTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.command.ICommandFactory;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
@@ -33,7 +34,6 @@ import org.eclipse.sirius.tree.business.api.command.TreeCommandFactoryService;
 import org.eclipse.sirius.tree.description.TreeItemCreationTool;
 import org.eclipse.sirius.tree.ui.tools.api.editor.DTreeEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
 /**
@@ -143,8 +143,7 @@ public class SelectionInTreeAfterToolExecutionTest extends AbstractToolDescripti
     }
 
     /**
-     * Check that variables are recognized during expression run time
-     * computation for CreateLineTool
+     * Check that variables are recognized during expression run time computation for CreateLineTool
      */
     public void testRunTimeVariableAfterCreateLineTool() {
         DTreeItem dTreeItem = treeClasses.getOwnedTreeItems().get(0);

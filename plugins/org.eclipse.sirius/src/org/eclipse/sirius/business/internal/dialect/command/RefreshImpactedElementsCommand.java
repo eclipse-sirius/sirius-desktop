@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,9 +21,9 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
+import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.Messages;
 
 /**
  * This command performs a refresh only for impacted elements.
@@ -48,8 +48,7 @@ public class RefreshImpactedElementsCommand extends RecordingCommand {
      * @param representationsToRefresh
      *            the representations to refresh.
      * @param notifications
-     *            the notifications that concern this refresh. This list does
-     *            not contain touch notifications.
+     *            the notifications that concern this refresh. This list does not contain touch notifications.
      */
     public RefreshImpactedElementsCommand(TransactionalEditingDomain domain, IProgressMonitor monitor, Collection<DRepresentation> representationsToRefresh, Collection<Notification> notifications) {
         super(domain, Messages.RefreshImpactedElementsCommand_label);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,7 +20,7 @@ import java.util.regex.PatternSyntaxException;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
-import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.description.util.DescriptionResourceFactoryImpl;
 
@@ -46,8 +46,7 @@ public class ViewpointProtocolParser extends DescriptionResourceFactoryImpl {
      *            the viewpoint uri
      * @return the viewpoint if found, throw an exception otherwise
      * @throws ViewpointProtocolException
-     *             if the uri could not be parsed or the viewpoint could not be
-     *             found
+     *             if the uri could not be parsed or the viewpoint could not be found
      */
     public static Viewpoint getViewpoint(final URI uri) throws ViewpointProtocolException {
         if (uri.segmentCount() == 2 && "viewpoint".equals(uri.scheme())) { //$NON-NLS-1$
@@ -97,8 +96,8 @@ public class ViewpointProtocolParser extends DescriptionResourceFactoryImpl {
      * @param resourceSetURi
      *            the platform URI.
      * @param viewpointURI
-     *            a viewpoint:/ based URI. Can be a regular expression that
-     *            potentially matches the given resourceSetURi.
+     *            a viewpoint:/ based URI. Can be a regular expression that potentially matches the given
+     *            resourceSetURi.
      * @return true if the uri's are matching.
      */
     public static boolean match(final URI resourceSetURi, final String viewpointURI) {

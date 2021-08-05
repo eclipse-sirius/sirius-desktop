@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,14 +17,12 @@ import java.text.MessageFormat;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
-import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.tools.api.Messages;
 
 /**
- * A command that throws a {@link LockedInstanceException} when it gets
- * executed. Can be used when building a command trying to modify elements that
- * the
- * {@link org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority}
- * consider as non editable.
+ * A command that throws a {@link LockedInstanceException} when it gets executed. Can be used when building a command
+ * trying to modify elements that the
+ * {@link org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority} consider as non editable.
  * 
  * @author <a href="mailto:alex.lagarde@obeo.fr">Alex Lagarde</a>
  * 

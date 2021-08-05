@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,8 +29,8 @@ import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A command that is able to remove dangling reference.
@@ -66,9 +66,8 @@ public class RemoveDanglingReferences extends RecordingCommand {
     }
 
     /**
-     * Remove all dangling references of all objects that are contained by the
-     * element's resource. It will be done only if the permission authority can
-     * not edit the element.
+     * Remove all dangling references of all objects that are contained by the element's resource. It will be done only
+     * if the permission authority can not edit the element.
      * 
      * @param element
      *            an element
@@ -91,8 +90,7 @@ public class RemoveDanglingReferences extends RecordingCommand {
     }
 
     /**
-     * Removes all dangling references from all the elements in the given
-     * resource.
+     * Removes all dangling references from all the elements in the given resource.
      * 
      * @param resource
      *            The resource which has to be cleaned of dangling references.
@@ -107,12 +105,10 @@ public class RemoveDanglingReferences extends RecordingCommand {
     }
 
     /**
-     * Removes all dangling references from all the elements in the given
-     * resourceSet.
+     * Removes all dangling references from all the elements in the given resourceSet.
      * 
      * @param resourceSet
-     *            The resourceSet which has to be cleaned of dangling
-     *            references.
+     *            The resourceSet which has to be cleaned of dangling references.
      */
     public static void removeDanglingReferences(final ResourceSet resourceSet) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.REMOVE_DANGLING_REFERENCE_KEY);

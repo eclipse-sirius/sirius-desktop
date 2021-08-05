@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,12 +31,12 @@ import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.tools.internal.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 import org.eclipse.sirius.tools.internal.command.builders.ElementsToSelectTask;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.AbstractVariable;
 import org.eclipse.sirius.viewpoint.description.tool.PasteDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -126,16 +126,14 @@ public class PasteCommandBuilder extends AbstractDiagramCommandBuilder {
     }
 
     /**
-     * Check the precondition of the tool. Context for evaluation is the
-     * semantic receiver.
+     * Check the precondition of the tool. Context for evaluation is the semantic receiver.
      * 
      * @param description
      *            the tool.
      * @param semanticDroppedElement
      *            the semantic element to paste.
      * @param viewDroppedElement
-     *            the view targeting the semantic element to paste, can be
-     *            <code>null</code>.
+     *            the view targeting the semantic element to paste, can be <code>null</code>.
      * @param semanticPasteTarget
      *            the semantic container.
      * @param pasteTargetView

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2015 Obeo.
+ * Copyright (c) 2014, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,10 +25,10 @@ import org.eclipse.sirius.business.api.helper.task.TaskHelper;
 import org.eclipse.sirius.business.api.query.EObjectQuery;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.Messages;
 
 import com.google.common.collect.Iterators;
 
@@ -57,8 +57,7 @@ public class DeleteWithoutToolTask extends AbstractCompoundTask {
      * @param modelAccessor
      *            the model accessor to use for deletion
      * @param taskHelper
-     *            the task helper to use to compute the DSemanticDecorator to
-     *            delete
+     *            the task helper to use to compute the DSemanticDecorator to delete
      */
     public DeleteWithoutToolTask(DRepresentationElement element, Set<EObject> semanticElements, ModelAccessor modelAccessor, TaskHelper taskHelper) {
         this.element = element;
@@ -68,16 +67,15 @@ public class DeleteWithoutToolTask extends AbstractCompoundTask {
     }
 
     /**
-     * Construct a delete without tool task. The semantic elements to delete
-     * will be computed from the given DRepresentationElement element.
+     * Construct a delete without tool task. The semantic elements to delete will be computed from the given
+     * DRepresentationElement element.
      * 
      * @param element
      *            the current {@link DRepresentationElement} to delete.
      * @param modelAccessor
      *            the model accessor to use for deletion
      * @param taskHelper
-     *            the task helper to use to compute the DSemanticDecorator to
-     *            delete
+     *            the task helper to use to compute the DSemanticDecorator to delete
      */
     public DeleteWithoutToolTask(DRepresentationElement element, ModelAccessor modelAccessor, TaskHelper taskHelper) {
         this.element = element;
@@ -124,9 +122,8 @@ public class DeleteWithoutToolTask extends AbstractCompoundTask {
     }
 
     /**
-     * This method can be overridden to add Dialect specific additional delete
-     * tasks. A DeleteEObjectTask for the given decorator has already been added
-     * to subtasks.
+     * This method can be overridden to add Dialect specific additional delete tasks. A DeleteEObjectTask for the given
+     * decorator has already been added to subtasks.
      * 
      * @param decorator
      *            the current decorator to delete

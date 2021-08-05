@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2013, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,9 +24,9 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.tools.internal.Messages;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * A Query for {@link AbstractNodeMapping}.
@@ -54,15 +54,12 @@ public class AbstractNodeMappingQuery extends DiagramElementMappingQuery {
      * @param diagram
      *            the {@link DSemanticDiagram} context of the evaluation
      * @param containerView
-     *            the view container of the node corresponding to the specified
-     *            semantic element
+     *            the view container of the node corresponding to the specified semantic element
      * @param interpreter
-     *            the {@link IInterpreter} used to evaluate the precondition
-     *            expression
+     *            the {@link IInterpreter} used to evaluate the precondition expression
      * @param semantic
      *            the semantic context for expression evaluation
-     * @return <code>true</code> if the precondition is valid,
-     *         <code>false</code> otherwise
+     * @return <code>true</code> if the precondition is valid, <code>false</code> otherwise
      */
     public boolean evaluatePrecondition(DSemanticDiagram diagram, DragAndDropTarget containerView, IInterpreter interpreter, EObject semantic) {
         DslCommonPlugin.PROFILER.startWork(SiriusTasksKey.CHECK_PRECONDITION_KEY);

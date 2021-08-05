@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,16 +21,13 @@ import org.eclipse.emf.ecore.EClassifier;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.validation.IValidationContext;
-import org.eclipse.sirius.viewpoint.Messages;
+import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
 
 /**
- * A
- * {@link AbstractEStructuralFeatureCustomizationFeatureNameCommonToAppliedOnConstraint}
- * to check the constraint that
- * {@link EAttributeCustomization#getAttributeName()} is the name of a common
- * {@link EAttribute} to all referenced style description or a description
- * element owned by a style description through
+ * A {@link AbstractEStructuralFeatureCustomizationFeatureNameCommonToAppliedOnConstraint} to check the constraint that
+ * {@link EAttributeCustomization#getAttributeName()} is the name of a common {@link EAttribute} to all referenced style
+ * description or a description element owned by a style description through
  * {@link EAttributeCustomization#getAppliedOn()}.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>

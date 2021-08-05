@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -65,11 +65,11 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.tools.internal.Messages;
 import org.eclipse.sirius.diagram.util.DiagramSwitch;
 import org.eclipse.sirius.ext.base.Option;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.command.ui.RefreshFilter;
 import org.eclipse.sirius.viewpoint.DRefreshable;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
@@ -248,7 +248,7 @@ public class RefreshSiriusElement extends RecordingCommand {
             DialectManager.INSTANCE.refresh(object, new NullProgressMonitor());
             return object;
         }
-        
+
         @Override
         public DRefreshable caseDNodeContainer(DNodeContainer object) {
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(object);
@@ -383,7 +383,7 @@ public class RefreshSiriusElement extends RecordingCommand {
             }
             return object;
         }
-        
+
         private void updateEdge(final EdgeMapping edgeMapping, final DEdge dEdge) {
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(dEdge);
             new EdgeMappingHelper(interpreter).updateEdge(edgeMapping, dEdge);

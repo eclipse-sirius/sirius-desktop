@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,8 +38,8 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.business.internal.modelingproject.marker.InvalidModelingProjectMarkerUpdaterJob;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.Messages;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 
 /**
  * Modeling-aware model provider.
@@ -115,13 +115,11 @@ public class ModelingModelProvider extends ModelProvider {
     }
 
     /**
-     * Return a String representing the name of this projects separated by a
-     * comma.
+     * Return a String representing the name of this projects separated by a comma.
      *
      * @param projects
      *            the list of projects
-     * @return a String representing the name of this projects separated by a
-     *         comma.
+     * @return a String representing the name of this projects separated by a comma.
      */
     private String getProjectsName(List<IProject> projects) {
         StringBuffer result = new StringBuffer();
@@ -136,13 +134,11 @@ public class ModelingModelProvider extends ModelProvider {
     }
 
     /**
-     * Return a String representing the name of the project of this files
-     * separated by a comma.
+     * Return a String representing the name of the project of this files separated by a comma.
      *
      * @param files
      *            the list of files
-     * @return a String representing the name of this projects separated by a
-     *         comma.
+     * @return a String representing the name of this projects separated by a comma.
      */
     private String getFilesProjectName(List<IFile> files) {
         StringBuffer result = new StringBuffer();
@@ -161,8 +157,7 @@ public class ModelingModelProvider extends ModelProvider {
      * <UL>
      * <LI>Deletion of a modeling project with opened representations file</LI>
      * <LI>Deletion of the main representations file of a modeling project</LI>
-     * <LI>Add of representations file in a valid modeling project (already with
-     * a main representations file).</LI>
+     * <LI>Add of representations file in a valid modeling project (already with a main representations file).</LI>
      * </UL>
      *
      * @author lredor.
@@ -197,8 +192,8 @@ public class ModelingModelProvider extends ModelProvider {
          *            The given resource delta
          * @param project
          *            The project concerning by this delta
-         * @return <code>true</code> if the resource delta's children should be
-         *         visited; <code>false</code> if they should be skipped.
+         * @return <code>true</code> if the resource delta's children should be visited; <code>false</code> if they
+         *         should be skipped.
          * @exception CoreException
          *                if the visit fails for some reason.
          */
@@ -230,8 +225,8 @@ public class ModelingModelProvider extends ModelProvider {
          *            The given resource delta
          * @param file
          *            The file concerning by this delta
-         * @return <code>true</code> if the resource delta's children should be
-         *         visited; <code>false</code> if they should be skipped.
+         * @return <code>true</code> if the resource delta's children should be visited; <code>false</code> if they
+         *         should be skipped.
          * @exception CoreException
          *                if the visit fails for some reason.
          */

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2017 Obeo.
+ * Copyright (c) 2016, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,12 +24,11 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.sirius.business.api.resource.strategy.ResourceStrategy;
 import org.eclipse.sirius.business.api.resource.strategy.ResourceStrategyRegistry;
-import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.Messages;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 
 /**
- * This listener will allow us to be aware of contribution changes against the
- * resourceStrategy extension point.
+ * This listener will allow us to be aware of contribution changes against the resourceStrategy extension point.
  * 
  * @author <a href="mailto:laurent.fasani@obeo.fr">Laurent Fasani</a>
  */
@@ -89,9 +88,8 @@ public class ResourceStrategyRegistryListener implements IRegistryEventListener 
     }
 
     /**
-     * Though this listener reacts to the extension point changes, there could
-     * have been contributions before it's been registered. This will parse
-     * these initial contributions.
+     * Though this listener reacts to the extension point changes, there could have been contributions before it's been
+     * registered. This will parse these initial contributions.
      */
     public void parseInitialContributions() {
         final IExtensionRegistry registry = Platform.getExtensionRegistry();
@@ -105,8 +103,7 @@ public class ResourceStrategyRegistryListener implements IRegistryEventListener 
      * Parses a single extension contribution.
      * 
      * @param extension
-     *            Parses the given extension and adds its contribution to the
-     *            registry.
+     *            Parses the given extension and adds its contribution to the registry.
      */
     private void parseExtension(IExtension extension) {
         final IConfigurationElement[] configElements = extension.getConfigurationElements();

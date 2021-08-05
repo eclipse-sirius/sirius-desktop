@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 Obeo.
+ * Copyright (c) 2017, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,11 +31,11 @@ import org.eclipse.sirius.common.interpreter.api.IInterpreter;
 import org.eclipse.sirius.common.interpreter.api.IVariableManager;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.properties.WizardModelOperation;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.command.CommandContext;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.ui.properties.internal.EditingContextAdapterWrapper;
 import org.eclipse.sirius.ui.properties.internal.SiriusUIPropertiesPlugin;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 /**
  * The wizard parameterized by the Sirius wizard description.
@@ -226,17 +226,18 @@ public class PropertiesWizard extends Wizard {
             this.getContainer().run(false, false, (monitor) -> {
                 Optional.ofNullable(this.wizardModelOperation.getInitialOperation()).flatMap(initialOperation -> Optional.ofNullable(initialOperation.getFirstModelOperations()))
                         .ifPresent(modelOperation -> {
-                    ICommandTask task = new TaskHelper(this.modelAccessor, SiriusPlugin.getDefault().getUiCallback()).buildTaskFromModelOperation(this.context.getCurrentTarget(), modelOperation);
-                    SiriusCommand command = new SiriusCommand(this.session.getTransactionalEditingDomain(), "SiriusToolServices#executeOperation"); //$NON-NLS-1$
-                    command.getTasks().add(task);
-                    try {
-                        if (command.canExecute()) {
-                            command.execute();
-                        }
-                    } finally {
-                        command.dispose();
-                    }
-                });
+                            ICommandTask task = new TaskHelper(this.modelAccessor, SiriusPlugin.getDefault().getUiCallback()).buildTaskFromModelOperation(this.context.getCurrentTarget(),
+                                    modelOperation);
+                            SiriusCommand command = new SiriusCommand(this.session.getTransactionalEditingDomain(), "SiriusToolServices#executeOperation"); //$NON-NLS-1$
+                            command.getTasks().add(task);
+                            try {
+                                if (command.canExecute()) {
+                                    command.execute();
+                                }
+                            } finally {
+                                command.dispose();
+                            }
+                        });
             });
         } catch (InvocationTargetException | InterruptedException e) {
             SiriusUIPropertiesPlugin.getPlugin().error(e.getMessage(), e);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and Obeo.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -41,10 +41,10 @@ import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync.ResourceStatus;
 import org.eclipse.sirius.common.tools.api.resource.ResourceSyncClient;
+import org.eclipse.sirius.tools.api.Messages;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceCommand;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.SyncStatus;
 
 import com.google.common.base.Preconditions;
@@ -196,6 +196,7 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
         /* execute the reload operation as a write transaction */
         RecordingCommand reload = new RecordingCommand(ted) {
             IStatus result;
+
             @Override
             protected void doExecute() {
                 session.disableCrossReferencerResolve(resource);
@@ -210,6 +211,7 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
                     result = new Status(IStatus.ERROR, SiriusPlugin.ID, e.getMessage(), e); // $NON-NLS-1$
                 }
             }
+
             @Override
             public Collection<?> getResult() {
                 return Collections.singleton(result);

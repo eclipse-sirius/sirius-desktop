@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,12 +27,11 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.ext.emf.ui.ICellEditorProvider;
 import org.eclipse.sirius.ext.emf.ui.properties.CellEditorProviderCollector;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 
 /**
- * This collector lookups within the
- * {@link SiriusCellEditorProviderCollector#EXTENSION_POINT_ID}.
+ * This collector lookups within the {@link SiriusCellEditorProviderCollector#EXTENSION_POINT_ID}.
  *
  * @author Florian Barbin
  */
@@ -57,9 +56,8 @@ public final class SiriusCellEditorProviderCollector implements CellEditorProvid
     }
 
     /**
-     * Provides the unique instance of this class. To be lazy, the
-     * SiriusCellEditorProviderExtensionPoint is instantiate the first time we
-     * ask the instance.
+     * Provides the unique instance of this class. To be lazy, the SiriusCellEditorProviderExtensionPoint is instantiate
+     * the first time we ask the instance.
      *
      * @return the SiriusCellEditorProviderExtensionPoint
      */

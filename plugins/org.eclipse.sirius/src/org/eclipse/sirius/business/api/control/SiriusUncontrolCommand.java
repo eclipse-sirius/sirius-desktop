@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,20 +29,19 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSession;
 import org.eclipse.sirius.business.internal.command.control.UncontrolCommand;
+import org.eclipse.sirius.tools.api.Messages;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.Messages;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Iterators;
 import com.google.common.collect.Sets;
 
 /**
- * An extension of the basic {@link UncontrolCommand} to handle both the
- * semantic model and the corresponding Sirius representations. Also handles
- * session state and modification-tracking management.
+ * An extension of the basic {@link UncontrolCommand} to handle both the semantic model and the corresponding Sirius
+ * representations. Also handles session state and modification-tracking management.
  * 
  * @since 0.9.0
  * 
@@ -54,14 +53,12 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
     private final Session session;
 
     /**
-     * A flag to indicate if we should uncontrol the representations in addition
-     * to the semantic elements.
+     * A flag to indicate if we should uncontrol the representations in addition to the semantic elements.
      */
     private final boolean uncontrolRepresentations;
 
     /**
-     * A boolean to set if the session should be save at the end of this
-     * command.
+     * A boolean to set if the session should be save at the end of this command.
      */
     private final boolean shouldEndBySaving;
 
@@ -73,13 +70,11 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
      * @param semanticRoot
      *            the semantic model element to uncontrol.
      * @param uncontrolRepresentations
-     *            indicate if we should uncontrol the representations in
-     *            addition to the semantic elements.
+     *            indicate if we should uncontrol the representations in addition to the semantic elements.
      * @param shouldEndBySaving
      *            A boolean to set if the session should be save at the end of
      * @param monitor
-     *            a {@link IProgressMonitor} to show progression of uncontrol
-     *            operation
+     *            a {@link IProgressMonitor} to show progression of uncontrol operation
      */
     public SiriusUncontrolCommand(final EObject semanticRoot, final boolean uncontrolRepresentations, boolean shouldEndBySaving, IProgressMonitor monitor) {
         super(semanticRoot);
@@ -91,8 +86,8 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
 
     /**
      * Get root container of specified object.<br>
-     * Default implementation consists in getting the resource container i.e the
-     * first parent container serialized in its own resource.
+     * Default implementation consists in getting the resource container i.e the first parent container serialized in
+     * its own resource.
      * 
      * @param eObject
      *            the current EObject.
@@ -136,8 +131,8 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
     }
 
     /**
-     * Remove the children semantic and representation resources after
-     * uncontrol, both from the session and from the disk, if they are empty.
+     * Remove the children semantic and representation resources after uncontrol, both from the session and from the
+     * disk, if they are empty.
      */
     private void cleanupChildrenResources(final Resource childSemanticResource, final Resource childAirdResource) {
         notifySessionAboutUncontrolledResource(childSemanticResource);
@@ -168,12 +163,10 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
     }
 
     /**
-     * Get the resource that contains the analysis which has the specified
-     * object as main models references.
+     * Get the resource that contains the analysis which has the specified object as main models references.
      * 
      * @param object
-     *            The object to search. This object must be a root of a semantic
-     *            model.
+     *            The object to search. This object must be a root of a semantic model.
      * @return the corresponding resource if found, false otherwise.
      */
     protected Resource getAirdResourceWithAnalysisOn(final EObject object) {
@@ -207,8 +200,7 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
     }
 
     /**
-     * Moves all the representations stored in <code>childResource</code> into
-     * <code>parentResource</code>.
+     * Moves all the representations stored in <code>childResource</code> into <code>parentResource</code>.
      */
     private void moveRepresentations(final Resource childResource, final Resource parentResource, final Resource parentSemanticResource) {
         final Collection<DRepresentationDescriptor> repDescriptors = collectExistingRepresentations(childResource);
@@ -249,8 +241,8 @@ public class SiriusUncontrolCommand extends UncontrolCommand {
     }
 
     /**
-     * Delete the physical workspace file underlying a resource, if any and
-     * unload and remove this resource from its resourceSet.
+     * Delete the physical workspace file underlying a resource, if any and unload and remove this resource from its
+     * resourceSet.
      * 
      * @param res
      *            the resource to delete

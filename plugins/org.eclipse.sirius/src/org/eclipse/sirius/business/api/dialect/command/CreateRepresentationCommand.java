@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,8 +27,8 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-import org.eclipse.sirius.viewpoint.Messages;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.RepresentationCreationDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
@@ -69,8 +69,7 @@ public class CreateRepresentationCommand extends RecordingCommand {
      * @param name
      *            the representation name
      * @param monitor
-     *            a {@link IProgressMonitor} to report progression of
-     *            representation creation
+     *            a {@link IProgressMonitor} to report progression of representation creation
      */
     public CreateRepresentationCommand(Session session, RepresentationDescription description, EObject eObject, String name, IProgressMonitor monitor) {
         super(session.getTransactionalEditingDomain(), Messages.CreateRepresentationCommand_label);
@@ -100,8 +99,7 @@ public class CreateRepresentationCommand extends RecordingCommand {
     @Override
     public boolean canExecute() {
         /*
-         * if there is an initial operation an semantic element could be added
-         * and used after on precondition
+         * if there is an initial operation an semantic element could be added and used after on precondition
          */
         if (isInitialOperation) {
             return super.canExecute();

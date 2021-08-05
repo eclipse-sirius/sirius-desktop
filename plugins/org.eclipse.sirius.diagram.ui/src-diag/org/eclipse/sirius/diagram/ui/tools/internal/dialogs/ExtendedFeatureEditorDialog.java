@@ -1,7 +1,7 @@
 /**
  * <copyright>
  *
- * Copyright (c) 2002-2008 IBM Corporation and others.
+ * Copyright (c) 2002-2021 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -49,7 +49,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ExtensionFeatureDescription;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.KeyAdapter;
 import org.eclipse.swt.events.KeyEvent;
@@ -149,8 +149,7 @@ public class ExtendedFeatureEditorDialog extends Dialog {
     /**
      * Creates the dialog.
      * 
-     * This code is cut/paste from the
-     * {@link org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog} class.
+     * This code is cut/paste from the {@link org.eclipse.emf.edit.ui.celleditor.FeatureEditorDialog} class.
      * 
      * @param parent
      *            the parent.
@@ -486,6 +485,7 @@ public class ExtendedFeatureEditorDialog extends Dialog {
     private void setTableViewerListener(final TableViewer choiceTableViewer, final TableViewer featureTableViewer, final Button addButton, final Button removeButton) {
         if (choiceTableViewer != null) {
             choiceTableViewer.addDoubleClickListener(new IDoubleClickListener() {
+                @Override
                 public void doubleClick(final DoubleClickEvent event) {
                     if (addButton.isEnabled()) {
                         addButton.notifyListeners(SWT.Selection, null);
@@ -494,6 +494,7 @@ public class ExtendedFeatureEditorDialog extends Dialog {
             });
 
             featureTableViewer.addDoubleClickListener(new IDoubleClickListener() {
+                @Override
                 public void doubleClick(final DoubleClickEvent event) {
                     if (removeButton.isEnabled()) {
                         removeButton.notifyListeners(SWT.Selection, null);

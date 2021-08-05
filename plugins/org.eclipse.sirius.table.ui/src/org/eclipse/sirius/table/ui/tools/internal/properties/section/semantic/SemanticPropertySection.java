@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -24,10 +24,10 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.table.metamodel.table.DTableElement;
 import org.eclipse.sirius.table.ui.tools.internal.properties.propertysource.TableCompositeEObjectPropertySource;
 import org.eclipse.sirius.table.ui.tools.internal.properties.section.common.AbstractDTablePropertySection;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.ui.tools.api.properties.AbstractCompositeEObjectPropertySource;
 import org.eclipse.sirius.ui.tools.api.properties.SiriusExtensiblePropertySource;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.ui.views.properties.IPropertySource;
 
 /**
@@ -65,13 +65,11 @@ public class SemanticPropertySection extends AbstractDTablePropertySection {
     }
 
     /**
-     * Returns a property source for the given {@link DTableElement table
-     * element}.
+     * Returns a property source for the given {@link DTableElement table element}.
      * 
      * @param tableElement
      *            the table element
-     * @return the property source for the cell passed in (maybe
-     *         <code>null</code>)
+     * @return the property source for the cell passed in (maybe <code>null</code>)
      */
     protected IPropertySource getPropertySource(final DTableElement tableElement) {
         final ModelAccessor accessor = SiriusPlugin.getDefault().getModelAccessorRegistry().getModelAccessor(tableElement);
@@ -85,8 +83,7 @@ public class SemanticPropertySection extends AbstractDTablePropertySection {
      *            the model accessor
      * @param eObjects
      *            collection of object
-     * @return the property source for the cell passed in (maybe
-     *         <code>null</code>)
+     * @return the property source for the cell passed in (maybe <code>null</code>)
      */
     protected IPropertySource getPropertySource(final ModelAccessor accessor, final Collection<EObject> eObjects) {
         final Iterator<EObject> iterElements = eObjects.iterator();
@@ -99,13 +96,11 @@ public class SemanticPropertySection extends AbstractDTablePropertySection {
     }
 
     /**
-     * Returns a property source for the given {@link DSemanticDecorator
-     * semanticDecorator}.
+     * Returns a property source for the given {@link DSemanticDecorator semanticDecorator}.
      * 
      * @param semanticDecorator
      *            the semanticDecorator
-     * @return the property source for the semanticDecorator passed in (maybe
-     *         <code>null</code>)
+     * @return the property source for the semanticDecorator passed in (maybe <code>null</code>)
      */
     protected IPropertySource getPropertySource(final DSemanticDecorator semanticDecorator) {
         final TableCompositeEObjectPropertySource propertySource = new TableCompositeEObjectPropertySource();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -39,7 +39,7 @@ import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.permission.exception.LockedInstanceException;
 import org.eclipse.sirius.ext.emf.EReferencePredicate;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
@@ -98,8 +98,7 @@ public class ExtendedPropertySourceTestCase extends TestCase {
     }
 
     /**
-     * Tests the property source with an extended feature which have the String
-     * type.
+     * Tests the property source with an extended feature which have the String type.
      * 
      * @throws FeatureNotFoundException
      *             if the test fails.
@@ -179,8 +178,7 @@ public class ExtendedPropertySourceTestCase extends TestCase {
     }
 
     /**
-     * Tests the property source with an extended feature which have a EENum.
-     * type.
+     * Tests the property source with an extended feature which have a EENum. type.
      * 
      * @throws FeatureNotFoundException
      *             if the test fails.
@@ -215,8 +213,7 @@ public class ExtendedPropertySourceTestCase extends TestCase {
     }
 
     /**
-     * Tests that the property source is aware of custom property descriptor
-     * provided by the extender.
+     * Tests that the property source is aware of custom property descriptor provided by the extender.
      * 
      * @throws FeatureNotFoundException
      *             if the test fails.
@@ -335,8 +332,7 @@ public class ExtendedPropertySourceTestCase extends TestCase {
             private EStructuralFeature theFeature;
 
             /**
-             * Creates a new extension feature description with the given EMF
-             * feature.
+             * Creates a new extension feature description with the given EMF feature.
              * 
              * @param feature
              *            the feature which represents this extension.
@@ -523,109 +519,135 @@ public class ExtendedPropertySourceTestCase extends TestCase {
      */
     public static class BasicMetaModelExtender extends AbstractMetamodelExtender {
 
+        @Override
         public EObject createInstance(String name) {
             return null;
         }
 
+        @Override
         public boolean eIsKnownType(String name) {
             return false;
         }
 
+        @Override
         public void dispose() {
         }
 
+        @Override
         public Object eAdd(EObject instance, String name, Object value) {
             return null;
         }
 
+        @Override
         public Object eClear(EObject instance, String name) {
             return null;
         }
 
+        @Override
         public EObject eContainer(EObject instance) {
             return null;
         }
 
+        @Override
         public String eContainingFeatureName(EObject objectToRemove) {
             return null;
         }
 
+        @Override
         public Iterator<EObject> eContents(EObject root) {
             return Collections.<EObject> emptyList().iterator();
         }
 
+        @Override
         public EObject eDelete(EObject objectToRemove, ECrossReferenceAdapter xref) {
             return null;
         }
 
+        @Override
         public EObject eDelete(EObject objectToRemove, ECrossReferenceAdapter xref, EReferencePredicate isReferenceToIgnorePredicate) {
             return null;
         }
-        
+
         @Override
         public Collection<EObject> eRemoveInverseCrossReferences(EObject eObject, ECrossReferenceAdapter xref, EReferencePredicate isReferencesToIgnorePredicate) {
             return Collections.emptyList();
         }
 
+        @Override
         public Object eGet(EObject instance, String name) {
             return null;
         }
 
+        @Override
         public boolean eInstanceOf(EObject instance, String typeName) {
             return false;
         }
 
+        @Override
         public Boolean eIsContainment(EObject instance, String featureName) {
             return Boolean.FALSE;
         }
 
+        @Override
         public Boolean eIsMany(EObject instance, String featureName) {
             return Boolean.FALSE;
         }
 
+        @Override
         public Object eRemove(EObject instance, String name, Object value) {
             return null;
         }
 
+        @Override
         public Object eSet(EObject instance, String name, Object value) {
             return null;
         }
 
+        @Override
         public boolean eValid(EObject object, String name) {
             return false;
         }
 
+        @Override
         public Collection<ExtensionFeatureDescription> getAllExtensionFeatureDescriptions(EObject target) {
             return Collections.emptyList();
         }
 
+        @Override
         public Iterator<String> getContributedAttributeNames(EObject instance) {
             return Collections.<String> emptyList().iterator();
         }
 
+        @Override
         public Iterator<String> getContributedReferenceNames(EObject instance) {
             return Collections.<String> emptyList().iterator();
         }
 
+        @Override
         public String getQualifiedName(EObject element, boolean useTypeWhenNoName) {
             return null;
         }
 
+        @Override
         public boolean hasExtension(EObject next) {
             return false;
         }
 
+        @Override
         public void init(ResourceSet set) {
         }
 
+        @Override
         public boolean isExtension(EObject next) {
             return false;
         }
 
+        @Override
         public boolean isExtension(EObject next, String name) {
             return false;
         }
 
+        @Override
         public boolean preventFromBrowsing(EObject root) {
             return false;
         }

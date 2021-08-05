@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -32,18 +32,16 @@ import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.ui.views.properties.IPropertyDescriptor;
 import org.eclipse.ui.views.properties.IPropertySource;
 
 /**
- * A property source that is able to manage several {@link EObject}s. This class
- * maintains a map of {@link EObject}s with many {@link IPropertySource}s. It
- * means that you can merge many {@link IPropertySource}s for one
- * {@link EObject}. You can also add several Objects in this property source.
- * Clients should only use the operation
+ * A property source that is able to manage several {@link EObject}s. This class maintains a map of {@link EObject}s
+ * with many {@link IPropertySource}s. It means that you can merge many {@link IPropertySource}s for one
+ * {@link EObject}. You can also add several Objects in this property source. Clients should only use the operation
  * {@link #addPropertySource(EObject, IPropertySource)}.
  * 
  * @author ymortier
@@ -107,8 +105,7 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
     }
 
     /**
-     * Returns the property descriptors of the specified property source. The
-     * property descriptors are decorated with
+     * Returns the property descriptors of the specified property source. The property descriptors are decorated with
      * <code>PropertyDescriptorDecorator</code>.
      * 
      * @param propertySource
@@ -219,8 +216,7 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
     }
 
     /**
-     * Decorates an {@link IPropertyDescriptor}. Adds the ability to test if the
-     * property is editable.
+     * Decorates an {@link IPropertyDescriptor}. Adds the ability to test if the property is editable.
      * 
      * @author ymortier
      */
@@ -364,8 +360,7 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
     }
 
     /**
-     * A implementation of {@link IPropertySource} that is a composition of many
-     * {@link IPropertySource}.
+     * A implementation of {@link IPropertySource} that is a composition of many {@link IPropertySource}.
      */
     private static final class DelegatingCompositePropertySource implements IPropertySource {
 
@@ -462,8 +457,7 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
         private EObject eObject;
 
         /**
-         * Creates a new <code>EObjectIndexer</code> with the specified index
-         * and eObject.
+         * Creates a new <code>EObjectIndexer</code> with the specified index and eObject.
          * 
          * @param index
          *            the index.
@@ -512,13 +506,11 @@ public abstract class AbstractCompositeEObjectPropertySource implements IPropert
     }
 
     /**
-     * Finds the {@link EObjectIndexer} that corresponds to the specified
-     * {@link EObject}.
+     * Finds the {@link EObjectIndexer} that corresponds to the specified {@link EObject}.
      * 
      * @param eObject
      *            the eObject.
-     * @return the {@link EObjectIndexer} that corresponds to the specified
-     *         {@link EObject}.
+     * @return the {@link EObjectIndexer} that corresponds to the specified {@link EObject}.
      */
     private EObjectIndexer findEObjectIndexerFromEObject(final EObject eObject) {
         EObjectIndexer result = null;

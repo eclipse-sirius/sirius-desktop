@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007-2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -119,9 +119,9 @@ import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
+import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.DMappingBased;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
@@ -227,9 +227,8 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     }
 
     /**
-     * Same behavior has super.getReconnectSourceCommand but using a custom
-     * SetConnectionAnchorsCommand because modification on reconnected edge are
-     * now done in precommit.
+     * Same behavior has super.getReconnectSourceCommand but using a custom SetConnectionAnchorsCommand because
+     * modification on reconnected edge are now done in precommit.
      *
      * @see org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy#getReconnectSourceCommand(org.eclipse.gef.requests.ReconnectRequest)
      */
@@ -412,9 +411,8 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     }
 
     /**
-     * Same behavior has super.getReconnectTargetCommand but using a custom
-     * SetConnectionAnchorsCommand because modification on reconnected edge are
-     * now done in precommit.
+     * Same behavior has super.getReconnectTargetCommand but using a custom SetConnectionAnchorsCommand because
+     * modification on reconnected edge are now done in precommit.
      *
      * @see org.eclipse.gef.editpolicies.GraphicalNodeEditPolicy#getReconnectTargetCommand(org.eclipse.gef.requests.ReconnectRequest)
      */
@@ -507,11 +505,10 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     }
 
     /**
-     * Because the feedback is handled by SiriusConnectionEndPointEditPolicy and
-     * the reconnection is handled by the current policy, when the reconnection
-     * switch to another target candidate some bendpoints can be missing on
-     * reconnection. The missing bendpoints are the result of the ObliqueRouter
-     * that removes bendpoints over the target candidate.
+     * Because the feedback is handled by SiriusConnectionEndPointEditPolicy and the reconnection is handled by the
+     * current policy, when the reconnection switch to another target candidate some bendpoints can be missing on
+     * reconnection. The missing bendpoints are the result of the ObliqueRouter that removes bendpoints over the target
+     * candidate.
      *
      * @param request
      *            current {@link ReconnectRequest}
@@ -767,17 +764,13 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      * @param request
      *            The original creation request
      * @param sourceEditPart
-     *            the {@link EditPart} that the source end of the connection
-     *            should be connected to.
+     *            the {@link EditPart} that the source end of the connection should be connected to.
      * @param targetEditPart
-     *            the {@link EditPart} that the target end of the connection
-     *            should be connected to.
+     *            the {@link EditPart} that the target end of the connection should be connected to.
      * @param sourceLocation
-     *            the location of the first click (relative to the source edit
-     *            part)
+     *            the location of the first click (relative to the source edit part)
      * @param targetLocation
-     *            the location of the second click (relative to the target edit
-     *            part)
+     *            the location of the second click (relative to the target edit part)
      * @return The edge layout data corresponding to the creation request.
      */
     protected EdgeLayoutData getEdgeLayoutData(CreateConnectionRequest request, INodeEditPart sourceEditPart, INodeEditPart targetEditPart, Point sourceLocation, Point targetLocation) {
@@ -813,31 +806,25 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     }
 
     /**
-     * Create the edge layout data that will be used later after the refresh.
-     * According to
-     * {@link #getEdgeLayoutData(CreateConnectionRequest, INodeEditPart, INodeEditPart, Point, Point)}
-     * this method ensures that the first point and the last point of the edge
-     * will be snap to the grid (at least one of there coordinates. The other is
-     * constrained by the side of the source (or the target).<BR>
-     * This is not possible to do it earlier (in feedback for example) because
-     * we should know source and target data to compute the new source and
-     * target location.
+     * Create the edge layout data that will be used later after the refresh. According to
+     * {@link #getEdgeLayoutData(CreateConnectionRequest, INodeEditPart, INodeEditPart, Point, Point)} this method
+     * ensures that the first point and the last point of the edge will be snap to the grid (at least one of there
+     * coordinates. The other is constrained by the side of the source (or the target).<BR>
+     * This is not possible to do it earlier (in feedback for example) because we should know source and target data to
+     * compute the new source and target location.
      *
      * @param request
      *            The original creation request
      * @param sourceEditPart
-     *            the {@link EditPart} that the source end of the connection
-     *            should be connected to.
+     *            the {@link EditPart} that the source end of the connection should be connected to.
      * @param targetEditPart
-     *            the {@link EditPart} that the target end of the connection
-     *            should be connected to.
+     *            the {@link EditPart} that the target end of the connection should be connected to.
      * @param sourceLocation
      *            the location of the first click (relative to the source edit part), snapped to grid if feature enabled
      * @param targetLocation
      *            the location of the second click (relative to the target edit part), snapped to grid if feature
      *            enabled
-     * @return The edge layout data corresponding to the creation request and to
-     *         the snapToGrid state.
+     * @return The edge layout data corresponding to the creation request and to the snapToGrid state.
      */
     protected EdgeLayoutData getEdgeLayoutDataWithSnapToGrid(CreateConnectionRequest request, INodeEditPart sourceEditPart, INodeEditPart targetEditPart, Point sourceLocation, Point targetLocation) {
         IGraphicalEditPart srcEditPart = (IGraphicalEditPart) sourceEditPart;
@@ -917,7 +904,7 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
      * @param intersectionPoint
      *            The intersection location in absolute coordinates (and in 100%)
      * @return a list of 2 points: the first is the intersection point snap to grid and to parent border, the second is
-     *          snap to grid but on the nearest side of the parent border according to the click location
+     *         snap to grid but on the nearest side of the parent border according to the click location
      */
     private PointList snapLocationToGridAndToParentBorder(Point absoluteLocation, Rectangle absoluteParentBounds, Point intersectionPoint) {
         PointList result = new PointList();
@@ -981,17 +968,15 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     }
 
     /**
-     * Convert a location to a location relative to its parent (
-     * <code>referencePart</code>).
+     * Convert a location to a location relative to its parent ( <code>referencePart</code>).
      * 
      * @param pointToConvert
      *            The point to convert
      * @param referencePart
      *            The reference edit part.
      * @param feedbackCoordinates
-     *            true if the pointToConvert is from feedback, false otherwise
-     *            (coordinates from request). The coordinates from feedback must
-     *            be first adapted to remove diagram scrollbar to retrieve same
+     *            true if the pointToConvert is from feedback, false otherwise (coordinates from request). The
+     *            coordinates from feedback must be first adapted to remove diagram scrollbar to retrieve same
      *            coordinates as from request.
      * @return The converted point.
      */
@@ -1091,15 +1076,11 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     }
 
     /**
-     * Add a command to store the edge layout data. The edgeLayoutData can be
-     * override by another one extract from the feedback data stored in the
-     * request if necessary. The connection feedback of the request is used only
-     * if:
+     * Add a command to store the edge layout data. The edgeLayoutData can be override by another one extract from the
+     * feedback data stored in the request if necessary. The connection feedback of the request is used only if:
      * <ul>
-     * <li>it is available in the extendedData of the request (key
-     * {@link #GMF_EDGE_FEEDBACK}).</li>
-     * <li>there is a potential straightened edge feedback (edge with only two
-     * points and with same x or same y).</li>
+     * <li>it is available in the extendedData of the request (key {@link #GMF_EDGE_FEEDBACK}).</li>
+     * <li>there is a potential straightened edge feedback (edge with only two points and with same x or same y).</li>
      * </ul>
      * .
      *
@@ -1180,9 +1161,8 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     /**
      * {@inheritDoc}
      *
-     * Overridden to be able to slide the target bendpoint of an edge when
-     * targeting another edge. This is the same code as in the super super class
-     * GraphicalNodeEditPolicy.
+     * Overridden to be able to slide the target bendpoint of an edge when targeting another edge. This is the same code
+     * as in the super super class GraphicalNodeEditPolicy.
      */
     @Override
     protected ConnectionAnchor getConnectionTargetAnchor(Request request) {
@@ -1201,9 +1181,8 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     /**
      * {@inheritDoc}
      *
-     * Overridden to be able to slide the target bendpoint of an edge when
-     * targeting another edge. This is the same code as in the super super class
-     * GraphicalNodeEditPolicy.
+     * Overridden to be able to slide the target bendpoint of an edge when targeting another edge. This is the same code
+     * as in the super super class GraphicalNodeEditPolicy.
      */
     @Override
     protected INodeEditPart getConnectionCompleteEditPart(Request request) {
@@ -1225,8 +1204,8 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     }
 
     /**
-     * Add a highlight feedback figure on element reconnect. Change too the edge
-     * (highlight blue) if there is a reconnect on edge.
+     * Add a highlight feedback figure on element reconnect. Change too the edge (highlight blue) if there is a
+     * reconnect on edge.
      * 
      * @param request
      */
@@ -1349,14 +1328,13 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     }
 
     /**
-     * Check if this connectionEditPart has been described in the VSM with in a
-     * diagram with orderedTreeLayout or with compositeLayout and that it does
-     * not have another edge as extremity.
+     * Check if this connectionEditPart has been described in the VSM with in a diagram with orderedTreeLayout or with
+     * compositeLayout and that it does not have another edge as extremity.
      *
      * @param connectionEditPart
      *            the edit part to check
-     * @return true if a specific tree layout must be apply (to compute GMF
-     *         constraints according to draw2d), false otherwise
+     * @return true if a specific tree layout must be apply (to compute GMF constraints according to draw2d), false
+     *         otherwise
      */
     private boolean applySpecificTreeLayout(ConnectionEditPart connectionEditPart) {
         boolean isLayoutComponent = false;
@@ -1372,13 +1350,11 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     }
 
     /**
-     * Check if the source or the target of this connection is another
-     * connection.
+     * Check if the source or the target of this connection is another connection.
      *
      * @param connectionEditPart
      *            the edit part to check
-     * @return true if the source or the target of this connection is another
-     *         connection, false otherwise.
+     * @return true if the source or the target of this connection is another connection, false otherwise.
      */
     private boolean isSourceOrTargetIsEdge(ConnectionEditPart connectionEditPart) {
         return connectionEditPart.getSource() instanceof ConnectionEditPart || connectionEditPart.getTarget() instanceof ConnectionEditPart;
@@ -1399,23 +1375,20 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     }
 
     /**
-     * Check if this layout corresponds to tree so code must be call to modify
-     * GMF edges according to draw2d points.
+     * Check if this layout corresponds to tree so code must be call to modify GMF edges according to draw2d points.
      *
      * @param layout
      *            The layout to check
-     * @return true if this layout is an OrderedTreeLayout or a CompositeLayout,
-     *         false otherwise
+     * @return true if this layout is an OrderedTreeLayout or a CompositeLayout, false otherwise
      */
     private boolean isOrderedTreeLayoutOrCompositeLayout(Layout layout) {
         return layout instanceof OrderedTreeLayout || layout instanceof CompositeLayout;
     }
 
     /**
-     * Launch a specific command ({@link TreeLayoutSetConnectionAnchorsCommand}
-     * instead of the classical {@link SetConnectionAnchorsCommand}) to handle
-     * with tree layout and setting correctly all the anchors of the edge of the
-     * same tree.
+     * Launch a specific command ({@link TreeLayoutSetConnectionAnchorsCommand} instead of the classical
+     * {@link SetConnectionAnchorsCommand}) to handle with tree layout and setting correctly all the anchors of the edge
+     * of the same tree.
      *
      * @param request
      *            The ReconnectRequest
@@ -1479,10 +1452,9 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
     }
 
     /**
-     * Launch a specific command ({@link TreeLayoutSetConnectionAnchorsCommand}
-     * instead of the classical {@link SetConnectionAnchorsCommand}) to handle
-     * with tree layout and setting correctly all the anchors of the edge of the
-     * same tree.
+     * Launch a specific command ({@link TreeLayoutSetConnectionAnchorsCommand} instead of the classical
+     * {@link SetConnectionAnchorsCommand}) to handle with tree layout and setting correctly all the anchors of the edge
+     * of the same tree.
      *
      * @param request
      *            The ReconnectRequest
