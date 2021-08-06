@@ -5,10 +5,10 @@
   <eClassifiers xsi:type="ecore:EClass" name="AbstractExtReferenceDescription" abstract="true"
       eSuperTypes="../../org.eclipse.sirius.properties/model/properties.ecore#//AbstractWidgetDescription">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="referenceNameExpression"
-        lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="referenceOwnerExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="onClickOperation" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onClickOperation" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//ExtReferenceWidgetStyle"
         containment="true"/>
@@ -26,6 +26,6 @@
   <eClassifiers xsi:type="ecore:EClass" name="ExtReferenceOverrideDescription" eSuperTypes="#//AbstractExtReferenceDescription ../../org.eclipse.sirius.properties/model/properties.ecore#//AbstractOverrideDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" eType="#//ExtReferenceDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromOverriddenExtReferenceExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
 </ecore:EPackage>

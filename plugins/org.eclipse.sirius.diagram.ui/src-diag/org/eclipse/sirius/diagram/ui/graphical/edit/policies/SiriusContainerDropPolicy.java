@@ -40,7 +40,7 @@ import org.eclipse.gmf.runtime.diagram.ui.figures.BorderedNodeFigure;
 import org.eclipse.gmf.runtime.diagram.ui.figures.ResizableCompartmentFigure;
 import org.eclipse.gmf.runtime.diagram.ui.requests.RequestConstants;
 import org.eclipse.jface.viewers.StructuredSelection;
-import org.eclipse.sirius.business.api.resource.WorkspaceDragAndDropSupport;
+import org.eclipse.sirius.business.api.resource.support.WorkspaceDragAndDropSupport;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.AbstractDNode;

@@ -26,7 +26,7 @@ import org.eclipse.emf.transaction.ResourceSetChangeEvent;
 import org.eclipse.emf.transaction.ResourceSetListenerImpl;
 import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.sirius.business.api.session.SessionListener;
-import org.eclipse.sirius.business.internal.query.ResourceQueryInternal;
+import org.eclipse.sirius.model.business.internal.query.ResourceQueryInternal;
 import org.eclipse.sirius.tools.api.Messages;
 
 import com.google.common.base.Preconditions;

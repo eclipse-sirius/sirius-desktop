@@ -14,7 +14,7 @@
       nsPrefix="description">
     <eClassifiers xsi:type="ecore:EClass" name="SequenceDiagramDescription" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/DiagramDescription">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="endsOrdering" lowerBound="1"
-          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
           <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
         </eAnnotations>
@@ -23,7 +23,7 @@
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="instanceRolesOrdering"
-          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
           <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
         </eAnnotations>
@@ -35,14 +35,14 @@
     <eClassifiers xsi:type="ecore:EClass" name="DelimitedEventMapping" abstract="true"
         eSuperTypes="#//description/EventMapping">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="startingEndFinderExpression"
-          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
           <details key="returnType" value="an EObject."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="finishingEndFinderExpression"
-          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
           <details key="returnType" value="an EObject."/>
         </eAnnotations>
@@ -54,14 +54,14 @@
     <eClassifiers xsi:type="ecore:EClass" name="EndOfLifeMapping" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/NodeMapping"/>
     <eClassifiers xsi:type="ecore:EClass" name="MessageMapping" abstract="true" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/EdgeMapping #//description/EventMapping">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="sendingEndFinderExpression"
-          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
           <details key="returnType" value="an EObject."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="receivingEndFinderExpression"
-          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
           <details key="returnType" value="an EObject."/>
         </eAnnotations>
@@ -71,7 +71,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="BasicMessageMapping" eSuperTypes="#//description/MessageMapping"/>
     <eClassifiers xsi:type="ecore:EClass" name="ReturnMessageMapping" eSuperTypes="#//description/MessageMapping">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="invocationMessageFinderExpression"
-          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
           <details key="returnType" value="an EObject."/>
         </eAnnotations>
@@ -80,18 +80,18 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="CreationMessageMapping" eSuperTypes="#//description/MessageMapping"/>
     <eClassifiers xsi:type="ecore:EClass" name="DestructionMessageMapping" eSuperTypes="#//description/MessageMapping"/>
-    <eClassifiers xsi:type="ecore:EClass" name="MessageEndVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/AbstractVariable"/>
-    <eClassifiers xsi:type="ecore:EClass" name="CoveredLifelinesVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/AbstractVariable"/>
+    <eClassifiers xsi:type="ecore:EClass" name="MessageEndVariable" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/AbstractVariable"/>
+    <eClassifiers xsi:type="ecore:EClass" name="CoveredLifelinesVariable" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/AbstractVariable"/>
     <eClassifiers xsi:type="ecore:EClass" name="FrameMapping" abstract="true" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/ContainerMapping #//description/DelimitedEventMapping">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="coveredLifelinesExpression"
-          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
           <details key="returnType" value="the list of semantic EObjects representing the lifelines which are semantically covered by the frame."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="centerLabelExpression"
-          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
           <details key="returnType" value="the text to show in the center of the IU"/>
         </eAnnotations>
@@ -124,7 +124,7 @@
             eType="#//description/CoveredLifelinesVariable" containment="true"/>
       </eClassifiers>
       <eClassifiers xsi:type="ecore:EClass" name="InstanceRoleCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/tool/NodeCreationDescription #//description/tool/SequenceDiagramToolDescription">
-        <eStructuralFeatures xsi:type="ecore:EReference" name="predecessor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ElementVariable"
+        <eStructuralFeatures xsi:type="ecore:EReference" name="predecessor" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/ElementVariable"
             containment="true">
           <eAnnotations source="toolVariable">
             <details key="name" value="predecessor"/>
@@ -139,7 +139,7 @@
       <eClassifiers xsi:type="ecore:EClass" name="CombinedFragmentCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/tool/ContainerCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool #//description/tool/CoveringElementCreationTool"/>
       <eClassifiers xsi:type="ecore:EClass" name="OperandCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/tool/ContainerCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool"/>
       <eClassifiers xsi:type="ecore:EClass" name="ObservationPointCreationTool" eSuperTypes="../../org.eclipse.sirius.diagram.model/model/diagram.ecore#//description/tool/NodeCreationDescription #//description/tool/SequenceDiagramToolDescription #//description/tool/OrderedElementCreationTool"/>
-      <eClassifiers xsi:type="ecore:EClass" name="ReorderTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractToolDescription #//description/tool/SequenceDiagramToolDescription">
+      <eClassifiers xsi:type="ecore:EClass" name="ReorderTool" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/AbstractToolDescription #//description/tool/SequenceDiagramToolDescription">
         <eStructuralFeatures xsi:type="ecore:EReference" name="mappings" upperBound="-1"
             eType="#//description/EventMapping"/>
         <eStructuralFeatures xsi:type="ecore:EReference" name="startingEndPredecessorBefore"
@@ -167,27 +167,27 @@
           </eAnnotations>
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EReference" name="onEventMovedOperation"
-            lowerBound="1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+            lowerBound="1" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/InitialOperation"
             containment="true"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="InstanceRoleReorderTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractToolDescription #//description/tool/SequenceDiagramToolDescription">
+      <eClassifiers xsi:type="ecore:EClass" name="InstanceRoleReorderTool" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/AbstractToolDescription #//description/tool/SequenceDiagramToolDescription">
         <eStructuralFeatures xsi:type="ecore:EReference" name="mappings" upperBound="-1"
             eType="#//description/InstanceRoleMapping"/>
         <eStructuralFeatures xsi:type="ecore:EReference" name="predecessorBefore"
-            eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ElementVariable"
+            eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/ElementVariable"
             containment="true">
           <eAnnotations source="toolVariable">
             <details key="name" value="predecessorBefore"/>
           </eAnnotations>
         </eStructuralFeatures>
-        <eStructuralFeatures xsi:type="ecore:EReference" name="predecessorAfter" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ElementVariable"
+        <eStructuralFeatures xsi:type="ecore:EReference" name="predecessorAfter" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/ElementVariable"
             containment="true">
           <eAnnotations source="toolVariable">
             <details key="name" value="predecessorAfter"/>
           </eAnnotations>
         </eStructuralFeatures>
         <eStructuralFeatures xsi:type="ecore:EReference" name="instanceRoleMoved"
-            lowerBound="1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+            lowerBound="1" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/InitialOperation"
             containment="true"/>
       </eClassifiers>
     </eSubpackages>
@@ -230,13 +230,13 @@
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1"
           eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" lowerBound="1"
-          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypeName">
+          eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/TypeName">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The domain class of the mapping."/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticCandidatesExpression"
-          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="In the default case, candidates of a mapping are all EObjet owned by the semantic element of the view container. The semanticCandidatesExpression is an expression that returns the list of EObject that are candidates of the mapping instead of the candidates of the default case. The context of the expression is the semantic element of the view container."/>
         </eAnnotations>
@@ -254,15 +254,15 @@
         </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TSequenceDiagram" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/RepresentationTemplate #//template/TTransformer">
+    <eClassifiers xsi:type="ecore:EClass" name="TSequenceDiagram" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/RepresentationTemplate #//template/TTransformer">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" lowerBound="1"
-          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypeName">
+          eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/TypeName">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The domain class of the mapping."/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="endsOrdering" lowerBound="1"
-          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
           <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
         </eAnnotations>
@@ -278,7 +278,7 @@
     <eClassifiers xsi:type="ecore:EClass" name="TMessageExtremity" abstract="true"/>
     <eClassifiers xsi:type="ecore:EClass" name="TLifelineMapping" eSuperTypes="#//template/TAbstractMapping #//template/TMessageExtremity">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="eolVisibleExpression"
-          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
           <details key="returnType" value="a boolean."/>
         </eAnnotations>
@@ -308,7 +308,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TLifelineStyle" eSuperTypes="#//template/TTransformer">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="lifelineWidthComputationExpression"
-          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"
+          eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"
           defaultValueLiteral="0">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="An expression computing the size of the border."/>
@@ -319,11 +319,11 @@
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="lifelineColor" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
+          eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/ColorDescription"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TConditionalLifelineStyle" eSuperTypes="#//template/TTransformer">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="predicateExpression"
-          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="This expression will get evaluated and if it returns true the contained style will be choosen."/>
         </eAnnotations>
@@ -340,14 +340,14 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TExecutionMapping" eSuperTypes="#//template/TAbstractMapping #//template/TMessageExtremity">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="startingEndFinderExpression"
-          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
           <details key="returnType" value="an EObject."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="finishingEndFinderExpression"
-          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
           <details key="returnType" value="an EObject."/>
         </eAnnotations>
@@ -364,7 +364,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TExecutionStyle" eSuperTypes="#//template/TTransformer">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="borderSizeComputationExpression"
-          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"
+          eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"
           defaultValueLiteral="1">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="An expression computing the size of the border."/>
@@ -375,13 +375,13 @@
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="borderColor" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
+          eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/ColorDescription"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
+          eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/ColorDescription"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TConditionalExecutionStyle" eSuperTypes="#//template/TTransformer">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="predicateExpression"
-          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="This expression will get evaluated and if it returns true the contained style will be choosen."/>
         </eAnnotations>
@@ -398,14 +398,14 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TMessageMapping" abstract="true" eSuperTypes="#//template/TAbstractMapping">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="sendingEndFinderExpression"
-          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
           <details key="returnType" value="an EObject."/>
         </eAnnotations>
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables"/>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="receivingEndFinderExpression"
-          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
           <details key="returnType" value="an EObject."/>
         </eAnnotations>
@@ -418,7 +418,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TMessageStyle" eSuperTypes="#//template/TTransformer">
       <eStructuralFeatures xsi:type="ecore:EReference" name="strokeColor" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription">
+          eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/ColorDescription">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The color of the edge."/>
         </eAnnotations>
@@ -442,7 +442,7 @@
           <details key="documentation" value="The target decoration."/>
         </eAnnotations>
       </eStructuralFeatures>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"
           defaultValueLiteral="feature:name">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="Expression that computes the name of a node."/>
@@ -461,7 +461,7 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TConditionalMessageStyle" eSuperTypes="#//template/TTransformer">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="predicateExpression"
-          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="This expression will get evaluated and if it returns true the contained style will be choosen."/>
         </eAnnotations>
@@ -485,7 +485,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
           upperBound="-1" eType="#//template/TMessageExtremity"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="sourceFinderExpression"
-          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The elements that are represented by this connection."/>
         </eAnnotations>
@@ -502,7 +502,7 @@
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetFinderExpression"
-          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The elements that are represented by this connection."/>
         </eAnnotations>
@@ -525,7 +525,7 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="invocationMapping" lowerBound="1"
           eType="#//template/TBasicMessageMapping"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="invocationMessageFinderExpression"
-          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
           <details key="returnType" value="an EObject."/>
         </eAnnotations>

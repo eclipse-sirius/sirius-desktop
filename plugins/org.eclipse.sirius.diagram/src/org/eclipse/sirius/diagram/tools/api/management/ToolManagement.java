@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 Obeo
+ * Copyright (c) 2019, 2021 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,7 +31,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.transaction.util.TransactionUtil;
-import org.eclipse.sirius.business.api.helper.ViewpointUtil;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -49,6 +48,7 @@ import org.eclipse.sirius.diagram.description.tool.ToolGroupExtension;
 import org.eclipse.sirius.diagram.description.tool.ToolSection;
 import org.eclipse.sirius.diagram.tools.internal.management.ToolFilterDescriptionListenersManager;
 import org.eclipse.sirius.diagram.tools.internal.management.ToolManagementRegistry;
+import org.eclipse.sirius.model.business.api.helper.ViewpointUtil;
 import org.eclipse.sirius.viewpoint.ToolGroupInstance;
 import org.eclipse.sirius.viewpoint.ToolInstance;
 import org.eclipse.sirius.viewpoint.ToolSectionInstance;

@@ -2,13 +2,13 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="properties" nsURI="http://www.eclipse.org/sirius/properties/1.0.0"
     nsPrefix="properties">
-  <eClassifiers xsi:type="ecore:EClass" name="ViewExtensionDescription" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/Extension ../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement ../../org.eclipse.sirius/model/viewpoint.ecore#//description/DocumentedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="ViewExtensionDescription" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/Extension ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/DocumentedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="metamodels" upperBound="-1"
         eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EPackage"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="categories" upperBound="-1"
         eType="#//Category" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Category" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement ../../org.eclipse.sirius/model/viewpoint.ecore#//description/DocumentedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="Category" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/DocumentedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="pages" upperBound="-1"
         eType="#//PageDescription" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
@@ -18,25 +18,25 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractOverrideDescription" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractPageDescription" abstract="true"
-      eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement ../../org.eclipse.sirius/model/viewpoint.ecore#//description/DocumentedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypeName"/>
+      eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/DocumentedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/TypeName"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticCandidateExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="preconditionExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
-        eType="#//GroupDescription" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eType="#//GroupDescription" eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="validationSet" eType="#//PageValidationSetDescription"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
         eType="#//ToolbarAction" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#//PageDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterGroupsFromExtendedPageExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterValidationRulesFromExtendedPageExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="indented" eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"
         defaultValueLiteral="false"/>
   </eClassifiers>
@@ -44,27 +44,27 @@
   <eClassifiers xsi:type="ecore:EClass" name="PageOverrideDescription" eSuperTypes="#//AbstractPageDescription #//AbstractOverrideDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" eType="#//PageDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterGroupsFromOverriddenPageExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterValidationRulesFromOverriddenPageExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PageValidationSetDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="semanticValidationRules"
-        upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/validation/SemanticValidationRule"
-        containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/validation/SemanticValidationRule"
+        containment="true" eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PropertyValidationRule" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/validation/ValidationRule">
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyValidationRule" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/validation/ValidationRule">
     <eStructuralFeatures xsi:type="ecore:EReference" name="targets" upperBound="-1"
-        eType="#//WidgetDescription" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eType="#//WidgetDescription" eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractGroupDescription" abstract="true"
-      eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement ../../org.eclipse.sirius/model/viewpoint.ecore#//description/DocumentedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypeName"/>
+      eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/DocumentedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/TypeName"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticCandidateExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="preconditionExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="controls" upperBound="-1"
         eType="#//ControlDescription" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="validationSet" eType="#//GroupValidationSetDescription"
@@ -74,42 +74,42 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
         eType="#//GroupConditionalStyle" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#//GroupDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterControlsFromExtendedGroupExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterValidationRulesFromExtendedGroupExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromExtendedGroupExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
         eType="#//ToolbarAction" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ToolbarAction">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tooltipExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="imageExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tooltipExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="imageExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GroupDescription" eSuperTypes="#//AbstractGroupDescription"/>
   <eClassifiers xsi:type="ecore:EClass" name="GroupOverrideDescription" eSuperTypes="#//AbstractGroupDescription #//AbstractOverrideDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" eType="#//GroupDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterControlsFromOverriddenGroupExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterValidationRulesFromOverriddenGroupExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromOverriddenGroupExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GroupValidationSetDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="semanticValidationRules"
-        upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/validation/SemanticValidationRule"
-        containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/validation/SemanticValidationRule"
+        containment="true" eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="propertyValidationRules"
-        upperBound="-1" eType="#//PropertyValidationRule" containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        upperBound="-1" eType="#//PropertyValidationRule" containment="true" eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractControlDescription" abstract="true"
-      eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement ../../org.eclipse.sirius/model/viewpoint.ecore#//description/DocumentedElement"/>
+      eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/DocumentedElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="ControlDescription" abstract="true"
       eSuperTypes="#//AbstractControlDescription"/>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractContainerDescription" abstract="true"
@@ -119,15 +119,15 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="layout" eType="#//LayoutDescription"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#//ContainerDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterControlsFromExtendedContainerExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ContainerDescription" eSuperTypes="#//ControlDescription #//AbstractContainerDescription"/>
   <eClassifiers xsi:type="ecore:EClass" name="ContainerOverrideDescription" eSuperTypes="#//AbstractContainerDescription #//AbstractOverrideDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" eType="#//ContainerDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterControlsFromOverriddenContainerExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LayoutDescription" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="FillLayoutDescription" eSuperTypes="#//LayoutDescription">
@@ -145,59 +145,59 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractWidgetDescription" abstract="true"
       eSuperTypes="#//AbstractControlDescription">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="helpExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isEnabledExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="helpExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isEnabledExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WidgetDescription" abstract="true" eSuperTypes="#//ControlDescription"/>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractTextDescription" abstract="true"
       eSuperTypes="#//AbstractWidgetDescription">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//TextWidgetStyle"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
         eType="#//TextWidgetConditionalStyle" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#//TextDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromExtendedTextExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TextDescription" eSuperTypes="#//AbstractTextDescription #//WidgetDescription"/>
   <eClassifiers xsi:type="ecore:EClass" name="TextOverrideDescription" eSuperTypes="#//AbstractTextDescription #//AbstractOverrideDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" eType="#//TextDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromOverriddenTextExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractButtonDescription" abstract="true"
       eSuperTypes="#//AbstractWidgetDescription">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="buttonLabelExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="imageExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="imageExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//ButtonWidgetStyle"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
         eType="#//ButtonWidgetConditionalStyle" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#//ButtonDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromExtendedButtonExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ButtonDescription" eSuperTypes="#//WidgetDescription #//AbstractButtonDescription"/>
   <eClassifiers xsi:type="ecore:EClass" name="ButtonOverrideDescription" eSuperTypes="#//AbstractButtonDescription #//AbstractOverrideDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" eType="#//ButtonDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromOverriddenButtonExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractLabelDescription" abstract="true"
       eSuperTypes="#//AbstractWidgetDescription">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//LabelWidgetStyle"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
@@ -205,62 +205,62 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
         eType="#//WidgetAction" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#//LabelDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromExtendedLabelExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterActionsFromExtendedLabelExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LabelDescription" eSuperTypes="#//WidgetDescription #//AbstractLabelDescription"/>
   <eClassifiers xsi:type="ecore:EClass" name="LabelOverrideDescription" eSuperTypes="#//AbstractLabelDescription #//AbstractOverrideDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" eType="#//LabelDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromOverriddenLabelExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterActionsFromOverriddenLabelExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractCheckboxDescription" abstract="true"
       eSuperTypes="#//AbstractWidgetDescription">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//CheckboxWidgetStyle"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
         eType="#//CheckboxWidgetConditionalStyle" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#//CheckboxDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromExtendedCheckboxExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CheckboxDescription" eSuperTypes="#//WidgetDescription #//AbstractCheckboxDescription"/>
   <eClassifiers xsi:type="ecore:EClass" name="CheckboxOverrideDescription" eSuperTypes="#//AbstractCheckboxDescription #//AbstractOverrideDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" eType="#//CheckboxDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromOverriddenCheckboxExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractSelectDescription" abstract="true"
       eSuperTypes="#//AbstractWidgetDescription">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The initial selected values of the combo."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Defines the behavior executed when the end-user updates the value of the combo."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="candidatesExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="candidatesExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Defines the various proposals available."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="candidateDisplayExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Indicates how to display the input value."/>
       </eAnnotations>
@@ -270,9 +270,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
         eType="#//SelectWidgetConditionalStyle" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#//SelectDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromExtendedSelectExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SelectDescription" eSuperTypes="#//WidgetDescription #//AbstractSelectDescription">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -281,64 +281,64 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="SelectOverrideDescription" eSuperTypes="#//AbstractSelectDescription #//AbstractOverrideDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" eType="#//SelectDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromOverriddenSelectExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractDynamicMappingForDescription"
       abstract="true" eSuperTypes="#//AbstractControlDescription">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="iterator" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="iterableExpression" lowerBound="1"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="forceRefresh" lowerBound="1"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="ifs" lowerBound="1" upperBound="-1"
         eType="#//DynamicMappingIfDescription" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#//DynamicMappingForDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterIfsFromExtendedDynamicMappingForExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DynamicMappingForDescription" eSuperTypes="#//ControlDescription #//AbstractDynamicMappingForDescription"/>
   <eClassifiers xsi:type="ecore:EClass" name="DynamicMappingForOverrideDescription"
       eSuperTypes="#//AbstractDynamicMappingForDescription #//AbstractOverrideDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" eType="#//DynamicMappingForDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterIfsFromOverriddenDynamicMappingForExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractDynamicMappingIfDescription"
-      abstract="true" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement">
+      abstract="true" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="predicateExpression" lowerBound="1"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="widget" lowerBound="1"
         eType="#//WidgetDescription" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#//DynamicMappingIfDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DynamicMappingIfDescription" eSuperTypes="#//AbstractDynamicMappingIfDescription"/>
   <eClassifiers xsi:type="ecore:EClass" name="DynamicMappingIfOverrideDescription"
       eSuperTypes="#//AbstractDynamicMappingIfDescription #//AbstractOverrideDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" eType="#//DynamicMappingIfDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractTextAreaDescription" abstract="true"
       eSuperTypes="#//AbstractWidgetDescription">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lineCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"
         defaultValueLiteral="5"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//TextWidgetStyle"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
         eType="#//TextWidgetConditionalStyle" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#//TextAreaDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromExtendedTextAreaExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TextAreaDescription" eSuperTypes="#//AbstractTextAreaDescription #//WidgetDescription">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -347,31 +347,31 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TextAreaOverrideDescription" eSuperTypes="#//AbstractTextAreaDescription #//AbstractOverrideDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" eType="#//TextAreaDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromOverriddenTextAreaExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractRadioDescription" abstract="true"
       eSuperTypes="#//AbstractWidgetDescription">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The initial selected values of the radio."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Defines the behavior executed when the end-user updates the value of the radio."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="candidatesExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="candidatesExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Defines the various proposals available."/>
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="candidateDisplayExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Indicates how to display the input value."/>
       </eAnnotations>
@@ -387,9 +387,9 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
         eType="#//RadioWidgetConditionalStyle" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#//RadioDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromExtendedRadioExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RadioDescription" eSuperTypes="#//WidgetDescription #//AbstractRadioDescription">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -398,23 +398,23 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="RadioOverrideDescription" eSuperTypes="#//AbstractRadioDescription #//AbstractOverrideDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" eType="#//RadioDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromOverriddenRadioExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractListDescription" abstract="true"
       eSuperTypes="#//AbstractWidgetDescription">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="The initial value."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Represents how to display the value."/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="onClickOperation" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="onClickOperation" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Defines the expected behavior  when the user clicks on the hyperlink."/>
@@ -427,11 +427,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
         eType="#//ListWidgetConditionalStyle" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#//ListDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromExtendedListExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterActionsFromExtendedListExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ListDescription" eSuperTypes="#//WidgetDescription #//AbstractListDescription">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -440,15 +440,15 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ListOverrideDescription" eSuperTypes="#//AbstractListDescription #//AbstractOverrideDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" eType="#//ListDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromOverriddenListExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterActionsFromOverriddenListExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OperationDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractCustomDescription" abstract="true"
@@ -463,29 +463,29 @@
         eType="#//CustomWidgetConditionalStyle" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#//CustomDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromExtendedCustomExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CustomDescription" eSuperTypes="#//WidgetDescription #//AbstractCustomDescription"/>
   <eClassifiers xsi:type="ecore:EClass" name="CustomOverrideDescription" eSuperTypes="#//AbstractCustomDescription #//AbstractOverrideDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" eType="#//CustomDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromOverriddenCustomExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomExpression" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement ../../org.eclipse.sirius/model/viewpoint.ecore#//description/DocumentedElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="customExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomExpression" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/DocumentedElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="customExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomOperation" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement ../../org.eclipse.sirius/model/viewpoint.ecore#//description/DocumentedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="CustomOperation" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/DocumentedElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AbstractHyperlinkDescription" abstract="true"
       eSuperTypes="#//AbstractWidgetDescription">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="valueExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="displayExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//HyperlinkWidgetStyle"
         containment="true"/>
@@ -495,44 +495,44 @@
         eType="#//WidgetAction" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="extends" eType="#//HyperlinkDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromExtendedHyperlinkExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterActionsFromExtendedHyperlinkExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HyperlinkDescription" eSuperTypes="#//WidgetDescription #//AbstractHyperlinkDescription"/>
   <eClassifiers xsi:type="ecore:EClass" name="HyperlinkOverrideDescription" eSuperTypes="#//AbstractHyperlinkDescription #//AbstractOverrideDescription">
     <eStructuralFeatures xsi:type="ecore:EReference" name="overrides" eType="#//HyperlinkDescription"
-        eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+        eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterConditionalStylesFromOverriddenHyperlinkExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="filterActionsFromOverriddenHyperlinkExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WidgetStyle">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFontNameExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFontSizeExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="labelBackgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="labelForegroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="labelBackgroundColor" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/ColorDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="labelForegroundColor" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/ColorDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelFontFormat" upperBound="4"
-        eType="ecore:EEnum ../../org.eclipse.sirius/model/viewpoint.ecore#//FontFormat"/>
+        eType="ecore:EEnum ../../org.eclipse.sirius.model/model/viewpoint.ecore#//FontFormat"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TextWidgetStyle" eSuperTypes="#//WidgetStyle">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontNameExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSizeExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontNameExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSizeExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/ColorDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundColor" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/ColorDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontFormat" upperBound="4"
-        eType="ecore:EEnum ../../org.eclipse.sirius/model/viewpoint.ecore#//FontFormat"/>
+        eType="ecore:EEnum ../../org.eclipse.sirius.model/model/viewpoint.ecore#//FontFormat"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LabelWidgetStyle" eSuperTypes="#//WidgetStyle">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontNameExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSizeExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontNameExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSizeExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/ColorDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundColor" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/ColorDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontFormat" upperBound="4"
-        eType="ecore:EEnum ../../org.eclipse.sirius/model/viewpoint.ecore#//FontFormat"/>
+        eType="ecore:EEnum ../../org.eclipse.sirius.model/model/viewpoint.ecore#//FontFormat"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CheckboxWidgetStyle" eSuperTypes="#//WidgetStyle"/>
   <eClassifiers xsi:type="ecore:EClass" name="RadioWidgetStyle" eSuperTypes="#//WidgetStyle"/>
@@ -541,17 +541,17 @@
   <eClassifiers xsi:type="ecore:EClass" name="CustomWidgetStyle" eSuperTypes="#//WidgetStyle"/>
   <eClassifiers xsi:type="ecore:EClass" name="ListWidgetStyle" eSuperTypes="#//WidgetStyle"/>
   <eClassifiers xsi:type="ecore:EClass" name="HyperlinkWidgetStyle" eSuperTypes="#//WidgetStyle">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontNameExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSizeExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontNameExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSizeExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/ColorDescription"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontFormat" upperBound="4"
-        eType="ecore:EEnum ../../org.eclipse.sirius/model/viewpoint.ecore#//FontFormat"/>
+        eType="ecore:EEnum ../../org.eclipse.sirius.model/model/viewpoint.ecore#//FontFormat"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GroupStyle">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundColor" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontNameExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSizeExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/ColorDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="foregroundColor" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/ColorDescription"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontNameExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fontSizeExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="barStyle" eType="#//TitleBarStyle"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="toggleStyle" eType="#//ToggleStyle"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="expandedByDefault" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -568,7 +568,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WidgetConditionalStyle" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="preconditionExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TextWidgetConditionalStyle" eSuperTypes="#//WidgetConditionalStyle">
     <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//TextWidgetStyle"
@@ -603,10 +603,10 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="WidgetAction">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="imageExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="imageExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Defines the behavior executed when the end-user updates the value of the radio."/>
@@ -621,8 +621,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//GroupStyle"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DialogModelOperation" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ModelOperation">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="titleExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="DialogModelOperation" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/ModelOperation">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="titleExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="buttons" upperBound="-1"
         eType="#//DialogButton" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="page" lowerBound="1" eType="#//PageDescription"
@@ -631,10 +631,10 @@
         eType="#//GroupDescription" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DialogButton">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isEnabledExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="labelExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isEnabledExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Defines the behavior executed when the end-user will click on the button."/>
@@ -645,20 +645,20 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="rollbackChangesOnClose"
         eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="WizardModelOperation" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ModelOperation">
+  <eClassifiers xsi:type="ecore:EClass" name="WizardModelOperation" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/ModelOperation">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="windowTitleExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="titleExpression" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="titleExpression" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="descriptionExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isPageCompleteExpression"
-        eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+        eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="pages" lowerBound="1" upperBound="-1"
         eType="#//PageDescription" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="groups" upperBound="-1"
         eType="#//GroupDescription" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initialOperation" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/InitialOperation"
+        eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/InitialOperation"
         containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Defines the behavior executed when the end-user updates the value of the radio."/>

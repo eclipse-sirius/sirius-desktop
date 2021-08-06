@@ -52,10 +52,10 @@
          <attribute name="class" type="string">
             <annotation>
                <documentation>
-                  A class implementing &lt;code&gt;org.eclipse.sirius.viewpoint.description.util.IMigrationHandler&lt;/code&gt; interface.
+                  A class implementing &lt;code&gt;org.eclipse.sirius.business.internal.migration.IMigrationHandler&lt;/code&gt; interface.
                </documentation>
                <appInfo>
-                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.viewpoint.description.util.IMigrationHandler"/>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.sirius.business.internal.migration.IMigrationHandler"/>
                </appInfo>
             </annotation>
          </attribute>

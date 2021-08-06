@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
-import org.eclipse.sirius.business.api.resource.WorkspaceDragAndDropSupport;
+import org.eclipse.sirius.business.api.resource.support.WorkspaceDragAndDropSupport;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;

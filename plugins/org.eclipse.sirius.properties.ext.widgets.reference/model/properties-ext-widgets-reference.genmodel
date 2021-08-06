@@ -7,7 +7,7 @@
     nonNLSMarkers="true" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     codeFormatting="true" testsDirectory="/org.eclipse.sirius.properties.ext.widgets.reference.tests/src-gen"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
-    usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius.properties/model/properties.genmodel#//properties ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint"
+    usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius.properties/model/properties.genmodel#//properties ../../org.eclipse.sirius.model/model/viewpoint.genmodel#//viewpoint"
     importOrganizing="true" styleProviders="true" cleanup="true">
   <foreignModel>properties-ext-widgets-reference.ecore</foreignModel>
   <genPackages prefix="PropertiesExtWidgetsReference" basePackage="org.eclipse.sirius.properties.ext.widgets.reference"

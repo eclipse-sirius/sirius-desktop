@@ -2,7 +2,7 @@
 <chain:Chain xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:chain="http://www.obeo.fr/acceleo/chain">
   <repository>
     <members documentation="R&#xe9;f&#xe9;rentiel pour l'appel de sous-cha&#xee;ne">
-      <files xsi:type="chain:Model" path="/org.eclipse.sirius/model/viewpoint.genmodel"/>
+      <files xsi:type="chain:Model" path="/org.eclipse.sirius.model/model/viewpoint.genmodel"/>
       <files xsi:type="chain:Log" path="/org.eclipse.sirius.editor/acceleo.log"/>
     </members>
   </repository>

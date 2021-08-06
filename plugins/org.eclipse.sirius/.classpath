@@ -6,7 +6,6 @@
 			<accessrule kind="accessible" pattern="org/eclise/sirius/**"/>
 		</accessrules>
 	</classpathentry>
-	<classpathentry kind="src" path="src-gen"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

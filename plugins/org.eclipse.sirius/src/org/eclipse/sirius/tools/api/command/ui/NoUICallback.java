@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.sirius.business.api.migration.AirdResourceVersionMismatchException;
-import org.eclipse.sirius.business.api.resource.LoadEMFResource;
+import org.eclipse.sirius.business.api.resource.support.LoadEMFResource;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.common.tools.api.util.TreeItemWrapper;
 import org.eclipse.sirius.viewpoint.DRepresentation;

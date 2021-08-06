@@ -33,65 +33,11 @@
    <extension-point id="dRepresentationLocationRule" name="%extension-point.dRepresentationLocationRule.name" schema="schema/dRepresentationLocationRule.exsd"/>
    <extension-point id="migrationHandler" name="%extension-point.migrationHandler.name" schema="schema/migrationHandler.exsd"/>
    
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated viewpoint -->
-      <package
-            uri="http://www.eclipse.org/sirius/1.1.0"
-            class="org.eclipse.sirius.viewpoint.ViewpointPackage"
-            genModel="model/viewpoint.genmodel"/>
-   </extension>
-
-  <extension point="org.eclipse.emf.ecore.generated_package">
-    <package 
-       uri = "http://www.eclipse.org/sirius/description/1.1.0" 
-       class = "org.eclipse.sirius.viewpoint.description.DescriptionPackage"
-       genModel = "model/viewpoint.genmodel" /> 
-  </extension>
-  
-  <extension point="org.eclipse.emf.ecore.generated_package">
-    <package 
-       uri = "http://www.eclipse.org/sirius/description/style/1.1.0" 
-       class = "org.eclipse.sirius.viewpoint.description.style.StylePackage"
-       genModel = "model/viewpoint.genmodel" /> 
-  </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated viewpoint -->
-      <package
-            uri="http://www.eclipse.org/sirius/description/tool/1.1.0"
-            class="org.eclipse.sirius.viewpoint.description.tool.ToolPackage"
-            genModel="model/viewpoint.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated viewpoint -->
-      <package
-            uri="http://www.eclipse.org/sirius/description/validation/1.1.0"
-            class="org.eclipse.sirius.viewpoint.description.validation.ValidationPackage"
-            genModel="model/viewpoint.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated viewpoint -->
-      <package
-            uri="http://www.eclipse.org/sirius/description/audit/1.1.0"
-            class="org.eclipse.sirius.viewpoint.description.audit.AuditPackage"
-            genModel="model/viewpoint.genmodel"/>
-   </extension>
-
   <extension
         point="org.eclipse.emf.ecore.protocol_parser">
      <parser
            class="org.eclipse.sirius.tools.internal.resource.InMemoryResourceFactoryImpl"
            protocolName="memory">
-     </parser>
-  </extension>
-  
-  <extension
-        point="org.eclipse.emf.ecore.protocol_parser">
-     <parser
-           class="org.eclipse.sirius.viewpoint.description.util.DescriptionResourceFactoryImpl"
-           protocolName="environment">
      </parser>
   </extension>
   
@@ -326,13 +272,7 @@
      </parser>
   </extension>
   
- <extension
-       point="org.eclipse.emf.ecore.uri_mapping">
-    <mapping
-          source="environment:/viewpoint"
-          target="platform:/plugin/org.eclipse.sirius/model/Environment.odesign">
-    </mapping>
- </extension>
+
 
   <!-- Standard External Java Actions usable from VSMs. --> 
   <extension point="org.eclipse.sirius.externalJavaAction">

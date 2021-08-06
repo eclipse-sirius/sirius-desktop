@@ -7,7 +7,7 @@
     editorPluginClass="" nonNLSMarkers="true" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     codeFormatting="true" testsDirectory="" testSuiteClass="" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="6.0" copyrightFields="false" editorPluginID="org.eclipse.sirius.properties.editor"
-    testsPluginID="org.eclipse.sirius.properties.editor" runtimeVersion="2.3" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint"
+    testsPluginID="org.eclipse.sirius.properties.editor" runtimeVersion="2.3" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius.model/model/viewpoint.genmodel#//viewpoint"
     importOrganizing="true" styleProviders="true" cleanup="true">
   <foreignModel>properties.ecore</foreignModel>
   <genPackages prefix="Properties" basePackage="org.eclipse.sirius" disposableProviderFactory="true"

@@ -19,7 +19,7 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.sirius.business.api.resource.LoadEMFResource;
+import org.eclipse.sirius.business.api.resource.support.LoadEMFResource;
 import org.eclipse.sirius.viewpoint.provider.Messages;
 
 /**

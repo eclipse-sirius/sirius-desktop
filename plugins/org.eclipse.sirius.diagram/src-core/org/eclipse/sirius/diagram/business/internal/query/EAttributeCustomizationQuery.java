@@ -25,7 +25,7 @@ import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
-public class EAttributeCustomizationQuery extends org.eclipse.sirius.business.internal.query.model.EAttributeCustomizationQuery {
+public class EAttributeCustomizationQuery extends org.eclipse.sirius.model.business.internal.query.EAttributeCustomizationQuery {
 
     /**
      * Default constructor.

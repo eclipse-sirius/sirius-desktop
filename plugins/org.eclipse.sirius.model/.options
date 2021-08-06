@@ -1,0 +1,7 @@
+# Tracing options for the org.eclipse.sirius plug-in
+
+# Common issues
+org.eclipse.sirius/debug=false
+
+# Visual IDs
+org.eclipse.sirius/debug/visualID=false

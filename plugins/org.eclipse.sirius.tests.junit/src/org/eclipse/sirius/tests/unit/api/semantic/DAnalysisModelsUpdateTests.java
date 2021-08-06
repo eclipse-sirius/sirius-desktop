@@ -46,7 +46,7 @@ import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.repair.SiriusRepairProcess;
-import org.eclipse.sirius.business.api.resource.WorkspaceDragAndDropSupport;
+import org.eclipse.sirius.business.api.resource.support.WorkspaceDragAndDropSupport;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;

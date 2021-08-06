@@ -55,6 +55,12 @@ Install this if you want to either use existing Sirius-based modelers or create 
          unpack="false"/>
 
    <plugin
+         id="org.eclipse.sirius.model"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+   <plugin
          id="org.eclipse.sirius"
          download-size="0"
          install-size="0"

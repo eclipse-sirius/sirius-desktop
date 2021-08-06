@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2008, 2018 THALES GLOBAL SERVICES and other.
+ * Copyright (c) 2008, 2021 THALES GLOBAL SERVICES and other.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,12 +14,12 @@ package org.eclipse.sirius.diagram.business.api.helper;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
-import org.eclipse.sirius.business.api.helper.ViewpointUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramComponentizationHelper;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
+import org.eclipse.sirius.model.business.api.helper.ViewpointUtil;
 import org.eclipse.sirius.viewpoint.DView;
 
 /**
@@ -58,13 +58,11 @@ public final class SiriusDiagramUtil {
     }
 
     /**
-     * Find parent {@link DiagramDescription} from a
-     * {@link DiagramElementMapping}.
+     * Find parent {@link DiagramDescription} from a {@link DiagramElementMapping}.
      * 
      * @param mapping
      *            the {@link DiagramElementMapping} instance the current session
-     * @return the first parent of mapping which is an instance of
-     *         {@link DiagramDescription}
+     * @return the first parent of mapping which is an instance of {@link DiagramDescription}
      */
     public static DiagramDescription findDiagramDescription(final DiagramElementMapping mapping) {
         EObject parent = mapping.eContainer();

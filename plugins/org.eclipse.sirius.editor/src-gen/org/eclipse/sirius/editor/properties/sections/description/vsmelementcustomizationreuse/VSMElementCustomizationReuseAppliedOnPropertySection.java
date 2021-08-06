@@ -20,10 +20,10 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.sirius.business.internal.query.model.EAttributeCustomizationQuery;
-import org.eclipse.sirius.business.internal.query.model.EReferenceCustomizationQuery;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.editor.properties.sections.common.AbstractEditorDialogPropertySection;
+import org.eclipse.sirius.model.business.internal.query.EAttributeCustomizationQuery;
+import org.eclipse.sirius.model.business.internal.query.EReferenceCustomizationQuery;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.EAttributeCustomization;
 import org.eclipse.sirius.viewpoint.description.EReferenceCustomization;

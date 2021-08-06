@@ -12,28 +12,16 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.query;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.Optional;
 
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.business.api.session.Session;
-import org.eclipse.sirius.business.api.session.SessionManager;
-import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
-import org.eclipse.sirius.business.internal.session.danalysis.DRepresentationDescriptorAdapter;
+import org.eclipse.sirius.business.internal.query.DRepresentationWithSessionInternalQuery;
 import org.eclipse.sirius.ext.base.Option;
-import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-import org.eclipse.sirius.viewpoint.DView;
-import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.DAnnotation;
 
@@ -46,9 +34,7 @@ import org.eclipse.sirius.viewpoint.description.DAnnotation;
  */
 public class DRepresentationQuery {
 
-    private DRepresentation representation;
-
-    private Session session;
+    private DRepresentationWithSessionInternalQuery internalQuery;
 
     /**
      * Create a new query.
@@ -57,7 +43,7 @@ public class DRepresentationQuery {
      *            the element to query.
      */
     public DRepresentationQuery(DRepresentation representation) {
-        this.representation = representation;
+        this.internalQuery = new DRepresentationWithSessionInternalQuery(representation);
     }
 
     /**
@@ -69,8 +55,7 @@ public class DRepresentationQuery {
      *            the session containing the representation.
      */
     public DRepresentationQuery(DRepresentation representation, Session session) {
-        this.representation = representation;
-        this.session = session;
+        this.internalQuery = new DRepresentationWithSessionInternalQuery(representation, session);
     }
 
     /**
@@ -83,12 +68,7 @@ public class DRepresentationQuery {
      * @return the annotation entry
      */
     public Option<AnnotationEntry> getAnnotation(final String source, final EObject eObject) {
-        for (AnnotationEntry annotation : representation.getOwnedAnnotationEntries()) {
-            if (source.equals(annotation.getSource()) && eObject.equals(annotation.getData())) {
-                return Options.newSome(annotation);
-            }
-        }
-        return Options.newNone();
+        return internalQuery.getAnnotation(source, eObject);
     }
 
     /**
@@ -99,13 +79,7 @@ public class DRepresentationQuery {
      * @return the annotation entries
      */
     public Collection<AnnotationEntry> getAnnotation(final String source) {
-        final Collection<AnnotationEntry> annotationEntries = new ArrayList<>();
-        for (AnnotationEntry annotation : representation.getOwnedAnnotationEntries()) {
-            if (source.equals(annotation.getSource())) {
-                annotationEntries.add(annotation);
-            }
-        }
-        return annotationEntries;
+        return internalQuery.getAnnotation(source);
     }
 
     /**
@@ -118,11 +92,7 @@ public class DRepresentationQuery {
      * @return the annotation
      */
     public Option<DAnnotation> getDAnnotation(final String source, String detail) {
-        DAnnotation annotation = representation.getDAnnotation(source);
-        if (annotation != null && annotation.getDetails().get(detail) != null) {
-            return Options.newSome(annotation);
-        }
-        return Options.newNone();
+        return internalQuery.getDAnnotation(source, detail);
     }
 
     /**
@@ -132,14 +102,7 @@ public class DRepresentationQuery {
      * @return true if the current representation is orphan.
      */
     public boolean isDanglingRepresentation() {
-        if (representation instanceof DSemanticDecorator) {
-            DSemanticDecorator semDecRep = (DSemanticDecorator) representation;
-            if (session == null) {
-                session = SessionManager.INSTANCE.getSession(semDecRep.getTarget());
-            }
-            return semDecRep.getTarget() == null || session == null;
-        }
-        return false;
+        return internalQuery.isDanglingRepresentation();
     }
 
     /**
@@ -148,64 +111,7 @@ public class DRepresentationQuery {
      * @return the {@link DRepresentationDescriptor}
      */
     public DRepresentationDescriptor getRepresentationDescriptor() {
-        DRepresentationDescriptor result = null;
-        if (representation != null) {
-            Optional<DRepresentationDescriptorAdapter> optionalRepDesc = representation.eAdapters().stream().filter(a -> a instanceof DRepresentationDescriptorAdapter)
-                    .map(DRepresentationDescriptorAdapter.class::cast).findFirst();
-            if (optionalRepDesc.isPresent()) {
-                return optionalRepDesc.get().getdRepresentationDescriptor();
-            } else if (representation instanceof DSemanticDecorator) {
-                if (session == null) {
-                    session = SessionManager.INSTANCE.getSession(((DSemanticDecorator) representation).getTarget());
-                }
-                if (session != null) {
-                    result = findDescriptorFromCrossReferencer();
-                    if (result == null) {
-                        result = findDescriptorFromAnalysis();
-                    }
-                } else {
-                    // There is no session (during a migration participant for example) so we search the analysis of the
-                    // eResource
-                    result = findDescriptorFromEResource();
-                }
-                // Addition of an adapter to look for the session and use the cross referencer only once
-                if (result != null) {
-                    DRepresentationDescriptorAdapter representationDescriptorAdaptor = new DRepresentationDescriptorAdapter(result);
-                    representation.eAdapters().add(representationDescriptorAdaptor);
-                }
-            }
-        }
-        return result;
-    }
-
-    private DRepresentationDescriptor findDescriptorFromAnalysis() {
-        DRepresentationDescriptor result = null;
-        Collection<DAnalysis> allAnalyses = ((DAnalysisSessionImpl) session).allAnalyses();
-        for (DAnalysis dAnalysis : allAnalyses) {
-            result = findDescriptorFromAnalysis(dAnalysis);
-            if (result != null) {
-                break;
-            }
-        }
-        return result;
-    }
-
-    private DRepresentationDescriptor findDescriptorFromEResource() {
-        DRepresentationDescriptor result = null;
-        Resource eResource = representation.eResource();
-        if (eResource != null && eResource.getContents() != null) {
-            Iterator<EObject> contentsIterator = eResource.getContents().iterator();
-            while (contentsIterator.hasNext()) {
-                EObject content = contentsIterator.next();
-                if (content instanceof DAnalysis) {
-                    result = findDescriptorFromAnalysis((DAnalysis) content);
-                }
-                if (result != null) {
-                    break;
-                }
-            }
-        }
-        return result;
+        return internalQuery.getRepresentationDescriptor();
     }
 
     /**
@@ -217,37 +123,7 @@ public class DRepresentationQuery {
      * @return the {@link DRepresentationDescriptor} if a descriptor has been found and null otherwise.
      */
     public DRepresentationDescriptor findDescriptorFromAnalysis(DAnalysis dAnalysis) {
-
-        if (representation.eResource() != null) {
-            EList<DView> ownedViews = dAnalysis.getOwnedViews();
-            for (DView view : ownedViews) {
-                EList<DRepresentationDescriptor> ownedRepresentationDescriptors = view.getOwnedRepresentationDescriptors();
-                for (DRepresentationDescriptor descriptor : ownedRepresentationDescriptors) {
-                    // the representation has to be seen as loaded from the descriptor otherwise it would mean that the
-                    // DRepresentationDescriptor does not exists
-                    if (descriptor.isLoadedRepresentation()) {
-                        DRepresentation representationTemp = descriptor.getRepresentation();
-                        if (representation.equals(representationTemp)) {
-                            return descriptor;
-                        }
-                    }
-                }
-            }
-        }
-        return null;
-    }
-
-    private DRepresentationDescriptor findDescriptorFromCrossReferencer() {
-        DRepresentationDescriptor result = null;
-        Collection<EStructuralFeature.Setting> usages = session.getSemanticCrossReferencer().getInverseReferences(representation);
-        for (EStructuralFeature.Setting setting : usages) {
-            if (ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR.isInstance(setting.getEObject())
-                    && setting.getEStructuralFeature() == ViewpointPackage.Literals.DREPRESENTATION_DESCRIPTOR__REPRESENTATION) {
-                result = (DRepresentationDescriptor) setting.getEObject();
-                break;
-            }
-        }
-        return result;
+        return internalQuery.findDescriptorFromAnalysis(dAnalysis);
     }
 
     /**
@@ -256,13 +132,7 @@ public class DRepresentationQuery {
      * @return the value
      */
     public boolean isAutoRefresh() {
-        if (session == null) {
-            session = Session.of(representation).orElse(null);
-        }
-        if (session != null) {
-            return session.getSiriusPreferences().isAutoRefresh();
-        }
-        return false;
+        return internalQuery.isAutoRefresh();
     }
 
 }

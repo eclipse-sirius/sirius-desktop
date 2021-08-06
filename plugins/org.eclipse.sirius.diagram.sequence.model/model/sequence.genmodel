@@ -10,7 +10,7 @@
     codeFormatting="true" testsDirectory="" testSuiteClass="org.eclipse.sirius.diagram.sequence.description.tests.SequenceAllTests"
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
     editPluginID="org.eclipse.sirius.diagram.sequence.edit" editorPluginID="org.eclipse.sirius.diagram.sequence.editor"
-    runtimeVersion="2.3" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint ../../org.eclipse.sirius.diagram.model/model/diagram.genmodel#//diagram"
+    runtimeVersion="2.3" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.sirius.model/model/viewpoint.genmodel#//viewpoint ../../org.eclipse.sirius.diagram.model/model/diagram.genmodel#//diagram"
     importOrganizing="true" cleanup="true">
   <foreignModel>sequence.ecore</foreignModel>
   <genPackages prefix="Sequence" basePackage="org.eclipse.sirius.diagram" disposableProviderFactory="true"

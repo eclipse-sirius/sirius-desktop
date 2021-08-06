@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<!--
+  Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+  This program and the accompanying materials
+  are made available under the terms of the Eclipse Public License 2.0
+  which accompanies this distribution, and is available at
+  https://www.eclipse.org/legal/epl-2.0/
+
+  SPDX-License-Identifier: EPL-2.0
+
+  Contributors:
+       Obeo - Initial API and implementation
+-->
+
+<plugin>
+  
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated viewpoint -->
+      <package
+            uri="http://www.eclipse.org/sirius/1.1.0"
+            class="org.eclipse.sirius.viewpoint.ViewpointPackage"
+            genModel="model/viewpoint.genmodel"/>
+   </extension>
+
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.eclipse.org/sirius/description/1.1.0" 
+       class = "org.eclipse.sirius.viewpoint.description.DescriptionPackage"
+       genModel = "model/viewpoint.genmodel" /> 
+  </extension>
+  
+  <extension point="org.eclipse.emf.ecore.generated_package">
+    <package 
+       uri = "http://www.eclipse.org/sirius/description/style/1.1.0" 
+       class = "org.eclipse.sirius.viewpoint.description.style.StylePackage"
+       genModel = "model/viewpoint.genmodel" /> 
+  </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated viewpoint -->
+      <package
+            uri="http://www.eclipse.org/sirius/description/tool/1.1.0"
+            class="org.eclipse.sirius.viewpoint.description.tool.ToolPackage"
+            genModel="model/viewpoint.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated viewpoint -->
+      <package
+            uri="http://www.eclipse.org/sirius/description/validation/1.1.0"
+            class="org.eclipse.sirius.viewpoint.description.validation.ValidationPackage"
+            genModel="model/viewpoint.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated viewpoint -->
+      <package
+            uri="http://www.eclipse.org/sirius/description/audit/1.1.0"
+            class="org.eclipse.sirius.viewpoint.description.audit.AuditPackage"
+            genModel="model/viewpoint.genmodel"/>
+   </extension>
+   
+   <extension
+        point="org.eclipse.emf.ecore.protocol_parser">
+     <parser
+           class="org.eclipse.sirius.viewpoint.description.util.DescriptionResourceFactoryImpl"
+           protocolName="environment">
+     </parser>
+  </extension>
+  
+   <extension
+       point="org.eclipse.emf.ecore.uri_mapping">
+    <mapping
+          source="environment:/viewpoint"
+          target="platform:/plugin/org.eclipse.sirius.model/model/Environment.odesign">
+    </mapping>
+ </extension>
+
+</plugin>

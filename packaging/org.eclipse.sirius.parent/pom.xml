@@ -335,6 +335,7 @@
         <module>../../plugins/org.eclipse.sirius.ext.emf.tx</module>
         <module>../../plugins/org.eclipse.sirius.ext.gmf.notation</module>
         <module>../../plugins/org.eclipse.sirius.ext.ide</module>
+        <module>../../plugins/org.eclipse.sirius.model</module>
         <module>../../plugins/org.eclipse.sirius</module>
         <module>../../plugins/org.eclipse.sirius.common</module>
         <module>../../plugins/org.eclipse.sirius.common.acceleo.aql</module>

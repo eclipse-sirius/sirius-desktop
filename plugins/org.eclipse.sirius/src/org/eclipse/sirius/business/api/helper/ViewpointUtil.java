@@ -16,13 +16,9 @@ package org.eclipse.sirius.business.api.helper;
  * Useful constants to manipulate a Viewpoint.
  * 
  * @author jmallet
+ * @deprecated See {@link org.eclipse.sirius.model.business.api.helper.ViewpointUtil}
  */
-public interface ViewpointUtil {
-
-    /** The "environment:/" uri scheme. */
-    String ENVIRONMENT_URI_SCHEME = "environment"; //$NON-NLS-1$
-
-    /** The "environment:/viewpoint" resource uri. */
-    String VIEWPOINT_ENVIRONMENT_RESOURCE_URI = ENVIRONMENT_URI_SCHEME + ":/viewpoint"; //$NON-NLS-1$
+@Deprecated
+public interface ViewpointUtil extends org.eclipse.sirius.model.business.api.helper.ViewpointUtil {
 
 }

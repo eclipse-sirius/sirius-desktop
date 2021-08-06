@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="tree" nsURI="http://www.eclipse.org/sirius/tree/1.0.0" nsPrefix="tree">
-  <eClassifiers xsi:type="ecore:EClass" name="DTree" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DRepresentation #//DTreeItemContainer">
+  <eClassifiers xsi:type="ecore:EClass" name="DTree" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//DRepresentation #//DTreeItemContainer">
     <eStructuralFeatures xsi:type="ecore:EReference" name="semanticElements" upperBound="-1"
         eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="description" lowerBound="1"
         eType="#//description/TreeDescription"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DTreeElement" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DRepresentationElement">
+  <eClassifiers xsi:type="ecore:EClass" name="DTreeElement" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//DRepresentationElement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="treeElementMapping" eType="#//description/TreeMapping"
         changeable="false" volatile="true" transient="true" derived="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DTreeItemContainer" abstract="true"
-      eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//DSemanticDecorator">
+      eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//DSemanticDecorator">
     <eStructuralFeatures xsi:type="ecore:EReference" name="ownedTreeItems" upperBound="-1"
         eType="#//DTreeItem" containment="true" eOpposite="#//DTreeItem/container"/>
   </eClassifiers>
@@ -30,22 +30,22 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="updater" eType="#//description/TreeItemUpdater"
         volatile="true" transient="true" derived="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TreeItemStyle" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//Style ../../org.eclipse.sirius/model/viewpoint.ecore#//LabelStyle">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="backgroundColor" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//RGBValues"
+  <eClassifiers xsi:type="ecore:EClass" name="TreeItemStyle" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//Style ../../org.eclipse.sirius.model/model/viewpoint.ecore#//LabelStyle">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="backgroundColor" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//RGBValues"
         defaultValueLiteral="255,255,255"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DTreeElementSynchronizer" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//IdentifiedElement">
+  <eClassifiers xsi:type="ecore:EClass" name="DTreeElementSynchronizer" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//IdentifiedElement">
     <eOperations name="refresh">
       <eParameters name="DTreeItem" lowerBound="1" eType="#//DTreeItem"/>
     </eOperations>
   </eClassifiers>
   <eSubpackages name="description" nsURI="http://www.eclipse.org/sirius/tree/description/1.0.0"
       nsPrefix="description">
-    <eClassifiers xsi:type="ecore:EClass" name="TreeDescription" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/RepresentationDescription #//description/TreeItemMappingContainer">
+    <eClassifiers xsi:type="ecore:EClass" name="TreeDescription" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/RepresentationDescription #//description/TreeItemMappingContainer">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" lowerBound="1"
-          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypeName"/>
+          eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/TypeName"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="preconditionExpression"
-          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The precondition (Acceleo Expression)."/>
         </eAnnotations>
@@ -61,15 +61,15 @@
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRepresentationCreationDescriptions"
-          upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/RepresentationCreationDescription"
-          containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name">
+          upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/RepresentationCreationDescription"
+          containment="true" eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="All tools of the section."/>
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EReference" name="ownedRepresentationNavigationDescriptions"
-          upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/RepresentationNavigationDescription"
-          containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name">
+          upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/RepresentationNavigationDescription"
+          containment="true" eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="All navigation tools."/>
         </eAnnotations>
@@ -77,9 +77,9 @@
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TreeItemMapping" eSuperTypes="#//description/TreeMapping #//description/StyleUpdater #//description/TreeItemUpdater #//description/TreeItemMappingContainer">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" lowerBound="1"
-          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/TypeName"/>
+          eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/TypeName"/>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="preconditionExpression"
-          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The elements that are represented by this mapping."/>
         </eAnnotations>
@@ -96,7 +96,7 @@
         </eAnnotations>
       </eStructuralFeatures>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticCandidatesExpression"
-          eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+          eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="The elements that are represented by this mapping."/>
         </eAnnotations>
@@ -127,42 +127,42 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="popupMenus" upperBound="-1"
           eType="#//description/TreePopupMenu" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TreeItemStyleDescription" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/StyleDescription ../../org.eclipse.sirius/model/viewpoint.ecore#//description/style/LabelStyleDescription">
+    <eClassifiers xsi:type="ecore:EClass" name="TreeItemStyleDescription" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/style/StyleDescription ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/style/LabelStyleDescription">
       <eStructuralFeatures xsi:type="ecore:EReference" name="backgroundColor" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/ColorDescription">
+          eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/ColorDescription">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
           <details key="documentation" value="Color of background"/>
         </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="ConditionalTreeItemStyleDescription"
-        eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/ConditionalStyleDescription">
+        eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/ConditionalStyleDescription">
       <eStructuralFeatures xsi:type="ecore:EReference" name="style" eType="#//description/TreeItemStyleDescription"
           containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TreeItemTool" abstract="true" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractToolDescription">
+    <eClassifiers xsi:type="ecore:EClass" name="TreeItemTool" abstract="true" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/AbstractToolDescription">
       <eStructuralFeatures xsi:type="ecore:EReference" name="firstModelOperation"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ModelOperation"
+          eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/ModelOperation"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="variables" upperBound="-1"
           eType="#//description/TreeVariable" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TreeItemDragTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/MappingBasedToolDescription #//description/TreeItemTool">
+    <eClassifiers xsi:type="ecore:EClass" name="TreeItemDragTool" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/MappingBasedToolDescription #//description/TreeItemTool">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="(deprecated) Tool that describes a Drag &amp; Drop operation. The Source of this Drag &amp; Drop will be the Tree item Mapping on which the tool has been defined."/>
       </eAnnotations>
       <eOperations name="getBestTreeItemMapping" eType="#//description/TreeItemMapping"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="oldContainer" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/DropContainerVariable"
+          eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/DropContainerVariable"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="newContainer" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/DropContainerVariable"
+          eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/DropContainerVariable"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="element" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ElementDropVariable"
+          eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/ElementDropVariable"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="newViewContainer" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ContainerViewVariable"
+          eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/ContainerViewVariable"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="containers" lowerBound="1"
           upperBound="-1" eType="#//description/TreeItemMappingContainer"/>
@@ -171,25 +171,25 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="precedingSiblings" lowerBound="1"
           eType="#//description/PrecedingSiblingsVariables" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TreeItemContainerDropTool" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/MappingBasedToolDescription #//description/TreeItemTool">
+    <eClassifiers xsi:type="ecore:EClass" name="TreeItemContainerDropTool" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/MappingBasedToolDescription #//description/TreeItemTool">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="Tool that describes a Drag &amp; Drop operation."/>
       </eAnnotations>
       <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/variables_precondition"
-          references="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractToolDescription/precondition">
+          references="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/AbstractToolDescription/precondition">
         <details key="newContainer" value="ecore.EObject | the new container."/>
       </eAnnotations>
       <eStructuralFeatures xsi:type="ecore:EReference" name="oldContainer" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/DropContainerVariable"
+          eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/DropContainerVariable"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="newContainer" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/DropContainerVariable"
+          eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/DropContainerVariable"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="element" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ElementDropVariable"
+          eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/ElementDropVariable"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="newViewContainer" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ContainerViewVariable"
+          eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/ContainerViewVariable"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="precedingSiblings" lowerBound="1"
           eType="#//description/PrecedingSiblingsVariables" containment="true"/>
@@ -200,37 +200,37 @@
         </eAnnotations>
       </eStructuralFeatures>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TreeItemCreationTool" eSuperTypes="#//description/TreeItemTool ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/MappingBasedToolDescription">
+    <eClassifiers xsi:type="ecore:EClass" name="TreeItemCreationTool" eSuperTypes="#//description/TreeItemTool ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/MappingBasedToolDescription">
       <eStructuralFeatures xsi:type="ecore:EReference" name="mapping" upperBound="-1"
           eType="#//description/TreeItemMapping"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TreeItemEditionTool" eSuperTypes="#//description/TreeItemTool">
       <eStructuralFeatures xsi:type="ecore:EReference" name="mask" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/EditMaskVariables"
+          eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/EditMaskVariables"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="mapping" upperBound="-1"
           eType="#//description/TreeItemMapping"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="element" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ElementDropVariable"
+          eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/ElementDropVariable"
           containment="true"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="root" lowerBound="1"
-          eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/ElementDropVariable"
+          eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/ElementDropVariable"
           containment="true"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TreeItemDeletionTool" eSuperTypes="#//description/TreeItemTool">
       <eStructuralFeatures xsi:type="ecore:EReference" name="mapping" lowerBound="1"
           eType="#//description/TreeItemMapping" eOpposite="#//description/TreeItemMapping/delete"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TreeCreationDescription" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/RepresentationCreationDescription">
+    <eClassifiers xsi:type="ecore:EClass" name="TreeCreationDescription" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/RepresentationCreationDescription">
       <eStructuralFeatures xsi:type="ecore:EReference" name="treeDescription" lowerBound="1"
           eType="#//description/TreeDescription"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TreeNavigationDescription" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/RepresentationNavigationDescription">
+    <eClassifiers xsi:type="ecore:EClass" name="TreeNavigationDescription" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/RepresentationNavigationDescription">
       <eStructuralFeatures xsi:type="ecore:EReference" name="treeDescription" lowerBound="1"
           eType="#//description/TreeDescription"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TreeMapping" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/RepresentationElementMapping">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticElements" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression">
+    <eClassifiers xsi:type="ecore:EClass" name="TreeMapping" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/RepresentationElementMapping">
+      <eStructuralFeatures xsi:type="ecore:EAttribute" name="semanticElements" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression">
         <eAnnotations source="http://www.eclipse.org/sirius/interpreted/expression/returnType">
           <details key="returnType" value="a Collection&lt;EObject> or an EObject."/>
         </eAnnotations>
@@ -247,11 +247,11 @@
       <eStructuralFeatures xsi:type="ecore:EReference" name="conditionalStyles" upperBound="-1"
           eType="#//description/ConditionalTreeItemStyleDescription" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TreeVariable" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/AbstractVariable ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/VariableContainer">
+    <eClassifiers xsi:type="ecore:EClass" name="TreeVariable" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/AbstractVariable ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/VariableContainer">
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="documentation" eType="ecore:EDataType platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
     </eClassifiers>
     <eClassifiers xsi:type="ecore:EClass" name="TreeItemUpdater">
-      <eOperations name="getLabelComputationExpression" lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius/model/viewpoint.ecore#//description/InterpretedExpression"/>
+      <eOperations name="getLabelComputationExpression" lowerBound="1" eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/InterpretedExpression"/>
       <eOperations name="getCreateTreeItem" eType="#//description/TreeItemCreationTool"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="directEdit" eType="#//description/TreeItemEditionTool"
           containment="true"/>
@@ -265,13 +265,13 @@
     <eClassifiers xsi:type="ecore:EClass" name="TreeItemMappingContainer" abstract="true"
         interface="true">
       <eStructuralFeatures xsi:type="ecore:EReference" name="subItemMappings" upperBound="-1"
-          eType="#//description/TreeItemMapping" containment="true" eKeys="../../org.eclipse.sirius/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
+          eType="#//description/TreeItemMapping" containment="true" eKeys="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/IdentifiedElement/name"/>
       <eStructuralFeatures xsi:type="ecore:EReference" name="dropTools" upperBound="-1"
           eType="#//description/TreeItemContainerDropTool" containment="true"/>
     </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="TreePopupMenu" eSuperTypes="../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/AbstractToolDescription">
+    <eClassifiers xsi:type="ecore:EClass" name="TreePopupMenu" eSuperTypes="../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/AbstractToolDescription">
       <eStructuralFeatures xsi:type="ecore:EReference" name="menuItemDescriptions"
-          upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//description/tool/MenuItemOrRef"
+          upperBound="-1" eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/tool/MenuItemOrRef"
           containment="true"/>
     </eClassifiers>
   </eSubpackages>

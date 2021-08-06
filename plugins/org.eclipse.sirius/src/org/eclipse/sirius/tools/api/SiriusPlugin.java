@@ -33,11 +33,14 @@ import org.eclipse.sirius.business.internal.dialect.description.InterpretedExpre
 import org.eclipse.sirius.business.internal.helper.delete.DeleteHookDescriptorRegistryListener;
 import org.eclipse.sirius.business.internal.helper.task.ModelOperationManagerRegistryListener;
 import org.eclipse.sirius.business.internal.migration.IMigrationHandler;
+import org.eclipse.sirius.business.internal.query.DRepresentationWithSessionInternalQueryHelper;
 import org.eclipse.sirius.business.internal.representation.DRepresentationLocationRuleRegistryListener;
 import org.eclipse.sirius.business.internal.resource.strategy.ResourceStrategyRegistryListener;
 import org.eclipse.sirius.business.internal.session.factory.SessionFactoryRegistryListener;
 import org.eclipse.sirius.common.tools.api.util.EclipseUtil;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessorsRegistry;
+import org.eclipse.sirius.model.business.internal.query.DRepresentationInternalQueryHelper;
+import org.eclipse.sirius.model.tools.internal.SiriusModelPlugin;
 import org.eclipse.sirius.tools.api.command.ui.UICallBack;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tools.internal.ui.ExternalJavaActionRegistryListener;
@@ -113,11 +116,6 @@ public final class SiriusPlugin extends EMFPlugin {
      * The actual implementation of the Eclipse <b>Plugin</b>.
      */
     public static class Implementation extends EclipsePlugin {
-
-        /**
-         * Handler for migration.
-         */
-        private IMigrationHandler migrationHandler;
 
         /**
          * Registry of all supported interpreters.
@@ -232,8 +230,10 @@ public final class SiriusPlugin extends EMFPlugin {
 
             List<IMigrationHandler> migrationHandlers = EclipseUtil.getExtensionPlugins(IMigrationHandler.class, IMigrationHandler.ID, IMigrationHandler.CLASS_ATTRIBUTE);
             if (migrationHandlers.size() > 0) {
-                migrationHandler = migrationHandlers.get(0);
+                SiriusModelPlugin.getDefault().setMigrationHandler(migrationHandlers.get(0));
             }
+
+            DRepresentationInternalQueryHelper.setInstance(new DRepresentationWithSessionInternalQueryHelper());
         }
 
         /**
@@ -297,8 +297,8 @@ public final class SiriusPlugin extends EMFPlugin {
          *
          * @return the migration handler used for Description resource creation.
          */
-        public IMigrationHandler getMigrationHandler() {
-            return migrationHandler;
+        public org.eclipse.sirius.model.business.internal.migration.IMigrationHandler getMigrationHandler() {
+            return SiriusModelPlugin.getDefault().getMigrationHandler();
         }
 
         /**

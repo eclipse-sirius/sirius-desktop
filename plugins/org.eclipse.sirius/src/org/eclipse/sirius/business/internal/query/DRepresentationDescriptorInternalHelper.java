@@ -21,7 +21,7 @@ import org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper;
 import org.eclipse.sirius.business.internal.representation.DRepresentationLocationManager;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionImpl;
 import org.eclipse.sirius.business.internal.session.danalysis.DAnalysisSessionServicesImpl;
-import org.eclipse.sirius.business.internal.session.danalysis.DRepresentationDescriptorAdapter;
+import org.eclipse.sirius.model.business.internal.DRepresentationDescriptorAdapter;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;

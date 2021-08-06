@@ -19,7 +19,7 @@
       </eAnnotations>
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="siriusStyle" lowerBound="1"
-        eType="ecore:EClass ../../org.eclipse.sirius/model/viewpoint.ecore#//Style"
+        eType="ecore:EClass ../../org.eclipse.sirius.model/model/viewpoint.ecore#//Style"
         containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="A copy of the original Sirius style of this DDiagramElement."/>

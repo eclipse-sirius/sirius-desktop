@@ -7,7 +7,7 @@
     editorPluginClass="org.eclipse.sirius.diagram.formatdata.presentation.FormatdataEditorPlugin"
     nonNLSMarkers="true" testsDirectory="" testSuiteClass="org.eclipse.sirius.diagram.formatdata.tests.FormatdataAllTests"
     importerID="org.eclipse.emf.importer.ecore" containmentProxies="true" complianceLevel="5.0"
-    copyrightFields="false" runtimeVersion="2.6" language="" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation ../../org.eclipse.sirius/model/viewpoint.genmodel#//viewpoint">
+    copyrightFields="false" runtimeVersion="2.6" language="" usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation ../../org.eclipse.sirius.model/model/viewpoint.genmodel#//viewpoint">
   <foreignModel>formatdata.ecore</foreignModel>
   <genPackages prefix="Formatdata" basePackage="org.eclipse.sirius.diagram" disposableProviderFactory="true"
       ecorePackage="formatdata.ecore#/">

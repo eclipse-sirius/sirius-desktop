@@ -12,19 +12,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.query;
 
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DView;
-
-import com.google.common.collect.Iterators;
-import com.google.common.collect.UnmodifiableIterator;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link DView} as a starting point.
@@ -32,12 +27,8 @@ import com.google.common.collect.UnmodifiableIterator;
  * @author lfasani
  */
 public final class DViewQuery {
-    private static boolean activateTrace;
-    static {
-        activateTrace = Boolean.parseBoolean(System.getProperty("activate_trace_getLoadedRepresentations", Boolean.FALSE.toString())); //$NON-NLS-1$
-    }
 
-    private DView dView;
+    private org.eclipse.sirius.model.business.internal.query.DViewQuery internalQuery;
 
     /**
      * Create a new query.
@@ -46,7 +37,7 @@ public final class DViewQuery {
      *            the {@link DView} to query.
      */
     public DViewQuery(DView dView) {
-        this.dView = dView;
+        this.internalQuery = new org.eclipse.sirius.model.business.internal.query.DViewQuery(dView);
     }
 
     /**
@@ -55,12 +46,7 @@ public final class DViewQuery {
      * @return an unmodifiable list with the loaded {@link DRepresentation}s
      */
     public List<DRepresentation> getLoadedRepresentations() {
-        if (activateTrace) {
-            Thread.dumpStack();
-        }
-        List<DRepresentation> representations = dView.getOwnedRepresentationDescriptors().stream().filter(DRepresentationDescriptor::isLoadedRepresentation)
-                .map(DRepresentationDescriptor::getRepresentation).collect(Collectors.toList());
-        return Collections.unmodifiableList(representations);
+        return internalQuery.getLoadedRepresentations();
     }
 
     /**
@@ -70,12 +56,7 @@ public final class DViewQuery {
      * @return an unmodifiable list with the {@link DRepresentationDescriptor}s which have their representation loaded.
      */
     public List<DRepresentationDescriptor> getLoadedRepresentationsDescriptors() {
-        if (activateTrace) {
-            Thread.dumpStack();
-        }
-        List<DRepresentationDescriptor> representationDescriptors = dView.getOwnedRepresentationDescriptors().stream().filter(DRepresentationDescriptor::isLoadedRepresentation)
-                .collect(Collectors.toList());
-        return Collections.unmodifiableList(representationDescriptors);
+        return internalQuery.getLoadedRepresentationsDescriptors();
     }
 
     /**
@@ -87,13 +68,7 @@ public final class DViewQuery {
      * @return the result iterator
      */
     public Iterator<EObject> getAllContentInRepresentations(final Predicate<? super EObject> predicate) {
-        Iterator<EObject> iterator = Collections.emptyIterator();
-        List<DRepresentation> allRepresentations = this.getLoadedRepresentations();
-        for (DRepresentation dRepresentation : allRepresentations) {
-            UnmodifiableIterator<EObject> currentIterator = Iterators.filter(dRepresentation.eAllContents(), (t) -> predicate.test(t));
-            iterator = Iterators.concat(iterator, currentIterator);
-        }
-        return iterator;
+        return internalQuery.getAllContentInRepresentations(predicate);
     }
 
 }
