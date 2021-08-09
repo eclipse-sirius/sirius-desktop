@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.ui.tools.internal.properties.ResetStylePropert
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.WidgetIsDisabledCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.WidgetIsEnabledCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.dialog.ImageSelectionGalleryHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.widget.WrappedSWTBotRadio;
@@ -45,6 +46,7 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotCheckBox;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotRadio;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToggleButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarToggleButton;
@@ -511,10 +513,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Step 2: Enable button and check result
         buttonFromAppearanceSectionToTest.click();
-        SWTBotShell activeShell = bot.activeShell();
-        activeShell.bot().text().setText(getProjectName() + "/" + newImagePath);
-        activeShell.bot().button("OK").click();
-        bot.waitUntil(Conditions.shellCloses(activeShell));
+        ImageSelectionGalleryHelper.selectWorkspaceImage(bot, getProjectName() + "/" + newImagePath);
         bot.activeEditor().setFocus();
         assertTrue("The button " + buttonFromAppearanceSectionToTest.getToolTipText() + " has been applied, so the initial state should not be checked anymore",
                 stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
@@ -957,10 +956,7 @@ public abstract class AbstractRefreshWithCustomizedStyleTest extends AbstractSir
 
         // Step 2: Enable button and check result
         editor.bot().toolbarButtonWithTooltip("Set style to workspace image").click();
-        SWTBotShell activeShell = bot.activeShell();
-        activeShell.bot().text().setText(getProjectName() + "/" + newImagePath);
-        activeShell.bot().button("OK").click();
-        bot.waitUntil(Conditions.shellCloses(activeShell));
+        ImageSelectionGalleryHelper.selectWorkspaceImage(bot, getProjectName() + "/" + newImagePath);
         assertTrue("The background image has been changed, so the initial state should not be checked anymore", stateWhenButtonIsCheckedPredicate.apply(selectedEditPart));
         checkButtonTabbarChecked(Lists.<SWTBotToolbarToggleButton> newArrayList(), resetStylePropertiesToDefaultValuesButtonFromTabbar, Arrays.asList(true), true);
 

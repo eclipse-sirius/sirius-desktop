@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tests.swtbot;
 
+import java.io.File;
+
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
@@ -20,6 +22,7 @@ import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+import org.eclipse.sirius.diagram.ui.business.api.image.GallerySelectable;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
@@ -40,22 +43,25 @@ import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UILocalSession;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckNbVisibleElementsInGallery;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckNbVisibleElementsInTree;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckSelectedCondition;
-import org.eclipse.sirius.tests.swtbot.support.api.condition.OperationDoneCondition;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.WidgetIsDisabledCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.dialog.ImageSelectionGalleryHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Widget;
 import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
 import org.eclipse.swtbot.swt.finder.waits.Conditions;
-import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.osgi.framework.Version;
 
 /**
@@ -150,36 +156,23 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
     public void testSetWkpImageStyleCancelFromAppearanceSection() throws Exception {
         if (TestsUtil.shouldSkipUnreliableTests()) {
             /*
-             * org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException:
-             * Could not find widget. at
-             * org.eclipse.swtbot.swt.finder.SWTBotFactory
-             * .waitUntilWidgetAppears(SWTBotFactory.java:357) at
-             * org.eclipse.sirius
-             * .tests.swtbot.support.api.editor.SWTBotSiriusHelper
-             * .widget(SWTBotSiriusHelper.java:126) at
-             * org.eclipse.sirius.tests.swtbot
-             * .support.api.editor.SWTBotSiriusHelper
-             * .selectPropertyTabItem(SWTBotSiriusHelper.java:99) at
-             * org.eclipse.
+             * org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException: Could not find widget. at
+             * org.eclipse.swtbot.swt.finder.SWTBotFactory .waitUntilWidgetAppears(SWTBotFactory.java:357) at
+             * org.eclipse.sirius .tests.swtbot.support.api.editor.SWTBotSiriusHelper
+             * .widget(SWTBotSiriusHelper.java:126) at org.eclipse.sirius.tests.swtbot
+             * .support.api.editor.SWTBotSiriusHelper .selectPropertyTabItem(SWTBotSiriusHelper.java:99) at org.eclipse.
              * sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase
              * .getSectionButton(AbstractSiriusSwtBotGefTestCase.java:1232) at
-             * org.eclipse.sirius.tests.swtbot.support.api.
-             * AbstractSiriusSwtBotGefTestCase
-             * .getSetStyleToWorkspaceImageButtonFromAppearanceTab
-             * (AbstractSiriusSwtBotGefTestCase.java:1178) at
-             * org.eclipse.sirius.
-             * tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase
-             * .getSetStyleToWorkspaceImageButton
-             * (AbstractSiriusSwtBotGefTestCase.java:1126) at
-             * org.eclipse.sirius. tests.swtbot.SetStyleToWorkspaceImageTests.
-             * testSetWkpImageStyleCancel
+             * org.eclipse.sirius.tests.swtbot.support.api. AbstractSiriusSwtBotGefTestCase
+             * .getSetStyleToWorkspaceImageButtonFromAppearanceTab (AbstractSiriusSwtBotGefTestCase.java:1178) at
+             * org.eclipse.sirius. tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase
+             * .getSetStyleToWorkspaceImageButton (AbstractSiriusSwtBotGefTestCase.java:1126) at org.eclipse.sirius.
+             * tests.swtbot.SetStyleToWorkspaceImageTests. testSetWkpImageStyleCancel
              * (SetStyleToWorkspaceImageTests.java:404) at
              * org.eclipse.sirius.tests.swtbot.SetStyleToWorkspaceImageTests.
-             * testSetWkpImageStyleCancelFromAppearanceSection
-             * (SetStyleToWorkspaceImageTests.java:147) Caused by:
-             * org.eclipse.swtbot.swt.finder.widgets.TimeoutException: Timeout
-             * after: 10000 ms.: Could not find widget matching: (of type
-             * 'TabbedPropertyList')
+             * testSetWkpImageStyleCancelFromAppearanceSection (SetStyleToWorkspaceImageTests.java:147) Caused by:
+             * org.eclipse.swtbot.swt.finder.widgets.TimeoutException: Timeout after: 10000 ms.: Could not find widget
+             * matching: (of type 'TabbedPropertyList')
              */
             return;
         }
@@ -233,7 +226,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnNodeFromTabbar() throws Exception {
-        testSetWkpImageStyleApplicationAndCancel(C1_NODE, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
+        testSetWkpImageStyleApplicationAndCancel(C1_NODE, AbstractDiagramNodeEditPart.class, true, getJpgImagePath(), false);
     }
 
     /**
@@ -243,7 +236,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnListFromTabbar() throws Exception {
-        testSetWkpImageStyleApplicationAndCancel(C1_LIST, AbstractDiagramListEditPart.class, true, getJpgImagePath());
+        testSetWkpImageStyleApplicationAndCancel(C1_LIST, AbstractDiagramListEditPart.class, true, getJpgImagePath(), false);
     }
 
     /**
@@ -253,7 +246,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnContainerFromTabbar() throws Exception {
-        testSetWkpImageStyleApplicationAndCancel(C1_CONTAINER, AbstractDiagramContainerEditPart.class, true, getJpgImagePath());
+        testSetWkpImageStyleApplicationAndCancel(C1_CONTAINER, AbstractDiagramContainerEditPart.class, true, getJpgImagePath(), false);
     }
 
     /**
@@ -263,7 +256,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnBorderedNodeFromTabbar() throws Exception {
-        testSetWkpImageStyleApplicationAndCancel(A1C1_NODE, AbstractDiagramBorderNodeEditPart.class, true, getJpgImagePath());
+        testSetWkpImageStyleApplicationAndCancel(A1C1_NODE, AbstractDiagramBorderNodeEditPart.class, true, getJpgImagePath(), false);
     }
 
     /**
@@ -273,7 +266,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnContainedNodeFromTabbar() throws Exception {
-        testSetWkpImageStyleApplicationAndCancel(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, true, getJpgImagePath());
+        testSetWkpImageStyleApplicationAndCancel(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, true, getJpgImagePath(), false);
     }
 
     /**
@@ -423,7 +416,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnNodeFromAppearanceSection() throws Exception {
-        testSetWkpImageStyleApplicationAndCancel(C1_NODE, AbstractDiagramNodeEditPart.class, false, getJpgImagePath());
+        testSetWkpImageStyleApplicationAndCancel(C1_NODE, AbstractDiagramNodeEditPart.class, false, getJpgImagePath(), false);
     }
 
     /**
@@ -433,7 +426,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnListFromAppearanceSection() throws Exception {
-        testSetWkpImageStyleApplicationAndCancel(C1_LIST, AbstractDiagramListEditPart.class, false, getJpgImagePath());
+        testSetWkpImageStyleApplicationAndCancel(C1_LIST, AbstractDiagramListEditPart.class, false, getJpgImagePath(), false);
     }
 
     /**
@@ -443,7 +436,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnContainerFromAppearanceSection() throws Exception {
-        testSetWkpImageStyleApplicationAndCancel(C1_CONTAINER, AbstractDiagramContainerEditPart.class, false, getJpgImagePath());
+        testSetWkpImageStyleApplicationAndCancel(C1_CONTAINER, AbstractDiagramContainerEditPart.class, false, getJpgImagePath(), false);
     }
 
     /**
@@ -453,7 +446,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnBorderNodeFromAppearanceSection() throws Exception {
-        testSetWkpImageStyleApplicationAndCancel(A1C1_NODE, AbstractDiagramBorderNodeEditPart.class, false, getJpgImagePath());
+        testSetWkpImageStyleApplicationAndCancel(A1C1_NODE, AbstractDiagramBorderNodeEditPart.class, false, getJpgImagePath(), false);
     }
 
     /**
@@ -463,7 +456,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      *             Test error.
      */
     public void testSetWkpImageStyleOnContainedNodeFromAppearanceSection() throws Exception {
-        testSetWkpImageStyleApplicationAndCancel(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, false, getJpgImagePath());
+        testSetWkpImageStyleApplicationAndCancel(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, false, getJpgImagePath(), false);
     }
 
     /**
@@ -474,7 +467,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
      */
     public void testSetWkpImageStyleOnContainedNodeFromAppearanceSectionWithPluginImagePath() throws Exception {
         testSetWkpImageStyleApplicationAndCancel(A1C1_CONTAINER, AbstractDiagramNodeEditPart.class, false,
-                "/org.eclipse.sirius.tests.junit/data/unit/migration/do_not_migrate/campaign/TestCampaign_10/image.bmp");
+                "/org.eclipse.sirius.tests.junit/data/unit/migration/do_not_migrate/campaign/TestCampaign_10/image.bmp", true);
     }
 
     /**
@@ -494,16 +487,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         // Open the first dialog
         click(wkpImageButton);
         openSelectImageDialog();
-        // Open the browse workspace selection dialog
-        SWTBotButton button = bot.button(0);
-        assertNotNull(button);
-        // get button from index and check requested text allows to check
-        // position
-        assertEquals("Browse", button.getText());
-        click(button);
-        bot.waitUntil(Conditions.shellIsActive("Background image"));
-        SWTBotShell shell = bot.shell("Background image");
-        shell.setFocus();
         // Check that the filter area is here.
         try {
             bot.text();
@@ -519,16 +502,24 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         expandIfNeeded(!afterEclipse3_5);
         String fileName = "air*";
         bot.text().setText(fileName);
-        bot.waitUntil(new CheckNbVisibleElementsInTree(bot.tree(), 3, "The dialog should display all emements needed to access the file \"" + fileName + "\" (project/file)."));
+        // 1 element in tree and 2 in the gallery
+        bot.waitUntil(new CheckNbVisibleElementsInTree(bot.tree(), 1, "The dialog should display all elements needed to access the file \"" + fileName + "\" (project/file)."));
+        bot.tree().select(designerProject.getName());
+        GallerySelectable gallery = ImageSelectionGalleryHelper.getGallery(bot);
+        bot.waitUntil(new CheckNbVisibleElementsInGallery(gallery, 2, "There should be 2 visible elements in the gallery"));
         // Check that nothing is filtered if there is no filter
         expandIfNeeded(true);
         bot.text().setText("");
-        bot.waitUntil(new CheckNbVisibleElementsInTree(bot.tree(), 4, "The dialog should display a normal view if there is no filter."));
+        // 1 element in tree and 3 in the gallery
+        bot.waitUntil(new CheckNbVisibleElementsInTree(bot.tree(), 1, "The dialog should display a normal view if there is no filter."));
+        bot.tree().select(designerProject.getName());
+        gallery = ImageSelectionGalleryHelper.getGallery(bot);
+        bot.waitUntil(new CheckNbVisibleElementsInGallery(gallery, 3, "There should be 3 visible elements in the gallery"));
     }
 
     /**
-     * For Eclipse 3.5 (and before), we need a expand all on treeViewer because
-     * in Eclipse 3.5, the filter is only applied on expanded elements.
+     * For Eclipse 3.5 (and before), we need a expand all on treeViewer because in Eclipse 3.5, the filter is only
+     * applied on expanded elements.
      * 
      * @param expandNeeded
      *            true if the expandAll is needed
@@ -581,7 +572,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         getResetStylePropertiesToDefaultValuesButton(tabbar, false);
     }
 
-    private void testSetWkpImageStyleApplicationAndCancel(String name, Class<? extends IGraphicalEditPart> type, boolean tabbar, String imagePath) throws Exception {
+    private void testSetWkpImageStyleApplicationAndCancel(String name, Class<? extends IGraphicalEditPart> type, boolean tabbar, String imagePath, boolean isPluginImage) throws Exception {
         SWTBotGefEditPart botPart = selectAndCheckEditPart(name, type);
         IAbstractDiagramNodeEditPart part = (IAbstractDiagramNodeEditPart) botPart.part();
 
@@ -603,7 +594,23 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
 
         openSelectImageDialog();
 
-        setImage(imagePath);
+        if (isPluginImage) {
+            String defaultImage = getSvgImagePath();
+            ImageSelectionGalleryHelper.selectWorkspaceImage(bot, defaultImage);
+
+            SWTBot propertiesBot = bot.viewByTitle("Properties").bot();
+            bot.viewByTitle("Properties").setFocus();
+            SWTBotSiriusHelper.selectPropertyTabItem("Style", propertiesBot);
+            SWTBotTree tree = propertiesBot.tree();
+            SWTBotTreeItem treeItem = tree.expandNode("General").select().getNode("Workspace Path");
+            treeItem.doubleClick();
+            SWTBotText text = propertiesBot.text(defaultImage.replace('/', File.separatorChar));
+            text.setText(imagePath);
+            tree.select("General");
+            SWTBotSiriusHelper.selectPropertyTabItem("Appearance", propertiesBot);
+        } else {
+            ImageSelectionGalleryHelper.selectWorkspaceImage(bot, imagePath);
+        }
 
         if (tabbar) {
             editor.click(editor.mainEditPart());
@@ -683,7 +690,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
 
         openSelectImageDialog();
 
-        setImage(imagePath);
+        ImageSelectionGalleryHelper.selectWorkspaceImage(bot, designerProject.getName() + "/" + imagePath);
 
         if (tabbar) {
             editor.click(editor.mainEditPart());
@@ -703,16 +710,6 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
 
     private Dimension getSize(IFigure figure) {
         return new Dimension(figure.getSize());
-    }
-
-    private void setImage(String imagePath) {
-        SWTBotText text = bot.text();
-        text.setFocus();
-        text.setText(imagePath);
-
-        ICondition done = new OperationDoneCondition();
-        bot.button("OK").click();
-        bot.waitUntil(done);
     }
 
     private String getJpgImagePath() {

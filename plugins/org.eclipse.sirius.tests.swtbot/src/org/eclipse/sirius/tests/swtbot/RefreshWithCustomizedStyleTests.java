@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -38,6 +38,7 @@ import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.internal.query.CustomizableQuery;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.refresh.diagram.ViewPropertiesSynchronizer;
+import org.eclipse.sirius.tests.swtbot.support.api.dialog.ImageSelectionGalleryHelper;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.sirius.viewpoint.FontFormat;
@@ -50,11 +51,9 @@ import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
-import org.eclipse.swtbot.swt.finder.waits.Conditions;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot;
-import org.eclipse.swtbot.swt.finder.widgets.SWTBotShell;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotText;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTree;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
@@ -156,11 +155,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
         // Set a workspace image
         click(setStyleToWorkspaceImageButtonFromAppearanceTab);
-        SWTBotShell activeShell = bot.shell("Select background image from workspace");
-        SWTBot workspaceImageSelectionDialogBot = activeShell.bot();
-        workspaceImageSelectionDialogBot.text().setText(getProjectName() + "/" + NEW_IMAGE_NAME);
-        workspaceImageSelectionDialogBot.button("OK").click();
-        bot.waitUntil(Conditions.shellCloses(activeShell));
+        ImageSelectionGalleryHelper.selectWorkspaceImage(bot, getProjectName() + "/" + NEW_IMAGE_NAME);
 
         // Test the buttons states
         checkFigure(eClass1WithSquareStyleBot, DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH);
@@ -197,11 +192,7 @@ public class RefreshWithCustomizedStyleTests extends AbstractRefreshWithCustomiz
 
         // Set a workspace image
         click(setStyleToWorkspaceImageButtonFromTabbar);
-        activeShell = bot.activeShell();
-        workspaceImageSelectionDialogBot = activeShell.bot();
-        workspaceImageSelectionDialogBot.text().setText(getProjectName() + "/" + NEW_IMAGE_NAME);
-        workspaceImageSelectionDialogBot.button("OK").click();
-        bot.waitUntil(Conditions.shellCloses(activeShell));
+        ImageSelectionGalleryHelper.selectWorkspaceImage(bot, getProjectName() + "/" + NEW_IMAGE_NAME);
 
         // Test the buttons states
         checkFigure(eClass1WithSquareStyleBot, DiagramPackage.Literals.WORKSPACE_IMAGE__WORKSPACE_PATH);
