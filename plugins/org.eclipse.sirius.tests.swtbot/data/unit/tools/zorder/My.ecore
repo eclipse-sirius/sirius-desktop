@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root">
+  <eClassifiers xsi:type="ecore:EClass" name="A1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edge1" eType="#//A2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="A2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="B1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edge2" eType="#//B2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="B2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="C1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edge3" eType="#//C2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="C2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="D1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edge4" eType="#//D2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="D2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="E1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edge5" eType="#//E2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="E2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="F1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edge6" eType="#//F2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="F2"/>
+  <eClassifiers xsi:type="ecore:EClass" name="G1">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="edge7" eType="#//G2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="G2"/>
+</ecore:EPackage>
