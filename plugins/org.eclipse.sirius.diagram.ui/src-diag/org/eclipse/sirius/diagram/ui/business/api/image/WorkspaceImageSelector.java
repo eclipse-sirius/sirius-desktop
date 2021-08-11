@@ -36,7 +36,11 @@ public class WorkspaceImageSelector implements ImageSelector {
         if (dialog.open() == Window.OK) {
             imagePath = dialog.getImagePath();
         }
-        return Collections.<String> singletonList(imagePath);
+        if (imagePath == null) {
+            return Collections.<String> emptyList();
+        } else {
+            return Collections.<String> singletonList(imagePath);
+        }
     }
 
 }
