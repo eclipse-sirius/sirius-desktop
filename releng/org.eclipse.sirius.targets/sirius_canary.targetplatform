@@ -80,11 +80,11 @@ location OCL-LastSuccessful "https://download.eclipse.org/modeling/mdt/ocl/updat
 	org.eclipse.ocl.core.sdk.feature.group lazy
 }
 
-location EMF-Validation-LastSuccessful "https://ci.eclipse.org/emfservices/job/emf-validation-master/PLATFORM=oxygen,jdk=oracle-jdk8-latest,label=migration/lastSuccessfulBuild/artifact/update-site/" {
+location EMF-Validation-Interim "https://download.eclipse.org/modeling/emf/validation/updates/interim" {
 	org.eclipse.emf.validation.sdk.feature.group lazy
 }
 
-location EMF-Transaction-LastSuccessful "https://ci.eclipse.org/emfservices/job/emf-transaction-master/PLATFORM=oxygen,jdk=oracle-jdk8-latest,label=migration/lastSuccessfulBuild/artifact/update-site/" {
+location EMF-Transaction-Interim "https://download.eclipse.org/modeling/emf/transaction/updates/interim" {
 	org.eclipse.emf.workspace.feature.group lazy
 	org.eclipse.emf.transaction.sdk.feature.group lazy
 }
