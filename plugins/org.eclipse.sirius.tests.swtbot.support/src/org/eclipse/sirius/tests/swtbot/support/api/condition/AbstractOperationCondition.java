@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -20,8 +20,9 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.operations.IWorkbenchOperationSupport;
 
 /**
- * Abstract SWTBot condition to check that the last operation on the command
- * stack has been changed.
+ * Abstract SWTBot condition to check that the last operation on the command stack has been changed.<BR/>
+ * <B>Warning</B>: All subclasses must call the "super.{@link #getFailureMessage()}" in its "getFailureMessage()"
+ * implementation to be sure to correctly clean the operation history (ie remove the listener added for this condition).
  * 
  * @author edugueperoux
  */
@@ -64,6 +65,13 @@ public abstract class AbstractOperationCondition extends DefaultCondition implem
             this.operationState = true;
             operationHistory.removeOperationHistoryListener(this);
         }
+    }
+
+    @Override
+    public String getFailureMessage() {
+        // Clean up the operation history listener in case of failure
+        operationHistory.removeOperationHistoryListener(this);
+        return null;
     }
 
 }
