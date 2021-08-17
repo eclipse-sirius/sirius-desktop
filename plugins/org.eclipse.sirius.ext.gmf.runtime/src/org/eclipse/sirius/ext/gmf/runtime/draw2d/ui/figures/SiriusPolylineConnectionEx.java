@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2020 IBM Corporation and others.
+ * Copyright (c) 2002, 2021 IBM Corporation and others.
  * This program and the accompanying materials are made
  * available under the terms of the Eclipse Public License 2.0
  * which is available at https://www.eclipse.org/legal/epl-2.0/
@@ -881,7 +881,7 @@ public class SiriusPolylineConnectionEx extends PolylineConnectionEx implements 
                     (IFigure) (bForwards ? childIter.next() : childIter.previous());
                 PointList checkLine = null;
 
-                if (figure != connect) {
+                if (figure != connect && figure.isVisible()) {
                     if (figure instanceof SiriusPolylineConnectionEx)
                         checkLine = ((SiriusPolylineConnectionEx) figure).getSmoothPoints();
                     else
@@ -1665,6 +1665,18 @@ public class SiriusPolylineConnectionEx extends PolylineConnectionEx implements 
 				rForBendpointArc, calculateAppoxPoints);
 	}
 
+    @SuppressWarnings("restriction")
+    @Override
+    public void setVisible(boolean visible) {
+        super.setVisible(visible);
+        if (!visible) {
+            if (this.getParent() instanceof ConnectionLayerEx) {
+                // Iterates through all the connections and set a flag indicating that the jump link information needs
+                // to be updated.
+                ((ConnectionLayerEx) this.getParent()).dirtyJumpLinks(this.getBounds());
+            }
+        }
+    }
 	
 }
 
