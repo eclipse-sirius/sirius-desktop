@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -74,7 +74,6 @@ import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.api.refresh.RefreshExtensionService;
 import org.eclipse.sirius.diagram.business.internal.helper.decoration.DecorationHelperInternal;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.EdgeMappingImportWrapper;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.EdgeMappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingHelper;
@@ -324,13 +323,9 @@ public class DDiagramSynchronizer {
             EqualityHelper.setUriFragmentCacheEnabled(true);
             LayerHelper.setActiveParentLayersCacheEnabled(diagramMappingsManager, true);
 
-            // Semantic changes should be possible when a representation
-            // representation
-            // is locked (CDO)
-            // We launch a refresh only if the diagram can be edited
-            // so that the refresh does not lead to the modification of
-            // non-editable
-            // elements and hence cause a Rollback
+            // Semantic changes should be possible when a representation representation is locked (CDO).
+            // We launch a refresh only if the diagram can be edited so that the refresh does not lead to the
+            // modification of non-editable elements and hence cause a Rollback
             if (this.accessor.getPermissionAuthority().canEditInstance(diagram)) {
                 RuntimeLoggerManager.INSTANCE.clear(this.description);
 
@@ -340,9 +335,7 @@ public class DDiagramSynchronizer {
                 final Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration = new HashMap<EdgeMapping, Collection<MappingBasedDecoration>>();
                 final Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration = new HashMap<String, Collection<SemanticBasedDecoration>>();
 
-                /*
-                 * retrieve mappings
-                 */
+                // retrieve mappings
                 final List<NodeMapping> nodeMappings = diagramMappingsManager.getNodeMappings();
                 final List<EdgeMapping> edgeMappings = diagramMappingsManager.getEdgeMappings();
                 final List<ContainerMapping> containerMappings = diagramMappingsManager.getContainerMappings();
@@ -350,30 +343,27 @@ public class DDiagramSynchronizer {
                 RefreshExtensionService.getInstance().beforeRefresh(this.diagram);
 
                 boolean override = RefreshExtensionService.getInstance().aroundRefresh(this.diagram);
-
                 if (!override) {
                     final int mappingNumbers = nodeMappings.size() + edgeMappings.size() + containerMappings.size();
                     monitor.beginTask(Messages.DDiagramSynchronizer_refreshMappingsMsg, mappingNumbers);
 
-                    /*
-                     * compute a first time the cache with old mappings => updater need the cache
-                     */
+                    // compute a first time the cache with old mappings => updater need the cache
                     computePreviousCandidatesCache();
-                    /* update mappings */
+                    // update mappings
                     mappingsUpdater.updateMappings();
-                    /* compute a second time the cache with updated mapping */
+                    // compute a second time the cache with updated mapping
                     computePreviousCandidatesCache();
 
                     fillIgnoredElements();
 
                     final Set<DNodeCandidate> elementsCreated = LayerService.withoutLayersMode(description) ? null : new HashSet<DNodeCandidate>();
 
-                    /* Let's refresh the node mappings. */
+                    // Let's refresh the node mappings.
                     for (final NodeMapping mapping : nodeMappings) {
                         refreshNodeMapping(mappingsToEdgeTargets, this.diagram, mapping, elementsCreated, new SubProgressMonitor(monitor, 1));
                     }
 
-                    /* Let's refresh the container mappings */
+                    // Let's refresh the container mappings
                     if (elementsCreated != null) {
                         elementsCreated.clear();
                     }
@@ -382,29 +372,31 @@ public class DDiagramSynchronizer {
                         refreshContainerMapping(mappingsToEdgeTargets, this.diagram, mapping, elementsCreated, false, false, new SubProgressMonitor(monitor, 1));
                     }
 
-                    /* handle multiple importers . */
+                    // handle multiple importers.
                     handleImportersIssues();
 
-                    /* Compute the decorations. */
+                    // Compute the decorations.
                     decorationHelper.computeDecorations(mappingsToEdgeTargets, edgeToSemanticBasedDecoration, edgeToMappingBasedDecoration);
 
-                    /*
-                     * now all the nodes/containers are done and ready in the mappintToEdgeTarget map.
-                     */
+                    // now all the nodes/containers are done and ready in the mappintToEdgeTarget map.
                     edgesDones = new HashSet<DDiagramElement>();
 
-                    processEdgeMappingsRefresh(edgeMappings, mappingsToEdgeTargets, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration, monitor);
+                    // @formatter:off
+                    Predicate<EdgeMapping> isEdgeMappingOfCurrentDiagramDescription = edgeMapping -> edgeMappings.contains(edgeMapping);
+                    // @formatter:on
+
+                    processEdgeMappingsRefresh(edgeMappings, mappingsToEdgeTargets, edgeToMappingBasedDecoration, edgeToSemanticBasedDecoration, isEdgeMappingOfCurrentDiagramDescription, monitor);
 
                     edgesDones.clear();
 
                     deleteIgnoredElementsAndDuplicates();
 
-                    /* Garbage collect orphan computed StyleDescription. */
+                    // Garbage collect orphan computed StyleDescription.
                     removeOrphanComputedStyleDescriptions();
                 }
 
                 RefreshExtensionService.getInstance().postRefresh(this.diagram);
-                /* We can now clear the cache. */
+                // We can now clear the cache.
                 clearCache();
             }
             KeyCache.DEFAULT.clear();
@@ -424,27 +416,21 @@ public class DDiagramSynchronizer {
      *            map of refreshed EdgeMapping
      * @param edgeToMappingBasedDecoration
      * @param edgeToSemanticBasedDecoration
+     * @param isEdgeMappingOfCurrentDiagramDescription
      * @param monitor
      *            the current Monitor
      */
     private void processEdgeMappingsRefresh(List<EdgeMapping> edgeMappings, final Map<DiagramElementMapping, Collection<EdgeTarget>> mappingsToEdgeTargets,
             Map<EdgeMapping, Collection<MappingBasedDecoration>> edgeToMappingBasedDecoration, Map<String, Collection<SemanticBasedDecoration>> edgeToSemanticBasedDecoration,
-            final IProgressMonitor monitor) {
-
-        // @formatter:off
-        Predicate<DiagramElementMapping> isMappingOfCurrentDiagramDescription = diagramElementMapping ->
-                ContentHelper.getAllEdgeMappings(description, false).contains(diagramElementMapping) ||
-                ContentHelper.getAllNodeMappings(description, false).contains(diagramElementMapping) ||
-                ContentHelper.getAllContainerMappings(description, false).contains(diagramElementMapping);
-        // @formatter:on
+            final Predicate<EdgeMapping> isEdgeMappingOfCurrentDiagramDescription, final IProgressMonitor monitor) {
 
         Predicate<EdgeMapping> edgeMappingWithoutEdgeAsSourceOrTarget = new Predicate<EdgeMapping>() {
             @Override
             public boolean apply(EdgeMapping input) {
                 // Valid if source mapping and target mapping are not
                 // EdgeMappings
-                Iterable<EdgeMapping> edgeSourceMappings = Iterables.filter(Iterables.filter(input.getSourceMapping(), EdgeMapping.class), isMappingOfCurrentDiagramDescription);
-                Iterable<EdgeMapping> edgeTargetMappings = Iterables.filter(Iterables.filter(input.getTargetMapping(), EdgeMapping.class), isMappingOfCurrentDiagramDescription);
+                Iterable<EdgeMapping> edgeSourceMappings = Iterables.filter(Iterables.filter(input.getSourceMapping(), EdgeMapping.class), isEdgeMappingOfCurrentDiagramDescription);
+                Iterable<EdgeMapping> edgeTargetMappings = Iterables.filter(Iterables.filter(input.getTargetMapping(), EdgeMapping.class), isEdgeMappingOfCurrentDiagramDescription);
                 return Iterables.isEmpty(edgeSourceMappings) && Iterables.isEmpty(edgeTargetMappings);
             }
         };
@@ -469,8 +455,8 @@ public class DDiagramSynchronizer {
                 // Valid if the EdgeMapping is not refresh and the source or
                 // target EdgeMapping has been refreshed
                 boolean result = !mappingsToEdgeTargets.keySet().contains(input);
-                Iterable<EdgeMapping> edgeSourceMappings = Iterables.filter(Iterables.filter(input.getSourceMapping(), EdgeMapping.class), isMappingOfCurrentDiagramDescription);
-                Iterable<EdgeMapping> edgeTargetMappings = Iterables.filter(Iterables.filter(input.getTargetMapping(), EdgeMapping.class), isMappingOfCurrentDiagramDescription);
+                Iterable<EdgeMapping> edgeSourceMappings = Iterables.filter(Iterables.filter(input.getSourceMapping(), EdgeMapping.class), isEdgeMappingOfCurrentDiagramDescription);
+                Iterable<EdgeMapping> edgeTargetMappings = Iterables.filter(Iterables.filter(input.getTargetMapping(), EdgeMapping.class), isEdgeMappingOfCurrentDiagramDescription);
                 return result && Iterables.all(edgeSourceMappings, refreshedEdgeMapping) && Iterables.all(edgeTargetMappings, refreshedEdgeMapping);
             }
         };
