@@ -161,6 +161,7 @@ Export-Package: org.eclipse.sirius.diagram.description.concern.provider;version=
  org.eclipse.sirius.diagram.ui.tools.internal.decoration;version="7.0.0";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.delete;version="7.0.0";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.dialogs;version="7.0.0";x-internal:=true,
+ org.eclipse.sirius.diagram.ui.tools.internal.dialogs.widgets.gallery;version="7.0.0";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.dnd;version="7.0.0";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.edit.command;version="7.0.0";x-internal:=true,
  org.eclipse.sirius.diagram.ui.tools.internal.editor;version="7.0.0";x-internal:=true,

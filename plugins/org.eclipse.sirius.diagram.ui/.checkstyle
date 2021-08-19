@@ -13,5 +13,6 @@
     <filter-data value="src/org/eclipse/sirius/diagram/ui/part"/>
     <filter-data value="src-diag/org/eclipse/sirius/diagram/ui/internal"/>
     <filter-data value="src-diag/org/eclipse/sirius/diagram/ui/part"/>
+    <filter-data value="src-diag/org/eclipse/sirius/diagram/ui/tools/internal/dialogs/widgets/gallery"/>
   </filter>
 </fileset-config>
