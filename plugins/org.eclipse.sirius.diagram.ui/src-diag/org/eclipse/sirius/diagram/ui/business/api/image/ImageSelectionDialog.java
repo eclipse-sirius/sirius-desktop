@@ -21,11 +21,9 @@ import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
-import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ImageFiltersUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ImageWorkspaceContentProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.ImageWorkspaceLabelProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.TreeImagesGalleryComposite;
-import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.TreeImagesGalleryComposite.RefreshImageJob;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
@@ -136,7 +134,7 @@ public class ImageSelectionDialog extends Dialog {
 
     @Override
     public boolean close() {
-        Job.getJobManager().cancel(RefreshImageJob.class.getName());
+        Job.getJobManager().cancel(TreeImagesGalleryComposite.REFRESH_IMAGE_JOB_FAMILY);
         treeGalleryComposite.dispose();
         return super.close();
     }

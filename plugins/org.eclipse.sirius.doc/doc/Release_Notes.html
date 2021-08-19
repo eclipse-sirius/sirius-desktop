@@ -322,6 +322,17 @@
 				<code>org.eclipse.jface.viewers.ITreeContentProvider</code> that can be used by 
 				<code>org.eclipse.sirius.diagram.ui.business.api.image.ImageSelectionDialog</code> to retrieve image information.
 			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.diagram.ui.business.api.image.ImageFiltersUtils</code> provides the filter used by the TreeViewer in the 
+				<code>ImageSelectionDialog</code> as well as various utility methods to identify the supported image formats.
+			</li>
+			<li><span class="label label-success">Added</span> 
+				<code>org.eclipse.sirius.diagram.ui.business.api.image.GallerySelectable</code> provides an implementation of 
+				<code>org.eclipse.sirius.diagram.ui.tools.internal.dialogs.widgets.gallery.Gallery</code> which allows to select items in the gallery. This is mostly used in tests. 
+				<code>GallerySelectable</code> allows to use the 
+				<code>org.eclipse.sirius.diagram.ui.tools.internal.dialogs.widgets.gallery.Gallery</code> in 
+				<code>ImageSelectionDialog</code> implementations.
+			</li>
 			<li><span class="label label-info">Modified</span> 
 				<code>org.eclipse.sirius.diagram.ui</code> now depends on GMF Runtime 1.14.0, which itself uses Apache Batik 1.14.0 to support SVG (both rendering SVG images on diagrams and exporting diagrams to SVG files). As a result, exporting diagrams to PDF is not supported anymore (as GMF Runtime 1.14.0 itself has dropped support for this).
 			</li>

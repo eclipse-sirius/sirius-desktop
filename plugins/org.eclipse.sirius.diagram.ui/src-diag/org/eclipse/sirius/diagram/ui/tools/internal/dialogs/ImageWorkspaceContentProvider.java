@@ -20,6 +20,7 @@ import java.util.Optional;
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.image.ITreeImagesContentProvider;
+import org.eclipse.sirius.diagram.ui.business.api.image.ImageFiltersUtils;
 import org.eclipse.ui.model.WorkbenchContentProvider;
 
 /**

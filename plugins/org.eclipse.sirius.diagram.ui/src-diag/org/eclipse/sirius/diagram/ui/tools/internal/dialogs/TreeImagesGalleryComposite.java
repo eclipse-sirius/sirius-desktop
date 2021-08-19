@@ -38,6 +38,7 @@ import org.eclipse.jface.viewers.SelectionChangedEvent;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
+import org.eclipse.sirius.diagram.ui.business.api.image.GallerySelectable;
 import org.eclipse.sirius.diagram.ui.business.api.image.ITreeImagesContentProvider;
 import org.eclipse.sirius.diagram.ui.internal.refresh.listeners.WorkspaceFileResourceChangeListener;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
@@ -71,6 +72,9 @@ import org.eclipse.ui.progress.UIJob;
  */
 public class TreeImagesGalleryComposite extends FilteredTree {
 
+    /** The family of the job. */
+    public static final String REFRESH_IMAGE_JOB_FAMILY = RefreshImageJob.class.getName();
+
     /**
      * Viewer's label provider.
      */
@@ -94,7 +98,7 @@ public class TreeImagesGalleryComposite extends FilteredTree {
     /**
      * The reference to the gallery used, to change its content or its display mode.
      */
-    private Gallery usedGallery;
+    private GallerySelectable usedGallery;
 
     /**
      * The path of the image selected.
@@ -282,7 +286,7 @@ public class TreeImagesGalleryComposite extends FilteredTree {
      * Used to cancel refresh job.
      */
     protected void cancelRefresh() {
-        Job.getJobManager().cancel(RefreshImageJob.class.getName());
+        Job.getJobManager().cancel(TreeImagesGalleryComposite.REFRESH_IMAGE_JOB_FAMILY);
     }
 
     /**
@@ -292,7 +296,7 @@ public class TreeImagesGalleryComposite extends FilteredTree {
      *            the parent <code>Composite</code>
      */
     protected void createGalleryControl(Composite parent) {
-        usedGallery = new Gallery(parent, SWT.BORDER | SWT.V_SCROLL);
+        usedGallery = new GallerySelectable(parent, SWT.BORDER | SWT.V_SCROLL);
         usedGallery.setBackground(Display.getCurrent().getSystemColor(SWT.COLOR_WHITE));
         GridData layoutData = new GridData(SWT.FILL, SWT.FILL, true, true);
         usedGallery.setLayoutData(layoutData);
@@ -494,7 +498,7 @@ public class TreeImagesGalleryComposite extends FilteredTree {
      * 
      * @return the gallery
      */
-    public Gallery getGallery() {
+    public GallerySelectable getGallery() {
         return usedGallery;
     }
 
@@ -602,7 +606,7 @@ public class TreeImagesGalleryComposite extends FilteredTree {
 
         @Override
         public boolean belongsTo(Object family) {
-            return RefreshImageJob.class.getName().equals(family);
+            return TreeImagesGalleryComposite.REFRESH_IMAGE_JOB_FAMILY.equals(family);
         }
 
         /**
