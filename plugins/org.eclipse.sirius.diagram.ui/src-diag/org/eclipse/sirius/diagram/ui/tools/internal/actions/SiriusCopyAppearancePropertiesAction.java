@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2016 IBM Corporation and others.
+ * Copyright (c) 2002, 2021 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,13 +16,13 @@ package org.eclipse.sirius.diagram.ui.tools.internal.actions;
 import java.util.List;
 
 import org.eclipse.gef.Request;
-import org.eclipse.gmf.runtime.diagram.ui.actions.ActionIds;
 import org.eclipse.gmf.runtime.diagram.ui.actions.DiagramAction;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.l10n.DiagramUIActionsMessages;
 import org.eclipse.gmf.runtime.diagram.ui.actions.internal.l10n.DiagramUIActionsPluginImages;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.internal.requests.ApplyAppearancePropertiesRequest;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
+import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
 import org.eclipse.ui.IWorkbenchPage;
 
 /**
@@ -45,7 +45,7 @@ public class SiriusCopyAppearancePropertiesAction extends DiagramAction {
     public SiriusCopyAppearancePropertiesAction(IWorkbenchPage workbenchPage) {
         super(workbenchPage);
 
-        setId(ActionIds.ACTION_COPY_APPEARANCE_PROPERTIES);
+        setId(ActionIds.ACTION_SIRIUS_COPY_APPEARANCE_PROPERTIES);
         setText(DiagramUIActionsMessages.CopyAppearancePropertiesAction_text);
         setToolTipText(Messages.SiriusCopyAppearancePropertiesAction_tooltipMessage);
 
