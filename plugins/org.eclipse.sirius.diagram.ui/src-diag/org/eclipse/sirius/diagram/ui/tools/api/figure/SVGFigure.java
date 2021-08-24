@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2008, 2017, 2021 Borland Software Corporation and others.
+ * Copyright (c) 2008, 2021 Borland Software Corporation and others.
  * 
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -15,6 +15,7 @@
 package org.eclipse.sirius.diagram.ui.tools.api.figure;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -22,6 +23,10 @@ import java.util.Optional;
 import java.util.WeakHashMap;
 
 import org.apache.batik.anim.dom.SAXSVGDocumentFactory;
+import org.apache.batik.anim.dom.SVGDOMImplementation;
+import org.apache.batik.anim.dom.SVGOMDocument;
+import org.apache.batik.util.MimeTypeConstants;
+import org.apache.batik.util.ParsedURL;
 import org.apache.batik.util.XMLResourceDescriptor;
 import org.eclipse.draw2d.Figure;
 import org.eclipse.draw2d.Graphics;
@@ -41,6 +46,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.xml.sax.InputSource;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
@@ -286,7 +292,71 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
 
     private Document createDocument() {
         String parser = Optional.ofNullable(XMLResourceDescriptor.getXMLParserClassName()).orElse("org.apache.xerces.parsers.SAXParser"); //$NON-NLS-1$
-        SAXSVGDocumentFactory factory = new SAXSVGDocumentFactory(parser);
+        SAXSVGDocumentFactory factory = new SAXSVGDocumentFactory(parser) {
+            /*
+             * This method is exactly same method as @see
+             * org.apache.batik.anim.dom.SAXSVGDocumentFactory#createDocument(java.lang.String) but with the workaround
+             * proposed in https://issues.apache.org/jira/browse/BATIK-1143 by adding a try-with-resource to close the
+             * stream. Without this, it is not possible to delete the file (at least under Windows, see test
+             * org.eclipse.sirius.tests.swtbot.SetStyleToWorkspaceImageTests)
+             */
+            @Override
+            public Document createDocument(String uri) throws IOException {
+                ParsedURL purl = new ParsedURL(uri);
+
+                try (InputStream is = purl.openStream(MimeTypeConstants.MIME_TYPES_SVG_LIST.iterator())) {
+                    uri = purl.getPostConnectionURL();
+
+                    InputSource isrc = new InputSource(is);
+
+                    // now looking for a charset encoding in the content type such
+                    // as "image/svg+xml; charset=iso8859-1" this is not official
+                    // for image/svg+xml yet! only for text/xml and maybe
+                    // for application/xml
+                    String contentType = purl.getContentType();
+                    int cindex = -1;
+                    if (contentType != null) {
+                        contentType = contentType.toLowerCase();
+                        cindex = contentType.indexOf(HTTP_CHARSET);
+                    }
+
+                    String charset = null;
+                    if (cindex != -1) {
+                        int i = cindex + HTTP_CHARSET.length();
+                        int eqIdx = contentType.indexOf('=', i);
+                        if (eqIdx != -1) {
+                            eqIdx++; // no one is interested in the equals sign...
+
+                            // The patch had ',' as the terminator but I suspect
+                            // that is the delimiter between possible charsets,
+                            // but if another 'attribute' were in the accept header
+                            // charset would be terminated by a ';'. So I look
+                            // for both and take to closer of the two.
+                            int idx = contentType.indexOf(',', eqIdx);
+                            int semiIdx = contentType.indexOf(';', eqIdx);
+                            if ((semiIdx != -1) && ((semiIdx < idx) || (idx == -1)))
+                                idx = semiIdx;
+                            if (idx != -1)
+                                charset = contentType.substring(eqIdx, idx);
+                            else
+                                charset = contentType.substring(eqIdx);
+                            charset = charset.trim();
+                            isrc.setEncoding(charset);
+                        }
+                    }
+
+                    isrc.setSystemId(uri);
+
+                    SVGOMDocument doc = (SVGOMDocument) super.createDocument(SVGDOMImplementation.SVG_NAMESPACE_URI, "svg", uri, isrc); //$NON-NLS-1$
+                    doc.setParsedURL(new ParsedURL(uri));
+                    doc.setDocumentInputEncoding(charset);
+                    doc.setXmlStandalone(isStandalone);
+                    doc.setXmlVersion(xmlVersion);
+
+                    return doc;
+                }
+            }
+        };
         return createDocument(factory, false);
     }
 
