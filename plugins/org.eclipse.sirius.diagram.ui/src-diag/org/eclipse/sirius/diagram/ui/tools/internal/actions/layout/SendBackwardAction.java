@@ -36,7 +36,7 @@ public class SendBackwardAction extends AbstractEdgesZOrderAction {
     }
 
     @Override
-    protected Command getCommandToExecute(IDiagramCommandFactory commandFactory, List<IDiagramEdgeEditPart> selectedEdges) {
+    protected Command getCommandToExecute(IDiagramCommandFactory commandFactory, List<IDiagramEdgeEditPart> selectedEdges) throws UnsupportedOperationException {
         // Search the next crossing edge
         int newIndex = computeNextCrossingEdgeIndex(selectedEdges, false);
         return commandFactory.buildSendBackwardCommand(partsToEdge(selectedEdges), newIndex);

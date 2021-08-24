@@ -37,17 +37,20 @@ import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility.HideDDiagramElementAction;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ext.gmf.runtime.draw2d.ui.figures.SiriusPolylineConnectionEx;
 import org.eclipse.ui.IObjectActionDelegate;
 import org.eclipse.ui.IWorkbenchPart;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * A specific abstract {@link Action} for all "z-order actions" on edges. It contains common behaviors for all z-order
@@ -95,7 +98,14 @@ public abstract class AbstractEdgesZOrderAction implements IObjectActionDelegate
                     final IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) adapter;
                     final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(diagramEditor.getEditingDomain().getResourceSet());
                     final IDiagramCommandFactory emfCommandFactory = cmdFactoryProvider.getCommandFactory(transactionalEditingDomain);
-                    ((TransactionalEditingDomain) diagramEditor.getAdapter(EditingDomain.class)).getCommandStack().execute(buildZOrderCommand(emfCommandFactory, selectedEdges));
+                    try {
+                        Command a = buildZOrderCommand(emfCommandFactory, selectedEdges);
+                        ((TransactionalEditingDomain) diagramEditor.getAdapter(EditingDomain.class)).getCommandStack().execute(a);
+                    } catch (UnsupportedOperationException e) {
+                        // Inform end-user why the action has no effect.
+                        MessageDialog.openInformation(PlatformUI.getWorkbench().getActiveWorkbenchWindow().getShell(), Messages.AbstractEdgesZOrderAction_noExecutioninformationDialogTitle,
+                                e.getMessage());
+                    }
                 }
 
             }
@@ -110,8 +120,10 @@ public abstract class AbstractEdgesZOrderAction implements IObjectActionDelegate
      * @param selectedEdges
      *            List of edges to move.
      * @return the command to execute
+     * @throws UnsupportedOperationException
+     *             in case of a not supported operation
      */
-    protected abstract Command getCommandToExecute(IDiagramCommandFactory commandFactory, List<IDiagramEdgeEditPart> selectedEdges);
+    protected abstract Command getCommandToExecute(IDiagramCommandFactory commandFactory, List<IDiagramEdgeEditPart> selectedEdges) throws UnsupportedOperationException;
 
     /**
      * Get the list of GMF edge corresponding to the list of edge edit parts.
@@ -173,6 +185,8 @@ public abstract class AbstractEdgesZOrderAction implements IObjectActionDelegate
             if (PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container).canEditInstance(container)
                     && PermissionAuthorityRegistry.getDefault().getPermissionAuthority(container).canEditInstance(((Diagram) container).getElement())) {
                 return getCommandToExecute(commandFactory, edgesToMove);
+            } else {
+                throw new UnsupportedOperationException("This z-order action can not be launched as the diagram can not be modified."); //$NON-NLS-1$
             }
         }
         return UnexecutableCommand.INSTANCE;

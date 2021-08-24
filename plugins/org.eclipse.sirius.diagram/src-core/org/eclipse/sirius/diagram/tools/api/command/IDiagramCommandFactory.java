@@ -459,8 +459,10 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      *            The elements to bring to front (Node or Edge). These elements must be of the same type and have the
      *            same parent.
      * @return a command that is able to bring to front many elements.
+     * @throws UnsupportedOperationException
+     *             in case of a not supported operation
      */
-    Command buildBringToFrontCommand(List<? extends View> elementsToBringToFront);
+    Command buildBringToFrontCommand(List<? extends View> elementsToBringToFront) throws UnsupportedOperationException;
 
     /**
      * Build a command that is able to send to back many elements.
@@ -469,8 +471,10 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      *            The elements to send to back (Node or Edge). These elements must be of the same type and have the same
      *            parent.
      * @return a command that is able to send to back many elements.
+     * @throws UnsupportedOperationException
+     *             in case of a not supported operation
      */
-    Command buildSendToBackCommand(List<? extends View> elementsToSendToBack);
+    Command buildSendToBackCommand(List<? extends View> elementsToSendToBack) throws UnsupportedOperationException;
 
     /**
      * Build a command that is able to bring forward many elements.
@@ -483,8 +487,10 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      *            mainly used for edges to move them on the next crossing edge over them for example)
      * 
      * @return a command that is able to bring forward many elements.
+     * @throws UnsupportedOperationException
+     *             in case of a not supported operation
      */
-    Command buildBringForwardCommand(List<? extends View> elementsToBringForward, int index);
+    Command buildBringForwardCommand(List<? extends View> elementsToBringForward, int index) throws UnsupportedOperationException;
 
     /**
      * Build a command that is able to send backward many elements.
@@ -497,6 +503,8 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      *            mainly used for edges to move them on the next crossing edge below them for example)
      * 
      * @return a command that is able to send backward many elements.
+     * @throws UnsupportedOperationException
+     *             in case of a not supported operation
      */
-    Command buildSendBackwardCommand(List<? extends View> elementsToSendBackward, int index);
+    Command buildSendBackwardCommand(List<? extends View> elementsToSendBackward, int index) throws UnsupportedOperationException;
 }

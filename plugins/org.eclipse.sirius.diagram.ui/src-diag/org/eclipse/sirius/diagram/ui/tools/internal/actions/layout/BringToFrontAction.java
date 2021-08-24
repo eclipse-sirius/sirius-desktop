@@ -36,7 +36,7 @@ public class BringToFrontAction extends AbstractEdgesZOrderAction {
     }
 
     @Override
-    protected Command getCommandToExecute(IDiagramCommandFactory commandFactory, List<IDiagramEdgeEditPart> selectedEdges) {
+    protected Command getCommandToExecute(IDiagramCommandFactory commandFactory, List<IDiagramEdgeEditPart> selectedEdges) throws UnsupportedOperationException {
         return commandFactory.buildBringToFrontCommand(partsToEdge(selectedEdges));
     }
 }

@@ -35,6 +35,9 @@ public final class Messages {
     public static String AbstractDDiagramElementLabelItemProvider_label;
 
     @TranslatableMessage
+    public static String AbstractEdgesZOrderAction_noExecutioninformationDialogTitle;
+
+    @TranslatableMessage
     public static String AbstractExtendedContentOutlinePage_setSelectionJobName;
 
     @TranslatableMessage
