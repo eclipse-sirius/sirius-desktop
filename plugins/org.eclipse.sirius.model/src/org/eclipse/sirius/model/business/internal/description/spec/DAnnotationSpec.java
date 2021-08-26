@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.model.business.internal.metamodel.description.spec;
+package org.eclipse.sirius.model.business.internal.description.spec;
 
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EMap;

@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.model.business.internal.metamodel.spec;
+package org.eclipse.sirius.model.business.internal.spec;
 
 import org.eclipse.sirius.viewpoint.description.impl.InterpolatedColorImpl;
 

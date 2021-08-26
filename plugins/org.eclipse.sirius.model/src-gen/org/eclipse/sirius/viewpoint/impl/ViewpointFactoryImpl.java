@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.business.api.resource.ResourceDescriptor;
-import org.eclipse.sirius.model.business.internal.metamodel.spec.DViewSpec;
+import org.eclipse.sirius.model.business.internal.spec.DViewSpec;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DAnalysisCustomData;

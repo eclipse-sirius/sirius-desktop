@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.model.business.internal.metamodel.description.validation;
+package org.eclipse.sirius.model.business.internal.description.validation;
 
 import java.util.ArrayList;
 import java.util.Collection;

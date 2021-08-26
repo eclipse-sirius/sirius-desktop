@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.sirius.model.business.internal.metamodel.description.validation.ValidationSetSpec;
+import org.eclipse.sirius.model.business.internal.description.validation.ValidationSetSpec;
 import org.eclipse.sirius.viewpoint.description.validation.ERROR_LEVEL;
 import org.eclipse.sirius.viewpoint.description.validation.RuleAudit;
 import org.eclipse.sirius.viewpoint.description.validation.SemanticValidationRule;

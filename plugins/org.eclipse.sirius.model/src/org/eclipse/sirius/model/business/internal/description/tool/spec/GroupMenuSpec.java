@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.model.business.internal.metamodel.description.tool.spec;
+package org.eclipse.sirius.model.business.internal.description.tool.spec;
 
 import java.util.LinkedHashSet;
 import java.util.Set;

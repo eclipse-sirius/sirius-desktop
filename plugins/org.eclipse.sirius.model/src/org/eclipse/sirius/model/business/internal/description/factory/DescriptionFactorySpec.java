@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.model.business.internal.metamodel.description.factory;
+package org.eclipse.sirius.model.business.internal.description.factory;
 
 import org.eclipse.sirius.viewpoint.description.impl.DescriptionFactoryImpl;
 
