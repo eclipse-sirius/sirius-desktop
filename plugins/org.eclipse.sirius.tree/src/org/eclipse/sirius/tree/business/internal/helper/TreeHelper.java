@@ -19,9 +19,9 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tree.DTree;
 import org.eclipse.sirius.tree.DTreeItem;
-import org.eclipse.sirius.tree.business.internal.metamodel.helper.TreeModelHelper;
 import org.eclipse.sirius.tree.description.TreeItemTool;
 import org.eclipse.sirius.tree.description.TreeVariable;
+import org.eclipse.sirius.tree.model.business.internal.helper.TreeModelHelper;
 
 /**
  * Utility methods to handle Tree models.

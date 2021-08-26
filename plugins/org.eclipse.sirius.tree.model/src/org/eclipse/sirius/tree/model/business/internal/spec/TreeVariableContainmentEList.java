@@ -10,13 +10,13 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tree.business.internal.metamodel.spec;
+package org.eclipse.sirius.tree.model.business.internal.spec;
 
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.sirius.tree.business.internal.metamodel.helper.TreeModelHelper;
 import org.eclipse.sirius.tree.description.TreeItemTool;
 import org.eclipse.sirius.tree.description.TreeVariable;
+import org.eclipse.sirius.tree.model.business.internal.helper.TreeModelHelper;
 
 /**
  * A specific {@link EObjectContainmentEList} for the {@link TableVariable}.

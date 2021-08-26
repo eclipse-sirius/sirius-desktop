@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tree.business.internal.metamodel.color;
+package org.eclipse.sirius.tree.model.business.internal.color;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory;

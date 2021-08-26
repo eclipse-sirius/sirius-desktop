@@ -24,8 +24,8 @@ import org.eclipse.sirius.tree.DTreeItem;
 import org.eclipse.sirius.tree.TreeFactory;
 import org.eclipse.sirius.tree.TreeItemStyle;
 import org.eclipse.sirius.tree.TreePackage;
-import org.eclipse.sirius.tree.business.internal.metamodel.spec.DTreeItemSpec;
-import org.eclipse.sirius.tree.business.internal.metamodel.spec.DTreeSpec;
+import org.eclipse.sirius.tree.model.business.internal.spec.DTreeItemSpec;
+import org.eclipse.sirius.tree.model.business.internal.spec.DTreeSpec;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->

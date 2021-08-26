@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tree.business.internal.metamodel.spec;
+package org.eclipse.sirius.tree.model.business.internal.spec;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -23,28 +23,28 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EStructuralFeature.Setting;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.ECrossReferenceAdapter;
-import org.eclipse.sirius.tree.description.impl.TreeCreationDescriptionImpl;
+import org.eclipse.sirius.tree.description.impl.TreeNavigationDescriptionImpl;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationElementMapping;
 
 /**
- * Implementation od TreeCreationDescription.
+ * Implementation od TreeNavigationDescription.
  * 
  * @author nlepine
  * 
  */
-public class TreeCreationDescriptionSpec extends TreeCreationDescriptionImpl {
+public class TreeNavigationDescriptionSpec extends TreeNavigationDescriptionImpl {
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationCreationDescriptionImpl#getMappings()
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationNavigationDescriptionImpl#getMappings()
      */
     @Override
     public EList<RepresentationElementMapping> getMappings() {
         Resource resource = this.eResource();
-        if (resource == null) {
+        if (this.eResource() == null) {
             throw new UnsupportedOperationException();
         }
         ECrossReferenceAdapter crossReferencer = ECrossReferenceAdapter.getCrossReferenceAdapter(resource);
@@ -56,7 +56,7 @@ public class TreeCreationDescriptionSpec extends TreeCreationDescriptionImpl {
         for (final Setting setting : settings) {
             final EObject eReferencer = setting.getEObject();
             final EStructuralFeature eFeature = setting.getEStructuralFeature();
-            if (eReferencer instanceof RepresentationElementMapping && eFeature.equals(DescriptionPackage.eINSTANCE.getRepresentationElementMapping_DetailDescriptions())) {
+            if (eReferencer instanceof RepresentationElementMapping && eFeature.equals(DescriptionPackage.eINSTANCE.getRepresentationElementMapping_NavigationDescriptions())) {
                 mappings.add((RepresentationElementMapping) eReferencer);
             }
         }
@@ -66,7 +66,7 @@ public class TreeCreationDescriptionSpec extends TreeCreationDescriptionImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationCreationDescriptionImpl#basicGetRepresentationDescription()
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationNavigationDescriptionImpl#basicGetRepresentationDescription()
      */
     @Override
     public RepresentationDescription basicGetRepresentationDescription() {
@@ -76,7 +76,7 @@ public class TreeCreationDescriptionSpec extends TreeCreationDescriptionImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationCreationDescriptionImpl#getRepresentationDescription()
+     * @see org.eclipse.sirius.viewpoint.description.tool.impl.RepresentationNavigationDescriptionImpl#getRepresentationDescription()
      */
     @Override
     public RepresentationDescription getRepresentationDescription() {

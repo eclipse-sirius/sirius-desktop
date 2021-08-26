@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tree.business.internal.metamodel.helper;
+package org.eclipse.sirius.tree.model.business.internal.helper;
 
 import org.eclipse.sirius.tree.description.TreeItemTool;
 import org.eclipse.sirius.tree.description.TreeVariable;

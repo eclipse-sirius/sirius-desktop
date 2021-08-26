@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tree.business.internal.metamodel.spec;
+package org.eclipse.sirius.tree.model.business.internal.spec;
 
 import java.util.List;
 

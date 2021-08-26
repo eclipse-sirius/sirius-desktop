@@ -10,30 +10,32 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.tree.business.internal.metamodel.spec;
+package org.eclipse.sirius.tree.model.business.internal.spec;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
 import org.eclipse.sirius.tree.description.TreeVariable;
-import org.eclipse.sirius.tree.description.impl.TreeItemCreationToolImpl;
+import org.eclipse.sirius.tree.description.impl.TreeItemDeletionToolImpl;
 
 /**
- * Specific implementation for model instances.
+ * Implementation od TreeItemDeletionTool.
  * 
- * @author <a href="mailto:nathalie.lepine@obeo.fr">Nathalie Lepine</a>
+ * @author nlepine
+ * 
  */
-public class TreeItemCreationToolSpec extends TreeItemCreationToolImpl {
+public class TreeItemDeletionToolSpec extends TreeItemDeletionToolImpl {
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.eclipse.sirius.table.metamodel.table.description.impl.CreateToolImpl#getVariables()
+     * @see org.eclipse.sirius.tree.description.impl.TreeItemToolImpl#getVariables()
      */
     @Override
     public EList<TreeVariable> getVariables() {
         if (variables == null) {
-            variables = new TreeVariableContainmentEList(this, DescriptionPackage.TREE_ITEM_CREATION_TOOL__VARIABLES);
+            variables = new TreeVariableContainmentEList(this, DescriptionPackage.TREE_ITEM_DELETION_TOOL__VARIABLES);
         }
         return variables;
     }
+
 }

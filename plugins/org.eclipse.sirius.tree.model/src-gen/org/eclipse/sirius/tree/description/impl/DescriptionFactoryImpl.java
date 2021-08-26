@@ -18,11 +18,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.sirius.tree.business.internal.metamodel.color.DefaultColorStyleDescription;
-import org.eclipse.sirius.tree.business.internal.metamodel.spec.TreeCreationDescriptionSpec;
-import org.eclipse.sirius.tree.business.internal.metamodel.spec.TreeItemDeletionToolSpec;
-import org.eclipse.sirius.tree.business.internal.metamodel.spec.TreeItemMappingSpec;
-import org.eclipse.sirius.tree.business.internal.metamodel.spec.TreeNavigationDescriptionSpec;
 import org.eclipse.sirius.tree.description.ConditionalTreeItemStyleDescription;
 import org.eclipse.sirius.tree.description.DescriptionFactory;
 import org.eclipse.sirius.tree.description.DescriptionPackage;
@@ -43,6 +38,11 @@ import org.eclipse.sirius.tree.description.TreeMapping;
 import org.eclipse.sirius.tree.description.TreeNavigationDescription;
 import org.eclipse.sirius.tree.description.TreePopupMenu;
 import org.eclipse.sirius.tree.description.TreeVariable;
+import org.eclipse.sirius.tree.model.business.internal.color.DefaultColorStyleDescription;
+import org.eclipse.sirius.tree.model.business.internal.spec.TreeCreationDescriptionSpec;
+import org.eclipse.sirius.tree.model.business.internal.spec.TreeItemDeletionToolSpec;
+import org.eclipse.sirius.tree.model.business.internal.spec.TreeItemMappingSpec;
+import org.eclipse.sirius.tree.model.business.internal.spec.TreeNavigationDescriptionSpec;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
