@@ -15,8 +15,8 @@ package org.eclipse.sirius.diagram.ui.business.internal.query;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
-import org.eclipse.sirius.diagram.business.internal.query.model.DDiagramElementContainerExperimentalQuery;
-import org.eclipse.sirius.diagram.business.internal.query.model.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.model.business.internal.query.DDiagramElementContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.model.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 
 import com.google.common.base.Preconditions;

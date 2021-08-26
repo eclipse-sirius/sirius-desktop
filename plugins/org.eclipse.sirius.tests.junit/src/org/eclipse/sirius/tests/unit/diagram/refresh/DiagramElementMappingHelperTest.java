@@ -23,8 +23,8 @@ import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.factory.SessionFactory;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramElementMappingHelper;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.model.business.internal.helper.LayerModelHelper;
 
 import com.google.common.collect.Iterators;
 

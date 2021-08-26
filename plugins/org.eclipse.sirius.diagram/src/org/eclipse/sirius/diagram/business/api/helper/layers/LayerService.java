@@ -12,8 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.api.helper.layers;
 
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
+import org.eclipse.sirius.diagram.model.business.internal.helper.LayerModelHelper;
 
 /**
  * A temporary service.

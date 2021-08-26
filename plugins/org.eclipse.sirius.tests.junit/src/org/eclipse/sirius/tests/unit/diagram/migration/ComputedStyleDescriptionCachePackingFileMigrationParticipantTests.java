@@ -20,7 +20,7 @@ import org.eclipse.sirius.business.api.query.DViewQuery;
 import org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.business.internal.migration.ComputedStyleDescriptionCachePackingFileMigrationParticipant;
-import org.eclipse.sirius.diagram.business.internal.query.model.DDiagramInternalQuery;
+import org.eclipse.sirius.diagram.model.business.internal.query.DDiagramInternalQuery;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;

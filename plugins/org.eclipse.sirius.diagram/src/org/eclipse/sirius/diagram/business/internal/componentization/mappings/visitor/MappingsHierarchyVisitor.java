@@ -15,10 +15,10 @@ package org.eclipse.sirius.diagram.business.internal.componentization.mappings.v
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.MappingHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.model.business.internal.helper.MappingHelper;
 
 /**
  * A visitor pattern to retrieve mappings children.

@@ -49,10 +49,10 @@ import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsM
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.DiagramElementMapping;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.filter.CompositeFilterDescription;
+import org.eclipse.sirius.diagram.model.business.internal.helper.LayerModelHelper;
 import org.eclipse.sirius.diagram.tools.api.command.ChangeLayerActivationCommand;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;

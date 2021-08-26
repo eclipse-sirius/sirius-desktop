@@ -41,12 +41,12 @@ import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceMana
 import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
 import org.eclipse.sirius.diagram.business.api.query.DiagramElementMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.MappingHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.model.business.internal.description.extensions.INodeMappingExt;
+import org.eclipse.sirius.diagram.model.business.internal.helper.MappingHelper;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.interpreter.IInterpreterMessages;

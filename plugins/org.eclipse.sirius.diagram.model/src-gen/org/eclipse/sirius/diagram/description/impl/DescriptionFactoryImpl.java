@@ -19,14 +19,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.AdditionalLayerSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.ContainerMappingImportSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.ContainerMappingSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.DiagramDescriptionSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.DiagramImportDescriptionSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.LayerSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.NodeMappingImportSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.NodeMappingSpec;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.BooleanLayoutOption;
 import org.eclipse.sirius.diagram.description.CenteringStyle;
@@ -58,6 +50,14 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
 import org.eclipse.sirius.diagram.description.OrderedTreeLayout;
 import org.eclipse.sirius.diagram.description.StringLayoutOption;
+import org.eclipse.sirius.diagram.model.business.internal.description.spec.AdditionalLayerSpec;
+import org.eclipse.sirius.diagram.model.business.internal.description.spec.ContainerMappingImportSpec;
+import org.eclipse.sirius.diagram.model.business.internal.description.spec.ContainerMappingSpec;
+import org.eclipse.sirius.diagram.model.business.internal.description.spec.DiagramDescriptionSpec;
+import org.eclipse.sirius.diagram.model.business.internal.description.spec.DiagramImportDescriptionSpec;
+import org.eclipse.sirius.diagram.model.business.internal.description.spec.LayerSpec;
+import org.eclipse.sirius.diagram.model.business.internal.description.spec.NodeMappingImportSpec;
+import org.eclipse.sirius.diagram.model.business.internal.description.spec.NodeMappingSpec;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->

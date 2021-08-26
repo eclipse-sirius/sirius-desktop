@@ -15,8 +15,8 @@ package org.eclipse.sirius.diagram.tools.internal.command.reconnect;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.diagram.DEdge;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
+import org.eclipse.sirius.diagram.model.business.internal.description.spec.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.tools.internal.Messages;
 
 /**

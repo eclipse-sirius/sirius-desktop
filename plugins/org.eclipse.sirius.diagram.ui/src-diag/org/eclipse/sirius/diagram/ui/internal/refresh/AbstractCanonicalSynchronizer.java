@@ -56,7 +56,7 @@ import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
-import org.eclipse.sirius.diagram.business.internal.query.model.DNodeContainerExperimentalQuery;
+import org.eclipse.sirius.diagram.model.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.business.internal.query.DNodeQuery;

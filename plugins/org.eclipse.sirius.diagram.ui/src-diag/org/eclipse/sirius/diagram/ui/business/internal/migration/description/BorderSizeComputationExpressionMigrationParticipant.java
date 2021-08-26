@@ -15,13 +15,13 @@ package org.eclipse.sirius.diagram.ui.business.internal.migration.description;
 import java.util.List;
 
 import org.eclipse.sirius.business.api.migration.AbstractVSMMigrationParticipant;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
+import org.eclipse.sirius.diagram.model.business.internal.helper.LayerModelHelper;
 import org.eclipse.sirius.viewpoint.description.Group;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.osgi.framework.Version;

@@ -61,7 +61,6 @@ import org.eclipse.sirius.diagram.business.internal.helper.decoration.Decoration
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.DiagramElementMappingHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.MappingWithInterpreterHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.StyleHelper;
-import org.eclipse.sirius.diagram.business.internal.metamodel.operations.model.DDiagramSpecOperations;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
@@ -78,6 +77,7 @@ import org.eclipse.sirius.diagram.description.style.LozengeNodeDescription;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
 import org.eclipse.sirius.diagram.description.style.SquareDescription;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
+import org.eclipse.sirius.diagram.model.business.internal.operations.DDiagramSpecOperations;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;

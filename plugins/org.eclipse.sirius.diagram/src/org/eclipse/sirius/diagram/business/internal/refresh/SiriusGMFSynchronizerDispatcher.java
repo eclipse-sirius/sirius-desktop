@@ -27,7 +27,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizer;
 import org.eclipse.sirius.diagram.business.api.refresh.CanonicalSynchronizerFactory;
 import org.eclipse.sirius.diagram.business.api.refresh.DiagramCreationUtil;
-import org.eclipse.sirius.diagram.business.internal.metamodel.operations.model.DDiagramElementSpecOperations;
+import org.eclipse.sirius.diagram.model.business.internal.operations.DDiagramElementSpecOperations;
 
 /**
  * Dispatch a collection of {@link Notification}s to a EMF Command.

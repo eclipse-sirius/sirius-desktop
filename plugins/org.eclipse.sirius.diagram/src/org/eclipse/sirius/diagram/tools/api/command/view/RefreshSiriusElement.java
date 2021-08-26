@@ -52,7 +52,6 @@ import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsM
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.api.helper.display.DisplayServiceManager;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingWithInterpreterHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.EdgeMappingHelper;
@@ -62,6 +61,7 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.operations.StyleSp
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.model.business.internal.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.tools.internal.Messages;
 import org.eclipse.sirius.diagram.util.DiagramSwitch;
 import org.eclipse.sirius.ext.base.Option;

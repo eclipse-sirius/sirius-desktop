@@ -21,7 +21,7 @@ import org.eclipse.gmf.runtime.notation.RoutingStyle;
 import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.EdgeStyle;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DEdgeSpec;
+import org.eclipse.sirius.diagram.model.business.internal.spec.DEdgeSpec;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;

@@ -13,12 +13,6 @@
 package org.eclipse.sirius.tests.unit.api.mappings;
 
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.ContainerMappingImportSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.ContainerMappingSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.DiagramDescriptionSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.DiagramImportDescriptionSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.NodeMappingImportSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.spec.NodeMappingSpec;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.ContainerMappingImport;
 import org.eclipse.sirius.diagram.description.DescriptionFactory;
@@ -32,6 +26,12 @@ import org.eclipse.sirius.diagram.description.impl.DiagramDescriptionImpl;
 import org.eclipse.sirius.diagram.description.impl.DiagramImportDescriptionImpl;
 import org.eclipse.sirius.diagram.description.impl.NodeMappingImpl;
 import org.eclipse.sirius.diagram.description.impl.NodeMappingImportImpl;
+import org.eclipse.sirius.diagram.model.business.internal.description.spec.ContainerMappingImportSpec;
+import org.eclipse.sirius.diagram.model.business.internal.description.spec.ContainerMappingSpec;
+import org.eclipse.sirius.diagram.model.business.internal.description.spec.DiagramDescriptionSpec;
+import org.eclipse.sirius.diagram.model.business.internal.description.spec.DiagramImportDescriptionSpec;
+import org.eclipse.sirius.diagram.model.business.internal.description.spec.NodeMappingImportSpec;
+import org.eclipse.sirius.diagram.model.business.internal.description.spec.NodeMappingSpec;
 import org.eclipse.sirius.viewpoint.description.IdentifiedElement;
 
 import junit.framework.TestCase;

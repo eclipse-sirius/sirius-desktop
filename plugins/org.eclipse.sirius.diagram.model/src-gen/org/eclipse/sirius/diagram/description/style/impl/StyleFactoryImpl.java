@@ -19,10 +19,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.sirius.diagram.business.internal.metamodel.color.DiagramDefaultColorStyleDescription;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.style.spec.BeginLabelStyleDescriptionSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.style.spec.CenterLabelStyleDescriptionSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.style.spec.EndLabelStyleDescriptionSpec;
 import org.eclipse.sirius.diagram.description.style.BeginLabelStyleDescription;
 import org.eclipse.sirius.diagram.description.style.BorderedStyleDescription;
 import org.eclipse.sirius.diagram.description.style.BracketEdgeStyleDescription;
@@ -44,6 +40,10 @@ import org.eclipse.sirius.diagram.description.style.SquareDescription;
 import org.eclipse.sirius.diagram.description.style.StyleFactory;
 import org.eclipse.sirius.diagram.description.style.StylePackage;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
+import org.eclipse.sirius.diagram.model.business.internal.color.DiagramDefaultColorStyleDescription;
+import org.eclipse.sirius.diagram.model.business.internal.description.style.spec.BeginLabelStyleDescriptionSpec;
+import org.eclipse.sirius.diagram.model.business.internal.description.style.spec.CenterLabelStyleDescriptionSpec;
+import org.eclipse.sirius.diagram.model.business.internal.description.style.spec.EndLabelStyleDescriptionSpec;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->

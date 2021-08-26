@@ -14,9 +14,9 @@ package org.eclipse.sirius.diagram.editor.properties.section.description.contain
 
 import org.eclipse.sirius.diagram.ContainerLayout;
 import org.eclipse.sirius.diagram.business.api.query.ContainerMappingQuery;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.MappingHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.editor.properties.sections.description.containermapping.ContainerMappingChildrenPresentationPropertySection;
+import org.eclipse.sirius.diagram.model.business.internal.helper.MappingHelper;
 import org.eclipse.sirius.editor.editorPlugin.SiriusEditor;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;

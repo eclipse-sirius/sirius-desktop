@@ -26,7 +26,7 @@ import org.eclipse.gmf.runtime.notation.Size;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DNode;
-import org.eclipse.sirius.diagram.business.internal.query.model.DDiagramInternalQuery;
+import org.eclipse.sirius.diagram.model.business.internal.query.DDiagramInternalQuery;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.tests.SiriusTestsPlugin;

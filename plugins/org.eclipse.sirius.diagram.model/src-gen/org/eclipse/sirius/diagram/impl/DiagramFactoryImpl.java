@@ -70,13 +70,13 @@ import org.eclipse.sirius.diagram.ShapeContainerStyle;
 import org.eclipse.sirius.diagram.Square;
 import org.eclipse.sirius.diagram.TypedVariableValue;
 import org.eclipse.sirius.diagram.WorkspaceImage;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DDiagramSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DEdgeSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeContainerSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeListElementSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeListSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DNodeSpec;
-import org.eclipse.sirius.diagram.business.internal.metamodel.spec.DSemanticDiagramSpec;
+import org.eclipse.sirius.diagram.model.business.internal.spec.DDiagramSpec;
+import org.eclipse.sirius.diagram.model.business.internal.spec.DEdgeSpec;
+import org.eclipse.sirius.diagram.model.business.internal.spec.DNodeContainerSpec;
+import org.eclipse.sirius.diagram.model.business.internal.spec.DNodeListElementSpec;
+import org.eclipse.sirius.diagram.model.business.internal.spec.DNodeListSpec;
+import org.eclipse.sirius.diagram.model.business.internal.spec.DNodeSpec;
+import org.eclipse.sirius.diagram.model.business.internal.spec.DSemanticDiagramSpec;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->

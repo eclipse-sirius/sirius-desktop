@@ -14,10 +14,10 @@ package org.eclipse.sirius.diagram.business.api.query;
 
 import java.util.Collection;
 
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.ContentHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramExtensionDescription;
 import org.eclipse.sirius.diagram.description.NodeMapping;
+import org.eclipse.sirius.diagram.model.business.internal.helper.ContentHelper;
 
 /**
  * A class aggregating all the queries (read-only!) having a DiagramDescription as a starting point.

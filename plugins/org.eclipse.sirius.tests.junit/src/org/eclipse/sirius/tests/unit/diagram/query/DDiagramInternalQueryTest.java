@@ -19,7 +19,7 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.DNodeListElement;
 import org.eclipse.sirius.diagram.DiagramFactory;
-import org.eclipse.sirius.diagram.business.internal.query.model.DDiagramInternalQuery;
+import org.eclipse.sirius.diagram.model.business.internal.query.DDiagramInternalQuery;
 
 import com.google.common.collect.Iterables;
 

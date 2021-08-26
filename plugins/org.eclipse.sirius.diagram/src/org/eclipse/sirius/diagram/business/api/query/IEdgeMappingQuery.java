@@ -24,7 +24,7 @@ import org.eclipse.sirius.ext.base.Option;
  */
 public class IEdgeMappingQuery {
 
-    private org.eclipse.sirius.diagram.business.internal.metamodel.query.IEdgeMappingQuery internalQuery;
+    private org.eclipse.sirius.diagram.model.business.internal.query.IEdgeMappingQuery internalQuery;
 
     /**
      * Create a new query.
@@ -33,7 +33,7 @@ public class IEdgeMappingQuery {
      *            the element to query.
      */
     public IEdgeMappingQuery(IEdgeMapping iEdgeMapping) {
-        this.internalQuery = new org.eclipse.sirius.diagram.business.internal.metamodel.query.IEdgeMappingQuery(iEdgeMapping);
+        this.internalQuery = new org.eclipse.sirius.diagram.model.business.internal.query.IEdgeMappingQuery(iEdgeMapping);
     }
 
     /**

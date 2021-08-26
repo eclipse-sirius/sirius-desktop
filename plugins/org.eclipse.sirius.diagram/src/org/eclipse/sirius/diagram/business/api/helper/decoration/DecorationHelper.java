@@ -18,9 +18,9 @@ import java.util.List;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.internal.helper.decoration.DecorationHelperInternal;
-import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.LayerModelHelper;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.model.business.internal.helper.LayerModelHelper;
 import org.eclipse.sirius.viewpoint.description.DecorationDescription;
 
 import com.google.common.collect.Iterables;

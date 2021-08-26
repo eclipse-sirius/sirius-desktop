@@ -27,8 +27,8 @@ import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManager;
 import org.eclipse.sirius.diagram.business.api.componentization.DiagramMappingsManagerRegistry;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
-import org.eclipse.sirius.diagram.business.internal.query.model.DDiagramInternalQuery;
 import org.eclipse.sirius.diagram.description.Layer;
+import org.eclipse.sirius.diagram.model.business.internal.query.DDiagramInternalQuery;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link DDiagram} as a starting point.
