@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.diagram.AbstractDNode;
 import org.eclipse.sirius.diagram.ComputedStyleDescriptionRegistry;
 import org.eclipse.sirius.diagram.DDiagram;
@@ -31,6 +30,7 @@ import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.StyleConstants;
 import org.eclipse.sirius.diagram.description.DragAndDropTargetDescription;
 import org.eclipse.sirius.diagram.description.filter.FilterDescription;
+import org.eclipse.sirius.model.business.internal.query.DRepresentationInternalQuery;
 import org.eclipse.sirius.viewpoint.Style;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.DescriptionFactory;
@@ -279,7 +279,7 @@ public class DDiagramInternalQuery {
     public ComputedStyleDescriptionRegistry getComputedStyleDescriptionRegistry(boolean createIfNotExists) {
         ComputedStyleDescriptionRegistry computedStyleDescriptionRegistry = null;
         AnnotationEntry annotationEntry = null;
-        Collection<AnnotationEntry> annotationEntries = new DRepresentationQuery(dDiagram).getAnnotation(StyleConstants.DANNOTATION_CUSTOMIZATION_KEY);
+        Collection<AnnotationEntry> annotationEntries = new DRepresentationInternalQuery(dDiagram).getAnnotation(StyleConstants.DANNOTATION_CUSTOMIZATION_KEY);
         if (annotationEntries == null || annotationEntries.isEmpty()) {
             annotationEntry = DescriptionFactory.eINSTANCE.createAnnotationEntry();
             annotationEntry.setSource(StyleConstants.DANNOTATION_CUSTOMIZATION_KEY);
