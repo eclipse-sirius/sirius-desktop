@@ -17,11 +17,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.sirius.table.business.internal.metamodel.spec.DCellSpec;
-import org.eclipse.sirius.table.business.internal.metamodel.spec.DFeatureColumnSpec;
-import org.eclipse.sirius.table.business.internal.metamodel.spec.DLineSpec;
-import org.eclipse.sirius.table.business.internal.metamodel.spec.DTableSpec;
-import org.eclipse.sirius.table.business.internal.metamodel.spec.DTargetColumnSpec;
 import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DCellStyle;
 import org.eclipse.sirius.table.metamodel.table.DFeatureColumn;
@@ -31,6 +26,11 @@ import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
 import org.eclipse.sirius.table.metamodel.table.DTargetColumn;
 import org.eclipse.sirius.table.metamodel.table.TableFactory;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
+import org.eclipse.sirius.table.model.business.internal.spec.DCellSpec;
+import org.eclipse.sirius.table.model.business.internal.spec.DFeatureColumnSpec;
+import org.eclipse.sirius.table.model.business.internal.spec.DLineSpec;
+import org.eclipse.sirius.table.model.business.internal.spec.DTableSpec;
+import org.eclipse.sirius.table.model.business.internal.spec.DTargetColumnSpec;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->
