@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.sequence.business.internal.color;
+package org.eclipse.sirius.diagram.sequence.model.business.internal.color;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.sequence.template.TExecutionStyle;

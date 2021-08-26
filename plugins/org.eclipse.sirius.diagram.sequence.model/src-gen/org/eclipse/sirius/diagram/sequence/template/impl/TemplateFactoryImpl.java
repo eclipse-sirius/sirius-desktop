@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.sirius.diagram.sequence.business.internal.color.DefaultColorStyleDescription;
+import org.eclipse.sirius.diagram.sequence.model.business.internal.color.DefaultColorStyleDescription;
 import org.eclipse.sirius.diagram.sequence.template.TAbstractMapping;
 import org.eclipse.sirius.diagram.sequence.template.TBasicMessageMapping;
 import org.eclipse.sirius.diagram.sequence.template.TConditionalExecutionStyle;

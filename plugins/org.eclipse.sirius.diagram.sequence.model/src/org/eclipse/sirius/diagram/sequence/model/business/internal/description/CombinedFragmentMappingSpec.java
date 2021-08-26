@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description;
+package org.eclipse.sirius.diagram.sequence.model.business.internal.description;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -18,23 +18,23 @@ import java.util.Map;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
-import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
+import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.MappingExtHelper;
-import org.eclipse.sirius.diagram.sequence.description.impl.InstanceRoleMappingImpl;
+import org.eclipse.sirius.diagram.sequence.description.impl.CombinedFragmentMappingImpl;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
- * Implementation of <code>InstanceRoleMapping</code>.
+ * Implementation of CombinedFragmentMapping.
  * 
  * @author pcdavid
  */
-public class InstanceRoleMappingSpec extends InstanceRoleMappingImpl implements INodeMappingExt {
+public class CombinedFragmentMappingSpec extends CombinedFragmentMappingImpl implements IContainerMappingExt {
 
-    private final Map<EObject, EList<DSemanticDecorator>> viewNodesDone = new HashMap<EObject, EList<DSemanticDecorator>>();
+    private final Map<EObject, EList<DSemanticDecorator>> viewContainerDone = new HashMap<EObject, EList<DSemanticDecorator>>();
 
     @Override
-    public Map<EObject, EList<DSemanticDecorator>> getViewNodesDone() {
-        return viewNodesDone;
+    public Map<EObject, EList<DSemanticDecorator>> getViewContainerDone() {
+        return viewContainerDone;
     }
 
     @Override
@@ -46,5 +46,4 @@ public class InstanceRoleMappingSpec extends InstanceRoleMappingImpl implements 
     public String toString() {
         return new StringBuffer(getClass().getName()).append(" ").append(getName()).toString(); //$NON-NLS-1$
     }
-
 }

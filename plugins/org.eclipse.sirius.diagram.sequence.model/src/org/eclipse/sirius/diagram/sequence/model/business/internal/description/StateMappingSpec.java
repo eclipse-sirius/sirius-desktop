@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description;
+package org.eclipse.sirius.diagram.sequence.model.business.internal.description;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,15 +20,15 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.extensions.INodeMappingExt;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.model.MappingExtHelper;
-import org.eclipse.sirius.diagram.sequence.description.impl.ObservationPointMappingImpl;
+import org.eclipse.sirius.diagram.sequence.description.impl.StateMappingImpl;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
- * Implementation of <code>ObservationPointMapping</code>.
+ * Implementation of <code>StateMapping</code>.
  * 
- * @author mporhel
+ * @author smonnier
  */
-public class ObservationPointMappingSpec extends ObservationPointMappingImpl implements INodeMappingExt {
+public class StateMappingSpec extends StateMappingImpl implements INodeMappingExt {
 
     private final Map<EObject, EList<DSemanticDecorator>> viewNodesDone = new HashMap<EObject, EList<DSemanticDecorator>>();
 

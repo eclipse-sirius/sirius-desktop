@@ -17,15 +17,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.CombinedFragmentMappingSpec;
-import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.EndOfLifeMappingSpec;
-import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.ExecutionMappingSpec;
-import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.InstanceRoleMappingSpec;
-import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.InteractionUseMappingSpec;
-import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.ObservationPointMappingSpec;
-import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.OperandMappingSpec;
-import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.SequenceDiagramDescriptionSpec;
-import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description.StateMappingSpec;
 import org.eclipse.sirius.diagram.sequence.description.BasicMessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.CombinedFragmentMapping;
 import org.eclipse.sirius.diagram.sequence.description.CoveredLifelinesVariable;
@@ -43,6 +34,15 @@ import org.eclipse.sirius.diagram.sequence.description.OperandMapping;
 import org.eclipse.sirius.diagram.sequence.description.ReturnMessageMapping;
 import org.eclipse.sirius.diagram.sequence.description.SequenceDiagramDescription;
 import org.eclipse.sirius.diagram.sequence.description.StateMapping;
+import org.eclipse.sirius.diagram.sequence.model.business.internal.description.CombinedFragmentMappingSpec;
+import org.eclipse.sirius.diagram.sequence.model.business.internal.description.EndOfLifeMappingSpec;
+import org.eclipse.sirius.diagram.sequence.model.business.internal.description.ExecutionMappingSpec;
+import org.eclipse.sirius.diagram.sequence.model.business.internal.description.InstanceRoleMappingSpec;
+import org.eclipse.sirius.diagram.sequence.model.business.internal.description.InteractionUseMappingSpec;
+import org.eclipse.sirius.diagram.sequence.model.business.internal.description.ObservationPointMappingSpec;
+import org.eclipse.sirius.diagram.sequence.model.business.internal.description.OperandMappingSpec;
+import org.eclipse.sirius.diagram.sequence.model.business.internal.description.SequenceDiagramDescriptionSpec;
+import org.eclipse.sirius.diagram.sequence.model.business.internal.description.StateMappingSpec;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!-- end-user-doc -->

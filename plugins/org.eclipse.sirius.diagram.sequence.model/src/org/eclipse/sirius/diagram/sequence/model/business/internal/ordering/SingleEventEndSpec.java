@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.sequence.business.internal.metamodel.ordering;
+package org.eclipse.sirius.diagram.sequence.model.business.internal.ordering;
 
 import org.eclipse.sirius.diagram.sequence.ordering.SingleEventEnd;
 import org.eclipse.sirius.diagram.sequence.ordering.impl.SingleEventEndImpl;

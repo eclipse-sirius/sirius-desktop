@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.SequenceFactory;
 import org.eclipse.sirius.diagram.sequence.SequencePackage;
-import org.eclipse.sirius.diagram.sequence.business.internal.metamodel.SequenceDDiagramSpec;
+import org.eclipse.sirius.diagram.sequence.model.business.internal.SequenceDDiagramSpec;
 import org.eclipse.sirius.diagram.sequence.ordering.EventEndsOrdering;
 import org.eclipse.sirius.diagram.sequence.ordering.InstanceRolesOrdering;
 import org.eclipse.sirius.diagram.sequence.ordering.OrderingFactory;

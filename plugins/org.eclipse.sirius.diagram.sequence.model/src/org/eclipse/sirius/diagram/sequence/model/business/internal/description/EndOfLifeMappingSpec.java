@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.sequence.business.internal.metamodel.description;
+package org.eclipse.sirius.diagram.sequence.model.business.internal.description;
 
 import java.util.HashMap;
 import java.util.Map;
