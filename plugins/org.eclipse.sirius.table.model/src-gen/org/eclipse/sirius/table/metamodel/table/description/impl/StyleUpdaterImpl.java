@@ -169,8 +169,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
     @Override
     public EList<ForegroundConditionalStyle> getForegroundConditionalStyle() {
         if (foregroundConditionalStyle == null) {
-            foregroundConditionalStyle = new EObjectContainmentEList<>(ForegroundConditionalStyle.class, this,
-                    DescriptionPackage.STYLE_UPDATER__FOREGROUND_CONDITIONAL_STYLE);
+            foregroundConditionalStyle = new EObjectContainmentEList<>(ForegroundConditionalStyle.class, this, DescriptionPackage.STYLE_UPDATER__FOREGROUND_CONDITIONAL_STYLE);
         }
         return foregroundConditionalStyle;
     }
@@ -236,8 +235,7 @@ public abstract class StyleUpdaterImpl extends MinimalEObjectImpl.Container impl
     @Override
     public EList<BackgroundConditionalStyle> getBackgroundConditionalStyle() {
         if (backgroundConditionalStyle == null) {
-            backgroundConditionalStyle = new EObjectContainmentEList<>(BackgroundConditionalStyle.class, this,
-                    DescriptionPackage.STYLE_UPDATER__BACKGROUND_CONDITIONAL_STYLE);
+            backgroundConditionalStyle = new EObjectContainmentEList<>(BackgroundConditionalStyle.class, this, DescriptionPackage.STYLE_UPDATER__BACKGROUND_CONDITIONAL_STYLE);
         }
         return backgroundConditionalStyle;
     }
