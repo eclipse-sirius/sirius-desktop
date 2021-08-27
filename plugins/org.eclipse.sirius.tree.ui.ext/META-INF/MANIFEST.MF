@@ -10,5 +10,5 @@ Require-Bundle: org.eclipse.sirius.tree.ui;bundle-version="7.0.0",
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.sirius.tree.ui.ext.TreeUIExtPlugin$Implementation
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.eclipse.sirius.tree.ui.ext;version="3.0.0"
+Export-Package: org.eclipse.sirius.tree.ui.ext;version="7.0.0"
 Automatic-Module-Name: org.eclipse.sirius.tree.ui.ext

@@ -394,8 +394,7 @@ public class TreeItemMappingImpl extends TreeMappingImpl implements TreeItemMapp
     @Override
     public EList<ConditionalTreeItemStyleDescription> getConditionalStyles() {
         if (conditionalStyles == null) {
-            conditionalStyles = new EObjectContainmentEList<>(ConditionalTreeItemStyleDescription.class, this,
-                    DescriptionPackage.TREE_ITEM_MAPPING__CONDITIONAL_STYLES);
+            conditionalStyles = new EObjectContainmentEList<>(ConditionalTreeItemStyleDescription.class, this, DescriptionPackage.TREE_ITEM_MAPPING__CONDITIONAL_STYLES);
         }
         return conditionalStyles;
     }
