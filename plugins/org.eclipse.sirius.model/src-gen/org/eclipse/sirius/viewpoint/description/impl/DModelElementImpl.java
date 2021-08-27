@@ -84,7 +84,7 @@ public abstract class DModelElementImpl extends MinimalEObjectImpl.Container imp
     @Override
     public EList<DAnnotation> getEAnnotations() {
         if (eAnnotations == null) {
-            eAnnotations = new EObjectContainmentEList<DAnnotation>(DAnnotation.class, this, DescriptionPackage.DMODEL_ELEMENT__EANNOTATIONS);
+            eAnnotations = new EObjectContainmentEList<>(DAnnotation.class, this, DescriptionPackage.DMODEL_ELEMENT__EANNOTATIONS);
         }
         return eAnnotations;
     }

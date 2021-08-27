@@ -98,7 +98,7 @@ public abstract class EStructuralFeatureCustomizationImpl extends MinimalEObject
     @Override
     public EList<EObject> getAppliedOn() {
         if (appliedOn == null) {
-            appliedOn = new EObjectResolvingEList<EObject>(EObject.class, this, DescriptionPackage.ESTRUCTURAL_FEATURE_CUSTOMIZATION__APPLIED_ON);
+            appliedOn = new EObjectResolvingEList<>(EObject.class, this, DescriptionPackage.ESTRUCTURAL_FEATURE_CUSTOMIZATION__APPLIED_ON);
         }
         return appliedOn;
     }

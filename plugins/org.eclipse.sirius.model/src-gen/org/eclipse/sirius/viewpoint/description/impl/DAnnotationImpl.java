@@ -138,7 +138,7 @@ public class DAnnotationImpl extends IdentifiedElementImpl implements DAnnotatio
     @Override
     public EMap<String, String> getDetails() {
         if (details == null) {
-            details = new EcoreEMap<String, String>(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, DescriptionPackage.DANNOTATION__DETAILS);
+            details = new EcoreEMap<>(EcorePackage.Literals.ESTRING_TO_STRING_MAP_ENTRY, EStringToStringMapEntryImpl.class, this, DescriptionPackage.DANNOTATION__DETAILS);
         }
         return details;
     }
@@ -151,7 +151,7 @@ public class DAnnotationImpl extends IdentifiedElementImpl implements DAnnotatio
     @Override
     public EList<EObject> getReferences() {
         if (references == null) {
-            references = new EObjectResolvingEList<EObject>(EObject.class, this, DescriptionPackage.DANNOTATION__REFERENCES);
+            references = new EObjectResolvingEList<>(EObject.class, this, DescriptionPackage.DANNOTATION__REFERENCES);
         }
         return references;
     }

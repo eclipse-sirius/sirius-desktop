@@ -87,7 +87,7 @@ public abstract class StyleImpl extends IdentifiedElementImpl implements Style {
     @Override
     public EList<String> getCustomFeatures() {
         if (customFeatures == null) {
-            customFeatures = new EDataTypeUniqueEList<String>(String.class, this, ViewpointPackage.STYLE__CUSTOM_FEATURES);
+            customFeatures = new EDataTypeUniqueEList<>(String.class, this, ViewpointPackage.STYLE__CUSTOM_FEATURES);
         }
         return customFeatures;
     }

@@ -171,7 +171,7 @@ public class ToolFilterDescriptionImpl extends MinimalEObjectImpl.Container impl
     @Override
     public EList<FeatureChangeListener> getListeners() {
         if (listeners == null) {
-            listeners = new EObjectContainmentEList.Resolving<FeatureChangeListener>(FeatureChangeListener.class, this, ToolPackage.TOOL_FILTER_DESCRIPTION__LISTENERS);
+            listeners = new EObjectContainmentEList.Resolving<>(FeatureChangeListener.class, this, ToolPackage.TOOL_FILTER_DESCRIPTION__LISTENERS);
         }
         return listeners;
     }

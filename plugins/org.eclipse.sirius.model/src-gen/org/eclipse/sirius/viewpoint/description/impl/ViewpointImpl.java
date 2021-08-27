@@ -475,7 +475,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     @Override
     public EList<RepresentationDescription> getOwnedRepresentations() {
         if (ownedRepresentations == null) {
-            ownedRepresentations = new EObjectContainmentEList.Resolving<RepresentationDescription>(RepresentationDescription.class, this, DescriptionPackage.VIEWPOINT__OWNED_REPRESENTATIONS);
+            ownedRepresentations = new EObjectContainmentEList.Resolving<>(RepresentationDescription.class, this, DescriptionPackage.VIEWPOINT__OWNED_REPRESENTATIONS);
         }
         return ownedRepresentations;
     }
@@ -488,8 +488,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     @Override
     public EList<RepresentationExtensionDescription> getOwnedRepresentationExtensions() {
         if (ownedRepresentationExtensions == null) {
-            ownedRepresentationExtensions = new EObjectContainmentEList.Resolving<RepresentationExtensionDescription>(RepresentationExtensionDescription.class, this,
-                    DescriptionPackage.VIEWPOINT__OWNED_REPRESENTATION_EXTENSIONS);
+            ownedRepresentationExtensions = new EObjectContainmentEList.Resolving<>(RepresentationExtensionDescription.class, this, DescriptionPackage.VIEWPOINT__OWNED_REPRESENTATION_EXTENSIONS);
         }
         return ownedRepresentationExtensions;
     }
@@ -502,7 +501,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     @Override
     public EList<JavaExtension> getOwnedJavaExtensions() {
         if (ownedJavaExtensions == null) {
-            ownedJavaExtensions = new EObjectContainmentEList.Resolving<JavaExtension>(JavaExtension.class, this, DescriptionPackage.VIEWPOINT__OWNED_JAVA_EXTENSIONS);
+            ownedJavaExtensions = new EObjectContainmentEList.Resolving<>(JavaExtension.class, this, DescriptionPackage.VIEWPOINT__OWNED_JAVA_EXTENSIONS);
         }
         return ownedJavaExtensions;
     }
@@ -515,7 +514,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     @Override
     public EList<MetamodelExtensionSetting> getOwnedMMExtensions() {
         if (ownedMMExtensions == null) {
-            ownedMMExtensions = new EObjectContainmentEList.Resolving<MetamodelExtensionSetting>(MetamodelExtensionSetting.class, this, DescriptionPackage.VIEWPOINT__OWNED_MM_EXTENSIONS);
+            ownedMMExtensions = new EObjectContainmentEList.Resolving<>(MetamodelExtensionSetting.class, this, DescriptionPackage.VIEWPOINT__OWNED_MM_EXTENSIONS);
         }
         return ownedMMExtensions;
     }
@@ -528,8 +527,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     @Override
     public EList<FeatureExtensionDescription> getOwnedFeatureExtensions() {
         if (ownedFeatureExtensions == null) {
-            ownedFeatureExtensions = new EObjectContainmentEList.Resolving<FeatureExtensionDescription>(FeatureExtensionDescription.class, this,
-                    DescriptionPackage.VIEWPOINT__OWNED_FEATURE_EXTENSIONS);
+            ownedFeatureExtensions = new EObjectContainmentEList.Resolving<>(FeatureExtensionDescription.class, this, DescriptionPackage.VIEWPOINT__OWNED_FEATURE_EXTENSIONS);
         }
         return ownedFeatureExtensions;
     }
@@ -566,7 +564,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     @Override
     public EList<RepresentationTemplate> getOwnedTemplates() {
         if (ownedTemplates == null) {
-            ownedTemplates = new EObjectContainmentEList.Resolving<RepresentationTemplate>(RepresentationTemplate.class, this, DescriptionPackage.VIEWPOINT__OWNED_TEMPLATES);
+            ownedTemplates = new EObjectContainmentEList.Resolving<>(RepresentationTemplate.class, this, DescriptionPackage.VIEWPOINT__OWNED_TEMPLATES);
         }
         return ownedTemplates;
     }
@@ -579,7 +577,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     @Override
     public EList<URI> getConflicts() {
         if (conflicts == null) {
-            conflicts = new EDataTypeUniqueEList<URI>(URI.class, this, DescriptionPackage.VIEWPOINT__CONFLICTS);
+            conflicts = new EDataTypeUniqueEList<>(URI.class, this, DescriptionPackage.VIEWPOINT__CONFLICTS);
         }
         return conflicts;
     }
@@ -592,7 +590,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     @Override
     public EList<URI> getReuses() {
         if (reuses == null) {
-            reuses = new EDataTypeUniqueEList<URI>(URI.class, this, DescriptionPackage.VIEWPOINT__REUSES);
+            reuses = new EDataTypeUniqueEList<>(URI.class, this, DescriptionPackage.VIEWPOINT__REUSES);
         }
         return reuses;
     }
@@ -605,7 +603,7 @@ public class ViewpointImpl extends DocumentedElementImpl implements Viewpoint {
     @Override
     public EList<URI> getCustomizes() {
         if (customizes == null) {
-            customizes = new EDataTypeUniqueEList<URI>(URI.class, this, DescriptionPackage.VIEWPOINT__CUSTOMIZES);
+            customizes = new EDataTypeUniqueEList<>(URI.class, this, DescriptionPackage.VIEWPOINT__CUSTOMIZES);
         }
         return customizes;
     }

@@ -189,7 +189,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
             //
             SiriusEditPlugin.plugin = this;
             SiriusPlugin.getDefault().setUiCallback(new GenericSWTCallBack());
-            sessionFileLoadingListenersRegistry = new HashSet<ISessionFileLoadingListener>();
+            sessionFileLoadingListenersRegistry = new HashSet<>();
         }
 
         /**
@@ -236,7 +236,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
             initPreferences();
 
             adapterFactory = createAdapterFactory();
-            descriptorsToImages = new HashMap<ImageDescriptor, Image>();
+            descriptorsToImages = new HashMap<>();
 
             tabRegistryListener = new ModelExplorerTabRegistryListener();
             tabRegistryListener.init();
@@ -446,7 +446,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
          * @return the created adapter factories
          */
         protected ComposedAdapterFactory createAdapterFactory() {
-            List<ComposeableAdapterFactory> factories = new ArrayList<ComposeableAdapterFactory>();
+            List<ComposeableAdapterFactory> factories = new ArrayList<>();
             factories.add(new ComposedAdapterFactory(ComposedAdapterFactory.Descriptor.Registry.INSTANCE));
             fillItemProviderFactories(factories);
             return new ComposedAdapterFactory(factories);
@@ -506,7 +506,7 @@ public final class SiriusEditPlugin extends EMFPlugin {
         /**
          * Return the preference store to control Sirius core preferences from the UI plugin. This method aims at having
          * only one instance of ScopedPreferenceStore for org.eclipse.sirius preference store.
-         * 
+         *
          * @See {@link SiriusEditPlugin.Implementation#getPreferenceStore()}
          * @return the preference store to control Sirius core preferences from the UI plugin.
          */

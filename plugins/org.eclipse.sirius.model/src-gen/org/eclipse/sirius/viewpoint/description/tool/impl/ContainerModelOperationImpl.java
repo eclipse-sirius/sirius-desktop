@@ -76,7 +76,7 @@ public abstract class ContainerModelOperationImpl extends ModelOperationImpl imp
     @Override
     public EList<ModelOperation> getSubModelOperations() {
         if (subModelOperations == null) {
-            subModelOperations = new EObjectContainmentEList.Resolving<ModelOperation>(ModelOperation.class, this, ToolPackage.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS);
+            subModelOperations = new EObjectContainmentEList.Resolving<>(ModelOperation.class, this, ToolPackage.CONTAINER_MODEL_OPERATION__SUB_MODEL_OPERATIONS);
         }
         return subModelOperations;
     }

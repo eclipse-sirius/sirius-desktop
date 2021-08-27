@@ -466,7 +466,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
         int r = 0;
         int g = 0;
         int b = 0;
-        if (!isEmpty(initialValue)) {
+        if (!ViewpointFactoryImpl.isEmpty(initialValue)) {
             Iterator<String> it = Splitter.on(',').split(initialValue).iterator();
             if (it.hasNext()) {
                 r = toInt(it.next());
@@ -484,7 +484,7 @@ public class ViewpointFactoryImpl extends EFactoryImpl implements ViewpointFacto
     /**
      * Copied from org.eclipse.sirius.common.tools.api.util.StringUtil.isEmpty(String) to avoid a dependency to
      * org.eclipse.sirius.common. Check if a {@link String} is empty. Please use it instead of s.equals("").
-     * 
+     *
      * @param s
      *            the string to test.
      * @return <code>True</code> if this string is empty or <code>null</code>, <code>False</code> otherwise.

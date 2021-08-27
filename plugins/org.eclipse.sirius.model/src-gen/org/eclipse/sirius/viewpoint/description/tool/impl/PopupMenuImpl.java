@@ -75,7 +75,7 @@ public class PopupMenuImpl extends AbstractToolDescriptionImpl implements PopupM
     @Override
     public EList<MenuItemDescription> getMenuItemDescription() {
         if (menuItemDescription == null) {
-            menuItemDescription = new EObjectContainmentEList.Resolving<MenuItemDescription>(MenuItemDescription.class, this, ToolPackage.POPUP_MENU__MENU_ITEM_DESCRIPTION);
+            menuItemDescription = new EObjectContainmentEList.Resolving<>(MenuItemDescription.class, this, ToolPackage.POPUP_MENU__MENU_ITEM_DESCRIPTION);
         }
         return menuItemDescription;
     }

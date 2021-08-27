@@ -77,7 +77,7 @@ public class ValidationItemProviderAdapterFactory extends ValidationAdapterFacto
      *
      * @generated
      */
-    protected Collection<Object> supportedTypes = new ArrayList<Object>();
+    protected Collection<Object> supportedTypes = new ArrayList<>();
 
     /**
      * This constructs an instance. <!-- begin-user-doc --> <!-- end-user-doc -->

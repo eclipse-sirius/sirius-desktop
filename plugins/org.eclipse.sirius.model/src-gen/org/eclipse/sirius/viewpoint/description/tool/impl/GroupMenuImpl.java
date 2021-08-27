@@ -139,7 +139,7 @@ public class GroupMenuImpl extends MenuItemDescriptionImpl implements GroupMenu 
     @Override
     public EList<GroupMenuItem> getItemDescriptions() {
         if (itemDescriptions == null) {
-            itemDescriptions = new EObjectContainmentEList.Resolving<GroupMenuItem>(GroupMenuItem.class, this, ToolPackage.GROUP_MENU__ITEM_DESCRIPTIONS);
+            itemDescriptions = new EObjectContainmentEList.Resolving<>(GroupMenuItem.class, this, ToolPackage.GROUP_MENU__ITEM_DESCRIPTIONS);
         }
         return itemDescriptions;
     }

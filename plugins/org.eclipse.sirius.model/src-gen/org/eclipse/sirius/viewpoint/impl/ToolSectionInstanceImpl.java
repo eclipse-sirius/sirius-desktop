@@ -99,7 +99,7 @@ public class ToolSectionInstanceImpl extends ToolInstanceImpl implements ToolSec
     @Override
     public EList<ToolInstance> getTools() {
         if (tools == null) {
-            tools = new EObjectContainmentEList.Resolving<ToolInstance>(ToolInstance.class, this, ViewpointPackage.TOOL_SECTION_INSTANCE__TOOLS);
+            tools = new EObjectContainmentEList.Resolving<>(ToolInstance.class, this, ViewpointPackage.TOOL_SECTION_INSTANCE__TOOLS);
         }
         return tools;
     }
@@ -154,7 +154,7 @@ public class ToolSectionInstanceImpl extends ToolInstanceImpl implements ToolSec
     @Override
     public EList<ToolSectionInstance> getSubSections() {
         if (subSections == null) {
-            subSections = new EObjectContainmentEList.Resolving<ToolSectionInstance>(ToolSectionInstance.class, this, ViewpointPackage.TOOL_SECTION_INSTANCE__SUB_SECTIONS);
+            subSections = new EObjectContainmentEList.Resolving<>(ToolSectionInstance.class, this, ViewpointPackage.TOOL_SECTION_INSTANCE__SUB_SECTIONS);
         }
         return subSections;
     }

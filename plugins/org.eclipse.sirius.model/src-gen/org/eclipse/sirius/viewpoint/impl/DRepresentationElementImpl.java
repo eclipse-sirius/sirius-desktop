@@ -180,7 +180,7 @@ public abstract class DRepresentationElementImpl extends IdentifiedElementImpl i
     @Override
     public EList<EObject> getSemanticElements() {
         if (semanticElements == null) {
-            semanticElements = new EObjectResolvingEList<EObject>(EObject.class, this, ViewpointPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS);
+            semanticElements = new EObjectResolvingEList<>(EObject.class, this, ViewpointPackage.DREPRESENTATION_ELEMENT__SEMANTIC_ELEMENTS);
         }
         return semanticElements;
     }

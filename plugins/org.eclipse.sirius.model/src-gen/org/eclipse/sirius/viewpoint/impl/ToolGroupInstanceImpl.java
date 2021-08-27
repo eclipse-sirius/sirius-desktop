@@ -88,7 +88,7 @@ public class ToolGroupInstanceImpl extends ToolInstanceImpl implements ToolGroup
     @Override
     public EList<ToolInstance> getTools() {
         if (tools == null) {
-            tools = new EObjectContainmentEList.Resolving<ToolInstance>(ToolInstance.class, this, ViewpointPackage.TOOL_GROUP_INSTANCE__TOOLS);
+            tools = new EObjectContainmentEList.Resolving<>(ToolInstance.class, this, ViewpointPackage.TOOL_GROUP_INSTANCE__TOOLS);
         }
         return tools;
     }

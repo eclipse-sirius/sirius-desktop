@@ -123,7 +123,7 @@ public class UserColorsPaletteImpl extends MinimalEObjectImpl.Container implemen
     @Override
     public EList<UserColor> getEntries() {
         if (entries == null) {
-            entries = new EObjectContainmentEList.Resolving<UserColor>(UserColor.class, this, DescriptionPackage.USER_COLORS_PALETTE__ENTRIES);
+            entries = new EObjectContainmentEList.Resolving<>(UserColor.class, this, DescriptionPackage.USER_COLORS_PALETTE__ENTRIES);
         }
         return entries;
     }

@@ -167,7 +167,7 @@ public class DResourceContainerImpl extends IdentifiedElementImpl implements DRe
     @Override
     public EList<DResource> getMembers() {
         if (members == null) {
-            members = new EObjectContainmentEList.Resolving<DResource>(DResource.class, this, ViewpointPackage.DRESOURCE_CONTAINER__MEMBERS);
+            members = new EObjectContainmentEList.Resolving<>(DResource.class, this, ViewpointPackage.DRESOURCE_CONTAINER__MEMBERS);
         }
         return members;
     }

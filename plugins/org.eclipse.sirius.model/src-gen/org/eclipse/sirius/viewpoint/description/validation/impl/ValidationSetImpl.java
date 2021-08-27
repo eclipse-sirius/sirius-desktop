@@ -138,7 +138,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
     @Override
     public EList<ValidationRule> getOwnedRules() {
         if (ownedRules == null) {
-            ownedRules = new EObjectContainmentEList.Resolving<ValidationRule>(ValidationRule.class, this, ValidationPackage.VALIDATION_SET__OWNED_RULES);
+            ownedRules = new EObjectContainmentEList.Resolving<>(ValidationRule.class, this, ValidationPackage.VALIDATION_SET__OWNED_RULES);
         }
         return ownedRules;
     }
@@ -151,7 +151,7 @@ public class ValidationSetImpl extends DocumentedElementImpl implements Validati
     @Override
     public EList<ValidationRule> getReusedRules() {
         if (reusedRules == null) {
-            reusedRules = new EObjectResolvingEList<ValidationRule>(ValidationRule.class, this, ValidationPackage.VALIDATION_SET__REUSED_RULES);
+            reusedRules = new EObjectResolvingEList<>(ValidationRule.class, this, ValidationPackage.VALIDATION_SET__REUSED_RULES);
         }
         return reusedRules;
     }

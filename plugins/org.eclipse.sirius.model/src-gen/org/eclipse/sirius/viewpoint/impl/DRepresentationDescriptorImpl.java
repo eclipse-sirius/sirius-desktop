@@ -196,7 +196,7 @@ public class DRepresentationDescriptorImpl extends IdentifiedElementImpl impleme
     @Override
     public EList<DAnnotation> getEAnnotations() {
         if (eAnnotations == null) {
-            eAnnotations = new EObjectContainmentEList<DAnnotation>(DAnnotation.class, this, ViewpointPackage.DREPRESENTATION_DESCRIPTOR__EANNOTATIONS);
+            eAnnotations = new EObjectContainmentEList<>(DAnnotation.class, this, ViewpointPackage.DREPRESENTATION_DESCRIPTOR__EANNOTATIONS);
         }
         return eAnnotations;
     }

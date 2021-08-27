@@ -124,8 +124,7 @@ public abstract class RepresentationTemplateImpl extends MinimalEObjectImpl.Cont
     @Override
     public EList<RepresentationDescription> getOwnedRepresentations() {
         if (ownedRepresentations == null) {
-            ownedRepresentations = new EObjectContainmentEList.Resolving<RepresentationDescription>(RepresentationDescription.class, this,
-                    DescriptionPackage.REPRESENTATION_TEMPLATE__OWNED_REPRESENTATIONS);
+            ownedRepresentations = new EObjectContainmentEList.Resolving<>(RepresentationDescription.class, this, DescriptionPackage.REPRESENTATION_TEMPLATE__OWNED_REPRESENTATIONS);
         }
         return ownedRepresentations;
     }

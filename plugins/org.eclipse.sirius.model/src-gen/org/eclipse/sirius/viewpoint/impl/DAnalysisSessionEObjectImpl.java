@@ -181,7 +181,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
     @Override
     public EList<Resource> getResources() {
         if (resources == null) {
-            resources = new EDataTypeUniqueEList<Resource>(Resource.class, this, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__RESOURCES);
+            resources = new EDataTypeUniqueEList<>(Resource.class, this, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__RESOURCES);
         }
         return resources;
     }
@@ -194,7 +194,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
     @Override
     public EList<Resource> getControlledResources() {
         if (controlledResources == null) {
-            controlledResources = new EDataTypeUniqueEList<Resource>(Resource.class, this, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES);
+            controlledResources = new EDataTypeUniqueEList<>(Resource.class, this, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__CONTROLLED_RESOURCES);
         }
         return controlledResources;
     }
@@ -207,7 +207,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
     @Override
     public EList<Viewpoint> getActivatedViewpoints() {
         if (activatedViewpoints == null) {
-            activatedViewpoints = new EObjectResolvingEList<Viewpoint>(Viewpoint.class, this, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__ACTIVATED_VIEWPOINTS);
+            activatedViewpoints = new EObjectResolvingEList<>(Viewpoint.class, this, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__ACTIVATED_VIEWPOINTS);
         }
         return activatedViewpoints;
     }
@@ -220,7 +220,7 @@ public class DAnalysisSessionEObjectImpl extends MinimalEObjectImpl.Container im
     @Override
     public EList<DAnalysis> getAnalyses() {
         if (analyses == null) {
-            analyses = new EObjectResolvingEList<DAnalysis>(DAnalysis.class, this, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__ANALYSES);
+            analyses = new EObjectResolvingEList<>(DAnalysis.class, this, ViewpointPackage.DANALYSIS_SESSION_EOBJECT__ANALYSES);
         }
         return analyses;
     }

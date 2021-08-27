@@ -135,7 +135,7 @@ public abstract class DRepresentationImpl extends IdentifiedElementImpl implemen
     @Override
     public EList<DAnnotation> getEAnnotations() {
         if (eAnnotations == null) {
-            eAnnotations = new EObjectContainmentEList<DAnnotation>(DAnnotation.class, this, ViewpointPackage.DREPRESENTATION__EANNOTATIONS);
+            eAnnotations = new EObjectContainmentEList<>(DAnnotation.class, this, ViewpointPackage.DREPRESENTATION__EANNOTATIONS);
         }
         return eAnnotations;
     }
@@ -178,7 +178,7 @@ public abstract class DRepresentationImpl extends IdentifiedElementImpl implemen
     @Override
     public EList<AnnotationEntry> getOwnedAnnotationEntries() {
         if (ownedAnnotationEntries == null) {
-            ownedAnnotationEntries = new EObjectContainmentEList.Resolving<AnnotationEntry>(AnnotationEntry.class, this, ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES);
+            ownedAnnotationEntries = new EObjectContainmentEList.Resolving<>(AnnotationEntry.class, this, ViewpointPackage.DREPRESENTATION__OWNED_ANNOTATION_ENTRIES);
         }
         return ownedAnnotationEntries;
     }

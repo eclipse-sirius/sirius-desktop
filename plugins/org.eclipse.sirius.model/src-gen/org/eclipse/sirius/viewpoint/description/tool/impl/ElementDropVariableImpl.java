@@ -78,7 +78,7 @@ public class ElementDropVariableImpl extends AbstractVariableImpl implements Ele
     @Override
     public EList<SubVariable> getSubVariables() {
         if (subVariables == null) {
-            subVariables = new EObjectContainmentEList.Resolving<SubVariable>(SubVariable.class, this, ToolPackage.ELEMENT_DROP_VARIABLE__SUB_VARIABLES);
+            subVariables = new EObjectContainmentEList.Resolving<>(SubVariable.class, this, ToolPackage.ELEMENT_DROP_VARIABLE__SUB_VARIABLES);
         }
         return subVariables;
     }

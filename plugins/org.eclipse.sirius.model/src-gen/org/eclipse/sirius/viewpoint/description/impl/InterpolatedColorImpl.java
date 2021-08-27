@@ -265,7 +265,7 @@ public class InterpolatedColorImpl extends ColorDescriptionImpl implements Inter
     @Override
     public EList<ColorStep> getColorSteps() {
         if (colorSteps == null) {
-            colorSteps = new EObjectContainmentEList.Resolving<ColorStep>(ColorStep.class, this, DescriptionPackage.INTERPOLATED_COLOR__COLOR_STEPS);
+            colorSteps = new EObjectContainmentEList.Resolving<>(ColorStep.class, this, DescriptionPackage.INTERPOLATED_COLOR__COLOR_STEPS);
         }
         return colorSteps;
     }

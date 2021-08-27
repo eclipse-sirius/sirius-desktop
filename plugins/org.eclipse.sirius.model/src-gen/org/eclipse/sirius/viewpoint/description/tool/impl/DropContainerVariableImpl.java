@@ -78,7 +78,7 @@ public class DropContainerVariableImpl extends AbstractVariableImpl implements D
     @Override
     public EList<SubVariable> getSubVariables() {
         if (subVariables == null) {
-            subVariables = new EObjectContainmentEList.Resolving<SubVariable>(SubVariable.class, this, ToolPackage.DROP_CONTAINER_VARIABLE__SUB_VARIABLES);
+            subVariables = new EObjectContainmentEList.Resolving<>(SubVariable.class, this, ToolPackage.DROP_CONTAINER_VARIABLE__SUB_VARIABLES);
         }
         return subVariables;
     }

@@ -93,7 +93,7 @@ public class ExternalJavaActionCallImpl extends MenuItemDescriptionWithIconImpl 
     @Override
     public EList<ModelOperation> getSubModelOperations() {
         if (subModelOperations == null) {
-            subModelOperations = new EObjectContainmentEList.Resolving<ModelOperation>(ModelOperation.class, this, ToolPackage.EXTERNAL_JAVA_ACTION_CALL__SUB_MODEL_OPERATIONS);
+            subModelOperations = new EObjectContainmentEList.Resolving<>(ModelOperation.class, this, ToolPackage.EXTERNAL_JAVA_ACTION_CALL__SUB_MODEL_OPERATIONS);
         }
         return subModelOperations;
     }

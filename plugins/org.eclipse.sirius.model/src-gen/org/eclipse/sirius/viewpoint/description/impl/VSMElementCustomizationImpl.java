@@ -125,8 +125,7 @@ public class VSMElementCustomizationImpl extends MinimalEObjectImpl.Container im
     @Override
     public EList<EStructuralFeatureCustomization> getFeatureCustomizations() {
         if (featureCustomizations == null) {
-            featureCustomizations = new EObjectContainmentEList.Resolving<EStructuralFeatureCustomization>(EStructuralFeatureCustomization.class, this,
-                    DescriptionPackage.VSM_ELEMENT_CUSTOMIZATION__FEATURE_CUSTOMIZATIONS);
+            featureCustomizations = new EObjectContainmentEList.Resolving<>(EStructuralFeatureCustomization.class, this, DescriptionPackage.VSM_ELEMENT_CUSTOMIZATION__FEATURE_CUSTOMIZATIONS);
         }
         return featureCustomizations;
     }

@@ -308,7 +308,7 @@ public abstract class AbstractToolDescriptionImpl extends DocumentedElementImpl 
     @Override
     public EList<ToolFilterDescription> getFilters() {
         if (filters == null) {
-            filters = new EObjectContainmentEList.Resolving<ToolFilterDescription>(ToolFilterDescription.class, this, ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS);
+            filters = new EObjectContainmentEList.Resolving<>(ToolFilterDescription.class, this, ToolPackage.ABSTRACT_TOOL_DESCRIPTION__FILTERS);
         }
         return filters;
     }

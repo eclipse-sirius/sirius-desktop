@@ -203,7 +203,7 @@ public class BasicLabelStyleDescriptionImpl extends MinimalEObjectImpl.Container
     @Override
     public EList<FontFormat> getLabelFormat() {
         if (labelFormat == null) {
-            labelFormat = new EDataTypeUniqueEList<FontFormat>(FontFormat.class, this, StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_FORMAT);
+            labelFormat = new EDataTypeUniqueEList<>(FontFormat.class, this, StylePackage.BASIC_LABEL_STYLE_DESCRIPTION__LABEL_FORMAT);
         }
         return labelFormat;
     }

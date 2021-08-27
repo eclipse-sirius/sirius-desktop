@@ -119,7 +119,7 @@ public class DAnnotationEntryImpl extends IdentifiedElementImpl implements DAnno
     @Override
     public EList<String> getDetails() {
         if (details == null) {
-            details = new EDataTypeUniqueEList<String>(String.class, this, DescriptionPackage.DANNOTATION_ENTRY__DETAILS);
+            details = new EDataTypeUniqueEList<>(String.class, this, DescriptionPackage.DANNOTATION_ENTRY__DETAILS);
         }
         return details;
     }

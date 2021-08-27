@@ -73,7 +73,7 @@ public class ViewValidationRuleImpl extends ValidationRuleImpl implements ViewVa
     @Override
     public EList<RepresentationElementMapping> getTargets() {
         if (targets == null) {
-            targets = new EObjectResolvingEList<RepresentationElementMapping>(RepresentationElementMapping.class, this, ValidationPackage.VIEW_VALIDATION_RULE__TARGETS);
+            targets = new EObjectResolvingEList<>(RepresentationElementMapping.class, this, ValidationPackage.VIEW_VALIDATION_RULE__TARGETS);
         }
         return targets;
     }

@@ -74,7 +74,7 @@ public abstract class PasteTargetDescriptionImpl extends MinimalEObjectImpl.Cont
     @Override
     public EList<PasteDescription> getPasteDescriptions() {
         if (pasteDescriptions == null) {
-            pasteDescriptions = new EObjectResolvingEList<PasteDescription>(PasteDescription.class, this, DescriptionPackage.PASTE_TARGET_DESCRIPTION__PASTE_DESCRIPTIONS);
+            pasteDescriptions = new EObjectResolvingEList<>(PasteDescription.class, this, DescriptionPackage.PASTE_TARGET_DESCRIPTION__PASTE_DESCRIPTIONS);
         }
         return pasteDescriptions;
     }

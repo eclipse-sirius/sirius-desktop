@@ -183,7 +183,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
     @Override
     public EList<RuleAudit> getAudits() {
         if (audits == null) {
-            audits = new EObjectContainmentEList.Resolving<RuleAudit>(RuleAudit.class, this, ValidationPackage.VALIDATION_RULE__AUDITS);
+            audits = new EObjectContainmentEList.Resolving<>(RuleAudit.class, this, ValidationPackage.VALIDATION_RULE__AUDITS);
         }
         return audits;
     }
@@ -196,7 +196,7 @@ public abstract class ValidationRuleImpl extends IdentifiedElementImpl implement
     @Override
     public EList<ValidationFix> getFixes() {
         if (fixes == null) {
-            fixes = new EObjectContainmentEList.Resolving<ValidationFix>(ValidationFix.class, this, ValidationPackage.VALIDATION_RULE__FIXES);
+            fixes = new EObjectContainmentEList.Resolving<>(ValidationFix.class, this, ValidationPackage.VALIDATION_RULE__FIXES);
         }
         return fixes;
     }

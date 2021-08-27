@@ -161,7 +161,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
     @Override
     public EList<EObject> getElementsToSelect() {
         if (elementsToSelect == null) {
-            elementsToSelect = new EObjectEList.Unsettable<EObject>(EObject.class, this, ViewpointPackage.UI_STATE__ELEMENTS_TO_SELECT);
+            elementsToSelect = new EObjectEList.Unsettable<>(EObject.class, this, ViewpointPackage.UI_STATE__ELEMENTS_TO_SELECT);
         }
         return elementsToSelect;
     }
@@ -220,7 +220,7 @@ public class UIStateImpl extends MinimalEObjectImpl.Container implements UIState
     @Override
     public EList<ToolSectionInstance> getToolSections() {
         if (toolSections == null) {
-            toolSections = new EObjectEList.Unsettable<ToolSectionInstance>(ToolSectionInstance.class, this, ViewpointPackage.UI_STATE__TOOL_SECTIONS);
+            toolSections = new EObjectEList.Unsettable<>(ToolSectionInstance.class, this, ViewpointPackage.UI_STATE__TOOL_SECTIONS);
         }
         return toolSections;
     }

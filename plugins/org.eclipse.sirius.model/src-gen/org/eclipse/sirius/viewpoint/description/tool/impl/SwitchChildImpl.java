@@ -76,7 +76,7 @@ public abstract class SwitchChildImpl extends MinimalEObjectImpl.Container imple
     @Override
     public EList<ModelOperation> getSubModelOperations() {
         if (subModelOperations == null) {
-            subModelOperations = new EObjectContainmentEList.Resolving<ModelOperation>(ModelOperation.class, this, ToolPackage.SWITCH_CHILD__SUB_MODEL_OPERATIONS);
+            subModelOperations = new EObjectContainmentEList.Resolving<>(ModelOperation.class, this, ToolPackage.SWITCH_CHILD__SUB_MODEL_OPERATIONS);
         }
         return subModelOperations;
     }

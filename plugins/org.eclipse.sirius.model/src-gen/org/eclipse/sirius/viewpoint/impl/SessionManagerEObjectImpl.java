@@ -76,7 +76,7 @@ public class SessionManagerEObjectImpl extends MinimalEObjectImpl.Container impl
     @Override
     public EList<DAnalysisSessionEObject> getOwnedSessions() {
         if (ownedSessions == null) {
-            ownedSessions = new EObjectContainmentEList.Resolving<DAnalysisSessionEObject>(DAnalysisSessionEObject.class, this, ViewpointPackage.SESSION_MANAGER_EOBJECT__OWNED_SESSIONS);
+            ownedSessions = new EObjectContainmentEList.Resolving<>(DAnalysisSessionEObject.class, this, ViewpointPackage.SESSION_MANAGER_EOBJECT__OWNED_SESSIONS);
         }
         return ownedSessions;
     }

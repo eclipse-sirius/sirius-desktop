@@ -12,7 +12,7 @@
     importOrganizing="true" cleanup="true">
   <foreignModel>viewpoint.ecore</foreignModel>
   <genPackages prefix="Viewpoint" basePackage="org.eclipse.sirius" disposableProviderFactory="true"
-      ecorePackage="viewpoint.ecore#/">
+      fileExtensions="aird" ecorePackage="viewpoint.ecore#/">
     <genEnums ecoreEnum="viewpoint.ecore#//FontFormat">
       <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//FontFormat/italic"/>
       <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//FontFormat/bold"/>
@@ -157,7 +157,7 @@
     </genClasses>
     <nestedGenPackages prefix="Description" basePackage="org.eclipse.sirius.viewpoint"
         resource="XMI" disposableProviderFactory="true" extensibleProviderFactory="true"
-        ecorePackage="viewpoint.ecore#//description">
+        fileExtensions="odesign" ecorePackage="viewpoint.ecore#//description">
       <genEnums ecoreEnum="viewpoint.ecore#//description/Position">
         <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/Position/NORTH"/>
         <genEnumLiterals ecoreEnumLiteral="viewpoint.ecore#//description/Position/WEST"/>

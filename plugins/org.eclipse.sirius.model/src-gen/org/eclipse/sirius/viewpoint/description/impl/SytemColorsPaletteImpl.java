@@ -76,7 +76,7 @@ public class SytemColorsPaletteImpl extends MinimalEObjectImpl.Container impleme
     @Override
     public EList<SystemColor> getEntries() {
         if (entries == null) {
-            entries = new EObjectContainmentEList.Resolving<SystemColor>(SystemColor.class, this, DescriptionPackage.SYTEM_COLORS_PALETTE__ENTRIES);
+            entries = new EObjectContainmentEList.Resolving<>(SystemColor.class, this, DescriptionPackage.SYTEM_COLORS_PALETTE__ENTRIES);
         }
         return entries;
     }

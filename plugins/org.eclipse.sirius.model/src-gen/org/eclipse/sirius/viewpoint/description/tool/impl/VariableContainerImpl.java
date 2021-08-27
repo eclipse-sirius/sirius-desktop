@@ -77,7 +77,7 @@ public abstract class VariableContainerImpl extends MinimalEObjectImpl.Container
     @Override
     public EList<SubVariable> getSubVariables() {
         if (subVariables == null) {
-            subVariables = new EObjectContainmentEList.Resolving<SubVariable>(SubVariable.class, this, ToolPackage.VARIABLE_CONTAINER__SUB_VARIABLES);
+            subVariables = new EObjectContainmentEList.Resolving<>(SubVariable.class, this, ToolPackage.VARIABLE_CONTAINER__SUB_VARIABLES);
         }
         return subVariables;
     }

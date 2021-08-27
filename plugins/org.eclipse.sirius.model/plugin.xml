@@ -29,7 +29,15 @@
        class = "org.eclipse.sirius.viewpoint.description.DescriptionPackage"
        genModel = "model/viewpoint.genmodel" /> 
   </extension>
-  
+
+   <extension
+         point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            class="org.eclipse.sirius.viewpoint.description.util.DescriptionResourceFactoryImpl"
+            type="odesign">
+      </parser>
+   </extension>
+
   <extension point="org.eclipse.emf.ecore.generated_package">
     <package 
        uri = "http://www.eclipse.org/sirius/description/style/1.1.0" 

@@ -88,7 +88,7 @@ public class SwitchImpl extends ModelOperationImpl implements Switch {
     @Override
     public EList<Case> getCases() {
         if (cases == null) {
-            cases = new EObjectContainmentEList.Resolving<Case>(Case.class, this, ToolPackage.SWITCH__CASES);
+            cases = new EObjectContainmentEList.Resolving<>(Case.class, this, ToolPackage.SWITCH__CASES);
         }
         return cases;
     }

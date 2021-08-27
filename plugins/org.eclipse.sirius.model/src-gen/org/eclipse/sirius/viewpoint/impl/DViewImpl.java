@@ -224,8 +224,7 @@ public class DViewImpl extends IdentifiedElementImpl implements DView {
     @Override
     public EList<DRepresentationDescriptor> getOwnedRepresentationDescriptors() {
         if (ownedRepresentationDescriptors == null) {
-            ownedRepresentationDescriptors = new EObjectContainmentEList.Resolving<DRepresentationDescriptor>(DRepresentationDescriptor.class, this,
-                    ViewpointPackage.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS);
+            ownedRepresentationDescriptors = new EObjectContainmentEList.Resolving<>(DRepresentationDescriptor.class, this, ViewpointPackage.DVIEW__OWNED_REPRESENTATION_DESCRIPTORS);
         }
         return ownedRepresentationDescriptors;
     }

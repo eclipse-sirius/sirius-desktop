@@ -87,7 +87,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
     @Override
     public EList<EStructuralFeatureCustomization> getReuse() {
         if (reuse == null) {
-            reuse = new EObjectResolvingEList<EStructuralFeatureCustomization>(EStructuralFeatureCustomization.class, this, DescriptionPackage.VSM_ELEMENT_CUSTOMIZATION_REUSE__REUSE);
+            reuse = new EObjectResolvingEList<>(EStructuralFeatureCustomization.class, this, DescriptionPackage.VSM_ELEMENT_CUSTOMIZATION_REUSE__REUSE);
         }
         return reuse;
     }
@@ -100,7 +100,7 @@ public class VSMElementCustomizationReuseImpl extends MinimalEObjectImpl.Contain
     @Override
     public EList<EObject> getAppliedOn() {
         if (appliedOn == null) {
-            appliedOn = new EObjectResolvingEList<EObject>(EObject.class, this, DescriptionPackage.VSM_ELEMENT_CUSTOMIZATION_REUSE__APPLIED_ON);
+            appliedOn = new EObjectResolvingEList<>(EObject.class, this, DescriptionPackage.VSM_ELEMENT_CUSTOMIZATION_REUSE__APPLIED_ON);
         }
         return appliedOn;
     }

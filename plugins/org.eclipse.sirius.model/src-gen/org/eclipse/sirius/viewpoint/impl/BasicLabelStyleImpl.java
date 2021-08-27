@@ -185,7 +185,7 @@ public class BasicLabelStyleImpl extends CustomizableImpl implements BasicLabelS
     @Override
     public EList<FontFormat> getLabelFormat() {
         if (labelFormat == null) {
-            labelFormat = new EDataTypeUniqueEList<FontFormat>(FontFormat.class, this, ViewpointPackage.BASIC_LABEL_STYLE__LABEL_FORMAT);
+            labelFormat = new EDataTypeUniqueEList<>(FontFormat.class, this, ViewpointPackage.BASIC_LABEL_STYLE__LABEL_FORMAT);
         }
         return labelFormat;
     }

@@ -76,8 +76,7 @@ public class CustomizationImpl extends MinimalEObjectImpl.Container implements C
     @Override
     public EList<IVSMElementCustomization> getVsmElementCustomizations() {
         if (vsmElementCustomizations == null) {
-            vsmElementCustomizations = new EObjectContainmentEList.Resolving<IVSMElementCustomization>(IVSMElementCustomization.class, this,
-                    DescriptionPackage.CUSTOMIZATION__VSM_ELEMENT_CUSTOMIZATIONS);
+            vsmElementCustomizations = new EObjectContainmentEList.Resolving<>(IVSMElementCustomization.class, this, DescriptionPackage.CUSTOMIZATION__VSM_ELEMENT_CUSTOMIZATIONS);
         }
         return vsmElementCustomizations;
     }

@@ -86,8 +86,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
     @Override
     public EList<RepresentationCreationDescription> getDetailDescriptions() {
         if (detailDescriptions == null) {
-            detailDescriptions = new EObjectResolvingEList<RepresentationCreationDescription>(RepresentationCreationDescription.class, this,
-                    DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__DETAIL_DESCRIPTIONS);
+            detailDescriptions = new EObjectResolvingEList<>(RepresentationCreationDescription.class, this, DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__DETAIL_DESCRIPTIONS);
         }
         return detailDescriptions;
     }
@@ -100,8 +99,7 @@ public abstract class RepresentationElementMappingImpl extends IdentifiedElement
     @Override
     public EList<RepresentationNavigationDescription> getNavigationDescriptions() {
         if (navigationDescriptions == null) {
-            navigationDescriptions = new EObjectResolvingEList<RepresentationNavigationDescription>(RepresentationNavigationDescription.class, this,
-                    DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__NAVIGATION_DESCRIPTIONS);
+            navigationDescriptions = new EObjectResolvingEList<>(RepresentationNavigationDescription.class, this, DescriptionPackage.REPRESENTATION_ELEMENT_MAPPING__NAVIGATION_DESCRIPTIONS);
         }
         return navigationDescriptions;
     }

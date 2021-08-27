@@ -170,7 +170,7 @@ public class DAnalysisImpl extends IdentifiedElementImpl implements DAnalysis {
     @Override
     public EList<DAnalysis> getReferencedAnalysis() {
         if (referencedAnalysis == null) {
-            referencedAnalysis = new EObjectResolvingEList<DAnalysis>(DAnalysis.class, this, ViewpointPackage.DANALYSIS__REFERENCED_ANALYSIS);
+            referencedAnalysis = new EObjectResolvingEList<>(DAnalysis.class, this, ViewpointPackage.DANALYSIS__REFERENCED_ANALYSIS);
         }
         return referencedAnalysis;
     }
@@ -190,7 +190,7 @@ public class DAnalysisImpl extends IdentifiedElementImpl implements DAnalysis {
         // so it's likely that an appropriate subclass of
         // org.eclipse.emf.ecore.util.EcoreEList should be used.
 
-        Collection<EObject> models = new ArrayList<EObject>();
+        Collection<EObject> models = new ArrayList<>();
         Resource eResource = eResource();
         ResourceSet resourceSet = eResource != null ? eResource.getResourceSet() : null;
         if (resourceSet != null) {
@@ -205,7 +205,7 @@ public class DAnalysisImpl extends IdentifiedElementImpl implements DAnalysis {
             }
         }
 
-        return new EcoreEList.UnmodifiableEList<EObject>(this, ViewpointPackage.eINSTANCE.getDAnalysis_Models(), models.size(), models.toArray());
+        return new EcoreEList.UnmodifiableEList<>(this, ViewpointPackage.eINSTANCE.getDAnalysis_Models(), models.size(), models.toArray());
     }
 
     /**
@@ -239,7 +239,7 @@ public class DAnalysisImpl extends IdentifiedElementImpl implements DAnalysis {
     @Override
     public EList<DAnnotationEntry> getEAnnotations() {
         if (eAnnotations == null) {
-            eAnnotations = new EObjectContainmentEList<DAnnotationEntry>(DAnnotationEntry.class, this, ViewpointPackage.DANALYSIS__EANNOTATIONS);
+            eAnnotations = new EObjectContainmentEList<>(DAnnotationEntry.class, this, ViewpointPackage.DANALYSIS__EANNOTATIONS);
         }
         return eAnnotations;
     }
@@ -252,7 +252,7 @@ public class DAnalysisImpl extends IdentifiedElementImpl implements DAnalysis {
     @Override
     public EList<DView> getOwnedViews() {
         if (ownedViews == null) {
-            ownedViews = new EObjectContainmentEList.Resolving<DView>(DView.class, this, ViewpointPackage.DANALYSIS__OWNED_VIEWS);
+            ownedViews = new EObjectContainmentEList.Resolving<>(DView.class, this, ViewpointPackage.DANALYSIS__OWNED_VIEWS);
         }
         return ownedViews;
     }
@@ -265,7 +265,7 @@ public class DAnalysisImpl extends IdentifiedElementImpl implements DAnalysis {
     @Override
     public EList<DView> getSelectedViews() {
         if (selectedViews == null) {
-            selectedViews = new EObjectResolvingEList<DView>(DView.class, this, ViewpointPackage.DANALYSIS__SELECTED_VIEWS);
+            selectedViews = new EObjectResolvingEList<>(DView.class, this, ViewpointPackage.DANALYSIS__SELECTED_VIEWS);
         }
         return selectedViews;
     }
@@ -278,7 +278,7 @@ public class DAnalysisImpl extends IdentifiedElementImpl implements DAnalysis {
     @Override
     public EList<DFeatureExtension> getOwnedFeatureExtensions() {
         if (ownedFeatureExtensions == null) {
-            ownedFeatureExtensions = new EObjectContainmentEList.Resolving<DFeatureExtension>(DFeatureExtension.class, this, ViewpointPackage.DANALYSIS__OWNED_FEATURE_EXTENSIONS);
+            ownedFeatureExtensions = new EObjectContainmentEList.Resolving<>(DFeatureExtension.class, this, ViewpointPackage.DANALYSIS__OWNED_FEATURE_EXTENSIONS);
         }
         return ownedFeatureExtensions;
     }
@@ -315,7 +315,7 @@ public class DAnalysisImpl extends IdentifiedElementImpl implements DAnalysis {
     @Override
     public EList<ResourceDescriptor> getSemanticResources() {
         if (semanticResources == null) {
-            semanticResources = new EDataTypeUniqueEList<ResourceDescriptor>(ResourceDescriptor.class, this, ViewpointPackage.DANALYSIS__SEMANTIC_RESOURCES);
+            semanticResources = new EDataTypeUniqueEList<>(ResourceDescriptor.class, this, ViewpointPackage.DANALYSIS__SEMANTIC_RESOURCES);
         }
         return semanticResources;
     }

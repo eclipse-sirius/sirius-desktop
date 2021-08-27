@@ -70,7 +70,7 @@ public abstract class CustomizableImpl extends IdentifiedElementImpl implements 
     @Override
     public EList<String> getCustomFeatures() {
         if (customFeatures == null) {
-            customFeatures = new EDataTypeUniqueEList<String>(String.class, this, ViewpointPackage.CUSTOMIZABLE__CUSTOM_FEATURES);
+            customFeatures = new EDataTypeUniqueEList<>(String.class, this, ViewpointPackage.CUSTOMIZABLE__CUSTOM_FEATURES);
         }
         return customFeatures;
     }

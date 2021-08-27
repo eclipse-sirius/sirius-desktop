@@ -181,7 +181,7 @@ public class EnvironmentImpl extends MinimalEObjectImpl.Container implements Env
     @Override
     public EList<ToolEntry> getDefaultTools() {
         if (defaultTools == null) {
-            defaultTools = new EObjectContainmentEList.Resolving<ToolEntry>(ToolEntry.class, this, DescriptionPackage.ENVIRONMENT__DEFAULT_TOOLS);
+            defaultTools = new EObjectContainmentEList.Resolving<>(ToolEntry.class, this, DescriptionPackage.ENVIRONMENT__DEFAULT_TOOLS);
         }
         return defaultTools;
     }

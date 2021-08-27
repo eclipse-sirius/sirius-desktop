@@ -78,7 +78,7 @@ public class ContainerViewVariableImpl extends AbstractVariableImpl implements C
     @Override
     public EList<SubVariable> getSubVariables() {
         if (subVariables == null) {
-            subVariables = new EObjectContainmentEList.Resolving<SubVariable>(SubVariable.class, this, ToolPackage.CONTAINER_VIEW_VARIABLE__SUB_VARIABLES);
+            subVariables = new EObjectContainmentEList.Resolving<>(SubVariable.class, this, ToolPackage.CONTAINER_VIEW_VARIABLE__SUB_VARIABLES);
         }
         return subVariables;
     }

@@ -77,8 +77,7 @@ public class LabelBorderStylesImpl extends MinimalEObjectImpl.Container implemen
     @Override
     public EList<LabelBorderStyleDescription> getLabelBorderStyleDescriptions() {
         if (labelBorderStyleDescriptions == null) {
-            labelBorderStyleDescriptions = new EObjectContainmentEList.Resolving<LabelBorderStyleDescription>(LabelBorderStyleDescription.class, this,
-                    StylePackage.LABEL_BORDER_STYLES__LABEL_BORDER_STYLE_DESCRIPTIONS);
+            labelBorderStyleDescriptions = new EObjectContainmentEList.Resolving<>(LabelBorderStyleDescription.class, this, StylePackage.LABEL_BORDER_STYLES__LABEL_BORDER_STYLE_DESCRIPTIONS);
         }
         return labelBorderStyleDescriptions;
     }

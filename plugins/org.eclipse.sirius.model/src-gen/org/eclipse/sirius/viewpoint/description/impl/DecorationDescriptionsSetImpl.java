@@ -77,8 +77,7 @@ public class DecorationDescriptionsSetImpl extends MinimalEObjectImpl.Container 
     @Override
     public EList<DecorationDescription> getDecorationDescriptions() {
         if (decorationDescriptions == null) {
-            decorationDescriptions = new EObjectContainmentEList.Resolving<DecorationDescription>(DecorationDescription.class, this,
-                    DescriptionPackage.DECORATION_DESCRIPTIONS_SET__DECORATION_DESCRIPTIONS);
+            decorationDescriptions = new EObjectContainmentEList.Resolving<>(DecorationDescription.class, this, DescriptionPackage.DECORATION_DESCRIPTIONS_SET__DECORATION_DESCRIPTIONS);
         }
         return decorationDescriptions;
     }

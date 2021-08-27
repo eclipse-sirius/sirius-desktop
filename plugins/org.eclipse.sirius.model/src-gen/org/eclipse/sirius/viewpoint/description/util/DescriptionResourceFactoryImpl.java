@@ -56,11 +56,11 @@ public class DescriptionResourceFactoryImpl extends ResourceFactoryImpl {
         XMIResource resource = new DescriptionResourceImpl(uri);
 
         // set load options
-        final Map<Object, Object> loadOptions = new HashMap<Object, Object>();
+        final Map<Object, Object> loadOptions = new HashMap<>();
         loadOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
 
         // set save options
-        final Map<Object, Object> saveOptions = new HashMap<Object, Object>();
+        final Map<Object, Object> saveOptions = new HashMap<>();
         saveOptions.put(XMLResource.OPTION_RECORD_UNKNOWN_FEATURE, Boolean.TRUE);
 
         // handle migration option

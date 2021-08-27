@@ -226,7 +226,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
     @Override
     public EList<Viewpoint> getOwnedViewpoints() {
         if (ownedViewpoints == null) {
-            ownedViewpoints = new EObjectContainmentEList.Resolving<Viewpoint>(Viewpoint.class, this, DescriptionPackage.GROUP__OWNED_VIEWPOINTS);
+            ownedViewpoints = new EObjectContainmentEList.Resolving<>(Viewpoint.class, this, DescriptionPackage.GROUP__OWNED_VIEWPOINTS);
         }
         return ownedViewpoints;
     }
@@ -281,7 +281,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
     @Override
     public EList<UserColorsPalette> getUserColorsPalettes() {
         if (userColorsPalettes == null) {
-            userColorsPalettes = new EObjectContainmentEList.Resolving<UserColorsPalette>(UserColorsPalette.class, this, DescriptionPackage.GROUP__USER_COLORS_PALETTES);
+            userColorsPalettes = new EObjectContainmentEList.Resolving<>(UserColorsPalette.class, this, DescriptionPackage.GROUP__USER_COLORS_PALETTES);
         }
         return userColorsPalettes;
     }
@@ -318,7 +318,7 @@ public class GroupImpl extends DModelElementImpl implements Group {
     @Override
     public EList<Extension> getExtensions() {
         if (extensions == null) {
-            extensions = new EObjectContainmentEList.Resolving<Extension>(Extension.class, this, DescriptionPackage.GROUP__EXTENSIONS);
+            extensions = new EObjectContainmentEList.Resolving<>(Extension.class, this, DescriptionPackage.GROUP__EXTENSIONS);
         }
         return extensions;
     }
