@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -100,6 +100,8 @@ public class DRepresentationDescriptorToDRepresentationLinkManager {
     }
 
     private Optional<DRepresentation> getRepresentationInternal(boolean loadOnDemand) {
+        Optional<DRepresentation> dRepresentationOpt = Optional.empty();
+
         ResourceDescriptor resourceDescriptor = repDescriptor.getRepPath();
         Resource resource = repDescriptor.eResource();
 
@@ -132,10 +134,17 @@ public class DRepresentationDescriptorToDRepresentationLinkManager {
             if (representationResource.isPresent() && repId != null) {
                 // We look for the representation with the repId (retrieved from
                 // the uri fragment) within the representation resource.
-                return representationResource.get().getContents().stream().filter(DRepresentation.class::isInstance).map(DRepresentation.class::cast)
-                        .filter(dRepresentation -> repId.equals(dRepresentation.getUid())).findFirst();
+                try {
+                    dRepresentationOpt = representationResource.get().getContents().stream().filter(DRepresentation.class::isInstance).map(DRepresentation.class::cast)
+                            .filter(dRepresentation -> repId.equals(dRepresentation.getUid())).findFirst();
+                } catch (NullPointerException e) {
+                    // In some particular condition, when the Sirius session is a collaborative session based on EMF
+                    // CDO, DelegatingSessionProtocol.getSession throws a NPE when trying to load the object revision.
+                    // It corresponds to a case when the session has been closed and the CDORevisionManagerImpl has been
+                    // disposed.
+                }
             }
         }
-        return Optional.empty();
+        return dRepresentationOpt;
     }
 }
