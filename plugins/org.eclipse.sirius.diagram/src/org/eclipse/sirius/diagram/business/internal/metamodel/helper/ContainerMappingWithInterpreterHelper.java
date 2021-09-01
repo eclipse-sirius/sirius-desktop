@@ -51,7 +51,6 @@ import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.ContainerStyleDescription;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
-import org.eclipse.sirius.diagram.model.business.internal.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.model.business.internal.description.spec.ContainerMappingSpec;
 import org.eclipse.sirius.diagram.model.business.internal.helper.ContentHelper;
 import org.eclipse.sirius.diagram.model.business.internal.helper.MappingExtHelper;
@@ -219,7 +218,7 @@ public final class ContainerMappingWithInterpreterHelper {
      *            the viewpoint element.
      * @return the created container.
      */
-    public DDiagramElementContainer createContainer(IContainerMappingExt self, EObject modelElement, EObject container, DDiagram dDiagram) {
+    public DDiagramElementContainer createContainer(ContainerMapping self, EObject modelElement, EObject container, DDiagram dDiagram) {
 
         DDiagramElementContainer newContainer = null;
         if (new ContainerMappingQuery(self).isListContainer()) {
@@ -285,7 +284,7 @@ public final class ContainerMappingWithInterpreterHelper {
      * @param container
      *            the container to update.
      */
-    public void updateContainer(IContainerMappingExt self, DDiagramElementContainer container) {
+    public void updateContainer(ContainerMapping self, DDiagramElementContainer container) {
 
         // getting the right style description : default or conditional
         final DSemanticDecorator cContainer = (DSemanticDecorator) container.eContainer();

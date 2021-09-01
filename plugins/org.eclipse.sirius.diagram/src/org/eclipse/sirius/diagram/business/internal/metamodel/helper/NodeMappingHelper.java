@@ -30,7 +30,6 @@ import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.business.internal.metamodel.description.operations.AbstractNodeMappingSpecOperations;
 import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.NodeStyleDescription;
-import org.eclipse.sirius.diagram.model.business.internal.description.extensions.INodeMappingExt;
 import org.eclipse.sirius.diagram.model.business.internal.helper.MappingExtHelper;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -75,7 +74,7 @@ public final class NodeMappingHelper {
      *            the diagram.
      * @return the node created.
      */
-    public DNode createNode(INodeMappingExt self, EObject modelElement, EObject container, DDiagram diagram) {
+    public DNode createNode(NodeMapping self, EObject modelElement, EObject container, DDiagram diagram) {
         final DNode newNode = DiagramFactory.eINSTANCE.createDNode();
 
         // getting the right style description : default or conditional

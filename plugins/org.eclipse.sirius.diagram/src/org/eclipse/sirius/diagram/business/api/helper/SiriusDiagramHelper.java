@@ -31,9 +31,9 @@ import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.business.api.query.GroupQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingWithInterpreterHelper;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DiagramDescription;
-import org.eclipse.sirius.diagram.model.business.internal.description.extensions.IContainerMappingExt;
-import org.eclipse.sirius.diagram.model.business.internal.description.extensions.INodeMappingExt;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.Group;
@@ -66,13 +66,13 @@ public final class SiriusDiagramHelper {
      */
     public static DDiagramElement createElement(final RepresentationElementMapping mapping, final DSemanticDiagram diagram, final EObject modelElement) {
         DDiagramElement created = null;
-        if (mapping instanceof INodeMappingExt) {
+        if (mapping instanceof NodeMapping) {
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(modelElement);
-            created = new NodeMappingHelper(interpreter).createNode((INodeMappingExt) mapping, modelElement, diagram.getTarget(), diagram);
+            created = new NodeMappingHelper(interpreter).createNode((NodeMapping) mapping, modelElement, diagram.getTarget(), diagram);
         }
-        if (mapping instanceof IContainerMappingExt) {
+        if (mapping instanceof ContainerMapping) {
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(diagram.getTarget());
-            return new ContainerMappingWithInterpreterHelper(interpreter).createContainer((IContainerMappingExt) mapping, modelElement, diagram.getTarget(), diagram);
+            return new ContainerMappingWithInterpreterHelper(interpreter).createContainer((ContainerMapping) mapping, modelElement, diagram.getTarget(), diagram);
         }
         return created;
     }

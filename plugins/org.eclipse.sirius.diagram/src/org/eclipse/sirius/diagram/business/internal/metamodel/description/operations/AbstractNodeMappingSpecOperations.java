@@ -45,7 +45,6 @@ import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMapping
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.NodeMapping;
-import org.eclipse.sirius.diagram.model.business.internal.description.extensions.INodeMappingExt;
 import org.eclipse.sirius.diagram.model.business.internal.helper.MappingHelper;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
@@ -116,7 +115,7 @@ public final class AbstractNodeMappingSpecOperations {
                         if (AbstractNodeMappingSpecOperations.isInstanceOf(mapping, eObj, borderMapping.getDomainClass())
                                 && SiriusElementMappingSpecOperations.checkPrecondition(borderMapping, eObj, modelElement, dDiagramElement) && !filterSemantic.contains(couple)) {
                             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(eObj);
-                            final DNode newBorderNode = new NodeMappingHelper(interpreter).createNode((INodeMappingExt) borderMapping, eObj, containerVariable, diagram);
+                            final DNode newBorderNode = new NodeMappingHelper(interpreter).createNode(borderMapping, eObj, containerVariable, diagram);
                             if (dDiagramElement instanceof DNode) {
                                 ((DNode) dDiagramElement).getOwnedBorderedNodes().add(newBorderNode);
                             } else if (dDiagramElement instanceof DNodeContainer) {

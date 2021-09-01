@@ -44,13 +44,13 @@ import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.business.api.query.EdgeMappingQuery;
 import org.eclipse.sirius.diagram.business.api.query.IEdgeMappingQuery;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
+import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.DescriptionPackage;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.EdgeMappingImport;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
+import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
-import org.eclipse.sirius.diagram.model.business.internal.description.extensions.IContainerMappingExt;
-import org.eclipse.sirius.diagram.model.business.internal.description.extensions.INodeMappingExt;
 import org.eclipse.sirius.diagram.model.business.internal.description.spec.EdgeMappingImportWrapper;
 import org.eclipse.sirius.diagram.model.business.internal.helper.MappingExtHelper;
 import org.eclipse.sirius.diagram.tools.internal.Messages;
@@ -331,11 +331,11 @@ public final class EdgeMappingHelper {
 
     private List<DDiagramElement> findDNodeFromEObject(AbstractNodeMapping currentNodeMapping, EObject current) {
         List<DDiagramElement> result = new BasicEList<>();
-        if (currentNodeMapping instanceof IContainerMappingExt) {
-            IContainerMappingExt containerMapping = (IContainerMappingExt) currentNodeMapping;
+        if (currentNodeMapping instanceof ContainerMapping) {
+            ContainerMapping containerMapping = (ContainerMapping) currentNodeMapping;
             result = MappingExtHelper.findDNodeFromEObject(containerMapping, current);
-        } else if (currentNodeMapping instanceof INodeMappingExt) {
-            INodeMappingExt nodeMapping = (INodeMappingExt) currentNodeMapping;
+        } else if (currentNodeMapping instanceof NodeMapping) {
+            NodeMapping nodeMapping = (NodeMapping) currentNodeMapping;
             result = MappingExtHelper.findDNodeFromEObject(nodeMapping, current);
         }
         return result;

@@ -45,8 +45,10 @@ public final class MappingExtHelper {
      * @param self
      *            the container mapping.
      */
-    public static void clearDNodesDone(IContainerMappingExt self) {
-        self.getViewContainerDone().clear();
+    public static void clearDNodesDone(ContainerMapping self) {
+        if (self instanceof IContainerMappingExt) {
+            ((IContainerMappingExt) self).getViewContainerDone().clear();
+        }
     }
 
     /**
@@ -55,8 +57,10 @@ public final class MappingExtHelper {
      * @param self
      *            the node mapping.
      */
-    public static void clearDNodesDone(INodeMappingExt self) {
-        self.getViewNodesDone().clear();
+    public static void clearDNodesDone(NodeMapping self) {
+        if (self instanceof INodeMappingExt) {
+            ((INodeMappingExt) self).getViewNodesDone().clear();
+        }
     }
 
     /**
@@ -68,8 +72,11 @@ public final class MappingExtHelper {
      *            the semantic element.
      * @return the node that has been created by this mapping and the specified EObject as semantic element.
      */
-    public static EList<DDiagramElement> findDNodeFromEObject(IContainerMappingExt self, EObject object) {
-        EList result = self.getViewContainerDone().get(object);
+    public static EList<DDiagramElement> findDNodeFromEObject(ContainerMapping self, EObject object) {
+        EList result = null;
+        if (self instanceof IContainerMappingExt) {
+            result = ((IContainerMappingExt) self).getViewContainerDone().get(object);
+        }
         if (result == null) {
             result = new BasicEList<DDiagramElement>();
         }
@@ -85,8 +92,11 @@ public final class MappingExtHelper {
      *            the semantic element.
      * @return the node found.
      */
-    public static EList<DDiagramElement> findDNodeFromEObject(INodeMappingExt self, EObject object) {
-        EList result = self.getViewNodesDone().get(object);
+    public static EList<DDiagramElement> findDNodeFromEObject(NodeMapping self, EObject object) {
+        EList result = null;
+        if (self instanceof INodeMappingExt) {
+            result = ((INodeMappingExt) self).getViewNodesDone().get(object);
+        }
         if (result == null) {
             result = new BasicEList<DDiagramElement>();
         }

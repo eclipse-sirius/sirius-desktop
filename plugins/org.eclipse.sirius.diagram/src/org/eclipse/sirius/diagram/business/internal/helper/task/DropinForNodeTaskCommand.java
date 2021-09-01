@@ -26,7 +26,6 @@ import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.NodeMappingHelper;
 import org.eclipse.sirius.diagram.description.AbstractNodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMapping;
-import org.eclipse.sirius.diagram.model.business.internal.description.extensions.INodeMappingExt;
 import org.eclipse.sirius.diagram.model.business.internal.helper.MappingHelper;
 import org.eclipse.sirius.diagram.tools.internal.Messages;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
@@ -111,7 +110,7 @@ public class DropinForNodeTaskCommand extends AbstractCommandTask {
         } else if (abstractDNode == null) {
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(droppedElement);
             if (isBorderNode) {
-                abstractDNode = new NodeMappingHelper(interpreter).createNode((INodeMappingExt) mapping, droppedElement, semanticContainer, parentDiagram);
+                abstractDNode = new NodeMappingHelper(interpreter).createNode(mapping, droppedElement, semanticContainer, parentDiagram);
             } else {
                 abstractDNode = new NodeMappingHelper(interpreter).createListElement(mapping, droppedElement, parentDiagram);
             }
@@ -152,7 +151,7 @@ public class DropinForNodeTaskCommand extends AbstractCommandTask {
             dNode = (DNode) droppedDiagramElement;
         } else {
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(droppedElement);
-            dNode = new NodeMappingHelper(interpreter).createNode((INodeMappingExt) mapping, droppedElement, semanticContainer, parentDiagram);
+            dNode = new NodeMappingHelper(interpreter).createNode(mapping, droppedElement, semanticContainer, parentDiagram);
         }
 
         final DNodeContainer dNodeContainer = (DNodeContainer) target;
@@ -179,7 +178,7 @@ public class DropinForNodeTaskCommand extends AbstractCommandTask {
             dNode = (DNode) droppedDiagramElement;
         } else {
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(droppedElement);
-            dNode = new NodeMappingHelper(interpreter).createNode((INodeMappingExt) mapping, droppedElement, semanticContainer, parentDiagram);
+            dNode = new NodeMappingHelper(interpreter).createNode(mapping, droppedElement, semanticContainer, parentDiagram);
         }
         ((DNode) target).getOwnedBorderedNodes().add(dNode);
         if (!dNode.equals(droppedDiagramElement)) {
@@ -200,7 +199,7 @@ public class DropinForNodeTaskCommand extends AbstractCommandTask {
             dNode = (DNode) droppedDiagramElement;
         } else {
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(droppedElement);
-            dNode = new NodeMappingHelper(interpreter).createNode((INodeMappingExt) mapping, droppedElement, semanticContainer, parentDiagram);
+            dNode = new NodeMappingHelper(interpreter).createNode(mapping, droppedElement, semanticContainer, parentDiagram);
         }
         parentDiagram.getOwnedDiagramElements().add(dNode);
         if (!dNode.equals(droppedDiagramElement)) {

@@ -24,7 +24,6 @@ import org.eclipse.sirius.diagram.DragAndDropTarget;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContainerMappingWithInterpreterHelper;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
 import org.eclipse.sirius.diagram.description.tool.ContainerDropDescription;
-import org.eclipse.sirius.diagram.model.business.internal.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.tools.internal.Messages;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.MetaClassNotFoundException;
@@ -89,9 +88,9 @@ public class DropinForContainerTaskCommand extends AbstractCommandTask {
             // The mapping is the same so we don't create a new
             // DDiagramElementContainer
             newDiagramElementContainer = (DDiagramElementContainer) droppedDiagramElement;
-        } else if (mapping instanceof IContainerMappingExt) {
+        } else if (mapping instanceof ContainerMapping) {
             IInterpreter interpreter = SiriusPlugin.getDefault().getInterpreterRegistry().getInterpreter(semanticContainer);
-            newDiagramElementContainer = new ContainerMappingWithInterpreterHelper(interpreter).createContainer((IContainerMappingExt) mapping, droppedElement, semanticContainer, parentDiagram);
+            newDiagramElementContainer = new ContainerMappingWithInterpreterHelper(interpreter).createContainer(mapping, droppedElement, semanticContainer, parentDiagram);
         }
         if (newDiagramElementContainer != null) {
             if (target instanceof DDiagram) {
