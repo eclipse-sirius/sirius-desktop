@@ -474,12 +474,6 @@ public final class Messages {
     public static String NotificationTask_label;
 
     @TranslatableMessage
-    public static String PaneBasedSelectionWizardDescriptionImpl_choiceOfValuesMsg;
-
-    @TranslatableMessage
-    public static String PaneBasedSelectionWizardDescriptionImpl_selectedValuesMsg;
-
-    @TranslatableMessage
     public static String PrepareNewAnalysisCommand_label;
 
     @TranslatableMessage
@@ -523,9 +517,6 @@ public final class Messages {
 
     @TranslatableMessage
     public static String Saver_savingErrorMsg;
-
-    @TranslatableMessage
-    public static String SelectionWizardDescriptionImpl_title;
 
     @TranslatableMessage
     public static String SessionFactoryImpl_ResourceTypeErrorMsg;
@@ -964,9 +955,6 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ValidImageConstraint_invalidPathErrorMsg;
-
-    @TranslatableMessage
-    public static String ValidationRuleImpl_elementHas;
 
     @TranslatableMessage
     public static String ValidationRuleSpecOperations_evaluationErrorMsg;
