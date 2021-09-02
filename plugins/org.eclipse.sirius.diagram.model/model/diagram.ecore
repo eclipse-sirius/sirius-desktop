@@ -1203,16 +1203,6 @@
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value="An abstract mapping."/>
       </eAnnotations>
-      <eOperations name="findDNodeFromEObject" upperBound="-1" eType="#//DDiagramElement">
-        <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-          <details key="documentation" value="Return the node that has been created by this mapping and the specified EObject as semantic element."/>
-        </eAnnotations>
-        <eParameters name="eObject" eType="ecore:EClass platform:/plugin/org.eclipse.emf.ecore/model/Ecore.ecore#//EObject">
-          <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
-            <details key="documentation" value="The semantic element."/>
-          </eAnnotations>
-        </eParameters>
-      </eOperations>
       <eStructuralFeatures xsi:type="ecore:EAttribute" name="domainClass" lowerBound="1"
           eType="ecore:EDataType ../../org.eclipse.sirius.model/model/viewpoint.ecore#//description/TypeName">
         <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

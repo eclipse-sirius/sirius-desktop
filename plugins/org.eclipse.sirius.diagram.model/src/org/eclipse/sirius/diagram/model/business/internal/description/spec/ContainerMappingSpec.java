@@ -15,7 +15,6 @@ package org.eclipse.sirius.diagram.model.business.internal.description.spec;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -37,18 +36,6 @@ public class ContainerMappingSpec extends ContainerMappingImpl implements IConta
     @Override
     public Map<EObject, EList<DDiagramElement>> getViewContainerDone() {
         return viewContainerDone;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public EList<DDiagramElement> findDNodeFromEObject(final EObject object) {
-        EList result = this.getViewContainerDone().get(object);
-        if (result == null) {
-            result = new BasicEList<DDiagramElement>();
-        }
-        return result;
     }
 
     /**

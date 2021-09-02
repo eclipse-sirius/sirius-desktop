@@ -14,8 +14,6 @@
 package org.eclipse.sirius.diagram.description;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.viewpoint.description.DocumentedElement;
 
 /**
@@ -91,17 +89,5 @@ public interface AbstractNodeMapping extends DiagramElementMapping, DocumentedEl
      * @generated
      */
     EList<NodeMapping> getReusedBorderedNodeMappings();
-
-    /**
-     * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> Return the node that has been created by
-     * this mapping and the specified EObject as semantic element.
-     *
-     * @param eObject
-     *            The semantic element. <!-- end-model-doc -->
-     * @model
-     * @generated
-     */
-    @Deprecated
-    EList<DDiagramElement> findDNodeFromEObject(EObject eObject);
 
 } // AbstractNodeMapping

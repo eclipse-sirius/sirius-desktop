@@ -19,7 +19,6 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.model.business.internal.description.extensions.IContainerMappingExt;
-import org.eclipse.sirius.diagram.model.business.internal.helper.MappingExtHelper;
 import org.eclipse.sirius.diagram.sequence.description.impl.CombinedFragmentMappingImpl;
 
 /**
@@ -34,11 +33,6 @@ public class CombinedFragmentMappingSpec extends CombinedFragmentMappingImpl imp
     @Override
     public Map<EObject, EList<DDiagramElement>> getViewContainerDone() {
         return viewContainerDone;
-    }
-
-    @Override
-    public EList<DDiagramElement> findDNodeFromEObject(final EObject object) {
-        return MappingExtHelper.findDNodeFromEObject(this, object);
     }
 
     @Override

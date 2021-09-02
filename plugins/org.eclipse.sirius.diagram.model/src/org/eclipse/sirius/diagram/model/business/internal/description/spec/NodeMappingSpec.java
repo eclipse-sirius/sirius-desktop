@@ -40,14 +40,6 @@ public class NodeMappingSpec extends NodeMappingImpl implements INodeMappingExt 
         return viewNodesDone;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public EList<DDiagramElement> findDNodeFromEObject(final EObject object) {
-        throw new UnsupportedOperationException();
-    }
-
     /*
      * Behavior inherited from DiagramElementMapping
      */

@@ -430,9 +430,6 @@
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/AbstractNodeMapping/borderedNodeMappings"/>
         <genFeatures notify="false" createChild="false" propertyCategory="Import"
             propertySortChoices="true" ecoreFeature="ecore:EReference diagram.ecore#//description/AbstractNodeMapping/reusedBorderedNodeMappings"/>
-        <genOperations ecoreOperation="diagram.ecore#//description/AbstractNodeMapping/findDNodeFromEObject">
-          <genParameters ecoreParameter="diagram.ecore#//description/AbstractNodeMapping/findDNodeFromEObject/eObject"/>
-        </genOperations>
       </genClasses>
       <genClasses ecoreClass="diagram.ecore#//description/NodeMapping">
         <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference diagram.ecore#//description/NodeMapping/style"/>
