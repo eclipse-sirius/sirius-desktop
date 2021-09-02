@@ -16,8 +16,8 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.NodeMapping;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * Extension to the ContainerMapping interface used by the actual implementation.
@@ -30,6 +30,6 @@ public interface INodeMappingExt extends NodeMapping {
      * 
      * @return the 'viewNodesDone' map for this mapping.
      */
-    Map<EObject, EList<DSemanticDecorator>> getViewNodesDone();
+    Map<EObject, EList<DDiagramElement>> getViewNodesDone();
 
 }

@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.impl.NodeMappingImpl;
 import org.eclipse.sirius.diagram.model.business.internal.description.extensions.INodeMappingExt;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * The implementation of NodeMapping. The actual code should be placed in
@@ -31,13 +30,13 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  */
 public class NodeMappingSpec extends NodeMappingImpl implements INodeMappingExt {
 
-    private final Map<EObject, EList<DSemanticDecorator>> viewNodesDone = new HashMap<EObject, EList<DSemanticDecorator>>();
+    private final Map<EObject, EList<DDiagramElement>> viewNodesDone = new HashMap<>();
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public Map<EObject, EList<DSemanticDecorator>> getViewNodesDone() {
+    public Map<EObject, EList<DDiagramElement>> getViewNodesDone() {
         return viewNodesDone;
     }
 

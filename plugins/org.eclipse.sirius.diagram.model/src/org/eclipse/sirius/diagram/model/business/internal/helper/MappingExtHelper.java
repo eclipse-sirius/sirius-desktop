@@ -23,7 +23,6 @@ import org.eclipse.sirius.diagram.description.NodeMapping;
 import org.eclipse.sirius.diagram.description.NodeMappingImport;
 import org.eclipse.sirius.diagram.model.business.internal.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.model.business.internal.description.extensions.INodeMappingExt;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * Utility class to factor customizations for ContainerMapping and related.
@@ -73,12 +72,12 @@ public final class MappingExtHelper {
      * @return the node that has been created by this mapping and the specified EObject as semantic element.
      */
     public static EList<DDiagramElement> findDNodeFromEObject(ContainerMapping self, EObject object) {
-        EList result = null;
+        EList<DDiagramElement> result = null;
         if (self instanceof IContainerMappingExt) {
             result = ((IContainerMappingExt) self).getViewContainerDone().get(object);
         }
         if (result == null) {
-            result = new BasicEList<DDiagramElement>();
+            result = new BasicEList<>();
         }
         return result;
     }
@@ -93,12 +92,12 @@ public final class MappingExtHelper {
      * @return the node found.
      */
     public static EList<DDiagramElement> findDNodeFromEObject(NodeMapping self, EObject object) {
-        EList result = null;
+        EList<DDiagramElement> result = null;
         if (self instanceof INodeMappingExt) {
             result = ((INodeMappingExt) self).getViewNodesDone().get(object);
         }
         if (result == null) {
-            result = new BasicEList<DDiagramElement>();
+            result = new BasicEList<>();
         }
         return result;
     }
@@ -112,7 +111,7 @@ public final class MappingExtHelper {
      *            the node to mark as done.
      */
     @Deprecated
-    public static void addDoneNode(final AbstractNodeMapping nodeMapping, final DSemanticDecorator node) {
+    public static void addDoneNode(final AbstractNodeMapping nodeMapping, final DDiagramElement node) {
         if (node instanceof NodeMapping) {
             addDoneNode((INodeMappingExt) nodeMapping, node);
         } else if (node instanceof ContainerMapping) {
@@ -133,10 +132,10 @@ public final class MappingExtHelper {
      *            the node to add.
      */
     @Deprecated
-    private static void addDoneNode(IContainerMappingExt self, DSemanticDecorator node) {
-        EList<DSemanticDecorator> list = self.getViewContainerDone().get(node.getTarget());
+    private static void addDoneNode(IContainerMappingExt self, DDiagramElement node) {
+        EList<DDiagramElement> list = self.getViewContainerDone().get(node.getTarget());
         if (list == null) {
-            list = new BasicEList<DSemanticDecorator>();
+            list = new BasicEList<>();
             self.getViewContainerDone().put(node.getTarget(), list);
         }
         list.add(node);
@@ -151,17 +150,17 @@ public final class MappingExtHelper {
      *            the node to add.
      */
     @Deprecated
-    private static void addDoneNode(INodeMappingExt self, DSemanticDecorator node) {
-        EList<DSemanticDecorator> list = self.getViewNodesDone().get(node.getTarget());
+    private static void addDoneNode(INodeMappingExt self, DDiagramElement node) {
+        EList<DDiagramElement> list = self.getViewNodesDone().get(node.getTarget());
         if (list == null) {
-            list = new BasicEList<DSemanticDecorator>();
+            list = new BasicEList<>();
             self.getViewNodesDone().put(node.getTarget(), list);
         }
         list.add(node);
     }
 
     @Deprecated
-    private static void addDoneNode(final ContainerMappingImport containerMapping, final DSemanticDecorator node) {
+    private static void addDoneNode(final ContainerMappingImport containerMapping, final DDiagramElement node) {
         addDoneNode((IContainerMappingExt) containerMapping, node);
         if (containerMapping.getImportedMapping() != null && containerMapping.getImportedMapping() != containerMapping) {
             addDoneNode(containerMapping.getImportedMapping(), node);
@@ -169,7 +168,7 @@ public final class MappingExtHelper {
     }
 
     @Deprecated
-    private static void addDoneNode(final NodeMappingImport nodeMapping, final DSemanticDecorator node) {
+    private static void addDoneNode(final NodeMappingImport nodeMapping, final DDiagramElement node) {
         addDoneNode((INodeMappingExt) nodeMapping, node);
         if (nodeMapping.getImportedMapping() != null && nodeMapping.getImportedMapping() != nodeMapping) {
             addDoneNode(nodeMapping.getImportedMapping(), node);

@@ -16,8 +16,8 @@ import java.util.Map;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * Extension to the ContainerMapping interface to support more efficient implementation.
@@ -30,6 +30,6 @@ public interface IContainerMappingExt extends ContainerMapping {
      * 
      * @return the 'viewContainersDone' map for this mapping.
      */
-    Map<EObject, EList<DSemanticDecorator>> getViewContainerDone();
+    Map<EObject, EList<DDiagramElement>> getViewContainerDone();
 
 }

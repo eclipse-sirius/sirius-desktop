@@ -21,7 +21,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.model.business.internal.description.extensions.INodeMappingExt;
 import org.eclipse.sirius.diagram.model.business.internal.helper.MappingExtHelper;
 import org.eclipse.sirius.diagram.sequence.description.impl.ExecutionMappingImpl;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * Implementation of <code>ExecutionMapping</code>.
@@ -30,10 +29,10 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  */
 public class ExecutionMappingSpec extends ExecutionMappingImpl implements INodeMappingExt {
 
-    private final Map<EObject, EList<DSemanticDecorator>> viewNodesDone = new HashMap<EObject, EList<DSemanticDecorator>>();
+    private final Map<EObject, EList<DDiagramElement>> viewNodesDone = new HashMap<>();
 
     @Override
-    public Map<EObject, EList<DSemanticDecorator>> getViewNodesDone() {
+    public Map<EObject, EList<DDiagramElement>> getViewNodesDone() {
         return viewNodesDone;
     }
 

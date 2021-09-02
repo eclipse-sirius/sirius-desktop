@@ -16,7 +16,6 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 import org.eclipse.emf.common.util.BasicEList;
@@ -308,9 +307,7 @@ public final class EdgeMappingHelper {
                 for (final AbstractNodeMapping currentNodeMapping : edgeMapping.getPathNodeMapping()) {
                     final List<DDiagramElement> listView = findDNodeFromEObject(currentNodeMapping, current);
                     if (listView != null) {
-                        final Iterator<DDiagramElement> iterViews = listView.iterator();
-                        while (iterViews.hasNext()) {
-                            final Object vpElement = iterViews.next();
+                        for (DDiagramElement vpElement : listView) {
                             if (vpElement instanceof EdgeTarget) {
                                 newPath.add((EdgeTarget) vpElement);
                             }

@@ -21,7 +21,6 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.model.business.internal.description.extensions.IContainerMappingExt;
 import org.eclipse.sirius.diagram.model.business.internal.helper.MappingExtHelper;
 import org.eclipse.sirius.diagram.sequence.description.impl.InteractionUseMappingImpl;
-import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 
 /**
  * Implementation of InteractionUseMapping.
@@ -30,10 +29,10 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
  */
 public class InteractionUseMappingSpec extends InteractionUseMappingImpl implements IContainerMappingExt {
 
-    private final Map<EObject, EList<DSemanticDecorator>> viewContainerDone = new HashMap<EObject, EList<DSemanticDecorator>>();
+    private final Map<EObject, EList<DDiagramElement>> viewContainerDone = new HashMap<>();
 
     @Override
-    public Map<EObject, EList<DSemanticDecorator>> getViewContainerDone() {
+    public Map<EObject, EList<DDiagramElement>> getViewContainerDone() {
         return viewContainerDone;
     }
 
