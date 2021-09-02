@@ -45,7 +45,7 @@ import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.resource.ResourceLoaderListener;
 import org.eclipse.sirius.common.tools.api.resource.ResourceTools;
-import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.part.Messages;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.ModelAccessor;

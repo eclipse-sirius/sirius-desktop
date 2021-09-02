@@ -22,7 +22,7 @@ import org.eclipse.gmf.runtime.diagram.ui.resources.editor.parts.DiagramDocument
 import org.eclipse.jface.action.IAction;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.model.business.internal.helper.LayerModelHelper;
-import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.internal.management.UpdateToolRecordingCommand;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.palette.PaletteManager;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar.actions.LayersActivationAction;

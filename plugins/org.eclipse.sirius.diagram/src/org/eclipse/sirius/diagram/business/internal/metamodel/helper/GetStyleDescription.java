@@ -19,7 +19,7 @@ import org.eclipse.sirius.diagram.description.ConditionalContainerStyleDescripti
 import org.eclipse.sirius.diagram.description.ConditionalEdgeStyleDescription;
 import org.eclipse.sirius.diagram.description.ConditionalNodeStyleDescription;
 import org.eclipse.sirius.diagram.description.util.DescriptionSwitch;
-import org.eclipse.sirius.diagram.tools.internal.Messages;
+import org.eclipse.sirius.diagram.tools.api.Messages;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.viewpoint.description.style.StyleDescription;
 

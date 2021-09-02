@@ -17,8 +17,8 @@ import java.util.Collection;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.tools.api.Messages;
 import org.eclipse.sirius.diagram.tools.api.layout.PinHelper;
-import org.eclipse.sirius.diagram.tools.internal.Messages;
 
 import com.google.common.collect.Lists;
 

@@ -39,7 +39,7 @@ import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.description.tool.ReconnectEdgeDescription;
 import org.eclipse.sirius.diagram.description.tool.ReconnectionKind;
 import org.eclipse.sirius.diagram.model.business.internal.description.spec.EdgeMappingImportWrapper;
-import org.eclipse.sirius.diagram.tools.internal.Messages;
+import org.eclipse.sirius.diagram.tools.api.Messages;
 import org.eclipse.sirius.diagram.tools.internal.command.reconnect.ReconnectSourceNodeCommand;
 import org.eclipse.sirius.diagram.tools.internal.command.reconnect.SetEdgeActualMappingCommand;
 import org.eclipse.sirius.ecore.extender.business.api.accessor.exception.FeatureNotFoundException;

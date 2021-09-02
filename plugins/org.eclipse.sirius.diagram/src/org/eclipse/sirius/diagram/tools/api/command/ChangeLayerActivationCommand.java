@@ -32,8 +32,8 @@ import org.eclipse.sirius.diagram.business.api.query.DDiagramQuery;
 import org.eclipse.sirius.diagram.description.AdditionalLayer;
 import org.eclipse.sirius.diagram.description.Layer;
 import org.eclipse.sirius.diagram.model.business.internal.helper.LayerModelHelper;
-import org.eclipse.sirius.diagram.tools.internal.DiagramPlugin;
-import org.eclipse.sirius.diagram.tools.internal.Messages;
+import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.api.Messages;
 import org.eclipse.sirius.diagram.tools.internal.management.UpdateToolRecordingCommand;
 
 import com.google.common.collect.Lists;

@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal;
+package org.eclipse.sirius.diagram.tools.api;
 
 import java.util.HashMap;
 import java.util.Map;

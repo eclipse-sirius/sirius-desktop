@@ -10,7 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *******************************************************************************/
-package org.eclipse.sirius.diagram.tools.internal;
+package org.eclipse.sirius.diagram.tools.api;
 
 import org.eclipse.sirius.ext.base.I18N;
 import org.eclipse.sirius.ext.base.I18N.TranslatableMessage;

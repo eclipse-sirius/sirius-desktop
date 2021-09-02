@@ -4,7 +4,7 @@ Bundle-Name: %pluginName
 Bundle-SymbolicName: org.eclipse.sirius.diagram;singleton:=true
 Bundle-Version: 7.0.0.qualifier
 Bundle-ClassPath: .
-Bundle-Activator: org.eclipse.sirius.diagram.tools.internal.DiagramPlugin$Implementation
+Bundle-Activator: org.eclipse.sirius.diagram.tools.api.DiagramPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Require-Bundle: com.google.guava;bundle-version="[21.0,30.2)",
@@ -55,6 +55,7 @@ Export-Package: org.eclipse.sirius.diagram.business.api.componentization;version
  org.eclipse.sirius.diagram.internal.edit.helpers;version="7.0.0";x-internal:=true,
  org.eclipse.sirius.diagram.internal.preferences;version="7.0.0";x-internal:=true,
  org.eclipse.sirius.diagram.internal.queries;version="7.0.0";x-internal:=true,
+ org.eclipse.sirius.diagram.tools.api;version="7.0.0",
  org.eclipse.sirius.diagram.tools.api.command;version="7.0.0",
  org.eclipse.sirius.diagram.tools.api.command.view;version="7.0.0",
  org.eclipse.sirius.diagram.tools.api.layout;version="7.0.0",
@@ -62,7 +63,6 @@ Export-Package: org.eclipse.sirius.diagram.business.api.componentization;version
  org.eclipse.sirius.diagram.tools.api.preferences;version="7.0.0",
  org.eclipse.sirius.diagram.tools.api.refresh;version="7.0.0",
  org.eclipse.sirius.diagram.tools.api.validation.constraint;version="7.0.0",
- org.eclipse.sirius.diagram.tools.internal;version="7.0.0";x-internal:=true,
  org.eclipse.sirius.diagram.tools.internal.actions.pinning;version="7.0.0";x-internal:=true,
  org.eclipse.sirius.diagram.tools.internal.command;version="7.0.0";x-internal:=true,
  org.eclipse.sirius.diagram.tools.internal.command.builders;version="7.0.0";x-internal:=true,
