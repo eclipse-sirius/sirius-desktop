@@ -21,7 +21,7 @@ import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.tools.internal.Messages;
+import org.eclipse.sirius.diagram.tools.api.Messages;
 
 /**
  * Command that is able to bring forward several elements. For edges, an index can be given (for example to bring

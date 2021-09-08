@@ -23,7 +23,7 @@ import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
-import org.eclipse.sirius.diagram.tools.internal.Messages;
+import org.eclipse.sirius.diagram.tools.api.Messages;
 
 /**
  * A specific abstract {@link RecordingCommand} for all "z-order commands". It contains common behaviors for all z-order
@@ -39,6 +39,7 @@ public abstract class AbstractZOrderRecordingCommand extends RecordingCommand {
      */
     private class EdgeComparator implements Comparator<View> {
 
+        @Override
         public int compare(View view0, View view1) {
 
             Diagram parent = (Diagram) view0.eContainer();
@@ -56,6 +57,7 @@ public abstract class AbstractZOrderRecordingCommand extends RecordingCommand {
      */
     private class NodeComparator implements Comparator<View> {
 
+        @Override
         public int compare(View view0, View view1) {
 
             Diagram parent = (Diagram) view0.eContainer();
@@ -68,7 +70,6 @@ public abstract class AbstractZOrderRecordingCommand extends RecordingCommand {
 
     /** The of GMF elements to move. */
     protected List<? extends View> elementsToMove;
-
 
     /** The container view of elements to move. */
     protected View containerView;
