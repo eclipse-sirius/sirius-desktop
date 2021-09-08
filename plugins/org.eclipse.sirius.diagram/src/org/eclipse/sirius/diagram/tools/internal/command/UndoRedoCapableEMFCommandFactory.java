@@ -68,7 +68,6 @@ import org.eclipse.sirius.diagram.tools.api.command.view.RevealDDiagramElements;
 import org.eclipse.sirius.diagram.tools.api.command.view.RevealDDiagramElementsLabel;
 import org.eclipse.sirius.diagram.tools.api.command.view.SendElementsBackward;
 import org.eclipse.sirius.diagram.tools.api.command.view.SendElementsToBack;
-import org.eclipse.sirius.diagram.tools.internal.Messages;
 import org.eclipse.sirius.diagram.tools.internal.command.builders.ContainerCreationCommandBuilder;
 import org.eclipse.sirius.diagram.tools.internal.command.builders.DeletionCommandBuilder;
 import org.eclipse.sirius.diagram.tools.internal.command.builders.DirectEditCommandBuilder;
