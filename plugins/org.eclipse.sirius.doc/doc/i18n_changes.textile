@@ -2,6 +2,48 @@ h1. Translation Keys Changes
 
 This document lists the changes in @TranslatableMessage@ used for Sirius internationalization in each Sirius version.
 
+h2(#sirius700). Translation Keys Changes in Sirius 7.0.0 (from Sirius 6.6.0)
+
+h3. Message Keys Renamed or Moved
+
+* Several Messages classes have been renamed or created due to Sirius modularization and Java packages rules:
+** Plugin _org.eclipse.sirius_: @org.eclipse.sirius.tools.api.Messages@ renamed from @org.eclipse.sirius.viewpoint.Messages@
+** Plugin _org.eclipse.sirius.model_: @org.eclipse.sirius.model.tools.internal.Messages@ extracted from @org.eclipse.sirius.viewpoint.Messages@
+** Plugin _org.eclipse.sirius.diagram_: @org.eclipse.sirius.diagram.tools.api.Messages@ renamed from @org.eclipse.sirius.diagram.Messages@
+** Plugin _org.eclipse.sirius.diagram.sequence_: @org.eclipse.sirius.diagram.sequence.tool.internal.Messages@ renamed from @org.eclipse.sirius.diagram.sequence.Messages@
+** Plugin _org.eclipse.sirius.table.model_: @org.eclipse.sirius.table.model.internal.Messages@ extracted from @org.eclipse.sirius.table.tools.internal.Messages@
+* Several Message Keys have been extracted to the .model plugins:
+** @org.eclipse.sirius.model.tools.internal.Messages.PaneBasedSelectionWizardDescriptionImpl_choiceOfValuesMsg@
+** @org.eclipse.sirius.model.tools.internal.Messages.PaneBasedSelectionWizardDescriptionImpl_selectedValuesMsg@
+** @org.eclipse.sirius.model.tools.internal.Messages.SelectionWizardDescriptionImpl_title@
+** @org.eclipse.sirius.model.tools.internal.Messages.ValidationRuleImpl_elementHas@
+** @org.eclipse.sirius.table.model.internal.Messages.Table_UnexpectedExceptionMessage@
+
+h3. Message Keys Added
+
+* @org.eclipse.sirius.diagram.tools.api.Messages_BringElementsForward_oneElementLabel@
+* @org.eclipse.sirius.diagram.tools.api.Messages_BringElementsForward_severalElementsLabel@
+* @org.eclipse.sirius.diagram.tools.api.Messages_BringElementsForward_wrongIndex@
+* @org.eclipse.sirius.diagram.tools.api.Messages_BringElementsToFront_oneElementLabel@
+* @org.eclipse.sirius.diagram.tools.api.Messages_BringElementsToFront_severalElementsLabel@
+
+h3. Message Keys Removed
+
+* @org.eclipse.sirius.diagram.Messages.NodeMappingHelper_methodInvocationErrorMsg@
+* @org.eclipse.sirius.editor.workflow.internal.Messages.WorkflowMenuBuilder_NewWorkflow_label@
+* @org.eclipse.sirius.editor.workflow.internal.Messages.WorkflowMenuBuilder_label@
+* @org.eclipse.sirius.server.internal.Messages.SiriusServerConfigurator_headerConfig@
+* @org.eclipse.sirius.server.internal.Messages.SiriusServerConfigurator_wrongPropertyTypeWarning@
+* @org.eclipse.sirius.server.internal.Messages.SiriusServerManager_cannotStartServer@
+* @org.eclipse.sirius.server.internal.Messages.SiriusServerManager_cannotStopServer@
+* @org.eclipse.sirius.workflow.ui.page.Messages.WorkflowPage_header_title@
+* @org.eclipse.sirius.workflow.ui.page.Messages.WorkflowPage_tab_name@
+
+
+
+
+
+
 h2(#sirius660). Translation Keys Changes in Sirius 6.6.0 (from Sirius 6.5.0)
 
 h3. Message Keys Added
