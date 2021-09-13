@@ -17,7 +17,7 @@
 		<h2 id="vsm_metamodels">Viewpoint Specification Meta-Models</h2>
 		<p>The structure of the 
 			<em>VSMs</em> is defined by several meta-models. The 
-			<code>org.eclipse.sirius</code> plug-in contains the 
+			<code>org.eclipse.sirius.model</code> plug-in contains the 
 			<code>http://www.eclipse.org/sirius/1.1.0</code> Ecore package and its sub-packages, which defines the general structure of a VSM:
 		</p>
 		<ul>
@@ -45,20 +45,20 @@
 		<p>The other dialects define their own extensions to these packages, in their own plug-ins. They follow the same structure:</p>
 		<ul>
 			<li>
-				<code>org.eclipse.sirius.diagram</code> defines 
+				<code>org.eclipse.sirius.diagram.model</code> defines 
 				<code>http://www.eclipse.org/sirius/diagram/description/1.1.0</code> and its sub-packages, with all the elements that are used to specify a diagram description inside a VSM.
 			</li>
 			<li>
-				<code>org.eclipse.sirius.diagram.sequence</code> defines 
+				<code>org.eclipse.sirius.diagram.sequence.model</code> defines 
 				<code>http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0</code> and 
 				<code>http://www.eclipse.org/sirius/diagram/sequence/description//tool/2.0.0</code> for sequence diagrams-specific mappings and tools.
 			</li>
 			<li>
-				<code>org.eclipse.sirius.table</code> defines 
+				<code>org.eclipse.sirius.table.model</code> defines 
 				<code>http://www.eclipse.org/sirius/table/description/1.1.0</code>  for table mappings and tools.
 			</li>
 			<li>
-				<code>org.eclipse.sirius.tree</code>  defines 
+				<code>org.eclipse.sirius.tree.model</code>  defines 
 				<code>http://www.eclipse.org/sirius/tree/description/1.1.0</code>  for tree mappings and tools.
 			</li>
 		</ul>
@@ -75,25 +75,25 @@
 			<em>VSMs</em> which define the representations it contains.
 		</p>
 		<p>The meta-model for representation files is defined in the 
-			<code>http://www.eclipse.org/sirius/1.1.0</code> package, from the main 
-			<code>org.eclipse.sirius</code> plug-in. Diagrams, sequence diagrams, tables and trees define their own meta-models to describe their representations' data:
+			<code>http://www.eclipse.org/sirius/1.1.0</code> package, from the core 
+			<code>org.eclipse.sirius.model</code> plug-in. Diagrams, sequence diagrams, tables and trees define their own meta-models to describe their representations' data:
 		</p>
 		<ul>
 			<li>
 				<code>http://www.eclipse.org/sirius/diagram/1.1.0</code> defined in 
-				<code>org.eclipse.sirius.diagram</code>.
+				<code>org.eclipse.sirius.diagram.model</code>.
 			</li>
 			<li>
 				<code>http://www.eclipse.org/sirius/diagram/sequence/2.0.0</code> defined in 
-				<code>org.eclipse.sirius.diagram.sequence</code>.
+				<code>org.eclipse.sirius.diagram.sequence.model</code>.
 			</li>
 			<li>
 				<code>http://www.eclipse.org/sirius/table/1.1.0</code> defined in 
-				<code>org.eclipse.sirius.table</code>.
+				<code>org.eclipse.sirius.table.model</code>.
 			</li>
 			<li>
 				<code>http://www.eclipse.org/sirius/tree/1.0.0</code> defined in 
-				<code>org.eclipse.sirius.tree</code>.
+				<code>org.eclipse.sirius.tree.model</code>.
 			</li>
 		</ul>
 		<p>The concrete structure of an 

@@ -6,15 +6,47 @@ This document contains the release notes for recent major releases of Sirius. Se
 
 h2(#sirius7.0.0). Changes in Sirius 7.0.0
 
+h3. Developer-Visible Changes
 
+* <span class="label label-success">Added</span> Sirius core and dialects metamodels have been extracted in new **.model** plugins with minimum dependencies. Each new plugin is re-exported by the plugin which was the previous container of its metamodel. The base packages of the generated code has not been modified. Each API modification is listed in the corresponding plugin section. Additional dialect providers and extension providers might have to modify the path or references to Sirius .ecore and .genmodel files to reflect this change. The new plugins are:
+** @org.eclipse.sirius.model@, re-exported by @org.eclipse.sirius@
+** @org.eclipse.sirius.diagram.model@, re-exported by @org.eclipse.sirius.diagram@
+** @org.eclipse.sirius.diagram.sequence.model@, re-exported by @org.eclipse.sirius.diagram.sequence@
+** @org.eclipse.sirius.table.model@, re-exported by @org.eclipse.sirius.table@
+** @org.eclipse.sirius.tree.model@, re-exported by @org.eclipse.sirius.tree@
 * <span class="label label-danger">Removed</span> **The "Workflow" feature** has been removed . Workflow was experimental and to our knowledge not used in practice. This corresponds to the @org.eclipse.sirius.workflow.*@ and @org.eclipse.sirius.editor.workflow@ plug-ins.
 * <span class="label label-danger">Removed</span> **The server parts which supported the Workflow feature** has been removed too. It was our first experiment in moving Sirius to the web, but this is now replaced by the newly published "Sirius Web":https://www.eclipse.org/sirius/sirius-web.html. This corresponds to all the @org.eclipse.sirius.server.*@ plug-ins.
 
-h3. Developer-Visible Changes
+h4. Changes in @org.eclipse.sirius@
+
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.SiriusPlugin@ has been renamed to @org.eclipse.sirius.tools.api.SiriusPlugin@
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.Messages@ has been renamed to @org.eclipse.sirius.tools.api.Messages@
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.business.api.helper.ViewpointUtil@ has been deprecated, @org.eclipse.sirius.model.business.api.helper.ViewpointUtil@ from plugin @org.eclipse.sirius.model@ should be used instead.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.business.api.resource.ResourceDescriptor@ has been moved to @org.eclipse.sirius.model@ plugin alongside with code generated from Sirius metamodel as it is one of its data type. 
+* <span class="label label-info">Modified</span> The package @org.eclipse.sirius.business.api.resource@ has been renamed to @org.eclipse.sirius.business.api.resource.support@. Impacted classes are @org.eclipse.sirius.business.api.resource.support.LoadEMFResource@ and @org.eclipse.sirius.business.api.resource.support.WorkspaceDragAndDropSupport@.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory@ has been moved to @org.eclipse.sirius.model@ plugin.
+
+h4. Changes in @org.eclipse.sirius.diagram@
+
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.DiagramPlugin@ has been renamed to @org.eclipse.sirius.diagram.tools.api.DiagramPlugin@.
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.Messages@ has been renamed to @org.eclipse.sirius.diagram.tools.api.Messages@.
+
+h4. Changes in @org.eclipse.sirius.diagram.model@
+
+* <span class="label label-danger">Removed</span> The @DiagramDescription::allTools@ operation has been removed from the Diagram metamodel. The corresponding method has been removed from generated code. Calls to @org.eclipse.sirius.diagram.description.DiagramDescription.getAllTools()@ should be replaced by @new org.eclipse.sirius.diagram.business.api.query.DiagramDescriptionQuery(diagramDescription).getAllTools()@.
+* <span class="label label-danger">Removed</span> The @DiagramDescription::allEdgeMappings@ operation has been removed from the Diagram metamodel. The corresponding method has been removed from generated code. Calls to @org.eclipse.sirius.diagram.description.DiagramDescription.getAllEdgeMappings()@ should be replaced by @org.eclipse.sirius.diagram.business.internal.metamodel.helper.ContentHelper.getAllEdgeMappings(diagramDescription, false)@ alongside with the getAllNodeMappings and getAllContainerMappings methods.
+
+
 
 h4. Changes in @org.eclipse.sirius.diagram.ui@
 
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.ui@ now depends on GMF Runtime 1.14.0, which itself uses Apache Batik 1.14.0 to support SVG (both rendering SVG images on diagrams and exporting diagrams to SVG files). As a result, exporting diagrams to PDF is not supported anymore (as GMF Runtime 1.14.0 itself has dropped support for this).
+
+h4. Changes in @org.eclipse.sirius.diagram.sequence@
+
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.sequence.util.Range@ has been moved to @org.eclipse.sirius.diagram.sequence.business.api.util.Range@
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.sequence.util.Pair@ has been moved to @org.eclipse.sirius.diagram.sequence.business.api.util.Pair@
+
 
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
 
