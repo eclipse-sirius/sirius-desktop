@@ -21,6 +21,7 @@ h3. Message Keys Renamed or Moved
 
 h3. Message Keys Added
 
+* @org.eclipse.sirius.viewpoint.provider.Messages.AnalysisSelectorFilteredItemsSelectionDialog_labelProviderLocal@
 * @org.eclipse.sirius.diagram.tools.api.Messages_BringElementsForward_oneElementLabel@
 * @org.eclipse.sirius.diagram.tools.api.Messages_BringElementsForward_severalElementsLabel@
 * @org.eclipse.sirius.diagram.tools.api.Messages_BringElementsForward_wrongIndex@
