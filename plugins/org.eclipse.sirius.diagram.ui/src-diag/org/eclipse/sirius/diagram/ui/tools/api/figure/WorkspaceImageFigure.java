@@ -27,9 +27,8 @@ import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AbstractTransparentImag
 import org.eclipse.swt.graphics.Image;
 
 /**
- * The {@link WorkspaceImageFigure} is useful to load images using a cache. The
- * image can be in the workspace, or if it's not found in the workspace it will
- * be looked up in the plug-ins.
+ * The {@link WorkspaceImageFigure} is useful to load images using a cache. The image can be in the workspace, or if
+ * it's not found in the workspace it will be looked up in the plug-ins.
  *
  * @author cbrun
  *
@@ -81,8 +80,8 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
      * Get an {@link Image} instance. The image will be stored in a cache.
      *
      * @param path
-     *            the path is a "/project/file" path, if it's not found in the
-     *            workspace, the class will look for the file in the plug-ins.
+     *            the path is a "/project/file" path, if it's not found in the workspace, the class will look for the
+     *            file in the plug-ins.
      * @return an image instance given the path.
      */
     public static Image flyWeightImage(final String path) {
@@ -124,8 +123,8 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
      * Create an {@link WorkspaceImageFigure} instance from an image path.
      *
      * @param path
-     *            the path is a "/project/file" path, if it's not found in the
-     *            workspace, the class will look for the file in the plug-ins.
+     *            the path is a "/project/file" path, if it's not found in the workspace, the class will look for the
+     *            file in the plug-ins.
      * @return an image instance given the path.
      */
     public static WorkspaceImageFigure createImageFigure(final String path) {
@@ -142,6 +141,10 @@ public class WorkspaceImageFigure extends AbstractTransparentImage implements IW
      */
     public static WorkspaceImageFigure createImageFigure(final WorkspaceImage wksImage) {
         final String path = wksImage.getWorkspacePath();
+        // ici on pourrait transformer le path image:/./folder/image.png en image workspace mais quid des path
+        // remoteimage:/./folder
+        // non en fait les paths CDO seront persistes en cdo:/project/folder et a l'import on met les images dnas le
+        // project cible si le nom du projet cdo correspond au premier segment du path image cdo
         return WorkspaceImageFigure.createImageFigure(path);
 
     }

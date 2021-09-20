@@ -309,6 +309,9 @@ public final class Messages {
     public static String ForTask_label;
 
     @TranslatableMessage
+    public static String ImageManagerForWorkspaceResource_errorGettingTheOriginalPath;
+
+    @TranslatableMessage
     public static String IInterpreterMessages_invalidFeatureErrorMsg;
 
     @TranslatableMessage
@@ -937,6 +940,9 @@ public final class Messages {
 
     @TranslatableMessage
     public static String Updater_updateElementLogicallyDifferentErrorMsg;
+
+    @TranslatableMessage
+    public static String UpdateBase64ImageEncodingPreCommitListener_imageCreationFailure;
 
     @TranslatableMessage
     public static String VSMElementCustomizationReuseValidConstraint_noEReferenceErrorMsg;

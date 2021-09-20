@@ -191,6 +191,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
 
     private SiriusPreferences siriusPreferences;
 
+    private UpdateBase64ImageEncodingPreCommitListener updateBase64ImageEncodingPreCommitListener;
+
     /**
      * Create a new session.
      * 
@@ -218,6 +220,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         getTransactionalEditingDomain().addResourceSetListener(dRepresentationChangeListener);
         changeIdUpdaterListener = new ChangeIdUpdaterListener(this);
         getTransactionalEditingDomain().addResourceSetListener(changeIdUpdaterListener);
+        updateBase64ImageEncodingPreCommitListener = new UpdateBase64ImageEncodingPreCommitListener(this);
+        getTransactionalEditingDomain().addResourceSetListener(updateBase64ImageEncodingPreCommitListener);
     }
 
     // *******************
@@ -1306,6 +1310,8 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
         dRepresentationChangeListener = null;
         getTransactionalEditingDomain().removeResourceSetListener(changeIdUpdaterListener);
         changeIdUpdaterListener = null;
+        getTransactionalEditingDomain().removeResourceSetListener(updateBase64ImageEncodingPreCommitListener);
+        updateBase64ImageEncodingPreCommitListener = null;
         refreshEditorsListeners = null;
         reloadingPolicy = null;
         savingPolicy = null;
