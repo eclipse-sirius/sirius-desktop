@@ -168,7 +168,7 @@ public class EdgeLayoutUpdaterModelChangeTrigger implements ModelChangeTrigger {
         for (Notification notification : notifications) {
             boolean isChangedIntoOblique = changeIntoOblique(operations, notification, notifToEdge);
             // Only consider notification of
-            // RefreshEdgeLayoutNotificationFilter.REFRESH_FEATURES list and for
+            // EdgeLayoutUpdaterModelChangeTrigger.REFRESH_FEATURES list and for
             // which the source or the target has not been moved
             if (isRefreshEdgeLayoutNeededForNotification(notification, notifToEdge, movedOrResizedViews) && !isChangedIntoOblique) {
                 Optional<Edge> optionalGmfEdge = getCorrespondingEdge(notification, notifToEdge);

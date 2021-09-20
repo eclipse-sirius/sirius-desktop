@@ -132,16 +132,18 @@ public class RemoveBendpointsOperation extends AbstractModelChangeOperation<Void
                 } else {
                     srcConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, srcAbsoluteBounds, true, true);
                     tgtConnectionBendpoint = GraphicalHelper.getIntersection(absoluteSrcAnchorCoordinates, absoluteTgtAnchorCoordinates, tgtAbsoluteBounds, false, true);
-                    Point srcPoint = srcConnectionBendpoint.get();
-                    Point tgtPoint = tgtConnectionBendpoint.get();
-                    if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
-                        RectilinearEdgeUtil.alignBoundPointTowardAnchor(srcAbsoluteBounds, srcPoint, absoluteSrcAnchorCoordinates);
-                        RectilinearEdgeUtil.alignBoundPointTowardAnchor(tgtAbsoluteBounds, tgtPoint, absoluteTgtAnchorCoordinates);
-                        pointList = RectilinearEdgeUtil.computeRectilinearBendpoints(srcAbsoluteBounds, tgtAbsoluteBounds, srcPoint, tgtPoint);
-                    } else {
-                        pointList = new PointList();
-                        pointList.addPoint(srcPoint);
-                        pointList.addPoint(tgtPoint);
+                    if (srcConnectionBendpoint.isPresent() && tgtConnectionBendpoint.isPresent()) {
+                        Point srcPoint = srcConnectionBendpoint.get();
+                        Point tgtPoint = tgtConnectionBendpoint.get();
+                        if (Routing.RECTILINEAR_LITERAL.equals(routingStyle)) {
+                            RectilinearEdgeUtil.alignBoundPointTowardAnchor(srcAbsoluteBounds, srcPoint, absoluteSrcAnchorCoordinates);
+                            RectilinearEdgeUtil.alignBoundPointTowardAnchor(tgtAbsoluteBounds, tgtPoint, absoluteTgtAnchorCoordinates);
+                            pointList = RectilinearEdgeUtil.computeRectilinearBendpoints(srcAbsoluteBounds, tgtAbsoluteBounds, srcPoint, tgtPoint);
+                        } else {
+                            pointList = new PointList();
+                            pointList.addPoint(srcPoint);
+                            pointList.addPoint(tgtPoint);
+                        }
                     }
                 }
                 if (srcConnectionBendpoint.isPresent() && tgtConnectionBendpoint.isPresent() && originalNbPoint > pointList.size()) {
