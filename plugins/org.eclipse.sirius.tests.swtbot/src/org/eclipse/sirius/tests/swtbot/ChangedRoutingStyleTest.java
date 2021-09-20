@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2020, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -27,7 +27,7 @@ import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 
 /**
- * Test that routing style edge change from Rectilinear or tree into oblique generate an oblique line.
+ * Test that an edge routing style change, from Rectilinear or Tree into Oblique, generates an oblique line.
  * 
  * @author Jessy MALLET
  */
@@ -36,6 +36,8 @@ public class ChangedRoutingStyleTest extends AbstractSiriusSwtBotGefTestCase {
     private static final String REPRESENTATION_FROM_TREE_NAME = "changeEdgeStyleFromTree";
 
     private static final String REPRESENTATION_FROM_RECTILINEAR_NAME = "changeEdgeStyleFromRectilinear";
+
+    private static final String REPRESENTATION_FROM_RECTILINEAR_WITHOUT_CHANGE_NAME = "changeEdgeStyleFromRectilinearButWithoutVisualChange";
 
     private static final String REPRESENTATION_DESCRIPTION_NAME = "Entities";
 
@@ -62,8 +64,8 @@ public class ChangedRoutingStyleTest extends AbstractSiriusSwtBotGefTestCase {
     }
 
     /**
-     * Test that an edge change from rectilinear style into oblique style generate an oblique line without intermediate
-     * points.
+     * Test that an edge routing style change, from rectilinear style to oblique style, generates an oblique line
+     * without intermediate points.
      */
     public void testEdgeChangedFromRectilinearToOblique() {
         openDiagram(REPRESENTATION_FROM_RECTILINEAR_NAME);
@@ -74,14 +76,34 @@ public class ChangedRoutingStyleTest extends AbstractSiriusSwtBotGefTestCase {
         Object element = botEdgeEditPart.part().getModel();
         assertTrue(element instanceof Edge);
         EdgeQuery edgeQuery = new EdgeQuery((Edge) element);
-        assertTrue(edgeQuery.isEdgeWithObliqueRoutingStyle());
+        assertTrue("The routing style of GMF edge should be Oblique.", edgeQuery.isEdgeWithObliqueRoutingStyle());
         Connection connection = (Connection) botEdgeEditPart.part().getFigure();
         assertEquals("The oblique edge should contain only 2 points.", 2, connection.getPoints().size());
 
     }
 
     /**
-     * Test that an edge change from tree style into oblique style generate an oblique line without intermediate points.
+     * Test that an edge routing style change, from rectilinear style to oblique style, generates an oblique line
+     * without intermediate points.
+     */
+    public void testEdgeChangedFromRectilinearToObliqueButWithoutVisualChange() {
+        openDiagram(REPRESENTATION_FROM_RECTILINEAR_WITHOUT_CHANGE_NAME);
+        SWTBotGefConnectionEditPart botEdgeEditPart = getConnectionEditPartList("EClass 1", "EClass 2").get(0);
+        changeRoutingStyle(botEdgeEditPart, OBLIQUE_STYLE_ROUTING);
+
+        // check oblique edge
+        Object element = botEdgeEditPart.part().getModel();
+        assertTrue(element instanceof Edge);
+        EdgeQuery edgeQuery = new EdgeQuery((Edge) element);
+        assertTrue("The routing style of GMF edge should be Oblique.", edgeQuery.isEdgeWithObliqueRoutingStyle());
+        Connection connection = (Connection) botEdgeEditPart.part().getFigure();
+        assertEquals("The oblique edge should always contain 5 points (source and target are overlapped).", 5, connection.getPoints().size());
+
+    }
+
+    /**
+     * Test that an edge routing style change, from tree style into oblique style, generates an oblique line without
+     * intermediate points.
      */
     public void testEdgeChangedFromTreeToOblique() {
         openDiagram(REPRESENTATION_FROM_TREE_NAME);
@@ -92,7 +114,7 @@ public class ChangedRoutingStyleTest extends AbstractSiriusSwtBotGefTestCase {
         Object element = botEdgeEditPart.part().getModel();
         assertTrue(element instanceof Edge);
         EdgeQuery edgeQuery = new EdgeQuery((Edge) element);
-        assertTrue(edgeQuery.isEdgeWithObliqueRoutingStyle());
+        assertTrue("The routing style of GMF edge should be Oblique.", edgeQuery.isEdgeWithObliqueRoutingStyle());
         Connection connection = (Connection) botEdgeEditPart.part().getFigure();
         assertEquals("The oblique edge should contain only 2 points.", 2, connection.getPoints().size());
     }
