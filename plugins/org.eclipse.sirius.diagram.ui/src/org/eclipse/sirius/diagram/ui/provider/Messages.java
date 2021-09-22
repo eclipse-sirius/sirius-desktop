@@ -551,6 +551,12 @@ public final class Messages {
     public static String EdgeRoutingStyleChangedCommand_label;
 
     @TranslatableMessage
+    public static String EdgesZOrderMigrationParticipant_title;
+
+    @TranslatableMessage
+    public static String EdgesZOrderMigrationParticipant_edgesOrderChanged;
+
+    @TranslatableMessage
     public static String EditPartTools_nullParameterMsg;
 
     @TranslatableMessage

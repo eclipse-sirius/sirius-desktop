@@ -167,6 +167,7 @@ import org.eclipse.sirius.tests.unit.diagram.layoutingmode.LayoutingModeOnCustom
 import org.eclipse.sirius.tests.unit.diagram.layoutingmode.LayoutingModeOnECoreModelerTest;
 import org.eclipse.sirius.tests.unit.diagram.mapping.EdgeMappingCreationDescriptionTests;
 import org.eclipse.sirius.tests.unit.diagram.migration.ActivatedFilterSortingMigrationParticipantTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.EdgesZOrderMigrationParticipantTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.JumpLinkNewTypeMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.LabelOnBorderMigrationTests6_3_0;
 import org.eclipse.sirius.tests.unit.diagram.migration.LabelOnBorderMigrationTestsBefore6_3_0;
@@ -562,6 +563,7 @@ public class AllDiagramPluginsTests {
         suite.addTestSuite(JumpLinkNewTypeMigrationTest.class);
         suite.addTestSuite(LabelOnBorderMigrationTestsBefore6_3_0.class);
         suite.addTestSuite(LabelOnBorderMigrationTests6_3_0.class);
+        suite.addTestSuite(EdgesZOrderMigrationParticipantTest.class);
 
         // Edge on edge tests
         suite.addTestSuite(EdgeOnEdgeHideRevealTest.class);
