@@ -6,6 +6,7 @@ h2(#sirius660). Translation Keys Changes in Sirius 6.6.0 (from Sirius 6.5.0)
 
 h3. Message Keys Added
 
+* @org.eclipse.sirius.viewpoint.provider.Messages.AnalysisSelectorFilteredItemsSelectionDialog_labelProviderLocal@
 * @org.eclipse.sirius.diagram.sequence.ui.Messages.SequenceEMFCommandFactory_notSupportedZorderCommandsMessage@
 * @org.eclipse.sirius.diagram.ui.provider.Messages.AbstractEdgesZOrderAction_noExecutioninformationDialogTitle@
 * @org.eclipse.sirius.diagram.Messages.BringElementsForward_oneElementLabel@
