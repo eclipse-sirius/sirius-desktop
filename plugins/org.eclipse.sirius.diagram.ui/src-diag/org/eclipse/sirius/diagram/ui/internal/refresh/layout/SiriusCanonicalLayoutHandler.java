@@ -29,6 +29,8 @@ import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.gmf.runtime.emf.core.util.EObjectAdapter;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.business.internal.dialect.NotYetOpenedDiagramAdapter;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusLayoutDataManager;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
@@ -36,7 +38,9 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeC
 import org.eclipse.sirius.diagram.ui.internal.layout.GenericLayoutProvider;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.LayoutProvider;
+import org.eclipse.sirius.diagram.ui.tools.internal.layout.LayoutUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
+import org.eclipse.swt.widgets.Display;
 
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
@@ -62,24 +66,57 @@ public final class SiriusCanonicalLayoutHandler {
      */
     public static void launchArrangeCommand(DiagramEditPart diagramEditPart) {
         TransactionalEditingDomain editingDomain = diagramEditPart.getEditingDomain();
-        Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = getCreatedViewsToLayoutMap(diagramEditPart);
-        Map<IGraphicalEditPart, List<IAdaptable>> createdViewsWithSpecialLayoutMap = getCreatedViewsWithSpecialLayoutMap(diagramEditPart);
-        LayoutProvider layoutProvider = LayoutService.getProvider(diagramEditPart);
-        boolean handleSpecificLayoutType = false;
-        if (layoutProvider instanceof GenericLayoutProvider && ((GenericLayoutProvider) layoutProvider).shouldReverseLayoutsOrder(diagramEditPart)) {
-            // Reverse order as contrary to classic layout. For example for ELK, it is better to do it from the lowest level to the
-            // highest.
-            LinkedHashMap<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap_reverse = new LinkedHashMap<IGraphicalEditPart, List<IAdaptable>>();
-            ArrayList<IGraphicalEditPart> keys = new ArrayList<IGraphicalEditPart>(createdViewsToLayoutMap.keySet());
-            for (int i = keys.size() - 1; i >= 0; i--) {
-                createdViewsToLayoutMap_reverse.put(keys.get(i), createdViewsToLayoutMap.get(keys.get(i)));
+
+        boolean specificArrangeAtFirstOpening = false;
+        EObject resolvedSemanticElement = diagramEditPart.resolveSemanticElement();
+        if (resolvedSemanticElement instanceof DDiagram) {
+            if (resolvedSemanticElement.eAdapters().contains(NotYetOpenedDiagramAdapter.INSTANCE)) {
+                // This is the first diagram opening, we launch a global arrange all
+                if (diagramEditPart != null) {
+                    specificArrangeAtFirstOpening = true;
+                    Display.getDefault().asyncExec(new Runnable() {
+
+                        @Override
+                        public void run() {
+                            LayoutUtil.arrange(diagramEditPart);
+                        }
+                    });
+                }
+                // Remove the "arrange adapter" to potentially avoid a second arrange
+                resolvedSemanticElement.eAdapters().remove(NotYetOpenedDiagramAdapter.INSTANCE);
+                // Also clean the created views from SiriusLayoutDataManager as they are layouted with the global arrange all. Otherwise it could be arrange "again" in a next opening for example.
+                Set<View> set = SiriusLayoutDataManager.INSTANCE.getCreatedViewsToLayout().get(diagramEditPart.getDiagramView());
+                if (set != null) {
+                    set.clear();
+                }
+                Set<View> set2 = SiriusLayoutDataManager.INSTANCE.getCreatedViewWithCenterLayout().get(diagramEditPart.getDiagramView());
+                if (set2 != null) {
+                    set2.clear();
+                }
+                
             }
-            createdViewsToLayoutMap = createdViewsToLayoutMap_reverse;
-            handleSpecificLayoutType = true;
         }
-        Command layoutCommand = getLayoutCommand(createdViewsToLayoutMap, createdViewsWithSpecialLayoutMap, editingDomain, handleSpecificLayoutType);
-        if (layoutCommand.canExecute()) {
-            editingDomain.getCommandStack().execute(layoutCommand);
+
+        if (!specificArrangeAtFirstOpening) {
+            Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = getCreatedViewsToLayoutMap(diagramEditPart);
+            Map<IGraphicalEditPart, List<IAdaptable>> createdViewsWithSpecialLayoutMap = getCreatedViewsWithSpecialLayoutMap(diagramEditPart);
+            LayoutProvider layoutProvider = LayoutService.getProvider(diagramEditPart);
+            boolean handleSpecificLayoutType = false;
+            if (layoutProvider instanceof GenericLayoutProvider && ((GenericLayoutProvider) layoutProvider).shouldReverseLayoutsOrder(diagramEditPart)) {
+                // Reverse order as contrary to classic layout. For example for ELK, it is better to do it from the
+                // lowest level to the highest.
+                LinkedHashMap<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap_reverse = new LinkedHashMap<IGraphicalEditPart, List<IAdaptable>>();
+                ArrayList<IGraphicalEditPart> keys = new ArrayList<IGraphicalEditPart>(createdViewsToLayoutMap.keySet());
+                for (int i = keys.size() - 1; i >= 0; i--) {
+                    createdViewsToLayoutMap_reverse.put(keys.get(i), createdViewsToLayoutMap.get(keys.get(i)));
+                }
+                createdViewsToLayoutMap = createdViewsToLayoutMap_reverse;
+                handleSpecificLayoutType = true;
+            }
+            Command layoutCommand = getLayoutCommand(createdViewsToLayoutMap, createdViewsWithSpecialLayoutMap, editingDomain, handleSpecificLayoutType);
+            if (layoutCommand.canExecute()) {
+                editingDomain.getCommandStack().execute(layoutCommand);
+            }
         }
     }
 

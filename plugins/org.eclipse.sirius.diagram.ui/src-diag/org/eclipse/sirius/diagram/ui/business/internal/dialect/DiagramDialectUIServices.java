@@ -185,7 +185,6 @@ public class DiagramDialectUIServices implements DialectUIServices {
                     final Diagram gmfDiag = (Diagram) object;
                     if (gmfDiag != null) {
                         result = openEditor(session, gmfDiag, dRepresentation, monitor);
-                        new DiagramDialectArrangeOperation().arrange(result, diag);
                         monitor.worked(3);
                     }
                 }

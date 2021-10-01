@@ -162,12 +162,6 @@ public class CreationAndDeletionUndoRedoTests extends SiriusDiagramTestCase impl
         }
 
         /* undo refresh creation command */
-        if (!emptyDiagram) {
-            assertTrue(canUndo());
-            assertEquals("Arrange Created views", getCommandLabel());
-            undo();
-        }
-
         assertTrue(canUndo());
         assertEquals("Refresh diagram on opening", getCommandLabel());
         undo();
