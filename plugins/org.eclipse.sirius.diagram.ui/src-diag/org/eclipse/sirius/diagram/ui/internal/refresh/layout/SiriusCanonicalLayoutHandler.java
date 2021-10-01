@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -34,6 +34,7 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartment2EditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerViewNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.internal.layout.GenericLayoutProvider;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.LayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.provider.LayoutService;
 
@@ -164,7 +165,9 @@ public final class SiriusCanonicalLayoutHandler {
     private static Command getLayoutCommand(Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap, Map<IGraphicalEditPart, List<IAdaptable>> createdViewsWithSpecialLayoutMap,
             TransactionalEditingDomain editingDomain, boolean useSpecificLayoutType) {
         final CompoundCommand compoundCommand = new CompoundCommand();
-
+        // A label is explicitly added to avoid to rely on the first command of the list and also to facilitate
+        // debugging.
+        compoundCommand.setLabel(Messages.SiriusCanonicalLayoutCommand_label);
         // Filter type of element to layout to avoid having elements layout
         // computed multiple times
         Predicate<Entry<IGraphicalEditPart, List<IAdaptable>>> typeOfElementToLayout = new Predicate<Map.Entry<IGraphicalEditPart, List<IAdaptable>>>() {

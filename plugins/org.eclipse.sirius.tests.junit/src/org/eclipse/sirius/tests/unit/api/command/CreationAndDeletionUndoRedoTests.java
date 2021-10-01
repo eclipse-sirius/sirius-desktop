@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,6 +23,7 @@ import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.dialect.command.CreateRepresentationCommand;
 import org.eclipse.sirius.common.tools.api.util.CommandStackUtil;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.tests.support.api.SiriusDiagramTestCase;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.common.command.EPackageEClassifiersAppenderRecordingCommand;
@@ -189,10 +190,11 @@ public class CreationAndDeletionUndoRedoTests extends SiriusDiagramTestCase impl
     private String getArrangeAllCommandLabel() {
         /*
          * org.eclipse.gmf.runtime.diagram.ui.editpolicies.ContainerEditPolicy. getArrangeCommand() starting from
-         * Eclipse 3.6 return directly a ArrangeCommand with an empty label
+         * Eclipse 3.6 return directly a ArrangeCommand with an empty label. But since Sirius 7.0, a name is given into
+         * SiriusContainerEditPolicy.
          */
         if (isPlatformAtLeastEclipse36())
-            return "";
+            return Messages.SiriusContainerEditPolicy_arrangeCommandLabel;
         else
             return "Arrange all";
     }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2002, 2020 IBM Corporation and others.
+ * Copyright (c) 2002, 2021 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -46,6 +46,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContain
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.CenterEdgeLayoutCommand;
 import org.eclipse.sirius.diagram.ui.internal.edit.commands.DistributeCommand;
 import org.eclipse.sirius.diagram.ui.internal.layout.GenericLayoutProvider;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.provider.LayoutProvider;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.DistributeRequest;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.SnapCommand;
@@ -149,6 +150,8 @@ public class SiriusContainerEditPolicy extends ContainerEditPolicy {
         TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
 
         CompositeTransactionalCommand ctc = new CompositeTransactionalCommand(editingDomain, StringStatics.BLANK);
+        // Label added to facilitate debugging and to identify this command in undo context.
+        ctc.setLabel(Messages.SiriusContainerEditPolicy_arrangeCommandLabel);
         ctc.add(new ArrangeCommand(editingDomain, StringStatics.BLANK, null, editparts, layoutHint, offsetFromBoundingBox));
 
         // retrieves the preference store from the first edit part

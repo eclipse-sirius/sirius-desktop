@@ -1136,6 +1136,9 @@ public final class Messages {
     public static String SiriusContainerDropPolicy_saveEditPartLayoutCommandLabel;
 
     @TranslatableMessage
+    public static String SiriusContainerEditPolicy_arrangeCommandLabel;
+
+    @TranslatableMessage
     public static String SiriusCopyAppearancePropertiesAction_tooltipMessage;
 
     @TranslatableMessage
