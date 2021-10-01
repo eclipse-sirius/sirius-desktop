@@ -859,6 +859,10 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         // Check that bounds for the 2 lists are the same
         checkSameBounds("Cl1", "Cl2");
+        // Check the list size at opening
+        Rectangle autoSizeBounds = new Rectangle(0, 0, -1, -1);
+        Rectangle expectedBounds = new Rectangle(0, 0, 100, 50);
+        checkBounds("Cl1", autoSizeBounds, expectedBounds);
         // Save and close
         session.save(new NullProgressMonitor());
         DialectUIManager.INSTANCE.closeEditor(editor, false);
@@ -868,6 +872,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         TestsUtil.synchronizationWithUIThread();
         // Check that bounds for the 2 lists are the same
         checkSameBounds("Cl1", "Cl2");
+        checkBounds("Cl1", autoSizeBounds, expectedBounds);
     }
 
     public void testLayoutAtCreationWithAListRegionWithAutoSize() {
