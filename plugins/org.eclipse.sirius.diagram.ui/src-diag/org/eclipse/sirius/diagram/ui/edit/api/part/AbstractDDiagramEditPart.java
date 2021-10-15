@@ -366,8 +366,10 @@ public abstract class AbstractDDiagramEditPart extends DiagramEditPart implement
                             ((SiriusPolylineConnectionEx) figureToMove).refreshLine();
                         }
                     }
+                    // Increase the GMF index only when a corresponding figure is found (to avoid a potential
+                    // IndexOutOfBoundsException).
+                    visibleGmfIndex++;
                 }
-                visibleGmfIndex++;
             }
         }
     }
