@@ -1047,6 +1047,12 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SetBestHeightHeaderCommand_label;
+    
+    @TranslatableMessage
+    public static String SetChangeIdMigrationParticipant_title;
+    
+    @TranslatableMessage
+    public static String SetChangeIdMigrationParticipant_changeIDModified;
 
     @TranslatableMessage
     public static String SetConnectionBendpointsAccordingToExtremityMoveCommmand_sourceSidedLabel;

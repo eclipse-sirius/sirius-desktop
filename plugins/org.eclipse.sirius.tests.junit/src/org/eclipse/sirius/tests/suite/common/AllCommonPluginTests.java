@@ -158,6 +158,7 @@ import org.eclipse.sirius.tests.unit.diagram.migration.RepairWithActivatedFilter
 import org.eclipse.sirius.tests.unit.diagram.migration.RepresentationLinkMigrationParticipantTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RgbValuesEDataTypeMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.RunRepairTest;
+import org.eclipse.sirius.tests.unit.diagram.migration.SetChangeIdMigrationParticipantTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.SetVersionTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.SnapBackDistantLabelsMigrationTest;
 import org.eclipse.sirius.tests.unit.diagram.migration.TechnicalUidMigrationTest;
@@ -259,6 +260,7 @@ public class AllCommonPluginTests extends TestCase {
         suite.addTestSuite(TechnicalUidMigrationTest.class);
         suite.addTestSuite(ViewWithNullElementMigrationParticipantTest.class);
         suite.addTestSuite(UnsetOriginalStyleFeatureMigrationParticipantTest.class);
+        suite.addTestSuite(SetChangeIdMigrationParticipantTest.class);
 
         suite.addTest(new JUnit4TestAdapter(CommonPreferencesTest.class));
         suite.addTest(new JUnit4TestAdapter(GroupingContentProviderTest.class));
