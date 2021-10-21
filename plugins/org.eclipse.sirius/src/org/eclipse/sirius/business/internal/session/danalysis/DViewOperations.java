@@ -18,6 +18,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -43,7 +44,6 @@ import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
 import com.google.common.collect.Sets.SetView;
 
@@ -60,7 +60,7 @@ final class DViewOperations {
     }
 
     public static DViewOperations on(DAnalysisSessionImpl session) {
-        return new DViewOperations(Preconditions.checkNotNull(session));
+        return new DViewOperations(Objects.requireNonNull(session));
     }
 
     public Collection<Viewpoint> getSelectedViewpoints(boolean includeReferencedAnalysis) {

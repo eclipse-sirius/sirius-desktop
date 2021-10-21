@@ -14,6 +14,7 @@ package org.eclipse.sirius.table.business.api.query;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
@@ -21,8 +22,6 @@ import org.eclipse.sirius.table.metamodel.table.DCell;
 import org.eclipse.sirius.table.metamodel.table.DLine;
 import org.eclipse.sirius.table.metamodel.table.DTable;
 import org.eclipse.sirius.table.metamodel.table.LineContainer;
-
-import com.google.common.base.Preconditions;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link DTable} as a
@@ -42,8 +41,7 @@ public class DTableQuery {
      *            the cell to query.
      */
     public DTableQuery(DTable table) {
-        Preconditions.checkNotNull(table);
-        this.table = table;
+        this.table = Objects.requireNonNull(table);
     }
 
     /**

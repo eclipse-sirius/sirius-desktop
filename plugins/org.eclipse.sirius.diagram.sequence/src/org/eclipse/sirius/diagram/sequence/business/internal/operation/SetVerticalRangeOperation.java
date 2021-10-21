@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
+import java.util.Objects;
+
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
 import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
@@ -39,8 +41,8 @@ public class SetVerticalRangeOperation extends AbstractModelChangeOperation<Void
      */
     public SetVerticalRangeOperation(ISequenceEvent ise, Range newRange) {
         super(Messages.SetVerticalRangeOperation_operationName);
-        this.ise = Preconditions.checkNotNull(ise);
-        this.newRange = Preconditions.checkNotNull(newRange);
+        this.ise = Objects.requireNonNull(ise);
+        this.newRange = Objects.requireNonNull(newRange);
         Preconditions.checkArgument(!newRange.isEmpty());
     }
 

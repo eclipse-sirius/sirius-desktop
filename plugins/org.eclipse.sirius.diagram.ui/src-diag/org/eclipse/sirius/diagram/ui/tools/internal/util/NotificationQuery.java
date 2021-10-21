@@ -15,14 +15,13 @@ package org.eclipse.sirius.diagram.ui.tools.internal.util;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Objects;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.gmf.runtime.notation.NotationPackage;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.HideFilter;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Queries on EMF Notifications to identify what they are about.
@@ -45,7 +44,7 @@ public class NotificationQuery extends org.eclipse.sirius.common.tools.api.query
      */
     public NotificationQuery(Notification notif) {
         super(notif);
-        this.notif = Preconditions.checkNotNull(notif);
+        this.notif = Objects.requireNonNull(notif);
     }
 
     /**

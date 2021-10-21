@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.eclipse.core.resources.IFile;
@@ -29,8 +30,6 @@ import org.eclipse.sirius.business.internal.migration.resource.ResourceFileExten
 import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Reload the VSMs used inside a session when the global registry detects their content has changed.
@@ -47,7 +46,7 @@ public class SessionVSMUpdater implements ViewpointRegistryListener2 {
      *            the session to update.
      */
     public SessionVSMUpdater(DAnalysisSessionImpl session) {
-        this.session = Preconditions.checkNotNull(session);
+        this.session = Objects.requireNonNull(session);
     }
 
     @Override

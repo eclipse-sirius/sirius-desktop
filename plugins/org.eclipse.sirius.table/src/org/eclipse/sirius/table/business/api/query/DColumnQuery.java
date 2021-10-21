@@ -12,9 +12,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.api.query;
 
-import org.eclipse.sirius.table.metamodel.table.DColumn;
+import java.util.Objects;
 
-import com.google.common.base.Preconditions;
+import org.eclipse.sirius.table.metamodel.table.DColumn;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link DColumn} as
@@ -34,8 +34,7 @@ public class DColumnQuery {
      *            the {@link DColumn} to query.
      */
     public DColumnQuery(DColumn dColumn) {
-        Preconditions.checkNotNull(dColumn);
-        this.column = dColumn;
+        this.column = Objects.requireNonNull(dColumn);
     }
 
     /**

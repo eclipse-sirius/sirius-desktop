@@ -19,6 +19,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -68,7 +69,6 @@ import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
 import org.eclipse.sirius.viewpoint.description.tool.VariableContainer;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationPackage;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
@@ -671,8 +671,8 @@ public abstract class AbstractInterpretedExpressionQuery implements IInterpreted
      *         specified in the meta-model.
      */
     protected VariableType getVariableTypeName(AbstractVariable var) {
-        Preconditions.checkNotNull(var);
-        Preconditions.checkNotNull(var.eContainingFeature());
+        Objects.requireNonNull(var);
+        Objects.requireNonNull(var.eContainingFeature());
 
         VariableType typeName = VariableType.ANY_EOBJECT;
         EAnnotation varAnnotation = var.eContainingFeature().getEAnnotation(AbstractInterpretedExpressionQuery.VARIABLES_ANNOTATION_SOURCE);

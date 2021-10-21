@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -47,7 +48,6 @@ import org.eclipse.sirius.tools.api.command.semantic.RemoveSemanticResourceComma
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.SyncStatus;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.LinkedHashMultimap;
 import com.google.common.collect.Multimap;
@@ -67,7 +67,7 @@ public class SessionResourcesSynchronizer implements ResourceSyncClient {
      *            the session to synchronize.
      */
     public SessionResourcesSynchronizer(DAnalysisSessionImpl session) {
-        this.session = Preconditions.checkNotNull(session);
+        this.session = Objects.requireNonNull(session);
     }
 
     @Override

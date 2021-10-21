@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.gmf.runtime.notation.View;
@@ -77,7 +78,7 @@ public final class SubEventsHelper {
      */
     public SubEventsHelper(ISequenceEvent event) {
         Preconditions.checkArgument(types.contains(event.getClass()));
-        Preconditions.checkNotNull(event);
+        Objects.requireNonNull(event);
         this.parentEvent = event;
         this.parentRange = event.getVerticalRange();
     }

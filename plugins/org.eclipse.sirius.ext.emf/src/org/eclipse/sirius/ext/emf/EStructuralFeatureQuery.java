@@ -12,14 +12,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.ext.emf;
 
+import java.util.Objects;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Queries on Ecore {@link EStructuralFeature}.
@@ -36,7 +36,7 @@ public class EStructuralFeatureQuery {
      *            the feature to query.
      */
     public EStructuralFeatureQuery(EStructuralFeature feature) {
-        this.feature = Preconditions.checkNotNull(feature);
+        this.feature = Objects.requireNonNull(feature);
     }
 
     /**

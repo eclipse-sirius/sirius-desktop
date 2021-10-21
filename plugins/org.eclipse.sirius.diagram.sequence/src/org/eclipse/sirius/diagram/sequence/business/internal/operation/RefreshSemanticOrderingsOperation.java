@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EObject;
@@ -39,7 +40,6 @@ import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelCh
 import org.eclipse.sirius.tools.api.interpreter.InterpreterUtil;
 
 import com.google.common.base.Function;
-import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -69,7 +69,7 @@ public class RefreshSemanticOrderingsOperation extends AbstractModelChangeOperat
      */
     public RefreshSemanticOrderingsOperation(SequenceDDiagram diagram) {
         super(Messages.RefreshSemanticOrderingsOperation_operationName);
-        this.sequenceDDiagram = Preconditions.checkNotNull(diagram);
+        this.sequenceDDiagram = Objects.requireNonNull(diagram);
     }
 
     @Override

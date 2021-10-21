@@ -12,10 +12,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.api.query;
 
+import java.util.Objects;
+
 import org.eclipse.sirius.table.metamodel.table.description.StyleUpdater;
 import org.eclipse.sirius.viewpoint.description.ColorDescription;
-
-import com.google.common.base.Preconditions;
 
 /**
  * A class aggregating all the queries (read-only!) having a
@@ -35,7 +35,7 @@ public class StyleUpdaterQuery {
      *            the styleUpdater to query.
      */
     public StyleUpdaterQuery(StyleUpdater styleUpdater) {
-        Preconditions.checkNotNull(styleUpdater);
+        Objects.requireNonNull(styleUpdater);
         this.styleUpdater = styleUpdater;
     }
 

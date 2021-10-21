@@ -18,6 +18,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.EList;
@@ -48,8 +49,6 @@ import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelCh
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
-import com.google.common.base.Objects;
-import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
@@ -90,7 +89,7 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
      */
     public SynchronizeISequenceEventsSemanticOrderingOperation(ISequenceEvent event) {
         super(Messages.SynchronizeISequenceEventsSemanticOrderingOperation_operationName);
-        this.event = Preconditions.checkNotNull(event);
+        this.event = Objects.requireNonNull(event);
         this.diagram = event.getDiagram();
         this.sequenceDiagram = this.diagram.getSequenceDDiagram();
     }
@@ -105,7 +104,7 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
      */
     public SynchronizeISequenceEventsSemanticOrderingOperation(ISequenceEvent event, Collection<ISequenceEvent> selection) {
         this(event);
-        Preconditions.checkNotNull(selection);
+        Objects.requireNonNull(selection);
         this.selection.addAll(selection);
     }
 
@@ -178,7 +177,7 @@ public class SynchronizeISequenceEventsSemanticOrderingOperation extends Abstrac
 
         }
 
-        if (!Objects.equal(startingEndPredecessorBefore, startingEndPredecessorAfter) || !Objects.equal(finishingEndPredecessorBefore, finishingEndPredecessorAfter)
+        if (!Objects.equals(startingEndPredecessorBefore, startingEndPredecessorAfter) || !Objects.equals(finishingEndPredecessorBefore, finishingEndPredecessorAfter)
                 || !Iterables.elementsEqual(endsByGraphicalOrder, endsBySemanticOrder)) {
             applySemanticReordering(semanticElement, startingEndPredecessorAfter, finishingEndPredecessorAfter, reorderTool);
             applyCompoundReordering(semanticElement, ends, compoundEnds, startingEndPredecessorAfter, finishingEndPredecessorAfter, reorderTool);

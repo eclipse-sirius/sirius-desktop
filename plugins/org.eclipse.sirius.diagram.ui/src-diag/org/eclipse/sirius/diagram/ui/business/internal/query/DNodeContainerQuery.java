@@ -12,14 +12,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.query;
 
+import java.util.Objects;
+
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.FlatContainerStyle;
 import org.eclipse.sirius.diagram.model.business.internal.query.DDiagramElementContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.model.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Queries relative to a DNodeContainer.
@@ -37,7 +37,7 @@ public class DNodeContainerQuery {
      *            the container to query.
      */
     public DNodeContainerQuery(DNodeContainer container) {
-        this.container = Preconditions.checkNotNull(container);
+        this.container = Objects.requireNonNull(container);
     }
 
     /**

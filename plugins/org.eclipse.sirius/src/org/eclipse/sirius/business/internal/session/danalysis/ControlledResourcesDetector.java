@@ -14,6 +14,7 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Objects;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
@@ -28,8 +29,6 @@ import org.eclipse.emf.transaction.RollbackException;
 import org.eclipse.sirius.business.api.session.SessionListener;
 import org.eclipse.sirius.model.business.internal.query.ResourceQueryInternal;
 import org.eclipse.sirius.tools.api.Messages;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Pre-commit listener to handle controlled resources.
@@ -52,7 +51,7 @@ public class ControlledResourcesDetector extends ResourceSetListenerImpl {
      *            the session to populate.
      */
     public ControlledResourcesDetector(DAnalysisSessionImpl session) {
-        this.session = Preconditions.checkNotNull(session);
+        this.session = Objects.requireNonNull(session);
     }
 
     /**

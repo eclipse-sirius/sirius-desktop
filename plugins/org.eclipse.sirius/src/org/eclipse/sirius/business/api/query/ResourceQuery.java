@@ -14,6 +14,7 @@ package org.eclipse.sirius.business.api.query;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.eclipse.emf.common.util.EList;
@@ -23,8 +24,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.sirius.business.api.session.resource.AirdResource;
 import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Queries on EMF Resources.
@@ -44,7 +43,7 @@ public class ResourceQuery {
      *            the resource to query.
      */
     public ResourceQuery(Resource resource) {
-        this.resource = Preconditions.checkNotNull(resource);
+        this.resource = Objects.requireNonNull(resource);
     }
 
     /**

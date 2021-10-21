@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.draw2d.FigureCanvas;
@@ -58,7 +59,6 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 
 import com.google.common.base.Function;
-import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.ImmutableSortedSet;
@@ -84,7 +84,7 @@ public class EditPartQuery {
      *            the graphical edit part to query.
      */
     public EditPartQuery(IGraphicalEditPart part) {
-        this.part = Preconditions.checkNotNull(part);
+        this.part = Objects.requireNonNull(part);
     }
 
     /**

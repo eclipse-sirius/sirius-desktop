@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.sirius.common.tools.Messages;
@@ -40,7 +41,7 @@ class PolymorphicService implements IPolymorphicService {
     private final Set<IMonomorphicService> implementers = new LinkedHashSet<>();
 
     PolymorphicService(String name) {
-        this.name = Preconditions.checkNotNull(name);
+        this.name = Objects.requireNonNull(name);
     }
 
     @Override
@@ -49,7 +50,7 @@ class PolymorphicService implements IPolymorphicService {
     }
 
     public void addImplementer(MonomorphicService svc) {
-        Preconditions.checkNotNull(svc);
+        Objects.requireNonNull(svc);
         Preconditions.checkArgument(name.equals(svc.getName()));
         implementers.add(svc);
     }

@@ -12,12 +12,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.query;
 
+import java.util.Objects;
+
 import org.eclipse.sirius.diagram.business.api.diagramtype.HeaderData;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.viewpoint.RGBValues;
-
-import com.google.common.base.Preconditions;
 
 /**
  * General queries on {@link InstanceRole}s.
@@ -37,7 +37,7 @@ public class InstanceRoleQuery {
      *            the instance role to query.
      */
     public InstanceRoleQuery(InstanceRole instanceRole) {
-        this.instanceRole = Preconditions.checkNotNull(instanceRole);
+        this.instanceRole = Objects.requireNonNull(instanceRole);
     }
 
     /**

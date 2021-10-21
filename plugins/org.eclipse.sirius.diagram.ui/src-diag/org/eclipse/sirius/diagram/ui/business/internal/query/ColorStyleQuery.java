@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.query;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import org.eclipse.sirius.diagram.BorderedStyle;
@@ -23,8 +24,6 @@ import org.eclipse.sirius.diagram.business.api.query.NodeStyleQuery;
 import org.eclipse.sirius.viewpoint.BasicLabelStyle;
 import org.eclipse.sirius.viewpoint.RGBValues;
 import org.eclipse.sirius.viewpoint.Style;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Helper to get the color from Sirius style model.
@@ -43,7 +42,7 @@ public class ColorStyleQuery {
      *            the style to query.
      */
     public ColorStyleQuery(Style style) {
-        this.style = Preconditions.checkNotNull(style);
+        this.style = Objects.requireNonNull(style);
     }
 
     /**

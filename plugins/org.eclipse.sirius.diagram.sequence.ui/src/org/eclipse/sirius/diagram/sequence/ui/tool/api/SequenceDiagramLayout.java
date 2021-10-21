@@ -12,11 +12,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.api;
 
+import java.util.Objects;
+
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.SequenceLayout;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
-
-import com.google.common.base.Preconditions;
 
 /**
  * API class to allow clients to control some aspects of the layout of sequence
@@ -34,7 +34,7 @@ public class SequenceDiagramLayout {
      *            the sequence diagram to manage.
      */
     public SequenceDiagramLayout(DiagramEditPart sequenceDiagram) {
-        this.sequenceDiagram = Preconditions.checkNotNull(sequenceDiagram);
+        this.sequenceDiagram = Objects.requireNonNull(sequenceDiagram);
     }
 
     /**

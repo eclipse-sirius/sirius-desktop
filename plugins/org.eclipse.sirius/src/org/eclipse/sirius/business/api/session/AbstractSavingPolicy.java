@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -28,7 +29,6 @@ import org.eclipse.sirius.common.tools.api.resource.ResourceSetSync;
 import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.Sets;
 
 /**
@@ -49,7 +49,7 @@ public abstract class AbstractSavingPolicy implements SavingPolicy {
      *            the editing domain to use
      */
     protected AbstractSavingPolicy(TransactionalEditingDomain domain) {
-        this.domain = Preconditions.checkNotNull(domain);
+        this.domain = Objects.requireNonNull(domain);
     }
 
     @Override

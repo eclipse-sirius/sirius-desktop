@@ -12,6 +12,8 @@
  */
 package org.eclipse.sirius.tests.swtbot.support.api.matcher;
 
+import java.util.Objects;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.notation.View;
@@ -19,8 +21,6 @@ import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
-
-import com.google.common.base.Preconditions;
 
 /**
  * A Matcher to get {@link EditPart} with semantic in parameter.
@@ -50,7 +50,7 @@ public class WithSemantic extends BaseMatcher<EditPart> {
      * @return a default {@link WithSemantic}
      */
     public static Matcher<EditPart> withSemantic(EObject semantic) {
-        Preconditions.checkNotNull(semantic, "Can't execute this matcher on a null semantic elt");
+        Objects.requireNonNull(semantic, "Can't execute this matcher on a null semantic elt");
         return new WithSemantic(semantic);
     }
 

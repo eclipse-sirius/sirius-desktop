@@ -13,9 +13,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.ui.tools.api.dialog.quickoutline;
 
-import org.eclipse.jface.viewers.IContentProvider;
+import java.util.Objects;
 
-import com.google.common.base.Preconditions;
+import org.eclipse.jface.viewers.IContentProvider;
 
 /**
  * Descriptor of a quick outline page.
@@ -57,10 +57,10 @@ public class QuickOutlinePageDescriptor {
      *            little description of the page.
      */
     public QuickOutlinePageDescriptor(final IQuickOutlineCallback quickOutlineCallback, final IQuickOutlineLabelProvider labelProvider, final IContentProvider contentProvider, String pageDescription) {
-        this.quickOutlineCallback = Preconditions.checkNotNull(quickOutlineCallback);
-        this.labelProvider = Preconditions.checkNotNull(labelProvider);
-        this.contentProvider = Preconditions.checkNotNull(contentProvider);
-        this.pageDescription = Preconditions.checkNotNull(pageDescription);
+        this.quickOutlineCallback = Objects.requireNonNull(quickOutlineCallback);
+        this.labelProvider = Objects.requireNonNull(labelProvider);
+        this.contentProvider = Objects.requireNonNull(contentProvider);
+        this.pageDescription = Objects.requireNonNull(pageDescription);
     }
 
     /**

@@ -13,18 +13,18 @@
 package org.eclipse.sirius.ext.base.relations;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Iterators;
 
 /**
  * The union of two or more relations.
- * 
+ *
  * @param <T>
  *            the type of the elements in the relation.
- * 
+ *
  * @author pierre-charles.david@obeo.fr
  */
 public class UnionRelation<T> implements Relation<T> {
@@ -32,17 +32,15 @@ public class UnionRelation<T> implements Relation<T> {
 
     /**
      * Constructor.
-     * 
+     *
      * @param baseRelations
      *            the relations to consider in the union.
      */
     public UnionRelation(Relation<T>... baseRelations) {
-        this.baseRelations = ImmutableSet.copyOf(Iterators.forArray(Preconditions.checkNotNull(baseRelations)));
+        this.baseRelations = ImmutableSet.copyOf(Iterators.forArray(Objects.requireNonNull(baseRelations)));
     }
 
-    /**
-     * {@inheritDoc}
-     */
+    @Override
     public Set<T> apply(T from) {
         Set<T> result = new HashSet<>();
         for (Relation<T> rel : baseRelations) {

@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -29,8 +30,6 @@ import org.eclipse.sirius.business.api.resource.strategy.ResourceStrategyRegistr
 import org.eclipse.sirius.business.internal.resource.parser.XMIModelFileSaxParser;
 import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Runnable to load an EMF resource.
@@ -55,8 +54,8 @@ public class LoadEMFResource implements Runnable {
      *            the file containing the resource to load.
      */
     public LoadEMFResource(final ResourceSet set, final IFile file) {
-        this.file = Preconditions.checkNotNull(file);
-        this.set = Preconditions.checkNotNull(set);
+        this.file = Objects.requireNonNull(file);
+        this.set = Objects.requireNonNull(set);
     }
 
     @Override

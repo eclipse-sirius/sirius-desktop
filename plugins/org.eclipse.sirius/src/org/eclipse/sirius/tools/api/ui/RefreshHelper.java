@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.function.Predicate;
 
@@ -32,8 +33,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.DRepresentation;
-
-import com.google.common.base.Preconditions;
 
 /**
  * A class providing useful methods for refresh.
@@ -164,7 +163,7 @@ public final class RefreshHelper {
      *            a predicate to consider a notification as impacting.
      */
     public static void registerImpactingNotification(Predicate<Notification> impactingNotificationPredicate) {
-        Preconditions.checkNotNull(impactingNotificationPredicate, Messages.RefreshHelper_notNullPredicate);
+        Objects.requireNonNull(impactingNotificationPredicate, Messages.RefreshHelper_notNullPredicate);
         impactingNotificationPredicates.add(impactingNotificationPredicate);
     }
 
@@ -175,7 +174,7 @@ public final class RefreshHelper {
      *            a predicate that must no longer consider a notification as impacting.
      */
     public static void unregisterImpactingNotification(Predicate<Notification> impactingNotificationPredicate) {
-        Preconditions.checkNotNull(impactingNotificationPredicate, Messages.RefreshHelper_notNullPredicate);
+        Objects.requireNonNull(impactingNotificationPredicate, Messages.RefreshHelper_notNullPredicate);
         impactingNotificationPredicates.remove(impactingNotificationPredicate);
     }
 }

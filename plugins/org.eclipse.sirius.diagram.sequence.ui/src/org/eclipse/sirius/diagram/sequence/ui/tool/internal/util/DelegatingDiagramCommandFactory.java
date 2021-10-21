@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.util;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -53,8 +54,6 @@ import org.eclipse.sirius.viewpoint.description.tool.SelectionWizardDescription;
 import org.eclipse.sirius.viewpoint.description.tool.ToolDescription;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationFix;
 
-import com.google.common.base.Preconditions;
-
 /**
  * An implementation of <code>IDiagramCommandFactory</code> which delegates to
  * another one. Useful to customize only some of the methods when one does not
@@ -72,7 +71,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
      *            the factory to delegate to.
      */
     public DelegatingDiagramCommandFactory(IDiagramCommandFactory baseFactory) {
-        this.baseFactory = Preconditions.checkNotNull(baseFactory);
+        this.baseFactory = Objects.requireNonNull(baseFactory);
     }
 
     /**

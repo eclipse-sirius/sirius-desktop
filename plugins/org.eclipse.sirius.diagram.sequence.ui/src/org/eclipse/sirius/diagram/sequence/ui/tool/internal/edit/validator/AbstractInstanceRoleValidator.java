@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.Map;
+import java.util.Objects;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -25,8 +26,6 @@ import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gmf.runtime.notation.Bounds;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.InstanceRole;
 import org.eclipse.sirius.diagram.sequence.ui.Messages;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Abstract class to validate InstanceRole move & resize request and get from it
@@ -63,7 +62,7 @@ public abstract class AbstractInstanceRoleValidator {
      * {@inheritDoc}
      */
     public boolean isValid(ChangeBoundsRequest request) {
-        Preconditions.checkNotNull(instanceRoles, Messages.AbstractInstanceRoleValidator_nullInstanceRoleList);
+        Objects.requireNonNull(instanceRoles, Messages.AbstractInstanceRoleValidator_nullInstanceRoleList);
 
         return true;
     }

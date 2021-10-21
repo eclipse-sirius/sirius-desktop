@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.Set;
 import java.util.SortedMap;
 import java.util.TreeMap;
@@ -55,7 +56,6 @@ import org.eclipse.swt.widgets.Shell;
 
 import com.google.common.base.Function;
 import com.google.common.base.Joiner;
-import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.HashMultimap;
@@ -291,7 +291,7 @@ public class ViewpointSelectionDialog extends TitleAreaDialog {
 
         // clone the selection in order to modify it
         final SortedMap<Viewpoint, Boolean> newSelection = new TreeMap<>(new ViewpointRegistry.ViewpointComparator());
-        newSelection.putAll(Preconditions.checkNotNull(selection));
+        newSelection.putAll(Objects.requireNonNull(selection));
         this.selection = newSelection;
 
         // item list

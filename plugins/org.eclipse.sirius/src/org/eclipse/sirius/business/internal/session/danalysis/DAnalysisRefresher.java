@@ -14,6 +14,7 @@ package org.eclipse.sirius.business.internal.session.danalysis;
 
 import java.util.Collection;
 import java.util.Map.Entry;
+import java.util.Objects;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
@@ -31,7 +32,6 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 
@@ -57,7 +57,7 @@ public class DAnalysisRefresher extends ResourceSetListenerImpl {
      *            the session on which listens model changes.
      */
     public DAnalysisRefresher(DAnalysisSessionImpl session) {
-        this.session = Preconditions.checkNotNull(session);
+        this.session = Objects.requireNonNull(session);
     }
 
     /**

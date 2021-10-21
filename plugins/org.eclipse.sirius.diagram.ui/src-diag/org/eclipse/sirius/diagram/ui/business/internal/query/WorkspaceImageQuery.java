@@ -12,12 +12,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.query;
 
+import java.util.Objects;
+
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.swt.graphics.Image;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Queries relative to WorkspaceImage.
@@ -37,7 +37,7 @@ public class WorkspaceImageQuery {
      *            the node to query.
      */
     public WorkspaceImageQuery(WorkspaceImageDescription workspaceImage) {
-        this.workspaceImage = Preconditions.checkNotNull(workspaceImage);
+        this.workspaceImage = Objects.requireNonNull(workspaceImage);
     }
 
     /**

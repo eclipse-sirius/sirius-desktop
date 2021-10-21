@@ -12,13 +12,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
+import java.util.Objects;
+
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.RangeHelper;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Modifies the vertical range of a lifeline edit part to move the end of life edit part.
@@ -40,7 +40,7 @@ public class EndOfLifeMoveOperation extends AbstractModelChangeOperation<Void> {
      */
     public EndOfLifeMoveOperation(Lifeline lifeline, int rangeDeltaWidth) {
         super(Messages.EndOfLifeMoveOperation_operationName);
-        this.lifeline = Preconditions.checkNotNull(lifeline);
+        this.lifeline = Objects.requireNonNull(lifeline);
         this.rangeDeltaWidth = rangeDeltaWidth;
     }
 

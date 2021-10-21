@@ -16,13 +16,12 @@ import java.lang.reflect.Field;
 import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.jface.util.IPropertyChangeListener;
 import org.eclipse.jface.util.PropertyChangeEvent;
 import org.eclipse.sirius.common.ui.Messages;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Helper class to manage configurable settings needed in the code but which are
@@ -50,7 +49,7 @@ public class DynamicConfigurationHelper implements IPropertyChangeListener {
      *            the preference store to listen to.
      */
     public DynamicConfigurationHelper(IPreferenceStore store) {
-        this.store = Preconditions.checkNotNull(store);
+        this.store = Objects.requireNonNull(store);
         store.addPropertyChangeListener(this);
     }
 

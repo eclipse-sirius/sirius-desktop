@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -45,7 +46,6 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.IEditorPart;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 
 /**
@@ -85,7 +85,7 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
      */
     public SelectDRepresentationElementsListener(DialectEditor editor, boolean selectOnlyViewWithNewSemanticTarget) {
         super(DEFAULT_NOTIFICATION_FILTER);
-        dialectEditor = Preconditions.checkNotNull(editor);
+        dialectEditor = Objects.requireNonNull(editor);
         this.selectOnlyViewWithNewSemanticTarget = selectOnlyViewWithNewSemanticTarget;
         DRepresentation representation = editor.getRepresentation();
         if (representation != null) {

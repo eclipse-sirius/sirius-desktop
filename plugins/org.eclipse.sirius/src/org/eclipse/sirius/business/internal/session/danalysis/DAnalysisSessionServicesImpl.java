@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 import org.eclipse.emf.ecore.EClass;
@@ -45,8 +46,6 @@ import org.eclipse.sirius.viewpoint.ViewpointFactory;
 import org.eclipse.sirius.viewpoint.description.AnnotationEntry;
 import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 
-import com.google.common.base.Preconditions;
-
 /**
  * The session services for DAnalysis.
  * 
@@ -67,7 +66,7 @@ public class DAnalysisSessionServicesImpl implements SessionService, DAnalysisSe
      *            the session.
      */
     public DAnalysisSessionServicesImpl(DAnalysisSessionImpl session) {
-        this.session = Preconditions.checkNotNull(session);
+        this.session = Objects.requireNonNull(session);
         this.representationLocationManager = new DRepresentationLocationManager();
     }
 

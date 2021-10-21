@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.gmf.runtime.notation.RelativeBendpoints;
@@ -24,8 +25,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceE
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.diagram.sequence.ui.Messages;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
-
-import com.google.common.base.Preconditions;
 
 /**
  * This operation is called to shift the given messages. It adjusts the GMF
@@ -96,10 +95,8 @@ public class ShiftMessagesOperation extends AbstractModelChangeOperation<Void> {
      */
     public ShiftMessagesOperation(Collection<Message> messagesToShift, Collection<ISequenceEvent> movedElements, int deltaY, boolean revert, boolean move) {
         this(Messages.ShiftMessagesOperation_operationName, deltaY, revert, move);
-        Preconditions.checkNotNull(messagesToShift);
-        Preconditions.checkNotNull(movedElements);
-        this.messagesToShift.addAll(messagesToShift);
-        this.movedElements.addAll(movedElements);
+        this.messagesToShift.addAll(Objects.requireNonNull(messagesToShift));
+        this.movedElements.addAll(Objects.requireNonNull(movedElements));
     }
 
     /**

@@ -12,9 +12,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.contentassist;
 
-import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
+import java.util.Objects;
 
-import com.google.common.base.Preconditions;
+import org.eclipse.sirius.common.tools.api.interpreter.IInterpreterContext;
 
 /**
  * This class contains some informations about the context.
@@ -42,7 +42,7 @@ public class ContentContext {
      *            cursor position. computed
      */
     public ContentContext(final String text, final int position, IInterpreterContext interpreterContext) {
-        Preconditions.checkNotNull(interpreterContext);
+        Objects.requireNonNull(interpreterContext);
         this.contents = text;
         this.position = position;
         this.interpreterContext = interpreterContext;

@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
 import java.text.MessageFormat;
+import java.util.Objects;
 
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
@@ -23,7 +24,6 @@ import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 
 /**
@@ -48,7 +48,7 @@ public class ShiftDirectSubExecutionsOperation extends AbstractModelChangeOperat
      */
     public ShiftDirectSubExecutionsOperation(ISequenceEvent parent, int deltaY) {
         super(MessageFormat.format(Messages.ShiftDirectSubExecutionsOperation_operationName, deltaY));
-        this.parent = Preconditions.checkNotNull(parent);
+        this.parent = Objects.requireNonNull(parent);
         this.deltaY = deltaY;
     }
 

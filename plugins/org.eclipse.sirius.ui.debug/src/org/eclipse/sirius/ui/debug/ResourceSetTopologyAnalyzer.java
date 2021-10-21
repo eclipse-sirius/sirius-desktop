@@ -14,6 +14,7 @@ package org.eclipse.sirius.ui.debug;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
@@ -25,13 +26,12 @@ import org.eclipse.emf.ecore.util.EContentsEList;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.ext.emf.AllContents;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 
 /**
- * Analyzes the inter-resource references inside a ResourceSet to discover its
- * high-level topology and relationships between resources.
+ * Analyzes the inter-resource references inside a ResourceSet to discover its high-level topology and relationships
+ * between resources.
  * 
  * @author pcdavid
  */
@@ -66,7 +66,7 @@ public class ResourceSetTopologyAnalyzer {
     private final Multimap<EStructuralFeature, Reference> references = ArrayListMultimap.create();
 
     public ResourceSetTopologyAnalyzer(ResourceSet rs) {
-        this.resourceSet = Preconditions.checkNotNull(rs);
+        this.resourceSet = Objects.requireNonNull(rs);
     }
 
     public Multimap<EStructuralFeature, Reference> analyze() {
@@ -120,7 +120,10 @@ public class ResourceSetTopologyAnalyzer {
     }
 
     private boolean isIgnored(Resource targetResource) {
-        return targetResource == null || targetResource.getURI().scheme().equals("environment"); // || targetResource.getURI().scheme().equals("http") || targetResource.getURI().scheme().equals("https");
+        return targetResource == null || targetResource.getURI().scheme().equals("environment"); // ||
+                                                                                                 // targetResource.getURI().scheme().equals("http")
+                                                                                                 // ||
+                                                                                                 // targetResource.getURI().scheme().equals("https");
     }
 
 }

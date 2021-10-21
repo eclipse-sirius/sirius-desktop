@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.gmf.runtime.notation.Edge;
@@ -29,7 +30,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceE
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Message;
 import org.eclipse.sirius.ext.base.Option;
 
-import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.google.common.collect.Iterables;
@@ -53,7 +53,7 @@ public class ISequenceEventQuery {
      *            the event to query.
      */
     public ISequenceEventQuery(ISequenceEvent event) {
-        this.event = Preconditions.checkNotNull(event);
+        this.event = Objects.requireNonNull(event);
     }
 
     /**

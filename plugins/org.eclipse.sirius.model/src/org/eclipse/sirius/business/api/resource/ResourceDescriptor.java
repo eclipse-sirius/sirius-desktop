@@ -12,9 +12,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.business.api.resource;
 
-import org.eclipse.emf.common.util.URI;
+import java.util.Objects;
 
-import com.google.common.base.Preconditions;
+import org.eclipse.emf.common.util.URI;
 
 /**
  * Represents a resource identified by its URI.
@@ -45,7 +45,7 @@ public final class ResourceDescriptor {
      *            uri of the resource
      */
     public ResourceDescriptor(URI uri) {
-        resourceURI = Preconditions.checkNotNull(uri);
+        resourceURI = Objects.requireNonNull(uri);
     }
 
     /**

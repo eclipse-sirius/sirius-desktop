@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 import org.eclipse.core.runtime.CoreException;
@@ -31,9 +32,6 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQueryProvider;
 import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.tools.internal.ui.ExternalJavaActionDescriptor;
-
-import com.google.common.base.Objects;
-import com.google.common.base.Preconditions;
 
 /**
  * Maintains the set of {@link IInterpretedExpressionQueryProvider} currently registered.
@@ -93,7 +91,7 @@ public class InterpretedExpressionQueryProviderRegistry {
      *            the plug-in in the context of which we're running; used for logging.
      */
     public InterpretedExpressionQueryProviderRegistry(IExtensionRegistry registry, Plugin context) {
-        this.registry = Preconditions.checkNotNull(registry);
+        this.registry = Objects.requireNonNull(registry);
         this.context = context;
         this.entries = Collections.newSetFromMap(new ConcurrentHashMap<>());
     }
@@ -142,7 +140,7 @@ public class InterpretedExpressionQueryProviderRegistry {
         Iterator<IInterpretedExpressionQueryProvider> iter = entries.iterator();
         while (iter.hasNext()) {
             IInterpretedExpressionQueryProvider provider = iter.next();
-            if (Objects.equal(className, provider.getClass().getName())) {
+            if (Objects.equals(className, provider.getClass().getName())) {
                 iter.remove();
             }
         }

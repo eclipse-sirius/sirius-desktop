@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
@@ -69,7 +70,7 @@ public final class ParentOperandFinder {
      */
     public ParentOperandFinder(ISequenceEvent event) {
         Preconditions.checkArgument(types.contains(event.getClass()));
-        Preconditions.checkNotNull(event);
+        Objects.requireNonNull(event);
         this.event = event;
     }
 
@@ -83,7 +84,7 @@ public final class ParentOperandFinder {
      */
     public ParentOperandFinder(ISequenceEvent event, Function<ISequenceEvent, Range> rangeFunction) {
         this(event);
-        Preconditions.checkNotNull(rangeFunction);
+        Objects.requireNonNull(rangeFunction);
         this.rangeFunction = rangeFunction;
     }
 

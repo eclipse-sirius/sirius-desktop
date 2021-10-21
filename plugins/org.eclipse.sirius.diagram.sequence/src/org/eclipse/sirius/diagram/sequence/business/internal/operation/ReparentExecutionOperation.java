@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
+import java.util.Objects;
+
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.gmf.runtime.notation.View;
@@ -44,8 +46,8 @@ public class ReparentExecutionOperation extends AbstractModelChangeOperation<Voi
      */
     public ReparentExecutionOperation(AbstractNodeEvent execution, ISequenceEvent finalParent) {
         super(Messages.ReparentExecutionOperation_operationName);
-        this.execution = Preconditions.checkNotNull(execution);
-        this.finalParent = Preconditions.checkNotNull(finalParent);
+        this.execution = Objects.requireNonNull(execution);
+        this.finalParent = Objects.requireNonNull(finalParent);
         Preconditions.checkArgument(execution.getNotationView().getElement() instanceof DNode);
         Preconditions.checkArgument(finalParent.getNotationView().getElement() instanceof AbstractDNode);
     }

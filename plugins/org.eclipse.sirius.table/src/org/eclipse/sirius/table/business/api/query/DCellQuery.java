@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.api.query;
 
+import java.util.Objects;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
@@ -36,8 +38,6 @@ import org.eclipse.sirius.table.metamodel.table.description.IntersectionMapping;
 import org.eclipse.sirius.table.tools.internal.Messages;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
 
-import com.google.common.base.Preconditions;
-
 /**
  * A class aggregating all the queries (read-only!) having a {@link DCell} as a starting point.
  *
@@ -58,8 +58,7 @@ public class DCellQuery {
      *            the cell to query.
      */
     public DCellQuery(DCell cell) {
-        Preconditions.checkNotNull(cell);
-        this.cell = cell;
+        this.cell = Objects.requireNonNull(cell);
     }
 
     /**

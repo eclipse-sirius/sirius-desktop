@@ -12,13 +12,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.tools.internal.resource;
 
+import java.util.Objects;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.sirius.business.api.query.FileQuery;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Queries on file in the context of a modeling project.
@@ -38,7 +38,7 @@ public class ModelingProjectFileQuery {
      *            the resource to query.
      */
     public ModelingProjectFileQuery(IFile file) {
-        this.file = Preconditions.checkNotNull(file);
+        this.file = Objects.requireNonNull(file);
     }
 
     /**

@@ -13,6 +13,7 @@
 package org.eclipse.sirius.business.internal.session.danalysis;
 
 import java.text.MessageFormat;
+import java.util.Objects;
 
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -21,8 +22,6 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.tools.api.Messages;
 import org.eclipse.sirius.viewpoint.DAnalysis;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Specific command to reload an analysis.
@@ -49,7 +48,7 @@ public class AnalysisResourceReloadedCommand extends RecordingCommand {
      */
     public AnalysisResourceReloadedCommand(DAnalysisSessionImpl session, TransactionalEditingDomain domain, Resource analysisResource) {
         super(domain, MessageFormat.format(Messages.AnalysisResourceReloadedCommand_label, analysisResource.getURI()));
-        this.session = Preconditions.checkNotNull(session);
+        this.session = Objects.requireNonNull(session);
         this.resource = analysisResource;
         EList<EObject> contents = analysisResource.getContents();
         if (contents.isEmpty()) {

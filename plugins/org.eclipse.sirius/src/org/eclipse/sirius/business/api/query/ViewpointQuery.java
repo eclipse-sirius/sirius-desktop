@@ -14,6 +14,7 @@ package org.eclipse.sirius.business.api.query;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -24,8 +25,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationExtensionDescription;
 import org.eclipse.sirius.viewpoint.description.RepresentationTemplate;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
-import com.google.common.base.Preconditions;
 
 /**
  * A class aggregating all the queries (read-only!) having a Sirius as a
@@ -105,7 +104,7 @@ public class ViewpointQuery {
      *         as <code>other</code>.
      */
     public boolean hasSameSiriusURI(Viewpoint other) {
-        Preconditions.checkNotNull(other);
+        Objects.requireNonNull(other);
         Option<URI> vpURI = getViewpointURI();
         Option<URI> otherURI = new ViewpointQuery(other).getViewpointURI();
         return vpURI.some() && otherURI.some() && vpURI.get().equals(otherURI.get());
@@ -124,7 +123,7 @@ public class ViewpointQuery {
      *         file with the specified extension.
      */
     public boolean handlesSemanticModelExtension(String ext) {
-        Preconditions.checkNotNull(ext);
+        Objects.requireNonNull(ext);
 
         final String supportedExtensions;
         if (StringUtil.isEmpty(vp.getModelFileExtension()))

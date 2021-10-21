@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.query;
 
+import java.util.Objects;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -19,8 +21,6 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.sirius.common.tools.DslCommonPlugin;
 import org.eclipse.sirius.common.tools.api.ecore.EPackageMetaData;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Queries on EMF Notifications.
@@ -37,7 +37,7 @@ public class NotificationQuery {
      *            the notification to query.
      */
     public NotificationQuery(Notification notification) {
-        this.notification = Preconditions.checkNotNull(notification);
+        this.notification = Objects.requireNonNull(notification);
     }
 
     /**

@@ -12,11 +12,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.table.business.api.query;
 
+import java.util.Objects;
+
 import org.eclipse.sirius.table.metamodel.table.DCellStyle;
 import org.eclipse.sirius.table.metamodel.table.DTableElementStyle;
 import org.eclipse.sirius.table.metamodel.table.TablePackage;
-
-import com.google.common.base.Preconditions;
 
 /**
  * A class aggregating all the queries (read-only!) having a
@@ -35,8 +35,7 @@ public class DTableElementStyleQuery {
      *            the cell to query.
      */
     public DTableElementStyleQuery(DTableElementStyle tableElementStyle) {
-        Preconditions.checkNotNull(tableElementStyle);
-        this.tableElementStyle = tableElementStyle;
+        this.tableElementStyle = Objects.requireNonNull(tableElementStyle);
     }
 
     /**

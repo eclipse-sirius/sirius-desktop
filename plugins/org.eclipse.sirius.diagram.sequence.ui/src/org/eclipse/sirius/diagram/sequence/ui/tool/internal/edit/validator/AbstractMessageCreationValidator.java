@@ -53,13 +53,13 @@ public abstract class AbstractMessageCreationValidator {
      * @return true if request is valid
      */
     public boolean isValid(CreateConnectionRequest request) {
-        // Preconditions.checkNotNull(sequenceElementSource,
+        // Objects.requireNonNull(sequenceElementSource,
         // "validator must know on which ISequenceElement check the request validation");
-        // Preconditions.checkNotNull(sequenceElementTarget,
+        // Objects.requireNonNull(sequenceElementTarget,
         // "validator must know on which ISequenceElement check the request validation");
-        // Preconditions.checkNotNull(firstClickLocation,
+        // Objects.requireNonNull(firstClickLocation,
         // "validator must know the click on the first ISequenceElement");
-        // Preconditions.checkNotNull(secondClickLocation,
+        // Objects.requireNonNull(secondClickLocation,
         // "validator must know the click on the second ISequenceElement");
         boolean valid = true;
 

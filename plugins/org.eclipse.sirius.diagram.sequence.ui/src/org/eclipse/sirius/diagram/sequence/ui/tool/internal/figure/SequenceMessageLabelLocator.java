@@ -12,13 +12,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.ui.tool.internal.figure;
 
+import java.util.Objects;
+
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gmf.runtime.diagram.ui.figures.LabelLocator;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart.ViewEdgeFigure;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Specific locator for sequence message to avoid vertical move of labels when
@@ -41,7 +41,7 @@ public class SequenceMessageLabelLocator extends LabelLocator {
      */
     public SequenceMessageLabelLocator(IFigure parent, LabelLocator wrappedlocator) {
         super(parent, new Rectangle(wrappedlocator.getOffset(), wrappedlocator.getSize()), wrappedlocator.getAlignment());
-        Preconditions.checkNotNull(wrappedlocator);
+        Objects.requireNonNull(wrappedlocator);
         this.labelLocator = wrappedlocator;
     }
 

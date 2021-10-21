@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
@@ -128,7 +129,7 @@ public class AbstractNodeEventResizeSelectionValidator {
      * be useful to actually execute the resize if it is valid, like for example avoid contact with siblings.
      */
     private void doValidation() {
-        Preconditions.checkNotNull(host, Messages.AbstractNodeEventResizeSelectionValidator_nullExecution);
+        Objects.requireNonNull(host, Messages.AbstractNodeEventResizeSelectionValidator_nullExecution);
         if (!initialized) {
             // Nothing to do
             initialized = true;

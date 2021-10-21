@@ -12,12 +12,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
+import java.util.Objects;
+
 import org.eclipse.gmf.runtime.notation.Location;
 import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
-
-import com.google.common.base.Preconditions;
 
 /**
  * An operation to inverse the relative position of a node on both axes. This is used for labels on messages to make
@@ -36,7 +36,7 @@ public class InverseRelativeNodePositionOperation extends AbstractModelChangeOpe
      */
     public InverseRelativeNodePositionOperation(Node node) {
         super(Messages.InverseRelativeNodePositionOperation_operationName);
-        this.node = Preconditions.checkNotNull(node);
+        this.node = Objects.requireNonNull(node);
     }
 
     @Override

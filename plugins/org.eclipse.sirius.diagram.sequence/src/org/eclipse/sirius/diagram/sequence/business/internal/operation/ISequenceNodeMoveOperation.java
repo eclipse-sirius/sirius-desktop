@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Objects;
 
 import org.eclipse.gmf.runtime.notation.LayoutConstraint;
 import org.eclipse.gmf.runtime.notation.Location;
@@ -21,8 +22,6 @@ import org.eclipse.gmf.runtime.notation.Node;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceNode;
 import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Move an execution, interaction use of combined fragment vertically.
@@ -45,7 +44,7 @@ public class ISequenceNodeMoveOperation extends AbstractModelChangeOperation<Voi
      */
     public ISequenceNodeMoveOperation(ISequenceNode node, int logicalShift) {
         super(Messages.ISequenceNodeMoveOperation_operationName);
-        this.seqNodes.add(Preconditions.checkNotNull(node));
+        this.seqNodes.add(Objects.requireNonNull(node));
         this.logicalShift = logicalShift;
     }
 
@@ -59,7 +58,7 @@ public class ISequenceNodeMoveOperation extends AbstractModelChangeOperation<Voi
      */
     public ISequenceNodeMoveOperation(Collection<ISequenceNode> nodes, int logicalShift) {
         super(Messages.ISequenceNodeMoveOperation_operationName);
-        Preconditions.checkNotNull(nodes);
+        Objects.requireNonNull(nodes);
         this.seqNodes.addAll(nodes);
         this.logicalShift = logicalShift;
     }

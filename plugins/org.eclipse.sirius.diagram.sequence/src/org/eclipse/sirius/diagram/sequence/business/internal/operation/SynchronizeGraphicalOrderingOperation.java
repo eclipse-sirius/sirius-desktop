@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.operation;
 
+import java.util.Objects;
+
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.diagram.sequence.SequenceDDiagram;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.SequenceDiagram;
@@ -19,8 +21,6 @@ import org.eclipse.sirius.diagram.sequence.business.internal.layout.SequenceLayo
 import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
 import org.eclipse.sirius.diagram.ui.business.internal.operation.AbstractModelChangeOperation;
 import org.eclipse.sirius.ext.base.Option;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Refreshes the graphical locations of the elements in a sequence diagram to reflect the current semantic ordering.
@@ -47,14 +47,14 @@ public class SynchronizeGraphicalOrderingOperation extends AbstractModelChangeOp
      */
     public SynchronizeGraphicalOrderingOperation(Diagram sequenceDiagram, boolean pack) {
         super(Messages.SynchronizeGraphicalOrderingOperation_operationName);
-        this.sequenceDiagram = Preconditions.checkNotNull(sequenceDiagram);
+        this.sequenceDiagram = Objects.requireNonNull(sequenceDiagram);
         this.pack = pack;
     }
 
     @Override
     public Boolean execute() {
         boolean result = false;
-        Preconditions.checkNotNull(sequenceDiagram);
+        Objects.requireNonNull(sequenceDiagram);
         SequenceLayout sequenceLayout = new SequenceLayout(sequenceDiagram);
         Option<SequenceDiagram> sd = sequenceLayout.getSequenceDiagram();
 

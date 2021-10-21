@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.api.figure;
 
+import java.util.Objects;
+
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -23,8 +25,6 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.ToggleFoldingStateCommand;
 import org.eclipse.sirius.ext.draw2d.figure.ActionTriggerImageFigure;
 import org.eclipse.swt.graphics.Image;
-
-import com.google.common.base.Preconditions;
 
 /**
  * A figure which displays and controls the folding state of an element.
@@ -56,7 +56,7 @@ public class FoldingToggleImageFigure extends ActionTriggerImageFigure {
      *            the element whose folding state to display and control.
      */
     public FoldingToggleImageFigure(IAbstractDiagramNodeEditPart part) {
-        this.part = Preconditions.checkNotNull(part);
+        this.part = Objects.requireNonNull(part);
         setSize(new Dimension(FOLD_ICON_WIDTH, FOLD_ICON_HEIGHT));
         show(null);
         DDiagramElement element = part.resolveDiagramElement();

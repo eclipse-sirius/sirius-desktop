@@ -12,14 +12,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.query;
 
+import java.util.Objects;
+
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.swt.graphics.Image;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Queries relative to a DNode.
@@ -39,7 +39,7 @@ public class DNodeQuery {
      *            the node to query.
      */
     public DNodeQuery(DNode node) {
-        this.node = Preconditions.checkNotNull(node);
+        this.node = Objects.requireNonNull(node);
     }
 
     /**

@@ -14,6 +14,7 @@ package org.eclipse.sirius.business.api.session;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.SubProgressMonitor;
@@ -24,8 +25,6 @@ import org.eclipse.sirius.business.api.helper.SiriusResourceHelper;
 import org.eclipse.sirius.common.tools.api.util.EqualityHelper;
 import org.eclipse.sirius.viewpoint.DView;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Class to select or deselect Viewpoints for a given session.
@@ -44,7 +43,7 @@ public class ViewpointSelector {
      *            viewpoints.
      */
     public ViewpointSelector(Session session) {
-        this.session = Preconditions.checkNotNull(session);
+        this.session = Objects.requireNonNull(session);
     }
 
     /**

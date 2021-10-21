@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.util;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -135,8 +136,8 @@ public class FinalParentHelper {
      *            the resize query.
      */
     public FinalParentHelper(AbstractNodeEvent self, RequestQuery resizeRequest) {
-        this.self = Preconditions.checkNotNull(self);
-        this.request = Preconditions.checkNotNull(resizeRequest);
+        this.self = Objects.requireNonNull(self);
+        this.request = Objects.requireNonNull(resizeRequest);
         Preconditions.checkArgument(resizeRequest.isResize());
     }
 

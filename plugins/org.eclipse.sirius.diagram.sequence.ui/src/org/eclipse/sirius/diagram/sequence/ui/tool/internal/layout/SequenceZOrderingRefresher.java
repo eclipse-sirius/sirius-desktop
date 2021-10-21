@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.layout;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.CombinedFragmentEditPart;
@@ -22,7 +23,6 @@ import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.Observatio
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.edit.part.SequenceDiagramEditPart;
 
 import com.google.common.base.Function;
-import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
@@ -45,7 +45,7 @@ public class SequenceZOrderingRefresher implements Runnable {
      *            ordering should be refreshed.
      */
     public SequenceZOrderingRefresher(SequenceDiagramEditPart sequenceDiagramEditPart) {
-        this.sequenceDiagramPart = Preconditions.checkNotNull(sequenceDiagramEditPart);
+        this.sequenceDiagramPart = Objects.requireNonNull(sequenceDiagramEditPart);
     }
 
     /**

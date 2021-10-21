@@ -17,6 +17,7 @@ import java.util.Collections;
 import java.util.EventObject;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -95,8 +96,6 @@ import org.eclipse.ui.contexts.IContextService;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.Version;
 
-import com.google.common.base.Preconditions;
-
 /**
  * The advanced Viewpoint Specification Model (*.odesign) Editor, base on the standard EMF-generated editor, but with
  * Sirius-specific customizations.
@@ -113,7 +112,7 @@ public class CustomSiriusEditor extends SiriusEditor implements IEObjectNavigabl
          *            URIs on save..
          */
         ViewpointURIHandler(ResourceSet resourceSet) {
-            this.resourceSet = Preconditions.checkNotNull(resourceSet);
+            this.resourceSet = Objects.requireNonNull(resourceSet);
         }
 
         @Override

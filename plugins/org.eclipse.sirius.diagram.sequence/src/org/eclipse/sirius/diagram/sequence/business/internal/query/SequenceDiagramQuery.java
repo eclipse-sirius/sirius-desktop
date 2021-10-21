@@ -13,6 +13,7 @@
 package org.eclipse.sirius.diagram.sequence.business.internal.query;
 
 import java.util.Collection;
+import java.util.Objects;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
@@ -64,7 +65,7 @@ public class SequenceDiagramQuery {
      * @return the set of {@link ISequenceEvent} lower timePoint, sorted by range from lower to upper
      */
     public Set<ISequenceEvent> getAllSequenceEventsLowerThan(int timePoint) {
-        Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
+        Objects.requireNonNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
         Preconditions.checkArgument(timePoint > 0, Messages.SequenceDiagramQuery_invalidTimePoint);
 
         Set<ISequenceEvent> sequenceEventLowers = new TreeSet<ISequenceEvent>(new RangeComparator());
@@ -86,7 +87,7 @@ public class SequenceDiagramQuery {
      * @return the set of {@link ISequenceEvent} having timePoint in their range, sorted by range from lower to upper
      */
     public Set<ISequenceEvent> getAllSequenceEventsOn(int timePoint) {
-        Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
+        Objects.requireNonNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
         Preconditions.checkArgument(timePoint > 0, Messages.SequenceDiagramQuery_invalidTimePoint);
 
         Set<ISequenceEvent> sequenceEventOns = new TreeSet<ISequenceEvent>(new RangeComparator());
@@ -109,7 +110,7 @@ public class SequenceDiagramQuery {
      * @return the set of {@link ISequenceEvent} upper timePoint, sorted by range from lower to upper
      */
     public Set<ISequenceEvent> getAllSequenceEventsUpperThan(int timePoint) {
-        Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
+        Objects.requireNonNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
         Preconditions.checkArgument(timePoint > 0, Messages.SequenceDiagramQuery_invalidTimePoint);
 
         Set<ISequenceEvent> sequenceEventUppers = new TreeSet<ISequenceEvent>(new RangeComparator());
@@ -129,7 +130,7 @@ public class SequenceDiagramQuery {
      *         upper
      */
     public Set<ISequenceEvent> getAllSequenceEvents() {
-        Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
+        Objects.requireNonNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
 
         Set<ISequenceEvent> allSequenceEvents = new TreeSet<ISequenceEvent>(new RangeComparator());
         allSequenceEvents.addAll(sequenceDiagram.getAllLifelines());
@@ -209,7 +210,7 @@ public class SequenceDiagramQuery {
      * @return the set of {@link ISequenceNode} lower timePoint, sorted by range from lower to upper
      */
     public Set<ISequenceNode> getAllSequenceNodesLowerThan(int timePoint) {
-        Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
+        Objects.requireNonNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
         Preconditions.checkArgument(timePoint > 0, Messages.SequenceDiagramQuery_invalidTimePoint);
 
         Set<ISequenceNode> sequenceNodeLowers = new TreeSet<ISequenceNode>(new RangeComparator());
@@ -231,7 +232,7 @@ public class SequenceDiagramQuery {
      * @return the set of {@link ISequenceNode} having timePoint in their range, sorted by range from lower to upper
      */
     public Set<ISequenceNode> getAllSequenceNodesOn(int timePoint) {
-        Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
+        Objects.requireNonNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
         Preconditions.checkArgument(timePoint > 0, Messages.SequenceDiagramQuery_invalidTimePoint);
 
         Set<ISequenceNode> sequenceNodeUnders = new TreeSet<ISequenceNode>(new RangeComparator());
@@ -254,7 +255,7 @@ public class SequenceDiagramQuery {
      * @return the set of {@link ISequenceNode} upper timePoint, sorted by range from lower to upper
      */
     public Set<ISequenceNode> getAllSequenceNodesUpperThan(int timePoint) {
-        Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
+        Objects.requireNonNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
         Preconditions.checkArgument(timePoint > 0, Messages.SequenceDiagramQuery_invalidTimePoint);
 
         Set<ISequenceNode> sequenceNodeUnders = new TreeSet<ISequenceNode>(new RangeComparator());
@@ -274,7 +275,7 @@ public class SequenceDiagramQuery {
      *         upper
      */
     public Set<ISequenceNode> getAllSequenceNodes() {
-        Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
+        Objects.requireNonNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
 
         Set<ISequenceNode> allSequenceNodes = new TreeSet<ISequenceNode>(new RangeComparator());
         allSequenceNodes.addAll(sequenceDiagram.getAllInstanceRoles());
@@ -295,7 +296,7 @@ public class SequenceDiagramQuery {
      * @return the initial time if the current {@link SequenceDiagram} contains {@link Lifeline}, 0 else
      */
     public int getInitialTime() {
-        Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
+        Objects.requireNonNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
         int initialTime = 0;
         for (Lifeline lifeline : sequenceDiagram.getAllLifelines()) {
             int initialTimeCandidate = lifeline.getVerticalRange().getLowerBound();
@@ -313,7 +314,7 @@ public class SequenceDiagramQuery {
      * @return the final time if the current {@link SequenceDiagram} contains {@link Lifeline}, 0 else
      */
     public int getFinalTime() {
-        Preconditions.checkNotNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
+        Objects.requireNonNull(sequenceDiagram, Messages.SequenceDiagramQuery_nullSequenceDiagram);
         int finalTime = 0;
         if (!sequenceDiagram.getAllLifelines().isEmpty()) {
             Lifeline lifeline = sequenceDiagram.getAllLifelines().iterator().next();

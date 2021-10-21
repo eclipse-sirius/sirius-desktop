@@ -14,6 +14,7 @@ package org.eclipse.sirius.ext.base.relations;
 
 import java.text.MessageFormat;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.sirius.ext.base.Messages;
@@ -63,7 +64,7 @@ public class DependencyTracker<T> {
      *            the relation to track.
      */
     public DependencyTracker(Relation<T> relation) {
-        this.relation = Preconditions.checkNotNull(relation);
+        this.relation = Objects.requireNonNull(relation);
     }
 
     /**
@@ -83,7 +84,7 @@ public class DependencyTracker<T> {
      * @return the set of elements it depends on.
      */
     public Set<T> getDependencies(T element) {
-        Preconditions.checkNotNull(element);
+        Objects.requireNonNull(element);
         Preconditions.checkArgument(trackedElements.contains(element), MessageFormat.format(Messages.DependencyTracker_error_untrackedElement, element));
         return ImmutableSet.copyOf(dependencies.get(element));
     }
@@ -97,7 +98,7 @@ public class DependencyTracker<T> {
      *         depend on the specified one.
      */
     public Set<T> getReverseDependencies(T element) {
-        Preconditions.checkNotNull(element);
+        Objects.requireNonNull(element);
         return ImmutableSet.copyOf(reverseDependencies.get(element));
     }
 
@@ -110,7 +111,7 @@ public class DependencyTracker<T> {
      *            the element to add.
      */
     public synchronized void add(T element) {
-        Preconditions.checkNotNull(element);
+        Objects.requireNonNull(element);
         if (dependencies.containsKey(element)) {
             update(element);
         } else {
@@ -149,7 +150,7 @@ public class DependencyTracker<T> {
      *            the tracked element whose dependencies should be updated.
      */
     public synchronized void update(T element) {
-        Preconditions.checkNotNull(element);
+        Objects.requireNonNull(element);
         remove(element);
         add(element);
     }

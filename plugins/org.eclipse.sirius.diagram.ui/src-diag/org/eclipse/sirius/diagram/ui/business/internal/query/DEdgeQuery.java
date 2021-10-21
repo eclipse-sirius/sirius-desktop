@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.internal.query;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
@@ -23,7 +24,6 @@ import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.description.FoldingStyle;
 
-import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 
 /**
@@ -41,7 +41,7 @@ public class DEdgeQuery {
      *            the edge to query.
      */
     public DEdgeQuery(DEdge edge) {
-        this.edge = Preconditions.checkNotNull(edge);
+        this.edge = Objects.requireNonNull(edge);
     }
 
     /**

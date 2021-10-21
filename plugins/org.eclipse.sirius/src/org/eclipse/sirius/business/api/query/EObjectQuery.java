@@ -17,6 +17,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -43,7 +44,6 @@ import org.eclipse.sirius.viewpoint.description.DModelElement;
 import org.eclipse.sirius.viewpoint.description.DescriptionPackage;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 
-import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 
@@ -125,7 +125,7 @@ public class EObjectQuery {
      *         specified name.
      */
     public Collection<EObject> getInverseReferences(final String featureName) {
-        Preconditions.checkNotNull(featureName);
+        Objects.requireNonNull(featureName);
         return getInverseReferences(new Predicate<EStructuralFeature.Setting>() {
             @Override
             public boolean apply(Setting input) {
@@ -143,7 +143,7 @@ public class EObjectQuery {
      * @return all the EObjects in the same session as this EObject which point to it through the specified reference.
      */
     public Collection<EObject> getInverseReferences(final EReference ref) {
-        Preconditions.checkNotNull(ref);
+        Objects.requireNonNull(ref);
         return getInverseReferences(new Predicate<EStructuralFeature.Setting>() {
             @Override
             public boolean apply(Setting input) {
@@ -162,7 +162,7 @@ public class EObjectQuery {
      *         references.
      */
     public Collection<EObject> getInverseReferences(final Set<EReference> refs) {
-        Preconditions.checkNotNull(refs);
+        Objects.requireNonNull(refs);
         return getInverseReferences(new Predicate<EStructuralFeature.Setting>() {
             @Override
             public boolean apply(Setting input) {
@@ -180,7 +180,7 @@ public class EObjectQuery {
      * @return all the EObjects in the same session as this EObject which point to it through a matching setting.
      */
     private Collection<EObject> getInverseReferences(Predicate<Setting> predicate) {
-        Preconditions.checkNotNull(predicate);
+        Objects.requireNonNull(predicate);
         if (xref == null) {
             Session session = getSession();
             if (session != null) {

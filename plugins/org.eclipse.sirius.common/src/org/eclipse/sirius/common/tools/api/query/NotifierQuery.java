@@ -12,12 +12,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.common.tools.api.query;
 
+import java.util.Objects;
 import java.util.Optional;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Queries on EMF Notifier.
@@ -35,7 +34,7 @@ public class NotifierQuery {
      *            the notifier to query.
      */
     public NotifierQuery(Notifier notifier) {
-        this.notifier = Preconditions.checkNotNull(notifier);
+        this.notifier = Objects.requireNonNull(notifier);
     }
     /**
      * Return an optional adapter, the first adapter of <code>notifier</code> of

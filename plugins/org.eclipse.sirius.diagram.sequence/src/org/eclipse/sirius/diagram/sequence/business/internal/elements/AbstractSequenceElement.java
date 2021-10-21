@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.elements;
 
+import java.util.Objects;
+
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -24,8 +26,6 @@ import org.eclipse.sirius.diagram.sequence.tool.internal.Messages;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.base.Options;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
-
-import com.google.common.base.Preconditions;
 
 /**
  * Partial abstract implementation of {@link ISequenceElement}.
@@ -50,7 +50,7 @@ public abstract class AbstractSequenceElement extends AdapterImpl implements ISe
      *            the underlying GMF View.
      */
     AbstractSequenceElement(View view) {
-        this.view = Preconditions.checkNotNull(view);
+        this.view = Objects.requireNonNull(view);
     }
 
     /**
@@ -67,7 +67,7 @@ public abstract class AbstractSequenceElement extends AdapterImpl implements ISe
      * @return true is element is a sequence diagram element
      */
     protected static final boolean isSequenceDiagramElement(DDiagramElement element, EClass mappingType) {
-        Preconditions.checkNotNull(mappingType);
+        Objects.requireNonNull(mappingType);
         boolean result = false;
         if (element != null) {
             DiagramElementMapping mapping = element.getDiagramElementMapping();

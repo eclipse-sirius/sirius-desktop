@@ -22,6 +22,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -110,7 +111,6 @@ import org.eclipse.sirius.viewpoint.description.RepresentationDescription;
 import org.eclipse.sirius.viewpoint.description.Viewpoint;
 import org.eclipse.sirius.viewpoint.impl.DAnalysisSessionEObjectImpl;
 
-import com.google.common.base.Objects;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
@@ -198,11 +198,11 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      *            the analysis keeping the session data.
      */
     public DAnalysisSessionImpl(DAnalysis mainDAnalysis) {
-        Preconditions.checkNotNull(mainDAnalysis);
+        Objects.requireNonNull(mainDAnalysis);
         this.sessionResource = mainDAnalysis.eResource();
-        Preconditions.checkNotNull(this.sessionResource, Messages.DAnalysisSessionImpl_noRessourceErrorMsg);
+        Objects.requireNonNull(this.sessionResource, Messages.DAnalysisSessionImpl_noRessourceErrorMsg);
         this.id = sessionResource.getURI().toString();
-        this.transactionalEditingDomain = Preconditions.checkNotNull(TransactionUtil.getEditingDomain(mainDAnalysis), Messages.DAnalysisSessionImpl_noEditingDomainErrorMsg);
+        this.transactionalEditingDomain = Objects.requireNonNull(TransactionUtil.getEditingDomain(mainDAnalysis), Messages.DAnalysisSessionImpl_noEditingDomainErrorMsg);
         this.mainDAnalysis = mainDAnalysis;
         this.saver = new Saver(this);
         this.interpreter = new SessionInterpreter();
@@ -898,7 +898,7 @@ public class DAnalysisSessionImpl extends DAnalysisSessionEObjectImpl implements
      */
     protected boolean isResourceOfSession(Resource resource, Iterable<Resource> resources) {
         for (Resource input : resources) {
-            if (resource == input || (input.getURI() != null && Objects.equal(resource.getURI(), input.getURI()))) {
+            if (resource == input || (input.getURI() != null && Objects.equals(resource.getURI(), input.getURI()))) {
                 return true;
             }
         }

@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.tree.business.internal.query;
 
+import java.util.Objects;
+
 import org.eclipse.sirius.business.api.logger.RuntimeLoggerManager;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
@@ -24,8 +26,6 @@ import org.eclipse.sirius.tree.business.internal.helper.TreeHelper;
 import org.eclipse.sirius.tree.description.TreeItemDeletionTool;
 import org.eclipse.sirius.tree.description.TreeItemMapping;
 import org.eclipse.sirius.viewpoint.description.tool.ToolPackage;
-
-import com.google.common.base.Preconditions;
 
 /**
  * A class aggregating all the queries (read-only!) having a {@link DTreeItem} as a starting point.
@@ -44,8 +44,7 @@ public class DTreeItemInternalQuery {
      *            the tree item to query.
      */
     public DTreeItemInternalQuery(DTreeItem item) {
-        Preconditions.checkNotNull(item);
-        this.item = item;
+        this.item =  Objects.requireNonNull(item);
     }
 
     /**

@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EClass;
@@ -25,7 +26,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
-import com.google.common.base.Preconditions;
 import com.google.common.base.Predicate;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Iterables;
@@ -104,7 +104,7 @@ public class ModelInitializer {
      * @return the created objects.
      */
     public List<EObject> initializeContents(EObject root) {
-        Preconditions.checkNotNull(root);
+        Objects.requireNonNull(root);
         refToCandidatesMap.clear();
         List<EObject> created = new ArrayList<>();
         initializeContents(root, created);
@@ -279,12 +279,12 @@ public class ModelInitializer {
         private final Set<EClass> eclassesToAvoid = new HashSet<>();
 
         public Scope(Collection<? extends EPackage> packages, Collection<EClass> doNotIns) {
-            this.scope.addAll(Preconditions.checkNotNull(packages));
-            this.eclassesToAvoid.addAll(Preconditions.checkNotNull(doNotIns));
+            this.scope.addAll(Objects.requireNonNull(packages));
+            this.eclassesToAvoid.addAll(Objects.requireNonNull(doNotIns));
         }
 
         public Scope(Collection<? extends EPackage> packages) {
-            this.scope.addAll(Preconditions.checkNotNull(packages));
+            this.scope.addAll(Objects.requireNonNull(packages));
         }
 
         public Set<EClass> getEclassesToAvoid() {

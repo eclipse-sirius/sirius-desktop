@@ -12,12 +12,13 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.sequence.business.internal.query;
 
+import java.util.Objects;
+
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.sirius.diagram.AbsoluteBoundsFilter;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceElement;
 
-import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 
 /**
@@ -38,7 +39,7 @@ public class ISequenceElementQuery {
      *            the event to query.
      */
     public ISequenceElementQuery(ISequenceElement event) {
-        this.event = Preconditions.checkNotNull(event);
+        this.event = Objects.requireNonNull(event);
     }
 
     /**

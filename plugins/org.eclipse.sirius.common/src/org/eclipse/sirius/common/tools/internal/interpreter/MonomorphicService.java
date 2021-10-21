@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import org.eclipse.sirius.common.tools.Messages;
 import org.eclipse.sirius.common.tools.api.interpreter.EvaluationException;
@@ -43,8 +44,8 @@ class MonomorphicService implements IMonomorphicService {
     private final Method serviceMethod;
 
     MonomorphicService(Object serviceInstance, Method serviceMethod) {
-        this.serviceInstance = Preconditions.checkNotNull(serviceInstance);
-        this.serviceMethod = Preconditions.checkNotNull(serviceMethod);
+        this.serviceInstance = Objects.requireNonNull(serviceInstance);
+        this.serviceMethod = Objects.requireNonNull(serviceMethod);
         Preconditions.checkArgument(ServiceInterpreter.isValidServiceMethod(serviceMethod));
     }
 

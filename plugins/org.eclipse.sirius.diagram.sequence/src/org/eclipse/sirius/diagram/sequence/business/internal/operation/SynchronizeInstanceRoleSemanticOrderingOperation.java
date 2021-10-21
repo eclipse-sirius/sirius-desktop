@@ -17,6 +17,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 import org.eclipse.emf.ecore.EObject;
@@ -39,8 +40,6 @@ import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.sirius.viewpoint.description.tool.AbstractToolDescription;
 
-import com.google.common.base.Objects;
-import com.google.common.base.Preconditions;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
 
@@ -72,7 +71,7 @@ public class SynchronizeInstanceRoleSemanticOrderingOperation extends AbstractMo
      */
     public SynchronizeInstanceRoleSemanticOrderingOperation(InstanceRole instanceRole) {
         super(Messages.SynchronizeInstanceRoleSemanticOrderingOperation_operationName);
-        this.instanceRole = Preconditions.checkNotNull(instanceRole);
+        this.instanceRole = Objects.requireNonNull(instanceRole);
         this.diagram = instanceRole.getDiagram();
         this.sequenceDiagram = this.diagram.getSequenceDDiagram();
     }
@@ -87,8 +86,7 @@ public class SynchronizeInstanceRoleSemanticOrderingOperation extends AbstractMo
      */
     public SynchronizeInstanceRoleSemanticOrderingOperation(InstanceRole instanceRole, Collection<InstanceRole> selection) {
         this(instanceRole);
-        Preconditions.checkNotNull(selection);
-        this.selection.addAll(selection);
+        this.selection.addAll(Objects.requireNonNull(selection));
     }
 
     @Override
@@ -125,7 +123,7 @@ public class SynchronizeInstanceRoleSemanticOrderingOperation extends AbstractMo
         // The graphical ordering contains the state after
         EObject predecessorAfter = findEndPredecessor(semanticElement, rolesByGraphicalOrder);
 
-        if (!rolesBySemanticOrder.isEmpty() && !Objects.equal(predecessorBefore, predecessorAfter) || !Iterables.elementsEqual(rolesBySemanticOrder, rolesByGraphicalOrder)) {
+        if (!rolesBySemanticOrder.isEmpty() && !Objects.equals(predecessorBefore, predecessorAfter) || !Iterables.elementsEqual(rolesBySemanticOrder, rolesByGraphicalOrder)) {
             applySemanticReordering(semanticElement, predecessorBefore, predecessorAfter, reorderTool);
             reordered.add(instanceRoleToUpdate);
 
