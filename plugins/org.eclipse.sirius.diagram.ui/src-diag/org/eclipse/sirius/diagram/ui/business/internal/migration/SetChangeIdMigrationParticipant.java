@@ -36,7 +36,7 @@ public class SetChangeIdMigrationParticipant extends AbstractRepresentationsFile
     /**
      * Migration version.
      */
-    public static final Version MIGRATION_VERSION = new Version("14.6.0.202109231100"); //$NON-NLS-1$
+    public static final Version MIGRATION_VERSION = new Version("14.6.0.202110251100"); //$NON-NLS-1$
 
     @Override
     public Version getMigrationVersion() {
