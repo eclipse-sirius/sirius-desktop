@@ -375,6 +375,10 @@
 		</ul>
 		<h4 id="Migrations">Migrations</h4>
 		<ul>
+			<li><span class="label label-success">Added</span> A migration participant has been added to set a changeId value for each DRepresentationDescriptor that did not have one. Some old models were missing the changeId attribute, which could lead to technical problems. The migration participant 
+				<code>org.eclipse.sirius.diagram.ui.business.internal.migration.SetChangeIdMigrationParticipant</code> sets a random changeId if it didn&#8217;t already exist. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
+				<em>14.6.0.202110251100</em>.
+			</li>
 			<li><span class="label label-success">Added</span> A migration participant has been added to sort GMF edges order. The goal is to have edges displayed as before &#8220;edges z-order&#8221; improvement. Indeed, the display now consider order of GMF edges instead of order of its sources/targets.The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
 				<em>14.6.0.202109231100</em>.
 			</li>
