@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -180,7 +180,7 @@ public class ExtensionActivationOrderTest extends AbstractSiriusSwtBotGefTestCas
          * Check that the error message exists on the dialog. Throws a WidgetNotFoundException if the message does not
          * exist.
          */
-        botSiriusSelection.text(" Extension_A requires: Base");
+        botSiriusSelection.label(" Extension_A requires: Base");
 
         /*
          * We got the "error" message, now we complete the selection normally and try to create a diagram.
