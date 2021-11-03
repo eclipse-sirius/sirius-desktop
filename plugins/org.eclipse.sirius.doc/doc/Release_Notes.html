@@ -437,6 +437,16 @@
 				<code>org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper.copyDirectory(String, String)</code> have been added to ease to the copy of the test files from the test plugin to the junit workspace.
 			</li>
 		</ul>
+		<h4 id="Migrations">Migrations</h4>
+		<ul>
+			<li><span class="label label-success">Added</span> A migration participant has been added to repair size of GMF nodes with Workspace Image style description. A default size was set for this type of nodes, which resulted in graphical inconsistencies (see 
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=576423)">Bug 576423 - 
+					<em>Incorrect representation size when using 'Size Computation Expression'</em>
+				</a>. With the 
+				<code>org.eclipse.sirius.diagram.ui.business.internal.migration.WorkspaceImageGMFBoundsMigrationParticipant</code> migration participant, the size of these nodes was recomputed according to the Size Computation Expression defined in the VSM. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
+				<em>15.0.0.202201251700</em>.
+			</li>
+		</ul>
 		<h2 id="sirius6.6.0">Changes in Sirius 6.6.0</h2>
 		<h3 id="UserVisibleChanges2">User-Visible Changes</h3>
 		<ul>
@@ -493,7 +503,7 @@
 				<code>org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDDiagramEditPart.refreshChildren()</code> has been overridden to redraw the edges figures according to the order of the GMF edges.
 			</li>
 		</ul>
-		<h4 id="Migrations">Migrations</h4>
+		<h4 id="Migrations2">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration participant has been added to set a changeId value for each DRepresentationDescriptor that did not have one. Some old models were missing the changeId attribute, which could lead to technical problems. The migration participant 
 				<code>org.eclipse.sirius.diagram.ui.business.internal.migration.SetChangeIdMigrationParticipant</code> sets a random changeId if it didn&#8217;t already exist. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
@@ -505,7 +515,7 @@
 		</ul>
 		<h2 id="sirius6.5.1">Changes in Sirius 6.5.1</h2>
 		<h3 id="DeveloperVisibleChanges3">Developer-Visible Changes</h3>
-		<h4 id="Migrations2">Migrations</h4>
+		<h4 id="Migrations3">Migrations</h4>
 		<ul>
 			<li><span class="label label-info">Modified</span> The migration participant 
 				<code>org.eclipse.sirius.diagram.ui.business.internal.migration.NoteShapeDefaultLabelAlignmentMigrationParticipant</code> has been updated to repair Notes with a potential wrong vertical label alignment. This problem can occur since Sirius 6.3.2 used in a collaborative environment, Obeo Designer Team Edition or Team For Capella for example. The corresponding version, stored in the attribute version of viewpoint:DAnalysis of the aird file, is 
@@ -645,7 +655,7 @@
 				<code>org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper.getAbsoluteBoundsWithoutLabelsIn100Percent(GraphicalEditPart)</code> has been added to get the rectangle bounds without taking labels into account. This is used, in particular, to compute the bendpoints of an edge when the source or the target of the edge is an edge.
 			</li>
 		</ul>
-		<h4 id="Migrations3">Migrations</h4>
+		<h4 id="Migrations4">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration participant has been added to repair rectilinear edges containing only one bendpoint. Bracket edges are not relevant. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
 				<em>14.5.0.202104070943</em>.
@@ -740,11 +750,11 @@
 		<pre><code>try {
     //code to protect
 } catch (IllegalStateException e) {
-	if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
-	    // Generally catch silently the exception
-	} else {
-	    throw e;
-	}
+    if (new IllegalStateExceptionQuery(e).isAConnectionLostException()) {
+        // Generally catch silently the exception
+    } else {
+        throw e;
+    }
 }
 
 </code></pre>
@@ -923,7 +933,7 @@
 				</ul>
 			</li>
 		</ul>
-		<h4 id="Migrations4">Migrations</h4>
+		<h4 id="Migrations5">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration participant has been added only to change the version of the model. Indeed, if the new value &#8220;Tunnel&#8221; of GMF jump link type is used, see &#8220;User-Visible Changes&#8221; in 
 				<a href="Release_Notes.html#sirius6.3.1">Sirius 6.1.3</a>, the model will be invalid for an older version of Sirius. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
@@ -1072,7 +1082,7 @@
 				<code>org.eclipse.sirius.diagram.elk.IELKLayoutExtension</code> interface for more details.
 			</li>
 		</ul>
-		<h4 id="Migrations5">Migrations</h4>
+		<h4 id="Migrations6">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration participant has been added to move the name and documentation from the representations to their descriptors (see 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=548631">bugzilla #548631</a> for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
@@ -1939,7 +1949,7 @@
 				<code>oes.common</code> plugin.
 			</li>
 		</ul>
-		<h4 id="Migrations6">Migrations</h4>
+		<h4 id="Migrations7">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration participant has been added to convert the serialized xmi:id to the technical id (uid attribut) for Sirius model elements of the .aird files (see 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=525261">bugzilla #525261</a> for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 
@@ -2211,7 +2221,7 @@
 				<code>org.eclipse.swtbot.swt.finder.widgets.AbstractSWTBot.dragAndDrop(AbstractSWTBot&lt;? extends Widget&gt;)</code> method instead. 
 			</li>
 		</ul>
-		<h4 id="Migrations7">Migrations</h4>
+		<h4 id="Migrations8">Migrations</h4>
 		<ul>
 			<li><span class="label label-success">Added</span> A migration participant has been added to fix diagram with note attachment corrupted (see 
 				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=533177">bugzilla #533177</a> for more details). The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is 

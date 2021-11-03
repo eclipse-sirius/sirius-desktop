@@ -2165,6 +2165,10 @@
             class="org.eclipse.sirius.diagram.ui.business.internal.migration.SetChangeIdMigrationParticipant"
             kind="RepresentationsFile">
       </participant>
+      <participant
+            class="org.eclipse.sirius.diagram.ui.business.internal.migration.WorkspaceImageGMFBoundsMigrationParticipant"
+            kind="RepresentationsFile">
+      </participant>
    </extension>
 
    <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">

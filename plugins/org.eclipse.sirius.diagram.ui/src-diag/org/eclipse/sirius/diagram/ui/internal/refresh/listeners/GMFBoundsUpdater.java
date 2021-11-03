@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.transaction.NotificationFilter;
@@ -127,8 +126,7 @@ public class GMFBoundsUpdater extends ResourceSetListenerImpl {
             }
         }
         StyleDescription description = dDiagramElement.getStyle().getDescription();
-        isWorkspaceImageStyleResized = description instanceof WorkspaceImageDescription
-                && ((WorkspaceImageDescription) description).getSizeComputationExpression().equals("-1") && differentPath; //$NON-NLS-1$
+        isWorkspaceImageStyleResized = description instanceof WorkspaceImageDescription && ((WorkspaceImageDescription) description).getSizeComputationExpression().equals("-1") && differentPath; //$NON-NLS-1$
         return isWorkspaceImageStyleResized;
     }
 
@@ -168,9 +166,9 @@ public class GMFBoundsUpdater extends ResourceSetListenerImpl {
                 Size size = (Size) node.getLayoutConstraint();
                 StyleDescription styleDescription = element.getStyle().getDescription();
                 if (styleDescription instanceof WorkspaceImageDescription) {
-                    Dimension defaultDimension = new WorkspaceImageQuery((WorkspaceImageDescription) styleDescription).getDefaultDimension();
-                    size.setHeight(defaultDimension.height);
-                    size.setWidth(defaultDimension.width);
+                    double ratio = new WorkspaceImageQuery((WorkspaceImageDescription) styleDescription).getRatio();
+                    size.setWidth(((DNode) element).getWidth() * LayoutUtils.SCALE);
+                    size.setHeight((int) (((DNode) element).getWidth() / ratio * LayoutUtils.SCALE));
                 } else if (styleDescription instanceof NodeStyleDescription) {
                     size.setHeight(((DNode) element).getHeight() * LayoutUtils.SCALE);
                     size.setWidth(((DNode) element).getWidth() * LayoutUtils.SCALE);

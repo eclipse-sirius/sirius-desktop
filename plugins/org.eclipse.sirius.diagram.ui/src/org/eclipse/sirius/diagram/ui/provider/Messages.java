@@ -1598,6 +1598,12 @@ public final class Messages {
     public static String WorkspaceImageFigureRefresher_imageDescriptorUpdateError;
 
     @TranslatableMessage
+    public static String WorkspaceImageGMFBoundsMigrationParticipant_GMFBoundsResized;
+
+    @TranslatableMessage
+    public static String WorkspaceImageGMFBoundsMigrationParticipant_title;
+
+    @TranslatableMessage
     public static String WorkspaceImagePathSelector_dialogMessage;
 
     @TranslatableMessage

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,9 +17,7 @@ import java.util.Objects;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.WorkspaceImage;
-import org.eclipse.sirius.diagram.ui.tools.api.figure.WorkspaceImageFigure;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
-import org.eclipse.swt.graphics.Image;
 
 /**
  * Queries relative to a DNode.
@@ -51,20 +49,16 @@ public class DNodeQuery {
         final Dimension result = DEFAULT_NODE_DIMENSION.getCopy();
 
         if (node.getStyle() instanceof WorkspaceImage) {
-            final WorkspaceImage workspaceImage = (WorkspaceImage) node.getStyle();
-            final String path = workspaceImage.getWorkspacePath();
-            final Image image;
-            image = WorkspaceImageFigure.getImageInstanceFromPath(path);
-            if (image != null) {
-                // Use default image size
+            WorkspaceImageQuery imageQuery = new WorkspaceImageQuery((WorkspaceImage) node.getStyle());
+            if (imageQuery.doesImageExist()) {
                 if (node.getWidth() == null || Integer.valueOf(node.getWidth()) == -1) {
-                    result.setWidth(image.getBounds().width);
-                    result.setHeight(image.getBounds().height);
+                    // Use default image size
+                    Dimension imageSize = imageQuery.getDefaultDimension();
+                    result.setWidth(imageSize.width);
+                    result.setHeight(imageSize.height);
                 } else {
-                    // width is already defined, adapt height thanks to
-                    // image ratio
-                    final double ratio = (double) image.getBounds().width / image.getBounds().height;
-                    double newHeight = node.getWidth().intValue() / ratio;
+                    // width is already defined, adapt height thanks to image ratio
+                    double newHeight = node.getWidth().intValue() / imageQuery.getRatio();
 
                     // Adapt to draw2D
                     result.setWidth(node.getWidth().intValue() * LayoutUtils.SCALE);
