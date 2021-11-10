@@ -778,13 +778,22 @@ public interface DiagramPackage extends EPackage {
     int HIDE_LABEL_FILTER__UID = DiagramPackage.GRAPHICAL_FILTER__UID;
 
     /**
+     * The feature id for the '<em><b>Hidden Labels</b></em>' attribute list. <!-- begin-user-doc --> <!-- end-user-doc
+     * -->
+     *
+     * @generated
+     * @ordered
+     */
+    int HIDE_LABEL_FILTER__HIDDEN_LABELS = DiagramPackage.GRAPHICAL_FILTER_FEATURE_COUNT + 0;
+
+    /**
      * The number of structural features of the '<em>Hide Label Filter</em>' class. <!-- begin-user-doc --> <!--
      * end-user-doc -->
      *
      * @generated
      * @ordered
      */
-    int HIDE_LABEL_FILTER_FEATURE_COUNT = DiagramPackage.GRAPHICAL_FILTER_FEATURE_COUNT + 0;
+    int HIDE_LABEL_FILTER_FEATURE_COUNT = DiagramPackage.GRAPHICAL_FILTER_FEATURE_COUNT + 1;
 
     /**
      * The meta object id for the '{@link org.eclipse.sirius.diagram.impl.FoldingPointFilterImpl <em>Folding Point
@@ -5935,6 +5944,17 @@ public interface DiagramPackage extends EPackage {
     EClass getHideLabelFilter();
 
     /**
+     * Returns the meta object for the attribute list '{@link org.eclipse.sirius.diagram.HideLabelFilter#getHiddenLabels
+     * <em>Hidden Labels</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @return the meta object for the attribute list '<em>Hidden Labels</em>'.
+     * @see org.eclipse.sirius.diagram.HideLabelFilter#getHiddenLabels()
+     * @see #getHideLabelFilter()
+     * @generated
+     */
+    EAttribute getHideLabelFilter_HiddenLabels();
+
+    /**
      * Returns the meta object for class '{@link org.eclipse.sirius.diagram.FoldingPointFilter <em>Folding Point
      * Filter</em>}'. <!-- begin-user-doc --> <!-- end-user-doc -->
      *
@@ -7893,6 +7913,14 @@ public interface DiagramPackage extends EPackage {
          * @generated
          */
         EClass HIDE_LABEL_FILTER = DiagramPackage.eINSTANCE.getHideLabelFilter();
+
+        /**
+         * The meta object literal for the '<em><b>Hidden Labels</b></em>' attribute list feature. <!-- begin-user-doc
+         * --> <!-- end-user-doc -->
+         *
+         * @generated
+         */
+        EAttribute HIDE_LABEL_FILTER__HIDDEN_LABELS = DiagramPackage.eINSTANCE.getHideLabelFilter_HiddenLabels();
 
         /**
          * The meta object literal for the '{@link org.eclipse.sirius.diagram.impl.FoldingPointFilterImpl <em>Folding

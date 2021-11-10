@@ -229,6 +229,15 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
 
     /**
      * {@inheritDoc}
+     * 
+     */
+    @Override
+    public Command buildHideLabelSelectionCommand(Set<EObject> elementsToHide, List<Integer> selectedLabelVisualIds) {
+        return baseFactory.buildHideLabelSelectionCommand(elementsToHide, selectedLabelVisualIds);
+    }
+
+    /**
+     * {@inheritDoc}
      */
     @Override
     public org.eclipse.emf.common.command.Command buildJavaActionFromTool(ExternalJavaAction tool, Collection<DSemanticDecorator> selectedViews, IExternalJavaAction javaAction) {

@@ -366,6 +366,17 @@ public interface IDiagramCommandFactory extends ICommandFactory {
     Command buildHideLabelCommand(Set<EObject> elementsToHide);
 
     /**
+     * Build a command that is able to hide label of many elements.
+     * 
+     * @param elementsToHide
+     *            the elements to hide.
+     * @param selectedLabelVisualIds
+     *            the VisualIds of the edge labels to hide.
+     * @return a command that is able to hide label of many elements.
+     */
+    Command buildHideLabelSelectionCommand(Set<EObject> elementsToHide, List<Integer> selectedLabelVisualIds);
+
+    /**
      * Build a command that is able to reveal one diagram element.
      * 
      * @param diagramElement

@@ -44,6 +44,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.HideLabelFilter;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
+import org.eclipse.sirius.diagram.ui.part.SiriusVisualIDRegistry;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.util.GMFNotationHelper;
@@ -121,7 +122,8 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
                                 viewsToUpdate.put(view, Boolean.TRUE);
                             }
                         } else if (notification.getNewValue() instanceof HideLabelFilter) {
-                            for (View view : correspondingLabelView) {
+                            HideLabelFilter hideLabelFilter = (HideLabelFilter) notification.getNewValue();
+                            for (View view : getViewToHide(correspondingLabelView, hideLabelFilter)) {
                                 viewsToUpdate.put(view, Boolean.FALSE);
                             }
                         }
@@ -133,6 +135,20 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
             cmd = new VisibilityUpdateCommand(session.getTransactionalEditingDomain(), viewsToUpdate);
         }
         return cmd;
+    }
+
+    private Set<View> getViewToHide(List<View> views, HideLabelFilter hideLabelFilter) {
+        Set<View> viewToHide = new HashSet<>();
+        if (hideLabelFilter.getHiddenLabels().isEmpty()) {
+            viewToHide.addAll(views);
+        } else {
+            for (View view : views) {
+                if (hideLabelFilter.getHiddenLabels().contains(SiriusVisualIDRegistry.getVisualID(view.getType()))) {
+                    viewToHide.add(view);
+                }
+            }
+        }
+        return viewToHide;
     }
 
     private Set<View> getAllRelatedNotesVisibilityScope(View viewToDelete, Map<View, Boolean> viewsToUpdate) {

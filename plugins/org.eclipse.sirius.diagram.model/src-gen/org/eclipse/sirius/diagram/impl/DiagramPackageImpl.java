@@ -930,6 +930,16 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
      * @generated
      */
     @Override
+    public EAttribute getHideLabelFilter_HiddenLabels() {
+        return (EAttribute) hideLabelFilterEClass.getEStructuralFeatures().get(0);
+    }
+
+    /**
+     * <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    @Override
     public EClass getFoldingPointFilter() {
         return foldingPointFilterEClass;
     }
@@ -2522,6 +2532,7 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         hideFilterEClass = createEClass(DiagramPackage.HIDE_FILTER);
 
         hideLabelFilterEClass = createEClass(DiagramPackage.HIDE_LABEL_FILTER);
+        createEAttribute(hideLabelFilterEClass, DiagramPackage.HIDE_LABEL_FILTER__HIDDEN_LABELS);
 
         foldingPointFilterEClass = createEClass(DiagramPackage.FOLDING_POINT_FILTER);
 
@@ -2916,6 +2927,8 @@ public class DiagramPackageImpl extends EPackageImpl implements DiagramPackage {
         initEClass(hideFilterEClass, HideFilter.class, "HideFilter", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 
         initEClass(hideLabelFilterEClass, HideLabelFilter.class, "HideLabelFilter", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
+        initEAttribute(getHideLabelFilter_HiddenLabels(), ecorePackage.getEInt(), "hiddenLabels", null, 0, -1, HideLabelFilter.class, !EPackageImpl.IS_TRANSIENT, !EPackageImpl.IS_VOLATILE, //$NON-NLS-1$
+                EPackageImpl.IS_CHANGEABLE, !EPackageImpl.IS_UNSETTABLE, !EPackageImpl.IS_ID, EPackageImpl.IS_UNIQUE, !EPackageImpl.IS_DERIVED, EPackageImpl.IS_ORDERED);
 
         initEClass(foldingPointFilterEClass, FoldingPointFilter.class, "FoldingPointFilter", !EPackageImpl.IS_ABSTRACT, !EPackageImpl.IS_INTERFACE, EPackageImpl.IS_GENERATED_INSTANCE_CLASS); //$NON-NLS-1$
 

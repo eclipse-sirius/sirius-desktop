@@ -12,7 +12,9 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.api.command.view;
 
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -46,6 +48,8 @@ public class HideDDiagramElementLabel extends RecordingCommand {
     /** The objects to hide. */
     private final Set<?> objectsToHide;
 
+    private final List<Integer> selectedLabelVisualIds;
+
     /**
      * Create a new {@link HideDDiagramElement}.
      * 
@@ -62,6 +66,26 @@ public class HideDDiagramElementLabel extends RecordingCommand {
             setLabel(HideDDiagramElementLabel.HIDE_LABEL);
         }
         this.objectsToHide = elementsToHide;
+        this.selectedLabelVisualIds = Collections.EMPTY_LIST;
+    }
+
+    /**
+     * Create a new {@link HideDDiagramElement}.
+     * 
+     * @param domain
+     *            the editing domain.
+     * @param elementsToHide
+     *            the elements for which you want to hide the label.
+     */
+    public HideDDiagramElementLabel(final TransactionalEditingDomain domain, final Set<?> elementsToHide, final List<Integer> selectedLabelVisualIds) {
+        super(domain);
+        if (elementsToHide != null && elementsToHide.size() > 1) {
+            setLabel(HideDDiagramElementLabel.HIDE_LABELS);
+        } else {
+            setLabel(HideDDiagramElementLabel.HIDE_LABEL);
+        }
+        this.objectsToHide = elementsToHide;
+        this.selectedLabelVisualIds = selectedLabelVisualIds;
     }
 
     /**
@@ -73,7 +97,7 @@ public class HideDDiagramElementLabel extends RecordingCommand {
     protected void setInvisible(final DDiagramElement element) {
         DDiagramElementQuery diagramElementQuery = new DDiagramElementQuery(element);
         if (!diagramElementQuery.isLabelHidden() && diagramElementQuery.canHideLabel()) {
-            HideFilterHelper.INSTANCE.hideLabel(element);
+            HideFilterHelper.INSTANCE.hideLabel(element, selectedLabelVisualIds);
         }
     }
 

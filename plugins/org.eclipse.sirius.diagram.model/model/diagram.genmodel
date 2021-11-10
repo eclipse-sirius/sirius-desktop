@@ -114,7 +114,9 @@
     </genClasses>
     <genClasses image="false" ecoreClass="diagram.ecore#//GraphicalFilter"/>
     <genClasses ecoreClass="diagram.ecore#//HideFilter"/>
-    <genClasses ecoreClass="diagram.ecore#//HideLabelFilter"/>
+    <genClasses ecoreClass="diagram.ecore#//HideLabelFilter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute diagram.ecore#//HideLabelFilter/hiddenLabels"/>
+    </genClasses>
     <genClasses ecoreClass="diagram.ecore#//FoldingPointFilter"/>
     <genClasses ecoreClass="diagram.ecore#//FoldingFilter"/>
     <genClasses ecoreClass="diagram.ecore#//AppliedCompositeFilters">

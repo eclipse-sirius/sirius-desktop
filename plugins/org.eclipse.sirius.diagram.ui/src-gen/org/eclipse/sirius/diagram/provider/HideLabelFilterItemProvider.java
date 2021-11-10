@@ -18,7 +18,11 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
+import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.HideLabelFilter;
 
 /**
@@ -47,8 +51,21 @@ public class HideLabelFilterItemProvider extends GraphicalFilterItemProvider {
         if (itemPropertyDescriptors == null) {
             super.getPropertyDescriptors(object);
 
+            addHiddenLabelsPropertyDescriptor(object);
         }
         return itemPropertyDescriptors;
+    }
+
+    /**
+     * This adds a property descriptor for the Hidden Labels feature. <!-- begin-user-doc --> <!-- end-user-doc -->
+     *
+     * @generated
+     */
+    protected void addHiddenLabelsPropertyDescriptor(Object object) {
+        itemPropertyDescriptors
+                .add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(), getString("_UI_HideLabelFilter_hiddenLabels_feature"), //$NON-NLS-1$
+                        getString("_UI_PropertyDescriptor_description", "_UI_HideLabelFilter_hiddenLabels_feature", "_UI_HideLabelFilter_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
+                        DiagramPackage.Literals.HIDE_LABEL_FILTER__HIDDEN_LABELS, true, false, false, ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
     }
 
     /**
@@ -83,6 +100,12 @@ public class HideLabelFilterItemProvider extends GraphicalFilterItemProvider {
     @Override
     public void notifyChanged(Notification notification) {
         updateChildren(notification);
+
+        switch (notification.getFeatureID(HideLabelFilter.class)) {
+        case DiagramPackage.HIDE_LABEL_FILTER__HIDDEN_LABELS:
+            fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
+            return;
+        }
         super.notifyChanged(notification);
     }
 

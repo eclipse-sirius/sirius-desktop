@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.api.helper.graphicalfilters;
 
+import java.util.List;
+
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.HideFilterHelperImpl;
 
@@ -51,6 +53,16 @@ public interface HideFilterHelper {
      *            the element to hide
      */
     void hideLabel(DDiagramElement element);
+
+    /**
+     * Hide the label of the current element.
+     * 
+     * @param element
+     *            the element to hide
+     * @param selectedLabelVisualIds
+     *            the visual IDs of the edge labels to hide
+     */
+    void hideLabel(DDiagramElement element, List<Integer> selectedLabelVisualIds);
 
     /**
      * Reveal the label of the current element.

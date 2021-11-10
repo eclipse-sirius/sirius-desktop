@@ -12,6 +12,7 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
@@ -40,6 +41,10 @@ import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
@@ -187,7 +192,12 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
                     final RootEditPart root = ((EditPart) nextSelected).getRoot();
                     final DDiagramEditor diagramEditor = (DDiagramEditor) ((EditPart) nextSelected).getViewer().getProperty(DDiagramEditor.EDITOR_ID);
 
-                    runHideLabelCommand(root, diagramEditor, partsToSemantic(Arrays.asList(structuredSelection.toArray())));
+                    List<Object> selectionList = Arrays.asList(structuredSelection.toArray());
+                    if (onlyEdgeLabelsInSelection(selectionList)) {
+                        runHideLabelSelectionCommand(root, diagramEditor, partsToSemantic(selectionList), collectLabelsToHideVisualIds(selectionList));
+                    } else {
+                        runHideLabelCommand(root, diagramEditor, partsToSemantic(selectionList));
+                    }
                 } else if (nextSelected instanceof DDiagramElement || nextSelected instanceof AbstractDDiagramElementLabelItemProvider) {
                     runForNoEditPartSelection(minimizedSelection);
                 }
@@ -198,6 +208,29 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
                 setEnabled(isEnabled());
             }
         }
+    }
+
+    private List<Integer> collectLabelsToHideVisualIds(final List<Object> edgeLabelsEditParts) {
+        List<Integer> labelsVisualIds = new ArrayList<>();
+        for (Object object : edgeLabelsEditParts) {
+            if (object instanceof DEdgeBeginNameEditPart) {
+                labelsVisualIds.add(DEdgeBeginNameEditPart.VISUAL_ID);
+            } else if (object instanceof DEdgeNameEditPart) {
+                labelsVisualIds.add(DEdgeNameEditPart.VISUAL_ID);
+            } else if (object instanceof DEdgeEndNameEditPart) {
+                labelsVisualIds.add(DEdgeEndNameEditPart.VISUAL_ID);
+            }
+        }
+        return labelsVisualIds;
+    }
+
+    private boolean onlyEdgeLabelsInSelection(final List<Object> asList) {
+        for (Object object : asList) {
+            if (!(object instanceof AbstractDEdgeNameEditPart)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -252,6 +285,17 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
         final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(editor.getEditingDomain().getResourceSet());
         final IDiagramCommandFactory emfCommandFactory = cmdFactoryProvider.getCommandFactory(transactionalEditingDomain);
         final Command cmd = emfCommandFactory.buildHideLabelCommand(elements);
+
+        ((TransactionalEditingDomain) editor.getAdapter(EditingDomain.class)).getCommandStack().execute(cmd);
+    }
+
+    private void runHideLabelSelectionCommand(final RootEditPart root, final DDiagramEditor editor, final Set<EObject> elements, final List<Integer> selectedLabelVisualIds) {
+
+        final Object adapter = editor.getAdapter(IDiagramCommandFactoryProvider.class);
+        final IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) adapter;
+        final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(editor.getEditingDomain().getResourceSet());
+        final IDiagramCommandFactory emfCommandFactory = cmdFactoryProvider.getCommandFactory(transactionalEditingDomain);
+        final Command cmd = emfCommandFactory.buildHideLabelSelectionCommand(elements, selectedLabelVisualIds);
 
         ((TransactionalEditingDomain) editor.getAdapter(EditingDomain.class)).getCommandStack().execute(cmd);
     }

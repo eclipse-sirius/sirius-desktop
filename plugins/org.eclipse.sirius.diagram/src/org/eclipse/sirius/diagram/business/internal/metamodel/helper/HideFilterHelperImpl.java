@@ -12,8 +12,11 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
+import java.util.List;
+
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
+import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.HideFilter;
@@ -44,7 +47,7 @@ public final class HideFilterHelperImpl implements HideFilterHelper {
     /**
      * {@inheritDoc}
      * 
-     * @see HideFilterHelper#hide(DDiagramElement, boolean)
+     * @see HideFilterHelper#hide(DDiagramElement)
      */
     public void hide(final DDiagramElement element) {
         if (new DDiagramElementQuery(element).isHidden()) {
@@ -58,7 +61,7 @@ public final class HideFilterHelperImpl implements HideFilterHelper {
     /**
      * {@inheritDoc}
      * 
-     * @see HideFilterHelper#reveal(DDiagramElement, boolean)
+     * @see HideFilterHelper#reveal(DDiagramElement)
      */
     public void reveal(final DDiagramElement element) {
         if (!isDirectlyHidden(element)) {
@@ -79,7 +82,7 @@ public final class HideFilterHelperImpl implements HideFilterHelper {
     /**
      * {@inheritDoc}
      * 
-     * @see HideFilterHelper#hide(DDiagramElement, boolean)
+     * @see HideFilterHelper#hideLabel(DDiagramElement)
      */
     public void hideLabel(final DDiagramElement element) {
         if (new DDiagramElementQuery(element).isLabelHidden()) {
@@ -88,6 +91,23 @@ public final class HideFilterHelperImpl implements HideFilterHelper {
 
         HideLabelFilter filter = DiagramFactory.eINSTANCE.createHideLabelFilter();
         element.getGraphicalFilters().add(filter);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see HideFilterHelper#hide(DDiagramElement, boolean)
+     */
+    public void hideLabel(final DDiagramElement element, List<Integer> selectedLabelVisualIds) {
+        if (new DDiagramElementQuery(element).isLabelHidden()) {
+            return;
+        }
+
+        HideLabelFilter filter = DiagramFactory.eINSTANCE.createHideLabelFilter();
+        element.getGraphicalFilters().add(filter);
+        if (element instanceof DEdge && !selectedLabelVisualIds.isEmpty()) {
+            filter.getHiddenLabels().addAll(selectedLabelVisualIds);
+        }
     }
 
     /**

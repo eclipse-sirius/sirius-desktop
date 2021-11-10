@@ -114,7 +114,8 @@ public class DDiagramHiddenElementsUpdater extends ResourceSetListenerImpl {
                 if (parentDDiagram != null && parentDDiagram.equals(dDiagram)) {
                     if (notification.getNewValue() instanceof HideLabelFilter && notification.getOldValue() == null) {
                         // check that this element is not already hidden
-                        if (!new DDiagramElementQuery(dDiagramElement).isHidden()) {
+                        HideLabelFilter hideLabelFilter = (HideLabelFilter) notification.getNewValue();
+                        if (!new DDiagramElementQuery(dDiagramElement).isHidden() && hideLabelFilter.getHiddenLabels().isEmpty()) {
                             newElementsToHide.add(dDiagramElement);
                         }
                     } else if (notification.getOldValue() instanceof HideLabelFilter && notification.getNewValue() == null) {

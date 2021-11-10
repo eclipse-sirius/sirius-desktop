@@ -13,6 +13,8 @@
  */
 package org.eclipse.sirius.diagram;
 
+import org.eclipse.emf.common.util.EList;
+
 /**
  * <!-- begin-user-doc --> A representation of the model object ' <em><b>Hide Label Filter</b></em>'. <!-- end-user-doc
  * -->
@@ -23,4 +25,17 @@ package org.eclipse.sirius.diagram;
  * @generated
  */
 public interface HideLabelFilter extends GraphicalFilter {
+
+    /**
+     * Returns the value of the '<em><b>Hidden Labels</b></em>' attribute list. The list contents are of type
+     * {@link java.lang.Integer}. <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> List of
+     * VisualIDs of the labels that should be filtered. This feature is only used for the labels of a DEdge <!--
+     * end-model-doc -->
+     *
+     * @return the value of the '<em>Hidden Labels</em>' attribute list.
+     * @see org.eclipse.sirius.diagram.DiagramPackage#getHideLabelFilter_HiddenLabels()
+     * @model
+     * @generated
+     */
+    EList<Integer> getHiddenLabels();
 } // HideLabelFilter

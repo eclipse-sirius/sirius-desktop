@@ -548,6 +548,25 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
     /**
      * {@inheritDoc}
      * 
+     * @see org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory#buildHideLabelSelectionCommand(java.util.Set,
+     *      java.util.List)
+     */
+    @Override
+    public Command buildHideLabelSelectionCommand(Set<EObject> elementsToHide, List<Integer> selectedLabelVisualIds) {
+        Set<DDiagramElement> ddeWithLabelToHide = elementsToHide.stream().filter(input -> {
+            return input instanceof DDiagramElement && new DDiagramElementQuery((DDiagramElement) input).canHideLabel() && getPermissionAuthority().canEditInstance(input);
+        }).map(DDiagramElement.class::cast).collect(Collectors.toSet());
+
+        if (ddeWithLabelToHide.isEmpty()) {
+            return UnexecutableCommand.INSTANCE;
+        } else {
+            return new HideDDiagramElementLabel(domain, ddeWithLabelToHide, selectedLabelVisualIds);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory#buildRevealCommand(DDiagramElement)
      */
     @Override
