@@ -225,7 +225,7 @@ public final class SubEventsHelper {
 
         for (AbstractFrame frame : frames) {
             Range frameRange = frame.getVerticalRange();
-            if (parentRange.includes(frameRange) && validCoverage(frame, coveredLifelines)) {
+            if (frameRange != null && parentRange.includes(frameRange) && validCoverage(frame, coveredLifelines)) {
                 childrenEvents.add(frame);
             }
         }

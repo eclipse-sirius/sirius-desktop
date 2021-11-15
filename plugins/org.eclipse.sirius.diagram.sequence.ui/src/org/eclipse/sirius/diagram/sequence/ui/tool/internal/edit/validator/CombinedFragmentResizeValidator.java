@@ -17,6 +17,7 @@ import java.util.Collection;
 import org.eclipse.sirius.diagram.sequence.business.api.util.Range;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
+import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
@@ -65,7 +66,7 @@ public class CombinedFragmentResizeValidator extends AbstractInteractionFrameVal
     }
 
     @Override
-    protected Collection<ISequenceEvent> getFinalParents() {
+    protected Collection<ISequenceEvent> getFinalParents(Collection<Lifeline> coveredLifelines) {
         return frame.computeParentEvents();
     }
 

@@ -54,11 +54,10 @@ public class InteractionUseMoveValidator extends AbstractInteractionFrameValidat
      * {@inheritDoc}
      */
     @Override
-    protected Collection<ISequenceEvent> getFinalParents() {
+    protected Collection<ISequenceEvent> getFinalParents(Collection<Lifeline> coveredLifelines) {
         // Possibility to handle "reparent" and insertion"
         Collection<ISequenceEvent> finalParents = new LinkedHashSet<>();
         Range insertionPoint = new Range(finalRange.getLowerBound(), finalRange.getLowerBound());
-        Collection<Lifeline> coveredLifelines = frame.computeCoveredLifelines();
         for (Lifeline lifeline : coveredLifelines) {
             EventFinder finder = new EventFinder(lifeline);
             finder.setEventsToIgnore(Predicates.in(Collections.<ISequenceEvent> singletonList(frame)));
