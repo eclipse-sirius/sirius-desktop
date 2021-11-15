@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.util.Collection;
 
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.CombinedFragment;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.ISequenceEvent;
-import org.eclipse.sirius.diagram.sequence.business.internal.elements.Lifeline;
 import org.eclipse.sirius.diagram.sequence.business.internal.elements.Operand;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
@@ -25,9 +24,10 @@ import org.eclipse.sirius.diagram.sequence.util.Range;
 import com.google.common.base.Preconditions;
 
 /**
- * This class is responsible to check whether a resize request on a Combined Fragment should be accepted (i.e. it would
- * produce a well-formed diagram). While doing the validation, it also stores all the relevant information required to
- * actually perform the resize properly.
+ * This class is responsible to check whether a resize request on a Combined
+ * Fragment should be accepted (i.e. it would produce a well-formed diagram).
+ * While doing the validation, it also stores all the relevant information
+ * required to actually perform the resize properly.
  * 
  * @author smonnier
  */
@@ -66,7 +66,7 @@ public class CombinedFragmentResizeValidator extends AbstractInteractionFrameVal
     }
 
     @Override
-    protected Collection<ISequenceEvent> getFinalParents(Collection<Lifeline> coveredLifelines) {
+    protected Collection<ISequenceEvent> getFinalParents() {
         return frame.computeParentEvents();
     }
 
