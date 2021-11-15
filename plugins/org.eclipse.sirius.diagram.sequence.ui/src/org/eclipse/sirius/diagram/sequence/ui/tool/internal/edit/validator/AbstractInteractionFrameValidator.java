@@ -162,14 +162,15 @@ public abstract class AbstractInteractionFrameValidator {
     protected void validate() {
         valid = checkAndComputeRanges();
         if (valid) {
-            Collection<ISequenceEvent> finalParents = getFinalParentsWithAutoExpand();
+            Collection<Lifeline> coveredLifelines = frame.computeCoveredLifelines();
+            Collection<ISequenceEvent> finalParents = getFinalParentsWithAutoExpand(coveredLifelines);
 
             Collection<ISequenceEvent> movableParents = Lists.newArrayList(Iterables.filter(finalParents, Predicates.not(unMove)));
             Collection<ISequenceEvent> fixedParents = Lists.newArrayList(Iterables.filter(finalParents, unMove));
             if (movableParents.isEmpty() || !movedElements.containsAll(movableParents)) {
 
                 valid = valid && Iterables.isEmpty(Iterables.filter(finalParents, invalidParents));
-                valid = valid && (!Iterables.any(finalParents, Predicates.instanceOf(Operand.class)) || finalParents.size() == 1);
+                valid = valid && checkParentOperands(finalParents, coveredLifelines);
                 valid = valid && checkFinalRangeStrictlyIncludedInParents(movableParents);
                 valid = valid && checkLocalSiblings(movableParents);
             }
@@ -182,10 +183,29 @@ public abstract class AbstractInteractionFrameValidator {
         }
     }
 
-    private Collection<ISequenceEvent> getFinalParentsWithAutoExpand() {
+    private boolean checkParentOperands(Collection<ISequenceEvent> finalParents, Collection<Lifeline> coveredLifelines) {
+        Iterable<Operand> finalOperandParents = Iterables.filter(finalParents, Operand.class);
+        boolean checked = false;
+        int size = Iterables.size(finalOperandParents);
+        if (size == 0) {
+            // No operand to check.
+            checked = true;
+        } else if (size == 1) {
+            // If one operand if found in the parents, it might have other co--parents on some lifelines (executions
+            // which are sub events or parent events of the moved/resized frame).
+            // We must ensute that the found potential parent is compatible with the current move/resize : it must be
+            // able to contain the current frame. we need to check the coverage.
+            Operand operand = Iterables.getOnlyElement(finalOperandParents);
+            checked = operand.computeCoveredLifelines().containsAll(coveredLifelines);
+        }
+        // If more than two operand are detected, this means that after this move/resize, the current frame would not be
+        // fully included in one of the parents.
+        return checked;
+    }
+
+    private Collection<ISequenceEvent> getFinalParentsWithAutoExpand(Collection<Lifeline> coveredLifelines) {
         Collection<ISequenceEvent> finalParentsWithAutoExpand = new ArrayList<>();
-        Collection<ISequenceEvent> finalParents = getFinalParents();
-        Collection<Lifeline> coveredLifelines = frame.computeCoveredLifelines();
+        Collection<ISequenceEvent> finalParents = getFinalParents(coveredLifelines);
         for (ISequenceEvent localParent : finalParents) {
             // check the need of space expansion
             if (localParent != null) {
@@ -248,15 +268,21 @@ public abstract class AbstractInteractionFrameValidator {
     /**
      * Get final parents event after application of the current interaction.
      * 
+     * @param coveredLifelines
+     *            the lifeline covered by the current frame.
+     * 
      * @return final parents.
      */
-    protected abstract Collection<ISequenceEvent> getFinalParents();
+    protected abstract Collection<ISequenceEvent> getFinalParents(Collection<Lifeline> coveredLifelines);
 
     private boolean checkLocalSiblings(Collection<ISequenceEvent> finalParents) {
         boolean okForSiblings = true;
         for (ISequenceEvent localParent : finalParents) {
             for (ISequenceEvent localSibling : Iterables.filter(localParent.getSubEvents(), unmoved)) {
-                if (frame.equals(localSibling)) {
+                if (frame.equals(localSibling) || finalParents.contains(localSibling)) {
+                    // Frame is moved : to not check it.
+                    // Do not consider elements identified as final parents as siblings. By construction, their range
+                    // will intersects with the final range of the current frame.
                     continue;
                 }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,9 +28,8 @@ import com.google.common.base.Preconditions;
 import com.google.common.base.Predicates;
 
 /**
- * This class is responsible to check whether a resize request on an interaction
- * use should be accepted (i.e. it would produce a well-formed diagram). While
- * doing the validation, it also stores all the relevant information required to
+ * This class is responsible to check whether a resize request on an interaction use should be accepted (i.e. it would
+ * produce a well-formed diagram). While doing the validation, it also stores all the relevant information required to
  * actually perform the resize properly.
  * 
  * @author mporhel
@@ -55,11 +54,10 @@ public class InteractionUseMoveValidator extends AbstractInteractionFrameValidat
      * {@inheritDoc}
      */
     @Override
-    protected Collection<ISequenceEvent> getFinalParents() {
+    protected Collection<ISequenceEvent> getFinalParents(Collection<Lifeline> coveredLifelines) {
         // Possibility to handle "reparent" and insertion"
         Collection<ISequenceEvent> finalParents = new LinkedHashSet<>();
         Range insertionPoint = new Range(finalRange.getLowerBound(), finalRange.getLowerBound());
-        Collection<Lifeline> coveredLifelines = frame.computeCoveredLifelines();
         for (Lifeline lifeline : coveredLifelines) {
             EventFinder finder = new EventFinder(lifeline);
             finder.setEventsToIgnore(Predicates.in(Collections.<ISequenceEvent> singletonList(frame)));
