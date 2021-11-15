@@ -185,21 +185,61 @@ public abstract class AbstractInteractionFrameValidator {
 
     private boolean checkParentOperands(Collection<ISequenceEvent> finalParents, Collection<Lifeline> coveredLifelines) {
         Iterable<Operand> finalOperandParents = Iterables.filter(finalParents, Operand.class);
-        boolean checked = false;
-        int size = Iterables.size(finalOperandParents);
-        if (size == 0) {
-            // No operand to check.
-            checked = true;
-        } else if (size == 1) {
-            // If one operand if found in the parents, it might have other co-parents on some lifelines (executions
+
+        // Step1 : check that parentOperands contains at most one Operand.
+        boolean checked;
+        if (Iterables.size(finalOperandParents) > 1) {
+            // If two or more Operands are detected, this means that after this move/resize, the current frame would
+            // not be fully included in one of the parents.
+            checked = false;
+        } else {
+            // We need to check which Operand might contained the current Frame after move/resize.
+            // finalOperandParents.size == 0
+            // No reference parent operand directly in finalParents.
+            // finalOperandParents.size == 1
+            // If one operand is found in the parents, it might have other co-parents on some lifelines (executions
             // which are sub events or parent events of the moved/resized frame).
-            // We must ensure that the found potential parent is compatible with the current move/resize : it must be
-            // able to contain the current frame. we need to check the coverage.
-            Operand operand = Iterables.getOnlyElement(finalOperandParents);
-            checked = operand.computeCoveredLifelines().containsAll(coveredLifelines);
+            // We must ensure that the found potential parent Operand or the parent Operand of the parent executions is
+            // compatible with the current move/resize : it must be unique (or null) and able to contain the current
+            // frame (compatible coverage).
+            checked = true;
+            Operand commonParentOperand = null;
+            boolean operandProvided = false;
+
+            // Step 2: check that all final parents belongs to the same operand.
+            // if operand is not null : it must be the parent operand of all other final parent.
+            // if operand is null : all parent operands must have the same parent operand
+            for (ISequenceEvent finalParent : finalParents) {
+                Operand parentOperand;
+                if (finalParent instanceof Operand) {
+                    parentOperand = (Operand) finalParent;
+                } else {
+                    parentOperand = finalParent.getParentOperand().get();
+                }
+
+                if (!operandProvided) {
+                    // Operand of the first final parent.
+                    operandProvided = true;
+                    commonParentOperand = parentOperand;
+                } else {
+                    if (commonParentOperand != null && commonParentOperand.equals(parentOperand)) {
+                        // Same final parent operand
+                        checked = true;
+                    } else if (commonParentOperand == null && parentOperand == null) {
+                        // Common parent operand is still null
+                        checked = true;
+                    } else {
+                        // Several final parent operands found (Op_1 vs Op_2 or null vs Op_1)
+                        checked = false;
+                        break;
+                    }
+                }
+            }
+
+            if (checked && commonParentOperand != null) {
+                checked = commonParentOperand.computeCoveredLifelines().containsAll(coveredLifelines);
+            }
         }
-        // If more than two operands are detected, this means that after this move/resize, the current frame would not be
-        // fully included in one of the parents.
         return checked;
     }
 
