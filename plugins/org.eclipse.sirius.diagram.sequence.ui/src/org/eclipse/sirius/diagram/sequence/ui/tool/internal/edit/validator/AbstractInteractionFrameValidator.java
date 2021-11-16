@@ -31,6 +31,7 @@ import org.eclipse.sirius.diagram.sequence.business.internal.elements.State;
 import org.eclipse.sirius.diagram.sequence.business.internal.layout.LayoutConstants;
 import org.eclipse.sirius.diagram.sequence.ui.tool.internal.util.RequestQuery;
 import org.eclipse.sirius.diagram.sequence.util.Range;
+import org.eclipse.sirius.ext.base.Option;
 
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
@@ -168,14 +169,15 @@ public abstract class AbstractInteractionFrameValidator {
             Collection<ISequenceEvent> movableParents = Lists.newArrayList(Iterables.filter(finalParents, Predicates.not(unMove)));
             Collection<ISequenceEvent> fixedParents = Lists.newArrayList(Iterables.filter(finalParents, unMove));
             if (movableParents.isEmpty() || !movedElements.containsAll(movableParents)) {
-
                 valid = valid && Iterables.isEmpty(Iterables.filter(finalParents, invalidParents));
                 valid = valid && checkParentOperands(finalParents, coveredLifelines);
                 valid = valid && checkFinalRangeStrictlyIncludedInParents(movableParents);
-                valid = valid && checkLocalSiblings(movableParents);
+                valid = valid && checkLocalSiblings(movableParents, coveredLifelines);
             }
+
             valid = valid && checkFinalRangeStrictlyIncludedInParents(fixedParents);
-            valid = valid && checkLocalSiblings(fixedParents);
+
+            valid = valid && checkLocalSiblings(fixedParents, coveredLifelines);
         }
 
         if (getRequestQuery().isResize()) {
@@ -315,7 +317,7 @@ public abstract class AbstractInteractionFrameValidator {
      */
     protected abstract Collection<ISequenceEvent> getFinalParents(Collection<Lifeline> coveredLifelines);
 
-    private boolean checkLocalSiblings(Collection<ISequenceEvent> finalParents) {
+    private boolean checkLocalSiblings(Collection<ISequenceEvent> finalParents, Collection<Lifeline> coveredLifelines) {
         boolean okForSiblings = true;
         for (ISequenceEvent localParent : finalParents) {
             for (ISequenceEvent localSibling : Iterables.filter(localParent.getSubEvents(), unmoved)) {
@@ -323,6 +325,11 @@ public abstract class AbstractInteractionFrameValidator {
                     // Frame is moved : to not check it.
                     // Do not consider elements identified as final parents as siblings. By construction, their range
                     // will intersects with the final range of the current frame.
+                    continue;
+                }
+                Option<Lifeline> localSiblingLifeline = localSibling.getLifeline();
+                if (localSiblingLifeline.some() && !coveredLifelines.contains(localSiblingLifeline.get())) {
+                    // localSibling is not on the same lifeline, no need to check it.
                     continue;
                 }
 
