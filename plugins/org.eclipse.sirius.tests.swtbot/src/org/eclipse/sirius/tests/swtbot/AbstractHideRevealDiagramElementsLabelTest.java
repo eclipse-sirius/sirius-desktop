@@ -98,13 +98,13 @@ public class AbstractHideRevealDiagramElementsLabelTest extends AbstractSiriusSw
 
     private static final String DATA_UNIT_DIR = "data/unit/tools/hide-reveal/tc-2330/";
 
-    private static final String FILE_DIR = "/";
+    protected String FILE_DIR = "/";
 
-    private UIResource sessionAirdResource;
+    protected UIResource sessionAirdResource;
 
-    private UILocalSession localSession;
+    protected UILocalSession localSession;
 
-    private String previousPollDelay;
+    protected String previousPollDelay;
 
     /**
      * The icon in the outline displayed when labels are shown (not hidden).
@@ -348,7 +348,7 @@ public class AbstractHideRevealDiagramElementsLabelTest extends AbstractSiriusSw
      * 
      * @author nlepine
      */
-    private class CheckEdgeLabelIsHidden extends DefaultCondition {
+    protected class CheckEdgeLabelIsHidden extends DefaultCondition {
 
         private final String label;
 
