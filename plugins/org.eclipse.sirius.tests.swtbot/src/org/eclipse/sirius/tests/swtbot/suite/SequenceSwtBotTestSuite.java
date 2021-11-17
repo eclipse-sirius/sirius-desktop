@@ -20,6 +20,7 @@ import org.eclipse.sirius.tests.swtbot.sequence.CombinedFragments2Tests;
 import org.eclipse.sirius.tests.swtbot.sequence.CombinedFragmentsAndElementsCreationTests;
 import org.eclipse.sirius.tests.swtbot.sequence.CombinedFragmentsAndMessagesCreationTests;
 import org.eclipse.sirius.tests.swtbot.sequence.CombinedFragmentsDisabledTests;
+import org.eclipse.sirius.tests.swtbot.sequence.CombinedFragmentsMoveTests;
 import org.eclipse.sirius.tests.swtbot.sequence.CombinedFragmentsOperandCreationTests;
 import org.eclipse.sirius.tests.swtbot.sequence.CombinedFragmentsOperandOverlapTests;
 import org.eclipse.sirius.tests.swtbot.sequence.CombinedFragmentsSingleClickCreationTests;
@@ -204,6 +205,7 @@ public class SequenceSwtBotTestSuite extends TestCase {
             suite.addTestSuite(CombinedFragmentsTests.class);
             suite.addTestSuite(CombinedFragmentsOperandCreationTests.class);
             suite.addTestSuite(CombinedFragmentsOperandOverlapTests.class);
+            suite.addTestSuite(CombinedFragmentsMoveTests.class);
             suite.addTestSuite(StateBasicTests.class);
             suite.addTestSuite(PunctualStateTests.class);
             suite.addTestSuite(StateNoMessageTests.class);
