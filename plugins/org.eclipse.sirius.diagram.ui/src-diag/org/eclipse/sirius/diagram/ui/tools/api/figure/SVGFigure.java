@@ -284,7 +284,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
         }
 
         if (document != null) {
-            transcoder = new SimpleImageTranscoder(document);
+            transcoder = initTranscoder(document);
             failedToLoadDocument = false;
         }
     }
@@ -426,6 +426,10 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
 
     protected SimpleImageTranscoder getTranscoder() {
         return transcoder;
+    }
+    
+    protected SimpleImageTranscoder initTranscoder(Document document) {
+        return new SimpleImageTranscoder(document);
     }
 
     /**
