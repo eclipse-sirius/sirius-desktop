@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.sirius.tests.sample.docbook.provider.DocbookEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.eclipse.sirius.tests.sample.docbook.provider,
  org.eclipse.sirius.tests.sample.docbook.providers
 Require-Bundle: org.eclipse.core.runtime,

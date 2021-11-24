@@ -33,7 +33,7 @@ Require-Bundle: org.eclipse.sirius,
  org.eclipse.platform
 Bundle-Activator: org.eclipse.sirius.tests.SiriusTreeTestsPlugin
 Eclipse-LazyStart: true
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: %providerName
 Bundle-ActivationPolicy: lazy
 Export-Package: org.eclipse.sirius.tests,

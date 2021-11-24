@@ -17,7 +17,7 @@ Require-Bundle: com.google.guava;bundle-version="[21.0,30.2)",
  org.eclipse.sirius.diagram.formatdata;bundle-version="7.0.0"
 Bundle-Localization: plugin
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.eclipse.sirius.diagram.sequence.ui;version="7.0.0",
  org.eclipse.sirius.diagram.sequence.ui.business.api.diagramtype;version="7.0.0",
  org.eclipse.sirius.diagram.sequence.ui.business.internal;version="7.0.0";x-internal:=true,

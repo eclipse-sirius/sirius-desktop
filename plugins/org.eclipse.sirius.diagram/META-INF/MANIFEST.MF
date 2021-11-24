@@ -72,7 +72,7 @@ Export-Package: org.eclipse.sirius.diagram.business.api.componentization;version
  org.eclipse.sirius.diagram.tools.internal.preferences;version="7.0.0";x-internal:=true,
  org.eclipse.sirius.diagram.tools.internal.validation.constraints;version="7.0.0";x-internal:=true,
  org.eclipse.sirius.diagram.tools.internal.validation.description.constraints;version="7.0.0";x-internal:=true
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.sirius.ext.base;version="2.1.0",
  org.eclipse.sirius.ext.base.cache;version="2.0.0",

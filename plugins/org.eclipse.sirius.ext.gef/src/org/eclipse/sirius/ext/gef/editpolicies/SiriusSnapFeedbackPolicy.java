@@ -263,7 +263,7 @@ public class SiriusSnapFeedbackPolicy extends GraphicalEditPolicy {
         // org.eclipse.sirius.ext.gmf.runtime.editpolicies.SiriusSnapFeedbackPolicy.
         // This is why this class is now deprecated. It will be removed in
         // future version.
-        if (req.getType().equals("drop") || req.getType().equals(REQ_MOVE) || req.getType().equals(REQ_RESIZE) || req.getType().equals(REQ_CLONE) || req.getType().equals(REQ_ADD)
+        if (req.getType().equals("drop") || req.getType().equals(REQ_MOVE) || req.getType().equals(REQ_RESIZE) || req.getType().equals(REQ_CLONE) || req.getType().equals(REQ_ADD) //$NON-NLS-1$
                 || req.getType().equals(REQ_CREATE)) {
             Integer value;
             value = (Integer) req.getExtendedData().get(SnapToGeometry.KEY_WEST_ANCHOR);

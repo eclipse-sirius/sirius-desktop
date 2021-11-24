@@ -7,7 +7,7 @@ Bundle-ClassPath: .
 Bundle-Activator: org.eclipse.sirius.properties.provider.PropertiesEditPlugin$Implementation
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.eclipse.sirius.properties.edit.internal.generator;version="4.1.0",
  org.eclipse.sirius.properties.provider;version="4.1.0"
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.11.0",

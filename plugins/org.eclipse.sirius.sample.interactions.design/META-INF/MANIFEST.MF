@@ -11,7 +11,7 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.sirius.common.acceleo.aql,
  org.eclipse.sirius.ext.base;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Activator: org.eclipse.sirius.sample.interactions.Activator
 Export-Package: org.eclipse.sirius.sample.interactions,org.eclipse.sirius.sample.interactions.services
 Bundle-Vendor: %providerName

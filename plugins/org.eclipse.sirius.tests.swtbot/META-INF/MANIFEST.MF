@@ -58,7 +58,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.elk.alg.layered,
  org.eclipse.sirius.diagram.formatdata;bundle-version="6.2.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Eclipse-RegisterBuddy: org.apache.log4j
 Bundle-Vendor: %providerName
 Export-Package: org.eclipse.sirius.tests.swtbot,

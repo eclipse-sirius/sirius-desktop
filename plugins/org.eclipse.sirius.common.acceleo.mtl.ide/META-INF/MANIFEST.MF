@@ -19,7 +19,7 @@ Require-Bundle: org.eclipse.sirius.common.acceleo.mtl;bundle-version="2.0.0",
  org.eclipse.core.filebuffers;bundle-version="3.5.200",
  org.eclipse.swt;bundle-version="2.0.0"
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-Vendor: %providerName
 Export-Package: org.eclipse.sirius.common.acceleo.mtl.ide;x-internal:=true;version="3.0.0"
 Bundle-Localization: plugin

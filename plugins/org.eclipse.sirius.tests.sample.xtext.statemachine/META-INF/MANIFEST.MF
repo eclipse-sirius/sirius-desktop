@@ -14,7 +14,7 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.util,
  org.eclipse.xtend.lib,
  org.eclipse.emf.common
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.eclipse.sirius.tests.sample.xtext.statemachine.util,
  org.eclipse.sirius.tests.sample.xtext.scoping,
  org.eclipse.sirius.tests.sample.xtext,
