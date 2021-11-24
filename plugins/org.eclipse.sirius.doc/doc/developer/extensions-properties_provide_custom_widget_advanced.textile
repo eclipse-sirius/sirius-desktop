@@ -54,7 +54,7 @@ pre..
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.sirius.ui.properties.descriptionConverter">
+         point="org.eclipse.sirius.properties.core.descriptionConverter">
       <descriptor
             class="com.example.awesomeproject.sirius.ui.properties.ext.widgets.table.internal.ExtTableDescriptionConverter"
             description="%tableDescriptionConverter.Description"
@@ -129,7 +129,7 @@ pre..
 <?eclipse version="3.4"?>
 <plugin>
    <extension
-         point="org.eclipse.sirius.ui.properties.descriptionPreprocessor">
+         point="org.eclipse.sirius.properties.core.descriptionPreprocessor">
       <descriptor
             class="com.example.awesomeproject.sirius.ui.properties.ext.widgets.table.internal.ExtTableDescriptionPreprocessor"
             description="%tableDescriptionPreprocessor.Description"
