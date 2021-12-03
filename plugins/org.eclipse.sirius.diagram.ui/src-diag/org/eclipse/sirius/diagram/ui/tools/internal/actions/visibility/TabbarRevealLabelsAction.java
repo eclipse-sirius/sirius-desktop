@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,10 +25,12 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DiagramOutlinePage;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
 import org.eclipse.sirius.ecore.extender.business.api.permission.PermissionAuthorityRegistry;
 import org.eclipse.sirius.ext.base.Option;
@@ -140,16 +142,22 @@ public class TabbarRevealLabelsAction extends RevealOutlineLabelsAction implemen
     }
 
     private static boolean isEnabled(IGraphicalEditPart graphicalEditPart) {
+        boolean result = false;
         if (graphicalEditPart.isActive() && graphicalEditPart.resolveSemanticElement() instanceof DDiagramElement) {
-            return TabbarRevealLabelsAction.isEnabled((DDiagramElement) graphicalEditPart.resolveSemanticElement());
+            DDiagramElement resolveSemanticElement = (DDiagramElement) graphicalEditPart.resolveSemanticElement();
+            if (graphicalEditPart instanceof AbstractDEdgeNameEditPart) {
+                result = new DDiagramElementQuery(resolveSemanticElement).isLabelHidden(new EditPartQuery(graphicalEditPart).getVisualID());
+            } else {
+                result = TabbarRevealLabelsAction.isEnabled(resolveSemanticElement);
+            }
         }
-        return false;
+        return result;
     }
 
     private static boolean isEnabled(DDiagramElement diagramElement) {
         DDiagram dDiagram = diagramElement.getParentDiagram();
         DDiagramElementQuery query = new DDiagramElementQuery(diagramElement);
-        return (dDiagram != null && isEditable(dDiagram)) && query.isLabelHidden();
+        return (dDiagram != null && isEditable(dDiagram)) && query.hasAnyHiddenLabel();
     }
 
     private static boolean isEditable(DDiagram diagram) {
