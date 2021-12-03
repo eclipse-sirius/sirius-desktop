@@ -67,6 +67,9 @@ import org.eclipse.sirius.diagram.ui.graphical.edit.policies.DEdgeSelectionFeedb
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusEdgeLabelSnapBackEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SiriusPropertyHandlerEditPolicy;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.SiriusConnectionEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabelWithAttachment;
 import org.eclipse.sirius.diagram.ui.tools.api.permission.EditPartAuthorityListener;
@@ -715,23 +718,27 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
                     super.layout();
                 }
 
-                if (edge.getName() == null || StringUtil.isEmpty(edge.getName())) {
+                DDiagramElementQuery dDiagramElementQuery = new DDiagramElementQuery(edge);
+                if (edge.getName() == null || StringUtil.isEmpty(edge.getName()) || dDiagramElementQuery.isLabelHidden(DEdgeNameEditPart.VISUAL_ID)) {
                     fFigureViewEdgeNameFigure.setVisible(false);
                 }
 
-                if (edge.getName() != null && !StringUtil.isEmpty(edge.getName()) && !(new DDiagramElementQuery(edge).isLabelHidden()) && !fFigureViewEdgeNameFigure.isVisible()) {
+                if (edge.getName() != null && !StringUtil.isEmpty(edge.getName()) && !(dDiagramElementQuery.isLabelHidden(DEdgeNameEditPart.VISUAL_ID))
+                        && !fFigureViewEdgeNameFigure.isVisible()) {
                     fFigureViewEdgeNameFigure.setVisible(true);
                 }
-                if (edge.getEndLabel() == null || StringUtil.isEmpty(edge.getEndLabel())) {
+                if (edge.getEndLabel() == null || StringUtil.isEmpty(edge.getEndLabel()) || dDiagramElementQuery.isLabelHidden(DEdgeEndNameEditPart.VISUAL_ID)) {
                     fFigureViewEdgeEndNameFigure.setVisible(false);
                 }
-                if (edge.getEndLabel() != null && !StringUtil.isEmpty(edge.getEndLabel()) && !(new DDiagramElementQuery(edge).isLabelHidden()) && !fFigureViewEdgeEndNameFigure.isVisible()) {
+                if (edge.getEndLabel() != null && !StringUtil.isEmpty(edge.getEndLabel()) && !(dDiagramElementQuery.isLabelHidden(DEdgeEndNameEditPart.VISUAL_ID))
+                        && !fFigureViewEdgeEndNameFigure.isVisible()) {
                     fFigureViewEdgeEndNameFigure.setVisible(true);
                 }
-                if (edge.getBeginLabel() == null || StringUtil.isEmpty(edge.getBeginLabel())) {
+                if (edge.getBeginLabel() == null || StringUtil.isEmpty(edge.getBeginLabel()) || dDiagramElementQuery.isLabelHidden(DEdgeBeginNameEditPart.VISUAL_ID)) {
                     fFigureViewEdgeBeginNameFigure.setVisible(false);
                 }
-                if (edge.getBeginLabel() != null && !StringUtil.isEmpty(edge.getBeginLabel()) && !(new DDiagramElementQuery(edge).isLabelHidden()) && !fFigureViewEdgeBeginNameFigure.isVisible()) {
+                if (edge.getBeginLabel() != null && !StringUtil.isEmpty(edge.getBeginLabel()) && !(dDiagramElementQuery.isLabelHidden(DEdgeBeginNameEditPart.VISUAL_ID))
+                        && !fFigureViewEdgeBeginNameFigure.isVisible()) {
                     fFigureViewEdgeBeginNameFigure.setVisible(true);
                 }
             }

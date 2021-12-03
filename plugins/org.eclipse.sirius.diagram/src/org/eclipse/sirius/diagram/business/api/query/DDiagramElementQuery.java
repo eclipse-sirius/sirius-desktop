@@ -12,6 +12,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.api.query;
 
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.AppliedCompositeFilters;
@@ -131,15 +135,78 @@ public class DDiagramElementQuery {
      * @return true if the label of the given element is hidden.
      */
     public boolean isLabelHidden() {
+        if (element instanceof DEdge) {
+            // Edges have multiple labels
+            return areAllLabelsHidden();
+        }
         return Iterables.any(element.getGraphicalFilters(), Predicates.instanceOf(HideLabelFilter.class));
     }
 
     /**
-     * Check if this {@link DDiagramElement} have a label that can be hidden
-     * (i.e. a style with labelPosition to border).
+     * Check if at least one label of this {@link DDiagramElement} is hidden.
      * 
-     * @return true if the label of the diagram element can be hidden, false
-     *         otherwise.
+     * @return true if at least one label of this {@link DDiagramElement} is hidden.
+     */
+    public boolean hasAnyHiddenLabel() {
+        if (element instanceof DEdge) {
+            return Iterables.any(element.getGraphicalFilters(), Predicates.instanceOf(HideLabelFilter.class));
+        }
+        return isLabelHidden();
+    }
+
+    /**
+     * Check if all labels of this {@link DDiagramElement} is directly hidden. There is a specific process for
+     * {@link DEdge} checking each of its labels. Otherwise the result is the same as the "isLabelHidden" query.
+     * 
+     * @return true if the label of the given element is hidden.
+     */
+    public boolean areAllLabelsHidden() {
+        if (element instanceof DEdge) {
+            return new DEdgeQuery((DEdge) element).areAllLabelsHidden();
+        } else {
+            return isLabelHidden();
+        }
+    }
+
+    /**
+     * Check if all labels corresponding to the list of visualIds are already hidden concerning this
+     * {@link DDiagramElement}. There is a specific process for {@link DEdge} checking each of its labels. Otherwise the
+     * result is the same as the "isLabelHidden" query.
+     * 
+     * @param selectedLabelVisualIds
+     *            list of visual IDs to check for hidden status concerning this {@link DEdge}
+     * @return true if the label of the given element is hidden.
+     */
+    public boolean areAllLabelsHidden(List<Integer> selectedLabelVisualIds) {
+        if (element instanceof DEdge) {
+            Set<HideLabelFilter> hideLabelFilterSet = element.getGraphicalFilters().stream().filter(HideLabelFilter.class::isInstance).map(HideLabelFilter.class::cast).collect(Collectors.toSet());
+            return !hideLabelFilterSet.isEmpty() && hideLabelFilterSet.iterator().next().getHiddenLabels().containsAll(selectedLabelVisualIds);
+        } else {
+            return isLabelHidden();
+        }
+    }
+
+    /**
+     * Check if a specific label of a {@link DEdge} is directly hidden.
+     * 
+     * @param visualID
+     *            the visualID of the DEdgeNameEditPart.
+     * @return true if the label of the given element is hidden.
+     */
+    public boolean isLabelHidden(int visualID) {
+        Set<HideLabelFilter> hideLabelFilterSet = element.getGraphicalFilters().stream().filter(HideLabelFilter.class::isInstance).map(HideLabelFilter.class::cast).collect(Collectors.toSet());
+        if (!hideLabelFilterSet.isEmpty()) {
+            HideLabelFilter hideLabelFilter = hideLabelFilterSet.iterator().next();
+            return hideLabelFilter.getHiddenLabels().isEmpty() || hideLabelFilter.getHiddenLabels().contains(visualID);
+        }
+        return false;
+    }
+
+    /**
+     * Check if this {@link DDiagramElement} have a label that can be hidden (i.e. a style with labelPosition to
+     * border).
+     * 
+     * @return true if the label of the diagram element can be hidden, false otherwise.
      */
     public boolean canHideLabel() {
         boolean canHideLabel = false;

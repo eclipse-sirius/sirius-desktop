@@ -12,13 +12,16 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.ecore.EObject;
@@ -193,8 +196,9 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
                     final DDiagramEditor diagramEditor = (DDiagramEditor) ((EditPart) nextSelected).getViewer().getProperty(DDiagramEditor.EDITOR_ID);
 
                     List<Object> selectionList = Arrays.asList(structuredSelection.toArray());
-                    if (onlyEdgeLabelsInSelection(selectionList)) {
-                        runHideLabelSelectionCommand(root, diagramEditor, partsToSemantic(selectionList), collectLabelsToHideVisualIds(selectionList));
+                    if (containsEdgeLabelsInSelection(selectionList)) {
+                        Set<EObject> partsToSemantic = partsToSemantic(selectionList);
+                        runHideLabelSelectionCommand(root, diagramEditor, partsToSemantic, collectLabelsToHideVisualIds(partsToSemantic, selectionList));
                     } else {
                         runHideLabelCommand(root, diagramEditor, partsToSemantic(selectionList));
                     }
@@ -210,27 +214,32 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
         }
     }
 
-    private List<Integer> collectLabelsToHideVisualIds(final List<Object> edgeLabelsEditParts) {
-        List<Integer> labelsVisualIds = new ArrayList<>();
-        for (Object object : edgeLabelsEditParts) {
+    private Map<EObject, List<Integer>> collectLabelsToHideVisualIds(final Set<EObject> partsToSemantic, final List<Object> edgeLabelsEditParts) {
+        HashMap<EObject, List<Integer>> semanticToLabelsVisualIDToHideMap = new HashMap<EObject, List<Integer>>();
+        for (EObject eObject : partsToSemantic) {
+            semanticToLabelsVisualIDToHideMap.put(eObject, new LinkedList<>());
+        }
+        for (IGraphicalEditPart object : edgeLabelsEditParts.stream().filter(IGraphicalEditPart.class::isInstance).map(IGraphicalEditPart.class::cast).collect(Collectors.toSet())) {
+
+            final EObject element = object.resolveSemanticElement();
             if (object instanceof DEdgeBeginNameEditPart) {
-                labelsVisualIds.add(DEdgeBeginNameEditPart.VISUAL_ID);
+                semanticToLabelsVisualIDToHideMap.get(element).add(DEdgeBeginNameEditPart.VISUAL_ID);
             } else if (object instanceof DEdgeNameEditPart) {
-                labelsVisualIds.add(DEdgeNameEditPart.VISUAL_ID);
+                semanticToLabelsVisualIDToHideMap.get(element).add(DEdgeNameEditPart.VISUAL_ID);
             } else if (object instanceof DEdgeEndNameEditPart) {
-                labelsVisualIds.add(DEdgeEndNameEditPart.VISUAL_ID);
+                semanticToLabelsVisualIDToHideMap.get(element).add(DEdgeEndNameEditPart.VISUAL_ID);
             }
         }
-        return labelsVisualIds;
+        return semanticToLabelsVisualIDToHideMap;
     }
 
-    private boolean onlyEdgeLabelsInSelection(final List<Object> asList) {
+    private boolean containsEdgeLabelsInSelection(final List<Object> asList) {
         for (Object object : asList) {
-            if (!(object instanceof AbstractDEdgeNameEditPart)) {
-                return false;
+            if (object instanceof AbstractDEdgeNameEditPart) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     /**
@@ -289,7 +298,7 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
         ((TransactionalEditingDomain) editor.getAdapter(EditingDomain.class)).getCommandStack().execute(cmd);
     }
 
-    private void runHideLabelSelectionCommand(final RootEditPart root, final DDiagramEditor editor, final Set<EObject> elements, final List<Integer> selectedLabelVisualIds) {
+    private void runHideLabelSelectionCommand(final RootEditPart root, final DDiagramEditor editor, final Set<EObject> elements, final Map<EObject, List<Integer>> selectedLabelVisualIds) {
 
         final Object adapter = editor.getAdapter(IDiagramCommandFactoryProvider.class);
         final IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) adapter;

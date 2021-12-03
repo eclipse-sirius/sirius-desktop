@@ -111,7 +111,7 @@ public class RevealOutlineLabelsAction extends AbstractRevealElementsAction<Obje
 
     private void runRevealCommand(final RootEditPart root, final DDiagramEditor editor, final DDiagramElement vpe) {
 
-        if (vpe != null && new DDiagramElementQuery(vpe).isLabelHidden()) {
+        if (vpe != null && new DDiagramElementQuery(vpe).hasAnyHiddenLabel()) {
             final Object adapter = editor.getAdapter(IDiagramCommandFactoryProvider.class);
             final IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) adapter;
             final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(editor.getEditingDomain().getResourceSet());

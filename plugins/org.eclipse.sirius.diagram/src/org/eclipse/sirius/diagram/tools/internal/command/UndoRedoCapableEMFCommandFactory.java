@@ -552,7 +552,7 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
      *      java.util.List)
      */
     @Override
-    public Command buildHideLabelSelectionCommand(Set<EObject> elementsToHide, List<Integer> selectedLabelVisualIds) {
+    public Command buildHideLabelSelectionCommand(Set<EObject> elementsToHide, Map<EObject, List<Integer>> selectedLabelVisualIds) {
         Set<DDiagramElement> ddeWithLabelToHide = elementsToHide.stream().filter(input -> {
             return input instanceof DDiagramElement && new DDiagramElementQuery((DDiagramElement) input).canHideLabel() && getPermissionAuthority().canEditInstance(input);
         }).map(DDiagramElement.class::cast).collect(Collectors.toSet());

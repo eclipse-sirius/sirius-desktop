@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,12 +12,16 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.business.api.query;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.sirius.diagram.BeginLabelStyle;
 import org.eclipse.sirius.diagram.CenterLabelStyle;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.EdgeStyle;
 import org.eclipse.sirius.diagram.EndLabelStyle;
+import org.eclipse.sirius.diagram.HideLabelFilter;
 import org.eclipse.sirius.diagram.description.EdgeMapping;
 import org.eclipse.sirius.diagram.description.IEdgeMapping;
 import org.eclipse.sirius.diagram.description.style.EdgeStyleDescription;
@@ -112,7 +116,7 @@ public class DEdgeQuery extends DDiagramElementQuery {
      * @return if the edge has a name
      */
     public boolean hasBeginName() {
-        return edge.getBeginLabel() != null;
+        return edge.getBeginLabel() != null && !edge.getBeginLabel().isEmpty();
     }
 
     /**
@@ -121,7 +125,7 @@ public class DEdgeQuery extends DDiagramElementQuery {
      * @return if the edge has a name
      */
     public boolean hasEndName() {
-        return edge.getEndLabel() != null;
+        return edge.getEndLabel() != null && !edge.getEndLabel().isEmpty();
     }
 
     /**
@@ -130,7 +134,26 @@ public class DEdgeQuery extends DDiagramElementQuery {
      * @return if the edge has a name
      */
     public boolean hasCenterName() {
-        return edge.getName() != null;
+        return edge.getName() != null && !edge.getName().isEmpty();
+    }
+
+    /**
+     * Return the number of labels hold by the edge.
+     * 
+     * @return the number of labels hold by the edge.
+     */
+    public int howManyLabels() {
+        int labelCount = 0;
+        if (hasBeginName()) {
+            labelCount++;
+        }
+        if (hasCenterName()) {
+            labelCount++;
+        }
+        if (hasEndName()) {
+            labelCount++;
+        }
+        return labelCount;
     }
 
     /**
@@ -168,6 +191,20 @@ public class DEdgeQuery extends DDiagramElementQuery {
     public boolean hasName() {
         boolean hasName = edge.getName() != null || edge.getEndLabel() != null || edge.getBeginLabel() != null;
         return hasName;
+    }
+
+    /**
+     * Check if all labels of this {@link DEdge} are hidden.
+     *
+     * @return all labels of this {@link DEdge} are hidden.
+     */
+    public boolean areAllLabelsHidden() {
+        Set<HideLabelFilter> hideLabelFilterSet = edge.getGraphicalFilters().stream().filter(HideLabelFilter.class::isInstance).map(HideLabelFilter.class::cast).collect(Collectors.toSet());
+        if (!hideLabelFilterSet.isEmpty()) {
+            HideLabelFilter hideLabelFilter = hideLabelFilterSet.iterator().next();
+            return hideLabelFilter.getHiddenLabels().isEmpty() || hideLabelFilter.getHiddenLabels().size() == howManyLabels();
+        }
+        return false;
     }
 
     /**

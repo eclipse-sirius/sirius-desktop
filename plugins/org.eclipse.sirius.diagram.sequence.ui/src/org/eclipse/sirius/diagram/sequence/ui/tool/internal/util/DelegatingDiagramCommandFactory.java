@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.sequence.ui.tool.internal.util;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
@@ -232,7 +233,7 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
      * 
      */
     @Override
-    public Command buildHideLabelSelectionCommand(Set<EObject> elementsToHide, List<Integer> selectedLabelVisualIds) {
+    public Command buildHideLabelSelectionCommand(Set<EObject> elementsToHide, Map<EObject, List<Integer>> selectedLabelVisualIds) {
         return baseFactory.buildHideLabelSelectionCommand(elementsToHide, selectedLabelVisualIds);
     }
 

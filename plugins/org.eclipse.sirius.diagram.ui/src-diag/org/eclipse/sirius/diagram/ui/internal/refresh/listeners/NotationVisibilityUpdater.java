@@ -73,7 +73,8 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
     public NotationVisibilityUpdater(Session session) {
         super(NotificationFilter.NOT_TOUCH.and(NotificationFilter.createFeatureFilter(DiagramPackage.eINSTANCE.getDDiagramElement_Visible()).or(
                 NotificationFilter.createFeatureFilter(DiagramPackage.eINSTANCE.getDEdge_IsFold()).or(
-                        NotificationFilter.createFeatureFilter(DiagramPackage.eINSTANCE.getDDiagramElement_GraphicalFilters())))));
+                        NotificationFilter.createFeatureFilter(DiagramPackage.eINSTANCE.getDDiagramElement_GraphicalFilters())
+                                .or(NotificationFilter.createFeatureFilter(DiagramPackage.eINSTANCE.getHideLabelFilter_HiddenLabels()))))));
         this.session = session;
         session.getTransactionalEditingDomain().addResourceSetListener(this);
     }
@@ -123,11 +124,25 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
                             }
                         } else if (notification.getNewValue() instanceof HideLabelFilter) {
                             HideLabelFilter hideLabelFilter = (HideLabelFilter) notification.getNewValue();
-                            for (View view : getViewToHide(correspondingLabelView, hideLabelFilter)) {
+                            for (View view : getHiddenViews(correspondingLabelView, hideLabelFilter)) {
                                 viewsToUpdate.put(view, Boolean.FALSE);
                             }
                         }
                     }
+                }
+            } else if (notification.getNotifier() instanceof HideLabelFilter) {
+                HideLabelFilter hideLabelFilter = (HideLabelFilter) notification.getNotifier();
+                DDiagramElement dDiagramElement = (DDiagramElement) hideLabelFilter.eContainer();
+                // Gather a list of element to hide and another one of element to show
+                List<View> correspondingLabelView = lookForCorrespondingLabelView(dDiagramElement);
+                Set<View> viewToHide = getHiddenViews(correspondingLabelView, hideLabelFilter);
+                List<View> viewToShow = new ArrayList<View>(correspondingLabelView);
+                viewToShow.removeAll(viewToHide);
+                for (View view : getHiddenViews(correspondingLabelView, hideLabelFilter)) {
+                    viewsToUpdate.put(view, Boolean.FALSE);
+                }
+                for (View view : viewToShow) {
+                    viewsToUpdate.put(view, Boolean.TRUE);
                 }
             }
         }
@@ -137,7 +152,7 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
         return cmd;
     }
 
-    private Set<View> getViewToHide(List<View> views, HideLabelFilter hideLabelFilter) {
+    private Set<View> getHiddenViews(List<View> views, HideLabelFilter hideLabelFilter) {
         Set<View> viewToHide = new HashSet<>();
         if (hideLabelFilter.getHiddenLabels().isEmpty()) {
             viewToHide.addAll(views);

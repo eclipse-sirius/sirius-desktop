@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.tools.api.command;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -371,10 +372,10 @@ public interface IDiagramCommandFactory extends ICommandFactory {
      * @param elementsToHide
      *            the elements to hide.
      * @param selectedLabelVisualIds
-     *            the VisualIds of the edge labels to hide.
+     *            the VisualIds of the edge labels to hide sorted by edge.
      * @return a command that is able to hide label of many elements.
      */
-    Command buildHideLabelSelectionCommand(Set<EObject> elementsToHide, List<Integer> selectedLabelVisualIds);
+    Command buildHideLabelSelectionCommand(Set<EObject> elementsToHide, Map<EObject, List<Integer>> selectedLabelVisualIds);
 
     /**
      * Build a command that is able to reveal one diagram element.

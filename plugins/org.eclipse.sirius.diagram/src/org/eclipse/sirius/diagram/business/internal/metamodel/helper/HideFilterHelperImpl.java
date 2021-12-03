@@ -13,7 +13,9 @@
 package org.eclipse.sirius.diagram.business.internal.metamodel.helper;
 
 import java.util.List;
+import java.util.Map;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
@@ -23,6 +25,9 @@ import org.eclipse.sirius.diagram.HideFilter;
 import org.eclipse.sirius.diagram.HideLabelFilter;
 import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
+
+import com.google.common.base.Predicates;
+import com.google.common.collect.Iterables;
 
 /**
  * Default implementation of an helper to handle HideFilter.
@@ -89,6 +94,12 @@ public final class HideFilterHelperImpl implements HideFilterHelper {
             return;
         }
 
+        if (element.getGraphicalFilters().stream().anyMatch(gf -> gf instanceof HideLabelFilter)) {
+            // if there was already an HideLabelFilter, it was partial (not all labels were hidden for this
+            // DDiagramElement) and can be removed
+            HideLabelFilter filter = element.getGraphicalFilters().stream().filter(HideLabelFilter.class::isInstance).map(HideLabelFilter.class::cast).findFirst().get();
+            element.getGraphicalFilters().remove(filter);
+        }
         HideLabelFilter filter = DiagramFactory.eINSTANCE.createHideLabelFilter();
         element.getGraphicalFilters().add(filter);
     }
@@ -98,15 +109,20 @@ public final class HideFilterHelperImpl implements HideFilterHelper {
      * 
      * @see HideFilterHelper#hide(DDiagramElement, boolean)
      */
-    public void hideLabel(final DDiagramElement element, List<Integer> selectedLabelVisualIds) {
-        if (new DDiagramElementQuery(element).isLabelHidden()) {
+    public void hideLabel(final DDiagramElement element, Map<EObject, List<Integer>> selectedLabelVisualIds) {
+        if (new DDiagramElementQuery(element).areAllLabelsHidden(selectedLabelVisualIds.get(element))) {
             return;
         }
 
-        HideLabelFilter filter = DiagramFactory.eINSTANCE.createHideLabelFilter();
-        element.getGraphicalFilters().add(filter);
+        HideLabelFilter filter;
+        if (Iterables.any(element.getGraphicalFilters(), Predicates.instanceOf(HideLabelFilter.class))) {
+            filter = element.getGraphicalFilters().stream().filter(HideLabelFilter.class::isInstance).map(HideLabelFilter.class::cast).findFirst().get();
+        } else {
+            filter = DiagramFactory.eINSTANCE.createHideLabelFilter();
+            element.getGraphicalFilters().add(filter);
+        }
         if (element instanceof DEdge && !selectedLabelVisualIds.isEmpty()) {
-            filter.getHiddenLabels().addAll(selectedLabelVisualIds);
+            filter.getHiddenLabels().addAll(selectedLabelVisualIds.get(element));
         }
     }
 
@@ -116,7 +132,7 @@ public final class HideFilterHelperImpl implements HideFilterHelper {
      * @see HideFilterHelper#reveal(DDiagramElement, boolean)
      */
     public void revealLabel(final DDiagramElement element) {
-        if (!new DDiagramElementQuery(element).isLabelHidden()) {
+        if (!new DDiagramElementQuery(element).hasAnyHiddenLabel()) {
             return;
         }
 

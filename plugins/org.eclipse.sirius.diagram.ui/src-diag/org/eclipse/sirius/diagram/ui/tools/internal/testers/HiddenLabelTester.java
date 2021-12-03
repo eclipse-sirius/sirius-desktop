@@ -19,6 +19,8 @@ import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 
 /**
  * Tester to know if at least one element of the selected is kind of IDiagramElementEditPart and has label hidden.
@@ -53,11 +55,16 @@ public class HiddenLabelTester extends PropertyTester {
      * @return true if the selected element has label hidden.
      */
     private boolean testDiagramElementEditPart(IDiagramElementEditPart selectedElement) {
+        boolean result = false;
         DDiagramElement diagramElement = selectedElement.resolveDiagramElement();
         if (diagramElement != null) {
-            return new DDiagramElementQuery(diagramElement).isLabelHidden();
+            if (selectedElement instanceof AbstractDEdgeNameEditPart) {
+                result = new DDiagramElementQuery(diagramElement).isLabelHidden(new EditPartQuery(selectedElement).getVisualID());
+            } else {
+                result = new DDiagramElementQuery(diagramElement).hasAnyHiddenLabel();
+            }
         }
-        return false;
+        return result;
     }
 
     /**
