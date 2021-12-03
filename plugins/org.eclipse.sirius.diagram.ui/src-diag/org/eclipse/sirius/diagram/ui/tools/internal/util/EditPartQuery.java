@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.util;
 
+import java.lang.reflect.Field;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -55,6 +57,8 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
+import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.locator.DBorderItemLocator;
 import org.eclipse.sirius.diagram.ui.tools.api.graphical.edit.styles.IBorderItemOffsets;
 
@@ -795,5 +799,21 @@ public class EditPartQuery {
      */
     public boolean isAutoSized() {
         return isAutoSized(true, true);
+    }
+
+    /**
+     * Looks for the VISUAL_ID filed of a {@link IGraphicalEditPart}. This is used for variables typed as an abstract
+     * edit part type but handling {@link IGraphicalEditPart} with visual IDs.
+     * 
+     * @return the content of the VISUAL_ID field if there is one, -1 otherwise.
+     */
+    public int getVisualID() {
+        try {
+            Field visualIDfield = part.getClass().getField("VISUAL_ID"); //$NON-NLS-1$
+            return (Integer) visualIDfield.get(part);
+        } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+            DiagramUIPlugin.getPlugin().error(MessageFormat.format(Messages.AbstractDEdgeNameEditPart_VisualID_Error, part), e);
+        }
+        return -1;
     }
 }
