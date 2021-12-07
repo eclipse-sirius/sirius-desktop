@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -25,17 +25,16 @@ import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.swt.widgets.Display;
 
 /**
- * Specific Command to do layout for newly created views in pre-commit without
- * being in the IOperationHistory by being a {@link NonDirtying} . </br> <b>NOTE
- * : the use of {@link NonDirtying} is a workaround to not have layout of
- * created views (in pre-commit) in the undo stack, but this doesn't seems break
- * the undo/redo model because here we only changes Bounds </b>.
+ * Specific Command to do layout for newly created views in pre-commit without being in the IOperationHistory by being a
+ * {@link NonDirtying} . </br>
+ * <b>NOTE : the use of {@link NonDirtying} is a workaround to not have layout of created views (in pre-commit) in the
+ * undo stack, but this doesn't seems break the undo/redo model because here we only changes Bounds.</b>.
  * 
  * @author <a href="mailto:esteban.dugueperoux@obeo.fr">Esteban Dugueperoux</a>
  */
 public class SiriusCanonicalLayoutCommand extends RecordingCommand implements NonDirtying {
 
-    private IGraphicalEditPart diagramEditPart;
+    private IGraphicalEditPart parentEditPart;
 
     private List<IAdaptable> childViewsAdapters;
 
@@ -79,7 +78,7 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
     public SiriusCanonicalLayoutCommand(TransactionalEditingDomain domain, IGraphicalEditPart parentEditPart, List<IAdaptable> childViewsAdapters, List<IAdaptable> childViewsAdaptersForCenterLayout,
             boolean useSpecificLayoutType) {
         super(domain, Messages.SiriusCanonicalLayoutCommand_label);
-        this.diagramEditPart = parentEditPart;
+        this.parentEditPart = parentEditPart;
         this.childViewsAdapters = childViewsAdapters;
         this.childViewsAdaptersForCenterLayout = childViewsAdaptersForCenterLayout;
         this.useSpecificLayoutType = useSpecificLayoutType;
@@ -105,14 +104,14 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
     }
 
     private void executeLayoutOnDiagramOpening() {
-        org.eclipse.gef.commands.Command arrangeCmd = SiriusLayoutDataManager.INSTANCE.getArrangeCreatedViewsOnOpeningCommand(diagramEditPart);
+        org.eclipse.gef.commands.Command arrangeCmd = SiriusLayoutDataManager.INSTANCE.getArrangeCreatedViewsOnOpeningCommand(parentEditPart);
         if (arrangeCmd != null && arrangeCmd.canExecute()) {
             arrangeCmd.execute();
         }
     }
 
     private void executeLayoutDueToExternalChanges() {
-        org.eclipse.gef.commands.Command arrangeCmd = SiriusLayoutDataManager.INSTANCE.getArrangeCreatedViewsCommand(childViewsAdapters, childViewsAdaptersForCenterLayout, diagramEditPart,
+        org.eclipse.gef.commands.Command arrangeCmd = SiriusLayoutDataManager.INSTANCE.getArrangeCreatedViewsCommand(childViewsAdapters, childViewsAdaptersForCenterLayout, parentEditPart,
                 useSpecificLayoutType);
         if (arrangeCmd != null && arrangeCmd.canExecute()) {
             arrangeCmd.execute();
