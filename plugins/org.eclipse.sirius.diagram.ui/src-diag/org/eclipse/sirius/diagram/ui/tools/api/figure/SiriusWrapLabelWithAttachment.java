@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -130,6 +130,10 @@ public class SiriusWrapLabelWithAttachment extends SiriusWrapLabel {
         if (attachment != null) {
             attachment.setVisible(false);
         }
+    }
+
+    public int getLocationField() {
+        return location;
     }
 
 }
