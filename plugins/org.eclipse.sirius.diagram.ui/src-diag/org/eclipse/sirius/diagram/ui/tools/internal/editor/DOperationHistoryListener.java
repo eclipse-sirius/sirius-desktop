@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
 import org.eclipse.core.commands.operations.IOperationHistoryListener;
 import org.eclipse.core.commands.operations.OperationHistoryEvent;
+import org.eclipse.emf.workspace.EMFCommandOperation;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
 import org.eclipse.sirius.diagram.ui.internal.refresh.layout.SiriusCanonicalLayoutHandler;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
@@ -69,6 +70,22 @@ public class DOperationHistoryListener implements IOperationHistoryListener {
                 // arrange and it allows to have the expected behavior for ELK layout with
                 // launchArrangeCommandOnOpening()
                 // instead of just launchArrangeCommand().
+                result = false;
+            } else if (Messages.SiriusContainerEditPolicy_arrangeCommandLabel.equals(originalCommand.getLabel())) {
+                // The operation is already an arrange command. No need to launch another one.
+                result = false;
+            }
+        } else if (event.getOperation() instanceof EMFCommandOperation) {
+            EMFCommandOperation command = (EMFCommandOperation) event.getOperation();
+            if (Messages.RefreshDiagramOnOpeningCommand_label.equals(command.getLabel())) {
+                // No need to launch an arrange here, it will be triggered later explicitly by
+                // DDiagramEditorImpl.initializeGraphicalViewer().
+                result = false;
+            } else if (Messages.SiriusCanonicalLayoutCommand_label.equals(command.getLabel())) {
+                // The operation is already an arrange command. No need to launch another one.
+                result = false;
+            } else if (org.eclipse.sirius.tools.api.Messages.CreateRepresentationCommand_label.equals(command.getLabel())) {
+                // No need to launch an arrange on existing opened diagram when a new representation is created
                 result = false;
             }
         }
