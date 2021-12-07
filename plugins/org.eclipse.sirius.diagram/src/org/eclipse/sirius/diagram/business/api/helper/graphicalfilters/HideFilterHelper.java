@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -73,4 +73,14 @@ public interface HideFilterHelper {
      *            the element to reveal
      */
     void revealLabel(DDiagramElement element);
+
+    /**
+     * Reveal the label of the current element.
+     * 
+     * @param element
+     *            the element to reveal
+     * @param selectedLabelVisualIds
+     *            the visual IDs of the edge labels to reveal sorted by edge
+     */
+    void revealLabel(DDiagramElement element, Map<EObject, List<Integer>> selectedLabelVisualIds);
 }

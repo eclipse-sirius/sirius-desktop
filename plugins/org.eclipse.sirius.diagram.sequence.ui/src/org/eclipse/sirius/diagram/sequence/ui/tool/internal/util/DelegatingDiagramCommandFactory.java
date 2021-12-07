@@ -322,6 +322,14 @@ public class DelegatingDiagramCommandFactory implements IDiagramCommandFactory {
      * {@inheritDoc}
      */
     @Override
+    public Command buildRevealLabelSelectionCommand(DDiagramElement diagramElement, Map<EObject, List<Integer>> selectedLabelVisualIds) {
+        return baseFactory.buildRevealLabelSelectionCommand(diagramElement, selectedLabelVisualIds);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public org.eclipse.emf.common.command.Command buildRevealElementsCommand(Set<DDiagramElement> elementsToReveal) {
         return baseFactory.buildRevealElementsCommand(elementsToReveal);
     }

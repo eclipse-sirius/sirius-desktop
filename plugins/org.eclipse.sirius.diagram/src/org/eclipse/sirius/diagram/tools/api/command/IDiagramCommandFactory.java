@@ -396,6 +396,17 @@ public interface IDiagramCommandFactory extends ICommandFactory {
     Command buildRevealLabelCommand(DDiagramElement diagramElement);
 
     /**
+     * Build a command that is able to reveal labels of many edges.
+     * 
+     * @param diagramElement
+     *            the diagram element for which you want to reveal the label.
+     * @param selectedLabelVisualIds
+     *            the VisualIds of the edge labels to reveal sorted by edge.
+     * @return a command that is able to reveal the label of one diagram element.
+     */
+    Command buildRevealLabelSelectionCommand(DDiagramElement diagramElement, Map<EObject, List<Integer>> selectedLabelVisualIds);
+
+    /**
      * Build a command that is able to reveal all elements of a diagram.
      * 
      * @param diagram

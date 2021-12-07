@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -141,4 +141,21 @@ public final class HideFilterHelperImpl implements HideFilterHelper {
             element.getGraphicalFilters().remove(filter);
         }
     }
+
+    @Override
+    public void revealLabel(DDiagramElement element, Map<EObject, List<Integer>> selectedLabelVisualIds) {
+        if (!new DDiagramElementQuery(element).hasAnyHiddenLabel()) {
+            return;
+        }
+
+        final Object filter = EcoreUtil.getObjectByType(element.getGraphicalFilters(), DiagramPackage.eINSTANCE.getHideLabelFilter());
+        if (filter instanceof HideLabelFilter) {
+            HideLabelFilter hideLabelFilter = (HideLabelFilter) filter;
+            hideLabelFilter.getHiddenLabels().removeAll(selectedLabelVisualIds.get(element));
+            if (hideLabelFilter.getHiddenLabels().isEmpty()) {
+                element.getGraphicalFilters().remove(hideLabelFilter);
+            }
+        }
+    }
+
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,12 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.api.command.view;
 
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -41,6 +45,8 @@ public class RevealDDiagramElementsLabel extends RecordingCommand {
     /** The viewpoint elements for which we want to reveal th label. */
     private final Set<DDiagramElement> diagramElements;
 
+    private final Map<EObject, List<Integer>> selectedLabelVisualIds;
+
     /**
      * Create a new {@link RevealDDiagramElementsLabel}.
      * 
@@ -52,6 +58,23 @@ public class RevealDDiagramElementsLabel extends RecordingCommand {
     public RevealDDiagramElementsLabel(final TransactionalEditingDomain domain, final Set<DDiagramElement> diagramElements) {
         super(domain, RevealDDiagramElementsLabel.getLabel(diagramElements));
         this.diagramElements = diagramElements;
+        this.selectedLabelVisualIds = Collections.EMPTY_MAP;
+    }
+
+    /**
+     * Create a new {@link RevealDDiagramElementsLabel}.
+     * 
+     * @param domain
+     *            the editing domain.
+     * @param diagramElements
+     *            the diagram element.
+     * @param selectedLabelVisualIds
+     *            the visual IDs concerning the labels to reveal from the selected element.
+     */
+    public RevealDDiagramElementsLabel(final TransactionalEditingDomain domain, final Set<DDiagramElement> diagramElements, final Map<EObject, List<Integer>> selectedLabelVisualIds) {
+        super(domain, RevealDDiagramElementsLabel.getLabel(diagramElements));
+        this.diagramElements = diagramElements;
+        this.selectedLabelVisualIds = selectedLabelVisualIds;
     }
 
     /**
@@ -62,7 +85,11 @@ public class RevealDDiagramElementsLabel extends RecordingCommand {
     @Override
     protected void doExecute() {
         for (final DDiagramElement diagramElement : diagramElements) {
-            HideFilterHelper.INSTANCE.revealLabel(diagramElement);
+            if (selectedLabelVisualIds.keySet().contains(diagramElement)) {
+                HideFilterHelper.INSTANCE.revealLabel(diagramElement, selectedLabelVisualIds);
+            } else {
+                HideFilterHelper.INSTANCE.revealLabel(diagramElement);
+            }
         }
     }
 

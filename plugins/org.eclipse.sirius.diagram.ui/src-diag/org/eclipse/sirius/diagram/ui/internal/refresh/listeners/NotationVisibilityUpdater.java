@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -130,7 +130,7 @@ public class NotationVisibilityUpdater extends ResourceSetListenerImpl {
                         }
                     }
                 }
-            } else if (notification.getNotifier() instanceof HideLabelFilter) {
+            } else if (notification.getNotifier() instanceof HideLabelFilter && ((HideLabelFilter) notification.getNotifier()).eContainer() != null) {
                 HideLabelFilter hideLabelFilter = (HideLabelFilter) notification.getNotifier();
                 DDiagramElement dDiagramElement = (DDiagramElement) hideLabelFilter.eContainer();
                 // Gather a list of element to hide and another one of element to show

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2017, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -32,8 +32,11 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.GraphicalFilter;
 import org.eclipse.sirius.diagram.HideFilter;
 import org.eclipse.sirius.diagram.HideLabelFilter;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.business.api.query.ViewQuery;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.FigureQuery;
+import org.eclipse.sirius.diagram.ui.tools.api.figure.SiriusWrapLabelWithAttachment;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.SiriusWrapLabel;
 
 /**
@@ -273,8 +276,15 @@ public final class ShowingViewUtil {
                 EObject element = correspondingView.getElement();
                 if (element instanceof DDiagramElement) {
                     EList<GraphicalFilter> graphicalFilters = ((DDiagramElement) element).getGraphicalFilters();
-                    boolean isLabelFiltered = graphicalFilters.stream().anyMatch(HideLabelFilter.class::isInstance) || graphicalFilters.stream().anyMatch(HideFilter.class::isInstance)
+                    boolean isLabelFiltered = false;
+                    if (correspondingView instanceof Edge && figure instanceof SiriusWrapLabelWithAttachment) {
+                        SiriusWrapLabelWithAttachment siriusWrapLabelWithAttachment = (SiriusWrapLabelWithAttachment) figure;
+                        int edgeLabelViewConstantToVisualID = new FigureQuery(figure).edgeLabelViewConstantToVisualID(siriusWrapLabelWithAttachment.getLocationField());
+                        isLabelFiltered = new DDiagramElementQuery((DDiagramElement) element).isLabelHidden(edgeLabelViewConstantToVisualID);
+                    } else {
+                        isLabelFiltered = graphicalFilters.stream().anyMatch(HideLabelFilter.class::isInstance) || graphicalFilters.stream().anyMatch(HideFilter.class::isInstance)
                             || (correspondingView instanceof Edge && !((DDiagramElement) correspondingView.getElement()).isVisible());
+                    }
                     if (isLabelFiltered && viewQuery.isInShowingMode()) {
                         graphics.setAlpha(50);
                     }

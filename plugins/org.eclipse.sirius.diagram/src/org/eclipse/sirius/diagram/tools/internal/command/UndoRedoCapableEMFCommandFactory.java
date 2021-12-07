@@ -594,6 +594,17 @@ public class UndoRedoCapableEMFCommandFactory extends AbstractCommandFactory imp
      * {@inheritDoc}
      */
     @Override
+    public Command buildRevealLabelSelectionCommand(DDiagramElement diagramElement, Map<EObject, List<Integer>> selectedLabelVisualIds) {
+        if (getPermissionAuthority().canEditInstance(diagramElement)) {
+            return new RevealDDiagramElementsLabel(domain, Collections.singleton(diagramElement), selectedLabelVisualIds);
+        }
+        return UnexecutableCommand.INSTANCE;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     public Command buildRevealElementsCommand(final DDiagram viewpoint) {
         if (getPermissionAuthority().canEditInstance(viewpoint)) {
             return new RevealAllElementsCommand(domain, viewpoint);

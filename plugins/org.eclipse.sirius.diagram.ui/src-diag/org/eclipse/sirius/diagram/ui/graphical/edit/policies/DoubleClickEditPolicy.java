@@ -15,8 +15,10 @@ package org.eclipse.sirius.diagram.ui.graphical.edit.policies;
 import java.text.MessageFormat;
 import java.util.AbstractMap.SimpleEntry;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Optional;
@@ -56,12 +58,15 @@ import org.eclipse.sirius.diagram.model.business.internal.helper.LayerModelHelpe
 import org.eclipse.sirius.diagram.tools.api.command.ChangeLayerActivationCommand;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractGeneratedDiagramNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.handler.FilterUpdateTask;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.tools.api.command.DCommand;
 import org.eclipse.sirius.tools.api.command.SiriusCommand;
 import org.eclipse.swt.widgets.Display;
@@ -94,18 +99,23 @@ public class DoubleClickEditPolicy extends OpenEditPolicy {
                         DDiagramElementQuery query = new DDiagramElementQuery(ddiagramElement);
                         // CHECKSTYLE:OFF
                         if (query.canHideLabel()) {
-                            if (query.isLabelHidden() || !ddiagramElement.isVisible()) {
-                                cmd = revealElement(parentDiagram, ddiagramElement, emfCommandFactory, true);
+                            boolean labelHidden = query.isLabelHidden();
+                            if (targetEditPart instanceof AbstractDEdgeNameEditPart) {
+                                int visualID = new EditPartQuery((AbstractDEdgeNameEditPart) targetEditPart).getVisualID();
+                                labelHidden = query.isLabelHidden(visualID);
+                            }
+                            if (labelHidden || !ddiagramElement.isVisible()) {
+                                cmd = revealElement(parentDiagram, ddiagramElement, emfCommandFactory, true, editPart);
                             } else {
-                                cmd = hideElement(ddiagramElement, emfCommandFactory, true);
+                                cmd = hideElement(ddiagramElement, emfCommandFactory, true, editPart);
                             }
                         }
                         // CHECKSTYLE:ON
                     } else {
                         if (!ddiagramElement.isVisible()) {
-                            cmd = revealElement(parentDiagram, ddiagramElement, emfCommandFactory, false);
+                            cmd = revealElement(parentDiagram, ddiagramElement, emfCommandFactory, false, editPart);
                         } else {
-                            cmd = hideElement(ddiagramElement, emfCommandFactory, false);
+                            cmd = hideElement(ddiagramElement, emfCommandFactory, false, editPart);
                         }
                     }
                     final TransactionalEditingDomain editingDomain = ((IGraphicalEditPart) getHost()).getEditingDomain();
@@ -132,12 +142,21 @@ public class DoubleClickEditPolicy extends OpenEditPolicy {
      *            true if we are hiding a label. False for any other element.
      * @return the command doing the hiding.
      */
-    private org.eclipse.emf.common.command.Command hideElement(final DDiagramElement ddiagramElement, final IDiagramCommandFactory emfCommandFactory, boolean hideLabel) {
+    private org.eclipse.emf.common.command.Command hideElement(final DDiagramElement ddiagramElement, final IDiagramCommandFactory emfCommandFactory, boolean hideLabel, final EditPart editPart) {
         org.eclipse.emf.common.command.Command cmd;
         Set<EObject> elementSet = new HashSet<>();
         elementSet.add(ddiagramElement);
         if (hideLabel) {
-            cmd = emfCommandFactory.buildHideLabelCommand(elementSet);
+            if (editPart instanceof AbstractDEdgeNameEditPart) {
+                AbstractDEdgeNameEditPart abstractDEdgeNameEditPart = (AbstractDEdgeNameEditPart) editPart;
+                LinkedList<Integer> selectedLabelVisualIds = new LinkedList<Integer>();
+                selectedLabelVisualIds.add(new EditPartQuery(abstractDEdgeNameEditPart).getVisualID());
+                HashMap<EObject, List<Integer>> semanticToLabelsVisualIDToHideMap = new HashMap<EObject, List<Integer>>();
+                semanticToLabelsVisualIDToHideMap.put(ddiagramElement, selectedLabelVisualIds);
+                cmd = emfCommandFactory.buildHideLabelSelectionCommand(elementSet, semanticToLabelsVisualIDToHideMap);
+            } else {
+                cmd = emfCommandFactory.buildHideLabelCommand(elementSet);
+            }
         } else {
             cmd = emfCommandFactory.buildHideCommand(elementSet);
         }
@@ -156,12 +175,14 @@ public class DoubleClickEditPolicy extends OpenEditPolicy {
      *            true if we are hiding a label. False for any other element.
      * @return the command doing the revelation.
      */
-    private org.eclipse.emf.common.command.Command revealElement(DDiagram parentDiagram, final DDiagramElement ddiagramElement, final IDiagramCommandFactory emfCommandFactory, boolean hideLabel) {
+    private org.eclipse.emf.common.command.Command revealElement(DDiagram parentDiagram, final DDiagramElement ddiagramElement, final IDiagramCommandFactory emfCommandFactory, boolean hideLabel,
+            final EditPart editPart) {
         CompoundCommand compoundCommand = new CompoundCommand();
         Set<DDiagramElement> elementSet = new HashSet<>();
         elementSet.add(ddiagramElement);
-        if (ddiagramElement instanceof DEdge) {
-            // we show source and target node as well as the edge.
+        if (ddiagramElement instanceof DEdge && editPart instanceof DEdgeEditPart) {
+            // we show source and target node as well as the edge, but we do not reveal the nodes just to reveal an edge
+            // label
             DEdge edge = (DEdge) ddiagramElement;
             EdgeTarget sourceNode = edge.getSourceNode();
             EdgeTarget targetNode = edge.getTargetNode();
@@ -174,10 +195,20 @@ public class DoubleClickEditPolicy extends OpenEditPolicy {
         } else {
             addAllParentRecursively(elementSet, ddiagramElement);
         }
-        org.eclipse.emf.common.command.Command cmd;
         if (hideLabel) {
-            compoundCommand.append(emfCommandFactory.buildRevealLabelCommand(ddiagramElement));
-            compoundCommand.append(emfCommandFactory.buildRevealElementsCommand(elementSet));
+            if (editPart instanceof AbstractDEdgeNameEditPart) {
+                AbstractDEdgeNameEditPart abstractDEdgeNameEditPart = (AbstractDEdgeNameEditPart) editPart;
+                LinkedList<Integer> selectedLabelVisualIds = new LinkedList<Integer>();
+                selectedLabelVisualIds.add(new EditPartQuery(abstractDEdgeNameEditPart).getVisualID());
+                HashMap<EObject, List<Integer>> semanticToLabelsVisualIDToHideMap = new HashMap<EObject, List<Integer>>();
+                semanticToLabelsVisualIDToHideMap.put(ddiagramElement, selectedLabelVisualIds);
+                for (DDiagramElement dDiagramElement : elementSet) {
+                    compoundCommand.append(emfCommandFactory.buildRevealLabelSelectionCommand(dDiagramElement, semanticToLabelsVisualIDToHideMap));
+                }
+            } else {
+                compoundCommand.append(emfCommandFactory.buildRevealLabelCommand(ddiagramElement));
+                compoundCommand.append(emfCommandFactory.buildRevealElementsCommand(elementSet));
+            }
         } else {
             Entry<String, org.eclipse.emf.common.command.Command> filterEntry = getCommandToDeactivateFiltersHidingElementAndParents(parentDiagram, elementSet);
             Entry<String, org.eclipse.emf.common.command.Command> layerEntry = getCommandToActivateLayerShowingElementAndPArents(parentDiagram, elementSet);
