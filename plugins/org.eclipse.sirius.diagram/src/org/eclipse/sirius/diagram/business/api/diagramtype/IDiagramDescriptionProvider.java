@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,6 +15,7 @@ package org.eclipse.sirius.diagram.business.api.diagramtype;
 import java.util.Collection;
 import java.util.LinkedList;
 
+import org.eclipse.core.commands.operations.OperationHistoryEvent;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -243,4 +244,13 @@ public interface IDiagramDescriptionProvider {
      */
     @Deprecated
     String completeToolTipText(String toolTipText, EObject eObject);
+
+    /**
+     * Allow to avoid to launch an arrange command for some specific events.
+     * 
+     * @param event
+     *            Event to deal with
+     * @return true if this event should trigger an arrange command, false otherwise.
+     */
+    boolean eventShouldTriggerArrange(OperationHistoryEvent event);
 }

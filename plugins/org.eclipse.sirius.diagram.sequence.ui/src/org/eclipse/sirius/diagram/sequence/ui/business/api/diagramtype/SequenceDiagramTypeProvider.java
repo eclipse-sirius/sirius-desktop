@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.Collection;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 
+import org.eclipse.core.commands.operations.OperationHistoryEvent;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EAnnotation;
 import org.eclipse.emf.ecore.EClass;
@@ -28,6 +29,7 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.edit.command.CommandParameter;
 import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
+import org.eclipse.emf.workspace.EMFCommandOperation;
 import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.sirius.business.api.dialect.description.DefaultInterpretedExpressionTargetSwitch;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionTargetSwitch;
@@ -478,5 +480,18 @@ public class SequenceDiagramTypeProvider implements IDiagramDescriptionProvider 
         sb.append(Messages.SequenceDiagramTypeProvider_endBeforeVariableDescription);
 
         return sb.toString();
+    }
+
+    @Override
+    public boolean eventShouldTriggerArrange(OperationHistoryEvent event) {
+        boolean result = true;
+        if (event.getOperation() instanceof EMFCommandOperation) {
+            EMFCommandOperation command = (EMFCommandOperation) event.getOperation();
+            if (org.eclipse.sirius.diagram.sequence.tool.internal.Messages.RefreshLayoutCommand_commandName.equals(command.getLabel())) {
+                // No need to launch an arrange after a sequence layout is done.
+                result = false;
+            }
+        }
+        return result;
     }
 }

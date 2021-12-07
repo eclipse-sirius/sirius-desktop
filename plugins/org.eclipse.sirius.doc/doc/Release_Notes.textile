@@ -35,6 +35,7 @@ h4. Changes in @org.eclipse.sirius.diagram@
 
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.DiagramPlugin@ has been renamed to @org.eclipse.sirius.diagram.tools.api.DiagramPlugin@.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.Messages@ has been renamed to @org.eclipse.sirius.diagram.tools.api.Messages@.
+* <span class="label label-success">Added</span> Add method @eventShouldTriggerArrange(OperationHistoryEvent)@ in @org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramDescriptionProvider@ This method is used to avoid an arrange to be launch for a specific event if it is not necessary for a specific diagram description.
 
 h4. Changes in @org.eclipse.sirius.diagram.model@
 

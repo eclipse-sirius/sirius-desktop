@@ -14,8 +14,13 @@ package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
 import org.eclipse.core.commands.operations.IOperationHistoryListener;
 import org.eclipse.core.commands.operations.OperationHistoryEvent;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.workspace.EMFCommandOperation;
 import org.eclipse.gmf.runtime.common.core.command.ICommand;
+import org.eclipse.sirius.diagram.DDiagram;
+import org.eclipse.sirius.diagram.business.api.diagramtype.DiagramTypeDescriptorRegistry;
+import org.eclipse.sirius.diagram.business.api.diagramtype.IDiagramTypeDescriptor;
+import org.eclipse.sirius.diagram.description.DiagramDescription;
 import org.eclipse.sirius.diagram.ui.internal.refresh.layout.SiriusCanonicalLayoutHandler;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.commands.WrappingCommandIgnoringAffectedFiles;
@@ -87,6 +92,37 @@ public class DOperationHistoryListener implements IOperationHistoryListener {
             } else if (org.eclipse.sirius.tools.api.Messages.CreateRepresentationCommand_label.equals(command.getLabel())) {
                 // No need to launch an arrange on existing opened diagram when a new representation is created
                 result = false;
+            } else {
+                result = eventShouldTriggerArrangeWithSpecificCondition(event);
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Allow to avoid to launch an arrange command for some specific events for some specific conditions (not generic
+     * conditions).
+     * 
+     * @param event
+     *            Event to deal with
+     * @return true if this event should trigger an arrange command, false otherwise.
+     */
+    protected boolean eventShouldTriggerArrangeWithSpecificCondition(OperationHistoryEvent event) {
+        boolean result = true;
+        if (editor.getDiagramEditPart() != null) {
+            EObject resolveSemanticElement = editor.getDiagramEditPart().resolveSemanticElement();
+            if (resolveSemanticElement instanceof DDiagram) {
+                DiagramDescription diagramDescription = ((DDiagram) resolveSemanticElement).getDescription();
+                if (diagramDescription != null) {
+                    // If diagram is not null, we search for a possible
+                    // DiagramDescriptionProvider handling this type of diagram
+                    for (final IDiagramTypeDescriptor diagramTypeDescriptor : DiagramTypeDescriptorRegistry.getInstance().getAllDiagramTypeDescriptors()) {
+                        if (diagramTypeDescriptor.getDiagramDescriptionProvider().handles(diagramDescription.eClass().getEPackage())) {
+                            result = diagramTypeDescriptor.getDiagramDescriptionProvider().eventShouldTriggerArrange(event);
+                            break;
+                        }
+                    }
+                }
             }
         }
         return result;
