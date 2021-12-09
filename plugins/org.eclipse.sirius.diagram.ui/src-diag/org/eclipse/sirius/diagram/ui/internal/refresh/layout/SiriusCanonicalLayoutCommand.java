@@ -38,18 +38,16 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
 
     private List<IAdaptable> childViewsAdapters;
 
-    private List<IAdaptable> childViewsAdaptersForCenterLayout;
+    private List<IAdaptable> centeredChildViewsAdapters;
 
     boolean useSpecificLayoutType;
 
     /**
-     * Constructor used to do a layout on all created views child (directly or
-     * indirectly) of Diagram. </br> NOTE : to use at diagram representation
-     * opening.
+     * Constructor used to do a layout on all created views child (directly or indirectly) of Diagram. </br>
+     * NOTE : to use at diagram representation opening.
      * 
      * @param domain
-     *            the {@link TransactionalEditingDomain} on which executes this
-     *            command
+     *            the {@link TransactionalEditingDomain} on which executes this command
      * @param diagramEditPart
      *            the {@link DiagramEditPart} on which do the layout
      */
@@ -58,29 +56,29 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
     }
 
     /**
-     * Constructor to do layout on all created views child directly of a View.
-     * </br> NOTE : to use when external changes occurs.
+     * Constructor to do layout on all created views child directly of a View. </br>
+     * NOTE : to use when external changes occurs.
      * 
      * @param domain
-     *            the {@link TransactionalEditingDomain} on which executes this
-     *            command
+     *            the {@link TransactionalEditingDomain} on which executes this command
      * @param parentEditPart
      *            the {@link IGraphicalEditPart} on which do the layout
      * @param childViewsAdapters
      *            list of {@link IAdaptable} for created Views to layout
-     * @param childViewsAdaptersForCenterLayout
-     *            list of {@link IAdaptable} for created Views to center layout
+     * @param centeredChildViewsAdapters
+     *            list of {@link IAdaptable} for created Views to layout but which must be layouted in the center of
+     *            their containers
      */
-    public SiriusCanonicalLayoutCommand(TransactionalEditingDomain domain, IGraphicalEditPart parentEditPart, List<IAdaptable> childViewsAdapters, List<IAdaptable> childViewsAdaptersForCenterLayout) {
-        this(domain, parentEditPart, childViewsAdapters, childViewsAdaptersForCenterLayout, false);
+    public SiriusCanonicalLayoutCommand(TransactionalEditingDomain domain, IGraphicalEditPart parentEditPart, List<IAdaptable> childViewsAdapters, List<IAdaptable> centeredChildViewsAdapters) {
+        this(domain, parentEditPart, childViewsAdapters, centeredChildViewsAdapters, false);
     }
 
-    public SiriusCanonicalLayoutCommand(TransactionalEditingDomain domain, IGraphicalEditPart parentEditPart, List<IAdaptable> childViewsAdapters, List<IAdaptable> childViewsAdaptersForCenterLayout,
+    public SiriusCanonicalLayoutCommand(TransactionalEditingDomain domain, IGraphicalEditPart parentEditPart, List<IAdaptable> childViewsAdapters, List<IAdaptable> centeredChildViewsAdapters,
             boolean useSpecificLayoutType) {
         super(domain, Messages.SiriusCanonicalLayoutCommand_label);
         this.parentEditPart = parentEditPart;
         this.childViewsAdapters = childViewsAdapters;
-        this.childViewsAdaptersForCenterLayout = childViewsAdaptersForCenterLayout;
+        this.centeredChildViewsAdapters = centeredChildViewsAdapters;
         this.useSpecificLayoutType = useSpecificLayoutType;
     }
 
@@ -93,7 +91,7 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
 
             @Override
             public void run() {
-                if (childViewsAdapters == null && childViewsAdaptersForCenterLayout == null) {
+                if (childViewsAdapters == null && centeredChildViewsAdapters == null) {
                     executeLayoutOnDiagramOpening();
                 } else {
                     executeLayoutDueToExternalChanges();
@@ -111,7 +109,7 @@ public class SiriusCanonicalLayoutCommand extends RecordingCommand implements No
     }
 
     private void executeLayoutDueToExternalChanges() {
-        org.eclipse.gef.commands.Command arrangeCmd = SiriusLayoutDataManager.INSTANCE.getArrangeCreatedViewsCommand(childViewsAdapters, childViewsAdaptersForCenterLayout, parentEditPart,
+        org.eclipse.gef.commands.Command arrangeCmd = SiriusLayoutDataManager.INSTANCE.getArrangeCreatedViewsCommand(childViewsAdapters, centeredChildViewsAdapters, parentEditPart,
                 useSpecificLayoutType);
         if (arrangeCmd != null && arrangeCmd.canExecute()) {
             arrangeCmd.execute();

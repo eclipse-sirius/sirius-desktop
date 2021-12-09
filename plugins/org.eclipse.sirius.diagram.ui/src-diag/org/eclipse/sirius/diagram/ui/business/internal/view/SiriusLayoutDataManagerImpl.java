@@ -510,12 +510,12 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     }
 
     @Override
-    public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> createdViewsWithCenterLayout, IGraphicalEditPart host) {
-        return getArrangeCreatedViewsCommand(createdViews, createdViewsWithCenterLayout, host, false);
+    public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host) {
+        return getArrangeCreatedViewsCommand(createdViews, centeredCreatedViews, host, false);
     }
 
     @Override
-    public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> createdViewsWithCenterLayout, IGraphicalEditPart host, boolean useSpecificLayoutType) {
+    public Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host, boolean useSpecificLayoutType) {
         // Layout only the views that are not
         // already layout (by a drag'n'drop for example)
         // if (createdViewsToLayout.size() == 1) {
@@ -527,25 +527,25 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
             removeAlreadyArrangeMarker(createdViews.get(0));
             return UnexecutableCommand.INSTANCE;
         }
-        return getCreatedViewsCommandFromLayoutType(createdViews, createdViewsWithCenterLayout, host, useSpecificLayoutType);
+        return getCreatedViewsCommandFromLayoutType(createdViews, centeredCreatedViews, host, useSpecificLayoutType);
     }
 
     /**
      * Get the arrange command
      * 
      * @param createdViews
-     * @param createdViewsWithCenterLayout
+     * @param centeredCreatedViews
      * @param host
      * @return the arrange command
      */
-    private Command getCreatedViewsCommandFromLayoutType(List<IAdaptable> createdViews, List<IAdaptable> createdViewsWithCenterLayout, IGraphicalEditPart host, boolean useSpecificLayoutType) {
+    private Command getCreatedViewsCommandFromLayoutType(List<IAdaptable> createdViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host, boolean useSpecificLayoutType) {
         CompoundCommand cc = new CompoundCommand();
         // Center Layout case
-        if (createdViewsWithCenterLayout != null) {
+        if (centeredCreatedViews != null) {
             Point previousCenterLocation = null;
             // We compute the center location for the first view then we shift
             // the others
-            for (IAdaptable iAdaptable : createdViewsWithCenterLayout) {
+            for (IAdaptable iAdaptable : centeredCreatedViews) {
                 previousCenterLocation = calculateCenterLocation(host, cc, iAdaptable, previousCenterLocation);
             }
             return cc;
@@ -670,7 +670,7 @@ public final class SiriusLayoutDataManagerImpl implements SiriusLayoutDataManage
     }
 
     /**
-     * Create layout command for all created views.
+     * Create a layout command for all created views of the <code>containerView</code>.
      * 
      * @param host
      *            edit part parent

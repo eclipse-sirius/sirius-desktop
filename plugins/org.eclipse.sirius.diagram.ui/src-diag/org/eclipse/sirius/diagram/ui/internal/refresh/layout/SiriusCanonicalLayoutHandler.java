@@ -98,8 +98,9 @@ public final class SiriusCanonicalLayoutHandler {
         }
 
         if (!specificArrangeAtFirstOpening) {
-            Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = getCreatedViewsToLayoutMap(diagramEditPart);
-            Map<IGraphicalEditPart, List<IAdaptable>> createdViewsWithSpecialLayoutMap = getCreatedViewsWithSpecialLayoutMap(diagramEditPart);
+            Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = getCreatedViewsToLayoutByContainerPart(diagramEditPart, SiriusLayoutDataManager.INSTANCE.getCreatedViewsToLayout());
+            Map<IGraphicalEditPart, List<IAdaptable>> centeredCreatedViewsToLayoutMap = getCreatedViewsToLayoutByContainerPart(diagramEditPart,
+                    SiriusLayoutDataManager.INSTANCE.getCreatedViewWithCenterLayout());
             LayoutProvider layoutProvider = LayoutService.getProvider(diagramEditPart);
             boolean handleSpecificLayoutType = false;
             if (layoutProvider instanceof GenericLayoutProvider && ((GenericLayoutProvider) layoutProvider).shouldReverseLayoutsOrder(diagramEditPart)) {
@@ -113,38 +114,28 @@ public final class SiriusCanonicalLayoutHandler {
                 createdViewsToLayoutMap = createdViewsToLayoutMap_reverse;
                 handleSpecificLayoutType = true;
             }
-            Command layoutCommand = getLayoutCommand(createdViewsToLayoutMap, createdViewsWithSpecialLayoutMap, editingDomain, handleSpecificLayoutType);
+            Command layoutCommand = getLayoutCommand(createdViewsToLayoutMap, centeredCreatedViewsToLayoutMap, editingDomain, handleSpecificLayoutType);
             if (layoutCommand.canExecute()) {
                 editingDomain.getCommandStack().execute(layoutCommand);
             }
         }
     }
 
-    private static Map<IGraphicalEditPart, List<IAdaptable>> getCreatedViewsToLayoutMap(DiagramEditPart diagramEditPart) {
-        // For a more predictable result (and constant), the hashMap must be
-        // sorted from the highest level container to the lowest level
-        // container. The viewAdapters seems to be already sorted so we must
-        // just keep this order by using a linked Hashmap.
+    /**
+     * Create a new Map, with as key a common parent edit part and as value a list of new GMF views (with this parent).
+     * The new GMF views are collected from <code>createdViewsToLayout</code> if they are contained in the current
+     * diagram, according to <code>diagramEditPart</code>.
+     * 
+     * @param diagramEditPart
+     *            The ancestor of all returned views.
+     * @param createdViewsToLayout
+     *            The created GMF views to layout, grouped by Diagram.
+     */
+    private static Map<IGraphicalEditPart, List<IAdaptable>> getCreatedViewsToLayoutByContainerPart(DiagramEditPart diagramEditPart, Map<Diagram, Set<View>> createdViewsToLayout) {
+        // For a more predictable result (and constant), the hashMap must be sorted from the highest level container to
+        // the lowest level container. The viewAdapters seems to be already sorted so we must just keep this order by
+        // using a linked Hashmap.
         Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = new LinkedHashMap<IGraphicalEditPart, List<IAdaptable>>();
-        Map<Diagram, Set<View>> createdViewsToLayout = SiriusLayoutDataManager.INSTANCE.getCreatedViewsToLayout();
-
-        getCreatedViewToLayoutMap(diagramEditPart, createdViewsToLayoutMap, createdViewsToLayout);
-        return createdViewsToLayoutMap;
-    }
-
-    private static Map<IGraphicalEditPart, List<IAdaptable>> getCreatedViewsWithSpecialLayoutMap(DiagramEditPart diagramEditPart) {
-        // For a more predictable result (and constant), the hashMap must be
-        // sorted from the highest level container to the lowest level
-        // container. The viewAdapters seems to be already sorted so we must
-        // just keep this order by using a linked Hashmap.
-        Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = new LinkedHashMap<IGraphicalEditPart, List<IAdaptable>>();
-        Map<Diagram, Set<View>> createdViewsToLayout = SiriusLayoutDataManager.INSTANCE.getCreatedViewWithCenterLayout();
-
-        getCreatedViewToLayoutMap(diagramEditPart, createdViewsToLayoutMap, createdViewsToLayout);
-        return createdViewsToLayoutMap;
-    }
-
-    private static void getCreatedViewToLayoutMap(DiagramEditPart diagramEditPart, Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap, Map<Diagram, Set<View>> createdViewsToLayout) {
         if (!createdViewsToLayout.isEmpty()) {
 
             Diagram diagramOfOpenedEditor = diagramEditPart.getDiagramView();
@@ -166,13 +157,13 @@ public final class SiriusCanonicalLayoutHandler {
                 createdViewsToLayout.remove(diagramOfOpenedEditor);
             }
         }
+        return createdViewsToLayoutMap;
     }
 
     private static Map<View, List<IAdaptable>> splitViewAdaptersAccordingToParent(List<IAdaptable> viewAdapters) {
-        // For a more predictable result (and constant), the hashMap must be
-        // sorted from the highest level container to the lowest level
-        // container. The viewAdapters seems to be already sorted so we must
-        // just keep this order by using a linked Hashmap.
+        // For a more predictable result (and constant), the hashMap must be sorted from the highest level container to
+        // the lowest level container. The viewAdapters seems to be already sorted so we must just keep this order by
+        // using a linked Hashmap.
         Map<View, List<IAdaptable>> splitedViewAdaptersAccordingToParent = new LinkedHashMap<View, List<IAdaptable>>();
         for (IAdaptable viewAdapter : viewAdapters) {
             View createdViewToLayout = viewAdapter.getAdapter(View.class);
@@ -199,7 +190,7 @@ public final class SiriusCanonicalLayoutHandler {
         return viewAdapters;
     }
 
-    private static Command getLayoutCommand(Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap, Map<IGraphicalEditPart, List<IAdaptable>> createdViewsWithSpecialLayoutMap,
+    private static Command getLayoutCommand(Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap, Map<IGraphicalEditPart, List<IAdaptable>> centeredCreatedViewsToLayoutMap,
             TransactionalEditingDomain editingDomain, boolean useSpecificLayoutType) {
         final CompoundCommand compoundCommand = new CompoundCommand();
         // A label is explicitly added to avoid to rely on the first command of the list and also to facilitate
@@ -224,7 +215,7 @@ public final class SiriusCanonicalLayoutHandler {
             compoundCommand.append(viewpointLayoutCanonicalSynchronizerCommand);
         }
 
-        for (Entry<IGraphicalEditPart, List<IAdaptable>> entry : Iterables.filter(createdViewsWithSpecialLayoutMap.entrySet(), typeOfElementToLayout)) {
+        for (Entry<IGraphicalEditPart, List<IAdaptable>> entry : Iterables.filter(centeredCreatedViewsToLayoutMap.entrySet(), typeOfElementToLayout)) {
             IGraphicalEditPart parentEditPart = entry.getKey();
             List<IAdaptable> childViewsAdapters = entry.getValue();
             Command viewpointLayoutCanonicalSynchronizerCommand = new SiriusCanonicalLayoutCommand(editingDomain, parentEditPart, null, childViewsAdapters, useSpecificLayoutType);

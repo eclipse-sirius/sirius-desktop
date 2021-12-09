@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -188,21 +188,21 @@ public interface SiriusLayoutDataManager {
      * 
      * @param createdViews
      *            the new created views
-     * @param childViewsAdaptersForCenterLayout
-     *            the new created views for center layout
+     * @param centeredCreatedViews
+     *            the new created views which must be layouted in the center of their containers
      * @param host
      *            container edit part
      * @return the layout command
      */
-    Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> childViewsAdaptersForCenterLayout, IGraphicalEditPart host);
+    Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host);
 
     /**
      * layout the new created views.
      * 
      * @param createdViews
      *            the new created views
-     * @param childViewsAdaptersForCenterLayout
-     *            the new created views for center layout
+     * @param centeredCreatedViews
+     *            the new created views which must be layouted in the center of their containers
      * @param host
      *            container edit part
      * @param useSpecificLayoutType
@@ -210,7 +210,7 @@ public interface SiriusLayoutDataManager {
      *            and an arrange from the opening and a refresh.
      * @return the layout command
      */
-    Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> childViewsAdaptersForCenterLayout, IGraphicalEditPart host, boolean useSpecificLayoutType);
+    Command getArrangeCreatedViewsCommand(List<IAdaptable> createdViews, List<IAdaptable> centeredCreatedViews, IGraphicalEditPart host, boolean useSpecificLayoutType);
 
     /**
      * layout the new created views after opening the editor.
@@ -287,7 +287,7 @@ public interface SiriusLayoutDataManager {
      * Add a view in the list.
      * 
      * @param gmfDiagram
-     *            the {@link Diagram} for which childs views must be layouted in the center of the container
+     *            the {@link Diagram} for which children views must be layouted in the center of the container
      * @param view
      *            the view to set
      */
