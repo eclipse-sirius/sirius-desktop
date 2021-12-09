@@ -42,6 +42,8 @@ import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.business.internal.metamodel.helper.LayerHelper;
 import org.eclipse.sirius.diagram.provider.DiagramItemProviderAdapterFactory;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeBeginLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeEndLabelItemProvider;
 import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeLabelItemProvider;
 import org.eclipse.sirius.diagram.ui.business.api.provider.DNodeLabelItemProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DiagramOutlinePageListener;
@@ -193,17 +195,15 @@ public class OutlineContentProvider implements ITreeContentProvider, DiagramOutl
             List<Object> originalChildren = new ArrayList<Object>();
 
             // if the current node should have a DEdgeLabelItem has children
+            if (DEdgeBeginLabelItemProvider.hasRelevantLabelItem(dEdge)) {
+                originalChildren.add(0, new DEdgeBeginLabelItemProvider(getAdapterFactory(), dEdge));
+            }
             if (DEdgeLabelItemProvider.hasRelevantLabelItem(dEdge)) {
                 originalChildren.add(0, new DEdgeLabelItemProvider(getAdapterFactory(), dEdge));
             }
-            // if (DEdgeBeginLabelItemProvider.hasRelevantLabelItem(dEdge)) {
-            // originalChildren.add(0, new
-            // DEdgeBeginLabelItemProvider(getAdapterFactory(), dEdge));
-            // }
-            // if (DEdgeEndLabelItemProvider.hasRelevantLabelItem(dEdge)) {
-            // originalChildren.add(0, new
-            // DEdgeEndLabelItemProvider(getAdapterFactory(), dEdge));
-            // }
+            if (DEdgeEndLabelItemProvider.hasRelevantLabelItem(dEdge)) {
+                originalChildren.add(0, new DEdgeEndLabelItemProvider(getAdapterFactory(), dEdge));
+            }
             children = clearFilteredElements(originalChildren, getDiagramContainer(dEdge)).toArray();
         }
 

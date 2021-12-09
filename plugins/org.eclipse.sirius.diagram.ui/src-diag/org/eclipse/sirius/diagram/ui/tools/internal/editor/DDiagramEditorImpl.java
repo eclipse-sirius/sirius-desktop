@@ -94,7 +94,6 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.jface.preference.PreferenceStore;
-import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.text.AbstractInformationControlManager;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IInformationControl;
@@ -175,7 +174,10 @@ import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.part.DDiagram
 import org.eclipse.sirius.diagram.ui.tools.internal.handler.SiriusMouseWheelZoomHandler;
 import org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramEditorContextMenuProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.menu.DiagramMenuUpdater;
+import org.eclipse.sirius.diagram.ui.tools.internal.outline.HideDDiagramElementLabelActionWrapper;
+import org.eclipse.sirius.diagram.ui.tools.internal.outline.IObjectActionDelegateWrapperWithImageDescription;
 import org.eclipse.sirius.diagram.ui.tools.internal.outline.QuickOutlineControl;
+import org.eclipse.sirius.diagram.ui.tools.internal.outline.RevealOutlineLabelsActionWrapper;
 import org.eclipse.sirius.diagram.ui.tools.internal.outline.SiriusInformationPresenter;
 import org.eclipse.sirius.diagram.ui.tools.internal.outline.SiriusQuickOutlineInformationProvider;
 import org.eclipse.sirius.diagram.ui.tools.internal.palette.PaletteManagerImpl;
@@ -1040,12 +1042,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
     private DiagramOutlinePage initOutline() {
         /** the outline popup menu items and associated actions */
         IObjectActionDelegateWrapper[] outlinePopupMenuActions = new IObjectActionDelegateWrapper[] {
-                new IObjectActionDelegateWrapper(new HideDDiagramElementAction(HideDDiagramElement.HIDE_ELEMENT_LABEL), HideDDiagramElement.HIDE_ELEMENT_LABEL) {
-
-                    @Override
-                    public ImageDescriptor getImageDescriptor() {
-                        return ((IAction) getWrappedAction()).getImageDescriptor();
-                    }
+                new IObjectActionDelegateWrapperWithImageDescription(new HideDDiagramElementAction(HideDDiagramElement.HIDE_ELEMENT_LABEL), HideDDiagramElement.HIDE_ELEMENT_LABEL) {
 
                     @Override
                     public boolean isEnabled() {
@@ -1059,37 +1056,8 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                         }
                         return false;
                     }
-                }, new IObjectActionDelegateWrapper(new HideDDiagramElementLabelAction(HideDDiagramElementLabel.HIDE_LABEL), HideDDiagramElementLabel.HIDE_LABEL) {
-
-                    @Override
-                    public ImageDescriptor getImageDescriptor() {
-                        return ((IAction) getWrappedAction()).getImageDescriptor();
-                    }
-
-                    @Override
-                    public boolean isEnabled() {
-                        boolean result = false;
-                        if (currentSelection instanceof IStructuredSelection) {
-                            final Object selectedObject = ((IStructuredSelection) currentSelection).getFirstElement();
-                            if (selectedObject instanceof DDiagramElement) {
-                                DDiagramElementQuery query = new DDiagramElementQuery((DDiagramElement) selectedObject);
-                                result = query.canHideLabel() && !query.isLabelHidden();
-                            } else if (selectedObject instanceof AbstractDDiagramElementLabelItemProvider) {
-                                Option<DDiagramElement> optionTarget = ((AbstractDDiagramElementLabelItemProvider) selectedObject).getDiagramElementTarget();
-                                if (optionTarget.some()) {
-                                    DDiagramElementQuery query = new DDiagramElementQuery(optionTarget.get());
-                                    result = query.canHideLabel() && !query.isLabelHidden();
-                                }
-                            }
-                        }
-                        return result;
-                    }
-                }, new IObjectActionDelegateWrapper(new RevealElementsAction(), Messages.RevealOutlineElementsAction_label) {
-
-                    @Override
-                    public ImageDescriptor getImageDescriptor() {
-                        return ((IAction) getWrappedAction()).getImageDescriptor();
-                    }
+                }, new HideDDiagramElementLabelActionWrapper(new HideDDiagramElementLabelAction(HideDDiagramElementLabel.HIDE_LABEL), HideDDiagramElementLabel.HIDE_LABEL),
+                new IObjectActionDelegateWrapperWithImageDescription(new RevealElementsAction(), Messages.RevealOutlineElementsAction_label) {
 
                     @Override
                     public boolean isEnabled() {
@@ -1101,32 +1069,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
                         }
                         return false;
                     }
-                }, new IObjectActionDelegateWrapper(new RevealOutlineLabelsAction(), Messages.RevealOutlineLabelsAction_label) {
-
-                    @Override
-                    public ImageDescriptor getImageDescriptor() {
-                        return ((IAction) getWrappedAction()).getImageDescriptor();
-                    }
-
-                    @Override
-                    public boolean isEnabled() {
-                        boolean result = false;
-                        if (currentSelection instanceof IStructuredSelection) {
-                            final Object selectedObject = ((IStructuredSelection) currentSelection).getFirstElement();
-                            if (selectedObject instanceof DDiagramElement) {
-                                DDiagramElementQuery query = new DDiagramElementQuery((DDiagramElement) selectedObject);
-                                result = query.isLabelHidden();
-                            } else if (selectedObject instanceof AbstractDDiagramElementLabelItemProvider) {
-                                Option<DDiagramElement> optionTarget = ((AbstractDDiagramElementLabelItemProvider) selectedObject).getDiagramElementTarget();
-                                if (optionTarget.some()) {
-                                    DDiagramElementQuery query = new DDiagramElementQuery(optionTarget.get());
-                                    result = query.isLabelHidden();
-                                }
-                            }
-                        }
-                        return result;
-                    }
-                }, };
+                }, new RevealOutlineLabelsActionWrapper(new RevealOutlineLabelsAction(), Messages.RevealOutlineLabelsAction_label), };
         DiagramOutlinePage outline = null;
         if (isOldUIEnabled()) {
             outline = new DiagramOutlineWithBookPages(this.getDiagramEditPart().getModel(), getGraphicalViewer(), outlinePopupMenuActions);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -11,6 +11,8 @@
  *    Obeo - initial API and implementation
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.business.api.provider;
+
+import java.text.MessageFormat;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -47,7 +49,13 @@ public class DEdgeLabelItemProvider extends AbstractDDiagramElementLabelItemProv
      */
     @Override
     public String getText(Object object) {
-        return Messages.DEdgeLabelItemProvider_label;
+        String label = ((DEdge) target).getName();
+        if (label == null || label.length() == 0) {
+            label = EMPTY_DDIAGRAMELEMENT_LABEL_LABEL;
+        } else {
+            label = MessageFormat.format(Messages.AbstractDDiagramElementLabelItemProvider_label, label);
+        }
+        return label;
     }
 
     /**
@@ -74,7 +82,7 @@ public class DEdgeLabelItemProvider extends AbstractDDiagramElementLabelItemProv
         boolean isRelevant = false;
         if (edge != null) {
             DEdgeQuery candidateEdgeQuery = new DEdgeQuery(edge);
-            isRelevant = candidateEdgeQuery.hasNonEmptyNameDefinition();
+            isRelevant = candidateEdgeQuery.getCenterLabelStyle().some() && candidateEdgeQuery.hasNonEmptyNameDefinition();
         }
         return isRelevant;
     }

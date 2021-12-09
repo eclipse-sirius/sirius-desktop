@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -44,6 +44,9 @@ import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeBeginLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeEndLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeLabelItemProvider;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
@@ -81,7 +84,15 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
             } else if (input instanceof AbstractDDiagramElementLabelItemProvider) {
                 Option<DDiagramElement> optionTarget = ((AbstractDDiagramElementLabelItemProvider) input).getDiagramElementTarget();
                 if (optionTarget.some()) {
-                    result = HideDDiagramElementLabelAction.isEnabled(optionTarget.get());
+                    if (input instanceof DEdgeBeginLabelItemProvider) {
+                        result = HideDDiagramElementLabelAction.isEnabled(optionTarget.get(), DEdgeBeginNameEditPart.VISUAL_ID);
+                    } else if (input instanceof DEdgeLabelItemProvider) {
+                        result = HideDDiagramElementLabelAction.isEnabled(optionTarget.get(), DEdgeNameEditPart.VISUAL_ID);
+                    } else if (input instanceof DEdgeEndLabelItemProvider) {
+                        result = HideDDiagramElementLabelAction.isEnabled(optionTarget.get(), DEdgeEndNameEditPart.VISUAL_ID);
+                    } else {
+                        result = HideDDiagramElementLabelAction.isEnabled(optionTarget.get());
+                    }
                 }
             }
             return result;
@@ -92,6 +103,8 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
     private ISelection selection;
 
     private TabbarRevealLabelsAction oppositeAction;
+
+    private Map<EObject, List<Integer>> semanticToLabelsVisualIDToHideMap = new HashMap<EObject, List<Integer>>();
 
     /**
      * Constructor.
@@ -156,6 +169,12 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
         return (dDiagram != null && isEditable(dDiagram)) && query.canHideLabel() && !query.isLabelHidden();
     }
 
+    private static boolean isEnabled(DDiagramElement diagramElement, int labelVisualID) {
+        DDiagram dDiagram = diagramElement.getParentDiagram();
+        DDiagramElementQuery query = new DDiagramElementQuery(diagramElement);
+        return (dDiagram != null && isEditable(dDiagram)) && query.canHideLabel() && !query.isLabelHidden(labelVisualID);
+    }
+
     private static boolean isEditable(DDiagram diagram) {
         boolean isEditable = false;
         Resource resource = diagram.eResource();
@@ -215,7 +234,6 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
     }
 
     private Map<EObject, List<Integer>> collectLabelsToHideVisualIds(final Set<EObject> partsToSemantic, final List<Object> edgeLabelsEditParts) {
-        HashMap<EObject, List<Integer>> semanticToLabelsVisualIDToHideMap = new HashMap<EObject, List<Integer>>();
         for (EObject eObject : partsToSemantic) {
             semanticToLabelsVisualIDToHideMap.put(eObject, new LinkedList<>());
         }
@@ -248,15 +266,26 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
     private void runForNoEditPartSelection(final Set<Object> minimizedSelection) {
         final Set<EObject> eObjectSelection = new HashSet<EObject>();
         final Iterator<Object> it = minimizedSelection.iterator();
+        semanticToLabelsVisualIDToHideMap.clear();
         while (it.hasNext()) {
             final Object obj = it.next();
             if (isEnabledPredicate.apply(obj)) {
                 if (obj instanceof EObject) {
                     eObjectSelection.add((EObject) obj);
-                } else if (obj instanceof AbstractDDiagramElementLabelItemProvider) {
-                    Option<DDiagramElement> optionTarget = ((AbstractDDiagramElementLabelItemProvider) obj).getDiagramElementTarget();
-                    if (optionTarget.some()) {
-                        eObjectSelection.add(optionTarget.get());
+                } else if (obj instanceof AbstractDDiagramElementLabelItemProvider && ((AbstractDDiagramElementLabelItemProvider) obj).getDiagramElementTarget().some()) {
+                    DDiagramElement dDiagramElement = ((AbstractDDiagramElementLabelItemProvider) obj).getDiagramElementTarget().get();
+                    eObjectSelection.add(dDiagramElement);
+                    if (obj instanceof DEdgeBeginLabelItemProvider || obj instanceof DEdgeLabelItemProvider || obj instanceof DEdgeEndLabelItemProvider) {
+                        if (!semanticToLabelsVisualIDToHideMap.keySet().contains(dDiagramElement)) {
+                            semanticToLabelsVisualIDToHideMap.put(dDiagramElement, new LinkedList<>());
+                        }
+                        if (obj instanceof DEdgeBeginLabelItemProvider) {
+                            semanticToLabelsVisualIDToHideMap.get(dDiagramElement).add(DEdgeBeginNameEditPart.VISUAL_ID);
+                        } else if (obj instanceof DEdgeLabelItemProvider) {
+                            semanticToLabelsVisualIDToHideMap.get(dDiagramElement).add(DEdgeNameEditPart.VISUAL_ID);
+                        } else if (obj instanceof DEdgeEndLabelItemProvider) {
+                            semanticToLabelsVisualIDToHideMap.get(dDiagramElement).add(DEdgeEndNameEditPart.VISUAL_ID);
+                        }
                     }
                 }
             }
@@ -293,7 +322,12 @@ public class HideDDiagramElementLabelAction extends Action implements IObjectAct
         final IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) adapter;
         final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(editor.getEditingDomain().getResourceSet());
         final IDiagramCommandFactory emfCommandFactory = cmdFactoryProvider.getCommandFactory(transactionalEditingDomain);
-        final Command cmd = emfCommandFactory.buildHideLabelCommand(elements);
+        final Command cmd;
+        if (semanticToLabelsVisualIDToHideMap.isEmpty()) {
+            cmd = emfCommandFactory.buildHideLabelCommand(elements);
+        } else {
+            cmd = emfCommandFactory.buildHideLabelSelectionCommand(elements, semanticToLabelsVisualIDToHideMap);
+        }
 
         ((TransactionalEditingDomain) editor.getAdapter(EditingDomain.class)).getCommandStack().execute(cmd);
     }

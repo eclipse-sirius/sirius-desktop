@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,8 +12,14 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.actions.visibility;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.eclipse.gef.RootEditPart;
@@ -23,13 +29,18 @@ import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactory;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeBeginLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeEndLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeLabelItemProvider;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.image.DiagramImagesPath;
 import org.eclipse.sirius.diagram.ui.tools.internal.editor.DiagramOutlinePage;
-import org.eclipse.sirius.ext.base.Option;
 
 /**
  * Action to reveal labels in outline.
@@ -37,6 +48,9 @@ import org.eclipse.sirius.ext.base.Option;
  * @author lredor
  */
 public class RevealOutlineLabelsAction extends AbstractRevealElementsAction<Object> {
+
+    private Map<EObject, List<Integer>> semanticToLabelsVisualIDToHideMap = new HashMap<EObject, List<Integer>>();
+
     /**
      * Constructor.
      */
@@ -74,11 +88,21 @@ public class RevealOutlineLabelsAction extends AbstractRevealElementsAction<Obje
     protected boolean doRun(final Object element) {
         if (element instanceof DDiagramElement) {
             run((DDiagramElement) element);
-        } else if (element instanceof AbstractDDiagramElementLabelItemProvider) {
-            Option<DDiagramElement> optionTarget = ((AbstractDDiagramElementLabelItemProvider) element).getDiagramElementTarget();
-            if (optionTarget.some()) {
-                run(optionTarget.get());
+        } else if (element instanceof AbstractDDiagramElementLabelItemProvider && ((AbstractDDiagramElementLabelItemProvider) element).getDiagramElementTarget().some()) {
+            semanticToLabelsVisualIDToHideMap.clear();
+            DDiagramElement dDiagramElement = ((AbstractDDiagramElementLabelItemProvider) element).getDiagramElementTarget().get();
+            if (!semanticToLabelsVisualIDToHideMap.keySet().contains(dDiagramElement)) {
+                semanticToLabelsVisualIDToHideMap.put(dDiagramElement, new LinkedList<>());
             }
+            List<Integer> visualIDToHideList = semanticToLabelsVisualIDToHideMap.get(dDiagramElement);
+            if (element instanceof DEdgeBeginLabelItemProvider) {
+                visualIDToHideList.add(DEdgeBeginNameEditPart.VISUAL_ID);
+            } else if (element instanceof DEdgeLabelItemProvider) {
+                visualIDToHideList.add(DEdgeNameEditPart.VISUAL_ID);
+            } else if (element instanceof DEdgeEndLabelItemProvider) {
+                visualIDToHideList.add(DEdgeEndNameEditPart.VISUAL_ID);
+            }
+            run(dDiagramElement);
         } else if (element instanceof IDiagramElementEditPart) {
             IDiagramElementEditPart diagramElementEditPart = (IDiagramElementEditPart) element;
             RootEditPart root = diagramElementEditPart.getRoot();
@@ -117,7 +141,12 @@ public class RevealOutlineLabelsAction extends AbstractRevealElementsAction<Obje
             final TransactionalEditingDomain transactionalEditingDomain = TransactionUtil.getEditingDomain(editor.getEditingDomain().getResourceSet());
             final IDiagramCommandFactory emfCommandFactory = cmdFactoryProvider.getCommandFactory(transactionalEditingDomain);
 
-            final Command cmd = emfCommandFactory.buildRevealLabelCommand(vpe);
+            final Command cmd;
+            if (semanticToLabelsVisualIDToHideMap.isEmpty()) {
+                cmd = emfCommandFactory.buildRevealLabelCommand(vpe);
+            } else {
+                cmd = emfCommandFactory.buildRevealLabelSelectionCommand(vpe, semanticToLabelsVisualIDToHideMap);
+            }
 
             final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(vpe);
 
