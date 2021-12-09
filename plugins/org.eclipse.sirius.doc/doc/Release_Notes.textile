@@ -63,6 +63,7 @@ h4. Changes in @org.eclipse.sirius.diagram.sequence@
 
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.sequence.util.Range@ has been moved to @org.eclipse.sirius.diagram.sequence.business.api.util.Range@
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.sequence.util.Pair@ has been moved to @org.eclipse.sirius.diagram.sequence.business.api.util.Pair@
+* <span class="label label-info">Modified</span> @org.eclipse.sirius.diagram.sequence.Messages@ has been moved to @org.eclipse.sirius.diagram.sequence.tool.internal.Messages@.
 
 
 h4. Changes in @org.eclipse.sirius.tests.swtbot.support@
