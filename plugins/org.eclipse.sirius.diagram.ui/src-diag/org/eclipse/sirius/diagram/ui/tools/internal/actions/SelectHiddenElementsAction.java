@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -12,6 +12,10 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.actions;
 
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import org.eclipse.core.commands.ExecutionException;
@@ -34,7 +38,13 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.business.api.helper.graphicalfilters.HideFilterHelper;
 import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.business.api.provider.AbstractDDiagramElementLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeBeginLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeEndLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeLabelItemProvider;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeBeginNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.api.ui.actions.ActionIds;
@@ -114,7 +124,15 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
             } else if (input instanceof AbstractDDiagramElementLabelItemProvider) {
                 Option<DDiagramElement> optionTarget = ((AbstractDDiagramElementLabelItemProvider) input).getDiagramElementTarget();
                 if (optionTarget.some()) {
-                    result = !(new DDiagramElementQuery(optionTarget.get()).isLabelHidden());
+                    if (input instanceof DEdgeBeginLabelItemProvider) {
+                        result = !(new DDiagramElementQuery(optionTarget.get()).isLabelHidden(DEdgeBeginNameEditPart.VISUAL_ID));
+                    } else if (input instanceof DEdgeLabelItemProvider) {
+                        result = !(new DDiagramElementQuery(optionTarget.get()).isLabelHidden(DEdgeNameEditPart.VISUAL_ID));
+                    } else if (input instanceof DEdgeEndLabelItemProvider) {
+                        result = !(new DDiagramElementQuery(optionTarget.get()).isLabelHidden(DEdgeEndNameEditPart.VISUAL_ID));
+                    } else {
+                        result = !(new DDiagramElementQuery(optionTarget.get()).isLabelHidden());
+                    }
                 }
             }
             return result;
@@ -129,7 +147,23 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
             } else if (from instanceof AbstractDDiagramElementLabelItemProvider) {
                 Option<DDiagramElement> optionTarget = ((AbstractDDiagramElementLabelItemProvider) from).getDiagramElementTarget();
                 if (optionTarget.some()) {
-                    HideFilterHelper.INSTANCE.hideLabel(optionTarget.get());
+                    Map<EObject, List<Integer>> semanticToLabelsVisualIDToHideMap = new HashMap<EObject, List<Integer>>();
+                    LinkedList<Integer> visualID = new LinkedList<Integer>();
+                    if (from instanceof DEdgeBeginLabelItemProvider) {
+                        visualID.add(DEdgeBeginNameEditPart.VISUAL_ID);
+                        semanticToLabelsVisualIDToHideMap.put(optionTarget.get(), visualID);
+                        HideFilterHelper.INSTANCE.hideLabel(optionTarget.get(), semanticToLabelsVisualIDToHideMap);
+                    } else if (from instanceof DEdgeLabelItemProvider) {
+                        visualID.add(DEdgeNameEditPart.VISUAL_ID);
+                        semanticToLabelsVisualIDToHideMap.put(optionTarget.get(), visualID);
+                        HideFilterHelper.INSTANCE.hideLabel(optionTarget.get(), semanticToLabelsVisualIDToHideMap);
+                    } else if (from instanceof DEdgeEndLabelItemProvider) {
+                        visualID.add(DEdgeEndNameEditPart.VISUAL_ID);
+                        semanticToLabelsVisualIDToHideMap.put(optionTarget.get(), visualID);
+                        HideFilterHelper.INSTANCE.hideLabel(optionTarget.get(), semanticToLabelsVisualIDToHideMap);
+                    } else {
+                        HideFilterHelper.INSTANCE.hideLabel(optionTarget.get());
+                    }
                 }
             }
             return null;
@@ -142,7 +176,27 @@ public class SelectHiddenElementsAction extends AbstractDiagramAction {
             if (from instanceof DDiagramElement) {
                 HideFilterHelper.INSTANCE.reveal((DDiagramElement) from);
             } else if (from instanceof AbstractDDiagramElementLabelItemProvider) {
-                HideFilterHelper.INSTANCE.revealLabel((DDiagramElement) ((AbstractDDiagramElementLabelItemProvider) from).getTarget());
+                Option<DDiagramElement> optionTarget = ((AbstractDDiagramElementLabelItemProvider) from).getDiagramElementTarget();
+                if (optionTarget.some()) {
+
+                    Map<EObject, List<Integer>> semanticToLabelsVisualIDToHideMap = new HashMap<EObject, List<Integer>>();
+                    LinkedList<Integer> visualID = new LinkedList<Integer>();
+                    if (from instanceof DEdgeBeginLabelItemProvider) {
+                        visualID.add(DEdgeBeginNameEditPart.VISUAL_ID);
+                        semanticToLabelsVisualIDToHideMap.put(optionTarget.get(), visualID);
+                        HideFilterHelper.INSTANCE.revealLabel(optionTarget.get(), semanticToLabelsVisualIDToHideMap);
+                    } else if (from instanceof DEdgeLabelItemProvider) {
+                        visualID.add(DEdgeNameEditPart.VISUAL_ID);
+                        semanticToLabelsVisualIDToHideMap.put(optionTarget.get(), visualID);
+                        HideFilterHelper.INSTANCE.revealLabel(optionTarget.get(), semanticToLabelsVisualIDToHideMap);
+                    } else if (from instanceof DEdgeEndLabelItemProvider) {
+                        visualID.add(DEdgeEndNameEditPart.VISUAL_ID);
+                        semanticToLabelsVisualIDToHideMap.put(optionTarget.get(), visualID);
+                        HideFilterHelper.INSTANCE.revealLabel(optionTarget.get(), semanticToLabelsVisualIDToHideMap);
+                    } else {
+                        HideFilterHelper.INSTANCE.revealLabel(optionTarget.get());
+                    }
+                }
             }
             return null;
         }

@@ -28,6 +28,8 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramFactory;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeBeginLabelItemProvider;
+import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeEndLabelItemProvider;
 import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeLabelItemProvider;
 
 /**
@@ -38,11 +40,25 @@ import org.eclipse.sirius.diagram.ui.business.api.provider.DEdgeLabelItemProvide
  */
 public class DEdgeItemProvider extends DDiagramElementItemProvider {
     /**
-     * The item provider used to simulate another child for Edge that has label on border.
+     * The item provider used to simulate another child for Edge that has center label.
      *
      * @not-generated
      */
     HashMap<Object, DEdgeLabelItemProvider> edgeLabelItemProviders = new HashMap<>();
+
+    /**
+     * The item provider used to simulate another child for Edge that has begin label.
+     *
+     * @not-generated
+     */
+    HashMap<Object, DEdgeBeginLabelItemProvider> edgeBeginLabelItemProviders = new HashMap<>();
+
+    /**
+     * The item provider used to simulate another child for Edge that has begin label.
+     *
+     * @not-generated
+     */
+    HashMap<Object, DEdgeEndLabelItemProvider> edgeEndLabelItemProviders = new HashMap<>();
 
     /**
      * This constructs an instance from a factory and a notifier. <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -368,52 +384,44 @@ public class DEdgeItemProvider extends DDiagramElementItemProvider {
         Collection<Object> result = (Collection<Object>) super.getChildren(object);
         if (object instanceof DEdge && hasRelevantLabelItem(object)) {
             Collection<Object> resultTemp = new ArrayList<>();
+            if (DEdgeBeginLabelItemProvider.hasRelevantLabelItem((DEdge) object) && (edgeBeginLabelItemProviders.get(object) == null)) {
+                edgeBeginLabelItemProviders.put(object, new DEdgeBeginLabelItemProvider(adapterFactory, (DEdge) object));
+            }
             if (DEdgeLabelItemProvider.hasRelevantLabelItem((DEdge) object) && (edgeLabelItemProviders.get(object) == null)) {
                 edgeLabelItemProviders.put(object, new DEdgeLabelItemProvider(adapterFactory, (DEdge) object));
             }
-            // if (DEdgeBeginLabelItemProvider.hasRelevantLabelItem((DEdge)
-            // object) && (edgeBeginLabelItemProviders.get(object) == null)) {
-            // edgeBeginLabelItemProviders.put(object, new
-            // DEdgeBeginLabelItemProvider(adapterFactory, (DEdge) object));
-            // }
-            // if (DEdgeEndLabelItemProvider.hasRelevantLabelItem((DEdge)
-            // object) && (edgeEndLabelItemProviders.get(object) == null)) {
-            // edgeEndLabelItemProviders.put(object, new
-            // DEdgeEndLabelItemProvider(adapterFactory, (DEdge) object));
-            // }
+            if (DEdgeEndLabelItemProvider.hasRelevantLabelItem((DEdge) object) && (edgeEndLabelItemProviders.get(object) == null)) {
+                edgeEndLabelItemProviders.put(object, new DEdgeEndLabelItemProvider(adapterFactory, (DEdge) object));
+            }
+            if (DEdgeBeginLabelItemProvider.hasRelevantLabelItem((DEdge) object)) {
+                resultTemp.add(edgeBeginLabelItemProviders.get(object));
+            }
             if (DEdgeLabelItemProvider.hasRelevantLabelItem((DEdge) object)) {
                 resultTemp.add(edgeLabelItemProviders.get(object));
             }
-            // if (DEdgeBeginLabelItemProvider.hasRelevantLabelItem((DEdge)
-            // object)) {
-            // resultTemp.add(edgeBeginLabelItemProviders.get(object));
-            // }
-            // if (DEdgeEndLabelItemProvider.hasRelevantLabelItem((DEdge)
-            // object)) {
-            // resultTemp.add(edgeEndLabelItemProviders.get(object));
-            // }
+            if (DEdgeEndLabelItemProvider.hasRelevantLabelItem((DEdge) object)) {
+                resultTemp.add(edgeEndLabelItemProviders.get(object));
+            }
             resultTemp.addAll(result);
             result = resultTemp;
         } else {
             if (edgeLabelItemProviders.get(object) != null) {
                 edgeLabelItemProviders.remove(object).dispose();
             }
-            // if (edgeBeginLabelItemProviders.get(object) != null) {
-            // edgeBeginLabelItemProviders.remove(object).dispose();
-            // }
-            // if (edgeEndLabelItemProviders.get(object) != null) {
-            // edgeEndLabelItemProviders.remove(object).dispose();
-            // }
+            if (edgeBeginLabelItemProviders.get(object) != null) {
+                edgeBeginLabelItemProviders.remove(object).dispose();
+            }
+            if (edgeEndLabelItemProviders.get(object) != null) {
+                edgeEndLabelItemProviders.remove(object).dispose();
+            }
         }
         return result;
     }
 
     private boolean hasRelevantLabelItem(Object object) {
-        return DEdgeLabelItemProvider.hasRelevantLabelItem(
-                (DEdge) object); /*
-                                  * || DEdgeBeginLabelItemProvider . hasRelevantLabelItem ( ( DEdge ) object ) ||
-                                  * DEdgeEndLabelItemProvider . hasRelevantLabelItem ( ( DEdge ) object ) ;
-                                  */
+        return DEdgeLabelItemProvider.hasRelevantLabelItem((DEdge) object) || DEdgeBeginLabelItemProvider.hasRelevantLabelItem((DEdge) object)
+                || DEdgeEndLabelItemProvider.hasRelevantLabelItem((DEdge) object);
+
     }
 
     /**

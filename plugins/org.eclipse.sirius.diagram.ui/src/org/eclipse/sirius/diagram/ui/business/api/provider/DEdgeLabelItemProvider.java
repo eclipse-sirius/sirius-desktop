@@ -13,11 +13,13 @@
 package org.eclipse.sirius.diagram.ui.business.api.provider;
 
 import java.text.MessageFormat;
+import java.util.HashSet;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.business.api.query.DEdgeQuery;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
@@ -33,8 +35,7 @@ public class DEdgeLabelItemProvider extends AbstractDDiagramElementLabelItemProv
      * Default constructor.
      *
      * @param adapterFactory
-     *            The factory is used as a key so that we always know which
-     *            factory created this adapter.
+     *            The factory is used as a key so that we always know which factory created this adapter.
      * @param parentDEdge
      *            The parent of the label
      */
@@ -102,4 +103,30 @@ public class DEdgeLabelItemProvider extends AbstractDDiagramElementLabelItemProv
         return false;
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (getTarget() != null && obj instanceof DEdgeLabelItemProvider) {
+            return getTarget().equals(((DEdgeLabelItemProvider) obj).getTarget());
+        } else {
+            return super.equals(obj);
+        }
+    }
+
+    /**
+     * Addition of the VISUAL_ID field so in a {@link HashSet} this can be distinguished from the
+     * {@link DEdgeBeginLabelItemProvider} and the {@link DEdgeEndLabelItemProvider} of the same edge.
+     * 
+     * {@inheritDoc}
+     *
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        return super.hashCode() + DEdgeNameEditPart.VISUAL_ID;
+    }
 }

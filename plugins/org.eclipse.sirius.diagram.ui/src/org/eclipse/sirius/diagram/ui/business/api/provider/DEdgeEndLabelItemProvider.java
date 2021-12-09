@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -13,11 +13,13 @@
 package org.eclipse.sirius.diagram.ui.business.api.provider;
 
 import java.text.MessageFormat;
+import java.util.HashSet;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.business.api.query.DEdgeQuery;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEndNameEditPart;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 
 /**
@@ -100,6 +102,33 @@ public class DEdgeEndLabelItemProvider extends AbstractDDiagramElementLabelItemP
             label = MessageFormat.format(Messages.AbstractDDiagramElementLabelItemProvider_label, label);
         }
         return label;
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (getTarget() != null && obj instanceof DEdgeEndLabelItemProvider) {
+            return getTarget().equals(((DEdgeEndLabelItemProvider) obj).getTarget());
+        } else {
+            return super.equals(obj);
+        }
+    }
+
+    /**
+     * Addition of the VISUAL_ID field so in a {@link HashSet} this can be distinguished from the
+     * {@link DEdgeBeginLabelItemProvider} and the {@link DEdgeLabelItemProvider} of the same edge.
+     * 
+     * {@inheritDoc}
+     *
+     * @see java.lang.Object#hashCode()
+     */
+    @Override
+    public int hashCode() {
+        return super.hashCode() + DEdgeEndNameEditPart.VISUAL_ID;
     }
 
 }
