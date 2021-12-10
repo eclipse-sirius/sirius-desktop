@@ -38,7 +38,11 @@ public interface ICompartmentTests {
 
     String HORIZONTAL_STACK_REPRESENTATION_NAME = "Diag with HStack";
 
+    String HORIZONTAL_STACK_WITH_SIZED_REGIONS_REPRESENTATION_NAME = "Diag with HStack withSizedRegions";
+    
     String VERTICAL_STACK_REPRESENTATION_NAME = "Diag with VStack";
+    
+    String VERTICAL_STACK_WITH_SIZED_REGIONS_REPRESENTATION_NAME = "Diag with VStack withSizedRegions";
 
     String VERTICAL_STACK_DND_REPRESENTATION_NAME = "Diag with VStack and DnD";
 
@@ -52,7 +56,11 @@ public interface ICompartmentTests {
 
     String HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME = "HStackDiag";
 
+    String HORIZONTAL_STACK_WITH_SIZED_REGIONS_REPRESENTATION_INSTANCE_NAME = "HStackDiagWithSizedRegions";
+    
     String VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME = "VStackDiag";
+    
+    String VERTICAL_STACK_WITH_SIZED_REGIONS_REPRESENTATION_INSTANCE_NAME = "VStackDiagWithSizedRegions";
 
     String VERTICAL_STACK_DND_REPRESENTATION_INSTANCE_NAME = "VStackDiag with DnD";
 

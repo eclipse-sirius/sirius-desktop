@@ -461,6 +461,19 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
 
         if (new EditPartQuery(this).isCollapsed() && getParentStackDirection() == PositionConstants.NORTH_SOUTH) {
             defaultSize = defaultSize.getCopy().setHeight(LayoutUtils.COLLAPSED_VERTICAL_REGION_HEIGHT);
+        } else if (isRegion()) {
+            // For region with a defined size in the VSM, the defined size is considered instead of the default one.
+            // I'm not sure that this rule should be the same for all kind of containers... I let this comment as a clue
+            // if an analysis, about a bug concerning "standard container", brings you here.
+            Integer width = ((DDiagramElementContainer) dde).getWidth();
+            if (width != null && width > 0) {
+                defaultSize = defaultSize.getCopy().setWidth(width * LayoutUtils.SCALE);
+            }
+    
+            Integer height = ((DDiagramElementContainer) dde).getHeight();
+            if (height != null && height > 0) {
+                defaultSize = defaultSize.getCopy().setHeight(height * LayoutUtils.SCALE);
+            }
         }
         return defaultSize;
     }

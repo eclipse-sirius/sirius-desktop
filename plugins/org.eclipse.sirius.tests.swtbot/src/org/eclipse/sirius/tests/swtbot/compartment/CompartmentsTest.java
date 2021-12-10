@@ -822,6 +822,80 @@ public class CompartmentsTest extends AbstractCompartmentTest {
     }
 
     /**
+     * Test use of regions collapsed in container with vertical stack which contains regions with a defined size. Check
+     * that the collapse height corresponds to the "constant" and not to the defined height.
+     */
+    public void testCollapseOfVerticalRegionContainerWithFixedSizeRegions() {
+        Rectangle firstContainerDraw2dBounds = new Rectangle(81, 35, 287, 654);
+        Rectangle firstContainerGMFBounds = new Rectangle(81, 35, -1, -1);
+        Rectangle secondRegionContainerBounds = new Rectangle(0, 119, 275, 107);
+        Rectangle secondRegionContainerCollapseGMFBounds = new Rectangle(0, 119, 275, LayoutUtils.COLLAPSED_VERTICAL_REGION_HEIGHT);
+        Rectangle fourthRegionContainerBounds = new Rectangle(0, 317, 275, 66);
+        Rectangle fourthRegionContainerCollapseGMFBounds = new Rectangle(0, 317, 275, LayoutUtils.COLLAPSED_VERTICAL_REGION_HEIGHT);
+
+        openRepresentation(VERTICAL_STACK_WITH_SIZED_REGIONS_REPRESENTATION_NAME, VERTICAL_STACK_WITH_SIZED_REGIONS_REPRESENTATION_INSTANCE_NAME);
+        editor.maximize();
+
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+
+        // Check initial states
+        checkBounds(FIRST_REGION_CONTAINER_NAME, firstContainerGMFBounds, firstContainerDraw2dBounds, FONT_WIDTH_DELTA * 2, 0);
+        checkBounds(CENTER_CLASS_NAME, secondRegionContainerBounds, secondRegionContainerBounds, FONT_WIDTH_DELTA, 0);
+        checkBounds(LEFT_PKG_NAME, fourthRegionContainerBounds, fourthRegionContainerBounds, FONT_WIDTH_DELTA, 0);
+
+        // Collapse a list with a defined size (the second region)
+        SWTBotGefEditPart editPartToResize = editor.getEditPart(CENTER_CLASS_NAME, AbstractDiagramElementContainerEditPart.class);
+        ICondition editPartResizedCondition = new CheckEditPartResized(editPartToResize);
+
+        // Select the second region
+        editor.click(new Point(221, 262));
+        SWTBotUtils.waitAllUiEvents(); // needed to have the collapse widget
+                                       // displayed
+
+        // Collapse the second region
+        editor.click(new Point(94, 194));
+
+        bot.waitUntil(editPartResizedCondition);
+
+        // Check size after collapse
+        int expectedContainerReduceHeight = secondRegionContainerBounds.height() - LayoutUtils.COLLAPSED_VERTICAL_REGION_HEIGHT;
+        checkBounds(CENTER_CLASS_NAME, secondRegionContainerCollapseGMFBounds, secondRegionContainerBounds.getCopy().setHeight(LayoutUtils.COLLAPSED_VERTICAL_REGION_HEIGHT), FONT_WIDTH_DELTA, 0);
+        checkBounds(FIRST_REGION_CONTAINER_NAME, firstContainerGMFBounds, firstContainerDraw2dBounds.getCopy().setHeight(firstContainerDraw2dBounds.height() - expectedContainerReduceHeight),
+                FONT_WIDTH_DELTA * 2, 0);
+
+
+        // Expand the second region
+        editPartResizedCondition = new CheckEditPartResized(editPartToResize);
+        editor.click(new Point(94, 194));
+        bot.waitUntil(editPartResizedCondition);
+
+        // Check initial states
+        checkBounds(FIRST_REGION_CONTAINER_NAME, firstContainerGMFBounds, firstContainerDraw2dBounds, FONT_WIDTH_DELTA * 2, 0);
+        checkBounds(CENTER_CLASS_NAME, secondRegionContainerBounds, secondRegionContainerBounds, FONT_WIDTH_DELTA, 0);
+        checkBounds(LEFT_PKG_NAME, fourthRegionContainerBounds, fourthRegionContainerBounds, FONT_WIDTH_DELTA, 0);
+
+        // Collapse a free container with a defined size (the fourth region)
+        editPartToResize = editor.getEditPart(LEFT_PKG_NAME, AbstractDiagramElementContainerEditPart.class);
+        editPartResizedCondition = new CheckEditPartResized(editPartToResize);
+
+        // Select the fourth region
+        editor.click(new Point(221, 391));
+        SWTBotUtils.waitAllUiEvents(); // needed to have the collapse widget
+                                       // displayed
+
+        // Collapse the fourth region
+        editor.click(new Point(353, 392));
+
+        bot.waitUntil(editPartResizedCondition);
+
+        // Check size after collapse
+        expectedContainerReduceHeight = fourthRegionContainerBounds.height() - LayoutUtils.COLLAPSED_VERTICAL_REGION_HEIGHT;
+        checkBounds(LEFT_PKG_NAME, fourthRegionContainerCollapseGMFBounds, fourthRegionContainerBounds.getCopy().setHeight(LayoutUtils.COLLAPSED_VERTICAL_REGION_HEIGHT), FONT_WIDTH_DELTA, 0);
+        checkBounds(FIRST_REGION_CONTAINER_NAME, firstContainerGMFBounds, firstContainerDraw2dBounds.getCopy().setHeight(firstContainerDraw2dBounds.height() - expectedContainerReduceHeight),
+                FONT_WIDTH_DELTA * 2, 0);
+    }
+
+    /**
      * Test creation of regions container with vertical stack and hide Label. Check auto-size gmf size for container
      * (because of computation expressions equal to -1).
      */
@@ -1048,6 +1122,86 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         checkBounds(NEW_REGION_CONTAINER_NAME, CONTAINER_BOUNDS_AUTO_SIZED, CONTAINER_BOUNDS_AUTO_SIZED_WITH_TWO_REGIONS_HSTACK, FONT_WIDTH_DELTA * 2, 1);
         checkBounds(LEFT_CLASS_C0_NAME, REGION_BOUNDS_FIRST_DRAW2D_AUTO_SIZED, REGION_BOUNDS_FIRST_DRAW2D, FONT_WIDTH_DELTA, 0);
         checkBounds(LEFT_CLASS_C1_NAME, REGION_BOUNDS_SECOND_AUTO_SIZED_HSTACK, REGION_BOUNDS_SECOND_DRAW2D_HSTACK, FONT_WIDTH_DELTA, 0);
+    }
+
+    /**
+     * Test use of regions collapsed in container with horizontal stack which contains regions with a defined size.
+     * Check that the collapse width corresponds to the defined width.
+     */
+    public void testCollapseOfHorizontalRegionContainerWithFixedSizeRegions() {
+        int fixedWidth = 150;
+        Rectangle firstContainerDraw2dBounds = new Rectangle(26, 20, 1206, 179);
+        Rectangle firstContainerGMFBounds = new Rectangle(26, 20, -1, -1);
+        Rectangle thirdRegionContainerBounds = new Rectangle(400, 0, 196, 143);
+        Rectangle thirdRegionContainerCollapseGMFBounds = new Rectangle(400, 0, -1, 143);
+        Rectangle fourthRegionContainerBounds = new Rectangle(596, 0, 197, 143);
+        Rectangle fourthRegionContainerCollapseGMFBounds = new Rectangle(596, 0, -1, 143);
+
+        openRepresentation(HORIZONTAL_STACK_WITH_SIZED_REGIONS_REPRESENTATION_NAME, HORIZONTAL_STACK_WITH_SIZED_REGIONS_REPRESENTATION_INSTANCE_NAME);
+        editor.maximize();
+
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+
+        // Check initial states
+        checkBounds(FIRST_REGION_CONTAINER_NAME, firstContainerGMFBounds, firstContainerDraw2dBounds, FONT_WIDTH_DELTA * 2, 0);
+        checkBounds(RIGHT_CLASS_NAME, thirdRegionContainerBounds, thirdRegionContainerBounds, FONT_WIDTH_DELTA, 0);
+        checkBounds(LEFT_PKG_NAME, fourthRegionContainerBounds, fourthRegionContainerBounds, FONT_WIDTH_DELTA, 0);
+
+        // Collapse a list with a defined size (the third region)
+        SWTBotGefEditPart editPartToResize = editor.getEditPart(RIGHT_CLASS_NAME, AbstractDiagramElementContainerEditPart.class);
+        ICondition editPartResizedCondition = new CheckEditPartResized(editPartToResize);
+
+        // Select the third region
+        Rectangle thirdRegionBounds = ((AbstractDiagramElementContainerEditPart) editPartToResize.part()).getFigure().getBounds();
+        ((AbstractDiagramElementContainerEditPart) editPartToResize.part()).getFigure().translateToAbsolute(thirdRegionBounds);
+        editor.click(thirdRegionBounds.getCenter());
+        SWTBotUtils.waitAllUiEvents(); // needed to have the collapse widget
+                                       // displayed
+
+        // Collapse the third region
+        Point centerOfCollapseFigure = thirdRegionBounds.getLocation().getTranslated(10, 10);
+        editor.click(centerOfCollapseFigure);
+
+        bot.waitUntil(editPartResizedCondition);
+
+        // Check size after collapse
+        int expectedContainerReduceWidth = thirdRegionContainerBounds.width() - fixedWidth;
+        checkBounds(RIGHT_CLASS_NAME, thirdRegionContainerCollapseGMFBounds, thirdRegionContainerBounds.getCopy().setWidth(fixedWidth), FONT_WIDTH_DELTA, 0);
+        checkBounds(FIRST_REGION_CONTAINER_NAME, firstContainerGMFBounds, firstContainerDraw2dBounds.getCopy().setWidth(firstContainerDraw2dBounds.width() - expectedContainerReduceWidth),
+                FONT_WIDTH_DELTA * 2, 0);
+
+        // Expand the third region
+        editPartResizedCondition = new CheckEditPartResized(editPartToResize);
+        editor.click(centerOfCollapseFigure);
+        bot.waitUntil(editPartResizedCondition);
+
+        // Check initial states
+        checkBounds(FIRST_REGION_CONTAINER_NAME, firstContainerGMFBounds, firstContainerDraw2dBounds, FONT_WIDTH_DELTA * 2, 0);
+        checkBounds(RIGHT_CLASS_NAME, thirdRegionContainerBounds, thirdRegionContainerBounds, FONT_WIDTH_DELTA, 0);
+        checkBounds(LEFT_PKG_NAME, fourthRegionContainerBounds, fourthRegionContainerBounds, FONT_WIDTH_DELTA, 0);
+
+        // Collapse a free container with a defined size (the fourth region)
+        editPartToResize = editor.getEditPart(LEFT_PKG_NAME, AbstractDiagramElementContainerEditPart.class);
+        editPartResizedCondition = new CheckEditPartResized(editPartToResize);
+
+        // Select the fourth region
+        Rectangle fourthRegionBounds = ((AbstractDiagramElementContainerEditPart) editPartToResize.part()).getFigure().getBounds();
+        ((AbstractDiagramElementContainerEditPart) editPartToResize.part()).getFigure().translateToAbsolute(fourthRegionBounds);
+        editor.click(fourthRegionBounds.getCenter());
+        SWTBotUtils.waitAllUiEvents(); // needed to have the collapse widget
+                                       // displayed
+
+        // Collapse the fourth region
+        centerOfCollapseFigure = fourthRegionBounds.getTopRight().getTranslated(-10, 10);
+        editor.click(centerOfCollapseFigure);
+
+        bot.waitUntil(editPartResizedCondition);
+
+        // Check size after collapse
+        expectedContainerReduceWidth = fourthRegionContainerBounds.width() - fixedWidth;
+        checkBounds(LEFT_PKG_NAME, fourthRegionContainerCollapseGMFBounds, fourthRegionContainerBounds.getCopy().setWidth(fixedWidth), FONT_WIDTH_DELTA, 0);
+        checkBounds(FIRST_REGION_CONTAINER_NAME, firstContainerGMFBounds, firstContainerDraw2dBounds.getCopy().setWidth(firstContainerDraw2dBounds.width() - expectedContainerReduceWidth),
+                FONT_WIDTH_DELTA * 2, 0);
     }
 
     /**
