@@ -4,41 +4,41 @@
     <semanticResources>My.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_fQZFsJa7EeK0jbLdcLCXjQ">
       <viewpoint xmi:type="description:Viewpoint" href="compartments.odesign#//@ownedViewpoints[name='Compartments']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8LO8Us2EemVaPxNO-mXlA" name="VStackDiag" repPath="#_xGk0UEgKEeWO8ekbzmZQXg" changeId="060cc27e-6f51-4483-9e37-777af82a6443">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8LO8Us2EemVaPxNO-mXlA" name="VStackDiag" repPath="#_xGk0UEgKEeWO8ekbzmZQXg" changeId="a2a257f7-513d-4db4-968c-ab4d4e0c53a9">
         <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']"/>
-        <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8pJAUs2EemVaPxNO-mXlA" name="HStackDiag" repPath="#_Qj3mgEvNEeWf576mnYm4XQ" changeId="532f3907-1adb-4ca3-9ffd-64936159870b">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8pJAUs2EemVaPxNO-mXlA" name="HStackDiag" repPath="#_Qj3mgEvNEeWf576mnYm4XQ" changeId="020066d2-f61d-4761-95fb-b22ce8d0d02c">
         <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']"/>
-        <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8pwEUs2EemVaPxNO-mXlA" name="RegionsInRegions" repPath="#_G0PZUEvqEeWy2_k8Xc-0ww" changeId="16006895-15f4-4fed-87ce-a866e896a233">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8pwEUs2EemVaPxNO-mXlA" name="RegionsInRegions" repPath="#_G0PZUEvqEeWy2_k8Xc-0ww" changeId="b007c078-a685-417d-a2de-d1b08d805b44">
         <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']"/>
-        <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8pwE0s2EemVaPxNO-mXlA" name="ImageDiag" repPath="#_HdGwIEvqEeWy2_k8Xc-0ww" changeId="92e5e7c6-b0b4-4f0f-926d-d57362428c84">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8pwE0s2EemVaPxNO-mXlA" name="ImageDiag" repPath="#_HdGwIEvqEeWy2_k8Xc-0ww" changeId="1d5ab80c-58ff-4d77-9e50-a27f223a7bc2">
         <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']"/>
-        <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8qXIUs2EemVaPxNO-mXlA" name="VStackDiag with DnD" repPath="#_0FO4gD3IEeaMQoIf_sZyRg" changeId="d14738b0-5360-4667-8bc9-d262b003b727">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8qXIUs2EemVaPxNO-mXlA" name="VStackDiag with DnD" repPath="#_0FO4gD3IEeaMQoIf_sZyRg" changeId="caeecf94-d541-44c5-9c3e-1ef81669c720">
         <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']"/>
-        <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8qXI0s2EemVaPxNO-mXlA" name="HStackDiag with DnD" repPath="#_maGOUD4BEeanI7H5rb1DCA" changeId="279db514-d6bc-4280-95e6-5c42edf9191a">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8qXI0s2EemVaPxNO-mXlA" name="HStackDiag with DnD" repPath="#_maGOUD4BEeanI7H5rb1DCA" changeId="356c946a-a0f1-4eee-8072-54e1359c27da">
         <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']"/>
-        <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_R5XkoEoiEemAMdy3PhSryg" name="regionWithEdges" repPath="#_R5VIYEoiEemAMdy3PhSryg" changeId="e8ae3571-2607-4ae3-9cb2-2fdd06da193e">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_R5XkoEoiEemAMdy3PhSryg" name="regionWithEdges" repPath="#_R5VIYEoiEemAMdy3PhSryg" changeId="c101f398-5c67-47cc-bedd-6edb030a3c90">
         <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdges']"/>
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_crgqoWwmEemxkZxOJ10a8g" name="regionWithEdgeToEdge" repPath="#_cqL08GwmEemxkZxOJ10a8g" changeId="3d5ed93f-d168-429a-9e7b-1d309a2c4701">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_crgqoWwmEemxkZxOJ10a8g" name="regionWithEdgeToEdge" repPath="#_cqL08GwmEemxkZxOJ10a8g" changeId="373be54c-6eee-4178-b99d-5c543034d9af">
         <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']"/>
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_twQxcFrVEemyOM1f81wIKA" name="regionWithEdgesAndNodes" repPath="#_tuZJMFrVEemyOM1f81wIKA" changeId="566d8ccc-234d-495f-a00d-28f41dd2acbf">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_twQxcFrVEemyOM1f81wIKA" name="regionWithEdgesAndNodes" repPath="#_tuZJMFrVEemyOM1f81wIKA" changeId="a62f430e-d3f9-48d0-a090-1abdfc8c98d1">
         <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']"/>
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
@@ -259,46 +259,46 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_x0rQcEgKEeWO8ekbzmZQXg" name="P1" width="-1" height="-1" childrenPresentation="VerticalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_-_YwYHfwEeWQo7JxcqP_Mw" borderSize="5" borderSizeComputationExpression="5" borderColor="156,12,12">
         <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_x0tssEgKEeWO8ekbzmZQXg" name="Left_class1" width="-1" height="-1">
-        <target xmi:type="ecore:EClass" href="My.ecore#//P1/Left_class1"/>
-        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Left_class1"/>
+        <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Left_class1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Left_class1"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_x0uTwEgKEeWO8ekbzmZQXg" labelColor="239,41,41" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="239,41,41" backgroundStyle="Liquid" backgroundColor="122,181,155" foregroundColor="122,181,155">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_x04EwUgKEeWO8ekbzmZQXg" name="attr1">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//P1/Left_class1/attr1"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//P1/Left_class1/attr1"/>
+          <target xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Left_class1/attr1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Left_class1/attr1"/>
           <ownedStyle xmi:type="diagram:Square" uid="_x05S4EgKEeWO8ekbzmZQXg" labelAlignment="RIGHT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_x0558EgKEeWO8ekbzmZQXg" name="attr2">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//P1/Left_class1/attr2"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//P1/Left_class1/attr2"/>
+          <target xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Left_class1/attr2"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Left_class1/attr2"/>
           <ownedStyle xmi:type="diagram:Square" uid="_x07vIEgKEeWO8ekbzmZQXg" labelAlignment="RIGHT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_x07vIUgKEeWO8ekbzmZQXg" name="attr3">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//P1/Left_class1/attr3"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//P1/Left_class1/attr3"/>
+          <target xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Left_class1/attr3"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Left_class1/attr3"/>
           <ownedStyle xmi:type="diagram:Square" uid="_x089QEgKEeWO8ekbzmZQXg" labelAlignment="RIGHT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_x0-ycEgKEeWO8ekbzmZQXg" name="attr5">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//P1/Left_class1/attr5"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//P1/Left_class1/attr5"/>
+          <target xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Left_class1/attr5"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Left_class1/attr5"/>
           <ownedStyle xmi:type="diagram:Square" uid="_x0_ZgEgKEeWO8ekbzmZQXg" labelAlignment="RIGHT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']/@style"/>
           </ownedStyle>
@@ -306,39 +306,39 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_x0u60EgKEeWO8ekbzmZQXg" name="Center_class2" width="-1" height="-1">
-        <target xmi:type="ecore:EClass" href="My.ecore#//P1/Center_class2"/>
-        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Center_class2"/>
+        <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Center_class2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Center_class2"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="__i6UMHfwEeWQo7JxcqP_Mw" labelColor="239,41,41" borderSize="1" borderSizeComputationExpression="1" borderColor="239,41,41" backgroundStyle="Liquid" backgroundColor="130,203,103" foregroundColor="130,203,103">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@conditionnalStyles.1/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_HWwOoHGIEeWC_YQiieS2Ig" name="Leftattr1">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//P1/Center_class2/Leftattr1"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//P1/Center_class2/Leftattr1"/>
+          <target xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Center_class2/Leftattr1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Center_class2/Leftattr1"/>
           <ownedStyle xmi:type="diagram:Square" uid="_HWw1sHGIEeWC_YQiieS2Ig" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']/@conditionnalStyles.0/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_HWxcwHGIEeWC_YQiieS2Ig" name="Leftattr2">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//P1/Center_class2/Leftattr2"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//P1/Center_class2/Leftattr2"/>
+          <target xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Center_class2/Leftattr2"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Center_class2/Leftattr2"/>
           <ownedStyle xmi:type="diagram:Square" uid="_HWxcwXGIEeWC_YQiieS2Ig" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']/@conditionnalStyles.0/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_HWyD0HGIEeWC_YQiieS2Ig" name="Centerattr3">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//P1/Center_class2/Centerattr3"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//P1/Center_class2/Centerattr3"/>
+          <target xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Center_class2/Centerattr3"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Center_class2/Centerattr3"/>
           <ownedStyle xmi:type="diagram:Square" uid="_HWyq4HGIEeWC_YQiieS2Ig" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']/@conditionnalStyles.1/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_HWyq4XGIEeWC_YQiieS2Ig" name="Leftattr4">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//P1/Center_class2/Leftattr4"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//P1/Center_class2/Leftattr4"/>
+          <target xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Center_class2/Leftattr4"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Center_class2/Leftattr4"/>
           <ownedStyle xmi:type="diagram:Square" uid="_HWzR8HGIEeWC_YQiieS2Ig" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']/@conditionnalStyles.0/@style"/>
           </ownedStyle>
@@ -346,16 +346,16 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_x0wwAEgKEeWO8ekbzmZQXg" name="Right_class3" tooltipText="Right_class3" width="-1" height="-1">
-        <target xmi:type="ecore:EClass" href="My.ecore#//P1/Right_class3"/>
-        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Right_class3"/>
+        <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Right_class3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Right_class3"/>
         <graphicalFilters xmi:type="diagram:AbsoluteBoundsFilter" uid="_KEDiYHGIEeWC_YQiieS2Ig" height="-1" width="-1"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_x0xXEEgKEeWO8ekbzmZQXg" labelColor="239,41,41" labelAlignment="RIGHT" borderSize="1" borderSizeComputationExpression="1" borderColor="239,41,41" borderLineStyle="dash" hideLabelByDefault="true" backgroundStyle="Liquid" backgroundColor="138,226,52" foregroundColor="138,226,52">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_x1FgIEgKEeWO8ekbzmZQXg" name="Centerattr1">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//P1/Right_class3/Centerattr1"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//P1/Right_class3/Centerattr1"/>
+          <target xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Right_class3/Centerattr1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Right_class3/Centerattr1"/>
           <ownedStyle xmi:type="diagram:Square" uid="_x1GuQEgKEeWO8ekbzmZQXg" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']/@conditionnalStyles.1/@style"/>
           </ownedStyle>
@@ -363,23 +363,23 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_x1H8YEgKEeWO8ekbzmZQXg" name="Left_p3" width="-1" height="-1">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_x1IjcEgKEeWO8ekbzmZQXg" labelColor="239,41,41" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" borderColor="239,41,41" borderLineStyle="dot" backgroundStyle="Liquid" backgroundColor="138,226,52" foregroundColor="138,226,52">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" uid="_x1QfQEgKEeWO8ekbzmZQXg" name="class1" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EClass" href="My.ecore#//P1/Left_p3/class1"/>
-          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Left_p3/class1"/>
+          <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Left_p3/class1"/>
+          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Left_p3/class1"/>
           <ownedStyle xmi:type="diagram:Square" uid="_x1RGUEgKEeWO8ekbzmZQXg" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" uid="_x1SUcEgKEeWO8ekbzmZQXg" name="class3" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EClass" href="My.ecore#//P1/Left_p3/class3"/>
-          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Left_p3/class3"/>
+          <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Left_p3/class3"/>
+          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Left_p3/class3"/>
           <ownedStyle xmi:type="diagram:Square" uid="_x1SUcUgKEeWO8ekbzmZQXg" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes']/@style"/>
           </ownedStyle>
@@ -387,15 +387,15 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_x1JKgEgKEeWO8ekbzmZQXg" name="Center_p4" width="-1" height="-1">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_x1KYoEgKEeWO8ekbzmZQXg" labelColor="239,41,41" borderSize="1" borderSizeComputationExpression="1" borderColor="239,41,41" borderLineStyle="dash_dot" backgroundStyle="Liquid" backgroundColor="195,229,65" foregroundColor="195,229,65">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']/@conditionnalStyles.1/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" uid="_x1S7gEgKEeWO8ekbzmZQXg" name="class2" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EClass" href="My.ecore#//P1/Center_p4/class2"/>
-          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Center_p4/class2"/>
+          <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Center_p4/class2"/>
+          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Center_p4/class2"/>
           <ownedStyle xmi:type="diagram:Square" uid="_x1S7gUgKEeWO8ekbzmZQXg" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes']/@style"/>
           </ownedStyle>
@@ -403,15 +403,15 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_x1K_sEgKEeWO8ekbzmZQXg" name="Right_p5" width="-1" height="-1">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_x1MN0EgKEeWO8ekbzmZQXg" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="1" borderSizeComputationExpression="1" borderColor="252,175,62" backgroundColor="252,233,79" foregroundColor="252,233,79">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" uid="_50msYFWoEeWed_P9Y9XnRA" name="class4" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EClass" href="My.ecore#//P1/Right_p5/class4"/>
-          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Right_p5/class4"/>
+          <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Right_p5/class4"/>
+          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Right_p5/class4"/>
           <ownedStyle xmi:type="diagram:Square" uid="_50msYVWoEeWed_P9Y9XnRA" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes']/@style"/>
           </ownedStyle>
@@ -420,31 +420,31 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_x0r3gEgKEeWO8ekbzmZQXg" name="az" width="-1" height="-1" childrenPresentation="VerticalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//az"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_x0r3gUgKEeWO8ekbzmZQXg" borderSize="5" borderSizeComputationExpression="5" borderColor="156,12,12">
         <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_x1csgEgKEeWO8ekbzmZQXg" name="aaa">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaa"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaa"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_x1d6oEgKEeWO8ekbzmZQXg" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="1" borderSizeComputationExpression="1" borderColor="252,175,62" backgroundColor="114,159,207" foregroundColor="114,159,207">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_x1ehsEgKEeWO8ekbzmZQXg" name="aaaa">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_x1fv0EgKEeWO8ekbzmZQXg" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="1" borderSizeComputationExpression="1" borderColor="252,175,62" backgroundColor="114,159,207" foregroundColor="114,159,207">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='FreeFormRegions']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_1A3kAFuwEeWZQLQxIrHbCA" name="cl1" tooltipText="cl1">
-        <target xmi:type="ecore:EClass" href="My.ecore#//az/cl1"/>
-        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//az/cl1"/>
+        <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/az/cl1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/az/cl1"/>
         <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_1A6AQFuwEeWZQLQxIrHbCA"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_1A4LEFuwEeWZQLQxIrHbCA" labelColor="239,41,41" labelAlignment="RIGHT" borderSize="1" borderSizeComputationExpression="1" borderColor="239,41,41" borderLineStyle="dash" hideLabelByDefault="true" backgroundStyle="Liquid" backgroundColor="122,181,155" foregroundColor="122,181,155">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@style"/>
@@ -452,8 +452,8 @@
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_1A6AQVuwEeWZQLQxIrHbCA" name="cl2" tooltipText="cl2">
-        <target xmi:type="ecore:EClass" href="My.ecore#//az/cl2"/>
-        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//az/cl2"/>
+        <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/az/cl2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/az/cl2"/>
         <graphicalFilters xmi:type="diagram:HideLabelFilter" uid="_1A71cFuwEeWZQLQxIrHbCA"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_1A7OYFuwEeWZQLQxIrHbCA" labelColor="239,41,41" labelAlignment="RIGHT" borderSize="1" borderSizeComputationExpression="1" borderColor="239,41,41" borderLineStyle="dash" hideLabelByDefault="true" backgroundStyle="Liquid" backgroundColor="130,203,103" foregroundColor="130,203,103">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@style"/>
@@ -462,8 +462,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_jhuoUl2KEey5qZ5Mg_TCeA" name="P1_FF">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_jhuoU12KEey5qZ5Mg_TCeA" labelSize="12" borderSize="1" borderSizeComputationExpression="1" backgroundColor="246,139,139" foregroundColor="246,139,139">
         <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='FreeFormContainer']/@style"/>
       </ownedStyle>
@@ -472,7 +472,7 @@
     <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_xGk0U0gKEeWO8ekbzmZQXg"/>
     <activatedLayers xmi:type="description_1:Layer" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer"/>
-    <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_Qj3mgEvNEeWf576mnYm4XQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_Qj3mgUvNEeWf576mnYm4XQ" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -691,46 +691,46 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Rh0cgEvNEeWf576mnYm4XQ" name="P1" childrenPresentation="HorizontalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_vDQ80Ev8EeW-TJKau7RzcQ" borderSize="4" borderSizeComputationExpression="4" borderColor="156,12,12">
         <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_YTURkFWpEeWed_P9Y9XnRA" name="Left_class1">
-        <target xmi:type="ecore:EClass" href="My.ecore#//P1/Left_class1"/>
-        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Left_class1"/>
+        <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Left_class1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Left_class1"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_YTZxIFWpEeWed_P9Y9XnRA" labelColor="239,41,41" labelAlignment="LEFT" borderSize="2" borderSizeComputationExpression="2" borderColor="239,41,41" backgroundStyle="Liquid" backgroundColor="122,181,155" foregroundColor="122,181,155">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_YTnMgFWpEeWed_P9Y9XnRA" name="attr1">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//P1/Left_class1/attr1"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//P1/Left_class1/attr1"/>
+          <target xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Left_class1/attr1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Left_class1/attr1"/>
           <ownedStyle xmi:type="diagram:Square" uid="_YT3EIFWpEeWed_P9Y9XnRA" labelAlignment="RIGHT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@subNodeMappings[name='HAttributes']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@subNodeMappings[name='HAttributes']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_YT3EIVWpEeWed_P9Y9XnRA" name="attr2">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//P1/Left_class1/attr2"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//P1/Left_class1/attr2"/>
+          <target xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Left_class1/attr2"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Left_class1/attr2"/>
           <ownedStyle xmi:type="diagram:Square" uid="_YT4SQFWpEeWed_P9Y9XnRA" labelAlignment="RIGHT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@subNodeMappings[name='HAttributes']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@subNodeMappings[name='HAttributes']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_YT4SQVWpEeWed_P9Y9XnRA" name="attr3">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//P1/Left_class1/attr3"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//P1/Left_class1/attr3"/>
+          <target xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Left_class1/attr3"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Left_class1/attr3"/>
           <ownedStyle xmi:type="diagram:Square" uid="_YT45UFWpEeWed_P9Y9XnRA" labelAlignment="RIGHT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@subNodeMappings[name='HAttributes']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@subNodeMappings[name='HAttributes']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_YT6ugFWpEeWed_P9Y9XnRA" name="attr5">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//P1/Left_class1/attr5"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//P1/Left_class1/attr5"/>
+          <target xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Left_class1/attr5"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Left_class1/attr5"/>
           <ownedStyle xmi:type="diagram:Square" uid="_YT7VkFWpEeWed_P9Y9XnRA" labelAlignment="RIGHT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@subNodeMappings[name='HAttributes']/@style"/>
           </ownedStyle>
@@ -738,39 +738,39 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_YTbmUFWpEeWed_P9Y9XnRA" name="Center_class2">
-        <target xmi:type="ecore:EClass" href="My.ecore#//P1/Center_class2"/>
-        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Center_class2"/>
+        <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Center_class2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Center_class2"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_YTjiIFWpEeWed_P9Y9XnRA" labelColor="239,41,41" borderSize="2" borderSizeComputationExpression="2" borderColor="239,41,41" backgroundStyle="Liquid" backgroundColor="130,203,103" foregroundColor="130,203,103">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@conditionnalStyles.1/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_HWESIHGIEeWC_YQiieS2Ig" name="Leftattr1">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//P1/Center_class2/Leftattr1"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//P1/Center_class2/Leftattr1"/>
+          <target xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Center_class2/Leftattr1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Center_class2/Leftattr1"/>
           <ownedStyle xmi:type="diagram:Square" uid="_HWESIXGIEeWC_YQiieS2Ig" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@subNodeMappings[name='HAttributes']/@conditionnalStyles.0/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@subNodeMappings[name='HAttributes']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_HWESInGIEeWC_YQiieS2Ig" name="Leftattr2">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//P1/Center_class2/Leftattr2"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//P1/Center_class2/Leftattr2"/>
+          <target xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Center_class2/Leftattr2"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Center_class2/Leftattr2"/>
           <ownedStyle xmi:type="diagram:Square" uid="_HWE5MHGIEeWC_YQiieS2Ig" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@subNodeMappings[name='HAttributes']/@conditionnalStyles.0/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@subNodeMappings[name='HAttributes']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_HWE5MXGIEeWC_YQiieS2Ig" name="Centerattr3">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//P1/Center_class2/Centerattr3"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//P1/Center_class2/Centerattr3"/>
+          <target xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Center_class2/Centerattr3"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Center_class2/Centerattr3"/>
           <ownedStyle xmi:type="diagram:Square" uid="_HWFgQHGIEeWC_YQiieS2Ig" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@subNodeMappings[name='HAttributes']/@conditionnalStyles.1/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@subNodeMappings[name='HAttributes']"/>
         </ownedElements>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_HWFgQXGIEeWC_YQiieS2Ig" name="Leftattr4">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//P1/Center_class2/Leftattr4"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//P1/Center_class2/Leftattr4"/>
+          <target xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Center_class2/Leftattr4"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Center_class2/Leftattr4"/>
           <ownedStyle xmi:type="diagram:Square" uid="_HWGHUHGIEeWC_YQiieS2Ig" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@subNodeMappings[name='HAttributes']/@conditionnalStyles.0/@style"/>
           </ownedStyle>
@@ -778,15 +778,15 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_YTkwQFWpEeWed_P9Y9XnRA" name="Right_class3">
-        <target xmi:type="ecore:EClass" href="My.ecore#//P1/Right_class3"/>
-        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Right_class3"/>
+        <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Right_class3"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Right_class3"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_YTlXUFWpEeWed_P9Y9XnRA" labelColor="239,41,41" labelAlignment="RIGHT" borderSize="2" borderSizeComputationExpression="2" borderColor="239,41,41" borderLineStyle="dash" backgroundStyle="Liquid" backgroundColor="138,226,52" foregroundColor="138,226,52">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']"/>
         <ownedElements xmi:type="diagram:DNodeListElement" uid="_YT-_8FWpEeWed_P9Y9XnRA" name="Centerattr1">
-          <target xmi:type="ecore:EAttribute" href="My.ecore#//P1/Right_class3/Centerattr1"/>
-          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//P1/Right_class3/Centerattr1"/>
+          <target xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Right_class3/Centerattr1"/>
+          <semanticElements xmi:type="ecore:EAttribute" href="My.ecore#//nominalCases/P1/Right_class3/Centerattr1"/>
           <ownedStyle xmi:type="diagram:Square" uid="_YT_nAFWpEeWed_P9Y9XnRA" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@subNodeMappings[name='HAttributes']/@conditionnalStyles.1/@style"/>
           </ownedStyle>
@@ -794,15 +794,15 @@
         </ownedElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Ri6BoEvNEeWf576mnYm4XQ" name="Left_p3">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Ri6osEvNEeWf576mnYm4XQ" labelColor="239,41,41" labelAlignment="LEFT" borderSize="2" borderSizeComputationExpression="2" borderColor="239,41,41" borderLineStyle="dot" backgroundStyle="Liquid" backgroundColor="138,226,52" foregroundColor="138,226,52">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='FreeFormRegions']/@conditionnalStyles.0/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='FreeFormRegions']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" uid="_RjAvUEvNEeWf576mnYm4XQ" name="class1" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EClass" href="My.ecore#//P1/Left_p3/class1"/>
-          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Left_p3/class1"/>
+          <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Left_p3/class1"/>
+          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Left_p3/class1"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -812,8 +812,8 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" uid="_RjB9cEvNEeWf576mnYm4XQ" name="class3" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EClass" href="My.ecore#//P1/Left_p3/class3"/>
-          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Left_p3/class3"/>
+          <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Left_p3/class3"/>
+          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Left_p3/class3"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -824,15 +824,15 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Ri7PwEvNEeWf576mnYm4XQ" name="Center_p4">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Ri720EvNEeWf576mnYm4XQ" labelColor="239,41,41" borderSize="2" borderSizeComputationExpression="2" borderColor="239,41,41" borderLineStyle="dash_dot" backgroundStyle="Liquid" backgroundColor="195,229,65" foregroundColor="195,229,65">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='FreeFormRegions']/@conditionnalStyles.1/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='FreeFormRegions']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" uid="_RjCkgEvNEeWf576mnYm4XQ" name="class2" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EClass" href="My.ecore#//P1/Center_p4/class2"/>
-          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Center_p4/class2"/>
+          <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Center_p4/class2"/>
+          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Center_p4/class2"/>
           <ownedStyle xmi:type="diagram:Square" uid="_RjDLkEvNEeWf576mnYm4XQ" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes']/@style"/>
           </ownedStyle>
@@ -840,15 +840,15 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Ri720UvNEeWf576mnYm4XQ" name="Right_p5">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Ri8d4EvNEeWf576mnYm4XQ" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="2" borderSizeComputationExpression="2" borderColor="252,175,62" backgroundColor="252,233,79" foregroundColor="252,233,79">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='FreeFormRegions']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='FreeFormRegions']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" uid="_ALYBMFWpEeWed_P9Y9XnRA" name="class4" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EClass" href="My.ecore#//P1/Right_p5/class4"/>
-          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Right_p5/class4"/>
+          <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Right_p5/class4"/>
+          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Right_p5/class4"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -860,39 +860,39 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Rh24wEvNEeWf576mnYm4XQ" name="az" childrenPresentation="HorizontalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//az"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_i0dpAEvNEeWf576mnYm4XQ" borderSize="4" borderSizeComputationExpression="4" borderColor="156,12,12">
         <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Rj0AkEvNEeWf576mnYm4XQ" name="aaa">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaa"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaa"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Rj0noEvNEeWf576mnYm4XQ" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="2" borderSizeComputationExpression="2" borderColor="252,175,62" backgroundColor="114,159,207" foregroundColor="114,159,207">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='FreeFormRegions']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='FreeFormRegions']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Rj11wEvNEeWf576mnYm4XQ" name="aaaa">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Rj2c0EvNEeWf576mnYm4XQ" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="2" borderSizeComputationExpression="2" borderColor="252,175,62" backgroundColor="114,159,207" foregroundColor="114,159,207">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='FreeFormRegions']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='FreeFormRegions']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_1ALAcFuwEeWZQLQxIrHbCA" name="cl1">
-        <target xmi:type="ecore:EClass" href="My.ecore#//az/cl1"/>
-        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//az/cl1"/>
+        <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/az/cl1"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/az/cl1"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_1ALngFuwEeWZQLQxIrHbCA" labelColor="239,41,41" labelAlignment="RIGHT" borderSize="2" borderSizeComputationExpression="2" borderColor="239,41,41" borderLineStyle="dash" backgroundStyle="Liquid" backgroundColor="122,181,155" foregroundColor="122,181,155">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_1AMOkFuwEeWZQLQxIrHbCA" name="cl2">
-        <target xmi:type="ecore:EClass" href="My.ecore#//az/cl2"/>
-        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//az/cl2"/>
+        <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/az/cl2"/>
+        <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/az/cl2"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_1AM1oFuwEeWZQLQxIrHbCA" labelColor="239,41,41" labelAlignment="RIGHT" borderSize="2" borderSizeComputationExpression="2" borderColor="239,41,41" borderLineStyle="dash" backgroundStyle="Liquid" backgroundColor="130,203,103" foregroundColor="130,203,103">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@style"/>
         </ownedStyle>
@@ -900,8 +900,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_EqjcoF2GEey5qZ5Mg_TCeA" name="P1_FF">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_EqjcoV2GEey5qZ5Mg_TCeA" labelSize="12" borderSize="1" borderSizeComputationExpression="1" backgroundColor="246,139,139" foregroundColor="246,139,139">
         <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='FreeFormContainer']/@style"/>
       </ownedStyle>
@@ -910,7 +910,7 @@
     <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_Qj3mg0vNEeWf576mnYm4XQ"/>
     <activatedLayers xmi:type="description_1:Layer" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer"/>
-    <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_G0PZUEvqEeWy2_k8Xc-0ww">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_G0PZUUvqEeWy2_k8Xc-0ww" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -1137,8 +1137,8 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_eostAEvqEeWy2_k8Xc-0ww" name="P1- hstack" visible="false" childrenPresentation="HorizontalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
       <graphicalFilters xmi:type="diagram:HideFilter" uid="_xCiu8FWqEeWed_P9Y9XnRA"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_eostAUvqEeWy2_k8Xc-0ww" borderSize="1" borderSizeComputationExpression="1">
         <labelFormat>bold</labelFormat>
@@ -1146,32 +1146,32 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_XGQ1sFYDEeWPqujGg6x2EQ" name="LeftPane" visible="false">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_XGRcwFYDEeWPqujGg6x2EQ" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="253,206,137" foregroundColor="204,242,166">
           <labelFormat>italic</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='LeftPane']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='LeftPane']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" uid="_XGSq4FYDEeWPqujGg6x2EQ" name="Left_p3" visible="false" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
           <ownedStyle xmi:type="diagram:BundledImage" uid="_XGSq4VYDEeWPqujGg6x2EQ" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:BundledImageDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='LeftPane']/@subNodeMappings[name='ListElt']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='LeftPane']/@subNodeMappings[name='ListElt']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" uid="_XGTR8FYDEeWPqujGg6x2EQ" name="Center_p4" visible="false" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
           <ownedStyle xmi:type="diagram:BundledImage" uid="_XGTR8VYDEeWPqujGg6x2EQ" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:BundledImageDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='LeftPane']/@subNodeMappings[name='ListElt']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='LeftPane']/@subNodeMappings[name='ListElt']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" uid="_XGTR8lYDEeWPqujGg6x2EQ" name="Right_p5" visible="false" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
           <ownedStyle xmi:type="diagram:BundledImage" uid="_XGT5AFYDEeWPqujGg6x2EQ" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:BundledImageDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='LeftPane']/@subNodeMappings[name='ListElt']/@style"/>
           </ownedStyle>
@@ -1179,23 +1179,23 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_eovwUEvqEeWy2_k8Xc-0ww" name="Left_p3-VStack" visible="false" childrenPresentation="VerticalStack">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_eovwUUvqEeWy2_k8Xc-0ww" borderSize="1" borderSizeComputationExpression="1" backgroundColor="246,139,139" foregroundColor="255,245,181">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_eowXYEvqEeWy2_k8Xc-0ww" name="Center_p4-VStack" visible="false" childrenPresentation="VerticalStack">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_eowXYUvqEeWy2_k8Xc-0ww" borderSize="1" borderSizeComputationExpression="1" backgroundColor="246,139,139" foregroundColor="255,245,181">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_ulx8IFWrEeWed_P9Y9XnRA" name="newPackage1" visible="false">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_ulx8IVWrEeWed_P9Y9XnRA" borderSize="1" borderSizeComputationExpression="1" backgroundColor="204,242,166" foregroundColor="194,239,255">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@subContainerMappings[name='EPackageHStack3']/@style"/>
@@ -1203,16 +1203,16 @@
           <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@subContainerMappings[name='EPackageHStack3']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_XGVuMFYDEeWPqujGg6x2EQ" name="newPackage1" visible="false">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_XGWVQFYDEeWPqujGg6x2EQ" borderSize="1" borderSizeComputationExpression="1" backgroundColor="204,242,166" foregroundColor="194,239,255">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@subContainerMappings[name='EPackageCont']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@subContainerMappings[name='EPackageCont']"/>
           <ownedElements xmi:type="diagram:DNodeListElement" uid="_FK9zAEpcEemmTNdijIRYDQ" name="class5" visible="false">
-            <target xmi:type="ecore:EClass" href="My.ecore#//P1/Center_p4/newPackage1/class5"/>
-            <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Center_p4/newPackage1/class5"/>
+            <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1/class5"/>
+            <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1/class5"/>
             <ownedStyle xmi:type="diagram:BundledImage" uid="_FK9zAUpcEemmTNdijIRYDQ" labelPosition="node">
               <description xmi:type="style:BundledImageDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@subContainerMappings[name='EPackageCont']/@subNodeMappings[name='cl']/@style"/>
             </ownedStyle>
@@ -1221,8 +1221,8 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_eowXYkvqEeWy2_k8Xc-0ww" name="Right_p5-VStack" visible="false" childrenPresentation="VerticalStack">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_eow-cEvqEeWy2_k8Xc-0ww" borderSize="1" borderSizeComputationExpression="1" backgroundColor="246,139,139" foregroundColor="255,245,181">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@style"/>
         </ownedStyle>
@@ -1230,32 +1230,32 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_RsyiIFWsEeWed_P9Y9XnRA" name="az- hstack" childrenPresentation="HorizontalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//az"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_RsyiIVWsEeWed_P9Y9XnRA" borderSize="1" borderSizeComputationExpression="1">
         <labelFormat>bold</labelFormat>
         <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_XGW8UFYDEeWPqujGg6x2EQ" name="LeftPane">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//az"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_XGXjYFYDEeWPqujGg6x2EQ" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="253,206,137" foregroundColor="204,242,166">
           <labelFormat>italic</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='LeftPane']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='LeftPane']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" uid="_XGYxgFYDEeWPqujGg6x2EQ" name="aaa" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaa"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaa"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa"/>
           <ownedStyle xmi:type="diagram:BundledImage" uid="_XGYxgVYDEeWPqujGg6x2EQ" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:BundledImageDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='LeftPane']/@subNodeMappings[name='ListElt']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='LeftPane']/@subNodeMappings[name='ListElt']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" uid="_XGZYkFYDEeWPqujGg6x2EQ" name="aaaa" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa"/>
           <ownedStyle xmi:type="diagram:BundledImage" uid="_XGZYkVYDEeWPqujGg6x2EQ" labelAlignment="LEFT" labelPosition="node">
             <description xmi:type="style:BundledImageDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='LeftPane']/@subNodeMappings[name='ListElt']/@style"/>
           </ownedStyle>
@@ -1263,15 +1263,15 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_RszwQlWsEeWed_P9Y9XnRA" name="aaa-VStack" childrenPresentation="VerticalStack">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaa"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaa"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_RszwQ1WsEeWed_P9Y9XnRA" borderSize="1" borderSizeComputationExpression="1" backgroundColor="246,139,139" foregroundColor="255,245,181">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_XGamsFYDEeWPqujGg6x2EQ" name="bbb">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaa/bbb"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaa/bbb"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa/bbb"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa/bbb"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_XGbNwFYDEeWPqujGg6x2EQ" borderSize="1" borderSizeComputationExpression="1" backgroundColor="204,242,166" foregroundColor="194,239,255">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@subContainerMappings[name='EPackageCont']/@style"/>
@@ -1279,16 +1279,16 @@
           <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@subContainerMappings[name='EPackageCont']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_XGb00FYDEeWPqujGg6x2EQ" name="ccc">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaa/ccc"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaa/ccc"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa/ccc"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa/ccc"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_XGb00VYDEeWPqujGg6x2EQ" borderSize="1" borderSizeComputationExpression="1" backgroundColor="204,242,166" foregroundColor="194,239,255">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@subContainerMappings[name='EPackageCont']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@subContainerMappings[name='EPackageCont']"/>
           <ownedElements xmi:type="diagram:DNodeListElement" uid="_1BNiQFuwEeWZQLQxIrHbCA" name="cl3">
-            <target xmi:type="ecore:EClass" href="My.ecore#//az/aaa/ccc/cl3"/>
-            <semanticElements xmi:type="ecore:EClass" href="My.ecore#//az/aaa/ccc/cl3"/>
+            <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/az/aaa/ccc/cl3"/>
+            <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/az/aaa/ccc/cl3"/>
             <ownedStyle xmi:type="diagram:BundledImage" uid="_1BNiQVuwEeWZQLQxIrHbCA" labelPosition="node">
               <description xmi:type="style:BundledImageDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@subContainerMappings[name='EPackageCont']/@subNodeMappings[name='cl']/@style"/>
             </ownedStyle>
@@ -1297,23 +1297,23 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Rs0XUFWsEeWed_P9Y9XnRA" name="aaaa-VStack" childrenPresentation="VerticalStack">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_Rs0XUVWsEeWed_P9Y9XnRA" borderSize="1" borderSizeComputationExpression="1" backgroundColor="246,139,139" foregroundColor="255,245,181">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_XGeREFYDEeWPqujGg6x2EQ" name="bbbb">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa/bbbb"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa/bbbb"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa/bbbb"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa/bbbb"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_XGeREVYDEeWPqujGg6x2EQ" borderSize="1" borderSizeComputationExpression="1" backgroundColor="204,242,166" foregroundColor="194,239,255">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@subContainerMappings[name='EPackageCont']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@subContainerMappings[name='EPackageCont']"/>
           <ownedElements xmi:type="diagram:DNodeListElement" uid="_1BOwYFuwEeWZQLQxIrHbCA" name="cl4">
-            <target xmi:type="ecore:EClass" href="My.ecore#//az/aaaa/bbbb/cl4"/>
-            <semanticElements xmi:type="ecore:EClass" href="My.ecore#//az/aaaa/bbbb/cl4"/>
+            <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/az/aaaa/bbbb/cl4"/>
+            <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/az/aaaa/bbbb/cl4"/>
             <ownedStyle xmi:type="diagram:BundledImage" uid="_1BOwYVuwEeWZQLQxIrHbCA" labelPosition="node">
               <description xmi:type="style:BundledImageDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@subContainerMappings[name='EPackageCont']/@subNodeMappings[name='cl']/@style"/>
             </ownedStyle>
@@ -1321,8 +1321,8 @@
           </ownedElements>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_XGffMFYDEeWPqujGg6x2EQ" name="cccc">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa/cccc"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa/cccc"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa/cccc"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa/cccc"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_XGffMVYDEeWPqujGg6x2EQ" borderSize="1" borderSizeComputationExpression="1" backgroundColor="204,242,166" foregroundColor="194,239,255">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer/@containerMappings[name='EPackageHStack1']/@subContainerMappings[name='EPackageVStack2']/@subContainerMappings[name='EPackageCont']/@style"/>
@@ -1334,7 +1334,7 @@
     <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_G0PZU0vqEeWy2_k8Xc-0ww"/>
     <activatedLayers xmi:type="description_1:Layer" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer"/>
-    <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_HdGwIEvqEeWy2_k8Xc-0ww">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_HdGwIUvqEeWy2_k8Xc-0ww" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -1458,31 +1458,31 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_VP8uMFVcEeWPBvASMVA0xg" name="P1" childrenPresentation="VerticalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
       <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_VP9VQFVcEeWPBvASMVA0xg" borderSize="1" borderSizeComputationExpression="1" workspacePath="/DesignerTestProject/Tux.svg">
         <description xmi:type="style:WorkspaceImageDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer/@containerMappings[name='RCWithImage']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer/@containerMappings[name='RCWithImage']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_VP_xgFVcEeWPBvASMVA0xg" name="Left_p3">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
         <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_VP_xgVVcEeWPBvASMVA0xg" borderSize="1" borderSizeComputationExpression="1" borderLineStyle="dash_dot" workspacePath="DesignerTestProject/TUX-G2-SVG.svg">
           <customFeatures>workspacePath</customFeatures>
           <description xmi:type="style:WorkspaceImageDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer/@containerMappings[name='RCWithImage']/@subContainerMappings[name='RegionsWithImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer/@containerMappings[name='RCWithImage']/@subContainerMappings[name='RegionsWithImage']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" uid="_VQCNwFVcEeWPBvASMVA0xg" name="class1" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EClass" href="My.ecore#//P1/Left_p3/class1"/>
-          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Left_p3/class1"/>
+          <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Left_p3/class1"/>
+          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Left_p3/class1"/>
           <ownedStyle xmi:type="diagram:Square" uid="_VQC00FVcEeWPBvASMVA0xg" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer/@containerMappings[name='RCWithImage']/@subContainerMappings[name='RegionsWithImage']/@subNodeMappings[name='nodes']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer/@containerMappings[name='RCWithImage']/@subContainerMappings[name='RegionsWithImage']/@subNodeMappings[name='nodes']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNode" uid="_VQEC8FVcEeWPBvASMVA0xg" name="class3" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EClass" href="My.ecore#//P1/Left_p3/class3"/>
-          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Left_p3/class3"/>
+          <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Left_p3/class3"/>
+          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Left_p3/class3"/>
           <ownedStyle xmi:type="diagram:Square" uid="_VQEqAFVcEeWPBvASMVA0xg" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer/@containerMappings[name='RCWithImage']/@subContainerMappings[name='RegionsWithImage']/@subNodeMappings[name='nodes']/@style"/>
           </ownedStyle>
@@ -1490,15 +1490,15 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_VQAYkFVcEeWPBvASMVA0xg" name="Center_p4">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
         <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_iyaJIFuoEeWZQLQxIrHbCA" borderSize="1" borderSizeComputationExpression="1" borderLineStyle="dash_dot" workspacePath="/DesignerTestProject/TUX-G2-SVG.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer/@containerMappings[name='RCWithImage']/@subContainerMappings[name='RegionsWithImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer/@containerMappings[name='RCWithImage']/@subContainerMappings[name='RegionsWithImage']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" uid="_VQFREFVcEeWPBvASMVA0xg" name="class2" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EClass" href="My.ecore#//P1/Center_p4/class2"/>
-          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Center_p4/class2"/>
+          <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Center_p4/class2"/>
+          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Center_p4/class2"/>
           <ownedStyle xmi:type="diagram:Square" uid="_VQFREVVcEeWPBvASMVA0xg" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer/@containerMappings[name='RCWithImage']/@subContainerMappings[name='RegionsWithImage']/@subNodeMappings[name='nodes']/@style"/>
           </ownedStyle>
@@ -1506,15 +1506,15 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_VQBmsFVcEeWPBvASMVA0xg" name="Right_p5">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
         <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_jCl6MFuoEeWZQLQxIrHbCA" borderSize="1" borderSizeComputationExpression="1" borderLineStyle="dash_dot" workspacePath="/DesignerTestProject/TUX-G2-SVG.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer/@containerMappings[name='RCWithImage']/@subContainerMappings[name='RegionsWithImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer/@containerMappings[name='RCWithImage']/@subContainerMappings[name='RegionsWithImage']"/>
         <ownedDiagramElements xmi:type="diagram:DNode" uid="_VQDb4FVcEeWPBvASMVA0xg" name="class4" width="3" height="3" resizeKind="NSEW">
-          <target xmi:type="ecore:EClass" href="My.ecore#//P1/Right_p5/class4"/>
-          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//P1/Right_p5/class4"/>
+          <target xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Right_p5/class4"/>
+          <semanticElements xmi:type="ecore:EClass" href="My.ecore#//nominalCases/P1/Right_p5/class4"/>
           <ownedStyle xmi:type="diagram:Square" uid="_VQDb4VVcEeWPBvASMVA0xg" labelPosition="node">
             <description xmi:type="style:SquareDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer/@containerMappings[name='RCWithImage']/@subContainerMappings[name='RegionsWithImage']/@subNodeMappings[name='nodes']/@style"/>
           </ownedStyle>
@@ -1523,24 +1523,24 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_VP-jYFVcEeWPBvASMVA0xg" name="az" visible="false" childrenPresentation="VerticalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//az"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az"/>
       <graphicalFilters xmi:type="diagram:HideFilter" uid="_4Y7tsFWqEeWed_P9Y9XnRA"/>
       <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_VP-jYVVcEeWPBvASMVA0xg" borderSize="1" borderSizeComputationExpression="1" workspacePath="/DesignerTestProject/Tux.svg">
         <description xmi:type="style:WorkspaceImageDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer/@containerMappings[name='RCWithImage']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer/@containerMappings[name='RCWithImage']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_VQGfMFVcEeWPBvASMVA0xg" name="aaa" visible="false">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaa"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaa"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa"/>
         <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_VQGfMVVcEeWPBvASMVA0xg" borderSize="1" borderSizeComputationExpression="1" borderLineStyle="dash_dot" workspacePath="/DesignerTestProject/TUX-G2-SVG.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer/@containerMappings[name='RCWithImage']/@subContainerMappings[name='RegionsWithImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer/@containerMappings[name='RCWithImage']/@subContainerMappings[name='RegionsWithImage']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_VQHGQFVcEeWPBvASMVA0xg" name="aaaa" visible="false">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa"/>
         <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_VQHtUFVcEeWPBvASMVA0xg" borderSize="1" borderSizeComputationExpression="1" borderLineStyle="dash_dot" workspacePath="/DesignerTestProject/TUX-G2-SVG.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer/@containerMappings[name='RCWithImage']/@subContainerMappings[name='RegionsWithImage']/@style"/>
         </ownedStyle>
@@ -1550,7 +1550,7 @@
     <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_HdGwI0vqEeWy2_k8Xc-0ww"/>
     <activatedLayers xmi:type="description_1:Layer" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer"/>
-    <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_0FO4gD3IEeaMQoIf_sZyRg">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_0FO4gT3IEeaMQoIf_sZyRg" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -1685,8 +1685,8 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_0FO4gz3IEeaMQoIf_sZyRg" name="P1" childrenPresentation="VerticalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1695,23 +1695,23 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_0FO4hT3IEeaMQoIf_sZyRg" name="Left_p3">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_0FO4hj3IEeaMQoIf_sZyRg" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="2" borderSizeComputationExpression="2" borderColor="252,175,62" backgroundColor="138,226,52" foregroundColor="138,226,52">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_0FO4hz3IEeaMQoIf_sZyRg" name="Center_p4">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_0FO4iD3IEeaMQoIf_sZyRg" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="2" borderSizeComputationExpression="2" borderColor="252,175,62" backgroundColor="195,229,65" foregroundColor="195,229,65">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_0FO4iT3IEeaMQoIf_sZyRg" name="newPackage1" childrenPresentation="VerticalStack">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_0FO4ij3IEeaMQoIf_sZyRg" borderSize="4" borderSizeComputationExpression="4" borderColor="156,12,12">
             <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']/@style"/>
           </ownedStyle>
@@ -1719,8 +1719,8 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_0FO4iz3IEeaMQoIf_sZyRg" name="Right_p5">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_0FO4jD3IEeaMQoIf_sZyRg" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="2" borderSizeComputationExpression="2" borderColor="252,175,62" backgroundColor="252,233,79" foregroundColor="252,233,79">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']/@style"/>
         </ownedStyle>
@@ -1728,8 +1728,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_0FO4jT3IEeaMQoIf_sZyRg" name="az" childrenPresentation="VerticalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//az"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -1738,23 +1738,23 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_0FO4jz3IEeaMQoIf_sZyRg" name="aaa">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaa"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaa"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_0FO4kD3IEeaMQoIf_sZyRg" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="2" borderSizeComputationExpression="2" borderColor="252,175,62" backgroundColor="114,159,207" foregroundColor="114,159,207">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_0FO4kT3IEeaMQoIf_sZyRg" name="bbb" childrenPresentation="VerticalStack">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaa/bbb"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaa/bbb"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa/bbb"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa/bbb"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_0FO4kj3IEeaMQoIf_sZyRg" borderSize="4" borderSizeComputationExpression="4" borderColor="156,12,12">
             <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_0FO4kz3IEeaMQoIf_sZyRg" name="ccc" childrenPresentation="VerticalStack">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaa/ccc"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaa/ccc"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa/ccc"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa/ccc"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_0FO4lD3IEeaMQoIf_sZyRg" borderSize="4" borderSizeComputationExpression="4" borderColor="156,12,12">
             <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']/@style"/>
           </ownedStyle>
@@ -1762,30 +1762,30 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_0FO4lT3IEeaMQoIf_sZyRg" name="aaaa">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_0FO4lj3IEeaMQoIf_sZyRg" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="2" borderSizeComputationExpression="2" borderColor="252,175,62" backgroundColor="114,159,207" foregroundColor="114,159,207">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_0FO4lz3IEeaMQoIf_sZyRg" name="bbbb" childrenPresentation="VerticalStack">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa/bbbb"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa/bbbb"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa/bbbb"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa/bbbb"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_0FO4mD3IEeaMQoIf_sZyRg" borderSize="4" borderSizeComputationExpression="4" borderColor="156,12,12">
             <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_0FO4mT3IEeaMQoIf_sZyRg" name="cccc" childrenPresentation="VerticalStack">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa/cccc"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa/cccc"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa/cccc"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa/cccc"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_0FO4mj3IEeaMQoIf_sZyRg" borderSize="4" borderSizeComputationExpression="4" borderColor="156,12,12">
             <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']"/>
           <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_9UUeQD3IEeaMQoIf_sZyRg" name="eee">
-            <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa/cccc/eee"/>
-            <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa/cccc/eee"/>
+            <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa/cccc/eee"/>
+            <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa/cccc/eee"/>
             <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_9UUeQT3IEeaMQoIf_sZyRg" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="2" borderSizeComputationExpression="2" borderColor="252,175,62" backgroundColor="114,159,207" foregroundColor="114,159,207">
               <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer/@containerMappings[name='VStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']/@style"/>
             </ownedStyle>
@@ -1797,7 +1797,7 @@
     <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_0FO4mz3IEeaMQoIf_sZyRg"/>
     <activatedLayers xmi:type="description_1:Layer" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer"/>
-    <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_maGOUD4BEeanI7H5rb1DCA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_maGOUT4BEeanI7H5rb1DCA" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -1932,30 +1932,30 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_maGOUz4BEeanI7H5rb1DCA" name="P1" childrenPresentation="HorizontalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_maGOVD4BEeanI7H5rb1DCA" borderSize="4" borderSizeComputationExpression="4" borderColor="156,12,12">
         <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_maGOVT4BEeanI7H5rb1DCA" name="Left_p3">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_maGOVj4BEeanI7H5rb1DCA" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="2" borderSizeComputationExpression="2" borderColor="252,175,62" backgroundColor="138,226,52" foregroundColor="138,226,52">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']"/>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_maGOVz4BEeanI7H5rb1DCA" name="Center_p4">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_maGOWD4BEeanI7H5rb1DCA" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="2" borderSizeComputationExpression="2" borderColor="252,175,62" backgroundColor="195,229,65" foregroundColor="195,229,65">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_maGOWT4BEeanI7H5rb1DCA" name="newPackage1" childrenPresentation="HorizontalStack">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_maGOWj4BEeanI7H5rb1DCA" borderSize="4" borderSizeComputationExpression="4" borderColor="156,12,12">
             <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']/@style"/>
           </ownedStyle>
@@ -1963,8 +1963,8 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_maGOWz4BEeanI7H5rb1DCA" name="Right_p5">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_maGOXD4BEeanI7H5rb1DCA" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="2" borderSizeComputationExpression="2" borderColor="252,175,62" backgroundColor="252,233,79" foregroundColor="252,233,79">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']/@style"/>
         </ownedStyle>
@@ -1972,30 +1972,30 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_maGOXT4BEeanI7H5rb1DCA" name="az" childrenPresentation="HorizontalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//az"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_maGOXj4BEeanI7H5rb1DCA" borderSize="4" borderSizeComputationExpression="4" borderColor="156,12,12">
         <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_maGOXz4BEeanI7H5rb1DCA" name="aaa">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaa"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaa"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_maGOYD4BEeanI7H5rb1DCA" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="2" borderSizeComputationExpression="2" borderColor="252,175,62" backgroundColor="114,159,207" foregroundColor="114,159,207">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_maGOYT4BEeanI7H5rb1DCA" name="bbb" childrenPresentation="HorizontalStack">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaa/bbb"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaa/bbb"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa/bbb"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa/bbb"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_maGOYj4BEeanI7H5rb1DCA" borderSize="4" borderSizeComputationExpression="4" borderColor="156,12,12">
             <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_maGOYz4BEeanI7H5rb1DCA" name="ccc" childrenPresentation="HorizontalStack">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaa/ccc"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaa/ccc"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa/ccc"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaa/ccc"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_maGOZD4BEeanI7H5rb1DCA" borderSize="4" borderSizeComputationExpression="4" borderColor="156,12,12">
             <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']/@style"/>
           </ownedStyle>
@@ -2003,30 +2003,30 @@
         </ownedDiagramElements>
       </ownedDiagramElements>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_maGOZT4BEeanI7H5rb1DCA" name="aaaa">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_maGOZj4BEeanI7H5rb1DCA" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="2" borderSizeComputationExpression="2" borderColor="252,175,62" backgroundColor="114,159,207" foregroundColor="114,159,207">
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_maGOZz4BEeanI7H5rb1DCA" name="bbbb" childrenPresentation="HorizontalStack">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa/bbbb"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa/bbbb"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa/bbbb"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa/bbbb"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_maGOaD4BEeanI7H5rb1DCA" borderSize="4" borderSizeComputationExpression="4" borderColor="156,12,12">
             <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']"/>
         </ownedDiagramElements>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_maGOaT4BEeanI7H5rb1DCA" name="cccc" childrenPresentation="HorizontalStack">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa/cccc"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa/cccc"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa/cccc"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa/cccc"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_maGOaj4BEeanI7H5rb1DCA" borderSize="4" borderSizeComputationExpression="4" borderColor="156,12,12">
             <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']"/>
           <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_maGOaz4BEeanI7H5rb1DCA" name="eee">
-            <target xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa/cccc/eee"/>
-            <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//az/aaaa/cccc/eee"/>
+            <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa/cccc/eee"/>
+            <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az/aaaa/cccc/eee"/>
             <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_maGObD4BEeanI7H5rb1DCA" labelColor="252,175,62" labelAlignment="RIGHT" borderSize="2" borderSizeComputationExpression="2" borderColor="252,175,62" backgroundColor="114,159,207" foregroundColor="114,159,207">
               <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer/@containerMappings[name='HStackWithDnd']/@subContainerMappings[name='FreeFormRegionsWithDnD']/@style"/>
             </ownedStyle>
@@ -2038,7 +2038,7 @@
     <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_maGObT4BEeanI7H5rb1DCA"/>
     <activatedLayers xmi:type="description_1:Layer" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer"/>
-    <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_R5VIYEoiEemAMdy3PhSryg">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_R5W9kEoiEemAMdy3PhSryg" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -2142,8 +2142,8 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_R8IkwEoiEemAMdy3PhSryg" name="Left_p3" outgoingEdges="_j2_kkEriEemmTNdijIRYDQ" childrenPresentation="VerticalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -2153,8 +2153,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdges']/@defaultLayer/@containerMappings[name='EPackageVStack']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_j29IUEriEemmTNdijIRYDQ" name="[region-Left_p3]">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_j29IUUriEemmTNdijIRYDQ" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="253,206,137" foregroundColor="204,242,166">
           <labelFormat>italic</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdges']/@defaultLayer/@containerMappings[name='EPackageVStack']/@subContainerMappings[name='InternalRegion']/@style"/>
@@ -2163,8 +2163,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_R8KZ8UoiEemAMdy3PhSryg" name="Center_p4" childrenPresentation="VerticalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -2174,16 +2174,16 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdges']/@defaultLayer/@containerMappings[name='EPackageVStack']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_j29vYEriEemmTNdijIRYDQ" name="[region-Center_p4]">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_j29vYUriEemmTNdijIRYDQ" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="253,206,137" foregroundColor="204,242,166">
           <labelFormat>italic</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdges']/@defaultLayer/@containerMappings[name='EPackageVStack']/@subContainerMappings[name='InternalRegion']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdges']/@defaultLayer/@containerMappings[name='EPackageVStack']/@subContainerMappings[name='InternalRegion']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_j29vY0riEemmTNdijIRYDQ" name="newPackage1" incomingEdges="_j2_kkEriEemmTNdijIRYDQ" childrenPresentation="VerticalStack">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
           <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
           <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
           <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -2193,8 +2193,8 @@
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdges']/@defaultLayer/@containerMappings[name='EPackageVStack']"/>
           <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_j2-WcUriEemmTNdijIRYDQ" name="[region-newPackage1]">
-            <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
-            <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
+            <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
+            <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
             <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_j2-WckriEemmTNdijIRYDQ" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="253,206,137" foregroundColor="204,242,166">
               <labelFormat>italic</labelFormat>
               <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdges']/@defaultLayer/@containerMappings[name='EPackageVStack']/@subContainerMappings[name='InternalRegion']/@style"/>
@@ -2205,8 +2205,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_R8LBAEoiEemAMdy3PhSryg" name="Right_p5" childrenPresentation="VerticalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -2216,8 +2216,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdges']/@defaultLayer/@containerMappings[name='EPackageVStack']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_j2-9gEriEemmTNdijIRYDQ" name="[region-Right_p5]">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_j2-9gUriEemmTNdijIRYDQ" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="253,206,137" foregroundColor="204,242,166">
           <labelFormat>italic</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdges']/@defaultLayer/@containerMappings[name='EPackageVStack']/@subContainerMappings[name='InternalRegion']/@style"/>
@@ -2226,7 +2226,7 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_j2_kkEriEemmTNdijIRYDQ" sourceNode="_R8IkwEoiEemAMdy3PhSryg" targetNode="_j29vY0riEemmTNdijIRYDQ">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_j2_kkUriEemmTNdijIRYDQ" size="2">
         <description xmi:type="style:EdgeStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdges']/@defaultLayer/@edgeMappings[name='packageWithHierarchy']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_j2_kkkriEemmTNdijIRYDQ" labelSize="12"/>
@@ -2236,7 +2236,7 @@
     <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdges']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_R5VIYUoiEemAMdy3PhSryg"/>
     <activatedLayers xmi:type="description_1:Layer" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdges']/@defaultLayer"/>
-    <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_cqL08GwmEemxkZxOJ10a8g">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_crZV4GwmEemxkZxOJ10a8g" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -2381,8 +2381,8 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_cqzgAGwmEemxkZxOJ10a8g" name="Left_p3" outgoingEdges="_crUdYGwmEemxkZxOJ10a8g" childrenPresentation="VerticalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -2392,8 +2392,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']/@defaultLayer/@containerMappings[name='EPackageVStack']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_crBicGwmEemxkZxOJ10a8g" name="[region-Left_p3]">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_crDXoGwmEemxkZxOJ10a8g" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="253,206,137" foregroundColor="204,242,166">
           <labelFormat>italic</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']/@defaultLayer/@containerMappings[name='EPackageVStack']/@subContainerMappings[name='InternalRegion']/@style"/>
@@ -2402,32 +2402,32 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_cq_GMGwmEemxkZxOJ10a8g" name="Center_p4" childrenPresentation="VerticalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_cq_GMWwmEemxkZxOJ10a8g" borderSize="1" borderSizeComputationExpression="1">
         <labelFormat>bold</labelFormat>
         <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']/@defaultLayer/@containerMappings[name='EPackageVStack']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']/@defaultLayer/@containerMappings[name='EPackageVStack']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_crElwGwmEemxkZxOJ10a8g" name="[region-Center_p4]">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_crElwWwmEemxkZxOJ10a8g" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="253,206,137" foregroundColor="204,242,166">
           <labelFormat>italic</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']/@defaultLayer/@containerMappings[name='EPackageVStack']/@subContainerMappings[name='InternalRegion']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']/@defaultLayer/@containerMappings[name='EPackageVStack']/@subContainerMappings[name='InternalRegion']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_crFz4GwmEemxkZxOJ10a8g" name="newPackage1" incomingEdges="_crVrgGwmEemxkZxOJ10a8g" childrenPresentation="VerticalStack">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_crFz4WwmEemxkZxOJ10a8g" borderSize="1" borderSizeComputationExpression="1">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']/@defaultLayer/@containerMappings[name='EPackageVStack']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']/@defaultLayer/@containerMappings[name='EPackageVStack']"/>
           <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_crGa8GwmEemxkZxOJ10a8g" name="[region-newPackage1]">
-            <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
-            <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
+            <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
+            <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
             <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_crGa8WwmEemxkZxOJ10a8g" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="253,206,137" foregroundColor="204,242,166">
               <labelFormat>italic</labelFormat>
               <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']/@defaultLayer/@containerMappings[name='EPackageVStack']/@subContainerMappings[name='InternalRegion']/@style"/>
@@ -2438,8 +2438,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_cq_tQGwmEemxkZxOJ10a8g" name="Right_p5" outgoingEdges="_crVrgGwmEemxkZxOJ10a8g" incomingEdges="_crUdYGwmEemxkZxOJ10a8g" childrenPresentation="VerticalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -2449,8 +2449,8 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']/@defaultLayer/@containerMappings[name='EPackageVStack']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_crHpEGwmEemxkZxOJ10a8g" name="[region-Right_p5]">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_crHpEWwmEemxkZxOJ10a8g" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="253,206,137" foregroundColor="204,242,166">
           <labelFormat>italic</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']/@defaultLayer/@containerMappings[name='EPackageVStack']/@subContainerMappings[name='InternalRegion']/@style"/>
@@ -2459,8 +2459,8 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_crI3MGwmEemxkZxOJ10a8g" name="myAnnotation" outgoingEdges="_crXgsGwmEemxkZxOJ10a8g">
-      <target xmi:type="ecore:EAnnotation" href="My.ecore#//P1/%myAnnotation%"/>
-      <semanticElements xmi:type="ecore:EAnnotation" href="My.ecore#//P1/%myAnnotation%"/>
+      <target xmi:type="ecore:EAnnotation" href="My.ecore#//nominalCases/P1/%myAnnotation%"/>
+      <semanticElements xmi:type="ecore:EAnnotation" href="My.ecore#//nominalCases/P1/%myAnnotation%"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -2470,8 +2470,8 @@
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']/@defaultLayer/@containerMappings[name='EAnnotation']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_crUdYGwmEemxkZxOJ10a8g" sourceNode="_cqzgAGwmEemxkZxOJ10a8g" targetNode="_cq_tQGwmEemxkZxOJ10a8g">
-      <target xmi:type="ecore:EReference" href="My.ecore#//P1/Left_p3/class3/newEReference1"/>
-      <semanticElements xmi:type="ecore:EReference" href="My.ecore#//P1/Left_p3/class3/newEReference1"/>
+      <target xmi:type="ecore:EReference" href="My.ecore#//nominalCases/P1/Left_p3/class3/newEReference1"/>
+      <semanticElements xmi:type="ecore:EReference" href="My.ecore#//nominalCases/P1/Left_p3/class3/newEReference1"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_crUdYWwmEemxkZxOJ10a8g" size="2">
         <description xmi:type="style:EdgeStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']/@defaultLayer/@edgeMappings[name='EReference']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_crUdYmwmEemxkZxOJ10a8g" labelSize="12"/>
@@ -2479,8 +2479,8 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']/@defaultLayer/@edgeMappings[name='EReference']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_crVrgGwmEemxkZxOJ10a8g" incomingEdges="_crXgsGwmEemxkZxOJ10a8g" sourceNode="_cq_tQGwmEemxkZxOJ10a8g" targetNode="_crFz4GwmEemxkZxOJ10a8g">
-      <target xmi:type="ecore:EReference" href="My.ecore#//P1/Right_p5/class4/cl5"/>
-      <semanticElements xmi:type="ecore:EReference" href="My.ecore#//P1/Right_p5/class4/cl5"/>
+      <target xmi:type="ecore:EReference" href="My.ecore#//nominalCases/P1/Right_p5/class4/cl5"/>
+      <semanticElements xmi:type="ecore:EReference" href="My.ecore#//nominalCases/P1/Right_p5/class4/cl5"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_crVrgWwmEemxkZxOJ10a8g" size="2">
         <description xmi:type="style:EdgeStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']/@defaultLayer/@edgeMappings[name='EReference']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_crVrgmwmEemxkZxOJ10a8g" labelSize="12"/>
@@ -2488,7 +2488,7 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']/@defaultLayer/@edgeMappings[name='EReference']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_crXgsGwmEemxkZxOJ10a8g" sourceNode="_crI3MGwmEemxkZxOJ10a8g" targetNode="_crVrgGwmEemxkZxOJ10a8g">
-      <target xmi:type="ecore:EAnnotation" href="My.ecore#//P1/%myAnnotation%"/>
+      <target xmi:type="ecore:EAnnotation" href="My.ecore#//nominalCases/P1/%myAnnotation%"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_crYHwGwmEemxkZxOJ10a8g" lineStyle="dot" size="2">
         <description xmi:type="style:EdgeStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']/@defaultLayer/@edgeMappings[name='EAnnotationReferences']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_crYHwWwmEemxkZxOJ10a8g" labelSize="12"/>
@@ -2498,7 +2498,7 @@
     <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_cqZQUGwmEemxkZxOJ10a8g"/>
     <activatedLayers xmi:type="description_1:Layer" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']/@defaultLayer"/>
-    <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
   </diagram:DSemanticDiagram>
   <diagram:DSemanticDiagram uid="_tuZJMFrVEemyOM1f81wIKA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_twJcsFrVEemyOM1f81wIKA" source="DANNOTATION_CUSTOMIZATION_KEY">
@@ -2651,8 +2651,8 @@
       </data>
     </ownedAnnotationEntries>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_tvmDEFrVEemyOM1f81wIKA" name="nodeLeft_p3" outgoingEdges="_Fz0RFFrWEemyOM1f81wIKA" width="3" height="3" resizeKind="NSEW">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -2662,8 +2662,8 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@nodeMappings[name='EPackageNode']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_tvt-4VrVEemyOM1f81wIKA" name="nodeCenter_p4" width="3" height="3" resizeKind="NSEW">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -2673,8 +2673,8 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@nodeMappings[name='EPackageNode']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_tvul8VrVEemyOM1f81wIKA" name="nodeRight_p5" width="3" height="3" resizeKind="NSEW">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
@@ -2684,16 +2684,16 @@
       <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@nodeMappings[name='EPackageNode']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_tvvNAFrVEemyOM1f81wIKA" name="Left_p3" outgoingEdges="_twIOkFrVEemyOM1f81wIKA" childrenPresentation="VerticalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_tv4W8FrVEemyOM1f81wIKA" borderSize="1" borderSizeComputationExpression="1">
         <labelFormat>bold</labelFormat>
         <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@containerMappings[name='EPackageVStack']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@containerMappings[name='EPackageVStack']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_tv6MIFrVEemyOM1f81wIKA" name="[region-Left_p3]">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_tv8BUFrVEemyOM1f81wIKA" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="253,206,137" foregroundColor="204,242,166">
           <labelFormat>italic</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@containerMappings[name='EPackageVStack']/@subContainerMappings[name='InternalRegion']/@style"/>
@@ -2702,32 +2702,32 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_tv4-AVrVEemyOM1f81wIKA" name="Center_p4" childrenPresentation="VerticalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_tv4-AlrVEemyOM1f81wIKA" borderSize="1" borderSizeComputationExpression="1">
         <labelFormat>bold</labelFormat>
         <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@containerMappings[name='EPackageVStack']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@containerMappings[name='EPackageVStack']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_tv9PcFrVEemyOM1f81wIKA" name="[region-Center_p4]">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_tv92gFrVEemyOM1f81wIKA" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="253,206,137" foregroundColor="204,242,166">
           <labelFormat>italic</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@containerMappings[name='EPackageVStack']/@subContainerMappings[name='InternalRegion']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@containerMappings[name='EPackageVStack']/@subContainerMappings[name='InternalRegion']"/>
         <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_tv92glrVEemyOM1f81wIKA" name="newPackage1" incomingEdges="_twIOkFrVEemyOM1f81wIKA _Fz0RFFrWEemyOM1f81wIKA" childrenPresentation="VerticalStack">
-          <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
-          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
+          <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
+          <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
           <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_tv-dkFrVEemyOM1f81wIKA" borderSize="1" borderSizeComputationExpression="1">
             <labelFormat>bold</labelFormat>
             <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@containerMappings[name='EPackageVStack']/@style"/>
           </ownedStyle>
           <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@containerMappings[name='EPackageVStack']"/>
           <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_tv-dklrVEemyOM1f81wIKA" name="[region-newPackage1]">
-            <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
-            <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Center_p4/newPackage1"/>
+            <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
+            <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Center_p4/newPackage1"/>
             <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_tv-dk1rVEemyOM1f81wIKA" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="253,206,137" foregroundColor="204,242,166">
               <labelFormat>italic</labelFormat>
               <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@containerMappings[name='EPackageVStack']/@subContainerMappings[name='InternalRegion']/@style"/>
@@ -2738,16 +2738,16 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_tv5lEVrVEemyOM1f81wIKA" name="Right_p5" childrenPresentation="VerticalStack">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
-      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
+      <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
       <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_tv5lElrVEemyOM1f81wIKA" borderSize="1" borderSizeComputationExpression="1">
         <labelFormat>bold</labelFormat>
         <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@containerMappings[name='EPackageVStack']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@containerMappings[name='EPackageVStack']"/>
       <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_tv_EoVrVEemyOM1f81wIKA" name="[region-Right_p5]">
-        <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
-        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//P1/Right_p5"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
+        <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Right_p5"/>
         <ownedStyle xmi:type="diagram:FlatContainerStyle" uid="_tv_EolrVEemyOM1f81wIKA" showIcon="false" labelAlignment="LEFT" borderSize="1" borderSizeComputationExpression="1" backgroundStyle="GradientTopToBottom" backgroundColor="253,206,137" foregroundColor="204,242,166">
           <labelFormat>italic</labelFormat>
           <description xmi:type="style:FlatContainerStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@containerMappings[name='EPackageVStack']/@subContainerMappings[name='InternalRegion']/@style"/>
@@ -2756,7 +2756,7 @@
       </ownedDiagramElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_twIOkFrVEemyOM1f81wIKA" sourceNode="_tvvNAFrVEemyOM1f81wIKA" targetNode="_tv92glrVEemyOM1f81wIKA">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_twI1oFrVEemyOM1f81wIKA" size="2">
         <description xmi:type="style:EdgeStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@edgeMappings[name='packageWithHierarchy']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_twI1oVrVEemyOM1f81wIKA" labelSize="12"/>
@@ -2764,7 +2764,7 @@
       <actualMapping xmi:type="description_1:EdgeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@edgeMappings[name='packageWithHierarchy']"/>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" uid="_Fz0RFFrWEemyOM1f81wIKA" sourceNode="_tvmDEFrVEemyOM1f81wIKA" targetNode="_tv92glrVEemyOM1f81wIKA">
-      <target xmi:type="ecore:EPackage" href="My.ecore#//P1/Left_p3"/>
+      <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1/Left_p3"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" uid="_Fz04IFrWEemyOM1f81wIKA" size="2">
         <description xmi:type="style:EdgeStyleDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer/@edgeMappings[name='packageWithHierarchy']/@style"/>
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" uid="_Fz04IVrWEemyOM1f81wIKA" labelSize="12"/>
@@ -2774,6 +2774,6 @@
     <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']"/>
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_tuoZwFrVEemyOM1f81wIKA"/>
     <activatedLayers xmi:type="description_1:Layer" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']/@defaultLayer"/>
-    <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/P1"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>

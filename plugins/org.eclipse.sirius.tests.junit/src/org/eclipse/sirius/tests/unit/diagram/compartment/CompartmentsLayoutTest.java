@@ -31,9 +31,11 @@ import org.eclipse.draw2d.StackLayout;
 import org.eclipse.draw2d.ToolbarLayout;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Insets;
+import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.ENamedElement;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EcoreFactory;
 import org.eclipse.emf.transaction.RecordingCommand;
@@ -845,6 +847,60 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         Rectangle firstRegionBounds = checkBounds(FIRST_REGION_CONTAINER_NAME, new Rectangle(64, 16, -1, -1), new Rectangle(64, 16, 141, -1));
         assertEquals("Wrong Draw2D height for " + FIRST_REGION_CONTAINER_NAME, INITIAL_VERTICAL_FIRST_REGION_CONTAINER_BOUNDS.height + heightDeltas + leftClass2Bounds.height,
                 firstRegionBounds.height(), 1);
+    }
+
+    public void testLayoutAtCreationWithAListRegionWithDefinedSize() {
+        // We create a new diagram
+        EObject root = session.getSemanticResources().stream().findFirst().get().getContents().get(0);
+        assertTrue("The root of the semantic model must be an EPackage", root instanceof EPackage);
+        EPackage semanticRootForDiagram = ((EPackage) root).getESubpackages().get(1);
+        diagram = (DDiagram) createRepresentation("DiagHStackWithSizedList", semanticRootForDiagram);
+        // We open the editor
+        editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        // Check that bounds for the 2 lists are the same
+        checkSameBounds("Cl1", "Cl2");
+        // Save and close
+        session.save(new NullProgressMonitor());
+        DialectUIManager.INSTANCE.closeEditor(editor, false);
+        TestsUtil.synchronizationWithUIThread();
+        // Reopen the editor and check the size again
+        editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+        // Check that bounds for the 2 lists are the same
+        checkSameBounds("Cl1", "Cl2");
+    }
+
+    public void testLayoutAtCreationWithAListRegionWithAutoSize() {
+        // We create a new diagram
+        EObject root = session.getSemanticResources().stream().findFirst().get().getContents().get(0);
+        assertTrue("The root of the semantic model must be an EPackage", root instanceof EPackage);
+        EPackage semanticRootForDiagram = ((EPackage) root).getESubpackages().get(1);
+        diagram = (DDiagram) createRepresentation("DiagHStackWithAutoSizedList", semanticRootForDiagram);
+        // We open the editor
+        editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        // Check that bounds for the 2 lists are the same
+        checkSameBounds("Cl1", "Cl2");
+        // Check the list size at opening
+        Rectangle autoSizeBounds = new Rectangle(0, 0, -1, -1);
+        Rectangle expectedBounds = new Rectangle(new Point(0, 0), LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION);
+        checkBounds("Cl1", autoSizeBounds, expectedBounds);
+        // Save and close
+        session.save(new NullProgressMonitor());
+        DialectUIManager.INSTANCE.closeEditor(editor, false);
+        TestsUtil.synchronizationWithUIThread();
+        // Reopen the editor and check the size again
+        editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+        // Check that bounds for the 2 lists are the same
+        checkSameBounds("Cl1", "Cl2");
+        checkBounds("Cl1", autoSizeBounds, expectedBounds);
+    }
+
+    private void checkSameBounds(String labelOfFirstElementToCompare, String labelOfSecondElementToCompare) {
+        DDiagramElementContainer region = getDiagramElementsFromLabel(diagram, labelOfSecondElementToCompare, DDiagramElementContainer.class).get(0);
+        AbstractDiagramElementContainerEditPart editPart = (AbstractDiagramElementContainerEditPart) getEditPart(region);
+        IFigure mainFigure = editPart.getMainFigure();
+        checkBounds(labelOfFirstElementToCompare, getBounds((Node) editPart.getNotationView()), mainFigure.getBounds());
     }
 
     private void changeSemanticOrder() {

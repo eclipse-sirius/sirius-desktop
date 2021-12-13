@@ -1,60 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="a">
-  <eSubpackages name="P1">
-    <eAnnotations source="myAnnotation" references="#//P1/Right_p5/class4/cl5"/>
-    <eClassifiers xsi:type="ecore:EClass" name="Left_class1">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr1"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr2"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr3"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr5"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Center_class2">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="Leftattr1"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="Leftattr2"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="Centerattr3"/>
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="Leftattr4"/>
-    </eClassifiers>
-    <eClassifiers xsi:type="ecore:EClass" name="Right_class3">
-      <eStructuralFeatures xsi:type="ecore:EAttribute" name="Centerattr1"/>
-    </eClassifiers>
-    <eSubpackages name="Left_p3">
-      <eClassifiers xsi:type="ecore:EClass" name="class1" eSuperTypes="#//P1/Center_p4/newPackage1/class5">
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="root">
+  <eSubpackages name="nominalCases">
+    <eSubpackages name="P1">
+      <eAnnotations source="myAnnotation" references="#//nominalCases/P1/Right_p5/class4/cl5"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Left_class1">
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr1"/>
         <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr2"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr3"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr5"/>
       </eClassifiers>
-      <eClassifiers xsi:type="ecore:EClass" name="class3">
-        <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//P1/Right_p5/class4"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Center_class2">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="Leftattr1"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="Leftattr2"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="Centerattr3"/>
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="Leftattr4"/>
       </eClassifiers>
-    </eSubpackages>
-    <eSubpackages name="Center_p4">
-      <eClassifiers xsi:type="ecore:EClass" name="class2"/>
-      <eSubpackages name="newPackage1">
-        <eClassifiers xsi:type="ecore:EClass" name="class5"/>
+      <eClassifiers xsi:type="ecore:EClass" name="Right_class3">
+        <eStructuralFeatures xsi:type="ecore:EAttribute" name="Centerattr1"/>
+      </eClassifiers>
+      <eSubpackages name="Left_p3">
+        <eClassifiers xsi:type="ecore:EClass" name="class1" eSuperTypes="#//nominalCases/P1/Center_p4/newPackage1/class5">
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr1"/>
+          <eStructuralFeatures xsi:type="ecore:EAttribute" name="attr2"/>
+        </eClassifiers>
+        <eClassifiers xsi:type="ecore:EClass" name="class3">
+          <eStructuralFeatures xsi:type="ecore:EReference" name="newEReference1" eType="#//nominalCases/P1/Right_p5/class4"/>
+        </eClassifiers>
+      </eSubpackages>
+      <eSubpackages name="Center_p4">
+        <eClassifiers xsi:type="ecore:EClass" name="class2"/>
+        <eSubpackages name="newPackage1">
+          <eClassifiers xsi:type="ecore:EClass" name="class5"/>
+        </eSubpackages>
+      </eSubpackages>
+      <eSubpackages name="Right_p5">
+        <eClassifiers xsi:type="ecore:EClass" name="class4">
+          <eStructuralFeatures xsi:type="ecore:EReference" name="cl5" eType="#//nominalCases/P1/Center_p4/newPackage1/class5"/>
+        </eClassifiers>
       </eSubpackages>
     </eSubpackages>
-    <eSubpackages name="Right_p5">
-      <eClassifiers xsi:type="ecore:EClass" name="class4">
-        <eStructuralFeatures xsi:type="ecore:EReference" name="cl5" eType="#//P1/Center_p4/newPackage1/class5"/>
-      </eClassifiers>
+    <eSubpackages name="az">
+      <eClassifiers xsi:type="ecore:EClass" name="cl1"/>
+      <eClassifiers xsi:type="ecore:EClass" name="cl2"/>
+      <eSubpackages name="aaa">
+        <eSubpackages name="bbb"/>
+        <eSubpackages name="ccc">
+          <eClassifiers xsi:type="ecore:EClass" name="cl3"/>
+        </eSubpackages>
+      </eSubpackages>
+      <eSubpackages name="aaaa">
+        <eSubpackages name="bbbb">
+          <eClassifiers xsi:type="ecore:EClass" name="cl4"/>
+        </eSubpackages>
+        <eSubpackages name="cccc">
+          <eSubpackages name="eee"/>
+        </eSubpackages>
+      </eSubpackages>
     </eSubpackages>
   </eSubpackages>
-  <eSubpackages name="az">
-    <eClassifiers xsi:type="ecore:EClass" name="cl1"/>
-    <eClassifiers xsi:type="ecore:EClass" name="cl2"/>
-    <eSubpackages name="aaa">
-      <eSubpackages name="bbb"/>
-      <eSubpackages name="ccc">
-        <eClassifiers xsi:type="ecore:EClass" name="cl3"/>
-      </eSubpackages>
-    </eSubpackages>
-    <eSubpackages name="aaaa">
-      <eSubpackages name="bbbb">
-        <eClassifiers xsi:type="ecore:EClass" name="cl4"/>
-      </eSubpackages>
-      <eSubpackages name="cccc">
-        <eSubpackages name="eee"/>
-      </eSubpackages>
-    </eSubpackages>
+  <eSubpackages name="diagHStackWithSizedList">
+    <eClassifiers xsi:type="ecore:EClass" name="Cl"/>
   </eSubpackages>
 </ecore:EPackage>
