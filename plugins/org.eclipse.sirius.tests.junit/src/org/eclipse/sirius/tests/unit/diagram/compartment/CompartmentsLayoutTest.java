@@ -80,6 +80,7 @@ import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.RegionRoundedGradientRectangle;
+import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.AlphaDropShadowBorder;
 import org.eclipse.sirius.ext.gmf.runtime.gef.ui.figures.LabelBorderStyleIds;
@@ -850,6 +851,17 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
     }
 
     public void testLayoutAtCreationWithAListRegionWithDefinedSize() {
+        testLayoutAtCreationWithAListRegionWithDefinedSize(new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 100, 50));
+    }
+    
+    public void testLayoutAtCreationWithAListRegionWithDefinedSize_autoSizeAtArrangeDisabled() {
+        //Change preference to disable the auto size at arrange.
+        changeDiagramUIPreference(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name(), false);
+        // Launch same test but with another value for "autosize" pref and another expected
+        testLayoutAtCreationWithAListRegionWithDefinedSize(new Rectangle(0, 0, 100, 50), new Rectangle(0, 0, 100, 50));
+    }
+    
+    public void testLayoutAtCreationWithAListRegionWithDefinedSize(Rectangle expectedGmfBounds, Rectangle expectedDraw2dBounds) {
         // We create a new diagram
         EObject root = session.getSemanticResources().stream().findFirst().get().getContents().get(0);
         assertTrue("The root of the semantic model must be an EPackage", root instanceof EPackage);
@@ -860,9 +872,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         // Check that bounds for the 2 lists are the same
         checkSameBounds("Cl1", "Cl2");
         // Check the list size at opening
-        Rectangle autoSizeBounds = new Rectangle(0, 0, -1, -1);
-        Rectangle expectedBounds = new Rectangle(0, 0, 100, 50);
-        checkBounds("Cl1", autoSizeBounds, expectedBounds);
+        checkBounds("Cl1", expectedGmfBounds, expectedDraw2dBounds);
         // Save and close
         session.save(new NullProgressMonitor());
         DialectUIManager.INSTANCE.closeEditor(editor, false);
@@ -872,9 +882,9 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         TestsUtil.synchronizationWithUIThread();
         // Check that bounds for the 2 lists are the same
         checkSameBounds("Cl1", "Cl2");
-        checkBounds("Cl1", autoSizeBounds, expectedBounds);
+        checkBounds("Cl1", expectedGmfBounds, expectedDraw2dBounds);
     }
-
+    
     public void testLayoutAtCreationWithAListRegionWithAutoSize() {
         // We create a new diagram
         EObject root = session.getSemanticResources().stream().findFirst().get().getContents().get(0);
@@ -899,6 +909,13 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         // Check that bounds for the 2 lists are the same
         checkSameBounds("Cl1", "Cl2");
         checkBounds("Cl1", autoSizeBounds, expectedBounds);
+    }
+
+    public void testLayoutAtCreationWithAListRegionWithAutoSize_autoSizeAtArrangeDisabled() {
+        // Change preference to disable the auto size at arrange.
+        changeDiagramUIPreference(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name(), false);
+        // Launch same test but with another value for "autosize" pref
+        testLayoutAtCreationWithAListRegionWithAutoSize();
     }
 
     private void checkSameBounds(String labelOfFirstElementToCompare, String labelOfSecondElementToCompare) {
