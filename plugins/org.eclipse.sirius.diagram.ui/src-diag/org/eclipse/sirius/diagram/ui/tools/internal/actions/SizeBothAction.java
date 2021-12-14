@@ -17,9 +17,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
+import org.eclipse.draw2d.PositionConstants;
 import org.eclipse.draw2d.geometry.Dimension;
+import org.eclipse.draw2d.geometry.PrecisionDimension;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.RequestConstants;
 import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gmf.runtime.diagram.core.util.ViewUtil;
@@ -34,6 +37,7 @@ import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.model.business.internal.query.DNodeContainerExperimentalQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
+import org.eclipse.sirius.diagram.ui.graphical.edit.policies.SnapChangeBoundsRequest;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.ecore.extender.business.api.permission.IPermissionAuthority;
@@ -46,7 +50,7 @@ import com.google.common.collect.Lists;
 /**
  * Sirius specific size both action:
  * <UL>
- * <LI>disable the action on Region and Region container.</LI>
+ * <LI>specific behavior for regions container (as target or as source),</LI>
  * <LI>check authority permission in calculateEnabled()./LI>
  * </UL>
  * 
@@ -78,6 +82,7 @@ public class SizeBothAction extends org.eclipse.gmf.runtime.diagram.ui.actions.i
     @SuppressWarnings("rawtypes")
     @Override
     protected Command getCommand() {
+        String emptySetBoundsLabel = ""; //$NON-NLS-1$
         // Create a compound command to hold the resize commands
         CompoundCommand doResizeCmd = new CompoundCommand();
 
@@ -86,48 +91,80 @@ public class SizeBothAction extends org.eclipse.gmf.runtime.diagram.ui.actions.i
 
         // Get the Primary Selection
         int last = getSelectedObjects().size() - 1;
-        IGraphicalEditPart primary = (IGraphicalEditPart) getSelectedObjects().get(last);
+        IGraphicalEditPart primaryEditPart = (IGraphicalEditPart) getSelectedObjects().get(last);
 
-        if (concernRegion(primary)) {
-            List<AbstractDiagramElementContainerEditPart> primaryRegions = getRegionParts((AbstractDiagramContainerEditPart) primary);
+        Dimension primarySize = getSize(primaryEditPart);
+
+        if (isRegionContainer(primaryEditPart)) {
+            // The "reference" is a region container
+            List<AbstractDiagramElementContainerEditPart> primaryRegions = getRegionParts((AbstractDiagramContainerEditPart) primaryEditPart);
 
             while (iter.hasNext()) {
-                IGraphicalEditPart toResize = (IGraphicalEditPart) iter.next();
-                if (toResize != primary && concernRegion(toResize)) {
-                    List<AbstractDiagramElementContainerEditPart> toResizeRegions = getRegionParts((AbstractDiagramContainerEditPart) toResize);
-                    int toResizeSize = toResizeRegions.size();
-                    int primarySize = primaryRegions.size();
-                    if (toResizeSize <= primarySize) {
-                        for (int i = 0; i < toResizeSize; i++) {
-                            AbstractDiagramElementContainerEditPart toResizeRegion = toResizeRegions.get(i);
-                            AbstractDiagramElementContainerEditPart primaryRegion = primaryRegions.get(i);
+                IGraphicalEditPart toResizeEditPart = (IGraphicalEditPart) iter.next();
+                if (toResizeEditPart != primaryEditPart) {
+                    if (!isRegionContainer(toResizeEditPart)) {
+                        // Default behavior
+                        View resizeView = (View) toResizeEditPart.getModel();
+                        doResizeCmd.add(new ICommandProxy(new SetBoundsCommand(toResizeEditPart.getEditingDomain(), emptySetBoundsLabel, new EObjectAdapter(resizeView), primarySize)));
+                    } else {
+                        List<AbstractDiagramElementContainerEditPart> toResizeRegions = getRegionParts((AbstractDiagramContainerEditPart) toResizeEditPart);
+                        int nbRegionsInEditPartToResize = toResizeRegions.size();
+                        int nbRegionsInPrimaryEditPart = primaryRegions.size();
+                        if (nbRegionsInEditPartToResize <= nbRegionsInPrimaryEditPart) {
+                            // Set the container as auto-sized
+                            doResizeCmd.add(
+                                    new ICommandProxy(new SetBoundsCommand(toResizeEditPart.getEditingDomain(), emptySetBoundsLabel, new EObjectAdapter((View) toResizeEditPart.getModel()), new Dimension(-1, -1))));
 
-                            Dimension newDimension = null;
+                            for (int i = 0; i < nbRegionsInEditPartToResize; i++) {
+                                AbstractDiagramElementContainerEditPart toResizeRegion = toResizeRegions.get(i);
+                                AbstractDiagramElementContainerEditPart primaryRegion = primaryRegions.get(i);
 
-                            // Case where there is more region in the primary container than the one we are resizing. In
-                            // that case, the last region takes the size of the remaining regions in the primary region
-                            // container.
-                            if (i == toResizeSize - 1 && primarySize > toResizeSize) {
-                                newDimension = computeLastRegionDimension(primary, primaryRegions, primarySize, i, primaryRegion);
+                                Dimension newDimension = null;
 
+                                // Case where there is more region in the primary container than the one we are
+                                // resizing. In that case, the last region takes the size of the remaining regions in
+                                // the primary region container.
+                                if (i == nbRegionsInEditPartToResize - 1 && nbRegionsInPrimaryEditPart > nbRegionsInEditPartToResize) {
+                                    newDimension = computeLastRegionDimension(primaryEditPart, primaryRegions, nbRegionsInPrimaryEditPart, i, primaryRegion);
+
+                                }
+                                if (newDimension == null) {
+                                    newDimension = getSize(primaryRegion);
+                                }
+                                View resizeView = (View) toResizeRegion.getModel();
+
+                                doResizeCmd.add(new ICommandProxy(new SetBoundsCommand(toResizeEditPart.getEditingDomain(), emptySetBoundsLabel, new EObjectAdapter(resizeView), newDimension)));
                             }
-                            if (newDimension == null) {
-                                newDimension = getPrimaryRegionSize(primaryRegion);
-                            }
-                            View resizeView = (View) toResizeRegion.getModel();
-
-                            doResizeCmd.add(new ICommandProxy(new SetBoundsCommand(toResize.getEditingDomain(), "", new EObjectAdapter(resizeView), newDimension))); //$NON-NLS-1$
                         }
-
                     }
                 }
             }
-
-            return doResizeCmd.unwrap();
         } else {
-            return super.getCommand();
+            // The "reference" is not a region container:
+            // * if some elements to resize are regions container we reduce the last column in width (if possible) and
+            // the last row in height (if possible). It relies on Resize Request.
+            // * for other kind of elements the default behavior is applied
+            while (iter.hasNext()) {
+                IGraphicalEditPart toResize = (IGraphicalEditPart) iter.next();
+                if (!isRegionContainer(toResize)) {
+                    // Default behavior
+                    View resizeView = (View) toResize.getModel();
+                    doResizeCmd.add(new ICommandProxy(new SetBoundsCommand(toResize.getEditingDomain(), emptySetBoundsLabel, new EObjectAdapter(resizeView), primarySize)));
+                } else {
+                    // Compute the delta to apply a resize request on the container
+                    SnapChangeBoundsRequest request = new SnapChangeBoundsRequest(RequestConstants.REQ_RESIZE);
+                    int currentWidth = toResize.getFigure().getBounds().width();
+                    int currentHeight = toResize.getFigure().getBounds().height();
+                    PrecisionDimension dim = new PrecisionDimension(primarySize.width() - currentWidth, primarySize.height() - currentHeight);
+                    toResize.getFigure().translateToAbsolute(dim);
+                    request.setSizeDelta(dim);
+                    request.setResizeDirection(PositionConstants.SOUTH_EAST);
+                    request.setEditParts(Collections.singletonList(toResize));
+                    doResizeCmd.add(toResize.getCommand(request));
+                }
+            }
         }
-
+        return doResizeCmd.unwrap();
     }
 
     private Dimension computeLastRegionDimension(IGraphicalEditPart primary, List<AbstractDiagramElementContainerEditPart> primaryRegions, int primarySize, int currentIndex,
@@ -136,14 +173,13 @@ public class SizeBothAction extends org.eclipse.gmf.runtime.diagram.ui.actions.i
         Optional<DNodeContainer> optional = Optional.of(((AbstractDiagramContainerEditPart) primary).resolveDiagramElement()).filter(DNodeContainer.class::isInstance).map(DNodeContainer.class::cast);
         if (optional.isPresent()) {
             DNodeContainerExperimentalQuery query = new DNodeContainerExperimentalQuery(optional.get());
-            newDimension = getPrimaryRegionSize(primaryRegion);
+            newDimension = getSize(primaryRegion);
             for (int j = currentIndex + 1; j < primarySize; j++) {
-                Dimension tempDim = getPrimaryRegionSize(primaryRegions.get(j));
+                Dimension tempDim = getSize(primaryRegions.get(j));
 
                 if (query.isHorizontaltackContainer()) {
                     newDimension.expand(tempDim.width, 0);
                 } else {
-
                     newDimension.expand(0, tempDim.height);
                 }
             }
@@ -151,13 +187,13 @@ public class SizeBothAction extends org.eclipse.gmf.runtime.diagram.ui.actions.i
         return newDimension;
     }
 
-    private Dimension getPrimaryRegionSize(AbstractDiagramElementContainerEditPart primaryRegion) {
+    private Dimension getSize(IGraphicalEditPart containerEditPart) {
         Dimension newDimension;
-        View primaryView = (View) primaryRegion.getModel();
+        View primaryView = (View) containerEditPart.getModel();
         Integer width = (Integer) ViewUtil.getStructuralFeatureValue(primaryView, NotationPackage.eINSTANCE.getSize_Width());
         Integer height = (Integer) ViewUtil.getStructuralFeatureValue(primaryView, NotationPackage.eINSTANCE.getSize_Height());
         if (width.intValue() == -1 || height.intValue() == -1)
-            newDimension = primaryRegion.getFigure().getSize().getCopy();
+            newDimension = containerEditPart.getFigure().getSize().getCopy();
         else
             newDimension = new Dimension(width.intValue(), height.intValue());
         return newDimension;
@@ -183,15 +219,15 @@ public class SizeBothAction extends org.eclipse.gmf.runtime.diagram.ui.actions.i
         return canEditInstance;
     }
 
-    private boolean concernRegion(EditPart hostPart) {
+    private boolean isRegionContainer(EditPart hostPart) {
         if (hostPart instanceof AbstractDiagramContainerEditPart) {
             return ((AbstractDiagramContainerEditPart) hostPart).isRegionContainer();
         }
         return false;
     }
 
-    private List<AbstractDiagramElementContainerEditPart> getRegionParts(AbstractDiagramContainerEditPart host) {
-        AbstractDNodeContainerCompartmentEditPart comp = Iterables.getFirst(Iterables.filter(host.getChildren(), AbstractDNodeContainerCompartmentEditPart.class), null);
+    private List<AbstractDiagramElementContainerEditPart> getRegionParts(AbstractDiagramContainerEditPart regionsContainerEditPart) {
+        AbstractDNodeContainerCompartmentEditPart comp = Iterables.getFirst(Iterables.filter(regionsContainerEditPart.getChildren(), AbstractDNodeContainerCompartmentEditPart.class), null);
         if (comp != null) {
             return Lists.newArrayList(Iterables.filter(comp.getChildren(), AbstractDiagramElementContainerEditPart.class));
         }
