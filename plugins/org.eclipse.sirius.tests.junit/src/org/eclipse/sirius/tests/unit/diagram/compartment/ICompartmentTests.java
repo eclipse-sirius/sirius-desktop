@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2019 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -75,6 +75,8 @@ public interface ICompartmentTests {
     String FIRST_REGION_CONTAINER_NAME = "P1";
 
     String SECOND_REGION_CONTAINER_NAME = "az";
+
+    String FREE_FORM_CONTAINER_NAME = "P1_FF";
 
     String SECOND_REGION_CONTAINER_FIRST_PKG_NAME = "aaa";
 

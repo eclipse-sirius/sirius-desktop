@@ -100,6 +100,14 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
+        <containerMappings name="FreeFormContainer" semanticCandidatesExpression="aql:self.eSubpackages->first()" domainClass="ecore.EPackage">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="aql:self.name + '_FF'">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+          </style>
+        </containerMappings>
         <toolSections name="default">
           <ownedTools xsi:type="tool:NodeCreationDescription" name="EAttribute" nodeMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer/@containerMappings[name='VStack']/@subContainerMappings[name='ListRegions']/@subNodeMappings[name='Attributes']">
             <variable name="container"/>
@@ -335,6 +343,14 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_gray']"/>
             </style>
           </conditionnalStyles>
+        </containerMappings>
+        <containerMappings name="FreeFormContainer" semanticCandidatesExpression="aql:self.eSubpackages->first()" domainClass="ecore.EPackage">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12" labelExpression="aql:self.name + '_FF'">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_red']"/>
+          </style>
         </containerMappings>
         <toolSections name="default">
           <ownedTools xsi:type="tool:NodeCreationDescription" name="EAttribute" nodeMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='HListRegions']/@subNodeMappings[name='HAttributes']">
