@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis uid="_e3qcoZa7EeK0jbLdcLCXjQ" selectedViews="_fQZFsJa7EeK0jbLdcLCXjQ" version="14.1.0.201810161215">
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.3/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
+  <viewpoint:DAnalysis uid="_e3qcoZa7EeK0jbLdcLCXjQ" selectedViews="_fQZFsJa7EeK0jbLdcLCXjQ" version="14.6.0.202110251100">
     <semanticResources>My.ecore</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" uid="_fQZFsJa7EeK0jbLdcLCXjQ">
       <viewpoint xmi:type="description:Viewpoint" href="compartments.odesign#//@ownedViewpoints[name='Compartments']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8LO8Us2EemVaPxNO-mXlA" name="VStackDiag" repPath="#_xGk0UEgKEeWO8ekbzmZQXg">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8LO8Us2EemVaPxNO-mXlA" name="VStackDiag" repPath="#_xGk0UEgKEeWO8ekbzmZQXg" changeId="1b3568eb-2b25-48bf-bde1-471ecdc3daaa">
         <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8pJAUs2EemVaPxNO-mXlA" name="HStackDiag" repPath="#_Qj3mgEvNEeWf576mnYm4XQ">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8pJAUs2EemVaPxNO-mXlA" name="HStackDiag" repPath="#_Qj3mgEvNEeWf576mnYm4XQ" changeId="3928fd2a-a6cd-46bc-ad4e-0346d72a2546">
         <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8pwEUs2EemVaPxNO-mXlA" name="RegionsInRegions" repPath="#_G0PZUEvqEeWy2_k8Xc-0ww">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8pwEUs2EemVaPxNO-mXlA" name="RegionsInRegions" repPath="#_G0PZUEvqEeWy2_k8Xc-0ww" changeId="16006895-15f4-4fed-87ce-a866e896a233">
         <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8pwE0s2EemVaPxNO-mXlA" name="ImageDiag" repPath="#_HdGwIEvqEeWy2_k8Xc-0ww">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8pwE0s2EemVaPxNO-mXlA" name="ImageDiag" repPath="#_HdGwIEvqEeWy2_k8Xc-0ww" changeId="92e5e7c6-b0b4-4f0f-926d-d57362428c84">
         <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8qXIUs2EemVaPxNO-mXlA" name="VStackDiag with DnD" repPath="#_0FO4gD3IEeaMQoIf_sZyRg">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8qXIUs2EemVaPxNO-mXlA" name="VStackDiag with DnD" repPath="#_0FO4gD3IEeaMQoIf_sZyRg" changeId="d14738b0-5360-4667-8bc9-d262b003b727">
         <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8qXI0s2EemVaPxNO-mXlA" name="HStackDiag with DnD" repPath="#_maGOUD4BEeanI7H5rb1DCA">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_p8qXI0s2EemVaPxNO-mXlA" name="HStackDiag with DnD" repPath="#_maGOUD4BEeanI7H5rb1DCA" changeId="279db514-d6bc-4280-95e6-5c42edf9191a">
         <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_R5XkoEoiEemAMdy3PhSryg" name="regionWithEdges" repPath="#_R5VIYEoiEemAMdy3PhSryg">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_R5XkoEoiEemAMdy3PhSryg" name="regionWithEdges" repPath="#_R5VIYEoiEemAMdy3PhSryg" changeId="e8ae3571-2607-4ae3-9cb2-2fdd06da193e">
         <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdges']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_crgqoWwmEemxkZxOJ10a8g" name="regionWithEdgeToEdge" repPath="#_cqL08GwmEemxkZxOJ10a8g">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_crgqoWwmEemxkZxOJ10a8g" name="regionWithEdgeToEdge" repPath="#_cqL08GwmEemxkZxOJ10a8g" changeId="3d5ed93f-d168-429a-9e7b-1d309a2c4701">
         <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_twQxcFrVEemyOM1f81wIKA" name="regionWithEdgesAndNodes" repPath="#_tuZJMFrVEemyOM1f81wIKA">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_twQxcFrVEemyOM1f81wIKA" name="regionWithEdgesAndNodes" repPath="#_tuZJMFrVEemyOM1f81wIKA" changeId="566d8ccc-234d-495f-a00d-28f41dd2acbf">
         <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgesAndNodes']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram uid="_xGk0UEgKEeWO8ekbzmZQXg" name="VStackDiag">
+  <diagram:DSemanticDiagram uid="_xGk0UEgKEeWO8ekbzmZQXg">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_xGk0UUgKEeWO8ekbzmZQXg" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_xGk0UkgKEeWO8ekbzmZQXg"/>
     </ownedAnnotationEntries>
@@ -457,7 +457,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack']/@defaultLayer"/>
     <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_Qj3mgEvNEeWf576mnYm4XQ" name="HStackDiag">
+  <diagram:DSemanticDiagram uid="_Qj3mgEvNEeWf576mnYm4XQ">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_Qj3mgUvNEeWf576mnYm4XQ" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_Qj3mgkvNEeWf576mnYm4XQ"/>
     </ownedAnnotationEntries>
@@ -878,7 +878,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer"/>
     <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_G0PZUEvqEeWy2_k8Xc-0ww" name="RegionsInRegions">
+  <diagram:DSemanticDiagram uid="_G0PZUEvqEeWy2_k8Xc-0ww">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_G0PZUUvqEeWy2_k8Xc-0ww" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_G0PZUkvqEeWy2_k8Xc-0ww"/>
     </ownedAnnotationEntries>
@@ -1302,7 +1302,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RecurDiag']/@defaultLayer"/>
     <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_HdGwIEvqEeWy2_k8Xc-0ww" name="ImageDiag">
+  <diagram:DSemanticDiagram uid="_HdGwIEvqEeWy2_k8Xc-0ww">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_HdGwIUvqEeWy2_k8Xc-0ww" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_HdGwIkvqEeWy2_k8Xc-0ww"/>
     </ownedAnnotationEntries>
@@ -1518,7 +1518,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20Image']/@defaultLayer"/>
     <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_0FO4gD3IEeaMQoIf_sZyRg" name="VStackDiag with DnD">
+  <diagram:DSemanticDiagram uid="_0FO4gD3IEeaMQoIf_sZyRg">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_0FO4gT3IEeaMQoIf_sZyRg" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_0FO4gj3IEeaMQoIf_sZyRg"/>
     </ownedAnnotationEntries>
@@ -1765,7 +1765,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20VStack%20and%20DnD']/@defaultLayer"/>
     <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_maGOUD4BEeanI7H5rb1DCA" name="HStackDiag with DnD">
+  <diagram:DSemanticDiagram uid="_maGOUD4BEeanI7H5rb1DCA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_maGOUT4BEeanI7H5rb1DCA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_maGOUj4BEeanI7H5rb1DCA"/>
     </ownedAnnotationEntries>
@@ -2006,7 +2006,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20and%20DnD']/@defaultLayer"/>
     <target xmi:type="ecore:EPackage" href="My.ecore#/"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_R5VIYEoiEemAMdy3PhSryg" name="regionWithEdges">
+  <diagram:DSemanticDiagram uid="_R5VIYEoiEemAMdy3PhSryg">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_R5W9kEoiEemAMdy3PhSryg" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_R5W9kUoiEemAMdy3PhSryg"/>
     </ownedAnnotationEntries>
@@ -2204,7 +2204,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdges']/@defaultLayer"/>
     <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_cqL08GwmEemxkZxOJ10a8g" name="regionWithEdgeToEdge">
+  <diagram:DSemanticDiagram uid="_cqL08GwmEemxkZxOJ10a8g">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_crZV4GwmEemxkZxOJ10a8g" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_crZV4WwmEemxkZxOJ10a8g"/>
     </ownedAnnotationEntries>
@@ -2466,7 +2466,7 @@
     <activatedLayers xmi:type="description_1:Layer" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='RegionWithEdgeToEdge']/@defaultLayer"/>
     <target xmi:type="ecore:EPackage" href="My.ecore#//P1"/>
   </diagram:DSemanticDiagram>
-  <diagram:DSemanticDiagram uid="_tuZJMFrVEemyOM1f81wIKA" name="regionWithEdgesAndNodes">
+  <diagram:DSemanticDiagram uid="_tuZJMFrVEemyOM1f81wIKA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_twJcsFrVEemyOM1f81wIKA" source="DANNOTATION_CUSTOMIZATION_KEY">
       <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_twJcsVrVEemyOM1f81wIKA"/>
     </ownedAnnotationEntries>
@@ -2582,22 +2582,6 @@
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tw5DllrVEemyOM1f81wIKA" x="270"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_twZUUlrVEemyOM1f81wIKA"/>
-        <edges xmi:type="notation:Edge" xmi:id="_txPB0FrVEemyOM1f81wIKA" type="4001" element="_twIOkFrVEemyOM1f81wIKA" source="_tw1ZMFrVEemyOM1f81wIKA" target="_txFQ0FrVEemyOM1f81wIKA">
-          <children xmi:type="notation:Node" xmi:id="_txQ3AFrVEemyOM1f81wIKA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_txQ3AVrVEemyOM1f81wIKA" y="-10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_txSFIFrVEemyOM1f81wIKA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_txSFIVrVEemyOM1f81wIKA" y="10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_txT6UFrVEemyOM1f81wIKA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_txT6UVrVEemyOM1f81wIKA" y="10"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_txPB0VrVEemyOM1f81wIKA"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_txPB0lrVEemyOM1f81wIKA" fontName="Segoe UI" fontHeight="12"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_txPB01rVEemyOM1f81wIKA" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_txaA8FrVEemyOM1f81wIKA" id="(0.5,0.5)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_txaA8VrVEemyOM1f81wIKA" id="(0.5,0.5)"/>
-        </edges>
         <edges xmi:type="notation:Edge" xmi:id="_F0HzEFrWEemyOM1f81wIKA" type="4001" element="_Fz0RFFrWEemyOM1f81wIKA" source="_twmvsFrVEemyOM1f81wIKA" target="_txFQ0FrVEemyOM1f81wIKA">
           <children xmi:type="notation:Node" xmi:id="_F0HzFFrWEemyOM1f81wIKA" type="6001">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_F0HzFVrWEemyOM1f81wIKA" y="-10"/>
@@ -2613,6 +2597,22 @@
           <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_F0HzE1rWEemyOM1f81wIKA" points="[0, 0, -118, 294]$[118, -294, 0, 0]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_F0IaIFrWEemyOM1f81wIKA" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_F0IaIVrWEemyOM1f81wIKA" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_txPB0FrVEemyOM1f81wIKA" type="4001" element="_twIOkFrVEemyOM1f81wIKA" source="_tw1ZMFrVEemyOM1f81wIKA" target="_txFQ0FrVEemyOM1f81wIKA">
+          <children xmi:type="notation:Node" xmi:id="_txQ3AFrVEemyOM1f81wIKA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_txQ3AVrVEemyOM1f81wIKA" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_txSFIFrVEemyOM1f81wIKA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_txSFIVrVEemyOM1f81wIKA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_txT6UFrVEemyOM1f81wIKA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_txT6UVrVEemyOM1f81wIKA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_txPB0VrVEemyOM1f81wIKA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_txPB0lrVEemyOM1f81wIKA" fontName="Segoe UI" fontHeight="12"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_txPB01rVEemyOM1f81wIKA" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_txaA8FrVEemyOM1f81wIKA" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_txaA8VrVEemyOM1f81wIKA" id="(0.5,0.5)"/>
         </edges>
       </data>
     </ownedAnnotationEntries>
