@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2019 Obeo.
+ * Copyright (c) 2018, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,25 +33,39 @@ import org.eclipse.swtbot.swt.finder.widgets.SWTBotToolbarButton;
  */
 public class CompartmentsSizeTest extends AbstractCompartmentTest {
 
-    private static final String ERROR_MSG = "with the auto-size, the new region width should be smaller than the previous one.";
+    /** Tooltip of Make same size action. */
+    private static final String MAKE_SAME_SIZE_ACTION_TOOLTIP = "Make height and width same size"; //$NON-NLS-1$
 
-    private static final Rectangle REGION_P1_BOUNDS_GMF = new Rectangle(64, 16, -1, -1);
+    /** Tooltip of Auto size action. */
+    private static final String AUTO_SIZE_ACTION_TOOLTIP = "Auto Size"; //$NON-NLS-1$
+
+    /** Message to display when the session is dirty. */
+    private static final String SESSION_SHOULD_NOT_BE_DIRTY_MSG = "Session should not be dirty."; //$NON-NLS-1$
+
+    /** Message to display when the width is not the expected one after the auto size action. */
+    private static final String AUTO_SIZE_WRONG_WIDTH_ERROR_MSG = "with the auto-size, the new region width should be smaller than the previous one."; //$NON-NLS-1$
+
+    private static final Rectangle REGION_V_P1_BOUNDS_GMF = new Rectangle(64, 16, -1, -1);
 
     private static final Rectangle REGION_P1_BOUNDS_DRAW2D_VSTACK = new Rectangle(64, 16, 141, 414);
 
-    private static final Rectangle REGION_AZ_BOUNDS_GMF = new Rectangle(338, 66, -1, -1);
+    /**
+     * Here the data contains an "unexpected bounds" for the "az" regions container, the target (height is equals to the
+     * real height on not to -1). But it could exist in old model. This is why the parameter is adapted.
+     */
+    private static final Rectangle REGION_V_AZ_BOUNDS_GMF = new Rectangle(338, 66, 166, -1);
 
     private static final Rectangle REGION_AZ_BOUNDS_DRAW2D_VSTACK = new Rectangle(338, 66, 166, 198);
-
-    private static final Rectangle REGION_AZ_BOUNDS_DRAW2D_VSTACK_AUTO = new Rectangle(338, 66, 59, 198);
 
     private static final Rectangle REGION_H_P1_BOUNDS_GMF = new Rectangle(0, 0, -1, -1);
 
     private static final Rectangle REGION_P1_BOUNDS_DRAW2D_HSTACK = new Rectangle(0, 0, 831, 247);
 
-    private static final Rectangle REGION_P1_BOUNDS_DRAW2D_HSTACK_AUTO = new Rectangle(0, 0, 517, 182);
-
-    private static final Rectangle REGION_H_AZ_BOUNDS_GMF = new Rectangle(940, 125, -1, -1);
+    /**
+     * Here the data contains an "unexpected bounds" for the "az" regions container, the target (height is equals to the
+     * real height on not to -1). But it could exist in old model. This is why the parameter is adapted.
+     */
+    private static final Rectangle REGION_H_AZ_BOUNDS_GMF = new Rectangle(940, 125, -1, 258);
 
     private static final Rectangle REGION_AZ_BOUNDS_DRAW2D_HSTACK = new Rectangle(940, 125, 233, 258);
 
@@ -60,7 +74,7 @@ public class CompartmentsSizeTest extends AbstractCompartmentTest {
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         super.onSetUpAfterOpeningDesignerPerspective();
-        oldFont = changeDefaultFontName("Comic Sans MS");
+        oldFont = changeDefaultFontName("Comic Sans MS"); //$NON-NLS-1$
     }
 
     @Override
@@ -81,11 +95,11 @@ public class CompartmentsSizeTest extends AbstractCompartmentTest {
     public void testMakeSameSizeVStack() {
         openRepresentation(VERTICAL_STACK_REPRESENTATION_NAME, VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME);
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals(SESSION_SHOULD_NOT_BE_DIRTY_MSG, SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
 
-        // Check the regions initial bounds
-        checkBounds(FIRST_REGION_CONTAINER_NAME, REGION_P1_BOUNDS_GMF, REGION_P1_BOUNDS_DRAW2D_VSTACK, false, 0, 0);
-        checkBounds(SECOND_REGION_CONTAINER_NAME, REGION_AZ_BOUNDS_GMF, REGION_AZ_BOUNDS_DRAW2D_VSTACK, false, 0, 0);
+        // Check the regions containers initial bounds
+        checkBounds(FIRST_REGION_CONTAINER_NAME, REGION_V_P1_BOUNDS_GMF, REGION_P1_BOUNDS_DRAW2D_VSTACK, false, 0, 0);
+        checkBounds(SECOND_REGION_CONTAINER_NAME, REGION_V_AZ_BOUNDS_GMF, REGION_AZ_BOUNDS_DRAW2D_VSTACK, false, 0, 0);
 
         SWTBotGefEditPart part = editor.getEditPart(SECOND_REGION_CONTAINER_NAME, AbstractDiagramContainerEditPart.class);
         SWTBotGefEditPart part2 = editor.getEditPart(FIRST_REGION_CONTAINER_NAME, AbstractDiagramContainerEditPart.class);
@@ -97,7 +111,7 @@ public class CompartmentsSizeTest extends AbstractCompartmentTest {
 
         // We perform the make same size. The last selected part (FIRST_REGION_CONTAINER_NAME) is the reference to apply
         // the size.
-        SWTBotToolbarButton button = bot.toolbarButtonWithTooltip("Make height and width same size");
+        SWTBotToolbarButton button = bot.toolbarButtonWithTooltip(MAKE_SAME_SIZE_ACTION_TOOLTIP);
         button.click();
 
         bot.waitUntil(new CheckBoundsCondition((IGraphicalEditPart) part.part(), REGION_P1_BOUNDS_DRAW2D_VSTACK.getCopy().setLocation(REGION_AZ_BOUNDS_DRAW2D_VSTACK.getLocation())));
@@ -111,9 +125,9 @@ public class CompartmentsSizeTest extends AbstractCompartmentTest {
     public void testMakeSameSizeHStack() {
         openRepresentation(HORIZONTAL_STACK_REPRESENTATION_NAME, HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME);
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals(SESSION_SHOULD_NOT_BE_DIRTY_MSG, SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
 
-        // Check the regions initial bounds
+        // Check the regions containers initial bounds
         checkBounds(FIRST_REGION_CONTAINER_NAME, REGION_H_P1_BOUNDS_GMF, REGION_P1_BOUNDS_DRAW2D_HSTACK, false, 0, 0);
         checkBounds(SECOND_REGION_CONTAINER_NAME, REGION_H_AZ_BOUNDS_GMF, REGION_AZ_BOUNDS_DRAW2D_HSTACK, false, 0, 0);
 
@@ -127,7 +141,7 @@ public class CompartmentsSizeTest extends AbstractCompartmentTest {
 
         // We perform the make same size. The last selected part (FIRST_REGION_CONTAINER_NAME) is the reference to apply
         // the size.
-        SWTBotToolbarButton button = bot.toolbarButtonWithTooltip("Make height and width same size");
+        SWTBotToolbarButton button = bot.toolbarButtonWithTooltip(MAKE_SAME_SIZE_ACTION_TOOLTIP); // $NON-NLS-1$
         button.click();
 
         bot.waitUntil(new CheckBoundsCondition((IGraphicalEditPart) part.part(), REGION_P1_BOUNDS_DRAW2D_HSTACK.getCopy().setLocation(REGION_AZ_BOUNDS_DRAW2D_HSTACK.getLocation())));
@@ -140,14 +154,14 @@ public class CompartmentsSizeTest extends AbstractCompartmentTest {
     public void testAutoSizeHStack() {
         openRepresentation(HORIZONTAL_STACK_REPRESENTATION_NAME, HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME);
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals(SESSION_SHOULD_NOT_BE_DIRTY_MSG, SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
 
         // Check the regions initial bounds
         checkBounds(FIRST_REGION_CONTAINER_NAME, REGION_H_P1_BOUNDS_GMF, REGION_P1_BOUNDS_DRAW2D_HSTACK, false, 0, 0);
 
         final SWTBotGefEditPart part = editor.getEditPart(FIRST_REGION_CONTAINER_NAME, AbstractDiagramContainerEditPart.class);
         editor.select(part);
-        SWTBotToolbarButton button = bot.toolbarButtonWithTooltip("Auto Size");
+        SWTBotToolbarButton button = bot.toolbarButtonWithTooltip(AUTO_SIZE_ACTION_TOOLTIP);
         button.click();
 
         // Check the regions after auto-size
@@ -161,7 +175,7 @@ public class CompartmentsSizeTest extends AbstractCompartmentTest {
 
             @Override
             public String getFailureMessage() {
-                return ERROR_MSG;
+                return AUTO_SIZE_WRONG_WIDTH_ERROR_MSG;
             }
         });
 
@@ -170,7 +184,7 @@ public class CompartmentsSizeTest extends AbstractCompartmentTest {
         // Test applying auto-size on a region
         final SWTBotGefEditPart part2 = editor.getEditPart(CENTER_CLASS_NAME, AbstractDiagramContainerEditPart.class);
         editor.select(part2);
-        button = bot.toolbarButtonWithTooltip("Auto Size");
+        button = bot.toolbarButtonWithTooltip(AUTO_SIZE_ACTION_TOOLTIP);
         button.click();
 
         // Check the regions after auto-size
@@ -184,7 +198,7 @@ public class CompartmentsSizeTest extends AbstractCompartmentTest {
 
             @Override
             public String getFailureMessage() {
-                return ERROR_MSG;
+                return AUTO_SIZE_WRONG_WIDTH_ERROR_MSG;
             }
         });
     }
@@ -195,14 +209,14 @@ public class CompartmentsSizeTest extends AbstractCompartmentTest {
     public void testAutoSizeVStack() {
         openRepresentation(VERTICAL_STACK_REPRESENTATION_NAME, VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME);
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals(SESSION_SHOULD_NOT_BE_DIRTY_MSG, SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
 
         // Check the regions initial bounds
-        checkBounds(SECOND_REGION_CONTAINER_NAME, REGION_AZ_BOUNDS_GMF, REGION_AZ_BOUNDS_DRAW2D_VSTACK, false, 0, 0);
+        checkBounds(SECOND_REGION_CONTAINER_NAME, REGION_V_AZ_BOUNDS_GMF, REGION_AZ_BOUNDS_DRAW2D_VSTACK, false, 0, 0);
 
         final SWTBotGefEditPart part = editor.getEditPart(SECOND_REGION_CONTAINER_NAME, AbstractDiagramContainerEditPart.class);
         editor.select(part);
-        SWTBotToolbarButton button = bot.toolbarButtonWithTooltip("Auto Size");
+        SWTBotToolbarButton button = bot.toolbarButtonWithTooltip(AUTO_SIZE_ACTION_TOOLTIP);
         button.click();
 
         // Check the regions after auto-size
@@ -216,7 +230,7 @@ public class CompartmentsSizeTest extends AbstractCompartmentTest {
 
             @Override
             public String getFailureMessage() {
-                return ERROR_MSG;
+                return AUTO_SIZE_WRONG_WIDTH_ERROR_MSG;
             }
         });
 
@@ -225,7 +239,7 @@ public class CompartmentsSizeTest extends AbstractCompartmentTest {
         // Test applying auto-size on a region
         final SWTBotGefEditPart part2 = editor.getEditPart(SECOND_REGION_CONTAINER_FIRST_PKG_NAME, AbstractDiagramContainerEditPart.class);
         editor.select(part2);
-        button = bot.toolbarButtonWithTooltip("Auto Size");
+        button = bot.toolbarButtonWithTooltip(AUTO_SIZE_ACTION_TOOLTIP);
         button.click();
 
         // Check the regions after auto-size
@@ -239,7 +253,7 @@ public class CompartmentsSizeTest extends AbstractCompartmentTest {
 
             @Override
             public String getFailureMessage() {
-                return ERROR_MSG;
+                return AUTO_SIZE_WRONG_WIDTH_ERROR_MSG;
             }
         });
     }
