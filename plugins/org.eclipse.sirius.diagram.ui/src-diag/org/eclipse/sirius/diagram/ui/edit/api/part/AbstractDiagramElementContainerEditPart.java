@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -88,6 +88,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.GradientRoundedRectangle;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerParallelogram;
 import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangleFigureDesc;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.ContainerBorderedNodeFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ContainerWithTitleBlockFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.RegionRoundedGradientRectangle;
 import org.eclipse.sirius.diagram.ui.tools.internal.layout.LayoutUtil;
@@ -573,7 +574,7 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      */
     @Override
     protected NodeFigure createNodeFigure() {
-        BorderedNodeFigure nodeFigure = new BorderedNodeFigure(createMainFigure()) {
+        BorderedNodeFigure nodeFigure = new ContainerBorderedNodeFigure(createMainFigure()) {
             @Override
             public void paint(Graphics graphics) {
                 ShowingViewUtil.initGraphicsForVisibleAndInvisibleElements(this, graphics, (View) getModel());

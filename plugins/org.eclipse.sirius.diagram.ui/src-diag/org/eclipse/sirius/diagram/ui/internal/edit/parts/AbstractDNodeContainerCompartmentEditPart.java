@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -74,6 +74,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditP
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.ISiriusEditPart;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DCompartmentConnectionRefreshMgr;
+import org.eclipse.sirius.diagram.ui.edit.internal.part.layoutmanager.RegionContainerConstrainedToolbarLayout;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.AirXYLayoutEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.LaunchToolEditPolicy;
 import org.eclipse.sirius.diagram.ui.graphical.edit.policies.NodeCreationEditPolicy;
@@ -83,6 +84,8 @@ import org.eclipse.sirius.diagram.ui.internal.edit.policies.DNodeContainerViewNo
 import org.eclipse.sirius.diagram.ui.internal.edit.policies.RegionCollapseAwarePropertyHandlerEditPolicy;
 import org.eclipse.sirius.diagram.ui.internal.operation.RegionContainerUpdateLayoutOperation;
 import org.eclipse.sirius.diagram.ui.tools.api.requests.RequestConstants;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.ContainerBorderedNodeFigure;
+import org.eclipse.sirius.diagram.ui.tools.internal.figure.RegionRoundedGradientRectangle;
 import org.eclipse.sirius.diagram.ui.tools.internal.graphical.edit.policies.ContainerCompartmentNodeEditPolicy;
 import org.eclipse.sirius.diagram.ui.tools.internal.ruler.SiriusSnapToHelperUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
@@ -419,6 +422,7 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
      *            a shape compartment.
      * @return a {@link Set} of {@link ConnectionNodeEditPart}.
      */
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     protected Set getConnectionNodes(ShapeCompartmentEditPart scep) {
         Set endPoints = new HashSet();
         Object modelObject = scep.getModel();
@@ -528,6 +532,13 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
 
         private final boolean isVertical;
 
+        /**
+         * Indicate if the compartment is contained in a regions container that is also itself a region of another
+         * regions container. In this case, the layout, for horizontal stack, is impacted by other regions, brothers of
+         * the container.
+         */
+        private final boolean isARegion;
+
         private final AbstractDNodeContainerCompartmentEditPart containerCompartmentEditPart;
 
         /**
@@ -541,6 +552,8 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         public RegionContainerLayoutManager(boolean isVertical, AbstractDNodeContainerCompartmentEditPart containerCompartmentEditPart) {
             this.isVertical = isVertical;
             this.containerCompartmentEditPart = containerCompartmentEditPart;
+            isARegion = containerCompartmentEditPart.getParent() instanceof AbstractDiagramElementContainerEditPart
+                    && ((AbstractDiagramElementContainerEditPart) containerCompartmentEditPart.getParent()).isRegion();
         }
 
         public boolean isVertical() {
@@ -553,6 +566,10 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
         @Override
         public void layout(IFigure parent) {
             Collection<IFigure> children = Lists.newArrayList(Iterables.filter(parent.getChildren(), IFigure.class));
+            if (children.isEmpty()) {
+                return;
+            }
+
             Point offset = getOrigin(parent);
 
             int maxWidth = 0;
@@ -581,13 +598,13 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
 
             boolean dependsOnRegionContainerWidth = new EditPartQuery(containerCompartmentEditPart).isAutoSized(true, false);
             int labelWidth = 0;
+            IFigure parentLabelFigure = getParentLabelFigure(parent);
             if (dependsOnRegionContainerWidth) {
-                IFigure parentLabelFigure = getParentLabelFigure(parent);
                 if (parentLabelFigure != null) {
                     labelWidth = parentLabelFigure.getSize().width;
 
                     // For vertical stacks, take label into account to compute the
-                    // region common size.
+                    // regions common size.
                     if (isVertical) {
                         maxWidth = Math.max(maxWidth, labelWidth);
                     }
@@ -616,14 +633,27 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
 
                 setConstraint(f, bounds);
                 f.setBounds(bounds.translate(offset));
+                // For vertical stack, notify last region of the width change (it is useful only if the current figure f
+                // is also a region with HStack).
+                if (isVertical && f instanceof ContainerBorderedNodeFigure) {
+                    ((ContainerBorderedNodeFigure) f).fireContainerWidthChange(bounds.width);
+                }
             }
 
+            final IFigure last = Iterables.getLast(children);
+            if (!isVertical && isARegion) {
+                // If the current container compartment is a compartment of a container that is also a region, we
+                // add a listener to potentially resize the last region of the current container.
+                ContainerBorderedNodeFigure mainContainerFigure = getMainFigureOfAbstractDiagramElementContainerEditPart(parentLabelFigure);
+                if (mainContainerFigure != null) {
+                    mainContainerFigure.updateParentPropertyChangeListener(last, this);
+                }
+            }
             if (dependsOnRegionContainerWidth) {
                 // For horizontal stacks, if label is longer than the regions
                 // cumulative width, increase the last region size.
                 int delta = labelWidth - x;
-                if (!isVertical && delta > 0 && !children.isEmpty()) {
-                    IFigure last = Iterables.getLast(children);
+                if (!isVertical && delta > 0) {
                     bounds = regionsBounds.get(last);
                     bounds.setWidth(bounds.width + delta);
                     setConstraint(last, bounds);
@@ -632,8 +662,38 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
             }
         }
 
-        private IFigure getParentLabelFigure(IFigure parent) {
-            IFigure tmp = parent;
+        /**
+         * Get the first parent of currentFigure that is an instance of {@link ContainerBorderedNodeFigure}, ie the main
+         * figure of AbstractDiagramElementContainerEditPart. This method relies on the existing figures hierarchy, ie
+         * the ContainerBorderedNodeFigure is the grand father of the {@link RegionRoundedGradientRectangle} that has a
+         * {@link RegionContainerConstrainedToolbarLayout}. When this figure is resized, we want to "notify" the figure
+         * of the last regions to resize it if necessary.
+         * 
+         * @param currentFigure
+         *            The current figure
+         * @return The first parent as type BorderedNodeFigure.
+         */
+        private ContainerBorderedNodeFigure getMainFigureOfAbstractDiagramElementContainerEditPart(IFigure currentFigure) {
+            ContainerBorderedNodeFigure result;
+            if (currentFigure == null) {
+                result = null;
+            } else if (currentFigure instanceof ContainerBorderedNodeFigure) {
+                result = (ContainerBorderedNodeFigure) currentFigure;
+            } else {
+                result = getMainFigureOfAbstractDiagramElementContainerEditPart(currentFigure.getParent());
+            }
+            return result;
+        }
+
+        /**
+         * Get the label of the regions container containing the dNodeContainerCompartmentFigure.
+         * 
+         * @param dNodeContainerCompartmentFigure
+         *            The figure representing the DNodeContainerCompartment.
+         * @return The label figure of the regions container.
+         */
+        private IFigure getParentLabelFigure(IFigure dNodeContainerCompartmentFigure) {
+            IFigure tmp = dNodeContainerCompartmentFigure;
             ViewNodeContainerFigureDesc parentShape = null;
             while (parentShape == null && tmp != null) {
                 if (tmp instanceof ViewNodeContainerFigureDesc) {
