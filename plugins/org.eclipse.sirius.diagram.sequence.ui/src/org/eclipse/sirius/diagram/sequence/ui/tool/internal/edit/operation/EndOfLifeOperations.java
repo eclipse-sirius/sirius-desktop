@@ -74,7 +74,7 @@ public final class EndOfLifeOperations {
         }
 
         ChangeBoundsRequest cbr = new ChangeBoundsRequest(org.eclipse.gef.RequestConstants.REQ_RESIZE);
-        cbr.getMoveDelta().y = location.y - (lep.getFigure().getBounds().y + lep.getFigure().getBounds().height);
+        cbr.getMoveDelta().setY(location.y - (lep.getFigure().getBounds().y + lep.getFigure().getBounds().height));
         cbr.setEditParts(lep);
         cbr.setLocation(location.getCopy());
         lep.eraseSourceFeedback(cbr);
@@ -104,7 +104,7 @@ public final class EndOfLifeOperations {
         GraphicalHelper.screen2logical(location, lifelineEditPart);
         ChangeBoundsRequest cbr = new ChangeBoundsRequest(org.eclipse.gef.RequestConstants.REQ_RESIZE);
         cbr.setResizeDirection(PositionConstants.SOUTH);
-        cbr.getSizeDelta().height = EndOfLifeOperations.computeResizeDelta(endOfLifeEditPart, lifelineEditPart, location.y, moveSource);
+        cbr.getSizeDelta().setHeight(EndOfLifeOperations.computeResizeDelta(endOfLifeEditPart, lifelineEditPart, location.y, moveSource));
         cbr.setEditParts(lifelineEditPart);
         cbr.setLocation(location.getCopy());
         return cbr;

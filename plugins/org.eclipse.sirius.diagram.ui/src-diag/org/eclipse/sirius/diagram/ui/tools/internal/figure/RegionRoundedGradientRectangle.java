@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2020 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -102,11 +102,11 @@ public class RegionRoundedGradientRectangle extends GradientRoundedRectangle {
             positions.or(chosenCorners);
         }
         if (d == null) {
-            secondaryCorner.width = 0;
-            secondaryCorner.height = 0;
+            secondaryCorner.setWidth(0);
+            secondaryCorner.setHeight(0);
         } else {
-            secondaryCorner.width = d.width;
-            secondaryCorner.height = d.height;
+            secondaryCorner.setWidth(d.width);
+            secondaryCorner.setHeight(d.height);
         }
     }
 

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2017, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -260,8 +260,8 @@ public class SiriusGenericDecorator extends AbstractDecorator {
             for (DecorationDescriptor decorationDescriptor : decoDescs) {
                 IFigure decorationFigure = getDecorationFigure(decorationDescriptor, false);
                 Rectangle decorationBounds = decorationFigure.getBounds();
-                decorationBounds.x = 0;
-                decorationBounds.y = 0;
+                decorationBounds.setX(0);
+                decorationBounds.setY(0);
 
                 // update decoration figure position relative to group figure
                 DecorationDistributionDirection distributionDirection = decorationDescriptor.getDistributionDirection();
@@ -313,10 +313,10 @@ public class SiriusGenericDecorator extends AbstractDecorator {
                     int width = ((Bounds) layoutConstraint).getWidth();
                     int height = ((Bounds) layoutConstraint).getHeight();
                     if (width > 0) {
-                        figureDimension.width = width;
+                        figureDimension.setWidth(width);
                     }
                     if (height > 0) {
-                        figureDimension.height = height;
+                        figureDimension.setHeight(height);
                     }
                 }
             } catch (IllegalStateException e) {
@@ -325,8 +325,8 @@ public class SiriusGenericDecorator extends AbstractDecorator {
         }
 
         // remove the margin
-        figureDimension.width = figureDimension.width - 2 * margin >= 0 ? figureDimension.width - 2 * margin : 0;
-        figureDimension.height = figureDimension.height - 2 * margin >= 0 ? figureDimension.height - 2 * margin : 0;
+        figureDimension.setWidth(figureDimension.width - 2 * margin >= 0 ? figureDimension.width - 2 * margin : 0);
+        figureDimension.setHeight(figureDimension.height - 2 * margin >= 0 ? figureDimension.height - 2 * margin : 0);
 
         return figureDimension;
     }
@@ -510,7 +510,7 @@ public class SiriusGenericDecorator extends AbstractDecorator {
             // position decoration on the bottom of the previous one
             // in the vertical distribution direction
             if (previousDecoBoundsInTheDistribDirection != null) {
-                decorationBounds.y = previousDecoBoundsInTheDistribDirection.y + previousDecoBoundsInTheDistribDirection.height + SPACE;
+                decorationBounds.setY(previousDecoBoundsInTheDistribDirection.y + previousDecoBoundsInTheDistribDirection.height + SPACE);
             }
             break;
         case Position.SOUTH_WEST:
@@ -520,10 +520,10 @@ public class SiriusGenericDecorator extends AbstractDecorator {
             // existing decoration to the bottom
             if (previousDecoBoundsInTheDistribDirection != null) {
                 int yShift = previousDecoBoundsInTheDistribDirection.y - decorationBounds.height;
-                decorationBounds.y = Math.max(0, yShift);
+                decorationBounds.setY(Math.max(0, yShift));
                 int yShiftExistingFigureInGroup = Math.max(0, -yShift);
                 for (Rectangle decoBounds : brotherDecosBounds) {
-                    decoBounds.y = decoBounds.y + SPACE + yShiftExistingFigureInGroup;
+                    decoBounds.setY(decoBounds.y + SPACE + yShiftExistingFigureInGroup);
                 }
             }
             break;
@@ -537,10 +537,10 @@ public class SiriusGenericDecorator extends AbstractDecorator {
         case Position.SOUTH_EAST:
             // shift all existing decoration to stick to the right
             int xShift = groupBounds.width - decorationBounds.width;
-            decorationBounds.x = Math.max(0, xShift);
+            decorationBounds.setX(Math.max(0, xShift));
             int xShiftExistingFigureInGroup = Math.max(0, -xShift);
             for (Rectangle decoBounds : brotherDecosBounds) {
-                decoBounds.x = decoBounds.x + xShiftExistingFigureInGroup;
+                decoBounds.setX(decoBounds.x + xShiftExistingFigureInGroup);
             }
             break;
         default:
@@ -563,7 +563,7 @@ public class SiriusGenericDecorator extends AbstractDecorator {
             // position decoration on the right of the previous one
             // in the horizontal distribution direction
             if (previousDecoBoundsInTheDistribDirection != null) {
-                decorationBounds.x = previousDecoBoundsInTheDistribDirection != null ? previousDecoBoundsInTheDistribDirection.x + SPACE + previousDecoBoundsInTheDistribDirection.width : 0;
+                decorationBounds.setX(previousDecoBoundsInTheDistribDirection != null ? previousDecoBoundsInTheDistribDirection.x + SPACE + previousDecoBoundsInTheDistribDirection.width : 0);
             }
             break;
         case Position.NORTH_EAST:
@@ -573,10 +573,10 @@ public class SiriusGenericDecorator extends AbstractDecorator {
             // existing decoration to the right
             if (previousDecoBoundsInTheDistribDirection != null) {
                 int xShift = previousDecoBoundsInTheDistribDirection.x - decorationBounds.width;
-                decorationBounds.x = Math.max(0, xShift);
+                decorationBounds.setX(Math.max(0, xShift));
                 int xShiftExistingFigureInGroup = Math.max(0, -xShift);
                 for (Rectangle decoBounds : brotherDecosBounds) {
-                    decoBounds.x = decoBounds.x + SPACE + xShiftExistingFigureInGroup;
+                    decoBounds.setX(decoBounds.x + SPACE + xShiftExistingFigureInGroup);
                 }
             }
             break;
@@ -590,10 +590,10 @@ public class SiriusGenericDecorator extends AbstractDecorator {
         case Position.SOUTH_EAST:
             // shift all existing decoration to stick to the bottom
             int yShift = groupBounds.height - decorationBounds.height;
-            decorationBounds.y = Math.max(0, yShift);
+            decorationBounds.setY(Math.max(0, yShift));
             int yShiftExistingFigureInGroup = Math.max(0, -yShift);
             for (Rectangle decoBounds : brotherDecosBounds) {
-                decoBounds.y = decoBounds.y + yShiftExistingFigureInGroup;
+                decoBounds.setY(decoBounds.y + yShiftExistingFigureInGroup);
             }
             break;
         default:
@@ -786,11 +786,11 @@ public class SiriusGenericDecorator extends AbstractDecorator {
     }
 
     private void updateGroupBoundsSize(Rectangle groupBounds, Iterable<Rectangle> decoBBsInGroup) {
-        groupBounds.width = 0;
-        groupBounds.height = 0;
+        groupBounds.setWidth(0);
+        groupBounds.setHeight(0);
         for (Rectangle decoBound : decoBBsInGroup) {
-            groupBounds.width = Math.max(groupBounds.width, decoBound.x + decoBound.width);
-            groupBounds.height = Math.max(groupBounds.height, decoBound.y + decoBound.height);
+            groupBounds.setWidth(Math.max(groupBounds.width, decoBound.x + decoBound.width));
+            groupBounds.setHeight(Math.max(groupBounds.height, decoBound.y + decoBound.height));
         }
     }
 
@@ -805,13 +805,13 @@ public class SiriusGenericDecorator extends AbstractDecorator {
         case Position.NORTH:
         case Position.CENTER:
         case Position.SOUTH:
-            groupBounds.x = (figureDimension.width - groupBounds.width) / 2;
+            groupBounds.setX((figureDimension.width - groupBounds.width) / 2);
             break;
 
         case Position.NORTH_EAST:
         case Position.EAST:
         case Position.SOUTH_EAST:
-            groupBounds.x = figureDimension.width - groupBounds.width;
+            groupBounds.setX(figureDimension.width - groupBounds.width);
             break;
         default:
             break;
@@ -821,13 +821,13 @@ public class SiriusGenericDecorator extends AbstractDecorator {
         case Position.WEST:
         case Position.CENTER:
         case Position.EAST:
-            groupBounds.y = (figureDimension.height - groupBounds.height) / 2;
+            groupBounds.setY((figureDimension.height - groupBounds.height) / 2);
             break;
 
         case Position.SOUTH_WEST:
         case Position.SOUTH:
         case Position.SOUTH_EAST:
-            groupBounds.y = figureDimension.height - groupBounds.height;
+            groupBounds.setY(figureDimension.height - groupBounds.height);
             break;
         default:
             break;

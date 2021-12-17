@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2018 IBM Corporation and others.
+ * Copyright (c) 2002, 2021 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -105,7 +105,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
             Dimension d = (Dimension) fontToEllipseTextSize.get(f);
             if (d == null) {
                 d = FigureUtilities.getTextExtents(_ellipse, f);
-                d.height = FigureUtilities.getFontMetrics(f).getHeight();
+                d.setHeight(FigureUtilities.getFontMetrics(f).getHeight());
                 IMapMode mapMode = (IMapMode) mapModeRef.get();
                 if (mapMode != null) {
                     d = new Dimension(mapMode.DPtoLP(d.width), mapMode.DPtoLP(d.height));
@@ -403,9 +403,9 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
             totalIconSize = new Dimension();
             for (int i = 0; i < iconNum; i++) {
                 Dimension iconSize = getIconSize(mapMode, i);
-                totalIconSize.width += iconSize.width;
+                totalIconSize.setWidth(totalIconSize.width + iconSize.width);
                 if (iconSize.height > totalIconSize.height)
-                    totalIconSize.height = iconSize.height;
+                    totalIconSize.setHeight(iconSize.height);
             }
 
             return totalIconSize;
@@ -516,26 +516,26 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
     private void alignOnHeight(Point loc, Dimension size, int alignment) {
         switch (alignment) {
         case TOP:
-            loc.y = getInsets().top;
+            loc.setY(getInsets().top);
             break;
         case BOTTOM:
-            loc.y = bounds.height - size.height - getInsets().bottom;
+            loc.setY(bounds.height - size.height - getInsets().bottom);
             break;
         default:
-            loc.y = (bounds.height - size.height) / 2;
+            loc.setY((bounds.height - size.height) / 2);
         }
     }
 
     private void alignOnWidth(Point loc, Dimension size, int alignment) {
         switch (alignment) {
         case LEFT:
-            loc.x = getInsets().left;
+            loc.setX(getInsets().left);
             break;
         case RIGHT:
-            loc.x = bounds.width - size.width - getInsets().right;
+            loc.setX(bounds.width - size.width - getInsets().right);
             break;
         default:
-            loc.x = (bounds.width - size.width) / 2;
+            loc.setX((bounds.width - size.width) / 2);
         }
     }
 
@@ -605,11 +605,11 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
             offset.scale(1.0f);
             break;
         case TOP:
-            offset.height = 0;
+            offset.setHeight(0);
             offset.scale(0.5f);
             break;
         case BOTTOM:
-            offset.height = offset.height * 2;
+            offset.setHeight(offset.height * 2);
             offset.scale(0.5f);
             break;
         case CENTER:
@@ -621,11 +621,11 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
         switch (textPlacement) {
         case EAST:
         case WEST:
-            offset.height = 0;
+            offset.setHeight(0);
             break;
         case NORTH:
         case SOUTH:
-            offset.width = 0;
+            offset.setWidth(0);
             break;
         default:
             break;
@@ -640,20 +640,20 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
         Insets insets = getInsets();
         switch (textPlacement) {
         case EAST:
-            iconLocation.x = insets.left;
-            textLocation.x = iconSize.width + gap + insets.left;
+            iconLocation.setX(insets.left);
+            textLocation.setX(iconSize.width + gap + insets.left);
             break;
         case WEST:
-            textLocation.x = insets.left;
-            iconLocation.x = getSubStringTextSize().width + gap + insets.left;
+            textLocation.setX(insets.left);
+            iconLocation.setX(getSubStringTextSize().width + gap + insets.left);
             break;
         case NORTH:
-            textLocation.y = insets.top;
-            iconLocation.y = getTextSize().height + gap + insets.top;
+            textLocation.setY(insets.top);
+            iconLocation.setY(getTextSize().height + gap + insets.top);
             break;
         case SOUTH:
-            textLocation.y = iconSize.height + gap + insets.top;
-            iconLocation.y = insets.top;
+            textLocation.setY(iconSize.height + gap + insets.top);
+            iconLocation.setY(insets.top);
         default:
             break;
         }
@@ -1182,7 +1182,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
 
             if (tokenWidth + x <= clipRectTopRight_x) {
                 Rectangle newClipRect = new Rectangle(clipRect);
-                newClipRect.width += (tokenWidth / token.length()) / 2;
+                newClipRect.setWidth(newClipRect.width + (tokenWidth / token.length()) / 2);
                 graphics.setClip(newClipRect);
             }
 
@@ -1217,7 +1217,7 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
             Image icon = getIcon(i);
             if (icon != null) {
                 graphics.drawImage(icon, p);
-                p.x += getIconSize(i).width;
+                p.setX(p.x + getIconSize(i).width);
             }
         }
     }
@@ -1757,8 +1757,8 @@ public class SiriusWrapLabel extends Figure implements PositionConstants {
             // lines in the string
             Dimension d = FigureUtilities.getTextExtents(s, f);
             IMapMode mapMode = getFigureMapMode();
-            d.width = mapMode.DPtoLP(d.width);
-            d.height = fontHeight * new StringTokenizer(s, "\n").countTokens();//$NON-NLS-1$
+            d.setWidth(mapMode.DPtoLP(d.width));
+            d.setHeight(fontHeight * new StringTokenizer(s, "\n").countTokens());//$NON-NLS-1$
             return d;
         }
     }

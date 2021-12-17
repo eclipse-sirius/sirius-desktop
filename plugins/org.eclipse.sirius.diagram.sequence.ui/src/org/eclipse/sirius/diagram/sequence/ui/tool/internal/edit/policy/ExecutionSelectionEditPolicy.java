@@ -573,8 +573,8 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             conflictingPosition.performScale(GraphicalHelper.getZoom(getHost()));
 
             Rectangle bounds = feedbackLayer.getBounds().getCopy();
-            bounds.y = conflictingPosition.y;
-            bounds.height = 1;
+            bounds.setY(conflictingPosition.y);
+            bounds.setHeight(1);
 
             HorizontalGuide conflictGuide = new HorizontalGuide(CONFLICT_FEEDBACK_COLOR, conflictingPosition.y);
             conflictGuide.setBounds(bounds);
@@ -589,8 +589,8 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             Range expand = RangeHelper.verticalRange(screenRange);
 
             Rectangle bounds = feedbackLayer.getBounds().getCopy();
-            bounds.height = expand.width();
-            bounds.y = expand.getLowerBound();
+            bounds.setHeight(expand.width());
+            bounds.setY(expand.getLowerBound());
 
             RangeGuide expansion = new RangeGuide(validator.isValid() ? EXPANSION_FEEDBACK_COLOR : CONFLICT_FEEDBACK_COLOR, expand, true);
             expansion.setBounds(bounds);
@@ -651,8 +651,8 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
             execBounds = new Rectangle(0, execRange.getLowerBound(), 0, execRange.width());
 
             if (iSequenceEvent.isLogicallyInstantaneous() && delimitingMessages.isEmpty()) {
-                execBounds.y = execBounds.getCenter().y;
-                execBounds.height = 1;
+                execBounds.setY(execBounds.getCenter().y);
+                execBounds.setHeight(1);
 
                 newBounds = execBounds.getCopy();
             }
@@ -665,19 +665,19 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         Point bottomLocation = new Point(1, newBounds.getBottom().y);
 
         Rectangle bounds = getFeedbackLayer().getBounds().getCopy();
-        execBounds.height = Math.max(execBounds.height, 0);
+        execBounds.setHeight(Math.max(execBounds.height, 0));
 
         Figure execGuide = new RangeGuide(EXECUTION_FEEDBACK_COLOR, RangeHelper.verticalRange(execBounds), false);
-        bounds.height = execBounds.height + 1;
-        bounds.y = execBounds.y;
+        bounds.setHeight(execBounds.height + 1);
+        bounds.setY(execBounds.y);
         execGuide.setBounds(bounds);
         addFeedback(execGuide);
         guides.add(execGuide);
 
         if (execBounds.y != topLocation.y) {
             Figure topGuide = new HorizontalGuide(EXECUTION_FEEDBACK_COLOR, topLocation.y);
-            bounds.height = 1;
-            bounds.y = topLocation.y;
+            bounds.setHeight(1);
+            bounds.setY(topLocation.y);
             topGuide.setBounds(bounds);
             addFeedback(topGuide);
             guides.add(topGuide);
@@ -686,8 +686,8 @@ public class ExecutionSelectionEditPolicy extends SpecificBorderItemSelectionEdi
         if (execBounds.bottom() != bottomLocation.y) {
             bounds = getFeedbackLayer().getBounds().getCopy();
             Figure bottomGuide = new HorizontalGuide(EXECUTION_FEEDBACK_COLOR, bottomLocation.y);
-            bounds.height = 1;
-            bounds.y = bottomLocation.y;
+            bounds.setHeight(1);
+            bounds.setY(bottomLocation.y);
             bottomGuide.setBounds(bounds);
             addFeedback(bottomGuide);
             guides.add(bottomGuide);

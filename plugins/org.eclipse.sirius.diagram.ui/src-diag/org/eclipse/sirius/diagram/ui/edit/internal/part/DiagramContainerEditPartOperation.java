@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -459,8 +459,8 @@ public final class DiagramContainerEditPartOperation {
         if (styleDescription instanceof ContainerStyleDescription) {
             final ContainerStyleDescription description = (ContainerStyleDescription) styleDescription;
             if (description.isRoundedCorner()) {
-                corner.height = description.getArcHeight();
-                corner.width = description.getArcWidth();
+                corner.setHeight(description.getArcHeight());
+                corner.setWidth(description.getArcWidth());
             }
         }
         return corner;

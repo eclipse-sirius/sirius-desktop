@@ -428,7 +428,7 @@ public class LostMessageEndHorizontalLayoutHelper {
                 int deltaWithLifeline = lostEndsDelta.get(lostSource);
                 Rectangle bounds = lostSource.getProperLogicalBounds().getCopy();
 
-                bounds.x = newLifelineX + deltaWithLifeline;
+                bounds.setX(newLifelineX + deltaWithLifeline);
                 lostMessageEndMoves.put(lostSource, bounds);
             }
         }

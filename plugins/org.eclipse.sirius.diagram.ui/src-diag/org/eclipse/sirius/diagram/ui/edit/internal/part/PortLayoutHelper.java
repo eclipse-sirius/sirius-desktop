@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -166,16 +166,16 @@ public final class PortLayoutHelper {
         Rectangle correctLocation = new Rectangle(suggestedExpandedBounds);
         switch (side) {
         case PositionConstants.WEST:
-            correctLocation.x = currentBounds.x - (collapsedOffset.width - currentBounds.width) - (suggestedExpandedBounds.width - expandedOffset.width);
+            correctLocation.setX(currentBounds.x - (collapsedOffset.width - currentBounds.width) - (suggestedExpandedBounds.width - expandedOffset.width));
             break;
         case PositionConstants.EAST:
-            correctLocation.x = currentBounds.x - (expandedOffset.width - collapsedOffset.width);
+            correctLocation.setX(currentBounds.x - (expandedOffset.width - collapsedOffset.width));
             break;
         case PositionConstants.SOUTH:
-            correctLocation.y = currentBounds.y - (expandedOffset.height - collapsedOffset.height);
+            correctLocation.setY(currentBounds.y - (expandedOffset.height - collapsedOffset.height));
             break;
         case PositionConstants.NORTH:
-            correctLocation.y = currentBounds.y - (collapsedOffset.height - currentBounds.height) - (suggestedExpandedBounds.height - expandedOffset.height);
+            correctLocation.setY(currentBounds.y - (collapsedOffset.height - currentBounds.height) - (suggestedExpandedBounds.height - expandedOffset.height));
             break;
 
         default:
@@ -190,16 +190,16 @@ public final class PortLayoutHelper {
         Rectangle correctLocation = new Rectangle(suggestedCollapsedBounds);
         switch (side) {
         case PositionConstants.WEST:
-            correctLocation.x = currentBounds.x + currentBounds.width - suggestedCollapsedBounds.width - (expandedOffset.width - collapsedOffset.width);
+            correctLocation.setX(currentBounds.x + currentBounds.width - suggestedCollapsedBounds.width - (expandedOffset.width - collapsedOffset.width));
             break;
         case PositionConstants.EAST:
-            correctLocation.x = currentBounds.x + (expandedOffset.width - collapsedOffset.width);
+            correctLocation.setX(currentBounds.x + (expandedOffset.width - collapsedOffset.width));
             break;
         case PositionConstants.SOUTH:
-            correctLocation.y = currentBounds.y + (expandedOffset.height - collapsedOffset.height);
+            correctLocation.setY(currentBounds.y + (expandedOffset.height - collapsedOffset.height));
             break;
         case PositionConstants.NORTH:
-            correctLocation.y = currentBounds.y + currentBounds.height - suggestedCollapsedBounds.height - (expandedOffset.height - collapsedOffset.height);
+            correctLocation.setY(currentBounds.y + currentBounds.height - suggestedCollapsedBounds.height - (expandedOffset.height - collapsedOffset.height));
             break;
 
         default:

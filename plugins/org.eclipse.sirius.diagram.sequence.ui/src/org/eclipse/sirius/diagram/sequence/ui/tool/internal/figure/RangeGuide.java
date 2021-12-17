@@ -50,8 +50,8 @@ public class RangeGuide extends Figure {
     @Override
     protected void paintFigure(Graphics graphics) {
         Rectangle rect = getBounds().getCopy();
-        rect.y = range.getLowerBound();
-        rect.height = 1;
+        rect.setY(range.getLowerBound());
+        rect.setHeight(1);
 
         graphics.drawLine(rect.getTopLeft(), rect.getTopRight());
 
@@ -60,7 +60,7 @@ public class RangeGuide extends Figure {
         // we have to reduce the height of the drawn rectangle to stay in the
         // bounds of the figure.
         if (range.width() > 1) {
-            rect.height = range.width() - 1;
+            rect.setHeight(range.width() - 1);
             graphics.drawLine(rect.getBottomLeft(), rect.getBottomRight());
 
             if (super.isOpaque()) {

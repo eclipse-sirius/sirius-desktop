@@ -1553,11 +1553,11 @@ public class BorderItemAwareLayoutProvider extends AbstractLayoutProvider {
         }
         if (shouldWidthAutoSized && processX) {
             final int rightSizeXCoordinate = getRightSizeXCoordinateOfRightMostChild(part, scale, moveDelta);
-            result.width = Math.max(defaultSize.width, rightSizeXCoordinate - actualBounds.x);
+            result.setWidth(Math.max(defaultSize.width, rightSizeXCoordinate - actualBounds.x));
         }
         if (shouldHeightAutoSized && processY) {
             final int bottomSizeYCoordinate = getBottomSizeYCoordinateOfLowestChild(part, scale, moveDelta);
-            result.height = Math.max(defaultSize.height, bottomSizeYCoordinate - actualBounds.y);
+            result.setHeight(Math.max(defaultSize.height, bottomSizeYCoordinate - actualBounds.y));
         }
         return result;
     }

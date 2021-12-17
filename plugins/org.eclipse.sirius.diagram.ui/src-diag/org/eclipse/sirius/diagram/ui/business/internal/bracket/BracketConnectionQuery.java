@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -179,19 +179,19 @@ public class BracketConnectionQuery {
         switch (newDirection) {
         case RIGHT:
         case LEFT:
-            originPoint.x = location.x;
-            originPoint.y = firstPoint.y;
+            originPoint.setX(location.x);
+            originPoint.setY(firstPoint.y);
 
-            targetPoint.x = location.x;
-            targetPoint.y = lastPoint.y;
+            targetPoint.setX(location.x);
+            targetPoint.setY(lastPoint.y);
             break;
         case TOP:
         case BOTTOM:
-            originPoint.x = firstPoint.x;
-            originPoint.y = location.y;
+            originPoint.setX(firstPoint.x);
+            originPoint.setY(location.y);
 
-            targetPoint.x = lastPoint.x;
-            targetPoint.y = location.y;
+            targetPoint.setX(lastPoint.x);
+            targetPoint.setY(location.y);
 
             break;
         default:
@@ -472,35 +472,35 @@ public class BracketConnectionQuery {
         final Point decoPoint = new Point();
         switch (specificDirection) {
         case RIGHT:
-            decoPoint.y = point.y;
+            decoPoint.setY(point.y);
             if (point.x > ownerBounds.x && point.x < ownerBounds.x + ownerBounds.width) {
-                decoPoint.x = point.x - DECO_OFFSET;
+                decoPoint.setX(point.x - DECO_OFFSET);
             } else {
-                decoPoint.x = point.x + DECO_OFFSET;
+                decoPoint.setX(point.x + DECO_OFFSET);
             }
             break;
         case LEFT:
-            decoPoint.y = point.y;
+            decoPoint.setY(point.y);
             if (point.x > ownerBounds.x && point.x < ownerBounds.x + ownerBounds.width) {
-                decoPoint.x = point.x + DECO_OFFSET;
+                decoPoint.setX(point.x + DECO_OFFSET);
             } else {
-                decoPoint.x = point.x - DECO_OFFSET;
+                decoPoint.setX(point.x - DECO_OFFSET);
             }
             break;
         case TOP:
-            decoPoint.x = point.x;
+            decoPoint.setX(point.x);
             if (point.y > ownerBounds.y && point.y < ownerBounds.y + ownerBounds.height) {
-                decoPoint.y = point.y + DECO_OFFSET;
+                decoPoint.setY(point.y + DECO_OFFSET);
             } else {
-                decoPoint.y = point.y - DECO_OFFSET;
+                decoPoint.setY(point.y - DECO_OFFSET);
             }
             break;
         case BOTTOM:
-            decoPoint.x = point.x;
+            decoPoint.setX(point.x);
             if (point.y > ownerBounds.y && point.y < ownerBounds.y + ownerBounds.height) {
-                decoPoint.y = point.y - DECO_OFFSET;
+                decoPoint.setY(point.y - DECO_OFFSET);
             } else {
-                decoPoint.y = point.y + DECO_OFFSET;
+                decoPoint.setY(point.y + DECO_OFFSET);
             }
             break;
         default:

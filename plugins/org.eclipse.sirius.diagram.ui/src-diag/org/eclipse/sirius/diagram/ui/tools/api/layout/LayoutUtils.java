@@ -140,12 +140,12 @@ public final class LayoutUtils {
             final IFigure borderItemContainer, final IFigure mainFigure) {
         if (mainFigure.getBounds().getSize().height == 0 && mainFigure.getBounds().getSize().width == 0 && owner instanceof DNode) {
             final Dimension defaultDimension = new DNodeQuery((DNode) owner).getDefaultDimension();
-            mainFigure.getBounds().height = defaultDimension.height;
-            mainFigure.getBounds().width = defaultDimension.width;
+            mainFigure.getBounds().setHeight(defaultDimension.height);
+            mainFigure.getBounds().setWidth(defaultDimension.width);
         } else if (mainFigure.getBounds().getSize().height == 0 && mainFigure.getBounds().getSize().width == 0 && owner instanceof DDiagramElementContainer) {
             final Dimension defaultDimension = LayoutUtils.DEFAULT_CONTAINER_DIMENSION;
-            mainFigure.getBounds().height = defaultDimension.height;
-            mainFigure.getBounds().width = defaultDimension.width;
+            mainFigure.getBounds().setHeight(defaultDimension.height);
+            mainFigure.getBounds().setWidth(defaultDimension.width);
         }
         final StyleConfiguration styleConfiguration = IStyleConfigurationRegistry.INSTANCE.getStyleConfiguration(owner.getDiagramElementMapping(), ((DStylizable) owner).getStyle());
         final BorderItemLocatorProvider locatorProvider = styleConfiguration.getBorderItemLocatorProvider();
@@ -308,8 +308,8 @@ public final class LayoutUtils {
                 final Node node = (Node) view;
                 if (node.getLayoutConstraint() instanceof Location) {
                     final Location location = (Location) node.getLayoutConstraint();
-                    minDistanceToUpperLeftCorner.width = minDistanceToUpperLeftCorner.width < 0 || location.getX() < minDistanceToUpperLeftCorner.width ? location.getX()
-                            : minDistanceToUpperLeftCorner.width;
+                    minDistanceToUpperLeftCorner.setWidth(minDistanceToUpperLeftCorner.width < 0 || location.getX() < minDistanceToUpperLeftCorner.width ? location.getX()
+                            : minDistanceToUpperLeftCorner.width);
                     minDistanceToUpperLeftCorner.height = minDistanceToUpperLeftCorner.height < 0 || location.getY() < minDistanceToUpperLeftCorner.height ? location.getY()
                             : minDistanceToUpperLeftCorner.height;
                 }
@@ -317,10 +317,10 @@ public final class LayoutUtils {
         }
         final Dimension delta = new Dimension(0, 0);
         if (minDistanceToUpperLeftCorner.width > LEFT_MARGIN) {
-            delta.width = minDistanceToUpperLeftCorner.width - LEFT_MARGIN;
+            delta.setWidth(minDistanceToUpperLeftCorner.width - LEFT_MARGIN);
         }
         if (minDistanceToUpperLeftCorner.height > TOP_MARGIN) {
-            delta.height = minDistanceToUpperLeftCorner.height - TOP_MARGIN;
+            delta.setHeight(minDistanceToUpperLeftCorner.height - TOP_MARGIN);
         }
 
         if (delta.height > 0 || delta.width > 0) {
@@ -586,8 +586,8 @@ public final class LayoutUtils {
                             final Bounds bounds = (Bounds) child.getLayoutConstraint();
                             final int height = bounds.getY() + bounds.getHeight() + TOP_MARGIN;
                             final int width = bounds.getWidth() + bounds.getX() + LEFT_MARGIN;
-                            minSize.width = minSize.width < 0 || width > minSize.width ? width : minSize.width;
-                            minSize.height = minSize.height < 0 || height > minSize.height ? height : minSize.height;
+                            minSize.setWidth(minSize.width < 0 || width > minSize.width ? width : minSize.width);
+                            minSize.setHeight(minSize.height < 0 || height > minSize.height ? height : minSize.height);
                         }
                     }
                 }
@@ -597,12 +597,12 @@ public final class LayoutUtils {
 
             int height = containerBounds.getHeight();
             if (height != -1 && minSize.height > height) {
-                delta.height = minSize.height - height;
+                delta.setHeight(minSize.height - height);
                 containerBounds.setHeight(minSize.height);
             }
             int width = containerBounds.getWidth();
             if (width != -1 && minSize.width > width) {
-                delta.width = minSize.width - width;
+                delta.setWidth(minSize.width - width);
                 containerBounds.setWidth(minSize.width);
             }
 

@@ -122,8 +122,8 @@ public abstract class AbstractFrameResizableEditPolicy extends AirResizableEditP
             Rectangle newBounds = getNewBounds(getHostAbsoluteBounds().getCopy(), request);
             Figure frameGuide = new RangeGuide(FRAME_FEEDBACK_COLOR, new Range(newBounds.y, newBounds.y + Math.max(0, newBounds.height)), false);
             Rectangle bounds = getFeedbackLayer().getBounds().getCopy();
-            bounds.y = newBounds.y;
-            bounds.height = newBounds.height;
+            bounds.setY(newBounds.y);
+            bounds.setHeight(newBounds.height);
             frameGuide.setBounds(bounds);
             addFeedback(frameGuide);
             guides.add(frameGuide);
@@ -155,8 +155,8 @@ public abstract class AbstractFrameResizableEditPolicy extends AirResizableEditP
             Range expand = RangeHelper.verticalRange(screenRange);
 
             RangeGuide expansion = new RangeGuide(validator.isValid() ? EXPANSION_FEEDBACK_COLOR : CONFLICT_FEEDBACK_COLOR, expand, true);
-            bounds.height = expand.width();
-            bounds.y = expand.getLowerBound();
+            bounds.setHeight(expand.width());
+            bounds.setY(expand.getLowerBound());
             expansion.setBounds(bounds);
             addFeedback(expansion);
             guides.add(expansion);
@@ -169,8 +169,8 @@ public abstract class AbstractFrameResizableEditPolicy extends AirResizableEditP
             conflictingPosition.performScale(GraphicalHelper.getZoom(getHost()));
 
             Rectangle bounds = getFeedbackLayer().getBounds().getCopy();
-            bounds.y = conflictingPosition.y;
-            bounds.height = 1;
+            bounds.setY(conflictingPosition.y);
+            bounds.setHeight(1);
 
             HorizontalGuide conflictGuide = new HorizontalGuide(CONFLICT_FEEDBACK_COLOR, conflictingPosition.y);
             conflictGuide.setBounds(bounds);
@@ -192,8 +192,8 @@ public abstract class AbstractFrameResizableEditPolicy extends AirResizableEditP
 
     private HorizontalGuide createAndAddFeedbackHGuide(int y) {
         Rectangle bounds = getFeedbackLayer().getBounds().getCopy();
-        bounds.height = 1;
-        bounds.y = y;
+        bounds.setHeight(1);
+        bounds.setY(y);
 
         HorizontalGuide guide = new HorizontalGuide(FRAME_FEEDBACK_COLOR, y);
         guide.setBounds(bounds);

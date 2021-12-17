@@ -169,8 +169,8 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
 
             Figure guide = new HorizontalGuide(MESSAGE_FEEDBACK_COLOR, location.y);
             Rectangle bounds = getFeedbackLayer().getBounds().getCopy();
-            bounds.height = 1;
-            bounds.y = location.y;
+            bounds.setHeight(1);
+            bounds.setY(location.y);
             guide.setBounds(bounds);
             addFeedback(guide);
             guides.add(guide);
@@ -180,8 +180,8 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                 endLocation.performScale(GraphicalHelper.getZoom(getHost()));
                 Figure messageToSelfBottomGuide = new HorizontalGuide(MESSAGE_FEEDBACK_COLOR, endLocation.y);
                 bounds = getFeedbackLayer().getBounds().getCopy();
-                bounds.height = 1;
-                bounds.y = endLocation.y;
+                bounds.setHeight(1);
+                bounds.setY(endLocation.y);
                 messageToSelfBottomGuide.setBounds(bounds);
                 addFeedback(messageToSelfBottomGuide);
                 guides.add(messageToSelfBottomGuide);
@@ -205,8 +205,8 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
                     conflictingPosition.performScale(GraphicalHelper.getZoom(getHost()));
 
                     HorizontalGuide conflictGuide = new HorizontalGuide(SequenceInteractionFeedBackBuilder.CONFLICT_FEEDBACK_COLOR, conflictingPosition.y);
-                    bounds.y = conflictingPosition.y;
-                    bounds.height = 1;
+                    bounds.setY(conflictingPosition.y);
+                    bounds.setHeight(1);
                     conflictGuide.setBounds(bounds);
                     addFeedback(conflictGuide);
                     guides.add(conflictGuide);
@@ -303,7 +303,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             feedbackRangeLimit = sourceBbounds.y + sourceBbounds.height - GraphicalHelper.getScrollSize(target).y - LayoutConstants.EXECUTION_CHILDREN_MARGIN;
         }
 
-        cbr.getMoveDelta().y = feedbackRangeLimit - (target.getFigure().getBounds().y + target.getFigure().getBounds().height / 2) + scrollSize.y; // br.getLocation().y
+        cbr.getMoveDelta().setY(feedbackRangeLimit - (target.getFigure().getBounds().y + target.getFigure().getBounds().height / 2) + scrollSize.y); // br.getLocation().y
         target.showSourceFeedback(cbr);
     }
 
@@ -338,7 +338,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
             if (thisEvent.getTarget() instanceof InstanceRoleEditPart) {
                 InstanceRoleEditPart target = (InstanceRoleEditPart) thisEvent.getTarget();
                 ChangeBoundsRequest cbr = new ChangeBoundsRequest(org.eclipse.gef.RequestConstants.REQ_MOVE);
-                cbr.getMoveDelta().y = br.getLocation().y - (target.getFigure().getBounds().y + target.getFigure().getBounds().height / 2); // br.getLocation().y
+                cbr.getMoveDelta().setY(br.getLocation().y - (target.getFigure().getBounds().y + target.getFigure().getBounds().height / 2)); // br.getLocation().y
                 target.eraseSourceFeedback(cbr);
             } else if (thisEvent.getTarget() instanceof EndOfLifeEditPart) {
                 EndOfLifeOperations.eraseEndOfLifeFeedback((LifelineEditPart) thisEvent.getTarget().getParent(), br);
@@ -734,7 +734,7 @@ public class SequenceMessageEditPolicy extends ConnectionBendpointEditPolicy {
         }
 
         final ChangeBoundsRequest cbr = new ChangeBoundsRequest(org.eclipse.gef.RequestConstants.REQ_MOVE);
-        cbr.getMoveDelta().y = sourceRangeLimit - (instanceRoleEditPart.getFigure().getBounds().y + instanceRoleEditPart.getFigure().getBounds().height / 2);
+        cbr.getMoveDelta().setY(sourceRangeLimit - (instanceRoleEditPart.getFigure().getBounds().y + instanceRoleEditPart.getFigure().getBounds().height / 2));
         cbr.setConstrainedMove(true);
         cbr.setEditParts(instanceRoleEditPart);
         cc.compose(new CommandProxy(instanceRoleEditPart.getCommand(cbr)));

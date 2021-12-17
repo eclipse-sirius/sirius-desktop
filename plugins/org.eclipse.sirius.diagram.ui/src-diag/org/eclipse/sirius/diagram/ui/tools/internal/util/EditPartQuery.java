@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -396,17 +396,17 @@ public class EditPartQuery {
                 // computation
                 Rectangle borderItemLocatorParentBounds = ((DBorderItemLocator) borderItemLocator).getParentFigure().getBounds();
                 if (PositionConstants.NORTH == resizedSide) {
-                    borderItemLocatorParentBounds.y = borderItemLocatorParentBounds.y - parentResizeSize;
-                    expectedNewBounds.y = expectedNewBounds.y - parentResizeSize;
+                    borderItemLocatorParentBounds.setY(borderItemLocatorParentBounds.y - parentResizeSize);
+                    expectedNewBounds.setY(expectedNewBounds.y - parentResizeSize);
                 }
-                borderItemLocatorParentBounds.height = borderItemLocatorParentBounds.height + parentResizeSize;
+                borderItemLocatorParentBounds.setHeight(borderItemLocatorParentBounds.height + parentResizeSize);
                 expectedNewBounds = ((DBorderItemLocator) borderItemLocator).getValidLocation(expectedNewBounds, borderItemEditPart.getFigure(), partToFigureToIgnore.values(),
                         new ArrayList<IFigure>());
                 // Reset the temporary size of the parent figure
                 if (PositionConstants.NORTH == resizedSide) {
-                    borderItemLocatorParentBounds.y = borderItemLocatorParentBounds.y + parentResizeSize;
+                    borderItemLocatorParentBounds.setY(borderItemLocatorParentBounds.y + parentResizeSize);
                 }
-                borderItemLocatorParentBounds.height = borderItemLocatorParentBounds.height - parentResizeSize;
+                borderItemLocatorParentBounds.setHeight(borderItemLocatorParentBounds.height - parentResizeSize);
 
             } else {
                 expectedNewBounds = borderItemLocator.getValidLocation(expectedNewBounds, borderItemEditPart.getFigure());
@@ -419,8 +419,8 @@ public class EditPartQuery {
             }
             // Directly set the figure to be considered by next border item edit
             // part (if any)
-            borderItemEditPart.getFigure().getBounds().x = expectedNewBounds.x;
-            borderItemEditPart.getFigure().getBounds().y = expectedNewBounds.y;
+            borderItemEditPart.getFigure().getBounds().setX(expectedNewBounds.x);
+            borderItemEditPart.getFigure().getBounds().setY(expectedNewBounds.y);
             // Remove the located figure
             partToFigureToIgnore.remove(borderItemEditPart);
         }
@@ -492,17 +492,17 @@ public class EditPartQuery {
                 // computation
                 Rectangle borderItemLocatorParentBounds = ((DBorderItemLocator) borderItemLocator).getParentFigure().getBounds();
                 if (PositionConstants.WEST == resizedSide) {
-                    borderItemLocatorParentBounds.x = borderItemLocatorParentBounds.x - parentResizeSize;
-                    expectedNewBounds.x = expectedNewBounds.x - parentResizeSize;
+                    borderItemLocatorParentBounds.setX(borderItemLocatorParentBounds.x - parentResizeSize);
+                    expectedNewBounds.setX(expectedNewBounds.x - parentResizeSize);
                 }
-                borderItemLocatorParentBounds.width = borderItemLocatorParentBounds.width + parentResizeSize;
+                borderItemLocatorParentBounds.setWidth(borderItemLocatorParentBounds.width + parentResizeSize);
                 expectedNewBounds = ((DBorderItemLocator) borderItemLocator).getValidLocation(expectedNewBounds, borderItemEditPart.getFigure(), partToFigureToIgnore.values(),
                         new ArrayList<IFigure>());
                 // Reset the temporary size of the parent figure
                 if (PositionConstants.WEST == resizedSide) {
-                    borderItemLocatorParentBounds.x = borderItemLocatorParentBounds.x + parentResizeSize;
+                    borderItemLocatorParentBounds.setX(borderItemLocatorParentBounds.x + parentResizeSize);
                 }
-                borderItemLocatorParentBounds.width = borderItemLocatorParentBounds.width - parentResizeSize;
+                borderItemLocatorParentBounds.setWidth(borderItemLocatorParentBounds.width - parentResizeSize);
             } else {
                 expectedNewBounds = borderItemLocator.getValidLocation(expectedNewBounds, borderItemEditPart.getFigure());
             }
@@ -514,8 +514,8 @@ public class EditPartQuery {
             }
             // Directly set the figure to be considered by next border item edit
             // part (if any)
-            borderItemEditPart.getFigure().getBounds().x = expectedNewBounds.x;
-            borderItemEditPart.getFigure().getBounds().y = expectedNewBounds.y;
+            borderItemEditPart.getFigure().getBounds().setX(expectedNewBounds.x);
+            borderItemEditPart.getFigure().getBounds().setY(expectedNewBounds.y);
             // Remove the located figure
             partToFigureToIgnore.remove(borderItemEditPart);
         }

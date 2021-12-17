@@ -210,9 +210,9 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
                         if (node.equals(regionsToLayout.get(regionsToLayout.size() - 1)) && defaultRegionsSizeAndOptionalLastRegionSize != null
                                 && defaultRegionsSizeAndOptionalLastRegionSize.size() == 2) {
                             // Specific height for last region
-                            bounds.height = defaultRegionsSizeAndOptionalLastRegionSize.get(1).height();
+                            bounds.setHeight(defaultRegionsSizeAndOptionalLastRegionSize.get(1).height());
                         } else {
-                            bounds.height = defaultRegionsSize.height();
+                            bounds.setHeight(defaultRegionsSize.height());
                         }
                         size.setHeight(bounds.height);
                     }
@@ -224,9 +224,9 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
                         if (node.equals(regionsToLayout.get(regionsToLayout.size() - 1)) && defaultRegionsSizeAndOptionalLastRegionSize != null
                                 && defaultRegionsSizeAndOptionalLastRegionSize.size() == 2) {
                             // Specific width for last region
-                            bounds.width = defaultRegionsSizeAndOptionalLastRegionSize.get(1).width();
+                            bounds.setWidth(defaultRegionsSizeAndOptionalLastRegionSize.get(1).width());
                         } else {
-                            bounds.width = defaultRegionsSize.width();
+                            bounds.setWidth(defaultRegionsSize.width());
                         }
                         size.setWidth(bounds.width);
                     }
@@ -305,8 +305,8 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
     private Dimension getDefaultRegionsSize(Map<Node, Rectangle> regionsBounds, Dimension regionSizeComputedFromContainer) {
         Dimension result = new Dimension(-1, -1);
         for (Rectangle bounds : regionsBounds.values()) {
-            result.width = Math.max(result.width, bounds.width);
-            result.height = Math.max(result.height, bounds.height);
+            result.setWidth(Math.max(result.width, bounds.width));
+            result.setHeight(Math.max(result.height, bounds.height));
         }
         if (regionSizeComputedFromContainer.width() != -1) {
             // The size of the regions container has been fixed, by VSM or
@@ -314,7 +314,7 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
             // first region creation. At the next pass in this method, the
             // size of the regions container will be {-1, -1}: this is done
             // at the end of the current layout operation.
-            result.width = regionSizeComputedFromContainer.width();
+            result.setWidth(regionSizeComputedFromContainer.width());
         }
         if (regionSizeComputedFromContainer.height() != -1) {
             // The size of the regions container has been fixed, by VSM or
@@ -322,7 +322,7 @@ public class RegionContainerUpdateLayoutOperation extends AbstractModelChangeOpe
             // first region creation. At the next pass in this method, the
             // size of the regions container will be {-1, -1}: this is done
             // at the end of the current layout operation.
-            result.height = regionSizeComputedFromContainer.height();
+            result.setHeight(regionSizeComputedFromContainer.height());
         }
         return result;
     }

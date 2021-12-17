@@ -603,14 +603,14 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
             for (IFigure f : children) {
                 bounds = regionsBounds.get(f);
 
-                bounds.x = x;
-                bounds.y = y;
+                bounds.setX(x);
+                bounds.setY(y);
 
                 if (isVertical) {
-                    bounds.width = maxWidth;
+                    bounds.setWidth(maxWidth);
                     y += bounds.height;
                 } else {
-                    bounds.height = maxHeight;
+                    bounds.setHeight(maxHeight);
                     x += bounds.width;
                 }
 
@@ -658,25 +658,25 @@ public abstract class AbstractDNodeContainerCompartmentEditPart extends ShapeCom
             if (widthHint == -1 || heightHint == -1) {
                 Dimension prefSize = f.getPreferredSize(widthHint, heightHint);
                 if (widthHint == -1) {
-                    bounds.width = prefSize.width;
+                    bounds.setWidth(prefSize.width);
                 }
                 if (heightHint == -1) {
-                    bounds.height = prefSize.height;
+                    bounds.setHeight(prefSize.height);
                 }
             }
             Dimension min = f.getMinimumSize(widthHint, heightHint);
             Dimension max = f.getMaximumSize();
 
             if (min.width > bounds.width) {
-                bounds.width = min.width;
+                bounds.setWidth(min.width);
             } else if (max.width < bounds.width) {
-                bounds.width = max.width;
+                bounds.setWidth(max.width);
             }
 
             if (min.height > bounds.height) {
-                bounds.height = min.height;
+                bounds.setHeight(min.height);
             } else if (max.height < bounds.height) {
-                bounds.height = max.height;
+                bounds.setHeight(max.height);
             }
             return bounds;
         }

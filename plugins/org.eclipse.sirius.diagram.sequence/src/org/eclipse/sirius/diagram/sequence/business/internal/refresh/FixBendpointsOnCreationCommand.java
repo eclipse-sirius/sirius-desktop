@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -158,8 +158,8 @@ public class FixBendpointsOnCreationCommand extends RecordingCommand {
             if (sourceDNode.eContainer() instanceof AbstractDNode) {
                 AbstractDNode parentDNode = (AbstractDNode) sourceDNode.eContainer();
                 if (parentDNode.getOwnedBorderedNodes().contains(sourceDNode)) {
-                    sourceBounds.y += IBorderItemOffsets.DEFAULT_OFFSET.height;
-                    sourceBounds.height += 5;
+                    sourceBounds.setY(sourceBounds.y + IBorderItemOffsets.DEFAULT_OFFSET.height);
+                    sourceBounds.setHeight(sourceBounds.height + 5);
                 }
             }
             LayoutData sourceLayoutData = null;
@@ -188,8 +188,8 @@ public class FixBendpointsOnCreationCommand extends RecordingCommand {
             if (targetDNode.eContainer() instanceof AbstractDNode) {
                 AbstractDNode parentDNode = (AbstractDNode) targetDNode.eContainer();
                 if (parentDNode.getOwnedBorderedNodes().contains(targetDNode)) {
-                    targetBounds.y += IBorderItemOffsets.DEFAULT_OFFSET.height;
-                    targetBounds.height += 5;
+                    targetBounds.setY(targetBounds.y + IBorderItemOffsets.DEFAULT_OFFSET.height);
+                    targetBounds.setHeight(targetBounds.height + 5);
                 }
             }
             LayoutData targetLayoutData = null;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2003, 2016 IBM Corporation and others.
+ * Copyright (c) 2003, 2021 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -227,11 +227,11 @@ public class SiriusSnapFeedbackPolicy extends GraphicalEditPolicy {
             position = offset % 2 == 0 ? (int) Math.round(loc.preciseX()) : (int) Math.round(loc.preciseY());
             Rectangle figBounds = getFeedbackLayer().getBounds().getCopy();
             if ((offset % 2) == 1) {
-                figBounds.height = 1;
-                figBounds.y = position;
+                figBounds.setHeight(1);
+                figBounds.setY(position);
             } else {
-                figBounds.x = position;
-                figBounds.width = 1;
+                figBounds.setX(position);
+                figBounds.setWidth(1);
             }
             fig.setBounds(figBounds);
         } else {
@@ -242,11 +242,11 @@ public class SiriusSnapFeedbackPolicy extends GraphicalEditPolicy {
             Rectangle figBounds = fig.getBounds().getCopy();
             Rectangle feedbackBounds = getFeedbackLayer().getBounds();
             if ((offset % 2) == 1) {
-                figBounds.x = feedbackBounds.x;
-                figBounds.width = feedbackBounds.width;
+                figBounds.setX(feedbackBounds.x);
+                figBounds.setWidth(feedbackBounds.width);
             } else {
-                figBounds.y = feedbackBounds.y;
-                figBounds.height = feedbackBounds.height;
+                figBounds.setY(feedbackBounds.y);
+                figBounds.setHeight(feedbackBounds.height);
             }
             fig.setBounds(figBounds);
         }

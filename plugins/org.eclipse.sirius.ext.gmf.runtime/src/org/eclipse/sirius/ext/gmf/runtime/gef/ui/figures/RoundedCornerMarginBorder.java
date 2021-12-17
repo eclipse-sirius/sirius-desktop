@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2019 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -76,26 +76,26 @@ public class RoundedCornerMarginBorder extends OneLineMarginBorder {
         if (!corner.isEmpty()) {
             switch (getPosition()) {
             case PositionConstants.TOP:
-                tempRect.x += halfWidthInLP;
-                tempRect.width -= getWidth();
+                tempRect.setX(tempRect.x + halfWidthInLP);
+                tempRect.setWidth(tempRect.width - getWidth());
                 graphics.drawArc(tempRect.getTopRight().x - hRadius, tempRect.getTopRight().y, corner.width, corner.height, 5, 85);
                 graphics.drawArc(tempRect.getTopLeft().x - hRadius, tempRect.getTopLeft().y, corner.width, corner.height, 90, 85);
                 break;
             case PositionConstants.BOTTOM:
-                tempRect.x += halfWidthInLP;
-                tempRect.width -= getWidth();
+                tempRect.setX(tempRect.x + halfWidthInLP);
+                tempRect.setWidth(tempRect.width - getWidth());
                 graphics.drawArc(tempRect.getBottomLeft().x - hRadius, tempRect.getBottomLeft().y - corner.height, corner.width, corner.height, 185, 85);
                 graphics.drawArc(tempRect.getBottomRight().x - hRadius, tempRect.getBottomRight().y - corner.height, corner.width, corner.height, 270, 85);
                 break;
             case PositionConstants.LEFT:
-                tempRect.y += halfWidthInLP;
-                tempRect.height -= getWidth();
+                tempRect.setY(tempRect.y + halfWidthInLP);
+                tempRect.setHeight(tempRect.height - getWidth());
                 graphics.drawArc(tempRect.getTopLeft().x, tempRect.getTopLeft().y - vRadius, corner.width, corner.height, 95, 85);
                 graphics.drawArc(tempRect.getBottomLeft().x, tempRect.getBottomLeft().y - vRadius, corner.width, corner.height, 180, 85);
                 break;
             case PositionConstants.RIGHT:
-                tempRect.y += halfWidthInLP;
-                tempRect.height -= getWidth();
+                tempRect.setY(tempRect.y + halfWidthInLP);
+                tempRect.setHeight(tempRect.height - getWidth());
                 graphics.drawArc(tempRect.getTopRight().x - corner.width, tempRect.getTopRight().y - vRadius, corner.width, corner.height, 0, 85);
                 graphics.drawArc(tempRect.getBottomRight().x - corner.width, tempRect.getBottomRight().y - vRadius, corner.width, corner.height, 270, 85);
                 break;
@@ -113,11 +113,11 @@ public class RoundedCornerMarginBorder extends OneLineMarginBorder {
      */
     public void setCornerDimensions(Dimension d) {
         if (d == null) {
-            corner.width = 0;
-            corner.height = 0;
+            corner.setWidth(0);
+            corner.setHeight(0);
         } else {
-            corner.width = d.width;
-            corner.height = d.height;
+            corner.setWidth(d.width);
+            corner.setHeight(d.height);
         }
     }
 }

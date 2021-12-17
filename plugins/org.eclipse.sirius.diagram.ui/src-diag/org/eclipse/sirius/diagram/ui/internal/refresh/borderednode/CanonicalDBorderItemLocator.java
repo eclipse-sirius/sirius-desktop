@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -864,7 +864,7 @@ public class CanonicalDBorderItemLocator {
             Option<Rectangle> optionalConflictingRectangle = Options.newNone();
             if (isStillFreeSpaceToTheRight) {
                 // Move to the right on the south side
-                rightTestPoint.x += rightHorizontalGap;
+                rightTestPoint.setX(rightTestPoint.x + rightHorizontalGap);
                 optionalConflictingRectangle = conflicts(rightTestPoint, borderItemSize, portsNodesToIgnore);
                 if (optionalConflictingRectangle.some()) {
                     // We make sure the conflicting location is on the same side
@@ -885,7 +885,7 @@ public class CanonicalDBorderItemLocator {
             }
             if (isStillFreeSpaceToTheLeft && resultLocation == null) {
                 // Move to the left on the south side
-                leftTestPoint.x -= leftHorizontalGap;
+                leftTestPoint.setX(leftTestPoint.x - leftHorizontalGap);
                 optionalConflictingRectangle = conflicts(leftTestPoint, borderItemSize, portsNodesToIgnore);
                 if (optionalConflictingRectangle.some()) {
                     // We make sure the conflicting location is on the same side
@@ -968,7 +968,7 @@ public class CanonicalDBorderItemLocator {
             Option<Rectangle> optionalConflictingRectangle = Options.newNone();
             if (isStillFreeSpaceToTheRight) {
                 // Move to the right on the north side
-                rightTestPoint.x += rightHorizontalGap;
+                rightTestPoint.setX(rightTestPoint.x + rightHorizontalGap);
                 optionalConflictingRectangle = conflicts(rightTestPoint, borderItemSize, portsNodesToIgnore);
                 if (optionalConflictingRectangle.some()) {
                     // We make sure the conflicting location is on the same side
@@ -989,7 +989,7 @@ public class CanonicalDBorderItemLocator {
             }
             if (isStillFreeSpaceToTheLeft && resultLocation == null) {
                 // Move to the left on the north side
-                leftTestPoint.x -= leftHorizontalGap;
+                leftTestPoint.setX(leftTestPoint.x - leftHorizontalGap);
                 optionalConflictingRectangle = conflicts(leftTestPoint, borderItemSize, portsNodesToIgnore);
                 if (optionalConflictingRectangle.some()) {
                     // We make sure the conflicting location is on the same side
@@ -1072,7 +1072,7 @@ public class CanonicalDBorderItemLocator {
             Option<Rectangle> optionalConflictingRectangle = Options.newNone();
             if (isStillFreeSpaceBelow) {
                 // Move down on the west side
-                belowTestPoint.y += belowVerticalGap;
+                belowTestPoint.setY(belowTestPoint.y + belowVerticalGap);
                 optionalConflictingRectangle = conflicts(belowTestPoint, borderItemSize, portsNodesToIgnore);
                 if (optionalConflictingRectangle.some()) {
                     // We make sure the conflicting location is on the same side
@@ -1093,7 +1093,7 @@ public class CanonicalDBorderItemLocator {
             }
             if (isStillFreeSpaceAbove && resultLocation == null) {
                 // Move up on the west side
-                aboveTestPoint.y -= aboveVerticalGap;
+                aboveTestPoint.setY(aboveTestPoint.y - aboveVerticalGap);
                 optionalConflictingRectangle = conflicts(aboveTestPoint, borderItemSize, portsNodesToIgnore);
                 if (optionalConflictingRectangle.some()) {
                     // We make sure the conflicting location is on the same side
@@ -1177,7 +1177,7 @@ public class CanonicalDBorderItemLocator {
             Option<Rectangle> optionalConflictingRectangle = Options.newNone();
             if (isStillFreeSpaceBelow) {
                 // Move down on the east side
-                belowTestPoint.y += belowVerticalGap;
+                belowTestPoint.setY(belowTestPoint.y + belowVerticalGap);
                 optionalConflictingRectangle = conflicts(belowTestPoint, borderItemSize, portsNodesToIgnore);
                 if (optionalConflictingRectangle.some()) {
                     // We make sure the conflicting location is on the same side
@@ -1198,7 +1198,7 @@ public class CanonicalDBorderItemLocator {
             }
             if (isStillFreeSpaceAbove && resultLocation == null) {
                 // Move up on the east side
-                aboveTestPoint.y -= aboveVerticalGap;
+                aboveTestPoint.setY(aboveTestPoint.y - aboveVerticalGap);
                 optionalConflictingRectangle = conflicts(aboveTestPoint, borderItemSize, portsNodesToIgnore);
                 if (optionalConflictingRectangle.some()) {
                     // We make sure the conflicting location is on the same side

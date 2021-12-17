@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2014 IBM Corporation and others.
+ * Copyright (c) 2002, 2021 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -459,13 +459,13 @@ public class CanonicalRectilinearRouter {
     private static Dimension getTranslationValue(int position, int xFactorValue, int yFactorValue) {
         Dimension translationDimension = new Dimension();
         if (position == PositionConstants.EAST) {
-            translationDimension.width = xFactorValue;
+            translationDimension.setWidth(xFactorValue);
         } else if (position == PositionConstants.SOUTH) {
-            translationDimension.height = yFactorValue;
+            translationDimension.setHeight(yFactorValue);
         } else if (position == PositionConstants.WEST) {
-            translationDimension.width = -xFactorValue;
+            translationDimension.setWidth(-xFactorValue);
         } else if (position == PositionConstants.NORTH) {
-            translationDimension.height = -yFactorValue;
+            translationDimension.setHeight(-yFactorValue);
         }
         return translationDimension;
     }

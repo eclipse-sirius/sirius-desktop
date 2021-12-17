@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2018, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -154,15 +154,15 @@ public class SiriusBlankSpacesDragTracker extends SimpleDragTracker {
         }
         Rectangle bounds = getFeedbackLayer().getBounds().getCopy();
         if (isHorizontal(source)) {
-            bounds.x = startLocationForFeedback;
-            bounds.width = getCurrentPositionZoomed() - startLocationForFeedback;
+            bounds.setX(startLocationForFeedback);
+            bounds.setWidth(getCurrentPositionZoomed() - startLocationForFeedback);
         } else {
-            bounds.y = startLocationForFeedback;
-            bounds.height = getCurrentPositionZoomed() - startLocationForFeedback;
+            bounds.setY(startLocationForFeedback);
+            bounds.setHeight(getCurrentPositionZoomed() - startLocationForFeedback);
             if (bounds.height < 0) {
                 // from bottom to top
-                bounds.y = bounds.y + bounds.height;
-                bounds.height = Math.abs(bounds.height);
+                bounds.setY(bounds.y + bounds.height);
+                bounds.setHeight(Math.abs(bounds.height));
             }
         }
         blankSpaceGuide.setBounds(bounds);

@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2004 IBM Corporation and others.
+ * Copyright (c) 2004, 2021 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -310,9 +310,9 @@ public class DTreeRouter extends BendpointConnectionRouter implements Orthogonal
                 if (i == newLine.size() - 2) {
                     // The last point is more important than the other (not
                     // change the end of the line)
-                    ptCurrent.x = ptNext.x;
+                    ptCurrent.setX(ptNext.x);
                 } else {
-                    ptNext.x = ptCurrent.x;
+                    ptNext.setX(ptCurrent.x);
                 }
             } else {
                 if (yDelta > tolerance) {
@@ -321,9 +321,9 @@ public class DTreeRouter extends BendpointConnectionRouter implements Orthogonal
                 if (i == newLine.size() - 2) {
                     // The last point is more important than the other (not
                     // change the end of the line)
-                    ptCurrent.y = ptNext.y;
+                    ptCurrent.setY(ptNext.y);
                 } else {
-                    ptNext.y = ptCurrent.y;
+                    ptNext.setY(ptCurrent.y);
                 }
             }
 

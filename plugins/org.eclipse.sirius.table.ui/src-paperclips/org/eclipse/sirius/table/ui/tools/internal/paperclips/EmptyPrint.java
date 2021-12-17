@@ -44,8 +44,8 @@ public class EmptyPrint implements Print {
 	 *            height of the Print, in points (72pts = 1").
 	 */
 	public EmptyPrint(int width, int height) {
-		this.width = checkDimension(width);
-		this.height = checkDimension(height);
+        this.width = checkDimension(width);
+        this.height = checkDimension(height);
 	}
 
 	/**

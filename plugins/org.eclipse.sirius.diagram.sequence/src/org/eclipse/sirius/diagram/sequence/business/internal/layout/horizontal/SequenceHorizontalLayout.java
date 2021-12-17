@@ -361,7 +361,7 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
                 Range verticalRange = frame.getVerticalRange();
                 int irWidth = getInstanceRoleBounds(rightLifeline.getInstanceRole(), irMoves).width;
                 int lifelineRightGap = getLifelineRightGap(rightLifeline, verticalRange, irWidth, lostEndsDelta);
-                newBounds.width += Math.max(lifelineRightGap, frameDepthGap);
+                newBounds.setWidth(newBounds.width + Math.max(lifelineRightGap, frameDepthGap));
             }
 
             if (leftLifeline != null) {
@@ -370,8 +370,8 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
                 int lifelineLeftGap = getLifelineLeftGap(rightLifeline, verticalRange, irWidth, lostEndsDelta);
                 lifelineLeftGap = Math.max(lifelineLeftGap, frameDepthGap);
 
-                newBounds.x -= lifelineLeftGap;
-                newBounds.width += lifelineLeftGap;
+                newBounds.setX(newBounds.x - lifelineLeftGap);
+                newBounds.setWidth(newBounds.width + lifelineLeftGap);
             }
 
             frameMoves.put(frame, newBounds);
@@ -431,13 +431,13 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
 
         Rectangle newBounds = oldBounds.getCopy();
         if (pack) {
-            newBounds.x = newMinX;
+            newBounds.setX(newMinX);
         } else {
             // shift the current instancerole to the right ?
             // don't reduce previous delta with known/flagged predecessor
             int deltaStablePosition = getDeltaStablePosition(newMinX, instanceRole, Maps.transformValues(computedMoves, RECT_TO_X));
 
-            newBounds.x = Math.max(newMinX, Math.max(newBounds.x, deltaStablePosition));
+            newBounds.setX(Math.max(newMinX, Math.max(newBounds.x, deltaStablePosition)));
         }
 
         // Store computed move
@@ -462,7 +462,7 @@ public class SequenceHorizontalLayout extends AbstractSequenceOrderingLayout<ISe
         final Map<Message, Rectangle> computedMoves = new HashMap<Message, Rectangle>();
         for (Entry<Message, Integer> msg : reflexiveMessagesToLayout.entrySet()) {
             Rectangle properLogicalBounds = msg.getKey().getProperLogicalBounds();
-            properLogicalBounds.width = msg.getValue();
+            properLogicalBounds.setWidth(msg.getValue());
             computedMoves.put(msg.getKey(), properLogicalBounds);
         }
         return computedMoves;

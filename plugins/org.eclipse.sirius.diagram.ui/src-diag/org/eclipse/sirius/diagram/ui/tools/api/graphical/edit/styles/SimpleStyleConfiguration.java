@@ -77,15 +77,15 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
             }
             final Rectangle constraint = new Rectangle(nodeLabel.getParent().getBounds());
             if (nodeLabel.getParent() instanceof GaugeCompositeFigure) {
-                constraint.x = 0;
-                constraint.y = 0;
+                constraint.setX(0);
+                constraint.setY(0);
             }
 
             final Insets borderDimension = this.getBorderDimension(node);
-            constraint.height -= borderDimension.top + borderDimension.bottom;
-            constraint.width -= borderDimension.left + borderDimension.right;
-            constraint.x += borderDimension.left;
-            constraint.y += borderDimension.top;
+            constraint.setHeight(constraint.height - borderDimension.top + borderDimension.bottom);
+            constraint.setWidth(constraint.width - borderDimension.left + borderDimension.right);
+            constraint.setX(constraint.x + borderDimension.left);
+            constraint.setY(constraint.y + borderDimension.top);
 
             nodeLabel.setBounds(constraint);
         }
@@ -267,12 +267,12 @@ public class SimpleStyleConfiguration implements StyleConfiguration {
 
             final Dimension size = nodeLabel.getPreferredSize(hWidth + nodeLabel.getIconBounds().width + nodeLabel.getIconTextGap(), hHeight).getCopy();
 
-            size.width += 20;
-            size.height += 30;
+            size.setWidth(size.width + 20);
+            size.setHeight(size.height + 30);
 
             final Insets borderDimension = this.getBorderDimension(node);
-            size.width += borderDimension.left + borderDimension.right;
-            size.height += borderDimension.top + borderDimension.bottom;
+            size.setWidth(size.width + borderDimension.left + borderDimension.right);
+            size.setHeight(size.height + borderDimension.top + borderDimension.bottom);
 
             return size;
         }

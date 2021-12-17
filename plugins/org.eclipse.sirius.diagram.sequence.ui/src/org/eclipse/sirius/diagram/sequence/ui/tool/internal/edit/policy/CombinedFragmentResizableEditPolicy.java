@@ -347,12 +347,12 @@ public class CombinedFragmentResizableEditPolicy extends AbstractFrameResizableE
             final double zoom = ((ZoomManager) part.getViewer().getProperty(ZoomManager.class.toString())).getZoom();
             final Dimension dimension = CombinedFragmentResizableEditPolicy.getDimensionFromView(part);
             final Point position = CombinedFragmentResizableEditPolicy.getPositionFromView(part);
-            dimension.height += request.getSizeDelta().height / zoom;
+            dimension.setHeight(dimension.height + (int) (request.getSizeDelta().height / zoom));
             switch (request.getResizeDirection()) {
             case PositionConstants.NORTH:
             case PositionConstants.NORTH_WEST:
             case PositionConstants.NORTH_EAST:
-                position.y -= request.getSizeDelta().height / zoom;
+                position.setY(position.y - (int) (request.getSizeDelta().height / zoom));
                 break;
             default:
                 break;
@@ -383,8 +383,8 @@ public class CombinedFragmentResizableEditPolicy extends AbstractFrameResizableE
         final Point position = new Point();
         if (part.getNotationView() instanceof Node && ((Node) part.getNotationView()).getLayoutConstraint() instanceof Location) {
             final Location location = (Location) ((Node) part.getNotationView()).getLayoutConstraint();
-            position.x = location.getX();
-            position.y = location.getY();
+            position.setX(location.getX());
+            position.setY(location.getY());
         }
         return position;
     }
@@ -393,8 +393,8 @@ public class CombinedFragmentResizableEditPolicy extends AbstractFrameResizableE
         final Dimension dimension = new Dimension();
         if (part.getNotationView() instanceof Node && ((Node) part.getNotationView()).getLayoutConstraint() instanceof Size) {
             final Size size = (Size) ((Node) part.getNotationView()).getLayoutConstraint();
-            dimension.width = size.getWidth();
-            dimension.height = size.getHeight();
+            dimension.setWidth(size.getWidth());
+            dimension.setHeight(size.getHeight());
         }
         return dimension;
     }

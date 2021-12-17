@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -130,8 +130,8 @@ public class PinnedElementsLayoutProvider extends DefaultLayoutProvider {
                 if (!pinHelper.isPinned(container.resolveDiagramElement()) && !elementstToKeepFixed.contains(container)) {
                     final Rectangle bounds = entry.getValue().getCopy();
                     final Rectangle autoSizedBounds = container.getAutosizedDimensions();
-                    bounds.width = autoSizedBounds.width;
-                    bounds.height = autoSizedBounds.height;
+                    bounds.setWidth(autoSizedBounds.width);
+                    bounds.setHeight(autoSizedBounds.height);
                     entry.setValue(bounds);
                 }
             }

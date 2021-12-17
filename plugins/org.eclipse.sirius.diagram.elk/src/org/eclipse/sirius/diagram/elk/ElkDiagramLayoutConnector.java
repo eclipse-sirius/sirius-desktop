@@ -1806,8 +1806,8 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                     labelText = wrappingLabel.getText();
                     if (wrappingLabel.getIcon() != null) {
                         iconBounds = new Dimension();
-                        iconBounds.width = wrappingLabel.getIcon().getBounds().width + wrappingLabel.getIconTextGap();
-                        iconBounds.height = wrappingLabel.getIcon().getBounds().height;
+                        iconBounds.setWidth(wrappingLabel.getIcon().getBounds().width + wrappingLabel.getIconTextGap());
+                        iconBounds.setHeight(wrappingLabel.getIcon().getBounds().height);
                         // Add more characters to the text for layouters that
                         // need the text to
                         // determine the label size.
@@ -1818,7 +1818,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                     labelText = label.getText();
                     if (label.getIcon() != null) {
                         iconBounds = label.getIconBounds().getSize();
-                        iconBounds.width += label.getIconTextGap();
+                        iconBounds.setWidth(iconBounds.width + label.getIconTextGap());
                         // Add more characters to the text for layouters that
                         // need the text to
                         // determine the label size.
@@ -1829,7 +1829,7 @@ public class ElkDiagramLayoutConnector implements IDiagramLayoutConnector {
                     labelText = label.getText();
                     if (label.getIcon() != null) {
                         iconBounds = label.getIconBounds().getSize();
-                        iconBounds.width += label.getIconTextGap();
+                        iconBounds.setWidth(iconBounds.width + label.getIconTextGap());
                         // Add more characters to the text for layouters that
                         // need the text to
                         // determine the label size.

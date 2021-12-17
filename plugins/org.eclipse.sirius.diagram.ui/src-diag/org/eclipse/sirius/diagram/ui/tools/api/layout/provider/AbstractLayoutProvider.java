@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -435,8 +435,8 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
         if (existingRequest instanceof ChangeBoundsRequest) {
             final ChangeBoundsRequest changeBoundsRequest = (ChangeBoundsRequest) existingRequest;
             if (changeBoundsRequest.getMoveDelta() != null) {
-                figureBounds.x += changeBoundsRequest.getMoveDelta().x;
-                figureBounds.y += changeBoundsRequest.getMoveDelta().y;
+                figureBounds.setX(figureBounds.x + changeBoundsRequest.getMoveDelta().x);
+                figureBounds.setY(figureBounds.y + changeBoundsRequest.getMoveDelta().y);
             }
         }
         return figureBounds;
@@ -445,38 +445,38 @@ public abstract class AbstractLayoutProvider extends AbstractLayoutEditPartProvi
     private void adjustBounds(final Rectangle figureBounds, final ChangeBoundsRequest changeBoundsRequest) {
         switch (changeBoundsRequest.getResizeDirection()) {
         case PositionConstants.NORTH:
-            figureBounds.height += changeBoundsRequest.getSizeDelta().height;
-            figureBounds.y -= changeBoundsRequest.getSizeDelta().height;
+            figureBounds.setHeight(figureBounds.height + changeBoundsRequest.getSizeDelta().height);
+            figureBounds.setY(figureBounds.y - changeBoundsRequest.getSizeDelta().height);
             break;
         case PositionConstants.SOUTH:
-            figureBounds.height += changeBoundsRequest.getSizeDelta().height;
+            figureBounds.setHeight(figureBounds.height + changeBoundsRequest.getSizeDelta().height);
             break;
         case PositionConstants.EAST:
-            figureBounds.width += changeBoundsRequest.getSizeDelta().width;
+            figureBounds.setWidth(figureBounds.width + changeBoundsRequest.getSizeDelta().width);
             break;
         case PositionConstants.WEST:
-            figureBounds.width += changeBoundsRequest.getSizeDelta().width;
-            figureBounds.x -= changeBoundsRequest.getSizeDelta().width;
+            figureBounds.setWidth(figureBounds.width + changeBoundsRequest.getSizeDelta().width);
+            figureBounds.setX(figureBounds.x - changeBoundsRequest.getSizeDelta().width);
             break;
         case PositionConstants.NORTH_EAST:
-            figureBounds.height += changeBoundsRequest.getSizeDelta().height;
-            figureBounds.y -= changeBoundsRequest.getSizeDelta().height;
-            figureBounds.width += changeBoundsRequest.getSizeDelta().width;
+            figureBounds.setHeight(figureBounds.height + changeBoundsRequest.getSizeDelta().height);
+            figureBounds.setY(figureBounds.y - changeBoundsRequest.getSizeDelta().height);
+            figureBounds.setWidth(figureBounds.width + changeBoundsRequest.getSizeDelta().width);
             break;
         case PositionConstants.NORTH_WEST:
-            figureBounds.height += changeBoundsRequest.getSizeDelta().height;
-            figureBounds.y -= changeBoundsRequest.getSizeDelta().height;
-            figureBounds.width += changeBoundsRequest.getSizeDelta().width;
-            figureBounds.x -= changeBoundsRequest.getSizeDelta().width;
+            figureBounds.setHeight(figureBounds.height + changeBoundsRequest.getSizeDelta().height);
+            figureBounds.setY(figureBounds.y - changeBoundsRequest.getSizeDelta().height);
+            figureBounds.setWidth(figureBounds.width + changeBoundsRequest.getSizeDelta().width);
+            figureBounds.setX(figureBounds.x - changeBoundsRequest.getSizeDelta().width);
             break;
         case PositionConstants.SOUTH_WEST:
-            figureBounds.height += changeBoundsRequest.getSizeDelta().height;
-            figureBounds.width += changeBoundsRequest.getSizeDelta().width;
-            figureBounds.x -= changeBoundsRequest.getSizeDelta().width;
+            figureBounds.setHeight(figureBounds.height + changeBoundsRequest.getSizeDelta().height);
+            figureBounds.setWidth(figureBounds.width + changeBoundsRequest.getSizeDelta().width);
+            figureBounds.setX(figureBounds.x - changeBoundsRequest.getSizeDelta().width);
             break;
         default:
-            figureBounds.height += changeBoundsRequest.getSizeDelta().height;
-            figureBounds.width += changeBoundsRequest.getSizeDelta().width;
+            figureBounds.setHeight(figureBounds.height + changeBoundsRequest.getSizeDelta().height);
+            figureBounds.setWidth(figureBounds.width + changeBoundsRequest.getSizeDelta().width);
         }
     }
 

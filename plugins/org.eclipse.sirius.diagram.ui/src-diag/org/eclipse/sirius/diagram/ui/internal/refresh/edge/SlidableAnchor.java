@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -108,8 +108,8 @@ public class SlidableAnchor {
                     LayoutConstraint parentLayoutConstraint = parentNode.getLayoutConstraint();
                     if (parentLayoutConstraint instanceof Bounds) {
                         Bounds parentBounds = (Bounds) parentLayoutConstraint;
-                        box.x += parentBounds.getX();
-                        box.y += parentBounds.getY();
+                        box.setX(box.x + parentBounds.getX());
+                        box.setY(box.y + parentBounds.getY());
                     }
 
                 }

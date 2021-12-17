@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2020, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -100,7 +100,7 @@ public class RegionContainerConstrainedToolbarLayout extends ConstrainedToolbarL
             prefSize = calculateChildrenSize(childrenToConsider, wHint, prefSize.height, true);
         }
 
-        prefSize.height += Math.max(0, children.size() - 1) * spacing;
+        prefSize.setHeight(prefSize.height + (Math.max(0, children.size() - 1) * spacing));
         return transposer.t(prefSize).expand(insets.getWidth(), insets.getHeight()).union(getBorderPreferredSize(container));
     }
 

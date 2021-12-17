@@ -838,23 +838,23 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
                         final Point position = new Point();
                         if (graphicalEditPart.getNotationView() instanceof Node && ((Node) graphicalEditPart.getNotationView()).getLayoutConstraint() instanceof Size) {
                             final Size size = (Size) ((Node) graphicalEditPart.getNotationView()).getLayoutConstraint();
-                            dimension.width = size.getWidth();
-                            dimension.height = size.getHeight();
+                            dimension.setWidth(size.getWidth());
+                            dimension.setHeight(size.getHeight());
                         }
                         if (graphicalEditPart.getNotationView() instanceof Node && ((Node) graphicalEditPart.getNotationView()).getLayoutConstraint() instanceof Location) {
                             final Location location = (Location) ((Node) graphicalEditPart.getNotationView()).getLayoutConstraint();
-                            position.x = location.getX();
-                            position.y = location.getY();
+                            position.setX(location.getX());
+                            position.setY(location.getY());
                         }
                         final DNode viewNode = (DNode) semantic;
                         boolean collapsed = new DDiagramElementQuery(viewNode).isIndirectlyCollapsed();
                         if (!collapsed && (viewNode.getResizeKind() == ResizeKind.NSEW_LITERAL || viewNode.getResizeKind() == ResizeKind.NORTH_SOUTH_LITERAL)) {
-                            dimension.height += request.getSizeDelta().height / getZoomManager().getZoom();
+                            dimension.setHeight(dimension.height + (int) (request.getSizeDelta().height / getZoomManager().getZoom()));
                             switch (request.getResizeDirection()) {
                             case PositionConstants.NORTH:
                             case PositionConstants.NORTH_WEST:
                             case PositionConstants.NORTH_EAST:
-                                position.y -= request.getSizeDelta().height / getZoomManager().getZoom();
+                                position.setY(position.y - (int) (request.getSizeDelta().height / getZoomManager().getZoom()));
                                 break;
                             default:
                                 break;
@@ -862,12 +862,12 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
 
                         }
                         if (!collapsed && (viewNode.getResizeKind() == ResizeKind.NSEW_LITERAL || viewNode.getResizeKind() == ResizeKind.EAST_WEST_LITERAL)) {
-                            dimension.width += request.getSizeDelta().width / getZoomManager().getZoom();
+                            dimension.setWidth(dimension.width + (int) (request.getSizeDelta().width / getZoomManager().getZoom()));
                             switch (request.getResizeDirection()) {
                             case PositionConstants.WEST:
                             case PositionConstants.NORTH_WEST:
                             case PositionConstants.SOUTH_WEST:
-                                position.x -= request.getSizeDelta().width / getZoomManager().getZoom();
+                                position.setX(position.x - (int) (request.getSizeDelta().width / getZoomManager().getZoom()));
                                 break;
                             default:
                                 break;

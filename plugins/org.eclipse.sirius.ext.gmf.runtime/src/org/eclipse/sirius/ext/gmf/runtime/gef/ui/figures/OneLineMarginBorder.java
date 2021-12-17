@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2013, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -68,14 +68,14 @@ public class OneLineMarginBorder extends OneLineBorder {
         switch (getPosition()) {
         case PositionConstants.MIDDLE:
             // See PositionConstants.TOP_MIDDLE_BOTTOM = TOP | MIDDLE | BOTTOM;
-            tempRect.y += halfWidthInLP;
-            tempRect.height -= getWidth();
+            tempRect.setY(tempRect.y + halfWidthInLP);
+            tempRect.setHeight(tempRect.height - getWidth());
             graphics.drawLine(tempRect.getLeft(), tempRect.getRight());
             break;
         case PositionConstants.CENTER:
             // See PositionConstants.LEFT_CENTER_RIGHT = LEFT | CENTER | RIGHT;
-            tempRect.x += halfWidthInLP;
-            tempRect.width -= getWidth();
+            tempRect.setX(tempRect.x + halfWidthInLP);
+            tempRect.setWidth(tempRect.width - getWidth());
             graphics.drawLine(tempRect.getTop(), tempRect.getBottom());
             break;
         default:

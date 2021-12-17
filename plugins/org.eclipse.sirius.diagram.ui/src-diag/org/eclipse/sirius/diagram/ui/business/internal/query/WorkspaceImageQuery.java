@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -52,8 +52,8 @@ public class WorkspaceImageQuery {
         image = WorkspaceImageFigure.getImageInstanceFromPath(path);
         if (image != null) {
             // Use default image size
-            result.width = image.getBounds().width;
-            result.height = image.getBounds().height;
+            result.setWidth(image.getBounds().width);
+            result.setHeight(image.getBounds().height);
         }
 
         return result;

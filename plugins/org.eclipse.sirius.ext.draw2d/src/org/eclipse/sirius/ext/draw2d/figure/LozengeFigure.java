@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -71,10 +71,10 @@ public class LozengeFigure extends Shape implements StyledFigure, ITransparentFi
         final Rectangle r = new Rectangle();
         final PointList pointList = new PointList();
 
-        r.x = bounds.x + getLineWidth() / 2;
-        r.y = bounds.y + getLineWidth() / 2;
-        r.width = bounds.width - getLineWidth();
-        r.height = bounds.height - getLineWidth();
+        r.setX(bounds.x + getLineWidth() / 2);
+        r.setY(bounds.y + getLineWidth() / 2);
+        r.setWidth(bounds.width - getLineWidth());
+        r.setHeight(bounds.height - getLineWidth());
         pointList.removeAllPoints();
         pointList.addPoint(r.x + r.width / 2, r.y);
         pointList.addPoint(r.x + r.width, r.y + r.height / 2);

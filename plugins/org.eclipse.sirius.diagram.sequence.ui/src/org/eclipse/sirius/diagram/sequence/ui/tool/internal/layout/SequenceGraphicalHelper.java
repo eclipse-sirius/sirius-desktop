@@ -176,12 +176,12 @@ public final class SequenceGraphicalHelper {
 
                 // prevent auto size
                 if (bounds.getWidth() != -1) {
-                    rect.width = bounds.getWidth();
+                    rect.setWidth(bounds.getWidth());
                 }
 
                 // prevent auto size
                 if (bounds.getHeight() != -1) {
-                    rect.height = bounds.getHeight();
+                    rect.setHeight(bounds.getHeight());
                 }
 
                 if (!(part instanceof InstanceRoleEditPart)) {

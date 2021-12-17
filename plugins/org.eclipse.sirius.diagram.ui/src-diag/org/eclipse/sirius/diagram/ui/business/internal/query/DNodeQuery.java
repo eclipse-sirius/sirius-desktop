@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -58,8 +58,8 @@ public class DNodeQuery {
             if (image != null) {
                 // Use default image size
                 if (node.getWidth() == null || Integer.valueOf(node.getWidth()) == -1) {
-                    result.width = image.getBounds().width;
-                    result.height = image.getBounds().height;
+                    result.setWidth(image.getBounds().width);
+                    result.setHeight(image.getBounds().height);
                 } else {
                     // width is already defined, adapt height thanks to
                     // image ratio
@@ -67,21 +67,21 @@ public class DNodeQuery {
                     double newHeight = node.getWidth().intValue() / ratio;
 
                     // Adapt to draw2D
-                    result.width = node.getWidth().intValue() * LayoutUtils.SCALE;
-                    result.height = (int) (newHeight * LayoutUtils.SCALE);
+                    result.setWidth(node.getWidth().intValue() * LayoutUtils.SCALE);
+                    result.setHeight((int) (newHeight * LayoutUtils.SCALE));
                 }
             }
         } else {
             if (node.getWidth() != null) {
-                result.width = node.getWidth().intValue();
+                result.setWidth(node.getWidth().intValue());
             }
             if (node.getHeight() != null) {
-                result.height = node.getHeight().intValue();
+                result.setHeight(node.getHeight().intValue());
             }
 
             // Adapt to draw2D
-            result.width = result.width * LayoutUtils.SCALE;
-            result.height = result.height * LayoutUtils.SCALE;
+            result.setWidth(result.width * LayoutUtils.SCALE);
+            result.setHeight(result.height * LayoutUtils.SCALE);
         }
 
         return result;

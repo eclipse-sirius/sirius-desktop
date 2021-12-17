@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -110,9 +110,9 @@ public class ExecutionItemLocator extends DBorderItemLocator {
             // we need to have the center of the execution aligned with the
             // center of the lifeline
             Rectangle parentBounds = parentFigure.getBounds();
-            offset.width = parentBounds.width / 2 + currentBounds.width / 2;
+            offset.setWidth(parentBounds.width / 2 + currentBounds.width / 2);
         } else if (currentBounds.width == 0) {
-            offset.width = 0;
+            offset.setWidth(0);
         }
         return offset;
     }
@@ -155,7 +155,7 @@ public class ExecutionItemLocator extends DBorderItemLocator {
         // Width can be empty for collapsing, do not use size.isEmpty()
         if (size.height == 0) {
             Dimension preferredSize = borderItem.getPreferredSize();
-            size.height = preferredSize != null ? preferredSize.height : 0;
+            size.setHeight(preferredSize != null ? preferredSize.height : 0);
         }
 
         return size;

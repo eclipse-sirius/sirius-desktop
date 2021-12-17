@@ -496,25 +496,25 @@ public class AutoSizeAndRegionAwareGraphLayout extends CompositeDirectedGraphLay
                 Dimension _preferredSize = f.getPreferredSize(bounds.width, bounds.height);
                 bounds = bounds.getCopy();
                 if (bounds.width == -1) {
-                    bounds.width = _preferredSize.width;
+                    bounds.setWidth(_preferredSize.width);
                 }
                 if (bounds.height == -1) {
-                    bounds.height = _preferredSize.height;
+                    bounds.setHeight(_preferredSize.height);
                 }
             }
             Dimension min = f.getMinimumSize();
             Dimension max = f.getMaximumSize();
 
             if (min.width > bounds.width) {
-                bounds.width = min.width;
+                bounds.setWidth(min.width);
             } else if (max.width < bounds.width) {
-                bounds.width = max.width;
+                bounds.setWidth(max.width);
             }
 
             if (min.height > bounds.height) {
-                bounds.height = min.height;
+                bounds.setHeight(min.height);
             } else if (max.height < bounds.height) {
-                bounds.height = max.height;
+                bounds.setHeight(max.height);
             }
             bounds = bounds.getTranslated(offset);
 

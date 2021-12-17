@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -53,7 +53,7 @@ public class InstanceRoleResizeValidator extends AbstractInstanceRoleValidator {
             Rectangle logicalDelta = query.getLogicalDelta();
 
             Point moveDelta = logicalDelta.getLocation();
-            moveDelta.y = 0;
+            moveDelta.setY(0);
             Dimension sizeDelta = logicalDelta.getSize();
 
             for (InstanceRole instanceRole : instanceRoles) {

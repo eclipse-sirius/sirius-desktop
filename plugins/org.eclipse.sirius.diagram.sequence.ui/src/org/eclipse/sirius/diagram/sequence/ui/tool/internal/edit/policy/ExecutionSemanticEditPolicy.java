@@ -114,7 +114,7 @@ public class ExecutionSemanticEditPolicy extends DNode2ItemSemanticEditPolicy {
 
                 ChangeBoundsRequest cbr = new ChangeBoundsRequest(org.eclipse.gef.RequestConstants.REQ_RESIZE);
                 cbr.setResizeDirection(PositionConstants.SOUTH);
-                cbr.getSizeDelta().height = -calculateHalfSizeOfEndOfLifeEditPartToCreate(endOfLifeMapping);
+                cbr.getSizeDelta().setHeight(-calculateHalfSizeOfEndOfLifeEditPartToCreate(endOfLifeMapping));
                 ctc.compose(new CommandProxy(getHost().getCommand(cbr)));
 
                 ICommandProxy iCommandProxy = new ICommandProxy(ctc);
@@ -185,8 +185,8 @@ public class ExecutionSemanticEditPolicy extends DNode2ItemSemanticEditPolicy {
 
                     forbiddenRangeArea = new RangeGuide(SequenceInteractionFeedBackBuilder.CONFLICT_FEEDBACK_COLOR, forbiddenRange, true);
                     Rectangle bounds = layer.getBounds().getCopy();
-                    bounds.height = forbiddenRange.width();
-                    bounds.y = forbiddenRange.getLowerBound();
+                    bounds.setHeight(forbiddenRange.width());
+                    bounds.setY(forbiddenRange.getLowerBound());
                     forbiddenRangeArea.setBounds(bounds);
                     layer.add(forbiddenRangeArea);
                 }

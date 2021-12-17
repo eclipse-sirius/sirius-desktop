@@ -110,8 +110,8 @@ public class SequenceInteractionFeedBackBuilder {
             conflictingPosition.performScale(GraphicalHelper.getZoom(hostPart));
 
             Rectangle bounds = feedBackLayer.getBounds().getCopy();
-            bounds.y = conflictingPosition.y;
-            bounds.height = 1;
+            bounds.setY(conflictingPosition.y);
+            bounds.setHeight(1);
 
             HorizontalGuide conflictGuide = new HorizontalGuide(CONFLICT_FEEDBACK_COLOR, conflictingPosition.y);
             conflictGuide.setBounds(bounds);
@@ -124,8 +124,8 @@ public class SequenceInteractionFeedBackBuilder {
             Range conflictRange = RangeHelper.verticalRange(screenRange);
 
             Rectangle bounds = feedBackLayer.getBounds().getCopy();
-            bounds.y = conflictRange.getLowerBound();
-            bounds.height = Math.max(1, conflictRange.width());
+            bounds.setY(conflictRange.getLowerBound());
+            bounds.setHeight(Math.max(1, conflictRange.width()));
 
             RangeGuide guide = new RangeGuide(CONFLICT_FEEDBACK_COLOR, conflictRange, true);
             guide.setBounds(bounds);
@@ -147,11 +147,11 @@ public class SequenceInteractionFeedBackBuilder {
         Rectangle bounds = feedBackLayer.getBounds().getCopy();
         if (event != null && event.isLogicallyInstantaneous()) {
             moveRange = new Range(screenRange.getCenter().y, screenRange.getCenter().y);
-            bounds.y = moveRange.getLowerBound();
-            bounds.height = 1;
+            bounds.setY(moveRange.getLowerBound());
+            bounds.setHeight(1);
         } else {
-            bounds.y = moveRange.getLowerBound();
-            bounds.height = Math.max(1, moveRange.width());
+            bounds.setY(moveRange.getLowerBound());
+            bounds.setHeight(Math.max(1, moveRange.width()));
         }
 
         RangeGuide guide = new RangeGuide(color, moveRange, fill);
@@ -169,8 +169,8 @@ public class SequenceInteractionFeedBackBuilder {
             Range expand = RangeHelper.verticalRange(screenRange);
 
             RangeGuide expansion = new RangeGuide(validator.isValid() ? EXPANSION_FEEDBACK_COLOR : CONFLICT_FEEDBACK_COLOR, expand, true);
-            bounds.height = expand.width();
-            bounds.y = expand.getLowerBound();
+            bounds.setHeight(expand.width());
+            bounds.setY(expand.getLowerBound());
             expansion.setBounds(bounds);
 
             feedbacks.add(expansion);

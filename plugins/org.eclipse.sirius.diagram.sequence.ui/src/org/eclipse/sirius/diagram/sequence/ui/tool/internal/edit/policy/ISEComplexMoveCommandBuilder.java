@@ -161,7 +161,7 @@ public class ISEComplexMoveCommandBuilder {
             }
 
             Range futureRange = validator.getRangeFunction().apply(entry.getKey());
-            realLocation.y = futureRange.getLowerBound();
+            realLocation.setY(futureRange.getLowerBound());
 
             // Make the coordinates relative to the final parent's figure.
             final Point parentOrigin = parentBounds.getLocation();

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -418,20 +418,20 @@ public class InlineEdgeLayoutProvider extends DefaultLayoutProvider {
 
         if (moveEdgeDescriptor.getConnectionEditPart().getSource() instanceof IGraphicalEditPart) {
             final IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) moveEdgeDescriptor.getConnectionEditPart().getSource();
-            ref1.y = this.getBounds(graphicalEditPart).getSize().height / 2;
+            ref1.setY(this.getBounds(graphicalEditPart).getSize().height / 2);
         }
         if (moveEdgeDescriptor.getConnectionEditPart().getTarget() instanceof IGraphicalEditPart) {
             final IGraphicalEditPart graphicalEditPart = (IGraphicalEditPart) moveEdgeDescriptor.getConnectionEditPart().getTarget();
-            ref2.y = this.getBounds(graphicalEditPart).getSize().height / 2;
+            ref2.setY(this.getBounds(graphicalEditPart).getSize().height / 2);
         }
 
         final Point source = connectionEditPart.getConnectionFigure().getSourceAnchor().getReferencePoint().getTranslated(delta);
-        source.x = (int) ((double) source.x * (double) 1 / scale);
-        source.y = (int) ((double) source.y * (double) 1 / scale);
+        source.setX((int) ((double) source.x * (double) 1 / scale));
+        source.setY((int) ((double) source.y * (double) 1 / scale));
 
         final Point target = connectionEditPart.getConnectionFigure().getTargetAnchor().getReferencePoint().getTranslated(delta);
-        target.x = (int) ((double) target.x * (double) 1 / scale);
-        target.y = (int) ((double) target.y * (double) 1 / scale);
+        target.setX((int) ((double) target.x * (double) 1 / scale));
+        target.setY((int) ((double) target.y * (double) 1 / scale));
 
         final SetAllBendpointRequest setAllBendpointRequest = new SetAllBendpointRequest(RequestConstants.REQ_SET_ALL_BENDPOINT, points, source, target);
 
@@ -595,8 +595,8 @@ public class InlineEdgeLayoutProvider extends DefaultLayoutProvider {
             final Rectangle sourceBounds = getBounds((IGraphicalEditPart) connectionEditPart.getSource());
             final Point location = desiredLocation.getCopy();
             if (!relative) {
-                location.x = location.x - sourceBounds.x;
-                location.y = location.y - sourceBounds.y;
+                location.setX(location.x - sourceBounds.x);
+                location.setY(location.y - sourceBounds.y);
             }
             final int pos = posFromPrimaryPoint(location, sourceBounds);
             this.sourceStep = stepFromPos(pos);
@@ -616,8 +616,8 @@ public class InlineEdgeLayoutProvider extends DefaultLayoutProvider {
             final Rectangle targetBounds = getBounds((IGraphicalEditPart) connectionEditPart.getTarget());
             final Point location = desiredLocation.getCopy();
             if (!relative) {
-                location.x = location.x - targetBounds.x;
-                location.y = location.y - targetBounds.y;
+                location.setX(location.x - targetBounds.x);
+                location.setY(location.y - targetBounds.y);
             }
             final int pos = posFromPrimaryPoint(location, targetBounds);
             this.targetStep = stepFromPos(pos);
@@ -671,41 +671,41 @@ public class InlineEdgeLayoutProvider extends DefaultLayoutProvider {
         final Point result = new Point();
         switch (this.getSide()) {
         case PositionConstants.EAST:
-            result.x = 0;
+            result.setX(0);
             switch (this.getStart()) {
             case PositionConstants.BOTTOM:
-                result.y = connectorBounds.height - pos;
+                result.setY(connectorBounds.height - pos);
                 break;
             case PositionConstants.MIDDLE:
-                result.y = connectorBounds.height / 2 + pos;
+                result.setY(connectorBounds.height / 2 + pos);
                 break;
             default:
-                result.y = pos;
+                result.setY(pos);
             }
             break;
         case PositionConstants.WEST:
         case PositionConstants.EAST_WEST:
-            result.x = connectorBounds.width;
+            result.setX(connectorBounds.width);
             switch (this.getStart()) {
             case PositionConstants.BOTTOM:
-                result.y = connectorBounds.height - pos;
+                result.setY(connectorBounds.height - pos);
                 break;
             case PositionConstants.MIDDLE:
-                result.y = connectorBounds.height / 2 + pos;
+                result.setY(connectorBounds.height / 2 + pos);
                 break;
             default:
-                result.y = pos;
+                result.setY(pos);
                 break;
             }
             break;
         case PositionConstants.NORTH:
-            result.y = 0;
+            result.setY(0);
             switch (this.getStart()) {
             case PositionConstants.RIGHT:
-                result.x = connectorBounds.width - pos;
+                result.setX(connectorBounds.width - pos);
                 break;
             case PositionConstants.CENTER:
-                result.x = connectorBounds.width / 2 + pos;
+                result.setX(connectorBounds.width / 2 + pos);
                 break;
             default:
                 break;
@@ -713,13 +713,13 @@ public class InlineEdgeLayoutProvider extends DefaultLayoutProvider {
             break;
         case PositionConstants.SOUTH:
         case PositionConstants.NORTH_SOUTH:
-            result.y = connectorBounds.height;
+            result.setY(connectorBounds.height);
             switch (this.getStart()) {
             case PositionConstants.RIGHT:
-                result.x = connectorBounds.width - pos;
+                result.setX(connectorBounds.width - pos);
                 break;
             case PositionConstants.CENTER:
-                result.x = connectorBounds.width / 2 + pos;
+                result.setX(connectorBounds.width / 2 + pos);
                 break;
             default:
                 break;
@@ -804,7 +804,7 @@ public class InlineEdgeLayoutProvider extends DefaultLayoutProvider {
                 final Point targetPoint = currentDescriptor.getTargetLocation(false);
                 if (sourcePoint.y < targetPoint.y - 29 || sourcePoint.y > targetPoint.y + 29) {
                     if (sourcePoint.y < targetPoint.y) {
-                        sourcePoint.y = targetPoint.y;
+                        sourcePoint.setY(targetPoint.y);
                         currentDescriptor.approximateSourceStep(sourcePoint, false);
                         final IGraphicalEditPart connector = (IGraphicalEditPart) currentDescriptor.getConnectionEditPart().getSource();
                         final int connectorStart = ((Integer) connectorsToStepRearrangeMin.get(connector.getNotationView())).intValue();
@@ -814,7 +814,7 @@ public class InlineEdgeLayoutProvider extends DefaultLayoutProvider {
                             again = true;
                         }
                     } else {
-                        targetPoint.y = sourcePoint.y;
+                        targetPoint.setY(sourcePoint.y);
                         currentDescriptor.approximateTargetStep(targetPoint, false);
                         final IGraphicalEditPart connector = (IGraphicalEditPart) currentDescriptor.getConnectionEditPart().getTarget();
                         final int connectorStart = ((Integer) connectorsToStepRearrangeMin.get(connector.getNotationView())).intValue();
@@ -841,11 +841,11 @@ public class InlineEdgeLayoutProvider extends DefaultLayoutProvider {
                 final Point targetPoint = currentDescriptor.getTargetLocation(false);
                 if (sourcePoint.x < targetPoint.x - 10 || sourcePoint.x > targetPoint.x + 10) {
                     if (sourcePoint.x < targetPoint.x) {
-                        sourcePoint.x = targetPoint.x;
+                        sourcePoint.setX(targetPoint.x);
                         currentDescriptor.approximateSourceStep(sourcePoint, false);
                         again = true;
                     } else {
-                        targetPoint.x = sourcePoint.x;
+                        targetPoint.setX(sourcePoint.x);
                         currentDescriptor.approximateTargetStep(targetPoint, false);
                         again = true;
                     }

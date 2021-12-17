@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -182,11 +182,11 @@ public class BracketConnectionDecoratorLocator extends ConnectionLocator {
         switch (generalDirection) {
         case LEFT:
         case RIGHT:
-            expansion.height = expansionValue;
+            expansion.setHeight(expansionValue);
             break;
         case TOP:
         case BOTTOM:
-            expansion.width = expansionValue;
+            expansion.setWidth(expansionValue);
             break;
         default:
             break;

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2018 Obeo
+ * Copyright (c) 2015, 2021 Obeo
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -116,32 +116,32 @@ public class OpaquePixelFinder {
                 /*
                  * the anchor starts at the left of the figure
                  */
-                primaryScanStep.x = 1;
-                secondaryScanStep.y = 1;
-                searchCursor.y = initialCursorLocation.y - box.getTopLeft().y;
+                primaryScanStep.setX(1);
+                secondaryScanStep.setY(1);
+                searchCursor.setY(initialCursorLocation.y - box.getTopLeft().y);
                 break;
             case PositionConstants.RIGHT:
                 /*
                  * the anchor starts at the right of the figure
                  */
-                primaryScanStep.x = -1;
-                secondaryScanStep.y = 1;
+                primaryScanStep.setX(-1);
+                secondaryScanStep.setY(1);
                 searchCursor.setLocation(box.width - 1, initialCursorLocation.y - box.getTopLeft().y);
                 break;
             case PositionConstants.TOP:
-                primaryScanStep.y = 1;
-                secondaryScanStep.x = 1;
+                primaryScanStep.setY(1);
+                secondaryScanStep.setX(1);
                 /*
                  * the anchor starts at the top of the figure
                  */
-                searchCursor.x = initialCursorLocation.x - box.getTopLeft().x;
+                searchCursor.setX(initialCursorLocation.x - box.getTopLeft().x);
                 break;
             case PositionConstants.BOTTOM:
                 /*
                  * the anchor starts at the bottom of the figure
                  */
-                primaryScanStep.y = -1;
-                secondaryScanStep.x = 1;
+                primaryScanStep.setY(-1);
+                secondaryScanStep.setX(1);
                 searchCursor.setLocation(initialCursorLocation.x - box.getTopLeft().x, box.height - 1);
                 break;
             default:

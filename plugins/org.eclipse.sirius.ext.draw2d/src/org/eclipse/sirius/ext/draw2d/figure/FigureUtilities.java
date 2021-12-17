@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -53,8 +53,8 @@ public final class FigureUtilities {
         figure.translateToAbsolute(pPoint);
         FigureUtilities.removeParentScrollbarAndZoomFactor(figure, pPoint);
 
-        relativeLocation.x = pPoint.x;
-        relativeLocation.y = pPoint.y;
+        relativeLocation.setX(pPoint.x);
+        relativeLocation.setY(pPoint.y);
     }
 
     /**
@@ -75,8 +75,8 @@ public final class FigureUtilities {
         FigureUtilities.addParentScrollbarAndZoomFactor(figure, pPoint);
         figure.translateToRelative(pPoint);
 
-        absoluteLocation.x = pPoint.x;
-        absoluteLocation.y = pPoint.y;
+        absoluteLocation.setX(pPoint.x);
+        absoluteLocation.setY(pPoint.y);
     }
 
     /**
@@ -131,8 +131,8 @@ public final class FigureUtilities {
 
         figure.translateToRelative(pPoint);
 
-        point.x = pPoint.x;
-        point.y = pPoint.y;
+        point.setX(pPoint.x);
+        point.setY(pPoint.y);
     }
 
     /**

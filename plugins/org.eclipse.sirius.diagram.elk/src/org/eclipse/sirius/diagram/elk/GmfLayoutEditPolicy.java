@@ -211,7 +211,7 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
                         LabelAlignment labelAlignment = ((LabelStyle) style).getLabelAlignment();
                         if (labelAlignment.equals(LabelAlignment.LEFT) || labelAlignment.equals(LabelAlignment.RIGHT)) {
                             newSize.setPreciseWidth(newSize.preciseWidth() + (newLocation.preciseX() * 2));
-                            newLocation.x = 0;
+                            newLocation.setX(0);
                         }
                     }
                 }
@@ -742,8 +742,8 @@ public class GmfLayoutEditPolicy extends AbstractEditPolicy {
         } else if (parent instanceof ElkEdge) {
             // calculate direct new location of the label
             Rectangle targetBounds = new Rectangle(labelEditPart.getFigure().getBounds());
-            targetBounds.x = (int) (klabel.getX() * scale);
-            targetBounds.y = (int) (klabel.getY() * scale);
+            targetBounds.setX((int) (klabel.getX() * scale));
+            targetBounds.setY((int) (klabel.getY() * scale));
 
             ConnectionEditPart connectionEditPart = (ConnectionEditPart) labelEditPart.getParent();
             PointList bendPoints = getBendPoints((ElkEdge) parent, connectionEditPart.getFigure(), scale);

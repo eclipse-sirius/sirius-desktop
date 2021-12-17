@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -235,18 +235,18 @@ public class SiriusScroller extends ViewportAutoexposeHelper {
     private Point updateLocationAccordingToPosition(int scrollOffset, int region, Point loc) {
         Point result = loc;
         if ((region & PositionConstants.SOUTH) != 0) {
-            result.y += scrollOffset;
+            result.setY(result.y + scrollOffset);
         } else {
             if ((region & PositionConstants.NORTH) != 0) {
-                result.y -= scrollOffset;
+                result.setY(result.y - scrollOffset);
             }
         }
 
         if ((region & PositionConstants.EAST) != 0) {
-            result.x += scrollOffset;
+            result.setX(result.x + scrollOffset);
         } else {
             if ((region & PositionConstants.WEST) != 0) {
-                result.x -= scrollOffset;
+                result.setX(result.x - scrollOffset);
             }
         }
         return result;

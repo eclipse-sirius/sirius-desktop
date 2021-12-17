@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2013 IBM Corporation and others.
+ * Copyright (c) 2002, 2021 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -257,11 +257,11 @@ public abstract class AbstractCompositeLayoutProvider extends CompositeLayoutPro
                 if (node.data != null) {
                     Rectangle nodeExt = getNodeMetricsConsideringBorderedNodes(node);
                     if (ptLayoutMin.x == -1) {
-                        ptLayoutMin.x = nodeExt.x;
-                        ptLayoutMin.y = nodeExt.y;
+                        ptLayoutMin.setX(nodeExt.x);
+                        ptLayoutMin.setY(nodeExt.y);
                     } else {
-                        ptLayoutMin.x = Math.min(ptLayoutMin.x, nodeExt.x);
-                        ptLayoutMin.y = Math.min(ptLayoutMin.y, nodeExt.y);
+                        ptLayoutMin.setX(Math.min(ptLayoutMin.x, nodeExt.x));
+                        ptLayoutMin.setY(Math.min(ptLayoutMin.y, nodeExt.y));
                     }
                 }
             }

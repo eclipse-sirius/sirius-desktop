@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -108,8 +108,8 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
         Rectangle sourceOwnerBounds = getAnchorOwnerBounds(conn.getSourceAnchor());
         Rectangle targetOwnerBounds = getAnchorOwnerBounds(conn.getTargetAnchor());
 
-        sourceRef.x = getRefX(true, leftToRight, msgToSelf, sourceOwnerBounds, conn.getSourceAnchor().getOwner());
-        targetRef.x = getRefX(false, leftToRight, msgToSelf, targetOwnerBounds, conn.getTargetAnchor().getOwner());
+        sourceRef.setX(getRefX(true, leftToRight, msgToSelf, sourceOwnerBounds, conn.getSourceAnchor().getOwner()));
+        targetRef.setX(getRefX(false, leftToRight, msgToSelf, targetOwnerBounds, conn.getTargetAnchor().getOwner()));
 
         PointList points = new PointList(Math.max(2, bendpoints.size()));
 
@@ -129,8 +129,8 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
                 }
             }
 
-            secondPoint.x = Math.max(sourceRef.x, targetRef.x) + (int) (hGap * zoom);
-            thirdPoint.x = secondPoint.x;
+            secondPoint.setX(Math.max(sourceRef.x, targetRef.x) + (int) (hGap * zoom));
+            thirdPoint.setX(secondPoint.x);
 
             conn.translateToRelative(sourceRef);
             conn.translateToRelative(secondPoint);
@@ -258,7 +258,7 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
                 bendpoints.clear();
 
                 A_POINT.setLocation(start.getLocation());
-                A_POINT.y = moveRef.getLocation().y;
+                A_POINT.setY(moveRef.getLocation().y);
                 Bendpoint newStart = new AbsoluteBendpoint(A_POINT);
                 bendpoints.add(newStart);
                 /*
@@ -267,7 +267,7 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
                  */
                 bendpoints.add(moveRef);
                 A_POINT.setLocation(end.getLocation());
-                A_POINT.y = moveRef.getLocation().y;
+                A_POINT.setY(moveRef.getLocation().y);
                 Bendpoint newEnd = new AbsoluteBendpoint(A_POINT);
                 bendpoints.add(newEnd);
             }
@@ -287,12 +287,12 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
                     IGraphicalEditPart target = (IGraphicalEditPart) ((SequenceMessageEditPart) part).getTarget();
                     Rectangle targetBounds = target.getFigure().getBounds();
                     int yCenterPosition = targetBounds.y + targetBounds.height / 2;
-                    newStart.getLocation().y = yCenterPosition;
+                    newStart.getLocation().setY(yCenterPosition);
                 }
 
                 bendpoints.add(newStart);
                 // Ensure the message is horizontal.
-                newEnd.getLocation().y = newStart.getLocation().y;
+                newEnd.getLocation().setY(newStart.getLocation().y);
                 bendpoints.add(newEnd);
             }
         }
@@ -331,9 +331,9 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
             // point.
             if (newSecondPoint.getLocation().y > newThirdPoint.getLocation().y - LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP) {
                 // limit vertical move to keep the minimum distance
-                newSecondPoint.getLocation().y = newThirdPoint.getLocation().y - LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP;
+                newSecondPoint.getLocation().setY(newThirdPoint.getLocation().y - LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP);
             }
-            newStart.getLocation().y = newSecondPoint.getLocation().y;
+            newStart.getLocation().setY(newSecondPoint.getLocation().y);
         }
 
         if (oldThirdPoint.getLocation().y != newThirdPoint.getLocation().y) {
@@ -341,9 +341,9 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
             // point.
             if (newThirdPoint.getLocation().y < newSecondPoint.getLocation().y + LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP) {
                 // limit vertical move to keep the minimum distance
-                newThirdPoint.getLocation().y = newSecondPoint.getLocation().y + LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP;
+                newThirdPoint.getLocation().setY(newSecondPoint.getLocation().y + LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP);
             }
-            newEnd.getLocation().y = newThirdPoint.getLocation().y;
+            newEnd.getLocation().setY(newThirdPoint.getLocation().y);
         }
 
         bendpoints.add(newStart);
@@ -378,19 +378,19 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
             // The new bendpoint is between old start and old second points
             if (secondPoint.getLocation().y > oldThirdPoint.getLocation().y - LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP) {
                 // limit vertical move to keep the minimum distance
-                secondPoint.getLocation().y = oldThirdPoint.getLocation().y - LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP;
+                secondPoint.getLocation().setY(oldThirdPoint.getLocation().y - LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP);
             }
-            newStart.getLocation().y = secondPoint.getLocation().y;
-            thirdPoint.getLocation().y = secondPoint.getLocation().y;
+            newStart.getLocation().setY(secondPoint.getLocation().y);
+            thirdPoint.getLocation().setY(secondPoint.getLocation().y);
         } else if (oldThirdPoint.getLocation().y != fourthPoint.getLocation().y) {
 
             // The new bendpoint is between old third and old end points
             if (fourthPoint.getLocation().y < oldSecondPoint.getLocation().y + LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP) {
                 // limit vertical move to keep the minimum distance
-                fourthPoint.getLocation().y = oldSecondPoint.getLocation().y + LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP;
+                fourthPoint.getLocation().setY(oldSecondPoint.getLocation().y + LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP);
             }
-            thirdPoint.getLocation().y = fourthPoint.getLocation().y;
-            newEnd.getLocation().y = fourthPoint.getLocation().y;
+            thirdPoint.getLocation().setY(fourthPoint.getLocation().y);
+            newEnd.getLocation().setY(fourthPoint.getLocation().y);
         }
 
         bendpoints.add(newStart);
@@ -420,8 +420,8 @@ public class SequenceMessagesRouter extends AbstractRouter implements Connection
 
         int minGap = LayoutConstants.MESSAGE_TO_SELF_BENDPOINT_VERTICAL_GAP;
         if (newEnd.getLocation().y - newStart.getLocation().y < minGap) {
-            newThirdPoint.getLocation().y = newStart.getLocation().y + minGap;
-            newEnd.getLocation().y = newThirdPoint.getLocation().y;
+            newThirdPoint.getLocation().setY(newStart.getLocation().y + minGap);
+            newEnd.getLocation().setY(newThirdPoint.getLocation().y);
         }
 
         messageToSelfBendpoint.add(newStart);

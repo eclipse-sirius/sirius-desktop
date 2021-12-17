@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -225,10 +225,10 @@ public class GridLayoutProvider extends DefaultLayoutProvider implements Extenda
 
         final Dimension containerBounds = this.getBounds(containerEditPart).getSize();
         if (containerBounds.width < containerMinDimension.width) {
-            expand.width = containerMinDimension.width - containerBounds.width;
+            expand.setWidth(containerMinDimension.width - containerBounds.width);
         }
         if (containerBounds.height < containerMinDimension.height) {
-            expand.height = containerMinDimension.height - containerBounds.height;
+            expand.setHeight(containerMinDimension.height - containerBounds.height);
         }
 
         if (expand.width > 0 || expand.height > 0) {
@@ -386,13 +386,13 @@ public class GridLayoutProvider extends DefaultLayoutProvider implements Extenda
             final Iterator<Integer> iterHeights = this.maxHeights.values().iterator();
             while (iterHeights.hasNext()) {
                 final Integer currentValue = iterHeights.next();
-                result.height += currentValue.intValue();
-                result.height += getPadding().top;
-                result.height += getPadding().bottom;
+                result.setHeight(result.height + currentValue.intValue());
+                result.setHeight(result.height + getPadding().top);
+                result.setHeight(result.height + getPadding().bottom);
             }
             break;
         case SAME_DIMENSION:
-            result.height = getDiagramMaxDimension().height + (getPadding().top + getPadding().bottom) * gridView.getLinesCount();
+            result.setHeight(getDiagramMaxDimension().height + (getPadding().top + getPadding().bottom) * gridView.getLinesCount());
             break;
         default:
             break;
@@ -404,13 +404,13 @@ public class GridLayoutProvider extends DefaultLayoutProvider implements Extenda
             final Iterator<Integer> iterWidths = this.maxWidths.values().iterator();
             while (iterWidths.hasNext()) {
                 final Integer currentValue = iterWidths.next();
-                result.width += currentValue.intValue();
-                result.width += getPadding().left;
-                result.width += getPadding().top;
+                result.setWidth(result.width + currentValue.intValue());
+                result.setWidth(result.width + getPadding().left);
+                result.setWidth(result.width + getPadding().top);
             }
             break;
         case SAME_DIMENSION:
-            result.width = getDiagramMaxDimension().width + (getPadding().left + getPadding().right) * gridView.getColumnsCount();
+            result.setWidth(getDiagramMaxDimension().width + (getPadding().left + getPadding().right) * gridView.getColumnsCount());
             break;
         default:
             break;
@@ -454,11 +454,11 @@ public class GridLayoutProvider extends DefaultLayoutProvider implements Extenda
         }
         final Point location = new Point();
         if (x == 0 && y == 0) {
-            location.x = 0;
-            location.y = 0;
+            location.setX(0);
+            location.setY(0);
         } else {
             if (x == 0) {
-                location.x = 0;
+                location.setX(0);
             } else {
                 final Point left = getLocation(x - 1, y, gridView, viewsToEditParts);
                 final View leftView = gridView.getViewAt(x - 1, y);
@@ -469,20 +469,20 @@ public class GridLayoutProvider extends DefaultLayoutProvider implements Extenda
                 }
                 switch (this.getColumnSizeMode()) {
                 case FREE_DIMENSION:
-                    location.x = left.x + size.width + getPadding().left + getPadding().right;
+                    location.setX(left.x + size.width + getPadding().left + getPadding().right);
                     break;
                 case SAME_DIMENSION:
-                    location.x = left.x + getDiagramMaxDimension().width + getPadding().left + getPadding().right;
+                    location.setX(left.x + getDiagramMaxDimension().width + getPadding().left + getPadding().right);
                     break;
                 case DIMENSION_BY_LINE_OR_COLUMN:
-                    location.x = left.x + this.maxWidths.get(Integer.valueOf(x - 1)).intValue() + getPadding().right + getPadding().left;
+                    location.setX(left.x + this.maxWidths.get(Integer.valueOf(x - 1)).intValue() + getPadding().right + getPadding().left);
                     break;
                 default:
                     break;
                 }
             }
             if (y == 0) {
-                location.y = 0;
+                location.setY(0);
             } else {
                 final Point top = getLocation(x, y - 1, gridView, viewsToEditParts);
                 final View topView = gridView.getViewAt(x, y - 1);
@@ -493,13 +493,13 @@ public class GridLayoutProvider extends DefaultLayoutProvider implements Extenda
                 }
                 switch (this.getLineSizeMode()) {
                 case FREE_DIMENSION:
-                    location.y = top.y + size.height + getPadding().top + getPadding().bottom;
+                    location.setY(top.y + size.height + getPadding().top + getPadding().bottom);
                     break;
                 case SAME_DIMENSION:
-                    location.y = top.y + getDiagramMaxDimension().height + getPadding().top + getPadding().bottom;
+                    location.setY(top.y + getDiagramMaxDimension().height + getPadding().top + getPadding().bottom);
                     break;
                 case DIMENSION_BY_LINE_OR_COLUMN:
-                    location.y = top.y + this.maxHeights.get(Integer.valueOf(y - 1)).intValue() + getPadding().top + getPadding().bottom;
+                    location.setY(top.y + this.maxHeights.get(Integer.valueOf(y - 1)).intValue() + getPadding().top + getPadding().bottom);
                     break;
                 default:
                     break;

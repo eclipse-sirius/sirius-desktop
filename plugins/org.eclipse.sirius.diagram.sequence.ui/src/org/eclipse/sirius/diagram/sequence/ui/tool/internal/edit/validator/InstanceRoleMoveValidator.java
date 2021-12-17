@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -55,7 +55,7 @@ public class InstanceRoleMoveValidator extends AbstractInstanceRoleValidator {
             // a
             // Create Message for example
             if (!request.isConstrainedMove()) {
-                moveDelta.y = 0;
+                moveDelta.setY(0);
             }
 
             Iterable<Rectangle> notMovedIRBounds = Iterables.transform(Iterables.filter(allInstanceRoles, Predicates.not(Predicates.in(instanceRoles))), ISequenceElement.PROPER_LOGICAL_BOUNDS);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2011 THALES GLOBAL SERVICES.
+ * Copyright (c) 2011, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -103,15 +103,15 @@ public class StateSelectionEditPolicy extends ExecutionSelectionEditPolicy {
 
         if (requestQuery.isResize()) {
             if (moveDelta.x == 0 && sizeDelta.width != 0) {
-                moveDelta.x = -sizeDelta.width;
+                moveDelta.setX(-sizeDelta.width);
             }
 
             if (sizeDelta.width == 0 && moveDelta.x != 0) {
-                sizeDelta.width = -moveDelta.x;
+                sizeDelta.setWidth(-moveDelta.x);
             }
 
             if (moveDelta.x == -sizeDelta.width) {
-                sizeDelta.width -= moveDelta.x;
+                sizeDelta.setWidth(sizeDelta.width - moveDelta.x);
             }
 
             request.setMoveDelta(moveDelta);

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2013 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -67,10 +67,10 @@ public class ISequenceElementQuery {
             Iterable<AbsoluteBoundsFilter> flags = Iterables.filter(dde.getGraphicalFilters(), AbsoluteBoundsFilter.class);
             if (!Iterables.isEmpty(flags)) {
                 AbsoluteBoundsFilter flag = flags.iterator().next();
-                bounds.x = safeGetInt(flag.getX());
-                bounds.y = safeGetInt(flag.getY());
-                bounds.width = safeGetInt(flag.getWidth());
-                bounds.height = safeGetInt(flag.getHeight());
+                bounds.setX(safeGetInt(flag.getX()));
+                bounds.setY(safeGetInt(flag.getY()));
+                bounds.setWidth(safeGetInt(flag.getWidth()));
+                bounds.setHeight(safeGetInt(flag.getHeight()));
             }
         }
         return bounds;

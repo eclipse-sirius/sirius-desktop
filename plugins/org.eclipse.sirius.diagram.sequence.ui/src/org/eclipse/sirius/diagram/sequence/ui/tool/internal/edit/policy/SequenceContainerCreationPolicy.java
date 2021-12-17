@@ -281,9 +281,9 @@ public class SequenceContainerCreationPolicy extends ContainerCreationEditPolicy
         if (realSize == null) {
             realSize = new Dimension(0, 0);
             if (ccdTool instanceof InteractionUseCreationTool) {
-                realSize.height = LayoutConstants.DEFAULT_INTERACTION_USE_HEIGHT;
+                realSize.setHeight(LayoutConstants.DEFAULT_INTERACTION_USE_HEIGHT);
             } else if (ccdTool instanceof CombinedFragmentCreationTool) {
-                realSize.height = LayoutConstants.DEFAULT_COMBINED_FRAGMENT_HEIGHT;
+                realSize.setHeight(LayoutConstants.DEFAULT_COMBINED_FRAGMENT_HEIGHT);
             }
         }
         return realSize;

@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2004, 2010 IBM Corporation and others.
+ * Copyright (c) 2004, 2021 IBM Corporation and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -99,16 +99,16 @@ public class DBranchRouter extends AbstractRouter {
         // check valid again based on constraint
         if (getTree().isTreeBranch(conn, points)) {
             if (getTree().isTopDown(conn)) {
-                ptTrunkLoc.x = points.getPoint(3).x;
+                ptTrunkLoc.setX(points.getPoint(3).x);
             } else {
-                ptTrunkLoc.y = points.getPoint(3).y;
+                ptTrunkLoc.setY(points.getPoint(3).y);
             }
 
             if (getTree().isOrthogonalTreeBranch(conn, points)) {
                 if (getTree().isTopDown(conn)) {
-                    ptTrunkLoc.y = points.getPoint(2).y;
+                    ptTrunkLoc.setY(points.getPoint(2).y);
                 } else {
-                    ptTrunkLoc.x = points.getPoint(2).x;
+                    ptTrunkLoc.setX(points.getPoint(2).x);
                 }
             }
         }

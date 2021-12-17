@@ -951,10 +951,10 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
         transX = currentState.translateX = state.translateX;
         transY = currentState.translateY = state.translateY;
 
-        relativeClipRegion.x = state.clipX - transX;
-        relativeClipRegion.y = state.clipY - transY;
-        relativeClipRegion.width = state.clipW;
-        relativeClipRegion.height = state.clipH;
+        relativeClipRegion.setX(state.clipX - transX);
+        relativeClipRegion.setY(state.clipY - transY);
+        relativeClipRegion.setWidth(state.clipW);
+        relativeClipRegion.setHeight(state.clipH);
 
         currentState.font = state.font;
         currentState.alpha = state.alpha;
@@ -1009,10 +1009,10 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
     @Override
     public void setClip(Rectangle rect) {
 
-        relativeClipRegion.x = rect.x;
-        relativeClipRegion.y = rect.y;
-        relativeClipRegion.width = rect.width;
-        relativeClipRegion.height = rect.height;
+        relativeClipRegion.setX(rect.x);
+        relativeClipRegion.setY(rect.y);
+        relativeClipRegion.setWidth(rect.width);
+        relativeClipRegion.setHeight(rect.height);
 
         setClipAbsolute(rect.x + transX, rect.y + transY, rect.width, rect.height);
     }
@@ -1203,8 +1203,8 @@ public class SiriusGraphicsToGraphics2DAdaptor extends Graphics implements Drawa
         swtGraphics.translate(dx, dy);
 
         setTranslation(transX + dx, transY + dy);
-        relativeClipRegion.x -= dx;
-        relativeClipRegion.y -= dy;
+        relativeClipRegion.setX(relativeClipRegion.x - dx);
+        relativeClipRegion.setY(relativeClipRegion.y - dy);
     }
 
     /**

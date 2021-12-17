@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -99,10 +99,10 @@ public class EdgeLabelLocator extends LabelLocator {
         Dimension currentExtent = currentConstraint.getSize();
         Dimension size = new Dimension(currentExtent);
         if (currentExtent.width == -1) {
-            size.width = preferredSize.width;
+            size.setWidth(preferredSize.width);
         }
         if (currentExtent.height == -1) {
-            size.height = preferredSize.height;
+            size.setHeight(preferredSize.height);
         }
         target.setSize(size);
         Point offSet = getOffset();

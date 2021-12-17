@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2016 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -299,24 +299,24 @@ public final class DiagramBorderNodeEditPartOperation {
             final DNode viewNode = (DNode) semantic;
             boolean canResize = !(new DDiagramElementQuery(viewNode).isIndirectlyCollapsed() && forbidResizeIfCollapse);
             if (canResize && new DNodeQuery(viewNode).allowsVerticalResize()) {
-                dimension.height += request.getSizeDelta().height / zoom;
+                dimension.setHeight(dimension.height + (int) (request.getSizeDelta().height / zoom));
                 switch (request.getResizeDirection()) {
                 case PositionConstants.NORTH:
                 case PositionConstants.NORTH_WEST:
                 case PositionConstants.NORTH_EAST:
-                    position.y -= request.getSizeDelta().height / zoom;
+                    position.setY(position.y - (int) (request.getSizeDelta().height / zoom));
                     break;
                 default:
                     break;
                 }
             }
             if (canResize && new DNodeQuery(viewNode).allowsHorizontalResize()) {
-                dimension.width += request.getSizeDelta().width / zoom;
+                dimension.setWidth(dimension.width + (int) (request.getSizeDelta().width / zoom));
                 switch (request.getResizeDirection()) {
                 case PositionConstants.WEST:
                 case PositionConstants.NORTH_WEST:
                 case PositionConstants.SOUTH_WEST:
-                    position.x -= request.getSizeDelta().width / zoom;
+                    position.setX(position.x - (int) (request.getSizeDelta().width / zoom));
                     break;
                 default:
                     break;
@@ -335,8 +335,8 @@ public final class DiagramBorderNodeEditPartOperation {
         final Point position = new Point();
         if (part.getNotationView() instanceof Node && ((Node) part.getNotationView()).getLayoutConstraint() instanceof Location) {
             final Location location = (Location) ((Node) part.getNotationView()).getLayoutConstraint();
-            position.x = location.getX();
-            position.y = location.getY();
+            position.setX(location.getX());
+            position.setY(location.getY());
         }
         return position;
     }
@@ -345,8 +345,8 @@ public final class DiagramBorderNodeEditPartOperation {
         final Dimension dimension = new Dimension();
         if (part.getNotationView() instanceof Node && ((Node) part.getNotationView()).getLayoutConstraint() instanceof Size) {
             final Size size = (Size) ((Node) part.getNotationView()).getLayoutConstraint();
-            dimension.width = size.getWidth();
-            dimension.height = size.getHeight();
+            dimension.setWidth(size.getWidth());
+            dimension.setHeight(size.getHeight());
         }
         return dimension;
     }

@@ -27,7 +27,6 @@ import org.eclipse.draw2d.graph.Node;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
-import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
@@ -229,13 +228,13 @@ public class ArrangeAllWithAutoSize {
 
     private void createSubCommands(Point globalDiff, final CompoundCommand cc, final AbstractCompositeLayoutProvider provider, final int minX, final int minY, Point ptLayoutMin, final Node node) {
         Point diffP = diff(minX, minY, ptLayoutMin, provider, node);
-        diffP.x = Math.max(diffP.x, globalDiff.x);
-        diffP.y = Math.max(diffP.y, globalDiff.y);
+        diffP.setX(Math.max(diffP.x, globalDiff.x));
+        diffP.setY(Math.max(diffP.y, globalDiff.y));
         if (diffP.x > -node.getPadding().left) {
-            diffP.x = -node.getPadding().left;
+            diffP.setX(-node.getPadding().left);
         }
         if (diffP.y > -node.getPadding().bottom) {
-            diffP.y = -node.getPadding().bottom;
+            diffP.setY(-node.getPadding().bottom);
         }
 
         Rectangle nodeExt = provider.translateToGraph(provider.provideNodeMetrics(node));
@@ -246,23 +245,23 @@ public class ArrangeAllWithAutoSize {
     private void createSubCommands(final CompoundCommand cc, final Node node, Point diff, final Rectangle nodeExt) {
         if (node.getParent() instanceof VirtualNode) {
             if (nodeExt.x > node.getPadding().left) {
-                nodeExt.x -= node.getPadding().left;
+                nodeExt.setX(nodeExt.x - node.getPadding().left);
             }
             if (nodeExt.y > node.getPadding().top) {
-                nodeExt.y -= node.getPadding().top;
+                nodeExt.setY(nodeExt.y - node.getPadding().top);
             }
         }
 
         final Point pt = new Point();
         if (nodeExt.x + diff.x > 0) {
-            pt.x = nodeExt.x + diff.x;
+            pt.setX(nodeExt.x + diff.x);
         } else {
-            pt.x = nodeExt.x;
+            pt.setX(nodeExt.x);
         }
         if (nodeExt.y + diff.y > 0) {
-            pt.y = nodeExt.y + diff.y;
+            pt.setY(nodeExt.y + diff.y);
         } else {
-            pt.y = nodeExt.y;
+            pt.setY(nodeExt.y);
         }
         final Point ptLocation = new Point(pt.x, pt.y);
         final IGraphicalEditPart gep = (IGraphicalEditPart) node.data;
@@ -273,10 +272,10 @@ public class ArrangeAllWithAutoSize {
 
         if (gep.getParent() instanceof DDiagramEditPart) {
             if (node.x == node.getPadding().left) {
-                ptLocation.x -= node.getPadding().left;
+                ptLocation.setX(ptLocation.x - node.getPadding().left);
             }
             if (node.y == node.getPadding().bottom) {
-                ptLocation.y -= node.getPadding().bottom;
+                ptLocation.setY(ptLocation.y - node.getPadding().bottom);
             }
         }
 
@@ -353,11 +352,11 @@ public class ArrangeAllWithAutoSize {
                 Rectangle nodeExt = provider.provideNodeMetrics(node);
                 nodeExt = ArrangeAllWithAutoSize.extendBoundingBoxWithBorderedNodes(node, nodeExt);
                 if (ptLayoutMin.x == -1) {
-                    ptLayoutMin.x = nodeExt.x;
-                    ptLayoutMin.y = nodeExt.y;
+                    ptLayoutMin.setX(nodeExt.x);
+                    ptLayoutMin.setY(nodeExt.y);
                 } else {
-                    ptLayoutMin.x = Math.min(ptLayoutMin.x, nodeExt.x);
-                    ptLayoutMin.y = Math.min(ptLayoutMin.y, nodeExt.y);
+                    ptLayoutMin.setX(Math.min(ptLayoutMin.x, nodeExt.x));
+                    ptLayoutMin.setY(Math.min(ptLayoutMin.y, nodeExt.y));
                 }
             }
 
@@ -394,10 +393,10 @@ public class ArrangeAllWithAutoSize {
             }
         }
         if (extendedBox.x < node.getPadding().left) {
-            extendedBox.x = node.getPadding().left;
+            extendedBox.setX(node.getPadding().left);
         }
         if (extendedBox.y < node.getPadding().bottom) {
-            extendedBox.y = node.getPadding().bottom;
+            extendedBox.setY(node.getPadding().bottom);
         }
         return extendedBox;
     }

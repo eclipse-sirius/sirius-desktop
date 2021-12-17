@@ -333,8 +333,8 @@ public final class GMFHelper {
         LayoutConstraint layoutConstraint = node.getLayoutConstraint();
         if (layoutConstraint instanceof Bounds) {
             Bounds gmfBounds = (Bounds) layoutConstraint;
-            location.x = gmfBounds.getX();
-            location.y = gmfBounds.getY();
+            location.setX(gmfBounds.getX());
+            location.setY(gmfBounds.getY());
             // manage location of bordered node with closest side
             if (node.getElement() instanceof DNode && node.getElement().eContainer() instanceof AbstractDNode) {
                 DNode dNode = (DNode) node.getElement();
@@ -359,13 +359,13 @@ public final class GMFHelper {
         case PositionConstants.NORTH:
         case PositionConstants.SOUTH:
             if (location.x == 0) {
-                location.x += (parentBounds.getWidth() - gmfBounds.getWidth()) / 2;
+                location.setX(location.x + (parentBounds.getWidth() - gmfBounds.getWidth()) / 2);
             }
             break;
         case PositionConstants.WEST:
         case PositionConstants.EAST:
             if (location.y == 0) {
-                location.y += (parentBounds.getHeight() - gmfBounds.getHeight()) / 2;
+                location.setY(location.y + (parentBounds.getHeight() - gmfBounds.getHeight()) / 2);
             }
             break;
         default:
@@ -576,24 +576,24 @@ public final class GMFHelper {
         if (element instanceof AbstractDNode) {
             AbstractDNode abstractDNode = (AbstractDNode) element;
             if (layoutConstraint instanceof Location) {
-                bounds.x = ((Location) layoutConstraint).getX();
-                bounds.y = ((Location) layoutConstraint).getY();
+                bounds.setX(((Location) layoutConstraint).getX());
+                bounds.setY(((Location) layoutConstraint).getY());
             }
             if (layoutConstraint instanceof Size) {
-                bounds.width = ((Size) layoutConstraint).getWidth();
-                bounds.height = ((Size) layoutConstraint).getHeight();
+                bounds.setWidth(((Size) layoutConstraint).getWidth());
+                bounds.setHeight(((Size) layoutConstraint).getHeight());
             } else {
-                bounds.width = -1;
-                bounds.height = -1;
+                bounds.setWidth(-1);
+                bounds.setHeight(-1);
             }
 
             if (new ViewQuery(node).isForNameEditPart()) {
                 if (abstractDNode.getName() == null || abstractDNode.getName().length() == 0) {
                     if (bounds.width == -1) {
-                        bounds.width = 0;
+                        bounds.setWidth(0);
                     }
                     if (bounds.height == -1) {
-                        bounds.height = 0;
+                        bounds.setHeight(0);
                     }
                 } else {
 
@@ -611,8 +611,8 @@ public final class GMFHelper {
                 // This insets corresponds to insets of {@link
                 // org.eclipse.sirius.diagram.ui.tools.api.figure.AlphaDropShadowBorder#getTransparentInsets()}.
                 double shadowBorderSize = getShadowBorderSize(node);
-                bounds.width -= shadowBorderSize;
-                bounds.height -= shadowBorderSize;
+                bounds.setWidth(bounds.width - shadowBorderSize);
+                bounds.setHeight(bounds.height - shadowBorderSize);
             }
         }
         return bounds;
@@ -689,10 +689,10 @@ public final class GMFHelper {
 
                     Rectangle figureBounds = graphicalEditPart.getFigure().getBounds();
                     if (bounds.width == -1) {
-                        bounds.width = figureBounds.width;
+                        bounds.setWidth(figureBounds.width);
                     }
                     if (bounds.height == -1) {
-                        bounds.height = figureBounds.height;
+                        bounds.setHeight(figureBounds.height);
                     }
                 } else {
                     // Diagram editor might be initializing and there is no edit
@@ -710,25 +710,25 @@ public final class GMFHelper {
                 Point bottomRight = getBottomRight(node);
                 if (bounds.width == -1) {
                     if (bottomRight.x > defaultSize.width) {
-                        bounds.width = bottomRight.x;
+                        bounds.setWidth(bottomRight.x);
                     } else {
-                        bounds.width = defaultSize.width;
+                        bounds.setWidth(defaultSize.width);
                     }
                 }
                 if (bounds.height == -1) {
                     if (bottomRight.y > defaultSize.height) {
-                        bounds.height = bottomRight.y;
+                        bounds.setHeight(bottomRight.y);
                     } else {
-                        bounds.height = defaultSize.height;
+                        bounds.setHeight(defaultSize.height);
                     }
                 }
             }
 
             if (bounds.width == -1) {
-                bounds.width = defaultSize.width;
+                bounds.setWidth(defaultSize.width);
             }
             if (bounds.height == -1) {
-                bounds.height = defaultSize.height;
+                bounds.setHeight(defaultSize.height);
             }
         }
     }
@@ -759,10 +759,10 @@ public final class GMFHelper {
                             // Update only the parent stack direction if some
                             // layout has already been done.
                             if (bounds.width == -1 && query.isRegionInHorizontalStack() && nextLocation.getX() != 0) {
-                                bounds.width = nextLocation.getX() - bounds.x;
+                                bounds.setWidth(nextLocation.getX() - bounds.x);
                             }
                             if (bounds.height == -1 && query.isRegionInVerticalStack() && nextLocation.getY() != 0) {
-                                bounds.height = nextLocation.getY() - bounds.y;
+                                bounds.setHeight(nextLocation.getY() - bounds.y);
                             }
                         }
                     }

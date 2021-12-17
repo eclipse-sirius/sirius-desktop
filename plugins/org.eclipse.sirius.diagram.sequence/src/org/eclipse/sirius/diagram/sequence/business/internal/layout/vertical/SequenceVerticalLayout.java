@@ -1002,7 +1002,7 @@ public class SequenceVerticalLayout extends AbstractSequenceOrderingLayout<ISequ
                 } else {
                     if (flaggedAbsoluteBounds.height == -1) {
                         // Correct auto-size
-                        flaggedAbsoluteBounds.height = 0;
+                        flaggedAbsoluteBounds.setHeight(0);
                     }
                     oldFlaggedLayoutData.put(ise, flaggedAbsoluteBounds);
                     flagged = true;
