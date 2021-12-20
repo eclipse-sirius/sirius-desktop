@@ -75,7 +75,7 @@ public class CompartmentsSizeTest extends AbstractCompartmentTest {
 
     private static final Rectangle REGION_AZ_BOUNDS_DRAW2D_HSTACK = new Rectangle(940, 125, 233, 258);
 
-    private static final Rectangle FREE_FORM_CONTAINER_H_BOUNDS = new Rectangle(29, 270, 743, 207);
+    private static final Rectangle FREE_FORM_CONTAINER_H_BOUNDS = new Rectangle(700, 400, 743, 207);
 
     private static final Rectangle FREE_FORM_CONTAINER_V_BOUNDS = new Rectangle(535, 30, 128, 338);
 
