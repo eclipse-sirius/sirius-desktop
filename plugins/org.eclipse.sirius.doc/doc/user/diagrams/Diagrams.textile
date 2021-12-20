@@ -445,11 +445,15 @@ h5. Edges labels
 
 It is also possible to hide the edge labels. 
 
-The approach is the same than the nodes labels with the specific menus "Hide/Show Label" called from the edge or its label.
+The approach is the same than the nodes labels with the specific menus "Hide/Show Label" called from the edge or its label(s).
 
 	!images/diagram_editor_hide_edge_label_1.png!
 
-Note that if a label of an edge is hidden (center, begin or end), all the labels of the edge will be hidden. Same behavior for the reveal action, if a label of an edge is revealed (center, begin or end), all the labels of the edge will be revealed.
+Note that if the edge is selected when triggering the "Hide label" action, all the labels (center, begin or end) of the edge will be hidden. However, if a label of the edge is selected when triggering the "Hide label" action, then only this label will be hidden.
+
+	!images/diagram_editor_hide_edge_label_2.png!
+
+From the outline view and the "Show/Hide" wizard from the tabbar, you can check and uncheck labels of edges in order to show or hide them.
 
 h4. Hiding icons of labels on Shapes or Connectors
 

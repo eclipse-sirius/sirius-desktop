@@ -28,6 +28,7 @@ h3. Message Keys Added
 * @org.eclipse.sirius.diagram.tools.api.Messages_BringElementsToFront_oneElementLabel@
 * @org.eclipse.sirius.diagram.tools.api.Messages_BringElementsToFront_severalElementsLabel@
 * @org.eclipse.sirius.tools.api.Messages.ReferenceFinderCache_warningAlreadyEnabled@
+* @org.eclipse.sirius.diagram.ui.provider.Messages.AbstractDEdgeNameEditPart_VisualID_Error@
 
 h3. Message Keys Removed
 
