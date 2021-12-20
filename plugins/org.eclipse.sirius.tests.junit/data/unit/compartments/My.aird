@@ -685,7 +685,7 @@
             <styles xmi:type="notation:FilteringStyle" xmi:id="_ErIEY12GEey5qZ5Mg_TCeA"/>
           </children>
           <styles xmi:type="notation:ShapeStyle" xmi:id="_ErHdUV2GEey5qZ5Mg_TCeA" fontName="Segoe UI" fontHeight="12"/>
-          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ErHdUl2GEey5qZ5Mg_TCeA" x="29" y="270" width="743" height="207"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ErHdUl2GEey5qZ5Mg_TCeA" x="700" y="400" width="743" height="207"/>
         </children>
         <styles xmi:type="notation:DiagramStyle" xmi:id="_Qj9tIkvNEeWf576mnYm4XQ"/>
       </data>

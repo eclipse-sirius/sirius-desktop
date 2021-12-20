@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2020 Obeo.
+ * Copyright (c) 2015, 2021 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -540,7 +540,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
 
         // Check that the existing container is as expected (a delta of 1 is
         // tolerate for height because of font problem in such OS)
-        Rectangle currentDraw2DBounds = checkBounds(SECOND_REGION_CONTAINER_NAME, new Rectangle(940, 125, -1, -1), new Rectangle(940, 125, 233, 258), false, 0, 1);
+        Rectangle currentDraw2DBounds = checkBounds(SECOND_REGION_CONTAINER_NAME, new Rectangle(940, 125, -1, 258), new Rectangle(940, 125, 233, 258), false, 0, 1);
 
         // Create a new ePackage (that causes creation of new region container
         // region at refresh) outside of the current session (as from an
@@ -548,7 +548,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         modifySemanticModelOutsideDiagram();
 
         // Check that the existing container has not changed
-        checkBounds(SECOND_REGION_CONTAINER_NAME, new Rectangle(940, 125, -1, -1), currentDraw2DBounds);
+        checkBounds(SECOND_REGION_CONTAINER_NAME, new Rectangle(940, 125, -1, 258), currentDraw2DBounds);
     }
 
     /**
