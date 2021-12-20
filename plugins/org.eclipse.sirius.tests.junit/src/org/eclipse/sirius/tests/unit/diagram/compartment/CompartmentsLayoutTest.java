@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2021 Obeo.
+ * Copyright (c) 2015, 2022 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -850,18 +850,18 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
                 firstRegionBounds.height(), 1);
     }
 
-    public void testLayoutAtCreationWithAListRegionWithDefinedSize() {
-        testLayoutAtCreationWithAListRegionWithDefinedSize(new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 100, 50));
+    public void testLayoutAtCreationHStackWithoutLabelWithAListRegionWithDefinedSize() {
+        testLayoutAtCreationHStackWithoutLabelWithAListRegionWithDefinedSize(new Rectangle(0, 0, -1, -1), new Rectangle(0, 0, 100, 50));
     }
     
-    public void testLayoutAtCreationWithAListRegionWithDefinedSize_autoSizeAtArrangeDisabled() {
+    public void testLayoutAtCreationHStackWithoutLabelWithAListRegionWithDefinedSize_autoSizeAtArrangeDisabled() {
         //Change preference to disable the auto size at arrange.
         changeDiagramUIPreference(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name(), false);
         // Launch same test but with another value for "autosize" pref and another expected
-        testLayoutAtCreationWithAListRegionWithDefinedSize(new Rectangle(0, 0, 100, 50), new Rectangle(0, 0, 100, 50));
+        testLayoutAtCreationHStackWithoutLabelWithAListRegionWithDefinedSize(new Rectangle(0, 0, 100, 50), new Rectangle(0, 0, 100, 50));
     }
     
-    public void testLayoutAtCreationWithAListRegionWithDefinedSize(Rectangle expectedGmfBounds, Rectangle expectedDraw2dBounds) {
+    public void testLayoutAtCreationHStackWithoutLabelWithAListRegionWithDefinedSize(Rectangle expectedGmfBounds, Rectangle expectedDraw2dBounds) {
         // We create a new diagram
         EObject root = session.getSemanticResources().stream().findFirst().get().getContents().get(0);
         assertTrue("The root of the semantic model must be an EPackage", root instanceof EPackage);
@@ -885,7 +885,7 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         checkBounds("Cl1", expectedGmfBounds, expectedDraw2dBounds);
     }
     
-    public void testLayoutAtCreationWithAListRegionWithAutoSize() {
+    public void testLayoutAtCreationHStackWithoutLabelWithAListRegionWithAutoSize() {
         // We create a new diagram
         EObject root = session.getSemanticResources().stream().findFirst().get().getContents().get(0);
         assertTrue("The root of the semantic model must be an EPackage", root instanceof EPackage);
@@ -911,11 +911,41 @@ public class CompartmentsLayoutTest extends SiriusDiagramTestCase implements ICo
         checkBounds("Cl1", autoSizeBounds, expectedBounds);
     }
 
-    public void testLayoutAtCreationWithAListRegionWithAutoSize_autoSizeAtArrangeDisabled() {
+    public void testLayoutAtCreationHStackWithoutLabelWithAListRegionWithAutoSize_autoSizeAtArrangeDisabled() {
         // Change preference to disable the auto size at arrange.
         changeDiagramUIPreference(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name(), false);
         // Launch same test but with another value for "autosize" pref
-        testLayoutAtCreationWithAListRegionWithAutoSize();
+        testLayoutAtCreationHStackWithoutLabelWithAListRegionWithAutoSize();
+    }
+
+    public void testLayoutAtCreationHStackWithLabelWithAListRegionWithDefinedSize() {
+        // The current borders width ("computed" from the current draw2d construction, a kind of magic number...)
+        int bordersWidth = 4;
+        // We create a new diagram
+        EObject root = session.getSemanticResources().stream().findFirst().get().getContents().get(0);
+        assertTrue("The root of the semantic model must be an EPackage", root instanceof EPackage);
+        EPackage semanticRootForDiagram = ((EPackage) root).getESubpackages().get(1);
+        diagram = (DDiagram) createRepresentation("DiagHStackWithLabelWithAutoSizedList", semanticRootForDiagram);
+        // We open the editor
+        editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        // Check the list size, according to its container, at opening
+        Rectangle autoSizeBounds = new Rectangle(0, 0, -1, -1);
+        // The expected bounds is the same width than its container (minus the border size, here 4 pixels).
+        DDiagramElementContainer container1 = getDiagramElementsFromLabel(diagram, "diagHStackWithSizedList1", DDiagramElementContainer.class).get(0);
+        AbstractDiagramElementContainerEditPart editPart = (AbstractDiagramElementContainerEditPart) getEditPart(container1);
+        IFigure container1Figure = editPart.getFigure();
+
+        Rectangle expectedBounds = new Rectangle(new Point(0, 0), new Dimension(container1Figure.getBounds().width() - bordersWidth, LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION.height()));
+        checkBounds("Cl1", autoSizeBounds, expectedBounds);
+        // Save and close
+        session.save(new NullProgressMonitor());
+        DialectUIManager.INSTANCE.closeEditor(editor, false);
+        TestsUtil.synchronizationWithUIThread();
+        // Reopen the editor and check the size again
+        editor = (DiagramEditor) DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
+        TestsUtil.synchronizationWithUIThread();
+        // Check the list size, according to its container
+        checkBounds("Cl1", autoSizeBounds, expectedBounds);
     }
 
     private void checkSameBounds(String labelOfFirstElementToCompare, String labelOfSecondElementToCompare) {

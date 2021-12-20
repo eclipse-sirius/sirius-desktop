@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2021 Obeo.
+ * Copyright (c) 2015, 2022 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,8 +14,10 @@ package org.eclipse.sirius.tests.swtbot.compartment;
 
 import java.awt.GraphicsEnvironment;
 import java.io.IOException;
+import java.text.MessageFormat;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -34,6 +36,7 @@ import org.eclipse.emf.edit.provider.ComposedAdapterFactory;
 import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.impl.TransactionalEditingDomainImpl;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gef.LayerConstants;
 import org.eclipse.gef.editparts.LayerManager;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
@@ -44,26 +47,37 @@ import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.SessionStatus;
 import org.eclipse.sirius.common.tools.internal.resource.ResourceSyncClientNotifier;
 import org.eclipse.sirius.diagram.ContainerLayout;
+import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNodeContainer;
 import org.eclipse.sirius.diagram.DNodeList;
 import org.eclipse.sirius.diagram.description.ContainerMapping;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
+import org.eclipse.sirius.tests.swtbot.support.api.business.UIDiagramRepresentation;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartMoved;
 import org.eclipse.sirius.tests.swtbot.support.api.condition.CheckEditPartResized;
+import org.eclipse.sirius.tests.swtbot.support.api.condition.ItemEnabledCondition;
+import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
+import org.eclipse.sirius.ui.tools.api.Messages;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.waits.DefaultCondition;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotButton;
+import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
 import org.eclipse.ui.PlatformUI;
 
 /**
@@ -75,7 +89,7 @@ import org.eclipse.ui.PlatformUI;
  */
 public class CompartmentsTest extends AbstractCompartmentTest {
 
-    private static final String TEST_FONT = "Comic Sans MS";
+    private static final String TEST_FONT = "Comic Sans MS"; //$NON-NLS-1$
 
     private static final boolean TEST_FONT_AVAILABLE = Arrays.asList(GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames()).stream()
             .anyMatch(font -> Objects.equals(TEST_FONT, font));
@@ -229,7 +243,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
     @Override
     protected void onSetUpAfterOpeningDesignerPerspective() throws Exception {
         super.onSetUpAfterOpeningDesignerPerspective();
-        oldFont = changeDefaultFontName("Comic Sans MS");
+        oldFont = changeDefaultFontName("Comic Sans MS"); //$NON-NLS-1$
     }
 
     /**
@@ -433,23 +447,25 @@ public class CompartmentsTest extends AbstractCompartmentTest {
 
         SWTBotGefEditPart createdEditPart = editor.getSWTBotGefViewer().selectedEditParts().iterator().next();
         if (creationToolName.equals(ATTRIBUTE_CREATION_TOOL_NAME)) {
-            assertTrue("The '" + ATTRIBUTE_CREATION_TOOL_NAME + "' tool should create a DNodeListElement.", createdEditPart.part() instanceof DNodeListElementEditPart);
+            assertTrue("The '" + ATTRIBUTE_CREATION_TOOL_NAME + "' tool should create a DNodeListElement.", createdEditPart.part() instanceof DNodeListElementEditPart); //$NON-NLS-1$ //$NON-NLS-2$
         } else if (creationToolName.equals(CLASS_NODE_CREATION_TOOL_NAME)) {
-            assertTrue("The '" + CLASS_NODE_CREATION_TOOL_NAME + "' tool should create a DNode.", createdEditPart.part() instanceof AbstractDiagramNodeEditPart);
+            assertTrue("The '" + CLASS_NODE_CREATION_TOOL_NAME + "' tool should create a DNode.", createdEditPart.part() instanceof AbstractDiagramNodeEditPart); //$NON-NLS-1$ //$NON-NLS-2$
         } else {
-            assertTrue("The '" + CLASS_LIST_CREATION_TOOL_NAME + "' tool should create a DNodeList/DNodeContainer.", createdEditPart.part() instanceof AbstractDiagramElementContainerEditPart);
+            assertTrue("The '" + CLASS_LIST_CREATION_TOOL_NAME + "' tool should create a DNodeList/DNodeContainer.", createdEditPart.part() instanceof AbstractDiagramElementContainerEditPart); //$NON-NLS-1$ //$NON-NLS-2$
         }
         EObject createdElement = ((IDiagramElementEditPart) createdEditPart.part()).resolveSemanticElement();
 
         boolean isContained = ((DDiagramElementContainer) containerElement).getElements().contains(createdElement);
-        assertTrue("The '" + createdElementName + "' element should be correctly created in '" + containerName + "' element", isContained);
+        assertTrue("The '" + createdElementName + "' element should be correctly created in '" + containerName + "' element", isContained); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
     }
 
     /**
      * Create a new node using the given tool directly in the diagram representation.
      * 
-     * @param CREATION_TOOL_NAME
+     * @param creationToolName
      *            Tool name to select
+     * @param location
+     *            Location to click to create the new element
      */
     private void createRegionContainerDiagram(String creationToolName, Point location) {
         // Select the tool
@@ -467,14 +483,14 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         SWTBotGefEditPart createdCompartmentEditPart = editor.getEditPart(createdCompartmentName, AbstractDiagramElementContainerEditPart.class);
         EObject createdCompartmentElement = ((IGraphicalEditPart) createdCompartmentEditPart.part()).resolveSemanticElement();
         boolean isContained = editor.getDRepresentation().getOwnedRepresentationElements().contains(createdCompartmentElement);
-        assertTrue("The '" + createdCompartmentName + "' element should be correctly created in the diagram", isContained);
-        assertTrue("The created compartment '" + createdCompartmentName + "'should be a DNodeContainer type", createdCompartmentElement instanceof DNodeContainer);
+        assertTrue("The '" + createdCompartmentName + "' element should be correctly created in the diagram", isContained); //$NON-NLS-1$ //$NON-NLS-2$
+        assertTrue("The created compartment '" + createdCompartmentName + "'should be a DNodeContainer type", createdCompartmentElement instanceof DNodeContainer); //$NON-NLS-1$ //$NON-NLS-2$
 
         if (new DRepresentationQuery(editor.getDRepresentation()).getRepresentationDescriptor().getName().equals(HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME)) {
-            assertEquals("The created compartment '" + createdCompartmentName + "'should be layouted with 'Horizontal Stack' style", ContainerLayout.HORIZONTAL_STACK,
+            assertEquals("The created compartment '" + createdCompartmentName + "'should be layouted with 'Horizontal Stack' style", ContainerLayout.HORIZONTAL_STACK, //$NON-NLS-1$ //$NON-NLS-2$
                     ((DNodeContainer) createdCompartmentElement).getChildrenPresentation());
         } else if (new DRepresentationQuery(editor.getDRepresentation()).getRepresentationDescriptor().getName().equals(VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME)) {
-            assertEquals("The created compartment '" + createdCompartmentName + "'should be layouted with 'Vertical Stack' style", ContainerLayout.VERTICAL_STACK,
+            assertEquals("The created compartment '" + createdCompartmentName + "'should be layouted with 'Vertical Stack' style", ContainerLayout.VERTICAL_STACK, //$NON-NLS-1$ //$NON-NLS-2$
                     ((DNodeContainer) createdCompartmentElement).getChildrenPresentation());
         }
     }
@@ -488,14 +504,14 @@ public class CompartmentsTest extends AbstractCompartmentTest {
      *            the expected container layout
      */
     private void checkChildrenPresentation(String editPartName, ContainerMapping actualMapping, ContainerLayout expectedContainerLayout) {
-        assertEquals("Wrong children presentation for '" + editPartName + "' mapping", expectedContainerLayout, actualMapping.getChildrenPresentation());
+        assertEquals("Wrong children presentation for '" + editPartName + "' mapping", expectedContainerLayout, actualMapping.getChildrenPresentation()); //$NON-NLS-1$ //$NON-NLS-2$
 
         DDiagramElementContainer ddec = getDiagramElementContainer(editPartName);
         if (ContainerLayout.LIST == expectedContainerLayout) {
-            assertTrue("Wrong children presentation for '" + editPartName + "' list", ddec instanceof DNodeList);
+            assertTrue("Wrong children presentation for '" + editPartName + "' list", ddec instanceof DNodeList); //$NON-NLS-1$ //$NON-NLS-2$
         } else {
             DNodeContainer diagramElement = (DNodeContainer) ddec;
-            assertEquals("Wrong children presentation for '" + editPartName + "' container", expectedContainerLayout, diagramElement.getChildrenPresentation());
+            assertEquals("Wrong children presentation for '" + editPartName + "' container", expectedContainerLayout, diagramElement.getChildrenPresentation()); //$NON-NLS-1$ //$NON-NLS-2$
         }
     }
 
@@ -536,7 +552,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(HORIZONTAL_STACK_REPRESENTATION_NAME, HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Check that the existing container is as expected (a delta of 1 is
         // tolerate for height because of font problem in such OS)
@@ -562,10 +578,10 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(VERTICAL_STACK_REPRESENTATION_NAME, VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Check that the existing region is as expected
-        Rectangle currentDraw2DBounds = checkBounds("aaa", new Rectangle(0, 80, 154, 40), new Rectangle(0, 80, 154, 40));
+        Rectangle currentDraw2DBounds = checkBounds("aaa", new Rectangle(0, 80, 154, 40), new Rectangle(0, 80, 154, 40)); //$NON-NLS-1$
 
         // Create a new ePackage (that causes creation of new region container
         // region at refresh) outside of the current session (as from an
@@ -574,7 +590,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
 
         // Check that the existing container has not changed (or at least one of
         // its region in current case)
-        checkBounds("aaa", new Rectangle(0, 80, 154, 40), currentDraw2DBounds);
+        checkBounds("aaa", new Rectangle(0, 80, 154, 40), currentDraw2DBounds); //$NON-NLS-1$
     }
 
     /**
@@ -588,9 +604,9 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         ResourceSet set = domain.getResourceSet();
         try {
             final EPackage ePackageInAnotherResourceSet = (EPackage) ModelUtils.load(localSession.getOpenedSession().getSemanticResources().iterator().next().getURI(), set);
-            assertFalse("The editing domain of each root semantic must be different.", domain.equals(localSession.getOpenedSession().getTransactionalEditingDomain()));
+            assertFalse("The editing domain of each root semantic must be different.", domain.equals(localSession.getOpenedSession().getTransactionalEditingDomain())); //$NON-NLS-1$
 
-            domain.getCommandStack().execute(new RecordingCommand(domain, "Add new package") {
+            domain.getCommandStack().execute(new RecordingCommand(domain, "Add new package") { //$NON-NLS-1$
 
                 @Override
                 protected void doExecute() {
@@ -602,7 +618,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
             });
             ePackageInAnotherResourceSet.eResource().save(Collections.EMPTY_MAP);
         } catch (IOException e) {
-            fail("Pb when saving the resource in another resourceSet : " + e.getMessage());
+            fail("Pb when saving the resource in another resourceSet : " + e.getMessage()); //$NON-NLS-1$
         }
         // Wait job ResourceSyncClientNotifier to ensure the session has been
         // reloaded.
@@ -628,7 +644,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(VERTICAL_STACK_REPRESENTATION_NAME, VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container without region
         createRegionContainerDiagram(PACKAGE_CREATION_TOOL_NAME, CONTAINER_CREATION_LOCATION);
@@ -644,7 +660,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(VERTICAL_STACK_REPRESENTATION_NAME, VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container with one region
         createRegionContainerDiagram(PACKAGE_ONE_CLASS_CREATION_TOOL_NAME, CONTAINER_CREATION_LOCATION);
@@ -661,7 +677,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(VERTICAL_STACK_REPRESENTATION_NAME, VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container with one region
         createRegionContainerDiagram(PACKAGE_TWO_CLASS_CREATION_TOOL_NAME, CONTAINER_CREATION_LOCATION);
@@ -679,7 +695,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(VERTICAL_STACK_REPRESENTATION_NAME, VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container without region
         createRegionContainerDiagram(PACKAGE_CREATION_DEFINED_SIZE_TOOL_NAME, CONTAINER_CREATION_LOCATION);
@@ -695,7 +711,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(VERTICAL_STACK_REPRESENTATION_NAME, VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container with one region
         createRegionContainerDiagram(PACKAGE_ONE_CLASS_CREATION_WITH_DEFINED_SIZE_TOOL_NAME, CONTAINER_CREATION_LOCATION);
@@ -713,7 +729,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(VERTICAL_STACK_REPRESENTATION_NAME, VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container with one region
         createRegionContainerDiagram(PACKAGE_TWO_CLASS_CREATION_WITH_DEFINED_SIZE_TOOL_NAME, CONTAINER_CREATION_LOCATION);
@@ -745,7 +761,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(VERTICAL_STACK_REPRESENTATION_NAME, VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container without region
         createRegionContainerDiagramWithRectangleDraw(PACKAGE_CREATION_TOOL_NAME, CONTAINER_CREATION_LOCATION, CONTAINER_SECOND_CREATION_LOCATION);
@@ -761,7 +777,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(VERTICAL_STACK_REPRESENTATION_NAME, VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container with one region
         createRegionContainerDiagramWithRectangleDraw(PACKAGE_ONE_CLASS_CREATION_TOOL_NAME, CONTAINER_CREATION_LOCATION, CONTAINER_SECOND_CREATION_LOCATION);
@@ -778,7 +794,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(VERTICAL_STACK_REPRESENTATION_NAME, VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container with one region
         createRegionContainerDiagramWithRectangleDraw(PACKAGE_TWO_CLASS_CREATION_TOOL_NAME, CONTAINER_CREATION_LOCATION, CONTAINER_SECOND_CREATION_LOCATION);
@@ -836,7 +852,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(VERTICAL_STACK_WITH_SIZED_REGIONS_REPRESENTATION_NAME, VERTICAL_STACK_WITH_SIZED_REGIONS_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Check initial states
         checkBounds(FIRST_REGION_CONTAINER_NAME, firstContainerGMFBounds, firstContainerDraw2dBounds, FONT_WIDTH_DELTA * 2, 0);
@@ -862,7 +878,6 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         checkBounds(CENTER_CLASS_NAME, secondRegionContainerCollapseGMFBounds, secondRegionContainerBounds.getCopy().setHeight(LayoutUtils.COLLAPSED_VERTICAL_REGION_HEIGHT), FONT_WIDTH_DELTA, 0);
         checkBounds(FIRST_REGION_CONTAINER_NAME, firstContainerGMFBounds, firstContainerDraw2dBounds.getCopy().setHeight(firstContainerDraw2dBounds.height() - expectedContainerReduceHeight),
                 FONT_WIDTH_DELTA * 2, 0);
-
 
         // Expand the second region
         editPartResizedCondition = new CheckEditPartResized(editPartToResize);
@@ -903,7 +918,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(VERTICAL_STACK_REPRESENTATION_NAME, VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container without region
         createRegionContainerDiagram(PACKAGE_CREATION_HIDE_LABEL_TOOL_NAME, CONTAINER_CREATION_LOCATION);
@@ -919,7 +934,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(VERTICAL_STACK_REPRESENTATION_NAME, VERTICAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container with one region
         createRegionContainerDiagramWithRectangleDraw(PACKAGE_ONE_CLASS_CREATION_TOOL_NAME, CONTAINER_CREATION_LOCATION, CONTAINER_SECOND_CREATION_LOCATION);
@@ -947,7 +962,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(HORIZONTAL_STACK_REPRESENTATION_NAME, HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container without region
         createRegionContainerDiagram(PACKAGE_CREATION_TOOL_NAME, CONTAINER_CREATION_LOCATION);
@@ -964,7 +979,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(HORIZONTAL_STACK_REPRESENTATION_NAME, HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container with one region
         createRegionContainerDiagram(PACKAGE_ONE_CLASS_CREATION_TOOL_NAME, CONTAINER_CREATION_LOCATION);
@@ -984,7 +999,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(HORIZONTAL_STACK_REPRESENTATION_NAME, HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container with one region
         createRegionContainerDiagram(PACKAGE_TWO_CLASS_CREATION_TOOL_NAME, CONTAINER_CREATION_LOCATION);
@@ -1002,7 +1017,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(HORIZONTAL_STACK_REPRESENTATION_NAME, HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container without region
         createRegionContainerDiagram(PACKAGE_CREATION_DEFINED_SIZE_TOOL_NAME, CONTAINER_CREATION_LOCATION);
@@ -1018,7 +1033,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(HORIZONTAL_STACK_REPRESENTATION_NAME, HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container with one region
         createRegionContainerDiagram(PACKAGE_ONE_CLASS_CREATION_WITH_DEFINED_SIZE_TOOL_NAME, CONTAINER_CREATION_LOCATION);
@@ -1038,7 +1053,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(HORIZONTAL_STACK_REPRESENTATION_NAME, HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container with one region
         createRegionContainerDiagram(PACKAGE_TWO_CLASS_CREATION_WITH_DEFINED_SIZE_TOOL_NAME, CONTAINER_CREATION_LOCATION);
@@ -1058,7 +1073,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(HORIZONTAL_STACK_REPRESENTATION_NAME, HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container without region
         createRegionContainerDiagramWithRectangleDraw(PACKAGE_CREATION_TOOL_NAME, CONTAINER_CREATION_LOCATION, CONTAINER_SECOND_CREATION_LOCATION);
@@ -1074,7 +1089,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(HORIZONTAL_STACK_REPRESENTATION_NAME, HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container with one region
         createRegionContainerDiagramWithRectangleDraw(PACKAGE_ONE_CLASS_CREATION_TOOL_NAME, CONTAINER_CREATION_LOCATION, CONTAINER_SECOND_CREATION_LOCATION);
@@ -1091,7 +1106,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(HORIZONTAL_STACK_REPRESENTATION_NAME, HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container with one region
         createRegionContainerDiagramWithRectangleDraw(PACKAGE_TWO_CLASS_CREATION_TOOL_NAME, CONTAINER_CREATION_LOCATION, CONTAINER_SECOND_CREATION_LOCATION);
@@ -1211,14 +1226,14 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(REGION_WITH_EDGES_REPRESENTATION_NAME, REGION_WITH_EDGES_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
-        SWTBotGefEditPart edgeSourceEditPart = editor.getEditPart("Left_p3", AbstractDiagramElementContainerEditPart.class);
-        SWTBotGefEditPart edgeTargetContainerEditPart = editor.getEditPart("Center_p4", AbstractDiagramElementContainerEditPart.class);
+        SWTBotGefEditPart edgeSourceEditPart = editor.getEditPart("Left_p3", AbstractDiagramElementContainerEditPart.class); //$NON-NLS-1$
+        SWTBotGefEditPart edgeTargetContainerEditPart = editor.getEditPart("Center_p4", AbstractDiagramElementContainerEditPart.class); //$NON-NLS-1$
         DEdgeEditPart edgeEditPart = (DEdgeEditPart) ((AbstractDiagramElementContainerEditPart) edgeSourceEditPart.part()).getSourceConnections().get(0);
-        assertTrue("The edge should be visible after diagram opening.", edgeEditPart.getFigure().isVisible());
+        assertTrue("The edge should be visible after diagram opening.", edgeEditPart.getFigure().isVisible()); //$NON-NLS-1$
 
-        SWTBotGefEditPart editPartToResize = editor.getEditPart("[region-Center_p4]", AbstractDiagramElementContainerEditPart.class);
+        SWTBotGefEditPart editPartToResize = editor.getEditPart("[region-Center_p4]", AbstractDiagramElementContainerEditPart.class); //$NON-NLS-1$
         ICondition editPartResizedCondition = new CheckEditPartResized(editPartToResize);
 
         // Select the region contained in "Center_p4"
@@ -1254,7 +1269,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
 
             @Override
             public String getFailureMessage() {
-                return "The collapse button has not been found after region selection.";
+                return "The collapse button has not been found after region selection."; //$NON-NLS-1$
             }
         });
 
@@ -1266,7 +1281,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         SWTBotUtils.waitAllUiEvents();
 
         // Check that edge is no longer visible
-        assertFalse("The edge should be hidden after collapsing the container of the target of the edge.", edgeEditPart.getFigure().isVisible());
+        assertFalse("The edge should be hidden after collapsing the container of the target of the edge.", edgeEditPart.getFigure().isVisible()); //$NON-NLS-1$
         // Move source of edge and check that edge is not displayed
         Rectangle nodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) edgeSourceEditPart.part());
         Point initialLocation = nodeBounds.getTop().getTranslated(0, 10);
@@ -1278,7 +1293,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         // asyncExec (see
         // org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart.refreshConnections())
         SWTBotUtils.waitAllUiEvents();
-        assertFalse("The edge should be hidden after moving the source of the edge.", edgeEditPart.getFigure().isVisible());
+        assertFalse("The edge should be hidden after moving the source of the edge.", edgeEditPart.getFigure().isVisible()); //$NON-NLS-1$
         // Move target of edge and check that edge is not displayed
         nodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) edgeTargetContainerEditPart.part());
         initialLocation = nodeBounds.getTop().getTranslated(0, 10);
@@ -1290,7 +1305,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         // asyncExec (see
         // org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart.refreshConnections())
         SWTBotUtils.waitAllUiEvents();
-        assertFalse("The edge should be hidden after moving the container of the target of the edge.", edgeEditPart.getFigure().isVisible());
+        assertFalse("The edge should be hidden after moving the container of the target of the edge.", edgeEditPart.getFigure().isVisible()); //$NON-NLS-1$
     }
 
     /**
@@ -1300,14 +1315,14 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(REGION_WITH_EDGES_AND_NODES_REPRESENTATION_NAME, REGION_WITH_EDGES_AND_NODES_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
-        SWTBotGefEditPart edgeSourceEditPart = editor.getEditPart("nodeLeft_p3", AbstractDiagramNodeEditPart.class);
-        SWTBotGefEditPart edgeTargetContainerEditPart = editor.getEditPart("Center_p4", AbstractDiagramElementContainerEditPart.class);
+        SWTBotGefEditPart edgeSourceEditPart = editor.getEditPart("nodeLeft_p3", AbstractDiagramNodeEditPart.class); //$NON-NLS-1$
+        SWTBotGefEditPart edgeTargetContainerEditPart = editor.getEditPart("Center_p4", AbstractDiagramElementContainerEditPart.class); //$NON-NLS-1$
         DEdgeEditPart edgeEditPart = (DEdgeEditPart) ((AbstractDiagramNodeEditPart) edgeSourceEditPart.part()).getSourceConnections().get(0);
-        assertTrue("The edge should be visible after diagram opening.", edgeEditPart.getFigure().isVisible());
+        assertTrue("The edge should be visible after diagram opening.", edgeEditPart.getFigure().isVisible()); //$NON-NLS-1$
 
-        SWTBotGefEditPart editPartToResize = editor.getEditPart("[region-Center_p4]", AbstractDiagramElementContainerEditPart.class);
+        SWTBotGefEditPart editPartToResize = editor.getEditPart("[region-Center_p4]", AbstractDiagramElementContainerEditPart.class); //$NON-NLS-1$
         ICondition editPartResizedCondition = new CheckEditPartResized(editPartToResize);
 
         // Select the region contained in "Center_p4"
@@ -1343,7 +1358,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
 
             @Override
             public String getFailureMessage() {
-                return "The collapse button has not been found after region selection.";
+                return "The collapse button has not been found after region selection."; //$NON-NLS-1$
             }
         });
 
@@ -1355,7 +1370,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         SWTBotUtils.waitAllUiEvents();
 
         // Check that edge is no longer visible
-        assertFalse("The edge should be hidden after collapsing the container of the target of the edge.", edgeEditPart.getFigure().isVisible());
+        assertFalse("The edge should be hidden after collapsing the container of the target of the edge.", edgeEditPart.getFigure().isVisible()); //$NON-NLS-1$
         // Move source of edge and check that edge is not displayed
         Rectangle nodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) edgeSourceEditPart.part());
         Point initialLocation = nodeBounds.getTop().getTranslated(0, 10);
@@ -1367,7 +1382,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         // asyncExec (see
         // org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart.refreshConnections())
         SWTBotUtils.waitAllUiEvents();
-        assertFalse("The edge should be hidden after moving the source of the edge.", edgeEditPart.getFigure().isVisible());
+        assertFalse("The edge should be hidden after moving the source of the edge.", edgeEditPart.getFigure().isVisible()); //$NON-NLS-1$
         // Move target of edge and check that edge is not displayed
         nodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) edgeTargetContainerEditPart.part());
         initialLocation = nodeBounds.getTop().getTranslated(0, 10);
@@ -1379,7 +1394,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         // asyncExec (see
         // org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart.refreshConnections())
         SWTBotUtils.waitAllUiEvents();
-        assertFalse("The edge should be hidden after moving the container of the target of the edge.", edgeEditPart.getFigure().isVisible());
+        assertFalse("The edge should be hidden after moving the container of the target of the edge.", edgeEditPart.getFigure().isVisible()); //$NON-NLS-1$
     }
 
     /**
@@ -1390,13 +1405,13 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(REGION_WITH_EDGE2EDGE_REPRESENTATION_NAME, REGION_WITH_EDGE2EDGE_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
-        SWTBotGefEditPart edge2edgeSourceEditPart = editor.getEditPart("myAnnotation", AbstractDiagramElementContainerEditPart.class);
+        SWTBotGefEditPart edge2edgeSourceEditPart = editor.getEditPart("myAnnotation", AbstractDiagramElementContainerEditPart.class); //$NON-NLS-1$
         DEdgeEditPart edge2edgeEditPart = (DEdgeEditPart) ((AbstractDiagramElementContainerEditPart) edge2edgeSourceEditPart.part()).getSourceConnections().get(0);
-        assertTrue("The edgeToEdge should be visible after diagram opening.", edge2edgeEditPart.getFigure().isVisible());
+        assertTrue("The edgeToEdge should be visible after diagram opening.", edge2edgeEditPart.getFigure().isVisible()); //$NON-NLS-1$
 
-        SWTBotGefEditPart editPartToResize = editor.getEditPart("[region-Center_p4]", AbstractDiagramElementContainerEditPart.class);
+        SWTBotGefEditPart editPartToResize = editor.getEditPart("[region-Center_p4]", AbstractDiagramElementContainerEditPart.class); //$NON-NLS-1$
         ICondition editPartResizedCondition = new CheckEditPartResized(editPartToResize);
 
         // Select the region contained in "Center_p4"
@@ -1437,7 +1452,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
 
             @Override
             public String getFailureMessage() {
-                return "The collapse button has not been found after region selection.";
+                return "The collapse button has not been found after region selection."; //$NON-NLS-1$
             }
         });
 
@@ -1449,7 +1464,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         SWTBotUtils.waitAllUiEvents();
 
         // Check that edge is no longer visible
-        assertFalse("The edgeToEdge should be hidden after collapsing the container of the target of the edge.", edge2edgeEditPart.getFigure().isVisible());
+        assertFalse("The edgeToEdge should be hidden after collapsing the container of the target of the edge.", edge2edgeEditPart.getFigure().isVisible()); //$NON-NLS-1$
         // Move source of edge and check that edge is not displayed
         Rectangle nodeBounds = GraphicalHelper.getAbsoluteBoundsIn100Percent((GraphicalEditPart) edge2edgeSourceEditPart.part());
         Point initialLocation = nodeBounds.getTop().getTranslated(0, 10);
@@ -1461,7 +1476,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         // asyncExec (see
         // org.eclipse.gmf.runtime.diagram.ui.editparts.ShapeCompartmentEditPart.refreshConnections())
         SWTBotUtils.waitAllUiEvents();
-        assertFalse("The edgeToEdge should be still hidden after moving the source of the edge.", edge2edgeEditPart.getFigure().isVisible());
+        assertFalse("The edgeToEdge should be still hidden after moving the source of the edge.", edge2edgeEditPart.getFigure().isVisible()); //$NON-NLS-1$
     }
 
     /**
@@ -1519,7 +1534,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(HORIZONTAL_STACK_REPRESENTATION_NAME, HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container without region
         createRegionContainerDiagram(PACKAGE_CREATION_HIDE_LABEL_TOOL_NAME, CONTAINER_CREATION_LOCATION);
@@ -1539,7 +1554,7 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         openRepresentation(HORIZONTAL_STACK_REPRESENTATION_NAME, HORIZONTAL_STACK_REPRESENTATION_INSTANCE_NAME);
         editor.maximize();
 
-        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus());
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
 
         // Create a new ePackage container with one region
         createRegionContainerDiagramWithRectangleDraw(PACKAGE_ONE_CLASS_CREATION_TOOL_NAME, CONTAINER_CREATION_LOCATION, CONTAINER_SECOND_CREATION_LOCATION);
@@ -1556,6 +1571,459 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         // Width bounds must decrease of 60px because of resizing of 60 px.
         checkBounds(NEW_REGION_CONTAINER_NAME, CONTAINER_BOUNDS_AUTO_SIZED, realContainerBounds.getResized(-60, 0));
         checkBounds(LEFT_CLASS_C0_NAME, REGION_BOUNDS_IN_DRAWN_HSTACK_CONTAINER.getResized(-60, 0), realRegionBounds.getResized(-60, 0), 0, 1);
+    }
+
+    /**
+     * Check the initial sizes of a title block and its regions after a standard creation.
+     */
+    private void checkDefaultTitleBlockInitialSizes() {
+        checkDefaultTitleBlockInitialSizes(false, CONTAINER_CREATION_LOCATION, 2);
+    }
+
+    /**
+     * Check the initial sizes of a title block and its regions after a standard creation.
+     * 
+     * @param hasListGmfAutoSize
+     *            true if the GMF size of the lists must be {-1;-1}, false otherwise
+     * @param titleBlockExpectedLocation
+     *            The expected location of the title block
+     * @param nbLinesToCheck
+     *            the number of lines to check (2 or 3).
+     */
+    private void checkDefaultTitleBlockInitialSizes(boolean hasListGmfAutoSize, Point titleBlockExpectedLocation, int nbLinesToCheck) {
+        int separatorBorderHeight = 1;
+        int bordersWidth = 4;
+        int bordersHeight = (2 * nbLinesToCheck) + 3;
+
+        Dimension expectedDraw2DListDimension = new Dimension(80, 50); // As defined in VSM
+        Dimension expectedGmfListDimension;
+        if (hasListGmfAutoSize) {
+            expectedGmfListDimension = DIM_AUTO_SIZED;
+        } else {
+            // The list has a "predefined" size in VSM, so the expected GMF bounds are the same than the Draw2D bounds.
+            expectedGmfListDimension = expectedDraw2DListDimension;
+        }
+        Rectangle firstCellExpectedDraw2DBounds = new Rectangle(new Point(0, 0), expectedDraw2DListDimension);
+        Rectangle firstCellExpectedGmfBounds = new Rectangle(new Point(0, 0), expectedGmfListDimension);
+        Rectangle secondCellExpectedDraw2DBounds = new Rectangle(new Point(80, 0), expectedDraw2DListDimension);
+        Rectangle secondCellExpectedGmfBounds = new Rectangle(new Point(80, 0), expectedGmfListDimension);
+        checkBounds("L1C1", firstCellExpectedGmfBounds, firstCellExpectedDraw2DBounds); //$NON-NLS-1$
+        checkBounds("L1C2", secondCellExpectedGmfBounds, secondCellExpectedDraw2DBounds); //$NON-NLS-1$
+        checkBounds("L2C1", firstCellExpectedGmfBounds, firstCellExpectedDraw2DBounds); //$NON-NLS-1$
+        checkBounds("L2C2", secondCellExpectedGmfBounds, secondCellExpectedDraw2DBounds); //$NON-NLS-1$
+        if (nbLinesToCheck == 3) {
+            checkBounds("L3C1", firstCellExpectedGmfBounds, firstCellExpectedDraw2DBounds); //$NON-NLS-1$
+            checkBounds("L3C2", secondCellExpectedGmfBounds, secondCellExpectedDraw2DBounds); //$NON-NLS-1$
+        }
+
+        // Check the containers size (container without label)
+        DDiagramEditPart dDiagramEditPart = (DDiagramEditPart) editor.rootEditPart().children().iterator().next().part();
+        Object titleBlockEditPart = dDiagramEditPart.getChildren().iterator().next();
+        if (titleBlockEditPart instanceof AbstractDiagramContainerEditPart) {
+            checkBounds((AbstractDiagramContainerEditPart) titleBlockEditPart, "Title block", new Rectangle(titleBlockExpectedLocation, DIM_AUTO_SIZED), //$NON-NLS-1$
+                    new Rectangle(titleBlockExpectedLocation,
+                            new Dimension(expectedDraw2DListDimension.width() * 2 + bordersWidth, expectedDraw2DListDimension.height() * nbLinesToCheck + bordersHeight)));
+            AbstractDNodeContainerCompartmentEditPart compartmentEditPart = (AbstractDNodeContainerCompartmentEditPart) ((AbstractDiagramContainerEditPart) titleBlockEditPart).getChildren().get(0);
+            Object firstLineEditPart = compartmentEditPart.getChildren().get(0);
+            // TODO : Currently, there is no explanation about the "+1" on the draw2d expected height, maybe to analyze
+            // later...
+            Dimension firstLineDimension = new Dimension(expectedDraw2DListDimension.width() * 2, expectedDraw2DListDimension.height() + 1);
+            if (firstLineEditPart instanceof AbstractDiagramContainerEditPart) {
+                checkBounds((AbstractDiagramContainerEditPart) firstLineEditPart, "First line of title block", new Rectangle(new Point(0, 0), DIM_AUTO_SIZED), //$NON-NLS-1$
+                        new Rectangle(new Point(0, 0), firstLineDimension));
+            } else {
+                fail("The first \"region\" should be an AbstractDiagramContainerEditPart."); //$NON-NLS-1$
+            }
+            Object secondLineEditPart = compartmentEditPart.getChildren().get(1);
+            // TODO : Currently, there is no explanation about the "+2" on the draw2d expected height, maybe to analyze
+            // later...
+            Dimension secondLineDimension = new Dimension(expectedDraw2DListDimension.width() * 2, expectedDraw2DListDimension.height() + 2);
+            if (secondLineEditPart instanceof AbstractDiagramContainerEditPart) {
+                Point expectedGmfLocation;
+                if (hasListGmfAutoSize && nbLinesToCheck == 3) {
+                    expectedGmfLocation = new Point(0, firstLineDimension.height());
+                } else {
+                    // TODO : GMF Bounds of last line to fix in some context... Analyze why the default height of
+                    // previous region is used instead of real one.
+                    expectedGmfLocation = new Point(0, 40);
+                }
+                checkBounds((AbstractDiagramContainerEditPart) secondLineEditPart, "Second line of title block", new Rectangle(expectedGmfLocation, DIM_AUTO_SIZED), //$NON-NLS-1$
+                        new Rectangle(new Point(0, firstLineDimension.height()), secondLineDimension));
+            } else {
+                fail("The second \"region\" should be an AbstractDiagramContainerEditPart."); //$NON-NLS-1$
+            }
+            if (nbLinesToCheck == 3) {
+                Object thirdLineEditPart = compartmentEditPart.getChildren().get(2);
+                // TODO : Currently, there is no explanation about the "+2" on the draw2d expected height, maybe to
+                // analyze later (maybe same explanation than second line)...
+                Dimension thirdLineDimension = new Dimension(expectedDraw2DListDimension.width() * 2, expectedDraw2DListDimension.height() + 2);
+                if (thirdLineEditPart instanceof AbstractDiagramContainerEditPart) {
+                    checkBounds((AbstractDiagramContainerEditPart) thirdLineEditPart, "Third line of title block", //$NON-NLS-1$
+                            new Rectangle(new Point(0, firstLineDimension.height() + secondLineDimension.height()), DIM_AUTO_SIZED),
+                            new Rectangle(new Point(0, firstLineDimension.height() + secondLineDimension.height()), thirdLineDimension));
+                } else {
+                    fail("The third \"region\" should be an AbstractDiagramContainerEditPart."); //$NON-NLS-1$
+                }
+            }
+        } else {
+            fail("The first edit part of the diagram must be an AbstractDiagramContainerEditPart."); //$NON-NLS-1$
+        }
+    }
+
+    /**
+     * Returns The first edit part of the diagram if it is of the expected type, fails otherwise.
+     * 
+     * @param editor
+     *            The current editor container the searched edit part.
+     * @param expectedEditPartType
+     *            The expected edit part type (method failed if the type is not the expected one.
+     * @return The first edit part of the diagram if it is of the expected type.
+     */
+    private EditPart getFirstEditPartOfDiagram(SWTBotSiriusDiagramEditor editor, Class<? extends EditPart> expectedEditPartType) {
+        DDiagramEditPart dDiagramEditPart = (DDiagramEditPart) editor.rootEditPart().children().iterator().next().part();
+        if (dDiagramEditPart.getChildren().isEmpty()) {
+            fail("The diagram should contain at least one container."); //$NON-NLS-1$
+        }
+        Object titleBlockEditPart = dDiagramEditPart.getChildren().iterator().next();
+        if (!expectedEditPartType.isInstance(titleBlockEditPart)) {
+            fail("The first edit part of the diagram must be of type " + expectedEditPartType.getCanonicalName()); //$NON-NLS-1$
+        }
+        return (EditPart) titleBlockEditPart;
+    }
+
+    /**
+     * With a container like Capella Title Block (the VStack container contains HStack containers that contain list
+     * containers with a fixed size):<BR/>
+     * Check size at creation<BR/>
+     * Check size after resize (height, then width).<BR/>
+     * Check size after undo resize.<BR/>
+     * Check size after Arrange All.<BR/>
+     * Check size after width resize and new line creation.<BR/>
+     * Check size after Arrange All.<BR/>
+     */
+    public void testWithACapellaLikeTitleBlock() {
+        int bordersWidth = 4;
+        int bordersHeight = 7;
+        int resizeDelta = 60;
+        // The list has a "predefined" size in VSM, so the expected GMF bounds are the same than the Draw2D bounds.
+        Dimension expectedListDimension = new Dimension(80, 50); // As defined in VSM
+
+        openRepresentation("Diag likeCapellaTitleBlock", "new Diag likeCapellaTitleBlock"); //$NON-NLS-1$ //$NON-NLS-2$
+        editor.maximize();
+
+        assertEquals("Session should not be dirty.", SessionStatus.SYNC, localSession.getOpenedSession().getStatus()); //$NON-NLS-1$
+
+        // Create a "title block"
+        createRegionContainerDiagram("Title block", CONTAINER_CREATION_LOCATION); //$NON-NLS-1$
+
+        // Check the lists size
+        checkDefaultTitleBlockInitialSizes();
+
+        // Resize container in height
+        AbstractDiagramContainerEditPart titleBlockEditPart = (AbstractDiagramContainerEditPart) getFirstEditPartOfDiagram(editor, AbstractDiagramContainerEditPart.class);
+        Rectangle realContainerBounds = checkBounds(titleBlockEditPart, "Title block", CONTAINER_BOUNDS_AUTO_SIZED, //$NON-NLS-1$
+                new Rectangle(CONTAINER_CREATION_LOCATION, new Dimension(expectedListDimension.width() * 2 + bordersWidth, expectedListDimension.height() * 2 + bordersHeight)));
+        ;
+        // Select the title block (the only children of the diagram)
+        List<SWTBotGefEditPart> swtBotEditParts = editor.getSWTBotGefViewer().mainEditPart().children();
+        editor.select(editor.getSWTBotGefViewer().mainEditPart().children());
+        ICondition editPartResizedCondition = new CheckEditPartResized(swtBotEditParts.get(0));
+        editor.drag(realContainerBounds.getBottom(), realContainerBounds.getBottom().getTranslated(0, resizeDelta));
+        bot.waitUntil(editPartResizedCondition);
+
+        // Height bounds must increase of 60 px because of resizing of 60 px.
+        checkBounds(titleBlockEditPart, "Title block", CONTAINER_BOUNDS_AUTO_SIZED, realContainerBounds.getResized(0, resizeDelta)); //$NON-NLS-1$
+        Rectangle secondCellExpectedBounds = new Rectangle(new Point(80, 0), expectedListDimension);
+        checkBounds("L2C2", secondCellExpectedBounds.getResized(0, resizeDelta), secondCellExpectedBounds.getResized(0, resizeDelta)); //$NON-NLS-1$
+        AbstractDNodeContainerCompartmentEditPart compartmentEditPart = (AbstractDNodeContainerCompartmentEditPart) titleBlockEditPart.getChildren().get(0);
+        Object secondLineEditPart = compartmentEditPart.getChildren().get(1);
+        if (secondLineEditPart instanceof AbstractDiagramContainerEditPart) {
+            checkBounds((AbstractDiagramContainerEditPart) secondLineEditPart, "Second line of title block", new Rectangle(new Point(0, expectedListDimension.height() + 1), DIM_AUTO_SIZED), //$NON-NLS-1$
+                    new Rectangle(new Point(0, expectedListDimension.height() + 1), new Dimension(expectedListDimension.width() * 2, expectedListDimension.height() + 2 + resizeDelta)));
+        } else {
+            fail("The second \"region\" should be an AbstractDiagramContainerEditPart."); //$NON-NLS-1$
+        }
+        // Undo
+        editPartResizedCondition = new CheckEditPartResized(swtBotEditParts.get(0));
+        undo("Set Location or Size"); //$NON-NLS-1$
+        bot.waitUntil(editPartResizedCondition);
+        // Check nominal sizes
+        checkDefaultTitleBlockInitialSizes();
+
+        realContainerBounds = checkBounds(titleBlockEditPart, "Title block", CONTAINER_BOUNDS_AUTO_SIZED, //$NON-NLS-1$
+                new Rectangle(CONTAINER_CREATION_LOCATION, new Dimension(expectedListDimension.width() * 2 + bordersWidth, expectedListDimension.height() * 2 + bordersHeight)));
+        // Resize container in width
+        editor.select(swtBotEditParts);
+        editPartResizedCondition = new CheckEditPartResized(swtBotEditParts.get(0));
+        editor.drag(realContainerBounds.getRight(), realContainerBounds.getRight().getTranslated(resizeDelta, 0));
+        bot.waitUntil(editPartResizedCondition);
+
+        // Width bounds must increase of 60 px because of resizing of 60 px.
+        checkBounds(titleBlockEditPart, "Title block", CONTAINER_BOUNDS_AUTO_SIZED, realContainerBounds.getResized(resizeDelta, 0)); //$NON-NLS-1$
+        checkBounds("L2C2", secondCellExpectedBounds.getResized(resizeDelta, 0), secondCellExpectedBounds.getResized(resizeDelta, 0)); //$NON-NLS-1$
+        if (secondLineEditPart instanceof AbstractDiagramContainerEditPart) {
+            checkBounds((AbstractDiagramContainerEditPart) secondLineEditPart, "Second line of title block", new Rectangle(new Point(0, expectedListDimension.height() + 1), DIM_AUTO_SIZED), //$NON-NLS-1$
+                    new Rectangle(new Point(0, expectedListDimension.height() + 1), new Dimension(expectedListDimension.width() * 2 + resizeDelta, expectedListDimension.height() + 2)));
+        } else {
+            fail("The second \"region\" should be an AbstractDiagramContainerEditPart."); //$NON-NLS-1$
+        }
+
+        // Undo
+        editPartResizedCondition = new CheckEditPartResized(swtBotEditParts.get(0));
+        undo("Set Location or Size"); //$NON-NLS-1$
+        bot.waitUntil(editPartResizedCondition);
+        // Check nominal sizes
+        checkDefaultTitleBlockInitialSizes();
+
+        // Launch arrange all
+        ICondition editPartMovedCondition = new CheckEditPartMoved(swtBotEditParts.get(0));
+        editor.click(10, 10);
+        editor.clickContextMenu("Arrange All"); //$NON-NLS-1$
+        bot.waitUntil(editPartMovedCondition);
+
+        // Check nominal sizes
+        checkDefaultTitleBlockInitialSizes(true, new Point(0, 0), 2);
+        // Undo
+        editPartMovedCondition = new CheckEditPartMoved(swtBotEditParts.get(0));
+        undo("Arrange All"); //$NON-NLS-1$
+        bot.waitUntil(editPartMovedCondition);
+        // Check nominal sizes
+        checkDefaultTitleBlockInitialSizes();
+
+        // Insert new line after width resize
+        editor.select(swtBotEditParts);
+        editPartResizedCondition = new CheckEditPartResized(swtBotEditParts.get(0));
+        editor.drag(realContainerBounds.getRight(), realContainerBounds.getRight().getTranslated(resizeDelta, 0));
+        bot.waitUntil(editPartResizedCondition);
+
+        editor.activateTool("New line"); //$NON-NLS-1$
+        editor.click(realContainerBounds.getResized(resizeDelta, 0).getBottomRight().getTranslated(-5, -5));
+        // Check bounds of new line and its new cells.
+        Rectangle firstListOfFirstLineBounds = ((AbstractDiagramElementContainerEditPart) editor.getEditPart("L1C1", AbstractDiagramElementContainerEditPart.class).part()).getFigure().getBounds(); //$NON-NLS-1$
+        Rectangle secondListOfFirstLineBounds = ((AbstractDiagramElementContainerEditPart) editor.getEditPart("L1C2", AbstractDiagramElementContainerEditPart.class).part()).getFigure().getBounds(); //$NON-NLS-1$ .getFigure().getBounds();
+        AbstractDiagramElementContainerEditPart firstListOfNewLineEditPart = (AbstractDiagramElementContainerEditPart) editor.getEditPart("L3C1", AbstractDiagramElementContainerEditPart.class).part(); //$NON-NLS-1$
+        Rectangle firstListOfNewLineBounds = firstListOfNewLineEditPart.getFigure().getBounds();
+        Rectangle secondListOfNewLineBounds = ((AbstractDiagramElementContainerEditPart) editor.getEditPart("L3C2", AbstractDiagramElementContainerEditPart.class).part()).getFigure().getBounds(); //$NON-NLS-1$
+        assertEquals("The width of first and second lists of new line must be the same than existing lines.", firstListOfFirstLineBounds.width() + secondListOfFirstLineBounds.width(), //$NON-NLS-1$
+                firstListOfNewLineBounds.width() + secondListOfNewLineBounds.width());
+        AbstractDiagramElementContainerEditPart newLineEditPart = (AbstractDiagramElementContainerEditPart) firstListOfNewLineEditPart.getParent().getParent();
+        Rectangle newLineBounds = newLineEditPart.getFigure().getBounds().getCopy();
+        assertEquals("The right side of the new second list must be aligned to the right side of its new line.", newLineBounds.right(), secondListOfNewLineBounds.right(), 2); //$NON-NLS-1$
+
+        // Launch another arrange all to see if the new lines is also correctly arrange
+        editPartMovedCondition = new CheckEditPartMoved(swtBotEditParts.get(0));
+        editor.click(10, 10);
+        editor.clickContextMenu("Arrange All"); //$NON-NLS-1$
+        bot.waitUntil(editPartMovedCondition);
+
+        // Check nominal sizes
+        checkDefaultTitleBlockInitialSizes(true, new Point(0, 0), 3);
+    }
+
+    /**
+     * Check size at diagram creation and opening.<BR/>
+     * Check size after save, close and opening.<BR/>
+     * Check size after resize (height, then width).<BR/>
+     * Check size after undo resize.<BR/>
+     * Check size after Arrange All.
+     */
+    public void testNewDiagramWithTitleBlockWithLabel() {
+        int resizeDelta = 60;
+        String representationDescriptionName = "Diag titleBlockWithLabel"; //$NON-NLS-1$
+        String representationInstanceName = "new " + representationDescriptionName; //$NON-NLS-1$
+        SWTBotTreeItem rootSemantic = localSession.getLocalSessionBrowser().perSemantic();
+        SWTBotUtils.clickContextMenu(rootSemantic.expandNode("root").expandNode("diagWithLongName").select(), representationInstanceName); //$NON-NLS-1$ //$NON-NLS-2$
+        bot.shell(MessageFormat.format(Messages.createRepresentationInputDialog_Title, representationDescriptionName));
+        SWTBotButton ok = bot.button("OK"); //$NON-NLS-1$
+        bot.waitUntil(new ItemEnabledCondition(ok));
+        ok.click();
+
+        UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint("Compartments").selectRepresentation(representationDescriptionName) //$NON-NLS-1$
+                .selectRepresentationInstance(representationInstanceName, UIDiagramRepresentation.class).open();
+
+        editor = diagram.getEditor();
+
+        Rectangle firstListOfFirstLineBounds = ((AbstractDiagramElementContainerEditPart) editor.getEditPart("C1", AbstractDiagramElementContainerEditPart.class).part()).getFigure().getBounds(); //$NON-NLS-1$
+        Rectangle secondListOfFirstLineBounds = ((AbstractDiagramElementContainerEditPart) editor.getEditPart("C2", AbstractDiagramElementContainerEditPart.class).part()).getFigure().getBounds(); //$NON-NLS-1$ .getFigure().getBounds();
+        Rectangle firstListOfSecondLineBounds = ((AbstractDiagramElementContainerEditPart) editor.getEditPart("C3", AbstractDiagramElementContainerEditPart.class).part()).getFigure().getBounds(); //$NON-NLS-1$
+        Rectangle secondListOfSecondLineBounds = ((AbstractDiagramElementContainerEditPart) editor.getEditPart("C4", AbstractDiagramElementContainerEditPart.class).part()).getFigure().getBounds(); //$NON-NLS-1$
+        assertEquals("The width of first and second lists of each lines must be the same.", firstListOfSecondLineBounds.width() + secondListOfSecondLineBounds.width(), //$NON-NLS-1$
+                firstListOfFirstLineBounds.width() + secondListOfFirstLineBounds.width());
+        AbstractDiagramElementContainerEditPart secondLineEditPart = (AbstractDiagramElementContainerEditPart) editor
+                .getEditPart("packageWithALongLongName", AbstractDiagramElementContainerEditPart.class) //$NON-NLS-1$
+                .part();
+        Rectangle secondLineBounds = secondLineEditPart.getFigure().getBounds().getCopy();
+        assertEquals("The right side of the second list must be aligned to the right side of its line.", secondLineBounds.right(), secondListOfSecondLineBounds.right(), 2); //$NON-NLS-1$
+
+        localSession.save();
+        SWTBotUtils.waitAllUiEvents();
+        editor.close();
+        SWTBotUtils.waitAllUiEvents();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), representationDescriptionName, representationInstanceName, DDiagram.class, true, true);
+
+        firstListOfFirstLineBounds = ((AbstractDiagramElementContainerEditPart) editor.getEditPart("C1", AbstractDiagramElementContainerEditPart.class).part()).getFigure().getBounds(); //$NON-NLS-1$ .getFigure().getBounds();
+        AbstractDiagramElementContainerEditPart secondListOfFirstLineEditPart = (AbstractDiagramElementContainerEditPart) editor.getEditPart("C2", AbstractDiagramElementContainerEditPart.class) //$NON-NLS-1$
+                .part();
+        secondListOfFirstLineBounds = secondListOfFirstLineEditPart.getFigure().getBounds().getCopy();
+        firstListOfSecondLineBounds = ((AbstractDiagramElementContainerEditPart) editor.getEditPart("C3", AbstractDiagramElementContainerEditPart.class).part()).getFigure().getBounds(); //$NON-NLS-1$
+        AbstractDiagramElementContainerEditPart secondListOfSecondLineEditPart = (AbstractDiagramElementContainerEditPart) editor.getEditPart("C4", AbstractDiagramElementContainerEditPart.class) //$NON-NLS-1$
+                .part();
+        secondListOfSecondLineBounds = secondListOfSecondLineEditPart.getFigure().getBounds().getCopy();
+        assertEquals("The width of first and second lists of each lines must be the same.", firstListOfSecondLineBounds.width() + secondListOfSecondLineBounds.width(), //$NON-NLS-1$
+                firstListOfFirstLineBounds.width() + secondListOfFirstLineBounds.width());
+        secondLineEditPart = (AbstractDiagramElementContainerEditPart) editor.getEditPart("packageWithALongLongName", AbstractDiagramElementContainerEditPart.class) //$NON-NLS-1$
+                .part();
+        secondLineBounds = secondLineEditPart.getFigure().getBounds().getCopy();
+        assertEquals("The right side of the second list must be aligned to the right side of its line.", secondLineBounds.right(), secondListOfSecondLineBounds.right(), 2); //$NON-NLS-1$
+
+        // Resize height
+        SWTBotGefEditPart regionsContainer = editor.getEditPart("diagWithLongName", AbstractDiagramContainerEditPart.class); //$NON-NLS-1$
+        editor.select(regionsContainer);
+        AbstractDiagramContainerEditPart regionsContainerEditPart = (AbstractDiagramContainerEditPart) regionsContainer.part();
+        Rectangle realContainerBounds = regionsContainerEditPart.getFigure().getBounds().getCopy();
+        ICondition editPartResizedCondition = new CheckEditPartResized(regionsContainer);
+        editor.drag(realContainerBounds.getBottom(), realContainerBounds.getBottom().getTranslated(0, resizeDelta));
+        bot.waitUntil(editPartResizedCondition);
+
+        // Check container new size and last regions new size
+        assertEquals("Wrong height resize for regions container.", realContainerBounds.height() + resizeDelta, regionsContainerEditPart.getFigure().getBounds().height()); //$NON-NLS-1$
+        assertEquals("Wrong height resize for second line.", secondLineBounds.height() + resizeDelta, secondLineEditPart.getFigure().getBounds().height()); //$NON-NLS-1$
+        assertEquals("Wrong height resize for second list of second line.", secondListOfSecondLineBounds.height() + resizeDelta, secondListOfSecondLineEditPart.getFigure().getBounds().height()); //$NON-NLS-1$
+        assertEquals("Wrong height resize for second list of first line. It must be unchanged.", secondListOfFirstLineBounds.height(), secondListOfFirstLineEditPart.getFigure().getBounds().height()); //$NON-NLS-1$
+
+        // Undo
+        editPartResizedCondition = new CheckEditPartResized(regionsContainer);
+        undo("Set Location or Size"); //$NON-NLS-1$
+        bot.waitUntil(editPartResizedCondition);
+
+        // Resize width
+        editor.select(regionsContainer);
+        editPartResizedCondition = new CheckEditPartResized(regionsContainer);
+        editor.drag(realContainerBounds.getRight(), realContainerBounds.getRight().getTranslated(resizeDelta, 0));
+        bot.waitUntil(editPartResizedCondition);
+
+        // Check container new size and last regions new size
+        assertEquals("Wrong width resize for regions container.", realContainerBounds.width() + resizeDelta, //$NON-NLS-1$
+                ((AbstractDiagramContainerEditPart) regionsContainer.part()).getFigure().getBounds().width());
+        assertEquals("Wrong width resize for second line.", secondLineBounds.width() + resizeDelta, secondLineEditPart.getFigure().getBounds().width()); //$NON-NLS-1$
+        assertEquals("Wrong width resize for second list of second line.", secondListOfSecondLineBounds.width() + resizeDelta, secondListOfSecondLineEditPart.getFigure().getBounds().width()); //$NON-NLS-1$
+        assertEquals("Wrong width resize for second list of first line.", secondListOfFirstLineBounds.width() + resizeDelta, secondListOfFirstLineEditPart.getFigure().getBounds().width()); //$NON-NLS-1$
+
+        editPartResizedCondition = new CheckEditPartResized(regionsContainer);
+        SWTBotUtils.pressKeyboardKey(editor.getCanvas().widget, SWT.ESC);
+        editor.clickContextMenu("Arrange All"); //$NON-NLS-1$
+        bot.waitUntil(editPartResizedCondition);
+
+        // Check that sizes are the same that after opening
+        assertEquals("Wrong size for regions container after \"Arrange all\".", realContainerBounds, ((AbstractDiagramContainerEditPart) regionsContainer.part()).getFigure().getBounds()); //$NON-NLS-1$
+        assertEquals("Wrong size for second line after \"Arrange all\".", secondLineBounds, secondLineEditPart.getFigure().getBounds()); //$NON-NLS-1$
+        assertEquals("Wrong size for second list of second line after \"Arrange all\".", secondListOfSecondLineBounds, secondListOfSecondLineEditPart.getFigure().getBounds()); //$NON-NLS-1$
+        assertEquals("Wrong size for second list of first line after \"Arrange all\".", secondListOfFirstLineBounds, secondListOfFirstLineEditPart.getFigure().getBounds()); //$NON-NLS-1$
+
+        // TODO: Change font size of main title (to make width larger): KO currently
+    }
+
+    /**
+     * Check size at diagram creation and opening.<BR/>
+     * Check size after save, close and opening.<BR/>
+     * Check size after resize (height, then width).<BR/>
+     * Check size after undo resize.<BR/>
+     * Check size after Arrange All.
+     */
+    public void testNewDiagramWithHStackContainerAndList() {
+        int resizeDelta = 60;
+        String representationDescriptionName = "Diag titleBlockWithLabel"; //$NON-NLS-1$
+        String representationInstanceName = "new " + representationDescriptionName; //$NON-NLS-1$
+        SWTBotTreeItem rootSemantic = localSession.getLocalSessionBrowser().perSemantic();
+        SWTBotUtils.clickContextMenu(rootSemantic.expandNode("root").expandNode("diagWithLongName").select(), representationInstanceName); //$NON-NLS-1$ //$NON-NLS-2$
+        bot.shell(MessageFormat.format(Messages.createRepresentationInputDialog_Title, representationDescriptionName));
+        SWTBotButton ok = bot.button("OK"); //$NON-NLS-1$
+        bot.waitUntil(new ItemEnabledCondition(ok));
+        ok.click();
+
+        UIDiagramRepresentation diagram = localSession.getLocalSessionBrowser().perCategory().selectViewpoint("Compartments").selectRepresentation(representationDescriptionName) //$NON-NLS-1$
+                .selectRepresentationInstance(representationInstanceName, UIDiagramRepresentation.class).open();
+
+        editor = diagram.getEditor();
+
+        Rectangle firstListOfFirstLineBounds = ((AbstractDiagramElementContainerEditPart) editor.getEditPart("C1", AbstractDiagramElementContainerEditPart.class).part()).getFigure().getBounds(); //$NON-NLS-1$
+        Rectangle secondListOfFirstLineBounds = ((AbstractDiagramElementContainerEditPart) editor.getEditPart("C2", AbstractDiagramElementContainerEditPart.class).part()).getFigure().getBounds(); //$NON-NLS-1$ .getFigure().getBounds();
+        Rectangle firstListOfSecondLineBounds = ((AbstractDiagramElementContainerEditPart) editor.getEditPart("C3", AbstractDiagramElementContainerEditPart.class).part()).getFigure().getBounds(); //$NON-NLS-1$
+        Rectangle secondListOfSecondLineBounds = ((AbstractDiagramElementContainerEditPart) editor.getEditPart("C4", AbstractDiagramElementContainerEditPart.class).part()).getFigure().getBounds(); //$NON-NLS-1$
+        assertEquals("The width of first and second lists of each lines must be the same.", firstListOfSecondLineBounds.width() + secondListOfSecondLineBounds.width(), //$NON-NLS-1$
+                firstListOfFirstLineBounds.width() + secondListOfFirstLineBounds.width());
+        AbstractDiagramElementContainerEditPart secondLineEditPart = (AbstractDiagramElementContainerEditPart) editor
+                .getEditPart("packageWithALongLongName", AbstractDiagramElementContainerEditPart.class) //$NON-NLS-1$
+                .part();
+        Rectangle secondLineBounds = secondLineEditPart.getFigure().getBounds().getCopy();
+        assertEquals("The right side of the second list must be aligned to the right side of its line.", secondLineBounds.right(), secondListOfSecondLineBounds.right(), 2); //$NON-NLS-1$
+
+        localSession.save();
+        SWTBotUtils.waitAllUiEvents();
+        editor.close();
+        SWTBotUtils.waitAllUiEvents();
+        editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), representationDescriptionName, representationInstanceName, DDiagram.class, true, true);
+
+        firstListOfFirstLineBounds = ((AbstractDiagramElementContainerEditPart) editor.getEditPart("C1", AbstractDiagramElementContainerEditPart.class).part()).getFigure().getBounds(); //$NON-NLS-1$ .getFigure().getBounds();
+        AbstractDiagramElementContainerEditPart secondListOfFirstLineEditPart = (AbstractDiagramElementContainerEditPart) editor.getEditPart("C2", AbstractDiagramElementContainerEditPart.class) //$NON-NLS-1$
+                .part();
+        secondListOfFirstLineBounds = secondListOfFirstLineEditPart.getFigure().getBounds().getCopy();
+        firstListOfSecondLineBounds = ((AbstractDiagramElementContainerEditPart) editor.getEditPart("C3", AbstractDiagramElementContainerEditPart.class).part()).getFigure().getBounds(); //$NON-NLS-1$
+        AbstractDiagramElementContainerEditPart secondListOfSecondLineEditPart = (AbstractDiagramElementContainerEditPart) editor.getEditPart("C4", AbstractDiagramElementContainerEditPart.class) //$NON-NLS-1$
+                .part();
+        secondListOfSecondLineBounds = secondListOfSecondLineEditPart.getFigure().getBounds().getCopy();
+        assertEquals("The width of first and second lists of each lines must be the same.", firstListOfSecondLineBounds.width() + secondListOfSecondLineBounds.width(), //$NON-NLS-1$
+                firstListOfFirstLineBounds.width() + secondListOfFirstLineBounds.width());
+        secondLineEditPart = (AbstractDiagramElementContainerEditPart) editor.getEditPart("packageWithALongLongName", AbstractDiagramElementContainerEditPart.class) //$NON-NLS-1$
+                .part();
+        secondLineBounds = secondLineEditPart.getFigure().getBounds().getCopy();
+        assertEquals("The right side of the second list must be aligned to the right side of its line.", secondLineBounds.right(), secondListOfSecondLineBounds.right(), 2); //$NON-NLS-1$
+
+        // Resize height
+        SWTBotGefEditPart regionsContainer = editor.getEditPart("diagWithLongName", AbstractDiagramContainerEditPart.class); //$NON-NLS-1$
+        editor.select(regionsContainer);
+        AbstractDiagramContainerEditPart regionsContainerEditPart = (AbstractDiagramContainerEditPart) regionsContainer.part();
+        Rectangle realContainerBounds = regionsContainerEditPart.getFigure().getBounds().getCopy();
+        ICondition editPartResizedCondition = new CheckEditPartResized(regionsContainer);
+        editor.drag(realContainerBounds.getBottom(), realContainerBounds.getBottom().getTranslated(0, resizeDelta));
+        bot.waitUntil(editPartResizedCondition);
+
+        // Check container new size and last regions new size
+        assertEquals("Wrong height resize for regions container.", realContainerBounds.height() + resizeDelta, regionsContainerEditPart.getFigure().getBounds().height()); //$NON-NLS-1$
+        assertEquals("Wrong height resize for second line.", secondLineBounds.height() + resizeDelta, secondLineEditPart.getFigure().getBounds().height()); //$NON-NLS-1$
+        assertEquals("Wrong height resize for second list of second line.", secondListOfSecondLineBounds.height() + resizeDelta, secondListOfSecondLineEditPart.getFigure().getBounds().height()); //$NON-NLS-1$
+        assertEquals("Wrong height resize for second list of first line. It must be unchanged.", secondListOfFirstLineBounds.height(), secondListOfFirstLineEditPart.getFigure().getBounds().height()); //$NON-NLS-1$
+
+        // Undo
+        editPartResizedCondition = new CheckEditPartResized(regionsContainer);
+        undo("Set Location or Size"); //$NON-NLS-1$
+        bot.waitUntil(editPartResizedCondition);
+
+        // Resize width
+        editor.select(regionsContainer);
+        editPartResizedCondition = new CheckEditPartResized(regionsContainer);
+        editor.drag(realContainerBounds.getRight(), realContainerBounds.getRight().getTranslated(resizeDelta, 0));
+        bot.waitUntil(editPartResizedCondition);
+
+        // Check container new size and last regions new size
+        assertEquals("Wrong width resize for regions container.", realContainerBounds.width() + resizeDelta, //$NON-NLS-1$
+                ((AbstractDiagramContainerEditPart) regionsContainer.part()).getFigure().getBounds().width());
+        assertEquals("Wrong width resize for second line.", secondLineBounds.width() + resizeDelta, secondLineEditPart.getFigure().getBounds().width()); //$NON-NLS-1$
+        assertEquals("Wrong width resize for second list of second line.", secondListOfSecondLineBounds.width() + resizeDelta, secondListOfSecondLineEditPart.getFigure().getBounds().width()); //$NON-NLS-1$
+        assertEquals("Wrong width resize for second list of first line.", secondListOfFirstLineBounds.width() + resizeDelta, secondListOfFirstLineEditPart.getFigure().getBounds().width()); //$NON-NLS-1$
+
+        editPartResizedCondition = new CheckEditPartResized(regionsContainer);
+        SWTBotUtils.pressKeyboardKey(editor.getCanvas().widget, SWT.ESC);
+        editor.clickContextMenu("Arrange All"); //$NON-NLS-1$
+        bot.waitUntil(editPartResizedCondition);
+
+        // Check that sizes are the same that after opening
+        assertEquals("Wrong size for regions container after \"Arrange all\".", realContainerBounds, ((AbstractDiagramContainerEditPart) regionsContainer.part()).getFigure().getBounds()); //$NON-NLS-1$
+        assertEquals("Wrong size for second line after \"Arrange all\".", secondLineBounds, secondLineEditPart.getFigure().getBounds()); //$NON-NLS-1$
+        assertEquals("Wrong size for second list of second line after \"Arrange all\".", secondListOfSecondLineBounds, secondListOfSecondLineEditPart.getFigure().getBounds()); //$NON-NLS-1$
+        assertEquals("Wrong size for second list of first line after \"Arrange all\".", secondListOfFirstLineBounds, secondListOfFirstLineEditPart.getFigure().getBounds()); //$NON-NLS-1$
+
+        // TODO: Change font size of main title (to make width larger): KO currently
     }
 
     /**

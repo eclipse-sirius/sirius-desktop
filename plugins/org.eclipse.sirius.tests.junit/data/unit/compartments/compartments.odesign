@@ -1390,6 +1390,215 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diag likeCapellaTitleBlock" domainClass="ecore::EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <containerMappings name="GreenVStackContainer" semanticCandidatesExpression="feature:eSubpackages" domainClass="ecore::EPackage" childrenPresentation="VerticalStack">
+          <subContainerMappings name="LightGreenHStackContainer" semanticCandidatesExpression="feature:eSubpackages" domainClass="ecore::EPackage" childrenPresentation="HorizontalStack">
+            <subContainerMappings name="DarkGreenList" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore::EClass" childrenPresentation="List">
+              <subNodeMappings name="LightBlueNode" semanticCandidatesExpression="feature:eAttributes" domainClass="ecore::EAttribute">
+                <style xsi:type="style:BundledImageDescription" labelSize="7" showIcon="false" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" widthComputationExpression="8" heightComputationExpression="5">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+                <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.2"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="1" showIcon="false" labelExpression="" hideLabelByDefault="true">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="9" showIcon="false" labelExpression="" hideLabelByDefault="true">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Title block" containerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20likeCapellaTitleBlock']/@defaultLayer/@containerMappings[name='GreenVStackContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EPackage" referenceName="eSubpackages" variableName="titleBlock">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="TitleBlock"/>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EPackage" referenceName="eSubpackages" variableName="titleBlock">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="LineOne"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers" variableName="classC1">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="L1C1"/>
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EAttribute" referenceName="eAttributes">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="a value"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers" variableName="Syncrhonized">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="L1C2"/>
+                      <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EAttribute" referenceName="eAttributes">
+                        <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="another value"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EPackage" referenceName="eSubpackages" variableName="titleBlock">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="LineTwo"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers" variableName="classC1">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="L2C1"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers" variableName="classC2">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="L2C2"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="New line" containerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20likeCapellaTitleBlock']/@defaultLayer/@containerMappings[name='GreenVStackContainer']/@subContainerMappings[name='LightGreenHStackContainer']" extraMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20likeCapellaTitleBlock']/@defaultLayer/@containerMappings[name='GreenVStackContainer']/@subContainerMappings[name='LightGreenHStackContainer']/@subContainerMappings[name='DarkGreenList']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="aql:container.eContainer().eContainer()">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EPackage" referenceName="eSubpackages" variableName="packageInstance">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="LineThree"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:packageInstance">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers" variableName="classInstanceA">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="L3C1"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers" variableName="classInstanceB">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="L3C2"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="Diag titleBlockWithLabel" domainClass="ecore::EPackage" enablePopupBars="true">
+      <defaultLayer name="Default">
+        <containerMappings name="GreenVStackContainer" semanticCandidatesExpression="aql:self" domainClass="ecore::EPackage" childrenPresentation="VerticalStack">
+          <subContainerMappings name="LightGreenHStackContainer" semanticCandidatesExpression="feature:eSubpackages" domainClass="ecore::EPackage" childrenPresentation="HorizontalStack">
+            <subContainerMappings name="DarkGreenList" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore::EClass" childrenPresentation="List">
+              <subNodeMappings name="LightBlueNode" semanticCandidatesExpression="feature:eAttributes" domainClass="ecore::EAttribute">
+                <style xsi:type="style:BundledImageDescription" labelSize="12" labelPosition="node" resizeKind="NSEW">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+                </style>
+              </subNodeMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+                <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="12">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+          </style>
+        </containerMappings>
+        <toolSections name="tools">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="New line" containerMappings="//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20titleBlockWithLabel']/@defaultLayer/@containerMappings[name='GreenVStackContainer']/@subContainerMappings[name='LightGreenHStackContainer']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EPackage" referenceName="eSubpackages" variableName="packageInstance">
+                  <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="newSubPackage"/>
+                </subModelOperations>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:packageInstance">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers" variableName="classInstanceA">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="ClassA"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EClass" referenceName="eClassifiers" variableName="classInstanceB">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="ClassB"/>
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EAttribute" referenceName="eAttributes" variableName="attributeInstanceB">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="line1"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:classInstanceA">
+                    <subModelOperations xsi:type="tool_1:CreateInstance" typeName="ecore::EAttribute" referenceName="eAttributes" variableName="attributeInstanceA">
+                      <subModelOperations xsi:type="tool_1:SetValue" featureName="name" valueExpression="line1"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DiagHStackWithLabelWithAutoSizedList" domainClass="ecore::EPackage" enablePopupBars="true">
+      <metamodel href="http://www.eclipse.org/emf/2002/Ecore#/"/>
+      <defaultLayer name="Default">
+        <containerMappings name="LightGreenHStackContainer1" semanticCandidatesExpression="var:self" domainClass="ecore::EPackage" childrenPresentation="HorizontalStack">
+          <subContainerMappings name="DarkGreenListWithSize" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore::EClass" childrenPresentation="List">
+            <subNodeMappings name="LightBlueNode" semanticCandidatesExpression="feature:eAttributes" domainClass="ecore::EAttribute">
+              <style xsi:type="style:BundledImageDescription" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.name + '1'">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+              <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.2"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.name + '1'">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="LightGreenHStackContainer2" semanticCandidatesExpression="var:self" domainClass="ecore::EPackage" childrenPresentation="HorizontalStack">
+          <subContainerMappings name="DarkGreenListWithSize" semanticCandidatesExpression="feature:eClassifiers" domainClass="ecore::EClass" childrenPresentation="List">
+            <subNodeMappings name="LightBlueNode" semanticCandidatesExpression="feature:eAttributes" domainClass="ecore::EAttribute">
+              <style xsi:type="style:BundledImageDescription" labelAlignment="LEFT" labelPosition="node" resizeKind="NSEW">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <color xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.name + '2'">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
+              <labelBorderStyle href="environment:/viewpoint#//@labelBorderStyles/@labelBorderStyleDescriptions.2"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql:self.name + '2'">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
   </ownedViewpoints>
   <userColorsPalettes name="Colors">
     <entries xsi:type="description:InterpolatedColor" name="regionInterpolatedColor" colorValueComputationExpression="aql:self.oclAsType(ecore::ENamedElement).name.substring(self.oclAsType(ecore::ENamedElement).name.size())">

@@ -48,6 +48,10 @@
         <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20withSizedRegions']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases"/>
       </ownedRepresentationDescriptors>
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_LXzE4GGxEeyOXbM1KHlU_Q" name="new Diag likeCapellaTitleBlock" repPath="#_LXwooGGxEeyOXbM1KHlU_Q" changeId="0d74f421-ff65-4278-8723-63b3aefa4654">
+        <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20likeCapellaTitleBlock']"/>
+        <target xmi:type="ecore:EPackage" href="My.ecore#//diagEmpty"/>
+      </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
   <diagram:DSemanticDiagram uid="_xGk0UEgKEeWO8ekbzmZQXg">
@@ -866,7 +870,7 @@
           <actualMapping xmi:type="description_1:NodeMapping" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack']/@defaultLayer/@containerMappings[name='HStack']/@subContainerMappings[name='FreeFormRegions']/@subNodeMappings[name='nodes']"/>
         </ownedDiagramElements>
       </ownedDiagramElements>
-      </ownedDiagramElements>
+    </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_Rh24wEvNEeWf576mnYm4XQ" name="az" childrenPresentation="HorizontalStack">
       <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az"/>
       <semanticElements xmi:type="ecore:EPackage" href="My.ecore#//nominalCases/az"/>
@@ -3610,5 +3614,19 @@
     <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_xPkKAFzJEeyFX-uz7MO5sQ"/>
     <activatedLayers xmi:type="description_1:Layer" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20with%20HStack%20withSizedRegions']/@defaultLayer"/>
     <target xmi:type="ecore:EPackage" href="My.ecore#//nominalCases"/>
+  </diagram:DSemanticDiagram>
+  <diagram:DSemanticDiagram uid="_LXwooGGxEeyOXbM1KHlU_Q">
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_LX5LgGGxEeyOXbM1KHlU_Q" source="GMF_DIAGRAMS">
+      <data xmi:type="notation:Diagram" xmi:id="_LX5LgWGxEeyOXbM1KHlU_Q" type="Sirius" element="_LXwooGGxEeyOXbM1KHlU_Q" measurementUnit="Pixel">
+        <styles xmi:type="notation:DiagramStyle" xmi:id="_LX5LgmGxEeyOXbM1KHlU_Q"/>
+      </data>
+    </ownedAnnotationEntries>
+    <ownedAnnotationEntries xmi:type="description:AnnotationEntry" uid="_LX5ykGGxEeyOXbM1KHlU_Q" source="DANNOTATION_CUSTOMIZATION_KEY">
+      <data xmi:type="diagram:ComputedStyleDescriptionRegistry" uid="_LX5ykWGxEeyOXbM1KHlU_Q"/>
+    </ownedAnnotationEntries>
+    <description xmi:type="description_1:DiagramDescription" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20likeCapellaTitleBlock']"/>
+    <filterVariableHistory xmi:type="diagram:FilterVariableHistory" uid="_LXxPsGGxEeyOXbM1KHlU_Q"/>
+    <activatedLayers xmi:type="description_1:Layer" href="compartments.odesign#//@ownedViewpoints[name='Compartments']/@ownedRepresentations[name='Diag%20likeCapellaTitleBlock']/@defaultLayer"/>
+    <target xmi:type="ecore:EPackage" href="My.ecore#//diagEmpty"/>
   </diagram:DSemanticDiagram>
 </xmi:XMI>

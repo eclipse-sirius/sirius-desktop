@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2020 Obeo.
+ * Copyright (c) 2015, 2022 Obeo.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -131,6 +131,24 @@ public abstract class AbstractCompartmentTest extends AbstractSiriusSwtBotGefTes
     /**
      * Check the GMF and Draw2d bounds (or size) of the edit part with given <code>label</code>.
      * 
+     * @param editPart
+     *            Edit part to check
+     * @param label
+     *            Label to display in error message.
+     * @param expectedGmfBounds
+     *            The expected GMF bounds
+     * @param expectedFigureBounds
+     *            The expected draw2d bounds, if the width or height is equals to -1, we ignore it.
+     * 
+     * @return A copy of the current Draw2d bounds
+     */
+    protected Rectangle checkBounds(AbstractDiagramElementContainerEditPart editPart, String label, Rectangle expectedGmfBounds, Rectangle expectedFigureBounds) {
+        return checkBounds(editPart, label, expectedGmfBounds, expectedFigureBounds, false, 0, 0);
+    }
+
+    /**
+     * Check the GMF and Draw2d bounds (or size) of the edit part with given <code>label</code>.
+     * 
      * @param label
      *            The label of the edit part to check
      * @param expectedGmfBounds
@@ -176,57 +194,86 @@ public abstract class AbstractCompartmentTest extends AbstractSiriusSwtBotGefTes
         SWTBotGefEditPart swtBotEditPart = editor.getEditPart(label, AbstractDiagramElementContainerEditPart.class);
         AbstractDiagramElementContainerEditPart editPart = (AbstractDiagramElementContainerEditPart) swtBotEditPart.part();
 
+        return checkBounds(editPart, label, expectedGmfBounds, expectedFigureBounds, onlyCheckSize, widthDelta, heightDelta);
+    }
+
+    /**
+     * Check that the bounds (GMF and Draw2D) are as expected.
+     *
+     * @param editPart
+     *            Edit part to check
+     * @param label
+     *            Label to display in error message.
+     * @param expectedGmfBounds
+     *            The GMF expected bounds
+     * @param expectedFigureBounds
+     *            The draw2d expected bounds. If the x, y , width or height in this bounds is equal to -1, we don't
+     *            check it. This is useful in case of size that depends on Font (with different result according to OS).
+     * @param onlyCheckSize
+     *            true if only the size must be check (and not the location), false otherwise. * @param widthDelta The
+     *            width delta to consider the width as equal (because of font size that can be slightly different on
+     *            each OS).
+     * @param widthDelta
+     *            The width delta to consider the width as equal (because of font size that can be slightly different on
+     *            each OS).
+     * @param heightDelta
+     *            The height delta to consider the height as equal (because of font size that can be slightly different
+     *            on each OS).
+     * @return A copy of the current DrawD2 bounds
+     */
+    protected Rectangle checkBounds(AbstractDiagramElementContainerEditPart editPart, String label, Rectangle expectedGmfBounds, Rectangle expectedFigureBounds, boolean onlyCheckSize, int widthDelta,
+            int heightDelta) {
         IFigure mainFigure = editPart.getMainFigure();
 
         if (onlyCheckSize) {
             if (widthDelta == 0 && heightDelta == 0) {
-                assertEquals("Wrong GMF size for " + label, expectedGmfBounds.getSize(), getBounds((Node) editPart.getNotationView()).getSize());
+                assertEquals("Wrong GMF size for " + label, expectedGmfBounds.getSize(), getBounds((Node) editPart.getNotationView()).getSize()); //$NON-NLS-1$
             } else {
                 Dimension gmfSize = getBounds((Node) editPart.getNotationView()).getSize();
-                assertEquals("Wrong GMF width for " + label, expectedGmfBounds.width(), gmfSize.width(), widthDelta);
-                assertEquals("Wrong GMF height for " + label, expectedGmfBounds.height(), gmfSize.height(), heightDelta);
+                assertEquals("Wrong GMF width for " + label, expectedGmfBounds.width(), gmfSize.width(), widthDelta); //$NON-NLS-1$
+                assertEquals("Wrong GMF height for " + label, expectedGmfBounds.height(), gmfSize.height(), heightDelta); //$NON-NLS-1$
             }
             if (expectedFigureBounds.width() != -1 && expectedFigureBounds.height() != -1) {
                 if (widthDelta == 0 && heightDelta == 0) {
-                    assertEquals("Wrong Draw2D size for " + label, expectedFigureBounds.getSize(), mainFigure.getBounds().getSize());
+                    assertEquals("Wrong Draw2D size for " + label, expectedFigureBounds.getSize(), mainFigure.getBounds().getSize()); //$NON-NLS-1$
                 } else {
-                    assertEquals("Wrong Draw2D width for " + label, expectedFigureBounds.width(), mainFigure.getBounds().width(), widthDelta);
-                    assertEquals("Wrong Draw2D height for " + label, expectedFigureBounds.height(), mainFigure.getBounds().height(), heightDelta);
+                    assertEquals("Wrong Draw2D width for " + label, expectedFigureBounds.width(), mainFigure.getBounds().width(), widthDelta); //$NON-NLS-1$
+                    assertEquals("Wrong Draw2D height for " + label, expectedFigureBounds.height(), mainFigure.getBounds().height(), heightDelta); //$NON-NLS-1$
                 }
             } else {
                 if (expectedFigureBounds.width() != -1) {
-                    assertEquals("Wrong Draw2D width for " + label, expectedFigureBounds.width(), mainFigure.getBounds().width(), widthDelta);
+                    assertEquals("Wrong Draw2D width for " + label, expectedFigureBounds.width(), mainFigure.getBounds().width(), widthDelta); //$NON-NLS-1$
                 }
                 if (expectedFigureBounds.height() != -1) {
-                    assertEquals("Wrong Draw2D height for " + label, expectedFigureBounds.height(), mainFigure.getBounds().height(), heightDelta);
+                    assertEquals("Wrong Draw2D height for " + label, expectedFigureBounds.height(), mainFigure.getBounds().height(), heightDelta); //$NON-NLS-1$
                 }
             }
         } else {
             if (widthDelta == 0 && heightDelta == 0) {
-                assertEquals("Wrong GMF bounds for " + label, expectedGmfBounds, getBounds((Node) editPart.getNotationView()));
+                assertEquals("Wrong GMF bounds for " + label, expectedGmfBounds, getBounds((Node) editPart.getNotationView())); //$NON-NLS-1$
             } else {
                 Rectangle gmfBounds = getBounds((Node) editPart.getNotationView());
-                assertEquals("Wrong GMF location for " + label, expectedGmfBounds.getLocation(), gmfBounds.getLocation());
-                assertEquals("Wrong GMF width for " + label, expectedGmfBounds.width(), gmfBounds.width(), widthDelta);
-                assertEquals("Wrong GMF height for " + label, expectedGmfBounds.height(), gmfBounds.height(), heightDelta);
+                assertEquals("Wrong GMF location for " + label, expectedGmfBounds.getLocation(), gmfBounds.getLocation()); //$NON-NLS-1$
+                assertEquals("Wrong GMF width for " + label, expectedGmfBounds.width(), gmfBounds.width(), widthDelta); //$NON-NLS-1$
+                assertEquals("Wrong GMF height for " + label, expectedGmfBounds.height(), gmfBounds.height(), heightDelta); //$NON-NLS-1$
             }
             if (expectedFigureBounds.width() != -1 && expectedFigureBounds.height() != -1) {
                 if (widthDelta == 0 && heightDelta == 0) {
-                    assertEquals("Wrong Draw2D bounds for " + label, expectedFigureBounds, mainFigure.getBounds());
+                    assertEquals("Wrong Draw2D bounds for " + label, expectedFigureBounds, mainFigure.getBounds()); //$NON-NLS-1$
                 } else {
-                    assertEquals("Wrong Draw2D x location for " + label, expectedFigureBounds.getLocation().x, mainFigure.getBounds().getLocation().x, widthDelta);
-                    assertEquals("Wrong Draw2D y location for " + label, expectedFigureBounds.getLocation().y, mainFigure.getBounds().getLocation().y, heightDelta);
-                    assertEquals("Wrong Draw2D width for " + label, expectedFigureBounds.width(), mainFigure.getBounds().width(), widthDelta);
-                    assertEquals("Wrong Draw2D height for " + label, expectedFigureBounds.height(), mainFigure.getBounds().height(), heightDelta);
+                    assertEquals("Wrong Draw2D x location for " + label, expectedFigureBounds.getLocation().x, mainFigure.getBounds().getLocation().x, widthDelta); //$NON-NLS-1$
+                    assertEquals("Wrong Draw2D y location for " + label, expectedFigureBounds.getLocation().y, mainFigure.getBounds().getLocation().y, heightDelta); //$NON-NLS-1$
+                    assertEquals("Wrong Draw2D width for " + label, expectedFigureBounds.width(), mainFigure.getBounds().width(), widthDelta); //$NON-NLS-1$
+                    assertEquals("Wrong Draw2D height for " + label, expectedFigureBounds.height(), mainFigure.getBounds().height(), heightDelta); //$NON-NLS-1$
                 }
             } else {
-                assertEquals("Wrong Draw2D x for " + label, expectedFigureBounds.x(), mainFigure.getBounds().x());
-                assertEquals("Wrong Draw2D y for " + label, expectedFigureBounds.y(), mainFigure.getBounds().y());
+                assertEquals("Wrong Draw2D x for " + label, expectedFigureBounds.x(), mainFigure.getBounds().x()); //$NON-NLS-1$
+                assertEquals("Wrong Draw2D y for " + label, expectedFigureBounds.y(), mainFigure.getBounds().y()); //$NON-NLS-1$
                 if (expectedFigureBounds.width() != -1) {
-                    assertEquals("Wrong Draw2D width for " + label, expectedFigureBounds.width(), mainFigure.getBounds().width(), widthDelta);
+                    assertEquals("Wrong Draw2D width for " + label, expectedFigureBounds.width(), mainFigure.getBounds().width(), widthDelta); //$NON-NLS-1$
                 }
                 if (expectedFigureBounds.height() != -1) {
-                    assertEquals("Wrong Draw2D height for " + label, expectedFigureBounds.height(), mainFigure.getBounds().height(), heightDelta);
+                    assertEquals("Wrong Draw2D height for " + label, expectedFigureBounds.height(), mainFigure.getBounds().height(), heightDelta); //$NON-NLS-1$
                 }
             }
         }
@@ -254,29 +301,29 @@ public abstract class AbstractCompartmentTest extends AbstractSiriusSwtBotGefTes
         IFigure mainFigure = editPart.getMainFigure();
 
         if (onlyCheckSize) {
-            assertEquals("Wrong GMF size for figure at position " + point, expectedGmfBounds.getSize(), getBounds((Node) editPart.getNotationView()).getSize());
+            assertEquals("Wrong GMF size for figure at position " + point, expectedGmfBounds.getSize(), getBounds((Node) editPart.getNotationView()).getSize()); //$NON-NLS-1$
             if (expectedFigureBounds.width() != -1 && expectedFigureBounds.height() != -1) {
-                assertEquals("Wrong Draw2D size for figure at position " + point, expectedFigureBounds.getSize(), mainFigure.getBounds().getSize());
+                assertEquals("Wrong Draw2D size for figure at position " + point, expectedFigureBounds.getSize(), mainFigure.getBounds().getSize()); //$NON-NLS-1$
             } else {
                 if (expectedFigureBounds.width() != -1) {
-                    assertEquals("Wrong Draw2D width for figure at position " + point, expectedFigureBounds.width(), mainFigure.getBounds().width());
+                    assertEquals("Wrong Draw2D width for figure at position " + point, expectedFigureBounds.width(), mainFigure.getBounds().width()); //$NON-NLS-1$
                 }
                 if (expectedFigureBounds.height() != -1) {
-                    assertEquals("Wrong Draw2D height for figure at position " + point, expectedFigureBounds.height(), mainFigure.getBounds().height());
+                    assertEquals("Wrong Draw2D height for figure at position " + point, expectedFigureBounds.height(), mainFigure.getBounds().height()); //$NON-NLS-1$
                 }
             }
         } else {
-            assertEquals("Wrong GMF bounds for figure at position " + point, expectedGmfBounds, getBounds((Node) editPart.getNotationView()));
+            assertEquals("Wrong GMF bounds for figure at position " + point, expectedGmfBounds, getBounds((Node) editPart.getNotationView())); //$NON-NLS-1$
             if (expectedFigureBounds.width() != -1 && expectedFigureBounds.height() != -1) {
-                assertEquals("Wrong Draw2D bounds for figure at position " + point, expectedFigureBounds, mainFigure.getBounds());
+                assertEquals("Wrong Draw2D bounds for figure at position " + point, expectedFigureBounds, mainFigure.getBounds()); //$NON-NLS-1$
             } else {
-                assertEquals("Wrong Draw2D x for figure at position " + point, expectedFigureBounds.x(), mainFigure.getBounds().x());
-                assertEquals("Wrong Draw2D y for figure at position " + point, expectedFigureBounds.y(), mainFigure.getBounds().y());
+                assertEquals("Wrong Draw2D x for figure at position " + point, expectedFigureBounds.x(), mainFigure.getBounds().x()); //$NON-NLS-1$
+                assertEquals("Wrong Draw2D y for figure at position " + point, expectedFigureBounds.y(), mainFigure.getBounds().y()); //$NON-NLS-1$
                 if (expectedFigureBounds.width() != -1) {
-                    assertEquals("Wrong Draw2D width for figure at position " + point, expectedFigureBounds.width(), mainFigure.getBounds().width());
+                    assertEquals("Wrong Draw2D width for figure at position " + point, expectedFigureBounds.width(), mainFigure.getBounds().width()); //$NON-NLS-1$
                 }
                 if (expectedFigureBounds.height() != -1) {
-                    assertEquals("Wrong Draw2D height for figure at position " + point, expectedFigureBounds.height(), mainFigure.getBounds().height());
+                    assertEquals("Wrong Draw2D height for figure at position " + point, expectedFigureBounds.height(), mainFigure.getBounds().height()); //$NON-NLS-1$
                 }
             }
         }
