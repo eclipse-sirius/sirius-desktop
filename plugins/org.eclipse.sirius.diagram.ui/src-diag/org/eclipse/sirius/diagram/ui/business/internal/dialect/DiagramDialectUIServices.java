@@ -104,6 +104,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.api.part.DiagramEditPartService;
 import org.eclipse.sirius.diagram.ui.tools.api.preferences.SiriusDiagramUiPreferencesKeys;
 import org.eclipse.sirius.diagram.ui.tools.internal.decoration.SiriusDecoratorProvider;
+import org.eclipse.sirius.diagram.ui.tools.internal.layout.LayoutUtil;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.tools.api.SiriusPlugin;
 import org.eclipse.sirius.tools.api.profiler.SiriusTasksKey;
@@ -185,6 +186,9 @@ public class DiagramDialectUIServices implements DialectUIServices {
                     final Diagram gmfDiag = (Diagram) object;
                     if (gmfDiag != null) {
                         result = openEditor(session, gmfDiag, dRepresentation, monitor);
+                        if (LayoutUtil.isArrangeAtOpeningChangesDisabled()) {
+                            new DiagramDialectArrangeOperation().arrange(result, diag);
+                        }
                         monitor.worked(3);
                     }
                 }

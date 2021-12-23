@@ -27,6 +27,7 @@ import org.eclipse.draw2d.graph.Node;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.Request;
+import org.eclipse.gef.commands.Command;
 import org.eclipse.gef.commands.CompoundCommand;
 import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
@@ -67,6 +68,7 @@ import com.google.common.collect.Lists;
  * @author cbrun
  */
 public class ArrangeAllWithAutoSize {
+
     /**
      * Return true if this part should be autosized.
      * 
@@ -296,18 +298,39 @@ public class ArrangeAllWithAutoSize {
             request.setSizeDelta(deltaSize);
         }
 
-        final CompoundCommand cmd = new CompoundCommand();
-        if (!(delta.height == 0 && delta.width == 0) || isRegion && !(request.getSizeDelta().height == 0 && request.getSizeDelta().width == 0)) {
-            request.setEditParts(gep);
-            request.setMoveDelta(new Point(delta.width, delta.height));
-            request.setLocation(ptLocation);
-            cmd.add(gep.getCommand(request));
-        }
-        if (ArrangeAllWithAutoSize.shouldBeAutosized(gep)) {
-            cmd.add(gep.getCommand(new Request(RequestConstants.REQ_AUTOSIZE)));
-        }
-        if (cmd.canExecute()) {
-            cc.add(cmd);
+        if (LayoutUtil.isArrangeAtOpeningChangesDisabled()) {
+            // Old code executed before the changes done in bugzilla 577676.
+            if (!(delta.height == 0 && delta.width == 0) || isRegion && !(request.getSizeDelta().height == 0 && request.getSizeDelta().width == 0)) {
+                request.setEditParts(gep);
+                request.setMoveDelta(new Point(delta.width, delta.height));
+                request.setLocation(ptLocation);
+
+                if (ArrangeAllWithAutoSize.shouldBeAutosized(gep)) {
+                    final CompoundCommand cmd = new CompoundCommand();
+                    cmd.add(gep.getCommand(request));
+                    cmd.add(gep.getCommand(new Request(RequestConstants.REQ_AUTOSIZE)));
+                    cc.add(cmd);
+                } else {
+                    final Command cmd = gep.getCommand(request);
+                    if (cmd != null && cmd.canExecute()) {
+                        cc.add(cmd);
+                    }
+                }
+            }
+        } else {
+            final CompoundCommand cmd = new CompoundCommand();
+            if (!(delta.height == 0 && delta.width == 0) || isRegion && !(request.getSizeDelta().height == 0 && request.getSizeDelta().width == 0)) {
+                request.setEditParts(gep);
+                request.setMoveDelta(new Point(delta.width, delta.height));
+                request.setLocation(ptLocation);
+                cmd.add(gep.getCommand(request));
+            }
+            if (ArrangeAllWithAutoSize.shouldBeAutosized(gep)) {
+                cmd.add(gep.getCommand(new Request(RequestConstants.REQ_AUTOSIZE)));
+            }
+            if (cmd.canExecute()) {
+                cc.add(cmd);
+            }
         }
 
         if (isRegionContainer(gep)) {

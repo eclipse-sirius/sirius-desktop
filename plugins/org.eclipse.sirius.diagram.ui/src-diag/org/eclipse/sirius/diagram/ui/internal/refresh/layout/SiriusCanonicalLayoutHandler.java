@@ -65,58 +65,63 @@ public final class SiriusCanonicalLayoutHandler {
      *            layout.
      */
     public static void launchArrangeCommand(DiagramEditPart diagramEditPart) {
-        TransactionalEditingDomain editingDomain = diagramEditPart.getEditingDomain();
+        if (LayoutUtil.isArrangeAtOpeningChangesDisabled()) {
+            oldLaunchArrangeCommand(diagramEditPart);
+        } else {
+            TransactionalEditingDomain editingDomain = diagramEditPart.getEditingDomain();
 
-        boolean specificArrangeAtFirstOpening = false;
-        EObject resolvedSemanticElement = diagramEditPart.resolveSemanticElement();
-        if (resolvedSemanticElement instanceof DDiagram) {
-            if (resolvedSemanticElement.eAdapters().contains(NotYetOpenedDiagramAdapter.INSTANCE)) {
-                // This is the first diagram opening, we launch a global arrange all
-                if (diagramEditPart != null) {
-                    specificArrangeAtFirstOpening = true;
-                    Display.getDefault().asyncExec(new Runnable() {
+            boolean specificArrangeAtFirstOpening = false;
+            EObject resolvedSemanticElement = diagramEditPart.resolveSemanticElement();
+            if (resolvedSemanticElement instanceof DDiagram) {
+                if (resolvedSemanticElement.eAdapters().contains(NotYetOpenedDiagramAdapter.INSTANCE)) {
+                    // This is the first diagram opening, we launch a global arrange all
+                    if (diagramEditPart != null) {
+                        specificArrangeAtFirstOpening = true;
+                        Display.getDefault().asyncExec(new Runnable() {
 
-                        @Override
-                        public void run() {
-                            LayoutUtil.arrange(diagramEditPart);
-                        }
-                    });
+                            @Override
+                            public void run() {
+                                LayoutUtil.arrange(diagramEditPart);
+                            }
+                        });
+                    }
+                    // Remove the "arrange adapter" to potentially avoid a second arrange
+                    resolvedSemanticElement.eAdapters().remove(NotYetOpenedDiagramAdapter.INSTANCE);
+                    // Also clean the created views from SiriusLayoutDataManager as they are layouted with the global
+                    // arrange all. Otherwise it could be arrange "again" in a next opening for example.
+                    Set<View> set = SiriusLayoutDataManager.INSTANCE.getCreatedViewsToLayout().get(diagramEditPart.getDiagramView());
+                    if (set != null) {
+                        set.clear();
+                    }
+                    Set<View> set2 = SiriusLayoutDataManager.INSTANCE.getCreatedViewWithCenterLayout().get(diagramEditPart.getDiagramView());
+                    if (set2 != null) {
+                        set2.clear();
+                    }
+
                 }
-                // Remove the "arrange adapter" to potentially avoid a second arrange
-                resolvedSemanticElement.eAdapters().remove(NotYetOpenedDiagramAdapter.INSTANCE);
-                // Also clean the created views from SiriusLayoutDataManager as they are layouted with the global arrange all. Otherwise it could be arrange "again" in a next opening for example.
-                Set<View> set = SiriusLayoutDataManager.INSTANCE.getCreatedViewsToLayout().get(diagramEditPart.getDiagramView());
-                if (set != null) {
-                    set.clear();
-                }
-                Set<View> set2 = SiriusLayoutDataManager.INSTANCE.getCreatedViewWithCenterLayout().get(diagramEditPart.getDiagramView());
-                if (set2 != null) {
-                    set2.clear();
-                }
-                
             }
-        }
 
-        if (!specificArrangeAtFirstOpening) {
-            Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = getCreatedViewsToLayoutByContainerPart(diagramEditPart, SiriusLayoutDataManager.INSTANCE.getCreatedViewsToLayout());
-            Map<IGraphicalEditPart, List<IAdaptable>> centeredCreatedViewsToLayoutMap = getCreatedViewsToLayoutByContainerPart(diagramEditPart,
-                    SiriusLayoutDataManager.INSTANCE.getCreatedViewWithCenterLayout());
-            LayoutProvider layoutProvider = LayoutService.getProvider(diagramEditPart);
-            boolean handleSpecificLayoutType = false;
-            if (layoutProvider instanceof GenericLayoutProvider && ((GenericLayoutProvider) layoutProvider).shouldReverseLayoutsOrder(diagramEditPart)) {
-                // Reverse order as contrary to classic layout. For example for ELK, it is better to do it from the
-                // lowest level to the highest.
-                LinkedHashMap<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap_reverse = new LinkedHashMap<IGraphicalEditPart, List<IAdaptable>>();
-                ArrayList<IGraphicalEditPart> keys = new ArrayList<IGraphicalEditPart>(createdViewsToLayoutMap.keySet());
-                for (int i = keys.size() - 1; i >= 0; i--) {
-                    createdViewsToLayoutMap_reverse.put(keys.get(i), createdViewsToLayoutMap.get(keys.get(i)));
+            if (!specificArrangeAtFirstOpening) {
+                Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = getCreatedViewsToLayoutByContainerPart(diagramEditPart, SiriusLayoutDataManager.INSTANCE.getCreatedViewsToLayout());
+                Map<IGraphicalEditPart, List<IAdaptable>> centeredCreatedViewsToLayoutMap = getCreatedViewsToLayoutByContainerPart(diagramEditPart,
+                        SiriusLayoutDataManager.INSTANCE.getCreatedViewWithCenterLayout());
+                LayoutProvider layoutProvider = LayoutService.getProvider(diagramEditPart);
+                boolean handleSpecificLayoutType = false;
+                if (layoutProvider instanceof GenericLayoutProvider && ((GenericLayoutProvider) layoutProvider).shouldReverseLayoutsOrder(diagramEditPart)) {
+                    // Reverse order as contrary to classic layout. For example for ELK, it is better to do it from the
+                    // lowest level to the highest.
+                    LinkedHashMap<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap_reverse = new LinkedHashMap<IGraphicalEditPart, List<IAdaptable>>();
+                    ArrayList<IGraphicalEditPart> keys = new ArrayList<IGraphicalEditPart>(createdViewsToLayoutMap.keySet());
+                    for (int i = keys.size() - 1; i >= 0; i--) {
+                        createdViewsToLayoutMap_reverse.put(keys.get(i), createdViewsToLayoutMap.get(keys.get(i)));
+                    }
+                    createdViewsToLayoutMap = createdViewsToLayoutMap_reverse;
+                    handleSpecificLayoutType = true;
                 }
-                createdViewsToLayoutMap = createdViewsToLayoutMap_reverse;
-                handleSpecificLayoutType = true;
-            }
-            Command layoutCommand = getLayoutCommand(createdViewsToLayoutMap, centeredCreatedViewsToLayoutMap, editingDomain, handleSpecificLayoutType);
-            if (layoutCommand.canExecute()) {
-                editingDomain.getCommandStack().execute(layoutCommand);
+                Command layoutCommand = getLayoutCommand(createdViewsToLayoutMap, centeredCreatedViewsToLayoutMap, editingDomain, handleSpecificLayoutType);
+                if (layoutCommand.canExecute()) {
+                    editingDomain.getCommandStack().execute(layoutCommand);
+                }
             }
         }
     }
@@ -224,4 +229,87 @@ public final class SiriusCanonicalLayoutHandler {
         return compoundCommand;
     }
 
+    /**
+     * Execute ArrangeRequest's {@link Command} for created views (in the DDiagramCanonicalSynchronizer) to arrange.
+     * 
+     * @param diagramEditPart
+     *            The {@link DiagramEditPart} used to get parent {@link IGraphicalEditPart} of created {@link View}s to
+     *            layout.
+     * @deprecated Only here as security if user activates {@link LayoutUtil#isArrangeAtOpeningChangesDisabled()}.
+     */
+    public static void oldLaunchArrangeCommand(DiagramEditPart diagramEditPart) {
+        TransactionalEditingDomain editingDomain = diagramEditPart.getEditingDomain();
+        Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = oldGetCreatedViewsToLayoutMap(diagramEditPart);
+        Map<IGraphicalEditPart, List<IAdaptable>> createdViewsWithSpecialLayoutMap = oldGetCreatedViewsWithSpecialLayoutMap(diagramEditPart);
+        LayoutProvider layoutProvider = LayoutService.getProvider(diagramEditPart);
+        boolean handleSpecificLayoutType = false;
+        if (layoutProvider instanceof GenericLayoutProvider && ((GenericLayoutProvider) layoutProvider).shouldReverseLayoutsOrder(diagramEditPart)) {
+            // Reverse order as contrary to classic layout. For example for ELK, it is better to do it from the lowest
+            // level
+            // to the
+            // highest.
+            LinkedHashMap<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap_reverse = new LinkedHashMap<IGraphicalEditPart, List<IAdaptable>>();
+            ArrayList<IGraphicalEditPart> keys = new ArrayList<IGraphicalEditPart>(createdViewsToLayoutMap.keySet());
+            for (int i = keys.size() - 1; i >= 0; i--) {
+                createdViewsToLayoutMap_reverse.put(keys.get(i), createdViewsToLayoutMap.get(keys.get(i)));
+            }
+            createdViewsToLayoutMap = createdViewsToLayoutMap_reverse;
+            handleSpecificLayoutType = true;
+        }
+        Command layoutCommand = getLayoutCommand(createdViewsToLayoutMap, createdViewsWithSpecialLayoutMap, editingDomain, handleSpecificLayoutType);
+        if (layoutCommand.canExecute()) {
+            editingDomain.getCommandStack().execute(layoutCommand);
+        }
+    }
+
+    @Deprecated
+    private static Map<IGraphicalEditPart, List<IAdaptable>> oldGetCreatedViewsToLayoutMap(DiagramEditPart diagramEditPart) {
+        // For a more predictable result (and constant), the hashMap must be
+        // sorted from the highest level container to the lowest level
+        // container. The viewAdapters seems to be already sorted so we must
+        // just keep this order by using a linked Hashmap.
+        Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = new LinkedHashMap<IGraphicalEditPart, List<IAdaptable>>();
+        Map<Diagram, Set<View>> createdViewsToLayout = SiriusLayoutDataManager.INSTANCE.getCreatedViewsToLayout();
+
+        oldGetCreatedViewToLayoutMap(diagramEditPart, createdViewsToLayoutMap, createdViewsToLayout);
+        return createdViewsToLayoutMap;
+    }
+
+    @Deprecated
+    private static Map<IGraphicalEditPart, List<IAdaptable>> oldGetCreatedViewsWithSpecialLayoutMap(DiagramEditPart diagramEditPart) {
+        // For a more predictable result (and constant), the hashMap must be
+        // sorted from the highest level container to the lowest level
+        // container. The viewAdapters seems to be already sorted so we must
+        // just keep this order by using a linked Hashmap.
+        Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap = new LinkedHashMap<IGraphicalEditPart, List<IAdaptable>>();
+        Map<Diagram, Set<View>> createdViewsToLayout = SiriusLayoutDataManager.INSTANCE.getCreatedViewWithCenterLayout();
+
+        oldGetCreatedViewToLayoutMap(diagramEditPart, createdViewsToLayoutMap, createdViewsToLayout);
+        return createdViewsToLayoutMap;
+    }
+
+    @Deprecated
+    private static void oldGetCreatedViewToLayoutMap(DiagramEditPart diagramEditPart, Map<IGraphicalEditPart, List<IAdaptable>> createdViewsToLayoutMap, Map<Diagram, Set<View>> createdViewsToLayout) {
+        if (!createdViewsToLayout.isEmpty()) {
+
+            Diagram diagramOfOpenedEditor = diagramEditPart.getDiagramView();
+            if (diagramOfOpenedEditor != null && createdViewsToLayout.containsKey(diagramOfOpenedEditor)) {
+
+                if (diagramEditPart != null) {
+                    Map<?, ?> editPartRegistry = diagramEditPart.getViewer().getEditPartRegistry();
+                    List<IAdaptable> viewAdapters = getAdapters(createdViewsToLayout.get(diagramOfOpenedEditor));
+                    Map<View, List<IAdaptable>> splitedViewAdapters = splitViewAdaptersAccordingToParent(viewAdapters);
+                    for (Entry<View, List<IAdaptable>> viewAdaptersWithSameParent : splitedViewAdapters.entrySet()) {
+                        View parentView = viewAdaptersWithSameParent.getKey();
+                        List<IAdaptable> childViewsAdapters = viewAdaptersWithSameParent.getValue();
+                        IGraphicalEditPart parentEditPart = (IGraphicalEditPart) editPartRegistry.get(parentView);
+                        if (parentEditPart != null) {
+                            createdViewsToLayoutMap.put(parentEditPart, childViewsAdapters);
+                        }
+                    }
+                }
+                createdViewsToLayout.remove(diagramOfOpenedEditor);
+            }
+        }
+    }
 }

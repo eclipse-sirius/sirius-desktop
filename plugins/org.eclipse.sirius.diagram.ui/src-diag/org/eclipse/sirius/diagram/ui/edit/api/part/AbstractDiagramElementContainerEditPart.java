@@ -90,6 +90,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.figure.ViewNodeContainerRectangle
 import org.eclipse.sirius.diagram.ui.tools.api.layout.LayoutUtils;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.ContainerWithTitleBlockFigure;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.RegionRoundedGradientRectangle;
+import org.eclipse.sirius.diagram.ui.tools.internal.layout.LayoutUtil;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.NotificationQuery;
 import org.eclipse.sirius.ext.base.Option;
@@ -453,6 +454,42 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
      * @return the default figure dimension of this edit part
      */
     public Dimension getDefaultDimension() {
+        if (LayoutUtil.isArrangeAtOpeningChangesDisabled()) {
+            return oldGetDefaultDimension();
+        } else {
+            DDiagramElement dde = resolveDiagramElement();
+            Dimension defaultSize = LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION;
+            if (dde instanceof DNodeContainer) {
+                defaultSize = new DNodeContainerQuery((DNodeContainer) dde).getDefaultDimension();
+            }
+
+            if (new EditPartQuery(this).isCollapsed() && getParentStackDirection() == PositionConstants.NORTH_SOUTH) {
+                defaultSize = defaultSize.getCopy().setHeight(LayoutUtils.COLLAPSED_VERTICAL_REGION_HEIGHT);
+            } else if (isRegion()) {
+                // For region with a defined size in the VSM, the defined size is considered instead of the default one.
+                // I'm not sure that this rule should be the same for all kind of containers... I let this comment as a
+                // clue if an analysis, about a bug concerning "standard container", brings you here.
+                Integer width = ((DDiagramElementContainer) dde).getWidth();
+                if (width != null && width > 0) {
+                    defaultSize = defaultSize.getCopy().setWidth(width * LayoutUtils.SCALE);
+                }
+
+                Integer height = ((DDiagramElementContainer) dde).getHeight();
+                if (height != null && height > 0) {
+                    defaultSize = defaultSize.getCopy().setHeight(height * LayoutUtils.SCALE);
+                }
+            }
+            return defaultSize;
+        }
+    }
+
+    /**
+     * Get the default figure dimension of this edit part.
+     * 
+     * @return the default figure dimension of this edit part
+     * @deprecated Only here as security if user activates {@link LayoutUtil#isArrangeAtOpeningChangesDisabled()}.
+     */
+    public Dimension oldGetDefaultDimension() {
         DDiagramElement dde = resolveDiagramElement();
         Dimension defaultSize = LayoutUtils.NEW_DEFAULT_CONTAINER_DIMENSION;
         if (dde instanceof DNodeContainer) {
@@ -461,19 +498,6 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
 
         if (new EditPartQuery(this).isCollapsed() && getParentStackDirection() == PositionConstants.NORTH_SOUTH) {
             defaultSize = defaultSize.getCopy().setHeight(LayoutUtils.COLLAPSED_VERTICAL_REGION_HEIGHT);
-        } else if (isRegion()) {
-            // For region with a defined size in the VSM, the defined size is considered instead of the default one.
-            // I'm not sure that this rule should be the same for all kind of containers... I let this comment as a clue
-            // if an analysis, about a bug concerning "standard container", brings you here.
-            Integer width = ((DDiagramElementContainer) dde).getWidth();
-            if (width != null && width > 0) {
-                defaultSize = defaultSize.getCopy().setWidth(width * LayoutUtils.SCALE);
-            }
-    
-            Integer height = ((DDiagramElementContainer) dde).getHeight();
-            if (height != null && height > 0) {
-                defaultSize = defaultSize.getCopy().setHeight(height * LayoutUtils.SCALE);
-            }
         }
         return defaultSize;
     }

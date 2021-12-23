@@ -223,6 +223,11 @@
 					</li>
 				</ul>
 			</li>
+			<li><span class="label label-info">Modified</span> The behavior of arrange at opening has been changed/fixed (only one arrange instead of two for examples). You can refer to 
+				<a href="https://bugs.eclipse.org/bugs/show_bug.cgi?id=577676">bugzilla 577676</a> for more details. Maybe your modeler rely on this &#8220;buggy behavior&#8221; or maybe some impacts have not yet been detected. If you notice a problem, you can retrieve the previous behavior by setting the system property 
+				<code>org.eclipse.sirius.diagram.ui.disableArrangeAtOpeningChanges</code> to 
+				<code>true</code>. You can also create a specific bugzilla to explain the problem. This system property is temporary and will be removed in one or two versions.
+			</li>
 			<li><span class="label label-danger">Removed</span> 
 				<b>The &#8220;Workflow&#8221; feature</b> has been removed . Workflow was experimental and to our knowledge not used in practice. This corresponds to the 
 				<code>org.eclipse.sirius.workflow.*</code> and 
