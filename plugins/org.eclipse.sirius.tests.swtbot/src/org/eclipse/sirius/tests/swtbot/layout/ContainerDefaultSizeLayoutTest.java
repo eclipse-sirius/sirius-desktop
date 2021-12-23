@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -31,6 +31,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
+import org.eclipse.sirius.diagram.ui.tools.internal.preferences.SiriusDiagramUiInternalPreferencesKeys;
 import org.eclipse.sirius.ecore.extender.tool.api.ModelUtils;
 import org.eclipse.sirius.tests.swtbot.Activator;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
@@ -84,7 +85,43 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
      * <li>Check that auto-size is correctly applied</li>
      * </ul>
      */
-    public void testDefaultSizeWithExternalCreationOnShape() {
+    public void testDefaultSizeWithExternalCreationOnShapeWithPrefAutoSize() {
+        testDefaultSizeWithExternalCreationOnShape(true);
+    }
+
+    /**
+     * Tests that the specified default size for shape is correctly applied when a view is created due to an external
+     * change of the semantic resource.
+     * <ul>
+     * <li>Open the representation</li>
+     * <li>Create a new package in semantic resource (Corresponding to a shape style in VSM)</li>
+     * <li>Check that the size is correct after refresh</li>
+     * <li>Arrange all</li>
+     * <li>Check that auto-size is correctly applied</li>
+     * </ul>
+     */
+    public void testDefaultSizeWithExternalCreationOnShapeWithoutPrefAutosize() {
+        testDefaultSizeWithExternalCreationOnShape(false);
+    }
+
+    /**
+     * Tests that the specified default size for shape is correctly applied when a view is created due to an external
+     * change of the semantic resource.
+     * <ul>
+     * <li>Open the representation</li>
+     * <li>Create a new package in semantic resource (Corresponding to a shape style in VSM)</li>
+     * <li>Check that the size is correct after refresh</li>
+     * <li>Arrange all</li>
+     * <li>Check that auto-size is correctly applied</li>
+     * </ul>
+     * 
+     * @param autosize
+     *            true if the preference "" value must be true, false otherwise.
+     */
+    protected void testDefaultSizeWithExternalCreationOnShape(boolean autosize) {
+        // Change preference to disable the auto size at arrange.
+        changeDiagramUIPreference(SiriusDiagramUiInternalPreferencesKeys.PREF_AUTOSIZE_ON_ARRANGE.name(), autosize);
+
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION_DESCRIPTION_NAME, REPRESENTATION_NAME, DDiagram.class);
         EPackage root = loadRootPackage();
         createNewPackage(root, "Pkg1");
@@ -96,15 +133,16 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
         editor.save();
         manualRefresh();
         // SWTBotUtils.waitAllUiEvents();
-        checkPkgBounds("Pkg1");
+        checkPkgBounds("Pkg1", autosize);
 
         arrangeAll();
 
         SWTBotUtils.waitAllUiEvents();
 
-        checkAutoSize("Pkg1");
+        if (autosize) {
+            checkGMFAutoSize("Pkg1");
+        }
     }
-
     /**
      * Tests that the specified default size for shape is correctly applied when
      * using a creation tool.
@@ -129,13 +167,13 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
 
         // SWTBotUtils.waitProgressMonitorClose("Progress Information");
         // SWTBotUtils.waitAllUiEvents();
-        checkPkgBounds("pkg");
+        checkPkgBounds("pkg", false);
 
         arrangeAll();
 
         SWTBotUtils.waitAllUiEvents();
 
-        checkAutoSize("pkg");
+        checkGMFAutoSize("pkg");
     }
 
     /**
@@ -164,7 +202,7 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
 
         SWTBotUtils.waitAllUiEvents();
 
-        checkAutoSize("eenum");
+        checkGMFAutoSize("eenum");
     }
 
     /**
@@ -197,15 +235,15 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
 
         SWTBotUtils.waitAllUiEvents();
 
-        checkAutoSize("eenum1");
+        checkGMFAutoSize("eenum1");
     }
 
-    private void checkAutoSize(String name) {
+    private void checkGMFAutoSize(String name) {
         SWTBotGefEditPart bot = editor.getEditPart(name, AbstractDiagramElementContainerEditPart.class);
         // check gmf auto-size
         Bounds bounds = getGMFBounds(bot);
-        assertEquals("Unexpected gmf width for" + name, -1, bounds.getWidth());
-        assertEquals("Unexpected gmf height for" + name, -1, bounds.getHeight());
+        assertEquals("Unexpected gmf width for " + name, -1, bounds.getWidth());
+        assertEquals("Unexpected gmf height for " + name, -1, bounds.getHeight());
     }
 
     private void createNewEEnum(final EPackage root, final String name) {
@@ -220,12 +258,17 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
         }
     }
 
-    private void checkPkgBounds(String name) {
+    private void checkPkgBounds(String name, boolean autosize) {
         SWTBotGefEditPart bot = editor.getEditPart(name, AbstractDiagramContainerEditPart.class);
         // check gmf size
         Bounds bounds = getGMFBounds(bot);
-        assertEquals("Unexpected gmf width for" + name, 50, bounds.getWidth());
-        assertEquals("Unexpected gmf height for" + name, 30, bounds.getHeight());
+        if (autosize) {
+            assertEquals("Unexpected gmf width for " + name, -1, bounds.getWidth());
+            assertEquals("Unexpected gmf height for " + name, -1, bounds.getHeight());
+        } else {
+            assertEquals("Unexpected gmf width for " + name, 50, bounds.getWidth());
+            assertEquals("Unexpected gmf height for " + name, 30, bounds.getHeight());
+        }
 
         // check draw2D size
         Dimension dimension = editor.getBounds(bot).getSize();
@@ -249,8 +292,8 @@ public class ContainerDefaultSizeLayoutTest extends AbstractSiriusSwtBotGefTestC
 
         // check gmf size
         Bounds bounds = getGMFBounds(bot);
-        assertEquals("Unexpected gmf width for" + name, -1, bounds.getWidth());
-        assertEquals("Unexpected gmf height for" + name, 70, bounds.getHeight());
+        assertEquals("Unexpected gmf width for " + name, -1, bounds.getWidth());
+        assertEquals("Unexpected gmf height for " + name, 70, bounds.getHeight());
 
         // check draw2D size
         Dimension dimension = editor.getBounds(bot).getSize();
