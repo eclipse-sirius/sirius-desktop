@@ -30,6 +30,13 @@ import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerC
  * @author lredor
  */
 public class ParentPropertyChangeListener implements PropertyChangeListener {
+    /**
+     * The name of the system property to disable the new behavior added in Sirius 7.0 (false by default). If this
+     * property is set to false, there is no ParentPropertyChangeListener added.
+     * 
+     * @deprecated
+     */
+    private static final String DISABLE_HSTACK_CONTAINER_NEW_BEHAVIOR = "org.eclipse.sirius.diagram.ui.disableHStackContainerNewBehavior"; //$NON-NLS-1$
 
     /**
      * The last region to resize when this listener is called, by the container notifying with a
@@ -50,6 +57,20 @@ public class ParentPropertyChangeListener implements PropertyChangeListener {
      */
     public ParentPropertyChangeListener(RegionContainerLayoutManager regionContainerLayoutManager) {
         this.regionContainerLayoutManager = regionContainerLayoutManager;
+    }
+
+    /**
+     * In Sirius 7.0, some fixes have been done through bugzilla 576305 concerning layout of regions container. Maybe
+     * some modelers rely on this "buggy behavior". This system property has been added to allow to "revert" the changes
+     * and retrieve the previous behavior. It is a temporary method during one or two versions, waiting a potential
+     * feedback.
+     * 
+     * @return true if the new behavior must be disabled, to retrieve previous one, or false to have the new behavior
+     *         (the correct one).
+     * @deprecated
+     */
+    public static boolean isHStackContainerChangesDisabled() {
+        return Boolean.valueOf(System.getProperty(DISABLE_HSTACK_CONTAINER_NEW_BEHAVIOR, "false")); //$NON-NLS-1$
     }
 
     /**

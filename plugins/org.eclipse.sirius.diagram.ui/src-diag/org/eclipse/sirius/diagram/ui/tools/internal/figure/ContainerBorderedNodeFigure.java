@@ -68,6 +68,9 @@ public class ContainerBorderedNodeFigure extends BorderedNodeFigure {
      *            bounds).
      */
     public void updateParentPropertyChangeListener(IFigure lastRegionFigureToResize, RegionContainerLayoutManager regionContainerLayoutManager) {
+        if (ParentPropertyChangeListener.isHStackContainerChangesDisabled()) {
+            return;
+        }
         if (parentPropertyChangeListener == null) {
             parentPropertyChangeListener = new ParentPropertyChangeListener(regionContainerLayoutManager);
             this.addPropertyChangeListener(ContainerBorderedNodeFigure.CONTAINER_WIDTH_CHANGE, parentPropertyChangeListener);
