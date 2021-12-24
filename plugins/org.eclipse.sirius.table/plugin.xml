@@ -42,10 +42,6 @@
    </extension>
   <extension
          point="org.eclipse.emf.validation.constraintProviders">
-     <category
-           id="org.eclipse.sirius.table.constraints"
-           name="%category.siriusTableConstraints.name">
-     </category>
      <constraintProvider
            cache="true"
            mode="Batch">
@@ -56,7 +52,7 @@
               namespaceUri="http://www.eclipse.org/sirius/table/description/tool/1.1.0">
         </package>
         <constraints
-              categories="org.eclipse.sirius.table.constraints">
+              categories="org.eclipse.sirius/org.eclipse.sirius.vsm/org.eclipse.sirius.vsm.table">
            <constraint
                  class="org.eclipse.sirius.table.tools.internal.validation.constraints.BothCellEditorEditLabelToolConstraint"
                  id="org.eclipse.sirius.table.constraints.BothCellEditorEditLabelTool"

@@ -40,10 +40,6 @@
   </extension>
   <extension
         point="org.eclipse.emf.validation.constraintProviders">
-     <category
-           id="org.eclipse.sirius.diagram.constraints"
-           name="%category.siriusSequenceDiagramConstraints.name">
-     </category>
      <constraintProvider
            cache="true"
            mode="Batch">
@@ -54,7 +50,7 @@
               categories="http://www.eclipse.org/sirius/diagram/sequence/description/2.0.0">
         </constraints>
         <constraints
-              categories="org.eclipse.sirius.diagram.constraints">
+              categories="org.eclipse.sirius/org.eclipse.sirius.vsm/org.eclipse.sirius.vsm.sequence">
            <constraint
                  class="org.eclipse.sirius.diagram.sequence.tool.internal.validation.description.constraints.SequenceContainerMappingChildrenPresentationConstraints"
                  id="org.eclipse.sirius.diagram.sequence.NoSequenceContainerRegionChildrenPresentation"

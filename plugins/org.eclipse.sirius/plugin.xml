@@ -64,8 +64,48 @@
   <extension
          point="org.eclipse.emf.validation.constraintProviders"> 
       <category
-            name="%constraint.category.name"
-            id="org.eclipse.sirius.constraints"/>
+            id="org.eclipse.sirius"
+            name="%constraint.category.name">
+         <category
+               id="org.eclipse.sirius.vsm"
+               name="%constraint.vsm.category.name">
+               Constraints applying on the Viewpoint Specification Model
+            <category
+                  id="org.eclipse.sirius.vsm.general"
+                  name="%constraint.vsm.general.category.name">
+                  General constraints
+            </category>
+            <category
+                  id="org.eclipse.sirius.vsm.table"
+                  mandatory="false"
+                  name="%constraint.vsm.table.category.name">
+               Constraints applying on the Table Representation Description
+            </category>
+            <category
+                  id="org.eclipse.sirius.vsm.diagram"
+                  mandatory="false"
+                  name="%constraint.vsm.diagram.category.name">
+               Constraints applying on the Diagram Representation Description
+            </category>
+            <category
+                  id="org.eclipse.sirius.vsm.sequence"
+                  mandatory="false"
+                  name="%constraint.vsm.sequence.category.name">
+               Constraints applying on the Sequence Diagram Representation Description
+            </category>
+         </category>
+         <category
+               id="org.eclipse.sirius.model"
+               name="%constraint.model.category.name">
+               Constraints applying on the semantic and representation models
+            <category
+                  id="org.eclipse.sirius.model.diagram"
+                  name="%constraint.model.diagram.category.name">
+                  Constraints defined by the specifier in the Viewpoint Specification model as Validation rules
+Constraints applying on the diagrams and sequence diagrams.
+            </category>
+         </category>
+      </category>
       <constraintProvider
             cache="true"
             mode="Batch">
@@ -74,7 +114,7 @@
          <package
                namespaceUri="http://www.eclipse.org/sirius/description/style/1.1.0">
          </package>
-         <constraints categories="org.eclipse.sirius.constraints">
+         <constraints categories="org.eclipse.sirius/org.eclipse.sirius.vsm/org.eclipse.sirius.vsm.general">
             <constraint
                   lang="Java"
                   class="org.eclipse.sirius.tools.internal.validation.description.constraints.ExistingExpressionVariablesConstraint"

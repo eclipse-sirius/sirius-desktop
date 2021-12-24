@@ -251,17 +251,11 @@
 
   <extension
          point="org.eclipse.emf.validation.constraintProviders">
-      <category
-        id="org.eclipse.sirius.diagram.category"
-        mandatory="false"
-        name="%category.siriusValidation.name">
-            <![CDATA[Sirius]]>
-      </category>	
       <constraintProvider
             cache="false"            
             mode="Batch">
          <package namespaceUri="http://www.eclipse.org/sirius/diagram/1.1.0"/>
-         <constraints categories="org.eclipse.sirius.diagram.category">
+         <constraints categories="org.eclipse.sirius/org.eclipse.sirius.model/org.eclipse.sirius.model.diagram">
             <constraint
                   lang="Java"
                   class="org.eclipse.sirius.diagram.tools.internal.validation.constraints.ErrorConstraint"
@@ -315,9 +309,6 @@
   </extension>   
   <extension
          point="org.eclipse.emf.validation.constraintProviders">
-      <category
-            name="%category.siriusDiagramConstraints.name"
-            id="org.eclipse.sirius.diagram.constraints"/>
       <constraintProvider
             cache="true"
             mode="Batch">
@@ -327,7 +318,7 @@
          <package namespaceUri="http://www.eclipse.org/sirius/diagram/1.1.0"/>
          <package namespaceUri="http://www.eclipse.org/sirius/diagram/description/1.1.0"/>
          <package namespaceUri="http://www.eclipse.org/sirius/diagram/description/style/1.1.0"/>
-         <constraints categories="org.eclipse.sirius.diagram.constraints">
+         <constraints categories="org.eclipse.sirius/org.eclipse.sirius.vsm/org.eclipse.sirius.vsm.diagram">
             <constraint
                   class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.DiagramMandatoryDomainClassConstraint"
                   id="org.eclipse.sirius.diagram.constraints.MandatoryDomainClass"
@@ -646,15 +637,12 @@
    </extension>
    <extension
          point="org.eclipse.emf.validation.constraintProviders">
-      <category
-            name="%category.siriusDiagramConstraints.name"
-            id="org.eclipse.sirius.diagram.constraints"/>
       <constraintProvider
             cache="true"
             mode="Batch">
          <package namespaceUri="http://www.eclipse.org/sirius/description/tool/1.1.0"/>
          <package namespaceUri="http://www.eclipse.org/sirius/diagram/description/tool/1.1.0"/>
-         <constraints categories="org.eclipse.sirius.diagram.constraints">
+         <constraints categories="org.eclipse.sirius/org.eclipse.sirius.vsm/org.eclipse.sirius.vsm.diagram">
             <constraint
                   lang="Java"
                   class="org.eclipse.sirius.diagram.tools.internal.validation.description.constraints.PreconditionForDndToolsConstraint"
