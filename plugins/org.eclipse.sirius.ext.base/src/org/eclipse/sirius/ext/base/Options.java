@@ -18,6 +18,7 @@ package org.eclipse.sirius.ext.base;
  * 
  * @author cbrun
  */
+@Deprecated(forRemoval = true)
 public final class Options {
 
     /*
