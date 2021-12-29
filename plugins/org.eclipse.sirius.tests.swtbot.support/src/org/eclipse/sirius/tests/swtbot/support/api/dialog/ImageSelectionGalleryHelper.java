@@ -39,7 +39,10 @@ import org.hamcrest.Matcher;
  */
 public final class ImageSelectionGalleryHelper {
 
-    public static final String DIALOG_TITLE = "Select background image from workspace";
+    /**
+     * Title of the dialog.
+     */
+    public static final String DIALOG_TITLE = "Select background image from workspace"; //$NON-NLS-1$
 
     /**
      * Default constructor.
@@ -71,9 +74,8 @@ public final class ImageSelectionGalleryHelper {
                             itemToSelect = item;
                         }
                     }
-                    if (widget instanceof GallerySelectable) {
-                        ((GallerySelectable) widget).selectItem(itemToSelect, true);
-                    }
+                    widget.selectItem(itemToSelect, true);
+
                     SWTBotUtils.waitAllUiEvents();
                 }
             });
@@ -88,8 +90,8 @@ public final class ImageSelectionGalleryHelper {
      *            the SWTBot to use for searching the Gallery
      * @return the gallery
      */
+    @SuppressWarnings("unchecked")
     public static GallerySelectable getGallery(SWTBot bot) {
-        @SuppressWarnings("unchecked")
         Matcher<GallerySelectable> matcher = allOf(widgetOfType(GallerySelectable.class));
         AbstractSWTBotControl<GallerySelectable> swtBot = new AbstractSWTBotControl<GallerySelectable>(bot.widget(matcher), matcher);
         return swtBot.widget;
@@ -107,7 +109,7 @@ public final class ImageSelectionGalleryHelper {
     public static void selectWorkspaceImage(SWTBot bot, String pathToImage) {
         bot.waitUntil(Conditions.shellIsActive(DIALOG_TITLE));
         SWTBotShell activeShell = bot.shell(DIALOG_TITLE);
-        String[] pathSegments = pathToImage.split("/");
+        String[] pathSegments = pathToImage.split("/"); //$NON-NLS-1$
         if (pathSegments.length > 0) {
             String imageName = pathSegments[pathSegments.length - 1];
 
@@ -123,7 +125,7 @@ public final class ImageSelectionGalleryHelper {
             treeItem.select();
             ImageSelectionGalleryHelper.selectGalleryItem(bot, imageName);
         }
-        bot.button("OK").click();
+        bot.button("OK").click(); //$NON-NLS-1$
         SWTBotUtils.waitAllUiEvents();
         bot.waitUntil(Conditions.shellCloses(activeShell));
     }
