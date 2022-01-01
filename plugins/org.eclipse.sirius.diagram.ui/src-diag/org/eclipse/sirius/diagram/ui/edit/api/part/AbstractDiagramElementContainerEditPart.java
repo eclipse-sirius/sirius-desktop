@@ -38,6 +38,7 @@ import org.eclipse.gef.editpolicies.LayoutEditPolicy;
 import org.eclipse.gef.requests.ChangeBoundsRequest;
 import org.eclipse.gef.requests.CreateRequest;
 import org.eclipse.gef.requests.DropRequest;
+import org.eclipse.gef.requests.SelectionRequest;
 import org.eclipse.gmf.runtime.diagram.ui.commands.ICommandProxy;
 import org.eclipse.gmf.runtime.diagram.ui.commands.SetBoundsCommand;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.AbstractBorderItemEditPart;
@@ -995,4 +996,15 @@ public abstract class AbstractDiagramElementContainerEditPart extends AbstractBo
         this.useOverlayLabel = useOverlayLabel;
     }
 
+    /**
+     * Return true if the current container is a region and if the CTRL shortcut key is pressed, false otherwise.<BR/>
+     * This mechanism allows to select and move the regions container more easily.
+     * 
+     * @param request
+     *            The request "in progress"
+     * @return true if the current container is a region and if the CTRL shortcut key is pressed, false otherwise.
+     */
+    public boolean shouldUseRegionsContainerDragTracker(Request request) {
+        return request instanceof SelectionRequest && ((SelectionRequest) request).isControlKeyPressed() && isRegion() && getParent() != null;
+    }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2018 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -28,6 +28,7 @@ import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.ui.business.internal.view.ShowingViewUtil;
+import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.DiagramNameEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.CommonEditPartOperation;
 import org.eclipse.sirius.diagram.ui.edit.internal.part.DiagramElementEditPartOperation;
@@ -69,10 +70,18 @@ public class DNodeListElementEditPart extends AbstractGeneratedDiagramNameEditPa
      */
     @Override
     public DragTracker getDragTracker(Request request) {
+        DragTracker result;
         if (request instanceof SelectionRequest && ((SelectionRequest) request).getLastButtonPressed() == 3) {
-            return null;
+            result = null;
+        } else if (getParent() != null && getParent().getParent() instanceof AbstractDiagramElementContainerEditPart
+                && ((AbstractDiagramElementContainerEditPart) getParent().getParent()).shouldUseRegionsContainerDragTracker(request)) {
+            // If this list item is in a list that is a region, apply the specific behavior for the CTRL shortcut key to
+            // select the regions container.
+            result = getParent().getParent().getDragTracker(request);
+        } else {
+            result = new DragEditPartsTrackerEx(this);
         }
-        return new DragEditPartsTrackerEx(this);
+        return result;
     }
 
     /**

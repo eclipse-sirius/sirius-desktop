@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -185,10 +185,17 @@ public abstract class AbstractDiagramContainerEditPart extends AbstractDiagramEl
      */
     @Override
     public DragTracker getDragTracker(final Request request) {
+        DragTracker result = null;
         if (request instanceof SelectionRequest && ((SelectionRequest) request).isAltKeyPressed()) {
-            return new RubberbandDragTracker();
+            result = new RubberbandDragTracker();
+        } else {
+            if (shouldUseRegionsContainerDragTracker(request)) {
+                result = getParent().getDragTracker(request);
+            } else {
+                result = new NoCopyDragEditPartsTrackerEx(this);
+            }
         }
-        return new NoCopyDragEditPartsTrackerEx(this);
+        return result;
     }
 
     /**
