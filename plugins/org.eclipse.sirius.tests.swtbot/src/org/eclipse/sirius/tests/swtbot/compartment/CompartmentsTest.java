@@ -19,6 +19,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -57,6 +58,7 @@ import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramElementContain
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramElementEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDNodeContainerCompartmentEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDiagramElementContainerNameEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeListElementEditPart;
@@ -1700,6 +1702,9 @@ public class CompartmentsTest extends AbstractCompartmentTest {
      * Check size after Arrange All.<BR/>
      * Check size after width resize and new line creation.<BR/>
      * Check size after Arrange All.<BR/>
+     * Check move when selecting a cell, ie a list container from its title area, with CTRL key pressed.<BR/>
+     * Check move when selecting a cell, ie a list container from its free space area, with CTRL key pressed.<BR/>
+     * Check move when selecting a list item with CTRL key pressed.
      */
     public void testWithACapellaLikeTitleBlock() {
         int bordersWidth = 4;
@@ -1818,6 +1823,37 @@ public class CompartmentsTest extends AbstractCompartmentTest {
 
         // Check nominal sizes
         checkDefaultTitleBlockInitialSizes(true, new Point(0, 0), 3);
+
+        // Move the title block by moving a cell, ie a list container, with CTRL key pressed. The click is done on the
+        // title of the list.
+        int moveDelta = 60;
+        int titleDelta = 10; // the delta to click on the list title (magic number)
+        SWTBotGefEditPart cellL2C2Part = editor.getEditPart("L2C2", AbstractDiagramElementContainerEditPart.class); //$NON-NLS-1$
+        Rectangle cellL2C2Bounds = ((AbstractDiagramElementContainerEditPart) cellL2C2Part.part()).getFigure().getBounds().getCopy(); // $NON-NLS-1$
+        ((AbstractDiagramElementContainerEditPart) cellL2C2Part.part()).getFigure().translateToAbsolute(cellL2C2Bounds);
+        editPartMovedCondition = new CheckEditPartMoved(swtBotEditParts.get(0));
+        editor.dragWithKeys(cellL2C2Bounds.getTop().x(), cellL2C2Bounds.getTop().y() + titleDelta, cellL2C2Bounds.getTop().x() + moveDelta, cellL2C2Bounds.getTop().y() + titleDelta,
+                new AtomicBoolean(true), SWT.CTRL);
+        bot.waitUntil(editPartMovedCondition);
+
+        // Move the title block by moving a cell, ie a list container, with CTRL key pressed. The click is done in the
+        // middle of the list (free space).
+        cellL2C2Bounds = ((AbstractDiagramElementContainerEditPart) cellL2C2Part.part()).getFigure().getBounds().getCopy(); // $NON-NLS-1$
+        ((AbstractDiagramElementContainerEditPart) cellL2C2Part.part()).getFigure().translateToAbsolute(cellL2C2Bounds);
+        editPartMovedCondition = new CheckEditPartMoved(swtBotEditParts.get(0));
+        editor.dragWithKeys(cellL2C2Bounds.getCenter().x(), cellL2C2Bounds.getCenter().y(), cellL2C2Bounds.getCenter().x() - moveDelta, cellL2C2Bounds.getCenter().y(), new AtomicBoolean(true),
+                SWT.CTRL);
+        bot.waitUntil(editPartResizedCondition);
+
+
+        // Move the title block by moving a list item with CTRL key pressed.
+        SWTBotGefEditPart listItemPart = editor.getEditPart("another value", DNodeListElementEditPart.class); //$NON-NLS-1$
+        Rectangle listItemBounds = ((DNodeListElementEditPart) listItemPart.part()).getFigure().getBounds().getCopy(); // $NON-NLS-1$
+        ((DNodeListElementEditPart) listItemPart.part()).getFigure().translateToAbsolute(listItemBounds);
+        editPartMovedCondition = new CheckEditPartMoved(swtBotEditParts.get(0));
+        editor.dragWithKeys(listItemBounds.getCenter().x(), listItemBounds.getCenter().y(), listItemBounds.getCenter().x() + moveDelta, listItemBounds.getCenter().y(), new AtomicBoolean(true),
+                SWT.CTRL);
+        bot.waitUntil(editPartResizedCondition);
     }
 
     /**
@@ -1825,7 +1861,11 @@ public class CompartmentsTest extends AbstractCompartmentTest {
      * Check size after save, close and opening.<BR/>
      * Check size after resize (height, then width).<BR/>
      * Check size after undo resize.<BR/>
-     * Check size after Arrange All.
+     * Check size after Arrange All. <BR/>
+     * Check move when selecting a cell, ie a list container from its title area, with CTRL key pressed.<BR/>
+     * Check move when selecting a cell, ie a list container from its free space area, with CTRL key pressed.<BR/>
+     * Check move when selecting a list item with CTRL key pressed.<BR/>
+     * Check move when selecting a region from its title area with CTRL key pressed.
      */
     public void testNewDiagramWithTitleBlockWithLabel() {
         int resizeDelta = 60;
@@ -1919,6 +1959,44 @@ public class CompartmentsTest extends AbstractCompartmentTest {
         assertEquals("Wrong size for second line after \"Arrange all\".", secondLineBounds, secondLineEditPart.getFigure().getBounds()); //$NON-NLS-1$
         assertEquals("Wrong size for second list of second line after \"Arrange all\".", secondListOfSecondLineBounds, secondListOfSecondLineEditPart.getFigure().getBounds()); //$NON-NLS-1$
         assertEquals("Wrong size for second list of first line after \"Arrange all\".", secondListOfFirstLineBounds, secondListOfFirstLineEditPart.getFigure().getBounds()); //$NON-NLS-1$
+
+        // Move the title block by moving a cell, ie a list container, with CTRL key pressed. The click is done on the
+        // title of the list.
+        int moveDelta = 60;
+        int titleDelta = 10; // the delta to click on the list title (magic number)
+        secondListOfFirstLineBounds = secondListOfFirstLineEditPart.getFigure().getBounds().getCopy(); // $NON-NLS-1$
+        secondListOfFirstLineEditPart.getFigure().translateToAbsolute(secondListOfFirstLineBounds);
+        CheckEditPartMoved editPartMovedCondition = new CheckEditPartMoved(regionsContainer);
+        editor.dragWithKeys(secondListOfFirstLineBounds.getTop().x(), secondListOfFirstLineBounds.getTop().y() + titleDelta, secondListOfFirstLineBounds.getTop().x() + moveDelta,
+                secondListOfFirstLineBounds.getTop().y() + titleDelta, new AtomicBoolean(true), SWT.CTRL);
+        bot.waitUntil(editPartMovedCondition);
+
+        // Move the title block by moving a cell, ie a list container, with CTRL key pressed. The click is done in the
+        // middle of the list (free space).
+        secondListOfFirstLineBounds = secondListOfFirstLineEditPart.getFigure().getBounds().getCopy(); // $NON-NLS-1$
+        secondListOfFirstLineEditPart.getFigure().translateToAbsolute(secondListOfFirstLineBounds);
+        editPartMovedCondition = new CheckEditPartMoved(regionsContainer);
+        editor.dragWithKeys(secondListOfFirstLineBounds.getCenter().x(), secondListOfFirstLineBounds.getCenter().y(), secondListOfFirstLineBounds.getCenter().x() - moveDelta,
+                secondListOfFirstLineBounds.getCenter().y(), new AtomicBoolean(true), SWT.CTRL);
+        bot.waitUntil(editPartResizedCondition);
+
+        // Move the title block by moving a list item with CTRL key pressed.
+        SWTBotGefEditPart listItemPart = editor.getEditPart("line3", DNodeListElementEditPart.class); //$NON-NLS-1$
+        Rectangle listItemBounds = ((DNodeListElementEditPart) listItemPart.part()).getFigure().getBounds().getCopy(); // $NON-NLS-1$
+        ((DNodeListElementEditPart) listItemPart.part()).getFigure().translateToAbsolute(listItemBounds);
+        editPartMovedCondition = new CheckEditPartMoved(regionsContainer);
+        editor.dragWithKeys(listItemBounds.getCenter().x(), listItemBounds.getCenter().y(), listItemBounds.getCenter().x() + moveDelta, listItemBounds.getCenter().y(), new AtomicBoolean(true),
+                SWT.CTRL);
+        bot.waitUntil(editPartResizedCondition);
+
+        // Move the title block by moving a region, from its title area, with CTRL key pressed.
+        SWTBotGefEditPart regionTitlePart = editor.getEditPart("p1", AbstractDiagramElementContainerNameEditPart.class); //$NON-NLS-1$
+        Rectangle regionTitleBounds = ((AbstractDiagramElementContainerNameEditPart) regionTitlePart.part()).getFigure().getBounds().getCopy(); // $NON-NLS-1$
+        ((AbstractDiagramElementContainerNameEditPart) regionTitlePart.part()).getFigure().translateToAbsolute(regionTitleBounds);
+        editPartMovedCondition = new CheckEditPartMoved(regionsContainer);
+        editor.dragWithKeys(regionTitleBounds.getCenter().x(), regionTitleBounds.getCenter().y(), regionTitleBounds.getCenter().x() - moveDelta, regionTitleBounds.getCenter().y(),
+                new AtomicBoolean(true), SWT.CTRL);
+        bot.waitUntil(editPartResizedCondition);
 
         // TODO: Change font size of main title (to make width larger): KO currently
     }
