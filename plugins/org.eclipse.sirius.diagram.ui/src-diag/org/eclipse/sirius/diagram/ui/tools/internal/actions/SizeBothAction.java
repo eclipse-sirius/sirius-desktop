@@ -51,7 +51,7 @@ import com.google.common.collect.Lists;
  * Sirius specific size both action:
  * <UL>
  * <LI>specific behavior for regions container (as target or as source),</LI>
- * <LI>check authority permission in calculateEnabled()./LI>
+ * <LI>check authority permission in calculateEnabled().</LI>
  * </UL>
  * 
  * @author mporhel
@@ -101,40 +101,41 @@ public class SizeBothAction extends org.eclipse.gmf.runtime.diagram.ui.actions.i
 
             while (iter.hasNext()) {
                 IGraphicalEditPart toResizeEditPart = (IGraphicalEditPart) iter.next();
-                if (toResizeEditPart != primaryEditPart) {
-                    if (!isRegionContainer(toResizeEditPart)) {
-                        // Default behavior
-                        View resizeView = (View) toResizeEditPart.getModel();
-                        doResizeCmd.add(new ICommandProxy(new SetBoundsCommand(toResizeEditPart.getEditingDomain(), emptySetBoundsLabel, new EObjectAdapter(resizeView), primarySize)));
-                    } else {
-                        List<AbstractDiagramElementContainerEditPart> toResizeRegions = getRegionParts((AbstractDiagramContainerEditPart) toResizeEditPart);
-                        int nbRegionsInEditPartToResize = toResizeRegions.size();
-                        int nbRegionsInPrimaryEditPart = primaryRegions.size();
-                        if (nbRegionsInEditPartToResize <= nbRegionsInPrimaryEditPart) {
-                            // Set the container as auto-sized
-                            doResizeCmd.add(
-                                    new ICommandProxy(new SetBoundsCommand(toResizeEditPart.getEditingDomain(), emptySetBoundsLabel, new EObjectAdapter((View) toResizeEditPart.getModel()), new Dimension(-1, -1))));
+                if (toResizeEditPart == primaryEditPart) {
+                    continue;
+                }
+                if (!isRegionContainer(toResizeEditPart)) {
+                    // Default behavior
+                    View resizeView = (View) toResizeEditPart.getModel();
+                    doResizeCmd.add(new ICommandProxy(new SetBoundsCommand(toResizeEditPart.getEditingDomain(), emptySetBoundsLabel, new EObjectAdapter(resizeView), primarySize)));
+                } else {
+                    List<AbstractDiagramElementContainerEditPart> toResizeRegions = getRegionParts((AbstractDiagramContainerEditPart) toResizeEditPart);
+                    int nbRegionsInEditPartToResize = toResizeRegions.size();
+                    int nbRegionsInPrimaryEditPart = primaryRegions.size();
+                    if (nbRegionsInEditPartToResize <= nbRegionsInPrimaryEditPart) {
+                        // Set the container as auto-sized
+                        doResizeCmd.add(new ICommandProxy(
+                                new SetBoundsCommand(toResizeEditPart.getEditingDomain(), emptySetBoundsLabel, new EObjectAdapter((View) toResizeEditPart.getModel()), new Dimension(-1, -1))));
 
-                            for (int i = 0; i < nbRegionsInEditPartToResize; i++) {
-                                AbstractDiagramElementContainerEditPart toResizeRegion = toResizeRegions.get(i);
-                                AbstractDiagramElementContainerEditPart primaryRegion = primaryRegions.get(i);
+                        for (int i = 0; i < nbRegionsInEditPartToResize; i++) {
+                            AbstractDiagramElementContainerEditPart toResizeRegion = toResizeRegions.get(i);
+                            AbstractDiagramElementContainerEditPart primaryRegion = primaryRegions.get(i);
 
-                                Dimension newDimension = null;
+                            Dimension newDimension = null;
 
-                                // Case where there is more region in the primary container than the one we are
-                                // resizing. In that case, the last region takes the size of the remaining regions in
-                                // the primary region container.
-                                if (i == nbRegionsInEditPartToResize - 1 && nbRegionsInPrimaryEditPart > nbRegionsInEditPartToResize) {
-                                    newDimension = computeLastRegionDimension(primaryEditPart, primaryRegions, nbRegionsInPrimaryEditPart, i, primaryRegion);
+                            // Case where there is more region in the primary container than the one we are
+                            // resizing. In that case, the last region takes the size of the remaining regions in
+                            // the primary region container.
+                            if (i == nbRegionsInEditPartToResize - 1 && nbRegionsInPrimaryEditPart > nbRegionsInEditPartToResize) {
+                                newDimension = computeLastRegionDimension(primaryEditPart, primaryRegions, nbRegionsInPrimaryEditPart, i, primaryRegion);
 
-                                }
-                                if (newDimension == null) {
-                                    newDimension = getSize(primaryRegion);
-                                }
-                                View resizeView = (View) toResizeRegion.getModel();
-
-                                doResizeCmd.add(new ICommandProxy(new SetBoundsCommand(toResizeEditPart.getEditingDomain(), emptySetBoundsLabel, new EObjectAdapter(resizeView), newDimension)));
                             }
+                            if (newDimension == null) {
+                                newDimension = getSize(primaryRegion);
+                            }
+                            View resizeView = (View) toResizeRegion.getModel();
+
+                            doResizeCmd.add(new ICommandProxy(new SetBoundsCommand(toResizeEditPart.getEditingDomain(), emptySetBoundsLabel, new EObjectAdapter(resizeView), newDimension)));
                         }
                     }
                 }

@@ -34,7 +34,7 @@ public class ContainerBorderedNodeFigure extends BorderedNodeFigure {
      */
     public static final String CONTAINER_WIDTH_CHANGE = "regionsContainerWidthChange"; //$NON-NLS-1$
 
-    public ParentPropertyChangeListener parentPropertyChangeListener;
+    private ParentPropertyChangeListener parentPropertyChangeListener;
 
     /**
      * Default constructor.

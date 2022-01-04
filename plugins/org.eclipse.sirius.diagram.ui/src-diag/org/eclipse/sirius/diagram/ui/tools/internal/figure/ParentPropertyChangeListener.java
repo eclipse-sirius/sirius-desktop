@@ -77,11 +77,11 @@ public class ParentPropertyChangeListener implements PropertyChangeListener {
      * Set the region to resize when the container notify a {@link ContainerBorderedNodeFigure#CONTAINER_WIDTH_CHANGE}.
      * It can be changed in case of addition of a new region at the end of the regions container.
      * 
-     * @param lastRegionFigureToAdapt
+     * @param theLastRegionFigureToAdapt
      *            the region figure to resize.
      */
-    public void setLastRegionFigureToResize(IFigure lastRegionFigureToAdapt) {
-        this.lastRegionFigureToAdapt = lastRegionFigureToAdapt;
+    public void setLastRegionFigureToResize(IFigure theLastRegionFigureToAdapt) {
+        this.lastRegionFigureToAdapt = theLastRegionFigureToAdapt;
     }
 
     @Override
