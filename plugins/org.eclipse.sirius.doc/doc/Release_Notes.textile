@@ -28,6 +28,8 @@ h3. Developer-Visible Changes
 
 h4. Changes in @org.eclipse.sirius@
 
+* <span class="label label-success">Added</span> The class @org.eclipse.sirius.business.api.query.SiriusReferenceFinderCache@ has been added. This cache allows to avoid redundant computing to find impacted DRepresentationDescriptors returned by @org.eclipse.sirius.business.api.query.SiriusReferenceFinder.getImpactedRepresentationDescriptors@.
+* <span class="label label-success">Added</span> @org.eclipse.sirius.business.api.query.SiriusReferenceFinder.CACHE@ is a convenience to use @org.eclipse.sirius.business.api.query.SiriusReferenceFinderCache@.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.SiriusPlugin@ has been renamed to @org.eclipse.sirius.tools.api.SiriusPlugin@
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.viewpoint.Messages@ has been renamed to @org.eclipse.sirius.tools.api.Messages@
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.business.api.helper.ViewpointUtil@ has been deprecated, @org.eclipse.sirius.model.business.api.helper.ViewpointUtil@ from plugin @org.eclipse.sirius.model@ should be used instead.
