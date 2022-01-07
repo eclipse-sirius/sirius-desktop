@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -15,11 +15,11 @@ package org.eclipse.sirius.diagram.ui.tools.internal.dialogs;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -392,11 +392,11 @@ public class TreeImagesGalleryComposite extends FilteredTree {
      * @return the set of objects wrapping references to image files
      */
     private Set<Object> getImagesToAdd(String filter) {
-        Set<Object> imagesToAdd = new HashSet<>();
+        Set<Object> imagesToAdd = new TreeSet<>();
         ITreeSelection structuredSelection = treeViewer.getStructuredSelection();
         if (!structuredSelection.isEmpty()) {
             for (Object object : structuredSelection.toArray()) {
-                Set<Object> images = new HashSet<>();
+                Set<Object> images = new TreeSet<>();
                 for (Object element : contentProvider.getChildren(object)) {
                     if (contentProvider.getImageFile(element).isPresent()) {
                         images.add(element);
