@@ -13,11 +13,10 @@
   <module name="TreeWalker">
     <module name="SuppressionCommentFilter"/>
     <module name="SuppressWarningsHolder"/>
-    <module name="JavadocMethod">
+    <module name="MissingJavadocMethodCheck">
       <property name="severity" value="error"/>
       <property name="scope" value="protected"/>
       <property name="allowMissingPropertyJavadoc" value="true"/>
-      <property name="suppressLoadErrors" value="true"/>
     </module>
     <module name="JavadocStyle">
       <property name="severity" value="error"/>
