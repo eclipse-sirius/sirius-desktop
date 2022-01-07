@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import java.util.List;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.dialogs.Dialog;
+import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
@@ -79,13 +80,17 @@ public class ImageSelectionDialog extends Dialog {
      */
     private ILabelProvider labelProvider;
 
+    private boolean onlyCloseButton;
+
     /**
      * Create a new instance of {@link ImageSelectionDialog}.
      * 
+     * @param onlyCloseButton
+     *            if true there is only the close button instead of OK/Cancel
      * @param parentShell
      *            the parent shell
      */
-    public ImageSelectionDialog(Shell parentShell) {
+    public ImageSelectionDialog(Shell parentShell, boolean onlyCloseButton) {
         super(parentShell);
         this.title = Messages.ResourceSelectionDialog_title;
         this.root = ResourcesPlugin.getWorkspace().getRoot();
@@ -93,6 +98,7 @@ public class ImageSelectionDialog extends Dialog {
         this.contentProvider = new ImageWorkspaceContentProvider();
         this.filters = new ArrayList<>();
         this.filters.add(ImageFiltersUtils.createFileExtensionFilter());
+        this.onlyCloseButton = onlyCloseButton;
     }
 
     @Override
@@ -109,14 +115,20 @@ public class ImageSelectionDialog extends Dialog {
 
         return container;
     }
-    
+
     @Override
-    protected Control createButtonBar(Composite parent) {
-        Control buttonBar = super.createButtonBar(parent);
-        Button okButton = getButton(OK);
-        okButton.setEnabled(false);
-        treeGalleryComposite.createListenerForOKButton(okButton);
-        return buttonBar;
+    protected void createButtonsForButtonBar(Composite parent) {
+        if (onlyCloseButton) {
+            // create only close button
+            createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CLOSE_LABEL, true);
+        } else {
+            // create OK and Cancel buttons by default
+            Button okButton = createButton(parent, IDialogConstants.OK_ID, IDialogConstants.OK_LABEL, true);
+            okButton.setEnabled(false);
+            treeGalleryComposite.createListenerForOKButton(okButton);
+
+            createButton(parent, IDialogConstants.CANCEL_ID, IDialogConstants.CANCEL_LABEL, false);
+        }
     }
 
     @Override

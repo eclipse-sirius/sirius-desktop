@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2012, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -33,7 +33,7 @@ public class WorkspaceImageSelector implements ImageSelector {
         String imagePath = null;
         Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
 
-        ImageSelectionDialog dialog = new ImageSelectionDialog(activeShell);
+        ImageSelectionDialog dialog = new ImageSelectionDialog(activeShell, false);
         dialog.setTitle(Messages.SelectDiagramElementBackgroundImageDialog_title);
         if (dialog.open() == Window.OK) {
             imagePath = dialog.getImagePath();
