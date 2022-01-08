@@ -74,18 +74,23 @@ public interface SessionManagerListener {
      * An empty implementation of SessionManagerListener for convenience.
      */
     class Stub implements SessionManagerListener {
+        @Override
         public void notify(final Session updated, final int notification) {
         }
 
+        @Override
         public void notifyAddSession(final Session newSession) {
         }
 
+        @Override
         public void notifyRemoveSession(final Session removedSession) {
         }
 
+        @Override
         public void viewpointDeselected(final Viewpoint deselectedSirius) {
         }
 
+        @Override
         public void viewpointSelected(final Viewpoint selectedSirius) {
         }
 

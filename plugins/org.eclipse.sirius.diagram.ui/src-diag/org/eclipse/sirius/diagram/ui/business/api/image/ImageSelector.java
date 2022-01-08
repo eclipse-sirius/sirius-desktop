@@ -29,7 +29,14 @@ public interface ImageSelector {
      * @author lfasani
      */
     enum SelectionMode {
-        MONO_SELECTION, MULTI_SELECTION
+        /**
+         * Used to select a single image.
+         */
+        MONO_SELECTION,
+        /**
+         * Used to select multiple images.
+         */
+        MULTI_SELECTION
     };
 
     /**
