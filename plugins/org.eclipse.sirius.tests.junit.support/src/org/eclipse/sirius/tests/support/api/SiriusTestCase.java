@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -35,10 +35,12 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.ILogListener;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
@@ -77,6 +79,7 @@ import org.eclipse.sirius.business.internal.migration.description.VSMMigrationSe
 import org.eclipse.sirius.business.internal.migration.description.VSMVersionSAXParser;
 import org.eclipse.sirius.business.internal.session.danalysis.SaveSessionJob;
 import org.eclipse.sirius.common.tools.api.interpreter.IInterpreter;
+import org.eclipse.sirius.common.tools.api.resource.FileProvider;
 import org.eclipse.sirius.common.tools.api.util.CommandStackUtil;
 import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.tools.api.command.DiagramCommandFactoryService;
@@ -126,7 +129,6 @@ import junit.framework.TestCase;
  * @author mchauvin
  */
 public abstract class SiriusTestCase extends TestCase {
-
     /** Type of the URI. */
     public enum ResourceURIType {
         /** URI of type platform. */
@@ -373,19 +375,15 @@ public abstract class SiriusTestCase extends TestCase {
      */
     protected void genericSetUp(final List<URI> semanticResourceURIs, final List<URI> modelerResourceURIs, boolean createSession, final URI sessionResourceURI) throws Exception {
         TestsUtil.emptyEventsFromUIThread();
-
         /* Set no ui callbacks for tests */
         SiriusEditPlugin.getPlugin().setUiCallback(new NoUICallback());
-
         createOrLoadAndOpenSession(createSession, sessionResourceURI);
-
         /* Load the modeler description in the editing domain resource set */
         if (modelerResourceURIs != null) {
             for (final URI modelerResourceURI : modelerResourceURIs) {
                 loadModeler(modelerResourceURI, session.getTransactionalEditingDomain());
             }
         }
-
         if (semanticResourceURIs != null && !semanticResourceURIs.isEmpty()) {
             for (URI semanticResourceURI : semanticResourceURIs) {
                 if (!hasAlreadySemanticResourceLoaded(session, semanticResourceURI)) {
@@ -793,9 +791,7 @@ public abstract class SiriusTestCase extends TestCase {
     protected synchronized String getLoggersMessage(String type, Multimap<String, IStatus> messages) {
         StringBuilder log1 = new StringBuilder();
         String br = "\n";
-
         String testName = getClass().getName();
-
         log1.append(type + "(s) raised during test : " + testName).append(br);
         for (Entry<String, Collection<IStatus>> entry : messages.asMap().entrySet()) {
             String reporter = entry.getKey();
@@ -1526,6 +1522,36 @@ public abstract class SiriusTestCase extends TestCase {
             final String pluginFilePath = pluginCommonPath + path;
             final String wksPath = targetPath + File.separator + path;
             EclipseTestsSupportHelper.INSTANCE.copyFile(pluginID, pluginFilePath, wksPath);
+        }
+    }
+
+    /**
+     * Copy all files recursively from the source project to the project in the junit workspace.
+     * 
+     * @param pluginID
+     *            the plugin id
+     * @param sourceProjecPathInPlugin
+     *            the relative path in plugin of the project to copy
+     * @param projectName
+     *            the destination project name that will be copied in the junit workspace
+     */
+    protected void copyAllFiles(String pluginID, String sourceProjecPathInPlugin, String projectName) {
+        // It is needed because the platform URI of the aird can not be resolved.
+        EclipseTestsSupportHelper.INSTANCE.createProject(projectName);
+
+        final File sourceFile = FileProvider.getDefault().getFile(pluginID, new Path(sourceProjecPathInPlugin));
+        String sourceAbsolutePath = sourceFile.getAbsolutePath();
+        IPath destinationPath = ResourcesPlugin.getWorkspace().getRoot().getRawLocation().append(projectName);
+        String targetAbsolutePath = destinationPath.toOSString();
+        try {
+            EclipseTestsSupportHelper.INSTANCE.copyDirectory(sourceAbsolutePath, targetAbsolutePath);
+        } catch (IOException exception) {
+            Assert.fail(exception.getMessage());
+        }
+
+        try {
+            ResourcesPlugin.getWorkspace().getRoot().refreshLocal(org.eclipse.core.resources.IResource.DEPTH_INFINITE, null);
+        } catch (CoreException e) {
         }
     }
 

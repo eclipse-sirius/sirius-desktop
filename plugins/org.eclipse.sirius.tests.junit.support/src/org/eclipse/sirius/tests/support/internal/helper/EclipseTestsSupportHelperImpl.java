@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -237,6 +237,17 @@ public final class EclipseTestsSupportHelperImpl implements EclipseTestsSupportH
             destFile.createNewFile();
         }
         Files.copy(Paths.get(sourceFile.getAbsolutePath()), Paths.get(destFile.getAbsolutePath()), StandardCopyOption.REPLACE_EXISTING);
+    }
+
+    @Override
+    public void copyDirectory(String sourceDirectoryLocation, String destinationDirectoryLocation) throws IOException {
+        Files.walk(Paths.get(sourceDirectoryLocation)).forEach(source -> {
+            java.nio.file.Path destination = Paths.get(destinationDirectoryLocation, source.toString().substring(sourceDirectoryLocation.length()));
+            try {
+                Files.copy(source, destination);
+            } catch (IOException e) {
+            }
+        });
     }
 
     @Override

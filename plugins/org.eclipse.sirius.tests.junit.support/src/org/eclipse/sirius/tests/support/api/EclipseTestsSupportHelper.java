@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2009, 2014 THALES GLOBAL SERVICES
+ * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -48,8 +48,7 @@ public interface EclipseTestsSupportHelper {
      * @param projectName
      *            name of the created project
      * @param createAndOpenBlankRepresentationsFile
-     *            true if a blank representations file must be created and open,
-     *            false otherwise
+     *            true if a blank representations file must be created and open, false otherwise
      * 
      * @return a new created Project
      */
@@ -130,16 +129,14 @@ public interface EclipseTestsSupportHelper {
      * @param fileWorkspaceRelativePath
      *            the path of the file to modify, relative to workspace
      * @param readOnly
-     *            <code>true</code> if specified file must be read-only,
-     *            <code>false</code> otherwise.
+     *            <code>true</code> if specified file must be read-only, <code>false</code> otherwise.
      */
     void changeFileReadOnlyAttribute(String fileWorkspaceRelativePath, boolean readOnly);
 
     /**
      * Change the read only status of the given resources.
      * 
-     * Please note that some file systems might not support setting the file as
-     * read only or might lock the files.
+     * Please note that some file systems might not support setting the file as read only or might lock the files.
      * 
      * @param readOnly
      *            the read only status to set
@@ -155,4 +152,16 @@ public interface EclipseTestsSupportHelper {
      *            The path of the file to delete, relative to the workspace.
      */
     void deleteFile(String workspaceRelativePath);
+
+    /**
+     * Copy all files recursively from the source location to the target location.
+     * 
+     * @param sourceDirectoryLocation
+     *            the absolute path source location
+     * @param destinationDirectoryLocation
+     *            the absolute path target location
+     * @throws IOException
+     *             in case of problem
+     */
+    void copyDirectory(String sourceDirectoryLocation, String destinationDirectoryLocation) throws IOException;
 }
