@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.eclipse.sirius.business.api.componentization.ViewpointRegistry;
 import org.eclipse.sirius.business.api.dialect.description.IInterpretedExpressionQueryProvider;
 import org.eclipse.sirius.business.api.dialect.description.MultiLanguagesValidator;
+import org.eclipse.sirius.business.api.image.RichTextAttributeRegistry;
 import org.eclipse.sirius.business.internal.dialect.description.InterpretedExpressionQueryProviderRegistry;
 import org.eclipse.sirius.business.internal.helper.delete.DeleteHookDescriptorRegistryListener;
 import org.eclipse.sirius.business.internal.helper.task.ModelOperationManagerRegistryListener;
@@ -234,6 +235,8 @@ public final class SiriusPlugin extends EMFPlugin {
             }
 
             DRepresentationInternalQueryHelper.setInstance(new DRepresentationWithSessionInternalQueryHelper());
+
+            RichTextAttributeRegistry.INSTANCE.add(DescriptionPackage.eINSTANCE.getDocumentedElement_Documentation());
         }
 
         /**
