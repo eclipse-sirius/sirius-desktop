@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2020, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -106,8 +106,8 @@ public final class DAnalysisSessionHelper {
      *            the analysis selector
      * @return the selected analysis
      */
+    @Deprecated(forRemoval = true)
     public DAnalysis selectAnalysis(final Resource resource, final Collection<DAnalysis> candidates, final DAnalysisSelector analysisSelector) {
-
         if (candidates.size() > 1 && analysisSelector != null) {
             return analysisSelector.selectSmartlyAnalysisForAddedResource(resource, candidates);
         } else {

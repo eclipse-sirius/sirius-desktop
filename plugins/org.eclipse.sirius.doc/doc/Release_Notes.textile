@@ -34,6 +34,7 @@ h4. Changes in @org.eclipse.sirius@
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.business.api.resource.ResourceDescriptor@ has been moved to @org.eclipse.sirius.model@ plugin alongside with code generated from Sirius metamodel as it is one of its data type. 
 * <span class="label label-info">Modified</span> The package @org.eclipse.sirius.business.api.resource@ has been renamed to @org.eclipse.sirius.business.api.resource.support@. Impacted classes are @org.eclipse.sirius.business.api.resource.support.LoadEMFResource@ and @org.eclipse.sirius.business.api.resource.support.WorkspaceDragAndDropSupport@.
 * <span class="label label-info">Modified</span> @org.eclipse.sirius.tools.api.ui.color.EnvironmentSystemColorFactory@ has been moved to @org.eclipse.sirius.model@ plugin.
+* <span class="label label-info">Modified</span> Methods @org.eclipse.sirius.business.api.session.danalysis.DAnalysisSelector.selectSmartlyAnalysisForAddedResource(Resource, Collection<DAnalysis>)@ and @org.eclipse.sirius.business.api.session.danalysis.DAnalysisSessionHelper.selectAnalysis(Resource, Collection<DAnalysis>, DAnalysisSelector)@ have been deprecated for removal in a future version.
 
 h4. Changes in @org.eclipse.sirius.diagram@
 
