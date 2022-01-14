@@ -104,6 +104,11 @@
                   Constraints defined by the specifier in the Viewpoint Specification model as Validation rules
 Constraints applying on the diagrams and sequence diagrams.
             </category>
+            <category
+                  id="org.eclipse.sirius.model.general"
+                  name="%constraint.model.general.category.name">
+               General constraints
+            </category>
          </category>
       </category>
       <constraintProvider

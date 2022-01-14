@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2005, 2010 THALES GLOBAL SERVICES.
+ * Copyright (c) 2005, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.StringTokenizer;
 
@@ -112,6 +113,31 @@ public class FileProvider {
     public File getFile(final String pluginId, final String fullName, final String extension) {
         final IPath fullPath = new Path(fullName.replaceAll("\\.", "/")).addFileExtension(extension); //$NON-NLS-1$ //$NON-NLS-2$
         return getFile(pluginId, fullPath);
+    }
+
+    /**
+     * Indicate if the given full path corresponds to an existing file.<br/>
+     * The file is searched in workspace, plugin or from an external source using {@link IFileGetter}.
+     * 
+     * @param fullPath
+     *            is the full path of the file
+     * @return the file
+     */
+    public boolean exists(final IPath fullPath) {
+        boolean exists = false;
+        if (fullPath != null && fullPath.segmentCount() > 0) {
+
+            // If the path contains a specific URI
+            for (IFileGetter getter : fileGetters) {
+                Optional<Boolean> existsOptional = getter.exists(fullPath);
+                if (existsOptional.isPresent()) {
+                    return existsOptional.get();
+                }
+            }
+            final IFile eclipseFile = FileProvider.findFile(fullPath);
+            exists = eclipseFile != null && eclipseFile.exists();
+        }
+        return exists;
     }
 
     /**
@@ -303,8 +329,8 @@ public class FileProvider {
     }
 
     /**
-     * Finds and returns the member resource identified by the given path in the
-     * workspace, or null if no such resource exists.
+     * Finds and returns the member resource identified by the given path in the workspace, or null if no such resource
+     * exists.
      * 
      * @param path
      *            is the path of the desired resource
@@ -320,8 +346,7 @@ public class FileProvider {
     }
 
     /**
-     * Finds and returns the file identified by the given path in the workspace,
-     * or null if no such file exists.
+     * Finds and returns the file identified by the given path in the workspace, or null if no such file exists.
      * 
      * @param path
      *            is the path of the desired resource
