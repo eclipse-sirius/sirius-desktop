@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015, 2021 Obeo and THALES GLOBAL SERVICES.
+ * Copyright (c) 2015, 2022 Obeo and THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -665,6 +665,9 @@ public final class Messages {
     public static String IDiagramOutlinePage_overviewTooltip;
 
     @TranslatableMessage
+    public static String ImageMarkerResolution_label;
+
+    @TranslatableMessage
     public static String InitializeHiddenElementsCommand_label;
 
     @TranslatableMessage
@@ -1059,10 +1062,10 @@ public final class Messages {
 
     @TranslatableMessage
     public static String SetBestHeightHeaderCommand_label;
-    
+
     @TranslatableMessage
     public static String SetChangeIdMigrationParticipant_title;
-    
+
     @TranslatableMessage
     public static String SetChangeIdMigrationParticipant_changeIDModified;
 

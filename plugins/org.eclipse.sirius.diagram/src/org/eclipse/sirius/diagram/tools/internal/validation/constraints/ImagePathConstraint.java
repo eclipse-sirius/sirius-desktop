@@ -38,6 +38,7 @@ import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.DiagramPackage;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.tools.api.Messages;
+import org.eclipse.sirius.diagram.tools.internal.validation.constraints.ImagePathWrappingStatus.ImagePathTarget;
 import org.eclipse.sirius.ext.emf.edit.EditingDomainServices;
 import org.eclipse.sirius.tools.internal.validation.AbstractConstraint;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -67,14 +68,14 @@ public class ImagePathConstraint extends AbstractConstraint {
                 if (eObj instanceof DRepresentation) {
                     DRepresentationDescriptor representationDescriptor = new DRepresentationQuery((DRepresentation) eObj).getRepresentationDescriptor();
                     if (representationDescriptor != null) {
-                        failureStatuses.addAll(validateImagePathInRichText(representationDescriptor, ctx));
+                        failureStatuses.addAll(validateImagePathInRichText(representationDescriptor, ctx, ImagePathWrappingStatus.ImagePathTarget.DREPRESENTATION_DESCRIPTOR));
                     }
                 } else if (eObj instanceof WorkspaceImage) {
                     validateWorkspaceImagePath((WorkspaceImage) eObj, ctx, failureStatuses);
                 }
             } else {
                 // case of the semantic objects
-                failureStatuses.addAll(validateImagePathInRichText(eObj, ctx));
+                failureStatuses.addAll(validateImagePathInRichText(eObj, ctx, ImagePathWrappingStatus.ImagePathTarget.SEMANTIC_TARGET));
             }
         }
         if (failureStatuses.isEmpty()) {
@@ -97,12 +98,13 @@ public class ImagePathConstraint extends AbstractConstraint {
             String message = MessageFormat.format(Messages.ImagePathConstraint_workspaceImagePathError, workspacePath, new EditingDomainServices().getLabelProviderText(workspaceImage.eContainer()),
                     repDescName);
             // The constraint needs to be associated to the diagram element
-            ConstraintStatus failureStatus = ConstraintStatus.createStatus(ctx, workspaceImage.eContainer(), null, "{0}", message); //$NON-NLS-1$
+            ConstraintStatus failureStatus = new ImagePathWrappingStatus(ConstraintStatus.createStatus(ctx, workspaceImage.eContainer(), null, "{0}", message), //$NON-NLS-1$
+                    ImagePathWrappingStatus.ImagePathTarget.WORKSPACE_IMAGE, workspacePath);
             statuses.add(failureStatus);
         }
     }
 
-    private List<IStatus> validateImagePathInRichText(EObject eObject, IValidationContext ctx) {
+    private List<IStatus> validateImagePathInRichText(EObject eObject, IValidationContext ctx, ImagePathTarget imagePathTarget) {
         List<IStatus> statuses = new ArrayList<>();
         EList<EAttribute> attrs = eObject.eClass().getEAllAttributes();
         Set<EAttribute> richTextAttributes = RichTextAttributeRegistry.INSTANCE.getEAttributes();
@@ -112,33 +114,37 @@ public class ImagePathConstraint extends AbstractConstraint {
                 if (stringObj instanceof String) {
                     String htmlText = (String) stringObj;
 
-                    statuses.addAll(checkAbsolutePathInString(ctx, eObject, htmlText));
-                    statuses.addAll(checkRelativePathInString(ctx, eObject, htmlText));
+                    statuses.addAll(checkAbsolutePathInString(ctx, eObject, htmlText, attr, imagePathTarget));
+                    statuses.addAll(checkRelativePathInString(ctx, eObject, htmlText, attr, imagePathTarget));
                 }
             }
         }
         return statuses;
     }
 
-    private Collection<IStatus> checkRelativePathInString(IValidationContext ctx, EObject eObject, String strValue) {
+    private Collection<IStatus> checkRelativePathInString(IValidationContext ctx, EObject eObject, String strValue, EAttribute attr, ImagePathTarget imagePathTarget) {
         Collection<IStatus> statuses = new ArrayList<>();
         Pattern pattern = Pattern.compile(ImageManager.HTML_IMAGE_PATH_PATTERN);
         Matcher matcher = pattern.matcher(strValue);
 
+        List<String> alreadyCheckedPath = new ArrayList<>();
         while (matcher.find()) {
             if (matcher.groupCount() == 1) {
                 String path = matcher.group(1);
                 boolean exists = FileProvider.getDefault().exists(new Path(path));
-                if (!exists) {
+                if (!exists && !alreadyCheckedPath.contains(path)) {
+                    alreadyCheckedPath.add(path);
                     String message = MessageFormat.format(Messages.ImagePathConstraint_relativePathError, path, new EditingDomainServices().getLabelProviderText(eObject));
-                    statuses.add(ctx.createFailureStatus(new Object[] { message }));
+                    ImagePathWrappingStatus imagePathWrappingStatus = new ImagePathWrappingStatus((ConstraintStatus) ctx.createFailureStatus(new Object[] { message }), imagePathTarget, path);
+                    imagePathWrappingStatus.setEAttribute(attr);
+                    statuses.add(imagePathWrappingStatus);
                 }
             }
         }
         return statuses;
     }
 
-    private Collection<IStatus> checkAbsolutePathInString(IValidationContext ctx, EObject eObject, String strValue) {
+    private Collection<IStatus> checkAbsolutePathInString(IValidationContext ctx, EObject eObject, String strValue, EAttribute attr, ImagePathTarget imagePathTarget) {
         Collection<IStatus> statuses = new ArrayList<>();
         Pattern pattern = Pattern.compile(HTML_IMAGE_ABSOLUTE_PATH_PATTERN);
         Matcher matcher = pattern.matcher(strValue);
@@ -146,7 +152,9 @@ public class ImagePathConstraint extends AbstractConstraint {
         while (matcher.find()) {
             if (matcher.groupCount() == 1) {
                 String message = MessageFormat.format(Messages.ImagePathConstraint_absolutePathError, matcher.group(1), new EditingDomainServices().getLabelProviderText(eObject));
-                statuses.add(ctx.createFailureStatus(new Object[] { message }));
+                ImagePathWrappingStatus imagePathWrappingStatus = new ImagePathWrappingStatus((ConstraintStatus) ctx.createFailureStatus(new Object[] { message }), imagePathTarget, matcher.group(1));
+                imagePathWrappingStatus.setEAttribute(attr);
+                statuses.add(imagePathWrappingStatus);
             }
         }
         return statuses;

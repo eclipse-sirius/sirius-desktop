@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -21,7 +21,6 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramEditor;
 import org.eclipse.gmf.runtime.notation.Diagram;
@@ -29,7 +28,6 @@ import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditorUtil;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
-import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 
 /**
  * @was-generated
@@ -86,30 +84,6 @@ public class SiriusMarkerNavigationProvider extends AbstractModelMarkerNavigatio
             marker = file.createMarker(MARKER_TYPE);
             marker.setAttribute(IMarker.MESSAGE, message);
             marker.setAttribute(IMarker.LOCATION, location);
-            marker.setAttribute(org.eclipse.gmf.runtime.common.ui.resources.IMarker.ELEMENT_ID, elementId);
-            int markerSeverity = IMarker.SEVERITY_INFO;
-            if (statusSeverity == IStatus.WARNING) {
-                markerSeverity = IMarker.SEVERITY_WARNING;
-            } else if (statusSeverity == IStatus.ERROR || statusSeverity == IStatus.CANCEL) {
-                markerSeverity = IMarker.SEVERITY_ERROR;
-            }
-            marker.setAttribute(IMarker.SEVERITY, markerSeverity);
-        } catch (CoreException e) {
-            DiagramPlugin.getDefault().logError(Messages.SiriusMarkerNavigationProvider_validationMarkerCreationError, e);
-        }
-        return marker;
-    }
-
-    /**
-     * @param validationRule
-     */
-    public static IMarker addValidationRuleMarker(ValidationRule validationRule, IFile file, String elementId, String location, String message, int statusSeverity) {
-        IMarker marker = null;
-        try {
-            marker = file.createMarker(MARKER_TYPE);
-            marker.setAttribute(IMarker.MESSAGE, message);
-            marker.setAttribute(IMarker.LOCATION, location);
-            marker.setAttribute("rule", EcoreUtil.getURI(validationRule).toString()); //$NON-NLS-1$
             marker.setAttribute(org.eclipse.gmf.runtime.common.ui.resources.IMarker.ELEMENT_ID, elementId);
             int markerSeverity = IMarker.SEVERITY_INFO;
             if (statusSeverity == IStatus.WARNING) {

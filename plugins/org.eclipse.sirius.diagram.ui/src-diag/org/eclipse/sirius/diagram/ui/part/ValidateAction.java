@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,7 +18,6 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.core.resources.IFile;
@@ -26,7 +25,6 @@ import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.Diagnostician;
@@ -37,16 +35,13 @@ import org.eclipse.emf.validation.service.IBatchValidator;
 import org.eclipse.emf.validation.service.ITraversalStrategy;
 import org.eclipse.emf.validation.service.ModelValidationService;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
-import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gmf.runtime.common.ui.util.IWorkbenchPartDescriptor;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.DiagramEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.parts.IDiagramWorkbenchPart;
 import org.eclipse.gmf.runtime.emf.core.util.EMFCoreUtil;
-import org.eclipse.gmf.runtime.notation.Diagram;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.operation.IRunnableWithProgress;
-import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
@@ -54,16 +49,17 @@ import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.internal.validation.constraints.ImagePathWrappingStatus;
 import org.eclipse.sirius.diagram.ui.business.api.view.SiriusGMFHelper;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusMarkerNavigationProvider;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusValidationProvider;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.marker.SiriusMarkerNavigationProviderSpec;
 import org.eclipse.sirius.diagram.ui.tools.internal.part.OffscreenEditPartFactory;
 import org.eclipse.sirius.ext.base.Option;
 import org.eclipse.sirius.ext.emf.AllContents;
 import org.eclipse.sirius.tools.api.validation.constraint.RuleWrappingStatus;
-import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
 import org.eclipse.sirius.viewpoint.DRepresentationElement;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.ViewpointPackage;
@@ -241,7 +237,7 @@ public class ValidateAction extends Action {
      */
     @SuppressWarnings("rawtypes")
     private static void createMarkers(IFile target, IStatus validationStatus, DiagramEditPart diagramEditPart) {
-        if (validationStatus.isOK()) {
+        if (validationStatus.isOK() || target == null) {
             return;
         }
         final IStatus rootStatus = validationStatus;
@@ -252,9 +248,13 @@ public class ValidateAction extends Action {
             View view = getCorrespondingView(nextStatus.getTarget(), diagramEditPart);
             String qualifiedName = EMFCoreUtil.getQualifiedName(nextStatus.getTarget(), true);
             if (nextStatus instanceof RuleWrappingStatus) {
-                createValidationRuleMarker((RuleWrappingStatus) nextStatus, diagramEditPart.getViewer(), target, view, qualifiedName, nextStatus.getMessage(), nextStatus.getSeverity());
+                SiriusMarkerNavigationProviderSpec.createValidationRuleMarker(((RuleWrappingStatus) nextStatus).getOriginRule(), diagramEditPart.getViewer(), target, view, qualifiedName,
+                        nextStatus.getMessage(), nextStatus.getSeverity());
+            } else if (nextStatus instanceof ImagePathWrappingStatus) {
+                SiriusMarkerNavigationProviderSpec.createImagePathMarker((ImagePathWrappingStatus) nextStatus, diagramEditPart.getViewer(), target, view, qualifiedName, nextStatus.getMessage(),
+                        nextStatus.getSeverity());
             } else {
-                addMarker(diagramEditPart.getViewer(), target, view, qualifiedName, nextStatus.getMessage(), nextStatus.getSeverity());
+                SiriusMarkerNavigationProviderSpec.addMarker(diagramEditPart.getViewer(), target, view, qualifiedName, nextStatus.getMessage(), nextStatus.getSeverity());
             }
         }
     }
@@ -271,30 +271,12 @@ public class ValidateAction extends Action {
         return view;
     }
 
-    private static void createValidationRuleMarker(RuleWrappingStatus nextStatus, EditPartViewer viewer, IFile target, View view, String location, String message, int statusSeverity) {
-        if (target == null) {
-            return;
-        }
-        String elementId = view.eResource().getURIFragment(view);
-        // Search semantic URI
-        String semanticURI = null;
-        EObject ddiagramElement = view.getElement();
-        if (ddiagramElement instanceof DSemanticDecorator) {
-            EObject semanticElement = ((DSemanticDecorator) ddiagramElement).getTarget();
-            semanticURI = EcoreUtil.getURI(semanticElement).toString();
-        }
-        // Search diagram URI
-        Object object = viewer.getFocusEditPart().getModel();
-        String diagramDescriptorUri = getDRepresentationDescriptorURIFromDiagram(object);
-        SiriusMarkerNavigationProviderSpec.addValidationRuleMarker(nextStatus.getOriginRule(), target, elementId, diagramDescriptorUri, semanticURI, location, message, statusSeverity);
-    }
-
     /**
      * @was-generated-NOT
      */
     @SuppressWarnings("rawtypes")
     private static void createMarkers(IFile target, Diagnostic emfValidationStatus, DiagramEditPart diagramEditPart) {
-        if (emfValidationStatus.getSeverity() == Diagnostic.OK) {
+        if (emfValidationStatus.getSeverity() == Diagnostic.OK || target == null) {
             return;
         }
         final Diagnostic rootStatus = emfValidationStatus;
@@ -306,7 +288,7 @@ public class ValidateAction extends Action {
             if (data != null && !data.isEmpty() && data.get(0) instanceof EObject) {
                 EObject element = (EObject) data.get(0);
                 View view = getCorrespondingView(element, diagramEditPart);
-                addMarker(diagramEditPart.getViewer(), target, view, EMFCoreUtil.getQualifiedName(element, true), nextDiagnostic.getMessage(),
+                SiriusMarkerNavigationProviderSpec.addMarker(diagramEditPart.getViewer(), target, view, EMFCoreUtil.getQualifiedName(element, true), nextDiagnostic.getMessage(),
                         diagnosticToStatusSeverity(nextDiagnostic.getSeverity()));
             }
         }
@@ -327,39 +309,6 @@ public class ValidateAction extends Action {
             dSemanticDecorator = (DSemanticDecorator) element;
         }
         return dSemanticDecorator;
-    }
-
-    private static void addMarker(EditPartViewer viewer, IFile target, View view, String location, String message, int statusSeverity) {
-        if (target == null) {
-            return;
-        }
-        String elementId = view.eResource().getURIFragment(view);
-        // Search semantic URI
-        String semanticURI = null;
-        EObject ddiagramElement = view.getElement();
-        if (ddiagramElement instanceof DSemanticDecorator) {
-            EObject semanticElement = ((DSemanticDecorator) ddiagramElement).getTarget();
-            semanticURI = EcoreUtil.getURI(semanticElement).toString();
-        }
-        // Search diagram URI
-        Object object = viewer.getFocusEditPart().getModel();
-        String diagramDescriptorUri = getDRepresentationDescriptorURIFromDiagram(object);
-        SiriusMarkerNavigationProviderSpec.addMarker(target, elementId, diagramDescriptorUri, semanticURI, location, message, statusSeverity);
-    }
-
-    private static String getDRepresentationDescriptorURIFromDiagram(Object object) {
-        String diagramDescriptorUri = null;
-        if (object instanceof Diagram) {
-            Optional<DRepresentationDescriptor> optional = Optional.of((Diagram) object).map(View::getElement).filter(DDiagram.class::isInstance).map(d -> {
-                DRepresentationQuery query = new DRepresentationQuery((DDiagram) d);
-                return query.getRepresentationDescriptor();
-            });
-            if (optional.isPresent()) {
-                final URI uri = EcoreUtil.getURI(optional.get());
-                diagramDescriptorUri = uri.toString();
-            }
-        }
-        return diagramDescriptorUri;
     }
 
     /**

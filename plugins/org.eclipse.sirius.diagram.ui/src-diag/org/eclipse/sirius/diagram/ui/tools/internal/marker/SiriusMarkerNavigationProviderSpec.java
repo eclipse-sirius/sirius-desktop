@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -26,14 +26,18 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.EditPartViewer;
 import org.eclipse.gmf.runtime.notation.Diagram;
+import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.business.api.modelingproject.AbstractRepresentationsFileJob;
+import org.eclipse.sirius.business.api.query.DRepresentationQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DSemanticDiagram;
 import org.eclipse.sirius.diagram.business.api.query.EObjectQuery;
 import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
+import org.eclipse.sirius.diagram.tools.internal.validation.constraints.ImagePathWrappingStatus;
 import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
 import org.eclipse.sirius.diagram.ui.internal.providers.SiriusMarkerNavigationProvider;
 import org.eclipse.sirius.diagram.ui.part.SiriusDiagramEditor;
@@ -46,6 +50,7 @@ import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.session.SessionEditorInput;
 import org.eclipse.sirius.ui.tools.api.project.ModelingProjectManager;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.description.validation.ValidationRule;
 import org.eclipse.ui.IEditorReference;
 import org.eclipse.ui.PartInitException;
@@ -242,21 +247,15 @@ public class SiriusMarkerNavigationProviderSpec extends SiriusMarkerNavigationPr
         return marker;
     }
 
-    // CHECKSTYLE:OFF
-
     /**
      * Add a marker.
      * 
-     * @param validationRule
-     *            The validation rule
-     * @param file
-     *            The file to add marker
-     * @param elementId
-     *            the element id (segment of URI)
-     * @param diagramDescriptorUri
-     *            the URI of the diagram DRepresentationDescriptor where the element is
-     * @param semanticURI
-     *            the URI of the semantic element
+     * @param viewer
+     *            diagram viewer
+     * @param targetFile
+     *            the aird file on which the markers are created
+     * @param view
+     *            the view associated to the marker
      * @param location
      *            A human-readable (localized) string which can be used to distinguish between markers on a resource
      * @param message
@@ -265,20 +264,96 @@ public class SiriusMarkerNavigationProviderSpec extends SiriusMarkerNavigationPr
      *            A number from the set of high, normal and low priorities defined by the platform.
      * @return The added marker.
      */
-    public static IMarker addValidationRuleMarker(final ValidationRule validationRule, final IFile file, final String elementId, final String diagramDescriptorUri, final String semanticURI,
-            final String location, final String message, final int statusSeverity) {
-        final IMarker marker = SiriusMarkerNavigationProvider.addValidationRuleMarker(validationRule, file, elementId, location, message, statusSeverity);
-        try {
-            marker.setAttribute(NavigationMarkerConstants.DIAGRAM_DESCRIPTOR_URI, diagramDescriptorUri);
-            marker.setAttribute(NavigationMarkerConstants.SEMANTIC_URI, semanticURI);
-            marker.setAttribute(IDE.EDITOR_ID_ATTR, DDiagramEditor.EDITOR_ID);
-        } catch (final CoreException e) {
-            DiagramPlugin.getDefault().logError(Messages.SiriusMarkerNavigationProvider_validationMarkerCreationError, e);
+    public static IMarker addMarker(EditPartViewer viewer, IFile target, View view, String location, String message, int statusSeverity) {
+        String elementId = view.eResource().getURIFragment(view);
+        // Search semantic URI
+        String semanticURI = null;
+        EObject ddiagramElement = view.getElement();
+        if (ddiagramElement instanceof DSemanticDecorator) {
+            EObject semanticElement = ((DSemanticDecorator) ddiagramElement).getTarget();
+            semanticURI = EcoreUtil.getURI(semanticElement).toString();
         }
-        return marker;
+        // Search diagram URI
+        Object object = viewer.getFocusEditPart().getModel();
+        String diagramDescriptorUri = getDRepresentationDescriptorURIFromDiagram(object);
+        return addMarker(target, elementId, diagramDescriptorUri, semanticURI, location, message, statusSeverity);
     }
 
-    // CHECKSTYLE:ON
+    private static String getDRepresentationDescriptorURIFromDiagram(Object object) {
+        String diagramDescriptorUri = null;
+        if (object instanceof Diagram) {
+            Optional<DRepresentationDescriptor> optional = Optional.of((Diagram) object).map(View::getElement).filter(DDiagram.class::isInstance).map(d -> {
+                DRepresentationQuery query = new DRepresentationQuery((DDiagram) d);
+                return query.getRepresentationDescriptor();
+            });
+            if (optional.isPresent()) {
+                final URI uri = EcoreUtil.getURI(optional.get());
+                diagramDescriptorUri = uri.toString();
+            }
+        }
+        return diagramDescriptorUri;
+    }
+
+    /**
+     * Add a marker dedicated to image path.
+     * 
+     * @param status
+     *            the status
+     * @param viewer
+     *            diagram viewer
+     * @param targetFile
+     *            the aird file on which the markers are created
+     * @param view
+     *            the view associated to the marker
+     * @param location
+     *            A human-readable (localized) string which can be used to distinguish between markers on a resource
+     * @param message
+     *            Describe the problem
+     * @param statusSeverity
+     *            A number from the set of high, normal and low priorities defined by the platform.
+     * @return The added marker.
+     */
+    public static void createImagePathMarker(ImagePathWrappingStatus status, EditPartViewer viewer, IFile targetFile, View view, String location, String message, int statusSeverity) {
+        IMarker marker = addMarker(viewer, targetFile, view, location, message, statusSeverity);
+        try {
+            marker.setAttribute(NavigationMarkerConstants.MARKER_IMAGE, true);
+            if (status.getEAttribute() != null) {
+                marker.setAttribute(NavigationMarkerConstants.IMAGE_PATH_FEATURE_NAME, status.getEAttribute().getName());
+            }
+            marker.setAttribute(NavigationMarkerConstants.IMAGE_PATH_KEY, status.getNotReachableImagePath());
+            marker.setAttribute(NavigationMarkerConstants.IMAGE_PATH_TARGET_KEY, status.getImagePathTarget().toString());
+        } catch (CoreException e) {
+            DiagramPlugin.getDefault().logError(Messages.SiriusMarkerNavigationProvider_validationMarkerCreationError, e);
+        }
+    }
+
+    /**
+     * Add a marker dedicated to validation rule.
+     * 
+     * @param validationRule
+     *            The validation rule
+     * @param viewer
+     *            diagram viewer
+     * @param targetFile
+     *            the aird file on which the markers are created
+     * @param view
+     *            the view associated to the marker
+     * @param location
+     *            A human-readable (localized) string which can be used to distinguish between markers on a resource
+     * @param message
+     *            Describe the problem
+     * @param statusSeverity
+     *            A number from the set of high, normal and low priorities defined by the platform.
+     * @return The added marker.
+     */
+    public static void createValidationRuleMarker(ValidationRule validationRule, EditPartViewer viewer, IFile target, View view, String location, String message, int statusSeverity) {
+        IMarker marker = addMarker(viewer, target, view, location, message, statusSeverity);
+        try {
+            marker.setAttribute("rule", EcoreUtil.getURI(validationRule).toString()); //$NON-NLS-1$
+        } catch (CoreException e) {
+            DiagramPlugin.getDefault().logError(Messages.SiriusMarkerNavigationProvider_validationMarkerCreationError, e);
+        }
+    }
 
     /**
      * Returns the target value of the {@link DSemanticDiagram} that is represented by the <code>diagram</code>.
