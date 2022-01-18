@@ -318,7 +318,7 @@ public class TreeImagesGalleryComposite extends FilteredTree {
                     Object imageWrapper = ((GalleryItem) e.item).getData();
                     Optional<String> optImgPath = contentProvider.getPath(imageWrapper);
                     if (optImgPath.isPresent()) {
-                        selectedImagePath = optImgPath.get();
+                        selectedImagePath = optImgPath.get().replace(File.separator, "/"); //$NON-NLS-1$
                     }
                 } else {
                     selectedImagePath = null;
