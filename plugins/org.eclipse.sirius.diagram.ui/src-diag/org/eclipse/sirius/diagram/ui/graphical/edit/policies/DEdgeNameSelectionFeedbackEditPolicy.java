@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,11 +16,16 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.eclipse.draw2d.Connection;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gmf.runtime.notation.Node;
+import org.eclipse.sirius.diagram.DEdge;
+import org.eclipse.sirius.diagram.business.api.query.DDiagramElementQuery;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramEdgeEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.AbstractDEdgeNameEditPart;
+import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 
 /**
  * An edit policy that can show feedback for selection on a
@@ -53,9 +58,13 @@ public class DEdgeNameSelectionFeedbackEditPolicy extends AbstractEdgeSelectionF
     protected List<AbstractDEdgeNameEditPart> getEdgeNameEditPart() {
         List<AbstractDEdgeNameEditPart> names = new ArrayList<AbstractDEdgeNameEditPart>();
         if (getHost() instanceof AbstractDEdgeNameEditPart) {
-            for (final Object editPart : getEdgeEditPart().getChildren()) {
-                if (editPart instanceof AbstractDEdgeNameEditPart) {
-                    names.add((AbstractDEdgeNameEditPart) editPart);
+            @SuppressWarnings("unchecked")
+            List<AbstractDEdgeNameEditPart> edgeNameEditParts = (List<AbstractDEdgeNameEditPart>) getEdgeEditPart().getChildren().stream().filter(AbstractDEdgeNameEditPart.class::isInstance)
+                    .map(AbstractDEdgeNameEditPart.class::cast)
+                    .collect(Collectors.toList());
+            for (final AbstractDEdgeNameEditPart editPart : edgeNameEditParts) {
+                if (!new DDiagramElementQuery((DEdge) ((Node) editPart.getModel()).getElement()).isLabelHidden(new EditPartQuery(editPart).getVisualID())) {
+                    names.add(editPart);
                 }
             }
         }
