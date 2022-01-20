@@ -17,7 +17,6 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.window.Window;
-import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.PlatformUI;
 
@@ -29,12 +28,11 @@ import org.eclipse.ui.PlatformUI;
 public class WorkspaceImageSelector implements ImageSelector {
 
     @Override
-    public List<String> selectImages(EObject eObject, ImageSelector.SelectionMode selectionMode) {
+    public List<String> selectImages(EObject eObject, ImageSelector.SelectionMode selectionMode, String currentImagePath) {
         String imagePath = null;
         Shell activeShell = PlatformUI.getWorkbench().getDisplay().getActiveShell();
 
-        ImageSelectionDialog dialog = new ImageSelectionDialog(activeShell, false);
-        dialog.setTitle(Messages.SelectDiagramElementBackgroundImageDialog_title);
+        ImageSelectionDialog dialog = new ImageSelectionDialog(activeShell, eObject, false, currentImagePath);
         if (dialog.open() == Window.OK) {
             imagePath = dialog.getImagePath();
         }
@@ -43,6 +41,11 @@ public class WorkspaceImageSelector implements ImageSelector {
         } else {
             return Collections.<String> singletonList(imagePath);
         }
+    }
+
+    @Override
+    public List<String> selectImages(EObject eObject, SelectionMode selectionMode) {
+        return selectImages(eObject, selectionMode, null);
     }
 
 }

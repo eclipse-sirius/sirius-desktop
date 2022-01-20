@@ -668,6 +668,18 @@ public final class Messages {
     public static String ImageMarkerResolution_label;
 
     @TranslatableMessage
+    public static String ImageSelectionDialog_imageNotFound;
+
+    @TranslatableMessage
+    public static String ImageSelectionDialog_imageNotFound_shortNameFound;
+
+    @TranslatableMessage
+    public static String ImageSelectionDialog_imageNotFound_folderFound;
+
+    @TranslatableMessage
+    public static String ImageSelectionDialog_title;
+
+    @TranslatableMessage
     public static String InitializeHiddenElementsCommand_label;
 
     @TranslatableMessage
@@ -1014,9 +1026,6 @@ public final class Messages {
 
     @TranslatableMessage
     public static String ResourceMissingDocumentProvider_defaultMessage;
-
-    @TranslatableMessage
-    public static String ResourceSelectionDialog_title;
 
     @TranslatableMessage
     public static String ResourceSelectionDialog_ImageTreeComposite_filterText;

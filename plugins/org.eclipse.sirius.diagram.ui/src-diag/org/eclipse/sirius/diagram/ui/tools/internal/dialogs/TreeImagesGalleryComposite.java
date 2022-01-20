@@ -35,6 +35,7 @@ import org.eclipse.jface.viewers.ISelectionChangedListener;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.ITreeSelection;
 import org.eclipse.jface.viewers.SelectionChangedEvent;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.sirius.common.tools.api.util.StringUtil;
@@ -74,6 +75,8 @@ public class TreeImagesGalleryComposite extends FilteredTree {
 
     /** The family of the job. */
     public static final String REFRESH_IMAGE_JOB_FAMILY = RefreshImageJob.class.getName();
+
+    private static final String SLASH = "/"; //$NON-NLS-1$
 
     /**
      * Viewer's label provider.
@@ -283,6 +286,33 @@ public class TreeImagesGalleryComposite extends FilteredTree {
     }
 
     /**
+     * Do the selection in the tree viewer and in the gallery according to the image path.
+     * 
+     * @param treeViewerSelectionData
+     *            the item to select in the tree viewer
+     * @param gallerySelectionData
+     *            the item to select in the gallery
+     * @return
+     */
+    public Optional<String> setSelection(Object treeViewerSelectionData, Object gallerySelectionData) {
+        Optional<String> selectedPath = Optional.empty();
+        if (treeViewerSelectionData != null) {
+            treeViewer.setSelection(new StructuredSelection(treeViewerSelectionData), true);
+        }
+        if (gallerySelectionData != null) {
+            GalleryItem[] items = usedGallery.getItems();
+            for (GalleryItem galleryItem : items) {
+                String text = galleryItem.getItem(0).getText();
+                if (text.equals(labelProvider.getText(gallerySelectionData))) {
+                    usedGallery.selectItem(galleryItem.getItem(0), true);
+                }
+            }
+        }
+
+        return selectedPath;
+    }
+
+    /**
      * Used to cancel refresh job.
      */
     protected void cancelRefresh() {
@@ -318,7 +348,7 @@ public class TreeImagesGalleryComposite extends FilteredTree {
                     Object imageWrapper = ((GalleryItem) e.item).getData();
                     Optional<String> optImgPath = contentProvider.getPath(imageWrapper);
                     if (optImgPath.isPresent()) {
-                        selectedImagePath = optImgPath.get().replace(File.separator, "/"); //$NON-NLS-1$
+                        selectedImagePath = optImgPath.get().replace(File.separator, SLASH); // $NON-NLS-1$
                     }
                 } else {
                     selectedImagePath = null;

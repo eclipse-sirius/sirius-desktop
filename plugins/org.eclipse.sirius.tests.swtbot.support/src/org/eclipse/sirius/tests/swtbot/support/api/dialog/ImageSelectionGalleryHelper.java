@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.sirius.diagram.ui.business.api.image.GallerySelectable;
+import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.TreeImagesGalleryComposite;
 import org.eclipse.sirius.diagram.ui.tools.internal.dialogs.widgets.gallery.GalleryItem;
 import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
@@ -42,7 +43,7 @@ public final class ImageSelectionGalleryHelper {
     /**
      * Title of the dialog.
      */
-    public static final String DIALOG_TITLE = "Select background image from workspace"; //$NON-NLS-1$
+    public static final String DIALOG_TITLE = Messages.ImageSelectionDialog_title; // $NON-NLS-1$
 
     /**
      * Default constructor.
