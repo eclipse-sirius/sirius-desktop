@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2020, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -47,7 +47,7 @@ public final class CommandStackUtil {
     public static void flushOperations(CommandStack commandStack) {
         // Remove ResourceUndoContext, this must be done before commandStack.flush(), to have the Undo/RedoActionHandler
         // update the actions
-        if (commandStack instanceof AbstractTransactionalCommandStack && commandStack instanceof IWorkspaceCommandStack) {
+        if (commandStack instanceof AbstractTransactionalCommandStack && commandStack instanceof IWorkspaceCommandStack && ((AbstractTransactionalCommandStack) commandStack).getDomain() != null) {
             TransactionalEditingDomain ted = ((AbstractTransactionalCommandStack) commandStack).getDomain();
             for (Resource resource : new ArrayList<Resource>(ted.getResourceSet().getResources())) {
                 ((IWorkspaceCommandStack) commandStack).getOperationHistory().dispose(new ResourceUndoContext(ted, resource), true, true, true);

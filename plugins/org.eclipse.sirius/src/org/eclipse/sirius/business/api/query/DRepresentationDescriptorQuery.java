@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,9 +14,11 @@ package org.eclipse.sirius.business.api.query;
 
 import java.text.MessageFormat;
 
+import org.eclipse.core.runtime.Status;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.impl.AdapterImpl;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
@@ -52,14 +54,24 @@ public class DRepresentationDescriptorQuery {
          */
         public DRepresentationDescriptorValidityAdapter(DRepresentationDescriptor representationDescriptor) {
             representationDescriptor.eAdapters().add(this);
-            validity = computeRepresentationValid();
+            validity = computeRepresentationValid(false);
         }
 
         /**
          * Triggers a representation validation.
          */
         public void triggerRepresentationValidation() {
-            validity = computeRepresentationValid();
+            validity = computeRepresentationValid(false);
+        }
+
+        /**
+         * Triggers a representation validation.
+         * 
+         * @param forceLoadRepresentation
+         *            true will force the loading of the representation EObject for further validation.
+         */
+        public void triggerRepresentationValidation(boolean forceLoadRepresentation) {
+            validity = computeRepresentationValid(forceLoadRepresentation);
         }
 
         /**
@@ -104,6 +116,18 @@ public class DRepresentationDescriptorQuery {
      * @return true if the representation is reachable
      */
     public boolean isRepresentationReachable() {
+        return isRepresentationReachable(false);
+    }
+
+    /**
+     * Check if the current representationDescriptor can be found, that is, if its repPath is not null and allows to
+     * retrieve the corresponding DRepresentation.
+     * 
+     * @param forceLoadRepresentation
+     *            true will force the loading of the representation EObject for further validation.
+     * @return true if the representation is reachable
+     */
+    public boolean isRepresentationReachable(boolean forceLoadResource) {
         boolean isRepresentationReachable = repDescriptor.isLoadedRepresentation();
         if (!isRepresentationReachable && repDescriptor.getRepPath() != null) {
             // if the diagram URI prefix indicates that the representation is stored in an aird, it implies that if
@@ -119,9 +143,23 @@ public class DRepresentationDescriptorQuery {
             if (eResource != null) {
                 ResourceSet resourceSet = eResource.getResourceSet();
                 try {
-                    isRepresentationReachable = resourceSet.getURIConverter().exists(repDescriptor.getRepPath().getResourceURI(), null);
-                    // At this step, exists method may return true even if the repPath URI fragment corresponds to no
-                    // representation in the case the representation is not be loaded yet
+                    if (!forceLoadResource) {
+                        isRepresentationReachable = resourceSet.getURIConverter().exists(repDescriptor.getRepPath().getResourceURI(), null);
+                    } else if (resourceSet.getURIConverter().exists(repDescriptor.getRepPath().getResourceURI(), null)) {
+                        Resource resource = resourceSet.getResource(repDescriptor.getRepPath().getResourceURI().trimFragment(), true);
+                        EObject eObject = resource.getEObject(repDescriptor.getRepPath().getResourceURI().fragment());
+                        if (eObject == null) {
+                            // Representation resource reachable but the fragment is not
+                            SiriusPlugin.getDefault().getLog()
+                                    .log(new Status(Status.WARNING, SiriusPlugin.ID, MessageFormat.format(Messages.DRepresentationDescriptorQuery_representationError_broken_fragment_path,
+                                            repDescriptor.getName(), resource.getURI().path(), repDescriptor.getRepPath().getResourceURI().fragment())));
+                        }
+                    } else {
+                        // Representation resource unreachable
+                        SiriusPlugin.getDefault().getLog()
+                                .log(new Status(Status.WARNING, SiriusPlugin.ID, MessageFormat.format(Messages.DRepresentationDescriptorQuery_representationError_broken_srm_path,
+                                        repDescriptor.getName(), repDescriptor.getRepPath().getResourceURI().trimFragment())));
+                    }
                     // CHECKSTYLE:OFF
                 } catch (RuntimeException e) {
                     // CHECKSTYLE:ON
@@ -142,12 +180,27 @@ public class DRepresentationDescriptorQuery {
      * @return true if the representation is valid
      */
     public boolean isRepresentationValid() {
+        return isRepresentationValid(false);
+    }
+
+    /**
+     * Check if the representation is valid that is, both not {@link isDangling} and {@link isRepresentationReachable}.
+     * In case the representation is loaded, it also checks if the representation target is a dangling reference.
+     * 
+     * @param forceLoadRepresentation
+     *            true will force the loading of the representation EObject for further validation.
+     * @return true if the representation is valid
+     */
+    public boolean isRepresentationValid(boolean forceLoadRepresentation) {
       //@formatter:off
         DRepresentationDescriptorValidityAdapter dRepDescriptorValidityAdapter = (DRepresentationDescriptorValidityAdapter) repDescriptor.eAdapters().stream()
                 .filter(DRepresentationDescriptorValidityAdapter.class::isInstance)
                 .findFirst()
                 .orElseGet(() -> new DRepresentationDescriptorValidityAdapter(repDescriptor));
       //@formatter:on
+        if (forceLoadRepresentation) {
+            dRepDescriptorValidityAdapter.triggerRepresentationValidation(forceLoadRepresentation);
+        }
 
         return dRepDescriptorValidityAdapter.isValid();
     }
@@ -156,11 +209,13 @@ public class DRepresentationDescriptorQuery {
      * Check if the representation is valid that is, both not {@link isDangling} and {@link isRepresentationReachable}.
      * In case the representation is loaded, it also checks if the representation target is a dangling reference.
      * 
+     * @param forceLoadRepresentation
+     *            true will force the loading of the representation EObject for further validation.
      * @return true if the representation is valid
      */
-    private boolean computeRepresentationValid() {
+    private boolean computeRepresentationValid(boolean forceLoadRepresentation) {
         try {
-            boolean isValid = !isDangling() && isRepresentationReachable();
+            boolean isValid = !isDangling() && isRepresentationReachable(forceLoadRepresentation);
             if (isValid && repDescriptor.isLoadedRepresentation()) {
                 isValid = !(new DRepresentationQuery(repDescriptor.getRepresentation()).isDanglingRepresentation());
             }

@@ -256,6 +256,11 @@
 				<a href="https://www.eclipse.org/sirius/sirius-web.html">Sirius Web</a>. This corresponds to all the 
 				<code>org.eclipse.sirius.server.*</code> plug-ins.
 			</li>
+			<li><span class="label label-success">Added</span> The method 
+				<code>org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery.isRepresentationReachable(boolean)</code> was added to allow it to load the representation in order to verify that the representation element is reachable, not just its resource. To benefit from this new method, 
+				<code>org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery.isRepresentationValid(boolean)</code> and 
+				<code>org.eclipse.sirius.business.api.query.DRepresentationDescriptorQuery.DRepresentationDescriptorValidityAdapter.triggerRepresentationValidation(boolean)</code> were also created. These new methods (with a parameter value true) can be used in tests, but should not be used by the &#8220;Model explorer&#8221; view otherwise there would be no more lazy loading of representations.
+			</li>
 		</ul>
 		<h4 id="Changesinorg.eclipse.sirius">Changes in 
 			<code>org.eclipse.sirius</code>

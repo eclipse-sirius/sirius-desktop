@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -95,6 +95,9 @@ public class InvalidRepresentationTest extends GenericTestCase {
         // but to know if the fragment is valid we should load the resource that we do not want to do to avoid breaking
         // the representation lazy loading
         checkRepresentationValidity(DIAGRAM_NAME_2, true); // limitation case
+        // If we force the loading of the representation during the check then we can verify that the representation is
+        // not valid
+        checkRepresentationValidity(DIAGRAM_NAME_2, false, true);
         checkRepresentationValidity(DIAGRAM_NAME_3, false);
         checkRepresentationValidity(DIAGRAM_NAME_4, false);
         checkRepresentationValidity(DIAGRAM_NAME_5, false);
@@ -112,7 +115,12 @@ public class InvalidRepresentationTest extends GenericTestCase {
     }
 
     private void checkRepresentationValidity(String repDescName, boolean expectedValidity) {
+        checkRepresentationValidity(repDescName, expectedValidity, false);
+    }
+
+    private void checkRepresentationValidity(String repDescName, boolean expectedValidity, boolean forceLoadRepresentation) {
         DRepresentationDescriptor repDescriptor = getRepresentationDescriptor(repDescName);
-        assertEquals(repDescriptor.getName() + " DRepresentationDescriptor has bad validity state", expectedValidity, new DRepresentationDescriptorQuery(repDescriptor).isRepresentationValid());
+        assertEquals(repDescriptor.getName() + " DRepresentationDescriptor has bad validity state", expectedValidity,
+                new DRepresentationDescriptorQuery(repDescriptor).isRepresentationValid(forceLoadRepresentation));
     }
 }

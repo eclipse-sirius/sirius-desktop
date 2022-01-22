@@ -204,6 +204,12 @@ public final class Messages {
     public static String DRepresentationDescriptorQuery_representationError;
 
     @TranslatableMessage
+    public static String DRepresentationDescriptorQuery_representationError_broken_srm_path;
+
+    @TranslatableMessage
+    public static String DRepresentationDescriptorQuery_representationError_broken_fragment_path;
+
+    @TranslatableMessage
     public static String DRepresentationDescriptorToDRepresentationLinkManager_repLoading;
 
     @TranslatableMessage

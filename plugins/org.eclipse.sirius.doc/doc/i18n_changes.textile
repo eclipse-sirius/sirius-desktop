@@ -29,6 +29,8 @@ h3. Message Keys Added
 * @org.eclipse.sirius.diagram.tools.api.Messages_BringElementsToFront_severalElementsLabel@
 * @org.eclipse.sirius.tools.api.Messages.ReferenceFinderCache_warningAlreadyEnabled@
 * @org.eclipse.sirius.diagram.ui.provider.Messages.AbstractDEdgeNameEditPart_VisualID_Error@
+* @org.eclipse.sirius.tools.api.Messages.DRepresentationDescriptorQuery_representationError_broken_srm_path@
+* @org.eclipse.sirius.tools.api.Messages.DRepresentationDescriptorQuery_representationError_broken_fragment_path@
 
 h3. Message Keys Removed
 
