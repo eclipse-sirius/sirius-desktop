@@ -12,19 +12,15 @@
  *******************************************************************************/
 package org.eclipse.sirius.diagram.tools.internal.validation.constraints;
 
-import org.eclipse.core.runtime.IStatus;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.validation.model.ConstraintStatus;
 
 /**
- * ConstraintStatus wrapping another ConstraintStatus but being able to provide information about the image path. Every
- * call will get delegated to the wrapped status.
+ * ConstraintStatus holding attributes specific to image path constraint.
  * 
  * @author lfasani
  */
 public class ImagePathWrappingStatus extends ConstraintStatus {
-
-    private IStatus wrapped;
 
     private String notReachableImagePath;
 
@@ -61,55 +57,9 @@ public class ImagePathWrappingStatus extends ConstraintStatus {
      *            the image path.
      */
     public ImagePathWrappingStatus(final ConstraintStatus emfStatus, ImagePathTarget imagePathTarget, final String notReachableImagePath) {
-        super(emfStatus.getConstraint(), emfStatus.getTarget());
-        this.wrapped = emfStatus;
+        super(emfStatus.getConstraint(), emfStatus.getTarget(), emfStatus.getMessage(), emfStatus.getResultLocus());
         this.imagePathTarget = imagePathTarget;
         this.notReachableImagePath = notReachableImagePath;
-    }
-
-    @Override
-    public IStatus[] getChildren() {
-        return wrapped.getChildren();
-    }
-
-    @Override
-    public int getCode() {
-        return wrapped.getCode();
-    }
-
-    @Override
-    public Throwable getException() {
-        return wrapped.getException();
-    }
-
-    @Override
-    public String getMessage() {
-        return wrapped.getMessage();
-    }
-
-    @Override
-    public String getPlugin() {
-        return wrapped.getPlugin();
-    }
-
-    @Override
-    public int getSeverity() {
-        return wrapped.getSeverity();
-    }
-
-    @Override
-    public boolean isMultiStatus() {
-        return wrapped.isMultiStatus();
-    }
-
-    @Override
-    public boolean isOK() {
-        return wrapped.isOK();
-    }
-
-    @Override
-    public boolean matches(final int arg0) {
-        return wrapped.matches(arg0);
     }
 
     public String getNotReachableImagePath() {
@@ -132,8 +82,4 @@ public class ImagePathWrappingStatus extends ConstraintStatus {
         return this.imagePathTarget;
     }
 
-    @Override
-    public String toString() {
-        return wrapped.toString();
-    }
 }

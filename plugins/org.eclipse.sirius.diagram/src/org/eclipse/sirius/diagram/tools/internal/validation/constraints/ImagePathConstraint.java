@@ -56,6 +56,8 @@ import org.eclipse.sirius.viewpoint.ViewpointPackage;
  * @author lfasani
  */
 public class ImagePathConstraint extends AbstractConstraint {
+    private static final String MESSAGE_ITSELF = "{0}"; //$NON-NLS-1$
+
     private static final String HTML_IMAGE_ABSOLUTE_PATH_PATTERN = "<img.*?src=\"(file:/.*?)\".*?/>"; //$NON-NLS-1$
 
     @Override
@@ -78,14 +80,31 @@ public class ImagePathConstraint extends AbstractConstraint {
                 failureStatuses.addAll(validateImagePathInRichText(eObj, ctx, ImagePathWrappingStatus.ImagePathTarget.SEMANTIC_TARGET));
             }
         }
+
+        IStatus returnedStatus = null;
         if (failureStatuses.isEmpty()) {
-            return ctx.createSuccessStatus();
+            returnedStatus = ctx.createSuccessStatus();
         } else {
-            return ConstraintStatus.createMultiStatus(ctx, failureStatuses);
+            if (failureStatuses.size() == 1) {
+                returnedStatus = failureStatuses.get(0);
+            } else {
+                returnedStatus = ConstraintStatus.createMultiStatus(ctx, failureStatuses);
+            }
         }
+        return returnedStatus;
     }
 
-    private void validateWorkspaceImagePath(WorkspaceImage workspaceImage, IValidationContext ctx, List<IStatus> statuses) {
+    /**
+     * Validate the image associated to the workspace image.
+     * 
+     * @param workspaceImage
+     *            the workspace image
+     * @param context
+     *            the validation context
+     * @param statuses
+     *            the returned statuses
+     */
+    protected void validateWorkspaceImagePath(WorkspaceImage workspaceImage, IValidationContext context, List<IStatus> statuses) {
         String workspacePath = workspaceImage.getWorkspacePath();
         boolean exists = FileProvider.getDefault().exists(new Path(workspacePath));
         if (!exists) {
@@ -98,13 +117,24 @@ public class ImagePathConstraint extends AbstractConstraint {
             String message = MessageFormat.format(Messages.ImagePathConstraint_workspaceImagePathError, workspacePath, new EditingDomainServices().getLabelProviderText(workspaceImage.eContainer()),
                     repDescName);
             // The constraint needs to be associated to the diagram element
-            ConstraintStatus failureStatus = new ImagePathWrappingStatus(ConstraintStatus.createStatus(ctx, workspaceImage.eContainer(), null, "{0}", message), //$NON-NLS-1$
+            ConstraintStatus failureStatus = new ImagePathWrappingStatus(
+                    ConstraintStatus.createStatus(context, workspaceImage.eContainer(), Arrays.asList(context.getTarget()), MESSAGE_ITSELF, message),
                     ImagePathWrappingStatus.ImagePathTarget.WORKSPACE_IMAGE, workspacePath);
             statuses.add(failureStatus);
         }
     }
 
-    private List<IStatus> validateImagePathInRichText(EObject eObject, IValidationContext ctx, ImagePathTarget imagePathTarget) {
+    /**
+     * Validate the image used in html attributes.
+     * 
+     * @param workspaceImage
+     *            the workspace image
+     * @param context
+     *            the validation context
+     * @param statuses
+     *            the returned statuses
+     */
+    protected List<IStatus> validateImagePathInRichText(EObject eObject, IValidationContext context, ImagePathTarget imagePathTarget) {
         List<IStatus> statuses = new ArrayList<>();
         EList<EAttribute> attrs = eObject.eClass().getEAllAttributes();
         Set<EAttribute> richTextAttributes = RichTextAttributeRegistry.INSTANCE.getEAttributes();
@@ -114,8 +144,8 @@ public class ImagePathConstraint extends AbstractConstraint {
                 if (stringObj instanceof String) {
                     String htmlText = (String) stringObj;
 
-                    statuses.addAll(checkAbsolutePathInString(ctx, eObject, htmlText, attr, imagePathTarget));
-                    statuses.addAll(checkRelativePathInString(ctx, eObject, htmlText, attr, imagePathTarget));
+                    statuses.addAll(checkAbsolutePathInString(context, eObject, htmlText, attr, imagePathTarget));
+                    statuses.addAll(checkRelativePathInString(context, eObject, htmlText, attr, imagePathTarget));
                 }
             }
         }
@@ -135,7 +165,8 @@ public class ImagePathConstraint extends AbstractConstraint {
                 if (!exists && !alreadyCheckedPath.contains(path)) {
                     alreadyCheckedPath.add(path);
                     String message = MessageFormat.format(Messages.ImagePathConstraint_relativePathError, path, new EditingDomainServices().getLabelProviderText(eObject));
-                    ImagePathWrappingStatus imagePathWrappingStatus = new ImagePathWrappingStatus((ConstraintStatus) ctx.createFailureStatus(new Object[] { message }), imagePathTarget, path);
+                    ImagePathWrappingStatus imagePathWrappingStatus = new ImagePathWrappingStatus(ConstraintStatus.createStatus(ctx, eObject, ctx.getResultLocus(), MESSAGE_ITSELF, message), // $NON-NLS-1$
+                            imagePathTarget, path);
                     imagePathWrappingStatus.setEAttribute(attr);
                     statuses.add(imagePathWrappingStatus);
                 }
@@ -152,7 +183,8 @@ public class ImagePathConstraint extends AbstractConstraint {
         while (matcher.find()) {
             if (matcher.groupCount() == 1) {
                 String message = MessageFormat.format(Messages.ImagePathConstraint_absolutePathError, matcher.group(1), new EditingDomainServices().getLabelProviderText(eObject));
-                ImagePathWrappingStatus imagePathWrappingStatus = new ImagePathWrappingStatus((ConstraintStatus) ctx.createFailureStatus(new Object[] { message }), imagePathTarget, matcher.group(1));
+                ImagePathWrappingStatus imagePathWrappingStatus = new ImagePathWrappingStatus((ConstraintStatus) ctx.createFailureStatus(ctx, eObject, ctx.getResultLocus(), MESSAGE_ITSELF, message), // $NON-NLS-1$
+                        imagePathTarget, matcher.group(1));
                 imagePathWrappingStatus.setEAttribute(attr);
                 statuses.add(imagePathWrappingStatus);
             }

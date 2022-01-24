@@ -25,7 +25,6 @@ import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.gmf.runtime.notation.View;
 import org.eclipse.sirius.common.tools.api.resource.FileProvider;
-import org.eclipse.sirius.diagram.DDiagramElement;
 import org.eclipse.sirius.diagram.WorkspaceImage;
 import org.eclipse.sirius.diagram.tools.internal.validation.constraints.ImagePathWrappingStatus.ImagePathTarget;
 import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelector.SelectionMode;
@@ -33,6 +32,7 @@ import org.eclipse.sirius.diagram.ui.business.api.image.ImageSelectorService;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.resource.NavigationMarkerConstants;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.ui.IEditorPart;
 
 /**
@@ -60,9 +60,9 @@ public class ImageMarkerResolution extends AbstractValidationFix {
                 String featurename = marker.getAttribute(NavigationMarkerConstants.IMAGE_PATH_FEATURE_NAME, ""); //$NON-NLS-1$
                 DRepresentationDescriptor representationDescriptor = getRepresentationDescriptor(transactionalEditingDomain, marker);
                 fixSucceeded = fixImagePathInRichText(representationDescriptor, featurename, imagePath, transactionalEditingDomain);
-            } else if (ImagePathTarget.SEMANTIC_TARGET.toString().equals(imageIssueKind)) {
+            } else if (ImagePathTarget.SEMANTIC_TARGET.toString().equals(imageIssueKind) && markedView.getElement() instanceof DSemanticDecorator) {
                 String featurename = marker.getAttribute(NavigationMarkerConstants.IMAGE_PATH_FEATURE_NAME, ""); //$NON-NLS-1$
-                fixSucceeded = fixImagePathInRichText(((DDiagramElement) markedView.getElement()).getTarget(), featurename, imagePath, transactionalEditingDomain);
+                fixSucceeded = fixImagePathInRichText(((DSemanticDecorator) markedView.getElement()).getTarget(), featurename, imagePath, transactionalEditingDomain);
             } else if (ImagePathTarget.WORKSPACE_IMAGE.toString().equals(imageIssueKind)) {
                 fixSucceeded = fixWorkspaceImagePath(markedView.getElement(), imagePath, transactionalEditingDomain);
             }
@@ -76,7 +76,20 @@ public class ImageMarkerResolution extends AbstractValidationFix {
 
     }
 
-    private boolean fixImagePathInRichText(EObject eObject, String featurename, String imagePath, TransactionalEditingDomain ted) {
+    /**
+     * Allow the user to select a new image and update the model accordingly.
+     * 
+     * @param eObject
+     *            the object to update
+     * @param featurename
+     *            the feature to update
+     * @param imagePath
+     *            the new imagePath
+     * @param ted
+     *            the TransactionalEditingDomain
+     * @return true if something has been changed in the model.
+     */
+    static public boolean fixImagePathInRichText(EObject eObject, String featurename, String imagePath, TransactionalEditingDomain ted) {
         boolean fixSucceeded = false;
         Optional<EAttribute> eAttributeOpt = eObject.eClass().getEAllAttributes().stream().filter(attr -> featurename.equals(attr.getName())).findFirst();
         if (eAttributeOpt.isPresent()) {
@@ -102,7 +115,18 @@ public class ImageMarkerResolution extends AbstractValidationFix {
         return fixSucceeded;
     }
 
-    private boolean fixWorkspaceImagePath(EObject eObject, String imagePath, TransactionalEditingDomain ted) {
+    /**
+     * Allow the user to select a new image and update the workspaceImage accordingly.
+     * 
+     * @param eObject
+     *            the object to update
+     * @param imagePath
+     *            the new imagePath
+     * @param ted
+     *            the TransactionalEditingDomain
+     * @return true if something has been changed in the model.
+     */
+    static public boolean fixWorkspaceImagePath(EObject eObject, String imagePath, TransactionalEditingDomain ted) {
         boolean fixSucceeded = false;
 
         WorkspaceImage workspaceImage = (WorkspaceImage) eObject.eContents().stream().filter(WorkspaceImage.class::isInstance).findFirst().orElse(null);

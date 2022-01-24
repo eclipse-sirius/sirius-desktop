@@ -235,15 +235,14 @@ public class ValidateAction extends Action {
     /**
      * @was-generated-NOT
      */
-    @SuppressWarnings("rawtypes")
     private static void createMarkers(IFile target, IStatus validationStatus, DiagramEditPart diagramEditPart) {
         if (validationStatus.isOK() || target == null) {
             return;
         }
         final IStatus rootStatus = validationStatus;
-        List allStatuses = new ArrayList();
-        collectTargetElements(rootStatus, new HashSet(), allStatuses);
-        for (Iterator it = allStatuses.iterator(); it.hasNext();) {
+        List<IStatus> allStatuses = new ArrayList<IStatus>();
+        collectTargetElements(rootStatus, new HashSet<IStatus>(), allStatuses);
+        for (Iterator<IStatus> it = allStatuses.iterator(); it.hasNext();) {
             IConstraintStatus nextStatus = (IConstraintStatus) it.next();
             View view = getCorrespondingView(nextStatus.getTarget(), diagramEditPart);
             String qualifiedName = EMFCoreUtil.getQualifiedName(nextStatus.getTarget(), true);

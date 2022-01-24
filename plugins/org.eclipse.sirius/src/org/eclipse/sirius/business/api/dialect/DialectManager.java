@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2017 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -61,8 +61,7 @@ public interface DialectManager extends DialectServices {
     void disableDialect(Dialect dialect);
 
     /**
-     * Return the representations, of the given session, whose target is the given {@code semantic}.</br>
-     * This methods will load all the targeted representations.
+     * Return the representation descriptors, in the given session, whose target is the given {@code semantic}.</br>
      * 
      * @param semantic
      *            targeted semantic element.
