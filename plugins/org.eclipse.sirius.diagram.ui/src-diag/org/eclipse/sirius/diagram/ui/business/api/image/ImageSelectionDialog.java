@@ -134,6 +134,7 @@ public class ImageSelectionDialog extends Dialog {
         Composite mainContainer = (Composite) super.createDialogArea(parent);
         Composite container = new Composite(mainContainer, SWT.NONE);
         container.setLayout(getLayout());
+        container.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
 
         Object folderToSelect = null;
         Object imageToSelect = null;

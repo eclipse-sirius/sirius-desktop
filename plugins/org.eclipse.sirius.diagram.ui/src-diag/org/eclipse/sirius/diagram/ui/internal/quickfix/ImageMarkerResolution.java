@@ -97,7 +97,7 @@ public class ImageMarkerResolution extends AbstractValidationFix {
             Object stringObj = eObject.eGet(eAttribute);
             if (stringObj instanceof String) {
                 String htmlText = (String) stringObj;
-                List<String> selectImages = ImageSelectorService.INSTANCE.getImageSelector().selectImages(eObject, SelectionMode.MONO_SELECTION);
+                List<String> selectImages = ImageSelectorService.INSTANCE.getImageSelector().selectImages(eObject, SelectionMode.MONO_SELECTION, imagePath);
                 if (selectImages.size() == 1) {
                     String quote = "\""; //$NON-NLS-1$
                     ted.getCommandStack().execute(new RecordingCommand(ted) {
@@ -131,7 +131,7 @@ public class ImageMarkerResolution extends AbstractValidationFix {
 
         WorkspaceImage workspaceImage = (WorkspaceImage) eObject.eContents().stream().filter(WorkspaceImage.class::isInstance).findFirst().orElse(null);
         if (workspaceImage != null) {
-            List<String> selectImages = ImageSelectorService.INSTANCE.getImageSelector().selectImages(eObject, SelectionMode.MONO_SELECTION);
+            List<String> selectImages = ImageSelectorService.INSTANCE.getImageSelector().selectImages(eObject, SelectionMode.MONO_SELECTION, imagePath);
             if (selectImages.size() == 1) {
                 ted.getCommandStack().execute(new RecordingCommand(ted) {
                     @Override
