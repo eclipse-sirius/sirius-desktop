@@ -299,12 +299,13 @@ public class TreeImagesGalleryComposite extends FilteredTree {
         if (treeViewerSelectionData != null) {
             treeViewer.setSelection(new StructuredSelection(treeViewerSelectionData), true);
         }
-        if (gallerySelectionData != null) {
-            GalleryItem[] items = usedGallery.getItems();
+
+        if (gallerySelectionData != null && usedGallery.getItems().length > 0) {
+            GalleryItem[] items = usedGallery.getItems()[0].getItems();
             for (GalleryItem galleryItem : items) {
-                String text = galleryItem.getItem(0).getText();
+                String text = galleryItem.getText();
                 if (text.equals(labelProvider.getText(gallerySelectionData))) {
-                    usedGallery.selectItem(galleryItem.getItem(0), true);
+                    usedGallery.selectItem(galleryItem, true);
                 }
             }
         }
@@ -445,7 +446,7 @@ public class TreeImagesGalleryComposite extends FilteredTree {
                 }
             }
         }
-        lastUserFilter = filter;
+
         return imagesToAdd;
     }
 
@@ -462,6 +463,33 @@ public class TreeImagesGalleryComposite extends FilteredTree {
             for (Object imageWrapper : imagesToAdd) {
                 createImageItem(defaultCategory, imageWrapper);
             }
+            if (!lastUserFilter.equals(filterString) && usedGallery.getItems().length > 0 && selectedImagePath != null && lastTreeSelection != null) {
+                GalleryItem[] items = usedGallery.getItems()[0].getItems();
+                String[] segments = selectedImagePath.split("/"); //$NON-NLS-1$
+                String imageName = segments[segments.length - 1];
+                int nbSegments = segments.length;
+                boolean similarFolder = false;
+                Object treeNode = lastTreeSelection;
+                // start at the second to last which corresponds to the last folder
+                int index = nbSegments - 2;
+
+                while (treeNode != null && index >= 0) {
+                    String folderLabel = labelProvider.getText(treeNode);
+
+                    similarFolder = folderLabel != null && (folderLabel.isEmpty() || folderLabel.equals(segments[index]));
+                    treeNode = contentProvider.getParent(treeNode);
+                    index--;
+                }
+
+                if (similarFolder) {
+                    for (GalleryItem galleryItem : items) {
+                        if (galleryItem != null && galleryItem.getText().equals(imageName)) {
+                            usedGallery.selectItem(galleryItem, false);
+                        }
+                    }
+                }
+            }
+            lastUserFilter = filterString;
         }
         setGalleryNeedsRefresh(false);
     }
