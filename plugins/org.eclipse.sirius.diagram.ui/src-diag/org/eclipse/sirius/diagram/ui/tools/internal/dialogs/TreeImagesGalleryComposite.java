@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.ui.tools.internal.dialogs;
 
 import java.io.File;
 import java.net.MalformedURLException;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -423,11 +424,22 @@ public class TreeImagesGalleryComposite extends FilteredTree {
      * @return the set of objects wrapping references to image files
      */
     private Set<Object> getImagesToAdd(String filter) {
-        Set<Object> imagesToAdd = new TreeSet<>();
+        Comparator<Object> comparator = new Comparator<Object>() {
+
+            @SuppressWarnings("unchecked")
+            @Override
+            public int compare(Object o1, Object o2) {
+                if (o1 instanceof Comparable && o2 instanceof Comparable) {
+                    return ((Comparable<Object>) o1).compareTo(o2);
+                }
+                return o1.toString().compareTo(o2.toString());
+            }
+        };
+        Set<Object> imagesToAdd = new TreeSet<>(comparator);
         ITreeSelection structuredSelection = treeViewer.getStructuredSelection();
         if (!structuredSelection.isEmpty()) {
             for (Object object : structuredSelection.toArray()) {
-                Set<Object> images = new TreeSet<>();
+                Set<Object> images = new TreeSet<>(comparator);
                 for (Object element : contentProvider.getChildren(object)) {
                     if (contentProvider.getImageFile(element).isPresent()) {
                         images.add(element);
@@ -460,8 +472,8 @@ public class TreeImagesGalleryComposite extends FilteredTree {
             usedGallery.removeAll();
             usedGallery.redraw();
             GalleryItem defaultCategory = new GalleryItem(usedGallery, SWT.NULL);
-            for (Object imageWrapper : imagesToAdd) {
-                createImageItem(defaultCategory, imageWrapper);
+            for (Object imageFile : imagesToAdd) {
+                createImageItem(defaultCategory, imageFile);
             }
             if (!lastUserFilter.equals(filterString) && usedGallery.getItems().length > 0 && selectedImagePath != null && lastTreeSelection != null) {
                 GalleryItem[] items = usedGallery.getItems()[0].getItems();

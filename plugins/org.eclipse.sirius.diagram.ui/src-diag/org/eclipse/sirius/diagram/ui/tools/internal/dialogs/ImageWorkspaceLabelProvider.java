@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2021, 022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,7 +14,9 @@ package org.eclipse.sirius.diagram.ui.tools.internal.dialogs;
 
 import java.io.File;
 
-import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.resources.IFolder;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.viewers.BaseLabelProvider;
 import org.eclipse.jface.viewers.ILabelProvider;
@@ -45,20 +47,14 @@ public class ImageWorkspaceLabelProvider extends BaseLabelProvider implements IL
     @Override
     public Image getImage(Object element) {
         Image result = null;
-        if (element instanceof File) {
-            File file = (File) element;
-            if (file.isDirectory()) {
-                String filePath = file.getParentFile().getPath();
-                String workspacePath = ResourcesPlugin.getWorkspace().getRoot().getLocation().toOSString();
-                if (filePath.equals(workspacePath)) {
-                    result = PlatformUI.getWorkbench().getSharedImages().getImage(SharedImages.IMG_OBJ_PROJECT);
-                } else {
-                    result = PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
-                }
-            } else {
-                ImageDescriptor imgDesc = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/image_obj.gif"); //$NON-NLS-1$
-                result = DiagramUIPlugin.getPlugin().getImage(imgDesc);
-            }
+        IResource file = (IResource) element;
+        if (file instanceof IProject) {
+            result = PlatformUI.getWorkbench().getSharedImages().getImage(SharedImages.IMG_OBJ_PROJECT);
+        } else if (file instanceof IFolder) {
+            result = PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
+        } else {
+            ImageDescriptor imgDesc = DiagramUIPlugin.Implementation.getBundledImageDescriptor("icons/image_obj.gif"); //$NON-NLS-1$
+            result = DiagramUIPlugin.getPlugin().getImage(imgDesc);
         }
         return result;
     }
