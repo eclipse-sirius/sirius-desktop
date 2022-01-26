@@ -26,6 +26,7 @@ import org.eclipse.sirius.common.tools.api.util.StringUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.DDiagramElementContainer;
 import org.eclipse.sirius.diagram.DNode;
+import org.eclipse.sirius.diagram.ResizeKind;
 import org.eclipse.sirius.diagram.description.style.WorkspaceImageDescription;
 import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.business.api.query.DDiagramGraphicalQuery;
@@ -51,7 +52,7 @@ public class WorkspaceImageGMFBoundsMigrationParticipant extends AbstractReprese
     /**
      * Migration version.
      */
-    public static final Version MIGRATION_VERSION = new Version("15.0.0.202201251700"); //$NON-NLS-1$
+    public static final Version MIGRATION_VERSION = new Version("15.0.0.202201261500"); //$NON-NLS-1$
 
     @Override
     public Version getMigrationVersion() {
@@ -128,15 +129,31 @@ public class WorkspaceImageGMFBoundsMigrationParticipant extends AbstractReprese
             Integer width = null;
             Integer height = null;
             String sizeComputationExpression = workspaceImageDescription.getSizeComputationExpression();
-            if (!StringUtil.isEmpty(sizeComputationExpression) && "-1".equals(sizeComputationExpression.trim()) && workspaceImageQuery.doesImageExist()) { //$NON-NLS-1$
-                // In this case, use the real size of the image
-                Dimension imageSize = workspaceImageQuery.getDefaultDimension();
-                width = imageSize.width;
-                height = imageSize.height;
-            }
-            if (width == null && height == null && diagramElementWidth != null && diagramElementHeight != null) {
-                width = diagramElementWidth * LayoutUtils.SCALE;
-                height = (int) (diagramElementWidth / workspaceImageQuery.getRatio() * LayoutUtils.SCALE);
+            if (ResizeKind.NONE == workspaceImageDescription.getResizeKind().getValue()) {
+                // If the resize is not authorized, reset the GMF node size according to DNode size or image size if
+                // auto-sized.
+                if (!StringUtil.isEmpty(sizeComputationExpression) && "-1".equals(sizeComputationExpression.trim()) && workspaceImageQuery.doesImageExist()) { //$NON-NLS-1$
+                    // In this case, ie auto-size, use the real size of the image
+                    Dimension imageSize = workspaceImageQuery.getDefaultDimension();
+                    width = imageSize.width;
+                    height = imageSize.height;
+                } else if (diagramElementWidth != null && diagramElementHeight != null) {
+                    // Otherwise, use the DNode size
+                    width = diagramElementWidth * LayoutUtils.SCALE;
+                    height = (int) (diagramElementWidth / workspaceImageQuery.getRatio() * LayoutUtils.SCALE);
+                }
+            } else {
+                // If the resize is authorized, this migration changes the GMF node size only if the current GMF node
+                // size is the image size (the problem caused by the bug).
+                if (!StringUtil.isEmpty(sizeComputationExpression) && !("-1".equals(sizeComputationExpression.trim()) && workspaceImageQuery.doesImageExist())) { //$NON-NLS-1$
+                    Dimension imageSize = workspaceImageQuery.getDefaultDimension();
+                    if (size.getWidth() == imageSize.width && size.getHeight() == imageSize.height) {
+                        if (diagramElementWidth != null && diagramElementHeight != null) {
+                            width = diagramElementWidth * LayoutUtils.SCALE;
+                            height = (int) (diagramElementWidth / workspaceImageQuery.getRatio() * LayoutUtils.SCALE);
+                        }
+                    }
+                }
             }
             if (width != null && height != null && (size.getHeight() != height || size.getWidth() != width)) {
                 size.setWidth(width);

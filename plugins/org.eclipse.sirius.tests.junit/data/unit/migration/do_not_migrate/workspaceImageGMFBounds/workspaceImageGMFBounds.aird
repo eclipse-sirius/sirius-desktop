@@ -110,7 +110,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']/@defaultLayer/@containerMappings[name='EClassContainerMapping_list_img']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_CqILELKkEeSI84JZFmnEHw" name="container_image_not_found">
+    <ownedDiagramElements xmi:type="diagram:DNodeContainer" uid="_CqILELKkEeSI84JZFmnEHw" name="cont_not_found">
       <target xmi:type="ecore:EClass" href="workspaceImageGMFBounds.ecore#//Class1"/>
       <semanticElements xmi:type="ecore:EClass" href="workspaceImageGMFBounds.ecore#//Class1"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
@@ -121,7 +121,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="workspaceImageGMFBounds.odesign#//@ownedViewpoints[name='bug.test']/@ownedRepresentations[name='workspaceImageGMFBounds']/@defaultLayer/@containerMappings[name='EClassContainerMapping_img_not_found']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_CqJZMLKkEeSI84JZFmnEHw" name="list_image_not_found">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" uid="_CqJZMLKkEeSI84JZFmnEHw" name="list_not_found">
       <target xmi:type="ecore:EClass" href="workspaceImageGMFBounds.ecore#//Class1"/>
       <semanticElements xmi:type="ecore:EClass" href="workspaceImageGMFBounds.ecore#//Class1"/>
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>

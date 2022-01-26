@@ -88,7 +88,7 @@ h4. Changes in @org.eclipse.sirius.tests.junit.support@
 
 h4. Migrations
 
-* <span class="label label-success">Added</span> A migration participant has been added to repair size of GMF nodes with Workspace Image style description. A default size was set for this type of nodes, which resulted in graphical inconsistencies (see "Bug 576423 - _Incorrect representation size when using 'Size Computation Expression'_":https://bugs.eclipse.org/bugs/show_bug.cgi?id=576423). With the @org.eclipse.sirius.diagram.ui.business.internal.migration.WorkspaceImageGMFBoundsMigrationParticipant@ migration participant, the size of these nodes was recomputed according to the Size Computation Expression defined in the VSM. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _15.0.0.202201251700_.
+* <span class="label label-success">Added</span> A migration participant has been added to repair size of GMF nodes with Workspace Image style description. A default size was set for this type of nodes, which resulted in graphical inconsistencies (see "Bug 576423 - _Incorrect representation size when using 'Size Computation Expression'_":https://bugs.eclipse.org/bugs/show_bug.cgi?id=576423). With the @org.eclipse.sirius.diagram.ui.business.internal.migration.WorkspaceImageGMFBoundsMigrationParticipant@ migration participant, the size of these nodes was recomputed according to the Size Computation Expression defined in the VSM. The corresponding version, stored in attribute version of viewpoint:DAnalysis of the aird file, is _15.0.0.202201261500_.
 
 h2(#sirius6.6.0). Changes in Sirius 6.6.0
 

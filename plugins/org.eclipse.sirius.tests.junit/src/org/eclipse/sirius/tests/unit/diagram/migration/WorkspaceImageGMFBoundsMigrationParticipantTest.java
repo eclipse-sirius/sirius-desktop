@@ -84,15 +84,15 @@ public class WorkspaceImageGMFBoundsMigrationParticipantTest extends SiriusDiagr
         editor = DialectUIManager.INSTANCE.openEditor(session, diagram, new NullProgressMonitor());
         TestsUtil.synchronizationWithUIThread();
 
-        validateNodeSize("enum", 50, 50);
-        validateNodeSize("P1", 100, 70);
-        validateNodeSize("container_image", 160, 48);
-        validateNodeSize("list_image", 160, 48);
-        validateNodeSize("container_image_not_found", 100, 70);
-        validateNodeSize("list_image_not_found", 100, 70);
+        validateNodeSize("enum", 50, 50, false);
+        validateNodeSize("P1", 100, 70, false);
+        validateNodeSize("container_image", 160, 48, true);
+        validateNodeSize("list_image", 160, 48, true);
+        validateNodeSize("cont_not_found", 100, 70, true); // Container default size
+        validateNodeSize("list_not_found", 100, 70, true); // Container default size
     }
 
-    private void validateNodeSize(String nodeName, int expectedWidth, int expectedHeight) {
+    private void validateNodeSize(String nodeName, int expectedWidth, int expectedHeight, boolean autoSize) {
         DDiagramElement dNode = null;
         switch (nodeName) {
         case "enum":
@@ -100,11 +100,11 @@ public class WorkspaceImageGMFBoundsMigrationParticipantTest extends SiriusDiagr
             dNode = getDiagramElementsFromLabel(diagram, nodeName, DNode.class).iterator().next();
             break;
         case "container_image":
-        case "container_image_not_found":
+        case "cont_not_found":
             dNode = getDiagramElementsFromLabel(diagram, nodeName, DNodeContainer.class).iterator().next();
             break;
         case "list_image":
-        case "list_image_not_found":
+        case "list_not_found":
             dNode = getDiagramElementsFromLabel(diagram, nodeName, DNodeList.class).iterator().next();
             break;
         }
@@ -113,8 +113,14 @@ public class WorkspaceImageGMFBoundsMigrationParticipantTest extends SiriusDiagr
         IGraphicalEditPart editPart = getEditPart(dNode, editor);
         Rectangle bounds = editPart.getFigure().getBounds();
 
-        assertEquals("Node " + dNode.getName() + " has a wrong layoutConstraint height.", expectedHeight, size.getHeight());
-        assertEquals("Node " + dNode.getName() + " has a wrong layoutConstraint width.", expectedWidth, size.getWidth());
+        if (autoSize) {
+            assertEquals("Node " + dNode.getName() + " has a wrong layoutConstraint height.", -1, size.getHeight());
+            assertEquals("Node " + dNode.getName() + " has a wrong layoutConstraint width.", -1, size.getWidth());
+        } else {
+            assertEquals("Node " + dNode.getName() + " has a wrong layoutConstraint height.", expectedHeight, size.getHeight());
+            assertEquals("Node " + dNode.getName() + " has a wrong layoutConstraint width.", expectedWidth, size.getWidth());
+
+        }
         assertEquals("Node " + dNode.getName() + " has a wrong figure bounds height.", expectedHeight, bounds.height);
         assertEquals("Node " + dNode.getName() + " has a wrong figure bounds width.", expectedWidth, bounds.width);
     }

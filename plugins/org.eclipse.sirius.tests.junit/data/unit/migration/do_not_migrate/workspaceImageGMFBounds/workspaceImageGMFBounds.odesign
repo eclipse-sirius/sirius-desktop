@@ -29,13 +29,13 @@
           </style>
         </containerMappings>
         <containerMappings name="EClassContainerMapping_img_not_found" semanticCandidatesExpression="aql:self.eClassifiers->filter(ecore::EClass)" domainClass="EClass">
-          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" labelExpression="container_image_not_found" sizeComputationExpression="-1" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/nonexistingimage.png">
+          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="cont_not_found" sizeComputationExpression="-1" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/images/nonexistingimage.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </containerMappings>
         <containerMappings name="EClassContainerMapping_list_img_not_found" semanticCandidatesExpression="aql:self.eClassifiers->filter(ecore::EClass)" domainClass="EClass" childrenPresentation="List">
-          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" labelExpression="list_image_not_found" sizeComputationExpression="-1" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/nonexistingimage.png">
+          <style xsi:type="style:WorkspaceImageDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="list_not_found" sizeComputationExpression="-1" resizeKind="NSEW" arcWidth="1" arcHeight="1" workspacePath="/org.eclipse.sirius.tests.junit/nonexistingimage.png">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
