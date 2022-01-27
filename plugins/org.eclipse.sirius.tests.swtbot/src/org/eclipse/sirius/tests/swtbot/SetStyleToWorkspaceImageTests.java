@@ -53,7 +53,6 @@ import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEdi
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusHelper;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Widget;
-import org.eclipse.swtbot.eclipse.finder.widgets.SWTBotView;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.SWTBot;
 import org.eclipse.swtbot.swt.finder.exceptions.WidgetNotFoundException;
@@ -537,10 +536,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
     }
 
     private void testSetWkpImageStyleCancel(String name, Class<? extends IGraphicalEditPart> type, boolean tabbar) throws Exception {
-        openErrorLogViewByAPI();
-        SWTBotView errorLogView = bot.viewByPartName("Error Log");
-        errorLogView.setFocus();
-        int errorCount = errorLogView.bot().tree().rowCount();
+        startToListenErrorLog(true, true);
 
         SWTBotGefEditPart botPart = selectAndCheckEditPart(name, type);
 
@@ -556,9 +552,7 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         assertNotNull(cancelCustomButton);
         assertFalse(cancelCustomButton.isEnabled());
 
-        errorLogView.setFocus();
-        assertEquals("An error occurs during this test.", errorCount, errorLogView.bot().tree().rowCount());
-        closeErrorLogView();
+        assertFalse("An error occurs during this test.", doesAWarningOccurs() || doesAnErrorOccurs());
     }
 
     private void testSetWkpImageStyleDisabled(String name, Class<? extends IGraphicalEditPart> type, boolean tabbar) throws Exception {
@@ -752,15 +746,5 @@ public class SetStyleToWorkspaceImageTests extends AbstractSiriusSwtBotGefTestCa
         AbstractDNode node = (AbstractDNode) part.resolveDiagramElement();
         boolean isCustom = new DDiagramElementQuery(node).isCustomized();
         assertEquals(custom, isCustom);
-    }
-
-    /**
-     * Close error log.
-     * 
-     * @throws Exception
-     *             any exception
-     */
-    protected void closeErrorLogView() throws Exception {
-        bot.viewByPartName("Error Log").close();
     }
 }

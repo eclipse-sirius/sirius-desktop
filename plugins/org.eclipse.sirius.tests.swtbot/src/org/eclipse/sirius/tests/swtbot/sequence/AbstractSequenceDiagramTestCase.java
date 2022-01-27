@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -79,9 +79,6 @@ import org.eclipse.swtbot.swt.finder.matchers.AbstractMatcher;
 import org.eclipse.swtbot.swt.finder.waits.ICondition;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotMenu;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTable;
-import org.eclipse.ui.IViewPart;
-import org.eclipse.ui.IWorkbenchPage;
-import org.eclipse.ui.PlatformUI;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
@@ -414,30 +411,6 @@ public abstract class AbstractSequenceDiagramTestCase extends AbstractSiriusSwtB
         EndOfLifeEditPart eol = Iterables.getOnlyElement(Iterables.filter(getLifelineEditPart(lifelineLabel).getChildren(), EndOfLifeEditPart.class));
         Point center = eol.getFigure().getBounds().getCenter();
         editor.drag(center, center.getTranslated(new Dimension(0, resizeValue)));
-    }
-
-    /**
-     * Close the error log view.
-     * 
-     * @throws Exception
-     *             In case of problem.
-     * @deprecated Use {@link #closeErrorLogViewByAPI()} instead. This method is
-     *             faster.
-     */
-    @Deprecated
-    protected void closeErrorLogView() throws Exception {
-        bot.viewByPartName("Error Log").close();
-    }
-
-    protected void closeErrorLogViewByAPI() throws Exception {
-        PlatformUI.getWorkbench().getDisplay().syncExec(new Runnable() {
-            @Override
-            public void run() {
-                IWorkbenchPage page = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
-                IViewPart errorLogView = page.findView("org.eclipse.pde.runtime.LogView");
-                page.hideView(errorLogView);
-            }
-        });
     }
 
     protected void createMessage(String toolName, String sourceLifelineName, int sourceY, String targetLifelineName, int targetY) {

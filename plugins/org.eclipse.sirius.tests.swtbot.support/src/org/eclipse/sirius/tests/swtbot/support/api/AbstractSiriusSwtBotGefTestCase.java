@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -1470,6 +1470,25 @@ public abstract class AbstractSiriusSwtBotGefTestCase extends SWTBotGefTestCase 
      */
     protected synchronized void setWarningCatchActive(boolean warningCatchActive) {
         this.warningCatchActive = warningCatchActive;
+    }
+
+    /**
+     * Enable warning and/or error catch and reset existing recorded warnings and/or errors.
+     * 
+     * @param activateWarningCatch
+     *            True to activate warning catch and reset existing recorded warnings, false to not activate it.
+     * @param activateErrorCatch
+     *            True to activate error catch and reset existing recorded errors, false to not activate it.
+     */
+    protected void startToListenErrorLog(boolean activateWarningCatch, boolean activateErrorCatch) {
+        setWarningCatchActive(activateWarningCatch);
+        if (activateWarningCatch) {
+            warnings.clear();
+        }
+        setErrorCatchActive(activateErrorCatch);
+        if (activateErrorCatch) {
+            errors.clear();
+        }
     }
 
     /**
