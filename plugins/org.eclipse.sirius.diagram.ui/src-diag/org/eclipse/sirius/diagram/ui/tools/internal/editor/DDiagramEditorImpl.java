@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -877,7 +877,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         getSite().getPage().addSelectionListener(this);
 
         // Add a post commit listener to select newly created diagram elements.
-        selectElementsListener = new SelectDRepresentationElementsListener(this, false);
+        selectElementsListener = new DiagramSelectDRepresentationElementsListener(this, false);
     }
 
     @Override

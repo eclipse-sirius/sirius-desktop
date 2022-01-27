@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2018, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -115,6 +115,8 @@ public class EditModeTest extends AbstractModeTest {
             // -> tool should have been applied
             assertEdgeReconnectionToolHasBeenApplied("new EClass 7", "eRef2", true);
             editor.save();
+            // Deselect the reconnected edge
+            editor.click(0, 0);
             editor.setFocus();
             break;
         default:

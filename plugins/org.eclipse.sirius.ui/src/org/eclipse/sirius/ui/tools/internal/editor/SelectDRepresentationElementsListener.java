@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2014, 2019 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2014, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -49,8 +49,8 @@ import org.eclipse.ui.IEditorPart;
 import com.google.common.collect.Iterables;
 
 /**
- * A post commit listener which select the representation elements specified through the "Elements To Select" expression
- * and "Inverse Selection Order" tag of the tool. </br>
+ * A post commit listener which selects the representation elements specified through the "Elements To Select"
+ * expression and "Inverse Selection Order" tag of the tool. </br>
  * Elements will be selected only on the active editor.
  * 
  * Each dialect is responsible to add this post commit listener or one specializing this one.
@@ -75,7 +75,7 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
     private boolean selectOnlyViewWithNewSemanticTarget;
 
     /**
-     * Constructor.
+     * Default constructor.
      *
      * @param editor
      *            the editor on which the representation elements should be selected, if the editor is active.
@@ -84,7 +84,23 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
      *            created view whose semantic target was already existing
      */
     public SelectDRepresentationElementsListener(DialectEditor editor, boolean selectOnlyViewWithNewSemanticTarget) {
-        super(DEFAULT_NOTIFICATION_FILTER);
+        this(editor, selectOnlyViewWithNewSemanticTarget, DEFAULT_NOTIFICATION_FILTER);
+    }
+
+    /**
+     * Constructor with a specific filter.
+     *
+     * @param editor
+     *            the editor on which the representation elements should be selected, if the editor is active.
+     * @param selectOnlyViewWithNewSemanticTarget
+     *            true to select only created view whose semantic target has also been created otherwise select also
+     *            created view whose semantic target was already existing
+     * @param filter
+     *            a filter to override default filter ({@link #DEFAULT_NOTIFICATION_FILTER}, or <code>null</code> to
+     *            request the default
+     */
+    public SelectDRepresentationElementsListener(DialectEditor editor, boolean selectOnlyViewWithNewSemanticTarget, NotificationFilter filter) {
+        super(filter != null ? filter : DEFAULT_NOTIFICATION_FILTER);
         dialectEditor = Objects.requireNonNull(editor);
         this.selectOnlyViewWithNewSemanticTarget = selectOnlyViewWithNewSemanticTarget;
         DRepresentation representation = editor.getRepresentation();
@@ -165,7 +181,7 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
      *            the representation
      * @return the list to select. If null selection must not be changed
      */
-    private List<DRepresentationElement> extractElementsToSelect(ResourceSetChangeEvent event, DRepresentation currentRep) {
+    protected List<DRepresentationElement> extractElementsToSelect(ResourceSetChangeEvent event, DRepresentation currentRep) {
         List<DRepresentationElement> elementsToSelect = null;
         final List<DRepresentationElement> notifiedElements = new ArrayList<>();
         boolean elementsToSelectUpdated = analyseNotifications(event, currentRep, notifiedElements);
@@ -294,7 +310,7 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
      * {@link org.eclipse.emf.ecore.change.ChangeDescription#getObjectsToDetach()} work only from Eclipse Mars. See Bug
      * 460206.
      */
-    private boolean isViewWithNewSemanticTarget(Collection<EObject> attachedEObjects, DRepresentationElement view) {
+    protected boolean isViewWithNewSemanticTarget(Collection<EObject> attachedEObjects, DRepresentationElement view) {
         boolean isViewWithNewSemanticTarget = false;
         if (attachedEObjects != null && !attachedEObjects.isEmpty()) {
             isViewWithNewSemanticTarget = EcoreUtil.isAncestor(attachedEObjects, view.getTarget());
@@ -302,16 +318,27 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
         return isViewWithNewSemanticTarget;
     }
 
-    private boolean analyseNotifications(ResourceSetChangeEvent event, DRepresentation currentRep, List<DRepresentationElement> keptNotifiedElements) {
+    /**
+     * Analyze the notifications to retrieve the elements to select by default.
+     * 
+     * @param event
+     *            current event to retrieve notifications
+     * @param currentRep
+     *            The current representation
+     * @param keptNotifiedElements
+     *            List of elements to complete
+     * @return true if the element must be updated according to UI State, false otherwise.
+     */
+    protected boolean analyseNotifications(ResourceSetChangeEvent event, DRepresentation currentRep, List<DRepresentationElement> keptNotifiedElements) {
         boolean elementsToSelectUpdated = false;
         Collection<EObject> attachedEObjects = null;
         for (Notification n : event.getNotifications()) {
             Object feature = n.getFeature();
             if (!ViewpointPackage.Literals.UI_STATE__ELEMENTS_TO_SELECT.equals(feature) && !ViewpointPackage.Literals.DREPRESENTATION__UI_STATE.equals(feature)) {
-                Set<DRepresentationElement> notificationValues = getNotificationValues(n);
+                Set<DRepresentationElement> notificationValues = getAttachmentNotificationValues(n);
                 for (DRepresentationElement elt : notificationValues) {
                     if (currentRep == new DRepresentationElementQuery(elt).getParentRepresentation()) {
-                        if (attachedEObjects == null && selectOnlyViewWithNewSemanticTarget) {
+                        if (attachedEObjects == null && isSelectOnlyViewWithNewSemanticTarget()) {
                             // Compute the change description effect only once.
                             TransactionChangeDescription changeDescription = event.getTransaction().getChangeDescription();
                             // Get the objects attached during the current
@@ -322,7 +349,7 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
                         }
                         // EcoreUtil.isAncestor() used to only select top level
                         // created views.
-                        if ((!selectOnlyViewWithNewSemanticTarget || isViewWithNewSemanticTarget(attachedEObjects, elt)) && !EcoreUtil.isAncestor(keptNotifiedElements, elt)) {
+                        if ((!isSelectOnlyViewWithNewSemanticTarget() || isViewWithNewSemanticTarget(attachedEObjects, elt)) && !EcoreUtil.isAncestor(keptNotifiedElements, elt)) {
                             keptNotifiedElements.add(elt);
                         }
                     }
@@ -334,7 +361,15 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
         return elementsToSelectUpdated;
     }
 
-    private Set<DRepresentationElement> getNotificationValues(Notification notification) {
+    /**
+     * Get the attached elements corresponding to the <code>notification</code>. The notification is supposed to be an
+     * "attached" notification.
+     * 
+     * @param notification
+     *            The notification to analyze
+     * @return list of attached elements.
+     */
+    protected Set<DRepresentationElement> getAttachmentNotificationValues(Notification notification) {
         final Set<DRepresentationElement> values = new LinkedHashSet<>();
         Object value = notification.getNewValue();
         if (value instanceof Collection) {
@@ -343,6 +378,15 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
             values.add((DRepresentationElement) value);
         }
         return values;
+    }
+
+    /**
+     * Return the selectOnlyViewWithNewSemanticTarget status.
+     * 
+     * @return the selectOnlyViewWithNewSemanticTarget status.
+     */
+    protected boolean isSelectOnlyViewWithNewSemanticTarget() {
+        return selectOnlyViewWithNewSemanticTarget;
     }
 
     /**
