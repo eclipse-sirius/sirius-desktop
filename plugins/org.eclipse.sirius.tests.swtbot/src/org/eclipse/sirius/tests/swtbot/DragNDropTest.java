@@ -13,6 +13,7 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.geometry.Point;
@@ -21,9 +22,13 @@ import org.eclipse.gef.editparts.AbstractGraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.CompartmentEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.GraphicalEditPart;
 import org.eclipse.gmf.runtime.diagram.ui.editparts.IGraphicalEditPart;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.StructuredSelection;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramNodeEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.diagram.ui.internal.edit.parts.DNodeContainerEditPart;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.swtbot.sequence.condition.CheckNumberOfDescendants;
@@ -37,6 +42,8 @@ import org.eclipse.sirius.tests.swtbot.support.utils.SWTBotUtils;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
 import org.eclipse.swtbot.swt.finder.junit.SWTBotJunit4ClassRunner;
 import org.eclipse.swtbot.swt.finder.widgets.SWTBotTreeItem;
+import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.IWorkbenchPart;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -106,6 +113,43 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
      * Step used for the grid spacing.
      */
     protected static final int GRID_STEP = 20;
+
+    /**
+     * A selection listener to detect if the diagram is selected during the drag'n'drop.
+     * 
+     * @author lredor
+     */
+    private class NoDiagramSelectionListener implements ISelectionListener {
+
+        String errorMessage = null;
+
+        /**
+         * Default constructor.
+         */
+        public NoDiagramSelectionListener() {
+        }
+
+        @Override
+        public void selectionChanged(IWorkbenchPart part, ISelection selection) {
+            if (errorMessage == null) {
+                if (selection instanceof StructuredSelection) {
+                    StructuredSelection structuredSelection = (StructuredSelection) selection;
+                    if (structuredSelection.size() != 1) {
+                        errorMessage = "Only one element must be selected during the drag'n'drop from a DDiagramContainer to another one (but was <" + structuredSelection.size() + ">.";
+                    } else if (structuredSelection.getFirstElement() instanceof DDiagramEditPart) {
+                        errorMessage = "The diagram must never be selected during the drag'n'drop from a DDiagramContainer to another one.";
+                    }
+                } else {
+                    errorMessage = "The selection must be StructuredSelection during the drag'n'drop from a DDiagramContainer to another one.";
+                }
+            }
+        }
+
+        public Optional<String> getError() {
+            return Optional.ofNullable(errorMessage);
+        }
+
+    }
 
     @Override
     @Before
@@ -238,7 +282,14 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
             setErrorCatchActive(true);
             eClassBorderNodeEditPart.click();
             SWTBotUtils.waitAllUiEvents();
-            editor.drag(sourceLocation, endLocation);
+            // Add a selection listener to detect wrong diagram selection during drag'n'drop
+            NoDiagramSelectionListener selectionListener = new NoDiagramSelectionListener();
+            EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
+            try {
+                editor.drag(sourceLocation, endLocation);
+            } finally {
+                removeSelectionListenerAndCheckIt(selectionListener);
+            }
             SWTBotUtils.waitAllUiEvents();
 
         } finally {
@@ -349,16 +400,23 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
         SWTBotGefEditPart p1Bot = editor.getEditPart(CONTAINER_TO_DRAG_P1).parent();
         Point targetLocation = editor.getBounds(p1Bot).getTopRight().getTranslated(10, 0);
 
-        editor.drag(p2Bot, targetLocation);
-        allEditParts = editor.mainEditPart().children();
+        // Add a selection listener to detect wrong diagram selection during drag'n'drop
+        NoDiagramSelectionListener selectionListener = new NoDiagramSelectionListener();
+        EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
+        try {
+            editor.drag(p2Bot, targetLocation);
+            allEditParts = editor.mainEditPart().children();
 
-        assertFalse("An error message was generated !", doesAWarningOccurs() || doesAnErrorOccurs());
-        assertEquals("Bad number of elements!", 2, allEditParts.size());
+            assertFalse("An error message was generated !", doesAWarningOccurs() || doesAnErrorOccurs());
+            assertEquals("Bad number of elements!", 2, allEditParts.size());
 
-        IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor.getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
-        // TODO remove this condition once #521802 is fixed.
-        if (!snapToGrid) {
-            checkEditPartLocation(p2EditPart);
+            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor.getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
+            // TODO remove this condition once #521802 is fixed.
+            if (!snapToGrid) {
+                checkEditPartLocation(p2EditPart);
+            }
+        } finally {
+            removeSelectionListenerAndCheckIt(selectionListener);
         }
     }
 
@@ -379,13 +437,20 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
         final IGraphicalEditPart targetPart = (IGraphicalEditPart) targetSwtBotPart.part();
         Point targetCenter = targetPart.getFigure().getBounds().getCenter();
 
-        // DnD P2 from the diagram to P1
-        editor.drag(sourceSwtBotPart, targetCenter);
-
-        assertFalse("An error message was generated !", doesAWarningOccurs() || doesAnErrorOccurs());
-
-        IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor.getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
-        checkEditPartLocation(p2EditPart);
+        // Add a selection listener to detect wrong diagram selection during drag'n'drop
+        NoDiagramSelectionListener selectionListener = new NoDiagramSelectionListener();
+        EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
+        try {
+            // DnD P2 from the diagram to P1
+            editor.drag(sourceSwtBotPart, targetCenter);
+    
+            assertFalse("An error message was generated !", doesAWarningOccurs() || doesAnErrorOccurs());
+    
+            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor.getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
+            checkEditPartLocation(p2EditPart);
+        } finally {
+            removeSelectionListenerAndCheckIt(selectionListener);
+        }
     }
 
     /**
@@ -421,13 +486,23 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
         final IGraphicalEditPart targetPart = (IGraphicalEditPart) targetSwtBotPart.part();
         Point targetCenter = targetPart.getFigure().getBounds().getCenter();
 
-        // DnD P2 from P1 to P2.1
-        editor.drag(p2Location, targetCenter);
-
-        assertFalse("An error message was generated !", doesAWarningOccurs() || doesAnErrorOccurs());
-
-        IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor.getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
-        checkEditPartLocation(p2EditPart);
+        // Click on p2 (to be already selected. Otherwise, there is "unexpected" selection thrown during the
+        // drag'n'drop because of SWTBot method).
+        editor.click(p2Location);
+        // Add a selection listener to detect wrong diagram selection during drag'n'drop
+        NoDiagramSelectionListener selectionListener = new NoDiagramSelectionListener();
+        EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
+        try {
+            // DnD P2 from P1 to P2.1
+            editor.drag(p2Location, targetCenter);
+    
+            assertFalse("An error message was generated !", doesAWarningOccurs() || doesAnErrorOccurs());
+    
+            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor.getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
+            checkEditPartLocation(p2EditPart);
+        } finally {
+            removeSelectionListenerAndCheckIt(selectionListener);
+        }
     }
 
     /**
@@ -472,28 +547,37 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
 
             Point targetCenter = editor.getBounds(p21Bot).getCenter();
 
-            // DnD P2 from P1 to P2.1
-            editor.drag(p2Location, targetCenter);
-
-            // Get the location of P2
-            p2Bot = editor.getEditPart(CONTAINER_TO_DRAG_P2).parent();
-            p2Location = editor.getBounds(p2Bot).getCenter();
-            bot.waitUntil(new CheckNumberOfDescendants(p1Bot, AbstractDiagramNodeEditPart.class, 0));
-            bot.waitUntil(new CheckNumberOfDescendants(p21Bot, AbstractDiagramNodeEditPart.class, 1));
-
-            // If the snap is activated, the location will not be the expected one since the view will be snapped on the
-            // grid.
-            // The snap will be check in checkEditPartLocation method.
-            if (!snapToGrid) {
-                assertEquals(targetCenter.x, p2Location.x);
-                assertEquals(targetCenter.y, p2Location.y);
+            // Click on p2 (to be already selected. Otherwise, there is "unexpected" selection thrown during the
+            // drag'n'drop because of SWTBot method).
+            editor.click(p2Location);
+            // Add a selection listener to detect wrong diagram selection during drag'n'drop
+            NoDiagramSelectionListener selectionListener = new NoDiagramSelectionListener();
+            EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
+            try {
+                // DnD P2 from P1 to P2.1
+                editor.drag(p2Location, targetCenter);
+    
+                // Get the location of P2
+                p2Bot = editor.getEditPart(CONTAINER_TO_DRAG_P2).parent();
+                p2Location = editor.getBounds(p2Bot).getCenter();
+                bot.waitUntil(new CheckNumberOfDescendants(p1Bot, AbstractDiagramNodeEditPart.class, 0));
+                bot.waitUntil(new CheckNumberOfDescendants(p21Bot, AbstractDiagramNodeEditPart.class, 1));
+    
+                // If the snap is activated, the location will not be the expected one since the view will be snapped on the
+                // grid.
+                // The snap will be check in checkEditPartLocation method.
+                if (!snapToGrid) {
+                    assertEquals(targetCenter.x, p2Location.x);
+                    assertEquals(targetCenter.y, p2Location.y);
+                }
+    
+                assertFalse("An error message was generated !", doesAWarningOccurs() || doesAnErrorOccurs());
+    
+                IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor.getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
+                checkEditPartLocation(p2EditPart);
+            } finally {
+                removeSelectionListenerAndCheckIt(selectionListener);
             }
-
-            assertFalse("An error message was generated !", doesAWarningOccurs() || doesAnErrorOccurs());
-
-            IGraphicalEditPart p2EditPart = (IGraphicalEditPart) editor.getEditPart(CONTAINER_TO_DRAG_P2, DNodeContainerEditPart.class).part();
-            checkEditPartLocation(p2EditPart);
-
         } finally {
             editor.zoom(ZoomLevel.ZOOM_100);
             editor.click(10, 10);
@@ -644,13 +728,23 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
         final IGraphicalEditPart targetPart = (IGraphicalEditPart) targetSwtBotPart.part();
         Point targetCenter = targetPart.getFigure().getBounds().getCenter();
 
-        // DnD C1 from P1 to P2
-        editor.drag(c1Location, targetCenter);
+        // Click on C1 (to be already selected. Otherwise, there is "unexpected" selection thrown during the
+        // drag'n'drop because of SWTBot method).
+        editor.click(c1Location);
+        // Add a selection listener to detect wrong diagram selection during drag'n'drop
+        NoDiagramSelectionListener selectionListener = new NoDiagramSelectionListener();
+        EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
+        try {
+            // DnD C1 from P1 to P2
+            editor.drag(c1Location, targetCenter);
 
-        assertFalse("An error message was generated !", doesAWarningOccurs() || doesAnErrorOccurs());
+            assertFalse("An error message was generated !", doesAWarningOccurs() || doesAnErrorOccurs());
 
-        IGraphicalEditPart c1EditPart = (IGraphicalEditPart) editor.getEditPart(CLASS_TO_DRAG_C1, DNodeContainerEditPart.class).part();
-        checkEditPartLocation(c1EditPart);
+            IGraphicalEditPart c1EditPart = (IGraphicalEditPart) editor.getEditPart(CLASS_TO_DRAG_C1, DNodeContainerEditPart.class).part();
+            checkEditPartLocation(c1EditPart);
+        } finally {
+            removeSelectionListenerAndCheckIt(selectionListener);
+        }
     }
 
     /**
@@ -753,5 +847,18 @@ public class DragNDropTest extends AbstractSiriusSwtBotGefTestCase {
      */
     protected void checkEditPartLocation(IGraphicalEditPart editPart) {
         assertNotNull("No container edit part found with this name", editPart);
+    }
+
+    /**
+     * Check if an error message has been thrown by the selection listener and remove it from the active page.
+     * 
+     * @param selectionListener
+     *            The selection listener to remove
+     */
+    private void removeSelectionListenerAndCheckIt(NoDiagramSelectionListener selectionListener) {
+        EclipseUIUtil.getActivePage().removeSelectionListener(selectionListener);
+        if (selectionListener.getError().isPresent()) {
+            fail(selectionListener.getError().get());
+        }
     }
 }

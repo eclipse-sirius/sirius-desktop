@@ -13,22 +13,29 @@
 package org.eclipse.sirius.tests.swtbot;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.Rectangle;
 import org.eclipse.gef.EditPart;
 import org.eclipse.gef.editparts.AbstractConnectionEditPart;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.sirius.business.api.helper.SiriusUtil;
+import org.eclipse.sirius.common.ui.tools.api.util.EclipseUIUtil;
 import org.eclipse.sirius.diagram.DDiagram;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramBorderNodeEditPart;
 import org.eclipse.sirius.diagram.ui.edit.api.part.AbstractDiagramContainerEditPart;
+import org.eclipse.sirius.diagram.ui.internal.edit.parts.DDiagramEditPart;
 import org.eclipse.sirius.tests.support.api.GraphicTestsSupportHelp;
 import org.eclipse.sirius.tests.swtbot.support.api.AbstractSiriusSwtBotGefTestCase;
 import org.eclipse.sirius.tests.swtbot.support.api.business.UIResource;
 import org.eclipse.sirius.tests.swtbot.support.api.editor.SWTBotSiriusDiagramEditor;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefConnectionEditPart;
 import org.eclipse.swtbot.eclipse.gef.finder.widgets.SWTBotGefEditPart;
+import org.eclipse.ui.ISelectionListener;
+import org.eclipse.ui.IWorkbenchPart;
 import org.hamcrest.core.IsInstanceOf;
 
 /**
@@ -51,6 +58,40 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
     private static final String REPRESENTATION1_NAME = "DiagramForBug467663";
 
     private static final String REPRESENTATION2_NAME = "DiagramForBug467663Bis";
+
+    /**
+     * A selection listener to detect if the diagram is selected during the reconnection of an edge.
+     * 
+     * @author lredor
+     */
+    private class NoDiagramSelectionListener implements ISelectionListener {
+
+        String errorMessage = null;
+
+        /**
+         * Default constructor.
+         */
+        public NoDiagramSelectionListener() {
+        }
+
+        @Override
+        public void selectionChanged(IWorkbenchPart part, ISelection selection) {
+            if (selection instanceof StructuredSelection) {
+                StructuredSelection structuredSelection = (StructuredSelection) selection;
+                if (structuredSelection.size() != 1) {
+                    errorMessage = "Only one element must be selected during the drag'n'drop (but was <" + structuredSelection.size() + ">."; //$NON-NLS-1$ //$NON-NLS-2$
+                } else if (structuredSelection.getFirstElement() instanceof DDiagramEditPart) {
+                    errorMessage = "The diagram must never be selected during the drag'n'drop."; //$NON-NLS-1$
+                }
+            } else {
+                errorMessage = "The selection must be StructuredSelection during the drag'n'drop."; //$NON-NLS-1$
+            }
+        }
+
+        public Optional<String> getError() {
+            return Optional.ofNullable(errorMessage);
+        }
+    }
 
     @Override
     public void setUp() throws Exception {
@@ -82,150 +123,209 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
             Point from = connection1Points.getLastPoint();
             Point to = from.getCopy().setX(editor.getBounds(eClass2EditPartBot).x);
             connection1EditPartBot.select();
-            editor.drag(from, to);
-            // Check that reconnection is correct
-            assertEquals(0, editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot).size());
-            List<SWTBotGefConnectionEditPart> newConnection1EditPartBotList = editor.getConnectionEditPart(ref1EditPartBot, eClass2EditPartBot);
-            assertEquals(1, newConnection1EditPartBotList.size());
-            SWTBotGefConnectionEditPart newConnection1EditPartBot = newConnection1EditPartBotList.get(0);
-            PointList newConnection1Points = ((AbstractConnectionEditPart) newConnection1EditPartBot.part()).getConnectionFigure().getPoints();
-            assertEquals(3, newConnection1Points.size());
-            GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection1Points.getFirstPoint(), newConnection1Points.getFirstPoint(), 0, 1);
-            GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection1Points.getLastPoint(), 0, 1);
-            connection1EditPartBot = newConnection1EditPartBot;
-            // Check that the edge is selected after reconnection
-            checkEdgeSelection(connection1EditPartBot);
+
+            // Add a selection listener to detect wrong diagram selection during drag'n'drop
+            NoDiagramSelectionListener selectionListener = new NoDiagramSelectionListener();
+            EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
+            try {
+                editor.drag(from, to);
+                // Check that reconnection is correct
+                assertEquals(0, editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot).size());
+                List<SWTBotGefConnectionEditPart> newConnection1EditPartBotList = editor.getConnectionEditPart(ref1EditPartBot, eClass2EditPartBot);
+                assertEquals(1, newConnection1EditPartBotList.size());
+                SWTBotGefConnectionEditPart newConnection1EditPartBot = newConnection1EditPartBotList.get(0);
+                PointList newConnection1Points = ((AbstractConnectionEditPart) newConnection1EditPartBot.part()).getConnectionFigure().getPoints();
+                assertEquals(3, newConnection1Points.size());
+                GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection1Points.getFirstPoint(), newConnection1Points.getFirstPoint(), 0,
+                        1);
+                GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection1Points.getLastPoint(), 0, 1);
+                connection1EditPartBot = newConnection1EditPartBot;
+                // Check that the edge is selected after reconnection
+                checkEdgeSelection(connection1EditPartBot);
+            } finally {
+                EclipseUIUtil.getActivePage().removeSelectionListener(selectionListener);
+            }
 
             // Reconnect target of second connection
             PointList connection2Points = ((AbstractConnectionEditPart) connection2EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
             from = connection2Points.getLastPoint();
             to = from.getCopy().setX(editor.getBounds(eClass2EditPartBot).x);
             connection2EditPartBot.select();
-            editor.drag(from, to);
-            // Check that reconnection is correct
-            assertEquals(0, editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot).size());
-            List<SWTBotGefConnectionEditPart> newConnection2EditPartBotList = editor.getConnectionEditPart(ref2EditPartBot, eClass2EditPartBot);
-            assertEquals(1, newConnection2EditPartBotList.size());
-            SWTBotGefConnectionEditPart newConnection2EditPartBot = newConnection2EditPartBotList.get(0);
-            PointList newConnection2Points = ((AbstractConnectionEditPart) newConnection2EditPartBot.part()).getConnectionFigure().getPoints();
-            assertEquals(3, newConnection2Points.size());
-            GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection2Points.getFirstPoint(), newConnection2Points.getFirstPoint(), 0, 2);
-            GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection2Points.getLastPoint(), 0, 2);
-            connection2EditPartBot = newConnection2EditPartBot;
-            // Check that the edge is selected after reconnection
-            checkEdgeSelection(connection2EditPartBot);
+            selectionListener = new NoDiagramSelectionListener();
+            EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
+            try {
+                editor.drag(from, to);
+                // Check that reconnection is correct
+                assertEquals(0, editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot).size());
+                List<SWTBotGefConnectionEditPart> newConnection2EditPartBotList = editor.getConnectionEditPart(ref2EditPartBot, eClass2EditPartBot);
+                assertEquals(1, newConnection2EditPartBotList.size());
+                SWTBotGefConnectionEditPart newConnection2EditPartBot = newConnection2EditPartBotList.get(0);
+                PointList newConnection2Points = ((AbstractConnectionEditPart) newConnection2EditPartBot.part()).getConnectionFigure().getPoints();
+                assertEquals(3, newConnection2Points.size());
+                GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection2Points.getFirstPoint(), newConnection2Points.getFirstPoint(), 0,
+                        2);
+                GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection2Points.getLastPoint(), 0, 2);
+                connection2EditPartBot = newConnection2EditPartBot;
+                // Check that the edge is selected after reconnection
+                checkEdgeSelection(connection2EditPartBot);
+            } finally {
+                removeSelectionListenerAndCheckIt(selectionListener);
+            }
 
             // Reconnect target of first connection as initially
             connection1Points = ((AbstractConnectionEditPart) connection1EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
             from = connection1Points.getLastPoint();
             to = from.getCopy().setX(editor.getBounds(eClass1EditPartBot).getRight().x - 20);
             connection1EditPartBot.select();
-            editor.drag(from, to);
-            // Check that reconnection is correct
-            assertEquals(0, editor.getConnectionEditPart(ref1EditPartBot, eClass2EditPartBot).size());
-            newConnection1EditPartBotList = editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot);
-            assertEquals(1, newConnection1EditPartBotList.size());
-            newConnection1EditPartBot = newConnection1EditPartBotList.get(0);
-            newConnection1Points = ((AbstractConnectionEditPart) newConnection1EditPartBot.part()).getConnectionFigure().getPoints();
-            assertEquals(3, newConnection1Points.size());
-            GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection1Points.getFirstPoint(), newConnection1Points.getFirstPoint(), 1, 1);
-            GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection1Points.getLastPoint(), 1, 1);
-            connection1EditPartBot = newConnection1EditPartBot;
-            // Check that the edge is selected after reconnection
-            checkEdgeSelection(connection1EditPartBot);
+            selectionListener = new NoDiagramSelectionListener();
+            EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
+            try {
+                editor.drag(from, to);
+                // Check that reconnection is correct
+                assertEquals(0, editor.getConnectionEditPart(ref1EditPartBot, eClass2EditPartBot).size());
+                List<SWTBotGefConnectionEditPart> newConnection1EditPartBotList = editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot);
+                assertEquals(1, newConnection1EditPartBotList.size());
+                SWTBotGefConnectionEditPart newConnection1EditPartBot = newConnection1EditPartBotList.get(0);
+                PointList newConnection1Points = ((AbstractConnectionEditPart) newConnection1EditPartBot.part()).getConnectionFigure().getPoints();
+                assertEquals(3, newConnection1Points.size());
+                GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection1Points.getFirstPoint(), newConnection1Points.getFirstPoint(), 1,
+                        1);
+                GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection1Points.getLastPoint(), 1, 1);
+                connection1EditPartBot = newConnection1EditPartBot;
+                // Check that the edge is selected after reconnection
+                checkEdgeSelection(connection1EditPartBot);
+            } finally {
+                removeSelectionListenerAndCheckIt(selectionListener);
+            }
 
             // Reconnect target of second connection as initially
             connection2Points = ((AbstractConnectionEditPart) connection2EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
             from = connection2Points.getLastPoint();
             to = from.getCopy().setX(editor.getBounds(eClass1EditPartBot).getRight().x - 20);
             connection2EditPartBot.select();
-            editor.drag(from, to);
-            // Check that reconnection is correct
-            assertEquals(0, editor.getConnectionEditPart(ref2EditPartBot, eClass2EditPartBot).size());
-            newConnection2EditPartBotList = editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot);
-            assertEquals(1, newConnection2EditPartBotList.size());
-            newConnection2EditPartBot = newConnection2EditPartBotList.get(0);
-            newConnection2Points = ((AbstractConnectionEditPart) newConnection2EditPartBot.part()).getConnectionFigure().getPoints();
-            assertEquals(3, newConnection2Points.size());
-            GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection2Points.getFirstPoint(), newConnection2Points.getFirstPoint(), 1, 2);
-            GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection2Points.getLastPoint(), 1, 2);
-            connection2EditPartBot = newConnection2EditPartBot;
-            // Check that the edge is selected after reconnection
-            checkEdgeSelection(connection2EditPartBot);
+            selectionListener = new NoDiagramSelectionListener();
+            EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
+            try {
+                editor.drag(from, to);
+                // Check that reconnection is correct
+                assertEquals(0, editor.getConnectionEditPart(ref2EditPartBot, eClass2EditPartBot).size());
+                List<SWTBotGefConnectionEditPart> newConnection2EditPartBotList = editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot);
+                assertEquals(1, newConnection2EditPartBotList.size());
+                SWTBotGefConnectionEditPart newConnection2EditPartBot = newConnection2EditPartBotList.get(0);
+                PointList newConnection2Points = ((AbstractConnectionEditPart) newConnection2EditPartBot.part()).getConnectionFigure().getPoints();
+                assertEquals(3, newConnection2Points.size());
+                GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection2Points.getFirstPoint(), newConnection2Points.getFirstPoint(), 1,
+                        2);
+                GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection2Points.getLastPoint(), 1, 2);
+                connection2EditPartBot = newConnection2EditPartBot;
+                // Check that the edge is selected after reconnection
+                checkEdgeSelection(connection2EditPartBot);
+            } finally {
+                removeSelectionListenerAndCheckIt(selectionListener);
+            }
 
             // Reconnect source of first connection
             connection1Points = ((AbstractConnectionEditPart) connection1EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
             from = connection1Points.getFirstPoint();
             to = from.getCopy().setX(editor.getBounds(ref3EditPartBot).x);
             connection1EditPartBot.select();
-            editor.drag(from, to);
-            // Check that reconnection is correct
-            assertEquals(0, editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot).size());
-            newConnection1EditPartBotList = editor.getConnectionEditPart(ref3EditPartBot, eClass1EditPartBot);
-            assertEquals(1, newConnection1EditPartBotList.size());
-            newConnection1EditPartBot = newConnection1EditPartBotList.get(0);
-            newConnection1Points = ((AbstractConnectionEditPart) newConnection1EditPartBot.part()).getConnectionFigure().getPoints();
-            assertEquals(3, newConnection1Points.size());
-            GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", to, newConnection1Points.getFirstPoint(), 0, 2);
-            GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", connection1Points.getLastPoint(), newConnection1Points.getLastPoint(), 0, 2);
-            connection1EditPartBot = newConnection1EditPartBot;
-            // Check that the edge is selected after reconnection
-            checkEdgeSelection(connection1EditPartBot);
+            selectionListener = new NoDiagramSelectionListener();
+            EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
+            try {
+                editor.drag(from, to);
+                // Check that reconnection is correct
+                assertEquals(0, editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot).size());
+                List<SWTBotGefConnectionEditPart> newConnection1EditPartBotList = editor.getConnectionEditPart(ref3EditPartBot, eClass1EditPartBot);
+                assertEquals(1, newConnection1EditPartBotList.size());
+                SWTBotGefConnectionEditPart newConnection1EditPartBot = newConnection1EditPartBotList.get(0);
+                PointList newConnection1Points = ((AbstractConnectionEditPart) newConnection1EditPartBot.part()).getConnectionFigure().getPoints();
+                assertEquals(3, newConnection1Points.size());
+                GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", to, newConnection1Points.getFirstPoint(), 0, 2);
+                GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", connection1Points.getLastPoint(), newConnection1Points.getLastPoint(), 0,
+                        2);
+                connection1EditPartBot = newConnection1EditPartBot;
+                // Check that the edge is selected after reconnection
+                checkEdgeSelection(connection1EditPartBot);
+            } finally {
+                removeSelectionListenerAndCheckIt(selectionListener);
+            }
 
             // Reconnect source of second connection
             connection2Points = ((AbstractConnectionEditPart) connection2EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
             from = connection2Points.getFirstPoint();
             to = from.getCopy().setX(editor.getBounds(ref4EditPartBot).x);
             connection2EditPartBot.select();
-            editor.drag(from, to);
-            // Check that reconnection is correct
-            assertEquals(0, editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot).size());
-            newConnection2EditPartBotList = editor.getConnectionEditPart(ref4EditPartBot, eClass1EditPartBot);
-            assertEquals(1, newConnection2EditPartBotList.size());
-            newConnection2EditPartBot = newConnection2EditPartBotList.get(0);
-            newConnection2Points = ((AbstractConnectionEditPart) newConnection2EditPartBot.part()).getConnectionFigure().getPoints();
-            assertEquals(3, newConnection2Points.size());
-            GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", to, newConnection2Points.getFirstPoint(), 0, 2);
-            GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", connection2Points.getLastPoint(), newConnection2Points.getLastPoint(), 0, 1);
-            connection2EditPartBot = newConnection2EditPartBot;
-            // Check that the edge is selected after reconnection
-            checkEdgeSelection(connection2EditPartBot);
+            selectionListener = new NoDiagramSelectionListener();
+            EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
+            try {
+                editor.drag(from, to);
+                // Check that reconnection is correct
+                assertEquals(0, editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot).size());
+                List<SWTBotGefConnectionEditPart> newConnection2EditPartBotList = editor.getConnectionEditPart(ref4EditPartBot, eClass1EditPartBot);
+                assertEquals(1, newConnection2EditPartBotList.size());
+                SWTBotGefConnectionEditPart newConnection2EditPartBot = newConnection2EditPartBotList.get(0);
+                PointList newConnection2Points = ((AbstractConnectionEditPart) newConnection2EditPartBot.part()).getConnectionFigure().getPoints();
+                assertEquals(3, newConnection2Points.size());
+                GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", to, newConnection2Points.getFirstPoint(), 0, 2);
+                GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", connection2Points.getLastPoint(), newConnection2Points.getLastPoint(), 0,
+                        1);
+                connection2EditPartBot = newConnection2EditPartBot;
+                // Check that the edge is selected after reconnection
+                checkEdgeSelection(connection2EditPartBot);
+            } finally {
+                removeSelectionListenerAndCheckIt(selectionListener);
+            }
 
             // Reconnect source of first connection as initially
             connection1Points = ((AbstractConnectionEditPart) connection1EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
             from = connection1Points.getFirstPoint();
             to = from.getCopy().setX(editor.getBounds(ref1EditPartBot).getRight().x - 2);
             connection1EditPartBot.select();
-            editor.drag(from, to);
-            // Check that reconnection is correct
-            assertEquals(0, editor.getConnectionEditPart(ref3EditPartBot, eClass1EditPartBot).size());
-            newConnection1EditPartBotList = editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot);
-            assertEquals(1, newConnection1EditPartBotList.size());
-            newConnection1EditPartBot = newConnection1EditPartBotList.get(0);
-            newConnection1Points = ((AbstractConnectionEditPart) newConnection1EditPartBot.part()).getConnectionFigure().getPoints();
-            assertEquals(3, newConnection1Points.size());
-            GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", to, newConnection1Points.getFirstPoint(), 0, 4);
-            GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", connection1Points.getLastPoint(), newConnection1Points.getLastPoint(), 0, 1);
-            // Check that the edge is selected after reconnection
-            checkEdgeSelection(newConnection1EditPartBot);
+            selectionListener = new NoDiagramSelectionListener();
+            EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
+            PointList newConnection1Points;
+            try {
+                editor.drag(from, to);
+                // Check that reconnection is correct
+                assertEquals(0, editor.getConnectionEditPart(ref3EditPartBot, eClass1EditPartBot).size());
+                List<SWTBotGefConnectionEditPart> newConnection1EditPartBotList = editor.getConnectionEditPart(ref1EditPartBot, eClass1EditPartBot);
+                assertEquals(1, newConnection1EditPartBotList.size());
+                SWTBotGefConnectionEditPart newConnection1EditPartBot = newConnection1EditPartBotList.get(0);
+                newConnection1Points = ((AbstractConnectionEditPart) newConnection1EditPartBot.part()).getConnectionFigure().getPoints();
+                assertEquals(3, newConnection1Points.size());
+                GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", to, newConnection1Points.getFirstPoint(), 0, 4);
+                GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", connection1Points.getLastPoint(), newConnection1Points.getLastPoint(), 0,
+                        1);
+                // Check that the edge is selected after reconnection
+                checkEdgeSelection(newConnection1EditPartBot);
+            } finally {
+                removeSelectionListenerAndCheckIt(selectionListener);
+            }
 
             // Reconnect source of second connection as initially
             connection2Points = ((AbstractConnectionEditPart) connection2EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
             from = connection2Points.getFirstPoint();
             to = from.getCopy().setX(editor.getBounds(ref2EditPartBot).getRight().x - 2);
             connection2EditPartBot.select();
-            editor.drag(from, to);
-            // Check that reconnection is correct
-            assertEquals(0, editor.getConnectionEditPart(ref4EditPartBot, eClass2EditPartBot).size());
-            newConnection2EditPartBotList = editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot);
-            assertEquals(1, newConnection2EditPartBotList.size());
-            newConnection2EditPartBot = newConnection2EditPartBotList.get(0);
-            newConnection2Points = ((AbstractConnectionEditPart) newConnection2EditPartBot.part()).getConnectionFigure().getPoints();
-            assertEquals(3, newConnection2Points.size());
-            GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", to, newConnection2Points.getFirstPoint(), 0, 2);
-            GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", connection1Points.getLastPoint(), newConnection1Points.getLastPoint(), 0, 2);
-            // Check that the edge is selected after reconnection
-            checkEdgeSelection(newConnection2EditPartBot);
+            selectionListener = new NoDiagramSelectionListener();
+            EclipseUIUtil.getActivePage().addSelectionListener(selectionListener);
+            try {
+                editor.drag(from, to);
+                // Check that reconnection is correct
+                assertEquals(0, editor.getConnectionEditPart(ref4EditPartBot, eClass2EditPartBot).size());
+                List<SWTBotGefConnectionEditPart> newConnection2EditPartBotList = editor.getConnectionEditPart(ref2EditPartBot, eClass1EditPartBot);
+                assertEquals(1, newConnection2EditPartBotList.size());
+                SWTBotGefConnectionEditPart newConnection2EditPartBot = newConnection2EditPartBotList.get(0);
+                PointList newConnection2Points = ((AbstractConnectionEditPart) newConnection2EditPartBot.part()).getConnectionFigure().getPoints();
+                assertEquals(3, newConnection2Points.size());
+                GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", to, newConnection2Points.getFirstPoint(), 0, 2);
+                GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", connection1Points.getLastPoint(), newConnection1Points.getLastPoint(), 0,
+                        2);
+                // Check that the edge is selected after reconnection
+                checkEdgeSelection(newConnection2EditPartBot);
+            } finally {
+                removeSelectionListenerAndCheckIt(selectionListener);
+            }
 
         } finally {
             editor.restore();
@@ -348,5 +448,18 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
         localSession = null;
         sessionAirdResource = null;
         super.tearDown();
+    }
+
+    /**
+     * Check if an error message has been thrown by the selection listener and remove it from the active page.
+     * 
+     * @param selectionListener
+     *            The selection listener to remove
+     */
+    private void removeSelectionListenerAndCheckIt(NoDiagramSelectionListener selectionListener) {
+        EclipseUIUtil.getActivePage().removeSelectionListener(selectionListener);
+        if (selectionListener.getError().isPresent()) {
+            fail(selectionListener.getError().get());
+        }
     }
 }
