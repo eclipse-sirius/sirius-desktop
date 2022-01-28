@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -17,7 +17,6 @@ import java.util.List;
 
 import org.eclipse.jface.viewers.ContentViewer;
 import org.eclipse.jface.viewers.ILabelProvider;
-import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.sirius.common.tools.api.resource.ImageFileFormat;
@@ -126,13 +125,13 @@ public final class ImageFiltersUtils {
             boolean isValid = false;
             if (viewer instanceof ContentViewer) {
                 ContentViewer contentViewer = (ContentViewer) viewer;
-                if (contentViewer.getContentProvider() instanceof ITreeContentProvider && contentViewer.getLabelProvider() instanceof ILabelProvider) {
-                    ITreeContentProvider contentProvider = (ITreeContentProvider) contentViewer.getContentProvider();
+                if (contentViewer.getContentProvider() instanceof ITreeImagesContentProvider && contentViewer.getLabelProvider() instanceof ILabelProvider) {
+                    ITreeImagesContentProvider contentProvider = (ITreeImagesContentProvider) contentViewer.getContentProvider();
                     ILabelProvider labelProvider = (ILabelProvider) contentViewer.getLabelProvider();
                     if (contentProvider.hasChildren(element)) {
                         isValid = true;
                         for (Object child : contentProvider.getChildren(element)) {
-                            isValid = containsImages(child, contentProvider, labelProvider);
+                            isValid = containsOrIsSupportedImage(child, contentProvider, labelProvider);
                             if (isValid) {
                                 break;
                             }
@@ -143,19 +142,22 @@ public final class ImageFiltersUtils {
             return isValid;
         }
 
-        private boolean containsImages(Object element, ITreeContentProvider contentProvider, ILabelProvider labelProvider) {
+        private boolean containsOrIsSupportedImage(Object element, ITreeImagesContentProvider contentProvider, ILabelProvider labelProvider) {
             boolean isValid = false;
             if (contentProvider.hasChildren(element)) {
                 isValid = true;
                 for (Object child : contentProvider.getChildren(element)) {
-                    isValid = containsImages(child, contentProvider, labelProvider);
+                    isValid = containsOrIsSupportedImage(child, contentProvider, labelProvider);
                     if (isValid) {
                         break;
                     }
                 }
             } else {
-                String name = labelProvider.getText(element);
-                isValid = isSupportedImageFile(name);
+                boolean isImage = contentProvider.isImage(element);
+                if (isImage) {
+                    String name = labelProvider.getText(element);
+                    isValid = isSupportedImageFile(name);
+                }
             }
 
             return isValid;
@@ -173,11 +175,11 @@ public final class ImageFiltersUtils {
 
         @Override
         public boolean select(Viewer viewer, Object parentElement, Object element) {
-            boolean isValid = true;
+            boolean isValid = false;
             if (viewer instanceof ContentViewer) {
                 ContentViewer contentViewer = (ContentViewer) viewer;
-                if (contentViewer.getContentProvider() instanceof ITreeContentProvider && contentViewer.getLabelProvider() instanceof ILabelProvider) {
-                    ITreeContentProvider contentProvider = (ITreeContentProvider) contentViewer.getContentProvider();
+                if (contentViewer.getContentProvider() instanceof ITreeImagesContentProvider && contentViewer.getLabelProvider() instanceof ILabelProvider) {
+                    ITreeImagesContentProvider contentProvider = (ITreeImagesContentProvider) contentViewer.getContentProvider();
                     ILabelProvider labelProvider = (ILabelProvider) contentViewer.getLabelProvider();
 
                     if (contentProvider.hasChildren(element)) {
@@ -189,8 +191,11 @@ public final class ImageFiltersUtils {
                             }
                         }
                     } else {
-                        String name = labelProvider.getText(element);
-                        isValid = isSupportedImageFile(name);
+                        boolean isImage = contentProvider.isImage(element);
+                        if (isImage) {
+                            String name = labelProvider.getText(element);
+                            isValid = isSupportedImageFile(name);
+                        }
                     }
                 }
             }

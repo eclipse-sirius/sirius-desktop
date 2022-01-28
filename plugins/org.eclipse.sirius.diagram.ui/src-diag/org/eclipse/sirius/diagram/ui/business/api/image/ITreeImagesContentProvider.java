@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -44,4 +44,13 @@ public interface ITreeImagesContentProvider extends ITreeContentProvider {
      * @return an optional path of the image as a String
      */
     Optional<String> getPath(Object element);
+
+    /**
+     * Checks if the element is an image.
+     * 
+     * @param element
+     *            the element
+     * @return true if the element is an image.
+     */
+    boolean isImage(Object element);
 }

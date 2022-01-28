@@ -50,4 +50,9 @@ public class ImageWorkspaceContentProvider extends WorkbenchContentProvider impl
         }
         return result;
     }
+
+    @Override
+    public boolean isImage(Object element) {
+        return element instanceof IFile;
+    }
 }
