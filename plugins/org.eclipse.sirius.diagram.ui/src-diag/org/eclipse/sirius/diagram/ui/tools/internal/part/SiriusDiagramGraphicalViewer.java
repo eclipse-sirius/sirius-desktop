@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2002, 2021 IBM Corporation and others and others.
+ * Copyright (c) 2002, 2022 IBM Corporation and others and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -30,6 +30,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.gef.EditDomain;
 import org.eclipse.gef.EditPart;
+import org.eclipse.gef.SelectionManager;
 import org.eclipse.gmf.runtime.diagram.ui.internal.parts.PaletteToolTransferDropTargetListener;
 import org.eclipse.gmf.runtime.diagram.ui.parts.DiagramGraphicalViewer;
 import org.eclipse.jface.util.TransferDropTargetListener;
@@ -65,6 +66,14 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
      * The background color used for the diagram. Stored here so that we can properly dispose if on close.
      */
     private Color backgroundColor;
+
+    /**
+     * Default constructor.
+     */
+    public SiriusDiagramGraphicalViewer() {
+        super();
+        setSelectionManager(SiriusSelectionManager.createDefault());
+    }
 
     /**
      * return the viewer's change bound request recorder.
@@ -380,5 +389,36 @@ public class SiriusDiagramGraphicalViewer extends DiagramGraphicalViewer impleme
             this.backgroundColor.dispose();
         }
         this.backgroundColor = color;
+    }
+
+    /**
+     * Enable the fire notification. This is the default state, it causes the viewer to fire selection changed
+     * notification to all listeners when {@link SelectionManager#fireSelectionChanged()} is called.
+     */
+    public void enableFireNotification() {
+        getSiriusSelectionManager().enableFireNotification();
+    }
+
+    /**
+     * Disable the fire notification. This method must be used carefully. It allow the viewer to preserve the selection
+     * across update operations (drag'n'drop of element, or edge reconnection, for example). The method
+     * {@link #enableFireNotification()} must be called as soon as the update operation is finished.
+     */
+    public void disableFireNotification() {
+        getSiriusSelectionManager().disableFireNotification();
+    }
+
+    /**
+     * Return the {@link SelectionManager}, result of {@link #getSelectionManager()} directly as a
+     * {@link SiriusSelectionManager}.
+     * 
+     * @return the SelectionManager directly as a SiriusSelectionManager.
+     */
+    protected SiriusSelectionManager getSiriusSelectionManager() {
+        // There is no reason, but we never know...
+        if (!(getSelectionManager() instanceof SiriusSelectionManager)) {
+            throw new IllegalArgumentException("The selection manager of SiriusDiagramGraphicalViewer must be a SiriusSelectionManager"); //$NON-NLS-1$
+        }
+        return (SiriusSelectionManager) getSelectionManager();
     }
 }

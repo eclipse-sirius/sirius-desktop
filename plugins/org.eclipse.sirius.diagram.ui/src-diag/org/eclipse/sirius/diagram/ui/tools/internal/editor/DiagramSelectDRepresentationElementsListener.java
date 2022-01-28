@@ -27,6 +27,7 @@ import org.eclipse.sirius.business.internal.session.SessionEventBrokerImpl;
 import org.eclipse.sirius.business.internal.session.danalysis.DanglingRefRemovalTrigger;
 import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DiagramPackage;
+import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.ui.business.api.dialect.DialectEditor;
 import org.eclipse.sirius.ui.tools.internal.editor.SelectDRepresentationElementsListener;
 import org.eclipse.sirius.viewpoint.DRepresentation;
@@ -142,5 +143,14 @@ public class DiagramSelectDRepresentationElementsListener extends SelectDReprese
             }
         }
         return elementsToSelectUpdated;
+    }
+
+    @Override
+    protected void setSelectionInAsyncExec(DialectEditor dialectEditor, List<DRepresentationElement> elementsToSelect) {
+        if (dialectEditor instanceof DDiagramEditor) {
+            // Enable the fire notification, in case it was disabled for a drag'n'drop tool or a reconnect tool.
+            ((DDiagramEditor) dialectEditor).enableFireNotification();
+        }
+        super.setSelectionInAsyncExec(dialectEditor, elementsToSelect);
     }
 }

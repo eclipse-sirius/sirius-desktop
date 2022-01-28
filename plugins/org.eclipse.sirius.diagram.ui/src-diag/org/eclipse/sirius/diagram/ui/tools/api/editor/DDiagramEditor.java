@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2009 THALES GLOBAL SERVICES.
+ * Copyright (c) 2009, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -14,6 +14,7 @@ package org.eclipse.sirius.diagram.ui.tools.api.editor;
 
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.emf.common.notify.AdapterFactory;
+import org.eclipse.gef.SelectionManager;
 import org.eclipse.jface.action.IToolBarManager;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.diagram.tools.api.command.IDiagramCommandFactoryProvider;
@@ -91,4 +92,17 @@ public interface DDiagramEditor extends IAdaptable, DialectEditor {
      *         editor.
      */
     AdapterFactory getAdapterFactory();
+
+    /**
+     * Enable the fire notification. This is the default state, it causes the editor to fire selection changed
+     * notification to all listeners when {@link SelectionManager#fireSelectionChanged()} is called.
+     */
+    void enableFireNotification();
+
+    /**
+     * Disable the fire notification. This method must be used carefully. It allow the editor to preserve the selection
+     * across update operations (drag'n'drop of element, or edge reconnection, for example). The method
+     * {@link #enableFireNotification()} must be called as soon as the update operation is finished.
+     */
+    void disableFireNotification();
 }

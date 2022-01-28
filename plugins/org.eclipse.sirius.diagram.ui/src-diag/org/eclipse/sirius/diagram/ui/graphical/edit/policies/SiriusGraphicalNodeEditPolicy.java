@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -29,6 +29,7 @@ import org.eclipse.draw2d.geometry.Point;
 import org.eclipse.draw2d.geometry.PointList;
 import org.eclipse.draw2d.geometry.PrecisionPoint;
 import org.eclipse.draw2d.geometry.Rectangle;
+import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.transaction.util.TransactionUtil;
@@ -681,7 +682,33 @@ public class SiriusGraphicalNodeEditPolicy extends TreeGraphicalNodeEditPolicy {
             final IDiagramCommandFactoryProvider cmdFactoryProvider = (IDiagramCommandFactoryProvider) adapter;
             final TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(source);
             final IDiagramCommandFactory emfCommandFactory = cmdFactoryProvider.getCommandFactory(domain);
-            return new ICommandProxy(new GMFCommandWrapper(domain, emfCommandFactory.buildReconnectEdgeCommandFromTool(tool, edge, source, target)));
+            // Disable the fire notification. This allows to avoid a refresh of all views that
+            // listen the current editor, despite the selection will be the same after the
+            // drag'n'drop. Without this deactivation, a first notification will be sent for the
+            // diagram selection, and then another one for the element being drag'n'dropped. The
+            // fire notification will be reactivate through
+            // DiagramSelectDRepresentationElementsListener.
+            org.eclipse.emf.common.command.Command reconnectCommand = emfCommandFactory.buildReconnectEdgeCommandFromTool(tool, edge, source, target);
+            org.eclipse.emf.common.command.CompoundCommand cc = new org.eclipse.emf.common.command.CompoundCommand(reconnectCommand.getLabel());
+            cc.append(new AbstractCommand("Disable fire notification") { //$NON-NLS-1$
+
+                @Override
+                public void redo() {
+                    // Do nothing
+                }
+
+                @Override
+                public void execute() {
+                    diagramEditor.disableFireNotification();
+                }
+
+                @Override
+                protected boolean prepare() {
+                    return true;
+                }
+            });
+            cc.append(reconnectCommand);
+            return new ICommandProxy(new GMFCommandWrapper(domain, cc));
         }
         return UnexecutableCommand.INSTANCE;
     }

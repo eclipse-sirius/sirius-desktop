@@ -142,7 +142,7 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
                         // Set the selection in async exec: for some dialect, ui
                         // could be refresh by another post commit triggered after
                         // this one and doing some UI refresh in sync exec.
-                        EclipseUIUtil.displayAsyncExec(new SetSelectionRunnable(dialectEditor, elementsToSelect));
+                        setSelectionInAsyncExec(dialectEditor, elementsToSelect);
                     }
                 }
             }
@@ -164,12 +164,24 @@ public class SelectDRepresentationElementsListener extends ResourceSetListenerIm
                             // Set the selection in async exec: for some dialect, ui
                             // could be refresh by another post commit triggered after
                             // this one and doing some UI refresh in sync exec.
-                            EclipseUIUtil.displayAsyncExec(new SetSelectionRunnable(dialectEditor, elementsToSelect));
+                            setSelectionInAsyncExec(dialectEditor, elementsToSelect);
                         }
                     });
                 }
             }
         }
+    }
+
+    /**
+     * Set the selection in async exec.
+     * 
+     * @param currentDialectEditor
+     *            The current dialect editor
+     * @param elementsToSelect
+     *            The elements to select
+     */
+    protected void setSelectionInAsyncExec(DialectEditor currentDialectEditor, List<DRepresentationElement> elementsToSelect) {
+        EclipseUIUtil.displayAsyncExec(new SetSelectionRunnable(currentDialectEditor, elementsToSelect));
     }
 
     /**

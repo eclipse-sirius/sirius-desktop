@@ -2020,4 +2020,18 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
             }
         }
     }
+
+    @Override
+    public void enableFireNotification() {
+        if (getGraphicalViewer() instanceof SiriusDiagramGraphicalViewer) {
+            ((SiriusDiagramGraphicalViewer) getGraphicalViewer()).enableFireNotification();
+        }
+    }
+
+    @Override
+    public void disableFireNotification() {
+        if (getGraphicalViewer() instanceof SiriusDiagramGraphicalViewer) {
+            ((SiriusDiagramGraphicalViewer) getGraphicalViewer()).disableFireNotification();
+        }
+    }
 }

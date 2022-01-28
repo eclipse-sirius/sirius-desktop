@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -63,6 +63,7 @@ import org.eclipse.sirius.diagram.ui.tools.api.command.GMFCommandWrapper;
 import org.eclipse.sirius.diagram.ui.tools.api.draw2d.ui.figures.FigureUtilities;
 import org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor;
 import org.eclipse.sirius.diagram.ui.tools.internal.dnd.DragAndDropWrapper;
+import org.eclipse.sirius.diagram.ui.tools.internal.part.SiriusDiagramGraphicalViewer;
 import org.eclipse.sirius.diagram.ui.tools.internal.util.EditPartQuery;
 import org.eclipse.sirius.ext.gmf.runtime.editparts.GraphicalHelper;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
@@ -76,6 +77,91 @@ import org.eclipse.swt.graphics.Color;
  */
 public class SiriusContainerDropPolicy extends DragDropEditPolicy {
 
+    /**
+     * A intermediate command; the "real" command is created during the execution (this to avoid time consumption during
+     * drag).
+     * 
+     * @author lredor
+     */
+    private class IntermediateCommand extends Command {
+        private Command innerDropCommand;
+        private DragAndDropValidator validator;
+        private ChangeBoundsRequest request;
+        private DragAndDropTarget targetDragAndDropTarget;
+        private TransactionalEditingDomain editingDomain;
+        private GraphicalEditPart hostGraphicalEditPart;
+        private Point locationRelativeToNewContainer;
+
+        /**
+         * Default constructor.
+         * 
+         * @param label
+         *            the Command's label
+         * @param validator
+         *            The {@link DragAndDropValidator}
+         * @param request
+         *            The original request
+         * @param targetDragAndDropTarget
+         *            the dDiagramElement target of the drag'n'drop
+         * @param editingDomain
+         *            The current editing domain to execute the command
+         * @param hostGraphicalEditPart
+         *            The current edit part
+         * @param locationRelativeToNewContainer
+         *            The location to drop the element
+         */
+        IntermediateCommand(String label, DragAndDropValidator validator, ChangeBoundsRequest request, DragAndDropTarget targetDragAndDropTarget, Point locationRelativeToNewContainer,
+                TransactionalEditingDomain editingDomain, GraphicalEditPart hostGraphicalEditPart) {
+            super(label);
+            this.validator = validator;
+            this.request = request;
+            this.targetDragAndDropTarget = targetDragAndDropTarget;
+            this.editingDomain = editingDomain;
+            this.hostGraphicalEditPart = hostGraphicalEditPart;
+            this.locationRelativeToNewContainer = locationRelativeToNewContainer;
+            
+        }
+        @Override
+        public void execute() {
+            innerDropCommand = buildCommand(validator, request, targetDragAndDropTarget, locationRelativeToNewContainer, editingDomain);
+            if (innerDropCommand == null && !innerDropCommand.canExecute()) {
+                // The inner command is null or can not be executed, the cache is no longer useful.
+                clearCache();
+                return;
+            }
+            // Disable the fire notification. This allows to avoid a refresh of all views that
+            // listen the current editor, despite the selection will be the same after the
+            // drag'n'drop. Without this deactivation, a first notification will be sent for the
+            // diagram selection, and then another one for the element being drag'n'dropped. The
+            // fire notification will be reactivate through
+            // DiagramSelectDRepresentationElementsListener.
+            if (hostGraphicalEditPart.getViewer() instanceof SiriusDiagramGraphicalViewer) {
+                ((SiriusDiagramGraphicalViewer) hostGraphicalEditPart.getViewer()).disableFireNotification();
+            }
+            innerDropCommand.execute();
+            // The action has been executed, the cache is now not useful.
+            clearCache();
+        }
+
+        @Override
+        public void undo() {
+            if (innerDropCommand != null) {
+                innerDropCommand.undo();
+            }
+        }
+
+        @Override
+        public void redo() {
+            if (innerDropCommand != null) {
+                innerDropCommand.redo();
+            }
+        }
+
+        public void clearCache() {
+            weakLastRequest = null;
+            weakLastCommand = null;
+        }
+    }
     /**
      * The name of the Drag'n'Drop command.
      */
@@ -233,7 +319,7 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
         Command dropCommand = null;
         EditPart hostEditPart = getHost();
         if (hostEditPart instanceof GraphicalEditPart) {
-            GraphicalEditPart hostGraphicalEditPart = (GraphicalEditPart) hostEditPart;
+            final GraphicalEditPart hostGraphicalEditPart = (GraphicalEditPart) hostEditPart;
             final TransactionalEditingDomain editingDomain = hostGraphicalEditPart.getEditingDomain();
 
             EObject hostSemanticElement = hostGraphicalEditPart.resolveSemanticElement();
@@ -250,40 +336,9 @@ public class SiriusContainerDropPolicy extends DragDropEditPolicy {
                     GraphicalHelper.screen2logical(absoluteRequestLocation, hostGraphicalEditPart);
                     final Point locationRelativeToNewContainer = computeRelativeLocation(absoluteRequestLocation, false,
                             new RequestQuery(request).isDropOrCreationOfBorderNode() || validator.isConcerningOnlyBorderNodeFromView());
-                    // Create an intermediate command. The "real" command is
-                    // created during the execution (this to avoid time
-                    // consumption during drag).
-                    dropCommand = new Command(DROP_ELEMENTS_CMD_NAME) {
-
-                        private Command innerDropCommand;
-
-                        @Override
-                        public void execute() {
-                            innerDropCommand = buildCommand(validator, request, targetDragAndDropTarget, locationRelativeToNewContainer, editingDomain);
-                            if (innerDropCommand != null && innerDropCommand.canExecute()) {
-                                innerDropCommand.execute();
-                            }
-                            // The action has been executed, the cache is now
-                            // not useful.
-                            weakLastRequest = null;
-                            weakLastCommand = null;
-                        }
-
-                        @Override
-                        public void undo() {
-                            if (innerDropCommand != null) {
-                                innerDropCommand.undo();
-                            }
-                        }
-
-                        @Override
-                        public void redo() {
-                            if (innerDropCommand != null) {
-                                innerDropCommand.redo();
-                            }
-                        }
-                    };
-
+                    // Create an intermediate command. The "real" command is created during the execution (this to avoid
+                    // time consumption during drag).
+                    dropCommand = new IntermediateCommand(DROP_ELEMENTS_CMD_NAME, validator, request, targetDragAndDropTarget, locationRelativeToNewContainer, editingDomain, hostGraphicalEditPart);
                 } else {
                     dropCommand = UnexecutableCommand.INSTANCE;
                 }

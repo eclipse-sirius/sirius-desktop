@@ -421,6 +421,12 @@
 				<code>org.eclipse.sirius.diagram.ui.tools.internal.dialogs.widgets.gallery.Gallery</code> in 
 				<code>ImageSelectionDialog</code> implementations.
 			</li>
+			<li><span class="label label-success">Added</span> 2 methods have been added in 
+				<code>org.eclipse.sirius.diagram.ui.tools.api.editor.DDiagramEditor</code>: 
+				<code>enableFireNotification()</code> to enable the fire notification, ie it causes the editor to fire selection changed notification to all listeners when 
+				<code>SelectionManager#fireSelectionChanged()</code> is called, and 
+				<code>disableFireNotification()</code> to disable it. It is used internally, among others, to disable the notification during a drag&#8217;n&#8217;drop of an element or during the reconnection of an edge.
+			</li>
 			<li><span class="label label-info">Modified</span> 
 				<code>org.eclipse.sirius.diagram.ui</code> now depends on GMF Runtime 1.14.0, which itself uses Apache Batik 1.14.0 to support SVG (both rendering SVG images on diagrams and exporting diagrams to SVG files). As a result, exporting diagrams to PDF is not supported anymore (as GMF Runtime 1.14.0 itself has dropped support for this).
 			</li>
