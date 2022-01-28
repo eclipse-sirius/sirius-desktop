@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2015 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2015, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -93,6 +93,8 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
             GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection1Points.getFirstPoint(), newConnection1Points.getFirstPoint(), 0, 1);
             GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection1Points.getLastPoint(), 0, 1);
             connection1EditPartBot = newConnection1EditPartBot;
+            // Check that the edge is selected after reconnection
+            checkEdgeSelection(connection1EditPartBot);
 
             // Reconnect target of second connection
             PointList connection2Points = ((AbstractConnectionEditPart) connection2EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
@@ -110,6 +112,8 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
             GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection2Points.getFirstPoint(), newConnection2Points.getFirstPoint(), 0, 2);
             GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection2Points.getLastPoint(), 0, 2);
             connection2EditPartBot = newConnection2EditPartBot;
+            // Check that the edge is selected after reconnection
+            checkEdgeSelection(connection2EditPartBot);
 
             // Reconnect target of first connection as initially
             connection1Points = ((AbstractConnectionEditPart) connection1EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
@@ -127,6 +131,8 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
             GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection1Points.getFirstPoint(), newConnection1Points.getFirstPoint(), 1, 1);
             GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection1Points.getLastPoint(), 1, 1);
             connection1EditPartBot = newConnection1EditPartBot;
+            // Check that the edge is selected after reconnection
+            checkEdgeSelection(connection1EditPartBot);
 
             // Reconnect target of second connection as initially
             connection2Points = ((AbstractConnectionEditPart) connection2EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
@@ -144,6 +150,8 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
             GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", connection2Points.getFirstPoint(), newConnection2Points.getFirstPoint(), 1, 2);
             GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", to, newConnection2Points.getLastPoint(), 1, 2);
             connection2EditPartBot = newConnection2EditPartBot;
+            // Check that the edge is selected after reconnection
+            checkEdgeSelection(connection2EditPartBot);
 
             // Reconnect source of first connection
             connection1Points = ((AbstractConnectionEditPart) connection1EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
@@ -161,6 +169,8 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
             GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", to, newConnection1Points.getFirstPoint(), 0, 2);
             GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", connection1Points.getLastPoint(), newConnection1Points.getLastPoint(), 0, 2);
             connection1EditPartBot = newConnection1EditPartBot;
+            // Check that the edge is selected after reconnection
+            checkEdgeSelection(connection1EditPartBot);
 
             // Reconnect source of second connection
             connection2Points = ((AbstractConnectionEditPart) connection2EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
@@ -178,6 +188,8 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
             GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", to, newConnection2Points.getFirstPoint(), 0, 2);
             GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", connection2Points.getLastPoint(), newConnection2Points.getLastPoint(), 0, 1);
             connection2EditPartBot = newConnection2EditPartBot;
+            // Check that the edge is selected after reconnection
+            checkEdgeSelection(connection2EditPartBot);
 
             // Reconnect source of first connection as initially
             connection1Points = ((AbstractConnectionEditPart) connection1EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
@@ -194,6 +206,8 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
             assertEquals(3, newConnection1Points.size());
             GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", to, newConnection1Points.getFirstPoint(), 0, 4);
             GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", connection1Points.getLastPoint(), newConnection1Points.getLastPoint(), 0, 1);
+            // Check that the edge is selected after reconnection
+            checkEdgeSelection(newConnection1EditPartBot);
 
             // Reconnect source of second connection as initially
             connection2Points = ((AbstractConnectionEditPart) connection2EditPartBot.part()).getConnectionFigure().getPoints().getCopy();
@@ -210,14 +224,26 @@ public class EdgeReconnectionTests extends AbstractSiriusSwtBotGefTestCase {
             assertEquals(3, newConnection2Points.size());
             GraphicTestsSupportHelp.assertEquals("After reconnection source end point is not at the correct position.", to, newConnection2Points.getFirstPoint(), 0, 2);
             GraphicTestsSupportHelp.assertEquals("After reconnection target end point is not at the correct position.", connection1Points.getLastPoint(), newConnection1Points.getLastPoint(), 0, 2);
+            // Check that the edge is selected after reconnection
+            checkEdgeSelection(newConnection2EditPartBot);
+
         } finally {
             editor.restore();
         }
     }
 
     /**
-     * Test reconnection of source edge port from a container to another with
-     * oblique style routing.
+     * Check that the edge is selected.
+     * 
+     * @param connectionEditPartBot
+     *            edit part to check
+     */
+    private void checkEdgeSelection(SWTBotGefConnectionEditPart connectionEditPartBot) {
+        assertTrue("The edge should be selected after the reconnection.", connectionEditPartBot.part().getSelected() != EditPart.SELECTED_NONE);
+    }
+
+    /**
+     * Test reconnection of source edge port from a container to another with oblique style routing.
      */
     public void testEdgeWithPortSourceDnDWithObliqueStyleRouting() {
         editor = (SWTBotSiriusDiagramEditor) openRepresentation(localSession.getOpenedSession(), REPRESENTATION2_NAME, "new " + REPRESENTATION2_NAME, DDiagram.class, true);

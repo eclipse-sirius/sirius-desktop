@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.impl.EReferenceImpl;
+import org.eclipse.gef.EditPart;
 import org.eclipse.gmf.runtime.notation.Edge;
 import org.eclipse.sirius.business.api.preferences.SiriusPreferencesKeys;
 import org.eclipse.sirius.diagram.DDiagramElement;
@@ -25,6 +26,7 @@ import org.eclipse.sirius.diagram.DEdge;
 import org.eclipse.sirius.diagram.DNode;
 import org.eclipse.sirius.diagram.EdgeTarget;
 import org.eclipse.sirius.diagram.ui.edit.api.part.IDiagramEdgeEditPart;
+import org.eclipse.sirius.tests.support.api.TestsUtil;
 import org.eclipse.sirius.tests.unit.api.mappings.edgeonedge.AbstractEdgeOnEdgeTest;
 
 import com.google.common.base.Predicate;
@@ -408,6 +410,7 @@ public class ReconnectionEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
 
         EReference sourceReference = null;
         EReference targetReference = null;
+        IDiagramEdgeEditPart gmfEP;
         if (sourceShouldBeAnEge) {
             sourceReference = ((EClass) semanticRoot.getEClassifier("C2")).getEReferences().iterator().next();
             DDiagramElement firstDiagramElement = getFirstDiagramElement(diagram, sourceReference);
@@ -415,14 +418,17 @@ public class ReconnectionEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
             applyEdgeReconnectionTool(edgeReconnectToolName, diagram, edge, (EdgeTarget) getFirstDiagramElement(diagram, semanticEdgeSource),
                     (EdgeTarget) ((DEdge) getFirstDiagramElement(diagram, sourceReference)));
             // Step 2 : check that edge has been reconnected
-            checkEdgehHasBeenReconnectedGraphicallyAndSemantically(sourceReference, semanticEdgeTarget, semanticPredicate, sourceShouldBeAnEge, targetShouldBeAnEdge);
+            gmfEP = checkEdgehHasBeenReconnectedGraphicallyAndSemantically(sourceReference, semanticEdgeTarget, semanticPredicate, sourceShouldBeAnEge, targetShouldBeAnEdge);
         } else {
             targetReference = ((EClass) semanticRoot.getEClassifier("C2")).getEReferences().iterator().next();
             applyEdgeReconnectionTool(edgeReconnectToolName, diagram, edge, (EdgeTarget) getFirstDiagramElement(diagram, semanticEdgeTarget),
                     (EdgeTarget) getFirstDiagramElement(diagram, targetReference));
             // Step 2 : check that edge has been reconnected
-            checkEdgehHasBeenReconnectedGraphicallyAndSemantically(semanticEdgeSource, targetReference, semanticPredicate, sourceShouldBeAnEge, targetShouldBeAnEdge);
+            gmfEP = checkEdgehHasBeenReconnectedGraphicallyAndSemantically(semanticEdgeSource, targetReference, semanticPredicate, sourceShouldBeAnEge, targetShouldBeAnEdge);
         }
+        // Check that the edge is selected after reconnection
+        TestsUtil.synchronizationWithUIThread();
+        assertTrue("The edge should be selected after the reconnection.", gmfEP.getSelected() != EditPart.SELECTED_NONE);
 
         // Step 3 : testing undo/redo
         // Step 3.1 : Undo the reconnect of the edge
@@ -472,7 +478,7 @@ public class ReconnectionEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
      * @param targetShouldBeAnEdge
      *            indicates if the edge's target should be an edge
      */
-    private void checkEdgehHasBeenReconnectedGraphicallyAndSemantically(EObject semanticSource, EObject semanticTarget, Predicate<EPackage> predicate, boolean sourceShouldBeAnEge,
+    private IDiagramEdgeEditPart checkEdgehHasBeenReconnectedGraphicallyAndSemantically(EObject semanticSource, EObject semanticTarget, Predicate<EPackage> predicate, boolean sourceShouldBeAnEge,
             boolean targetShouldBeAnEdge) {
         // Step 1 :check that edge creation correctly modified the semantic
         // model
@@ -508,7 +514,7 @@ public class ReconnectionEdgeOnEdgeTest extends AbstractEdgeOnEdgeTest {
             targetElement = getFirstEdgeElement(diagram, semanticTarget);
         }
         assertEquals("Wrong Edge target", targetElement, ((Edge) gmfEP.getModel()).getTarget().getElement());
-
+        return gmfEP;
     }
 
 }
