@@ -41,6 +41,8 @@ public final class GalleryRendererUtils {
      */
     static final int THUMBNAIL_IMAGE_HEIGHT = 80;
 
+    private static final int LIST_ITEM_HEIGHT = 32;
+
     /**
      * Constructor.
      */
@@ -111,6 +113,7 @@ public final class GalleryRendererUtils {
                 super.preLayout(gc);
             }
         };
+        gr.setItemHeight(LIST_ITEM_HEIGHT);
         gr.setMinMargin(0);
         gr.setItemHeight(20);
         gr.setAutoMargin(false);
@@ -158,6 +161,7 @@ public final class GalleryRendererUtils {
 
         }
 
+        @Override
         public void handleEvent(Event event) {
             switch (event.type) {
             case SWT.Dispose:

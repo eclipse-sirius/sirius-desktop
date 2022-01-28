@@ -555,7 +555,7 @@ public class TreeImagesGalleryComposite extends FilteredTree {
             loadingImage = null;
         }
         for (Image image : thumbnailsImagesCache.values()) {
-            if (!image.isDisposed()) {
+            if (image != null && !image.isDisposed()) {
                 image.dispose();
             }
         }
@@ -704,7 +704,7 @@ public class TreeImagesGalleryComposite extends FilteredTree {
              */
             public Image getImage(File imageFile) {
                 setURI(imageFile.toURI().toString());
-                return getImage(new PrecisionRectangle(0, 0, -1, -1), null);
+                return getImage(new PrecisionRectangle(0, 0, 100, 100), null);
             }
         }
     }
