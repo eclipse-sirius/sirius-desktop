@@ -8,7 +8,11 @@ h2(#sirius7.0.0). Changes in Sirius 7.0.0
 
 h3. User-Visible Changes
 
-* <span class="label label-info">Modified</span> The selection of images from the workspace to change the style of an element in a diagram has been improved. The UI can now provide a preview of the images on the workspace by displaying them in a gallery based on the selected project or directory.
+* <span class="label label-success">Added</span> Some enhancement have been done about the images management.
+** The selection of images from the workspace to change the style of an element in a diagram has been improved. The UI can now provide a preview of the images on the workspace by displaying them in a gallery based on the selected project or directory. !{width: 500px}images/imageSelectionDialog.png!
+** A new constraint used for the "Diagram validation" has been added to check that images used by the models are reachable. A quick fix, available on the marker, allows to select a new image in the workspace.
+* <span class="label label-info">Modified</span> The Sirius constraints, used for the model validation, have been re-categorized (visible in Preferences) to better understand where they are defined and on which model they apply.
+ !{width: 500px}images/preferenceValidationConstraint.png!
 * <span class="label label-info">Modified</span> It is now possible to move a regions container by moving one of its region with the "Ctrl" shortcut key pressed. In the same way, it is now possible to select a regions container by clicking on one of its region with the "Ctrl" shortcut key pressed.
 * <span class="label label-danger">Removed</span> It is no longer possible to change the workspace image of a diagram element with an image from an internal plugin via the "Set style to workspace image" action. This functionality affects a very small part of the use cases. The new UI of the "Set style to workspace image" action does not support this advanced functionality. However, it is still possible to go through Properties > Style > Workspace Image, then paste the path of the internal plugin image.
 
