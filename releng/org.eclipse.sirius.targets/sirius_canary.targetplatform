@@ -5,7 +5,7 @@ include "modules/eef-nightly.tpd"
 
 with source, requirements
 
-location Sirius-6.5.0 "https://download.eclipse.org/sirius/updates/releases/6.5.0/2020-06/" {
+location Sirius-6.6.0 "https://download.eclipse.org/sirius/updates/releases/6.6.0/2020-06/" {
     org.eclipse.sirius.common.interpreter lazy
 }
 
@@ -102,7 +102,7 @@ location GMF-Notation-LastSuccessful "https://ci.eclipse.org/gmf-runtime/job/gmf
 	org.eclipse.gmf.runtime.notation.sdk.feature.group lazy
 }
 
-location GMF-Runtime-1.14.0rc1 "https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S202104161416/" {
+location GMF-Runtime-1.14.1rc3 "https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/milestones/S202202011016/" {
 	org.eclipse.gmf.runtime.sdk.feature.group lazy
 }
 //location GMF-Runtime-LastSuccessful "https://ci.eclipse.org/gmf-runtime/job/gmf-runtime-master/PLATFORM=photon,jdk=oracle-jdk8-latest,label=migration/lastSuccessfulBuild/artifact/update-site/" {
