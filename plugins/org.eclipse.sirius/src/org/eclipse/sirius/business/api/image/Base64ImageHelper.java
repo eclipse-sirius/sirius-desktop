@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -49,25 +49,25 @@ public class Base64ImageHelper {
      *            the eObject to change
      * @param attr
      *            the attribute that must be of type String
-     * @return A map
+     * @return A map with base64 strings associated to the path to the created file.
      */
-    public Map<Object, String> createFileAndUpdateAttribute(EObject eObject, EAttribute attr) {
+    public Map<String, String> createFileAndUpdateAttribute(EObject eObject, EAttribute attr) {
         // Matcher matcher = pattern.matcher(notification.getNewStringValue());
         String strValue = (String) eObject.eGet(attr);
         if (strValue != null) {
-            Map<Object, String> createdFiles = createFiles(eObject, strValue);
+            Map<String, String> pathToImages = createFiles(eObject, strValue);
 
-            updateField(eObject, attr, strValue, createdFiles);
-            return createdFiles;
+            updateField(eObject, attr, strValue, pathToImages);
+            return pathToImages;
         }
 
-        return new HashMap<Object, String>();
+        return new HashMap<String, String>();
     }
 
-    private void updateField(EObject eObject, EAttribute attr, String strValue, Map<Object, String> createdFiles) {
+    private void updateField(EObject eObject, EAttribute attr, String strValue, Map<String, String> pathToImages) {
         String newStringValue = strValue;
         // change the attribute value to replace with a path to the created file.
-        for (String fileName : createdFiles.values()) {
+        for (String fileName : pathToImages.values()) {
             newStringValue = newStringValue.replaceFirst(BASE64_IMAGE_PATTERN, "\"" + fileName + "\""); //$NON-NLS-1$ //$NON-NLS-2$
         }
         if (!Objects.equals(newStringValue, strValue)) {
@@ -75,10 +75,10 @@ public class Base64ImageHelper {
         }
     }
 
-    private Map<Object, String> createFiles(EObject notifier, String strValue) {
+    private Map<String, String> createFiles(EObject notifier, String strValue) {
         Pattern pattern = Pattern.compile(BASE64_IMAGE_PATTERN_WITH_SUBSTRINGS);
         Matcher matcher = pattern.matcher(strValue);
-        Map<Object, String> createdFiles = new LinkedHashMap<>();
+        Map<String, String> pathToImages = new LinkedHashMap<>();
 
         while (matcher.find()) {
             if (matcher.groupCount() == 2) {
@@ -88,12 +88,12 @@ public class Base64ImageHelper {
                 String strDate = formatter.format(date);
 
                 String simpleImageName = strDate + "." + matcher.group(1); //$NON-NLS-1$
-
-                Map<Object, String> createFile = imageManager.createFile(notifier, simpleImageName, matcher.group(2));
-
-                createdFiles.putAll(createFile);
+                String imagePath = imageManager.createFile(notifier, simpleImageName, matcher.group(2));
+                if (imagePath != null) {
+                    pathToImages.put(matcher.group(2), imagePath);
+                }
             }
         }
-        return createdFiles;
+        return pathToImages;
     }
 }

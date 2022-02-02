@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -71,13 +71,13 @@ public class UpdateBase64ImageEncodingPreCommitListener extends ResourceSetListe
                 /**
                  * Keep the list of created files in case of undo.
                  */
-                private Map<Object, String> allCreatedFiles = new LinkedHashMap<>();
+                private Map<String, String> allCreatedFiles = new LinkedHashMap<>();
 
                 @Override
                 protected void doExecute() {
 
                     for (Notification notification : notificationToCreatedFiles) {
-                        Map<Object, String> createdFileAndUpdatedAttribute = new Base64ImageHelper().createFileAndUpdateAttribute((EObject) notification.getNotifier(),
+                        Map<String, String> createdFileAndUpdatedAttribute = new Base64ImageHelper().createFileAndUpdateAttribute((EObject) notification.getNotifier(),
                                 (EAttribute) notification.getFeature());
                         allCreatedFiles.putAll(createdFileAndUpdatedAttribute);
                     }

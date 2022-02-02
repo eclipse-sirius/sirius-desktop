@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -36,8 +36,7 @@ public interface ImageManager {
     String HTML_IMAGE_PATH_PATTERN = "<img.*?src=\"(.*?)\".*?/>"; //$NON-NLS-1$
 
     /**
-     * Create and serialize a file from a Base64 encoding image. It returns the created file and a path that will be
-     * used to get this file.
+     * Create and serialize a file from a Base64 encoding image. It returns the path that will be used to get this file.
      * 
      * @param contextObject
      *            eObject used as context. According to the context the image file may be created at a different
@@ -46,10 +45,9 @@ public interface ImageManager {
      *            the non qualified name of the image
      * @param base64
      *            the base64 encoding
-     * @param simpleImageName
-     * @return the created file and the path used to get this path.
+     * @return the path used to reach the created file.
      */
-    Map<Object, String> createFile(EObject contextObject, String simpleImageName, String base64);
+    String createFile(EObject contextObject, String simpleImageName, String base64);
 
     /**
      * Undo the creation of the file done with createFile(String ) method.<br/>
@@ -58,9 +56,9 @@ public interface ImageManager {
      *            The session is used as context. According to the context the image file may be at a different
      *            location(for example in the workspace or in a database).
      * @param createdFiles
-     *            the files with their serialized name which creation must be undone.
+     *            the base64 string associated to the path to the file that must be deleted.
      */
-    void undoCreatedFiles(Session session, Map<Object, String> createdFiles);
+    void undoCreatedFiles(Session session, Map<String, String> createdFiles);
 
     /**
      * Redo the creation of the file done the first time with createFile(String ) method.<br/>
@@ -69,9 +67,9 @@ public interface ImageManager {
      *            The session is used as context. According to the context the image file may be created at a different
      *            location(for example in the workspace or in a database).
      * @param createdFiles
-     *            the files with their serialized name which creation must be redone.
+     *            the base64 string associated to the path to the file that must be recreated.
      */
-    void redoCreateFiles(Session session, Map<Object, String> createdFiles);
+    void redoCreateFiles(Session session, Map<String, String> createdFiles);
 
     /**
      * This method transforms the serialized text to a text that will be used for html page. This method only changes

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES.
+ * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.text.MessageFormat;
 import java.util.Base64;
-import java.util.Hashtable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -62,8 +61,8 @@ public class ImageManagerForWorkspaceResource implements ImageManager {
     protected Map<String, String> htmlToOriginalImagePath = new LinkedHashMap<>();
 
     @Override
-    public Map<Object, String> createFile(EObject contextObject, String simpleImageName, String base64) {
-        Map<Object, String> createdFile = new Hashtable<>();
+    public String createFile(EObject contextObject, String simpleImageName, String base64) {
+        String pathToImage = null;
 
         // Create an image file in the images folder of the project with the extension found in the
         // Base64 encoding string
@@ -84,9 +83,9 @@ public class ImageManagerForWorkspaceResource implements ImageManager {
 
         if (createIFile(base64, imageFile)) {
             String imageFullPath = imageFile.getFullPath().toString().replaceFirst("^" + SLASH, ""); //$NON-NLS-1$//$NON-NLS-2$
-            createdFile.put(base64, imageFullPath);
+            pathToImage = imageFullPath;
         }
-        return createdFile;
+        return pathToImage;
     }
 
     private boolean createIFile(String base64, IFile imageFile) {
@@ -101,7 +100,7 @@ public class ImageManagerForWorkspaceResource implements ImageManager {
     }
 
     @Override
-    public void undoCreatedFiles(Session session, Map<Object, String> createdFiles) {
+    public void undoCreatedFiles(Session session, Map<String, String> createdFiles) {
         for (String createFileName : createdFiles.values()) {
             IFile file = ResourcesPlugin.getWorkspace().getRoot().getFile(new Path(createFileName));
             if (file != null) {
@@ -115,7 +114,7 @@ public class ImageManagerForWorkspaceResource implements ImageManager {
     }
 
     @Override
-    public void redoCreateFiles(Session session, Map<Object, String> createdFiles) {
+    public void redoCreateFiles(Session session, Map<String, String> createdFiles) {
         for (Object object : createdFiles.keySet()) {
             if (object instanceof String) {
                 String base64String = (String) object;
