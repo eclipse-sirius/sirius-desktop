@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -70,7 +70,7 @@ public class WorkspaceImageFigureRefresher implements IResourceChangeListener {
     /**
      * Refresh all the edit parts of the opened editors.
      */
-    private void refreshOpenedEditors() {
+    public static void refreshOpenedEditors() {
         EclipseUIUtil.displayAsyncExec(new Runnable() {
             @Override
             public void run() {
