@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2021, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -115,7 +115,6 @@ public final class GalleryRendererUtils {
         };
         gr.setItemHeight(LIST_ITEM_HEIGHT);
         gr.setMinMargin(0);
-        gr.setItemHeight(20);
         gr.setAutoMargin(false);
         gr.setAlwaysExpanded(true);
         gallery.setGroupRenderer(gr);
