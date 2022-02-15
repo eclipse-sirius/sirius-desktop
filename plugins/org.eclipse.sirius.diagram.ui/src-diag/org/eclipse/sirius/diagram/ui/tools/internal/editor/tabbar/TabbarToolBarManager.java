@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2012, 2014 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2012, 2014, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
+ *    Vincent Lorenzo (CEA LIST) <vincent.lorenzo@cea.fr> - Bug 578798
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 
@@ -85,7 +86,7 @@ public class TabbarToolBarManager extends ToolBarManager {
     @Override
     public void update(boolean force) {
         IWorkbenchPage activePage = getSafeActivePage();
-        if (activePage != null && tabbarPart instanceof DDiagramEditor && activePage.getActivePart() != tabbarPart) {
+        if (activePage != null && tabbarPart instanceof DDiagramEditor && getActivePart(activePage) != tabbarPart) {
             if (getControl().getItems().length > 0) {
                 // part is not focused -> return.
                 return;
@@ -93,6 +94,17 @@ public class TabbarToolBarManager extends ToolBarManager {
         }
         super.update(force);
         updateGradientBackground();
+    }
+
+    /**
+     * Retrieves the active part from the active page.
+     * 
+     * @param activePage
+     *            the active page
+     * @return the activePart for the activePage
+     */
+    protected IWorkbenchPart getActivePart(IWorkbenchPage activePage) {
+        return activePage.getActivePart();
     }
 
     private IWorkbenchPage getSafeActivePage() {

@@ -10,6 +10,7 @@
  * Contributors:
  *    Obeo - initial API and implementation
  *    Felix Dorner <felix.dorner@gmail.com> - Bug 540056
+ *    Vincent Lorenzo (CEA LIST) <vincent.lorenzo@cea.fr> - Bug 578798
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.editor;
 
@@ -1471,7 +1472,7 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
         this.diagramMenuUpdater = new DiagramMenuUpdater(this);
         parentComposite = createParentComposite(parent);
         if (!isOldUIEnabled() && session != null) {
-            setTabbar(new Tabbar(parentComposite, this));
+            setTabbar(createTabbar(parentComposite, this));
         }
         createHeaderSection(parentComposite);
         createMainDiagramSection(parentComposite);
@@ -1490,6 +1491,19 @@ public class DDiagramEditorImpl extends SiriusDiagramEditor implements DDiagramE
 
     }
 
+    /**
+     * Create the Tabbar component to use for this diagram editor.
+     * 
+     * @param parent
+     *            the parent composite
+     * @param part
+     *            the diagram workbench part
+     * @return the created {@link Tabbar}
+     */
+    protected Tabbar createTabbar(Composite parent, IDiagramWorkbenchPart part) {
+        return new Tabbar(parent, part);
+    }
+    
     private boolean isOldUIEnabled() {
         return Platform.getPreferencesService().getBoolean(DiagramUIPlugin.ID, SiriusDiagramUiPreferencesKeys.PREF_OLD_UI.name(), false, null);
     }

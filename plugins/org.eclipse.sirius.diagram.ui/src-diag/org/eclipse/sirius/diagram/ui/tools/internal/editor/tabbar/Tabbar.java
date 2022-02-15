@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2010, 2020, 2022 THALES GLOBAL SERVICES.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -9,6 +9,7 @@
  *
  * Contributors:
  *    Obeo - initial API and implementation
+ *    Vincent Lorenzo (CEA LIST) <vincent.lorenzo@cea.fr> - Bug 578798
  *******************************************************************************/
 package org.eclipse.sirius.diagram.ui.tools.internal.editor.tabbar;
 
@@ -106,10 +107,24 @@ public class Tabbar extends Composite implements ISelectionListener, IAuthorityL
         toolBar.setBackgroundMode(SWT.INHERIT_DEFAULT);
         toolBar.setLayoutData(new org.eclipse.swt.layout.GridData(org.eclipse.swt.layout.GridData.FILL_HORIZONTAL));
 
-        manager = new TabbarToolBarManager(toolBar, part);
+        manager = createTabbarToolBarManager(toolBar, part);
         setPermissionAuthorityListener();
     }
 
+    /**
+     * 
+     * Creates the TabbarToolBarManager.
+     * 
+     * @param toolbar
+     *            the tool bar control.
+     * @param part
+     *            the tabbar part.
+     * @return the created TabbarToolBarManager
+     */
+    protected TabbarToolBarManager createTabbarToolBarManager(ToolBar toolbar, IDiagramWorkbenchPart workbenchPart) {
+        return new TabbarToolBarManager(toolbar, workbenchPart);
+    }
+    
     private void setPermissionAuthorityListener() {
         if (part instanceof DDiagramEditor) {
             DDiagramEditor editor = (DDiagramEditor) part;
