@@ -1,6 +1,6 @@
 target "orbit" with source, requirements
 
-location Orbit "https://download.eclipse.org/tools/orbit/downloads/drops/I20220131095416/repository" {
+location Orbit-202203 "https://download.eclipse.org/tools/orbit/downloads/drops/S20220215213605/repository/" {
     org.apache.log4j lazy
     org.easymock lazy
     org.hamcrest.library lazy
