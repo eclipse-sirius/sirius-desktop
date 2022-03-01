@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2008 Borland Software Corporation
+ * Copyright (c) 2008, 2022 Borland Software Corporation
  * 
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -68,7 +68,9 @@ public class SVGUtils {
     public static Object getAntialiasHint(Graphics graphics) {
         int aa = SWT.DEFAULT;
         try {
-            aa = graphics.getAntialias();
+            if (graphics != null) {
+                aa = graphics.getAntialias();
+            }
         } catch (Exception e) {
             // not supported
         }
@@ -86,7 +88,9 @@ public class SVGUtils {
     public static Object getTextAntialiasHint(Graphics graphics) {
         int aa = SWT.DEFAULT;
         try {
-            aa = graphics.getTextAntialias();
+            if (graphics != null) {
+                aa = graphics.getTextAntialias();
+            }
         } catch (Exception e) {
             // not supported
         }

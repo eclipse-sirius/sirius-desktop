@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2008, 2021 Borland Software Corporation and others.
+ * Copyright (c) 2008, 2022 Borland Software Corporation and others.
  * 
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -456,7 +456,9 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
     protected String getKey(Graphics graphics) {
         int aaText = SWT.DEFAULT;
         try {
-            aaText = graphics.getTextAntialias();
+            if (graphics != null) {
+                aaText = graphics.getTextAntialias();
+            }
         } catch (Exception e) {
             // not supported
         }
