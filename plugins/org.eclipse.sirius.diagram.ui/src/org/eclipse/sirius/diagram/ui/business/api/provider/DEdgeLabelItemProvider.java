@@ -81,7 +81,7 @@ public class DEdgeLabelItemProvider extends AbstractDDiagramElementLabelItemProv
      */
     private static boolean hasRelevantDEdgelabelItem(DEdge edge) {
         boolean isRelevant = false;
-        if (edge != null) {
+        if (edge != null && edge.getOwnedStyle() != null) {
             DEdgeQuery candidateEdgeQuery = new DEdgeQuery(edge);
             isRelevant = candidateEdgeQuery.getCenterLabelStyle().some() && candidateEdgeQuery.hasNonEmptyNameDefinition();
         }

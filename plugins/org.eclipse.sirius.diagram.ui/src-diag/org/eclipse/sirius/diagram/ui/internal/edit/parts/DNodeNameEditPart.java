@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2007, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2007, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -85,7 +85,7 @@ public class DNodeNameEditPart extends AbstractGeneratedDiagramNameEditPart impl
     @Override
     public void refreshBounds() {
         final EObject eObj = this.resolveSemanticElement();
-        if (eObj instanceof DNode) {
+        if (eObj instanceof DNode && ((DNode) eObj).getStyle() != null) {
             if (((NodeStyle) ((DNode) eObj).getStyle()).getLabelPosition() == LabelPosition.BORDER_LITERAL) {
                 final int x = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getLocation_X())).intValue();
                 final int y = ((Integer) getStructuralFeatureValue(NotationPackage.eINSTANCE.getLocation_Y())).intValue();
@@ -124,7 +124,7 @@ public class DNodeNameEditPart extends AbstractGeneratedDiagramNameEditPart impl
     protected void refreshVisuals() {
         super.refreshVisuals();
         final EObject eObj = this.resolveSemanticElement();
-        if (eObj instanceof DNode) {
+        if (eObj instanceof DNode && ((DNode) eObj).getStyle() != null) {
             if (((NodeStyle) ((DNode) eObj).getStyle()).getLabelPosition() != LabelPosition.BORDER_LITERAL) {
                 this.getFigure().setVisible(false);
             } else {

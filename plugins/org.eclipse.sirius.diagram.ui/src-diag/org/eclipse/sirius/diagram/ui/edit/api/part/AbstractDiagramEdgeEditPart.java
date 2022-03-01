@@ -702,6 +702,9 @@ public abstract class AbstractDiagramEdgeEditPart extends ConnectionNodeEditPart
             final EObject element = resolveSemanticElement();
             if (element != null && DEdge.class.isInstance(element)) {
                 final DEdge edge = (DEdge) element;
+                if (edge.getParentDiagram() == null) {
+                    return;
+                }
                 boolean needRefreshVisuals = false;
                 if (edge.getPath() != null && !edge.getPath().isEmpty()) {
                     if (AbstractDiagramEdgeEditPart.invalidPath(AbstractDiagramEdgeEditPart.this, edge)) {

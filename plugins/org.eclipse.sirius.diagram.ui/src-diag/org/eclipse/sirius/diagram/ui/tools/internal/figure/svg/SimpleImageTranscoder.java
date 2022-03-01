@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2008, 2021 Borland Software Corporation and others.
+ * Copyright (c) 2008, 2022 Borland Software Corporation and others.
  * 
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -73,7 +73,7 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
 
     public int getImageHeight() {
         int height = 0;
-        if (canvasHeight == -1) {
+        if (canvasHeight == -1 && getBufferedImage() != null) {
             height = getBufferedImage().getHeight();
         } else {
             height = canvasHeight;
@@ -83,7 +83,7 @@ public class SimpleImageTranscoder extends SVGAbstractTranscoder {
 
     public int getImageWidth() {
         int width = 0;
-        if (canvasWidth == -1) {
+        if (canvasWidth == -1 && getBufferedImage() != null) {
             width = getBufferedImage().getWidth();
         } else {
             width = canvasWidth;
