@@ -67,4 +67,62 @@ public class SiriusRenderedMapModeGraphics extends RenderedMapModeGraphics {
         }
     }
 
+    @Override
+    public Graphics getGraphics() {
+        return super.getGraphics();
+    }
+
+    /**
+     * Draw SVG image reference (use tag).
+     * 
+     * @param uri
+     *            Image URI
+     * 
+     * @param x1
+     *            the x coordinate of the source
+     * @param y1
+     *            the y coordinate of the source
+     * @param w1
+     *            the width of the source
+     * @param h1
+     *            the height of the source
+     * @param x2
+     *            the x coordinate of the destination
+     * @param y2
+     *            the y coordinate of the destination
+     * @param w2
+     *            the width of the destination
+     * @param h2
+     *            the height of the destination
+     */
+    // CHECKSTYLE:OFF
+    public void drawSVGReference(String uri, int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2) {
+        Graphics subGraphics = this.getGraphics();
+        if (subGraphics instanceof SiriusGraphicsSVG) {
+            SiriusGraphicsSVG svgGraphics = (SiriusGraphicsSVG) subGraphics;
+            svgGraphics.drawSVGReference(uri, x1, y1, w1, h1, x2, y2, w2, h2);
+        } else {
+            throw new RuntimeException();
+        }
+    }
+
+    // CHECKSTYLE:ON
+    /**
+     * Draw SVG image in symbol tag.
+     * 
+     * @param uri
+     *            String
+     * @param uuid
+     *            String
+     */
+    public void drawSymbolSVGImage(String uri, String uuid) {
+        Graphics subGraphics = this.getGraphics();
+        if (subGraphics instanceof SiriusGraphicsSVG) {
+            SiriusGraphicsSVG svgGraphics = (SiriusGraphicsSVG) subGraphics;
+            svgGraphics.drawSymbolSVGImage(uri, uuid);
+        } else {
+            throw new RuntimeException();
+        }
+    }
+
 }

@@ -23,6 +23,7 @@ import org.eclipse.sirius.tests.unit.api.diagramintegrity.DeleteSemanticElementT
 import org.eclipse.sirius.tests.unit.api.diagramintegrity.ModifySemanticElementTest;
 import org.eclipse.sirius.tests.unit.api.diagramintegrity.MoveSemanticElementTest;
 import org.eclipse.sirius.tests.unit.api.diagramintegrity.RetrieveEditPartFromSemanticElementTests;
+import org.eclipse.sirius.tests.unit.api.dialect.ExportAsImageSVGTest;
 import org.eclipse.sirius.tests.unit.api.dialect.ExportAsImageTest;
 import org.eclipse.sirius.tests.unit.api.initialization.InitOperationForDiagramsTests;
 import org.eclipse.sirius.tests.unit.api.layers.MultipleMappingImportTests;
@@ -369,6 +370,7 @@ public class AllDiagramPluginsTests {
 
         suite.addTestSuite(CreateViewOperationTest.class);
         suite.addTestSuite(ExportAsImageTest.class);
+        suite.addTestSuite(ExportAsImageSVGTest.class);
 
         suite.addTestSuite(OpenRepresentationTest.class);
         suite.addTestSuite(OpenMenuTest.class);

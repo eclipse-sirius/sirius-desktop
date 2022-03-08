@@ -21,6 +21,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
@@ -72,6 +73,12 @@ import org.w3c.dom.Element;
 // CHECKSTYLE:OFF
 @SuppressWarnings("restriction")
 public class SiriusDiagramSVGGenerator extends DiagramGenerator {
+
+    /**
+     * Bugzilla 57850: the name of the system property to enable the new SVG export behavior (false by default). If this
+     * property is set to true, new SVG export is launched.
+     */
+    public static final String ENABLE_NEW_SVG_EXPORT = "org.eclipse.sirius.diagram.ui.enableNewSVGExport"; //$NON-NLS-1$
 
     private RenderedImage renderedImage = null;
 
@@ -263,6 +270,19 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
         if (this.overlayFigure != null) {
             paintFigure(graphics, overlayFigure);
         }
+
+        // Add symbol tags at the end of the document if there is any referenced SVG images.
+        if (isSVGExportEnabled() && SVGImageRegistry.hasReferencedImages()) {
+            if (graphics instanceof SiriusRenderedMapModeGraphics && ((SiriusRenderedMapModeGraphics) graphics).getGraphics() instanceof SiriusGraphicsSVG) {
+                SVGImageRegistry.getURLs().forEach(url -> {
+                    Optional<String> uuid = SVGImageRegistry.getUUID(url);
+                    if (uuid.isPresent()) {
+                        ((SiriusRenderedMapModeGraphics) graphics).drawSymbolSVGImage(url, uuid.get());
+                    }
+                });
+            }
+            SVGImageRegistry.reset();
+        }
     }
 
     private void resetCurrentId(Graphics gfx) {
@@ -327,5 +347,16 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
     private void setRenderedImage(RenderedImage renderedImage) {
         this.renderedImage = renderedImage;
     }
+
+    /**
+     * Bugzilla 57850: new behavior for SVG export. This system property has been added to allow to use the new export
+     * behavior. It is a temporary method, waiting a potential feedback.
+     * 
+     * @return true if the new behavior must be enabled or false to have the current behavior.
+     */
+    public static boolean isSVGExportEnabled() {
+        return Boolean.valueOf(System.getProperty(ENABLE_NEW_SVG_EXPORT, "false")); //$NON-NLS-1$
+    }
+
 }
 // CHECKSTYLE:ON

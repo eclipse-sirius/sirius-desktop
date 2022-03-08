@@ -38,6 +38,10 @@ import org.eclipse.sirius.diagram.tools.api.DiagramPlugin;
 import org.eclipse.sirius.diagram.ui.provider.DiagramUIPlugin;
 import org.eclipse.sirius.diagram.ui.provider.Messages;
 import org.eclipse.sirius.diagram.ui.tools.internal.figure.svg.SimpleImageTranscoder;
+import org.eclipse.sirius.diagram.ui.tools.internal.render.SVGImageRegistry;
+import org.eclipse.sirius.diagram.ui.tools.internal.render.SiriusDiagramSVGGenerator;
+import org.eclipse.sirius.diagram.ui.tools.internal.render.SiriusGraphicsSVG;
+import org.eclipse.sirius.diagram.ui.tools.internal.render.SiriusRenderedMapModeGraphics;
 import org.eclipse.sirius.ext.draw2d.figure.ITransparentFigure;
 import org.eclipse.sirius.ext.draw2d.figure.ImageFigureWithAlpha;
 import org.eclipse.sirius.ext.draw2d.figure.StyledFigure;
@@ -483,27 +487,13 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
         if (CACHE_SCALED_IMAGES) {
             Rectangle scaledArea = new PrecisionRectangle(svgArea);
             scaledArea.performScale(graphics.getAbsoluteScale());
-            Image image = getImage(svgArea, graphics);
-            if (image != null) {
-                synchronized (image) {
-                    if (!image.isDisposed()) {
-                        if (modeWithViewBox) {
-                            graphics.drawImage(image, 0, 0, scaledArea.width(), scaledArea.height(), svgArea.x(), svgArea.y(), svgArea.width(), svgArea.height());
-                        } else {
-                            // The scaled width (and height) must not be greater than area width (and height). So
-                            // depending
-                            // on the initialAspectRatio and zoom factor, the reference can be the width or the height.
-                            double scaledWidth = svgArea.width() * graphics.getAbsoluteScale();
-                            double scaledHeight = scaledWidth / getImageAspectRatio();
-                            if ((scaledHeight / graphics.getAbsoluteScale()) > svgArea.height()) {
-                                // The height must be the reference to avoid an IllegalArgumentException later.
-                                scaledHeight = svgArea.height() * graphics.getAbsoluteScale();
-                                scaledWidth = scaledHeight * getImageAspectRatio();
-                            }
-                            graphics.drawImage(image, 0, 0, (int) scaledWidth, (int) scaledHeight, svgArea.x(), svgArea.y(), svgArea.width(), svgArea.height());
-                        }
-                    }
-                }
+            // specific case for SVG export
+            if (SiriusDiagramSVGGenerator.isSVGExportEnabled() && graphics instanceof SiriusRenderedMapModeGraphics
+                    && ((SiriusRenderedMapModeGraphics) graphics).getGraphics() instanceof SiriusGraphicsSVG) {
+                paintSVGReference(graphics, svgArea, scaledArea);
+            } else {
+                // paint rendered bitmap
+                paintRenderedBitmap(graphics, svgArea, scaledArea);
             }
         } else {
             Image image = getImage(svgArea, graphics);
@@ -516,6 +506,118 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
             }
         }
         modifier.popState();
+    }
+
+    /**
+     * Paint rendered bitmap.
+     * 
+     * @param graphics
+     *                       Graphics
+     * @param svgArea
+     *                       Rectangle
+     * @param scaledArea
+     *                       Rectangle
+     */
+    protected void paintRenderedBitmap(Graphics graphics, Rectangle svgArea, Rectangle scaledArea) {
+        Image image = getImage(svgArea, graphics);
+        if (image != null) {
+            synchronized (image) {
+                if (!image.isDisposed()) {
+                    if (modeWithViewBox) {
+                        graphics.drawImage(image, 0, 0, scaledArea.width(), scaledArea.height(), svgArea.x(), svgArea.y(), svgArea.width(), svgArea.height());
+                    } else {
+                        // The scaled width (and height) must not be greater than area width (and height). So
+                        // depending
+                        // on the initialAspectRatio and zoom factor, the reference can be the width or the height.
+                        double scaledWidth = svgArea.width() * graphics.getAbsoluteScale();
+                        double scaledHeight = scaledWidth / getImageAspectRatio();
+                        if ((scaledHeight / graphics.getAbsoluteScale()) > svgArea.height()) {
+                            // The height must be the reference to avoid an IllegalArgumentException later.
+                            scaledHeight = svgArea.height() * graphics.getAbsoluteScale();
+                            scaledWidth = scaledHeight * getImageAspectRatio();
+                        }
+                        graphics.drawImage(image, 0, 0, (int) scaledWidth, (int) scaledHeight, svgArea.x(), svgArea.y(), svgArea.width(), svgArea.height());
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Paint SVG reference using use tag.
+     * 
+     * @param graphics
+     *                       Graphics
+     * @param svgArea
+     *                       Rectangle
+     * @param scaledArea
+     *                       Rectangle
+     */
+    protected void paintSVGReference(Graphics graphics, Rectangle svgArea, Rectangle scaledArea) {
+        String imageRegistryURI = computeImageKey(svgArea.width, svgArea.height);
+        registerSVGDocument(imageRegistryURI, getTranscoder().getDocument(), svgArea);
+        paintSVGReference(graphics, imageRegistryURI, svgArea, scaledArea);
+    }
+
+    /**
+     * @param graphics
+     *                             Graphics
+     * @param imageRegistryURI
+     *                             String
+     * @param svgArea
+     *                             Rectangle
+     * @param scaledArea
+     *                             Rectangle
+     */
+    protected void paintSVGReference(Graphics graphics, String imageRegistryURI, Rectangle svgArea, Rectangle scaledArea) {
+        if (modeWithViewBox) {
+            ((SiriusRenderedMapModeGraphics) graphics).drawSVGReference(imageRegistryURI, 0, 0, scaledArea.width(), scaledArea.height(), svgArea.x(), svgArea.y(), svgArea.width(), svgArea.height());
+        } else {
+            double scaledWidth = svgArea.width() * graphics.getAbsoluteScale();
+            double scaledHeight = scaledWidth / getImageAspectRatio();
+            if ((scaledHeight / graphics.getAbsoluteScale()) > svgArea.height()) {
+                // The height must be the reference to avoid an IllegalArgumentException later.
+                scaledHeight = svgArea.height() * graphics.getAbsoluteScale();
+                scaledWidth = scaledHeight * getImageAspectRatio();
+            }
+            ((SiriusGraphicsSVG) graphics).drawSVGReference(imageRegistryURI, 0, 0, (int) scaledWidth, (int) scaledHeight, svgArea.x(), svgArea.y(), svgArea.width(), svgArea.height());
+        }
+    }
+
+    /**
+     * Compute image key for registry.
+     * 
+     * @param params
+     *                   Obect
+     * @return image key for registry.
+     */
+    protected String computeImageKey(Object... params) {
+        StringBuffer imageRegistryURI = new StringBuffer();
+        imageRegistryURI.append(this.getDocumentKey());
+        imageRegistryURI.append(SVGFigure.SEPARATOR);
+        // add width and height for viewbox
+        if (params.length >= 2) {
+            imageRegistryURI.append(params[0]);
+            imageRegistryURI.append(SVGFigure.SEPARATOR);
+            imageRegistryURI.append(params[1]);
+        }
+        return imageRegistryURI.toString();
+    }
+
+    /**
+     * Add SVG document in registry.
+     * 
+     * @param imageRegistryKey
+     *                             String
+     * @param document
+     *                             Document
+     * @param params
+     *                             Object
+     */
+    protected void registerSVGDocument(String imageRegistryKey, Document document, Object... params) {
+        if (params.length > 0 && params[0] instanceof Rectangle) {
+            SVGImageRegistry.registerSVGDocument(imageRegistryKey.toString(), SVGImageRegistry.getSVGDocument(getTranscoder().getDocument(), (Rectangle) params[0]));
+        }
     }
 
     /**

@@ -1544,6 +1544,9 @@ public final class Messages {
     public static String SVGFigure_loadError;
 
     @TranslatableMessage
+    public static String SVGImageRegistry_LoadImageError;
+
+    @TranslatableMessage
     public static String SynchronizedDiagramCommand_unsynchronizedLabel;
 
     @TranslatableMessage

@@ -17,10 +17,16 @@ import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.geom.AffineTransform;
 import java.awt.image.renderable.RenderableImage;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.apache.batik.anim.dom.SVGDOMImplementation;
+import org.apache.batik.anim.dom.SVGOMDefsElement;
 import org.apache.batik.anim.dom.SVGOMDocument;
+import org.apache.batik.constants.XMLConstants;
+import org.apache.batik.dom.AbstractDocument;
 import org.apache.batik.dom.util.DOMUtilities;
 import org.apache.batik.svggen.DOMTreeManager;
 import org.apache.batik.svggen.GenericImageHandler;
@@ -40,6 +46,7 @@ import org.eclipse.sirius.diagram.DiagramPackage;
 import org.w3c.dom.DOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 
 /**
  * Objects of this class can be used with draw2d to create an SVG DOM.<BR>
@@ -120,6 +127,42 @@ public class SiriusGraphicsSVG extends SiriusGraphicsToGraphics2DAdaptor impleme
                 }
             }
         }
+
+        /**
+         * Add use tag to reference SVG image.
+         * 
+         * @param uri
+         *                   Image URI
+         ** @param x
+         *                   the <i>x</i> coordinate.
+         * @param y
+         *                   the <i>y</i> coordinate.
+         * @param width
+         *                   the width of the rectangle.
+         * @param height
+         *                   the height of the rectangle.
+         */
+        public void drawSVGReference(String uri, int x, int y, int width, int height) {
+            Element useElement = getDOMFactory().createElementNS(SVG_NAMESPACE_URI, SVGConstants.SVG_USE_TAG);
+            UUID uuid = SVGImageRegistry.registerUUID(uri);
+            useElement.setAttributeNS(null, SVG_X_ATTRIBUTE, getGeneratorContext().doubleString(x));
+            useElement.setAttributeNS(null, SVG_Y_ATTRIBUTE, getGeneratorContext().doubleString(y));
+            useElement.setAttributeNS(null, SVG_WIDTH_ATTRIBUTE, getGeneratorContext().doubleString(width));
+            useElement.setAttributeNS(null, SVG_HEIGHT_ATTRIBUTE, getGeneratorContext().doubleString(height));
+            useElement.setAttributeNS(XMLConstants.XLINK_NAMESPACE_URI, XMLConstants.XLINK_HREF_QNAME, "#" + uuid.toString()); //$NON-NLS-1$
+            if (svgTraceability) {
+                useElement.setAttributeNS(DiagramPackage.eNS_URI, AnnotatedSVGShape.ATTR_NAME, currentId);
+            }
+            domGroupManager.addElement(useElement);
+
+            // remove clip-path attribute
+            String attributeNS = useElement.getAttributeNS(null, SVG_CLIP_PATH_ATTRIBUTE);
+            if (!attributeNS.isEmpty()) {
+                useElement.removeAttributeNS(null, SVG_CLIP_PATH_ATTRIBUTE);
+            }
+
+        }
+
     }
 
     private Document doc;
@@ -263,6 +306,130 @@ public class SiriusGraphicsSVG extends SiriusGraphicsToGraphics2DAdaptor impleme
         } else {
             return super.drawRenderedImage(srcImage, rect, listener);
         }
+    }
+
+    /**
+     * Draw SVG image reference with use tag.
+     * 
+     * @param uri
+     *                Image URI
+     * @param x1
+     *                the x coordinate of the source
+     * @param y1
+     *                the y coordinate of the source
+     * @param w1
+     *                the width of the source
+     * @param h1
+     *                the height of the source
+     * @param x2
+     *                the x coordinate of the destination
+     * @param y2
+     *                the y coordinate of the destination
+     * @param w2
+     *                the width of the destination
+     * @param h2
+     *                the height of the destination
+     */
+    public void drawSVGReference(String uri, int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2) {
+        Point trans = getTranslationOffset();
+        x2 += trans.x;
+        y2 += trans.y;
+
+        checkState();
+        ((CustomSVGGraphics2D) getGraphics2D()).drawSVGReference(uri, x2, y2, w2, h2);
+    }
+
+    /**
+     * Draw SVG image in symbol tag.
+     * 
+     * @param uri
+     *                 String
+     * @param uuid
+     *                 String
+     */
+    public void drawSymbolSVGImage(String uri, String uuid) {
+        DOMTreeManager treeManager = getSVGGraphics2D().getDOMTreeManager();
+        SVGGeneratorContext generatorContext = getSVGGraphics2D().getGeneratorContext();
+
+        // create symbol tag
+        Element symbolElement = generatorContext.getDOMFactory().createElementNS(SVGConstants.SVG_NAMESPACE_URI, SVGConstants.SVG_SYMBOL_TAG);
+        symbolElement.setAttributeNS(null, XMLConstants.XML_ID_ATTRIBUTE, uuid);
+        Optional<Element> referencedImage = SVGImageRegistry.getReferencedImage(uri);
+
+        // batik bug: if imported node has def tag, document def tag is moved to imported node
+        // save document def tag et re-add it after appendGroup
+        List<Element> cloneDefElements = getDefElement(treeManager);
+
+        // add svg tag in symbol
+        if (referencedImage.isPresent()) {
+            Element toAppend = (Element) ((AbstractDocument) doc).importNode(referencedImage.get(), true, true);
+            symbolElement.appendChild(toAppend);
+        }
+        // add symbol tag to document
+        treeManager.appendGroup(symbolElement, null);
+
+        // batik bug: re-add def tag after import if necessary
+        moveDefinitionSet(treeManager, cloneDefElements);
+    }
+
+    /**
+     * If toplevelGroup lost its definition set, add cloneDefElements.
+     * 
+     * @param treeManager
+     * @param cloneDefElements
+     */
+    protected void moveDefinitionSet(DOMTreeManager treeManager, List<Element> cloneDefElements) {
+        if (!cloneDefElements.isEmpty()) {
+            Optional<Object> toplevelGroup = ReflectionHelper.getFieldValueWithoutException(treeManager, "topLevelGroup"); //$NON-NLS-1$
+            if (toplevelGroup.isPresent() && toplevelGroup.get() instanceof Element) {
+                if (!hasDefinitionSet((Element) toplevelGroup.get())) {
+                    cloneDefElements.forEach(def -> {
+                        treeManager.appendGroup(def, null);
+                    });
+                }
+            }
+        }
+    }
+
+    /**
+     * @param treeManager
+     *                        DOMTreeManager
+     * @return cloned definition set
+     */
+    @SuppressWarnings({ "rawtypes", "unchecked" })
+    protected List<Element> getDefElement(DOMTreeManager treeManager) {
+        List definitionSet = treeManager.getGraphicContextConverter().getDefinitionSet();
+        List<Element> result = new ArrayList<>();
+        definitionSet.forEach(def -> {
+            if (def instanceof Element) {
+                Node cloneNode = ((Element) def).cloneNode(true);
+                if (cloneNode instanceof Element) {
+                    result.add((Element) cloneNode);
+                }
+
+            }
+        });
+        if (!result.isEmpty()) {
+            // remove definition set from parent
+            treeManager.getDefinitionSet();
+        }
+        return result;
+    }
+
+    /**
+     * @param topLevelGroup
+     *                          Element
+     * @return topLevelGroup has definition set
+     */
+    protected boolean hasDefinitionSet(Element topLevelGroup) {
+        for (int i = 0; i < topLevelGroup.getChildNodes().getLength(); i++) {
+            org.w3c.dom.Node node = topLevelGroup.getChildNodes().item(i);
+            if (node instanceof SVGOMDefsElement) {
+                return true;
+            }
+
+        }
+        return false;
     }
 
 }

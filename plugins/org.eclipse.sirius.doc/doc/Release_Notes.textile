@@ -4,6 +4,12 @@ h1. Release Notes for Sirius
 
 This document contains the release notes for recent major releases of Sirius. See also "the release notes from previous versions":Release_Notes_Previous.html for details about older releases.
 
+h2(#sirius7.0.1). Changes in Sirius 7.0.1
+
+h3. Developer-Visible Changes
+
+* <span class="label label-info">Modified</span> The behavior concerning SVG images export has been improved. You can refer to "bugzilla 578509":https://bugs.eclipse.org/bugs/show_bug.cgi?id=578509 for more details. To activate the new SVG export behavior, you can set the system property @org.eclipse.sirius.diagram.ui.enableNewSVGExport@ to @true@.
+
 h2(#sirius7.0.0). Changes in Sirius 7.0.0
 
 h3. User-Visible Changes

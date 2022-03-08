@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2010, 2021 THALES GLOBAL SERVICES and others.
+ * Copyright (c) 2010, 2022 THALES GLOBAL SERVICES and others.
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
@@ -23,18 +23,13 @@ import java.lang.reflect.Method;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 
 import javax.imageio.ImageIO;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 
 import org.apache.batik.anim.dom.SVGDOMImplementation;
 import org.apache.batik.transcoder.TranscoderException;
@@ -54,7 +49,6 @@ import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.eclipse.sirius.business.api.dialect.DialectManager;
 import org.eclipse.sirius.business.api.query.URIQuery;
 import org.eclipse.sirius.business.api.session.Session;
 import org.eclipse.sirius.business.api.session.SessionManager;
@@ -68,13 +62,9 @@ import org.eclipse.sirius.tests.SiriusTestsPlugin;
 import org.eclipse.sirius.tests.support.api.EclipseTestsSupportHelper;
 import org.eclipse.sirius.tests.support.api.SiriusAssert;
 import org.eclipse.sirius.tests.support.api.TestsUtil;
-import org.eclipse.sirius.tests.unit.diagram.migration.AbstractRepairMigrateTest;
 import org.eclipse.sirius.tools.api.interpreter.InterpreterRegistry;
 import org.eclipse.sirius.tools.internal.resource.InMemoryResourceImpl;
-import org.eclipse.sirius.ui.business.api.dialect.DialectUIManager;
 import org.eclipse.sirius.ui.business.api.dialect.ExportFormat;
-import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ExportDocumentFormat;
-import org.eclipse.sirius.ui.business.api.dialect.ExportFormat.ScalingPolicy;
 import org.eclipse.sirius.ui.tools.api.actions.export.ExportAction;
 import org.eclipse.sirius.ui.tools.api.actions.export.SizeTooLargeException;
 import org.eclipse.sirius.ui.tools.internal.actions.export.AbstractExportRepresentationsAction;
@@ -94,13 +84,9 @@ import org.xml.sax.helpers.DefaultHandler;
  * 
  * @author lchituc
  */
-public class ExportAsImageTest extends AbstractRepairMigrateTest {
-
-    private static final String SEMANTIC_MODEL_FILE_NAME = "My.ecore";
+public class ExportAsImageTest extends AbstractExportAsImageTest {
 
     private static final String SEMANTIC_MODEL_RELATIVE_PATH = "/data/unit/ExportAsImage/" + SEMANTIC_MODEL_FILE_NAME;
-
-    private static final String SEMANTIC_MODEL_WORKSPACE_PATH = TEMPORARY_PROJECT_NAME + "/" + SEMANTIC_MODEL_FILE_NAME;
 
     private static final String MODELER_FILE_NAME = "My.odesign";
 
@@ -108,13 +94,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
 
     private static final String MODELER_WORKSPACE_PATH = TEMPORARY_PROJECT_NAME + "/" + MODELER_FILE_NAME;
 
-    private static final String AIRD_FILE_NAME = "My.aird";
-
     private static final String AIRD_RELATIVE_PATH = "/data/unit/ExportAsImage/" + AIRD_FILE_NAME;
-
-    private static final String AIRD_WORKSPACE_PATH = TEMPORARY_PROJECT_NAME + "/" + AIRD_FILE_NAME;
-
-    private static final String SESSION_MODEL_FILENAME = "My.aird";
 
     private static final String IMAGE_FILE_NAME = "new diagExportAsImage.";
 
@@ -141,27 +121,6 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
         TestsUtil.emptyEventsFromUIThread();
     }
 
-    private DRepresentation getRepresentation() throws Exception {
-
-        // Reopen the session( because after migration the session is closed)
-        session = SessionManager.INSTANCE.getSession(URI.createPlatformResourceURI("/" + TEMPORARY_PROJECT_NAME + "/" + SESSION_MODEL_FILENAME, true), new NullProgressMonitor());
-        session.open(new NullProgressMonitor());
-        TestsUtil.emptyEventsFromUIThread();
-
-        DRepresentation representation = getRepresentation("new diagExportAsImage");
-        return representation;
-    }
-
-    private DRepresentation getRepresentation(String representationName) {
-        Collection<DRepresentationDescriptor> allRepresentationDescriptors = DialectManager.INSTANCE.getAllRepresentationDescriptors(session);
-        for (DRepresentationDescriptor representationDescriptor : allRepresentationDescriptors) {
-            if (representationName.equals(representationDescriptor.getName())) {
-                return representationDescriptor.getRepresentation();
-            }
-        }
-        return null;
-    }
-
     /**
      * Returns a representation that will not be applied the auto scale when in mode
      * {@link ExportFormat.ScalingPolicy#AUTO_SCALING_IF_LARGER}.
@@ -177,20 +136,8 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
         session.open(new NullProgressMonitor());
         TestsUtil.emptyEventsFromUIThread();
 
-        DRepresentation representation = getRepresentation("NoScaleIfLarger");
+        DRepresentation representation = getRepresentationFromDescriptors("NoScaleIfLarger");
         return representation;
-    }
-
-    private DiagramExportResult exportImage(DRepresentation representation, ImageFileFormat fileFormat, ScalingPolicy scalingPolicy) throws SizeTooLargeException {
-        return this.exportImage(representation, fileFormat, scalingPolicy, false);
-    }
-
-    private DiagramExportResult exportImage(DRepresentation representation, ImageFileFormat fileFormat, ScalingPolicy scalingPolicy, boolean traceability) throws SizeTooLargeException {
-        IPath absoluteImagePath = ResourcesPlugin.getWorkspace().getRoot().getProject(TEMPORARY_PROJECT_NAME).getLocation().append(IMAGE_FILE_NAME + fileFormat.getName().toLowerCase());
-        ExportFormat exportFormat = new ExportFormat(ExportDocumentFormat.NONE, fileFormat, scalingPolicy);
-        exportFormat.setSemanticTraceabilityEnabled(traceability);
-        DiagramExportResult exportResult = (DiagramExportResult) DialectUIManager.INSTANCE.exportWithResult(representation, session, absoluteImagePath, exportFormat, new NullProgressMonitor(), false);
-        return exportResult;
     }
 
     /**
@@ -258,7 +205,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
 
         // Migrates the session
         runRepairProcess(SESSION_MODEL_FILENAME);
-        DRepresentation representation = getRepresentation();
+        DRepresentation representation = getRepresentation("new diagExportAsImage");
         exportImage(representation, ImageFileFormat.PNG, ExportFormat.ScalingPolicy.NO_SCALING);
         // Asserts that the image had been created
         SiriusAssert.assertFileExists("/" + TEMPORARY_PROJECT_NAME + "/" + IMAGE_FILE_NAME + ImageFileFormat.PNG.getName().toLowerCase());
@@ -277,7 +224,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
 
         // Migrates the session
         runRepairProcess(SESSION_MODEL_FILENAME);
-        DRepresentation representation = getRepresentation();
+        DRepresentation representation = getRepresentation("new diagExportAsImage");
         String outputPath = "/" + TEMPORARY_PROJECT_NAME + "pipo/";
         ExportAction exportAction = new ExportAction(session, Collections.singleton(representation), new Path(outputPath), ImageFileFormat.PNG, false, true);
 
@@ -318,7 +265,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
     private void doTestToLargeFileExport(String representationName) {
         String outputPath = "/" + TEMPORARY_PROJECT_NAME + "/" + IMAGE_FILE_NAME + ImageFileFormat.PNG.getName().toLowerCase();
         List<DRepresentation> representationsToExport = new ArrayList<>();
-        representationsToExport.add(getRepresentation(representationName));
+        representationsToExport.add(getRepresentationFromDescriptors(representationName));
         ExportAction exportAction = new ExportAction(session, representationsToExport, new Path(outputPath), ImageFileFormat.PNG, false, true);
 
         try {
@@ -345,7 +292,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
     public void testExportAsImageWithUnsynchronizedGMFModel() throws Exception {
         setWarningCatchActive(true);
         try {
-            DiagramExportResult exportResult = exportImage(getRepresentation("unsyncGMFDiagExportAsImage"), ImageFileFormat.JPG, ExportFormat.ScalingPolicy.AUTO_SCALING);
+            DiagramExportResult exportResult = exportImage(getRepresentationFromDescriptors("unsyncGMFDiagExportAsImage"), ImageFileFormat.JPG, ExportFormat.ScalingPolicy.AUTO_SCALING);
             checkResultsWithAutoUpScale(exportResult);
         } finally {
             setWarningCatchActive(false);
@@ -358,7 +305,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
      * @throws Exception
      */
     public void testExportAsJPGAutoScaling() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.JPG, ExportFormat.ScalingPolicy.AUTO_SCALING);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.JPG, ExportFormat.ScalingPolicy.AUTO_SCALING);
         checkResultsWithAutoUpScale(exportResult);
     }
 
@@ -368,7 +315,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
      * @throws Exception
      */
     public void testExportAsJPEGAutoScaling() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.JPEG, ExportFormat.ScalingPolicy.AUTO_SCALING);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.JPEG, ExportFormat.ScalingPolicy.AUTO_SCALING);
         checkResultsWithAutoUpScale(exportResult);
     }
 
@@ -379,7 +326,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
      */
     @Ignore("To reactivate or delete when #527514 is handled.")
     public void ignore_testExportAsBMPAutoScaling() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.BMP, ExportFormat.ScalingPolicy.AUTO_SCALING);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.BMP, ExportFormat.ScalingPolicy.AUTO_SCALING);
         checkResultsWithAutoUpScale(exportResult);
     }
 
@@ -393,7 +340,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
             // Export to GIF is broken under Linux/GTK since Eclipse 2019-09
             return;
         }
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.GIF, ExportFormat.ScalingPolicy.AUTO_SCALING);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.GIF, ExportFormat.ScalingPolicy.AUTO_SCALING);
         checkResultsWithAutoUpScale(exportResult);
     }
 
@@ -403,7 +350,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
      * @throws Exception
      */
     public void testExportAsPNGAutoScaling() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.PNG, ExportFormat.ScalingPolicy.AUTO_SCALING);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.PNG, ExportFormat.ScalingPolicy.AUTO_SCALING);
         checkResultsWithAutoUpScale(exportResult);
     }
 
@@ -414,7 +361,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
      * @throws Exception
      */
     public void testExportAsSVGAutoScaling() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING);
         checkResultsNoAutoScaling(exportResult, true);
     }
 
@@ -424,7 +371,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
      * @throws Exception
      */
     public void testExportAsSVGZAutoScaling() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.SVGZ, ExportFormat.ScalingPolicy.AUTO_SCALING);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.SVGZ, ExportFormat.ScalingPolicy.AUTO_SCALING);
         checkResultsWithAutoUpScale(exportResult);
     }
 
@@ -436,7 +383,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
      * @throws Exception
      */
     public void testExportAsSVGWithTraceability() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING, true);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING, true);
         checkResultsNoAutoScaling(exportResult, true, true);
     }
 
@@ -523,7 +470,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
      * @throws Exception
      */
     public void testExportAsJPGAutoScalingIfLarger() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.JPG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.JPG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
         checkResultsWithAutoUpScale(exportResult);
     }
 
@@ -534,7 +481,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
      * @throws Exception
      */
     public void testExportAsJPEGAutoScalingIfLarger() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.JPEG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.JPEG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
         checkResultsWithAutoUpScale(exportResult);
     }
 
@@ -546,7 +493,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
      */
     @Ignore("To reactivate or delete when #527514 is handled.")
     public void ignore_testExportAsBMPAutoScalingIfLarger() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.BMP, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.BMP, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
         checkResultsWithAutoUpScale(exportResult);
     }
 
@@ -561,7 +508,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
             // Export to GIF is broken under Linux/GTK since Eclipse 2019-09
             return;
         }
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.GIF, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.GIF, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
         checkResultsWithAutoUpScale(exportResult);
     }
 
@@ -572,7 +519,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
      * @throws Exception
      */
     public void testExportAsPNGAutoScalingIfLarger() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.PNG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.PNG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
         checkResultsWithAutoUpScale(exportResult);
     }
 
@@ -583,7 +530,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
      * @throws Exception
      */
     public void testExportAsSVGAutoScalingIfLarger() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
         checkResultsNoAutoScaling(exportResult, true);
     }
 
@@ -594,7 +541,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
      * @throws Exception
      */
     public void testExportAsSVGZAutoScalingIfLarger() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.SVGZ, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.SVGZ, ExportFormat.ScalingPolicy.AUTO_SCALING_IF_LARGER);
         checkResultsWithAutoUpScale(exportResult);
     }
 
@@ -716,7 +663,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
      * @throws Exception
      */
     public void testExportAsJPGNoAutoScaling() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.JPG, ExportFormat.ScalingPolicy.NO_SCALING);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.JPG, ExportFormat.ScalingPolicy.NO_SCALING);
         checkResultsNoAutoScaling(exportResult, false);
     }
 
@@ -726,7 +673,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
      * @throws Exception
      */
     public void testExportAsJPEGNoAutoScaling() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.JPEG, ExportFormat.ScalingPolicy.NO_SCALING);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.JPEG, ExportFormat.ScalingPolicy.NO_SCALING);
         checkResultsNoAutoScaling(exportResult, false);
     }
 
@@ -736,7 +683,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
      * @throws Exception
      */
     public void testExportAsBMPNoAutoScaling() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.BMP, ExportFormat.ScalingPolicy.NO_SCALING);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.BMP, ExportFormat.ScalingPolicy.NO_SCALING);
         checkResultsNoAutoScaling(exportResult, false);
     }
 
@@ -750,7 +697,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
             // Export to GIF is broken under Linux/GTK since Eclipse 2019-09
             return;
         }
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.GIF, ExportFormat.ScalingPolicy.NO_SCALING);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.GIF, ExportFormat.ScalingPolicy.NO_SCALING);
         checkResultsNoAutoScaling(exportResult, false);
     }
 
@@ -760,7 +707,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
      * @throws Exception
      */
     public void testExportAsPNGNoAutoScaling() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.PNG, ExportFormat.ScalingPolicy.NO_SCALING);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.PNG, ExportFormat.ScalingPolicy.NO_SCALING);
         checkResultsNoAutoScaling(exportResult, false);
     }
 
@@ -771,7 +718,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
      * @throws Exception
      */
     public void testExportAsSVGNoAutoScaling() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.SVG, ExportFormat.ScalingPolicy.NO_SCALING);
         checkResultsNoAutoScaling(exportResult, true);
     }
 
@@ -781,7 +728,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
      * @throws Exception
      */
     public void testExportAsSVGZNoAutoScaling() throws Exception {
-        DiagramExportResult exportResult = exportImage(getRepresentation(), ImageFileFormat.SVGZ, ExportFormat.ScalingPolicy.NO_SCALING);
+        DiagramExportResult exportResult = exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.SVGZ, ExportFormat.ScalingPolicy.NO_SCALING);
         checkResultsNoAutoScaling(exportResult, false);
     }
 
@@ -864,35 +811,6 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
         }
     }
 
-    private void checkTraceability(Set<IPath> paths, boolean traceability) {
-
-        Optional<IPath> optionalFirstFile = paths.stream().findFirst();
-        IPath path = optionalFirstFile.get();
-        SAXParserFactory factory = SAXParserFactory.newInstance();
-
-        try {
-            SAXParser saxParser = factory.newSAXParser();
-            SVGUIDHandler handler = new SVGUIDHandler();
-            saxParser.parse(path.toOSString(), handler);
-            Map<String, Integer> semanticTargetIdToOccurrences = handler.getSemanticTargetIdToOccurrences();
-            if (!traceability) {
-                assertTrue("The semantic target id should not be exported in the SVG file", semanticTargetIdToOccurrences.isEmpty());
-            } else {
-                assertEquals("The package p1 id is not exported in the SVG file as expected", Integer.valueOf(6), semanticTargetIdToOccurrences.get(EXPECTED_P1_ID));
-                assertEquals("The package Lp2 id is not exported in the SVG file as expected", Integer.valueOf(6), semanticTargetIdToOccurrences.get(EXPECTED_LP2_ID));
-                assertEquals("The class C1 id is not exported in the SVG file as expected", Integer.valueOf(4), semanticTargetIdToOccurrences.get(EXPECTED_C1_ID));
-                assertEquals("The class P2C1 id is not exported in the SVG file as expected", Integer.valueOf(2), semanticTargetIdToOccurrences.get(EXPECTED_P2C1_ID));
-                assertEquals("The attribute a1 id is not exported in the SVG file as expected", Integer.valueOf(3), semanticTargetIdToOccurrences.get(EXPECTED_A1_ID));
-            }
-        } catch (ParserConfigurationException e) {
-        } catch (SAXException e) {
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-    }
-
     private void checkResultsNoAutoScaling(DiagramExportResult exportResult, boolean isSVGExport) throws IOException {
         checkResultsNoAutoScaling(exportResult, isSVGExport, false);
     }
@@ -932,7 +850,7 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
         final IInterpreter interpreter = newSession.getInterpreter();
         InterpreterRegistry.prepareImportsFromSession(interpreter, newSession);
 
-        exportImage(getRepresentation(), ImageFileFormat.PNG, ExportFormat.ScalingPolicy.NO_SCALING);
+        exportImage(getRepresentation("new diagExportAsImage"), ImageFileFormat.PNG, ExportFormat.ScalingPolicy.NO_SCALING);
 
         // Asserts that the image had been created
         SiriusAssert.assertFileExists("/" + TEMPORARY_PROJECT_NAME + "/" + IMAGE_FILE_NAME + ImageFileFormat.PNG.getName().toLowerCase());
@@ -995,7 +913,8 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
         String outputPath = "/" + TEMPORARY_PROJECT_NAME + "/" + IMAGE_FILE_NAME + ImageFileFormat.PNG.getName().toLowerCase();
         String failureMessage = "The export should throw an IllegalArgumentException because the scale level is invalid.";
         try {
-            ExportAction exportAction = new ExportAction(session, Collections.singletonList(getRepresentation()), new Path(outputPath), ImageFileFormat.PNG, false, true);
+            ExportAction exportAction = new ExportAction(session, Collections.singletonList(getRepresentation("new diagExportAsImage")), new Path(outputPath), ImageFileFormat.PNG, false,
+                    true);
             exportAction.setDiagramScaleLevel(scaleLevel);
             fail(failureMessage);
         } catch (IllegalArgumentException iae) {
@@ -1024,5 +943,15 @@ public class ExportAsImageTest extends AbstractRepairMigrateTest {
         public Map<String, Integer> getSemanticTargetIdToOccurrences() {
             return semanticTargetIdToOccurrences;
         }
+    }
+
+    @Override
+    protected void checkTraceability(Map<String, Integer> semanticTargetIdToOccurrences) {
+        assertEquals("The package p1 id is not exported in the SVG file as expected", Integer.valueOf(6), semanticTargetIdToOccurrences.get(EXPECTED_P1_ID));
+        assertEquals("The package Lp2 id is not exported in the SVG file as expected", Integer.valueOf(6), semanticTargetIdToOccurrences.get(EXPECTED_LP2_ID));
+        assertEquals("The class C1 id is not exported in the SVG file as expected", Integer.valueOf(4), semanticTargetIdToOccurrences.get(EXPECTED_C1_ID));
+        assertEquals("The class P2C1 id is not exported in the SVG file as expected", Integer.valueOf(2), semanticTargetIdToOccurrences.get(EXPECTED_P2C1_ID));
+        assertEquals("The attribute a1 id is not exported in the SVG file as expected", Integer.valueOf(3), semanticTargetIdToOccurrences.get(EXPECTED_A1_ID));
+
     }
 }
