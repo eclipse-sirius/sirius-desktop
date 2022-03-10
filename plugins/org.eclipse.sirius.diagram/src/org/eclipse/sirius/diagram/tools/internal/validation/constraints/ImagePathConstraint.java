@@ -106,21 +106,24 @@ public class ImagePathConstraint extends AbstractConstraint {
      */
     protected void validateWorkspaceImagePath(WorkspaceImage workspaceImage, IValidationContext context, List<IStatus> statuses) {
         String workspacePath = workspaceImage.getWorkspacePath();
-        boolean exists = FileProvider.getDefault().exists(new Path(workspacePath));
-        if (!exists) {
-            EObject eContainer = workspaceImage.eContainer();
-            String repDescName = ""; //$NON-NLS-1$
-            if (eContainer instanceof DDiagramElement) {
-                DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(new EObjectQuery(eContainer).getRepresentation().get()).getRepresentationDescriptor();
-                repDescName = representationDescriptor.getName();
+        // Ignore bundle image
+        if (!workspacePath.startsWith("/")) { //$NON-NLS-1$
+            boolean exists = FileProvider.getDefault().exists(new Path(workspacePath));
+            if (!exists) {
+                EObject eContainer = workspaceImage.eContainer();
+                String repDescName = ""; //$NON-NLS-1$
+                if (eContainer instanceof DDiagramElement) {
+                    DRepresentationDescriptor representationDescriptor = new DRepresentationQuery(new EObjectQuery(eContainer).getRepresentation().get()).getRepresentationDescriptor();
+                    repDescName = representationDescriptor.getName();
+                }
+                String message = MessageFormat.format(Messages.ImagePathConstraint_workspaceImagePathError, workspacePath,
+                        new EditingDomainServices().getLabelProviderText(workspaceImage.eContainer()), repDescName);
+                // The constraint needs to be associated to the diagram element
+                ConstraintStatus failureStatus = new ImagePathWrappingStatus(
+                        ConstraintStatus.createStatus(context, workspaceImage.eContainer(), Arrays.asList(context.getTarget()), MESSAGE_ITSELF, message),
+                        ImagePathWrappingStatus.ImagePathTarget.WORKSPACE_IMAGE, workspacePath);
+                statuses.add(failureStatus);
             }
-            String message = MessageFormat.format(Messages.ImagePathConstraint_workspaceImagePathError, workspacePath, new EditingDomainServices().getLabelProviderText(workspaceImage.eContainer()),
-                    repDescName);
-            // The constraint needs to be associated to the diagram element
-            ConstraintStatus failureStatus = new ImagePathWrappingStatus(
-                    ConstraintStatus.createStatus(context, workspaceImage.eContainer(), Arrays.asList(context.getTarget()), MESSAGE_ITSELF, message),
-                    ImagePathWrappingStatus.ImagePathTarget.WORKSPACE_IMAGE, workspacePath);
-            statuses.add(failureStatus);
         }
     }
 
