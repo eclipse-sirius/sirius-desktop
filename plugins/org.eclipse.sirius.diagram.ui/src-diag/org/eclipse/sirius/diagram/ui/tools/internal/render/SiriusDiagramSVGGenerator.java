@@ -75,10 +75,10 @@ import org.w3c.dom.Element;
 public class SiriusDiagramSVGGenerator extends DiagramGenerator {
 
     /**
-     * Bugzilla 57850: the name of the system property to enable the new SVG export behavior (false by default). If this
-     * property is set to true, new SVG export is launched.
+     * Bugzilla 57850: the name of the system property to enable the embedded SVG in SVG export behavior (false by
+     * default). If this property is set to true, embedded SVG in SVG export is launched.
      */
-    public static final String ENABLE_NEW_SVG_EXPORT = "org.eclipse.sirius.diagram.ui.enableNewSVGExport"; //$NON-NLS-1$
+    public static final String ENABLE_EMBEDDED_SVG_IN_SVG_EXPORT = "org.eclipse.sirius.diagram.ui.enableEmbeddedSVGInSVGExport"; //$NON-NLS-1$
 
     private RenderedImage renderedImage = null;
 
@@ -222,10 +222,10 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
 
         return imageDesc;
     }
-    
+
     @Override
     protected void renderToGraphics(Graphics graphics, Point translateOffset, List editparts) {
-     // List sortedEditparts = sortSelection(editparts);
+        // List sortedEditparts = sortSelection(editparts);
 
         graphics.translate((-translateOffset.x), (-translateOffset.y));
         graphics.pushState();
@@ -266,13 +266,13 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
         // with the annotation to add
         // then in stream (or is it getImageDescritor?) iterate on the final SVG document, and for each
         // SVGOMRectElement, find the best match in the previous map and add the corresponding id.
-        
+
         if (this.overlayFigure != null) {
             paintFigure(graphics, overlayFigure);
         }
 
         // Add symbol tags at the end of the document if there is any referenced SVG images.
-        if (isSVGExportEnabled() && SVGImageRegistry.hasReferencedImages()) {
+        if (isEmbeddedSVGinSVGExportEnabled() && SVGImageRegistry.hasReferencedImages()) {
             if (graphics instanceof SiriusRenderedMapModeGraphics && ((SiriusRenderedMapModeGraphics) graphics).getGraphics() instanceof SiriusGraphicsSVG) {
                 SVGImageRegistry.getURLs().forEach(url -> {
                     Optional<String> uuid = SVGImageRegistry.getUUID(url);
@@ -349,13 +349,13 @@ public class SiriusDiagramSVGGenerator extends DiagramGenerator {
     }
 
     /**
-     * Bugzilla 57850: new behavior for SVG export. This system property has been added to allow to use the new export
-     * behavior. It is a temporary method, waiting a potential feedback.
+     * Bugzilla 57850: the embedded SVG in SVG export behavior. This system property has been added to allow to use the
+     * embedded SVG in SVG export behavior. It is a temporary method, waiting a potential feedback.
      * 
-     * @return true if the new behavior must be enabled or false to have the current behavior.
+     * @return true if embedded SVG must be enabled or false to have the current behavior.
      */
-    public static boolean isSVGExportEnabled() {
-        return Boolean.valueOf(System.getProperty(ENABLE_NEW_SVG_EXPORT, "false")); //$NON-NLS-1$
+    public static boolean isEmbeddedSVGinSVGExportEnabled() {
+        return Boolean.valueOf(System.getProperty(ENABLE_EMBEDDED_SVG_IN_SVG_EXPORT, "false")); //$NON-NLS-1$
     }
 
 }

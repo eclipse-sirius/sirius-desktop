@@ -18,7 +18,7 @@
           </style>
         </nodeMappings>
         <nodeMappings name="EClass_WorkspaceImage" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
-          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/DesignerTestProject/images/Fan.svg">
+          <style xsi:type="style:WorkspaceImageDescription" labelSize="12" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/DesignerTestProject/images/Fan.svg">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
@@ -67,7 +67,7 @@
             </style>
           </subNodeMappings>
           <subNodeMappings name="EClass_WorkspaceImage" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
-            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/DesignerTestProject/images/Fan.svg">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/DesignerTestProject/images/Fan.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
@@ -123,7 +123,7 @@
             </style>
           </subNodeMappings>
           <subNodeMappings name="EClass_WorkspaceImage" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
-            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/DesignerTestProject/images/Fan.svg">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/DesignerTestProject/images/Fan.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
@@ -177,7 +177,7 @@
             </style>
           </subNodeMappings>
           <subNodeMappings name="EClass_WorkspaceImage" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
-            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/DesignerTestProject/images/Fan.svg">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/DesignerTestProject/images/Fan.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
@@ -232,7 +232,7 @@
             </style>
           </borderedNodeMappings>
           <borderedNodeMappings name="EClass_WorkspaceImage" semanticCandidatesExpression="feature:eAllContents" domainClass="EClass">
-            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" showIcon="false" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/DesignerTestProject/images/Fan.svg">
+            <style xsi:type="style:WorkspaceImageDescription" labelSize="12" sizeComputationExpression="5" resizeKind="NSEW" workspacePath="/DesignerTestProject/images/Fan.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
@@ -258,6 +258,5 @@
         </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedJavaExtensions qualifiedClassName="export.svg.test.design.Services"/>
   </ownedViewpoints>
 </description:Group>

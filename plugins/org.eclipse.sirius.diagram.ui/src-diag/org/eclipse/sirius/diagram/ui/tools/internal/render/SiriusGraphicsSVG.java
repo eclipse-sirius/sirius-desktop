@@ -16,6 +16,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.geom.AffineTransform;
+import java.awt.image.ImageObserver;
 import java.awt.image.renderable.RenderableImage;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +26,8 @@ import java.util.UUID;
 import org.apache.batik.anim.dom.SVGDOMImplementation;
 import org.apache.batik.anim.dom.SVGOMDefsElement;
 import org.apache.batik.anim.dom.SVGOMDocument;
+import org.apache.batik.anim.dom.SVGOMGElement;
+import org.apache.batik.anim.dom.SVGOMImageElement;
 import org.apache.batik.constants.XMLConstants;
 import org.apache.batik.dom.AbstractDocument;
 import org.apache.batik.dom.util.DOMUtilities;
@@ -50,12 +53,10 @@ import org.w3c.dom.Node;
 
 /**
  * Objects of this class can be used with draw2d to create an SVG DOM.<BR>
- * Class copied from
- * {@link org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.export.GraphicsSVG}
- * to inherit of {@link SiriusGraphicsToGraphics2DAdaptor} instead of
- * {@link org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.graphics.GraphicsToGraphics2DAdaptor}
- * and so handles gradient with method
- * {@link #setBackgroundPattern(java.awt.GradientPaint)}.
+ * Class copied from {@link org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.svg.export.GraphicsSVG} to inherit of
+ * {@link SiriusGraphicsToGraphics2DAdaptor} instead of
+ * {@link org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.graphics.GraphicsToGraphics2DAdaptor} and so handles
+ * gradient with method {@link #setBackgroundPattern(java.awt.GradientPaint)}.
  * 
  * @author jschofie / sshaw
  */
@@ -132,15 +133,15 @@ public class SiriusGraphicsSVG extends SiriusGraphicsToGraphics2DAdaptor impleme
          * Add use tag to reference SVG image.
          * 
          * @param uri
-         *                   Image URI
+         *            Image URI
          ** @param x
-         *                   the <i>x</i> coordinate.
+         *            the <i>x</i> coordinate.
          * @param y
-         *                   the <i>y</i> coordinate.
+         *            the <i>y</i> coordinate.
          * @param width
-         *                   the width of the rectangle.
+         *            the width of the rectangle.
          * @param height
-         *                   the height of the rectangle.
+         *            the height of the rectangle.
          */
         public void drawSVGReference(String uri, int x, int y, int width, int height) {
             Element useElement = getDOMFactory().createElementNS(SVG_NAMESPACE_URI, SVGConstants.SVG_USE_TAG);
@@ -161,6 +162,52 @@ public class SiriusGraphicsSVG extends SiriusGraphicsToGraphics2DAdaptor impleme
                 useElement.removeAttributeNS(null, SVG_CLIP_PATH_ATTRIBUTE);
             }
 
+        }
+
+        /**
+         * (non-Javadoc)
+         * 
+         * @see org.apache.batik.svggen.SVGGraphics2D#drawImage(java.awt.Image, int, int, int, int,
+         *      java.awt.image.ImageObserver)
+         */
+        @Override
+        public boolean drawImage(Image img, int x, int y, int width, int height, ImageObserver observer) {
+            boolean drawImage = super.drawImage(img, x, y, width, height, observer);
+
+            // [578509] Improve the quality of SVG exports: remove clip-path attribute for Word to display base64 images
+            // correctly
+            if (drawImage && SiriusDiagramSVGGenerator.isEmbeddedSVGinSVGExportEnabled()) {
+                Optional<SVGOMImageElement> lastImageElement = getLastSVGOMGElement();
+                if (lastImageElement.isPresent()) {
+                    String attributeNS = lastImageElement.get().getAttributeNS(null, SVG_CLIP_PATH_ATTRIBUTE);
+                    if (!attributeNS.isEmpty()) {
+                        lastImageElement.get().removeAttributeNS(null, SVG_CLIP_PATH_ATTRIBUTE);
+                    }
+                }
+
+            }
+            return drawImage;
+        }
+
+        private Optional<SVGOMImageElement> getLastSVGOMGElement() {
+            Optional<Object> toplevelGroup = ReflectionHelper.getFieldValueWithoutException(domTreeManager, "topLevelGroup"); //$NON-NLS-1$
+            if (toplevelGroup.isPresent() && toplevelGroup.get() instanceof Element) {
+                return getLastSVGOMGElement((Element) toplevelGroup.get());
+            }
+            return Optional.empty();
+        }
+
+        private Optional<SVGOMImageElement> getLastSVGOMGElement(Element element) {
+            for (Node n = element.getLastChild(); n != null; n = n.getPreviousSibling()) {
+                if (n instanceof SVGOMGElement) {
+                    for (Node child = n.getLastChild(); child != null; child = child.getPreviousSibling()) {
+                        if (child instanceof SVGOMImageElement) {
+                            return Optional.of((SVGOMImageElement) child);
+                        }
+                    }
+                }
+            }
+            return Optional.empty();
         }
 
     }
@@ -254,9 +301,8 @@ public class SiriusGraphicsSVG extends SiriusGraphicsToGraphics2DAdaptor impleme
     /*
      * (non-Javadoc)
      * @see org.eclipse.gmf.runtime.draw2d.ui.render.awt.internal.graphics.
-     * GraphicsToGraphics2DAdaptor#drawRenderedImage(org.eclipse.gmf.runtime.
-     * draw2d.ui.render.RenderedImage, org.eclipse.draw2d.geometry.Rectangle,
-     * org.eclipse.gmf.runtime.draw2d.ui.render.RenderingListener)
+     * GraphicsToGraphics2DAdaptor#drawRenderedImage(org.eclipse.gmf.runtime. draw2d.ui.render.RenderedImage,
+     * org.eclipse.draw2d.geometry.Rectangle, org.eclipse.gmf.runtime.draw2d.ui.render.RenderingListener)
      */
     @Override
     public RenderedImage drawRenderedImage(RenderedImage srcImage, Rectangle rect, RenderingListener listener) {
@@ -312,23 +358,23 @@ public class SiriusGraphicsSVG extends SiriusGraphicsToGraphics2DAdaptor impleme
      * Draw SVG image reference with use tag.
      * 
      * @param uri
-     *                Image URI
+     *            Image URI
      * @param x1
-     *                the x coordinate of the source
+     *            the x coordinate of the source
      * @param y1
-     *                the y coordinate of the source
+     *            the y coordinate of the source
      * @param w1
-     *                the width of the source
+     *            the width of the source
      * @param h1
-     *                the height of the source
+     *            the height of the source
      * @param x2
-     *                the x coordinate of the destination
+     *            the x coordinate of the destination
      * @param y2
-     *                the y coordinate of the destination
+     *            the y coordinate of the destination
      * @param w2
-     *                the width of the destination
+     *            the width of the destination
      * @param h2
-     *                the height of the destination
+     *            the height of the destination
      */
     public void drawSVGReference(String uri, int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2) {
         Point trans = getTranslationOffset();
@@ -343,9 +389,9 @@ public class SiriusGraphicsSVG extends SiriusGraphicsToGraphics2DAdaptor impleme
      * Draw SVG image in symbol tag.
      * 
      * @param uri
-     *                 String
+     *            String
      * @param uuid
-     *                 String
+     *            String
      */
     public void drawSymbolSVGImage(String uri, String uuid) {
         DOMTreeManager treeManager = getSVGGraphics2D().getDOMTreeManager();
@@ -393,7 +439,7 @@ public class SiriusGraphicsSVG extends SiriusGraphicsToGraphics2DAdaptor impleme
 
     /**
      * @param treeManager
-     *                        DOMTreeManager
+     *            DOMTreeManager
      * @return cloned definition set
      */
     @SuppressWarnings({ "rawtypes", "unchecked" })
@@ -418,7 +464,7 @@ public class SiriusGraphicsSVG extends SiriusGraphicsToGraphics2DAdaptor impleme
 
     /**
      * @param topLevelGroup
-     *                          Element
+     *            Element
      * @return topLevelGroup has definition set
      */
     protected boolean hasDefinitionSet(Element topLevelGroup) {
