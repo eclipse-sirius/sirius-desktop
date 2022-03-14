@@ -39,6 +39,7 @@
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,plugins/org.eclipse.sirius.interpreter"/>
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,packaging/org.eclipse.sirius.parent"/>
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,releng/org.eclipse.sirius.releng"/>
+<project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,packaging/org.eclipse.sirius.model.feature"/>
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,packaging/org.eclipse.sirius.runtime"/>
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,packaging/org.eclipse.sirius.runtime.acceleo"/>
 <project reference="1.0,https://git.eclipse.org/r/sirius/org.eclipse.sirius.git,master,packaging/org.eclipse.sirius.runtime.ide.eef"/>
@@ -74,6 +75,7 @@
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.eclipse.sirius.runtime.acceleo" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.eclipse.sirius.runtime.ide.ui.acceleo" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.eclipse.sirius.specifier.ide.ui" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.eclipse.sirius.model.feature" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.eclipse.sirius.runtime" type="4"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/org.eclipse.sirius.runtime.ide.xtext" type="4"/>
 </workingSets>

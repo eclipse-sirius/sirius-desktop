@@ -353,6 +353,7 @@
         <module>../../plugins/org.eclipse.sirius.tree</module>
 
         <!-- features -->
+        <module>../../packaging/org.eclipse.sirius.model.feature</module>
         <module>../../packaging/org.eclipse.sirius.runtime</module>
         <module>../../packaging/org.eclipse.sirius.runtime.acceleo</module>
         <module>../../packaging/org.eclipse.sirius.runtime.aql</module>

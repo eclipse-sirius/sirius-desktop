@@ -3,6 +3,12 @@
    <description url="http://www.eclipse.org/sirius">
       Sirius
    </description>
+   <feature id="org.eclipse.sirius.model.feature" version="0.0.0">
+      <category name="Sirius"/>
+   </feature>
+   <feature id="org.eclipse.sirius.model.feature.source" version="0.0.0">
+      <category name="Sirius.SDK"/>
+   </feature>
    <feature id="org.eclipse.sirius.runtime" version="0.0.0">
       <category name="Sirius"/>
    </feature>
