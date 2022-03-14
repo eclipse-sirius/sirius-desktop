@@ -96,12 +96,12 @@ public class ExportAsImageSVGTest extends AbstractExportAsImageTest {
 
         TestsUtil.emptyEventsFromUIThread();
 
-        System.setProperty(SiriusDiagramSVGGenerator.ENABLE_NEW_SVG_EXPORT, "true"); //$NON-NLS-1$
+        System.setProperty(SiriusDiagramSVGGenerator.ENABLE_EMBEDDED_SVG_IN_SVG_EXPORT, "true"); //$NON-NLS-1$
     }
 
     @Override
     protected void tearDown() throws Exception {
-        System.setProperty(SiriusDiagramSVGGenerator.ENABLE_NEW_SVG_EXPORT, "false"); //$NON-NLS-1$
+        System.setProperty(SiriusDiagramSVGGenerator.ENABLE_EMBEDDED_SVG_IN_SVG_EXPORT, "false"); //$NON-NLS-1$
         super.tearDown();
     }
 
@@ -337,9 +337,9 @@ public class ExportAsImageSVGTest extends AbstractExportAsImageTest {
 
     @Override
     protected void checkTraceability(Map<String, Integer> semanticTargetIdToOccurrences) {
-        assertEquals("The class C1 id is not exported in the SVG file as expected", Integer.valueOf(16), semanticTargetIdToOccurrences.get("platform:/resource/DesignerTestProject/My.ecore#//p1/C1")); //$NON-NLS-1$//$NON-NLS-2$
-        assertEquals("The class C2 id is not exported in the SVG file as expected", Integer.valueOf(16), semanticTargetIdToOccurrences.get("platform:/resource/DesignerTestProject/My.ecore#//p1/C2")); //$NON-NLS-1$//$NON-NLS-2$
-        assertEquals("The class C3 id is not exported in the SVG file as expected", Integer.valueOf(16), semanticTargetIdToOccurrences.get("platform:/resource/DesignerTestProject/My.ecore#//p1/C3")); //$NON-NLS-1$ //$NON-NLS-2$
+        assertEquals("The class C1 id is not exported in the SVG file as expected", Integer.valueOf(17), semanticTargetIdToOccurrences.get("platform:/resource/DesignerTestProject/My.ecore#//p1/C1")); //$NON-NLS-1$//$NON-NLS-2$
+        assertEquals("The class C2 id is not exported in the SVG file as expected", Integer.valueOf(17), semanticTargetIdToOccurrences.get("platform:/resource/DesignerTestProject/My.ecore#//p1/C2")); //$NON-NLS-1$//$NON-NLS-2$
+        assertEquals("The class C3 id is not exported in the SVG file as expected", Integer.valueOf(17), semanticTargetIdToOccurrences.get("platform:/resource/DesignerTestProject/My.ecore#//p1/C3")); //$NON-NLS-1$ //$NON-NLS-2$
 
     }
 

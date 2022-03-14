@@ -10,35 +10,35 @@
     </ownedViews>
     <ownedViews xmi:type="viewpoint:DView" uid="_e6lfcJrSEeyArMQjDt_ywA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_IrOr4prTEeyArMQjDt_ywA" name="new SVGImages_Node" repPath="#_IrOr4JrTEeyArMQjDt_ywA" changeId="96bb34dd-ed63-4621-acda-b9a74164f4fb">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_IrOr4prTEeyArMQjDt_ywA" name="new SVGImages_Node" repPath="#_IrOr4JrTEeyArMQjDt_ywA" changeId="8949d8f7-0e34-4aa5-b7dd-0edaa7863bd2">
         <description xmi:type="description_1:DiagramDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ZBO-QJsFEeytjv1FlCBMSQ" name="new SVGImages_Node_Resize" repPath="#_ZBMiAJsFEeytjv1FlCBMSQ" changeId="fa45de6e-a850-4ee7-a43a-8469fe1ba4e6">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_ZBO-QJsFEeytjv1FlCBMSQ" name="new SVGImages_Node_Resize" repPath="#_ZBMiAJsFEeytjv1FlCBMSQ" changeId="ec5557cc-8fda-4308-bba7-6b3790a73983">
         <description xmi:type="description_1:DiagramDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_twXdUJuVEeytjv1FlCBMSQ" name="new SVGImages_Container" repPath="#_twWPMJuVEeytjv1FlCBMSQ" changeId="c5374afb-6df7-41b1-b6d2-e8b9f489390e">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_twXdUJuVEeytjv1FlCBMSQ" name="new SVGImages_Container" repPath="#_twWPMJuVEeytjv1FlCBMSQ" changeId="5e19e3f4-127a-48b4-b1cb-fcaf4dc39187">
         <description xmi:type="description_1:DiagramDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_xQdf8ZuVEeytjv1FlCBMSQ" name="new SVGImages_Container_Resize" repPath="#_xQc44JuVEeytjv1FlCBMSQ" changeId="cd446ca0-47c4-4ecd-9384-a8887e1c98cb">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_xQdf8ZuVEeytjv1FlCBMSQ" name="new SVGImages_Container_Resize" repPath="#_xQc44JuVEeytjv1FlCBMSQ" changeId="86c0444b-66ce-4c68-b5d5-6bff8311beff">
         <description xmi:type="description_1:DiagramDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Eh-M4JuWEeytjv1FlCBMSQ" name="new SVGImages_Container_Image" repPath="#_Eh9l0JuWEeytjv1FlCBMSQ" changeId="0314d44c-7edc-4d8c-a436-d9bbfe35bd56">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Eh-M4JuWEeytjv1FlCBMSQ" name="new SVGImages_Container_Image" repPath="#_Eh9l0JuWEeytjv1FlCBMSQ" changeId="5af74bc6-beee-4d7c-b663-af62f4eb806a">
         <description xmi:type="description_1:DiagramDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container_Image']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_FsSD4JuWEeytjv1FlCBMSQ" name="new SVGImages_Container_Parallelogram" repPath="#_FsRc0JuWEeytjv1FlCBMSQ" changeId="d170c094-aa19-4169-b818-b094d6df39ea">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_FsSD4JuWEeytjv1FlCBMSQ" name="new SVGImages_Container_Parallelogram" repPath="#_FsRc0JuWEeytjv1FlCBMSQ" changeId="1f878f85-db6f-4852-b950-f534388701f7">
         <description xmi:type="description_1:DiagramDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container_Parallelogram']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_InNj8puWEeytjv1FlCBMSQ" name="new SVGImages_Bordered_Node" repPath="#_InNj8JuWEeytjv1FlCBMSQ" changeId="82b63261-ae6e-456c-a18e-56ea7a49f78b">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_InNj8puWEeytjv1FlCBMSQ" name="new SVGImages_Bordered_Node" repPath="#_InNj8JuWEeytjv1FlCBMSQ" changeId="58a71d04-0595-4034-910b-677ced8a36be">
         <description xmi:type="description_1:DiagramDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Bordered_Node']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       </ownedRepresentationDescriptors>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Me-fsJuWEeytjv1FlCBMSQ" name="new SVGImages_Bordered_Node_Resize" repPath="#_Me94oJuWEeytjv1FlCBMSQ" changeId="d9147fd9-587e-40a0-875b-4042cc6bf663">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" uid="_Me-fsJuWEeytjv1FlCBMSQ" name="new SVGImages_Bordered_Node_Resize" repPath="#_Me94oJuWEeytjv1FlCBMSQ" changeId="731e6cd2-5903-49d9-9add-d860246d4a8c">
         <description xmi:type="description_1:DiagramDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Bordered_Node']"/>
         <target xmi:type="ecore:EPackage" href="My.ecore#//p1"/>
       </ownedRepresentationDescriptors>
@@ -323,7 +323,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_nzQW8JubEeytjv1FlCBMSQ" name="C1" width="5" height="5" resizeKind="NSEW">
       <target xmi:type="ecore:EClass" href="My.ecore#//p1/C1"/>
       <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C1"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzQW8ZubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzQW8ZubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node']/@defaultLayer/@nodeMappings[name='EClass_WorkspaceImage']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node']/@defaultLayer/@nodeMappings[name='EClass_WorkspaceImage']"/>
@@ -331,7 +331,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_nzQW85ubEeytjv1FlCBMSQ" name="C2" width="5" height="5" resizeKind="NSEW">
       <target xmi:type="ecore:EClass" href="My.ecore#//p1/C2"/>
       <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C2"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzQW9JubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzQW9JubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node']/@defaultLayer/@nodeMappings[name='EClass_WorkspaceImage']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node']/@defaultLayer/@nodeMappings[name='EClass_WorkspaceImage']"/>
@@ -339,7 +339,7 @@
     <ownedDiagramElements xmi:type="diagram:DNode" uid="_nzQW9pubEeytjv1FlCBMSQ" name="C3" width="5" height="5" resizeKind="NSEW">
       <target xmi:type="ecore:EClass" href="My.ecore#//p1/C3"/>
       <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C3"/>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzQW95ubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzQW95ubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node']/@defaultLayer/@nodeMappings[name='EClass_WorkspaceImage']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node']/@defaultLayer/@nodeMappings[name='EClass_WorkspaceImage']"/>
@@ -538,7 +538,7 @@
         </children>
         <children xmi:type="notation:Node" xmi:id="_jAe1oJsFEeytjv1FlCBMSQ" type="2001" element="_nzVPcZubEeytjv1FlCBMSQ">
           <children xmi:type="notation:Node" xmi:id="_jAfcsJsFEeytjv1FlCBMSQ" type="5002">
-            <layoutConstraint xmi:type="notation:Location" xmi:id="_jAfcsZsFEeytjv1FlCBMSQ" x="-20"/>
+            <layoutConstraint xmi:type="notation:Location" xmi:id="_jAfcsZsFEeytjv1FlCBMSQ" x="12" y="134"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_jCwGhZsFEeytjv1FlCBMSQ" type="3005" element="_nzVPcpubEeytjv1FlCBMSQ">
             <styles xmi:type="notation:ShapeStyle" xmi:id="_jCwGhpsFEeytjv1FlCBMSQ" fontName="Segoe UI"/>
@@ -742,7 +742,7 @@
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzUoZ5ubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzUoZ5ubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node']/@defaultLayer/@nodeMappings[name='EClass_WorkspaceImage']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node']/@defaultLayer/@nodeMappings[name='EClass_WorkspaceImage']"/>
@@ -753,7 +753,7 @@
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzUoapubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzUoapubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node']/@defaultLayer/@nodeMappings[name='EClass_WorkspaceImage']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node']/@defaultLayer/@nodeMappings[name='EClass_WorkspaceImage']"/>
@@ -764,7 +764,7 @@
       <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
       <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
       <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzVPcpubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+      <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzVPcpubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
         <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node']/@defaultLayer/@nodeMappings[name='EClass_WorkspaceImage']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Node']/@defaultLayer/@nodeMappings[name='EClass_WorkspaceImage']"/>
@@ -1249,7 +1249,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_nzavAJubEeytjv1FlCBMSQ" name="C1" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="My.ecore#//p1/C1"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C1"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzavAZubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzavAZubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container']/@defaultLayer/@containerMappings[name='EPackage_Container_Gradient']/@subNodeMappings[name='EClass_WorkspaceImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container']/@defaultLayer/@containerMappings[name='EPackage_Container_Gradient']/@subNodeMappings[name='EClass_WorkspaceImage']"/>
@@ -1257,7 +1257,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_nzavA5ubEeytjv1FlCBMSQ" name="C2" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="My.ecore#//p1/C2"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C2"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzavBJubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzavBJubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container']/@defaultLayer/@containerMappings[name='EPackage_Container_Gradient']/@subNodeMappings[name='EClass_WorkspaceImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container']/@defaultLayer/@containerMappings[name='EPackage_Container_Gradient']/@subNodeMappings[name='EClass_WorkspaceImage']"/>
@@ -1265,7 +1265,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_nzavBpubEeytjv1FlCBMSQ" name="C3" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="My.ecore#//p1/C3"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C3"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzavB5ubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzavB5ubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container']/@defaultLayer/@containerMappings[name='EPackage_Container_Gradient']/@subNodeMappings[name='EClass_WorkspaceImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container']/@defaultLayer/@containerMappings[name='EPackage_Container_Gradient']/@subNodeMappings[name='EClass_WorkspaceImage']"/>
@@ -1703,7 +1703,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzfngZubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzfngZubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container']/@defaultLayer/@containerMappings[name='EPackage_Container_Gradient']/@subNodeMappings[name='EClass_WorkspaceImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container']/@defaultLayer/@containerMappings[name='EPackage_Container_Gradient']/@subNodeMappings[name='EClass_WorkspaceImage']"/>
@@ -1714,7 +1714,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzfnhJubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzfnhJubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container']/@defaultLayer/@containerMappings[name='EPackage_Container_Gradient']/@subNodeMappings[name='EClass_WorkspaceImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container']/@defaultLayer/@containerMappings[name='EPackage_Container_Gradient']/@subNodeMappings[name='EClass_WorkspaceImage']"/>
@@ -1725,7 +1725,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzfnh5ubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzfnh5ubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container']/@defaultLayer/@containerMappings[name='EPackage_Container_Gradient']/@subNodeMappings[name='EClass_WorkspaceImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container']/@defaultLayer/@containerMappings[name='EPackage_Container_Gradient']/@subNodeMappings[name='EClass_WorkspaceImage']"/>
@@ -2145,7 +2145,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_nzjR5pubEeytjv1FlCBMSQ" name="C1" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="My.ecore#//p1/C1"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C1"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzjR55ubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzjR55ubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container_Image']/@defaultLayer/@containerMappings[name='EPackage_Container_Image']/@subNodeMappings[name='EClass_WorkspaceImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container_Image']/@defaultLayer/@containerMappings[name='EPackage_Container_Image']/@subNodeMappings[name='EClass_WorkspaceImage']"/>
@@ -2153,7 +2153,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_nzjR6ZubEeytjv1FlCBMSQ" name="C2" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="My.ecore#//p1/C2"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C2"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzjR6pubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzjR6pubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container_Image']/@defaultLayer/@containerMappings[name='EPackage_Container_Image']/@subNodeMappings[name='EClass_WorkspaceImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container_Image']/@defaultLayer/@containerMappings[name='EPackage_Container_Image']/@subNodeMappings[name='EClass_WorkspaceImage']"/>
@@ -2161,7 +2161,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_nzj48ZubEeytjv1FlCBMSQ" name="C3" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="My.ecore#//p1/C3"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C3"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzj48pubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzj48pubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container_Image']/@defaultLayer/@containerMappings[name='EPackage_Container_Image']/@subNodeMappings[name='EClass_WorkspaceImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container_Image']/@defaultLayer/@containerMappings[name='EPackage_Container_Image']/@subNodeMappings[name='EClass_WorkspaceImage']"/>
@@ -2563,7 +2563,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_nzoxcJubEeytjv1FlCBMSQ" name="C1" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="My.ecore#//p1/C1"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C1"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzoxcZubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzoxcZubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container_Parallelogram']/@defaultLayer/@containerMappings[name='EPackage_Container_Parallelogram']/@subNodeMappings[name='EClass_WorkspaceImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container_Parallelogram']/@defaultLayer/@containerMappings[name='EPackage_Container_Parallelogram']/@subNodeMappings[name='EClass_WorkspaceImage']"/>
@@ -2571,7 +2571,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_nzoxc5ubEeytjv1FlCBMSQ" name="C2" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="My.ecore#//p1/C2"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C2"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzoxdJubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzoxdJubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container_Parallelogram']/@defaultLayer/@containerMappings[name='EPackage_Container_Parallelogram']/@subNodeMappings[name='EClass_WorkspaceImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container_Parallelogram']/@defaultLayer/@containerMappings[name='EPackage_Container_Parallelogram']/@subNodeMappings[name='EClass_WorkspaceImage']"/>
@@ -2579,7 +2579,7 @@
       <ownedDiagramElements xmi:type="diagram:DNode" uid="_nzoxdpubEeytjv1FlCBMSQ" name="C3" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="My.ecore#//p1/C3"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C3"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzoxd5ubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzoxd5ubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container_Parallelogram']/@defaultLayer/@containerMappings[name='EPackage_Container_Parallelogram']/@subNodeMappings[name='EClass_WorkspaceImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Container_Parallelogram']/@defaultLayer/@containerMappings[name='EPackage_Container_Parallelogram']/@subNodeMappings[name='EClass_WorkspaceImage']"/>
@@ -2875,7 +2875,7 @@
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_nzsb15ubEeytjv1FlCBMSQ" name="C1" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="My.ecore#//p1/C1"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C1"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzsb2JubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzsb2JubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Bordered_Node']/@defaultLayer/@containerMappings[name='EPackage_Container_For_BN']/@borderedNodeMappings[name='EClass_WorkspaceImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Bordered_Node']/@defaultLayer/@containerMappings[name='EPackage_Container_For_BN']/@borderedNodeMappings[name='EClass_WorkspaceImage']"/>
@@ -2883,7 +2883,7 @@
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_nztC4ZubEeytjv1FlCBMSQ" name="C2" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="My.ecore#//p1/C2"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C2"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nztC4pubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nztC4pubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Bordered_Node']/@defaultLayer/@containerMappings[name='EPackage_Container_For_BN']/@borderedNodeMappings[name='EClass_WorkspaceImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Bordered_Node']/@defaultLayer/@containerMappings[name='EPackage_Container_For_BN']/@borderedNodeMappings[name='EClass_WorkspaceImage']"/>
@@ -2891,7 +2891,7 @@
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_nztC5JubEeytjv1FlCBMSQ" name="C3" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="My.ecore#//p1/C3"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C3"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nztC5ZubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nztC5ZubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Bordered_Node']/@defaultLayer/@containerMappings[name='EPackage_Container_For_BN']/@borderedNodeMappings[name='EClass_WorkspaceImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Bordered_Node']/@defaultLayer/@containerMappings[name='EPackage_Container_For_BN']/@borderedNodeMappings[name='EClass_WorkspaceImage']"/>
@@ -3034,7 +3034,7 @@
           </children>
           <children xmi:type="notation:Node" xmi:id="_MfI3wJuWEeytjv1FlCBMSQ" type="3012" element="_nzwtQJubEeytjv1FlCBMSQ">
             <children xmi:type="notation:Node" xmi:id="_MfI3w5uWEeytjv1FlCBMSQ" type="5010">
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_MfI3xJuWEeytjv1FlCBMSQ" x="-20"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_MfI3xJuWEeytjv1FlCBMSQ" x="-3" y="33"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_MgSHT5uWEeytjv1FlCBMSQ" type="3005" element="_nzwtQZubEeytjv1FlCBMSQ">
               <styles xmi:type="notation:ShapeStyle" xmi:id="_MgSHUJuWEeytjv1FlCBMSQ" fontName="Segoe UI"/>
@@ -3197,7 +3197,7 @@
         <arrangeConstraints>KEEP_LOCATION</arrangeConstraints>
         <arrangeConstraints>KEEP_SIZE</arrangeConstraints>
         <arrangeConstraints>KEEP_RATIO</arrangeConstraints>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzwtQZubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzwtQZubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Bordered_Node']/@defaultLayer/@containerMappings[name='EPackage_Container_For_BN']/@borderedNodeMappings[name='EClass_WorkspaceImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Bordered_Node']/@defaultLayer/@containerMappings[name='EPackage_Container_For_BN']/@borderedNodeMappings[name='EClass_WorkspaceImage']"/>
@@ -3205,7 +3205,7 @@
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_nzxUUJubEeytjv1FlCBMSQ" name="C2" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="My.ecore#//p1/C2"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C2"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzxUUZubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzxUUZubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Bordered_Node']/@defaultLayer/@containerMappings[name='EPackage_Container_For_BN']/@borderedNodeMappings[name='EClass_WorkspaceImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Bordered_Node']/@defaultLayer/@containerMappings[name='EPackage_Container_For_BN']/@borderedNodeMappings[name='EClass_WorkspaceImage']"/>
@@ -3213,7 +3213,7 @@
       <ownedBorderedNodes xmi:type="diagram:DNode" uid="_nzxUU5ubEeytjv1FlCBMSQ" name="C3" width="5" height="5" resizeKind="NSEW">
         <target xmi:type="ecore:EClass" href="My.ecore#//p1/C3"/>
         <semanticElements xmi:type="ecore:EClass" href="My.ecore#//p1/C3"/>
-        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzxUVJubEeytjv1FlCBMSQ" labelSize="12" showIcon="false" workspacePath="/DesignerTestProject/images/Fan.svg">
+        <ownedStyle xmi:type="diagram:WorkspaceImage" uid="_nzxUVJubEeytjv1FlCBMSQ" labelSize="12" workspacePath="/DesignerTestProject/images/Fan.svg">
           <description xmi:type="style:WorkspaceImageDescription" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Bordered_Node']/@defaultLayer/@containerMappings[name='EPackage_Container_For_BN']/@borderedNodeMappings[name='EClass_WorkspaceImage']/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/resource/DesignerTestProject/description/svg.odesign#//@ownedViewpoints[name='TestExportSVG']/@ownedRepresentations[name='SVGImages_Bordered_Node']/@defaultLayer/@containerMappings[name='EPackage_Container_For_BN']/@borderedNodeMappings[name='EClass_WorkspaceImage']"/>

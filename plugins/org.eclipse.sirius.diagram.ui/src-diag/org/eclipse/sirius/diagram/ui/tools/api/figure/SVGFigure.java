@@ -431,7 +431,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
     protected SimpleImageTranscoder getTranscoder() {
         return transcoder;
     }
-    
+
     protected SimpleImageTranscoder initTranscoder(Document document) {
         return new SimpleImageTranscoder(document);
     }
@@ -488,7 +488,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
             Rectangle scaledArea = new PrecisionRectangle(svgArea);
             scaledArea.performScale(graphics.getAbsoluteScale());
             // specific case for SVG export
-            if (SiriusDiagramSVGGenerator.isSVGExportEnabled() && graphics instanceof SiriusRenderedMapModeGraphics
+            if (SiriusDiagramSVGGenerator.isEmbeddedSVGinSVGExportEnabled() && graphics instanceof SiriusRenderedMapModeGraphics
                     && ((SiriusRenderedMapModeGraphics) graphics).getGraphics() instanceof SiriusGraphicsSVG) {
                 paintSVGReference(graphics, svgArea, scaledArea);
             } else {
@@ -512,11 +512,11 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
      * Paint rendered bitmap.
      * 
      * @param graphics
-     *                       Graphics
+     *            Graphics
      * @param svgArea
-     *                       Rectangle
+     *            Rectangle
      * @param scaledArea
-     *                       Rectangle
+     *            Rectangle
      */
     protected void paintRenderedBitmap(Graphics graphics, Rectangle svgArea, Rectangle scaledArea) {
         Image image = getImage(svgArea, graphics);
@@ -547,11 +547,11 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
      * Paint SVG reference using use tag.
      * 
      * @param graphics
-     *                       Graphics
+     *            Graphics
      * @param svgArea
-     *                       Rectangle
+     *            Rectangle
      * @param scaledArea
-     *                       Rectangle
+     *            Rectangle
      */
     protected void paintSVGReference(Graphics graphics, Rectangle svgArea, Rectangle scaledArea) {
         String imageRegistryURI = computeImageKey(svgArea.width, svgArea.height);
@@ -561,13 +561,13 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
 
     /**
      * @param graphics
-     *                             Graphics
+     *            Graphics
      * @param imageRegistryURI
-     *                             String
+     *            String
      * @param svgArea
-     *                             Rectangle
+     *            Rectangle
      * @param scaledArea
-     *                             Rectangle
+     *            Rectangle
      */
     protected void paintSVGReference(Graphics graphics, String imageRegistryURI, Rectangle svgArea, Rectangle scaledArea) {
         if (modeWithViewBox) {
@@ -588,7 +588,7 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
      * Compute image key for registry.
      * 
      * @param params
-     *                   Obect
+     *            Obect
      * @return image key for registry.
      */
     protected String computeImageKey(Object... params) {
@@ -608,11 +608,11 @@ public class SVGFigure extends Figure implements StyledFigure, ITransparentFigur
      * Add SVG document in registry.
      * 
      * @param imageRegistryKey
-     *                             String
+     *            String
      * @param document
-     *                             Document
+     *            Document
      * @param params
-     *                             Object
+     *            Object
      */
     protected void registerSVGDocument(String imageRegistryKey, Document document, Object... params) {
         if (params.length > 0 && params[0] instanceof Rectangle) {
