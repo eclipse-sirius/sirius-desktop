@@ -16,6 +16,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -28,8 +29,9 @@ import org.eclipse.sirius.viewpoint.DAnalysis;
 import org.eclipse.sirius.viewpoint.DRepresentation;
 import org.eclipse.sirius.viewpoint.DSemanticDecorator;
 import org.eclipse.sirius.viewpoint.provider.Messages;
-import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.ui.IWorkbenchWindow;
+import org.eclipse.ui.PlatformUI;
 
 /**
  * A dialog which select smartly analysis.
@@ -73,9 +75,16 @@ public class SmartDialogAnalysisSelector implements DAnalysisSelector {
 
             @Override
             public void run() {
+                Optional<Shell> optionalShell = Optional.ofNullable(PlatformUI.getWorkbench().getActiveWorkbenchWindow()).map(IWorkbenchWindow::getShell);
+                if (optionalShell.isPresent()) {
+                    setResult(getResultFromDialog(allAnalysis, representation, optionalShell.get()));
+                } else {
+                    setResult(null);
+                }
+            }
 
-                dialog = createAnalysisSelectorDialog(Display.getDefault().getActiveShell(), getDefaultDAnalysis(allAnalysis, representation), allAnalysis, new ArrayList<>(allAnalysis),
-                        representation);
+            private Object getResultFromDialog(final Collection<DAnalysis> allAnalysis, DRepresentation representation, Shell shell) {
+                dialog = createAnalysisSelectorDialog(shell, getDefaultDAnalysis(allAnalysis, representation), allAnalysis, new ArrayList<>(allAnalysis), representation);
                 dialog.setSeparatorLabel(Messages.SmartDialogAnalysisSelector_otherFragments);
                 String representationName = representation.getName();
                 if (representationName != null && !representationName.isEmpty()) {
@@ -89,12 +98,11 @@ public class SmartDialogAnalysisSelector implements DAnalysisSelector {
 
                 if (dialog.open() == Window.OK) {
                     if (dialog.getFirstResult() != null) {
-                        setResult(dialog.getFirstResult());
+                        return dialog.getFirstResult();
                     }
-                } else {
-                    // Box closed by cancel, ESC key ...
-                    setResult(null);
                 }
+                // Box closed by cancel, ESC key ...
+                return null;
             }
         };
         /* synch execution as the user need to choose before we can get further */
@@ -151,7 +159,7 @@ public class SmartDialogAnalysisSelector implements DAnalysisSelector {
      */
     protected AnalysisSelectorFilteredItemsSelectionDialog createAnalysisSelectorDialog(Shell shell, DAnalysis bestCandidate, Collection<DAnalysis> allAnalysis, List<DAnalysis> bestCandidates,
             DRepresentation representation) {
-        return new AnalysisSelectorFilteredItemsSelectionDialog(Display.getDefault().getActiveShell(), allAnalysis.iterator().next(), allAnalysis, new ArrayList<>(allAnalysis), false);
+        return new AnalysisSelectorFilteredItemsSelectionDialog(shell, allAnalysis.iterator().next(), allAnalysis, new ArrayList<>(allAnalysis), false);
     }
 
 }
